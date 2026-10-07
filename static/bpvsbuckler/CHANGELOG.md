@@ -1,5 +1,19 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.60] - 2026-10-07
+
+New page: **Records control** (`/control/`), a control panel of every body the family is seeking records from and every procedure available against it.
+
+### Added
+- 34 bodies and 85 requests or cases, grouped as land and title; heritage, archives and museums; government, council and police; courts and justice; elected representatives; companies, firms and private holders
+- Nine procedures, each laid out step by step in the order the steps must be exhausted: FOI / EIR (request through to tribunal appeal), subject access (through to a court order), complaints (through to the ombudsman or independent reviewer and a legal challenge), preservation notices, records and copies, reports to prosecutors, statutory notices, elected representatives, and private-party disclosure
+- Every step coloured by state: done, waiting on them, your move, overdue, unconfirmed, available, not applicable. Each state also has an icon and a label
+- Headline figures: ground covered (steps taken out of steps available), and counts of overdue, your-move, waiting and unconfirmed cases. Clicking one filters the page
+- Overview matrix (bodies × procedures) and a step-by-step section for each body with dates, references and what was said
+- A waiting step turns overdue on its own once its due date passes
+- Data at `/api/control.json`, built by `content/control_source.py`. Sources: the wiki's Records Access Chronology and reply register, the family's correspondence and the HubSpot tickets, as at 7 October 2026
+- "Records" tab in the film's header; both URLs added to the sitemap
+
 ## [bpvsbuckler-v0.0.0.59] - 2026-10-06
 
 Every scene checked against the Great House Farm Wiki (213 pages): each quotation, date, number and named fact traced to a wiki page, and every scene now links to at least one.

@@ -1,0 +1,3352 @@
+{
+ "as_at": "2026-10-07",
+ "ladders": {
+  "foi": {
+   "name": "FOI / EIR",
+   "basis": "Freedom of Information Act 2000 / Environmental Information Regulations 2004",
+   "stages": [
+    "Request",
+    "Acknowledged",
+    "Response",
+    "Internal review asked",
+    "Review outcome",
+    "ICO complaint (s.50)",
+    "ICO decision",
+    "Tribunal appeal"
+   ]
+  },
+  "sar": {
+   "name": "Subject access",
+   "basis": "UK GDPR Art. 15 / Data Protection Act 2018",
+   "stages": [
+    "Request",
+    "ID / clarification",
+    "Response",
+    "Complaint to controller",
+    "ICO complaint",
+    "Court order (DPA s.167)"
+   ]
+  },
+  "cmp": {
+   "name": "Complaint",
+   "basis": "The body's complaints procedure, then the independent reviewer",
+   "stages": [
+    "Stage 1",
+    "Stage 2 / final",
+    "Ombudsman / independent reviewer",
+    "Legal challenge"
+   ]
+  },
+  "pres": {
+   "name": "Preservation",
+   "basis": "Notice not to destroy or dispose of records",
+   "stages": [
+    "Notice sent",
+    "Acknowledged",
+    "Written confirmation"
+   ]
+  },
+  "rec": {
+   "name": "Records & copies",
+   "basis": "Catalogue enquiry, then copies or a visit",
+   "stages": [
+    "Enquiry",
+    "Holdings identified",
+    "Copies ordered / visit",
+    "Copies obtained"
+   ]
+  },
+  "rep": {
+   "name": "Report / referral",
+   "basis": "Report to a prosecuting or investigating body",
+   "stages": [
+    "Submitted",
+    "Acknowledged",
+    "Outcome",
+    "Review of decision"
+   ]
+  },
+  "stat": {
+   "name": "Statutory notice",
+   "basis": "Notice served under an Act",
+   "stages": [
+    "Served",
+    "Receipt",
+    "Decision"
+   ]
+  },
+  "pol": {
+   "name": "Elected representative",
+   "basis": "MP, Senedd or council scrutiny",
+   "stages": [
+    "Raised",
+    "Reply",
+    "Escalated"
+   ]
+  },
+  "pvt": {
+   "name": "Private party",
+   "basis": "Letter before action, then pre-action disclosure (CPR 31.16)",
+   "stages": [
+    "Letter / request",
+    "Reply",
+    "Pre-action disclosure"
+   ]
+  }
+ },
+ "groups": [
+  [
+   "land",
+   "Land and title"
+  ],
+  [
+   "heritage",
+   "Heritage, archives and museums"
+  ],
+  [
+   "gov",
+   "Government, council and police"
+  ],
+  [
+   "courts",
+   "Courts and justice"
+  ],
+  [
+   "reps",
+   "Elected representatives"
+  ],
+  [
+   "private",
+   "Companies, firms and private holders"
+  ]
+ ],
+ "parties": [
+  {
+   "id": "hmlr",
+   "name": "HM Land Registry",
+   "group": "land",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "foi",
+     "ref": "F260213",
+     "title": "First-registration records",
+     "cells": [
+      {
+       "s": "d",
+       "date": "Feb 2026",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "12–13 Mar",
+       "note": "asked for a title number"
+      },
+      {
+       "s": "d",
+       "date": "13 Apr",
+       "note": "response to F260213"
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/"
+    },
+    {
+     "ladder": "sar",
+     "ref": "WA231076 / WA240304",
+     "title": "Personal data on the two titles",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "1 Oct",
+       "note": "acknowledged"
+      },
+      {
+       "s": "w",
+       "date": "due 28 Oct",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": "2026-10-28",
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "cmp",
+     "ref": "N610CGV · ICR/090/26",
+     "title": "Interest left out at first registration",
+     "cells": [
+      {
+       "s": "d",
+       "date": "19 Apr",
+       "note": "not upheld"
+      },
+      {
+       "s": "d",
+       "date": "25 May",
+       "note": "not upheld: \"registered correctly\""
+      },
+      {
+       "s": "w",
+       "date": "27 Sep",
+       "note": "referred to the Independent Complaints Reviewer; ICR/090/26 allocated 28 Sep"
+      },
+      {
+       "s": "a",
+       "date": "application to alter the register for mistake (via solicitor)",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/"
+    },
+    {
+     "ladder": "rec",
+     "ref": "N610CGV",
+     "title": "First-registration files",
+     "cells": [
+      {
+       "s": "d",
+       "date": "29 Jan",
+       "note": "application and enquiry"
+      },
+      {
+       "s": "d",
+       "date": "30 Jul",
+       "note": "schedule of 43 documents; 1969 root deed not on it"
+      },
+      {
+       "s": "o",
+       "date": "3 Jun physical inspection and 22 Sep electronic copies asked; inspection unanswered",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "pres",
+     "ref": "N610CGV",
+     "title": "Keep the first-registration files",
+     "cells": [
+      {
+       "s": "d",
+       "date": "2–3 Jun, 21 Sep, 28 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "\"will remain on file\"",
+       "note": ""
+      },
+      {
+       "s": "o",
+       "date": "formal non-destruction confirmation outstanding since 3 Jun",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "pol",
+     "ref": "Chief Land Registrar",
+     "title": "Via Stephen Doughty MP",
+     "cells": [
+      {
+       "s": "d",
+       "date": "17 Aug",
+       "note": "MP wrote to MHCLG"
+      },
+      {
+       "s": "d",
+       "date": "9 Sep",
+       "note": "Iain Banfield: no further action; \"not made aware of a competing claim\""
+      },
+      {
+       "s": "a",
+       "date": "PHSO referral via the MP once the ICR has decided",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "forest",
+   "name": "Forest of Cardiff (woodland, WA735527)",
+   "group": "land",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "rec",
+     "ref": "WA735527",
+     "title": "Woodland title and its purchase from Ideal Homes",
+     "cells": [
+      {
+       "s": "d",
+       "date": "18 Sep",
+       "note": "official copy and title plan of WA735527"
+      },
+      {
+       "s": "d",
+       "date": "25 Sep",
+       "note": "charity says it bought from Ideal Homes"
+      },
+      {
+       "s": "a",
+       "date": "copy of the Ideal Homes → Forest of Cardiff transfer (OC2)",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "pvt",
+     "ref": "£30,000 offer",
+     "title": "Route to ownership",
+     "cells": [
+      {
+       "s": "d",
+       "date": "27 Sep",
+       "note": "family reply; offer not accepted"
+      },
+      {
+       "s": "d",
+       "date": "25 Sep",
+       "note": "£30k + costs, else open market early 2027"
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "companies",
+   "name": "Companies House",
+   "group": "land",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "rec",
+     "ref": "WGR · BP Properties · Ideal Homes Wales",
+     "title": "Dissolved company files",
+     "cells": [
+      {
+       "s": "d",
+       "date": "6 Oct",
+       "note": "request sent"
+      },
+      {
+       "s": "w",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "persimmon",
+   "name": "Persimmon Homes",
+   "group": "land",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "pvt",
+     "ref": "WA231076 / WA240304",
+     "title": "Preservation and disclosure: six title-chain questions",
+     "cells": [
+      {
+       "s": "d",
+       "date": "27 Sep",
+       "note": ""
+      },
+      {
+       "s": "w",
+       "date": "no reply",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "sar",
+     "ref": "—",
+     "title": "Personal data held about the family",
+     "cells": [
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "cadw",
+   "name": "Cadw / Welsh Government",
+   "group": "heritage",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "foi",
+     "ref": "ATISN 27021",
+     "title": "1988 listing file",
+     "cells": [
+      {
+       "s": "d",
+       "date": "1 Jun",
+       "note": ""
+      },
+      {
+       "s": "x",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "11 Jun",
+       "note": "two 1988 photographs and the 1990 report"
+      },
+      {
+       "s": "d",
+       "date": "11 Jun",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "2, 10, 29 Jul",
+       "note": "\"most likely destroyed\"; no destruction record"
+      },
+      {
+       "s": "a",
+       "date": "Cadw itself pointed to the ICO on 29 Jul",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/"
+    },
+    {
+     "ladder": "foi",
+     "ref": "ATISN 27589",
+     "title": "Listing consideration, Jul–Dec 1988",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "1 Oct",
+       "note": ""
+      },
+      {
+       "s": "w",
+       "date": "due 26 Oct",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": "2026-10-26",
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "foi",
+     "ref": "Cadw / TfW",
+     "title": "1983 fire: villa and medieval house finds",
+     "cells": [
+      {
+       "s": "d",
+       "date": "24 Sep",
+       "note": ""
+      },
+      {
+       "s": "u",
+       "date": "no acknowledgement recorded",
+       "note": ""
+      },
+      {
+       "s": "w",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "cmp",
+     "ref": "Chief Inspector",
+     "title": "Handling of the 1988 file",
+     "cells": [
+      {
+       "s": "w",
+       "date": "17 Sep, re-served 20 and 22 Sep",
+       "note": "no outcome"
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "Public Services Ombudsman for Wales (notice drafted, on hold)",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "stat",
+     "ref": "TO/HF/05677/26",
+     "title": "Historic Environment (Wales) Act 2023 ss.194–195",
+     "cells": [
+      {
+       "s": "d",
+       "date": "Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "30 Sep",
+       "note": "receipt"
+      },
+      {
+       "s": "w",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "pres",
+     "ref": "28 Sep notice",
+     "title": "Keep 1988 listing records",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "u",
+       "date": "no acknowledgement recorded",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "rcahmw",
+   "name": "Royal Commission (RCAHMW)",
+   "group": "heritage",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "foi",
+     "ref": "RC26-0375",
+     "title": "Requests of 8, 15, 17 and 20 Sep",
+     "cells": [
+      {
+       "s": "d",
+       "date": "8–20 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "acknowledged",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "29 Sep and 6 Oct",
+       "note": "treated as fully answered (s.21); nothing withheld"
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/"
+    },
+    {
+     "ladder": "rec",
+     "ref": "NPRN 20182",
+     "title": "Archive items 6048941–6048945",
+     "cells": [
+      {
+       "s": "d",
+       "date": "Nov 2025 and May–Jun 2026",
+       "note": "RC25-0464, RC26-0205"
+      },
+      {
+       "s": "d",
+       "date": "6 Oct",
+       "note": "Suggett 1988 note, Thomas 1974 notes, plan with 12/12/1988 additions"
+      },
+      {
+       "s": "y",
+       "date": "order the free scans (under 5 items)",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "rec",
+     "ref": "Aerial photographs",
+     "title": "Aerial photography search",
+     "cells": [
+      {
+       "s": "a",
+       "date": "chargeable search offered",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "pres",
+     "ref": "28 Sep notice",
+     "title": "Keep campaign and archive records",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "29 Sep",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "museum",
+   "name": "Amgueddfa Cymru – Museum Wales",
+   "group": "heritage",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "foi",
+     "ref": "FOI 2026-020",
+     "title": "Farm furniture and contents",
+     "cells": [
+      {
+       "s": "d",
+       "date": "2 and 13 Jul",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "13 Jul",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "3 Aug",
+       "note": "not held"
+      },
+      {
+       "s": "d",
+       "date": "14 Aug",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "8 Sep",
+       "note": "upheld"
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/"
+    },
+    {
+     "ladder": "foi",
+     "ref": "FOI 2026-024",
+     "title": "The farmhouse floor find",
+     "cells": [
+      {
+       "s": "d",
+       "date": "27 Jul",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "27 Jul",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "25 Aug",
+       "note": "not held; other records withheld as out of scope"
+      },
+      {
+       "s": "d",
+       "date": "26 Aug",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "22 Sep",
+       "note": "upheld"
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/"
+    },
+    {
+     "ladder": "foi",
+     "ref": "FOI 2026-032",
+     "title": "Records already found",
+     "cells": [
+      {
+       "s": "d",
+       "date": "26 Aug",
+       "note": ""
+      },
+      {
+       "s": "x",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "22 Sep",
+       "note": "disclosed; item 7 unanswered"
+      },
+      {
+       "s": "w",
+       "date": "item 7 chased 22 Sep, 28 Sep and 6 Oct",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/"
+    },
+    {
+     "ladder": "foi",
+     "ref": "FOI 2026-036",
+     "title": "Everything indexed to the farm",
+     "cells": [
+      {
+       "s": "d",
+       "date": "8 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "8 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "5 Oct",
+       "note": "Church Farm 63.24; waterwheel; 1924 particulars"
+      },
+      {
+       "s": "a",
+       "date": "review window open to about 30 Nov",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/"
+    },
+    {
+     "ladder": "pres",
+     "ref": "28 Sep notice",
+     "title": "Keep collection and accession records",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "u",
+       "date": "no acknowledgement recorded",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "heneb",
+   "name": "Heneb / GGAT",
+   "group": "heritage",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "foi",
+     "ref": "GGAT02038s",
+     "title": "EIR schedule of HER records",
+     "cells": [
+      {
+       "s": "d",
+       "date": "8 and 20 Sep",
+       "note": ""
+      },
+      {
+       "s": "u",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "w",
+       "date": "no response recorded",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "cmp",
+     "ref": "HER identifiers",
+     "title": "HER classification and the 1978–95 record",
+     "cells": [
+      {
+       "s": "w",
+       "date": "27 Sep; acknowledged 29 Sep; reply aimed within 5 weeks",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": "2026-11-03",
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "rec",
+     "ref": "1990 assessment · 1994 report",
+     "title": "GGAT 1990 assessment and Cotswold 1994 report",
+     "cells": [
+      {
+       "s": "d",
+       "date": "22 May",
+       "note": "first HER enquiry"
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "pres",
+     "ref": "28 Sep notice",
+     "title": "Keep HER and project archives",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "u",
+       "date": "no acknowledgement recorded",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "tna",
+   "name": "The National Archives",
+   "group": "heritage",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "foi",
+     "ref": "CAS-347296-M0V4Y1",
+     "title": "Existence, transfer and disposal of records",
+     "cells": [
+      {
+       "s": "d",
+       "date": "18 Feb; widened 13 Aug, 20 Aug, 2 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "23 Sep",
+       "note": "House of Lords judicial papers, transfer paperwork, NFS, War Ag"
+      },
+      {
+       "s": "u",
+       "date": "drafted 28 Sep; wiki lists it open on 2 Oct; confirm it was sent",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/"
+    },
+    {
+     "ladder": "rec",
+     "ref": "YHL/PO/JO/10/11/2536",
+     "title": "House of Lords bundle, National Farm Survey, War Ag minutes",
+     "cells": [
+      {
+       "s": "d",
+       "date": "Feb–Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "23 Sep",
+       "note": ""
+      },
+      {
+       "s": "y",
+       "date": "visit Kew or order copies",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "pres",
+     "ref": "28 Sep notice",
+     "title": "Keep transferred and judicial records",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "u",
+       "date": "no acknowledgement recorded",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "glamarch",
+   "name": "Glamorgan Archives",
+   "group": "heritage",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "rec",
+     "ref": "2026/3793 · 3893 · 3941 · 4097",
+     "title": "Deeds, rural district and council records",
+     "cells": [
+      {
+       "s": "d",
+       "date": "Feb–Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "UC/73/1–5, DCVG/C/4/36, D696, DBDT/1/3, DBDT/18/1",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "27 Aug–14 Sep",
+       "note": "DBDT/79/1 examined and photographed; ACA/8/2 copied"
+      },
+      {
+       "s": "y",
+       "date": "further paid searches and copies offered",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "rec",
+     "ref": "27 Sep enquiry",
+     "title": "South Wales Constabulary records, Nov–Dec 1988",
+     "cells": [
+      {
+       "s": "d",
+       "date": "27 Sep",
+       "note": ""
+      },
+      {
+       "s": "w",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "pres",
+     "ref": "28 Sep notice",
+     "title": "Keep deposited records",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "u",
+       "date": "no acknowledgement recorded",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "nlw",
+   "name": "National Library of Wales",
+   "group": "heritage",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "foi",
+     "ref": "FOI/2026/09–11",
+     "title": "Bute Estate series, Cardiff Castle furniture",
+     "cells": [
+      {
+       "s": "d",
+       "date": "7 Jun",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "answered",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "29 Jul",
+       "note": "review outcome; D153 and D205 searched"
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/"
+    },
+    {
+     "ladder": "rec",
+     "ref": "GB 0210 BUTE / D153 / D219",
+     "title": "The 1877 split and the 1916 tenancy",
+     "cells": [
+      {
+       "s": "d",
+       "date": "27 Sep",
+       "note": ""
+      },
+      {
+       "s": "w",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "pres",
+     "ref": "28 Sep notice",
+     "title": "Keep Bute Estate records",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "30 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "30 Sep",
+       "note": "\"does not routinely destroy or dispose of records\""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "ads",
+   "name": "Archaeology Data Service",
+   "group": "heritage",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "rec",
+     "ref": "doi:10.5284/1071962 · 10.5284/1000252",
+     "title": "Digital excavation archives",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "2 Oct",
+       "note": "five catalogue records listed"
+      },
+      {
+       "s": "a",
+       "date": "free download",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "pres",
+     "ref": "28 Sep notice",
+     "title": "Keep digital archives",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "2 Oct",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "2 Oct",
+       "note": "held in perpetuity"
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "cotswold",
+   "name": "Cotswold Archaeology",
+   "group": "heritage",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "rec",
+     "ref": "1994 report",
+     "title": "1994 excavation report and archive",
+     "cells": [
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "pres",
+     "ref": "28 Sep notice",
+     "title": "Keep project archive",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "w",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "echr",
+   "name": "European Court of Human Rights archives",
+   "group": "heritage",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "rec",
+     "ref": "14464/88",
+     "title": "Commission case file",
+     "cells": [
+      {
+       "s": "d",
+       "date": "Jun",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "11 Jun",
+       "note": "file 14464/88 found"
+      },
+      {
+       "s": "d",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "Decision of the Commission held by the family",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "dwr",
+   "name": "Dŵr Cymru Welsh Water",
+   "group": "heritage",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "rec",
+     "ref": "93047764/01",
+     "title": "Water records for the farm",
+     "cells": [
+      {
+       "s": "d",
+       "date": "17 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "29 Sep",
+       "note": "reply"
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "vale",
+   "name": "Vale of Glamorgan Council",
+   "group": "gov",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "foi",
+     "ref": "EIR 00210772",
+     "title": "Planning file",
+     "cells": [
+      {
+       "s": "d",
+       "date": "before 7 Jul",
+       "note": ""
+      },
+      {
+       "s": "x",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "7 Jul",
+       "note": "completeness disputed"
+      },
+      {
+       "s": "d",
+       "date": "7 Jul",
+       "note": ""
+      },
+      {
+       "s": "o",
+       "date": "chased 1, 22, 30 Sep and 6 Oct; no outcome",
+       "note": ""
+      },
+      {
+       "s": "y",
+       "date": "ICO complaint drafted; send about 15–17 Oct if still nothing",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/"
+    },
+    {
+     "ladder": "foi",
+     "ref": "WhatDoTheyKnow",
+     "title": "Ownership certificate for 2020/01590/HYB",
+     "cells": [
+      {
+       "s": "d",
+       "date": "21 Aug",
+       "note": ""
+      },
+      {
+       "s": "o",
+       "date": "never logged",
+       "note": ""
+      },
+      {
+       "s": "o",
+       "date": "20 working days expired 21 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "22 Sep",
+       "note": ""
+      },
+      {
+       "s": "o",
+       "date": "family deadline of 6 Oct passed",
+       "note": ""
+      },
+      {
+       "s": "y",
+       "date": "ICO referral",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/"
+    },
+    {
+     "ladder": "foi",
+     "ref": "00211463",
+     "title": "Council records on the farm",
+     "cells": [
+      {
+       "s": "d",
+       "date": "17 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "w",
+       "date": "about 15 Oct",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": "2026-10-15",
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "foi",
+     "ref": "00211483",
+     "title": "Planning 89/01396/OUT",
+     "cells": [
+      {
+       "s": "d",
+       "date": "17 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "w",
+       "date": "about 15 Oct",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": "2026-10-15",
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "foi",
+     "ref": "00211484",
+     "title": "Removal of the commemorative tree",
+     "cells": [
+      {
+       "s": "d",
+       "date": "18 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "w",
+       "date": "narrowed 28 Sep; about 16 Oct",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": "2026-10-16",
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "foi",
+     "ref": "00211557",
+     "title": "s.52 agreement, planning register, screening, 92/00671/RES",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "30 Sep",
+       "note": ""
+      },
+      {
+       "s": "w",
+       "date": "about 26 Oct",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": "2026-10-26",
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "sar",
+     "ref": "Monitoring Officer",
+     "title": "Personal data (28 Sep concern, preservation and SAR letter)",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "x",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "w",
+       "date": "about 28 Oct",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": "2026-10-28",
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "cmp",
+     "ref": "VOG-874631131",
+     "title": "Corporate complaint",
+     "cells": [
+      {
+       "s": "w",
+       "date": "17–18 Sep",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "Public Services Ombudsman for Wales",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "cmp",
+     "ref": "Monitoring Officer",
+     "title": "Ward councillor not responding",
+     "cells": [
+      {
+       "s": "d",
+       "date": "12 and 24 Aug",
+       "note": "decision"
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "Ombudsman (code of conduct)",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "pol",
+     "ref": "Scrutiny",
+     "title": "Scrutiny topic / Task & Finish suggestion",
+     "cells": [
+      {
+       "s": "d",
+       "date": "6 Oct",
+       "note": "to Democratic Services"
+      },
+      {
+       "s": "w",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "rec",
+     "ref": "Registration Service",
+     "title": "Death record of Mary Doreen Williams",
+     "cells": [
+      {
+       "s": "d",
+       "date": "Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "28 and 30 Sep",
+       "note": "not held in the Vale; passed to Cardiff"
+      },
+      {
+       "s": "x",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "x",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "pres",
+     "ref": "28 Sep notice",
+     "title": "Keep planning, heritage and council records",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "u",
+       "date": "no acknowledgement recorded",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "cardiff",
+   "name": "Cardiff Council (Register Office)",
+   "group": "gov",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "rec",
+     "ref": "Transferred from the Vale",
+     "title": "Death record of Mary Doreen Williams",
+     "cells": [
+      {
+       "s": "d",
+       "date": "30 Sep",
+       "note": "transferred"
+      },
+      {
+       "s": "w",
+       "date": "no reply yet",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "llcc",
+   "name": "Llandough Community Council",
+   "group": "gov",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "foi",
+     "ref": "May–Jun 2026",
+     "title": "Council minutes",
+     "cells": [
+      {
+       "s": "d",
+       "date": "18 May",
+       "note": ""
+      },
+      {
+       "s": "x",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "14 Jun",
+       "note": "minutes deposited at Glamorgan Archives"
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "walesoffice",
+   "name": "Wales Office",
+   "group": "gov",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "foi",
+     "ref": "26FOI 103 · IR/26/16",
+     "title": "1988 Welsh Office papers",
+     "cells": [
+      {
+       "s": "d",
+       "date": "29 Aug",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "8 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "22 Sep",
+       "note": "not held; papers \"would have been\" transferred"
+      },
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "w",
+       "date": "acknowledged 29 Sep; due 26 Oct",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": "2026-10-26",
+     "note": null,
+     "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/"
+    },
+    {
+     "ladder": "pres",
+     "ref": "28 Sep notice",
+     "title": "Keep transfer records",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "29 Sep",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "swp",
+   "name": "South Wales Police",
+   "group": "gov",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "foi",
+     "ref": "719/26",
+     "title": "Police records on the farm and the deaths",
+     "cells": [
+      {
+       "s": "d",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "x",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "no records held",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "27 Sep",
+       "note": ""
+      },
+      {
+       "s": "w",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/"
+    },
+    {
+     "ladder": "sar",
+     "ref": "20/08/2026",
+     "title": "Deaths of William Buckler and Mary Doreen Williams",
+     "cells": [
+      {
+       "s": "d",
+       "date": "20 Aug; SAR letter 28 Sep",
+       "note": ""
+      },
+      {
+       "s": "y",
+       "date": "ID supplied 29 Sep; clarification asked 30 Sep: reply needed",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "cmp",
+     "ref": "Professional Standards",
+     "title": "Handling: phone-only contact, \"no number given\"",
+     "cells": [
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "Independent Office for Police Conduct",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "pres",
+     "ref": "28 Sep notice",
+     "title": "Keep 1988 operational records",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "u",
+       "date": "no acknowledgement recorded",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "mod",
+   "name": "Ministry of Defence",
+   "group": "gov",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "foi",
+     "ref": "FOI2026/09019",
+     "title": "1988 deployment records",
+     "cells": [
+      {
+       "s": "d",
+       "date": "spring 2026",
+       "note": ""
+      },
+      {
+       "s": "x",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "May",
+       "note": "not held; s.23(5) neither confirm nor deny"
+      },
+      {
+       "s": "d",
+       "date": "20 Jun",
+       "note": ""
+      },
+      {
+       "s": "o",
+       "date": "no outcome since 20 Jun",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "sar",
+     "ref": "FOI2026/09019 SAR",
+     "title": "Personal data",
+     "cells": [
+      {
+       "s": "d",
+       "date": "Aug",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "5 Aug",
+       "note": "ID sent"
+      },
+      {
+       "s": "o",
+       "date": "overdue since 5 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "27–28 Sep",
+       "note": "chase and formal complaint"
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "hmcts",
+   "name": "Ministry of Justice / HMCTS",
+   "group": "courts",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "sar",
+     "ref": "260803049 · IR 260904007",
+     "title": "Court records (treated as a subject access request)",
+     "cells": [
+      {
+       "s": "d",
+       "date": "7 Jun",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "7 Jun–2 Jul",
+       "note": "ID and proof of address"
+      },
+      {
+       "s": "d",
+       "date": "3 Sep",
+       "note": "response"
+      },
+      {
+       "s": "w",
+       "date": "IR 260904007: extension 2 Oct; scope clarified",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "foi",
+     "ref": "Probate FOI",
+     "title": "Probate records",
+     "cells": [
+      {
+       "s": "d",
+       "date": "7 Jun",
+       "note": ""
+      },
+      {
+       "s": "y",
+       "date": "28 Jul MoJ asked for the death certificate; not yet sent",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "rec",
+     "ref": "[1987] EWCA Civ 2",
+     "title": "Official Court of Appeal judgment and court file",
+     "cells": [
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "cps",
+   "name": "Crown Prosecution Service",
+   "group": "courts",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "rep",
+     "ref": "Victim Liaison Cymru-Wales",
+     "title": "Suspected historic fraud",
+     "cells": [
+      {
+       "s": "d",
+       "date": "3 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "29 Sep",
+       "note": "no case file located"
+      },
+      {
+       "s": "w",
+       "date": "further material 30 Sep",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "Victims' Right to Review",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "cardiffcourt",
+   "name": "Cardiff County Court",
+   "group": "courts",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "rec",
+     "ref": "1955, 1962, 1974 actions",
+     "title": "Possession proceedings files",
+     "cells": [
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "pres",
+     "ref": "28 Sep notice",
+     "title": "Keep court files",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "u",
+       "date": "no acknowledgement recorded",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "parlarch",
+   "name": "Parliamentary Archives",
+   "group": "courts",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "rec",
+     "ref": "House of Lords 1987–88",
+     "title": "Petition for leave: BP Properties v Buckler",
+     "cells": [
+      {
+       "s": "d",
+       "date": "via TNA",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "23 Sep",
+       "note": "manifest and judicial papers"
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "pres",
+     "ref": "28 Sep notice",
+     "title": "Keep judicial papers",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "u",
+       "date": "no acknowledgement recorded",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "nctso",
+   "name": "National Counter Terrorism Security Office",
+   "group": "courts",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "foi",
+     "ref": "WhatDoTheyKnow",
+     "title": "\"BP vs Buckler 1987\"",
+     "cells": [
+      {
+       "s": "d",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "x",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "1 Oct",
+       "note": "two responses posted"
+      },
+      {
+       "s": "y",
+       "date": "read them; decide on review",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "doughty",
+   "name": "Stephen Doughty MP",
+   "group": "reps",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "pol",
+     "ref": "Cardiff South and Penarth",
+     "title": "Land Registry and Ministry of Justice",
+     "cells": [
+      {
+       "s": "d",
+       "date": "29–31 May, 27 Jul, 17 Aug",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "18 Sep",
+       "note": "forwarded the Chief Land Registrar's letter"
+      },
+      {
+       "s": "w",
+       "date": "Ministry of Justice reply awaited; meeting asked 18 Sep, followed up",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "senedd",
+   "name": "Senedd Cymru",
+   "group": "reps",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "pol",
+     "ref": "Culture Committee",
+     "title": "Correction of dates; petition route",
+     "cells": [
+      {
+       "s": "d",
+       "date": "Feb and 27 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": "correction noted"
+      },
+      {
+       "s": "a",
+       "date": "Senedd petition",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "bp",
+   "name": "BP plc / BP Archive (Warwick Modern Records Centre)",
+   "group": "private",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "pres",
+     "ref": "28 Sep notice",
+     "title": "Keep BP Properties and pension trust papers",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "2 Oct",
+       "note": "holding reply"
+      },
+      {
+       "s": "w",
+       "date": "fuller response promised",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    },
+    {
+     "ladder": "pvt",
+     "ref": "BP Properties",
+     "title": "Title and possession papers",
+     "cells": [
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "linklaters",
+   "name": "Linklaters",
+   "group": "private",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "pres",
+     "ref": "28 Sep notice",
+     "title": "Keep 1980s client files",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "d",
+       "date": "29 Sep",
+       "note": "assessing as far as it concerns personal data"
+      },
+      {
+       "s": "w",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "lawfirms",
+   "name": "Blake Morgan · Darwin Gray",
+   "group": "private",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "pres",
+     "ref": "28 Sep notice",
+     "title": "Keep client files",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "w",
+       "date": "no reply",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "landmark",
+   "name": "Landmark Chambers",
+   "group": "private",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "pres",
+     "ref": "28 Sep notice",
+     "title": "Keep counsel's papers",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "w",
+       "date": "out-of-office reply only",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "itv",
+   "name": "ITV",
+   "group": "private",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "rec",
+     "ref": "Clip sales",
+     "title": "1974 and 1988 news footage",
+     "cells": [
+      {
+       "s": "d",
+       "date": "28 Sep",
+       "note": ""
+      },
+      {
+       "s": "w",
+       "date": "auto-reply only",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  },
+  {
+   "id": "harris",
+   "name": "Terry Harris (photographer)",
+   "group": "private",
+   "note": null,
+   "lines": [
+    {
+     "ladder": "rec",
+     "ref": "3 Oct",
+     "title": "1988 photographic record",
+     "cells": [
+      {
+       "s": "d",
+       "date": "3 Oct",
+       "note": ""
+      },
+      {
+       "s": "w",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      },
+      {
+       "s": "a",
+       "date": "",
+       "note": ""
+      }
+     ],
+     "due": null,
+     "note": null,
+     "url": null
+    }
+   ]
+  }
+ ]
+}

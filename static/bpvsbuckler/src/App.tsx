@@ -153,6 +153,7 @@ export default function App() {
           <button className="tab" aria-current={view === 'board' ? 'page' : undefined} onClick={() => open('board')}>Storyboard</button>
           <button className="tab" aria-current={view === 'cast' ? 'page' : undefined} onClick={() => open('cast')}>Cast</button>
           <a className="tab" href="/story/">Script</a>
+          <a className="tab" href="/control/">Records</a>
         </nav>
       </header>
       <main className="main">

@@ -247,6 +247,7 @@ writeFileSync(root + 'story/transcript.txt', transcript);
 const urls = [
   [`${SITE}/`, '1.0'], [`${SITE}/story/`, '0.9'], [`${SITE}/?view=storyboard`, '0.8'], [`${SITE}/?view=cast`, '0.6'],
   [`${SITE}/api/timeline.json`, '0.8'], [`${SITE}/llms.txt`, '0.7'], [`${SITE}/story/transcript.txt`, '0.6'],
+  [`${SITE}/control/`, '0.7'], [`${SITE}/api/control.json`, '0.5'],
   ...scenes.map((s) => [url(s), '0.5']),
 ];
 writeFileSync(
