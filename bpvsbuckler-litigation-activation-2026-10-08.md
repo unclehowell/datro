@@ -121,3 +121,17 @@ The project now counts progress only when it produces:
 - a formally recorded blocker.
 
 Further research that merely repeats the 1939 Parcel-B conclusion is not progress.
+
+
+## Critical legal insight: 1955 may be both the wrong and the limitation start
+
+The physical taking must not be treated as automatically establishing a recoverable present title. Under the historic Limitation Act 1939, where an entitled person was dispossessed, the right of action to recover land could accrue on dispossession, and the ordinary period for recovery by a non-Crown claimant was 12 years. The precise sections, interruptions, adverse-possession character and transitional rules must be checked by counsel against the actual facts.
+
+Accordingly the 1955 evidence has two jobs:
+
+1. establish whether WGR took Parcel-A woodland/VG41-area land without lawful entitlement or beyond the execution authority; and
+2. establish when and how any adverse-possession limitation period began, changed, was interrupted, or became subject to an exception.
+
+A present land claim therefore requires a separate answer to the limitation/discovery question. The project must not assume “wrongful taking in 1955 = title recoverable in 2026”.
+
+The 1970 VG41 registration is especially important because it may identify who claimed ownership and what evidence was being relied upon about fifteen years after the taking. It may support or undermine different theories; its evidential result must be accepted either way.
