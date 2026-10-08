@@ -1,6 +1,6 @@
 {
   "date": "2026-10-08",
-  "objective": "Advance BP vs Buckler from research into litigation-phase human execution",
+  "objective": "Advance the case by reconstructing the 1955 Parcel-A taking (woodland + land now VG41) and tracing those exact physical parcels to present title and remedy.",
   "closed_control_points": [
     "Parcel A farmhouse/garden/curtilage and Parcel B agricultural fields are treated as distinct for this phase"
   ],
@@ -11,11 +11,16 @@
     "P0-LIT-04 HMLR ICR referral",
     "P0-DISC-01 CPR 31.16 pre-action disclosure",
     "P0-LIT-05 separate Letters of Claim",
-    "P1-ARCH-01 D696 archive visit",
     "P1-COURT-01 court file recovery",
     "P1-LNK-01 Linklaters preservation/disclosure",
     "P1-24 BP archive preservation/disclosure",
-    "P1-WGR-02 DBDT123/7 May 1939 WGR–John Williams agreement + plan"
+    "P0-1955/1962-01 reconstruct 4 July 1955 physical execution",
+    "P0-1955/1962-02 family evidence statement + annotated Parcel-A woodland/VG41 map",
+    "P0-VG41-01 obtain complete 1967–70 VG41 registration file",
+    "P0-GREEN-02 identify current title/owner of VG41",
+    "P0-WOOD-02 trace 1955 woodland into 1994 Forest of Cardiff title and 2005 excision",
+    "P0-WOOD-03 counsel decision on protective notice + standstill",
+    "P0-WOOD-04 disputed-title/no-disposal notice to Forest of Cardiff"
   ],
   "principles": [
     "Do not restart closed research questions",
@@ -24,7 +29,9 @@
     "Human action is the deliverable"
   ],
   "evidence_leads": [
-    "DBDT123/7 May 1939 WGR–John Williams tenancy agreement with plan"
+    "1955 execution documents: claim/order/warrant/return/possession plan",
+    "VG41 1967–70 registration file and map",
+    "1955→1994→2005 woodland title chain"
   ],
   "issue_controls": [
     "A-106 D696",
@@ -32,5 +39,12 @@
     "A-117 D696 archival lead",
     "A-119 HMLR alteration/indemnity legal control",
     "A-121 DBDT123/7 primary-source lead"
+  ],
+  "control_principles": [
+    "Do not equate the 1955 physical taking with a present recoverable title: separately analyse historic limitation, later registration, purchaser protections, current title mistake and any fraud/concealment discovery route."
+  ],
+  "parked": [
+    "1939 WGR–John Williams agreement/plan: already obtained; Parcel-B-only conclusion closed",
+    "D696 WGR rent books: background corroboration only unless a direct Parcel-A/woodland/VG41 lead appears"
   ]
 }
