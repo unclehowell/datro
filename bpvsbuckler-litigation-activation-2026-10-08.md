@@ -1,4 +1,4 @@
-# BP vs Buckler — Litigation Activation: Parcel-A Loss (8 October 2026)
+# BP vs Buckler — Litigation Activation: Parcel-A Loss (9 October 2026)
 
 ## Correction to the previous activation baseline
 
@@ -8,18 +8,19 @@ The D696 WGR rental books are also downgraded: they are background corroboration
 
 ## The actual loss being investigated
 
-The substantive family claim is not recovery of Parcel B agricultural land.
+The substantive family claim is not recovery of Parcel B agricultural land. Parcel B is the separate eastern agricultural fields.
 
-The focus is **Parcel-A land**, specifically:
+**Parcel A is the full 1877 house/quarrying estate**, not merely the farmhouse and garden. It comprises the farmhouse/buildings; barn, stable and yard west of the house; garden; the forest north of the house; and the ground south-east of the house/garden that later became **VG41**.
 
-1. the woodland associated with Parcel A; and
-2. the ground now recorded as **VG41**, the village green registered in 1970.
+The family’s established title case is that the 1877 arrangement took effect in 1928 when quarrying and rent to Thomas ended, passing the full Parcel A to the Williams family. The alternative limitation case is that twelve years from 1928 would have matured by 1940 if the applicable legal conditions were met; this is separate from, and does not replace, the underlying-title case.
 
-The family position is that Parcel-A rent had ended in 1928 and that these Parcel-A areas were nevertheless physically taken during the 4 July 1955 possession event while Parcel-B possession was being enforced.
+The family’s chronology is that the 1949 step was the first later attempt to make Mary’s occupation of Parcel A appear permissive, and that it failed. The title deed was reported missing in 1950–52. In 1955, the “whole farm” wording blurred the distinct Parcel-A estate and Parcel-B agricultural tenancy. On 4 July 1955, the family’s established account is that WGR seized Parcel-A forest north and ground south-east later registered as VG41 along with Parcel B.
+
+Mary remained in the farmhouse/buildings/garden group after forcefully resisting removal. She had recently undergone a leg amputation and had seven children. The family also records that she threatened serious consequences to her own safety if forcibly removed. Her desperate defence of the remaining occupied centre must not be misread as a title claim limited to that area, or as surrender of the Parcel-A forest and green.
 
 ## Central forensic question
 
-> What exact physical land did the 1955 court process authorise to be taken, what exact land was actually taken on 4 July 1955, and what legal right did WGR have to take each Parcel-A area?
+> Given the established family account that the 4 July 1955 enforcement of Parcel B seized the Parcel-A north forest and south-east green, how did the “whole farm” wording get applied to those areas, what legal entitlement did WGR have to them, and how did they pass into later records and registered titles?
 
 This creates three independent controls:
 
@@ -33,7 +34,7 @@ The words “whole farm” are not an adequate answer without mapping them to th
 
 The 1962 proceedings should not be used to reopen the already-settled 1939 tenancy question.
 
-Their value is to establish WGR's own account of what it believed had already been taken in 1955 and what it still claimed to recover in 1962. The farmhouse/garden action may therefore provide a boundary statement for the 1955 event.
+Their value is to understand WGR's later treatment of the remaining occupied house-and-garden group. That group was only the part Mary held onto after the forest and green were taken on the family’s account; it is not a boundary statement limiting the full extent of Parcel A.
 
 ## Woodland downstream chain
 
@@ -92,12 +93,10 @@ If the original commons/green registration file reveals an actual statutory regi
 ## Human execution register
 
 ### P0
-- Reconstruct 4 July 1955 physical execution.
-- Obtain complete VG41 registration file.
-- Identify current title/owner of VG41.
-- Trace 1955 woodland into WA735527 and later transfers.
-- Counsel decision on protective notice + Forest of Cardiff standstill.
-- Counsel triage of historical 1955 cause of action and modern remedies.
+- Corroborate the established 4 July 1955 account by comparing the 1955 order/process documents and any execution records against the full Parcel-A map; do not restart the settled 1939 Parcel-B-only finding.
+- Obtain the complete VG41 registration file and map the south-east Parcel-A ground to the 1955 account and present title.
+- Trace the north-forest polygon through the 1975, 1982–83, 1993–94, 2005 and current title plans.
+- Obtain specialist counsel’s written decision on the 1928 title case, alternative limitation, the 1955 taking, present register/indemnity remedies, standing, and any protective notice or standstill.
 
 ### P1
 - Recover 1955/1962/1974/1984–87 court files.
@@ -123,15 +122,15 @@ The project now counts progress only when it produces:
 Further research that merely repeats the 1939 Parcel-B conclusion is not progress.
 
 
-## Critical legal insight: 1955 may be both the wrong and the limitation start
+## Critical legal insight: the 1928 title case and 1955 limitation framing are separate
 
-The physical taking must not be treated as automatically establishing a recoverable present title. Under the historic Limitation Act 1939, where an entitled person was dispossessed, the right of action to recover land could accrue on dispossession, and the ordinary period for recovery by a non-Crown claimant was 12 years. The precise sections, interruptions, adverse-possession character and transitional rules must be checked by counsel against the actual facts.
+The family’s primary case is that the 1877 arrangement took effect in 1928, vesting the full Parcel A in the Williams family. The alternative limitation argument is that, if the legally relevant conditions were satisfied, twelve years from 1928 would have matured by 1940. The 1949 attempt to recast occupation as permissive and the 1955 “whole farm” wording are said to have obscured that earlier position and made the clock appear to start in 1955.
 
-Accordingly the 1955 evidence has two jobs:
+The 1955 documents therefore have two jobs:
 
-1. establish whether WGR took Parcel-A woodland/VG41-area land without lawful entitlement or beyond the execution authority; and
-2. establish when and how any adverse-possession limitation period began, changed, was interrupted, or became subject to an exception.
+1. corroborate and legally define the established family account that enforcement of Parcel B was extended to the Parcel-A north forest and south-east green, and identify what right WGR asserted over each area; and
+2. allow counsel to analyse the separate limitation consequences of the 1928 title/possession chronology, the 1949 permissive recharacterisation, the 1955 event and later proceedings.
 
-A present land claim therefore requires a separate answer to the limitation/discovery question. The project must not assume “wrongful taking in 1955 = title recoverable in 2026”.
+A 1955 wrong does not, by itself, establish a recoverable present title in 2026. Conversely, a limitation finding based on 1955 wording must not be allowed to erase or silently narrow the family’s underlying 1928 title case.
 
 The 1970 VG41 registration is especially important because it may identify who claimed ownership and what evidence was being relied upon about fifteen years after the taking. It may support or undermine different theories; its evidential result must be accepted either way.
