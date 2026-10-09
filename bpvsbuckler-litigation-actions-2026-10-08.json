@@ -1,9 +1,29 @@
 {
-  "date": "2026-10-08",
+  "date": "2026-10-09",
   "objective": "Advance the case by reconstructing the 1955 Parcel-A taking (woodland + land now VG41) and tracing those exact physical parcels to present title and remedy.",
   "closed_control_points": [
-    "Parcel A farmhouse/garden/curtilage and Parcel B agricultural fields are treated as distinct for this phase"
+    "Parcel A farmhouse/garden/curtilage and Parcel B agricultural fields are treated as distinct for this phase",
+    "The 1939 WGR–John Williams agreement/plan is already obtained; the plan depicts Parcel B only, not Parcel A",
+    "D696 rent books are background corroboration only because they do not materially resolve the alleged Parcel-A woodland/green taking"
   ],
+  "attached_objective_review_assessment": {
+    "source": "Great House Farm — Objective Review of Chronology, FOI Record and Routes to Remedy.pdf, dated 8 October 2026",
+    "accepted_challenges": [
+      "Do not state or imply that a missing 1969 root deed proves a phantom Parcel A: the 1969 root and 1971 abstract gap affects both BP conveyance chains and is not Parcel-A-specific.",
+      "Do not make fraud the entry point. First test exact land, documentary title, registration extent, and current statutory remedy; fraud remains contingent on proof of an identified actor, knowing conduct, materiality and causation.",
+      "Treat the 1955 order's actual plan and premises description as a priority alongside the words 'whole farm'; compare judicial scope with the warrant/writ and actual execution.",
+      "Record the provenance and litigation availability of the family-held 1938 conveyance and 1939 tenancy. If they were held during the 1986–87 litigation, non-production may be an evidential failure that must be explained, not assumed concealment.",
+      "The review identifies unread 1905, 1924 and 1961 deeds on HMLR files as low-cost root-of-title tests. These can test the downstream title chain but do not replace the separate 1955 physical-execution investigation.",
+      "Avoid treating WA240304 as Parcel A unless the underlying plan proves the geometry. Map the exact physical polygon against every historic and current title.",
+      "The likely practical remedy may be indemnity/settlement rather than return of built-over plots, but do not generalise that conclusion to the remaining woodland without checking current title, proprietor, proposed sale and whether any protectable interest exists."
+    ],
+    "not_adopted_as_findings": [
+      "Any allegation of fraud, concealment, deliberate misdescription or government involvement",
+      "Any conclusion that the missing 1969 deed means either parcel lacks a valid root",
+      "Any conclusion that the VG41 registration was mistaken",
+      "Any conclusion that a current title is wrong before the exact land polygon and instruments are compared"
+    ]
+  },
   "actions": [
     "P0-LIT-01 solicitor/counsel triage",
     "P0-LIT-02 Schedule 4 alteration/rectification preparation",
@@ -20,18 +40,41 @@
     "P0-GREEN-02 identify current title/owner of VG41",
     "P0-WOOD-02 trace 1955 woodland into 1994 Forest of Cardiff title and 2005 excision",
     "P0-WOOD-03 counsel decision on protective notice + standstill",
-    "P0-WOOD-04 disputed-title/no-disposal notice to Forest of Cardiff"
+    "P0-WOOD-04 disputed-title/no-disposal notice to Forest of Cardiff",
+    "P1-TITLE-ROOT-01 read and compare the 1905 conveyance, 1924 agreement and 1961 deed on HMLR files; cross-reference family-held 1938 conveyance; do not reopen the closed Parcel-B-only 1939-plan finding"
   ],
+  "priority_logic": {
+    "P0_now": [
+      "Recover/inspect the 1955 claim, order (including any plan), writ/warrant, return and evidence of the actual physical footprint.",
+      "Get the original VG41 register/map/application/claim/supporting evidence/notices/objections/decision and identify the present title/owner.",
+      "Trace the same woodland polygon through 1975, 1982–83, 1993–94, 2005 and current title plans.",
+      "Obtain specialist counsel's written limitation and remedy opinion before any notice, claim or public allegation."
+    ],
+    "parallel_root_test": [
+      "Read the 1905, 1924 and 1961 deeds because the attached review identifies them as the cheapest remaining tests of the root-of-title alternatives.",
+      "Record the provenance and whether the family-held 1938 conveyance was available to the family/advisers in 1986–87."
+    ],
+    "deadline_watch": [
+      "Ask Welsh Government/Planning and Environment Decisions Wales to confirm in writing which correction route and deadline, if any, applies to the historic VG41 registration. Official guidance describes correction of qualifying historical errors; eligibility depends on the actual registration pathway and facts. Do not assume a title dispute alone qualifies.",
+      "Treat any potential early-2027 woodland sale as a preservation/standstill trigger, not proof of wrongdoing by Forest of Cardiff."
+    ]
+  },
   "principles": [
     "Do not restart closed research questions",
     "Separate title, registration, indemnity, fraud and public-authority remedies",
     "No fraud finding without identified actor and operative causation",
-    "Human action is the deliverable"
+    "Human action is the deliverable",
+    "Map the exact physical polygon, not merely the place-name 'Great House Farm'",
+    "Distinguish the 1955 order's scope, execution scope, and WGR's underlying right to possess each Parcel-A area",
+    "Treat missing records according to the holder's retention duty; a gap is not proof of concealment"
   ],
   "evidence_leads": [
-    "1955 execution documents: claim/order/warrant/return/possession plan",
+    "1955 execution documents: claim/order/plan/writ/warrant/return and exact premises description",
+    "1962 farmhouse/garden claim, order and plan as WGR's own account of what remained outside the 1955 taking",
     "VG41 1967–70 registration file and map",
-    "1955→1994→2005 woodland title chain"
+    "1955→1994→2005 woodland title chain and present title plans",
+    "1905 conveyance, 1924 agreement and 1961 deed contents; family-held 1938 conveyance provenance",
+    "1982 first-registration FR1 particulars, class of title, occupier answers, requisitions, plans and disclosure of the 1974 ownership claim"
   ],
   "issue_controls": [
     "A-106 D696",
@@ -41,10 +84,12 @@
     "A-121 DBDT123/7 primary-source lead"
   ],
   "control_principles": [
-    "Do not equate the 1955 physical taking with a present recoverable title: separately analyse historic limitation, later registration, purchaser protections, current title mistake and any fraud/concealment discovery route."
+    "Do not equate the 1955 physical taking with a present recoverable title: separately analyse historic limitation, later registration, purchaser protections, current title mistake and any fraud/concealment discovery route.",
+    "The 1969 root deed and 1971 abstract being absent from the 30 July 2026 schedule is a registry-file discrepancy affecting both conveyance chains, not proof of a Parcel-A-specific title defect."
   ],
   "parked": [
-    "1939 WGR–John Williams agreement/plan: already obtained; Parcel-B-only conclusion closed",
-    "D696 WGR rent books: background corroboration only unless a direct Parcel-A/woodland/VG41 lead appears"
+    "1939 agreement/plan: already obtained; Parcel-B-only conclusion closed",
+    "D696 WGR rent books: background corroboration only unless a direct Parcel-A/woodland/VG41 lead appears",
+    "Fraud, concealment and deliberate misdescription: contingent only, not assumed"
   ]
 }
