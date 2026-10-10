@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BPVSBuckler Archive v<span id="version-placeholder">0.0.0.00</span></title>
+  <title>Tŷ Mawr — The Great House Farm Story | BPVSBuckler Archive</title>
+  <meta name="description" content="Public museum-style narrative and evidence archive for the history of Great House Farm (Tŷ Mawr), Llandough. Sequential story player and documentary record.">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -12,6 +13,7 @@
       color: #eee;
       min-height: 100vh;
       padding: 2rem;
+      line-height: 1.6;
     }
     .header {
       text-align: center;
@@ -43,7 +45,6 @@
     }
     .slide-content {
       margin-bottom: 1.5rem;
-      line-height: 1.6;
     }
     .media-icons {
       display: flex;
@@ -138,12 +139,25 @@
       background: #88c0d0;
       color: #000;
     }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.85rem;
+      color: #aaa;
+      text-align: center;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    footer a { color: #88c0d0; }
   </style>
 </head>
 <body>
   <div class="header">
-    <h1>BPVSBuckler Archive</h1>
-    <p class="version">Version: <span id="version">Loading...</span></p>
+    <h1>Tŷ Mawr — The Great House Farm Story</h1>
+    <p class="version">Public documentary archive and sequential narrative. Version: <span id="version">Loading...</span></p>
+    <p><a href="/story/">Open the full story player →</a></p>
   </div>
   
   <div class="slides-container" id="slides">
@@ -226,6 +240,12 @@
       </div>
     </div>
   </div>
+
+  <footer>
+    <p>© 2026 Sion Buckler / Buckler Family Estate / DATRO Consortium. Original narrative and compilations protected by copyright. Third-party materials reproduced under fair dealing for research and public interest.</p>
+    <p>This is a documentary and research resource. It is not legal advice. Interpretations are labelled. Verify primary sources.</p>
+    <p>Full legal notices: <a href="https://greathousefarmwiki.wordpress.com/?page_id=2580&preview=true">Legal Notices (draft)</a> | Evidence wiki: <a href="https://greathousefarmwiki.wordpress.com/">greathousefarmwiki.wordpress.com</a></p>
+  </footer>
 
   <div class="modal" id="gallery-modal">
     <div class="modal-content">
