@@ -39,7 +39,7 @@ function readUrl(): { view: View; index: number } {
 }
 const sceneUrl = (s: Scene) => `${SITE}/?event=${s.id}`;
 const speakable = (t: string) =>
-  t.replace(/Tŷ Mawr/g, 'Tee Mower').replace(/Llandough/g, 'Lan-dock').replace(/Dochdwy/g, 'Dok-doo-ee')
+  t.replace(/Tŷ Mawr/g, 'Tee Mower').replace(/Llandough/g, 'Lan-dock')
    .replace(/WGR/g, 'W G R').replace(/GGAT/g, 'G GAT').replace(/LJ\b/g, 'Lord Justice');
 
 // What the narrator reads, in order: the event, then the received account and
@@ -475,7 +475,7 @@ function Splash({ onPlay, onBoard, onCast }: { onPlay: () => void; onBoard: () =
       <div className="tx">
         <h1>Tŷ Mawr</h1>
         <div className="sub">The Great House Farm story, Llandough</div>
-        <p className="log">For three hundred and twenty-one years the Williams family lived in the Great House at Llandough, the manor's house beside one of the oldest churches in Wales. They always said it was theirs. Nobody listened. What people heard was a squatter who lost in court, lost on appeal, lost in Strasbourg, and lost the listing; a “chainsaw farmer”; a house “bulldozed before breakfast”. This is the other side. Each scene gives what happened, what we were all told it meant, and what we now know.</p>
+        <p className="log">For three hundred and twenty-one years the Williams family lived at Great House, the manor house at Llandough. They always said it was theirs. Nobody listened. What people heard was a squatter who lost in court, lost on appeal, lost in Strasbourg, and lost the listing; a “chainsaw farmer”; a house “bulldozed before breakfast”. This is the other side. Each scene gives what happened, what we were all told it meant, and what we now know.</p>
         <div className="btns">
           <button className="btn primary" onClick={onPlay}>{Icon.play} Play from the beginning</button>
           <button className="btn" onClick={onBoard}>{Icon.grid} Open the storyboard</button>
