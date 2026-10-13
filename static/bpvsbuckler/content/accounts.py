@@ -30,8 +30,8 @@ ACCOUNTS = {
     known="A house of the 17th century or earlier, on a site occupied since the Middle Ages, possibly with a medieval core."),
 'ghf-15450101-1': dict(
     received="The lord of the manor owned the farm.",
-    words=[],
-    known="Lordship of a manor and ownership of a farm within it are separate interests. Over this period the Herberts held the lordship while the Vaughans held Great House as a freehold. The sources for the lordship are secondary (the Western Mail letter and Cardiff Records) and differ on 1767–1793; the Herbert estate papers have not yet been checked."),
+    words=[('"since 1667"', 'The 1974 newspaper records the Williams family’s occupation of the manorial home; occupation is a separate matter from the lordship and the freehold.')],
+    known="Lordship of a manor and ownership of the farmhouse parcel are separate interests. The 1974 newspaper records the Williams family’s occupation of the manorial home since 1667. The family’s title case is not occupation alone: it is that the 1877 bargain entitled the Williamses to Parcel A’s freehold when quarrying ended, identified by Mary as 1928, when the final rent was paid. On that account, the Williamses were virtual freeholders while the quarrying arrangement ran and became freeholders in 1928. The 1877 deed and final receipt have not been located, so the 1928 transfer remains the family’s asserted title history rather than a fact determined by the 1974 newspaper or a court. The manorial sources also differ over 1767–1793; the Herbert estate papers have not yet been checked."),
 'ghf-15520101-1': dict(
     received="A farm let on ordinary leases.",
     words=[],
