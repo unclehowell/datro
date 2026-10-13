@@ -37,7 +37,7 @@ const prevMeta = JSON.parse(readFileSync(metaPath, 'utf8'));
 const [version = prevMeta.version, date = prevMeta.updated] = process.argv.slice(2);
 writeFileSync(metaPath, JSON.stringify({ version, updated: date }) + '\n');
 
-const isoDate = (d) => (d.startsWith('99') ? null : d);
+const isoDate = (d) => (d.startsWith('99') || d.startsWith('-') ? null : d);
 const url = (s) => `${SITE}/?event=${encodeURIComponent(s.id)}`;
 const actOf = (id) => acts.find((a) => a.id === id);
 const PARCEL = { A: 'House parcel (A)', B: 'Fields (B)', AB: 'Whole farm (A + B)', '?': 'Not yet known', x: 'Not Great House Farm land', '': '' };
@@ -76,7 +76,7 @@ writeFileSync(
     {
       title: 'Tŷ Mawr — The Great House Farm Story',
       description: DESC,
-      ordering: 'Scenes are in strict date order by "date" (ISO 8601; null for the two present-day epilogue scenes, which come last). "ref" is act.scene, "order" the running number.',
+      ordering: 'Scenes are presented in chronological sequence. "when" is the human-readable date label; "date" is an ISO calendar date where available (null for the approximate BCE context scene and present-day epilogue scenes); "order" is the running sequence number; "ref" is act.scene.',
       parcels: PARCEL,
       source_of_truth: `${WIKI}/`,
       formats: { player: `${SITE}/`, storyboard: `${SITE}/?view=storyboard`, cast: `${SITE}/?view=cast`, script: `${SITE}/story/`, transcript: `${SITE}/story/transcript.txt`, llms: `${SITE}/llms.txt` },
@@ -216,7 +216,7 @@ article{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:22px 0;bord
 <main>
 <div class="top"><span>Williams/Buckler Family Estate and Trust · release ${esc(version)}, ${esc(date)}</span><span><a href="${SITE}/">Player</a> · <a href="${SITE}/?view=storyboard">Storyboard</a> · <a href="${SITE}/api/timeline.json">JSON</a> · <a href="${SITE}/story/transcript.txt">Transcript</a></span></div>
 <h1>Tŷ Mawr</h1>
-<p class="lede">The Great House Farm story: script and scene list. ${scenes.length} scenes in date order, from c. AD 650 to today, each with its evidence on the <a href="${WIKI}/">Great House Farm Wiki</a>. Cite scenes by reference (for example VI.9). Print this page for a paper copy; each act starts on a new page.</p>
+<p class="lede">The Great House Farm story: script and scene list. ${scenes.length} scenes in date order, beginning with contextual evidence for a possible Iron Age round hut at the separate Llandough Roman Villa site, then the evidence specific to Great House Farm. Cite scenes by reference (for example VI.9). Print this page for a paper copy; each act starts on a new page.</p>
 <div class="key"><span><i style="background:var(--a)"></i>House parcel (A)</span><span><i style="background:var(--b)"></i>Fields (B)</span><span><i style="background:var(--ab)"></i>Whole farm (A + B)</span><span><i style="background:var(--x)"></i>Unknown, or not the farm</span></div>
 <h2 class="sec">Contents</h2>
 <ol class="toc">${contents}<li><a href="#cast">Cast</a></li></ol>

@@ -20,6 +20,10 @@ HG = 'Parcel A (farmhouse, buildings, yard and garden), less the woodland to the
 
 ACCOUNTS = {
 # ---------------------------------------------------------------- PROLOGUE
+'ghf-02000101-1': dict(
+    received="",
+    words=[],
+    known="Heneb's record for the separate Llandough Roman Villa site describes an Iron Age farmstead and a possible round hut, represented by a curvilinear feature and postholes. The pottery indicates a pre-Conquest tradition, but the record does not establish an exact date of c. 200 BC or show that the hut stood on Great House Farm itself."),
 'ghf-12000101-1': dict(
     received="An old farmhouse of no special note.",
     words=[('"sub-medieval"', 'A technical dating term, later read as "not old enough to matter".')],

@@ -50,8 +50,8 @@ ARCH = w('/archaeology/', 'Archaeology and Heritage', 'Heritage record')
 JUDG = w('/bp-properties-v-buckler/', 'BP Properties Ltd v Buckler [1987] EWCA Civ 2', 'Court record')
 
 ACTS = [
-    {'id': 'P', 'label': 'Prologue', 'title': 'To 1857', 'span': '12th – 14th century – 1857',
-     'logline': 'The house and manor before the arrival of the quarry.'},
+    {'id': 'P', 'label': 'Prologue', 'title': 'To 1857', 'span': 'Late Iron Age – 1857',
+     'logline': 'The earliest archaeological context at Llandough, then the house and manor before the quarry.'},
     {'id': 'I', 'label': 'Act I', 'title': 'Division', 'span': '1858 – 1915',
      'logline': 'The limeworks, and the 1877 division of the farm.'},
     {'id': 'II', 'label': 'Act II', 'title': 'Tenancies', 'span': '1916 – 1948',
@@ -146,6 +146,13 @@ def sc(act, id, date, when, title, place, parcel, basis, narration, evidence, ca
               'evidence': evidence, 'image': image, 'aliases': list(aliases), 'set': ledger or {}})
 
 # ---------------------------------------------------------------- PROLOGUE
+sc('P', 'ghf-02000101-1', '-0200-01-01', 'Late Iron Age (approx. 2,200 years ago; exact date uncertain)', "Iron Age farmstead at Llandough", 'Llandough Roman Villa site (separate site)', 'x',
+   'Archaeological record',
+   "Excavations in 1978–79 at the separate Llandough Roman Villa site identified earlier Iron Age occupation. A curvilinear feature and postholes may represent a round hut; associated pottery is in a late Iron Age tradition. This is evidence for early occupation at Llandough, not evidence that a round hut stood on the Great House Farm parcel.",
+   [
+    {'type': 'Heritage record', 'title': 'Heneb HER GGAT00768s — Llandough Roman Villa (Iron Age farmstead / possible round hut)', 'url': 'https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT00768s'},
+    {'type': 'National monument record', 'title': 'Coflein NPRN 400051 — Roman Villa Site, Llandough; excavation in 1979', 'url': 'https://coflein.gov.uk/en/site/400051/'}
+   ])
 sc('P', 'ghf-12000101-1', '1200-01-01', '12th – 14th century', "Medieval occupation", 'Great House — north-east slope', 'A',
    'Archaeological record',
    "In 1962–63 E. J. Beare reports pottery of the 12th to 14th centuries on the slope north-east of the house. The Royal Commission classes the house as sub-medieval, probably 17th century, possibly with a medieval core.",
