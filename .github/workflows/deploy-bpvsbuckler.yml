@@ -36,9 +36,7 @@ jobs:
         run: python3 content/story_source.py
 
       - name: Build story exports
-        run: |
-          npm install --no-audit --no-fund
-          node scripts/build-timeline-exports.mjs
+        run: node scripts/build-timeline-exports.mjs
 
       - name: Commit generated story exports to the branch
         run: |
@@ -51,7 +49,9 @@ jobs:
           fi
 
       - name: Build player
-        run: npx vite build
+        run: |
+          npm install --no-audit --no-fund
+          npx vite build
 
       - name: Add the site's static folders (evidence, research, api, archives, ...)
         run: |
