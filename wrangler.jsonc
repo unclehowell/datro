@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "dartboard",
+  "compatibility_date": "2026-10-13",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "main": "@tanstack/react-start/server-entry",
+  "vars": {
+    "GROK_PROJECT_ID": "dartboard",
+    "VITE_AUTH_ENABLED": "true"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

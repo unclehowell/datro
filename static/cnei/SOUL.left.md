@@ -1,4 +1,0 @@
-# SOUL (left) — cnei
-
-## Overview
-Core identity and personality for this side

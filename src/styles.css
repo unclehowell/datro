@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #14110e;
+  --color-surface: #221c16;
+  --color-surface-2: #2c251c;
+  --color-fg: #f4efe6;
+  --color-muted: #a39888;
+  --color-faint: #6f6558;
+  --color-line: #3a3228;
+  --color-brass: #c4a574;
+  --color-brass-ink: #2a2116;
+  --color-paper: #f3efe6;
+  --color-dormant: #d5d1c8;
+  --color-dormant-ink: #3a3834;
+  --color-evidence: #2c7a4b;
+  --color-nuisance: #3e4348;
+  --color-closed: #e07a2f;
+  --color-suspicious: #c23b32;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Fraunces", "Iowan Old Style", Palatino, Georgia, serif;
+  --radius-card: 1.25rem;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html,
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+  }
+
+  body {
+    min-height: 100%;
+  }
+}
+
+@keyframes label-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.label-in {
+  animation: label-in 180ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .label-in {
+    animation: none;
+  }
+}
