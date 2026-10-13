@@ -20,10 +20,6 @@ HG = 'Parcel A (farmhouse, buildings, yard and garden), less the woodland to the
 
 ACCOUNTS = {
 # ---------------------------------------------------------------- PROLOGUE
-'ghf-06500101-1': dict(
-    received="A village church with a farm next to it.",
-    words=[],
-    known="One of the oldest Christian sites in Wales, and the ground beside it the site of what its excavators call \"by far the largest Early-medieval burial population so far recovered from Wales\". The heritage record states that the manorial courts of Llandough and Leckwith were held in the house."),
 'ghf-12000101-1': dict(
     received="An old farmhouse of no special note.",
     words=[('"sub-medieval"', 'A technical dating term, later read as "not old enough to matter".')],
@@ -43,7 +39,7 @@ ACCOUNTS = {
 'ghf-16670101-1': dict(
     received="Tenant farmers who lived on someone else's land.",
     words=[('"tenants"', 'The estate\'s description of the family, repeated in every later account.')],
-    known="For more than three hundred years one family lived in the house where the manor's courts sat, beside one of the oldest churches in Wales. Generation after generation was born there, married there and died there. Mary's account is that her ancestors bought it. Whatever the estate's books called them, the Williamses were the people of the Great House. Not squatters. Not passing tenants. The family of the house."),
+    known="For more than three hundred years one family lived at Great House, where the manor's courts sat. Generation after generation was born there, married there and died there. Mary's account is that her ancestors bought it. Whatever the estate's books called them, the Williamses were the people of the Great House. Not squatters. Not passing tenants. The family of the house."),
 'ghf-18000101-1': dict(
     received="Bute owned the farm, and everything after descends from Bute.",
     words=[],
@@ -53,10 +49,6 @@ ACCOUNTS = {
     words=[('"Great House Farm"', 'A name that reduced the manor\'s court house to a farmhouse.')],
     known="The first change in how the place was described. Later descriptions, especially \"the whole farm\", decide the case."),
 # ---------------------------------------------------------------- ACT I
-'ghf-18580101-1': dict(
-    received="A chance find, of no consequence.",
-    words=[],
-    known="The first record that the ground beside the church held burials. The 1994 excavation found more than a thousand."),
 'ghf-18700101-1': dict(
     received="Family folklore.",
     words=[('"reported"', 'The word the records use, which keeps it at a distance.')],
@@ -167,7 +159,7 @@ ACCOUNTS = {
 'ghf-19720725-1': dict(
     received="Ordinary planning of an under-used farm.",
     words=[('"the site"', 'Both parcels treated as one development site.')],
-    known="Permission was granted over a house whose ownership was disputed, while its owner lived in it. In 1990 a condition of the outline permission provided for a 0.25-acre village green beside the church. The family's account is that the land south of the farmhouse, part of Parcel A, was taken by the council and laid out as a green in the 1980s. (Family account, not yet recorded on the wiki.)"),
+    known="Permission was granted over a house whose ownership was disputed, while its owner lived in it. In 1990 a condition of the outline permission provided for a 0.25-acre village green beside the site. The family's account is that the land south of the farmhouse, part of Parcel A, was taken by the council and laid out as a green in the 1980s. (Family account, not yet recorded on the wiki.)"),
 'ghf-19740101-1': dict(
     received="A routine, incomplete survey.",
     words=[],

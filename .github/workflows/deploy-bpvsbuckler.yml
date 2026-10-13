@@ -29,6 +29,9 @@ jobs:
         with:
           node-version: 20
 
+      - name: Generate storyboard data from source
+        run: python3 content/story_source.py
+
       - name: Build
         run: |
           npm install --no-audit --no-fund

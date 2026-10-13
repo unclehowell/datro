@@ -50,8 +50,8 @@ ARCH = w('/archaeology/', 'Archaeology and Heritage', 'Heritage record')
 JUDG = w('/bp-properties-v-buckler/', 'BP Properties Ltd v Buckler [1987] EWCA Civ 2', 'Court record')
 
 ACTS = [
-    {'id': 'P', 'label': 'Prologue', 'title': 'To 1857', 'span': 'c. 650 – 1857',
-     'logline': 'The church, the manor and the house, to the arrival of the quarry.'},
+    {'id': 'P', 'label': 'Prologue', 'title': 'To 1857', 'span': '12th – 14th century – 1857',
+     'logline': 'The house and manor before the arrival of the quarry.'},
     {'id': 'I', 'label': 'Act I', 'title': 'Division', 'span': '1858 – 1915',
      'logline': 'The limeworks, and the 1877 division of the farm.'},
     {'id': 'II', 'label': 'Act II', 'title': 'Tenancies', 'span': '1916 – 1948',
@@ -146,11 +146,6 @@ def sc(act, id, date, when, title, place, parcel, basis, narration, evidence, ca
               'evidence': evidence, 'image': image, 'aliases': list(aliases), 'set': ledger or {}})
 
 # ---------------------------------------------------------------- PROLOGUE
-sc('P', 'ghf-06500101-1', '0650-01-01', 'c. AD 650', "St Dochdwy's church", "St Dochdwy's, Llandough", '?',
-   'Family account',
-   "St Dochdwy's church stands at Llandough, on the site of an early monastery. Great House stands beside it.",
-   [w('/archaeology/', 'Archaeology and Heritage', 'Heritage record'), TL],
-   ledger={'W': 'Church land, Llandough'})
 sc('P', 'ghf-12000101-1', '1200-01-01', '12th – 14th century', "Medieval occupation", 'Great House — north-east slope', 'A',
    'Archaeological record',
    "In 1962–63 E. J. Beare reports pottery of the 12th to 14th centuries on the slope north-east of the house. The Royal Commission classes the house as sub-medieval, probably 17th century, possibly with a medieval core.",
@@ -198,11 +193,6 @@ sc('P', 'ghf-18400101-1', '1840-01-01', 'c. 1840', "Great House Farm", 'Census a
    aliases=['ghf-18800101-1'])
 
 # ---------------------------------------------------------------- ACT I
-sc('I', 'ghf-18580101-1', '1858-01-01', 'c. 1858', "Burials at Church Farm", 'Church Farm, Llandough', 'x',
-   'Museum record',
-   "Workmen at Llandough Church Farm find about six skeletons, a medieval spearhead and a spur. The bones are reburied by the church stile.",
-   [w('/evidence-library/ghf-e106-r33-a1-1931-letter-museum-wales-file-63-24/', '1931 letter, Museum Wales file 63.24', 'Museum record'), ARCH],
-   aliases=['ghf-19311122-1'])
 sc('I', 'ghf-18700101-1', '1870-01-01', 'c. 1870', "The armour under the floor", 'Great House — dining room', 'A',
    'Family account',
    "Family tradition records a soldier in armour, with his horse, a lance and a shield, found beneath the dining-room floor. The account is in a Royal Commission record (NMR 6048942) and the Daily Telegraph of 16 April 1974. No primary record of a find has been located.",
@@ -380,7 +370,7 @@ sc('IV', 'ghf-19741031-1', '1974-10-31', 'September – October 1974', "The 1974
    ledger={'S': 'Attempt 6: BP\'s "licence" letters to Mary, 31 October 1974 (never accepted); 1962 warrant withdrawn'})
 sc('IV', 'ghf-19741119-1', '1974-11-19', '19 November, 1970s (year unclear)', "Letter to the Western Mail", 'Western Mail — letters', 'A',
    'Newspaper',
-   "A letter to the Western Mail, dated 19 November (year unclear), warns that demolition would erase the site of St Dochdwy's monastery and traces the land's descent.",
+   "A letter to the Western Mail, dated 19 November (year unclear), traces the land's descent.",
    [press('N04', "Western Mail, 'Grievous loss' (letter)", 'ghf-e090-n03-n04-1974-open-day-and-grievous-loss-page.jpg'),
     w('/restoration-campaign/#open-day-1974', 'The Restoration Campaign')])
 sc('IV', 'ghf-19750523-1', '1975-05-23', '23 May 1975', "The 1975 conveyance", 'BP Pension Trust / BP Properties', 'A',
@@ -395,7 +385,7 @@ sc('IV', 'ghf-19800522-1', '1980-05-22', '22 May 1980', "Hansard", 'House of Com
    image='/media/ghf-e090-n16-1980-hansard-rowlands.jpg')
 sc('IV', 'ghf-19821001-1', '1982-10-01', '1 October 1982', "GGAT advice", 'GGAT', 'AB',
    'Planning file',
-   "On 1 October 1982 GGAT advises the planners that occupation may continue north of the church and asks for investigation before development.",
+   "On 1 October 1982 GGAT advises the planners that occupation may continue in the area and asks for investigation before development.",
    [ARCH, GGAT_REV,
     press('N05', 'Neath Guardian, 17 April 1980 (Roman villa, a separate site)', 'ghf-e090-n05-1980-neath-guardian.jpg'),
     press('N06', "South Wales Echo, 18 March 1983 — burnt relics (Roman villa finds, a separate site)", 'ghf-e090-n06-1983-echo-burnt-relics.jpg')],
@@ -675,7 +665,7 @@ sc('VIII', 'ghf-20260927-1', '2026-09-27', '27 – 29 September 2026', "Complain
    [GGAT_REV, RAC])
 sc('VIII', 'ghf-20260929-1', '2026-09-29', '29 September – 5 October 2026', "Archive releases", 'Cadw / RCAHMW / Museum Wales', 'A',
    'Official correspondence',
-   "On 29 September 2026 the Royal Commission releases its records, including the 1974 newspaper report and a note of the armour. On 5 October Museum Wales releases its Church Farm file.",
+   "On 29 September 2026 the Royal Commission releases its records, including the 1974 newspaper report and a note of the armour. On 5 October Museum Wales releases further records.",
    [ARCH, w('/where-things-stand/', 'Where Things Stand'),
     w('/records-access-chronology/foi-reply-register/ghf-e106-r33-amgueddfa-cymru-reply-further-collections-search-following-8-september-2026-foi/', 'Museum Wales reply (GHF-E106-R33)', 'Official correspondence')],
    aliases=['ghf-20261005-1'])
@@ -747,7 +737,7 @@ sc('E', 'ghf-99990101-2', '9999-01-02', 'Today', "The site today", 'Church View 
    [w('/where-things-stand/', 'Where Things Stand'), LEGAL, w('/missing-records-register/', 'Missing Records Register')])
 sc('E', 'ghf-99990101-3', '9999-01-02', 'Today', "Village history", 'Llandough Community Council', 'A',
    'Public record',
-   "Llandough Community Council's page on the village's history describes the Roman villa, the monastery and the 1994 burials. It does not mention Great House, the Williams family or the demolition.",
+   "Llandough Community Council's page on the village's history describes the Roman villa and the 1994 burials. It does not mention Great House, the Williams family or the demolition.",
    [{'type': 'Public record', 'title': 'Llandough Community Council — About Llandough', 'url': 'https://www.llandough-cc.co.uk/About_Us_20117.aspx'},
     w('/where-things-stand/', 'Where Things Stand')])
 sc('E', 'ghf-99990102-1', '9999-01-03', 'Today', "The family's requests", 'The family', 'A',
