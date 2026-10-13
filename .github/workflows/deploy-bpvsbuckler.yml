@@ -9,6 +9,9 @@ on:
       - '.github/workflows/deploy-bpvsbuckler.yml'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 concurrency:
   group: deploy-bpvsbuckler
   cancel-in-progress: true
@@ -32,11 +35,23 @@ jobs:
       - name: Generate storyboard data from source
         run: python3 content/story_source.py
 
-      - name: Build
+      - name: Build story exports
         run: |
           npm install --no-audit --no-fund
           node scripts/build-timeline-exports.mjs
-          npx vite build
+
+      - name: Commit generated story exports to the branch
+        run: |
+          git add src/data/story.json src/data/meta.json api/timeline.json llms.txt story/index.html story/transcript.txt sitemap.xml
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "bpvsbuckler: refresh generated story exports [skip ci]"
+            git push origin HEAD:bpvsbuckler
+          fi
+
+      - name: Build player
+        run: npx vite build
 
       - name: Add the site's static folders (evidence, research, api, archives, ...)
         run: |
