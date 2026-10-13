@@ -1,0 +1,30 @@
+name: Probe bucklerfamily.estate apex
+on:
+  push:
+    branches: [probe-apex]
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || '42a4a8d7bfb96321118ada213638d050' }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          cf() { curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$@"; }
+          base=https://api.cloudflare.com/client/v4; acct=$base/accounts/$CLOUDFLARE_ACCOUNT_ID
+          zone=$(cf "$base/zones?name=bucklerfamily.estate" | jq -r '.result[0].id')
+          {
+          echo "## DNS records (apex, www)"; cf "$base/zones/$zone/dns_records?per_page=200" | jq -r '.result[] | select(.name=="bucklerfamily.estate" or .name=="www.bucklerfamily.estate") | "\(.type)\t\(.name)\t\(.content)\tproxied=\(.proxied)"'
+          echo "## Pages projects and domains"
+          page=1; while :; do n=$(cf "$acct/pages/projects?page=$page" | jq -r '.result[]?.name'); [ -z "$n" ] && break
+            for p in $n; do d=$(cf "$acct/pages/projects/$p" | jq -r '"\(.result.subdomain) prod=\(.result.production_branch) src=\(.result.source.config.repo_name // "direct")/\(.result.source.config.production_branch // "")"'); echo "$p $d: $(cf "$acct/pages/projects/$p/domains" | jq -r '[.result[].name]|join(",")')"; done; page=$((page+1)); done
+          echo "## Worker routes / custom domains on zone"
+          cf "$base/zones/$zone/workers/routes" | jq -r '.result[]? | "\(.pattern) -> \(.script)"'
+          cf "$acct/workers/domains" | jq -r '.result[]? | select(.zone_name=="bucklerfamily.estate") | "\(.hostname) -> \(.service)"'
+          echo "## Apex HTML head"; curl -sSL -m 30 https://bucklerfamily.estate/ | head -c 4000
+          } > probe.txt 2>&1
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add probe.txt && git commit -qm "probe result [skip ci]" && git push origin HEAD:probe-apex
