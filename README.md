@@ -4,6 +4,14 @@ This branch rebuilds **greathousefarmwiki.wordpress.com** — the public evidenc
 
 WordPress.com suspended the site on 13 October 2026. This branch preserves it from archived copies so it can be republished anywhere (GitHub Pages, Cloudflare Pages, or a restored WordPress site).
 
+## Live address
+
+**https://wiki.bucklerfamily.estate** is deployed from this branch to Cloudflare Pages (project `greathousefarmwiki`) by `.github/workflows/deploy-wiki.yml` on every push.
+
+- Pages rebuilt in this archive (listed at `/recovered/`) are served directly.
+- Every other wiki address — including the home page until it is recovered — opens the Internet Archive (Wayback Machine) copy of the same address, so `wiki.bucklerfamily.estate/mary-williams/` shows the archived `greathousefarmwiki.wordpress.com/mary-williams/`.
+- As more pages are recovered into `site/`, they replace the Wayback copies automatically.
+
 ## Layout
 
 | Path | What it holds |

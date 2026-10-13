@@ -128,6 +128,20 @@ TEMPLATE = """<!doctype html><html lang="en-GB"><head><meta charset="utf-8">
 <p class="provenance">Source: {source}. Original address: <a href="https://{host}{path}">https://{host}{path}</a></p>
 {body}</main><footer>Reconstruction of greathousefarmwiki.wordpress.com · <a href="/">Page index</a></footer></body></html>"""
 
+WAYBACK_JUMP = """<!doctype html><html lang="en-GB"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Great House Farm Wiki – archive</title>
+<link rel="stylesheet" href="/assets/wiki.css">
+<script>
+(function(){var p=__PATH_JS__;
+ var u="https://web.archive.org/web/2026/https://""" + HOST + """"+p;
+ document.addEventListener("DOMContentLoaded",function(){var a=document.getElementById("wb");a.href=u;a.textContent=u;});
+ location.replace(u);})();
+</script></head><body><header class="site"><a href="/">Great House Farm (Tŷ Mawr) Wiki</a> <span>archive</span></header>
+<main><h1>Opening the archived copy…</h1>
+<p>This page is shown from the Internet Archive's copy of greathousefarmwiki.wordpress.com:</p>
+<p><a id="wb" href="https://web.archive.org/web/2026/https://""" + HOST + """/">https://web.archive.org/web/2026/https://""" + HOST + """/</a></p>
+<p>Pages already rebuilt in this archive are listed at <a href="/recovered/">Recovered pages</a>.</p></main></body></html>"""
+
 def main():
     pages = {}
     load_wxr(pages); load_wayback(pages); load_catalogue(pages)
@@ -150,8 +164,18 @@ def main():
     tree = sorted(pages, key=lambda p: (p.count("/"), p))
     items = "".join(f'<li style="margin-left:{(p.count("/")-2)*1.2}em"><a href="{p}">{html.escape(titles[p])}</a></li>'
                     for p in sorted(pages))
-    (SITE / "index.html").write_text(TEMPLATE.format(title="Page index", crumbs="", source=f"{len(pages)} pages recovered",
-                                     host=HOST, path="/", body=f"<ul class='tree'>{items}</ul>"), encoding="utf-8")
+    (SITE / "recovered").mkdir(parents=True, exist_ok=True)
+    (SITE / "recovered" / "index.html").write_text(TEMPLATE.format(
+        title="Recovered pages", crumbs='<a href="/">Index</a>', source=f"{len(pages)} pages rebuilt in this archive",
+        host=HOST, path="/", body="<p>These pages are served from this archive. Every other wiki address opens the "
+        "Internet Archive (Wayback Machine) copy of the original page.</p>" f"<ul class='tree'>{items}</ul>"), encoding="utf-8")
+    # Root: the recovered home page if we have it, otherwise the Wayback copy of the wiki's home page.
+    if "/" in pages:
+        (SITE / "index.html").write_text((SITE / "home" / "index.html").read_text(encoding="utf-8"), encoding="utf-8")
+    else:
+        (SITE / "index.html").write_text(WAYBACK_JUMP.replace("__PATH_JS__", '"/"'), encoding="utf-8")
+    # Any address not rebuilt here falls through to the Wayback copy of the same address.
+    (SITE / "404.html").write_text(WAYBACK_JUMP.replace("__PATH_JS__", "location.pathname + location.search"), encoding="utf-8")
     (SITE / "pages.json").write_text(json.dumps({p: {"title": v["title"], "source": v["source"]} for p, v in sorted(pages.items())},
                                                 indent=1, ensure_ascii=False), encoding="utf-8")
     missing = sorted(p for p in linked if p not in pages and p != "/")
