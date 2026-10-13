@@ -42,6 +42,27 @@ jobs:
           python3 content/graph/ingest_gmail.py
           python3 content/graph/build_graph.py
 
+      - name: Validate graph exports before committing or deploying
+        run: |
+          test -s api/graph.json
+          test -s api/qa.json
+          test -s api/graph.sql
+          grep -q 'CREATE VIRTUAL TABLE qa_fts' api/graph.sql
+          grep -q 'CREATE VIRTUAL TABLE messages_fts' api/graph.sql
+          python3 - <<'PY'
+          import json, os
+          graph = json.load(open("api/graph.json", encoding="utf-8"))
+          qa = json.load(open("api/qa.json", encoding="utf-8"))
+          counts = graph["built_from"]
+          if counts.get("messages", 0) < 1 or counts.get("scenes", 0) < 1 or not qa.get("qa"):
+              raise SystemExit("Graph validation failed: expected populated messages, scenes and Q&A.")
+          size = os.path.getsize("api/graph.sql")
+          if size < 100_000:
+              raise SystemExit(f"Graph SQL unexpectedly small ({size} bytes); refusing deployment.")
+          print(f"Validated {counts['messages']} messages, {counts['scenes']} scenes, "
+                f"{len(qa['qa'])} Q&A records; graph.sql={size:,} bytes.")
+          PY
+
       - name: Build story exports
         run: node scripts/build-timeline-exports.mjs
 
@@ -82,10 +103,18 @@ jobs:
           test -f dist/story/index.html && test -f dist/story/transcript.txt && test -f dist/llms.txt
 
       - name: Load the Q&A graph into Cloudflare D1 (bpvsbuckler-graph)
-        # The /api/ask search reads D1. If the token cannot write D1, the search
-        # falls back to the static /api/qa.json, so a failure here does not block the deploy.
+        id: load_d1
+        # Keep the Pages deployment moving if D1 is temporarily unavailable; the
+        # final step below marks the workflow failed so this cannot pass silently.
         continue-on-error: true
         run: npx --yes wrangler@3 d1 execute bpvsbuckler-graph --remote --file=api/graph.sql --yes
 
       - name: Deploy to Cloudflare Pages
         run: npx --yes wrangler@3 pages deploy dist --project-name=bpvsbuckler --branch=bpvsbuckler --commit-dirty=true
+
+      - name: Surface D1 sync failure after deploying the site
+        if: steps.load_d1.outcome == 'failure'
+        run: |
+          echo "::error::The Pages deployment completed, but the D1 graph import failed."
+          echo "::error::Grant D1 Edit permission to the CLOUDFLARE_API_TOKEN GitHub Actions secret, then rerun this workflow."
+          exit 1
