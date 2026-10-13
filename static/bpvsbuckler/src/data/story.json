@@ -5,8 +5,8 @@
    "id": "P",
    "label": "Prologue",
    "title": "To 1857",
-   "span": "c. 650 – 1857",
-   "logline": "The church, the manor and the house, to the arrival of the quarry."
+   "span": "12th – 14th century – 1857",
+   "logline": "The house and manor before the arrival of the quarry."
   },
   {
    "id": "I",
@@ -276,7 +276,6 @@
   "ghf-18210101-1": "ghf-18000101-1",
   "ghf-18240101-1": "ghf-18000101-1",
   "ghf-18800101-1": "ghf-18400101-1",
-  "ghf-19311122-1": "ghf-18580101-1",
   "ghf-18800101-2": "ghf-18700101-1",
   "ghf-18771106-1": "ghf-18770101-1",
   "ghf-19050223-1": "ghf-19080101-1",
@@ -338,47 +337,6 @@
  },
  "scenes": [
   {
-   "id": "ghf-06500101-1",
-   "act": "P",
-   "date": "0650-01-01",
-   "when": "c. AD 650",
-   "title": "St Dochdwy's church",
-   "place": "St Dochdwy's, Llandough",
-   "parcel": "?",
-   "basis": "Family account",
-   "narration": "St Dochdwy's church stands at Llandough, on the site of an early monastery. Great House stands beside it.",
-   "case": null,
-   "evidence": [
-    {
-     "type": "Heritage record",
-     "title": "Archaeology and Heritage",
-     "url": "https://greathousefarmwiki.wordpress.com/archaeology/"
-    },
-    {
-     "type": "Wiki page",
-     "title": "Master Timeline",
-     "url": "https://greathousefarmwiki.wordpress.com/timeline/"
-    }
-   ],
-   "image": null,
-   "aliases": [],
-   "no": 1,
-   "ref": "P.1",
-   "cast": [],
-   "received": "A village church with a farm next to it.",
-   "received_words": [],
-   "known": "One of the oldest Christian sites in Wales, and the ground beside it the site of what its excavators call \"by far the largest Early-medieval burial population so far recovered from Wales\". The heritage record states that the manorial courts of Llandough and Leckwith were held in the house.",
-   "ledger": [
-    [
-     "W",
-     "Church land, Llandough"
-    ]
-   ],
-   "moved": [
-    "W"
-   ]
-  },
-  {
    "id": "ghf-12000101-1",
    "act": "P",
    "date": "1200-01-01",
@@ -412,8 +370,8 @@
     "ghf-12150101-1",
     "ghf-11000101-1"
    ],
-   "no": 2,
-   "ref": "P.2",
+   "no": 1,
+   "ref": "P.1",
    "cast": [
     "rcahmw"
    ],
@@ -425,12 +383,7 @@
     ]
    ],
    "known": "A house of the 17th century or earlier, on a site occupied since the Middle Ages, possibly with a medieval core.",
-   "ledger": [
-    [
-     "W",
-     "Church land, Llandough"
-    ]
-   ],
+   "ledger": [],
    "moved": []
   },
   {
@@ -459,8 +412,8 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 3,
-   "ref": "P.3",
+   "no": 2,
+   "ref": "P.2",
    "cast": [
     "bute"
    ],
@@ -507,8 +460,8 @@
     "ghf-15360101-1",
     "ghf-14440101-1"
    ],
-   "no": 4,
-   "ref": "P.4",
+   "no": 3,
+   "ref": "P.3",
    "cast": [
     "bute"
    ],
@@ -555,8 +508,8 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 5,
-   "ref": "P.5",
+   "no": 4,
+   "ref": "P.4",
    "cast": [],
    "received": "One chain of owners: the Herberts, then the Vaughans, then Bute.",
    "received_words": [],
@@ -598,8 +551,8 @@
    "aliases": [
     "ghf-16770101-1"
    ],
-   "no": 6,
-   "ref": "P.6",
+   "no": 5,
+   "ref": "P.5",
    "cast": [
     "mary"
    ],
@@ -610,7 +563,7 @@
      "The estate's description of the family, repeated in every later account."
     ]
    ],
-   "known": "For more than three hundred years one family lived in the house where the manor's courts sat, beside one of the oldest churches in Wales. Generation after generation was born there, married there and died there. Mary's account is that her ancestors bought it. Whatever the estate's books called them, the Williamses were the people of the Great House. Not squatters. Not passing tenants. The family of the house.",
+   "known": "For more than three hundred years one family lived at Great House, where the manor's courts sat. Generation after generation was born there, married there and died there. Mary's account is that her ancestors bought it. Whatever the estate's books called them, the Williamses were the people of the Great House. Not squatters. Not passing tenants. The family of the house.",
    "ledger": [
     [
      "W",
@@ -669,8 +622,8 @@
     "ghf-18210101-1",
     "ghf-18240101-1"
    ],
-   "no": 7,
-   "ref": "P.7",
+   "no": 6,
+   "ref": "P.6",
    "cast": [
     "bute"
    ],
@@ -714,8 +667,8 @@
    "aliases": [
     "ghf-18800101-1"
    ],
-   "no": 8,
-   "ref": "P.8",
+   "no": 7,
+   "ref": "P.7",
    "cast": [],
    "received": "It was always just a farm.",
    "received_words": [
@@ -725,47 +678,6 @@
     ]
    ],
    "known": "The first change in how the place was described. Later descriptions, especially \"the whole farm\", decide the case.",
-   "ledger": [
-    [
-     "W",
-     "Lordship of the manor (1793) and farm freehold (early 19th century): the Bute Estate · tenants: the Williamses"
-    ]
-   ],
-   "moved": []
-  },
-  {
-   "id": "ghf-18580101-1",
-   "act": "I",
-   "date": "1858-01-01",
-   "when": "c. 1858",
-   "title": "Burials at Church Farm",
-   "place": "Church Farm, Llandough",
-   "parcel": "x",
-   "basis": "Museum record",
-   "narration": "Workmen at Llandough Church Farm find about six skeletons, a medieval spearhead and a spur. The bones are reburied by the church stile.",
-   "case": null,
-   "evidence": [
-    {
-     "type": "Museum record",
-     "title": "1931 letter, Museum Wales file 63.24",
-     "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e106-r33-a1-1931-letter-museum-wales-file-63-24/"
-    },
-    {
-     "type": "Heritage record",
-     "title": "Archaeology and Heritage",
-     "url": "https://greathousefarmwiki.wordpress.com/archaeology/"
-    }
-   ],
-   "image": null,
-   "aliases": [
-    "ghf-19311122-1"
-   ],
-   "no": 9,
-   "ref": "I.1",
-   "cast": [],
-   "received": "A chance find, of no consequence.",
-   "received_words": [],
-   "known": "The first record that the ground beside the church held burials. The 1994 excavation found more than a thousand.",
    "ledger": [
     [
      "W",
@@ -811,8 +723,8 @@
    "aliases": [
     "ghf-18800101-2"
    ],
-   "no": 10,
-   "ref": "I.2",
+   "no": 8,
+   "ref": "I.1",
    "cast": [
     "rcahmw"
    ],
@@ -852,8 +764,8 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 11,
-   "ref": "I.3",
+   "no": 9,
+   "ref": "I.2",
    "cast": [
     "bute"
    ],
@@ -915,8 +827,8 @@
    "aliases": [
     "ghf-18771106-1"
    ],
-   "no": 12,
-   "ref": "I.4",
+   "no": 10,
+   "ref": "I.3",
    "cast": [
     "mary",
     "thomas",
@@ -961,8 +873,8 @@
    ],
    "image": "/media/ghf-e090-n01-1891-farmyard-theft.jpg",
    "aliases": [],
-   "no": 13,
-   "ref": "I.5",
+   "no": 11,
+   "ref": "I.4",
    "cast": [
     "john"
    ],
@@ -1002,8 +914,8 @@
    ],
    "image": "/media/ghf-e090-n02-1897-marconi-lavernock.jpg",
    "aliases": [],
-   "no": 14,
-   "ref": "I.6",
+   "no": 12,
+   "ref": "I.5",
    "cast": [],
    "received": "An unproven family story.",
    "received_words": [],
@@ -1052,8 +964,8 @@
    "aliases": [
     "ghf-19050223-1"
    ],
-   "no": 15,
-   "ref": "I.7",
+   "no": 13,
+   "ref": "I.6",
    "cast": [
     "mary",
     "john",
@@ -1108,8 +1020,8 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 16,
-   "ref": "I.8",
+   "no": 14,
+   "ref": "I.7",
    "cast": [
     "mary"
    ],
@@ -1158,7 +1070,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 17,
+   "no": 15,
    "ref": "II.1",
    "cast": [
     "john",
@@ -1236,7 +1148,7 @@
    "aliases": [
     "ghf-19240515-1"
    ],
-   "no": 18,
+   "no": 16,
    "ref": "II.2",
    "cast": [
     "mary",
@@ -1297,7 +1209,7 @@
     "ghf-19100101-1",
     "ghf-19370101-1"
    ],
-   "no": 19,
+   "no": 17,
    "ref": "II.3",
    "cast": [
     "mary",
@@ -1347,7 +1259,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 20,
+   "no": 18,
    "ref": "II.4",
    "cast": [
     "bute",
@@ -1404,7 +1316,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 21,
+   "no": 19,
    "ref": "II.5",
    "cast": [
     "john",
@@ -1456,7 +1368,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 22,
+   "no": 20,
    "ref": "II.6",
    "cast": [],
    "received": "Not an event. The family were tenants throughout.",
@@ -1505,7 +1417,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 23,
+   "no": 21,
    "ref": "II.7",
    "cast": [
     "john",
@@ -1550,7 +1462,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 24,
+   "no": 22,
    "ref": "II.8",
    "cast": [
     "billy"
@@ -1609,7 +1521,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 25,
+   "no": 23,
    "ref": "III.1",
    "cast": [
     "john",
@@ -1678,7 +1590,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 26,
+   "no": 24,
    "ref": "III.2",
    "cast": [
     "mary"
@@ -1736,7 +1648,7 @@
    "aliases": [
     "ghf-19530101-1"
    ],
-   "no": 27,
+   "no": 25,
    "ref": "III.3",
    "cast": [
     "frederick"
@@ -1790,7 +1702,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 28,
+   "no": 26,
    "ref": "III.4",
    "cast": [
     "mary",
@@ -1855,7 +1767,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 29,
+   "no": 27,
    "ref": "III.5",
    "cast": [
     "mary",
@@ -1914,7 +1826,7 @@
    "aliases": [
     "ghf-19610329-1"
    ],
-   "no": 30,
+   "no": 28,
    "ref": "III.6",
    "cast": [
     "mary",
@@ -1979,7 +1891,7 @@
    "aliases": [
     "ghf-19630101-1"
    ],
-   "no": 31,
+   "no": 29,
    "ref": "III.7",
    "cast": [
     "frederick"
@@ -2028,7 +1940,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 32,
+   "no": 30,
    "ref": "III.8",
    "cast": [],
    "received": "Another offer refused by an occupier with no title.",
@@ -2084,7 +1996,7 @@
    "aliases": [
     "ghf-19680901-1"
    ],
-   "no": 33,
+   "no": 31,
    "ref": "III.9",
    "cast": [
     "eldest"
@@ -2128,7 +2040,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 34,
+   "no": 32,
    "ref": "III.10",
    "cast": [
     "mary",
@@ -2180,7 +2092,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 35,
+   "no": 33,
    "ref": "IV.1",
    "cast": [
     "wgr",
@@ -2245,7 +2157,7 @@
    "aliases": [
     "ghf-19700616-1"
    ],
-   "no": 36,
+   "no": 34,
    "ref": "IV.2",
    "cast": [
     "mary"
@@ -2257,7 +2169,7 @@
      "Both parcels treated as one development site."
     ]
    ],
-   "known": "Permission was granted over a house whose ownership was disputed, while its owner lived in it. In 1990 a condition of the outline permission provided for a 0.25-acre village green beside the church. The family's account is that the land south of the farmhouse, part of Parcel A, was taken by the council and laid out as a green in the 1980s. (Family account, not yet recorded on the wiki.)",
+   "known": "Permission was granted over a house whose ownership was disputed, while its owner lived in it. In 1990 a condition of the outline permission provided for a 0.25-acre village green beside the site. The family's account is that the land south of the farmhouse, part of Parcel A, was taken by the council and laid out as a green in the 1980s. (Family account, not yet recorded on the wiki.)",
    "ledger": [
     [
      "A",
@@ -2301,7 +2213,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 37,
+   "no": 35,
    "ref": "IV.3",
    "cast": [
     "rcahmw"
@@ -2351,7 +2263,7 @@
    ],
    "image": "/media/ghf-e090-n03-1974-open-day-telegraph.jpg",
    "aliases": [],
-   "no": 38,
+   "no": 36,
    "ref": "IV.4",
    "cast": [
     "mary"
@@ -2405,7 +2317,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 39,
+   "no": 37,
    "ref": "IV.5",
    "cast": [
     "mary",
@@ -2471,7 +2383,7 @@
     "ghf-19741031-2",
     "ghf-19740919-1"
    ],
-   "no": 40,
+   "no": 38,
    "ref": "IV.6",
    "cast": [
     "mary",
@@ -2516,7 +2428,7 @@
    "place": "Western Mail — letters",
    "parcel": "A",
    "basis": "Newspaper",
-   "narration": "A letter to the Western Mail, dated 19 November (year unclear), warns that demolition would erase the site of St Dochdwy's monastery and traces the land's descent.",
+   "narration": "A letter to the Western Mail, dated 19 November (year unclear), traces the land's descent.",
    "case": null,
    "evidence": [
     {
@@ -2533,7 +2445,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 41,
+   "no": 39,
    "ref": "IV.7",
    "cast": [],
    "received": "A local antiquarian's objection.",
@@ -2575,7 +2487,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 42,
+   "no": 40,
    "ref": "IV.8",
    "cast": [
     "bp",
@@ -2628,7 +2540,7 @@
    ],
    "image": "/media/ghf-e090-n16-1980-hansard-rowlands.jpg",
    "aliases": [],
-   "no": 43,
+   "no": 41,
    "ref": "IV.9",
    "cast": [
     "wgr",
@@ -2663,7 +2575,7 @@
    "place": "GGAT",
    "parcel": "AB",
    "basis": "Planning file",
-   "narration": "On 1 October 1982 GGAT advises the planners that occupation may continue north of the church and asks for investigation before development.",
+   "narration": "On 1 October 1982 GGAT advises the planners that occupation may continue in the area and asks for investigation before development.",
    "case": null,
    "evidence": [
     {
@@ -2695,7 +2607,7 @@
     "ghf-press-19800417-n05",
     "ghf-19830313-1"
    ],
-   "no": 44,
+   "no": 42,
    "ref": "IV.10",
    "cast": [
     "ggat"
@@ -2744,7 +2656,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 45,
+   "no": 43,
    "ref": "IV.11",
    "cast": [
     "mary",
@@ -2801,7 +2713,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 46,
+   "no": 44,
    "ref": "IV.12",
    "cast": [
     "bp"
@@ -2857,7 +2769,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 47,
+   "no": 45,
    "ref": "IV.13",
    "cast": [
     "mary"
@@ -2908,7 +2820,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 48,
+   "no": 46,
    "ref": "IV.14",
    "cast": [
     "hmlr"
@@ -2964,7 +2876,7 @@
    "aliases": [
     "ghf-19840113-1"
    ],
-   "no": 49,
+   "no": 47,
    "ref": "V.1",
    "cast": [
     "billy",
@@ -3023,7 +2935,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 50,
+   "no": 48,
    "ref": "V.2",
    "cast": [
     "mary",
@@ -3074,7 +2986,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 51,
+   "no": 49,
    "ref": "V.3",
    "cast": [
     "rcahmw"
@@ -3123,7 +3035,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 52,
+   "no": 50,
    "ref": "V.4",
    "cast": [],
    "received": "An administrative tidying of the register.",
@@ -3173,7 +3085,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 53,
+   "no": 51,
    "ref": "V.5",
    "cast": [
     "bp",
@@ -3230,7 +3142,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 54,
+   "no": 52,
    "ref": "V.6",
    "cast": [
     "courts"
@@ -3278,7 +3190,7 @@
    "aliases": [
     "ghf-press-n15-01"
    ],
-   "no": 55,
+   "no": 53,
    "ref": "VI.1",
    "cast": [
     "billy"
@@ -3327,7 +3239,7 @@
     "ghf-press-n07",
     "ghf-press-n15-02"
    ],
-   "no": 56,
+   "no": 54,
    "ref": "VI.2",
    "cast": [
     "mary",
@@ -3386,7 +3298,7 @@
     "ghf-press-n15-03",
     "ghf-19880503-1"
    ],
-   "no": 57,
+   "no": 55,
    "ref": "VI.3",
    "cast": [
     "billy",
@@ -3439,7 +3351,7 @@
    ],
    "image": "/media/1988-cadw-farmhouse.jpg",
    "aliases": [],
-   "no": 58,
+   "no": 56,
    "ref": "VI.4",
    "cast": [
     "cadw"
@@ -3495,7 +3407,7 @@
     "ghf-press-n15-04",
     "ghf-press-n09"
    ],
-   "no": 59,
+   "no": 57,
    "ref": "VI.5",
    "cast": [
     "billy"
@@ -3550,7 +3462,7 @@
    "aliases": [
     "ghf-press-n15-11"
    ],
-   "no": 60,
+   "no": 58,
    "ref": "VI.6",
    "cast": [
     "mary"
@@ -3599,7 +3511,7 @@
     "ghf-press-n15-05",
     "ghf-press-n08"
    ],
-   "no": 61,
+   "no": 59,
    "ref": "VI.7",
    "cast": [
     "bp",
@@ -3649,7 +3561,7 @@
     "ghf-press-n15-06",
     "ghf-press-n15-10"
    ],
-   "no": 62,
+   "no": 60,
    "ref": "VI.8",
    "cast": [
     "billy"
@@ -3694,7 +3606,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 63,
+   "no": 61,
    "ref": "VI.9",
    "cast": [
     "cadw"
@@ -3737,7 +3649,7 @@
    "aliases": [
     "ghf-press-n10"
    ],
-   "no": 64,
+   "no": 62,
    "ref": "VI.10",
    "cast": [
     "cadw",
@@ -3804,7 +3716,7 @@
     "ghf-press-n15-12",
     "ghf-19881211-1"
    ],
-   "no": 65,
+   "no": 63,
    "ref": "VI.11",
    "cast": [],
    "received": "An old farmhouse of no special merit was cleared for housing.",
@@ -3871,7 +3783,7 @@
     "ghf-press-n15-08",
     "ghf-press-n15-09"
    ],
-   "no": 66,
+   "no": 64,
    "ref": "VI.12",
    "cast": [
     "billy"
@@ -3926,7 +3838,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 67,
+   "no": 65,
    "ref": "VI.13",
    "cast": [
     "rcahmw"
@@ -3968,7 +3880,7 @@
    "aliases": [
     "ghf-press-n15-14"
    ],
-   "no": 68,
+   "no": 66,
    "ref": "VII.1",
    "cast": [],
    "received": null,
@@ -4027,7 +3939,7 @@
     "ghf-19890115-1",
     "ghf-press-n15-13"
    ],
-   "no": 69,
+   "no": 67,
    "ref": "VII.2",
    "cast": [
     "billy"
@@ -4068,7 +3980,7 @@
    ],
    "image": "/media/ghf-e090-n13-1989-farm-to-bus.jpg",
    "aliases": [],
-   "no": 70,
+   "no": 68,
    "ref": "VII.3",
    "cast": [
     "billy"
@@ -4113,7 +4025,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 71,
+   "no": 69,
    "ref": "VII.4",
    "cast": [],
    "received": "Strasbourg confirmed the eviction was lawful and the property was BP's.",
@@ -4179,7 +4091,7 @@
     "ghf-19891108-1",
     "ghf-19891010-1"
    ],
-   "no": 72,
+   "no": 70,
    "ref": "VII.5",
    "cast": [
     "bp",
@@ -4228,7 +4140,7 @@
    "aliases": [
     "ghf-19900208-1"
    ],
-   "no": 73,
+   "no": 71,
    "ref": "VII.6",
    "cast": [
     "ggat"
@@ -4285,7 +4197,7 @@
    "aliases": [
     "ghf-19901015-1"
    ],
-   "no": 74,
+   "no": 72,
    "ref": "VII.7",
    "cast": [
     "bp",
@@ -4341,7 +4253,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 75,
+   "no": 73,
    "ref": "VII.8",
    "cast": [
     "ggat",
@@ -4382,7 +4294,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 76,
+   "no": 74,
    "ref": "VII.9",
    "cast": [
     "ideal"
@@ -4422,7 +4334,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 77,
+   "no": 75,
    "ref": "VII.10",
    "cast": [
     "billy"
@@ -4464,7 +4376,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 78,
+   "no": 76,
    "ref": "VII.11",
    "cast": [
     "ggat"
@@ -4509,7 +4421,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 79,
+   "no": 77,
    "ref": "VII.12",
    "cast": [],
    "received": null,
@@ -4564,7 +4476,7 @@
    "aliases": [
     "ghf-19931213-1"
    ],
-   "no": 80,
+   "no": 78,
    "ref": "VII.13",
    "cast": [
     "bp",
@@ -4620,7 +4532,7 @@
    "aliases": [
     "ghf-19940421-1"
    ],
-   "no": 81,
+   "no": 79,
    "ref": "VII.14",
    "cast": [],
    "received": "A successful rescue excavation.",
@@ -4668,7 +4580,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 82,
+   "no": 80,
    "ref": "VII.15",
    "cast": [
     "ideal"
@@ -4725,7 +4637,7 @@
    "aliases": [
     "ghf-19950628-1"
    ],
-   "no": 83,
+   "no": 81,
    "ref": "VII.16",
    "cast": [],
    "received": null,
@@ -4778,7 +4690,7 @@
    "aliases": [
     "ghf-20051222-1"
    ],
-   "no": 84,
+   "no": 82,
    "ref": "VII.17",
    "cast": [],
    "received": null,
@@ -4816,7 +4728,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 85,
+   "no": 83,
    "ref": "VII.18",
    "cast": [
     "ggat"
@@ -4858,7 +4770,7 @@
    "aliases": [
     "ghf-20260123-1"
    ],
-   "no": 86,
+   "no": 84,
    "ref": "VIII.1",
    "cast": [
     "mary",
@@ -4908,7 +4820,7 @@
    "aliases": [
     "ghf-20260213-1"
    ],
-   "no": 87,
+   "no": 85,
    "ref": "VIII.2",
    "cast": [
     "hmlr"
@@ -4953,7 +4865,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 88,
+   "no": 86,
    "ref": "VIII.3",
    "cast": [
     "hmlr"
@@ -5016,7 +4928,7 @@
    ],
    "image": "/media/1988-cadw-barn.jpg",
    "aliases": [],
-   "no": 89,
+   "no": 87,
    "ref": "VIII.4",
    "cast": [
     "cadw"
@@ -5068,7 +4980,7 @@
    "aliases": [
     "ghf-20260602-1"
    ],
-   "no": 90,
+   "no": 88,
    "ref": "VIII.5",
    "cast": [
     "hmlr"
@@ -5108,7 +5020,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 91,
+   "no": 89,
    "ref": "VIII.6",
    "cast": [],
    "received": null,
@@ -5151,7 +5063,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 92,
+   "no": 90,
    "ref": "VIII.7",
    "cast": [
     "bute"
@@ -5208,7 +5120,7 @@
    "aliases": [
     "ghf-20260918-1"
    ],
-   "no": 93,
+   "no": 91,
    "ref": "VIII.8",
    "cast": [
     "hmlr",
@@ -5261,7 +5173,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 94,
+   "no": 92,
    "ref": "VIII.9",
    "cast": [
     "bp",
@@ -5307,7 +5219,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 95,
+   "no": 93,
    "ref": "VIII.10",
    "cast": [],
    "received": null,
@@ -5350,7 +5262,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 96,
+   "no": 94,
    "ref": "VIII.11",
    "cast": [
     "hmlr",
@@ -5380,7 +5292,7 @@
    "place": "Cadw / RCAHMW / Museum Wales",
    "parcel": "A",
    "basis": "Official correspondence",
-   "narration": "On 29 September 2026 the Royal Commission releases its records, including the 1974 newspaper report and a note of the armour. On 5 October Museum Wales releases its Church Farm file.",
+   "narration": "On 29 September 2026 the Royal Commission releases its records, including the 1974 newspaper report and a note of the armour. On 5 October Museum Wales releases further records.",
    "case": null,
    "evidence": [
     {
@@ -5403,7 +5315,7 @@
    "aliases": [
     "ghf-20261005-1"
    ],
-   "no": 97,
+   "no": 95,
    "ref": "VIII.12",
    "cast": [
     "rcahmw"
@@ -5466,7 +5378,7 @@
     "ghf-20260922-1",
     "ghf-20261003-1"
    ],
-   "no": 98,
+   "no": 96,
    "ref": "VIII.13",
    "cast": [],
    "received": null,
@@ -5509,7 +5421,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 99,
+   "no": 97,
    "ref": "O.1",
    "cast": [],
    "received": "A squatter was evicted after losing in court.",
@@ -5519,7 +5431,7 @@
      "How the case was understood in the press and in the street."
     ]
    ],
-   "known": "A squatter moves into a place that is not theirs. The Williamses were born in this house, married in it and died in it for three hundred and twenty-one years. They owned it from 1928, and by possession from 1940. Nobody who lives somewhere for three centuries is a squatter.",
+   "known": "A squatter moves into a place that is not theirs. The Williamses were born in this house, married in it and died in it for three hundred and twenty-one years. On Mary's statement they owned it from 1928, and on the family's case by possession from 1940. Nobody who lives somewhere for three centuries is a squatter.",
    "ledger": [
     [
      "A",
@@ -5562,7 +5474,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 100,
+   "no": 98,
    "ref": "O.2",
    "cast": [
     "mary"
@@ -5612,7 +5524,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 101,
+   "no": 99,
    "ref": "O.3",
    "cast": [
     "wgr",
@@ -5658,7 +5570,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 102,
+   "no": 100,
    "ref": "O.4",
    "cast": [
     "bp"
@@ -5708,7 +5620,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 103,
+   "no": 101,
    "ref": "O.5",
    "cast": [
     "courts"
@@ -5764,7 +5676,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 104,
+   "no": 102,
    "ref": "O.6",
    "cast": [
     "billy"
@@ -5815,7 +5727,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 105,
+   "no": 103,
    "ref": "O.7",
    "cast": [],
    "received": "An old building was cleared for housing.",
@@ -5869,7 +5781,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 106,
+   "no": 104,
    "ref": "O.8",
    "cast": [
     "mps"
@@ -5914,7 +5826,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 107,
+   "no": 105,
    "ref": "O.9",
    "cast": [
     "mary"
@@ -5965,7 +5877,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 108,
+   "no": 106,
    "ref": "O.10",
    "cast": [
     "cadw"
@@ -6015,7 +5927,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 109,
+   "no": 107,
    "ref": "O.11",
    "cast": [
     "mary",
@@ -6071,7 +5983,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 110,
+   "no": 108,
    "ref": "E.1",
    "cast": [],
    "received": "A landlord and its successors recovered their farm from tenants who stayed on without paying, and the courts confirmed it.",
@@ -6145,7 +6057,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 111,
+   "no": 109,
    "ref": "E.2",
    "cast": [],
    "received": "It was always one farm, and nobody suggested otherwise.",
@@ -6202,7 +6114,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 112,
+   "no": 110,
    "ref": "E.3",
    "cast": [],
    "received": "A modern estate on a former farm.",
@@ -6229,7 +6141,7 @@
    "place": "Llandough Community Council",
    "parcel": "A",
    "basis": "Public record",
-   "narration": "Llandough Community Council's page on the village's history describes the Roman villa, the monastery and the 1994 burials. It does not mention Great House, the Williams family or the demolition.",
+   "narration": "Llandough Community Council's page on the village's history describes the Roman villa and the 1994 burials. It does not mention Great House, the Williams family or the demolition.",
    "case": null,
    "evidence": [
     {
@@ -6245,7 +6157,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 113,
+   "no": 111,
    "ref": "E.4",
    "cast": [],
    "received": null,
@@ -6288,7 +6200,7 @@
    ],
    "image": "/media/1988-cadw-farmhouse.jpg",
    "aliases": [],
-   "no": 114,
+   "no": 112,
    "ref": "E.5",
    "cast": [],
    "received": null,
