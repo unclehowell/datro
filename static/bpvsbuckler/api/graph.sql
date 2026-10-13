@@ -1412,7 +1412,7 @@ INSERT INTO nodes VALUES ('doc-museum-wales-FOI-2026-036','document','Amgueddfa 
 INSERT INTO nodes VALUES ('doc-rcahmw-RC26-0375','document','RCAHMW RC26-0375 further response, 6 October 2026','{"holder": "RCAHMW (NMRW)", "reference": "RC26-0375 (includes RC26-0353, RC26-0368, RC26-0371)", "date": "2026-10-06"}');
 INSERT INTO nodes VALUES ('doc-science-museum-FOI-2026-0038','document','Science Museum Group FOI/2026/0038 internal review','{"holder": "Science Museum Group", "reference": "FOI/2026/0038", "date": "2026-10-01"}');
 INSERT INTO nodes VALUES ('doc-south-wales-police-auto-ack-foi-great-house-farm-1988','document','South Wales Police FOI auto-acknowledgement','{"holder": "South Wales Police", "reference": "none assigned in auto-ack", "date": "2026-10-10"}');
-INSERT INTO nodes VALUES ('doc-south-wales-police-foi-1264-26','document','South Wales Police FOI 1264/26 – additional clarification follow-up (deceased status)','{"holder": "South Wales Police", "reference": "FOI 1264/26", "date": "2026-10-13"}');
+INSERT INTO nodes VALUES ('doc-south-wales-police-foi-1264-26','document','South Wales Police FOI 1264/26 – automatic acknowledgement of further clarification (17:06 UTC)','{"holder": "South Wales Police", "reference": "FOI 1264/26", "date": "2026-10-13"}');
 INSERT INTO nodes VALUES ('doc-tna-IR58-glamorgan-xlvii-6','document','TNA Valuation Office location lead','{"holder": "The National Archives", "reference": "draft r1281075964076169651 (not sent)", "date": "2026-10-04"}');
 INSERT INTO nodes VALUES ('ref:00211027','reference','00211027','{}');
 INSERT INTO nodes VALUES ('ref:00211463','reference','00211463','{}');
