@@ -45,7 +45,19 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git commit -m "bpvsbuckler: refresh generated story exports [skip ci]"
-            git push origin HEAD:bpvsbuckler
+            if ! git push origin HEAD:bpvsbuckler; then
+              # A rerun may start from the original event SHA after another run
+              # has already committed identical generated files. Accept that
+              # only if the remote generated outputs match; never overwrite a
+              # newer, different export set.
+              git fetch origin bpvsbuckler
+              if git diff --quiet FETCH_HEAD -- src/data/story.json src/data/meta.json api/timeline.json llms.txt story/index.html story/transcript.txt sitemap.xml; then
+                echo "Generated exports are already current on bpvsbuckler."
+              else
+                echo "Remote branch advanced with different generated exports; refusing to overwrite."
+                exit 1
+              fi
+            fi
           fi
 
       - name: Build player
