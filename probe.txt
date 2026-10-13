@@ -1,0 +1,76 @@
+## DNS records (apex, www)
+CNAME	bucklerfamily.estate	bucklerfamilyfarm.pages.dev	proxied=true
+CNAME	www.bucklerfamily.estate	parkingpage.namecheap.com	proxied=true
+MX	bucklerfamily.estate	route3.mx.cloudflare.net	proxied=false
+MX	bucklerfamily.estate	route2.mx.cloudflare.net	proxied=false
+MX	bucklerfamily.estate	route1.mx.cloudflare.net	proxied=false
+TXT	bucklerfamily.estate	"google-site-verification=wVoU3uEhl7GjJ8ooCDhQBYzbGYpxI614KT6mZiQNiOg"	proxied=false
+TXT	bucklerfamily.estate	"v=spf1 include:_spf.mx.cloudflare.net ~all"	proxied=false
+TXT	www.bucklerfamily.estate	"bucklerfamilyfarm.pages.dev"	proxied=false
+## Pages projects and domains
+ghf-independent-review ghf-independent-review.pages.dev prod=ghf-independent-review src=datro/ghf-independent-review: review.bucklerfamily.estate
+ghf-primary-records ghf-primary-records.pages.dev prod=ghf-primary-records src=datro/ghf-primary-records: records.bucklerfamily.estate
+ghf-public-authorities ghf-public-authorities.pages.dev prod=ghf-public-authorities src=datro/ghf-public-authorities: authorities.bucklerfamily.estate
+webbrich webbrich.pages.dev prod=webbrich src=datro/webbrich: webbrich.bucklerfamily.estate
+datro datro2.pages.dev prod=datro src=datro/datro: datro.xyz,www.datro.xyz
+cnei cnei.pages.dev prod=cnei src=datro/cnei: cnei.bucklerfamily.estate,cnei.datro.xyz
+whitepaper whitepaper-2k4.pages.dev prod=whitepaper src=datro/whitepaper: 
+llmwiki llmwiki.pages.dev prod=llmwiki src=datro/llmwiki: llmwiki.financecheque.uk
+ui uifinancecheque.pages.dev prod=ui src=datro/ui: ui.financecheque.uk
+archives archives-b01.pages.dev prod=archives src=datro/archives: archives.bucklerfamily.estate,archives.datro.xyz,archives.financecheque.uk
+althea althea-30p.pages.dev prod=althea src=datro/althea: althea.bucklerfamily.estate,althea.datro.xyz
+wayback wayback-81x.pages.dev prod=wayback src=datro/wayback: wayback.bucklerfamily.estate,wayback.datro.xyz
+pirateclaw pirateclaw.pages.dev prod=pirateclaw src=datro/pirateclaw: pirateclaw.bucklerfamily.estate,pirateclaw.datro.xyz,whitepaper.financecheque.uk
+ccan ccan-c5k.pages.dev prod=ccan src=datro/ccan: 
+ceo ceo-er3.pages.dev prod=ceo src=datro/ceo: ceo.bucklerfamily.estate,ceo.datro.xyz
+projections projections.pages.dev prod=gh-pages src=datro/gh-pages: projections.bucklerfamily.estate,projections.datro.xyz
+datro-homepage datro-homepage.pages.dev prod=gh-pages src=datro/gh-pages: 
+timeline timeline-as4.pages.dev prod=gh-pages src=datro/gh-pages: timeline.bucklerfamily.estate,timeline.datro.xyz
+bpvsbuckler bpvsbuckler.pages.dev prod=bpvsbuckler src=datro/bpvsbuckler: bpvsbuckler.bucklerfamily.estate,bpvsbuckler.datro.xyz
+greathousefarmwiki greathousefarmwiki.pages.dev prod=wiki src=direct/: wiki.bucklerfamily.estate
+bucklerfamilyfarm bucklerfamilyfarm.pages.dev prod=main src=BucklerFamilyFarm/main: bucklerfamily.estate
+foi foi-478.pages.dev prod=main src=BucklerFamilyFarm/main: 
+wave wave-6he.pages.dev prod=wave src=direct/: wave.bucklerfamily.estate,wave.datro.xyz
+hbnb datro.pages.dev prod=hbnb src=datro/hbnb: hbnb.bucklerfamily.estate,hbnb.datro.xyz
+carfinancecheque carfinancecheque.pages.dev prod=carfinancecheque src=datro/carfinancecheque: car.financecheque.uk
+pcp2 pcp2.pages.dev prod=main src=pcp2/main: 
+financecheque financecheque.pages.dev prod=financecheque src=datro/financecheque: financecheque.uk,www.financecheque.uk
+command-dashboard command-dashboard-adx.pages.dev prod=command src=direct/: command.bucklerfamily.estate,command.datro.xyz,command.financecheque.uk
+command command-cip.pages.dev prod=command src=direct/: 
+bucklervsbp bucklervsbp.pages.dev prod=bucklervsbp src=direct/: bucklervsbp.bucklerfamily.estate,bucklervsbp.datro.xyz
+subrepos subrepos.pages.dev prod=subrepos src=direct/: subrepos.bucklerfamily.estate,subrepos.datro.xyz
+dash dash-i09.pages.dev prod=dash src=direct/: dash.bucklerfamily.estate,dash.datro.xyz
+greathousefarm greathousefarm.pages.dev prod=greathousefarm src=direct/: 
+calls-portal calls-portal.pages.dev prod=calls src=direct/: 
+calls calls-ck0.pages.dev prod=calls src=direct/: calls.bucklerfamily.estate,calls.datro.xyz
+library library-cgm.pages.dev prod=library src=datro/library: library.bucklerfamily.estate,library.datro.xyz
+gui gui-7ey.pages.dev prod=gui src=datro/gui: gui.bucklerfamily.estate,gui.datro.xyz
+dcc dcc-cwd.pages.dev prod=dcc src=datro/dcc: dcc.bucklerfamily.estate,dcc.datro.xyz
+paperclip-ui paperclip-ui-cvs.pages.dev prod=main src=direct/: 
+netdata-ui netdata-ui.pages.dev prod=main src=direct/: 
+brain brain-3ba.pages.dev prod=main src=direct/: 
+carfinance-new carfinance-new.pages.dev prod=gh-pages src=direct/: vehicle.financecheque.uk
+pcp2-test pcp2-test.pages.dev prod=gh-pages src=direct/: 
+pcp2-car-finance pcp2-car-finance.pages.dev prod=gh-pages src=direct/: 
+## Worker routes / custom domains on zone
+clerk.bucklerfamily.estate -> cclerk
+## Apex HTML head
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FOI Evidence Tree & Chronological Bible</title>
+    <meta name="description" content="Ancestral Land Claim & Restitution Platform: Transparent Marketing Funnel, Web-to-Lead checker, BP vs Buckler 1987 case results, CADW Forensic Assessment, and Interactive Court Particulars of Claim." />
+    <meta property="og:title" content="FOI Evidence Tree & Chronological Bible" />
+    <meta property="og:description" content="Ancestral Land Claim & Restitution Platform: Transparent Marketing Funnel, Web-to-Lead checker, BP vs Buckler 1987 case results, CADW Forensic Assessment, and Interactive Court Particulars of Claim." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="module" crossorigin src="/assets/index-Dvj5G28W.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BafTZ5To.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
+
