@@ -2,8 +2,11 @@
 """Source of truth for the Great House Farm storyboard.
 
 Edit this file, then run:   python3 content/story_source.py
-It writes src/data/story.json, which the player, /story/ script page,
-/api/timeline.json, /llms.txt, transcript and sitemap are all built from.
+It writes content/graph/seed/story.seed.json. Then run
+    python3 content/graph/build_graph.py
+which builds the Q&A graph and writes src/data/story.json, from which the
+player, /story/ script page, /api/timeline.json, /llms.txt, transcript and
+sitemap are all built.
 
 Rules (see README):
 - one scene per event, in strict date order; press cuttings are evidence on
@@ -796,10 +799,14 @@ def main():
         s['moved'] = [lane for lane, text in changes.items() if text is not None]
     out = {'title': 'Tŷ Mawr — The Great House Farm Story', 'acts': ACTS, 'cast': CAST, 'lanes': LANES,
            'aliases': aliases, 'scenes': S}
-    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    with open(os.path.join(root, 'src/data/story.json'), 'w') as f:
+    # The curated scenes are the seed of the Q&A graph. content/graph/build_graph.py
+    # reads this file, attaches the case questions and the correspondence Q&A, grades
+    # the evidence for each scene, and writes src/data/story.json for the player.
+    here = os.path.dirname(os.path.abspath(__file__))
+    os.makedirs(os.path.join(here, 'graph/seed'), exist_ok=True)
+    with open(os.path.join(here, 'graph/seed/story.seed.json'), 'w') as f:
         json.dump(out, f, ensure_ascii=False, indent=1)
-    print(f'{len(S)} scenes in {len(ACTS)} acts; {len(aliases)} old ids redirected')
+    print(f'{len(S)} scenes in {len(ACTS)} acts; {len(aliases)} old ids redirected (seed for the graph)')
 
 if __name__ == '__main__':
     main()

@@ -6,6 +6,7 @@ on:
       - bpvsbuckler
     paths:
       - 'static/bpvsbuckler/**'
+      - 'evidence-catalogue/**'
       - '.github/workflows/deploy-bpvsbuckler.yml'
   workflow_dispatch:
 
@@ -32,15 +33,21 @@ jobs:
         with:
           node-version: 20
 
-      - name: Generate storyboard data from source
+      - name: Generate the scene seed from source
         run: python3 content/story_source.py
+
+      - name: Build the Q&A graph (correspondence + case questions + scenes) and the storyboard from it
+        run: |
+          python3 content/graph/ingest_catalogue.py
+          python3 content/graph/ingest_gmail.py
+          python3 content/graph/build_graph.py
 
       - name: Build story exports
         run: node scripts/build-timeline-exports.mjs
 
       - name: Commit generated story exports to the branch
         run: |
-          git add src/data/story.json src/data/meta.json api/timeline.json llms.txt story/index.html story/transcript.txt sitemap.xml
+          git add src/data/story.json src/data/meta.json api/timeline.json api/graph.json api/qa.json api/graph.sql content/graph/seed content/graph/corpus llms.txt story/index.html story/transcript.txt sitemap.xml
           if ! git diff --cached --quiet; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -69,9 +76,16 @@ jobs:
         run: |
           rsync -a --exclude dist --exclude node_modules --exclude src --exclude /index.html \
             --exclude package.json --exclude package-lock.json --exclude tsconfig.json --exclude vite.config.ts \
-            --exclude '.hermes-live' --exclude logs --exclude scripts ./ dist/
+            --exclude '.hermes-live' --exclude logs --exclude scripts --exclude content/graph/raw \
+            --exclude functions --exclude wrangler.toml ./ dist/
           grep -q 'assets/index-' dist/index.html
           test -f dist/story/index.html && test -f dist/story/transcript.txt && test -f dist/llms.txt
+
+      - name: Load the Q&A graph into Cloudflare D1 (bpvsbuckler-graph)
+        # The /api/ask search reads D1. If the token cannot write D1, the search
+        # falls back to the static /api/qa.json, so a failure here does not block the deploy.
+        continue-on-error: true
+        run: npx --yes wrangler@3 d1 execute bpvsbuckler-graph --remote --file=api/graph.sql --yes
 
       - name: Deploy to Cloudflare Pages
         run: npx --yes wrangler@3 pages deploy dist --project-name=bpvsbuckler --branch=bpvsbuckler --commit-dirty=true

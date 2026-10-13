@@ -1,0 +1,12 @@
+# Cloudflare Pages config for bpvsbuckler.bucklerfamily.estate.
+# Deployed by .github/workflows/deploy-bpvsbuckler.yml with `wrangler pages deploy dist`.
+# functions/ (the /api/ask search) is compiled from this folder; DB is the Q&A graph,
+# loaded from api/graph.sql on every deploy.
+name = "bpvsbuckler"
+pages_build_output_dir = "./dist"
+compatibility_date = "2025-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "bpvsbuckler-graph"
+database_id = "fe824415-4bfd-48b5-82d7-1bfc8f503fc9"

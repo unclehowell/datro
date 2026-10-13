@@ -241,3 +241,58 @@ button.chip:hover, a.chip:hover { color: var(--limewash); }
 .acct p.speaking .w.done { color: var(--limewash); }
 .acct.recv p.speaking .w.done { color: var(--limewash); }
 @media (max-width: 1000px) { .stage { position: relative; } .stage.has-pip { padding-bottom: 130px; } .pip { width: 150px; height: 104px; } }
+
+/* ---------------- the Q&A graph: evidence grades, case questions, replies */
+:root { --g-doc: #79a565; --g-one: #6b95bd; --g-fam: #c8a64e; --g-con: #d4574b; --g-arg: #8a8f94; }
+.chip.grade i { width: 9px; height: 9px; border-radius: 50%; }
+.g-documented i, .gdot.g-documented { background: var(--g-doc); }
+.g-single-source i, .gdot.g-single-source { background: var(--g-one); }
+.g-family-account i, .gdot.g-family-account { background: var(--g-fam); }
+.g-contested i, .gdot.g-contested { background: var(--g-con); }
+.g-argument i, .gdot.g-argument { background: var(--g-arg); }
+.chip.g-contested { color: #f0b7b0; }
+.gdot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; }
+.st { font-size: 11.5px; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; background: var(--slate-3); color: var(--limewash); white-space: nowrap; }
+.s-documented, .s-corroborated { background: #3d5634; } .s-family-account { background: #5a4c26; }
+.s-contested { background: #6a2f2a; } .s-open { background: var(--slate-3); } .s-not-held { background: #3b3f55; }
+.cq { margin: 0 0 26px; max-width: 40em; border-left: 3px solid var(--parcel-ab); background: var(--slate-2); border-radius: 0 4px 4px 0; padding: 14px 18px; }
+.cq > h2, .replies > h2 { font-size: 13px; font-weight: 600; margin: 0 0 8px; letter-spacing: .02em; text-transform: uppercase; color: var(--lias); }
+.cqi + .cqi { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--slate-3); }
+.cqh { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; }
+.cqh b { font-family: var(--serif); font-weight: 500; font-size: 17px; line-height: 1.35; }
+.cq p { font-family: var(--serif); font-size: 16px; line-height: 1.5; margin: 6px 0 0; color: var(--limewash); }
+.nx { margin-top: 8px; font-size: 13px; color: var(--lias); }
+.nx span, .fa span { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .03em; }
+.nx ul, .fa ul { margin: 4px 0 0; padding-left: 18px; }
+.more { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--lias); }
+.replies { margin: 0 0 26px; max-width: 40em; }
+.replies ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.qa { background: var(--slate-2); border-radius: 4px; padding: 10px 14px; border-left: 3px solid var(--slate-3); }
+.qa.k-provided { border-left-color: var(--g-doc); } .qa.k-partial { border-left-color: var(--g-fam); }
+.qa.k-not-held, .qa.k-refused { border-left-color: var(--g-con); } .qa.k-redirected, .qa.k-reasonably-accessible { border-left-color: var(--g-one); }
+.qah { display: flex; gap: 10px; align-items: baseline; width: 100%; background: none; border: 0; padding: 0; text-align: left; }
+.qah .who { font-weight: 600; font-size: 13.5px; }
+.qah .kd { font-size: 12px; color: var(--lias); flex: 1; }
+.qah .dt { font-size: 12px; color: var(--lias); white-space: nowrap; }
+.qq { font-size: 13px; color: var(--lias); margin: 6px 0 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.qaa { font-family: var(--serif); font-size: 15px; line-height: 1.45; white-space: pre-line; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.qaa.open { display: block; -webkit-line-clamp: unset; }
+.qa .src { font-size: 12px; color: var(--lias); }
+.questions .ask { display: flex; gap: 8px; margin: 18px 0 24px; max-width: 760px; }
+.questions .ask input { flex: 1; min-width: 0; background: var(--slate-2); border: 1px solid var(--slate-3); border-radius: 6px; color: var(--limewash); padding: 10px 12px; font: inherit; }
+.questions .ask button { background: var(--limewash); color: var(--slate); border: 0; border-radius: 6px; padding: 0 16px; font-weight: 600; }
+.cqcard { max-width: 920px; padding: 18px 0 22px; border-top: 1px solid var(--slate-3); scroll-margin-top: 12px; }
+.cqcard h2 { font-family: var(--serif); font-weight: 400; font-size: 24px; line-height: 1.2; margin: 0; }
+.cqcard .ans { font-family: var(--serif); font-size: 17px; line-height: 1.55; margin: 10px 0 12px; }
+.fa { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; font-size: 13.5px; color: var(--lias); }
+.scl { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; align-items: center; }
+.scl .n { font-size: 12.5px; color: var(--lias); margin-left: 6px; }
+@media (max-width: 760px) { .cqh { flex-direction: column; gap: 6px; } .questions .ask { flex-direction: column; } .questions .ask button { padding: 10px; } }
+@media (max-width: 760px) {
+  .top { flex-wrap: wrap; row-gap: 8px; }
+  .tabs { min-width: 0; flex: 1 1 auto; max-width: 100%; overflow-x: auto; scrollbar-width: none; flex-wrap: nowrap; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { flex: none; }
+}
+.shell { grid-template-columns: minmax(0, 1fr); }
+.top > * { min-width: 0; }
