@@ -469,7 +469,7 @@ function Splash({ onPlay, onBoard, onCast }: { onPlay: () => void; onBoard: () =
   return (
     <div className="splash">
       <figure className="ph" style={{ margin: 0 }}>
-        <img src="/media/1988-cadw-farmhouse.jpg" alt="Great House Farm, Llandough: the limewashed farmhouse behind its stone wall, July 1988" />
+        <img src="/media/1791868564541.jpg" alt="Great House Farm, Llandough: the limewashed farmhouse behind its stone wall, July 1988" />
         <figcaption>The farmhouse on 29 July 1988, photographed by Cadw. It was demolished on 6 December.</figcaption>
       </figure>
       <div className="tx">
