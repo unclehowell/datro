@@ -106,7 +106,7 @@ ORDER = [
      ["Anyone living on or next to Church View Close, or with links to the developer, landowner or the 1980s parties, "
       "should say so before the item is discussed."]),
     ("Item 4", "Public participation",
-     "The three-minute statement. Scope, not detail. End with the three asks.",
+     "The three-minute statement. Scope, not detail. End with the four asks.",
      ["Use the statement in “At the microphone”.",
       "Ask the Chair at the start whether you may make an audio record of Item 10 for your own notes. Wales has no automatic right to film or record community council meetings, so ask rather than assume.",
       "Ask the Chair, before you sit down, whether the family may speak again when Item 10 is reached."]),
@@ -116,7 +116,7 @@ ORDER = [
       "The Vale Scrutiny Committee's reply that it was unable to consider the family's request.",
       "The history of village green VG41, registered 16 June 1970 beside the farm."]),
     ("Item 10", "Great House Farm / Tŷ Mawr",
-     "The main event. Walk the eight asks. Push for a decision on the first, second and fifth.",
+     "The main event. Walk the ten asks. Push for a decision on the first, second and fifth.",
      ["If the Council cannot decide everything tonight, ask for a working group and a date.",
       "Ask that every action is minuted with a name and a deadline."]),
     ("Item 12", "Llandough and Cwrtyrala Community Council",
