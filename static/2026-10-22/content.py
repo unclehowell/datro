@@ -632,7 +632,7 @@ BRIEF = [
 
 # ---- Provenance, corrections and accessibility (for later scrutiny) ----
 VERSION = {
-    "version": "4.0",
+    "version": "4.1",
     "date": "14 October 2026",
     "prepared_by": "Sion Buckler, grandson of Mary Williams, for the Williams–Buckler family",
     "method": ("Drafted with AI assistance from the family's public Wiki registers, its correspondence log and published "
