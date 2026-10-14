@@ -133,7 +133,7 @@ def site():
   <div class="nav-in">
     <a class="brand" href="#top">Tŷ Mawr <span>at Council</span></a>
     <nav class="links" aria-label="Sections">
-      <a href="#ask">The ask</a><a href="#order">Running order</a><a href="#scope">Why it matters</a><a href="#story">The story</a><a href="#known">On record</a><a href="#wall">The wall</a><a href="#risks">The risks</a><a href="#mic">At the mic</a>
+      <a href="#ask">The ask</a><a href="#order">Running order</a><a href="#scope">Why it matters</a><a href="#story">The story</a><a href="#known">The record</a><a href="#wall">The wall</a><a href="#risks">The risks</a><a href="#mic">At the mic</a><a href="{WIKI}/" target="_blank" rel="noopener noreferrer">Evidence Wiki ↗</a>
     </nav>
     <button class="toggle" type="button" data-expand>Open everything</button>
     <a class="btn-red" href="meeting-pack.pdf" download>Download PDF</a>
@@ -149,6 +149,7 @@ def site():
     <div class="ctas">
       <a class="btn-red big" href="meeting-pack.pdf" download>Download the meeting pack</a>
       <a class="btn-line" href="#order">See the running order</a>
+      <a class="btn-line" href="{WIKI}/" target="_blank" rel="noopener noreferrer">Read the evidence Wiki ↗</a>
     </div>
   </div>
   <figure class="hero-photo">
@@ -202,7 +203,7 @@ def site():
 <section class="sec" id="story">
   <div class="sec-head">
     <h2>The story they told.</h2>
-    <p>In 1988 the papers called it an eviction. Here is what they left out.</p>
+    <p>Contemporary coverage framed the dispute as an eviction. These articles show what was reported at the time; they do not prove every claim in print.</p>
   </div>
   <ul class="swaps">{swaps}</ul>
   <figure class="barn">
@@ -210,14 +211,14 @@ def site():
     <figcaption>The barn at Great House Farm, 29 July 1988 (Cadw). Peerless Jim Driscoll's first fight is recorded in a barn here.</figcaption>
   </figure>
   <details class="court">
-    <summary><span class="court-h">Lost on possession. Never tried on ownership.</span><span class="court-l">Why the family says every court got the wrong question.</span><span class="readmore">Read more</span></summary>
+    <summary><span class="court-h">The judgments—and the title questions still being tested.</span><span class="court-l">What the courts decided, what the records show, and what still needs checking.</span><span class="readmore">Read more</span></summary>
     <div class="more"><ul>{court}</ul><p class="note">{e(COURT_NOTE)}</p>{label('fam')}</div>
   </details>
 </section>
 
 <section class="sec" id="known">
   <div class="sec-head">
-    <h2>Already on the record.</h2>
+    <h2>The record: facts and open questions.</h2>
     <p>{e(THRESHOLD)}</p>
   </div>
   <ul class="counts">{counts}</ul>
@@ -629,13 +630,13 @@ def pack():
 <section class="page">
   <h2><span>7</span> The story they told, and the record</h2>
   <table class="t swaps">{swaps}</table>
-  <h3>Lost on possession. Never tried on ownership.</h3>
+  <h3>The judgments—and the title questions still being tested</h3>
   <ul>{court}</ul>
   <p class="meta">{e(COURT_NOTE)}</p>
 </section>
 
 <section class="page">
-  <h2><span>8</span> Already on the record</h2>
+  <h2><span>8</span> The record: facts and open questions</h2>
   <p class="threshold">{e(THRESHOLD)}</p>
   <p class="meta">From the family's public registers on the Great House Farm Wiki: {counts}.</p>
   <table class="t knownt">{known}</table>
