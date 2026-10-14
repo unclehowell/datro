@@ -40,18 +40,29 @@ jobs:
         run: python3 build.py
       - name: Commit generated outputs to the deployment branch
         run: |
-          git add static/2026-10-22/index.html \
-                  static/2026-10-22/pack.html \
-                  static/2026-10-22/meeting-script.txt \
-                  static/2026-10-22/meeting-pack.pdf
-          if ! git diff --cached --quiet; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # A second run may finish a build while this run is rendering the PDF.
+          # Never try to merge two generated PDFs. On a push race, discard this
+          # stale output, fetch the latest source, and regenerate all deliverables.
+          for attempt in 1 2 3; do
+            git add static/2026-10-22/index.html \
+                    static/2026-10-22/pack.html \
+                    static/2026-10-22/meeting-script.txt \
+                    static/2026-10-22/meeting-pack.pdf
+            if git diff --cached --quiet; then
+              echo "Generated outputs already match the latest source."
+              exit 0
+            fi
             git commit -m "2026-10-22: rebuild meeting site and PDF from source"
-            # Another authorised edit may land after checkout/build. Rebase the generated
-            # artefacts onto the newest branch tip before pushing; never overwrite history.
-            git pull --rebase origin "${GITHUB_REF_NAME}"
-            git push origin "HEAD:${GITHUB_REF_NAME}"
-          else
-            echo "Generated outputs already match the source."
-          fi
+            if git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+            if [ "$attempt" -eq 3 ]; then
+              echo "Push failed after three fresh-build attempts."
+              exit 1
+            fi
+            git fetch origin "${GITHUB_REF_NAME}"
+            git reset --hard "origin/${GITHUB_REF_NAME}"
+            python3 static/2026-10-22/build.py
+          done
