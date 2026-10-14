@@ -180,6 +180,26 @@ details[open] .readmore{visibility:hidden}
 .regime-n{display:block;font-size:.85rem;color:var(--stone);margin:4px 0 8px}
 .regime p{font-size:.95rem;color:#e4e9e6}
 
+/* briefing */
+.cmps{border-top:3px solid var(--ink)}
+.cmp{border-bottom:1px solid var(--rule)}
+.cmp summary{display:grid;grid-template-columns:3.4rem minmax(0,1fr) 28px;gap:6px 16px;padding:22px 0;align-items:baseline}
+.cmp-id{font:850 1.5rem/1 var(--display);font-stretch:62%;color:var(--red);grid-row:1/3}
+.cmp-t{font:850 clamp(1.5rem,3vw,2rem)/1 var(--display);font-stretch:62%;text-transform:uppercase;color:var(--muted);grid-column:2}
+.cmp-say{grid-column:2;font-size:clamp(1.15rem,2.1vw,1.45rem);font-weight:700;line-height:1.35;max-width:42em}
+.cmp .plus{grid-column:3;grid-row:1}
+.cmp summary:hover .cmp-say{color:var(--red)}
+.cmp-body{padding:0 0 24px calc(3.4rem + 16px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 28px}
+.cmp-col h4{margin:0 0 8px;font-size:.85rem;font-weight:800;color:var(--red)}
+.cmp-col ul{margin:0;padding-left:18px}.cmp-col li{margin-bottom:8px;font-size:.98rem}
+.cmp-ask,.cmp-body .ref{grid-column:1/-1;margin:4px 0 0}
+.cmp-ask{background:var(--lime);border-left:4px solid var(--ink);padding:10px 14px}
+.threshold-box{margin-top:40px;background:var(--slate);color:#fff;padding:clamp(20px,3vw,32px)}
+.threshold-box>p{font-size:1.1rem;max-width:44em;margin:0 0 20px}
+.threshold-box .counts{border-top-color:#fff;margin-bottom:0}
+.threshold-box .counts li+li{border-left-color:#ffffff30}
+.threshold-box .c-src{color:var(--stone)}
+.rows+.aside+.mission{margin-top:40px}
 /* on record */
 .counts{list-style:none;margin:0 auto 34px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:3px solid var(--ink)}
 .counts li{padding:18px 20px 18px 0;display:flex;flex-direction:column;gap:4px}
@@ -236,6 +256,7 @@ details[open] .readmore{visibility:hidden}
   .row summary{grid-template-columns:2.4rem minmax(0,1fr) 24px}
   .mission ul{grid-template-columns:1fr}
   .dates li{grid-template-columns:1fr}
+  .cmp-body{grid-template-columns:1fr;padding-left:0}.cmp summary{grid-template-columns:2.6rem minmax(0,1fr) 24px}
   .counts{grid-template-columns:1fr}.counts li+li{padding-left:0;border-left:0;border-top:1px solid var(--rule)}
   .withheld li{grid-template-columns:1fr}
   .risks li{grid-template-columns:2.4rem minmax(0,1fr)}
@@ -251,12 +272,12 @@ details[open] .readmore{visibility:hidden}
 </style>
 </head>
 <body>
-<a class="skip" href="#ask">Skip to the asks</a>
+<a class="skip" href="#brief">Skip to the briefing</a>
 <header class="nav">
   <div class="nav-in">
     <a class="brand" href="#top">Tŷ Mawr <span>at Council</span></a>
     <nav class="links" aria-label="Sections">
-      <a href="#ask">The ask</a><a href="#order">Running order</a><a href="#scope">Why it matters</a><a href="#story">The story</a><a href="#known">The record</a><a href="#wall">The wall</a><a href="#risks">The risks</a><a href="#mic">At the mic</a><a href="https://greathousefarmwiki.wordpress.com/" target="_blank" rel="noopener noreferrer">Evidence Wiki ↗</a>
+      <a href="#brief">The briefing</a><a href="#ask">The ask</a><a href="#order">Running order</a><a href="#story">The story</a><a href="#wall">The wall</a><a href="#risks">The risks</a><a href="#mic">At the mic</a><a href="https://greathousefarmwiki.wordpress.com/" target="_blank" rel="noopener noreferrer">Evidence Wiki ↗</a>
     </nav>
     <button class="toggle" type="button" data-expand>Open everything</button>
     <a class="btn-red" href="meeting-pack.pdf" download>Download PDF</a>
@@ -271,7 +292,7 @@ details[open] .readmore{visibility:hidden}
     <p class="lede">That is the Council&#x27;s own mission statement. On 22 October it considers Tŷ Mawr, the Great House of Llandough: a home our family account traces back to 1667, demolished at about 4am on 6 December 1988. Its wider heritage and the family&#x27;s unresolved title questions are still largely absent from the Council&#x27;s published story.</p>
     <div class="ctas">
       <a class="btn-red big" href="meeting-pack.pdf" download>Download the meeting pack</a>
-      <a class="btn-line" href="#order">See the running order</a>
+      <a class="btn-line" href="#brief">Read the briefing</a>
       <a class="btn-line" href="https://greathousefarmwiki.wordpress.com/" target="_blank" rel="noopener noreferrer">Read the evidence Wiki ↗</a>
     </div>
   </div>
@@ -285,10 +306,85 @@ details[open] .readmore{visibility:hidden}
   <ol><li><span class="b-line">320 years at home.</span><span class="b-note">Family account, 1667–1988</span></li><li><span class="b-line">Gone before breakfast.</span><span class="b-note">Demolished from about 4am, 6 December 1988</span></li><li><span class="b-line">38 years out of the story.</span><span class="b-note">Great House remains absent from the Council&#x27;s published village history</span></li></ol>
 </section>
 
+<section class="sec" id="brief">
+  <div class="sec-head">
+    <h2>The briefing.</h2>
+    <p>Nine compartments, in order. Say the line in bold, then move on. Open a compartment only if a councillor asks: the record is underneath, with what is still being tested and the answer to the obvious objection.</p>
+  </div>
+  <div class="cmps">
+      <details class="cmp" id="c1">
+        <summary><span class="cmp-id">C1</span><span class="cmp-t">Who we are</span><span class="cmp-say">We are the Williams–Buckler family of Tŷ Mawr, the Great House of Llandough. Our family lived there for 320 years.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="more cmp-body"><div class="cmp-col"><h4>On the record</h4><ul><li>Heneb&#x27;s Historic Environment Record says the manorial courts of Llandough and Leckwith were held at Great House. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Mary Williams&#x27;s statement of about 1974, and the 1974 press, record the family at Great House since 1667. <span class="tag tag-fam" title="The family&#x27;s account or legal case, being tested">Family account</span></li><li>William Buckler was born in the house. In 1988 three small children lived there. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div><div class="cmp-col"><h4>Still being tested</h4><ul><li>No deed of 1667 has yet been found. The 1670 hearth tax and Bute estate leases are being searched. <span class="tag tag-open" title="Not yet established; records requested">Being sought</span></li></ul></div>
+          <p class="cmp-ask"><b>If asked “Weren&#x27;t you tenants?”</b> The 1939 tenancy plan, now held, depicts the eastern fields only, not the house. Mary refused the tenancies offered for the house.</p>
+          <p class="ref">Evidence: Wiki: The Williams / Buckler Family · Wiki: Mary Williams&#x27;s Statement (c. 1974) · Heneb HER GGAT02038s</p>
+        </div>
+      </details>
+      <details class="cmp" id="c2">
+        <summary><span class="cmp-id">C2</span><span class="cmp-t">What lies there</span><span class="cmp-say">The ground at Church View Close held one of the great early Christian cemeteries of Wales. Nothing marks it.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="more cmp-body"><div class="cmp-col"><h4>On the record</h4><ul><li>A published study reports 1,026 burials from the early medieval cemetery excavated there in 1994, the largest such population recovered in Wales. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>St Dochdwy&#x27;s monastery is attested from the 7th century. Heneb says its exact site has not been established. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Medieval pottery was found on the slope beside the house in 1962–63. The Roman villa south of the church is a separate site. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Published sources record Peerless Jim Driscoll&#x27;s first fight in a barn at Great House Farm. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Marconi&#x27;s 1897 wireless trials crossed from Lavernock to Flat Holm. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div><div class="cmp-col"><h4>Still being tested</h4><ul><li>Family tradition that Thomas Williams of Great House carted Marconi&#x27;s equipment. <span class="tag tag-fam" title="The family&#x27;s account or legal case, being tested">Family account</span></li><li>Where the monastery stood. It is not proven to lie beneath Tŷ Mawr. <span class="tag tag-open" title="Not yet established; records requested">Being sought</span></li></ul></div>
+          <p class="cmp-ask"><b>If asked “Isn&#x27;t this history already told?”</b> The Council&#x27;s own village history says 800 burials and does not mention Great House at all.</p>
+          <p class="ref">Evidence: Holbrook and Thomas, Medieval Archaeology 49 (2005) · Wiki: Archaeology and Heritage · Stead and Williams, Wales and its Boxers (2008)</p>
+        </div>
+      </details>
+      <details class="cmp" id="c3">
+        <summary><span class="cmp-id">C3</span><span class="cmp-t">Mary&#x27;s parcel</span><span class="cmp-say">For decades Mary Williams said the house was hers. She was treated as a tenant, and in 1983 her home was registered to BP while she lived in it.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="more cmp-body"><div class="cmp-col"><h4>On the record</h4><ul><li>April 1974: Mary opened the house to the public and told the Daily Telegraph it was hers. Her solicitors said she had a valid claim. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>She refused the tenancies offered for the house in 1959 and 1965. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>BP&#x27;s 1974 action, in which she pleaded ownership, was adjourned and not relisted. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>23 February 1983: BP&#x27;s solicitors applied to register the farmhouse as a separate title, certifying no question or doubt. Mary died on 26 March 1983. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>2 February 1987: that title was amalgamated into the fields title, before the Court of Appeal hearing. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>The 1939 tenancy plan depicts the eastern fields, Parcel B, only. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>The Land Registry&#x27;s 43-item schedule does not list the 1969 deed recited as the root of BP&#x27;s title. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div><div class="cmp-col"><h4>Still being tested</h4><ul><li>The family&#x27;s case: two parcels since 1877, the house parcel theirs from 1928. <span class="tag tag-fam" title="The family&#x27;s account or legal case, being tested">Family account</span></li><li>A 15 May 1924 agreement on the Land Registry file, not yet read. <span class="tag tag-open" title="Not yet established; records requested">Being sought</span></li><li>The “synthetic Parcel A” working hypothesis: that registration and merger made the house appear to follow the fields&#x27; title. <span class="tag tag-open" title="Not yet established; records requested">Being sought</span></li><li>The family&#x27;s account that notice of registration reached them only after Mary&#x27;s death. <span class="tag tag-fam" title="The family&#x27;s account or legal case, being tested">Family account</span></li></ul></div>
+          <p class="cmp-ask"><b>If asked “The register is conclusive.”</b> The register can be corrected for mistake, and a person in actual occupation in 1982 had protected rights.</p>
+          <p class="ref">Evidence: Wiki: The Two Parcels · Wiki: Land Registry Titles · Wiki: Anomalies A-008 to A-012, A-025, A-026 · Wiki: 1987 HMLR amalgamation during appeal</p>
+        </div>
+      </details>
+      <details class="cmp" id="c4">
+        <summary><span class="cmp-id">C4</span><span class="cmp-t">The courts</span><span class="cmp-say">The family lost every round on who could stay. No court has ruled on who owned the house.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="more cmp-body"><div class="cmp-col"><h4>On the record</h4><ul><li>High Court 1986 and Court of Appeal 1987 decided possession. The House of Lords refused leave in 1988; Strasbourg found the application inadmissible in 1989. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>The Court of Appeal counted the possession period from a 1955 order. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>The appeal judgment notes certain documents were never produced. Mary&#x27;s statement says the family&#x27;s papers went missing in 1950–52. <span class="tag tag-fam" title="The family&#x27;s account or legal case, being tested">Family account</span></li><li>On 5 December 1988 the court refused to wait for Strasbourg. The house came down the next morning. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>The House of Lords papers were identified on 23 September 2026 after earlier searches missed them. The Strasbourg file was destroyed in 2000. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div><div class="cmp-col"><h4>Still being tested</h4><ul><li>Procedural unfairness, court error and non-disclosure. Reopening needs new primary evidence; the Lords papers are not yet read. <span class="tag tag-open" title="Not yet established; records requested">Being sought</span></li></ul></div>
+          <p class="cmp-ask"><b>If asked “The courts have decided this.”</b> They decided possession. The family&#x27;s title case on the house parcel has not been tried.</p>
+          <p class="ref">Evidence: BP Properties Ltd v Buckler [1987] EWCA Civ 2 · Wiki: BP v Buckler, Scope, Decided and Undecided · Wiki: Potential Miscarriage of Justice register</p>
+        </div>
+      </details>
+      <details class="cmp" id="c5">
+        <summary><span class="cmp-id">C5</span><span class="cmp-t">The dispossession</span><span class="cmp-say">In 1988 a Welsh family was removed from its home and the house demolished before dawn. It was reported as an eviction.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="more cmp-body"><div class="cmp-col"><h4>On the record</h4><ul><li>Press, 29 April 1988: five bailiffs and about fifteen police; doors broken with poleaxes, children behind them. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Press, December 1988: William Buckler injured, taken to hospital, and charged from his hospital bed. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Press, 6 December 1988: bulldozers from about 4am; Branwen and three children watched; nothing standing by breakfast. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Press, 1989: the family&#x27;s possessions lost and the family rehoused with relatives. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Press: a Vale councillor called the demolition “disgusting”; villagers met their councillors. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div><div class="cmp-col"><h4>Still being tested</h4><ul><li>The family&#x27;s account that police searched the house and removed documents. <span class="tag tag-fam" title="The family&#x27;s account or legal case, being tested">Family account</span></li></ul></div>
+          <p class="cmp-ask"><b>If asked “Why has it taken so long?”</b> Witnesses died, papers were lost and the trauma silenced the family. Key records surfaced only in 2026.</p>
+          <p class="ref">Evidence: Wiki: 1988, Possession and Demolition · Press transcripts GHF-E090-N07 to N15</p>
+        </div>
+      </details>
+      <details class="cmp" id="c6">
+        <summary><span class="cmp-id">C6</span><span class="cmp-t">The heritage erased</span><span class="cmp-say">A Welsh manor house beside an early Christian site was cleared, and the official record was left saying almost nothing.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="more cmp-body"><div class="cmp-col"><h4>On the record</h4><ul><li>The Local Plan said the buildings should be retained. GGAT&#x27;s 1989 report described the farmhouse as a “county treasure”. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Cadw refused to list it on 5 December 1988. No assessment file or destruction record has been produced. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>GGAT warned in 1982. In 1990 untested ground was zoned low potential. Burials were found there in 1994. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>The heritage record classes the site “Post Medieval – Farm”. The Royal Commission recorded it only in part. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>A 1983 fire destroyed relics from years of excavations (South Wales Echo, 18 March 1983). <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div><div class="cmp-col"><h4>Still being tested</h4><ul><li>The family&#x27;s account that the fire was at a Neath store and that Llandough material was lost. <span class="tag tag-fam" title="The family&#x27;s account or legal case, being tested">Family account</span></li><li>Whether the 1990 evaluation was adequate on what was known then. <span class="tag tag-open" title="Not yet established; records requested">Being sought</span></li></ul></div>
+          <p class="cmp-ask"><b>If asked “Missing records prove nothing.”</b> Agreed, on their own. These are files public bodies had a duty to keep, and they should account for the gaps.</p>
+          <p class="ref">Evidence: Wiki: Anomalies A-036 to A-052, PL-002 to PL-008 · Wiki: Missing Records M-018 to M-028</p>
+        </div>
+      </details>
+      <details class="cmp" id="c7">
+        <summary><span class="cmp-id">C7</span><span class="cmp-t">The records wall</span><span class="cmp-say">More than twenty bodies have been asked for the records over eighteen months. What would settle the questions has not yet been produced.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="more cmp-body"><div class="cmp-col"><h4>On the record</h4><ul><li>54 records identified as missing, withheld or not yet produced. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>The Ministry of Justice has not yet answered our MP. The Ministry of Defence will neither confirm nor deny whether it holds certain records. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>This Council refused on cost; a review is pending. The Vale&#x27;s scrutiny team declined, citing the Welsh Government, Cadw, MSs and MPs. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>The Wales Office searched only digital records. Planning appendices B–E have not been produced. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div><div class="cmp-col"><h4>Still being tested</h4><ul><li>Fraud, deliberate concealment and improper government involvement are not established. Disclosure is the test, whichever way it falls. <span class="tag tag-open" title="Not yet established; records requested">Being sought</span></li></ul></div>
+          <p class="cmp-ask"><b>If asked “Isn&#x27;t this a fishing expedition?”</b> Every request names a specific record. The registers list them one by one.</p>
+          <p class="ref">Evidence: Wiki: Missing Records Register · Wiki: Records Access Chronology · dartboard.bucklerfamily.estate</p>
+        </div>
+      </details>
+      <details class="cmp" id="c8">
+        <summary><span class="cmp-id">C8</span><span class="cmp-t">Rights, identity, public interest</span><span class="cmp-say">This is a matter of human rights, Welsh heritage and public interest, not one family&#x27;s grievance.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="more cmp-body"><div class="cmp-col"><h4>On the record</h4><ul><li>In 1989 Strasbourg accepted the possession order interfered with William Buckler&#x27;s home, but held it justified. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>About a thousand people signed to save the house in 1974. An MP asked the Lord Chancellor to review the case in 1988. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>In 1980 the Commons heard Western Ground Rents called the most rapacious ground landlord in South Wales. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Tonight&#x27;s agenda already asks about Welsh culture (Item 14) and local identity (Item 12). <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div><div class="cmp-col"><h4>Still being tested</h4><ul><li>The family&#x27;s view: Welsh land, history and identity were overridden and erased, as indigenous peoples&#x27; have been elsewhere. <span class="tag tag-fam" title="The family&#x27;s account or legal case, being tested">Family account</span></li></ul></div>
+          <p class="cmp-ask"><b>If asked “Why should a community council get involved?”</b> Its own mission is preserving our identity. It is the community&#x27;s voice to the Senedd and the Vale.</p>
+          <p class="ref">Evidence: Hansard, 22 May 1980 · Buckler v United Kingdom (14464/88) · Wiki: Q&amp;A, Human Rights and Public Law</p>
+        </div>
+      </details>
+      <details class="cmp" id="c9">
+        <summary><span class="cmp-id">C9</span><span class="cmp-t">What we ask</span><span class="cmp-say">Put it on the record. Make it a standing item. Recommend an independent inquiry. Support disclosure, and the family.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="more cmp-body">
+          <p class="cmp-ask"><b>If asked “What can a community council do?”</b> Record it, write letters, recommend an inquiry, and keep it on the agenda. That is how this starts.</p>
+          <p class="ref">Evidence: The ask, below</p>
+        </div>
+      </details></div>
+  <div class="threshold-box">
+    <p>Research has only started. The family does not claim that fraud, deliberate concealment or improper government involvement has been established or that the legal threshold to reopen the case has been met. Some records have been disclosed; others are missing, reported destroyed, not yet produced or still under review. The public record establishes important facts but leaves specific title and procedural questions unresolved.</p>
+    <ul class="counts"><li><span class="c-big">86</span><span class="c-l">open lines of enquiry</span><span class="c-src">Anomalies Register: 71 issues plus 15 planning anomalies</span></li><li><span class="c-big">54</span><span class="c-l">records missing or withheld</span><span class="c-src">Missing Records Register, M-001 to M-054</span></li><li><span class="c-big">20+</span><span class="c-l">bodies asked since November 2025</span><span class="c-src">Records Access Chronology</span></li></ul>
+  </div>
+</section>
+
 <section class="sec" id="ask">
   <div class="sec-head">
     <h2>Item 10 is too small for this.</h2>
-    <p>The agenda reduces it to a plaque and a mailing list. These are the eight things to put before the Council, in priority order. Open any one for the draft resolution.</p>
+    <p>The agenda reduces it to a plaque and a mailing list. These are the ten things to put before the Council, in priority order. The first five are for decision tonight. Open any one for the draft resolution.</p>
   </div>
   <div class="rows">
       <details class="row">
@@ -306,24 +402,24 @@ details[open] .readmore{visibility:hidden}
         </div>
       </details>
       <details class="row">
-        <summary><span class="num">03</span><span class="row-h">Correct the Council&#x27;s own history</span><span class="row-l">The village history page says 800 burials and nothing about Great House.</span><span class="plus" aria-hidden="true"></span></summary>
+        <summary><span class="num">03</span><span class="row-h">Recommend an independent inquiry</span><span class="row-l">Ask the Senedd to consider an independent public inquiry.</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="more">
-          <p class="why">The page gives “over 800 burials” (the published report counts 1,026), dates the Roman villa to the 1990s (it was excavated in 1978–79), and does not mention Great House, the Williams family or the demolition.</p>
-          <p class="resolution"><span>Draft resolution</span>That the Council&#x27;s published village history is revised, with heritage advice and the family&#x27;s input, to record Great House, the manorial courts held there, its demolition in 1988, and the 1,026 inhumation burials reported in the published excavation study.</p>
+          <p class="why">The Vale&#x27;s scrutiny team declined because the matter is already before the Welsh Government, Cadw, MSs and MPs. That makes it a Senedd-level question. The Senedd has already advised the family to petition.</p>
+          <p class="resolution"><span>Draft resolution</span>That the Council writes to the Senedd&#x27;s Petitions Committee and Culture Committee and to the area&#x27;s Members of the Senedd, recommending that an independent inquiry be considered into the dispossession of the Williams–Buckler family, the demolition of Great House in 1988, the handling of the site&#x27;s heritage, and the records since; and that it supports any petition the family brings.</p>
         </div>
       </details>
       <details class="row">
-        <summary><span class="num">04</span><span class="row-h">Mark it on the ground</span><span class="row-l">A board or memorial near the green: monastery, the 1,026 dead, the manor, Marconi, Peerless Jim.</span><span class="plus" aria-hidden="true"></span></summary>
+        <summary><span class="num">04</span><span class="row-h">Acknowledge the harm</span><span class="row-l">Recognise what the family went through, and ask for support for them.</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="more">
-          <p class="why">There is nothing on the ground that records any of it. The family has offered a free talk to the Council or residents.</p>
-          <p class="resolution"><span>Draft resolution</span>That a working group is set up to scope an interpretation board or memorial near the green, covering St Dochdwy&#x27;s monastery, the 1,026 early medieval burials, Great House and the manor, the 1897 wireless trials and Peerless Jim Driscoll, with wording checked against sources and agreed with the family; and to explore a Llandough companion to the Marconi artwork on the Cardiff Barrage.</p>
+          <p class="why">Three generations lived through the evictions, the demolition and 38 years without a hearing. Recognition costs the Council nothing.</p>
+          <p class="resolution"><span>Draft resolution</span>That the Council acknowledges the distress and indignity suffered by the Williams–Buckler family in the 1988 dispossession and since, and writes to Cardiff and Vale University Health Board supporting the family&#x27;s access to trauma-informed counselling.</p>
         </div>
       </details>
       <details class="row">
-        <summary><span class="num">05</span><span class="row-h">Find the witnesses</span><span class="row-l">Invite people who remember the village from the 1950s to the 1990s to come forward.</span><span class="plus" aria-hidden="true"></span></summary>
+        <summary><span class="num">05</span><span class="row-h">Speak up for disclosure</span><span class="row-l">Write to the bodies holding the records, and ask them to keep everything.</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="more">
-          <p class="why">This is the request already listed as Item 10(a). Forwarding an invitation discloses nobody&#x27;s data.</p>
-          <p class="resolution"><span>Draft resolution</span>That the Council forwards the family&#x27;s invitation to former members, former clerks and long-standing residents, leaving it to them whether to make contact; no personal details to be disclosed without consent.</p>
+          <p class="why">A letter from the community&#x27;s own council carries weight no family letter can. It asks for openness, not a verdict.</p>
+          <p class="resolution"><span>Draft resolution</span>That the Clerk writes on the Council&#x27;s behalf to Cadw, the Vale of Glamorgan Council, HM Land Registry, Amgueddfa Cymru and the National Library of Wales, and to the Ministry of Justice about its outstanding reply to Stephen Doughty MP, copied to Mr Doughty and the area&#x27;s Members of the Senedd, supporting full and prompt disclosure to the family and the preservation of all records meanwhile.</p>
         </div>
       </details>
       <details class="row">
@@ -334,20 +430,39 @@ details[open] .readmore{visibility:hidden}
         </div>
       </details>
       <details class="row">
-        <summary><span class="num">07</span><span class="row-h">Speak up for disclosure</span><span class="row-l">Write to the bodies holding the records, and note the call for an inquiry.</span><span class="plus" aria-hidden="true"></span></summary>
+        <summary><span class="num">07</span><span class="row-h">Correct the Council&#x27;s own history</span><span class="row-l">The village history page says 800 burials and nothing about Great House.</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="more">
-          <p class="why">A letter from the community&#x27;s own council carries weight no family letter can. It asks for openness, not a verdict.</p>
-          <p class="resolution"><span>Draft resolution</span>That the Clerk writes on the Council&#x27;s behalf to Cadw, the Vale of Glamorgan Council, HM Land Registry, Amgueddfa Cymru and the National Library of Wales, and to the Ministry of Justice about its outstanding reply to Stephen Doughty MP, copied to Mr Doughty and the area&#x27;s Members of the Senedd, supporting full and prompt disclosure to the family and the preservation of all records meanwhile; and that the Council notes the family&#x27;s call for an independent public inquiry.</p>
+          <p class="why">The page gives “over 800 burials” (the published report counts 1,026), dates the Roman villa to the 1990s (it was excavated in 1978–79), and does not mention Great House, the Williams family or the demolition.</p>
+          <p class="resolution"><span>Draft resolution</span>That the Council&#x27;s published village history is revised, with heritage advice and the family&#x27;s input, to record Great House, the manorial courts held there, its demolition in 1988, and the 1,026 inhumation burials reported in the published excavation study.</p>
         </div>
       </details>
       <details class="row">
-        <summary><span class="num">08</span><span class="row-h">Carry it into tonight&#x27;s other business</span><span class="row-l">Items 12 and 14 are about identity and culture. Tŷ Mawr belongs in both.</span><span class="plus" aria-hidden="true"></span></summary>
+        <summary><span class="num">08</span><span class="row-h">Mark it on the ground</span><span class="row-l">A board or memorial near the green: monastery, the 1,026 dead, the manor, Marconi, Peerless Jim.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="more">
+          <p class="why">There is nothing on the ground that records any of it. The family has offered a free talk to the Council or residents.</p>
+          <p class="resolution"><span>Draft resolution</span>That a working group is set up to scope an interpretation board or memorial near the green, covering St Dochdwy&#x27;s monastery, the 1,026 early medieval burials, Great House and the manor, the 1897 wireless trials and Peerless Jim Driscoll, with wording checked against sources and agreed with the family; and to explore a Llandough companion to the Marconi artwork on the Cardiff Barrage.</p>
+        </div>
+      </details>
+      <details class="row">
+        <summary><span class="num">09</span><span class="row-h">Find the witnesses</span><span class="row-l">Invite people who remember the village from the 1950s to the 1990s to come forward.</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="more">
+          <p class="why">This is the request already listed as Item 10(a). Forwarding an invitation discloses nobody&#x27;s data.</p>
+          <p class="resolution"><span>Draft resolution</span>That the Council forwards the family&#x27;s invitation to former members, former clerks and long-standing residents, leaving it to them whether to make contact; no personal details to be disclosed without consent.</p>
+        </div>
+      </details>
+      <details class="row">
+        <summary><span class="num">10</span><span class="row-h">Carry it into tonight&#x27;s other business</span><span class="row-l">Items 12 and 14 are about identity and culture. Tŷ Mawr belongs in both.</span><span class="plus" aria-hidden="true"></span></summary>
         <div class="more">
           <p class="why">The agenda already asks the Council to think about Welsh culture, sport and local identity. Here is Llandough&#x27;s strongest example.</p>
           <p class="resolution"><span>Draft resolution</span>That Tŷ Mawr&#x27;s heritage, including Peerless Jim Driscoll and the 1897 wireless trials, is considered in the Council&#x27;s response to the Welsh Government call for evidence on culture and sport (Item 14, closing 18 December 2026) and in the heritage and identity of the proposed Llandough and Cwrtyrala Community Council (Item 12).</p>
         </div>
       </details></div>
   <p class="aside">Not asked: for the Council to decide ownership, fraud or whether any court was right. Those belong to courts and regulators. The Council is asked to put the matter on record and use its own powers.</p>
+  <div class="mission">
+    <p class="mission-q">“Serving our community, preserving our identity.”</p>
+    <p class="mission-by">The Council's mission statement, and its four commitments:</p>
+    <ul><li>Be open and accessible in all our decision making</li><li>Be accountable in all our council activities</li><li>Be responsive to the needs of the community</li><li>Encourage community participation</li></ul>
+  </div>
 </section>
 
 <section class="sec sec-slate" id="order">
@@ -394,71 +509,6 @@ details[open] .readmore{visibility:hidden}
       </div></div>
 </section>
 
-<section class="sec" id="scope">
-  <div class="sec-head">
-    <h2>Why it matters.</h2>
-    <p>The first meeting is about scope, politics and culture. Detail comes later, meeting by meeting, in public.</p>
-  </div>
-  <div class="pillars">
-      <details class="pillar">
-        <summary><span class="pillar-k">Scope</span><span class="pillar-h">Bigger than a plaque.</span><span class="pillar-l">A historic farmhouse, a recorded manorial role, a nearby early-medieval cemetery, and an unresolved title dispute.</span><span class="readmore">Read more</span></summary>
-        <ul class="more"><li>Heneb records that the manorial courts of Llandough and Leckwith were held at Great House.</li><li>A published study reports 1,026 inhumation burials at Llandough; the precise location of St Dochdwy&#x27;s monastery remains unestablished.</li><li>The family account traces its occupation of the house to 1667; the house was demolished on 6 December 1988.</li><li>The family&#x27;s primary title case distinguishes the full Parcel A from the eastern Parcel B; legal extent still needs testing against original deeds, plans and register files.</li><li>More than twenty bodies have been asked for records since November 2025.</li></ul>
-      </details>
-      <details class="pillar">
-        <summary><span class="pillar-k">Politics</span><span class="pillar-h">Who keeps the public record?</span><span class="pillar-l">Preserve records, correct local-history omissions, and enable scrutiny without asking councillors to decide title.</span><span class="readmore">Read more</span></summary>
-        <ul class="more"><li>The family disputes the legal and historical account used in the possession litigation. Its current work is testing the title documents and their scope.</li><li>The Council need not find for either side to preserve records, record the family account accurately, correct local-history omissions and facilitate scrutiny.</li><li>Fraud, deliberate concealment and improper government involvement are not established; the family is seeking records to test those possibilities.</li><li>The Council&#x27;s own commitments are openness, accountability, responsiveness, and community participation.</li></ul>
-      </details>
-      <details class="pillar">
-        <summary><span class="pillar-k">Culture</span><span class="pillar-h">Llandough&#x27;s story, not only ours.</span><span class="pillar-l">An early-Christian centre, a manor, the 1897 wireless trials on this coast, and a Welsh boxing champion.</span><span class="readmore">Read more</span></summary>
-        <ul class="more"><li>Heneb says the exact location of St Dochdwy&#x27;s monastic centre has not been established; the farmhouse site should not be described as a proven monastery footprint.</li><li>Amgueddfa Cymru documents Marconi&#x27;s 1897 wireless trials at Lavernock. The family&#x27;s connection between Great House and the work remains family tradition awaiting corroboration.</li><li>Published sources associate Peerless Jim Driscoll&#x27;s first fight with the Great House Farm barn.</li><li>These cultural and archaeological subjects can be interpreted with clear source labels without pre-judging the private title dispute.</li></ul>
-      </details></div>
-  <div class="mission">
-    <p class="mission-q">“Serving our community, preserving our identity.”</p>
-    <p class="mission-by">The Council's mission statement, and its four commitments:</p>
-    <ul><li>Be open and accessible in all our decision making</li><li>Be accountable in all our council activities</li><li>Be responsive to the needs of the community</li><li>Encourage community participation</li></ul>
-  </div>
-</section>
-
-<section class="sec sec-lime" id="missing">
-  <div class="sec-head">
-    <h2>What the agenda leaves out.</h2>
-    <p>Eight things the published agenda does not mention. Each is a headline. Open it for the record.</p>
-  </div>
-  <div class="tiles">
-      <details class="tile">
-        <summary><span class="tile-big">Monastery</span><span class="tile-h">The monastery&#x27;s exact site is unlocated.</span><span class="tile-l">Llandough was an important early-Christian centre; Heneb says the monastery&#x27;s exact location has not been established.</span><span class="readmore">Read more</span></summary>
-        <div class="more"><p>The Council&#x27;s own page says Llandough was “almost certainly” its site. Heneb does not locate it precisely. Medieval pottery was found on the slope beside the house in 1962–63. These facts support interpretation and further research, not a claim that the monastery stood beneath Tŷ Mawr.</p><span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></div>
-      </details>
-      <details class="tile">
-        <summary><span class="tile-big">1,026</span><span class="tile-h">A cemetery, not just a number.</span><span class="tile-l">A published excavation study reports 1,026 inhumation burials at Llandough.</span><span class="readmore">Read more</span></summary>
-        <div class="more"><p>The Cotswold Archaeological Trust excavated the cemetery in 1994. The published count is attributed to the study; the cemetery record and the monastery&#x27;s unlocated footprint remain distinct questions. Nothing on the ground currently explains this history to visitors.</p><span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></div>
-      </details>
-      <details class="tile">
-        <summary><span class="tile-big">The manor</span><span class="tile-h">The courts sat here.</span><span class="tile-l">The manorial courts of Llandough and Leckwith were held at Great House.</span><span class="readmore">Read more</span></summary>
-        <div class="more"><p>Recorded in the official Historic Environment Record (GGAT02038s), which also notes building details suggesting an older core, a 1974 survey limited by the ownership dispute, and demolition on 6 December 1988 amid local controversy.</p><span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></div>
-      </details>
-      <details class="tile">
-        <summary><span class="tile-big">1897</span><span class="tile-h">Marconi.</span><span class="tile-l">The first wireless message over open sea crossed from Lavernock to Flat Holm.</span><span class="readmore">Read more</span></summary>
-        <div class="more"><p>The trials of May 1897 are documented by Amgueddfa Cymru. Family tradition records that Thomas Williams of Great House carted the equipment, and that the house lodged visitors connected with the work. That family part is still to be corroborated, which is a reason to research it, not to leave it out.</p><span class="tag tag-fam" title="The family&#x27;s account or legal case, being tested">Family account</span></div>
-      </details>
-      <details class="tile">
-        <summary><span class="tile-big">Peerless Jim</span><span class="tile-h">First fight, in the barn.</span><span class="tile-l">Jim Driscoll, Cardiff&#x27;s featherweight legend, is recorded as first fighting at Great House Farm.</span><span class="readmore">Read more</span></summary>
-        <div class="more"><p>Published sources cite the National Monuments Record for Wales for Driscoll&#x27;s first fight in a barn at Great House Farm, Llandough, and Stead and Williams, Wales and its Boxers (2008). The barn was demolished with the house.</p><span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></div>
-      </details>
-      <details class="tile">
-        <summary><span class="tile-big">04:00</span><span class="tile-h">Demolished in the dark.</span><span class="tile-l">The morning after listing was refused, with Strasbourg still pending.</span><span class="readmore">Read more</span></summary>
-        <div class="more"><p>On 5 December 1988 the court refused to continue the injunction pending the European Commission of Human Rights, and Cadw said the house was not of sufficient merit to list. Demolition began at about 4am the next day. An MP had asked the Lord Chancellor to review the case. The house was never fully recorded.</p><span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></div>
-      </details>
-      <details class="tile">
-        <summary><span class="tile-big">Our page</span><span class="tile-h">Says 800. Says nothing.</span><span class="tile-l">The Council&#x27;s village history omits Great House altogether.</span><span class="readmore">Read more</span></summary>
-        <div class="more"><p>The Council&#x27;s About Llandough page mentions the villa, “over 800 burials”, the church and the cross, but not Great House, the manorial courts, the family or the demolition. The Roman villa was excavated in 1978–80 south of the church; it is a separate site and must not be conflated with Great House Farm.</p><span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></div>
-      </details>
-      <details class="tile">
-        <summary><span class="tile-big">18 months</span><span class="tile-h">Open questions, not a proven cover-up.</span><span class="tile-l">More than twenty organisations asked; some records are missing or unproduced, others have been disclosed.</span><span class="readmore">Read more</span></summary>
-        <div class="more"><p>The Wiki tracks requests, replies, reviews and missing records. A missing record can matter; it does not by itself prove concealment or wrongdoing. The immediate request to this Council is preservation, clear records of decisions, and support for lawful disclosure.</p><span class="tag tag-open" title="Not yet established; records requested">Being sought</span></div>
-      </details></div>
-</section>
-
 <section class="sec" id="story">
   <div class="sec-head">
     <h2>The story they told.</h2>
@@ -475,68 +525,6 @@ details[open] .readmore{visibility:hidden}
     <img src="img/tymawr-barn-29-july-1988.jpg" alt="The stone barn at Great House Farm, 1988" width="1109" height="763">
     <figcaption>The barn at Great House Farm, 29 July 1988 (Cadw). Peerless Jim Driscoll's first fight is recorded in a barn here.</figcaption>
   </figure>
-  <details class="court">
-    <summary><span class="court-h">The judgments—and the title questions still being tested.</span><span class="court-l">What the courts decided, what the records show, and what still needs checking.</span><span class="readmore">Read more</span></summary>
-    <div class="more"><ul><li>The High Court (1986) and Court of Appeal (1987) decided BP&#x27;s possession claim and addressed limitation and the effect of the 1974 licence letters. The exact scope of the issues pleaded and decided should be checked against the judgments and pleadings; do not state categorically that every ownership question was or was not decided.</li><li>The family&#x27;s primary title case is that the 1877 arrangement took effect in 1928 and passed the full Parcel A to the Williams family: farmhouse/buildings, barn, stable and west-side yard, garden, northern woodland and the ground later registered as village green VG41. Parcel B is the separate eastern agricultural fields. This is the family&#x27;s case, not a judicial finding.</li><li>The 1939 WGR–John Williams agreement/plan now held by the family depicts Parcel B only. The Wiki uses it as a key title-chain comparison; it does not by itself determine the legal title to Parcel A or the effect of every later instrument.</li><li>The Wiki records the first known “whole farm” wording in the 1916 tenancy and further use in later instruments. That wording is relevant counter-evidence; the family argues it does not by itself resolve the extent of each parcel. The original 1877 instrument, 1924 record and later filed plans still need to be read together.</li><li>A 15 May 1924 agreement is identified in HMLR&#x27;s WA231076 file, but its text and legal effect have not yet been verified. It is a material new lead, not proof of the family&#x27;s title until read and interpreted.</li><li>The HMLR schedule disclosed in 2026 lists 43 first-registration documents but does not list the 31 December 1969 conveyance recited as root of BP&#x27;s title, or a 1971 abstract. The gap needs explaining; its absence from this schedule does not alone prove title invalidity or concealment.</li><li>HMLR&#x27;s chronology shows a separate farmhouse/garden title application (WA240304) dated 23 February 1983 and amalgamation into WA231076 on 2 February 1987, before the Court of Appeal hearing in July. The original application, plans, notices and correspondence are needed to test extent, service and effect.</li><li>Mary Williams&#x27;s c.1974 statement and the family&#x27;s account say title papers were reported missing in 1950–52; the appeal judgment says certain documents were not produced. Non-production does not establish who removed documents or why.</li><li>The Wiki labels the later registration and merger sequence a working “synthetic Parcel A” hypothesis. It is an analytical model to test against original applications, deeds, plans and notices—not an established finding that the register was fraudulent or wrong.</li></ul><p class="note">The High Court gave judgment in 1986 and the Court of Appeal ruled against the family on 31 July 1987. The House of Lords refused leave to appeal on 3 March 1988; that was a refusal of leave, not a full merits judgment. The European Commission of Human Rights declared the application inadmissible on 14 April 1989. Those outcomes are important legal context. Any reopening or register-alteration route faces demanding legal tests and requires specialist advice. This Council is not asked to decide title, declare wrongdoing or overturn a judgment.</p><span class="tag tag-fam" title="The family&#x27;s account or legal case, being tested">Family account</span></div>
-  </details>
-</section>
-
-<section class="sec" id="known">
-  <div class="sec-head">
-    <h2>The record: facts and open questions.</h2>
-    <p>Research has only started. The family does not claim that fraud, deliberate concealment or improper government involvement has been established or that the legal threshold to reopen the case has been met. Some records have been disclosed; others are missing, reported destroyed, not yet produced or still under review. The public record establishes important facts but leaves specific title and procedural questions unresolved.</p>
-  </div>
-  <ul class="counts"><li><span class="c-big">86</span><span class="c-l">open lines of enquiry</span><span class="c-src">Anomalies Register: 71 issues plus 15 planning anomalies</span></li><li><span class="c-big">54</span><span class="c-l">records missing or withheld</span><span class="c-src">Missing Records Register, M-001 to M-054</span></li><li><span class="c-big">20+</span><span class="c-l">bodies asked since November 2025</span><span class="c-src">Records Access Chronology</span></li></ul>
-  <div class="rows">
-      <details class="row known">
-        <summary><span class="num">01</span><span class="row-h">The 1939 plan depicts Parcel B only.</span><span class="row-l">The WGR–John Williams agreement/plan now held by the family shows the eastern fields, Parcel B, only.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more"><p>The document is a key comparison point when testing later “whole farm” descriptions. It supports keeping parcel geometry separate in the working analysis but does not, on its own, prove the legal title to Parcel A or control every later deed.</p><p class="ref"><span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span> Wiki: 1939 revised tenancy; The Two Parcels</p></div>
-      </details>
-      <details class="row known">
-        <summary><span class="num">02</span><span class="row-h">A 1924 agreement is identified, but not interpreted.</span><span class="row-l">HMLR&#x27;s 2026 disclosure points to an agreement dated 15 May 1924 on the WA231076 file.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more"><p>The text and legal effect have not yet been verified. It may be important to reconstructing the title chain; do not treat the catalogue reference as confirmation of the family title case until the instrument is read.</p><p class="ref"><span class="tag tag-open" title="Not yet established; records requested">Being sought</span> Wiki: Land Registry Titles; A-008</p></div>
-      </details>
-      <details class="row known">
-        <summary><span class="num">03</span><span class="row-h">The 1969 conveyance is absent from the disclosed schedule.</span><span class="row-l">HMLR&#x27;s 43-item schedule does not list the instrument recited as the root of BP&#x27;s title.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more"><p>The schedule disclosed on 30 July 2026 lists 43 documents on the 1982–83 first-registration files. The 31 December 1969 conveyance and a 1971 abstract are not among them. The Wiki has not verified the original 1969 text. This is an unresolved documentary gap; it does not by itself prove a title mistake, an invalid title or deliberate concealment.</p><p class="ref"><span class="tag tag-open" title="Not yet established; records requested">Being sought</span> Wiki: Missing Records M-007, M-035–M-041</p></div>
-      </details>
-      <details class="row known">
-        <summary><span class="num">04</span><span class="row-h">Two titles appear in the register chronology.</span><span class="row-l">WA240304 (farmhouse and garden) was amalgamated into WA231076 on 2 February 1987.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more"><p>The application for WA240304 is dated 23 February 1983. The amalgamation application appears in the chronology on 2 February 1987, before the Court of Appeal hearing in July 1987. Its effect cannot be inferred from dates alone: the original application, title plans, notices and correspondence are needed to establish what extent was claimed and how the Registry processed it.</p><p class="ref"><span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span> Wiki: Anomalies A-025, A-026; 1987 HMLR Amalgamation</p></div>
-      </details>
-      <details class="row known">
-        <summary><span class="num">05</span><span class="row-h">Registered while Mary Williams was living at the house.</span><span class="row-l">The family&#x27;s account is that notice of registration reached them only after Mary&#x27;s death; the original service record is still being sought.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more"><p>Linklaters &amp; Paines applied to register BP on 30 November 1982. On 23 February 1983 BP&#x27;s solicitors applied for the farmhouse title, certifying they knew of no question or doubt affecting it. Mary had asserted ownership in 1974. The original notice and service record are needed to establish what enquiries were made, to whom notice was sent, and when it was received.</p><p class="ref"><span class="tag tag-fam" title="The family&#x27;s account or legal case, being tested">Family account</span> Wiki: Anomalies A-011, A-012; M-038</p></div>
-      </details>
-      <details class="row known">
-        <summary><span class="num">06</span><span class="row-h">No 1988 assessment file has been produced.</span><span class="row-l">Two photographs survive; no assessment notes or record explaining the file&#x27;s disposition has been produced.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more"><p>Cadw photographed the house on 29 July 1988 and coded it “YYY”, which it has explained in two different ways. It refused to list on 5 December 1988. Cadw described the missing file as “quite likely”, then “most likely”, destroyed, but no destruction record has been produced. The Wales Office searched its digital records and said paper files “would have been” transferred.</p><p class="ref"><span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span> Wiki: Anomalies A-037–A-041; M-018–M-020, M-052</p></div>
-      </details>
-      <details class="row known">
-        <summary><span class="num">07</span><span class="row-h">The planning record has missing appendices.</span><span class="row-l">The officer&#x27;s report says Appendices B–E included relevant comments and representations; those appendices have not been found in the disclosed file.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more"><p>The report says further GGAT comments, two public representations and BP&#x27;s agents&#x27; response were attached. The family is seeking the missing documents through the Vale&#x27;s disclosure and review processes.</p><p class="ref"><span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span> Wiki: Anomalies A-048, A-049; PL-003–PL-005</p></div>
-      </details>
-      <details class="row known">
-        <summary><span class="num">08</span><span class="row-h">Warned in 1982; burials found in 1994.</span><span class="row-l">The assessment history and later cemetery excavation raise a public-heritage question.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more"><p>In October 1982 GGAT sought investigation before development. Its 1990 assessment zoned some eastern ground low potential; the 1994 excavation subsequently found burials there. GGAT disclosed its dual role; the issue is the assessment and independence, not an inference of secrecy.</p><p class="ref"><span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span> Wiki: Anomalies A-042–A-047; PL-008</p></div>
-      </details>
-      <details class="row known">
-        <summary><span class="num">09</span><span class="row-h">The house was only partly recorded.</span><span class="row-l">RCAHMW records lost correspondence and a plan addition six days after demolition.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more"><p>RCAHMW records correspondence with Mrs Buckler as lost since 1986–87, holds no record of being told of the demolition, and added to its plan on 12 December 1988.</p><p class="ref"><span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span> Wiki: Anomalies A-035, A-036; M-021</p></div>
-      </details>
-      <details class="row known">
-        <summary><span class="num">10</span><span class="row-h">House of Lords judicial papers identified in September 2026.</span><span class="row-l">The National Archives identified bundle YHL/PO/JO/10/11/2536 on 23 September; it has not yet been produced.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more"><p>The relevant Main Papers series was added to the Discovery catalogue in May 2026. After earlier keyword searches failed to locate the material, the National Archives identified the bundle on 23 September. The next step is to obtain and analyse the bundle rather than infer what it contains from its catalogue reference. The Wiki records the Strasbourg case file as destroyed in 2000.</p><p class="ref"><span class="tag tag-open" title="Not yet established; records requested">Being sought</span> Wiki: Anomalies A-006, A-007; M-005, M-051</p></div>
-      </details>
-      <details class="row known">
-        <summary><span class="num">11</span><span class="row-h">Contemporary reports describe two confrontations in 1988.</span><span class="row-l">Press accounts report a large bailiff/police presence in April and a later removal before the demolition.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more"><p>The Wiki keeps newspaper image, transcript, provenance and interpretation on individual evidence pages. Reports establish what was published; details of police and bailiff conduct should be attributed to the particular report rather than treated as judicial findings.</p><p class="ref"><span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span> Wiki: GHF-E090-N07; 1988: Possession and Demolition</p></div>
-      </details>
-      <details class="row known">
-        <summary><span class="num">12</span><span class="row-h">The “synthetic Parcel A” is a working hypothesis.</span><span class="row-l">It tests whether registration and later amalgamation made the disputed farmhouse parcel appear to follow the eastern-fields chain.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more"><p>The Wiki uses this label for an analytical reconstruction based on the 1982–83 registration chronology, the 1987 amalgamation and gaps in the disclosed schedule. It is not an established finding that the register was fraudulent or wrong. The original applications, plans, deeds and notices must be examined before conclusions are drawn.</p><p class="ref"><span class="tag tag-open" title="Not yet established; records requested">Being sought</span> Wiki: Master Scrutiny Issue Register; Land Registry Titles</p></div>
-      </details></div>
-  <p class="aside">Every point links to the family's public registers on the <a href="https://greathousefarmwiki.wordpress.com/anomalies-register/">Great House Farm Wiki</a>, which keep fact, family account and open question apart.</p>
 </section>
 
 <section class="sec sec-slate" id="wall">
@@ -577,11 +565,11 @@ details[open] .readmore{visibility:hidden}
   <ol class="rules"><li><b>Name the source.</b> Say where a fact comes from: the court, the heritage record, the newspaper, the archive.</li><li><b>Say whose account it is.</b> “Our family account is…” is accurate, and accuracy is hard to dismiss.</li><li><b>Ask for a decision and a date.</b> Every ask ends with who does it and when it comes back.</li></ol>
   <details class="speech">
     <summary><span class="court-h">The sixty-second version</span><span class="readmore">Read it</span></summary>
-    <div class="more speech-text"><p>Chair, councillors, thank you. Our family account is that the Williams–Bucklers lived at Great House Farm / Tŷ Mawr from 1667 until demolition at about 4am on 6 December 1988. The Court of Appeal ruled against us in the possession litigation; I am not asking this Council to overturn it. Our title research tests whether the full Parcel A—house, buildings, barn, yard, garden, northern woodland and ground later registered as VG41—was distinct from the eastern fields, Parcel B. The Wiki records a 1939 plan depicting Parcel B only, a 1924 agreement identified in HMLR&#x27;s file but not yet interpreted, and a 1969 conveyance absent from the 43-item schedule disclosed in 2026. Those gaps do not prove fraud or a title mistake; they justify preservation, disclosure and scrutiny. Great House&#x27;s manorial history, Llandough&#x27;s published record of 1,026 inhumation burials, and local heritage deserve a place in the village story. Please record our statement, appoint a councillor liaison, and support preservation and disclosure of relevant records. Thank you.</p></div>
+    <div class="more speech-text"><p>Chair, councillors, thank you. My family lived at Great House Farm, Tŷ Mawr, beside St Dochdwy&#x27;s Church, from 1667 until it was demolished at about 4am on 6 December 1988. The manorial courts sat in that house. A published study reports 1,026 early medieval burials from the ground beside it. In 1983 the farmhouse was registered to BP while my grandmother lived in it; the courts decided possession, not ownership. Your own village history mentions none of this. Our research has only started, and the records that would test it have not yet been produced. Tonight we ask four things: put our statement on the record, make Tŷ Mawr a standing item with a named councillor, recommend a Senedd inquiry, and write in support of disclosure. Your mission is preserving our identity. Tŷ Mawr is part of it. Thank you.</p></div>
   </details>
   <details class="speech">
     <summary><span class="court-h">The three-minute statement</span><span class="readmore">Read it</span></summary>
-    <div class="more speech-text"><p>Chair, councillors, thank you.</p><p>My grandmother was Mary Williams of Great House Farm, Tŷ Mawr, beside St Dochdwy&#x27;s Church. Our family account is that we lived in the house from 1667 until it was demolished at about four in the morning on 6 December 1988.</p><p>Thank you for placing the matter on the agenda. Item 10 presently describes a plaque and a mailing list. I want to explain why the subject is wider, and what we are asking the Council to do.</p><p>Heneb&#x27;s Historic Environment Record says the manorial courts of Llandough and Leckwith were held at Great House. The precise location of St Dochdwy&#x27;s monastery has not been established; a published study reports 1,026 inhumation burials at Llandough. Amgueddfa Cymru documents Marconi&#x27;s 1897 wireless trials at Lavernock. Our family&#x27;s connection between Great House and that work remains family tradition awaiting corroboration. Published sources associate Peerless Jim Driscoll&#x27;s first fight with the farm barn.</p><p>The Council&#x27;s published village history does not mention Great House. The history should record the farmhouse, manorial role and demolition, while distinguishing the unlocated monastery from the documented cemetery and the nearby Roman villa, which is a separate archaeological site.</p><p>The High Court and Court of Appeal ruled against the family in the possession litigation. The House of Lords refused leave to appeal in March 1988; the European Commission of Human Rights declared the Strasbourg application inadmissible in April 1989. Those outcomes matter, and we do not ask this Council to overturn them. We ask for a careful, source-led account of the history and for help preserving and obtaining records that may test the family&#x27;s separate title case.</p><p>Our primary title case is that the 1877 arrangement took effect in 1928 and transferred the full Parcel A to the Williams family, separate from eastern Parcel B. Parcel A, as defined in our case, includes the farmhouse and associated buildings, barn, stable and western yard, garden, northern woodland, and the ground later registered as village green VG41. This is our claim, not a judicial finding.</p><p>The documentary picture has moved. The 1939 WGR–John Williams agreement/plan now in hand depicts Parcel B only. HM Land Registry&#x27;s 2026 disclosure identifies a 15 May 1924 agreement in the WA231076 file, but its contents and legal effect remain unverified. The 43-item first-registration schedule does not list the 31 December 1969 conveyance recited as the root of BP&#x27;s title. The National Archives identified a House of Lords judicial bundle on 23 September 2026, which has not yet been produced. These are leads and gaps, not proof by themselves that a title was wrong or anyone concealed evidence.</p><p>The title chronology also records a separate farmhouse/garden application for WA240304 in February 1983 and its amalgamation into WA231076 on 2 February 1987, before the Court of Appeal hearing that July. The original application, title plans, service notices and correspondence are needed to assess the claimed extent and legal effect.</p><p>More than twenty organisations have been asked for records since November 2025. Some have disclosed material; others have reported records missing, likely destroyed, not held or still outstanding. A missing record is not proof of concealment. We ask the Council to keep its own records, decisions and correspondence safe, respond under the correct access regime, and support lawful disclosure from the relevant bodies.</p><p>On 5 December 1988 Cadw refused to spot-list the house and the court refused to continue the injunction; demolition began at about 4am on 6 December while the Strasbourg application was pending. The Local Plan said the buildings should be retained, and the house was never fully recorded.</p><p>I ask for three practical outcomes: put this statement and pack on the public record; make Great House Farm / Tŷ Mawr a standing item with a named councillor liaison; and write to the bodies holding the relevant records in support of preservation and lawful disclosure. Scope the heritage interpretation board with heritage advice and clear evidence labels. The Council need not decide title or blame to do these things.</p><p>Your mission is “Serving our community, preserving our identity”. Tŷ Mawr is part of Llandough&#x27;s story. Please help it be recorded accurately, with the evidence and its limits in public.</p><p class="small"><a href="meeting-script.txt">Plain-text version for printing</a></p></div>
+    <div class="more speech-text"><p>Chair, councillors, thank you for placing this on the agenda.</p><p>My grandmother was Mary Williams of Great House Farm, Tŷ Mawr, beside St Dochdwy&#x27;s Church. Our family account is that we lived in that house from 1667 until it was demolished at about four in the morning on 6 December 1988.</p><p>Item 10 describes a plaque and a mailing list. The subject is wider than that, so I will take it in short parts.</p><p>The house. Heneb&#x27;s record says the manorial courts of Llandough and Leckwith sat at Great House. The Local Plan said its buildings should be retained. It was never fully recorded before it came down.</p><p>The ground. A published study reports 1,026 burials from the early medieval cemetery excavated there in 1994, the largest such population recovered in Wales. The monastery&#x27;s exact site has never been established. Nothing on the ground marks any of it, and the Council&#x27;s own village history does not mention Great House.</p><p>My grandmother. For decades she said the house was hers. She refused every tenancy offered for it. In February 1983, while she lived there, BP applied to register the farmhouse as its own title; she died that March. In 1987, while the appeal was running, that title was merged into the fields.</p><p>The courts. They decided who could stay. The family lost. They did not decide who owned the house. The house came down the morning after Cadw refused to list it, while our Strasbourg application was pending.</p><p>The records. More than twenty bodies have been asked. Cadw&#x27;s 1988 file is missing with no record of destruction. The Land Registry&#x27;s list of 43 documents does not include the 1969 deed BP&#x27;s title rests on. The Ministry of Justice has not yet answered our MP.</p><p>Our research has only started. Nothing yet meets the threshold to reopen the case, and we do not claim it does. That is why the records matter.</p><p>We ask for four things. Put our statement on the public record. Make Great House Farm a standing item, with a named councillor. Recommend to the Senedd that an independent inquiry be considered. And write in support of disclosure and preservation of the records. We also ask you to recognise what three generations of my family have been through.</p><p>Your mission is “Serving our community, preserving our identity”. Tŷ Mawr is part of that identity. Thank you.</p><p class="small"><a href="meeting-script.txt">Plain-text version for printing</a></p></div>
   </details>
 </section>
 

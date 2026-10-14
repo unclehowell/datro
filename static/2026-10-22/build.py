@@ -101,6 +101,24 @@ def site():
       </details>""" for i, (h, line, d, lab, ref) in enumerate(KNOWN, 1))
     withheld = "".join(f'<li><span class="wh-b">{e(b)}</span><span class="wh-p">{e(p)}</span></li>' for b, p, lab in WITHHELD)
     risks = "".join(f'<li><span class="risk-h">{e(h)}</span><span class="risk-l">{e(l)}</span></li>' for h, l in RISKS)
+    def _li(items):
+        return "".join(f"<li>{e(t)} {label(k)}</li>" for t, k in items)
+    brief = ""
+    for c in BRIEF:
+        cols = ""
+        if c["record"]:
+            cols += f'<div class="cmp-col"><h4>On the record</h4><ul>{_li(c["record"])}</ul></div>'
+        if c["tested"]:
+            cols += f'<div class="cmp-col"><h4>Still being tested</h4><ul>{_li(c["tested"])}</ul></div>'
+        q, a = c["if_asked"]
+        brief += f"""
+      <details class="cmp" id="{c['id'].lower()}">
+        <summary><span class="cmp-id">{e(c['id'])}</span><span class="cmp-t">{e(c['title'])}</span><span class="cmp-say">{e(c['say'])}</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="more cmp-body">{cols}
+          <p class="cmp-ask"><b>If asked {e(q)}</b> {e(a)}</p>
+          <p class="ref">Evidence: {e(' · '.join(c['refs']))}</p>
+        </div>
+      </details>"""
     council = "".join(f"<li><b>{e(d)}</b><span>{e(t)}</span></li>" for d, t in COUNCIL_CASE)
     regimes = "".join(f'<div class="regime"><span class="regime-k">{e(k)}</span><span class="regime-n">{e(n)}</span><p>{e(t)}</p></div>' for k, n, t in REGIMES)
 
@@ -128,12 +146,12 @@ def site():
 <style>{FONT_CSS}{TOKENS}{SITE_CSS}</style>
 </head>
 <body>
-<a class="skip" href="#ask">Skip to the asks</a>
+<a class="skip" href="#brief">Skip to the briefing</a>
 <header class="nav">
   <div class="nav-in">
     <a class="brand" href="#top">Tŷ Mawr <span>at Council</span></a>
     <nav class="links" aria-label="Sections">
-      <a href="#ask">The ask</a><a href="#order">Running order</a><a href="#scope">Why it matters</a><a href="#story">The story</a><a href="#known">The record</a><a href="#wall">The wall</a><a href="#risks">The risks</a><a href="#mic">At the mic</a><a href="{WIKI}/" target="_blank" rel="noopener noreferrer">Evidence Wiki ↗</a>
+      <a href="#brief">The briefing</a><a href="#ask">The ask</a><a href="#order">Running order</a><a href="#story">The story</a><a href="#wall">The wall</a><a href="#risks">The risks</a><a href="#mic">At the mic</a><a href="{WIKI}/" target="_blank" rel="noopener noreferrer">Evidence Wiki ↗</a>
     </nav>
     <button class="toggle" type="button" data-expand>Open everything</button>
     <a class="btn-red" href="meeting-pack.pdf" download>Download PDF</a>
@@ -148,7 +166,7 @@ def site():
     <p class="lede">{e(HERO['lede'])}</p>
     <div class="ctas">
       <a class="btn-red big" href="meeting-pack.pdf" download>Download the meeting pack</a>
-      <a class="btn-line" href="#order">See the running order</a>
+      <a class="btn-line" href="#brief">Read the briefing</a>
       <a class="btn-line" href="{WIKI}/" target="_blank" rel="noopener noreferrer">Read the evidence Wiki ↗</a>
     </div>
   </div>
@@ -162,13 +180,30 @@ def site():
   <ol>{breath}</ol>
 </section>
 
+<section class="sec" id="brief">
+  <div class="sec-head">
+    <h2>The briefing.</h2>
+    <p>{e(BRIEF_INTRO)}</p>
+  </div>
+  <div class="cmps">{brief}</div>
+  <div class="threshold-box">
+    <p>{e(THRESHOLD)}</p>
+    <ul class="counts">{counts}</ul>
+  </div>
+</section>
+
 <section class="sec" id="ask">
   <div class="sec-head">
     <h2>Item 10 is too small for this.</h2>
-    <p>The agenda reduces it to a plaque and a mailing list. These are the eight things to put before the Council, in priority order. Open any one for the draft resolution.</p>
+    <p>The agenda reduces it to a plaque and a mailing list. These are the ten things to put before the Council, in priority order. The first five are for decision tonight. Open any one for the draft resolution.</p>
   </div>
   <div class="rows">{asks}</div>
   <p class="aside">Not asked: for the Council to decide ownership, fraud or whether any court was right. Those belong to courts and regulators. The Council is asked to put the matter on record and use its own powers.</p>
+  <div class="mission">
+    <p class="mission-q">“{e(MISSION)}.”</p>
+    <p class="mission-by">The Council's mission statement, and its four commitments:</p>
+    <ul>{commitments}</ul>
+  </div>
 </section>
 
 <section class="sec sec-slate" id="order">
@@ -177,27 +212,6 @@ def site():
     <p>Where each point fits on the published agenda, from now until the minutes.</p>
   </div>
   <div class="steps">{order}</div>
-</section>
-
-<section class="sec" id="scope">
-  <div class="sec-head">
-    <h2>Why it matters.</h2>
-    <p>The first meeting is about scope, politics and culture. Detail comes later, meeting by meeting, in public.</p>
-  </div>
-  <div class="pillars">{pillars}</div>
-  <div class="mission">
-    <p class="mission-q">“{e(MISSION)}.”</p>
-    <p class="mission-by">The Council's mission statement, and its four commitments:</p>
-    <ul>{commitments}</ul>
-  </div>
-</section>
-
-<section class="sec sec-lime" id="missing">
-  <div class="sec-head">
-    <h2>What the agenda leaves out.</h2>
-    <p>Eight things the published agenda does not mention. Each is a headline. Open it for the record.</p>
-  </div>
-  <div class="tiles">{tiles}</div>
 </section>
 
 <section class="sec" id="story">
@@ -210,20 +224,6 @@ def site():
     <img src="img/tymawr-barn-29-july-1988.jpg" alt="The stone barn at Great House Farm, 1988" width="1109" height="763">
     <figcaption>The barn at Great House Farm, 29 July 1988 (Cadw). Peerless Jim Driscoll's first fight is recorded in a barn here.</figcaption>
   </figure>
-  <details class="court">
-    <summary><span class="court-h">The judgments—and the title questions still being tested.</span><span class="court-l">What the courts decided, what the records show, and what still needs checking.</span><span class="readmore">Read more</span></summary>
-    <div class="more"><ul>{court}</ul><p class="note">{e(COURT_NOTE)}</p>{label('fam')}</div>
-  </details>
-</section>
-
-<section class="sec" id="known">
-  <div class="sec-head">
-    <h2>The record: facts and open questions.</h2>
-    <p>{e(THRESHOLD)}</p>
-  </div>
-  <ul class="counts">{counts}</ul>
-  <div class="rows">{known}</div>
-  <p class="aside">Every point links to the family's public registers on the <a href="{WIKI}/anomalies-register/">Great House Farm Wiki</a>, which keep fact, family account and open question apart.</p>
 </section>
 
 <section class="sec sec-slate" id="wall">
@@ -466,6 +466,26 @@ details[open] .readmore{visibility:hidden}
 .regime-n{display:block;font-size:.85rem;color:var(--stone);margin:4px 0 8px}
 .regime p{font-size:.95rem;color:#e4e9e6}
 
+/* briefing */
+.cmps{border-top:3px solid var(--ink)}
+.cmp{border-bottom:1px solid var(--rule)}
+.cmp summary{display:grid;grid-template-columns:3.4rem minmax(0,1fr) 28px;gap:6px 16px;padding:22px 0;align-items:baseline}
+.cmp-id{font:850 1.5rem/1 var(--display);font-stretch:62%;color:var(--red);grid-row:1/3}
+.cmp-t{font:850 clamp(1.5rem,3vw,2rem)/1 var(--display);font-stretch:62%;text-transform:uppercase;color:var(--muted);grid-column:2}
+.cmp-say{grid-column:2;font-size:clamp(1.15rem,2.1vw,1.45rem);font-weight:700;line-height:1.35;max-width:42em}
+.cmp .plus{grid-column:3;grid-row:1}
+.cmp summary:hover .cmp-say{color:var(--red)}
+.cmp-body{padding:0 0 24px calc(3.4rem + 16px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 28px}
+.cmp-col h4{margin:0 0 8px;font-size:.85rem;font-weight:800;color:var(--red)}
+.cmp-col ul{margin:0;padding-left:18px}.cmp-col li{margin-bottom:8px;font-size:.98rem}
+.cmp-ask,.cmp-body .ref{grid-column:1/-1;margin:4px 0 0}
+.cmp-ask{background:var(--lime);border-left:4px solid var(--ink);padding:10px 14px}
+.threshold-box{margin-top:40px;background:var(--slate);color:#fff;padding:clamp(20px,3vw,32px)}
+.threshold-box>p{font-size:1.1rem;max-width:44em;margin:0 0 20px}
+.threshold-box .counts{border-top-color:#fff;margin-bottom:0}
+.threshold-box .counts li+li{border-left-color:#ffffff30}
+.threshold-box .c-src{color:var(--stone)}
+.rows+.aside+.mission{margin-top:40px}
 /* on record */
 .counts{list-style:none;margin:0 auto 34px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:3px solid var(--ink)}
 .counts li{padding:18px 20px 18px 0;display:flex;flex-direction:column;gap:4px}
@@ -522,6 +542,7 @@ details[open] .readmore{visibility:hidden}
   .row summary{grid-template-columns:2.4rem minmax(0,1fr) 24px}
   .mission ul{grid-template-columns:1fr}
   .dates li{grid-template-columns:1fr}
+  .cmp-body{grid-template-columns:1fr;padding-left:0}.cmp summary{grid-template-columns:2.6rem minmax(0,1fr) 24px}
   .counts{grid-template-columns:1fr}.counts li+li{padding-left:0;border-left:0;border-top:1px solid var(--rule)}
   .withheld li{grid-template-columns:1fr}
   .risks li{grid-template-columns:2.4rem minmax(0,1fr)}
@@ -569,6 +590,19 @@ def pack():
     withheld = "".join(f"<tr><th>{e(b)}</th><td>{e(pz)}</td></tr>" for b, pz, lab in WITHHELD)
     risks = "".join(f"<li><b>{e(h)}</b> {e(l)}</li>" for h, l in RISKS)
     counts = " · ".join(f"<b>{e(n)}</b> {e(l)}" for n, l, src in COUNTS)
+    brief_pages = ""
+    for c in BRIEF:
+        rec = "".join(f"<li>{e(t)} {label(k)}</li>" for t, k in c["record"])
+        tst = "".join(f"<li>{e(t)} {label(k)}</li>" for t, k in c["tested"])
+        q, ans = c["if_asked"]
+        brief_pages += f"""<div class="cmp">
+  <div class="cmp-h"><span class="cmp-id">{e(c['id'])}</span> {e(c['title'])}</div>
+  <p class="cmp-say">{e(c['say'])}</p>
+  {('<p class="cmp-l">On the record</p><ul>' + rec + '</ul>') if rec else ''}
+  {('<p class="cmp-l">Still being tested</p><ul>' + tst + '</ul>') if tst else ''}
+  <p class="cmp-ask"><b>If asked {e(q)}</b> {e(ans)}</p>
+  <p class="wref">Evidence: {e(' · '.join(c['refs']))}</p>
+</div>"""
 
     return f"""<!doctype html>
 <html lang="en-GB"><head><meta charset="utf-8"><title>Meeting pack: Great House Farm / Tŷ Mawr, 22 October 2026</title>
@@ -589,7 +623,7 @@ def pack():
     {close}
     <p class="sign">{e(LETTER['sign'])}</p>
   </div>
-  <p class="contents">In this pack: 1 Letter. 2 Replacement wording for Item 10 and draft resolutions. 3 Running order. 4 Statement. 5 Why it matters. 6 What the agenda leaves out. 7 The story and the courts. 8 Already on the record, disclosure and risks. 9 Records access. 10 Rights and sources.</p>
+  <p class="contents">In this pack: 1 Letter. 2 Replacement wording for Item 10 and draft resolutions. 3 Running order. 4 Statement. 5 The briefing: nine compartments. 6 Disclosure and risks. 7 Records access. 8 Rights and sources.</p>
 </section>
 
 <section class="page">
@@ -617,38 +651,23 @@ def pack():
 </section>
 
 <section class="page">
-  <h2><span>5</span> Why it matters: scope, politics, culture</h2>
-  <div class="pils">{pillars}</div>
-  <div class="mission"><p class="q">“{e(MISSION)}.”</p><p>The Council's mission statement. Its commitments: {e('; '.join(COMMITMENTS)).lower()}.</p></div>
-</section>
-
-<section class="page">
-  <h2><span>6</span> What the agenda leaves out</h2>
-  <table class="t tiles">{tiles}</table>
-</section>
-
-<section class="page">
-  <h2><span>7</span> The story they told, and the record</h2>
-  <table class="t swaps">{swaps}</table>
-  <h3>The judgments—and the title questions still being tested</h3>
-  <ul>{court}</ul>
-  <p class="meta">{e(COURT_NOTE)}</p>
-</section>
-
-<section class="page">
-  <h2><span>8</span> The record: facts and open questions</h2>
+  <h2><span>5</span> The briefing</h2>
+  <p class="meta">{e(BRIEF_INTRO)}</p>
   <p class="threshold">{e(THRESHOLD)}</p>
   <p class="meta">From the family's public registers on the Great House Farm Wiki: {counts}.</p>
-  <table class="t knownt">{known}</table>
-  <h2 class="mt"><span>8</span> Where disclosure stands</h2>
+  {brief_pages}
+</section>
+
+<section class="page">
+  <h2><span>6</span> Where disclosure stands</h2>
   <table class="t">{withheld}</table>
   <p class="meta">{e(WITHHELD_NOTE)}</p>
-  <h2 class="mt"><span>8</span> If nothing is done</h2>
+  <h2 class="mt"><span>6</span> If nothing is done</h2>
   <ul class="risk">{risks}</ul>
 </section>
 
 <section class="page">
-  <h2><span>9</span> Records access: eighteen months, twenty organisations</h2>
+  <h2><span>7</span> Records access: eighteen months, twenty organisations</h2>
   <p class="meta">Stages: {e(', '.join(f'{i} {r}' for i, r in enumerate(RINGS, 1)))}. ■ = step taken. {e(WALL_NOTE)}</p>
   <table class="t wall">{wall}</table>
   <h3>This Council's own file</h3>
@@ -656,9 +675,9 @@ def pack():
 </section>
 
 <section class="page">
-  <h2><span>10</span> Three rights, not one</h2>
+  <h2><span>8</span> Three rights, not one</h2>
   <table class="t">{regimes}</table>
-  <h2 class="mt"><span>10</span> Labels and sources</h2>
+  <h2 class="mt"><span>8</span> Labels and sources</h2>
   <ul class="keys">{keys}</ul>
   <ol class="src">{sources}</ol>
   <p class="meta">Prepared by the Williams–Buckler family for the meeting of {e(MEETING['date'])}. The family's accounts and legal contentions are labelled as such. Fraud, concealment or government involvement has not been established; the family is seeking the records that would test it. This pack concerns Llandough-juxta-Penarth, not Llandough-juxta-Cowbridge or the Great House at Llandow or Aberthin. Online: 2026-10-22.bucklerfamily.estate</p>
@@ -696,8 +715,8 @@ h3{font-stretch:75%;font-weight:800;font-size:12.5pt;margin:5mm 0 2mm;text-trans
 .t ul{margin:1mm 0 0;padding-left:4mm}
 .tiles th{color:var(--red);font-size:14pt;font-stretch:62%;text-transform:uppercase}
 .swaps th s{font-stretch:62%;font-size:13pt;text-transform:uppercase;color:var(--stone);text-decoration-color:var(--red);text-decoration-thickness:1.5pt}
-.wall td{padding:1mm 0;font-size:8.3pt}.wall .r{letter-spacing:.4mm;color:var(--slate);white-space:nowrap;padding:1.3mm 3mm}
-.statement p{font-size:10.2pt;line-height:1.5;margin:0 0 2.2mm}
+.wall td{padding:.7mm 0;font-size:8pt}.wall .r{letter-spacing:.4mm;color:var(--slate);white-space:nowrap;padding:1.3mm 3mm}
+.statement p{font-size:9.8pt;line-height:1.45;margin:0 0 1.8mm}
 .statement60{font-size:9.2pt}
 .meta{color:var(--muted);font-size:8.6pt}
 .pils .pil{margin-bottom:3mm}.pil h3{margin-top:2mm}.pil .lead{font-weight:700;margin:0 0 1mm}.pil ul{margin:0;padding-left:4mm}
@@ -710,6 +729,13 @@ h3{font-stretch:75%;font-weight:800;font-size:12.5pt;margin:5mm 0 2mm;text-trans
 .keys{list-style:none;padding:0}.keys li{margin-bottom:1.5mm}
 .src{padding-left:5mm;font-size:8.6pt}.src li{margin-bottom:1.6mm}.src .u{color:var(--muted);font-size:7.6pt;word-break:break-all}
 .rules{padding-left:5mm}
+.cmp{border-top:1.5pt solid var(--ink);padding:2.5mm 0 3mm;break-inside:avoid}
+.cmp-h{font-family:var(--display);font-stretch:70%;font-weight:850;text-transform:uppercase;font-size:12pt;color:var(--muted)}
+.cmp-id{color:var(--red);margin-right:2mm}
+.cmp-say{font-size:11pt;font-weight:700;margin:1mm 0 2mm;line-height:1.35}
+.cmp-l{font-size:8pt;font-weight:800;color:var(--red);margin:1.5mm 0 .5mm}
+.cmp ul{margin:0;padding-left:4.5mm}.cmp li{margin-bottom:.8mm;font-size:9pt}
+.cmp-ask{background:var(--lime);border-left:1.2mm solid var(--ink);padding:1.5mm 3mm;margin:2mm 0 1mm;font-size:9pt}
 .threshold{font-size:10.5pt;font-weight:600;border-left:2mm solid var(--red);padding:2mm 4mm;background:var(--lime)}
 .knownt th{width:44mm;font-size:9.6pt}
 .knownt td{font-size:8.7pt}
@@ -724,10 +750,14 @@ def script_txt():
     for p in STATEMENT:
         lines += [p, ""]
     lines += ["", "SIXTY-SECOND VERSION", "", STATEMENT_60, "",
-              "", "THE THREE ASKS FOR TONIGHT",
+              "", "THE FOUR ASKS FOR TONIGHT",
               "1. Receive our statement and pack, and minute them.",
               "2. Make Great House Farm / Tŷ Mawr a standing item, with a named councillor.",
-              "3. Write to the bodies holding the records in support of full disclosure.", ""]
+              "3. Recommend to the Senedd that an independent inquiry be considered.",
+              "4. Write to the bodies holding the records in support of disclosure and preservation.", "",
+              "", "BRIEFING CUE CARD (say the line, move on; expand only if asked)", ""]
+    for c in BRIEF:
+        lines += [f"{c['id']}  {c['title'].upper()}", f"    SAY: {c['say']}", f"    IF ASKED {c['if_asked'][0]} {c['if_asked'][1]}", ""]
     return "\n".join(lines)
 
 
