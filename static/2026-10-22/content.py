@@ -77,7 +77,7 @@ ASKS = [
      'The page gives “over 800 burials” (the published report counts 1,026), dates the Roman villa to the 1990s (it was excavated in 1978–79), and does not mention Great House, the Williams family or the demolition.'),
     ('Mark it on the ground',
      'A board or memorial near the green: monastery, the 1,026 dead, the manor, Marconi, Peerless Jim.',
-     "That a working group is set up to scope an interpretation board or memorial near the green, covering St Dochdwy's monastery, the 1,026 early medieval burials, Great House and the manor, the 1897 wireless trials and Peerless Jim Driscoll, with wording checked against sources and agreed with the family; and to explore a Llandough companion to the Marconi artwork on the Cardiff Barrage.",
+     "That a working group is set up to scope an interpretation board or memorial near the green, covering St Dochdwy's monastery, the 1,026 early medieval burials, Great House and the manor, the 1897 wireless trials and Peerless Jim Driscoll, with wording checked against sources and agreed with the family; and to explore a Llandough companion to the Marconi artwork on the Cardiff Barrage; that the working group consults the residents of Church View Close, St Dochdwy's parish and the family before any wording is agreed; and that the Council asks Amgueddfa Cymru what is planned for the long-term care of the human remains excavated in 1994, including whether reburial near the church has been considered.",
      'There is nothing on the ground that records any of it. The family has offered a free talk to the Council or residents.'),
     ('Find the witnesses',
      'Invite people who remember the village from the 1950s to the 1990s to come forward.',
@@ -98,7 +98,9 @@ ORDER = [
       "The agenda must be published at least three clear days before the meeting, so ask for it to go out by Saturday 17 October.",
       "Ask a community councillor to give written notice of a motion in the same terms, so the Council can decide something on the night.",
       "Ask the Chair for up to ten minutes under Item 10, as well as the public session.",
-      "Ask the Clerk to list the family's letters of 12 October under Item 16."]),
+      "Ask the Clerk to list the family's letters of 12 October under Item 16.",
+      "Ask the Clerk for the Council's standing orders on public speaking: time allowed, and whether the Chair may invite the family to speak under Item 10.",
+      "Tell the Clerk of any access needs in good time: Welsh-language contribution, large-print copies, or remote attendance."]),
     ("Item 1", "Declarations of interest",
      "Listen. Members connected to the site or the parties should declare.",
      ["Anyone living on or next to Church View Close, or with links to the developer, landowner or the 1980s parties, "
@@ -106,6 +108,7 @@ ORDER = [
     ("Item 4", "Public participation",
      "The three-minute statement. Scope, not detail. End with the three asks.",
      ["Use the statement in “At the microphone”.",
+      "Ask the Chair at the start whether you may make an audio record of Item 10 for your own notes. Wales has no automatic right to film or record community council meetings, so ask rather than assume.",
       "Ask the Chair, before you sit down, whether the family may speak again when Item 10 is reached."]),
     ("Item 5", "Councillor George Carroll",
      "The Vale ward member for Llandough. Ask him to take three things to the Vale.",
@@ -123,7 +126,10 @@ ORDER = [
     ("Item 16", "Correspondence",
      "Check the family's 12 October letters are listed. No decisions can be taken here.", []),
     ("Within a week", "Follow up",
-     "Ask for the draft minutes, the named liaison councillor, and the date the item returns.", []),
+     "Ask for the draft minutes, the named liaison councillor, and the date the item returns.",
+     ["Check the draft minutes against your own notes and ask for any correction in writing.",
+      "Publish the outcome, unedited, on the Wiki and in the project highlight report, including anything that went against the family.",
+      "Thank the Council in writing, whatever it decided."]),
 ]
 
 PILLARS = [
@@ -382,7 +388,7 @@ STATEMENT = [
     "why the records matter.",
     "We ask for four things. Put our statement on the public record. Make Great House Farm a standing item, with a named "
     "councillor. Recommend to the Senedd that an independent inquiry be considered. And write in support of disclosure and "
-    "preservation of the records. We also ask you to recognise what three generations of my family have been through.",
+    "preservation of the records. We also ask you to recognise what three generations of my family have been through. We are not seeking anyone's home at Church View Close.",
     "Your mission is “Serving our community, preserving our identity”. Tŷ Mawr is part of that identity. Thank you.",
 ]
 
@@ -463,7 +469,6 @@ SOURCES = [
     ("Vale of Glamorgan Council: Cllr George Carroll, Llandough ward", "https://www.valeofglamorgan.gov.uk/en/our_council/Council-Structure/councillors/Carroll-George.aspx"),
     ("The full story: bpvsbuckler.bucklerfamily.estate", "https://bpvsbuckler.bucklerfamily.estate/"),
     ("Records-access tracker: dartboard.bucklerfamily.estate", "https://dartboard.bucklerfamily.estate/"),
-    ("The Council's FOI replies compared: clerk.bucklerfamily.estate", "https://clerk.bucklerfamily.estate/"),
     ("Great House Farm Wiki — public documentary archive", "https://greathousefarmwiki.wordpress.com/"),
     ("Wiki: The Two Parcels — full Parcel A / separate eastern Parcel B", "https://greathousefarmwiki.wordpress.com/the-two-parcels/"),
     ("Wiki: 1939 revised tenancy agreement and plan", "https://greathousefarmwiki.wordpress.com/1939-revised-tenancy/"),
@@ -501,6 +506,7 @@ BRIEF = [
          ("William Buckler was born in the house. In 1988 three small children lived there.", "rec"),
      ],
      "tested": [("No deed of 1667 has yet been found. The 1670 hearth tax and Bute estate leases are being searched.", "open")],
+     "against": [('The heritage record says the Vaughans held Great House as the chief freehold farm from the mid-16th to the late 18th century. Both accounts can be true only if the Williamses held under them.', 'rec')],
      "if_asked": ("“Weren't you tenants?”",
                   "The 1939 tenancy plan, now held, depicts the eastern fields only, not the house. Mary refused the tenancies offered for the house."),
      "refs": ["Wiki: The Williams / Buckler Family", "Wiki: Mary Williams's Statement (c. 1974)", "Heneb HER GGAT02038s"]},
@@ -516,6 +522,7 @@ BRIEF = [
      ],
      "tested": [("Family tradition that Thomas Williams of Great House carted Marconi's equipment.", "fam"),
                 ("Where the monastery stood. It is not proven to lie beneath Tŷ Mawr.", "open")],
+     "against": [('Museum Wales traces the medieval spur and spearhead linked to the “armour” story to Church Farm, 1858, not to Great House.', 'rec'), ("It has not been shown that the 1994 burials lay on the family's own parcel.", 'open')],
      "if_asked": ("“Isn't this history already told?”",
                   "The Council's own village history says 800 burials and does not mention Great House at all."),
      "refs": ["Holbrook and Thomas, Medieval Archaeology 49 (2005)", "Wiki: Archaeology and Heritage", "Stead and Williams, Wales and its Boxers (2008)"]},
@@ -535,6 +542,7 @@ BRIEF = [
                 ("A 15 May 1924 agreement on the Land Registry file, not yet read.", "open"),
                 ("The “synthetic Parcel A” working hypothesis: that registration and merger made the house appear to follow the fields' title.", "open"),
                 ("The family's account that notice of registration reached them only after Mary's death.", "fam")],
+     "against": [('The 1916 tenancy described the farm as one holding, and later documents repeated that wording.', 'rec'), ('HM Land Registry says there is no evidence of a mistake; its stage-two decision says the title is registered correctly. That decision is with the Independent Complaints Reviewer.', 'rec')],
      "if_asked": ("“The register is conclusive.”",
                   "The register can be corrected for mistake, and a person in actual occupation in 1982 had protected rights."),
      "refs": ["Wiki: The Two Parcels", "Wiki: Land Registry Titles", "Wiki: Anomalies A-008 to A-012, A-025, A-026", "Wiki: 1987 HMLR amalgamation during appeal"]},
@@ -549,6 +557,7 @@ BRIEF = [
          ("The House of Lords papers were identified on 23 September 2026 after earlier searches missed them. The Strasbourg file was destroyed in 2000.", "rec"),
      ],
      "tested": [("Procedural unfairness, court error and non-disclosure. Reopening needs new primary evidence; the Lords papers are not yet read.", "open")],
+     "against": [('The Court of Appeal found the 1974 letters made later occupation permissive, whether or not Mary accepted them.', 'rec'), ("Strasbourg held the interference with William Buckler's home lawful and justified.", 'rec')],
      "if_asked": ("“The courts have decided this.”",
                   "They decided possession. The family's title case on the house parcel has not been tried."),
      "refs": ["BP Properties Ltd v Buckler [1987] EWCA Civ 2", "Wiki: BP v Buckler, Scope, Decided and Undecided", "Wiki: Potential Miscarriage of Justice register"]},
@@ -558,11 +567,12 @@ BRIEF = [
      "record": [
          ("Press, 29 April 1988: five bailiffs and about fifteen police; doors broken with poleaxes, children behind them.", "rec"),
          ("Press, December 1988: William Buckler injured, taken to hospital, and charged from his hospital bed.", "rec"),
-         ("Press, 6 December 1988: bulldozers from about 4am; Branwen and three children watched; nothing standing by breakfast.", "rec"),
+         ("Press, 6 December 1988: bulldozers from about 4am; William's wife and their three children watched; nothing standing by breakfast.", "rec"),
          ("Press, 1989: the family's possessions lost and the family rehoused with relatives.", "rec"),
          ("Press: a Vale councillor called the demolition “disgusting”; villagers met their councillors.", "rec"),
      ],
      "tested": [("The family's account that police searched the house and removed documents.", "fam")],
+     "against": [('Press, 1989: one charge was withdrawn as out of time; William Buckler pleaded guilty to the others.', 'rec')],
      "if_asked": ("“Why has it taken so long?”",
                   "Witnesses died, papers were lost and the trauma silenced the family. Key records surfaced only in 2026."),
      "refs": ["Wiki: 1988, Possession and Demolition", "Press transcripts GHF-E090-N07 to N15"]},
@@ -578,6 +588,7 @@ BRIEF = [
      ],
      "tested": [("The family's account that the fire was at a Neath store and that Llandough material was lost.", "fam"),
                 ("Whether the 1990 evaluation was adequate on what was known then.", "open")],
+     "against": [('GGAT disclosed its dual role in 1990, recommended recording and protection, and did not advise demolition.', 'rec'), ('Cadw said in 1988 that the house was not of sufficient architectural merit to list.', 'rec')],
      "if_asked": ("“Missing records prove nothing.”",
                   "Agreed, on their own. These are files public bodies had a duty to keep, and they should account for the gaps."),
      "refs": ["Wiki: Anomalies A-036 to A-052, PL-002 to PL-008", "Wiki: Missing Records M-018 to M-028"]},
@@ -591,6 +602,7 @@ BRIEF = [
          ("The Wales Office searched only digital records. Planning appendices B–E have not been produced.", "rec"),
      ],
      "tested": [("Fraud, deliberate concealment and improper government involvement are not established. Disclosure is the test, whichever way it falls.", "open")],
+     "against": [("Several bodies have disclosed material: the Royal Commission, Museum Wales, Cadw's photographs and the Land Registry schedule.", 'rec'), ('A missing record is not, on its own, proof of concealment.', 'rec')],
      "if_asked": ("“Isn't this a fishing expedition?”",
                   "Every request names a specific record. The registers list them one by one."),
      "refs": ["Wiki: Missing Records Register", "Wiki: Records Access Chronology", "dartboard.bucklerfamily.estate"]},
@@ -604,14 +616,43 @@ BRIEF = [
          ("Tonight's agenda already asks about Welsh culture (Item 14) and local identity (Item 12).", "rec"),
      ],
      "tested": [("The family's view: Welsh land, history and identity were overridden and erased, as indigenous peoples' have been elsewhere.", "fam")],
+     "against": [("Indigenous-rights language is the family's framing; it is not a legal category UK courts currently apply to Wales.", 'rec')],
      "if_asked": ("“Why should a community council get involved?”",
                   "Its own mission is preserving our identity. It is the community's voice to the Senedd and the Vale."),
      "refs": ["Hansard, 22 May 1980", "Buckler v United Kingdom (14464/88)", "Wiki: Q&A, Human Rights and Public Law"]},
 
     {"id": "C9", "title": "What we ask",
-     "say": "Put it on the record. Make it a standing item. Recommend an independent inquiry. Support disclosure, and the family.",
+     "say": "Put it on the record. Make it a standing item. Recommend an independent inquiry. Support disclosure, and the family. We are not seeking anyone's home at Church View Close.",
      "record": [], "tested": [],
      "if_asked": ("“What can a community council do?”",
                   "Record it, write letters, recommend an inquiry, and keep it on the agenda. That is how this starts."),
      "refs": ["The ask, below"]},
 ]
+
+
+# ---- Provenance, corrections and accessibility (for later scrutiny) ----
+VERSION = {
+    "version": "4.0",
+    "date": "14 October 2026",
+    "prepared_by": "Sion Buckler, grandson of Mary Williams, for the Williams–Buckler family",
+    "method": ("Drafted with AI assistance from the family's public Wiki registers, its correspondence log and published "
+               "sources, then checked and approved by the family. Every statement carries a label: on record, family "
+               "account, or being sought. Statements that cut against the family's case are shown alongside it."),
+    "source_control": "Source and full change history: github.com/unclehowell/datro, branch 2026-10-22, folder static/2026-10-22.",
+    "corrections": ("If anything here is wrong, please tell us through the Great House Farm Wiki (greathousefarmwiki.wordpress.com). Corrections are made openly, "
+                    "dated, and noted in the change history. Any person or body named here is invited to reply, and "
+                    "replies will be published in full on the Wiki."),
+}
+
+CYMRAEG = {
+    "title": "Tŷ Mawr gerbron y Cyngor",
+    "lines": [
+        "Ar 22 Hydref 2026 bydd Cyngor Cymuned Llandochau yn ystyried Tŷ Mawr (Great House Farm), cartref teulu Williams–Buckler "
+        "nes iddo gael ei ddymchwel ar 6 Rhagfyr 1988.",
+        "Mae'r teulu'n gofyn i'r Cyngor roi eu datganiad ar y cofnod cyhoeddus; gwneud Tŷ Mawr yn eitem sefydlog gyda chynghorydd "
+        "cyswllt; argymell i'r Senedd y dylid ystyried ymchwiliad annibynnol; ac ysgrifennu i gefnogi datgelu a diogelu'r cofnodion.",
+        "Nid yw'r teulu'n ceisio cartref neb yn Church View Close.",
+        "Cenhadaeth y Cyngor yw “Gwasanaethu ein cymuned, gwarchod ein hunaniaeth”. Mae Tŷ Mawr yn rhan o'r hunaniaeth honno.",
+    ],
+    "note": "Cyfieithiad drafft o'r crynodeb Saesneg. Croesawn gywiriadau gan siaradwyr Cymraeg.",
+}

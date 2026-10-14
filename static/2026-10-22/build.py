@@ -110,6 +110,8 @@ def site():
             cols += f'<div class="cmp-col"><h4>On the record</h4><ul>{_li(c["record"])}</ul></div>'
         if c["tested"]:
             cols += f'<div class="cmp-col"><h4>Still being tested</h4><ul>{_li(c["tested"])}</ul></div>'
+        if c.get("against"):
+            cols += f'<div class="cmp-col cmp-against"><h4>What cuts against us</h4><ul>{_li(c["against"])}</ul></div>'
         q, a = c["if_asked"]
         brief += f"""
       <details class="cmp" id="{c['id'].lower()}">
@@ -283,6 +285,20 @@ def site():
   </div>
 </section>
 
+<section class="sec small-sec" id="cymraeg" lang="cy">
+  <details class="src">
+    <summary><span class="court-h">{e(CYMRAEG['title'])}</span><span class="court-l">Crynodeb yn Gymraeg</span><span class="readmore">Agor</span></summary>
+    <div class="more">{''.join(f'<p>{e(x)}</p>' for x in CYMRAEG['lines'])}<p class="note">{e(CYMRAEG['note'])}</p></div>
+  </details>
+</section>
+
+<section class="sec small-sec" id="provenance">
+  <details class="src">
+    <summary><span class="court-h">How this was prepared</span><span class="court-l">Version {e(VERSION['version'])}, {e(VERSION['date'])}. Method, corrections and right of reply.</span><span class="readmore">Open</span></summary>
+    <div class="more"><p>{e(VERSION['prepared_by'])}.</p><p>{e(VERSION['method'])}</p><p>{e(VERSION['corrections'])}</p><p class="note">{e(VERSION['source_control'])}</p></div>
+  </details>
+</section>
+
 <section class="sec small-sec" id="sources">
   <details class="src">
     <summary><span class="court-h">How to read the labels, and the sources</span><span class="readmore">Open</span></summary>
@@ -292,7 +308,7 @@ def site():
 </main>
 
 <footer class="foot">
-  <p>Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth. Meeting toolkit for {e(MEETING['date'])}. Updated {e(MEETING['updated'])}.</p>
+  <p>Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth. Meeting toolkit for {e(MEETING['date'])}. Version {e(VERSION['version'])}, {e(VERSION['date'])}. <a href="#provenance">How this was prepared</a> · <a href="#cymraeg" lang="cy">Cymraeg</a></p>
   <p>Not Llandough-juxta-Cowbridge, and not the Great House at Llandow or Aberthin.</p>
   <p><a href="https://bpvsbuckler.bucklerfamily.estate/">The full story</a> <a href="https://dartboard.bucklerfamily.estate/">Records tracker</a> <a href="meeting-pack.pdf" download>Meeting pack (PDF)</a></p>
 </footer>
@@ -479,6 +495,8 @@ details[open] .readmore{visibility:hidden}
 .cmp-col h4{margin:0 0 8px;font-size:.85rem;font-weight:800;color:var(--red)}
 .cmp-col ul{margin:0;padding-left:18px}.cmp-col li{margin-bottom:8px;font-size:.98rem}
 .cmp-ask,.cmp-body .ref{grid-column:1/-1;margin:4px 0 0}
+.cmp-against{grid-column:1/-1;border-top:1px dashed var(--rule);padding-top:10px}
+.cmp-against h4{color:var(--ink)}
 .cmp-ask{background:var(--lime);border-left:4px solid var(--ink);padding:10px 14px}
 .threshold-box{margin-top:40px;background:var(--slate);color:#fff;padding:clamp(20px,3vw,32px)}
 .threshold-box>p{font-size:1.1rem;max-width:44em;margin:0 0 20px}
@@ -594,12 +612,14 @@ def pack():
     for c in BRIEF:
         rec = "".join(f"<li>{e(t)} {label(k)}</li>" for t, k in c["record"])
         tst = "".join(f"<li>{e(t)} {label(k)}</li>" for t, k in c["tested"])
+        agn = "".join(f"<li>{e(t)} {label(k)}</li>" for t, k in c.get("against", []))
         q, ans = c["if_asked"]
         brief_pages += f"""<div class="cmp">
   <div class="cmp-h"><span class="cmp-id">{e(c['id'])}</span> {e(c['title'])}</div>
   <p class="cmp-say">{e(c['say'])}</p>
   {('<p class="cmp-l">On the record</p><ul>' + rec + '</ul>') if rec else ''}
   {('<p class="cmp-l">Still being tested</p><ul>' + tst + '</ul>') if tst else ''}
+  {('<p class="cmp-l cmp-l-against">What cuts against us</p><ul>' + agn + '</ul>') if agn else ''}
   <p class="cmp-ask"><b>If asked {e(q)}</b> {e(ans)}</p>
   <p class="wref">Evidence: {e(' · '.join(c['refs']))}</p>
 </div>"""
@@ -635,7 +655,7 @@ def pack():
   <ol class="res">{resolutions}</ol>
 </section>
 
-<section class="page">
+<section class="flow">
   <h2><span>3</span> Running order</h2>
   <table class="t">{order}</table>
   <h2 class="mt"><span>3</span> Three rules at the microphone</h2>
@@ -650,7 +670,7 @@ def pack():
   <p class="statement60">{e(STATEMENT_60)}</p>
 </section>
 
-<section class="page">
+<section class="flow">
   <h2><span>5</span> The briefing</h2>
   <p class="meta">{e(BRIEF_INTRO)}</p>
   <p class="threshold">{e(THRESHOLD)}</p>
@@ -666,7 +686,7 @@ def pack():
   <ul class="risk">{risks}</ul>
 </section>
 
-<section class="page">
+<section class="flow">
   <h2><span>7</span> Records access: eighteen months, twenty organisations</h2>
   <p class="meta">Stages: {e(', '.join(f'{i} {r}' for i, r in enumerate(RINGS, 1)))}. ■ = step taken. {e(WALL_NOTE)}</p>
   <table class="t wall">{wall}</table>
@@ -680,6 +700,9 @@ def pack():
   <h2 class="mt"><span>8</span> Labels and sources</h2>
   <ul class="keys">{keys}</ul>
   <ol class="src">{sources}</ol>
+  <h3>How this was prepared</h3>
+  <p class="meta">Version {e(VERSION['version'])}, {e(VERSION['date'])}. {e(VERSION['prepared_by'])}. {e(VERSION['method'])} {e(VERSION['corrections'])} {e(VERSION['source_control'])}</p>
+  <div lang="cy"><h3>{e(CYMRAEG['title'])}</h3>{''.join(f'<p class="meta">{e(x)}</p>' for x in CYMRAEG['lines'])}<p class="meta"><i>{e(CYMRAEG['note'])}</i></p></div>
   <p class="meta">Prepared by the Williams–Buckler family for the meeting of {e(MEETING['date'])}. The family's accounts and legal contentions are labelled as such. Fraud, concealment or government involvement has not been established; the family is seeking the records that would test it. This pack concerns Llandough-juxta-Penarth, not Llandough-juxta-Cowbridge or the Great House at Llandow or Aberthin. Online: 2026-10-22.bucklerfamily.estate</p>
 </section>
 </body></html>
@@ -691,7 +714,7 @@ PACK_CSS = r"""
 *{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 body{margin:0;font-family:var(--text);font-size:9.6pt;line-height:1.45;color:var(--ink)}
 h1,h2,h3,.q,th{font-family:var(--display)}
-.page{break-after:page}.page:last-child{break-after:auto}
+.page{break-after:page}.flow+section{margin-top:7mm}.page:last-child{break-after:auto}
 .cover .band{background:var(--slate);color:#fff;padding:9mm 9mm 8mm;margin-bottom:7mm}
 .kicker{margin:0 0 3mm;color:var(--stone);font-size:9pt}
 h1{font-stretch:62%;font-weight:850;text-transform:uppercase;font-size:44pt;line-height:.9;margin:0}
@@ -716,8 +739,8 @@ h3{font-stretch:75%;font-weight:800;font-size:12.5pt;margin:5mm 0 2mm;text-trans
 .tiles th{color:var(--red);font-size:14pt;font-stretch:62%;text-transform:uppercase}
 .swaps th s{font-stretch:62%;font-size:13pt;text-transform:uppercase;color:var(--stone);text-decoration-color:var(--red);text-decoration-thickness:1.5pt}
 .wall td{padding:.7mm 0;font-size:8pt}.wall .r{letter-spacing:.4mm;color:var(--slate);white-space:nowrap;padding:1.3mm 3mm}
-.statement p{font-size:9.8pt;line-height:1.45;margin:0 0 1.8mm}
-.statement60{font-size:9.2pt}
+.statement p{font-size:9.4pt;line-height:1.4;margin:0 0 1.6mm}
+.statement60{font-size:8.8pt}
 .meta{color:var(--muted);font-size:8.6pt}
 .pils .pil{margin-bottom:3mm}.pil h3{margin-top:2mm}.pil .lead{font-weight:700;margin:0 0 1mm}.pil ul{margin:0;padding-left:4mm}
 .mission{background:var(--slate);color:#fff;padding:4mm 5mm;margin-top:4mm}
@@ -729,11 +752,13 @@ h3{font-stretch:75%;font-weight:800;font-size:12.5pt;margin:5mm 0 2mm;text-trans
 .keys{list-style:none;padding:0}.keys li{margin-bottom:1.5mm}
 .src{padding-left:5mm;font-size:8.6pt}.src li{margin-bottom:1.6mm}.src .u{color:var(--muted);font-size:7.6pt;word-break:break-all}
 .rules{padding-left:5mm}
-.cmp{border-top:1.5pt solid var(--ink);padding:2.5mm 0 3mm;break-inside:avoid}
+.cmp{border-top:1.5pt solid var(--ink);padding:2.5mm 0 3mm}
+.cmp-h,.cmp-say{break-after:avoid}.cmp ul,.cmp-ask{break-inside:avoid}
 .cmp-h{font-family:var(--display);font-stretch:70%;font-weight:850;text-transform:uppercase;font-size:12pt;color:var(--muted)}
 .cmp-id{color:var(--red);margin-right:2mm}
 .cmp-say{font-size:11pt;font-weight:700;margin:1mm 0 2mm;line-height:1.35}
 .cmp-l{font-size:8pt;font-weight:800;color:var(--red);margin:1.5mm 0 .5mm}
+.cmp-l-against{color:var(--ink)}
 .cmp ul{margin:0;padding-left:4.5mm}.cmp li{margin-bottom:.8mm;font-size:9pt}
 .cmp-ask{background:var(--lime);border-left:1.2mm solid var(--ink);padding:1.5mm 3mm;margin:2mm 0 1mm;font-size:9pt}
 .threshold{font-size:10.5pt;font-weight:600;border-left:2mm solid var(--red);padding:2mm 4mm;background:var(--lime)}
@@ -757,7 +782,8 @@ def script_txt():
               "4. Write to the bodies holding the records in support of disclosure and preservation.", "",
               "", "BRIEFING CUE CARD (say the line, move on; expand only if asked)", ""]
     for c in BRIEF:
-        lines += [f"{c['id']}  {c['title'].upper()}", f"    SAY: {c['say']}", f"    IF ASKED {c['if_asked'][0]} {c['if_asked'][1]}", ""]
+        lines += [f"{c['id']}  {c['title'].upper()}", f"    SAY: {c['say']}", f"    IF ASKED {c['if_asked'][0]} {c['if_asked'][1]}"]
+        lines += [f"    AGAINST US: {t}" for t, k in c.get("against", [])] + [""]
     return "\n".join(lines)
 
 
@@ -777,7 +803,7 @@ def main():
         pg.goto("file://" + os.path.join(HERE, "pack.html"))
         pg.wait_for_load_state("networkidle")
         pg.evaluate("document.fonts.ready")
-        pg.pdf(path=os.path.join(HERE, "meeting-pack.pdf"), format="A4", print_background=True,
+        pg.pdf(path=os.path.join(HERE, "meeting-pack.pdf"), format="A4", print_background=True, tagged=True, outline=True,
                display_header_footer=True, header_template="<span></span>",
                footer_template='<div style="width:100%;font:7pt Arial;color:#777;padding:0 16mm;display:flex;justify-content:space-between">'
                                '<span>Great House Farm / Tŷ Mawr. Meeting pack, Llandough Community Council, 22 October 2026</span>'
