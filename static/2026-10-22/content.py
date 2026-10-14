@@ -94,8 +94,7 @@ ORDER = [
     ("By Friday 16 October", "Send the pack to the Clerk",
      "Ask for a properly worded Item 10, circulation to members, and time to speak.",
      ["Email this PDF to clerk@llandough-cc.co.uk with the covering letter on page 1.",
-      "Ask for a supplementary agenda replacing the Item 10 heading with the wording in the pack. "
-      "The agenda must be published at least three clear days before the meeting, so ask for it to go out by Saturday 17 October.",
+      "Ask the Clerk and Chair to confirm whether the expanded Item 10 wording can be added through a supplementary or revised agenda under the Council's standing orders and applicable notice requirements. If permitted, ask for publication by Saturday 17 October. Do not assume that a narrower published item can automatically be expanded.",
       "Ask a community councillor to give written notice of a motion in the same terms, so the Council can decide something on the night.",
       "Ask the Chair for up to ten minutes under Item 10, as well as the public session.",
       "Ask the Clerk to list the family's letters of 12 October under Item 16.",
@@ -427,8 +426,7 @@ LETTER = {
         "practical requests. It does not yet tell councillors or the public what the matter is. This pack sets it out, and we ask:",
     ],
     "requests": [
-        "That a supplementary agenda is issued replacing the heading of Item 10 with the wording on page 2, within the notice "
-        "period your standing orders require (three clear days, so by Saturday 17 October).",
+        "That the Clerk and Chair confirm whether, under the Council's standing orders and applicable notice requirements, the expanded wording on page 2 can be issued as a supplementary or revised agenda by Saturday 17 October. If permitted, please circulate it to all members and publish it. If not, please confirm the proper route and retain request 5 below as the fallback.",
         "That this pack is circulated to all members with the meeting papers and retained with the record of the meeting.",
         "That the Chair allows the family up to ten minutes when Item 10 is reached, in addition to the public session.",
         "That our letters of 12 October (internal review, environmental-information request, subject access request and "
@@ -632,7 +630,7 @@ BRIEF = [
 
 # ---- Provenance, corrections and accessibility (for later scrutiny) ----
 VERSION = {
-    "version": "4.1",
+    "version": "4.2",
     "date": "14 October 2026",
     "prepared_by": "Sion Buckler, grandson of Mary Williams, for the Williams–Buckler family",
     "method": ("Drafted with AI assistance from the family's public Wiki registers, its correspondence log and published "
