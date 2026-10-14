@@ -1,0 +1,54 @@
+name: Build 22 October meeting toolkit
+
+on:
+  push:
+    branches:
+      - 2026-10-22
+    paths:
+      - 'static/2026-10-22/content.py'
+      - 'static/2026-10-22/build.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-meeting-toolkit
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the meeting branch
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Chromium for PDF generation
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Validate the source
+        working-directory: static/2026-10-22
+        run: |
+          python -m py_compile content.py build.py
+      - name: Rebuild the site, script and downloadable PDF
+        working-directory: static/2026-10-22
+        run: python3 build.py
+      - name: Commit generated outputs to the deployment branch
+        run: |
+          git add static/2026-10-22/index.html \
+                  static/2026-10-22/pack.html \
+                  static/2026-10-22/meeting-script.txt \
+                  static/2026-10-22/meeting-pack.pdf
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "2026-10-22: rebuild meeting site and PDF from source"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          else
+            echo "Generated outputs already match the source."
+          fi
