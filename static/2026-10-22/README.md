@@ -5,7 +5,7 @@ Skim-first meeting toolkit (2026-10-22.bucklerfamily.estate) and the PDF pack fo
 **Edit words in one place:** `content.py`. Then run `python3 build.py` to regenerate:
 
 - `index.html` — the website (every section collapsed to a headline; "Open everything" expands all; printing expands all)
-- `pack.html` → `meeting-pack.pdf` — 11-page pack for the Clerk (needs `pip install playwright && playwright install chromium`)
+- `pack.html` → `meeting-pack.pdf` — 14-page pack for the Clerk (needs `pip install playwright && playwright install chromium`)
 - `meeting-script.txt` — the read-aloud statement
 
 Do not hand-edit `index.html`, `pack.html` or `meeting-script.txt`; your change will be overwritten on the next build.
