@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Build the 22 October 2026 meeting toolkit from content.py.
 
+Release note: generated deliverables must be rebuilt from the latest branch tip;
+do not merge generated PDF files during concurrent CI runs.
+
 Outputs (all in this folder):
   index.html          the skim-first website
   pack.html           the printable meeting pack (source of the PDF)
