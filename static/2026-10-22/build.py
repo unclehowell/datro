@@ -197,7 +197,7 @@ def site():
 <section class="sec" id="ask">
   <div class="sec-head">
     <h2>Item 10 is too small for this.</h2>
-    <p>The agenda reduces it to a plaque and a mailing list. These are the ten things to put before the Council, in priority order. The first five are for decision tonight. Open any one for the draft resolution.</p>
+    <p>{e(ASK_INTRO)}</p>
   </div>
   <div class="rows">{asks}</div>
   <p class="aside">Not asked: for the Council to decide ownership, fraud or whether any court was right. Those belong to courts and regulators. The Council is asked to put the matter on record and use its own powers.</p>
