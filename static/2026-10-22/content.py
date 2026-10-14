@@ -87,9 +87,10 @@ ASKS = [
     ("Speak up for disclosure",
      "Write to the bodies holding the records, and note the call for an inquiry.",
      "That the Clerk writes on the Council's behalf to Cadw, the Vale of Glamorgan Council, HM Land Registry, "
-     "Amgueddfa Cymru and the National Library of Wales, copied to Stephen Doughty MP and the area's Members of the Senedd, "
-     "supporting full and prompt disclosure of records to the family; and that the Council notes the family's call "
-     "for an independent public inquiry.",
+     "Amgueddfa Cymru and the National Library of Wales, and to the Ministry of Justice about its outstanding reply to "
+     "Stephen Doughty MP, copied to Mr Doughty and the area's Members of the Senedd, supporting full and prompt disclosure "
+     "to the family and the preservation of all records meanwhile; and that the Council notes the family's call for an "
+     "independent public inquiry.",
      "A letter from the community's own council carries weight no family letter can. It asks for openness, not a verdict."),
     ("Carry it into tonight's other business",
      "Items 12 and 14 are about identity and culture. Tŷ Mawr belongs in both.",
@@ -207,7 +208,112 @@ TILES = [
      "rec"),
 ]
 
-# Story they told vs the record: (they said, the record, label)
+# ---- From the Great House Farm Wiki (registers as at 10-12 October 2026) ----
+WIKI = "https://greathousefarmwiki.wordpress.com"
+COUNTS = [
+    ("86", "open lines of enquiry", "Anomalies Register: 71 issues plus 15 planning anomalies"),
+    ("54", "records missing or withheld", "Missing Records Register, M-001 to M-054"),
+    ("20+", "bodies asked since November 2025", "Records Access Chronology"),
+]
+
+THRESHOLD = ("Research has only started. Nothing yet meets the legal threshold to reopen the case on fraud, "
+             "concealment or government involvement, and the family does not claim it does. The records that would "
+             "test those questions are the ones not yet disclosed. What is already on the public record is enough "
+             "to show the official story is wrong.")
+
+# Already on the record: (headline, one line, detail, label, wiki ref)
+KNOWN = [
+    ("The root deed is not on file.",
+     "The Land Registry's own list of 43 registration documents leaves out the deed BP's title rests on.",
+     "HM Land Registry's schedule of 30 July 2026 lists 43 documents on the 1982–83 first-registration files. "
+     "The 31 December 1969 conveyance, recited as the root of BP's title, and a 1971 abstract are not among them. "
+     "No document on file conveys the farmhouse parcel to Western Ground Rents or BP before a 1975 deed between two BP companies.",
+     "rec", "Missing Records M-007, M-035–M-041"),
+    ("Two titles, merged during the appeal.",
+     "BP registered the farmhouse as a separate title in 1983, then folded it into the fields title in 1987.",
+     "Title WA240304 (farmhouse and garden) was applied for on 23 February 1983, four weeks before Mary Williams died. "
+     "On 2 February 1987, with the appeal pending, it was amalgamated into WA231076. The case was argued as one farm "
+     "while the register held two.",
+     "rec", "Anomalies A-025, A-026"),
+    ("Registered over a woman living in the house.",
+     "Mary Williams was in occupation in 1982. Nothing on the file shows she was asked what she claimed.",
+     "Linklaters & Paines applied to register BP on 30 November 1982. On 23 February 1983 BP's solicitors applied for the "
+     "farmhouse title, certifying they knew of no question or doubt affecting it. Mary had pleaded ownership in 1974 and told the Daily Telegraph her solicitors said she had a valid claim. BP's 1974 "
+     "action was adjourned and never relisted. The family's account is that notice of registration reached them only after "
+     "her death; the original notice is still being sought.",
+     "fam", "Anomalies A-011, A-012; M-038"),
+    ("Cadw kept no file.",
+     "Two photographs survive. No notes, no decision record, no decision-maker, no record of destruction.",
+     "Cadw photographed the house on 29 July 1988 and coded it “YYY”, which it has explained two different ways. It "
+     "refused to list on 5 December 1988. It says its file was “quite likely”, then “most likely”, destroyed, and holds "
+     "no destruction record. The Wales Office searched only its digital records and says paper files “would have been” "
+     "transferred.",
+     "rec", "Anomalies A-037–A-041; M-018–M-020, M-052"),
+    ("The plan said keep it.",
+     "The Local Plan said the buildings should be retained. They were demolished before the application was decided.",
+     "The officer's report on BP's 1989 outline application records that the buildings the Local Plan said should be "
+     "retained had been demolished. GGAT's 1989 report had described the farmhouse as a “county treasure”. Permission "
+     "was granted on 13 March 1990. No environmental screening decision has been found for a 3.4-acre site above the threshold.",
+     "rec", "Anomalies A-005, PL-002, PL-012"),
+    ("The pages that are missing.",
+     "Appendices B–E of the planning report are gone, including a letter from a councillor who sat on GGAT.",
+     "The officer's report says further GGAT comments, two public representations and BP's agents' response were attached "
+     "as Appendices B–E. None is in the file disclosed in 2026. One representation came from a County Councillor described "
+     "as a member of GGAT. The Vale's internal review has been unanswered since July.",
+     "rec", "Anomalies A-048, A-049, PL-003–PL-005"),
+    ("Warned in 1982. Called “low potential” in 1990.",
+     "Burials were then found in that ground, some a few centimetres below the topsoil.",
+     "In October 1982 GGAT told the planners occupation might continue north of the church and asked for investigation "
+     "before development. In 1989 GGAT advised, specified and priced the assessment, then took BP's commission to do it. "
+     "Its 1990 trenches could not investigate the eastern ground but zoned it low potential. The 1994 excavation found "
+     "the burials there. GGAT disclosed its dual role; the question is independence, not secrecy.",
+     "rec", "Anomalies A-042–A-047, PL-008"),
+    ("Never properly recorded.",
+     "The Royal Commission says the house was only partly recorded because of the ownership dispute.",
+     "RCAHMW records its correspondence with Mrs Buckler as lost since 1986–87, holds no record of being told of the "
+     "demolition, and made additions to its plan on 12 December 1988, six days after the house came down.",
+     "rec", "Anomalies A-035, A-036; M-021"),
+    ("The Lords papers were there all along.",
+     "Earlier searches missed them. The National Archives found them on 23 September 2026.",
+     "The House of Lords judicial papers in BP Properties Ltd v Buckler (YHL/PO/JO/10/11/2536) were catalogued in May "
+     "2026 and identified on 23 September after earlier keyword searches failed. The Strasbourg case file was destroyed in 2000.",
+     "rec", "Anomalies A-006, A-007; M-005, M-051"),
+    ("Five bailiffs, fifteen police, a chainsaw.",
+     "Two evictions in 1988. The second put William Buckler in hospital and then in the dock.",
+     "On 29 April 1988 bailiffs broke the doors with poleaxes while his children were behind them. In November he was "
+     "injured, taken to Llandough Hospital, and charged from his hospital bed. The house came down from 4am on 6 December. "
+     "The family's papers, photographs and Mary's journal were lost.",
+     "rec", "1988: Possession and Demolition"),
+]
+
+# Still being withheld: (body, position, label)
+WITHHELD = [
+    ("Ministry of Justice", "Has not answered Stephen Doughty MP. The probate request is on hold.", "rec"),
+    ("Ministry of Defence", "Will neither confirm nor deny Special Forces records (FOIA s.23(5)). Admits it missed its deadlines.", "rec"),
+    ("This Council", "Refused on cost, priced only on reading minutes. Nothing disclosed. The review is with the same Clerk.", "rec"),
+    ("HM Land Registry", "No confirmation since June that the 1982–83 files will be preserved or can be inspected. Told the family the title was “closed in 2005”.", "rec"),
+    ("Cadw", "1988 listing file probably destroyed; no record of when, how or by whom.", "rec"),
+    ("Vale of Glamorgan", "Planning Appendices B–E not produced; internal review unanswered since 7 July.", "rec"),
+    ("Heneb (formerly GGAT)", "Says it is not subject to FOI because it is a company, while holding GGAT's records.", "rec"),
+    ("The National Archives", "House of Lords bundle identified, not yet produced.", "rec"),
+]
+WITHHELD_NOTE = ("No complaint has yet gone to the Information Commissioner or the Public Services Ombudsman for Wales. "
+                 "Those are the next steps if disclosure does not come.")
+
+# Risks if nothing is done: (headline, one line)
+RISKS = [
+    ("Records keep disappearing.",
+     "Preservation of the Land Registry files has not been confirmed. Every year without a hold is another chance of loss."),
+    ("Witnesses are dying.",
+     "Mary died in 1983, William in 1992. People who remember the 1950s to the 1980s will not be here for long."),
+    ("The dead stay unmarked.",
+     "1,026 people from St Dochdwy's monastic cemetery, with nothing on the ground to say so."),
+    ("The wrong story becomes the official one.",
+     "The heritage record classes the site as “Post Medieval – Farm”. The Council's own history omits it."),
+    ("The green has a history too.",
+     "The family's case is that village green VG41 was part of their farm until 1955. The Council's records on it are among those requested."),
+]
+
 SWAPS = [
     ("Squatters.", "Born, married and died in the house for 320 years.", "fam"),
     ("An eviction.", "A demolition at 4am, the morning after the last protection fell.", "rec"),
@@ -282,10 +388,10 @@ REGIMES = [
 STATEMENT_60 = (
     "Chair, councillors, thank you. My family, the Williams–Bucklers, lived at Great House Farm, Tŷ Mawr, beside "
     "St Dochdwy's Church, for 320 years until it was demolished at four in the morning on 6 December 1988. The courts "
-    "decided who could live there; none ever decided who owned it. Under that ground lie the likely site of St Dochdwy's "
-    "monastery and 1,026 early medieval burials. The manorial courts sat in that house. Peerless Jim Driscoll's first fight "
-    "is recorded in its barn. Your own village history mentions none of it. For eighteen months we have asked twenty bodies, "
-    "including this Council, for the records. Tonight we ask three things: put our statement on the record, make Tŷ Mawr a "
+    "decided who could live there; none ever decided who owned it. That ground is the likely site of St Dochdwy's "
+    "monastery, where 1,026 early medieval burials were excavated. The manorial courts sat in that house. Peerless Jim Driscoll's first fight "
+    "is recorded in its barn. Your own village history mentions none of it. Our research has only started, and the records that would "
+    "test our case have not yet been produced by more than twenty bodies, this Council included. Tonight we ask three things: put our statement on the record, make Tŷ Mawr a "
     "standing item with a named councillor, and write in support of full disclosure. Your mission is preserving our identity. "
     "Tŷ Mawr is part of it. Thank you."
 )
@@ -295,8 +401,8 @@ STATEMENT = [
     "My grandmother was Mary Williams of Great House Farm, Tŷ Mawr, beside St Dochdwy's Church. Our family account is that we "
     "lived in that house for 320 consecutive years, from 1667 until it was demolished at about four in the morning on "
     "6 December 1988.",
-    "I am grateful this is on the agenda. But Item 10 describes it as a plaque and a mailing list, and I want you to see the size "
-    "of what sits under Church View Close.",
+    "Thank you for listing it. Item 10 describes a plaque and a mailing list. I want you to see the size of what sits "
+    "under Church View Close.",
     "It is the likely ground of St Dochdwy's monastery, one of the great early Christian centres of Wales, whose site has never "
     "been formally located. It is where 1,026 people were buried in the early medieval period, the largest such population yet "
     "recovered in Wales; their remains are in museum storage. It is the house where, according to the official Historic "
@@ -306,10 +412,14 @@ STATEMENT = [
     "In 1988 the story was told as the eviction of squatters. We were not squatters. The courts decided who could live in the "
     "house. No court has ever decided who owned it. The house came down the morning after Cadw declined to list it, while our "
     "application to the European Commission of Human Rights was still pending.",
-    "For eighteen months my family has asked twenty organisations for the records. Cadw says its 1988 file was probably destroyed "
-    "but holds no record of destroying it. The Land Registry's own schedule of 43 documents does not include the deed its title "
-    "rests on. This Council refused our request on cost, with figures that do not add up. Freedom of information, environmental "
-    "information and our own personal data are three separate rights, and each should be answered on its own terms.",
+    "Our research has only started, and nothing yet meets the legal threshold to reopen the case. That is because the "
+    "records are still being kept from us. For eighteen months we have asked more than twenty organisations. The Ministry "
+    "of Justice has not answered our MP. The Ministry of Defence will neither confirm nor deny. Cadw says its 1988 file was "
+    "probably destroyed but holds no record of destroying it. The Land Registry's own list of 43 documents leaves out the "
+    "deed its title rests on. This Council refused our request on cost, with figures that do not add up.",
+    "What is already public is enough to show the official story is wrong. BP registered the farmhouse as a separate "
+    "title, then merged it into the fields while the appeal was running. The Local Plan said the buildings should be kept. "
+    "Ground marked low potential in 1990 turned out to hold burials.",
     "I am not asking this Council to try the case. I am asking you to do three things. Put our statement and pack on the public "
     "record. Make Great House Farm a standing item, with a named councillor. And write to the bodies holding the records, "
     "asking them to disclose them fully. The detail can follow, meeting by meeting, in the open.",
@@ -325,8 +435,9 @@ MIC_RULES = [
 ]
 
 ITEM10_ADDENDUM = {
-    "heading": ("10. Great House Farm / Tŷ Mawr, Llandough (demolished 6 December 1988): heritage, public record and "
-                "community history. To receive a statement and meeting pack from the Williams–Buckler family and to consider:"),
+    "heading": ("10. Great House Farm / Tŷ Mawr, Llandough (demolished 6 December 1988): heritage, public record, "
+                "community history, and the issues, risks and concerns raised by the family's research and records requests. "
+                "To receive a statement and meeting pack from the Williams–Buckler family and to consider:"),
     "items": [
         "a) receiving the family's statement and pack into the record of this meeting;",
         "b) placing Great House Farm / Tŷ Mawr on future agendas as a standing item and appointing a councillor as liaison;",
@@ -334,7 +445,7 @@ ITEM10_ADDENDUM = {
         "d) forwarding the family's invitation to former members, former clerks and long-standing residents of the 1950s–1990s (as previously listed);",
         "e) a working group to scope an interpretation board or memorial near the green (monastery, burials, manor, the 1897 wireless trials, Peerless Jim Driscoll), and the family's offer of a talk (as previously listed);",
         "f) arrangements for the internal review, environmental-information request and subject access request received on 12 October 2026, and preservation of related records;",
-        "g) writing to Cadw, the Vale of Glamorgan Council, HM Land Registry, Amgueddfa Cymru and the National Library of Wales in support of disclosure to the family, and noting the family's call for an independent inquiry;",
+        "g) writing to Cadw, the Vale of Glamorgan Council, HM Land Registry, Amgueddfa Cymru, the National Library of Wales and the Ministry of Justice in support of disclosure to the family and preservation of records, and noting the family's call for an independent inquiry;",
         "h) reflecting Tŷ Mawr's heritage in the Council's work under Items 12 and 14.",
     ],
 }
@@ -392,5 +503,12 @@ SOURCES = [
     ("The full story: bpvsbuckler.bucklerfamily.estate", "https://bpvsbuckler.bucklerfamily.estate/"),
     ("Records-access tracker: dartboard.bucklerfamily.estate", "https://dartboard.bucklerfamily.estate/"),
     ("The Council's FOI replies compared: clerk.bucklerfamily.estate", "https://clerk.bucklerfamily.estate/"),
+    ("Great House Farm Wiki", "https://greathousefarmwiki.wordpress.com/"),
+    ("Wiki: Anomalies Register (lines of enquiry)", "https://greathousefarmwiki.wordpress.com/anomalies-register/"),
+    ("Wiki: Missing Records Register", "https://greathousefarmwiki.wordpress.com/missing-records-register/"),
+    ("Wiki: Master Scrutiny Issue Register", "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/master-scrutiny-issue-register/"),
+    ("Wiki: Records Access Chronology", "https://greathousefarmwiki.wordpress.com/records-access-chronology/"),
+    ("Wiki: Anticipated Objections and the Family's Answers", "https://greathousefarmwiki.wordpress.com/constructive-criticism-counterarguments/"),
+    ("Wiki: 1988, Possession and Demolition (press transcripts)", "https://greathousefarmwiki.wordpress.com/demolition-1988/"),
     ("Great House Farm Wiki (archived 10 October 2026)", "https://web.archive.org/web/20261010064556/https://greathousefarmwiki.wordpress.com/"),
 ]

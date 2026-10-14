@@ -93,6 +93,14 @@ def site():
     opened = sum(len(r) for _, r, _ in WALL)
     ring_key = "".join(f"<li><b>{n}</b> {e(r)}</li>" for n, r in enumerate(RINGS, 1))
 
+    counts = "".join(f'<li><span class="c-big">{e(n)}</span><span class="c-l">{e(l)}</span><span class="c-src">{e(src)}</span></li>' for n, l, src in COUNTS)
+    known = "".join(f"""
+      <details class="row known">
+        <summary><span class="num">{i:02d}</span><span class="row-h">{e(h)}</span><span class="row-l">{e(line)}</span><span class="plus" aria-hidden="true"></span></summary>
+        <div class="more"><p>{e(d)}</p><p class="ref">{label(lab)} Wiki: {e(ref)}</p></div>
+      </details>""" for i, (h, line, d, lab, ref) in enumerate(KNOWN, 1))
+    withheld = "".join(f'<li><span class="wh-b">{e(b)}</span><span class="wh-p">{e(p)}</span></li>' for b, p, lab in WITHHELD)
+    risks = "".join(f'<li><span class="risk-h">{e(h)}</span><span class="risk-l">{e(l)}</span></li>' for h, l in RISKS)
     council = "".join(f"<li><b>{e(d)}</b><span>{e(t)}</span></li>" for d, t in COUNCIL_CASE)
     regimes = "".join(f'<div class="regime"><span class="regime-k">{e(k)}</span><span class="regime-n">{e(n)}</span><p>{e(t)}</p></div>' for k, n, t in REGIMES)
 
@@ -125,7 +133,7 @@ def site():
   <div class="nav-in">
     <a class="brand" href="#top">Tŷ Mawr <span>at Council</span></a>
     <nav class="links" aria-label="Sections">
-      <a href="#ask">The ask</a><a href="#order">Running order</a><a href="#scope">Why it matters</a><a href="#story">The story</a><a href="#wall">The wall</a><a href="#mic">At the mic</a>
+      <a href="#ask">The ask</a><a href="#order">Running order</a><a href="#scope">Why it matters</a><a href="#story">The story</a><a href="#known">On record</a><a href="#wall">The wall</a><a href="#risks">The risks</a><a href="#mic">At the mic</a>
     </nav>
     <button class="toggle" type="button" data-expand>Open everything</button>
     <a class="btn-red" href="meeting-pack.pdf" download>Download PDF</a>
@@ -207,11 +215,25 @@ def site():
   </details>
 </section>
 
+<section class="sec" id="known">
+  <div class="sec-head">
+    <h2>Already on the record.</h2>
+    <p>{e(THRESHOLD)}</p>
+  </div>
+  <ul class="counts">{counts}</ul>
+  <div class="rows">{known}</div>
+  <p class="aside">Every point links to the family's public registers on the <a href="{WIKI}/anomalies-register/">Great House Farm Wiki</a>, which keep fact, family account and open question apart.</p>
+</section>
+
 <section class="sec sec-slate" id="wall">
   <div class="sec-head">
     <h2>The wall.</h2>
     <p>Twenty organisations asked for records over eighteen months. Eight steps each before a request is exhausted. {opened} of 160 steps taken; none has reached a tribunal.</p>
   </div>
+  <h3 class="sub-h">Where disclosure stands.</h3>
+  <ul class="withheld">{withheld}</ul>
+  <p class="aside light">{e(WITHHELD_NOTE)}</p>
+  <h3 class="sub-h">Every request, every step.</h3>
   <ol class="ring-key">{ring_key}</ol>
   <ul class="wall">{wall_rows}</ul>
   <p class="aside light">{e(WALL_NOTE)}</p>
@@ -225,10 +247,18 @@ def site():
   </details>
 </section>
 
+<section class="sec sec-lime" id="risks">
+  <div class="sec-head">
+    <h2>If nothing is done.</h2>
+    <p>The concerns the Council should hear, whichever way the records eventually fall.</p>
+  </div>
+  <ol class="risks">{risks}</ol>
+</section>
+
 <section class="sec" id="mic">
   <div class="sec-head">
     <h2>At the microphone.</h2>
-    <p>Three minutes in the public session. Sixty seconds if time is short.</p>
+    <p>About three minutes in the public session. Sixty seconds if time is short.</p>
   </div>
   <ol class="rules">{rules}</ol>
   <details class="speech">
@@ -435,6 +465,26 @@ details[open] .readmore{visibility:hidden}
 .regime-n{display:block;font-size:.85rem;color:var(--stone);margin:4px 0 8px}
 .regime p{font-size:.95rem;color:#e4e9e6}
 
+/* on record */
+.counts{list-style:none;margin:0 auto 34px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:3px solid var(--ink)}
+.counts li{padding:18px 20px 18px 0;display:flex;flex-direction:column;gap:4px}
+.counts li+li{padding-left:20px;border-left:1px solid var(--rule)}
+.c-big{font:850 clamp(3.4rem,8vw,6rem)/.85 var(--display);font-stretch:62%;color:var(--red)}
+.c-l{font-weight:800;font-size:1.05rem}
+.c-src{font-size:.85rem;color:var(--muted)}
+.known .row-h{font-size:clamp(1.6rem,3.6vw,2.5rem)}
+.ref{font-size:.85rem;color:var(--muted)}.ref .tag{margin:0 8px 0 0}
+.sub-h{font:850 clamp(1.7rem,3.4vw,2.4rem)/1 var(--display);font-stretch:62%;text-transform:uppercase;margin:0 auto 14px}
+.sub-h+.ring-key{margin-top:0}
+.withheld{list-style:none;margin:0 auto;padding:0;border-top:2px solid #fff}
+.withheld li{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.6fr);gap:4px 18px;padding:12px 0;border-bottom:1px solid #ffffff22}
+.wh-b{font-weight:800}.wh-p{color:#dfe5e1}
+.withheld+.aside{margin-bottom:44px}
+.risks{list-style:none;counter-reset:k;margin-top:0;margin-bottom:0;padding:0;border-top:3px solid var(--ink)}
+.risks li{counter-increment:k;display:grid;grid-template-columns:3.2rem minmax(0,1fr);gap:2px 14px;padding:18px 0;border-bottom:1px solid var(--rule)}
+.risks li::before{content:counter(k,decimal-leading-zero);font-weight:800;color:var(--red);grid-row:1/3}
+.risk-h{font:850 clamp(1.7rem,3.8vw,2.6rem)/.95 var(--display);font-stretch:62%;text-transform:uppercase}
+.risk-l{color:var(--muted);max-width:44em}
 /* mic */
 .rules{list-style:none;counter-reset:r;padding:0;margin-top:0;margin-bottom:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;border-top:3px solid var(--ink);padding-top:18px}
 .rules li{counter-increment:r}.rules li::before{content:counter(r);display:block;font:850 3rem/1 var(--display);font-stretch:62%;color:var(--red);margin-bottom:6px}
@@ -471,6 +521,9 @@ details[open] .readmore{visibility:hidden}
   .row summary{grid-template-columns:2.4rem minmax(0,1fr) 24px}
   .mission ul{grid-template-columns:1fr}
   .dates li{grid-template-columns:1fr}
+  .counts{grid-template-columns:1fr}.counts li+li{padding-left:0;border-left:0;border-top:1px solid var(--rule)}
+  .withheld li{grid-template-columns:1fr}
+  .risks li{grid-template-columns:2.4rem minmax(0,1fr)}
 }
 @media print{
   .nav,.skip,.ctas,.toggle,.readmore,.plus{display:none!important}
@@ -511,6 +564,10 @@ def pack():
     sources = "".join(f'<li>{e(t)}{"<br><span class=u>" + e(u) + "</span>" if u else ""}</li>' for t, u in SOURCES)
     keys = "".join(f"<li>{label(k)} {e(d)}</li>" for k, (n, d) in LABELS.items())
     rules = "".join(f"<li><b>{e(a)}</b> {e(b)}</li>" for a, b in MIC_RULES)
+    known = "".join(f'<tr><th>{e(h)}</th><td>{e(d)} {label(lab)} <span class="wref">Wiki: {e(ref)}</span></td></tr>' for h, line, d, lab, ref in KNOWN)
+    withheld = "".join(f"<tr><th>{e(b)}</th><td>{e(pz)}</td></tr>" for b, pz, lab in WITHHELD)
+    risks = "".join(f"<li><b>{e(h)}</b> {e(l)}</li>" for h, l in RISKS)
+    counts = " · ".join(f"<b>{e(n)}</b> {e(l)}" for n, l, src in COUNTS)
 
     return f"""<!doctype html>
 <html lang="en-GB"><head><meta charset="utf-8"><title>Meeting pack: Great House Farm / Tŷ Mawr, 22 October 2026</title>
@@ -531,7 +588,7 @@ def pack():
     {close}
     <p class="sign">{e(LETTER['sign'])}</p>
   </div>
-  <p class="contents">In this pack: 1 Letter. 2 Replacement wording for Item 10 and draft resolutions. 3 Running order. 4 Statement. 5 Why it matters. 6 What the agenda leaves out. 7 The story and the courts. 8 Records access. 9 Rights and sources.</p>
+  <p class="contents">In this pack: 1 Letter. 2 Replacement wording for Item 10 and draft resolutions. 3 Running order. 4 Statement. 5 Why it matters. 6 What the agenda leaves out. 7 The story and the courts. 8 Already on the record, disclosure and risks. 9 Records access. 10 Rights and sources.</p>
 </section>
 
 <section class="page">
@@ -578,7 +635,19 @@ def pack():
 </section>
 
 <section class="page">
-  <h2><span>8</span> Records access: eighteen months, twenty organisations</h2>
+  <h2><span>8</span> Already on the record</h2>
+  <p class="threshold">{e(THRESHOLD)}</p>
+  <p class="meta">From the family's public registers on the Great House Farm Wiki: {counts}.</p>
+  <table class="t knownt">{known}</table>
+  <h2 class="mt"><span>8</span> Where disclosure stands</h2>
+  <table class="t">{withheld}</table>
+  <p class="meta">{e(WITHHELD_NOTE)}</p>
+  <h2 class="mt"><span>8</span> If nothing is done</h2>
+  <ul class="risk">{risks}</ul>
+</section>
+
+<section class="page">
+  <h2><span>9</span> Records access: eighteen months, twenty organisations</h2>
   <p class="meta">Stages: {e(', '.join(f'{i} {r}' for i, r in enumerate(RINGS, 1)))}. ■ = step taken. {e(WALL_NOTE)}</p>
   <table class="t wall">{wall}</table>
   <h3>This Council's own file</h3>
@@ -586,9 +655,9 @@ def pack():
 </section>
 
 <section class="page">
-  <h2><span>9</span> Three rights, not one</h2>
+  <h2><span>10</span> Three rights, not one</h2>
   <table class="t">{regimes}</table>
-  <h2 class="mt"><span>9</span> Labels and sources</h2>
+  <h2 class="mt"><span>10</span> Labels and sources</h2>
   <ul class="keys">{keys}</ul>
   <ol class="src">{sources}</ol>
   <p class="meta">Prepared by the Williams–Buckler family for the meeting of {e(MEETING['date'])}. The family's accounts and legal contentions are labelled as such. Fraud, concealment or government involvement has not been established; the family is seeking the records that would test it. This pack concerns Llandough-juxta-Penarth, not Llandough-juxta-Cowbridge or the Great House at Llandow or Aberthin. Online: 2026-10-22.bucklerfamily.estate</p>
@@ -640,6 +709,11 @@ h3{font-stretch:75%;font-weight:800;font-size:12.5pt;margin:5mm 0 2mm;text-trans
 .keys{list-style:none;padding:0}.keys li{margin-bottom:1.5mm}
 .src{padding-left:5mm;font-size:8.6pt}.src li{margin-bottom:1.6mm}.src .u{color:var(--muted);font-size:7.6pt;word-break:break-all}
 .rules{padding-left:5mm}
+.threshold{font-size:10.5pt;font-weight:600;border-left:2mm solid var(--red);padding:2mm 4mm;background:var(--lime)}
+.knownt th{width:44mm;font-size:9.6pt}
+.knownt td{font-size:8.7pt}
+.wref{color:var(--muted);font-size:7.4pt}
+.risk{padding-left:4mm}.risk li{margin-bottom:2mm}
 """
 
 
