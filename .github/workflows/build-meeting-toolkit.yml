@@ -48,6 +48,9 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git commit -m "2026-10-22: rebuild meeting site and PDF from source"
+            # Another authorised edit may land after checkout/build. Rebase the generated
+            # artefacts onto the newest branch tip before pushing; never overwrite history.
+            git pull --rebase origin "${GITHUB_REF_NAME}"
             git push origin "HEAD:${GITHUB_REF_NAME}"
           else
             echo "Generated outputs already match the source."
