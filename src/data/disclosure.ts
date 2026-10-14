@@ -10,7 +10,7 @@ export type RingId =
   | "democratic"
   | "forum";
 
-export type Kind = "authority" | "private" | "political";
+export type Kind = "authority" | "private" | "political" | "family";
 
 export type Cell = {
   status: Status;
@@ -898,6 +898,61 @@ export const parties: Party[] = [
       },
     },
   },
+  {
+    id: "family",
+    name: "The family — testimony",
+    short: "Family",
+    kind: "family",
+    remit:
+      "Relatives of Mary Williams and William Buckler. Their own memory of 1987–1988 and after. Gathered slowly, with consent, at their pace.",
+    cells: {
+      open: {
+        status: "evidence",
+        title: "Testimony invited",
+        date: "2026",
+        correspondent: "Relatives (not named here)",
+        ref: "Family account, not an official record",
+        detail:
+          "Relatives have been asked, privately and one at a time, what they remember of the farm, the eviction, the demolition and the years after. Nobody is named on this chart. What any relative says is labelled a family account until a record supports it, and is only published with that person’s agreement.",
+      },
+      reply: {
+        status: "evidence",
+        title: "Some accounts in, partly",
+        date: "Sep–Oct 2026",
+        correspondent: "Relatives (not named here)",
+        ref: "Partial, not yet signed",
+        detail:
+          "Some testimony has come back, to some extent. It is not yet written down as signed statements, and it has not been tested against the records. Where it matches a record already held, that match is noted on the evidence pages, not here.",
+      },
+      chase: {
+        status: "nuisance",
+        title: "Hard to give, hard to ask",
+        date: "Ongoing",
+        correspondent: "Relatives (not named here)",
+        ref: "Trauma, not obstruction",
+        detail:
+          "Relatives are traumatised by what happened, and talking about it is difficult. That can make the family as slow to answer as the authorities, but for the opposite reason: this is harm, not handling. So the rule is no deadlines, no pressure, and the right to stop or withdraw. The ask for trauma-informed counselling is part of making testimony possible, not a condition of it.",
+      },
+      review: {
+        status: "dormant",
+        title: "Consent check before 22 Oct",
+        date: "By 16 Oct 2026",
+        correspondent: "Each relative",
+        ref: "WP-LCC-09",
+        detail:
+          "Before anything family-sourced is said at the Llandough Community Council meeting on 22 October 2026, each relative whose memory is used is asked to agree to how it is put. Anything not agreed is left out.",
+      },
+      democratic: {
+        status: "dormant",
+        title: "Ask: acknowledge the harm",
+        date: "22 Oct 2026",
+        correspondent: "Llandough Community Council",
+        ref: "Item 10 — ask 4",
+        detail:
+          "The Council is asked to acknowledge the harm to the family and to support a request to Cardiff and Vale University Health Board for trauma-informed counselling. A Senedd inquiry, if one is recommended, would be the place for formal, supported witness evidence.",
+      },
+    },
+  },
 ];
 
 export const sampledThrough = "12 October 2026";
@@ -905,6 +960,9 @@ export const sampledThrough = "12 October 2026";
 export function dormantDetail(party: Party, ring: Ring): string {
   if (party.kind === "private" && (ring.id === "regulator" || ring.id === "democratic" || ring.id === "forum")) {
     return `${party.name} is not a public authority. The ICO, the Ombudsman and the Information Rights Tribunal are not a path against them. What is left, if a record is still missing, is a further preservation request or an order in the underlying case. Nothing in the mailbox shows that step.`;
+  }
+  if (party.kind === "family") {
+    return "The family is not a body to be reviewed, complained about or taken to a regulator. This ring stays empty on purpose. Testimony is given, not extracted.";
   }
   if (party.kind === "political" && ring.id !== "open" && ring.id !== "reply" && ring.id !== "chase") {
     return "An MP’s office is casework, not a body you take to the ICO. The next step is a chase to the office, or asking them to press the authority that actually holds the file. That chase is not in the mailbox beyond what the other slices show.";
