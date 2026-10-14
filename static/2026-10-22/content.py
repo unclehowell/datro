@@ -89,6 +89,14 @@ ASKS = [
      "The agenda already asks the Council to think about Welsh culture, sport and local identity. Here is Llandough's strongest example."),
 ]
 
+ASK_INTRO = (
+    "Ten proposals are set out below. The priority decisions sought tonight are (1) receive and minute the pack, "
+    "(2) make the matter a standing item and appoint a liaison councillor, and (5) write to record-holders in support "
+    "of disclosure and preservation. Ask the Council to discuss the remaining proposals; if there is insufficient time "
+    "or agenda authority to decide them, request named referrals or a properly notified future agenda rather than rushing "
+    "ten separate resolutions."
+)
+
 # Running order: (when, title, one line, detail list)
 ORDER = [
     ("By Friday 16 October", "Send the pack to the Clerk",
@@ -630,7 +638,7 @@ BRIEF = [
 
 # ---- Provenance, corrections and accessibility (for later scrutiny) ----
 VERSION = {
-    "version": "4.2",
+    "version": "4.3",
     "date": "14 October 2026",
     "prepared_by": "Sion Buckler, grandson of Mary Williams, for the Williams–Buckler family",
     "method": ("Drafted with AI assistance from the family's public Wiki registers, its correspondence log and published "
