@@ -1402,6 +1402,7 @@ Democratic@valeofglamorgan.gov.uk
 
 cc: FoiUnit@valeofglamorgan.gov.uk (for inform','{"kind": "reply", "pairing": "thread", "party": "vale"}');
 INSERT INTO nodes VALUES ('doc-cadw-1988-listing-location-lead','document','Cadw 1988 listing / assessment file — location lead','{"holder": "Cadw / Welsh Government", "reference": "none yet (draft)", "date": "2026-10-13"}');
+INSERT INTO nodes VALUES ('doc-dwr-cymru-eir-3106-2026','document','Dŵr Cymru Welsh Water EIR/3106/2026, 14 October 2026','{"holder": "Dŵr Cymru Welsh Water, Environmental Information Requests", "reference": "EIR/3106/2026", "date": "2026-10-14"}');
 INSERT INTO nodes VALUES ('doc-glamorgan-archives-2026-4097b','document','Glamorgan Archives 2026/4097b','{"holder": "Glamorgan Archives", "reference": "2026/4097b", "date": "2026-09-30"}');
 INSERT INTO nodes VALUES ('doc-glamorgan-archives-llandough-parish-tithe','document','Lead: Llandough-juxta-Penarth vestry, tithe, enclosure','{"holder": "Glamorgan Archives", "reference": "location lead drafted 7 Oct 2026 (no authority reference yet)", "date": "2026-10-07"}');
 INSERT INTO nodes VALUES ('doc-heneb-GGAT02038s','document','Heneb reply, 6 October 2026','{"holder": "Heneb (Glamorgan-Gwent HER)", "reference": "GGAT02038s (request 8 Sep 2026; further email 19 Sep 2026 unanswered)", "date": "2026-10-06"}');
