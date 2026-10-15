@@ -1406,6 +1406,7 @@ INSERT INTO nodes VALUES ('doc-dwr-cymru-eir-3106-2026','document','Dŵr Cymru W
 INSERT INTO nodes VALUES ('doc-glamorgan-archives-2026-4097b','document','Glamorgan Archives 2026/4097b','{"holder": "Glamorgan Archives", "reference": "2026/4097b", "date": "2026-09-30"}');
 INSERT INTO nodes VALUES ('doc-glamorgan-archives-llandough-parish-tithe','document','Lead: Llandough-juxta-Penarth vestry, tithe, enclosure','{"holder": "Glamorgan Archives", "reference": "location lead drafted 7 Oct 2026 (no authority reference yet)", "date": "2026-10-07"}');
 INSERT INTO nodes VALUES ('doc-heneb-GGAT02038s','document','Heneb reply, 6 October 2026','{"holder": "Heneb (Glamorgan-Gwent HER)", "reference": "GGAT02038s (request 8 Sep 2026; further email 19 Sep 2026 unanswered)", "date": "2026-10-06"}');
+INSERT INTO nodes VALUES ('doc-hmlr-historical-title-great-house-farm-location-lead','document','HMLR historical title location lead','{"holder": "HM Land Registry", "reference": "draft r-6678427177936368728 (not sent)", "date": "2026-10-15"}');
 INSERT INTO nodes VALUES ('doc-itv-wales-ty-mawr-media-location-lead','document','ITV Wales archive location lead for Ty Mawr / Great House Farm media, 14 October 2026','{"holder": "ITV Wales / ITV Cymru Archive", "reference": "none (initial enquiry re Ty Mawr Llandoche)", "date": "2026-10-14"}');
 INSERT INTO nodes VALUES ('doc-llandough-cc-internal-review-request-2026-10-12','document','Llandough Community Council — internal review request, new FOI/EIR, SAR (12 October 2026)','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-mod-dbs-DPR2026-46503','document','MOD DBS SAR, 9 October 2026','{"holder": "Ministry of Defence, Defence Business Services (DBS) Civilian Disclosures Team", "reference": "DPR2026/46503", "date": "2026-10-09"}');
@@ -1415,7 +1416,7 @@ INSERT INTO nodes VALUES ('doc-rcahmw-RC26-0375','document','RCAHMW RC26-0375 fu
 INSERT INTO nodes VALUES ('doc-science-museum-FOI-2026-0038','document','Science Museum Group FOI/2026/0038 internal review','{"holder": "Science Museum Group", "reference": "FOI/2026/0038", "date": "2026-10-01"}');
 INSERT INTO nodes VALUES ('doc-south-wales-police-auto-ack-foi-great-house-farm-1988','document','South Wales Police FOI auto-acknowledgement','{"holder": "South Wales Police", "reference": "none assigned in auto-ack", "date": "2026-10-10"}');
 INSERT INTO nodes VALUES ('doc-south-wales-police-foi-1264-26','document','South Wales Police FOI 1264/26 – automatic acknowledgement of further clarification (17:06 UTC)','{"holder": "South Wales Police", "reference": "FOI 1264/26", "date": "2026-10-13"}');
-INSERT INTO nodes VALUES ('doc-tna-IR58-glamorgan-xlvii-6','document','TNA Valuation Office location lead','{"holder": "The National Archives", "reference": "draft r1281075964076169651 (not sent)", "date": "2026-10-04"}');
+INSERT INTO nodes VALUES ('doc-tna-IR58-glamorgan-xlvii-6','document','TNA Valuation Office location lead / response','{"holder": "The National Archives", "reference": "CAS-359317-Q8Q4R9 (response 14 Oct 2026); prior draft r1281075964076169651", "date": "2026-10-14"}');
 INSERT INTO nodes VALUES ('doc-welsh-government-ATISN-26-0010','document','Welsh Government ATISN 26-0010, 14 October 2026','{"holder": "Welsh Government, Operational Effectiveness Group, Business Management Unit (OEG.FMCO.FOI)", "reference": "ATISN 26-0010", "date": "2026-10-14"}');
 INSERT INTO nodes VALUES ('ref:00211027','reference','00211027','{}');
 INSERT INTO nodes VALUES ('ref:00211463','reference','00211463','{}');
@@ -1438,6 +1439,7 @@ INSERT INTO nodes VALUES ('ref:Archive 6048943','reference','Archive 6048943','{
 INSERT INTO nodes VALUES ('ref:Archive 6048945','reference','Archive 6048945','{}');
 INSERT INTO nodes VALUES ('ref:Archive 6364275','reference','Archive 6364275','{}');
 INSERT INTO nodes VALUES ('ref:CAS-347296-M0V4Y1','reference','CAS-347296-M0V4Y1','{}');
+INSERT INTO nodes VALUES ('ref:CAS-359317-Q8Q4R9','reference','CAS-359317-Q8Q4R9','{}');
 INSERT INTO nodes VALUES ('ref:D153/1-2','reference','D153/1-2','{}');
 INSERT INTO nodes VALUES ('ref:D153/1-8','reference','D153/1-8','{}');
 INSERT INTO nodes VALUES ('ref:D696','reference','D696','{}');
@@ -3143,6 +3145,7 @@ INSERT INTO edges VALUES ('doc-rcahmw-RC26-0375','ref:RC26-0371','cites');
 INSERT INTO edges VALUES ('doc-rcahmw-RC26-0375','ref:RC26-0375','cites');
 INSERT INTO edges VALUES ('doc-science-museum-FOI-2026-0038','ref:2026/0038','cites');
 INSERT INTO edges VALUES ('doc-south-wales-police-foi-1264-26','ref:FOI 1264/26','cites');
+INSERT INTO edges VALUES ('doc-tna-IR58-glamorgan-xlvii-6','ref:CAS-359317-Q8Q4R9','cites');
 INSERT INTO qa VALUES ('qa-559240cdf50d','cadw','Cadw / Welsh Government','welsh-government-and-cadw-email-correspondence-catalogue-part-3#t1','2025-11-02','Sirs/Ma''am,
 
 I am writing regarding farmland formerly belonging to my family, which later formed part of the litigation known as BP v Buckler (1987).
