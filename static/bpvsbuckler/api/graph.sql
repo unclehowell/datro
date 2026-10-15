@@ -1409,6 +1409,7 @@ INSERT INTO nodes VALUES ('doc-heneb-GGAT02038s','document','Heneb reply, 6 Octo
 INSERT INTO nodes VALUES ('doc-hmlr-historical-title-great-house-farm-location-lead','document','HMLR historical title location lead','{"holder": "HM Land Registry", "reference": "draft r-6678427177936368728 (not sent)", "date": "2026-10-15"}');
 INSERT INTO nodes VALUES ('doc-itv-wales-ty-mawr-media-location-lead','document','ITV Wales archive location lead for Ty Mawr / Great House Farm media, 14 October 2026','{"holder": "ITV Wales / ITV Cymru Archive", "reference": "none (initial enquiry re Ty Mawr Llandoche)", "date": "2026-10-14"}');
 INSERT INTO nodes VALUES ('doc-llandough-cc-internal-review-request-2026-10-12','document','Llandough Community Council — internal review request, new FOI/EIR, SAR (12 October 2026)','{"holder": "", "reference": "", "date": ""}');
+INSERT INTO nodes VALUES ('doc-mod-FOI2026-23272','document','MOD Army Policy & Secretariat FOI2026/23272','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-mod-dbs-DPR2026-46503','document','MOD DBS SAR, 9 October 2026','{"holder": "Ministry of Defence, Defence Business Services (DBS) Civilian Disclosures Team", "reference": "DPR2026/46503", "date": "2026-10-09"}');
 INSERT INTO nodes VALUES ('doc-museum-wales-FOI-2026-024','document','Amgueddfa Cymru FOI 2026-024 / 032 / 036 – recorded basis for out-of-scope','{"holder": "Amgueddfa Cymru – Museum Wales", "reference": "FOI 2026-024 / 032 / 036", "date": "2026-10-12"}');
 INSERT INTO nodes VALUES ('doc-museum-wales-FOI-2026-036','document','Amgueddfa Cymru FOI 2026-036','{"holder": "Amgueddfa Cymru – Museum Wales", "reference": "FOI 2026-036", "date": "2026-10-10"}');
@@ -1462,6 +1463,7 @@ INSERT INTO nodes VALUES ('ref:FOI 2026-036','reference','FOI 2026-036','{}');
 INSERT INTO nodes VALUES ('ref:FOI 2026-32','reference','FOI 2026-32','{}');
 INSERT INTO nodes VALUES ('ref:FOI 719/26','reference','FOI 719/26','{}');
 INSERT INTO nodes VALUES ('ref:FOI2026/09019','reference','FOI2026/09019','{}');
+INSERT INTO nodes VALUES ('ref:FOI2026/23272','reference','FOI2026/23272','{}');
 INSERT INTO nodes VALUES ('ref:GGAT00768s','reference','GGAT00768s','{}');
 INSERT INTO nodes VALUES ('ref:GGAT02038s','reference','GGAT02038s','{}');
 INSERT INTO nodes VALUES ('ref:GGAT03586s','reference','GGAT03586s','{}');
@@ -3133,6 +3135,7 @@ INSERT INTO edges VALUES ('doc-glamorgan-archives-2026-4097b','ref:XLVII.6','cit
 INSERT INTO edges VALUES ('doc-glamorgan-archives-llandough-parish-tithe','ref:2026/4097b','cites');
 INSERT INTO edges VALUES ('doc-heneb-GGAT02038s','ref:GGAT02038s','cites');
 INSERT INTO edges VALUES ('doc-llandough-cc-internal-review-request-2026-10-12','ref:89/01396/OUT','cites');
+INSERT INTO edges VALUES ('doc-mod-FOI2026-23272','ref:FOI2026/23272','cites');
 INSERT INTO edges VALUES ('doc-mod-dbs-DPR2026-46503','ref:DPR2026/46503','cites');
 INSERT INTO edges VALUES ('doc-museum-wales-FOI-2026-024','ref:FOI 2026-024','cites');
 INSERT INTO edges VALUES ('doc-museum-wales-FOI-2026-036','ref:FOI 2026-032','cites');
