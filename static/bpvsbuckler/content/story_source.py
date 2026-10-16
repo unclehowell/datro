@@ -87,7 +87,7 @@ CAST = [
     {'id': 'frederick', 'name': 'Frederick Buckler', 'years': '1910/11 – 1967',
      'role': "Mary's husband. Held an unwritten yearly tenancy from 1949; the 1955 and 1962 orders were made against him.",
      'match': ['Frederick']},
-    {'id': 'billy', 'name': 'William "Billy" Buckler', 'years': 'c. 1948 – 1992',
+    {'id': 'billy', 'name': 'William "Billy" Buckler', 'years': 'c. 1948 – 1990',
      'role': "Mary's son, born at the farm. Defendant in BP Properties Ltd v Buckler; evicted in November 1988.",
      'match': ['Billy', 'William Buckler', 'Bill Buckler', 'Mr Buckler', 'William (Billy)']},
     {'id': 'branwen', 'name': 'Branwen Buckler', 'years': '',
@@ -566,6 +566,12 @@ sc('VII', 'ghf-19900313-1', '1990-03-13', 'February – March 1990', "Outline pe
    'Planning file',
    "On 13 March 1990 outline permission is granted with 18 conditions. The officer's report notes the farm buildings \"were unfortunately demolished a little while ago\". GGAT's further comments of 8 February 1990 are missing from the file.",
    [REDEV, LEGAL], aliases=['ghf-19900208-1'])
+sc('VII', 'ghf-19900529-1', '1990-05-29', '29 May 1990', "Death of William Buckler", 'Llandough', 'A',
+   'Family account (date corrected from family information)',
+   "William Buckler died on 29 May 1990 at Llandough Hospital. Funeral and burial details require confirmation against the obituary and relevant records.",
+   [w('/williams-buckler-family/', 'The Williams / Buckler Family — William')],
+   aliases=['ghf-19920515-1'],
+   ledger={'A': "Freehold claim: Mary's heirs · never adjudicated, never extinguished"})
 sc('VII', 'ghf-19900801-1', '1990-08-01', 'August – October 1990', "Evaluation trenches", 'Former farm site', '?',
    'Archaeological record',
    "In August 1990 GGAT digs eight trenches for BP and finds early medieval burials. An area that could not be investigated is marked low potential. In October the council records the condition as met.",
@@ -578,11 +584,7 @@ sc('VII', 'ghf-19920514-1', '1992-05-14', '14 May 1992', "Reserved matters appli
    'Planning file',
    "On 14 May 1992 Ideal Homes Wales applies for approval of 20 houses (92/00671/RES).",
    [REDEV])
-sc('VII', 'ghf-19920515-1', '1992-05-15', '15 May 1992', "Death of William Buckler", 'Llandough', 'A',
-   'Family account',
-   "William Buckler dies on 15 May 1992 in Llandough Hospital and is buried at Michaelston-le-Pit.",
-   [w('/williams-buckler-family/', 'The Williams / Buckler Family — William')],
-   ledger={'A': "Freehold claim: Mary's heirs · never adjudicated, never extinguished"})
+
 sc('VII', 'ghf-19920727-1', '1992-07-27', '27 July 1992', "GGAT letter", 'GGAT', '?',
    'Planning file',
    "On 27 July 1992 GGAT writes to the council that the 1990 assessment showed significant deposits, including human bone, and urges mitigation. Page 2 is missing from the file.",
