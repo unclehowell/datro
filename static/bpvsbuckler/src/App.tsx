@@ -367,7 +367,7 @@ function rankArchiveMedia(scene: Scene, row: ArchiveMediaRow, wiki = false): { s
 }
 function archiveMediaTitle(row: ArchiveMediaRow): string {
   const rich = mediaPlainText(row.title) || mediaPlainText(row.caption) || row.alt_text || row.name || row.path || 'Archived media';
-  const cleaned = rich.replace(/[_]+/g, ' ').replace(/\b(?:bpvsbuckler|consortium|en|v\d+(?:[.-]\d+)*)\b/gi, ' ')
+  const cleaned = rich.replace(/[_-]+/g, ' ').replace(/\b(?:bpvsbuckler|consortium|en|v\d+(?:[.-]\d+)*)\b/gi, ' ')
     .replace(/^\s*\d{4}[- _]\d{2}[- _]\d{2}\s*/, '').replace(/\s+/g, ' ').trim();
   return cleaned || 'Archived media';
 }
