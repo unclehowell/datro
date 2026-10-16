@@ -232,6 +232,7 @@ button.chip:hover, a.chip:hover { color: var(--limewash); }
 .pip-caption { position: absolute; left: 0; right: 0; bottom: 0; overflow: hidden; padding: 28px 34px 6px 8px; background: linear-gradient(transparent, rgba(20,24,28,.92)); color: var(--limewash); text-align: left; font-size: 11px; line-height: 1.25; white-space: nowrap; text-overflow: ellipsis; pointer-events: none; }
 .pip-control { position: absolute; z-index: 3; display: flex; align-items: center; justify-content: center; width: 27px; height: 28px; padding: 0; border: 1px solid rgba(236,235,230,.45); border-radius: 4px; background: rgba(18,22,26,.86); color: var(--limewash); font-size: 22px; line-height: 1; box-shadow: 0 1px 4px rgba(0,0,0,.35); }
 .pip-control:hover, .pip-control:focus-visible { background: var(--slate-2); border-color: var(--limewash); }
+.pip-control:disabled { opacity: .32; cursor: default; }
 .pip-prev { left: 5px; top: calc(50% - 14px); }
 .pip-next { right: 5px; top: calc(50% - 14px); }
 .pip-enlarge { top: 5px; right: 5px; width: 28px; height: 25px; font-size: 17px; }
