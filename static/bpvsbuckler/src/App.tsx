@@ -338,11 +338,13 @@ function rankArchiveMedia(scene: Scene, row: ArchiveMediaRow, wiki = false): { s
   const otherYearMatch = listedYears.some((listed) => listed !== year && mediaYearMatch(lower, listed));
   const titleTerms = [...new Set(mediaWords(scene.title))];
   const placeTerms = [...new Set(mediaWords(scene.place || ''))];
-  // Scene evidence titles and stable evidence IDs often identify a better file
-  // than the short slide title alone, so score those alongside the narration.
+  // A slide may concern an earlier event but cite a later family statement,
+  // newspaper report or court document. Its evidence year helps find that image.
   const evidenceText = (scene.evidence || [])
     .map((entry) => [entry.title, entry.type, entry.url].filter(Boolean).join(' '))
     .join(' ');
+  const evidenceYears = [...new Set(evidenceText.match(/\b(?:1[0-9]{3}|20[0-9]{2})\b/g) || [])];
+  const evidenceYearMatch = evidenceYears.some((listed) => mediaYearMatch(lower, listed));
   const evidenceTerms = [...new Set(mediaWords(evidenceText))].slice(0, 100);
   const contextText = [scene.narration, scene.known || '', scene.received || ''].join(' ');
   const contextTerms = [...new Set(mediaWords(contextText))].slice(0, 70);
@@ -350,15 +352,15 @@ function rankArchiveMedia(scene: Scene, row: ArchiveMediaRow, wiki = false): { s
   const evidenceHits = evidenceTerms.filter((word) => tokens.has(word)).length;
   const placeHits = placeTerms.filter((word) => tokens.has(word)).length;
   const contextHits = contextTerms.filter((word) => tokens.has(word)).length;
-  const tags = (row.tags || []).join(' ').toLowerCase();
-  const tagged = /(?:^|[\s#])(?:bpvsbuckler|ghf-e\d+|greathousefarm)(?:$|[\s#-])/i.test(tags + ' ' + text);
+  const tagged = tokens.has('bpvsbuckler') || tokens.has('greathousefarm') || tokens.has('ghf');
   let score = exactDate ? 42 : yearMatch ? 20 : (otherYearMatch ? 7 : 0);
+  if (evidenceYearMatch) score += 8.5;
   score += titleHits * 10;
   score += Math.min(12, evidenceHits) * 3.4;
   score += placeHits * 3;
   score += Math.min(6, contextHits) * 1.5;
   if (tagged) score += 1.5;
-  const relevant = exactDate || yearMatch || titleHits > 0 || evidenceHits > 0
+  const relevant = exactDate || yearMatch || evidenceYearMatch || titleHits > 0 || evidenceHits > 0
     || placeHits >= 2 || contextHits >= 2
     || (otherYearMatch && (tagged || titleHits > 0 || evidenceHits > 0));
   return { score, relevant };
@@ -573,12 +575,8 @@ function FloatingSceneMedia({ scene }: { scene: Scene }) {
         <img className="pip-image" src={previewUrl} alt={current.title} loading="lazy" onError={safeImageFallback} />
         {current.kind === 'video' && <span className="pip-play-mark" aria-hidden="true">▶</span>}
         <span className="pip-caption" title={current.title}>{current.title}</span>
-        {items.length > 1 && (
-          <>
-            <button type="button" className="pip-control pip-prev" onClick={() => selectItem(selectedIndex - 1)} aria-label="Previous scene media" title="Previous image">‹</button>
-            <button type="button" className="pip-control pip-next" onClick={() => selectItem(selectedIndex + 1)} aria-label="Next scene media" title="Next image">›</button>
-          </>
-        )}
+        <button type="button" className="pip-control pip-prev" onClick={() => selectItem(selectedIndex - 1)} disabled={items.length < 2} aria-label="Previous scene media" title="Previous image">‹</button>
+        <button type="button" className="pip-control pip-next" onClick={() => selectItem(selectedIndex + 1)} disabled={items.length < 2} aria-label="Next scene media" title="Next image">›</button>
         <button type="button" className="pip-control pip-enlarge" onClick={() => setLightboxOpen(true)} aria-label={'Enlarge ' + current.title} title="Enlarge thumbnail">⤢</button>
         <span className="pip-count" aria-live="polite">{selectedIndex + 1}/{items.length}</span>
       </div>
