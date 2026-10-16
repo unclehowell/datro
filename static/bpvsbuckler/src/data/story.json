@@ -110,7 +110,7 @@
   {
    "id": "billy",
    "name": "William \"Billy\" Buckler",
-   "years": "c. 1948 – 1992",
+   "years": "c. 1948 – 1990",
    "role": "Mary's son, born at the farm. Defendant in BP Properties Ltd v Buckler; evicted in November 1988.",
    "match": [
     "Billy",
@@ -322,6 +322,7 @@
   "ghf-19891108-1": "ghf-19891107-1",
   "ghf-19891010-1": "ghf-19891107-1",
   "ghf-19900208-1": "ghf-19900313-1",
+  "ghf-19920515-1": "ghf-19900529-1",
   "ghf-19901015-1": "ghf-19900801-1",
   "ghf-19931213-1": "ghf-19931203-1",
   "ghf-19940421-1": "ghf-19940504-1",
@@ -6346,6 +6347,54 @@
    ]
   },
   {
+   "id": "ghf-19900529-1",
+   "act": "VII",
+   "date": "1990-05-29",
+   "when": "29 May 1990",
+   "title": "Death of William Buckler",
+   "place": "Llandough",
+   "parcel": "A",
+   "basis": "Family account (date corrected from family information)",
+   "narration": "William Buckler died on 29 May 1990 at Llandough Hospital. Funeral and burial details require confirmation against the obituary and relevant records.",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Wiki page",
+     "title": "The Williams / Buckler Family — William",
+     "url": "https://greathousefarmwiki.wordpress.com/williams-buckler-family/"
+    }
+   ],
+   "image": null,
+   "aliases": [
+    "ghf-19920515-1"
+   ],
+   "no": 73,
+   "ref": "VII.7",
+   "cast": [
+    "billy"
+   ],
+   "received": null,
+   "received_words": [],
+   "known": "He was in his forties. He died in the village where he was born, without his home, without ever having had the one question that mattered answered. Mary's claim to the house passed, undecided, to his children.",
+   "ledger": [
+    [
+     "A",
+     "Freehold claim: Mary's heirs · never adjudicated, never extinguished"
+    ],
+    [
+     "M",
+     "WA231076, BP Properties · in possession from 29 November 1988"
+    ]
+   ],
+   "moved": [
+    "A"
+   ],
+   "grade": "single-source",
+   "grade_text": "Single source: one primary record so far.",
+   "questions": [],
+   "qa": []
+  },
+  {
    "id": "ghf-19900801-1",
    "act": "VII",
    "date": "1990-08-01",
@@ -6377,8 +6426,8 @@
    "aliases": [
     "ghf-19901015-1"
    ],
-   "no": 73,
-   "ref": "VII.7",
+   "no": 74,
+   "ref": "VII.8",
    "cast": [
     "bp",
     "ggat"
@@ -6394,7 +6443,7 @@
    "ledger": [
     [
      "A",
-     "Freehold claim: Billy Buckler · house demolished 6 December 1988 · title never adjudicated, never extinguished"
+     "Freehold claim: Mary's heirs · never adjudicated, never extinguished"
     ],
     [
      "M",
@@ -6437,8 +6486,8 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 74,
-   "ref": "VII.8",
+   "no": 75,
+   "ref": "VII.9",
    "cast": [
     "ggat",
     "rcahmw"
@@ -6449,7 +6498,7 @@
    "ledger": [
     [
      "A",
-     "Freehold claim: Billy Buckler · house demolished 6 December 1988 · title never adjudicated, never extinguished"
+     "Freehold claim: Mary's heirs · never adjudicated, never extinguished"
     ],
     [
      "M",
@@ -6507,8 +6556,8 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 75,
-   "ref": "VII.9",
+   "no": 76,
+   "ref": "VII.10",
    "cast": [
     "ideal"
    ],
@@ -6518,7 +6567,7 @@
    "ledger": [
     [
      "A",
-     "Freehold claim: Billy Buckler · house demolished 6 December 1988 · title never adjudicated, never extinguished"
+     "Freehold claim: Mary's heirs · never adjudicated, never extinguished"
     ],
     [
      "M",
@@ -6589,52 +6638,6 @@
      "answer": "Dear Sion Buckler\n\nFREEDOM OF INFORMATION ACT 2000/ENVIRONMENTAL INFORMATION REGULATIONS 2004 - INFORMATION REQUEST\n\nThank you for your request for information about: Great House Farm, Llandough (89/01396/OUT)\n\nYour request was received on 18/09/2026 and is being considered under the terms of the Freedom of Information Act 2000 and the Environmental Information Regulations 2004. Your query has been given the reference 00211483.\n\nIn some circumstances a fee may be payable and if that is the case we will let you know. A fees notice will be issued to you, and you will be required to pay before we will proceed to deal with your request.\n\nYou should receive the information requested within 20 wor"
     }
    ]
-  },
-  {
-   "id": "ghf-19920515-1",
-   "act": "VII",
-   "date": "1992-05-15",
-   "when": "15 May 1992",
-   "title": "Death of William Buckler",
-   "place": "Llandough",
-   "parcel": "A",
-   "basis": "Family account",
-   "narration": "William Buckler dies on 15 May 1992 in Llandough Hospital and is buried at Michaelston-le-Pit.",
-   "case": null,
-   "evidence": [
-    {
-     "type": "Wiki page",
-     "title": "The Williams / Buckler Family — William",
-     "url": "https://greathousefarmwiki.wordpress.com/williams-buckler-family/"
-    }
-   ],
-   "image": null,
-   "aliases": [],
-   "no": 76,
-   "ref": "VII.10",
-   "cast": [
-    "billy"
-   ],
-   "received": null,
-   "received_words": [],
-   "known": "He was in his forties. He died in the village where he was born, without his home, without ever having had the one question that mattered answered. Mary's claim to the house passed, undecided, to his children.",
-   "ledger": [
-    [
-     "A",
-     "Freehold claim: Mary's heirs · never adjudicated, never extinguished"
-    ],
-    [
-     "M",
-     "WA231076, BP Properties · in possession from 29 November 1988"
-    ]
-   ],
-   "moved": [
-    "A"
-   ],
-   "grade": "family-account",
-   "grade_text": "Family account: rests on the family's own account so far; no independent record yet.",
-   "questions": [],
-   "qa": []
   },
   {
    "id": "ghf-19920727-1",
