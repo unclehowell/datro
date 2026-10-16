@@ -152,8 +152,7 @@
         { name: 'all', label: 'All', icon: '📦' },
         { name: 'images', label: 'Images', icon: '🖼' },
         { name: 'pdf', label: 'PDF', icon: '📄' },
-        { name: 'text', label: 'Text', icon: '📝' },
-        { name: 'email', label: 'Email', icon: '✉️', virtual: true },
+        { name: 'text', label: 'Text / Email', icon: '📝✉️' },
         { name: 'video', label: 'Video', icon: '🎬' }
       ];
       const PER_PAGE = 10;
@@ -294,7 +293,11 @@
         // Support URL param from bpvsbuckler for filtered view, e.g. ?slide=65 or ?year=1988
         // Filter items with matching #slide-N or year in name, without affecting main UI
         const params = new URLSearchParams(window.location.search);
-        if ((params.get('cat') || '').toLowerCase() === 'email') switchCategory('email');
+        if ((params.get('cat') || '').toLowerCase() === 'email') {
+          // Preserve existing deep links while using the single Text / Email tab.
+          window.activeTagFilters = new Set(['#email']);
+          switchCategory('text');
+        }
         const slideParam = params.get('slide') || params.get('s');
         const yearParam = params.get('year') || params.get('y');
         if (slideParam || yearParam) {

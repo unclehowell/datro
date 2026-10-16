@@ -1,3 +1,18 @@
+## [0.1.0] - 2026-10-16
+
+### Fixed
+- Added a Pages Function for media requests. It reads from the existing `wayback_media` R2 binding for the whitelisted `images/`, `pdf/`, `text/`, and `video/` prefixes.
+- Returns the R2 object body and HTTP metadata. Treeview JSON and static HTML continue through Pages, and the R2 bucket is not enabled for public `r2.dev` access.
+
+### Changed
+- Merged Email into a single **Text / Email** tab. Email correspondence remains in the text index and can be filtered by `#email`.
+- Kept legacy `?cat=email` links working by routing them to Text / Email with the `#email` filter active.
+- Replaced the non-standard four-part development version with semantic version `0.1.0`.
+
+### Release process
+- Added a version-file-triggered GitHub Actions workflow. It validates `wayback/version.txt`, requires the matching release notes, and publishes the tagged GitHub Release `wayback-v0.1.0`.
+- Full release notes: [v0.1.0](releases/v0.1.0.md).
+
 ## v0.0.0.88 (1989 planning file and GHF email filter)
 - Added the Vale of Glamorgan 89/01396/OUT papers for Great House Farm, Llandough, under `pdf/planning/`: application form and section 27 certificate (16 Oct 1989), GGAT comments, the officer report, the 13 March 1990 outline permission, and the plans bundle (1985 register map, 1989 location plan, 1991 Heronhurst layout, 1992/1995 Ideal Homes layout, 1998 sketch).
 - Added a text catalogue note and the sent Great House Farm / Llandough FOI emails that were not already filed (Welsh Government ATISN 26-0010 chase, NLW Herbert survey S7 / Bute X.6 FOI and LibAnswers 9890384 acknowledgement, National Archives hearth-tax FOI, Vale of Glamorgan FOI 00210772 chase).

@@ -1,0 +1,55 @@
+name: Publish Wayback release
+
+on:
+  push:
+    branches:
+      - wayback
+    paths:
+      - wayback/version.txt
+
+permissions:
+  contents: write
+
+jobs:
+  publish-release:
+    if: github.repository == 'unclehowell/datro'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out release commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+
+      - name: Validate SemVer and release notes
+        id: metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(tr -d '[:space:]' < wayback/version.txt)"
+          if [[ ! "$version" =~ ^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]; then
+            echo "::error::wayback/version.txt must contain a stable SemVer X.Y.Z version."
+            exit 1
+          fi
+          notes="wayback/releases/v${version}.md"
+          if [[ ! -s "$notes" ]]; then
+            echo "::error::Missing release notes file: $notes"
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "notes=$notes" >> "$GITHUB_OUTPUT"
+
+      - name: Publish versioned GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.metadata.outputs.version }}
+          NOTES: ${{ steps.metadata.outputs.notes }}
+          TARGET: ${{ github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag="wayback-v${VERSION}"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo "Release $tag already exists; leaving it unchanged."
+            exit 0
+          fi
+          gh release create "$tag" --target "$TARGET" --title "Wayback Archive v${VERSION}" --notes-file "$NOTES"
