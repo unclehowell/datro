@@ -1,10 +1,9 @@
-// GET /api/media-catalog — read the Wayback and Great House Farm Wiki media
-// indexes server-side, so the player is not dependent on third-party CORS headers.
-// The browser receives a compact catalogue; original media files remain hosted at
-// their source archive URLs.
+// GET /api/media-catalog — searchable media from the Wayback archive and
+// Great House Farm Wiki. Proxying these catalogues through the player origin
+// avoids browser CORS restrictions; original assets still open from their source.
 const WAYBACK = 'https://wayback.bucklerfamily.estate';
 const WIKI_MEDIA = 'https://greathousefarmwiki.wordpress.com/wp-json/wp/v2/media';
-const WIKI_FIELDS = 'per_page=100&_fields=slug,source_url,alt_text,caption,title,media_type,mime_type,date,link';
+const WIKI_FIELDS = '_fields=slug,source_url,alt_text,caption,title,media_type,mime_type,date,link';
 
 async function rows(url) {
   try {
@@ -20,12 +19,37 @@ async function rows(url) {
   }
 }
 
+async function wikiRows(mediaType) {
+  const makeUrl = (page) =>
+    WIKI_MEDIA + '?' + WIKI_FIELDS + '&per_page=100&page=' + page + '&media_type=' + mediaType;
+  try {
+    const first = await fetch(makeUrl(1), {
+      headers: { accept: 'application/json' },
+      cf: { cacheTtl: 900, cacheEverything: true },
+    });
+    if (!first.ok) return [];
+    const initial = await first.json();
+    if (!Array.isArray(initial)) return [];
+    const totalPagesHeader = Number(first.headers.get('X-WP-TotalPages') || 1);
+    // The Workers subrequest budget is finite. This covers up to 2,000 items
+    // per media type in addition to the complete dated Wayback indexes.
+    const pageCount = Math.max(1, Math.min(Number.isFinite(totalPagesHeader) ? totalPagesHeader : 1, 20));
+    if (pageCount === 1) return initial;
+    const rest = await Promise.all(
+      Array.from({ length: pageCount - 1 }, (_, index) => rows(makeUrl(index + 2))),
+    );
+    return initial.concat(...rest);
+  } catch (_error) {
+    return [];
+  }
+}
+
 export async function onRequestGet() {
   const [waybackImages, waybackVideos, wikiImages, wikiVideos] = await Promise.all([
     rows(WAYBACK + '/images/_treeview.json'),
     rows(WAYBACK + '/video/_treeview.json'),
-    rows(WIKI_MEDIA + '?' + WIKI_FIELDS + '&media_type=image'),
-    rows(WIKI_MEDIA + '?' + WIKI_FIELDS + '&media_type=video'),
+    wikiRows('image'),
+    wikiRows('video'),
   ]);
   return new Response(JSON.stringify({
     waybackImages,
