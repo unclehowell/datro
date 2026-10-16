@@ -99,6 +99,8 @@ function Home() {
         })}
       </div>
 
+      <p className="text-xs text-muted">£ Cost, fee, or paid-search route recorded; the marker does not mean the amount was paid.</p>
+
       <div className="grid min-h-0 flex-1 gap-4 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-stretch">
         <section className="aspect-square w-full" aria-label="Ring chart">
           <RingWheel selection={selection} onSelect={setSelection} filter={filter} />
@@ -187,14 +189,23 @@ function Home() {
                           key={ring.id}
                           type="button"
                           title={`${ring.name}: ${cell.title}`}
-                          aria-label={`${party.short}, ${ring.name}, ${cell.title}`}
+                          aria-label={`${party.short}, ${ring.name}, ${cell.title}${cell.feeMarker ? ". Cost or fee indicator (£)" : ""}`}
                           aria-pressed={on}
                           onClick={() => setSelection({ partyId: party.id, ringId: ring.id })}
-                          className={`h-8 min-w-0 flex-1 rounded-md ${
+                          className={`relative h-8 min-w-0 flex-1 rounded-md ${
                             on ? "ring-2 ring-brass ring-offset-1 ring-offset-surface" : ""
                           }`}
                           style={{ background: statusMeta[cell.status].swatch }}
-                        />
+                        >
+                          {cell.feeMarker && (
+                            <span
+                              className="absolute right-0.5 top-0.5 rounded-sm bg-bg/90 px-0.5 text-[10px] font-bold leading-tight text-brass"
+                              aria-hidden="true"
+                            >
+                              £
+                            </span>
+                          )}
+                        </button>
                       );
                     })}
                   </div>

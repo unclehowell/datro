@@ -159,9 +159,10 @@ export function RingWheel({ selection, onSelect, filter }: Props) {
             const selected =
               selection?.partyId === party.id && selection.ringId === ring.id;
             const dim = filter !== null && cell.status !== filter;
+            const [feeX, feeY] = polar((r0 + r1) / 2, (a0 + a1) / 2);
             return (
+              <g key={`${party.id}-${ring.id}`}>
               <path
-                key={`${party.id}-${ring.id}`}
                 d={arcPath(r0, r1, a0, a1)}
                 fill={statusMeta[cell.status].swatch}
                 opacity={dim ? 0.16 : selected ? 1 : 0.94}
@@ -172,7 +173,7 @@ export function RingWheel({ selection, onSelect, filter }: Props) {
                 tabIndex={0}
                 role="button"
                 aria-pressed={selected}
-                aria-label={`${party.name}, ${ring.name}. ${statusMeta[cell.status].label}. ${cell.title}`}
+                aria-label={`${party.name}, ${ring.name}. ${statusMeta[cell.status].label}. ${cell.title}${cell.feeMarker ? ". Cost or fee indicator (£)" : ""}`}
                 onClick={(event) => {
                   event.stopPropagation();
                   if (suppressClick.current) {
@@ -188,8 +189,29 @@ export function RingWheel({ selection, onSelect, filter }: Props) {
                   }
                 }}
               >
-                <title>{`${party.short} · ${ring.short} · ${cell.title}`}</title>
+                <title>{`${party.short} · ${ring.short} · ${cell.title}${cell.feeMarker ? " · £ cost/fee recorded" : ""}`}</title>
               </path>
+              {cell.feeMarker && (
+                <text
+                  x={feeX}
+                  y={feeY}
+                  textAnchor="middle"
+                  dominantBaseline="central"
+                  fontFamily="var(--font-sans)"
+                  fontSize="20"
+                  fontWeight="700"
+                  fill="var(--color-brass)"
+                  stroke="var(--color-bg)"
+                  strokeWidth="2.5"
+                  paintOrder="stroke"
+                  strokeLinejoin="round"
+                  pointerEvents="none"
+                  aria-hidden="true"
+                >
+                  £
+                </text>
+              )}
+              </g>
             );
           })}
           {showLabels &&

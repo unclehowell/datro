@@ -20,6 +20,8 @@ export type Cell = {
   ref?: string;
   correspondent?: string;
   url?: string;
+  /** A fee, cost estimate, paid-copy amount, or chargeable disclosure route is recorded for this block. */
+  feeMarker?: boolean;
 };
 
 export type Ring = {
@@ -148,6 +150,7 @@ export const parties: Party[] = [
         correspondent: "Paul R. Egan, Clerk",
         ref: "FOIA s.12 — reply to the 21 Sep request",
         url: g("1a0c1e36871ebfd1"),
+        feeMarker: true,
         detail:
           "Paul Egan (clerk@llandough-cc.co.uk) refused under section 12. He priced staff time at £25 an hour, so £450 is 18 hours, then estimated 224 sets of minutes from 2002–2016. The letter says both “about 20 minutes to read each set” and “about 10 minutes to assess each set”, and reaches “over 2240 minutes” (about 37 hours). The request had not asked for a reading of fourteen years of minutes. It asked the Council to say whether post-2002 records are held. He offered a narrower window, for example 2002–2006, and said the other matters would wait for the October meeting.",
       },
@@ -313,7 +316,17 @@ export const parties: Party[] = [
         ref: "Llandough-juxta-Penarth, not Cowbridge",
         url: g("1a1158080de15320"),
         detail:
-          "You asked only for a location: parish, vestry and tithe records for Great House / Tŷ Mawr, Llandough-juxta-Penarth, and you said you were not booking a screen room. The clerk’s 14 June position, as you recorded it on 21 September, was that the community minute books from 1982 were deposited here in 2002. No reply from the archives is in the sample.",
+          "You asked only for a location: parish, vestry and tithe records for Great House / Tŷ Mawr, Llandough-juxta-Penarth, and you said you were not booking a screen room. The clerk’s 14 June position, as you recorded it on 21 September, was that the community minute books from 1982 were deposited here in 2002. No reply to that separate location-only request is in the sample.",
+      },
+      reply: {
+        status: "evidence",
+        title: "Copying and research fees quoted",
+        date: "7 & 24 Sep 2026",
+        correspondent: "Glamorgan Archives",
+        ref: "2026–3941 / 2026/4097",
+        feeMarker: true,
+        detail:
+          "Glamorgan Archives quoted £60 for 53 images from ledger ACA/8/2 (106 pages), with a tariff of £15.60 for the first image, £4.80 for each subsequent image, or £60 per hour for multiple images from multiple documents. On 24 September, it also quoted £50 for a rate-book search, £50 for a planning-minutes search, £17 for two Stewart survey/terrier images, £20 for five plan images, and £50 for a D696 Western Ground Rents search. These are fee offers, not proof the searches were commissioned or paid. Recorded in the wiki’s Paywalls to Disclosure register.",
       },
     },
   },
@@ -472,13 +485,14 @@ export const parties: Party[] = [
       },
       reply: {
         status: "closed",
-        title: "They treat the September asks as finished",
-        date: "6 Oct 2026",
+        title: "Requests closed; further searches chargeable",
+        date: "29 Sep–6 Oct 2026",
         correspondent: "NMR enquiries",
-        ref: "RC26-0375",
+        ref: "RC26-0375 · LES16 fee list",
         url: g("1a11f562b7880f36"),
+        feeMarker: true,
         detail:
-          "Their further response of 6 October 2026 takes the position that the requests of 8, 15, 17 and 20 September are fully answered. That is a “no more” on those four asks.",
+          "On 6 October 2026, RCAHMW said the requests of 8, 15, 17 and 20 September were fully answered. The 29 September reply also said aerial-photograph searches would be chargeable and further public enquiries may be charged; a 2026 price list and order form were attached. No paid search is recorded as placed by 12 October.",
       },
       chase: {
         status: "dormant",
@@ -609,13 +623,14 @@ export const parties: Party[] = [
       },
       reply: {
         status: "evidence",
-        title: "They named the Valuation Office map",
+        title: "Map identified; staff search is chargeable",
         date: "12 Oct 2026",
         correspondent: "FOI Requests, The National Archives",
-        ref: "Discovery link for the 1910 sheet",
+        ref: "IR 131/4/96 · OS Glamorgan XLVII.6",
         url: g("1a1060d79ae529a6"),
+        feeMarker: true,
         detail:
-          "On 12 October The National Archives wrote that, on the information you gave, they believe they have identified the Valuation Office map covering the property, and they sent a Discovery link. That is evidence in from the location request.",
+          "On 12 October The National Archives said it believed it had identified the Valuation Office map covering the property and supplied a Discovery link. It also described access options: visit Kew, request a paid staff search, or hire an independent researcher, citing the FOIA section 9 fee route. No paid search is recorded as commissioned.",
       },
       chase: {
         status: "nuisance",
@@ -638,13 +653,14 @@ export const parties: Party[] = [
     cells: {
       open: {
         status: "dormant",
-        title: "A run of enquiry numbers",
-        date: "Sep–Oct 2026",
+        title: "Title enquiries and official-copy fees",
+        date: "18 Sep–10 Oct 2026",
         correspondent: "HM Land Registry",
         ref: "N610CGV · WA231076 · WA240304",
         url: g("1a124b25060d556f"),
+        feeMarker: true,
         detail:
-          "Enquiry references in the mailbox include 260917-6718215 (application N610CGV, title WA231076), 260928-6762800, 260928-6762801, 260929-6766714 and 261007-6799563. One automated reply said an email address is no longer supported. Another mailbox is not monitored.",
+          "Enquiry references in the mailbox include 260917-6718215 (application N610CGV, title WA231076), 260928-6762800, 260928-6762801, 260929-6766714 and 261007-6799563. Separate official-copy purchases on 18–19 September cost £14.00 per title-register and title-plan copy; GOV.UK Pay receipts are recorded in the wiki’s Paywalls to Disclosure register. These copies were paid for; the price is not a fee quote from the 10 October reply. One automated reply said an email address is no longer supported. Another mailbox is not monitored.",
       },
       reply: {
         status: "nuisance",
