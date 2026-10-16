@@ -79,7 +79,7 @@ jobs:
               # only if the remote generated outputs match; never overwrite a
               # newer, different export set.
               git fetch origin bpvsbuckler
-              if git diff --quiet FETCH_HEAD -- src/data/story.json src/data/meta.json api/timeline.json llms.txt story/index.html story/transcript.txt sitemap.xml; then
+              if git diff --quiet FETCH_HEAD -- src/data/story.json src/data/meta.json api/timeline.json api/graph.json api/qa.json api/graph.sql content/graph/seed content/graph/corpus llms.txt story/index.html story/transcript.txt sitemap.xml; then
                 echo "Generated exports are already current on bpvsbuckler."
               else
                 echo "Remote branch advanced with different generated exports; refusing to overwrite."
@@ -107,12 +107,12 @@ jobs:
 
       - name: Sync and verify the Q&A graph through the Pages DB binding
         run: |
-          response="$(curl --silent --show-error --fail-with-body \
+          response="$(curl --silent --show-error \
             --request POST \
             --header "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
             --header "Accept: application/json" \
             "https://bpvsbuckler.pages.dev/api/sync-graph")"
-          printf '%s\\n' "$response"
+          printf '%s\n' "$response"
           python3 - "$response" <<'PY'
           import json, sys
           try:
