@@ -9,3 +9,6 @@
 /*.json
   Content-Type: application/json; charset=utf-8
   X-Content-Type-Options: nosniff
+  Access-Control-Allow-Origin: https://bpvsbuckler.bucklerfamily.estate
+  Access-Control-Allow-Methods: GET, HEAD, OPTIONS
+  Vary: Origin
