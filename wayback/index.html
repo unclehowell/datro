@@ -153,6 +153,7 @@
         { name: 'images', label: 'Images', icon: '🖼' },
         { name: 'pdf', label: 'PDF', icon: '📄' },
         { name: 'text', label: 'Text', icon: '📝' },
+        { name: 'email', label: 'Email', icon: '✉️', virtual: true },
         { name: 'video', label: 'Video', icon: '🎬' }
       ];
       const PER_PAGE = 10;
@@ -244,7 +245,7 @@
 
       function renderHashtagCloud() {
         // restore previous single-row under categories style: click tags to filter/show matching
-        const allTags = ['#bpvsbuckler', '#datro', '#ccan', '#morgan', '#ceo', '#gui', '#library', '#family'];
+        const allTags = ['#email', '#ghf', '#planning', '#bpvsbuckler', '#datro', '#ccan', '#morgan', '#ceo', '#gui', '#library', '#family'];
         const tags = allTags.filter(t => !t.includes('slide')); // keep bpvs etc visible for click-to-show
         const active = window.activeTagFilters || (window.activeTagFilters = new Set());
         hashCloudEl.innerHTML = `<span class="tag-label">Filter:</span>` +
@@ -271,15 +272,19 @@
             if (cat.name === 'all') {
               const allItems = [];
               for (const sub of CATEGORIES) {
-                if (sub.name === 'all') continue;
+                if (sub.name === 'all' || sub.virtual) continue;
                 allData[sub.name] = await loadCategory(sub.name);
                 allItems.push(...(allData[sub.name] || []));
               }
               allData.all = allItems;
-            } else {
+            } else if (!cat.virtual) {
               allData[cat.name] = await loadCategory(cat.name);
             }
           }
+          allData.email = (allData.text || []).filter(item =>
+            (item.tags || []).some(t => String(t).toLowerCase() === 'email')
+            || (item._hashtags || []).includes('#email')
+          );
         } catch (e) {
           console.warn('load error, continuing with partial data', e);
         }
@@ -289,6 +294,7 @@
         // Support URL param from bpvsbuckler for filtered view, e.g. ?slide=65 or ?year=1988
         // Filter items with matching #slide-N or year in name, without affecting main UI
         const params = new URLSearchParams(window.location.search);
+        if ((params.get('cat') || '').toLowerCase() === 'email') switchCategory('email');
         const slideParam = params.get('slide') || params.get('s');
         const yearParam = params.get('year') || params.get('y');
         if (slideParam || yearParam) {

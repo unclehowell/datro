@@ -21,7 +21,7 @@ Not included: signature images and logos; images the family had sent that were q
 | GHF-E106-R37-A3 | 2026-06-11 | Welsh Government (Cadw) | ATISN 27021 doc 2: barn survey photo, 29 July 1988 | [2026-06-11_welsh-government_atisn-27021_doc2-1988-07-29-barn-survey-photo.pdf](2026-06-11_welsh-government_atisn-27021_doc2-1988-07-29-barn-survey-photo.pdf) | `283a8719ed5c` |
 | GHF-E106-R37-A1 | 2026-06-11 | Welsh Government (Cadw) | ATISN 27021 response letter | [2026-06-11_welsh-government_atisn-27021_response-letter.pdf](2026-06-11_welsh-government_atisn-27021_response-letter.pdf) | `67c11e5a9c15` |
 | GHF-E106-R27-A1 | 2026-07-13 | HM Land Registry | N610CGV letter (WA231076) | [2026-07-13_hmlr_n610cgv_letter.pdf](2026-07-13_hmlr_n610cgv_letter.pdf) | `5c193fa242fd` |
-| GHF-E106-R38-A1 | 2026-07-16 | South Wales Police | FOI 719/26 response | [2026-07-16_south-wales-police_foi-719-26_response.pdf](2026-07-16_south-wales-police_foi-719-26_response.pdf) | `d6b3e44366c1` |
+| GHF-E106-R38-A1 | 2026-07-16 | South Wales Police | FOI response omitted from the public catalogue | withheld | — |
 | GHF-E106-R29-A1 | 2026-07-22 | DCMS | FOI2026/06174 response | [2026-07-22_dcms_foi2026-06174_response.pdf](2026-07-22_dcms_foi2026-06174_response.pdf) | `c53f4d343823` |
 | GHF-E106-R41-A1 | 2026-07-24 | Post Office Limited | FOI2026/00751 response | [2026-07-24_post-office_foi2026-00751_response.pdf](2026-07-24_post-office_foi2026-00751_response.pdf) | `e3c2c5ae6d52` |
 | GHF-E106-10 (wiki media 40) | 2026-07-30 | HM Land Registry | Schedule of first-registration documents WA231076 / WA240304 | [2026-07-30_hmlr_first-registration-schedule.pdf](2026-07-30_hmlr_first-registration-schedule.pdf) | `d8ef59d25215` |
@@ -37,8 +37,10 @@ Not included: signature images and logos; images the family had sent that were q
 | GHF-E106-R15-A3 | 2026-09-23 | The National Archives | CAS-347296 item 03: Collection 27 series 11 manifest | [2026-09-23_tna_cas-347296_item03-collect27-series11-manifest.csv](2026-09-23_tna_cas-347296_item03-collect27-series11-manifest.csv) | `10681e85f7a9` |
 | GHF-E106-R01-A1 | 2026-09-29 | RCAHMW | RC26-0375 order form (Welsh) | [2026-09-29_rcahmw_rc26-0375_les08-order-form-2023.docx](2026-09-29_rcahmw_rc26-0375_les08-order-form-2023.docx) | `8c01766df737` |
 | GHF-E106-R01-A2 | 2026-09-29 | RCAHMW | RC26-0375 price list 2026 (Welsh) | [2026-09-29_rcahmw_rc26-0375_les16-price-list-2026.pdf](2026-09-29_rcahmw_rc26-0375_les16-price-list-2026.pdf) | `9aa42a9dc070` |
-| GHF-E106-R39-A1 | 2026-09-29 | South Wales Police | FOI 1040/26 response | [2026-09-29_south-wales-police_foi-1040-26_response.pdf](2026-09-29_south-wales-police_foi-1040-26_response.pdf) | `aab396139217` |
+| GHF-E106-R39-A1 | 2026-09-29 | South Wales Police | FOI response omitted from the public catalogue | withheld | — |
 | GHF-E106-R24-A3 | 2026-09-30 | Glamorgan Archives | Bute 10 catalogue document (resent under 2026/4097b) | [2026-09-30_glamorgan-archives_bute-10.doc](2026-09-30_glamorgan-archives_bute-10.doc) | `1e3aaf941bbe` |
 | GHF-E106-R33-A2 | 2026-10-05 | Amgueddfa Cymru | FOI 2026-036: record 63.24/1 rowel spur | [2026-10-05_museum-wales_foi-2026-036_63-24-1-rowel-spur.pdf](2026-10-05_museum-wales_foi-2026-036_63-24-1-rowel-spur.pdf) | `c1c0fa5e25d5` |
 | GHF-E106-R33-A3 | 2026-10-05 | Amgueddfa Cymru | FOI 2026-036: record 63.24/2 spearhead | [2026-10-05_museum-wales_foi-2026-036_63-24-2-spearhead.pdf](2026-10-05_museum-wales_foi-2026-036_63-24-2-spearhead.pdf) | `cfadaeb03c94` |
 | GHF-E106-R33-A1 | 2026-10-05 | Amgueddfa Cymru | FOI 2026-036: letter of 22 Nov 1931, file 63.24 | [2026-10-05_museum-wales_foi-2026-036_63-24-letter-1931.pdf](2026-10-05_museum-wales_foi-2026-036_63-24-letter-1931.pdf) | `34a54e6f76e5` |
+
+Police and MOD FOI responses are omitted from this public catalogue. Mobile numbers are not published.

@@ -1,3 +1,10 @@
+## v0.0.0.88 (1989 planning file and GHF email filter)
+- Added the Vale of Glamorgan 89/01396/OUT papers for Great House Farm, Llandough, under `pdf/planning/`: application form and section 27 certificate (16 Oct 1989), GGAT comments, the officer report, the 13 March 1990 outline permission, and the plans bundle (1985 register map, 1989 location plan, 1991 Heronhurst layout, 1992/1995 Ideal Homes layout, 1998 sketch).
+- Added a text catalogue note and the sent Great House Farm / Llandough FOI emails that were not already filed (Welsh Government ATISN 26-0010 chase, NLW Herbert survey S7 / Bute X.6 FOI and LibAnswers 9890384 acknowledgement, National Archives hearth-tax FOI, Vale of Glamorgan FOI 00210772 chase).
+- Email tab and #email / #ghf / #planning filters. Items tagged `email` in `text/_treeview.json` are the Gmail correspondence.
+- October 2026 text files that were on the branch but missing from `text/_treeview.json` are now listed.
+- Police and MOD FOI files are omitted from the public catalogue. Mobile numbers are redacted.
+
 ## v0.0.0.87 (FOI reply attachments)
 - Added 36 original attachments from public-authority replies (FOI/EIR/complaints/records enquiries, Feb–Oct 2026) under `pdf/foi/`, unaltered, with `manifest.json` (Gmail message id, subject, original filename, SHA-256) and `README.md`.
 - Catalogue numbers match the wiki's FOI & Public-Authority Reply Register (GHF-E106-R01 … R41).
