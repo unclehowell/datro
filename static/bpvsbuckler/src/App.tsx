@@ -292,7 +292,6 @@ type SlideMediaItem = {
   score: number;
 };
 const WAYBACK_MEDIA_BASE = 'https://wayback.bucklerfamily.estate';
-const WIKI_MEDIA_API = 'https://greathousefarmwiki.wordpress.com/wp-json/wp/v2/media';
 const MEDIA_WORD_STOP = new Set([
   'the','and','for','from','with','into','onto','this','that','what','when','where','which','while','after','before','during','through',
   'were','was','are','been','being','have','has','had','will','would','could','should','their','there','they','them','then','than',
@@ -379,34 +378,26 @@ function SlideMediaGallery({ scene }: { scene: Scene }) {
 
   useEffect(() => {
     let live = true;
-    const getRows = async (url: string): Promise<ArchiveMediaRow[]> => {
+    const load = async () => {
       try {
-        const response = await fetch(url, { mode: 'cors', credentials: 'omit', cache: 'force-cache' });
-        if (!response.ok) return [];
-        const data: unknown = await response.json();
-        return Array.isArray(data) ? data as ArchiveMediaRow[] : [];
+        const response = await fetch('/api/media-catalog', {
+          headers: { accept: 'application/json' },
+          cache: 'force-cache',
+        });
+        if (!response.ok) throw new Error('Media catalogue unavailable');
+        const data: Partial<MediaCatalog> = await response.json();
+        if (live) setCatalog({
+          waybackImages: Array.isArray(data.waybackImages) ? data.waybackImages : [],
+          waybackVideos: Array.isArray(data.waybackVideos) ? data.waybackVideos : [],
+          wikiMedia: Array.isArray(data.wikiMedia) ? data.wikiMedia : [],
+        });
       } catch (_error) {
-        return [];
+        // The scene's directly attached media remains available if an archive is offline.
       }
     };
-    const run = async () => {
-      const wikiFields = 'per_page=100&_fields=slug,source_url,alt_text,caption,title,media_type,mime_type,date,link';
-      const results = await Promise.all([
-        getRows(WAYBACK_MEDIA_BASE + '/images/_treeview.json'),
-        getRows(WAYBACK_MEDIA_BASE + '/video/_treeview.json'),
-        getRows(WIKI_MEDIA_API + '?' + wikiFields + '&media_type=image'),
-        getRows(WIKI_MEDIA_API + '?' + wikiFields + '&media_type=video')
-      ]);
-      if (live) setCatalog({
-        waybackImages: results[0],
-        waybackVideos: results[1],
-        wikiMedia: [...results[2], ...results[3]]
-      });
-    };
-    void run();
+    void load();
     return () => { live = false; };
   }, []);
-
   useEffect(() => {
     if (!lightboxItem) return;
     const onKey = (event: KeyboardEvent) => {
