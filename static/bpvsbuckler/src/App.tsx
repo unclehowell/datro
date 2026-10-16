@@ -228,13 +228,12 @@ function SceneView({ scene, spoken, copied, onCopy, onCast, onPick }: { scene: S
   const cast = S.cast.filter((c) => scene.cast.includes(c.id));
   return (
     <article className="scene">
-      <Stage key={scene.id} scene={scene} onPick={onPick} />
+      <Stage scene={scene} onPick={onPick} />
       <div>
         <div className="slate"><span className="ref">Scene {scene.ref}</span><span>no. {scene.no} of {scenes.length}</span></div>
         <div className="when">{scene.when}</div>
         <h1>{scene.title}</h1>
         {scene.place && <div className="place">{scene.place}</div>}
-        <SlideMediaGallery scene={scene} />
         <p className={`narr${spoken >= 0 ? ' speaking' : ''}`}><Spoken text={scene.narration} base={base.event} spoken={spoken} /></p>
         <div className="chips">
           <ParcelChip p={scene.parcel} />
@@ -280,6 +279,7 @@ type ArchiveMediaRow = {
   media_type?: string;
   mime_type?: string;
   date?: string;
+  link?: string;
 };
 type MediaCatalog = { waybackImages: ArchiveMediaRow[]; waybackVideos: ArchiveMediaRow[]; wikiMedia: ArchiveMediaRow[] };
 type SlideMediaItem = {
@@ -319,7 +319,7 @@ function archiveRowText(row: ArchiveMediaRow, wiki = false): string {
   const mediaPath = row.path || (row.source_url ? row.source_url.split('/').pop() : '') || '';
   return [
     row.name, mediaPath, row.slug, row.alt_text, mediaPlainText(row.title), mediaPlainText(row.caption),
-    (!wiki && row.date) || ''
+    row.link, (row.tags || []).join(' '), (!wiki && row.date) || ''
   ].filter(Boolean).join(' ');
 }
 function mediaYearMatch(text: string, year: string): boolean {
@@ -330,21 +330,37 @@ function rankArchiveMedia(scene: Scene, row: ArchiveMediaRow, wiki = false): { s
   const text = archiveRowText(row, wiki);
   const lower = text.toLowerCase();
   const tokens = new Set(mediaWords(text));
-  const primaryYear = (scene.date || '').slice(0, 4);
+  const year = (scene.date || '').slice(0, 4);
+  const exactDate = !!scene.date && /^\d{4}-\d{2}-\d{2}$/.test(scene.date)
+    && lower.includes(scene.date.toLowerCase());
+  const yearMatch = mediaYearMatch(lower, year);
   const listedYears = (scene.when || '').match(/\b(?:1[0-9]{3}|20[0-9]{2})\b/g) || [];
-  const primaryMatch = mediaYearMatch(lower, primaryYear);
-  const otherYearMatch = listedYears.some((year) => year !== primaryYear && mediaYearMatch(lower, year));
+  const otherYearMatch = listedYears.some((listed) => listed !== year && mediaYearMatch(lower, listed));
   const titleTerms = [...new Set(mediaWords(scene.title))];
   const placeTerms = [...new Set(mediaWords(scene.place || ''))];
-  const contextTerms = [...new Set(mediaWords((scene.narration || '') + ' ' + (scene.known || '')))].slice(0, 36);
+  // Scene evidence titles and stable evidence IDs often identify a better file
+  // than the short slide title alone, so score those alongside the narration.
+  const evidenceText = (scene.evidence || [])
+    .map((entry) => [entry.title, entry.type, entry.url].filter(Boolean).join(' '))
+    .join(' ');
+  const evidenceTerms = [...new Set(mediaWords(evidenceText))].slice(0, 100);
+  const contextText = [scene.narration, scene.known || '', scene.received || ''].join(' ');
+  const contextTerms = [...new Set(mediaWords(contextText))].slice(0, 70);
   const titleHits = titleTerms.filter((word) => tokens.has(word)).length;
+  const evidenceHits = evidenceTerms.filter((word) => tokens.has(word)).length;
   const placeHits = placeTerms.filter((word) => tokens.has(word)).length;
   const contextHits = contextTerms.filter((word) => tokens.has(word)).length;
-  const tagged = (row.tags || []).some((tag) => tag.toLowerCase() === 'bpvsbuckler');
-  let score = primaryMatch ? 12 : (otherYearMatch ? 5 : 0);
-  score += titleHits * 7 + placeHits * 2.5 + Math.min(4, contextHits) * 1.1 + (tagged ? 1 : 0);
-  const relevant = primaryMatch || (otherYearMatch && (titleHits > 0 || placeHits > 0 || contextHits > 0 || tagged))
-    || titleHits > 0 || placeHits >= 2 || contextHits >= 2;
+  const tags = (row.tags || []).join(' ').toLowerCase();
+  const tagged = /(?:^|[\s#])(?:bpvsbuckler|ghf-e\d+|greathousefarm)(?:$|[\s#-])/i.test(tags + ' ' + text);
+  let score = exactDate ? 42 : yearMatch ? 20 : (otherYearMatch ? 7 : 0);
+  score += titleHits * 10;
+  score += Math.min(12, evidenceHits) * 3.4;
+  score += placeHits * 3;
+  score += Math.min(6, contextHits) * 1.5;
+  if (tagged) score += 1.5;
+  const relevant = exactDate || yearMatch || titleHits > 0 || evidenceHits > 0
+    || placeHits >= 2 || contextHits >= 2
+    || (otherYearMatch && (tagged || titleHits > 0 || evidenceHits > 0));
   return { score, relevant };
 }
 function archiveMediaTitle(row: ArchiveMediaRow): string {
@@ -371,10 +387,12 @@ function videoEmbedUrl(url: string): string | undefined {
   return match ? 'https://www.youtube-nocookie.com/embed/' + match[1] : undefined;
 }
 
-function SlideMediaGallery({ scene }: { scene: Scene }) {
+const FALLBACK_FARMHOUSE_URL = absoluteSiteUrl('/media/1791868564541.jpg');
+
+function FloatingSceneMedia({ scene }: { scene: Scene }) {
   const [catalog, setCatalog] = useState<MediaCatalog>({ waybackImages: [], waybackVideos: [], wikiMedia: [] });
   const [selection, setSelection] = useState({ sceneId: '', index: 0 });
-  const [lightboxItem, setLightboxItem] = useState<SlideMediaItem | null>(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   useEffect(() => {
     let live = true;
@@ -392,20 +410,25 @@ function SlideMediaGallery({ scene }: { scene: Scene }) {
           wikiMedia: Array.isArray(data.wikiMedia) ? data.wikiMedia : [],
         });
       } catch (_error) {
-        // The scene's directly attached media remains available if an archive is offline.
+        // Existing slide and evidence images still provide a useful thumbnail.
       }
     };
     void load();
     return () => { live = false; };
   }, []);
+
   useEffect(() => {
-    if (!lightboxItem) return;
+    setLightboxOpen(false);
+  }, [scene.id]);
+
+  useEffect(() => {
+    if (!lightboxOpen) return;
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setLightboxItem(null);
+      if (event.key === 'Escape') setLightboxOpen(false);
     };
     addEventListener('keydown', onKey);
     return () => removeEventListener('keydown', onKey);
-  }, [lightboxItem]);
+  }, [lightboxOpen]);
 
   const items = useMemo(() => {
     const found: SlideMediaItem[] = [];
@@ -416,13 +439,15 @@ function SlideMediaGallery({ scene }: { scene: Scene }) {
       found.push(item);
     };
 
+    // The curated scene image and its evidence images always outrank loose
+    // archive matches because they were attached to this scene intentionally.
     if (scene.image) {
       const linked = scene.evidence.find((entry) => entry.image === scene.image);
       add({
         id: 'scene-image-' + scene.id,
         url: absoluteSiteUrl(scene.image),
         title: linked?.title || scene.title,
-        source: 'Scene image',
+        source: 'Curated scene image',
         kind: 'image',
         score: 10000
       });
@@ -434,23 +459,38 @@ function SlideMediaGallery({ scene }: { scene: Scene }) {
         title: entry.title || scene.title,
         source: entry.type || 'Scene evidence',
         kind: 'image',
-        score: 9000 - index
+        score: 9500 - index
       });
-      if (entry.url && /(?:youtube\.com|youtu\.be|\.mp4(?:$|\?)|\.webm(?:$|\?)|\.mov(?:$|\?))/i.test(entry.url)) {
-        const embed = videoEmbedUrl(entry.url);
-        const isVideo = !!embed || /\.(?:mp4|webm|mov)(?:$|\?)/i.test(entry.url);
+
+      const url = entry.url || '';
+      if (/\.(?:jpe?g|png|gif|webp|avif)(?:$|[?#])/i.test(url)) {
+        add({
+          id: 'evidence-direct-image-' + scene.id + '-' + index,
+          url,
+          title: entry.title || scene.title,
+          source: entry.type || 'Linked evidence image',
+          kind: 'image',
+          score: 9200 - index
+        });
+      }
+      if (url && /(?:youtube\.com|youtu\.be|\.mp4(?:$|[?#])|\.webm(?:$|[?#])|\.mov(?:$|[?#]))/i.test(url)) {
+        const embed = videoEmbedUrl(url);
+        const videoId = (url.match(/(?:youtube\.com\/watch\?v=|youtube\.com\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/) || [])[1];
         add({
           id: 'evidence-video-' + scene.id + '-' + index,
-          url: entry.url,
+          url,
           title: entry.title || scene.title,
-          source: entry.type || 'Scene evidence',
-          kind: isVideo ? 'video' : 'image',
-          poster: embed ? 'https://img.youtube.com/vi/' + ((entry.url.match(/(?:youtube\.com\/watch\?v=|youtube\.com\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/) || [])[1] || '') + '/hqdefault.jpg' : undefined,
-          score: 8500 - index
+          source: entry.type || 'Scene evidence video',
+          kind: 'video',
+          poster: videoId ? 'https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg' : undefined,
+          score: embed ? 8900 - index : 8500 - index
         });
       }
     });
 
+    // Scan all available Wayback images and videos, then media uploads indexed by
+    // the Great House Farm Wiki REST API. Use the scene's date and evidence
+    // identifiers as well as its short heading to pick the closest media.
     const archiveImages = catalog.waybackImages;
     for (const row of archiveImages) {
       if (!row.path) continue;
@@ -462,7 +502,7 @@ function SlideMediaGallery({ scene }: { scene: Scene }) {
         title: archiveMediaTitle(row),
         source: 'Wayback media library',
         kind: 'image',
-        score: rank.score
+        score: rank.score + 0.5
       });
     }
     for (const row of catalog.waybackVideos) {
@@ -484,124 +524,90 @@ function SlideMediaGallery({ scene }: { scene: Scene }) {
       if (!url) continue;
       const rank = rankArchiveMedia(scene, row, true);
       if (!rank.relevant) continue;
-      const isVideo = row.media_type === 'video' || /^video\//i.test(row.mime_type || '') || /\.(?:mp4|webm|mov)(?:$|\?)/i.test(url);
+      const isVideo = row.media_type === 'video' || /^video\//i.test(row.mime_type || '') || /\.(?:mp4|webm|mov)(?:$|[?#])/i.test(url);
       add({
         id: 'wiki-media-' + url,
         url,
         title: archiveMediaTitle(row),
-        source: 'Great House Farm Wiki',
+        source: 'Great House Farm Wiki media library',
         kind: isVideo ? 'video' : 'image',
-        score: rank.score
+        score: rank.score + 1
       });
     }
-    return found.sort((a, b) => b.score - a.score).slice(0, 12);
+
+    const ranked = found.sort((a, b) => b.score - a.score);
+    if (ranked.length) return ranked.slice(0, 12);
+
+    // Last resort: reuse the real farmhouse photograph already used on the
+    // site's landing page. This makes an empty media slot impossible even if an
+    // external catalogue fails or has no exact match for a scene.
+    return [{
+      id: 'farmhouse-fallback-' + scene.id,
+      url: FALLBACK_FARMHOUSE_URL,
+      title: 'Great House Farm farmhouse, July 1988',
+      source: 'Farmhouse fallback image',
+      kind: 'image' as const,
+      score: -1000
+    }];
   }, [scene, catalog]);
 
   const selectedIndex = selection.sceneId === scene.id
-    ? Math.min(selection.index, Math.max(0, items.length - 1)) : 0;
-  const current = items[selectedIndex] || null;
+    ? selection.index % Math.max(items.length, 1) : 0;
+  const current = items[selectedIndex] || items[0];
+  const previewUrl = current?.poster || (current?.kind === 'image' ? current.url : FALLBACK_FARMHOUSE_URL);
   const selectItem = (next: number) => {
     if (!items.length) return;
     setSelection({ sceneId: scene.id, index: (next + items.length) % items.length });
   };
+  const safeImageFallback = (event: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = event.currentTarget;
+    if (img.dataset.fallbackApplied === '1' || img.src === FALLBACK_FARMHOUSE_URL) return;
+    img.dataset.fallbackApplied = '1';
+    img.src = FALLBACK_FARMHOUSE_URL;
+  };
 
-  useEffect(() => {
-    if (!current) return;
-    const thumb = document.querySelector('[data-smg-thumb="' + selectedIndex + '"]');
-    thumb?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
-  }, [scene.id, selectedIndex, current ? current.id : '']);
-
+  if (!current) return null;
   return (
-    <section className="slide-media-gallery" aria-label="Media matching this scene">
-      <div className="smg-heading">
-        <div>
-          <div className="smg-kicker">Media for this scene</div>
-          <div className="smg-date">{scene.when}</div>
-        </div>
-        {items.length > 0 && (
-          <div className="smg-nav" aria-label="Browse scene media">
-            <button type="button" onClick={() => selectItem(selectedIndex - 1)} disabled={items.length < 2} aria-label="Previous media">‹</button>
-            <span aria-live="polite">{selectedIndex + 1} / {items.length}</span>
-            <button type="button" onClick={() => selectItem(selectedIndex + 1)} disabled={items.length < 2} aria-label="Next media">›</button>
-          </div>
+    <>
+      <div className="pip" aria-label={'Scene media: ' + current.title}>
+        <img className="pip-image" src={previewUrl} alt={current.title} loading="lazy" onError={safeImageFallback} />
+        {current.kind === 'video' && <span className="pip-play-mark" aria-hidden="true">▶</span>}
+        <span className="pip-caption" title={current.title}>{current.title}</span>
+        {items.length > 1 && (
+          <>
+            <button type="button" className="pip-control pip-prev" onClick={() => selectItem(selectedIndex - 1)} aria-label="Previous scene media" title="Previous image">‹</button>
+            <button type="button" className="pip-control pip-next" onClick={() => selectItem(selectedIndex + 1)} aria-label="Next scene media" title="Next image">›</button>
+          </>
         )}
+        <button type="button" className="pip-control pip-enlarge" onClick={() => setLightboxOpen(true)} aria-label={'Enlarge ' + current.title} title="Enlarge thumbnail">⤢</button>
+        <span className="pip-count" aria-live="polite">{selectedIndex + 1}/{items.length}</span>
       </div>
-      {current ? (
-        <>
-          <div className="smg-feature">
-            <button type="button" className="smg-open" onClick={() => setLightboxItem(current)} aria-label={'Open full-screen: ' + current.title}>
-              {current.poster || current.kind === 'image' ? (
-                <img src={current.poster || current.url} alt={current.title} loading="lazy" />
-              ) : (
-                <span className="smg-video-plate"><b>▶</b><span>Video</span></span>
-              )}
-              {current.kind === 'video' && <span className="smg-play-mark" aria-hidden="true">▶</span>}
-            </button>
-            <button type="button" className="smg-fullscreen" onClick={() => setLightboxItem(current)} aria-label={'View ' + current.title + ' full-screen'}>⤢ Full screen</button>
-          </div>
-          <div className="smg-caption">
-            <strong>{current.title}</strong>
-            <span>{current.source}</span>
-            <a href={current.url} target="_blank" rel="noopener noreferrer">Open original media ↗</a>
-          </div>
-          {items.length > 1 && (
-            <div className="smg-thumbs" aria-label="Choose a media thumbnail">
-              {items.map((item, index) => (
-                <button
-                  type="button"
-                  key={item.id}
-                  data-smg-thumb={index}
-                  className={'smg-thumb' + (index === selectedIndex ? ' active' : '')}
-                  aria-pressed={index === selectedIndex}
-                  aria-label={'Show media ' + (index + 1) + ': ' + item.title}
-                  title={item.title}
-                  onClick={() => selectItem(index)}
-                >
-                  {item.poster || item.kind === 'image'
-                    ? <img src={item.poster || item.url} alt="" loading="lazy" />
-                    : <span className="smg-thumb-video">▶</span>}
-                  {item.kind === 'video' && <span className="smg-thumb-tag">VIDEO</span>}
-                </button>
-              ))}
-            </div>
-          )}
-        </>
-      ) : (
-        <div className="smg-empty">
-          No indexed image or video is directly matched to this scene yet. Media for other dated scenes will appear automatically as its archive index becomes available.
-        </div>
-      )}
-      {lightboxItem && (
-        <div className="lightbox smg-lightbox" role="dialog" aria-modal="true" aria-label={lightboxItem.title} onClick={() => setLightboxItem(null)}>
+      {lightboxOpen && (
+        <div className="lightbox pip-lightbox" role="dialog" aria-modal="true" aria-label={current.title} onClick={() => setLightboxOpen(false)}>
           <figure onClick={(event) => event.stopPropagation()}>
-            {lightboxItem.kind === 'video' ? (
-              videoEmbedUrl(lightboxItem.url) ? (
+            {current.kind === 'video' ? (
+              videoEmbedUrl(current.url) ? (
                 <iframe
-                  className="smg-video-player"
-                  src={videoEmbedUrl(lightboxItem.url) + '?autoplay=1&rel=0'}
-                  title={lightboxItem.title}
+                  className="pip-video-player"
+                  src={videoEmbedUrl(current.url) + '?autoplay=1&rel=0'}
+                  title={current.title}
                   allow="autoplay; encrypted-media; picture-in-picture"
                   allowFullScreen
                 />
               ) : (
-                <video className="smg-video-player" src={lightboxItem.url} poster={lightboxItem.poster} controls autoPlay playsInline />
+                <video className="pip-video-player" src={current.url} poster={current.poster || FALLBACK_FARMHOUSE_URL} controls autoPlay playsInline />
               )
             ) : (
-              <img src={lightboxItem.url} alt={lightboxItem.title} />
+              <img src={current.url} alt={current.title} onError={safeImageFallback} />
             )}
-            <figcaption>
-              <strong>{lightboxItem.title}</strong>
-              <span>{lightboxItem.source}</span>
-              <a href={lightboxItem.url} target="_blank" rel="noopener noreferrer">Open original media ↗</a>
-            </figcaption>
+            <figcaption>{current.title} · {current.source}</figcaption>
           </figure>
-          <button className="lb-close" onClick={() => setLightboxItem(null)} aria-label="Close full-screen media">×</button>
+          <button className="lb-close" onClick={() => setLightboxOpen(false)} aria-label="Close full-screen media">×</button>
         </div>
       )}
-    </section>
+    </>
   );
 }
-
 function Board({ onPick }: { onPick: (i: number) => void }) {
   return (
     <div className="sheet">
@@ -728,39 +734,14 @@ function Spoken({ text, base, spoken }: { text: string; base: number; spoken: nu
 // The scene's stage: the two-titles storyline with this scene marked, and the
 // scene's picture as a picture-in-picture thumbnail that opens full size.
 function Stage({ scene, onPick }: { scene: Scene; onPick: (i: number) => void }) {
-  const ev = scene.evidence.find((e) => e.image && e.image === scene.image) || scene.evidence.find((e) => e.image);
-  const img = scene.image || ev?.image || null;
-  const cap = ev?.title || scene.title;
-  const [big, setBig] = useState(false);
-  useEffect(() => {
-    if (!big) return;
-    const k = (e: KeyboardEvent) => { if (e.key === 'Escape') setBig(false); };
-    addEventListener('keydown', k);
-    return () => removeEventListener('keydown', k);
-  }, [big]);
   return (
-    <div className={`stage${img ? ' has-pip' : ''}`}>
+    <div className="stage has-pip">
       <div className="stage-h">The two titles to Parcel A <span>· this scene marked</span></div>
       <Storyline current={scene.no - 1} onPick={onPick} />
-      {img && (
-        <button className="pip" onClick={() => setBig(true)} aria-label={`Enlarge: ${cap}`}>
-          <img src={img} alt={cap} />
-          <span>Enlarge</span>
-        </button>
-      )}
-      {big && img && (
-        <div className="lightbox" role="dialog" aria-modal="true" aria-label={cap} onClick={() => setBig(false)}>
-          <figure onClick={(e) => e.stopPropagation()}>
-            <img src={img} alt={cap} />
-            <figcaption>{cap}</figcaption>
-          </figure>
-          <button className="lb-close" onClick={() => setBig(false)} aria-label="Close">×</button>
-        </div>
-      )}
+      <FloatingSceneMedia scene={scene} />
     </div>
   );
 }
-
 function Accounts({ scene, base, spoken }: { scene: Scene; base: Record<string, number>; spoken: number }) {
   if (!scene.received && !scene.received_words.length && !scene.known) return null;
   return (
