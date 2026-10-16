@@ -132,7 +132,7 @@ export default function App() {
   // keyboard
   useEffect(() => {
     const k = (e: KeyboardEvent) => {
-      if (view !== 'scene' || (e.target as HTMLElement).closest('input')) return;
+      if (view !== 'scene' || (e.target as HTMLElement).closest('input, button, a, [role="dialog"]')) return;
       if (e.key === 'ArrowRight') go(index + 1);
       else if (e.key === 'ArrowLeft') go(index - 1);
       else if (e.key === ' ') { e.preventDefault(); setPlaying((p) => !p); }
@@ -234,6 +234,7 @@ function SceneView({ scene, spoken, copied, onCopy, onCast, onPick }: { scene: S
         <div className="when">{scene.when}</div>
         <h1>{scene.title}</h1>
         {scene.place && <div className="place">{scene.place}</div>}
+        <SlideMediaGallery scene={scene} />
         <p className={`narr${spoken >= 0 ? ' speaking' : ''}`}><Spoken text={scene.narration} base={base.event} spoken={spoken} /></p>
         <div className="chips">
           <ParcelChip p={scene.parcel} />
@@ -263,6 +264,350 @@ function SceneView({ scene, spoken, copied, onCopy, onCast, onPick }: { scene: S
         </div>
       </div>
     </article>
+  );
+}
+
+
+type ArchiveMediaRow = {
+  name?: string;
+  path?: string;
+  tags?: string[];
+  title?: string | { rendered?: string };
+  caption?: string | { rendered?: string };
+  alt_text?: string;
+  slug?: string;
+  source_url?: string;
+  media_type?: string;
+  mime_type?: string;
+  date?: string;
+};
+type MediaCatalog = { waybackImages: ArchiveMediaRow[]; waybackVideos: ArchiveMediaRow[]; wikiMedia: ArchiveMediaRow[] };
+type SlideMediaItem = {
+  id: string;
+  url: string;
+  title: string;
+  source: string;
+  kind: 'image' | 'video';
+  poster?: string;
+  score: number;
+};
+const WAYBACK_MEDIA_BASE = 'https://wayback.bucklerfamily.estate';
+const WIKI_MEDIA_API = 'https://greathousefarmwiki.wordpress.com/wp-json/wp/v2/media';
+const MEDIA_WORD_STOP = new Set([
+  'the','and','for','from','with','into','onto','this','that','what','when','where','which','while','after','before','during','through',
+  'were','was','are','been','being','have','has','had','will','would','could','should','their','there','they','them','then','than',
+  'not','but','you','your','his','her','she','him','our','out','one','two','three','four','five','six','all','any','some','each',
+  'great','house','farm','farmhouse','llandough','mawr','ty','site','story','scene','year','years','date','event','record','records',
+  'document','documents','family','people','home','land','title','case','court','official','evidence','source','news','wales','south'
+]);
+function mediaPlainText(value?: string | { rendered?: string }): string {
+  const raw = typeof value === 'string' ? value : (value && value.rendered) || '';
+  return raw.replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').trim();
+}
+function mediaWords(value: string): string[] {
+  return value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .split(/[^a-z0-9]+/).filter((word) => word.length > 2 && !MEDIA_WORD_STOP.has(word));
+}
+function absoluteWaybackUrl(path: string): string {
+  if (/^https?:\/\//i.test(path)) return path;
+  return WAYBACK_MEDIA_BASE + '/' + path.replace(/^\/+/, '').replace(/^wayback\//, '');
+}
+function absoluteSiteUrl(path: string): string {
+  if (/^https?:\/\//i.test(path)) return path;
+  return new URL(path, SITE).toString();
+}
+function archiveRowText(row: ArchiveMediaRow, wiki = false): string {
+  const mediaPath = row.path || (row.source_url ? row.source_url.split('/').pop() : '') || '';
+  return [
+    row.name, mediaPath, row.slug, row.alt_text, mediaPlainText(row.title), mediaPlainText(row.caption),
+    (!wiki && row.date) || ''
+  ].filter(Boolean).join(' ');
+}
+function mediaYearMatch(text: string, year: string): boolean {
+  if (!year || year === '0000' || year === '9999') return false;
+  return new RegExp('(^|[^0-9])' + year + '([^0-9]|$)').test(text);
+}
+function rankArchiveMedia(scene: Scene, row: ArchiveMediaRow, wiki = false): { score: number; relevant: boolean } {
+  const text = archiveRowText(row, wiki);
+  const lower = text.toLowerCase();
+  const tokens = new Set(mediaWords(text));
+  const primaryYear = (scene.date || '').slice(0, 4);
+  const listedYears = (scene.when || '').match(/\b(?:1[0-9]{3}|20[0-9]{2})\b/g) || [];
+  const primaryMatch = mediaYearMatch(lower, primaryYear);
+  const otherYearMatch = listedYears.some((year) => year !== primaryYear && mediaYearMatch(lower, year));
+  const titleTerms = [...new Set(mediaWords(scene.title))];
+  const placeTerms = [...new Set(mediaWords(scene.place || ''))];
+  const contextTerms = [...new Set(mediaWords((scene.narration || '') + ' ' + (scene.known || '')))].slice(0, 36);
+  const titleHits = titleTerms.filter((word) => tokens.has(word)).length;
+  const placeHits = placeTerms.filter((word) => tokens.has(word)).length;
+  const contextHits = contextTerms.filter((word) => tokens.has(word)).length;
+  const tagged = (row.tags || []).some((tag) => tag.toLowerCase() === 'bpvsbuckler');
+  let score = primaryMatch ? 12 : (otherYearMatch ? 5 : 0);
+  score += titleHits * 7 + placeHits * 2.5 + Math.min(4, contextHits) * 1.1 + (tagged ? 1 : 0);
+  const relevant = primaryMatch || (otherYearMatch && (titleHits > 0 || placeHits > 0 || contextHits > 0 || tagged))
+    || titleHits > 0 || placeHits >= 2 || contextHits >= 2;
+  return { score, relevant };
+}
+function archiveMediaTitle(row: ArchiveMediaRow): string {
+  const rich = mediaPlainText(row.title) || mediaPlainText(row.caption) || row.alt_text || row.name || row.path || 'Archived media';
+  const cleaned = rich.replace(/[_]+/g, ' ').replace(/\b(?:bpvsbuckler|consortium|en|v\d+(?:[.-]\d+)*)\b/gi, ' ')
+    .replace(/^\s*\d{4}[- _]\d{2}[- _]\d{2}\s*/, '').replace(/\s+/g, ' ').trim();
+  return cleaned || 'Archived media';
+}
+function videoPoster(row: ArchiveMediaRow, images: ArchiveMediaRow[]): string | undefined {
+  const path = (row.path || row.source_url || row.name || '').split('/').pop() || '';
+  const tokens = [...new Set(mediaWords(path))].filter((word) => !/^\d+$/.test(word));
+  let best: { row: ArchiveMediaRow; score: number } | undefined;
+  for (const image of images) {
+    const imageText = archiveRowText(image).toLowerCase();
+    if (!/thumbnail|poster|preview/i.test(imageText)) continue;
+    const imageTokens = new Set(mediaWords(imageText));
+    const score = tokens.filter((word) => imageTokens.has(word)).length;
+    if (!best || score > best.score) best = { row: image, score };
+  }
+  return best && best.score >= 2 && best.row.path ? absoluteWaybackUrl(best.row.path) : undefined;
+}
+function videoEmbedUrl(url: string): string | undefined {
+  const match = url.match(/(?:youtube\.com\/watch\?v=|youtube\.com\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  return match ? 'https://www.youtube-nocookie.com/embed/' + match[1] : undefined;
+}
+
+function SlideMediaGallery({ scene }: { scene: Scene }) {
+  const [catalog, setCatalog] = useState<MediaCatalog>({ waybackImages: [], waybackVideos: [], wikiMedia: [] });
+  const [selection, setSelection] = useState({ sceneId: '', index: 0 });
+  const [lightboxItem, setLightboxItem] = useState<SlideMediaItem | null>(null);
+
+  useEffect(() => {
+    let live = true;
+    const getRows = async (url: string): Promise<ArchiveMediaRow[]> => {
+      try {
+        const response = await fetch(url, { mode: 'cors', credentials: 'omit', cache: 'force-cache' });
+        if (!response.ok) return [];
+        const data: unknown = await response.json();
+        return Array.isArray(data) ? data as ArchiveMediaRow[] : [];
+      } catch (_error) {
+        return [];
+      }
+    };
+    const run = async () => {
+      const wikiFields = 'per_page=100&_fields=slug,source_url,alt_text,caption,title,media_type,mime_type,date,link';
+      const results = await Promise.all([
+        getRows(WAYBACK_MEDIA_BASE + '/images/_treeview.json'),
+        getRows(WAYBACK_MEDIA_BASE + '/video/_treeview.json'),
+        getRows(WIKI_MEDIA_API + '?' + wikiFields + '&media_type=image'),
+        getRows(WIKI_MEDIA_API + '?' + wikiFields + '&media_type=video')
+      ]);
+      if (live) setCatalog({
+        waybackImages: results[0],
+        waybackVideos: results[1],
+        wikiMedia: [...results[2], ...results[3]]
+      });
+    };
+    void run();
+    return () => { live = false; };
+  }, []);
+
+  useEffect(() => {
+    if (!lightboxItem) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setLightboxItem(null);
+    };
+    addEventListener('keydown', onKey);
+    return () => removeEventListener('keydown', onKey);
+  }, [lightboxItem]);
+
+  const items = useMemo(() => {
+    const found: SlideMediaItem[] = [];
+    const used = new Set<string>();
+    const add = (item: SlideMediaItem) => {
+      if (!item.url || used.has(item.url)) return;
+      used.add(item.url);
+      found.push(item);
+    };
+
+    if (scene.image) {
+      const linked = scene.evidence.find((entry) => entry.image === scene.image);
+      add({
+        id: 'scene-image-' + scene.id,
+        url: absoluteSiteUrl(scene.image),
+        title: linked?.title || scene.title,
+        source: 'Scene image',
+        kind: 'image',
+        score: 10000
+      });
+    }
+    scene.evidence.forEach((entry, index) => {
+      if (entry.image) add({
+        id: 'evidence-image-' + scene.id + '-' + index,
+        url: absoluteSiteUrl(entry.image),
+        title: entry.title || scene.title,
+        source: entry.type || 'Scene evidence',
+        kind: 'image',
+        score: 9000 - index
+      });
+      if (entry.url && /(?:youtube\.com|youtu\.be|\.mp4(?:$|\?)|\.webm(?:$|\?)|\.mov(?:$|\?))/i.test(entry.url)) {
+        const embed = videoEmbedUrl(entry.url);
+        const isVideo = !!embed || /\.(?:mp4|webm|mov)(?:$|\?)/i.test(entry.url);
+        add({
+          id: 'evidence-video-' + scene.id + '-' + index,
+          url: entry.url,
+          title: entry.title || scene.title,
+          source: entry.type || 'Scene evidence',
+          kind: isVideo ? 'video' : 'image',
+          poster: embed ? 'https://img.youtube.com/vi/' + ((entry.url.match(/(?:youtube\.com\/watch\?v=|youtube\.com\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/) || [])[1] || '') + '/hqdefault.jpg' : undefined,
+          score: 8500 - index
+        });
+      }
+    });
+
+    const archiveImages = catalog.waybackImages;
+    for (const row of archiveImages) {
+      if (!row.path) continue;
+      const rank = rankArchiveMedia(scene, row);
+      if (!rank.relevant) continue;
+      add({
+        id: 'wayback-image-' + row.path,
+        url: absoluteWaybackUrl(row.path),
+        title: archiveMediaTitle(row),
+        source: 'Wayback media library',
+        kind: 'image',
+        score: rank.score
+      });
+    }
+    for (const row of catalog.waybackVideos) {
+      if (!row.path) continue;
+      const rank = rankArchiveMedia(scene, row);
+      if (!rank.relevant) continue;
+      add({
+        id: 'wayback-video-' + row.path,
+        url: absoluteWaybackUrl(row.path),
+        poster: videoPoster(row, archiveImages),
+        title: archiveMediaTitle(row),
+        source: 'Wayback video archive',
+        kind: 'video',
+        score: rank.score + 0.25
+      });
+    }
+    for (const row of catalog.wikiMedia) {
+      const url = row.source_url || row.path || '';
+      if (!url) continue;
+      const rank = rankArchiveMedia(scene, row, true);
+      if (!rank.relevant) continue;
+      const isVideo = row.media_type === 'video' || /^video\//i.test(row.mime_type || '') || /\.(?:mp4|webm|mov)(?:$|\?)/i.test(url);
+      add({
+        id: 'wiki-media-' + url,
+        url,
+        title: archiveMediaTitle(row),
+        source: 'Great House Farm Wiki',
+        kind: isVideo ? 'video' : 'image',
+        score: rank.score
+      });
+    }
+    return found.sort((a, b) => b.score - a.score).slice(0, 12);
+  }, [scene, catalog]);
+
+  const selectedIndex = selection.sceneId === scene.id
+    ? Math.min(selection.index, Math.max(0, items.length - 1)) : 0;
+  const current = items[selectedIndex] || null;
+  const selectItem = (next: number) => {
+    if (!items.length) return;
+    setSelection({ sceneId: scene.id, index: (next + items.length) % items.length });
+  };
+
+  useEffect(() => {
+    if (!current) return;
+    const thumb = document.querySelector('[data-smg-thumb="' + selectedIndex + '"]');
+    thumb?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }, [scene.id, selectedIndex, current ? current.id : '']);
+
+  return (
+    <section className="slide-media-gallery" aria-label="Media matching this scene">
+      <div className="smg-heading">
+        <div>
+          <div className="smg-kicker">Media for this scene</div>
+          <div className="smg-date">{scene.when}</div>
+        </div>
+        {items.length > 0 && (
+          <div className="smg-nav" aria-label="Browse scene media">
+            <button type="button" onClick={() => selectItem(selectedIndex - 1)} disabled={items.length < 2} aria-label="Previous media">‹</button>
+            <span aria-live="polite">{selectedIndex + 1} / {items.length}</span>
+            <button type="button" onClick={() => selectItem(selectedIndex + 1)} disabled={items.length < 2} aria-label="Next media">›</button>
+          </div>
+        )}
+      </div>
+      {current ? (
+        <>
+          <div className="smg-feature">
+            <button type="button" className="smg-open" onClick={() => setLightboxItem(current)} aria-label={'Open full-screen: ' + current.title}>
+              {current.poster || current.kind === 'image' ? (
+                <img src={current.poster || current.url} alt={current.title} loading="lazy" />
+              ) : (
+                <span className="smg-video-plate"><b>▶</b><span>Video</span></span>
+              )}
+              {current.kind === 'video' && <span className="smg-play-mark" aria-hidden="true">▶</span>}
+            </button>
+            <button type="button" className="smg-fullscreen" onClick={() => setLightboxItem(current)} aria-label={'View ' + current.title + ' full-screen'}>⤢ Full screen</button>
+          </div>
+          <div className="smg-caption">
+            <strong>{current.title}</strong>
+            <span>{current.source}</span>
+            <a href={current.url} target="_blank" rel="noopener noreferrer">Open original media ↗</a>
+          </div>
+          {items.length > 1 && (
+            <div className="smg-thumbs" aria-label="Choose a media thumbnail">
+              {items.map((item, index) => (
+                <button
+                  type="button"
+                  key={item.id}
+                  data-smg-thumb={index}
+                  className={'smg-thumb' + (index === selectedIndex ? ' active' : '')}
+                  aria-pressed={index === selectedIndex}
+                  aria-label={'Show media ' + (index + 1) + ': ' + item.title}
+                  title={item.title}
+                  onClick={() => selectItem(index)}
+                >
+                  {item.poster || item.kind === 'image'
+                    ? <img src={item.poster || item.url} alt="" loading="lazy" />
+                    : <span className="smg-thumb-video">▶</span>}
+                  {item.kind === 'video' && <span className="smg-thumb-tag">VIDEO</span>}
+                </button>
+              ))}
+            </div>
+          )}
+        </>
+      ) : (
+        <div className="smg-empty">
+          No indexed image or video is directly matched to this scene yet. Media for other dated scenes will appear automatically as its archive index becomes available.
+        </div>
+      )}
+      {lightboxItem && (
+        <div className="lightbox smg-lightbox" role="dialog" aria-modal="true" aria-label={lightboxItem.title} onClick={() => setLightboxItem(null)}>
+          <figure onClick={(event) => event.stopPropagation()}>
+            {lightboxItem.kind === 'video' ? (
+              videoEmbedUrl(lightboxItem.url) ? (
+                <iframe
+                  className="smg-video-player"
+                  src={videoEmbedUrl(lightboxItem.url) + '?autoplay=1&rel=0'}
+                  title={lightboxItem.title}
+                  allow="autoplay; encrypted-media; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <video className="smg-video-player" src={lightboxItem.url} poster={lightboxItem.poster} controls autoPlay playsInline />
+              )
+            ) : (
+              <img src={lightboxItem.url} alt={lightboxItem.title} />
+            )}
+            <figcaption>
+              <strong>{lightboxItem.title}</strong>
+              <span>{lightboxItem.source}</span>
+              <a href={lightboxItem.url} target="_blank" rel="noopener noreferrer">Open original media ↗</a>
+            </figcaption>
+          </figure>
+          <button className="lb-close" onClick={() => setLightboxItem(null)} aria-label="Close full-screen media">×</button>
+        </div>
+      )}
+    </section>
   );
 }
 
