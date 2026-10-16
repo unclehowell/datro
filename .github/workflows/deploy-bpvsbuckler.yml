@@ -102,19 +102,24 @@ jobs:
           grep -q 'assets/index-' dist/index.html
           test -f dist/story/index.html && test -f dist/story/transcript.txt && test -f dist/llms.txt
 
-      - name: Load the Q&A graph into Cloudflare D1 (bpvsbuckler-graph)
-        id: load_d1
-        # Keep the Pages deployment moving if D1 is temporarily unavailable; the
-        # final step below marks the workflow failed so this cannot pass silently.
-        continue-on-error: true
-        run: npx --yes wrangler@3 d1 execute bpvsbuckler-graph --remote --file=api/graph.sql --yes
-
       - name: Deploy to Cloudflare Pages
         run: npx --yes wrangler@3 pages deploy dist --project-name=bpvsbuckler --branch=bpvsbuckler --commit-dirty=true
 
-      - name: Surface D1 sync failure after deploying the site
-        if: steps.load_d1.outcome == 'failure'
+      - name: Sync and verify the Q&A graph through the Pages DB binding
         run: |
-          echo "::error::The Pages deployment completed, but the D1 graph import failed."
-          echo "::error::Grant D1 Edit permission to the CLOUDFLARE_API_TOKEN GitHub Actions secret, then rerun this workflow."
-          exit 1
+          response="$(curl --silent --show-error --fail-with-body \
+            --request POST \
+            --header "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+            --header "Accept: application/json" \
+            "https://bpvsbuckler.pages.dev/api/sync-graph")"
+          printf '%s\\n' "$response"
+          python3 - "$response" <<'PY'
+          import json, sys
+          try:
+              data = json.loads(sys.argv[1])
+          except Exception as exc:
+              raise SystemExit(f"Graph sync returned invalid JSON: {exc}")
+          if not data.get("ok"):
+              raise SystemExit(f"Graph sync failed: {data}")
+          print("Graph sync verified:", data.get("counts"))
+          PY
