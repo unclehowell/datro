@@ -338,14 +338,17 @@ function rankArchiveMedia(scene: Scene, row: ArchiveMediaRow, wiki = false): { s
   const otherYearMatch = listedYears.some((listed) => listed !== year && mediaYearMatch(lower, listed));
   const titleTerms = [...new Set(mediaWords(scene.title))];
   const placeTerms = [...new Set(mediaWords(scene.place || ''))];
-  // A slide may concern an earlier event but cite a later family statement,
-  // newspaper report or court document. Its evidence year helps find that image.
-  const evidenceText = (scene.evidence || [])
-    .map((entry) => [entry.title, entry.type, entry.url].filter(Boolean).join(' '))
+
+  // Match to dates stated in evidence titles/types only, never WordPress upload
+  // paths such as /uploads/2026/10/, which describe the upload, not the event.
+  const evidenceLabels = (scene.evidence || [])
+    .map((entry) => [entry.title, entry.type].filter(Boolean).join(' '))
     .join(' ');
-  const evidenceYears = [...new Set(evidenceText.match(/\b(?:1[0-9]{3}|20[0-9]{2})\b/g) || [])];
+  const evidenceYears = [...new Set(evidenceLabels.match(/\b(?:1[0-9]{3}|20[0-9]{2})\b/g) || [])];
   const evidenceYearMatch = evidenceYears.some((listed) => mediaYearMatch(lower, listed));
-  const evidenceTerms = [...new Set(mediaWords(evidenceText))].slice(0, 100);
+  const evidenceTerms = [...new Set(mediaWords(
+    evidenceLabels + ' ' + (scene.evidence || []).map((entry) => entry.url || '').join(' ')
+  ))].slice(0, 100);
   const contextText = [scene.narration, scene.known || '', scene.received || ''].join(' ');
   const contextTerms = [...new Set(mediaWords(contextText))].slice(0, 70);
   const titleHits = titleTerms.filter((word) => tokens.has(word)).length;
@@ -353,13 +356,17 @@ function rankArchiveMedia(scene: Scene, row: ArchiveMediaRow, wiki = false): { s
   const placeHits = placeTerms.filter((word) => tokens.has(word)).length;
   const contextHits = contextTerms.filter((word) => tokens.has(word)).length;
   const tagged = tokens.has('bpvsbuckler') || tokens.has('greathousefarm') || tokens.has('ghf');
+
   let score = exactDate ? 42 : yearMatch ? 20 : (otherYearMatch ? 7 : 0);
-  if (evidenceYearMatch) score += 8.5;
+  // A strong bonus makes a historical media year explicitly named in a cited
+  // source beat unrelated files that only happen to share generic farm terms.
+  if (evidenceYearMatch) score += 38;
   score += titleHits * 10;
   score += Math.min(12, evidenceHits) * 3.4;
   score += placeHits * 3;
   score += Math.min(6, contextHits) * 1.5;
   if (tagged) score += 1.5;
+
   const relevant = exactDate || yearMatch || evidenceYearMatch || titleHits > 0 || evidenceHits > 0
     || placeHits >= 2 || contextHits >= 2
     || (otherYearMatch && (tagged || titleHits > 0 || evidenceHits > 0));
