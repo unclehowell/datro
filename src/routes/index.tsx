@@ -13,6 +13,23 @@ import { RingWheel, type Selection } from "@/components/ring-wheel";
 
 export const Route = createFileRoute("/")({ component: Home });
 
+function publicArchiveUrl(cell: { url?: string; title: string; date?: string; ref?: string; correspondent?: string }) {
+  if (!cell.url) return undefined;
+  try {
+    const target = new URL(cell.url);
+    if (target.hostname === "email.bucklerfamily.estate" && /^\/reference\/[a-f0-9]{16}$/i.test(target.pathname)) {
+      target.searchParams.set("title", cell.title);
+      if (cell.date) target.searchParams.set("date", cell.date);
+      if (cell.correspondent) target.searchParams.set("correspondent", cell.correspondent);
+      if (cell.ref) target.searchParams.set("caseRef", cell.ref);
+      target.searchParams.set("query", cell.ref || cell.title);
+    }
+    return target.toString();
+  } catch {
+    return cell.url;
+  }
+}
+
 function Home() {
   const [selection, setSelection] = useState<Selection | null>({
     partyId: "llandough",
@@ -152,12 +169,12 @@ function Home() {
               <p className="mt-3 text-sm leading-relaxed">{selected.cell.detail}</p>
               {selected.cell.url && (
                 <a
-                  href={selected.cell.url}
+                  href={publicArchiveUrl(selected.cell)}
                   target="_blank"
                   rel="noreferrer"
                   className="mt-3 inline-flex items-center gap-1.5 text-sm text-brass-ink underline decoration-brass underline-offset-4"
                 >
-                  Open the thread in Gmail
+                  Open in public email archive
                   <ExternalLink className="size-3.5" aria-hidden />
                 </a>
               )}
