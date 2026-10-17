@@ -8,7 +8,6 @@ function headers(extra) {
   const h = new Headers(extra || {});
   h.set("X-Content-Type-Options", "nosniff");
   h.set("Referrer-Policy", "no-referrer");
-  h.set("X-Frame-Options", "DENY");
   return h;
 }
 function json(data, status) {
@@ -77,10 +76,10 @@ export default {
     return json({threadKeys:Array.from(matches),matches:matches.size,recordsScanned:m.records.length,note:"Search covers indexed public archive records; inaccessible sources may be omitted."});
    } catch(e) { return json({error:"Full-text search failed",detail:String(e)},502); }
   }
-  if (url.pathname === "/" || url.pathname === "/index.html") {
+  if (url.pathname === "/" || url.pathname === "/index.html" || /^\/thread\/[a-z0-9-]+\/?$/.test(url.pathname)) {
    const r=await cachedFetch(PAGE_URL,60);
    if (!r.ok) return new Response("The archive interface could not be loaded from the repository branch.",{status:502,headers:headers({"Content-Type":"text/plain; charset=utf-8"})});
-   return new Response(await r.text(),{status:200,headers:headers({"Content-Type":"text/html; charset=utf-8","Cache-Control":"public, max-age=60","Content-Security-Policy":"default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; frame-ancestors 'none'; form-action 'none'"})});
+   return new Response(await r.text(),{status:200,headers:headers({"Content-Type":"text/html; charset=utf-8","Cache-Control":"public, max-age=60","Content-Security-Policy":"default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; object-src 'none'; frame-ancestors 'self' https://greathousefarmwiki.wordpress.com https://*.wordpress.com; form-action 'none'"})});
   }
   if (url.pathname === "/robots.txt") return new Response("User-agent: *\nAllow: /\nDisallow: /api/",{headers:headers({"Content-Type":"text/plain; charset=utf-8"})});
   return new Response("Not found",{status:404,headers:headers({"Content-Type":"text/plain; charset=utf-8"})});
