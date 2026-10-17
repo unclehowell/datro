@@ -225,7 +225,7 @@ export default {
       "Cache-Control":"no-store, max-age=0",
       "Content-Security-Policy":"default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; object-src 'none'; frame-ancestors 'self' https://greathousefarmwiki.wordpress.com https://*.wordpress.com; form-action 'none'",
       "Origin-Agent-Cluster":"?1",
-      "Permissions-Policy":"tools=(self)""
+      "Permissions-Policy":"tools=(self)"
     })});
    } catch(e) { return new Response("The archive interface could not be loaded: "+String(e),{status:502,headers:headers({"Content-Type":"text/plain; charset=utf-8"})}); }
   }
