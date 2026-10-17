@@ -167,20 +167,25 @@ async function openThread(t, pushHistory){
   copyText('<iframe title="'+safeTitle+'" src="'+src+'" width="100%" height="760" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" style="border:1px solid #dfe4ec;border-radius:12px"></iframe>');
  });
  actions.append(allWiki,sourceBtn,copyBtn,embedBtn);
- const reader=$('reader-scroll');reader.replaceChildren();const loading=document.createElement('div');loading.className='message-loading';loading.textContent='Loading '+t.items.length+' archived source record(s)…';reader.appendChild(loading);
- $('thread-details').open=false;$('thread-summary').textContent='Building thread description from the indexed records…';
- const results=await Promise.all(t.items.map(async r=>{try{return {record:r,text:await getMessage(r)};}catch(e){return {record:r,error:e&&e.message?e.message:String(e)};}}));
- const loaded=results.filter(x=>!x.error);const errors=results.filter(x=>x.error);
- reader.replaceChildren();
- loaded.forEach((obj,i)=>{
+ const reader=$('reader-scroll');reader.replaceChildren();
+ const bodyById=new Map();
+ // Render every message card immediately. A slow source must not leave the
+ // entire reading pane blank while other source records are still loading.
+ t.items.forEach(r=>{
   const card=document.createElement('article');card.className='message-card';
   const head=document.createElement('div');head.className='message-head';
-  const name=document.createElement('div');name.className='message-title';name.textContent=obj.record.name;
-  const meta=document.createElement('div');meta.className='message-source';meta.textContent=(obj.record.date?fmtDate(obj.record.date)+' · ':'Date not indexed · ')+'Evidence v'+(obj.record.evidenceVersion||'1.0.0')+' · Source: ';
-  const link=document.createElement('a');link.href=obj.record.path;link.target='_blank';link.rel='noopener noreferrer';link.textContent='open original archived text';meta.appendChild(link);head.append(name,meta);
-  const body=document.createElement('pre');body.className='message-body';body.textContent=obj.text||'[The archive source returned an empty record.]';card.append(head,body);reader.appendChild(card);
+  const name=document.createElement('div');name.className='message-title';name.textContent=r.name;
+  const meta=document.createElement('div');meta.className='message-source';meta.textContent=(r.date?fmtDate(r.date)+' · ':'Date not indexed · ')+'Evidence v'+(r.evidenceVersion||'1.0.0')+' · Source: ';
+  const link=document.createElement('a');link.href=r.path;link.target='_blank';link.rel='noopener noreferrer';link.textContent='open original archived text';meta.appendChild(link);
+  const body=document.createElement('pre');body.className='message-body';body.textContent='Loading archived text…';
+  card.append(head,body);reader.appendChild(card);bodyById.set(r.id,body);
  });
- errors.forEach(obj=>{const d=document.createElement('article');d.className='message-card';const head=document.createElement('div');head.className='message-head';const name=document.createElement('div');name.className='message-title';name.textContent='Could not load archived text: '+obj.record.name;const detail=document.createElement('div');detail.className='message-source';detail.textContent=String(obj.error||'Unknown archive error');const link=document.createElement('a');link.href=obj.record.path;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Open original public source ↗';detail.append(document.createTextNode(' · '),link);head.append(name,detail);d.appendChild(head);reader.appendChild(d);});
+ $('thread-details').open=false;$('thread-summary').textContent='Building thread description from the indexed records…';
+ const results=await Promise.all(t.items.map(async r=>{
+  try { const text=await getMessage(r); const body=bodyById.get(r.id); if(body)body.textContent=text||'[The archive source returned an empty record.]'; return {record:r,text:text}; }
+  catch(e) { const message=e&&e.message?e.message:String(e); const body=bodyById.get(r.id); if(body)body.textContent='Message text could not be loaded. '+message+'\n\nUse the original source link above to read the archived record.'; return {record:r,error:message}; }
+ }));
+ const loaded=results.filter(x=>!x.error);const errors=results.filter(x=>x.error);
  if(!loaded.length&&!errors.length){const d=document.createElement('div');d.className='empty-list';d.textContent='No source records are attached to this conversation.';reader.appendChild(d);}
  reader.scrollTop=0;
  const participants=new Set(), dates=new Set(), snippets=[];
