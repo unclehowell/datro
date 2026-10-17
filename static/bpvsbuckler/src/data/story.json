@@ -3096,7 +3096,7 @@
    "place": "Great House — interior",
    "parcel": "A",
    "basis": "Heritage record",
-   "narration": "H. J. Thomas surveys the ground floor for the Royal Commission. The house \"remained partially recorded because of problems of access created by an ownership dispute\".",
+   "narration": "H. J. Thomas's 1974 survey and R. F. Suggett's December 1988 note are separate records. The HER entry says the house remained partially recorded because access was restricted by an ownership dispute. The survey predates demolition on 6 December 1988; Suggett's note postdates it. The evidence currently identified does not establish that listing was legally required, that demolition was unlawful, or what was submitted to the European Commission of Human Rights.",
    "case": null,
    "evidence": [
     {
@@ -3108,6 +3108,21 @@
      "type": "Heritage record",
      "title": "Archaeology and Heritage",
      "url": "https://greathousefarmwiki.wordpress.com/archaeology/"
+    },
+    {
+     "type": "Evidence catalogue",
+     "title": "GHF-E137 — 1974 H. J. Thomas / RCAHMW architectural survey and floor plan",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e137-1974-h-j-thomas-rcahmw-architectural-survey-and-floor-plan/"
+    },
+    {
+     "type": "Evidence catalogue",
+     "title": "GHF-E183 — Heneb / HER source-file request and replies, September–October 2026",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e183-heneb-her-source-file-request-and-replies-september-october-2026/"
+    },
+    {
+     "type": "Evidence catalogue",
+     "title": "GHF-E145 — ECHR application 14464/88 and Commission decision, 14 April 1989",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e145-echr-application-14464-88-and-commission-decision-14-april-1989/"
     }
    ],
    "image": null,
@@ -8286,37 +8301,37 @@
    "act": "VIII",
    "date": "2026-10-06",
    "when": "September – October 2026",
-   "title": "Publication of the record",
-   "place": "Great House Farm Wiki",
+   "title": "HER source-file digitisation and publication",
+   "place": "Heneb / Archwilio",
    "parcel": "A",
-   "basis": "Analysis",
-   "narration": "September–October 2026: the family publish the documents and press cuttings on the Great House Farm Wiki, with a legal review.",
+   "basis": "Official correspondence",
+   "narration": "The public HER entry GGAT02038s already referred to H. J. Thomas's 1974 survey and cited R. F. Suggett's December 1988 note. Following the family's September 2026 records request, Heneb reportedly stated on 14 October that the underlying source file had been digitised and uploaded to Archwilio as PDFs in the sources section. Heneb responded to the schedule of records on 16 October. This distinguishes the earlier public citation from the later availability of the underlying source-file material; it does not by itself establish concealment or what the Strasbourg Commission received.",
    "case": null,
    "evidence": [
+    {
+     "type": "Heritage record",
+     "title": "Historic Environment Record GGAT 02038s (Archwilio)",
+     "url": "https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s"
+    },
     {
      "type": "Analysis",
      "title": "Legal Review — Fraud, Land and Human Rights",
      "url": "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/"
     },
     {
-     "type": "Wiki page",
-     "title": "Great House Farm Wiki — Main Page",
-     "url": "https://greathousefarmwiki.wordpress.com/"
+     "type": "Evidence catalogue",
+     "title": "GHF-E183 — Heneb / HER source-file request and replies, September–October 2026",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e183-heneb-her-source-file-request-and-replies-september-october-2026/"
     },
     {
-     "type": "Wiki page",
-     "title": "Evidence Library",
-     "url": "https://greathousefarmwiki.wordpress.com/evidence-library/"
+     "type": "Evidence catalogue",
+     "title": "GHF-E184 — Heneb schedule of records and 16 October response",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e184-heneb-schedule-of-records-and-16-october-response/"
     },
     {
-     "type": "Wiki page",
-     "title": "Press Archive — Newspaper Transcripts",
-     "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/"
-    },
-    {
-     "type": "Wiki page",
-     "title": "Press Articles Index",
-     "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/"
+     "type": "Evidence catalogue",
+     "title": "GHF-E145 — ECHR application 14464/88 and Commission decision, 14 April 1989",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e145-echr-application-14464-88-and-commission-decision-14-april-1989/"
     }
    ],
    "image": null,
@@ -8326,7 +8341,10 @@
    ],
    "no": 97,
    "ref": "VIII.13",
-   "cast": [],
+   "cast": [
+    "ggat",
+    "rcahmw"
+   ],
    "received": null,
    "received_words": [],
    "known": "No deed has been produced by which Parcel A passed from the Williamses, or from anyone, to BP.",
@@ -8344,7 +8362,32 @@
    "grade": "single-source",
    "grade_text": "Single source: one primary record so far.",
    "questions": [],
-   "qa": []
+   "qa": [
+    {
+     "id": "qa-bc796863b466",
+     "party_name": "Cadw / Welsh Government",
+     "asked": "2026-05-17",
+     "answered": "2026-05-21",
+     "kind": "partial",
+     "pairing": "thread",
+     "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t3",
+     "ref": "",
+     "question": "Clarification as to whether any formal heritage review or investigation into the demolition process was ever completed.\nConsideration of whether this matter warrants renewed historical or heritage examination.\n\nI appreciate that some claims remain disputed or unproven, and I am not asking recipients to accept every allegation as established fact. However, I believe the totality of the historical m",
+     "answer": "Good afternoon Mr Buckler,\n\nThank you for your email of 17 May regarding Great House Farm, Llandough, and also for your email of 20 May.\n\nI have searched our electronic records relating to Great House Farm and Barn and I can confirm they were assessed and rejected for listing in the 1988 community survey of Llandough. I have attached two photos, dated 29 July 1988. The \"YYY\" marking on the rear of the photo indicates that the buildings were considered marginally below the bar for listing. We hold no other electronic records.\n\nI note the SW Echo report suggesting that Cadw inspectors would visit again in December 1988, but I can find no record (as-yet) of this. The one paper file we have loca"
+    },
+    {
+     "id": "qa-72d3fa7b6fee",
+     "party_name": "Royal Commission (RCAHMW)",
+     "asked": "",
+     "answered": "2026-09-29",
+     "kind": "not-held",
+     "pairing": "reply-only",
+     "url": "https://mail.google.com/mail/u/0/#all/1a0ed5d3ada10e6b",
+     "ref": "RC26-0375 (incl. RC26-0353, -0368, -0371)",
+     "question": "Reply received: RC26-0375 - Ty Mawr/ Great House, Llandough, Cardiff",
+     "answer": "[Translated from Welsh] As stated in my emails of 28 May, 10 June and 11 June, there are no letters or records about this site, Tŷ Mawr Farm, Llandough, in our registered files, the only campaign records we keep long-term. No records have come to light since. The only information we hold about the site, including its demolition, is in our archive, the National Monuments Record of Wales: https://coflein.gov.uk/en/sites/20182/archives. Aerial photograph searches are charged.\n\nThe armour found in the late nineteenth century is not mentioned in Richard Suggett's unpublished report, Archive 6048945. Most of that record is reproduced as Heneb's site description GGAT02038s:\n\n‘Great House Farmhouse "
+    }
+   ]
   },
   {
    "id": "ghf-obvious-01",
