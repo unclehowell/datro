@@ -1,5 +1,5 @@
 const RAW_BASE = "https://raw.githubusercontent.com/unclehowell/datro/email-archive/apps/email";
-const MANIFEST_URL = "https://raw.githubusercontent.com/unclehowell/datro/d1311b259ca4cb494b87960d4d1e0624e8186284/apps/email/data/mail-index.json";
+const MANIFEST_URL = "https://raw.githubusercontent.com/unclehowell/datro/3ea056f2dc033cffe85cf4101cc6dd20e93e3cae/apps/email/data/mail-index.json";
 const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/110864dbaab4492254a9c7046f0699995f39bd1a/apps/email/index.html";
 const TEXT_HOST = "wayback.bucklerfamily.estate";
 const API_VERSION = "2.0.0";
@@ -125,7 +125,7 @@ export default {
 
   if (url.pathname === "/api/health") return json({
     status:"ok", service:"Great House Farm FOI & EIR Mail Archive", worker:"email",
-    apiVersion:API_VERSION, manifestVersion:"2.0.0",
+    apiVersion:API_VERSION, manifestVersion:"2.0.1",
     dateRange:{from:"2024-10-17",through:"2026-10-17"},
     recordCount:20, readOnly:true
   });
