@@ -3,6 +3,8 @@
 Canonical URL: https://bpvsbuckler.bucklerfamily.estate/
 Scope: Great House Farm / Tŷ Mawr, Llandough; Williams/Buckler family history, land/title, court/possession matters, heritage/planning, demolition, and public-authority correspondence.
 
+Cloudflare Pages build note: This Vite app copies every file in `public/` to the deployment root. The WebMCP script, resource index, plain-text guide, and allowlisted JSON/text/HTML sources therefore live under `public/`, not merely beside `index.html`.
+
 Agent entry points:
 - / — public narrative and browser interface.
 - /agent-index.json — allowlisted resource inventory with descriptions and formats.
