@@ -12,7 +12,7 @@ Public, read-only, serverless archive for email and correspondence records relat
 - UI: `apps/email/index.html`
 - Catalogue: `apps/email/data/mail-index.json`
 
-This Worker serves the UI and catalogue from this repository branch via GitHub's raw-content endpoint. It retrieves individual source texts from the existing public DATRO archive only after a reader opens a conversation. The Worker has no Gmail sign-in, no inbox credentials, no send/receive endpoint, and no write API.
+This Worker serves the UI and catalogue from this repository branch via GitHub's raw-content endpoint. It retrieves individual source texts from the active public DATRO archive at `wayback.bucklerfamily.estate` only after a reader opens a conversation. The Worker reads catalogue version 1.0.1 from an immutable GitHub commit so stale branch/CDN responses cannot point it back at the retired `wayback.datro.xyz` host. The Worker has no Gmail sign-in, no inbox credentials, no send/receive endpoint, and no write API.
 
 ## Catalogue scope
 
@@ -23,7 +23,7 @@ The initial catalogue was built from the existing `bpvsbuckler/text/_treeview.js
 1. Add or correct records in `data/mail-index.json`, using a stable `id`, exact upstream `path`, descriptive `subject`, `category`, and `evidenceVersion`.
 2. Increment `manifestVersion` when the catalogue changes.
 3. Increment an individual `evidenceVersion` when that record's public evidence representation changes; use semantic versioning such as `1.0.0` → `1.1.0` for a backward-compatible addition/correction or `2.0.0` for a breaking representation change.
-4. Keep a public source URL for every record. The Worker only proxies URLs on `https://wayback.datro.xyz/text/` that are present in the catalogue.
+4. Keep a public source URL for every record. The Worker only proxies URLs on `https://wayback.bucklerfamily.estate/text/` that are present in the catalogue.
 
 ## Reader features
 
