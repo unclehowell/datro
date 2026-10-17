@@ -1,0 +1,27 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: tools=(self)
+  Origin-Agent-Cluster: ?1
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, HEAD, OPTIONS
+  Access-Control-Allow-Headers: Accept, Content-Type
+  Vary: Origin
+
+/*.json
+  Content-Type: application/json; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, HEAD, OPTIONS
+  Vary: Origin
+
+/*.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, HEAD, OPTIONS
+  Vary: Origin
+
+/*.html
+  Content-Type: text/html; charset=utf-8
+  X-Content-Type-Options: nosniff
+  Permissions-Policy: tools=(self)
+  Origin-Agent-Cluster: ?1
