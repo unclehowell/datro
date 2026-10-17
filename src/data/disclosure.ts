@@ -123,7 +123,7 @@ export const statusMeta: Record<
   },
 };
 
-const g = (thread: string) => `https://mail.google.com/mail/u/0/#all/${thread}`;
+const g = (thread: string) => `https://email.bucklerfamily.estate/reference/${thread}`;
 
 export const parties: Party[] = [
   {
