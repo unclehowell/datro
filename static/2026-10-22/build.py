@@ -791,8 +791,25 @@ def script_txt():
 
 
 def main():
+    # Keep the agent interface durable when this generated page is rebuilt.
+    index_html = site()
+    if 'id="agent-access"' not in index_html:
+        index_html = index_html.replace(
+            "</head>",
+            '<link rel="alternate" type="application/json" href="/agent-index.json" title="Machine-readable meeting toolkit index">\\n'
+            '<link rel="alternate" type="text/plain" href="/llms.txt" title="Agent reading guide">\\n</head>',
+            1,
+        )
+        index_html = index_html.replace(
+            "</body>",
+            '<section id="agent-access" aria-label="AI-agent access" style="max-width:1160px;margin:28px auto;padding:14px 16px;border-top:1px solid #d5dad6;font:14px/1.5 system-ui,sans-serif;color:inherit">'
+            '<strong>AI-agent access</strong><p id="webmcp-status">WebMCP provides read-only tools in compatible browsers. Agent index, meeting script and HTML pack are available without WebMCP.</p>'
+            '<p><a href="/agent-index.json">Machine-readable resource catalogue</a> · <a href="/llms.txt">Agent reading guide</a> · <a href="/meeting-script.txt">Meeting script</a> · <a href="/pack.html">Clerk pack (HTML)</a></p>'
+            '</section><script src="/agent-tools.js" defer></script></body>',
+            1,
+        )
     with open(os.path.join(HERE, "index.html"), "w", encoding="utf-8") as f:
-        f.write(site())
+        f.write(index_html)
     with open(os.path.join(HERE, "pack.html"), "w", encoding="utf-8") as f:
         f.write(pack())
     with open(os.path.join(HERE, "meeting-script.txt"), "w", encoding="utf-8") as f:
