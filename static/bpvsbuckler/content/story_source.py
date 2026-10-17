@@ -169,6 +169,16 @@ sc('P', 'ghf-15450101-1', '1545-01-01', '1536 – 1793', "The lordship of the ma
     w('/1877-agreement/#takes-effect', 'The 1877 Agreement — takes effect in 1928'),
     w('/anomalies-register/llandough-penarth-cydfin-ty-mawr-manorial-evidence/', 'Llandough (Penarth): Cydfin / Tŷ Mawr and pre-1877 manorial evidence')],
    ledger={'W': 'Lordship of the manor: Sir George Herbert (by 1545) and his family'})
+sc('P', 'ghf-15470620-1', '1547-06-20', '20 June 1547', "A 1,000-year lease of Cydwin", 'Manor of Llandough — Cydwin', '?',
+   'Archival catalogue',
+   "The National Library of Wales catalogue describes a lease for 1,000 years dated 20 June 1547 from Sir George Herbert of Swansea to Edmund Vaughan of a farm called Cydwin in the manor of Llandough; the record names fields. This long leasehold interest predates the later Bute estate narrative. The affirmative Cedwyn thesis asks whether those named fields belong to the older Cydfin/Ty Mawr holding later catalogued as a 107-acre farm, and how that interest passed from the Herbert/Vaughan line into subsequent estate records. The instrument and field boundaries must be examined before the lease can be equated with the whole Great House site.",
+   [
+    {'type': 'Archive catalogue', 'title': 'National Library of Wales, L 11 — assignment of a lease for 1,000 years of Cydwin in the manor of Llandough', 'url': 'https://archifau.llyfrgell.cymru/index.php/assignment-of-lease-for-1000-years-of-cydwin-in-manor-of-llandough'},
+    {'type': 'Estate papers', 'title': 'National Library of Wales, Bute Estate Records D 219 — Llandough manorial leases and agreements', 'url': 'https://archives.library.wales/index.php/llandough-manorial-leases-and-agreements'},
+    w('/ghf-e173-cedwyn-cwm-cedwyn-place-name-notes/ghf-e178-1547-sir-george-herbert-grants-vaughan-a-1000-year-lease-of-cydwin/', 'GHF-E178 — 1547 Cydwin lease lead'),
+    w('/anomalies-register/llandough-penarth-cydfin-ty-mawr-manorial-evidence/', 'Llandough (Penarth): Cydfin / Tŷ Mawr and pre-1877 manorial evidence'),
+    {'type': 'Research annex', 'title': 'Cedwyn Estate — title-chain reconstruction', 'url': 'https://bpvsbuckler.bucklerfamily.estate/research/cedwyn-estate-title-chain.html'}
+   ])
 sc('P', 'ghf-15520101-1', '1552-01-01', '1552 – 1824', "Manorial leases", 'Llandough manorial leases', 'AB',
    'Estate papers',
    "The National Library of Wales holds a Bute Estate bundle of Llandough manorial leases and agreements (D 219), dated 1552–1829 as a whole. Its catalogue identifies leases of \"Cydfin Farm or Ty Mawr Farm, (107 a.)\", dated 1552–1824.",
@@ -184,13 +194,22 @@ sc('P', 'ghf-15600101-1', '1560-01-01', 'Mid 16th – late 18th century', "The V
    ledger={'W': 'Farm freehold: the Vaughans · lordship of the manor: the Herberts (a separate interest)'})
 sc('P', 'ghf-16670101-1', '1667-01-01', '1667', "The Williams family at Great House", 'Great House Farm', 'A',
    "Mary's statement",
-   "Mary Williams's statement (c. 1974) records her family at Great House from 1667.",
+   "Mary Williams's c.1974 statement says her family had lived and farmed at Great House since 1667. A 1974 newspaper report also attributes to her a claim that her family first acquired Tŷ Mawr around that date. The affirmative Cedwyn thesis treats 1667 as the opening of the family's own estate history and tests that claim against the Cydwin/Cydfin lease and farm-name records. The surviving statement and press report support the family's account; a 1667 conveyance has not yet been identified.",
    [MARY, w('/williams-buckler-family/', 'The Williams / Buckler Family — origins')],
    aliases=['ghf-16770101-1'],
    ledger={'W': 'Farm freehold: the Vaughans · lordship of the manor: the Herberts · in the house: the Williamses'})
+sc('P', 'ghf-17400213-1', '1740-02-13', '13 February 1739/40', "Vaughan assigns the Cydwin lease", 'Manor of Llandough — Cydwin', '?',
+   'Archival catalogue',
+   "The National Library of Wales catalogues an assignment dated 13 February 1739/40 by Edmond Vaughan of Llandough to Thomas Mathews of Llandaf of the 1,000-year Cydwin lease originally granted in 1547, for £1,066 13s. 4d. This is a documented transfer in the older lease chain and a concrete route for tracing who held the interest before Bute's later estate records. The next step is to match the named fields and follow subsequent assignments, rentals and conveyances into the Cydfin/Ty Mawr farm and the later parcels.",
+   [
+    {'type': 'Archive catalogue', 'title': 'National Library of Wales, L 11 — assignment of a lease for 1,000 years of Cydwin in the manor of Llandough', 'url': 'https://archifau.llyfrgell.cymru/index.php/assignment-of-lease-for-1000-years-of-cydwin-in-manor-of-llandough'},
+    {'type': 'Estate papers', 'title': 'National Library of Wales, Bute Estate Records D 219 — Llandough manorial leases and agreements', 'url': 'https://archives.library.wales/index.php/llandough-manorial-leases-and-agreements'},
+    w('/ghf-e173-cedwyn-cwm-cedwyn-place-name-notes/ghf-e179-1552-1824-bute-records-call-it-cedfin-cydfin-ken-fin-farm-or-ty-mawr-farm/', 'GHF-E179 — Cydfin / Ty Mawr names in Bute records'),
+    {'type': 'Research annex', 'title': 'Cedwyn Estate — title-chain reconstruction', 'url': 'https://bpvsbuckler.bucklerfamily.estate/research/cedwyn-estate-title-chain.html'}
+   ])
 sc('P', 'ghf-18000101-1', '1800-01-01', '1793 – early 19th century', "The Bute Estate", 'Great House', 'AB',
    'Heritage record',
-   "In 1793 the Earl of Bute buys the lordship of the manor of Llandough. Early in the 19th century the Bute Estate also acquires the freehold of Great House. From then the lordship and the farm are held by the same owner. The manorial courts of Llandough and Leckwith are held in the house.",
+   "The historical account places Bute's acquisition of the lordship of Llandough in 1793 and its acquisition of the Great House freehold in the early 19th century; the manorial courts of Llandough and Leckwith were held at the house. The missing control point is the instrument that carried the farm freehold from the Vaughan line into Bute's estate. The 1547 Cydwin lease, its 1739/40 assignment, and the D 219 record of Cydfin or Ty Mawr leases give the affirmative reconstruction a named chain to investigate alongside the manor's later ownership. A manorial interest, a long lease, and a farm freehold must be mapped separately before the later corporate titles can be treated as the originating chain for every parcel.",
    [HER, w('/bute-estate/', 'The Bute Estate'),
     w('/anomalies-register/llandough-penarth-cydfin-ty-mawr-manorial-evidence/', 'Llandough (Penarth): Cydfin / Tŷ Mawr and pre-1877 manorial evidence'),
     {'type': 'Estate papers', 'title': 'National Library of Wales, Bute Estate Records R1: Glamorgan Estate rentals',
@@ -211,9 +230,20 @@ sc('I', 'ghf-18700101-1', '1870-01-01', 'c. 1870', "The armour under the floor",
    "Family tradition records a soldier in armour, with his horse, a lance and a shield, found beneath the dining-room floor. The account is in a Royal Commission record (NMR 6048942) and the Daily Telegraph of 16 April 1974. No primary record of a find has been located.",
    [press('N03', 'Daily Telegraph, 16 April 1974 (dates the find to "about 1870")'), HER, ARCH, w('/records-access-chronology/source-conflicts-register/', 'Source Conflicts Register', 'Analysis')],
    aliases=['ghf-18800101-2'])
+sc('I', 'ghf-18700101-2', '1870-01-02', '1870 — Pwllypant probate and estate papers', "A Williams estate bequest to Bute: tracing the land", 'Pwllypant / Llandough title research', '?',
+   'Probate and estate catalogue leads',
+   "The National Library of Wales catalogue lists the 1870 will of William Evans Williams of Pwllypant as bequeathing his real and personal estate to the Marquis of Bute, and separately catalogues papers about his real and personal estate. The affirmative title inquiry is parcel-specific: did any land he owned, benefited from, or had let through Bute connect to the 33-acre Llandough Limeworks block or Great House Farm? The will's headline bequest does not identify those acres by itself. The family's research also points to a Clock Tower dispute and newspaper coverage said to complicate the relationship between Williams and Bute; the precise contemporary reports and wording must be located before using that dispute as proof of motive. Estate schedules, title deeds, rent books and the 1876–1912 limeworks accounts are the route to answer the question.",
+   [
+    {'type': 'Archive catalogue', 'title': 'National Library of Wales, D242/17 — probate of the will of William Evans Williams of Pwllypant (1870)', 'url': 'https://archives.library.wales/index.php/deeds-and-documents-relating-mainly-to-title-of-pwllypant-estate-including-copy-probate-of-will-of-david-evan%3Bisad?sf_culture=en'},
+    {'type': 'Archive catalogue', 'title': 'National Library of Wales, D258 — papers relating to the personal and real estates of William Evans Williams', 'url': 'https://archives.library.wales/index.php/papers-relating-to-personal-and-real-estates-of-william-evans-williams-dec-including-account-of-aberdare-iron-co'},
+    {'type': 'Historical context', 'title': 'History Points — Former Pwllypant House, Caerphilly', 'url': 'https://historypoints.org/index.php?page=former-pwllypant-house-caerphilly'},
+    w('/llandough-limeworks/', 'Llandough Limeworks — the 33-acre block'),
+    w('/bute-estate/', 'The Bute Estate — unresolved early title'),
+    {'type': 'Research annex', 'title': 'Cedwyn Estate — title-chain reconstruction', 'url': 'https://bpvsbuckler.bucklerfamily.estate/research/cedwyn-estate-title-chain.html'}
+   ])
 sc('I', 'ghf-18760101-1', '1876-01-01', '1876 – c. 1912', "The limeworks", 'Llandough Limeworks', 'A',
    'Estate papers',
-   "The Bute Estate lets about 33 acres of the farm to the Llandough Limeworks, which work it until about 1912.",
+   "The Wiki's archive lead identifies about 33 acres used by the Llandough Limeworks from 1876 to about 1912, with Bute papers D153/4–8 to be obtained and inspected. The block's precise boundaries and title line remain to be matched to the 1877 plan and the estate schedules. For the Cedwyn reconstruction, this is a critical parcel-control point: identify who owned the freehold, who granted the quarrying rights, who received rent, and whether all four descriptions refer to the same acres.",
    [w('/llandough-limeworks/', 'Llandough Limeworks')])
 sc('I', 'ghf-18770101-1', '1877-01-01', '1877', "Division of the farm", 'Bute Estate Office', 'AB',
    "Mary's statement",
@@ -442,9 +472,11 @@ sc('V', 'ghf-19860711-1', '1986-07-11', '1986 – 87', "Royal Commission corresp
    [w('/scrutiny-and-accountability/legal-review-fraud-land-human-rights/#loss-pattern', 'Legal Review — the loss pattern', 'Analysis')])
 sc('V', 'ghf-19870202-1', '1987-02-02', '2 February 1987', "Amalgamation of titles", 'HM Land Registry', 'AB',
    'Land Registry record',
-   "On 2 February 1987, with the appeal pending, an application is made to amalgamate WA240304 (farmhouse and garden) into WA231076.",
+   "On 2 February 1987, while the appeal is pending, an application is made to amalgamate WA240304 (the separately registered farmhouse and garden) into WA231076 (the larger field title). The register then presents the two strands as one corporate holding. The affirmative 'synthetic estate' question is whether a title originating in the Bute-to-WGR field chain was joined to a separately registered house title without the older Cydwin/Cydfin and Williams/Thomas chain being traced through the underlying instruments. The amalgamation records a registration event; its file, the 1877 documents, and the 1938 and 1969 conveyances must be read together to reconstruct the title's provenance.",
    [LRT('first-registration', 'Land Registry Titles — amalgamation'),
-    w('/scrutiny-and-accountability/procedural-fairness-notice/1987-hmlr-amalgamation-during-appeal/', '1987 HMLR Amalgamation During Appeal', 'Analysis')],
+    w('/scrutiny-and-accountability/procedural-fairness-notice/1987-hmlr-amalgamation-during-appeal/', '1987 HMLR Amalgamation During Appeal', 'Analysis'),
+    w('/anomalies-register/llandough-penarth-cydfin-ty-mawr-manorial-evidence/', 'Cydfin / Ty Mawr and pre-1877 manorial evidence'),
+    {'type': 'Research annex', 'title': 'Cedwyn Estate — title-chain reconstruction', 'url': 'https://bpvsbuckler.bucklerfamily.estate/research/cedwyn-estate-title-chain.html'}],
    ledger={'S': None, 'B': None,
            'M': 'Registered: BP Properties, WA231076 = Parcel B + synthetic Parcel A (farmhouse title folded in, 2 February 1987)'})
 sc('V', 'ghf-19870731-1', '1987-07-31', '31 July 1987', "Court of Appeal", 'Court of Appeal, London', 'A',

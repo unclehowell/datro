@@ -32,6 +32,10 @@ ACCOUNTS = {
     received="The lord of the manor owned the farm.",
     words=[('"since 1667"', 'The 1974 newspaper records the Williams family’s occupation of the manorial home; occupation is a separate matter from the lordship and the freehold.')],
     known="Lordship of a manor and ownership of the farmhouse parcel are separate interests. The 1974 newspaper records the Williams family’s occupation of the manorial home since 1667. The family’s title case is not occupation alone: it is that the 1877 bargain entitled the Williamses to Parcel A’s freehold when quarrying ended, identified by Mary as 1928, when the final rent was paid. On that account, the Williamses were virtual freeholders while the quarrying arrangement ran and became freeholders in 1928. The 1877 deed and final receipt have not been located, so the 1928 transfer remains the family’s asserted title history rather than a fact determined by the 1974 newspaper or a court. The manorial sources also differ over 1767–1793; the Herbert estate papers have not yet been checked."),
+'ghf-15470620-1': dict(
+    received="The Bute estate is the beginning of the land's title.",
+    words=[],
+    known="The 1547 NLW catalogue entry names a Cydwin farm in the manor of Llandough and a 1,000-year lease from Sir George Herbert to Edmond Vaughan. That is a specific pre-Bute interest and an archival route to follow. It does not yet identify every field with the later Great House boundaries; the lease and its named fields must be compared with D 219 and historic plans."),
 'ghf-15520101-1': dict(
     received="A farm let on ordinary leases.",
     words=[],
@@ -43,11 +47,15 @@ ACCOUNTS = {
 'ghf-16670101-1': dict(
     received="Tenant farmers who lived on someone else's land.",
     words=[('"tenants"', 'The estate\'s description of the family, repeated in every later account.')],
-    known="For more than three hundred years one family lived at Great House, where the manor's courts sat. Generation after generation was born there, married there and died there. Mary's account is that her ancestors bought it. Whatever the estate's books called them, the Williamses were the people of the Great House. Not squatters. Not passing tenants. The family of the house."),
+    known="Mary's statement and the 1974 press report support the family's account of a connection with Great House from 1667 and treat it as a lineage claim, not a passing tenancy. The affirmative reconstruction now connects that claim to the older Cydwin/Cydfin/Ty Mawr lease records and asks whether later labels of tenancy concealed a longer-standing family interest. The surviving items do not themselves constitute a 1667 conveyance; the deed chain must be reconstructed from the leases, estate accounts, plans and the 1877/1928 evidence."),
+'ghf-17400213-1': dict(
+    received="The Vaughan lease chain has no relevance once later estate papers call the land Ty Mawr.",
+    words=[],
+    known="The L 11 catalogue records Edmond Vaughan's 1739/40 assignment of the 1,000-year Cydwin lease to Thomas Mathews for £1,066 13s. 4d. The assignment offers a concrete transfer point for reconstructing the older interest. Follow its named fields and later assignments into the Cydfin/Ty Mawr records and the eventual Bute estate acquisition."),
 'ghf-18000101-1': dict(
     received="Bute owned the farm, and everything after descends from Bute.",
     words=[],
-    known="Bute held the lordship from 1793 and the farm freehold from the early 19th century: two interests, now in one hand. Bute owned the whole farm only until 1877. The house was the manor's court house."),
+    known="The historical account places the manorial lordship in Bute's hands from 1793 and the Great House farm freehold in the early 19th century. The deed that moved the farm freehold from the Vaughan line is the key missing control point. The L 11 lease assignment and D 219 farm records provide older property and tenure references against which Bute's acquisition, rentals and subsequent 1877 division must be tested. The house was also a centre for the Llandough and Leckwith manorial courts; that administrative role must not be confused with ownership of each parcel."),
 'ghf-18400101-1': dict(
     received="It was always just a farm.",
     words=[('"Great House Farm"', 'A name that reduced the manor\'s court house to a farmhouse.')],
@@ -57,10 +65,14 @@ ACCOUNTS = {
     received="Family folklore.",
     words=[('"reported"', 'The word the records use, which keeps it at a distance.')],
     known="An account on public record since 1974, never investigated before the house was demolished."),
+'ghf-18700101-2': dict(
+    received="William Evans Williams left his fortune to Bute, so the land history is settled.",
+    words=[],
+    known="The catalogued 1870 will is a lead to the estate's disposition, not a parcel schedule for Great House Farm. Test whether land or rights connected with Llandough's 33-acre limeworks block appear in William Evans Williams's title papers, rentals or correspondence. The reported Clock Tower dispute should be linked to its exact contemporary newspaper source before it is used to characterise the relationship."),
 'ghf-18760101-1': dict(
     received="Part of the farm let for quarrying.",
     words=[],
-    known="The quarrying is the reason for the 1877 division, and its end in 1928 is the date the house passes to the family."),
+    known="The archive lead identifies a 33-acre quarrying block in Bute records from 1876 to about 1912, but its exact parcel and chain of authority need to be established from D153/4–8, the 1877 plan and the estate schedules. The key affirmative question is who held the underlying freehold and who merely let or administered the quarrying rights."),
 'ghf-18770101-1': dict(
     received="Nothing changed: Bute went on owning the farm, and the Williamses went on renting it.",
     words=[],
@@ -228,7 +240,7 @@ ACCOUNTS = {
 'ghf-19870202-1': dict(
     received="An administrative tidying of the register.",
     words=[('"amalgamation"', 'The register\'s term.')],
-    known="Two titles cannot be merged unless there are two. BP and the Land Registry held the house and the fields separately from 1983 while the case was argued as one farm. The merger folded the synthetic Parcel A into Parcel B during the appeal."),
+    known="The registration history shows two separately registered titles before the 1987 amalgamation: a larger field title and a later house title. The affirmative synthetic-estate thesis is that a corporate register view was assembled from separate strands while the older Cydwin/Cydfin and Williams/Thomas provenance remained untraced. The decisive exercise is to compare the first-registration files and the operative 1877, 1938 and 1969 instruments against the plans and schedules. The label 'synthetic' describes this unresolved reconstruction, not a statutory finding."),
 'ghf-19870731-1': dict(
     received="The courts finally settled that BP owned Great House Farm.",
     words=[('"the paper title to the farm"', 'The court\'s description of BP\'s position.'), ('"No such documents were, however, ever produced."', 'On Mary\'s title documents.'), ('"since November 1982 they have been the registered proprietors"', 'The court\'s recital.')],
