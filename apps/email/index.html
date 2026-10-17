@@ -130,7 +130,12 @@ function renderList(){
   const date=document.createElement('div');date.className='result-date';date.textContent=t.latestDate?fmtDate(t.latestDate):'Undated';top.append(title,date);
   const sub=document.createElement('div');sub.className='result-thread';const dot=document.createElement('span');dot.className='category-dot';const cat=document.createElement('span');cat.textContent=t.category;sub.append(dot,cat);
   const meta=document.createElement('div');meta.className='result-meta';meta.textContent=t.items.length+' source record'+(t.items.length===1?'':'s')+' · '+t.items.map(x=>x.name).join(' · ');
-  b.append(top,sub,meta);b.addEventListener('click',()=>openThread(t,true));list.appendChild(b);
+  b.append(top,sub,meta);b.addEventListener('click',()=>{
+  // Never leave a click-handler rejection invisible. The reader opens synchronously,
+  // and any unexpected exception becomes a visible error with a source link.
+  try { openThread(t,true).catch(err=>showReaderFatal(err,t)); }
+  catch(err) { showReaderFatal(err,t); }
+ });list.appendChild(b);
  });
 }
 async function getMessage(r){
@@ -145,12 +150,36 @@ function extractHeaders(text){
  for(const line of lines){let m=line.match(/^\s*(from|to|cc|date|sent|subject)\s*:\s*(.*)$/i);if(!m)continue;const k=m[1].toLowerCase();const key=(k==='sent'?'date':k==='cc'?'to':k);if(vals[key]&&m[2]&&!vals[key].includes(m[2].trim()))vals[key].push(m[2].trim());}
  return vals;
 }
+function showReaderFatal(error,t){
+ const panel=$('reader-panel'), empty=$('reader-empty'), content=$('reader-content'), reader=$('reader-scroll');
+ if(empty) empty.hidden=true;
+ if(content){content.hidden=false;content.style.display='flex';}
+ if($('reader-title')) $('reader-title').textContent=(t&&t.subject)||'Could not open conversation';
+ if(reader){
+  reader.replaceChildren();
+  const card=document.createElement('article');card.className='message-card';
+  const head=document.createElement('div');head.className='message-head';
+  const title=document.createElement('div');title.className='message-title';title.textContent='The conversation reader hit an error';
+  const detail=document.createElement('div');detail.className='message-source';detail.textContent=error&&error.message?error.message:String(error||'Unknown error');
+  head.append(title,detail);card.appendChild(head);
+  if(t&&t.items&&t.items.length){
+   const link=document.createElement('a');link.href=t.lastRecord.path;link.target='_blank';link.rel='noopener noreferrer';link.className='btn';link.textContent='Open original public source ↗';link.style.display='inline-block';link.style.margin='12px';
+   card.appendChild(link);
+  }
+  reader.appendChild(card);
+ }
+ if(panel && window.matchMedia && window.matchMedia('(max-width:760px)').matches) panel.scrollIntoView({behavior:'auto',block:'start'});
+}
 async function openThread(t, pushHistory){
- if(pushHistory !== false) window.history.pushState({emailThread:t.key},'',threadUrl(t,embedMode));
+ // Make the reading pane visible before attempting URL/history operations or network calls.
  selectedThread=t;renderList();
- document.title = t.subject + ' — Great House Farm Mail';
- if(window.matchMedia('(max-width:760px)').matches) $('reader-panel').scrollIntoView({behavior:'auto',block:'start'});
  $('reader-empty').hidden=true;$('reader-content').hidden=false;$('reader-content').style.display='flex';
+ document.title = t.subject + ' — Great House Farm Mail';
+ if(pushHistory !== false){
+  try { window.history.pushState({emailThread:t.key},'',threadUrl(t,embedMode)); }
+  catch(err) { /* Reading still works in restrictive/in-app browsers even if history cannot change. */ }
+ }
+ try { if(window.matchMedia && window.matchMedia('(max-width:760px)').matches) $('reader-panel').scrollIntoView({behavior:'auto',block:'start'}); } catch(err) { /* Optional mobile scroll. */ }
  $('reader-title').textContent=t.subject;
  $('reader-tags').replaceChildren();
  const tag1=document.createElement('span');tag1.className='tag blue';tag1.textContent=t.items.length+' archived source record'+(t.items.length===1?'':'s');
@@ -232,7 +261,7 @@ fetch('/api/records').then(async r=>{if(!r.ok)throw new Error('Catalogue respons
   $('reader-empty').querySelector('h2').textContent='Thread link required';
   $('reader-empty').querySelector('p').textContent='This preview needs a specific /thread/<id>?embed=1 URL. Reopen the thread from the archive and copy its embed code.';
  }
-}).catch(e=>{$('list-subtitle').textContent='Could not load the public catalogue.';$('result-list').innerHTML='<div class="empty-list">The source index could not be loaded. Please retry later or inspect the repository archive index directly.</div>';});
+}).catch(e=>{$('list-subtitle').textContent='Could not load the public catalogue: '+(e&&e.message?e.message:String(e));$('result-list').replaceChildren();const d=document.createElement('div');d.className='empty-list';d.textContent='The source index could not be loaded. Please retry later or inspect the repository archive index directly.';$('result-list').appendChild(d);});
 })();
 </script>
 </body></html>
