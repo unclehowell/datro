@@ -274,7 +274,9 @@ async function agentApi(path, signal) {
 }
 async function registerWebMcpTools(){
  const status=$('webmcp-status');
- if(!document.modelContext||typeof document.modelContext.registerTool!=='function'){
+ // Chrome's early origin-trial used navigator.modelContext; current builds use document.modelContext.
+ const modelContext=document.modelContext||(typeof navigator!=='undefined'?navigator.modelContext:null);
+ if(!modelContext||typeof modelContext.registerTool!=='function'){
   status.textContent='WebMCP is not available in this browser/session. Use the linked JSON API or OpenAPI specification; no agent access depends on WebMCP.';
   return;
  }
@@ -308,7 +310,7 @@ async function registerWebMcpTools(){
   }
  ];
  let registered=0;
- for(const tool of toolDefs){try{await document.modelContext.registerTool(tool,{signal:controller.signal});registered++;}catch(err){/* The browser preview or page permissions may reject registration. */}}
+ for(const tool of toolDefs){try{await modelContext.registerTool(tool,{signal:controller.signal});registered++;}catch(err){/* The browser preview or page permissions may reject registration. */}}
  status.textContent=registered===toolDefs.length?'WebMCP ready: five read-only FOI archive tools registered in this browser.':'WebMCP partially available ('+registered+'/'+toolDefs.length+' tools registered). JSON API and OpenAPI are available as fallback.';
 }
 registerWebMcpTools().catch(()=>{const s=$('webmcp-status');if(s)s.textContent='WebMCP could not register in this browser/session. Use the JSON API and OpenAPI links below.';});
