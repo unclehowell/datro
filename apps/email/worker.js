@@ -81,7 +81,7 @@ export default {
   if (url.pathname === "/" || url.pathname === "/index.html" || /^\/thread\/[a-z0-9-]+\/?$/.test(url.pathname)) {
    const r=await remoteFetch(PAGE_URL,12000);
    if (!r.ok) return new Response("The archive interface could not be loaded from the repository branch.",{status:502,headers:headers({"Content-Type":"text/plain; charset=utf-8"})});
-   return new Response(await r.text(),{status:200,headers:headers({"Content-Type":"text/html; charset=utf-8","Cache-Control":"public, max-age=60","Content-Security-Policy":"default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; object-src 'none'; frame-ancestors 'self' https://greathousefarmwiki.wordpress.com https://*.wordpress.com; form-action 'none'"})});
+   return new Response(await r.text(),{status:200,headers:headers({"Content-Type":"text/html; charset=utf-8","Cache-Control":"no-store, max-age=0","Content-Security-Policy":"default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; object-src 'none'; frame-ancestors 'self' https://greathousefarmwiki.wordpress.com https://*.wordpress.com; form-action 'none'"})});
   }
   if (url.pathname === "/robots.txt") return new Response("User-agent: *\nAllow: /\nDisallow: /api/",{headers:headers({"Content-Type":"text/plain; charset=utf-8"})});
   return new Response("Not found",{status:404,headers:headers({"Content-Type":"text/plain; charset=utf-8"})});
