@@ -1,6 +1,6 @@
 {
   "archiveTitle": "Great House Farm FOI & EIR Mail Archive",
-  "manifestVersion": "2.0.0",
+  "manifestVersion": "2.0.1",
   "dateRange": {
     "from": "2024-10-17",
     "through": "2026-10-17",
@@ -8,12 +8,12 @@
   },
   "scope": "Only public FOI/EIR requests, acknowledgements, clarifications, follow-ups, and responses specifically concerning Great House Farm/Tŷ Mawr at Llandough and the Williams/Buckler family. General correspondence, unrelated personal-data requests, and unrelated BP v Buckler material are excluded.",
   "sourceIndex": "unclehowell/datro@gh-pages:bpvsbuckler/text/_treeview.json; source content served from wayback.bucklerfamily.estate",
-  "generatedFrom": "Reviewed FOI/EIR subset of Existing public case-index entries matching Great House Farm / Tŷ Mawr / Llandough / BP v Buckler and correspondence-style filename indicators.; 20 records selected by subject and source text.",
+  "generatedFrom": "Reviewed FOI/EIR subset of Reviewed FOI/EIR subset of Existing public case-index entries matching Great House Farm / Tŷ Mawr / Llandough / BP v Buckler and correspondence-style filename indicators.; 20 records selected by subject and source text.; 20 source records grouped into seven case-specific FOI/EIR subject threads.",
   "dateNote": "If the public source text does not contain a reliable sent date and the catalogue filename supplies none, date remains blank and dateStatus is date-not-stated-in-public-source. No dates are inferred or fabricated.",
   "records": [
     {
       "id": "mail-fcecad7a",
-      "subject": "Freedom of Information Request — Ty Mawr (Great House), Llandough (1938–1987)",
+      "subject": "FOI F260213 — Ty Mawr / Great House Farm, Llandough (1938–1987)",
       "name": "2026-02-15_consortium-foi_bpvsbuckler__en_v0-0-1.txt",
       "path": "https://wayback.bucklerfamily.estate/text/2026-02-15_consortium-foi_bpvsbuckler__en_v0-0-1.txt",
       "date": "2026-02-15",
@@ -31,7 +31,7 @@
     },
     {
       "id": "mail-2368a7a6",
-      "subject": "Freedom of Information response F260213 — Ty Mawr / Great House Farm",
+      "subject": "FOI F260213 — Ty Mawr / Great House Farm, Llandough (1938–1987)",
       "name": "2026-04-13_consortium-foi_bpvsbuckler__en_v0-0-1.txt",
       "path": "https://wayback.bucklerfamily.estate/text/2026-04-13_consortium-foi_bpvsbuckler__en_v0-0-1.txt",
       "date": "2026-04-13",
@@ -49,7 +49,7 @@
     },
     {
       "id": "mail-f45e82e2",
-      "subject": "Automatic acknowledgement — FOI on historical court records for Great House Farm",
+      "subject": "FOI — historical court records for Great House Farm / Williams–Buckler",
       "name": "Automatic reply_ Subject_ FOI - Location & Access to Historical Court Records (Great House Farm, Lla_19ea270b0afe9b58.txt",
       "path": "https://wayback.bucklerfamily.estate/text/Automatic reply_ Subject_ FOI - Location & Access to Historical Court Records (Great House Farm, Lla_19ea270b0afe9b58.txt",
       "date": "",
@@ -67,7 +67,7 @@
     },
     {
       "id": "mail-33aa1f3e",
-      "subject": "Automatic acknowledgement — FOI request for Ty Mawr, Llandough",
+      "subject": "FOI F260213 — Ty Mawr / Great House Farm, Llandough (1938–1987)",
       "name": "Automatic reply_ Subject_ Freedom of Information Request - Ty Mawr (Great House), Llandough, near Pe_19ce35d00a35553e.txt",
       "path": "https://wayback.bucklerfamily.estate/text/Automatic reply_ Subject_ Freedom of Information Request - Ty Mawr (Great House), Llandough, near Pe_19ce35d00a35553e.txt",
       "date": "",
@@ -85,7 +85,7 @@
     },
     {
       "id": "mail-4e34b378",
-      "subject": "FOI request to Cadw — Great House Farm / Williams–Buckler occupation",
+      "subject": "FOI — Cadw records about Great House Farm / Williams–Buckler",
       "name": "BP vs Buckler 1987 - FOI Request_19beaed885848f36.txt",
       "path": "https://wayback.bucklerfamily.estate/text/BP vs Buckler 1987 - FOI Request_19beaed885848f36.txt",
       "date": "",
@@ -103,7 +103,7 @@
     },
     {
       "id": "mail-f26ca506",
-      "subject": "Clarification request — FOI/EIR case 00210772",
+      "subject": "FOI/EIR 00210772 — Great House Farm / Church View Close, Llandough",
       "name": "Clarification required - FOI_EIR request - Case Ref_ 00210772_19e6e41dcb8faf97.txt",
       "path": "https://wayback.bucklerfamily.estate/text/Clarification required - FOI_EIR request - Case Ref_ 00210772_19e6e41dcb8faf97.txt",
       "date": "",
@@ -121,7 +121,7 @@
     },
     {
       "id": "mail-6a804466",
-      "subject": "EIR — historic water supply records for Great House Farm and Mary Williams/Buckler",
+      "subject": "EIR — historic water supply records for Great House Farm / Mary Williams–Buckler",
       "name": "EIR Request - Historic Water Supply Records for Great House Farm, Llandough (Mary Williams_Buckler, _19ea148a9088115e.txt",
       "path": "https://wayback.bucklerfamily.estate/text/EIR Request - Historic Water Supply Records for Great House Farm, Llandough (Mary Williams_Buckler, _19ea148a9088115e.txt",
       "date": "",
@@ -139,7 +139,7 @@
     },
     {
       "id": "mail-0f9470e4",
-      "subject": "FOI/EIR — police and bailiff involvement at Great House Farm in 1988",
+      "subject": "FOI/EIR — police and bailiff records for Great House Farm (1988)",
       "name": "FOI_EIR Request – 1988 Police_Bailiff Involvement in Dispossession at Great House Farm (Ty Mawr), Ll_19ea12f74d5c8e44.txt",
       "path": "https://wayback.bucklerfamily.estate/text/FOI_EIR Request – 1988 Police_Bailiff Involvement in Dispossession at Great House Farm (Ty Mawr), Ll_19ea12f74d5c8e44.txt",
       "date": "",
@@ -157,7 +157,7 @@
     },
     {
       "id": "mail-23aa2f9e",
-      "subject": "FOI/EIR request — case 00210772, Great House Farm and Williams/Buckler family",
+      "subject": "FOI/EIR 00210772 — Great House Farm / Church View Close, Llandough",
       "name": "FOI_EIR request - Case Ref_ 00210772_19e6955728641e0a.txt",
       "path": "https://wayback.bucklerfamily.estate/text/FOI_EIR request - Case Ref_ 00210772_19e6955728641e0a.txt",
       "date": "",
@@ -175,7 +175,7 @@
     },
     {
       "id": "mail-3aa9dd36",
-      "subject": "FOI response notification — 1988 dispossession of Great House Farm / Williams–Buckler family",
+      "subject": "FOI — 1988 dispossession of Great House Farm / Williams–Buckler",
       "name": "New response to your FOI request - 1988 Dispossession of Great House Farm, Llandough from the Willia_19e746788a06645c.txt",
       "path": "https://wayback.bucklerfamily.estate/text/New response to your FOI request - 1988 Dispossession of Great House Farm, Llandough from the Willia_19e746788a06645c.txt",
       "date": "",
@@ -193,7 +193,7 @@
     },
     {
       "id": "mail-6cf61648",
-      "subject": "FOI status follow-up — 1988 dispossession of Great House Farm / Williams–Buckler family",
+      "subject": "FOI — 1988 dispossession of Great House Farm / Williams–Buckler",
       "name": "Please update the status of your request - 1988 Dispossession of Great House Farm, Llandough from th_19e8707e905d3c56.txt",
       "path": "https://wayback.bucklerfamily.estate/text/Please update the status of your request - 1988 Dispossession of Great House Farm, Llandough from th_19e8707e905d3c56.txt",
       "date": "",
@@ -211,7 +211,7 @@
     },
     {
       "id": "mail-3e7f3674",
-      "subject": "FOI status follow-up — 1988 dispossession of Great House Farm / Williams–Buckler family",
+      "subject": "FOI — 1988 dispossession of Great House Farm / Williams–Buckler",
       "name": "Please update the status of your request - 1988 Dispossession of Great House Farm, Llandough from th_19eab29b71115290.txt",
       "path": "https://wayback.bucklerfamily.estate/text/Please update the status of your request - 1988 Dispossession of Great House Farm, Llandough from th_19eab29b71115290.txt",
       "date": "",
@@ -229,7 +229,7 @@
     },
     {
       "id": "mail-d54c6efe",
-      "subject": "Council response — EIR/FOI 00210772, Great House Farm / Church View Close",
+      "subject": "FOI/EIR 00210772 — Great House Farm / Church View Close, Llandough",
       "name": "RE_ EIR_FOI request - 00210772 (Great House Farm _ Church View Close, Llandough) – Further Clarifica_19ead60b9c35e41b.txt",
       "path": "https://wayback.bucklerfamily.estate/text/RE_ EIR_FOI request - 00210772 (Great House Farm _ Church View Close, Llandough) – Further Clarifica_19ead60b9c35e41b.txt",
       "date": "",
@@ -247,7 +247,7 @@
     },
     {
       "id": "mail-ed6eed0c",
-      "subject": "Land Registry clarification — FOI request for Ty Mawr / Great House, Llandough",
+      "subject": "FOI F260213 — Ty Mawr / Great House Farm, Llandough (1938–1987)",
       "name": "RE_ Subject_ Freedom of Information Request - Ty Mawr (Great House), Llandough, near Penarth (1938-1_19ce1fe9eccc997b.txt",
       "path": "https://wayback.bucklerfamily.estate/text/RE_ Subject_ Freedom of Information Request - Ty Mawr (Great House), Llandough, near Penarth (1938-1_19ce1fe9eccc997b.txt",
       "date": "",
@@ -265,7 +265,7 @@
     },
     {
       "id": "mail-719adc86",
-      "subject": "Land Registry reply F260213 — FOI request for Ty Mawr / Great House, Llandough",
+      "subject": "FOI F260213 — Ty Mawr / Great House Farm, Llandough (1938–1987)",
       "name": "RE_ Subject_ Freedom of Information Request - Ty Mawr (Great House), Llandough, near Penarth (1938-1_19ce6f3dddaf5466.txt",
       "path": "https://wayback.bucklerfamily.estate/text/RE_ Subject_ Freedom of Information Request - Ty Mawr (Great House), Llandough, near Penarth (1938-1_19ce6f3dddaf5466.txt",
       "date": "",
@@ -283,7 +283,7 @@
     },
     {
       "id": "mail-314a80de",
-      "subject": "Follow-up — EIR/FOI 00210772, Great House Farm / Church View Close",
+      "subject": "FOI/EIR 00210772 — Great House Farm / Church View Close, Llandough",
       "name": "Re_ EIR_FOI request - 00210772 (Great House Farm _ Church View Close, Llandough) – Further Clarifica_19ea0c4734421b17.txt",
       "path": "https://wayback.bucklerfamily.estate/text/Re_ EIR_FOI request - 00210772 (Great House Farm _ Church View Close, Llandough) – Further Clarifica_19ea0c4734421b17.txt",
       "date": "",
@@ -301,7 +301,7 @@
     },
     {
       "id": "mail-8fe0f8a4",
-      "subject": "Land Registry reply — FOI request about BP registration of Great House Farm",
+      "subject": "FOI F260213 — Ty Mawr / Great House Farm, Llandough (1938–1987)",
       "name": "Re_ Subject_ Freedom of Information Request - Ty Mawr (Great House), Llandough, near Penarth (1938-1_19ce35cac2211b2a.txt",
       "path": "https://wayback.bucklerfamily.estate/text/Re_ Subject_ Freedom of Information Request - Ty Mawr (Great House), Llandough, near Penarth (1938-1_19ce35cac2211b2a.txt",
       "date": "",
@@ -319,7 +319,7 @@
     },
     {
       "id": "mail-08df9b74",
-      "subject": "Land Registry correspondence — FOI request for Ty Mawr / Great House, Llandough",
+      "subject": "FOI F260213 — Ty Mawr / Great House Farm, Llandough (1938–1987)",
       "name": "Re_ Subject_ Freedom of Information Request - Ty Mawr (Great House), Llandough, near Penarth (1938-1_19cebb0e76a9c519.txt",
       "path": "https://wayback.bucklerfamily.estate/text/Re_ Subject_ Freedom of Information Request - Ty Mawr (Great House), Llandough, near Penarth (1938-1_19cebb0e76a9c519.txt",
       "date": "",
@@ -337,7 +337,7 @@
     },
     {
       "id": "mail-8d69a904",
-      "subject": "FOI request — location and access to historic court records involving Great House Farm / Williams–Buckler",
+      "subject": "FOI — historical court records for Great House Farm / Williams–Buckler",
       "name": "Subject_ FOI - Location & Access to Historical Court Records (Great House Farm, Llandough)_19ea14bba2b2e7c1.txt",
       "path": "https://wayback.bucklerfamily.estate/text/Subject_ FOI - Location & Access to Historical Court Records (Great House Farm, Llandough)_19ea14bba2b2e7c1.txt",
       "date": "",
@@ -355,7 +355,7 @@
     },
     {
       "id": "mail-38e6da32",
-      "subject": "FOI request — Ty Mawr (Great House), Llandough, 1938–1987",
+      "subject": "FOI F260213 — Ty Mawr / Great House Farm, Llandough (1938–1987)",
       "name": "Subject_ Freedom of Information Request - Ty Mawr (Great House), Llandough, near Penarth (1938-1987)_19c63f949558570d.txt",
       "path": "https://wayback.bucklerfamily.estate/text/Subject_ Freedom of Information Request - Ty Mawr (Great House), Llandough, near Penarth (1938-1987)_19c63f949558570d.txt",
       "date": "",
@@ -371,5 +371,6 @@
         "FOI/EIR"
       ]
     }
-  ]
+  ],
+  "threadGroupingNote": "Subject groups consolidate known request/acknowledgement/clarification/follow-up messages. The full original text remains available per source; grouping is a finding aid, not proof that every message from an original thread survives."
 }
