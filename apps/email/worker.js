@@ -1,6 +1,6 @@
 const RAW_BASE = "https://raw.githubusercontent.com/unclehowell/datro/email-archive/apps/email";
-const MANIFEST_URL = "https://raw.githubusercontent.com/unclehowell/datro/3ea056f2dc033cffe85cf4101cc6dd20e93e3cae/apps/email/data/mail-index.json";
-const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/3b4fa9cb07203e04b2ce093bc34dd67b506b89b0/apps/email/index.html";
+const MANIFEST_URL = "https://raw.githubusercontent.com/unclehowell/datro/92d0ed5ecca963cfa9e29b1a3c1143e5aad6f019/apps/email/data/mail-index.json";
+const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/92d0ed5ecca963cfa9e29b1a3c1143e5aad6f019/apps/email/index.html";
 const TEXT_HOST = "wayback.bucklerfamily.estate";
 const API_VERSION = "2.0.0";
 
@@ -232,7 +232,7 @@ export default {
    } catch(e) { return json({error:"Full-text search failed",detail:String(e)},502); }
   }
 
-  if (url.pathname === "/" || url.pathname === "/index.html" || /^\/thread\/[a-z0-9-]+\/?$/.test(url.pathname)) {
+  if (url.pathname === "/" || url.pathname === "/index.html" || /^\/thread\/[a-z0-9-]+\/?$/.test(url.pathname) || /^\/reference\/[a-f0-9]{16}\/?$/i.test(url.pathname)) {
    try {
     const r = await remoteFetch(PAGE_URL,12000);
     if (!r.ok) return new Response("The archive interface could not be loaded from the repository branch.",{status:502,headers:headers({"Content-Type":"text/plain; charset=utf-8"})});
