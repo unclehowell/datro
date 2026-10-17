@@ -1,7 +1,7 @@
 const RAW_BASE = "https://raw.githubusercontent.com/unclehowell/datro/email-archive/apps/email";
 const MANIFEST_URL = RAW_BASE + "/data/mail-index.json";
 const PAGE_URL = RAW_BASE + "/index.html";
-const TEXT_HOST = "wayback.datro.xyz";
+const TEXT_HOST = "wayback.bucklerfamily.estate";
 
 function headers(extra) {
   const h = new Headers(extra || {});
@@ -49,7 +49,7 @@ export default {
  async fetch(request, env, ctx) {
   const url = new URL(request.url);
   if (request.method !== "GET" && request.method !== "HEAD") return json({error:"Read-only public archive. Only GET and HEAD are supported."},405);
-  if (url.pathname === "/api/health") return json({status:"ok",service:"Great House Farm Mail Archive",worker:"email",manifestVersion:"1.0.0"});
+  if (url.pathname === "/api/health") return json({status:"ok",service:"Great House Farm Mail Archive",worker:"email",manifestVersion:"1.0.1"});
   if (url.pathname === "/api/records") {
    try { const m=await loadManifest(); return json(m); }
    catch(e) { return json({error:"Could not load the public archive index",detail:String(e)},502); }
