@@ -1,6 +1,6 @@
 const RAW_BASE = "https://raw.githubusercontent.com/unclehowell/datro/email-archive/apps/email";
 const MANIFEST_URL = "https://raw.githubusercontent.com/unclehowell/datro/d1311b259ca4cb494b87960d4d1e0624e8186284/apps/email/data/mail-index.json";
-const PAGE_URL = RAW_BASE + "/index.html";
+const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/110864dbaab4492254a9c7046f0699995f39bd1a/apps/email/index.html";
 const TEXT_HOST = "wayback.bucklerfamily.estate";
 const API_VERSION = "2.0.0";
 
@@ -87,7 +87,12 @@ async function limitedMap(items, concurrency, fn) {
 }
 function matchedSnippet(text, query, radius) {
   const body = String(text || "").replace(/\\r/g, "");
-  const idx = body.toLowerCase().indexOf(query.toLowerCase());
+  let idx = body.toLowerCase().indexOf(query.toLowerCase());
+  if (idx < 0) {
+    const terms = normalize(query).split(" ").filter(Boolean);
+    const positions = terms.map(term => body.toLowerCase().indexOf(term)).filter(pos => pos >= 0);
+    idx = positions.length ? Math.min(...positions) : -1;
+  }
   if (idx < 0) return body.slice(0, 260);
   const start = Math.max(0, idx - (radius || 100));
   const end = Math.min(body.length, idx + query.length + (radius || 160));
@@ -201,8 +206,13 @@ export default {
     const m = await loadManifest();
     const checks = await limitedMap(m.records, 5, async record => {
       const text = await loadRecordText(record);
-      const meta = (record.subject+" "+record.name+" "+record.category).toLowerCase();
-      const matched = text.toLowerCase().includes(q.toLowerCase()) || meta.includes(q.toLowerCase());
+      const queryLower = q.toLowerCase();
+      const normalizedQuery = normalize(q);
+      const haystack = normalize(text+" "+record.subject+" "+record.name+" "+record.category);
+      const terms = normalizedQuery.split(" ").filter(Boolean);
+      const matched = text.toLowerCase().includes(queryLower) ||
+        haystack.includes(normalizedQuery) ||
+        (terms.length > 1 && terms.every(term => haystack.includes(term)));
       if (!matched) return null;
       return {...publicRecord(record),snippet:matchedSnippet(text,q,110)};
     });
