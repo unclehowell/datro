@@ -26,6 +26,12 @@ This is a reviewed public-source subset, not a claim that every FOI/EIR email ev
 
 The Worker reads the catalogue from an immutable GitHub commit and retrieves individual public source texts from the active DATRO archive. It only proxies HTTPS source URLs on `wayback.bucklerfamily.estate/text/` that are listed in the curated manifest. There is no Gmail sign-in, mailbox credential, email sending/receiving, or write API.
 
+## Public email deep links
+
+Disclosure-chart links use `/reference/<16-character-thread-id>` on the public archive and carry the chart's title, displayed date, correspondent and case reference as lookup hints. The archive searches its curated source catalogue; when it finds a matching public source record, it opens the containing public thread and scrolls to a permanent message anchor. Anchors use the preserved email `Date` header when parseable, fall back to the catalogue date when only that is known, and use an explicit `undated` marker otherwise. Each archived message also exposes a permalink next to its original-source link.
+
+A chart reference ID is not treated as an email-archive record ID. A search hit means the public source matches the case reference; it does not establish that both systems' IDs are identical. If no source record matches, the page says so and does not redirect visitors to a private Gmail mailbox or substitute an unrelated email. To make that reference open the actual message, add and review its public source text and metadata in `data/mail-index.json` before deployment.
+
 ## API for agents and crawlers
 
 All endpoints below are read-only GET endpoints and return JSON unless noted. CORS allows public read-only access.
