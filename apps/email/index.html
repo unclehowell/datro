@@ -135,7 +135,8 @@ function renderList(){
 }
 async function getMessage(r){
  if(messageCache.has(r.id))return messageCache.get(r.id);
- const promise=fetch('/api/message?id='+encodeURIComponent(r.id),{headers:{'Accept':'application/json'}}).then(async res=>{if(!res.ok)throw new Error('Archive source returned '+res.status);const data=await res.json();return data.text||'';});
+ const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),20000);
+ const promise=fetch('/api/message?id='+encodeURIComponent(r.id),{headers:{'Accept':'application/json'},signal:controller.signal}).then(async res=>{let data={};try{data=await res.json();}catch(e){}if(!res.ok)throw new Error((data.error||'Archive source returned '+res.status)+(data.detail?': '+data.detail:''));return typeof data.text==='string'?data.text:'';}).catch(e=>{if(e.name==='AbortError')throw new Error('Timed out waiting for the archive. Open the original source link below.');throw e;}).finally(()=>clearTimeout(timer));
  messageCache.set(r.id,promise);
  try{return await promise;}catch(e){messageCache.delete(r.id);throw e;}
 }
@@ -168,7 +169,7 @@ async function openThread(t, pushHistory){
  actions.append(allWiki,sourceBtn,copyBtn,embedBtn);
  const reader=$('reader-scroll');reader.replaceChildren();const loading=document.createElement('div');loading.className='message-loading';loading.textContent='Loading '+t.items.length+' archived source record(s)…';reader.appendChild(loading);
  $('thread-details').open=false;$('thread-summary').textContent='Building thread description from the indexed records…';
- const results=await Promise.all(t.items.map(async r=>{try{return {record:r,text:await getMessage(r)};}catch(e){return {record:r,error:String(e)};}}));
+ const results=await Promise.all(t.items.map(async r=>{try{return {record:r,text:await getMessage(r)};}catch(e){return {record:r,error:e&&e.message?e.message:String(e)};}}));
  const loaded=results.filter(x=>!x.error);const errors=results.filter(x=>x.error);
  reader.replaceChildren();
  loaded.forEach((obj,i)=>{
@@ -179,7 +180,7 @@ async function openThread(t, pushHistory){
   const link=document.createElement('a');link.href=obj.record.path;link.target='_blank';link.rel='noopener noreferrer';link.textContent='open original archived text';meta.appendChild(link);head.append(name,meta);
   const body=document.createElement('pre');body.className='message-body';body.textContent=obj.text||'[The archive source returned an empty record.]';card.append(head,body);reader.appendChild(card);
  });
- errors.forEach(obj=>{const d=document.createElement('div');d.className='message-card';d.textContent='Could not load '+obj.record.name+': '+obj.error;reader.appendChild(d);});
+ errors.forEach(obj=>{const d=document.createElement('article');d.className='message-card';const head=document.createElement('div');head.className='message-head';const name=document.createElement('div');name.className='message-title';name.textContent='Could not load archived text: '+obj.record.name;const detail=document.createElement('div');detail.className='message-source';detail.textContent=String(obj.error||'Unknown archive error');const link=document.createElement('a');link.href=obj.record.path;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Open original public source ↗';detail.append(document.createTextNode(' · '),link);head.append(name,detail);d.appendChild(head);reader.appendChild(d);});
  if(!loaded.length&&!errors.length){const d=document.createElement('div');d.className='empty-list';d.textContent='No source records are attached to this conversation.';reader.appendChild(d);}
  reader.scrollTop=0;
  const participants=new Set(), dates=new Set(), snippets=[];
