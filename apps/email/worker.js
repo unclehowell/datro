@@ -21,12 +21,12 @@ function json(data, status) {
 }
 function normalize(value) {
   return String(value || "").toLowerCase()
-    .replace(/^(?:re\\s*[:_\\-]?\\s*)+/i, "")
-    .replace(/\\.(txt|eml|html?)$/i, "")
+    .replace(/^(?:re\s*[:_\-]?\s*)+/i, "")
+    .replace(/\.(txt|eml|html?)$/i, "")
     .replace(/[^a-z0-9]+/g, " ").trim();
 }
 function slugFor(record) {
-  return normalize(record.subject || record.name).replace(/\\s+/g, "-").slice(0, 140);
+  return normalize(record.subject || record.name).replace(/\s+/g, "-").slice(0, 140);
 }
 function publicRecord(record) {
   return {
