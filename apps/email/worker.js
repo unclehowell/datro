@@ -1,5 +1,5 @@
 const RAW_BASE = "https://raw.githubusercontent.com/unclehowell/datro/email-archive/apps/email";
-const MANIFEST_URL = RAW_BASE + "/data/mail-index.json";
+const MANIFEST_URL = "https://raw.githubusercontent.com/unclehowell/datro/05e8d86e6e4838a225084341fe59ca457881173c/apps/email/data/mail-index.json";
 const PAGE_URL = RAW_BASE + "/index.html";
 const TEXT_HOST = "wayback.bucklerfamily.estate";
 
