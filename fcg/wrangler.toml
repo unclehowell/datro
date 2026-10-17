@@ -1,0 +1,14 @@
+name = "fcg-wp"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+ENVIRONMENT = "production"
+SITE_TITLE = "FCG Edge CMS"
+WP_SOURCE_URL = "https://greathousefarmwiki.wordpress.com"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "fcg-wp-d1"
+database_id = "a15aedf1-a4d3-49fe-bd28-c2974c323b96"
