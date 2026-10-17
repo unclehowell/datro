@@ -684,11 +684,10 @@ sc('VIII', 'ghf-20260929-1', '2026-09-29', '29 September – 5 October 2026', "A
    [ARCH, w('/where-things-stand/', 'Where Things Stand'),
     w('/records-access-chronology/foi-reply-register/ghf-e106-r33-amgueddfa-cymru-reply-further-collections-search-following-8-september-2026-foi/', 'Museum Wales reply (GHF-E106-R33)', 'Official correspondence')],
    aliases=['ghf-20261005-1'])
-sc('VIII', 'ghf-20261006-1', '2026-10-06', 'September – October 2026', "Publication of the record", 'Great House Farm Wiki', 'A',
-   'Analysis',
-   "September–October 2026: the family publish the documents and press cuttings on the Great House Farm Wiki, with a legal review.",
-   [LEGAL, w('/', 'Great House Farm Wiki — Main Page'), w('/evidence-library/', 'Evidence Library'),
-    w('/evidence-library/press-archive-transcripts/', 'Press Archive — Newspaper Transcripts'), w('/evidence-library/press-articles-index/', 'Press Articles Index')],
+sc('VIII', 'ghf-20261006-1', '2026-10-06', 'September – October 2026', "HER source-file digitisation and publication", 'Heneb / Archwilio', 'A',
+   'Official correspondence',
+   "The public HER entry GGAT02038s already referred to H. J. Thomas's 1974 survey and cited R. F. Suggett's December 1988 note. Following the family's September 2026 records request, Heneb reportedly stated on 14 October that the underlying source file had been digitised and uploaded to Archwilio as PDFs in the sources section. Heneb responded to the schedule of records on 16 October. This distinguishes the earlier public citation from the later availability of the underlying source-file material; it does not by itself establish concealment or what the Strasbourg Commission received.",
+   [HER, LEGAL, w('/evidence-library/ghf-e183-heneb-her-source-file-request-and-replies-september-october-2026/', 'GHF-E183 — Heneb / HER source-file request and replies, September–October 2026', 'Evidence catalogue'), w('/evidence-library/ghf-e184-heneb-schedule-of-records-and-16-october-response/', 'GHF-E184 — Heneb schedule of records and 16 October response', 'Evidence catalogue'), w('/evidence-library/ghf-e145-echr-application-14464-88-and-commission-decision-14-april-1989/', 'GHF-E145 — ECHR application 14464/88 and Commission decision, 14 April 1989', 'Evidence catalogue')],
    aliases=['ghf-20260922-1', 'ghf-20261003-1'])
 
 # ---------------------------------------------------------------- STATING THE OBVIOUS
