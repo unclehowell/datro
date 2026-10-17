@@ -1,6 +1,6 @@
 const RAW_BASE = "https://raw.githubusercontent.com/unclehowell/datro/email-archive/apps/email";
 const MANIFEST_URL = "https://raw.githubusercontent.com/unclehowell/datro/3ea056f2dc033cffe85cf4101cc6dd20e93e3cae/apps/email/data/mail-index.json";
-const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/110864dbaab4492254a9c7046f0699995f39bd1a/apps/email/index.html";
+const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/dc343eac7d2dec92b00f81c947b762b1f97af901/apps/email/index.html";
 const TEXT_HOST = "wayback.bucklerfamily.estate";
 const API_VERSION = "2.0.0";
 
@@ -176,7 +176,10 @@ export default {
     const m = await loadManifest();
     const group = m.records.filter(x => slugFor(x) === slug);
     if (!group.length) return json({error:"No in-scope thread matches that slug",availableSlugs:Array.from(new Set(m.records.map(slugFor)))},404);
-    const messages = await limitedMap(group, 4, async record => ({...publicRecord(record),text:await loadRecordText(record)}));
+    const messages = await limitedMap(group, 4, async record => {
+      try { return {...publicRecord(record),text:await loadRecordText(record)}; }
+      catch(error) { return {...publicRecord(record),error:String(error && error.message || error)}; }
+    });
     return json({subject:group[0].subject,slug,count:group.length,scope:m.scope,messages});
    } catch(e) { return json({error:"Could not load the public FOI/EIR thread",detail:String(e)},502); }
   }
@@ -186,7 +189,10 @@ export default {
    try {
     const m = await loadManifest();
     if (!includeText) return json({...m,apiVersion:API_VERSION,records:m.records.map(publicRecord)});
-    const records = await limitedMap(m.records, 5, async record => ({...publicRecord(record),text:await loadRecordText(record)}));
+    const records = await limitedMap(m.records, 5, async record => {
+      try { return {...publicRecord(record),text:await loadRecordText(record)}; }
+      catch(error) { return {...publicRecord(record),error:String(error && error.message || error)}; }
+    });
     const successes = records.filter(x => typeof x.text === "string").length;
     return json({
       archiveTitle:m.archiveTitle,apiVersion:API_VERSION,manifestVersion:m.manifestVersion,
