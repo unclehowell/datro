@@ -796,7 +796,7 @@ def main():
     if 'id="agent-access"' not in index_html:
         index_html = index_html.replace(
             "</head>",
-            '<link rel="alternate" type="application/json" href="/agent-index.json" title="Machine-readable meeting toolkit index">\\n'
+            '<link rel="alternate" type="application/json" href="/agent-index.json" title="Machine-readable meeting toolkit index">\n'
             '<link rel="alternate" type="text/plain" href="/llms.txt" title="Agent reading guide">\\n</head>',
             1,
         )
