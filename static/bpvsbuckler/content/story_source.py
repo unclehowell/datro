@@ -361,8 +361,8 @@ sc('IV', 'ghf-19720725-1', '1972-07-25', '1970 – 72', "Village green and plann
    ledger={'A': 'Freehold: the Williamses (Mary in the house) · land beside Leckwith Road registered as village green VG41 (1970)'})
 sc('IV', 'ghf-19740101-1', '1974-01-01', '1974', "Royal Commission survey", 'Great House — interior', 'A',
    'Heritage record',
-   "H. J. Thomas surveys the ground floor for the Royal Commission. The house \"remained partially recorded because of problems of access created by an ownership dispute\".",
-   [HER, ARCH])
+   "H. J. Thomas's 1974 survey and R. F. Suggett's December 1988 note are separate records. The HER entry says the house remained partially recorded because access was restricted by an ownership dispute. The survey predates demolition on 6 December 1988; Suggett's note postdates it. The evidence currently identified does not establish that listing was legally required, that demolition was unlawful, or what was submitted to the European Commission of Human Rights.",
+   [HER, ARCH, w('/evidence-library/ghf-e137-1974-h-j-thomas-rcahmw-architectural-survey-and-floor-plan/', 'GHF-E137 — 1974 H. J. Thomas / RCAHMW architectural survey and floor plan', 'Evidence catalogue'), w('/evidence-library/ghf-e183-heneb-her-source-file-request-and-replies-september-october-2026/', 'GHF-E183 — Heneb / HER source-file request and replies, September–October 2026', 'Evidence catalogue'), w('/evidence-library/ghf-e145-echr-application-14464-88-and-commission-decision-14-april-1989/', 'GHF-E145 — ECHR application 14464/88 and Commission decision, 14 April 1989', 'Evidence catalogue')])
 sc('IV', 'ghf-19740415-1', '1974-04-15', '15 April 1974', "Open day", 'Great House Farm', 'A',
    'Newspaper',
    "On 15 April 1974 Mary opens the farmhouse to the public. The Daily Telegraph reports her saying ownership has been disputed for 25 years and her solicitors tell her she has a valid claim.",
