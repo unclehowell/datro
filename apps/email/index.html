@@ -109,6 +109,41 @@ function threadFromCurrentUrl(){
  try{slug=decodeURIComponent(slug);}catch(e){}
  return threads.find(t=>threadSlug(t)===slug) || null;
 }
+function referenceFromCurrentUrl(){
+ const match = window.location.pathname.match(/^\/reference\/([a-f0-9]{16})\/?$/i);
+ if(!match)return null;
+ const p=new URLSearchParams(window.location.search);
+ return {
+  id:match[1],
+  title:(p.get('title')||'').trim(),
+  date:(p.get('date')||'').trim(),
+  correspondent:(p.get('correspondent')||'').trim(),
+  caseRef:(p.get('caseRef')||'').trim(),
+  query:(p.get('query')||'').trim()
+ };
+}
+function messageAnchor(record,text){
+ let stamp='';
+ if(typeof text==='string'&&text){
+  const h=extractHeaders(text);
+  for(const raw of (h.date||[])){
+   const parsed=Date.parse(raw);
+   if(Number.isFinite(parsed)){
+    stamp=new Date(parsed).toISOString().replace(/\.\d{3}Z$/,'Z').replace(/:/g,'-');
+    break;
+   }
+  }
+ }
+ if(!stamp&&/^\d{4}-\d{2}-\d{2}$/.test(String(record.date||''))) stamp=record.date;
+ return 'message-'+(stamp||'undated')+'-'+record.id;
+}
+function scrollToMessageHash(){
+ let id=window.location.hash.slice(1);
+ try{id=decodeURIComponent(id);}catch(e){}
+ if(!id||!id.startsWith('message-'))return;
+ const target=document.getElementById(id);
+ if(target)target.scrollIntoView({behavior:'auto',block:'start'});
+}
 function copyText(text){
  if(navigator.clipboard && navigator.clipboard.writeText){
   navigator.clipboard.writeText(text).then(()=>{const live=document.querySelector('.copy-status');if(live)live.textContent='Copied';}).catch(()=>window.prompt('Copy this text:',text));
@@ -211,20 +246,34 @@ async function openThread(t, pushHistory){
  actions.append(allWiki,sourceBtn,copyBtn,embedBtn);
  const reader=$('reader-scroll');reader.replaceChildren();
  const bodyById=new Map();
+ const permalinkById=new Map();
  // Render every message card immediately. A slow source must not leave the
  // entire reading pane blank while other source records are still loading.
  t.items.forEach(r=>{
-  const card=document.createElement('article');card.className='message-card';
+  const card=document.createElement('article');card.className='message-card';card.id=messageAnchor(r);
   const head=document.createElement('div');head.className='message-head';
   const name=document.createElement('div');name.className='message-title';name.textContent=r.name;
   const meta=document.createElement('div');meta.className='message-source';meta.textContent=(r.date?fmtDate(r.date)+' · ':'Date not indexed · ')+'Evidence v'+(r.evidenceVersion||'1.0.0')+' · Source: ';
   const link=document.createElement('a');link.href=r.path;link.target='_blank';link.rel='noopener noreferrer';link.textContent='open original archived text';meta.appendChild(link);
+  meta.appendChild(document.createTextNode(' · '));
+  const permalink=document.createElement('a');permalink.href=threadUrl(t,false)+'#'+card.id;permalink.textContent='permalink to this message';permalink.setAttribute('aria-label','Permanent link to '+r.name);meta.appendChild(permalink);permalinkById.set(r.id,permalink);
   const body=document.createElement('pre');body.className='message-body';body.textContent='Loading archived text…';
   card.append(head,body);reader.appendChild(card);bodyById.set(r.id,body);
  });
  $('thread-details').open=false;$('thread-summary').textContent='Building thread description from the indexed records…';
  const results=await Promise.all(t.items.map(async r=>{
-  try { const text=await getMessage(r); const body=bodyById.get(r.id); if(body)body.textContent=text||'[The archive source returned an empty record.]'; return {record:r,text:text}; }
+  try {
+   const text=await getMessage(r);
+   const body=bodyById.get(r.id);
+   if(body)body.textContent=text||'[The archive source returned an empty record.]';
+   const card=body&&body.closest('.message-card');
+   if(card){
+    card.id=messageAnchor(r,text);
+    const permalink=permalinkById.get(r.id);
+    if(permalink)permalink.href=threadUrl(t,false)+'#'+card.id;
+   }
+   return {record:r,text:text};
+  }
   catch(e) { const message=e&&e.message?e.message:String(e); const body=bodyById.get(r.id); if(body)body.textContent='Message text could not be loaded. '+message+'\n\nUse the original source link above to read the archived record.'; return {record:r,error:message}; }
  }));
  const loaded=results.filter(x=>!x.error);const errors=results.filter(x=>x.error);
@@ -257,9 +306,99 @@ async function doFullTextSearch(q){
 $('search-form').addEventListener('submit',async e=>{e.preventDefault();searchTerm=$('search').value.trim();fullTextMatches=null;renderList();if(searchTerm.length>=2)await doFullTextSearch(searchTerm);});
 $('search').addEventListener('input',()=>{searchTerm=$('search').value.trim();fullTextMatches=null;renderList();});
 document.querySelectorAll('.navbtn').forEach(b=>b.addEventListener('click',()=>{folder=b.dataset.folder;document.querySelectorAll('.navbtn').forEach(x=>x.classList.toggle('active',x===b));renderList();}));
+function externalSearchCandidates(ref){
+ const candidates=[];
+ const add=(value,kind)=>{
+  const s=String(value||'').trim().replace(/\s+/g,' ');
+  if(s.length>=2&&s.length<=160&&!candidates.some(x=>x.text.toLowerCase()===s.toLowerCase()))candidates.push({text:s,kind});
+ };
+ const caseRef=ref.caseRef||ref.query;
+ if(caseRef){
+  caseRef.split(/[,;]|\s+and\s+/i).forEach(s=>add(s,'reference'));
+  add(caseRef,'reference');
+  const codes=caseRef.match(/\b(?:ATISN\s*\d+|FOI\s*\/?\s*\d{4}\/\d+|F\d{6}|RC\d{2}-\d{4}|WA\d{6}|N\d{6}[A-Z]{1,3}|DPR\d{4}\/\d+|CAS-\d{6}-[A-Z0-9]+|\d{6,8})\b/gi)||[];
+  codes.forEach(s=>add(s,'reference'));
+ }
+ add(ref.title,'title');
+ return candidates.slice(0,8);
+}
+function showReferenceLanding(ref,candidates,note){
+ selectedThread=null;
+ $('reader-empty').hidden=true;$('reader-content').hidden=false;$('reader-content').style.display='flex';
+ document.title=(ref.title||'Public email archive reference')+' — Great House Farm Mail';
+ $('reader-title').textContent=ref.title||'Public email archive reference';
+ $('reader-tags').replaceChildren();
+ const addTag=(value,blue)=>{
+  if(!value)return;
+  const tag=document.createElement('span');tag.className='tag'+(blue?' blue':'');tag.textContent=value;$('reader-tags').appendChild(tag);
+ };
+ addTag('Public archive reference',true);addTag(ref.date||'Date not stated');addTag('Reference '+ref.id);
+ const actions=$('reader-actions');actions.replaceChildren();
+ const browse=document.createElement('a');browse.href='/';browse.className='btn';browse.textContent='Browse public archive';actions.appendChild(browse);
+ const reader=$('reader-scroll');reader.replaceChildren();
+ const card=document.createElement('article');card.className='message-card';
+ const head=document.createElement('div');head.className='message-head';
+ const heading=document.createElement('div');heading.className='message-title';heading.textContent='Archive lookup for this disclosure-chart reference';
+ const meta=document.createElement('div');meta.className='message-source';meta.textContent='Reference ID: '+ref.id;
+ head.append(heading,meta);
+ const body=document.createElement('div');body.className='message-body';body.textContent=note;
+ card.append(head,body);reader.appendChild(card);
+ const metadata=document.createElement('article');metadata.className='message-card';
+ const mh=document.createElement('div');mh.className='message-head';const mt=document.createElement('div');mt.className='message-title';mt.textContent='Details supplied by the disclosure chart';mh.appendChild(mt);
+ const mb=document.createElement('div');mb.className='message-body';const rows=[
+  ['Title',ref.title],['Date shown on chart',ref.date],['Correspondent',ref.correspondent],['Reference / subject',ref.caseRef]
+ ].filter(x=>x[1]);
+ mb.textContent=rows.map(x=>x[0]+': '+x[1]).join('\n');
+ metadata.append(mh,mb);reader.appendChild(metadata);
+ if(candidates&&candidates.length){
+  const listCard=document.createElement('article');listCard.className='message-card';
+  const lh=document.createElement('div');lh.className='message-head';const lt=document.createElement('div');lt.className='message-title';lt.textContent='Search this archive by reference';lh.appendChild(lt);
+  const list=document.createElement('div');list.className='message-body';
+  candidates.slice(0,5).forEach((candidate,index)=>{
+   if(index)list.appendChild(document.createElement('br'));
+   const a=document.createElement('a');a.href='/api/search?q='+encodeURIComponent(candidate.text);a.textContent='Search for “'+candidate.text+'”';a.target='_blank';a.rel='noopener noreferrer';list.appendChild(a);
+  });
+  listCard.append(lh,list);reader.appendChild(listCard);
+ }
+ $('thread-details').open=false;$('thread-summary').textContent='Reference metadata only; no original message text is being substituted for an email.';
+ $('thread-summary').replaceChildren();
+ const p=document.createElement('p');p.textContent='This is a public archive lookup, not the original message. If no source match is available, the original email must be added to the curated public archive before it can be displayed here.';$('thread-summary').appendChild(p);
+}
+async function openExternalReference(ref){
+ const candidates=externalSearchCandidates(ref);
+ showReferenceLanding(ref,candidates,'Searching the public archive for a matching source message…');
+ for(const candidate of candidates){
+  try{
+   const data=await agentApi('/api/search?q='+encodeURIComponent(candidate.text));
+   const found=data.records||[];
+   if(!found.length)continue;
+   const ranked=found.slice().sort((a,b)=>{
+    const q=normalize(candidate.text);
+    const score=x=>{
+     const subject=normalize(x.subject||'');const name=normalize(x.name||'');
+     return (subject===q?100:subject.includes(q)?80:0)+(name.includes(q)?25:0);
+    };
+    return score(b)-score(a);
+   });
+   const record=ranked[0];
+   const targetThread=threads.find(t=>t.items.some(item=>item.id===record.id));
+   if(!targetThread)continue;
+   await openThread(targetThread,false);
+   const card=Array.from(document.querySelectorAll('.message-card')).find(el=>el.id.endsWith('-'+record.id));
+   if(card){
+    try{window.history.replaceState({emailThread:targetThread.key,emailRecord:record.id},'',threadUrl(targetThread,false)+'#'+card.id);}catch(e){}
+    card.scrollIntoView({behavior:'auto',block:'start'});
+   }
+   const notice=document.createElement('p');notice.className='message-source';notice.textContent='Opened a public archive source matching reference “'+candidate.text+'”. This is a match to the indexed source, not a claim that the Gmail thread ID and archive record ID are identical.';
+   $('reader-tags').appendChild(notice);
+   return;
+  }catch(e){}
+ }
+ showReferenceLanding(ref,candidates,'No source email matching this reference was found in the current curated public archive ('+allRecords.length+' indexed source records). No private mailbox link is provided; the original message must be added to the public archive to make its full text available here.');
+}
 window.addEventListener('popstate',()=>{
  const linked=threadFromCurrentUrl();
- if(linked){openThread(linked,false);}
+ if(linked){openThread(linked,false).then(scrollToMessageHash).catch(err=>showReaderFatal(err,linked));}
  else{
   selectedThread=null;renderList();$('reader-content').hidden=true;$('reader-empty').hidden=false;document.title='Great House Farm FOI & EIR Mail Archive';
   if(embedMode){$('reader-empty').querySelector('h2').textContent='Thread link required';$('reader-empty').querySelector('p').textContent='Open a specific /thread/<id>?embed=1 URL to display an email evidence preview.';}
@@ -319,7 +458,9 @@ fetch('/api/records').then(async r=>{if(!r.ok)throw new Error('Catalogue respons
  manifest=data;allRecords=data.records||[];$('manifest-version').textContent=data.manifestVersion||'1.0.0';threads=buildThreads(allRecords);updateCounts();renderList();
  $('list-subtitle').textContent=threads.length+' FOI/EIR groups · '+allRecords.length+' curated public source records · 17 Oct 2024–17 Oct 2026';
  const linked=threadFromCurrentUrl();
- if(linked){openThread(linked,false);}
+ const externalRef=referenceFromCurrentUrl();
+ if(linked){openThread(linked,false).then(scrollToMessageHash).catch(err=>showReaderFatal(err,linked));}
+ else if(externalRef){openExternalReference(externalRef).catch(err=>showReferenceLanding(externalRef,externalSearchCandidates(externalRef),'Archive lookup failed: '+String(err&&err.message||err)));}
  else if(embedMode){
   $('reader-empty').querySelector('h2').textContent='Thread link required';
   $('reader-empty').querySelector('p').textContent='This preview needs a specific /thread/<id>?embed=1 URL. Reopen the thread from the archive and copy its embed code.';
