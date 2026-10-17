@@ -147,6 +147,8 @@ function extractHeaders(text){
 async function openThread(t, pushHistory){
  if(pushHistory !== false) window.history.pushState({emailThread:t.key},'',threadUrl(t,embedMode));
  selectedThread=t;renderList();
+ document.title = t.subject + ' — Great House Farm Mail';
+ if(window.matchMedia('(max-width:760px)').matches) $('reader-panel').scrollIntoView({behavior:'auto',block:'start'});
  $('reader-empty').hidden=true;$('reader-content').hidden=false;$('reader-content').style.display='flex';
  $('reader-title').textContent=t.subject;
  $('reader-tags').replaceChildren();
@@ -166,8 +168,8 @@ async function openThread(t, pushHistory){
  actions.append(allWiki,sourceBtn,copyBtn,embedBtn);
  const reader=$('reader-scroll');reader.replaceChildren();const loading=document.createElement('div');loading.className='message-loading';loading.textContent='Loading '+t.items.length+' archived source record(s)…';reader.appendChild(loading);
  $('thread-details').open=false;$('thread-summary').textContent='Building thread description from the indexed records…';
- const loaded=[];const errors=[];
- for(const r of t.items){try{loaded.push({record:r,text:await getMessage(r)});}catch(e){errors.push({record:r,error:String(e)});}}
+ const results=await Promise.all(t.items.map(async r=>{try{return {record:r,text:await getMessage(r)};}catch(e){return {record:r,error:String(e)};}}));
+ const loaded=results.filter(x=>!x.error);const errors=results.filter(x=>x.error);
  reader.replaceChildren();
  loaded.forEach((obj,i)=>{
   const card=document.createElement('article');card.className='message-card';
@@ -211,7 +213,7 @@ window.addEventListener('popstate',()=>{
  const linked=threadFromCurrentUrl();
  if(linked){openThread(linked,false);}
  else{
-  selectedThread=null;renderList();$('reader-content').hidden=true;$('reader-empty').hidden=false;
+  selectedThread=null;renderList();$('reader-content').hidden=true;$('reader-empty').hidden=false;document.title='Great House Farm Mail Archive';
   if(embedMode){$('reader-empty').querySelector('h2').textContent='Thread link required';$('reader-empty').querySelector('p').textContent='Open a specific /thread/<id>?embed=1 URL to display an email evidence preview.';}
  }
 });
