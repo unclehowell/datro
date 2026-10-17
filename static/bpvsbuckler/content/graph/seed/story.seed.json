@@ -487,6 +487,62 @@
    ]
   },
   {
+   "id": "ghf-15470620-1",
+   "act": "P",
+   "date": "1547-06-20",
+   "when": "20 June 1547",
+   "title": "A 1,000-year lease of Cydwin",
+   "place": "Manor of Llandough — Cydwin",
+   "parcel": "?",
+   "basis": "Archival catalogue",
+   "narration": "The National Library of Wales catalogue describes a lease for 1,000 years dated 20 June 1547 from Sir George Herbert of Swansea to Edmund Vaughan of a farm called Cydwin in the manor of Llandough; the record names fields. This long leasehold interest predates the later Bute estate narrative. The affirmative Cedwyn thesis asks whether those named fields belong to the older Cydfin/Ty Mawr holding later catalogued as a 107-acre farm, and how that interest passed from the Herbert/Vaughan line into subsequent estate records. The instrument and field boundaries must be examined before the lease can be equated with the whole Great House site.",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Archive catalogue",
+     "title": "National Library of Wales, L 11 — assignment of a lease for 1,000 years of Cydwin in the manor of Llandough",
+     "url": "https://archifau.llyfrgell.cymru/index.php/assignment-of-lease-for-1000-years-of-cydwin-in-manor-of-llandough"
+    },
+    {
+     "type": "Estate papers",
+     "title": "National Library of Wales, Bute Estate Records D 219 — Llandough manorial leases and agreements",
+     "url": "https://archives.library.wales/index.php/llandough-manorial-leases-and-agreements"
+    },
+    {
+     "type": "Wiki page",
+     "title": "GHF-E178 — 1547 Cydwin lease lead",
+     "url": "https://greathousefarmwiki.wordpress.com/ghf-e173-cedwyn-cwm-cedwyn-place-name-notes/ghf-e178-1547-sir-george-herbert-grants-vaughan-a-1000-year-lease-of-cydwin/"
+    },
+    {
+     "type": "Wiki page",
+     "title": "Llandough (Penarth): Cydfin / Tŷ Mawr and pre-1877 manorial evidence",
+     "url": "https://greathousefarmwiki.wordpress.com/anomalies-register/llandough-penarth-cydfin-ty-mawr-manorial-evidence/"
+    },
+    {
+     "type": "Research annex",
+     "title": "Cedwyn Estate — title-chain reconstruction",
+     "url": "https://bpvsbuckler.bucklerfamily.estate/research/cedwyn-estate-title-chain.html"
+    }
+   ],
+   "image": null,
+   "aliases": [],
+   "no": 4,
+   "ref": "P.4",
+   "cast": [
+    "bute"
+   ],
+   "received": "The Bute estate is the beginning of the land's title.",
+   "received_words": [],
+   "known": "The 1547 NLW catalogue entry names a Cydwin farm in the manor of Llandough and a 1,000-year lease from Sir George Herbert to Edmond Vaughan. That is a specific pre-Bute interest and an archival route to follow. It does not yet identify every field with the later Great House boundaries; the lease and its named fields must be compared with D 219 and historic plans.",
+   "ledger": [
+    [
+     "W",
+     "Lordship of the manor: Sir George Herbert (by 1545) and his family"
+    ]
+   ],
+   "moved": []
+  },
+  {
    "id": "ghf-15520101-1",
    "act": "P",
    "date": "1552-01-01",
@@ -516,8 +572,8 @@
     "ghf-15360101-1",
     "ghf-14440101-1"
    ],
-   "no": 4,
-   "ref": "P.4",
+   "no": 5,
+   "ref": "P.5",
    "cast": [
     "bute"
    ],
@@ -564,8 +620,8 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 5,
-   "ref": "P.5",
+   "no": 6,
+   "ref": "P.6",
    "cast": [],
    "received": "One chain of owners: the Herberts, then the Vaughans, then Bute.",
    "received_words": [],
@@ -589,7 +645,7 @@
    "place": "Great House Farm",
    "parcel": "A",
    "basis": "Mary's statement",
-   "narration": "Mary Williams's statement (c. 1974) records her family at Great House from 1667.",
+   "narration": "Mary Williams's c.1974 statement says her family had lived and farmed at Great House since 1667. A 1974 newspaper report also attributes to her a claim that her family first acquired Tŷ Mawr around that date. The affirmative Cedwyn thesis treats 1667 as the opening of the family's own estate history and tests that claim against the Cydwin/Cydfin lease and farm-name records. The surviving statement and press report support the family's account; a 1667 conveyance has not yet been identified.",
    "case": null,
    "evidence": [
     {
@@ -607,8 +663,8 @@
    "aliases": [
     "ghf-16770101-1"
    ],
-   "no": 6,
-   "ref": "P.6",
+   "no": 7,
+   "ref": "P.7",
    "cast": [
     "mary"
    ],
@@ -619,7 +675,7 @@
      "The estate's description of the family, repeated in every later account."
     ]
    ],
-   "known": "For more than three hundred years one family lived at Great House, where the manor's courts sat. Generation after generation was born there, married there and died there. Mary's account is that her ancestors bought it. Whatever the estate's books called them, the Williamses were the people of the Great House. Not squatters. Not passing tenants. The family of the house.",
+   "known": "Mary's statement and the 1974 press report support the family's account of a connection with Great House from 1667 and treat it as a lineage claim, not a passing tenancy. The affirmative reconstruction now connects that claim to the older Cydwin/Cydfin/Ty Mawr lease records and asks whether later labels of tenancy concealed a longer-standing family interest. The surviving items do not themselves constitute a 1667 conveyance; the deed chain must be reconstructed from the leases, estate accounts, plans and the 1877/1928 evidence.",
    "ledger": [
     [
      "W",
@@ -631,6 +687,57 @@
    ]
   },
   {
+   "id": "ghf-17400213-1",
+   "act": "P",
+   "date": "1740-02-13",
+   "when": "13 February 1739/40",
+   "title": "Vaughan assigns the Cydwin lease",
+   "place": "Manor of Llandough — Cydwin",
+   "parcel": "?",
+   "basis": "Archival catalogue",
+   "narration": "The National Library of Wales catalogues an assignment dated 13 February 1739/40 by Edmond Vaughan of Llandough to Thomas Mathews of Llandaf of the 1,000-year Cydwin lease originally granted in 1547, for £1,066 13s. 4d. This is a documented transfer in the older lease chain and a concrete route for tracing who held the interest before Bute's later estate records. The next step is to match the named fields and follow subsequent assignments, rentals and conveyances into the Cydfin/Ty Mawr farm and the later parcels.",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Archive catalogue",
+     "title": "National Library of Wales, L 11 — assignment of a lease for 1,000 years of Cydwin in the manor of Llandough",
+     "url": "https://archifau.llyfrgell.cymru/index.php/assignment-of-lease-for-1000-years-of-cydwin-in-manor-of-llandough"
+    },
+    {
+     "type": "Estate papers",
+     "title": "National Library of Wales, Bute Estate Records D 219 — Llandough manorial leases and agreements",
+     "url": "https://archives.library.wales/index.php/llandough-manorial-leases-and-agreements"
+    },
+    {
+     "type": "Wiki page",
+     "title": "GHF-E179 — Cydfin / Ty Mawr names in Bute records",
+     "url": "https://greathousefarmwiki.wordpress.com/ghf-e173-cedwyn-cwm-cedwyn-place-name-notes/ghf-e179-1552-1824-bute-records-call-it-cedfin-cydfin-ken-fin-farm-or-ty-mawr-farm/"
+    },
+    {
+     "type": "Research annex",
+     "title": "Cedwyn Estate — title-chain reconstruction",
+     "url": "https://bpvsbuckler.bucklerfamily.estate/research/cedwyn-estate-title-chain.html"
+    }
+   ],
+   "image": null,
+   "aliases": [],
+   "no": 8,
+   "ref": "P.8",
+   "cast": [
+    "bute"
+   ],
+   "received": "The Vaughan lease chain has no relevance once later estate papers call the land Ty Mawr.",
+   "received_words": [],
+   "known": "The L 11 catalogue records Edmond Vaughan's 1739/40 assignment of the 1,000-year Cydwin lease to Thomas Mathews for £1,066 13s. 4d. The assignment offers a concrete transfer point for reconstructing the older interest. Follow its named fields and later assignments into the Cydfin/Ty Mawr records and the eventual Bute estate acquisition.",
+   "ledger": [
+    [
+     "W",
+     "Farm freehold: the Vaughans · lordship of the manor: the Herberts · in the house: the Williamses"
+    ]
+   ],
+   "moved": []
+  },
+  {
    "id": "ghf-18000101-1",
    "act": "P",
    "date": "1800-01-01",
@@ -639,7 +746,7 @@
    "place": "Great House",
    "parcel": "AB",
    "basis": "Heritage record",
-   "narration": "In 1793 the Earl of Bute buys the lordship of the manor of Llandough. Early in the 19th century the Bute Estate also acquires the freehold of Great House. From then the lordship and the farm are held by the same owner. The manorial courts of Llandough and Leckwith are held in the house.",
+   "narration": "The historical account places Bute's acquisition of the lordship of Llandough in 1793 and its acquisition of the Great House freehold in the early 19th century; the manorial courts of Llandough and Leckwith were held at the house. The missing control point is the instrument that carried the farm freehold from the Vaughan line into Bute's estate. The 1547 Cydwin lease, its 1739/40 assignment, and the D 219 record of Cydfin or Ty Mawr leases give the affirmative reconstruction a named chain to investigate alongside the manor's later ownership. A manorial interest, a long lease, and a farm freehold must be mapped separately before the later corporate titles can be treated as the originating chain for every parcel.",
    "case": null,
    "evidence": [
     {
@@ -678,14 +785,14 @@
     "ghf-18210101-1",
     "ghf-18240101-1"
    ],
-   "no": 7,
-   "ref": "P.7",
+   "no": 9,
+   "ref": "P.9",
    "cast": [
     "bute"
    ],
    "received": "Bute owned the farm, and everything after descends from Bute.",
    "received_words": [],
-   "known": "Bute held the lordship from 1793 and the farm freehold from the early 19th century: two interests, now in one hand. Bute owned the whole farm only until 1877. The house was the manor's court house.",
+   "known": "The historical account places the manorial lordship in Bute's hands from 1793 and the Great House farm freehold in the early 19th century. The deed that moved the farm freehold from the Vaughan line is the key missing control point. The L 11 lease assignment and D 219 farm records provide older property and tenure references against which Bute's acquisition, rentals and subsequent 1877 division must be tested. The house was also a centre for the Llandough and Leckwith manorial courts; that administrative role must not be confused with ownership of each parcel.",
    "ledger": [
     [
      "W",
@@ -723,8 +830,8 @@
    "aliases": [
     "ghf-18800101-1"
    ],
-   "no": 8,
-   "ref": "P.8",
+   "no": 10,
+   "ref": "P.10",
    "cast": [],
    "received": "It was always just a farm.",
    "received_words": [
@@ -779,7 +886,7 @@
    "aliases": [
     "ghf-18800101-2"
    ],
-   "no": 9,
+   "no": 11,
    "ref": "I.1",
    "cast": [
     "rcahmw"
@@ -801,6 +908,67 @@
    "moved": []
   },
   {
+   "id": "ghf-18700101-2",
+   "act": "I",
+   "date": "1870-01-02",
+   "when": "1870 — Pwllypant probate and estate papers",
+   "title": "A Williams estate bequest to Bute: tracing the land",
+   "place": "Pwllypant / Llandough title research",
+   "parcel": "?",
+   "basis": "Probate and estate catalogue leads",
+   "narration": "The National Library of Wales catalogue lists the 1870 will of William Evans Williams of Pwllypant as bequeathing his real and personal estate to the Marquis of Bute, and separately catalogues papers about his real and personal estate. The affirmative title inquiry is parcel-specific: did any land he owned, benefited from, or had let through Bute connect to the 33-acre Llandough Limeworks block or Great House Farm? The will's headline bequest does not identify those acres by itself. The family's research also points to a Clock Tower dispute and newspaper coverage said to complicate the relationship between Williams and Bute; the precise contemporary reports and wording must be located before using that dispute as proof of motive. Estate schedules, title deeds, rent books and the 1876–1912 limeworks accounts are the route to answer the question.",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Archive catalogue",
+     "title": "National Library of Wales, D242/17 — probate of the will of William Evans Williams of Pwllypant (1870)",
+     "url": "https://archives.library.wales/index.php/deeds-and-documents-relating-mainly-to-title-of-pwllypant-estate-including-copy-probate-of-will-of-david-evan%3Bisad?sf_culture=en"
+    },
+    {
+     "type": "Archive catalogue",
+     "title": "National Library of Wales, D258 — papers relating to the personal and real estates of William Evans Williams",
+     "url": "https://archives.library.wales/index.php/papers-relating-to-personal-and-real-estates-of-william-evans-williams-dec-including-account-of-aberdare-iron-co"
+    },
+    {
+     "type": "Historical context",
+     "title": "History Points — Former Pwllypant House, Caerphilly",
+     "url": "https://historypoints.org/index.php?page=former-pwllypant-house-caerphilly"
+    },
+    {
+     "type": "Wiki page",
+     "title": "Llandough Limeworks — the 33-acre block",
+     "url": "https://greathousefarmwiki.wordpress.com/llandough-limeworks/"
+    },
+    {
+     "type": "Wiki page",
+     "title": "The Bute Estate — unresolved early title",
+     "url": "https://greathousefarmwiki.wordpress.com/bute-estate/"
+    },
+    {
+     "type": "Research annex",
+     "title": "Cedwyn Estate — title-chain reconstruction",
+     "url": "https://bpvsbuckler.bucklerfamily.estate/research/cedwyn-estate-title-chain.html"
+    }
+   ],
+   "image": null,
+   "aliases": [],
+   "no": 12,
+   "ref": "I.2",
+   "cast": [
+    "bute"
+   ],
+   "received": "William Evans Williams left his fortune to Bute, so the land history is settled.",
+   "received_words": [],
+   "known": "The catalogued 1870 will is a lead to the estate's disposition, not a parcel schedule for Great House Farm. Test whether land or rights connected with Llandough's 33-acre limeworks block appear in William Evans Williams's title papers, rentals or correspondence. The reported Clock Tower dispute should be linked to its exact contemporary newspaper source before it is used to characterise the relationship.",
+   "ledger": [
+    [
+     "W",
+     "Lordship of the manor (1793) and farm freehold (early 19th century): the Bute Estate · tenants: the Williamses"
+    ]
+   ],
+   "moved": []
+  },
+  {
    "id": "ghf-18760101-1",
    "act": "I",
    "date": "1876-01-01",
@@ -809,7 +977,7 @@
    "place": "Llandough Limeworks",
    "parcel": "A",
    "basis": "Estate papers",
-   "narration": "The Bute Estate lets about 33 acres of the farm to the Llandough Limeworks, which work it until about 1912.",
+   "narration": "The Wiki's archive lead identifies about 33 acres used by the Llandough Limeworks from 1876 to about 1912, with Bute papers D153/4–8 to be obtained and inspected. The block's precise boundaries and title line remain to be matched to the 1877 plan and the estate schedules. For the Cedwyn reconstruction, this is a critical parcel-control point: identify who owned the freehold, who granted the quarrying rights, who received rent, and whether all four descriptions refer to the same acres.",
    "case": null,
    "evidence": [
     {
@@ -820,14 +988,14 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 10,
-   "ref": "I.2",
+   "no": 13,
+   "ref": "I.3",
    "cast": [
     "bute"
    ],
    "received": "Part of the farm let for quarrying.",
    "received_words": [],
-   "known": "The quarrying is the reason for the 1877 division, and its end in 1928 is the date the house passes to the family.",
+   "known": "The archive lead identifies a 33-acre quarrying block in Bute records from 1876 to about 1912, but its exact parcel and chain of authority need to be established from D153/4–8, the 1877 plan and the estate schedules. The key affirmative question is who held the underlying freehold and who merely let or administered the quarrying rights.",
    "ledger": [
     [
      "W",
@@ -883,8 +1051,8 @@
    "aliases": [
     "ghf-18771106-1"
    ],
-   "no": 11,
-   "ref": "I.3",
+   "no": 14,
+   "ref": "I.4",
    "cast": [
     "mary",
     "thomas",
@@ -929,8 +1097,8 @@
    ],
    "image": "/media/ghf-e090-n01-1891-farmyard-theft.jpg",
    "aliases": [],
-   "no": 12,
-   "ref": "I.4",
+   "no": 15,
+   "ref": "I.5",
    "cast": [
     "john"
    ],
@@ -970,8 +1138,8 @@
    ],
    "image": "/media/ghf-e090-n02-1897-marconi-lavernock.jpg",
    "aliases": [],
-   "no": 13,
-   "ref": "I.5",
+   "no": 16,
+   "ref": "I.6",
    "cast": [],
    "received": "An unproven family story.",
    "received_words": [],
@@ -1020,8 +1188,8 @@
    "aliases": [
     "ghf-19050223-1"
    ],
-   "no": 14,
-   "ref": "I.6",
+   "no": 17,
+   "ref": "I.7",
    "cast": [
     "mary",
     "john",
@@ -1076,8 +1244,8 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 15,
-   "ref": "I.7",
+   "no": 18,
+   "ref": "I.8",
    "cast": [
     "mary"
    ],
@@ -1126,7 +1294,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 16,
+   "no": 19,
    "ref": "II.1",
    "cast": [
     "john",
@@ -1204,7 +1372,7 @@
    "aliases": [
     "ghf-19240515-1"
    ],
-   "no": 17,
+   "no": 20,
    "ref": "II.2",
    "cast": [
     "mary",
@@ -1265,7 +1433,7 @@
     "ghf-19100101-1",
     "ghf-19370101-1"
    ],
-   "no": 18,
+   "no": 21,
    "ref": "II.3",
    "cast": [
     "mary",
@@ -1315,7 +1483,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 19,
+   "no": 22,
    "ref": "II.4",
    "cast": [
     "bute",
@@ -1372,7 +1540,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 20,
+   "no": 23,
    "ref": "II.5",
    "cast": [
     "john",
@@ -1424,7 +1592,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 21,
+   "no": 24,
    "ref": "II.6",
    "cast": [],
    "received": "Not an event. The family were tenants throughout.",
@@ -1473,7 +1641,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 22,
+   "no": 25,
    "ref": "II.7",
    "cast": [
     "john",
@@ -1518,7 +1686,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 23,
+   "no": 26,
    "ref": "II.8",
    "cast": [
     "billy"
@@ -1577,7 +1745,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 24,
+   "no": 27,
    "ref": "III.1",
    "cast": [
     "john",
@@ -1646,7 +1814,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 25,
+   "no": 28,
    "ref": "III.2",
    "cast": [
     "mary"
@@ -1704,7 +1872,7 @@
    "aliases": [
     "ghf-19530101-1"
    ],
-   "no": 26,
+   "no": 29,
    "ref": "III.3",
    "cast": [
     "frederick"
@@ -1758,7 +1926,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 27,
+   "no": 30,
    "ref": "III.4",
    "cast": [
     "mary",
@@ -1823,7 +1991,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 28,
+   "no": 31,
    "ref": "III.5",
    "cast": [
     "mary",
@@ -1882,7 +2050,7 @@
    "aliases": [
     "ghf-19610329-1"
    ],
-   "no": 29,
+   "no": 32,
    "ref": "III.6",
    "cast": [
     "mary",
@@ -1947,7 +2115,7 @@
    "aliases": [
     "ghf-19630101-1"
    ],
-   "no": 30,
+   "no": 33,
    "ref": "III.7",
    "cast": [
     "frederick"
@@ -1996,7 +2164,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 31,
+   "no": 34,
    "ref": "III.8",
    "cast": [],
    "received": "Another offer refused by an occupier with no title.",
@@ -2052,7 +2220,7 @@
    "aliases": [
     "ghf-19680901-1"
    ],
-   "no": 32,
+   "no": 35,
    "ref": "III.9",
    "cast": [
     "eldest"
@@ -2096,7 +2264,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 33,
+   "no": 36,
    "ref": "III.10",
    "cast": [
     "mary",
@@ -2148,7 +2316,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 34,
+   "no": 37,
    "ref": "IV.1",
    "cast": [
     "wgr",
@@ -2213,7 +2381,7 @@
    "aliases": [
     "ghf-19700616-1"
    ],
-   "no": 35,
+   "no": 38,
    "ref": "IV.2",
    "cast": [
     "mary"
@@ -2284,7 +2452,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 36,
+   "no": 39,
    "ref": "IV.3",
    "cast": [
     "rcahmw"
@@ -2334,7 +2502,7 @@
    ],
    "image": "/media/ghf-e090-n03-1974-open-day-telegraph.jpg",
    "aliases": [],
-   "no": 37,
+   "no": 40,
    "ref": "IV.4",
    "cast": [
     "mary"
@@ -2388,7 +2556,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 38,
+   "no": 41,
    "ref": "IV.5",
    "cast": [
     "mary",
@@ -2454,7 +2622,7 @@
     "ghf-19741031-2",
     "ghf-19740919-1"
    ],
-   "no": 39,
+   "no": 42,
    "ref": "IV.6",
    "cast": [
     "mary",
@@ -2516,7 +2684,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 40,
+   "no": 43,
    "ref": "IV.7",
    "cast": [],
    "received": "A local antiquarian's objection.",
@@ -2558,7 +2726,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 41,
+   "no": 44,
    "ref": "IV.8",
    "cast": [
     "bp",
@@ -2611,7 +2779,7 @@
    ],
    "image": "/media/ghf-e090-n16-1980-hansard-rowlands.jpg",
    "aliases": [],
-   "no": 42,
+   "no": 45,
    "ref": "IV.9",
    "cast": [
     "wgr",
@@ -2678,7 +2846,7 @@
     "ghf-press-19800417-n05",
     "ghf-19830313-1"
    ],
-   "no": 43,
+   "no": 46,
    "ref": "IV.10",
    "cast": [
     "ggat"
@@ -2727,7 +2895,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 44,
+   "no": 47,
    "ref": "IV.11",
    "cast": [
     "mary",
@@ -2784,7 +2952,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 45,
+   "no": 48,
    "ref": "IV.12",
    "cast": [
     "bp"
@@ -2840,7 +3008,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 46,
+   "no": 49,
    "ref": "IV.13",
    "cast": [
     "mary"
@@ -2891,7 +3059,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 47,
+   "no": 50,
    "ref": "IV.14",
    "cast": [
     "hmlr"
@@ -2947,7 +3115,7 @@
    "aliases": [
     "ghf-19840113-1"
    ],
-   "no": 48,
+   "no": 51,
    "ref": "V.1",
    "cast": [
     "billy",
@@ -3006,7 +3174,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 49,
+   "no": 52,
    "ref": "V.2",
    "cast": [
     "mary",
@@ -3057,7 +3225,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 50,
+   "no": 53,
    "ref": "V.3",
    "cast": [
     "rcahmw"
@@ -3090,7 +3258,7 @@
    "place": "HM Land Registry",
    "parcel": "AB",
    "basis": "Land Registry record",
-   "narration": "On 2 February 1987, with the appeal pending, an application is made to amalgamate WA240304 (farmhouse and garden) into WA231076.",
+   "narration": "On 2 February 1987, while the appeal is pending, an application is made to amalgamate WA240304 (the separately registered farmhouse and garden) into WA231076 (the larger field title). The register then presents the two strands as one corporate holding. The affirmative 'synthetic estate' question is whether a title originating in the Bute-to-WGR field chain was joined to a separately registered house title without the older Cydwin/Cydfin and Williams/Thomas chain being traced through the underlying instruments. The amalgamation records a registration event; its file, the 1877 documents, and the 1938 and 1969 conveyances must be read together to reconstruct the title's provenance.",
    "case": null,
    "evidence": [
     {
@@ -3102,13 +3270,26 @@
      "type": "Analysis",
      "title": "1987 HMLR Amalgamation During Appeal",
      "url": "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/procedural-fairness-notice/1987-hmlr-amalgamation-during-appeal/"
+    },
+    {
+     "type": "Wiki page",
+     "title": "Cydfin / Ty Mawr and pre-1877 manorial evidence",
+     "url": "https://greathousefarmwiki.wordpress.com/anomalies-register/llandough-penarth-cydfin-ty-mawr-manorial-evidence/"
+    },
+    {
+     "type": "Research annex",
+     "title": "Cedwyn Estate — title-chain reconstruction",
+     "url": "https://bpvsbuckler.bucklerfamily.estate/research/cedwyn-estate-title-chain.html"
     }
    ],
    "image": null,
    "aliases": [],
-   "no": 51,
+   "no": 54,
    "ref": "V.4",
-   "cast": [],
+   "cast": [
+    "bute",
+    "wgr"
+   ],
    "received": "An administrative tidying of the register.",
    "received_words": [
     [
@@ -3116,7 +3297,7 @@
      "The register's term."
     ]
    ],
-   "known": "Two titles cannot be merged unless there are two. BP and the Land Registry held the house and the fields separately from 1983 while the case was argued as one farm. The merger folded the synthetic Parcel A into Parcel B during the appeal.",
+   "known": "The registration history shows two separately registered titles before the 1987 amalgamation: a larger field title and a later house title. The affirmative synthetic-estate thesis is that a corporate register view was assembled from separate strands while the older Cydwin/Cydfin and Williams/Thomas provenance remained untraced. The decisive exercise is to compare the first-registration files and the operative 1877, 1938 and 1969 instruments against the plans and schedules. The label 'synthetic' describes this unresolved reconstruction, not a statutory finding.",
    "ledger": [
     [
      "A",
@@ -3156,7 +3337,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 52,
+   "no": 55,
    "ref": "V.5",
    "cast": [
     "bp",
@@ -3213,7 +3394,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 53,
+   "no": 56,
    "ref": "V.6",
    "cast": [
     "courts"
@@ -3261,7 +3442,7 @@
    "aliases": [
     "ghf-press-n15-01"
    ],
-   "no": 54,
+   "no": 57,
    "ref": "VI.1",
    "cast": [
     "billy"
@@ -3310,7 +3491,7 @@
     "ghf-press-n07",
     "ghf-press-n15-02"
    ],
-   "no": 55,
+   "no": 58,
    "ref": "VI.2",
    "cast": [
     "mary",
@@ -3369,7 +3550,7 @@
     "ghf-press-n15-03",
     "ghf-19880503-1"
    ],
-   "no": 56,
+   "no": 59,
    "ref": "VI.3",
    "cast": [
     "billy",
@@ -3422,7 +3603,7 @@
    ],
    "image": "/media/1988-cadw-farmhouse.jpg",
    "aliases": [],
-   "no": 57,
+   "no": 60,
    "ref": "VI.4",
    "cast": [
     "cadw"
@@ -3478,7 +3659,7 @@
     "ghf-press-n15-04",
     "ghf-press-n09"
    ],
-   "no": 58,
+   "no": 61,
    "ref": "VI.5",
    "cast": [
     "billy"
@@ -3533,7 +3714,7 @@
    "aliases": [
     "ghf-press-n15-11"
    ],
-   "no": 59,
+   "no": 62,
    "ref": "VI.6",
    "cast": [
     "mary"
@@ -3582,7 +3763,7 @@
     "ghf-press-n15-05",
     "ghf-press-n08"
    ],
-   "no": 60,
+   "no": 63,
    "ref": "VI.7",
    "cast": [
     "bp",
@@ -3632,7 +3813,7 @@
     "ghf-press-n15-06",
     "ghf-press-n15-10"
    ],
-   "no": 61,
+   "no": 64,
    "ref": "VI.8",
    "cast": [
     "billy"
@@ -3677,7 +3858,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 62,
+   "no": 65,
    "ref": "VI.9",
    "cast": [
     "cadw"
@@ -3720,7 +3901,7 @@
    "aliases": [
     "ghf-press-n10"
    ],
-   "no": 63,
+   "no": 66,
    "ref": "VI.10",
    "cast": [
     "cadw",
@@ -3787,7 +3968,7 @@
     "ghf-press-n15-12",
     "ghf-19881211-1"
    ],
-   "no": 64,
+   "no": 67,
    "ref": "VI.11",
    "cast": [],
    "received": "An old farmhouse of no special merit was cleared for housing.",
@@ -3854,7 +4035,7 @@
     "ghf-press-n15-08",
     "ghf-press-n15-09"
    ],
-   "no": 65,
+   "no": 68,
    "ref": "VI.12",
    "cast": [
     "billy"
@@ -3909,7 +4090,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 66,
+   "no": 69,
    "ref": "VI.13",
    "cast": [
     "rcahmw"
@@ -3951,7 +4132,7 @@
    "aliases": [
     "ghf-press-n15-14"
    ],
-   "no": 67,
+   "no": 70,
    "ref": "VII.1",
    "cast": [],
    "received": null,
@@ -4010,7 +4191,7 @@
     "ghf-19890115-1",
     "ghf-press-n15-13"
    ],
-   "no": 68,
+   "no": 71,
    "ref": "VII.2",
    "cast": [
     "billy"
@@ -4051,7 +4232,7 @@
    ],
    "image": "/media/ghf-e090-n13-1989-farm-to-bus.jpg",
    "aliases": [],
-   "no": 69,
+   "no": 72,
    "ref": "VII.3",
    "cast": [
     "billy"
@@ -4096,7 +4277,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 70,
+   "no": 73,
    "ref": "VII.4",
    "cast": [],
    "received": "Strasbourg confirmed the eviction was lawful and the property was BP's.",
@@ -4162,7 +4343,7 @@
     "ghf-19891108-1",
     "ghf-19891010-1"
    ],
-   "no": 71,
+   "no": 74,
    "ref": "VII.5",
    "cast": [
     "bp",
@@ -4211,7 +4392,7 @@
    "aliases": [
     "ghf-19900208-1"
    ],
-   "no": 72,
+   "no": 75,
    "ref": "VII.6",
    "cast": [
     "ggat"
@@ -4258,7 +4439,7 @@
    "aliases": [
     "ghf-19920515-1"
    ],
-   "no": 73,
+   "no": 76,
    "ref": "VII.7",
    "cast": [
     "billy"
@@ -4312,7 +4493,7 @@
    "aliases": [
     "ghf-19901015-1"
    ],
-   "no": 74,
+   "no": 77,
    "ref": "VII.8",
    "cast": [
     "bp",
@@ -4368,7 +4549,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 75,
+   "no": 78,
    "ref": "VII.9",
    "cast": [
     "ggat",
@@ -4409,7 +4590,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 76,
+   "no": 79,
    "ref": "VII.10",
    "cast": [
     "ideal"
@@ -4449,7 +4630,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 77,
+   "no": 80,
    "ref": "VII.11",
    "cast": [
     "ggat"
@@ -4494,7 +4675,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 78,
+   "no": 81,
    "ref": "VII.12",
    "cast": [],
    "received": null,
@@ -4549,7 +4730,7 @@
    "aliases": [
     "ghf-19931213-1"
    ],
-   "no": 79,
+   "no": 82,
    "ref": "VII.13",
    "cast": [
     "bp",
@@ -4605,7 +4786,7 @@
    "aliases": [
     "ghf-19940421-1"
    ],
-   "no": 80,
+   "no": 83,
    "ref": "VII.14",
    "cast": [],
    "received": "A successful rescue excavation.",
@@ -4653,7 +4834,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 81,
+   "no": 84,
    "ref": "VII.15",
    "cast": [
     "ideal"
@@ -4710,7 +4891,7 @@
    "aliases": [
     "ghf-19950628-1"
    ],
-   "no": 82,
+   "no": 85,
    "ref": "VII.16",
    "cast": [],
    "received": null,
@@ -4763,7 +4944,7 @@
    "aliases": [
     "ghf-20051222-1"
    ],
-   "no": 83,
+   "no": 86,
    "ref": "VII.17",
    "cast": [],
    "received": null,
@@ -4801,7 +4982,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 84,
+   "no": 87,
    "ref": "VII.18",
    "cast": [
     "ggat"
@@ -4843,7 +5024,7 @@
    "aliases": [
     "ghf-20260123-1"
    ],
-   "no": 85,
+   "no": 88,
    "ref": "VIII.1",
    "cast": [
     "mary",
@@ -4893,7 +5074,7 @@
    "aliases": [
     "ghf-20260213-1"
    ],
-   "no": 86,
+   "no": 89,
    "ref": "VIII.2",
    "cast": [
     "hmlr"
@@ -4938,7 +5119,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 87,
+   "no": 90,
    "ref": "VIII.3",
    "cast": [
     "hmlr"
@@ -5001,7 +5182,7 @@
    ],
    "image": "/media/1988-cadw-barn.jpg",
    "aliases": [],
-   "no": 88,
+   "no": 91,
    "ref": "VIII.4",
    "cast": [
     "cadw"
@@ -5053,7 +5234,7 @@
    "aliases": [
     "ghf-20260602-1"
    ],
-   "no": 89,
+   "no": 92,
    "ref": "VIII.5",
    "cast": [
     "hmlr"
@@ -5093,7 +5274,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 90,
+   "no": 93,
    "ref": "VIII.6",
    "cast": [],
    "received": null,
@@ -5136,7 +5317,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 91,
+   "no": 94,
    "ref": "VIII.7",
    "cast": [
     "bute"
@@ -5193,7 +5374,7 @@
    "aliases": [
     "ghf-20260918-1"
    ],
-   "no": 92,
+   "no": 95,
    "ref": "VIII.8",
    "cast": [
     "hmlr",
@@ -5246,7 +5427,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 93,
+   "no": 96,
    "ref": "VIII.9",
    "cast": [
     "bp",
@@ -5292,7 +5473,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 94,
+   "no": 97,
    "ref": "VIII.10",
    "cast": [],
    "received": null,
@@ -5335,7 +5516,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 95,
+   "no": 98,
    "ref": "VIII.11",
    "cast": [
     "hmlr",
@@ -5388,7 +5569,7 @@
    "aliases": [
     "ghf-20261005-1"
    ],
-   "no": 96,
+   "no": 99,
    "ref": "VIII.12",
    "cast": [
     "rcahmw"
@@ -5451,7 +5632,7 @@
     "ghf-20260922-1",
     "ghf-20261003-1"
    ],
-   "no": 97,
+   "no": 100,
    "ref": "VIII.13",
    "cast": [
     "ggat",
@@ -5497,7 +5678,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 98,
+   "no": 101,
    "ref": "O.1",
    "cast": [],
    "received": "A squatter was evicted after losing in court.",
@@ -5550,7 +5731,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 99,
+   "no": 102,
    "ref": "O.2",
    "cast": [
     "mary"
@@ -5600,7 +5781,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 100,
+   "no": 103,
    "ref": "O.3",
    "cast": [
     "wgr",
@@ -5646,7 +5827,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 101,
+   "no": 104,
    "ref": "O.4",
    "cast": [
     "bp"
@@ -5696,7 +5877,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 102,
+   "no": 105,
    "ref": "O.5",
    "cast": [
     "courts"
@@ -5752,7 +5933,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 103,
+   "no": 106,
    "ref": "O.6",
    "cast": [
     "billy"
@@ -5803,7 +5984,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 104,
+   "no": 107,
    "ref": "O.7",
    "cast": [],
    "received": "An old building was cleared for housing.",
@@ -5857,7 +6038,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 105,
+   "no": 108,
    "ref": "O.8",
    "cast": [
     "mps"
@@ -5902,7 +6083,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 106,
+   "no": 109,
    "ref": "O.9",
    "cast": [
     "mary"
@@ -5953,7 +6134,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 107,
+   "no": 110,
    "ref": "O.10",
    "cast": [
     "cadw"
@@ -6003,7 +6184,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 108,
+   "no": 111,
    "ref": "O.11",
    "cast": [
     "mary",
@@ -6059,7 +6240,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 109,
+   "no": 112,
    "ref": "E.1",
    "cast": [],
    "received": "A landlord and its successors recovered their farm from tenants who stayed on without paying, and the courts confirmed it.",
@@ -6133,7 +6314,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 110,
+   "no": 113,
    "ref": "E.2",
    "cast": [],
    "received": "It was always one farm, and nobody suggested otherwise.",
@@ -6190,7 +6371,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 111,
+   "no": 114,
    "ref": "E.3",
    "cast": [],
    "received": "A modern estate on a former farm.",
@@ -6233,7 +6414,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 112,
+   "no": 115,
    "ref": "E.4",
    "cast": [],
    "received": null,
@@ -6276,7 +6457,7 @@
    ],
    "image": "/media/1988-cadw-farmhouse.jpg",
    "aliases": [],
-   "no": 113,
+   "no": 116,
    "ref": "E.5",
    "cast": [],
    "received": null,
