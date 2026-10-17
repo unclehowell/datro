@@ -30,6 +30,8 @@ The initial catalogue was built from the existing `bpvsbuckler/text/_treeview.js
 - Gmail-inspired three-panel layout with subject search and folder/category filters.
 - Full-text search over the indexed public source texts.
 - Vertically scrollable reading pane for the entire archived text of each conversation group.
+- Permanent thread URLs at `/thread/<stable-subject-slug>` that open the selected conversation directly.
+- `Copy thread link` and `Copy embed code` actions. The embed code uses `/thread/<slug>?embed=1` and is intended for a reviewed evidence page on the Great House Farm wiki.
 - Collapsed thread description, preserved source list, and semantic evidence version.
 - Links to original archived text and a targeted Great House Farm wiki search.
 - Read-only and public by design; no Gmail connection and no private account data.
