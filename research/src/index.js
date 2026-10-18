@@ -15,15 +15,7 @@ export default {
     try {
       if (url.pathname === "/health") {
         const count = await env.DB.prepare("SELECT COUNT(*) AS count FROM content_items WHERE status = 'publish'").first();
-        const grouped = await env.DB.prepare("SELECT source_type, COUNT(*) AS count FROM content_items WHERE status = 'publish' GROUP BY source_type").all();
-        const publishedByType = {};
-        for (const row of (grouped.results || [])) publishedByType[row.source_type] = row.count;
-        let migration = null;
-        try {
-          const state = await env.DB.prepare("SELECT value FROM migration_state WHERE key = 'auto_import_cursor'").first();
-          migration = state ? state.value : null;
-        } catch (_) {}
-        return cors(json({ ok: true, service: "research-wp", environment: env.ENVIRONMENT || "unknown", published_records: count ? count.count : 0, published_by_type: publishedByType, migration_cursor: migration }));
+        return cors(json({ ok: true, service: "research-wp", environment: env.ENVIRONMENT || "unknown", published_records: count ? count.count : 0 }));
       }
       if (url.pathname === "/llms.txt") {
         return cors(new Response(agentText(env), { headers: { "Content-Type": "text/plain; charset=utf-8" } }));
@@ -72,9 +64,6 @@ export default {
     } catch (error) {
       return cors(json({ error: "Request failed", message: String(error && error.message || error) }, 500));
     }
-  },
-  async scheduled(controller, env, ctx) {
-    ctx.waitUntil(runScheduledImport(env));
   }
 };
 
@@ -222,22 +211,12 @@ async function handleSync(request, url, env) {
   }
   const type = String(input.type || url.searchParams.get("type") || "page").toLowerCase();
   const page = Math.max(1, Math.min(1000, Number(input.page || url.searchParams.get("page") || 1)));
-  const result = await importSourcePage(type, page, env);
-  if (!result.ok) return json({
-    error: "Unable to import source page",
-    upstream_status: result.status,
-    detail: result.detail,
-    tried: result.tried
-  }, 502);
-  return json(result.report);
-}
-
-async function importSourcePage(type, page, env) {
   const endpointMap = { page: "pages", post: "posts", media: "media" };
-  if (!endpointMap[type]) return { ok: false, status: 400, detail: "type must be page, post, or media", tried: [] };
+  if (!endpointMap[type]) return json({ error: "type must be page, post, or media" }, 400);
   const source = await fetchSource(endpointMap[type], page, env);
-  if (!source.ok) return { ok: false, status: source.status, detail: source.detail, tried: source.tried };
-
+  if (!source.ok) {
+    return json({ error: "Unable to fetch source API", upstream_status: source.status, detail: source.detail, tried: source.tried }, 502);
+  }
   const rows = [];
   for (const item of source.items) {
     const sourceType = type;
@@ -263,82 +242,17 @@ async function importSourcePage(type, page, env) {
     ).bind(sourceType, Number(item.id), title, String(item.slug || ""), itemPath, content, excerpt, status, String(item.link || ""), sourceUrl, mimeType, mediaType, altText, caption, parentId, menuOrder, dateGmt, modifiedGmt, meta));
   }
   if (rows.length) await env.DB.batch(rows);
-  return {
+  return json({
     ok: true,
-    totalPages: source.totalPages,
-    report: {
-      ok: true,
-      type: type,
-      page: page,
-      imported_this_page: rows.length,
-      upstream_total: source.total,
-      upstream_total_pages: source.totalPages,
-      has_more: page < source.totalPages,
-      source_api: source.sourceUrl,
-      note: "Repeat with the next page number until has_more is false. The source site was only read."
-    }
-  };
-}
-
-async function setMigrationState(env, key, value) {
-  await env.DB.prepare(
-    "INSERT INTO migration_state (key, value, updated_at) VALUES (?, ?, ?) " +
-    "ON CONFLICT(key) DO UPDATE SET value=excluded.value, updated_at=excluded.updated_at"
-  ).bind(key, String(value), new Date().toISOString()).run();
-}
-
-async function runScheduledImport(env) {
-  await env.DB.prepare(
-    "CREATE TABLE IF NOT EXISTS migration_state (key TEXT PRIMARY KEY, value TEXT NOT NULL DEFAULT '', updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)"
-  ).run();
-  const cursorRow = await env.DB.prepare("SELECT value FROM migration_state WHERE key = 'auto_import_cursor'").first();
-  const cursor = cursorRow && cursorRow.value ? String(cursorRow.value) : "page:1";
-  if (cursor === "complete") return;
-
-  const parts = cursor.split(":");
-  const type = parts[0];
-  const page = Math.max(1, Number(parts[1] || 1));
-  if (!["page", "post", "media"].includes(type)) {
-    await setMigrationState(env, "auto_import_cursor", "page:1");
-    return;
-  }
-
-  const result = await importSourcePage(type, page, env);
-  if (!result.ok) {
-    await setMigrationState(env, "auto_import_last_error", JSON.stringify({
-      cursor: cursor,
-      status: result.status,
-      detail: result.detail,
-      tried: result.tried,
-      updated_at: new Date().toISOString()
-    }));
-    console.error("Research import paused at", cursor, result.status, result.detail);
-    return;
-  }
-
-  await setMigrationState(env, "auto_import_last_error", "");
-  await setMigrationState(env, "auto_import_last_result", JSON.stringify({
-    cursor: cursor,
-    imported_this_page: result.report.imported_this_page,
-    upstream_total: result.report.upstream_total,
-    upstream_total_pages: result.report.upstream_total_pages,
-    source_api: result.report.source_api,
-    updated_at: new Date().toISOString()
-  }));
-
-  let nextCursor;
-  if (page < result.report.upstream_total_pages) {
-    nextCursor = type + ":" + (page + 1);
-  } else {
-    const order = ["page", "post", "media"];
-    const nextType = order[order.indexOf(type) + 1];
-    nextCursor = nextType ? nextType + ":1" : "complete";
-  }
-  await setMigrationState(env, "auto_import_cursor", nextCursor);
-  if (nextCursor === "complete") {
-    await setMigrationState(env, "auto_import_completed_at", new Date().toISOString());
-    console.log("Research content import completed.");
-  }
+    type: type,
+    page: page,
+    imported_this_page: rows.length,
+    upstream_total: source.total,
+    upstream_total_pages: source.totalPages,
+    has_more: page < source.totalPages,
+    source_api: source.sourceUrl,
+    note: "Repeat with the next page number until has_more is false. The source site was only read."
+  });
 }
 
 async function fetchSource(endpoint, page, env) {
