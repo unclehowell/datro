@@ -397,7 +397,15 @@ function isAllowedArchiveAssetUrl(target) {
 }
 
 async function fetchWaybackFallback(env, originalUrl, headers) {
-  const row = await env.DB.prepare("SELECT meta_json FROM content_items WHERE source_type='media' AND source_url=? AND status='publish' LIMIT 1").bind(originalUrl).first();
+  let canonical;
+  try {
+    canonical = new URL(originalUrl);
+    canonical.search = "";
+    canonical.hash = "";
+  } catch (_) {
+    return null;
+  }
+  const row = await env.DB.prepare("SELECT meta_json FROM content_items WHERE source_type='media' AND source_url IN (?, ?) AND status='publish' LIMIT 1").bind(canonical.href, originalUrl).first();
   if (!row) return null;
   const metadata = parseJson(row.meta_json);
   if (!metadata || !metadata.archive_url) return null;
