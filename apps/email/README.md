@@ -32,6 +32,18 @@ Disclosure-chart links use `/reference/<16-character-thread-id>` on the public a
 
 A chart reference ID is not treated as an email-archive record ID. A search hit means the public source matches the case reference; it does not establish that both systems' IDs are identical. If no source record matches, the page says so and does not redirect visitors to a private Gmail mailbox or substitute an unrelated email. To make that reference open the actual message, add and review its public source text and metadata in `data/mail-index.json` before deployment.
 
+## WordPress evidence-page integration
+
+The public wiki should render the canonical Wayback sources rather than maintain duplicate email bodies.
+
+- JSON index: `https://wayback.bucklerfamily.estate/email/mail-index.json`
+- Source text: the `path` URL for each record, hosted at `https://wayback.bucklerfamily.estate/text/...`
+- Thread reader: `https://email.bucklerfamily.estate/thread/<threadSlug>?embed=1`
+- Chart/reference resolver: `https://email.bucklerfamily.estate/reference/<16-character-reference-id>?embed=1` with title/date/case-reference query values where applicable.
+- CORS: Wayback's public JSON and text responses allow read-only cross-origin GET/HEAD requests.
+
+For each WordPress email evidence page, use the corresponding thread-reader URL as the preview iframe (with a normal fallback link below it). Use the stable source permalink inside the reader for the individual message. Keep the WordPress page's summary and provenance notes as editorial metadata; do not paste a second copy of the original body into the page. If a source is absent from the Wayback index, add and review it there first.
+
 ## API for agents and crawlers
 
 All endpoints below are read-only GET endpoints and return JSON unless noted. CORS allows public read-only access.
