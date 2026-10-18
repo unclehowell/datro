@@ -49,7 +49,7 @@ export default {
         return cors(await handleMedia(url, env));
       }
       if (url.pathname === "/asset") {
-        return cors(await handleAsset(url));
+        return cors(await handleAsset(url, env));
       }
       if (url.pathname === "/robots.txt") {
         return cors(new Response("User-agent: *\nAllow: /\nSitemap: https://" + url.host + "/sitemap.xml\n", { headers: { "Content-Type": "text/plain; charset=utf-8" } }));
@@ -181,6 +181,7 @@ function rewriteContentLinks(html) {
   return safe.replace(/\b(href|src)\s*=\s*(["'])(https?:\/\/[^"']+)\2/gi, function(all, attribute, quote, rawUrl) {
     let u;
     try { u = new URL(rawUrl); } catch (_) { return all; }
+    if (u.protocol === "http:" && (u.hostname === SOURCE_HOST || u.hostname === "files.wordpress.com" || /^i[0-2]\\.wp\\.com$/.test(u.hostname))) u.protocol = "https:";
     if (u.hostname === SOURCE_HOST) {
       if (/\/wp-content\/uploads\//i.test(u.pathname)) {
         return attribute + "=" + quote + "/asset?url=" + encodeURIComponent(u.href) + quote;
@@ -307,7 +308,7 @@ async function handleContentIndex(url, env) {
   }
   const where = conditions.join(" AND ");
   const countRow = await env.DB.prepare("SELECT COUNT(*) AS total FROM content_items WHERE " + where).bind(...binds).first();
-  const query = "SELECT source_type, source_id, title, slug, path, excerpt_html, source_link, source_url, mime_type, media_type, alt_text, parent_source_id, date_gmt, modified_gmt FROM content_items WHERE " + where + " ORDER BY CASE source_type WHEN 'page' THEN 0 WHEN 'post' THEN 1 ELSE 2 END, menu_order ASC, title COLLATE NOCASE ASC LIMIT ? OFFSET ?";
+  const query = "SELECT source_type, source_id, title, slug, path, excerpt_html, source_link, source_url, mime_type, media_type, alt_text, parent_source_id, date_gmt, modified_gmt, meta_json FROM content_items WHERE " + where + " ORDER BY CASE source_type WHEN 'page' THEN 0 WHEN 'post' THEN 1 ELSE 2 END, menu_order ASC, title COLLATE NOCASE ASC LIMIT ? OFFSET ?";
   const result = await env.DB.prepare(query).bind(...binds, perPage, offset).all();
   return json({
     site: env.SITE_TITLE || "Research Mirror",
@@ -325,6 +326,8 @@ async function handleContentIndex(url, env) {
         url: row.source_type === "media" ? row.path : row.path,
         source_url: row.source_url || undefined,
         source_link: row.source_link,
+        archive_url: row.source_type === "media" ? (parseJson(row.meta_json).archive_url || undefined) : undefined,
+        discovered_by: row.source_type === "media" ? (parseJson(row.meta_json).discovered_by || undefined) : undefined,
         excerpt: stripTags(row.excerpt_html),
         mime_type: row.mime_type || undefined,
         media_type: row.media_type || undefined,
@@ -378,34 +381,74 @@ async function handleMedia(url, env) {
   return Response.redirect(new URL("/asset?url=" + encodeURIComponent(row.source_url), url.origin).toString(), 302);
 }
 
-async function handleAsset(url) {
+function isAllowedArchiveAssetUrl(target) {
+  if (target.protocol !== "https:" || target.hostname !== "web.archive.org") return false;
+  if (!target.pathname.startsWith("/web/")) return false;
+  const rest = target.pathname.slice("/web/".length);
+  const slash = rest.indexOf("/");
+  if (slash < 0) return false;
+  const capture = rest.slice(0, slash);
+  if (!capture.endsWith("id_")) return false;
+  const stamp = capture.slice(0, -3);
+  if (stamp.length < 8 || stamp.length > 14) return false;
+  for (const ch of stamp) if (ch < "0" || ch > "9") return false;
+  const original = rest.slice(slash + 1);
+  return original.startsWith("https://" + SOURCE_HOST + "/wp-content/uploads/");
+}
+
+async function fetchWaybackFallback(env, originalUrl, headers) {
+  const row = await env.DB.prepare("SELECT meta_json FROM content_items WHERE source_type='media' AND source_url=? AND status='publish' LIMIT 1").bind(originalUrl).first();
+  if (!row) return null;
+  const metadata = parseJson(row.meta_json);
+  if (!metadata || !metadata.archive_url) return null;
+  let archive;
+  try { archive = new URL(metadata.archive_url); } catch (_) { return null; }
+  if (!isAllowedArchiveAssetUrl(archive)) return null;
+  const response = await fetch(archive.toString(), { headers: headers, redirect: "follow", cf: { cacheTtl: 86400, cacheEverything: true } });
+  return response.ok || response.status === 206 ? response : null;
+}
+
+async function handleAsset(url, env) {
   const raw = url.searchParams.get("url") || "";
   let target;
   try { target = new URL(raw); } catch (_) { return json({ error: "Invalid asset URL" }, 400); }
   const onUploads = target.hostname === SOURCE_HOST && target.pathname.startsWith("/wp-content/uploads/");
   const onWpFiles = target.hostname === "files.wordpress.com";
-  const onWpImage = /^i[0-2]\.wp\.com$/.test(target.hostname) && target.pathname.startsWith("/" + SOURCE_HOST + "/wp-content/uploads/");
-  if (target.protocol !== "https:" || !(onUploads || onWpFiles || onWpImage)) {
+  const onWpImage = /^i[0-2]\\.wp\\.com$/.test(target.hostname) && target.pathname.startsWith("/" + SOURCE_HOST + "/wp-content/uploads/");
+  const onArchive = isAllowedArchiveAssetUrl(target);
+  if (target.protocol !== "https:" || !(onUploads || onWpFiles || onWpImage || onArchive)) {
     return json({ error: "Asset host/path not allowlisted" }, 403);
   }
   const forwardedHeaders = new Headers();
   const range = url.searchParams.get("range");
   if (range) forwardedHeaders.set("Range", range);
-  let upstream;
+  let upstream = null;
+  let upstreamError = null;
+  let servedFrom = target.hostname;
+  let waybackFallback = onArchive;
   try {
     upstream = await fetch(target.toString(), { headers: forwardedHeaders, redirect: "follow", cf: { cacheTtl: 86400, cacheEverything: true } });
   } catch (error) {
-    return json({ error: "Upstream media unavailable", detail: String(error && error.message || error) }, 502);
+    upstreamError = error;
+  }
+  if ((!upstream || (!upstream.ok && upstream.status !== 206)) && !onArchive) {
+    try {
+      const backup = await fetchWaybackFallback(env, target.href, forwardedHeaders);
+      if (backup) { upstream = backup; servedFrom = "web.archive.org"; waybackFallback = true; upstreamError = null; }
+    } catch (error) { upstreamError = error; }
+  }
+  if (!upstream) {
+    return json({ error: "Upstream media unavailable", detail: String(upstreamError && upstreamError.message || upstreamError || "no response") }, 502);
   }
   if (!upstream.ok && upstream.status !== 206) return new Response("Source asset unavailable (" + upstream.status + ")", { status: upstream.status, headers: { "Content-Type": "text/plain; charset=utf-8" } });
   const headers = new Headers(upstream.headers);
   headers.set("Cache-Control", "public, max-age=3600, s-maxage=86400");
-  headers.set("X-Research-Source", target.hostname);
+  headers.set("X-Research-Source", servedFrom);
+  if (waybackFallback) headers.set("X-Research-Fallback", "Internet Archive Wayback Machine");
   headers.set("X-Content-Type-Options", "nosniff");
   headers.delete("Set-Cookie");
-  return new Response(upstream.body, { status: upstream.status, headers: headers });
+  return new Response(upstream.body, { status: upstream.status, statusText: upstream.statusText, headers: headers });
 }
-
 async function handleSitemap(url, env) {
   const { results } = await env.DB.prepare("SELECT path, modified_gmt FROM content_items WHERE status='publish' AND source_type IN ('page','post') ORDER BY path LIMIT 5000").all();
   const base = "https://" + url.host;
