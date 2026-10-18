@@ -239,7 +239,7 @@ function Home() {
       <section id="response-tactics-audit" className="mt-8 scroll-mt-6 border-t border-line pt-6" aria-labelledby="rfs-heading">
         <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
-            <p className="text-xs tracking-[0.18em] text-brass uppercase">Three-hat review · source-checked sample</p>
+            <p className="text-xs tracking-[0.18em] text-brass uppercase">Three-hat review · source-status-labelled sample</p>
             <h2 id="rfs-heading" className="mt-1 font-serif text-2xl leading-tight text-fg md:text-3xl">
               Response Tactics &amp; Response Friction Score
             </h2>
@@ -248,11 +248,13 @@ function Home() {
             </p>
           </div>
           <div className="rounded-xl border border-line bg-surface px-3 py-2 text-xs text-muted">
-            <p><strong className="text-fg">7</strong> source-reviewed messages</p>
-            <p><strong className="text-fg">7</strong> currently scored</p>
+            <p><strong className="text-fg">20</strong> assessed message items</p>
+            <p><strong className="text-fg">20</strong> currently scored</p>
             <p>Unreviewed replies remain unscored</p>
           </div>
         </div>
+
+        <p className="mb-4 text-sm text-muted">The matching source register on the wiki records original-versus-transcript status, mitigating facts and legal caveats: <a href="https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/response-tactics-response-friction-score/" target="_blank" rel="noreferrer" className="text-brass underline decoration-brass underline-offset-4">open the full Response Friction Score register</a>.</p>
 
         <div className="mb-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
           {rfsDimensions.map((dimension) => (
