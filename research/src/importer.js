@@ -312,6 +312,7 @@ async function runWaybackImport(env) {
     const header = Array.isArray(data[0]) ? data[0].map(x => String(x)) : [];
     const index = key => header.indexOf(key);
     const entries = [];
+    const statements = [];
     for (const row of data.slice(1)) {
       if (!Array.isArray(row)) continue;
       const original = supportedAssetUrl(row[index("original")], SOURCE_SITE);
@@ -322,14 +323,17 @@ async function runWaybackImport(env) {
       entries.push({ url: original, mime_type: mime });
       const archiveUrl = "https://web.archive.org/web/" + timestamp + "id_/" + original;
       const id = await stableAssetId(original);
-      const statement = assetStatement(env, { url: original, mime_type: mime, alt: "" }, id, {
+      statements.push(assetStatement(env, { url: original, mime_type: mime, alt: "" }, id, {
         discovered_by: "internet-archive-cdx",
         original_url: original,
         archive_url: archiveUrl,
         archive_timestamp: timestamp,
         archive_mime_type: mime
-      }, "", "");
-      await env.DB.batch([statement]);
+      }, "", ""));
+    }
+    for (let i = 0; i < statements.length; i += 100) {
+      const batch = statements.slice(i, i + 100);
+      if (batch.length) await env.DB.batch(batch);
     }
     await setState(env, "auto_import_wayback_status", JSON.stringify({
       status: "queried",
