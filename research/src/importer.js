@@ -284,12 +284,11 @@ async function runWaybackImport(env, offset) {
   // limits. CDX supports offset+limit scrolling for non-paged index responses.
   const batchLimit = 100;
   const cdx = new URL("https://web.archive.org/cdx/search/cdx");
+  // CDX's documented trailing /* shorthand denotes a prefix query.
   cdx.searchParams.set("url", SOURCE_HOST + "/wp-content/uploads/*");
-  cdx.searchParams.set("matchType", "prefix");
   cdx.searchParams.set("output", "json");
   cdx.searchParams.set("fl", "original,timestamp,mimetype,statuscode");
   cdx.searchParams.append("filter", "statuscode:200");
-  cdx.searchParams.append("filter", "!mimetype:text/html");
   cdx.searchParams.set("collapse", "urlkey");
   cdx.searchParams.set("limit", String(batchLimit));
   cdx.searchParams.set("offset", String(offset));
@@ -323,7 +322,7 @@ async function runWaybackImport(env, offset) {
       const timestamp = String(row[index("timestamp")] || "");
       const mime = String(row[index("mimetype")] || "");
       const code = String(row[index("statuscode")] || "");
-      if (!original || !/^\\d{8,14}$/.test(timestamp) || code !== "200") continue;
+      if (!original || !/^\\d{8,14}$/.test(timestamp) || code !== "200" || /^text\\/html\\b/i.test(mime)) continue;
       validRows++;
       const archiveUrl = "https://web.archive.org/web/" + timestamp + "id_/" + original;
       const id = await stableAssetId(original);
