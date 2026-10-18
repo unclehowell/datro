@@ -6,9 +6,9 @@ Public, read-only archive for the Great House Farm / Tŷ Mawr case. The public c
 
 - **Date scope:** all years represented in the case-related text index on the `wayback` branch; no two-year cutoff is applied.
 - **Included:** correspondence and associated public text sources tied by filename or existing catalogue tags to Great House Farm/Tŷ Mawr, Llandough, BP v Buckler, the Williams/Buckler family, or connected public bodies and case references.
-- **Canonical index:** `https://wayback.bucklerfamily.estate/email/mail-index.json` (stored in the `wayback` branch as `email/mail-index.json`).
+- **Canonical index:** `https://wayback.bucklerfamily.estate/email/mail-index.json` (stored in the repository path `wayback/email/mail-index.json` on the `wayback` branch).
 - **Canonical bodies:** the original text files remain hosted in `https://wayback.bucklerfamily.estate/text/`. This email site serves metadata and source bodies from Wayback; it should not keep a second hand-maintained copy of message text.
-- **Index coverage:** the current index contains 496 case-related text sources: 324 classified as correspondence and 172 as related case sources. Classification is an aid for browsing, not a claim that every indexed item is an email.
+- **Index coverage:** the current index contains 585 case-related text sources: 420 classified as correspondence and 165 as related case sources. Classification is an aid for browsing, not a claim that every indexed item is an email.
 - **Date accuracy:** names beginning with `0000-00-00` and default `01 January` placeholders are left undated. The reader may use a reliable Date header preserved in the original text for a message anchor; it does not infer a sent date from a placeholder.
 - **Coverage caveat:** this is a best-effort index of the public Wayback text corpus and does not prove that every message ever sent is preserved. Its inclusion rule is recorded in the catalogue and sources should be inspected before relying on metadata.
 
