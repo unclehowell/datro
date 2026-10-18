@@ -1422,6 +1422,7 @@ INSERT INTO nodes VALUES ('doc-rcahmw-RC26-0375','document','RCAHMW RC26-0375 fu
 INSERT INTO nodes VALUES ('doc-science-museum-FOI-2026-0038','document','Science Museum Group FOI/2026/0038 internal review','{"holder": "Science Museum Group", "reference": "FOI/2026/0038", "date": "2026-10-01"}');
 INSERT INTO nodes VALUES ('doc-south-wales-police-auto-ack-foi-great-house-farm-1988','document','South Wales Police FOI auto-acknowledgement','{"holder": "South Wales Police", "reference": "none assigned in auto-ack", "date": "2026-10-10"}');
 INSERT INTO nodes VALUES ('doc-south-wales-police-foi-1264-26','document','South Wales Police FOI 1264/26 – automatic acknowledgement of further deceased-status clarification (08:45 UTC 16 Oct 2026)','{"holder": "South Wales Police", "reference": "FOI 1264/26", "date": "2026-10-16"}');
+INSERT INTO nodes VALUES ('doc-three-parcel-split-forensic-assessment-2026-10-18','document','Three-part Parcel A: chronology, order scope and later title transfers','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-tna-IR58-glamorgan-xlvii-6','document','TNA Valuation Office location lead / response','{"holder": "The National Archives", "reference": "CAS-359317-Q8Q4R9 (response 14 Oct 2026; follow-up 15 Oct 2026); prior draft r1281075964076169651", "date": "2026-10-14 (response); 2026-10-15 (follow-up)"}');
 INSERT INTO nodes VALUES ('doc-welsh-government-ATISN-26-0009','document','Welsh Government ATISN 26-0009, 15 October 2026','{"holder": "Welsh Government / Cadw, Historic Environment Inspectorate", "reference": "ATISN 26-0009", "date": "2026-10-15"}');
 INSERT INTO nodes VALUES ('doc-welsh-government-ATISN-26-0010','document','Welsh Government ATISN 26-0010, 14 October 2026','{"holder": "Welsh Government, Operational Effectiveness Group, Business Management Unit (OEG.FMCO.FOI)", "reference": "ATISN 26-0010", "date": "2026-10-14"}');
@@ -3173,6 +3174,9 @@ INSERT INTO edges VALUES ('doc-rcahmw-RC26-0375','ref:RC26-0371','cites');
 INSERT INTO edges VALUES ('doc-rcahmw-RC26-0375','ref:RC26-0375','cites');
 INSERT INTO edges VALUES ('doc-science-museum-FOI-2026-0038','ref:2026/0038','cites');
 INSERT INTO edges VALUES ('doc-south-wales-police-foi-1264-26','ref:FOI 1264/26','cites');
+INSERT INTO edges VALUES ('doc-three-parcel-split-forensic-assessment-2026-10-18','ref:WA231076','cites');
+INSERT INTO edges VALUES ('doc-three-parcel-split-forensic-assessment-2026-10-18','ref:WA240304','cites');
+INSERT INTO edges VALUES ('doc-three-parcel-split-forensic-assessment-2026-10-18','ref:WA735527','cites');
 INSERT INTO edges VALUES ('doc-tna-IR58-glamorgan-xlvii-6','ref:CAS-359317-Q8Q4R9','cites');
 INSERT INTO qa VALUES ('qa-559240cdf50d','cadw','Cadw / Welsh Government','welsh-government-and-cadw-email-correspondence-catalogue-part-3#t1','2025-11-02','Sirs/Ma''am,
 
