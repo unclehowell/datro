@@ -11,7 +11,7 @@ This branch is an isolated clone of the `fcg` branch's serverless WordPress-shap
 - Worker entry point: `src/index.js`
 - D1 schema: `schema.sql`
 
-This is a static/edge mirror with a WordPress-shaped data model. It is **not a PHP WordPress install**: PHP themes, plugins and wp-admin are not executed here. Public pages, page hierarchy, HTML body, post metadata and attachment records are copied into D1 by an authenticated, repeatable importer. Uploaded media are served through a guarded proxy from their original public media URL unless separately archived in object storage.
+This is a static/edge mirror with a WordPress-shaped data model. It is **not a PHP WordPress install**: PHP themes, plugins and wp-admin are not executed here. Public page hierarchy and HTML are copied into D1 by a repeatable scheduled importer. Native attachment metadata can be unavailable when WordPress.com restricts its media API; in that case the mirror catalogs upload links actually found in imported HTML. Those catalog entries are not a claim that every unattached library file was found. Media are served through a guarded proxy from the original public URL; if a validated Internet Archive capture exists, the proxy can fall back to it. Binary files are not being copied wholesale into R2 or another object store in this deployment.
 
 ## Initial setup
 
@@ -28,9 +28,9 @@ Deploy from this directory or use the repository workflow after configuring Clou
 
 A separate scheduled-only Cloudflare Worker, `research-importer`, imports one 100-record source API page per minute and maintains its cursor in the `migration_state` table in `research-wp-d1`. It upserts page/post records by original WordPress ID. The helper has no custom-domain route and no admin secret; it only writes to the isolated mirror database. The main public `research-wp` Worker continues to serve content from the same D1 database.
 
-The page cursor records `page:1`, `page:2`, and so on; after pages it checks posts and media. In this migration, the public API reported 442 published pages and zero published posts. The media-library endpoint returned HTTP 401 because WordPress.com requires authentication for that endpoint on this site. The importer therefore records that response, scans the mirrored pages for WordPress upload links and then queries Internet Archive's CDX index for archived upload URLs. Embedded-link/Wayback media rows use deterministic synthetic IDs; `meta_json.discovered_by` distinguishes `embedded-page-scan` and `internet-archive-cdx` records from native WordPress records. These records are a recovered public asset inventory, not a claim that the full media library was available.
+The page cursor records `page:1`, `page:2`, and so on; after pages it checks posts and media. In this migration, WordPress.com reported 442 published pages and zero published posts. Its media-library endpoint returned HTTP 401 (“requires authentication”), and the attempted CDX prefix query returned HTTP 400. The fallback therefore scans imported page HTML for linked WordPress uploads and calls the Internet Archive Availability API separately for each discovered upload URL. That API returns at most a closest capture per URL; an empty response is not proof that no capture exists in every Wayback index. Embedded-link entries use deterministic synthetic IDs, and `meta_json.discovered_by` records whether an entry came from `embedded-page-scan` and/or `internet-archive-availability`. The resulting asset inventory is partial by design: unlinked files in the private/restricted media library cannot be enumerated through the available public interface.
 
-Progress and diagnostics are held in `migration_state`: `auto_import_last_result`, `auto_import_last_error`, `auto_import_collection:page`, `auto_import_collection:post`, `auto_import_collection:media`, `auto_import_media_source_api_error`, `auto_import_media_scan_progress`, `auto_import_wayback_status`, `auto_import_completion_note` and `auto_import_completed_at`. If the cursor stops moving, inspect `auto_import_last_error` and the media-specific status rows in Cloudflare D1. The helper retries failed API pages rather than silently skipping them.
+Progress and diagnostics are held in `migration_state`: `auto_import_last_result`, `auto_import_last_error`, `auto_import_collection:page`, `auto_import_collection:post`, `auto_import_media_source_api_error`, `auto_import_media_scan_progress`, `auto_import_wayback_cdx_error`, `auto_import_wayback_status`, `auto_import_media_availability_progress`, `auto_import_completion_note` and `auto_import_completed_at`. If the cursor stops moving, inspect `auto_import_last_error` and the media-specific status rows in Cloudflare D1. The importer retries a failed page rather than silently skipping it. After `complete`, this is a one-time import, not a continuous WordPress sync; reset the cursor intentionally before re-running a new full import.
 
 The separate helper configuration is `importer.wrangler.toml`. To deploy or re-deploy it manually:
 
@@ -60,7 +60,7 @@ Do not publish the administrative token. The importer uses the source API's pagi
 - `/llms.txt` and `/agent-index.json` — agent discovery
 - `/health` — health check
 - `/media/{source_id}` — attachment metadata and redirect/proxy endpoint
-- `/asset?url=...` — media proxy restricted to the source site's WordPress uploads and WordPress.com media hosts
+- `/asset?url=...` — media proxy restricted to the source site's WordPress uploads, WordPress.com media hosts and validated Wayback capture URLs; attempts a stored Wayback fallback when a source asset fails
 
 ## Evidence-quality display standard
 
