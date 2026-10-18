@@ -2,15 +2,15 @@
 
 Public, read-only archive for the Great House Farm / Tŷ Mawr case. The public catalogue is deliberately limited to FOI/EIR requests, acknowledgements, clarifications, follow-ups and responses specifically about Great House Farm / Tŷ Mawr at Llandough and the Williams/Buckler family.
 
-## Scope and date window
+## Scope and date coverage
 
-- **Date window:** 17 October 2024 to 17 October 2026 (two years as at 17 October 2026).
-- **Included:** FOI or EIR requests, official acknowledgements, follow-up/clarification messages and responses that specifically concern Great House Farm/Tŷ Mawr, Llandough and the Williams/Buckler family.
-- **Excluded:** general/non-FOI correspondence, unrelated personal-data requests, generic heritage enquiries, and unrelated BP v Buckler correspondence without a demonstrated connection to the named property/family.
-- **Current catalogue:** 20 curated source records, stored in `data/mail-index.json`.
-- **Date accuracy:** Some source files do not preserve a reliable sent-date header and their filenames do not include a date. Such records carry `date: null` and `dateStatus: "date-not-stated-in-public-source"`. Their date is not invented. Use the original linked source and quoted dates within its body if chronology matters.
-
-This is a reviewed public-source subset, not a claim that every FOI/EIR email ever sent about the case is present in the upstream archive.
+- **Date scope:** all years represented in the case-related text index on the `wayback` branch; no two-year cutoff is applied.
+- **Included:** correspondence and associated public text sources tied by filename or existing catalogue tags to Great House Farm/Tŷ Mawr, Llandough, BP v Buckler, the Williams/Buckler family, or connected public bodies and case references.
+- **Canonical index:** `https://wayback.bucklerfamily.estate/email/mail-index.json` (stored in the `wayback` branch as `email/mail-index.json`).
+- **Canonical bodies:** the original text files remain hosted in `https://wayback.bucklerfamily.estate/text/`. This email site serves metadata and source bodies from Wayback; it should not keep a second hand-maintained copy of message text.
+- **Index coverage:** the current index contains 496 case-related text sources: 324 classified as correspondence and 172 as related case sources. Classification is an aid for browsing, not a claim that every indexed item is an email.
+- **Date accuracy:** names beginning with `0000-00-00` and default `01 January` placeholders are left undated. The reader may use a reliable Date header preserved in the original text for a message anchor; it does not infer a sent date from a placeholder.
+- **Coverage caveat:** this is a best-effort index of the public Wayback text corpus and does not prove that every message ever sent is preserved. Its inclusion rule is recorded in the catalogue and sources should be inspected before relying on metadata.
 
 ## Public deployment
 
