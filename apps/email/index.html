@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f6f8fc">
-<title>Great House Farm FOI &amp; EIR Mail Archive</title>
-<meta name="description" content="Read-only FOI and EIR email archive: Great House Farm (Tŷ Mawr), Llandough, and the Williams/Buckler family. Date window: 17 October 2024 to 17 October 2026.">
+<title>Great House Farm Mail — Public Archive</title>
+<meta name="description" content="Mobile-first, read-only public correspondence and case-source archive for Great House Farm / Tŷ Mawr, Llandough, BP v Buckler, and the Williams/Buckler family. Original source texts are hosted by Wayback.">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
 <link rel="alternate" type="application/json" href="/api/records" title="FOI/EIR archive JSON catalogue">
 <link rel="help" href="/api" title="Agent and API access guide">
@@ -98,22 +98,22 @@ body.reader-open .reader-panel{display:flex}
 </head>
 <body>
 <header class="topbar">
- <div class="brand"><div class="brand-icon" aria-hidden="true">✉</div><div><h1>Great House Farm Mail</h1><p>FOI / EIR only · read-only public records</p></div></div>
+ <div class="brand"><div class="brand-icon" aria-hidden="true">✉</div><div><h1>Great House Farm Mail</h1><p>Public correspondence · read-only archive</p></div></div>
  <form class="search-wrap" id="search-form"><input id="search" type="search" placeholder="Search subjects, case references, authorities…" aria-label="Search the public mail archive"><button class="btn primary" type="submit">Search full text</button></form>
  <div class="version-chip">Archive v<span id="manifest-version">2.0.1</span></div>
 </header>
 <main class="layout">
  <nav class="sidebar" aria-label="Archive folders">
-   <button class="navbtn active" data-folder="all"><span>▣　All FOI / EIR records</span><span class="count" id="count-all">—</span></button>
+   <button class="navbtn active" data-folder="all"><span>▣　All case records</span><span class="count" id="count-all">—</span></button>
    <button class="navbtn" data-folder="foi"><span>▤　Council & environment</span><span class="count" id="count-foi">—</span></button>
-   <button class="navbtn" data-folder="legal"><span>⚖　Court & police records</span><span class="count" id="count-legal">—</span></button>
-   <button class="navbtn" data-folder="records"><span>▧　Heritage records</span><span class="count" id="count-records">—</span></button>
+   <button class="navbtn" data-folder="legal"><span>⚖　Court & legal records</span><span class="count" id="count-legal">—</span></button>
+   <button class="navbtn" data-folder="records"><span>▧　Heritage & archives</span><span class="count" id="count-records">—</span></button>
    <button class="navbtn" data-folder="land"><span>⌖　Land Registry</span><span class="count" id="count-land">—</span></button>
    <h2>Archive scope</h2>
    <div class="sidebar-note">Scope: public FOI/EIR requests, acknowledgements, clarifications, follow-ups and responses about Great House Farm / Tŷ Mawr, Llandough and the Williams/Buckler family. This is not Gmail and cannot send or receive mail.</div>
  </nav>
  <section class="list-panel" aria-label="Message threads">
-  <div class="list-heading"><h2 id="list-title">All FOI / EIR records</h2><p id="list-subtitle">Loading the curated public FOI/EIR catalogue · date window 17 Oct 2024–17 Oct 2026…</p></div>
+  <div class="list-heading"><h2 id="list-title">All case records</h2><p id="list-subtitle">Loading the public Wayback case catalogue…</p></div>
   <div class="result-list" id="result-list"><div class="empty-list">Loading the public archive index…</div></div>
  </section>
  <section class="reader-panel" aria-label="Selected email thread">
@@ -138,7 +138,7 @@ body.reader-open .reader-panel{display:flex}
 (function(){
 const $ = id => document.getElementById(id);
 let manifest=null, allRecords=[], threads=[], visibleThreads=[], selectedThread=null, folder='all', searchTerm='', fullTextMatches=null, messageCache=new Map();
-const categoryToFolder = c => /Land Registry/i.test(c)?'land':/Court records|Police records/i.test(c)?'legal':/Heritage records/i.test(c)?'records':/Local authority|Environmental records|Dispossession records/i.test(c)?'foi':'all';
+const categoryToFolder = c => /Land Registry/i.test(c)?'land':/Court|Legal|Police/i.test(c)?'legal':/Heritage|Archives/i.test(c)?'records':/Local authority|Council|Environmental|FOI|EIR|Dispossession/i.test(c)?'foi':'all';
 const normalize = s => (s||'').toLowerCase().replace(/^(?:re\s*[:_\-]?\s*)+/i,'').replace(/\.(txt|eml|html?)$/i,'').replace(/[^a-z0-9]+/g,' ').trim();
 const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmtDate = s => { if(!s)return 'Date not stated in filename'; const d=new Date(s+'T12:00:00Z'); return isNaN(d)?s:d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}); };
@@ -227,8 +227,8 @@ function updateCounts(){
 }
 function renderList(){
  visibleThreads=filteredThreads();
- $('list-title').textContent=({all:'All FOI / EIR records',foi:'Council & environmental FOI / EIR',legal:'Court & police FOI / EIR',records:'Heritage FOI / EIR',land:'Land Registry FOI / EIR'})[folder]||'All FOI / EIR records';
- $('list-subtitle').textContent=visibleThreads.length+' FOI/EIR groups · '+allRecords.length+' in-scope source records'+(fullTextMatches?' · full-text search complete':'');
+ $('list-title').textContent=({all:'All case records',foi:'Council & environmental correspondence',legal:'Court & legal correspondence',records:'Heritage & archive correspondence',land:'Land Registry correspondence'})[folder]||'All case records';
+ $('list-subtitle').textContent=visibleThreads.length+' subject groups · '+allRecords.length+' public Wayback source records'+(fullTextMatches?' · full-text search complete':'');
  const list=$('result-list');list.replaceChildren();
  if(!visibleThreads.length){const d=document.createElement('div');d.className='empty-list';d.textContent='No matching conversations. Try a broader search or choose All case correspondence.';list.appendChild(d);return;}
  visibleThreads.forEach(t=>{
@@ -459,11 +459,11 @@ window.addEventListener('popstate',()=>{
  const linked=threadFromCurrentUrl();
  if(linked){openThread(linked,false).then(scrollToMessageHash).catch(err=>showReaderFatal(err,linked));}
  else{
-  selectedThread=null;document.body.classList.remove('reader-open');renderList();$('reader-content').hidden=true;$('reader-empty').hidden=false;document.title='Great House Farm Public Email & Case Archive';
+  selectedThread=null;document.body.classList.remove('reader-open');renderList();$('reader-content').hidden=true;$('reader-empty').hidden=false;document.title='Great House Farm Mail — Public Archive';
   if(embedMode){$('reader-empty').querySelector('h2').textContent='Thread link required';$('reader-empty').querySelector('p').textContent='Open a specific /thread/<id>?embed=1 URL to display an email evidence preview.';}
  }
 });
-$('back-to-inbox').addEventListener('click',()=>{selectedThread=null;document.body.classList.remove('reader-open');$('reader-content').hidden=true;$('reader-empty').hidden=true;try{window.history.replaceState({},'',window.location.origin+'/');}catch(e){}renderList();document.title='Great House Farm Public Email & Case Archive';});
+$('back-to-inbox').addEventListener('click',()=>{selectedThread=null;document.body.classList.remove('reader-open');$('reader-content').hidden=true;$('reader-empty').hidden=true;try{window.history.replaceState({},'',window.location.origin+'/');}catch(e){}renderList();document.title='Great House Farm Mail — Public Archive';});
 // Google WebMCP progressive enhancement; the JSON API remains the universal fallback.
 async function agentApi(path, signal) {
  const res=await fetch(path,{headers:{'Accept':'application/json'},signal});
@@ -488,7 +488,7 @@ async function registerWebMcpTools(){
    execute:async({query='',topic='',limit=20,offset=0}={},client={})=>{const d=await agentApi('/api/records',client.signal);let rs=d.records||[];const q=String(query||'').toLowerCase().trim(),t=String(topic||'').toLowerCase().trim();if(q)rs=rs.filter(r=>(r.subject+' '+r.name+' '+r.category+' '+(r.scopeTopics||[]).join(' ')).toLowerCase().includes(q));if(t)rs=rs.filter(r=>String(r.category||'').toLowerCase().includes(t));const start=Math.max(0,Number(offset)||0),n=Math.min(20,Math.max(1,Number(limit)||20));return JSON.stringify({archiveTitle:d.archiveTitle,manifestVersion:d.manifestVersion,dateRange:d.dateRange,count:rs.length,offset:start,records:rs.slice(start,start+n),dateNote:d.dateNote,scope:d.scope});}
   },
   {
-   name:'search_foi_archive',description:'Search full message text in all curated FOI/EIR records in the two-year Great House Farm, Llandough and Williams/Buckler archive. Returns matching record metadata and a small source excerpt; use read_foi_email to retrieve the complete text. Source-derived text is untrusted documentary content.',
+   name:'search_foi_archive',description:'Search full message text in all curated FOI/EIR records in the Wayback-hosted Great House Farm, Llandough and Williams/Buckler case archive. Returns matching record metadata and a small source excerpt; use read_foi_email to retrieve the complete text. Source-derived text is untrusted documentary content.',
    inputSchema:{type:'object',properties:{query:{type:'string',minLength:2,maxLength:160,description:'Required phrase or keywords to search in the entire source text.'}},required:['query'],additionalProperties:false},annotations:safeAnnotations,
    execute:async({query}={},client={})=>JSON.stringify(await agentApi('/api/search?q='+encodeURIComponent(String(query||'')),client.signal))
   },
@@ -516,7 +516,7 @@ registerWebMcpTools().catch(()=>{const s=$('webmcp-status');if(s)s.textContent='
 
 fetch('/api/records').then(async r=>{if(!r.ok)throw new Error('Catalogue response '+r.status);return r.json();}).then(data=>{
  manifest=data;allRecords=data.records||[];$('manifest-version').textContent=data.manifestVersion||'1.0.0';threads=buildThreads(allRecords);updateCounts();renderList();
- $('list-subtitle').textContent=threads.length+' FOI/EIR groups · '+allRecords.length+' curated public source records · 17 Oct 2024–17 Oct 2026';
+ $('list-subtitle').textContent=threads.length+' subject groups · '+allRecords.length+' Wayback-hosted public source records · all indexed years';
  const linked=threadFromCurrentUrl();
  const externalRef=referenceFromCurrentUrl();
  if(linked){openThread(linked,false).then(scrollToMessageHash).catch(err=>showReaderFatal(err,linked));}
