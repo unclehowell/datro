@@ -322,7 +322,7 @@ async function runWaybackImport(env, offset) {
       const timestamp = String(row[index("timestamp")] || "");
       const mime = String(row[index("mimetype")] || "");
       const code = String(row[index("statuscode")] || "");
-      if (!original || !/^\\d{8,14}$/.test(timestamp) || code !== "200" || /^text\\/html\\b/i.test(mime)) continue;
+      if (!original || !/^[0-9]{8,14}$/.test(timestamp) || code !== "200" || mime.toLowerCase().startsWith("text/html")) continue;
       validRows++;
       const archiveUrl = "https://web.archive.org/web/" + timestamp + "id_/" + original;
       const id = await stableAssetId(original);
