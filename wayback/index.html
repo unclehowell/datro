@@ -155,7 +155,8 @@
         { name: 'all', label: 'All', icon: '📦' },
         { name: 'images', label: 'Images', icon: '🖼' },
         { name: 'pdf', label: 'PDF', icon: '📄' },
-        { name: 'text', label: 'Text / Email', icon: '📝✉️' },
+        { name: 'text', label: 'Text', icon: '📝' },
+        { name: 'email', label: 'Case Emails', icon: '✉️' },
         { name: 'video', label: 'Video', icon: '🎬' }
       ];
       const PER_PAGE = 10;
@@ -224,10 +225,18 @@
 
       async function loadCategory(cat) {
         if (cat === 'all') return [];
-        const url = `${cat}/_treeview.json`;
+        const url = cat === 'email' ? 'email/mail-index.json' : `${cat}/_treeview.json`;
         try {
           const text = await xhrGet(url);
-          const data = JSON.parse(text);
+          const payload = JSON.parse(text);
+          const data = cat === 'email'
+            ? (payload.records || []).filter(record => record.recordType === 'correspondence').map(record => ({
+                ...record,
+                name: record.subject || record.name,
+                path: record.sourcePath || record.path,
+                tags: Array.from(new Set(['email', ...(record.tags || [])]))
+              }))
+            : payload;
           return data.map(item => ({
             ...item,
             _category: cat,
