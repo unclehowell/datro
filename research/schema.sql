@@ -29,3 +29,10 @@ CREATE INDEX IF NOT EXISTS idx_content_type_status ON content_items(source_type,
 CREATE INDEX IF NOT EXISTS idx_content_slug ON content_items(slug);
 CREATE INDEX IF NOT EXISTS idx_content_parent ON content_items(parent_source_id);
 CREATE INDEX IF NOT EXISTS idx_content_modified ON content_items(modified_gmt);
+
+-- Durable cursor for the scheduled, resumable public-source import.
+CREATE TABLE IF NOT EXISTS migration_state (
+  key TEXT PRIMARY KEY,
+  value TEXT NOT NULL DEFAULT '',
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
