@@ -26,7 +26,11 @@ Deploy from this directory or use the repository workflow after configuring Clou
 
 ## Import pages, posts and media
 
-Call the Worker with a bearer token configured as `ADMIN_TOKEN`:
+The live Worker has a one-minute Cron Trigger. It imports one 100-record source API page per invocation and maintains its cursor in the `migration_state` D1 table, so it can resume after a deployment or transient failure without an admin token. It processes published WordPress `page`, `post` and `media` collections in that order and upserts by original source type and ID. The import is read-only against the source site.
+
+Progress is visible at `/health`: `published_by_type` reports imported record counts and `migration_cursor` reports the current collection/page. `complete` means the public collections returned no more pages. If the cursor stops moving, inspect the `auto_import_last_error` row in `migration_state` through Cloudflare D1; the importer deliberately retries the same page rather than silently skipping it.
+
+Manual single-page import remains available for recovery. Set `ADMIN_TOKEN` as a Worker secret, then call:
 
 ```sh
 curl -X POST https://research.bucklerfamily.estate/admin/sync \
@@ -35,7 +39,7 @@ curl -X POST https://research.bucklerfamily.estate/admin/sync \
   -d '{"type":"page","page":1}'
 ```
 
-Run for each returned page number and for `post` and `media`. Each import is idempotent and returns the upstream total, total pages and imported count. Do not publish the administrative token.
+Do not publish the administrative token. The source API's pagination headers are authoritative where present; the importer follows each collection until its last page.
 
 ## Public interfaces
 
