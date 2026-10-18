@@ -1,3 +1,10 @@
+## 2026-10-18 — Three-part Parcel A forensic review
+
+- Added an interactive, explicitly non-cadastral schematic separating the proposed north woodland, central occupied core and south-eastern VG41 land within Parcel A, while retaining Parcel B as a control area.
+- Integrated the 1955 order/execution, indexed 1961 WGR–South Western Brick & Tile–Cardiff City deed, 1962 house-and-garden order, 1970 VG41 record, 1982–83 registration, 1987 appeal and later woodland chain as one falsifiable chronology.
+- Corrected the overstatement that peripheral parcels being uninhabited automatically prevents a possession order from applying; the exact order, plan, parties, independent third-party title and scope of adjudication control.
+- Added a balanced indicator/alternative-explanation matrix and prioritized primary-document list. No conclusion of fraud or collusion is asserted; the 1961 deed remains untranscribed in the indexed wiki record.
+
 ## [0.8.1.38] - 2026-07-26
 
 ## [0.8.1.37] - 2026-07-26

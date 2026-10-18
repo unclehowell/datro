@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Three-part Parcel A — forensic scope and title assessment</title>
+<meta name="description" content="Interactive forensic working assessment of the three proposed Parcel A components, the 1955 and 1962 possession orders, the 1961 WGR–Brick & Tile–Cardiff City deed, VG41 and later title transfers.">
+<style>
+:root{--ink:#17212b;--paper:#fbfaf7;--muted:#596471;--line:#d5d9de;--card:#fff;--accent:#265d47;--warn:#fff0cc;--blue:#e7f0fb;--green:#e6f2e9;--rose:#f8e8e5;--gold:#956515}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.62 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{padding:2.2rem max(1rem,calc((100vw - 1080px)/2));background:#162a2c;color:#fff}
+header .eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;opacity:.8}
+h1{font-size:clamp(1.9rem,4vw,3rem);line-height:1.08;margin:.4rem 0 1rem;max-width:900px}
+header p{max-width:780px;color:#e0e9e7;margin:.6rem 0}
+main{max-width:1080px;margin:0 auto;padding:1.2rem}
+section{margin:1.4rem 0 2.2rem}
+h2{font-size:1.45rem;margin:.4rem 0 1rem}
+h3{font-size:1.07rem;margin:.2rem 0 .45rem}
+p{margin:.55rem 0 1rem}
+a{color:#185c7a;overflow-wrap:anywhere}
+.small{font-size:.88rem;color:var(--muted)}
+.tag{display:inline-block;padding:.2rem .55rem;border:1px solid var(--line);border-radius:999px;font-size:.76rem;font-weight:650}
+.tag.warn{background:var(--warn);border-color:#e8d09b;color:#674b0e}
+.tag.good{background:var(--green);border-color:#b9d8c2;color:#215b37}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.1rem;box-shadow:0 2px 6px #162a2c08}
+.notice{border-left:4px solid #c39132;background:var(--warn);padding:1rem 1.1rem;border-radius:0 10px 10px 0}
+.diagram-shell{border:1px solid var(--line);background:#fff;border-radius:16px;padding:.75rem;overflow:hidden}
+.diagram{width:100%;height:auto;display:block}
+.layer{transition:opacity .18s ease}
+.layer.hidden{opacity:.08}
+.controls{display:flex;flex-wrap:wrap;gap:.5rem;margin:.9rem 0}
+.controls button{border:1px solid #aab5bc;border-radius:8px;background:#fff;padding:.55rem .8rem;color:var(--ink);font:inherit;font-weight:650;cursor:pointer}
+.controls button[aria-pressed="true"]{background:#183d36;color:white;border-color:#183d36}
+.legend{display:flex;flex-wrap:wrap;gap:.7rem;margin:.7rem 0}
+.swatch{width:.85rem;height:.85rem;border-radius:3px;display:inline-block;margin-right:.35rem;vertical-align:middle}
+table{border-collapse:collapse;width:100%;font-size:.91rem;margin:1rem 0}
+th,td{padding:.7rem;border:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#e9eeec}
+.timeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.7rem}
+.timeline .card{border-top:4px solid var(--accent)}
+summary{font-weight:700;cursor:pointer}
+details{border:1px solid var(--line);border-radius:10px;padding:.8rem 1rem;margin:.7rem 0;background:#fff}
+footer{background:#eef1ef;border-top:1px solid var(--line);padding:1.5rem max(1rem,calc((100vw - 1080px)/2));font-size:.88rem;color:#3e4b4b}
+code{background:#eef0f2;border-radius:4px;padding:.1rem .25rem}
+@media(max-width:620px){main{padding:.8rem}table{font-size:.82rem}th,td{padding:.45rem}header{padding:1.6rem 1rem}}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">Great House Farm / Tŷ Mawr · Research release 18 October 2026</div>
+  <h1>Three parts of Parcel A</h1>
+  <p>A forensic test of land identity, possession-order scope, pre-sale dealing and the later woodland / VG41 / BP title trails.</p>
+  <p><span class="tag warn">Working hypothesis — boundaries not yet verified</span> <span class="tag">Not a finding of fraud</span></p>
+</header>
+<main>
+<section>
+  <h2>What changed in the analysis?</h2>
+  <div class="notice"><strong>The useful proposition is the three-way title-and-scope test, not the claim that absence of habitation automatically defeats an order.</strong> The 1987 judgment report says the appeal was confined to the farmhouse and garden and the rest of the possession order was not challenged. It also recounts a 1955 order covering the whole farm. The original orders, plans, parties and execution return therefore control the answer.</div>
+  <p>The diagram below is conceptual, not a cadastral survey. Toggle each layer to focus on the three proposed subdivisions within Parcel A and the separate Parcel B control area. Colour denotes the research track, not verified ownership.</p>
+</section>
+<section>
+  <h2>Interactive parcel model</h2>
+  <div class="diagram-shell">
+    <div class="controls" aria-label="Show or hide parcel layers">
+      <button type="button" data-layer="north" aria-pressed="true">A-North: woodland</button>
+      <button type="button" data-layer="centre" aria-pressed="true">A-Centre: occupied core</button>
+      <button type="button" data-layer="green" aria-pressed="true">A-South-East: VG41</button>
+      <button type="button" data-layer="b" aria-pressed="true">Parcel B: fields</button>
+      <button type="button" id="show-all">Show all</button>
+    </div>
+    <svg class="diagram" viewBox="0 0 900 465" role="img" aria-labelledby="mapTitle mapDesc">
+      <title id="mapTitle">Conceptual three-part Parcel A and separate Parcel B</title>
+      <desc id="mapDesc">A schematic with woodland north of a central farmhouse and garden, VG41-associated ground to the southeast, and Parcel B in a separate field block to the east. Not to scale and not a legal boundary plan.</desc>
+      <rect x="0" y="0" width="900" height="465" rx="12" fill="#f4f3ed"/>
+      <path d="M55 65 L550 45 L600 100 L575 198 L540 230 L500 245 L500 315 L415 355 L240 340 L145 275 L105 180 Z" fill="#d7ddd6" stroke="#8b9690" stroke-width="2" stroke-dasharray="7 5"/>
+      <text x="78" y="42" font-size="16" font-weight="700" fill="#33443e">PROVISIONAL PARCEL A ENVELOPE</text>
+      <g class="layer" data-part="north">
+        <path d="M110 85 L500 69 L545 111 L515 180 L370 189 L185 177 L125 142 Z" fill="#b6d6bf" stroke="#34734c" stroke-width="2.5"/>
+        <g fill="#34734c" opacity=".45">
+          <circle cx="160" cy="111" r="18"/><circle cx="212" cy="133" r="22"/><circle cx="271" cy="106" r="19"/><circle cx="322" cy="143" r="24"/><circle cx="382" cy="112" r="20"/><circle cx="438" cy="143" r="23"/><circle cx="490" cy="114" r="15"/>
+        </g>
+        <text x="325" y="94" text-anchor="middle" font-size="18" font-weight="750" fill="#173e27">A-NORTH</text>
+        <text x="325" y="167" text-anchor="middle" font-size="15" fill="#173e27">Woodland / forest track</text>
+        <text x="325" y="185" text-anchor="middle" font-size="11" fill="#173e27">Later chain/title to verify</text>
+      </g>
+      <g class="layer" data-part="centre">
+        <path d="M170 210 L410 203 L442 261 L401 306 L238 309 L170 271 Z" fill="#c6daf3" stroke="#376eae" stroke-width="2.5"/>
+        <rect x="266" y="232" width="64" height="42" rx="3" fill="#fefefe" stroke="#376eae" stroke-width="2"/>
+        <path d="M256 232 L298 204 L340 232 Z" fill="#7099c9" stroke="#376eae" stroke-width="2"/>
+        <text x="301" y="293" text-anchor="middle" font-size="17" font-weight="750" fill="#183d68">A-CENTRE</text>
+        <text x="301" y="326" text-anchor="middle" font-size="13" fill="#183d68">House / buildings / garden</text>
+      </g>
+      <g class="layer" data-part="green">
+        <path d="M430 288 L530 236 L572 266 L546 333 L487 356 L430 330 Z" fill="#f6ddb0" stroke="#a86d18" stroke-width="2.5"/>
+        <text x="501" y="286" text-anchor="middle" font-size="16" font-weight="750" fill="#6d4108">A-SE</text>
+        <text x="501" y="306" text-anchor="middle" font-size="13" fill="#6d4108">VG41 / green</text>
+        <text x="501" y="324" text-anchor="middle" font-size="10" fill="#6d4108">Claim / title to verify</text>
+      </g>
+      <g class="layer" data-part="b">
+        <path d="M635 85 L842 98 L856 192 L812 235 L648 223 L617 163 Z" fill="#e5c5c1" stroke="#a84c43" stroke-width="2.5"/>
+        <path d="M657 112 L827 124 M647 144 L838 157 M640 177 L829 190" stroke="#a84c43" stroke-width="1.2" opacity=".6"/>
+        <text x="737" y="76" text-anchor="middle" font-size="18" font-weight="750" fill="#7a302a">PARCEL B</text>
+        <text x="737" y="249" text-anchor="middle" font-size="13" fill="#7a302a">Eastern agricultural fields</text>
+        <text x="737" y="266" text-anchor="middle" font-size="11" fill="#7a302a">1939 plan control lead</text>
+      </g>
+      <path d="M542 215 C574 202 591 192 621 177" fill="none" stroke="#66716c" stroke-width="2" stroke-dasharray="5 5"/>
+      <text x="581" y="226" text-anchor="middle" font-size="10" fill="#4a5550">Relationship / boundary</text>
+      <text x="450" y="422" text-anchor="middle" font-size="14" fill="#48534e">Schematic only · no scale · not for conveyancing or court filing</text>
+      <text x="450" y="442" text-anchor="middle" font-size="12" fill="#48534e">Current ownership and exact polygon edges remain subject to title-plan and deed comparison</text>
+    </svg>
+    <div class="legend">
+      <span><i class="swatch" style="background:#b6d6bf"></i>A-North · woodland</span>
+      <span><i class="swatch" style="background:#c6daf3"></i>A-Centre · occupied core</span>
+      <span><i class="swatch" style="background:#f6ddb0"></i>A-South-East · VG41</span>
+      <span><i class="swatch" style="background:#e5c5c1"></i>Parcel B · control area</span>
+    </div>
+  </div>
+</section>
+<section>
+  <h2>The strongest chronology correlation</h2>
+  <div class="timeline">
+    <div class="card"><span class="tag">1955</span><h3>Whole-farm order / execution</h3><p class="small">Reportedly covered the whole farm; possession was taken over the non-house portions, but not the occupied house/garden. Verify exact order, plan, writ and return.</p></div>
+    <div class="card"><span class="tag">1961</span><h3>WGR · Brick & Tile · Cardiff City</h3><p class="small">A deed dated 29 March 1961 is indexed. Its land, plan and operative effect remain unresolved. It may be the bridge between the earlier taking and later proceedings.</p></div>
+    <div class="card"><span class="tag">1962</span><h3>House / garden order</h3><p class="small">The reported order is specifically for the farmhouse and garden. Compare its plan with the 1955 and 1961 plans.</p></div>
+    <div class="card"><span class="tag">1969–70</span><h3>Sale and VG41 register</h3><p class="small">WGR reportedly sold Great House Farm to BP Pension Trust in 1969; the VG41 registration is recorded in 1970. Establish whether these instruments cover the same or different land.</p></div>
+    <div class="card"><span class="tag">1982–87</span><h3>Registration and appeal</h3><p class="small">BP registration preceded the 1987 appellate judgment. Determine the actual title extent and which issues the court decided—not merely how a later file describes the judgment.</p></div>
+    <div class="card"><span class="tag">1994–2005</span><h3>Later woodland chain</h3><p class="small">Map transfers and any excision against the exact A-North polygon. Later purchasers or charitable ownership may affect route and remedy.</p></div>
+  </div>
+</section>
+<section>
+  <h2>Test the order theory from both sides</h2>
+  <div class="grid">
+    <div class="card">
+      <span class="tag good">Supports further inquiry</span>
+      <h3>Separate land histories</h3>
+      <p>The judgment report distinguishes the house/garden from the rest; the 1961 deed and 1970 VG41 file may independently identify transactions or claims touching land outside the occupied core. If title plans diverge, the mismatch can be tested.</p>
+    </div>
+    <div class="card">
+      <span class="tag warn">Material adverse point</span>
+      <h3>The 1987 report is not a clean escape</h3>
+      <p>The report says the 1955 order concerned the whole farm and that the remainder was not challenged on appeal. Lack of habitation does not automatically make peripheral land immune. A third-party independent title may raise a different issue, but the orders and parties must be checked.</p>
+    </div>
+    <div class="card">
+      <span class="tag">Key evidence gap</span>
+      <h3>1961 deed not transcribed</h3>
+      <p>Until the complete deed, plan and recited title are available, one cannot responsibly say whether WGR transferred, leased, reserved or merely regulated rights in any part of Parcel A.</p>
+    </div>
+  </div>
+</section>
+<section>
+  <h2>Priority document checklist</h2>
+  <p class="small">Tick each item only after obtaining and reviewing the primary document—not when a search has merely been requested.</p>
+  <div class="card">
+    <label><input type="checkbox"> GHF-E125: sealed 1955 order, pleaded claim, affidavits and plan</label><br>
+    <label><input type="checkbox"> GHF-E126: 4 July 1955 writ/warrant, execution return and bailiff record</label><br>
+    <label><input type="checkbox"> GHF-E129: full 1961 WGR / Brick & Tile / Cardiff City deed and plan</label><br>
+    <label><input type="checkbox"> GHF-E130: 1962 order, claim and plan</label><br>
+    <label><input type="checkbox"> GHF-E133: 1970 VG41 application, map, ownership section, notices and objections</label><br>
+    <label><input type="checkbox"> December 1969 WGR-to-BP Pension Trust sale and plan</label><br>
+    <label><input type="checkbox"> 1982–83 HMLR applications, solicitor certificate, title plans and notice/objection file</label><br>
+    <label><input type="checkbox"> 1986–87 pleadings, sealed orders, appeal record and plan</label><br>
+    <label><input type="checkbox"> 1975 / 1994 / 2005 woodland transfer plans and current title plan</label>
+  </div>
+</section>
+<section>
+  <h2>Fraud / concealment screening</h2>
+  <details><summary>What would raise the concern materially?</summary><p>An authenticated plan mismatch; a deed purporting to transfer land outside the grantor’s proven title; material omission or misdescription in a registration application; proof that a decision-maker knew of a competing title and made a materially false statement; or evidence that an order was deliberately represented as deciding a title issue it did not decide.</p><p>Each requires the original instrument, a responsible person or body, chronology, knowledge/intent where legally relevant, and a demonstrated effect. A missing document or a council’s role as register keeper is not, by itself, evidence of concealment or collusion.</p></details>
+  <details><summary>What would weaken or defeat the theory?</summary><p>Consistent historic and modern plans; an unbroken deed chain establishing the grantor’s right over all three components; proof that the 1955 order and return lawfully covered the disputed areas; VG41 material contrary to the family claim; or independent title and limitation rules that prevent the proposed modern remedy.</p></details>
+</section>
+<section>
+  <h2>Source trail</h2>
+  <ul>
+    <li><a href="https://vlex.co.uk/vid/b-p-properties-ltd-793844841">B.P. Properties Ltd v Buckler [1987] EWCA Civ 2 — published judgment</a></li>
+    <li><a href="https://greathousefarmwiki.wordpress.com/family-legal-case-control-room/1955-parcel-a-loss-dossier-woodland-vg41-green/">1955 Parcel-A Loss Dossier — Woodland + VG41</a></li>
+    <li><a href="https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e125-1955-high-court-order-14-possession-order-and-papers/">GHF-E125 — 1955 order papers</a> · <a href="https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e126-4-july-1955-writ-of-possession-execution-and-return/">GHF-E126 — execution return</a></li>
+    <li><a href="https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e129-1961-wgr-south-western-brick-and-tile-cardiff-city-deed/">GHF-E129 — 1961 WGR / Brick & Tile / Cardiff City deed</a> · <a href="https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e130-11-december-1962-cardiff-county-court-possession-order/">GHF-E130 — 1962 order</a></li>
+    <li><a href="https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e133-16-june-1970-vg41-village-green-registration-and-ownership-file/">GHF-E133 — VG41 registration file</a></li>
+    <li><a href="https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/procedural-fairness-notice/1983-first-registration-parcel-a-title-basis-alleged-hmlr-mistake/">1983 first-registration assessment</a></li>
+  </ul>
+</section>
+</main>
+<footer>
+  <strong>Change record / guest-book entry · 18 October 2026</strong>
+  <p>Added a three-part Parcel A model and an interactive schematic; integrated the 1961 deed, 1955/1962 order distinction, 1970 VG41 track and 1982–87 registration/litigation chronology; added supportive and adverse hypotheses; corrected the assumption that non-inhabitation alone defeats an order. The diagram is illustrative only and no new title document was discovered by this analysis.</p>
+  <p>Research status: high-value scope/title hypothesis, not proof of fraud. <a href="https://greathousefarmwiki.wordpress.com/">Open the Great House Farm Wiki</a>.</p>
+</footer>
+<script>
+document.querySelectorAll("button[data-layer]").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    var layer=btn.getAttribute("data-layer");
+    var nodes=document.querySelectorAll('[data-part="'+layer+'"]');
+    var next=btn.getAttribute("aria-pressed")!=="true";
+    btn.setAttribute("aria-pressed",String(next));
+    nodes.forEach(function(node){node.classList.toggle("hidden",!next);});
+  });
+});
+document.getElementById("show-all").addEventListener("click",function(){
+  document.querySelectorAll("button[data-layer]").forEach(function(btn){btn.setAttribute("aria-pressed","true");});
+  document.querySelectorAll(".layer").forEach(function(node){node.classList.remove("hidden");});
+});
+</script>
+</body>
+</html>

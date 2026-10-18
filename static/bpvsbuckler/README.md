@@ -9,6 +9,7 @@ A narrated film storyboard of the true story of the Williams/Buckler family and 
 - **Play** (`/?event=<id>`) — one scene at a time, narrated, with the scene's photo or press cutting, evidence, parcel and basis
 - **Storyboard** (`/?view=storyboard`) — every scene as a panel, grouped into a prologue, eight acts and an epilogue
 - **Cast** (`/?view=cast`) — the people and bodies in the story and the scenes they appear in
+- **Three-part Parcel A assessment** (`/research/three-parcel-split-forensic-assessment.html`) — interactive schematic, 1955/1961/1962/1970/1982–87 chronology, evidence for and against, and the primary-document control list
 - **Questions** (`/?view=questions`) — the case questions, their current answers and status, and a search over every question and answer in the correspondence
 - **Script** (`/story/`) — the printable script and scene list; each act starts on a new page when printed
 - **Data** — `/api/timeline.json`, `/api/graph.json`, `/api/qa.json`, `/api/ask?q=`, `/llms.txt`, `/story/transcript.txt`, `sitemap.xml`
