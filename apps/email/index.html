@@ -35,6 +35,65 @@ button,input{font:inherit}button{cursor:pointer}a{color:var(--blue)}
 .embed-mode .embed-button{display:none!important}
 .embed-mode .reader-empty{min-height:100vh}
 
+
+/* Gmail-inspired, mobile-first inbox layout. */
+:root{color-scheme:light;--bg:#f6f8fc;--surface:#fff;--line:#dadce0;--text:#202124;--muted:#5f6368;--blue:#0b57d0;--soft:#e8f0fe;--navy:#174ea6}
+body{background:var(--bg);color:var(--text)}
+.topbar{height:auto;min-height:64px;padding:8px 16px;gap:16px;background:var(--bg)}
+.brand{min-width:210px;gap:10px}.brand-icon{height:36px;width:36px;border-radius:50%;font-size:19px;background:#d3e3fd}
+.brand h1{font-size:16px;font-weight:500}.brand p{font-size:11px}
+.search-wrap{max-width:none}.search-wrap input{background:#eaf0fb;border-radius:8px;height:42px}
+.btn{border-radius:9px}.btn.primary{font-weight:600}
+.layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:12px;height:calc(100dvh - 64px);min-height:420px;padding:12px}
+.sidebar,.list-panel,.reader-panel{border:0;border-radius:12px;box-shadow:0 1px 2px #2021240a}
+.sidebar{padding:12px 8px;gap:3px}.navbtn{padding:10px 13px;border-radius:0 24px 24px 0;font-size:13px}.navbtn.active{background:#d3e3fd;color:#174ea6}
+.list-panel{display:flex;flex-direction:column;min-width:0;min-height:0}.list-heading{padding:15px 18px 10px}.list-heading h2{font-size:16px;font-weight:500}.list-heading p{font-size:11px}
+.result-list{min-height:0;overscroll-behavior:contain}.result{padding:12px 18px;border-bottom:1px solid #f0f1f3}.result:hover{background:#f7f9fc}.result.active{background:#e8f0fe;border-left:3px solid var(--blue);padding-left:15px}.result-subject{font-size:13px;font-weight:600}.result-thread{font-size:12px;margin-top:3px}.result-meta{margin-top:3px}
+.reader-panel{display:none;min-width:0;min-height:0;flex-direction:column}
+body.reader-open .layout{grid-template-columns:220px minmax(280px,350px) minmax(0,1fr)}
+body.reader-open .reader-panel{display:flex}
+.reader-header{padding:16px 20px 12px;flex-shrink:0}
+.reader-title{font-size:18px;font-weight:500;margin-bottom:8px}
+.reader-actions{margin-top:10px;gap:6px}.reader-actions .btn{padding:7px 10px;font-size:12px}
+.reader-scroll{padding:14px 20px 20px;min-height:0;overscroll-behavior:contain}
+.message-card{border-radius:10px;margin-bottom:12px}.message-head{padding:11px 13px;background:#f8fafd}.message-body{font:13px/1.6 Arial,Helvetica,sans-serif;padding:14px}
+.summary{padding:10px 14px 14px;background:#fff;flex-shrink:0}.summary details{border-radius:9px}.summary summary{font-size:12px}
+.reader-empty{display:none!important}.mobile-back{display:none;align-items:center;gap:6px;border:0;background:transparent;color:var(--blue);font-weight:600;padding:6px 8px 6px 0}
+.agent-access{margin:0 12px 14px;border-radius:12px}
+@media(max-width:1050px) and (min-width:761px){.layout{grid-template-columns:190px minmax(0,1fr);gap:8px;padding:8px}.topbar{padding:8px 12px;gap:10px}.brand{min-width:185px}body.reader-open .layout{grid-template-columns:180px minmax(250px,310px) minmax(0,1fr)}.reader-header,.reader-scroll{padding-left:13px;padding-right:13px}}
+@media(max-width:760px){
+ .topbar{position:sticky;top:0;min-height:0;padding:9px 12px 10px;display:flex;flex-wrap:wrap;gap:8px;background:var(--bg)}
+ .brand{min-width:0;flex:1}.brand-icon{width:32px;height:32px}.brand h1{font-size:15px}.brand p{display:none}.version-chip{display:none}
+ .search-wrap{flex:1 0 100%;order:2;gap:6px}.search-wrap input{height:40px;min-width:0;padding:0 13px;font-size:14px}.search-wrap .btn{padding:8px 10px;font-size:12px;white-space:nowrap}
+ .layout{display:flex;flex-direction:column;gap:7px;padding:7px;height:calc(100dvh - 106px);min-height:340px}
+ .sidebar{display:flex;flex-direction:row;flex-wrap:nowrap;gap:4px;overflow-x:auto;overflow-y:hidden;padding:3px 0 7px;background:transparent;border-radius:0;box-shadow:none;scrollbar-width:none;flex-shrink:0}
+ .sidebar::-webkit-scrollbar{display:none}.sidebar h2,.sidebar-note{display:none}
+ .navbtn{display:flex;flex:0 0 auto;width:auto;white-space:nowrap;padding:7px 11px;border:1px solid var(--line);border-radius:18px;background:#fff;font-size:11px;gap:8px}
+ .navbtn.active{background:#d3e3fd;border-color:#d3e3fd}
+ .list-panel{flex:1;min-height:0;max-height:none;border-radius:12px}
+ .list-heading{padding:12px 14px 9px}.list-heading h2{font-size:15px}.list-heading p{font-size:10px}
+ .result{padding:12px 13px}.result-subject{font-size:13px}.result-date{font-size:10px}.result-meta{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:10px}
+ .reader-panel{display:none!important}
+ body.reader-open .topbar,body.reader-open .sidebar,body.reader-open .list-panel,body.reader-open .agent-access{display:none!important}
+ body.reader-open .layout{display:block;height:100dvh;min-height:0;padding:0;margin:0}
+ body.reader-open .reader-panel{display:flex!important;height:100dvh;min-height:0;border:0;border-radius:0;box-shadow:none}
+ .reader-header{padding:9px 13px 11px;border-bottom:1px solid var(--line)}
+ .mobile-back{display:inline-flex;margin-bottom:7px;font-size:13px}
+ .reader-title{font-size:17px;margin-bottom:8px}
+ .reader-tags{gap:5px}.tag{font-size:10px;padding:3px 6px}
+ .reader-actions{gap:5px;flex-wrap:nowrap;overflow-x:auto;padding-bottom:2px}.reader-actions .btn{flex:0 0 auto;padding:7px 9px;font-size:11px}
+ .reader-scroll{padding:10px 11px 14px;flex:1;min-height:0;max-height:none;overflow-y:auto}
+ .message-card{margin-bottom:9px}.message-head{padding:9px 10px}.message-title{font-size:12px}.message-source{font-size:10px;line-height:1.45}.message-body{font-size:12px;line-height:1.55;padding:11px}
+ .summary{padding:8px 10px 10px}.summary details{padding:9px 10px}.summary summary{font-size:11px}
+ .agent-access{margin:0 7px 10px;padding:12px}
+}
+.embed-mode .reader-panel{display:flex!important}
+.embed-mode .reader-empty:not([hidden]){display:flex!important;min-height:0!important;flex:0 0 auto;align-items:flex-start;justify-content:flex-start;padding:12px 15px;text-align:left;background:#fff;border-radius:0}
+.embed-mode .reader-empty .big-icon{display:none}
+.embed-mode .reader-empty h2{font-size:13px;margin:0}
+.embed-mode .reader-empty p{font-size:12px;margin:3px 0 0;line-height:1.45}
+.embed-mode .mobile-back{display:none!important}
+
 </style>
 </head>
 <body>
@@ -58,9 +117,9 @@ button,input{font:inherit}button{cursor:pointer}a{color:var(--blue)}
   <div class="result-list" id="result-list"><div class="empty-list">Loading the public archive index…</div></div>
  </section>
  <section class="reader-panel" aria-label="Selected email thread">
-  <div class="reader-empty" id="reader-empty"><div class="empty-inner"><div class="big-icon">✉️</div><h2>Select a conversation</h2><p>Choose a subject in the centre panel to read the archived correspondence. The full message text appears in a vertically scrollable pane; the evidence summary and version record sit below it.</p></div></div>
+  <div class="reader-empty" id="reader-empty"><div class="empty-inner"><h2>No conversation selected</h2><p>Select a message to read it.</p></div></div>
   <div id="reader-content" hidden style="display:flex;flex:1;min-height:0;flex-direction:column">
-   <div class="reader-header"><h2 class="reader-title" id="reader-title"></h2><div class="reader-tags" id="reader-tags"></div><div class="reader-actions" id="reader-actions"></div></div>
+   <div class="reader-header"><button type="button" class="mobile-back" id="back-to-inbox" aria-label="Back to conversation list">‹ Inbox</button><h2 class="reader-title" id="reader-title"></h2><div class="reader-tags" id="reader-tags"></div><div class="reader-actions" id="reader-actions"></div></div>
    <div class="reader-scroll" id="reader-scroll"><div class="message-loading">Loading archived message text…</div></div>
    <div class="summary"><details id="thread-details"><summary>Thread description, correspondence scope & evidence version</summary><div class="summary-content" id="thread-summary"></div></details></div>
   </div>
@@ -199,7 +258,7 @@ function extractHeaders(text){
  return vals;
 }
 function showReaderFatal(error,t){
- const panel=$('reader-panel'), empty=$('reader-empty'), content=$('reader-content'), reader=$('reader-scroll');
+ const panel=$('reader-panel'), empty=$('reader-empty'), content=$('reader-content'), reader=$('reader-scroll'); document.body.classList.add('reader-open');
  if(empty) empty.hidden=true;
  if(content){content.hidden=false;content.style.display='flex';}
  if($('reader-title')) $('reader-title').textContent=(t&&t.subject)||'Could not open conversation';
@@ -220,7 +279,7 @@ function showReaderFatal(error,t){
 }
 async function openThread(t, pushHistory){
  // Make the reading pane visible before attempting URL/history operations or network calls.
- selectedThread=t;renderList();
+ selectedThread=t;renderList();document.body.classList.add('reader-open');
  $('reader-empty').hidden=true;$('reader-content').hidden=false;$('reader-content').style.display='flex';
  document.title = t.subject + ' — Great House Farm Mail';
  if(pushHistory !== false){
@@ -323,7 +382,7 @@ function externalSearchCandidates(ref){
  return candidates.slice(0,8);
 }
 function showReferenceLanding(ref,candidates,note){
- selectedThread=null;
+ selectedThread=null;document.body.classList.add('reader-open');
  $('reader-empty').hidden=true;$('reader-content').hidden=false;$('reader-content').style.display='flex';
  document.title=(ref.title||'Public email archive reference')+' — Great House Farm Mail';
  $('reader-title').textContent=ref.title||'Public email archive reference';
@@ -400,10 +459,11 @@ window.addEventListener('popstate',()=>{
  const linked=threadFromCurrentUrl();
  if(linked){openThread(linked,false).then(scrollToMessageHash).catch(err=>showReaderFatal(err,linked));}
  else{
-  selectedThread=null;renderList();$('reader-content').hidden=true;$('reader-empty').hidden=false;document.title='Great House Farm FOI & EIR Mail Archive';
+  selectedThread=null;document.body.classList.remove('reader-open');renderList();$('reader-content').hidden=true;$('reader-empty').hidden=false;document.title='Great House Farm Public Email & Case Archive';
   if(embedMode){$('reader-empty').querySelector('h2').textContent='Thread link required';$('reader-empty').querySelector('p').textContent='Open a specific /thread/<id>?embed=1 URL to display an email evidence preview.';}
  }
 });
+$('back-to-inbox').addEventListener('click',()=>{selectedThread=null;document.body.classList.remove('reader-open');$('reader-content').hidden=true;$('reader-empty').hidden=true;try{window.history.replaceState({},'',window.location.origin+'/');}catch(e){}renderList();document.title='Great House Farm Public Email & Case Archive';});
 // Google WebMCP progressive enhancement; the JSON API remains the universal fallback.
 async function agentApi(path, signal) {
  const res=await fetch(path,{headers:{'Accept':'application/json'},signal});
@@ -462,7 +522,7 @@ fetch('/api/records').then(async r=>{if(!r.ok)throw new Error('Catalogue respons
  if(linked){openThread(linked,false).then(scrollToMessageHash).catch(err=>showReaderFatal(err,linked));}
  else if(externalRef){openExternalReference(externalRef).catch(err=>showReferenceLanding(externalRef,externalSearchCandidates(externalRef),'Archive lookup failed: '+String(err&&err.message||err)));}
  else if(embedMode){
-  $('reader-empty').querySelector('h2').textContent='Thread link required';
+  document.body.classList.add('reader-open');$('reader-empty').querySelector('h2').textContent='Thread link required';
   $('reader-empty').querySelector('p').textContent='This preview needs a specific /thread/<id>?embed=1 URL. Reopen the thread from the archive and copy its embed code.';
  }
 }).catch(e=>{$('list-subtitle').textContent='Could not load the public catalogue: '+(e&&e.message?e.message:String(e));$('result-list').replaceChildren();const d=document.createElement('div');d.className='empty-list';d.textContent='The source index could not be loaded. Please retry later or inspect the repository archive index directly.';$('result-list').appendChild(d);});
