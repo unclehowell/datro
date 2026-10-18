@@ -10,6 +10,7 @@ import {
   type Status,
 } from "@/data/disclosure";
 import { RingWheel, type Selection } from "@/components/ring-wheel";
+import { responseAssessments, rfsDimensions, rfsScale, rfsMethodNote, unscoredResponses } from "@/data/response-assessments";
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -87,6 +88,8 @@ function Home() {
           ))}
         </ol>
       </header>
+
+      <p className="text-sm text-muted">Message-level response assessments are now included. <a href="#response-tactics-audit" className="text-brass underline decoration-brass underline-offset-4">Jump to Response Friction Scores (RFS)</a>.</p>
 
       <div className="flex flex-wrap gap-2" role="toolbar" aria-label="Colour key">
         {(Object.keys(statusMeta) as Status[]).map((status) => {
@@ -232,6 +235,123 @@ function Home() {
           </div>
         </aside>
       </div>
+
+      <section id="response-tactics-audit" className="mt-8 scroll-mt-6 border-t border-line pt-6" aria-labelledby="rfs-heading">
+        <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-3xl">
+            <p className="text-xs tracking-[0.18em] text-brass uppercase">Three-hat review · source-checked sample</p>
+            <h2 id="rfs-heading" className="mt-1 font-serif text-2xl leading-tight text-fg md:text-3xl">
+              Response Tactics &amp; Response Friction Score
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted">
+              RFS is the auditable label; “arsehole score” is the informal shorthand. Scores apply to individual messages, not an entire institution or a person’s character. Higher means more observable friction—not proof of motive, concealment or illegality.
+            </p>
+          </div>
+          <div className="rounded-xl border border-line bg-surface px-3 py-2 text-xs text-muted">
+            <p><strong className="text-fg">7</strong> source-reviewed messages</p>
+            <p><strong className="text-fg">7</strong> currently scored</p>
+            <p>Unreviewed replies remain unscored</p>
+          </div>
+        </div>
+
+        <div className="mb-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
+          {rfsDimensions.map((dimension) => (
+            <article key={dimension.name} className="rounded-xl border border-line bg-surface p-3">
+              <h3 className="text-sm font-semibold text-fg">{dimension.name}</h3>
+              <p className="mt-1 text-xs leading-relaxed text-muted">{dimension.description}</p>
+              <p className="mt-2 text-[11px] text-faint">Score each: 0–2</p>
+            </article>
+          ))}
+        </div>
+
+        <div className="mb-5 flex flex-wrap gap-2">
+          {rfsScale.map((item) => (
+            <span key={item.range} className="rounded-full border border-line bg-surface px-3 py-1.5 text-xs text-muted">
+              <strong className="text-fg">{item.range}</strong> {item.label}
+            </span>
+          ))}
+        </div>
+
+        <div className="grid gap-3 lg:grid-cols-2">
+          {responseAssessments.map((assessment) => (
+            <article key={assessment.id} className="rounded-2xl border border-line bg-surface p-4">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="text-xs tracking-wide text-faint uppercase">{assessment.recipient} · {assessment.date}</p>
+                  <h3 className="mt-1 font-serif text-xl leading-tight text-fg">{assessment.subject}</h3>
+                  <p className="mt-1 text-xs text-muted">Confidence: <span className="font-semibold text-fg">{assessment.confidence}</span> · {assessment.sourceStatus}</p>
+                </div>
+                <div className="shrink-0 rounded-xl border border-line bg-surface-2 px-3 py-2 text-center">
+                  <p className="text-[10px] tracking-wide text-muted uppercase">RFS</p>
+                  <p className="text-2xl font-semibold tabular-nums text-fg">{assessment.score}<span className="text-sm text-muted">/10</span></p>
+                </div>
+              </div>
+
+              <p className="mt-3 text-sm leading-relaxed text-fg">{assessment.basis}</p>
+
+              <div className="mt-3">
+                <p className="text-xs font-semibold tracking-wide text-muted uppercase">Signals observed</p>
+                <div className="mt-1 flex flex-wrap gap-1.5">
+                  {assessment.tags.map((tag) => (
+                    <span key={tag} className="rounded-md border border-line px-2 py-1 text-xs text-muted">{tag}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-3">
+                <p className="text-xs font-semibold tracking-wide text-muted uppercase">Force · Secrecy · Licence lens</p>
+                <p className="mt-1 text-sm text-muted">{assessment.powerLenses.length ? assessment.powerLenses.join(" · ") : "No power-lens tag supported by this message."}</p>
+              </div>
+
+              <details className="mt-4 border-t border-line pt-3">
+                <summary className="cursor-pointer text-sm font-semibold text-fg">Why this score? See component scores and caveats</summary>
+                <ul className="mt-3 space-y-2">
+                  {assessment.dimensions.map((dimension) => (
+                    <li key={dimension.name} className="text-sm">
+                      <p className="font-semibold text-fg">{dimension.name}: {dimension.score}/2</p>
+                      <p className="mt-0.5 text-xs leading-relaxed text-muted">{dimension.basis}</p>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-3 border-t border-line pt-3">
+                  <p className="text-xs font-semibold text-fg">Mitigating features</p>
+                  <p className="mt-1 text-xs leading-relaxed text-muted">{assessment.mitigatingEvidence}</p>
+                  <p className="mt-3 text-xs font-semibold text-fg">Source limits</p>
+                  <p className="mt-1 text-xs leading-relaxed text-muted">{assessment.limits}</p>
+                </div>
+              </details>
+
+              <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 border-t border-line pt-3 text-sm">
+                {assessment.threadUrl && (
+                  <a href={assessment.threadUrl} target="_blank" rel="noreferrer" className="text-brass underline decoration-brass underline-offset-4">Open email thread <ExternalLink className="inline size-3" aria-hidden /></a>
+                )}
+                <a href={assessment.sourceUrl} target="_blank" rel="noreferrer" className="text-brass underline decoration-brass underline-offset-4">Read source text <ExternalLink className="inline size-3" aria-hidden /></a>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <section className="mt-6 rounded-2xl border border-line bg-surface p-4" aria-labelledby="rfs-unscored">
+          <h3 id="rfs-unscored" className="font-serif text-xl text-fg">Unscored pending source review</h3>
+          <p className="mt-1 text-sm leading-relaxed text-muted">The three-hat predictions are hypotheses to test against replies, not automatic labels. These items are deliberately left unscored until the actual response or attachment is read, or the relevant deadline is verified.</p>
+          <ul className="mt-3 divide-y divide-line">
+            {unscoredResponses.map((item) => (
+              <li key={item.id} className="py-3 first:pt-0 last:pb-0">
+                <p className="text-sm font-semibold text-fg">{item.recipient}</p>
+                <p className="mt-0.5 text-xs font-semibold text-muted">{item.status}</p>
+                <p className="mt-1 text-sm leading-relaxed text-muted">{item.reason}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <div className="mt-4 flex flex-col gap-2 rounded-xl border border-line bg-surface px-4 py-3">
+          <p className="text-xs font-semibold tracking-wide text-muted uppercase">Scoring rule</p>
+          <p className="text-sm leading-relaxed text-muted">{rfsMethodNote}</p>
+          <p className="text-xs text-faint">Official reference: <a href="https://ico.org.uk/for-organisations/foi/freedom-of-information-and-environmental-information-regulations/section-12-requests-where-the-cost-of-compliance-exceeds-the-appropriate-limit/" target="_blank" rel="noreferrer" className="text-brass underline decoration-brass underline-offset-4">ICO section 12 guidance</a> · <a href="https://ico.org.uk/for-organisations/foi/freedom-of-information-and-environmental-information-regulations/section-16-advice-and-assistance/" target="_blank" rel="noreferrer" className="text-brass underline decoration-brass underline-offset-4">section 16 advice and assistance</a> · <a href="https://ico.org.uk/for-organisations/foi/freedom-of-information-and-environmental-information-regulations/section-17-refusing-a-request-writing-a-refusal-notice/" target="_blank" rel="noreferrer" className="text-brass underline decoration-brass underline-offset-4">section 17 refusal notices</a>.</p>
+          <p className="text-xs text-faint">Coverage note: the first pass scores seven source-reviewed messages from the indexed archive; it is not a rating of all 585 Wayback objects, and the archive classification does not mean every indexed object is an independently verified email.</p>
+        </div>
+      </section>
     </main>
   );
 }
