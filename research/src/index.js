@@ -15,7 +15,22 @@ export default {
     try {
       if (url.pathname === "/health") {
         const count = await env.DB.prepare("SELECT COUNT(*) AS count FROM content_items WHERE status = 'publish'").first();
-        return cors(json({ ok: true, service: "research-wp", environment: env.ENVIRONMENT || "unknown", published_records: count ? count.count : 0 }));
+        const grouped = await env.DB.prepare("SELECT source_type, COUNT(*) AS count FROM content_items WHERE status = 'publish' GROUP BY source_type").all();
+        const publishedByType = {};
+        for (const row of (grouped.results || [])) publishedByType[row.source_type] = row.count;
+        const cursorRow = await env.DB.prepare("SELECT value FROM migration_state WHERE key='auto_import_cursor'").first();
+        const completedRow = await env.DB.prepare("SELECT value FROM migration_state WHERE key='auto_import_completed_at'").first();
+        const noteRow = await env.DB.prepare("SELECT value FROM migration_state WHERE key='auto_import_completion_note'").first();
+        return cors(json({
+          ok: true,
+          service: "research-wp",
+          environment: env.ENVIRONMENT || "unknown",
+          published_records: count ? count.count : 0,
+          published_by_type: publishedByType,
+          migration_cursor: cursorRow ? cursorRow.value : "not-started",
+          import_completed_at: completedRow ? completedRow.value : null,
+          import_completion_note: noteRow ? noteRow.value : null
+        }));
       }
       if (url.pathname === "/llms.txt") {
         return cors(new Response(agentText(env), { headers: { "Content-Type": "text/plain; charset=utf-8" } }));
