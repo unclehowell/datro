@@ -26,11 +26,17 @@ Deploy from this directory or use the repository workflow after configuring Clou
 
 ## Import pages, posts and media
 
-The live Worker has a one-minute Cron Trigger. It imports one 100-record source API page per invocation and maintains its cursor in the `migration_state` D1 table, so it can resume after a deployment or transient failure without an admin token. It processes published WordPress `page`, `post` and `media` collections in that order and upserts by original source type and ID. The import is read-only against the source site.
+A separate scheduled-only Cloudflare Worker, `research-importer`, imports one 100-record source API page per minute and maintains its cursor in the `migration_state` table in `research-wp-d1`. It processes the public `page`, `post` and `media` collections in order, and upserts by original source type and ID. The helper has no custom-domain route and no admin secret; it only writes to the isolated mirror database. The main public `research-wp` Worker continues to serve pages from the same D1 database.
 
-Progress is visible at `/health`: `published_by_type` reports imported record counts and `migration_cursor` reports the current collection/page. `complete` means the public collections returned no more pages. If the cursor stops moving, inspect the `auto_import_last_error` row in `migration_state` through Cloudflare D1; the importer deliberately retries the same page rather than silently skipping it.
+The cursor is `page:1`, `page:2`, `post:1`, and so on; `complete` means the public collections returned no more pages. The `auto_import_last_result`, `auto_import_last_error`, `auto_import_collection:page`, `auto_import_collection:post`, `auto_import_collection:media` and `auto_import_completed_at` rows record progress and outcome. If the cursor stops moving, inspect `auto_import_last_error` in Cloudflare D1. The helper deliberately retries the same page rather than silently skipping it.
 
-Manual single-page import remains available for recovery. Set `ADMIN_TOKEN` as a Worker secret, then call:
+The separate helper configuration is `importer.wrangler.toml`. To deploy or re-deploy it manually:
+
+```sh
+npx wrangler deploy --config=importer.wrangler.toml
+```
+
+Manual single-page import remains available on the public Worker for recovery. Set `ADMIN_TOKEN` as a Worker secret, then call:
 
 ```sh
 curl -X POST https://research.bucklerfamily.estate/admin/sync \
@@ -39,7 +45,7 @@ curl -X POST https://research.bucklerfamily.estate/admin/sync \
   -d '{"type":"page","page":1}'
 ```
 
-Do not publish the administrative token. The source API's pagination headers are authoritative where present; the importer follows each collection until its last page.
+Do not publish the administrative token. The importer uses the source API's pagination headers where present. Public media attachments commonly use WordPress's `inherit` status, so the scheduled importer explicitly tries that status and then the endpoint's default collection if needed.
 
 ## Public interfaces
 
