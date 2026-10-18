@@ -51,7 +51,7 @@ async function runOnePage(env) {
       return;
     }
     if (cursor.startsWith("media-wayback:")) {
-      await runWaybackImport(env);
+      await runWaybackImport(env, Math.max(0, Number(cursor.split(":")[1] || 0)));
       return;
     }
     let [type, pageText] = cursor.split(":");
@@ -279,7 +279,10 @@ async function runMediaScan(env, offset) {
   }
 }
 
-async function runWaybackImport(env) {
+async function runWaybackImport(env, offset) {
+  // Keep each scheduled execution small enough for Workers CPU and D1 batch
+  // limits. CDX supports offset+limit scrolling for non-paged index responses.
+  const batchLimit = 100;
   const cdx = new URL("https://web.archive.org/cdx/search/cdx");
   cdx.searchParams.set("url", SOURCE_HOST + "/wp-content/uploads/*");
   cdx.searchParams.set("matchType", "prefix");
@@ -288,14 +291,15 @@ async function runWaybackImport(env) {
   cdx.searchParams.append("filter", "statuscode:200");
   cdx.searchParams.append("filter", "!mimetype:text/html");
   cdx.searchParams.set("collapse", "urlkey");
-  cdx.searchParams.set("limit", "5000");
+  cdx.searchParams.set("limit", String(batchLimit));
+  cdx.searchParams.set("offset", String(offset));
   cdx.searchParams.set("gzip", "false");
 
   try {
     const response = await fetch(cdx.toString(), { headers: { "Accept": "application/json" }, cf: { cacheTtl: 0 } });
     if (!response.ok) {
       await setState(env, "auto_import_wayback_status", JSON.stringify({
-        status: "unavailable", http_status: response.status,
+        status: "unavailable", offset, http_status: response.status,
         detail: (await response.text()).slice(0, 600), queried_at: new Date().toISOString()
       }));
       await finishImport(env, "Wayback CDX could not be queried; media inventory is limited to uploads discovered in page HTML.");
@@ -304,23 +308,23 @@ async function runWaybackImport(env) {
     const data = await response.json();
     if (!Array.isArray(data) || !data.length) {
       await setState(env, "auto_import_wayback_status", JSON.stringify({
-        status: "empty-or-unparseable", queried_at: new Date().toISOString()
+        status: "empty-or-unparseable", offset, queried_at: new Date().toISOString()
       }));
       await finishImport(env, "Wayback CDX returned no usable inventory; media inventory is limited to uploads discovered in page HTML.");
       return;
     }
     const header = Array.isArray(data[0]) ? data[0].map(x => String(x)) : [];
     const index = key => header.indexOf(key);
-    const entries = [];
+    const rawRows = data.slice(1).filter(row => Array.isArray(row));
     const statements = [];
-    for (const row of data.slice(1)) {
-      if (!Array.isArray(row)) continue;
+    let validRows = 0;
+    for (const row of rawRows) {
       const original = supportedAssetUrl(row[index("original")], SOURCE_SITE);
       const timestamp = String(row[index("timestamp")] || "");
       const mime = String(row[index("mimetype")] || "");
       const code = String(row[index("statuscode")] || "");
-      if (!original || !/^\d{8,14}$/.test(timestamp) || code !== "200") continue;
-      entries.push({ url: original, mime_type: mime });
+      if (!original || !/^\\d{8,14}$/.test(timestamp) || code !== "200") continue;
+      validRows++;
       const archiveUrl = "https://web.archive.org/web/" + timestamp + "id_/" + original;
       const id = await stableAssetId(original);
       statements.push(assetStatement(env, { url: original, mime_type: mime, alt: "" }, id, {
@@ -331,24 +335,43 @@ async function runWaybackImport(env) {
         archive_mime_type: mime
       }, "", ""));
     }
+
     for (let i = 0; i < statements.length; i += 100) {
       const batch = statements.slice(i, i + 100);
       if (batch.length) await env.DB.batch(batch);
     }
-    await setState(env, "auto_import_wayback_status", JSON.stringify({
-      status: "queried",
-      unique_capture_urls_imported: entries.length,
-      query_limit: 5000,
-      may_be_truncated: entries.length >= 5000,
+
+    const previous = await readState(env, "auto_import_wayback_status");
+    let priorCount = 0;
+    try {
+      const parsed = JSON.parse(previous || "{}");
+      priorCount = Number(parsed.unique_capture_urls_imported || 0);
+    } catch (_) {}
+    const cumulative = priorCount + statements.length;
+    const nextOffset = offset + rawRows.length;
+    const status = {
+      status: rawRows.length < batchLimit ? "queried" : "importing",
+      offset,
+      records_seen_this_batch: rawRows.length,
+      valid_captures_imported_this_batch: statements.length,
+      unique_capture_urls_imported: cumulative,
+      next_offset: nextOffset,
+      query_limit: batchLimit,
+      may_be_truncated: false,
       url: cdx.toString(),
       queried_at: new Date().toISOString()
-    }));
-    await finishImport(env, entries.length >= 5000
-      ? "Wayback asset inventory imported up to the 5,000-result query limit; this may be a partial archive inventory."
-      : "Wayback asset inventory queried and merged with page-embedded uploads.");
+    };
+    await setState(env, "auto_import_wayback_status", JSON.stringify(status));
+    await setState(env, "auto_import_last_error", "");
+
+    if (rawRows.length < batchLimit) {
+      await finishImport(env, "Wayback CDX inventory queried in batches and merged with page-embedded uploads.");
+    } else {
+      await setState(env, "auto_import_cursor", "media-wayback:" + nextOffset);
+    }
   } catch (error) {
     await setState(env, "auto_import_wayback_status", JSON.stringify({
-      status: "error", detail: String(error && error.message || error), queried_at: new Date().toISOString()
+      status: "error", offset, detail: String(error && error.message || error), queried_at: new Date().toISOString()
     }));
     await finishImport(env, "Wayback CDX failed; imported-media inventory uses uploads discovered in page HTML only.");
   }
