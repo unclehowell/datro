@@ -559,12 +559,6 @@ export const unscoredResponses = [
     reason: "The 15/16 October acknowledgement is transparent about demand and possible delay. No substantive response is included yet; do not score a delay before the applicable deadline or promised update is verified.",
   },
   {
-    id: "swp-1040-26",
-    recipient: "South Wales Police — FOI 1040/26",
-    status: "Source/attachment needed",
-    reason: "The reply email attaches Response 1040_26.pdf, but the attachment has not been reviewed in this scoring pass. Do not score the substantive response from the cover email alone."
-  },
-  {
     id: "llandough-review",
     recipient: "Llandough Community Council — internal review / new EIR",
     status: "Deadline check needed",
