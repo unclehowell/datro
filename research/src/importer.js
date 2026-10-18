@@ -177,10 +177,10 @@ function assetCandidates(html, base) {
   // and non-image anchors; the allowlist prevents arbitrary URLs being imported.
   const urlPattern = /(?:https?:)?\/\/(?:greathousefarmwiki\.wordpress\.com\/wp-content\/uploads\/|files\.wordpress\.com\/|i[0-2]\.wp\.com\/greathousefarmwiki\.wordpress\.com\/wp-content\/uploads\/)[^\s"'<>`]+/gi;
   while ((match = urlPattern.exec(source))) {
-    let candidate = match[0].replace(/&amp;$/i, "").replace(/[.,;:!?])]+$/g, "");
+    let candidate = match[0].replace(/[.,;:!?]+$/g, "").replace(/[)]+$/g, "");
     add(candidate, "");
   }
-  const attrPattern = /(?:href|src|data-src|data-original|data-lazy-src|data-large-file)s*=s*(?:"([^"]*)"|'([^']*)'|([^s>]+))/gi;
+  const attrPattern = /\b(?:href|src|data-src|data-original|data-lazy-src|data-large-file)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/gi;
   while ((match = attrPattern.exec(source))) add(match[1] || match[2] || match[3] || "", "");
   return Array.from(found.values());
 }
@@ -213,7 +213,7 @@ function mimeFromUrl(url) {
 function assetTitle(url) {
   try {
     const name = new URL(url).pathname.split("/").filter(Boolean).pop() || "WordPress media asset";
-    return decodeEntities(decodeURIComponent(name.replace(/+/g, " "))).slice(0, 240);
+    return decodeEntities(decodeURIComponent(name.replace(/[+]/g, " "))).slice(0, 240);
   } catch (_) {
     return "WordPress media asset";
   }
@@ -242,8 +242,7 @@ async function runMediaScan(env, offset) {
   const pages = query.results || [];
   const assets = new Map();
   for (const page of pages) {
-    for (const asset of assetCandidates(String(page.content_html || "") + "
-" + String(page.excerpt_html || ""), SOURCE_SITE)) {
+    for (const asset of assetCandidates(String(page.content_html || "") + " " + String(page.excerpt_html || ""), SOURCE_SITE)) {
       if (!assets.has(asset.url)) assets.set(asset.url, { ...asset, discovered_on: page.path, source_link: page.source_link, modified: page.modified_gmt });
       else if (asset.alt && !assets.get(asset.url).alt) assets.get(asset.url).alt = asset.alt;
     }
