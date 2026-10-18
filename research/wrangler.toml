@@ -12,6 +12,3 @@ SOURCE_SITE = "https://greathousefarmwiki.wordpress.com"
 binding = "DB"
 database_name = "research-wp-d1"
 database_id = "3ca02c2d-bb78-424d-8574-a653d33f5c05"
-
-[triggers]
-crons = ["* * * * *"]
