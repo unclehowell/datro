@@ -54,6 +54,10 @@ async function runOnePage(env) {
       await runWaybackImport(env, Math.max(0, Number(cursor.split(":")[1] || 0)));
       return;
     }
+    if (cursor.startsWith("media-availability:")) {
+      await runMediaAvailability(env, Math.max(0, Number(cursor.split(":")[1] || 0)));
+      return;
+    }
     let [type, pageText] = cursor.split(":");
     let page = Math.max(1, Number(pageText || 1));
     if (!ORDER.includes(type) || !Number.isFinite(page)) {
@@ -298,18 +302,18 @@ async function runWaybackImport(env, offset) {
     const response = await fetch(cdx.toString(), { headers: { "Accept": "application/json" }, cf: { cacheTtl: 0 } });
     if (!response.ok) {
       await setState(env, "auto_import_wayback_status", JSON.stringify({
-        status: "unavailable", offset, http_status: response.status,
+        status: "cdx-unavailable-falling-back-to-availability-api", offset, http_status: response.status,
         detail: (await response.text()).slice(0, 600), queried_at: new Date().toISOString()
       }));
-      await finishImport(env, "Wayback CDX could not be queried; media inventory is limited to uploads discovered in page HTML.");
+      await setState(env, "auto_import_cursor", "media-availability:0");
       return;
     }
     const data = await response.json();
     if (!Array.isArray(data) || !data.length) {
       await setState(env, "auto_import_wayback_status", JSON.stringify({
-        status: "empty-or-unparseable", offset, queried_at: new Date().toISOString()
+        status: "cdx-empty-or-unparseable-falling-back-to-availability-api", offset, queried_at: new Date().toISOString()
       }));
-      await finishImport(env, "Wayback CDX returned no usable inventory; media inventory is limited to uploads discovered in page HTML.");
+      await setState(env, "auto_import_cursor", "media-availability:0");
       return;
     }
     const header = Array.isArray(data[0]) ? data[0].map(x => String(x)) : [];
@@ -370,9 +374,122 @@ async function runWaybackImport(env, offset) {
     }
   } catch (error) {
     await setState(env, "auto_import_wayback_status", JSON.stringify({
-      status: "error", offset, detail: String(error && error.message || error), queried_at: new Date().toISOString()
+      status: "cdx-error-falling-back-to-availability-api", offset, detail: String(error && error.message || error), queried_at: new Date().toISOString()
     }));
-    await finishImport(env, "Wayback CDX failed; imported-media inventory uses uploads discovered in page HTML only.");
+    await setState(env, "auto_import_cursor", "media-availability:0");
+  }
+}
+
+async function runMediaAvailability(env, offset) {
+  const batchLimit = 20;
+  const query = await env.DB.prepare(
+    "SELECT source_id, source_url, source_link, modified_gmt, alt_text, mime_type FROM content_items " +
+    "WHERE source_type='media' AND status='publish' ORDER BY source_id ASC LIMIT ? OFFSET ?"
+  ).bind(batchLimit, offset).all();
+  const rows = query.results || [];
+  const checked = await Promise.all(rows.map(async row => {
+    let canonical;
+    try {
+      canonical = new URL(String(row.source_url || ""));
+      canonical.search = "";
+      canonical.hash = "";
+      if (canonical.protocol !== "https:" || canonical.hostname !== SOURCE_HOST ||
+          !canonical.pathname.startsWith("/wp-content/uploads/")) return { row, checked: false, reason: "not-an-allowlisted-source-upload" };
+    } catch (_) {
+      return { row, checked: false, reason: "invalid-source-url" };
+    }
+
+    const endpoint = new URL("https://archive.org/wayback/available");
+    endpoint.searchParams.set("url", canonical.href);
+    try {
+      const response = await fetch(endpoint.toString(), {
+        headers: { "Accept": "application/json", "User-Agent": "ResearchWikiMirror/0.2 (+read-only archival lookup)" },
+        cf: { cacheTtl: 0 }
+      });
+      if (!response.ok) return { row, canonical: canonical.href, checked: true, error: "HTTP " + response.status };
+      const data = await response.json();
+      const closest = data && data.archived_snapshots && data.archived_snapshots.closest;
+      if (!closest || closest.available !== true || String(closest.status || "") !== "200") {
+        return { row, canonical: canonical.href, checked: true, available: false };
+      }
+      const timestamp = String(closest.timestamp || "");
+      if (!/^[0-9]{8,14}$/.test(timestamp)) return { row, canonical: canonical.href, checked: true, error: "invalid-archive-timestamp" };
+      return { row, canonical: canonical.href, checked: true, available: true, timestamp, mime_type: String(row.mime_type || "") };
+    } catch (error) {
+      return { row, canonical: canonical.href, checked: true, error: String(error && error.message || error) };
+    }
+  }));
+
+  const statements = [];
+  let checkedCount = 0;
+  let absentCount = 0;
+  let errorCount = 0;
+  const errors = [];
+  for (const item of checked) {
+    if (!item.checked) {
+      errorCount++;
+      if (errors.length < 5) errors.push({ source_id: item.row.source_id, error: item.reason });
+      continue;
+    }
+    checkedCount++;
+    if (item.error) {
+      errorCount++;
+      if (errors.length < 5) errors.push({ source_id: item.row.source_id, error: item.error });
+      continue;
+    }
+    if (!item.available) {
+      absentCount++;
+      continue;
+    }
+    const archiveUrl = "https://web.archive.org/web/" + item.timestamp + "id_/" + item.canonical;
+    const statement = assetStatement(env, { url: item.canonical, mime_type: item.mime_type || "" }, Number(item.row.source_id), {
+      discovered_by: "embedded-page-scan+internet-archive-availability",
+      original_url: item.canonical,
+      archive_url: archiveUrl,
+      archive_timestamp: item.timestamp,
+      archive_lookup_api: "https://archive.org/wayback/available",
+      archive_mime_type: item.mime_type || ""
+    }, item.row.source_link || "", item.row.modified_gmt || "");
+    statements.push(statement);
+  }
+  if (statements.length) await env.DB.batch(statements);
+
+  const previous = await readState(env, "auto_import_media_availability_progress");
+  let prior = {};
+  try { prior = JSON.parse(previous || "{}"); } catch (_) {}
+  const progress = {
+    offset,
+    scanned_total: Number(prior.scanned_total || 0) + rows.length,
+    checked_total: Number(prior.checked_total || 0) + checkedCount,
+    captures_found_total: Number(prior.captures_found_total || 0) + statements.length,
+    no_capture_total: Number(prior.no_capture_total || 0) + absentCount,
+    lookup_errors_total: Number(prior.lookup_errors_total || 0) + errorCount,
+    batch_size: batchLimit,
+    last_batch: { records: rows.length, captures: statements.length, no_capture: absentCount, errors: errorCount, samples: errors },
+    updated_at: new Date().toISOString()
+  };
+  await setState(env, "auto_import_media_availability_progress", JSON.stringify(progress));
+
+  const totalRow = await env.DB.prepare("SELECT COUNT(*) AS count FROM content_items WHERE source_type='media' AND status='publish'").first();
+  if (rows.length < batchLimit) {
+    await setState(env, "auto_import_wayback_status", JSON.stringify({
+      status: "availability-api-complete",
+      media_records_in_scope: totalRow ? totalRow.count : null,
+      checked_total: progress.checked_total,
+      captures_found_total: progress.captures_found_total,
+      no_capture_total: progress.no_capture_total,
+      lookup_errors_total: progress.lookup_errors_total,
+      archive_api: "https://archive.org/wayback/available",
+      completed_at: new Date().toISOString()
+    }));
+    await finishImport(env,
+      "Public page/post import and embedded-media scan completed. Internet Archive availability lookups checked " +
+      progress.checked_total + " asset URLs; captures found for " + progress.captures_found_total +
+      ", no available 200 capture returned for " + progress.no_capture_total +
+      ", lookup/URL errors " + progress.lookup_errors_total +
+      ". This is not a complete archive of unlinked media or a binary copy of every file.");
+  } else {
+    await setState(env, "auto_import_cursor", "media-availability:" + (offset + rows.length));
   }
 }
 
