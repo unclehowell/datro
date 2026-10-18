@@ -1,5 +1,5 @@
 const RAW_BASE = "https://raw.githubusercontent.com/unclehowell/datro/email-archive/apps/email";
-const MANIFEST_URL = "https://raw.githubusercontent.com/unclehowell/datro/92d0ed5ecca963cfa9e29b1a3c1143e5aad6f019/apps/email/data/mail-index.json";
+const MANIFEST_URL = "https://wayback.bucklerfamily.estate/email/mail-index.json";
 const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/92d0ed5ecca963cfa9e29b1a3c1143e5aad6f019/apps/email/index.html";
 const TEXT_HOST = "wayback.bucklerfamily.estate";
 const API_VERSION = "2.0.0";
@@ -34,7 +34,11 @@ function publicRecord(record) {
     date: record.date || null, dateStatus: record.dateStatus || (record.date ? "date-present-in-catalogue" : "date-not-stated-in-public-source"),
     category: record.category, evidenceVersion: record.evidenceVersion || "1.0.0",
     source: record.source, sourceUrl: record.path, threadSlug: slugFor(record),
-    scopeTopics: record.scopeTopics || []
+    scopeTopics: record.scopeTopics || record.tags || [],
+    recordType: record.recordType || "correspondence",
+    tags: record.tags || [],
+    sourcePath: record.sourcePath || null,
+    classificationNote: record.classificationNote || null
   };
 }
 async function remoteFetch(url, timeoutMs) {
@@ -54,12 +58,8 @@ async function loadManifest() {
   if (!r.ok) throw new Error("Catalogue fetch failed: " + r.status);
   const m = await r.json();
   if (!m || !Array.isArray(m.records)) throw new Error("Invalid catalogue format");
-  // Hard boundary for every API path; preserve undated records with an explicit null date.
-  m.records = m.records.filter(record => {
-    if (!record.date) return true;
-    const date = String(record.date).slice(0, 10);
-    return date >= "2024-10-17" && date <= "2026-10-17";
-  });
+  // Wayback is the canonical public source of truth. Do not impose an arbitrary date window.
+  m.records = m.records.filter(record => record && typeof record.id === "string" && typeof record.path === "string");
   return m;
 }
 async function loadRecordText(record) {
@@ -102,9 +102,9 @@ function openApiDocument(origin) {
   return {
     openapi:"3.1.0",
     info:{
-      title:"Great House Farm FOI & EIR Archive API",
+      title:"Great House Farm Public Correspondence & Case Archive API",
       version:API_VERSION,
-      description:"Read-only public catalogue of FOI/EIR requests, acknowledgements, clarifications, follow-ups and responses specifically concerning Great House Farm/Tŷ Mawr at Llandough and the Williams/Buckler family. Some original public text files omit a sent date; undated values are not inferred."
+      description:"Read-only public catalogue of case-related correspondence and associated source texts concerning Great House Farm/Tŷ Mawr, Llandough, BP v Buckler, the Williams/Buckler family and named parties or reference numbers. Original source text remains hosted by the Wayback archive; undated values are not inferred."
     },
     servers:[{url:origin}],
     paths:{
@@ -123,22 +123,31 @@ export default {
   if (request.method === "OPTIONS") return new Response(null, {status:204,headers:headers()});
   if (request.method !== "GET" && request.method !== "HEAD") return json({error:"Read-only public archive. Only GET and HEAD are supported."},405);
 
-  if (url.pathname === "/api/health") return json({
-    status:"ok", service:"Great House Farm FOI & EIR Mail Archive", worker:"email",
-    apiVersion:API_VERSION, manifestVersion:"2.0.1",
-    dateRange:{from:"2024-10-17",through:"2026-10-17"},
-    recordCount:20, readOnly:true
-  });
+  if (url.pathname === "/api/health") {
+    try {
+      const m = await loadManifest();
+      return json({
+        status:"ok", service:"Great House Farm Public Correspondence & Case Archive", worker:"email",
+        apiVersion:API_VERSION, manifestVersion:m.manifestVersion || "3.0.0",
+        sourceIndex:m.sourceIndex || MANIFEST_URL,
+        recordCount:m.records.length, dateScope:"all indexed years; dates remain unstated where sources do not preserve them",
+        sourceOfTruth:"wayback.bucklerfamily.estate", readOnly:true
+      });
+    } catch (e) {
+      return json({status:"degraded",service:"Great House Farm Public Correspondence & Case Archive",worker:"email",error:"Could not load the canonical Wayback index",readOnly:true},502);
+    }
+  }
 
   if (url.pathname === "/api" || url.pathname === "/api/") return json({
-    name:"Great House Farm FOI & EIR Mail Archive API",
+    name:"Great House Farm Public Correspondence & Case Archive API",
     apiVersion:API_VERSION, openapi:url.origin+"/api/openapi.json",
-    scope:"FOI/EIR requests, acknowledgements, clarifications, follow-ups, and responses specifically concerning Great House Farm/Tŷ Mawr at Llandough and the Williams/Buckler family.",
-    dateRange:{from:"2024-10-17",through:"2026-10-17"},
+    scope:"Case-related public correspondence and associated text sources concerning Great House Farm/Tŷ Mawr, Llandough, BP v Buckler, the Williams/Buckler family and related parties or reference numbers.",
+    sourceOfTruth:"wayback.bucklerfamily.estate/email/mail-index.json",
+    datePolicy:"All indexed years are included. Dates are stated only where preserved; placeholder and missing dates are not inferred.",
     datePolicy:"Where a reliable sent date is absent from the source text and catalogue, date is null; no date is inferred.",
     readOnly:true,
     endpoints:[
-      {method:"GET",path:"/api/records",description:"Full in-scope JSON catalogue; use sourceUrl for the original public text."},
+      {method:"GET",path:"/api/records",description:"Full case-wide JSON catalogue from the Wayback source index; use sourceUrl for original public text."},
       {method:"GET",path:"/api/search?q=Mary%20Williams",description:"Full-text search across the curated FOI/EIR source documents."},
       {method:"GET",path:"/api/message?id=mail-id",description:"Read a whole source text by catalogue ID."},
       {method:"GET",path:"/api/thread?slug=subject-slug",description:"Read all source text grouped under a normalized subject slug."},
