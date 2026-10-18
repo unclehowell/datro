@@ -301,17 +301,24 @@ async function runWaybackImport(env, offset) {
   try {
     const response = await fetch(cdx.toString(), { headers: { "Accept": "application/json" }, cf: { cacheTtl: 0 } });
     if (!response.ok) {
+      const cdxError = {
+        status: "unavailable", offset, http_status: response.status,
+        detail: (await response.text()).slice(0, 600), url: cdx.toString(),
+        queried_at: new Date().toISOString()
+      };
+      await setState(env, "auto_import_wayback_cdx_error", JSON.stringify(cdxError));
       await setState(env, "auto_import_wayback_status", JSON.stringify({
-        status: "cdx-unavailable-falling-back-to-availability-api", offset, http_status: response.status,
-        detail: (await response.text()).slice(0, 600), queried_at: new Date().toISOString()
+        status: "cdx-unavailable-falling-back-to-availability-api", ...cdxError
       }));
       await setState(env, "auto_import_cursor", "media-availability:0");
       return;
     }
     const data = await response.json();
     if (!Array.isArray(data) || !data.length) {
+      const cdxError = { status: "empty-or-unparseable", offset, url: cdx.toString(), queried_at: new Date().toISOString() };
+      await setState(env, "auto_import_wayback_cdx_error", JSON.stringify(cdxError));
       await setState(env, "auto_import_wayback_status", JSON.stringify({
-        status: "cdx-empty-or-unparseable-falling-back-to-availability-api", offset, queried_at: new Date().toISOString()
+        status: "cdx-empty-or-unparseable-falling-back-to-availability-api", ...cdxError
       }));
       await setState(env, "auto_import_cursor", "media-availability:0");
       return;
@@ -373,8 +380,10 @@ async function runWaybackImport(env, offset) {
       await setState(env, "auto_import_cursor", "media-wayback:" + nextOffset);
     }
   } catch (error) {
+    const cdxError = { status: "error", offset, url: cdx.toString(), detail: String(error && error.message || error), queried_at: new Date().toISOString() };
+    await setState(env, "auto_import_wayback_cdx_error", JSON.stringify(cdxError));
     await setState(env, "auto_import_wayback_status", JSON.stringify({
-      status: "cdx-error-falling-back-to-availability-api", offset, detail: String(error && error.message || error), queried_at: new Date().toISOString()
+      status: "cdx-error-falling-back-to-availability-api", ...cdxError
     }));
     await setState(env, "auto_import_cursor", "media-availability:0");
   }
