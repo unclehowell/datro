@@ -567,4 +567,4 @@ export const unscoredResponses = [
 ] as const;
 
 export const rfsMethodNote =
-  "RFS is an editorial aid for message-level friction, not a legal finding, a character judgement or a probability of misconduct. Tags for Force, Secrecy and Licence describe observable effects or use of power, not motive. A score can be revised when an original, attachment or later correction is recovered.";
+  "RFS is an editorial aid for message-level friction, not a legal finding, a character judgement or a probability of misconduct. The fifth dimension includes timeliness, assistance and next steps; deadlines are scored only after checking the applicable clock and any pause, extension or clarification. Tags for Force, Secrecy and Licence describe observable wording, information restrictions, or use of procedural/statutory powers, not motive. A score can be revised when an original, attachment or later correction is recovered.";
