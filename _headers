@@ -9,6 +9,23 @@
 /*.json
   Content-Type: application/json; charset=utf-8
   X-Content-Type-Options: nosniff
-  Access-Control-Allow-Origin: https://bpvsbuckler.bucklerfamily.estate
+  Access-Control-Allow-Origin: *
   Access-Control-Allow-Methods: GET, HEAD, OPTIONS
-  Vary: Origin
+  Access-Control-Allow-Headers: Accept, Content-Type
+  Cache-Control: public, max-age=300
+
+/email/*.json
+  Content-Type: application/json; charset=utf-8
+  X-Content-Type-Options: nosniff
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, HEAD, OPTIONS
+  Access-Control-Allow-Headers: Accept, Content-Type
+  Cache-Control: public, max-age=300
+
+/*.txt
+  Content-Type: text/plain; charset=utf-8
+  X-Content-Type-Options: nosniff
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, HEAD, OPTIONS
+  Access-Control-Allow-Headers: Accept, Content-Type
+  Cache-Control: public, max-age=3600
