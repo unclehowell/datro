@@ -1,0 +1,12 @@
+name = "research-importer"
+main = "src/importer.js"
+compatibility_date = "2026-10-17"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "research-wp-d1"
+database_id = "3ca02c2d-bb78-424d-8574-a653d33f5c05"
+
+[triggers]
+crons = ["* * * * *"]
