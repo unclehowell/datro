@@ -141,6 +141,8 @@ export async function onRequestPost({ request, env }) {
           failedBatch: i + 1,
           batchCount: batches.length,
           batchBytes: new TextEncoder().encode(batches[i]).byteLength,
+          batchStatementCount: splitStatements(batches[i]).length,
+          batchStartId: batches[i].match(/INSERT INTO nodes VALUES \\('([^']+)'/)?.[1] || null,
           error: 'D1 rejected a SQL batch; statement details withheld.',
         }, 500);
       }
