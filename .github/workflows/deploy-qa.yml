@@ -69,12 +69,12 @@ jobs:
         run: |
           npx --yes wrangler@3 pages deploy . --project-name=qa --branch=qa --commit-dirty=true
 
-      - name: Sync D1 graph (best-effort)
-        continue-on-error: true
+      - name: Sync and verify D1 graph
         run: |
-          response="$(curl --silent --show-error \
+          response="$(curl --silent --show-error --fail-with-body \
             --request POST \
             --header "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
             --header "Accept: application/json" \
-            "https://qa-acp.pages.dev/api/sync-graph" || true)"
+            "https://qa-acp.pages.dev/api/sync-graph")"
           printf '%s\n' "$response"
+          python3 -c 'import json,sys; d=json.loads(sys.stdin.read()); print("D1 sync verified:", d.get("counts", {})); sys.exit(0 if d.get("ok") is True else 1)' <<< "$response"
