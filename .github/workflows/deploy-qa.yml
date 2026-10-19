@@ -50,11 +50,19 @@ jobs:
           test -s api/qa.json
           python3 - <<'PY'
           import json
-          qa = json.load(open("api/qa.json", encoding="utf-8"))
-          n = len(qa.get("qa") or qa if isinstance(qa, list) else [])
-          print(f"Loaded {n} Q&A records")
-          if n < 1:
+          payload = json.load(open("api/qa.json", encoding="utf-8"))
+          records = payload.get("qa") if isinstance(payload, dict) else payload
+          if not isinstance(records, list):
+              raise SystemExit("qa.json must be a list or an object with a 'qa' list")
+          count = len(records)
+          print(f"Loaded {count} Q&A records")
+          if count < 1:
               raise SystemExit("qa.json empty")
+          ids = [item.get("id") for item in records if isinstance(item, dict)]
+          if len(ids) != count or any(not isinstance(uid, str) or not uid.startswith("qa-") for uid in ids):
+              raise SystemExit("qa.json contains records without stable qa-* UIDs")
+          if len(set(ids)) != count:
+              raise SystemExit("qa.json contains duplicate Q&A UIDs")
           PY
 
       - name: Deploy to Cloudflare Pages
