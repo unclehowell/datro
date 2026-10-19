@@ -43,8 +43,29 @@ export async function onRequest(context) {
 
   const object = await env.wayback_media.get(key);
   if (object === null) {
-    // This also preserves intentional static items such as pdf/index.html.
-    return context.next();
+    // This also preserves intentional static items such as pdf/index.html and the
+    // text files committed under wayback/text/. But Pages answers any unknown path with
+    // the site's index.html (SPA fallback) and _headers then labels it text/plain, so a
+    // missing archive file used to come back as "200 + the Wayback HTML shell" and was
+    // indexed downstream as if it were the email text. Missing media is now a real 404.
+    const fallback = await context.next();
+    if (!fallback.ok || key.toLowerCase().endsWith(".html")) return fallback;
+    const ctype = (fallback.headers.get("content-type") || "").toLowerCase();
+    let isShell = ctype.includes("text/html");
+    if (!isShell && (ctype.startsWith("text/") || ctype === "")) {
+      const head = (await fallback.clone().text()).slice(0, 2048).trimStart().toLowerCase();
+      isShell = head.startsWith("<!doctype html") || head.startsWith("<html") || head.includes("<title>datro wayback archive</title>");
+    }
+    if (!isShell) return fallback;
+    return new Response("Not found in the Wayback archive: " + key + "\n", {
+      status: 404,
+      headers: {
+        "content-type": "text/plain; charset=utf-8",
+        "x-content-type-options": "nosniff",
+        "cache-control": "no-store",
+        "access-control-allow-origin": "*",
+      },
+    });
   }
 
   const headers = new Headers();
