@@ -347,7 +347,7 @@ export const parties: Party[] = [
     name: "Cardiff Register Office",
     short: "Registrars",
     kind: "authority",
-    remit: "Death registration of Mary Doreen Williams.",
+    remit: "Death registration of Mary Doreen (Nancy) Williams.",
     cells: {
       open: {
         status: "dormant",
@@ -654,7 +654,7 @@ export const parties: Party[] = [
         url: g("1a1060d79ae529a6"),
         feeMarker: true,
         detail:
-          "On 12 October The National Archives said it believed it had identified the Valuation Office map covering the property and supplied a Discovery link. It also described access options: visit Kew, request a paid staff search, or hire an independent researcher, citing the FOIA section 9 fee route. No paid search is recorded as commissioned.",
+          "On 12 October The National Archives said it believed it had identified the Valuation Office map covering the property and supplied a Discovery link. It also described access options: visit Kew, request a paid staff search, or hire an independent researcher, citing the FOIA section 9 fee route. No paid search is recorded as commissioned. Found since (19 Oct 2026), catalogue entries only, no file seen: the verbatim record of the 1958–59 Ministry inquiry into objections to the Glamorgan (Area No. 2) Development Plan, BD 28/177 (19 Nov – 11 Dec 1958, starting the day of Mrs M. D. Buckler’s “Crichel Down” complaint; wiki EV-0239); the inspector’s report on the Penarth town map, BD 28/133, with HLG 119/3181 and 3187–3189, BD 28/198, MAF 112/1108 and MT 39/909 (wiki EV-0240); and the 1941–43 National Farm Survey bundle for Penarth parish, MAF 32/1220/39 (wiki EV-0241; that the farm’s form is in it is an inference). The date match with her complaint is a lead, not proof she appeared at the inquiry.",
       },
       chase: {
         status: "nuisance",
@@ -963,7 +963,7 @@ export const parties: Party[] = [
         ref: "DP/2961/2026; mail refs 92994223/01, 93027237/01, 93047764/01",
         url: g("1a0afe15770e3994"),
         detail:
-          "The first answer came from the data-subject-rights team on 13 August 2026: no records held about you or the property. On 3 September Customer Care reviewed it as an enquiry about the 1988 supply rather than a subject-access request and kept the same position. On 17 and 29 September it repeated that searches found no records about you or Great House Farm (Tŷ Mawr), and said it cannot give disposal or audit records for documents it does not hold. The reply came after the 20-working-day point on the June request. Found since (19 Oct 2026): the Western Mail of 20 November 1958 (snippet only, wiki EV-0037) reports Mrs Buckler’s claim that the water was cut off “for nearly 10 years by order of Western Ground Rents”. That would date the cut-off to about 1948–58, before Welsh Water existed; the c.1988 date is recorded as a conflict (wiki SC-48).",
+          "The first answer came from the data-subject-rights team on 13 August 2026: no records held about you or the property. On 3 September Customer Care reviewed it as an enquiry about the 1988 supply rather than a subject-access request and kept the same position. On 17 and 29 September it repeated that searches found no records about you or Great House Farm (Tŷ Mawr), and said it cannot give disposal or audit records for documents it does not hold. The reply came after the 20-working-day point on the June request. Found since (19 Oct 2026): the Western Mail of 20 November 1958 (snippet only, wiki EV-0037) reports Mrs Buckler’s claim that the water was cut off “for nearly 10 years by order of Western Ground Rents”. That would date the cut-off to about 1948–58, before Welsh Water existed; the c.1988 date is recorded as a conflict (wiki SC-48). The same report (snippet only) adds, under “Herd loss”: “This, she added, resulted in loss of a complete herd of Friesian cattle.” Linking the herd loss to the water cut-off is an inference.",
       },
     },
   },
@@ -1079,7 +1079,7 @@ export const parties: Party[] = [
     short: "Family",
     kind: "family",
     remit:
-      "Relatives of Mary Williams and William Buckler. Their own memory of 1987–1988 and after. Gathered slowly, with consent, at their pace.",
+      "Relatives of Mary (Nancy) Williams and William Buckler. Their own memory of 1987–1988 and after. Gathered slowly, with consent, at their pace.",
     cells: {
       open: {
         status: "evidence",
@@ -1097,7 +1097,7 @@ export const parties: Party[] = [
         correspondent: "Relatives (not named here)",
         ref: "Partial, not yet signed",
         detail:
-          "Some testimony has come back, to some extent. It is not yet written down as signed statements, and it has not been tested against the records. Where it matches a record already held, that match is noted on the evidence pages, not here. On 19 October 2026 one relative’s voice testimony was added to the wiki’s testimony pages and checked point by point: a Western Mail report of 20 November 1958 (wiki EV-0037, snippet only) supports a water cut-off, but puts it at about 1948–58, not c.1988 (wiki SC-48); “Cardiff UDC” is not supported (Llandough was in Penarth UDC), and no Hansard record of the water matter has been found so far.",
+          "Some testimony has come back, to some extent. It is not yet written down as signed statements, and it has not been tested against the records. Where it matches a record already held, that match is noted on the evidence pages, not here. On 19 October 2026 one relative’s voice testimony was added to the wiki’s testimony pages and checked point by point: a Western Mail report of 20 November 1958 (wiki EV-0037, snippet only) supports a water cut-off, but puts it at about 1948–58, not c.1988 (wiki SC-48); “Cardiff UDC” is not supported (Llandough was in Penarth UDC), and no Hansard record of the water matter has been found so far. Hansard does record the 1958–59 inquiry into the Glamorgan development plan and its delayed approval in 1960–62, without naming Llandough or the farm (wiki EV-0239); whether that is the Parliamentary discussion remembered is a hypothesis only. Also found on 19 October: the Barry Dock News of 23 October 1908 reports a vote of sympathy at the Llandough court leet “with the family of the late Mr. John Williams, Great House, Llandough, for many years a juror of the court” (wiki EV-0243). That fits Mary (Nancy) Williams’s statement that her grandfather died in 1908; against it, a 1904 report describes the Williams occupation as a tenancy from 1855.",
       },
       chase: {
         status: "nuisance",
