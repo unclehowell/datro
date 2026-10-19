@@ -652,8 +652,8 @@ VERSION = {
     "date": "14 October 2026",
     "prepared_by": "Sion Buckler, grandson of Mary Williams, for the Williams–Buckler family",
     "method": ("Drafted with AI assistance from the family's public Wiki registers, its correspondence log and published "
-               "sources, then checked and approved by the family. Every statement carries a label: on record, family "
-               "account, or being sought. Statements that cut against the family's case are shown alongside it."),
+               "sources, then checked and approved by the family. Every statement carries a label: on record, Buckler case "
+               "(named testimony or position), or being sought. Statements that cut against the family's case are shown alongside it."),
     "source_control": "Source and full change history: github.com/unclehowell/datro, branch 2026-10-22, folder static/2026-10-22.",
     "corrections": ("If anything here is wrong, please tell us through the Great House Farm Wiki (greathousefarmwiki.wordpress.com). Corrections are made openly, "
                     "dated, and noted in the change history. Any person or body named here is invited to reply, and "
