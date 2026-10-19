@@ -13,7 +13,7 @@
 - 22 October 2026 Vale council meeting noted across Llandough CC, Ombudsman drafts — deadline watch.
 
 ## HubSpot
-- Review note logged on contact 877776319685 (hywelapbuckler@gmail.com).
+- Review note logged in the CRM against the family contact record (identifiers removed from this public file).
 - No new contacts/companies created; recipient bodies not yet in CRM.
 
 ## Open items

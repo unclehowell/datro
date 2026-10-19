@@ -131,28 +131,28 @@ export const parties: Party[] = [
     name: "Llandough Community Council",
     short: "Llandough",
     kind: "authority",
-    remit: "Clerk Paul Egan. Local minutes, the green, and the 1982 deposit.",
+    remit: "The Clerk. Local minutes, the green, and the 1982 deposit.",
     cells: {
       open: {
         status: "closed",
         title: "Chair: nothing more to add",
         date: "20 Sep 2026",
-        correspondent: "Dr Mo Misra, Chair",
+        correspondent: "Chair, Llandough Community Council",
         ref: "Email to the Chair, then restated 21 Sep",
         url: g("1a0c1e36871ebfd1"),
         detail:
-          "On 20 September 2026 the Chair wrote that clerk Paul Egan had already directed you to all the information the Council holds, and that “We have nothing more to add.” Your 21 September email answered that this is not a refusal notice. It asked only whether anything is held after the 2002 deposit to Glamorgan Archives: post-2002 minutes and files on Great House Farm (Tŷ Mawr) / Church View Close, village green VG 41, and the verge; any photographs; and what, if anything, came across from Penarth Town Council in 1982. You recorded an earlier clerk’s answer of 14 June 2026 that the minute books from 1982 were deposited with Glamorgan Archives in 2002.",
+          "On 20 September 2026 the Chair wrote that the Clerk had already directed you to all the information the Council holds, and that “We have nothing more to add.” Your 21 September email answered that this is not a refusal notice. It asked only whether anything is held after the 2002 deposit to Glamorgan Archives: post-2002 minutes and files on Great House Farm (Tŷ Mawr) / Church View Close, village green VG 41, and the verge; any photographs; and what, if anything, came across from Penarth Town Council in 1982. You recorded an earlier clerk’s answer of 14 June 2026 that the minute books from 1982 were deposited with Glamorgan Archives in 2002.",
       },
       reply: {
         status: "suspicious",
         title: "Section 12 refusal by the clerk",
         date: "11 Oct 2026",
-        correspondent: "Paul R. Egan, Clerk",
+        correspondent: "Clerk, Llandough Community Council",
         ref: "FOIA s.12 — reply to the 21 Sep request",
         url: g("1a0c1e36871ebfd1"),
         feeMarker: true,
         detail:
-          "Paul Egan (clerk@llandough-cc.co.uk) refused under section 12. He priced staff time at £25 an hour, so £450 is 18 hours, then estimated 224 sets of minutes from 2002–2016. The letter says both “about 20 minutes to read each set” and “about 10 minutes to assess each set”, and reaches “over 2240 minutes” (about 37 hours). The request had not asked for a reading of fourteen years of minutes. It asked the Council to say whether post-2002 records are held. He offered a narrower window, for example 2002–2006, and said the other matters would wait for the October meeting.",
+          "The Clerk refused under section 12. He priced staff time at £25 an hour, so £450 is 18 hours, then estimated 224 sets of minutes from 2002–2016. The letter says both “about 20 minutes to read each set” and “about 10 minutes to assess each set”, and reaches “over 2240 minutes” (about 37 hours). The request had not asked for a reading of fourteen years of minutes. It asked the Council to say whether post-2002 records are held. He offered a narrower window, for example 2002–2006, and said the other matters would wait for the October meeting.",
       },
       chase: {
         status: "dormant",
@@ -168,7 +168,7 @@ export const parties: Party[] = [
         status: "suspicious",
         title: "Review asked of the same clerk",
         date: "11 Oct 2026",
-        correspondent: "Paul Egan",
+        correspondent: "The Clerk",
         ref: "Internal review of the 11 Oct s.12 refusal",
         url: g("1a12af4820f4acb5"),
         detail:
@@ -188,11 +188,11 @@ export const parties: Party[] = [
         status: "suspicious",
         title: "Parked to the October meeting",
         date: "11 Oct 2026",
-        correspondent: "Paul Egan",
+        correspondent: "The Clerk",
         ref: "October meeting — attendance and papers",
         url: g("1a12af23f85ed2de"),
         detail:
-          "The clerk said the “other matters” in the 21 September email would be considered at the October meeting, and that he would send the Council’s views afterwards. You asked to attend in the proper way and to see the papers. Putting the substantive questions onto a later meeting, rather than answering whether records are held, sits with the same officer whose refusal is under review.",
+          "The clerk said the “other matters” in the 21 September email would be considered at the October meeting, and that he would send the Council’s views afterwards. You asked to attend in the proper way and to see the papers. Putting the substantive questions onto a later meeting, rather than answering whether records are held, sits with the same officer whose refusal is under review. Since then: the Clerk’s agenda of 13 October 2026 said the 22 October meeting would be in the Council Chamber, with attendance in person or remotely. On 16 October he wrote that it will now be held remotely only. You objected the same day and asked for a reply by 17:00 on 20 October. No reply is in the mailbox as of 18 October 2026.",
       },
     },
   },
@@ -227,11 +227,21 @@ export const parties: Party[] = [
         status: "nuisance",
         title: "Appendices C, D and E still missing",
         date: "10 Oct 2026",
-        correspondent: "To FoiUnit@valeofglamorgan.gov.uk",
+        correspondent: "To the Vale FOI Unit",
         ref: "Formal chase of 00211557 and earlier requests",
         url: g("1a123ef64335cb7c"),
         detail:
           "Your 10 October email is a formal chase of three missing planning appendices, C, D and E. The file is open and incomplete: disclosures on one side, three appendices still not supplied on the other.",
+      },
+      review: {
+        status: "nuisance",
+        title: "00210772 review past the EIR limit",
+        date: "7 Jul – 18 Oct 2026",
+        correspondent: "Vale FOI Unit / Information Governance",
+        ref: "00210772 — internal review requested 7 Jul 2026",
+        url: g("1a141cc190751565"),
+        detail:
+          "You asked for an internal review of 00210772 on 7 July 2026. Under regulation 11(4) of the EIR a review is due within 40 working days, which on the mailbox dates is about 2 September 2026. On 11 September the Council wrote that service areas had found further historical documentation that was still being sifted, and that it would update you with a clearer timeframe; no such update is in the mailbox. You chased on 30 September and on 7, 15 and 18 October 2026, the last asking for an outcome or a firm date by 30 October and saying you may otherwise ask the Information Commissioner to consider the delay. No review outcome is in the mailbox as of 18 October 2026.",
       },
     },
   },
@@ -256,11 +266,11 @@ export const parties: Party[] = [
         status: "closed",
         title: "Unable to consider the request",
         date: "11 Oct 2026",
-        correspondent: "James Langridge-Thomas",
+        correspondent: "Democratic Services",
         ref: "Democratic Services refusal",
         url: g("1a1149d647cb33dc"),
         detail:
-          "James Langridge-Thomas replied the next day that Scrutiny will be unable to consider it. His reasons: Task and Finish is for strategic, county-wide policy, not one historical site; Scrutiny should not review evidence of individual historical decisions, particularly planning; and because concerns are already with Welsh Government, Cadw, MSs and MPs, another layer of stakeholders would not be appropriate.",
+          "Democratic Services replied the next day that Scrutiny will be unable to consider it. His reasons: Task and Finish is for strategic, county-wide policy, not one historical site; Scrutiny should not review evidence of individual historical decisions, particularly planning; and because concerns are already with Welsh Government, Cadw, MSs and MPs, another layer of stakeholders would not be appropriate.",
       },
     },
   },
@@ -275,11 +285,11 @@ export const parties: Party[] = [
         status: "dormant",
         title: "FOI 1264/26 on the clock",
         date: "10 Oct 2026",
-        correspondent: "Owen, Information Rights",
+        correspondent: "Information Rights, South Wales Police",
         ref: "1264/26 — deadline 9 Nov 2026",
         url: g("1a12fa8ff526287b"),
         detail:
-          "You asked for non-personal operational records on Great House Farm / Tŷ Mawr, Llandough, for November–December 1988, excluding personal data. On 12 October Owen confirmed FOI 1264/26 and a 20-working-day deadline of 9 November 2026. Until that date this request is dormant, not refused.",
+          "You asked for non-personal operational records on Great House Farm / Tŷ Mawr, Llandough, for November–December 1988, excluding personal data. On 12 October Information Rights confirmed FOI 1264/26 and a 20-working-day deadline of 9 November 2026. Until that date this request is dormant, not refused.",
       },
       reply: {
         status: "nuisance",
@@ -312,7 +322,7 @@ export const parties: Party[] = [
         status: "dormant",
         title: "Location request, not a viewing",
         date: "10 Oct 2026",
-        correspondent: "glamro@cardiff.gov.uk",
+        correspondent: "Glamorgan Archives",
         ref: "Llandough-juxta-Penarth, not Cowbridge",
         url: g("1a1158080de15320"),
         detail:
@@ -341,27 +351,27 @@ export const parties: Party[] = [
         status: "dormant",
         title: "Passed across from the Vale",
         date: "10 Oct 2026",
-        correspondent: "Karen Denham, Registrars",
+        correspondent: "Registrars",
         ref: "Mary Doreen Williams",
         url: g("1a11a41ac938b1a5"),
         detail:
-          "The Vale of Glamorgan Registration Service told you on 30 September 2026 they could not find a death record for Mary Doreen Williams in the Vale, and the search was passed to Cardiff. You wrote to Karen Denham on 10 October.",
+          "The Vale of Glamorgan Registration Service told you on 30 September 2026 they could not find a death record for Mary Doreen Williams in the Vale, and the search was passed to Cardiff. You wrote to the Registrars on 10 October.",
       },
       reply: {
         status: "closed",
         title: "Cardiff does not hold the entry",
         date: "12 Oct 2026",
-        correspondent: "Karen Denham",
+        correspondent: "Cardiff Register Office",
         ref: "FreeBMD indexes searched",
         url: g("1a11a41ac938b1a5"),
         detail:
-          "On 12 October Karen Denham wrote that Cardiff Register Office does not hold the registration of death for Mary Doreen Williams, and that the indexes searched included FreeBMD. You replied the same day: “Yes, please pass on.”",
+          "On 12 October the Register Office wrote that Cardiff Register Office does not hold the registration of death for Mary Doreen Williams, and that the indexes searched included FreeBMD. You replied the same day: “Yes, please pass on.”",
       },
       chase: {
         status: "dormant",
         title: "Asked to pass it on",
         date: "12 Oct 2026",
-        correspondent: "You to Karen Denham",
+        correspondent: "You to the Register Office",
         url: g("1a11a41ac938b1a5"),
         detail:
           "You agreed that the search should be passed onward. Where it goes next is not yet in the mailbox.",
@@ -448,7 +458,7 @@ export const parties: Party[] = [
         status: "dormant",
         title: "One remaining point",
         date: "10 Oct 2026",
-        correspondent: "To enquiry@library.wales",
+        correspondent: "To NLW enquiries",
         ref: "Further Bute or related material",
         url: g("1a11eaa0af2e3861"),
         detail:
@@ -477,7 +487,7 @@ export const parties: Party[] = [
         status: "dormant",
         title: "September enquiries under RC26-0375",
         date: "8–20 Sep 2026",
-        correspondent: "Adam, NMR enquiries",
+        correspondent: "NMR enquiries",
         ref: "RC26-0375",
         url: g("1a11f562b7880f36"),
         detail:
@@ -498,7 +508,7 @@ export const parties: Party[] = [
         status: "dormant",
         title: "Scans ordered, not yet in",
         date: "10 Oct 2026",
-        correspondent: "To nmr.wales@rcahmw.gov.uk",
+        correspondent: "To NMR enquiries",
         ref: "Archives 6048945, 6048943, 6048941",
         url: g("1a11f562b7880f36"),
         detail:
@@ -615,7 +625,7 @@ export const parties: Party[] = [
         status: "dormant",
         title: "Location-only request for the 1910 map",
         date: "10 Oct 2026",
-        correspondent: "FOIRequests@nationalarchives.gov.uk",
+        correspondent: "FOI Requests, The National Archives",
         ref: "OS Glamorgan XLVII.6",
         url: g("1a1060d79ae529a6"),
         detail:
@@ -735,7 +745,7 @@ export const parties: Party[] = [
         status: "dormant",
         title: "The non-Special-Forces remainder",
         date: "10 Oct 2026",
-        correspondent: "To cio-foi@mod.gov.uk",
+        correspondent: "To MOD FOI",
         ref: "FOI2026/09019 clarification",
         url: g("1a11eb8cc384c312"),
         detail:
@@ -745,7 +755,7 @@ export const parties: Party[] = [
         status: "dormant",
         title: "Internal review of the SAR handling",
         date: "10 Oct 2026",
-        correspondent: "To CIO-FOI-IR@mod.gov.uk",
+        correspondent: "To MOD FOI internal review",
         ref: "DPR2026/46503",
         url: g("1a123ef40f2cf0cd"),
         detail:
@@ -830,7 +840,7 @@ export const parties: Party[] = [
         status: "dormant",
         title: "Automatic reply only",
         date: "28 Sep 2026",
-        correspondent: "stephen.doughty.mp@parliament.uk",
+        correspondent: "Office of Stephen Doughty MP",
         ref: "Auto-reply on the 719/26 note",
         detail:
           "An automatic reply on 28 September confirmed a related email (subject access, crime-recording, and a search note on police FOI 719/26) had been received, and that the office is behind on mail. No substantive reply to the 10 October follow-up is in the sample.",
@@ -858,11 +868,11 @@ export const parties: Party[] = [
         status: "evidence",
         title: "The report is on their website",
         date: "12 Oct 2026",
-        correspondent: "Paolo Guarino",
+        correspondent: "Cotswold Archaeology",
         ref: "reports.cotswoldarchaeology.co.uk",
         url: g("1a11eaa835381426"),
         detail:
-          "On 12 October Paolo Guarino wrote that the report is online at reports.cotswoldarchaeology.co.uk, searchable by keyword. That is evidence in from a private holder. Cotswold Archaeology is not a public authority, so the inner FOI rings are not a legal path against them.",
+          "On 12 October Cotswold Archaeology wrote that the report is online at reports.cotswoldarchaeology.co.uk, searchable by keyword. That is evidence in from a private holder. Cotswold Archaeology is not a public authority, so the inner FOI rings are not a legal path against them.",
       },
     },
   },
@@ -877,7 +887,7 @@ export const parties: Party[] = [
         status: "dormant",
         title: "Preservation and access request",
         date: "10 Oct 2026",
-        correspondent: "archives@linklaters.com",
+        correspondent: "Linklaters archives",
         ref: "BP files 1982–1988",
         url: g("1a11eaa7a327d405"),
         detail:
@@ -910,7 +920,142 @@ export const parties: Party[] = [
         ref: "Wrong inbox, then a canned refusal",
         url: g("1a1273c8e61a8b71"),
         detail:
-          "clipsales@itv.com replied automatically that the inbox is only for licensing footage, and pointed personal research at viewers.requests. That address then sent a canned reply: the service is only for viewers wanting copies of programmes. Neither message searched an archive. For a research request, that is them saying there is nothing further this channel will do.",
+          "ITV clip sales replied automatically that the inbox is only for licensing footage, and pointed personal research at viewers.requests. That address then sent a canned reply: the service is only for viewers wanting copies of programmes. Neither message searched an archive. For a research request, that is them saying there is nothing further this channel will do.",
+      },
+    },
+  },
+  {
+    id: "dwr-cymru",
+    name: "Dŵr Cymru Welsh Water",
+    short: "Welsh Water",
+    kind: "authority",
+    remit: "Water undertaker. Within the EIR for environmental information. The 1988 supply and any disconnection at the farm.",
+    cells: {
+      open: {
+        status: "dormant",
+        title: "EIR on the 1988 water supply",
+        date: "7 Jun – 11 Aug 2026",
+        correspondent: "To Welsh Water",
+        ref: "Historic water-supply records, Great House Farm",
+        url: g("19ea1459e1ca52e1"),
+        detail:
+          "On 7 June 2026 you asked under the EIR for historic water-supply records for Great House Farm, Llandough, including any disconnection in 1988. You followed up on 20 June, 1 August and 11 August. Twenty working days from 7 June is about 3 July 2026. No reply to those emails is in the mailbox before 12 August.",
+      },
+      reply: {
+        status: "closed",
+        title: "“No records” on the property",
+        date: "13 Aug – 29 Sep 2026",
+        correspondent: "Data Subject Rights team, then Customer Care",
+        ref: "DP/2961/2026; mail refs 92994223/01, 93027237/01, 93047764/01",
+        url: g("1a0afe15770e3994"),
+        detail:
+          "The first answer came from the data-subject-rights team on 13 August 2026: no records held about you or the property. On 3 September Customer Care reviewed it as an enquiry about the 1988 supply rather than a subject-access request and kept the same position. On 17 and 29 September it repeated that searches found no records about you or Great House Farm (Tŷ Mawr), and said it cannot give disposal or audit records for documents it does not hold. The reply came after the 20-working-day point on the June request.",
+      },
+    },
+  },
+  {
+    id: "heneb",
+    name: "Heneb (formerly GGAT) — Historic Environment Record",
+    short: "Heneb",
+    kind: "private",
+    remit: "Regional archaeology trust that keeps the Historic Environment Record. It disputes that it falls within the EIR.",
+    cells: {
+      open: {
+        status: "dormant",
+        title: "HER source file and records schedule",
+        date: "8 and 19 Sep 2026",
+        correspondent: "To the HER team",
+        ref: "GGAT02038s",
+        url: g("1a07efa0b6b10900"),
+        detail:
+          "On 8 September 2026 you asked for the HER source file for Great House Farm, Llandough, framed under the EIR, and on 19 September you sent a schedule of further records.",
+      },
+      reply: {
+        status: "evidence",
+        title: "Source file digitised on Archwilio",
+        date: "6, 14 and 16 Oct 2026",
+        correspondent: "HER team",
+        ref: "Archwilio record 02038s",
+        url: g("1a07efa0b6b10900"),
+        detail:
+          "On 6 October Heneb replied that whether it falls within the EIR is a matter of legal dispute, and pointed to Archwilio record 02038s. On 14 October it wrote that the HER source file had been digitised and uploaded to that record as PDFs, including its copy of Suggett (1988). On 16 October it answered the 19 September schedule point by point, mostly by reference to the public Archwilio record.",
+      },
+      complaint: {
+        status: "dormant",
+        title: "Formal complaint acknowledged",
+        date: "27–30 Sep 2026",
+        correspondent: "Heneb",
+        ref: "HER identifiers",
+        url: g("1a0ceb50ec8ec412"),
+        detail:
+          "You sent a formal complaint to GGAT / Heneb on 27 September 2026 about the HER identifiers. It was acknowledged. No complaint outcome is in the mailbox as of 18 October 2026.",
+      },
+    },
+  },
+  {
+    id: "bp",
+    name: "BP — Archive and group legal",
+    short: "BP",
+    kind: "private",
+    remit: "The claimant’s group in BP Properties Ltd v Buckler [1987] EWCA Civ 2. Not a public authority: no FOI route.",
+    cells: {
+      open: {
+        status: "dormant",
+        title: "Letters to group legal",
+        date: "28 Jan – 7 Jun 2026",
+        correspondent: "To BP group legal",
+        ref: "BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+        url: g("19c033a551662faa"),
+        detail:
+          "You wrote to BP’s group legal function on 28 January, 9 May and 7 June 2026 asking for records and a litigation hold. No reply to those letters is in the mailbox.",
+      },
+      reply: {
+        status: "closed",
+        title: "Archive: nothing before 1955",
+        date: "25 Aug 2026",
+        correspondent: "BP Archive",
+        ref: "Reading Room request",
+        url: g("1a0073ad95b3bb32"),
+        detail:
+          "The BP Archive replied on 25 August 2026 that it holds material up to the end of 1954, that post-1954 material is not open to external access, and that it found no documents about the property before 1955, explaining that BP did not acquire the property until the 1960s. That last point is BP’s account. It is recorded here as written and has not been tested against the title records.",
+      },
+      chase: {
+        status: "dormant",
+        title: "Preservation notices, no reply",
+        date: "28 Sep and 16 Oct 2026",
+        correspondent: "To BP",
+        ref: "Titles WA231076, WA240304",
+        url: g("1a1439902c7e1dc4"),
+        detail:
+          "Preservation notices went to BP on 28 September and 16 October 2026, asking that records about the farm, the 1982–83 registrations and the 1987 case are not destroyed. No reply is in the mailbox as of 18 October 2026.",
+      },
+    },
+  },
+  {
+    id: "cps",
+    name: "Crown Prosecution Service",
+    short: "CPS",
+    kind: "authority",
+    remit: "Prosecuting authority. Asked to consider the family’s account of suspected historic fraud.",
+    cells: {
+      open: {
+        status: "dormant",
+        title: "Submission on reopening the 1987 case",
+        date: "3 Sep 2026",
+        correspondent: "To the CPS",
+        ref: "Re-opening of BP vs Buckler 1987",
+        url: g("1a0693988a9de5f0"),
+        detail:
+          "On 3 September 2026 you sent the CPS a submission asking it to consider the family’s account of suspected historic fraud connected with BP Properties Ltd v Buckler. An automatic reply and an acknowledgement followed.",
+      },
+      chase: {
+        status: "dormant",
+        title: "Chased, then acknowledged",
+        date: "27 Sep – 8 Oct 2026",
+        correspondent: "To the CPS",
+        url: g("1a0ee493c00fb442"),
+        detail:
+          "You chased on 27 September and sent further information on 30 September 2026. A holding acknowledgement is in the mailbox, dated 8 October. No substantive decision is in the mailbox as of 18 October 2026.",
       },
     },
   },
@@ -971,7 +1116,7 @@ export const parties: Party[] = [
   },
 ];
 
-export const sampledThrough = "12 October 2026";
+export const sampledThrough = "18 October 2026";
 
 export function dormantDetail(party: Party, ring: Ring): string {
   if (party.kind === "private" && (ring.id === "regulator" || ring.id === "democratic" || ring.id === "forum")) {
