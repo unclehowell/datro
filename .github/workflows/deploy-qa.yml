@@ -91,6 +91,32 @@ jobs:
         run: |
           npx --yes wrangler@3 pages deploy . --project-name=qa --branch=qa --commit-dirty=true
 
+      - name: Smoke-test deployed UI and search API
+        run: |
+          curl --fail --silent --show-error --max-time 45 https://qa-acp.pages.dev/ -o /tmp/qa-index.html
+          curl --fail --silent --show-error --max-time 45 https://qa-acp.pages.dev/api/qa.json -o /tmp/qa-data.json
+          curl --fail --silent --show-error --max-time 45 'https://qa-acp.pages.dev/api/ask?q=WA231076' -o /tmp/qa-search.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          html = Path("/tmp/qa-index.html").read_text(encoding="utf-8")
+          data = json.loads(Path("/tmp/qa-data.json").read_text(encoding="utf-8"))
+          search = json.loads(Path("/tmp/qa-search.json").read_text(encoding="utf-8"))
+          records = data.get("qa") if isinstance(data, dict) else data
+          if "<title>QA Graph" not in html:
+              raise SystemExit("Live homepage title missing.")
+          if "${escapeHtml(x.id || '')}" not in html:
+              raise SystemExit("Live renderer is missing the escaped Q&A UID text node.")
+          if not isinstance(records, list) or len(records) != 309:
+              raise SystemExit("Live qa.json record count mismatch.")
+          ids = [x.get("id") for x in records if isinstance(x, dict)]
+          if len(ids) != len(records) or len(set(ids)) != len(ids) or any(not isinstance(x, str) or not x.startswith("qa-") for x in ids):
+              raise SystemExit("Live Q&A UIDs are missing or duplicated.")
+          if search.get("source") != "d1" or not search.get("qa"):
+              raise SystemExit("Live /api/ask did not return D1-backed Q&A results.")
+          print(f"Smoke tests passed: homepage, escaped UID renderer, {len(records)} unique Q&A records, D1 search ({len(search['qa'])} Q&A hits).")
+          PY
+
       - name: Sync and verify D1 graph
         env:
           SYNC_ATTEMPTS: "30"
