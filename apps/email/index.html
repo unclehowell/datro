@@ -321,6 +321,7 @@ async function openThread(t, pushHistory){
   meta.appendChild(document.createTextNode(' · '));
   const permalink=document.createElement('a');permalink.href=threadUrl(t,false)+'#'+card.id;permalink.textContent='permalink to this message';permalink.setAttribute('aria-label','Permanent link to '+r.name);meta.appendChild(permalink);permalinkById.set(r.id,permalink);
   const body=document.createElement('pre');body.className='message-body';body.textContent='Loading archived text…';
+  head.append(name,meta);
   card.append(head,body);reader.appendChild(card);bodyById.set(r.id,body);
  });
  $('thread-details').open=false;$('thread-summary').textContent='Building thread description from the indexed records…';
@@ -519,7 +520,7 @@ async function registerWebMcpTools(){
 registerWebMcpTools().catch(()=>{const s=$('webmcp-status');if(s)s.textContent='WebMCP could not register in this browser/session. Use the JSON API and OpenAPI links below.';});
 
 fetch('/api/records').then(async r=>{if(!r.ok)throw new Error('Catalogue response '+r.status);return r.json();}).then(data=>{
- manifest=data;allRecords=data.records||[];$('manifest-version').textContent=data.manifestVersion||'1.0.0';threads=buildThreads(allRecords);updateCounts();renderList();
+ manifest=data;allRecords=(data.records||[]).map(r=>(r&&!r.path&&r.sourceUrl)?Object.assign({},r,{path:r.sourceUrl}):r);$('manifest-version').textContent=data.manifestVersion||'1.0.0';threads=buildThreads(allRecords);updateCounts();renderList();
  $('list-subtitle').textContent=threads.length+' subject groups · '+allRecords.length+' Wayback-hosted public source records · all indexed years';
  const linked=threadFromCurrentUrl();
  const externalRef=referenceFromCurrentUrl();
