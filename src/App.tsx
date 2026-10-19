@@ -1116,7 +1116,7 @@ node child-proxy.js`}</pre>
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <span className="font-bold text-sm tracking-tighter text-white/60">Finance Cheque UK</span>
             <p className="text-[9px] uppercase tracking-widest">
-              DATRO CONSORTIUM LIMITED • Waterlooville, PO8 0BT • 02031377118
+              DATRO CONSORTIUM LIMITED • Waterlooville, PO8 0BT • [redacted]
             </p>
             <div className="flex gap-4">
               <button onClick={() => setCurrentPage('how-it-works')} className="text-[9px] font-bold uppercase tracking-widest hover:text-accent transition-colors">How It Works</button>
