@@ -394,7 +394,7 @@ INSERT INTO nodes VALUES ('msg:m-b4211aae6ddf','message','Freedom of Information
 INSERT INTO nodes VALUES ('msg:m-53e88765b3cc','message','Good God','{"date": "2026-08-21T01:36:00Z", "direction": "sent", "party": "vale", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t2"}');
 INSERT INTO nodes VALUES ('msg:m-6d0f9eb3ce4d','message','Confirm your FOI request to Vale of Glamorgan Council / Delayed response / New response / Please update the status — 2020 01590 HYB','{"date": "2026-08-21T06:06:00Z", "direction": "received", "party": "vale", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t9"}');
 INSERT INTO nodes VALUES ('msg:m-9142c0876de2','message','Formal Governance and Integrity Notification — Great House Farm / Ty Mawr, Llandough','{"date": "2026-08-21T08:13:00Z", "direction": "sent", "party": "vale", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-2/#t3"}');
-INSERT INTO nodes VALUES ('msg:g-1a02ad595fc3aeac','message','Ty Mawr, Llandough, Cardiff','{"date": "2026-08-22T18:57:15Z", "direction": "sent", "party": "glamarch", "url": "https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-a:r-5652027083536199633"}');
+INSERT INTO nodes VALUES ('msg:g-1a02ad595fc3aeac','message','Ty Mawr, Llandough, Cardiff','{"date": "2026-08-22T18:57:15Z", "direction": "sent", "party": "glamarch", "url": "https://mail.google.com/mail/?authuser=[redacted]#all/thread-a:r-2236227807529852386|msg-a:r-5652027083536199633"}');
 INSERT INTO nodes VALUES ('msg:m-2458e53b1439','message','RE: Complaint – Failure to Respond / Failure to Deal Properly with Case – Cllr George Carroll (Llandough) – Great House Farm / Church View Close','{"date": "2026-08-24T13:59:00Z", "direction": "received", "party": "vale", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-2/#t1"}');
 INSERT INTO nodes VALUES ('msg:m-a80803ff86f7','message','Re: Complaint – Failure to Respond / Failure to Deal Properly with Case – Cllr George Carroll (Llandough) – Great House Farm / Church View Close','{"date": "2026-08-24T19:31:00Z", "direction": "sent", "party": "vale", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-2/#t1"}');
 INSERT INTO nodes VALUES ('msg:m-2a2ce3a7cfb4','message','FOI - 2026-024 - Great House Farm, Llandough','{"date": "2026-08-25T07:25:00Z", "direction": "received", "party": "museum", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t2"}');
@@ -421,11 +421,11 @@ INSERT INTO nodes VALUES ('msg:m-6a58594c4e3b','message','Re: Great House Farm, 
 INSERT INTO nodes VALUES ('msg:m-c92591f72ef8','message','Please update the status of your request - BP vs Buckler 1987','{"date": "2026-09-06T06:31:00Z", "direction": "received", "party": "nctso", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/national-counter-terrorism-security-office-nactso-email-correspondence-catalogue/#t1"}');
 INSERT INTO nodes VALUES ('msg:m-24cf14552c91','message','New response to your FOI request - BP vs Buckler 1987','{"date": "2026-09-07T08:25:00Z", "direction": "received", "party": "nctso", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/national-counter-terrorism-security-office-nactso-email-correspondence-catalogue/#t1"}');
 INSERT INTO nodes VALUES ('msg:m-2ad52ca43b14','message','New response to your FOI request - BP vs Buckler 1987','{"date": "2026-09-07T09:21:00Z", "direction": "received", "party": "nctso", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/national-counter-terrorism-security-office-nactso-email-correspondence-catalogue/#t1"}');
-INSERT INTO nodes VALUES ('msg:g-1a07b3bf0b65e56c','message','RE: Epexio contact us form submission','{"date": "2026-09-07T09:36:38Z", "direction": "received", "party": "glamarch", "url": "https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1875665402934453612|msg-f:1875665402934453612"}');
+INSERT INTO nodes VALUES ('msg:g-1a07b3bf0b65e56c','message','RE: Epexio contact us form submission','{"date": "2026-09-07T09:36:38Z", "direction": "received", "party": "glamarch", "url": "https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1875665402934453612|msg-f:1875665402934453612"}');
 INSERT INTO nodes VALUES ('msg:m-595d21a2acd8','message','New response to your FOI request - BP vs Buckler 1987','{"date": "2026-09-07T11:07:00Z", "direction": "received", "party": "nctso", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/national-counter-terrorism-security-office-nactso-email-correspondence-catalogue/#t1"}');
-INSERT INTO nodes VALUES ('msg:g-1a07c8b70851bfd9','message','Re: Epexio contact us form submission','{"date": "2026-09-07T15:45:07Z", "direction": "sent", "party": "glamarch", "url": "https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1875665402934453612|msg-a:r504170399441776690"}');
-INSERT INTO nodes VALUES ('msg:g-1a07cc3e251e0967','message','RE: Ty Mawr, Llandough, Cardiff','{"date": "2026-09-07T16:46:31Z", "direction": "received", "party": "glamarch", "url": "https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063"}');
-INSERT INTO nodes VALUES ('msg:g-1a07d705f291c33b','message','Re: Ty Mawr, Llandough, Cardiff','{"date": "2026-09-07T19:55:07Z", "direction": "sent", "party": "glamarch", "url": "https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-a:r-5409196767943587968"}');
+INSERT INTO nodes VALUES ('msg:g-1a07c8b70851bfd9','message','Re: Epexio contact us form submission','{"date": "2026-09-07T15:45:07Z", "direction": "sent", "party": "glamarch", "url": "https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1875665402934453612|msg-a:r504170399441776690"}');
+INSERT INTO nodes VALUES ('msg:g-1a07cc3e251e0967','message','RE: Ty Mawr, Llandough, Cardiff','{"date": "2026-09-07T16:46:31Z", "direction": "received", "party": "glamarch", "url": "https://mail.google.com/mail/?authuser=[redacted]#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063"}');
+INSERT INTO nodes VALUES ('msg:g-1a07d705f291c33b','message','Re: Ty Mawr, Llandough, Cardiff','{"date": "2026-09-07T19:55:07Z", "direction": "sent", "party": "glamarch", "url": "https://mail.google.com/mail/?authuser=[redacted]#all/thread-a:r-2236227807529852386|msg-a:r-5409196767943587968"}');
 INSERT INTO nodes VALUES ('msg:m-2cae5a14a80e','message','Great House Farm, Llandough, Cardiff','{"date": "2026-09-08T03:04:00Z", "direction": "sent", "party": "museum", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t3"}');
 INSERT INTO nodes VALUES ('msg:m-c323d7150db8','message','Great House Farm, Llandough, Cardiff','{"date": "2026-09-08T03:05:00Z", "direction": "sent", "party": "heneb", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t5"}');
 INSERT INTO nodes VALUES ('msg:m-f81197231c2d','message','Internal Review: FOI 2026-020 - Great House Farm, Llandough | Cardiff Castle Furniture','{"date": "2026-09-08T08:29:00Z", "direction": "received", "party": "museum", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t1"}');
@@ -471,7 +471,7 @@ INSERT INTO nodes VALUES ('msg:m-d1170071b2cc','message','Great House Farm, Llan
 INSERT INTO nodes VALUES ('msg:m-385ce48cfeff','message','Automatic reply: Great House Farm, Llandough, Cardiff','{"date": "2026-09-19T22:56:00Z", "direction": "received", "party": "heneb", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t5"}');
 INSERT INTO nodes VALUES ('msg:m-3e63cc41d39a','message','Formal complaint of 17 September 2026 — Great House Farm (Tŷ Mawr), Llandough — non-delivery and re-service','{"date": "2026-09-20T07:17:00Z", "direction": "sent", "party": "cadw", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t3"}');
 INSERT INTO nodes VALUES ('msg:m-821a53d520e5','message','Re: FOI/EIR request - Case Ref/ 00211463 — clarification and refinement of request','{"date": "2026-09-21T02:28:00Z", "direction": "sent", "party": "vale", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t10"}');
-INSERT INTO nodes VALUES ('msg:g-1a0c1e743d10b2b2','message','Re: Great House Farm (Tŷ Mawr), Llandough — request for information under FOIA 2000 / EIR 2004','{"date": "2026-09-21T02:59:13Z", "direction": "sent", "party": "llcc", "url": "https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1876908364250660817|msg-a:r-2876032251266921777"}');
+INSERT INTO nodes VALUES ('msg:g-1a0c1e743d10b2b2','message','Re: Great House Farm (Tŷ Mawr), Llandough — request for information under FOIA 2000 / EIR 2004','{"date": "2026-09-21T02:59:13Z", "direction": "sent", "party": "llcc", "url": "https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1876908364250660817|msg-a:r-2876032251266921777"}');
 INSERT INTO nodes VALUES ('msg:m-73d9b7578187','message','Further to Your Enquiry: Ref: 260919-6726246','{"date": "2026-09-21T11:51:00Z", "direction": "received", "party": "hmlr", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-3/#t2"}');
 INSERT INTO nodes VALUES ('msg:m-175bdaa69955','message','N610CGV — request for electronic copies of listed first-registration documents (WA240304 / WA231076)','{"date": "2026-09-22T04:10:00Z", "direction": "sent", "party": "hmlr", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-3/#t2"}');
 INSERT INTO nodes VALUES ('msg:m-af0c2e9c74b4','message','Enquiry:  260922-6732594','{"date": "2026-09-22T04:11:00Z", "direction": "received", "party": "hmlr", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-3/#t2"}');
@@ -483,7 +483,7 @@ INSERT INTO nodes VALUES ('msg:m-e85d4683671a','message','Supplement to complain
 INSERT INTO nodes VALUES ('msg:g-1a0cf0a5c1c2a0a0','message','Freedom of Information Request: Reference CAS-347296-M0V4Y1','{"date": "2026-09-23T16:12:31Z", "direction": "received", "party": "tna", "url": "https://mail.google.com/mail/u/0/#all/1a0cf0a5c1c2a0a0"}');
 INSERT INTO nodes VALUES ('msg:m-a68bde8eeeb0','message','FOI "Llandough Roman villa & medieval house finds were destroyed in a 1983 fire"','{"date": "2026-09-24T15:05:00Z", "direction": "sent", "party": "heneb", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t6"}');
 INSERT INTO nodes VALUES ('msg:m-1cdc6e2f70b8','message','Re: FOI "Llandough Roman villa & medieval house finds were destroyed in a 1983 fire" #628912926','{"date": "2026-09-24T15:24:00Z", "direction": "received", "party": "cadw", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t4"}');
-INSERT INTO nodes VALUES ('msg:g-1a0d421cdc687541','message','RE: Epexio contact us form submission','{"date": "2026-09-24T15:56:15Z", "direction": "received", "party": "glamarch", "url": "https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1875665402934453612|msg-f:1877229311407715649"}');
+INSERT INTO nodes VALUES ('msg:g-1a0d421cdc687541','message','RE: Epexio contact us form submission','{"date": "2026-09-24T15:56:15Z", "direction": "received", "party": "glamarch", "url": "https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1875665402934453612|msg-f:1877229311407715649"}');
 INSERT INTO nodes VALUES ('msg:g-1a0d677d2f33f0ab','message','Re: Freedom of Information Request: Reference CAS-347296-M0V4Y1 (internal review)','{"date": "2026-09-25T02:49:31Z", "direction": "sent", "party": "tna", "url": "https://mail.google.com/mail/u/0/#all/1a0cf0a5c1c2a0a0"}');
 INSERT INTO nodes VALUES ('msg:m-3eb96ae8a5a7','message','Great House Farm, Llandough','{"date": "2026-09-26T19:09:00Z", "direction": "sent", "party": "hmlr", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-4/#t1"}');
 INSERT INTO nodes VALUES ('msg:m-3b27f5c25b93','message','Chase — submission of 3 September 2026: Great House Farm / suspected historic fraud','{"date": "2026-09-27T04:09:00Z", "direction": "sent", "party": "cps", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/crown-prosecution-service-email-correspondence-catalogue/#t2"}');
@@ -493,7 +493,7 @@ INSERT INTO nodes VALUES ('msg:m-95e71375aa75','message','Great House Farm, Llan
 INSERT INTO nodes VALUES ('msg:m-ad64b7585ed8','message','Great House Farm, Llandough','{"date": "2026-09-27T04:12:00Z", "direction": "sent", "party": "heneb", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t7"}');
 INSERT INTO nodes VALUES ('msg:m-ccd2c99dea71','message','Automatic reply: Great House Farm, Llandough','{"date": "2026-09-27T04:12:00Z", "direction": "received", "party": "cadw", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t6"}');
 INSERT INTO nodes VALUES ('msg:m-66c34d95898a','message','Enquiry:  260927-6756312','{"date": "2026-09-27T04:13:00Z", "direction": "received", "party": "hmlr", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-4/#t2"}');
-INSERT INTO nodes VALUES ('msg:g-1a0e112511993a85','message','Re: Epexio contact us form submission','{"date": "2026-09-27T04:14:28Z", "direction": "sent", "party": "glamarch", "url": "https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1875665402934453612|msg-a:r-3717670786762189549"}');
+INSERT INTO nodes VALUES ('msg:g-1a0e112511993a85','message','Re: Epexio contact us form submission','{"date": "2026-09-27T04:14:28Z", "direction": "sent", "party": "glamarch", "url": "https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1875665402934453612|msg-a:r-3717670786762189549"}');
 INSERT INTO nodes VALUES ('msg:m-b81f000a4658','message','Formal complaint — GGAT / Heneb: Great House Farm (Tŷ Mawr), Llandough — HER identifiers and the 1978–1995 record','{"date": "2026-09-27T04:15:00Z", "direction": "sent", "party": "heneb", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t8"}');
 INSERT INTO nodes VALUES ('msg:m-f557ec2721be','message','Automatic reply: Great House Farm, Llandough','{"date": "2026-09-27T04:15:00Z", "direction": "received", "party": "heneb", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t7"}');
 INSERT INTO nodes VALUES ('msg:m-30fdd92c6037','message','RE: FOI - 2026-032 - Great House Farm, Llandough','{"date": "2026-09-27T04:16:00Z", "direction": "sent", "party": "museum", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t4"}');
@@ -504,9 +504,9 @@ INSERT INTO nodes VALUES ('msg:m-fe47dbb603ab','message','Referral to the Indepe
 INSERT INTO nodes VALUES ('msg:m-ec230c791e1c','message','Further to Your Enquiry: Ref: 260918-6720625 Title No: WA240304','{"date": "2026-09-27T05:18:00Z", "direction": "received", "party": "hmlr", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-3/#t1"}');
 INSERT INTO nodes VALUES ('msg:m-b456ab95c226','message','RE: FOI - 2026-032 - Great House Farm, Llandough','{"date": "2026-09-28T07:13:00Z", "direction": "received", "party": "museum", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t4"}');
 INSERT INTO nodes VALUES ('msg:m-b7b0ff6bc4da','message','RE: FOI - 2026-032 - Great House Farm, Llandough','{"date": "2026-09-28T07:17:00Z", "direction": "received", "party": "museum", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t4"}');
-INSERT INTO nodes VALUES ('msg:g-1a0e723a463e74e1','message','Re: Great House Farm (Tŷ Mawr), Llandough — request for information under FOIA 2000 / EIR 2004','{"date": "2026-09-28T08:31:06Z", "direction": "received", "party": "llcc", "url": "https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1876908364250660817|msg-f:1877563689272243425"}');
-INSERT INTO nodes VALUES ('msg:g-1a0e72bb71f6b0d9','message','Re: Great House Farm (Tŷ Mawr), Llandough — request for information under FOIA 2000 / EIR 2004','{"date": "2026-09-28T08:39:56Z", "direction": "sent", "party": "llcc", "url": "https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1876908364250660817|msg-a:r4009532689014620465"}');
-INSERT INTO nodes VALUES ('msg:g-1a0e731a41ab4507','message','Re: Great House Farm (Tŷ Mawr), Llandough — request for information under FOIA 2000 / EIR 2004','{"date": "2026-09-28T08:46:25Z", "direction": "sent", "party": "llcc", "url": "https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1876908364250660817|msg-a:r5658808185330569011"}');
+INSERT INTO nodes VALUES ('msg:g-1a0e723a463e74e1','message','Re: Great House Farm (Tŷ Mawr), Llandough — request for information under FOIA 2000 / EIR 2004','{"date": "2026-09-28T08:31:06Z", "direction": "received", "party": "llcc", "url": "https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1876908364250660817|msg-f:1877563689272243425"}');
+INSERT INTO nodes VALUES ('msg:g-1a0e72bb71f6b0d9','message','Re: Great House Farm (Tŷ Mawr), Llandough — request for information under FOIA 2000 / EIR 2004','{"date": "2026-09-28T08:39:56Z", "direction": "sent", "party": "llcc", "url": "https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1876908364250660817|msg-a:r4009532689014620465"}');
+INSERT INTO nodes VALUES ('msg:g-1a0e731a41ab4507','message','Re: Great House Farm (Tŷ Mawr), Llandough — request for information under FOIA 2000 / EIR 2004','{"date": "2026-09-28T08:46:25Z", "direction": "sent", "party": "llcc", "url": "https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1876908364250660817|msg-a:r5658808185330569011"}');
 INSERT INTO nodes VALUES ('msg:m-6f2406a0e0e6','message','Freedom of Information Request 1040/26','{"date": "2026-09-28T10:59:00Z", "direction": "received", "party": "swp", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-2/#t5"}');
 INSERT INTO nodes VALUES ('msg:m-7b39599c2b81','message','death certificate','{"date": "2026-09-28T11:42:00Z", "direction": "received", "party": "vale", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-2/#t6"}');
 INSERT INTO nodes VALUES ('msg:m-9facb0edfce9','message','Your complaint about HM Land Registry - referral to ICR Office','{"date": "2026-09-28T11:43:00Z", "direction": "received", "party": "hmlr", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-4/#t1"}');
@@ -555,7 +555,7 @@ INSERT INTO nodes VALUES ('msg:m-9f589cc110ac','message','[3] Re: Formal complai
 INSERT INTO nodes VALUES ('msg:m-759121b4a3ce','message','Subject Access Request','{"date": "2026-09-30T13:47:00Z", "direction": "received", "party": "swp", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-3/#t9"}');
 INSERT INTO nodes VALUES ('msg:m-8d70c208e8a7','message','RE: [3] Re: Formal complaint — GGAT / Heneb: Great House Farm (Tŷ Mawr), Llandough — HER identifiers and the 1978–1995 record','{"date": "2026-09-30T13:53:00Z", "direction": "received", "party": "heneb", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t8"}');
 INSERT INTO nodes VALUES ('msg:m-84e5968e151b','message','FOI/EIR request - Case Ref/ 00211557','{"date": "2026-09-30T15:03:00Z", "direction": "received", "party": "vale", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t13"}');
-INSERT INTO nodes VALUES ('msg:g-1a0f2f0f54a36630','message','RE: Ty Mawr, Llandough, Cardiff','{"date": "2026-09-30T15:31:07Z", "direction": "received", "party": "glamarch", "url": "https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-f:1877771312527795760"}');
+INSERT INTO nodes VALUES ('msg:g-1a0f2f0f54a36630','message','RE: Ty Mawr, Llandough, Cardiff','{"date": "2026-09-30T15:31:07Z", "direction": "received", "party": "glamarch", "url": "https://mail.google.com/mail/?authuser=[redacted]#all/thread-a:r-2236227807529852386|msg-f:1877771312527795760"}');
 INSERT INTO nodes VALUES ('msg:m-f5998e3d34b3','message','New response to your FOI request - BP vs Buckler 1987','{"date": "2026-10-01T11:38:00Z", "direction": "received", "party": "nctso", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/national-counter-terrorism-security-office-nactso-email-correspondence-catalogue/#t1"}');
 INSERT INTO nodes VALUES ('msg:m-5bcfd7385b58','message','New response to your FOI request - BP vs Buckler 1987','{"date": "2026-10-01T11:39:00Z", "direction": "received", "party": "nctso", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/national-counter-terrorism-security-office-nactso-email-correspondence-catalogue/#t1"}');
 INSERT INTO nodes VALUES ('msg:m-57fd60408653','message','RE: Subject access request — WA231076 / WA240304 — Great House Farm, Llandough — Williams / Buckler','{"date": "2026-10-01T13:25:00Z", "direction": "received", "party": "hmlr", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-5/#t1"}');
@@ -599,13 +599,13 @@ INSERT INTO nodes VALUES ('msg:m-b98552698697','message','Automatic reply: FOI/E
 INSERT INTO nodes VALUES ('msg:m-7a7debf3e80b','message','Scrutiny Topic Suggestion / Task and Finish request — Council-held planning, heritage and public-authority record for Great House Farm / Tÿ Mawr, Llandough','{"date": "2026-10-10T19:15:00Z", "direction": "sent", "party": "vale", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t5"}');
 INSERT INTO nodes VALUES ('msg:m-acfa5abd3f26','message','Re: Great House Farm / suspected historic fraud','{"date": "2026-10-10T20:14:00Z", "direction": "sent", "party": "cps", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/crown-prosecution-service-email-correspondence-catalogue/#t2"}');
 INSERT INTO nodes VALUES ('msg:g-1a12773e2d476f70','message','Re: Enquiry — does D153/1–8 contain a c.1875–1880 Llandough-juxta-Penarth instrument?','{"date": "2026-10-10T20:14:28Z", "direction": "sent", "party": "glamarch", "url": "https://mail.google.com/mail/u/0/#all/1a0ac815c712ae7c"}');
-INSERT INTO nodes VALUES ('msg:g-1a12a57b87f563cc','message','Re: Great House Farm (Tŷ Mawr), Llandough — request for information under FOIA 2000 / EIR 2004','{"date": "2026-10-11T09:42:29Z", "direction": "received", "party": "llcc", "url": "https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1876908364250660817|msg-f:1878745944547484620"}');
+INSERT INTO nodes VALUES ('msg:g-1a12a57b87f563cc','message','Re: Great House Farm (Tŷ Mawr), Llandough — request for information under FOIA 2000 / EIR 2004','{"date": "2026-10-11T09:42:29Z", "direction": "received", "party": "llcc", "url": "https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1876908364250660817|msg-f:1878745944547484620"}');
 INSERT INTO nodes VALUES ('msg:m-2ec0646207ac','message','RE: Scrutiny Topic Suggestion / Task and Finish request — Council-held planning, heritage and public-authority record for Great House Farm / Tÿ Mawr, Llandough','{"date": "2026-10-11T11:56:00Z", "direction": "received", "party": "vale", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t5"}');
 INSERT INTO nodes VALUES ('msg:m-a311e1be4b28','message','RE: ICR/090/26 – further formal points on the first-registration file and 1987 amalgamation','{"date": "2026-10-12T10:09:00Z", "direction": "received", "party": "hmlr", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-4/#t1"}');
 INSERT INTO nodes VALUES ('msg:m-c20c03cafdff','message','RE: FOI 1264/26 - non-personal operational records concerning Great House Farm / Tŷ Mawr, Llandough, November–December 1988','{"date": "2026-10-12T10:29:00Z", "direction": "received", "party": "swp", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-3/#t10"}');
 INSERT INTO nodes VALUES ('msg:m-037ffbfe4494','message','RE: ALLANOL/EXTERNAL - FOI 2026-024 / 032 / 036 – outstanding item 7: recorded basis for treating already-found records as “unrelated / not in scope”','{"date": "2026-10-12T14:56:00Z", "direction": "received", "party": "museum", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t6"}');
 INSERT INTO nodes VALUES ('msg:m-0ae31213d1ae','message','RE: FOI 2026-036 – Great House Farm, Llandough – filtered schedule still not supplied; unanswered points from FOI 2026-032 correction','{"date": "2026-10-12T15:01:00Z", "direction": "received", "party": "museum", "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t5"}');
-INSERT INTO nodes VALUES ('msg:g-1a132cc8710993ff','message','Re: Great House Farm (Tŷ Mawr), Llandough — request for internal review of the response of 11 October 2026 (section 12)','{"date": "2026-10-13T01:07:06Z", "direction": "sent", "party": "llcc", "url": "https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1876908364250660817|msg-a:r940394521077987787"}');
+INSERT INTO nodes VALUES ('msg:g-1a132cc8710993ff','message','Re: Great House Farm (Tŷ Mawr), Llandough — request for internal review of the response of 11 October 2026 (section 12)','{"date": "2026-10-13T01:07:06Z", "direction": "sent", "party": "llcc", "url": "https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1876908364250660817|msg-a:r940394521077987787"}');
 INSERT INTO nodes VALUES ('qa:qa-559240cdf50d','qa','Sirs/Ma''am,
 
 I am writing regarding farmland formerly belonging to my family, which later formed part of the litigation known as BP v Buckle','{"kind": "reply", "pairing": "thread", "party": "cadw"}');
@@ -627,7 +627,7 @@ See attached.
 Regards,
 
 Sion Buckler
-02031377118','{"kind": "unanswered", "pairing": "unanswered", "party": "vale"}');
+[redacted]','{"kind": "unanswered", "pairing": "unanswered", "party": "vale"}');
 INSERT INTO nodes VALUES ('qa:qa-c6092e6d0d26','qa','Land Registry Disclosure**
 
 BP registered title in 1982 based on the disputed licence. The Council
@@ -978,7 +978,7 @@ INSERT INTO nodes VALUES ('qa:qa-7b2752650b04','qa','Sirs/ Ma''am,
 Under the Freedom of Information Act 2000 and, where applicable, the
 Environmental Information Regulations 2004, I request cop','{"kind": "not-held", "pairing": "thread", "party": "vale"}');
 INSERT INTO nodes VALUES ('qa:qa-0543073144ac','qa','---------- Forwarded message ---------
-From: Sion Buckler <hywelapbuckler@gmail.com>
+From: Sion Buckler <[redacted]>
 Date: Mon, 13 Jul 2026, 00:49
 Subject: Request for info','{"kind": "not-held", "pairing": "thread", "party": "vale"}');
 INSERT INTO nodes VALUES ('qa:qa-714b5e62a700','qa','Diolch.
@@ -1052,7 +1052,7 @@ Thank you for your email.
 Please find attached copies of my identification documents to verify my identity for the purposes of','{"kind": "unanswered", "pairing": "unanswered", "party": "mod"}');
 INSERT INTO nodes VALUES ('qa:qa-65e91bacee9e','qa','Confirm that my identification was received and accepted, and give me the SAR reference.
 Provide the response, or tell me the date it will b','{"kind": "unanswered", "pairing": "unanswered", "party": "mod"}');
-INSERT INTO nodes VALUES ('qa:qa-234adfdcf4a4','qa','02031377118
+INSERT INTO nodes VALUES ('qa:qa-234adfdcf4a4','qa','[redacted]
 
 You may leave a message.
 
@@ -1378,7 +1378,7 @@ For the avoi','{"kind": "unanswered", "pairing": "unanswered", "party": "cadw"}'
 INSERT INTO nodes VALUES ('qa:qa-1383cac6c813','qa','Subject access, UK GDPR Article 15. Personal data you hold about me, Sion Buckler, arising from the eviction and demolition at Great House F','{"kind": "unanswered", "pairing": "unanswered", "party": "swp"}');
 INSERT INTO nodes VALUES ('qa:qa-de3e4ba3140e','qa','Say what systems were searched for data relating to me, as a child in that household in 1988, as distinct from the FOI search already descri','{"kind": "unanswered", "pairing": "unanswered", "party": "mod"}');
 INSERT INTO nodes VALUES ('qa:qa-72d3fa7b6fee','qa','Reply received: RC26-0375 - Ty Mawr/ Great House, Llandough, Cardiff','{"kind": "not-held", "pairing": "reply-only", "party": "rcahmw"}');
-INSERT INTO nodes VALUES ('qa:qa-0f501c90d27c','qa','5 Robin Hill, Dinas Powys CF64 4TF, United Kingdom is the address from
+INSERT INTO nodes VALUES ('qa:qa-0f501c90d27c','qa','[redacted], United Kingdom is the address from
 which I''m registered to vote. Our families home since the 60''s.
 
 Last','{"kind": "reply", "pairing": "thread", "party": "swp"}');
@@ -3387,10 +3387,10 @@ INSERT INTO qa VALUES ('qa-eddacebe2e0b','vale','Vale of Glamorgan Council','val
 Yes please. Thank you.
 
 If you have any avaliablity Monday please tell me the best time to call.
-I''m also reachable for scheduled calls on 02031377118
+I''m also reachable for scheduled calls on [redacted]
 
 Otherwise I''m on WhatsApp, which you can reach out to me on anytime.
-07845933262
+[redacted]
 
 Regards,
 
@@ -3400,10 +3400,10 @@ INSERT INTO qa_fts VALUES ('qa-eddacebe2e0b','Hi,
 Yes please. Thank you.
 
 If you have any avaliablity Monday please tell me the best time to call.
-I''m also reachable for scheduled calls on 02031377118
+I''m also reachable for scheduled calls on [redacted]
 
 Otherwise I''m on WhatsApp, which you can reach out to me on anytime.
-07845933262
+[redacted]
 
 Regards,
 
@@ -3415,7 +3415,7 @@ See attached.
 Regards,
 
 Sion Buckler
-02031377118','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t1','');
+[redacted]','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t1','');
 INSERT INTO qa_fts VALUES ('qa-1afb556414fa','George,
 
 See attached.
@@ -3423,7 +3423,7 @@ See attached.
 Regards,
 
 Sion Buckler
-02031377118','','Vale of Glamorgan Council');
+[redacted]','','Vale of Glamorgan Council');
 INSERT INTO qa VALUES ('qa-c6092e6d0d26','vale','Vale of Glamorgan Council','vale-of-glamorgan-council-email-correspondence-catalogue-part-3#t1','2026-02-16','Land Registry Disclosure**
 
 BP registered title in 1982 based on the disputed licence. The Council
@@ -3707,9 +3707,9 @@ And if you have any questions, queries or concerns please feel free to reach out
 Regards,
 
 Sion Buckler
-02031377118
-07845933262
-5 Robin Hill, Dinas Powys, CF64 4TF','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t1','cq-1881-name');
+[redacted]
+[redacted]
+[redacted]','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t1','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-ca5e7fa1e113','Records of any archaeological notifications, alerts, or discoveries associated with Great House Farm, whether before or after demolition, including references to artefacts later recovered during excavations in the early 1990s.
 Any documentation referring to historical associations between Great House Farm and early radio or wireless experimentation, including any mention of Guglielmo Marconi or related activity in the Cardiff Bay / Lavernock / surrounding area that may have been considered or dismissed.
 If any information is withheld, please specify the exemption relied upon and provide the reasoning as required under the Act.
@@ -3725,9 +3725,9 @@ And if you have any questions, queries or concerns please feel free to reach out
 Regards,
 
 Sion Buckler
-02031377118
-07845933262
-5 Robin Hill, Dinas Powys, CF64 4TF','','Cadw / Welsh Government');
+[redacted]
+[redacted]
+[redacted]','','Cadw / Welsh Government');
 INSERT INTO qa VALUES ('qa-67d3e0e1dc80','hmlr','HM Land Registry','hm-land-registry-email-correspondence-catalogue#t1','2026-01-29','*Forced removal and restraint (not abandonment)*
    My family did not abandon the property or leave by our own accord, nor did we fully understand what or why this was happening. In 1987, my father and all of us, his dependants, were forcibly removed. Contemporary newspaper reports state that he was also taken from a hospital bed, detained without criminal charge, and made subject to a restraining order preventing him from returning to the farm. He was not even permitted to retrieve personal belongings.','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue/#t1','');
 INSERT INTO qa_fts VALUES ('qa-67d3e0e1dc80','*Forced removal and restraint (not abandonment)*
@@ -5062,7 +5062,7 @@ Elinor
 SWP59089
 Swyddog Cymorth Sicrwydd a Chydymffurfiaeth | Assurance and Compliance Support Officer
 Comisiynydd yr Heddlu a Throseddu De Cymru | South Wales Police and Crime Commissioner
-Ffôn/Phone: 01656869366
+Ffôn/Phone: [redacted]
 
 Rydym yn croesawu gohebiaeth yn Gymraeg ac yn Saesneg.
 Byddwn yn ymateb yn eich iaith o ddewis.
@@ -5103,7 +5103,7 @@ Elinor
 SWP59089
 Swyddog Cymorth Sicrwydd a Chydymffurfiaeth | Assurance and Compliance Support Officer
 Comisiynydd yr Heddlu a Throseddu De Cymru | South Wales Police and Crime Commissioner
-Ffôn/Phone: 01656869366
+Ffôn/Phone: [redacted]
 
 Rydym yn croesawu gohebiaeth yn Gymraeg ac yn Saesneg.
 Byddwn yn ymateb yn eich iaith o ddewis.
@@ -5133,7 +5133,7 @@ Elinor
 SWP59089
 Swyddog Cymorth Sicrwydd a Chydymffurfiaeth | Assurance and Compliance Support Officer
 Comisiynydd yr Heddlu a Throseddu De Cymru | South Wales Police and Crime Commissioner
-Ffôn/Phone: 01656869366
+Ffôn/Phone: [redacted]
 
 Rydym yn croesawu gohebiaeth yn Gymraeg ac yn Saesneg.
 Byddwn yn ymateb yn eich iaith o ddewis.
@@ -5169,7 +5169,7 @@ Elinor
 SWP59089
 Swyddog Cymorth Sicrwydd a Chydymffurfiaeth | Assurance and Compliance Support Officer
 Comisiynydd yr Heddlu a Throseddu De Cymru | South Wales Police and Crime Commissioner
-Ffôn/Phone: 01656869366
+Ffôn/Phone: [redacted]
 
 Rydym yn croesawu gohebiaeth yn Gymraeg ac yn Saesneg.
 Byddwn yn ymateb yn eich iaith o ddewis.
@@ -5376,7 +5376,7 @@ Regards,
 
 Sion Buckler
 
-5 Robin Hill, Dinas Powys','2026-05-27','Dear Sion Buckler
+[redacted]','2026-05-27','Dear Sion Buckler
 
 FREEDOM OF INFORMATION ACT 2000/ENVIRONMENTAL INFORMATION REGULATIONS 2004 - INFORMATION REQUEST
 
@@ -5466,7 +5466,7 @@ Regards,
 
 Sion Buckler
 
-5 Robin Hill, Dinas Powys','Dear Sion Buckler
+[redacted]','Dear Sion Buckler
 
 FREEDOM OF INFORMATION ACT 2000/ENVIRONMENTAL INFORMATION REGULATIONS 2004 - INFORMATION REQUEST
 
@@ -5831,7 +5831,7 @@ Regards,
 
 Sion Buckler
 
-5 Robin Hill, Dinas Powys','2026-05-22','Dear Mr Buckler,
+[redacted]','2026-05-22','Dear Mr Buckler,
 
 Thank you for your email. Heneb is not subject to FOI requests as we are a Limited company. However, if you fill out our Enquiry Form<https://heneb.jotform.com/form/240392792819366> then we will be happy to assist as best we can.
 
@@ -5863,7 +5863,7 @@ Regards,
 
 Sion Buckler
 
-5 Robin Hill, Dinas Powys','Dear Mr Buckler,
+[redacted]','Dear Mr Buckler,
 
 Thank you for your email. Heneb is not subject to FOI requests as we are a Limited company. However, if you fill out our Enquiry Form<https://heneb.jotform.com/form/240392792819366> then we will be happy to assist as best we can.
 
@@ -7451,7 +7451,7 @@ Uwch Arolygydd Adeiladau Hanesyddol, Parciau a Gerddi
 Amgylchedd Hanesyddol / Historic Environment
 Cadw
 Llywodraeth Cymru / Welsh Government
-Ffôn / Tel: 07751 715011
+Ffôn / Tel: [redacted]
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
 Join Cadw<https://www.cadwmembership.service.gov.wales/>','provided','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t5','cq-listing');
@@ -7476,7 +7476,7 @@ Uwch Arolygydd Adeiladau Hanesyddol, Parciau a Gerddi
 Amgylchedd Hanesyddol / Historic Environment
 Cadw
 Llywodraeth Cymru / Welsh Government
-Ffôn / Tel: 07751 715011
+Ffôn / Tel: [redacted]
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
 Join Cadw<https://www.cadwmembership.service.gov.wales/>','Cadw / Welsh Government');
@@ -7546,7 +7546,7 @@ Uwch Arolygydd Adeiladau Hanesyddol, Parciau a Gerddi
 Amgylchedd Hanesyddol / Historic Environment
 Cadw
 Llywodraeth Cymru / Welsh Government
-Ffôn / Tel: 07751 715011
+Ffôn / Tel: [redacted]
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
 Join Cadw<https://www.cadwmembership.service.gov.wales/>','provided','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t5','');
@@ -7584,7 +7584,7 @@ Uwch Arolygydd Adeiladau Hanesyddol, Parciau a Gerddi
 Amgylchedd Hanesyddol / Historic Environment
 Cadw
 Llywodraeth Cymru / Welsh Government
-Ffôn / Tel: 07751 715011
+Ffôn / Tel: [redacted]
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
 Join Cadw<https://www.cadwmembership.service.gov.wales/>','Cadw / Welsh Government');
@@ -7623,7 +7623,7 @@ Uwch Arolygydd Adeiladau Hanesyddol, Parciau a Gerddi
 Amgylchedd Hanesyddol / Historic Environment
 Cadw
 Llywodraeth Cymru / Welsh Government
-Ffôn / Tel: 07751 715011
+Ffôn / Tel: [redacted]
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
 Join Cadw<https://www.cadwmembership.service.gov.wales/>','partial','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t5','cq-1881-name,cq-water,cq-listing');
@@ -7662,7 +7662,7 @@ Uwch Arolygydd Adeiladau Hanesyddol, Parciau a Gerddi
 Amgylchedd Hanesyddol / Historic Environment
 Cadw
 Llywodraeth Cymru / Welsh Government
-Ffôn / Tel: 07751 715011
+Ffôn / Tel: [redacted]
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
 Join Cadw<https://www.cadwmembership.service.gov.wales/>','Cadw / Welsh Government');
@@ -7715,7 +7715,7 @@ Uwch Arolygydd Adeiladau Hanesyddol, Parciau a Gerddi
 Amgylchedd Hanesyddol / Historic Environment
 Cadw
 Llywodraeth Cymru / Welsh Government
-Ffôn / Tel: 07751 715011
+Ffôn / Tel: [redacted]
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
 Join Cadw<https://www.cadwmembership.service.gov.wales/>','partial','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t5','cq-1881-name,cq-water');
@@ -7768,7 +7768,7 @@ Uwch Arolygydd Adeiladau Hanesyddol, Parciau a Gerddi
 Amgylchedd Hanesyddol / Historic Environment
 Cadw
 Llywodraeth Cymru / Welsh Government
-Ffôn / Tel: 07751 715011
+Ffôn / Tel: [redacted]
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
 Join Cadw<https://www.cadwmembership.service.gov.wales/>','Cadw / Welsh Government');
@@ -7810,7 +7810,7 @@ Uwch Arolygydd Adeiladau Hanesyddol, Parciau a Gerddi
 Amgylchedd Hanesyddol / Historic Environment
 Cadw
 Llywodraeth Cymru / Welsh Government
-Ffôn / Tel: 07751 715011
+Ffôn / Tel: [redacted]
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
 Join Cadw<https://www.cadwmembership.service.gov.wales/>
@@ -7830,7 +7830,7 @@ Uwch Arolygydd Adeiladau Hanesyddol, Parciau a Gerddi
 Amgylchedd Hanesyddol / Historic Environment
 Cadw
 Llywodraeth Cymru / Welsh Government
-Ffôn / Tel: 07751 715011
+Ffôn / Tel: [redacted]
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
 Join Cadw<https://www.cadwmembership.service.gov.wales/>
@@ -8438,7 +8438,7 @@ when it will be issued, within 5 working days.
 Yours faithfully,
 
 Sion Buckler (Ret''d Sgt)
-hywelapbuckler@gmail.com','2026-08-05','Dear Mr Buckler
+[redacted]','2026-08-05','Dear Mr Buckler
 
 We apologise for the delay in replying, for information further enquiries are being made with service areas in light of the concerns you have raised with the original response. Those enquiries are not quite complete yet. We will write to you further by Friday 14th August 2026 with a further update.
 
@@ -8473,7 +8473,7 @@ when it will be issued, within 5 working days.
 Yours faithfully,
 
 Sion Buckler (Ret''d Sgt)
-hywelapbuckler@gmail.com','Dear Mr Buckler
+[redacted]','Dear Mr Buckler
 
 We apologise for the delay in replying, for information further enquiries are being made with service areas in light of the concerns you have raised with the original response. Those enquiries are not quite complete yet. We will write to you further by Friday 14th August 2026 with a further update.
 
@@ -9055,7 +9055,7 @@ Follow us on Twitter /Dilynwch ni ar Twitter
 
 Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','Vale of Glamorgan Council');
 INSERT INTO qa VALUES ('qa-0543073144ac','vale','Vale of Glamorgan Council','vale-of-glamorgan-council-email-correspondence-catalogue#t8','2026-07-13','---------- Forwarded message ---------
-From: Sion Buckler <hywelapbuckler@gmail.com>
+From: Sion Buckler <[redacted]>
 Date: Mon, 13 Jul 2026, 00:49
 Subject: Request for information regarding acquisition of land for
 Llandough Primary School
@@ -9130,7 +9130,7 @@ Follow us on Twitter /Dilynwch ni ar Twitter
 
 Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t8','');
 INSERT INTO qa_fts VALUES ('qa-0543073144ac','---------- Forwarded message ---------
-From: Sion Buckler <hywelapbuckler@gmail.com>
+From: Sion Buckler <[redacted]>
 Date: Mon, 13 Jul 2026, 00:49
 Subject: Request for information regarding acquisition of land for
 Llandough Primary School
@@ -9285,7 +9285,7 @@ deadline has passed.
 Yours faithfully,
 
 Sion Buckler
-hywelapbuckler@gmail.com','2026-08-03','Dear Mr Buckler
+[redacted]','2026-08-03','Dear Mr Buckler
 
 Thank you for your email.
 
@@ -9326,7 +9326,7 @@ deadline has passed.
 Yours faithfully,
 
 Sion Buckler
-hywelapbuckler@gmail.com','Dear Mr Buckler
+[redacted]','Dear Mr Buckler
 
 Thank you for your email.
 
@@ -10748,9 +10748,9 @@ them on request. Please acknowledge receipt of this formal complaint.
 Yours sincerely,
 
 Sion Hywel Buckler (Ret’d Sergeant)
-5 Robin Hill, Dinas Powys, CF64 4TF
-hywelapbuckler@gmail.com
-020 3137 7118','2026-07-27','Diolch am eich e-bost. Rwyf allan o''r swyddfa ar hyn o bryd rydw i allan o''r swyddfa tan 27 Gorffennaf 2026
+[redacted]
+[redacted]
+[redacted]','2026-07-27','Diolch am eich e-bost. Rwyf allan o''r swyddfa ar hyn o bryd rydw i allan o''r swyddfa tan 27 Gorffennaf 2026
 
 Ar gyfer materion brys, cysylltwch â Vicci Rowlands yn vrownlands@valeoflgamorgan.gov.uk neu Henry Brown hjabrown@valeofglamorgan.gov.uk
 
@@ -10771,9 +10771,9 @@ them on request. Please acknowledge receipt of this formal complaint.
 Yours sincerely,
 
 Sion Hywel Buckler (Ret’d Sergeant)
-5 Robin Hill, Dinas Powys, CF64 4TF
-hywelapbuckler@gmail.com
-020 3137 7118','Diolch am eich e-bost. Rwyf allan o''r swyddfa ar hyn o bryd rydw i allan o''r swyddfa tan 27 Gorffennaf 2026
+[redacted]
+[redacted]
+[redacted]','Diolch am eich e-bost. Rwyf allan o''r swyddfa ar hyn o bryd rydw i allan o''r swyddfa tan 27 Gorffennaf 2026
 
 Ar gyfer materion brys, cysylltwch â Vicci Rowlands yn vrownlands@valeoflgamorgan.gov.uk neu Henry Brown hjabrown@valeofglamorgan.gov.uk
 
@@ -11028,7 +11028,7 @@ Yours sincerely,
 
 Sion Buckler (Ret''d Sergeant)
 greathousefarmwiki.wordpress.com','','Ministry of Defence');
-INSERT INTO qa VALUES ('qa-234adfdcf4a4','swp','South Wales Police','south-wales-police-email-correspondence-catalogue-part-2#t4','2026-08-07','02031377118
+INSERT INTO qa VALUES ('qa-234adfdcf4a4','swp','South Wales Police','south-wales-police-email-correspondence-catalogue-part-2#t4','2026-08-07','[redacted]
 
 You may leave a message.
 
@@ -11062,7 +11062,7 @@ Ymwadiad Heddlu De Cymru\South Wales Police Disclaimer
 Gallai defnyddio neu ddatgelu''r neges e-bost hon heb awdurdod fod yn anghyfreithlon. Gallwch weld ein datganiad cyfrinachedd yn: https://www.heddlu-de-cymru.police.uk/cy-GB/heddluoedd/heddlu-de-cymru/ardaloedd/amdanom-ni/amdanom-ni/datganiad-cyfrinachedd-e-bost/".
 
 Unauthorised use or disclosure of this email may be unlawful. View our confidentiality statement at https://www.south-wales.police.uk/police-forces/south-wales-police/areas/about-us/about-us/email-confidentiality-statement/.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-2/#t4','');
-INSERT INTO qa_fts VALUES ('qa-234adfdcf4a4','02031377118
+INSERT INTO qa_fts VALUES ('qa-234adfdcf4a4','[redacted]
 
 You may leave a message.
 
@@ -11885,7 +11885,7 @@ transactions involving another person of the same name.
 
 Please also advise whether either document contains information identifying
 Daniel Thomas by residence, occupation, estate, trusteeship or other
-distinguishing details.','2026-09-07','There are no additional deeds described on our catalogue between Daniel or Alfred Thomas and the Bute Estate.','reply','item','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063','cq-1877,cq-1928');
+distinguishing details.','2026-09-07','There are no additional deeds described on our catalogue between Daniel or Alfred Thomas and the Bute Estate.','reply','item','','https://mail.google.com/mail/?authuser=[redacted]#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063','cq-1877,cq-1928');
 INSERT INTO qa_fts VALUES ('qa-6ceee08751ca','Verification of specific DBDT catalogue entries
 
 Please confirm the exact property description, parties and date of the
@@ -11937,7 +11937,7 @@ documents where they form part of the same chain of title.
 
 In particular, I am seeking evidence capable of confirming or disproving
 whether any defined parcel of land was conveyed by the Bute Estate to
-Daniel Thomas.','2026-09-07','There are no additional records relating to quarrying in Llandough or around Ty Mawr / Great House Farm.','reply','item','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063','cq-1877,cq-1881-name,cq-1928');
+Daniel Thomas.','2026-09-07','There are no additional records relating to quarrying in Llandough or around Ty Mawr / Great House Farm.','reply','item','','https://mail.google.com/mail/?authuser=[redacted]#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063','cq-1877,cq-1881-name,cq-1928');
 INSERT INTO qa_fts VALUES ('qa-4651819ca205','Targeted search for a Bute–Daniel Thomas transaction at or near Llandough
 
 Please search the catalogue descriptions and indexes available to Glamorgan
@@ -11978,7 +11978,7 @@ Thomas (later Lord Pontypridd)*, with:
 I would be particularly interested in estate papers, correspondence,
 conveyances, wills, probate-related estate records, rentals, rent books,
 abstracts of title and plans that may trace what became of any Daniel
-Thomas interest after his death or thereafter.','2026-09-07','If you have not already got a copy of Daniel Thomas’ will, you can apply for a copy of probate from the Probate Office: Search probate records for documents and wills (England and Wales) - GOV.UK.','provided','item','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063','cq-1877,cq-1881-name,cq-1928');
+Thomas interest after his death or thereafter.','2026-09-07','If you have not already got a copy of Daniel Thomas’ will, you can apply for a copy of probate from the Probate Office: Search probate records for documents and wills (England and Wales) - GOV.UK.','provided','item','','https://mail.google.com/mail/?authuser=[redacted]#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063','cq-1877,cq-1881-name,cq-1928');
 INSERT INTO qa_fts VALUES ('qa-26a4a880979f','Daniel Thomas, Alfred Thomas and the Llandough lime works
 
 Please identify any documents linking *Daniel Thomas*, or his son *Alfred
@@ -11995,12 +11995,12 @@ conveyances, wills, probate-related estate records, rentals, rent books,
 abstracts of title and plans that may trace what became of any Daniel
 Thomas interest after his death or thereafter.','If you have not already got a copy of Daniel Thomas’ will, you can apply for a copy of probate from the Probate Office: Search probate records for documents and wills (England and Wales) - GOV.UK.','Glamorgan Archives');
 INSERT INTO qa VALUES ('qa-c76366300f84','glamarch','Glamorgan Archives','gmail:1a02ad4c2f0fd6e3','2026-08-22','whether the Bute Estate later reacquired any relevant parcel;','2026-09-07','We think you have probably already covered all the material we have on this matter but…
-1-3) We do not hold the majority of the Bute Estate records. I attach a finding aid to the Bute Estate records that are currently held by Cardiff Library. These records are soon to be transferred to us so please let us know if there is anything on this list that you are interested in. Other records of the Bute Estate can be found at the National Library of Wales.','not-held','item','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063','');
+1-3) We do not hold the majority of the Bute Estate records. I attach a finding aid to the Bute Estate records that are currently held by Cardiff Library. These records are soon to be transferred to us so please let us know if there is anything on this list that you are interested in. Other records of the Bute Estate can be found at the National Library of Wales.','not-held','item','','https://mail.google.com/mail/?authuser=[redacted]#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063','');
 INSERT INTO qa_fts VALUES ('qa-c76366300f84','whether the Bute Estate later reacquired any relevant parcel;','We think you have probably already covered all the material we have on this matter but…
 1-3) We do not hold the majority of the Bute Estate records. I attach a finding aid to the Bute Estate records that are currently held by Cardiff Library. These records are soon to be transferred to us so please let us know if there is anything on this list that you are interested in. Other records of the Bute Estate can be found at the National Library of Wales.','Glamorgan Archives');
 INSERT INTO qa VALUES ('qa-6cee26940421','glamarch','Glamorgan Archives','gmail:1a02ad4c2f0fd6e3','2026-08-22','whether later parties, including *Mountjoy Ltd* or *Western Ground
    Rents Ltd*, acquired title to land previously held by Daniel Thomas or
-   his successors;','2026-09-07','We are not sure if you have consulted D696 which includes a book plans and rental books for land owned by Western Ground Rents Ltd c1938-1944.','reply','item','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063','cq-1877,cq-1938-1939');
+   his successors;','2026-09-07','We are not sure if you have consulted D696 which includes a book plans and rental books for land owned by Western Ground Rents Ltd c1938-1944.','reply','item','','https://mail.google.com/mail/?authuser=[redacted]#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063','cq-1877,cq-1938-1939');
 INSERT INTO qa_fts VALUES ('qa-6cee26940421','whether later parties, including *Mountjoy Ltd* or *Western Ground
    Rents Ltd*, acquired title to land previously held by Daniel Thomas or
    his successors;','We are not sure if you have consulted D696 which includes a book plans and rental books for land owned by Western Ground Rents Ltd c1938-1944.','Glamorgan Archives');
@@ -12093,7 +12093,7 @@ glamro@cardiff.gov.uk<mailto:glamro@cardiff.gov.uk>
 
 www.archifaumorgannwg.gov.uk/ www.glamarchives.gov.uk
 www.facebook.com/glamarchives
-www.instagram.com/glamarchives','partial','thread','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063','cq-1877,cq-1881-name,cq-1928,cq-1938-1939,cq-1910');
+www.instagram.com/glamarchives','partial','thread','','https://mail.google.com/mail/?authuser=[redacted]#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063','cq-1877,cq-1881-name,cq-1928,cq-1938-1939,cq-1910');
 INSERT INTO qa_fts VALUES ('qa-212548b66ab3','Quarrying, lime works and any conditional reversion or transfer
 
 Please identify any relevant records concerning land at Llandough or Great
@@ -12227,7 +12227,7 @@ glamro@cardiff.gov.uk<mailto:glamro@cardiff.gov.uk>
 
 www.archifaumorgannwg.gov.uk/ www.glamarchives.gov.uk
 www.facebook.com/glamarchives
-ww','provided','thread','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-f:1877771312527795760','cq-1877,cq-1881-name,cq-1928,cq-1938-1939,cq-1910');
+ww','provided','thread','','https://mail.google.com/mail/?authuser=[redacted]#all/thread-a:r-2236227807529852386|msg-f:1877771312527795760','cq-1877,cq-1881-name,cq-1928,cq-1938-1939,cq-1910');
 INSERT INTO qa_fts VALUES ('qa-38e8439b871d','Louise,
 
 Thanks for your detailed and prompt reply and for the additional
@@ -12451,7 +12451,7 @@ Powys
 SY16 1JB
 
 Ffôn / Tel: 0300 025 5375
-Ffôn symudol / Mobile: 07711 120252
+Ffôn symudol / Mobile: [redacted]
 E-bost/ Email: andy.wigley@llyw.cymru<mailto:andy.wigley@llyw.cymru> / andy.wigley@gov.wales<mailto:andy.wigley@gov.wales>
 
 P Helpwch yr amgylchedd - peidiwch ag argraffu hon os nad oes gwir raid Help our environment - only print this if really necessary
@@ -12479,7 +12479,7 @@ Powys
 SY16 1JB
 
 Ffôn / Tel: 0300 025 5375
-Ffôn symudol / Mobile: 07711 120252
+Ffôn symudol / Mobile: [redacted]
 E-bost/ Email: andy.wigley@llyw.cymru<mailto:andy.wigley@llyw.cymru> / andy.wigley@gov.wales<mailto:andy.wigley@gov.wales>
 
 P Helpwch yr amgylchedd - peidiwch ag argraffu hon os nad oes gwir raid Help our environment - only print this if really necessary
@@ -12888,17 +12888,17 @@ Ffôn/Telephone: 029 20 803966
 www.cps.gov.uk','Crown Prosecution Service');
 INSERT INTO qa VALUES ('qa-c347ae893028','glamarch','Glamorgan Archives','gmail:1a07b3bf0b65e56c','2026-09-07','Why the fabric was not scheduled before 1988 (or “Cadw holds this; we
 hold nothing”).','2026-09-24','Why the fabric was not scheduled before 1988 (or “Cadw holds this; we hold nothing”).
-Not held in our collections – suggest contacting Cadw and the Royal Commission on the Ancient and Historical Monuments of Wales.','not-held','item','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1875665402934453612|msg-f:1877229311407715649','');
+Not held in our collections – suggest contacting Cadw and the Royal Commission on the Ancient and Historical Monuments of Wales.','not-held','item','','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1875665402934453612|msg-f:1877229311407715649','');
 INSERT INTO qa_fts VALUES ('qa-c347ae893028','Why the fabric was not scheduled before 1988 (or “Cadw holds this; we
 hold nothing”).','Why the fabric was not scheduled before 1988 (or “Cadw holds this; we hold nothing”).
 Not held in our collections – suggest contacting Cadw and the Royal Commission on the Ancient and Historical Monuments of Wales.','Glamorgan Archives');
 INSERT INTO qa VALUES ('qa-cb5d2c0ac091','glamarch','Glamorgan Archives','gmail:1a07b3bf0b65e56c','2026-09-07','When the known archaeology was raised in planning.','2026-09-24','When the known archaeology was raised in planning.
-If any record of this is in our collections it would appear in the Planning Committee records described above in point 6.','reply','item','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1875665402934453612|msg-f:1877229311407715649','');
+If any record of this is in our collections it would appear in the Planning Committee records described above in point 6.','reply','item','','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1875665402934453612|msg-f:1877229311407715649','');
 INSERT INTO qa_fts VALUES ('qa-cb5d2c0ac091','When the known archaeology was raised in planning.','When the known archaeology was raised in planning.
 If any record of this is in our collections it would appear in the Planning Committee records described above in point 6.','Glamorgan Archives');
 INSERT INTO qa VALUES ('qa-09888915eb22','glamarch','Glamorgan Archives','gmail:1a07b3bf0b65e56c','2026-09-07','DXJF/64/27–32 full sketch bundle — notes seen; confirm sketches and
 refs.','2026-09-24','DXJF/64/27–32 full sketch bundle — notes seen; confirm sketches and refs.
-We believe that the specific references within the bundle 27-32 that would be of interest to you are items DXJF/64/30-31: sketch of former layout of part of village of Llandough-juxta-Penarth by Mrs. Nancy Buckler of great house farm, Llandough, with notes c1950 [1 card, 1 paper]. Is that what you have already seen? Other items in the bundle do not relate to Llandough.','reply','item','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1875665402934453612|msg-f:1877229311407715649','cq-1881-name');
+We believe that the specific references within the bundle 27-32 that would be of interest to you are items DXJF/64/30-31: sketch of former layout of part of village of Llandough-juxta-Penarth by Mrs. Nancy Buckler of great house farm, Llandough, with notes c1950 [1 card, 1 paper]. Is that what you have already seen? Other items in the bundle do not relate to Llandough.','reply','item','','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1875665402934453612|msg-f:1877229311407715649','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-09888915eb22','DXJF/64/27–32 full sketch bundle — notes seen; confirm sketches and
 refs.','DXJF/64/27–32 full sketch bundle — notes seen; confirm sketches and refs.
 We believe that the specific references within the bundle 27-32 that would be of interest to you are items DXJF/64/30-31: sketch of former layout of part of village of Llandough-juxta-Penarth by Mrs. Nancy Buckler of great house farm, Llandough, with notes c1950 [1 card, 1 paper]. Is that what you have already seen? Other items in the bundle do not relate to Llandough.','Glamorgan Archives');
@@ -12936,7 +12936,7 @@ Date
   * Nov 1877
 Extent
 
-  * 1 parchment; plan in margin','reply','item','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1875665402934453612|msg-f:1877229311407715649','cq-1877');
+  * 1 parchment; plan in margin','reply','item','','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1875665402934453612|msg-f:1877229311407715649','cq-1877');
 INSERT INTO qa_fts VALUES ('qa-53692aaaad71','Exact ref of the Nov 1877 counterpart already photographed; separate
 July 1877 counterpart?','Exact ref of the Nov 1877 counterpart already photographed; separate July 1877 counterpart?
 I think the items described below have been discussed previously – are these what you are seeking? Please confirm and we can provide a quote for producing copies if required.
@@ -13022,7 +13022,7 @@ glamro@cardiff.gov.uk<mailto:glamro@cardiff.gov.uk>
 
 www.archifaumorgannwg.gov.uk/ www.glamarchives.gov.uk
 www.facebook.com/glamarchives
-www.instagram.com/glamarchives','provided','item','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1875665402934453612|msg-f:1877229311407715649','cq-1877');
+www.instagram.com/glamarchives','provided','item','','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1875665402934453612|msg-f:1877229311407715649','cq-1877');
 INSERT INTO qa_fts VALUES ('qa-715ff1aca1bc','Photography for copies to Patagonia — rules.
 
 **22 August 2026 — no reply**
@@ -13118,7 +13118,7 @@ Do the surviving Glamorgan Archives records contain documentary evidence
 showing how the farmhouse parcel itself passed from the earlier family
 interest into Western Ground Rents, BP or another owner before the 1982/83
 registration?
-Or is that documentary chain simply not present in the surviving archive?','','','unanswered','unanswered','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1875665402934453612|msg-a:r-3717670786762189549','cq-1877,cq-1928,cq-1938-1939,cq-1955');
+Or is that documentary chain simply not present in the surviving archive?','','','unanswered','unanswered','','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1875665402934453612|msg-a:r-3717670786762189549','cq-1877,cq-1928,cq-1938-1939,cq-1955');
 INSERT INTO qa_fts VALUES ('qa-5b313373f0b5','the case. And why my nan rejected the premis and my dad too. Until their
 dying breaths. I inherit this interest in this land parcel A as heir and
 successor.
@@ -13200,7 +13200,7 @@ CF11 8AW
 02920872200
 www.archifaumorgannwg.gov.uk / www.glamarchives.gov.uk
 www.facebook.com/glamarchives
-Tweet@glamarchives','provided','reply-only','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1875665402934453612|msg-f:1875665402934453612','');
+Tweet@glamarchives','provided','reply-only','','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1875665402934453612|msg-f:1875665402934453612','');
 INSERT INTO qa_fts VALUES ('qa-01aecdceef74','Reply received: RE: Epexio contact us form submission','Ref: 2026 – 3941
 
 Dear Sion Buckler,
@@ -13255,7 +13255,7 @@ Please treat this as a request for recorded information only.
 Regards,
 
 Sion Buckler
-hywelapbuckler@gmail.com','2026-09-08','Dear Mr Buckler
+[redacted]','2026-09-08','Dear Mr Buckler
 
 Thank you for your email.
 
@@ -13291,7 +13291,7 @@ Please treat this as a request for recorded information only.
 Regards,
 
 Sion Buckler
-hywelapbuckler@gmail.com','Dear Mr Buckler
+[redacted]','Dear Mr Buckler
 
 Thank you for your email.
 
@@ -13458,7 +13458,7 @@ Please send electronic copies. I am an interested person researching the documen
 Regards,
 
 Sion Buckler
-hywelapbuckler@gmail.com','2026-09-19','My next working day is Wednesday, 23rd September.
+[redacted]','2026-09-19','My next working day is Wednesday, 23rd September.
 
 Diolch.','auto','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t5','cq-recording');
 INSERT INTO qa_fts VALUES ('qa-1995c0ec5fa7','A copy or transcript of the RCAHMW / Suggett 1988 material held on the HER file (GGAT’s 1990 assessment cites “RCAHMW 1988” for the museum attribution).
@@ -13469,7 +13469,7 @@ Please send electronic copies. I am an interested person researching the documen
 Regards,
 
 Sion Buckler
-hywelapbuckler@gmail.com','My next working day is Wednesday, 23rd September.
+[redacted]','My next working day is Wednesday, 23rd September.
 
 Diolch.','Heneb / GGAT');
 INSERT INTO qa VALUES ('qa-583b0f991922','heneb','Heneb / GGAT','heneb-ggat-email-correspondence-catalogue#t5','2026-09-19','Dear Calli,
@@ -14962,7 +14962,7 @@ On 2026-09-21 03:59, Sion Buckler wrote:
 > 16 October 2026.
 >
 > If the Council is refusing, section 17 (and regulation 14) requires a
-> written refusal notice identifying the exemptio','refused','thread','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1876908364250660817|msg-f:1877563689272243425','cq-1881-name');
+> written refusal notice identifying the exemptio','refused','thread','','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1876908364250660817|msg-f:1877563689272243425','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-48f519325740','Whether the Council holds any recorded information created after the
 2002 deposit — minutes, correspondence, reports, emails, photographs or
 files of any kind — concerning Great House Farm (Ty Mawr) / Church View
@@ -15130,7 +15130,7 @@ reduce or refine your request to bring the cost of compliance under the
 regulations limit. We suggest that you could limit the time frame of
 minutes that we would need to look through. For example 2002-2006.
 
-  Please contact us if you would like to r','refused','thread','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1876908364250660817|msg-f:1878745944547484620','');
+  Please contact us if you would like to r','refused','thread','','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1876908364250660817|msg-f:1878745944547484620','');
 INSERT INTO qa_fts VALUES ('qa-cdc7cabffda7','> Dr Mo Misra, Chair Llandough Community Council
 >
 >
@@ -15272,7 +15272,7 @@ reduce or refine your request to bring the cost of compliance under the
 regulations limit. We suggest that you could limit the time frame of
 minutes that we would need to look through. For example 2002-2006.
 
-  Please contact us if you would like to r','refused','thread','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1876908364250660817|msg-f:1878745944547484620','');
+  Please contact us if you would like to r','refused','thread','','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1876908364250660817|msg-f:1878745944547484620','');
 INSERT INTO qa_fts VALUES ('qa-4d2957a91064','> Dr Mo Misra, Chair Llandough Community Council
 >
 >
@@ -15382,7 +15382,7 @@ matters
 
 In addition to the original request, please treat this section as a new
 request for recorded information under FOIA and, where applicable, the
-Environmental Information Regulations. It i','','','unanswered','unanswered','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1876908364250660817|msg-a:r940394521077987787','');
+Environmental Information Regulations. It i','','','unanswered','unanswered','','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1876908364250660817|msg-a:r940394521077987787','');
 INSERT INTO qa_fts VALUES ('qa-6a007d03810d','Formal request for internal review — refusal dated 11 October 2026
 
 Please treat this section as my formal request for an internal review of
@@ -16493,7 +16493,7 @@ Heneb
 
 Steven Foulston FCIPD
 Rheolwr Adnoddau Dynol| HR Manager
-07837252366
+[redacted]
 Steven.Foulston@Heneb.org.uk
 www.heneb.org.uk
 
@@ -16536,7 +16536,7 @@ Heneb
 
 Steven Foulston FCIPD
 Rheolwr Adnoddau Dynol| HR Manager
-07837252366
+[redacted]
 Steven.Foulston@Heneb.org.uk
 www.heneb.org.uk
 
@@ -16783,7 +16783,7 @@ Shireen Ahmed Little
 Registration Officer / Swyddog Cofrestru
 Democratic Services / Gwasanaethau Democrataidd
 Vale of Glamorgan Council / Cyngor Bro Morgannwg
-tel / ffôn: 01446 709166
+tel / ffôn: [redacted]
 e-mail / e-bost: sahmedlittle@valeofglamorgan.gov.uk
 
 Consider the environment. Please don''t print this e-mail unless you really need to.
@@ -16818,7 +16818,7 @@ Shireen Ahmed Little
 Registration Officer / Swyddog Cofrestru
 Democratic Services / Gwasanaethau Democrataidd
 Vale of Glamorgan Council / Cyngor Bro Morgannwg
-tel / ffôn: 01446 709166
+tel / ffôn: [redacted]
 e-mail / e-bost: sahmedlittle@valeofglamorgan.gov.uk
 
 Consider the environment. Please don''t print this e-mail unless you really need to.
@@ -16860,7 +16860,7 @@ Hayley Jefferies
 Superintendent Registrar/Registration Service Manager
 Democratic Services
 Vale of Glamorgan Council / Cyngor Bro Morgannwg
-tel / ffôn: 01446 709166
+tel / ffôn: [redacted]
 mob / sym:
 
 Consider the environment. Please don''t print this e-mail unless you really need to.
@@ -16888,7 +16888,7 @@ Hayley Jefferies
 Superintendent Registrar/Registration Service Manager
 Democratic Services
 Vale of Glamorgan Council / Cyngor Bro Morgannwg
-tel / ffôn: 01446 709166
+tel / ffôn: [redacted]
 mob / sym:
 
 Consider the environment. Please don''t print this e-mail unless you really need to.
@@ -17087,7 +17087,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','2026-09-28','Enquiry Reference: 260928-6762800
+[redacted]','2026-09-28','Enquiry Reference: 260928-6762800
 
 Dear Customer
 
@@ -17135,7 +17135,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','Enquiry Reference: 260928-6762800
+[redacted]','Enquiry Reference: 260928-6762800
 
 Dear Customer
 
@@ -17382,7 +17382,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t9','cq-1881-name,cq-judgment,cq-planning,cq-1974');
+[redacted]','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t9','cq-1881-name,cq-judgment,cq-planning,cq-1974');
 INSERT INTO qa_fts VALUES ('qa-4014344fb542','The condition chain on 89/01396/OUT: conditions 16–18; the Council''s October 1990 confirmation of condition 17; GGAT''s July 1992 archaeological warning; the September 1992 reserved-matters approval; and the 1993–94 papers on whether condition 18 had been discharged.
 Any record of the statutory consultation route used because the land was, or was treated as, a site of archaeological interest / SMR entry under the 1988 Order.
 The application-receipt record for 89/01396/OUT (form dated October 1989; reconstructed Council receipt 8 November 1989).
@@ -17399,7 +17399,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','','Heneb / GGAT');
+[redacted]','','Heneb / GGAT');
 INSERT INTO qa VALUES ('qa-ee932132a36f','cadw','Cadw / Welsh Government','welsh-government-and-cadw-email-correspondence-catalogue-part-3#t7','2026-09-28','Land and documentary scope
 
 Please preserve, and do not destroy, alter, overwrite, discard, transfer out of custody without a recorded handover, or otherwise dispose of, any record within your possession, custody or control relating to the land or matters identified below.
@@ -17486,7 +17486,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','2026-10-08','Good afternoon. I acknowledge receipt of your e-mail below. I can also confirm that Planning and Environment Decisions Wales (PEDW) does not hold any information or records for Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth or planning applications 89/01396/OUT and 92/00671/RES. All PEDW’s electronic records have been searched. PEDW does not have a paper file repository.
+[redacted]','2026-10-08','Good afternoon. I acknowledge receipt of your e-mail below. I can also confirm that Planning and Environment Decisions Wales (PEDW) does not hold any information or records for Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth or planning applications 89/01396/OUT and 92/00671/RES. All PEDW’s electronic records have been searched. PEDW does not have a paper file repository.
 Isabel Nethell
 
 Pennaeth Gweithrediadau/Head of Operations
@@ -17514,7 +17514,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','Good afternoon. I acknowledge receipt of your e-mail below. I can also confirm that Planning and Environment Decisions Wales (PEDW) does not hold any information or records for Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth or planning applications 89/01396/OUT and 92/00671/RES. All PEDW’s electronic records have been searched. PEDW does not have a paper file repository.
+[redacted]','Good afternoon. I acknowledge receipt of your e-mail below. I can also confirm that Planning and Environment Decisions Wales (PEDW) does not hold any information or records for Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth or planning applications 89/01396/OUT and 92/00671/RES. All PEDW’s electronic records have been searched. PEDW does not have a paper file repository.
 Isabel Nethell
 
 Pennaeth Gweithrediadau/Head of Operations
@@ -17702,7 +17702,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','2026-09-28','Diolch am gysylltu â''r Tîm Rhyddid Gwybodaeth yn Heddlu De Cymru. Dyma neges i gadarnhau ein bod wedi cael eich gohebiaeth. Peidiwch ag ymateb i''r neges e-bost hon.
+[redacted]','2026-09-28','Diolch am gysylltu â''r Tîm Rhyddid Gwybodaeth yn Heddlu De Cymru. Dyma neges i gadarnhau ein bod wedi cael eich gohebiaeth. Peidiwch ag ymateb i''r neges e-bost hon.
 
 Rydym yn delio â nifer mawr o geisiadau ar hyn o bryd, yn ogystal ag ôl-groniad. Er ein bod yn gwneud pob ymdrech i ymateb i geisiadau o fewn y terfyn amser o 20 diwrnod gwaith, gall fod oedi wrth ddelio â rhai o''r ceisiadau o ganlyniad i hyn.
 
@@ -17746,7 +17746,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','Diolch am gysylltu â''r Tîm Rhyddid Gwybodaeth yn Heddlu De Cymru. Dyma neges i gadarnhau ein bod wedi cael eich gohebiaeth. Peidiwch ag ymateb i''r neges e-bost hon.
+[redacted]','Diolch am gysylltu â''r Tîm Rhyddid Gwybodaeth yn Heddlu De Cymru. Dyma neges i gadarnhau ein bod wedi cael eich gohebiaeth. Peidiwch ag ymateb i''r neges e-bost hon.
 
 Rydym yn delio â nifer mawr o geisiadau ar hyn o bryd, yn ogystal ag ôl-groniad. Er ein bod yn gwneud pob ymdrech i ymateb i geisiadau o fewn y terfyn amser o 20 diwrnod gwaith, gall fod oedi wrth ddelio â rhai o''r ceisiadau o ganlyniad i hyn.
 
@@ -17788,7 +17788,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','2026-10-01','Dear Mr Buckler,
+[redacted]','2026-10-01','Dear Mr Buckler,
 
 ATISN 27589 - Great House Farm, Llandough
 
@@ -17857,7 +17857,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','Dear Mr Buckler,
+[redacted]','Dear Mr Buckler,
 
 ATISN 27589 - Great House Farm, Llandough
 
@@ -17938,7 +17938,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-3/#t8','cq-1881-name,cq-registration,cq-judgment,cq-demolition,cq-1974,cq-mary-death');
+[redacted]','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-3/#t8','cq-1881-name,cq-registration,cq-judgment,cq-demolition,cq-1974,cq-mary-death');
 INSERT INTO qa_fts VALUES ('qa-1383cac6c813','Subject access, UK GDPR Article 15. Personal data you hold about me, Sion Buckler, arising from the eviction and demolition at Great House Farm / Tŷ Mawr, Llandough, between 29 November and 6 December 1988, and from later correspondence including 719/26 and the request of 20 August 2026 concerning the deaths of William Buckler and Mary Doreen Williams. Say what identification you need before the month starts.
 Crime recording. Please record, or explain in writing why you will not record, a report of suspected fraud and concealment in the creation and use of title to that land, including first registration of WA231076 (application 30 November 1982) and WA240304 (application 23 February 1983), and the 1987 proceedings. The question is whether a crime record should be opened. It is not a request that you find the civil title.
 Search note on 719/26. “No records held” for a documented multi-officer operation in November–December 1988 still requires a note of systems searched, years searched, and whether South Wales Constabulary paper has gone to Glamorgan Archives. That note can sit with the internal review. I ask for it here so the crime-recording decision is not made without it.
@@ -17951,7 +17951,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','','South Wales Police');
+[redacted]','','South Wales Police');
 INSERT INTO qa VALUES ('qa-de3e4ba3140e','mod','Ministry of Defence','ministry-of-defence-email-correspondence-catalogue#t4','2026-09-28','Say what systems were searched for data relating to me, as a child in that household in 1988, as distinct from the FOI search already described (Restore, CT&UK, Army, and the keyword list on the review file).
 Confirm the file is preserved.
 
@@ -17966,7 +17966,7 @@ Yours faithfully,
 Sion Buckler (Ret''d Sergeant)
 Service no. 25148537
 Royal Signals
-hywelapbuckler@gmail.com','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/ministry-of-defence-email-correspondence-catalogue/#t4','cq-1881-name');
+[redacted]','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/ministry-of-defence-email-correspondence-catalogue/#t4','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-de3e4ba3140e','Say what systems were searched for data relating to me, as a child in that household in 1988, as distinct from the FOI search already described (Restore, CT&UK, Army, and the keyword list on the review file).
 Confirm the file is preserved.
 
@@ -17981,7 +17981,7 @@ Yours faithfully,
 Sion Buckler (Ret''d Sergeant)
 Service no. 25148537
 Royal Signals
-hywelapbuckler@gmail.com','','Ministry of Defence');
+[redacted]','','Ministry of Defence');
 INSERT INTO qa VALUES ('qa-72d3fa7b6fee','rcahmw','Royal Commission (RCAHMW)','gmail:1a0ed5d3ada10e6b','','Reply received: RC26-0375 - Ty Mawr/ Great House, Llandough, Cardiff','2026-09-29','[Translated from Welsh] As stated in my emails of 28 May, 10 June and 11 June, there are no letters or records about this site, Tŷ Mawr Farm, Llandough, in our registered files, the only campaign records we keep long-term. No records have come to light since. The only information we hold about the site, including its demolition, is in our archive, the National Monuments Record of Wales: https://coflein.gov.uk/en/sites/20182/archives. Aerial photograph searches are charged.
 
 The armour found in the late nineteenth century is not mentioned in Richard Suggett''s unpublished report, Archive 6048945. Most of that record is reproduced as Heneb''s site description GGAT02038s:
@@ -17996,7 +17996,7 @@ The armour found in the late nineteenth century is not mentioned in Richard Sugg
 ‘Great House Farmhouse and barn formed an attractive group, built of local lias limestone, and occupied an historic site next to the parish church. Finds of medieval ironwork and pottery have been reported from the site. Great House was the chief freehold farm of the parish and was occupied by the Vaughan''s, a minor gentry family, from the mid C16 until the latter part of the C18. Several memorial inscriptions relating to the family are preserved in the church and churchyard. In the early C19 the freehold was acquired by the Bute Estate and the manorial courts for Llandough and Leckwith were held in Great House.
 
 ‘Externally both farmhouse and barn appeared to be of nineteenth-century date. Internally, however, surviving vernacular detail- a blocked stone fireplace stair and ogee-stopped beams- suggested a seventeenth-century date for the house. The ground floor of the house was surveyed in unusual circumstances in 1974 by H.J.T. Much detail was then concealed and it was not possible to examine the first floor and roof trusses. The house remained partially recorded because of problems of access created by ','Royal Commission (RCAHMW)');
-INSERT INTO qa VALUES ('qa-0f501c90d27c','swp','South Wales Police','south-wales-police-email-correspondence-catalogue-part-3#t9','2026-09-29','5 Robin Hill, Dinas Powys CF64 4TF, United Kingdom is the address from
+INSERT INTO qa VALUES ('qa-0f501c90d27c','swp','South Wales Police','south-wales-police-email-correspondence-catalogue-part-3#t9','2026-09-29','[redacted], United Kingdom is the address from
 which I''m registered to vote. Our families home since the 60''s.
 
 Last address was Great House Farm, Llandough. The topic of my enquiry. Our
@@ -18043,7 +18043,7 @@ Ymwadiad Heddlu De Cymru\South Wales Police Disclaimer
 Gallai defnyddio neu ddatgelu''r neges e-bost hon heb awdurdod fod yn anghyfreithlon. Gallwch weld ein datganiad cyfrinachedd yn: https://www.heddlu-de-cymru.police.uk/cy-GB/heddluoedd/heddlu-de-cymru/ardaloedd/amdanom-ni/amdanom-ni/datganiad-cyfrinachedd-e-bost/".
 
 Unauthorised use or disclosure of this email may be unlawful. View our confidentiality statement at https://www.south-wales.police.uk/police-forces/south-wales-police/areas/about-us/about-us/email-confidentiality-statement/.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-3/#t9','cq-1667,cq-1881-name');
-INSERT INTO qa_fts VALUES ('qa-0f501c90d27c','5 Robin Hill, Dinas Powys CF64 4TF, United Kingdom is the address from
+INSERT INTO qa_fts VALUES ('qa-0f501c90d27c','[redacted], United Kingdom is the address from
 which I''m registered to vote. Our families home since the 60''s.
 
 Last address was Great House Farm, Llandough. The topic of my enquiry. Our
@@ -19061,7 +19061,7 @@ I am willing to provide a full indexed evidence pack for confidential review.
 Kind regards,
 
 Sion Buckler
-02031377118','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t1');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t1');
 INSERT INTO messages_fts VALUES ('m-a8ab3c98af76','Enquiry re potential acquiring authority route – former family farmland (BP v Buckler 1987)','Sirs/Ma''am,
 
 I am writing regarding farmland formerly belonging to my family, which later formed part of the litigation known as BP v Buckler (1987).
@@ -19081,7 +19081,7 @@ I am willing to provide a full indexed evidence pack for confidential review.
 Kind regards,
 
 Sion Buckler
-02031377118');
+[redacted]');
 INSERT INTO messages VALUES ('m-e9e53ec04c0d','cadw','2025-11-04T08:56:00Z','received','RE: Enquiry re potential acquiring authority route – former family farmland (BP v Buckler 1987)','Good morning,
 
 PEDW’s role is providing an impartial appeals service, we are not the correct department to comment or provide any advice.
@@ -19207,10 +19207,10 @@ INSERT INTO messages VALUES ('m-8804a00a5b6a','vale','2025-11-15T06:48:00Z','sen
 Yes please. Thank you.
 
 If you have any avaliablity Monday please tell me the best time to call.
-I''m also reachable for scheduled calls on 02031377118
+I''m also reachable for scheduled calls on [redacted]
 
 Otherwise I''m on WhatsApp, which you can reach out to me on anytime.
-07845933262
+[redacted]
 
 Regards,
 
@@ -19220,10 +19220,10 @@ INSERT INTO messages_fts VALUES ('m-8804a00a5b6a','Re: BP vs Buckler','Hi,
 Yes please. Thank you.
 
 If you have any avaliablity Monday please tell me the best time to call.
-I''m also reachable for scheduled calls on 02031377118
+I''m also reachable for scheduled calls on [redacted]
 
 Otherwise I''m on WhatsApp, which you can reach out to me on anytime.
-07845933262
+[redacted]
 
 Regards,
 
@@ -19235,7 +19235,7 @@ See attached.
 Regards,
 
 Sion Buckler
-02031377118','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t1');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t1');
 INSERT INTO messages_fts VALUES ('m-5e699bb55806','Re: BP vs Buckler','George,
 
 See attached.
@@ -19243,7 +19243,7 @@ See attached.
 Regards,
 
 Sion Buckler
-02031377118');
+[redacted]');
 INSERT INTO messages VALUES ('m-4a81300ff7a3','vale','2025-12-23T15:19:00Z','received','Information Request - BP Properties Ltd v Buckler (1987) - Request Reference 00209998','Dear Sion Buckler
 
 We are writing to introduce ourselves as the Council''s Information Governance Team, who handle requests for information. Your request regarding the above matter has been referred to us by the Council''s Legal Services Department.
@@ -19343,9 +19343,9 @@ And if you have any questions, queries or concerns please feel free to reach out
 Regards,
 
 Sion Buckler
-02031377118
-07845933262
-5 Robin Hill, Dinas Powys, CF64 4TF','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t1');
+[redacted]
+[redacted]
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t1');
 INSERT INTO messages_fts VALUES ('m-59582b9e5bcd','BP vs Buckler 1987 - FOI Request','Sirs/ Ma''am,
 
 I am writing to make a request under the Freedom of Information Act 2000.
@@ -19381,9 +19381,9 @@ And if you have any questions, queries or concerns please feel free to reach out
 Regards,
 
 Sion Buckler
-02031377118
-07845933262
-5 Robin Hill, Dinas Powys, CF64 4TF');
+[redacted]
+[redacted]
+[redacted]');
 INSERT INTO messages VALUES ('m-67ce5a51704b','hmlr','2026-01-29T10:59:00Z','received','Delivery Status Notification (Failure)','** Address not found **
 
 Your message wasn''t delivered to customer.support@landregistry.gov.uk because the address couldn''t be found or is unable to receive email.
@@ -20613,7 +20613,7 @@ For the avoidance of doubt, His Majesty the King was notified yesterday.
 
 This serves as an invitation to engage constructively before reliance becomes untenable.
 
-Regards, Sion Buckler On behalf of the Buckler–Williams family Robin Hill, Dinas Powys, Vale of Glamorgan, Wales. https://bpvsbuckler.datro.xyz
+Regards, Sion Buckler On behalf of the Buckler–Williams family [redacted], Wales. https://bpvsbuckler.datro.xyz
 
 *Postscript — Disability and Succession (Material Notice):* The heir-apparent to the asserted Manorial Lordship is Rhys Buckler’s son, a young man with Down syndrome. Any obstruction, marginalisation, or differential treatment affecting his inheritance would engage the Equality Act 2010 and UK international obligations on disability rights. Disability cannot bar succession or recognition. This is recorded to prevent claims of ignorance.','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-2/#t1');
 INSERT INTO messages_fts VALUES ('m-8e2dffb2757f','Formal Notice for Record: Church View Close, Llandough / BP vs Buckler 1987','*FORMAL NOTICE OF RECORD CHALLENGE, ASSERTION OF RIGHT, AND DEMAND FOR ENGAGEMENT*
@@ -20675,7 +20675,7 @@ For the avoidance of doubt, His Majesty the King was notified yesterday.
 
 This serves as an invitation to engage constructively before reliance becomes untenable.
 
-Regards, Sion Buckler On behalf of the Buckler–Williams family Robin Hill, Dinas Powys, Vale of Glamorgan, Wales. https://bpvsbuckler.datro.xyz
+Regards, Sion Buckler On behalf of the Buckler–Williams family [redacted], Wales. https://bpvsbuckler.datro.xyz
 
 *Postscript — Disability and Succession (Material Notice):* The heir-apparent to the asserted Manorial Lordship is Rhys Buckler’s son, a young man with Down syndrome. Any obstruction, marginalisation, or differential treatment affecting his inheritance would engage the Equality Act 2010 and UK international obligations on disability rights. Disability cannot bar succession or recognition. This is recorded to prevent claims of ignorance.');
 INSERT INTO messages VALUES ('m-d77551357bb0','heneb','2026-02-10T22:15:00Z','sent','Formal Notice for Record: Church View Close, Llandough / BP vs Buckler 1987','*FORMAL NOTICE OF RECORD CHALLENGE, ASSERTION OF RIGHT, AND DEMAND FOR ENGAGEMENT*
@@ -20737,7 +20737,7 @@ For the avoidance of doubt, His Majesty the King was notified yesterday.
 
 This serves as an invitation to engage constructively before reliance becomes untenable.
 
-Regards, Sion Buckler On behalf of the Buckler–Williams family Robin Hill, Dinas Powys, Vale of Glamorgan, Wales. https://bpvsbuckler.datro.xyz
+Regards, Sion Buckler On behalf of the Buckler–Williams family [redacted], Wales. https://bpvsbuckler.datro.xyz
 
 *Postscript — Disability and Succession (Material Notice):* The heir-apparent to the asserted Manorial Lordship is Rhys Buckler’s son, a young man with Down syndrome. Any obstruction, marginalisation, or differential treatment affecting his inheritance would engage the Equality Act 2010 and UK international obligations on disability rights. Disability cannot bar succession or recognition. This is recorded to prevent claims of ignorance.','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t1');
 INSERT INTO messages_fts VALUES ('m-d77551357bb0','Formal Notice for Record: Church View Close, Llandough / BP vs Buckler 1987','*FORMAL NOTICE OF RECORD CHALLENGE, ASSERTION OF RIGHT, AND DEMAND FOR ENGAGEMENT*
@@ -20799,7 +20799,7 @@ For the avoidance of doubt, His Majesty the King was notified yesterday.
 
 This serves as an invitation to engage constructively before reliance becomes untenable.
 
-Regards, Sion Buckler On behalf of the Buckler–Williams family Robin Hill, Dinas Powys, Vale of Glamorgan, Wales. https://bpvsbuckler.datro.xyz
+Regards, Sion Buckler On behalf of the Buckler–Williams family [redacted], Wales. https://bpvsbuckler.datro.xyz
 
 *Postscript — Disability and Succession (Material Notice):* The heir-apparent to the asserted Manorial Lordship is Rhys Buckler’s son, a young man with Down syndrome. Any obstruction, marginalisation, or differential treatment affecting his inheritance would engage the Equality Act 2010 and UK international obligations on disability rights. Disability cannot bar succession or recognition. This is recorded to prevent claims of ignorance.');
 INSERT INTO messages VALUES ('m-e0a43a99501e','hmlr','2026-02-13T13:35:00Z','received','Your Ref: EDD Our Ref: WA231076/A/216/LG','The document attached is an official requisition, reminder or letter from HM Land Registry. It is not a circular and relates either to an application you have lodged with us or a property in which you have an interest. No paper copy of the item of correspondence will be sent to you.
@@ -20893,9 +20893,8 @@ Regards,
 
 Sion Buckler Esq. Sgt (Ret''d)
 Manor of Llandough
-And Constituent at Robin Hill,
-Dinas Powys, Vale of Glamorgan
-02031377118','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-2/#t2');
+And Constituent at [redacted]
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-2/#t2');
 INSERT INTO messages_fts VALUES ('m-851faa608019','Historic Adverse Possession Licence Interruption Cases (1950–2000)','Sirs/Ma''am,
 
 Any response about my request for a public enquiry of BP Vs Buckler 1987 and possible fraud & consealment, collusion, conspiracy and deception?
@@ -20935,9 +20934,8 @@ Regards,
 
 Sion Buckler Esq. Sgt (Ret''d)
 Manor of Llandough
-And Constituent at Robin Hill,
-Dinas Powys, Vale of Glamorgan
-02031377118');
+And Constituent at [redacted]
+[redacted]');
 INSERT INTO messages VALUES ('m-66a5876940a4','hmlr','2026-02-14T10:09:00Z','received','Enquiry:  260214-5794105','Enquiry Reference: 260214-5794105
 
 Dear Customer
@@ -21236,7 +21234,7 @@ Yours faithfully,
 
 Sion Buckler, Sgt (Ret''d)
 Executor for the Manor of Llandough
-Robin Hill, Dinas Powys, CF64 4TF','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t1');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t1');
 INSERT INTO messages_fts VALUES ('m-85882dd9b551','Title Fraud and Procedural Concealment – Church View Close, Llandough (formerly Great House Farm/ "Ty Mawr")','Councillor Carroll & co,
 
 I write regarding potential gaps in the Council''s planning and
@@ -21335,7 +21333,7 @@ Yours faithfully,
 
 Sion Buckler, Sgt (Ret''d)
 Executor for the Manor of Llandough
-Robin Hill, Dinas Powys, CF64 4TF');
+[redacted]');
 INSERT INTO messages VALUES ('m-b27b9ea3bf3d','hmlr','2026-02-21T07:35:00Z','received','Further to Your Enquiry: Ref: 260214-5794105','Enquiry Reference: 260214-5794105
 
 Dear Customer
@@ -23426,7 +23424,7 @@ Elinor
 SWP59089
 Swyddog Cymorth Sicrwydd a Chydymffurfiaeth | Assurance and Compliance Support Officer
 Comisiynydd yr Heddlu a Throseddu De Cymru | South Wales Police and Crime Commissioner
-Ffôn/Phone: 01656869366
+Ffôn/Phone: [redacted]
 
 Rydym yn croesawu gohebiaeth yn Gymraeg ac yn Saesneg.
 Byddwn yn ymateb yn eich iaith o ddewis.
@@ -23465,7 +23463,7 @@ Elinor
 SWP59089
 Swyddog Cymorth Sicrwydd a Chydymffurfiaeth | Assurance and Compliance Support Officer
 Comisiynydd yr Heddlu a Throseddu De Cymru | South Wales Police and Crime Commissioner
-Ffôn/Phone: 01656869366
+Ffôn/Phone: [redacted]
 
 Rydym yn croesawu gohebiaeth yn Gymraeg ac yn Saesneg.
 Byddwn yn ymateb yn eich iaith o ddewis.
@@ -23786,7 +23784,7 @@ Elinor
 SWP59089
 Swyddog Cymorth Sicrwydd a Chydymffurfiaeth | Assurance and Compliance Support Officer
 Comisiynydd yr Heddlu a Throseddu De Cymru | South Wales Police and Crime Commissioner
-Ffôn/Phone: 01656869366
+Ffôn/Phone: [redacted]
 
 Rydym yn croesawu gohebiaeth yn Gymraeg ac yn Saesneg.
 Byddwn yn ymateb yn eich iaith o ddewis.
@@ -23821,7 +23819,7 @@ Elinor
 SWP59089
 Swyddog Cymorth Sicrwydd a Chydymffurfiaeth | Assurance and Compliance Support Officer
 Comisiynydd yr Heddlu a Throseddu De Cymru | South Wales Police and Crime Commissioner
-Ffôn/Phone: 01656869366
+Ffôn/Phone: [redacted]
 
 Rydym yn croesawu gohebiaeth yn Gymraeg ac yn Saesneg.
 Byddwn yn ymateb yn eich iaith o ddewis.
@@ -23998,7 +23996,7 @@ Regards,
 
 Sion Buckler
 
-5 Robin Hill, Dinas Powys','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t4');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t4');
 INSERT INTO messages_fts VALUES ('m-468c468888ea','Great House Farm, Williams/ Buckler Family, Llandough, Vale of Glamorgan','Sir / Madam,
 
 To all those whom it concerns, BCC''d into this email.
@@ -24099,7 +24097,7 @@ Regards,
 
 Sion Buckler
 
-5 Robin Hill, Dinas Powys');
+[redacted]');
 INSERT INTO messages VALUES ('m-8417646cc374','heneb','2026-05-20T21:10:00Z','sent','Great House Farm, Williams/ Buckler Family, Llandough, Vale of Glamorgan','Sir / Madam,
 
 To all those whom it concerns, BCC''d into this email.
@@ -24176,7 +24174,7 @@ Regards,
 
 Sion Buckler
 
-5 Robin Hill, Dinas Powys','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t2');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t2');
 INSERT INTO messages_fts VALUES ('m-8417646cc374','Great House Farm, Williams/ Buckler Family, Llandough, Vale of Glamorgan','Sir / Madam,
 
 To all those whom it concerns, BCC''d into this email.
@@ -24253,7 +24251,7 @@ Regards,
 
 Sion Buckler
 
-5 Robin Hill, Dinas Powys');
+[redacted]');
 INSERT INTO messages VALUES ('m-826df51f987f','cadw','2026-05-21T15:16:00Z','received','FW: Great House Farm, Llandough (aka Ty Mawr)','Good afternoon Mr Buckler,
 
 Thank you for your email of 17 May regarding Great House Farm, Llandough, and also for your email of 20 May.
@@ -24800,7 +24798,7 @@ pathway.
 I expect your response within the statutory 20-working-day timeframe.
 Kind regards,
 *Sion Buckler (Ret''d Sergeant)*
-*5 Robin Hill, Dinas Powys, Vale of Glamorgan*
+*[redacted]*
 ------------------------------
 Once you send this, the 20-working-day statutory clock begins. If you want,
 I can help you draft a specific complaint letter template to the
@@ -24891,7 +24889,7 @@ pathway.
 I expect your response within the statutory 20-working-day timeframe.
 Kind regards,
 *Sion Buckler (Ret''d Sergeant)*
-*5 Robin Hill, Dinas Powys, Vale of Glamorgan*
+*[redacted]*
 ------------------------------
 Once you send this, the 20-working-day statutory clock begins. If you want,
 I can help you draft a specific complaint letter template to the
@@ -24982,7 +24980,7 @@ pathway.
 I expect your response within the statutory 20-working-day timeframe.
 Kind regards,
 *Sion Buckler (Ret''d Sergeant)*
-*5 Robin Hill, Dinas Powys, Vale of Glamorgan*
+*[redacted]*
 ------------------------------
 Once you send this, the 20-working-day statutory clock begins. If you want,
 I can help you draft a specific complaint letter template to the
@@ -25073,7 +25071,7 @@ pathway.
 I expect your response within the statutory 20-working-day timeframe.
 Kind regards,
 *Sion Buckler (Ret''d Sergeant)*
-*5 Robin Hill, Dinas Powys, Vale of Glamorgan*
+*[redacted]*
 ------------------------------
 Once you send this, the 20-working-day statutory clock begins. If you want,
 I can help you draft a specific complaint letter template to the
@@ -25258,7 +25256,7 @@ pathway.
 I expect your response within the statutory 20-working-day timeframe.
 Kind regards,
 *Sion Buckler (Ret''d Sergeant)*
-*5 Robin Hill, Dinas Powys, Vale of Glamorgan*','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue/#t2');
+*[redacted]*','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue/#t2');
 INSERT INTO messages_fts VALUES ('m-2b856be529a6','FORMAL DISCLOSURE NOTICE & LITIGATION HOLD: Historic Significance, Planning Approvals, and Displaced Family Tenancy Records for Great House Farm, Llandough (FOIA/EIR Request)','LEGAL NOTICE TO RECIPIENTS:
 *Take notice that this request is issued in anticipation of formal legal
 proceedings and the filing of an official report regarding systemic
@@ -25343,7 +25341,7 @@ pathway.
 I expect your response within the statutory 20-working-day timeframe.
 Kind regards,
 *Sion Buckler (Ret''d Sergeant)*
-*5 Robin Hill, Dinas Powys, Vale of Glamorgan*');
+*[redacted]*');
 INSERT INTO messages VALUES ('m-d74b241288aa','swp','2026-05-29T18:51:00Z','received','RE: FORMAL DISCLOSURE NOTICE & LITIGATION HOLD: Historic Significance, Planning Approvals, and Displaced Family Tenancy Records for Great House Farm, Llandough (FOIA/EIR Request)','Dear member of the public.
 Please note that South Wales Police no longer accepts reports via email. To make a report, we kindly request that you utilise one of the following options:
 1. In case of an emergency, please call 999 immediately.
@@ -25859,7 +25857,7 @@ Please also confirm the procedure for arranging an appointment for inspection, i
 
 Regards,
 
-Sion Buckler and heirs of Mary Williams of Great House Farm, Llandough C/O 5 Robin Hill, Dinas Powys CF64 4TF, United Kingdom','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-2/#t4');
+Sion Buckler and heirs of Mary Williams of Great House Farm, Llandough C/O [redacted], United Kingdom','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-2/#t4');
 INSERT INTO messages_fts VALUES ('m-5e7a6565faf3','(no subject)','Dear Sir / Madam,
 
 We are writing to formally request access to inspect the archived first registration application files relating to:
@@ -25887,7 +25885,7 @@ Please also confirm the procedure for arranging an appointment for inspection, i
 
 Regards,
 
-Sion Buckler and heirs of Mary Williams of Great House Farm, Llandough C/O 5 Robin Hill, Dinas Powys CF64 4TF, United Kingdom');
+Sion Buckler and heirs of Mary Williams of Great House Farm, Llandough C/O [redacted], United Kingdom');
 INSERT INTO messages VALUES ('m-3a87bfc1a3ab','hmlr','2026-06-03T07:10:00Z','received','Delivery Status Notification (Failure)','** Address not found **
 
 Your message wasn''t delivered to foirequests@landregistry.gov.uk because the address couldn''t be found or is unable to receive email.
@@ -25947,7 +25945,7 @@ Please also confirm the procedure for arranging an appointment for inspection, i
 
 Regards,
 
-Sion Buckler and heirs of Mary Williams of Great House Farm, Llandough C/O 5 Robin Hill, Dinas Powys CF64 4TF, United Kingdom','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-2/#t4');
+Sion Buckler and heirs of Mary Williams of Great House Farm, Llandough C/O [redacted], United Kingdom','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-2/#t4');
 INSERT INTO messages_fts VALUES ('m-394126d8d123','Ref: WA231076 /  WA240304','Dear Sir / Madam,
 
 We are writing to formally request access to inspect the archived first registration application files relating to:
@@ -25975,7 +25973,7 @@ Please also confirm the procedure for arranging an appointment for inspection, i
 
 Regards,
 
-Sion Buckler and heirs of Mary Williams of Great House Farm, Llandough C/O 5 Robin Hill, Dinas Powys CF64 4TF, United Kingdom');
+Sion Buckler and heirs of Mary Williams of Great House Farm, Llandough C/O [redacted], United Kingdom');
 INSERT INTO messages VALUES ('m-07e12f3a0dda','hmlr','2026-06-03T07:12:00Z','received','Delivery Status Notification (Failure)','** Address not found **
 
 Your message wasn''t delivered to customer.service@landregistry.gov.uk because the address couldn''t be found or is unable to receive email.
@@ -26030,7 +26028,7 @@ I would be grateful if this clarification can be provided so that any subsequent
 Yours faithfully,
 
 Sion Buckler Esq. (Ret’d Sergeant)
-Heir & Successor to Mary Williams, Great House Farm, Llandough, Vale of Glamorgan C/O 5 Robin Hill, Dinas Powys CF64 4TF, United Kingdom','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-2/#t4');
+Heir & Successor to Mary Williams, Great House Farm, Llandough, Vale of Glamorgan C/O [redacted], United Kingdom','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-2/#t4');
 INSERT INTO messages_fts VALUES ('m-0e0e57204d0c','WA231076 / WA240304 – request to confirm scope of first registration file records','Sirs / Madam,
 
 Further to my previous correspondence regarding first registration files WA231076 and WA240304, I am seeking a narrow clarification to ensure my understanding of the record set is accurate before any further request is made under statutory access routes.
@@ -26053,7 +26051,7 @@ I would be grateful if this clarification can be provided so that any subsequent
 Yours faithfully,
 
 Sion Buckler Esq. (Ret’d Sergeant)
-Heir & Successor to Mary Williams, Great House Farm, Llandough, Vale of Glamorgan C/O 5 Robin Hill, Dinas Powys CF64 4TF, United Kingdom');
+Heir & Successor to Mary Williams, Great House Farm, Llandough, Vale of Glamorgan C/O [redacted], United Kingdom');
 INSERT INTO messages VALUES ('m-6f4c9b083fb3','hmlr','2026-06-03T07:43:00Z','received','Delivery Status Notification (Failure)','** Address not found **
 
 Your message wasn''t delivered to foirequests@landregistry.gov.uk because the address couldn''t be found or is unable to receive email.
@@ -26547,8 +26545,7 @@ opportunity.
 
 Kind regards,
 
-*Sion Buckler Esq. (Ret''d Sergeant)* bpvsbuckler.datro.xyz 5 Robin Hill,
-Dinas Powys CF64 4TF (On behalf of the Williams / Buckler family
+*Sion Buckler Esq. (Ret''d Sergeant)* bpvsbuckler.datro.xyz [redacted] (On behalf of the Williams / Buckler family
 descendants)','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t4');
 INSERT INTO messages_fts VALUES ('m-b1f52519c139','Re: EIR/FOI request - 00210772 (Great House Farm / Church View Close, Llandough) – Further Clarification and Request for Full Disclosure','FOI Unit / Evelyn Morgan / Information Governance Team,
 
@@ -26595,8 +26592,7 @@ opportunity.
 
 Kind regards,
 
-*Sion Buckler Esq. (Ret''d Sergeant)* bpvsbuckler.datro.xyz 5 Robin Hill,
-Dinas Powys CF64 4TF (On behalf of the Williams / Buckler family
+*Sion Buckler Esq. (Ret''d Sergeant)* bpvsbuckler.datro.xyz [redacted] (On behalf of the Williams / Buckler family
 descendants)');
 INSERT INTO messages VALUES ('m-4af250018906','cadw','2026-06-07T07:11:00Z','sent','Great House Farm / Ty Mawr, Llandough – Further Evidence of 1988 Involvement & Request for Comprehensive Records (Ref: Previous Enquiries incl. 21 May 2026)','Dear Cadw Team / Mr Michael Weatherhead / Listed Buildings Team,
 
@@ -26614,7 +26610,7 @@ Thank you once again for your understanding and support. I look forward to your 
 
 Kind regards,
 
-*Sion Buckler* bpvsbuckler.datro.xyz 5 Robin Hill, Dinas Powys CF64 4TF (On behalf of the Williams / Buckler family descendants)','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t4');
+*Sion Buckler* bpvsbuckler.datro.xyz [redacted] (On behalf of the Williams / Buckler family descendants)','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t4');
 INSERT INTO messages_fts VALUES ('m-4af250018906','Great House Farm / Ty Mawr, Llandough – Further Evidence of 1988 Involvement & Request for Comprehensive Records (Ref: Previous Enquiries incl. 21 May 2026)','Dear Cadw Team / Mr Michael Weatherhead / Listed Buildings Team,
 
 Thank you for your assistance to date with my enquiries regarding Great House Farm (Ty Mawr), Llandough, including the heritage assessment materials provided on 21 May 2026.
@@ -26631,7 +26627,7 @@ Thank you once again for your understanding and support. I look forward to your 
 
 Kind regards,
 
-*Sion Buckler* bpvsbuckler.datro.xyz 5 Robin Hill, Dinas Powys CF64 4TF (On behalf of the Williams / Buckler family descendants)');
+*Sion Buckler* bpvsbuckler.datro.xyz [redacted] (On behalf of the Williams / Buckler family descendants)');
 INSERT INTO messages VALUES ('m-a938df7cba32','swp','2026-06-07T08:25:00Z','sent','FOI/EIR Request – 1988 Police/Bailiff Involvement in Dispossession at Great House Farm (Ty Mawr), Llandough (Ref: Buckler/Williams Family, BP Properties)','FOI Team / South Wales Police,
 
 I am Sion Buckler (heir/successor of Mary Williams, d. 1983), writing
@@ -26660,7 +26656,7 @@ request.
 Thank you,
 
 Sion Buckler
-5 Robin Hill, Dinas Powys, CF64 4TF','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-2/#t3');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-2/#t3');
 INSERT INTO messages_fts VALUES ('m-a938df7cba32','FOI/EIR Request – 1988 Police/Bailiff Involvement in Dispossession at Great House Farm (Ty Mawr), Llandough (Ref: Buckler/Williams Family, BP Properties)','FOI Team / South Wales Police,
 
 I am Sion Buckler (heir/successor of Mary Williams, d. 1983), writing
@@ -26689,7 +26685,7 @@ request.
 Thank you,
 
 Sion Buckler
-5 Robin Hill, Dinas Powys, CF64 4TF');
+[redacted]');
 INSERT INTO messages VALUES ('m-e88f8916bb58','vale','2026-06-09T17:14:00Z','received','RE: EIR/FOI request - 00210772 (Great House Farm / Church View Close, Llandough) – Further Clarification and Request for Full Disclosure','Dear Mr Buckler
 
 Thank you for the below. We have passed the information you have provided onto our Planning department who are looking into your request.
@@ -26962,7 +26958,7 @@ Uwch Arolygydd Adeiladau Hanesyddol, Parciau a Gerddi
 Amgylchedd Hanesyddol / Historic Environment
 Cadw
 Llywodraeth Cymru / Welsh Government
-Ffôn / Tel: 07751 715011
+Ffôn / Tel: [redacted]
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
 Join Cadw<https://www.cadwmembership.service.gov.wales/>
@@ -26982,7 +26978,7 @@ Uwch Arolygydd Adeiladau Hanesyddol, Parciau a Gerddi
 Amgylchedd Hanesyddol / Historic Environment
 Cadw
 Llywodraeth Cymru / Welsh Government
-Ffôn / Tel: 07751 715011
+Ffôn / Tel: [redacted]
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
 Join Cadw<https://www.cadwmembership.service.gov.wales/>
@@ -27363,7 +27359,7 @@ Uwch Arolygydd Adeiladau Hanesyddol, Parciau a Gerddi
 Amgylchedd Hanesyddol / Historic Environment
 Cadw
 Llywodraeth Cymru / Welsh Government
-Ffôn / Tel: 07751 715011
+Ffôn / Tel: [redacted]
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
 Join Cadw<https://www.cadwmembership.service.gov.wales/>','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t5');
@@ -27382,7 +27378,7 @@ Uwch Arolygydd Adeiladau Hanesyddol, Parciau a Gerddi
 Amgylchedd Hanesyddol / Historic Environment
 Cadw
 Llywodraeth Cymru / Welsh Government
-Ffôn / Tel: 07751 715011
+Ffôn / Tel: [redacted]
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
 Join Cadw<https://www.cadwmembership.service.gov.wales/>');
@@ -27915,7 +27911,7 @@ Regards,
 
 Sion Buckler (Ret''d Sgt)
 Royal Signals Cyber & Electronic Warfare Professional & Life Member
-02031377118
+[redacted]
 
 P.S. For the avoidance of doubt, where the Council holds environmental
 information relating to the historic Great House Farm/Ty Mawr estate prior
@@ -28117,7 +28113,7 @@ Regards,
 
 Sion Buckler (Ret''d Sgt)
 Royal Signals Cyber & Electronic Warfare Professional & Life Member
-02031377118
+[redacted]
 
 P.S. For the avoidance of doubt, where the Council holds environmental
 information relating to the historic Great House Farm/Ty Mawr estate prior
@@ -28222,7 +28218,7 @@ Uwch Arolygydd Adeiladau Hanesyddol, Parciau a Gerddi
 Amgylchedd Hanesyddol / Historic Environment
 Cadw
 Llywodraeth Cymru / Welsh Government
-Ffôn / Tel: 07751 715011
+Ffôn / Tel: [redacted]
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
 Join Cadw<https://www.cadwmembership.service.gov.wales/>','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t5');
@@ -28260,7 +28256,7 @@ Uwch Arolygydd Adeiladau Hanesyddol, Parciau a Gerddi
 Amgylchedd Hanesyddol / Historic Environment
 Cadw
 Llywodraeth Cymru / Welsh Government
-Ffôn / Tel: 07751 715011
+Ffôn / Tel: [redacted]
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
 Join Cadw<https://www.cadwmembership.service.gov.wales/>');
@@ -28369,8 +28365,8 @@ provide the relevant links or document references.
 Regards,
 
 Sion Buckler (Ret''d Sergeant)
-Robin Hill, Dinas Powys
-02031377118','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t8');
+[redacted]
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t8');
 INSERT INTO messages_fts VALUES ('m-ec0f652c79ee','Request for information regarding acquisition of land for Llandough Primary School','Sirs/ Ma''am,
 
 Under the Freedom of Information Act 2000 and, where applicable, the
@@ -28404,10 +28400,10 @@ provide the relevant links or document references.
 Regards,
 
 Sion Buckler (Ret''d Sergeant)
-Robin Hill, Dinas Powys
-02031377118');
+[redacted]
+[redacted]');
 INSERT INTO messages VALUES ('m-e6af96129ba1','vale','2026-07-13T03:50:00Z','sent','Fwd: Request for information regarding acquisition of land for Llandough Primary School','---------- Forwarded message ---------
-From: Sion Buckler <hywelapbuckler@gmail.com>
+From: Sion Buckler <[redacted]>
 Date: Mon, 13 Jul 2026, 00:49
 Subject: Request for information regarding acquisition of land for
 Llandough Primary School
@@ -28446,10 +28442,10 @@ provide the relevant links or document references.
 Regards,
 
 Sion Buckler (Ret''d Sergeant)
-Robin Hill, Dinas Powys
-02031377118','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t8');
+[redacted]
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t8');
 INSERT INTO messages_fts VALUES ('m-e6af96129ba1','Fwd: Request for information regarding acquisition of land for Llandough Primary School','---------- Forwarded message ---------
-From: Sion Buckler <hywelapbuckler@gmail.com>
+From: Sion Buckler <[redacted]>
 Date: Mon, 13 Jul 2026, 00:49
 Subject: Request for information regarding acquisition of land for
 Llandough Primary School
@@ -28488,8 +28484,8 @@ provide the relevant links or document references.
 Regards,
 
 Sion Buckler (Ret''d Sergeant)
-Robin Hill, Dinas Powys
-02031377118');
+[redacted]
+[redacted]');
 INSERT INTO messages VALUES ('m-9425ecd8fbbf','vale','2026-07-13T04:00:00Z','sent','Great House Farm/ Church View Close','Cllr Carroll,
 
 I hope this email finds you well.
@@ -28633,7 +28629,7 @@ Regards,
 
 Sion Buckler (Ret''d Sergenant)
 Royal Signals Cyber & Electronic Warfare Professional & Life Member
-02031377118','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t1');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t1');
 INSERT INTO messages_fts VALUES ('m-824a8765abef','Re: Great House Farm, Llandough | Cardiff Castle Furniture','Yes please.
 
 I am trying to gather all information.
@@ -28647,7 +28643,7 @@ Regards,
 
 Sion Buckler (Ret''d Sergenant)
 Royal Signals Cyber & Electronic Warfare Professional & Life Member
-02031377118');
+[redacted]');
 INSERT INTO messages VALUES ('m-bfddf7e02328','vale','2026-07-14T14:23:00Z','received','FOI/EIR request - Case Ref/ 00211027','Dear Sion Buckler
 
 FREEDOM OF INFORMATION ACT 2000/ENVIRONMENTAL INFORMATION REGULATIONS 2004 - INFORMATION REQUEST
@@ -29088,9 +29084,9 @@ them on request. Please acknowledge receipt of this formal complaint.
 Yours sincerely,
 
 Sion Hywel Buckler (Ret’d Sergeant)
-5 Robin Hill, Dinas Powys, CF64 4TF
-hywelapbuckler@gmail.com
-020 3137 7118','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-2/#t1');
+[redacted]
+[redacted]
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-2/#t1');
 INSERT INTO messages_fts VALUES ('m-d7eaf6c6ff1e','Complaint – Failure to Respond / Failure to Deal Properly with Case – Cllr George Carroll (Llandough) – Great House Farm / Church View Close','Dear Monitoring Officer / Corporate Complaints Team,
 
 With great regret I am writing to make a complaint about the persistent
@@ -29157,9 +29153,9 @@ them on request. Please acknowledge receipt of this formal complaint.
 Yours sincerely,
 
 Sion Hywel Buckler (Ret’d Sergeant)
-5 Robin Hill, Dinas Powys, CF64 4TF
-hywelapbuckler@gmail.com
-020 3137 7118');
+[redacted]
+[redacted]
+[redacted]');
 INSERT INTO messages VALUES ('m-9d32317d0424','vale','2026-07-27T21:22:00Z','received','Automatic reply: Complaint – Failure to Respond / Failure to Deal Properly with Case – Cllr George Carroll (Llandough) – Great House Farm / Church View Close','Diolch am eich e-bost. Rwyf allan o''r swyddfa ar hyn o bryd rydw i allan o''r swyddfa tan 27 Gorffennaf 2026
 
 Ar gyfer materion brys, cysylltwch â Vicci Rowlands yn vrownlands@valeoflgamorgan.gov.uk neu Henry Brown hjabrown@valeofglamorgan.gov.uk
@@ -29203,7 +29199,7 @@ Uwch Arolygydd Adeiladau Hanesyddol, Parciau a Gerddi
 Amgylchedd Hanesyddol / Historic Environment
 Cadw
 Llywodraeth Cymru / Welsh Government
-Ffôn / Tel: 07751 715011
+Ffôn / Tel: [redacted]
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
 Join Cadw<https://www.cadwmembership.service.gov.wales/>','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t5');
@@ -29236,7 +29232,7 @@ Uwch Arolygydd Adeiladau Hanesyddol, Parciau a Gerddi
 Amgylchedd Hanesyddol / Historic Environment
 Cadw
 Llywodraeth Cymru / Welsh Government
-Ffôn / Tel: 07751 715011
+Ffôn / Tel: [redacted]
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
 Join Cadw<https://www.cadwmembership.service.gov.wales/>');
@@ -29456,7 +29452,7 @@ when it will be issued, within 5 working days.
 Yours faithfully,
 
 Sion Buckler (Ret''d Sgt)
-hywelapbuckler@gmail.com','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t7');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t7');
 INSERT INTO messages_fts VALUES ('m-af40f7589b62','Great House Farm, Llandough','Dear Information Governance Team,
 
 On 7 July 2026 I requested an internal review of the Council’s response to
@@ -29471,7 +29467,7 @@ when it will be issued, within 5 working days.
 Yours faithfully,
 
 Sion Buckler (Ret''d Sgt)
-hywelapbuckler@gmail.com');
+[redacted]');
 INSERT INTO messages VALUES ('m-658ecaafeda3','vale','2026-08-01T15:24:00Z','sent','Follow-up – FOI/EIR Case Ref 00211027 (Llandough Primary School)','Dear Information Governance Team,
 
 On 14 July 2026 you acknowledged my FOI/EIR request (Case Ref 00211027)
@@ -29487,7 +29483,7 @@ deadline has passed.
 Yours faithfully,
 
 Sion Buckler
-hywelapbuckler@gmail.com','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t8');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t8');
 INSERT INTO messages_fts VALUES ('m-658ecaafeda3','Follow-up – FOI/EIR Case Ref 00211027 (Llandough Primary School)','Dear Information Governance Team,
 
 On 14 July 2026 you acknowledged my FOI/EIR request (Case Ref 00211027)
@@ -29503,7 +29499,7 @@ deadline has passed.
 Yours faithfully,
 
 Sion Buckler
-hywelapbuckler@gmail.com');
+[redacted]');
 INSERT INTO messages VALUES ('m-21860fe7e321','swp','2026-08-02T01:09:00Z','received','Automatic reply: Follow-up – FOI Request 719/26 (Great House Farm / 1988 Dispossession)','Diolch am gysylltu â''r Tîm Rhyddid Gwybodaeth yn Heddlu De Cymru. Dyma neges i gadarnhau ein bod wedi cael eich gohebiaeth. Peidiwch ag ymateb i''r neges e-bost hon.
 
 Rydym yn delio â nifer mawr o geisiadau ar hyn o bryd, yn ogystal ag ôl-groniad. Er ein bod yn gwneud pob ymdrech i ymateb i geisiadau o fewn y terfyn amser o 20 diwrnod gwaith, gall fod oedi wrth ddelio â rhai o''r ceisiadau o ganlyniad i hyn.
@@ -29587,7 +29583,7 @@ early December 1988 (almost certainly 5–6 December).
 Yours faithfully,
 
 Sion Buckler (Ret''d Army Sergeant)
-hywelapbuckler@gmail.com','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-2/#t3');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-2/#t3');
 INSERT INTO messages_fts VALUES ('m-95922062a3af','Follow-up – FOI Request 719/26 (Great House Farm / 1988 Dispossession)','FOI Team,
 On 16 July 2026 you issued a response to my FOI request 719/26 stating that
 no records were held.
@@ -29615,7 +29611,7 @@ early December 1988 (almost certainly 5–6 December).
 Yours faithfully,
 
 Sion Buckler (Ret''d Army Sergeant)
-hywelapbuckler@gmail.com');
+[redacted]');
 INSERT INTO messages VALUES ('m-f2d4d17be771','museum','2026-08-03T13:39:00Z','received','FOI 2026-020 - Great House Farm, Llandough | Cardiff Castle Furniture','Dear Sion
 
 Thank you for your request for information received on 2nd July 2026, concerning furniture, furnishings, antiques, fixtures, heirlooms and other movable property originating from Great House Farm (Ty Mawr), Llandough.
@@ -29970,12 +29966,12 @@ Ymwadiad Heddlu De Cymru\South Wales Police Disclaimer
 Gallai defnyddio neu ddatgelu''r neges e-bost hon heb awdurdod fod yn anghyfreithlon. Gallwch weld ein datganiad cyfrinachedd yn: https://www.heddlu-de-cymru.police.uk/cy-GB/heddluoedd/heddlu-de-cymru/ardaloedd/amdanom-ni/amdanom-ni/datganiad-cyfrinachedd-e-bost/".
 
 Unauthorised use or disclosure of this email may be unlawful. View our confidentiality statement at https://www.south-wales.police.uk/police-forces/south-wales-police/areas/about-us/about-us/email-confidentiality-statement/.');
-INSERT INTO messages VALUES ('m-46ac7dcc41e0','swp','2026-08-07T20:13:00Z','sent','Re: 719/26','02031377118
+INSERT INTO messages VALUES ('m-46ac7dcc41e0','swp','2026-08-07T20:13:00Z','sent','Re: 719/26','[redacted]
 
 You may leave a message.
 
 Sion','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-2/#t4');
-INSERT INTO messages_fts VALUES ('m-46ac7dcc41e0','Re: 719/26','02031377118
+INSERT INTO messages_fts VALUES ('m-46ac7dcc41e0','Re: 719/26','[redacted]
 
 You may leave a message.
 
@@ -30079,7 +30075,7 @@ Regards,
 
 Sion Buckler (Ret’d Sgt)
 Royal Signals
-Cyber and Electronic Warfare Professional and Life Member hywelapbuckler@gmail.com 02031377118','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t1');
+Cyber and Electronic Warfare Professional and Life Member [redacted] [redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t1');
 INSERT INTO messages_fts VALUES ('m-6f4c6497f615','Re: CADW failures – Revised Report (10 August 2026)','Sirs/Ma''ams,
 
 I write further to my email of 9 August 2026 submitting a review concerning Cadw’s 1988 assessment of Great House Farm (Ty Mawr), Llandough.
@@ -30103,7 +30099,7 @@ Regards,
 
 Sion Buckler (Ret’d Sgt)
 Royal Signals
-Cyber and Electronic Warfare Professional and Life Member hywelapbuckler@gmail.com 02031377118');
+Cyber and Electronic Warfare Professional and Life Member [redacted] [redacted]');
 INSERT INTO messages VALUES ('m-b190adaf9b34','hmlr','2026-08-12T07:18:00Z','sent','Clarification of surviving first-registration documents — N610CGV / WA231076 & WA240304','Dear Mr Haste,
 
 Thank you for your letter of *30 July 2026* concerning reference *N610CGV* and the surviving records relating to the first registration of titles *WA231076
@@ -30418,7 +30414,7 @@ Monitoring Officer/Head of Legal & Democratic Services / Rheolydd Gweithredol, G
 Management Team - Resources / Swyddfa’r Cyfarwyddwr - Adnoddau
 Vale of Glamorgan Council / Cyngor Bro Morgannwg
 tel / ffôn:
-mob / sym: 01446 709407
+mob / sym: [redacted]
 e-mail / e-bost: VDavidson@valeofglamorgan.gov.uk
 
 Consider the environment.. Please don''t print this e-mail unless you really need to.
@@ -30448,7 +30444,7 @@ Monitoring Officer/Head of Legal & Democratic Services / Rheolydd Gweithredol, G
 Management Team - Resources / Swyddfa’r Cyfarwyddwr - Adnoddau
 Vale of Glamorgan Council / Cyngor Bro Morgannwg
 tel / ffôn:
-mob / sym: 01446 709407
+mob / sym: [redacted]
 e-mail / e-bost: VDavidson@valeofglamorgan.gov.uk
 
 Consider the environment.. Please don''t print this e-mail unless you really need to.
@@ -32318,7 +32314,7 @@ onwards.
 
 Yours faithfully,
 
-*Sion Buckler (Ret''d Sergeant)*','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-a:r-5652027083536199633');
+*Sion Buckler (Ret''d Sergeant)*','https://mail.google.com/mail/?authuser=[redacted]#all/thread-a:r-2236227807529852386|msg-a:r-5652027083536199633');
 INSERT INTO messages_fts VALUES ('g-1a02ad595fc3aeac','Ty Mawr, Llandough, Cardiff','Glamorgan Archives Team,
 
 I am writing to make a targeted archive research enquiry concerning the
@@ -32505,8 +32501,8 @@ Victoria Davidson
 Monitoring Officer/Head of Legal and Democratic Services / Swyddog Monitro / Pennaeth Gwasanaethau Cyfreithiol a Democrataidd
 Director''s Office - Resources / Swyddfa’r Cyfarwyddwr - Adnoddau
 Vale of Glamorgan Council / Cyngor Bro Morgannwg
-tel / ffôn: 01446 709407
-mob / sym: 07891 449715
+tel / ffôn: [redacted]
+mob / sym: [redacted]
 e-mail / e-bost: VDavidson@valeofglamorgan.gov.uk
 
 Consider the environment. Please don''t print this e-mail unless you really need to.
@@ -32536,8 +32532,8 @@ Victoria Davidson
 Monitoring Officer/Head of Legal and Democratic Services / Swyddog Monitro / Pennaeth Gwasanaethau Cyfreithiol a Democrataidd
 Director''s Office - Resources / Swyddfa’r Cyfarwyddwr - Adnoddau
 Vale of Glamorgan Council / Cyngor Bro Morgannwg
-tel / ffôn: 01446 709407
-mob / sym: 07891 449715
+tel / ffôn: [redacted]
+mob / sym: [redacted]
 e-mail / e-bost: VDavidson@valeofglamorgan.gov.uk
 
 Consider the environment. Please don''t print this e-mail unless you really need to.
@@ -33645,7 +33641,7 @@ Powys
 SY16 1JB
 
 Ffôn / Tel: 0300 025 5375
-Ffôn symudol / Mobile: 07711 120252
+Ffôn symudol / Mobile: [redacted]
 E-bost/ Email: andy.wigley@llyw.cymru<mailto:andy.wigley@llyw.cymru> / andy.wigley@gov.wales<mailto:andy.wigley@gov.wales>
 
 P Helpwch yr amgylchedd - peidiwch ag argraffu hon os nad oes gwir raid Help our environment - only print this if really necessary
@@ -33686,7 +33682,7 @@ Powys
 SY16 1JB
 
 Ffôn / Tel: 0300 025 5375
-Ffôn symudol / Mobile: 07711 120252
+Ffôn symudol / Mobile: [redacted]
 E-bost/ Email: andy.wigley@llyw.cymru<mailto:andy.wigley@llyw.cymru> / andy.wigley@gov.wales<mailto:andy.wigley@gov.wales>
 
 P Helpwch yr amgylchedd - peidiwch ag argraffu hon os nad oes gwir raid Help our environment - only print this if really necessary
@@ -35231,7 +35227,7 @@ Powys
 SY16 1JB
 
 Ffôn / Tel: 0300 025 5375
-Ffôn symudol / Mobile: 07711 120252
+Ffôn symudol / Mobile: [redacted]
 E-bost/ Email: andy.wigley@llyw.cymru<mailto:andy.wigley@llyw.cymru> / andy.wigley@gov.wales<mailto:andy.wigley@gov.wales>
 
 P Helpwch yr amgylchedd - peidiwch ag argraffu hon os nad oes gwir raid Help our environment - only print this if really necessary
@@ -35260,7 +35256,7 @@ Powys
 SY16 1JB
 
 Ffôn / Tel: 0300 025 5375
-Ffôn symudol / Mobile: 07711 120252
+Ffôn symudol / Mobile: [redacted]
 E-bost/ Email: andy.wigley@llyw.cymru<mailto:andy.wigley@llyw.cymru> / andy.wigley@gov.wales<mailto:andy.wigley@gov.wales>
 
 P Helpwch yr amgylchedd - peidiwch ag argraffu hon os nad oes gwir raid Help our environment - only print this if really necessary
@@ -35372,7 +35368,7 @@ CF11 8AW
 02920872200
 www.archifaumorgannwg.gov.uk / www.glamarchives.gov.uk
 www.facebook.com/glamarchives
-Tweet@glamarchives','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1875665402934453612|msg-f:1875665402934453612');
+Tweet@glamarchives','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1875665402934453612|msg-f:1875665402934453612');
 INSERT INTO messages_fts VALUES ('g-1a07b3bf0b65e56c','RE: Epexio contact us form submission','Ref: 2026 – 3941
 
 Dear Sion Buckler,
@@ -35530,7 +35526,7 @@ Reader''s ticket 2004093
 
 Open Drafts and send when ready.
 On Mon, 7 Sept 2026, 06:38 Glamro / Swyddfa Cofnodion Morgannwg, <
-Glamro@cardiff.gov.uk> wrote:','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1875665402934453612|msg-a:r504170399441776690');
+Glamro@cardiff.gov.uk> wrote:','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1875665402934453612|msg-a:r504170399441776690');
 INSERT INTO messages_fts VALUES ('g-1a07c8b70851bfd9','Re: Epexio contact us form submission','Alexis Brito / Glamorgan Archives Team,
 
 Thank you for your email (ref 2026–3941) on ACA/8/2. I note the £60 quote
@@ -35665,7 +35661,7 @@ glamro@cardiff.gov.uk<mailto:glamro@cardiff.gov.uk>
 
 www.archifaumorgannwg.gov.uk/ www.glamarchives.gov.uk
 www.facebook.com/glamarchives
-www.instagram.com/glamarchives','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063');
+www.instagram.com/glamarchives','https://mail.google.com/mail/?authuser=[redacted]#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063');
 INSERT INTO messages_fts VALUES ('g-1a07cc3e251e0967','RE: Ty Mawr, Llandough, Cardiff','Ref: 2026/3793
 
 Dear Sion Buckler,
@@ -35804,7 +35800,7 @@ Yours sincerely,
 *Royal Signals Cyber/Electronic Warfare Professional and Life Member*
 
 On Mon, 7 Sept 2026, 13:46 Glamro / Swyddfa Cofnodion Morgannwg, <
-Glamro@cardiff.gov.uk> wrote:','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-a:r-5409196767943587968');
+Glamro@cardiff.gov.uk> wrote:','https://mail.google.com/mail/?authuser=[redacted]#all/thread-a:r-2236227807529852386|msg-a:r-5409196767943587968');
 INSERT INTO messages_fts VALUES ('g-1a07d705f291c33b','Re: Ty Mawr, Llandough, Cardiff','Louise,
 
 Thanks for your detailed and prompt reply and for the additional
@@ -35942,7 +35938,7 @@ Please treat this as a request for recorded information only.
 Regards,
 
 Sion Buckler
-hywelapbuckler@gmail.com','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t3');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t3');
 INSERT INTO messages_fts VALUES ('m-2cae5a14a80e','Great House Farm, Llandough, Cardiff','FOI Team,
 
 This is a new request under the Freedom of Information Act 2000. It is not a repeat of FOI 2026-024 and it is not a comment on the internal review of that request.
@@ -35977,7 +35973,7 @@ Please treat this as a request for recorded information only.
 Regards,
 
 Sion Buckler
-hywelapbuckler@gmail.com');
+[redacted]');
 INSERT INTO messages VALUES ('m-c323d7150db8','heneb','2026-09-08T03:05:00Z','sent','Great House Farm, Llandough, Cardiff','HER Officer (Heneb: Glamorgan-Gwent),
 
 This is a request for recorded information under the Environmental Information Regulations 2004 and, so far as applicable, the Freedom of Information Act 2000, and under the public-access duty to the historic environment record.
@@ -36000,7 +35996,7 @@ Please send electronic copies. I am an interested person researching the documen
 Regards,
 
 Sion Buckler
-hywelapbuckler@gmail.com','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t5');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t5');
 INSERT INTO messages_fts VALUES ('m-c323d7150db8','Great House Farm, Llandough, Cardiff','HER Officer (Heneb: Glamorgan-Gwent),
 
 This is a request for recorded information under the Environmental Information Regulations 2004 and, so far as applicable, the Freedom of Information Act 2000, and under the public-access duty to the historic environment record.
@@ -36023,7 +36019,7 @@ Please send electronic copies. I am an interested person researching the documen
 Regards,
 
 Sion Buckler
-hywelapbuckler@gmail.com');
+[redacted]');
 INSERT INTO messages VALUES ('m-f81197231c2d','museum','2026-09-08T08:29:00Z','received','Internal Review: FOI 2026-020 - Great House Farm, Llandough | Cardiff Castle Furniture','Dear Mr Buckler
 
 Thank you for your request for an internal review of FOI 2026-020 concerning furniture, furnishings, antiques, fixtures, heirlooms and other movable property originating from Great House Farm (Ty Mawr), Llandough.
@@ -36642,7 +36638,7 @@ Please confirm that FOI 2026-032 remains open on the terms above.
 Regards,
 
 Sion Buckler
-hywelapbuckler@gmail.com','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t3');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t3');
 INSERT INTO messages_fts VALUES ('m-957152e2021b','Re: FOI: 2026-036 - Great House Farm, Llandough, Cardiff','FOI Team,
 
 Thank you for your email concerning FOI:2026-036.
@@ -36683,7 +36679,7 @@ Please confirm that FOI 2026-032 remains open on the terms above.
 Regards,
 
 Sion Buckler
-hywelapbuckler@gmail.com');
+[redacted]');
 INSERT INTO messages VALUES ('m-405b6a7b8885','museum','2026-09-08T13:14:00Z','received','RE: FOI: 2026-036 - Great House Farm, Llandough, Cardiff','Dear Mr Buckler
 
 Thank you for your email.
@@ -36958,7 +36954,7 @@ Regards,
 
 Sion Hywel Buckler (Ret''d Sergeant)
 Royal Signals Cyber/ Electronic Warfare Professional and Life Member
-5 Robin Hill, Dinas Powys, CF64 4TF','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-2/#t4');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-2/#t4');
 INSERT INTO messages_fts VALUES ('m-b13fb823aad7','Escalation — Llandough ward member silence: Great House Farm / Church View Close and removal of commemorative tree','Councillor Burnett,
 
 I write to you as Leader of the Vale of Glamorgan Council because the
@@ -37093,7 +37089,7 @@ Regards,
 
 Sion Hywel Buckler (Ret''d Sergeant)
 Royal Signals Cyber/ Electronic Warfare Professional and Life Member
-5 Robin Hill, Dinas Powys, CF64 4TF');
+[redacted]');
 INSERT INTO messages VALUES ('m-9ca0a6e96409','vale','2026-09-11T15:01:00Z','received','RE: Great House Farm, Llandough – Request 00210772 – Internal Review – Formal Chase','Dear Mr Buckler
 
 We are sorry for the delay in providing you with a substantive update in this matter. You asked for an internal review in particular because you had concerns about whether or not substantive enough searches had been carried out. We wrote to you on 5th August 2026 advising that further enquiries regarding the searches was being made with service areas. We advised you those enquiries were not quite complete.
@@ -40276,8 +40272,8 @@ Victoria Davidson
 Monitoring Officer/Head of Legal and Democratic Services / Swyddog Monitro / Pennaeth Gwasanaethau Cyfreithiol a Democrataidd
 Director''s Office - Resources / Swyddfa’r Cyfarwyddwr - Adnoddau
 Vale of Glamorgan Council / Cyngor Bro Morgannwg
-tel / ffôn: 01446 709407
-mob / sym: 07891 449715
+tel / ffôn: [redacted]
+mob / sym: [redacted]
 e-mail / e-bost: VDavidson@valeofglamorgan.gov.uk
 
 Consider the environment. Please don''t print this e-mail unless you really need to.
@@ -40306,8 +40302,8 @@ Victoria Davidson
 Monitoring Officer/Head of Legal and Democratic Services / Swyddog Monitro / Pennaeth Gwasanaethau Cyfreithiol a Democrataidd
 Director''s Office - Resources / Swyddfa’r Cyfarwyddwr - Adnoddau
 Vale of Glamorgan Council / Cyngor Bro Morgannwg
-tel / ffôn: 01446 709407
-mob / sym: 07891 449715
+tel / ffôn: [redacted]
+mob / sym: [redacted]
 e-mail / e-bost: VDavidson@valeofglamorgan.gov.uk
 
 Consider the environment. Please don''t print this e-mail unless you really need to.
@@ -41738,7 +41734,7 @@ I should be grateful for a response to items 1 to 3 by 16 October 2026.
 Regards,
 
 Sion Buckler (Ret''d Sergeant)
-Royal Signals Cyber/ Electronic Warfare Professional and Life Member','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1876908364250660817|msg-a:r-2876032251266921777');
+Royal Signals Cyber/ Electronic Warfare Professional and Life Member','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1876908364250660817|msg-a:r-2876032251266921777');
 INSERT INTO messages_fts VALUES ('g-1a0c1e743d10b2b2','Re: Great House Farm (Tŷ Mawr), Llandough — request for information under FOIA 2000 / EIR 2004','Dr Misra,
 
 Thank you for replying, and for doing so promptly and at a weekend. Good
@@ -41894,7 +41890,7 @@ I write further to your letter of 30 July 2026, in which you listed the survivin
 
 I cannot obtain a current official copy of WA240304 through the public Search for land and property service. Find a Property Support (Sandra, 21 September 2026, ref 260919-6726246) has confirmed that WA240304 is not a current title number and that no copy of that register is available on that service. That is why I am writing to you, as the officer who has already identified the historic file.
 
-I have also already paid for a hand full of official copies and related land documents in this matter. I am asking you to issue, by email to hywelapbuckler@gmail.com, unofficial or official copies of the below items from your 30 July schedule, and to waive the information-services fee for this request, more so to make this all less problematic and cumberson. Justice delayed is justice denied. I''ve experienced months of non co-operetion and rhetoric and I''d like some good faith restored.
+I have also already paid for a hand full of official copies and related land documents in this matter. I am asking you to issue, by email to [redacted], unofficial or official copies of the below items from your 30 July schedule, and to waive the information-services fee for this request, more so to make this all less problematic and cumberson. Justice delayed is justice denied. I''ve experienced months of non co-operetion and rhetoric and I''d like some good faith restored.
 
 From title WA240304
 1. Plan to Conveyance dated 23 May 1975
@@ -41951,7 +41947,7 @@ I write further to your letter of 30 July 2026, in which you listed the survivin
 
 I cannot obtain a current official copy of WA240304 through the public Search for land and property service. Find a Property Support (Sandra, 21 September 2026, ref 260919-6726246) has confirmed that WA240304 is not a current title number and that no copy of that register is available on that service. That is why I am writing to you, as the officer who has already identified the historic file.
 
-I have also already paid for a hand full of official copies and related land documents in this matter. I am asking you to issue, by email to hywelapbuckler@gmail.com, unofficial or official copies of the below items from your 30 July schedule, and to waive the information-services fee for this request, more so to make this all less problematic and cumberson. Justice delayed is justice denied. I''ve experienced months of non co-operetion and rhetoric and I''d like some good faith restored.
+I have also already paid for a hand full of official copies and related land documents in this matter. I am asking you to issue, by email to [redacted], unofficial or official copies of the below items from your 30 July schedule, and to waive the information-services fee for this request, more so to make this all less problematic and cumberson. Justice delayed is justice denied. I''ve experienced months of non co-operetion and rhetoric and I''d like some good faith restored.
 
 From title WA240304
 1. Plan to Conveyance dated 23 May 1975
@@ -43058,7 +43054,7 @@ glamro@cardiff.gov.uk<mailto:glamro@cardiff.gov.uk>
 
 www.archifaumorgannwg.gov.uk/ www.glamarchives.gov.uk
 www.facebook.com/glamarchives
-www.instagram.com/glamarchives','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1875665402934453612|msg-f:1877229311407715649');
+www.instagram.com/glamarchives','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1875665402934453612|msg-f:1877229311407715649');
 INSERT INTO messages_fts VALUES ('g-1a0d421cdc687541','RE: Epexio contact us form submission','Ref: 2026/4097
 
 Dear Sion Buckler,
@@ -44737,7 +44733,7 @@ Royal Signals Cyber/Electronic Warfare Professional and Life Member
 greathousefarmwiki.wordpress.com
 
 On Thu, 24 Sept 2026, 16:56 Glamro / Swyddfa Cofnodion Morgannwg, <
-Glamro@cardiff.gov.uk> wrote:','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1875665402934453612|msg-a:r-3717670786762189549');
+Glamro@cardiff.gov.uk> wrote:','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1875665402934453612|msg-a:r-3717670786762189549');
 INSERT INTO messages_fts VALUES ('g-1a0e112511993a85','Re: Epexio contact us form submission','Louise,
 
 Thank you again for your very detailed response under reference 2026/4097.
@@ -45166,7 +45162,7 @@ This letter is sent so that Heneb and GGAT Ltd have a fair opportunity to invest
 Regards,
 
 Sion Buckler (Ret''d Sergeant)
-Royal Signals Cyber/Electronic Warfare Professional and Life Member hywelapbuckler@gmail.com
+Royal Signals Cyber/Electronic Warfare Professional and Life Member [redacted]
 
 Please visit
 greathousefarmwiki.wordpress.com
@@ -45290,7 +45286,7 @@ This letter is sent so that Heneb and GGAT Ltd have a fair opportunity to invest
 Regards,
 
 Sion Buckler (Ret''d Sergeant)
-Royal Signals Cyber/Electronic Warfare Professional and Life Member hywelapbuckler@gmail.com
+Royal Signals Cyber/Electronic Warfare Professional and Life Member [redacted]
 
 Please visit
 greathousefarmwiki.wordpress.com
@@ -45857,7 +45853,7 @@ On 2026-09-21 03:59, Sion Buckler wrote:
 >> Best regards
 >>
 >> Dr M C Misra,
->> Chair Llandough Community Council','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1876908364250660817|msg-f:1877563689272243425');
+>> Chair Llandough Community Council','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1876908364250660817|msg-f:1877563689272243425');
 INSERT INTO messages_fts VALUES ('g-1a0e723a463e74e1','Re: Great House Farm (Tŷ Mawr), Llandough — request for information under FOIA 2000 / EIR 2004','Dear Mr Buckler,
 
 Your email of the 21st September has been passed over to our clerk (in
@@ -46105,7 +46101,7 @@ On Mon, 28 Sept 2026, 09:31 Mo Misra, <clrm.misra@llandough-cc.co.uk> wrote:
 > > Dr M C Misra,
 > > Chair Llandough Community Council
 >
->','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1876908364250660817|msg-a:r4009532689014620465');
+>','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1876908364250660817|msg-a:r4009532689014620465');
 INSERT INTO messages_fts VALUES ('g-1a0e72bb71f6b0d9','Re: Great House Farm (Tŷ Mawr), Llandough — request for information under FOIA 2000 / EIR 2004','Warm regards,
 
 Thank you
@@ -46364,7 +46360,7 @@ On Mon, 28 Sept 2026, 09:31 Mo Misra, <clrm.misra@llandough-cc.co.uk> wrote:
 > > Dr M C Misra,
 > > Chair Llandough Community Council
 >
->','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1876908364250660817|msg-a:r5658808185330569011');
+>','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1876908364250660817|msg-a:r5658808185330569011');
 INSERT INTO messages_fts VALUES ('g-1a0e731a41ab4507','Re: Great House Farm (Tŷ Mawr), Llandough — request for information under FOIA 2000 / EIR 2004','Also,
 
 I had one of my agents produce the following public website:
@@ -46576,7 +46572,7 @@ Hayley Jefferies
 Superintendent Registrar/Registration Service Manager
 Democratic Services
 Vale of Glamorgan Council / Cyngor Bro Morgannwg
-tel / ffôn: 01446 709166
+tel / ffôn: [redacted]
 mob / sym:
 
 Consider the environment. Please don''t print this e-mail unless you really need to.
@@ -46604,7 +46600,7 @@ Hayley Jefferies
 Superintendent Registrar/Registration Service Manager
 Democratic Services
 Vale of Glamorgan Council / Cyngor Bro Morgannwg
-tel / ffôn: 01446 709166
+tel / ffôn: [redacted]
 mob / sym:
 
 Consider the environment. Please don''t print this e-mail unless you really need to.
@@ -46775,7 +46771,7 @@ Regards,
 
 Sion Hywel Buckler (Ret''d Sergeant)
 Royal Signals Cyber/ Electronic Warfare Professional and Life Member
-07845933262','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t4');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t4');
 INSERT INTO messages_fts VALUES ('m-99694b60a6d3','Great House Farm, Llandough','Chris,
 
 I flew back, I''m even at Mamgus old house in Dinas from time to time.
@@ -46859,7 +46855,7 @@ Regards,
 
 Sion Hywel Buckler (Ret''d Sergeant)
 Royal Signals Cyber/ Electronic Warfare Professional and Life Member
-07845933262');
+[redacted]');
 INSERT INTO messages VALUES ('m-da4752d87fd0','hmlr','2026-09-28T20:31:00Z','sent','Re: Your complaint about HM Land Registry - referral to ICR Office','Dear Ms Applegate,
 
 Thank you for your letter of 28 September 2026 acknowledging my emails of 26 and 27 September, and for allocating reference ICR/090/26. I note that an investigation officer will contact me within ten working days.
@@ -47718,7 +47714,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-5/#t1');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-5/#t1');
 INSERT INTO messages_fts VALUES ('m-05eaf33ec57a','Subject access request — WA231076 / WA240304 — Great House Farm, Llandough — Williams / Buckler','Data Protection Officer
 HM Land Registry
 dataprotection@landregistry.gov.uk
@@ -47749,7 +47745,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com');
+[redacted]');
 INSERT INTO messages VALUES ('m-1aadd2ba1868','vale','2026-09-28T21:41:00Z','sent','FOI/EIR — Great House Farm / Church View Close — s.52/land charges, planning register, EA screening, condition 16–18 chain, 92/00671/RES — new request, not 00210772','Information Governance Team
 Vale of Glamorgan Council
 FoiUnit@valeofglamorgan.gov.uk
@@ -47807,7 +47803,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t13');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t13');
 INSERT INTO messages_fts VALUES ('m-1aadd2ba1868','FOI/EIR — Great House Farm / Church View Close — s.52/land charges, planning register, EA screening, condition 16–18 chain, 92/00671/RES — new request, not 00210772','Information Governance Team
 Vale of Glamorgan Council
 FoiUnit@valeofglamorgan.gov.uk
@@ -47865,7 +47861,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com');
+[redacted]');
 INSERT INTO messages VALUES ('m-7055baa05c57','cadw','2026-09-28T21:41:00Z','sent','Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy, transfer or dispose','To each recipient, in your own capacity as holder or likely holder of records. Please do not treat this as a joint reply. Answer only for your own holdings.
 
 Sirs/Madam,
@@ -47905,7 +47901,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t7');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t7');
 INSERT INTO messages_fts VALUES ('m-7055baa05c57','Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy, transfer or dispose','To each recipient, in your own capacity as holder or likely holder of records. Please do not treat this as a joint reply. Answer only for your own holdings.
 
 Sirs/Madam,
@@ -47945,7 +47941,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com');
+[redacted]');
 INSERT INTO messages VALUES ('m-733f02066a0a','heneb','2026-09-28T21:41:00Z','sent','Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy, transfer or dispose','To each recipient, in your own capacity as holder or likely holder of records. Please do not treat this as a joint reply. Answer only for your own holdings.
 
 Sirs/Madam,
@@ -47985,7 +47981,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t9');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t9');
 INSERT INTO messages_fts VALUES ('m-733f02066a0a','Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy, transfer or dispose','To each recipient, in your own capacity as holder or likely holder of records. Please do not treat this as a joint reply. Answer only for your own holdings.
 
 Sirs/Madam,
@@ -48025,7 +48021,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com');
+[redacted]');
 INSERT INTO messages VALUES ('m-bcb92393af27','swp','2026-09-28T21:41:00Z','sent','Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy, transfer or dispose','To each recipient, in your own capacity as holder or likely holder of records. Please do not treat this as a joint reply. Answer only for your own holdings.
 
 Sirs/Madam,
@@ -48065,7 +48061,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-3/#t7');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-3/#t7');
 INSERT INTO messages_fts VALUES ('m-bcb92393af27','Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy, transfer or dispose','To each recipient, in your own capacity as holder or likely holder of records. Please do not treat this as a joint reply. Answer only for your own holdings.
 
 Sirs/Madam,
@@ -48105,7 +48101,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com');
+[redacted]');
 INSERT INTO messages VALUES ('m-f1f6a0de8d52','hmlr','2026-09-28T21:41:00Z','received','Enquiry:  260928-6762800','Enquiry Reference: 260928-6762800
 
 Dear Customer
@@ -48278,7 +48274,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t5');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t5');
 INSERT INTO messages_fts VALUES ('m-458057bd8cc4','FOI — Welsh Office / Cadw papers, July–December 1988 — Great House Farm (Tŷ Mawr), Llandough — following 26FOI 103','Freedom of Information
 Welsh Government
 Freedom.ofinformation@gov.wales
@@ -48309,7 +48305,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com');
+[redacted]');
 INSERT INTO messages VALUES ('m-6a72f5a219b9','hmlr','2026-09-28T21:42:00Z','received','Automatic reply: Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy, transfer or dispose','Thank you for contacting HM Land Registry. This is an automated response to confirm that we have received your correspondence. We aim to formally provide an acknowledgement within three working days. If you have any special requirements that mean you would like us to communicate with you in a specific way, please let us know and we will make adjustments if we can.
 
 If you are contacting us in respect of any matters relating to property registration or have a general customer enquiry – Our team are unable to respond to any general registration enquiries or provide updates on any property applications. Please redirect your customer enquiry to our Customer Support colleagues, using any of the methods below:
@@ -48507,7 +48503,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-3/#t8');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-3/#t8');
 INSERT INTO messages_fts VALUES ('m-90930e98d782','Subject access, crime-recording request, and search note on 719/26 — Great House Farm, Llandough, 1988','Freedom of Information / Data Management / Crime Recording
 South Wales Police
 information@south-wales.police.uk
@@ -48533,7 +48529,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com');
+[redacted]');
 INSERT INTO messages VALUES ('m-c135cc566cbf','mod','2026-09-28T21:42:00Z','sent','Formal complaint — overdue subject access request arising from FOI2026/09019 — identity sent 5 August 2026','Data Protection Officer
 Ministry of Defence
 APC-Sp-ParlDiscl-Triage-Mailbox@mod.gov.uk
@@ -48563,7 +48559,7 @@ Yours faithfully,
 Sion Buckler (Ret''d Sergeant)
 Service no. 25148537
 Royal Signals
-hywelapbuckler@gmail.com','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/ministry-of-defence-email-correspondence-catalogue/#t4');
+[redacted]','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/ministry-of-defence-email-correspondence-catalogue/#t4');
 INSERT INTO messages_fts VALUES ('m-c135cc566cbf','Formal complaint — overdue subject access request arising from FOI2026/09019 — identity sent 5 August 2026','Data Protection Officer
 Ministry of Defence
 APC-Sp-ParlDiscl-Triage-Mailbox@mod.gov.uk
@@ -48593,7 +48589,7 @@ Yours faithfully,
 Sion Buckler (Ret''d Sergeant)
 Service no. 25148537
 Royal Signals
-hywelapbuckler@gmail.com');
+[redacted]');
 INSERT INTO messages VALUES ('m-1f73341e2110','nctso','2026-09-29T06:52:00Z','received','Please update the status of your request - BP vs Buckler 1987','To let everyone know, follow this link and then select the appropriate box.
 
 https://www.whatdotheyknow.com/profile/sign_in?r=%2Frequest%2Fbp_vs_buckler_1987_1988%23describe_state_form_1
@@ -48683,7 +48679,7 @@ Heneb
 
 Steven Foulston FCIPD
 Rheolwr Adnoddau Dynol| HR Manager
-07837252366
+[redacted]
 Steven.Foulston@Heneb.org.uk
 www.heneb.org.uk
 
@@ -48712,7 +48708,7 @@ Heneb
 
 Steven Foulston FCIPD
 Rheolwr Adnoddau Dynol| HR Manager
-07837252366
+[redacted]
 Steven.Foulston@Heneb.org.uk
 www.heneb.org.uk
 
@@ -49146,7 +49142,7 @@ Gallai defnyddio neu ddatgelu''r neges e-bost hon heb awdurdod fod yn anghyfreit
 Unauthorised use or disclosure of this email may be unlawful. View our confidentiality statement at https://www.south-wales.police.uk/police-forces/south-wales-police/areas/about-us/about-us/email-confidentiality-statement/.
 
 OFFICIAL SENSITIVE');
-INSERT INTO messages VALUES ('m-80163b99bc47','swp','2026-09-29T16:05:00Z','sent','Re: Subject Access Request','5 Robin Hill, Dinas Powys CF64 4TF, United Kingdom is the address from
+INSERT INTO messages VALUES ('m-80163b99bc47','swp','2026-09-29T16:05:00Z','sent','Re: Subject Access Request','[redacted], United Kingdom is the address from
 which I''m registered to vote. Our families home since the 60''s.
 
 Last address was Great House Farm, Llandough. The topic of my enquiry. Our
@@ -49162,7 +49158,7 @@ Regards,
 Sion Buckler (Ret''d Sergeant)
 Royal Signals Cyber/Electronic Warfare Professional and Life Member
 greathousefarmwiki.wordpress.com','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-3/#t9');
-INSERT INTO messages_fts VALUES ('m-80163b99bc47','Re: Subject Access Request','5 Robin Hill, Dinas Powys CF64 4TF, United Kingdom is the address from
+INSERT INTO messages_fts VALUES ('m-80163b99bc47','Re: Subject Access Request','[redacted], United Kingdom is the address from
 which I''m registered to vote. Our families home since the 60''s.
 
 Last address was Great House Farm, Llandough. The topic of my enquiry. Our
@@ -49647,7 +49643,7 @@ Shireen Ahmed Little
 Registration Officer / Swyddog Cofrestru
 Democratic Services / Gwasanaethau Democrataidd
 Vale of Glamorgan Council / Cyngor Bro Morgannwg
-tel / ffôn: 01446 709166
+tel / ffôn: [redacted]
 e-mail / e-bost: sahmedlittle@valeofglamorgan.gov.uk
 
 Consider the environment. Please don''t print this e-mail unless you really need to.
@@ -49674,7 +49670,7 @@ Shireen Ahmed Little
 Registration Officer / Swyddog Cofrestru
 Democratic Services / Gwasanaethau Democrataidd
 Vale of Glamorgan Council / Cyngor Bro Morgannwg
-tel / ffôn: 01446 709166
+tel / ffôn: [redacted]
 e-mail / e-bost: sahmedlittle@valeofglamorgan.gov.uk
 
 Consider the environment. Please don''t print this e-mail unless you really need to.
@@ -50189,7 +50185,7 @@ glamro@cardiff.gov.uk<mailto:glamro@cardiff.gov.uk>
 
 www.archifaumorgannwg.gov.uk/ www.glamarchives.gov.uk
 www.facebook.com/glamarchives
-www.instagram.com/glamarchives','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-f:1877771312527795760');
+www.instagram.com/glamarchives','https://mail.google.com/mail/?authuser=[redacted]#all/thread-a:r-2236227807529852386|msg-f:1877771312527795760');
 INSERT INTO messages_fts VALUES ('g-1a0f2f0f54a36630','RE: Ty Mawr, Llandough, Cardiff','Ref: 2026/4097b
 
 Dear Sion Buckler,
@@ -50382,7 +50378,7 @@ SY16 1JB
 
 Ffôn / Tel: 0300 025 5375
 
-Ffôn symudol / Mobile: 07711 120252
+Ffôn symudol / Mobile: [redacted]
 
 E-bost/ Email: andy.wigley@llyw.cymru / andy.wigley@gov.wales
 
@@ -50473,7 +50469,7 @@ SY16 1JB
 
 Ffôn / Tel: 0300 025 5375
 
-Ffôn symudol / Mobile: 07711 120252
+Ffôn symudol / Mobile: [redacted]
 
 E-bost/ Email: andy.wigley@llyw.cymru / andy.wigley@gov.wales
 
@@ -50880,7 +50876,7 @@ I am asking you to search the historic files you have already retrieved and to s
 
 Family evidence states that John Williams registered the house and garden parcel in 1928, and that an agreement of 15 May 1924 is on the WA231076 file. Llandough was not a compulsory-registration area in 1928. I need to know whether any voluntary first registration, or any filed conveyance or agreement of that date, exists.
 
-Please answer these points, and send copies by email to hywelapbuckler@gmail.com where the document is held:
+Please answer these points, and send copies by email to [redacted] where the document is held:
 
 1. Any title number opened between 1924 and 1930 for this land, including a voluntary first registration in the name of John Williams, and any closed title later absorbed into WA231076 or WA240304. If none, please say none.
 
@@ -50912,7 +50908,7 @@ I am asking you to search the historic files you have already retrieved and to s
 
 Family evidence states that John Williams registered the house and garden parcel in 1928, and that an agreement of 15 May 1924 is on the WA231076 file. Llandough was not a compulsory-registration area in 1928. I need to know whether any voluntary first registration, or any filed conveyance or agreement of that date, exists.
 
-Please answer these points, and send copies by email to hywelapbuckler@gmail.com where the document is held:
+Please answer these points, and send copies by email to [redacted] where the document is held:
 
 1. Any title number opened between 1924 and 1930 for this land, including a voluntary first registration in the name of John Williams, and any closed title later absorbed into WA231076 or WA240304. If none, please say none.
 
@@ -52444,7 +52440,7 @@ our identity'' The Council will always strive to:
 
 · Be responsive to the needs of the community
 
-· Encourage community participation','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1876908364250660817|msg-f:1878745944547484620');
+· Encourage community participation','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1876908364250660817|msg-f:1878745944547484620');
 INSERT INTO messages_fts VALUES ('g-1a12a57b87f563cc','Re: Great House Farm (Tŷ Mawr), Llandough — request for information under FOIA 2000 / EIR 2004','Dear Mr Buckler,
 
 Thank you for your email of 21 September 2026 making a request for
@@ -53304,7 +53300,7 @@ representations or referrals concerning the green or its registration—not
 suggesting that this Council is the custodian of another authority’s file.
 
 Please search relevant paper and electronic records, including
-correspondence ','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1876908364250660817|msg-a:r940394521077987787');
+correspondence ','https://mail.google.com/mail/?authuser=[redacted]#all/thread-f:1876908364250660817|msg-a:r940394521077987787');
 INSERT INTO messages_fts VALUES ('g-1a132cc8710993ff','Re: Great House Farm (Tŷ Mawr), Llandough — request for internal review of the response of 11 October 2026 (section 12)','Mr Egan,
 
 Thanks for your email of 11 October 2026. I acknowledge your refusal of my
