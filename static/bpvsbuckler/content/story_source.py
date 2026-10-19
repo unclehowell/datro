@@ -774,6 +774,16 @@ sc('VIII', 'ghf-20261006-1', '2026-10-06', 'September – October 2026', "HER so
    "The public HER entry GGAT02038s already referred to H. J. Thomas's 1974 survey and cited R. F. Suggett's December 1988 note. Following the family's September 2026 records request, Heneb reportedly stated on 14 October that the underlying source file had been digitised and uploaded to Archwilio as PDFs in the sources section. Heneb responded to the schedule of records on 16 October. This distinguishes the earlier public citation from the later availability of the underlying source-file material; it does not by itself establish concealment or what the Strasbourg Commission received.",
    [HER, LEGAL, w('/evidence-library/ghf-e183-heneb-her-source-file-request-and-replies-september-october-2026/', 'GHF-E183 — Heneb / HER source-file request and replies, September–October 2026', 'Evidence catalogue'), w('/evidence-library/ghf-e184-heneb-schedule-of-records-and-16-october-response/', 'GHF-E184 — Heneb schedule of records and 16 October response', 'Evidence catalogue'), w('/evidence-library/ghf-e145-echr-application-14464-88-and-commission-decision-14-april-1989/', 'GHF-E145 — ECHR application 14464/88 and Commission decision, 14 April 1989', 'Evidence catalogue')],
    aliases=['ghf-20260922-1', 'ghf-20261003-1'])
+sc('VIII', 'ghf-20261019-1', '2026-10-19', '19 October 2026', "Welsh Government and Cadw replies", 'Welsh Government / Cadw', '',
+   'Official correspondence',
+   "On 19 October 2026 the Welsh Government answers ATISN 26-0010: searches for the farm name, Western Ground Rents and BP Properties found no files, and \"any routine records would have been destroyed in line with the corporate retention schedule applied at the time\". The same day Cadw refuses ATISN 27589 under section 14(2) of the Freedom of Information Act, as \"substantially similar\" to ATISN 27021, already answered and internally reviewed. Neither letter says when, or under which schedule, any file was destroyed.",
+   [w('/evidence/ev-0244-welsh-government-atisn-26-0010-disclosure-response-19-oct-2026/', 'EV-0244 — Welsh Government ATISN 26-0010 response, 19 Oct 2026', 'Official correspondence'),
+    w('/evidence/ev-0245-cadw-atisn-27589-response-s14-2-19-oct-2026/', 'EV-0245 — Cadw ATISN 27589 response (s.14(2)), 19 Oct 2026', 'Official correspondence'),
+    {'type': 'Official correspondence', 'title': 'Welsh Government letter, ATISN 26-0010, 19 October 2026 (PDF)',
+     'url': 'https://wayback.bucklerfamily.estate/pdf/foi/2026-10-19_welsh-government_atisn-26-0010_disclosure-response.pdf'},
+    {'type': 'Official correspondence', 'title': 'Cadw letter, ATISN 27589, 19 October 2026 (PDF)',
+     'url': 'https://wayback.bucklerfamily.estate/pdf/foi/2026-10-19_cadw_atisn-27589_response-s14-2.pdf'},
+    w('/evidence/cadw-welsh-government-correspondence/', 'Cadw / Welsh Government — correspondence (email)', 'Official correspondence')])
 
 # ---------------------------------------------------------------- STATING THE OBVIOUS
 sc('O', 'ghf-obvious-01', '9998-01-01', 'Plainly', "They were not squatters", '', '',
