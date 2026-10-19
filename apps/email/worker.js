@@ -1,7 +1,10 @@
 const RAW_BASE = "https://raw.githubusercontent.com/unclehowell/datro/email-archive/apps/email";
 const MANIFEST_URL = "https://wayback.bucklerfamily.estate/email/mail-index.json";
-const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/ae8f15ae2a989f8cfe5b7be2f8818cc494e6a927/apps/email/index.html";
+const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/10998a502d15c10117776d82969a02c88cf0e98e/apps/email/index.html";
 const TEXT_HOST = "wayback.bucklerfamily.estate";
+// Wayback's case-mail API is the single source of truth for every case email (redacted copies).
+const CASEMAIL_INDEX_URL = "https://wayback.bucklerfamily.estate/api/index.json";
+const CASEMAIL_CORPUS_URL = "https://wayback.bucklerfamily.estate/api/corpus.json";
 const API_VERSION = "2.0.0";
 
 function headers(extra) {
@@ -26,7 +29,21 @@ function normalize(value) {
     .replace(/[^a-z0-9]+/g, " ").trim();
 }
 function slugFor(record) {
+  if (record.threadId) return ("gt " + String(record.threadId).replace(/^gt-/, "") + " " + normalize(record.subject || record.name)).trim().replace(/\s+/g, "-").slice(0, 140);
   return normalize(record.subject || record.name).replace(/\s+/g, "-").slice(0, 140);
+}
+function caseMailRecord(r) {
+  return {
+    id: r.id, subject: r.subject, name: r.subject, date: r.date || null,
+    dateStatus: r.date ? "email-date-from-original-message" : "date-not-recorded",
+    category: "Case correspondence (original email, redacted)", evidenceVersion: "1.0.0",
+    source: "Wayback case-mail API: redacted copy of the original email",
+    path: "https://" + TEXT_HOST + r.textUrl, jsonUrl: "https://" + TEXT_HOST + r.jsonUrl,
+    recordType: "correspondence", tags: (r.institutions || []).map(i => i.id),
+    scopeTopics: (r.institutions || []).map(i => i.id),
+    threadId: r.threadId, direction: r.direction, from: r.from, institutions: r.institutions || [], refs: r.refs || [],
+    classificationNote: "Ingested from the family's Gmail (verified case correspondence); email addresses, phone numbers and private addresses redacted."
+  };
 }
 function publicRecord(record) {
   return {
@@ -38,7 +55,9 @@ function publicRecord(record) {
     recordType: record.recordType || "correspondence",
     tags: record.tags || [],
     sourcePath: record.sourcePath || null,
-    classificationNote: record.classificationNote || null
+    classificationNote: record.classificationNote || null,
+    ...(record.threadId ? {threadId: record.threadId, direction: record.direction || null, from: record.from || null,
+      institutions: record.institutions || [], refs: record.refs || [], jsonUrl: record.jsonUrl || null} : {})
   };
 }
 async function remoteFetch(url, timeoutMs) {
@@ -53,11 +72,41 @@ async function remoteFetch(url, timeoutMs) {
     clearTimeout(timer);
   }
 }
+async function loadCaseMail() {
+  try {
+    const r = await remoteFetch(CASEMAIL_INDEX_URL, 12000);
+    if (!r.ok) return {records: [], error: "case-mail index returned " + r.status};
+    const d = await r.json();
+    return {records: Array.isArray(d.records) ? d.records.map(caseMailRecord) : [], generated: d.generated || null};
+  } catch (e) { return {records: [], error: String(e && e.message || e)}; }
+}
+let corpusPromise = null;
+async function loadCorpus() {
+  // One fetch per shard instead of one per message (keeps search and export under the subrequest limit).
+  if (!corpusPromise) corpusPromise = (async () => {
+    const r = await remoteFetch(CASEMAIL_CORPUS_URL, 12000);
+    if (!r.ok) throw new Error("corpus index returned " + r.status);
+    const d = await r.json();
+    const texts = {};
+    await Promise.all((d.shards || []).map(async u => {
+      const s = await remoteFetch("https://" + TEXT_HOST + u, 20000);
+      if (!s.ok) throw new Error("corpus shard returned " + s.status);
+      Object.assign(texts, (await s.json()).texts || {});
+    }));
+    return texts;
+  })().catch(e => { corpusPromise = null; throw e; });
+  return corpusPromise;
+}
 async function loadManifest() {
-  const r = await remoteFetch(MANIFEST_URL, 12000);
+  const [r, caseMail] = await Promise.all([remoteFetch(MANIFEST_URL, 12000), loadCaseMail()]);
   if (!r.ok) throw new Error("Catalogue fetch failed: " + r.status);
   const m = await r.json();
   if (!m || !Array.isArray(m.records)) throw new Error("Invalid catalogue format");
+  m.legacyRecordCount = m.records.length;
+  m.caseMailRecordCount = caseMail.records.length;
+  m.caseMailGenerated = caseMail.generated || null;
+  if (caseMail.error) m.caseMailError = caseMail.error;
+  m.records = m.records.concat(caseMail.records);
   // Wayback is the canonical public source of truth. Do not impose an arbitrary date window.
   m.records = m.records.filter(record => record && typeof record.id === "string" && typeof record.path === "string");
   return m;
@@ -72,7 +121,7 @@ function looksLikeHtmlDocument(text) {
 }
 async function loadRecordText(record) {
   const u = new URL(record.path);
-  if (u.protocol !== "https:" || u.hostname !== TEXT_HOST || !u.pathname.startsWith("/text/")) {
+  if (u.protocol !== "https:" || u.hostname !== TEXT_HOST || !(u.pathname.startsWith("/text/") || u.pathname.startsWith("/mail/"))) {
     throw new Error("Rejected source URL");
   }
   const r = await remoteFetch(u.href, 15000);
@@ -82,8 +131,9 @@ async function loadRecordText(record) {
   if (looksLikeHtmlDocument(text)) throw new SourceMissing(NOT_RECOVERED);
   return text;
 }
-async function recordWithText(record) {
+async function recordWithText(record, corpus) {
   try {
+    if (corpus && record.threadId && typeof corpus[record.id] === "string") return {...publicRecord(record), textStatus:"available", text:corpus[record.id]};
     return {...publicRecord(record), textStatus:"available", text:await loadRecordText(record)};
   } catch (error) {
     if (error instanceof SourceMissing) return {...publicRecord(record), textStatus:"not-recovered", text:null, textNotice:NOT_RECOVERED};
@@ -149,7 +199,8 @@ export default {
         status:"ok", service:"Great House Farm Public Correspondence & Case Archive", worker:"email",
         apiVersion:API_VERSION, manifestVersion:m.manifestVersion || "3.0.0",
         sourceIndex:m.sourceIndex || MANIFEST_URL,
-        recordCount:m.records.length, dateScope:"all indexed years; dates remain unstated where sources do not preserve them",
+        recordCount:m.records.length, legacyRecordCount:m.legacyRecordCount, caseMailRecordCount:m.caseMailRecordCount,
+        caseMailIndex:CASEMAIL_INDEX_URL, caseMailGenerated:m.caseMailGenerated, caseMailError:m.caseMailError || null, dateScope:"all indexed years; dates remain unstated where sources do not preserve them",
         sourceOfTruth:"wayback.bucklerfamily.estate", readOnly:true
       });
     } catch (e) {
@@ -181,7 +232,7 @@ export default {
   if (url.pathname === "/api/records") {
    try {
     const m = await loadManifest();
-    return json({...m, apiVersion:API_VERSION, records:m.records.map(publicRecord)});
+    return json({...m, apiVersion:API_VERSION, recordCount:m.records.length, records:m.records.map(publicRecord)});
    } catch(e) { return json({error:"Could not load the public FOI/EIR index",detail:String(e)},502); }
   }
 
@@ -215,7 +266,8 @@ export default {
    try {
     const m = await loadManifest();
     if (!includeText) return json({...m,apiVersion:API_VERSION,records:m.records.map(publicRecord)});
-    const records = await limitedMap(m.records, 5, recordWithText);
+    let corpus = null; try { corpus = await loadCorpus(); } catch (e) {}
+    const records = await limitedMap(m.records, 5, record => recordWithText(record, corpus));
     const successes = records.filter(x => typeof x.text === "string").length;
     const notRecovered = records.filter(x => x.textStatus === "not-recovered").length;
     return json({
@@ -234,9 +286,11 @@ export default {
    if (q.length > 160) return json({error:"Search term too long"},400);
    try {
     const m = await loadManifest();
+    let corpus = null; try { corpus = await loadCorpus(); } catch (e) {}
     const checks = await limitedMap(m.records, 5, async record => {
       let text;
-      try { text = await loadRecordText(record); }
+      if (record.threadId && corpus && typeof corpus[record.id] === "string") text = corpus[record.id];
+      else try { text = await loadRecordText(record); }
       catch (error) { if (error instanceof SourceMissing) return null; throw error; }
       const queryLower = q.toLowerCase();
       const normalizedQuery = normalize(q);
