@@ -22,7 +22,7 @@ Live at dartboard.bucklerfamily.estate. The page is visual: a dartboard on top a
 
 - Institutions and official reference numbers only. Individual officials are referred to by role.
 - No email addresses, phone numbers or other contact details anywhere in this repository.
-- Contested history is stated as the family’s account. Nothing on the board is a finding of fact or of wrongdoing, and a status colour describes how a reply was handled, not anyone’s motive.
+- Contested history is attributed to the named person who gave it (or cites its document, or is marked SOURCE PENDING). Nothing on the board is a finding of fact or of wrongdoing, and a status colour describes how a reply was handled, not anyone’s motive.
 - Deadlines are computed (20 working days for FOI/EIR, one month for SAR) unless the authority’s own date is noted.
 
 ## Development

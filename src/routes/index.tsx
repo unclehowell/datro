@@ -334,7 +334,7 @@ function KeySheet() {
       <p className="mt-4 text-xs leading-relaxed text-faint">
         From Sion Buckler’s mailbox, read through {sampledThrough}; roadmap statuses as of {fmtDate(avenuesAsOf)}. Outcomes are read
         automatically and can be wrong; only levels marked hand-checked are verified. No contact details; officials by role. Contested
-        history is the family’s account, and nothing here is a finding of fact or wrongdoing.{" "}
+        history is attributed to the named person who gave it, and nothing here is a finding of fact or wrongdoing.{" "}
         <a className="text-brass underline" href="/data/foi-tracker.csv">
           Tracker (CSV)
         </a>

@@ -336,7 +336,7 @@ export const parties: Party[] = [
         ref: "2026–3941 / 2026/4097",
         feeMarker: true,
         detail:
-          "Glamorgan Archives quoted £60 for 53 images from ledger ACA/8/2 (106 pages), with a tariff of £15.60 for the first image, £4.80 for each subsequent image, or £60 per hour for multiple images from multiple documents. On 24 September, it also quoted £50 for a rate-book search, £50 for a planning-minutes search, £17 for two Stewart survey/terrier images, £20 for five plan images, and £50 for a D696 Western Ground Rents search. These are fee offers, not proof the searches were commissioned or paid. Recorded in the wiki’s Paywalls to Disclosure register.",
+          "Glamorgan Archives quoted £60 for 53 images from ledger ACA/8/2 (106 pages), with a tariff of £15.60 for the first image, £4.80 for each subsequent image, or £60 per hour for multiple images from multiple documents. On 24 September, it also quoted £50 for a rate-book search, £50 for a planning-minutes search, £17 for two Stewart survey/terrier images, £20 for five plan images, and £50 for a D696 Western Ground Rents search. These are fee offers, not proof the searches were commissioned or paid. Recorded in the wiki’s Paywalls to Disclosure register. Found free in the online DBDT catalogue on 19 Oct 2026: DBDT129/3 (Aug 1940, a Western Ground Rents tenancy of Llandough Farm, the Rees/Thomas farm, not Great House; wiki EV-0233) and DBDT123/7 (May 1939, land at Llandough to John Williams; wiki EV-0023). The 1878 Thomas Williams agreement is for Ynysawdre near Bridgend and is excluded as not our farm (wiki EV-0234).",
       },
     },
   },
@@ -949,7 +949,7 @@ export const parties: Party[] = [
         ref: "DP/2961/2026; mail refs 92994223/01, 93027237/01, 93047764/01",
         url: g("1a0afe15770e3994"),
         detail:
-          "The first answer came from the data-subject-rights team on 13 August 2026: no records held about you or the property. On 3 September Customer Care reviewed it as an enquiry about the 1988 supply rather than a subject-access request and kept the same position. On 17 and 29 September it repeated that searches found no records about you or Great House Farm (Tŷ Mawr), and said it cannot give disposal or audit records for documents it does not hold. The reply came after the 20-working-day point on the June request.",
+          "The first answer came from the data-subject-rights team on 13 August 2026: no records held about you or the property. On 3 September Customer Care reviewed it as an enquiry about the 1988 supply rather than a subject-access request and kept the same position. On 17 and 29 September it repeated that searches found no records about you or Great House Farm (Tŷ Mawr), and said it cannot give disposal or audit records for documents it does not hold. The reply came after the 20-working-day point on the June request. Found since (19 Oct 2026): the Western Mail of 20 November 1958 (snippet only, wiki EV-0037) reports Mrs Buckler’s claim that the water was cut off “for nearly 10 years by order of Western Ground Rents”. That would date the cut-off to about 1948–58, before Welsh Water existed; the c.1988 date is recorded as a conflict (wiki SC-48).",
       },
     },
   },
@@ -1036,7 +1036,7 @@ export const parties: Party[] = [
     name: "Crown Prosecution Service",
     short: "CPS",
     kind: "authority",
-    remit: "Prosecuting authority. Asked to consider the family’s account of suspected historic fraud.",
+    remit: "Prosecuting authority. Asked to consider the Buckler case’s concerns about suspected historic fraud.",
     cells: {
       open: {
         status: "dormant",
@@ -1046,7 +1046,7 @@ export const parties: Party[] = [
         ref: "Re-opening of BP vs Buckler 1987",
         url: g("1a0693988a9de5f0"),
         detail:
-          "On 3 September 2026 you sent the CPS a submission asking it to consider the family’s account of suspected historic fraud connected with BP Properties Ltd v Buckler. An automatic reply and an acknowledgement followed.",
+          "On 3 September 2026 you sent the CPS a submission asking it to consider the Buckler case’s concerns about suspected historic fraud connected with BP Properties Ltd v Buckler. An automatic reply and an acknowledgement followed.",
       },
       chase: {
         status: "dormant",
@@ -1072,9 +1072,9 @@ export const parties: Party[] = [
         title: "Testimony invited",
         date: "2026",
         correspondent: "Relatives (not named here)",
-        ref: "Family account, not an official record",
+        ref: "Testimony, not an official record",
         detail:
-          "Relatives have been asked, privately and one at a time, what they remember of the farm, the eviction, the demolition and the years after. Nobody is named on this chart. What any relative says is labelled a family account until a record supports it, and is only published with that person’s agreement.",
+          "Relatives have been asked, privately and one at a time, what they remember of the farm, the eviction, the demolition and the years after. Nobody is named on this chart. What any relative says is labelled as that named person’s testimony until a record supports it, and is only published with that person’s agreement.",
       },
       reply: {
         status: "evidence",
@@ -1083,7 +1083,7 @@ export const parties: Party[] = [
         correspondent: "Relatives (not named here)",
         ref: "Partial, not yet signed",
         detail:
-          "Some testimony has come back, to some extent. It is not yet written down as signed statements, and it has not been tested against the records. Where it matches a record already held, that match is noted on the evidence pages, not here.",
+          "Some testimony has come back, to some extent. It is not yet written down as signed statements, and it has not been tested against the records. Where it matches a record already held, that match is noted on the evidence pages, not here. On 19 October 2026 one relative’s voice testimony was added to the wiki’s testimony pages and checked point by point: a Western Mail report of 20 November 1958 (wiki EV-0037, snippet only) supports a water cut-off, but puts it at about 1948–58, not c.1988 (wiki SC-48); “Cardiff UDC” is not supported (Llandough was in Penarth UDC), and no Hansard record of the water matter has been found so far.",
       },
       chase: {
         status: "nuisance",

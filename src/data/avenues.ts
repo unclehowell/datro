@@ -5,7 +5,7 @@
  * through 18 October 2026) by the same pass that built foi-tracker.ts. Privacy: no email
  * addresses, phone numbers or contact details; subjects are scrubbed and officials appear by
  * role only. Outcomes ("o") are read mechanically from each reply and can be wrong; the
- * hand-checked levels carry a "hand" note. Contested history is the family's account.
+ * hand-checked levels carry a "hand" note. Contested history is attributed to the named person who gave it, or marked SOURCE PENDING.
  * Nothing here is a finding of fact or of wrongdoing.
  *
  * Sources for the roadmaps (checked 19 Oct 2026):
