@@ -248,7 +248,8 @@ sc('I', 'ghf-18641223-1', '1864-12-23', '23 December 1864', 'Death of Amy Willia
    'Amy Williams dies at Llandough, aged 65. The death notices call her "relict of the late Mr. John Williams, Great House farm": the widow of the elder John Williams, whose son John had taken over the tenancy in 1855.',
    [
     {'type': 'Newspaper', 'title': '[VERIFIED] Cardiff Times, 30 December 1864, p.5 — deaths: "at Llandough, near Cardiff, Amy, relict of the late Mr. John Williams, Great House farm, aged 65 years" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3383386/3383391/14/'},
-    {'type': 'Newspaper', 'title': '[VERIFIED] Cardiff and Merthyr Guardian, 30 December 1864, p.5 — deaths: "WILLIAMS.—Dec. 23, at Llandough, near Cardiff, Amy, relict of the late Mr. John Williams, Great House farm, aged 65" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3094324/3094329/21/'}
+    {'type': 'Newspaper', 'title': '[VERIFIED] Cardiff and Merthyr Guardian, 30 December 1864, p.5 — deaths: "WILLIAMS.—Dec. 23, at Llandough, near Cardiff, Amy, relict of the late Mr. John Williams, Great House farm, aged 65" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3094324/3094329/21/'},
+    {'type': 'Newspaper', 'title': 'EV-0246 — the death notices on the wiki (evidence page)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0246-cardiff-times-1864-death-of-amy-williams-great-house-farm/'}
    ])
 sc('I', 'ghf-18680101-1', '1868-01-01', '1868 – 1901', "\"Williams John, Great house\"", 'Trade directories', 'AB',
    'Publication',
@@ -316,7 +317,8 @@ sc('I', 'ghf-18940731-1', '1894-07-31', 'Week of 30 July 1894', 'Swine fever at 
    'Swine fever breaks out at Llandough. Five pigs belonging to Mr Williams of Great House are slaughtered. On the Tuesday morning one of his herd of 23 is reported affected, and it is feared the whole herd will have to go.',
    [
     {'type': 'Newspaper', 'title': '[VERIFIED] Barry Dock News, 3 August 1894, p.5 — "Swine fever at Llandough and Rhoose": "Five pigs belonging to Mr Williams, Great House, have been slaughtered" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/4596799/4596804/24/'},
-    {'type': 'Newspaper', 'title': '[VERIFIED] Glamorgan Gazette, 3 August 1894, p.5 — the same report (herd given as 22) (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3874190/3874195/53/'}
+    {'type': 'Newspaper', 'title': '[VERIFIED] Glamorgan Gazette, 3 August 1894, p.5 — the same report (herd given as 22) (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3874190/3874195/53/'},
+    {'type': 'Newspaper', 'title': 'EV-0247 — the swine-fever reports on the wiki (evidence page)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0247-barry-dock-news-1894-swine-fever-great-house-llandough/'}
    ])
 sc('I', 'ghf-18970501-1', '1897-05-01', 'Late April – early May 1897', 'Marconi comes to Lavernock', 'Lavernock Point', 'x',
    'Newspaper',
@@ -328,7 +330,8 @@ sc('I', 'ghf-18970501-1', '1897-05-01', 'Late April – early May 1897', 'Marcon
     {'type': 'Newspaper', 'title': '[VERIFIED] Western Mail, 15 May 1897, p.6 — "Telegraphy without wires. Marconi invention tested at Lavernock" (same report) (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/4313747/4313753/61/'},
     {'type': 'Newspaper', 'title': 'EV-0011 — the same cutting on the wiki (catalogued there as undated; identified here as the Evening Express, 15 May 1897, p.4)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0011-marconi-lavernock-wireless-cutting-1897/', 'image': '/media/ghf-e090-n02-1897-marconi-lavernock.jpg'},
     {'type': 'Publication', 'title': "[SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Marconi's method, drawing on Preece's Royal Institution lecture of 4 June 1897", 'url': 'https://earlyradiohistory.us/1901fa23.htm'},
-    {'type': 'Official correspondence', 'title': '[UNVERIFIED / SOURCE PENDING] Sion Buckler, records request to The National Archives, 16 July 2026, "Mr. Williams, Cardiff Post Office Engineering Department, 1897 Marconi Lavernock Experiments" (TNA replied 30 July 2026 that it is not the right place to ask)', 'url': 'https://greathousefarmwiki.wordpress.com/?p=5363'}
+    {'type': 'Official correspondence', 'title': '[UNVERIFIED / SOURCE PENDING] Sion Buckler, records request to The National Archives, 16 July 2026, "Mr. Williams, Cardiff Post Office Engineering Department, 1897 Marconi Lavernock Experiments" (TNA replied 30 July 2026 that it is not the right place to ask)', 'url': 'https://greathousefarmwiki.wordpress.com/?p=5363'},
+    {'type': 'Newspaper', 'title': 'EV-0248 — Marconi in Wales, April–July 1897: the contemporary press record on the wiki (evidence page)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0248-marconi-in-wales-may-1897-contemporary-press/'}
    ],
    image='/media/ghf-e090-n02-1897-marconi-lavernock.jpg')
 sc('I', 'ghf-18970510-1', '1897-05-10', '10 May 1897', "Preece's method tried again", 'Lavernock Point and Flat Holm', 'x',

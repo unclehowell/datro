@@ -112,7 +112,7 @@ ACCOUNTS = {
 'ghf-18940731-1': dict(
     received='',
     words=[],
-    known='VERIFIED (two newspapers, 3 August 1894). "Mr Williams, Great House" at Llandough in 1894 is the John Williams of the directories (1868–1901). The herd of 22–23 pigs shows a working farm.'),
+    known='VERIFIED (two newspapers, 3 August 1894). Most likely the John Williams whom the directories place at Great House Farm, Llandough (1868–1901). Against it: there is another Great House at Llandough near Cowbridge, and the report pairs Llandough with Rhoose, so the parish is not certain. The herd of 22–23 pigs shows a working farm.'),
 'ghf-18970501-1': dict(
     received="Marconi's Welsh trials were a Post Office affair; local people had no part in them.",
     words=[('"Mr. Williams (of the engineering department, Cardiff)"', 'The only Williams in any 1897 report read. He is a Post Office engineer in Cardiff. No initial or address is given.')],
