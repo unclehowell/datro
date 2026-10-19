@@ -76,7 +76,9 @@ Only requests, reviews, complaints and preservation notices are listed here. Gen
 | 2026-09-20 | Complaint | Formal complaint of 17 September 2026 — Great House Farm (Tŷ Mawr), Llandough — non-delivery and re-service |  | 0 (0) |  |  |  | No reply in mailbox |
 | 2026-09-28 | SAR | Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy, transfer or dispose |  | 0 (0) |  |  | 2026-10-28 | No reply in mailbox — due 28 Oct 2026 |
 | 2026-09-30 | FOI | Re: Statutory notice under Historic Environment (Wales) Act 2023 ss.194–195 — HER GGAT02038s still classifies  | RC26-0375 | 0 (0) |  |  | 2026-10-28 | No reply in mailbox — due 28 Oct 2026 |
-| 2026-10-16 | FOI | Re: ATISN 26-0010 - Acknowledgement (Retention & disposal schedules) |  | 0 (0) |  |  | 2026-11-13 | No reply in mailbox — due 13 Nov 2026 |
+| 2026-10-16 | FOI | Re: ATISN 26-0010 - Acknowledgement (Retention & disposal schedules) |  | 0 (0) |  |  | 2026-11-13 | Answered 19 Oct 2026 in a separate thread (see next row) |
+| 2026-10-10 | FOI | Welsh Government response to request for information ATISN 26-0010 (received 19 Oct 2026) | ATISN26-0010 | 1 (1) | 2026-10-19 | not held | 2026-11-09 | Answered 19 Oct 2026: no files found; internal review possible by 14 Dec 2026 (computed). [Letter (PDF)](public/docs/2026-10-19_welsh-government_atisn-26-0010_disclosure-response.pdf) · [Wayback](https://wayback.bucklerfamily.estate/pdf/foi/2026-10-19_welsh-government_atisn-26-0010_disclosure-response.pdf) |
+| 2026-09-28 | FOI | RE: FOI — Welsh Office / Cadw papers, July–December 1988 (ATISN 27589; received 19 Oct 2026) | ATISN27589, qA2496208, 26FOI103 | 1 (1) | 2026-10-19 | refused | 2026-10-26 | Refused 19 Oct 2026 under FOIA s.14(2) (repeat of ATISN 27021); letter names the ICO, no internal review mentioned. [Letter (PDF)](public/docs/2026-10-19_cadw_atisn-27589_response-s14-2.pdf) · [Wayback](https://wayback.bucklerfamily.estate/pdf/foi/2026-10-19_cadw_atisn-27589_response-s14-2.pdf) |
 
 ### Cardiff / Vale Register Office
 

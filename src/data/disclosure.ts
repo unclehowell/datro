@@ -22,6 +22,8 @@ export type Cell = {
   url?: string;
   /** A fee, cost estimate, paid-copy amount, or chargeable disclosure route is recorded for this block. */
   feeMarker?: boolean;
+  /** Letters attached to the reply (public copies, personal contact details redacted). */
+  docs?: { label: string; url: string; wayback?: string }[];
 };
 
 export type Ring = {
@@ -521,27 +523,39 @@ export const parties: Party[] = [
     name: "Cadw and Welsh Government",
     short: "Cadw",
     kind: "authority",
-    remit: "1988 listing file, ATISN 27021 and 27589.",
+    remit: "1988 listing file, ATISN 27021, 27589, 26-0009 and 26-0010.",
     cells: {
       open: {
-        status: "dormant",
-        title: "ATISN requests still live",
-        date: "10 Oct 2026",
+        status: "closed",
+        title: "ATISN 26-0010 and 27589 both answered on 19 Oct",
+        date: "10 Oct 2026 (asked) · 19 Oct 2026 (answered)",
         correspondent: "Welsh Government FOI",
-        ref: "ATISN 27021 and ATISN 27589",
+        ref: "ATISN 26-0010, ATISN 27589 (and ATISN 27021)",
         url: g("1a11ea981f52fcb9"),
         detail:
-          "On 10 October you asked the Welsh Government FOI team for retention and destruction schedules for pre-1997 file series on agricultural tenancy, land and rural policy. You tied that to live requests ATISN 27021 and ATISN 27589 (Cadw listing material) and to the Wales Office file 26FOI 103 / IR/26/16.",
+          "On 10 October you asked the Welsh Government FOI team for retention and destruction schedules for pre-1997 file series on agricultural tenancy, land and rural policy (logged as ATISN 26-0010). You tied that to ATISN 27021 and ATISN 27589 (Cadw listing material) and to the Wales Office file 26FOI 103 / IR/26/16. Both 26-0010 and 27589 were answered on 19 October 2026; see the next ring for the two letters. ATISN 26-0009 (the records behind the disposal finding) is still open.",
       },
       reply: {
-        status: "closed",
-        title: "1988 listing file recorded as destroyed",
-        date: "Jul 2026",
-        correspondent: "Cadw / Welsh Government",
-        ref: "Disposal finding on the 1988 listing file",
-        url: g("1a11eb8afe818123"),
+        status: "nuisance",
+        title: "19 Oct: “no files found” and a repeat-request refusal",
+        date: "19 Oct 2026",
+        correspondent: "Departmental Records Officer, Welsh Government (ATISN 26-0010) · Head of Historic Environment Inspectorate, Cadw (ATISN 27589, ref qA2496208)",
+        ref: "ATISN 26-0010 · ATISN 27589 (qA2496208)",
+        url: "https://email.bucklerfamily.estate/thread/gt-1a1537b442f27f72-welsh-government-response-to-request-for-information-atisn-26-0010-retention-destruction-schedules",
+        docs: [
+          {
+            label: "ATISN 26-0010 disclosure response, 19 Oct 2026 (PDF)",
+            url: "/docs/2026-10-19_welsh-government_atisn-26-0010_disclosure-response.pdf",
+            wayback: "https://wayback.bucklerfamily.estate/pdf/foi/2026-10-19_welsh-government_atisn-26-0010_disclosure-response.pdf",
+          },
+          {
+            label: "ATISN 27589 response (s.14(2) refusal), 19 Oct 2026 (PDF)",
+            url: "/docs/2026-10-19_cadw_atisn-27589_response-s14-2.pdf",
+            wayback: "https://wayback.bucklerfamily.estate/pdf/foi/2026-10-19_cadw_atisn-27589_response-s14-2.pdf",
+          },
+        ],
         detail:
-          "Your 10 October letter to the Complaints Manager and Chief Inspector refers to a finding that the 1988 listing file was disposed of. That is the “nothing further is held” position on the file itself. You have asked for the existing records that sit behind the finding, which is the chase, not a new concession that the file exists.",
+          "ATISN 26-0010: the Welsh Government says searches for the farm name, Western Ground Rents Ltd and BP Properties Ltd found no files, and that “any routine records would have been destroyed in line with the corporate retention schedule applied at the time”, or may never have reached it (“disposition would have been carried out by a predecessor body”). Its property, deeds and lease records are “not classed as ‘public records’” and are kept until the property is sold or the lease ends. An internal review can be asked for within 40 working days (by 14 Dec 2026, computed). ATISN 27589: Cadw refused the July–December 1988 request under FOIA section 14(2) as “substantially similar” to ATISN 27021, saying “no new information has been generated or become available”; the letter names the ICO and does not mention an internal review. Earlier on this ring: your 10 October letter refers to a finding that the 1988 listing file was disposed of, the “nothing further is held” position on the file itself.",
       },
       chase: {
         status: "dormant",

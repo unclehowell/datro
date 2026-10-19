@@ -12,6 +12,7 @@ import {
   outcomeInfo,
   phases,
   statusInfo,
+  type AvDoc,
   type AvInstitution,
   type AvLevel,
 } from "@/data/avenues";
@@ -59,6 +60,33 @@ function FeeList({ list }: { list: number[] }) {
             <a href={emailUrl(i).url} target="_blank" rel="noreferrer" className="text-brass underline underline-offset-4">
               Open email
             </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/** The letter attached to an email (public copy), with its Wayback mirror. */
+function DocList({ docs }: { docs?: AvDoc[] }) {
+  if (!docs || !docs.length) return null;
+  return (
+    <div className="mt-3 rounded-xl border border-brass/40 bg-brass/5 p-3">
+      <p className="text-sm font-semibold text-brass">Attached letter</p>
+      <ul className="mt-1.5 flex flex-col gap-2">
+        {docs.map((d) => (
+          <li key={d.url} className="text-sm leading-snug">
+            <a href={d.url} target="_blank" rel="noreferrer" className="text-fg underline underline-offset-4">
+              {d.label}
+            </a>
+            {d.wayback && (
+              <>
+                {" · "}
+                <a href={d.wayback} target="_blank" rel="noreferrer" className="text-brass underline underline-offset-4">
+                  Wayback copy
+                </a>
+              </>
+            )}
           </li>
         ))}
       </ul>
@@ -172,6 +200,7 @@ function CellSheet({ party, ring, slice }: { party: Party; ring: Ring; slice: Wh
         <Row k="Fee" v={cell.feeMarker ? "$ A fee, cost estimate or chargeable route is recorded" : undefined} />
       </div>
       <FeeList list={fees} />
+      <DocList docs={cell.docs} />
       {url && (
         <a href={url} target="_blank" rel="noreferrer" className="mt-3 inline-block text-sm text-brass underline underline-offset-4">
           Open email
@@ -228,13 +257,27 @@ function GameSheet({ hit, inst, slide }: { hit: GameHit; inst: AvInstitution; sl
         <div className="mt-3">
           <Row k="Date" v={fmtDate(e.d)} />
           <Row k="Direction" v={e.out ? "Sent" : "Received"} />
-          <Row k="Summary" v={emailSummary(inst, hit.level, hit.index)} />
+          <Row k="From" v={e.from} />
+          <Row k="Summary" v={e.sum ?? emailSummary(inst, hit.level, hit.index)} />
           <Row k="Reference" v={e.r.join(", ")} />
           <Row k="Avenue" v={ph.name} />
           <Row k="Also counts for" v={others.join(", ")} />
         </div>
+        <DocList docs={e.pdf} />
+        {e.q && e.q.length > 0 && (
+          <div className="mt-3">
+            <p className="text-xs tracking-[0.16em] text-brass uppercase">Key passages (verbatim)</p>
+            <ul className="mt-1.5 flex flex-col gap-2">
+              {e.q.map((q, n) => (
+                <li key={n} className="border-l-2 border-brass/50 pl-2 text-sm leading-snug text-muted">
+                  “{q}”
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <p className="mt-3 text-xs text-faint">
-          {e.out ? "" : "Outcome is read automatically from the reply and may be wrong. "}
+          {e.out || e.sum ? "" : "Outcome is read automatically from the reply and may be wrong. "}
           {waiting && !late ? "A reply may sit in another thread. " : ""}
         </p>
         <a href={link.url} target="_blank" rel="noreferrer" className="mt-2 inline-block text-sm text-brass underline underline-offset-4">
