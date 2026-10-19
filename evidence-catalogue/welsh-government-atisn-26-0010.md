@@ -1,23 +1,22 @@
-# Welsh Government ATISN 26-0010 — Disclosure (Retention & destruction schedules)
+# Evidence Catalogue: Welsh Government ATISN 26-0010 Internal Review Request
 
-**Date:** 19 October 2026  
-**Authority:** Welsh Government (Operational Effectiveness Group)  
-**Reference:** ATISN 26-0010  
-**Class:** disclosure (not-held for specific files)  
-**Physical check:** Yes — searches carried out to find files mentioning the farm name and the companies; none found.  
-**Location:** Email from OEG.FMCO.FOI@gov.wales; response signed Emma Harvey-Woodason, Departmental Records Officer.  
-**Wayback:** https://wayback.bucklerfamily.estate/text/2026-10-19%20-%20Welsh%20Government%20ATISN%2026-0010%20-%20EN%20-%20V0.0.0.00.txt  
-**HubSpot ticket:** 437618042097 (updated; clock stopped)  
-**Live WordPress:** not written  
+**Date:** 2026-10-19  
+**Authority:** Welsh Government (Information Rights Unit)  
+**Reference:** ATISN 26-0010 (internal review requested); related ATISN 27589 (qA2496208), ATISN 26-0009  
+**Classification:** other (requester's request for internal review + new FOI/EIR requests + preservation request)  
+**Physical-check status:** Not applicable (outbound request). Prior disclosure response (19 Oct 2026) confirmed searches carried out; no files found.  
+**Wayback URL:** https://wayback.bucklerfamily.estate (file: wayback/text/2026-10-19 - Welsh Government ATISN 26-0010 - EN - V0.0.0.00.txt)  
+**GitHub commit:** 886dfe620c127231ae02a00e5d1d94f2f3b9aacd (branch wayback)  
 
 ## Summary
-Request (received 10 Oct 2026) for retention/destruction schedules applying to Welsh Office / Welsh Government files on agricultural tenancies, land ownership, etc. 1970–1997, and specifically whether files relating to Great House Farm / Tŷ Mawr / Llandough-juxta-Penarth or Western Ground Rents Ltd / BP Properties Ltd were destroyed, transferred or retained.
+Requester's email of 19 October 2026 requesting internal review of ATISN 26-0010 response on four points (recorded destruction/transfer decisions, specific schedule entry, Welsh Office schedules, search records). Also notes on ATISN 27589 s.14(2) refusal, four new requests concerning Great House Farm / Tŷ Mawr, Llandough (registered files index, property/deeds, wartime records 1936–1955, CPO/stopping-up orders 1950–1995), and preservation of specific records while matters remain open.
 
-Response:
-1. Current and past WG retention schedules on GOV.WALES. Pre-1997 responsibility with Welsh Office or other agencies.
-2. Searches carried out; no files found. Routine records would have been destroyed per then-applicable schedule; possible records never transferred to WG.
-3. Historical material identified under Welsh Office OSP 7 and transferred to The National Archives (or Place of Deposit). Property/deeds/leasing records not public records and retained until sale/termination.
+## Location / Series
+- References prior registered files: A--CL172-06-017/1 Community of Llandough, CL172-10-001/1, A--CL172-10-002/1, A--CL172-10-001/1 and six files of potential interest (from ATISN 27021 IR).
+- Concerns Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth; Western Ground Rents Ltd; BP Properties Ltd.
+- Two parcels; Mary Williams Parcel A; synthetic title by false permissive occupancy (context only; no allegations added).
 
-Internal review available within 40 working days to Freedom.ofinformation@gov.wales. Clock stopped on 19 Oct 2026.
-
-Two parcels; Mary Williams Parcel A; synthetic title by false permissive occupancy. No allegations added.
+## Notes
+- Clock on original ATISN 26-0010 stopped by 19 Oct disclosure (due 6 Nov).
+- Live WordPress catalogue not written (GitHub evidence-catalogue used).
+- HubSpot ticket 437618042097 updated/confirmed.  
