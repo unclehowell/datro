@@ -1427,6 +1427,7 @@ INSERT INTO nodes VALUES ('doc-tna-IR58-glamorgan-xlvii-6','document','TNA Valua
 INSERT INTO nodes VALUES ('doc-vale-of-glamorgan-00211557','document','Vale of Glamorgan FOI 00211557, supplement 18 October 2026','{"holder": "Vale of Glamorgan Council, FOI Unit", "reference": "00211557", "date": "2026-10-18"}');
 INSERT INTO nodes VALUES ('doc-welsh-government-ATISN-26-0009','document','Welsh Government ATISN 26-0009, 15 October 2026','{"holder": "Welsh Government / Cadw, Historic Environment Inspectorate", "reference": "ATISN 26-0009", "date": "2026-10-15"}');
 INSERT INTO nodes VALUES ('doc-welsh-government-ATISN-26-0010','document','Welsh Government ATISN 26-0010, 14 October 2026','{"holder": "Welsh Government, Operational Effectiveness Group, Business Management Unit (OEG.FMCO.FOI)", "reference": "ATISN 26-0010", "date": "2026-10-14"}');
+INSERT INTO nodes VALUES ('doc-welsh-government-atisn-26-0010','document','Welsh Government ATISN 26-0010 — Disclosure (Retention & destruction schedules)','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('ref:00211027','reference','00211027','{}');
 INSERT INTO nodes VALUES ('ref:00211463','reference','00211463','{}');
 INSERT INTO nodes VALUES ('ref:00211483','reference','00211483','{}');
