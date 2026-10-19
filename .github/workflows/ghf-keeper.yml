@@ -1,0 +1,69 @@
+name: GHF keeper (redeploy stale Great House Farm Pages sites)
+# Added by Tab on 19 Oct 2026 for Sion Buckler. Hourly: compares each GHF Cloudflare Pages
+# project's live production commit with its GitHub branch head and triggers a redeploy if it is
+# more than 20 minutes behind. Writes a summary to the GHF_STATUS KV (shown on dashboard.financecheque.uk).
+# Roll back: Actions -> "GHF keeper" -> Disable workflow (or delete this file).
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ghf-keeper
+  cancel-in-progress: false
+jobs:
+  keep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CF_ACCOUNT_ID: 42a4a8d7bfb96321118ada213638d050
+      KV_NS: 350d63f198c94e1e841dfb5ec51bb361
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      # project:repo:branch
+      WATCH: >-
+        wayback:datro:wayback
+        bpvsbuckler:datro:bpvsbuckler
+        2026-10-22:datro:2026-10-22
+        ghf-independent-review:datro:ghf-independent-review
+        ghf-primary-records:datro:ghf-primary-records
+        ghf-public-authorities:datro:ghf-public-authorities
+        bucklerfamilyfarm:BucklerFamilyFarm:main
+        ghf-app:BucklerFamilyFarm:ghf-app
+    steps:
+      - name: Check and redeploy stale projects
+        run: |
+          set -u
+          api="https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID"
+          now=$(date -u +%s)
+          echo '{"checked_at":"'"$(date -u +%Y-%m-%dT%H:%M:%SZ)"'","source":"github-actions","projects":[' > keeper.json
+          first=1
+          for item in $WATCH; do
+            proj=${item%%:*}; rest=${item#*:}; repo=${rest%%:*}; br=${rest#*:}
+            head=$(git ls-remote "https://github.com/unclehowell/$repo.git" "refs/heads/$br" | cut -f1)
+            dep=$(curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$api/pages/projects/$proj/deployments?env=production&per_page=1")
+            live=$(echo "$dep" | jq -r '.result[0].deployment_trigger.metadata.commit_hash // ""')
+            stage=$(echo "$dep" | jq -r '(.result[0].latest_stage.name // "") + ":" + (.result[0].latest_stage.status // "")')
+            action="fresh"; fresh=true
+            if [ -n "$head" ] && [ "$live" != "$head" ]; then
+              fresh=false; action="stale"
+              cdate=$(curl -s "https://api.github.com/repos/unclehowell/$repo/commits/$head" | jq -r '.commit.committer.date // empty')
+              age=0; [ -n "$cdate" ] && age=$(( now - $(date -d "$cdate" +%s) ))
+              case "$stage" in
+                *:active|*:idle) action="build already in progress ($stage)";;
+                *:failure) action="last build failed ($stage); not retrying automatically";;
+                *) if [ "$age" -gt 1200 ]; then
+                     r=$(curl -s -X POST -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -F "branch=$br" "$api/pages/projects/$proj/deployments" | jq -r '.success')
+                     action="redeploy triggered (success=$r)"
+                   else action="new commit under 20 min old; waiting"; fi;;
+              esac
+            fi
+            echo "$proj [$br] live=${live:0:7} head=${head:0:7} -> $action" | tee -a "$GITHUB_STEP_SUMMARY"
+            [ $first -eq 1 ] || echo ',' >> keeper.json; first=0
+            jq -n --arg p "$proj" --arg b "$br" --arg d "$live" --arg h "$head" --arg a "$action" --argjson f $fresh \
+              '{project:$p,branch:$b,deployed:$d,head:$h,fresh:$f,action:$a}' >> keeper.json
+          done
+          echo ']}' >> keeper.json
+          jq -c . keeper.json > keeper.min.json
+          curl -s -X PUT -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: text/plain" \
+            --data-binary @keeper.min.json "$api/storage/kv/namespaces/$KV_NS/values/keeper" | jq -c '{success,errors}' || true
