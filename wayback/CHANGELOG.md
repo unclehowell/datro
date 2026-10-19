@@ -1,3 +1,10 @@
+## Unreleased - 2026-10-19
+
+### Added
+- First item in the **Video** tab: `video/2026-10-19_great-house-farm-our-case-film-v6.mp4`, "Great House Farm: our case (film v6)" (5 min 33 s, 15.3 MB, H.264/AAC, faststart), with a poster frame `video/2026-10-19_great-house-farm-our-case-film-v6-poster.jpg`.
+- New `video/_treeview.json` index; `agent-index.json` and `llms.txt` now list it.
+- The film is our case, not a finding of any court. Like the other archive videos, the MP4 itself sits in the `wayback_media` R2 store under the same `video/` key (md5 cd926c990dfd6b0345c610170399a9d1) and is served through the media function with byte ranges; the poster frame is a static file in this branch.
+
 ## [0.1.0] - 2026-10-16
 
 ### Fixed
