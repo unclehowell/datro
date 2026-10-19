@@ -1436,7 +1436,7 @@ INSERT INTO nodes VALUES ('doc-vale-of-glamorgan-00211557','document','Vale of G
 INSERT INTO nodes VALUES ('doc-welsh-government-ATISN-26-0009','document','Welsh Government ATISN 26-0009, 15 October 2026','{"holder": "Welsh Government / Cadw, Historic Environment Inspectorate", "reference": "ATISN 26-0009", "date": "2026-10-15"}');
 INSERT INTO nodes VALUES ('doc-welsh-government-ATISN-26-0010','document','Welsh Government ATISN 26-0010','{"holder": "Welsh Government, Operational Effectiveness Group, Business Management Unit (OEG.FMCO.FOI)", "reference": "ATISN 26-0010", "date": "2026-10-19"}');
 INSERT INTO nodes VALUES ('doc-welsh-government-ATISN-27589','document','Welsh Government / Cadw — ATISN 27589','{"holder": "", "reference": "", "date": ""}');
-INSERT INTO nodes VALUES ('doc-welsh-government-atisn-26-0010','document','Welsh Government ATISN 26-0010 — Disclosure (Retention & destruction schedules)','{"holder": "", "reference": "", "date": ""}');
+INSERT INTO nodes VALUES ('doc-welsh-government-atisn-26-0010','document','Evidence Catalogue: Welsh Government ATISN 26-0010 Internal Review Request','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('ref:00211027','reference','00211027','{}');
 INSERT INTO nodes VALUES ('ref:00211463','reference','00211463','{}');
 INSERT INTO nodes VALUES ('ref:00211483','reference','00211483','{}');
@@ -3272,6 +3272,8 @@ INSERT INTO edges VALUES ('doc-welsh-government-ATISN-26-0010','ref:ATISN 27589'
 INSERT INTO edges VALUES ('doc-welsh-government-ATISN-27589','ref:26FOI 103','cites');
 INSERT INTO edges VALUES ('doc-welsh-government-ATISN-27589','ref:ATISN 27021','cites');
 INSERT INTO edges VALUES ('doc-welsh-government-ATISN-27589','ref:ATISN 27589','cites');
+INSERT INTO edges VALUES ('doc-welsh-government-atisn-26-0010','ref:ATISN 27021','cites');
+INSERT INTO edges VALUES ('doc-welsh-government-atisn-26-0010','ref:ATISN 27589','cites');
 INSERT INTO qa VALUES ('qa-559240cdf50d','cadw','Cadw / Welsh Government','welsh-government-and-cadw-email-correspondence-catalogue-part-3#t1','2025-11-02','Sirs/Ma''am,
 
 I am writing regarding farmland formerly belonging to my family, which later formed part of the litigation known as BP v Buckler (1987).
