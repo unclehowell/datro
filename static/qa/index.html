@@ -82,14 +82,27 @@
     const $ = (id) => document.getElementById(id);
     let all = [];
     function escapeHtml(s) {
-      return String(s).replace(/[&<>"']/g, (c) => ({'&':'&','<':'<','>':'>','"':'"',"'":'&#39;'}[c]));
+      return String(s).replace(/[&<>"']/g, (c) => ({
+        '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+      }[c]));
     }
-    function kindClass(k) { return 'kind ' + (k || 'reply'); }
+    function safeHref(value) {
+      try {
+        const url = new URL(String(value), location.origin);
+        return ['http:', 'https:'].includes(url.protocol) ? escapeHtml(url.href) : '';
+      } catch (_error) {
+        return '';
+      }
+    }
+    function kindClass(k) {
+      const allowed = new Set(['provided', 'partial', 'not-held', 'refused', 'redirected', 'pending', 'unanswered', 'reply', 'auto']);
+      return 'kind ' + (allowed.has(k) ? k : 'reply');
+    }
     function render(items) {
       const el = $('list');
       if (!items.length) { el.innerHTML = '<div class="empty">No matching Q&A records.</div>'; return; }
       el.innerHTML = items.map((x) => `
-        <article id="${x.id}">
+        <article id="${escapeHtml(x.id)}">
           <div class="uid">${x.id}</div>
           <div class="party">${escapeHtml(x.party_name || x.party || '')}
             <span class="${kindClass(x.kind)}">${escapeHtml(x.kind || '')}</span></div>
@@ -99,7 +112,7 @@
             ${x.asked_msg ? ' · msg ' + escapeHtml(x.asked_msg) : ''}</div>
           <div class="q">${escapeHtml((x.question || '').slice(0, 900))}</div>
           ${x.answer ? `<div class="a">${escapeHtml(x.answer.slice(0, 1200))}</div>` : '<div class="a" style="color:var(--muted)">(no answer in corpus)</div>'}
-          ${x.url ? `<div class="meta-line"><a href="${escapeHtml(x.url)}" style="color:var(--accent)">source</a></div>` : ''}
+          ${safeHref(x.url) ? `<div class="meta-line"><a href="${safeHref(x.url)}" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">source</a></div>` : ''}
         </article>`).join('');
     }
     function applyFilters() {
