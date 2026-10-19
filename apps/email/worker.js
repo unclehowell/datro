@@ -1,6 +1,6 @@
 const RAW_BASE = "https://raw.githubusercontent.com/unclehowell/datro/email-archive/apps/email";
 const MANIFEST_URL = "https://wayback.bucklerfamily.estate/email/mail-index.json";
-const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/b71ef1704eef7a237cd9c1a6e973fafc03449248/apps/email/index.html";
+const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/ae8f15ae2a989f8cfe5b7be2f8818cc494e6a927/apps/email/index.html";
 const TEXT_HOST = "wayback.bucklerfamily.estate";
 const API_VERSION = "2.0.0";
 
