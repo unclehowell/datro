@@ -72,7 +72,7 @@ cf2024-1._domainkey.bucklerfamily.estate. 1 IN TXT "v=DKIM1; h=sha256; k=rsa; p=
 bucklerfamily.estate. 1 IN TXT "v=spf1 include:_spf.mx.cloudflare.net ~all"
 bucklerfamily.estate. 1 IN TXT "zoho-verification=zb81807530.zmverify.zoho.com"
 bucklerfamily.estate. 1 IN TXT "google-site-verification=WO9srh2sUm2zgefTl_V4YuITN7uA307N9xZW5a0bD2c"
-_dmarc.bucklerfamily.estate. 1 IN TXT "v=DMARC1; p=quarantine; rua=mailto:hywelapbuckler@gmail.com; ruf=mailto:hywelapbuckler@gmail.com; sp=quarantine; adkim=r; aspf=r"
+_dmarc.bucklerfamily.estate. 1 IN TXT "v=DMARC1; p=quarantine; rua=mailto:[redacted]; ruf=mailto:[redacted]; sp=quarantine; adkim=r; aspf=r"
 _github-pages-challenge-unclehowell.bucklerfamily.estate. 1 IN TXT "ea291443d87886bcd1c0c722087432"
 resend._domainkey.bucklerfamily.estate. 3600 IN TXT "p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDZCATs6t/8CSG7taV01IngENlYUy24u/GlCip65NtrzQHcz4q71XiFbwJwfHfkAkKPMg/jwJOCZ8N1x8f3X7OY+U/mBSnayYyDl0liCW0Nsr4gc0PIv/o5QAobDkpultdp+NeGLuWNefZCHuJJ2rnzDilQEpun6P9mZ33tsMNpOwIDAQAB"
 send.bucklerfamily.estate. 3600 IN TXT "v=spf1 include:amazonses.com ~all"

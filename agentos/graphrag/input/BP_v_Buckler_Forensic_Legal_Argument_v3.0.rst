@@ -7,7 +7,7 @@ Prepared for:  Restored House of Williams / Buckler Family Justice Campaign
 Date:          8 August 2026
 Classification: Campaign Legal Research — For Solicitor, Parliamentary and
                Public Inquiry Use
-Contact:       hywelapbuckler@gmail.com | 020 3137 7118
+Contact:       [redacted] | [redacted]
 
 ================================================================================
 IMPORTANT FOREWORD: REALISTIC LEGAL PROSPECTS
@@ -921,5 +921,5 @@ The stones are on a tip. But the truth is not.
 ================================================================================
 Signed: Hywel
 On behalf of: Williams / Buckler Family Estate (Est.)
-Contact: hywelapbuckler@gmail.com | 020 3137 7118
+Contact: [redacted] | [redacted]
 ================================================================================

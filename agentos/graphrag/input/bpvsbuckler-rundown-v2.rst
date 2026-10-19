@@ -3,7 +3,7 @@ Great House Farm, Llandough: A Historical, Genealogical and Legal Reconstruction
 ================================================================================
 
 :Author: Restored House of Williams / Buckler Family Estate (Est.)
-:Contact: hywelapbuckler@gmail.com | 020 3137 7118
+:Contact: [redacted] | [redacted]
 :Date: 2026-07-24
 :Version: 2.0
 :Status: Working Document — Subject to Ongoing Research
@@ -2929,4 +2929,4 @@ Appendix I: Glossary of Acronyms
 
 :Signed: Hywel 🏴󠁧󠁢󠁷󠁬󠁳󠁿
 :On behalf of: Williams / Buckler Family Estate (Est.)
-:Contact: hywelapbuckler@gmail.com | 020 3137 7118
+:Contact: [redacted] | [redacted]

@@ -5,7 +5,7 @@ Concerning the Foundations of BP Properties Ltd v Buckler [1987] EWCA Civ 2
 
 Prepared for:  Restored House of Williams / Buckler Family Estate
 Date:          8 August 2026
-Contact:       hywelapbuckler@gmail.com | 020 3137 7118
+Contact:       [redacted] | [redacted]
 
 ================================================================================
 1. INTRODUCTION
@@ -481,6 +481,6 @@ Signed
 
 On behalf of the Restored House of Williams / Buckler Family Estate
 
-hywelapbuckler@gmail.com | 020 3137 7118
+[redacted] | [redacted]
 
 ================================================================================
