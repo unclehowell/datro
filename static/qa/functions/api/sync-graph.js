@@ -107,10 +107,17 @@ export async function onRequestPost({ request, env }) {
     if (!response.ok) return json({ ok: false, stage, status: response.status }, 502);
     const sql = await response.text();
     stage = 'validate-sql';
-    if (sql.length < 50000 || !sql.includes('CREATE VIRTUAL TABLE qa_fts')) {
+    if (sql.length < 100000 ||
+        !sql.startsWith('DROP TABLE IF EXISTS nodes;') ||
+        !sql.includes('CREATE VIRTUAL TABLE qa_fts') ||
+        !sql.includes('CREATE VIRTUAL TABLE messages_fts') ||
+        !sql.includes('scene:ghf-19900529-1')) {
       return json({ ok: false, stage, bytes: sql.length }, 422);
     }
     const statements = splitStatements(sql);
+    if (!statements.length || statements.length > 100000) {
+      return json({ ok: false, stage, statementCount: statements.length }, 422);
+    }
     const batches = makeBatches(statements);
     const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(sql));
     const sha256 = Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, '0')).join('');
@@ -120,7 +127,24 @@ export async function onRequestPost({ request, env }) {
       return json({ ok: true, skipped: true, sha256, counts: { qa: await count(env.DB, 'qa'), messages: await count(env.DB, 'messages') } });
     }
     stage = 'execute-batches';
-    for (let i = 0; i < batches.length; i += 1) await env.DB.exec(batches[i]);
+    for (let i = 0; i < batches.length; i += 1) {
+      try {
+        await env.DB.exec(batches[i]);
+      } catch (error) {
+        // Report safe diagnostics only: never include the SQL batch or its data.
+        const message = String(error?.message || error || 'D1 rejected batch')
+          .replace(/[\\r\\n\\t]+/g, ' ')
+          .slice(0, 240);
+        return json({
+          ok: false,
+          stage,
+          failedBatch: i + 1,
+          batchCount: batches.length,
+          batchBytes: new TextEncoder().encode(batches[i]).byteLength,
+          error: message,
+        }, 500);
+      }
+    }
     stage = 'record-sync';
     await env.DB.prepare(
       `INSERT INTO ${META_TABLE} (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value`
