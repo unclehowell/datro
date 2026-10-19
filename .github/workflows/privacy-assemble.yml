@@ -1,0 +1,20 @@
+name: privacy-assemble
+on:
+  push:
+    branches: [qa]
+    paths: ['.privacy/**']
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: assemble
+        run: |
+          set -e
+          for d in .privacy/*/; do t=$(cat "${d}target"); cat "${d}"part-* > "$t"; done
+          git rm -rq .privacy .github/workflows/privacy-assemble.yml
+          git add -A
+          git -c user.name=unclehowell -c user.email=unclehowell@users.noreply.github.com commit -m "privacy: redact contact details"
+          git push

@@ -17,7 +17,7 @@ raw/gmail/ and rebuild. Nothing else needs changing.
 import glob, json, os, re
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-FAMILY = 'hywelapbuckler@gmail.com'
+FAMILY = '[redacted]'
 
 # email domain / address fragment -> party id (ids from api/control.json)
 DOMAINS = [
