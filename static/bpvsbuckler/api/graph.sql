@@ -69,7 +69,7 @@ INSERT INTO nodes VALUES ('scene:ghf-18770101-1','scene','I.5 Division of the fa
 INSERT INTO nodes VALUES ('scene:ghf-18810403-1','scene','I.6 The 1881 census: "Llandough Home Farm"','{"date": "1881-04-03", "act": "I", "grade": "contested"}');
 INSERT INTO nodes VALUES ('scene:ghf-18911111-1','scene','I.7 Theft of geese','{"date": "1891-11-11", "act": "I", "grade": "documented"}');
 INSERT INTO nodes VALUES ('scene:ghf-18970501-1','scene','I.8 Marconi at Lavernock','{"date": "1897-05-01", "act": "I", "grade": "single-source"}');
-INSERT INTO nodes VALUES ('scene:ghf-19080101-1','scene','I.9 John Williams','{"date": "1908-01-01", "act": "I", "grade": "single-source"}');
+INSERT INTO nodes VALUES ('scene:ghf-19080101-1','scene','I.9 John Williams','{"date": "1908-01-01", "act": "I", "grade": "documented"}');
 INSERT INTO nodes VALUES ('scene:ghf-19130810-1','scene','I.10 Birth of Mary Williams','{"date": "1913-08-10", "act": "I", "grade": "testimony-only"}');
 INSERT INTO nodes VALUES ('scene:ghf-19160201-1','scene','II.1 The 1916 tenancy','{"date": "1916-02-01", "act": "II", "grade": "contested"}');
 INSERT INTO nodes VALUES ('scene:ghf-19280101-1','scene','II.2 Last rent on the house','{"date": "1928-01-01", "act": "II", "grade": "single-source"}');
@@ -83,7 +83,7 @@ INSERT INTO nodes VALUES ('scene:ghf-19490202-1','scene','III.1 The 1949 tenancy
 INSERT INTO nodes VALUES ('scene:ghf-19500601-1','scene','III.2 The blanket box','{"date": "1950-06-01", "act": "III", "grade": "testimony-only"}');
 INSERT INTO nodes VALUES ('scene:ghf-19521010-1','scene','III.3 Last rent on the fields','{"date": "1952-10-10", "act": "III", "grade": "single-source"}');
 INSERT INTO nodes VALUES ('scene:ghf-19550202-1','scene','III.4 The 1955 possession order','{"date": "1955-02-02", "act": "III", "grade": "contested"}');
-INSERT INTO nodes VALUES ('scene:ghf-19581119-1','scene','III.5 "A Welsh case of Crichel Down"','{"date": "1958-11-19", "act": "III", "grade": "single-source"}');
+INSERT INTO nodes VALUES ('scene:ghf-19581119-1','scene','III.5 "A Welsh case of Crichel Down"','{"date": "1958-11-19", "act": "III", "grade": "documented"}');
 INSERT INTO nodes VALUES ('scene:ghf-19590101-1','scene','III.6 1959 tenancy offer','{"date": "1959-01-01", "act": "III", "grade": "documented"}');
 INSERT INTO nodes VALUES ('scene:ghf-19621211-1','scene','III.7 The 1962 possession order','{"date": "1962-12-11", "act": "III", "grade": "documented"}');
 INSERT INTO nodes VALUES ('scene:ghf-19630601-1','scene','III.8 Committal proceedings','{"date": "1963-06-01", "act": "III", "grade": "documented"}');
