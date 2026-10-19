@@ -444,6 +444,10 @@ ACCOUNTS = {
     received="",
     words=[],
     known="No deed has been produced by which Parcel A passed from the Williamses, or from anyone, to BP."),
+'ghf-20261019-1': dict(
+    received="",
+    words=[],
+    known="The Welsh Government found no file for the 1988 purchase under the names searched and points to a retention schedule without dating any destruction; Cadw declined to search again. Neither reply says whether a file existed, when it ended, or who decided. SOURCE PENDING for the Land Authority for Wales file itself (EIR request held for verification)."),
 # ---------------------------------------------------------------- STATING THE OBVIOUS
 'ghf-obvious-01': dict(
     received="A squatter was evicted after losing in court.",
