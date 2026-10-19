@@ -13,7 +13,7 @@
    "label": "Act I",
    "title": "Division",
    "span": "1858 – 1915",
-   "logline": "The limeworks, and the 1877 division of the farm."
+   "logline": "The limeworks, the 1877 division of the farm, and Marconi's wireless trials at Lavernock in May 1897."
   },
   {
    "id": "II",
@@ -897,6 +897,52 @@
    "moved": []
   },
   {
+   "id": "ghf-18641223-1",
+   "act": "I",
+   "date": "1864-12-23",
+   "when": "23 December 1864",
+   "title": "Death of Amy Williams of Great House",
+   "place": "Llandough",
+   "parcel": "AB",
+   "basis": "Newspaper",
+   "narration": "Amy Williams dies at Llandough, aged 65. The death notices call her \"relict of the late Mr. John Williams, Great House farm\": the widow of the elder John Williams, whose son John had taken over the tenancy in 1855.",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] Cardiff Times, 30 December 1864, p.5 — deaths: \"at Llandough, near Cardiff, Amy, relict of the late Mr. John Williams, Great House farm, aged 65 years\" (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/3383386/3383391/14/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] Cardiff and Merthyr Guardian, 30 December 1864, p.5 — deaths: \"WILLIAMS.—Dec. 23, at Llandough, near Cardiff, Amy, relict of the late Mr. John Williams, Great House farm, aged 65\" (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/3094324/3094329/21/"
+    }
+   ],
+   "image": null,
+   "aliases": [],
+   "no": 12,
+   "ref": "I.1",
+   "cast": [
+    "john"
+   ],
+   "received": null,
+   "received_words": [
+    [
+     "\"relict of the late Mr. John Williams, Great House farm\"",
+     "The notice's own words: the elder John Williams was dead by December 1864, and was remembered as \"of Great House farm\"."
+    ]
+   ],
+   "known": "VERIFIED (two contemporary death notices, read on Welsh Newspapers Online). They fit the 1904 report that the younger John Williams \"succeeded his father in the tenancy of the farm in 1855\". Not yet found: the elder John Williams's own death or burial entry, and Amy's maiden name.",
+   "ledger": [
+    [
+     "W",
+     "Lordship of the manor (1793) and farm freehold (early 19th century): the Bute Estate · tenants: the Williamses"
+    ]
+   ],
+   "moved": []
+  },
+  {
    "id": "ghf-18680101-1",
    "act": "I",
    "date": "1868-01-01",
@@ -956,8 +1002,8 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 12,
-   "ref": "I.1",
+   "no": 13,
+   "ref": "I.2",
    "cast": [
     "bute"
    ],
@@ -1009,8 +1055,8 @@
    "aliases": [
     "ghf-18800101-2"
    ],
-   "no": 13,
-   "ref": "I.2",
+   "no": 14,
+   "ref": "I.3",
    "cast": [
     "rcahmw"
    ],
@@ -1075,8 +1121,8 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 14,
-   "ref": "I.3",
+   "no": 15,
+   "ref": "I.4",
    "cast": [
     "bute"
    ],
@@ -1111,8 +1157,8 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 15,
-   "ref": "I.4",
+   "no": 16,
+   "ref": "I.5",
    "cast": [
     "bute"
    ],
@@ -1174,8 +1220,8 @@
    "aliases": [
     "ghf-18771106-1"
    ],
-   "no": 16,
-   "ref": "I.5",
+   "no": 17,
+   "ref": "I.6",
    "cast": [
     "mary",
     "thomas",
@@ -1245,8 +1291,8 @@
    ],
    "image": "/media/1881-census-rg11-5288-p2.jpg",
    "aliases": [],
-   "no": 17,
-   "ref": "I.6",
+   "no": 18,
+   "ref": "I.7",
    "cast": [
     "mary",
     "john"
@@ -1302,8 +1348,8 @@
    ],
    "image": "/media/ghf-e090-n01-1891-farmyard-theft.jpg",
    "aliases": [],
-   "no": 18,
-   "ref": "I.7",
+   "no": 19,
+   "ref": "I.8",
    "cast": [
     "john"
    ],
@@ -1323,32 +1369,520 @@
    "moved": []
   },
   {
-   "id": "ghf-18970501-1",
+   "id": "ghf-18920101-1",
    "act": "I",
-   "date": "1897-05-01",
-   "when": "May 1897",
-   "title": "Marconi at Lavernock",
-   "place": "Lavernock Point",
-   "parcel": "?",
-   "basis": "Source pending",
-   "narration": "Marconi's wireless trials at Lavernock Point, May 1897. Family tradition records that Thomas Williams of Great House carted his equipment.",
+   "date": "1892-01-01",
+   "when": "1892",
+   "title": "Signals across the water: Preece at Lavernock",
+   "place": "Lavernock Point and Flat Holm",
+   "parcel": "x",
+   "basis": "Newspaper",
+   "narration": "The Post Office engineer William Preece stretches long parallel wires on the shore at Lavernock and on Flat Holm, 3.3 miles out, and sends messages between them by induction, with no wire across the water. Five years later Marconi comes to the same shore.",
    "case": null,
    "evidence": [
     {
      "type": "Newspaper",
-     "title": "Press report of the Lavernock trials, 1897",
-     "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n02",
+     "title": "[VERIFIED] South Wales Daily Post, 5 June 1897, p.3 — Preece's Royal Institution lecture: \"In 1892 distinct messages were sent across a portion of the Bristol Channel between Penarth and the Flat Holm, a distance of over three miles\" (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/3356360/3356363/20/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] Cardiff Times, 13 March 1897, p.2 — \"No Use for Wires\": the \"wonderful doings\" of Mr Preece \"at Lavernock and the Flat Holm\" (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/3431204/3431206/41/"
+    },
+    {
+     "type": "Publication",
+     "title": "[SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Preece's induction method: the Lavernock–Flat Holm trials",
+     "url": "https://earlyradiohistory.us/1901fa21.htm"
+    }
+   ],
+   "image": null,
+   "aliases": [],
+   "no": 20,
+   "ref": "I.9",
+   "cast": [],
+   "received": null,
+   "received_words": [],
+   "known": "VERIFIED that the 1892 messages were reported in 1897 in Preece's own words (South Wales Daily Post, 5 June 1897). The details (wire lengths, 3.3 miles, the failed attempt to Steep Holm) are SECONDARY, from Fahie's history of 1899/1901. This is the Lavernock background to Marconi. It names no Williams and has no link to Great House.",
+   "ledger": [
+    [
+     "A",
+     "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends"
+    ],
+    [
+     "B",
+     "Freehold: the Bute Estate · tenants: the Williamses"
+    ]
+   ],
+   "moved": []
+  },
+  {
+   "id": "ghf-18940731-1",
+   "act": "I",
+   "date": "1894-07-31",
+   "when": "Week of 30 July 1894",
+   "title": "Swine fever at Great House",
+   "place": "Great House Farm",
+   "parcel": "AB",
+   "basis": "Newspaper",
+   "narration": "Swine fever breaks out at Llandough. Five pigs belonging to Mr Williams of Great House are slaughtered. On the Tuesday morning one of his herd of 23 is reported affected, and it is feared the whole herd will have to go.",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] Barry Dock News, 3 August 1894, p.5 — \"Swine fever at Llandough and Rhoose\": \"Five pigs belonging to Mr Williams, Great House, have been slaughtered\" (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/4596799/4596804/24/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] Glamorgan Gazette, 3 August 1894, p.5 — the same report (herd given as 22) (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/3874190/3874195/53/"
+    }
+   ],
+   "image": null,
+   "aliases": [],
+   "no": 21,
+   "ref": "I.10",
+   "cast": [],
+   "received": null,
+   "received_words": [],
+   "known": "VERIFIED (two newspapers, 3 August 1894). \"Mr Williams, Great House\" at Llandough in 1894 is the John Williams of the directories (1868–1901). The herd of 22–23 pigs shows a working farm.",
+   "ledger": [
+    [
+     "A",
+     "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends"
+    ],
+    [
+     "B",
+     "Freehold: the Bute Estate · tenants: the Williamses"
+    ]
+   ],
+   "moved": []
+  },
+  {
+   "id": "ghf-18970501-1",
+   "act": "I",
+   "date": "1897-05-01",
+   "when": "Late April – early May 1897",
+   "title": "Marconi comes to Lavernock",
+   "place": "Lavernock Point",
+   "parcel": "x",
+   "basis": "Newspaper",
+   "narration": "The Cardiff papers announce that the young Italian Guglielmo Marconi, 23, will come to Cardiff \"in a few weeks\" to signal across the Bristol Channel without wires, with the Post Office's staff and apparatus at his disposal. At Lavernock Point the receiving station goes up on the cliff: a tall pole with a zinc cylinder at the top (120 feet, says the Evening Express; 30 yards, says Preece's account). The press names the man who put it up only as \"Mr. Williams (of the engineering department, Cardiff)\". The sending station is on Flat Holm.",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] Evening Express, 26 April 1897, p.2 — \"Wireless Telegraphy … Coming to Cardiff in a Few Weeks to Experiment Across the Bristol Channel\" (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/3270301/3270303/28/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] Weekly Mail, 1 May 1897, p.4 — the same report (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/3370882/3370886/79/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] Evening Express, 15 May 1897 (Extra Special), p.4 — \"Wireless Telegraphy. Marconi Invention Tested at Lavernock\" (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/3270811/3270815/108/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] Western Mail, 15 May 1897, p.6 — \"Telegraphy without wires. Marconi invention tested at Lavernock\" (same report) (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/4313747/4313753/61/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "EV-0011 — the same cutting on the wiki (catalogued there as undated; identified here as the Evening Express, 15 May 1897, p.4)",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0011-marconi-lavernock-wireless-cutting-1897/",
      "image": "/media/ghf-e090-n02-1897-marconi-lavernock.jpg"
+    },
+    {
+     "type": "Publication",
+     "title": "[SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Marconi's method, drawing on Preece's Royal Institution lecture of 4 June 1897",
+     "url": "https://earlyradiohistory.us/1901fa23.htm"
+    },
+    {
+     "type": "Official correspondence",
+     "title": "[UNVERIFIED / SOURCE PENDING] Sion Buckler, records request to The National Archives, 16 July 2026, \"Mr. Williams, Cardiff Post Office Engineering Department, 1897 Marconi Lavernock Experiments\" (TNA replied 30 July 2026 that it is not the right place to ask)",
+     "url": "https://greathousefarmwiki.wordpress.com/?p=5363"
     }
    ],
    "image": "/media/ghf-e090-n02-1897-marconi-lavernock.jpg",
    "aliases": [],
-   "no": 19,
-   "ref": "I.8",
+   "no": 22,
+   "ref": "I.11",
    "cast": [],
-   "received": "An unproven family story.",
+   "received": "Marconi's Welsh trials were a Post Office affair; local people had no part in them.",
+   "received_words": [
+    [
+     "\"Mr. Williams (of the engineering department, Cardiff)\"",
+     "The only Williams in any 1897 report read. He is a Post Office engineer in Cardiff. No initial or address is given."
+    ]
+   ],
+   "known": "VERIFIED: the trials, the date (Evening Express, 15 May 1897, p.4) and \"Mr. Williams (of the engineering department, Cardiff)\". The wiki's undated cutting EV-0011 is that Evening Express report; the same text is in the Western Mail of the same day. UNVERIFIED / SOURCE PENDING: Sion Buckler's position (request to The National Archives, 16 July 2026) that this Mr Williams was his forebear Mr Williams of Great House Farm, and that Marconi stayed with the family at the farm in 1897. No 1897 document read so far gives the engineer's full name or Marconi's lodging. A statement that Thomas Williams of Great House carted Marconi's equipment has no document or named speaker: SOURCE PENDING. The photograph that the wiki's Media Gallery captioned \"Marconi wireless telegraph at Great House Farm\" (caption corrected 19 October 2026) is the Flat Holm photograph of 13 May 1897 (see 13 May). Next records: Post Office establishment books (BT Archives, POST 59) for a Williams in the Cardiff engineering district in 1897; the 1901 census.",
+   "ledger": [
+    [
+     "A",
+     "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends"
+    ],
+    [
+     "B",
+     "Freehold: the Bute Estate · tenants: the Williamses"
+    ]
+   ],
+   "moved": []
+  },
+  {
+   "id": "ghf-18970510-1",
+   "act": "I",
+   "date": "1897-05-10",
+   "when": "10 May 1897",
+   "title": "Preece's method tried again",
+   "place": "Lavernock Point and Flat Holm",
+   "parcel": "x",
+   "basis": "Publication",
+   "narration": "Before Marconi's own trials begin, the Post Office repeats Preece's induction method between Lavernock and Flat Holm. It works.",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Publication",
+     "title": "[SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Marconi's method, drawing on Preece's Royal Institution lecture of 4 June 1897",
+     "url": "https://earlyradiohistory.us/1901fa23.htm"
+    },
+    {
+     "type": "Publication",
+     "title": "[SECONDARY] BBC Wales History blog, \"Marconi's Welsh wireless revolution\" (May 2012), quoting the same account",
+     "url": "https://www.bbc.co.uk/blogs/waleshistory/2012/05/marconi_wireless_open_sea_lavernock_point_flat_holm.html"
+    }
+   ],
+   "image": null,
+   "aliases": [],
+   "no": 23,
+   "ref": "I.12",
+   "cast": [],
+   "received": null,
    "received_words": [],
-   "known": "The trials are documented; the family's part is their own account.",
+   "known": "SECONDARY (Fahie, 1899/1901, from Preece's account). No 1897 newspaper read here mentions 10 May.",
+   "ledger": [
+    [
+     "A",
+     "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends"
+    ],
+    [
+     "B",
+     "Freehold: the Bute Estate · tenants: the Williamses"
+    ]
+   ],
+   "moved": []
+  },
+  {
+   "id": "ghf-18970511-1",
+   "act": "I",
+   "date": "1897-05-11",
+   "when": "11–12 May 1897",
+   "title": "Two days of failure",
+   "place": "Lavernock Point",
+   "parcel": "x",
+   "basis": "Newspaper",
+   "narration": "Marconi's first attempts to receive signals from Flat Holm at the Lavernock cliff-top station fail. The Evening Express reports that the experiments on Tuesday \"were not so successful as might have been desired\".",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] Evening Express, 15 May 1897 (Extra Special), p.4 — \"Wireless Telegraphy. Marconi Invention Tested at Lavernock\" (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/3270811/3270815/108/"
+    },
+    {
+     "type": "Publication",
+     "title": "[SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Marconi's method, drawing on Preece's Royal Institution lecture of 4 June 1897",
+     "url": "https://earlyradiohistory.us/1901fa23.htm"
+    },
+    {
+     "type": "Heritage record",
+     "title": "[SECONDARY] Rotary Club of Cardiff plaque, St Lawrence's churchyard, Lavernock (transcription): \"BETWEEN LAVERNOCK AND FLAT HOLM 11th MAY, LAVERNOCK AND BREAN DOWN 18th MAY 1897 … ERECTED BY THE ROTARY CLUB OF CARDIFF 1947\"",
+     "url": "https://readtheplaque.com/plaque/marconi-s-first-radio-transmissions-across-water"
+    }
+   ],
+   "image": null,
+   "aliases": [],
+   "no": 24,
+   "ref": "I.13",
+   "cast": [],
+   "received": null,
+   "received_words": [],
+   "known": "VERIFIED that Tuesday 11 May went badly (Evening Express, 15 May 1897). Fahie says 11 and 12 May both failed, but the Evening Express calls Wednesday and Thursday \"most satisfactory\". The 1947 plaque gives 11 May as the day messages were first exchanged with Flat Holm. The sources conflict on 11–13 May.",
+   "ledger": [
+    [
+     "A",
+     "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends"
+    ],
+    [
+     "B",
+     "Freehold: the Bute Estate · tenants: the Williamses"
+    ]
+   ],
+   "moved": []
+  },
+  {
+   "id": "ghf-18970513-1",
+   "act": "I",
+   "date": "1897-05-13",
+   "when": "13 May 1897",
+   "title": "Signals across the sea",
+   "place": "Lavernock Point and Flat Holm",
+   "parcel": "x",
+   "basis": "Newspaper",
+   "narration": "The receiver is carried down to the beach below the cliff and joined to the pole by another 20 yards of wire. Signals from Flat Holm, 3.3 miles away, now print clearly on the Morse inker at Lavernock. The Evening Express reports that on Wednesday and Thursday \"the results were most satisfactory\". Watching are Preece, his second engineer Mr Gavey (late of Cardiff), the Cardiff postmaster Mr Fardo and other officials. The German Professor Slaby is there too.",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] Evening Express, 15 May 1897 (Extra Special), p.4 — \"Wireless Telegraphy. Marconi Invention Tested at Lavernock\" (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/3270811/3270815/108/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] Western Mail, 15 May 1897, p.6 — \"Telegraphy without wires. Marconi invention tested at Lavernock\" (same report) (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/4313747/4313753/61/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] South Wales Echo, 17 May 1897, p.2 — \"The Man About Town\": \"Lavernock and the Flat Holm will stand out in the history of electrical science\"; the messages were recorded, not just heard (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/4604986/4604988/5/"
+    },
+    {
+     "type": "Publication",
+     "title": "[SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Marconi's method, drawing on Preece's Royal Institution lecture of 4 June 1897",
+     "url": "https://earlyradiohistory.us/1901fa23.htm"
+    },
+    {
+     "type": "Photograph",
+     "title": "[SECONDARY: date and place as captioned by the source] Post Office engineers inspect Marconi's apparatus on Flat Holm, 13 May 1897. Photo: Cardiff Council Flat Holm Project, CC BY 3.0, via Wikimedia Commons (File:Post_Office_Engineers.jpg)",
+     "url": "https://commons.wikimedia.org/wiki/File:Post_Office_Engineers.jpg",
+     "image": "/media/1897-05-13-flat-holm-post-office-engineers-marconi.jpg"
+    },
+    {
+     "type": "Publication",
+     "title": "[SECONDARY — conflicting] Later accounts give the first words as \"Are you ready?\" (We Are Cardiff, 13 May 2016) or \"CAN YOU HEAR ME\" / \"YES LOUD AND CLEAR\" (BBC Wales History, 2012). No 1897 source read here gives the words.",
+     "url": "https://wearecardiff.co.uk/2016/05/13/marconis-first-wireless-message-transmitted-over-sea-from-flat-holm-to-lavernock-point/"
+    }
+   ],
+   "image": "/media/1897-05-13-flat-holm-post-office-engineers-marconi.jpg",
+   "aliases": [],
+   "no": 25,
+   "ref": "I.14",
+   "cast": [],
+   "received": "Marconi sent the first radio message over open sea, from Lavernock to Flat Holm, on 13 May 1897.",
+   "received_words": [
+    [
+     "\"Are you ready?\"",
+     "A later account of the first words. Another later account gives \"CAN YOU HEAR ME\" and \"YES LOUD AND CLEAR\". No 1897 source read here records the words."
+    ]
+   ],
+   "known": "VERIFIED: success by midweek (Evening Express: Wednesday 12 and Thursday 13 May \"most satisfactory\"); Preece, Gavey and Fardo present. SECONDARY: the date 13 May, the 20 extra yards of wire, and Slaby's presence (Fahie). Direction: in Preece's account (via Fahie) Flat Holm sent and Lavernock received; some modern accounts reverse it. The photograph is captioned by its source as Flat Holm, 13 May 1897. Its date and place rest on that caption. Nothing in it links to Great House Farm.",
+   "ledger": [
+    [
+     "A",
+     "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends"
+    ],
+    [
+     "B",
+     "Freehold: the Bute Estate · tenants: the Williamses"
+    ]
+   ],
+   "moved": []
+  },
+  {
+   "id": "ghf-18970514-1",
+   "act": "I",
+   "date": "1897-05-14",
+   "when": "14 May 1897 (Friday)",
+   "title": "The demonstration at Lavernock",
+   "place": "Lavernock Point",
+   "parcel": "x",
+   "basis": "Newspaper",
+   "narration": "On Friday afternoon Marconi gives a semi-public demonstration. A select company of local scientists and engineers watches his system explained in miniature, with a transmitter facing a receiver about twenty yards away, and messages written by the Morse self-inker without a connecting wire.",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] Evening Express, 15 May 1897 (Extra Special), p.4 — \"Wireless Telegraphy. Marconi Invention Tested at Lavernock\" (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/3270811/3270815/108/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] Carnarvon and Denbigh Herald, 21 May 1897, p.4 — \"Telegraphing without wires\": Preece \"during last week\" testing Marconi's invention between Lavernock Point and the Flat Holme; a select company of local scientists and engineers invited (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/3603309/3603313/23/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] Weekly Mail, 22 May 1897, p.8 — \"Wireless Telegraphy. Marconi Invention Tested at Lavernock\" (same report) (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/3370921/3370929/162/"
+    }
+   ],
+   "image": null,
+   "aliases": [],
+   "no": 26,
+   "ref": "I.15",
+   "cast": [],
+   "received": null,
+   "received_words": [],
+   "known": "VERIFIED (Evening Express, 15 May 1897; Carnarvon and Denbigh Herald, 21 May 1897). The guests are not named.",
+   "ledger": [
+    [
+     "A",
+     "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends"
+    ],
+    [
+     "B",
+     "Freehold: the Bute Estate · tenants: the Williamses"
+    ]
+   ],
+   "moved": []
+  },
+  {
+   "id": "ghf-18970518-1",
+   "act": "I",
+   "date": "1897-05-18",
+   "when": "18 May 1897",
+   "title": "Lavernock to Brean Down",
+   "place": "Lavernock Point and Brean Down (Somerset)",
+   "parcel": "x",
+   "basis": "Newspaper",
+   "narration": "The range is pushed across the whole Channel. A message sent from Lavernock Point, through a wire carried 220 feet up on a kite, is received at Brean Down, near Weston-super-Mare, about eight and a half miles away. Marconi signs the paper tape. That week he works on Brean Down with Preece and Gavey.",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] South Wales Echo, 27 May 1897, p.4 — \"First wireless telegram\": \"Sent from Lavernock Point through a kite at an elevation of 220ft., and received at Brean Down, May 18th, 1897 … (Signed) G. Marconi\" (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/4605031/4605035/99/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] South Wales Echo, 20 May 1897, p.3 — \"The Marconi experiments\": Marconi, with Mr Preece and Mr Gavey, \"has this week been at work on Brean Down\" (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/4605001/4605004/57/"
+    },
+    {
+     "type": "Heritage record",
+     "title": "[SECONDARY] Rotary Club of Cardiff plaque, St Lawrence's churchyard, Lavernock (transcription): \"BETWEEN LAVERNOCK AND FLAT HOLM 11th MAY, LAVERNOCK AND BREAN DOWN 18th MAY 1897 … ERECTED BY THE ROTARY CLUB OF CARDIFF 1947\"",
+     "url": "https://readtheplaque.com/plaque/marconi-s-first-radio-transmissions-across-water"
+    },
+    {
+     "type": "Publication",
+     "title": "[SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Marconi's method, drawing on Preece's Royal Institution lecture of 4 June 1897",
+     "url": "https://earlyradiohistory.us/1901fa23.htm"
+    }
+   ],
+   "image": null,
+   "aliases": [],
+   "no": 27,
+   "ref": "I.16",
+   "cast": [],
+   "received": null,
+   "received_words": [],
+   "known": "VERIFIED: the 18 May date, the kite at 220 ft and Marconi's signature are all on the framed tape, as transcribed by the South Wales Echo on 27 May 1897. The Echo of 20 May has messages going from Brean Down to Lavernock that week; the tape reads Lavernock to Brean Down. Fahie dates the Brean Down link to the day after the Flat Holm success. Brean Down is in Somerset and is included only as the far end of the Welsh link.",
+   "ledger": [
+    [
+     "A",
+     "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends"
+    ],
+    [
+     "B",
+     "Freehold: the Bute Estate · tenants: the Williamses"
+    ]
+   ],
+   "moved": []
+  },
+  {
+   "id": "ghf-18970527-1",
+   "act": "I",
+   "date": "1897-05-27",
+   "when": "Late May – July 1897",
+   "title": "The first wireless telegram goes on show",
+   "place": "Cardiff Central Free Library",
+   "parcel": "x",
+   "basis": "Newspaper",
+   "narration": "The framed tape of the Brean Down message goes on view in the hall of the Cardiff Central Free Library. Work at Lavernock goes on \"for a few days longer\". On 4 June Preece describes the Penarth–Brean Down signals to the Royal Institution in London. Marconi leaves England for Italy on Monday 5 July 1897.",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] South Wales Echo, 27 May 1897, p.4 — the framed tape on view at the Cardiff Central Free Library (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/4605031/4605035/99/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] South Wales Echo, 20 May 1897, p.3 — \"Work is still progressing at Lavernock, and will be continued for a few days longer\" (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/4605001/4605004/57/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] South Wales Daily Post, 5 June 1897, p.3 — Preece's Royal Institution lecture: signals \"between Penarth and Brean Down … a distance of nearly nine miles\" (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/3356360/3356363/20/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] Carnarvon and Denbigh Herald, 9 July 1897, p.2 — Preece: \"Marconi only left England on Monday\" (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/3603372/3603374/10/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] Y Negesydd, 23 July 1897, p.1 — \"Pellebru heb wifrau\": experiments \"yn agos i Benarth, Caerdydd\" by Mr Preece and Marconi (Welsh) (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/3819134/3819135/2/"
+    }
+   ],
+   "image": null,
+   "aliases": [],
+   "no": 28,
+   "ref": "I.17",
+   "cast": [],
+   "received": null,
+   "received_words": [],
+   "known": "VERIFIED. Not found: the day Marconi left South Wales, or where he lodged while there. The last Welsh press notice of the work found is the South Wales Echo of 20 May 1897. In 1897 Marconi's next move was to London, and then Italy (Spezia trials, 10–18 July 1897, per Fahie).",
+   "ledger": [
+    [
+     "A",
+     "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends"
+    ],
+    [
+     "B",
+     "Freehold: the Bute Estate · tenants: the Williamses"
+    ]
+   ],
+   "moved": []
+  },
+  {
+   "id": "ghf-19070401-1",
+   "act": "I",
+   "date": "1907-04-01",
+   "when": "1 April 1907",
+   "title": "Air-rifle meeting at Great House Farm",
+   "place": "Great House Farm",
+   "parcel": "?",
+   "basis": "Newspaper",
+   "narration": "The Llandough Air-rifle Club holds its Easter Monday meeting at Great House Farm: ten shots at twenty yards. A Llandough man, J. Griffiths, comes third.",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] Evening Express, 27 March 1907, p.3 — notice: an air-rifle shooting competition \"at the Great House Farm, Llandough, on Monday next\" (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/4174604/4174607/109/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] Evening Express, 2 April 1907, p.4 — \"Air-rifle shooting. The Llandough meeting … held on Monday at Great House Farm, Llandough\" (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/4174794/4174798/123/"
+    }
+   ],
+   "image": null,
+   "aliases": [],
+   "no": 29,
+   "ref": "I.18",
+   "cast": [],
+   "received": null,
+   "received_words": [],
+   "known": "VERIFIED (two notices). The reports do not name the farmer.",
    "ledger": [
     [
      "A",
@@ -1398,8 +1932,8 @@
    "aliases": [
     "ghf-19050223-1"
    ],
-   "no": 20,
-   "ref": "I.9",
+   "no": 30,
+   "ref": "I.19",
    "cast": [
     "mary",
     "john",
@@ -1430,6 +1964,44 @@
    ]
   },
   {
+   "id": "ghf-19080106-1",
+   "act": "I",
+   "date": "1908-01-06",
+   "when": "6 January 1908",
+   "title": "A poacher caught on Great House Farm",
+   "place": "Great House Farm",
+   "parcel": "?",
+   "basis": "Newspaper",
+   "narration": "Shortly before three in the morning two keepers on their round at Llandough see a man net two rabbits on Great House Farm and catch him before he leaves the field. At Barry he is sent to gaol for two months.",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Newspaper",
+     "title": "[VERIFIED] Evening Express, 10 January 1908, p.3 — \"Two months for a poacher\": \"poaching on Great House Farm, Llandough\" (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/4184741/4184744/84/"
+    }
+   ],
+   "image": null,
+   "aliases": [],
+   "no": 31,
+   "ref": "I.20",
+   "cast": [],
+   "received": null,
+   "received_words": [],
+   "known": "VERIFIED (Evening Express, 10 January 1908). The keepers are not said to be the farm's own. John Williams of Great House died later in 1908 (EV-0243).",
+   "ledger": [
+    [
+     "A",
+     "Freehold: the Thomases · tenant: John Williams"
+    ],
+    [
+     "B",
+     "Freehold: the Bute Estate · tenant: John Williams"
+    ]
+   ],
+   "moved": []
+  },
+  {
    "id": "ghf-19130810-1",
    "act": "I",
    "date": "1913-08-10",
@@ -1454,8 +2026,8 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 21,
-   "ref": "I.10",
+   "no": 32,
+   "ref": "I.21",
    "cast": [
     "mary"
    ],
@@ -1504,7 +2076,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 22,
+   "no": 33,
    "ref": "II.1",
    "cast": [
     "john",
@@ -1582,7 +2154,7 @@
    "aliases": [
     "ghf-19240515-1"
    ],
-   "no": 23,
+   "no": 34,
    "ref": "II.2",
    "cast": [
     "mary",
@@ -1648,7 +2220,7 @@
     "ghf-19100101-1",
     "ghf-19370101-1"
    ],
-   "no": 24,
+   "no": 35,
    "ref": "II.3",
    "cast": [
     "mary",
@@ -1698,7 +2270,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 25,
+   "no": 36,
    "ref": "II.4",
    "cast": [
     "bute",
@@ -1755,7 +2327,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 26,
+   "no": 37,
    "ref": "II.5",
    "cast": [
     "john",
@@ -1807,7 +2379,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 27,
+   "no": 38,
    "ref": "II.6",
    "cast": [],
    "received": "Not an event. The family were tenants throughout.",
@@ -1861,7 +2433,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 28,
+   "no": 39,
    "ref": "II.7",
    "cast": [
     "john",
@@ -1870,6 +2442,53 @@
    "received": "The tenant farm was failing.",
    "received_words": [],
    "known": "Frederick managed the fields, Parcel B.",
+   "ledger": [
+    [
+     "A",
+     "Freehold: the Williamses, by the 1877 bargain and by title by possession (twelve years rent-free, 1928–1940)"
+    ],
+    [
+     "S",
+     "Seed (a landlord's wording, not the family's): the words \"the whole farm\" in a Bute tenancy (Bute can only let Parcel B)"
+    ],
+    [
+     "B",
+     "Freehold: Western Ground Rents · tenant: John Williams (1939 plan: fields only)"
+    ]
+   ],
+   "moved": []
+  },
+  {
+   "id": "ghf-19470101-1",
+   "act": "II",
+   "date": "1947-01-01",
+   "when": "1947",
+   "title": "The Lavernock plaque",
+   "place": "St Lawrence's churchyard, Lavernock",
+   "parcel": "x",
+   "basis": "Heritage record",
+   "narration": "The Rotary Club of Cardiff puts up a bronze plaque at St Lawrence's, Lavernock: \"Near this spot the first radio messages were exchanged across water by Guglielmo Marconi and George Kemp.\"",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Heritage record",
+     "title": "[SECONDARY] Rotary Club of Cardiff plaque, St Lawrence's churchyard, Lavernock (transcription): \"BETWEEN LAVERNOCK AND FLAT HOLM 11th MAY, LAVERNOCK AND BREAN DOWN 18th MAY 1897 … ERECTED BY THE ROTARY CLUB OF CARDIFF 1947\"",
+     "url": "https://readtheplaque.com/plaque/marconi-s-first-radio-transmissions-across-water"
+    },
+    {
+     "type": "Publication",
+     "title": "[SECONDARY] BBC Wales History blog (2012): the plaque \"unveiled by the Cardiff Rotary Club\" in 1948 (the plaque itself reads 1947)",
+     "url": "https://www.bbc.co.uk/blogs/waleshistory/2012/05/marconi_wireless_open_sea_lavernock_point_flat_holm.html"
+    }
+   ],
+   "image": null,
+   "aliases": [],
+   "no": 40,
+   "ref": "II.8",
+   "cast": [],
+   "received": null,
+   "received_words": [],
+   "known": "SECONDARY: the plaque's wording is from a published transcription, and the BBC gives the unveiling as 1948. It names George Kemp, but no Williams and nothing about Great House.",
    "ledger": [
     [
      "A",
@@ -1906,8 +2525,8 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 29,
-   "ref": "II.8",
+   "no": 41,
+   "ref": "II.9",
    "cast": [
     "billy"
    ],
@@ -1965,7 +2584,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 30,
+   "no": 42,
    "ref": "III.1",
    "cast": [
     "john",
@@ -2034,7 +2653,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 31,
+   "no": 43,
    "ref": "III.2",
    "cast": [
     "mary"
@@ -2092,7 +2711,7 @@
    "aliases": [
     "ghf-19530101-1"
    ],
-   "no": 32,
+   "no": 44,
    "ref": "III.3",
    "cast": [
     "frederick"
@@ -2146,7 +2765,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 33,
+   "no": 45,
    "ref": "III.4",
    "cast": [
     "mary",
@@ -2231,7 +2850,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 34,
+   "no": 46,
    "ref": "III.5",
    "cast": [
     "mary",
@@ -2281,7 +2900,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 35,
+   "no": 47,
    "ref": "III.6",
    "cast": [
     "mary",
@@ -2340,7 +2959,7 @@
    "aliases": [
     "ghf-19610329-1"
    ],
-   "no": 36,
+   "no": 48,
    "ref": "III.7",
    "cast": [
     "mary",
@@ -2405,7 +3024,7 @@
    "aliases": [
     "ghf-19630101-1"
    ],
-   "no": 37,
+   "no": 49,
    "ref": "III.8",
    "cast": [
     "frederick"
@@ -2454,7 +3073,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 38,
+   "no": 50,
    "ref": "III.9",
    "cast": [],
    "received": "Another offer refused by an occupier with no title.",
@@ -2510,7 +3129,7 @@
    "aliases": [
     "ghf-19680901-1"
    ],
-   "no": 39,
+   "no": 51,
    "ref": "III.10",
    "cast": [
     "eldest"
@@ -2554,7 +3173,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 40,
+   "no": 52,
    "ref": "III.11",
    "cast": [
     "mary",
@@ -2606,7 +3225,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 41,
+   "no": 53,
    "ref": "IV.1",
    "cast": [
     "wgr",
@@ -2681,7 +3300,7 @@
    "aliases": [
     "ghf-19700616-1"
    ],
-   "no": 42,
+   "no": 54,
    "ref": "IV.2",
    "cast": [
     "mary"
@@ -2752,7 +3371,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 43,
+   "no": 55,
    "ref": "IV.3",
    "cast": [
     "rcahmw"
@@ -2802,7 +3421,7 @@
    ],
    "image": "/media/ghf-e090-n03-1974-open-day-telegraph.jpg",
    "aliases": [],
-   "no": 44,
+   "no": 56,
    "ref": "IV.4",
    "cast": [
     "mary"
@@ -2856,7 +3475,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 45,
+   "no": 57,
    "ref": "IV.5",
    "cast": [
     "mary",
@@ -2922,7 +3541,7 @@
     "ghf-19741031-2",
     "ghf-19740919-1"
    ],
-   "no": 46,
+   "no": 58,
    "ref": "IV.6",
    "cast": [
     "mary",
@@ -2984,7 +3603,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 47,
+   "no": 59,
    "ref": "IV.7",
    "cast": [],
    "received": "A local antiquarian's objection.",
@@ -3026,7 +3645,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 48,
+   "no": 60,
    "ref": "IV.8",
    "cast": [
     "bp",
@@ -3079,7 +3698,7 @@
    ],
    "image": "/media/ghf-e090-n16-1980-hansard-rowlands.jpg",
    "aliases": [],
-   "no": 49,
+   "no": 61,
    "ref": "IV.9",
    "cast": [
     "wgr",
@@ -3146,7 +3765,7 @@
     "ghf-press-19800417-n05",
     "ghf-19830313-1"
    ],
-   "no": 50,
+   "no": 62,
    "ref": "IV.10",
    "cast": [
     "ggat"
@@ -3195,7 +3814,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 51,
+   "no": 63,
    "ref": "IV.11",
    "cast": [
     "mary",
@@ -3252,7 +3871,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 52,
+   "no": 64,
    "ref": "IV.12",
    "cast": [
     "bp"
@@ -3308,7 +3927,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 53,
+   "no": 65,
    "ref": "IV.13",
    "cast": [
     "mary"
@@ -3359,7 +3978,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 54,
+   "no": 66,
    "ref": "IV.14",
    "cast": [
     "hmlr"
@@ -3415,7 +4034,7 @@
    "aliases": [
     "ghf-19840113-1"
    ],
-   "no": 55,
+   "no": 67,
    "ref": "V.1",
    "cast": [
     "billy",
@@ -3474,7 +4093,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 56,
+   "no": 68,
    "ref": "V.2",
    "cast": [
     "mary",
@@ -3525,7 +4144,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 57,
+   "no": 69,
    "ref": "V.3",
    "cast": [
     "rcahmw"
@@ -3584,7 +4203,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 58,
+   "no": 70,
    "ref": "V.4",
    "cast": [
     "bute",
@@ -3637,7 +4256,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 59,
+   "no": 71,
    "ref": "V.5",
    "cast": [
     "bp",
@@ -3694,7 +4313,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 60,
+   "no": 72,
    "ref": "V.6",
    "cast": [
     "courts"
@@ -3742,7 +4361,7 @@
    "aliases": [
     "ghf-press-n15-01"
    ],
-   "no": 61,
+   "no": 73,
    "ref": "VI.1",
    "cast": [
     "billy"
@@ -3791,7 +4410,7 @@
     "ghf-press-n07",
     "ghf-press-n15-02"
    ],
-   "no": 62,
+   "no": 74,
    "ref": "VI.2",
    "cast": [
     "mary",
@@ -3850,7 +4469,7 @@
     "ghf-press-n15-03",
     "ghf-19880503-1"
    ],
-   "no": 63,
+   "no": 75,
    "ref": "VI.3",
    "cast": [
     "billy",
@@ -3903,7 +4522,7 @@
    ],
    "image": "/media/1988-cadw-farmhouse.jpg",
    "aliases": [],
-   "no": 64,
+   "no": 76,
    "ref": "VI.4",
    "cast": [
     "cadw"
@@ -3959,7 +4578,7 @@
     "ghf-press-n15-04",
     "ghf-press-n09"
    ],
-   "no": 65,
+   "no": 77,
    "ref": "VI.5",
    "cast": [
     "billy"
@@ -4014,7 +4633,7 @@
    "aliases": [
     "ghf-press-n15-11"
    ],
-   "no": 66,
+   "no": 78,
    "ref": "VI.6",
    "cast": [
     "mary"
@@ -4063,7 +4682,7 @@
     "ghf-press-n15-05",
     "ghf-press-n08"
    ],
-   "no": 67,
+   "no": 79,
    "ref": "VI.7",
    "cast": [
     "bp",
@@ -4113,7 +4732,7 @@
     "ghf-press-n15-06",
     "ghf-press-n15-10"
    ],
-   "no": 68,
+   "no": 80,
    "ref": "VI.8",
    "cast": [
     "billy"
@@ -4158,7 +4777,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 69,
+   "no": 81,
    "ref": "VI.9",
    "cast": [
     "cadw"
@@ -4201,7 +4820,7 @@
    "aliases": [
     "ghf-press-n10"
    ],
-   "no": 70,
+   "no": 82,
    "ref": "VI.10",
    "cast": [
     "cadw",
@@ -4268,7 +4887,7 @@
     "ghf-press-n15-12",
     "ghf-19881211-1"
    ],
-   "no": 71,
+   "no": 83,
    "ref": "VI.11",
    "cast": [],
    "received": "An old farmhouse of no special merit was cleared for housing.",
@@ -4335,7 +4954,7 @@
     "ghf-press-n15-08",
     "ghf-press-n15-09"
    ],
-   "no": 72,
+   "no": 84,
    "ref": "VI.12",
    "cast": [
     "billy"
@@ -4390,7 +5009,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 73,
+   "no": 85,
    "ref": "VI.13",
    "cast": [
     "rcahmw"
@@ -4432,7 +5051,7 @@
    "aliases": [
     "ghf-press-n15-14"
    ],
-   "no": 74,
+   "no": 86,
    "ref": "VII.1",
    "cast": [],
    "received": null,
@@ -4491,7 +5110,7 @@
     "ghf-19890115-1",
     "ghf-press-n15-13"
    ],
-   "no": 75,
+   "no": 87,
    "ref": "VII.2",
    "cast": [
     "billy"
@@ -4532,7 +5151,7 @@
    ],
    "image": "/media/ghf-e090-n13-1989-farm-to-bus.jpg",
    "aliases": [],
-   "no": 76,
+   "no": 88,
    "ref": "VII.3",
    "cast": [
     "billy"
@@ -4577,7 +5196,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 77,
+   "no": 89,
    "ref": "VII.4",
    "cast": [],
    "received": "Strasbourg confirmed the eviction was lawful and the property was BP's.",
@@ -4643,7 +5262,7 @@
     "ghf-19891108-1",
     "ghf-19891010-1"
    ],
-   "no": 78,
+   "no": 90,
    "ref": "VII.5",
    "cast": [
     "bp",
@@ -4692,7 +5311,7 @@
    "aliases": [
     "ghf-19900208-1"
    ],
-   "no": 79,
+   "no": 91,
    "ref": "VII.6",
    "cast": [
     "ggat"
@@ -4739,7 +5358,7 @@
    "aliases": [
     "ghf-19920515-1"
    ],
-   "no": 80,
+   "no": 92,
    "ref": "VII.7",
    "cast": [
     "billy"
@@ -4793,7 +5412,7 @@
    "aliases": [
     "ghf-19901015-1"
    ],
-   "no": 81,
+   "no": 93,
    "ref": "VII.8",
    "cast": [
     "bp",
@@ -4849,7 +5468,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 82,
+   "no": 94,
    "ref": "VII.9",
    "cast": [
     "ggat",
@@ -4890,7 +5509,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 83,
+   "no": 95,
    "ref": "VII.10",
    "cast": [
     "ideal"
@@ -4930,7 +5549,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 84,
+   "no": 96,
    "ref": "VII.11",
    "cast": [
     "ggat"
@@ -4975,7 +5594,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 85,
+   "no": 97,
    "ref": "VII.12",
    "cast": [],
    "received": null,
@@ -5030,7 +5649,7 @@
    "aliases": [
     "ghf-19931213-1"
    ],
-   "no": 86,
+   "no": 98,
    "ref": "VII.13",
    "cast": [
     "bp",
@@ -5086,7 +5705,7 @@
    "aliases": [
     "ghf-19940421-1"
    ],
-   "no": 87,
+   "no": 99,
    "ref": "VII.14",
    "cast": [],
    "received": "A successful rescue excavation.",
@@ -5134,7 +5753,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 88,
+   "no": 100,
    "ref": "VII.15",
    "cast": [
     "ideal"
@@ -5191,7 +5810,7 @@
    "aliases": [
     "ghf-19950628-1"
    ],
-   "no": 89,
+   "no": 101,
    "ref": "VII.16",
    "cast": [],
    "received": null,
@@ -5244,7 +5863,7 @@
    "aliases": [
     "ghf-20051222-1"
    ],
-   "no": 90,
+   "no": 102,
    "ref": "VII.17",
    "cast": [],
    "received": null,
@@ -5282,7 +5901,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 91,
+   "no": 103,
    "ref": "VII.18",
    "cast": [
     "ggat"
@@ -5324,7 +5943,7 @@
    "aliases": [
     "ghf-20260123-1"
    ],
-   "no": 92,
+   "no": 104,
    "ref": "VIII.1",
    "cast": [
     "mary",
@@ -5374,7 +5993,7 @@
    "aliases": [
     "ghf-20260213-1"
    ],
-   "no": 93,
+   "no": 105,
    "ref": "VIII.2",
    "cast": [
     "hmlr"
@@ -5419,7 +6038,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 94,
+   "no": 106,
    "ref": "VIII.3",
    "cast": [
     "hmlr"
@@ -5482,7 +6101,7 @@
    ],
    "image": "/media/1988-cadw-barn.jpg",
    "aliases": [],
-   "no": 95,
+   "no": 107,
    "ref": "VIII.4",
    "cast": [
     "cadw"
@@ -5534,7 +6153,7 @@
    "aliases": [
     "ghf-20260602-1"
    ],
-   "no": 96,
+   "no": 108,
    "ref": "VIII.5",
    "cast": [
     "hmlr"
@@ -5574,7 +6193,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 97,
+   "no": 109,
    "ref": "VIII.6",
    "cast": [],
    "received": null,
@@ -5617,7 +6236,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 98,
+   "no": 110,
    "ref": "VIII.7",
    "cast": [
     "bute"
@@ -5674,7 +6293,7 @@
    "aliases": [
     "ghf-20260918-1"
    ],
-   "no": 99,
+   "no": 111,
    "ref": "VIII.8",
    "cast": [
     "hmlr",
@@ -5727,7 +6346,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 100,
+   "no": 112,
    "ref": "VIII.9",
    "cast": [
     "bp",
@@ -5773,7 +6392,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 101,
+   "no": 113,
    "ref": "VIII.10",
    "cast": [],
    "received": null,
@@ -5816,7 +6435,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 102,
+   "no": 114,
    "ref": "VIII.11",
    "cast": [
     "hmlr",
@@ -5869,7 +6488,7 @@
    "aliases": [
     "ghf-20261005-1"
    ],
-   "no": 103,
+   "no": 115,
    "ref": "VIII.12",
    "cast": [
     "rcahmw"
@@ -5932,7 +6551,7 @@
     "ghf-20260922-1",
     "ghf-20261003-1"
    ],
-   "no": 104,
+   "no": 116,
    "ref": "VIII.13",
    "cast": [
     "ggat",
@@ -5993,7 +6612,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 105,
+   "no": 117,
    "ref": "VIII.14",
    "cast": [
     "wgr",
@@ -6040,7 +6659,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 106,
+   "no": 118,
    "ref": "O.1",
    "cast": [],
    "received": "A squatter was evicted after losing in court.",
@@ -6093,7 +6712,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 107,
+   "no": 119,
    "ref": "O.2",
    "cast": [
     "mary"
@@ -6143,7 +6762,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 108,
+   "no": 120,
    "ref": "O.3",
    "cast": [
     "wgr",
@@ -6189,7 +6808,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 109,
+   "no": 121,
    "ref": "O.4",
    "cast": [
     "bp"
@@ -6239,7 +6858,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 110,
+   "no": 122,
    "ref": "O.5",
    "cast": [
     "courts"
@@ -6295,7 +6914,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 111,
+   "no": 123,
    "ref": "O.6",
    "cast": [
     "billy"
@@ -6346,7 +6965,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 112,
+   "no": 124,
    "ref": "O.7",
    "cast": [],
    "received": "An old building was cleared for housing.",
@@ -6400,7 +7019,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 113,
+   "no": 125,
    "ref": "O.8",
    "cast": [
     "mps"
@@ -6445,7 +7064,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 114,
+   "no": 126,
    "ref": "O.9",
    "cast": [
     "mary"
@@ -6496,7 +7115,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 115,
+   "no": 127,
    "ref": "O.10",
    "cast": [
     "cadw"
@@ -6546,7 +7165,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 116,
+   "no": 128,
    "ref": "O.11",
    "cast": [
     "mary",
@@ -6602,7 +7221,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 117,
+   "no": 129,
    "ref": "E.1",
    "cast": [],
    "received": "A landlord and its successors recovered their farm from tenants who stayed on without paying, and the courts confirmed it.",
@@ -6676,7 +7295,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 118,
+   "no": 130,
    "ref": "E.2",
    "cast": [],
    "received": "It was always one farm, and nobody suggested otherwise.",
@@ -6733,7 +7352,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 119,
+   "no": 131,
    "ref": "E.3",
    "cast": [],
    "received": "A modern estate on a former farm.",
@@ -6776,7 +7395,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 120,
+   "no": 132,
    "ref": "E.4",
    "cast": [],
    "received": null,
@@ -6819,7 +7438,7 @@
    ],
    "image": "/media/1988-cadw-farmhouse.jpg",
    "aliases": [],
-   "no": 121,
+   "no": 133,
    "ref": "E.5",
    "cast": [],
    "received": null,

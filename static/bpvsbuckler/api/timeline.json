@@ -21,7 +21,7 @@
   },
   "version": "v0.0.0.68",
   "last_updated": "2026-10-19",
-  "total_entries": 121,
+  "total_entries": 133,
   "acts": [
     {
       "id": "P",
@@ -35,7 +35,7 @@
       "label": "Act I",
       "title": "Division",
       "span": "1858 – 1915",
-      "logline": "The limeworks, and the 1877 division of the farm."
+      "logline": "The limeworks, the 1877 division of the farm, and Marconi's wireless trials at Lavernock in May 1897."
     },
     {
       "id": "II",
@@ -829,6 +829,50 @@
     {
       "order": 12,
       "ref": "I.1",
+      "id": "ghf-18641223-1",
+      "act": "I",
+      "date": "1864-12-23",
+      "when": "23 December 1864",
+      "title": "Death of Amy Williams of Great House",
+      "place": "Llandough",
+      "parcel": "AB",
+      "basis": "Newspaper",
+      "narration": "Amy Williams dies at Llandough, aged 65. The death notices call her \"relict of the late Mr. John Williams, Great House farm\": the widow of the elder John Williams, whose son John had taken over the tenancy in 1855.",
+      "family_case": null,
+      "title_ledger": {
+        "Great House (one farm)": "Lordship of the manor (1793) and farm freehold (early 19th century): the Bute Estate · tenants: the Williamses"
+      },
+      "title_moves": [],
+      "received_account": null,
+      "received_wording": [
+        {
+          "said": "\"relict of the late Mr. John Williams, Great House farm\"",
+          "note": "The notice's own words: the elder John Williams was dead by December 1864, and was remembered as \"of Great House farm\"."
+        }
+      ],
+      "what_we_now_know": "VERIFIED (two contemporary death notices, read on Welsh Newspapers Online). They fit the 1904 report that the younger John Williams \"succeeded his father in the tenancy of the farm in 1855\". Not yet found: the elder John Williams's own death or burial entry, and Amy's maiden name.",
+      "cast": [
+        "john"
+      ],
+      "evidence": [
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] Cardiff Times, 30 December 1864, p.5 — deaths: \"at Llandough, near Cardiff, Amy, relict of the late Mr. John Williams, Great House farm, aged 65 years\" (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/3383386/3383391/14/"
+        },
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] Cardiff and Merthyr Guardian, 30 December 1864, p.5 — deaths: \"WILLIAMS.—Dec. 23, at Llandough, near Cardiff, Amy, relict of the late Mr. John Williams, Great House farm, aged 65\" (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/3094324/3094329/21/"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18641223-1"
+    },
+    {
+      "order": 13,
+      "ref": "I.2",
       "id": "ghf-18680101-1",
       "act": "I",
       "date": "1868-01-01",
@@ -901,8 +945,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18680101-1"
     },
     {
-      "order": 13,
-      "ref": "I.2",
+      "order": 14,
+      "ref": "I.3",
       "id": "ghf-18700101-1",
       "act": "I",
       "date": "1870-01-01",
@@ -957,8 +1001,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18700101-1"
     },
     {
-      "order": 14,
-      "ref": "I.3",
+      "order": 15,
+      "ref": "I.4",
       "id": "ghf-18700101-2",
       "act": "I",
       "date": "1870-01-02",
@@ -1016,8 +1060,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18700101-2"
     },
     {
-      "order": 15,
-      "ref": "I.4",
+      "order": 16,
+      "ref": "I.5",
       "id": "ghf-18760101-1",
       "act": "I",
       "date": "1876-01-01",
@@ -1050,8 +1094,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18760101-1"
     },
     {
-      "order": 16,
-      "ref": "I.5",
+      "order": 17,
+      "ref": "I.6",
       "id": "ghf-18770101-1",
       "act": "I",
       "date": "1877-01-01",
@@ -1117,8 +1161,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18770101-1"
     },
     {
-      "order": 17,
-      "ref": "I.6",
+      "order": 18,
+      "ref": "I.7",
       "id": "ghf-18810403-1",
       "act": "I",
       "date": "1881-04-03",
@@ -1184,8 +1228,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18810403-1"
     },
     {
-      "order": 18,
-      "ref": "I.7",
+      "order": 19,
+      "ref": "I.8",
       "id": "ghf-18911111-1",
       "act": "I",
       "date": "1891-11-11",
@@ -1230,33 +1274,149 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18911111-1"
     },
     {
-      "order": 19,
-      "ref": "I.8",
-      "id": "ghf-18970501-1",
+      "order": 20,
+      "ref": "I.9",
+      "id": "ghf-18920101-1",
       "act": "I",
-      "date": "1897-05-01",
-      "when": "May 1897",
-      "title": "Marconi at Lavernock",
-      "place": "Lavernock Point",
-      "parcel": "?",
-      "basis": "Source pending",
-      "narration": "Marconi's wireless trials at Lavernock Point, May 1897. Family tradition records that Thomas Williams of Great House carted his equipment.",
+      "date": "1892-01-01",
+      "when": "1892",
+      "title": "Signals across the water: Preece at Lavernock",
+      "place": "Lavernock Point and Flat Holm",
+      "parcel": "x",
+      "basis": "Newspaper",
+      "narration": "The Post Office engineer William Preece stretches long parallel wires on the shore at Lavernock and on Flat Holm, 3.3 miles out, and sends messages between them by induction, with no wire across the water. Five years later Marconi comes to the same shore.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends",
         "Parcel B: the fields": "Freehold: the Bute Estate · tenants: the Williamses"
       },
       "title_moves": [],
-      "received_account": "An unproven family story.",
+      "received_account": null,
       "received_wording": [],
-      "what_we_now_know": "The trials are documented; the family's part is their own account.",
+      "what_we_now_know": "VERIFIED that the 1892 messages were reported in 1897 in Preece's own words (South Wales Daily Post, 5 June 1897). The details (wire lengths, 3.3 miles, the failed attempt to Steep Holm) are SECONDARY, from Fahie's history of 1899/1901. This is the Lavernock background to Marconi. It names no Williams and has no link to Great House.",
       "cast": [],
       "evidence": [
         {
           "type": "Newspaper",
-          "title": "Press report of the Lavernock trials, 1897",
-          "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n02",
+          "title": "[VERIFIED] South Wales Daily Post, 5 June 1897, p.3 — Preece's Royal Institution lecture: \"In 1892 distinct messages were sent across a portion of the Bristol Channel between Penarth and the Flat Holm, a distance of over three miles\" (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/3356360/3356363/20/"
+        },
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] Cardiff Times, 13 March 1897, p.2 — \"No Use for Wires\": the \"wonderful doings\" of Mr Preece \"at Lavernock and the Flat Holm\" (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/3431204/3431206/41/"
+        },
+        {
+          "type": "Publication",
+          "title": "[SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Preece's induction method: the Lavernock–Flat Holm trials",
+          "url": "https://earlyradiohistory.us/1901fa21.htm"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18920101-1"
+    },
+    {
+      "order": 21,
+      "ref": "I.10",
+      "id": "ghf-18940731-1",
+      "act": "I",
+      "date": "1894-07-31",
+      "when": "Week of 30 July 1894",
+      "title": "Swine fever at Great House",
+      "place": "Great House Farm",
+      "parcel": "AB",
+      "basis": "Newspaper",
+      "narration": "Swine fever breaks out at Llandough. Five pigs belonging to Mr Williams of Great House are slaughtered. On the Tuesday morning one of his herd of 23 is reported affected, and it is feared the whole herd will have to go.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends",
+        "Parcel B: the fields": "Freehold: the Bute Estate · tenants: the Williamses"
+      },
+      "title_moves": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "VERIFIED (two newspapers, 3 August 1894). \"Mr Williams, Great House\" at Llandough in 1894 is the John Williams of the directories (1868–1901). The herd of 22–23 pigs shows a working farm.",
+      "cast": [],
+      "evidence": [
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] Barry Dock News, 3 August 1894, p.5 — \"Swine fever at Llandough and Rhoose\": \"Five pigs belonging to Mr Williams, Great House, have been slaughtered\" (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/4596799/4596804/24/"
+        },
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] Glamorgan Gazette, 3 August 1894, p.5 — the same report (herd given as 22) (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/3874190/3874195/53/"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18940731-1"
+    },
+    {
+      "order": 22,
+      "ref": "I.11",
+      "id": "ghf-18970501-1",
+      "act": "I",
+      "date": "1897-05-01",
+      "when": "Late April – early May 1897",
+      "title": "Marconi comes to Lavernock",
+      "place": "Lavernock Point",
+      "parcel": "x",
+      "basis": "Newspaper",
+      "narration": "The Cardiff papers announce that the young Italian Guglielmo Marconi, 23, will come to Cardiff \"in a few weeks\" to signal across the Bristol Channel without wires, with the Post Office's staff and apparatus at his disposal. At Lavernock Point the receiving station goes up on the cliff: a tall pole with a zinc cylinder at the top (120 feet, says the Evening Express; 30 yards, says Preece's account). The press names the man who put it up only as \"Mr. Williams (of the engineering department, Cardiff)\". The sending station is on Flat Holm.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends",
+        "Parcel B: the fields": "Freehold: the Bute Estate · tenants: the Williamses"
+      },
+      "title_moves": [],
+      "received_account": "Marconi's Welsh trials were a Post Office affair; local people had no part in them.",
+      "received_wording": [
+        {
+          "said": "\"Mr. Williams (of the engineering department, Cardiff)\"",
+          "note": "The only Williams in any 1897 report read. He is a Post Office engineer in Cardiff. No initial or address is given."
+        }
+      ],
+      "what_we_now_know": "VERIFIED: the trials, the date (Evening Express, 15 May 1897, p.4) and \"Mr. Williams (of the engineering department, Cardiff)\". The wiki's undated cutting EV-0011 is that Evening Express report; the same text is in the Western Mail of the same day. UNVERIFIED / SOURCE PENDING: Sion Buckler's position (request to The National Archives, 16 July 2026) that this Mr Williams was his forebear Mr Williams of Great House Farm, and that Marconi stayed with the family at the farm in 1897. No 1897 document read so far gives the engineer's full name or Marconi's lodging. A statement that Thomas Williams of Great House carted Marconi's equipment has no document or named speaker: SOURCE PENDING. The photograph that the wiki's Media Gallery captioned \"Marconi wireless telegraph at Great House Farm\" (caption corrected 19 October 2026) is the Flat Holm photograph of 13 May 1897 (see 13 May). Next records: Post Office establishment books (BT Archives, POST 59) for a Williams in the Cardiff engineering district in 1897; the 1901 census.",
+      "cast": [],
+      "evidence": [
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] Evening Express, 26 April 1897, p.2 — \"Wireless Telegraphy … Coming to Cardiff in a Few Weeks to Experiment Across the Bristol Channel\" (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/3270301/3270303/28/"
+        },
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] Weekly Mail, 1 May 1897, p.4 — the same report (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/3370882/3370886/79/"
+        },
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] Evening Express, 15 May 1897 (Extra Special), p.4 — \"Wireless Telegraphy. Marconi Invention Tested at Lavernock\" (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/3270811/3270815/108/"
+        },
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] Western Mail, 15 May 1897, p.6 — \"Telegraphy without wires. Marconi invention tested at Lavernock\" (same report) (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/4313747/4313753/61/"
+        },
+        {
+          "type": "Newspaper",
+          "title": "EV-0011 — the same cutting on the wiki (catalogued there as undated; identified here as the Evening Express, 15 May 1897, p.4)",
+          "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0011-marconi-lavernock-wireless-cutting-1897/",
           "image": "https://bpvsbuckler.bucklerfamily.estate/media/ghf-e090-n02-1897-marconi-lavernock.jpg"
+        },
+        {
+          "type": "Publication",
+          "title": "[SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Marconi's method, drawing on Preece's Royal Institution lecture of 4 June 1897",
+          "url": "https://earlyradiohistory.us/1901fa23.htm"
+        },
+        {
+          "type": "Official correspondence",
+          "title": "[UNVERIFIED / SOURCE PENDING] Sion Buckler, records request to The National Archives, 16 July 2026, \"Mr. Williams, Cardiff Post Office Engineering Department, 1897 Marconi Lavernock Experiments\" (TNA replied 30 July 2026 that it is not the right place to ask)",
+          "url": "https://greathousefarmwiki.wordpress.com/?p=5363"
         }
       ],
       "image": "https://bpvsbuckler.bucklerfamily.estate/media/ghf-e090-n02-1897-marconi-lavernock.jpg",
@@ -1264,8 +1424,335 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18970501-1"
     },
     {
-      "order": 20,
-      "ref": "I.9",
+      "order": 23,
+      "ref": "I.12",
+      "id": "ghf-18970510-1",
+      "act": "I",
+      "date": "1897-05-10",
+      "when": "10 May 1897",
+      "title": "Preece's method tried again",
+      "place": "Lavernock Point and Flat Holm",
+      "parcel": "x",
+      "basis": "Publication",
+      "narration": "Before Marconi's own trials begin, the Post Office repeats Preece's induction method between Lavernock and Flat Holm. It works.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends",
+        "Parcel B: the fields": "Freehold: the Bute Estate · tenants: the Williamses"
+      },
+      "title_moves": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "SECONDARY (Fahie, 1899/1901, from Preece's account). No 1897 newspaper read here mentions 10 May.",
+      "cast": [],
+      "evidence": [
+        {
+          "type": "Publication",
+          "title": "[SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Marconi's method, drawing on Preece's Royal Institution lecture of 4 June 1897",
+          "url": "https://earlyradiohistory.us/1901fa23.htm"
+        },
+        {
+          "type": "Publication",
+          "title": "[SECONDARY] BBC Wales History blog, \"Marconi's Welsh wireless revolution\" (May 2012), quoting the same account",
+          "url": "https://www.bbc.co.uk/blogs/waleshistory/2012/05/marconi_wireless_open_sea_lavernock_point_flat_holm.html"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18970510-1"
+    },
+    {
+      "order": 24,
+      "ref": "I.13",
+      "id": "ghf-18970511-1",
+      "act": "I",
+      "date": "1897-05-11",
+      "when": "11–12 May 1897",
+      "title": "Two days of failure",
+      "place": "Lavernock Point",
+      "parcel": "x",
+      "basis": "Newspaper",
+      "narration": "Marconi's first attempts to receive signals from Flat Holm at the Lavernock cliff-top station fail. The Evening Express reports that the experiments on Tuesday \"were not so successful as might have been desired\".",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends",
+        "Parcel B: the fields": "Freehold: the Bute Estate · tenants: the Williamses"
+      },
+      "title_moves": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "VERIFIED that Tuesday 11 May went badly (Evening Express, 15 May 1897). Fahie says 11 and 12 May both failed, but the Evening Express calls Wednesday and Thursday \"most satisfactory\". The 1947 plaque gives 11 May as the day messages were first exchanged with Flat Holm. The sources conflict on 11–13 May.",
+      "cast": [],
+      "evidence": [
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] Evening Express, 15 May 1897 (Extra Special), p.4 — \"Wireless Telegraphy. Marconi Invention Tested at Lavernock\" (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/3270811/3270815/108/"
+        },
+        {
+          "type": "Publication",
+          "title": "[SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Marconi's method, drawing on Preece's Royal Institution lecture of 4 June 1897",
+          "url": "https://earlyradiohistory.us/1901fa23.htm"
+        },
+        {
+          "type": "Heritage record",
+          "title": "[SECONDARY] Rotary Club of Cardiff plaque, St Lawrence's churchyard, Lavernock (transcription): \"BETWEEN LAVERNOCK AND FLAT HOLM 11th MAY, LAVERNOCK AND BREAN DOWN 18th MAY 1897 … ERECTED BY THE ROTARY CLUB OF CARDIFF 1947\"",
+          "url": "https://readtheplaque.com/plaque/marconi-s-first-radio-transmissions-across-water"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18970511-1"
+    },
+    {
+      "order": 25,
+      "ref": "I.14",
+      "id": "ghf-18970513-1",
+      "act": "I",
+      "date": "1897-05-13",
+      "when": "13 May 1897",
+      "title": "Signals across the sea",
+      "place": "Lavernock Point and Flat Holm",
+      "parcel": "x",
+      "basis": "Newspaper",
+      "narration": "The receiver is carried down to the beach below the cliff and joined to the pole by another 20 yards of wire. Signals from Flat Holm, 3.3 miles away, now print clearly on the Morse inker at Lavernock. The Evening Express reports that on Wednesday and Thursday \"the results were most satisfactory\". Watching are Preece, his second engineer Mr Gavey (late of Cardiff), the Cardiff postmaster Mr Fardo and other officials. The German Professor Slaby is there too.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends",
+        "Parcel B: the fields": "Freehold: the Bute Estate · tenants: the Williamses"
+      },
+      "title_moves": [],
+      "received_account": "Marconi sent the first radio message over open sea, from Lavernock to Flat Holm, on 13 May 1897.",
+      "received_wording": [
+        {
+          "said": "\"Are you ready?\"",
+          "note": "A later account of the first words. Another later account gives \"CAN YOU HEAR ME\" and \"YES LOUD AND CLEAR\". No 1897 source read here records the words."
+        }
+      ],
+      "what_we_now_know": "VERIFIED: success by midweek (Evening Express: Wednesday 12 and Thursday 13 May \"most satisfactory\"); Preece, Gavey and Fardo present. SECONDARY: the date 13 May, the 20 extra yards of wire, and Slaby's presence (Fahie). Direction: in Preece's account (via Fahie) Flat Holm sent and Lavernock received; some modern accounts reverse it. The photograph is captioned by its source as Flat Holm, 13 May 1897. Its date and place rest on that caption. Nothing in it links to Great House Farm.",
+      "cast": [],
+      "evidence": [
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] Evening Express, 15 May 1897 (Extra Special), p.4 — \"Wireless Telegraphy. Marconi Invention Tested at Lavernock\" (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/3270811/3270815/108/"
+        },
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] Western Mail, 15 May 1897, p.6 — \"Telegraphy without wires. Marconi invention tested at Lavernock\" (same report) (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/4313747/4313753/61/"
+        },
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] South Wales Echo, 17 May 1897, p.2 — \"The Man About Town\": \"Lavernock and the Flat Holm will stand out in the history of electrical science\"; the messages were recorded, not just heard (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/4604986/4604988/5/"
+        },
+        {
+          "type": "Publication",
+          "title": "[SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Marconi's method, drawing on Preece's Royal Institution lecture of 4 June 1897",
+          "url": "https://earlyradiohistory.us/1901fa23.htm"
+        },
+        {
+          "type": "Photograph",
+          "title": "[SECONDARY: date and place as captioned by the source] Post Office engineers inspect Marconi's apparatus on Flat Holm, 13 May 1897. Photo: Cardiff Council Flat Holm Project, CC BY 3.0, via Wikimedia Commons (File:Post_Office_Engineers.jpg)",
+          "url": "https://commons.wikimedia.org/wiki/File:Post_Office_Engineers.jpg",
+          "image": "https://bpvsbuckler.bucklerfamily.estate/media/1897-05-13-flat-holm-post-office-engineers-marconi.jpg"
+        },
+        {
+          "type": "Publication",
+          "title": "[SECONDARY — conflicting] Later accounts give the first words as \"Are you ready?\" (We Are Cardiff, 13 May 2016) or \"CAN YOU HEAR ME\" / \"YES LOUD AND CLEAR\" (BBC Wales History, 2012). No 1897 source read here gives the words.",
+          "url": "https://wearecardiff.co.uk/2016/05/13/marconis-first-wireless-message-transmitted-over-sea-from-flat-holm-to-lavernock-point/"
+        }
+      ],
+      "image": "https://bpvsbuckler.bucklerfamily.estate/media/1897-05-13-flat-holm-post-office-engineers-marconi.jpg",
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18970513-1"
+    },
+    {
+      "order": 26,
+      "ref": "I.15",
+      "id": "ghf-18970514-1",
+      "act": "I",
+      "date": "1897-05-14",
+      "when": "14 May 1897 (Friday)",
+      "title": "The demonstration at Lavernock",
+      "place": "Lavernock Point",
+      "parcel": "x",
+      "basis": "Newspaper",
+      "narration": "On Friday afternoon Marconi gives a semi-public demonstration. A select company of local scientists and engineers watches his system explained in miniature, with a transmitter facing a receiver about twenty yards away, and messages written by the Morse self-inker without a connecting wire.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends",
+        "Parcel B: the fields": "Freehold: the Bute Estate · tenants: the Williamses"
+      },
+      "title_moves": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "VERIFIED (Evening Express, 15 May 1897; Carnarvon and Denbigh Herald, 21 May 1897). The guests are not named.",
+      "cast": [],
+      "evidence": [
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] Evening Express, 15 May 1897 (Extra Special), p.4 — \"Wireless Telegraphy. Marconi Invention Tested at Lavernock\" (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/3270811/3270815/108/"
+        },
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] Carnarvon and Denbigh Herald, 21 May 1897, p.4 — \"Telegraphing without wires\": Preece \"during last week\" testing Marconi's invention between Lavernock Point and the Flat Holme; a select company of local scientists and engineers invited (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/3603309/3603313/23/"
+        },
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] Weekly Mail, 22 May 1897, p.8 — \"Wireless Telegraphy. Marconi Invention Tested at Lavernock\" (same report) (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/3370921/3370929/162/"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18970514-1"
+    },
+    {
+      "order": 27,
+      "ref": "I.16",
+      "id": "ghf-18970518-1",
+      "act": "I",
+      "date": "1897-05-18",
+      "when": "18 May 1897",
+      "title": "Lavernock to Brean Down",
+      "place": "Lavernock Point and Brean Down (Somerset)",
+      "parcel": "x",
+      "basis": "Newspaper",
+      "narration": "The range is pushed across the whole Channel. A message sent from Lavernock Point, through a wire carried 220 feet up on a kite, is received at Brean Down, near Weston-super-Mare, about eight and a half miles away. Marconi signs the paper tape. That week he works on Brean Down with Preece and Gavey.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends",
+        "Parcel B: the fields": "Freehold: the Bute Estate · tenants: the Williamses"
+      },
+      "title_moves": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "VERIFIED: the 18 May date, the kite at 220 ft and Marconi's signature are all on the framed tape, as transcribed by the South Wales Echo on 27 May 1897. The Echo of 20 May has messages going from Brean Down to Lavernock that week; the tape reads Lavernock to Brean Down. Fahie dates the Brean Down link to the day after the Flat Holm success. Brean Down is in Somerset and is included only as the far end of the Welsh link.",
+      "cast": [],
+      "evidence": [
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] South Wales Echo, 27 May 1897, p.4 — \"First wireless telegram\": \"Sent from Lavernock Point through a kite at an elevation of 220ft., and received at Brean Down, May 18th, 1897 … (Signed) G. Marconi\" (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/4605031/4605035/99/"
+        },
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] South Wales Echo, 20 May 1897, p.3 — \"The Marconi experiments\": Marconi, with Mr Preece and Mr Gavey, \"has this week been at work on Brean Down\" (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/4605001/4605004/57/"
+        },
+        {
+          "type": "Heritage record",
+          "title": "[SECONDARY] Rotary Club of Cardiff plaque, St Lawrence's churchyard, Lavernock (transcription): \"BETWEEN LAVERNOCK AND FLAT HOLM 11th MAY, LAVERNOCK AND BREAN DOWN 18th MAY 1897 … ERECTED BY THE ROTARY CLUB OF CARDIFF 1947\"",
+          "url": "https://readtheplaque.com/plaque/marconi-s-first-radio-transmissions-across-water"
+        },
+        {
+          "type": "Publication",
+          "title": "[SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Marconi's method, drawing on Preece's Royal Institution lecture of 4 June 1897",
+          "url": "https://earlyradiohistory.us/1901fa23.htm"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18970518-1"
+    },
+    {
+      "order": 28,
+      "ref": "I.17",
+      "id": "ghf-18970527-1",
+      "act": "I",
+      "date": "1897-05-27",
+      "when": "Late May – July 1897",
+      "title": "The first wireless telegram goes on show",
+      "place": "Cardiff Central Free Library",
+      "parcel": "x",
+      "basis": "Newspaper",
+      "narration": "The framed tape of the Brean Down message goes on view in the hall of the Cardiff Central Free Library. Work at Lavernock goes on \"for a few days longer\". On 4 June Preece describes the Penarth–Brean Down signals to the Royal Institution in London. Marconi leaves England for Italy on Monday 5 July 1897.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends",
+        "Parcel B: the fields": "Freehold: the Bute Estate · tenants: the Williamses"
+      },
+      "title_moves": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "VERIFIED. Not found: the day Marconi left South Wales, or where he lodged while there. The last Welsh press notice of the work found is the South Wales Echo of 20 May 1897. In 1897 Marconi's next move was to London, and then Italy (Spezia trials, 10–18 July 1897, per Fahie).",
+      "cast": [],
+      "evidence": [
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] South Wales Echo, 27 May 1897, p.4 — the framed tape on view at the Cardiff Central Free Library (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/4605031/4605035/99/"
+        },
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] South Wales Echo, 20 May 1897, p.3 — \"Work is still progressing at Lavernock, and will be continued for a few days longer\" (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/4605001/4605004/57/"
+        },
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] South Wales Daily Post, 5 June 1897, p.3 — Preece's Royal Institution lecture: signals \"between Penarth and Brean Down … a distance of nearly nine miles\" (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/3356360/3356363/20/"
+        },
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] Carnarvon and Denbigh Herald, 9 July 1897, p.2 — Preece: \"Marconi only left England on Monday\" (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/3603372/3603374/10/"
+        },
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] Y Negesydd, 23 July 1897, p.1 — \"Pellebru heb wifrau\": experiments \"yn agos i Benarth, Caerdydd\" by Mr Preece and Marconi (Welsh) (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/3819134/3819135/2/"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18970527-1"
+    },
+    {
+      "order": 29,
+      "ref": "I.18",
+      "id": "ghf-19070401-1",
+      "act": "I",
+      "date": "1907-04-01",
+      "when": "1 April 1907",
+      "title": "Air-rifle meeting at Great House Farm",
+      "place": "Great House Farm",
+      "parcel": "?",
+      "basis": "Newspaper",
+      "narration": "The Llandough Air-rifle Club holds its Easter Monday meeting at Great House Farm: ten shots at twenty yards. A Llandough man, J. Griffiths, comes third.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends",
+        "Parcel B: the fields": "Freehold: the Bute Estate · tenants: the Williamses"
+      },
+      "title_moves": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "VERIFIED (two notices). The reports do not name the farmer.",
+      "cast": [],
+      "evidence": [
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] Evening Express, 27 March 1907, p.3 — notice: an air-rifle shooting competition \"at the Great House Farm, Llandough, on Monday next\" (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/4174604/4174607/109/"
+        },
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] Evening Express, 2 April 1907, p.4 — \"Air-rifle shooting. The Llandough meeting … held on Monday at Great House Farm, Llandough\" (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/4174794/4174798/123/"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19070401-1"
+    },
+    {
+      "order": 30,
+      "ref": "I.19",
       "id": "ghf-19080101-1",
       "act": "I",
       "date": "1908-01-01",
@@ -1327,8 +1814,41 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19080101-1"
     },
     {
-      "order": 21,
-      "ref": "I.10",
+      "order": 31,
+      "ref": "I.20",
+      "id": "ghf-19080106-1",
+      "act": "I",
+      "date": "1908-01-06",
+      "when": "6 January 1908",
+      "title": "A poacher caught on Great House Farm",
+      "place": "Great House Farm",
+      "parcel": "?",
+      "basis": "Newspaper",
+      "narration": "Shortly before three in the morning two keepers on their round at Llandough see a man net two rabbits on Great House Farm and catch him before he leaves the field. At Barry he is sent to gaol for two months.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold: the Thomases · tenant: John Williams",
+        "Parcel B: the fields": "Freehold: the Bute Estate · tenant: John Williams"
+      },
+      "title_moves": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "VERIFIED (Evening Express, 10 January 1908). The keepers are not said to be the farm's own. John Williams of Great House died later in 1908 (EV-0243).",
+      "cast": [],
+      "evidence": [
+        {
+          "type": "Newspaper",
+          "title": "[VERIFIED] Evening Express, 10 January 1908, p.3 — \"Two months for a poacher\": \"poaching on Great House Farm, Llandough\" (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/4184741/4184744/84/"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19080106-1"
+    },
+    {
+      "order": 32,
+      "ref": "I.21",
       "id": "ghf-19130810-1",
       "act": "I",
       "date": "1913-08-10",
@@ -1367,7 +1887,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19130810-1"
     },
     {
-      "order": 22,
+      "order": 33,
       "ref": "II.1",
       "id": "ghf-19160201-1",
       "act": "II",
@@ -1425,7 +1945,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19160201-1"
     },
     {
-      "order": 23,
+      "order": 34,
       "ref": "II.2",
       "id": "ghf-19280101-1",
       "act": "II",
@@ -1487,7 +2007,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19280101-1"
     },
     {
-      "order": 24,
+      "order": 35,
       "ref": "II.3",
       "id": "ghf-19360101-1",
       "act": "II",
@@ -1542,7 +2062,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19360101-1"
     },
     {
-      "order": 25,
+      "order": 36,
       "ref": "II.4",
       "id": "ghf-19380101-1",
       "act": "II",
@@ -1591,7 +2111,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19380101-1"
     },
     {
-      "order": 26,
+      "order": 37,
       "ref": "II.5",
       "id": "ghf-19390501-1",
       "act": "II",
@@ -1635,7 +2155,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19390501-1"
     },
     {
-      "order": 27,
+      "order": 38,
       "ref": "II.6",
       "id": "ghf-19400101-1",
       "act": "II",
@@ -1676,7 +2196,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19400101-1"
     },
     {
-      "order": 28,
+      "order": 39,
       "ref": "II.7",
       "id": "ghf-19440101-1",
       "act": "II",
@@ -1723,8 +2243,47 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19440101-1"
     },
     {
-      "order": 29,
+      "order": 40,
       "ref": "II.8",
+      "id": "ghf-19470101-1",
+      "act": "II",
+      "date": "1947-01-01",
+      "when": "1947",
+      "title": "The Lavernock plaque",
+      "place": "St Lawrence's churchyard, Lavernock",
+      "parcel": "x",
+      "basis": "Heritage record",
+      "narration": "The Rotary Club of Cardiff puts up a bronze plaque at St Lawrence's, Lavernock: \"Near this spot the first radio messages were exchanged across water by Guglielmo Marconi and George Kemp.\"",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold: the Williamses, by the 1877 bargain and by title by possession (twelve years rent-free, 1928–1940)",
+        "Synthetic Parcel A": "Seed (a landlord's wording, not the family's): the words \"the whole farm\" in a Bute tenancy (Bute can only let Parcel B)",
+        "Parcel B: the fields": "Freehold: Western Ground Rents · tenant: John Williams (1939 plan: fields only)"
+      },
+      "title_moves": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "SECONDARY: the plaque's wording is from a published transcription, and the BBC gives the unveiling as 1948. It names George Kemp, but no Williams and nothing about Great House.",
+      "cast": [],
+      "evidence": [
+        {
+          "type": "Heritage record",
+          "title": "[SECONDARY] Rotary Club of Cardiff plaque, St Lawrence's churchyard, Lavernock (transcription): \"BETWEEN LAVERNOCK AND FLAT HOLM 11th MAY, LAVERNOCK AND BREAN DOWN 18th MAY 1897 … ERECTED BY THE ROTARY CLUB OF CARDIFF 1947\"",
+          "url": "https://readtheplaque.com/plaque/marconi-s-first-radio-transmissions-across-water"
+        },
+        {
+          "type": "Publication",
+          "title": "[SECONDARY] BBC Wales History blog (2012): the plaque \"unveiled by the Cardiff Rotary Club\" in 1948 (the plaque itself reads 1947)",
+          "url": "https://www.bbc.co.uk/blogs/waleshistory/2012/05/marconi_wireless_open_sea_lavernock_point_flat_holm.html"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19470101-1"
+    },
+    {
+      "order": 41,
+      "ref": "II.9",
       "id": "ghf-19480101-1",
       "act": "II",
       "date": "1948-01-01",
@@ -1759,7 +2318,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19480101-1"
     },
     {
-      "order": 30,
+      "order": 42,
       "ref": "III.1",
       "id": "ghf-19490202-1",
       "act": "III",
@@ -1820,7 +2379,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19490202-1"
     },
     {
-      "order": 31,
+      "order": 43,
       "ref": "III.2",
       "id": "ghf-19500601-1",
       "act": "III",
@@ -1878,7 +2437,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19500601-1"
     },
     {
-      "order": 32,
+      "order": 44,
       "ref": "III.3",
       "id": "ghf-19521010-1",
       "act": "III",
@@ -1921,7 +2480,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19521010-1"
     },
     {
-      "order": 33,
+      "order": 45,
       "ref": "III.4",
       "id": "ghf-19550202-1",
       "act": "III",
@@ -1983,7 +2542,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19550202-1"
     },
     {
-      "order": 34,
+      "order": 46,
       "ref": "III.5",
       "id": "ghf-19581119-1",
       "act": "III",
@@ -2045,7 +2604,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19581119-1"
     },
     {
-      "order": 35,
+      "order": 47,
       "ref": "III.6",
       "id": "ghf-19590101-1",
       "act": "III",
@@ -2094,7 +2653,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19590101-1"
     },
     {
-      "order": 36,
+      "order": 48,
       "ref": "III.7",
       "id": "ghf-19621211-1",
       "act": "III",
@@ -2151,7 +2710,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19621211-1"
     },
     {
-      "order": 37,
+      "order": 49,
       "ref": "III.8",
       "id": "ghf-19630601-1",
       "act": "III",
@@ -2194,7 +2753,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19630601-1"
     },
     {
-      "order": 38,
+      "order": 50,
       "ref": "III.9",
       "id": "ghf-19650301-1",
       "act": "III",
@@ -2240,7 +2799,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19650301-1"
     },
     {
-      "order": 39,
+      "order": 51,
       "ref": "III.10",
       "id": "ghf-19640101-1",
       "act": "III",
@@ -2283,7 +2842,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19640101-1"
     },
     {
-      "order": 40,
+      "order": 52,
       "ref": "III.11",
       "id": "ghf-19670101-1",
       "act": "III",
@@ -2327,7 +2886,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19670101-1"
     },
     {
-      "order": 41,
+      "order": 53,
       "ref": "IV.1",
       "id": "ghf-19691231-1",
       "act": "IV",
@@ -2377,7 +2936,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19691231-1"
     },
     {
-      "order": 42,
+      "order": 54,
       "ref": "IV.2",
       "id": "ghf-19720725-1",
       "act": "IV",
@@ -2437,7 +2996,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19720725-1"
     },
     {
-      "order": 43,
+      "order": 55,
       "ref": "IV.3",
       "id": "ghf-19740101-1",
       "act": "IV",
@@ -2493,7 +3052,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19740101-1"
     },
     {
-      "order": 44,
+      "order": 56,
       "ref": "IV.4",
       "id": "ghf-19740415-1",
       "act": "IV",
@@ -2540,7 +3099,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19740415-1"
     },
     {
-      "order": 45,
+      "order": 57,
       "ref": "IV.5",
       "id": "ghf-19740703-1",
       "act": "IV",
@@ -2590,7 +3149,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19740703-1"
     },
     {
-      "order": 46,
+      "order": 58,
       "ref": "IV.6",
       "id": "ghf-19741031-1",
       "act": "IV",
@@ -2651,7 +3210,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19741031-1"
     },
     {
-      "order": 47,
+      "order": 59,
       "ref": "IV.7",
       "id": "ghf-19741119-1",
       "act": "IV",
@@ -2691,7 +3250,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19741119-1"
     },
     {
-      "order": 48,
+      "order": 60,
       "ref": "IV.8",
       "id": "ghf-19750523-1",
       "act": "IV",
@@ -2735,7 +3294,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19750523-1"
     },
     {
-      "order": 49,
+      "order": 61,
       "ref": "IV.9",
       "id": "ghf-19800522-1",
       "act": "IV",
@@ -2774,7 +3333,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19800522-1"
     },
     {
-      "order": 50,
+      "order": 62,
       "ref": "IV.10",
       "id": "ghf-19821001-1",
       "act": "IV",
@@ -2831,7 +3390,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19821001-1"
     },
     {
-      "order": 51,
+      "order": 63,
       "ref": "IV.11",
       "id": "ghf-19821119-1",
       "act": "IV",
@@ -2880,7 +3439,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19821119-1"
     },
     {
-      "order": 52,
+      "order": 64,
       "ref": "IV.12",
       "id": "ghf-19830223-1",
       "act": "IV",
@@ -2928,7 +3487,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19830223-1"
     },
     {
-      "order": 53,
+      "order": 65,
       "ref": "IV.13",
       "id": "ghf-19830326-1",
       "act": "IV",
@@ -2976,7 +3535,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19830326-1"
     },
     {
-      "order": 54,
+      "order": 66,
       "ref": "IV.14",
       "id": "ghf-19830408-1",
       "act": "IV",
@@ -3012,7 +3571,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19830408-1"
     },
     {
-      "order": 55,
+      "order": 67,
       "ref": "V.1",
       "id": "ghf-19840522-1",
       "act": "V",
@@ -3070,7 +3629,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19840522-1"
     },
     {
-      "order": 56,
+      "order": 68,
       "ref": "V.2",
       "id": "ghf-19860710-1",
       "act": "V",
@@ -3118,7 +3677,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19860710-1"
     },
     {
-      "order": 57,
+      "order": 69,
       "ref": "V.3",
       "id": "ghf-19860711-1",
       "act": "V",
@@ -3154,7 +3713,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19860711-1"
     },
     {
-      "order": 58,
+      "order": 70,
       "ref": "V.4",
       "id": "ghf-19870202-1",
       "act": "V",
@@ -3212,7 +3771,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19870202-1"
     },
     {
-      "order": 59,
+      "order": 71,
       "ref": "V.5",
       "id": "ghf-19870731-1",
       "act": "V",
@@ -3269,7 +3828,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19870731-1"
     },
     {
-      "order": 60,
+      "order": 72,
       "ref": "V.6",
       "id": "ghf-19880303-1",
       "act": "V",
@@ -3304,7 +3863,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19880303-1"
     },
     {
-      "order": 61,
+      "order": 73,
       "ref": "VI.1",
       "id": "ghf-19880429-1",
       "act": "VI",
@@ -3347,7 +3906,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19880429-1"
     },
     {
-      "order": 62,
+      "order": 74,
       "ref": "VI.2",
       "id": "ghf-19880429-2",
       "act": "VI",
@@ -3402,7 +3961,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19880429-2"
     },
     {
-      "order": 63,
+      "order": 75,
       "ref": "VI.3",
       "id": "ghf-19880512-1",
       "act": "VI",
@@ -3446,7 +4005,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19880512-1"
     },
     {
-      "order": 64,
+      "order": 76,
       "ref": "VI.4",
       "id": "ghf-19880729-1",
       "act": "VI",
@@ -3493,7 +4052,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19880729-1"
     },
     {
-      "order": 65,
+      "order": 77,
       "ref": "VI.5",
       "id": "ghf-19881130-1",
       "act": "VI",
@@ -3552,7 +4111,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881130-1"
     },
     {
-      "order": 66,
+      "order": 78,
       "ref": "VI.6",
       "id": "ghf-19881201-1",
       "act": "VI",
@@ -3594,7 +4153,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881201-1"
     },
     {
-      "order": 67,
+      "order": 79,
       "ref": "VI.7",
       "id": "ghf-19881202-1",
       "act": "VI",
@@ -3639,7 +4198,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881202-1"
     },
     {
-      "order": 68,
+      "order": 80,
       "ref": "VI.8",
       "id": "ghf-19881209-1",
       "act": "VI",
@@ -3683,7 +4242,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881209-1"
     },
     {
-      "order": 69,
+      "order": 81,
       "ref": "VI.9",
       "id": "ghf-19881203-1",
       "act": "VI",
@@ -3723,7 +4282,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881203-1"
     },
     {
-      "order": 70,
+      "order": 82,
       "ref": "VI.10",
       "id": "ghf-19881205-1",
       "act": "VI",
@@ -3767,7 +4326,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881205-1"
     },
     {
-      "order": 71,
+      "order": 83,
       "ref": "VI.11",
       "id": "ghf-19881206-1",
       "act": "VI",
@@ -3832,7 +4391,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881206-1"
     },
     {
-      "order": 72,
+      "order": 84,
       "ref": "VI.12",
       "id": "ghf-19881208-1",
       "act": "VI",
@@ -3885,7 +4444,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881208-1"
     },
     {
-      "order": 73,
+      "order": 85,
       "ref": "VI.13",
       "id": "ghf-19881212-1",
       "act": "VI",
@@ -3935,7 +4494,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881212-1"
     },
     {
-      "order": 74,
+      "order": 86,
       "ref": "VII.1",
       "id": "ghf-19890320-1",
       "act": "VII",
@@ -3970,7 +4529,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19890320-1"
     },
     {
-      "order": 75,
+      "order": 87,
       "ref": "VII.2",
       "id": "ghf-19890323-1",
       "act": "VII",
@@ -4026,7 +4585,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19890323-1"
     },
     {
-      "order": 76,
+      "order": 88,
       "ref": "VII.3",
       "id": "ghf-19890325-1",
       "act": "VII",
@@ -4062,7 +4621,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19890325-1"
     },
     {
-      "order": 77,
+      "order": 89,
       "ref": "VII.4",
       "id": "ghf-19890414-1",
       "act": "VII",
@@ -4105,7 +4664,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19890414-1"
     },
     {
-      "order": 78,
+      "order": 90,
       "ref": "VII.5",
       "id": "ghf-19891107-1",
       "act": "VII",
@@ -4165,7 +4724,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19891107-1"
     },
     {
-      "order": 79,
+      "order": 91,
       "ref": "VII.6",
       "id": "ghf-19900313-1",
       "act": "VII",
@@ -4212,7 +4771,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19900313-1"
     },
     {
-      "order": 80,
+      "order": 92,
       "ref": "VII.7",
       "id": "ghf-19900529-1",
       "act": "VII",
@@ -4251,7 +4810,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19900529-1"
     },
     {
-      "order": 81,
+      "order": 93,
       "ref": "VII.8",
       "id": "ghf-19900801-1",
       "act": "VII",
@@ -4304,7 +4863,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19900801-1"
     },
     {
-      "order": 82,
+      "order": 94,
       "ref": "VII.9",
       "id": "ghf-19910821-1",
       "act": "VII",
@@ -4350,7 +4909,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19910821-1"
     },
     {
-      "order": 83,
+      "order": 95,
       "ref": "VII.10",
       "id": "ghf-19920514-1",
       "act": "VII",
@@ -4385,7 +4944,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19920514-1"
     },
     {
-      "order": 84,
+      "order": 96,
       "ref": "VII.11",
       "id": "ghf-19920727-1",
       "act": "VII",
@@ -4420,7 +4979,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19920727-1"
     },
     {
-      "order": 85,
+      "order": 97,
       "ref": "VII.12",
       "id": "ghf-19920903-1",
       "act": "VII",
@@ -4458,7 +5017,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19920903-1"
     },
     {
-      "order": 86,
+      "order": 98,
       "ref": "VII.13",
       "id": "ghf-19931203-1",
       "act": "VII",
@@ -4519,7 +5078,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19931203-1"
     },
     {
-      "order": 87,
+      "order": 99,
       "ref": "VII.14",
       "id": "ghf-19940504-1",
       "act": "VII",
@@ -4564,7 +5123,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19940504-1"
     },
     {
-      "order": 88,
+      "order": 100,
       "ref": "VII.15",
       "id": "ghf-19940728-1",
       "act": "VII",
@@ -4609,7 +5168,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19940728-1"
     },
     {
-      "order": 89,
+      "order": 101,
       "ref": "VII.16",
       "id": "ghf-19941110-1",
       "act": "VII",
@@ -4657,7 +5216,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19941110-1"
     },
     {
-      "order": 90,
+      "order": 102,
       "ref": "VII.17",
       "id": "ghf-20050101-1",
       "act": "VII",
@@ -4702,7 +5261,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20050101-1"
     },
     {
-      "order": 91,
+      "order": 103,
       "ref": "VII.18",
       "id": "ghf-20190320-1",
       "act": "VII",
@@ -4737,7 +5296,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20190320-1"
     },
     {
-      "order": 92,
+      "order": 104,
       "ref": "VIII.1",
       "id": "ghf-20251117-1",
       "act": "VIII",
@@ -4777,7 +5336,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20251117-1"
     },
     {
-      "order": 93,
+      "order": 105,
       "ref": "VIII.2",
       "id": "ghf-20260323-1",
       "act": "VIII",
@@ -4824,7 +5383,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260323-1"
     },
     {
-      "order": 94,
+      "order": 106,
       "ref": "VIII.3",
       "id": "ghf-20260419-1",
       "act": "VIII",
@@ -4866,7 +5425,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260419-1"
     },
     {
-      "order": 95,
+      "order": 107,
       "ref": "VIII.4",
       "id": "ghf-20260521-1",
       "act": "VIII",
@@ -4922,7 +5481,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260521-1"
     },
     {
-      "order": 96,
+      "order": 108,
       "ref": "VIII.5",
       "id": "ghf-20260730-1",
       "act": "VIII",
@@ -4964,7 +5523,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260730-1"
     },
     {
-      "order": 97,
+      "order": 109,
       "ref": "VIII.6",
       "id": "ghf-20260825-1",
       "act": "VIII",
@@ -5002,7 +5561,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260825-1"
     },
     {
-      "order": 98,
+      "order": 110,
       "ref": "VIII.7",
       "id": "ghf-20260908-1",
       "act": "VIII",
@@ -5037,7 +5596,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260908-1"
     },
     {
-      "order": 99,
+      "order": 111,
       "ref": "VIII.8",
       "id": "ghf-20260917-1",
       "act": "VIII",
@@ -5092,7 +5651,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260917-1"
     },
     {
-      "order": 100,
+      "order": 112,
       "ref": "VIII.9",
       "id": "ghf-20260923-1",
       "act": "VIII",
@@ -5138,7 +5697,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260923-1"
     },
     {
-      "order": 101,
+      "order": 113,
       "ref": "VIII.10",
       "id": "ghf-20260925-1",
       "act": "VIII",
@@ -5176,7 +5735,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260925-1"
     },
     {
-      "order": 102,
+      "order": 114,
       "ref": "VIII.11",
       "id": "ghf-20260927-1",
       "act": "VIII",
@@ -5217,7 +5776,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260927-1"
     },
     {
-      "order": 103,
+      "order": 115,
       "ref": "VIII.12",
       "id": "ghf-20260929-1",
       "act": "VIII",
@@ -5264,7 +5823,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260929-1"
     },
     {
-      "order": 104,
+      "order": 116,
       "ref": "VIII.13",
       "id": "ghf-20261006-1",
       "act": "VIII",
@@ -5323,7 +5882,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20261006-1"
     },
     {
-      "order": 105,
+      "order": 117,
       "ref": "VIII.14",
       "id": "ghf-20261019-1",
       "act": "VIII",
@@ -5380,7 +5939,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20261019-1"
     },
     {
-      "order": 106,
+      "order": 118,
       "ref": "O.1",
       "id": "ghf-obvious-01",
       "act": "O",
@@ -5423,7 +5982,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-01"
     },
     {
-      "order": 107,
+      "order": 119,
       "ref": "O.2",
       "id": "ghf-obvious-02",
       "act": "O",
@@ -5473,7 +6032,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-02"
     },
     {
-      "order": 108,
+      "order": 120,
       "ref": "O.3",
       "id": "ghf-obvious-03",
       "act": "O",
@@ -5519,7 +6078,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-03"
     },
     {
-      "order": 109,
+      "order": 121,
       "ref": "O.4",
       "id": "ghf-obvious-04",
       "act": "O",
@@ -5559,7 +6118,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-04"
     },
     {
-      "order": 110,
+      "order": 122,
       "ref": "O.5",
       "id": "ghf-obvious-05",
       "act": "O",
@@ -5604,7 +6163,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-05"
     },
     {
-      "order": 111,
+      "order": 123,
       "ref": "O.6",
       "id": "ghf-obvious-06",
       "act": "O",
@@ -5655,7 +6214,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-06"
     },
     {
-      "order": 112,
+      "order": 124,
       "ref": "O.7",
       "id": "ghf-obvious-07",
       "act": "O",
@@ -5699,7 +6258,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-07"
     },
     {
-      "order": 113,
+      "order": 125,
       "ref": "O.8",
       "id": "ghf-obvious-08",
       "act": "O",
@@ -5745,7 +6304,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-08"
     },
     {
-      "order": 114,
+      "order": 126,
       "ref": "O.9",
       "id": "ghf-obvious-09",
       "act": "O",
@@ -5790,7 +6349,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-09"
     },
     {
-      "order": 115,
+      "order": 127,
       "ref": "O.10",
       "id": "ghf-obvious-10",
       "act": "O",
@@ -5836,7 +6395,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-10"
     },
     {
-      "order": 116,
+      "order": 128,
       "ref": "O.11",
       "id": "ghf-obvious-11",
       "act": "O",
@@ -5877,7 +6436,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-11"
     },
     {
-      "order": 117,
+      "order": 129,
       "ref": "E.1",
       "id": "ghf-99990101-1",
       "act": "E",
@@ -5946,7 +6505,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-1"
     },
     {
-      "order": 118,
+      "order": 130,
       "ref": "E.2",
       "id": "ghf-99990101-4",
       "act": "E",
@@ -6003,7 +6562,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-4"
     },
     {
-      "order": 119,
+      "order": 131,
       "ref": "E.3",
       "id": "ghf-99990101-2",
       "act": "E",
@@ -6046,7 +6605,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-2"
     },
     {
-      "order": 120,
+      "order": 132,
       "ref": "E.4",
       "id": "ghf-99990101-3",
       "act": "E",
@@ -6084,7 +6643,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-3"
     },
     {
-      "order": 121,
+      "order": 133,
       "ref": "E.5",
       "id": "ghf-99990102-1",
       "act": "E",
