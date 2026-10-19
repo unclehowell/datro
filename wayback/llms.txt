@@ -11,6 +11,7 @@ Agent starting points:
 - /images/_treeview.json — public image listing.
 - /video/_treeview.json — public video listing (case films, MP4).
 - /pdf/foi/manifest.json — recent FOI/EIR PDF manifest.
+- /api/index.json — case-mail API (redacted emails); records with an `attachments` list link each email to its attached letters under /pdf/foi/ (e.g. the 19 Oct 2026 Welsh Government replies ATISN 26-0010 and ATISN 27589).
 - /AGENTS.md — archive conventions and agent notes.
 - /AGENT_HANDOFF_FOI_2026-10-09.md — FOI handoff and chronology notes.
 - /version.txt and /CHANGELOG.md — archive version/change history.

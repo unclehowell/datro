@@ -1,3 +1,15 @@
+## Unreleased - 2026-10-19 (evening)
+
+### Added
+- The two Welsh Government replies of 19 October 2026, as emails and as their attached letters:
+  - ATISN 26-0010 disclosure response (retention and destruction schedules; no files found under the farm name, Western Ground Rents Ltd or BP Properties Ltd). Email `gm-1a1537b442f27f72`; letter `pdf/foi/2026-10-19_welsh-government_atisn-26-0010_disclosure-response.pdf`.
+  - Cadw ATISN 27589 response, ref qA2496208 (refused under FOIA s.14(2) as a repeat of ATISN 27021). Email `gm-1a154577a09c3329`; letter `pdf/foi/2026-10-19_cadw_atisn-27589_response-s14-2.pdf`.
+  - Both letters are public copies: the requester's personal email address is redacted and nothing else is changed. `pdf/foi/manifest.json` records the SHA-256 of the public copy and of the original.
+- Email attachments in the case-mail API. Records in `api/index.json` and `api/message/<id>.json` now carry an `attachments` list (name, title, site-relative url, MIME type, bytes, SHA-256, catalogue number) wherever `pdf/foi/manifest.json` holds a file that came with that email. 18 emails now link 27 files. The same links are appended to the end of each `mail/<id>.txt`. New tool: `tools/wayback-attachments.py`; run it after `tools/wayback-gmail-ingest.py`.
+- `pdf/_treeview.json`, `pdf/foi/README.md`, `agent-index.json` and `llms.txt` list the two new letters.
+
+The case-mail API now holds 767 emails in 411 threads. email.bucklerfamily.estate reads it live.
+
 ## Unreleased - 2026-10-19
 
 ### Added

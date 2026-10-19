@@ -1,9 +1,9 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-10-19T03:00:00Z",
- "count": 765,
- "threadCount": 409,
+ "generated": "2026-10-19T21:00:00Z",
+ "count": 767,
+ "threadCount": 411,
  "privacy": "Email addresses, phone numbers, the family's private address and postcodes are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
@@ -13,6 +13,34 @@
   "text": "/mail/<id>.txt"
  },
  "threads": [
+  {
+   "threadId": "gt-1a154577a09c3329",
+   "subject": "RE: FOI — Welsh Office / Cadw papers, July–December 1988 — Great House Farm (Ty Mawr), Llandough — following 26FOI 103 (ATISN 27589)",
+   "threadSlug": "foi-welsh-office-cadw-papers-julydecember-1988-great-house-farm-ty-mawr-llandoug",
+   "institutions": [
+    "cadw"
+   ],
+   "first": "2026-10-19T13:26:17Z",
+   "last": "2026-10-19T13:26:17Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a154577a09c3329"
+   ]
+  },
+  {
+   "threadId": "gt-1a1537b442f27f72",
+   "subject": "Welsh Government response to request for information ATISN 26-0010 (Retention & destruction schedules))",
+   "threadSlug": "welsh-government-response-to-request-for-information-atisn-26-0010-retention-des",
+   "institutions": [
+    "cadw"
+   ],
+   "first": "2026-10-19T09:25:46Z",
+   "last": "2026-10-19T09:25:46Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1537b442f27f72"
+   ]
+  },
   {
    "threadId": "gt-1a141cc190751565",
    "subject": "Chase — Vale of Glamorgan FOI 00210772 internal review — 15 October 2026",
