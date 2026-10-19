@@ -1,0 +1,4 @@
+
+document.querySelectorAll('.like').forEach(b=>b.addEventListener('click',()=>{const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on);b.textContent=on?'👍 Liked':'👍 Like'}));
+document.querySelectorAll('.share').forEach(b=>b.addEventListener('click',async()=>{const url=location.origin+location.pathname+'#'+b.dataset.id;try{if(navigator.share){await navigator.share({title:'Williams / Buckler family',url});}else{await navigator.clipboard.writeText(url);b.textContent='✓ Link copied';setTimeout(()=>b.textContent='↗ Share',1500);}}catch(e){}}));
+const fb=document.querySelectorAll('.filters button');fb.forEach(b=>b.addEventListener('click',()=>{fb.forEach(x=>x.setAttribute('aria-pressed',x===b));document.querySelectorAll('.friend').forEach(f=>{f.hidden=!(b.dataset.f==='all'||f.dataset.tag===b.dataset.f)})}));
