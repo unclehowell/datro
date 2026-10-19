@@ -103,15 +103,15 @@
       if (!items.length) { el.innerHTML = '<div class="empty">No matching Q&A records.</div>'; return; }
       el.innerHTML = items.map((x) => `
         <article id="${escapeHtml(x.id)}">
-          <div class="uid">${x.id}</div>
+          <div class="uid">${escapeHtml(x.id || '')}</div>
           <div class="party">${escapeHtml(x.party_name || x.party || '')}
             <span class="${kindClass(x.kind)}">${escapeHtml(x.kind || '')}</span></div>
           <div class="meta-line">asked ${escapeHtml(x.asked || '—')}
             ${x.answered ? ' · answered ' + escapeHtml(x.answered) : ''}
             ${x.ref ? ' · ref ' + escapeHtml(x.ref) : ''}
             ${x.asked_msg ? ' · msg ' + escapeHtml(x.asked_msg) : ''}</div>
-          <div class="q">${escapeHtml((x.question || '').slice(0, 900))}</div>
-          ${x.answer ? `<div class="a">${escapeHtml(x.answer.slice(0, 1200))}</div>` : '<div class="a" style="color:var(--muted)">(no answer in corpus)</div>'}
+          <div class="q">${escapeHtml(String(x.question || '').slice(0, 900))}</div>
+          ${x.answer ? `<div class="a">${escapeHtml(String(x.answer).slice(0, 1200))}</div>` : '<div class="a" style="color:var(--muted)">(no answer in corpus)</div>'}
           ${safeHref(x.url) ? `<div class="meta-line"><a href="${safeHref(x.url)}" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">source</a></div>` : ''}
         </article>`).join('');
     }
@@ -125,7 +125,7 @@
       if (kind) items = items.filter((x) => x.kind === kind);
       if (terms.length) {
         items = items.filter((x) => {
-          const hay = (x.question + ' ' + x.answer + ' ' + x.party_name + ' ' + (x.ref || '') + ' ' + x.id).toLowerCase();
+          const hay = [x.question, x.answer, x.party_name, x.ref, x.id].map((v) => String(v || '')).join(' ').toLowerCase();
           return terms.every((t) => hay.includes(t));
         });
       }
