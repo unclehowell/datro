@@ -93,10 +93,6 @@ ACCOUNTS = {
     received="A minor court report.",
     words=[],
     known="Contemporary proof that John Williams lived at the house in 1891."),
-'ghf-18970501-1': dict(
-    received="An unproven family story.",
-    words=[],
-    known="The trials are documented; the family's part is their own account."),
 'ghf-19080101-1': dict(
     received="John Williams became the tenant of the farm.",
     words=[('"the tenant"', 'Singular, as if there were one tenancy of one farm.')],
@@ -105,6 +101,58 @@ ACCOUNTS = {
     received="A tenant's daughter.",
     words=[],
     known="The owner of Parcel A from 1928 by her family's title. She lived in the house until her death in 1983."),
+'ghf-18641223-1': dict(
+    received='',
+    words=[('"relict of the late Mr. John Williams, Great House farm"', 'The notice\'s own words: the elder John Williams was dead by December 1864, and was remembered as "of Great House farm".')],
+    known='VERIFIED (two contemporary death notices, read on Welsh Newspapers Online). They fit the 1904 report that the younger John Williams "succeeded his father in the tenancy of the farm in 1855". Not yet found: the elder John Williams\'s own death or burial entry, and Amy\'s maiden name.'),
+'ghf-18920101-1': dict(
+    received='',
+    words=[],
+    known="VERIFIED that the 1892 messages were reported in 1897 in Preece's own words (South Wales Daily Post, 5 June 1897). The details (wire lengths, 3.3 miles, the failed attempt to Steep Holm) are SECONDARY, from Fahie's history of 1899/1901. This is the Lavernock background to Marconi. It names no Williams and has no link to Great House."),
+'ghf-18940731-1': dict(
+    received='',
+    words=[],
+    known='VERIFIED (two newspapers, 3 August 1894). "Mr Williams, Great House" at Llandough in 1894 is the John Williams of the directories (1868–1901). The herd of 22–23 pigs shows a working farm.'),
+'ghf-18970501-1': dict(
+    received="Marconi's Welsh trials were a Post Office affair; local people had no part in them.",
+    words=[('"Mr. Williams (of the engineering department, Cardiff)"', 'The only Williams in any 1897 report read. He is a Post Office engineer in Cardiff. No initial or address is given.')],
+    known='VERIFIED: the trials, the date (Evening Express, 15 May 1897, p.4) and "Mr. Williams (of the engineering department, Cardiff)". The wiki\'s undated cutting EV-0011 is that Evening Express report; the same text is in the Western Mail of the same day. UNVERIFIED / SOURCE PENDING: Sion Buckler\'s position (request to The National Archives, 16 July 2026) that this Mr Williams was his forebear Mr Williams of Great House Farm, and that Marconi stayed with the family at the farm in 1897. No 1897 document read so far gives the engineer\'s full name or Marconi\'s lodging. A statement that Thomas Williams of Great House carted Marconi\'s equipment has no document or named speaker: SOURCE PENDING. The photograph that the wiki\'s Media Gallery captioned "Marconi wireless telegraph at Great House Farm" (caption corrected 19 October 2026) is the Flat Holm photograph of 13 May 1897 (see 13 May). Next records: Post Office establishment books (BT Archives, POST 59) for a Williams in the Cardiff engineering district in 1897; the 1901 census.'),
+'ghf-18970510-1': dict(
+    received='',
+    words=[],
+    known="SECONDARY (Fahie, 1899/1901, from Preece's account). No 1897 newspaper read here mentions 10 May."),
+'ghf-18970511-1': dict(
+    received='',
+    words=[],
+    known='VERIFIED that Tuesday 11 May went badly (Evening Express, 15 May 1897). Fahie says 11 and 12 May both failed, but the Evening Express calls Wednesday and Thursday "most satisfactory". The 1947 plaque gives 11 May as the day messages were first exchanged with Flat Holm. The sources conflict on 11–13 May.'),
+'ghf-18970513-1': dict(
+    received='Marconi sent the first radio message over open sea, from Lavernock to Flat Holm, on 13 May 1897.',
+    words=[('"Are you ready?"', 'A later account of the first words. Another later account gives "CAN YOU HEAR ME" and "YES LOUD AND CLEAR". No 1897 source read here records the words.')],
+    known='VERIFIED: success by midweek (Evening Express: Wednesday 12 and Thursday 13 May "most satisfactory"); Preece, Gavey and Fardo present. SECONDARY: the date 13 May, the 20 extra yards of wire, and Slaby\'s presence (Fahie). Direction: in Preece\'s account (via Fahie) Flat Holm sent and Lavernock received; some modern accounts reverse it. The photograph is captioned by its source as Flat Holm, 13 May 1897. Its date and place rest on that caption. Nothing in it links to Great House Farm.'),
+'ghf-18970514-1': dict(
+    received='',
+    words=[],
+    known='VERIFIED (Evening Express, 15 May 1897; Carnarvon and Denbigh Herald, 21 May 1897). The guests are not named.'),
+'ghf-18970518-1': dict(
+    received='',
+    words=[],
+    known="VERIFIED: the 18 May date, the kite at 220 ft and Marconi's signature are all on the framed tape, as transcribed by the South Wales Echo on 27 May 1897. The Echo of 20 May has messages going from Brean Down to Lavernock that week; the tape reads Lavernock to Brean Down. Fahie dates the Brean Down link to the day after the Flat Holm success. Brean Down is in Somerset and is included only as the far end of the Welsh link."),
+'ghf-18970527-1': dict(
+    received='',
+    words=[],
+    known="VERIFIED. Not found: the day Marconi left South Wales, or where he lodged while there. The last Welsh press notice of the work found is the South Wales Echo of 20 May 1897. In 1897 Marconi's next move was to London, and then Italy (Spezia trials, 10–18 July 1897, per Fahie)."),
+'ghf-19070401-1': dict(
+    received='',
+    words=[],
+    known='VERIFIED (two notices). The reports do not name the farmer.'),
+'ghf-19080106-1': dict(
+    received='',
+    words=[],
+    known="VERIFIED (Evening Express, 10 January 1908). The keepers are not said to be the farm's own. John Williams of Great House died later in 1908 (EV-0243)."),
+'ghf-19470101-1': dict(
+    received='',
+    words=[],
+    known="SECONDARY: the plaque's wording is from a published transcription, and the BBC gives the unveiling as 1948. It names George Kemp, but no Williams and nothing about Great House."),
 # ---------------------------------------------------------------- ACT II
 'ghf-19160201-1': dict(
     received="The Williamses were yearly tenants of the whole farm from 1916, and every later right flows from that tenancy.",

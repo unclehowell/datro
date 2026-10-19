@@ -67,7 +67,7 @@ ACTS = [
     {'id': 'P', 'label': 'Prologue', 'title': 'To 1857', 'span': 'Late Iron Age – 1857',
      'logline': 'The earliest archaeological context at Llandough, then the house and manor before the quarry.'},
     {'id': 'I', 'label': 'Act I', 'title': 'Division', 'span': '1858 – 1915',
-     'logline': 'The limeworks, and the 1877 division of the farm.'},
+     'logline': 'The limeworks, the 1877 division of the farm, and Marconi\'s wireless trials at Lavernock in May 1897.'},
     {'id': 'II', 'label': 'Act II', 'title': 'Tenancies', 'span': '1916 – 1948',
      'logline': 'The 1916 and 1939 tenancies, the 1928 rent, and the 1938 sale to Western Ground Rents.'},
     {'id': 'III', 'label': 'Act III', 'title': 'Possession proceedings', 'span': '1949 – 1968',
@@ -243,6 +243,13 @@ sc('P', 'ghf-18550101-1', '1855-01-01', '1855', "John Williams succeeds his fath
     w('/evidence/ev-0215-tithe-apportionment-john-williams-c1841/', 'EV-0215 — Tithe apportionment: John Williams, c. 1841')])
 
 # ---------------------------------------------------------------- ACT I
+sc('I', 'ghf-18641223-1', '1864-12-23', '23 December 1864', 'Death of Amy Williams of Great House', 'Llandough', 'AB',
+   'Newspaper',
+   'Amy Williams dies at Llandough, aged 65. The death notices call her "relict of the late Mr. John Williams, Great House farm": the widow of the elder John Williams, whose son John had taken over the tenancy in 1855.',
+   [
+    {'type': 'Newspaper', 'title': '[VERIFIED] Cardiff Times, 30 December 1864, p.5 — deaths: "at Llandough, near Cardiff, Amy, relict of the late Mr. John Williams, Great House farm, aged 65 years" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3383386/3383391/14/'},
+    {'type': 'Newspaper', 'title': '[VERIFIED] Cardiff and Merthyr Guardian, 30 December 1864, p.5 — deaths: "WILLIAMS.—Dec. 23, at Llandough, near Cardiff, Amy, relict of the late Mr. John Williams, Great House farm, aged 65" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3094324/3094329/21/'}
+   ])
 sc('I', 'ghf-18680101-1', '1868-01-01', '1868 – 1901', "\"Williams John, Great house\"", 'Trade directories', 'AB',
    'Publication',
    "The trade directories list the farmers of Llandough parish. Every edition from 1868 to 1901 has \"Williams John, Great house\", from 1887 \"Great House farm, Llandough\". Thomas Rees, and later Evan Rees, are listed separately, at Llandough Farm, a different Bute farm.",
@@ -296,11 +303,95 @@ sc('I', 'ghf-18911111-1', '1891-11-11', '11 November 1891', "Theft of geese", 'L
      'url': 'https://newspapers.library.wales/view/3019697/3019705/78/'},
     {'type': 'Newspaper', 'title': 'EV-0226 — South Wales Star, 10 June 1892: "Mr. John Williams, Great House Farm, Llandough" (wiki evidence page)', 'url': WIKI + '/evidence/ev-0226-south-wales-star-1892-john-williams-great-house-farm/'}],
    image='/media/ghf-e090-n01-1891-farmyard-theft.jpg')
-sc('I', 'ghf-18970501-1', '1897-05-01', 'May 1897', "Marconi at Lavernock", 'Lavernock Point', '?',
-   'Source pending',
-   "Marconi's wireless trials at Lavernock Point, May 1897. Family tradition records that Thomas Williams of Great House carted his equipment.",
-   [press('N02', 'Press report of the Lavernock trials, 1897', 'ghf-e090-n02-1897-marconi-lavernock.jpg')],
+sc('I', 'ghf-18920101-1', '1892-01-01', '1892', 'Signals across the water: Preece at Lavernock', 'Lavernock Point and Flat Holm', 'x',
+   'Newspaper',
+   'The Post Office engineer William Preece stretches long parallel wires on the shore at Lavernock and on Flat Holm, 3.3 miles out, and sends messages between them by induction, with no wire across the water. Five years later Marconi comes to the same shore.',
+   [
+    {'type': 'Newspaper', 'title': '[VERIFIED] South Wales Daily Post, 5 June 1897, p.3 — Preece\'s Royal Institution lecture: "In 1892 distinct messages were sent across a portion of the Bristol Channel between Penarth and the Flat Holm, a distance of over three miles" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3356360/3356363/20/'},
+    {'type': 'Newspaper', 'title': '[VERIFIED] Cardiff Times, 13 March 1897, p.2 — "No Use for Wires": the "wonderful doings" of Mr Preece "at Lavernock and the Flat Holm" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3431204/3431206/41/'},
+    {'type': 'Publication', 'title': "[SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Preece's induction method: the Lavernock–Flat Holm trials", 'url': 'https://earlyradiohistory.us/1901fa21.htm'}
+   ])
+sc('I', 'ghf-18940731-1', '1894-07-31', 'Week of 30 July 1894', 'Swine fever at Great House', 'Great House Farm', 'AB',
+   'Newspaper',
+   'Swine fever breaks out at Llandough. Five pigs belonging to Mr Williams of Great House are slaughtered. On the Tuesday morning one of his herd of 23 is reported affected, and it is feared the whole herd will have to go.',
+   [
+    {'type': 'Newspaper', 'title': '[VERIFIED] Barry Dock News, 3 August 1894, p.5 — "Swine fever at Llandough and Rhoose": "Five pigs belonging to Mr Williams, Great House, have been slaughtered" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/4596799/4596804/24/'},
+    {'type': 'Newspaper', 'title': '[VERIFIED] Glamorgan Gazette, 3 August 1894, p.5 — the same report (herd given as 22) (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3874190/3874195/53/'}
+   ])
+sc('I', 'ghf-18970501-1', '1897-05-01', 'Late April – early May 1897', 'Marconi comes to Lavernock', 'Lavernock Point', 'x',
+   'Newspaper',
+   'The Cardiff papers announce that the young Italian Guglielmo Marconi, 23, will come to Cardiff "in a few weeks" to signal across the Bristol Channel without wires, with the Post Office\'s staff and apparatus at his disposal. At Lavernock Point the receiving station goes up on the cliff: a tall pole with a zinc cylinder at the top (120 feet, says the Evening Express; 30 yards, says Preece\'s account). The press names the man who put it up only as "Mr. Williams (of the engineering department, Cardiff)". The sending station is on Flat Holm.',
+   [
+    {'type': 'Newspaper', 'title': '[VERIFIED] Evening Express, 26 April 1897, p.2 — "Wireless Telegraphy … Coming to Cardiff in a Few Weeks to Experiment Across the Bristol Channel" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3270301/3270303/28/'},
+    {'type': 'Newspaper', 'title': '[VERIFIED] Weekly Mail, 1 May 1897, p.4 — the same report (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3370882/3370886/79/'},
+    {'type': 'Newspaper', 'title': '[VERIFIED] Evening Express, 15 May 1897 (Extra Special), p.4 — "Wireless Telegraphy. Marconi Invention Tested at Lavernock" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3270811/3270815/108/'},
+    {'type': 'Newspaper', 'title': '[VERIFIED] Western Mail, 15 May 1897, p.6 — "Telegraphy without wires. Marconi invention tested at Lavernock" (same report) (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/4313747/4313753/61/'},
+    {'type': 'Newspaper', 'title': 'EV-0011 — the same cutting on the wiki (catalogued there as undated; identified here as the Evening Express, 15 May 1897, p.4)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0011-marconi-lavernock-wireless-cutting-1897/', 'image': '/media/ghf-e090-n02-1897-marconi-lavernock.jpg'},
+    {'type': 'Publication', 'title': "[SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Marconi's method, drawing on Preece's Royal Institution lecture of 4 June 1897", 'url': 'https://earlyradiohistory.us/1901fa23.htm'},
+    {'type': 'Official correspondence', 'title': '[UNVERIFIED / SOURCE PENDING] Sion Buckler, records request to The National Archives, 16 July 2026, "Mr. Williams, Cardiff Post Office Engineering Department, 1897 Marconi Lavernock Experiments" (TNA replied 30 July 2026 that it is not the right place to ask)', 'url': 'https://greathousefarmwiki.wordpress.com/?p=5363'}
+   ],
    image='/media/ghf-e090-n02-1897-marconi-lavernock.jpg')
+sc('I', 'ghf-18970510-1', '1897-05-10', '10 May 1897', "Preece's method tried again", 'Lavernock Point and Flat Holm', 'x',
+   'Publication',
+   "Before Marconi's own trials begin, the Post Office repeats Preece's induction method between Lavernock and Flat Holm. It works.",
+   [
+    {'type': 'Publication', 'title': "[SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Marconi's method, drawing on Preece's Royal Institution lecture of 4 June 1897", 'url': 'https://earlyradiohistory.us/1901fa23.htm'},
+    {'type': 'Publication', 'title': '[SECONDARY] BBC Wales History blog, "Marconi\'s Welsh wireless revolution" (May 2012), quoting the same account', 'url': 'https://www.bbc.co.uk/blogs/waleshistory/2012/05/marconi_wireless_open_sea_lavernock_point_flat_holm.html'}
+   ])
+sc('I', 'ghf-18970511-1', '1897-05-11', '11–12 May 1897', 'Two days of failure', 'Lavernock Point', 'x',
+   'Newspaper',
+   'Marconi\'s first attempts to receive signals from Flat Holm at the Lavernock cliff-top station fail. The Evening Express reports that the experiments on Tuesday "were not so successful as might have been desired".',
+   [
+    {'type': 'Newspaper', 'title': '[VERIFIED] Evening Express, 15 May 1897 (Extra Special), p.4 — "Wireless Telegraphy. Marconi Invention Tested at Lavernock" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3270811/3270815/108/'},
+    {'type': 'Publication', 'title': "[SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Marconi's method, drawing on Preece's Royal Institution lecture of 4 June 1897", 'url': 'https://earlyradiohistory.us/1901fa23.htm'},
+    {'type': 'Heritage record', 'title': '[SECONDARY] Rotary Club of Cardiff plaque, St Lawrence\'s churchyard, Lavernock (transcription): "BETWEEN LAVERNOCK AND FLAT HOLM 11th MAY, LAVERNOCK AND BREAN DOWN 18th MAY 1897 … ERECTED BY THE ROTARY CLUB OF CARDIFF 1947"', 'url': 'https://readtheplaque.com/plaque/marconi-s-first-radio-transmissions-across-water'}
+   ])
+sc('I', 'ghf-18970513-1', '1897-05-13', '13 May 1897', 'Signals across the sea', 'Lavernock Point and Flat Holm', 'x',
+   'Newspaper',
+   'The receiver is carried down to the beach below the cliff and joined to the pole by another 20 yards of wire. Signals from Flat Holm, 3.3 miles away, now print clearly on the Morse inker at Lavernock. The Evening Express reports that on Wednesday and Thursday "the results were most satisfactory". Watching are Preece, his second engineer Mr Gavey (late of Cardiff), the Cardiff postmaster Mr Fardo and other officials. The German Professor Slaby is there too.',
+   [
+    {'type': 'Newspaper', 'title': '[VERIFIED] Evening Express, 15 May 1897 (Extra Special), p.4 — "Wireless Telegraphy. Marconi Invention Tested at Lavernock" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3270811/3270815/108/'},
+    {'type': 'Newspaper', 'title': '[VERIFIED] Western Mail, 15 May 1897, p.6 — "Telegraphy without wires. Marconi invention tested at Lavernock" (same report) (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/4313747/4313753/61/'},
+    {'type': 'Newspaper', 'title': '[VERIFIED] South Wales Echo, 17 May 1897, p.2 — "The Man About Town": "Lavernock and the Flat Holm will stand out in the history of electrical science"; the messages were recorded, not just heard (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/4604986/4604988/5/'},
+    {'type': 'Publication', 'title': "[SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Marconi's method, drawing on Preece's Royal Institution lecture of 4 June 1897", 'url': 'https://earlyradiohistory.us/1901fa23.htm'},
+    {'type': 'Photograph', 'title': "[SECONDARY: date and place as captioned by the source] Post Office engineers inspect Marconi's apparatus on Flat Holm, 13 May 1897. Photo: Cardiff Council Flat Holm Project, CC BY 3.0, via Wikimedia Commons (File:Post_Office_Engineers.jpg)", 'url': 'https://commons.wikimedia.org/wiki/File:Post_Office_Engineers.jpg', 'image': '/media/1897-05-13-flat-holm-post-office-engineers-marconi.jpg'},
+    {'type': 'Publication', 'title': '[SECONDARY — conflicting] Later accounts give the first words as "Are you ready?" (We Are Cardiff, 13 May 2016) or "CAN YOU HEAR ME" / "YES LOUD AND CLEAR" (BBC Wales History, 2012). No 1897 source read here gives the words.', 'url': 'https://wearecardiff.co.uk/2016/05/13/marconis-first-wireless-message-transmitted-over-sea-from-flat-holm-to-lavernock-point/'}
+   ],
+   image='/media/1897-05-13-flat-holm-post-office-engineers-marconi.jpg')
+sc('I', 'ghf-18970514-1', '1897-05-14', '14 May 1897 (Friday)', 'The demonstration at Lavernock', 'Lavernock Point', 'x',
+   'Newspaper',
+   'On Friday afternoon Marconi gives a semi-public demonstration. A select company of local scientists and engineers watches his system explained in miniature, with a transmitter facing a receiver about twenty yards away, and messages written by the Morse self-inker without a connecting wire.',
+   [
+    {'type': 'Newspaper', 'title': '[VERIFIED] Evening Express, 15 May 1897 (Extra Special), p.4 — "Wireless Telegraphy. Marconi Invention Tested at Lavernock" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3270811/3270815/108/'},
+    {'type': 'Newspaper', 'title': '[VERIFIED] Carnarvon and Denbigh Herald, 21 May 1897, p.4 — "Telegraphing without wires": Preece "during last week" testing Marconi\'s invention between Lavernock Point and the Flat Holme; a select company of local scientists and engineers invited (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3603309/3603313/23/'},
+    {'type': 'Newspaper', 'title': '[VERIFIED] Weekly Mail, 22 May 1897, p.8 — "Wireless Telegraphy. Marconi Invention Tested at Lavernock" (same report) (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3370921/3370929/162/'}
+   ])
+sc('I', 'ghf-18970518-1', '1897-05-18', '18 May 1897', 'Lavernock to Brean Down', 'Lavernock Point and Brean Down (Somerset)', 'x',
+   'Newspaper',
+   'The range is pushed across the whole Channel. A message sent from Lavernock Point, through a wire carried 220 feet up on a kite, is received at Brean Down, near Weston-super-Mare, about eight and a half miles away. Marconi signs the paper tape. That week he works on Brean Down with Preece and Gavey.',
+   [
+    {'type': 'Newspaper', 'title': '[VERIFIED] South Wales Echo, 27 May 1897, p.4 — "First wireless telegram": "Sent from Lavernock Point through a kite at an elevation of 220ft., and received at Brean Down, May 18th, 1897 … (Signed) G. Marconi" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/4605031/4605035/99/'},
+    {'type': 'Newspaper', 'title': '[VERIFIED] South Wales Echo, 20 May 1897, p.3 — "The Marconi experiments": Marconi, with Mr Preece and Mr Gavey, "has this week been at work on Brean Down" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/4605001/4605004/57/'},
+    {'type': 'Heritage record', 'title': '[SECONDARY] Rotary Club of Cardiff plaque, St Lawrence\'s churchyard, Lavernock (transcription): "BETWEEN LAVERNOCK AND FLAT HOLM 11th MAY, LAVERNOCK AND BREAN DOWN 18th MAY 1897 … ERECTED BY THE ROTARY CLUB OF CARDIFF 1947"', 'url': 'https://readtheplaque.com/plaque/marconi-s-first-radio-transmissions-across-water'},
+    {'type': 'Publication', 'title': "[SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Marconi's method, drawing on Preece's Royal Institution lecture of 4 June 1897", 'url': 'https://earlyradiohistory.us/1901fa23.htm'}
+   ])
+sc('I', 'ghf-18970527-1', '1897-05-27', 'Late May – July 1897', 'The first wireless telegram goes on show', 'Cardiff Central Free Library', 'x',
+   'Newspaper',
+   'The framed tape of the Brean Down message goes on view in the hall of the Cardiff Central Free Library. Work at Lavernock goes on "for a few days longer". On 4 June Preece describes the Penarth–Brean Down signals to the Royal Institution in London. Marconi leaves England for Italy on Monday 5 July 1897.',
+   [
+    {'type': 'Newspaper', 'title': '[VERIFIED] South Wales Echo, 27 May 1897, p.4 — the framed tape on view at the Cardiff Central Free Library (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/4605031/4605035/99/'},
+    {'type': 'Newspaper', 'title': '[VERIFIED] South Wales Echo, 20 May 1897, p.3 — "Work is still progressing at Lavernock, and will be continued for a few days longer" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/4605001/4605004/57/'},
+    {'type': 'Newspaper', 'title': '[VERIFIED] South Wales Daily Post, 5 June 1897, p.3 — Preece\'s Royal Institution lecture: signals "between Penarth and Brean Down … a distance of nearly nine miles" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3356360/3356363/20/'},
+    {'type': 'Newspaper', 'title': '[VERIFIED] Carnarvon and Denbigh Herald, 9 July 1897, p.2 — Preece: "Marconi only left England on Monday" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3603372/3603374/10/'},
+    {'type': 'Newspaper', 'title': '[VERIFIED] Y Negesydd, 23 July 1897, p.1 — "Pellebru heb wifrau": experiments "yn agos i Benarth, Caerdydd" by Mr Preece and Marconi (Welsh) (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3819134/3819135/2/'}
+   ])
+sc('I', 'ghf-19070401-1', '1907-04-01', '1 April 1907', 'Air-rifle meeting at Great House Farm', 'Great House Farm', '?',
+   'Newspaper',
+   'The Llandough Air-rifle Club holds its Easter Monday meeting at Great House Farm: ten shots at twenty yards. A Llandough man, J. Griffiths, comes third.',
+   [
+    {'type': 'Newspaper', 'title': '[VERIFIED] Evening Express, 27 March 1907, p.3 — notice: an air-rifle shooting competition "at the Great House Farm, Llandough, on Monday next" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/4174604/4174607/109/'},
+    {'type': 'Newspaper', 'title': '[VERIFIED] Evening Express, 2 April 1907, p.4 — "Air-rifle shooting. The Llandough meeting … held on Monday at Great House Farm, Llandough" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/4174794/4174798/123/'}
+   ])
 sc('I', 'ghf-19080101-1', '1908-01-01', '1908', "John Williams", 'Great House Farm', 'AB',
    "Mary's statement",
    "Mary's grandfather dies. John Williams takes over the house from the Thomases and the fields from Bute.",
@@ -310,6 +401,12 @@ sc('I', 'ghf-19080101-1', '1908-01-01', '1908', "John Williams", 'Great House Fa
    aliases=['ghf-19050223-1'],
    ledger={'A': 'Freehold: the Thomases · tenant: John Williams',
            'B': 'Freehold: the Bute Estate · tenant: John Williams'})
+sc('I', 'ghf-19080106-1', '1908-01-06', '6 January 1908', 'A poacher caught on Great House Farm', 'Great House Farm', '?',
+   'Newspaper',
+   'Shortly before three in the morning two keepers on their round at Llandough see a man net two rabbits on Great House Farm and catch him before he leaves the field. At Barry he is sent to gaol for two months.',
+   [
+    {'type': 'Newspaper', 'title': '[VERIFIED] Evening Express, 10 January 1908, p.3 — "Two months for a poacher": "poaching on Great House Farm, Llandough" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/4184741/4184744/84/'}
+   ])
 sc('I', 'ghf-19130810-1', '1913-08-10', '10 August 1913', "Birth of Mary Williams", 'Great House Farm', 'A',
    "Mary's statement",
    "Mary Williams is born in the farmhouse on 10 August 1913.",
@@ -355,6 +452,13 @@ sc('II', 'ghf-19440101-1', '1944-01-01', '1944', "Farm management", 'Great House
    "The War Agricultural Executive Committee is dissatisfied with the farm. Frederick Buckler takes over running it as manager for John Williams.",
    [MARY, w('/john-williams/#y1944', 'John Williams — 1944'),
     w('/evidence/ev-0241-tna-maf-32-1220-39-national-farm-survey-penarth-1941/', "EV-0241 — National Farm Survey 1941–43, Penarth parish, TNA MAF 32/1220/39 (catalogue entry; that the farm's form is in it is an inference; not seen) (wiki evidence page)", 'Archive catalogue')])
+sc('II', 'ghf-19470101-1', '1947-01-01', '1947', 'The Lavernock plaque', "St Lawrence's churchyard, Lavernock", 'x',
+   'Heritage record',
+   'The Rotary Club of Cardiff puts up a bronze plaque at St Lawrence\'s, Lavernock: "Near this spot the first radio messages were exchanged across water by Guglielmo Marconi and George Kemp."',
+   [
+    {'type': 'Heritage record', 'title': '[SECONDARY] Rotary Club of Cardiff plaque, St Lawrence\'s churchyard, Lavernock (transcription): "BETWEEN LAVERNOCK AND FLAT HOLM 11th MAY, LAVERNOCK AND BREAN DOWN 18th MAY 1897 … ERECTED BY THE ROTARY CLUB OF CARDIFF 1947"', 'url': 'https://readtheplaque.com/plaque/marconi-s-first-radio-transmissions-across-water'},
+    {'type': 'Publication', 'title': '[SECONDARY] BBC Wales History blog (2012): the plaque "unveiled by the Cardiff Rotary Club" in 1948 (the plaque itself reads 1947)', 'url': 'https://www.bbc.co.uk/blogs/waleshistory/2012/05/marconi_wireless_open_sea_lavernock_point_flat_holm.html'}
+   ])
 sc('II', 'ghf-19480101-1', '1948-01-01', 'c. 1948 – 49', "Birth of William Buckler", 'Great House Farm', 'A',
    'Source pending',
    "William (Billy) Buckler is born at the farm.",
