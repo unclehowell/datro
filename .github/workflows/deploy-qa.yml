@@ -65,6 +65,28 @@ jobs:
               raise SystemExit("qa.json contains duplicate Q&A UIDs")
           PY
 
+      - name: Validate API exports and JavaScript before deployment
+        run: |
+          test -s index.html
+          test -s api/qa.json
+          test -s api/graph.json
+          test -s api/graph.sql
+          grep -q 'CREATE VIRTUAL TABLE qa_fts' api/graph.sql
+          grep -q 'CREATE VIRTUAL TABLE messages_fts' api/graph.sql
+          python3 - <<'PY'
+          from pathlib import Path
+          html = Path("index.html").read_text(encoding="utf-8")
+          if "<script>" not in html or "</script>" not in html:
+              raise SystemExit("index.html inline application script missing")
+          script = html.rsplit("<script>", 1)[1].split("</script>", 1)[0]
+          Path("/tmp/qa-inline-check.mjs").write_text(script, encoding="utf-8")
+          PY
+          node --check /tmp/qa-inline-check.mjs
+          for f in functions/api/*.js; do
+            cp "$f" /tmp/qa-function-check.mjs
+            node --check /tmp/qa-function-check.mjs
+          done
+
       - name: Deploy to Cloudflare Pages
         run: |
           npx --yes wrangler@3 pages deploy . --project-name=qa --branch=qa --commit-dirty=true
