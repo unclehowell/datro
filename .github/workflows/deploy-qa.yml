@@ -71,10 +71,14 @@ jobs:
 
       - name: Sync and verify D1 graph
         run: |
-          response="$(curl --silent --show-error --fail-with-body \
+          status="$(curl --silent --show-error --output /tmp/qa-sync.json --write-out '%{http_code}' \
             --request POST \
             --header "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
             --header "Accept: application/json" \
             "https://qa-acp.pages.dev/api/sync-graph")"
-          printf '%s\n' "$response"
-          python3 -c 'import json,sys; d=json.loads(sys.stdin.read()); print("D1 sync verified:", d.get("counts", {})); sys.exit(0 if d.get("ok") is True else 1)' <<< "$response"
+          cat /tmp/qa-sync.json
+          if [ "$status" != "200" ]; then
+            echo "D1 sync returned HTTP $status"
+            exit 1
+          fi
+          python3 -c 'import json,sys; d=json.load(open("/tmp/qa-sync.json")); print("D1 sync verified:", d.get("counts", {})); sys.exit(0 if d.get("ok") is True else 1)'
