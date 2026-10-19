@@ -142,13 +142,13 @@ let manifest=null, allRecords=[], threads=[], visibleThreads=[], selectedThread=
 const categoryToFolder = c => /Land Registry/i.test(c)?'land':/Court|Legal|Police/i.test(c)?'legal':/Heritage|Archives/i.test(c)?'records':/Local authority|Council|Environmental|FOI|EIR|Dispossession/i.test(c)?'foi':'all';
 const normalize = s => (s||'').toLowerCase().replace(/^(?:re\s*[:_\-]?\s*)+/i,'').replace(/\.(txt|eml|html?)$/i,'').replace(/[^a-z0-9]+/g,' ').trim();
 const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const fmtDate = s => { if(!s)return 'Date not stated in filename'; const d=new Date(s+'T12:00:00Z'); return isNaN(d)?s:d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}); };
+const fmtDate = s => { if(!s)return 'Date not stated in filename'; const d=new Date(/T/.test(s)?s:s+'T12:00:00Z'); return isNaN(d)?s:d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}); };
 const embedMode = new URLSearchParams(window.location.search).get('embed') === '1';
 if (embedMode) document.body.classList.add('embed-mode');
 function buildThreads(records){
  const groups=new Map();
  records.forEach(r=>{
-  const key=normalize(r.subject||r.name);
+  const key=r.threadId?('gt '+String(r.threadId).replace(/^gt-/,'')+' '+normalize(r.subject||r.name)).trim():normalize(r.subject||r.name);
   if(!groups.has(key))groups.set(key,{key:key,subject:r.subject||r.name,items:[],category:r.category||'General correspondence',latestDate:''});
   const t=groups.get(key);t.items.push(r);
   if(r.date && (!t.latestDate||r.date>t.latestDate))t.latestDate=r.date;
@@ -194,6 +194,7 @@ function messageAnchor(record,text){
    }
   }
  }
+ if(!stamp&&/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/.test(String(record.date||''))) stamp=String(record.date).slice(0,19).replace(/:/g,'-')+'Z';
  if(!stamp&&/^\d{4}-\d{2}-\d{2}$/.test(String(record.date||''))) stamp=record.date;
  return 'message-'+(stamp||'undated')+'-'+record.id;
 }
@@ -316,7 +317,7 @@ async function openThread(t, pushHistory){
   const card=document.createElement('article');card.className='message-card';card.id=messageAnchor(r);
   const head=document.createElement('div');head.className='message-head';
   const name=document.createElement('div');name.className='message-title';name.textContent=r.name;
-  const meta=document.createElement('div');meta.className='message-source';meta.textContent=(r.date?fmtDate(r.date)+' · ':'Date not indexed · ')+'Evidence v'+(r.evidenceVersion||'1.0.0')+' · Source: ';
+  const meta=document.createElement('div');meta.className='message-source';meta.textContent=(r.direction?(r.direction==='sent'?'Sent by Sion Buckler · ':'From '+(r.from||'sender')+' · '):'')+(r.date?fmtDate(r.date)+' · ':'Date not indexed · ')+'Evidence v'+(r.evidenceVersion||'1.0.0')+' · Source: ';
   const link=document.createElement('a');link.href=r.path;link.target='_blank';link.rel='noopener noreferrer';link.textContent='open original archived text';meta.appendChild(link);
   meta.appendChild(document.createTextNode(' · '));
   const permalink=document.createElement('a');permalink.href=threadUrl(t,false)+'#'+card.id;permalink.textContent='permalink to this message';permalink.setAttribute('aria-label','Permanent link to '+r.name);meta.appendChild(permalink);permalinkById.set(r.id,permalink);
@@ -429,6 +430,17 @@ function showReferenceLanding(ref,candidates,note){
  const p=document.createElement('p');p.textContent='This is a public archive lookup, not the original message. If no source match is available, the original email must be added to the curated public archive before it can be displayed here.';$('thread-summary').appendChild(p);
 }
 async function openExternalReference(ref){
+ // Exact match first: the dartboard links by Gmail thread id, which the Wayback case-mail records carry.
+ const direct=threads.find(t=>t.items.some(item=>item.threadId&&String(item.threadId).replace(/^gt-/,'').toLowerCase()===String(ref.id).toLowerCase()));
+ if(direct){
+  await openThread(direct,false);
+  const day=(ref.date||'').slice(0,10), title=normalize(ref.title||'');
+  const pick=direct.items.filter(i=>!day||String(i.date||'').startsWith(day)).sort((a,b)=>(normalize(b.subject)===title)-(normalize(a.subject)===title))[0]||direct.lastRecord;
+  const card=pick&&Array.from(document.querySelectorAll('.message-card')).find(el=>el.id.endsWith('-'+pick.id));
+  try{window.history.replaceState({emailThread:direct.key,emailRecord:pick&&pick.id},'',threadUrl(direct,false)+(card?'#'+card.id:''));}catch(e){}
+  if(card)card.scrollIntoView({behavior:'auto',block:'start'});
+  return;
+ }
  const candidates=externalSearchCandidates(ref);
  showReferenceLanding(ref,candidates,'Searching the public archive for a matching source message…');
  for(const candidate of candidates){
