@@ -76,5 +76,5 @@ jobs:
             --request POST \
             --header "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
             --header "Accept: application/json" \
-            "https://qa.pages.dev/api/sync-graph" || true)"
+            "https://qa-acp.pages.dev/api/sync-graph" || true)"
           printf '%s\n' "$response"
