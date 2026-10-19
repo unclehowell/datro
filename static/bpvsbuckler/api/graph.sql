@@ -1434,7 +1434,7 @@ INSERT INTO nodes VALUES ('doc-three-parcel-split-forensic-assessment-2026-10-18
 INSERT INTO nodes VALUES ('doc-tna-IR58-glamorgan-xlvii-6','document','TNA Valuation Office location lead / response','{"holder": "The National Archives", "reference": "CAS-359317-Q8Q4R9 (response 14 Oct 2026; follow-up 15 Oct 2026); prior draft r1281075964076169651", "date": "2026-10-14 (response); 2026-10-15 (follow-up)"}');
 INSERT INTO nodes VALUES ('doc-vale-of-glamorgan-00211557','document','Vale of Glamorgan FOI 00211557, supplement 18 October 2026','{"holder": "Vale of Glamorgan Council, FOI Unit", "reference": "00211557", "date": "2026-10-18"}');
 INSERT INTO nodes VALUES ('doc-welsh-government-ATISN-26-0009','document','Welsh Government ATISN 26-0009, 15 October 2026','{"holder": "Welsh Government / Cadw, Historic Environment Inspectorate", "reference": "ATISN 26-0009", "date": "2026-10-15"}');
-INSERT INTO nodes VALUES ('doc-welsh-government-ATISN-26-0010','document','Welsh Government ATISN 26-0010, 14 October 2026','{"holder": "Welsh Government, Operational Effectiveness Group, Business Management Unit (OEG.FMCO.FOI)", "reference": "ATISN 26-0010", "date": "2026-10-14"}');
+INSERT INTO nodes VALUES ('doc-welsh-government-ATISN-26-0010','document','Welsh Government ATISN 26-0010','{"holder": "Welsh Government, Operational Effectiveness Group, Business Management Unit (OEG.FMCO.FOI)", "reference": "ATISN 26-0010", "date": "2026-10-19"}');
 INSERT INTO nodes VALUES ('doc-welsh-government-ATISN-27589','document','Welsh Government / Cadw — ATISN 27589','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-welsh-government-atisn-26-0010','document','Welsh Government ATISN 26-0010 — Disclosure (Retention & destruction schedules)','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('ref:00211027','reference','00211027','{}');
@@ -3268,6 +3268,7 @@ INSERT INTO edges VALUES ('doc-three-parcel-split-forensic-assessment-2026-10-18
 INSERT INTO edges VALUES ('doc-tna-IR58-glamorgan-xlvii-6','ref:CAS-359317-Q8Q4R9','cites');
 INSERT INTO edges VALUES ('doc-vale-of-glamorgan-00211557','ref:00211557','cites');
 INSERT INTO edges VALUES ('doc-vale-of-glamorgan-00211557','ref:92/00671/RES','cites');
+INSERT INTO edges VALUES ('doc-welsh-government-ATISN-26-0010','ref:ATISN 27589','cites');
 INSERT INTO edges VALUES ('doc-welsh-government-ATISN-27589','ref:26FOI 103','cites');
 INSERT INTO edges VALUES ('doc-welsh-government-ATISN-27589','ref:ATISN 27021','cites');
 INSERT INTO edges VALUES ('doc-welsh-government-ATISN-27589','ref:ATISN 27589','cites');
