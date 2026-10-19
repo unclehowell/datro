@@ -52,6 +52,17 @@ REDEV = w('/redevelopment/', 'Redevelopment and Church View Close', 'Planning fi
 ARCH = w('/archaeology/', 'Archaeology and Heritage', 'Heritage record')
 JUDG = w('/bp-properties-v-buckler/', 'BP Properties Ltd v Buckler [1987] EWCA Civ 2', 'Court record')
 
+DIR = lambda title, url: {'type': 'Publication', 'title': title + ' (University of Leicester Historical Directories)', 'url': url}
+D1868 = DIR('Slater\'s Directory 1868, p.902, Llandough: "Williams John, Great house"', 'https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/91309')
+D1875 = DIR('Worrall\'s Directory 1875, p.324, farmers in Llandough parish: "Williams John, Great house"', 'https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/348840')
+D1880 = DIR('Slater\'s Directory 1880, p.533, farmers in Llandough: "Williams John, Greathouse"', 'https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/90316')
+D1887 = DIR('Owen\'s Cardiff Directory 1887, p.209: "Williams John, Great House farm, Llandough"', 'https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/92950')
+D1891 = DIR('Owen\'s Cardiff Directory 1891, p.237: "Williams John, overseer, Great House farm, Llandough"', 'https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/93394')
+D1901 = DIR('Cardiff Directory 1901, p.309: "Williams John, Great House farm, Llandough"', 'https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/95085')
+EV0224 = {'type': 'Public record', 'title': 'EV-0224 — 1881 census, Llandough, RG11/5288 p.2 (photograph and transcription)',
+          'url': WIKI + '/evidence/ev-0224-1881-census-llandough-rg11-5288/', 'image': '/media/1881-census-rg11-5288-p2.jpg'}
+EXCL = w('/evidence/excluded-not-our-farm/', 'Excluded: not our farm (other Llandoughs, other Williamses)', 'Analysis')
+
 ACTS = [
     {'id': 'P', 'label': 'Prologue', 'title': 'To 1857', 'span': 'Late Iron Age – 1857',
      'logline': 'The earliest archaeological context at Llandough, then the house and manor before the quarry.'},
@@ -223,8 +234,20 @@ sc('P', 'ghf-18400101-1', '1840-01-01', 'c. 1840', "Great House Farm", 'Census a
    "Census and tithe records begin to describe the house as \"Great House Farm\".",
    [w('/great-house-farm/farmhouse-nomenclature/', 'Farmhouse Nomenclature'), w('/great-house-farm/name-variations/', 'Name & Location Variations')],
    aliases=['ghf-18800101-1'])
+sc('P', 'ghf-18550101-1', '1855-01-01', '1855', "John Williams succeeds his father", 'Great House Farm', 'AB',
+   'Newspaper',
+   "John Williams succeeds his father as the Bute Estate's tenant. Reporting the Bute rent audit dinner of July 1904, the Cardiff Times says he \"succeeded his father in the tenancy of the farm in 1855\", and that it was \"his 102nd rent audit\".",
+   [{'type': 'Newspaper', 'title': 'Cardiff Times, 16 July 1904, p.1 — Bute rent audit dinner (Welsh Newspapers Online)',
+     'url': 'https://newspapers.library.wales/view/3427270/3427271/13/'},
+    w('/evidence/ev-0215-tithe-apportionment-john-williams-c1841/', 'EV-0215 — Tithe apportionment: John Williams, c. 1841')])
 
 # ---------------------------------------------------------------- ACT I
+sc('I', 'ghf-18680101-1', '1868-01-01', '1868 – 1901', "\"Williams John, Great house\"", 'Trade directories', 'AB',
+   'Publication',
+   "The trade directories list the farmers of Llandough parish. Every edition from 1868 to 1901 has \"Williams John, Great house\", from 1887 \"Great House farm, Llandough\". Thomas Rees, and later Evan Rees, are listed separately, at Llandough Farm, a different Bute farm.",
+   [D1868, D1875, D1880, D1887, D1891, D1901,
+    {'type': 'Newspaper', 'title': 'Weekly Mail, 6 November 1886 — Thomas Rees, aged 89, of Llandough Farm, "rented from the Marquess of Bute"',
+     'url': 'https://newspapers.library.wales/view/3365383/3365390/150/'}])
 sc('I', 'ghf-18700101-1', '1870-01-01', 'c. 1870', "The armour under the floor", 'Great House — dining room', 'A',
    'Family account',
    "Family tradition records a soldier in armour, with his horse, a lance and a shield, found beneath the dining-room floor. The account is in a Royal Commission record (NMR 6048942) and the Daily Telegraph of 16 April 1974. No primary record of a find has been located.",
@@ -254,10 +277,18 @@ sc('I', 'ghf-18770101-1', '1877-01-01', '1877', "Division of the farm", 'Bute Es
    ledger={'W': None,
            'A': 'Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends',
            'B': 'Freehold: the Bute Estate · tenants: the Williamses'})
+sc('I', 'ghf-18810403-1', '1881-04-03', '3 April 1881', "The 1881 census: \"Llandough Home Farm\"", 'Census, Llandough (RG11/5288 p.2)', 'AB',
+   'Public record',
+   "The 1881 census records \"Llandough Home Farm\": John Williams, 53, \"Farmer of 170 [? or 120] ac. employing 1 man and 1 boy\", born at Leckwith; his wife Mary, 51, born at Cogan; their children Ellen, 14, John, 13, and David, 9; a boarder and a servant. Per Sion Buckler, this is Great House Farm entered under the wrong name. The directories of 1880 and 1887 place the same John Williams at Great House.",
+   [EV0224, D1880, D1887,
+    w('/evidence/ev-0223-1881-census-name-variant/', 'EV-0223 — 1881 census: a dictated variant of the farm name (pending)')],
+   image='/media/1881-census-rg11-5288-p2.jpg')
 sc('I', 'ghf-18911111-1', '1891-11-11', '11 November 1891', "Theft of geese", 'Llandough — court report', 'AB',
    'Newspaper',
    "Three geese are stolen from \"Mr. John Williams, Great House Farm, Llandough\". The theft is reported from court.",
-   [press('N01', '1891 court report — farmyard theft', 'ghf-e090-n01-1891-farmyard-theft.jpg')],
+   [press('N01', '1891 court report — farmyard theft', 'ghf-e090-n01-1891-farmyard-theft.jpg'),
+    {'type': 'Newspaper', 'title': 'South Wales Star, 10 June 1892 — geese "the property of Mr. John Williams, Great House Farm, Llandough, on November 11, 1891" (Welsh Newspapers Online)',
+     'url': 'https://newspapers.library.wales/view/3019697/3019705/78/'}],
    image='/media/ghf-e090-n01-1891-farmyard-theft.jpg')
 sc('I', 'ghf-18970501-1', '1897-05-01', 'May 1897', "Marconi at Lavernock", 'Lavernock Point', '?',
    'Family account',
@@ -344,6 +375,13 @@ sc('III', 'ghf-19550202-1', '1955-02-02', '2 February 1955', "The 1955 possessio
    ledger={'A': 'Freehold: the Williamses (Mary in the house) · woodland: the family account is that it was taken in 1955 (not yet on the wiki)',
            'S': 'Attempt 2: High Court order against the fields tenant for "the whole of the farm" (house not taken; Mary never heard)',
            'B': 'Freehold and possession: Western Ground Rents (fields taken 4 July 1955)'})
+sc('III', 'ghf-19581119-1', '1958-11-19', '19 November 1958', "\"A Welsh case of Crichel Down\"", 'Glamorgan County Council planning committee, Cardiff', 'A',
+   'Newspaper',
+   "Mary Williams, as Mrs M. D. Buckler, objects to Glamorgan County Council's planning committee about industrial development beside Tŷ Mawr. The Western Mail reports her saying that land \"farmed by her family since 1667\" had been \"wrongfully appropriated\", that \"This is a Welsh case of Crichel Down\", and that \"the water was cut off from her house and grounds for nearly 10 years by order of Western Ground Rents\".",
+   [{'type': 'Newspaper', 'title': 'Western Mail, 20 November 1958, p.7, "It\'s a Crichel Down, says woman farmer" (SNIPPET ONLY: read from British Newspaper Archive search text; the page itself not yet seen)',
+     'url': 'https://www.britishnewspaperarchive.co.uk/search/results/1950-01-01/1965-12-31?basicsearch=buckler+%22western+ground+rents%22+water&exactsearch=false&retrievecountrycounts=false'},
+    w('/evidence/ev-0037-western-mail-1958-crichel-down/', 'EV-0037 — Western Mail, 1958: "Crichel Down"'),
+    w('/testimony/branwen-buckler/', 'Testimony — Branwen Buckler', 'Testimony')])
 sc('III', 'ghf-19590101-1', '1959-01-01', '1959', "1959 tenancy offer", 'Great House Farm', 'A',
    'Court record',
    "Western Ground Rents offers Mary a tenancy of the farmhouse and garden. She refuses, stating that the house is hers through her grandfather and that documents prove it.",
@@ -387,7 +425,9 @@ sc('IV', 'ghf-19691231-1', '1969-12-31', '31 December 1969', "Conveyance to BP P
 sc('IV', 'ghf-19720725-1', '1972-07-25', '1970 – 72', "Village green and planning permission", 'Planning office', 'AB',
    'Planning file',
    "On 16 June 1970 land beside Leckwith Road is registered as village green VG41. On 25 July 1972 planning permission is granted for housing on the site, while Mary lives in the farmhouse.",
-   [REDEV, TL, ], aliases=['ghf-19700616-1'],
+   [REDEV, TL,
+    {'type': 'Legislation', 'title': 'Commons Registration (Glamorgan) Act 1983 (c. ix): validates the registers of common land only; village greens are not covered',
+     'url': 'https://www.legislation.gov.uk/ukla/1983/9'}], aliases=['ghf-19700616-1'],
    ledger={'A': 'Freehold: the Williamses (Mary in the house) · land beside Leckwith Road registered as village green VG41 (1970)'})
 sc('IV', 'ghf-19740101-1', '1974-01-01', '1974', "Royal Commission survey", 'Great House — interior', 'A',
    'Heritage record',

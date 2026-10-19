@@ -13,7 +13,8 @@
    "for": [
     "Mary Williams's statement (c. 1974)",
     "1974 newspaper reports",
-    "Family tradition of nine generations"
+    "Family tradition of nine generations",
+    "Western Mail, 20 November 1958 (snippet only): Mrs M. D. Buckler tells the county planning committee the land was \"farmed by her family since 1667\""
    ],
    "against": [
     "RCAHMW Archive 6048945 / Heneb GGAT02038s: Vaughans occupied the house mid-C16 to late C18",
@@ -92,6 +93,40 @@
     "DBDT",
     "limeworks",
     "Pembroke Terrace"
+   ]
+  },
+  {
+   "id": "cq-1881-name",
+   "question": "Is the 1881 census's \"Llandough Home Farm\" Great House Farm?",
+   "scenes": [
+    "ghf-18810403-1"
+   ],
+   "status": "contested",
+   "answer": "Very probably, on who lived there; not on the name. The census household (RG11/5288 p.2, schedule 9) is John Williams, 53, farmer, born at Leckwith. Directories of 1868, 1875 and 1880, and of 1887, 1891 and 1901, list \"Williams John, Great house\" / \"Great House farm, Llandough\", and list the Rees family separately at Llandough Farm. The South Wales Star of 1892 has \"Mr. John Williams, Great House Farm, Llandough\". Per Sion Buckler, the census entered Great House Farm under the wrong name. No other source uses \"Home Farm\".",
+   "for": [
+    "1881 census RG11/5288 p.2 (EV-0224): John Williams household",
+    "Slater's 1868, Worrall's 1875, Slater's 1880: \"Williams John, Great house\"",
+    "Owen's 1887 and 1891, Cardiff Directory 1901: \"Williams John, Great House farm, Llandough\"",
+    "South Wales Star, 10 June 1892: \"Mr. John Williams, Great House Farm, Llandough\"",
+    "Llandough Farm held by the Rees family, 1861–1910 (Cardiff Times 1865; Weekly Mail 1886; Evening Express 1898, 1910)"
+   ],
+   "against": [
+    "\"Home Farm\" appears in no other source found: newspapers 1804–1919, directories or OS maps",
+    "The acreage reads 170 or 120: 170 fits Llandough Farm (166 acres, 1824–32) better than Great House (about 120 acres, 1841 tithe)",
+    "The press sometimes calls a Williams \"of Llandough Farm\" (1895, 1903, 1904), so the farm names were confused in print too",
+    "EV-0223 carries a different, dictated reading of the name, not shown on this page"
+   ],
+   "next": [
+    "Folio and enumeration district for RG11/5288 p.2",
+    "The 1871 and 1891 census entries for the same household",
+    "Bute rentals and surveys for the farm under any name, 1855–1908"
+   ],
+   "match": [
+    "1881 census",
+    "RG11/5288",
+    "Home Farm",
+    "Great house",
+    "Greathouse"
    ]
   },
   {
@@ -190,6 +225,37 @@
     "1955",
     "possession order",
     "summary judgment"
+   ]
+  },
+  {
+   "id": "cq-water",
+   "question": "Was the farm's water cut off, when, by whom, and why?",
+   "scenes": [
+    "ghf-19581119-1"
+   ],
+   "status": "open",
+   "answer": "Mrs M. D. Buckler (Mary Williams) told Glamorgan County Council's planning committee in November 1958 that \"the water was cut off from her house and grounds for nearly 10 years by order of Western Ground Rents\" (Western Mail, 20 November 1958, snippet only). Per Branwen Buckler (voice testimony), the council cut it over bills that Mary (Nancy) Williams insisted were paid, cattle drowned in the River Ely trying to reach water, and it was raised in Parliament. In the 1950s Llandough was in Penarth Urban District; Cardiff Corporation was the public water undertaker for the area, and in 1914 the Bute estate also supplied part of Penarth Urban District from a private spring at Llandough.",
+   "for": [
+    "Western Mail, 20 November 1958, p.7 (snippet only): \"by order of Western Ground Rents\"",
+    "Branwen Buckler (voice testimony, 19 October 2026)",
+    "Water undertakings return, 1914: a Bute estate spring supplying part of Penarth Urban District"
+   ],
+   "against": [
+    "The 1958 report names the landlord, not a council or a water bill",
+    "No report of cattle drowning in the Ely found",
+    "No Commons or Lords debate or written answer found, 1946–92 (committees and MPs' letters not searched)",
+    "Dŵr Cymru's 2026 replies refer to a disconnection in the 1980s: possibly a second cut-off"
+   ],
+   "next": [
+    "The full Western Mail page, 20 November 1958, and the South Wales Echo and Penarth Times for that week",
+    "Glamorgan County Council planning committee minutes, 19 November 1958",
+    "Penarth UDC and Cardiff Corporation waterworks committee minutes, 1948–58",
+    "Whether the farm was on the mains or an estate spring or pipe"
+   ],
+   "match": [
+    "water",
+    "Crichel Down",
+    "cut off"
    ]
   },
   {

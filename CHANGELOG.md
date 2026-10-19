@@ -1,3 +1,13 @@
+## 2026-10-19 — New evidence: 1881 census, directories, 1855 tenancy, 1958 water report
+
+- New scene, 1881 census (RG11/5288 p.2): "Llandough Home Farm", John Williams, 53, farmer of 170 [? or 120] acres, linked to wiki EV-0224 with the census photograph. Per Sion Buckler this is Great House Farm; what cuts against it (the name appears nowhere else; the acreage) is shown with it. New case question cq-1881-name.
+- New scene, trade directories 1868–1901: "Williams John, Great house", with the Rees family listed separately at Llandough Farm.
+- New scene, 1855: John Williams "succeeded his father in the tenancy of the farm in 1855" (Cardiff Times, 16 July 1904); the report's "of Llandough Farm" is noted against it.
+- 1891 geese scene: added the South Wales Star, 10 June 1892 ("Mr. John Williams, Great House Farm, Llandough").
+- New scene, 19 November 1958: Western Mail report (snippet only) of Mrs M. D. Buckler's "Welsh case of Crichel Down" and her claim that the water was cut off "for nearly 10 years by order of Western Ground Rents"; Branwen Buckler's voice testimony attributed to her, with what cuts against it. New case question cq-water.
+- VG41 scene: the Commons Registration (Glamorgan) Act 1983 covers common land only, not village greens.
+- Evidence catalogue: the 1878 Thomas Williams / Ynysawdre Coal Co. agreement recorded as excluded (Ynysawdre Farm, Bridgend; not Great House Farm). It was not listed on the site as Great House Farm.
+
 ## 2026-10-18 — Three-part Parcel A forensic review
 
 - Added an interactive, explicitly non-cadastral schematic separating the proposed north woodland, central occupied core and south-eastern VG41 land within Parcel A, while retaining Parcel B as a control area.

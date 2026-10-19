@@ -60,7 +60,15 @@ ACCOUNTS = {
     received="It was always just a farm.",
     words=[('"Great House Farm"', 'A name that reduced the manor\'s court house to a farmhouse.')],
     known="The first change in how the place was described. Later descriptions, especially \"the whole farm\", decide the case."),
+'ghf-18550101-1': dict(
+    received="",
+    words=[],
+    known="One newspaper line, written 49 years later, gives 1855 as the start of John Williams's tenancy and says he took it over from his father; the 1841 tithe already has a John Williams holding about 120 acres at Tŷ Mawr. Against it: the 1904 report calls him \"of Llandough Farm\", the name of the Rees family's separate farm, so reading it as Great House rests on the directories, which put him at \"Great House\" in 1891 and 1901 (an inference, not proof). The Bute rent audits that would confirm 1855 have not been seen."),
 # ---------------------------------------------------------------- ACT I
+'ghf-18680101-1': dict(
+    received="",
+    words=[],
+    known="Six directories over 33 years put the same John Williams at Great House and the Rees family at Llandough Farm, so the two farms, and the two families, were distinct. Against it: directories copy from one edition to the next and record what the compiler was told; none uses the name \"Home Farm\"; and the press of 1895 and 1904 sometimes calls a Williams \"of Llandough Farm\", so that name in a source does not always mean the Rees farm."),
 'ghf-18700101-1': dict(
     received="Family folklore.",
     words=[('"reported"', 'The word the records use, which keeps it at a distance.')],
@@ -77,6 +85,10 @@ ACCOUNTS = {
     received="Nothing changed: Bute went on owning the farm, and the Williamses went on renting it.",
     words=[],
     known="On Mary's statement, from 1877 there are two parcels with two owners: Parcel A, the house, owned by Thomas; Parcel B, the fields, kept by Bute. Anything Bute sells after 1877 can only be Parcel B. Her statement says the freehold of the house was to pass to the Williamses when quarrying ended. The deed is missing; the wiki notes that whether the 1877 deal was a sale or a quarry lease is still to be tested against the Bute papers."),
+'ghf-18810403-1': dict(
+    received="",
+    words=[('"Llandough Home Farm"', 'The enumerator\'s label. No other source found uses it: no newspaper (Welsh Newspapers Online, 1804–1919), directory or Ordnance Survey map.')],
+    known="The household is the John Williams whom the directories place at Great House before and after 1881. The Rees family were at Llandough Farm. On identity the record supports Sion Buckler's reading. Against it: \"Home Farm\" appears nowhere else, so it cannot be offered as a second name for the farm; and the acreage is hard to read: 170 would fit Llandough Farm (166 acres in 1824–32) better than Great House (about 120 acres in the 1841 tithe), while 120 fits Great House. Folio and enumeration district: source pending. EV-0223 records a different, dictated reading of the farm name that this page does not show."),
 'ghf-18911111-1': dict(
     received="A minor court report.",
     words=[],
@@ -143,6 +155,11 @@ ACCOUNTS = {
     received="The landlord recovered the farm in 1955; the family stayed on in the house only through the landlord's forbearance, and from 1955 their occupation was adverse to the landlord.",
     words=[('"the whole of the farm"', 'The order\'s description, quoted in 1987.'), ('adverse possession from 1955', 'The clock the courts later counted on the house.')],
     known="An order against a tenant of the fields can only give back the fields, and that is what was taken. Mary was not a party and was never heard. She had just come home from hospital and stood her ground for her house. Any clock that started in 1955 was a clock on the fields. That the order reached the house was an insinuation, later read as fact. The family's account is that the woodland of Parcel A was taken in 1955 too, passing to a couple in Llandough and later to the Forest of Cardiff. (Family account, not yet recorded on the wiki.)"),
+'ghf-19581119-1': dict(
+    received="",
+    words=[('"a Welsh case of Crichel Down"', 'Her words, as reported. Crichel Down (1954) was the national scandal over farmland the state kept after requisition; a minister resigned over it.'),
+           ('"by order of Western Ground Rents"', 'Her claim, as reported; it names the landlord, not a council.')],
+    known="The only record of the time so far that the water was cut off: Mrs Buckler's own claim in 1958, as the Western Mail reported it. \"Nearly 10 years\" would put the start around 1948–49 (an inference). Per Branwen Buckler (voice testimony, relayed by Sion Buckler, 19 October 2026), the council cut the water over bills it said were unpaid, which Mary (Nancy) Williams insisted had been paid; dairy cattle drowned in the River Ely trying to reach water, a baby daughter had to live elsewhere, and the matter was raised in Parliament. What cuts against that version: the 1958 report names Western Ground Rents, not a council or a water bill; no report of cattle drowning has been found; no Commons or Lords debate or written answer has been found for 1946–92 (committee proceedings and MPs' letters are not searchable this way); and Dŵr Cymru's 2026 replies speak of a disconnection in the 1980s, so there may have been two cut-offs. The article has been read only as search snippets; the full page is still to be obtained."),
 'ghf-19590101-1': dict(
     received="The landlord offered the occupier a tenancy, and she refused it.",
     words=[('"the farmhouse and garden"', 'The landlord\'s description of what it offered to let.')],
@@ -174,7 +191,8 @@ ACCOUNTS = {
     known="By deed, Parcel B passed (Bute, Western Ground Rents, BP). For Parcel A there was no deed to pass; what passed was the 1962 order and the case against Mary. The root deed is now missing."),
 'ghf-19720725-1': dict(
     received="Ordinary planning of an under-used farm.",
-    words=[('"the site"', 'Both parcels treated as one development site.')],
+    words=[('"the site"', 'Both parcels treated as one development site.'),
+           ('"VG41"', 'The village green registered on 16 June 1970. The Commons Registration (Glamorgan) Act 1983 validated the registers of common land only and does not mention village greens, so it neither validated nor redrew VG41.')],
     known="Permission was granted over a house whose ownership was disputed, while its owner lived in it. In 1990 a condition of the outline permission provided for a 0.25-acre village green beside the site. The family's account is that the land south of the farmhouse, part of Parcel A, was taken by the council and laid out as a green in the 1980s. (Family account, not yet recorded on the wiki.)"),
 'ghf-19740101-1': dict(
     received="A routine, incomplete survey.",
