@@ -94,6 +94,7 @@ body.reader-open .reader-panel{display:flex}
 .embed-mode .reader-empty p{font-size:12px;margin:3px 0 0;line-height:1.45}
 .embed-mode .mobile-back{display:none!important}
 
+.message-missing{font-style:italic;opacity:.85}.message-missing a{font-style:normal}
 </style>
 </head>
 <body>
@@ -245,10 +246,13 @@ function renderList(){
  });list.appendChild(b);
  });
 }
+const NOT_RECOVERED_TEXT='Original text not yet recovered.';
+function looksLikeHtmlDocument(t){if(typeof t!=='string')return false;const h=t.slice(0,4096);return /^\s*(?:<!doctype\s+html|<html[\s>])/i.test(h)||/<title>\s*DATRO Wayback Archive\s*<\/title>/i.test(h);}
+function showNotRecovered(body,r){if(!body)return;body.replaceChildren();body.classList.add('message-missing');const p=document.createElement('span');p.textContent=NOT_RECOVERED_TEXT+' The archived source file for this message is missing, so its text is not shown here.';body.appendChild(p);if(r&&r.path){body.appendChild(document.createTextNode('\n'));const a=document.createElement('a');a.href=r.path;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Source record: '+(r.name||r.path);body.appendChild(a);}}
 async function getMessage(r){
  if(messageCache.has(r.id))return messageCache.get(r.id);
  const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),20000);
- const promise=fetch('/api/message?id='+encodeURIComponent(r.id),{headers:{'Accept':'application/json'},signal:controller.signal}).then(async res=>{let data={};try{data=await res.json();}catch(e){}if(!res.ok)throw new Error((data.error||'Archive source returned '+res.status)+(data.detail?': '+data.detail:''));return typeof data.text==='string'?data.text:'';}).catch(e=>{if(e.name==='AbortError')throw new Error('Timed out waiting for the archive. Open the original source link below.');throw e;}).finally(()=>clearTimeout(timer));
+ const promise=fetch('/api/message?id='+encodeURIComponent(r.id),{headers:{'Accept':'application/json'},signal:controller.signal}).then(async res=>{let data={};try{data=await res.json();}catch(e){}if(!res.ok)throw new Error((data.error||'Archive source returned '+res.status)+(data.detail?': '+data.detail:''));if(data.textStatus==='not-recovered'||looksLikeHtmlDocument(data.text)){const e=new Error(NOT_RECOVERED_TEXT);e.notRecovered=true;throw e;}return typeof data.text==='string'?data.text:'';}).catch(e=>{if(e.name==='AbortError')throw new Error('Timed out waiting for the archive. Open the original source link below.');throw e;}).finally(()=>clearTimeout(timer));
  messageCache.set(r.id,promise);
  try{return await promise;}catch(e){messageCache.delete(r.id);throw e;}
 }
@@ -333,7 +337,7 @@ async function openThread(t, pushHistory){
    }
    return {record:r,text:text};
   }
-  catch(e) { const message=e&&e.message?e.message:String(e); const body=bodyById.get(r.id); if(body)body.textContent='Message text could not be loaded. '+message+'\n\nUse the original source link above to read the archived record.'; return {record:r,error:message}; }
+  catch(e) { const message=e&&e.message?e.message:String(e); const body=bodyById.get(r.id); if(e&&e.notRecovered){showNotRecovered(body,r);return {record:r,error:message,notRecovered:true};} if(body)body.textContent='Message text could not be loaded. '+message+'\n\nUse the original source link above to read the archived record.'; return {record:r,error:message}; }
  }));
  const loaded=results.filter(x=>!x.error);const errors=results.filter(x=>x.error);
  if(!loaded.length&&!errors.length){const d=document.createElement('div');d.className='empty-list';d.textContent='No source records are attached to this conversation.';reader.appendChild(d);}
@@ -349,7 +353,7 @@ async function openThread(t, pushHistory){
  if(dates.size)para('Dates stated in message headers: '+Array.from(dates).slice(0,12).join('; ')+(dates.size>12?' and others':'')+'.');
  if(snippets.length)para('Content description derived from source text: '+snippets.slice(0,3).join(' | '));
  const ul=document.createElement('ul');t.items.forEach(r=>{const li=document.createElement('li');const a=document.createElement('a');a.href=r.path;a.target='_blank';a.rel='noopener noreferrer';a.textContent=r.name;li.appendChild(a);ul.appendChild(li);});summary.appendChild(ul);
- if(errors.length)para('Warning: '+errors.length+' source record(s) could not be fetched from the upstream public archive during this view.');
+ const missing=errors.filter(x=>x.notRecovered).length, failed=errors.length-missing; if(missing)para(missing+' message(s) in this group: original text not yet recovered (the archived source file is missing).'); if(failed)para('Warning: '+failed+' source record(s) could not be fetched from the upstream public archive during this view.');
 }
 async function doFullTextSearch(q){
  const btn=$('search-form').querySelector('button');btn.disabled=true;btn.textContent='Searching…';$('list-subtitle').textContent='Searching the full text of case-related archive records…';
