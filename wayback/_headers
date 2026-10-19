@@ -25,3 +25,9 @@
   X-Content-Type-Options: nosniff
   Permissions-Policy: tools=(self)
   Origin-Agent-Cluster: ?1
+
+/api/*
+  Cache-Control: public, max-age=300
+
+/mail/*
+  Cache-Control: public, max-age=3600
