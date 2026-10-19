@@ -1,0 +1,9 @@
+# Cloudflare Pages config for qa.bucklerfamily.estate
+name = "qa"
+pages_build_output_dir = "./dist"
+compatibility_date = "2025-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "qa-graph"
+database_id = "fe824415-4bfd-48b5-82d7-1bfc8f503fc9"
