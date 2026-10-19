@@ -130,18 +130,15 @@ export async function onRequestPost({ request, env }) {
     for (let i = 0; i < batches.length; i += 1) {
       try {
         await env.DB.exec(batches[i]);
-      } catch (error) {
-        // Report safe diagnostics only: never include the SQL batch or its data.
-        const message = String(error?.message || error || 'D1 rejected batch')
-          .replace(/[\\r\\n\\t]+/g, ' ')
-          .slice(0, 240);
+      } catch (_error) {
+        // SQL errors can echo literal correspondence content; never return or log them.
         return json({
           ok: false,
           stage,
           failedBatch: i + 1,
           batchCount: batches.length,
           batchBytes: new TextEncoder().encode(batches[i]).byteLength,
-          error: message,
+          error: 'D1 rejected a SQL batch; statement details withheld.',
         }, 500);
       }
     }
