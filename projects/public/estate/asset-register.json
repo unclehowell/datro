@@ -2,7 +2,7 @@
  "title": "Buckler Family Estate — Asset Register (Configuration Items)",
  "checked": "20 October 2026, 00:45 BST",
  "version": "1.0",
- "count": 80,
+ "count": 81,
  "fields": [
   "id",
   "group",
@@ -235,7 +235,7 @@
   {
    "id": "CI-019",
    "group": "1. Great House Farm public sites (bucklerfamily.estate)",
-   "name": "Great House Farm Wiki (hosted)",
+   "name": "Legal Wiki (the hosted Great House Farm wiki)",
    "url": "hosted wiki; estate mirror at https://wiki.bucklerfamily.estate/",
    "purpose": "Primary public evidence record: evidence pages, Register, Timeline, Change Log",
    "platform": "WordPress (hosted plan)",
@@ -812,16 +812,28 @@
    "id": "CI-067",
    "group": "6. Publications and media",
    "name": "E-book: Great House Farm Wiki v0.1",
-   "url": "https://bucklerfamily.estate/ebook/",
+   "url": "—",
    "purpose": "2,064-page PDF of the wiki (681 pages, every evidence page EV-0001 to EV-0238), author Sion Buckler",
-   "platform": "PDF; shop page on the campus",
-   "repo": "unclehowell/BucklerFamilyFarm @ main (shop page)",
+   "platform": "PDF (2,064 pages)",
+   "repo": "n/a",
    "owner": "Executive (estate owner)",
-   "status": "Sale edition with privacy redactions in preparation (20 Oct 2026)",
+   "status": "Original held privately; sale edition redacted for privacy (20 Oct 2026)",
    "backup": "Original kept privately; public edition only after redaction"
   },
   {
-   "id": "CI-068",
+   "group": "6. Publications and media",
+   "name": "E-book shop",
+   "url": "https://bucklerfamily.estate/ebook/",
+   "purpose": "Shop page for the e-book (“Great House Farm — The Evidence Archive”), pay-now button and free sample",
+   "platform": "Cloudflare Pages (bucklerfamilyfarm) + Stripe payment link",
+   "repo": "unclehowell/BucklerFamilyFarm @ main",
+   "owner": "Executive (estate owner)",
+   "status": "Live (200)",
+   "backup": "Source in Git; Internet Archive: queued, not yet submitted (needs an archive.org account)",
+   "id": "CI-068"
+  },
+  {
+   "id": "CI-069",
    "group": "6. Publications and media",
    "name": "Project Management File v0.1",
    "url": "—",
@@ -833,7 +845,7 @@
    "backup": "kept privately"
   },
   {
-   "id": "CI-069",
+   "id": "CI-070",
    "group": "6. Publications and media",
    "name": "Case films (versions 2–6)",
    "url": "—",
@@ -845,7 +857,7 @@
    "backup": "kept privately"
   },
   {
-   "id": "CI-070",
+   "id": "CI-071",
    "group": "6. Publications and media",
    "name": "Archive media sites (six)",
    "url": "https://ghf-archive-media.sites.tab.bot/",
@@ -857,7 +869,7 @@
    "backup": "copies of wayback media"
   },
   {
-   "id": "CI-071",
+   "id": "CI-072",
    "group": "6. Publications and media",
    "name": "Facebook Page \"Great House Farm II\"",
    "url": "—",
@@ -869,7 +881,7 @@
    "backup": "platform"
   },
   {
-   "id": "CI-072",
+   "id": "CI-073",
    "group": "7. Workflows (Gmail, HubSpot, Calendar, schedules)",
    "name": "Gmail send flywheel",
    "url": "—",
@@ -881,7 +893,7 @@
    "backup": "n/a"
   },
   {
-   "id": "CI-073",
+   "id": "CI-074",
    "group": "7. Workflows (Gmail, HubSpot, Calendar, schedules)",
    "name": "Research flywheel",
    "url": "—",
@@ -893,7 +905,7 @@
    "backup": "n/a"
   },
   {
-   "id": "CI-074",
+   "id": "CI-075",
    "group": "7. Workflows (Gmail, HubSpot, Calendar, schedules)",
    "name": "Reopen-loop",
    "url": "—",
@@ -905,7 +917,7 @@
    "backup": "n/a"
   },
   {
-   "id": "CI-075",
+   "id": "CI-076",
    "group": "7. Workflows (Gmail, HubSpot, Calendar, schedules)",
    "name": "HubSpot Programme deal",
    "url": "—",
@@ -917,7 +929,7 @@
    "backup": "n/a"
   },
   {
-   "id": "CI-076",
+   "id": "CI-077",
    "group": "7. Workflows (Gmail, HubSpot, Calendar, schedules)",
    "name": "Calendar and reminders",
    "url": "—",
@@ -929,7 +941,7 @@
    "backup": "n/a"
   },
   {
-   "id": "CI-077",
+   "id": "CI-078",
    "group": "7. Workflows (Gmail, HubSpot, Calendar, schedules)",
    "name": "Debrief flywheel",
    "url": "—",
@@ -941,7 +953,7 @@
    "backup": "n/a"
   },
   {
-   "id": "CI-078",
+   "id": "CI-079",
    "group": "7. Workflows (Gmail, HubSpot, Calendar, schedules)",
    "name": "Internet Archive backup",
    "url": "—",
@@ -953,7 +965,7 @@
    "backup": "n/a"
   },
   {
-   "id": "CI-079",
+   "id": "CI-080",
    "group": "7. Workflows (Gmail, HubSpot, Calendar, schedules)",
    "name": "Cloudflare status cron",
    "url": "—",
@@ -965,7 +977,7 @@
    "backup": "n/a"
   },
   {
-   "id": "CI-080",
+   "id": "CI-081",
    "group": "7. Workflows (Gmail, HubSpot, Calendar, schedules)",
    "name": "Research importer cron",
    "url": "—",
