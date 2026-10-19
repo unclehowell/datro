@@ -67,12 +67,15 @@ function makeBatches(statements) {
   const batches = [];
   let pending = [];
   let pendingBytes = 0;
+  const MAX_BATCH_STATEMENTS = 75;
   for (let index = 0; index < statements.length; index += 1) {
     const statement = statements[index];
     const statementBytes = encoder.encode(statement).byteLength;
     if (statementBytes > MAX_STATEMENT_BYTES) throw new Error(`oversized statement ${index + 1}`);
     const addition = statementBytes + (pending.length ? 2 : 0);
-    if (pending.length && pendingBytes + addition > MAX_BATCH_BYTES) {
+    // Keep both batch size and statement count comfortably bounded.
+    if (pending.length &&
+        (pendingBytes + addition > MAX_BATCH_BYTES || pending.length >= MAX_BATCH_STATEMENTS)) {
       batches.push(pending.join(';\n') + ';');
       pending = [];
       pendingBytes = 0;
