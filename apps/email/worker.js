@@ -1,6 +1,6 @@
 const RAW_BASE = "https://raw.githubusercontent.com/unclehowell/datro/email-archive/apps/email";
 const MANIFEST_URL = "https://wayback.bucklerfamily.estate/email/mail-index.json";
-const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/10998a502d15c10117776d82969a02c88cf0e98e/apps/email/index.html";
+const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/a489caf5c6b0383783483144b870cda371f75bcd/apps/email/index.html";
 const TEXT_HOST = "wayback.bucklerfamily.estate";
 // Wayback's case-mail API is the single source of truth for every case email (redacted copies).
 const CASEMAIL_INDEX_URL = "https://wayback.bucklerfamily.estate/api/index.json";
@@ -32,6 +32,14 @@ function slugFor(record) {
   if (record.threadId) return ("gt " + String(record.threadId).replace(/^gt-/, "") + " " + normalize(record.subject || record.name)).trim().replace(/\s+/g, "-").slice(0, 140);
   return normalize(record.subject || record.name).replace(/\s+/g, "-").slice(0, 140);
 }
+// Attachments that came with an email, as listed by Wayback's case-mail API. Only files on the
+// Wayback host's public media roots are passed through, as absolute download links.
+function caseMailAttachments(list) {
+  if (!Array.isArray(list)) return [];
+  return list.filter(a => a && typeof a.url === "string" && /^\/(pdf|images|text|video)\/[^?#]+$/.test(a.url) && !a.url.includes(".."))
+    .map(a => ({name: String(a.name || a.url.split("/").pop()), title: String(a.title || ""), url: "https://" + TEXT_HOST + a.url,
+      mime: String(a.mime || ""), bytes: Number.isFinite(a.bytes) ? a.bytes : null, sha256: a.sha256 ? String(a.sha256) : null}));
+}
 function caseMailRecord(r) {
   return {
     id: r.id, subject: r.subject, name: r.subject, date: r.date || null,
@@ -42,6 +50,7 @@ function caseMailRecord(r) {
     recordType: "correspondence", tags: (r.institutions || []).map(i => i.id),
     scopeTopics: (r.institutions || []).map(i => i.id),
     threadId: r.threadId, direction: r.direction, from: r.from, institutions: r.institutions || [], refs: r.refs || [],
+    attachments: caseMailAttachments(r.attachments),
     classificationNote: "Ingested from the family's Gmail (verified case correspondence); email addresses, phone numbers and private addresses redacted."
   };
 }
@@ -57,7 +66,8 @@ function publicRecord(record) {
     sourcePath: record.sourcePath || null,
     classificationNote: record.classificationNote || null,
     ...(record.threadId ? {threadId: record.threadId, direction: record.direction || null, from: record.from || null,
-      institutions: record.institutions || [], refs: record.refs || [], jsonUrl: record.jsonUrl || null} : {})
+      institutions: record.institutions || [], refs: record.refs || [], jsonUrl: record.jsonUrl || null} : {}),
+    ...(record.attachments && record.attachments.length ? {attachments: record.attachments} : {})
   };
 }
 async function remoteFetch(url, timeoutMs) {
