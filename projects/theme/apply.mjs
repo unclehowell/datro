@@ -10,7 +10,7 @@ const HEAD = `<meta name="theme-color" content="#000000"/>
   <link rel="preload" href="/assets/fonts/barlow-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin/>
   <link rel="stylesheet" href="/assets/theme.css"/>
   <script src="/assets/theme.js" defer></script>`;
-const FOOT = `<footer class="sl-foot"><div class="sl-foot-in"><a class="sl-foot-title" href="/">Great House Farm Projects — PRINCE2</a><a href="/mandate/">Mandate</a><a href="/posts.json">posts.json</a><a href="https://greathousefarmwiki.wordpress.com/">Great House Farm wiki</a><a href="https://fcg.bucklerfamily.estate/">fcg.bucklerfamily.estate</a></div></footer>`;
+import { FOOT } from "../estate/build.mjs"; // estate-wide footer (no wiki link)
 
 export function themePage(t) {
   if (t.includes('href="/assets/theme.css"')) return null;
