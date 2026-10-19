@@ -305,7 +305,8 @@ sc('I', 'ghf-19080101-1', '1908-01-01', '1908', "John Williams", 'Great House Fa
    "Mary's statement",
    "Mary's grandfather dies. John Williams takes over the house from the Thomases and the fields from Bute.",
    [MARY, w('/john-williams/#y1908', 'John Williams — 1908'),
-    LRT('deeds-before-registration', 'Land Registry Titles — deeds before registration (1905 Bute conveyance)')],
+    LRT('deeds-before-registration', 'Land Registry Titles — deeds before registration (1905 Bute conveyance)'),
+    w('/evidence/ev-0243-barry-dock-news-1908-court-leet-john-williams-great-house/', "EV-0243 — Barry Dock News, 23 Oct 1908, p.3: court leet vote of sympathy with \"the family of the late Mr. John Williams, Great House, Llandough\" (wiki evidence page)", 'Newspaper')],
    aliases=['ghf-19050223-1'],
    ledger={'A': 'Freehold: the Thomases · tenant: John Williams',
            'B': 'Freehold: the Bute Estate · tenant: John Williams'})
@@ -352,7 +353,8 @@ sc('II', 'ghf-19400101-1', '1940-01-01', 'c. 1940', "Twelve years", 'Great House
 sc('II', 'ghf-19440101-1', '1944-01-01', '1944', "Farm management", 'Great House Farm', 'B',
    "Mary's statement",
    "The War Agricultural Executive Committee is dissatisfied with the farm. Frederick Buckler takes over running it as manager for John Williams.",
-   [MARY, w('/john-williams/#y1944', 'John Williams — 1944')])
+   [MARY, w('/john-williams/#y1944', 'John Williams — 1944'),
+    w('/evidence/ev-0241-tna-maf-32-1220-39-national-farm-survey-penarth-1941/', "EV-0241 — National Farm Survey 1941–43, Penarth parish, TNA MAF 32/1220/39 (catalogue entry; that the farm's form is in it is an inference; not seen) (wiki evidence page)", 'Archive catalogue')])
 sc('II', 'ghf-19480101-1', '1948-01-01', 'c. 1948 – 49', "Birth of William Buckler", 'Great House Farm', 'A',
    'Source pending',
    "William (Billy) Buckler is born at the farm.",
@@ -388,6 +390,9 @@ sc('III', 'ghf-19581119-1', '1958-11-19', '19 November 1958', "\"A Welsh case of
    [{'type': 'Newspaper', 'title': 'Western Mail, 20 November 1958, p.7, "It\'s a Crichel Down, says woman farmer" (SNIPPET ONLY: read from British Newspaper Archive search text; the page itself not yet seen)',
      'url': 'https://www.britishnewspaperarchive.co.uk/search/results/1950-01-01/1965-12-31?basicsearch=buckler+%22western+ground+rents%22+water&exactsearch=false&retrievecountrycounts=false'},
     w('/evidence/ev-0037-western-mail-1958-crichel-down/', 'EV-0037 — Western Mail, 1958: "Crichel Down"'),
+    w('/evidence/ev-0239-tna-bd-28-177-glamorgan-development-plan-inquiry-verbatim-1958/', "EV-0239 — TNA BD 28/177: verbatim record of the Glamorgan Development Plan inquiry, 19 Nov–11 Dec 1958 (catalogue entry; not yet read; date match only) (wiki evidence page)", 'Archive catalogue'),
+    w('/evidence/ev-0240-tna-bd-28-133-hlg-119-maf-112-glamorgan-development-plan-files/', "EV-0240 — TNA BD 28/133, BD 28/198, HLG 119/3181, HLG 119/3187, MAF 112/1108: files on the Glamorgan (Area No. 2) plan and the Penarth town map (catalogue entries) (wiki evidence page)", 'Archive catalogue'),
+    w('/evidence/ev-0242-western-mail-1957-mrs-m-d-buckler-snippet/', "EV-0242 — Western Mail, 9 Oct 1957, p.6: \"Mrs. M. D. BUCKLER … Llandough\" (SNIPPET ONLY; content unknown) (wiki evidence page)", 'Newspaper'),
     w('/testimony/branwen-buckler/', 'Testimony — Branwen Buckler', 'Testimony')])
 sc('III', 'ghf-19590101-1', '1959-01-01', '1959', "1959 tenancy offer", 'Great House Farm', 'A',
    'Court record',
