@@ -51,7 +51,7 @@ This note integrates the independent *Great House Farm — Objective Review of C
 - The current Land Registration Act 2002 Schedule 4 register-mistake route and Schedule 8 indemnity route are separate from a historical claim for the taking. Schedule 8 paragraph 8 has its own knowledge-based time rule, which counsel must apply to the precise facts.
 - A unilateral notice is not a substitute for proving an interest; it must not be lodged speculatively. Identify the exact land and get advice first.
 - Missing records are not proof of concealment. Weight each gap against the custodian's retention duty, search scope and transfer/destruction evidence.
-- Public statements should say “alleged”, “family evidence”, “issue for counsel” or “documented” accurately. Do not state fraud, deliberate misdescription or government involvement as fact.
+- Public statements should say “alleged”, “testimony only (named witness)”, “source pending”, “issue for counsel” or “documented” accurately. Do not state fraud, deliberate misdescription or government involvement as fact.
 
 ## Source anchors
 

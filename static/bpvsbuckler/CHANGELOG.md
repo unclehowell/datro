@@ -35,7 +35,7 @@ Every scene checked against the Great House Farm Wiki (213 pages): each quotatio
 - Mary died aged sixty-nine
 - 1877, 1928 and 1940: stated on Mary's statement and the family's case, with the wiki's notes that the 1877 deal's character (sale or quarry lease) and the 1940 point depend on documents still to be tested
 
-### Marked as family account, not yet recorded on the wiki
+### Marked as source pending, not yet recorded on the wiki
 - The woodland of Parcel A taken in 1955, passed to a couple in Llandough and later to the Forest of Cardiff, which has not used it
 - The land south of the farmhouse taken by the council and laid out as a green in the 1980s
 
@@ -96,7 +96,7 @@ Every scene restructured into three layers.
 ### Content
 - The ploys against Mary are now named for what they were: six attempts to make her occupation of her own house look permissive (1949 house spoken of as part of Frederick's fields tenancy, which she rejected while still holding the paper title; the 1955 "whole of the farm" order against the fields tenant; the 1959 and 1965 tenancy offers; the unenforced 1962 order treating her as holding over; the 1974 licence letters). The 1975 conveyance, 1983 registration and 1987 merger are told as the paper steps that followed
 - 1940: the family's title by possession (rent-free since 1928) is now Mary's household's, and the narration says plainly that from 1940 there was no basis to call her occupation permissive
-- 1955: Mary just home from hospital after losing a leg; the family's account that the woodland half of Parcel A was taken in 1955, passed to a couple in Llandough and later to the Forest of Cardiff, which has left it untouched; and why an order against a fields tenant could only start a clock on the fields
+- 1955: Mary just home from hospital after losing a leg; the Buckler case that the woodland half of Parcel A was taken in 1955, passed to a couple in Llandough and later to the Forest of Cardiff, which has left it untouched; and why an order against a fields tenant could only start a clock on the fields
 - 1970–72: the council's taking of the land south of the farmhouse, registered as village green VG41 and laid out as a green in the 1980s
 - The conflation of the two parcels is attributed to the landlords' documents, never the family; the 1965 and 1974 scenes set out what the sequence of tenancies, orders and licence implies about the deed nobody produced
 - Court of Appeal scene: the clock was started in 1955 from an order about the fields; counted from 1928, twelve years ran out in 1940
@@ -145,7 +145,7 @@ Evidence-link repair. Story wording, scene order, scene ids, evidence titles and
 Re-release as a documentary storyboard.
 
 ### Content
-- Rebuilt the story as 129 scenes in a prologue, eight acts and an epilogue, each with a scene reference (e.g. VI.12), a short title, place, parcel (A, B, both, unknown), basis (document, court record, newspaper, Mary's statement, family account…) and the family's case
+- Rebuilt the story as 129 scenes in a prologue, eight acts and an epilogue, each with a scene reference (e.g. VI.12), a short title, place, parcel (A, B, both, unknown), basis (document, court record, newspaper, Mary's statement, testimony only…) and the family's case
 - Every scene in the wiki's Master Timeline is covered; added the 13 February 2026 Land Registry holding reply, the 18–19 September 2026 letters to Stephen Doughty MP and the 20 September 2026 Heneb records request
 - Newspaper cuttings (N07–N16 and the South Wales Echo extracts N15-01 to N15-16) are now evidence on the scene they report, instead of 23 separate scenes that retold the same events; duplicate scenes on the medieval pottery, the armour find and the HER record merged
 - Removed events that belong to Llandough near Cowbridge (Walsh 1100, Herbert 1444, Carne 1536, Talbot 1677) or to Piercefield (Morris 1770, Wood 1794), and others with no source (Tewkesbury 1215, Dissolution 1539, Bute–Pembroke 1552, Lambert Williams, Bute–Plymouth exchange, 1880 names); replaced with sourced entries (NLW Bute D 219 leases 1552–1829, Bute rentals R1 1818–21)
@@ -176,7 +176,7 @@ Re-release as a documentary storyboard.
 ## [bpvsbuckler-v0.0.0.48] - 2026-10-05
 
 ### Added
-- Every dated event in the Great House Farm Wiki's Master Timeline (greathousefarmwiki.wordpress.com/timeline/) is now in the site timeline: 111 -> 132 scenes. New: c.650 St Dochdwy's early monastery (family account); 11 Nov 1891 geese theft court report; 23 Feb 1905 Bute conveyance; Frederick Buckler's birth (1910-11); 15 May 1924 agreement; eldest son's birth (c.1937-40); the c.1940 limitation contention (marked as a family contention); William (Billy) Buckler's birth (c.1948-49); 10 Oct 1952 agents' letter; 29 Mar 1961 deed; eldest son's household leaving (1968-69); 16 Jun 1970 village green VG41; 25 Jul 1972 housing permission; 13 Mar 1983 GGAT warehouse fire (Roman villa finds, separate site); 10 Oct 1989 Oakview sale (WA513690); 8 Feb 1990 GGAT Appendix B missing from the planning file; 10 Nov 1994 woodland to Forest of Cardiff (WA735527); 1995-96 South Wales Electricity rights and Persimmon correspondence; 22 Dec 2005 woodland division; 2025-26 records requests; 3 Oct 2026 press transcription
+- Every dated event in the Great House Farm Wiki's Master Timeline (greathousefarmwiki.wordpress.com/timeline/) is now in the site timeline: 111 -> 132 scenes. New: c.650 St Dochdwy's early monastery (source pending); 11 Nov 1891 geese theft court report; 23 Feb 1905 Bute conveyance; Frederick Buckler's birth (1910-11); 15 May 1924 agreement; eldest son's birth (c.1937-40); the c.1940 limitation contention (marked as a family contention); William (Billy) Buckler's birth (c.1948-49); 10 Oct 1952 agents' letter; 29 Mar 1961 deed; eldest son's household leaving (1968-69); 16 Jun 1970 village green VG41; 25 Jul 1972 housing permission; 13 Mar 1983 GGAT warehouse fire (Roman villa finds, separate site); 10 Oct 1989 Oakview sale (WA513690); 8 Feb 1990 GGAT Appendix B missing from the planning file; 10 Nov 1994 woodland to Forest of Cardiff (WA735527); 1995-96 South Wales Electricity rights and Persimmon correspondence; 22 Dec 2005 woodland division; 2025-26 records requests; 3 Oct 2026 press transcription
 - Each new scene cites the Master Timeline and the wiki page it links to; existing scenes are unchanged
 - scripts/build-timeline-exports.mjs rebuilds api/timeline.json and llms.txt from the timeline data
 

@@ -343,13 +343,13 @@ button.chip:hover, a.chip:hover { color: var(--limewash); }
 .chip.grade i { width: 9px; height: 9px; border-radius: 50%; }
 .g-documented i, .gdot.g-documented { background: var(--g-doc); }
 .g-single-source i, .gdot.g-single-source { background: var(--g-one); }
-.g-family-account i, .gdot.g-family-account { background: var(--g-fam); }
+.g-testimony-only i, .gdot.g-testimony-only { background: var(--g-fam); }
 .g-contested i, .gdot.g-contested { background: var(--g-con); }
 .g-argument i, .gdot.g-argument { background: var(--g-arg); }
 .chip.g-contested { color: #f0b7b0; }
 .gdot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; }
 .st { font-size: 11.5px; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; background: var(--slate-3); color: var(--limewash); white-space: nowrap; }
-.s-documented, .s-corroborated { background: #3d5634; } .s-family-account { background: #5a4c26; }
+.s-documented, .s-corroborated { background: #3d5634; } .s-testimony-only { background: #5a4c26; }
 .s-contested { background: #6a2f2a; } .s-open { background: var(--slate-3); } .s-not-held { background: #3b3f55; }
 .cq { margin: 0 0 26px; max-width: 40em; border-left: 3px solid var(--parcel-ab); background: var(--slate-2); border-radius: 0 4px 4px 0; padding: 14px 18px; }
 .cq > h2, .replies > h2 { font-size: 13px; font-weight: 600; margin: 0 0 8px; letter-spacing: .02em; text-transform: uppercase; color: var(--lias); }

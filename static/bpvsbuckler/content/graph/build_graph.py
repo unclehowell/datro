@@ -301,12 +301,12 @@ for s in scenes:
 DOCUMENTARY = {'Court record', 'Land Registry record', 'Photograph', 'Official correspondence', 'Newspaper',
                'Heritage record', 'Planning file', 'Estate papers', 'National monument record', 'Public record',
                'Publication', 'Parliament', 'Document', 'Museum record', 'Archaeological record'}
-FAMILY = {"Mary's statement", 'Family account', 'Family case'}
+FAMILY = {"Mary's statement", 'Source pending', 'Source pending (no named witness)', 'Testimony only (named witness)', 'Family case'}
 CQ = {c['id']: c for c in cqs}
 GRADE_TEXT = {
     'documented': 'Documented: two or more primary records.',
     'single-source': 'Single source: one primary record so far.',
-    'family-account': "Family account: rests on the family's own account so far; no independent record yet.",
+    'testimony-only': "Testimony only: rests on a named witness's testimony or a source still pending; no independent record yet.",
     'contested': 'Contested: the sources disagree. See the open question.',
     'argument': "The family's argument from the record, not an event.",
 }
@@ -320,12 +320,12 @@ def grade(s):
     types = [e['type'] for e in s['evidence']]
     doc = [t for t in types if t in DOCUMENTARY]
     if s['basis'] in FAMILY and not doc:
-        return 'family-account'
+        return 'testimony-only'
     if len(doc) >= 2:
         return 'documented'
     if len(doc) == 1:
         return 'single-source'
-    return 'family-account' if any(t in FAMILY for t in types) or s['basis'] in FAMILY else 'single-source'
+    return 'testimony-only' if any(t in FAMILY for t in types) or s['basis'] in FAMILY else 'single-source'
 
 
 for s in scenes:

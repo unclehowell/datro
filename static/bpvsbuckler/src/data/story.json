@@ -706,7 +706,7 @@
    "place": "Great House Farm",
    "parcel": "A",
    "basis": "Mary's statement",
-   "narration": "Mary Williams's c.1974 statement says her family had lived and farmed at Great House since 1667. A 1974 newspaper report also attributes to her a claim that her family first acquired Tŷ Mawr around that date. The affirmative Cedwyn thesis treats 1667 as the opening of the family's own estate history and tests that claim against the Cydwin/Cydfin lease and farm-name records. The surviving statement and press report support the family's account; a 1667 conveyance has not yet been identified.",
+   "narration": "Mary Williams's c.1974 statement says her family had lived and farmed at Great House since 1667. A 1974 newspaper report also attributes to her a claim that her family first acquired Tŷ Mawr around that date. The affirmative Cedwyn thesis treats 1667 as the opening of the family's own estate history and tests that claim against the Cydwin/Cydfin lease and farm-name records. The surviving statement and press report support the Buckler case; a 1667 conveyance has not yet been identified.",
    "case": null,
    "evidence": [
     {
@@ -736,7 +736,7 @@
      "The estate's description of the family, repeated in every later account."
     ]
    ],
-   "known": "Mary's statement and the 1974 press report support the family's account of a connection with Great House from 1667 and treat it as a lineage claim, not a passing tenancy. The affirmative reconstruction now connects that claim to the older Cydwin/Cydfin/Ty Mawr lease records and asks whether later labels of tenancy concealed a longer-standing family interest. The surviving items do not themselves constitute a 1667 conveyance; the deed chain must be reconstructed from the leases, estate accounts, plans and the 1877/1928 evidence.",
+   "known": "Mary's statement and the 1974 press report support the Buckler case for a connection with Great House from 1667 and treat it as a lineage claim, not a passing tenancy. The affirmative reconstruction now connects that claim to the older Cydwin/Cydfin/Ty Mawr lease records and asks whether later labels of tenancy concealed a longer-standing family interest. The surviving items do not themselves constitute a 1667 conveyance; the deed chain must be reconstructed from the leases, estate accounts, plans and the 1877/1928 evidence.",
    "ledger": [
     [
      "W",
@@ -995,6 +995,11 @@
      "url": "https://newspapers.library.wales/view/3427270/3427271/13/"
     },
     {
+     "type": "Newspaper",
+     "title": "EV-0227 — Cardiff Times, 16 July 1904: John Williams, tenancy since 1855 (wiki evidence page)",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0227-cardiff-times-1904-john-williams-tenancy-since-1855/"
+    },
+    {
      "type": "Wiki page",
      "title": "EV-0215 — Tithe apportionment: John Williams, c. 1841",
      "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0215-tithe-apportionment-john-williams-c1841/"
@@ -1018,8 +1023,8 @@
     ]
    ],
    "moved": [],
-   "grade": "single-source",
-   "grade_text": "Single source: one primary record so far.",
+   "grade": "documented",
+   "grade_text": "Documented: two or more primary records.",
    "questions": [],
    "qa": []
   },
@@ -1066,9 +1071,19 @@
      "url": "https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/95085"
     },
     {
+     "type": "Publication",
+     "title": "EV-0225 — Trade directories 1868–1901: \"Williams John, Great house\" (wiki evidence page)",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0225-trade-directories-1868-1901-john-williams-great-house/"
+    },
+    {
      "type": "Newspaper",
      "title": "Weekly Mail, 6 November 1886 — Thomas Rees, aged 89, of Llandough Farm, \"rented from the Marquess of Bute\"",
      "url": "https://newspapers.library.wales/view/3365383/3365390/150/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "EV-0228 — Llandough Farm and the Rees family, 1841–1910: a separate Bute farm (wiki evidence page)",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0228-llandough-farm-rees-family-1841-1910/"
     }
    ],
    "image": null,
@@ -1101,7 +1116,7 @@
    "title": "The armour under the floor",
    "place": "Great House — dining room",
    "parcel": "A",
-   "basis": "Family account",
+   "basis": "Source pending",
    "narration": "Family tradition records a soldier in armour, with his horse, a lance and a shield, found beneath the dining-room floor. The account is in a Royal Commission record (NMR 6048942) and the Daily Telegraph of 16 April 1974. No primary record of a find has been located.",
    "case": null,
    "evidence": [
@@ -1342,7 +1357,7 @@
     {
      "id": "cq-1877",
      "question": "What happened in 1877: did Bute sell the farmhouse and about 10 acres to Daniel Thomas, or only lease quarrying rights?",
-     "status": "family-account",
+     "status": "testimony-only",
      "answer": "Mary's statement says Bute sold the farmhouse, buildings and about 10 acres to Daniel Thomas in 1877 and kept about 9 acres, with the house to pass to the Williamses when quarrying ended. No deed has been found. Glamorgan Archives found no deeds for an 1877 Daniel Thomas transaction (2026/4097b) and pointed to Bute X.6(12), the Bute trustees' 1877 abstract of payments and receipts at Cardiff Library. DBDT/79/1, a May 1877 lease to a John Williams, was examined and is a Pembroke Terrace, Cardiff property, not Llandough (2026/3893). A capital receipt from Daniel Thomas in Bute X.6(12) would point to a sale; a rent or royalty would point to a lease.",
      "next": [
       "Bute X.6(12) at Cardiff Library / Cathays Heritage Library (enquiry sent 10 Oct 2026; FOI draft ready)",
@@ -1497,13 +1512,13 @@
     "A",
     "B"
    ],
-   "grade": "family-account",
-   "grade_text": "Family account: rests on the family's own account so far; no independent record yet.",
+   "grade": "testimony-only",
+   "grade_text": "Testimony only: rests on a named witness's testimony or a source still pending; no independent record yet.",
    "questions": [
     {
      "id": "cq-1877",
      "question": "What happened in 1877: did Bute sell the farmhouse and about 10 acres to Daniel Thomas, or only lease quarrying rights?",
-     "status": "family-account",
+     "status": "testimony-only",
      "answer": "Mary's statement says Bute sold the farmhouse, buildings and about 10 acres to Daniel Thomas in 1877 and kept about 9 acres, with the house to pass to the Williamses when quarrying ended. No deed has been found. Glamorgan Archives found no deeds for an 1877 Daniel Thomas transaction (2026/4097b) and pointed to Bute X.6(12), the Bute trustees' 1877 abstract of payments and receipts at Cardiff Library. DBDT/79/1, a May 1877 lease to a John Williams, was examined and is a Pembroke Terrace, Cardiff property, not Llandough (2026/3893). A capital receipt from Daniel Thomas in Bute X.6(12) would point to a sale; a rent or royalty would point to a lease.",
      "next": [
       "Bute X.6(12) at Cardiff Library / Cathays Heritage Library (enquiry sent 10 Oct 2026; FOI draft ready)",
@@ -1614,6 +1629,16 @@
      "type": "Publication",
      "title": "Owen's Cardiff Directory 1887, p.209: \"Williams John, Great House farm, Llandough\" (University of Leicester Historical Directories)",
      "url": "https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/92950"
+    },
+    {
+     "type": "Publication",
+     "title": "EV-0225 — Trade directories 1868–1901: \"Williams John, Great house\" (wiki evidence page)",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0225-trade-directories-1868-1901-john-williams-great-house/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "EV-0228 — Llandough Farm and the Rees family, 1841–1910: a separate Bute farm (wiki evidence page)",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0228-llandough-farm-rees-family-1841-1910/"
     },
     {
      "type": "Wiki page",
@@ -1760,6 +1785,11 @@
      "type": "Newspaper",
      "title": "South Wales Star, 10 June 1892 — geese \"the property of Mr. John Williams, Great House Farm, Llandough, on November 11, 1891\" (Welsh Newspapers Online)",
      "url": "https://newspapers.library.wales/view/3019697/3019705/78/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "EV-0226 — South Wales Star, 10 June 1892: \"Mr. John Williams, Great House Farm, Llandough\" (wiki evidence page)",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0226-south-wales-star-1892-john-williams-great-house-farm/"
     }
    ],
    "image": "/media/ghf-e090-n01-1891-farmyard-theft.jpg",
@@ -1796,7 +1826,7 @@
    "title": "Marconi at Lavernock",
    "place": "Lavernock Point",
    "parcel": "?",
-   "basis": "Family account",
+   "basis": "Source pending",
    "narration": "Marconi's wireless trials at Lavernock Point, May 1897. Family tradition records that Thomas Williams of Great House carted his equipment.",
    "case": null,
    "evidence": [
@@ -1977,8 +2007,8 @@
     ]
    ],
    "moved": [],
-   "grade": "family-account",
-   "grade_text": "Family account: rests on the family's own account so far; no independent record yet.",
+   "grade": "testimony-only",
+   "grade_text": "Testimony only: rests on a named witness's testimony or a source still pending; no independent record yet.",
    "questions": [],
    "qa": []
   },
@@ -2151,7 +2181,7 @@
     {
      "id": "cq-1928",
      "question": "Did the family stop paying rent on the house in 1928, and did the freehold pass to them then?",
-     "status": "family-account",
+     "status": "testimony-only",
      "answer": "Mary's statement says the last quarry machinery left in 1928 and John Williams paid a final £4 rent to Alfred Thomas; she saw the receipt, which is missing. Land Registry records a 15 May 1924 agreement among the deeds before registration; whether it relates to this is unknown.",
      "next": [
       "HM Land Registry: the 1924 record on the first-registration file (SAR due 28 Oct 2026)"
@@ -2205,10 +2235,15 @@
    "title": "Marriage",
    "place": "Great House Farm",
    "parcel": "A",
-   "basis": "Family account",
-   "narration": "Mary Williams marries Frederick Buckler, who comes to live at the farmhouse. They have seven children.",
+   "basis": "Newspaper",
+   "narration": "Mary Williams marries Frederick Buckler, who comes to live at the farmhouse. They have seven children. The Western Mail of 5 August 1936 reports the wedding of Mr. Fred Buckler of Barry and Miss Mary Doreen (Nancy) Williams of Great House Farm (snippet only).",
    "case": null,
    "evidence": [
+    {
+     "type": "Newspaper",
+     "title": "EV-0230 — Western Mail, 5 August 1936, p.10: \"Llandough Bride\", Buckler–Williams wedding (SNIPPET ONLY; wiki evidence page)",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0230-western-mail-1936-llandough-bride-buckler-williams/"
+    },
     {
      "type": "Wiki page",
      "title": "Frederick Buckler — marriage",
@@ -2254,8 +2289,8 @@
     ]
    ],
    "moved": [],
-   "grade": "family-account",
-   "grade_text": "Family account: rests on the family's own account so far; no independent record yet.",
+   "grade": "single-source",
+   "grade_text": "Single source: one primary record so far.",
    "questions": [],
    "qa": []
   },
@@ -2321,8 +2356,8 @@
     {
      "id": "cq-1938-1939",
      "question": "What did Bute sell to Western Ground Rents in 1938, and did the 1939 tenancy include the house?",
-     "status": "family-account",
-     "answer": "The judgment records the 1938 conveyance of Bute's interest to Western Ground Rents. The family's account, from Hywel's own sight of the 1939 revised tenancy and plan, is that it covered only the fields east of the house (Parcel B). The 1938 conveyance itself has not been produced.",
+     "status": "testimony-only",
+     "answer": "The judgment records the 1938 conveyance of Bute's interest to Western Ground Rents. Per Hywel, from his own sight of the 1939 revised tenancy and plan, it covered only the fields east of the house (Parcel B). The 1938 conveyance itself has not been produced.",
      "next": [
       "Glamorgan Archives D696/1–3 (Western Ground Rents plans and rentals c.1938–44): searchroom or paid search",
       "HM Land Registry first-registration bundle (43-document schedule)"
@@ -2461,8 +2496,8 @@
     {
      "id": "cq-1938-1939",
      "question": "What did Bute sell to Western Ground Rents in 1938, and did the 1939 tenancy include the house?",
-     "status": "family-account",
-     "answer": "The judgment records the 1938 conveyance of Bute's interest to Western Ground Rents. The family's account, from Hywel's own sight of the 1939 revised tenancy and plan, is that it covered only the fields east of the house (Parcel B). The 1938 conveyance itself has not been produced.",
+     "status": "testimony-only",
+     "answer": "The judgment records the 1938 conveyance of Bute's interest to Western Ground Rents. Per Hywel, from his own sight of the 1939 revised tenancy and plan, it covered only the fields east of the house (Parcel B). The 1938 conveyance itself has not been produced.",
      "next": [
       "Glamorgan Archives D696/1–3 (Western Ground Rents plans and rentals c.1938–44): searchroom or paid search",
       "HM Land Registry first-registration bundle (43-document schedule)"
@@ -2592,13 +2627,13 @@
    "moved": [
     "A"
    ],
-   "grade": "family-account",
-   "grade_text": "Family account: rests on the family's own account so far; no independent record yet.",
+   "grade": "testimony-only",
+   "grade_text": "Testimony only: rests on a named witness's testimony or a source still pending; no independent record yet.",
    "questions": [
     {
      "id": "cq-1928",
      "question": "Did the family stop paying rent on the house in 1928, and did the freehold pass to them then?",
-     "status": "family-account",
+     "status": "testimony-only",
      "answer": "Mary's statement says the last quarry machinery left in 1928 and John Williams paid a final £4 rent to Alfred Thomas; she saw the receipt, which is missing. Land Registry records a 15 May 1924 agreement among the deeds before registration; whether it relates to this is unknown.",
      "next": [
       "HM Land Registry: the 1924 record on the first-registration file (SAR due 28 Oct 2026)"
@@ -2693,8 +2728,8 @@
     ]
    ],
    "moved": [],
-   "grade": "family-account",
-   "grade_text": "Family account: rests on the family's own account so far; no independent record yet.",
+   "grade": "testimony-only",
+   "grade_text": "Testimony only: rests on a named witness's testimony or a source still pending; no independent record yet.",
    "questions": [],
    "qa": []
   },
@@ -2706,7 +2741,7 @@
    "title": "Birth of William Buckler",
    "place": "Great House Farm",
    "parcel": "A",
-   "basis": "Family account",
+   "basis": "Source pending",
    "narration": "William (Billy) Buckler is born at the farm.",
    "case": null,
    "evidence": [
@@ -2741,8 +2776,8 @@
     ]
    ],
    "moved": [],
-   "grade": "family-account",
-   "grade_text": "Family account: rests on the family's own account so far; no independent record yet.",
+   "grade": "testimony-only",
+   "grade_text": "Testimony only: rests on a named witness's testimony or a source still pending; no independent record yet.",
    "questions": [],
    "qa": []
   },
@@ -2884,13 +2919,13 @@
    "moved": [
     "A"
    ],
-   "grade": "family-account",
-   "grade_text": "Family account: rests on the family's own account so far; no independent record yet.",
+   "grade": "testimony-only",
+   "grade_text": "Testimony only: rests on a named witness's testimony or a source still pending; no independent record yet.",
    "questions": [
     {
      "id": "cq-papers",
      "question": "What happened to the family's papers (the blanket box) in 1950–52?",
-     "status": "family-account",
+     "status": "testimony-only",
      "answer": "Mary's statement says the family's documents were taken from a blanket box around 1950–52. No record of their removal or current whereabouts has been found.",
      "next": []
     }
@@ -3001,11 +3036,11 @@
      "The clock the courts later counted on the house."
     ]
    ],
-   "known": "An order against a tenant of the fields can only give back the fields, and that is what was taken. Mary was not a party and was never heard. She had just come home from hospital and stood her ground for her house. Any clock that started in 1955 was a clock on the fields. That the order reached the house was an insinuation, later read as fact. The family's account is that the woodland of Parcel A was taken in 1955 too, passing to a couple in Llandough and later to the Forest of Cardiff. (Family account, not yet recorded on the wiki.)",
+   "known": "An order against a tenant of the fields can only give back the fields, and that is what was taken. Mary was not a party and was never heard. She had just come home from hospital and stood her ground for her house. Any clock that started in 1955 was a clock on the fields. That the order reached the house was an insinuation, later read as fact. Per the Buckler case, the woodland of Parcel A was taken in 1955 too, passing to a couple in Llandough and later to the Forest of Cardiff. (SOURCE PENDING: not yet recorded on the wiki.)",
    "ledger": [
     [
      "A",
-     "Freehold: the Williamses (Mary in the house) · woodland: the family account is that it was taken in 1955 (not yet on the wiki)"
+     "Freehold: the Williamses (Mary in the house) · woodland: per the Buckler case, taken in 1955 (SOURCE PENDING: not yet on the wiki)"
     ],
     [
      "S",
@@ -3103,7 +3138,7 @@
    "ledger": [
     [
      "A",
-     "Freehold: the Williamses (Mary in the house) · woodland: the family account is that it was taken in 1955 (not yet on the wiki)"
+     "Freehold: the Williamses (Mary in the house) · woodland: per the Buckler case, taken in 1955 (SOURCE PENDING: not yet on the wiki)"
     ],
     [
      "S",
@@ -3236,7 +3271,7 @@
    "ledger": [
     [
      "A",
-     "Freehold: the Williamses (Mary in the house) · woodland: the family account is that it was taken in 1955 (not yet on the wiki)"
+     "Freehold: the Williamses (Mary in the house) · woodland: per the Buckler case, taken in 1955 (SOURCE PENDING: not yet on the wiki)"
     ],
     [
      "S",
@@ -3305,7 +3340,7 @@
    "ledger": [
     [
      "A",
-     "Freehold: the Williamses (Mary in the house) · woodland: the family account is that it was taken in 1955 (not yet on the wiki)"
+     "Freehold: the Williamses (Mary in the house) · woodland: per the Buckler case, taken in 1955 (SOURCE PENDING: not yet on the wiki)"
     ],
     [
      "S",
@@ -3362,7 +3397,7 @@
    "ledger": [
     [
      "A",
-     "Freehold: the Williamses (Mary in the house) · woodland: the family account is that it was taken in 1955 (not yet on the wiki)"
+     "Freehold: the Williamses (Mary in the house) · woodland: per the Buckler case, taken in 1955 (SOURCE PENDING: not yet on the wiki)"
     ],
     [
      "S",
@@ -3418,7 +3453,7 @@
    "ledger": [
     [
      "A",
-     "Freehold: the Williamses (Mary in the house) · woodland: the family account is that it was taken in 1955 (not yet on the wiki)"
+     "Freehold: the Williamses (Mary in the house) · woodland: per the Buckler case, taken in 1955 (SOURCE PENDING: not yet on the wiki)"
     ],
     [
      "S",
@@ -3445,7 +3480,7 @@
    "title": "Reported sale by the eldest son",
    "place": "Great House Farm",
    "parcel": "?",
-   "basis": "Family account",
+   "basis": "Source pending",
    "narration": "A cousin's account says the eldest son sold \"our land parcel\" through a solicitor without his parents' knowledge. No document has been found. In 1968 his household leaves the farm.",
    "case": null,
    "evidence": [
@@ -3475,7 +3510,7 @@
    "ledger": [
     [
      "A",
-     "Freehold: the Williamses (Mary in the house) · woodland: the family account is that it was taken in 1955 (not yet on the wiki)"
+     "Freehold: the Williamses (Mary in the house) · woodland: per the Buckler case, taken in 1955 (SOURCE PENDING: not yet on the wiki)"
     ],
     [
      "S",
@@ -3487,8 +3522,8 @@
     ]
    ],
    "moved": [],
-   "grade": "family-account",
-   "grade_text": "Family account: rests on the family's own account so far; no independent record yet.",
+   "grade": "testimony-only",
+   "grade_text": "Testimony only: rests on a named witness's testimony or a source still pending; no independent record yet.",
    "questions": [],
    "qa": []
   },
@@ -3500,7 +3535,7 @@
    "title": "Death of Frederick Buckler",
    "place": "Great House Farm",
    "parcel": "A",
-   "basis": "Family account",
+   "basis": "Source pending",
    "narration": "Frederick Buckler dies, aged 56. Mary takes back the name Williams and remains in the farmhouse.",
    "case": null,
    "evidence": [
@@ -3529,7 +3564,7 @@
    "ledger": [
     [
      "A",
-     "Freehold: the Williamses (Mary in the house) · woodland: the family account is that it was taken in 1955 (not yet on the wiki)"
+     "Freehold: the Williamses (Mary in the house) · woodland: per the Buckler case, taken in 1955 (SOURCE PENDING: not yet on the wiki)"
     ],
     [
      "S",
@@ -3543,8 +3578,8 @@
    "moved": [
     "B"
    ],
-   "grade": "family-account",
-   "grade_text": "Family account: rests on the family's own account so far; no independent record yet.",
+   "grade": "testimony-only",
+   "grade_text": "Testimony only: rests on a named witness's testimony or a source still pending; no independent record yet.",
    "questions": [],
    "qa": []
   },
@@ -3590,7 +3625,7 @@
    "ledger": [
     [
      "A",
-     "Freehold: the Williamses (Mary in the house) · woodland: the family account is that it was taken in 1955 (not yet on the wiki)"
+     "Freehold: the Williamses (Mary in the house) · woodland: per the Buckler case, taken in 1955 (SOURCE PENDING: not yet on the wiki)"
     ],
     [
      "S",
@@ -3636,6 +3671,11 @@
      "type": "Legislation",
      "title": "Commons Registration (Glamorgan) Act 1983 (c. ix): validates the registers of common land only; village greens are not covered",
      "url": "https://www.legislation.gov.uk/ukla/1983/9"
+    },
+    {
+     "type": "Legislation",
+     "title": "EV-0232 — Commons Registration (Glamorgan) Act 1983: common land registers only (wiki evidence page)",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0232-commons-registration-glamorgan-act-1983/"
     }
    ],
    "image": null,
@@ -3654,7 +3694,7 @@
      "Both parcels treated as one development site."
     ]
    ],
-   "known": "Permission was granted over a house whose ownership was disputed, while its owner lived in it. In 1990 a condition of the outline permission provided for a 0.25-acre village green beside the site. The family's account is that the land south of the farmhouse, part of Parcel A, was taken by the council and laid out as a green in the 1980s. (Family account, not yet recorded on the wiki.)",
+   "known": "Permission was granted over a house whose ownership was disputed, while its owner lived in it. In 1990 a condition of the outline permission provided for a 0.25-acre village green beside the site. Per the Buckler case, the land south of the farmhouse, part of Parcel A, was taken by the council and laid out as a green in the 1980s. (SOURCE PENDING: not yet recorded on the wiki.)",
    "ledger": [
     [
      "A",
@@ -4581,7 +4621,7 @@
    "title": "Death of Mary Williams",
    "place": "Great House Farm",
    "parcel": "A",
-   "basis": "Family account",
+   "basis": "Source pending",
    "narration": "Mary Williams dies in the farmhouse on 26 March 1983. Her son William inherits her estate.",
    "case": null,
    "evidence": [
@@ -4628,8 +4668,8 @@
    "moved": [
     "A"
    ],
-   "grade": "family-account",
-   "grade_text": "Family account: rests on the family's own account so far; no independent record yet.",
+   "grade": "testimony-only",
+   "grade_text": "Testimony only: rests on a named witness's testimony or a source still pending; no independent record yet.",
    "questions": [
     {
      "id": "cq-mary-death",
@@ -6972,7 +7012,7 @@
    "title": "Death of William Buckler",
    "place": "Llandough",
    "parcel": "A",
-   "basis": "Family account (date corrected from family information)",
+   "basis": "Source pending (date corrected from family information)",
    "narration": "William Buckler died on 29 May 1990 at Llandough Hospital. Funeral and burial details require confirmation against the obituary and relevant records.",
    "case": null,
    "evidence": [
@@ -7622,7 +7662,7 @@
    "cast": [],
    "received": null,
    "received_words": [],
-   "known": "The Forest of Cardiff says it bought the woodland in 1994. The family's account is that this woodland, part of Parcel A, had been taken in 1955, and that the charity has not used it. (Family account, not yet recorded on the wiki.)",
+   "known": "The Forest of Cardiff says it bought the woodland in 1994. Per the Buckler case, this woodland, part of Parcel A, had been taken in 1955, and the charity has not used it. (SOURCE PENDING: not yet recorded on the wiki.)",
    "ledger": [
     [
      "A",
@@ -7643,8 +7683,8 @@
     {
      "id": "cq-woodland",
      "question": "How did the woodland (WA735527) leave the family's possession?",
-     "status": "family-account",
-     "answer": "The woodland is registered to the Forest of Cardiff (WA735527), which offered the family a route to ownership in September 2026; the family declined. The family's account is that the woodland of Parcel A was taken in 1955 and passed through a couple in Llandough. No price is recorded for the charity's 1994 acquisition.",
+     "status": "testimony-only",
+     "answer": "The woodland is registered to the Forest of Cardiff (WA735527), which offered the family a route to ownership in September 2026; the family declined. Per the Buckler case, the woodland of Parcel A was taken in 1955 and passed through a couple in Llandough (SOURCE PENDING). No price is recorded for the charity's 1994 acquisition.",
      "next": []
     }
    ],
@@ -8461,7 +8501,7 @@
     {
      "id": "cq-1877",
      "question": "What happened in 1877: did Bute sell the farmhouse and about 10 acres to Daniel Thomas, or only lease quarrying rights?",
-     "status": "family-account",
+     "status": "testimony-only",
      "answer": "Mary's statement says Bute sold the farmhouse, buildings and about 10 acres to Daniel Thomas in 1877 and kept about 9 acres, with the house to pass to the Williamses when quarrying ended. No deed has been found. Glamorgan Archives found no deeds for an 1877 Daniel Thomas transaction (2026/4097b) and pointed to Bute X.6(12), the Bute trustees' 1877 abstract of payments and receipts at Cardiff Library. DBDT/79/1, a May 1877 lease to a John Williams, was examined and is a Pembroke Terrace, Cardiff property, not Llandough (2026/3893). A capital receipt from Daniel Thomas in Bute X.6(12) would point to a sale; a rent or royalty would point to a lease.",
      "next": [
       "Bute X.6(12) at Cardiff Library / Cathays Heritage Library (enquiry sent 10 Oct 2026; FOI draft ready)",
@@ -8760,8 +8800,8 @@
     {
      "id": "cq-woodland",
      "question": "How did the woodland (WA735527) leave the family's possession?",
-     "status": "family-account",
-     "answer": "The woodland is registered to the Forest of Cardiff (WA735527), which offered the family a route to ownership in September 2026; the family declined. The family's account is that the woodland of Parcel A was taken in 1955 and passed through a couple in Llandough. No price is recorded for the charity's 1994 acquisition.",
+     "status": "testimony-only",
+     "answer": "The woodland is registered to the Forest of Cardiff (WA735527), which offered the family a route to ownership in September 2026; the family declined. Per the Buckler case, the woodland of Parcel A was taken in 1955 and passed through a couple in Llandough (SOURCE PENDING). No price is recorded for the charity's 1994 acquisition.",
      "next": []
     }
    ],
@@ -9979,7 +10019,7 @@
   {
    "id": "cq-1877",
    "question": "What happened in 1877: did Bute sell the farmhouse and about 10 acres to Daniel Thomas, or only lease quarrying rights?",
-   "status": "family-account",
+   "status": "testimony-only",
    "answer": "Mary's statement says Bute sold the farmhouse, buildings and about 10 acres to Daniel Thomas in 1877 and kept about 9 acres, with the house to pass to the Williamses when quarrying ended. No deed has been found. Glamorgan Archives found no deeds for an 1877 Daniel Thomas transaction (2026/4097b) and pointed to Bute X.6(12), the Bute trustees' 1877 abstract of payments and receipts at Cardiff Library. DBDT/79/1, a May 1877 lease to a John Williams, was examined and is a Pembroke Terrace, Cardiff property, not Llandough (2026/3893). A capital receipt from Daniel Thomas in Bute X.6(12) would point to a sale; a rent or royalty would point to a lease.",
    "for": [
     "Mary Williams's statement (c. 1974)",
@@ -10008,10 +10048,10 @@
    "answer": "Very probably, on who lived there; not on the name. The census household (RG11/5288 p.2, schedule 9) is John Williams, 53, farmer, born at Leckwith. Directories of 1868, 1875 and 1880, and of 1887, 1891 and 1901, list \"Williams John, Great house\" / \"Great House farm, Llandough\", and list the Rees family separately at Llandough Farm. The South Wales Star of 1892 has \"Mr. John Williams, Great House Farm, Llandough\". Per Sion Buckler, the census entered Great House Farm under the wrong name. No other source uses \"Home Farm\".",
    "for": [
     "1881 census RG11/5288 p.2 (EV-0224): John Williams household",
-    "Slater's 1868, Worrall's 1875, Slater's 1880: \"Williams John, Great house\"",
-    "Owen's 1887 and 1891, Cardiff Directory 1901: \"Williams John, Great House farm, Llandough\"",
-    "South Wales Star, 10 June 1892: \"Mr. John Williams, Great House Farm, Llandough\"",
-    "Llandough Farm held by the Rees family, 1861–1910 (Cardiff Times 1865; Weekly Mail 1886; Evening Express 1898, 1910)"
+    "Slater's 1868, Worrall's 1875, Slater's 1880: \"Williams John, Great house\" (EV-0225)",
+    "Owen's 1887 and 1891, Cardiff Directory 1901: \"Williams John, Great House farm, Llandough\" (EV-0225)",
+    "South Wales Star, 10 June 1892: \"Mr. John Williams, Great House Farm, Llandough\" (EV-0226)",
+    "Llandough Farm held by the Rees family, 1861–1910 (Cardiff Times 1865; Weekly Mail 1886; Evening Express 1898, 1910) (EV-0228)"
    ],
    "against": [
     "\"Home Farm\" appears in no other source found: newspapers 1804–1919, directories or OS maps",
@@ -10052,7 +10092,7 @@
   {
    "id": "cq-1928",
    "question": "Did the family stop paying rent on the house in 1928, and did the freehold pass to them then?",
-   "status": "family-account",
+   "status": "testimony-only",
    "answer": "Mary's statement says the last quarry machinery left in 1928 and John Williams paid a final £4 rent to Alfred Thomas; she saw the receipt, which is missing. Land Registry records a 15 May 1924 agreement among the deeds before registration; whether it relates to this is unknown.",
    "for": [
     "Mary Williams's statement (c. 1974)"
@@ -10072,8 +10112,8 @@
   {
    "id": "cq-1938-1939",
    "question": "What did Bute sell to Western Ground Rents in 1938, and did the 1939 tenancy include the house?",
-   "status": "family-account",
-   "answer": "The judgment records the 1938 conveyance of Bute's interest to Western Ground Rents. The family's account, from Hywel's own sight of the 1939 revised tenancy and plan, is that it covered only the fields east of the house (Parcel B). The 1938 conveyance itself has not been produced.",
+   "status": "testimony-only",
+   "answer": "The judgment records the 1938 conveyance of Bute's interest to Western Ground Rents. Per Hywel, from his own sight of the 1939 revised tenancy and plan, it covered only the fields east of the house (Parcel B). The 1938 conveyance itself has not been produced.",
    "for": [
     "The 1939 tenancy plan, as seen by the family"
    ],
@@ -10115,7 +10155,7 @@
    "status": "open",
    "answer": "Mrs M. D. Buckler (Mary Williams) told Glamorgan County Council's planning committee in November 1958 that \"the water was cut off from her house and grounds for nearly 10 years by order of Western Ground Rents\" (Western Mail, 20 November 1958, snippet only). Per Branwen Buckler (voice testimony), the council cut it over bills that Mary (Nancy) Williams insisted were paid, cattle drowned in the River Ely trying to reach water, and it was raised in Parliament. In the 1950s Llandough was in Penarth Urban District; Cardiff Corporation was the public water undertaker for the area, and in 1914 the Bute estate also supplied part of Penarth Urban District from a private spring at Llandough.",
    "for": [
-    "Western Mail, 20 November 1958, p.7 (snippet only): \"by order of Western Ground Rents\"",
+    "Western Mail, 20 November 1958, p.7 (snippet only): \"by order of Western Ground Rents\" (EV-0037)",
     "Branwen Buckler (voice testimony, 19 October 2026)",
     "Water undertakings return, 1914: a Bute estate spring supplying part of Penarth Urban District"
    ],
@@ -10186,7 +10226,7 @@
   {
    "id": "cq-papers",
    "question": "What happened to the family's papers (the blanket box) in 1950–52?",
-   "status": "family-account",
+   "status": "testimony-only",
    "answer": "Mary's statement says the family's documents were taken from a blanket box around 1950–52. No record of their removal or current whereabouts has been found.",
    "for": [
     "Mary Williams's statement (c. 1974)"
@@ -10266,7 +10306,7 @@
    "answer": "Two RCAHMW records repeat the account (Archive 6048942; Daily Telegraph, 16 April 1974, Archive 6048944, 'in about 1870'). Museum Wales reports no record of acquiring such finds (FOI 2026-024 and internal review). The source of the 'held by the National Museum of Wales' attribution has not been traced.",
    "for": [
     "RCAHMW Archives 6048942 and 6048944",
-    "Family account"
+    "Source pending (no named witness)"
    ],
    "against": [
     "Museum Wales FOI 2026-024: not held"
@@ -10280,8 +10320,8 @@
   {
    "id": "cq-woodland",
    "question": "How did the woodland (WA735527) leave the family's possession?",
-   "status": "family-account",
-   "answer": "The woodland is registered to the Forest of Cardiff (WA735527), which offered the family a route to ownership in September 2026; the family declined. The family's account is that the woodland of Parcel A was taken in 1955 and passed through a couple in Llandough. No price is recorded for the charity's 1994 acquisition.",
+   "status": "testimony-only",
+   "answer": "The woodland is registered to the Forest of Cardiff (WA735527), which offered the family a route to ownership in September 2026; the family declined. Per the Buckler case, the woodland of Parcel A was taken in 1955 and passed through a couple in Llandough (SOURCE PENDING). No price is recorded for the charity's 1994 acquisition.",
    "for": [
     "HM Land Registry WA735527"
    ],

@@ -20,7 +20,7 @@ Mary remained in the farmhouse/buildings/garden group after forcefully resisting
 
 ## Central forensic question
 
-> Given the established family account that the 4 July 1955 enforcement of Parcel B seized the Parcel-A north forest and south-east green, how did the “whole farm” wording get applied to those areas, what legal entitlement did WGR have to them, and how did they pass into later records and registered titles?
+> Given the established Buckler case that the 4 July 1955 enforcement of Parcel B seized the Parcel-A north forest and south-east green, how did the “whole farm” wording get applied to those areas, what legal entitlement did WGR have to them, and how did they pass into later records and registered titles?
 
 This creates three independent controls:
 
@@ -34,7 +34,7 @@ The words “whole farm” are not an adequate answer without mapping them to th
 
 The 1962 proceedings should not be used to reopen the already-settled 1939 tenancy question.
 
-Their value is to understand WGR's later treatment of the remaining occupied house-and-garden group. That group was only the part Mary held onto after the forest and green were taken on the family’s account; it is not a boundary statement limiting the full extent of Parcel A.
+Their value is to understand WGR's later treatment of the remaining occupied house-and-garden group. That group was only the part Mary held onto after the forest and green were taken, per the Buckler case; it is not a boundary statement limiting the full extent of Parcel A.
 
 ## Woodland downstream chain
 
@@ -128,7 +128,7 @@ The family’s primary case is that the 1877 arrangement took effect in 1928, ve
 
 The 1955 documents therefore have two jobs:
 
-1. corroborate and legally define the established family account that enforcement of Parcel B was extended to the Parcel-A north forest and south-east green, and identify what right WGR asserted over each area; and
+1. corroborate and legally define the established Buckler case that enforcement of Parcel B was extended to the Parcel-A north forest and south-east green, and identify what right WGR asserted over each area; and
 2. allow counsel to analyse the separate limitation consequences of the 1928 title/possession chronology, the 1949 permissive recharacterisation, the 1955 event and later proceedings.
 
 A 1955 wrong does not, by itself, establish a recoverable present title in 2026. Conversely, a limitation finding based on 1955 wording must not be allowed to erase or silently narrow the family’s underlying 1928 title case.

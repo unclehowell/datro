@@ -1,5 +1,5 @@
 {
- "_about": "The case questions: the questions every request, reply and document is trying to answer. Each carries the current best answer on the evidence, what supports it, what cuts against it, and what is still outstanding. The graph builder attaches matching Q&A from the correspondence to each question automatically (by 'match' terms) and links each to its scenes. Status values: documented (a primary record held), corroborated (two independent sources), family-account (rests on the family's own account so far), contested (sources disagree), open (no answer yet), not-held (searched for and reported not held).",
+ "_about": "The case questions: the questions every request, reply and document is trying to answer. Each carries the current best answer on the evidence, what supports it, what cuts against it, and what is still outstanding. The graph builder attaches matching Q&A from the correspondence to each question automatically (by 'match' terms) and links each to its scenes. Status values: documented (a primary record held), corroborated (two independent sources), testimony-only (rests on a named witness's testimony or a source still pending), contested (sources disagree), open (no answer yet), not-held (searched for and reported not held).",
  "questions": [
   {
    "id": "cq-1667",
@@ -69,7 +69,7 @@
     "ghf-18760101-1",
     "ghf-20260908-1"
    ],
-   "status": "family-account",
+   "status": "testimony-only",
    "answer": "Mary's statement says Bute sold the farmhouse, buildings and about 10 acres to Daniel Thomas in 1877 and kept about 9 acres, with the house to pass to the Williamses when quarrying ended. No deed has been found. Glamorgan Archives found no deeds for an 1877 Daniel Thomas transaction (2026/4097b) and pointed to Bute X.6(12), the Bute trustees' 1877 abstract of payments and receipts at Cardiff Library. DBDT/79/1, a May 1877 lease to a John Williams, was examined and is a Pembroke Terrace, Cardiff property, not Llandough (2026/3893). A capital receipt from Daniel Thomas in Bute X.6(12) would point to a sale; a rent or royalty would point to a lease.",
    "for": [
     "Mary Williams's statement (c. 1974)",
@@ -105,10 +105,10 @@
    "answer": "Very probably, on who lived there; not on the name. The census household (RG11/5288 p.2, schedule 9) is John Williams, 53, farmer, born at Leckwith. Directories of 1868, 1875 and 1880, and of 1887, 1891 and 1901, list \"Williams John, Great house\" / \"Great House farm, Llandough\", and list the Rees family separately at Llandough Farm. The South Wales Star of 1892 has \"Mr. John Williams, Great House Farm, Llandough\". Per Sion Buckler, the census entered Great House Farm under the wrong name. No other source uses \"Home Farm\".",
    "for": [
     "1881 census RG11/5288 p.2 (EV-0224): John Williams household",
-    "Slater's 1868, Worrall's 1875, Slater's 1880: \"Williams John, Great house\"",
-    "Owen's 1887 and 1891, Cardiff Directory 1901: \"Williams John, Great House farm, Llandough\"",
-    "South Wales Star, 10 June 1892: \"Mr. John Williams, Great House Farm, Llandough\"",
-    "Llandough Farm held by the Rees family, 1861–1910 (Cardiff Times 1865; Weekly Mail 1886; Evening Express 1898, 1910)"
+    "Slater's 1868, Worrall's 1875, Slater's 1880: \"Williams John, Great house\" (EV-0225)",
+    "Owen's 1887 and 1891, Cardiff Directory 1901: \"Williams John, Great House farm, Llandough\" (EV-0225)",
+    "South Wales Star, 10 June 1892: \"Mr. John Williams, Great House Farm, Llandough\" (EV-0226)",
+    "Llandough Farm held by the Rees family, 1861–1910 (Cardiff Times 1865; Weekly Mail 1886; Evening Express 1898, 1910) (EV-0228)"
    ],
    "against": [
     "\"Home Farm\" appears in no other source found: newspapers 1804–1919, directories or OS maps",
@@ -159,7 +159,7 @@
     "ghf-19280101-1",
     "ghf-19400101-1"
    ],
-   "status": "family-account",
+   "status": "testimony-only",
    "answer": "Mary's statement says the last quarry machinery left in 1928 and John Williams paid a final £4 rent to Alfred Thomas; she saw the receipt, which is missing. Land Registry records a 15 May 1924 agreement among the deeds before registration; whether it relates to this is unknown.",
    "for": [
     "Mary Williams's statement (c. 1974)"
@@ -183,8 +183,8 @@
     "ghf-19380101-1",
     "ghf-19390501-1"
    ],
-   "status": "family-account",
-   "answer": "The judgment records the 1938 conveyance of Bute's interest to Western Ground Rents. The family's account, from Hywel's own sight of the 1939 revised tenancy and plan, is that it covered only the fields east of the house (Parcel B). The 1938 conveyance itself has not been produced.",
+   "status": "testimony-only",
+   "answer": "The judgment records the 1938 conveyance of Bute's interest to Western Ground Rents. Per Hywel, from his own sight of the 1939 revised tenancy and plan, it covered only the fields east of the house (Parcel B). The 1938 conveyance itself has not been produced.",
    "for": [
     "The 1939 tenancy plan, as seen by the family"
    ],
@@ -236,7 +236,7 @@
    "status": "open",
    "answer": "Mrs M. D. Buckler (Mary Williams) told Glamorgan County Council's planning committee in November 1958 that \"the water was cut off from her house and grounds for nearly 10 years by order of Western Ground Rents\" (Western Mail, 20 November 1958, snippet only). Per Branwen Buckler (voice testimony), the council cut it over bills that Mary (Nancy) Williams insisted were paid, cattle drowned in the River Ely trying to reach water, and it was raised in Parliament. In the 1950s Llandough was in Penarth Urban District; Cardiff Corporation was the public water undertaker for the area, and in 1914 the Bute estate also supplied part of Penarth Urban District from a private spring at Llandough.",
    "for": [
-    "Western Mail, 20 November 1958, p.7 (snippet only): \"by order of Western Ground Rents\"",
+    "Western Mail, 20 November 1958, p.7 (snippet only): \"by order of Western Ground Rents\" (EV-0037)",
     "Branwen Buckler (voice testimony, 19 October 2026)",
     "Water undertakings return, 1914: a Bute estate spring supplying part of Penarth Urban District"
    ],
@@ -324,7 +324,7 @@
    "scenes": [
     "ghf-19500601-1"
    ],
-   "status": "family-account",
+   "status": "testimony-only",
    "answer": "Mary's statement says the family's documents were taken from a blanket box around 1950–52. No record of their removal or current whereabouts has been found.",
    "for": [
     "Mary Williams's statement (c. 1974)"
@@ -433,7 +433,7 @@
    "answer": "Two RCAHMW records repeat the account (Archive 6048942; Daily Telegraph, 16 April 1974, Archive 6048944, 'in about 1870'). Museum Wales reports no record of acquiring such finds (FOI 2026-024 and internal review). The source of the 'held by the National Museum of Wales' attribution has not been traced.",
    "for": [
     "RCAHMW Archives 6048942 and 6048944",
-    "Family account"
+    "Source pending (no named witness)"
    ],
    "against": [
     "Museum Wales FOI 2026-024: not held"
@@ -454,8 +454,8 @@
     "ghf-19941110-1",
     "ghf-20260925-1"
    ],
-   "status": "family-account",
-   "answer": "The woodland is registered to the Forest of Cardiff (WA735527), which offered the family a route to ownership in September 2026; the family declined. The family's account is that the woodland of Parcel A was taken in 1955 and passed through a couple in Llandough. No price is recorded for the charity's 1994 acquisition.",
+   "status": "testimony-only",
+   "answer": "The woodland is registered to the Forest of Cardiff (WA735527), which offered the family a route to ownership in September 2026; the family declined. Per the Buckler case, the woodland of Parcel A was taken in 1955 and passed through a couple in Llandough (SOURCE PENDING). No price is recorded for the charity's 1994 acquisition.",
    "for": [
     "HM Land Registry WA735527"
    ],

@@ -24,13 +24,13 @@ The slides come from a Q&A knowledge graph. Three inputs feed it:
 2. **The correspondence**: every email sent and received with records bodies.
    - `content/graph/raw/catalogue/*.html`: the wiki's word-for-word email catalogue pages, parsed by `ingest_catalogue.py`.
    - `content/graph/raw/gmail/`: Gmail threads, either as exported thread JSON (`<threadId>.json`) or as hand-made extracts (`extracts-*.json`), parsed by `ingest_gmail.py`.
-3. **The case questions**: `content/graph/case_questions.json`. These are the questions the story turns on. Each carries its current best answer, what supports it, what cuts against it, and what is still to find. Its status is one of: documented, family-account, contested, open or not-held.
+3. **The case questions**: `content/graph/case_questions.json`. These are the questions the story turns on. Each carries its current best answer, what supports it, what cuts against it, and what is still to find. Its status is one of: documented, corroborated, testimony-only, contested, open or not-held.
 
 `content/graph/build_graph.py` does the rest:
 
 - It pairs each question asked with the answer given, and classifies each answer (provided, partial, not held, refused, pointed elsewhere, acknowledged, automatic).
 - It links answers to case questions and to scenes through shared references (titles, archive references, FOI numbers) and through the case questions.
-- It grades every scene: documented, single source, family account, contested, or the family's argument.
+- It grades every scene: documented, single source, testimony only, contested, or the family's argument.
 - It writes `api/graph.json`, `api/qa.json`, `api/graph.sql` (for Cloudflare D1) and `src/data/story.json`, which the player renders.
 
 To rebuild:

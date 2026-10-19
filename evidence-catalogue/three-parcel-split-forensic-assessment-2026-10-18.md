@@ -73,7 +73,7 @@ Three outcomes are possible:
 
 The 1970 VG41 entry is potentially important because it appears to be an administratively separate record created after the 1955 physical taking and before the 1982–83 BP registrations. It may identify an applicant, a claimed owner, a parcel description, notices/objections and a map. That makes it a useful chronology and boundary control for A-South-East.
 
-But registration as a village green and an ownership section are not interchangeable with proof of a fee-simple title. A register may record a claim, a statutory status or other prescribed information; its effect depends on the applicable law, the exact entry and the underlying evidence. Do not infer that the Council owned the land merely because it holds the register, that the green was wrongly registered, or that a registration defect exists because the family’s account differs.
+But registration as a village green and an ownership section are not interchangeable with proof of a fee-simple title. A register may record a claim, a statutory status or other prescribed information; its effect depends on the applicable law, the exact entry and the underlying evidence. Do not infer that the Council owned the land merely because it holds the register, that the green was wrongly registered, or that a registration defect exists because the Buckler case differs.
 
 The decisive questions are:
 - Who applied, who was entered in any ownership section, and in what capacity?

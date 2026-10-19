@@ -205,7 +205,7 @@ sc('P', 'ghf-15600101-1', '1560-01-01', 'Mid 16th – late 18th century', "The V
    ledger={'W': 'Farm freehold: the Vaughans · lordship of the manor: the Herberts (a separate interest)'})
 sc('P', 'ghf-16670101-1', '1667-01-01', '1667', "The Williams family at Great House", 'Great House Farm', 'A',
    "Mary's statement",
-   "Mary Williams's c.1974 statement says her family had lived and farmed at Great House since 1667. A 1974 newspaper report also attributes to her a claim that her family first acquired Tŷ Mawr around that date. The affirmative Cedwyn thesis treats 1667 as the opening of the family's own estate history and tests that claim against the Cydwin/Cydfin lease and farm-name records. The surviving statement and press report support the family's account; a 1667 conveyance has not yet been identified.",
+   "Mary Williams's c.1974 statement says her family had lived and farmed at Great House since 1667. A 1974 newspaper report also attributes to her a claim that her family first acquired Tŷ Mawr around that date. The affirmative Cedwyn thesis treats 1667 as the opening of the family's own estate history and tests that claim against the Cydwin/Cydfin lease and farm-name records. The surviving statement and press report support the Buckler case; a 1667 conveyance has not yet been identified.",
    [MARY, w('/williams-buckler-family/', 'The Williams / Buckler Family — origins')],
    aliases=['ghf-16770101-1'],
    ledger={'W': 'Farm freehold: the Vaughans · lordship of the manor: the Herberts · in the house: the Williamses'})
@@ -239,6 +239,7 @@ sc('P', 'ghf-18550101-1', '1855-01-01', '1855', "John Williams succeeds his fath
    "John Williams succeeds his father as the Bute Estate's tenant. Reporting the Bute rent audit dinner of July 1904, the Cardiff Times says he \"succeeded his father in the tenancy of the farm in 1855\", and that it was \"his 102nd rent audit\".",
    [{'type': 'Newspaper', 'title': 'Cardiff Times, 16 July 1904, p.1 — Bute rent audit dinner (Welsh Newspapers Online)',
      'url': 'https://newspapers.library.wales/view/3427270/3427271/13/'},
+    {'type': 'Newspaper', 'title': 'EV-0227 — Cardiff Times, 16 July 1904: John Williams, tenancy since 1855 (wiki evidence page)', 'url': WIKI + '/evidence/ev-0227-cardiff-times-1904-john-williams-tenancy-since-1855/'},
     w('/evidence/ev-0215-tithe-apportionment-john-williams-c1841/', 'EV-0215 — Tithe apportionment: John Williams, c. 1841')])
 
 # ---------------------------------------------------------------- ACT I
@@ -246,10 +247,12 @@ sc('I', 'ghf-18680101-1', '1868-01-01', '1868 – 1901', "\"Williams John, Great
    'Publication',
    "The trade directories list the farmers of Llandough parish. Every edition from 1868 to 1901 has \"Williams John, Great house\", from 1887 \"Great House farm, Llandough\". Thomas Rees, and later Evan Rees, are listed separately, at Llandough Farm, a different Bute farm.",
    [D1868, D1875, D1880, D1887, D1891, D1901,
+    {'type': 'Publication', 'title': 'EV-0225 — Trade directories 1868–1901: "Williams John, Great house" (wiki evidence page)', 'url': WIKI + '/evidence/ev-0225-trade-directories-1868-1901-john-williams-great-house/'},
     {'type': 'Newspaper', 'title': 'Weekly Mail, 6 November 1886 — Thomas Rees, aged 89, of Llandough Farm, "rented from the Marquess of Bute"',
-     'url': 'https://newspapers.library.wales/view/3365383/3365390/150/'}])
+     'url': 'https://newspapers.library.wales/view/3365383/3365390/150/'},
+    {'type': 'Newspaper', 'title': 'EV-0228 — Llandough Farm and the Rees family, 1841–1910: a separate Bute farm (wiki evidence page)', 'url': WIKI + '/evidence/ev-0228-llandough-farm-rees-family-1841-1910/'}])
 sc('I', 'ghf-18700101-1', '1870-01-01', 'c. 1870', "The armour under the floor", 'Great House — dining room', 'A',
-   'Family account',
+   'Source pending',
    "Family tradition records a soldier in armour, with his horse, a lance and a shield, found beneath the dining-room floor. The account is in a Royal Commission record (NMR 6048942) and the Daily Telegraph of 16 April 1974. No primary record of a find has been located.",
    [press('N03', 'Daily Telegraph, 16 April 1974 (dates the find to "about 1870")'), HER, ARCH, w('/records-access-chronology/source-conflicts-register/', 'Source Conflicts Register', 'Analysis')],
    aliases=['ghf-18800101-2'])
@@ -281,6 +284,8 @@ sc('I', 'ghf-18810403-1', '1881-04-03', '3 April 1881', "The 1881 census: \"Llan
    'Public record',
    "The 1881 census records \"Llandough Home Farm\": John Williams, 53, \"Farmer of 170 [? or 120] ac. employing 1 man and 1 boy\", born at Leckwith; his wife Mary, 51, born at Cogan; their children Ellen, 14, John, 13, and David, 9; a boarder and a servant. Per Sion Buckler, this is Great House Farm entered under the wrong name. The directories of 1880 and 1887 place the same John Williams at Great House.",
    [EV0224, D1880, D1887,
+    {'type': 'Publication', 'title': 'EV-0225 — Trade directories 1868–1901: "Williams John, Great house" (wiki evidence page)', 'url': WIKI + '/evidence/ev-0225-trade-directories-1868-1901-john-williams-great-house/'},
+    {'type': 'Newspaper', 'title': 'EV-0228 — Llandough Farm and the Rees family, 1841–1910: a separate Bute farm (wiki evidence page)', 'url': WIKI + '/evidence/ev-0228-llandough-farm-rees-family-1841-1910/'},
     w('/evidence/ev-0223-1881-census-name-variant/', 'EV-0223 — 1881 census: a dictated variant of the farm name (pending)')],
    image='/media/1881-census-rg11-5288-p2.jpg')
 sc('I', 'ghf-18911111-1', '1891-11-11', '11 November 1891', "Theft of geese", 'Llandough — court report', 'AB',
@@ -288,10 +293,11 @@ sc('I', 'ghf-18911111-1', '1891-11-11', '11 November 1891', "Theft of geese", 'L
    "Three geese are stolen from \"Mr. John Williams, Great House Farm, Llandough\". The theft is reported from court.",
    [press('N01', '1891 court report — farmyard theft', 'ghf-e090-n01-1891-farmyard-theft.jpg'),
     {'type': 'Newspaper', 'title': 'South Wales Star, 10 June 1892 — geese "the property of Mr. John Williams, Great House Farm, Llandough, on November 11, 1891" (Welsh Newspapers Online)',
-     'url': 'https://newspapers.library.wales/view/3019697/3019705/78/'}],
+     'url': 'https://newspapers.library.wales/view/3019697/3019705/78/'},
+    {'type': 'Newspaper', 'title': 'EV-0226 — South Wales Star, 10 June 1892: "Mr. John Williams, Great House Farm, Llandough" (wiki evidence page)', 'url': WIKI + '/evidence/ev-0226-south-wales-star-1892-john-williams-great-house-farm/'}],
    image='/media/ghf-e090-n01-1891-farmyard-theft.jpg')
 sc('I', 'ghf-18970501-1', '1897-05-01', 'May 1897', "Marconi at Lavernock", 'Lavernock Point', '?',
-   'Family account',
+   'Source pending',
    "Marconi's wireless trials at Lavernock Point, May 1897. Family tradition records that Thomas Williams of Great House carted his equipment.",
    [press('N02', 'Press report of the Lavernock trials, 1897', 'ghf-e090-n02-1897-marconi-lavernock.jpg')],
    image='/media/ghf-e090-n02-1897-marconi-lavernock.jpg')
@@ -322,9 +328,10 @@ sc('II', 'ghf-19280101-1', '1928-01-01', '1928', "Last rent on the house", 'Grea
    aliases=['ghf-19240515-1'],
    ledger={'A': 'Freehold: the Williamses (Bute → Thomas → Williams; 1877 agreement and 1928 receipt kept at the house)'})
 sc('II', 'ghf-19360101-1', '1936-01-01', '1936', "Marriage", 'Great House Farm', 'A',
-   'Family account',
-   "Mary Williams marries Frederick Buckler, who comes to live at the farmhouse. They have seven children.",
-   [w('/frederick-buckler/#marriage', 'Frederick Buckler — marriage'), w('/frederick-buckler/', 'Frederick Buckler'),
+   'Newspaper',
+   "Mary Williams marries Frederick Buckler, who comes to live at the farmhouse. They have seven children. The Western Mail of 5 August 1936 reports the wedding of Mr. Fred Buckler of Barry and Miss Mary Doreen (Nancy) Williams of Great House Farm (snippet only).",
+   [{'type': 'Newspaper', 'title': 'EV-0230 — Western Mail, 5 August 1936, p.10: "Llandough Bride", Buckler–Williams wedding (SNIPPET ONLY; wiki evidence page)', 'url': WIKI + '/evidence/ev-0230-western-mail-1936-llandough-bride-buckler-williams/'},
+    w('/frederick-buckler/#marriage', 'Frederick Buckler — marriage'), w('/frederick-buckler/', 'Frederick Buckler'),
     w('/williams-buckler-family/', 'The Williams / Buckler Family')],
    aliases=['ghf-19100101-1', 'ghf-19370101-1'])
 sc('II', 'ghf-19380101-1', '1938-01-01', '1938', "Sale to Western Ground Rents", 'Bute Estate Office', 'B',
@@ -347,7 +354,7 @@ sc('II', 'ghf-19440101-1', '1944-01-01', '1944', "Farm management", 'Great House
    "The War Agricultural Executive Committee is dissatisfied with the farm. Frederick Buckler takes over running it as manager for John Williams.",
    [MARY, w('/john-williams/#y1944', 'John Williams — 1944')])
 sc('II', 'ghf-19480101-1', '1948-01-01', 'c. 1948 – 49', "Birth of William Buckler", 'Great House Farm', 'A',
-   'Family account',
+   'Source pending',
    "William (Billy) Buckler is born at the farm.",
    [w('/williams-buckler-family/', 'The Williams / Buckler Family — William')])
 
@@ -372,7 +379,7 @@ sc('III', 'ghf-19550202-1', '1955-02-02', '2 February 1955', "The 1955 possessio
    'Court record',
    "On 2 February 1955 Western Ground Rents obtains a High Court order for possession against Frederick Buckler, by summary judgment, described as \"the whole of the farm\". On 4 July 1955 possession is taken of everything except the farmhouse and garden; the 1987 judgment attributes the exception to Mary's recent return from hospital and her strong objection.",
    [w('/1955-possession-order/#order', 'The 1955 Possession Order', 'Court record'), w('/1955-possession-order/#enforcement', 'The 1955 Possession Order — enforcement', 'Court record'), w('/scrutiny-and-accountability/case-analysis-connections-patterns-questions/', 'Case Analysis — Connections, Patterns and Questions', 'Analysis')],
-   ledger={'A': 'Freehold: the Williamses (Mary in the house) · woodland: the family account is that it was taken in 1955 (not yet on the wiki)',
+   ledger={'A': 'Freehold: the Williamses (Mary in the house) · woodland: per the Buckler case, taken in 1955 (SOURCE PENDING: not yet on the wiki)',
            'S': 'Attempt 2: High Court order against the fields tenant for "the whole of the farm" (house not taken; Mary never heard)',
            'B': 'Freehold and possession: Western Ground Rents (fields taken 4 July 1955)'})
 sc('III', 'ghf-19581119-1', '1958-11-19', '19 November 1958', "\"A Welsh case of Crichel Down\"", 'Glamorgan County Council planning committee, Cardiff', 'A',
@@ -405,12 +412,12 @@ sc('III', 'ghf-19650301-1', '1965-03-02', 'January – March 1965', "1965 tenanc
    [w('/1962-possession-order/#offer-1965', 'The 1965 offer'), w('/mary-williams/#chronology', 'Mary Williams — 1965 offer')],
    ledger={'S': 'Attempt 5: weekly tenancy offered to "Mrs Williams" (not signed; her occupation now treated as adverse)'})
 sc('III', 'ghf-19640101-1', '1965-06-01', '1964 – 68', "Reported sale by the eldest son", 'Great House Farm', '?',
-   'Family account',
+   'Source pending',
    "A cousin's account says the eldest son sold \"our land parcel\" through a solicitor without his parents' knowledge. No document has been found. In 1968 his household leaves the farm.",
    [w('/williams-buckler-family/', 'The Williams / Buckler Family — rumoured sale'), w('/williams-buckler-family/', 'The Williams / Buckler Family')],
    aliases=['ghf-19680901-1'])
 sc('III', 'ghf-19670101-1', '1967-01-01', '1967', "Death of Frederick Buckler", 'Great House Farm', 'A',
-   'Family account',
+   'Source pending',
    "Frederick Buckler dies, aged 56. Mary takes back the name Williams and remains in the farmhouse.",
    [w('/frederick-buckler/#death', 'Frederick Buckler — death')],
    ledger={'B': 'Freehold and possession: Western Ground Rents'})
@@ -427,7 +434,8 @@ sc('IV', 'ghf-19720725-1', '1972-07-25', '1970 – 72', "Village green and plann
    "On 16 June 1970 land beside Leckwith Road is registered as village green VG41. On 25 July 1972 planning permission is granted for housing on the site, while Mary lives in the farmhouse.",
    [REDEV, TL,
     {'type': 'Legislation', 'title': 'Commons Registration (Glamorgan) Act 1983 (c. ix): validates the registers of common land only; village greens are not covered',
-     'url': 'https://www.legislation.gov.uk/ukla/1983/9'}], aliases=['ghf-19700616-1'],
+     'url': 'https://www.legislation.gov.uk/ukla/1983/9'},
+    {'type': 'Legislation', 'title': 'EV-0232 — Commons Registration (Glamorgan) Act 1983: common land registers only (wiki evidence page)', 'url': WIKI + '/evidence/ev-0232-commons-registration-glamorgan-act-1983/'}], aliases=['ghf-19700616-1'],
    ledger={'A': 'Freehold: the Williamses (Mary in the house) · land beside Leckwith Road registered as village green VG41 (1970)'})
 sc('IV', 'ghf-19740101-1', '1974-01-01', '1974', "Royal Commission survey", 'Great House — interior', 'A',
    'Heritage record',
@@ -485,7 +493,7 @@ sc('IV', 'ghf-19830223-1', '1983-02-23', '23 February 1983', "Farmhouse title", 
    [LRT('first-registration', 'Land Registry Titles — first registration'), LEGAL],
    ledger={'S': 'Paper: registered as a separate title, WA240304, on the 1975 conveyance ("no question or doubt")'})
 sc('IV', 'ghf-19830326-1', '1983-03-26', '26 March 1983', "Death of Mary Williams", 'Great House Farm', 'A',
-   'Family account',
+   'Source pending',
    "Mary Williams dies in the farmhouse on 26 March 1983. Her son William inherits her estate.",
    [w('/mary-williams/#death', 'Mary Williams — death'), w('/williams-buckler-family/', 'The Williams / Buckler Family — William')],
    ledger={'A': 'Freehold claim passes to Billy Buckler, in occupation · never decided, never extinguished'})
@@ -639,7 +647,7 @@ sc('VII', 'ghf-19900313-1', '1990-03-13', 'February – March 1990', "Outline pe
    "On 13 March 1990 outline permission is granted with 18 conditions. The officer's report notes the farm buildings \"were unfortunately demolished a little while ago\". GGAT's further comments of 8 February 1990 are missing from the file.",
    [REDEV, LEGAL], aliases=['ghf-19900208-1'])
 sc('VII', 'ghf-19900529-1', '1990-05-29', '29 May 1990', "Death of William Buckler", 'Llandough', 'A',
-   'Family account (date corrected from family information)',
+   'Source pending (date corrected from family information)',
    "William Buckler died on 29 May 1990 at Llandough Hospital. Funeral and burial details require confirmation against the obituary and relevant records.",
    [w('/williams-buckler-family/', 'The Williams / Buckler Family — William')],
    aliases=['ghf-19920515-1'],

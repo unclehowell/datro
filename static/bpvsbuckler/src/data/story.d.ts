@@ -1,8 +1,8 @@
 export interface Evidence { type: string; title: string; url: string; image?: string }
 export interface Act { id: string; label: string; title: string; span: string; logline: string }
 export interface CastMember { id: string; name: string; years: string; role: string; match: string[] }
-export type Grade = 'documented' | 'single-source' | 'family-account' | 'contested' | 'argument';
-export type QStatus = 'documented' | 'corroborated' | 'family-account' | 'contested' | 'open' | 'not-held';
+export type Grade = 'documented' | 'single-source' | 'testimony-only' | 'contested' | 'argument';
+export type QStatus = 'documented' | 'corroborated' | 'testimony-only' | 'contested' | 'open' | 'not-held';
 export interface SceneQuestion { id: string; question: string; status: QStatus; answer: string; next: string[] }
 export interface SceneQA {
   id: string; party_name: string; asked: string; answered: string; kind: string; pairing: string;

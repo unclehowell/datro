@@ -47,7 +47,7 @@ ACCOUNTS = {
 'ghf-16670101-1': dict(
     received="Tenant farmers who lived on someone else's land.",
     words=[('"tenants"', 'The estate\'s description of the family, repeated in every later account.')],
-    known="Mary's statement and the 1974 press report support the family's account of a connection with Great House from 1667 and treat it as a lineage claim, not a passing tenancy. The affirmative reconstruction now connects that claim to the older Cydwin/Cydfin/Ty Mawr lease records and asks whether later labels of tenancy concealed a longer-standing family interest. The surviving items do not themselves constitute a 1667 conveyance; the deed chain must be reconstructed from the leases, estate accounts, plans and the 1877/1928 evidence."),
+    known="Mary's statement and the 1974 press report support the Buckler case for a connection with Great House from 1667 and treat it as a lineage claim, not a passing tenancy. The affirmative reconstruction now connects that claim to the older Cydwin/Cydfin/Ty Mawr lease records and asks whether later labels of tenancy concealed a longer-standing family interest. The surviving items do not themselves constitute a 1667 conveyance; the deed chain must be reconstructed from the leases, estate accounts, plans and the 1877/1928 evidence."),
 'ghf-17400213-1': dict(
     received="The Vaughan lease chain has no relevance once later estate papers call the land Ty Mawr.",
     words=[],
@@ -154,7 +154,7 @@ ACCOUNTS = {
 'ghf-19550202-1': dict(
     received="The landlord recovered the farm in 1955; the family stayed on in the house only through the landlord's forbearance, and from 1955 their occupation was adverse to the landlord.",
     words=[('"the whole of the farm"', 'The order\'s description, quoted in 1987.'), ('adverse possession from 1955', 'The clock the courts later counted on the house.')],
-    known="An order against a tenant of the fields can only give back the fields, and that is what was taken. Mary was not a party and was never heard. She had just come home from hospital and stood her ground for her house. Any clock that started in 1955 was a clock on the fields. That the order reached the house was an insinuation, later read as fact. The family's account is that the woodland of Parcel A was taken in 1955 too, passing to a couple in Llandough and later to the Forest of Cardiff. (Family account, not yet recorded on the wiki.)"),
+    known="An order against a tenant of the fields can only give back the fields, and that is what was taken. Mary was not a party and was never heard. She had just come home from hospital and stood her ground for her house. Any clock that started in 1955 was a clock on the fields. That the order reached the house was an insinuation, later read as fact. Per the Buckler case, the woodland of Parcel A was taken in 1955 too, passing to a couple in Llandough and later to the Forest of Cardiff. (SOURCE PENDING: not yet recorded on the wiki.)"),
 'ghf-19581119-1': dict(
     received="",
     words=[],
@@ -191,7 +191,7 @@ ACCOUNTS = {
 'ghf-19720725-1': dict(
     received="Ordinary planning of an under-used farm.",
     words=[('"the site"', 'Both parcels treated as one development site.')],
-    known="Permission was granted over a house whose ownership was disputed, while its owner lived in it. In 1990 a condition of the outline permission provided for a 0.25-acre village green beside the site. The family's account is that the land south of the farmhouse, part of Parcel A, was taken by the council and laid out as a green in the 1980s. (Family account, not yet recorded on the wiki.)"),
+    known="Permission was granted over a house whose ownership was disputed, while its owner lived in it. In 1990 a condition of the outline permission provided for a 0.25-acre village green beside the site. Per the Buckler case, the land south of the farmhouse, part of Parcel A, was taken by the council and laid out as a green in the 1980s. (SOURCE PENDING: not yet recorded on the wiki.)"),
 'ghf-19740101-1': dict(
     received="A routine, incomplete survey.",
     words=[],
@@ -382,7 +382,7 @@ ACCOUNTS = {
 'ghf-19941110-1': dict(
     received="",
     words=[],
-    known="The Forest of Cardiff says it bought the woodland in 1994. The family's account is that this woodland, part of Parcel A, had been taken in 1955, and that the charity has not used it. (Family account, not yet recorded on the wiki.)"),
+    known="The Forest of Cardiff says it bought the woodland in 1994. Per the Buckler case, this woodland, part of Parcel A, had been taken in 1955, and the charity has not used it. (SOURCE PENDING: not yet recorded on the wiki.)"),
 'ghf-20050101-1': dict(
     received="",
     words=[],

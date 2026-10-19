@@ -8,8 +8,13 @@ const PROJECT_NAME = 'bpvsbuckler';
 const SQL_URL = 'https://raw.githubusercontent.com/unclehowell/datro/bpvsbuckler/static/bpvsbuckler/api/graph.sql';
 const META_TABLE = '_graph_sync_meta';
 const META_KEY = 'graph_sql_sha256';
-const MAX_BATCH_BYTES = 88000;
+// Each statement is sent on its own through prepare(), so D1's 100 KB limit
+// applies per statement; a batch only groups statements into one call. Fewer,
+// larger batches keep the whole sync inside the Workers Free plan's
+// per-invocation query allowance.
+const MAX_BATCH_BYTES = 400000;
 const MAX_STATEMENT_BYTES = 87000;
+const MAX_BATCH_STATEMENTS = 1000;
 
 const json = (body, status = 200) => new Response(JSON.stringify(body), {
   status,
@@ -82,16 +87,15 @@ function makeBatches(statements) {
     if (statementBytes > MAX_STATEMENT_BYTES) {
       throw new Error(`SQL statement ${index + 1} is oversized (${statementBytes} bytes).`);
     }
-    const addition = statementBytes + (pending.length ? 2 : 0);
-    if (pending.length && pendingBytes + addition > MAX_BATCH_BYTES) {
-      batches.push(pending.join(';\n') + ';');
+    if (pending.length && (pendingBytes + statementBytes > MAX_BATCH_BYTES || pending.length >= MAX_BATCH_STATEMENTS)) {
+      batches.push(pending);
       pending = [];
       pendingBytes = 0;
     }
     pending.push(statement);
-    pendingBytes += statementBytes + (pending.length > 1 ? 2 : 0);
+    pendingBytes += statementBytes;
   }
-  if (pending.length) batches.push(pending.join(';\n') + ';');
+  if (pending.length) batches.push(pending);
   return batches;
 }
 
@@ -167,16 +171,20 @@ export async function onRequestPost({ request, env }) {
       return json({ ok: true, skipped: true, reason: 'SQL export unchanged and D1 verified', sha256, ...before });
     }
 
-    // Keep each request below D1's 100 KB single-statement ceiling and prevent
-    // the 4 MB catalogue export from being sent as one oversized SQL request.
+    // D1's exec() treats every line as a separate statement, so it broke on the
+    // first value containing a newline (correspondence text). Each statement is
+    // prepared on its own instead and sent in grouped batch() calls, keeping
+    // every statement below D1's 100 KB ceiling.
     stage = 'execute-batches';
+    const encoder = new TextEncoder();
     for (let i = 0; i < batches.length; i += 1) {
       try {
-        await env.DB.exec(batches[i]);
+        await env.DB.batch(batches[i].map((statement) => env.DB.prepare(statement)));
       } catch (_error) {
         return json({
           ok: false, stage, failedBatch: i + 1, batchCount: batches.length,
-          batchBytes: new TextEncoder().encode(batches[i]).byteLength,
+          batchStatements: batches[i].length,
+          batchBytes: batches[i].reduce((n, s) => n + encoder.encode(s).byteLength, 0),
           error: 'D1 rejected a SQL batch; no sync marker was written.',
         }, 500);
       }
