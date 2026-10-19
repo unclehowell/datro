@@ -850,6 +850,114 @@
    "moved": []
   },
   {
+   "id": "ghf-18550101-1",
+   "act": "P",
+   "date": "1855-01-01",
+   "when": "1855",
+   "title": "John Williams succeeds his father",
+   "place": "Great House Farm",
+   "parcel": "AB",
+   "basis": "Newspaper",
+   "narration": "John Williams succeeds his father as the Bute Estate's tenant. Reporting the Bute rent audit dinner of July 1904, the Cardiff Times says he \"succeeded his father in the tenancy of the farm in 1855\", and that it was \"his 102nd rent audit\".",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Newspaper",
+     "title": "Cardiff Times, 16 July 1904, p.1 — Bute rent audit dinner (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/3427270/3427271/13/"
+    },
+    {
+     "type": "Wiki page",
+     "title": "EV-0215 — Tithe apportionment: John Williams, c. 1841",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0215-tithe-apportionment-john-williams-c1841/"
+    }
+   ],
+   "image": null,
+   "aliases": [],
+   "no": 11,
+   "ref": "P.11",
+   "cast": [
+    "john",
+    "bute"
+   ],
+   "received": null,
+   "received_words": [],
+   "known": "One newspaper line, written 49 years later, gives 1855 as the start of John Williams's tenancy and says he took it over from his father; the 1841 tithe already has a John Williams holding about 120 acres at Tŷ Mawr. Against it: the 1904 report calls him \"of Llandough Farm\", the name of the Rees family's separate farm, so reading it as Great House rests on the directories, which put him at \"Great House\" in 1891 and 1901 (an inference, not proof). The Bute rent audits that would confirm 1855 have not been seen.",
+   "ledger": [
+    [
+     "W",
+     "Lordship of the manor (1793) and farm freehold (early 19th century): the Bute Estate · tenants: the Williamses"
+    ]
+   ],
+   "moved": []
+  },
+  {
+   "id": "ghf-18680101-1",
+   "act": "I",
+   "date": "1868-01-01",
+   "when": "1868 – 1901",
+   "title": "\"Williams John, Great house\"",
+   "place": "Trade directories",
+   "parcel": "AB",
+   "basis": "Publication",
+   "narration": "The trade directories list the farmers of Llandough parish. Every edition from 1868 to 1901 has \"Williams John, Great house\", from 1887 \"Great House farm, Llandough\". Thomas Rees, and later Evan Rees, are listed separately, at Llandough Farm, a different Bute farm.",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Publication",
+     "title": "Slater's Directory 1868, p.902, Llandough: \"Williams John, Great house\" (University of Leicester Historical Directories)",
+     "url": "https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/91309"
+    },
+    {
+     "type": "Publication",
+     "title": "Worrall's Directory 1875, p.324, farmers in Llandough parish: \"Williams John, Great house\" (University of Leicester Historical Directories)",
+     "url": "https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/348840"
+    },
+    {
+     "type": "Publication",
+     "title": "Slater's Directory 1880, p.533, farmers in Llandough: \"Williams John, Greathouse\" (University of Leicester Historical Directories)",
+     "url": "https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/90316"
+    },
+    {
+     "type": "Publication",
+     "title": "Owen's Cardiff Directory 1887, p.209: \"Williams John, Great House farm, Llandough\" (University of Leicester Historical Directories)",
+     "url": "https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/92950"
+    },
+    {
+     "type": "Publication",
+     "title": "Owen's Cardiff Directory 1891, p.237: \"Williams John, overseer, Great House farm, Llandough\" (University of Leicester Historical Directories)",
+     "url": "https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/93394"
+    },
+    {
+     "type": "Publication",
+     "title": "Cardiff Directory 1901, p.309: \"Williams John, Great House farm, Llandough\" (University of Leicester Historical Directories)",
+     "url": "https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/95085"
+    },
+    {
+     "type": "Newspaper",
+     "title": "Weekly Mail, 6 November 1886 — Thomas Rees, aged 89, of Llandough Farm, \"rented from the Marquess of Bute\"",
+     "url": "https://newspapers.library.wales/view/3365383/3365390/150/"
+    }
+   ],
+   "image": null,
+   "aliases": [],
+   "no": 12,
+   "ref": "I.1",
+   "cast": [
+    "bute"
+   ],
+   "received": null,
+   "received_words": [],
+   "known": "Six directories over 33 years put the same John Williams at Great House and the Rees family at Llandough Farm, so the two farms, and the two families, were distinct. Against it: directories copy from one edition to the next and record what the compiler was told; none uses the name \"Home Farm\"; and the press of 1895 and 1904 sometimes calls a Williams \"of Llandough Farm\", so that name in a source does not always mean the Rees farm.",
+   "ledger": [
+    [
+     "W",
+     "Lordship of the manor (1793) and farm freehold (early 19th century): the Bute Estate · tenants: the Williamses"
+    ]
+   ],
+   "moved": []
+  },
+  {
    "id": "ghf-18700101-1",
    "act": "I",
    "date": "1870-01-01",
@@ -886,8 +994,8 @@
    "aliases": [
     "ghf-18800101-2"
    ],
-   "no": 11,
-   "ref": "I.1",
+   "no": 13,
+   "ref": "I.2",
    "cast": [
     "rcahmw"
    ],
@@ -952,8 +1060,8 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 12,
-   "ref": "I.2",
+   "no": 14,
+   "ref": "I.3",
    "cast": [
     "bute"
    ],
@@ -988,8 +1096,8 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 13,
-   "ref": "I.3",
+   "no": 15,
+   "ref": "I.4",
    "cast": [
     "bute"
    ],
@@ -1051,8 +1159,8 @@
    "aliases": [
     "ghf-18771106-1"
    ],
-   "no": 14,
-   "ref": "I.4",
+   "no": 16,
+   "ref": "I.5",
    "cast": [
     "mary",
     "thomas",
@@ -1077,6 +1185,68 @@
    ]
   },
   {
+   "id": "ghf-18810403-1",
+   "act": "I",
+   "date": "1881-04-03",
+   "when": "3 April 1881",
+   "title": "The 1881 census: \"Llandough Home Farm\"",
+   "place": "Census, Llandough (RG11/5288 p.2)",
+   "parcel": "AB",
+   "basis": "Public record",
+   "narration": "The 1881 census records \"Llandough Home Farm\": John Williams, 53, \"Farmer of 170 [? or 120] ac. employing 1 man and 1 boy\", born at Leckwith; his wife Mary, 51, born at Cogan; their children Ellen, 14, John, 13, and David, 9; a boarder and a servant. Per Sion Buckler, this is Great House Farm entered under the wrong name. The directories of 1880 and 1887 place the same John Williams at Great House.",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Public record",
+     "title": "EV-0224 — 1881 census, Llandough, RG11/5288 p.2 (photograph and transcription)",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0224-1881-census-llandough-rg11-5288/",
+     "image": "/media/1881-census-rg11-5288-p2.jpg"
+    },
+    {
+     "type": "Publication",
+     "title": "Slater's Directory 1880, p.533, farmers in Llandough: \"Williams John, Greathouse\" (University of Leicester Historical Directories)",
+     "url": "https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/90316"
+    },
+    {
+     "type": "Publication",
+     "title": "Owen's Cardiff Directory 1887, p.209: \"Williams John, Great House farm, Llandough\" (University of Leicester Historical Directories)",
+     "url": "https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/92950"
+    },
+    {
+     "type": "Wiki page",
+     "title": "EV-0223 — 1881 census: a dictated variant of the farm name (pending)",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0223-1881-census-name-variant/"
+    }
+   ],
+   "image": "/media/1881-census-rg11-5288-p2.jpg",
+   "aliases": [],
+   "no": 17,
+   "ref": "I.6",
+   "cast": [
+    "mary",
+    "john"
+   ],
+   "received": null,
+   "received_words": [
+    [
+     "\"Llandough Home Farm\"",
+     "The enumerator's label. No other source found uses it: no newspaper (Welsh Newspapers Online, 1804–1919), directory or Ordnance Survey map."
+    ]
+   ],
+   "known": "The household is the John Williams whom the directories place at Great House before and after 1881. The Rees family were at Llandough Farm. On identity the record supports Sion Buckler's reading. Against it: \"Home Farm\" appears nowhere else, so it cannot be offered as a second name for the farm; and the acreage is hard to read: 170 would fit Llandough Farm (166 acres in 1824–32) better than Great House (about 120 acres in the 1841 tithe), while 120 fits Great House. Folio and enumeration district: source pending. EV-0223 records a different, dictated reading of the farm name that this page does not show.",
+   "ledger": [
+    [
+     "A",
+     "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends"
+    ],
+    [
+     "B",
+     "Freehold: the Bute Estate · tenants: the Williamses"
+    ]
+   ],
+   "moved": []
+  },
+  {
    "id": "ghf-18911111-1",
    "act": "I",
    "date": "1891-11-11",
@@ -1093,12 +1263,17 @@
      "title": "1891 court report — farmyard theft",
      "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n01",
      "image": "/media/ghf-e090-n01-1891-farmyard-theft.jpg"
+    },
+    {
+     "type": "Newspaper",
+     "title": "South Wales Star, 10 June 1892 — geese \"the property of Mr. John Williams, Great House Farm, Llandough, on November 11, 1891\" (Welsh Newspapers Online)",
+     "url": "https://newspapers.library.wales/view/3019697/3019705/78/"
     }
    ],
    "image": "/media/ghf-e090-n01-1891-farmyard-theft.jpg",
    "aliases": [],
-   "no": 15,
-   "ref": "I.5",
+   "no": 18,
+   "ref": "I.7",
    "cast": [
     "john"
    ],
@@ -1138,8 +1313,8 @@
    ],
    "image": "/media/ghf-e090-n02-1897-marconi-lavernock.jpg",
    "aliases": [],
-   "no": 16,
-   "ref": "I.6",
+   "no": 19,
+   "ref": "I.8",
    "cast": [],
    "received": "An unproven family story.",
    "received_words": [],
@@ -1188,8 +1363,8 @@
    "aliases": [
     "ghf-19050223-1"
    ],
-   "no": 17,
-   "ref": "I.7",
+   "no": 20,
+   "ref": "I.9",
    "cast": [
     "mary",
     "john",
@@ -1244,8 +1419,8 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 18,
-   "ref": "I.8",
+   "no": 21,
+   "ref": "I.10",
    "cast": [
     "mary"
    ],
@@ -1294,7 +1469,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 19,
+   "no": 22,
    "ref": "II.1",
    "cast": [
     "john",
@@ -1372,7 +1547,7 @@
    "aliases": [
     "ghf-19240515-1"
    ],
-   "no": 20,
+   "no": 23,
    "ref": "II.2",
    "cast": [
     "mary",
@@ -1433,7 +1608,7 @@
     "ghf-19100101-1",
     "ghf-19370101-1"
    ],
-   "no": 21,
+   "no": 24,
    "ref": "II.3",
    "cast": [
     "mary",
@@ -1483,7 +1658,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 22,
+   "no": 25,
    "ref": "II.4",
    "cast": [
     "bute",
@@ -1540,7 +1715,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 23,
+   "no": 26,
    "ref": "II.5",
    "cast": [
     "john",
@@ -1592,7 +1767,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 24,
+   "no": 27,
    "ref": "II.6",
    "cast": [],
    "received": "Not an event. The family were tenants throughout.",
@@ -1641,7 +1816,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 25,
+   "no": 28,
    "ref": "II.7",
    "cast": [
     "john",
@@ -1686,7 +1861,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 26,
+   "no": 29,
    "ref": "II.8",
    "cast": [
     "billy"
@@ -1745,7 +1920,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 27,
+   "no": 30,
    "ref": "III.1",
    "cast": [
     "john",
@@ -1814,7 +1989,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 28,
+   "no": 31,
    "ref": "III.2",
    "cast": [
     "mary"
@@ -1872,7 +2047,7 @@
    "aliases": [
     "ghf-19530101-1"
    ],
-   "no": 29,
+   "no": 32,
    "ref": "III.3",
    "cast": [
     "frederick"
@@ -1926,7 +2101,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 30,
+   "no": 33,
    "ref": "III.4",
    "cast": [
     "mary",
@@ -1967,6 +2142,70 @@
    ]
   },
   {
+   "id": "ghf-19581119-1",
+   "act": "III",
+   "date": "1958-11-19",
+   "when": "19 November 1958",
+   "title": "\"A Welsh case of Crichel Down\"",
+   "place": "Glamorgan County Council planning committee, Cardiff",
+   "parcel": "A",
+   "basis": "Newspaper",
+   "narration": "Mary Williams, as Mrs M. D. Buckler, objects to Glamorgan County Council's planning committee about industrial development beside Tŷ Mawr. The Western Mail reports her saying that land \"farmed by her family since 1667\" had been \"wrongfully appropriated\", that \"This is a Welsh case of Crichel Down\", and that \"the water was cut off from her house and grounds for nearly 10 years by order of Western Ground Rents\".",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Newspaper",
+     "title": "Western Mail, 20 November 1958, p.7, \"It's a Crichel Down, says woman farmer\" (SNIPPET ONLY: read from British Newspaper Archive search text; the page itself not yet seen)",
+     "url": "https://www.britishnewspaperarchive.co.uk/search/results/1950-01-01/1965-12-31?basicsearch=buckler+%22western+ground+rents%22+water&exactsearch=false&retrievecountrycounts=false"
+    },
+    {
+     "type": "Wiki page",
+     "title": "EV-0037 — Western Mail, 1958: \"Crichel Down\"",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0037-western-mail-1958-crichel-down/"
+    },
+    {
+     "type": "Testimony",
+     "title": "Testimony — Branwen Buckler",
+     "url": "https://greathousefarmwiki.wordpress.com/testimony/branwen-buckler/"
+    }
+   ],
+   "image": null,
+   "aliases": [],
+   "no": 34,
+   "ref": "III.5",
+   "cast": [
+    "mary",
+    "wgr"
+   ],
+   "received": null,
+   "received_words": [
+    [
+     "\"a Welsh case of Crichel Down\"",
+     "Her words, as reported. Crichel Down (1954) was the national scandal over farmland the state kept after requisition; a minister resigned over it."
+    ],
+    [
+     "\"by order of Western Ground Rents\"",
+     "Her claim, as reported; it names the landlord, not a council."
+    ]
+   ],
+   "known": "The only record of the time so far that the water was cut off: Mrs Buckler's own claim in 1958, as the Western Mail reported it. \"Nearly 10 years\" would put the start around 1948–49 (an inference). Per Branwen Buckler (voice testimony, relayed by Sion Buckler, 19 October 2026), the council cut the water over bills it said were unpaid, which Mary (Nancy) Williams insisted had been paid; dairy cattle drowned in the River Ely trying to reach water, a baby daughter had to live elsewhere, and the matter was raised in Parliament. What cuts against that version: the 1958 report names Western Ground Rents, not a council or a water bill; no report of cattle drowning has been found; no Commons or Lords debate or written answer has been found for 1946–92 (committee proceedings and MPs' letters are not searchable this way); and Dŵr Cymru's 2026 replies speak of a disconnection in the 1980s, so there may have been two cut-offs. The article has been read only as search snippets; the full page is still to be obtained.",
+   "ledger": [
+    [
+     "A",
+     "Freehold: the Williamses (Mary in the house) · woodland: the family account is that it was taken in 1955 (not yet on the wiki)"
+    ],
+    [
+     "S",
+     "Attempt 2: High Court order against the fields tenant for \"the whole of the farm\" (house not taken; Mary never heard)"
+    ],
+    [
+     "B",
+     "Freehold and possession: Western Ground Rents (fields taken 4 July 1955)"
+    ]
+   ],
+   "moved": []
+  },
+  {
    "id": "ghf-19590101-1",
    "act": "III",
    "date": "1959-01-01",
@@ -1991,8 +2230,8 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 31,
-   "ref": "III.5",
+   "no": 35,
+   "ref": "III.6",
    "cast": [
     "mary",
     "wgr"
@@ -2050,8 +2289,8 @@
    "aliases": [
     "ghf-19610329-1"
    ],
-   "no": 32,
-   "ref": "III.6",
+   "no": 36,
+   "ref": "III.7",
    "cast": [
     "mary",
     "frederick",
@@ -2115,8 +2354,8 @@
    "aliases": [
     "ghf-19630101-1"
    ],
-   "no": 33,
-   "ref": "III.7",
+   "no": 37,
+   "ref": "III.8",
    "cast": [
     "frederick"
    ],
@@ -2164,8 +2403,8 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 34,
-   "ref": "III.8",
+   "no": 38,
+   "ref": "III.9",
    "cast": [],
    "received": "Another offer refused by an occupier with no title.",
    "received_words": [
@@ -2220,8 +2459,8 @@
    "aliases": [
     "ghf-19680901-1"
    ],
-   "no": 35,
-   "ref": "III.9",
+   "no": 39,
+   "ref": "III.10",
    "cast": [
     "eldest"
    ],
@@ -2264,8 +2503,8 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 36,
-   "ref": "III.10",
+   "no": 40,
+   "ref": "III.11",
    "cast": [
     "mary",
     "frederick"
@@ -2316,7 +2555,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 37,
+   "no": 41,
    "ref": "IV.1",
    "cast": [
     "wgr",
@@ -2375,13 +2614,18 @@
      "type": "Wiki page",
      "title": "Master Timeline",
      "url": "https://greathousefarmwiki.wordpress.com/timeline/"
+    },
+    {
+     "type": "Legislation",
+     "title": "Commons Registration (Glamorgan) Act 1983 (c. ix): validates the registers of common land only; village greens are not covered",
+     "url": "https://www.legislation.gov.uk/ukla/1983/9"
     }
    ],
    "image": null,
    "aliases": [
     "ghf-19700616-1"
    ],
-   "no": 38,
+   "no": 42,
    "ref": "IV.2",
    "cast": [
     "mary"
@@ -2391,6 +2635,10 @@
     [
      "\"the site\"",
      "Both parcels treated as one development site."
+    ],
+    [
+     "\"VG41\"",
+     "The village green registered on 16 June 1970. The Commons Registration (Glamorgan) Act 1983 validated the registers of common land only and does not mention village greens, so it neither validated nor redrew VG41."
     ]
    ],
    "known": "Permission was granted over a house whose ownership was disputed, while its owner lived in it. In 1990 a condition of the outline permission provided for a 0.25-acre village green beside the site. The family's account is that the land south of the farmhouse, part of Parcel A, was taken by the council and laid out as a green in the 1980s. (Family account, not yet recorded on the wiki.)",
@@ -2452,7 +2700,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 39,
+   "no": 43,
    "ref": "IV.3",
    "cast": [
     "rcahmw"
@@ -2502,7 +2750,7 @@
    ],
    "image": "/media/ghf-e090-n03-1974-open-day-telegraph.jpg",
    "aliases": [],
-   "no": 40,
+   "no": 44,
    "ref": "IV.4",
    "cast": [
     "mary"
@@ -2556,7 +2804,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 41,
+   "no": 45,
    "ref": "IV.5",
    "cast": [
     "mary",
@@ -2622,7 +2870,7 @@
     "ghf-19741031-2",
     "ghf-19740919-1"
    ],
-   "no": 42,
+   "no": 46,
    "ref": "IV.6",
    "cast": [
     "mary",
@@ -2684,7 +2932,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 43,
+   "no": 47,
    "ref": "IV.7",
    "cast": [],
    "received": "A local antiquarian's objection.",
@@ -2726,7 +2974,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 44,
+   "no": 48,
    "ref": "IV.8",
    "cast": [
     "bp",
@@ -2779,7 +3027,7 @@
    ],
    "image": "/media/ghf-e090-n16-1980-hansard-rowlands.jpg",
    "aliases": [],
-   "no": 45,
+   "no": 49,
    "ref": "IV.9",
    "cast": [
     "wgr",
@@ -2846,7 +3094,7 @@
     "ghf-press-19800417-n05",
     "ghf-19830313-1"
    ],
-   "no": 46,
+   "no": 50,
    "ref": "IV.10",
    "cast": [
     "ggat"
@@ -2895,7 +3143,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 47,
+   "no": 51,
    "ref": "IV.11",
    "cast": [
     "mary",
@@ -2952,7 +3200,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 48,
+   "no": 52,
    "ref": "IV.12",
    "cast": [
     "bp"
@@ -3008,7 +3256,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 49,
+   "no": 53,
    "ref": "IV.13",
    "cast": [
     "mary"
@@ -3059,7 +3307,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 50,
+   "no": 54,
    "ref": "IV.14",
    "cast": [
     "hmlr"
@@ -3115,7 +3363,7 @@
    "aliases": [
     "ghf-19840113-1"
    ],
-   "no": 51,
+   "no": 55,
    "ref": "V.1",
    "cast": [
     "billy",
@@ -3174,7 +3422,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 52,
+   "no": 56,
    "ref": "V.2",
    "cast": [
     "mary",
@@ -3225,7 +3473,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 53,
+   "no": 57,
    "ref": "V.3",
    "cast": [
     "rcahmw"
@@ -3284,7 +3532,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 54,
+   "no": 58,
    "ref": "V.4",
    "cast": [
     "bute",
@@ -3337,7 +3585,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 55,
+   "no": 59,
    "ref": "V.5",
    "cast": [
     "bp",
@@ -3394,7 +3642,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 56,
+   "no": 60,
    "ref": "V.6",
    "cast": [
     "courts"
@@ -3442,7 +3690,7 @@
    "aliases": [
     "ghf-press-n15-01"
    ],
-   "no": 57,
+   "no": 61,
    "ref": "VI.1",
    "cast": [
     "billy"
@@ -3491,7 +3739,7 @@
     "ghf-press-n07",
     "ghf-press-n15-02"
    ],
-   "no": 58,
+   "no": 62,
    "ref": "VI.2",
    "cast": [
     "mary",
@@ -3550,7 +3798,7 @@
     "ghf-press-n15-03",
     "ghf-19880503-1"
    ],
-   "no": 59,
+   "no": 63,
    "ref": "VI.3",
    "cast": [
     "billy",
@@ -3603,7 +3851,7 @@
    ],
    "image": "/media/1988-cadw-farmhouse.jpg",
    "aliases": [],
-   "no": 60,
+   "no": 64,
    "ref": "VI.4",
    "cast": [
     "cadw"
@@ -3659,7 +3907,7 @@
     "ghf-press-n15-04",
     "ghf-press-n09"
    ],
-   "no": 61,
+   "no": 65,
    "ref": "VI.5",
    "cast": [
     "billy"
@@ -3714,7 +3962,7 @@
    "aliases": [
     "ghf-press-n15-11"
    ],
-   "no": 62,
+   "no": 66,
    "ref": "VI.6",
    "cast": [
     "mary"
@@ -3763,7 +4011,7 @@
     "ghf-press-n15-05",
     "ghf-press-n08"
    ],
-   "no": 63,
+   "no": 67,
    "ref": "VI.7",
    "cast": [
     "bp",
@@ -3813,7 +4061,7 @@
     "ghf-press-n15-06",
     "ghf-press-n15-10"
    ],
-   "no": 64,
+   "no": 68,
    "ref": "VI.8",
    "cast": [
     "billy"
@@ -3858,7 +4106,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 65,
+   "no": 69,
    "ref": "VI.9",
    "cast": [
     "cadw"
@@ -3901,7 +4149,7 @@
    "aliases": [
     "ghf-press-n10"
    ],
-   "no": 66,
+   "no": 70,
    "ref": "VI.10",
    "cast": [
     "cadw",
@@ -3968,7 +4216,7 @@
     "ghf-press-n15-12",
     "ghf-19881211-1"
    ],
-   "no": 67,
+   "no": 71,
    "ref": "VI.11",
    "cast": [],
    "received": "An old farmhouse of no special merit was cleared for housing.",
@@ -4035,7 +4283,7 @@
     "ghf-press-n15-08",
     "ghf-press-n15-09"
    ],
-   "no": 68,
+   "no": 72,
    "ref": "VI.12",
    "cast": [
     "billy"
@@ -4090,7 +4338,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 69,
+   "no": 73,
    "ref": "VI.13",
    "cast": [
     "rcahmw"
@@ -4132,7 +4380,7 @@
    "aliases": [
     "ghf-press-n15-14"
    ],
-   "no": 70,
+   "no": 74,
    "ref": "VII.1",
    "cast": [],
    "received": null,
@@ -4191,7 +4439,7 @@
     "ghf-19890115-1",
     "ghf-press-n15-13"
    ],
-   "no": 71,
+   "no": 75,
    "ref": "VII.2",
    "cast": [
     "billy"
@@ -4232,7 +4480,7 @@
    ],
    "image": "/media/ghf-e090-n13-1989-farm-to-bus.jpg",
    "aliases": [],
-   "no": 72,
+   "no": 76,
    "ref": "VII.3",
    "cast": [
     "billy"
@@ -4277,7 +4525,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 73,
+   "no": 77,
    "ref": "VII.4",
    "cast": [],
    "received": "Strasbourg confirmed the eviction was lawful and the property was BP's.",
@@ -4343,7 +4591,7 @@
     "ghf-19891108-1",
     "ghf-19891010-1"
    ],
-   "no": 74,
+   "no": 78,
    "ref": "VII.5",
    "cast": [
     "bp",
@@ -4392,7 +4640,7 @@
    "aliases": [
     "ghf-19900208-1"
    ],
-   "no": 75,
+   "no": 79,
    "ref": "VII.6",
    "cast": [
     "ggat"
@@ -4439,7 +4687,7 @@
    "aliases": [
     "ghf-19920515-1"
    ],
-   "no": 76,
+   "no": 80,
    "ref": "VII.7",
    "cast": [
     "billy"
@@ -4493,7 +4741,7 @@
    "aliases": [
     "ghf-19901015-1"
    ],
-   "no": 77,
+   "no": 81,
    "ref": "VII.8",
    "cast": [
     "bp",
@@ -4549,7 +4797,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 78,
+   "no": 82,
    "ref": "VII.9",
    "cast": [
     "ggat",
@@ -4590,7 +4838,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 79,
+   "no": 83,
    "ref": "VII.10",
    "cast": [
     "ideal"
@@ -4630,7 +4878,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 80,
+   "no": 84,
    "ref": "VII.11",
    "cast": [
     "ggat"
@@ -4675,7 +4923,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 81,
+   "no": 85,
    "ref": "VII.12",
    "cast": [],
    "received": null,
@@ -4730,7 +4978,7 @@
    "aliases": [
     "ghf-19931213-1"
    ],
-   "no": 82,
+   "no": 86,
    "ref": "VII.13",
    "cast": [
     "bp",
@@ -4786,7 +5034,7 @@
    "aliases": [
     "ghf-19940421-1"
    ],
-   "no": 83,
+   "no": 87,
    "ref": "VII.14",
    "cast": [],
    "received": "A successful rescue excavation.",
@@ -4834,7 +5082,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 84,
+   "no": 88,
    "ref": "VII.15",
    "cast": [
     "ideal"
@@ -4891,7 +5139,7 @@
    "aliases": [
     "ghf-19950628-1"
    ],
-   "no": 85,
+   "no": 89,
    "ref": "VII.16",
    "cast": [],
    "received": null,
@@ -4944,7 +5192,7 @@
    "aliases": [
     "ghf-20051222-1"
    ],
-   "no": 86,
+   "no": 90,
    "ref": "VII.17",
    "cast": [],
    "received": null,
@@ -4982,7 +5230,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 87,
+   "no": 91,
    "ref": "VII.18",
    "cast": [
     "ggat"
@@ -5024,7 +5272,7 @@
    "aliases": [
     "ghf-20260123-1"
    ],
-   "no": 88,
+   "no": 92,
    "ref": "VIII.1",
    "cast": [
     "mary",
@@ -5074,7 +5322,7 @@
    "aliases": [
     "ghf-20260213-1"
    ],
-   "no": 89,
+   "no": 93,
    "ref": "VIII.2",
    "cast": [
     "hmlr"
@@ -5119,7 +5367,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 90,
+   "no": 94,
    "ref": "VIII.3",
    "cast": [
     "hmlr"
@@ -5182,7 +5430,7 @@
    ],
    "image": "/media/1988-cadw-barn.jpg",
    "aliases": [],
-   "no": 91,
+   "no": 95,
    "ref": "VIII.4",
    "cast": [
     "cadw"
@@ -5234,7 +5482,7 @@
    "aliases": [
     "ghf-20260602-1"
    ],
-   "no": 92,
+   "no": 96,
    "ref": "VIII.5",
    "cast": [
     "hmlr"
@@ -5274,7 +5522,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 93,
+   "no": 97,
    "ref": "VIII.6",
    "cast": [],
    "received": null,
@@ -5317,7 +5565,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 94,
+   "no": 98,
    "ref": "VIII.7",
    "cast": [
     "bute"
@@ -5374,7 +5622,7 @@
    "aliases": [
     "ghf-20260918-1"
    ],
-   "no": 95,
+   "no": 99,
    "ref": "VIII.8",
    "cast": [
     "hmlr",
@@ -5427,7 +5675,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 96,
+   "no": 100,
    "ref": "VIII.9",
    "cast": [
     "bp",
@@ -5473,7 +5721,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 97,
+   "no": 101,
    "ref": "VIII.10",
    "cast": [],
    "received": null,
@@ -5516,7 +5764,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 98,
+   "no": 102,
    "ref": "VIII.11",
    "cast": [
     "hmlr",
@@ -5569,7 +5817,7 @@
    "aliases": [
     "ghf-20261005-1"
    ],
-   "no": 99,
+   "no": 103,
    "ref": "VIII.12",
    "cast": [
     "rcahmw"
@@ -5632,7 +5880,7 @@
     "ghf-20260922-1",
     "ghf-20261003-1"
    ],
-   "no": 100,
+   "no": 104,
    "ref": "VIII.13",
    "cast": [
     "ggat",
@@ -5678,7 +5926,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 101,
+   "no": 105,
    "ref": "O.1",
    "cast": [],
    "received": "A squatter was evicted after losing in court.",
@@ -5731,7 +5979,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 102,
+   "no": 106,
    "ref": "O.2",
    "cast": [
     "mary"
@@ -5781,7 +6029,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 103,
+   "no": 107,
    "ref": "O.3",
    "cast": [
     "wgr",
@@ -5827,7 +6075,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 104,
+   "no": 108,
    "ref": "O.4",
    "cast": [
     "bp"
@@ -5877,7 +6125,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 105,
+   "no": 109,
    "ref": "O.5",
    "cast": [
     "courts"
@@ -5933,7 +6181,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 106,
+   "no": 110,
    "ref": "O.6",
    "cast": [
     "billy"
@@ -5984,7 +6232,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 107,
+   "no": 111,
    "ref": "O.7",
    "cast": [],
    "received": "An old building was cleared for housing.",
@@ -6038,7 +6286,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 108,
+   "no": 112,
    "ref": "O.8",
    "cast": [
     "mps"
@@ -6083,7 +6331,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 109,
+   "no": 113,
    "ref": "O.9",
    "cast": [
     "mary"
@@ -6134,7 +6382,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 110,
+   "no": 114,
    "ref": "O.10",
    "cast": [
     "cadw"
@@ -6184,7 +6432,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 111,
+   "no": 115,
    "ref": "O.11",
    "cast": [
     "mary",
@@ -6240,7 +6488,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 112,
+   "no": 116,
    "ref": "E.1",
    "cast": [],
    "received": "A landlord and its successors recovered their farm from tenants who stayed on without paying, and the courts confirmed it.",
@@ -6314,7 +6562,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 113,
+   "no": 117,
    "ref": "E.2",
    "cast": [],
    "received": "It was always one farm, and nobody suggested otherwise.",
@@ -6371,7 +6619,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 114,
+   "no": 118,
    "ref": "E.3",
    "cast": [],
    "received": "A modern estate on a former farm.",
@@ -6414,7 +6662,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 115,
+   "no": 119,
    "ref": "E.4",
    "cast": [],
    "received": null,
@@ -6457,7 +6705,7 @@
    ],
    "image": "/media/1988-cadw-farmhouse.jpg",
    "aliases": [],
-   "no": 116,
+   "no": 120,
    "ref": "E.5",
    "cast": [],
    "received": null,

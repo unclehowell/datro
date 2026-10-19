@@ -60,14 +60,17 @@ INSERT INTO nodes VALUES ('scene:ghf-16670101-1','scene','P.7 The Williams famil
 INSERT INTO nodes VALUES ('scene:ghf-17400213-1','scene','P.8 Vaughan assigns the Cydwin lease','{"date": "1740-02-13", "act": "P", "grade": "single-source"}');
 INSERT INTO nodes VALUES ('scene:ghf-18000101-1','scene','P.9 The Bute Estate','{"date": "1800-01-01", "act": "P", "grade": "documented"}');
 INSERT INTO nodes VALUES ('scene:ghf-18400101-1','scene','P.10 Great House Farm','{"date": "1840-01-01", "act": "P", "grade": "single-source"}');
-INSERT INTO nodes VALUES ('scene:ghf-18700101-1','scene','I.1 The armour under the floor','{"date": "1870-01-01", "act": "I", "grade": "contested"}');
-INSERT INTO nodes VALUES ('scene:ghf-18700101-2','scene','I.2 A Williams estate bequest to Bute: tracing the land','{"date": "1870-01-02", "act": "I", "grade": "single-source"}');
-INSERT INTO nodes VALUES ('scene:ghf-18760101-1','scene','I.3 The limeworks','{"date": "1876-01-01", "act": "I", "grade": "single-source"}');
-INSERT INTO nodes VALUES ('scene:ghf-18770101-1','scene','I.4 Division of the farm','{"date": "1877-01-01", "act": "I", "grade": "family-account"}');
-INSERT INTO nodes VALUES ('scene:ghf-18911111-1','scene','I.5 Theft of geese','{"date": "1891-11-11", "act": "I", "grade": "single-source"}');
-INSERT INTO nodes VALUES ('scene:ghf-18970501-1','scene','I.6 Marconi at Lavernock','{"date": "1897-05-01", "act": "I", "grade": "single-source"}');
-INSERT INTO nodes VALUES ('scene:ghf-19080101-1','scene','I.7 John Williams','{"date": "1908-01-01", "act": "I", "grade": "single-source"}');
-INSERT INTO nodes VALUES ('scene:ghf-19130810-1','scene','I.8 Birth of Mary Williams','{"date": "1913-08-10", "act": "I", "grade": "family-account"}');
+INSERT INTO nodes VALUES ('scene:ghf-18550101-1','scene','P.11 John Williams succeeds his father','{"date": "1855-01-01", "act": "P", "grade": "single-source"}');
+INSERT INTO nodes VALUES ('scene:ghf-18680101-1','scene','I.1 "Williams John, Great house"','{"date": "1868-01-01", "act": "I", "grade": "documented"}');
+INSERT INTO nodes VALUES ('scene:ghf-18700101-1','scene','I.2 The armour under the floor','{"date": "1870-01-01", "act": "I", "grade": "contested"}');
+INSERT INTO nodes VALUES ('scene:ghf-18700101-2','scene','I.3 A Williams estate bequest to Bute: tracing the land','{"date": "1870-01-02", "act": "I", "grade": "single-source"}');
+INSERT INTO nodes VALUES ('scene:ghf-18760101-1','scene','I.4 The limeworks','{"date": "1876-01-01", "act": "I", "grade": "single-source"}');
+INSERT INTO nodes VALUES ('scene:ghf-18770101-1','scene','I.5 Division of the farm','{"date": "1877-01-01", "act": "I", "grade": "family-account"}');
+INSERT INTO nodes VALUES ('scene:ghf-18810403-1','scene','I.6 The 1881 census: "Llandough Home Farm"','{"date": "1881-04-03", "act": "I", "grade": "contested"}');
+INSERT INTO nodes VALUES ('scene:ghf-18911111-1','scene','I.7 Theft of geese','{"date": "1891-11-11", "act": "I", "grade": "documented"}');
+INSERT INTO nodes VALUES ('scene:ghf-18970501-1','scene','I.8 Marconi at Lavernock','{"date": "1897-05-01", "act": "I", "grade": "single-source"}');
+INSERT INTO nodes VALUES ('scene:ghf-19080101-1','scene','I.9 John Williams','{"date": "1908-01-01", "act": "I", "grade": "single-source"}');
+INSERT INTO nodes VALUES ('scene:ghf-19130810-1','scene','I.10 Birth of Mary Williams','{"date": "1913-08-10", "act": "I", "grade": "family-account"}');
 INSERT INTO nodes VALUES ('scene:ghf-19160201-1','scene','II.1 The 1916 tenancy','{"date": "1916-02-01", "act": "II", "grade": "contested"}');
 INSERT INTO nodes VALUES ('scene:ghf-19280101-1','scene','II.2 Last rent on the house','{"date": "1928-01-01", "act": "II", "grade": "single-source"}');
 INSERT INTO nodes VALUES ('scene:ghf-19360101-1','scene','II.3 Marriage','{"date": "1936-01-01", "act": "II", "grade": "family-account"}');
@@ -80,12 +83,13 @@ INSERT INTO nodes VALUES ('scene:ghf-19490202-1','scene','III.1 The 1949 tenancy
 INSERT INTO nodes VALUES ('scene:ghf-19500601-1','scene','III.2 The blanket box','{"date": "1950-06-01", "act": "III", "grade": "family-account"}');
 INSERT INTO nodes VALUES ('scene:ghf-19521010-1','scene','III.3 Last rent on the fields','{"date": "1952-10-10", "act": "III", "grade": "single-source"}');
 INSERT INTO nodes VALUES ('scene:ghf-19550202-1','scene','III.4 The 1955 possession order','{"date": "1955-02-02", "act": "III", "grade": "contested"}');
-INSERT INTO nodes VALUES ('scene:ghf-19590101-1','scene','III.5 1959 tenancy offer','{"date": "1959-01-01", "act": "III", "grade": "documented"}');
-INSERT INTO nodes VALUES ('scene:ghf-19621211-1','scene','III.6 The 1962 possession order','{"date": "1962-12-11", "act": "III", "grade": "documented"}');
-INSERT INTO nodes VALUES ('scene:ghf-19630601-1','scene','III.7 Committal proceedings','{"date": "1963-06-01", "act": "III", "grade": "documented"}');
-INSERT INTO nodes VALUES ('scene:ghf-19650301-1','scene','III.8 1965 tenancy offer','{"date": "1965-03-02", "act": "III", "grade": "single-source"}');
-INSERT INTO nodes VALUES ('scene:ghf-19640101-1','scene','III.9 Reported sale by the eldest son','{"date": "1965-06-01", "act": "III", "grade": "family-account"}');
-INSERT INTO nodes VALUES ('scene:ghf-19670101-1','scene','III.10 Death of Frederick Buckler','{"date": "1967-01-01", "act": "III", "grade": "family-account"}');
+INSERT INTO nodes VALUES ('scene:ghf-19581119-1','scene','III.5 "A Welsh case of Crichel Down"','{"date": "1958-11-19", "act": "III", "grade": "single-source"}');
+INSERT INTO nodes VALUES ('scene:ghf-19590101-1','scene','III.6 1959 tenancy offer','{"date": "1959-01-01", "act": "III", "grade": "documented"}');
+INSERT INTO nodes VALUES ('scene:ghf-19621211-1','scene','III.7 The 1962 possession order','{"date": "1962-12-11", "act": "III", "grade": "documented"}');
+INSERT INTO nodes VALUES ('scene:ghf-19630601-1','scene','III.8 Committal proceedings','{"date": "1963-06-01", "act": "III", "grade": "documented"}');
+INSERT INTO nodes VALUES ('scene:ghf-19650301-1','scene','III.9 1965 tenancy offer','{"date": "1965-03-02", "act": "III", "grade": "single-source"}');
+INSERT INTO nodes VALUES ('scene:ghf-19640101-1','scene','III.10 Reported sale by the eldest son','{"date": "1965-06-01", "act": "III", "grade": "family-account"}');
+INSERT INTO nodes VALUES ('scene:ghf-19670101-1','scene','III.11 Death of Frederick Buckler','{"date": "1967-01-01", "act": "III", "grade": "family-account"}');
 INSERT INTO nodes VALUES ('scene:ghf-19691231-1','scene','IV.1 Conveyance to BP Pension Trust','{"date": "1969-12-31", "act": "IV", "grade": "single-source"}');
 INSERT INTO nodes VALUES ('scene:ghf-19720725-1','scene','IV.2 Village green and planning permission','{"date": "1972-07-25", "act": "IV", "grade": "single-source"}');
 INSERT INTO nodes VALUES ('scene:ghf-19740101-1','scene','IV.3 Royal Commission survey','{"date": "1974-01-01", "act": "IV", "grade": "documented"}');
@@ -186,10 +190,12 @@ INSERT INTO nodes VALUES ('person:ideal','person','Ideal Homes Wales','{"years":
 INSERT INTO nodes VALUES ('cq:cq-1667','case_question','When did the Williams family come to Great House, and on what terms?','{"status": "contested"}');
 INSERT INTO nodes VALUES ('cq:cq-bute-acquisition','case_question','When and how did the Bute Estate acquire Great House from the Vaughans?','{"status": "open"}');
 INSERT INTO nodes VALUES ('cq:cq-1877','case_question','What happened in 1877: did Bute sell the farmhouse and about 10 acres to Daniel Thomas, or only lease quarrying rights?','{"status": "family-account"}');
+INSERT INTO nodes VALUES ('cq:cq-1881-name','case_question','Is the 1881 census''s "Llandough Home Farm" Great House Farm?','{"status": "contested"}');
 INSERT INTO nodes VALUES ('cq:cq-1916','case_question','What did the 1916 tenancy cover?','{"status": "contested"}');
 INSERT INTO nodes VALUES ('cq:cq-1928','case_question','Did the family stop paying rent on the house in 1928, and did the freehold pass to them then?','{"status": "family-account"}');
 INSERT INTO nodes VALUES ('cq:cq-1938-1939','case_question','What did Bute sell to Western Ground Rents in 1938, and did the 1939 tenancy include the house?','{"status": "family-account"}');
 INSERT INTO nodes VALUES ('cq:cq-1955','case_question','Did the 1955 possession order cover the farmhouse, or only the fields?','{"status": "contested"}');
+INSERT INTO nodes VALUES ('cq:cq-water','case_question','Was the farm''s water cut off, when, by whom, and why?','{"status": "open"}');
 INSERT INTO nodes VALUES ('cq:cq-registration','case_question','How did BP come to be registered as owner of the farmhouse, and was the occupier''s claim disclosed?','{"status": "documented"}');
 INSERT INTO nodes VALUES ('cq:cq-judgment','case_question','What did the courts actually decide in 1986–88: ownership, or only possession?','{"status": "documented"}');
 INSERT INTO nodes VALUES ('cq:cq-papers','case_question','What happened to the family''s papers (the blanket box) in 1950–52?','{"status": "family-account"}');
@@ -1407,6 +1413,7 @@ cc: FoiUnit@valeofglamorgan.gov.uk (for inform','{"kind": "reply", "pairing": "t
 INSERT INTO nodes VALUES ('doc-cadw-1988-listing-location-lead','document','Cadw 1988 listing / assessment file — location lead','{"holder": "Cadw / Welsh Government", "reference": "none yet (draft)", "date": "2026-10-13"}');
 INSERT INTO nodes VALUES ('doc-draft-cedwyn-estate-wiki-page','document','Cedwyn Estate: an affirmative reconstruction of the Williams/Buckler title chain','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-dwr-cymru-eir-3106-2026','document','Dŵr Cymru Welsh Water EIR/3106/2026, 14 October 2026','{"holder": "Dŵr Cymru Welsh Water, Environmental Information Requests", "reference": "EIR/3106/2026", "date": "2026-10-14"}');
+INSERT INTO nodes VALUES ('doc-excluded-1878-thomas-williams-ynysawdre','document','Thomas Williams and the Ynysawdre Coal Co., 15 June 1878 — not Great House Farm','{"holder": "Glamorgan Archives (photographed by Sion Buckler, 2nd visit, photos 91–95)", "reference": "archive reference not legible in the photographs (pending)", "date": "1878-06-15"}');
 INSERT INTO nodes VALUES ('doc-glamorgan-archives-2026-4097b','document','Glamorgan Archives 2026/4097b','{"holder": "Glamorgan Archives", "reference": "2026/4097b", "date": "2026-09-30"}');
 INSERT INTO nodes VALUES ('doc-glamorgan-archives-llandough-parish-tithe','document','Lead: Llandough-juxta-Penarth vestry, tithe, enclosure','{"holder": "Glamorgan Archives", "reference": "location lead drafted 7 Oct 2026 (no authority reference yet)", "date": "2026-10-07"}');
 INSERT INTO nodes VALUES ('doc-heneb-GGAT02038s','document','Heneb replies, 6 and 14 October 2026','{"holder": "Heneb (Glamorgan-Gwent HER)", "reference": "GGAT02038s (request 8 Sep 2026; 6 Oct reply; 14 Oct digitisation update)", "date": "2026-10-14"}');
@@ -1501,6 +1508,9 @@ INSERT INTO edges VALUES ('scene:ghf-15520101-1','person:bute','features');
 INSERT INTO edges VALUES ('scene:ghf-16670101-1','person:mary','features');
 INSERT INTO edges VALUES ('scene:ghf-17400213-1','person:bute','features');
 INSERT INTO edges VALUES ('scene:ghf-18000101-1','person:bute','features');
+INSERT INTO edges VALUES ('scene:ghf-18550101-1','person:john','features');
+INSERT INTO edges VALUES ('scene:ghf-18550101-1','person:bute','features');
+INSERT INTO edges VALUES ('scene:ghf-18680101-1','person:bute','features');
 INSERT INTO edges VALUES ('scene:ghf-18700101-1','person:rcahmw','features');
 INSERT INTO edges VALUES ('scene:ghf-18700101-2','person:bute','features');
 INSERT INTO edges VALUES ('scene:ghf-18760101-1','ref:D153/4-8','cites');
@@ -1508,6 +1518,8 @@ INSERT INTO edges VALUES ('scene:ghf-18760101-1','person:bute','features');
 INSERT INTO edges VALUES ('scene:ghf-18770101-1','person:mary','features');
 INSERT INTO edges VALUES ('scene:ghf-18770101-1','person:thomas','features');
 INSERT INTO edges VALUES ('scene:ghf-18770101-1','person:bute','features');
+INSERT INTO edges VALUES ('scene:ghf-18810403-1','person:mary','features');
+INSERT INTO edges VALUES ('scene:ghf-18810403-1','person:john','features');
 INSERT INTO edges VALUES ('scene:ghf-18911111-1','person:john','features');
 INSERT INTO edges VALUES ('scene:ghf-19080101-1','person:mary','features');
 INSERT INTO edges VALUES ('scene:ghf-19080101-1','person:john','features');
@@ -1537,6 +1549,8 @@ INSERT INTO edges VALUES ('scene:ghf-19550202-1','person:mary','features');
 INSERT INTO edges VALUES ('scene:ghf-19550202-1','person:frederick','features');
 INSERT INTO edges VALUES ('scene:ghf-19550202-1','person:wgr','features');
 INSERT INTO edges VALUES ('scene:ghf-19550202-1','person:courts','features');
+INSERT INTO edges VALUES ('scene:ghf-19581119-1','person:mary','features');
+INSERT INTO edges VALUES ('scene:ghf-19581119-1','person:wgr','features');
 INSERT INTO edges VALUES ('scene:ghf-19590101-1','person:mary','features');
 INSERT INTO edges VALUES ('scene:ghf-19590101-1','person:wgr','features');
 INSERT INTO edges VALUES ('scene:ghf-19621211-1','person:mary','features');
@@ -1699,6 +1713,47 @@ INSERT INTO edges VALUES ('qa:qa-af644b1f8d48','cq:cq-1877','bears_on');
 INSERT INTO edges VALUES ('qa:qa-209cfa278204','cq:cq-1877','bears_on');
 INSERT INTO edges VALUES ('qa:qa-742ec2ec47ec','cq:cq-1877','bears_on');
 INSERT INTO edges VALUES ('qa:qa-ee932132a36f','cq:cq-1877','bears_on');
+INSERT INTO edges VALUES ('cq:cq-1881-name','scene:ghf-18810403-1','about');
+INSERT INTO edges VALUES ('qa:qa-c09272ae88bb','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-9f54cfec1771','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-d3b666c7a21a','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-fbb649bd072e','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-6d16e7906b31','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-7484e553a07a','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-1383cac6c813','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-1026edf3ce9f','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-c6092e6d0d26','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-7dc1180a55e0','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-ca5e7fa1e113','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-2b0a6bd71225','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-036c3d02215e','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-5e10fa8bfde5','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-6797dd05c3b0','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-5d7bce3cde09','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-2ab6b6c35f6c','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-66d4d579c0ec','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-39f44b0b852d','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-d6ac003280b3','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-8ab7ba337a6b','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-cf3665c7d372','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-c7f23d49787e','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-1c9f86b0542e','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-bc796863b466','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-44a810251f4a','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-586e38dfdd35','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-0e882e314064','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-68d7ec7589b8','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-b638e895a9e0','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-e4056db41d87','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-47019bbec9a9','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-e6d145e2311f','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-40f5b24cbc3b','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-256974a94b26','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-2d17d7d0d764','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-ff816ac58845','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-a84489422986','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-1a2a14debe98','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-e629b8c6a6d5','cq:cq-1881-name','bears_on');
 INSERT INTO edges VALUES ('cq:cq-1916','scene:ghf-19160201-1','about');
 INSERT INTO edges VALUES ('qa:qa-209cfa278204','cq:cq-1916','bears_on');
 INSERT INTO edges VALUES ('qa:qa-742ec2ec47ec','cq:cq-1916','bears_on');
@@ -1745,6 +1800,13 @@ INSERT INTO edges VALUES ('qa:qa-91e605652d19','cq:cq-1955','bears_on');
 INSERT INTO edges VALUES ('qa:qa-324c2cdedba3','cq:cq-1955','bears_on');
 INSERT INTO edges VALUES ('qa:qa-5b313373f0b5','cq:cq-1955','bears_on');
 INSERT INTO edges VALUES ('qa:qa-9c00d4e3b7f4','cq:cq-1955','bears_on');
+INSERT INTO edges VALUES ('cq:cq-water','scene:ghf-19581119-1','about');
+INSERT INTO edges VALUES ('qa:qa-8d31745a9de0','cq:cq-water','bears_on');
+INSERT INTO edges VALUES ('qa:qa-07b00e5b9daa','cq:cq-water','bears_on');
+INSERT INTO edges VALUES ('qa:qa-538c6615a318','cq:cq-water','bears_on');
+INSERT INTO edges VALUES ('qa:qa-7484e553a07a','cq:cq-water','bears_on');
+INSERT INTO edges VALUES ('qa:qa-bdd757cb6344','cq:cq-water','bears_on');
+INSERT INTO edges VALUES ('qa:qa-9ee11a86d140','cq:cq-water','bears_on');
 INSERT INTO edges VALUES ('cq:cq-registration','scene:ghf-19821119-1','about');
 INSERT INTO edges VALUES ('cq:cq-registration','scene:ghf-19830223-1','about');
 INSERT INTO edges VALUES ('cq:cq-registration','scene:ghf-19870202-1','about');
@@ -3002,6 +3064,12 @@ INSERT INTO edges VALUES ('qa:qa-38e8439b871d','scene:ghf-18770101-1','bears_on'
 INSERT INTO edges VALUES ('qa:qa-e6d145e2311f','scene:ghf-18770101-1','bears_on');
 INSERT INTO edges VALUES ('qa:qa-26a4a880979f','scene:ghf-18770101-1','bears_on');
 INSERT INTO edges VALUES ('qa:qa-14555ae14f13','scene:ghf-18770101-1','bears_on');
+INSERT INTO edges VALUES ('qa:qa-0e882e314064','scene:ghf-18810403-1','bears_on');
+INSERT INTO edges VALUES ('qa:qa-e6d145e2311f','scene:ghf-18810403-1','bears_on');
+INSERT INTO edges VALUES ('qa:qa-889b85fc8ec0','scene:ghf-18810403-1','bears_on');
+INSERT INTO edges VALUES ('qa:qa-26a4a880979f','scene:ghf-18810403-1','bears_on');
+INSERT INTO edges VALUES ('qa:qa-9f54cfec1771','scene:ghf-18810403-1','bears_on');
+INSERT INTO edges VALUES ('qa:qa-38e8439b871d','scene:ghf-18810403-1','bears_on');
 INSERT INTO edges VALUES ('qa:qa-38e8439b871d','scene:ghf-19080101-1','bears_on');
 INSERT INTO edges VALUES ('qa:qa-212548b66ab3','scene:ghf-19080101-1','bears_on');
 INSERT INTO edges VALUES ('qa:qa-ee932132a36f','scene:ghf-19160201-1','bears_on');
@@ -3025,6 +3093,11 @@ INSERT INTO edges VALUES ('qa:qa-38e8439b871d','scene:ghf-19400101-1','bears_on'
 INSERT INTO edges VALUES ('qa:qa-212548b66ab3','scene:ghf-19400101-1','bears_on');
 INSERT INTO edges VALUES ('qa:qa-91e605652d19','scene:ghf-19550202-1','bears_on');
 INSERT INTO edges VALUES ('qa:qa-ee932132a36f','scene:ghf-19550202-1','bears_on');
+INSERT INTO edges VALUES ('qa:qa-8d31745a9de0','scene:ghf-19581119-1','bears_on');
+INSERT INTO edges VALUES ('qa:qa-07b00e5b9daa','scene:ghf-19581119-1','bears_on');
+INSERT INTO edges VALUES ('qa:qa-538c6615a318','scene:ghf-19581119-1','bears_on');
+INSERT INTO edges VALUES ('qa:qa-bdd757cb6344','scene:ghf-19581119-1','bears_on');
+INSERT INTO edges VALUES ('qa:qa-9ee11a86d140','scene:ghf-19581119-1','bears_on');
 INSERT INTO edges VALUES ('qa:qa-18b0a0b8f769','scene:ghf-19740101-1','bears_on');
 INSERT INTO edges VALUES ('qa:qa-72d3fa7b6fee','scene:ghf-19740101-1','bears_on');
 INSERT INTO edges VALUES ('qa:qa-924df4ac42d6','scene:ghf-19740101-1','bears_on');
@@ -3377,7 +3450,7 @@ I ask the Council to:
 archaeological information was available to decision-makers and how it was
 handled.
 **Establish** what correspondence, cautions, or dispute notices exist in
-relation to this site''s title or heritage status.','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t1','');
+relation to this site''s title or heritage status.','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t1','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-c6092e6d0d26','Land Registry Disclosure**
 
 BP registered title in 1982 based on the disputed licence. The Council
@@ -3510,7 +3583,7 @@ related issues.
 For your reference, here is a summary of my prior correspondence to you:
 Email Date Key Points Raised
 16 Feb 2026 • Potential gaps in Council planning and record-keeping for
-Great House Farm (demolished 1988) • Title fraud and procedural co','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t1','cq-1667');
+Great House Farm (demolished 1988) • Title fraud and procedural co','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t1','cq-1667,cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-7dc1180a55e0','Cllr Carroll,
 
 I hope this email finds you well.
@@ -3624,7 +3697,7 @@ Regards,
 Sion Buckler
 02031377118
 07845933262
-5 Robin Hill, Dinas Powys, CF64 4TF','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t1','');
+5 Robin Hill, Dinas Powys, CF64 4TF','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t1','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-ca5e7fa1e113','Records of any archaeological notifications, alerts, or discoveries associated with Great House Farm, whether before or after demolition, including references to artefacts later recovered during excavations in the early 1990s.
 Any documentation referring to historical associations between Great House Farm and early radio or wireless experimentation, including any mention of Guglielmo Marconi or related activity in the Cardiff Bay / Lavernock / surrounding area that may have been considered or dismissed.
 If any information is withheld, please specify the exemption relied upon and provide the reasoning as required under the Act.
@@ -3783,7 +3856,7 @@ We check all mail and attachments for known viruses. However, you are advised th
 
 We welcome correspondence in English and Welsh.
 
-To see how HM Land Registry treats your personal information, read our Personal information charter: www.gov.uk/government/organisations/land-registry/about/personal-information-charter.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue/#t2','cq-registration');
+To see how HM Land Registry treats your personal information, read our Personal information charter: www.gov.uk/government/organisations/land-registry/about/personal-information-charter.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue/#t2','cq-1881-name,cq-registration');
 INSERT INTO qa_fts VALUES ('qa-2b0a6bd71225','*Unresolved Ownership Claims:* In 1982, there was an active, adjourned ownership dispute (from 1974) that I believe should have been disclosed to the Land Registry before a clean title was granted to BP Properties Ltd.
 
 I am copying in the relevant heritage and oversight bodies (Cadw, GGAT, and the Ombudsman) not as an act of hostility, but to ensure that all parties holding pieces of this historical puzzle are aware that an investigation into the *integrity of the 1982 registration* is now underway.
@@ -3854,7 +3927,7 @@ We check all mail and attachments for known viruses. However, you are advised th
 
 We welcome correspondence in English and Welsh.
 
-To see how HM Land Registry treats your personal information, read our Personal information charter: www.gov.uk/government/organisations/land-registry/about/personal-information-charter.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue/#t2','cq-1667,cq-1877,cq-registration,cq-judgment,cq-armour');
+To see how HM Land Registry treats your personal information, read our Personal information charter: www.gov.uk/government/organisations/land-registry/about/personal-information-charter.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue/#t2','cq-1667,cq-1877,cq-1881-name,cq-registration,cq-judgment,cq-armour');
 INSERT INTO qa_fts VALUES ('qa-036c3d02215e','*Archaeological Suppression:* In 1888, my family discovered a Roman soldier in full armor beneath the living room floorboards. This discovery provided "actual notice" of the site''s national significance a century before its demolition. We allege this notice was systematically suppressed by corporate and state actors to allow for commercial development.
 You''ll also see in landmark legal case BP Vs Buckler 1987 the judge says that she might have responded to BP, but to BP Pension Trust, but the claimant was BP Properties Ltd which were two separate companies. But in my dads appeal when he challenges that BP Pension Trust Ltd should have been the claimant the same judge dismissed his appeal citing both BP companies are effectively the same. This is clearly a case of heads BP won, Tails we lost.
 *Missing Evidence:* Critical title deeds and Bute Estate records from our families deal with Daniel Thomas, for title after quarrying completed, in exchange for our permission to quarry, also disappeared from the loft of our home and the Cardiff Library according to my families accounts, precisely when they were needed to support our ownership claim in the Court of Appeal. Regardless we should have still remained on grounds we''d been there since 1667, and failing that on grounds of adverse possession.
@@ -3900,7 +3973,7 @@ place on record a *chronological summary of unresolved land-governance
 issues* which may be material to the integrity of the planning history
 relied upon for that site.
 
-In brief and as reflected','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t2','cq-judgment');
+In brief and as reflected','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t2','cq-1881-name,cq-judgment');
 INSERT INTO qa_fts VALUES ('qa-5e10fa8bfde5','Sirs/Ma''am,
 
 I''m writing in relation to land formerly known as *Great House Farm,
@@ -3921,7 +3994,7 @@ I''m writing in relation to land formerly known as *Great House Farm, Llandough 
 
 I appreciate that the Local Planning Authority is not responsible for determining land ownership, nor am I asking it to do so. My purpose is to place on record a *chronological summary of unresolved land-governance issues* which may be material to the integrity of the planning history relied upon for that site.
 
-In brief and as reflected','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t2','cq-judgment');
+In brief and as reflected','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t2','cq-1881-name,cq-judgment');
 INSERT INTO qa_fts VALUES ('qa-6797dd05c3b0','Sirs/Ma''am,
 
 I''m writing in relation to land formerly known as *Great House Farm, Llandough (Vale of Glamorgan)*, subsequently developed for residential use and historically connected with the proceedings culminating in *BP v Buckler (Court of Appeal, 1987)*.
@@ -3935,7 +4008,7 @@ Rwy’n ysgrifennu atoch i dynnu eich sylw at yr hyn yr wyf yn ei ystyried yn an
 
 Mae’r mater hwn yn codi cwestiynau difrifol ynghylch hawliau tir, gweithdrefnau cyfreithiol, cofrestru tir, a hawliau dynol yng Nghymru.
 
-Er enghraifft, mewn datganiad i’r wasg yn 1974, dywedodd fy nain yn gyhoedd','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t3','');
+Er enghraifft, mewn datganiad i’r wasg yn 1974, dywedodd fy nain yn gyhoedd','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t3','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-5d7bce3cde09','Aelodau Anrhydeddus y Senedd,
 
 Rwy’n ysgrifennu atoch i dynnu eich sylw at yr hyn yr wyf yn ei ystyried yn anghyfiawnder hanesyddol difrifol, yn ymwneud â’m teulu, y Bucklers, a dinistr Great House Farm yn Llandough — safle fferm a chartref o dros 800 mlynedd o hanes, gan gynnwys cysylltiadau mynachaidd a chysylltiad uniongyrchol â Guglielmo Marconi yn ystod datblygiad cynnar radio.
@@ -3993,7 +4066,7 @@ Llywodraeth Cymru / Welsh Government
 Cadw, Rhydycar Business Park | Parc Business Rhydycar, Merthyr Tydfil | Merthyr Tudful CF48 1UZ
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
-Join Cadw<https://www.cadwmembership.service.gov.wales/>','redirected','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t2','cq-armour,cq-1974');
+Join Cadw<https://www.cadwmembership.service.gov.wales/>','redirected','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t2','cq-1881-name,cq-armour,cq-1974');
 INSERT INTO qa_fts VALUES ('qa-2ab6b6c35f6c','*Archaeological Suppression:* In 1888, my family discovered a Roman soldier in full armor beneath the living room floorboards. This discovery provided "actual notice" of the site''s national significance a century before its demolition. We allege this notice was systematically suppressed by corporate and state actors to allow for commercial development. 2.
 
    *Fraudulent Misrepresentation in Planning:* During the 1987 planning process, the 13th-century fortified manor was described by developers as a "dilapidated utility building" or "ruined barn" to secure a demolition permit that would have otherwise been denied under heritage protection laws. 3.
@@ -4068,7 +4141,7 @@ This Notice is issued in pursuit of narrative j','','HM Land Registry');
 INSERT INTO qa VALUES ('qa-66d4d579c0ec','hmlr','HM Land Registry','hm-land-registry-email-correspondence-catalogue-part-2#t1','2026-05-09','Sir/Madam,
 I am writing on behalf of myself and siblings who are the heirs and successors of Mary Williams of the Williams family, rightful owners and occupiers of Great House Farm, Llandough since 1667 until our dispossession via armed force in 1988.
 I write to summarize our position regarding our historical and ongoing dispossession of Great House Farm, which I alledge involves;
-- Denial of right to be heard by the land registry due to the fact my grandmother Mr Williams (falsy named Mrs Buckler to diminish the Williams ancestral superior land claim) conveniently died and our family were in ','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-2/#t1','cq-1667,cq-1974');
+- Denial of right to be heard by the land registry due to the fact my grandmother Mr Williams (falsy named Mrs Buckler to diminish the Williams ancestral superior land claim) conveniently died and our family were in ','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-2/#t1','cq-1667,cq-1881-name,cq-1974');
 INSERT INTO qa_fts VALUES ('qa-66d4d579c0ec','Sir/Madam,
 I am writing on behalf of myself and siblings who are the heirs and successors of Mary Williams of the Williams family, rightful owners and occupiers of Great House Farm, Llandough since 1667 until our dispossession via armed force in 1988.
 I write to summarize our position regarding our historical and ongoing dispossession of Great House Farm, which I alledge involves;
@@ -4674,7 +4747,7 @@ HM Land Registry keeps a computerised ''index map'' based on the Ordnance Survey
 
 Applying for an Index Map Search
 You apply for an official search of the index map using form SIM<https://www.gov.uk/government/publications/index-map-application-for-an-official-search-sim>.
-This will need to be printe','refused','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-2/#t3','cq-registration');
+This will need to be printe','refused','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-2/#t3','cq-1881-name,cq-registration');
 INSERT INTO qa_fts VALUES ('qa-39f44b0b852d','Sir/Madam,
 
 I understand you may already be busy, so please don''t feel overwhelmed by this FOI request—I''m conducting my own diligence and happy for you to take the full statutory 20 working days to respond.
@@ -4753,7 +4826,7 @@ This states:
 
 “5(1) The listed GDPR provisions do not apply to personal data consisting of information that the controller is obliged by an enactment to make available to the public, to the extent that the application of those provisions would prevent the controller from complying with that obligation.”
 
-Please see the section below titled ''Register information and your data protecti','auto','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-2/#t3','');
+Please see the section below titled ''Register information and your data protecti','auto','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-2/#t3','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-d6ac003280b3','Hi,
 
 Thanks for your reply.
@@ -4881,7 +4954,7 @@ Information Rights Team
 Data Group
 Data and Register Integrity Group
 Email: foi@landregistry.gov.uk<mailto:foi@landregistry.gov.uk> / dataprotection@landregistry.gov.uk<mailto:dataprotection@landregistry.gov.uk>
-GOV.UK<https://www.gov.uk/government/organisations/land-registry> | @HMLandRegistry<https://twitter.com/HMLandRegistry> | LinkedIn<http://www.linkedin.com/company/land-registry> | Facebook<http://www.facebook.com/pages/Land-Registry/343223435769541>','reply','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-2/#t3','');
+GOV.UK<https://www.gov.uk/government/organisations/land-registry> | @HMLandRegistry<https://twitter.com/HMLandRegistry> | LinkedIn<http://www.linkedin.com/company/land-registry> | Facebook<http://www.facebook.com/pages/Land-Registry/343223435769541>','reply','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-2/#t3','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-8ab7ba337a6b','Reply received: RE: Subject: Freedom of Information Request - Ty Mawr (Great House), Llandough, near Penarth (1938-1987) F260213','Dear Sion Buckler
 
 Thank you for your email, however the information you have provided does not assist us in locating the title number.
@@ -4930,7 +5003,7 @@ Registry from 1 January 1938 to 31 December 1987 relating to:Ty Mawr (Great
 House), Llandough, near Penarth, South Glamorgan (also known as Great House
 Farm).
 
-Land registra','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t3','');
+Land registra','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t3','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-cf3665c7d372','Sir/Madam,
 
 I understand you may already be busy, so please don''t feel overwhelmed by
@@ -4991,7 +5064,7 @@ Do you need to speak to the police but don''t require an emergency response? You
 
 Cymorth Iaith Gymraeg\Welsh Language Support
 
-Mae Heddlu De Cymru yn croesawu derbyn gohebiaeth yn Gymraeg a Saesneg.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue/#t1','cq-1667,cq-1974');
+Mae Heddlu De Cymru yn croesawu derbyn gohebiaeth yn Gymraeg a Saesneg.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue/#t1','cq-1667,cq-1881-name,cq-1974');
 INSERT INTO qa_fts VALUES ('qa-c7f23d49787e','Sir/Madam,
 I am writing on behalf of myself and siblings who are the heirs and
 successors of Mary Williams of the Williams family, rightful owners and
@@ -5171,7 +5244,7 @@ De Cymru yn Gwrando
 Os hoffech ddiolch am wasanaeth dda, gall','South Wales Police');
 INSERT INTO qa VALUES ('qa-1c9f86b0542e','cadw','Cadw / Welsh Government','welsh-government-and-cadw-email-correspondence-catalogue-part-3#t4','2026-05-09','Sir/Madam,
 I am writing on behalf of myself and siblings who are the heirs and successors of Mary Williams of the Williams family, rightful owners and occupiers of Great House Farm, Llandough since 1667 until our dispossession via armed force in 1988. I write to summarize our position regarding our historical and ongoing dispossession of Great House Farm, which I alledge involves;
-- Denial of right to be heard by the land registry due to the fact my grandmother Mr Williams (falsy named Mrs Buckler to diminish the Williams ancestral superior land claim) conveniently died and our family were in ','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t4','cq-1667,cq-1974');
+- Denial of right to be heard by the land registry due to the fact my grandmother Mr Williams (falsy named Mrs Buckler to diminish the Williams ancestral superior land claim) conveniently died and our family were in ','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t4','cq-1667,cq-1881-name,cq-1974');
 INSERT INTO qa_fts VALUES ('qa-1c9f86b0542e','Sir/Madam,
 I am writing on behalf of myself and siblings who are the heirs and successors of Mary Williams of the Williams family, rightful owners and occupiers of Great House Farm, Llandough since 1667 until our dispossession via armed force in 1988. I write to summarize our position regarding our historical and ongoing dispossession of Great House Farm, which I alledge involves;
 - Denial of right to be heard by the land registry due to the fact my grandmother Mr Williams (falsy named Mrs Buckler to diminish the Williams ancestral superior land claim) conveniently died and our family were in ','','Cadw / Welsh Government');
@@ -5206,7 +5279,7 @@ Historic Ordnance Survey Maps<https://maps.nls.uk/geo/find/#zoom=5.0&lat=56.0000
 
 The following research guide may too also be of interest - Land ownership records and deeds: an overview - The National Archives<https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/land-ownership-records-and-deeds-an-overview/>.
 
-And finally for your records, you may wish to note this record about Great House Farm, held by the Royal Commission (Details | 20182 | Sites | Coflein<https://coflein.gov.uk/en/sites/20182>), this Historic Environment Record (GGAT02038s<https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s&dbname=ggat&tbname=core&sessid=CHI4idg6jee&queryid','partial','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t3','');
+And finally for your records, you may wish to note this record about Great House Farm, held by the Royal Commission (Details | 20182 | Sites | Coflein<https://coflein.gov.uk/en/sites/20182>), this Historic Environment Record (GGAT02038s<https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s&dbname=ggat&tbname=core&sessid=CHI4idg6jee&queryid','partial','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t3','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-bc796863b466','Clarification as to whether any formal heritage review or investigation into the demolition process was ever completed.
 Consideration of whether this matter warrants renewed historical or heritage examination.
 
@@ -5250,7 +5323,7 @@ Os yw eich ymholiad ar frys, ffoniwch 0300 025 6000.
 Thank you for your enquiry.
 Please note that this mailbox is not monitored over the weekends or bank holidays.
 If your enquiry is urgent, please call 0300 025 6000.
-Sganiwyd y neges hon am bob feirws hysbys wrth iddi adael Llywodraeth Cymru. Mae Llywodraeth Cymru yn cymryd o ddifrif yr angen i ddiogelu eich data. Os cysylltwch ? Llywodraeth Cymru, mae ein hysbysiad preifatrwydd<"https://gov.wales/about/welsh-government-privacy-notice/?lang=cy"> yn esbonio sut rydym yn defnyddio eich gwybodaeth a sut rydym yn diogelu eich preifatrwydd. Rydym yn croesawu gohebiaeth yn Gymraeg. Byddwn yn anfon ateb yn Gymraeg i ohebiaeth a dderbynnir yn Gymraeg ac ni fydd gohebu yn Gymraeg yn arwain at oedi. ----------------- On leaving the Welsh Government this email was scanned for all known viruses. The Welsh Government takes the protection of your data seriously. If you contact the Welsh Government then our Privacy Notice<https://gov.wales/about/welsh-government-privacy-notice/?lang=en> explains how we use your information and the ways in which we protect your privacy. We welcome receiving correspondence in Welsh. Any correspondence received in Welsh will be answered in Welsh and corresponding in Welsh will not lead to a delay in responding.','auto','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t3','');
+Sganiwyd y neges hon am bob feirws hysbys wrth iddi adael Llywodraeth Cymru. Mae Llywodraeth Cymru yn cymryd o ddifrif yr angen i ddiogelu eich data. Os cysylltwch ? Llywodraeth Cymru, mae ein hysbysiad preifatrwydd<"https://gov.wales/about/welsh-government-privacy-notice/?lang=cy"> yn esbonio sut rydym yn defnyddio eich gwybodaeth a sut rydym yn diogelu eich preifatrwydd. Rydym yn croesawu gohebiaeth yn Gymraeg. Byddwn yn anfon ateb yn Gymraeg i ohebiaeth a dderbynnir yn Gymraeg ac ni fydd gohebu yn Gymraeg yn arwain at oedi. ----------------- On leaving the Welsh Government this email was scanned for all known viruses. The Welsh Government takes the protection of your data seriously. If you contact the Welsh Government then our Privacy Notice<https://gov.wales/about/welsh-government-privacy-notice/?lang=en> explains how we use your information and the ways in which we protect your privacy. We welcome receiving correspondence in Welsh. Any correspondence received in Welsh will be answered in Welsh and corresponding in Welsh will not lead to a delay in responding.','auto','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t3','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-44a810251f4a','Reply received: Automatic reply: BP vs Buckler, Great House Farm, Llandough','Diolch am eich ymholiad.
 Nid yw''r blwchpost yma''n cael ei fonitro dros y penwythnos a gwyliau banc.
 Os yw eich ymholiad ar frys, ffoniwch 0300 025 6000.
@@ -5348,7 +5421,7 @@ Find us on Facebook / Cewch ddod o hyd i ni ar Facebook
 
 Follow us on Twitter /Dilynwch ni ar Twitter
 
-Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t4','');
+Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t4','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-586e38dfdd35','Any documents discussing:
 
 • estate ownership
@@ -5497,7 +5570,7 @@ Ewch i''n gwefan yn www.bromorgannwg.gov.uk
 Find us on Facebook / Cewch ddod o hyd i ni ar Facebook
 Follow us on Twitter / Dilynwch ni ar Twitter
 
-Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','provided','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t4','');
+Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','provided','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t4','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-0e882e314064','Under EIR Regulation 8, fees cannot act as an unreasonable barrier or
    deterrent to access. Because my family was historically displaced from this
    site and I am executing this request remotely, forcing physical attendance
@@ -5608,7 +5681,7 @@ Ewch i''n gwefan yn www.bromorgannwg.gov.uk
 Find us on Facebook / Cewch ddod o hyd i ni ar Facebook
 Follow us on Twitter / Dilynwch ni ar Twitter
 
-Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t4','');
+Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t4','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-68d7ec7589b8','FOI Unit / Evelyn Morgan / Information Governance Team,
 
 Thank you for your email dated 2 June 2026 and for the assistance provided
@@ -5681,7 +5754,7 @@ Find us on Facebook / Cewch ddod o hyd i ni ar Facebook
 
 Follow us on Twitter /Dilynwch ni ar Twitter
 
-Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','pending','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t4','');
+Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','pending','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t4','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-b638e895a9e0','Reply received: Clarification required - FOI/EIR request - Case Ref/ 00210772','Dear Sion Buckler
 
 We write further in relation to your request for information, referenced above.
@@ -5820,7 +5893,7 @@ Under data protection legislation, you have the right:
   * to (in certain circumstances) object to or restrict processing
   * for (in certain circumstances) your data to be ‘erased’
   * to (in certain circumstances) data portability
-  * to lodge a complaint with the Information Commissioner’','reply','item','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t4','cq-listing');
+  * to lodge a complaint with the Information Commissioner’','reply','item','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t4','cq-1881-name,cq-listing');
 INSERT INTO qa_fts VALUES ('qa-e4056db41d87','Any photographs, plans, surveys or architectural records held by Cadw or the Welsh Government relating to Great House Farm.
 
 For the avoidance of doubt, I am seeking recorded information rather than an explanation or opinion created for the purpose of this request.
@@ -5878,7 +5951,7 @@ Under data protection legislation, you have the right:
   * to (in certain circumstances) object to or restrict processing
   * for (in certain circumstances) your data to be ‘erased’
   * to (in certain circumstances) data portability
-  * to lodge a complaint with the Information Commissioner’','reply','item','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t4','cq-listing');
+  * to lodge a complaint with the Information Commissioner’','reply','item','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t4','cq-1881-name,cq-listing');
 INSERT INTO qa_fts VALUES ('qa-47019bbec9a9','Any photographs, plans, surveys or architectural records held by Cadw or the Welsh Government relating to Great House Farm.
 
 For the avoidance of doubt, I am seeking recorded information rather than an explanation or opinion created for the purpose of this request.
@@ -5984,7 +6057,7 @@ Mike Weatherhead
 Arweinydd Tîm Gwaith Achosion / Casework Team Leader
 Polisi a Gwarchod / Policy and Protection
 Arolygiaeth yr Amgylchedd Hanesyddol / Historic Environment Inspectorate
-Cadw','provided','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t4','cq-1877,cq-listing');
+Cadw','provided','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t4','cq-1877,cq-1881-name,cq-listing');
 INSERT INTO qa_fts VALUES ('qa-e6d145e2311f','Dear Cadw Team / Mr Michael Weatherhead / Listed Buildings Team,
 
 Thank you for your assistance to date with my enquiries regarding Great House Farm (Ty Mawr), Llandough, including the heritage assessment materials provided on 21 May 2026.
@@ -6006,7 +6079,7 @@ Cadw','Cadw / Welsh Government');
 INSERT INTO qa VALUES ('qa-40f5b24cbc3b','cadw','Cadw / Welsh Government','welsh-government-and-cadw-email-correspondence-catalogue#t4','2026-06-11','This recollection appears broadly consistent with the reasoning attributed to Cadw in contemporary press reports. I therefore request clarification of the following:
 
 Were searches undertaken for inspection notes, site notes, assessment reports, recommendations, listing files, briefing papers, internal memoranda, correspondence, and decision records relating to Great House Farm?
-Were accession records, transfer schedules, disposal schedules, or archive catalogues searched to determine whether such records once existed?','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t4','cq-listing');
+Were accession records, transfer schedules, disposal schedules, or archive catalogues searched to determine whether such records once existed?','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t4','cq-1881-name,cq-listing');
 INSERT INTO qa_fts VALUES ('qa-40f5b24cbc3b','This recollection appears broadly consistent with the reasoning attributed to Cadw in contemporary press reports. I therefore request clarification of the following:
 
 Were searches undertaken for inspection notes, site notes, assessment reports, recommendations, listing files, briefing papers, internal memoranda, correspondence, and decision records relating to Great House Farm?
@@ -6020,7 +6093,7 @@ WhatDoTheyKnow notified the family of a new response from the Ministry of Defenc
 5 August 2026 — https://www.whatdotheyknow.com/request/1988_dispossession_of_great_hous#incoming-3507980
 10 October 2026 — https://www.whatdotheyknow.com/request/1988_dispossession_of_great_hous#incoming-3588665
 
-Automated “Please update the status of your request” reminders were also received on 2 June, 9 June, 8 July, 15 July, 8 August, 15 August and 29 August 2026.','reply','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/ministry-of-defence-email-correspondence-catalogue/#t2','cq-demolition');
+Automated “Please update the status of your request” reminders were also received on 2 June, 9 June, 8 July, 15 July, 8 August, 15 August and 29 August 2026.','reply','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/ministry-of-defence-email-correspondence-catalogue/#t2','cq-1881-name,cq-demolition');
 INSERT INTO qa_fts VALUES ('qa-256974a94b26','Reply received: New response to your FOI request - 1988 Dispossession of Great House Farm, Llandough from the Williams/ Buckler Family','The FOI request FOI2026/09019 to the Ministry of Defence was made publicly on WhatDoTheyKnow, where the request, the Ministry''s responses and the family''s follow-ups are published in full: https://www.whatdotheyknow.com/request/1988_dispossession_of_great_hous
 
 WhatDoTheyKnow notified the family of a new response from the Ministry of Defence on these dates:
@@ -6068,7 +6141,7 @@ Planning Approvals and Local Authority Governance
 
    - All minutes, planning commi','2026-05-29','My next working day is Wednesday, 10th June 2026.
 
-Diolch.','auto','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t3','');
+Diolch.','auto','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t3','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-2d17d7d0d764','Under EIR Regulation 8, fees cannot act as an unreasonable barrier or
    deterrent to access. Because my family was historically displaced from this
    site and I am executing this request remotely, forcing physical attendance
@@ -6172,7 +6245,7 @@ South Wales Police welcomes receiving correspondence in Welsh and English. Any c
 
 Ymwadiad Heddlu De Cymru\South Wales Police Disclaimer
 
-Gallai defnyddio neu ddatgelu’r neges e-bost hon heb awdurdod fod yn anghyfreithlon. Gallwch weld ein datganiad cyfrinachedd yn:','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue/#t2','');
+Gallai defnyddio neu ddatgelu’r neges e-bost hon heb awdurdod fod yn anghyfreithlon. Gallwch weld ein datganiad cyfrinachedd yn:','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue/#t2','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-ff816ac58845','Under EIR Regulation 8, fees cannot act as an unreasonable barrier or
    deterrent to access. Because my family was historically displaced from this
    site and I am executing this request remotely, forcing physical attendance
@@ -6257,7 +6330,7 @@ Thank you for contacting South Wales Police.
 We no longer take reports from the public, partner agencies and other police forces via email.
 Please use one of the following methods:
 1. In case of an emergency, please call 999 immediately.
-2. For all non-emergency situations, use our handy online reporting t','reply','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue/#t2','');
+2. For all non-emergency situations, use our handy online reporting t','reply','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue/#t2','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-a84489422986','Reply received: Automatic reply: FORMAL DISCLOSURE NOTICE & LITIGATION HOLD: Historic Significance, Planning Approvals, and Displaced Family Tenancy Records for Great House Farm, Llandough (FOIA/EIR Request)','Diolch am gysylltu â Heddlu De Cymru.
 Nid ydym yn cymryd adroddiadau gan y cyhoedd, asiantaethau partner na heddluoedd eraill drwy e-bost mwyach.
 Defnyddiwch un o''r dulliau canlynol:
@@ -6727,7 +6800,7 @@ Yours faithfully,
 
 Sion Buckler
 
-https://bpvsbuckler.datro.xyz','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t5','cq-listing');
+https://bpvsbuckler.datro.xyz','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t5','cq-1881-name,cq-listing');
 INSERT INTO qa_fts VALUES ('qa-1a2a14debe98','Planning applications, permissions, refusals, conditions, appeals, and related correspondence concerning the demolition of Great House Farm and subsequent residential development. 2.
 
    Any archaeological assessments, surveys, reports, briefs, watching briefs, excavation reports, or heritage impact assessments relating to the site. 3.
@@ -6778,7 +6851,7 @@ Yours faithfully,
 
 Sion Buckler
 
-https://bpvsbuckler.datro.xyz','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t5','cq-listing');
+https://bpvsbuckler.datro.xyz','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t5','cq-1881-name,cq-listing');
 INSERT INTO qa_fts VALUES ('qa-e629b8c6a6d5','Any correspondence between the Council, Cadw, BP Properties, BP,
 developers, archaeologists, the Royal Commission, or other public bodies
 concerning:
@@ -6823,7 +6896,7 @@ Yours faithfully,
 
 Sion Buckler
 
-https://bpvsbuckler.datro.xyz','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t4','cq-listing');
+https://bpvsbuckler.datro.xyz','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t4','cq-1881-name,cq-listing');
 INSERT INTO qa_fts VALUES ('qa-a2e1c323ea7a','Any correspondence between the Council, Cadw, BP Properties, BP, developers, archaeologists, the Royal Commission, or other public bodies concerning:
 - Great House Farm;
 - its historic significance;
@@ -7054,7 +7127,7 @@ records identified, or
 Explain the basis on which the original “no records” response stands in
 light of the contemporaneous video evidence.
 
-A response within 5 ','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-2/#t3','cq-demolition');
+A response within 5 ','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-2/#t3','cq-1881-name,cq-demolition');
 INSERT INTO qa_fts VALUES ('qa-ad0d92b23d27','FOI Team,
 On 16 July 2026 you issued a response to my FOI request 719/26 stating that
 no records were held.
@@ -7188,7 +7261,7 @@ Do you need to speak to the police but don’t require an emergency response? Yo
 
 Cymorth Iaith Gymraeg\Welsh Language Support
 
-Mae Heddlu De Cymru yn croesawu derbyn gohebiaeth yn Gymraeg a Saesneg. Byddwn yn ateb gohebiaeth a dderbynnir yn Gymraeg yn Gymraeg ac ni fydd go','reply','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-2/#t3','cq-demolition');
+Mae Heddlu De Cymru yn croesawu derbyn gohebiaeth yn Gymraeg a Saesneg. Byddwn yn ateb gohebiaeth a dderbynnir yn Gymraeg yn Gymraeg ac ni fydd go','reply','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-2/#t3','cq-1881-name,cq-demolition');
 INSERT INTO qa_fts VALUES ('qa-88a6e9dde613','Reply received: Automatic reply: Follow-up – FOI Request 719/26 (Great House Farm / 1988 Dispossession)','Diolch am gysylltu â''r Tîm Rhyddid Gwybodaeth yn Heddlu De Cymru. Dyma neges i gadarnhau ein bod wedi cael eich gohebiaeth. Peidiwch ag ymateb i''r neges e-bost hon.
 
 Rydym yn delio â nifer mawr o geisiadau ar hyn o bryd, yn ogystal ag ôl-groniad. Er ein bod yn gwneud pob ymdrech i ymateb i geisiadau o fewn y terfyn amser o 20 diwrnod gwaith, gall fod oedi wrth ddelio â rhai o''r ceisiadau o ganlyniad i hyn.
@@ -7294,7 +7367,7 @@ Find us on Facebook / Cewch ddod o hyd i ni ar Facebook
 Follow us on Instagram / Dilynwch ni ar Instagram
 Follow us on LinkedIn / Dilynwch ni ar LinkedIn
 
-Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','provided','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t6','');
+Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','provided','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t6','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-889b85fc8ec0','Reply received: Great House Farm, Williams/ Buckler Family, Llandough, Vale of Glamorgan','Dear Sion Buckler,
 
 Thank you for your emails, requesting information on the above mentioned site. I can confirm, I have done a search on the site and the two applications that may be of relevance, for the information you are seeking are noted below. Please be advised that this information is available via our online planning register and maps
@@ -7329,7 +7402,7 @@ Just to let you know, I have had initial conversations internally which I will c
 
 Kind Regards
 
-Amy','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t5','cq-listing');
+Amy','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t5','cq-1881-name,cq-listing');
 INSERT INTO qa_fts VALUES ('qa-d538eb5ba867','Ms Longford,
 
 Thank you for the acknowledgement letter and for handling the internal review.
@@ -7410,7 +7483,7 @@ Many thanks for the email. This is a courtesy response to say that I will review
 
 Kind Regards
 
-Amy','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t5','');
+Amy','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t5','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-ffd5f51bfee7','Please therefore identify the documentary basis upon which the original response concluded that the property was assessed and found not to meet the listing criteria.
 
 Specifically:
@@ -7541,7 +7614,7 @@ Llywodraeth Cymru / Welsh Government
 Ffôn / Tel: 07751 715011
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
-Join Cadw<https://www.cadwmembership.service.gov.wales/>','partial','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t5','cq-listing');
+Join Cadw<https://www.cadwmembership.service.gov.wales/>','partial','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t5','cq-1881-name,cq-water,cq-listing');
 INSERT INTO qa_fts VALUES ('qa-8d31745a9de0','Dear Ms Longford,
 
 Thank you for your response and for the time taken to clarify Cadw''s current position regarding ATISN 27021. I note your confirmation that:
@@ -7633,7 +7706,7 @@ Llywodraeth Cymru / Welsh Government
 Ffôn / Tel: 07751 715011
 
 Ymunwch â Cadw<https://www.aelodaethcadw.gwasanaeth.llyw.cymru/>
-Join Cadw<https://www.cadwmembership.service.gov.wales/>','partial','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t5','');
+Join Cadw<https://www.cadwmembership.service.gov.wales/>','partial','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t5','cq-1881-name,cq-water');
 INSERT INTO qa_fts VALUES ('qa-07b00e5b9daa','"It is possible that the file was destroyed before it was ever updated on our electronic filing system."
 
 These appear to be materially different positions.
@@ -7698,7 +7771,7 @@ INSERT INTO qa VALUES ('qa-a8e2300f9ce2','cadw','Cadw / Welsh Government','welsh
 Although you have confirmed wider searches were undertaken, no such records have been identified. Could you therefore confirm whether the Welsh Government''s position is that it holds no surviving correspondence, memoranda, consultation records or other documents relating to any such consultations concerning Great House Farm?
 4.
 
-   Is the Welsh Government''s position therefore that, apart from the two photographs dated 29 July 1988, no inspection report, recommendation, consultation correspondence, assessment, case file or associated documentation relating to the 1988 consideration of Great House Farm survives?','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t5','');
+   Is the Welsh Government''s position therefore that, apart from the two photographs dated 29 July 1988, no inspection report, recommendation, consultation correspondence, assessment, case file or associated documentation relating to the 1988 consideration of Great House Farm survives?','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue/#t5','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-a8e2300f9ce2','However, there remain a small number of points on which I would be grateful for clarification.
 
    1.
@@ -7768,7 +7841,7 @@ We note that your request was addressed to Cardiff Council, with Amgueddfa Cymru
 Cofion cynnes,
 
 FOI Team
-Amgueddfa Cymru','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t1','');
+Amgueddfa Cymru','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t1','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-208b2cecda49','Freedom of Information Act 2000 Request
 
 Sir/Madam,
@@ -7819,7 +7892,7 @@ Under section 1(1)(a) of the Freedom of Information Act 2000, our response is th
 Cofion cynnes,
 
 FOI Team
-Amgueddfa Cymru','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t1','');
+Amgueddfa Cymru','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t1','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-45ee872c718b','Yes please.
 
 I am trying to gather all information.
@@ -7883,7 +7956,7 @@ These enquiries identified some information relating generally to Great House Fa
 We are also not aware of any relevant collection records relating to such material having been transferred to another institution or destroyed.
 
 Accordingly, having completed these additional enquiries, Amgueddfa Cymru remains satisfied that it does not hold recorded information within the scope of your request and our response under section 1(1)(a) of the Freedom of Information Act 2000 remains unchanged.
-In relation to your request for advice and assistance, Cardi','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t1','');
+In relation to your request for advice and assistance, Cardi','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t1','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-bf7940874f15','Dear FOI Team,
 
 Thank you for your response.
@@ -7922,7 +7995,7 @@ Your response states that the additional enquiries identified "some information 
 Please could you identify what categories of information this refers to and, where it is not exempt, provide the relevant recorded information or explain where it can be accessed?
 
 This appears potentially relevant to the original request even if it does not itself identify furniture or household objects.','2026-09-08','Information identified concerning Great House Farm
-During the additional enquiries, a small number of records referring generally to Great House Farm, Llandough were identified. These records do not relate to furniture, furnishings, antiques, fixtures, heirlooms or other movable property originating from Great House Farm and do not fall within categories 1 to 9 of your original request. The reviewer is therefore satisfied that they fall outside the scope of the request.','reply','item','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t1','');
+During the additional enquiries, a small number of records referring generally to Great House Farm, Llandough were identified. These records do not relate to furniture, furnishings, antiques, fixtures, heirlooms or other movable property originating from Great House Farm and do not fall within categories 1 to 9 of your original request. The reviewer is therefore satisfied that they fall outside the scope of the request.','reply','item','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t1','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-a7c6764f4d22','Information identified concerning Great House Farm
 
 Your response states that the additional enquiries identified "some information relating generally to Great House Farm and the surrounding area".
@@ -7953,7 +8026,7 @@ Please could the internal review establish whether searches were made of:
 - any relevant institutional or external correspondence indexes.','2026-09-08','Records concerning external institutions
 We note that your request sought records concerning communications with Cardiff Council, Cardiff Castle, the Bute Estate and other bodies regarding objects originating from Great House Farm. Searches were not limited solely to object catalogue records. Relevant collection documentation and associated records were also considered.
 
-No records were identified concerning furniture, furnishings, antiques, fixtures, heirlooms, or other movable property originating from Great House Farm, including correspondence with the organisations referred to in your request.','not-held','item','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t1','');
+No records were identified concerning furniture, furnishings, antiques, fixtures, heirlooms, or other movable property originating from Great House Farm, including correspondence with the organisations referred to in your request.','not-held','item','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t1','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-39c55715863a','Correspondence and administrative records
 
 My original request expressly sought correspondence concerning the identification, recovery, ownership or location of objects, as well as correspondence with the Bute Estate, Cardiff Council, Cardiff Castle and other public authorities.
@@ -8045,7 +8118,7 @@ FOI Team
 foi.requests @museumwales.ac.uk
 amgueddfa.cymru | museum.wales
 
-Rhif elusen | Charity number 525774','not-held','item','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t1','cq-armour');
+Rhif elusen | Charity number 525774','not-held','item','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t1','cq-1881-name,cq-armour');
 INSERT INTO qa_fts VALUES ('qa-2ea2b0b03cda','Advice and assistance
 
 You have stated that Cardiff Council and Cardiff Castle "would appear to be the organisations most likely to hold records relating to furniture, furnishings or other movable property associated with Great House Farm".
@@ -8126,7 +8199,7 @@ We are satisfied that archived electronic records reasonably capable of containi
 3. Correspondence and administrative records
 The review considered whether correspondence or administrative records relating to the requested items were held.
 
-The Museum''s collec','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t1','cq-mary-death');
+The Museum''s collec','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t1','cq-1881-name,cq-mary-death');
 INSERT INTO qa_fts VALUES ('qa-fbc0b07e7857','Scope of the archived electronic search
 
 You state that the Information Technology team reviewed "archived electronic systems and records retained by the Museum".
@@ -8515,7 +8588,7 @@ Ewch i''n gwefan yn www.bromorgannwg.gov.uk
 Find us on Facebook / Cewch ddod o hyd i ni ar Facebook
 Follow us on Twitter / Dilynwch ni ar Twitter
 
-Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t7','cq-demolition');
+Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t7','cq-1881-name,cq-demolition');
 INSERT INTO qa_fts VALUES ('qa-1e724901fbd0','Whether the Council (as local planning authority) considered issuing a
 Building Preservation Notice under section 58 of the Town and Country
 Planning Act 1971 (or any equivalent provision) in respect of Great House
@@ -8601,7 +8674,7 @@ Ewch i''n gwefan yn www.bromorgannwg.gov.uk
 Find us on Facebook / Cewch ddod o hyd i ni ar Facebook
 Follow us on Twitter / Dilynwch ni ar Twitter
 
-Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t7','');
+Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t7','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-e1b23809eb4e','Information Governance Team,
 
 I refer again to the internal review of Case Ref 00210772 (Great House Farm
@@ -8678,7 +8751,7 @@ Ewch i''n gwefan yn www.bromorgannwg.gov.uk
 Find us on Facebook / Cewch ddod o hyd i ni ar Facebook
 Follow us on Twitter / Dilynwch ni ar Twitter
 
-Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t7','');
+Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t7','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-a75905c4d07f','Information Governance Team,
 
 I refer again to the internal review of Case Ref 00210772 (Great House Farm
@@ -8806,7 +8879,7 @@ In line with your clarification that was received on the 7th June, searches have
 We have been advised that the links to the planning records relating to the redevelopment of the site during the 1980s-1990s have previously been provided by colleagues in the Planning department. These records, including associated documentation, are publicly available via the Council''s Planning Register and can be accessed using the relevant application reference numbers at View or Comment on a Planning Application.
 This information is therefore excepted under Regulation 6(1)(b) of the Environmental Information Regulations 2004 - information already publicly available and easily accessible by other means.
 
-Whilst planning files may contain some archaeological information, it is also noted that archaeological records for the Vale of Glamorgan are maintained by Heneb (formerly Glamorgan-Gwent Archaeological Trust). We suggest that you contact Heneb directly to access relevant records. Details on how to contact them c','not-held','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t7','cq-registration');
+Whilst planning files may contain some archaeological information, it is also noted that archaeological records for the Vale of Glamorgan are maintained by Heneb (formerly Glamorgan-Gwent Archaeological Trust). We suggest that you contact Heneb directly to access relevant records. Details on how to contact them c','not-held','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t7','cq-1881-name,cq-registration');
 INSERT INTO qa_fts VALUES ('qa-e5b9544ecf27','Reply received: EIR request - Case Ref/ 00210772','Dear Mr Buckler
 
 Thank you for your request for information about Great House Farm, Williams/Buckler Family, Llandough, Vale of Glamorgan and the further clarification that was received on the 7th June. Your request has been processed under the Environmental Information Regulations 2004.
@@ -9546,7 +9619,7 @@ We plan to remove all reference to individual HM Land Registry email addresses. 
 
 Working with our Customers:
 
-We want to ensure that correspondence goes direct to our customer service team. To do this, we now ask customers to use our online contact form. This is why we put an auto-response in place.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-3/#t1','cq-registration');
+We want to ensure that correspondence goes direct to our customer service team. To do this, we now ask customers to use our online contact form. This is why we put an auto-response in place.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-3/#t1','cq-1881-name,cq-registration');
 INSERT INTO qa_fts VALUES ('qa-6da8d9b22b1d','The 1971 Abstract of Title
 
 You previously confirmed that a *1971 Abstract of Title* was seen in connection with this matter.
@@ -9669,7 +9742,7 @@ We check all mail and attachments for known viruses. However, you are advised th
 
 We welcome correspondence in English and Welsh.
 
-To see how HM Land Registry treats your personal information, read our Personal information charter: www.gov.uk/government/organisations/land-registry/about/personal-information-charter.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-3/#t1','cq-registration');
+To see how HM Land Registry treats your personal information, read our Personal information charter: www.gov.uk/government/organisations/land-registry/about/personal-information-charter.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-3/#t1','cq-1881-name,cq-registration');
 INSERT INTO qa_fts VALUES ('qa-ed4cf4e57a3d','“No question or doubt” certificate
 Earlier correspondence referred to a certificate that the applicant’s solicitors were “not aware of any question or doubt affecting the title.” Confirm whether that wording appears in Form 1E dated 30 November 1982 (WA231076 item 13), in another surviving document (identify it), or is no longer held.
 Marriage certificate relied on by Mr Gill
@@ -10480,7 +10553,7 @@ If we require any clarification in order to process your request, we will contac
 Cofion cynnes,
 
 FOI Team
-Amgueddfa Cymru','pending','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t2','cq-armour');
+Amgueddfa Cymru','pending','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t2','cq-1881-name,cq-armour');
 INSERT INTO qa_fts VALUES ('qa-5390d7cbae37','Dear Freedom of Information Team,
 
 I am writing to request information under the Freedom of Information Act 2000 and, where applicable, the Environmental Information Regulations 2004.
@@ -10545,7 +10618,7 @@ The internal review and the new request will be considered separately and may re
 Cofion cynnes,
 
 FOI Team
-Amgueddfa Cymru','redirected','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t2','cq-armour');
+Amgueddfa Cymru','redirected','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t2','cq-1881-name,cq-armour');
 INSERT INTO qa_fts VALUES ('qa-d16380f4a7ee','The basis upon which Amgueddfa Cymru concluded that each record was unrelated to the nineteenth-century discovery described in my request.
 
 I am not asking the Museum to create new archaeological opinions or undertake speculative research. I am asking for recorded information which has already been identified during the searches and which directly concerns archaeological discoveries at the specific site named in my request.
@@ -10608,7 +10681,7 @@ If you are dissatisfied with this response, you may request an internal review b
 Cofion cynnes,
 
 FOI Team
-Amgueddfa Cymru','not-held','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t2','cq-armour');
+Amgueddfa Cymru','not-held','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t2','cq-1881-name,cq-armour');
 INSERT INTO qa_fts VALUES ('qa-40eefa782f35','Reply received: FOI - 2026-024 - Great House Farm, Llandough','Dear Mr Buckler,
 
 Thank you for your request for information received on 27 July 2026 concerning records relating to a reported discovery at Great House Farm (Ty Mawr), Llandough, including a soldier, horse remains and items described as a visor and lance.
@@ -10637,7 +10710,7 @@ Having reviewed the original request, the searches conducted and the response pr
 
 In your request for review, you suggest that additional searches should have been undertaken using a wider range of terms and concepts, including references to Roman burials, military burials, cavalry burials, human remains, horse remains and other archaeological terminology. I have carefully considered this point. However, when assessing whether information is held for the purposes of the Freedom of Information Act 2000, the relevant issue is not whether every conceivable search term has been used, but whether the authority has undertaken searches that are reasonable and proportionate in the circumstances and reasonably likely to identify relevant information if held.
 
-Your request concerned a specific reported discovery at a named location. Accordingly, the location identified in the request was used as the primary search criterion. Searches were undertaken across Amgueddfa Cymru''s information holdings where records relating to acquisitions, accessions, archaeological finds, provenance information and associated correspondence would reasonably be expected to be held. This included colle','partial','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t2','cq-armour');
+Your request concerned a specific reported discovery at a named location. Accordingly, the location identified in the request was used as the primary search criterion. Searches were undertaken across Amgueddfa Cymru''s information holdings where records relating to acquisitions, accessions, archaeological finds, provenance information and associated correspondence would reasonably be expected to be held. This included colle','partial','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t2','cq-1881-name,cq-armour');
 INSERT INTO qa_fts VALUES ('qa-bf8bfecfc981','Reply received: FOI Internal Review - 2026-024 - Great House Farm, Llandough','Dear Mr Buckler
 
 Thank you for your request for an internal review of Amgueddfa Cymru''s response to your Freedom of Information request concerning a reported archaeological discovery at Great House Farm, Llandough.
@@ -10738,7 +10811,7 @@ The assessment I undertook was limited to considering whether the information pr
 In reaching my view, I considered the information provided within your complaint, including the chronology you supplied regarding correspondence sent to Councillor Carroll between February and July 2026. The substance of the complaint was that you had not received substantive responses to a number of emails sent over that period.
 For completeness, I considered whether the conduct alleged could potentially engage any of the principal obligations contained within the Member''s Code of Conduct. These include requirements that members show respect and consideration for others, do not engage in bullying, harassment or discriminatory behaviour, do not bring their office or authority into disrepute, do not improperly use their position to confer an advantage or disadvantage on any person, and do not misuse Council resources or confidential information.
 Whilst I appreciate that the absence of a response to correspondence may be frustrating, the information provided did not disclose evidence of disrespectful behaviour, bullying, harassment, misuse of position, misuse of Council resources, disclosure of confidential information, conduct bringing the office of member or the authority into disrepute, or any other behaviour which appeared capable of amounting to a breach of the Code. In reaching that view, I considered the nature of the conduct alleged, namely a failure to respond to correspondence, and whether that conduct engaged any provision of the Code.
-It is important to note that the Member’s Code of Conduct does not impose a general obligation on elected members to respond to all correspondence received from members of the public, nor does it prescr','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-2/#t1','');
+It is important to note that the Member’s Code of Conduct does not impose a general obligation on elected members to respond to all correspondence received from members of the public, nor does it prescr','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-2/#t1','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-7b7a69c624c6','*Whether the complete correspondence chronology and the underlying
    emails and attachments were considered*, rather than merely my summary
    of them.
@@ -10830,7 +10903,7 @@ It was:
    and 13 July 2026;
    - the correspondence concerned, amongst other things, the historical
    planning and development of Great House Farm / Church View Close, access to
-  ','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-2/#t1','');
+  ','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-2/#t1','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-04fb97f724c4','The Code cannot be reduced to an obligation to answer emails
 
 I accept the proposition that the Members'' Code does not create a general
@@ -10886,7 +10959,7 @@ Having reviewed your complaint, I do not consider that it falls within the scope
 The Corporate Concerns and Complaints Policy is not intended to provide a mechanism for challenging or revisiting decisions where there is a separate statutory process or right of appeal; seeking changes to properly made decisions, policies or legislation; pursuing matters which are not the responsibility of the Council; promoting a particular cause or campaign; or addressing matters for which alternative legal or regulatory processes exist.
 You have also requested that the matter be considered by me as the Monitoring Officer as a potential breach of the Member’s Code of Conduct by Councillor Carroll.
 The role of the Monitoring Officer in this context is limited to considering whether there is evidence that a member has failed to comply with the statutory Members’s Code of Conduct. Having reviewed the information you have provided, I have not identified evidence which would indicate a breach of the Members Code of Conduct.
-Accordingly, the issues raised will not be progressed under the Council''s Corporate Concerns and Complaints Policy as they fall outside the scope','reply','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-2/#t1','');
+Accordingly, the issues raised will not be progressed under the Council''s Corporate Concerns and Complaints Policy as they fall outside the scope','reply','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-2/#t1','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-e09997aae89b','Reply received: RE: Complaint – Failure to Respond / Failure to Deal Properly with Case – Cllr George Carroll (Llandough) – Great House Farm / Church View Close','Dear Mr Buckler,
 Thank you for your email regarding Councillor George Carroll and for setting out the background to your concerns relating to Great House Farm (Ty Mawr), Llandough, now Church View Close.
 I acknowledge receipt of your correspondence and have carefully considered the matters you have raised.
@@ -10931,7 +11004,7 @@ If I do not receive a substantive response within 10 working days, I will compla
 Yours sincerely,
 
 Sion Buckler (Ret''d Sergeant)
-greathousefarmwiki.wordpress.com','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/ministry-of-defence-email-correspondence-catalogue/#t3','cq-demolition');
+greathousefarmwiki.wordpress.com','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/ministry-of-defence-email-correspondence-catalogue/#t3','cq-1881-name,cq-demolition');
 INSERT INTO qa_fts VALUES ('qa-65e91bacee9e','Confirm that my identification was received and accepted, and give me the SAR reference.
 Provide the response, or tell me the date it will be provided and the reason for the delay.
 
@@ -11165,7 +11238,7 @@ Thank you for your enquiry.
 Please note that this mailbox is not monitored over the weekends or bank holidays.
 If your enquiry is urgent, please call 0300 025 6000.
 
-Sganiwyd y neges hon am bob feirws hysbys wrth iddi adael Llywodraeth Cymru. Mae Llywodraeth Cymru yn cymryd o ddifrif yr angen i ddiogelu eich data. Os cysylltwch ? Llywodraeth Cymru, mae ein hysbysiad preifatrwydd<"https://gov.wales/about/welsh-government-privacy-notice/?lang=cy"> yn esbonio sut rydym yn defnyddio eich gwybodaeth a sut rydym yn diogelu eich preifatrwydd. Rydym yn croesawu gohebiaeth yn Gymraeg. Byddwn yn anfon ateb yn Gymraeg i ohebiaeth a dderbynnir yn Gymraeg ac ni fydd gohebu yn Gymraeg yn arwain at oedi. ----------------- On leaving the Welsh Government this email was scanned for all known viruses. The Welsh Government takes the protection of your data seriously. If you contact the Welsh Government then our Privacy Notice<https://gov.wales/about/welsh-government-privacy-notice/?lang=en> explains how we use your information and the ways in which we protect your privacy. We welcome receiving correspondence in Welsh. Any correspondence received in Welsh will be answered in Welsh and corresponding in Welsh will not lead to a delay in responding.','auto','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t1','cq-listing,cq-recording');
+Sganiwyd y neges hon am bob feirws hysbys wrth iddi adael Llywodraeth Cymru. Mae Llywodraeth Cymru yn cymryd o ddifrif yr angen i ddiogelu eich data. Os cysylltwch ? Llywodraeth Cymru, mae ein hysbysiad preifatrwydd<"https://gov.wales/about/welsh-government-privacy-notice/?lang=cy"> yn esbonio sut rydym yn defnyddio eich gwybodaeth a sut rydym yn diogelu eich preifatrwydd. Rydym yn croesawu gohebiaeth yn Gymraeg. Byddwn yn anfon ateb yn Gymraeg i ohebiaeth a dderbynnir yn Gymraeg ac ni fydd gohebu yn Gymraeg yn arwain at oedi. ----------------- On leaving the Welsh Government this email was scanned for all known viruses. The Welsh Government takes the protection of your data seriously. If you contact the Welsh Government then our Privacy Notice<https://gov.wales/about/welsh-government-privacy-notice/?lang=en> explains how we use your information and the ways in which we protect your privacy. We welcome receiving correspondence in Welsh. Any correspondence received in Welsh will be answered in Welsh and corresponding in Welsh will not lead to a delay in responding.','auto','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t1','cq-1881-name,cq-listing,cq-recording');
 INSERT INTO qa_fts VALUES ('qa-9d2d1b6f356d','Sirs/Ma''ams,
 
 I write on behalf of my household; the Williams / Buckler Family of what once was Great House in Llandough, Cardiff. I formally submit the attached forensic review dated 9 August 2026 concerning Cadw’s 1988 assessment of Great House Farm (Ty Mawr), Llandough, the subsequent demolition, and the near-total absence of contemporary decision records confirmed in ATISN 27021.
@@ -11198,7 +11271,7 @@ On my return to work, I will endeavour to respond by Friday 28th August.
 
 Kind Regards
 
-Amy Longford','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t1','');
+Amy Longford','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t1','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-96190aaf2bcf','Sirs/Ma''ams,
 
 I write further to my email of 9 August 2026 submitting a review concerning Cadw’s 1988 assessment of Great House Farm (Ty Mawr), Llandough.
@@ -11260,7 +11333,7 @@ Andy Wigley
 Dr Andy Wigley
 Prif Arolygydd – Pennaeth Arolygiaeth yr Amgylchedd Hanesyddol / Chief Inspector - Head of Historic Environment Inspectorate
 Cadw
-Dysgu, Cymunedau a Diwylliant / Learning, Commun','partial','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t1','cq-listing,cq-recording');
+Dysgu, Cymunedau a Diwylliant / Learning, Commun','partial','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t1','cq-1881-name,cq-listing,cq-recording');
 INSERT INTO qa_fts VALUES ('qa-18b0a0b8f769','Amy,
 
 Thank you for confirming receipt and for confirming that the revised report dated 10 August 2026 will be treated as the operative version in place of the previous edition.
@@ -11331,7 +11404,7 @@ I therefore ask Cadw to confirm simply:
 If that is Cadw''s position, I will record it as such.
 The July "YYY" coding
 
-There remains an important unresolved point concerning t','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t1','cq-recording');
+There remains an important unresolved point concerning t','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t1','cq-1881-name,cq-recording');
 INSERT INTO qa_fts VALUES ('qa-3d727fb18b17','What the surviving record establishes
 
 Could Cadw please confirm whether the following is an accurate description of the present evidential position:
@@ -11371,7 +11444,7 @@ Please treat this email as a further supplementary note to my existing submissio
 
 Yours sincerely,
 
-Sion Buckler (Ret''d Sergeant)','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t1','');
+Sion Buckler (Ret''d Sergeant)','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t1','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-6e993790eb30','What professional architectural and archaeological evidence concerning Great House Farm existed before December 1988?
 What of that evidence can Cadw establish was considered by the 1988 inspector or decision-maker?
 Where Cadw cannot establish this because the assessment records no longer survive, can that evidential limitation be expressly acknowledged?
@@ -11852,7 +11925,7 @@ documents where they form part of the same chain of title.
 
 In particular, I am seeking evidence capable of confirming or disproving
 whether any defined parcel of land was conveyed by the Bute Estate to
-Daniel Thomas.','2026-09-07','There are no additional records relating to quarrying in Llandough or around Ty Mawr / Great House Farm.','reply','item','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063','cq-1877,cq-1928');
+Daniel Thomas.','2026-09-07','There are no additional records relating to quarrying in Llandough or around Ty Mawr / Great House Farm.','reply','item','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063','cq-1877,cq-1881-name,cq-1928');
 INSERT INTO qa_fts VALUES ('qa-4651819ca205','Targeted search for a Bute–Daniel Thomas transaction at or near Llandough
 
 Please search the catalogue descriptions and indexes available to Glamorgan
@@ -11893,7 +11966,7 @@ Thomas (later Lord Pontypridd)*, with:
 I would be particularly interested in estate papers, correspondence,
 conveyances, wills, probate-related estate records, rentals, rent books,
 abstracts of title and plans that may trace what became of any Daniel
-Thomas interest after his death or thereafter.','2026-09-07','If you have not already got a copy of Daniel Thomas’ will, you can apply for a copy of probate from the Probate Office: Search probate records for documents and wills (England and Wales) - GOV.UK.','provided','item','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063','cq-1877,cq-1928');
+Thomas interest after his death or thereafter.','2026-09-07','If you have not already got a copy of Daniel Thomas’ will, you can apply for a copy of probate from the Probate Office: Search probate records for documents and wills (England and Wales) - GOV.UK.','provided','item','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063','cq-1877,cq-1881-name,cq-1928');
 INSERT INTO qa_fts VALUES ('qa-26a4a880979f','Daniel Thomas, Alfred Thomas and the Llandough lime works
 
 Please identify any documents linking *Daniel Thomas*, or his son *Alfred
@@ -12008,7 +12081,7 @@ glamro@cardiff.gov.uk<mailto:glamro@cardiff.gov.uk>
 
 www.archifaumorgannwg.gov.uk/ www.glamarchives.gov.uk
 www.facebook.com/glamarchives
-www.instagram.com/glamarchives','partial','thread','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063','cq-1877,cq-1928,cq-1938-1939,cq-1910');
+www.instagram.com/glamarchives','partial','thread','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-f:1875692337105865063','cq-1877,cq-1881-name,cq-1928,cq-1938-1939,cq-1910');
 INSERT INTO qa_fts VALUES ('qa-212548b66ab3','Quarrying, lime works and any conditional reversion or transfer
 
 Please identify any relevant records concerning land at Llandough or Great
@@ -12142,7 +12215,7 @@ glamro@cardiff.gov.uk<mailto:glamro@cardiff.gov.uk>
 
 www.archifaumorgannwg.gov.uk/ www.glamarchives.gov.uk
 www.facebook.com/glamarchives
-ww','provided','thread','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-f:1877771312527795760','cq-1877,cq-1928,cq-1938-1939,cq-1910');
+ww','provided','thread','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-a:r-2236227807529852386|msg-f:1877771312527795760','cq-1877,cq-1881-name,cq-1928,cq-1938-1939,cq-1910');
 INSERT INTO qa_fts VALUES ('qa-38e8439b871d','Louise,
 
 Thanks for your detailed and prompt reply and for the additional
@@ -12191,7 +12264,7 @@ INSERT INTO qa VALUES ('qa-19386a619c4f','glamarch','Glamorgan Archives','gmail:
 INSERT INTO qa_fts VALUES ('qa-19386a619c4f','Parties and date – Does the original name the Marquess of Bute and Mr John Williams, and is it dated May 1877?','The document is a counterpart lease dated 2 May 1877 between the Trustees of the Will of the late Marquess of Bute and Mr John Williams of Newport.','Glamorgan Archives');
 INSERT INTO qa VALUES ('qa-c1f0dbe4a6d6','glamarch','Glamorgan Archives','gmail:1a03f5d330ba15ad','2026-08-26','Property description – Exact wording of the land and premises. Does it expressly locate the property in Pembroke Terrace, Cardiff?','2026-09-14','‘All that piece or parcel of land with the messuage or tenement and outbuildings thereto now being erected and built or part thereof by the said lesee, situate, lying and being in Pembroke Terrace in the parish of St John the Baptist, Cardiff containing by admeasurement sixty-nine feet or thereabouts on the north side thereof, thirty-one feet or thereabouts on the east and west sides thereof and sixty-nine feet six inches or thereabouts on the south side thereof bounded on the north by land of the Marquess of Bute, on the east by Pembroke Terrace aforesaid, on the south by land demised to David Price and on the west by land of Mr John William Vachell.’','reply','item','2026/3893','https://mail.google.com/mail/u/0/#all/1a03f5d330ba15ad','cq-1877');
 INSERT INTO qa_fts VALUES ('qa-c1f0dbe4a6d6','Property description – Exact wording of the land and premises. Does it expressly locate the property in Pembroke Terrace, Cardiff?','‘All that piece or parcel of land with the messuage or tenement and outbuildings thereto now being erected and built or part thereof by the said lesee, situate, lying and being in Pembroke Terrace in the parish of St John the Baptist, Cardiff containing by admeasurement sixty-nine feet or thereabouts on the north side thereof, thirty-one feet or thereabouts on the east and west sides thereof and sixty-nine feet six inches or thereabouts on the south side thereof bounded on the north by land of the Marquess of Bute, on the east by Pembroke Terrace aforesaid, on the south by land demised to David Price and on the west by land of Mr John William Vachell.’','Glamorgan Archives');
-INSERT INTO qa VALUES ('qa-bcef4f187c08','glamarch','Glamorgan Archives','gmail:1a03f5d330ba15ad','2026-08-26','Llandough / other references – Any mention (body text, plan, schedule, endorsements or annotations) of Llandough, Great House Farm / Tŷ Mawr, Western Ground Rents, or any locality outside Pembroke Terrace?','2026-09-14','There is no mention of Llandough, Great House Farm or Ty Mawr or any other property outside of Pembroke Terrace.','pending','item','2026/3893','https://mail.google.com/mail/u/0/#all/1a03f5d330ba15ad','cq-1877,cq-1938-1939');
+INSERT INTO qa VALUES ('qa-bcef4f187c08','glamarch','Glamorgan Archives','gmail:1a03f5d330ba15ad','2026-08-26','Llandough / other references – Any mention (body text, plan, schedule, endorsements or annotations) of Llandough, Great House Farm / Tŷ Mawr, Western Ground Rents, or any locality outside Pembroke Terrace?','2026-09-14','There is no mention of Llandough, Great House Farm or Ty Mawr or any other property outside of Pembroke Terrace.','pending','item','2026/3893','https://mail.google.com/mail/u/0/#all/1a03f5d330ba15ad','cq-1877,cq-1881-name,cq-1938-1939');
 INSERT INTO qa_fts VALUES ('qa-bcef4f187c08','Llandough / other references – Any mention (body text, plan, schedule, endorsements or annotations) of Llandough, Great House Farm / Tŷ Mawr, Western Ground Rents, or any locality outside Pembroke Terrace?','There is no mention of Llandough, Great House Farm or Ty Mawr or any other property outside of Pembroke Terrace.','Glamorgan Archives');
 INSERT INTO qa VALUES ('qa-14555ae14f13','glamarch','Glamorgan Archives','gmail:1a03f5d330ba15ad','2026-08-26','Marginal plan – Does the plan identify the location sufficiently?
 Further identifying details – Any adjoining owners, plot numbers, parish, street numbers, measurements, previous ownership, rent, consideration, or cross-references to other instruments.
@@ -12206,7 +12279,7 @@ Catalogue wording discrepancy: most other 1877 entries in the series describe th
 
 4. The plan clearly shows a property on Pembroke Terrace. We can provide a digital copy at a charge of £15.60 (inclusive of VAT).
 
-5. See above for full description. There is no further information included.','partial','thread','2026/3893','https://mail.google.com/mail/u/0/#all/1a03f5d330ba15ad','cq-1877');
+5. See above for full description. There is no further information included.','partial','thread','2026/3893','https://mail.google.com/mail/u/0/#all/1a03f5d330ba15ad','cq-1877,cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-14555ae14f13','Marginal plan – Does the plan identify the location sufficiently?
 Further identifying details – Any adjoining owners, plot numbers, parish, street numbers, measurements, previous ownership, rent, consideration, or cross-references to other instruments.
 
@@ -12370,7 +12443,7 @@ Ffôn symudol / Mobile: 07711 120252
 E-bost/ Email: andy.wigley@llyw.cymru<mailto:andy.wigley@llyw.cymru> / andy.wigley@gov.wales<mailto:andy.wigley@gov.wales>
 
 P Helpwch yr amgylchedd - peidiwch ag argraffu hon os nad oes gwir raid Help our environment - only print this if really necessary
-Rydym yn croesawu gohebiaeth Gymraeg. Cewch','partial','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t2','');
+Rydym yn croesawu gohebiaeth Gymraeg. Cewch','partial','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t2','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-018c3334922f','Reply received: RE: Great House Farm, Llandough','Dear Mr Buckler,
 
 Thank you for your further emails of 27, 28 and 29 August. I am sending this email as a single reply to all three of these emails.
@@ -12813,7 +12886,7 @@ INSERT INTO qa_fts VALUES ('qa-cb5d2c0ac091','When the known archaeology was rai
 If any record of this is in our collections it would appear in the Planning Committee records described above in point 6.','Glamorgan Archives');
 INSERT INTO qa VALUES ('qa-09888915eb22','glamarch','Glamorgan Archives','gmail:1a07b3bf0b65e56c','2026-09-07','DXJF/64/27–32 full sketch bundle — notes seen; confirm sketches and
 refs.','2026-09-24','DXJF/64/27–32 full sketch bundle — notes seen; confirm sketches and refs.
-We believe that the specific references within the bundle 27-32 that would be of interest to you are items DXJF/64/30-31: sketch of former layout of part of village of Llandough-juxta-Penarth by Mrs. Nancy Buckler of great house farm, Llandough, with notes c1950 [1 card, 1 paper]. Is that what you have already seen? Other items in the bundle do not relate to Llandough.','reply','item','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1875665402934453612|msg-f:1877229311407715649','');
+We believe that the specific references within the bundle 27-32 that would be of interest to you are items DXJF/64/30-31: sketch of former layout of part of village of Llandough-juxta-Penarth by Mrs. Nancy Buckler of great house farm, Llandough, with notes c1950 [1 card, 1 paper]. Is that what you have already seen? Other items in the bundle do not relate to Llandough.','reply','item','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1875665402934453612|msg-f:1877229311407715649','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-09888915eb22','DXJF/64/27–32 full sketch bundle — notes seen; confirm sketches and
 refs.','DXJF/64/27–32 full sketch bundle — notes seen; confirm sketches and refs.
 We believe that the specific references within the bundle 27-32 that would be of interest to you are items DXJF/64/30-31: sketch of former layout of part of village of Llandough-juxta-Penarth by Mrs. Nancy Buckler of great house farm, Llandough, with notes c1950 [1 card, 1 paper]. Is that what you have already seen? Other items in the bundle do not relate to Llandough.','Glamorgan Archives');
@@ -13188,7 +13261,7 @@ FOI Team
 foi.requests @museumwales.ac.uk
 amgueddfa.cymru | museum.wales
 
-Rhif elusen | Charity number 525774','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t3','cq-recording,cq-armour,cq-planning');
+Rhif elusen | Charity number 525774','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t3','cq-1881-name,cq-recording,cq-armour,cq-planning');
 INSERT INTO qa_fts VALUES ('qa-1c8775adec45','Any accession, register entry, day-book, donations book or correspondence in the collections of Amgueddfa Cymru or of its predecessor Cardiff Museum / Welsh Museum of Natural History / National Museum of Wales, dated 1875–1915, recording ironwork, armour, a visor, a lance, a helmet, “armour from Llandough”, or a find from Great House / Llandough Farm.
 
    Published sources which state that such ironwork is in the National Museum, and which therefore make a search of predecessor registers reasonable, are:
@@ -13324,7 +13397,7 @@ Description
 63.24
 Archaeological accession
 Details attached
-No further records were identified from the material retrieve','partial','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t3','cq-armour');
+No further records were identified from the material retrieve','partial','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t3','cq-1881-name,cq-water,cq-armour');
 INSERT INTO qa_fts VALUES ('qa-538c6615a318','Diolch,
 
 I myself am at the mercy of having to leave no stone unturned with this and must explore all avenues because much has eventually come to light, but not easily with other institutions.
@@ -13395,7 +13468,7 @@ I appreciate a response would not fall due until 6 October, so this is not a cha
 
 On your note of 22 May. You are right that Heneb, as a limited company, is not a public authority u','2026-09-19','My next working day is Wednesday, 23rd September.
 
-Diolch.','auto','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t5','');
+Diolch.','auto','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t5','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-583b0f991922','Dear Calli,
 
 Further to my email of 8 September 2026 concerning Great House Farm / Tŷ Mawr, Llandough, I attach a formal schedule of the records I am seeking, so that the request is easier for Heneb to work through and to allocate internally. I have also completed your online enquiry form, so the request is in your preferred channel.
@@ -13460,7 +13533,7 @@ entity to whom they are addressed.
 Privacy Policy - Heneb
 
 Registered Office: Corner House, 6 Carmarthen Street, Llandeilo, Carmarthenshire, SA19 6AE
-Swyddfa Gofrestredig : Ty Cornel, 6 Stryd Caerfyr','pending','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t5','');
+Swyddfa Gofrestredig : Ty Cornel, 6 Stryd Caerfyr','pending','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t5','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-a7779ffe8f22','Reply received: RE: Great House Farm, Llandough, Cardiff','Dear Sir,
 
 I write in response to your email, “Great House Farm, Llandough, Cardiff”, dated 8 September 2026.
@@ -13534,7 +13607,7 @@ Please note that the Leader is not responsible for the conduct of Members other 
 I note that your recent correspondence extends beyond the issue of Councillor Carroll''s responsiveness and raises a broader range of concerns relating to historical land ownership, planning and heritage matters associated with Great House Farm/Church View Close, together with a request for information regarding the removal of a commemorative tree.
 In relation to the tree, I am making enquiries to establish whether the Council holds any records which may assist in answering your question regarding its removal. This is being dealt with by the Information Governance Team, I have copied in the FOI unit email domain. If relevant information is held by the Council, I will advise you accordingly. Equally, if no such records are held, I will confirm that position.
 In respect of the wider matters raised in your correspondence, it is important that I clarify the scope of the Council''s role. The Council is not able to determine disputed ownership of land, revisit historical legal proceedings, adjudicate upon competing title claims, or investigate allegations of fraud or other criminal conduct. Those matters fall within the jurisdiction of the courts, HM Land Registry, the police and other external bodies as appropriate.
-Whilst I appreciate the strength of feeling reflected in your correspondence and recognise the significance that these matters have for you and your family, the Council must limit its involvement to those issues which fall within its statutory functions and responsibilities. Any response provided by the','redirected','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-2/#t4','');
+Whilst I appreciate the strength of feeling reflected in your correspondence and recognise the significance that these matters have for you and your family, the Council must limit its involvement to those issues which fall within its statutory functions and responsibilities. Any response provided by the','redirected','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-2/#t4','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-d5c06f712662','I copied Councillor Carroll again on 28 August 2026 (joint letter with
 Stephen Doughty MP). Still no reply from him.
 
@@ -13671,7 +13744,7 @@ INSERT INTO qa_fts VALUES ('qa-14ae35ba2e5e','Thomas & Son; Llandough Limeworks;
 Also is there any item in D153/1–8 dated 1875–1880 naming Thomas Williams, John Williams, Daniel Thomas, Llandough Limeworks, or the dwelling by St Dochdwy’s?','The majority of your email relates to document reference D153/1–8. As discussed in previous emails, this is a reference for material held at the National Library of Wales so you should contact them about these records. Detailed descriptions can be found on their online catalogue: Deeds relating to premises in p. Llandough, co. Glam., comprising a dwelling house adjoining the churchyard, 1811 (D153/1-2), land (19 ...
 
 D/DRa 11/120 is an old way of formatting our reference DRA/11/120. This forms part of the series DRA/11/1-293 which comprises lawsuits, instructions to counsel, opinions etc. relating to undermining of house property, flooding, contravention of colliery regulations, 1856-1909 in respect of Elder’s Navigation Colliery, Maesteg. This doesn’t seem relevant to your research and doesn’t relate to Tynywain either. Can you point us to where you found this reference so that we can assist further?','Glamorgan Archives');
-INSERT INTO qa VALUES ('qa-af644b1f8d48','glamarch','Glamorgan Archives','gmail:1a0ac815c712ae7c','2026-10-10','I note that D153/1–8 is held at the National Library of Wales and will pursue that route with them. I also note your clarification that DRA/11/120 (formerly D/DRa 11/120) relates to Elder’s Navigation Colliery, Maesteg, and is not relevant to Great House Farm / Ty Mawr, Llandough-juxta-Penarth. The reference originated from earlier research notes; I will not pursue it further with Glamorgan Archives.','','','unanswered','unanswered','','https://mail.google.com/mail/u/0/#all/1a0ac815c712ae7c','cq-1877');
+INSERT INTO qa VALUES ('qa-af644b1f8d48','glamarch','Glamorgan Archives','gmail:1a0ac815c712ae7c','2026-10-10','I note that D153/1–8 is held at the National Library of Wales and will pursue that route with them. I also note your clarification that DRA/11/120 (formerly D/DRa 11/120) relates to Elder’s Navigation Colliery, Maesteg, and is not relevant to Great House Farm / Ty Mawr, Llandough-juxta-Penarth. The reference originated from earlier research notes; I will not pursue it further with Glamorgan Archives.','','','unanswered','unanswered','','https://mail.google.com/mail/u/0/#all/1a0ac815c712ae7c','cq-1877,cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-af644b1f8d48','I note that D153/1–8 is held at the National Library of Wales and will pursue that route with them. I also note your clarification that DRA/11/120 (formerly D/DRa 11/120) relates to Elder’s Navigation Colliery, Maesteg, and is not relevant to Great House Farm / Ty Mawr, Llandough-juxta-Penarth. The reference originated from earlier research notes; I will not pursue it further with Glamorgan Archives.','','Glamorgan Archives');
 INSERT INTO qa VALUES ('qa-01f2dd773200','vale','Vale of Glamorgan Council','vale-of-glamorgan-council-email-correspondence-catalogue#t10','2026-09-17','Any correspondence concerning the *retention, preservation,
 alteration or demolition of Great House Farm farmhouse*.','2026-09-17','Dear Sion Buckler
@@ -13731,7 +13804,7 @@ Find us on Facebook / Cewch ddod o hyd i ni ar Facebook
 
 Follow us on Twitter /Dilynwch ni ar Twitter
 
-Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t10','');
+Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t10','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-01f2dd773200','Any correspondence concerning the *retention, preservation,
 alteration or demolition of Great House Farm farmhouse*.','Dear Sion Buckler
 
@@ -13804,7 +13877,7 @@ differently, and I ask that the request be read as follows.
 The passage relied upon
 The planning officer''s report on application 89/01396/OUT (residential
 development including new access road, land at Great House Farm, Leckwith
-Road, Ll','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t10','cq-planning');
+Road, Ll','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t10','cq-1881-name,cq-planning');
 INSERT INTO qa_fts VALUES ('qa-c3437c838a53','Freedom of Information Officer,
 
 Case Ref: 00211463 — request received 17 September 2026
@@ -13906,7 +13979,7 @@ Nid oes angen i chi wneud unrhyw beth ar hyn o bryd. Byddwn mewn cysylltiad cyn 
 
 Cofion caredig,
 
-Tîm Cwynion','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-2/#t5','cq-listing');
+Tîm Cwynion','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-2/#t5','cq-1881-name,cq-listing');
 INSERT INTO qa_fts VALUES ('qa-7b39fd44433b','The Council''s apparent failure to take protective action before the 1988
 demolition
 
@@ -14100,7 +14173,7 @@ I am out of the office.
 I will respond to my e-mails on my return (1/10/26).
 If your email is urgent please contact cadw@tfw.wales<mailto:cadw@tfw.wales>
 
-Sganiwyd y neges hon am bob feirws hysbys wrth iddi adael Llywodraeth Cymru. Mae Llywodraeth Cymru yn cymryd o ddifrif yr angen i ddiogelu eich data. Os cysylltwch â Llywodraeth Cymru, mae ein hysbysiad preifatrwydd<”https://gov.wales/about/welsh-government-privacy-notice/?lang=cy”> yn esbonio sut rydym yn defnyddio eich gwybodaeth a sut rydym yn diogelu eich preifatrwydd. Rydym yn croesawu gohebiaeth yn Gymraeg. Byddwn yn anfon ateb yn Gymraeg i ohebiaeth a dderbynnir yn Gymraeg ac ni fydd gohebu yn Gymraeg yn arwain at oedi. ----------------- On leaving the Welsh Government this email was scanned for all known viruses. The Welsh Government takes the protection of your data seriously. If you contact the Welsh Government then our Privacy Notice<https://gov.wales/about/welsh-government-privacy-notice/?lang=en> explains how we use your information and the ways in which we protect your privacy. We welcome receiving correspondence in Welsh. Any correspondence received in Welsh will be answered in Welsh and corresponding in Welsh will not lead to a delay in responding.','auto','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t3','cq-listing');
+Sganiwyd y neges hon am bob feirws hysbys wrth iddi adael Llywodraeth Cymru. Mae Llywodraeth Cymru yn cymryd o ddifrif yr angen i ddiogelu eich data. Os cysylltwch â Llywodraeth Cymru, mae ein hysbysiad preifatrwydd<”https://gov.wales/about/welsh-government-privacy-notice/?lang=cy”> yn esbonio sut rydym yn defnyddio eich gwybodaeth a sut rydym yn diogelu eich preifatrwydd. Rydym yn croesawu gohebiaeth yn Gymraeg. Byddwn yn anfon ateb yn Gymraeg i ohebiaeth a dderbynnir yn Gymraeg ac ni fydd gohebu yn Gymraeg yn arwain at oedi. ----------------- On leaving the Welsh Government this email was scanned for all known viruses. The Welsh Government takes the protection of your data seriously. If you contact the Welsh Government then our Privacy Notice<https://gov.wales/about/welsh-government-privacy-notice/?lang=en> explains how we use your information and the ways in which we protect your privacy. We welcome receiving correspondence in Welsh. Any correspondence received in Welsh will be answered in Welsh and corresponding in Welsh will not lead to a delay in responding.','auto','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t3','cq-1881-name,cq-listing');
 INSERT INTO qa_fts VALUES ('qa-92daddea1cf7','The search undertaken on 21 May (matters D and F)
 
 Mr Weatherhead wrote that he had asked a colleague to search other paper files, "including the Welsh Office files", and would write again with the result, while fairly warning that some files had quite likely been destroyed. I have not received that letter. Please confirm whether the search was carried out, which series were searched, what was found, and whether Cadw regards the ATISN 27021 response of 11 June as its report of that search.
@@ -14188,7 +14261,7 @@ Rheolwr Cwynion / Complaints Manager
 Y Tîm Cynghori ar Gwynion / Complaints Advice Team
 Gweithrediadau a Chyflenwi AD / HR Operations and Delivery
 Cyfarwyddiaeth Pobl a Lleoedd / People and Places Directorate
-Llywodraeth Cymru / Welsh Government','pending','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t3','');
+Llywodraeth Cymru / Welsh Government','pending','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t3','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-65a2f1ce3f8c','Reply received: RE: Supplement to complaint re-served 20 September 2026 — Great House Farm (Tŷ Mawr), Llandough','Good morning Mr Buckler,
 
 Your correspondence has been received by the Welsh Government Complaints advice team.
@@ -14304,7 +14377,7 @@ Find us on Facebook / Cewch ddod o hyd i ni ar Facebook
 
 Follow us on Twitter /Dilynwch ni ar Twitter
 
-Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t11','cq-planning');
+Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t11','cq-1881-name,cq-planning');
 INSERT INTO qa_fts VALUES ('qa-b3eab3a31b5e','The *complete County Engineer consultation response* referred to in the
 report as one of the attached sheets, including the original document and
 any accompanying material.
@@ -14877,7 +14950,7 @@ On 2026-09-21 03:59, Sion Buckler wrote:
 > 16 October 2026.
 >
 > If the Council is refusing, section 17 (and regulation 14) requires a
-> written refusal notice identifying the exemptio','refused','thread','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1876908364250660817|msg-f:1877563689272243425','');
+> written refusal notice identifying the exemptio','refused','thread','','https://mail.google.com/mail/?authuser=hywelapbuckler@gmail.com#all/thread-f:1876908364250660817|msg-f:1877563689272243425','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-48f519325740','Whether the Council holds any recorded information created after the
 2002 deposit — minutes, correspondence, reports, emails, photographs or
 files of any kind — concerning Great House Farm (Ty Mawr) / Church View
@@ -15355,7 +15428,7 @@ FOI Team
 foi.requests @museumwales.ac.uk
 amgueddfa.cymru | museum.wales
 
-Rhif elusen | Charity number 525774','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t4','');
+Rhif elusen | Charity number 525774','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t4','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-40c6f76a583f','If that conclusion was reached by staff judgement and not written down, please simply confirm that no recorded information is held on that point. I am not asking for a new opinion.
 
 Could you also confirm the date by which you expect to respond to FOI 2026-036?','Mr Buckler
@@ -15395,7 +15468,7 @@ An Early-medieval Monastic Cemetery at Llandough, Glamorgan: Excavations in 1994
 
 Highlight 5: Llandough early medieval cemetery, Glamorgan (1994) - Cotswold Archaeology<https://cotswoldarchaeology.co.uk/highlight-5-llandough-early-medieval-cemetery-glamorgan-1994/>
 
-Please note that the provision of these records should not be taken as indicating any association be','refused','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t4','cq-armour');
+Please note that the provision of these records should not be taken as indicating any association be','refused','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t4','cq-1881-name,cq-armour');
 INSERT INTO qa_fts VALUES ('qa-f57e0b1ea244','Reply received: FOI - 2026-032 - Great House Farm, Llandough','Dear Mr Buckler
 
 Thank you for your request for information, registered as FOI 2026-032.
@@ -15425,7 +15498,7 @@ FOI Team
 foi.requests @museumwales.ac.uk
 amgueddfa.cymru | museum.wales
 
-Rhif elusen | Charity number 525774','reply','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t4','');
+Rhif elusen | Charity number 525774','reply','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t4','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-94f93b160961','Reply received: RE: FOI - 2026-032 - Great House Farm, Llandough','Apologies, regarding FOI: 2026-036, we aim to provide a response by 6th October.
 
 Cofion cynnes,
@@ -15460,7 +15533,7 @@ There are likely to be records of the farm in the 1940s as part of the National 
 5. Proceedings in BP Properties Ltd v Buckler [1987] EWCA Civ 2 — Judicial Papers A-C 1-63 (House of Lords as court of appeal).
 6. 1982–1983 registration and associated government or administrative records — Relevant information not found.
 7. 1980–1988 public campaign and governmental correspondence — Relevant information not found.
-8. 1988 eviction and demol','partial','reply-only','CAS-347296-M0V4Y1','https://mail.google.com/mail/u/0/#all/1a0cf0a5c1c2a0a0','cq-1938-1939,cq-judgment');
+8. 1988 eviction and demol','partial','reply-only','CAS-347296-M0V4Y1','https://mail.google.com/mail/u/0/#all/1a0cf0a5c1c2a0a0','cq-1881-name,cq-1938-1939,cq-judgment');
 INSERT INTO qa_fts VALUES ('qa-3fd4a4cd34b1','Reply received: Freedom of Information Request: Reference CAS-347296-M0V4Y1','I can confirm that The National Archives holds some information relevant to your request.
 
 The initial response from our records enquiries team looked for the four terms (“Great House Farm”, “Ty Mawr”, “Llandough” or “Cedfin”) within the PRO and RW series and did not find any relevant information. We have now tried those terms and the further twelve terms that you have specified in a wider catalogue search.
@@ -15504,7 +15577,7 @@ Any records identifying Llandough photographic material lost in the fire, includ
 - photographic registers or catalogues;
 - site photography logs; and
 - duplicate or working copies.
-Any correspondence concerning the fire or its archaeological losses with Cadw/Welsh Historic Monuments, the Welsh Office/Welsh Government, Amgueddfa Cymru/National Museum Wales, RCAHMW, local authorities, funding bodies, insurers, fire authorit','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t6','');
+Any correspondence concerning the fire or its archaeological losses with Cadw/Welsh Historic Monuments, the Welsh Office/Welsh Government, Amgueddfa Cymru/National Museum Wales, RCAHMW, local authorities, funding bodies, insurers, fire authorit','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t6','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-517136b677fb','Llandough Farm / Roman villa area south of St Dochdwy''s church
 
 GGAT undertook excavation in this area in 1978–79, with the HER identifying event GGATE001109 as "Llandough Farm". The associated site record concerns an Iron Age/Roman villa complex with later early-medieval burial activity.
@@ -15591,7 +15664,7 @@ London
 E14 4PU
 
 enquiries@icrev.org.uk<mailto:enquiries@icrev.org.uk>
-0300 013 2119','pending','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-4/#t1','cq-1938-1939,cq-1955,cq-registration');
+0300 013 2119','pending','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-4/#t1','cq-1881-name,cq-1938-1939,cq-1955,cq-registration');
 INSERT INTO qa_fts VALUES ('qa-9c00d4e3b7f4','The 1969 conveyance and 1971 abstract
 
 HM Land Registry has also told me that BP supplied a title chain extending back to 1969.
@@ -15689,7 +15762,7 @@ London
 E14 4PU
 
 enquiries@icrev.org.uk<mailto:enquiries@icrev.org.uk>
-0300 013 2119','pending','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-4/#t1','cq-registration');
+0300 013 2119','pending','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-4/#t1','cq-1881-name,cq-registration');
 INSERT INTO qa_fts VALUES ('qa-c09272ae88bb','The decision came before the file was examined. HMLR gave its final decision on 25 May 2026, but did not list what the first-registration files actually contain until 30 July 2026. A final complaint decision cannot properly rest on documents that had not yet been identified.
 The decision relies on a document that does not appear on the file. HMLR''s letter of 19 April 2026 described a 15-year root of title. The root relied on, a conveyance of 31 December 1969, was under 13 years old at first registration in 1982. Neither that conveyance nor the 1971 abstract said to prove it appears on the 30 July 2026 file list, and HMLR has not explained this.
 The file holds examination material (form D23 and a letter of 8 April
@@ -15774,7 +15847,7 @@ London
 E14 4PU
 
 enquiries@icrev.org.uk<mailto:enquiries@icrev.org.uk>
-0300 013 2119','provided','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-4/#t1','cq-1938-1939');
+0300 013 2119','provided','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-4/#t1','cq-1881-name,cq-1938-1939');
 INSERT INTO qa_fts VALUES ('qa-9f54cfec1771','Public record
 
 Please treat https://greathousefarmwiki.wordpress.com/ as part of the material already cited.
@@ -15920,7 +15993,7 @@ Uned Cyswllt Dioddefwyr / Victim Liaison Unit
 Gwasanaeth Erlyn y Goron / Crown Prosecution Service
 Crown Prosecution Service, CPS Wales Area, Welsh Government Offices, Cathays Park, Cardiff CF10 3NQ. Gwasanaeth Erlyn y Goron, Ardal CPS Cymru, Llywodraeth Cymru, Parc Cathays, Caerdydd CF10 3NQ.
 Ffôn/Telephone: 029 20 803966
-www.cps.gov.uk','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/crown-prosecution-service-email-correspondence-catalogue/#t2','');
+www.cps.gov.uk','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/crown-prosecution-service-email-correspondence-catalogue/#t2','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-0db40ea2be32','whether CPS Cymru will consider the material, or whether I should instead report to Action Fraud / South Wales Police for a crime reference number.
 
 Regards,
@@ -15978,7 +16051,7 @@ Uned Cyswllt Dioddefwyr / Victim Liaison Unit
 Gwasanaeth Erlyn y Goron / Crown Prosecution Service
 Crown Prosecution Service, CPS Wales Area, Welsh Government Offices, Cathays Park, Cardiff CF10 3NQ. Gwasanaeth Erlyn y Goron, Ardal CPS Cymru, Llywodraeth Cymru, Parc Cathays, Caerdydd CF10 3NQ.
 Ffôn/Telephone: 029 20 803966
-www.cps.gov.uk','pending','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/crown-prosecution-service-email-correspondence-catalogue/#t2','cq-registration');
+www.cps.gov.uk','pending','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/crown-prosecution-service-email-correspondence-catalogue/#t2','cq-1881-name,cq-registration');
 INSERT INTO qa_fts VALUES ('qa-d3b666c7a21a','Police engagement and current references
 
 On 28 September 2026 I submitted a formal crime-recording request to South Wales Police (information@south-wales.police.uk), copied to Stephen Doughty MP for constituency-record purposes only.
@@ -16070,7 +16143,7 @@ This states:
 
 “5(1) The listed GDPR provisions do not apply to personal data consisting of information that the controller is obliged by an enactment to make available to the public, to the extent that the application of those provisions would prevent the controller from complying with that obligation.”
 
-Please see the section below titled ''Register information and your data protecti','auto','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-4/#t2','cq-registration,cq-judgment');
+Please see the section below titled ''Register information and your data protecti','auto','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-4/#t2','cq-1881-name,cq-registration,cq-judgment');
 INSERT INTO qa_fts VALUES ('qa-03915b25937c','Sirs/ Ma''ams,
 
 I need to correct a date I have used in earlier correspondence about Great House Farm / Tŷ Mawr, Llandough, titles WA231076 and WA240304.
@@ -16185,7 +16258,7 @@ This email address is not the correct method of contact for general enquiries. T
 
 Our Contact HM Land Registry page<https://www.gov.uk/guidance/contact-hm-land-registry> has comprehensive help pages for most enquiries.
 
-Please resubmit your enquiry via our online contact form.','auto','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-4/#t2','');
+Please resubmit your enquiry via our online contact form.','auto','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-4/#t2','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-127327d01796','Reply received: RE: Great House Farm, Llandough','Dear Customer,
 
 This email address is not the correct method of contact for general enquiries. Therefore, no action will be taken with this enquiry.
@@ -16267,7 +16340,7 @@ We check all mail and attachments for known viruses. However, you are advised th
 
 We welcome correspondence in English and Welsh.
 
-To see how HM Land Registry treats your personal information, read our Personal information charter: www.gov.uk/government/organisations/land-registry/about/personal-information-charter.','redirected','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-4/#t2','');
+To see how HM Land Registry treats your personal information, read our Personal information charter: www.gov.uk/government/organisations/land-registry/about/personal-information-charter.','redirected','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-4/#t2','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-fb920fb20f8d','Reply received: Automatic reply: Great House Farm, Llandough','Thank you for your recent communication.　
 
 Your email and any attachments have been passed to an HM Land Registry caseworker for consideration.
@@ -16319,7 +16392,7 @@ Where we will be responding, we will issue an acknowledgment giving the date by 
 
 For further information on how we process correspondence to Ministers, see here: https://gov.wales/writing-ministers
 
-Sganiwyd y neges hon am bob feirws hysbys wrth iddi adael Llywodraeth Cymru. Mae Llywodraeth Cymru yn cymryd o ddifrif yr angen i ddiogelu eich data. Os cysylltwch â Llywodraeth Cymru, mae ein hysbysia','auto','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t6','cq-registration,cq-judgment');
+Sganiwyd y neges hon am bob feirws hysbys wrth iddi adael Llywodraeth Cymru. Mae Llywodraeth Cymru yn cymryd o ddifrif yr angen i ddiogelu eich data. Os cysylltwch â Llywodraeth Cymru, mae ein hysbysia','auto','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t6','cq-1881-name,cq-registration,cq-judgment');
 INSERT INTO qa_fts VALUES ('qa-393dc113d480','Sirs/ Ma''ams,
 
 I need to correct a date I have used in earlier correspondence about Great House Farm / Tŷ Mawr, Llandough, titles WA231076 and WA240304.
@@ -16368,7 +16441,7 @@ I had treated 1983 as the year the two titles were merged. That was wrong. HM La
 30 November 1982: application to first-register WA231076. The Court of Appeal later treated BP Properties Ltd as registered proprietors of “the farm” from November 1982.
 23 February 1983: application to fi','2026-09-27','My next working day is Wednesday, 30th September.
 
-Diolch.','auto','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t7','cq-registration,cq-judgment');
+Diolch.','auto','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t7','cq-1881-name,cq-registration,cq-judgment');
 INSERT INTO qa_fts VALUES ('qa-51ad0c7cfd40','Sirs/ Ma''ams,
 
 I need to correct a date I have used in earlier correspondence about Great House Farm / Tŷ Mawr, Llandough, titles WA231076 and WA240304.
@@ -16421,7 +16494,7 @@ Heneb is a Registered Organisation with the Chartered Institute for Archaeologis
 Swyddfa Gofrestrig: Ty Cornel, 6 Stryd Caerfyrddin, Llandeilo, Sir Gaerfyrddin, SA19 6AE
 Registered Office: Corner House, 6 Carmarthen Street, Llandeilo, Carmarthenshire, SA19 6AE
 
-Privacy Policy - Heneb','pending','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t8','cq-recording,cq-planning');
+Privacy Policy - Heneb','pending','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t8','cq-1881-name,cq-recording,cq-planning');
 INSERT INTO qa_fts VALUES ('qa-93c5a7f77868','whether the HER uses the phrase "partially recorded", and if so from which source;
 what parts of the building the 1974 survey measured, and what it did not;
 what contemporaneous document, if any beyond NMR 6048945, establishes that access was restricted by the ownership dispute, by whom, on what date, and to whom;
@@ -16550,7 +16623,7 @@ Ymwadiad Heddlu De Cymru\South Wales Police Disclaimer
 
 Gallai defnyddio neu ddatgelu’r neges e-bost hon heb awdurdod fod yn anghyfreithlon. Gallwch weld ein datganiad cyfrinachedd yn: https://www.heddlu-de-cymru.police.uk/cy-GB/heddluoedd/heddlu-de-cymru/ardaloedd/amdanom-ni/amdanom-ni/datganiad-cyfrinachedd-e-bost/".
 
-Unauthorised use or disclosure of this email may be unlawful. View our confidentiality statement at https://www.south-wales.police.uk/po','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-3/#t6','cq-demolition');
+Unauthorised use or disclosure of this email may be unlawful. View our confidentiality statement at https://www.south-wales.police.uk/po','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-3/#t6','cq-1881-name,cq-demolition');
 INSERT INTO qa_fts VALUES ('qa-fbb649bd072e','Internal review of 719/26
 
 I understand the Force''s position is that it holds no records. I ask for an
@@ -16711,7 +16784,7 @@ Find us on Facebook / Cewch ddod o hyd i ni ar Facebook
 Find us on Instagram / Cewch ddod o hyd i ni ar Instagram
 Find us on LinkedIn / Cewch ddod o hyd i ni ar LinkedIn
 
-Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-2/#t6','');
+Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-2/#t6','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-a430da87c02a','See attached images.
 
 Also website https://greathousefarmwiki.wordpress.com
@@ -16836,7 +16909,7 @@ Diolch.
 
 I will indeed say a prayer and have already done so,
 
-Chris','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t4','cq-woodland');
+Chris','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t4','cq-1881-name,cq-woodland');
 INSERT INTO qa_fts VALUES ('qa-580b7fe3dbf3','Chris,
 
 I flew back, I''m even at Mamgus old house in Dinas from time to time.
@@ -16863,7 +16936,7 @@ I flew back.
 
 greathousefarmwiki.wordpress.com
 
-Hywel','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t4','');
+Hywel','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t4','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-8125b858690c','Chris,
 
 I flew back.
@@ -17038,7 +17111,7 @@ Cedwir diogelwch a chyfrinachedd yr holl ddata personol yn unol â’n Siarter G
 
 Darllenwch ragor am ein safonau gwasanaeth<https://www.gov.uk/government/organisations/land-registry/about-our-services.cy> .
 
-HM Land Registry’s purpose is to protect your land ownership and provide services and data that underpin an efficient and informed pro','auto','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-5/#t1','cq-1938-1939,cq-judgment,cq-1974');
+HM Land Registry’s purpose is to protect your land ownership and provide services and data that underpin an efficient and informed pro','auto','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-5/#t1','cq-1881-name,cq-1938-1939,cq-judgment,cq-1974');
 INSERT INTO qa_fts VALUES ('qa-b15dcca2cb1c','A 31 December 1969 conveyance, Western Ground Rents to BP Pension Trust, identified as a root, and whether it is on the 30 July 2026 schedule of documents surviving on the file.
 What the 1987 Court of Appeal decided (possession, limitation, October 1974 letters) and what it did not decide (documentary root of the farmhouse and garden parcel).
 
@@ -17114,7 +17187,7 @@ There is no direct contact e-mail address for Customer Support. Please use the o
 
 If you have made a request under the Freedom of Information Act or Environmental Information Regulations–The statutory timescale for response is 20 working days following receipt of your request.
 
-If you have made a request in relation to your data rights, for example, a subject access request for personal data – The statutory timescale for response is one calendar month following re','auto','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-5/#t1','');
+If you have made a request in relation to your data rights, for example, a subject access request for personal data – The statutory timescale for response is one calendar month following re','auto','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-5/#t1','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-140a761c989a','Reply received: Automatic reply: Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy, transfer or dispose','Thank you for contacting HM Land Registry. This is an automated response to confirm that we have received your correspondence. We aim to formally provide an acknowledgement within three working days. If you have any special requirements that mean you would like us to communicate with you in a specific way, please let us know and we will make adjustments if we can.
 
 If you are contacting us in respect of any matters relating to property registration or have a general customer enquiry – Our team are unable to respond to any general registration enquiries or provide updates on any property applications. Please redirect your customer enquiry to our Customer Support colleagues, using any of the methods below:
@@ -17159,7 +17232,7 @@ Kat Wignall
 EO Disclosure Officer
 Information Rights Team
 Data and Register Integrity Group
-Email- foi@landregistry.gov.uk / dataprotection@landregistry.gov.uk','reply','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-5/#t1','cq-registration');
+Email- foi@landregistry.gov.uk / dataprotection@landregistry.gov.uk','reply','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue-part-5/#t1','cq-1881-name,cq-registration');
 INSERT INTO qa_fts VALUES ('qa-4a17582b29bb','Reply received: RE: Subject access request — WA231076 / WA240304 — Great House Farm, Llandough — Williams / Buckler','Dear Sion Buckler
 
 Thank you for your email.
@@ -17297,7 +17370,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t9','cq-judgment,cq-planning,cq-1974');
+hywelapbuckler@gmail.com','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/heneb-ggat-email-correspondence-catalogue/#t9','cq-1881-name,cq-judgment,cq-planning,cq-1974');
 INSERT INTO qa_fts VALUES ('qa-4014344fb542','The condition chain on 89/01396/OUT: conditions 16–18; the Council''s October 1990 confirmation of condition 17; GGAT''s July 1992 archaeological warning; the September 1992 reserved-matters approval; and the 1993–94 papers on whether condition 18 had been discharged.
 Any record of the statutory consultation route used because the land was, or was treated as, a site of archaeological interest / SMR entry under the 1988 Order.
 The application-receipt record for 89/01396/OUT (form dated October 1989; reconstructed Council receipt 8 November 1989).
@@ -17349,7 +17422,7 @@ Ffôn / Phone: 0300 025 2245
 E-bost / E-mail: isabel.nethell@llyw.cymru<mailto:isabel.nethell@llyw.cymru> / Isabel.nethell@gov.wales<mailto:Isabel.nethell@gov.wales>
 
 Penderfyniadau Cynllunio ac Amgylchedd Cymru | LLYW.CYMRU<https://llyw.cymru/penderfyndiadau-cynllunio-ac-amgylchedd-cymru?_ga=2.118801417.1086042177.1633691770-684163877.1633354991> / Planning and Environment Decisions Wales | GOV.WALES<https://gov.wales/planning-and-environment-decisions-wales>
-Sganiwyd y neges hon am bob feirws hysbys wrth iddi adael Llywodraeth Cymru. Mae Llywodraeth Cymru yn cymryd o ddifrif yr angen i ddiogelu eich data. Os cysylltwch â Llywodraeth Cymru, mae ein hysbysiad preifatrwydd yn esbonio sut rydym yn defnyddio eich gwybodaeth a sut rydym yn diogelu eich preifatrwydd. Rydym yn croesawu gohebiaeth yn Gymraeg. Byddwn yn anfon ateb yn Gymraeg i ohebiaeth a dderbynnir yn Gymraeg ac ni fydd gohebu yn Gymraeg yn arwain at oedi. On leaving the Welsh Government this email was scanned for all known viruses. The Welsh Government takes the protection of your data seriously. If you contact the Welsh Government then our Privacy Notice<https://gov.wales/about/welsh-government-privacy-notice/?lang=en> explains how we use your information and the ways in which we protect your privacy. We welcome receiving correspondence in Welsh. Any correspondence received in Welsh will be answered in Welsh and corresponding in Welsh will not lead to a delay in responding.','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t7','cq-1877,cq-1916,cq-1938-1939,cq-1955,cq-registration,cq-judgment,cq-planning');
+Sganiwyd y neges hon am bob feirws hysbys wrth iddi adael Llywodraeth Cymru. Mae Llywodraeth Cymru yn cymryd o ddifrif yr angen i ddiogelu eich data. Os cysylltwch â Llywodraeth Cymru, mae ein hysbysiad preifatrwydd yn esbonio sut rydym yn defnyddio eich gwybodaeth a sut rydym yn diogelu eich preifatrwydd. Rydym yn croesawu gohebiaeth yn Gymraeg. Byddwn yn anfon ateb yn Gymraeg i ohebiaeth a dderbynnir yn Gymraeg ac ni fydd gohebu yn Gymraeg yn arwain at oedi. On leaving the Welsh Government this email was scanned for all known viruses. The Welsh Government takes the protection of your data seriously. If you contact the Welsh Government then our Privacy Notice<https://gov.wales/about/welsh-government-privacy-notice/?lang=en> explains how we use your information and the ways in which we protect your privacy. We welcome receiving correspondence in Welsh. Any correspondence received in Welsh will be answered in Welsh and corresponding in Welsh will not lead to a delay in responding.','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t7','cq-1877,cq-1881-name,cq-1916,cq-1938-1939,cq-1955,cq-registration,cq-judgment,cq-planning');
 INSERT INTO qa_fts VALUES ('qa-ee932132a36f','Land and documentary scope
 
 Please preserve, and do not destroy, alter, overwrite, discard, transfer out of custody without a recorded handover, or otherwise dispose of, any record within your possession, custody or control relating to the land or matters identified below.
@@ -17412,7 +17485,7 @@ Ffôn / Phone: 0300 025 2245
 E-bost / E-mail: isabel.nethell@llyw.cymru<mailto:isabel.nethell@llyw.cymru> / Isabel.nethell@gov.wales<mailto:Isabel.nethell@gov.wales>
 
 Penderfyniadau Cynllunio ac Amgylchedd Cymru | LLYW.CYMRU<https://llyw.cymru/penderfyndiadau-cynllunio-ac-amgylchedd-cymru?_ga=2.118801417.1086042177.1633691770-684163877.1633354991> / Planning and Environment Decisions Wales | GOV.WALES<https://gov.wales/planning-and-environment-decisions-wales>
-Sganiwyd y neges hon am bob feirws hysbys wrth iddi adael Llywodraeth Cymru. Mae Llywodraeth Cymru yn cymryd o ddifrif yr angen i ddiogelu eich data. Os cysylltwch â Llywodraeth Cymru, mae ein hysbysiad preifatrwydd yn esbonio sut rydym yn defnyddio eich gwybodaeth a sut rydym yn diogelu eich preifatrwydd. Rydym yn croesawu gohebiaeth yn Gymraeg. Byddwn yn anfon ateb yn Gymraeg i ohebiaeth a dderbynnir yn Gymraeg ac ni fydd gohebu yn Gymraeg yn arwain at oedi. On leaving the Welsh Government this email was scanned for all known viruses. The Welsh Government takes the protection of your data seriously. If you contact the Welsh Government then our Privacy Notice<https://gov.wales/about/welsh-government-privacy-notice/?lang=en> explains how we use your information and the ways in which we protect your privacy. We welcome receiving correspondence in Welsh. Any correspondence received in Welsh will be answered in Welsh and corresponding in Welsh will not lead to a delay in responding.','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t7','cq-judgment,cq-planning,cq-1974');
+Sganiwyd y neges hon am bob feirws hysbys wrth iddi adael Llywodraeth Cymru. Mae Llywodraeth Cymru yn cymryd o ddifrif yr angen i ddiogelu eich data. Os cysylltwch â Llywodraeth Cymru, mae ein hysbysiad preifatrwydd yn esbonio sut rydym yn defnyddio eich gwybodaeth a sut rydym yn diogelu eich preifatrwydd. Rydym yn croesawu gohebiaeth yn Gymraeg. Byddwn yn anfon ateb yn Gymraeg i ohebiaeth a dderbynnir yn Gymraeg ac ni fydd gohebu yn Gymraeg yn arwain at oedi. On leaving the Welsh Government this email was scanned for all known viruses. The Welsh Government takes the protection of your data seriously. If you contact the Welsh Government then our Privacy Notice<https://gov.wales/about/welsh-government-privacy-notice/?lang=en> explains how we use your information and the ways in which we protect your privacy. We welcome receiving correspondence in Welsh. Any correspondence received in Welsh will be answered in Welsh and corresponding in Welsh will not lead to a delay in responding.','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t7','cq-1881-name,cq-judgment,cq-planning,cq-1974');
 INSERT INTO qa_fts VALUES ('qa-6d16e7906b31','The condition chain on 89/01396/OUT: conditions 16–18; the Council''s October 1990 confirmation of condition 17; GGAT''s July 1992 archaeological warning; the September 1992 reserved-matters approval; and the 1993–94 papers on whether condition 18 had been discharged.
 Any record of the statutory consultation route used because the land was, or was treated as, a site of archaeological interest / SMR entry under the 1988 Order.
 The application-receipt record for 89/01396/OUT (form dated October 1989; reconstructed Council receipt 8 November 1989).
@@ -17510,7 +17583,7 @@ Find us on Facebook / Cewch ddod o hyd i ni ar Facebook
 
 Follow us on Twitter /Dilynwch ni ar Twitter
 
-Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t13','cq-planning');
+Correspondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/#t13','cq-1881-name,cq-planning');
 INSERT INTO qa_fts VALUES ('qa-1c93400b1559','Historic planning register
 The planning-register entries that the Town and Country Planning General Development Order 1988 required the authority to keep for 89/01396/OUT and 92/00671/RES: the applications, reserved-matters applications, plans and drawings, and relevant decision information. If the 2026 file disclosure is incomplete against that register, say what the register still lists and what is missing from the file.
 Appendix B
@@ -17644,7 +17717,7 @@ Ymwadiad Heddlu De Cymru\South Wales Police Disclaimer
 
 Gallai defnyddio neu ddatgelu’r neges e-bost hon heb awdurdod fod yn anghyfreithlon. Gallwch weld ein datganiad cyfrinachedd yn: https://www.heddlu-de-cymru.police.uk/cy-GB/heddluoedd/heddlu-de-cymru/ardaloedd/amdanom-ni/amdanom-ni/datganiad-cyfrinachedd-e-bost/".
 
-Unauthorised use or disclosure of this email may be unlawful. View our confidentiality statement at https://www.south-wales.police.uk/po','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-3/#t7','cq-judgment,cq-planning,cq-1974');
+Unauthorised use or disclosure of this email may be unlawful. View our confidentiality statement at https://www.south-wales.police.uk/po','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-3/#t7','cq-1881-name,cq-judgment,cq-planning,cq-1974');
 INSERT INTO qa_fts VALUES ('qa-315319b9cd6c','The condition chain on 89/01396/OUT: conditions 16–18; the Council''s October 1990 confirmation of condition 17; GGAT''s July 1992 archaeological warning; the September 1992 reserved-matters approval; and the 1993–94 papers on whether condition 18 had been discharged.
 Any record of the statutory consultation route used because the land was, or was treated as, a site of archaeological interest / SMR entry under the 1988 Order.
 The application-receipt record for 89/01396/OUT (form dated October 1989; reconstructed Council receipt 8 November 1989).
@@ -17757,7 +17830,7 @@ Cheshire
 
 SK9 5AF
 
-Website:','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t5','cq-judgment,cq-listing,cq-demolition,cq-1974');
+Website:','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t5','cq-1881-name,cq-water,cq-judgment,cq-listing,cq-demolition,cq-1974');
 INSERT INTO qa_fts VALUES ('qa-7484e553a07a','Any transfer, destruction or disposal of those files, with the schedule used and the date.
 
 If nothing is held, please say what was searched, including Cadw listing files, Welsh Office inherited files, and any index of destroyed building records.
@@ -17853,7 +17926,7 @@ Yours faithfully,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals
-hywelapbuckler@gmail.com','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-3/#t8','cq-registration,cq-judgment,cq-demolition,cq-1974,cq-mary-death');
+hywelapbuckler@gmail.com','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-3/#t8','cq-1881-name,cq-registration,cq-judgment,cq-demolition,cq-1974,cq-mary-death');
 INSERT INTO qa_fts VALUES ('qa-1383cac6c813','Subject access, UK GDPR Article 15. Personal data you hold about me, Sion Buckler, arising from the eviction and demolition at Great House Farm / Tŷ Mawr, Llandough, between 29 November and 6 December 1988, and from later correspondence including 719/26 and the request of 20 August 2026 concerning the deaths of William Buckler and Mary Doreen Williams. Say what identification you need before the month starts.
 Crime recording. Please record, or explain in writing why you will not record, a report of suspected fraud and concealment in the creation and use of title to that land, including first registration of WA231076 (application 30 November 1982) and WA240304 (application 23 February 1983), and the 1987 proceedings. The question is whether a crime record should be opened. It is not a request that you find the civil title.
 Search note on 719/26. “No records held” for a documented multi-officer operation in November–December 1988 still requires a note of systems searched, years searched, and whether South Wales Constabulary paper has gone to Glamorgan Archives. That note can sit with the internal review. I ask for it here so the crime-recording decision is not made without it.
@@ -17881,7 +17954,7 @@ Yours faithfully,
 Sion Buckler (Ret''d Sergeant)
 Service no. 25148537
 Royal Signals
-hywelapbuckler@gmail.com','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/ministry-of-defence-email-correspondence-catalogue/#t4','');
+hywelapbuckler@gmail.com','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/ministry-of-defence-email-correspondence-catalogue/#t4','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-de3e4ba3140e','Say what systems were searched for data relating to me, as a child in that household in 1988, as distinct from the FOI search already described (Restore, CT&UK, Army, and the keyword list on the review file).
 Confirm the file is preserved.
 
@@ -17903,7 +17976,7 @@ The armour found in the late nineteenth century is not mentioned in Richard Sugg
 
 ‘Great House Farmhouse and barn formed an attractive group, built of local lias limestone, and occupied an historic site next to the parish church. Finds of medieval ironwork and pottery have been reported from the site. Great House was the chief freehold farm of the parish and was occupied by the Vaughan''s, a minor gentry family, from the mid C16 until the latter part of the C18. Several memorial inscriptions relating to the family are preserved in the church and churchyard. In the early C19 the freehold was acquired by the Bute Estate and the manorial courts for Llandough and Leckwith were held in Great House.
 
-‘Externally both farmhouse and barn appeared to be of nineteenth-century date. Internally, however, surviving vernacular detail- a blocked stone fireplace stair and ogee-stopped beams- suggested a seventeenth-century date for the house. The ground floor of the house was surveyed in unusual circumstances in 1974 by H.J.T. Much detail was then concealed and it was not possible to examine the first floor and roof trusses. The house remained partially recorded because of problems of access created by ','not-held','reply-only','RC26-0375 (incl. RC26-0353, -0368, -0371)','https://mail.google.com/mail/u/0/#all/1a0ed5d3ada10e6b','cq-1667,cq-bute-acquisition,cq-recording,cq-armour');
+‘Externally both farmhouse and barn appeared to be of nineteenth-century date. Internally, however, surviving vernacular detail- a blocked stone fireplace stair and ogee-stopped beams- suggested a seventeenth-century date for the house. The ground floor of the house was surveyed in unusual circumstances in 1974 by H.J.T. Much detail was then concealed and it was not possible to examine the first floor and roof trusses. The house remained partially recorded because of problems of access created by ','not-held','reply-only','RC26-0375 (incl. RC26-0353, -0368, -0371)','https://mail.google.com/mail/u/0/#all/1a0ed5d3ada10e6b','cq-1667,cq-bute-acquisition,cq-1881-name,cq-recording,cq-armour');
 INSERT INTO qa_fts VALUES ('qa-72d3fa7b6fee','Reply received: RC26-0375 - Ty Mawr/ Great House, Llandough, Cardiff','[Translated from Welsh] As stated in my emails of 28 May, 10 June and 11 June, there are no letters or records about this site, Tŷ Mawr Farm, Llandough, in our registered files, the only campaign records we keep long-term. No records have come to light since. The only information we hold about the site, including its demolition, is in our archive, the National Monuments Record of Wales: https://coflein.gov.uk/en/sites/20182/archives. Aerial photograph searches are charged.
 
 The armour found in the late nineteenth century is not mentioned in Richard Suggett''s unpublished report, Archive 6048945. Most of that record is reproduced as Heneb''s site description GGAT02038s:
@@ -17957,7 +18030,7 @@ Ymwadiad Heddlu De Cymru\South Wales Police Disclaimer
 
 Gallai defnyddio neu ddatgelu''r neges e-bost hon heb awdurdod fod yn anghyfreithlon. Gallwch weld ein datganiad cyfrinachedd yn: https://www.heddlu-de-cymru.police.uk/cy-GB/heddluoedd/heddlu-de-cymru/ardaloedd/amdanom-ni/amdanom-ni/datganiad-cyfrinachedd-e-bost/".
 
-Unauthorised use or disclosure of this email may be unlawful. View our confidentiality statement at https://www.south-wales.police.uk/police-forces/south-wales-police/areas/about-us/about-us/email-confidentiality-statement/.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-3/#t9','cq-1667');
+Unauthorised use or disclosure of this email may be unlawful. View our confidentiality statement at https://www.south-wales.police.uk/police-forces/south-wales-police/areas/about-us/about-us/email-confidentiality-statement/.','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-3/#t9','cq-1667,cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-0f501c90d27c','5 Robin Hill, Dinas Powys CF64 4TF, United Kingdom is the address from
 which I''m registered to vote. Our families home since the 60''s.
 
@@ -18221,7 +18294,7 @@ INSERT INTO qa VALUES ('qa-924df4ac42d6','rcahmw','Royal Commission (RCAHMW)','g
 
 10) We do not hold any information relating to the circumstances of the December 1988 visit outside of Archive Number 6048945.
 
-11) Physical searc','not-held','reply-only','RC26-0375','https://mail.google.com/mail/u/0/#all/1a11178b91ab138c','cq-recording,cq-1974');
+11) Physical searc','not-held','reply-only','RC26-0375','https://mail.google.com/mail/u/0/#all/1a11178b91ab138c','cq-1881-name,cq-recording,cq-1974');
 INSERT INTO qa_fts VALUES ('qa-924df4ac42d6','Reply received: RC26-0375 - Ty Mawr/ Great House, Llandough, Cardiff - Further response','1) Our searches have been extensive: registered files (the only administrative records held long-term), full term-based and spatial searches of the NMRW archive catalogue, and a manual search for uncatalogued material, using all relevant site names and terms you enumerated — except the historic aerial photography collections, which would incur a charge.
 
 2) No record of the C.N. Johns / Mrs Buckler correspondence or allusion to the same is extant in our records, with the exception of the brief note in Archive 6048945.
@@ -18417,7 +18490,7 @@ FOI Team
 foi.requests @museumwales.ac.uk
 amgueddfa.cymru | museum.wales
 
-Rhif elusen | Charity number 525774','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t5','cq-demolition');
+Rhif elusen | Charity number 525774','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t5','cq-1881-name,cq-water,cq-demolition');
 INSERT INTO qa_fts VALUES ('qa-bdd757cb6344','Explicit parish confirmation for the page of MS 3360/3 identified as relating to Great House Farm: which Llandough, and any vendor / tenant / acreage / parcel detail that identifies the holding.
 Confirmation whether Ref 13.2 is recorded as the Penarth site opposite the hospital, or as the farmhouse demolished by BP on 6 December 1988.
 
@@ -18463,7 +18536,7 @@ FOI Team
 foi.requests @museumwales.ac.uk
 amgueddfa.cymru | museum.wales
 
-Rhif elusen | Charity number 525774','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t5','');
+Rhif elusen | Charity number 525774','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t5','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-3e5a252ae020','Does the MS 3360/3 page or plan itself contain any further recorded identifier which identifies which historical Llandough is meant — for example the specific place-name form, neighbouring farms, estate owner, parish/benefice wording, acreage breakdown, plan number, tenant information, road, church or other geographical feature?','Dear Mr Buckler
 
 Thank you for your email.
@@ -18504,7 +18577,7 @@ FOI Team
 foi.requests @museumwales.ac.uk
 amgueddfa.cymru | museum.wales
 
-Rhif elusen | Charity number 525774','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t5','');
+Rhif elusen | Charity number 525774','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t5','cq-1881-name,cq-water');
 INSERT INTO qa_fts VALUES ('qa-9ee11a86d140','You do not hold a separate recorded document listing, item by item, which search results were excluded. Please state which systems were searched for that schedule (collections database, search-export, review log, email, paper file) and whether a physical file was retrieved, and by whom and on what date. A not-held answer is incomplete without that (FOIA s.16).
 MS 3360/3: the page already supplied records Great House as part of the 1924 Llandough Estate sale particulars, occupied by W.G. Thomas & Sons, about 202 acres, Parish of Llanfair, homestead in the Village of Llandough. Please confirm whether the catalogue or the page itself names which Llandough (Llandough-juxta-Penarth or Llandough-juxta-Cowbridge). If that is not on the page or in the catalogue entry, say so.','Mr Buckler
 
@@ -18557,7 +18630,7 @@ Specifically, I request the following:
 
 + Vale of Glamorgan Council
 
-+ Welsh Office (as i','not-held','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/ministry-of-defence-email-correspondence-catalogue/#t5','cq-demolition');
++ Welsh Office (as i','not-held','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/ministry-of-defence-email-correspondence-catalogue/#t5','cq-1881-name,cq-demolition');
 INSERT INTO qa_fts VALUES ('qa-854a50de08fa','Reply received: DBS Response to your Subject Access Request (SAR)','Ref: Subject Access Request DPR2026/46503
 
 Dear Mr Buckler,
@@ -18680,7 +18753,7 @@ FOI Team
 foi.requests @museumwales.ac.uk
 amgueddfa.cymru | museum.wales
 
-Rhif elusen | Charity number 525774','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t6','cq-armour');
+Rhif elusen | Charity number 525774','not-held','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/amgueddfa-cymru-museum-wales-email-correspondence-catalogue/#t6','cq-1881-name,cq-armour');
 INSERT INTO qa_fts VALUES ('qa-8bf37817b49c','Confirmation that the full set of records located in the August searches has now been disclosed or, if any remain withheld, the precise exemption relied upon for each.
 
 Please treat this as a request for the information that should have been provided under the internal review of 2026-024. This is for the completeness of the evidence library on the public record.
@@ -18821,7 +18894,7 @@ South Wales Police welcomes receiving correspondence in Welsh and English. Any c
 
 Ymwadiad Heddlu De Cymru\South Wales Police Disclaimer
 
-Gallai defnyddio neu ddatgelu’r neges e-bost hon heb awdurdod fod yn anghyfreithlon. Gallwch weld ein datganiad cyfrinachedd yn: https://www.heddlu-de-cymru.police.uk/cy-GB/heddluoedd/heddlu-de-cymru/ardaloedd/amdanom-ni/am','pending','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-3/#t10','cq-demolition');
+Gallai defnyddio neu ddatgelu’r neges e-bost hon heb awdurdod fod yn anghyfreithlon. Gallwch weld ein datganiad cyfrinachedd yn: https://www.heddlu-de-cymru.police.uk/cy-GB/heddluoedd/heddlu-de-cymru/ardaloedd/amdanom-ni/am','pending','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue-part-3/#t10','cq-1881-name,cq-demolition');
 INSERT INTO qa_fts VALUES ('qa-fd503d885425','Reply received: RE: FOI 1264/26 - non-personal operational records concerning Great House Farm / Tŷ Mawr, Llandough, November–December 1988','Good afternoon,
 
 Thank you for your email pertaining to FOI request 1264/26.
@@ -18863,7 +18936,7 @@ Confirmation of the repositories to which any surviving pre-1997 paper files fro
 This request is distinct from ATISN 27021 and ATISN 27589 and should not be merged with them. Please confirm the statutory response date.
 
 Yours sincerely,
-Sion Buckler (Ret''d Sergeant), Royal Signals Cyber/Electronic Warfare Professional and Life Member','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t9','cq-1938-1939,cq-listing');
+Sion Buckler (Ret''d Sergeant), Royal Signals Cyber/Electronic Warfare Professional and Life Member','','','unanswered','unanswered','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-3/#t9','cq-1881-name,cq-1938-1939,cq-listing');
 INSERT INTO qa_fts VALUES ('qa-ebb683674f53','Any recorded information identifying whether files in those series that would have related to Great House Farm / Tŷ Mawr / Llandough-juxta-Penarth, or to the companies Western Ground Rents Ltd or BP Properties Ltd, were destroyed, transferred or retained, and if destroyed the date and authority.
 Confirmation of the repositories to which any surviving pre-1997 paper files from the relevant series were transferred (e.g. National Assembly / Welsh Government / The National Archives / other).
 
@@ -18928,7 +19001,7 @@ Unfortunately, on this occasion we will be unable to consider the request for se
 3. We are aware through other correspondence to which you have copied us into that there are ongoing concerns being raised through a variety of channels including Welsh Government, CADW, MSs and MPs, and as such it would not be appropriate for a Scrutiny Task and Finish to add an additional layer of stakeholders and complexity in exploring the issues; notwithstanding points 1 and 2 raised.
 
 Kind Regards,
-James','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t5','');
+James','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue-part-3/#t5','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-1026edf3ce9f','Democratic and Scrutiny Services
 Vale of Glamorgan Council
 Democratic@valeofglamorgan.gov.uk

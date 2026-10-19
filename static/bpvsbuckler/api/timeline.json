@@ -19,9 +19,9 @@
     "transcript": "https://bpvsbuckler.bucklerfamily.estate/story/transcript.txt",
     "llms": "https://bpvsbuckler.bucklerfamily.estate/llms.txt"
   },
-  "version": "v0.0.0.67",
-  "last_updated": "2026-10-17",
-  "total_entries": 116,
+  "version": "v0.0.0.68",
+  "last_updated": "2026-10-19",
+  "total_entries": 120,
   "acts": [
     {
       "id": "P",
@@ -783,7 +783,111 @@
     },
     {
       "order": 11,
+      "ref": "P.11",
+      "id": "ghf-18550101-1",
+      "act": "P",
+      "date": "1855-01-01",
+      "when": "1855",
+      "title": "John Williams succeeds his father",
+      "place": "Great House Farm",
+      "parcel": "AB",
+      "basis": "Newspaper",
+      "narration": "John Williams succeeds his father as the Bute Estate's tenant. Reporting the Bute rent audit dinner of July 1904, the Cardiff Times says he \"succeeded his father in the tenancy of the farm in 1855\", and that it was \"his 102nd rent audit\".",
+      "family_case": null,
+      "title_ledger": {
+        "Great House (one farm)": "Lordship of the manor (1793) and farm freehold (early 19th century): the Bute Estate · tenants: the Williamses"
+      },
+      "title_moves": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "One newspaper line, written 49 years later, gives 1855 as the start of John Williams's tenancy and says he took it over from his father; the 1841 tithe already has a John Williams holding about 120 acres at Tŷ Mawr. Against it: the 1904 report calls him \"of Llandough Farm\", the name of the Rees family's separate farm, so reading it as Great House rests on the directories, which put him at \"Great House\" in 1891 and 1901 (an inference, not proof). The Bute rent audits that would confirm 1855 have not been seen.",
+      "cast": [
+        "john",
+        "bute"
+      ],
+      "evidence": [
+        {
+          "type": "Newspaper",
+          "title": "Cardiff Times, 16 July 1904, p.1 — Bute rent audit dinner (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/3427270/3427271/13/"
+        },
+        {
+          "type": "Wiki page",
+          "title": "EV-0215 — Tithe apportionment: John Williams, c. 1841",
+          "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0215-tithe-apportionment-john-williams-c1841/"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18550101-1"
+    },
+    {
+      "order": 12,
       "ref": "I.1",
+      "id": "ghf-18680101-1",
+      "act": "I",
+      "date": "1868-01-01",
+      "when": "1868 – 1901",
+      "title": "\"Williams John, Great house\"",
+      "place": "Trade directories",
+      "parcel": "AB",
+      "basis": "Publication",
+      "narration": "The trade directories list the farmers of Llandough parish. Every edition from 1868 to 1901 has \"Williams John, Great house\", from 1887 \"Great House farm, Llandough\". Thomas Rees, and later Evan Rees, are listed separately, at Llandough Farm, a different Bute farm.",
+      "family_case": null,
+      "title_ledger": {
+        "Great House (one farm)": "Lordship of the manor (1793) and farm freehold (early 19th century): the Bute Estate · tenants: the Williamses"
+      },
+      "title_moves": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "Six directories over 33 years put the same John Williams at Great House and the Rees family at Llandough Farm, so the two farms, and the two families, were distinct. Against it: directories copy from one edition to the next and record what the compiler was told; none uses the name \"Home Farm\"; and the press of 1895 and 1904 sometimes calls a Williams \"of Llandough Farm\", so that name in a source does not always mean the Rees farm.",
+      "cast": [
+        "bute"
+      ],
+      "evidence": [
+        {
+          "type": "Publication",
+          "title": "Slater's Directory 1868, p.902, Llandough: \"Williams John, Great house\" (University of Leicester Historical Directories)",
+          "url": "https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/91309"
+        },
+        {
+          "type": "Publication",
+          "title": "Worrall's Directory 1875, p.324, farmers in Llandough parish: \"Williams John, Great house\" (University of Leicester Historical Directories)",
+          "url": "https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/348840"
+        },
+        {
+          "type": "Publication",
+          "title": "Slater's Directory 1880, p.533, farmers in Llandough: \"Williams John, Greathouse\" (University of Leicester Historical Directories)",
+          "url": "https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/90316"
+        },
+        {
+          "type": "Publication",
+          "title": "Owen's Cardiff Directory 1887, p.209: \"Williams John, Great House farm, Llandough\" (University of Leicester Historical Directories)",
+          "url": "https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/92950"
+        },
+        {
+          "type": "Publication",
+          "title": "Owen's Cardiff Directory 1891, p.237: \"Williams John, overseer, Great House farm, Llandough\" (University of Leicester Historical Directories)",
+          "url": "https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/93394"
+        },
+        {
+          "type": "Publication",
+          "title": "Cardiff Directory 1901, p.309: \"Williams John, Great House farm, Llandough\" (University of Leicester Historical Directories)",
+          "url": "https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/95085"
+        },
+        {
+          "type": "Newspaper",
+          "title": "Weekly Mail, 6 November 1886 — Thomas Rees, aged 89, of Llandough Farm, \"rented from the Marquess of Bute\"",
+          "url": "https://newspapers.library.wales/view/3365383/3365390/150/"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18680101-1"
+    },
+    {
+      "order": 13,
+      "ref": "I.2",
       "id": "ghf-18700101-1",
       "act": "I",
       "date": "1870-01-01",
@@ -838,8 +942,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18700101-1"
     },
     {
-      "order": 12,
-      "ref": "I.2",
+      "order": 14,
+      "ref": "I.3",
       "id": "ghf-18700101-2",
       "act": "I",
       "date": "1870-01-02",
@@ -897,8 +1001,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18700101-2"
     },
     {
-      "order": 13,
-      "ref": "I.3",
+      "order": 15,
+      "ref": "I.4",
       "id": "ghf-18760101-1",
       "act": "I",
       "date": "1876-01-01",
@@ -931,8 +1035,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18760101-1"
     },
     {
-      "order": 14,
-      "ref": "I.4",
+      "order": 16,
+      "ref": "I.5",
       "id": "ghf-18770101-1",
       "act": "I",
       "date": "1877-01-01",
@@ -998,8 +1102,65 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18770101-1"
     },
     {
-      "order": 15,
-      "ref": "I.5",
+      "order": 17,
+      "ref": "I.6",
+      "id": "ghf-18810403-1",
+      "act": "I",
+      "date": "1881-04-03",
+      "when": "3 April 1881",
+      "title": "The 1881 census: \"Llandough Home Farm\"",
+      "place": "Census, Llandough (RG11/5288 p.2)",
+      "parcel": "AB",
+      "basis": "Public record",
+      "narration": "The 1881 census records \"Llandough Home Farm\": John Williams, 53, \"Farmer of 170 [? or 120] ac. employing 1 man and 1 boy\", born at Leckwith; his wife Mary, 51, born at Cogan; their children Ellen, 14, John, 13, and David, 9; a boarder and a servant. Per Sion Buckler, this is Great House Farm entered under the wrong name. The directories of 1880 and 1887 place the same John Williams at Great House.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends",
+        "Parcel B: the fields": "Freehold: the Bute Estate · tenants: the Williamses"
+      },
+      "title_moves": [],
+      "received_account": null,
+      "received_wording": [
+        {
+          "said": "\"Llandough Home Farm\"",
+          "note": "The enumerator's label. No other source found uses it: no newspaper (Welsh Newspapers Online, 1804–1919), directory or Ordnance Survey map."
+        }
+      ],
+      "what_we_now_know": "The household is the John Williams whom the directories place at Great House before and after 1881. The Rees family were at Llandough Farm. On identity the record supports Sion Buckler's reading. Against it: \"Home Farm\" appears nowhere else, so it cannot be offered as a second name for the farm; and the acreage is hard to read: 170 would fit Llandough Farm (166 acres in 1824–32) better than Great House (about 120 acres in the 1841 tithe), while 120 fits Great House. Folio and enumeration district: source pending. EV-0223 records a different, dictated reading of the farm name that this page does not show.",
+      "cast": [
+        "mary",
+        "john"
+      ],
+      "evidence": [
+        {
+          "type": "Public record",
+          "title": "EV-0224 — 1881 census, Llandough, RG11/5288 p.2 (photograph and transcription)",
+          "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0224-1881-census-llandough-rg11-5288/",
+          "image": "https://bpvsbuckler.bucklerfamily.estate/media/1881-census-rg11-5288-p2.jpg"
+        },
+        {
+          "type": "Publication",
+          "title": "Slater's Directory 1880, p.533, farmers in Llandough: \"Williams John, Greathouse\" (University of Leicester Historical Directories)",
+          "url": "https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/90316"
+        },
+        {
+          "type": "Publication",
+          "title": "Owen's Cardiff Directory 1887, p.209: \"Williams John, Great House farm, Llandough\" (University of Leicester Historical Directories)",
+          "url": "https://leicester.contentdm.oclc.org/digital/collection/p16445coll4/id/92950"
+        },
+        {
+          "type": "Wiki page",
+          "title": "EV-0223 — 1881 census: a dictated variant of the farm name (pending)",
+          "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0223-1881-census-name-variant/"
+        }
+      ],
+      "image": "https://bpvsbuckler.bucklerfamily.estate/media/1881-census-rg11-5288-p2.jpg",
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18810403-1"
+    },
+    {
+      "order": 18,
+      "ref": "I.7",
       "id": "ghf-18911111-1",
       "act": "I",
       "date": "1891-11-11",
@@ -1027,6 +1188,11 @@
           "title": "1891 court report — farmyard theft",
           "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n01",
           "image": "https://bpvsbuckler.bucklerfamily.estate/media/ghf-e090-n01-1891-farmyard-theft.jpg"
+        },
+        {
+          "type": "Newspaper",
+          "title": "South Wales Star, 10 June 1892 — geese \"the property of Mr. John Williams, Great House Farm, Llandough, on November 11, 1891\" (Welsh Newspapers Online)",
+          "url": "https://newspapers.library.wales/view/3019697/3019705/78/"
         }
       ],
       "image": "https://bpvsbuckler.bucklerfamily.estate/media/ghf-e090-n01-1891-farmyard-theft.jpg",
@@ -1034,8 +1200,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18911111-1"
     },
     {
-      "order": 16,
-      "ref": "I.6",
+      "order": 19,
+      "ref": "I.8",
       "id": "ghf-18970501-1",
       "act": "I",
       "date": "1897-05-01",
@@ -1068,8 +1234,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18970501-1"
     },
     {
-      "order": 17,
-      "ref": "I.7",
+      "order": 20,
+      "ref": "I.9",
       "id": "ghf-19080101-1",
       "act": "I",
       "date": "1908-01-01",
@@ -1126,8 +1292,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19080101-1"
     },
     {
-      "order": 18,
-      "ref": "I.8",
+      "order": 21,
+      "ref": "I.10",
       "id": "ghf-19130810-1",
       "act": "I",
       "date": "1913-08-10",
@@ -1166,7 +1332,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19130810-1"
     },
     {
-      "order": 19,
+      "order": 22,
       "ref": "II.1",
       "id": "ghf-19160201-1",
       "act": "II",
@@ -1224,7 +1390,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19160201-1"
     },
     {
-      "order": 20,
+      "order": 23,
       "ref": "II.2",
       "id": "ghf-19280101-1",
       "act": "II",
@@ -1286,7 +1452,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19280101-1"
     },
     {
-      "order": 21,
+      "order": 24,
       "ref": "II.3",
       "id": "ghf-19360101-1",
       "act": "II",
@@ -1336,7 +1502,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19360101-1"
     },
     {
-      "order": 22,
+      "order": 25,
       "ref": "II.4",
       "id": "ghf-19380101-1",
       "act": "II",
@@ -1385,7 +1551,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19380101-1"
     },
     {
-      "order": 23,
+      "order": 26,
       "ref": "II.5",
       "id": "ghf-19390501-1",
       "act": "II",
@@ -1429,7 +1595,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19390501-1"
     },
     {
-      "order": 24,
+      "order": 27,
       "ref": "II.6",
       "id": "ghf-19400101-1",
       "act": "II",
@@ -1470,7 +1636,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19400101-1"
     },
     {
-      "order": 25,
+      "order": 28,
       "ref": "II.7",
       "id": "ghf-19440101-1",
       "act": "II",
@@ -1512,7 +1678,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19440101-1"
     },
     {
-      "order": 26,
+      "order": 29,
       "ref": "II.8",
       "id": "ghf-19480101-1",
       "act": "II",
@@ -1548,7 +1714,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19480101-1"
     },
     {
-      "order": 27,
+      "order": 30,
       "ref": "III.1",
       "id": "ghf-19490202-1",
       "act": "III",
@@ -1609,7 +1775,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19490202-1"
     },
     {
-      "order": 28,
+      "order": 31,
       "ref": "III.2",
       "id": "ghf-19500601-1",
       "act": "III",
@@ -1667,7 +1833,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19500601-1"
     },
     {
-      "order": 29,
+      "order": 32,
       "ref": "III.3",
       "id": "ghf-19521010-1",
       "act": "III",
@@ -1710,7 +1876,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19521010-1"
     },
     {
-      "order": 30,
+      "order": 33,
       "ref": "III.4",
       "id": "ghf-19550202-1",
       "act": "III",
@@ -1772,8 +1938,64 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19550202-1"
     },
     {
-      "order": 31,
+      "order": 34,
       "ref": "III.5",
+      "id": "ghf-19581119-1",
+      "act": "III",
+      "date": "1958-11-19",
+      "when": "19 November 1958",
+      "title": "\"A Welsh case of Crichel Down\"",
+      "place": "Glamorgan County Council planning committee, Cardiff",
+      "parcel": "A",
+      "basis": "Newspaper",
+      "narration": "Mary Williams, as Mrs M. D. Buckler, objects to Glamorgan County Council's planning committee about industrial development beside Tŷ Mawr. The Western Mail reports her saying that land \"farmed by her family since 1667\" had been \"wrongfully appropriated\", that \"This is a Welsh case of Crichel Down\", and that \"the water was cut off from her house and grounds for nearly 10 years by order of Western Ground Rents\".",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold: the Williamses (Mary in the house) · woodland: the family account is that it was taken in 1955 (not yet on the wiki)",
+        "Synthetic Parcel A": "Attempt 2: High Court order against the fields tenant for \"the whole of the farm\" (house not taken; Mary never heard)",
+        "Parcel B: the fields": "Freehold and possession: Western Ground Rents (fields taken 4 July 1955)"
+      },
+      "title_moves": [],
+      "received_account": null,
+      "received_wording": [
+        {
+          "said": "\"a Welsh case of Crichel Down\"",
+          "note": "Her words, as reported. Crichel Down (1954) was the national scandal over farmland the state kept after requisition; a minister resigned over it."
+        },
+        {
+          "said": "\"by order of Western Ground Rents\"",
+          "note": "Her claim, as reported; it names the landlord, not a council."
+        }
+      ],
+      "what_we_now_know": "The only record of the time so far that the water was cut off: Mrs Buckler's own claim in 1958, as the Western Mail reported it. \"Nearly 10 years\" would put the start around 1948–49 (an inference). Per Branwen Buckler (voice testimony, relayed by Sion Buckler, 19 October 2026), the council cut the water over bills it said were unpaid, which Mary (Nancy) Williams insisted had been paid; dairy cattle drowned in the River Ely trying to reach water, a baby daughter had to live elsewhere, and the matter was raised in Parliament. What cuts against that version: the 1958 report names Western Ground Rents, not a council or a water bill; no report of cattle drowning has been found; no Commons or Lords debate or written answer has been found for 1946–92 (committee proceedings and MPs' letters are not searchable this way); and Dŵr Cymru's 2026 replies speak of a disconnection in the 1980s, so there may have been two cut-offs. The article has been read only as search snippets; the full page is still to be obtained.",
+      "cast": [
+        "mary",
+        "wgr"
+      ],
+      "evidence": [
+        {
+          "type": "Newspaper",
+          "title": "Western Mail, 20 November 1958, p.7, \"It's a Crichel Down, says woman farmer\" (SNIPPET ONLY: read from British Newspaper Archive search text; the page itself not yet seen)",
+          "url": "https://www.britishnewspaperarchive.co.uk/search/results/1950-01-01/1965-12-31?basicsearch=buckler+%22western+ground+rents%22+water&exactsearch=false&retrievecountrycounts=false"
+        },
+        {
+          "type": "Wiki page",
+          "title": "EV-0037 — Western Mail, 1958: \"Crichel Down\"",
+          "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0037-western-mail-1958-crichel-down/"
+        },
+        {
+          "type": "Testimony",
+          "title": "Testimony — Branwen Buckler",
+          "url": "https://greathousefarmwiki.wordpress.com/testimony/branwen-buckler/"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19581119-1"
+    },
+    {
+      "order": 35,
+      "ref": "III.6",
       "id": "ghf-19590101-1",
       "act": "III",
       "date": "1959-01-01",
@@ -1821,8 +2043,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19590101-1"
     },
     {
-      "order": 32,
-      "ref": "III.6",
+      "order": 36,
+      "ref": "III.7",
       "id": "ghf-19621211-1",
       "act": "III",
       "date": "1962-12-11",
@@ -1878,8 +2100,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19621211-1"
     },
     {
-      "order": 33,
-      "ref": "III.7",
+      "order": 37,
+      "ref": "III.8",
       "id": "ghf-19630601-1",
       "act": "III",
       "date": "1963-06-01",
@@ -1921,8 +2143,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19630601-1"
     },
     {
-      "order": 34,
-      "ref": "III.8",
+      "order": 38,
+      "ref": "III.9",
       "id": "ghf-19650301-1",
       "act": "III",
       "date": "1965-03-02",
@@ -1967,8 +2189,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19650301-1"
     },
     {
-      "order": 35,
-      "ref": "III.9",
+      "order": 39,
+      "ref": "III.10",
       "id": "ghf-19640101-1",
       "act": "III",
       "date": "1965-06-01",
@@ -2010,8 +2232,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19640101-1"
     },
     {
-      "order": 36,
-      "ref": "III.10",
+      "order": 40,
+      "ref": "III.11",
       "id": "ghf-19670101-1",
       "act": "III",
       "date": "1967-01-01",
@@ -2054,7 +2276,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19670101-1"
     },
     {
-      "order": 37,
+      "order": 41,
       "ref": "IV.1",
       "id": "ghf-19691231-1",
       "act": "IV",
@@ -2104,7 +2326,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19691231-1"
     },
     {
-      "order": 38,
+      "order": 42,
       "ref": "IV.2",
       "id": "ghf-19720725-1",
       "act": "IV",
@@ -2129,6 +2351,10 @@
         {
           "said": "\"the site\"",
           "note": "Both parcels treated as one development site."
+        },
+        {
+          "said": "\"VG41\"",
+          "note": "The village green registered on 16 June 1970. The Commons Registration (Glamorgan) Act 1983 validated the registers of common land only and does not mention village greens, so it neither validated nor redrew VG41."
         }
       ],
       "what_we_now_know": "Permission was granted over a house whose ownership was disputed, while its owner lived in it. In 1990 a condition of the outline permission provided for a 0.25-acre village green beside the site. The family's account is that the land south of the farmhouse, part of Parcel A, was taken by the council and laid out as a green in the 1980s. (Family account, not yet recorded on the wiki.)",
@@ -2145,6 +2371,11 @@
           "type": "Wiki page",
           "title": "Master Timeline",
           "url": "https://greathousefarmwiki.wordpress.com/timeline/"
+        },
+        {
+          "type": "Legislation",
+          "title": "Commons Registration (Glamorgan) Act 1983 (c. ix): validates the registers of common land only; village greens are not covered",
+          "url": "https://www.legislation.gov.uk/ukla/1983/9"
         }
       ],
       "image": null,
@@ -2154,7 +2385,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19720725-1"
     },
     {
-      "order": 39,
+      "order": 43,
       "ref": "IV.3",
       "id": "ghf-19740101-1",
       "act": "IV",
@@ -2210,7 +2441,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19740101-1"
     },
     {
-      "order": 40,
+      "order": 44,
       "ref": "IV.4",
       "id": "ghf-19740415-1",
       "act": "IV",
@@ -2257,7 +2488,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19740415-1"
     },
     {
-      "order": 41,
+      "order": 45,
       "ref": "IV.5",
       "id": "ghf-19740703-1",
       "act": "IV",
@@ -2307,7 +2538,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19740703-1"
     },
     {
-      "order": 42,
+      "order": 46,
       "ref": "IV.6",
       "id": "ghf-19741031-1",
       "act": "IV",
@@ -2368,7 +2599,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19741031-1"
     },
     {
-      "order": 43,
+      "order": 47,
       "ref": "IV.7",
       "id": "ghf-19741119-1",
       "act": "IV",
@@ -2408,7 +2639,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19741119-1"
     },
     {
-      "order": 44,
+      "order": 48,
       "ref": "IV.8",
       "id": "ghf-19750523-1",
       "act": "IV",
@@ -2452,7 +2683,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19750523-1"
     },
     {
-      "order": 45,
+      "order": 49,
       "ref": "IV.9",
       "id": "ghf-19800522-1",
       "act": "IV",
@@ -2491,7 +2722,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19800522-1"
     },
     {
-      "order": 46,
+      "order": 50,
       "ref": "IV.10",
       "id": "ghf-19821001-1",
       "act": "IV",
@@ -2548,7 +2779,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19821001-1"
     },
     {
-      "order": 47,
+      "order": 51,
       "ref": "IV.11",
       "id": "ghf-19821119-1",
       "act": "IV",
@@ -2597,7 +2828,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19821119-1"
     },
     {
-      "order": 48,
+      "order": 52,
       "ref": "IV.12",
       "id": "ghf-19830223-1",
       "act": "IV",
@@ -2645,7 +2876,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19830223-1"
     },
     {
-      "order": 49,
+      "order": 53,
       "ref": "IV.13",
       "id": "ghf-19830326-1",
       "act": "IV",
@@ -2693,7 +2924,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19830326-1"
     },
     {
-      "order": 50,
+      "order": 54,
       "ref": "IV.14",
       "id": "ghf-19830408-1",
       "act": "IV",
@@ -2729,7 +2960,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19830408-1"
     },
     {
-      "order": 51,
+      "order": 55,
       "ref": "V.1",
       "id": "ghf-19840522-1",
       "act": "V",
@@ -2787,7 +3018,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19840522-1"
     },
     {
-      "order": 52,
+      "order": 56,
       "ref": "V.2",
       "id": "ghf-19860710-1",
       "act": "V",
@@ -2835,7 +3066,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19860710-1"
     },
     {
-      "order": 53,
+      "order": 57,
       "ref": "V.3",
       "id": "ghf-19860711-1",
       "act": "V",
@@ -2871,7 +3102,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19860711-1"
     },
     {
-      "order": 54,
+      "order": 58,
       "ref": "V.4",
       "id": "ghf-19870202-1",
       "act": "V",
@@ -2929,7 +3160,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19870202-1"
     },
     {
-      "order": 55,
+      "order": 59,
       "ref": "V.5",
       "id": "ghf-19870731-1",
       "act": "V",
@@ -2986,7 +3217,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19870731-1"
     },
     {
-      "order": 56,
+      "order": 60,
       "ref": "V.6",
       "id": "ghf-19880303-1",
       "act": "V",
@@ -3021,7 +3252,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19880303-1"
     },
     {
-      "order": 57,
+      "order": 61,
       "ref": "VI.1",
       "id": "ghf-19880429-1",
       "act": "VI",
@@ -3064,7 +3295,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19880429-1"
     },
     {
-      "order": 58,
+      "order": 62,
       "ref": "VI.2",
       "id": "ghf-19880429-2",
       "act": "VI",
@@ -3119,7 +3350,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19880429-2"
     },
     {
-      "order": 59,
+      "order": 63,
       "ref": "VI.3",
       "id": "ghf-19880512-1",
       "act": "VI",
@@ -3163,7 +3394,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19880512-1"
     },
     {
-      "order": 60,
+      "order": 64,
       "ref": "VI.4",
       "id": "ghf-19880729-1",
       "act": "VI",
@@ -3210,7 +3441,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19880729-1"
     },
     {
-      "order": 61,
+      "order": 65,
       "ref": "VI.5",
       "id": "ghf-19881130-1",
       "act": "VI",
@@ -3269,7 +3500,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881130-1"
     },
     {
-      "order": 62,
+      "order": 66,
       "ref": "VI.6",
       "id": "ghf-19881201-1",
       "act": "VI",
@@ -3311,7 +3542,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881201-1"
     },
     {
-      "order": 63,
+      "order": 67,
       "ref": "VI.7",
       "id": "ghf-19881202-1",
       "act": "VI",
@@ -3356,7 +3587,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881202-1"
     },
     {
-      "order": 64,
+      "order": 68,
       "ref": "VI.8",
       "id": "ghf-19881209-1",
       "act": "VI",
@@ -3400,7 +3631,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881209-1"
     },
     {
-      "order": 65,
+      "order": 69,
       "ref": "VI.9",
       "id": "ghf-19881203-1",
       "act": "VI",
@@ -3440,7 +3671,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881203-1"
     },
     {
-      "order": 66,
+      "order": 70,
       "ref": "VI.10",
       "id": "ghf-19881205-1",
       "act": "VI",
@@ -3484,7 +3715,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881205-1"
     },
     {
-      "order": 67,
+      "order": 71,
       "ref": "VI.11",
       "id": "ghf-19881206-1",
       "act": "VI",
@@ -3549,7 +3780,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881206-1"
     },
     {
-      "order": 68,
+      "order": 72,
       "ref": "VI.12",
       "id": "ghf-19881208-1",
       "act": "VI",
@@ -3602,7 +3833,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881208-1"
     },
     {
-      "order": 69,
+      "order": 73,
       "ref": "VI.13",
       "id": "ghf-19881212-1",
       "act": "VI",
@@ -3652,7 +3883,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881212-1"
     },
     {
-      "order": 70,
+      "order": 74,
       "ref": "VII.1",
       "id": "ghf-19890320-1",
       "act": "VII",
@@ -3687,7 +3918,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19890320-1"
     },
     {
-      "order": 71,
+      "order": 75,
       "ref": "VII.2",
       "id": "ghf-19890323-1",
       "act": "VII",
@@ -3743,7 +3974,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19890323-1"
     },
     {
-      "order": 72,
+      "order": 76,
       "ref": "VII.3",
       "id": "ghf-19890325-1",
       "act": "VII",
@@ -3779,7 +4010,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19890325-1"
     },
     {
-      "order": 73,
+      "order": 77,
       "ref": "VII.4",
       "id": "ghf-19890414-1",
       "act": "VII",
@@ -3822,7 +4053,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19890414-1"
     },
     {
-      "order": 74,
+      "order": 78,
       "ref": "VII.5",
       "id": "ghf-19891107-1",
       "act": "VII",
@@ -3882,7 +4113,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19891107-1"
     },
     {
-      "order": 75,
+      "order": 79,
       "ref": "VII.6",
       "id": "ghf-19900313-1",
       "act": "VII",
@@ -3929,7 +4160,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19900313-1"
     },
     {
-      "order": 76,
+      "order": 80,
       "ref": "VII.7",
       "id": "ghf-19900529-1",
       "act": "VII",
@@ -3968,7 +4199,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19900529-1"
     },
     {
-      "order": 77,
+      "order": 81,
       "ref": "VII.8",
       "id": "ghf-19900801-1",
       "act": "VII",
@@ -4021,7 +4252,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19900801-1"
     },
     {
-      "order": 78,
+      "order": 82,
       "ref": "VII.9",
       "id": "ghf-19910821-1",
       "act": "VII",
@@ -4067,7 +4298,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19910821-1"
     },
     {
-      "order": 79,
+      "order": 83,
       "ref": "VII.10",
       "id": "ghf-19920514-1",
       "act": "VII",
@@ -4102,7 +4333,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19920514-1"
     },
     {
-      "order": 80,
+      "order": 84,
       "ref": "VII.11",
       "id": "ghf-19920727-1",
       "act": "VII",
@@ -4137,7 +4368,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19920727-1"
     },
     {
-      "order": 81,
+      "order": 85,
       "ref": "VII.12",
       "id": "ghf-19920903-1",
       "act": "VII",
@@ -4175,7 +4406,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19920903-1"
     },
     {
-      "order": 82,
+      "order": 86,
       "ref": "VII.13",
       "id": "ghf-19931203-1",
       "act": "VII",
@@ -4236,7 +4467,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19931203-1"
     },
     {
-      "order": 83,
+      "order": 87,
       "ref": "VII.14",
       "id": "ghf-19940504-1",
       "act": "VII",
@@ -4281,7 +4512,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19940504-1"
     },
     {
-      "order": 84,
+      "order": 88,
       "ref": "VII.15",
       "id": "ghf-19940728-1",
       "act": "VII",
@@ -4326,7 +4557,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19940728-1"
     },
     {
-      "order": 85,
+      "order": 89,
       "ref": "VII.16",
       "id": "ghf-19941110-1",
       "act": "VII",
@@ -4374,7 +4605,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19941110-1"
     },
     {
-      "order": 86,
+      "order": 90,
       "ref": "VII.17",
       "id": "ghf-20050101-1",
       "act": "VII",
@@ -4419,7 +4650,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20050101-1"
     },
     {
-      "order": 87,
+      "order": 91,
       "ref": "VII.18",
       "id": "ghf-20190320-1",
       "act": "VII",
@@ -4454,7 +4685,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20190320-1"
     },
     {
-      "order": 88,
+      "order": 92,
       "ref": "VIII.1",
       "id": "ghf-20251117-1",
       "act": "VIII",
@@ -4494,7 +4725,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20251117-1"
     },
     {
-      "order": 89,
+      "order": 93,
       "ref": "VIII.2",
       "id": "ghf-20260323-1",
       "act": "VIII",
@@ -4541,7 +4772,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260323-1"
     },
     {
-      "order": 90,
+      "order": 94,
       "ref": "VIII.3",
       "id": "ghf-20260419-1",
       "act": "VIII",
@@ -4583,7 +4814,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260419-1"
     },
     {
-      "order": 91,
+      "order": 95,
       "ref": "VIII.4",
       "id": "ghf-20260521-1",
       "act": "VIII",
@@ -4639,7 +4870,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260521-1"
     },
     {
-      "order": 92,
+      "order": 96,
       "ref": "VIII.5",
       "id": "ghf-20260730-1",
       "act": "VIII",
@@ -4681,7 +4912,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260730-1"
     },
     {
-      "order": 93,
+      "order": 97,
       "ref": "VIII.6",
       "id": "ghf-20260825-1",
       "act": "VIII",
@@ -4719,7 +4950,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260825-1"
     },
     {
-      "order": 94,
+      "order": 98,
       "ref": "VIII.7",
       "id": "ghf-20260908-1",
       "act": "VIII",
@@ -4754,7 +4985,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260908-1"
     },
     {
-      "order": 95,
+      "order": 99,
       "ref": "VIII.8",
       "id": "ghf-20260917-1",
       "act": "VIII",
@@ -4809,7 +5040,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260917-1"
     },
     {
-      "order": 96,
+      "order": 100,
       "ref": "VIII.9",
       "id": "ghf-20260923-1",
       "act": "VIII",
@@ -4855,7 +5086,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260923-1"
     },
     {
-      "order": 97,
+      "order": 101,
       "ref": "VIII.10",
       "id": "ghf-20260925-1",
       "act": "VIII",
@@ -4893,7 +5124,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260925-1"
     },
     {
-      "order": 98,
+      "order": 102,
       "ref": "VIII.11",
       "id": "ghf-20260927-1",
       "act": "VIII",
@@ -4934,7 +5165,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260927-1"
     },
     {
-      "order": 99,
+      "order": 103,
       "ref": "VIII.12",
       "id": "ghf-20260929-1",
       "act": "VIII",
@@ -4981,7 +5212,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260929-1"
     },
     {
-      "order": 100,
+      "order": 104,
       "ref": "VIII.13",
       "id": "ghf-20261006-1",
       "act": "VIII",
@@ -5040,7 +5271,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20261006-1"
     },
     {
-      "order": 101,
+      "order": 105,
       "ref": "O.1",
       "id": "ghf-obvious-01",
       "act": "O",
@@ -5083,7 +5314,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-01"
     },
     {
-      "order": 102,
+      "order": 106,
       "ref": "O.2",
       "id": "ghf-obvious-02",
       "act": "O",
@@ -5133,7 +5364,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-02"
     },
     {
-      "order": 103,
+      "order": 107,
       "ref": "O.3",
       "id": "ghf-obvious-03",
       "act": "O",
@@ -5179,7 +5410,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-03"
     },
     {
-      "order": 104,
+      "order": 108,
       "ref": "O.4",
       "id": "ghf-obvious-04",
       "act": "O",
@@ -5219,7 +5450,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-04"
     },
     {
-      "order": 105,
+      "order": 109,
       "ref": "O.5",
       "id": "ghf-obvious-05",
       "act": "O",
@@ -5264,7 +5495,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-05"
     },
     {
-      "order": 106,
+      "order": 110,
       "ref": "O.6",
       "id": "ghf-obvious-06",
       "act": "O",
@@ -5315,7 +5546,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-06"
     },
     {
-      "order": 107,
+      "order": 111,
       "ref": "O.7",
       "id": "ghf-obvious-07",
       "act": "O",
@@ -5359,7 +5590,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-07"
     },
     {
-      "order": 108,
+      "order": 112,
       "ref": "O.8",
       "id": "ghf-obvious-08",
       "act": "O",
@@ -5405,7 +5636,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-08"
     },
     {
-      "order": 109,
+      "order": 113,
       "ref": "O.9",
       "id": "ghf-obvious-09",
       "act": "O",
@@ -5450,7 +5681,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-09"
     },
     {
-      "order": 110,
+      "order": 114,
       "ref": "O.10",
       "id": "ghf-obvious-10",
       "act": "O",
@@ -5496,7 +5727,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-10"
     },
     {
-      "order": 111,
+      "order": 115,
       "ref": "O.11",
       "id": "ghf-obvious-11",
       "act": "O",
@@ -5537,7 +5768,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-11"
     },
     {
-      "order": 112,
+      "order": 116,
       "ref": "E.1",
       "id": "ghf-99990101-1",
       "act": "E",
@@ -5606,7 +5837,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-1"
     },
     {
-      "order": 113,
+      "order": 117,
       "ref": "E.2",
       "id": "ghf-99990101-4",
       "act": "E",
@@ -5663,7 +5894,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-4"
     },
     {
-      "order": 114,
+      "order": 118,
       "ref": "E.3",
       "id": "ghf-99990101-2",
       "act": "E",
@@ -5706,7 +5937,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-2"
     },
     {
-      "order": 115,
+      "order": 119,
       "ref": "E.4",
       "id": "ghf-99990101-3",
       "act": "E",
@@ -5744,7 +5975,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-3"
     },
     {
-      "order": 116,
+      "order": 120,
       "ref": "E.5",
       "id": "ghf-99990102-1",
       "act": "E",
