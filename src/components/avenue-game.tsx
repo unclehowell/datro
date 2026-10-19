@@ -285,19 +285,169 @@ function drawClimber(ctx: CanvasRenderingContext2D, x: number, y: number, dir: n
   px(0, -4, 2, 4 - step, "#2b2b3a");
 }
 
+
+/* ---------- "Slide me": a second man visitors drag along the climb to read each email ---------- */
+
+type PathPt = { x: number; y: number };
+type PathSeg = { a: PathPt; b: PathPt; level: number; ladder: boolean; p0: number; len: number };
+
+/** The journey as one polyline: along each girder from its low end to its high end, a short step
+ *  back to the ladder, up the ladder, and so on to the top. Dragging snaps to the nearest point. */
+function buildPath(n: number) {
+  const segs: PathSeg[] = [];
+  let p = 0;
+  let cur: PathPt | null = null;
+  const to = (pt: PathPt, level: number, ladder = false) => {
+    if (cur) {
+      const len = Math.hypot(pt.x - cur.x, pt.y - cur.y);
+      if (len > 0.01) {
+        segs.push({ a: cur, b: pt, level, ladder, p0: p, len });
+        p += len;
+      }
+    }
+    cur = pt;
+  };
+  for (let li = 0; li < n; li++) {
+    const g = girder(li, n);
+    const low = g.highRight ? g.left + 4 : g.right - 4;
+    const high = g.highRight ? g.right - 4 : g.left + 4;
+    to({ x: low, y: g.yAt(low) }, li);
+    to({ x: high, y: g.yAt(high) }, li);
+    if (li < n - 1) {
+      const lx = ladderX(li, n) + 4;
+      to({ x: lx, y: g.yAt(lx) }, li);
+      to({ x: lx, y: girder(li + 1, n).yAt(lx) }, li + 1, true);
+    }
+  }
+  return { segs, total: p };
+}
+
+function pointAt(path: { segs: PathSeg[] }, p: number) {
+  const segs = path.segs;
+  let seg = segs[0];
+  for (const s of segs) {
+    seg = s;
+    if (p <= s.p0 + s.len) break;
+  }
+  const t = Math.max(0, Math.min(1, (p - seg.p0) / seg.len));
+  return { x: seg.a.x + (seg.b.x - seg.a.x) * t, y: seg.a.y + (seg.b.y - seg.a.y) * t, level: seg.level, ladder: seg.ladder };
+}
+
+/** Nearest point on the path to (x, y); among near-ties, the one closest to where he already is. */
+function snapToPath(path: { segs: PathSeg[] }, x: number, y: number, curP: number) {
+  const hits: { p: number; d: number }[] = [];
+  for (const s of path.segs) {
+    const dx = s.b.x - s.a.x;
+    const dy = s.b.y - s.a.y;
+    const t = Math.max(0, Math.min(1, ((x - s.a.x) * dx + (y - s.a.y) * dy) / (dx * dx + dy * dy)));
+    const d = Math.hypot(s.a.x + dx * t - x, s.a.y + dy * t - y);
+    hits.push({ p: s.p0 + t * s.len, d });
+  }
+  const best = Math.min(...hits.map((h) => h.d));
+  let pick = hits[0];
+  let pd = Infinity;
+  for (const h of hits) {
+    if (h.d <= best + 1.5 && Math.abs(h.p - curP) < pd) {
+      pick = h;
+      pd = Math.abs(h.p - curP);
+    }
+  }
+  return pick.p;
+}
+
+/** Path position of a point on girder `level` at x (the main low-to-high run of that girder). */
+function pathPosOnGirder(path: { segs: PathSeg[] }, level: number, x: number) {
+  const seg = path.segs.find((s) => s.level === level && !s.ladder && Math.abs(s.b.x - s.a.x) > 40) ?? path.segs[0];
+  const t = Math.max(0, Math.min(1, (x - seg.a.x) / (seg.b.x - seg.a.x)));
+  return seg.p0 + t * seg.len;
+}
+
+function drawSlider(ctx: CanvasRenderingContext2D, x: number, y: number, t: number, active: boolean, idle: boolean) {
+  // Original pixel figure, visibly different from the climber: green overalls, white hard hat,
+  // holding a board up on a pole that reads SLIDE ME.
+  const p = 2;
+  const px = (cx: number, cy: number, w: number, h: number, c: string) => {
+    ctx.fillStyle = c;
+    ctx.fillRect(x + cx * p, y + cy * p, w * p, h * p);
+  };
+  const bob = idle ? Math.round(Math.sin(t / 300) * 1.5) : 0;
+  // sign on a pole, held up in the right hand (left hand near the right-hand edge)
+  const side = x > W - 34 ? -1 : 1;
+  const sx = x + 9 * side;
+  const sy = y - 44 + bob;
+  ctx.fillStyle = "#8a6545";
+  ctx.fillRect(sx - 1, sy + 9, 2, 22);
+  ctx.fillStyle = active ? "#ffd34d" : "#f4efe6";
+  ctx.fillRect(sx - 21, sy - 3, 42, 13);
+  ctx.strokeStyle = "#14110e";
+  ctx.lineWidth = 1;
+  ctx.strokeRect(sx - 20.5, sy - 2.5, 41, 12);
+  ctx.fillStyle = "#14110e";
+  ctx.font = "800 7px Outfit, system-ui, sans-serif";
+  ctx.textBaseline = "middle";
+  ctx.textAlign = "right";
+  ctx.fillText("SLIDE", sx + 5, sy + 3.6);
+  ctx.textAlign = "left";
+  ctx.fillText("ME", sx + 8, sy + 3.6);
+  ctx.textAlign = "start";
+  ctx.textBaseline = "alphabetic";
+  // body
+  px(-2, -14, 5, 2, "#f4efe6"); // hard hat
+  px(-3, -13, 7, 1, "#f4efe6");
+  px(-2, -12, 4, 3, "#c98d5e"); // head
+  px(1, -11, 1, 1, "#111");
+  px(-3, -9, 6, 5, "#2fa36b"); // overalls
+  px(-1, -8, 2, 2, "#ffd34d"); // badge
+  if (side > 0) {
+    px(3, -12, 1, 4, "#c98d5e"); // arm up to the pole
+    px(-4, -8, 1, 3, "#c98d5e");
+  } else {
+    px(-4, -12, 1, 4, "#c98d5e");
+    px(3, -8, 1, 3, "#c98d5e");
+  }
+  px(-2, -4, 2, 4, "#1f3b2c"); // legs
+  px(0, -4, 2, 4, "#1f3b2c");
+  if (active) {
+    ctx.strokeStyle = "rgba(255,211,77,0.85)";
+    ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    ctx.ellipse(x, y + 1, 9, 2.5, 0, 0, Math.PI * 2);
+    ctx.stroke();
+  }
+}
+
+function drawPick(ctx: CanvasRenderingContext2D, s: Slot, t: number) {
+  const r = s.s / 2 + 2.5 + Math.sin(t / 160) * 0.8;
+  ctx.save();
+  ctx.strokeStyle = "#ffd34d";
+  ctx.lineWidth = 1.8;
+  ctx.shadowColor = "#ffd34d";
+  ctx.shadowBlur = 6;
+  ctx.strokeRect(s.x - r, s.y - r, r * 2, r * 2);
+  ctx.restore();
+}
+
+export type SlidePick = { index: number; level: AvLevel; pos: number; total: number; dock: "top" | "bottom" };
+
 export function AvenueGame({
   instId,
   onInstChange,
   onHit,
+  onSlide,
 }: {
   instId: string;
   onInstChange: (id: string) => void;
   onHit: (hit: GameHit, inst: AvInstitution) => void;
+  /** The slide-me man is over a log (or, with null, over none). `final` on release / key step. */
+  onSlide: (pick: SlidePick | null, inst: AvInstitution, final: boolean) => void;
 }) {
   const inst = useMemo(() => institutions.find((i) => i.id === instId) ?? institutions[0], [instId]);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
   const stateRef = useRef<{ barrels: Barrel[]; slots: Slot[] }>({ barrels: [], slots: [] });
+  const slideCb = useRef(onSlide);
+  slideCb.current = onSlide;
+  const justDragged = useRef(0);
   const n = inst.levels.length;
   const H = TOP + n * LH + BOTTOM;
   const replies = useMemo(() => {
@@ -348,6 +498,166 @@ export function AvenueGame({
       visible = entries.some((e) => e.isIntersecting);
     });
     io.observe(canvas);
+
+    // ---- the slide-me man ----
+    const path = buildPath(n);
+    // every log in journey order: girder by girder, along the walking direction, bottom row first
+    const order = slots
+      .map((sl, k) => ({ k, sl }))
+      .sort((A, B) => {
+        if (A.sl.level !== B.sl.level) return A.sl.level - B.sl.level;
+        const dir = girder(A.sl.level, n).highRight ? 1 : -1;
+        if (Math.abs(A.sl.x - B.sl.x) > 0.5) return (A.sl.x - B.sl.x) * dir;
+        return B.sl.y - A.sl.y;
+      })
+      .map((o) => o.k);
+    const slide = { p: 0, dragging: false, grabDy: 0, lift: 0, sel: -1, shown: -2, pointer: -1, downX: 0, downY: 0, moved: false };
+    let slideTimer = 0;
+    const toCanvas = (clientX: number, clientY: number) => {
+      const rect = canvas.getBoundingClientRect();
+      return { x: ((clientX - rect.left) / rect.width) * W, y: ((clientY - rect.top) / rect.height) * H };
+    };
+    const slidePoint = () => pointAt(path, slide.p);
+    /** The log under him: same girder, his x inside its column; with stacked rows, the lift picks the row. */
+    const logUnder = () => {
+      const pt = slidePoint();
+      if (pt.ladder) return -1;
+      const col = slots
+        .map((sl, k) => ({ sl, k }))
+        .filter(({ sl }) => sl.level === pt.level && Math.abs(sl.x - pt.x) <= sl.s / 2 + 1.01)
+        .sort((A, B) => Math.abs(A.sl.x - pt.x) - Math.abs(B.sl.x - pt.x) || B.sl.y - A.sl.y);
+      if (!col.length) return -1;
+      const cx = col[0].sl.x;
+      const stack = col.filter(({ sl }) => Math.abs(sl.x - cx) < 0.5).sort((A, B) => B.sl.y - A.sl.y);
+      const row = Math.max(0, Math.min(stack.length - 1, Math.round(slide.lift / (stack[0].sl.s + 1))));
+      return stack[row].k;
+    };
+    const dockFor = () => {
+      const rect = canvas.getBoundingClientRect();
+      const pt = slidePoint();
+      const screenY = rect.top + (pt.y / H) * rect.height;
+      return screenY > window.innerHeight * 0.5 ? "top" : "bottom";
+    };
+    const emit = (final: boolean) => {
+      window.clearTimeout(slideTimer);
+      const fire = () => {
+        const k = slide.sel;
+        wrap.dataset.slideLog = k >= 0 ? String(slots[k].index) : "";
+        if (k === slide.shown && !final) return;
+        slide.shown = k;
+        if (k < 0) {
+          slideCb.current(null, inst, final);
+          return;
+        }
+        const sl = slots[k];
+        slideCb.current({ index: sl.index, level: inst.levels[sl.level], pos: order.indexOf(k) + 1, total: order.length, dock: dockFor() }, inst, final);
+      };
+      // a new log settles after a short pause (no flicker while sliding past several); off the
+      // logs, the last email stays up a little longer before it closes
+      if (final) fire();
+      else slideTimer = window.setTimeout(fire, slide.sel >= 0 ? 160 : 700);
+    };
+    const publish = () => {
+      const pt = slidePoint();
+      wrap.dataset.slideX = pt.x.toFixed(1);
+      wrap.dataset.slideY = pt.y.toFixed(1);
+      wrap.setAttribute("aria-valuenow", String(slide.sel >= 0 ? order.indexOf(slide.sel) + 1 : 0));
+      if (slide.sel >= 0) {
+        const e = avenueEmails[slots[slide.sel].index];
+        wrap.setAttribute("aria-valuetext", `Email ${order.indexOf(slide.sel) + 1} of ${order.length}, ${e.out ? "sent" : "received"} ${e.d}: ${e.s || "no subject"}`);
+      } else wrap.setAttribute("aria-valuetext", "At the start, not over an email");
+      wrap.setAttribute("aria-valuemax", String(order.length));
+    };
+    wrap.dataset.slideLog = "";
+    publish();
+    const nearMan = (x: number, y: number) => {
+      const pt = slidePoint();
+      // generous grab box: the figure, and the sign he holds up
+      return x > pt.x - 32 && x < pt.x + 32 && y > pt.y - 50 && y < pt.y + 8;
+    };
+    const onDown = (ev: PointerEvent) => {
+      if (ev.button > 0) return;
+      const c = toCanvas(ev.clientX, ev.clientY);
+      if (!nearMan(c.x, c.y)) return;
+      ev.preventDefault();
+      slide.dragging = true;
+      slide.moved = false;
+      slide.pointer = ev.pointerId;
+      slide.downX = ev.clientX;
+      slide.downY = ev.clientY;
+      slide.grabDy = c.y - slidePoint().y;
+      try {
+        canvas.setPointerCapture(ev.pointerId);
+      } catch {
+        /* capture is best-effort */
+      }
+      canvas.style.cursor = "grabbing";
+    };
+    const onMove = (ev: PointerEvent) => {
+      if (!slide.dragging) {
+        if (ev.pointerType === "mouse") {
+          const c = toCanvas(ev.clientX, ev.clientY);
+          canvas.style.cursor = nearMan(c.x, c.y) ? "grab" : "";
+        }
+        return;
+      }
+      if (ev.pointerId !== slide.pointer) return;
+      ev.preventDefault();
+      if (Math.hypot(ev.clientX - slide.downX, ev.clientY - slide.downY) > 4) slide.moved = true;
+      const c = toCanvas(ev.clientX, ev.clientY);
+      const feetY = c.y - slide.grabDy;
+      slide.p = snapToPath(path, c.x, feetY, slide.p);
+      slide.lift = Math.max(0, slidePoint().y - feetY);
+      const k = logUnder();
+      slide.sel = k;
+      publish();
+      emit(false);
+    };
+    const onUp = (ev: PointerEvent) => {
+      if (!slide.dragging || ev.pointerId !== slide.pointer) return;
+      slide.dragging = false;
+      canvas.style.cursor = "";
+      justDragged.current = performance.now();
+      // he stays exactly where he was let go; the email under him stays open
+      slide.sel = logUnder();
+      publish();
+      emit(true);
+    };
+    const onTouchStart = (ev: TouchEvent) => {
+      // claim the gesture before the browser starts scrolling the page
+      const t = ev.touches[0];
+      if (!t) return;
+      const c = toCanvas(t.clientX, t.clientY);
+      if (nearMan(c.x, c.y)) ev.preventDefault();
+    };
+    const onTouchMove = (ev: TouchEvent) => {
+      if (slide.dragging) ev.preventDefault();
+    };
+    const onKey = (ev: KeyboardEvent) => {
+      if (!order.length) return;
+      let pos = slide.sel >= 0 ? order.indexOf(slide.sel) : -1;
+      if (ev.key === "ArrowRight" || ev.key === "ArrowUp") pos = Math.min(order.length - 1, pos + 1);
+      else if (ev.key === "ArrowLeft" || ev.key === "ArrowDown") pos = Math.max(0, pos < 0 ? 0 : pos - 1);
+      else if (ev.key === "Home") pos = 0;
+      else if (ev.key === "End") pos = order.length - 1;
+      else return;
+      ev.preventDefault();
+      const k = order[pos];
+      const sl = slots[k];
+      slide.p = pathPosOnGirder(path, sl.level, sl.x);
+      const stack = slots.filter((o) => o.level === sl.level && Math.abs(o.x - sl.x) < 0.5).sort((A, B) => B.y - A.y);
+      slide.lift = stack.indexOf(sl) * (sl.s + 1);
+      slide.sel = k;
+      publish();
+      emit(true);
+    };
+    canvas.addEventListener("pointerdown", onDown);
+    canvas.addEventListener("pointermove", onMove);
+    canvas.addEventListener("pointerup", onUp);
+    canvas.addEventListener("pointercancel", onUp);
+    canvas.addEventListener("touchstart", onTouchStart, { passive: false });
+    canvas.addEventListener("touchmove", onTouchMove, { passive: false });
+    wrap.addEventListener("keydown", onKey);
 
     const frame = (now: number) => {
       const dt = Math.min(48, now - last);
@@ -511,18 +821,31 @@ export function AvenueGame({
       ctx.globalAlpha = climber.alpha;
       drawClimber(ctx, climber.x, cy, climber.dir, climber.mode === "rest" ? 0 : now, climber.duck > 0);
       ctx.restore();
+      const sp = slidePoint();
+      drawSlider(ctx, sp.x, sp.y, now, slide.dragging || slide.sel >= 0, slide.p === 0 && !slide.dragging);
+      // the log he is over glows on top of him, so it stays visible under his feet
+      if (slide.sel >= 0) drawPick(ctx, slots[slide.sel], now);
     };
     raf = requestAnimationFrame(frame);
     return () => {
       cancelAnimationFrame(raf);
+      window.clearTimeout(slideTimer);
       ro.disconnect();
       io.disconnect();
+      canvas.removeEventListener("pointerdown", onDown);
+      canvas.removeEventListener("pointermove", onMove);
+      canvas.removeEventListener("pointerup", onUp);
+      canvas.removeEventListener("pointercancel", onUp);
+      canvas.removeEventListener("touchstart", onTouchStart);
+      canvas.removeEventListener("touchmove", onTouchMove);
+      wrap.removeEventListener("keydown", onKey);
     };
   }, [inst, n, H, replies]);
 
   const handleTap = (clientX: number, clientY: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+    if (performance.now() - justDragged.current < 400) return;
     const rect = canvas.getBoundingClientRect();
     const x = ((clientX - rect.left) / rect.width) * W;
     const y = ((clientY - rect.top) / rect.height) * H;
@@ -590,7 +913,14 @@ export function AvenueGame({
           ?
         </button>
       </div>
-      <div ref={wrapRef} className="overflow-hidden rounded-2xl border border-line">
+      <div
+        ref={wrapRef}
+        className="overflow-hidden rounded-2xl border border-line outline-none focus-visible:ring-2 focus-visible:ring-[#ffd34d]"
+        tabIndex={0}
+        role="slider"
+        aria-label="Slide-me man: drag him along the girders, or use the arrow keys to step from email to email"
+        aria-valuemin={0}
+      >
         <canvas
           ref={canvasRef}
           className="block touch-manipulation"

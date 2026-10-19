@@ -17,14 +17,14 @@ import {
 } from "@/data/avenues";
 import { DartWheel } from "@/components/dart-wheel";
 import { sliceFees, type WheelSlice } from "@/data/wheel";
-import { AvenueGame, type GameHit } from "@/components/avenue-game";
+import { AvenueGame, type GameHit, type SlidePick } from "@/components/avenue-game";
 import { Chip, DetailModal, Row, fmtDate } from "@/components/detail-modal";
 
 export const Route = createFileRoute("/")({ component: Home });
 
 type Sheet =
   | { kind: "cell"; party: Party; ring: Ring; slice: WheelSlice }
-  | { kind: "game"; hit: GameHit; inst: AvInstitution }
+  | { kind: "game"; hit: GameHit; inst: AvInstitution; slide?: Omit<SlidePick, "index" | "level"> }
   | { kind: "key" };
 
 /**
@@ -93,7 +93,21 @@ function Home() {
       </section>
 
       <section aria-label="Avenues game">
-        <AvenueGame instId={inst.id} onInstChange={setInstId} onHit={(hit, i) => setSheet({ kind: "game", hit, inst: i })} />
+        <AvenueGame
+          instId={inst.id}
+          onInstChange={(id) => {
+            setInstId(id);
+            setSheet((s) => (s?.kind === "game" && s.slide ? null : s));
+          }}
+          onHit={(hit, i) => setSheet({ kind: "game", hit, inst: i })}
+          onSlide={(pick, i) =>
+            setSheet((s) => {
+              if (!pick) return s?.kind === "game" && s.slide ? null : s;
+              const { index, level, ...slide } = pick;
+              return { kind: "game", hit: { kind: "email", index, level }, inst: i, slide };
+            })
+          }
+        />
       </section>
 
       <button
@@ -111,9 +125,10 @@ function Home() {
         open={sheet !== null}
         onClose={close}
         accent={sheetAccent(sheet)}
+        dock={sheet?.kind === "game" && sheet.slide ? sheet.slide.dock : undefined}
       >
         {sheet?.kind === "cell" && <CellSheet party={sheet.party} ring={sheet.ring} slice={sheet.slice} />}
-        {sheet?.kind === "game" && <GameSheet hit={sheet.hit} inst={sheet.inst} />}
+        {sheet?.kind === "game" && <GameSheet hit={sheet.hit} inst={sheet.inst} slide={sheet.slide} />}
         {sheet?.kind === "key" && <KeySheet />}
       </DetailModal>
     </main>
@@ -166,7 +181,21 @@ function CellSheet({ party, ring, slice }: { party: Party; ring: Ring; slice: Wh
   );
 }
 
-function GameSheet({ hit, inst }: { hit: GameHit; inst: AvInstitution }) {
+function emailSummary(inst: AvInstitution, level: AvLevel, index: number) {
+  const e = avenueEmails[index];
+  const ph = phases[level.phase].name;
+  const ref = e.r.length ? ` (ref ${e.r[0]})` : "";
+  if (e.out) {
+    const late = level.late.includes(e.t);
+    const waiting = level.open.includes(e.t);
+    const state = late ? "overdue, no answer found" : waiting ? "no answer found in this thread yet" : "answered or moved on";
+    return `Sion wrote to ${inst.short} on the ${ph} avenue${ref}; ${state}.`;
+  }
+  const fee = isFee(index) ? " It sought or mentioned a fee." : "";
+  return `${inst.short} replied on the ${ph} avenue${ref}: ${outcomeInfo[e.o].label.toLowerCase()}.${fee}`;
+}
+
+function GameSheet({ hit, inst, slide }: { hit: GameHit; inst: AvInstitution; slide?: { pos: number; total: number } }) {
   if (hit.kind === "email") {
     const e = avenueEmails[hit.index];
     const ph = phases[hit.level.phase];
@@ -176,6 +205,11 @@ function GameSheet({ hit, inst }: { hit: GameHit; inst: AvInstitution }) {
     const link = emailUrl(hit.index);
     return (
       <div>
+        {slide && (
+          <p className="mb-1 text-[11px] text-faint">
+            Email {slide.pos} of {slide.total} on this climb · drag him on, or use the arrow keys
+          </p>
+        )}
         <p className="text-xs tracking-[0.16em] text-brass uppercase">
           {e.out ? "Sent by Sion" : `From ${inst.short}`} · {ph.name}
         </p>
@@ -193,6 +227,8 @@ function GameSheet({ hit, inst }: { hit: GameHit; inst: AvInstitution }) {
         {isFee(hit.index) && <p className="mt-3 text-sm leading-snug text-[#ffd34d]">$ {feeNotes[hit.index]}</p>}
         <div className="mt-3">
           <Row k="Date" v={fmtDate(e.d)} />
+          <Row k="Direction" v={e.out ? "Sent" : "Received"} />
+          <Row k="Summary" v={emailSummary(inst, hit.level, hit.index)} />
           <Row k="Reference" v={e.r.join(", ")} />
           <Row k="Avenue" v={ph.name} />
           <Row k="Also counts for" v={others.join(", ")} />

@@ -5,11 +5,14 @@ export function DetailModal({
   open,
   onClose,
   accent,
+  dock,
   children,
 }: {
   open: boolean;
   onClose: () => void;
   accent?: string;
+  /** Docked: no backdrop, the page (and the game) stays live behind it, pinned top or bottom. */
+  dock?: "top" | "bottom";
   children: ReactNode;
 }) {
   useEffect(() => {
@@ -22,6 +25,34 @@ export function DetailModal({
   }, [open, onClose]);
 
   if (!open) return null;
+  if (dock) {
+    return (
+      <div
+        className={`pointer-events-none fixed inset-x-0 z-50 flex justify-center px-2 ${dock === "top" ? "top-0 pt-2" : "bottom-0 pb-2"}`}
+        role="presentation"
+      >
+        <div
+          role="dialog"
+          aria-modal="false"
+          aria-live="polite"
+          className="label-in pointer-events-auto max-h-[42dvh] w-full max-w-md overflow-y-auto rounded-2xl border border-line bg-surface p-4 text-fg shadow-2xl"
+          style={{ borderTop: `4px solid ${accent ?? "var(--color-brass)"}` }}
+        >
+          <div className="float-right ml-2">
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Close"
+              className="flex size-9 items-center justify-center rounded-full border border-line text-lg text-muted"
+            >
+              ×
+            </button>
+          </div>
+          {children}
+        </div>
+      </div>
+    );
+  }
   return (
     <div
       className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 sm:items-center"
