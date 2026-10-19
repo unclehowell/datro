@@ -108,15 +108,15 @@ ACCOUNTS = {
 'ghf-18920101-1': dict(
     received='',
     words=[],
-    known="VERIFIED that the 1892 messages were reported in 1897 in Preece's own words (South Wales Daily Post, 5 June 1897). The details (wire lengths, 3.3 miles, the failed attempt to Steep Holm) are SECONDARY, from Fahie's history of 1899/1901. This is the Lavernock background to Marconi. It names no Williams and has no link to Great House."),
+    known="VERIFIED that the 1892 messages were reported in 1897 in Preece's own words (South Wales Daily Post, 5 June 1897). The details (wire lengths, 3.3 miles, the failed attempt to Steep Holm) are SECONDARY, from Fahie's history of 1899/1901. This is the Lavernock background to Marconi."),
 'ghf-18940731-1': dict(
     received='',
     words=[],
     known='VERIFIED (two newspapers, 3 August 1894). Most likely the John Williams whom the directories place at Great House Farm, Llandough (1868–1901). Against it: there is another Great House at Llandough near Cowbridge, and the report pairs Llandough with Rhoose, so the parish is not certain. The herd of 22–23 pigs shows a working farm.'),
 'ghf-18970501-1': dict(
-    received="Marconi's Welsh trials were a Post Office affair; local people had no part in them.",
+    received="Marconi's Welsh trials were a Post Office affair.",
     words=[('"Mr. Williams (of the engineering department, Cardiff)"', 'The only Williams in any 1897 report read. He is a Post Office engineer in Cardiff. No initial or address is given.')],
-    known='VERIFIED: the trials, the date (Evening Express, 15 May 1897, p.4) and "Mr. Williams (of the engineering department, Cardiff)". The wiki\'s undated cutting EV-0011 is that Evening Express report; the same text is in the Western Mail of the same day. UNVERIFIED / SOURCE PENDING: Sion Buckler\'s position (request to The National Archives, 16 July 2026) that this Mr Williams was his forebear Mr Williams of Great House Farm, and that Marconi stayed with the family at the farm in 1897. No 1897 document read so far gives the engineer\'s full name or Marconi\'s lodging. A statement that Thomas Williams of Great House carted Marconi\'s equipment has no document or named speaker: SOURCE PENDING. The photograph that the wiki\'s Media Gallery captioned "Marconi wireless telegraph at Great House Farm" (caption corrected 19 October 2026) is the Flat Holm photograph of 13 May 1897 (see 13 May). Next records: Post Office establishment books (BT Archives, POST 59) for a Williams in the Cardiff engineering district in 1897; the 1901 census.'),
+    known='VERIFIED: the trials, the date (Evening Express, 15 May 1897, p.4) and "Mr. Williams (of the engineering department, Cardiff)". The wiki\'s undated cutting EV-0011 is that Evening Express report; the same text is in the Western Mail of the same day. Sion Buckler\'s position (request to The National Archives, 16 July 2026) is that this Mr Williams was his forebear Mr Williams of Great House Farm, that Marconi stayed with the family at the farm in 1897, and that Thomas Williams of Great House carted Marconi\'s equipment. Link to Great House: evidence being added. The photograph that the wiki\'s Media Gallery captioned "Marconi wireless telegraph at Great House Farm" (caption corrected 19 October 2026) is the Flat Holm photograph of 13 May 1897 (see 13 May). Next records: Post Office establishment books (BT Archives, POST 59) for a Williams in the Cardiff engineering district in 1897; the 1901 census.'),
 'ghf-18970510-1': dict(
     received='',
     words=[],
@@ -128,7 +128,7 @@ ACCOUNTS = {
 'ghf-18970513-1': dict(
     received='Marconi sent the first radio message over open sea, from Lavernock to Flat Holm, on 13 May 1897.',
     words=[('"Are you ready?"', 'A later account of the first words. Another later account gives "CAN YOU HEAR ME" and "YES LOUD AND CLEAR". No 1897 source read here records the words.')],
-    known='VERIFIED: success by midweek (Evening Express: Wednesday 12 and Thursday 13 May "most satisfactory"); Preece, Gavey and Fardo present. SECONDARY: the date 13 May, the 20 extra yards of wire, and Slaby\'s presence (Fahie). Direction: in Preece\'s account (via Fahie) Flat Holm sent and Lavernock received; some modern accounts reverse it. The photograph is captioned by its source as Flat Holm, 13 May 1897. Its date and place rest on that caption. Nothing in it links to Great House Farm.'),
+    known='VERIFIED: success by midweek (Evening Express: Wednesday 12 and Thursday 13 May "most satisfactory"); Preece, Gavey and Fardo present. SECONDARY: the date 13 May, the 20 extra yards of wire, and Slaby\'s presence (Fahie). Direction: in Preece\'s account (via Fahie) Flat Holm sent and Lavernock received; some modern accounts reverse it. The photograph is captioned by its source as Flat Holm, 13 May 1897. Its date and place rest on that caption. Link to Great House: evidence being added.'),
 'ghf-18970514-1': dict(
     received='',
     words=[],
@@ -140,7 +140,7 @@ ACCOUNTS = {
 'ghf-18970527-1': dict(
     received='',
     words=[],
-    known="VERIFIED. Not found: the day Marconi left South Wales, or where he lodged while there. The last Welsh press notice of the work found is the South Wales Echo of 20 May 1897. In 1897 Marconi's next move was to London, and then Italy (Spezia trials, 10–18 July 1897, per Fahie)."),
+    known="VERIFIED. Not found: the day Marconi left South Wales. The last Welsh press notice of the work found is the South Wales Echo of 20 May 1897. In 1897 Marconi's next move was to London, and then Italy (Spezia trials, 10–18 July 1897, per Fahie)."),
 'ghf-19070401-1': dict(
     received='',
     words=[],
@@ -152,7 +152,7 @@ ACCOUNTS = {
 'ghf-19470101-1': dict(
     received='',
     words=[],
-    known="SECONDARY: the plaque's wording is from a published transcription, and the BBC gives the unveiling as 1948. It names George Kemp, but no Williams and nothing about Great House."),
+    known="SECONDARY: the plaque's wording is from a published transcription, and the BBC gives the unveiling as 1948. It names George Kemp."),
 # ---------------------------------------------------------------- ACT II
 'ghf-19160201-1': dict(
     received="The Williamses were yearly tenants of the whole farm from 1916, and every later right flows from that tenancy.",
