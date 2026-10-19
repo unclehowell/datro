@@ -1,4 +1,8 @@
-# QA — FOI Questions & Answers Graph (Buckler Family Estate)
+# QA — Great House Farm Q&A knowledge base (Buckler Family Estate)
+
+**Since 19 Oct 2026 the homepage is a straight Q&A knowledge base:** one-line questions, each opening to a full answer, with search, body and status filters and a deep link per question (`/#q-<slug>`). Its data is `kb.json` (one record per question: id, question, answer, body, status, exemption, reference, asked, answered, due, sources). The agent APIs below are unchanged.
+
+## The original graph
 
 **Live:** [qa.bucklerfamily.estate](https://qa.bucklerfamily.estate)
 

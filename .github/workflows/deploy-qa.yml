@@ -68,6 +68,8 @@ jobs:
       - name: Validate API exports and JavaScript before deployment
         run: |
           test -s index.html
+          test -s kb.json
+          python3 -c "import json;d=json.load(open('kb.json',encoding='utf-8'));assert d['items'] and all(i.get('id') and i.get('question') for i in d['items']);print(len(d['items']),'KB questions')"
           test -s api/qa.json
           test -s api/graph.json
           test -s api/graph.sql
@@ -95,6 +97,7 @@ jobs:
         run: |
           curl --fail --silent --show-error --max-time 45 https://qa-acp.pages.dev/ -o /tmp/qa-index.html
           curl --fail --silent --show-error --max-time 45 https://qa-acp.pages.dev/api/qa.json -o /tmp/qa-data.json
+          curl --fail --silent --show-error --max-time 45 https://qa-acp.pages.dev/kb.json -o /tmp/qa-kb.json
           curl --fail --silent --show-error --max-time 45 'https://qa-acp.pages.dev/api/ask?q=WA231076' -o /tmp/qa-search.json
           python3 - <<'PY'
           import json
@@ -103,11 +106,14 @@ jobs:
           data = json.loads(Path("/tmp/qa-data.json").read_text(encoding="utf-8"))
           search = json.loads(Path("/tmp/qa-search.json").read_text(encoding="utf-8"))
           records = data.get("qa") if isinstance(data, dict) else data
-          if "<title>QA Graph" not in html:
+          if "<title>Great House Farm Q&amp;A" not in html:
               raise SystemExit("Live homepage title missing.")
-          if "${escapeHtml(x.id || '')}" not in html:
-              raise SystemExit("Live renderer is missing the escaped Q&A UID text node.")
-          if not isinstance(records, list) or len(records) != 309:
+          if "fetch('/kb.json'" not in html or 'id="q"' not in html:
+              raise SystemExit("Live knowledge-base renderer is missing.")
+          kb = json.loads(Path("/tmp/qa-kb.json").read_text(encoding="utf-8"))
+          if not kb.get("items"):
+              raise SystemExit("Live kb.json has no questions.")
+          if not isinstance(records, list) or len(records) < 1:
               raise SystemExit("Live qa.json record count mismatch.")
           ids = [x.get("id") for x in records if isinstance(x, dict)]
           if len(ids) != len(records) or len(set(ids)) != len(ids) or any(not isinstance(x, str) or not x.startswith("qa-") for x in ids):

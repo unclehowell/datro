@@ -1,180 +1,171 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>QA Graph — FOI Questions & Answers · Buckler Family Estate</title>
-  <meta name="description" content="UID-logged FOI / EIR questions and answers from the Great House Farm correspondence graph. Searchable; agent-accessible via WebMCP." />
-  <link rel="canonical" href="https://qa.bucklerfamily.estate/" />
-  <style>
-    :root { --bg:#0f1218; --panel:#171b24; --border:#2a3140; --text:#e6e9ef; --muted:#9aa3b2; --accent:#6ea8fe; --ok:#3dd68c; --warn:#f5a524; --bad:#f31260; }
-    * { box-sizing: border-box; }
-    body { margin:0; font-family: ui-sans-serif, system-ui, sans-serif; background:var(--bg); color:var(--text); line-height:1.45; }
-    header { padding:1.25rem 1.5rem; border-bottom:1px solid var(--border); background:var(--panel); display:flex; flex-wrap:wrap; gap:1rem; align-items:center; justify-content:space-between; }
-    header h1 { margin:0; font-size:1.15rem; font-weight:600; }
-    header .meta { color:var(--muted); font-size:0.85rem; }
-    main { max-width:1100px; margin:0 auto; padding:1.25rem 1rem 3rem; }
-    .search-row { display:flex; gap:0.5rem; margin-bottom:1rem; }
-    input[type=search], select { background:var(--panel); border:1px solid var(--border); color:var(--text); border-radius:8px; padding:0.6rem 0.75rem; font-size:0.95rem; }
-    input[type=search] { flex:1; min-width:12rem; }
-    button { background:var(--accent); color:#0b1220; border:0; border-radius:8px; padding:0.6rem 1rem; font-weight:600; cursor:pointer; }
-    .filters { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem; color:var(--muted); font-size:0.85rem; }
-    .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:0.75rem; margin-bottom:1.25rem; }
-    .stat { background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:0.75rem 1rem; }
-    .stat .n { font-size:1.4rem; font-weight:700; }
-    .stat .l { color:var(--muted); font-size:0.8rem; }
-    .list { display:flex; flex-direction:column; gap:0.75rem; }
-    article { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:1rem 1.1rem; }
-    article .uid { font-family:ui-monospace,monospace; font-size:0.78rem; color:var(--accent); word-break:break-all; }
-    article .party { font-weight:600; }
-    article .meta-line { color:var(--muted); font-size:0.85rem; margin:0.25rem 0 0.6rem; }
-    .kind { display:inline-block; font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.03em; padding:0.15rem 0.45rem; border-radius:999px; background:#243041; }
-    .kind.provided, .kind.partial { background:#143528; color:var(--ok); }
-    .kind.not-held, .kind.refused { background:#3a1a24; color:var(--bad); }
-    .kind.unanswered, .kind.pending { background:#3a2e14; color:var(--warn); }
-    .q, .a { margin:0.4rem 0; white-space:pre-wrap; word-break:break-word; }
-    .q::before { content:"Q · "; color:var(--muted); font-weight:600; }
-    .a::before { content:"A · "; color:var(--muted); font-weight:600; }
-    .empty { color:var(--muted); padding:2rem 0; text-align:center; }
-    footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--border); color:var(--muted); font-size:0.85rem; }
-    footer a { color:var(--accent); }
-    code { font-family:ui-monospace,monospace; font-size:0.85em; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Great House Farm Q&amp;A — FOI questions and answers · Buckler Family Estate</title>
+<meta name="description" content="A searchable knowledge base of every question put to public bodies about Great House Farm (Tŷ Mawr), Llandough, and the answer each body gave.">
+<link rel="canonical" href="https://qa.bucklerfamily.estate/">
+<meta property="og:title" content="Great House Farm Q&amp;A">
+<meta property="og:description" content="One-line questions, full answers: what Cadw, the Land Registry, Heneb, the Council and others were asked about Great House Farm, and what they said.">
+<style>
+:root{--navy:#032d60;--blue:#0b5cab;--blue2:#e8f1fb;--ink:#181818;--muted:#5c5c5c;--line:#e0e5ee;--bg:#f4f6f9;--card:#fff;
+--g:#1b7a3d;--gb:#e3f4e8;--r:#b3261e;--rb:#fbe7e6;--a:#8a5300;--ab:#fff1d6;--s:#4b5563;--sb:#eef0f3;--p:#5b3fa6;--pb:#efe9fb}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:var(--blue)}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid #ffb703;outline-offset:2px}
+.hero{background:linear-gradient(160deg,var(--navy),#0b4f9c);color:#fff;padding:22px 16px 26px}
+.wrap{max-width:900px;margin:0 auto}
+.brand{font-size:.85rem;opacity:.85;letter-spacing:.02em;margin:0 0 6px}
+.brand a{color:#fff;text-decoration:none}
+h1{font-size:1.6rem;line-height:1.2;margin:0 0 6px}
+.sub{margin:0 0 16px;opacity:.9;font-size:.98rem}
+.search{position:relative}
+.search input{width:100%;font-size:1.05rem;padding:15px 44px 15px 46px;border-radius:12px;border:0;box-shadow:0 6px 18px rgba(0,0,0,.18);color:var(--ink)}
+.search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:20px;height:20px;fill:#6b7280}
+.search button.clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:none;font-size:1.4rem;color:#6b7280;padding:4px 10px;cursor:pointer;display:none}
+.stats{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.stat{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:4px 11px;font-size:.84rem;color:#fff;cursor:pointer}
+.stat b{font-weight:700}
+.stat[aria-pressed=true]{background:#fff;color:var(--navy)}
+main{padding:14px 12px 40px}
+.filters{margin:4px 0 10px}
+.flabel{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:10px 2px 6px;font-weight:600}
+.chips{display:flex;gap:7px;overflow-x:auto;padding:2px 2px 8px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:6px 12px;font-size:.88rem;cursor:pointer;white-space:nowrap}
+.chip span{color:var(--muted);margin-left:4px;font-size:.8rem}
+.chip[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#fff}
+.chip[aria-pressed=true] span{color:#dbe9ff}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:8px 2px 10px;color:var(--muted);font-size:.9rem}
+.bar button{border:0;background:none;color:var(--blue);font-size:.9rem;cursor:pointer;padding:4px}
+.group{margin:18px 2px 8px;font-size:1rem;color:var(--navy);font-weight:700}
+.list{display:flex;flex-direction:column;gap:8px}
+details.qa{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+details.qa[open]{border-color:#b6c9e6;box-shadow:0 2px 10px rgba(3,45,96,.08)}
+details.qa summary{list-style:none;cursor:pointer;padding:13px 14px;display:flex;gap:10px;align-items:flex-start}
+details.qa summary::-webkit-details-marker{display:none}
+.chev{flex:0 0 auto;width:20px;height:20px;margin-top:2px;transition:transform .15s;fill:var(--blue)}
+details[open] .chev{transform:rotate(90deg)}
+.qt{flex:1;font-weight:600;font-size:1rem;line-height:1.4}
+.qmeta{display:block;font-weight:400;font-size:.8rem;color:var(--muted);margin-top:4px}
+.badge{display:inline-block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:2px 8px;border-radius:999px;vertical-align:1px;margin-right:6px}
+.st-answered{background:var(--gb);color:var(--g)}
+.st-partly-answered{background:#eaf6d9;color:#4d6b12}
+.st-not-held,.st-refused{background:var(--rb);color:var(--r)}
+.st-pending,.st-no-reply{background:var(--ab);color:var(--a)}
+.st-redirected{background:var(--blue2);color:var(--blue)}
+.st-contested,.st-statement-only,.st-open{background:var(--pb);color:var(--p)}
+.body{padding:0 16px 16px 44px;border-top:1px solid var(--line)}
+.answer{padding-top:12px}
+.answer p{margin:0 0 10px}
+.answer ul{margin:0 0 10px;padding-left:20px}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:.88rem;margin:12px 0;padding:10px 12px;background:#f7f9fc;border-radius:10px}
+.facts dt{color:var(--muted)}
+.facts dd{margin:0;word-break:break-word}
+.srcs{font-size:.88rem;margin:6px 0 10px}
+.srcs a{display:inline-block;margin:0 10px 4px 0}
+.copy{border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 11px;font-size:.85rem;cursor:pointer;color:var(--blue)}
+.empty{background:#fff;border:1px dashed var(--line);border-radius:12px;padding:24px;text-align:center;color:var(--muted)}
+mark{background:#fff3a8;padding:0 1px}
+footer{max-width:900px;margin:0 auto;padding:10px 14px 40px;color:var(--muted);font-size:.84rem}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#111;color:#fff;padding:8px 14px;border-radius:999px;font-size:.9rem;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:.92}
+@media (min-width:720px){h1{font-size:2rem}.hero{padding:34px 20px 34px}main{padding:18px 20px 40px}}
+@media (max-width:420px){.body{padding-left:16px}}
+</style>
 </head>
 <body>
-  <header>
-    <div>
-      <h1>QA Graph · FOI Questions & Answers</h1>
-      <div class="meta">UID-logged correspondence · Great House Farm / Tŷ Mawr</div>
-    </div>
-    <div class="meta">
-      <a href="https://bpvsbuckler.bucklerfamily.estate/" style="color:var(--accent)">storyboard</a> ·
-      <a href="/api/mcp" style="color:var(--accent)">WebMCP</a> ·
-      <a href="/api/qa.json" style="color:var(--accent)">qa.json</a>
-    </div>
-  </header>
-  <main>
-    <div class="search-row">
-      <input type="search" id="q" placeholder="Search questions, answers, FOI refs, parties…" autocomplete="off" />
-      <button id="go">Search</button>
-    </div>
-    <div class="filters">
-      <label>Party <select id="party"><option value="">All</option></select></label>
-      <label>Kind
-        <select id="kind">
-          <option value="">All</option>
-          <option>provided</option><option>partial</option><option>not-held</option>
-          <option>refused</option><option>redirected</option><option>pending</option>
-          <option>unanswered</option><option>reply</option><option>auto</option>
-        </select>
-      </label>
-    </div>
-    <div class="stats" id="stats"></div>
-    <div class="list" id="list"><div class="empty">Loading graph…</div></div>
-    <footer>
-      Every ask from FOI / EIR Gmail and wiki catalogues is given a stable UID (<code>qa-…</code>).
-      Message UIDs and official references are retained for citation.
-      Agents: <code>/api/mcp</code> · GraphQL-style <code>/api/graphql</code> · FTS <code>/api/ask?q=</code>.
-      Shared graph with <a href="https://bpvsbuckler.bucklerfamily.estate/">bpvsbuckler</a>.
-    </footer>
-  </main>
-  <script>
-    const $ = (id) => document.getElementById(id);
-    let all = [];
-    function escapeHtml(s) {
-      return String(s).replace(/[&<>"']/g, (c) => ({
-        '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
-      }[c]));
-    }
-    function safeHref(value) {
-      try {
-        const url = new URL(String(value), location.origin);
-        return ['http:', 'https:'].includes(url.protocol) ? escapeHtml(url.href) : '';
-      } catch (_error) {
-        return '';
-      }
-    }
-    function kindClass(k) {
-      const allowed = new Set(['provided', 'partial', 'not-held', 'refused', 'redirected', 'pending', 'unanswered', 'reply', 'auto']);
-      return 'kind ' + (allowed.has(k) ? k : 'reply');
-    }
-    function render(items) {
-      const el = $('list');
-      if (!items.length) { el.innerHTML = '<div class="empty">No matching Q&A records.</div>'; return; }
-      el.innerHTML = items.map((x) => `
-        <article id="${escapeHtml(x.id)}">
-          <div class="uid">${escapeHtml(x.id || '')}</div>
-          <div class="party">${escapeHtml(x.party_name || x.party || '')}
-            <span class="${kindClass(x.kind)}">${escapeHtml(x.kind || '')}</span></div>
-          <div class="meta-line">asked ${escapeHtml(x.asked || '—')}
-            ${x.answered ? ' · answered ' + escapeHtml(x.answered) : ''}
-            ${x.ref ? ' · ref ' + escapeHtml(x.ref) : ''}
-            ${x.asked_msg ? ' · msg ' + escapeHtml(x.asked_msg) : ''}</div>
-          <div class="q">${escapeHtml(String(x.question || '').slice(0, 900))}</div>
-          ${x.answer ? `<div class="a">${escapeHtml(String(x.answer).slice(0, 1200))}</div>` : '<div class="a" style="color:var(--muted)">(no answer in corpus)</div>'}
-          ${safeHref(x.url) ? `<div class="meta-line"><a href="${safeHref(x.url)}" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">source</a></div>` : ''}
-        </article>`).join('');
-    }
-    function applyFilters() {
-      const q = ($('q').value || '').trim().toLowerCase();
-      const party = $('party').value;
-      const kind = $('kind').value;
-      const terms = q ? q.split(/\s+/).filter(Boolean) : [];
-      let items = all;
-      if (party) items = items.filter((x) => x.party === party || x.party_name === party);
-      if (kind) items = items.filter((x) => x.kind === kind);
-      if (terms.length) {
-        items = items.filter((x) => {
-          const hay = [x.question, x.answer, x.party_name, x.ref, x.id].map((v) => String(v || '')).join(' ').toLowerCase();
-          return terms.every((t) => hay.includes(t));
-        });
-      }
-      items = items.slice().sort((a, b) => {
-        const ua = a.kind === 'unanswered' || !a.answer ? 1 : 0;
-        const ub = b.kind === 'unanswered' || !b.answer ? 1 : 0;
-        if (ua !== ub) return ua - ub;
-        return (b.answered || b.asked || '').localeCompare(a.answered || a.asked || '');
-      });
-      render(items.slice(0, 80));
-    }
-    function stats(data) {
-      const byKind = {};
-      for (const x of data) byKind[x.kind || 'reply'] = (byKind[x.kind || 'reply'] || 0) + 1;
-      const parties = new Set(data.map((x) => x.party)).size;
-      const open = data.filter((x) => x.kind === 'unanswered' || x.kind === 'pending').length;
-      $('stats').innerHTML = `
-        <div class="stat"><div class="n">${data.length}</div><div class="l">Q&A records</div></div>
-        <div class="stat"><div class="n">${parties}</div><div class="l">parties</div></div>
-        <div class="stat"><div class="n">${open}</div><div class="l">open / pending</div></div>
-        <div class="stat"><div class="n">${byKind.provided || 0}</div><div class="l">provided</div></div>
-        <div class="stat"><div class="n">${byKind['not-held'] || 0}</div><div class="l">not held</div></div>`;
-      const names = [...new Map(data.map((x) => [x.party, x.party_name || x.party])).entries()]
-        .sort((a, b) => (a[1] || '').localeCompare(b[1] || ''));
-      $('party').innerHTML = '<option value="">All</option>' + names.map(([id, name]) =>
-        `<option value="${escapeHtml(id)}">${escapeHtml(name)}</option>`).join('');
-    }
-    async function load() {
-      try {
-        const res = await fetch('/api/qa.json', { cache: 'no-cache' });
-        const data = await res.json();
-        all = data.qa || data || [];
-        stats(all);
-        applyFilters();
-      } catch (e) {
-        $('list').innerHTML = '<div class="empty">Failed to load /api/qa.json — deploy will copy it from bpvsbuckler.</div>';
-      }
-    }
-    $('go').addEventListener('click', applyFilters);
-    $('q').addEventListener('keydown', (e) => { if (e.key === 'Enter') applyFilters(); });
-    $('party').addEventListener('change', applyFilters);
-    $('kind').addEventListener('change', applyFilters);
-    const hash = location.hash.replace(/^#/, '');
-    load().then(() => {
-      if (hash && hash.startsWith('qa-')) {
-        const hit = all.find((x) => x.id === hash);
-        if (hit) { $('q').value = hit.id; applyFilters(); setTimeout(() => document.getElementById(hit.id)?.scrollIntoView({ behavior: 'smooth' }), 50); }
-      }
-    });
-  </script>
+<header class="hero">
+ <div class="wrap">
+  <p class="brand"><a href="https://bucklerfamily.estate/">bucklerfamily.estate</a> · Great House Farm (Tŷ Mawr), Llandough</p>
+  <h1>Questions &amp; answers</h1>
+  <p class="sub">Every question put to a public body about Great House Farm, and the answer they gave.</p>
+  <div class="search" role="search">
+   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2a8 8 0 0 1 6.32 12.9l5.39 5.4-1.41 1.4-5.4-5.38A8 8 0 1 1 10 2zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/></svg>
+   <input id="q" type="search" placeholder="Search questions, answers, references…" autocomplete="off" aria-label="Search the questions and answers">
+   <button class="clear" id="clear" aria-label="Clear search">×</button>
+  </div>
+  <div class="stats" id="stats" aria-label="Questions by status"></div>
+ </div>
+</header>
+<main class="wrap">
+ <section class="filters" aria-label="Filters">
+  <div class="flabel">Body</div>
+  <div class="chips" id="bodies"></div>
+  <div class="flabel">Status</div>
+  <div class="chips" id="statuses"></div>
+ </section>
+ <div class="bar"><span id="count" aria-live="polite">Loading…</span><button id="reset" hidden>Clear filters</button></div>
+ <div id="list" class="list"><div class="empty">Loading questions…</div></div>
+</main>
+<footer>
+ Answers quote each body's own words where it gave them, with a link to the letter or catalogue entry. “Not held” means the body's search found nothing; it does not show a record never existed. Pending and unanswered questions say so.
+ Status is as recorded in the source correspondence. Part of the <a href="https://bucklerfamily.estate/">Tŷ Mawr Campus</a> · <a href="https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/">FOI Reply Register</a> · <a href="https://bpvsbuckler.bucklerfamily.estate/">virtual tour</a>.
+ For agents: <a href="/kb.json">kb.json</a> · <a href="/api/qa.json">qa.json</a> · <a href="/api/mcp">/api/mcp</a> · <a href="/api/ask?q=WA231076">/api/ask?q=</a>.
+</footer>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const $=(id)=>document.getElementById(id);
+const esc=(s)=>String(s==null?'':s).replace(/[&<>"']/g,(c)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const STATUS_ORDER=['answered','partly answered','not held','refused','redirected','pending','no reply','contested','statement only','open'];
+const CASE='The case: research questions';
+let ALL=[],state={q:'',body:'',status:''};
+const cls=(s)=>'badge st-'+String(s).replace(/\s+/g,'-');
+function fmt(d){if(!d)return'';const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d);if(!m)return esc(d);const M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return (+m[3])+' '+M[+m[2]-1]+' '+m[1];}
+function safeUrl(u){try{const x=new URL(u);return x.protocol==='https:'?x.href:'';}catch(e){return'';}}
+function terms(){return state.q.toLowerCase().split(/\s+/).filter(Boolean);}
+function hl(text){let h=esc(text);for(const t of terms()){if(t.length<2)continue;const re=new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');h=h.replace(re,'<mark>$1</mark>');}return h;}
+function answerHtml(a){
+ const blocks=String(a||'').split(/\n\s*\n/);let out='';
+ for(const b of blocks){const lines=b.split('\n');
+  const bullets=lines.filter(l=>/^\s*[•\-]\s+/.test(l));
+  if(bullets.length&&bullets.length>=lines.length-1){const head=lines.filter(l=>!/^\s*[•\-]\s+/.test(l));
+   if(head.length)out+='<p><strong>'+hl(head.join(' '))+'</strong></p>';
+   out+='<ul>'+bullets.map(l=>'<li>'+hl(l.replace(/^\s*[•\-]\s+/,''))+'</li>').join('')+'</ul>';}
+  else out+='<p>'+hl(b.replace(/\n/g,' '))+'</p>';}
+ return out;}
+function card(x){
+ const facts=[['Body',x.body],['Status',x.status+(x.exemption?' ('+x.exemption+')':'')],['Reference',x.reference],['Asked',fmt(x.asked)],['Answered',fmt(x.answered)],['Due',fmt(x.due)]].filter(f=>f[1]);
+ const src=(x.sources||[]).map(s=>{const u=safeUrl(s.url);return u?'<a href="'+esc(u)+'" target="_blank" rel="noopener">'+esc(s.label||'Source')+' ↗</a>':'';}).join('');
+ const when=x.answered?'answered '+fmt(x.answered):(x.asked?'asked '+fmt(x.asked):'');
+ return '<details class="qa" id="q-'+esc(x.id)+'" data-id="'+esc(x.id)+'"><summary><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6-1.4-1.4L12.2 12 7.6 7.4z"/></svg><span class="qt">'+hl(x.question)+'<span class="qmeta"><span class="'+cls(x.status)+'">'+esc(x.status)+'</span>'+esc(x.body)+(when?' · '+when:'')+'</span></span></summary>'+
+ '<div class="body"><div class="answer">'+answerHtml(x.answer)+'</div><dl class="facts">'+facts.map(f=>'<dt>'+esc(f[0])+'</dt><dd>'+esc(f[1])+'</dd>').join('')+'</dl>'+(src?'<div class="srcs">'+src+'</div>':'')+
+ '<button class="copy" type="button" data-copy="'+esc(x.id)+'">Copy link to this question</button></div></details>';}
+function filtered(){const ts=terms();return ALL.filter(x=>{if(state.body&&x.body!==state.body)return false;if(state.status&&x.status!==state.status)return false;
+ if(ts.length){const hay=x._hay;return ts.every(t=>hay.includes(t));}return true;});}
+function chips(){
+ const base=ALL.filter(x=>!state.status||x.status===state.status);const bc={};base.forEach(x=>bc[x.body]=(bc[x.body]||0)+1);
+ const bodies=Object.keys(bc).sort((a,b)=>(a===CASE)-(b===CASE)||bc[b]-bc[a]);
+ $('bodies').innerHTML='<button class="chip" data-body="" aria-pressed="'+(!state.body)+'">All bodies<span>'+base.length+'</span></button>'+bodies.map(b=>'<button class="chip" data-body="'+esc(b)+'" aria-pressed="'+(state.body===b)+'">'+esc(b)+'<span>'+bc[b]+'</span></button>').join('');
+ const base2=ALL.filter(x=>!state.body||x.body===state.body);const sc={};base2.forEach(x=>sc[x.status]=(sc[x.status]||0)+1);
+ $('statuses').innerHTML='<button class="chip" data-status="" aria-pressed="'+(!state.status)+'">Any status<span>'+base2.length+'</span></button>'+STATUS_ORDER.filter(s=>sc[s]).map(s=>'<button class="chip" data-status="'+esc(s)+'" aria-pressed="'+(state.status===s)+'">'+esc(s)+'<span>'+sc[s]+'</span></button>').join('');
+ const all={};ALL.forEach(x=>all[x.status]=(all[x.status]||0)+1);
+ $('stats').innerHTML='<span class="stat" aria-pressed="false"><b>'+ALL.length+'</b> questions</span>'+STATUS_ORDER.filter(s=>all[s]).map(s=>'<button class="stat" data-status="'+esc(s)+'" aria-pressed="'+(state.status===s)+'"><b>'+all[s]+'</b> '+esc(s)+'</button>').join('');}
+function render(openId){
+ const items=filtered();chips();
+ $('count').textContent=items.length+(items.length===1?' question':' questions')+(state.q?' matching “'+state.q+'”':'');
+ $('reset').hidden=!(state.q||state.body||state.status);
+ if(!items.length){$('list').innerHTML='<div class="empty">No questions match. Try fewer words, or clear the filters.</div>';return;}
+ let html='',last=null;
+ for(const x of items){if(!state.q&&x.body!==last){html+='<h2 class="group">'+esc(x.body)+'</h2>';last=x.body;}html+=card(x);}
+ $('list').innerHTML=html;
+ if(openId){const el=document.getElementById('q-'+openId);if(el){el.open=true;setTimeout(()=>el.scrollIntoView({block:'start',behavior:'smooth'}),30);}}}
+let tmr;$('q').addEventListener('input',()=>{clearTimeout(tmr);$('clear').style.display=$('q').value?'block':'none';tmr=setTimeout(()=>{state.q=$('q').value.trim();render();},140);});
+$('clear').addEventListener('click',()=>{$('q').value='';state.q='';$('clear').style.display='none';render();$('q').focus();});
+$('reset').addEventListener('click',()=>{state={q:'',body:'',status:''};$('q').value='';$('clear').style.display='none';render();});
+document.addEventListener('click',(e)=>{const b=e.target.closest('[data-body]');if(b){state.body=b.dataset.body;render();return;}
+ const s=e.target.closest('[data-status]');if(s){state.status=state.status===s.dataset.status&&s.classList.contains('stat')?'':s.dataset.status;render();return;}
+ const c=e.target.closest('[data-copy]');if(c){const url=location.origin+location.pathname+'#q-'+c.dataset.copy;
+  const done=()=>toast('Link copied');if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done,()=>{prompt('Copy this link',url);});}else{prompt('Copy this link',url);}
+  history.replaceState(null,'','#q-'+c.dataset.copy);}});
+document.addEventListener('toggle',(e)=>{const d=e.target;if(d.matches&&d.matches('details.qa')&&d.open){history.replaceState(null,'','#q-'+d.dataset.id);}},true);
+function toast(t){const el=$('toast');el.textContent=t;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),1600);}
+function fromHash(){const h=decodeURIComponent(location.hash.replace(/^#/,''));if(h.startsWith('q-')){const id=h.slice(2);if(ALL.some(x=>x.id===id)){state={q:'',body:'',status:''};$('q').value='';render(id);return true;}}return false;}
+window.addEventListener('hashchange',fromHash);
+fetch('/kb.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{ALL=(d.items||[]).map(x=>Object.assign(x,{_hay:[x.question,x.answer,x.body,x.reference,x.status,x.exemption].join(' ').toLowerCase()}));
+ if(!fromHash())render();}).catch(()=>{$('list').innerHTML='<div class="empty">Could not load the questions. Please refresh.</div>';$('count').textContent='';});
+</script>
 </body>
 </html>
