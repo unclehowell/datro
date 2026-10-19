@@ -980,7 +980,7 @@ Environmental Information Regulations 2004, I request cop','{"kind": "not-held",
 INSERT INTO nodes VALUES ('qa:qa-0543073144ac','qa','---------- Forwarded message ---------
 From: Sion Buckler <[redacted]>
 Date: Mon, 13 Jul 2026, 00:49
-Subject: Request for info','{"kind": "not-held", "pairing": "thread", "party": "vale"}');
+Subject: Request for information regard','{"kind": "not-held", "pairing": "thread", "party": "vale"}');
 INSERT INTO nodes VALUES ('qa:qa-714b5e62a700','qa','Diolch.
 
 Who sent me this email.
@@ -1381,7 +1381,7 @@ INSERT INTO nodes VALUES ('qa:qa-72d3fa7b6fee','qa','Reply received: RC26-0375 -
 INSERT INTO nodes VALUES ('qa:qa-0f501c90d27c','qa','[redacted], United Kingdom is the address from
 which I''m registered to vote. Our families home since the 60''s.
 
-Last','{"kind": "reply", "pairing": "thread", "party": "swp"}');
+Last address was Great House','{"kind": "reply", "pairing": "thread", "party": "swp"}');
 INSERT INTO nodes VALUES ('qa:qa-8f172604dd90','qa','Reply received: Subject Access Request','{"kind": "provided", "pairing": "reply-only", "party": "swp"}');
 INSERT INTO nodes VALUES ('qa:qa-b619e288d07d','qa','Reply received: Subject Access Request','{"kind": "pending", "pairing": "reply-only", "party": "swp"}');
 INSERT INTO nodes VALUES ('qa:qa-7aac358661a3','qa','A sentence in the middle of that letter was left unfinished. Please disregard it. Nothing in the requests depends on it.
@@ -1727,6 +1727,7 @@ INSERT INTO edges VALUES ('qa:qa-fbb649bd072e','cq:cq-1881-name','bears_on');
 INSERT INTO edges VALUES ('qa:qa-6d16e7906b31','cq:cq-1881-name','bears_on');
 INSERT INTO edges VALUES ('qa:qa-7484e553a07a','cq:cq-1881-name','bears_on');
 INSERT INTO edges VALUES ('qa:qa-1383cac6c813','cq:cq-1881-name','bears_on');
+INSERT INTO edges VALUES ('qa:qa-0f501c90d27c','cq:cq-1881-name','bears_on');
 INSERT INTO edges VALUES ('qa:qa-1026edf3ce9f','cq:cq-1881-name','bears_on');
 INSERT INTO edges VALUES ('qa:qa-c6092e6d0d26','cq:cq-1881-name','bears_on');
 INSERT INTO edges VALUES ('qa:qa-7dc1180a55e0','cq:cq-1881-name','bears_on');
@@ -1759,7 +1760,6 @@ INSERT INTO edges VALUES ('qa:qa-2d17d7d0d764','cq:cq-1881-name','bears_on');
 INSERT INTO edges VALUES ('qa:qa-ff816ac58845','cq:cq-1881-name','bears_on');
 INSERT INTO edges VALUES ('qa:qa-a84489422986','cq:cq-1881-name','bears_on');
 INSERT INTO edges VALUES ('qa:qa-1a2a14debe98','cq:cq-1881-name','bears_on');
-INSERT INTO edges VALUES ('qa:qa-e629b8c6a6d5','cq:cq-1881-name','bears_on');
 INSERT INTO edges VALUES ('cq:cq-1916','scene:ghf-19160201-1','about');
 INSERT INTO edges VALUES ('qa:qa-209cfa278204','cq:cq-1916','bears_on');
 INSERT INTO edges VALUES ('qa:qa-742ec2ec47ec','cq:cq-1916','bears_on');
@@ -5153,7 +5153,7 @@ South Wales Police welcomes receiving correspondence in Welsh and English. Any c
 
 Ymwadiad Heddlu De Cymru\South Wales Police Disclaimer
 
-Gallai defnyddio neu ddatgelu''r neges e-bost hon heb awdurdod fod yn anghyfreithlon. Gallwch weld ein datganiad cyfrinachedd yn: https://www.heddlu-de-cymru.police.uk/cy-GB/heddluoedd/heddlu-de-cymru/ardaloedd/amdanom-ni/amdano','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue/#t1','');
+Gallai defnyddio neu ddatgelu''r neges e-bost hon heb awdurdod fod yn anghyfreithlon. Gallwch weld ein datganiad cyfrinachedd yn: https://www.heddlu-de-cymru.police.uk/cy-GB/heddluoedd/heddlu-de-cymru/ardaloedd/amdanom-ni/amdanom','reply','thread','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/south-wales-police-email-correspondence-catalogue/#t1','');
 INSERT INTO qa_fts VALUES ('qa-951cc34f5110','So please forward to the constable or direct me.
 Thanks
 
@@ -5189,7 +5189,7 @@ South Wales Police welcomes receiving correspondence in Welsh and English. Any c
 
 Ymwadiad Heddlu De Cymru\South Wales Police Disclaimer
 
-Gallai defnyddio neu ddatgelu''r neges e-bost hon heb awdurdod fod yn anghyfreithlon. Gallwch weld ein datganiad cyfrinachedd yn: https://www.heddlu-de-cymru.police.uk/cy-GB/heddluoedd/heddlu-de-cymru/ardaloedd/amdanom-ni/amdano','South Wales Police');
+Gallai defnyddio neu ddatgelu''r neges e-bost hon heb awdurdod fod yn anghyfreithlon. Gallwch weld ein datganiad cyfrinachedd yn: https://www.heddlu-de-cymru.police.uk/cy-GB/heddluoedd/heddlu-de-cymru/ardaloedd/amdanom-ni/amdanom','South Wales Police');
 INSERT INTO qa VALUES ('qa-d78b7db6c7f2','swp','South Wales Police','south-wales-police-email-correspondence-catalogue#t1','','Reply received: Automatic reply: Our Reference: LPB/26/0781','2026-05-14','Diolch am gysylltu â ni. Darllenwch y wybodaeth ganlynol yn ofalus i ddeall sut y byddwn yn ymdrin â''ch ymholiad.
 
 Ein horiau swyddfa yw:
@@ -9071,7 +9071,7 @@ Llandough Primary School.
 Specifically, I request:
 
 ■ The transfer deed, conveyance or other legal instrument by which the
-Council acq','2026-07-14','Dear Sion Buckler
+Council acquired the land','2026-07-14','Dear Sion Buckler
 
 FREEDOM OF INFORMATION ACT 2000/ENVIRONMENTAL INFORMATION REGULATIONS 2004 - INFORMATION REQUEST
 
@@ -9146,7 +9146,7 @@ Llandough Primary School.
 Specifically, I request:
 
 ■ The transfer deed, conveyance or other legal instrument by which the
-Council acq','Dear Sion Buckler
+Council acquired the land','Dear Sion Buckler
 
 FREEDOM OF INFORMATION ACT 2000/ENVIRONMENTAL INFORMATION REGULATIONS 2004 - INFORMATION REQUEST
 
@@ -12455,7 +12455,7 @@ Ffôn symudol / Mobile: [redacted]
 E-bost/ Email: andy.wigley@llyw.cymru<mailto:andy.wigley@llyw.cymru> / andy.wigley@gov.wales<mailto:andy.wigley@gov.wales>
 
 P Helpwch yr amgylchedd - peidiwch ag argraffu hon os nad oes gwir raid Help our environment - only print this if really necessary
-Rydym yn croesawu gohebiaeth Gymraeg. Cewch','partial','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t2','cq-1881-name');
+Rydym yn croesawu gohebiaeth Gymraeg. Cewch a','partial','reply-only','','https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/welsh-government-and-cadw-email-correspondence-catalogue-part-2/#t2','cq-1881-name');
 INSERT INTO qa_fts VALUES ('qa-018c3334922f','Reply received: RE: Great House Farm, Llandough','Dear Mr Buckler,
 
 Thank you for your further emails of 27, 28 and 29 August. I am sending this email as a single reply to all three of these emails.
@@ -12483,7 +12483,7 @@ Ffôn symudol / Mobile: [redacted]
 E-bost/ Email: andy.wigley@llyw.cymru<mailto:andy.wigley@llyw.cymru> / andy.wigley@gov.wales<mailto:andy.wigley@gov.wales>
 
 P Helpwch yr amgylchedd - peidiwch ag argraffu hon os nad oes gwir raid Help our environment - only print this if really necessary
-Rydym yn croesawu gohebiaeth Gymraeg. Cewch','Cadw / Welsh Government');
+Rydym yn croesawu gohebiaeth Gymraeg. Cewch a','Cadw / Welsh Government');
 INSERT INTO qa VALUES ('qa-b82a8afc5495','nctso','National Counter Terrorism Security Office','national-counter-terrorism-security-office-nactso-email-correspondence-catalogue#t1','','Reply received: New response to your FOI request - BP vs Buckler 1987','2026-09-02','You have a new response to the Freedom of Information request ''BP vs Buckler 1987'' that you made to National Counter Terrorism Security Office.
 
 To view the response, click on the link below.
@@ -18011,7 +18011,7 @@ Regards,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals Cyber/Electronic Warfare Professional and Life Member
-greathous','2026-09-29','Thank you for your request, which we will endeavour to action at the earliest opportunity.
+greathousefarmwiki.wordpress.com','2026-09-29','Thank you for your request, which we will endeavour to action at the earliest opportunity.
 
 However, we wish to advise that due to unprecedented volume of applications received we anticipate there will be a delay with you receiving the information requested.
 
@@ -18058,7 +18058,7 @@ Regards,
 
 Sion Buckler (Ret''d Sergeant)
 Royal Signals Cyber/Electronic Warfare Professional and Life Member
-greathous','Thank you for your request, which we will endeavour to action at the earliest opportunity.
+greathousefarmwiki.wordpress.com','Thank you for your request, which we will endeavour to action at the earliest opportunity.
 
 However, we wish to advise that due to unprecedented volume of applications received we anticipate there will be a delay with you receiving the information requested.
 
