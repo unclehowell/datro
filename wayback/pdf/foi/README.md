@@ -42,8 +42,8 @@ Not included: signature images and logos; images the family had sent that were q
 | GHF-E106-R33-A2 | 2026-10-05 | Amgueddfa Cymru | FOI 2026-036: record 63.24/1 rowel spur | [2026-10-05_museum-wales_foi-2026-036_63-24-1-rowel-spur.pdf](2026-10-05_museum-wales_foi-2026-036_63-24-1-rowel-spur.pdf) | `c1c0fa5e25d5` |
 | GHF-E106-R33-A3 | 2026-10-05 | Amgueddfa Cymru | FOI 2026-036: record 63.24/2 spearhead | [2026-10-05_museum-wales_foi-2026-036_63-24-2-spearhead.pdf](2026-10-05_museum-wales_foi-2026-036_63-24-2-spearhead.pdf) | `cfadaeb03c94` |
 | GHF-E106-R33-A1 | 2026-10-05 | Amgueddfa Cymru | FOI 2026-036: letter of 22 Nov 1931, file 63.24 | [2026-10-05_museum-wales_foi-2026-036_63-24-letter-1931.pdf](2026-10-05_museum-wales_foi-2026-036_63-24-letter-1931.pdf) | `34a54e6f76e5` |
-| new 2026-10-19 | 2026-10-19 | Welsh Government | ATISN 26-0010 disclosure response (retention and destruction schedules; no files found). Public copy, requester's email redacted | [2026-10-19_welsh-government_atisn-26-0010_disclosure-response.pdf](2026-10-19_welsh-government_atisn-26-0010_disclosure-response.pdf) | `7fca7e2b9ae5` |
-| new 2026-10-19 | 2026-10-19 | Welsh Government / Cadw | ATISN 27589 response, ref qA2496208 (refused under FOIA s.14(2)). Public copy, requester's email redacted | [2026-10-19_cadw_atisn-27589_response-s14-2.pdf](2026-10-19_cadw_atisn-27589_response-s14-2.pdf) | `0813652b6c60` |
+| GHF-E106-R56-A1 | 2026-10-19 | Welsh Government | ATISN 26-0010 disclosure response (retention and destruction schedules; no files found). Public copy, requester's email redacted | [2026-10-19_welsh-government_atisn-26-0010_disclosure-response.pdf](2026-10-19_welsh-government_atisn-26-0010_disclosure-response.pdf) | `7fca7e2b9ae5` |
+| GHF-E106-R57-A1 | 2026-10-19 | Welsh Government / Cadw | ATISN 27589 response, ref qA2496208 (refused under FOIA s.14(2)). Public copy, requester's email redacted | [2026-10-19_cadw_atisn-27589_response-s14-2.pdf](2026-10-19_cadw_atisn-27589_response-s14-2.pdf) | `0813652b6c60` |
 
 Police and MOD FOI responses are omitted from this public catalogue. Mobile numbers are not published.
 
