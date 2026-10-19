@@ -174,7 +174,7 @@ sc('P', 'ghf-12000101-1', '1200-01-01', '12th – 14th century', "Medieval occup
 sc('P', 'ghf-15450101-1', '1545-01-01', '1536 – 1793', "The lordship of the manor", 'Manor of Llandough', 'AB',
    'Public record',
    "Llandough belongs to Tewkesbury Abbey until the Dissolution of 1536–39. Cardiff Records states that in 1543 Henry VIII granted the manor to Lord Clynton and Say and Robert Turwitt, and that by 1545 it was held by Sir George Herbert. The Western Mail letter says the Herberts held the lordship until the Earl of Bute bought it in 1793; Cardiff Records places William Hurst and others in the account from 1767. The same 1974 newspaper record identifies Mary Williams's family as occupying the manorial home since 1667. That occupation and the lordship are separate from the farmhouse freehold. The family's case is that the Williamses were virtual freeholders under the 1877 bargain while quarrying continued, and that Parcel A's freehold passed to them in 1928 when quarrying ended.",
-   [press('N04', "Western Mail, 'Grievous loss' (1974 letter giving manorial descent and the Williams occupation)", 'ghf-e090-n03-n04-1974-open-day-and-grievous-loss-page.jpg'),
+   [press('N04', "Western Mail, 'Grievous loss' (1974 letter giving manorial descent and the Williams occupation)"),
     MARY,
     w('/1877-agreement/#sale-1877', 'The 1877 Agreement — the sale'),
     w('/1877-agreement/#takes-effect', 'The 1877 Agreement — takes effect in 1928'),
@@ -590,7 +590,7 @@ sc('IV', 'ghf-19821001-1', '1982-10-01', '1 October 1982', "GGAT advice", 'GGAT'
    'Planning file',
    "On 1 October 1982 GGAT advises the planners that occupation may continue in the area and asks for investigation before development.",
    [ARCH, GGAT_REV,
-    press('N05', 'Neath Guardian, 17 April 1980 (Roman villa, a separate site)', 'ghf-e090-n05-1980-neath-guardian.jpg'),
+    press('N05', 'Neath Guardian, 17 April 1980 (Roman villa, a separate site)'),
     press('N06', "South Wales Echo, 18 March 1983 — burnt relics (Roman villa finds, a separate site)", 'ghf-e090-n06-1983-echo-burnt-relics.jpg')],
    aliases=['ghf-19780101-1', 'ghf-press-19800417-n05', 'ghf-19830313-1'])
 sc('IV', 'ghf-19821119-1', '1982-11-19', '19 – 30 November 1982', "First registration", 'HM Land Registry', 'AB',

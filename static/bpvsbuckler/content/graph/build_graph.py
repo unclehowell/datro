@@ -399,6 +399,13 @@ story['case_questions'] = [{'id': c['id'], 'question': c['question'], 'status': 
                             'for': c['for'], 'against': c['against'], 'next': c['next'],
                             'scenes': c['scenes'], 'qa_count': len(c['qa'])} for c in cqs]
 story['graph'] = graph['built_from'] | {'qa': len(qa), 'answered': sum(1 for q in qa if q['answer'])}
+# Pictures are placed on scenes by date (content/scene_media.py); the build
+# stops here if any picture falls outside its scene's period.
+import sys as _sys
+_sys.path.insert(0, os.path.dirname(HERE))
+from scene_media import attach_media, write_manifest
+attach_media(story['scenes'])
+write_manifest(story['scenes'], J(SITE, 'api/scene-media.json'))
 json.dump(story, open(J(SITE, 'src/data/story.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
 

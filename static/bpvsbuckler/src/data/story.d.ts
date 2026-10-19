@@ -1,4 +1,8 @@
 export interface Evidence { type: string; title: string; url: string; image?: string }
+export interface SceneMedia {
+  url: string; title: string; date: string | null; released: string | null; item: string;
+  source: 'curated' | 'archive'; basis: string;
+}
 export interface Act { id: string; label: string; title: string; span: string; logline: string }
 export interface CastMember { id: string; name: string; years: string; role: string; match: string[] }
 export type Grade = 'documented' | 'single-source' | 'testimony-only' | 'contested' | 'argument';
@@ -15,7 +19,7 @@ export interface CaseQuestion {
 export interface Scene {
   id: string; act: string; no: number; ref: string; date: string; when: string; title: string; place: string;
   parcel: string; basis: string; narration: string; case: string | null; evidence: Evidence[];
-  image: string | null; aliases: string[]; cast: string[];
+  image: string | null; media?: SceneMedia[]; aliases: string[]; cast: string[];
   ledger: [string, string][]; moved: string[]; received: string | null; received_words: [string, string][]; known: string | null;
   grade: Grade; grade_text: string; questions: SceneQuestion[]; qa: SceneQA[];
 }

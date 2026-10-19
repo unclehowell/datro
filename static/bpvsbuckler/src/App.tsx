@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import story from './data/story.json';
 import meta from './data/meta.json';
-import type { Story, Scene, CaseQuestion, SceneQA } from './data/story.d';
+import type { Story, Scene, SceneMedia, CaseQuestion, SceneQA } from './data/story.d';
 
 const S = story as unknown as Story;
 const scenes = S.scenes;
@@ -194,6 +194,10 @@ export default function App() {
   );
 }
 
+function datedImage(scene: Scene, url?: string): boolean {
+  return !!url && (scene.media || []).some((m) => m.url === url);
+}
+
 function ParcelChip({ p }: { p: string }) {
   const [cls, label] = PARCEL[p] || PARCEL[''];
   if (!label) return null;
@@ -202,7 +206,8 @@ function ParcelChip({ p }: { p: string }) {
 
 function Frame({ scene, small }: { scene: Scene; small?: boolean }) {
   const [cls] = PARCEL[scene.parcel] || PARCEL[''];
-  const img = scene.image;
+  // Only a picture the build placed on this scene by date (scene.media) is shown.
+  const img = scene.image && (scene.media || []).some((m) => m.url === scene.image) ? scene.image : null;
   const photo = img && /cadw/.test(img);
   const year = scene.when.replace(/^(Today)$/, 'Today');
   if (small) return (
@@ -251,7 +256,7 @@ function SceneView({ scene, spoken, copied, onCopy, onCast, onPick }: { scene: S
           <ul>
             {scene.evidence.map((e, i) => (
               <li key={i}><a href={e.url} target="_blank" rel="noopener noreferrer">
-                <span className="thumb" style={e.image ? { backgroundImage: `url("${e.image}")` } : undefined}>{e.image ? '' : e.type.split(' ')[0]}</span>
+                <span className="thumb" style={datedImage(scene, e.image) ? { backgroundImage: `url("${e.image}")` } : undefined}>{datedImage(scene, e.image) ? '' : e.type.split(' ')[0]}</span>
                 <span className="t">{e.title}<span className="k">{e.type}</span></span>
               </a></li>
             ))}
@@ -267,21 +272,6 @@ function SceneView({ scene, spoken, copied, onCopy, onCast, onPick }: { scene: S
 }
 
 
-type ArchiveMediaRow = {
-  name?: string;
-  path?: string;
-  tags?: string[];
-  title?: string | { rendered?: string };
-  caption?: string | { rendered?: string };
-  alt_text?: string;
-  slug?: string;
-  source_url?: string;
-  media_type?: string;
-  mime_type?: string;
-  date?: string;
-  link?: string;
-};
-type MediaCatalog = { waybackImages: ArchiveMediaRow[]; waybackVideos: ArchiveMediaRow[]; wikiMedia: ArchiveMediaRow[] };
 type SlideMediaItem = {
   id: string;
   url: string;
@@ -291,140 +281,27 @@ type SlideMediaItem = {
   poster?: string;
   score: number;
 };
-const WAYBACK_MEDIA_BASE = 'https://wayback.bucklerfamily.estate';
-const MEDIA_WORD_STOP = new Set([
-  'the','and','for','from','with','into','onto','this','that','what','when','where','which','while','after','before','during','through',
-  'were','was','are','been','being','have','has','had','will','would','could','should','their','there','they','them','then','than',
-  'not','but','you','your','his','her','she','him','our','out','one','two','three','four','five','six','all','any','some','each',
-  'great','house','farm','farmhouse','llandough','mawr','ty','site','story','scene','year','years','date','event','record','records',
-  'document','documents','family','people','home','land','title','case','court','official','evidence','source','news','wales','south'
-]);
-function mediaPlainText(value?: string | { rendered?: string }): string {
-  const raw = typeof value === 'string' ? value : (value && value.rendered) || '';
-  return raw.replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').trim();
-}
-function mediaWords(value: string): string[] {
-  return value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    .split(/[^a-z0-9]+/).filter((word) => word.length > 2 && !MEDIA_WORD_STOP.has(word));
-}
-function absoluteWaybackUrl(path: string): string {
-  if (/^https?:\/\//i.test(path)) return path;
-  return WAYBACK_MEDIA_BASE + '/' + path.replace(/^\/+/, '').replace(/^wayback\//, '');
-}
 function absoluteSiteUrl(path: string): string {
-  if (/^https?:\/\//i.test(path)) return path;
+  if (/^https?:\/\//i.test(path)) return encodeURI(decodeURI(path));
   return new URL(path, SITE).toString();
-}
-function archiveRowText(row: ArchiveMediaRow, wiki = false): string {
-  const mediaPath = row.path || (row.source_url ? row.source_url.split('/').pop() : '') || '';
-  return [
-    row.name, mediaPath, row.slug, row.alt_text, mediaPlainText(row.title), mediaPlainText(row.caption),
-    row.link, (row.tags || []).join(' '), (!wiki && row.date) || ''
-  ].filter(Boolean).join(' ');
-}
-function mediaYearMatch(text: string, year: string): boolean {
-  if (!year || year === '0000' || year === '9999') return false;
-  return new RegExp('(^|[^0-9])' + year + '([^0-9]|$)').test(text);
-}
-function rankArchiveMedia(scene: Scene, row: ArchiveMediaRow, wiki = false): { score: number; relevant: boolean } {
-  const text = archiveRowText(row, wiki);
-  const lower = text.toLowerCase();
-  const tokens = new Set(mediaWords(text));
-  const year = (scene.date || '').slice(0, 4);
-  const exactDate = !!scene.date && /^\d{4}-\d{2}-\d{2}$/.test(scene.date)
-    && lower.includes(scene.date.toLowerCase());
-  const yearMatch = mediaYearMatch(lower, year);
-  const listedYears = (scene.when || '').match(/\b(?:1[0-9]{3}|20[0-9]{2})\b/g) || [];
-  const otherYearMatch = listedYears.some((listed) => listed !== year && mediaYearMatch(lower, listed));
-  const titleTerms = [...new Set(mediaWords(scene.title))];
-  const placeTerms = [...new Set(mediaWords(scene.place || ''))];
-
-  // Match to dates stated in evidence titles/types only, never WordPress upload
-  // paths such as /uploads/2026/10/, which describe the upload, not the event.
-  const evidenceLabels = (scene.evidence || [])
-    .map((entry) => [entry.title, entry.type].filter(Boolean).join(' '))
-    .join(' ');
-  const evidenceYears = [...new Set(evidenceLabels.match(/\b(?:1[0-9]{3}|20[0-9]{2})\b/g) || [])];
-  const evidenceYearMatch = evidenceYears.some((listed) => mediaYearMatch(lower, listed));
-  const evidenceTerms = [...new Set(mediaWords(
-    evidenceLabels + ' ' + (scene.evidence || []).map((entry) => entry.url || '').join(' ')
-  ))].slice(0, 100);
-  const contextText = [scene.narration, scene.known || '', scene.received || ''].join(' ');
-  const contextTerms = [...new Set(mediaWords(contextText))].slice(0, 70);
-  const titleHits = titleTerms.filter((word) => tokens.has(word)).length;
-  const evidenceHits = evidenceTerms.filter((word) => tokens.has(word)).length;
-  const placeHits = placeTerms.filter((word) => tokens.has(word)).length;
-  const contextHits = contextTerms.filter((word) => tokens.has(word)).length;
-  const tagged = tokens.has('bpvsbuckler') || tokens.has('greathousefarm') || tokens.has('ghf');
-
-  let score = exactDate ? 42 : yearMatch ? 20 : (otherYearMatch ? 7 : 0);
-  // A strong bonus makes a historical media year explicitly named in a cited
-  // source beat unrelated files that only happen to share generic farm terms.
-  if (evidenceYearMatch) score += 38;
-  score += titleHits * 10;
-  score += Math.min(12, evidenceHits) * 3.4;
-  score += placeHits * 3;
-  score += Math.min(6, contextHits) * 1.5;
-  if (tagged) score += 1.5;
-
-  const relevant = exactDate || yearMatch || evidenceYearMatch || titleHits > 0 || evidenceHits > 0
-    || placeHits >= 2 || contextHits >= 2
-    || (otherYearMatch && (tagged || titleHits > 0 || evidenceHits > 0));
-  return { score, relevant };
-}
-function archiveMediaTitle(row: ArchiveMediaRow): string {
-  const rich = mediaPlainText(row.title) || mediaPlainText(row.caption) || row.alt_text || row.name || row.path || 'Archived media';
-  const cleaned = rich.replace(/[_-]+/g, ' ').replace(/\b(?:bpvsbuckler|consortium|en|v\d+(?:[.-]\d+)*)\b/gi, ' ')
-    .replace(/^\s*\d{4}[- _]\d{2}[- _]\d{2}\s*/, '').replace(/\s+/g, ' ').trim();
-  return cleaned || 'Archived media';
-}
-function videoPoster(row: ArchiveMediaRow, images: ArchiveMediaRow[]): string | undefined {
-  const path = (row.path || row.source_url || row.name || '').split('/').pop() || '';
-  const tokens = [...new Set(mediaWords(path))].filter((word) => !/^\d+$/.test(word));
-  let best: { row: ArchiveMediaRow; score: number } | undefined;
-  for (const image of images) {
-    const imageText = archiveRowText(image).toLowerCase();
-    if (!/thumbnail|poster|preview/i.test(imageText)) continue;
-    const imageTokens = new Set(mediaWords(imageText));
-    const score = tokens.filter((word) => imageTokens.has(word)).length;
-    if (!best || score > best.score) best = { row: image, score };
-  }
-  return best && best.score >= 2 && best.row.path ? absoluteWaybackUrl(best.row.path) : undefined;
 }
 function videoEmbedUrl(url: string): string | undefined {
   const match = url.match(/(?:youtube\.com\/watch\?v=|youtube\.com\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
   return match ? 'https://www.youtube-nocookie.com/embed/' + match[1] : undefined;
 }
+function mediaDateLabel(m: SceneMedia): string {
+  if (m.date) return m.date;
+  return m.released ? 'released ' + m.released : '';
+}
 
-const FALLBACK_FARMHOUSE_URL = absoluteSiteUrl('/media/1791868564541.jpg');
-
+// Scene pictures come only from scene.media, which the build places by DATE
+// (content/scene_media.py + content/media_register.py) and checks against the
+// scene's period. Nothing is matched by keyword at runtime, and an undated
+// picture is never shown on a dated scene.
 function FloatingSceneMedia({ scene }: { scene: Scene }) {
-  const [catalog, setCatalog] = useState<MediaCatalog>({ waybackImages: [], waybackVideos: [], wikiMedia: [] });
   const [selection, setSelection] = useState({ sceneId: '', index: 0 });
   const [lightboxOpen, setLightboxOpen] = useState(false);
-
-  useEffect(() => {
-    let live = true;
-    const load = async () => {
-      try {
-        const response = await fetch('/api/media-catalog', {
-          headers: { accept: 'application/json' },
-          cache: 'force-cache',
-        });
-        if (!response.ok) throw new Error('Media catalogue unavailable');
-        const data: Partial<MediaCatalog> = await response.json();
-        if (live) setCatalog({
-          waybackImages: Array.isArray(data.waybackImages) ? data.waybackImages : [],
-          waybackVideos: Array.isArray(data.waybackVideos) ? data.waybackVideos : [],
-          wikiMedia: Array.isArray(data.wikiMedia) ? data.wikiMedia : [],
-        });
-      } catch (_error) {
-        // Existing slide and evidence images still provide a useful thumbnail.
-      }
-    };
-    void load();
-    return () => { live = false; };
-  }, []);
+  const [broken, setBroken] = useState<Record<string, true>>({});
 
   useEffect(() => {
     setLightboxOpen(false);
@@ -442,144 +319,58 @@ function FloatingSceneMedia({ scene }: { scene: Scene }) {
   const items = useMemo(() => {
     const found: SlideMediaItem[] = [];
     const used = new Set<string>();
-    const add = (item: SlideMediaItem) => {
-      if (!item.url || used.has(item.url)) return;
-      used.add(item.url);
-      found.push(item);
-    };
-
-    // The curated scene image and its evidence images always outrank loose
-    // archive matches because they were attached to this scene intentionally.
-    if (scene.image) {
-      const linked = scene.evidence.find((entry) => entry.image === scene.image);
-      add({
-        id: 'scene-image-' + scene.id,
-        url: absoluteSiteUrl(scene.image),
-        title: linked?.title || scene.title,
-        source: 'Curated scene image',
-        kind: 'image',
-        score: 10000
-      });
-    }
-    scene.evidence.forEach((entry, index) => {
-      if (entry.image) add({
-        id: 'evidence-image-' + scene.id + '-' + index,
-        url: absoluteSiteUrl(entry.image),
-        title: entry.title || scene.title,
-        source: entry.type || 'Scene evidence',
-        kind: 'image',
-        score: 9500 - index
-      });
-
-      const url = entry.url || '';
-      if (/\.(?:jpe?g|png|gif|webp|avif)(?:$|[?#])/i.test(url)) {
-        add({
-          id: 'evidence-direct-image-' + scene.id + '-' + index,
-          url,
-          title: entry.title || scene.title,
-          source: entry.type || 'Linked evidence image',
-          kind: 'image',
-          score: 9200 - index
-        });
-      }
-      if (url && /(?:youtube\.com|youtu\.be|\.mp4(?:$|[?#])|\.webm(?:$|[?#])|\.mov(?:$|[?#]))/i.test(url)) {
-        const embed = videoEmbedUrl(url);
-        const videoId = (url.match(/(?:youtube\.com\/watch\?v=|youtube\.com\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/) || [])[1];
-        add({
-          id: 'evidence-video-' + scene.id + '-' + index,
-          url,
-          title: entry.title || scene.title,
-          source: entry.type || 'Scene evidence video',
-          kind: 'video',
-          poster: videoId ? 'https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg' : undefined,
-          score: embed ? 8900 - index : 8500 - index
-        });
-      }
-    });
-
-    // Scan all available Wayback images and videos, then media uploads indexed by
-    // the Great House Farm Wiki REST API. Use the scene's date and evidence
-    // identifiers as well as its short heading to pick the closest media.
-    const archiveImages = catalog.waybackImages;
-    for (const row of archiveImages) {
-      if (!row.path) continue;
-      const rank = rankArchiveMedia(scene, row);
-      if (!rank.relevant) continue;
-      add({
-        id: 'wayback-image-' + row.path,
-        url: absoluteWaybackUrl(row.path),
-        title: archiveMediaTitle(row),
-        source: 'Wayback media library',
-        kind: 'image',
-        score: rank.score + 0.5
-      });
-    }
-    for (const row of catalog.waybackVideos) {
-      if (!row.path) continue;
-      const rank = rankArchiveMedia(scene, row);
-      if (!rank.relevant) continue;
-      add({
-        id: 'wayback-video-' + row.path,
-        url: absoluteWaybackUrl(row.path),
-        poster: videoPoster(row, archiveImages),
-        title: archiveMediaTitle(row),
-        source: 'Wayback video archive',
-        kind: 'video',
-        score: rank.score + 0.25
-      });
-    }
-    for (const row of catalog.wikiMedia) {
-      const url = row.source_url || row.path || '';
-      if (!url) continue;
-      const rank = rankArchiveMedia(scene, row, true);
-      if (!rank.relevant) continue;
-      const isVideo = row.media_type === 'video' || /^video\//i.test(row.mime_type || '') || /\.(?:mp4|webm|mov)(?:$|[?#])/i.test(url);
-      add({
-        id: 'wiki-media-' + url,
+    (scene.media || []).forEach((m, index) => {
+      const url = absoluteSiteUrl(m.url);
+      if (!url || used.has(url) || broken[url]) return;
+      used.add(url);
+      const label = mediaDateLabel(m);
+      found.push({
+        id: 'scene-media-' + scene.id + '-' + index,
         url,
-        title: archiveMediaTitle(row),
-        source: 'Great House Farm Wiki media library',
-        kind: isVideo ? 'video' : 'image',
-        score: rank.score + 1
+        title: m.title + (label && !m.title.includes(label.slice(0, 4)) ? ' (' + label + ')' : ''),
+        source: m.source === 'curated' ? 'Scene evidence' : 'Archive, matched by date',
+        kind: 'image',
+        score: 0
       });
-    }
-
-    const ranked = found.sort((a, b) => b.score - a.score);
-    if (ranked.length) return ranked.slice(0, 12);
-
-    // Last resort: reuse the real farmhouse photograph already used on the
-    // site's landing page. This makes an empty media slot impossible even if an
-    // external catalogue fails or has no exact match for a scene.
-    return [{
-      id: 'farmhouse-fallback-' + scene.id,
-      url: FALLBACK_FARMHOUSE_URL,
-      title: 'Great House Farm farmhouse, July 1988',
-      source: 'Farmhouse fallback image',
-      kind: 'image' as const,
-      score: -1000
-    }];
-  }, [scene, catalog]);
+    });
+    // Videos linked from the scene's own evidence (no date matching needed).
+    scene.evidence.forEach((entry, index) => {
+      const url = entry.url || '';
+      if (!url || used.has(url) || !/(?:youtube\.com|youtu\.be|\.mp4(?:$|[?#])|\.webm(?:$|[?#])|\.mov(?:$|[?#]))/i.test(url)) return;
+      used.add(url);
+      const videoId = (url.match(/(?:youtube\.com\/watch\?v=|youtube\.com\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/) || [])[1];
+      found.push({
+        id: 'evidence-video-' + scene.id + '-' + index,
+        url,
+        title: entry.title || scene.title,
+        source: entry.type || 'Scene evidence video',
+        kind: 'video',
+        poster: videoId ? 'https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg' : undefined,
+        score: 0
+      });
+    });
+    return found.slice(0, 12);
+  }, [scene, broken]);
 
   const selectedIndex = selection.sceneId === scene.id
     ? selection.index % Math.max(items.length, 1) : 0;
   const current = items[selectedIndex] || items[0];
-  const previewUrl = current?.poster || (current?.kind === 'image' ? current.url : FALLBACK_FARMHOUSE_URL);
+  const previewUrl = current?.poster || (current?.kind === 'image' ? current.url : '');
   const selectItem = (next: number) => {
     if (!items.length) return;
     setSelection({ sceneId: scene.id, index: (next + items.length) % items.length });
   };
-  const safeImageFallback = (event: React.SyntheticEvent<HTMLImageElement>) => {
-    const img = event.currentTarget;
-    if (img.dataset.fallbackApplied === '1' || img.src === FALLBACK_FARMHOUSE_URL) return;
-    img.dataset.fallbackApplied = '1';
-    img.src = FALLBACK_FARMHOUSE_URL;
+  // A picture that fails to load is dropped; no stand-in picture from another
+  // date is ever substituted.
+  const safeImageFallback = () => {
+    if (current && current.kind === 'image') setBroken((prev) => ({ ...prev, [current.url]: true }));
   };
 
   if (!current) return null;
   return (
     <>
       <div className="pip" aria-label={'Scene media: ' + current.title}>
-        <img className="pip-image" src={previewUrl} alt={current.title} loading="lazy" onError={safeImageFallback} />
+        {previewUrl ? <img className="pip-image" src={previewUrl} alt={current.title} loading="lazy" onError={safeImageFallback} /> : <div className="pip-image" aria-hidden="true" />}
         {current.kind === 'video' && <span className="pip-play-mark" aria-hidden="true">▶</span>}
         <span className="pip-caption" title={current.title}>{current.title}</span>
         <button type="button" className="pip-control pip-prev" onClick={() => selectItem(selectedIndex - 1)} disabled={items.length < 2} aria-label="Previous scene media" title="Previous image">‹</button>
@@ -600,7 +391,7 @@ function FloatingSceneMedia({ scene }: { scene: Scene }) {
                   allowFullScreen
                 />
               ) : (
-                <video className="pip-video-player" src={current.url} poster={current.poster || FALLBACK_FARMHOUSE_URL} controls autoPlay playsInline />
+                <video className="pip-video-player" src={current.url} poster={current.poster || undefined} controls autoPlay playsInline />
               )
             ) : (
               <img src={current.url} alt={current.title} onError={safeImageFallback} />
