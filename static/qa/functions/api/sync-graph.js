@@ -31,7 +31,7 @@ async function bodyJson(response) {
 
 async function authorised(request) {
   const header = request.headers.get('authorization') || '';
-  if (!/^Bearer\\s+\\S+/i.test(header)) return false;
+  if (!/^Bearer\s+\S+/i.test(header)) return false;
   const headers = { authorization: header, accept: 'application/json' };
   const verifyResponse = await fetch('https://api.cloudflare.com/client/v4/user/tokens/verify', { headers });
   const verify = await bodyJson(verifyResponse);
@@ -203,7 +203,7 @@ export async function onRequestPost({ request, env }) {
       } catch (_error) {
         const bytes = group.reduce((n, statement) => n + new TextEncoder().encode(statement).byteLength, 0);
         const firstNode = group.find((statement) => statement.startsWith('INSERT INTO nodes VALUES ')) || '';
-        const idMatch = firstNode.match(/INSERT INTO nodes VALUES \\x28'([^']+)'/);
+        const idMatch = firstNode.match(/INSERT INTO nodes VALUES \x28'([^']+)'/);
         return json({
           ok: false, complete: false, stage, failedBatch: i + 1, batchCount: batches.length,
           batchBytes: bytes, batchStatementCount: group.length,
