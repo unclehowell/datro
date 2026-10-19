@@ -1,0 +1,84 @@
+name: Deploy QA graph to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - qa
+    paths:
+      - 'static/qa/**'
+      - '.github/workflows/deploy-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-qa
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: static/qa
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || '42a4a8d7bfb96321118ada213638d050' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Ensure API data present (copy from bpvsbuckler if missing)
+        run: |
+          mkdir -p api
+          if [ ! -s api/qa.json ]; then
+            if [ -f ../bpvsbuckler/api/qa.json ]; then
+              cp ../bpvsbuckler/api/qa.json api/
+              cp ../bpvsbuckler/api/graph.json api/ 2>/dev/null || true
+              cp ../bpvsbuckler/api/graph.sql api/ 2>/dev/null || true
+            else
+              git fetch origin bpvsbuckler --depth=1
+              git show origin/bpvsbuckler:static/bpvsbuckler/api/qa.json > api/qa.json
+              git show origin/bpvsbuckler:static/bpvsbuckler/api/graph.json > api/graph.json || true
+              git show origin/bpvsbuckler:static/bpvsbuckler/api/graph.sql > api/graph.sql || true
+            fi
+          fi
+          test -s api/qa.json
+          python3 - <<'PY'
+          import json
+          payload = json.load(open("api/qa.json", encoding="utf-8"))
+          records = payload.get("qa") if isinstance(payload, dict) else payload
+          if not isinstance(records, list):
+              raise SystemExit("qa.json must be a list or an object with a 'qa' list")
+          count = len(records)
+          print(f"Loaded {count} Q&A records")
+          if count < 1:
+              raise SystemExit("qa.json empty")
+          ids = [item.get("id") for item in records if isinstance(item, dict)]
+          if len(ids) != count or any(not isinstance(uid, str) or not uid.startswith("qa-") for uid in ids):
+              raise SystemExit("qa.json contains records without stable qa-* UIDs")
+          if len(set(ids)) != count:
+              raise SystemExit("qa.json contains duplicate Q&A UIDs")
+          PY
+
+      - name: Deploy to Cloudflare Pages
+        run: |
+          npx --yes wrangler@3 pages deploy . --project-name=qa --branch=qa --commit-dirty=true
+
+      - name: Sync and verify D1 graph
+        run: |
+          status="$(curl --silent --show-error --output /tmp/qa-sync.json --write-out '%{http_code}' \
+            --request POST \
+            --header "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+            --header "Accept: application/json" \
+            "https://qa-acp.pages.dev/api/sync-graph")"
+          cat /tmp/qa-sync.json
+          if [ "$status" != "200" ]; then
+            echo "D1 sync returned HTTP $status"
+            exit 1
+          fi
+          python3 -c 'import json,sys; d=json.load(open("/tmp/qa-sync.json")); print("D1 sync verified:", d.get("counts", {})); sys.exit(0 if d.get("ok") is True else 1)'
