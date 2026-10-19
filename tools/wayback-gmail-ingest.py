@@ -13,6 +13,7 @@ Output (all paths relative to the wayback/ directory):
   api/message/<id>.json      the same record + text, as JSON
   api/index.json             every record (no text), newest first
   api/threads.json           records grouped by Gmail thread
+  api/corpus.json            lists api/corpus-N.json shards holding every redacted text (id -> text), for full-text search
 Ids are "gm-" + the Gmail message id, so re-running is idempotent: an existing id is rewritten
 in place (same content -> same bytes), new mail is added, nothing is deleted.
 
@@ -141,8 +142,23 @@ def main(src, root, generated):
     meta = {"title": "Great House Farm / Ty Mawr case correspondence (Wayback)", "apiVersion": "1.0.0",
             "generated": generated, "count": len(ordered), "threadCount": len(tlist),
             "privacy": "Email addresses, phone numbers, the family's private address and postcodes are redacted. Officials appear by name or role.",
-            "endpoints": {"index": "/api/index.json", "threads": "/api/threads.json", "message": "/api/message/<id>.json", "text": "/mail/<id>.txt"}}
+            "endpoints": {"index": "/api/index.json", "threads": "/api/threads.json", "corpus": "/api/corpus.json", "message": "/api/message/<id>.json", "text": "/mail/<id>.txt"}}
     write_if_changed(idx_path, json.dumps(dict(meta, records=ordered), ensure_ascii=False, indent=1) + "\n")
+    corpus = {}
+    for r in ordered:
+        p = os.path.join(root, "api", "message", r["id"] + ".json")
+        if os.path.exists(p): corpus[r["id"]] = json.load(open(p)).get("text", "")
+    shards, cur, size = [], {}, 0
+    for rid, txt in corpus.items():
+        if cur and size + len(txt) > 900000:
+            shards.append(cur); cur, size = {}, 0
+        cur[rid] = txt; size += len(txt)
+    if cur: shards.append(cur)
+    names = []
+    for n, sh in enumerate(shards, 1):
+        names.append("/api/corpus-%d.json" % n)
+        write_if_changed(os.path.join(root, "api", "corpus-%d.json" % n), json.dumps({"part": n, "of": len(shards), "texts": sh}, ensure_ascii=False) + "\n")
+    write_if_changed(os.path.join(root, "api", "corpus.json"), json.dumps(dict(meta, shards=names), ensure_ascii=False, indent=1) + "\n")
     write_if_changed(os.path.join(root, "api", "threads.json"), json.dumps(dict(meta, threads=tlist), ensure_ascii=False, indent=1) + "\n")
     print(json.dumps({"records": len(ordered), "threads": len(tlist), "written": written, "skipped": skipped, "redactions": c}))
 

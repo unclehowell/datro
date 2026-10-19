@@ -8,6 +8,7 @@
  "endpoints": {
   "index": "/api/index.json",
   "threads": "/api/threads.json",
+  "corpus": "/api/corpus.json",
   "message": "/api/message/<id>.json",
   "text": "/mail/<id>.txt"
  },
