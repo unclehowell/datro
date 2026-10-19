@@ -24,7 +24,7 @@ async function fromD1(db, q) {
       .prepare(
         `SELECT qa.id, qa.party_name, qa.asked, qa.answered, qa.kind, qa.pairing, qa.url, qa.ref,
                 substr(qa.question,1,500) AS question, substr(qa.answer,1,1000) AS answer,
-                qa.asked_msg, qa.answer_msg, qa.case_questions
+                qa.case_questions
            FROM qa_fts JOIN qa ON qa.id = qa_fts.id
           WHERE qa_fts MATCH ?1
           ORDER BY (qa.answer = '' OR qa.kind = 'auto'), rank
