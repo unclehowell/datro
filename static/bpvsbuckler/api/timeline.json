@@ -21,7 +21,7 @@
   },
   "version": "v0.0.0.68",
   "last_updated": "2026-10-19",
-  "total_entries": 120,
+  "total_entries": 121,
   "acts": [
     {
       "id": "P",
@@ -5324,6 +5324,63 @@
     },
     {
       "order": 105,
+      "ref": "VIII.14",
+      "id": "ghf-20261019-1",
+      "act": "VIII",
+      "date": "2026-10-19",
+      "when": "19 October 2026",
+      "title": "Welsh Government and Cadw replies",
+      "place": "Welsh Government / Cadw",
+      "parcel": "",
+      "basis": "Official correspondence",
+      "narration": "On 19 October 2026 the Welsh Government answers ATISN 26-0010: searches for the farm name, Western Ground Rents and BP Properties found no files, and \"any routine records would have been destroyed in line with the corporate retention schedule applied at the time\". The same day Cadw refuses ATISN 27589 under section 14(2) of the Freedom of Information Act, as \"substantially similar\" to ATISN 27021, already answered and internally reviewed. Neither letter says when, or under which schedule, any file was destroyed.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
+        "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
+      },
+      "title_moves": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "The Welsh Government found no file for the 1988 purchase under the names searched and points to a retention schedule without dating any destruction; Cadw declined to search again. Neither reply says whether a file existed, when it ended, or who decided. SOURCE PENDING for the Land Authority for Wales file itself (EIR request held for verification).",
+      "cast": [
+        "wgr",
+        "bp",
+        "cadw"
+      ],
+      "evidence": [
+        {
+          "type": "Official correspondence",
+          "title": "EV-0244 — Welsh Government ATISN 26-0010 response, 19 Oct 2026",
+          "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0244-welsh-government-atisn-26-0010-disclosure-response-19-oct-2026/"
+        },
+        {
+          "type": "Official correspondence",
+          "title": "EV-0245 — Cadw ATISN 27589 response (s.14(2)), 19 Oct 2026",
+          "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0245-cadw-atisn-27589-response-s14-2-19-oct-2026/"
+        },
+        {
+          "type": "Official correspondence",
+          "title": "Welsh Government letter, ATISN 26-0010, 19 October 2026 (PDF)",
+          "url": "https://wayback.bucklerfamily.estate/pdf/foi/2026-10-19_welsh-government_atisn-26-0010_disclosure-response.pdf"
+        },
+        {
+          "type": "Official correspondence",
+          "title": "Cadw letter, ATISN 27589, 19 October 2026 (PDF)",
+          "url": "https://wayback.bucklerfamily.estate/pdf/foi/2026-10-19_cadw_atisn-27589_response-s14-2.pdf"
+        },
+        {
+          "type": "Official correspondence",
+          "title": "Cadw / Welsh Government — correspondence (email)",
+          "url": "https://greathousefarmwiki.wordpress.com/evidence/cadw-welsh-government-correspondence/"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20261019-1"
+    },
+    {
+      "order": 106,
       "ref": "O.1",
       "id": "ghf-obvious-01",
       "act": "O",
@@ -5366,7 +5423,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-01"
     },
     {
-      "order": 106,
+      "order": 107,
       "ref": "O.2",
       "id": "ghf-obvious-02",
       "act": "O",
@@ -5416,7 +5473,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-02"
     },
     {
-      "order": 107,
+      "order": 108,
       "ref": "O.3",
       "id": "ghf-obvious-03",
       "act": "O",
@@ -5462,7 +5519,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-03"
     },
     {
-      "order": 108,
+      "order": 109,
       "ref": "O.4",
       "id": "ghf-obvious-04",
       "act": "O",
@@ -5502,7 +5559,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-04"
     },
     {
-      "order": 109,
+      "order": 110,
       "ref": "O.5",
       "id": "ghf-obvious-05",
       "act": "O",
@@ -5547,7 +5604,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-05"
     },
     {
-      "order": 110,
+      "order": 111,
       "ref": "O.6",
       "id": "ghf-obvious-06",
       "act": "O",
@@ -5598,7 +5655,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-06"
     },
     {
-      "order": 111,
+      "order": 112,
       "ref": "O.7",
       "id": "ghf-obvious-07",
       "act": "O",
@@ -5642,7 +5699,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-07"
     },
     {
-      "order": 112,
+      "order": 113,
       "ref": "O.8",
       "id": "ghf-obvious-08",
       "act": "O",
@@ -5688,7 +5745,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-08"
     },
     {
-      "order": 113,
+      "order": 114,
       "ref": "O.9",
       "id": "ghf-obvious-09",
       "act": "O",
@@ -5733,7 +5790,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-09"
     },
     {
-      "order": 114,
+      "order": 115,
       "ref": "O.10",
       "id": "ghf-obvious-10",
       "act": "O",
@@ -5779,7 +5836,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-10"
     },
     {
-      "order": 115,
+      "order": 116,
       "ref": "O.11",
       "id": "ghf-obvious-11",
       "act": "O",
@@ -5820,7 +5877,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-11"
     },
     {
-      "order": 116,
+      "order": 117,
       "ref": "E.1",
       "id": "ghf-99990101-1",
       "act": "E",
@@ -5889,7 +5946,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-1"
     },
     {
-      "order": 117,
+      "order": 118,
       "ref": "E.2",
       "id": "ghf-99990101-4",
       "act": "E",
@@ -5946,7 +6003,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-4"
     },
     {
-      "order": 118,
+      "order": 119,
       "ref": "E.3",
       "id": "ghf-99990101-2",
       "act": "E",
@@ -5989,7 +6046,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-2"
     },
     {
-      "order": 119,
+      "order": 120,
       "ref": "E.4",
       "id": "ghf-99990101-3",
       "act": "E",
@@ -6027,7 +6084,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-3"
     },
     {
-      "order": 120,
+      "order": 121,
       "ref": "E.5",
       "id": "ghf-99990102-1",
       "act": "E",
