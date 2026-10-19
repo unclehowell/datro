@@ -65,20 +65,72 @@ jobs:
               raise SystemExit("qa.json contains duplicate Q&A UIDs")
           PY
 
+      - name: Validate API exports and JavaScript before deployment
+        run: |
+          test -s index.html
+          test -s api/qa.json
+          test -s api/graph.json
+          test -s api/graph.sql
+          grep -q 'CREATE VIRTUAL TABLE qa_fts' api/graph.sql
+          grep -q 'CREATE VIRTUAL TABLE messages_fts' api/graph.sql
+          python3 - <<'PY'
+          from pathlib import Path
+          html = Path("index.html").read_text(encoding="utf-8")
+          if "<script>" not in html or "</script>" not in html:
+              raise SystemExit("index.html inline application script missing")
+          script = html.rsplit("<script>", 1)[1].split("</script>", 1)[0]
+          Path("/tmp/qa-inline-check.mjs").write_text(script, encoding="utf-8")
+          PY
+          node --check /tmp/qa-inline-check.mjs
+          for f in functions/api/*.js; do
+            cp "$f" /tmp/qa-function-check.mjs
+            node --check /tmp/qa-function-check.mjs
+          done
+
       - name: Deploy to Cloudflare Pages
         run: |
           npx --yes wrangler@3 pages deploy . --project-name=qa --branch=qa --commit-dirty=true
 
       - name: Sync and verify D1 graph
+        env:
+          SYNC_ATTEMPTS: "30"
         run: |
-          status="$(curl --silent --show-error --output /tmp/qa-sync.json --write-out '%{http_code}' \
-            --request POST \
-            --header "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
-            --header "Accept: application/json" \
-            "https://qa-acp.pages.dev/api/sync-graph")"
-          cat /tmp/qa-sync.json
-          if [ "$status" != "200" ]; then
-            echo "D1 sync returned HTTP $status"
+          complete=false
+          attempt=1
+          while [ "$attempt" -le "$SYNC_ATTEMPTS" ]; do
+            status="$(curl --silent --show-error --output /tmp/qa-sync.json --write-out '%{http_code}' \
+              --max-time 90 \
+              --request POST \
+              --header "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+              --header "Accept: application/json" \
+              "https://qa-acp.pages.dev/api/sync-graph")"
+            if [ "$status" != "200" ]; then
+              echo "D1 sync returned HTTP $status"
+              cat /tmp/qa-sync.json
+              exit 1
+            fi
+            state="$(python3 - <<'PY'
+          import json, sys
+          data = json.load(open("/tmp/qa-sync.json", encoding="utf-8"))
+          if data.get("ok") is not True:
+              safe = {k: data.get(k) for k in ("stage", "failedBatch", "batchCount", "batchBytes", "batchStatementCount", "error", "counts")}
+              print("Graph sync failed: " + json.dumps(safe, ensure_ascii=False), file=sys.stderr)
+              sys.exit(1)
+          if data.get("complete") is True:
+              print("complete")
+              print("D1 graph verified:", json.dumps(data.get("counts", {}), sort_keys=True), file=sys.stderr)
+          else:
+              print("continue")
+              print("D1 sync progress:", data.get("nextBatch", 0), "/", data.get("batchCount", 0), "chunks", file=sys.stderr)
+          PY
+            )"
+            if [ "$state" = "complete" ]; then
+              complete=true
+              break
+            fi
+            attempt=$((attempt + 1))
+          done
+          if [ "$complete" != "true" ]; then
+            echo "D1 sync did not complete within $SYNC_ATTEMPTS requests."
             exit 1
           fi
-          python3 -c 'import json,sys; d=json.load(open("/tmp/qa-sync.json")); print("D1 sync verified:", d.get("counts", {})); sys.exit(0 if d.get("ok") is True else 1)'
