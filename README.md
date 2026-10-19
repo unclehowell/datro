@@ -28,3 +28,11 @@ Live at dartboard.bucklerfamily.estate. The page is visual: a dartboard on top a
 ## Development
 
 `npm install`, then `npm run dev`. See `package.json` for build and test scripts.
+
+## 19 Oct 2026 follow-ups
+
+- **Numbers.** Each institution has one number (1–32), shown on its outer wheel slice and in the game's dropdown ("9 · Glamorgan Archives"). The wheel now has one slice per institution in dropdown order, plus the family-testimony slice (F). Institutions without a hand-written slice in `disclosure.ts` get one built from their avenues (`src/data/wheel.ts`).
+- **$ fees.** A yellow `$` marks wheel cells, girder barrels and thrown barrels where the institution sought or mentioned a fee (s.12 cost refusals, fees notices, copy/search tariffs, paid-search signposts). The list is `feeNotes` in `src/data/avenues.ts`: a keyword pass over each reply's own text, then every hit kept or dropped by hand.
+- **Climber.** He starts at the bottom girder every time and only goes up: each girder rises towards its ladder, he walks uphill, climbs, and at the highest avenue reached he rests and starts again from the bottom. Barrels roll downhill towards him; he hops or ducks them without retreating.
+- **Email links.** email.bucklerfamily.estate keys on its own record ids, not Gmail ids. `emailLinks` holds the emails matched to an archive record (date plus subject or body text); the rest open the archive's reference lookup with the subject, date and refs to search for.
+- **HER.** The Historic Environment Record (Glamorgan-Gwent HER, kept by Heneb) is its own institution. Its emails also count for Heneb, which runs it.

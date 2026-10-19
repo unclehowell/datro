@@ -2,8 +2,11 @@ import { useCallback, useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { resolveCell, rings, sampledThrough, statusMeta, type Party, type Ring } from "@/data/disclosure";
 import {
-  archiveThreadUrl,
   avenueEmails,
+  emailUrl,
+  feeNotes,
+  instNumber,
+  isFee,
   avenuesAsOf,
   institutions,
   outcomeInfo,
@@ -13,18 +16,54 @@ import {
   type AvLevel,
 } from "@/data/avenues";
 import { DartWheel } from "@/components/dart-wheel";
+import { sliceFees, type WheelSlice } from "@/data/wheel";
 import { AvenueGame, type GameHit } from "@/components/avenue-game";
 import { Chip, DetailModal, Row, fmtDate } from "@/components/detail-modal";
 
 export const Route = createFileRoute("/")({ component: Home });
 
 type Sheet =
-  | { kind: "cell"; party: Party; ring: Ring }
+  | { kind: "cell"; party: Party; ring: Ring; slice: WheelSlice }
   | { kind: "game"; hit: GameHit; inst: AvInstitution }
   | { kind: "key" };
 
-function instForParty(partyId: string) {
-  return institutions.find((i) => i.wheel.includes(partyId));
+/**
+ * Cells written before 19 Oct link to /reference/<Gmail thread id> with nothing to search for.
+ * Send them to the email we matched in the archive, or give the archive's lookup the details.
+ */
+function recordUrl(url: string | undefined, title: string, date?: string, ref?: string) {
+  if (!url) return undefined;
+  const m = url.match(/^https:\/\/email\.bucklerfamily\.estate\/reference\/([a-f0-9]{16})\/?$/i);
+  if (!m) return url;
+  const thread = m[1];
+  const inThread = avenueEmails.map((e, i) => (e.t === thread ? i : -1)).filter((i) => i >= 0);
+  const exact = inThread.map((i) => emailUrl(i)).find((u) => u.exact);
+  if (exact) return exact.url;
+  if (inThread.length) return emailUrl(inThread[0]).url;
+  const p = new URLSearchParams();
+  p.set("title", title);
+  if (date) p.set("date", date);
+  if (ref) p.set("caseRef", ref);
+  return `${url}?${p.toString()}`;
+}
+
+function FeeList({ list }: { list: number[] }) {
+  if (!list.length) return null;
+  return (
+    <div className="mt-3 rounded-xl border border-[#ffd34d]/40 bg-[#ffd34d]/5 p-3">
+      <p className="text-sm font-semibold text-[#ffd34d]">$ Fees sought or mentioned</p>
+      <ul className="mt-1.5 flex flex-col gap-2">
+        {list.map((i) => (
+          <li key={i} className="text-sm leading-snug text-muted">
+            <span className="text-fg">{fmtDate(avenueEmails[i].d)}</span> · {feeNotes[i]}{" "}
+            <a href={emailUrl(i).url} target="_blank" rel="noreferrer" className="text-brass underline underline-offset-4">
+              Open email
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 function nextAvenue(inst: AvInstitution, from: number) {
@@ -45,11 +84,10 @@ function Home() {
     <main className="mx-auto flex min-h-dvh w-full max-w-xl flex-col gap-4 px-3 pt-3 pb-10">
       <section aria-label="Dartboard">
         <DartWheel
-          highlight={inst.wheel}
-          onPick={({ party, ring }) => {
-            const match = instForParty(party.id);
-            if (match) setInstId(match.id);
-            setSheet({ kind: "cell", party, ring });
+          highlight={inst.id}
+          onPick={({ party, ring, slice }) => {
+            if (slice.inst) setInstId(slice.inst.id);
+            setSheet({ kind: "cell", party, ring, slice });
           }}
         />
       </section>
@@ -74,7 +112,7 @@ function Home() {
         onClose={close}
         accent={sheetAccent(sheet)}
       >
-        {sheet?.kind === "cell" && <CellSheet party={sheet.party} ring={sheet.ring} />}
+        {sheet?.kind === "cell" && <CellSheet party={sheet.party} ring={sheet.ring} slice={sheet.slice} />}
         {sheet?.kind === "game" && <GameSheet hit={sheet.hit} inst={sheet.inst} />}
         {sheet?.kind === "key" && <KeySheet />}
       </DetailModal>
@@ -93,12 +131,17 @@ function sheetAccent(sheet: Sheet | null) {
   return undefined;
 }
 
-function CellSheet({ party, ring }: { party: Party; ring: Ring }) {
+function CellSheet({ party, ring, slice }: { party: Party; ring: Ring; slice: WheelSlice }) {
   const cell = resolveCell(party, ring);
   const step = rings.findIndex((r) => r.id === ring.id) + 1;
+  const fees = sliceFees(slice, ring);
+  const url = recordUrl(cell.url, cell.title, cell.date, cell.ref);
+  const heading = slice.inst ? `${slice.num} · ${slice.inst.name}` : party.name;
+  const sub = slice.inst && party.name !== slice.inst.name ? party.name : null;
   return (
     <div>
-      <p className="text-xs tracking-[0.16em] text-brass uppercase">{party.name}</p>
+      <p className="text-xs tracking-[0.16em] text-brass uppercase">{heading}</p>
+      {sub && <p className="text-xs text-faint">{sub}</p>}
       <h2 className="mt-1 font-serif text-2xl leading-tight">{cell.title}</h2>
       <div className="mt-3 flex flex-wrap gap-2">
         <Chip colour={statusMeta[cell.status].swatch}>{statusMeta[cell.status].label}</Chip>
@@ -111,11 +154,12 @@ function CellSheet({ party, ring }: { party: Party; ring: Ring }) {
         <Row k="Date" v={cell.date} />
         <Row k="Reference" v={cell.ref} />
         <Row k="From" v={cell.correspondent} />
-        <Row k="Fee" v={cell.feeMarker ? "A fee or cost estimate is recorded" : undefined} />
+        <Row k="Fee" v={cell.feeMarker ? "$ A fee, cost estimate or chargeable route is recorded" : undefined} />
       </div>
-      {cell.url && (
-        <a href={cell.url} target="_blank" rel="noreferrer" className="mt-3 inline-block text-sm text-brass underline underline-offset-4">
-          Open the record
+      <FeeList list={fees} />
+      {url && (
+        <a href={url} target="_blank" rel="noreferrer" className="mt-3 inline-block text-sm text-brass underline underline-offset-4">
+          Open email
         </a>
       )}
     </div>
@@ -129,6 +173,7 @@ function GameSheet({ hit, inst }: { hit: GameHit; inst: AvInstitution }) {
     const others = e.i.filter((id) => id !== inst.id).map((id) => institutions.find((x) => x.id === id)?.short ?? id);
     const waiting = hit.level.open.includes(e.t);
     const late = hit.level.late.includes(e.t);
+    const link = emailUrl(hit.index);
     return (
       <div>
         <p className="text-xs tracking-[0.16em] text-brass uppercase">
@@ -143,7 +188,9 @@ function GameSheet({ hit, inst }: { hit: GameHit; inst: AvInstitution }) {
           ) : (
             <Chip colour={outcomeInfo[e.o].colour}>{outcomeInfo[e.o].label}</Chip>
           )}
+          {isFee(hit.index) && <Chip colour="#ffd34d">$ Fee sought or mentioned</Chip>}
         </div>
+        {isFee(hit.index) && <p className="mt-3 text-sm leading-snug text-[#ffd34d]">$ {feeNotes[hit.index]}</p>}
         <div className="mt-3">
           <Row k="Date" v={fmtDate(e.d)} />
           <Row k="Reference" v={e.r.join(", ")} />
@@ -154,8 +201,8 @@ function GameSheet({ hit, inst }: { hit: GameHit; inst: AvInstitution }) {
           {e.out ? "" : "Outcome is read automatically from the reply and may be wrong. "}
           {waiting && !late ? "A reply may sit in another thread. " : ""}
         </p>
-        <a href={archiveThreadUrl(e.t)} target="_blank" rel="noreferrer" className="mt-2 inline-block text-sm text-brass underline underline-offset-4">
-          Open the thread in the archive
+        <a href={link.url} target="_blank" rel="noreferrer" className="mt-2 inline-block text-sm text-brass underline underline-offset-4">
+          {link.exact ? "Open email" : "Find this email in the archive"}
         </a>
       </div>
     );
@@ -170,10 +217,11 @@ function LevelSheet({ inst, level, index }: { inst: AvInstitution; level: AvLeve
   const got = level.items.length - sent;
   const next = nextAvenue(inst, index);
   const dates = level.items.map((i) => avenueEmails[i].d);
+  const fees = level.items.filter(isFee);
   return (
     <div>
       <p className="text-xs tracking-[0.16em] text-brass uppercase">
-        {inst.name} · level {index + 1} of {inst.levels.length}
+        {instNumber(inst.id)} · {inst.name} · level {index + 1} of {inst.levels.length}
       </p>
       <h2 className="mt-1 font-serif text-2xl leading-tight">{ph.name}</h2>
       <div className="mt-3">
@@ -189,6 +237,7 @@ function LevelSheet({ inst, level, index }: { inst: AvInstitution; level: AvLeve
         <Row k="Still open" v={level.open.length || level.late.length ? `${level.open.length + level.late.length} thread(s)` : undefined} />
         <Row k="Next avenue" v={next ? phases[next.phase].name : undefined} />
       </div>
+      <FeeList list={fees} />
     </div>
   );
 }
@@ -200,7 +249,9 @@ function RoadmapSheet({ inst }: { inst: AvInstitution }) {
   return (
     <div>
       <p className="text-xs tracking-[0.16em] text-brass uppercase">Roadmap</p>
-      <h2 className="mt-1 font-serif text-2xl leading-tight">{inst.name}</h2>
+      <h2 className="mt-1 font-serif text-2xl leading-tight">
+        {instNumber(inst.id)} · {inst.name}
+      </h2>
       <p className="mt-2 text-sm text-muted">
         {used} used up · {open} open · {left} not used yet
       </p>
@@ -234,7 +285,8 @@ function KeySheet() {
         Top: the dartboard. Each slice is an institution, each ring a step inward from first enquiry to tribunal. Below: pick an
         institution. The ape is that institution and its barrels are its replies; the climber is Sion. Each girder is one avenue,
         first at the bottom, court-ordered disclosure at the top. Crates are emails Sion sent, small barrels are replies. Tap
-        anything for details.
+        anything for details. The number on each outer slice matches the number in the dropdown. A yellow $ marks where the
+        institution sought or mentioned a fee: a cost-limit refusal, a fees notice, or a copy or search charge.
       </p>
       <div className="mt-3 flex flex-wrap gap-2">
         {(Object.keys(outcomeInfo) as (keyof typeof outcomeInfo)[]).map((o) => (

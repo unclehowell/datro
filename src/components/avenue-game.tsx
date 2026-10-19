@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef } from "react";
 import {
   avenueEmails,
   institutions,
+  isFee,
   outcomeInfo,
   statusInfo,
   type AvInstitution,
@@ -30,18 +31,27 @@ const X1 = W - 14;
 const GAP = 30;
 const TILT = 7;
 
-type Slot = { x: number; y: number; s: number; index: number; out: boolean; colour: string; level: number };
-type Barrel = { x: number; y: number; vx: number; vy: number; level: number; index: number; rot: number; falling: boolean; colour: string };
+type Slot = { x: number; y: number; s: number; index: number; out: boolean; colour: string; level: number; fee: boolean };
+type Barrel = { x: number; y: number; vx: number; vy: number; level: number; index: number; rot: number; falling: boolean; colour: string; fee: boolean };
 
 function girder(level: number, n: number) {
-  // Even levels: gap on the right, low end on the right. Odd: gap on the left, low end on the left.
+  // Each girder rises towards its ladder, so the climber only ever walks uphill and climbs up.
+  // Even levels: gap on the left, high end (and ladder) on the right. Odd levels: the mirror.
+  // Barrels roll downhill, away from the ladder, and drop off the low end onto the girder below.
   const yBase = TOP + (n - 1 - level) * LH + 30;
-  const left = level % 2 === 0 ? X0 : X0 + GAP;
-  const right = level % 2 === 0 ? X1 - GAP : X1;
-  const lowRight = level % 2 === 0;
-  const yL = lowRight ? yBase - TILT / 2 : yBase + TILT / 2;
-  const yR = lowRight ? yBase + TILT / 2 : yBase - TILT / 2;
-  return { left, right, yL, yR, lowRight, yAt: (x: number) => yL + ((x - left) / (right - left)) * (yR - yL) };
+  const highRight = level % 2 === 0;
+  const left = highRight ? X0 + GAP : X0;
+  const right = highRight ? X1 : X1 - GAP;
+  const yL = highRight ? yBase + TILT / 2 : yBase - TILT / 2;
+  const yR = highRight ? yBase - TILT / 2 : yBase + TILT / 2;
+  return { left, right, yL, yR, highRight, yAt: (x: number) => yL + ((x - left) / (right - left)) * (yR - yL) };
+}
+
+/** x of the ladder from girder `level` up to the next one: at this girder's high end. */
+function ladderX(level: number, n: number) {
+  const g = girder(level, n);
+  const up = girder(Math.min(level + 1, n - 1), n);
+  return g.highRight ? Math.min(g.right, up.right) - 24 : Math.max(g.left, up.left) + 16;
 }
 
 function itemColour(level: AvLevel, index: number) {
@@ -72,7 +82,7 @@ function layoutSlots(inst: AvInstitution) {
       const col = k % perRow;
       const x = g.left + 38 + col * (s + 2) + s / 2;
       const y = g.yAt(x) - 4 - row * (s + 1) - s / 2;
-      slots.push({ x, y, s, index, out: avenueEmails[index].out, colour: itemColour(level, index), level: li });
+      slots.push({ x, y, s, index, out: avenueEmails[index].out, colour: itemColour(level, index), level: li, fee: !avenueEmails[index].out && isFee(index) });
     });
   });
   return slots;
@@ -146,7 +156,7 @@ function drawLadder(ctx: CanvasRenderingContext2D, li: number, n: number) {
   if (li >= n - 1) return;
   const g = girder(li, n);
   const up = girder(li + 1, n);
-  const x = g.lowRight ? g.right - 22 : g.left + 14;
+  const x = ladderX(li, n);
   const y0 = g.yAt(x);
   const y1 = up.yAt(x) + 7;
   ctx.strokeStyle = "rgba(196,165,116,0.45)";
@@ -196,6 +206,22 @@ function drawBarrel(ctx: CanvasRenderingContext2D, x: number, y: number, r: numb
   ctx.moveTo(r * 0.55, -r * 0.75);
   ctx.lineTo(r * 0.55, r * 0.75);
   ctx.stroke();
+  ctx.restore();
+}
+
+function drawFee(ctx: CanvasRenderingContext2D, x: number, y: number, r: number) {
+  // "$": the institution sought or mentioned a fee in this reply.
+  const size = r >= 4 ? Math.max(8, r * 1.7) : 8;
+  const cy = r >= 4 ? y + 0.5 : y - r - 5;
+  ctx.save();
+  ctx.font = `800 ${size}px Outfit, system-ui, sans-serif`;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.lineWidth = 2.2;
+  ctx.strokeStyle = "#14110e";
+  ctx.strokeText("$", x, cy);
+  ctx.fillStyle = "#ffd34d";
+  ctx.fillText("$", x, cy);
   ctx.restore();
 }
 
@@ -296,7 +322,14 @@ export function AvenueGame({
     let throwAnim = 0;
     let replyCursor = Math.max(0, replies.length - 12);
     const front = frontier(inst);
-    const climber = { x: girder(front, n).left + 40, dir: 1, h: 0, vh: 0, duck: 0 };
+    // The climber always starts at the low end of the bottom girder and only goes up: walk uphill
+    // to the ladder, climb, repeat. At the highest avenue reached he walks to its top end, pauses,
+    // and starts again from the bottom. He never walks downhill or back down a ladder.
+    const startX = () => {
+      const g0 = girder(0, n);
+      return g0.highRight ? g0.left + 10 : g0.right - 10;
+    };
+    const climber = { level: 0, x: startX(), y: 0, dir: girder(0, n).highRight ? 1 : -1, mode: "walk" as "walk" | "climb" | "rest" | "fade", t: 0, h: 0, vh: 0, duck: 0, alpha: 0 };
 
     const resize = () => {
       const cssW = wrap.clientWidth;
@@ -329,7 +362,8 @@ export function AvenueGame({
         const index = replies[replyCursor % replies.length];
         replyCursor += 1;
         const g = girder(n - 1, n);
-        st.barrels.push({ x: 64, y: g.yAt(64) - 6, vx: 0, vy: 0, level: n - 1, index, rot: 0, falling: false, colour: outcomeInfo[avenueEmails[index].o].colour });
+        const bx = g.highRight ? g.right - 20 : g.left + 20;
+        st.barrels.push({ x: bx, y: g.yAt(bx) - 6, vx: 0, vy: 0, level: n - 1, index, rot: 0, falling: false, colour: outcomeInfo[avenueEmails[index].o].colour, fee: isFee(index) });
         throwAnim = 350;
         nextThrow = reduce ? 6000 : 2300 + Math.random() * 900;
       }
@@ -340,7 +374,7 @@ export function AvenueGame({
       for (const b of st.barrels) {
         const g = girder(b.level, n);
         if (!b.falling) {
-          b.vx = (g.lowRight ? 1 : -1) * speed * dt;
+          b.vx = (g.highRight ? -1 : 1) * speed * dt;
           b.x += b.vx;
           b.y = g.yAt(b.x) - 6;
           b.rot += b.vx / 6;
@@ -365,17 +399,56 @@ export function AvenueGame({
       }
       st.barrels = st.barrels.filter((b) => b.y < H + 20);
 
-      // climber patrols his frontier girder and hops or ducks barrels on it
-      const cg = girder(front, n);
-      const lo = cg.left + 30;
-      const hi = cg.right - 18;
-      climber.x += climber.dir * (reduce ? 0.012 : 0.03) * dt;
-      if (climber.x > hi) climber.dir = -1;
-      if (climber.x < lo) climber.dir = 1;
-      const threat = st.barrels.find((b) => b.level === front && !b.falling && Math.abs(b.x - climber.x) < 22);
-      if (threat && climber.h === 0 && climber.duck <= 0) {
-        if (Math.random() < 0.75) climber.vh = 0.2;
-        else climber.duck = 420;
+      // climber: uphill only, bottom to the highest avenue reached, then back to the bottom
+      const walk = (reduce ? 0.02 : 0.045) * dt;
+      const cg = girder(climber.level, n);
+      climber.alpha = climber.mode === "fade" ? Math.max(0, climber.alpha - dt / 350) : Math.min(1, climber.alpha + dt / 350);
+      if (climber.mode === "walk") {
+        const atTop = climber.level >= front;
+        const target = atTop ? (cg.highRight ? cg.right - 12 : cg.left + 12) : ladderX(climber.level, n) + 4;
+        if (climber.duck <= 0) climber.x += climber.dir * walk;
+        if ((climber.dir > 0 && climber.x >= target) || (climber.dir < 0 && climber.x <= target)) {
+          climber.x = target;
+          if (atTop) {
+            climber.mode = "rest";
+            climber.t = 1100;
+          } else {
+            climber.mode = "climb";
+            climber.y = cg.yAt(climber.x);
+            climber.h = 0;
+            climber.vh = 0;
+            climber.duck = 0;
+          }
+        }
+      } else if (climber.mode === "climb") {
+        const up = girder(climber.level + 1, n);
+        climber.y -= (reduce ? 0.02 : 0.04) * dt;
+        if (climber.y <= up.yAt(climber.x)) {
+          climber.level += 1;
+          climber.mode = "walk";
+          climber.dir = up.highRight ? 1 : -1;
+        }
+      } else if (climber.mode === "rest") {
+        climber.t -= dt;
+        if (climber.t <= 0) climber.mode = "fade";
+      } else if (climber.alpha <= 0) {
+        climber.level = 0;
+        climber.x = startX();
+        climber.dir = girder(0, n).highRight ? 1 : -1;
+        climber.mode = "walk";
+        climber.h = 0;
+        climber.vh = 0;
+        climber.duck = 0;
+      }
+      if (climber.mode === "walk") {
+        // a barrel coming down his girder towards him: hop it (mostly) or duck under it, never retreat
+        const threat = st.barrels.find(
+          (b) => b.level === climber.level && !b.falling && (b.x - climber.x) * climber.dir > -4 && Math.abs(b.x - climber.x) < 24,
+        );
+        if (threat && climber.h === 0 && climber.duck <= 0) {
+          if (Math.random() < 0.75) climber.vh = 0.2;
+          else climber.duck = 420;
+        }
       }
       if (climber.h > 0 || climber.vh > 0) {
         climber.h += climber.vh * dt;
@@ -398,19 +471,21 @@ export function AvenueGame({
       ctx.fillStyle = "rgba(244,239,230,0.35)";
       for (let i = 0; i < 26; i++) ctx.fillRect((i * 97) % W, (i * 53) % (H - 40), 1, 1);
 
-      // top platform + goal
+      // top platform + goal: the ape stands over the top girder's high end, the record chest opposite
+      const apeRight = girder(n - 1, n).highRight;
+      const apeX = apeRight ? W - 44 : 44;
       ctx.fillStyle = "#4a3f33";
-      ctx.fillRect(X0, TOP - 6, 120, 6);
-      drawApe(ctx, 44, TOP - 6, now, throwAnim > 0);
-      // the record chest the climb is for
+      ctx.fillRect(apeRight ? W - 134 : X0, TOP - 6, 120, 6);
+      drawApe(ctx, apeX, TOP - 6, now, throwAnim > 0);
+      const chestX = apeRight ? 20 : W - 46;
       ctx.fillStyle = "#c4a574";
-      ctx.fillRect(W - 46, TOP - 22, 26, 16);
+      ctx.fillRect(chestX, TOP - 22, 26, 16);
       ctx.fillStyle = "#7a5f3a";
-      ctx.fillRect(W - 46, TOP - 22, 26, 5);
+      ctx.fillRect(chestX, TOP - 22, 26, 5);
       ctx.fillStyle = "#14110e";
-      ctx.fillRect(W - 35, TOP - 16, 4, 5);
+      ctx.fillRect(chestX + 11, TOP - 16, 4, 5);
       ctx.fillStyle = "#4a3f33";
-      ctx.fillRect(W - 60, TOP - 6, 46, 6);
+      ctx.fillRect(apeRight ? X0 : W - 60, TOP - 6, 46, 6);
 
       for (let li = 0; li < n; li++) drawLadder(ctx, li, n);
       inst.levels.forEach((level, li) => drawGirder(ctx, level, li, n, now));
@@ -426,8 +501,16 @@ export function AvenueGame({
         if (s.out) drawCrate(ctx, s);
         else drawBarrel(ctx, s.x, s.y, s.s / 2, s.colour, 0);
       }
-      for (const b of st.barrels) drawBarrel(ctx, b.x, b.y, 6, b.colour, b.rot);
-      drawClimber(ctx, climber.x, cg.yAt(climber.x) - climber.h, climber.dir, now, climber.duck > 0);
+      for (const s of st.slots) if (s.fee) drawFee(ctx, s.x, s.y, s.s / 2);
+      for (const b of st.barrels) {
+        drawBarrel(ctx, b.x, b.y, 6, b.colour, b.rot);
+        if (b.fee) drawFee(ctx, b.x, b.y, 6);
+      }
+      const cy = climber.mode === "climb" ? climber.y : girder(climber.level, n).yAt(climber.x) - climber.h;
+      ctx.save();
+      ctx.globalAlpha = climber.alpha;
+      drawClimber(ctx, climber.x, cy, climber.dir, climber.mode === "rest" ? 0 : now, climber.duck > 0);
+      ctx.restore();
     };
     raf = requestAnimationFrame(frame);
     return () => {
@@ -465,7 +548,8 @@ export function AvenueGame({
       onHit({ kind: "email", index: best.index, level: inst.levels[best.level] }, inst);
       return;
     }
-    if (y < TOP + 4 && x < 140) {
+    const apeRight = girder(n - 1, n).highRight;
+    if (y < TOP + 4 && (apeRight ? x > W - 140 : x < 140)) {
       onHit({ kind: "boss" }, inst);
       return;
     }
@@ -491,9 +575,9 @@ export function AvenueGame({
           onChange={(event) => onInstChange(event.target.value)}
           className="h-11 min-w-0 flex-1 rounded-xl border border-line bg-surface px-3 text-base text-fg"
         >
-          {institutions.map((i) => (
+          {institutions.map((i, k) => (
             <option key={i.id} value={i.id}>
-              {i.name}
+              {`${k + 1} · ${i.name}`}
             </option>
           ))}
         </select>
