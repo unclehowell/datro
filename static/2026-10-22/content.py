@@ -7,7 +7,7 @@ That regenerates index.html (the website), pack.html and meeting-pack.pdf
 
 Evidence labels used throughout:
   rec  = on public record (court, heritage record, archive, newspaper, Hansard)
-  fam  = the family's account or case
+  fam  = the Buckler case (named testimony or legal position)
   open = being sought / not yet established
 """
 
@@ -32,7 +32,7 @@ COMMITMENTS = [
 HERO = {
     "title": "Preserving our identity.",
     "lede": ("That is the Council's own mission statement. On 22 October it considers Tŷ Mawr, "
-             "the Great House of Llandough: a home our family account traces back to 1667, "
+             "the Great House of Llandough: a home our family traces back to 1667 (as the Western Mail also reported in 1958), "
              "demolished at about 4am on 6 December 1988. Its wider heritage and the family's "
              "unresolved title questions are still largely absent from the Council's published story."),
     "photo_caption": ("Tŷ Mawr, 29 July 1988. Cadw photograph, released to the family in May 2026. "
@@ -40,7 +40,7 @@ HERO = {
 }
 
 BREATH = [
-    ("320 years at home.", "Family account, 1667–1988"),
+    ("320 years at home.", "Per the Buckler case, 1667–1988"),
     ("Gone before breakfast.", "Demolished from about 4am, 6 December 1988"),
     ("38 years out of the story.", "Great House remains absent from the Council's published village history"),
 ]
@@ -50,7 +50,7 @@ ASKS = [
     ('Put it on the record',
      "Receive the family's statement and this pack, and minute them.",
      'That the Council receives the statement and meeting pack of the Williams–Buckler family, records them in the minutes, and publishes them with the papers for this meeting.',
-     "The Council's published village-history page omits Great House. Receiving this statement would place the family's account in the record of this meeting."),
+     "The Council's published village-history page omits Great House. Receiving this statement would place the Buckler case in the record of this meeting."),
     ('Make it a standing item',
      'Name a councillor. Bring it back every meeting until it is resolved.',
      "That “Great House Farm / Tŷ Mawr” is placed on the agenda of each ordinary meeting until the Council resolves otherwise, and that Councillor ______ acts as the Council's liaison with the family.",
@@ -144,13 +144,13 @@ PILLARS = [
      "A historic farmhouse, a recorded manorial role, a nearby early-medieval cemetery, and an unresolved title dispute.",
      ["Heneb records that the manorial courts of Llandough and Leckwith were held at Great House.",
       "A published study reports 1,026 inhumation burials at Llandough; the precise location of St Dochdwy's monastery remains unestablished.",
-      "The family account traces its occupation of the house to 1667; the house was demolished on 6 December 1988.",
+      "The Buckler case traces the family's occupation of the house to 1667 (the Western Mail of 20 November 1958, snippet only, reported the land as “farmed by her family since 1667”); the house was demolished on 6 December 1988.",
       "The family's primary title case distinguishes the full Parcel A from the eastern Parcel B; legal extent still needs testing against original deeds, plans and register files.",
       "More than twenty bodies have been asked for records since November 2025."]),
     ("Politics", "Who keeps the public record?",
      "Preserve records, correct local-history omissions, and enable scrutiny without asking councillors to decide title.",
      ["The family disputes the legal and historical account used in the possession litigation. Its current work is testing the title documents and their scope.",
-      "The Council need not find for either side to preserve records, record the family account accurately, correct local-history omissions and facilitate scrutiny.",
+      "The Council need not find for either side to preserve records, record the Buckler case accurately, correct local-history omissions and facilitate scrutiny.",
       "Fraud, deliberate concealment and improper government involvement are not established; the family is seeking records to test those possibilities.",
       "The Council's own commitments are openness, accountability, responsiveness, and community participation."]),
     ("Culture", "Llandough's story, not only ours.",
@@ -229,7 +229,7 @@ KNOWN = [
      "The application for WA240304 is dated 23 February 1983. The amalgamation application appears in the chronology on 2 February 1987, before the Court of Appeal hearing in July 1987. Its effect cannot be inferred from dates alone: the original application, title plans, notices and correspondence are needed to establish what extent was claimed and how the Registry processed it.",
      "rec", "Anomalies A-025, A-026; 1987 HMLR Amalgamation"),
     ("Registered while Mary Williams was living at the house.",
-     "The family's account is that notice of registration reached them only after Mary's death; the original service record is still being sought.",
+     "Per the Buckler case, notice of registration reached them only after Mary's death; the original service record is still being sought.",
      "Linklaters & Paines applied to register BP on 30 November 1982. On 23 February 1983 BP's solicitors applied for the farmhouse title, certifying they knew of no question or doubt affecting it. Mary had asserted ownership in 1974. The original notice and service record are needed to establish what enquiries were made, to whom notice was sent, and when it was received.",
      "fam", "Anomalies A-011, A-012; M-038"),
     ("No 1988 assessment file has been produced.",
@@ -292,7 +292,7 @@ RISKS = [
 ]
 
 SWAPS = [
-    ("Squatters.", "The family's account is that the Williams–Bucklers were a long-established household asserting a separate title.", "fam"),
+    ("Squatters.", "Per the Buckler case, the Williams–Bucklers were a long-established household asserting a separate title.", "fam"),
     ("An eviction.", "A possession enforcement followed by demolition at about 4am on 6 December 1988.", "rec"),
     ("A farmer's feud.", "A long-running land and possession dispute involving a property company owned by the BP pension fund.", "rec"),
     ("An old farmhouse.", "A building whose manorial role is recorded in the official Historic Environment Record.", "rec"),
@@ -309,7 +309,7 @@ COURT_POINTS = [
     "A 15 May 1924 agreement is identified in HMLR's WA231076 file, but its text and legal effect have not yet been verified. It is a material new lead, not proof of the family's title until read and interpreted.",
     "The HMLR schedule disclosed in 2026 lists 43 first-registration documents but does not list the 31 December 1969 conveyance recited as root of BP's title, or a 1971 abstract. The gap needs explaining; its absence from this schedule does not alone prove title invalidity or concealment.",
     "HMLR's chronology shows a separate farmhouse/garden title application (WA240304) dated 23 February 1983 and amalgamation into WA231076 on 2 February 1987, before the Court of Appeal hearing in July. The original application, plans, notices and correspondence are needed to test extent, service and effect.",
-    "Mary Williams's c.1974 statement and the family's account say title papers were reported missing in 1950–52; the appeal judgment says certain documents were not produced. Non-production does not establish who removed documents or why.",
+    "Mary Williams's c.1974 statement and the Buckler case say title papers were reported missing in 1950–52; the appeal judgment says certain documents were not produced. Non-production does not establish who removed documents or why.",
     "The Wiki labels the later registration and merger sequence a working “synthetic Parcel A” hypothesis. It is an analytical model to test against original applications, deeds, plans and notices—not an established finding that the register was fraudulent or wrong.",
 ]
 COURT_NOTE = ("The High Court gave judgment in 1986 and the Court of Appeal ruled against the family on 31 July 1987. The House of Lords refused leave to appeal on 3 March 1988; that was a refusal of leave, not a full merits judgment. The European Commission of Human Rights declared the application inadmissible on 14 April 1989. Those outcomes are important legal context. Any reopening or register-alteration route faces demanding legal tests and requires specialist advice. This Council is not asked to decide title, declare wrongdoing or overturn a judgment.")
@@ -376,7 +376,7 @@ STATEMENT_60 = (
 
 STATEMENT = [
     "Chair, councillors, thank you for placing this on the agenda.",
-    "My grandmother was Mary Williams of Great House Farm, Tŷ Mawr, beside St Dochdwy's Church. Our family account is that we "
+    "My grandmother was Mary Williams of Great House Farm, Tŷ Mawr, beside St Dochdwy's Church. Our family's case is that we "
     "lived in that house from 1667 until it was demolished at about four in the morning on 6 December 1988.",
     "Item 10 describes a plaque and a mailing list. The subject is wider than that, so I will take it in short parts.",
     "The house. Heneb's record says the manorial courts of Llandough and Leckwith sat at Great House. The Local Plan said its "
@@ -402,7 +402,7 @@ STATEMENT = [
 
 MIC_RULES = [
     ("Name the source.", "Say where a fact comes from: the court, the heritage record, the newspaper, the archive."),
-    ("Say whose account it is.", "“Our family account is…” is accurate, and accuracy is hard to dismiss."),
+    ("Say whose account it is.", "“My grandmother said…” or “Our case is…” is accurate, and accuracy is hard to dismiss."),
     ("Ask for a decision and a date.", "Every ask ends with who does it and when it comes back."),
 ]
 
@@ -453,7 +453,7 @@ LETTER = {
 
 LABELS = {
     "rec": ("On record", "Court, heritage record, archive, Hansard or contemporary newspaper"),
-    "fam": ("Family account", "The family's account or legal case, being tested"),
+    "fam": ("Buckler case", "The Buckler case (named testimony or legal position), being tested"),
     "open": ("Being sought", "Not yet established; records requested"),
 }
 
@@ -478,6 +478,10 @@ SOURCES = [
     ("Great House Farm Wiki — public documentary archive", "https://greathousefarmwiki.wordpress.com/"),
     ("Wiki: The Two Parcels — full Parcel A / separate eastern Parcel B", "https://greathousefarmwiki.wordpress.com/the-two-parcels/"),
     ("Wiki: 1939 revised tenancy agreement and plan", "https://greathousefarmwiki.wordpress.com/1939-revised-tenancy/"),
+    ("Wiki EV-0224: 1881 census, RG11/5288 p.2, “Llandough Home Farm”", "https://greathousefarmwiki.wordpress.com/evidence/ev-0224-1881-census-llandough-rg11-5288/"),
+    ("Wiki EV-0225: trade directories 1868–1901, John Williams at Great House", "https://greathousefarmwiki.wordpress.com/evidence/ev-0225-trade-directories-1868-1901-john-williams-great-house/"),
+    ("Wiki EV-0226: South Wales Star, 1892, Great House Farm", "https://greathousefarmwiki.wordpress.com/evidence/ev-0226-south-wales-star-1892-john-williams-great-house-farm/"),
+    ("Wiki EV-0227: Cardiff Times, 1904, tenancy since 1855", "https://greathousefarmwiki.wordpress.com/evidence/ev-0227-cardiff-times-1904-john-williams-tenancy-since-1855/"),
     ("Wiki: BP v Buckler — scope, decided and undecided", "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/court-judicial-issues/bp-v-buckler-scope-decided-undecided/"),
     ("Wiki: 1982–83 registration and opportunity to object", "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/procedural-fairness-notice/1982-83-registration-opportunity-to-object/"),
     ("Wiki: 1987 HMLR amalgamation during appeal", "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/procedural-fairness-notice/1987-hmlr-amalgamation-during-appeal/"),
@@ -497,7 +501,7 @@ SOURCES = [
 # THE BRIEFING: compartmentalised statements (fire-control style)
 # One line to SAY; underneath, the record, what is still being tested,
 # the reply if challenged, and the wiki evidence references.
-# Labels: rec = on record, fam = family account/case, open = being sought
+# Labels: rec = on record, fam = the Buckler case (named testimony or position), open = being sought
 # =====================================================================
 BRIEF_INTRO = ("Nine compartments, in order. Say the line in bold, then move on. Open a compartment only if a "
                "councillor asks: the record is underneath, with what is still being tested and the answer to the "
@@ -510,9 +514,14 @@ BRIEF = [
          ("Heneb's Historic Environment Record says the manorial courts of Llandough and Leckwith were held at Great House.", "rec"),
          ("Mary Williams's statement of about 1974, and the 1974 press, record the family at Great House since 1667.", "fam"),
          ("William Buckler was born in the house. In 1988 three small children lived there.", "rec"),
+         ("Trade directories from 1868 to 1901 list “Williams John, Great house”; an 1892 press report names “Mr. John Williams, Great House Farm, Llandough” (wiki EV-0225, EV-0226).", "rec"),
+         ("The 1881 census lists John Williams, farmer, at “Llandough Home Farm” (RG11/5288 p.2, wiki EV-0224). Per Sion Buckler, this is Great House Farm under another name.", "rec"),
+         ("The Western Mail, 20 November 1958 (snippet only, wiki EV-0037), reported the land as “farmed by her family since 1667”.", "rec"),
      ],
      "tested": [("No deed of 1667 has yet been found. The 1670 hearth tax and Bute estate leases are being searched.", "open")],
-     "against": [('The heritage record says the Vaughans held Great House as the chief freehold farm from the mid-16th to the late 18th century. Both accounts can be true only if the Williamses held under them.', 'rec')],
+     "against": [('The heritage record says the Vaughans held Great House as the chief freehold farm from the mid-16th to the late 18th century. Both accounts can be true only if the Williamses held under them.', 'rec'),
+                 ('A 1904 report says John Williams “succeeded his father in the tenancy of the farm in 1855” (wiki EV-0227): a tenancy, and of “Llandough Farm”, matched to Great House by inference.', 'rec'),
+                 ('“Home Farm” appears in no other source, and the 1881 acreage may read 170, closer to the neighbouring Llandough Farm of the Rees family (wiki EV-0228).', 'open')],
      "if_asked": ("“Weren't you tenants?”",
                   "The 1939 tenancy plan, now held, depicts the eastern fields only, not the house. Mary refused the tenancies offered for the house."),
      "refs": ["Wiki: The Williams / Buckler Family", "Wiki: Mary Williams's Statement (c. 1974)", "Heneb HER GGAT02038s"]},
@@ -547,7 +556,7 @@ BRIEF = [
      "tested": [("The family's case: two parcels since 1877, the house parcel theirs from 1928.", "fam"),
                 ("A 15 May 1924 agreement on the Land Registry file, not yet read.", "open"),
                 ("The “synthetic Parcel A” working hypothesis: that registration and merger made the house appear to follow the fields' title.", "open"),
-                ("The family's account that notice of registration reached them only after Mary's death.", "fam")],
+                ("Per the Buckler case: notice of registration reached them only after Mary's death.", "fam")],
      "against": [('The 1916 tenancy described the farm as one holding, and later documents repeated that wording.', 'rec'), ('HM Land Registry says there is no evidence of a mistake; its stage-two decision says the title is registered correctly. That decision is with the Independent Complaints Reviewer.', 'rec')],
      "if_asked": ("“The register is conclusive.”",
                   "The register can be corrected for mistake, and a person in actual occupation in 1982 had protected rights."),
@@ -577,7 +586,7 @@ BRIEF = [
          ("Press, 1989: the family's possessions lost and the family rehoused with relatives.", "rec"),
          ("Press: a Vale councillor called the demolition “disgusting”; villagers met their councillors.", "rec"),
      ],
-     "tested": [("The family's account that police searched the house and removed documents.", "fam")],
+     "tested": [("Per the Buckler case: police searched the house and removed documents.", "fam")],
      "against": [('Press, 1989: one charge was withdrawn as out of time; William Buckler pleaded guilty to the others.', 'rec')],
      "if_asked": ("“Why has it taken so long?”",
                   "Witnesses died, papers were lost and the trauma silenced the family. Key records surfaced only in 2026."),
@@ -592,7 +601,7 @@ BRIEF = [
          ("The heritage record classes the site “Post Medieval – Farm”. The Royal Commission recorded it only in part.", "rec"),
          ("A 1983 fire destroyed relics from years of excavations (South Wales Echo, 18 March 1983).", "rec"),
      ],
-     "tested": [("The family's account that the fire was at a Neath store and that Llandough material was lost.", "fam"),
+     "tested": [("Per the Buckler case: the fire was at a Neath store and Llandough material was lost.", "fam"),
                 ("Whether the 1990 evaluation was adequate on what was known then.", "open")],
      "against": [('GGAT disclosed its dual role in 1990, recommended recording and protection, and did not advise demolition.', 'rec'), ('Cadw said in 1988 that the house was not of sufficient architectural merit to list.', 'rec')],
      "if_asked": ("“Missing records prove nothing.”",
@@ -619,6 +628,7 @@ BRIEF = [
          ("In 1989 Strasbourg accepted the possession order interfered with William Buckler's home, but held it justified.", "rec"),
          ("About a thousand people signed to save the house in 1974. An MP asked the Lord Chancellor to review the case in 1988.", "rec"),
          ("In 1980 the Commons heard Western Ground Rents called the most rapacious ground landlord in South Wales.", "rec"),
+         ("The Western Mail, 20 November 1958 (snippet only, wiki EV-0037), reported Mrs Buckler's claim that the water was cut off from her house “for nearly 10 years by order of Western Ground Rents”, calling it “a Welsh case of Crichel Down”. That is a press report of her claim, and its date (about 1948–58) conflicts with a c.1988 date elsewhere (wiki SC-48).", "rec"),
          ("Tonight's agenda already asks about Welsh culture (Item 14) and local identity (Item 12).", "rec"),
      ],
      "tested": [("The family's view: Welsh land, history and identity were overridden and erased, as indigenous peoples' have been elsewhere.", "fam")],

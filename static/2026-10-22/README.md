@@ -12,4 +12,4 @@ Do not hand-edit `index.html`, `pack.html` or `meeting-script.txt`; your change 
 
 Assets: `img/` (Cadw photographs of 29 July 1988, released to the family May 2026), `fonts/` (Archivo, self-hosted, SIL OFL).
 
-Evidence labels: **On record** (court, heritage record, archive, Hansard, contemporary press) · **Family account** · **Being sought**.
+Evidence labels: **On record** (court, heritage record, archive, Hansard, contemporary press) · **Buckler case** (named testimony or legal position) · **Being sought**.

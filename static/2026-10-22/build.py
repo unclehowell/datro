@@ -706,7 +706,7 @@ def pack():
   <h3>How this was prepared</h3>
   <p class="meta">Version {e(VERSION['version'])}, {e(VERSION['date'])}. {e(VERSION['prepared_by'])}. {e(VERSION['method'])} {e(VERSION['corrections'])} {e(VERSION['source_control'])}</p>
   <div lang="cy"><h3>{e(CYMRAEG['title'])}</h3>{''.join(f'<p class="meta">{e(x)}</p>' for x in CYMRAEG['lines'])}<p class="meta"><i>{e(CYMRAEG['note'])}</i></p></div>
-  <p class="meta">Prepared by the Williams–Buckler family for the meeting of {e(MEETING['date'])}. The family's accounts and legal contentions are labelled as such. Fraud, concealment or government involvement has not been established; the family is seeking the records that would test it. This pack concerns Llandough-juxta-Penarth, not Llandough-juxta-Cowbridge or the Great House at Llandow or Aberthin. Online: 2026-10-22.bucklerfamily.estate</p>
+  <p class="meta">Prepared by the Williams–Buckler family for the meeting of {e(MEETING['date'])}. Testimony is attributed to the named person, and the Buckler case's legal contentions are labelled as such. Fraud, concealment or government involvement has not been established; the family is seeking the records that would test it. This pack concerns Llandough-juxta-Penarth, not Llandough-juxta-Cowbridge or the Great House at Llandow or Aberthin. Online: 2026-10-22.bucklerfamily.estate</p>
 </section>
 </body></html>
 """
