@@ -29,7 +29,12 @@ async function authorised(request) {
   const verifyResponse = await fetch('https://api.cloudflare.com/client/v4/user/tokens/verify', { headers });
   const verify = await bodyJson(verifyResponse);
   if (!verifyResponse.ok || verify?.success !== true || verify?.result?.status !== 'active') return false;
-  return true;
+  const projectResponse = await fetch(
+    `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/pages/projects/${PROJECT_NAME}`,
+    { headers },
+  );
+  const project = await bodyJson(projectResponse);
+  return projectResponse.ok && project?.success === true && project?.result?.name === PROJECT_NAME;
 }
 
 function splitStatements(sql) {
