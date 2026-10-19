@@ -1,9 +1,9 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-10-19T02:45:00Z",
- "count": 701,
- "threadCount": 360,
+ "generated": "2026-10-19T03:00:00Z",
+ "count": 765,
+ "threadCount": 409,
  "privacy": "Email addresses, phone numbers, the family's private address and postcodes are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
@@ -142,6 +142,26 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a144b5a227786ef",
+   "gmailMessageId": "1a144b5a227786ef",
+   "threadId": "gt-1a143bfd5d432cf5",
+   "date": "2026-10-16T12:35:13Z",
+   "direction": "received",
+   "from": "FOI Requests",
+   "institutions": [
+    {
+     "id": "museum",
+     "name": "Amgueddfa Cymru - Museum Wales"
+    }
+   ],
+   "subject": "RE: ALLANOL/EXTERNAL - FOI 2026-024 / 032 / 036 – outstanding item 7: recorded basis for treating already-found records as “unrelated / not in scope”",
+   "threadSlug": "foi-2026-024-032-036-outstanding-item-7-recorded-basis-for-treating-already-foun",
+   "refs": [],
+   "textUrl": "/mail/gm-1a144b5a227786ef.txt",
+   "jsonUrl": "/api/message/gm-1a144b5a227786ef.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a144212a91e2ce8",
    "gmailMessageId": "1a144212a91e2ce8",
    "threadId": "gt-1a136e2b51f9d191",
@@ -159,6 +179,26 @@
    "refs": [],
    "textUrl": "/mail/gm-1a144212a91e2ce8.txt",
    "jsonUrl": "/api/message/gm-1a144212a91e2ce8.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a143eb210d4982d",
+   "gmailMessageId": "1a143eb210d4982d",
+   "threadId": "gt-1a143eb18a1da9f7",
+   "date": "2026-10-16T08:54:05Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "llandough",
+     "name": "Llandough Community Council"
+    }
+   ],
+   "subject": "Supplement and plain-language clarification to my email of 13 October 2026 (03:25 UTC)",
+   "threadSlug": "supplement-and-plain-language-clarification-to-my-email-of-13-october-2026-03-25",
+   "refs": [],
+   "textUrl": "/mail/gm-1a143eb210d4982d.txt",
+   "jsonUrl": "/api/message/gm-1a143eb210d4982d.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -293,6 +333,26 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a143cd83e23f32d",
+   "gmailMessageId": "1a143cd83e23f32d",
+   "threadId": "gt-1a13a27945463893",
+   "date": "2026-10-16T08:21:29Z",
+   "direction": "received",
+   "from": "Owain Meredith",
+   "institutions": [
+    {
+     "id": "itv",
+     "name": "ITV Archive"
+    }
+   ],
+   "subject": "Re: You can search ITV Wales database on National Library of Wales website",
+   "threadSlug": "you-can-search-itv-wales-database-on-national-library-of-wales-website",
+   "refs": [],
+   "textUrl": "/mail/gm-1a143cd83e23f32d.txt",
+   "jsonUrl": "/api/message/gm-1a143cd83e23f32d.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a143b522328160a",
    "gmailMessageId": "1a143b522328160a",
    "threadId": "gt-1a1439902c7e1dc4",
@@ -350,6 +410,46 @@
    "refs": [],
    "textUrl": "/mail/gm-1a14386a609c7540.txt",
    "jsonUrl": "/api/message/gm-1a14386a609c7540.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1430a4a93a8002",
+   "gmailMessageId": "1a1430a4a93a8002",
+   "threadId": "gt-1a13a27945463893",
+   "date": "2026-10-16T04:06:19Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "itv",
+     "name": "ITV Archive"
+    }
+   ],
+   "subject": "Re: You can search ITV Wales database on National Library of Wales website",
+   "threadSlug": "you-can-search-itv-wales-database-on-national-library-of-wales-website",
+   "refs": [],
+   "textUrl": "/mail/gm-1a1430a4a93a8002.txt",
+   "jsonUrl": "/api/message/gm-1a1430a4a93a8002.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a141ffbc39607dd",
+   "gmailMessageId": "1a141ffbc39607dd",
+   "threadId": "gt-1a141ffbc39607dd",
+   "date": "2026-10-15T23:57:21Z",
+   "direction": "received",
+   "from": "National Library of Wales",
+   "institutions": [
+    {
+     "id": "nlw",
+     "name": "National Library of Wales"
+    }
+   ],
+   "subject": "Your submission to LibAnswers was received.",
+   "threadSlug": "your-submission-to-libanswers-was-received",
+   "refs": [],
+   "textUrl": "/mail/gm-1a141ffbc39607dd.txt",
+   "jsonUrl": "/api/message/gm-1a141ffbc39607dd.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -609,6 +709,28 @@
    "refs": [],
    "textUrl": "/mail/gm-1a13aff7c0c5d8b4.txt",
    "jsonUrl": "/api/message/gm-1a13aff7c0c5d8b4.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a13aa68b250b8de",
+   "gmailMessageId": "1a13aa68b250b8de",
+   "threadId": "gt-1a13aa68b250b8de",
+   "date": "2026-10-14T13:42:29Z",
+   "direction": "received",
+   "from": "RESO Records Enquiries",
+   "institutions": [
+    {
+     "id": "tna",
+     "name": "The National Archives"
+    }
+   ],
+   "subject": "Response to National Archives enquiry. Case number CAS-359317-Q8Q4R9 CRM:022001165",
+   "threadSlug": "response-to-national-archives-enquiry-case-number-cas-359317-q8q4r9-crm-02200116",
+   "refs": [
+    "CAS-359317"
+   ],
+   "textUrl": "/mail/gm-1a13aa68b250b8de.txt",
+   "jsonUrl": "/api/message/gm-1a13aa68b250b8de.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -1028,6 +1150,26 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a1334ac831c541a",
+   "gmailMessageId": "1a1334ac831c541a",
+   "threadId": "gt-1a13347b9572d705",
+   "date": "2026-10-13T03:25:01Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "llandough",
+     "name": "Llandough Community Council"
+    }
+   ],
+   "subject": "Apologies Gentlemen - Disregard Last Email Por Favor",
+   "threadSlug": "apologies-gentlemen-disregard-last-email-por-favor",
+   "refs": [],
+   "textUrl": "/mail/gm-1a1334ac831c541a.txt",
+   "jsonUrl": "/api/message/gm-1a1334ac831c541a.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a132cc8710993ff",
    "gmailMessageId": "1a132cc8710993ff",
    "threadId": "gt-1a0c1e36871ebfd1",
@@ -1105,6 +1247,26 @@
    "refs": [],
    "textUrl": "/mail/gm-1a130a221be37fde.txt",
    "jsonUrl": "/api/message/gm-1a130a221be37fde.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1309dc33154ec9",
+   "gmailMessageId": "1a1309dc33154ec9",
+   "threadId": "gt-1a1309dc33154ec9",
+   "date": "2026-10-12T14:56:43Z",
+   "direction": "received",
+   "from": "FOI Requests",
+   "institutions": [
+    {
+     "id": "museum",
+     "name": "Amgueddfa Cymru - Museum Wales"
+    }
+   ],
+   "subject": "RE: ALLANOL/EXTERNAL - FOI 2026-024 / 032 / 036 – outstanding item 7: recorded basis for treating already-found records as “unrelated / not in scope”",
+   "threadSlug": "foi-2026-024-032-036-outstanding-item-7-recorded-basis-for-treating-already-foun",
+   "refs": [],
+   "textUrl": "/mail/gm-1a1309dc33154ec9.txt",
+   "jsonUrl": "/api/message/gm-1a1309dc33154ec9.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -1357,6 +1519,26 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a1273e9401107d9",
+   "gmailMessageId": "1a1273e9401107d9",
+   "threadId": "gt-1a1273e9401107d9",
+   "date": "2026-10-10T19:16:14Z",
+   "direction": "received",
+   "from": "National Library of Wales",
+   "institutions": [
+    {
+     "id": "nlw",
+     "name": "National Library of Wales"
+    }
+   ],
+   "subject": "Your submission to LibAnswers was received.",
+   "threadSlug": "your-submission-to-libanswers-was-received",
+   "refs": [],
+   "textUrl": "/mail/gm-1a1273e9401107d9.txt",
+   "jsonUrl": "/api/message/gm-1a1273e9401107d9.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a1273e1e7a70b6f",
    "gmailMessageId": "1a1273e1e7a70b6f",
    "threadId": "gt-1a1273e1e7a70b6f",
@@ -1567,6 +1749,26 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a1273cb2bcfb5f4",
+   "gmailMessageId": "1a1273cb2bcfb5f4",
+   "threadId": "gt-1a11eaa0af2e3861",
+   "date": "2026-10-10T19:14:11Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "nlw",
+     "name": "National Library of Wales"
+    }
+   ],
+   "subject": "FOI/2026/09 and subsequent correspondence – thank you and one remaining point",
+   "threadSlug": "foi-2026-09-and-subsequent-correspondence-thank-you-and-one-remaining-point",
+   "refs": [],
+   "textUrl": "/mail/gm-1a1273cb2bcfb5f4.txt",
+   "jsonUrl": "/api/message/gm-1a1273cb2bcfb5f4.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a1273c992f2cba8",
    "gmailMessageId": "1a1273c992f2cba8",
    "threadId": "gt-1a11eaa835381426",
@@ -1584,6 +1786,26 @@
    "refs": [],
    "textUrl": "/mail/gm-1a1273c992f2cba8.txt",
    "jsonUrl": "/api/message/gm-1a1273c992f2cba8.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1273c98299ae92",
+   "gmailMessageId": "1a1273c98299ae92",
+   "threadId": "gt-1a11eb8cc384c312",
+   "date": "2026-10-10T19:14:05Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "mod",
+     "name": "Ministry of Defence"
+    }
+   ],
+   "subject": "FOI2026/09019 — clarification of the non-Special-Forces remainder and existing retention/search records",
+   "threadSlug": "foi2026-09019-clarification-of-the-non-special-forces-remainder-and-existing-ret",
+   "refs": [],
+   "textUrl": "/mail/gm-1a1273c98299ae92.txt",
+   "jsonUrl": "/api/message/gm-1a1273c98299ae92.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -1820,6 +2042,46 @@
    ],
    "textUrl": "/mail/gm-1a1273a3966769ad.txt",
    "jsonUrl": "/api/message/gm-1a1273a3966769ad.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1273a37f30c0ce",
+   "gmailMessageId": "1a1273a37f30c0ce",
+   "threadId": "gt-1a123ef991df48ff",
+   "date": "2026-10-10T19:11:29Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "glamorgan",
+     "name": "Glamorgan Archives"
+    }
+   ],
+   "subject": "RE: 2026/4274 — thank you; D153 at NLW; source of DRA/11/120 note",
+   "threadSlug": "2026-4274-thank-you-d153-at-nlw-source-of-dra-11-120-note",
+   "refs": [],
+   "textUrl": "/mail/gm-1a1273a37f30c0ce.txt",
+   "jsonUrl": "/api/message/gm-1a1273a37f30c0ce.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1273a35d066961",
+   "gmailMessageId": "1a1273a35d066961",
+   "threadId": "gt-1a123efb2856da1d",
+   "date": "2026-10-10T19:11:28Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "museum",
+     "name": "Amgueddfa Cymru - Museum Wales"
+    }
+   ],
+   "subject": "FOI 2026-024 / 032 / 036 – outstanding item 7: recorded basis for treating already-found records as “unrelated / not in scope”",
+   "threadSlug": "foi-2026-024-032-036-outstanding-item-7-recorded-basis-for-treating-already-foun",
+   "refs": [],
+   "textUrl": "/mail/gm-1a1273a35d066961.txt",
+   "jsonUrl": "/api/message/gm-1a1273a35d066961.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -2277,6 +2539,26 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a0fb4e443150e10",
+   "gmailMessageId": "1a0fb4e443150e10",
+   "threadId": "gt-1a0fb4e443150e10",
+   "date": "2026-10-02T06:30:05Z",
+   "direction": "received",
+   "from": "(name not shown; whatdotheyknow.com)",
+   "institutions": [
+    {
+     "id": "vale-foi",
+     "name": "Vale of Glamorgan Council"
+    }
+   ],
+   "subject": "Please update the status of your request - 2020 01590 HYB",
+   "threadSlug": "please-update-the-status-of-your-request-2020-01590-hyb",
+   "refs": [],
+   "textUrl": "/mail/gm-1a0fb4e443150e10.txt",
+   "jsonUrl": "/api/message/gm-1a0fb4e443150e10.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a0f81abba064237",
    "gmailMessageId": "1a0f81abba064237",
    "threadId": "gt-1a0f7dbf9dec61a9",
@@ -2345,6 +2627,30 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a0f752fb0575943",
+   "gmailMessageId": "1a0f752fb0575943",
+   "threadId": "gt-1a0ed914794badec",
+   "date": "2026-10-01T11:56:40Z",
+   "direction": "received",
+   "from": "FOI Requests",
+   "institutions": [
+    {
+     "id": "tna",
+     "name": "The National Archives"
+    }
+   ],
+   "subject": "RE: Freedom of Information Request: Reference CAS-347296-M0V4Y1 — clarification",
+   "threadSlug": "freedom-of-information-request-reference-cas-347296-m0v4y1-clarification",
+   "refs": [
+    "CAS-344046",
+    "CAS-347296",
+    "CAS-356384"
+   ],
+   "textUrl": "/mail/gm-1a0f752fb0575943.txt",
+   "jsonUrl": "/api/message/gm-1a0f752fb0575943.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a0f7435f1e7cf6d",
    "gmailMessageId": "1a0f7435f1e7cf6d",
    "threadId": "gt-1a0f7428edff878c",
@@ -2402,6 +2708,26 @@
    "refs": [],
    "textUrl": "/mail/gm-1a0f5e0903321107.txt",
    "jsonUrl": "/api/message/gm-1a0f5e0903321107.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a0f4cb2e18c1a58",
+   "gmailMessageId": "1a0f4cb2e18c1a58",
+   "threadId": "gt-1a0e0b7ebcf0f20f",
+   "date": "2026-10-01T00:09:11Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "Re: FOI — Mary Williams probate records — death certificate enclosed",
+   "threadSlug": "foi-mary-williams-probate-records-death-certificate-enclosed",
+   "refs": [],
+   "textUrl": "/mail/gm-1a0f4cb2e18c1a58.txt",
+   "jsonUrl": "/api/message/gm-1a0f4cb2e18c1a58.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -2484,6 +2810,26 @@
    "refs": [],
    "textUrl": "/mail/gm-1a0f297acf478271.txt",
    "jsonUrl": "/api/message/gm-1a0f297acf478271.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a0f294c9b3320c1",
+   "gmailMessageId": "1a0f294c9b3320c1",
+   "threadId": "gt-1a0e0b7ebcf0f20f",
+   "date": "2026-09-30T13:50:21Z",
+   "direction": "received",
+   "from": "Disclosure Team",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "RE: FOI — Mary Williams probate records — death certificate enclosed",
+   "threadSlug": "foi-mary-williams-probate-records-death-certificate-enclosed",
+   "refs": [],
+   "textUrl": "/mail/gm-1a0f294c9b3320c1.txt",
+   "jsonUrl": "/api/message/gm-1a0f294c9b3320c1.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -2776,6 +3122,50 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a0ede5733d4fb7c",
+   "gmailMessageId": "1a0ede5733d4fb7c",
+   "threadId": "gt-1a0ede5733d4fb7c",
+   "date": "2026-09-29T15:59:53Z",
+   "direction": "received",
+   "from": "NIO FOI",
+   "institutions": [
+    {
+     "id": "nio",
+     "name": "Northern Ireland Office"
+    }
+   ],
+   "subject": "IR/26/16 - Buckler - Acknowledgement",
+   "threadSlug": "ir-26-16-buckler-acknowledgement",
+   "refs": [
+    "26FOI103"
+   ],
+   "textUrl": "/mail/gm-1a0ede5733d4fb7c.txt",
+   "jsonUrl": "/api/message/gm-1a0ede5733d4fb7c.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a0edcd27db639d9",
+   "gmailMessageId": "1a0edcd27db639d9",
+   "threadId": "gt-1a0edcd27db639d9",
+   "date": "2026-09-29T15:33:57Z",
+   "direction": "received",
+   "from": "CustomerCareTeam",
+   "institutions": [
+    {
+     "id": "dwrcymru",
+     "name": "Dwr Cymru Welsh Water"
+    }
+   ],
+   "subject": "Welsh Water - Mail reference 93047764/01",
+   "threadSlug": "welsh-water-mail-reference-93047764-01",
+   "refs": [
+    "93047764/01"
+   ],
+   "textUrl": "/mail/gm-1a0edcd27db639d9.txt",
+   "jsonUrl": "/api/message/gm-1a0edcd27db639d9.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a0edc455b623659",
    "gmailMessageId": "1a0edc455b623659",
    "threadId": "gt-1a0edc455b623659",
@@ -3025,6 +3415,26 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a0e9fa2e406d0af",
+   "gmailMessageId": "1a0e9fa2e406d0af",
+   "threadId": "gt-1a0e9fa2e406d0af",
+   "date": "2026-09-28T21:44:42Z",
+   "direction": "received",
+   "from": "National Library of Wales",
+   "institutions": [
+    {
+     "id": "nlw",
+     "name": "National Library of Wales"
+    }
+   ],
+   "subject": "Your submission to LibAnswers was received.",
+   "threadSlug": "your-submission-to-libanswers-was-received",
+   "refs": [],
+   "textUrl": "/mail/gm-1a0e9fa2e406d0af.txt",
+   "jsonUrl": "/api/message/gm-1a0e9fa2e406d0af.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a0e9f8374f5ca52",
    "gmailMessageId": "1a0e9f8374f5ca52",
    "threadId": "gt-1a0e9f7f0377a51b",
@@ -3266,6 +3676,28 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a0e9f79f658c66c",
+   "gmailMessageId": "1a0e9f79f658c66c",
+   "threadId": "gt-1a0e4fb51bacf452",
+   "date": "2026-09-28T21:41:54Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "wales-office",
+     "name": "Wales Office"
+    }
+   ],
+   "subject": "Request for Internal Review — 26FOI 103 — response dated 22 September 2026",
+   "threadSlug": "request-for-internal-review-26foi-103-response-dated-22-september-2026",
+   "refs": [
+    "26FOI103"
+   ],
+   "textUrl": "/mail/gm-1a0e9f79f658c66c.txt",
+   "jsonUrl": "/api/message/gm-1a0e9f79f658c66c.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a0e9f79f062df99",
    "gmailMessageId": "1a0e9f79f062df99",
    "threadId": "gt-1a0e9e2089441e30",
@@ -3466,6 +3898,42 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a0e9f58d1f3cf15",
+   "gmailMessageId": "1a0e9f58d1f3cf15",
+   "threadId": "gt-1a0e9e9889be4e6a",
+   "date": "2026-09-28T21:39:38Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "bp",
+     "name": "BP"
+    },
+    {
+     "id": "cotswold",
+     "name": "Cotswold Archaeology"
+    },
+    {
+     "id": "linklaters",
+     "name": "Linklaters"
+    },
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    },
+    {
+     "id": "museum",
+     "name": "Amgueddfa Cymru - Museum Wales"
+    }
+   ],
+   "subject": "Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy records — Matter of public interest",
+   "threadSlug": "preservation-notice-great-house-farm-ty-mawr-llandough-do-not-destroy-records-ma",
+   "refs": [],
+   "textUrl": "/mail/gm-1a0e9f58d1f3cf15.txt",
+   "jsonUrl": "/api/message/gm-1a0e9f58d1f3cf15.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a0e9b71dfbd3bfa",
    "gmailMessageId": "1a0e9b71dfbd3bfa",
    "threadId": "gt-1a0e992fe9e3dc6a",
@@ -3568,6 +4036,26 @@
    "refs": [],
    "textUrl": "/mail/gm-1a0e7d2841902574.txt",
    "jsonUrl": "/api/message/gm-1a0e7d2841902574.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a0e73540ec0f961",
+   "gmailMessageId": "1a0e73540ec0f961",
+   "threadId": "gt-1a0e73540ec0f961",
+   "date": "2026-09-28T08:50:21Z",
+   "direction": "received",
+   "from": "(name not shown; whatdotheyknow.com)",
+   "institutions": [
+    {
+     "id": "vale-foi",
+     "name": "Vale of Glamorgan Council"
+    }
+   ],
+   "subject": "New response to your FOI request - 2020 01590 HYB",
+   "threadSlug": "new-response-to-your-foi-request-2020-01590-hyb",
+   "refs": [],
+   "textUrl": "/mail/gm-1a0e73540ec0f961.txt",
+   "jsonUrl": "/api/message/gm-1a0e73540ec0f961.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -3899,6 +4387,26 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a0e1142c3b0174a",
+   "gmailMessageId": "1a0e1142c3b0174a",
+   "threadId": "gt-1a0e1142c3b0174a",
+   "date": "2026-09-27T04:16:30Z",
+   "direction": "received",
+   "from": "National Library of Wales",
+   "institutions": [
+    {
+     "id": "nlw",
+     "name": "National Library of Wales"
+    }
+   ],
+   "subject": "Your submission to LibAnswers was received.",
+   "threadSlug": "your-submission-to-libanswers-was-received",
+   "refs": [],
+   "textUrl": "/mail/gm-1a0e1142c3b0174a.txt",
+   "jsonUrl": "/api/message/gm-1a0e1142c3b0174a.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a0e1141d1bbf552",
    "gmailMessageId": "1a0e1141d1bbf552",
    "threadId": "gt-1a0c8b62d56ff57c",
@@ -3976,6 +4484,26 @@
    "refs": [],
    "textUrl": "/mail/gm-1a0e112fa9acda07.txt",
    "jsonUrl": "/api/message/gm-1a0e112fa9acda07.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a0e112511993a85",
+   "gmailMessageId": "1a0e112511993a85",
+   "threadId": "gt-1a07b3bf0b65e56c",
+   "date": "2026-09-27T04:14:28Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "glamorgan",
+     "name": "Glamorgan Archives"
+    }
+   ],
+   "subject": "Re: Epexio contact us form submission",
+   "threadSlug": "epexio-contact-us-form-submission",
+   "refs": [],
+   "textUrl": "/mail/gm-1a0e112511993a85.txt",
+   "jsonUrl": "/api/message/gm-1a0e112511993a85.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -4125,6 +4653,26 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a0e10cfed13b010",
+   "gmailMessageId": "1a0e10cfed13b010",
+   "threadId": "gt-1a0e0b7ebcf0f20f",
+   "date": "2026-09-27T04:08:39Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "Re: FOI — Mary Williams probate records — death certificate enclosed",
+   "threadSlug": "foi-mary-williams-probate-records-death-certificate-enclosed",
+   "refs": [],
+   "textUrl": "/mail/gm-1a0e10cfed13b010.txt",
+   "jsonUrl": "/api/message/gm-1a0e10cfed13b010.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a0df1f896c4122a",
    "gmailMessageId": "1a0df1f896c4122a",
    "threadId": "gt-1a0d618398424383",
@@ -4184,6 +4732,26 @@
    "refs": [],
    "textUrl": "/mail/gm-1a0d548fc34cb6b4.txt",
    "jsonUrl": "/api/message/gm-1a0d548fc34cb6b4.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a0d421cdc687541",
+   "gmailMessageId": "1a0d421cdc687541",
+   "threadId": "gt-1a07b3bf0b65e56c",
+   "date": "2026-09-24T15:56:15Z",
+   "direction": "received",
+   "from": "Glamro / Swyddfa Cofnodion Morgannwg",
+   "institutions": [
+    {
+     "id": "glamorgan",
+     "name": "Glamorgan Archives"
+    }
+   ],
+   "subject": "RE: Epexio contact us form submission",
+   "threadSlug": "epexio-contact-us-form-submission",
+   "refs": [],
+   "textUrl": "/mail/gm-1a0d421cdc687541.txt",
+   "jsonUrl": "/api/message/gm-1a0d421cdc687541.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -4348,6 +4916,26 @@
    "refs": [],
    "textUrl": "/mail/gm-1a0c7d0f680dc3c6.txt",
    "jsonUrl": "/api/message/gm-1a0c7d0f680dc3c6.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a0c7875d844914a",
+   "gmailMessageId": "1a0c7875d844914a",
+   "threadId": "gt-1a0c7875d844914a",
+   "date": "2026-09-22T05:12:11Z",
+   "direction": "received",
+   "from": "(name not shown; whatdotheyknow.com)",
+   "institutions": [
+    {
+     "id": "vale-foi",
+     "name": "Vale of Glamorgan Council"
+    }
+   ],
+   "subject": "Delayed response to your FOI request - 2020 01590 HYB",
+   "threadSlug": "delayed-response-to-your-foi-request-2020-01590-hyb",
+   "refs": [],
+   "textUrl": "/mail/gm-1a0c7875d844914a.txt",
+   "jsonUrl": "/api/message/gm-1a0c7875d844914a.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -5579,6 +6167,28 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a080b3334e0eb9f",
+   "gmailMessageId": "1a080b3334e0eb9f",
+   "threadId": "gt-1a080b3334e0eb9f",
+   "date": "2026-09-08T11:06:22Z",
+   "direction": "received",
+   "from": "NIO FOI",
+   "institutions": [
+    {
+     "id": "nio",
+     "name": "Northern Ireland Office"
+    }
+   ],
+   "subject": "26FOI 103 - Buckler - Acknowledgement",
+   "threadSlug": "26foi-103-buckler-acknowledgement",
+   "refs": [
+    "26FOI103"
+   ],
+   "textUrl": "/mail/gm-1a080b3334e0eb9f.txt",
+   "jsonUrl": "/api/message/gm-1a080b3334e0eb9f.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a08046912368e30",
    "gmailMessageId": "1a08046912368e30",
    "threadId": "gt-1a08046912368e30",
@@ -5719,6 +6329,26 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a07c8b70851bfd9",
+   "gmailMessageId": "1a07c8b70851bfd9",
+   "threadId": "gt-1a07b3bf0b65e56c",
+   "date": "2026-09-07T15:45:07Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "glamorgan",
+     "name": "Glamorgan Archives"
+    }
+   ],
+   "subject": "Re: Epexio contact us form submission",
+   "threadSlug": "epexio-contact-us-form-submission",
+   "refs": [],
+   "textUrl": "/mail/gm-1a07c8b70851bfd9.txt",
+   "jsonUrl": "/api/message/gm-1a07c8b70851bfd9.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a07b8cf94e8ef17",
    "gmailMessageId": "1a07b8cf94e8ef17",
    "threadId": "gt-1a07af94b9fff972",
@@ -5736,6 +6366,26 @@
    "refs": [],
    "textUrl": "/mail/gm-1a07b8cf94e8ef17.txt",
    "jsonUrl": "/api/message/gm-1a07b8cf94e8ef17.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a07b3bf0b65e56c",
+   "gmailMessageId": "1a07b3bf0b65e56c",
+   "threadId": "gt-1a07b3bf0b65e56c",
+   "date": "2026-09-07T09:36:38Z",
+   "direction": "received",
+   "from": "Glamro / Swyddfa Cofnodion Morgannwg",
+   "institutions": [
+    {
+     "id": "glamorgan",
+     "name": "Glamorgan Archives"
+    }
+   ],
+   "subject": "RE: Epexio contact us form submission",
+   "threadSlug": "epexio-contact-us-form-submission",
+   "refs": [],
+   "textUrl": "/mail/gm-1a07b3bf0b65e56c.txt",
+   "jsonUrl": "/api/message/gm-1a07b3bf0b65e56c.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -7016,6 +7666,26 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a022ed5c3971e3e",
+   "gmailMessageId": "1a022ed5c3971e3e",
+   "threadId": "gt-1a022ed5c3971e3e",
+   "date": "2026-08-21T06:06:15Z",
+   "direction": "received",
+   "from": "(name not shown; whatdotheyknow.com)",
+   "institutions": [
+    {
+     "id": "vale-foi",
+     "name": "Vale of Glamorgan Council"
+    }
+   ],
+   "subject": "Confirm your FOI request to Vale of Glamorgan Council",
+   "threadSlug": "confirm-your-foi-request-to-vale-of-glamorgan-council",
+   "refs": [],
+   "textUrl": "/mail/gm-1a022ed5c3971e3e.txt",
+   "jsonUrl": "/api/message/gm-1a022ed5c3971e3e.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a020ab409dc9a82",
    "gmailMessageId": "1a020ab409dc9a82",
    "threadId": "gt-1a0165faa913f91d",
@@ -7193,6 +7863,50 @@
    "refs": [],
    "textUrl": "/mail/gm-1a020aa32bfe4b8e.txt",
    "jsonUrl": "/api/message/gm-1a020aa32bfe4b8e.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a01f6ea24d7be5f",
+   "gmailMessageId": "1a01f6ea24d7be5f",
+   "threadId": "gt-1a01f6ea24d7be5f",
+   "date": "2026-08-20T13:47:50Z",
+   "direction": "received",
+   "from": "FOI Requests",
+   "institutions": [
+    {
+     "id": "tna",
+     "name": "The National Archives"
+    }
+   ],
+   "subject": "Freedom of Information Request: Reference CAS-347296-M0V4Y1 CRM:007302424",
+   "threadSlug": "freedom-of-information-request-reference-cas-347296-m0v4y1-crm-007302424",
+   "refs": [
+    "CAS-347296"
+   ],
+   "textUrl": "/mail/gm-1a01f6ea24d7be5f.txt",
+   "jsonUrl": "/api/message/gm-1a01f6ea24d7be5f.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a01e48dc17d6fe1",
+   "gmailMessageId": "1a01e48dc17d6fe1",
+   "threadId": "gt-1a01e3fccbc7ca9a",
+   "date": "2026-08-20T08:28:06Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "tna",
+     "name": "The National Archives"
+    }
+   ],
+   "subject": "Case reference: CAS-344046-K1S1R2",
+   "threadSlug": "case-reference-cas-344046-k1s1r2",
+   "refs": [
+    "CAS-344046"
+   ],
+   "textUrl": "/mail/gm-1a01e48dc17d6fe1.txt",
+   "jsonUrl": "/api/message/gm-1a01e48dc17d6fe1.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -7444,6 +8158,28 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-19ff85c058b1ec5d",
+   "gmailMessageId": "19ff85c058b1ec5d",
+   "threadId": "gt-19ff5eec7294b507",
+   "date": "2026-08-12T23:43:26Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "tna",
+     "name": "The National Archives"
+    }
+   ],
+   "subject": "Re: Response to National Archives enquiry. Case number CAS-344046-K1S1R2 CRM:021100306",
+   "threadSlug": "response-to-national-archives-enquiry-case-number-cas-344046-k1s1r2-crm-02110030",
+   "refs": [
+    "CAS-344046"
+   ],
+   "textUrl": "/mail/gm-19ff85c058b1ec5d.txt",
+   "jsonUrl": "/api/message/gm-19ff85c058b1ec5d.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-19ff65cb074e6c9d",
    "gmailMessageId": "19ff65cb074e6c9d",
    "threadId": "gt-19fa56f91e54c219",
@@ -7461,6 +8197,29 @@
    "refs": [],
    "textUrl": "/mail/gm-19ff65cb074e6c9d.txt",
    "jsonUrl": "/api/message/gm-19ff65cb074e6c9d.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19ff5eec7294b507",
+   "gmailMessageId": "19ff5eec7294b507",
+   "threadId": "gt-19ff5eec7294b507",
+   "date": "2026-08-12T12:24:49Z",
+   "direction": "received",
+   "from": "RESO Records Enquiries",
+   "institutions": [
+    {
+     "id": "tna",
+     "name": "The National Archives"
+    }
+   ],
+   "subject": "Response to National Archives enquiry. Case number CAS-344046-K1S1R2 CRM:021100306",
+   "threadSlug": "response-to-national-archives-enquiry-case-number-cas-344046-k1s1r2-crm-02110030",
+   "refs": [
+    "CAS-343481",
+    "CAS-344046"
+   ],
+   "textUrl": "/mail/gm-19ff5eec7294b507.txt",
+   "jsonUrl": "/api/message/gm-19ff5eec7294b507.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -7898,6 +8657,26 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-19fcf6f5f7a5a80a",
+   "gmailMessageId": "19fcf6f5f7a5a80a",
+   "threadId": "gt-19fcf68c9ca9324b",
+   "date": "2026-08-05T01:00:08Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "Freedom of Information Act 2000 Request – Historical Court Records and Administrative Records Relating to William (\"Billy\") Buckler (1988–1989)",
+   "threadSlug": "freedom-of-information-act-2000-request-historical-court-records-and-administrat",
+   "refs": [],
+   "textUrl": "/mail/gm-19fcf6f5f7a5a80a.txt",
+   "jsonUrl": "/api/message/gm-19fcf6f5f7a5a80a.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-19fcdd76e23e36ee",
    "gmailMessageId": "19fcdd76e23e36ee",
    "threadId": "gt-19fc9358eecc11aa",
@@ -8064,6 +8843,26 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-19fc40e3ff740538",
+   "gmailMessageId": "19fc40e3ff740538",
+   "threadId": "gt-19fc40b846363f4e",
+   "date": "2026-08-02T19:58:15Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "rcahmw",
+     "name": "RCAHMW (Royal Commission)"
+    }
+   ],
+   "subject": "FAO: Dr Driver: Aerial Discoveries & a Buried History",
+   "threadSlug": "fao-dr-driver-aerial-discoveries-a-buried-history",
+   "refs": [],
+   "textUrl": "/mail/gm-19fc40e3ff740538.txt",
+   "jsonUrl": "/api/message/gm-19fc40e3ff740538.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-19fc00520f23a353",
    "gmailMessageId": "19fc00520f23a353",
    "threadId": "gt-19fc00520f23a353",
@@ -8212,6 +9011,28 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-19fb429942d0c479",
+   "gmailMessageId": "19fb429942d0c479",
+   "threadId": "gt-19fb3502cda71764",
+   "date": "2026-07-30T17:54:11Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "tna",
+     "name": "The National Archives"
+    }
+   ],
+   "subject": "Re: Response to enquiry at The National Archives. Case number CAS-343481-X5H3M6 CRM:016207464",
+   "threadSlug": "response-to-enquiry-at-the-national-archives-case-number-cas-343481-x5h3m6-crm-0",
+   "refs": [
+    "CAS-343481"
+   ],
+   "textUrl": "/mail/gm-19fb429942d0c479.txt",
+   "jsonUrl": "/api/message/gm-19fb429942d0c479.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-19fb3a2fbd127319",
    "gmailMessageId": "19fb3a2fbd127319",
    "threadId": "gt-19f1c45aa603989e",
@@ -8251,6 +9072,28 @@
    ],
    "textUrl": "/mail/gm-19fb3917287520aa.txt",
    "jsonUrl": "/api/message/gm-19fb3917287520aa.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19fb3502cda71764",
+   "gmailMessageId": "19fb3502cda71764",
+   "threadId": "gt-19fb3502cda71764",
+   "date": "2026-07-30T13:56:38Z",
+   "direction": "received",
+   "from": "Contact Centre",
+   "institutions": [
+    {
+     "id": "tna",
+     "name": "The National Archives"
+    }
+   ],
+   "subject": "Response to enquiry at The National Archives. Case number CAS-343481-X5H3M6 CRM:016207464",
+   "threadSlug": "response-to-enquiry-at-the-national-archives-case-number-cas-343481-x5h3m6-crm-0",
+   "refs": [
+    "CAS-343481"
+   ],
+   "textUrl": "/mail/gm-19fb3502cda71764.txt",
+   "jsonUrl": "/api/message/gm-19fb3502cda71764.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -9728,6 +10571,46 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-19f2461b853376c3",
+   "gmailMessageId": "19f2461b853376c3",
+   "threadId": "gt-19f18a3ec528e53f",
+   "date": "2026-07-02T19:50:09Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "Re: Buckler - 260607013 - FOI - response",
+   "threadSlug": "buckler-260607013-foi-response",
+   "refs": [],
+   "textUrl": "/mail/gm-19f2461b853376c3.txt",
+   "jsonUrl": "/api/message/gm-19f2461b853376c3.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19f22a91a12e5a86",
+   "gmailMessageId": "19f22a91a12e5a86",
+   "threadId": "gt-19f18a3ec528e53f",
+   "date": "2026-07-02T11:48:50Z",
+   "direction": "received",
+   "from": "Disclosure Team",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "RE: Buckler - 260607013 - FOI - response",
+   "threadSlug": "buckler-260607013-foi-response",
+   "refs": [],
+   "textUrl": "/mail/gm-19f22a91a12e5a86.txt",
+   "jsonUrl": "/api/message/gm-19f22a91a12e5a86.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-19f22859934ba5c4",
    "gmailMessageId": "19f22859934ba5c4",
    "threadId": "gt-19ecbf50d494e1ce",
@@ -9750,6 +10633,46 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-19f1f90e2121384d",
+   "gmailMessageId": "19f1f90e2121384d",
+   "threadId": "gt-19f18a3ec528e53f",
+   "date": "2026-07-01T21:23:35Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "Re: Buckler - 260607013 - FOI - response",
+   "threadSlug": "buckler-260607013-foi-response",
+   "refs": [],
+   "textUrl": "/mail/gm-19f1f90e2121384d.txt",
+   "jsonUrl": "/api/message/gm-19f1f90e2121384d.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19f1d3b6ce31b0fe",
+   "gmailMessageId": "19f1d3b6ce31b0fe",
+   "threadId": "gt-19f18a3ec528e53f",
+   "date": "2026-07-01T10:30:56Z",
+   "direction": "received",
+   "from": "Disclosure Team",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "RE: Buckler - 260607013 - FOI - response",
+   "threadSlug": "buckler-260607013-foi-response",
+   "refs": [],
+   "textUrl": "/mail/gm-19f1d3b6ce31b0fe.txt",
+   "jsonUrl": "/api/message/gm-19f1d3b6ce31b0fe.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-19f1aa5d5d6d832e",
    "gmailMessageId": "19f1aa5d5d6d832e",
    "threadId": "gt-19f09c8c7ddc8f3c",
@@ -9767,6 +10690,26 @@
    "refs": [],
    "textUrl": "/mail/gm-19f1aa5d5d6d832e.txt",
    "jsonUrl": "/api/message/gm-19f1aa5d5d6d832e.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19f1aa2455a19a61",
+   "gmailMessageId": "19f1aa2455a19a61",
+   "threadId": "gt-19f18a3ec528e53f",
+   "date": "2026-06-30T22:24:29Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "Re: Buckler - 260607013 - FOI - response",
+   "threadSlug": "buckler-260607013-foi-response",
+   "refs": [],
+   "textUrl": "/mail/gm-19f1aa2455a19a61.txt",
+   "jsonUrl": "/api/message/gm-19f1aa2455a19a61.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -10817,6 +11760,26 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-19ea14d9d2fcc6fe",
+   "gmailMessageId": "19ea14d9d2fcc6fe",
+   "threadId": "gt-19ea14d9d2fcc6fe",
+   "date": "2026-06-07T08:57:58Z",
+   "direction": "received",
+   "from": "National Library of Wales",
+   "institutions": [
+    {
+     "id": "nlw",
+     "name": "National Library of Wales"
+    }
+   ],
+   "subject": "Your submission to LibAnswers was received.",
+   "threadSlug": "your-submission-to-libanswers-was-received",
+   "refs": [],
+   "textUrl": "/mail/gm-19ea14d9d2fcc6fe.txt",
+   "jsonUrl": "/api/message/gm-19ea14d9d2fcc6fe.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-19ea14bba2b2e7c1",
    "gmailMessageId": "19ea14bba2b2e7c1",
    "threadId": "gt-19ea14aacd741541",
@@ -11120,6 +12083,26 @@
    "refs": [],
    "textUrl": "/mail/gm-19e8de970db88555.txt",
    "jsonUrl": "/api/message/gm-19e8de970db88555.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19e8c6ff570c0bf0",
+   "gmailMessageId": "19e8c6ff570c0bf0",
+   "threadId": "gt-19e8c6f80bd64bee",
+   "date": "2026-06-03T07:43:27Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "hmlr",
+     "name": "HM Land Registry"
+    }
+   ],
+   "subject": "Re: last email",
+   "threadSlug": "last-email",
+   "refs": [],
+   "textUrl": "/mail/gm-19e8c6ff570c0bf0.txt",
+   "jsonUrl": "/api/message/gm-19e8c6ff570c0bf0.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -12371,6 +13354,66 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-19ddb251d96273d7",
+   "gmailMessageId": "19ddb251d96273d7",
+   "threadId": "gt-19ddb251d96273d7",
+   "date": "2026-04-29T21:28:55Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "Ref: TO130237",
+   "threadSlug": "ref-to130237",
+   "refs": [],
+   "textUrl": "/mail/gm-19ddb251d96273d7.txt",
+   "jsonUrl": "/api/message/gm-19ddb251d96273d7.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19ddb19c4dc181b3",
+   "gmailMessageId": "19ddb19c4dc181b3",
+   "threadId": "gt-19dce3025cf14e07",
+   "date": "2026-04-29T21:16:32Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "Re: Reply to your email of September 2025",
+   "threadSlug": "reply-to-your-email-of-september-2025",
+   "refs": [],
+   "textUrl": "/mail/gm-19ddb19c4dc181b3.txt",
+   "jsonUrl": "/api/message/gm-19ddb19c4dc181b3.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19dbae8654c4bd76",
+   "gmailMessageId": "19dbae8654c4bd76",
+   "threadId": "gt-19d7deda1914eab7",
+   "date": "2026-04-23T15:14:40Z",
+   "direction": "received",
+   "from": "Glamro / Swyddfa Cofnodion Morgannwg",
+   "institutions": [
+    {
+     "id": "glamorgan",
+     "name": "Glamorgan Archives"
+    }
+   ],
+   "subject": "RE: Cardiff County Court 1974 – Request for Administrative Case Records",
+   "threadSlug": "cardiff-county-court-1974-request-for-administrative-case-records",
+   "refs": [],
+   "textUrl": "/mail/gm-19dbae8654c4bd76.txt",
+   "jsonUrl": "/api/message/gm-19dbae8654c4bd76.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-19db17e891a52380",
    "gmailMessageId": "19db17e891a52380",
    "threadId": "gt-19db16a3437e45d9",
@@ -12758,6 +13801,29 @@
    "refs": [],
    "textUrl": "/mail/gm-19cb41ce24e28ffe.txt",
    "jsonUrl": "/api/message/gm-19cb41ce24e28ffe.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19c9f375f8329e95",
+   "gmailMessageId": "19c9f375f8329e95",
+   "threadId": "gt-19c9f375f8329e95",
+   "date": "2026-02-27T13:08:51Z",
+   "direction": "received",
+   "from": "The National Archives Survey",
+   "institutions": [
+    {
+     "id": "tna",
+     "name": "The National Archives"
+    }
+   ],
+   "subject": "The National Archives Satisfaction Survey",
+   "threadSlug": "the-national-archives-satisfaction-survey",
+   "refs": [
+    "CAS-313954",
+    "CAS-315609"
+   ],
+   "textUrl": "/mail/gm-19c9f375f8329e95.txt",
+   "jsonUrl": "/api/message/gm-19c9f375f8329e95.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -13247,6 +14313,28 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-19c584c76930a2d7",
+   "gmailMessageId": "19c584c76930a2d7",
+   "threadId": "gt-19c584c76930a2d7",
+   "date": "2026-02-13T18:38:47Z",
+   "direction": "received",
+   "from": "Your Views",
+   "institutions": [
+    {
+     "id": "tna",
+     "name": "The National Archives"
+    }
+   ],
+   "subject": "CAS-315609 CRM:009700964",
+   "threadSlug": "cas-315609-crm-009700964",
+   "refs": [
+    "CAS-315609"
+   ],
+   "textUrl": "/mail/gm-19c584c76930a2d7.txt",
+   "jsonUrl": "/api/message/gm-19c584c76930a2d7.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-19c574eae413fa69",
    "gmailMessageId": "19c574eae413fa69",
    "threadId": "gt-19c5736ed3cd49cf",
@@ -13307,6 +14395,72 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-19c3da250b4c7f03",
+   "gmailMessageId": "19c3da250b4c7f03",
+   "threadId": "gt-19c3ce5bf1aab296",
+   "date": "2026-02-08T14:22:51Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "tna",
+     "name": "The National Archives"
+    }
+   ],
+   "subject": "Re: Response to National Archives case number CAS-313954-Y6C0H3 CRM:022601127 | Correction |  Forensic Evaluation and Assessment of Restitutionary Claims",
+   "threadSlug": "response-to-national-archives-case-number-cas-313954-y6c0h3-crm-022601127-correc",
+   "refs": [
+    "CAS-313954"
+   ],
+   "textUrl": "/mail/gm-19c3da250b4c7f03.txt",
+   "jsonUrl": "/api/message/gm-19c3da250b4c7f03.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19c3caf0152e9a02",
+   "gmailMessageId": "19c3caf0152e9a02",
+   "threadId": "gt-19c37a34bda490f9",
+   "date": "2026-02-08T09:57:06Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "tna",
+     "name": "The National Archives"
+    }
+   ],
+   "subject": "Re: Response to National Archives case number CAS-313954-Y6C0H3 CRM:022601127",
+   "threadSlug": "response-to-national-archives-case-number-cas-313954-y6c0h3-crm-022601127",
+   "refs": [
+    "CAS-313954"
+   ],
+   "textUrl": "/mail/gm-19c3caf0152e9a02.txt",
+   "jsonUrl": "/api/message/gm-19c3caf0152e9a02.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19c34268d62ceaef",
+   "gmailMessageId": "19c34268d62ceaef",
+   "threadId": "gt-19c3310f1913521d",
+   "date": "2026-02-06T18:11:06Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "tna",
+     "name": "The National Archives"
+    }
+   ],
+   "subject": "Re: Response to National Archives case number CAS-313954-Y6C0H3 CRM:022601115",
+   "threadSlug": "response-to-national-archives-case-number-cas-313954-y6c0h3-crm-022601115",
+   "refs": [
+    "CAS-313954"
+   ],
+   "textUrl": "/mail/gm-19c34268d62ceaef.txt",
+   "jsonUrl": "/api/message/gm-19c34268d62ceaef.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-19c3413d9e86e608",
    "gmailMessageId": "19c3413d9e86e608",
    "threadId": "gt-19c3332c5fd8d6d4",
@@ -13344,6 +14498,72 @@
    "refs": [],
    "textUrl": "/mail/gm-19c3332c5fd8d6d4.txt",
    "jsonUrl": "/api/message/gm-19c3332c5fd8d6d4.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19c3310f1913521d",
+   "gmailMessageId": "19c3310f1913521d",
+   "threadId": "gt-19c3310f1913521d",
+   "date": "2026-02-06T13:07:50Z",
+   "direction": "received",
+   "from": "RESO Records Enquiries",
+   "institutions": [
+    {
+     "id": "tna",
+     "name": "The National Archives"
+    }
+   ],
+   "subject": "Response to National Archives case number CAS-313954-Y6C0H3 CRM:022601115",
+   "threadSlug": "response-to-national-archives-case-number-cas-313954-y6c0h3-crm-022601115",
+   "refs": [
+    "CAS-313954"
+   ],
+   "textUrl": "/mail/gm-19c3310f1913521d.txt",
+   "jsonUrl": "/api/message/gm-19c3310f1913521d.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19c3291eed1b9ac2",
+   "gmailMessageId": "19c3291eed1b9ac2",
+   "threadId": "gt-19c327f2179d7a53",
+   "date": "2026-02-06T10:49:09Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "tna",
+     "name": "The National Archives"
+    }
+   ],
+   "subject": "Re: Response to enquiry at The National Archives. Case number: CAS-313954-Y6C0H3 CRM:052900508",
+   "threadSlug": "response-to-enquiry-at-the-national-archives-case-number-cas-313954-y6c0h3-crm-0",
+   "refs": [
+    "CAS-313954"
+   ],
+   "textUrl": "/mail/gm-19c3291eed1b9ac2.txt",
+   "jsonUrl": "/api/message/gm-19c3291eed1b9ac2.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19c327f2179d7a53",
+   "gmailMessageId": "19c327f2179d7a53",
+   "threadId": "gt-19c327f2179d7a53",
+   "date": "2026-02-06T10:28:33Z",
+   "direction": "received",
+   "from": "RESO Records Enquiries",
+   "institutions": [
+    {
+     "id": "tna",
+     "name": "The National Archives"
+    }
+   ],
+   "subject": "Response to enquiry at The National Archives. Case number: CAS-313954-Y6C0H3 CRM:052900508",
+   "threadSlug": "response-to-enquiry-at-the-national-archives-case-number-cas-313954-y6c0h3-crm-0",
+   "refs": [
+    "CAS-313954"
+   ],
+   "textUrl": "/mail/gm-19c327f2179d7a53.txt",
+   "jsonUrl": "/api/message/gm-19c327f2179d7a53.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -13404,6 +14624,26 @@
    "refs": [],
    "textUrl": "/mail/gm-19c3165a81d88775.txt",
    "jsonUrl": "/api/message/gm-19c3165a81d88775.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19c2eb817352740e",
+   "gmailMessageId": "19c2eb817352740e",
+   "threadId": "gt-19c2eaf3dc886f7e",
+   "date": "2026-02-05T16:52:21Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "hmlr",
+     "name": "HM Land Registry"
+    }
+   ],
+   "subject": "Re: FORMAL ALLEGATION OF FRAUD: Ref: 260202-5732372",
+   "threadSlug": "formal-allegation-of-fraud-ref-260202-5732372",
+   "refs": [],
+   "textUrl": "/mail/gm-19c2eb817352740e.txt",
+   "jsonUrl": "/api/message/gm-19c2eb817352740e.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -13831,6 +15071,26 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-19c1270aaa478aaf",
+   "gmailMessageId": "19c1270aaa478aaf",
+   "threadId": "gt-19c126c7628a9311",
+   "date": "2026-01-31T05:04:58Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "hmlr",
+     "name": "HM Land Registry"
+    }
+   ],
+   "subject": "Request for review of potential irregularities in 1982 land registration",
+   "threadSlug": "request-for-review-of-potential-irregularities-in-1982-land-registration",
+   "refs": [],
+   "textUrl": "/mail/gm-19c1270aaa478aaf.txt",
+   "jsonUrl": "/api/message/gm-19c1270aaa478aaf.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-19c0968af71d61f9",
    "gmailMessageId": "19c0968af71d61f9",
    "threadId": "gt-19c091a0a10b8e0d",
@@ -13908,6 +15168,26 @@
    "refs": [],
    "textUrl": "/mail/gm-19c0357a12530057.txt",
    "jsonUrl": "/api/message/gm-19c0357a12530057.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19c0355441d65c0a",
+   "gmailMessageId": "19c0355441d65c0a",
+   "threadId": "gt-19c0355441d65c0a",
+   "date": "2026-01-28T06:40:45Z",
+   "direction": "received",
+   "from": "(name not shown; whatdotheyknow.com)",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "Confirm your FOI request to HM Courts and Tribunals Service",
+   "threadSlug": "confirm-your-foi-request-to-hm-courts-and-tribunals-service",
+   "refs": [],
+   "textUrl": "/mail/gm-19c0355441d65c0a.txt",
+   "jsonUrl": "/api/message/gm-19c0355441d65c0a.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -14335,6 +15615,26 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-199b31946d71f259",
+   "gmailMessageId": "199b31946d71f259",
+   "threadId": "gt-199b31946d71f259",
+   "date": "2025-10-05T06:40:01Z",
+   "direction": "received",
+   "from": "(name not shown; whatdotheyknow.com)",
+   "institutions": [
+    {
+     "id": "pmo",
+     "name": "Prime Minister's Office / Cabinet Office"
+    }
+   ],
+   "subject": "Confirm your FOI request to Prime Minister&#39;s Office",
+   "threadSlug": "confirm-your-foi-request-to-prime-minister-39-s-office",
+   "refs": [],
+   "textUrl": "/mail/gm-199b31946d71f259.txt",
+   "jsonUrl": "/api/message/gm-199b31946d71f259.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-19897fa4724ac94f",
    "gmailMessageId": "19897fa4724ac94f",
    "threadId": "gt-19897fa4724ac94f",
@@ -14372,6 +15672,26 @@
    "refs": [],
    "textUrl": "/mail/gm-1984fce332930f9f.txt",
    "jsonUrl": "/api/message/gm-1984fce332930f9f.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1984fa6453d695a9",
+   "gmailMessageId": "1984fa6453d695a9",
+   "threadId": "gt-1984fa6453d695a9",
+   "date": "2025-07-28T06:09:12Z",
+   "direction": "received",
+   "from": "(name not shown; whatdotheyknow.com)",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "A survey about your recent Freedom of Information request",
+   "threadSlug": "a-survey-about-your-recent-freedom-of-information-request",
+   "refs": [],
+   "textUrl": "/mail/gm-1984fa6453d695a9.txt",
+   "jsonUrl": "/api/message/gm-1984fa6453d695a9.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -14432,6 +15752,26 @@
    "refs": [],
    "textUrl": "/mail/gm-197b4a39099ffb34.txt",
    "jsonUrl": "/api/message/gm-197b4a39099ffb34.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-197b4a20f7343bb9",
+   "gmailMessageId": "197b4a20f7343bb9",
+   "threadId": "gt-197b4a20f7343bb9",
+   "date": "2025-06-28T03:43:28Z",
+   "direction": "received",
+   "from": "(name not shown; whatdotheyknow.com)",
+   "institutions": [
+    {
+     "id": "wdtk?",
+     "name": "WhatDoTheyKnow (unconfirmed)"
+    }
+   ],
+   "subject": "Confirm your FOI request to Ministry of Justice",
+   "threadSlug": "confirm-your-foi-request-to-ministry-of-justice",
+   "refs": [],
+   "textUrl": "/mail/gm-197b4a20f7343bb9.txt",
+   "jsonUrl": "/api/message/gm-197b4a20f7343bb9.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
