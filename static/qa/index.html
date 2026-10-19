@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QA Graph — FOI Questions & Answers · Buckler Family Estate</title>
+  <meta name="description" content="UID-logged FOI / EIR questions and answers from the Great House Farm correspondence graph. Searchable; agent-accessible via WebMCP." />
+  <link rel="canonical" href="https://qa.bucklerfamily.estate/" />
+  <style>
+    :root { --bg:#0f1218; --panel:#171b24; --border:#2a3140; --text:#e6e9ef; --muted:#9aa3b2; --accent:#6ea8fe; --ok:#3dd68c; --warn:#f5a524; --bad:#f31260; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, sans-serif; background:var(--bg); color:var(--text); line-height:1.45; }
+    header { padding:1.25rem 1.5rem; border-bottom:1px solid var(--border); background:var(--panel); display:flex; flex-wrap:wrap; gap:1rem; align-items:center; justify-content:space-between; }
+    header h1 { margin:0; font-size:1.15rem; font-weight:600; }
+    header .meta { color:var(--muted); font-size:0.85rem; }
+    main { max-width:1100px; margin:0 auto; padding:1.25rem 1rem 3rem; }
+    .search-row { display:flex; gap:0.5rem; margin-bottom:1rem; }
+    input[type=search], select { background:var(--panel); border:1px solid var(--border); color:var(--text); border-radius:8px; padding:0.6rem 0.75rem; font-size:0.95rem; }
+    input[type=search] { flex:1; min-width:12rem; }
+    button { background:var(--accent); color:#0b1220; border:0; border-radius:8px; padding:0.6rem 1rem; font-weight:600; cursor:pointer; }
+    .filters { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem; color:var(--muted); font-size:0.85rem; }
+    .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:0.75rem; margin-bottom:1.25rem; }
+    .stat { background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:0.75rem 1rem; }
+    .stat .n { font-size:1.4rem; font-weight:700; }
+    .stat .l { color:var(--muted); font-size:0.8rem; }
+    .list { display:flex; flex-direction:column; gap:0.75rem; }
+    article { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:1rem 1.1rem; }
+    article .uid { font-family:ui-monospace,monospace; font-size:0.78rem; color:var(--accent); word-break:break-all; }
+    article .party { font-weight:600; }
+    article .meta-line { color:var(--muted); font-size:0.85rem; margin:0.25rem 0 0.6rem; }
+    .kind { display:inline-block; font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.03em; padding:0.15rem 0.45rem; border-radius:999px; background:#243041; }
+    .kind.provided, .kind.partial { background:#143528; color:var(--ok); }
+    .kind.not-held, .kind.refused { background:#3a1a24; color:var(--bad); }
+    .kind.unanswered, .kind.pending { background:#3a2e14; color:var(--warn); }
+    .q, .a { margin:0.4rem 0; white-space:pre-wrap; word-break:break-word; }
+    .q::before { content:"Q · "; color:var(--muted); font-weight:600; }
+    .a::before { content:"A · "; color:var(--muted); font-weight:600; }
+    .empty { color:var(--muted); padding:2rem 0; text-align:center; }
+    footer { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--border); color:var(--muted); font-size:0.85rem; }
+    footer a { color:var(--accent); }
+    code { font-family:ui-monospace,monospace; font-size:0.85em; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>QA Graph · FOI Questions & Answers</h1>
+      <div class="meta">UID-logged correspondence · Great House Farm / Tŷ Mawr</div>
+    </div>
+    <div class="meta">
+      <a href="https://bpvsbuckler.bucklerfamily.estate/" style="color:var(--accent)">storyboard</a> ·
+      <a href="/api/mcp" style="color:var(--accent)">WebMCP</a> ·
+      <a href="/api/qa.json" style="color:var(--accent)">qa.json</a>
+    </div>
+  </header>
+  <main>
+    <div class="search-row">
+      <input type="search" id="q" placeholder="Search questions, answers, FOI refs, parties…" autocomplete="off" />
+      <button id="go">Search</button>
+    </div>
+    <div class="filters">
+      <label>Party <select id="party"><option value="">All</option></select></label>
+      <label>Kind
+        <select id="kind">
+          <option value="">All</option>
+          <option>provided</option><option>partial</option><option>not-held</option>
+          <option>refused</option><option>redirected</option><option>pending</option>
+          <option>unanswered</option><option>reply</option><option>auto</option>
+        </select>
+      </label>
+    </div>
+    <div class="stats" id="stats"></div>
+    <div class="list" id="list"><div class="empty">Loading graph…</div></div>
+    <footer>
+      Every ask from FOI / EIR Gmail and wiki catalogues is given a stable UID (<code>qa-…</code>).
+      Message UIDs and official references are retained for citation.
+      Agents: <code>/api/mcp</code> · GraphQL-style <code>/api/graphql</code> · FTS <code>/api/ask?q=</code>.
+      Shared graph with <a href="https://bpvsbuckler.bucklerfamily.estate/">bpvsbuckler</a>.
+    </footer>
+  </main>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    let all = [];
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, (c) => ({'&':'&','<':'<','>':'>','"':'"',"'":'&#39;'}[c]));
+    }
+    function kindClass(k) { return 'kind ' + (k || 'reply'); }
+    function render(items) {
+      const el = $('list');
+      if (!items.length) { el.innerHTML = '<div class="empty">No matching Q&A records.</div>'; return; }
+      el.innerHTML = items.map((x) => `
+        <article id="${x.id}">
+          <div class="uid">${x.id}</div>
+          <div class="party">${escapeHtml(x.party_name || x.party || '')}
+            <span class="${kindClass(x.kind)}">${escapeHtml(x.kind || '')}</span></div>
+          <div class="meta-line">asked ${escapeHtml(x.asked || '—')}
+            ${x.answered ? ' · answered ' + escapeHtml(x.answered) : ''}
+            ${x.ref ? ' · ref ' + escapeHtml(x.ref) : ''}
+            ${x.asked_msg ? ' · msg ' + escapeHtml(x.asked_msg) : ''}</div>
+          <div class="q">${escapeHtml((x.question || '').slice(0, 900))}</div>
+          ${x.answer ? `<div class="a">${escapeHtml(x.answer.slice(0, 1200))}</div>` : '<div class="a" style="color:var(--muted)">(no answer in corpus)</div>'}
+          ${x.url ? `<div class="meta-line"><a href="${escapeHtml(x.url)}" style="color:var(--accent)">source</a></div>` : ''}
+        </article>`).join('');
+    }
+    function applyFilters() {
+      const q = ($('q').value || '').trim().toLowerCase();
+      const party = $('party').value;
+      const kind = $('kind').value;
+      const terms = q ? q.split(/\s+/).filter(Boolean) : [];
+      let items = all;
+      if (party) items = items.filter((x) => x.party === party || x.party_name === party);
+      if (kind) items = items.filter((x) => x.kind === kind);
+      if (terms.length) {
+        items = items.filter((x) => {
+          const hay = (x.question + ' ' + x.answer + ' ' + x.party_name + ' ' + (x.ref || '') + ' ' + x.id).toLowerCase();
+          return terms.every((t) => hay.includes(t));
+        });
+      }
+      items = items.slice().sort((a, b) => {
+        const ua = a.kind === 'unanswered' || !a.answer ? 1 : 0;
+        const ub = b.kind === 'unanswered' || !b.answer ? 1 : 0;
+        if (ua !== ub) return ua - ub;
+        return (b.answered || b.asked || '').localeCompare(a.answered || a.asked || '');
+      });
+      render(items.slice(0, 80));
+    }
+    function stats(data) {
+      const byKind = {};
+      for (const x of data) byKind[x.kind || 'reply'] = (byKind[x.kind || 'reply'] || 0) + 1;
+      const parties = new Set(data.map((x) => x.party)).size;
+      const open = data.filter((x) => x.kind === 'unanswered' || x.kind === 'pending').length;
+      $('stats').innerHTML = `
+        <div class="stat"><div class="n">${data.length}</div><div class="l">Q&A records</div></div>
+        <div class="stat"><div class="n">${parties}</div><div class="l">parties</div></div>
+        <div class="stat"><div class="n">${open}</div><div class="l">open / pending</div></div>
+        <div class="stat"><div class="n">${byKind.provided || 0}</div><div class="l">provided</div></div>
+        <div class="stat"><div class="n">${byKind['not-held'] || 0}</div><div class="l">not held</div></div>`;
+      const names = [...new Map(data.map((x) => [x.party, x.party_name || x.party])).entries()]
+        .sort((a, b) => (a[1] || '').localeCompare(b[1] || ''));
+      $('party').innerHTML = '<option value="">All</option>' + names.map(([id, name]) =>
+        `<option value="${escapeHtml(id)}">${escapeHtml(name)}</option>`).join('');
+    }
+    async function load() {
+      try {
+        const res = await fetch('/api/qa.json', { cache: 'no-cache' });
+        const data = await res.json();
+        all = data.qa || data || [];
+        stats(all);
+        applyFilters();
+      } catch (e) {
+        $('list').innerHTML = '<div class="empty">Failed to load /api/qa.json — deploy will copy it from bpvsbuckler.</div>';
+      }
+    }
+    $('go').addEventListener('click', applyFilters);
+    $('q').addEventListener('keydown', (e) => { if (e.key === 'Enter') applyFilters(); });
+    $('party').addEventListener('change', applyFilters);
+    $('kind').addEventListener('change', applyFilters);
+    const hash = location.hash.replace(/^#/, '');
+    load().then(() => {
+      if (hash && hash.startsWith('qa-')) {
+        const hit = all.find((x) => x.id === hash);
+        if (hit) { $('q').value = hit.id; applyFilters(); setTimeout(() => document.getElementById(hit.id)?.scrollIntoView({ behavior: 'smooth' }), 50); }
+      }
+    });
+  </script>
+</body>
+</html>
