@@ -203,7 +203,8 @@ export default {
   if (request.method !== "GET" && request.method !== "HEAD") return json({error:"Read-only public archive. Only GET and HEAD are supported."},405);
 
   // ghf-lang (20 Oct 2026): English / Cymraeg / Español dropdown, served same-origin because of this site's CSP
-  if (/^\/ghf-lang\/(ghf-lang\.js|sites\/[a-z0-9-]+\.json)$/.test(url.pathname)) {
+  // + basecamp.js (20 Oct 2026): the "Back to base camp" link that ghf-lang.js loads — Sion's Tab agent
+  if (/^\/ghf-lang\/(ghf-lang\.js|basecamp\.js|sites\/[a-z0-9-]+\.json)$/.test(url.pathname)) {
     try {
       const r = await fetch("https://bucklerfamily.estate" + url.pathname, {cf:{cacheTtl:300, cacheEverything:true}});
       if (!r.ok) return new Response("Not found", {status:404, headers:headers({"Content-Type":"text/plain; charset=utf-8"})});
