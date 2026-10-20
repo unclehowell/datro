@@ -44,7 +44,9 @@ var W=document.getElementById('wait'),O=document.getElementById('ok'),N=document
 function no(){W.style.display='none';N.style.display='block';}
 if(!/^cs_live_[A-Za-z0-9]{20,200}$/.test(s)){no();return;}
 var bs=[].slice.call(document.querySelectorAll('a[data-book]'));
-bs.forEach(function(a){if(a.getAttribute('data-from-query')){var bk=q.get('book')||'';if(!/^[a-z-]+@\d+\.\d+\.\d+$/.test(bk)){bk='';}a.setAttribute('data-book',bk);K=K+bk;}});
+bs.forEach(function(a){if(a.getAttribute('data-from-query')){var ks=(q.get('book')||'').split(',').filter(function(k){return /^[a-z-]+(@\d+\.\d+\.\d+)?$/.test(k);}).slice(0,30);a.setAttribute('data-book',ks[0]||'');K=K+ks.join(',');
+ if(ks.length>1){a.textContent='Download file 1 of '+ks.length+' (PDF)';var prev=a;ks.slice(1).forEach(function(k,j){var c=a.cloneNode(false);c.removeAttribute('data-from-query');c.setAttribute('data-book',k);c.textContent='Download file '+(j+2)+' of '+ks.length+' (PDF)';prev.parentNode.insertBefore(c,prev.nextSibling);prev=c;});}}});
+bs=[].slice.call(document.querySelectorAll('a[data-book]'));/* combined edition links (archive_ladder.py combos): ?book=a,b */
 if(!bs.length||!bs[0].getAttribute('data-book')){no();return;}
 fetch('/api/check?book='+encodeURIComponent(bs[0].getAttribute('data-book'))+'&session_id='+encodeURIComponent(s),{cache:'no-store'}).then(function(r){return r.json();}).then(function(j){
  if(!j.ok){no();return;}
