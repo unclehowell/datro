@@ -13,7 +13,7 @@ console.log("estate", JSON.stringify(runEstate())); // independence: wiki links 
   console.log("ghf-lang", nL);
 }
 
-// ebook cta (20 Oct 2026): shared "Get the e-book (£49.99)" card on every page (idempotent; links to the shop page)
+// ebook cta (20 Oct 2026): shared e-book card (prices come from cta.js, v3 ladder) on every page (idempotent; links to the shop page)
 {
   const EBK = '<script src="https://bucklerfamily.estate/ebook/cta.js" defer></script>';
   const rootE = path.join(path.dirname(new URL(import.meta.url).pathname), "public"); let nE = 0;
