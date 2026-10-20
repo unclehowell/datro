@@ -1,0 +1,18 @@
+body.listview{overflow:auto;height:auto}
+.lv{max-width:52rem;margin:0 auto;padding:84px 16px 40px;font-size:16px;line-height:1.6}
+.lv h1{color:#fff;font-weight:500;letter-spacing:.06em;text-transform:uppercase;font-size:26px}
+.lv h2{color:#f1d9a0;font-weight:500;font-size:19px;margin:34px 0 8px;border-bottom:1px solid rgba(214,178,94,.6);padding-bottom:6px}
+.lv h2 small{color:#a3a3a3;font-size:13px;letter-spacing:.05em}
+.lv ol{list-style:none;padding:0;margin:0}
+.lv li{padding:12px 14px;margin:8px 0;border:1px solid #2a2a2a;border-radius:2px}
+.lv li.w{background:#f5f3ee;color:#1d1d1d}.lv li.w a{color:#111}
+.lv li.b{background:#000;color:#e5e5e5}
+.lv li.b.kL p{color:#a8a8a8}.lv li.b.kA h3{color:#ff9b8f}
+.lv h3{margin:4px 0;font-size:17px;font-weight:600}
+.lv .tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.lv .dt{font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin-left:8px}
+.lv li p{margin:4px 0}
+.lv .src{font-size:13px;opacity:.85;overflow-wrap:anywhere}
+.lv .th{display:block;font-size:13px;color:#b8860b;margin-top:4px}
+.lv .eras{font-size:13px;line-height:1.9}
+.lv footer{margin-top:40px;font-size:14px;color:#bdbdbd}

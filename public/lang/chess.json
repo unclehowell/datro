@@ -1,0 +1,178 @@
+{
+ "site": "chess",
+ "version": "1.0.0",
+ "updated": "2026-10-20",
+ "note": "Interface strings only. The records on the squares stay in English, the authoritative record.",
+ "mount": ".tools .langmount",
+ "inlineStyle": "margin-left:4px;vertical-align:middle",
+ "patterns": [
+  {
+   "re": "^(\\d+) black · (\\d+) white$",
+   "cy": "$1 du · $2 gwyn",
+   "es": "$1 negras · $2 blancas"
+  },
+  {
+   "re": "^(\\d+) found$",
+   "cy": "$1 wedi’u canfod",
+   "es": "$1 encontrados"
+  }
+ ],
+ "strings": {
+  "The Chessboard": {
+   "cy": "Y Bwrdd Gwyddbwyll",
+   "es": "El tablero de ajedrez"
+  },
+  "Fit board": {
+   "cy": "Y bwrdd cyfan",
+   "es": "Ver todo"
+  },
+  "Fit the whole board": {
+   "cy": "Dangos y bwrdd cyfan",
+   "es": "Ver el tablero entero"
+  },
+  "Key": {
+   "cy": "Allwedd",
+   "es": "Leyenda"
+  },
+  "List": {
+   "cy": "Rhestr",
+   "es": "Lista"
+  },
+  "Board": {
+   "cy": "Bwrdd",
+   "es": "Tablero"
+  },
+  "Both": {
+   "cy": "Y ddau",
+   "es": "Ambas"
+  },
+  "Black": {
+   "cy": "Du",
+   "es": "Negras"
+  },
+  "White": {
+   "cy": "Gwyn",
+   "es": "Blancas"
+  },
+  "Text on black": {
+   "cy": "Testun ar y du",
+   "es": "Texto en negras"
+  },
+  "Text on white": {
+   "cy": "Testun ar y gwyn",
+   "es": "Texto en blancas"
+  },
+  "Search the board": {
+   "cy": "Chwilio’r bwrdd",
+   "es": "Buscar en el tablero"
+  },
+  "Go": {
+   "cy": "Ewch",
+   "es": "Ir"
+  },
+  "Next match": {
+   "cy": "Y nesaf",
+   "es": "Siguiente"
+  },
+  "Close": {
+   "cy": "Cau",
+   "es": "Cerrar"
+  },
+  "Source": {
+   "cy": "Ffynhonnell",
+   "es": "Fuente"
+  },
+  "‹ Earlier": {
+   "cy": "‹ Cynharach",
+   "es": "‹ Anterior"
+  },
+  "Later ›": {
+   "cy": "Hwyrach ›",
+   "es": "Posterior ›"
+  },
+  "Zoom to square": {
+   "cy": "Chwyddo i’r sgwâr",
+   "es": "Acercar a la casilla"
+  },
+  "Copy link": {
+   "cy": "Copïo’r ddolen",
+   "es": "Copiar enlace"
+  },
+  "Black square": {
+   "cy": "Sgwâr du",
+   "es": "Casilla negra"
+  },
+  "White square": {
+   "cy": "Sgwâr gwyn",
+   "es": "Casilla blanca"
+  },
+  "How to read the board": {
+   "cy": "Sut i ddarllen y bwrdd",
+   "es": "Cómo leer el tablero"
+  },
+  "Markings": {
+   "cy": "Marciau",
+   "es": "Marcas"
+  },
+  "Plain square: no record placed there": {
+   "cy": "Sgwâr plaen: dim cofnod yno",
+   "es": "Casilla lisa: sin registro"
+  },
+  "Pinch or scroll to zoom · drag to move · tap a square to read it": {
+   "cy": "Pinsio neu sgrolio i chwyddo · llusgo i symud · tapio sgwâr i’w ddarllen",
+   "es": "Pellizca o desplaza para ampliar · arrastra para mover · toca una casilla para leerla"
+  },
+  "Setting out the board…": {
+   "cy": "Yn gosod y bwrdd…",
+   "es": "Preparando el tablero…"
+  },
+  "Our case, prospective. Not a finding of any court.": {
+   "cy": "Ein hachos, darpar. Nid canfyddiad gan unrhyw lys.",
+   "es": "Nuestro caso, prospectivo. No es una resolución de ningún tribunal."
+  },
+  "Cited historic record; each square links to its source.": {
+   "cy": "Cofnod hanesyddol â ffynonellau; mae pob sgwâr yn cysylltu â’i ffynhonnell.",
+   "es": "Registro histórico citado; cada casilla enlaza con su fuente."
+  },
+  "The board as a list": {
+   "cy": "Y bwrdd fel rhestr",
+   "es": "El tablero como lista"
+  },
+  "on the board": {
+   "cy": "ar y bwrdd",
+   "es": "en el tablero"
+  },
+  "Undated": {
+   "cy": "Heb ddyddiad",
+   "es": "Sin fecha"
+  },
+  "Copied": {
+   "cy": "Wedi’i gopïo",
+   "es": "Copiado"
+  },
+  "Black text": {
+   "cy": "Testun du",
+   "es": "Texto negras"
+  },
+  "White text": {
+   "cy": "Testun gwyn",
+   "es": "Texto blancas"
+  },
+  "Search": {
+   "cy": "Chwilio",
+   "es": "Buscar"
+  },
+  "Read the whole board as a plain list": {
+   "cy": "Darllen y bwrdd cyfan fel rhestr",
+   "es": "Leer todo el tablero como lista"
+  },
+  "Campus": {
+   "cy": "Campws",
+   "es": "Campus"
+  },
+  "Legal Wiki": {
+   "cy": "Wici Cyfreithiol",
+   "es": "Wiki jurídica"
+  }
+ }
+}
