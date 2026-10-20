@@ -350,6 +350,30 @@ ACCOUNTS = {
     received="Cadw gave the house fair consideration.",
     words=[],
     known="Cadw had already coded the house just below the bar in July."),
+'ghf-19550318-1': dict(
+    received="The forest taken in 1955 was the farm's own woodland.",
+    words=[('"bought … for a nominal sum in 1942"', "How the Western Mail describes Cardiff's acquisition of Leckwith Woods.")],
+    known="The 1955 lease concerns Cardiff's Leckwith Woods, which measures wholly outside Llandough; the woods near the farm are Coed Creigiaidd and Reservoir Wood. Any link to the farm is our case, prospective."),
+'ghf-19751201-1': dict(
+    received='Every transfer of the farm had to be registered at once.',
+    words=[],
+    known='Registration became compulsory in the Vale only on 1 December 1975, so the earlier conveyances were not void for want of registration. The Gazette notice series ended about May 1975, so the absence of a 1982–83 notice is not evidence of concealment.'),
+'ghf-19881007-1': dict(
+    received='The land around the farm was quietly handed to the state.',
+    words=[('"from Lavernock [to] Leckwith including plots at Llandough"', 'South Wales Echo, 1 November 1988, on the Land Authority for Wales purchase.')],
+    known="The buyer was a private joint venture chosen by open tender; LAW then bought plots. The farm site itself stayed with BP Properties Ltd. LAW's Board minutes for the period are open at Kew (not yet seen)."),
+'ghf-19890406-1': dict(
+    received='The 1988 survey had already been decided and published before the demolition.',
+    words=[('"assessed and rejected for listing in the 1988 community survey of Llandough"', 'Cadw, 21 May 2026.')],
+    known="The survey's list bears dates in April 1989, after the demolition. That timing is our reading of the dates, not Cadw's statement. The survey itself looks routine: the whole village, three buildings listed."),
+'ghf-19900223-1': dict(
+    received='Nobody locally questioned the development.',
+    words=[('"No objection has been made by Llandough Community Council"', 'South Wales Echo, 23 February 1990 (snippet).')],
+    known="The council did not object to the housing but wanted a village green. Snippet only; the full page and the council's minutes (free at Glamorgan Archives) are still to be read."),
+'ghf-19970516-1': dict(
+    received='Western Ground Rents simply faded away.',
+    words=[('"how … the property of the Companies have been disposed of"', "The liquidator's s.94 notice, London Gazette, 18 April 1997.")],
+    known="A solvent group winding-up. The liquidator's account (in the TNA BT 31 files) would show what WGR still held and where it went."),
 'ghf-19881204-1': dict(
     received="Cadw judged the house from the outside and found nothing worth listing.",
     words=[('"the roof beams being high"', 'What the Cadw officers remarked inside the house, as Branwen recalls (statement of 19 October 2026).')],

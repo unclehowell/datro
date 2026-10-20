@@ -491,6 +491,10 @@ sc('III', 'ghf-19550202-1', '1955-02-02', '2 February 1955', "The 1955 possessio
    ledger={'A': 'Freehold: the Williamses (Mary in the house) · woodland: per the Buckler case, taken in 1955 (SOURCE PENDING: not yet on the wiki)',
            'S': 'Attempt 2: High Court order against the fields tenant for "the whole of the farm" (house not taken; Mary never heard)',
            'B': 'Freehold and possession: Western Ground Rents (fields taken 4 July 1955)'})
+sc('III', 'ghf-19550318-1', '1955-03-18', '18 March 1955', 'Leckwith Woods leased to the Forestry Commission', 'Leckwith Woods', 'x',
+   'Newspaper',
+   "In March 1955 the Western Mail reports that Cardiff holds a 176-acre Leckwith Woods, bought for a nominal sum in 1942, and leases 106 acres to the Forestry Commission for 999 years. Measured against today's boundaries, that wood lies wholly in Leckwith, about 1.2 km from the farmstead, so it is not Great House Farm land.",
+   [w('/evidence/ev-0259-leckwith-woods-1955-cardiff-forestry-commission-lease-and-boundary-measure/', 'EV-0259 — Western Mail 1955: Leckwith Woods lease; boundary measurement', 'Newspaper')])
 sc('III', 'ghf-19581119-1', '1958-11-19', '19 November 1958', "\"A Welsh case of Crichel Down\"", 'Glamorgan County Council planning committee, Cardiff', 'A',
    'Newspaper',
    "Mary Williams, as Mrs M. D. Buckler, objects to Glamorgan County Council's planning committee about industrial development beside Tŷ Mawr. The Western Mail reports her saying that land \"farmed by her family since 1667\" had been \"wrongfully appropriated\", that \"This is a Welsh case of Crichel Down\", and that \"the water was cut off from her house and grounds for nearly 10 years by order of Western Ground Rents\".",
@@ -581,6 +585,10 @@ sc('IV', 'ghf-19750523-1', '1975-05-23', '23 May 1975', "The 1975 conveyance", '
    "On 23 May 1975 BP Pension Trust conveys property at Great House Farm, with a plan, to BP Properties Ltd. The Court of Appeal later calls it \"the actual conveyance of the farmhouse and garden\".",
    [LRT('conveyances', 'Land Registry Titles — conveyances')],
    ledger={'S': 'Paper: conveyance BP Pension Trust → BP Properties of "the farmhouse and garden" (no earlier deed to Parcel A behind it)'})
+sc('IV', 'ghf-19751201-1', '1975-12-01', '1 December 1975', 'Compulsory registration begins', 'HM Land Registry', 'AB',
+   'Public record',
+   'From 1 December 1975 a sale of land in the Vale of Glamorgan must be registered at HM Land Registry. The 1969 and May 1975 conveyances come before this date; the November 1982 sale of the fields falls after it and is lodged within eleven days. The February 1983 application for the farmhouse was most likely voluntary.',
+   [w('/evidence/ev-0265-hmlr-registration-background-compulsory-1975-r29-certificate/', 'EV-0265 — Compulsory registration 1 Dec 1975; solicitor’s certificate; Gazette notices', 'Public record')])
 sc('IV', 'ghf-19800522-1', '1980-05-22', '22 May 1980', "Hansard", 'House of Commons', '',
    'Parliament',
    "On 22 May 1980 Ted Rowlands MP tells the House of Commons that Western Ground Rents, \"the most rapacious ground landlord\" in South Wales, has been bought by the BP pension fund.",
@@ -674,6 +682,11 @@ sc('VI', 'ghf-19880729-1', '1988-07-29', '29 July 1988', "Cadw inspection", 'Gre
    "On 29 July 1988 Cadw inspects and photographs the farmhouse and barn while considering them for listing.",
    [CADW_PH, CADW_BARN, CADW_CRIT],
    image='/media/1988-cadw-farmhouse.jpg')
+sc('VI', 'ghf-19881007-1', '1988-10-07', 'October – November 1988', 'BP Pension Fund sells the estate land', 'South Wales', 'x',
+   'Newspaper',
+   'In October 1988 BP Pension Fund sells about 1,300 acres of Welsh land to Intercontinental Land & Development (Cardiff) Ltd for £29,375,400, chosen by open tender. In November the Land Authority for Wales buys sites from Lavernock to Leckwith, including plots at Llandough. The Great House Farm site stays with BP Properties Ltd.',
+   [w('/evidence/ev-0270-bp-pension-fund-1988-sale-intercontinental-law-llandough-press/', 'EV-0270 — Press, 1988–95: BP Pension Fund sale, LAW plots at Llandough', 'Newspaper'),
+    w('/evidence/ev-0269-tna-wa-9-49-land-authority-for-wales-board-1988/', 'EV-0269 — TNA WA 9/49: LAW Board minutes, Oct–Nov 1988', 'Archive catalogue')])
 sc('VI', 'ghf-19881130-1', '1988-11-30', '29 – 30 November 1988', "Eviction", 'Great House Farm', 'A',
    'Newspaper',
    "On 29–30 November 1988 bailiffs enter the farmhouse. William Buckler is taken to Llandough Hospital. Eight other residents are made homeless.",
@@ -754,6 +767,13 @@ sc('VII', 'ghf-19890325-1', '1989-03-25', '1989', "Rehousing", 'Penarth', 'A',
    "The family live with William Buckler's sister in Penarth. He plans to live in a converted bus and says about £30,000 of possessions were taken from the site.",
    [press('N13', "South Wales Echo, 1989 — 'From farm to a bus'", 'ghf-e090-n13-1989-farm-to-bus.jpg')],
    image='/media/ghf-e090-n13-1989-farm-to-bus.jpg')
+sc('VII', 'ghf-19890406-1', '1989-04-06', '6 April 1989', 'Llandough listing survey issued', 'Cadw', 'A',
+   'Heritage record',
+   "On 6 April 1989 Cadw issues the list from its 1988 community survey of Llandough: Pound Cottage and the former National School (the church is dated 4 June 1989). Great House had been assessed and rejected in that survey. So when Cadw said on 3–5 December 1988 that it was considering spot-listing, the survey's list was not yet out.",
+   [w('/evidence/ev-0272-cadw-1989-llandough-resurvey-list-13430-13431-13432/', 'EV-0272 — Cadw 13430/13431/13432: Llandough list issued 6 April 1989', 'Heritage record'),
+    w('/evidence/ev-0264-tcpa-1971-s54-listing-deposit-local-land-charge/', 'EV-0264 — TCPA 1971 s.54: deposit with the council and local land charge', 'Public record'),
+    w('/evidence/ev-0268-cadw-13428-lower-farmhouse-rhoose-listed-12-oct-1988/', 'EV-0268 — Cadw 13428 Lower Farmhouse, Rhoose (comparator, 12 Oct 1988)', 'Heritage record'),
+    w('/evidence/ev-0271-tna-bd-34-114-historic-buildings-council-wales-1988-1989/', 'EV-0271 — TNA BD 34/114: Historic Buildings Council for Wales 1988', 'Archive catalogue')])
 sc('VII', 'ghf-19890414-1', '1989-04-14', '14 April 1989', "European Commission decision", 'European Commission of Human Rights', 'A',
    'Court record',
    "On 14 April 1989 the European Commission of Human Rights declares Buckler v United Kingdom inadmissible.",
@@ -764,13 +784,18 @@ sc('VII', 'ghf-19891107-1', '1989-11-07', 'October – November 1989', "Outline 
    "BP applies for outline planning permission for housing (89/01396/OUT, received 8 November 1989). In the same document GGAT advises an archaeological assessment, prices the work at £2,000 and discloses negotiations with BP's agents; it is then commissioned to carry out the assessment. GGAT's 1989 planning report describes the farmhouse as having been listed as a \"county treasure\"; Cadw states it was never listed.",
    [REDEV, GGAT_REV, LRT('later-dealings', 'Land Registry Titles — later dealings'), w('/records-access-chronology/source-conflicts-register/', 'Source Conflicts Register', 'Analysis'), LEGAL],
    aliases=['ghf-19891108-1', 'ghf-19891010-1'])
+sc('VII', 'ghf-19900223-1', '1990-02-23', '23 February 1990', 'Homes bid and a village-green request', 'Llandough', 'A',
+   'Newspaper',
+   "On 23 February 1990 the South Wales Echo's front page reports a bid to build homes on the Great House Farm land. Llandough Community Council makes no objection, but asks for the land to be registered as village green.",
+   [w('/evidence/ev-0273-south-wales-echo-23-feb-1990-great-house-farm-homes-bid-village-green/', 'EV-0273 — South Wales Echo, 23 Feb 1990, p.1 (snippet)', 'Newspaper'),
+    w('/evidence/ev-0266-glamorgan-archives-p35-llandough-community-council-minutes-1982-2000/', 'EV-0266 — Glamorgan Archives P35/11–29: Community Council minutes 1982–2000', 'Archive catalogue')])
 sc('VII', 'ghf-19900313-1', '1990-03-13', 'February – March 1990', "Outline permission", 'Vale of Glamorgan planning', 'AB',
    'Planning file',
    "On 13 March 1990 outline permission is granted with 18 conditions. The officer's report notes the farm buildings \"were unfortunately demolished a little while ago\". GGAT's further comments of 8 February 1990 are missing from the file.",
    [REDEV, LEGAL], aliases=['ghf-19900208-1'])
 sc('VII', 'ghf-19900529-1', '1990-05-29', '29 May 1990', "Death of William Buckler", 'Llandough', 'A',
    'Source pending (date corrected from family information)',
-   "William Buckler died on 29 May 1990 at Llandough Hospital. Funeral and burial details require confirmation against the obituary and relevant records.",
+   "William Buckler died on 29 May 1990 at Llandough Hospital. Funeral and burial details require confirmation against the obituary and relevant records. The 1991 probate calendar lists a \"William Beverley Buckler\" of Penarth who died on 29 April 1990, with administration granted at Llandaff on 11 July 1991: a probable match, not proven, and the dates conflict.",
    [w('/williams-buckler-family/', 'The Williams / Buckler Family — William')],
    aliases=['ghf-19920515-1'],
    ledger={'A': "Freehold claim: Mary's heirs · never adjudicated, never extinguished"})
@@ -817,6 +842,10 @@ sc('VII', 'ghf-19941110-1', '1994-11-10', '1994 – 96', "Woodland title and hou
    aliases=['ghf-19950628-1'],
    ledger={'M': 'WA231076 and the house titles carved from it (Church View Close)',
            'A': "Freehold claim: Mary's heirs · never adjudicated, never extinguished · woodland now registered to the Forest of Cardiff (WA735527) · land to the south a village green"})
+sc('VII', 'ghf-19970516-1', '1997-05-16', '16 May 1997', 'Western Ground Rents wound up', 'London', 'x',
+   'Public record',
+   "Western Ground Rents Ltd, placed in members' voluntary liquidation with other BP pension companies in 1996, holds its final meeting on 16 May 1997, where the liquidator lays an account of how the companies' property has been disposed of.",
+   [w('/evidence/ev-0277-london-gazette-1996-1997-western-ground-rents-creditors-and-final-meetings/', 'EV-0277 — London Gazette 1996–97: WGR creditors notice and final meetings', 'Public record')])
 sc('VII', 'ghf-20050101-1', '2005-01-01', '2005', "Publication", 'Medieval Archaeology', '?',
    'Archaeological record',
    "The excavation is published in Medieval Archaeology 49 (2005): 1,026 burials, 814 articulated. On 22 December 2005 part of the woodland title is divided off.",
@@ -971,6 +1000,22 @@ sc('E', 'ghf-99990102-1', '9999-01-03', 'Today', "The family's requests", 'The f
    "The family ask for: a ruling on the ownership of Parcel A; the return of the woodland and the green, or reparation; reparation for the houses built on the land; the return of the estate's artefacts; a true heritage record; and a public inquiry.",
    [w('/family-reparations-remedy-roadmap/', 'Family Reparations & Remedy Roadmap'), w('/where-things-stand/', 'Where Things Stand')],
    image='/media/1988-cadw-farmhouse.jpg')
+
+
+# ---------------------------------------------------------------- reconcile 20 Oct 2026: wiki EV-0256 to EV-0277 linked on existing scenes
+_RECONCILE_EVIDENCE = {
+    'ghf-18970510-1': [w('/evidence/ev-0256-kemp-diary-lavernock-1897-bodleian-ms-marconi-89/', 'EV-0256 — George Kemp’s diary, 6–15 May 1897 (Bodleian MS. Marconi 89, extracts quoted by G. R. M. Garratt): Lavernock p', 'Diary')],
+    'ghf-19380101-1': [w('/evidence/ev-0257-glamorgan-archives-d696-western-ground-rents-records-custodial-history/', 'EV-0257 — Glamorgan Archives D696: Western Ground Rents Ltd records 1938–44 (a syndicate headed by Lord Kennet; Bute urb', 'Archive catalogue'), w('/evidence/ev-0262-tna-lt-13-3048-western-ground-rents-v-cardiff-lands-tribunal-1967/', 'EV-0262 — TNA LT 13/3048: Western Ground Rents Ltd v the Lord Mayor, Aldermen and Citizens of the City of Cardiff, Lands', 'Archive catalogue')],
+    'ghf-19550202-1': [w('/evidence/ev-0258-glamorgan-archives-aca-2-3-6-cardiff-county-court-survival-map/', 'EV-0258 — Glamorgan Archives ACA/2, ACA/3 and ACA/6: Cardiff County Court ordinary actions, plaint and minute books and ', 'Archive catalogue')],
+    'ghf-19621211-1': [w('/evidence/ev-0261-hansard-1963-western-ground-rents-ministers/', 'EV-0261 — Hansard, 29 January and 5 February 1963 (with 14 November 1946): Western Ground Rents Ltd and ministers: a WGR', 'Parliamentary record')],
+    'ghf-19720725-1': [w('/evidence/ev-0263-commons-registration-1965-publicity-glamorgan-notices-vg41/', 'EV-0263 — Commons Registration Act 1965 s.5 and SI 1968/989: registrations were publicised by public notice only; Glamor', 'Public record')],
+    'ghf-19870731-1': [w('/evidence/ev-0267-john-loosemore-co-loosemores-services-01379651/', 'EV-0267 — Companies House 01379651: the appellant’s solicitors’ service company was “John Loosemore & Co. Services” unti', 'Public record'), w('/evidence/ev-0274-probate-calendar-1991-william-beverley-buckler/', 'EV-0274 — Probate calendar 1991: “BUCKLER, William Beverley … of Penarth … died 29 April 1990”, administration granted a', 'Public record')],
+    'ghf-19900529-1': [w('/evidence/ev-0274-probate-calendar-1991-william-beverley-buckler/', 'EV-0274 — Probate calendar 1991: “BUCKLER, William Beverley … of Penarth … died 29 April 1990”, administration granted a', 'Public record')],
+    'ghf-19941110-1': [w('/evidence/ev-0276-churchview-close-llandough-ideal-homes-persimmon-1994-1996/', 'EV-0276 — Press set, 1994–1996: Ideal Homes (Wales) built “Churchview Close”, Llandough (first buyers by January 1995); ', 'Newspaper'), w('/evidence/ev-0270-bp-pension-fund-1988-sale-intercontinental-law-llandough-press/', 'EV-0270 — Press set, 1988–1995: BP Pension Fund sold about 1,300 acres of Welsh land to Intercontinental Land & Developm', 'Newspaper')],
+    'ghf-19881204-1': [w('/evidence/ev-0268-cadw-13428-lower-farmhouse-rhoose-listed-12-oct-1988/', 'EV-0268 — Cadw 13428, Lower Farmhouse, Rhoose: an early-19th-century Vale farmhouse listed on 12 October 1988 (“Interior', 'Heritage record')],
+}
+for _s in S:
+    _s['evidence'] = _s['evidence'] + _RECONCILE_EVIDENCE.get(_s['id'], [])
 
 
 # ---------------------------------------------------------------- build
