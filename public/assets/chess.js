@@ -134,7 +134,7 @@ function drawText(q,x,y,dark,px,i){
   ctx.save(); ctx.setTransform(dpr,0,0,dpr,0,0); ctx.beginPath(); ctx.rect(sx,sy,w,w); ctx.clip();
   var pad=Math.round(clamp(w*0.065,4,16)), iw=Math.floor(w-pad*2);
   var col=dark?KIND[q.k].t:"#111", sub=dark?"rgba(255,255,255,.66)":"rgba(0,0,0,.6)";
-  var tsz=q2(clamp(w*0.1,8.5,17)), dsz=q2(clamp(w*0.068,7.5,12)), bsz=q2(clamp(w*0.064,10,15.5));
+  var tsz=q2(clamp(w*0.084,8.5,15)), dsz=q2(clamp(w*0.06,7.5,11)), bsz=q2(clamp(w*0.062,9.5,14.5));
   var full=w>=118, ty=sy+pad+(w>=60?Math.max(0,w*0.03):0);
   ctx.textBaseline="top";
   if(q.d&&w>=58){ ctx.font=fontStr(500,dsz); ctx.fillStyle=sub; ctx.fillText(wrap(String(q.d).toUpperCase(),iw,dsz,500,1)[0],sx+pad+(w<90?0:w*0.06),ty); ty+=dsz*1.4 }

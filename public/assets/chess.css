@@ -184,3 +184,4 @@ body.su #board,body.su .hint,body.su [aria-label="Show squares"],body.su .chk,bo
 
 body.su .zoom{display:none}
 #su-zo,#su-zi{flex:0 0 36px}
+.su-acts .btn[aria-pressed="true"],.su-acts .btn[aria-pressed="true"]:hover{background:#0e7490!important;color:#fff!important;border-color:#22d3ee!important}
