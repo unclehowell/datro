@@ -1,7 +1,7 @@
 /* shop.bucklerfamily.estate — on top of the shared Starlink-style theme (theme.css, Barlow). Mobile first, 390px. */
 .bc-back{position:fixed;left:10px;bottom:10px;z-index:60;background:rgba(0,0,0,.82);color:#e8e8e8;border:1px solid #444;padding:7px 11px;font-size:.72rem;letter-spacing:.04em;text-decoration:none;border-radius:2px}
 .bc-back:hover{border-color:#c9a25a;color:#fff}
-.sh-hero{min-height:0!important;padding:6.4rem 1.1rem 2.4rem!important;background:linear-gradient(180deg,rgba(0,0,0,.25),#000 92%),url(/img/hero.webp) center/cover no-repeat}
+.sh-hero{min-height:0!important;padding:6.4rem 1.1rem 2.4rem!important;background:linear-gradient(180deg,rgba(0,0,0,.25),#000 92%),url(/img/hero.webp?v=2) center/cover no-repeat}
 .sh-hero h1{font-size:clamp(2.3rem,10vw,4.8rem);margin:.2rem 0 .8rem}
 .sh-hero p{max-width:40rem}
 .sh-k{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#c9a25a}

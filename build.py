@@ -42,7 +42,7 @@ idx = HEAD.format(title="Gift shop · Great House Farm / Tŷ Mawr", desc="T-shir
 <section class="sh-sec" id="books"><h2>Books</h2><p class="sh-lead">The story behind the designs, in full.</p>
 <div class="sh-books"><a class="sh-book" href="https://bucklerfamily.estate/ebook/"><strong>The Great House Farm Legal Wiki</strong><span>The whole wiki as one e-book · from £0.00 · £9.99 – v0.02 · all four £31.99</span></a>
 <a class="sh-book" href="https://ebooks.bucklerfamily.estate/"><strong>All the e-books</strong><span>Every book from £0.00 – v0.01 and £9.99 – v0.02; all four for £31.99</span></a></div></section>
-<section class="sh-sec" id="designs"><h2>The designs</h2><p class="sh-lead">Every design was drawn for this shop. None uses a photograph of a person.</p>
+<section class="sh-sec" id="designs"><h2>The designs</h2><p class="sh-lead">Every picture of the farm is a real photograph from the farm’s own album: restored and toned, never redrawn or generated. No photograph shows a person.</p>
 <div class="sh-dgrid">{''.join(dcard(d) for d in DS)}</div></section>
 <section class="sh-sec" id="how"><h2>How an order works</h2><ol class="sh-steps">
 <li>Pick an item and press the button. It opens in our print partner's secure store, where you choose size and colour and pay.</li>
@@ -58,7 +58,7 @@ terms = HEAD.format(title="Terms, delivery and returns · Tŷ Mawr gift shop", d
 <h2>Printing and delivery</h2><p>Each item is printed when you order it, usually within 2–5 working days, then posted with tracking. The delivery price and estimated time for your address are shown at checkout before you pay.</p>
 <h2>Returns and faults</h2><p>Items are made to order, so we can't take returns for a change of mind (the right to cancel doesn't apply to personalised or made-to-order goods under the Consumer Contracts Regulations 2013). If an item arrives damaged, misprinted or faulty, tell us within 30 days with a photo and we'll arrange a free reprint or a full refund. Your statutory rights under the Consumer Rights Act 2015 are not affected.</p>
 <h2>Contact</h2><p>Questions about an order: <a href="mailto:{e(CFG['contact_email'])}">{e(CFG['contact_email'])}</a>. Please include your order number.</p>
-<h2>The designs</h2><p>All designs were made for this shop and are © DATRO CONSORTIUM LIMITED for the Great House Farm / Tŷ Mawr project. Illustrations are artwork, not photographs of real buildings or people.</p>
+<h2>The designs</h2><p>All designs were made for this shop and are © DATRO CONSORTIUM LIMITED for the Great House Farm / Tŷ Mawr project. Pictures of the farm are real photographs from the farm’s own album, restored (upscaled, contrast, toning, sky removal) without changing what they show. The other designs are typography and line art. The Williams–Buckler crest is a brand device combining the Williams and Buckler arms; not a grant of arms.</p>
 <p class="sh-fine">Last updated 20 October 2026. — Sion's Tab agent</p></main>""" + FOOT
 BANNED = re.compile(r"\b(says|claims|according to|hearsay|unverified|alleged|allegedly|family account|family's account|family testimony)\b", re.I)
 PRIV = re.compile(r"Robin Hill|hywelapbuckler|7845 ?933 ?262|(\+44 ?7|\b07)\d{3} ?\d{3} ?\d{3}|\b[A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}\b|@(gmail|hotmail|yahoo|outlook|icloud|btinternet|aol)\.|\bSion Buckler\b")
