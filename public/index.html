@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-<title>The Chessboard and the Sudoku — Great House Farm / Tŷ Mawr, two records side by side</title>
+<title>The Chessboard and the Case Sudoku — Great House Farm / Tŷ Mawr, two records side by side</title>
 <meta name="description" content="Every dated record of the Great House Farm (Tŷ Mawr) case on one zoomable chessboard: black squares for the actions, legal framings and omissions against Williams/Buckler ownership; white squares for the evidence of ownership, occupation, heritage and the trees."/>
 <meta name="theme-color" content="#000000"/>
 <meta property="og:title" content="The Chessboard — Great House Farm / Tŷ Mawr"/>
-<meta property="og:description" content="Two records side by side, square by square, from c. 650 to 2026. Zoom out to see the whole board; zoom in to read each square and its source."/>
+<meta property="og:description" content="Two records side by side, square by square, from c. 650 to 2026. Each square carries its own short paragraph; Read more opens the full text with a link to the source. Plus one 16×16 sudoku for the whole case."/>
 <meta property="og:type" content="website"/><meta property="og:url" content="https://chess.bucklerfamily.estate/"/>
 <meta property="og:image" content="https://chess.bucklerfamily.estate/og.png"/>
 <link rel="preload" href="/assets/fonts/barlow-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="preload" href="/data/board.json" as="fetch" crossorigin/>
-<link rel="stylesheet" href="/assets/chess.css?v=359d7b8d"/>
+<link rel="stylesheet" href="/assets/chess.css?v=9d322601"/>
 <script src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js" data-site="chess" data-dict="/lang/chess.json" defer></script>
 <script src="https://bucklerfamily.estate/ebook/cta.js" defer></script>
 <script src="https://bucklerfamily.estate/basecamp.js" defer></script>
@@ -41,23 +41,26 @@
 </header>
 <canvas id="board" aria-label="Zoomable chessboard of the Great House Farm record. Use the List view for a text version."></canvas>
 <div class="loading" id="loading">Setting out the board…</div>
-<div class="hint" id="hint">Pinch or scroll to zoom · drag to move · tap a square to read it · zoom right in to read its archive text</div>
+<div class="hint" id="hint">Each square holds its own paragraph · pinch or scroll to zoom · tap a square for Read more · Fit board shows the whole board</div>
 <div class="zoom"><button class="btn" id="zin" aria-label="Zoom in">+</button><button class="btn" id="zout" aria-label="Zoom out">−</button></div>
-<div class="pad" id="pad" aria-label="Sudoku controls">
-  <div class="pz-row"><button class="btn" id="pz-prev" aria-label="Previous puzzle">‹</button><div class="pz-info"><b id="pz-t">Puzzle</b><span id="pz-s"></span></div><button class="btn" id="pz-next" aria-label="Next puzzle">›</button></div>
-  <div class="digits"><button class="btn d" data-d="1">1</button><button class="btn d" data-d="2">2</button><button class="btn d" data-d="3">3</button><button class="btn d" data-d="4">4</button><button class="btn d" data-d="5">5</button><button class="btn d" data-d="6">6</button><button class="btn d" data-d="7">7</button><button class="btn d" data-d="8">8</button><button class="btn d" data-d="9">9</button></div>
-  <div class="pz-row acts"><button class="btn" id="pz-hint">Reveal cell</button><button class="btn" id="pz-all">Reveal puzzle</button><button class="btn" id="pz-story">Story</button><button class="btn" id="pz-reset">Reset</button></div>
-</div>
+<section class="su16" id="su16" hidden aria-label="The case sudoku">
+  <div class="su-top"><div><b>The case sudoku</b> <span id="su-prog"></span></div><div class="su-bands" id="su-bands"></div></div>
+  <div class="su-wrap" id="su-wrap"><div class="su-grid" id="su-grid"></div></div>
+  <div class="su-info" id="su-info"></div>
+  <div class="su-pad" id="su-pad"></div>
+</section>
 <div class="toast" id="toast" role="status"></div>
 <footer class="foot"><span><strong>Our case, prospective. Not a finding of any court.</strong> <span class="fl">Cited historic record; each square links to its source.</span></span><span id="cnt"></span></footer>
 
-<aside class="sheet" id="panel" aria-live="polite">
+<div class="panel-bd" id="panel-bd"></div>
+<aside class="sheet sqmodal" id="panel" role="dialog" aria-modal="true" aria-label="Square" aria-live="polite">
   <div class="sheet-h"><span class="pill" id="p-pill"></span><span class="kindtag" id="p-kind"></span><button class="btn x" id="p-close" aria-label="Close">Close</button></div>
   <div class="sheet-b">
     <div id="p-date"></div>
     <div id="p-title"></div>
     <div class="theory" id="p-theory">Our case, prospective. Not a finding of any court.</div>
     <div id="p-text"></div>
+    <a class="btn primary visit" id="p-visit" href="#" target="_blank" rel="noopener">Visit website ↗</a>
     <div class="srcs-h">Source</div><ul class="srcs" id="p-srcs"></ul>
     <div class="kindtag" id="p-era" style="margin-top:14px"></div>
     <div id="p-arch"></div>
@@ -65,15 +68,10 @@
   </div>
 </aside>
 
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="m-h">
-  <div class="card"><div class="sheet-h"><strong id="m-h"></strong><button class="btn x" id="m-close">Close</button></div>
-  <div class="sheet-b" id="m-b"></div>
-  <div class="m-f"><button class="btn primary" id="m-next">Continue</button></div></div>
+<div class="modal" id="su-card" role="dialog" aria-modal="true" aria-labelledby="sc-h">
+  <div class="card"><div class="sheet-h"><strong id="sc-h"></strong><button class="btn x" id="sc-close">Close</button></div>
+  <div class="sheet-b" id="sc-b"></div></div>
 </div>
-<aside class="sheet" id="story" role="dialog" aria-label="Story so far">
-  <div class="sheet-h"><strong id="st-h" style="color:#fff;font-size:13px;letter-spacing:.06em"></strong><button class="btn x" id="st-close">Close</button></div>
-  <div class="sheet-b"><ol class="stl" id="st-l"></ol></div>
-</aside>
 <aside class="sheet" id="legend" role="dialog" aria-label="Key">
   <div class="sheet-h"><strong style="color:#fff;letter-spacing:.14em;text-transform:uppercase;font-size:13px">How to read the board</strong><button class="btn x" id="l-close">Close</button></div>
   <div class="sheet-b">
@@ -86,15 +84,15 @@
       <div class="sw" style="background:#bdb9b0"></div><div>Plain square: no record placed there</div><div></div>
     </div>
     <h4 class="kh">The text inside the squares</h4>
-    <p class="note">The whole text of the free archive edition of the Legal Wiki (version 0.1.0, 2,033 pages) and the public Great House Farm sites is spread across the squares: 9,652 extracts in time order. Black squares carry the counter narrative, the BP / authorities side drawn from the court record and official documents. White squares carry the Williams/Buckler record. Every square of a colour holds an equal share, to within one paragraph: about 4,800 characters in each black square and about 12,700 in each white square. Zoom right into a square to read its text in columns, or tap the square to read it in the side panel. Personal details are withheld, and the wording follows the board's house style. The verbatim originals are in the archive edition and on the Legal Wiki.</p>
-    <h4 class="kh">The sudoku board</h4>
-    <p class="note">Switch to Sudoku to see the same 808 squares in time order, poured into ten 9×9 sudoku grids. Each puzzle has exactly one solution. Each correct number lights the next squares of the story and opens a floating card with the next extract in time order, so finishing all ten puzzles unfolds the whole record. Dim cells are squares not yet reached. Your progress saves on this device. Reveal cell and Reveal puzzle are there if you'd rather read than play.</p>
+    <p class="note">Every square carries its own short paragraph, set inside the square. From afar you see the colours; zoom in and each square shows its date and title, then its paragraph and a Read more tab. Read more opens the square's full content: its summary, its sources and every extract placed in it from the free archive edition of the Legal Wiki (version 0.1.0, 2,033 pages) and the public Great House Farm sites. Each extract has a Visit website button that opens the source page at the passage itself where the page allows, and otherwise at the page. Personal details are withheld, and the wording follows the board's house style; the verbatim originals are on the Legal Wiki.</p>
+    <div id="su-legend"><h4 class="kh">The case sudoku</h4><p class="note">Switch to Sudoku for one 16×16 board covering the whole case.</p></div>
     <p class="note" style="margin-top:16px">Built from the Great House Farm Legal Wiki (greathousefarmwiki.wordpress.com), the evidence pages EV-0001 onwards, the Master Timeline and the registers. Board built <span id="built"></span>. The record text is in English, the authoritative version.</p>
     <p class="note"><a href="/list/">Read the whole board as a plain list</a> · <a href="https://greathousefarmwiki.wordpress.com/">Legal Wiki</a> · <a href="https://bucklerfamily.estate/">Campus</a></p>
     <div data-ghf-ebook-cta></div>
     <p class="note">Our case, prospective. Not a finding of any court. — Sion's Tab agent</p>
   </div>
 </aside>
-<script src="/assets/chess.js?v=359d7b8d" defer></script>
+<script src="/assets/chess.js?v=9d322601" defer></script>
+<script src="/assets/sudoku16.js?v=9d322601" defer></script>
 </body>
 </html>

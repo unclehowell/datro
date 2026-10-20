@@ -1,23 +1,26 @@
-
-import json,gzip,re,pathlib,sys
-P=pathlib.Path('/home/user/tab/work/chess/site/public')
+# Gate for chess.bucklerfamily.estate v2: banned wording + privacy grep over EVERYTHING public (decoded). — Sion's Tab agent
+import json,gzip,re,pathlib,sys,urllib.parse
+P=pathlib.Path(__file__).resolve().parents[2]/'public'
 texts={}
-for f in sorted((P/'data/archive').glob('a-*.json.gz')): texts[str(f)]=gzip.decompress(f.read_bytes()).decode()
-for f in ['data/archive/index.json','data/sudoku.json','index.html','assets/chess.js']: texts[f]=(P/f).read_text()
+for f in sorted(P.rglob('*')):
+    if f.is_dir() or f.suffix in ('.woff2','.png','.jpg','.webp','.txt'): continue
+    b=f.read_bytes()
+    t=gzip.decompress(b).decode() if f.suffix=='.gz' else b.decode('utf-8','replace')
+    texts[str(f.relative_to(P))]=urllib.parse.unquote(t)
 BAN=[r'\bsays\b',r'\bclaims\b',r'according to',r'hearsay',r'unverified',r'\balleged',r"family\W{0,3}s? account",r'family testimony']
-PRIV=[r'Robin Hill',r'hywelapbuckler',r'7845\s?933262',r'(\+44\s?7|\b07)\d{3}\s?\d{3}\s?\d{3}',r'\b[A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2}\b',r'[\w.+-]+@(gmail|hotmail|yahoo|outlook|icloud|btinternet|aol|live)\.',r'Oath of Allegiance',r'Royal Signals']
+PRIV=[r'Robin Hill',r'hywelapbuckler',r'7845\s?933262',r'(\+44\s?7|\b07)\d{3}\s?\d{3}\s?\d{3}',r'\b[A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2}\b',r'[\w.+-]+@(gmail|hotmail|yahoo|outlook|icloud|btinternet|aol|live)\.',r'Oath of Allegiance',r'Royal Signals',r'branwen']
+SLUG_OK=re.compile(r'https?://\S+')   # wiki URL slugs cannot be changed; words inside a URL are not prose
 bad=[]
 for k,t in texts.items():
     for p in BAN+PRIV:
-        for m in re.finditer(p,t,0 if p.startswith(r'\b[A-Z]') else re.I): bad.append((k[-30:],p,t[max(0,m.start()-40):m.end()+20].replace('\n',' ')))
-    # Sion: allowed only in the mandated sign-off
+        for m in re.finditer(p,t,0 if p.startswith(r'\b[A-Z]') else re.I):
+            # skip matches that sit inside a URL (slug), except privacy patterns
+            s=t.rfind(' ',0,m.start()); s=t.rfind('"',0,m.start()) if t.rfind('"',0,m.start())>s else s
+            seg=t[s+1:m.end()+1]
+            if p in BAN and ('://' in seg and ' ' not in seg): continue
+            bad.append((k,p,t[max(0,m.start()-50):m.end()+30].replace('\n',' ')))
     for m in re.finditer(r'\bSion\b',t,re.I):
-        ctx=t[m.start():m.start()+20]
-        if not ctx.startswith("Sion's Tab agent"): bad.append((k[-30:],'Sion',t[max(0,m.start()-40):m.end()+20]))
-    for m in re.finditer(r'Branwen\s+[A-Z][a-z]+',t):
-        if m.group(0).split()[1] not in ('Does','The','Open','Testimony'): bad.append((k[-30:],'Branwen',m.group(0)))
-# emails present at all (non-official check list)
-em=set()
-for t in texts.values(): em|=set(re.findall(r'[\w.+…\[\]-]+@[\w-]+\.[\w.-]+',t))
-print('HITS',len(bad)); [print(b) for b in bad[:40]]
-print('emails',len(em),sorted(em)[:15])
+        if not t[m.start():m.start()+20].startswith("Sion's Tab agent"): bad.append((k,'Sion',t[max(0,m.start()-40):m.end()+20]))
+print('files',len(texts),'HITS',len(bad))
+for x in bad[:40]: print(x)
+sys.exit(1 if bad else 0)

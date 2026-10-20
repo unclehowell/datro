@@ -14,19 +14,26 @@ occupation, heritage and lineage, and the trees and land. Rows are eras; squares
 - Shared estate pieces: ghf-lang (EN/CY/ES interface, dictionary `public/lang/chess.json`) and the e-book card (cta.js).
 - Font: Barlow (SIL OFL, `public/assets/fonts/OFL.txt`).
 
-## Archive text in the squares, and the Sudoku board (20 Oct 2026)
+## v2 (20 Oct 2026): a paragraph inside every square, Read more, Visit website, and one big case sudoku
 
-- The full text of the free archive edition of the Legal Wiki (v0.1.0, 2,033 pages; never a paid edition) and the public GHF sites
-  (fcg., projects., clerk., bpvsbuckler., wayback., dartboard., email.; research. is the wiki mirror, already covered) is split into
-  ~700-character extracts, privacy-scrubbed and normalised to the house wording, then tagged black (BP / authorities side: court record
-  and official documents) or white (the Williams/Buckler record). A segment takes the colour of the board squares sourced from the same
-  wiki page; otherwise a keyword rubric decides; correspondence is decided paragraph by paragraph (who is writing).
-- Distribution: within each colour, extracts in time order are poured into that colour's squares in board order so every square holds an
-  equal share of characters (to within one extract). Shards: `public/data/archive/a-NN.json.gz` (24 squares each, gzip), index
-  `public/data/archive/index.json`. The browser loads a shard only when a square is zoomed into or opened.
-- Sudoku: `public/data/sudoku.json` holds ten unique-solution 9×9 puzzles. The 808 squares in story order are split evenly across them;
-  the n-th correct number in a puzzle opens extract n (1–2 squares) in time order. Progress is kept in localStorage (`ghf-sudoku-v1`).
-- Rebuild (from `tools/archive/`): `python3 ext.py` (PDF → pdf.json), `python3 crawl.py` (sites → sites.json), `python3 chunk.py`,
-  `python3 build_archive.py <site dir>`, then `python3 gate.py` (wording + privacy grep over everything public) and `node verify_sudoku.js`.
+- **Squares.** Every square draws its OWN text inside its own edges (canvas clip): from afar only colours; closer in the date and
+  title; from about 120 px per square the square's short paragraph (its summary) and a "Read more ›" tab. Zoom is capped so a square
+  never grows past the screen, so no text runs across the board. The first view opens at a readable zoom; "Fit board" shows the whole board.
+- **Read more.** Tapping a square opens a modal (phone-first, scrollable, Close): date, title, summary, sources, a "Visit website"
+  button, then the square's full content: every archive extract placed in it, each with its own "Visit website" button.
+- **Visit website links.** Each link is the source page plus a text fragment (`#id:~:text=…`) built from words verified to sit inside
+  one block of the live page (wiki pages read from the public REST API, site pages fetched), with the nearest real element id in front
+  as a fallback anchor. Verified anchors: 8,973 of 9,652 extracts and 747 of 808 squares; the rest link to the page. PDF-only
+  extracts link to the wiki page the archive edition was built from, never to a PDF. fcg.'s old home is now /theory/.
+- **The case sudoku** (`?mode=sudoku`): one 16×16 board (`public/data/sudoku16.json`, UI `public/assets/sudoku16.js`).
+  Rows = 16 eras; columns = 16 kinds of evidence in four grade bands (Corroborated record, Documented, Inference, Theory not yet
+  proven to a legal standard); symbols 1–9, A–G = 16 actors and records; boxes = an era band × a grade band. Each correct entry
+  opens the record placed in that cell with its grade and a Visit website link; theory cells read as hypotheses with
+  "Our case, prospective. Not a finding of any court." Notes, same-symbol highlight, undo, hint, reveal cell, progress in localStorage.
+- **Difficulty by evidence grade.** `tools/sudoku16/gen.js 1987 12,9,5,1` removes givens band by band (12/9/5/1 per box), keeping
+  exactly one solution and a no-guess logic solve. Measured: 111 givens; the Corroborated band needs only naked singles (solve
+  wave 1.3 on average), Documented hidden singles (wave 2.8), Inference locked candidates (wave 15.9), Theory pairs (wave 22.1).
+- **Test:** `node tools/sudoku16/verify.js` (exactly one solution, equals the stored solution, logic-solvable, every cell has a record).
+  **Gate:** `python3 tools/archive/gate.py` (banned wording + privacy grep over every public file, decoded).
 
 Our case, prospective. Not a finding of any court. — Sion's Tab agent
