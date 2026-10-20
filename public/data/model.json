@@ -1,0 +1,258 @@
+{
+ "version": "1.0.0",
+ "built": "2026-10-20",
+ "criteria": {
+  "S1": "Scope: the operative noun phrase covers more (or other) land than the instrument it rests on evidences",
+  "S2": "Party: the person most affected is not a party, not the addressee, or not shown to have been served",
+  "S3": "Agency: the operative effect is imposed without any act or consent of the person it binds",
+  "S4": "Term shift: a key word (possession, owner, proprietor, possessions) changes meaning between documents",
+  "S5": "Text gap: the operative text itself is not held; it is known only from a later recital or summary",
+  "S6": "Inconsistency: dates, years or descriptions conflict between records of the same act"
+ },
+ "scale": "0 = not present on the record; 1 = present but contested or SOURCE PENDING; 2 = present on the face of a held record",
+ "timing_rule": "T counts dated events within 45 days of a pre-set decisive moment (limitation date, a death, a final refusal, a demolition). An event the record itself explains (a hearing that caused it, a customary term day) scores 0. Each event is counted once.",
+ "formula": "D = S x (1 + T), where S = S1+...+S6 (max 12)",
+ "docs": [
+  {
+   "id": "A",
+   "title": "1955 High Court possession order (Order 14), Western Ground Rents v Frederick Buckler",
+   "role": "case",
+   "s": {
+    "S1": 1,
+    "S2": 2,
+    "S3": 0,
+    "S4": 1,
+    "S5": 2,
+    "S6": 0
+   },
+   "why": {
+    "S1": "Recited as covering “the whole of the farm”. The 1987 judgment records the 1916 tenancy as “of the whole of the farm” too; the wiki's case that Parcel A had left the holding by 1928 is SOURCE PENDING. Scored 1, not 2.",
+    "S2": "Frederick Buckler alone was sued. Mary, living in the house, was not a party; the 1987 judgment records the order was not enforced against the house because of her.",
+    "S3": "A court order against the tenant who was sued. Nothing unusual in the act itself.",
+    "S4": "“Possession” of a farm under a tenancy is later read beside an ownership question it did not decide.",
+    "S5": "The order, writ, affidavit and any plan are not held (EV-0032). Known only from the 1987 recital.",
+    "S6": "No conflicting record identified yet."
+   },
+   "t": [
+    {
+     "event": "Notice to quit expired 2 Feb 1955",
+     "score": 0,
+     "why": "The yearly tenancy began on 2 February 1949, and a notice to quit a yearly tenancy has to end on the anniversary: explained."
+    },
+    {
+     "event": "Enforcement 4 Jul 1955, soon after Mary's leg amputation",
+     "score": 0,
+     "why": "No exact date for the operation; the record shows the house was spared because of it, which cuts against reading pressure into the timing."
+    }
+   ],
+   "S": 6,
+   "T": 0,
+   "D": 6
+  },
+  {
+   "id": "B",
+   "title": "The two letters of 31 October 1974 (BP Pension Trust Ltd and BP Properties Ltd)",
+   "role": "case",
+   "s": {
+    "S1": 1,
+    "S2": 2,
+    "S3": 2,
+    "S4": 2,
+    "S5": 0,
+    "S6": 0
+   },
+   "why": {
+    "S1": "BP Properties granted occupation of “the house and garden” while it had only “agreed to buy”; the conveyance came in May 1975. The Court of Appeal heard this point and rejected it as “rather technical”. Scored 1.",
+    "S2": "Addressed to Mrs Buckler but sent to her solicitor, who received them on the morning of 4 November 1974. She never accepted or rejected them.",
+    "S3": "The Court of Appeal: BP Properties “neither sought nor waited for her acceptance”; she held “whether she liked it or not” as licensee.",
+    "S4": "Her possession changes character, from adverse to licensed, by the other side's letter alone.",
+    "S5": "Full text held: quoted in the 1987 judgment.",
+    "S6": "None found."
+   },
+   "t": [
+    {
+     "event": "Letters received 4 Nov 1974; the 12 years from the possession order of 11 Dec 1962 ran out on 11 Dec 1974 (37 days later)",
+     "score": 1,
+     "why": "Partly explained: the letters answered a notice of appeal issued on 30 Oct 1974 and a stay hearing fixed for 4 Nov 1974. Their nearness to the limitation date is still on the face of the judgment."
+    }
+   ],
+   "S": 7,
+   "T": 1,
+   "D": 14
+  },
+  {
+   "id": "C",
+   "title": "HM Land Registry first registration of WA240304 (farmhouse and garden), register edition 23 February 1983",
+   "role": "case",
+   "s": {
+    "S1": 1,
+    "S2": 1,
+    "S3": 0,
+    "S4": 1,
+    "S5": 2,
+    "S6": 2
+   },
+   "why": {
+    "S1": "Whether the land in the 23 May 1975 conveyance was all land Western Ground Rents had held is the open question on wiki page 3191. Scored 1.",
+    "S2": "Mary (Nancy) Williams was in actual occupation. Whether any notice reached her before her death is not yet shown; HMLR's file holds letters of 8 and 12 April 1983, after it. Scored 1 (open).",
+    "S3": "Registration is an administrative act on an application; no agency defect is visible.",
+    "S4": "“Registered proprietor” and “paper title” are later read as ownership in the 1987 and 1989 decisions.",
+    "S5": "The 31 December 1969 conveyance, the recited root, is not on HMLR's disclosed schedule of 30 July 2026; form 1C and the old title plan are not yet obtained.",
+    "S6": "The 1987 judgment dates registration of “the whole of the farm” to November 1982; the farmhouse title's register edition is 23 February 1983. HMLR's schedule lists a plan “dated 23 February 1975” for a conveyance of 23 May 1975, and an HMLR letter quotes the recited year as “One thousand One hundred and sixty nine”."
+   },
+   "t": [
+    {
+     "event": "Register edition 23 Feb 1983; Mary (Nancy) Williams died 26 Mar 1983 (31 days later)",
+     "score": 1,
+     "why": "No explanation on the record. Age and health at the time are a plain alternative explanation for the death; the registration date is the registry's."
+    }
+   ],
+   "S": 7,
+   "T": 1,
+   "D": 14
+  },
+  {
+   "id": "D",
+   "title": "The 1988 eviction, injunction and demolition papers",
+   "role": "case",
+   "s": {
+    "S1": 0,
+    "S2": 0,
+    "S3": 0,
+    "S4": 1,
+    "S5": 2,
+    "S6": 1
+   },
+   "why": {
+    "S1": "The injunction sought covered the building only; no scope mismatch shown.",
+    "S2": "The family were parties to the injunction application.",
+    "S3": "A court refused relief after a hearing; no agency defect is visible.",
+    "S4": "The press calls BP “the owners of the land”: the possession result is restated as ownership.",
+    "S5": "Enforcement records and the injunction orders are awaited (GHF-E027-04); the ITV report carries no on-screen date.",
+    "S6": "The Western Mail places the civil injunction hearing at “Cardiff Crown Court”; the ITV report has the High Court in Cardiff granting an earlier injunction. Which court made which order is unresolved."
+   },
+   "t": [
+    {
+     "event": "Injunction refused (reported 6 Dec 1988); farmhouse demolished in the early hours of 6 Dec 1988",
+     "score": 1,
+     "why": "Same episode, so the demolition following the refusal is expected; scored because nothing was left for Strasbourg to protect."
+    },
+    {
+     "event": "Strasbourg registered application 14464/88 on 12 Dec 1988, 6 days after the demolition",
+     "score": 1,
+     "why": "Independent institution; no explanation for the registration date on the record."
+    },
+    {
+     "event": "House of Lords refused leave 3 Mar 1988; first eviction attempt 29 Apr 1988; application lodged 3 May 1988",
+     "score": 0,
+     "why": "The family's own response to the eviction attempt: explained."
+    }
+   ],
+   "S": 4,
+   "T": 2,
+   "D": 12
+  },
+  {
+   "id": "E",
+   "title": "European Commission of Human Rights, application 14464/88, inadmissible 14 April 1989",
+   "role": "case",
+   "s": {
+    "S1": 0,
+    "S2": 0,
+    "S3": 0,
+    "S4": 2,
+    "S5": 2,
+    "S6": 0
+   },
+   "why": {
+    "S1": "None.",
+    "S2": "The applicant was a party.",
+    "S3": "None.",
+    "S4": "The wiki's catalogue summary: no “possession” because the courts had held the property belonged to another. A Limitation Act ruling on possession becomes a Convention finding on possessions.",
+    "S5": "Decision text not held; the case file was reported destroyed under the Court's retention policy (EV-0122).",
+    "S6": "None found."
+   },
+   "t": [],
+   "S": 4,
+   "T": 0,
+   "D": 4
+  },
+  {
+   "id": "K1",
+   "title": "Control: 1962 Cardiff County Court possession order (Mr and Mrs Frederick Buckler)",
+   "role": "control",
+   "s": {
+    "S1": 0,
+    "S2": 0,
+    "S3": 0,
+    "S4": 1,
+    "S5": 2,
+    "S6": 0
+   },
+   "why": {
+    "S1": "Farmhouse and garden only.",
+    "S2": "Both occupiers were parties.",
+    "S3": "None.",
+    "S4": "A possession order later used to start a limitation clock.",
+    "S5": "Order not held; known from the 1987 recital.",
+    "S6": "None found."
+   },
+   "t": [],
+   "S": 3,
+   "T": 0,
+   "D": 3
+  },
+  {
+   "id": "K2",
+   "title": "Control: Court of Appeal judgment, 31 July 1987",
+   "role": "control",
+   "s": {
+    "S1": 0,
+    "S2": 0,
+    "S3": 0,
+    "S4": 1,
+    "S5": 0,
+    "S6": 1
+   },
+   "why": {
+    "S1": "Appeal limited to the farmhouse and garden, stated plainly.",
+    "S2": "Parties named.",
+    "S3": "None.",
+    "S4": "Uses “paper title” and “registered proprietors” for BP.",
+    "S5": "Full text held.",
+    "S6": "November 1982 registration date for the whole farm (see C)."
+   },
+   "t": [],
+   "S": 2,
+   "T": 0,
+   "D": 2
+  },
+  {
+   "id": "K3",
+   "title": "Control: Mary (Nancy) Williams's witness statement, c. 1974 (a pro-family record)",
+   "role": "control",
+   "s": {
+    "S1": 1,
+    "S2": 0,
+    "S3": 0,
+    "S4": 1,
+    "S5": 0,
+    "S6": 1
+   },
+   "why": {
+    "S1": "Her ownership through her grandfather rests on documents not yet produced.",
+    "S2": "Her own statement.",
+    "S3": "None.",
+    "S4": "Uses ownership words for occupation.",
+    "S5": "Typed statement held on the wiki.",
+    "S6": "Undated (c. 1974)."
+   },
+   "t": [],
+   "S": 3,
+   "T": 0,
+   "D": 3
+  }
+ ],
+ "notice": "Our case, prospective. Not a finding of any court.",
+ "sign_off": "— Sion’s Tab agent"
+}

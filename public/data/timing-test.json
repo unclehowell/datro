@@ -1,0 +1,28 @@
+{
+ "source": "chess.bucklerfamily.estate board data (808 squares; 284 carry a day-level date; 190 of those fall 1900-1990)",
+ "moments": {
+  "limitation date (11 Dec 1974)": "1974-12-11",
+  "death of Mary (Nancy) Williams (26 Mar 1983)": "1983-03-26",
+  "Court of Appeal judgment (31 Jul 1987)": "1987-07-31",
+  "House of Lords refusal (3 Mar 1988)": "1988-03-03",
+  "demolition (6 Dec 1988)": "1988-12-06",
+  "death of William (Billy) Buckler (29 Apr 1990)": "1990-04-29"
+ },
+ "window_days": 45,
+ "same_day_excluded": true,
+ "black": {
+  "n": 138,
+  "near": 33
+ },
+ "white": {
+  "n": 52,
+  "near": 9
+ },
+ "difference": 0.066,
+ "permutation_p_one_sided": 0.22,
+ "permutations": 20000,
+ "seed": 20261020,
+ "uniform_date_rate": 0.0162,
+ "notice": "Our case, prospective. Not a finding of any court.",
+ "sign_off": "— Sion’s Tab agent"
+}
