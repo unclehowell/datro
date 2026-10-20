@@ -392,3 +392,21 @@ button.chip:hover, a.chip:hover { color: var(--limewash); }
 }
 .shell { grid-template-columns: minmax(0, 1fr); }
 .top > * { min-width: 0; }
+
+/* ---------------- screen by institution (?institution=<slug>) */
+.instbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding: 12px 40px; max-width: 1480px; margin: 0 auto; border-bottom: 1px solid var(--slate-3); }
+.instbar .pick { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--lias); letter-spacing: 0.02em; }
+.instbar select { font: inherit; font-size: 15px; color: var(--limewash); background: var(--slate-2); border: 1px solid var(--slate-3); border-radius: 10px; padding: 9px 12px; min-height: 44px; max-width: 100%; }
+.instbar .state, .instbar .note { margin: 0; font-size: 14px; color: var(--lias); }
+.instbar .state b { color: var(--limewash); font-weight: 600; }
+.instbar .note { color: var(--parcel-ab); }
+.linkish { background: none; border: 0; padding: 0; text-decoration: underline; color: var(--limewash); }
+.splash .instbar { padding: 0 0 18px; margin: 0; border: 0; max-width: none; }
+.chips.insts { margin-top: -10px; align-items: center; }
+.chips.insts .k { font-size: 12px; color: var(--lias); text-transform: uppercase; letter-spacing: 0.08em; }
+.chip.inst { border: 1px solid var(--slate-3); }
+@media (max-width: 1000px) {
+  .instbar { padding: 10px 16px; }
+  .instbar .pick { flex: 1 1 100%; flex-wrap: wrap; }
+  .instbar select { flex: 1 1 100%; width: 100%; }
+}

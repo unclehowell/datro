@@ -1,0 +1,429 @@
+{
+ "url_pattern": "https://bpvsbuckler.bucklerfamily.estate/?institution={slug}",
+ "rule": "A scene is tagged with an institution when the scene's own words (title, place, narration, received account, what we now know) name it. Untagged when unclear.",
+ "institutions": [
+  {
+   "slug": "cadw",
+   "name": "Cadw",
+   "slide_count": 9,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=cadw"
+  },
+  {
+   "slug": "welsh-government",
+   "name": "Welsh Government (incl. Welsh Office)",
+   "slide_count": 1,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=welsh-government"
+  },
+  {
+   "slug": "hmlr",
+   "name": "HM Land Registry",
+   "slide_count": 13,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=hmlr"
+  },
+  {
+   "slug": "vale-council",
+   "name": "Vale of Glamorgan Council",
+   "slide_count": 8,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=vale-council"
+  },
+  {
+   "slug": "cardiff-council",
+   "name": "Cardiff Council",
+   "slide_count": 0,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=cardiff-council"
+  },
+  {
+   "slug": "south-glamorgan",
+   "name": "South Glamorgan County Council",
+   "slide_count": 0,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=south-glamorgan"
+  },
+  {
+   "slug": "bp",
+   "name": "BP Properties / BP / Western Ground Rents",
+   "slide_count": 39,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=bp"
+  },
+  {
+   "slug": "courts",
+   "name": "The courts (High Court, Court of Appeal, HMCTS)",
+   "slide_count": 17,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=courts"
+  },
+  {
+   "slug": "south-wales-police",
+   "name": "South Wales Police",
+   "slide_count": 1,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=south-wales-police"
+  },
+  {
+   "slug": "mod",
+   "name": "Ministry of Defence",
+   "slide_count": 0,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=mod"
+  },
+  {
+   "slug": "ico",
+   "name": "Information Commissioner's Office",
+   "slide_count": 0,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=ico"
+  },
+  {
+   "slug": "national-archives",
+   "name": "The National Archives",
+   "slide_count": 2,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=national-archives"
+  },
+  {
+   "slug": "nrw",
+   "name": "Natural Resources Wales / Forestry",
+   "slide_count": 0,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=nrw"
+  },
+  {
+   "slug": "forest-of-cardiff",
+   "name": "Forest of Cardiff",
+   "slide_count": 4,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=forest-of-cardiff"
+  },
+  {
+   "slug": "land-authority-wales",
+   "name": "Land Authority for Wales",
+   "slide_count": 1,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=land-authority-wales"
+  },
+  {
+   "slug": "glamorgan-archives",
+   "name": "Glamorgan Archives",
+   "slide_count": 1,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=glamorgan-archives"
+  },
+  {
+   "slug": "llandough-community-council",
+   "name": "Llandough Community Council",
+   "slide_count": 1,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=llandough-community-council"
+  },
+  {
+   "slug": "heneb",
+   "name": "Heneb (formerly GGAT)",
+   "slide_count": 12,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=heneb"
+  },
+  {
+   "slug": "rcahmw",
+   "name": "Royal Commission (RCAHMW)",
+   "slide_count": 9,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=rcahmw"
+  },
+  {
+   "slug": "museum-wales",
+   "name": "Museum Wales",
+   "slide_count": 4,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=museum-wales"
+  },
+  {
+   "slug": "glamorgan-county-council",
+   "name": "Glamorgan County Council",
+   "slide_count": 1,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=glamorgan-county-council"
+  },
+  {
+   "slug": "echr",
+   "name": "European Commission of Human Rights",
+   "slide_count": 8,
+   "url": "https://bpvsbuckler.bucklerfamily.estate/?institution=echr"
+  }
+ ],
+ "scenes": {
+  "ghf-02000101-1": [
+   "heneb"
+  ],
+  "ghf-12000101-1": [
+   "rcahmw"
+  ],
+  "ghf-18700101-1": [
+   "rcahmw"
+  ],
+  "ghf-18970501-1": [
+   "national-archives"
+  ],
+  "ghf-19380101-1": [
+   "bp"
+  ],
+  "ghf-19390501-1": [
+   "bp"
+  ],
+  "ghf-19400101-1": [
+   "bp"
+  ],
+  "ghf-19490202-1": [
+   "bp"
+  ],
+  "ghf-19550202-1": [
+   "bp",
+   "courts",
+   "forest-of-cardiff"
+  ],
+  "ghf-19581119-1": [
+   "bp",
+   "glamorgan-county-council"
+  ],
+  "ghf-19590101-1": [
+   "bp"
+  ],
+  "ghf-19621211-1": [
+   "bp",
+   "courts"
+  ],
+  "ghf-19630601-1": [
+   "courts"
+  ],
+  "ghf-19650301-1": [
+   "bp"
+  ],
+  "ghf-19691231-1": [
+   "hmlr",
+   "bp"
+  ],
+  "ghf-19740101-1": [
+   "rcahmw",
+   "echr"
+  ],
+  "ghf-19740703-1": [
+   "bp",
+   "courts"
+  ],
+  "ghf-19741031-1": [
+   "bp",
+   "courts"
+  ],
+  "ghf-19750523-1": [
+   "bp",
+   "courts"
+  ],
+  "ghf-19800522-1": [
+   "bp"
+  ],
+  "ghf-19821001-1": [
+   "heneb"
+  ],
+  "ghf-19821119-1": [
+   "hmlr",
+   "bp"
+  ],
+  "ghf-19830223-1": [
+   "hmlr",
+   "bp"
+  ],
+  "ghf-19830408-1": [
+   "hmlr"
+  ],
+  "ghf-19840522-1": [
+   "bp"
+  ],
+  "ghf-19860710-1": [
+   "bp",
+   "courts"
+  ],
+  "ghf-19860711-1": [
+   "rcahmw"
+  ],
+  "ghf-19870202-1": [
+   "hmlr",
+   "bp"
+  ],
+  "ghf-19870731-1": [
+   "bp",
+   "courts"
+  ],
+  "ghf-19880303-1": [
+   "courts"
+  ],
+  "ghf-19880429-1": [
+   "south-wales-police"
+  ],
+  "ghf-19880429-2": [
+   "bp"
+  ],
+  "ghf-19880512-1": [
+   "courts",
+   "echr"
+  ],
+  "ghf-19880729-1": [
+   "cadw"
+  ],
+  "ghf-19881202-1": [
+   "bp",
+   "courts"
+  ],
+  "ghf-19881209-1": [
+   "bp",
+   "courts"
+  ],
+  "ghf-19881203-1": [
+   "cadw"
+  ],
+  "ghf-19881205-1": [
+   "cadw",
+   "echr"
+  ],
+  "ghf-19881206-1": [
+   "echr"
+  ],
+  "ghf-19881208-1": [
+   "vale-council"
+  ],
+  "ghf-19881212-1": [
+   "rcahmw"
+  ],
+  "ghf-19890323-1": [
+   "courts"
+  ],
+  "ghf-19890414-1": [
+   "bp",
+   "echr"
+  ],
+  "ghf-19891107-1": [
+   "cadw",
+   "vale-council",
+   "bp",
+   "heneb"
+  ],
+  "ghf-19900313-1": [
+   "vale-council",
+   "heneb"
+  ],
+  "ghf-19900801-1": [
+   "vale-council",
+   "bp",
+   "heneb"
+  ],
+  "ghf-19910821-1": [
+   "heneb",
+   "rcahmw"
+  ],
+  "ghf-19920514-1": [
+   "vale-council",
+   "bp"
+  ],
+  "ghf-19920727-1": [
+   "vale-council",
+   "heneb"
+  ],
+  "ghf-19920903-1": [
+   "vale-council"
+  ],
+  "ghf-19931203-1": [
+   "vale-council",
+   "bp",
+   "heneb"
+  ],
+  "ghf-19940728-1": [
+   "museum-wales"
+  ],
+  "ghf-19941110-1": [
+   "forest-of-cardiff"
+  ],
+  "ghf-20190320-1": [
+   "heneb",
+   "rcahmw"
+  ],
+  "ghf-20251117-1": [
+   "hmlr",
+   "rcahmw"
+  ],
+  "ghf-20260323-1": [
+   "hmlr",
+   "bp"
+  ],
+  "ghf-20260419-1": [
+   "hmlr"
+  ],
+  "ghf-20260521-1": [
+   "cadw"
+  ],
+  "ghf-20260730-1": [
+   "hmlr",
+   "bp"
+  ],
+  "ghf-20260825-1": [
+   "museum-wales"
+  ],
+  "ghf-20260908-1": [
+   "glamorgan-archives"
+  ],
+  "ghf-20260917-1": [
+   "cadw",
+   "hmlr",
+   "heneb"
+  ],
+  "ghf-20260923-1": [
+   "bp",
+   "courts",
+   "national-archives"
+  ],
+  "ghf-20260925-1": [
+   "forest-of-cardiff"
+  ],
+  "ghf-20260927-1": [
+   "hmlr",
+   "heneb"
+  ],
+  "ghf-20260929-1": [
+   "cadw",
+   "rcahmw",
+   "museum-wales"
+  ],
+  "ghf-20261006-1": [
+   "bp",
+   "heneb",
+   "echr"
+  ],
+  "ghf-20261019-1": [
+   "cadw",
+   "welsh-government",
+   "bp",
+   "land-authority-wales"
+  ],
+  "ghf-obvious-03": [
+   "bp"
+  ],
+  "ghf-obvious-04": [
+   "hmlr",
+   "bp"
+  ],
+  "ghf-obvious-05": [
+   "courts",
+   "echr"
+  ],
+  "ghf-obvious-06": [
+   "bp"
+  ],
+  "ghf-obvious-07": [
+   "echr"
+  ],
+  "ghf-obvious-10": [
+   "cadw"
+  ],
+  "ghf-obvious-11": [
+   "bp",
+   "courts"
+  ],
+  "ghf-99990101-1": [
+   "bp"
+  ],
+  "ghf-99990101-4": [
+   "hmlr",
+   "bp",
+   "courts"
+  ],
+  "ghf-99990101-2": [
+   "forest-of-cardiff",
+   "museum-wales"
+  ],
+  "ghf-99990101-3": [
+   "llandough-community-council"
+  ]
+ }
+}

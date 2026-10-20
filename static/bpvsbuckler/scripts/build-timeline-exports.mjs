@@ -14,12 +14,19 @@
 //   story/transcript.txt   the narration script
 //   sitemap.xml            site map with one deep link per scene
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 
 const SITE = 'https://bpvsbuckler.bucklerfamily.estate';
 const WIKI = 'https://greathousefarmwiki.wordpress.com';
 const root = new URL('..', import.meta.url).pathname;
 const story = JSON.parse(readFileSync(root + 'src/data/story.json', 'utf8'));
 const { acts, cast, scenes, aliases, lanes } = story;
+// Institution tags per scene: content/institutions.py rewrites
+// src/data/institutions.json and api/institutions.json from the story, so the
+// player's "Screen by institution" filter follows new scenes on every build.
+try { execFileSync('python3', [root + 'content/institutions.py'], { stdio: 'inherit' }); } catch (e) { console.warn('institutions: tagging skipped:', e.message); }
+let instTags = {};
+try { instTags = JSON.parse(readFileSync(root + 'src/data/institutions.json', 'utf8')).scenes || {}; } catch (_e) { instTags = {}; }
 const movedLines = (s) => s.ledger.filter(([l]) => s.moved.includes(l)).map(([l, t]) => `${lanes[l]}: ${t}`);
 
 // Guards: strict date order, unique ids, evidence on every scene.
@@ -65,6 +72,7 @@ const entries = scenes.map((s) => ({
   received_wording: s.received_words.map(([said, note]) => ({ said, note })),
   what_we_now_know: s.known,
   cast: s.cast,
+  institutions: instTags[s.id] || [],
   evidence: s.evidence.map((e) => (e.image ? { ...e, image: SITE + e.image } : e)),
   image: s.image ? SITE + s.image : null,
   previous_ids: s.aliases,

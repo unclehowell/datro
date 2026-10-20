@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import story from './data/story.json';
 import meta from './data/meta.json';
+import instData from './data/institutions.json';
 import type { Story, Scene, SceneMedia, CaseQuestion, SceneQA } from './data/story.d';
 
 const S = story as unknown as Story;
@@ -16,27 +17,60 @@ const PARCEL: Record<string, [string, string]> = {
   '': ['', ''],
 };
 
+// Institutions named in each scene (content/institutions.py). ?institution=<slug>
+// screens only that institution's scenes, in date order.
+type Inst = { slug: string; name: string; slide_count: number };
+const INST = (instData as unknown as { institutions: Inst[]; scenes: Record<string, string[]> });
+const INSTS = INST.institutions;
+const instName = (slug: string) => INSTS.find((x) => x.slug === slug)?.name || slug;
+const instTags = (s: Scene) => INST.scenes[s.id] || [];
+const INST_ALIAS: Record<string, string> = {
+  'welsh-office': 'welsh-government', wg: 'welsh-government', 'land-registry': 'hmlr', 'hm-land-registry': 'hmlr',
+  vale: 'vale-council', 'vale-of-glamorgan': 'vale-council', 'vale-of-glamorgan-council': 'vale-council',
+  cardiff: 'cardiff-council', wgr: 'bp', 'western-ground-rents': 'bp', 'bp-properties': 'bp', court: 'courts',
+  hmcts: 'courts', police: 'south-wales-police', tna: 'national-archives', ggat: 'heneb', 'royal-commission': 'rcahmw',
+  'national-museum-wales': 'museum-wales', 'llandough-cc': 'llandough-community-council', law: 'land-authority-wales',
+};
+const ALL = scenes.map((_s, i) => i);
+const listFor = (slug: string) => (slug ? ALL.filter((i) => instTags(scenes[i]).includes(slug)) : ALL);
+function readInst(q: URLSearchParams): { inst: string; note: string } {
+  if (!q.has('institution')) return { inst: '', note: '' };
+  const raw = (q.get('institution') || '').trim();
+  if (!raw) return { inst: '', note: 'No institution was chosen, so all scenes are shown.' };
+  let slug = raw.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  slug = INST_ALIAS[slug] || slug;
+  const known = INSTS.find((x) => x.slug === slug);
+  if (!known) return { inst: '', note: `There is no institution called "${raw}" here, so all scenes are shown.` };
+  if (!listFor(slug).length) return { inst: '', note: `No scene in the story names ${known.name} yet, so all scenes are shown.` };
+  return { inst: slug, note: '' };
+}
+
 type View = 'splash' | 'scene' | 'board' | 'cast' | 'questions';
-function readUrl(): { view: View; index: number } {
+function readUrl(): { view: View; index: number; inst: string; note: string } {
+  let inst = '', note = '';
   try {
     const q = new URLSearchParams(location.search);
+    ({ inst, note } = readInst(q));
+    const list = listFor(inst);
     const v = q.get('view');
-    if (v === 'storyboard') return { view: 'board', index: 0 };
-    if (v === 'cast') return { view: 'cast', index: 0 };
-    if (v === 'questions') return { view: 'questions', index: 0 };
+    if (v === 'storyboard') return { view: 'board', index: list[0] || 0, inst, note };
+    if (v === 'cast') return { view: 'cast', index: 0, inst, note };
+    if (v === 'questions') return { view: 'questions', index: 0, inst, note };
     let id = q.get('event');
     if (id) {
       id = (S.aliases as Record<string, string>)[id] || id;
       const i = scenes.findIndex((s) => s.id === id);
-      if (i >= 0) return { view: 'scene', index: i };
+      if (i >= 0) return { view: 'scene', index: list.includes(i) ? i : (list.find((j) => j > i) ?? list[0]), inst, note };
     }
     const y = q.get('year');
     if (y) {
-      const i = scenes.findIndex((s) => s.date.startsWith(y) || s.when.includes(y));
-      if (i >= 0) return { view: 'scene', index: i };
+      const i = scenes.findIndex((s, j) => list.includes(j) && (s.date.startsWith(y) || s.when.includes(y)));
+      if (i >= 0) return { view: 'scene', index: i, inst, note };
     }
+    // A screening link (?institution=cadw) opens straight on that institution's first scene.
+    if (q.has('institution')) return { view: 'scene', index: list[0], inst, note };
   } catch (_e) { /* no URL */ }
-  return { view: 'splash', index: 0 };
+  return { view: 'splash', index: 0, inst, note };
 }
 const sceneUrl = (s: Scene) => `${SITE}/?event=${s.id}`;
 const speakable = (t: string) =>
@@ -77,18 +111,26 @@ export default function App() {
   const [volume, setVolume] = useState(0.8);
   const [spoken, setSpoken] = useState(-1);
   const [copied, setCopied] = useState(false);
+  const [inst, setInst] = useState(init.inst);
+  const [instNote, setInstNote] = useState(init.note);
+  const list = useMemo(() => listFor(inst), [inst]);
+  const pos = list.indexOf(index);
   const scene = scenes[index];
   const playingRef = useRef(playing);
   playingRef.current = playing;
 
   // URL <-> state
   useEffect(() => {
-    const q = view === 'scene' ? `?event=${scene.id}` : view === 'board' ? '?view=storyboard' : view === 'cast' ? '?view=cast' : view === 'questions' ? '?view=questions' : '';
+    const f = inst ? `institution=${inst}` : '';
+    const v = view === 'scene' ? `event=${scene.id}` : view === 'board' ? 'view=storyboard' : view === 'cast' ? 'view=cast' : view === 'questions' ? 'view=questions' : '';
+    const both = [f, v].filter(Boolean).join('&');
+    const q = both ? `?${both}` : '';
     if (location.search !== q) history.replaceState(null, '', location.pathname + q);
-    document.title = view === 'scene' ? `${scene.ref} ${scene.title} — Tŷ Mawr` : 'Tŷ Mawr — The Great House Farm Story';
-  }, [view, index]);
+    const tail = inst ? ` — ${instName(inst)} — Tŷ Mawr` : ' — Tŷ Mawr';
+    document.title = view === 'scene' ? `${scene.ref} ${scene.title}${tail}` : inst ? `${instName(inst)} — Tŷ Mawr — The Great House Farm Story` : 'Tŷ Mawr — The Great House Farm Story';
+  }, [view, index, inst]);
   useEffect(() => {
-    const on = () => { const r = readUrl(); setView(r.view); setIndex(r.index); };
+    const on = () => { const r = readUrl(); setView(r.view); setIndex(r.index); setInst(r.inst); setInstNote(r.note); };
     addEventListener('popstate', on);
     return () => removeEventListener('popstate', on);
   }, []);
@@ -99,7 +141,18 @@ export default function App() {
     setCopied(false);
     document.querySelector('.main')?.scrollTo({ top: 0 });
   }, []);
-  const open = (v: View) => { history.pushState(null, '', location.pathname); setPlaying(false); setView(v); };
+  const open = (v: View) => { history.pushState(null, '', location.pathname + (inst ? `?institution=${inst}` : '')); setPlaying(false); setView(v); };
+  // Step through the scenes being screened (all, or one institution's), in date order.
+  const step = (d: number) => {
+    if (pos < 0) { const n = d > 0 ? list.find((i) => i > index) : [...list].reverse().find((i) => i < index); go(n ?? list[0]); return; }
+    const p = pos + d;
+    if (p >= 0 && p < list.length) go(list[p]);
+  };
+  const pickInst = (slug: string) => {
+    const l = listFor(slug);
+    setInst(slug); setInstNote(''); setPlaying(false);
+    if (view === 'splash' || view === 'scene') { if (slug && !l.includes(index)) go(l[0]); else if (view === 'splash') go(l[0]); }
+  };
 
   // narration
   useEffect(() => {
@@ -124,24 +177,25 @@ export default function App() {
       setSpoken(lo);
     };
     let t: ReturnType<typeof setTimeout>;
-    u.onend = () => { setSpoken(1e9); t = setTimeout(() => { if (!playingRef.current) return; if (index < scenes.length - 1) go(index + 1); else setPlaying(false); }, 900); };
+    u.onend = () => { setSpoken(1e9); t = setTimeout(() => { if (!playingRef.current) return; if (pos >= 0 && pos < list.length - 1) go(list[pos + 1]); else if (pos < 0 && list.some((i) => i > index)) go(list.find((i) => i > index)!); else setPlaying(false); }, 900); };
     const s = setTimeout(() => synth.speak(u), 250);
     return () => { clearTimeout(s); clearTimeout(t); synth.cancel(); };
-  }, [view, index, playing, volume]);
+  }, [view, index, playing, volume, inst]);
 
   // keyboard
   useEffect(() => {
     const k = (e: KeyboardEvent) => {
       if (view !== 'scene' || (e.target as HTMLElement).closest('input, button, a, [role="dialog"]')) return;
-      if (e.key === 'ArrowRight') go(index + 1);
-      else if (e.key === 'ArrowLeft') go(index - 1);
+      if (e.key === 'ArrowRight') step(1);
+      else if (e.key === 'ArrowLeft') step(-1);
       else if (e.key === ' ') { e.preventDefault(); setPlaying((p) => !p); }
     };
     addEventListener('keydown', k);
     return () => removeEventListener('keydown', k);
-  }, [view, index, go]);
+  }, [view, index, go, list, pos]);
 
-  if (view === 'splash') return <Splash onPlay={() => { go(0); setPlaying(true); }} onBoard={() => setView('board')} onCast={() => setView('cast')} />;
+  const instBar = <InstBar inst={inst} note={instNote} pos={pos} total={list.length} onPick={pickInst} board={view === 'board'} />;
+  if (view === 'splash') return <Splash instBar={instBar} onPlay={() => { go(list[0]); setPlaying(true); }} onBoard={() => setView('board')} onCast={() => setView('cast')} />;
 
   const act = actOf(scene.act);
   return (
@@ -159,10 +213,11 @@ export default function App() {
         </nav>
       </header>
       <main className="main">
+        {(view === 'scene' || view === 'board') && instBar}
         {view === 'scene' && <SceneView scene={scene} spoken={playing ? spoken : -1} copied={copied} onCopy={() => {
           navigator.clipboard?.writeText(`Tŷ Mawr, scene ${scene.ref} (no. ${scene.no}), "${scene.title}", ${scene.when}. ${sceneUrl(scene)}`).then(() => setCopied(true), () => setCopied(false));
-        }} onCast={() => open('cast')} onPick={go} />}
-        {view === 'board' && <Board onPick={go} />}
+        }} onCast={() => open('cast')} onPick={go} onInst={pickInst} total={list.length} pos={pos} />}
+        {view === 'board' && <Board onPick={go} only={inst ? list : null} />}
         {view === 'cast' && <Cast onPick={go} />}
         {view === 'questions' && <Questions onPick={go} />}
       </main>
@@ -170,11 +225,12 @@ export default function App() {
         <footer className="transport">
           <div className="acts" role="group" aria-label="Scenes by act">
             {S.acts.map((a) => {
-              const list = scenes.map((s, i) => [s, i] as const).filter(([s]) => s.act === a.id);
+              const ticks = scenes.map((s, i) => [s, i] as const).filter(([s, i]) => s.act === a.id && list.includes(i));
+              if (!ticks.length) return null;
               return (
-                <div key={a.id} className="actseg" style={{ flex: list.length }}>
+                <div key={a.id} className="actseg" style={{ flex: ticks.length }}>
                   <span className="lbl">{a.label === 'Prologue' || a.label === 'Epilogue' ? a.label : a.label.replace('Act ', '')} {a.title}</span>
-                  {list.map(([s, i]) => (
+                  {ticks.map(([s, i]) => (
                     <button key={s.id} className={`tick${i === index ? ' on' : i < index ? ' seen' : ''}`} title={`${s.ref} ${s.when}: ${s.title}`} aria-label={`Scene ${s.ref}, ${s.title}`} onClick={() => go(i)} />
                   ))}
                 </div>
@@ -183,11 +239,11 @@ export default function App() {
           </div>
           <label className="voice"><span>Voice</span><input type="range" min="0" max="1" step="0.05" value={volume} onChange={(e) => setVolume(+e.target.value)} aria-label="Narration volume" /></label>
           <div className="ctl">
-            <button onClick={() => go(index - 1)} aria-label="Previous scene" disabled={index === 0}>{Icon.prev}</button>
+            <button onClick={() => step(-1)} aria-label="Previous scene" disabled={pos === 0 || (pos < 0 && !list.some((i) => i < index))}>{Icon.prev}</button>
             <button className="play" onClick={() => setPlaying((p) => !p)} aria-label={playing ? 'Pause narration' : 'Play narration'}>{playing ? Icon.pause : Icon.play}</button>
-            <button onClick={() => go(index + 1)} aria-label="Next scene" disabled={index === scenes.length - 1}>{Icon.next}</button>
+            <button onClick={() => step(1)} aria-label="Next scene" disabled={pos === list.length - 1 || (pos < 0 && !list.some((i) => i > index))}>{Icon.next}</button>
           </div>
-          <div className="count">{scene.no} of {scenes.length}</div>
+          <div className="count">{inst ? `${pos + 1} of ${list.length}` : `${scene.no} of ${scenes.length}`}</div>
         </footer>
       )}
     </div>
@@ -228,14 +284,15 @@ function Frame({ scene, small }: { scene: Scene; small?: boolean }) {
   );
 }
 
-function SceneView({ scene, spoken, copied, onCopy, onCast, onPick }: { scene: Scene; spoken: number; copied: boolean; onCopy: () => void; onCast: () => void; onPick: (i: number) => void }) {
+function SceneView({ scene, spoken, copied, onCopy, onCast, onPick, onInst, total, pos }: { scene: Scene; spoken: number; copied: boolean; onCopy: () => void; onCast: () => void; onPick: (i: number) => void; onInst: (slug: string) => void; total: number; pos: number }) {
+  const tags = instTags(scene);
   const base = segmentBases(scene);
   const cast = S.cast.filter((c) => scene.cast.includes(c.id));
   return (
     <article className="scene">
       <Stage scene={scene} onPick={onPick} />
       <div>
-        <div className="slate"><span className="ref">Scene {scene.ref}</span><span>no. {scene.no} of {scenes.length}</span></div>
+        <div className="slate"><span className="ref">Scene {scene.ref}</span><span>no. {scene.no} of {scenes.length}{total < scenes.length && pos >= 0 ? ` · ${pos + 1} of ${total} screened` : ''}</span></div>
         <div className="when">{scene.when}</div>
         <h1>{scene.title}</h1>
         {scene.place && <div className="place">{scene.place}</div>}
@@ -246,6 +303,12 @@ function SceneView({ scene, spoken, copied, onCopy, onCast, onPick }: { scene: S
           <span className={`chip grade g-${scene.grade}`} title={scene.grade_text}><i />{GRADE[scene.grade]}</span>
           {cast.map((c) => <button key={c.id} className="chip" onClick={onCast}>{c.name}</button>)}
         </div>
+        {tags.length > 0 && (
+          <div className="chips insts" aria-label="Institutions in this scene">
+            <span className="k">Institutions</span>
+            {tags.map((t) => <button key={t} className="chip inst" onClick={() => onInst(t)} title={`Screen only ${instName(t)}'s scenes`}>{instName(t)}</button>)}
+          </div>
+        )}
         <Accounts scene={scene} base={base} spoken={spoken} />
         <SceneQuestions scene={scene} />
         {scene.case && <section className="case"><h2>The family's case</h2><p>{scene.case}</p></section>}
@@ -404,7 +467,7 @@ function FloatingSceneMedia({ scene }: { scene: Scene }) {
     </>
   );
 }
-function Board({ onPick }: { onPick: (i: number) => void }) {
+function Board({ onPick, only }: { onPick: (i: number) => void; only: number[] | null }) {
   return (
     <div className="sheet">
       <h1>Storyboard</h1>
@@ -416,14 +479,14 @@ function Board({ onPick }: { onPick: (i: number) => void }) {
         <span><i className="p-A" />House parcel (A)</span><span><i className="p-B" />Fields (B)</span>
         <span><i className="p-AB" />Whole farm (A + B)</span><span><i className="p-x" />Unknown, or not the farm</span>
       </div>
-      {S.acts.map((a) => (
+      {S.acts.filter((a) => !only || only.some((i) => scenes[i].act === a.id)).map((a) => (
         <section key={a.id}>
           <div className="acthead">
             <div className="n">{a.label}<br /><span style={{ fontSize: 14 }}>{a.span}</span></div>
             <div><h2>{a.title}</h2><p>{a.logline}</p></div>
           </div>
           <div className="grid">
-            {scenes.map((s, i) => s.act !== a.id ? null : (
+            {scenes.map((s, i) => s.act !== a.id || (only && !only.includes(i)) ? null : (
               <button key={s.id} className="panel" onClick={() => onPick(i)}>
                 <Frame scene={s} small />
                 <div className="meta"><span><i className={`gdot g-${s.grade}`} title={GRADE[s.grade]} />{s.ref}</span><span>{s.when.length > 26 ? s.date.slice(0, 4) : s.when}</span></div>
@@ -692,7 +755,7 @@ function Questions({ onPick }: { onPick: (i: number) => void }) {
   );
 }
 
-function Splash({ onPlay, onBoard, onCast }: { onPlay: () => void; onBoard: () => void; onCast: () => void }) {
+function Splash({ onPlay, onBoard, onCast, instBar }: { onPlay: () => void; onBoard: () => void; onCast: () => void; instBar: React.ReactNode }) {
   const [btc, setBtc] = useState(false);
   useEffect(() => {
     if (document.querySelector('script[data-stripe]')) return;
@@ -711,6 +774,7 @@ function Splash({ onPlay, onBoard, onCast }: { onPlay: () => void; onBoard: () =
         <h1>Tŷ Mawr</h1>
         <div className="sub">The Great House Farm story, Llandough</div>
         <p className="log">For three hundred and twenty-one years the Williams family lived at Great House, the manor house at Llandough. They always said it was theirs. Nobody listened. What people heard was a squatter who lost in court, lost on appeal, lost in Strasbourg, and lost the listing; a “chainsaw farmer”; a house “bulldozed before breakfast”. This is the other side. Each scene gives what happened, what we were all told it meant, and what we now know.</p>
+        {instBar}
         <div className="btns">
           <button className="btn primary" onClick={onPlay}>{Icon.play} Play from the beginning</button>
           <button className="btn" onClick={onBoard}>{Icon.grid} Open the storyboard</button>
@@ -732,6 +796,28 @@ function Splash({ onPlay, onBoard, onCast }: { onPlay: () => void; onBoard: () =
           <a href="https://github.com/unclehowell/datro/tree/bpvsbuckler">Source</a>
         </div>
       </div>
+    </div>
+  );
+}
+
+function InstBar({ inst, note, pos, total, onPick, board }: { inst: string; note: string; pos: number; total: number; onPick: (slug: string) => void; board: boolean }) {
+  const shown = INSTS.filter((x) => listFor(x.slug).length > 0);
+  return (
+    <div className="instbar" role="region" aria-label="Screen by institution">
+      <label className="pick">
+        <span>Screen by institution</span>
+        <select value={inst} onChange={(e) => onPick(e.target.value)}>
+          <option value="">All institutions · {scenes.length} scenes</option>
+          {shown.map((x) => <option key={x.slug} value={x.slug}>{x.name} · {listFor(x.slug).length}</option>)}
+        </select>
+      </label>
+      {inst && (
+        <p className="state">
+          Screening <b>{instName(inst)}</b>: {total} scene{total === 1 ? '' : 's'} in date order{!board && pos >= 0 ? `, now ${pos + 1} of ${total}` : ''}.{' '}
+          <button className="linkish" onClick={() => onPick('')}>Show all</button>
+        </p>
+      )}
+      {note && <p className="note" role="status">{note}</p>}
     </div>
   );
 }
