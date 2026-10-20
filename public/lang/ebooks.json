@@ -1,0 +1,118 @@
+{
+ "site": "ebooks",
+ "version": "1.0.0",
+ "updated": "2026-10-20",
+ "note": "Interface strings only. Book titles, descriptions and the books themselves stay in English, the authoritative record.",
+ "mount": "header.sl-nav nav.top",
+ "inlineStyle": "margin-left:12px;vertical-align:middle",
+ "patterns": [
+  {
+   "re": "^([\\d,]+) pages$",
+   "cy": "$1 tudalen",
+   "es": "$1 páginas"
+  },
+  {
+   "re": "^Earlier: (.+)$",
+   "cy": "Cynt: $1",
+   "es": "Anteriores: $1"
+  }
+ ],
+ "strings": {
+  "E-books": {
+   "cy": "E-lyfrau",
+   "es": "Libros electrónicos"
+  },
+  "Campus": {
+   "cy": "Campws",
+   "es": "Campus"
+  },
+  "Legal Wiki": {
+   "cy": "Wici Cyfreithiol",
+   "es": "Wiki jurídica"
+  },
+  "Shop": {
+   "cy": "Siop",
+   "es": "Tienda"
+  },
+  "The books": {
+   "cy": "Y llyfrau",
+   "es": "Los libros"
+  },
+  "About versions": {
+   "cy": "Am y fersiynau",
+   "es": "Sobre las versiones"
+  },
+  "Available": {
+   "cy": "Ar gael",
+   "es": "Disponible"
+  },
+  "Coming soon": {
+   "cy": "Ar y ffordd",
+   "es": "Próximamente"
+  },
+  "Cover coming soon": {
+   "cy": "Clawr ar y ffordd",
+   "es": "Portada próximamente"
+  },
+  "In preparation": {
+   "cy": "Wrthi’n cael ei baratoi",
+   "es": "En preparación"
+  },
+  "What’s new in this version": {
+   "cy": "Beth sy’n newydd yn y fersiwn hon",
+   "es": "Novedades de esta versión"
+  },
+  "Get the e-book": {
+   "cy": "Cael yr e-lyfr",
+   "es": "Conseguir el libro electrónico"
+  },
+  "E-book shop": {
+   "cy": "Siop e-lyfrau",
+   "es": "Tienda de libros electrónicos"
+  },
+  "bucklerfamily.estate campus": {
+   "cy": "campws bucklerfamily.estate",
+   "es": "campus de bucklerfamily.estate"
+  },
+  "Projects (PRINCE2)": {
+   "cy": "Prosiectau (PRINCE2)",
+   "es": "Proyectos (PRINCE2)"
+  },
+  "Dartboard": {
+   "cy": "Bwrdd dartiau",
+   "es": "Diana"
+  },
+  "E-books — Great House Farm / Tŷ Mawr": {
+   "cy": "E-lyfrau — Great House Farm / Tŷ Mawr",
+   "es": "Libros electrónicos — Great House Farm / Tŷ Mawr"
+  },
+  "Fraud, concealment and government involvement": {
+   "cy": "Twyll, cuddio a rhan y llywodraeth",
+   "es": "Fraude, ocultación e implicación del gobierno"
+  },
+  "The digital estate’s records as books you can keep: the Legal Wiki, the case pages, the project record and the public-records escalation board. Each book carries its own version number, so you always know which edition you hold.": {
+   "cy": "Cofnodion yr ystad ddigidol fel llyfrau i’w cadw: y Wici Cyfreithiol, tudalennau’r achos, cofnod y prosiect a bwrdd uwchgyfeirio’r cofnodion cyhoeddus. Mae gan bob llyfr ei rif fersiwn ei hun, felly rydych bob amser yn gwybod pa argraffiad sydd gennych.",
+   "es": "Los registros de la finca digital como libros para conservar: la wiki jurídica, las páginas del caso, el registro del proyecto y el tablero de escalada de registros públicos. Cada libro lleva su propio número de versión, para que siempre sepas qué edición tienes."
+  },
+  "Every book is numbered MAJOR.MINOR.PATCH. A patch release fixes errors; a minor release adds chapters or new records; a major release changes the book’s structure. The number is on the cover, in the file name and on the book’s changelog page.": {
+   "cy": "Mae pob llyfr wedi’i rifo MAJOR.MINOR.PATCH. Mae rhyddhad patch yn cywiro gwallau; mae rhyddhad minor yn ychwanegu penodau neu gofnodion newydd; mae rhyddhad major yn newid strwythur y llyfr. Mae’r rhif ar y clawr, yn enw’r ffeil ac ar dudalen newidiadau’r llyfr.",
+   "es": "Cada libro se numera MAJOR.MINOR.PATCH. Una versión patch corrige errores; una versión minor añade capítulos o registros nuevos; una versión major cambia la estructura del libro. El número figura en la portada, en el nombre del archivo y en la página de cambios del libro."
+  },
+  "Case theories in these books are our case, prospective. Not a finding of any court.": {
+   "cy": "Mae damcaniaethau’r achos yn y llyfrau hyn yn ein hachos, darpar. Nid yw’n ganfyddiad gan unrhyw lys.",
+   "es": "Las teorías del caso en estos libros son nuestro caso, prospectivo. No es una resolución de ningún tribunal."
+  },
+  "Great House Farm / Tŷ Mawr": {
+   "cy": "Great House Farm / Tŷ Mawr",
+   "es": "Great House Farm / Tŷ Mawr"
+  },
+  "Earlier:": {
+   "cy": "Cynt:",
+   "es": "Anteriores:"
+  },
+  "From": {
+   "cy": "O",
+   "es": "De"
+  }
+ }
+}
