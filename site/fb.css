@@ -79,10 +79,11 @@ a{color:#1d5fa8}
  .topbar{height:auto}
  .tb-in{height:auto;flex-wrap:wrap;padding:0;gap:0;row-gap:0}
  .logo{order:1;padding:0 0 0 12px;line-height:52px;font-size:24px;margin-right:auto}
- .fx-search{order:2;margin:0 6px 0 0}
+ .tb-in{position:relative}
+ .fx-search{order:2;margin:0 6px 0 0;position:static}
  .fx-search label{width:40px;height:40px;padding:0;justify-content:center;border-radius:50%}
  .fx-search input{width:0;position:absolute;opacity:0}
- .fx-search label:focus-within{position:absolute;right:-92px;top:6px;width:min(330px,calc(100vw - 24px));justify-content:flex-start;padding:0 12px;border-radius:20px;z-index:30;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+ .fx-search label:focus-within{position:absolute;left:8px;right:8px;top:6px;width:auto;justify-content:flex-start;padding:0 12px;border-radius:20px;z-index:30;box-shadow:0 2px 8px rgba(0,0,0,.25)}
  .fx-search label:focus-within input{position:static;opacity:1;width:100%}
  .fbm-chip{order:3;margin-right:6px!important}
  .fbm-n{display:none}.fbm-chip{padding:3px}
@@ -103,3 +104,4 @@ a{color:#1d5fa8}
  body>.profile,body>main,body>.wrap,body>.foot,body>.years{margin-left:290px!important;margin-right:auto!important}
 }
 .fx-ri{color:var(--fbb)}
+.fx-search input:focus,.fx-search input:focus-visible{outline:0!important;box-shadow:none!important;border:0!important}
