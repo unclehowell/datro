@@ -77,7 +77,7 @@ function upd(sel){var o=sel.options[sel.selectedIndex],g=sel.getAttribute('data-
  [].forEach.call(document.querySelectorAll('.eb-edbox[data-ed-group="'+g+'"]'),function(box){
   var s=box.querySelector('.eb-ed-sel');if(s&&s!==sel)s.selectedIndex=sel.selectedIndex;
   var free=o.getAttribute('data-free')==='1',pr=o.getAttribute('data-price'),lb=o.getAttribute('data-label');
-  var b=box.querySelector('.eb-ed-btn');if(b){b.href=o.getAttribute('data-href');b.textContent=free?('Download '+lb+' free'):('Buy '+b.getAttribute('data-word')+' — '+pr);}
+  var b=box.querySelector('.eb-ed-btn');if(b){var nh=o.getAttribute('data-href'),cr='';try{cr=new URL(b.href).searchParams.get('client_reference_id')||'';}catch(e){}if(cr&&nh.indexOf('buy.stripe.com')>-1){var nu=new URL(nh);nu.searchParams.set('client_reference_id',cr);nh=nu.toString();}b.href=nh;b.textContent=free?('Download '+lb+' free'):('Buy '+b.getAttribute('data-word')+' — '+pr);}
   var p=box.querySelector('.eb-ed-price');if(p)p.textContent=pr;
   var sm=box.querySelector('.eb-ed-small');if(sm)sm.textContent=lb+(free?' · free · PDF · instant download':' · one-off · PDF · instant download');
   var n=box.querySelector('.eb-ed-note');if(n)n.textContent=o.getAttribute('data-note');

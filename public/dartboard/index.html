@@ -55,7 +55,7 @@ function upd(sel){var o=sel.options[sel.selectedIndex],g=sel.getAttribute('data-
  [].forEach.call(document.querySelectorAll('.eb-edbox[data-ed-group="'+g+'"]'),function(box){
   var s=box.querySelector('.eb-ed-sel');if(s&&s!==sel)s.selectedIndex=sel.selectedIndex;
   var free=o.getAttribute('data-free')==='1',pr=o.getAttribute('data-price'),lb=o.getAttribute('data-label');
-  var b=box.querySelector('.eb-ed-btn');if(b){b.href=o.getAttribute('data-href');b.textContent=free?('Download '+lb+' free'):('Buy '+b.getAttribute('data-word')+' — '+pr);}
+  var b=box.querySelector('.eb-ed-btn');if(b){var nh=o.getAttribute('data-href'),cr='';try{cr=new URL(b.href).searchParams.get('client_reference_id')||'';}catch(e){}if(cr&&nh.indexOf('buy.stripe.com')>-1){var nu=new URL(nh);nu.searchParams.set('client_reference_id',cr);nh=nu.toString();}b.href=nh;b.textContent=free?('Download '+lb+' free'):('Buy '+b.getAttribute('data-word')+' — '+pr);}
   var p=box.querySelector('.eb-ed-price');if(p)p.textContent=pr;
   var sm=box.querySelector('.eb-ed-small');if(sm)sm.textContent=lb+(free?' · free · PDF · instant download':' · one-off · PDF · instant download');
   var n=box.querySelector('.eb-ed-note');if(n)n.textContent=o.getAttribute('data-note');
@@ -64,5 +64,6 @@ function upd(sel){var o=sel.options[sel.selectedIndex],g=sel.getAttribute('data-
 })();
 </script>
 <footer class="sl-foot"><div class="sl-foot-in"><a class="sl-foot-title" href="/">E-books — Great House Farm / Tŷ Mawr</a><a href="/fcg/">Fraud, Concealment and Government Involvement</a><a href="/dartboard/">The Disclosure Dartboard</a><a href="/projects/">Great House Farm Projects</a><a href="/tymawr-deaths/">The Tŷ Mawr Deaths</a><a href="https://bucklerfamily.estate/ebook/">The Evidence Archive (Legal Wiki book)</a><a href="/all-four/">All four books</a><a href="mailto:info@bucklerfamily.estate">Help: info@bucklerfamily.estate</a><span class="eb-foot-note">Our case, prospective. Not a finding of any court.</span></div></footer>
+<p data-seo-legal style="text-align:center;font-size:13px;opacity:.8;margin:18px 12px 28px"><a href="/free/">Free e-book</a> · <a href="https://bucklerfamily.estate/legal/">Terms &amp; privacy</a> · <a href="https://bucklerfamily.estate/ai-policy/">AI use &amp; provenance</a></p>
 </body>
 </html>
