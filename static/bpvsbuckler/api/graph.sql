@@ -1424,6 +1424,7 @@ Democratic@valeofglamorgan.gov.uk
 
 cc: FoiUnit@valeofglamorgan.gov.uk (for inform','{"kind": "reply", "pairing": "thread", "party": "vale"}');
 INSERT INTO nodes VALUES ('doc-cadw-1988-listing-location-lead','document','Cadw 1988 listing / assessment file — location lead','{"holder": "Cadw / Welsh Government", "reference": "none yet (draft)", "date": "2026-10-13"}');
+INSERT INTO nodes VALUES ('doc-defra-undeliverable-foi-maf-2026-10-20','document','Defra FOI/EIR undeliverable – MAF wartime records','{"holder": "Defra (successor to MAF)", "reference": "none (undelivered)", "date": "2026-10-20"}');
 INSERT INTO nodes VALUES ('doc-draft-cedwyn-estate-wiki-page','document','Cedwyn Estate: an affirmative reconstruction of the Williams/Buckler title chain','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-dwr-cymru-eir-3106-2026','document','Dŵr Cymru Welsh Water EIR/3106/2026, 14 October 2026','{"holder": "Dŵr Cymru Welsh Water, Environmental Information Requests", "reference": "EIR/3106/2026", "date": "2026-10-14"}');
 INSERT INTO nodes VALUES ('doc-excluded-1878-thomas-williams-ynysawdre','document','Thomas Williams and the Ynysawdre Coal Co., 15 June 1878 — not Great House Farm','{"holder": "Glamorgan Archives (photographed by Sion Buckler, 2nd visit, photos 91–95)", "reference": "archive reference not legible in the photographs (pending)", "date": "1878-06-15"}');
