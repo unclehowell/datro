@@ -1,0 +1,1005 @@
+{
+"version": "1.0.0",
+"center": [
+51.4527,
+-3.1985
+],
+"overlays": {
+"1900": [
+[
+51.4495005963362,
+-3.2049983739852905
+],
+[
+51.45650056904643,
+-3.192499279975891
+]
+],
+"1920": [
+[
+51.4495005963362,
+-3.2049983739852905
+],
+[
+51.45650056904643,
+-3.192499279975891
+]
+],
+"1947": [
+[
+51.4495005963362,
+-3.2049983739852905
+],
+[
+51.45650056904643,
+-3.192499279975891
+]
+],
+"1878": [
+[
+51.4495005963362,
+-3.2050037384033203
+],
+[
+51.45650056904643,
+-3.192504644393921
+]
+]
+},
+"holders": {
+"bute": [
+"Bute estate",
+"#7b5ea7"
+],
+"thomas": [
+"Daniel Thomas & Son (lime works)",
+"#c98a2b"
+],
+"williams": [
+"Williams family",
+"#2e8b57"
+],
+"wgr": [
+"Western Ground Rents",
+"#b5473a"
+],
+"bppt": [
+"BP Pension Trust",
+"#3b7dd8"
+],
+"bpp": [
+"BP Properties",
+"#1d4f91"
+],
+"green": [
+"Village green VG41",
+"#a3c94a"
+],
+"foc": [
+"Forest of Cardiff",
+"#3c6e47"
+],
+"housing": [
+"Housing development",
+"#7a7a7a"
+],
+"unknown": [
+"Not shown in the records held",
+"#9a9a9a"
+]
+},
+"sources": {
+"os1878": {
+"t": "OS six-inch Glamorgan XLVII, surveyed 1878–79, published 1885 (National Library of Scotland)",
+"u": "https://maps.nls.uk/view/102342664"
+},
+"os1900": {
+"t": "OS 25-inch Glamorgan XLVII.6, revised 1898, published 1900 (NLS)",
+"u": "https://maps.nls.uk/view/135196558"
+},
+"os1920": {
+"t": "OS 25-inch Glamorgan XLVII.6, revised 1915, published 1920 (NLS)",
+"u": "https://maps.nls.uk/view/135196561"
+},
+"os1947": {
+"t": "OS 25-inch Glamorgan XLVII.6, revised 1941, published 1947 (NLS)",
+"u": "https://maps.nls.uk/view/135196564"
+},
+"stmt": {
+"t": "Mary (Nancy) Williams, witness statement c.1974 (GHF-E011-02)",
+"u": "https://greathousefarmwiki.wordpress.com/the-two-parcels/"
+},
+"ev6": {
+"t": "1877 Bute–Daniel Thomas & Son agreement: original missing (EV-0006)",
+"u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0006-bute-thomas-agreement-1877/"
+},
+"twop": {
+"t": "The Two Parcels (Legal Wiki)",
+"u": "https://greathousefarmwiki.wordpress.com/the-two-parcels/"
+},
+"three": {
+"t": "Three Parts of Parcel A (Legal Wiki)",
+"u": "https://greathousefarmwiki.wordpress.com/the-two-parcels/three-parts-of-parcel-a-divergent-chronologies/"
+},
+"m89": {
+"t": "The Williams plan (wiki media 89), traced from the 1900 sheet",
+"u": "https://greathousefarmwiki.wordpress.com/timeline/"
+},
+"ca": {
+"t": "BP Properties Ltd v Buckler, Court of Appeal, 31 Jul 1987 ([1987] EWCA Civ 2)",
+"u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+},
+"ev16": {
+"t": "1928 last rent receipt and end of quarrying (EV-0016, receipt pending)",
+"u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0016-1928-last-rent-receipt-quarrying/"
+},
+"ev216": {
+"t": "1965 contract, condition F: root of title a conveyance on sale of 25 Dec 1938 (EV-0216)",
+"u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0216-1965-contract-condition-f-conveyance-25-december-1938/"
+},
+"ev23": {
+"t": "Glamorgan Archives DBDT123/7: 1939 agreement, WGR to John Williams, with plan (EV-0023)",
+"u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0023-1939-wgr-john-williams-tenancy-plan/"
+},
+"loss55": {
+"t": "1955 Parcel-A Loss Dossier: woodland and VG41 green (Legal Wiki)",
+"u": "https://greathousefarmwiki.wordpress.com/family-legal-case-control-room/1955-parcel-a-loss-dossier-woodland-vg41-green/"
+},
+"mt": {
+"t": "Master Timeline (Legal Wiki)",
+"u": "https://greathousefarmwiki.wordpress.com/timeline/"
+},
+"reg83": {
+"t": "1983 First Registration: Parcel A title basis (Legal Wiki)",
+"u": "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/procedural-fairness-notice/1983-first-registration-parcel-a-title-basis-alleged-hmlr-mistake/"
+},
+"ab": {
+"t": "Parcel A and Parcel B had distinct histories; the 1987 amalgamation (Legal Wiki)",
+"u": "https://greathousefarmwiki.wordpress.com/claim-parcel-a-parcel-b-distinct-histories-1987-amalgamation/"
+},
+"pl_plans": {
+"t": "Planning file 89/01396/OUT: plans bundle incl. 1985 certified VG41 register map and 1991–92 layouts",
+"u": "https://wayback.bucklerfamily.estate/pdf/planning/1989-11-08%20-%20Llandough%20plans%20village%20green%20and%20later%20housing%20layouts%20-%20EN%20-%20V0.0.0.00.pdf"
+},
+"pl_dec": {
+"t": "89/01396/OUT outline permission, 13 Mar 1990 (condition 5: village green)",
+"u": "https://wayback.bucklerfamily.estate/pdf/planning/1990-03-13%20-%20Vale%20outline%20permission%2089-01396-OUT%20Great%20House%20Farm%20-%20EN%20-%20V0.0.0.00.pdf"
+},
+"pl_form": {
+"t": "89/01396/OUT application form and certificate A, 16 Oct 1989",
+"u": "https://wayback.bucklerfamily.estate/pdf/planning/1989-10-16%20-%20Vale%2089-01396-OUT%20application%20form%20and%20certificate%20A%20-%20EN%20-%20V0.0.0.00.pdf"
+},
+"pl_rep": {
+"t": "89/01396/OUT officer report, Feb 1990",
+"u": "https://wayback.bucklerfamily.estate/pdf/planning/1990-02-08%20-%20Vale%20officer%20report%2089-01396-OUT%20Great%20House%20Farm%20-%20EN%20-%20V0.0.0.00.pdf"
+},
+"woods": {
+"t": "Woodland & Land-Transfer Assessment 1902–2005 (Legal Wiki)",
+"u": "https://greathousefarmwiki.wordpress.com/family-legal-case-control-room/woodland-land-transfer-assessment-1902-2005/"
+},
+"ev122": {
+"t": "European Commission of Human Rights, decision 14 Apr 1989 (EV-0122)",
+"u": "https://greathousefarmwiki.wordpress.com/timeline/"
+},
+"rec88": {
+"t": "Family recollection, 1988",
+"u": null
+}
+},
+"steps": [
+{
+"id": "1877",
+"date": "1877",
+"year": 1877,
+"base": "1878",
+"title": "The split",
+"text": "In 1877, Mary (Nancy) Williams later stated, the Bute estate sold the farmhouse, its buildings and about 10 acres to Daniel Thomas & Son, the lime-works firm, and kept about 9 acres on the top. Our case calls these Parcel A and Parcel B. The deed and its plan are missing, so every line on this step is a reconstruction.",
+"src": [
+"stmt",
+"ev6",
+"twop",
+"os1878"
+],
+"recon_all": true,
+"parcels": {
+"AN": {
+"rec": "thomas",
+"case": "thomas",
+"note": "Side sold to Daniel Thomas & Son, per the c.1974 statement."
+},
+"AM": {
+"rec": "thomas",
+"case": "thomas",
+"note": "Farmhouse and buildings: the side sold to Daniel Thomas & Son, per the c.1974 statement."
+},
+"AS": {
+"rec": "thomas",
+"case": "thomas",
+"note": ""
+},
+"B": {
+"rec": "bute",
+"case": "bute",
+"note": "The part kept by the Bute estate, per the c.1974 statement."
+}
+},
+"say": "In eighteen seventy-seven, Mary Nancy Williams later stated, the Bute estate sold the farmhouse, its buildings and about ten acres to Daniel Thomas and Son, the lime-works firm, and kept about nine acres on the top. Our case calls these Parcel A and Parcel B. The deed and its plan are missing, so every line on this step is a reconstruction.",
+"dur": 21.68
+},
+{
+"id": "1900",
+"date": "1898–1900",
+"year": 1900,
+"base": "1900",
+"title": "The 25-inch survey",
+"text": "The Ordnance Survey revised the Llandough sheet in 1898 and published it in 1900. Field 70, the farmyard, measures 1·334 acres. A round feature sits in the middle of the yard. It is unidentified: a pond, a well, a horse-gin or an older structure. The Williams plan in the family papers was traced from this sheet.",
+"src": [
+"os1900",
+"m89",
+"mt"
+],
+"img": {
+"src": "img/ev-williams-plan.jpg",
+"cap": "The Williams plan (left) beside the 1900 OS sheet (right)"
+},
+"parcels": {
+"AN": {
+"rec": "thomas",
+"case": "thomas",
+"note": ""
+},
+"AM": {
+"rec": "thomas",
+"case": "thomas",
+"note": "Occupied by John Williams of Great House Farm (court report, 1891)."
+},
+"AS": {
+"rec": "thomas",
+"case": "thomas",
+"note": ""
+},
+"B": {
+"rec": "bute",
+"case": "bute",
+"note": ""
+}
+},
+"say": "The Ordnance Survey revised the Llandough sheet in eighteen ninety-eight and published it in nineteen hundred. Field seventy, the farmyard, measures one point three three four acres. A round feature sits in the middle of the yard. It is unidentified: a pond, a well, a horse-gin or an older structure. The Williams plan in the family papers was traced from this sheet.",
+"dur": 22.18
+},
+{
+"id": "1916",
+"date": "Feb 1916",
+"year": 1916,
+"base": "1920",
+"title": "“The whole farm”",
+"text": "In February 1916 the Bute estate let the whole farm to John Williams on a yearly tenancy. The 1987 judgment uses the words whole farm. Our case is that this wording joined two parcels that had separate histories.",
+"src": [
+"ca",
+"ev122",
+"twop",
+"os1920"
+],
+"parcels": {
+"AN": {
+"rec": "bute",
+"case": "thomas",
+"note": "Let as part of the whole farm in 1916."
+},
+"AM": {
+"rec": "bute",
+"case": "thomas",
+"note": "Let as part of the whole farm in 1916."
+},
+"AS": {
+"rec": "bute",
+"case": "thomas",
+"note": ""
+},
+"B": {
+"rec": "bute",
+"case": "bute",
+"note": ""
+}
+},
+"say": "In February nineteen sixteen the Bute estate let the whole farm to John Williams on a yearly tenancy. The nineteen eighty-seven judgment uses the words whole farm. Our case is that this wording joined two parcels that had separate histories.",
+"dur": 13.56
+},
+{
+"id": "1928",
+"date": "1928",
+"year": 1928,
+"base": "1920",
+"title": "Quarrying ends",
+"text": "In 1928 the last quarry machinery left and a final rent of about £4 was paid to Alfred Thomas. On our case, the 1877 arrangement then took effect and the whole of Parcel A passed to the Williams family. The receipt is missing.",
+"src": [
+"stmt",
+"ev16",
+"twop"
+],
+"parcels": {
+"AN": {
+"rec": "bute",
+"case": "williams",
+"note": ""
+},
+"AM": {
+"rec": "bute",
+"case": "williams",
+"note": "From 1928 no rent paid for the house parcel, per the c.1974 statement."
+},
+"AS": {
+"rec": "bute",
+"case": "williams",
+"note": ""
+},
+"B": {
+"rec": "bute",
+"case": "bute",
+"note": ""
+}
+},
+"say": "In nineteen twenty-eight the last quarry machinery left and a final rent of about four pounds was paid to Alfred Thomas. On our case, the eighteen seventy-seven arrangement then took effect and the whole of Parcel A passed to the Williams family. The receipt is missing.",
+"dur": 15.49
+},
+{
+"id": "1938",
+"date": "25 Dec 1938",
+"year": 1938,
+"base": "1920",
+"title": "Sale to Western Ground Rents",
+"text": "On Christmas Day 1938 the Bute reversion was conveyed on sale to Western Ground Rents. A 1965 contract recites this conveyance as the root of title. The deed itself, and any plan with it, is not held.",
+"src": [
+"ev216",
+"mt"
+],
+"parcels": {
+"AN": {
+"rec": "wgr",
+"case": "williams",
+"note": "Whether the 1938 deed covered this land is not known: the deed is not held."
+},
+"AM": {
+"rec": "wgr",
+"case": "williams",
+"note": "Whether the 1938 deed covered this land is not known: the deed is not held."
+},
+"AS": {
+"rec": "wgr",
+"case": "williams",
+"note": ""
+},
+"B": {
+"rec": "wgr",
+"case": "wgr",
+"note": ""
+}
+},
+"say": "On Christmas Day nineteen thirty-eight the Bute reversion was conveyed on sale to Western Ground Rents. A nineteen sixty-five contract recites this conveyance as the root of title. The deed itself, and any plan with it, is not held.",
+"dur": 13.92
+},
+{
+"id": "1939",
+"date": "May 1939",
+"year": 1939,
+"base": "1920",
+"title": "The 1939 tenancy plan",
+"text": "In May 1939 Western Ground Rents gave John Williams a revised tenancy. Its plan colours the fields east of the house. That is Parcel B. The house, the yard, the wood and the green are not coloured.",
+"src": [
+"ev23",
+"twop"
+],
+"img": {
+"src": "img/ev-1939-plan.jpg",
+"cap": "DBDT123/7, 1939 plan: the coloured fields east of the house"
+},
+"parcels": {
+"AN": {
+"rec": "unknown",
+"case": "williams",
+"note": "Not coloured on the 1939 plan."
+},
+"AM": {
+"rec": "unknown",
+"case": "williams",
+"note": "Not coloured on the 1939 plan."
+},
+"AS": {
+"rec": "unknown",
+"case": "williams",
+"note": "Not coloured on the 1939 plan."
+},
+"B": {
+"rec": "wgr",
+"case": "wgr",
+"note": "Coloured on the 1939 plan; let to John Williams."
+}
+},
+"say": "In May nineteen thirty-nine Western Ground Rents gave John Williams a revised tenancy. Its plan colours the fields east of the house. That is Parcel B. The house, the yard, the wood and the green are not coloured.",
+"dur": 13.98
+},
+{
+"id": "1941",
+"date": "1941 (pub. 1947)",
+"year": 1941,
+"base": "1947",
+"title": "The 1941 revision",
+"text": "The Ordnance Survey revised the sheet in 1941. The house parcel is now measured at ·792 acre, close to the ·800 written on the Williams plan.",
+"src": [
+"os1947",
+"mt"
+],
+"parcels": {
+"AN": {
+"rec": "wgr",
+"case": "williams",
+"note": ""
+},
+"AM": {
+"rec": "wgr",
+"case": "williams",
+"note": ""
+},
+"AS": {
+"rec": "wgr",
+"case": "williams",
+"note": ""
+},
+"B": {
+"rec": "wgr",
+"case": "wgr",
+"note": ""
+}
+},
+"say": "The Ordnance Survey revised the sheet in nineteen forty-one. The house parcel is now measured at point seven nine two acre, close to the point eight hundred written on the Williams plan.",
+"dur": 9.87
+},
+{
+"id": "1955",
+"date": "4 Jul 1955",
+"year": 1955,
+"base": "1947",
+"title": "Possession taken",
+"text": "A High Court order of 2 February 1955, against Frederick Buckler alone, was worded for the whole farm. On 4 July 1955 Western Ground Rents took possession of every part of the farm except the farmhouse and garden. On our case, that included the Parcel A wood to the north and the green to the south. Mary kept the house and the yard.",
+"src": [
+"ca",
+"loss55",
+"three"
+],
+"parcels": {
+"AN": {
+"rec": "wgr",
+"case": "williams",
+"note": "Possession taken on 4 Jul 1955 (CA 1987)."
+},
+"AM": {
+"rec": "williams",
+"case": "williams",
+"note": "Farmhouse and garden excepted from the 1955 execution (CA 1987). Occupied by Mary (Nancy) Williams."
+},
+"AS": {
+"rec": "wgr",
+"case": "williams",
+"note": "Possession taken on 4 Jul 1955 (CA 1987)."
+},
+"B": {
+"rec": "wgr",
+"case": "wgr",
+"note": "Possession taken on 4 Jul 1955."
+}
+},
+"say": "A High Court order of the second of February nineteen fifty-five, against Frederick Buckler alone, was worded for the whole farm. On the fourth of July nineteen fifty-five Western Ground Rents took possession of every part of the farm except the farmhouse and garden. On our case, that included the Parcel A wood to the north and the green to the south. Mary kept the house and the yard.",
+"dur": 21.89
+},
+{
+"id": "1962",
+"date": "1959–1962",
+"year": 1962,
+"base": "1947",
+"title": "The house group",
+"text": "In 1959 Mary refused a tenancy of the house, yard and garden and asserted ownership. A deed of 29 March 1961 sits on the later title file; its contents are unknown. On 11 December 1962 Cardiff County Court ordered possession of the farmhouse and garden. The order was not enforced.",
+"src": [
+"mt",
+"three"
+],
+"parcels": {
+"AN": {
+"rec": "wgr",
+"case": "williams",
+"note": ""
+},
+"AM": {
+"rec": "williams",
+"case": "williams",
+"note": "11 Dec 1962 county court order for the farmhouse and garden: not enforced. Order and plan not held."
+},
+"AS": {
+"rec": "wgr",
+"case": "williams",
+"note": ""
+},
+"B": {
+"rec": "wgr",
+"case": "wgr",
+"note": ""
+}
+},
+"say": "In nineteen fifty-nine Mary refused a tenancy of the house, yard and garden and asserted ownership. A deed of the twenty-ninth of March nineteen sixty-one sits on the later title file; its contents are unknown. On the eleventh of December nineteen sixty-two Cardiff County Court ordered possession of the farmhouse and garden. The order was not enforced.",
+"dur": 21.16
+},
+{
+"id": "1969",
+"date": "31 Dec 1969",
+"year": 1969,
+"base": "1947",
+"title": "Sale to BP Pension Trust",
+"text": "On 31 December 1969 Western Ground Rents sold to BP Pension Trust. The deed is missing from the Land Registry files.",
+"src": [
+"mt",
+"reg83"
+],
+"parcels": {
+"AN": {
+"rec": "bppt",
+"case": "williams",
+"note": ""
+},
+"AM": {
+"rec": "bppt",
+"case": "williams",
+"note": "Paper title passes to BP Pension Trust; Mary (Nancy) Williams in occupation."
+},
+"AS": {
+"rec": "bppt",
+"case": "williams",
+"note": ""
+},
+"B": {
+"rec": "bppt",
+"case": "bppt",
+"note": ""
+}
+},
+"say": "On the thirty-first of December nineteen sixty-nine Western Ground Rents sold to BP Pension Trust. The deed is missing from the Land Registry files.",
+"dur": 8.54
+},
+{
+"id": "1970",
+"date": "16 Jun 1970",
+"year": 1970,
+"base": "1947",
+"title": "Village green VG41",
+"text": "On 16 June 1970 land by Leckwith Road was registered as village green VG41. Its exact boundary is not held. The shape on the map is placed from the 1985 certified register map and the 1990 planning condition, so it is an estimate.",
+"src": [
+"pl_plans",
+"pl_dec",
+"loss55"
+],
+"parcels": {
+"AN": {
+"rec": "bppt",
+"case": "williams",
+"note": ""
+},
+"AM": {
+"rec": "bppt",
+"case": "williams",
+"note": ""
+},
+"AS": {
+"rec": "green",
+"case": "williams",
+"note": "Registered as village green VG41. Owner on the register: not on the copy held."
+},
+"B": {
+"rec": "bppt",
+"case": "bppt",
+"note": ""
+}
+},
+"say": "On the sixteenth of June nineteen seventy land by Leckwith Road was registered as village green V G forty-one. Its exact boundary is not held. The shape on the map is placed from the nineteen eighty-five certified register map and the nineteen ninety planning condition, so it is an estimate.",
+"dur": 16.56
+},
+{
+"id": "1974",
+"date": "1974",
+"year": 1974,
+"base": "1947",
+"title": "Open day and licence letters",
+"text": "On 15 April 1974 Mary opened the farmhouse to the public, and about 1,000 people signed a petition. In July a new possession action began; she pleaded ownership and the Limitation Act 1939, and it was never relisted. On 31 October the warrant was withdrawn and licence letters were sent the same day.",
+"src": [
+"mt"
+],
+"parcels": {
+"AN": {
+"rec": "bppt",
+"case": "williams",
+"note": ""
+},
+"AM": {
+"rec": "bppt",
+"case": "williams",
+"note": "Mary (Nancy) Williams in occupation."
+},
+"AS": {
+"rec": "green",
+"case": "williams",
+"note": ""
+},
+"B": {
+"rec": "bppt",
+"case": "bppt",
+"note": ""
+}
+},
+"say": "On the fifteenth of April nineteen seventy-four Mary opened the farmhouse to the public, and about a thousand people signed a petition. In July a new possession action began; she pleaded ownership and the Limitation Act nineteen thirty-nine, and it was never relisted. On the thirty-first of October the warrant was withdrawn and licence letters were sent the same day.",
+"dur": 20.77
+},
+{
+"id": "1975",
+"date": "23 May 1975",
+"year": 1975,
+"base": "1947",
+"title": "To BP Properties",
+"text": "On 23 May 1975 BP Pension Trust conveyed to BP Properties. This conveyance later supported the registration of the house parcel.",
+"src": [
+"reg83"
+],
+"parcels": {
+"AN": {
+"rec": "bpp",
+"case": "williams",
+"note": ""
+},
+"AM": {
+"rec": "bpp",
+"case": "williams",
+"note": ""
+},
+"AS": {
+"rec": "green",
+"case": "williams",
+"note": ""
+},
+"B": {
+"rec": "bpp",
+"case": "bpp",
+"note": ""
+}
+},
+"say": "On the twenty-third of May nineteen seventy-five BP Pension Trust conveyed to BP Properties. This conveyance later supported the registration of the house parcel.",
+"dur": 9.14
+},
+{
+"id": "1982",
+"date": "30 Nov 1982",
+"year": 1982,
+"base": "1947",
+"title": "First registration: WA231076",
+"text": "On 30 November 1982 BP Properties applied for first registration of title WA231076. In our reconstruction this is the fields strand: Parcel B.",
+"src": [
+"reg83",
+"ab"
+],
+"parcels": {
+"AN": {
+"rec": "bpp",
+"case": "williams",
+"note": ""
+},
+"AM": {
+"rec": "bpp",
+"case": "williams",
+"note": ""
+},
+"AS": {
+"rec": "green",
+"case": "williams",
+"note": ""
+},
+"B": {
+"rec": "bpp",
+"case": "bpp",
+"note": "Title WA231076, application received 30 Nov 1982 (HMLR letter, 23 Mar 2026)."
+}
+},
+"say": "On the thirtieth of November nineteen eighty-two BP Properties applied for first registration of title W A two three one, zero seven six. In our reconstruction this is the fields strand: Parcel B.",
+"dur": 11.6
+},
+{
+"id": "1983",
+"date": "23 Feb 1983",
+"year": 1983,
+"base": "1947",
+"title": "First registration: WA240304",
+"text": "On 23 February 1983 an application followed for title WA240304: the farmhouse and garden, BP's third of Parcel A. Mary died at the farmhouse on 26 March 1983, and William inherited.",
+"src": [
+"reg83",
+"ab"
+],
+"parcels": {
+"AN": {
+"rec": "bpp",
+"case": "williams",
+"note": ""
+},
+"AM": {
+"rec": "bpp",
+"case": "williams",
+"note": "Title WA240304, application received 23 Feb 1983. William Buckler in occupation after 26 Mar 1983."
+},
+"AS": {
+"rec": "green",
+"case": "williams",
+"note": ""
+},
+"B": {
+"rec": "bpp",
+"case": "bpp",
+"note": "Title WA231076."
+}
+},
+"say": "On the twenty-third of February nineteen eighty-three an application followed for title W A two four zero, three zero four: the farmhouse and garden, BP's third of Parcel A. Mary died at the farmhouse on the twenty-sixth of March nineteen eighty-three, and William inherited.",
+"dur": 15.36
+},
+{
+"id": "1986",
+"date": "24 Jul 1986",
+"year": 1986,
+"base": "1947",
+"title": "High Court",
+"text": "On 24 July 1986 the High Court gave judgment for BP Properties, with possession suspended for six months.",
+"src": [
+"ca",
+"mt"
+],
+"parcels": {
+"AN": {
+"rec": "bpp",
+"case": "williams",
+"note": ""
+},
+"AM": {
+"rec": "bpp",
+"case": "williams",
+"note": ""
+},
+"AS": {
+"rec": "green",
+"case": "williams",
+"note": ""
+},
+"B": {
+"rec": "bpp",
+"case": "bpp",
+"note": ""
+}
+},
+"say": "On the twenty-fourth of July nineteen eighty-six the High Court gave judgment for BP Properties, with possession suspended for six months.",
+"dur": 8.02
+},
+{
+"id": "1987a",
+"date": "2 Feb 1987",
+"year": 1987,
+"base": "1947",
+"title": "The merger",
+"text": "On 2 February 1987, while the appeal was pending, an application was made to amalgamate the two titles. The house parcel joined the fields. BP's third of Parcel A and Parcel B became one registered title.",
+"src": [
+"ab",
+"reg83"
+],
+"merged": true,
+"parcels": {
+"AN": {
+"rec": "bpp",
+"case": "williams",
+"note": ""
+},
+"AM": {
+"rec": "bpp",
+"case": "williams",
+"note": "Amalgamated with WA231076 (application 2 Feb 1987)."
+},
+"AS": {
+"rec": "green",
+"case": "williams",
+"note": ""
+},
+"B": {
+"rec": "bpp",
+"case": "bpp",
+"note": "WA231076, now including the house parcel."
+}
+},
+"say": "On the second of February nineteen eighty-seven, while the appeal was pending, an application was made to amalgamate the two titles. The house parcel joined the fields. BP's third of Parcel A and Parcel B became one registered title.",
+"dur": 14.03
+},
+{
+"id": "1987b",
+"date": "31 Jul 1987",
+"year": 1987.5,
+"base": "1947",
+"title": "Court of Appeal",
+"text": "On 31 July 1987 the Court of Appeal dismissed William Buckler's appeal. The appeal was confined to the farmhouse and garden.",
+"src": [
+"ca"
+],
+"merged": true,
+"parcels": {
+"AN": {
+"rec": "bpp",
+"case": "williams",
+"note": ""
+},
+"AM": {
+"rec": "bpp",
+"case": "williams",
+"note": ""
+},
+"AS": {
+"rec": "green",
+"case": "williams",
+"note": ""
+},
+"B": {
+"rec": "bpp",
+"case": "bpp",
+"note": ""
+}
+},
+"say": "On the thirty-first of July nineteen eighty-seven the Court of Appeal dismissed William Buckler's appeal. The appeal was confined to the farmhouse and garden.",
+"dur": 8.31
+},
+{
+"id": "1988",
+"date": "1988",
+"year": 1988,
+"base": "1947",
+"title": "Eviction and demolition",
+"text": "In April 1988 the bailiffs were held off. Possession was taken on 30 November, and by 6 December the outbuildings and the farmhouse were demolished. Family recollection, 1988: a courtyard, with the barn to the west, sheds to the north and stables to the south. The wood lay to the north and the green to the south.",
+"src": [
+"mt",
+"rec88"
+],
+"merged": true,
+"recollection": true,
+"parcels": {
+"AN": {
+"rec": "bpp",
+"case": "williams",
+"note": ""
+},
+"AM": {
+"rec": "bpp",
+"case": "williams",
+"note": "Demolished 30 Nov to 6 Dec 1988."
+},
+"AS": {
+"rec": "green",
+"case": "williams",
+"note": ""
+},
+"B": {
+"rec": "bpp",
+"case": "bpp",
+"note": ""
+}
+},
+"say": "In April nineteen eighty-eight the bailiffs were held off. Possession was taken on the thirtieth of November, and by the sixth of December the outbuildings and the farmhouse were demolished. Family recollection, nineteen eighty-eight: a courtyard, with the barn to the west, sheds to the north and stables to the south. The wood lay to the north and the green to the south.",
+"dur": 20.35
+},
+{
+"id": "1990",
+"date": "1990–1994",
+"year": 1994,
+"base": "aerial",
+"title": "Afterwards",
+"text": "On 13 March 1990 outline permission was granted for housing on about 3·4 acres. In 1992 reserved matters were approved for 20 houses. On 10 November 1994 the wood passed to the Forest of Cardiff as title WA735527. This is the land as it looks today.",
+"src": [
+"pl_form",
+"pl_dec",
+"pl_plans",
+"woods"
+],
+"merged": true,
+"img": {
+"src": "img/ev-1989-location.jpg",
+"cap": "1989 location plan, site edged (89/01396/OUT)"
+},
+"parcels": {
+"AN": {
+"rec": "foc",
+"case": "williams",
+"note": "Woodland title WA735527, transferred 10 Nov 1994 (title plan not held)."
+},
+"AM": {
+"rec": "housing",
+"case": "williams",
+"note": "Housing under 89/01396/OUT and 92/00671/RES."
+},
+"AS": {
+"rec": "green",
+"case": "williams",
+"note": "Condition 5 (1990): at least 0.25 acre kept as village green."
+},
+"B": {
+"rec": "bpp",
+"case": "bpp",
+"note": "Later dealings in the fields are not traced on this map."
+}
+},
+"say": "On the thirteenth of March nineteen ninety outline permission was granted for housing on about three point four acres. In nineteen ninety-two reserved matters were approved for twenty houses. On the tenth of November nineteen ninety-four the wood passed to the Forest of Cardiff as title W A seven three five, five two seven. This is the land as it looks today.",
+"dur": 21.26
+}
+],
+"markers": [
+{
+"id": "round",
+"lat": 51.452695,
+"lon": -3.19922,
+"label": "Round feature in the yard",
+"text": "Unidentified (pond, well, horse-gin or older structure). Drawn on the OS sheets of 1878–79 and 1900.",
+"from_": 1878,
+"to": 1988,
+"kind": "feature",
+"src": [
+"os1900",
+"os1878"
+]
+},
+{
+"id": "house",
+"lat": 51.452625,
+"lon": -3.198533,
+"label": "Farmhouse (Tŷ Mawr)",
+"text": "The farmhouse, east side of the yard. Demolished December 1988.",
+"from_": 1877,
+"to": 1988,
+"kind": "building",
+"src": [
+"os1900",
+"mt"
+]
+},
+{
+"id": "barn",
+"lat": 51.452607,
+"lon": -3.199432,
+"label": "Barn (west)",
+"text": "Family recollection, 1988: the barn on the west side of the courtyard.",
+"from_": 1988,
+"to": 1988,
+"kind": "recollection",
+"src": [
+"rec88"
+]
+},
+{
+"id": "sheds",
+"lat": 51.452786,
+"lon": -3.199343,
+"label": "Sheds (north)",
+"text": "Family recollection, 1988: sheds on the north side of the courtyard.",
+"from_": 1988,
+"to": 1988,
+"kind": "recollection",
+"src": [
+"rec88"
+]
+},
+{
+"id": "stables",
+"lat": 51.452543,
+"lon": -3.199226,
+"label": "Stables (south)",
+"text": "Family recollection, 1988: stables on the south side of the courtyard.",
+"from_": 1988,
+"to": 1988,
+"kind": "recollection",
+"src": [
+"rec88"
+]
+}
+]
+}
