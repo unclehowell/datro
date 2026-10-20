@@ -226,7 +226,7 @@ function RampRoadmap({ inst }: { inst: AvInstitution }) {
 }
 
 function Home() {
-  const [instId, setInstId] = useState("hmlr");
+  const [instId, setInstId] = useState("llandough");
   const [sheet, setSheet] = useState<Sheet | null>(null);
   const inst = useMemo(() => institutions.find((i) => i.id === instId) ?? institutions[0], [instId]);
   const close = useCallback(() => setSheet(null), []);
