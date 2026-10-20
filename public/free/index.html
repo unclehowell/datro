@@ -27,9 +27,9 @@ label.c{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#cfcfc
 <div style="position:absolute;left:-5000px" aria-hidden="true"><input type="text" name="b_284f08fe7e1b8d39250808104_6139ff4a0d" tabindex="-1" value=""></div>
 <label class="c"><input type="checkbox" id="ok" required><span>Yes, email me the free e-book and up to one update a week about the Great House Farm research and books. I can unsubscribe at any time. DATRO CONSORTIUM LIMITED uses Mailchimp to send these emails; see the <a href="https://bucklerfamily.estate/legal/">privacy notice</a>.</span></label>
 <button class="btn" type="submit">Send me the free e-book</button>
-<p class="small">We will email you a link to confirm your address (double opt-in). Nothing is added to the list until you confirm.</p>
+<p class="small">A secure Mailchimp page opens to check you are human, then we email you a link to confirm your address (double opt-in). Nothing is added to the list until you confirm.</p>
 </form>
-<div id="done" hidden><h3>Nearly there: check your inbox</h3><p>Tap the confirm link in the email from us. While you wait, your copy is ready:</p>
+<div id="done" hidden><h3>Nearly there</h3><p>Finish the short check in the Mailchimp tab, then tap the confirm link in the email from us. Your copy is ready now:</p>
 <p><a class="btn" href="https://ebooks.bucklerfamily.estate/api/free?book=wiki@0.1.0">Download the free e-book (PDF, 28 MB)</a></p>
 <p class="small">Big file: on a phone, Wi-Fi is best.</p></div>
 <p id="err" class="small" hidden></p>
@@ -44,17 +44,12 @@ label.c{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#cfcfc
 document.getElementById('us').value=(q.get('utm_source')||'direct')+'/'+(q.get('utm_medium')||'');
 document.getElementById('uc').value=(q.get('utm_campaign')||'')+'/'+(q.get('utm_content')||'');
 var f=document.getElementById('f');
-f.addEventListener('submit',function(ev){ev.preventDefault();var err=document.getElementById('err');err.hidden=true;
+f.addEventListener('submit',function(ev){var err=document.getElementById('err');err.hidden=true;
 var e=document.getElementById('e').value.trim();
-if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)){err.textContent='Please enter a valid email address.';err.hidden=false;return}
-if(!document.getElementById('ok').checked){err.textContent='Please tick the box to agree to the emails.';err.hidden=false;return}
+if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)){ev.preventDefault();err.textContent='Please enter a valid email address.';err.hidden=false;return}
+if(!document.getElementById('ok').checked){ev.preventDefault();err.textContent='Please tick the box to agree to the emails.';err.hidden=false;return}
 document.getElementById('cs').value='free-wiki form '+new Date().toISOString()+' '+location.hostname+location.pathname;
-var p=new URLSearchParams(new FormData(f));var cb='mc'+Date.now();
-window[cb]=function(r){delete window[cb];
-if(r&&r.result==='success'||(r&&/already subscribed/i.test(r.msg||''))){f.hidden=true;document.getElementById('done').hidden=false;
-try{if(window.fbq)fbq('track','Lead')}catch(x){}}
-else{err.innerHTML=(r&&r.msg?String(r.msg).replace(/<[^>]+>/g,''):'Something went wrong. Please try again.');err.hidden=false}};
-var s=document.createElement('script');s.src=f.action.replace('/post?','/post-json?')+'&'+p.toString()+'&c='+cb;
-s.onerror=function(){f.submit()};document.body.appendChild(s);});})();
+try{if(window.fbq)fbq('track','Lead')}catch(x){}
+setTimeout(function(){f.hidden=true;document.getElementById('done').hidden=false;window.scrollTo(0,0)},300);});})();
 </script>
 <div class="foot"><p>Our case, prospective. Not a finding of any court.</p><p>— Sion's Tab agent</p><p class="small">Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth · <a href="https://bucklerfamily.estate/legal/">Terms &amp; privacy</a> · <a href="https://bucklerfamily.estate/ai-policy/">AI use &amp; provenance</a> · <a href="mailto:info@bucklerfamily.estate">info@bucklerfamily.estate</a></p></div></main></body></html>
