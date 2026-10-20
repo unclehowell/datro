@@ -81,7 +81,7 @@ INSERT INTO nodes VALUES ('scene:ghf-18970527-1','scene','I.17 The first wireles
 INSERT INTO nodes VALUES ('scene:ghf-19070401-1','scene','I.18 Air-rifle meeting at Great House Farm','{"date": "1907-04-01", "act": "I", "grade": "documented"}');
 INSERT INTO nodes VALUES ('scene:ghf-19080101-1','scene','I.19 John Williams','{"date": "1908-01-01", "act": "I", "grade": "documented"}');
 INSERT INTO nodes VALUES ('scene:ghf-19080106-1','scene','I.20 A poacher caught on Great House Farm','{"date": "1908-01-06", "act": "I", "grade": "single-source"}');
-INSERT INTO nodes VALUES ('scene:ghf-19130810-1','scene','I.21 Birth of Mary Williams','{"date": "1913-08-10", "act": "I", "grade": "testimony-only"}');
+INSERT INTO nodes VALUES ('scene:ghf-19130810-1','scene','I.21 Birth of Mary (Nancy) Williams','{"date": "1913-08-10", "act": "I", "grade": "testimony-only"}');
 INSERT INTO nodes VALUES ('scene:ghf-19160201-1','scene','II.1 The 1916 tenancy','{"date": "1916-02-01", "act": "II", "grade": "contested"}');
 INSERT INTO nodes VALUES ('scene:ghf-19280101-1','scene','II.2 Last rent on the house','{"date": "1928-01-01", "act": "II", "grade": "single-source"}');
 INSERT INTO nodes VALUES ('scene:ghf-19360101-1','scene','II.3 Marriage','{"date": "1936-01-01", "act": "II", "grade": "single-source"}');
@@ -116,7 +116,7 @@ INSERT INTO nodes VALUES ('scene:ghf-19800522-1','scene','IV.10 Hansard','{"date
 INSERT INTO nodes VALUES ('scene:ghf-19821001-1','scene','IV.11 GGAT advice','{"date": "1982-10-01", "act": "IV", "grade": "documented"}');
 INSERT INTO nodes VALUES ('scene:ghf-19821119-1','scene','IV.12 First registration','{"date": "1982-11-19", "act": "IV", "grade": "single-source"}');
 INSERT INTO nodes VALUES ('scene:ghf-19830223-1','scene','IV.13 Farmhouse title','{"date": "1983-02-23", "act": "IV", "grade": "single-source"}');
-INSERT INTO nodes VALUES ('scene:ghf-19830326-1','scene','IV.14 Death of Mary Williams','{"date": "1983-03-26", "act": "IV", "grade": "testimony-only"}');
+INSERT INTO nodes VALUES ('scene:ghf-19830326-1','scene','IV.14 Death of Mary (Nancy) Williams','{"date": "1983-03-26", "act": "IV", "grade": "testimony-only"}');
 INSERT INTO nodes VALUES ('scene:ghf-19830408-1','scene','IV.15 Registration correspondence','{"date": "1983-04-08", "act": "IV", "grade": "single-source"}');
 INSERT INTO nodes VALUES ('scene:ghf-19840522-1','scene','V.1 The writ','{"date": "1984-05-22", "act": "V", "grade": "documented"}');
 INSERT INTO nodes VALUES ('scene:ghf-19860710-1','scene','V.2 High Court judgment','{"date": "1986-07-10", "act": "V", "grade": "single-source"}');
@@ -190,7 +190,7 @@ INSERT INTO nodes VALUES ('scene:ghf-99990101-4','scene','E.2 The two parcels in
 INSERT INTO nodes VALUES ('scene:ghf-99990101-2','scene','E.3 The site today','{"date": "9999-01-02", "act": "E", "grade": "argument"}');
 INSERT INTO nodes VALUES ('scene:ghf-99990101-3','scene','E.4 Village history','{"date": "9999-01-02", "act": "E", "grade": "single-source"}');
 INSERT INTO nodes VALUES ('scene:ghf-99990102-1','scene','E.5 The family''s requests','{"date": "9999-01-03", "act": "E", "grade": "argument"}');
-INSERT INTO nodes VALUES ('person:mary','person','Mary Williams (Mrs Buckler)','{"years": "1913 – 1983"}');
+INSERT INTO nodes VALUES ('person:mary','person','Mary (Nancy) Williams, formerly Buckler','{"years": "1913 – 1983"}');
 INSERT INTO nodes VALUES ('person:john','person','John Williams','{"years": "d. after 1949"}');
 INSERT INTO nodes VALUES ('person:frederick','person','Frederick Buckler','{"years": "1910/11 – 1967"}');
 INSERT INTO nodes VALUES ('person:billy','person','William "Billy" Buckler','{"years": "c. 1948 – 1990"}');
@@ -1608,6 +1608,7 @@ INSERT INTO edges VALUES ('scene:ghf-19740703-1','person:bp','features');
 INSERT INTO edges VALUES ('scene:ghf-19740703-1','person:courts','features');
 INSERT INTO edges VALUES ('scene:ghf-19741031-1','person:mary','features');
 INSERT INTO edges VALUES ('scene:ghf-19741031-1','person:bp','features');
+INSERT INTO edges VALUES ('scene:ghf-19741031-1','person:courts','features');
 INSERT INTO edges VALUES ('scene:ghf-19750523-1','person:bp','features');
 INSERT INTO edges VALUES ('scene:ghf-19750523-1','person:courts','features');
 INSERT INTO edges VALUES ('scene:ghf-19751201-1','person:hmlr','features');
