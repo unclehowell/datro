@@ -16,6 +16,8 @@ Fields
             records-era scene (2025+) show the record it is about
   basis     how the date was established (filename, caption, read off the image)
   exclude   reason the image is never shown on a slide (privacy, graphic, ...)
+  allow_scenes  scene ids on which an UNDATED picture may be shown as a curated
+            image, by Sion Buckler's express instruction only (caption says "undated")
 
 Anything NOT in this register (for example the 293 undated family-album
 photographs "Great House Farm Part 1-3 - NNN" on wayback) is undated and is
@@ -25,6 +27,7 @@ To add a new picture: add a row here with a date you can show, then rebuild.
 """
 
 REGISTER = [
+    {"url": "/media/ghf-album-p1-080-roof-beams.jpg", "item": "ALBUM-P1-080", "title": "Roof (loft) beams at Great House Farm — undated photograph (Great House Farm Part 1, no. 080): the roof beams referred to", "date": None, "approx": False, "released": None, "basis": "undated family-album print on wayback; shown only on the 1988 Cadw inspection slide, on Sion Buckler's instruction of 20 Oct 2026", "exclude": None, "allow_scenes": ["ghf-19881204-1"]},
     {"url": "/media/1897-05-13-flat-holm-post-office-engineers-marconi.jpg", "item": "FLATHOLM-1897", "title": "Post Office engineers inspect Marconi's apparatus on Flat Holm, 13 May 1897 (as captioned by the source)", "date": "1897-05-13", "approx": False, "released": None, "basis": "filename + source caption (Cardiff Council Flat Holm Project, via Wikimedia Commons)", "exclude": None},
     {"url": "/media/1881-census-rg11-5288-p2.jpg", "item": "EV-0224", "title": "1881 census, Llandough, RG11/5288 p.2", "date": "1881-04-03", "approx": False, "released": None, "basis": "filename + census night (3 April 1881)", "exclude": None},
     {"url": "/media/1988-cadw-farmhouse.jpg", "item": "CADW-1988-FH", "title": "Cadw survey photograph of the farmhouse, 29 July 1988", "date": "1988-07-29", "approx": False, "released": "2026-06-11", "basis": "caption (ATISN 27021)", "exclude": None},

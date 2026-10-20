@@ -350,6 +350,10 @@ ACCOUNTS = {
     received="Cadw gave the house fair consideration.",
     words=[],
     known="Cadw had already coded the house just below the bar in July."),
+'ghf-19881204-1': dict(
+    received="Cadw judged the house from the outside and found nothing worth listing.",
+    words=[('"the roof beams being high"', 'What the Cadw officers remarked inside the house, as Branwen recalls (statement of 19 October 2026).')],
+    known="Cadw officers came inside the house and looked at its fabric, roof beams included (witness statement of Branwen, 19 October 2026). Cadw confirms the house was visited and assessed by its inspectors, but holds only two photographs of 29 July 1988: no survey, no notes, no report and no record of the officers. The date of the visit Branwen describes is source pending; our case is that it fell in the days before the 5 December 1988 refusal."),
 'ghf-19881205-1': dict(
     received="The house was not worth listing, and the courts had ruled.",
     words=[('"not of sufficient architectural merit"', 'Cadw, 5 December 1988.')],

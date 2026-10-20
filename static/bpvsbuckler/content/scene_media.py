@@ -137,6 +137,8 @@ def check_one(scene, period, row, curated):
         return 'not in media_register.py (date not established)'
     if row.get('exclude'):
         return 'excluded: ' + row['exclude']
+    if curated and scene.get('id') in (row.get('allow_scenes') or []):
+        return None                         # named exception (see media_register.py allow_scenes)
     rng = media_range(row.get('date'), row.get('approx'))
     rel = media_range(row.get('released'))
     if period is None:                      # undated scene: curated + dated only

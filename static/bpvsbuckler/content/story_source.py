@@ -704,6 +704,16 @@ sc('VI', 'ghf-19881203-1', '1988-12-03', '3 – 5 December 1988', "Spot-listing"
    'Official correspondence',
    "Over the weekend of 3–5 December 1988 Cadw considers spot-listing without access to the interior.",
    [CADW_CRIT, press('N08', "South Wales Echo, 3 December 1988 — Cadw considering spot-listing")])
+sc('VI', 'ghf-19881204-1', '1988-12-04', '1988 — date not established (before 5 December 1988)', "Cadw inspection of the house", 'Great House Farm', 'A',
+   'Witness statement',
+   "Cadw officers come into the house, carry out a survey and report, and remark on the roof beams being high (witness statement of Branwen, who lived at the farm until 1988, given on 19 October 2026). Cadw confirms in writing that the house was visited and assessed for listing by its inspectors; its two photographs are dated 29 July 1988. A further Cadw visit was announced for the weekend of 3–4 December 1988, and Cadw declined to list on 5 December. Our case: the inspection took place in the days before that refusal; the exact date is source pending.",
+   [w('/evidence/ev-0255-witness-statement-branwen-cadw-inspection-1988/', 'EV-0255 — Witness statement of Branwen: Cadw inspection of the house, 1988', 'Witness statement'),
+    w('/evidence/cadw-welsh-government-correspondence/#m12', 'Cadw, 21 May 2026: assessed and rejected for listing in the 1988 community survey of Llandough; photographs dated 29 July 1988', 'Official correspondence'),
+    CADW_PH,
+    press('N08', "South Wales Echo, 3 December 1988 — inspector to visit the farmhouse 'this weekend'"),
+    {'type': 'Photograph', 'title': 'Roof (loft) beams at Great House Farm — undated photograph, Great House Farm Part 1, no. 080 (Wayback archive): the roof beams referred to',
+     'url': 'https://wayback.bucklerfamily.estate/images/0000-00-00%20-%20Great%20House%20Farm%20Part%201%20-%20080%20-%20EN%20-%20V0.0.0.00.jpg', 'image': '/media/ghf-album-p1-080-roof-beams.jpg'}],
+   image='/media/ghf-album-p1-080-roof-beams.jpg')
 sc('VI', 'ghf-19881205-1', '1988-12-05', 'Monday 5 December 1988', "Final hearing; listing refused", 'Cardiff', 'A',
    'Newspaper',
    "On 5 December 1988 Judge Norman Francis refuses to continue the injunction pending the European Commission. The same day Cadw states the house is not of sufficient merit to list.",
