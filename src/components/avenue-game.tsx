@@ -3,6 +3,7 @@ import {
   avenueEmails,
   institutions,
   isFee,
+  isPaid,
   outcomeInfo,
   statusInfo,
   type AvInstitution,
@@ -25,6 +26,8 @@ export type GameHit =
 const W = 360;
 const TOP = 78;
 const LH = 50;
+/** Girder spacing: tall ramps (many rungs) pack tighter so the climb stays phone-sized. */
+const lhFor = (n: number) => (n <= 13 ? LH : Math.max(40, Math.round((13 * LH) / n + 8)));
 const BOTTOM = 26;
 const X0 = 14;
 const X1 = W - 14;
@@ -38,7 +41,7 @@ function girder(level: number, n: number) {
   // Each girder rises towards its ladder, so the climber only ever walks uphill and climbs up.
   // Even levels: gap on the left, high end (and ladder) on the right. Odd levels: the mirror.
   // Barrels roll downhill, away from the ladder, and drop off the low end onto the girder below.
-  const yBase = TOP + (n - 1 - level) * LH + 30;
+  const yBase = TOP + (n - 1 - level) * lhFor(n) + 30;
   const highRight = level % 2 === 0;
   const left = highRight ? X0 + GAP : X0;
   const right = highRight ? X1 : X1 - GAP;
@@ -449,7 +452,7 @@ export function AvenueGame({
   slideCb.current = onSlide;
   const justDragged = useRef(0);
   const n = inst.levels.length;
-  const H = TOP + n * LH + BOTTOM;
+  const H = TOP + n * lhFor(n) + BOTTOM;
   const replies = useMemo(() => {
     const seen = new Set<number>();
     for (const level of inst.levels) for (const i of level.items) if (!avenueEmails[i].out) seen.add(i);
@@ -804,8 +807,14 @@ export function AvenueGame({
       inst.levels.forEach((level, li) => {
         const g = girder(li, n);
         ctx.fillStyle = level.status === "na" ? "#59606b" : "rgba(244,239,230,0.62)";
-        const label = (li + 1).toString() + " " + (level.phase === "foi" && !level.applicable ? "FOI" : shortName(level));
+        const label = (li + 1).toString() + " " + (level.rung ? level.rung.s : level.phase === "foi" && !level.applicable ? "FOI" : shortName(level));
         ctx.fillText(label, g.left + 2, g.yAt(g.left + 2) + 17);
+        if (level.rung && isPaid(level.rung)) {
+          // PAID rung: a money route, not used (Sion pays for nothing)
+          const w = ctx.measureText(label).width;
+          ctx.fillStyle = "#ffd34d";
+          ctx.fillText(" PAID", g.left + 2 + w, g.yAt(g.left + 2) + 17);
+        }
       });
       for (const s of st.slots) {
         if (s.out) drawCrate(ctx, s);
@@ -913,6 +922,11 @@ export function AvenueGame({
           ?
         </button>
       </div>
+      {inst.ramp && (
+        <p className="mb-2 px-1 text-xs leading-snug text-muted" data-ramp={inst.id}>
+          <span className="text-fg">{inst.ramp.rungs.length} rungs</span> · {inst.ramp.regimes.join(" · ")}
+        </p>
+      )}
       <div
         ref={wrapRef}
         className="overflow-hidden rounded-2xl border border-line outline-none focus-visible:ring-2 focus-visible:ring-[#ffd34d]"

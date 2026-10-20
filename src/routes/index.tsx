@@ -11,7 +11,11 @@ import {
   institutions,
   outcomeInfo,
   phases,
+  isPaid,
+  rampStateInfo,
+  ramps,
   statusInfo,
+  type Rung,
   type AvDoc,
   type AvInstitution,
   type AvLevel,
@@ -100,6 +104,125 @@ function nextAvenue(inst: AvInstitution, from: number) {
     if (l.applicable && l.status === "available") return l;
   }
   return undefined;
+}
+
+
+/** Legal basis line for one rung: the statute or guidance, and the body's own policy where we have it. */
+function LegalBasis({ rung }: { rung: Rung }) {
+  return (
+    <p className="mt-3 text-xs leading-relaxed text-faint">
+      <span className="text-muted">Legal basis:</span>{" "}
+      <a href={rung.url} target="_blank" rel="noreferrer" className="text-brass underline underline-offset-4">
+        {rung.law}
+      </a>
+      {rung.pol && rung.polurl && (
+        <>
+          {" · "}
+          <span className="text-muted">Policy:</span>{" "}
+          <a href={rung.polurl} target="_blank" rel="noreferrer" className="text-brass underline underline-offset-4">
+            {rung.pol}
+          </a>
+        </>
+      )}
+      {rung.ev && rung.ev.length > 0 && (
+        <>
+          <br />
+          <span className="text-muted">Evidence:</span>{" "}
+          {rung.ev.map((e, i) => (
+            <span key={e.id}>
+              {i > 0 && ", "}
+              <a href={e.url} target="_blank" rel="noreferrer" className="text-brass underline underline-offset-4">
+                {e.id}
+              </a>
+            </span>
+          ))}
+        </>
+      )}
+    </p>
+  );
+}
+
+function CostChip({ rung }: { rung: Rung }) {
+  return isPaid(rung) ? <Chip colour="#ffd34d">PAID: not used</Chip> : <Chip colour="var(--color-brass)">Free</Chip>;
+}
+
+function RungSheet({ inst, level, index }: { inst: AvInstitution; level: AvLevel; index: number }) {
+  const rung = level.rung as Rung;
+  const sent = level.items.filter((i) => avenueEmails[i].out).length;
+  const got = level.items.length - sent;
+  const dates = level.items.map((i) => avenueEmails[i].d);
+  const fees = level.items.filter(isFee);
+  const next = inst.levels.slice(index + 1).find((l) => l.rung && l.rung.st === "open");
+  return (
+    <div>
+      <p className="text-xs tracking-[0.16em] text-brass uppercase">
+        {instNumber(inst.id)} · {inst.short} · rung {index + 1} of {inst.levels.length}
+      </p>
+      <h2 className="mt-1 font-serif text-2xl leading-tight">{rung.t}</h2>
+      <div className="mt-3 flex flex-wrap gap-2">
+        <Chip colour={statusInfo[level.status].colour}>{rampStateInfo[rung.st].label}</Chip>
+        <CostChip rung={rung} />
+      </div>
+      <p className="mt-3 text-sm leading-relaxed text-muted">{rung.w}</p>
+      {rung.did && (
+        <p className="mt-2 text-sm leading-relaxed text-fg">
+          <span className="text-brass">So far: </span>
+          {rung.did}
+        </p>
+      )}
+      {rung.next && <p className="mt-2 text-sm leading-relaxed text-fg">Next: {rung.next}</p>}
+      <div className="mt-3">
+        <Row k="Time limit" v={rung.time && rung.time !== "—" ? rung.time : undefined} />
+        <Row k="Cost" v={rung.cost && rung.cost !== "—" ? rung.cost : undefined} />
+        <Row k="Emails" v={level.items.length ? `${sent} sent · ${got} received` : undefined} />
+        <Row k="First / last" v={dates.length ? `${fmtDate(dates[0])} – ${fmtDate(dates[dates.length - 1])}` : undefined} />
+        <Row k="Still open" v={level.open.length || level.late.length ? `${level.open.length + level.late.length} thread(s)` : undefined} />
+        <Row k="Next open rung" v={next?.rung?.t} />
+      </div>
+      <LegalBasis rung={rung} />
+      <FeeList list={fees} />
+    </div>
+  );
+}
+
+function RampRoadmap({ inst }: { inst: AvInstitution }) {
+  const ramp = inst.ramp!;
+  const n = (st: string) => ramp.rungs.filter((r) => r.st === st).length;
+  return (
+    <div>
+      <p className="text-xs tracking-[0.16em] text-brass uppercase">Ramp · {ramp.rungs.length} rungs</p>
+      <h2 className="mt-1 font-serif text-2xl leading-tight">
+        {instNumber(inst.id)} · {inst.name}
+      </h2>
+      <p className="mt-2 text-sm leading-relaxed text-muted">{ramp.kind}</p>
+      <p className="mt-2 text-sm leading-relaxed text-fg">{ramp.note}</p>
+      <p className="mt-2 text-sm text-muted">
+        {n("done")} done · {n("pending") + n("overdue")} pending{n("overdue") ? ` (${n("overdue")} overdue)` : ""}{n("queued") ? ` · ${n("queued")} queued` : ""} · {n("open")} open · {n("na")} not used
+      </p>
+      <ol className="mt-3 flex flex-col-reverse gap-2">
+        {inst.levels.map((l, i) => {
+          const r = l.rung as Rung;
+          return (
+            <li key={r.k} className="flex items-start gap-2 text-sm">
+              <span className="mt-1 size-3 shrink-0 rounded-sm" style={{ background: statusInfo[l.status].colour }} />
+              <span className="min-w-0">
+                <span className={r.st === "na" ? "text-faint line-through" : "text-fg"}>
+                  {i + 1}. {r.t}
+                </span>
+                {isPaid(r) && <span className="text-[#ffd34d]"> · PAID</span>}
+                {l.items.length ? <span className="text-faint"> · {l.items.length}</span> : null}
+                <br />
+                <a href={r.url} target="_blank" rel="noreferrer" className="text-xs text-brass underline underline-offset-2">
+                  {r.law}
+                </a>
+              </span>
+            </li>
+          );
+        })}
+      </ol>
+      <p className="mt-4 text-xs leading-relaxed text-faint">{ramps.note}</p>
+    </div>
+  );
 }
 
 function Home() {
@@ -291,6 +414,7 @@ function GameSheet({ hit, inst, slide }: { hit: GameHit; inst: AvInstitution; sl
 }
 
 function LevelSheet({ inst, level, index }: { inst: AvInstitution; level: AvLevel; index: number }) {
+  if (level.rung) return <RungSheet inst={inst} level={level} index={index} />;
   const ph = phases[level.phase];
   const sent = level.items.filter((i) => avenueEmails[i].out).length;
   const got = level.items.length - sent;
@@ -322,6 +446,7 @@ function LevelSheet({ inst, level, index }: { inst: AvInstitution; level: AvLeve
 }
 
 function RoadmapSheet({ inst }: { inst: AvInstitution }) {
+  if (inst.ramp) return <RampRoadmap inst={inst} />;
   const used = inst.levels.filter((l) => l.status === "done").length;
   const open = inst.levels.filter((l) => l.status === "progress" || l.status === "overdue").length;
   const left = inst.levels.filter((l) => l.status === "available").length;
@@ -362,8 +487,9 @@ function KeySheet() {
       </div>
       <p className="mt-4 text-sm leading-relaxed text-muted">
         Top: the dartboard. Each slice is an institution, each ring a step inward from first enquiry to tribunal. Below: pick an
-        institution. The ape is that institution and its barrels are its replies; the climber is Sion. Each girder is one avenue,
-        first at the bottom, court-ordered disclosure at the top. Crates are emails Sion sent, small barrels are replies. Tap
+        institution. The ape is that institution and its barrels are its replies; the climber is Sion. Each girder is one rung of that institution's own
+        ladder, built from UK law and the body's own policies: first step at the bottom, court routes at the top. Tap a girder for its
+        time limit, cost and legal basis; PAID marks a route that costs money. Crates are emails Sion sent, small barrels are replies. Tap
         anything for details. The number on each outer slice matches the number in the dropdown. A yellow $ marks where the
         institution sought or mentioned a fee: a cost-limit refusal, a fees notice, or a copy or search charge.
       </p>

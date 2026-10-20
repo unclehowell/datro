@@ -38,6 +38,48 @@
  *  - Charities Act 2011 (Charity Commission); CIfA register of Registered Organisations.
  */
 
+import rampsJson from "./ramps.json";
+
+/**
+ * Per-institution ramps (20 Oct 2026): each institution's own disclosure ladder, built from UK law
+ * (legislation.gov.uk), ICO guidance and the body's own published policies. Stored as data in
+ * ramps.json; applyRamps() turns each rung into a girder of the climb and carries the emails of the
+ * matching avenue onto it (field "em"). Rung states: done / pending / overdue / open / na.
+ */
+export type RampState = "done" | "pending" | "queued" | "overdue" | "open" | "na";
+export type Rung = {
+  k: string;
+  ph: PhaseKey;
+  t: string;
+  s: string;
+  w: string;
+  law: string;
+  url: string;
+  time: string;
+  cost: string;
+  st: RampState;
+  did?: string;
+  next?: string;
+  pol?: string;
+  polurl?: string;
+  em?: PhaseKey[];
+  /** Legal Wiki evidence pages behind this rung. */
+  ev?: { id: string; url: string }[];
+};
+export type RampInstitution = { id: string; name: string; short: string; kind: string; regimes: string[]; note: string; rungs: Rung[]; new: boolean };
+export type RampData = { asOf: string; note: string; states: Record<RampState, string>; institutions: RampInstitution[] };
+export const ramps = rampsJson as unknown as RampData;
+export const rampStateInfo: Record<RampState, { label: string; status: AvStatus }> = {
+  done: { label: "Done", status: "done" },
+  pending: { label: "Pending: waiting on them", status: "progress" },
+  queued: { label: "Queued: drafted, not sent", status: "available" },
+  overdue: { label: "Overdue", status: "overdue" },
+  open: { label: "Open: not used yet", status: "available" },
+  na: { label: "Not available / not used", status: "na" },
+};
+/** A rung that itself costs money (its cost starts with PAID). "Free (copies PAID)" is a free rung. */
+export const isPaid = (r: Rung) => /^PAID/.test(r.cost);
+
 export type PhaseKey = "enquiry" | "foi" | "eir" | "sar" | "review" | "complaint" | "ico" | "icr" | "psow" | "phso" | "iopc" | "iac" | "ccw" | "charity" | "regulator" | "democratic" | "petition" | "register" | "courtrec" | "tribunal" | "preaction" | "disclosure";
 export type AvStatus = "done" | "progress" | "overdue" | "available" | "na";
 export type Outcome = "sent" | "auto" | "ack" | "reply" | "answered" | "notheld" | "refused";
@@ -66,8 +108,10 @@ export type AvLevel = {
   late: string[];
   /** Hand-checked note, when there is one. */
   hand: string;
+  /** This institution's own rung (from ramps.json), when the ramp is tailored. */
+  rung?: Rung;
 };
-export type AvInstitution = { id: string; name: string; short: string; kind: string; wheel: string[]; levels: AvLevel[] };
+export type AvInstitution = { id: string; name: string; short: string; kind: string; wheel: string[]; levels: AvLevel[]; ramp?: RampInstitution };
 
 export const avenuesAsOf = "2026-10-19";
 export const archiveThreadUrl = (thread: string) => `https://email.bucklerfamily.estate/reference/${thread}`;
@@ -1033,7 +1077,7 @@ export const avenueEmails: AvEmail[] = [{"d":"2016-11-20","out":false,"o":"auto"
 {"d":"2026-10-18","out":true,"o":"sent","s":"Re: Chase — Vale of Glamorgan FOI 00210772 internal review — 15 October 2026","r":["00210772"],"t":"1a141cc190751565","i":["vale"]},
 {"d":"2026-10-19","out":false,"o":"notheld","s":"Welsh Government response to request for information ATISN 26-0010 (Retention & destruction schedules))","r":["ATISN26-0010"],"t":"1a1537b442f27f72","i":["cadw"],"from":"Departmental Records Officer, Welsh Government (sent by its Business Management Unit, 10:25 BST)","sum":"Disclosure response to ATISN 26-0010 (retention and destruction schedules). It points to the published retention schedules. Searches for the farm name, Western Ground Rents Ltd and BP Properties Ltd found no files. Any routine records would have been destroyed under the schedule of the time, or never passed to the Welsh Government. An internal review can be asked for within 40 working days (by 14 Dec 2026, computed).","q":["Searches were carried out to find files mentioning the farm name and the companies listed in your request. No files were found and given the date range of your request, any routine records would have been destroyed in line with the corporate retention schedule applied at the time.","Given the date range for the search, it is equally possible that records relating to this would not have been transferred to Welsh Government and disposition would have been carried out by a predecessor body.","Records relating to Welsh Government property/deeds/leasing etc. are not transferred to TNA as they are not classed as “public records” like our business records are. These would be retained until the property is sold or lease agreements terminated.","If you are dissatisfied with the Welsh Government’s handling of your request, you can ask for an internal review within 40 working days of the date of this response."],"pdf":[{"label":"ATISN 26-0010 disclosure response (PDF, 2 pages)","url":"/docs/2026-10-19_welsh-government_atisn-26-0010_disclosure-response.pdf","wayback":"https://wayback.bucklerfamily.estate/pdf/foi/2026-10-19_welsh-government_atisn-26-0010_disclosure-response.pdf"}]},
 {"d":"2026-10-19","out":false,"o":"refused","s":"RE: FOI — Welsh Office / Cadw papers, July–December 1988 — Great House Farm (Ty Mawr), Llandough — following 26FOI 103 (ATISN 27589)","r":["ATISN27589","qA2496208"],"t":"1a154577a09c3329","i":["cadw"],"from":"Head of Historic Environment Inspectorate (Chief Inspector), Cadw (14:26 BST)","sum":"ATISN 27589 (Welsh Office / Cadw papers, July–December 1988) refused under FOIA s.14(2) as a repeat of ATISN 27021, which was already answered and internally reviewed. The letter links the ATISN 27021 release page and names the ICO. It does not mention an internal review.","q":["The information you have requested was the subject of a previous request submitted by you under reference (ATISN 27021), to which Welsh Government has already responded, including undertaking an internal review.","Following a review of your latest request, we are satisfied that it is substantially similar to the earlier request and that no new information has been generated or become available since our previous response.","Accordingly, Welsh Government is refusing your request under section 14(2) of the Freedom of Information Act 2000","You have the right to complain to the Information Commissioner."],"pdf":[{"label":"ATISN 27589 response, ref qA2496208 (PDF, 2 pages)","url":"/docs/2026-10-19_cadw_atisn-27589_response-s14-2.pdf","wayback":"https://wayback.bucklerfamily.estate/pdf/foi/2026-10-19_cadw_atisn-27589_response-s14-2.pdf"}]}];
-export const institutions: AvInstitution[] = [{"id":"hmlr","name":"HM Land Registry","short":"Land Registry","kind":"hmlr","wheel":["hmlr"],"levels":[{"phase":"enquiry","applicable":true,"note":"","status":"progress","deadline":"","items":[59,69,70,104,105,106,110,114,115,273,274,367,494,495,500,501,510,511,513,534,552,553,567,608,613,614,658,671,744],"open":["1a141af7e036c3a1"],"late":[],"hand":""},{"phase":"foi","applicable":true,"note":"","status":"progress","deadline":"2026-07-01","items":[33,34,56,73,99,100,101,102,103,146,148,177,178,179,180,325,328,366],"open":["19c091a0a10b8e0d","19c126c7628a9311","19c2eaf3dc886f7e","19c63e3b39172545","19e8c4ad3afa8c66","19e8c522b6abd40e","19e8c5f645277041","19e8c6f80bd64bee"],"late":[],"hand":""},{"phase":"sar","applicable":true,"note":"","status":"progress","deadline":"2026-10-28","items":[591,645],"open":["1a0e3f997bc1bf94"],"late":[],"hand":""},{"phase":"review","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"complaint","applicable":true,"note":"","status":"progress","deadline":"2026-06-30","items":[111,120,172],"open":["19da726f00b0bc06","19e861826be48ecb"],"late":[],"hand":""},{"phase":"ico","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"icr","applicable":true,"note":"","status":"done","deadline":"","items":[547,563,564,580,583,610,669,676,711],"open":[],"late":[],"hand":""},{"phase":"democratic","applicable":true,"note":"","status":"progress","deadline":"","items":[40,41,49,52,53,54,55,76,77,241,243,311,352,353,387,515,516,521,522,523,550,551,698,700],"open":["1a11a41c4126f155"],"late":[],"hand":""},{"phase":"phso","applicable":true,"note":"","status":"done","deadline":"","items":[35,240],"open":[],"late":[],"hand":""},{"phase":"register","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"tribunal","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"preaction","applicable":true,"note":"","status":"progress","deadline":"","items":[181,593,604],"open":["19e8de794edda2e0","1a0e9e1e5a4586bf"],"late":[],"hand":""},{"phase":"disclosure","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""}]},
+const baseInstitutions: AvInstitution[] = [{"id":"hmlr","name":"HM Land Registry","short":"Land Registry","kind":"hmlr","wheel":["hmlr"],"levels":[{"phase":"enquiry","applicable":true,"note":"","status":"progress","deadline":"","items":[59,69,70,104,105,106,110,114,115,273,274,367,494,495,500,501,510,511,513,534,552,553,567,608,613,614,658,671,744],"open":["1a141af7e036c3a1"],"late":[],"hand":""},{"phase":"foi","applicable":true,"note":"","status":"progress","deadline":"2026-07-01","items":[33,34,56,73,99,100,101,102,103,146,148,177,178,179,180,325,328,366],"open":["19c091a0a10b8e0d","19c126c7628a9311","19c2eaf3dc886f7e","19c63e3b39172545","19e8c4ad3afa8c66","19e8c522b6abd40e","19e8c5f645277041","19e8c6f80bd64bee"],"late":[],"hand":""},{"phase":"sar","applicable":true,"note":"","status":"progress","deadline":"2026-10-28","items":[591,645],"open":["1a0e3f997bc1bf94"],"late":[],"hand":""},{"phase":"review","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"complaint","applicable":true,"note":"","status":"progress","deadline":"2026-06-30","items":[111,120,172],"open":["19da726f00b0bc06","19e861826be48ecb"],"late":[],"hand":""},{"phase":"ico","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"icr","applicable":true,"note":"","status":"done","deadline":"","items":[547,563,564,580,583,610,669,676,711],"open":[],"late":[],"hand":""},{"phase":"democratic","applicable":true,"note":"","status":"progress","deadline":"","items":[40,41,49,52,53,54,55,76,77,241,243,311,352,353,387,515,516,521,522,523,550,551,698,700],"open":["1a11a41c4126f155"],"late":[],"hand":""},{"phase":"phso","applicable":true,"note":"","status":"done","deadline":"","items":[35,240],"open":[],"late":[],"hand":""},{"phase":"register","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"tribunal","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"preaction","applicable":true,"note":"","status":"progress","deadline":"","items":[181,593,604],"open":["19e8de794edda2e0","1a0e9e1e5a4586bf"],"late":[],"hand":""},{"phase":"disclosure","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""}]},
 {"id":"vale","name":"Vale of Glamorgan Council","short":"Vale Council","kind":"welsh-pa","wheel":["vale-foi","vale-scrutiny"],"levels":[{"phase":"enquiry","applicable":true,"note":"","status":"done","deadline":"","items":[121,187,242,488,499],"open":[],"late":[],"hand":""},{"phase":"foi","applicable":true,"note":"","status":"progress","deadline":"2026-10-19","items":[25,26,36,73,74,149,152,176,188,189,206,217,224,228,231,267,268,269,276,277,335,340,341,399,486,491,503,509,517,518,519,520,531,535,578,579,581,637,648,771],"open":["1a0c1c87a6f1717d","1a0e7d2841902574","1a0f2d7e013f1d97"],"late":[],"hand":""},{"phase":"sar","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"review","applicable":true,"note":"","status":"overdue","deadline":"2026-09-02","items":[261,262,264,334,356,357,382,411,446,447,487,592,595,596,624,659,677,746,772,773],"open":[],"late":["19f3cd95eeea3854","19fbdeb4b1e102b8","19fd2730a7c87340","1a0235a869f9b1ef","1a051f931389320e","1a05eaa94c597908","1a0e3fa1b0e3358b","1a0e9e2089441e30","1a0e9e2492937ce6","1a0ed9825c0118bc","1a1149cf594b0667","1a123ef64335cb7c","1a141cc190751565"],"hand":"Hand-checked 19 Oct: internal review of 00210772 asked 7 Jul 2026. EIR reg. 11 limit (40 working days) passed about 2 Sep. A holding reply on 11 Sep promised a timeframe; none since, despite chases on 30 Sep and 7, 15 and 18 Oct."},{"phase":"complaint","applicable":true,"note":"","status":"progress","deadline":"2026-09-18","items":[308,309,310,371,373,412,423,427],"open":["19fa56f91e54c219","1a0235a6860385cb"],"late":[],"hand":""},{"phase":"ico","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"democratic","applicable":true,"note":"","status":"progress","deadline":"","items":[16,17,22,40,52,53,131,241,243,530,571,582,630,650,653,654,663,699,708,709,734,739,770],"open":["1a136e2b51f9d191"],"late":[],"hand":""},{"phase":"psow","applicable":true,"note":"","status":"progress","deadline":"","items":[240],"open":[],"late":[],"hand":""},{"phase":"tribunal","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"preaction","applicable":true,"note":"","status":"progress","deadline":"","items":[158,168,171,497,593],"open":["1a0ad4529e6b01dd","1a0e9e1e5a4586bf"],"late":[],"hand":""},{"phase":"disclosure","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""}]},
 {"id":"llandough","name":"Llandough Community Council","short":"Llandough CC","kind":"welsh-pa","wheel":["llandough"],"levels":[{"phase":"enquiry","applicable":true,"note":"","status":"done","deadline":"","items":[227,526,529,730,732],"open":[],"late":[],"hand":""},{"phase":"foi","applicable":true,"note":"","status":"done","deadline":"","items":[138,139,225,226,532,575,576,577,707],"open":[],"late":[],"hand":""},{"phase":"sar","applicable":true,"note":"","status":"progress","deadline":"2026-11-13","items":[719,765],"open":["1a13347b9572d705","1a143eb18a1da9f7"],"late":[],"hand":""},{"phase":"review","applicable":true,"note":"","status":"progress","deadline":"2026-12-08","items":[718,764,766,768],"open":["1a0c1e36871ebfd1","1a136e2b51f9d191"],"late":[],"hand":""},{"phase":"complaint","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"ico","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"democratic","applicable":true,"note":"","status":"done","deadline":"","items":[20,21],"open":[],"late":[],"hand":""},{"phase":"psow","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"tribunal","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"preaction","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"disclosure","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""}]},
 {"id":"cadw","name":"Welsh Government / Cadw","short":"Welsh Gov / Cadw","kind":"welsh-gov","wheel":["cadw"],"levels":[{"phase":"enquiry","applicable":true,"note":"","status":"done","deadline":"","items":[9,10,11,12,57,92,137,141,143,361,362,379,443,458,459,508,554],"open":[],"late":[],"hand":""},{"phase":"foi","applicable":true,"note":"","status":"progress","deadline":"2026-10-28","items":[28,136,140,150,151,169,170,173,175,190,213,230,234,252,259,265,266,319,602,627,646,647,686,691,738,743,760,762,774,775],"open":["1a0f0785e97d9a3e","1a11eb8afe818123","1a143bf758e03cf3"],"late":[],"hand":"Hand-checked 19 Oct 2026: ATISN 26-0010 was answered (no files found; routine records \"would have been destroyed\") and ATISN 27589 was refused under FOIA s.14(2) as a repeat of ATISN 27021. Both letters are attached to their barrels. Still open on this avenue: ATISN 26-0009 (the records behind the 1988 listing-file disposal finding) and the 30 Sep HER notice."},{"phase":"sar","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"review","applicable":true,"note":"","status":"progress","deadline":"2026-10-09","items":[214,232,233,256,258,279,318,381,437,438,439],"open":["19fe7c63edda5834"],"late":[],"hand":""},{"phase":"complaint","applicable":true,"note":"","status":"progress","deadline":"2026-10-16","items":[528,539,625,626,628],"open":["1a0bdab5e24ed797","1a0c990bf55b4ddd","1a0ed9851244fa3a"],"late":[],"hand":""},{"phase":"ico","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"democratic","applicable":true,"note":"","status":"done","deadline":"","items":[40,44,49,52,53,76,77,219,241,243,364,365,368,369,506,540],"open":[],"late":[],"hand":""},{"phase":"psow","applicable":true,"note":"","status":"progress","deadline":"","items":[240],"open":[],"late":[],"hand":""},{"phase":"petition","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"tribunal","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"preaction","applicable":true,"note":"","status":"progress","deadline":"","items":[158,586,593,667],"open":["19e75029f91a5bd9","1a0e9e1e5a4586bf"],"late":[],"hand":""},{"phase":"disclosure","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""}]},
@@ -1065,6 +1109,52 @@ export const institutions: AvInstitution[] = [{"id":"hmlr","name":"HM Land Regis
 {"id":"cotswold","name":"Cotswold Archaeology","short":"Cotswold Arch.","kind":"charity","wheel":["cotswold"],"levels":[{"phase":"enquiry","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"foi","applicable":false,"note":"Not a public authority under FOIA Sch. 1, so no FOI route.","status":"na","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"sar","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"complaint","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"charity","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"regulator","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"ico","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"preaction","applicable":true,"note":"","status":"progress","deadline":"","items":[584,601,688,713],"open":["1a0e9e9889be4e6a"],"late":[],"hand":""},{"phase":"disclosure","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""}]},
 {"id":"postal-museum","name":"The Postal Museum","short":"Postal Museum","kind":"charity","wheel":[],"levels":[{"phase":"enquiry","applicable":true,"note":"","status":"done","deadline":"","items":[299,300,317,320,321,323,324,331,332,359],"open":[],"late":[],"hand":""},{"phase":"foi","applicable":false,"note":"Not a public authority under FOIA Sch. 1, so no FOI route.","status":"na","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"sar","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"complaint","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"charity","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"regulator","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"ico","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"preaction","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"disclosure","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""}]},
 {"id":"oversight","name":"MPs, Senedd & watchdogs","short":"MPs & watchdogs","kind":"members","wheel":["mp"],"levels":[{"phase":"enquiry","applicable":true,"note":"Casework request to an MP, MS or committee.","status":"done","deadline":"","items":[0,13,15,18,27,40,41,43,44,45,46,47,48,49,50,52,53,54,55,72,75,76,77,88,112,122,124,127,128,129,130,131,132,133,134,135,162,166,167,219,220,221,222,241,243,244,270,271,283,311,312,352,353,354,364,365,368,369,387,440,441,506,515,516,521,522,523,540,545,550,551,555,573,588,605,698,700,745],"open":[],"late":[],"hand":""},{"phase":"complaint","applicable":true,"note":"Complaint to the member's office.","status":"progress","deadline":"","items":[564],"open":[],"late":[],"hand":""},{"phase":"petition","applicable":true,"note":"","status":"available","deadline":"","items":[],"open":[],"late":[],"hand":""},{"phase":"phso","applicable":true,"note":"Ask the MP to refer the complaint to the PHSO.","status":"done","deadline":"","items":[14,35,239,240,281,282,285,286],"open":[],"late":[],"hand":""},{"phase":"psow","applicable":true,"note":"","status":"progress","deadline":"","items":[58,125,126],"open":[],"late":[],"hand":""},{"phase":"ico","applicable":true,"note":"","status":"done","deadline":"","items":[295],"open":[],"late":[],"hand":""},{"phase":"regulator","applicable":true,"note":"SRA / Law Society / Bar regulators, and standards commissioners (conduct only).","status":"progress","deadline":"","items":[37,38,51,756],"open":["19c129b9c14b528d","19c129cd06379870","19c276698ea3ff31","1a1439f0c75c3ab1"],"late":[],"hand":""}]}];
+
+
+/** Build each institution's climb from its own rungs; emails of an avenue ride on the rung that names it in "em". */
+function applyRamps(list: AvInstitution[]): AvInstitution[] {
+  const byId = new Map(ramps.institutions.map((r) => [r.id, r]));
+  const levelsFor = (base: AvInstitution | undefined, ramp: RampInstitution): AvLevel[] => {
+    const src = new Map((base?.levels ?? []).map((l) => [l.phase, l]));
+    return ramp.rungs.map((rung) => {
+      const items: number[] = [];
+      const open: string[] = [];
+      const late: string[] = [];
+      let deadline = "";
+      for (const p of rung.em ?? []) {
+        const l = src.get(p);
+        if (!l) continue;
+        items.push(...l.items);
+        open.push(...l.open);
+        late.push(...l.late);
+        if (!deadline && l.deadline) deadline = l.deadline;
+      }
+      items.sort((a, b) => avenueEmails[a].d.localeCompare(avenueEmails[b].d) || a - b);
+      return {
+        phase: rung.ph,
+        applicable: rung.st !== "na",
+        note: rung.w,
+        status: rampStateInfo[rung.st].status,
+        deadline: rung.st === "done" || rung.st === "na" ? "" : deadline,
+        items: [...new Set(items)],
+        open,
+        late,
+        hand: rung.did ?? "",
+        rung,
+      };
+    });
+  };
+  const out = list.map((inst) => {
+    const ramp = byId.get(inst.id);
+    return ramp ? { ...inst, levels: levelsFor(inst, ramp), ramp } : inst;
+  });
+  for (const ramp of ramps.institutions) {
+    if (list.some((i) => i.id === ramp.id)) continue;
+    out.push({ id: ramp.id, name: ramp.name, short: ramp.short, kind: "ramp", wheel: [], levels: levelsFor(undefined, ramp), ramp });
+  }
+  return out;
+}
+export const institutions: AvInstitution[] = applyRamps(baseInstitutions);
 
 /**
  * Fees: replies in which the institution sought or mentioned a fee, a charge or a cost limit
