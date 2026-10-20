@@ -1,5 +1,5 @@
 {
- "updated_utc": "2026-10-20T15:21:11Z",
+ "updated_utc": "2026-10-20T17:41:29Z",
  "books": [
   {
    "id": "great-house-farm-wiki",
@@ -74,6 +74,51 @@
    "price": "£9.99",
    "shop_url": "https://ebooks.bucklerfamily.estate/tymawr-deaths/",
    "buy_url": "https://buy.stripe.com/7sYaEY5BNcmzayw5gr6Zy06",
+   "source_site": "greathousefarmwiki.wordpress.com"
+  },
+  {
+   "id": "recorded-incidents",
+   "title": "Recorded Incidents",
+   "subtitle": "Tŷ Mawr in the police, court and press record, 1891–1989",
+   "semver": "0.2.0",
+   "status": "on-sale",
+   "date": "2026-10-20",
+   "pages": 44,
+   "description": "The police, court and press record of Great House Farm (Tŷ Mawr), Llandough, 1891–1989, as dated record cards with exact quotes and sources. A charge is not a conviction; this book names nobody as having committed a crime unless a conviction or court finding is on record. Our case, prospective. Not a finding of any court.",
+   "whats_new": "0.2.0: edition v0.02. Adds William Buckler in his own printed words, a timeline of every record, repositories and references, and album plates.",
+   "price": "£9.99",
+   "shop_url": "https://ebooks.bucklerfamily.estate/recorded-incidents/",
+   "buy_url": "https://buy.stripe.com/cNi7sM9S3gCPgWU9wH6Zy0e",
+   "source_site": "greathousefarmwiki.wordpress.com"
+  },
+  {
+   "id": "tymawr-heritage",
+   "title": "Tŷ Mawr",
+   "subtitle": "The history and heritage of Great House Farm, Llandough",
+   "semver": "0.2.0",
+   "status": "on-sale",
+   "date": "2026-10-20",
+   "pages": 43,
+   "description": "The history and heritage of Great House Farm (Tŷ Mawr), Llandough: its names, the Bute estate years, the fabric of the house from the farm’s own album, the archaeology of Llandough and the 1988 listing survey. Our case, prospective. Not a finding of any court.",
+   "whats_new": "0.2.0: edition v0.02. Adds the album as a photographic survey, the house plans in the album, a timeline, and the references.",
+   "price": "£9.99",
+   "shop_url": "https://ebooks.bucklerfamily.estate/tymawr-heritage/",
+   "buy_url": "https://buy.stripe.com/4gMfZie8j86jcGE10b6Zy0f",
+   "source_site": "greathousefarmwiki.wordpress.com"
+  },
+  {
+   "id": "williams-buckler-family",
+   "title": "The Williams–Buckler Family",
+   "subtitle": "People, records and a family tree of Tŷ Mawr",
+   "semver": "0.2.0",
+   "status": "on-sale",
+   "date": "2026-10-20",
+   "pages": 34,
+   "description": "The Williams–Buckler family of Great House Farm (Tŷ Mawr), Llandough: people, records and a family tree, with every inferred link marked and every missing record listed. Our case, prospective. Not a finding of any court.",
+   "whats_new": "0.2.0: edition v0.02. Adds a source register for each person, the SOURCE PENDING register, and photographs of the rooms of the family home.",
+   "price": "£9.99",
+   "shop_url": "https://ebooks.bucklerfamily.estate/williams-buckler-family/",
+   "buy_url": "https://buy.stripe.com/eVq00kaW72LZ220fV56Zy0g",
    "source_site": "greathousefarmwiki.wordpress.com"
   }
  ]
