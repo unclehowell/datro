@@ -58,3 +58,12 @@ query {
 - Full WP REST plugin ecosystem
 
 Those require a real WordPress host; this Worker is the edge CMS + API layer.
+
+
+## Theme and page shell (20 Oct 2026)
+
+`src/index.js` is the deployed source of Worker `fcg-wp` (version b6b5bfd9). Every HTML route uses one page shell with the same dark,
+Starlink-style look as projects.bucklerfamily.estate: `src/theme.css` (copied from `projects/public/assets/theme.css` on branch `projects`,
+plus fcg additions), `src/theme.js` (nav turns solid on scroll; re-tones inline colours carried in page bodies), and the Barlow font
+(SIL OFL, `src/fonts/`), all bundled into the Worker and served at `/assets/`. The home page makes no D1 reads; page reads go through an
+edge cache (5 minutes fresh, last good copy served if D1 is unavailable). `/graphql`, `/health` and `/mandate` are unchanged in behaviour.
