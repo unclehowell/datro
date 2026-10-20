@@ -30,10 +30,13 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
        ORDER BY last_seen DESC`
     ).all() as { results: any[] };
 
+    // Constant-cost reads: order by the rowid (id, insert order) instead of an unindexed
+    // created_at, and count today's rows from the newest 2000 only. Was a full-table
+    // scan of proxy_logs (~281k rows) on every page view. — Sion's Tab agent
     const { results: logs } = await env.DB.prepare(
       `SELECT id, origin_machine_id, endpoint, model, response_status, routing_decision, created_at
        FROM proxy_logs
-       ORDER BY created_at DESC
+       ORDER BY id DESC
        LIMIT 100`
     ).all() as { results: any[] };
 
@@ -42,7 +45,7 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
     ).first() as { count: number };
 
     const todayCount = await env.DB.prepare(
-      `SELECT COUNT(*) as count FROM proxy_logs WHERE created_at > datetime('now', '-1 day')`
+      `SELECT COUNT(*) as count FROM (SELECT created_at FROM proxy_logs ORDER BY id DESC LIMIT 2000) WHERE created_at > datetime('now', '-1 day')`
     ).first() as { count: number };
 
     const totalNodes = nodes.length;
