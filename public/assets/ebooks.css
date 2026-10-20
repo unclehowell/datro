@@ -68,3 +68,7 @@
 .eb-foot-note{color:#888;font-size:.8rem}
 .eb-card .eb-actions2{display:flex;flex-wrap:wrap;gap:8px;margin-top:.4rem}
 @media(min-width:760px){.eb-shop-hero{grid-template-columns:300px 1fr;gap:34px}.eb-shop-cover img{width:100%}.eb-shop-cover.eb-wide{grid-column:1/-1}.eb-stats{grid-template-columns:repeat(4,1fr)}.eb-kinds{grid-template-columns:repeat(3,1fr)}.eb-samples{gap:14px}.eb-more,.eb-bundle-list{grid-template-columns:1fr 1fr}}
+
+.eb-arch{margin:.7rem 0 .2rem}.eb-arch h3{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#888;margin:0 0 .3rem;font-weight:500}
+.eb-arch ul{list-style:none;padding:0;margin:0;display:grid;gap:6px}.eb-arch li{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid #333;padding:8px 10px;font-size:.84rem;color:#ccc;line-height:1.35}
+.eb-arch-price{color:#fff}.eb-arch-f,.eb-arch-c{color:#999;font-size:.78rem}.eb-arch-btn{flex:none;border:1px solid #888;padding:6px 10px;color:#fff;text-decoration:none;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}

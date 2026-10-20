@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Thank you — archive edition</title>
+<meta name="description" content="Download page for your e-book purchase."/>
+<meta name="theme-color" content="#000000"/>
+<link rel="canonical" href="https://ebooks.bucklerfamily.estate/thank-you/"/>
+<meta property="og:title" content="Thank you — archive edition"/>
+<meta property="og:description" content="Download page for your e-book purchase."/>
+<meta property="og:type" content="website"/><meta name="robots" content="noindex"/><meta property="og:url" content="https://ebooks.bucklerfamily.estate/thank-you/"/>
+<meta property="og:image" content="https://ebooks.bucklerfamily.estate/shop/img/all-four-cover.jpg"/>
+<link rel="preload" href="/assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="stylesheet" href="/assets/theme.css?v=4e156782"/>
+<link rel="stylesheet" href="/assets/ebooks.css?v=4e156782"/>
+<script src="/assets/theme.js?v=4e156782" defer></script>
+<script src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js" data-site="ebooks" data-dict="/lang/ebooks.json" defer></script>
+<script src="https://bucklerfamily.estate/ebook/cta.js" defer></script>
+</head>
+<body class="sl-home eb-shop" data-k="archive">
+<header class="sl-nav"><nav class="top" aria-label="Site"><a href="/"><strong>E-books</strong></a><a href="/#books">All books</a><a href="https://bucklerfamily.estate/">Campus</a><a class="sl-ghost" href="/all-four/">All four</a></nav></header>
+<main class="eb-shop-main eb-ty">
+<h1>Thank you</h1>
+<p id="wait" class="eb-pitch">Checking your order…</p>
+<div id="ok" style="display:none">
+<p class="eb-pitch">Your archive edition is ready.</p>
+<div class="eb-dls"><a class="sl-btn solid eb-buy eb-dl" data-book="" data-from-query="1" href="#" rel="nofollow">Download the archive edition (PDF)</a></div>
+<ol class="eb-steps"><li>On iPhone or iPad: tap Download, then Share → “Save to Files” or “Books”.</li><li>On Android: it saves to Downloads; open it with Drive or any PDF app.</li><li>Bookmark this page to download again later.</li></ol>
+<p class="eb-small">Payment shows on your statement as DATRO CONSORTIUM LTD. Problem with a file? Email <a href="mailto:info@bucklerfamily.estate">info@bucklerfamily.estate</a> with the email address you paid with.</p>
+</div>
+<div id="no" style="display:none">
+<p class="eb-pitch">This page opens after you buy. If you have paid and still see this, open the link from the Stripe confirmation page in the browser you paid in, or email <a href="mailto:info@bucklerfamily.estate">info@bucklerfamily.estate</a> with the email address you paid with and we will send your copy.</p>
+<a class="sl-btn" href="/">Back to the book</a>
+</div>
+<p class="eb-notice">Our case, prospective. Not a finding of any court.</p>
+<section class="eb-sec"><h2>While it downloads</h2><ul class="eb-more"><li><a href="/"><b>All e-books</b> · the full shelf</a></li><li><a href="https://bpvsbuckler.bucklerfamily.estate/"><b>Timeline</b> · the record as an interactive story</a></li><li><a href="https://wayback.bucklerfamily.estate/"><b>Wayback archive</b> · original documents and photographs</a></li></ul></section>
+</main>
+<script>
+(function(){
+var q=new URLSearchParams(location.search),s=q.get('session_id')||'',K='ghf_ebooks_session_'+document.body.getAttribute('data-k');
+try{if(!s)s=localStorage.getItem(K)||'';}catch(e){}
+var W=document.getElementById('wait'),O=document.getElementById('ok'),N=document.getElementById('no');
+function no(){W.style.display='none';N.style.display='block';}
+if(!/^cs_live_[A-Za-z0-9]{20,200}$/.test(s)){no();return;}
+var bs=[].slice.call(document.querySelectorAll('a[data-book]'));
+bs.forEach(function(a){if(a.getAttribute('data-from-query')){var bk=q.get('book')||'';if(!/^[a-z-]+@\d+\.\d+\.\d+$/.test(bk)){bk='';}a.setAttribute('data-book',bk);K=K+bk;}});
+if(!bs.length||!bs[0].getAttribute('data-book')){no();return;}
+fetch('/api/check?book='+encodeURIComponent(bs[0].getAttribute('data-book'))+'&session_id='+encodeURIComponent(s),{cache:'no-store'}).then(function(r){return r.json();}).then(function(j){
+ if(!j.ok){no();return;}
+ try{localStorage.setItem(K,s);}catch(e){}
+ if(!q.get('session_id'))history.replaceState(null,'','?session_id='+encodeURIComponent(s));
+ bs.forEach(function(a){a.href='/api/download?book='+encodeURIComponent(a.getAttribute('data-book'))+'&session_id='+encodeURIComponent(s);});
+ W.style.display='none';O.style.display='block';
+}).catch(no);
+})();
+</script>
+<footer class="sl-foot"><div class="sl-foot-in"><a class="sl-foot-title" href="/">E-books — Great House Farm / Tŷ Mawr</a><a href="/fcg/">Fraud, Concealment and Government Involvement</a><a href="/dartboard/">The Disclosure Dartboard</a><a href="/projects/">Great House Farm Projects</a><a href="https://bucklerfamily.estate/ebook/">The Evidence Archive (Legal Wiki book)</a><a href="/all-four/">All four books</a><a href="mailto:info@bucklerfamily.estate">Help: info@bucklerfamily.estate</a><span class="eb-foot-note">Our case, prospective. Not a finding of any court.</span></div></footer>
+</body>
+</html>

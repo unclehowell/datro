@@ -12,9 +12,9 @@
 <meta property="og:type" content="website"/><meta name="robots" content="noindex"/><meta property="og:url" content="https://ebooks.bucklerfamily.estate/projects/thank-you/"/>
 <meta property="og:image" content="https://ebooks.bucklerfamily.estate/shop/img/all-four-cover.jpg"/>
 <link rel="preload" href="/assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin/>
-<link rel="stylesheet" href="/assets/theme.css?v=a7fac6f0"/>
-<link rel="stylesheet" href="/assets/ebooks.css?v=a7fac6f0"/>
-<script src="/assets/theme.js?v=a7fac6f0" defer></script>
+<link rel="stylesheet" href="/assets/theme.css?v=52d4f3c4"/>
+<link rel="stylesheet" href="/assets/ebooks.css?v=52d4f3c4"/>
+<script src="/assets/theme.js?v=52d4f3c4" defer></script>
 <script src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js" data-site="ebooks" data-dict="/lang/ebooks.json" defer></script>
 <script src="https://bucklerfamily.estate/ebook/cta.js" defer></script>
 </head>
@@ -44,6 +44,8 @@ var W=document.getElementById('wait'),O=document.getElementById('ok'),N=document
 function no(){W.style.display='none';N.style.display='block';}
 if(!/^cs_live_[A-Za-z0-9]{20,200}$/.test(s)){no();return;}
 var bs=[].slice.call(document.querySelectorAll('a[data-book]'));
+bs.forEach(function(a){if(a.getAttribute('data-from-query')){var bk=q.get('book')||'';if(!/^[a-z-]+@\d+\.\d+\.\d+$/.test(bk)){bk='';}a.setAttribute('data-book',bk);K=K+bk;}});
+if(!bs.length||!bs[0].getAttribute('data-book')){no();return;}
 fetch('/api/check?book='+encodeURIComponent(bs[0].getAttribute('data-book'))+'&session_id='+encodeURIComponent(s),{cache:'no-store'}).then(function(r){return r.json();}).then(function(j){
  if(!j.ok){no();return;}
  try{localStorage.setItem(K,s);}catch(e){}
