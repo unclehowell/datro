@@ -13,6 +13,7 @@ import F700 from "./fonts/barlow-latin-700-normal.woff2";
 import FX400 from "./fonts/barlow-latin-ext-400-normal.woff2";
 import FX700 from "./fonts/barlow-latin-ext-700-normal.woff2";
 import OFL from "./fonts/OFL.txt";
+import ACCOUNTABILITY_MAIN from "./accountability.js";
 
 const FONTS = {
   "barlow-latin-300-normal.woff2": F300, "barlow-latin-400-normal.woff2": F400, "barlow-latin-500-normal.woff2": F500,
@@ -32,7 +33,9 @@ export default {
     if (request.method === "GET" || request.method === "HEAD") {
       const a = asset(url.pathname);
       if (a) return cors(a);
-      if (url.pathname === "/" || url.pathname === "/index.html") return cors(html(homePage(env), 200, 300));
+      if (url.pathname === "/" || url.pathname === "/index.html") return cors(html(indexPage(), 200, 300));
+      if (url.pathname === "/theory" || url.pathname === "/theory/" || url.pathname === "/theory/index.html") return cors(html(homePage(env), 200, 300));
+      if (url.pathname === "/accountability" || url.pathname === "/accountability/" || url.pathname === "/index" || url.pathname === "/index/") return Response.redirect(url.origin + "/", 301);
       return cors(await cached(request, ctx, () => handlePage(url, env)));
     }
     return cors(json({ error: "Not found" }, 404));
@@ -99,8 +102,8 @@ function relabel(res, state) {
   return new Response(res.body, { status: res.status, headers: h });
 }
 
-const NAV = `<header class="sl-nav"><nav class="top" aria-label="Site"><a href="/"><strong>${BRAND}</strong></a><a href="/case">Our case</a><a href="/case#inst">Institutions</a><a href="https://projects.bucklerfamily.estate/">Projects</a><a class="sl-ghost" href="/mandate">Mandate</a></nav></header>`;
-const FOOT = `<footer class="sl-foot"><div class="sl-foot-in"><a class="sl-foot-title" href="/">${BRAND} — ${BRAND_LONG}</a><a href="/case">Our case</a><a href="/mandate">Mandate</a><a href="/graphql">GraphQL</a><a href="https://projects.bucklerfamily.estate/">Projects (PRINCE2)</a><a href="https://greathousefarmwiki.wordpress.com/">Legal Wiki</a><a href="https://bucklerfamily.estate/">bucklerfamily.estate campus</a></div></footer>`;
+const NAV = `<header class="sl-nav"><nav class="top" aria-label="Site"><a href="/"><strong>${BRAND}</strong></a><a href="/theory/">Theory</a><a href="/case">Our case</a><a href="/case#inst">Institutions</a><a class="sl-ghost" href="/mandate">Mandate</a></nav></header>`;
+const FOOT = `<footer class="sl-foot"><div class="sl-foot-in"><a class="sl-foot-title" href="/">${BRAND} — ${BRAND_LONG}</a><a href="/">Accountability Index</a><a href="/theory/">Theory home</a><a href="/case">Our case</a><a href="/mandate">Mandate</a><a href="/graphql">GraphQL</a><a href="https://projects.bucklerfamily.estate/">Projects (PRINCE2)</a><a href="https://greathousefarmwiki.wordpress.com/">Legal Wiki</a><a href="https://bucklerfamily.estate/">bucklerfamily.estate campus</a></div></footer>`;
 
 function shell({ title, description = "", kind, main }) {
   return `<!DOCTYPE html>
@@ -116,6 +119,8 @@ function shell({ title, description = "", kind, main }) {
   <link rel="stylesheet" href="/assets/theme.css?v=${ASSET_V}"/>
   <script src="/assets/theme.js?v=${ASSET_V}" defer></script>
   <script src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js" defer></script>
+  <script src="https://bucklerfamily.estate/ebook/cta.js" defer></script>
+  <script src="https://bucklerfamily.estate/basecamp.js" defer></script>
 </head>
 <body class="${kind}">${NAV}
 ${main}
@@ -170,13 +175,16 @@ async function handlePage(url, env) {
 
 function homePage(env) {
   const band = (h, items) => `<section class="sl-band"><h2>${h}</h2>\n<ul class="idx">${items.map(([href, t, m]) => `<li><a href="${href}"><strong>${t}</strong></a> <span class="meta">${m}</span></li>`).join("\n")}</ul></section>`;
-  return shell({ title: BRAND + " — " + BRAND_LONG, kind: "sl-home",
+  return shell({ title: "Theory — " + BRAND + " — " + BRAND_LONG, kind: "sl-home",
     description: "Our case on fraud, concealment and government involvement in the Great House Farm (Tŷ Mawr) case. Not findings of any court or public body.",
-    main: `<header class="sl-hero"><div class="sl-hero-in"><p class="sl-kicker">${BRAND} · Great House Farm / Tŷ Mawr</p><h1>${BRAND_LONG}</h1><p>Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth: our case and lines of enquiry on fraud, concealment and the handling of the case by government, courts and public bodies. Not findings of any court or public body.</p><div class="sl-actions"><a class="sl-btn solid" href="/case">Our case</a><a class="sl-btn" href="/mandate">Project Mandate</a></div></div><span class="sl-scroll" aria-hidden="true"></span></header>
+    main: `<header class="sl-hero"><div class="sl-hero-in"><p class="sl-kicker">${BRAND} · Great House Farm / Tŷ Mawr</p><h1>${BRAND_LONG}</h1><p>Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth: our case and lines of enquiry on fraud, concealment and the handling of the case by government, courts and public bodies. Not findings of any court or public body.</p><div class="sl-actions"><a class="sl-btn solid" href="/case">Our case</a><a class="sl-btn" href="/">Accountability Index</a><a class="sl-btn" href="/mandate">Project Mandate</a></div></div><span class="sl-scroll" aria-hidden="true"></span></header>
 <main class="sl-main">
+${band("Accountability", [
+  ["/", "Accountability Index", "public bodies ranked by questions the record had already answered"],
+])}
 ${band("Our case", [
   ["/case#case", "Fraud and concealment", "analysis and legal review"],
-  ["/case#claims", "Claims and working theories", "our case, unproven"],
+  ["/case#claims", "Working theories", "our case, unproven"],
   ["/case#handling", "Government, court and public-body handling", "how the case was handled"],
   ["/case#registers", "Registers, chronologies and matrices", "who knew what, when"],
   ["/case#capture", "Forensic evidence capture", "decisive documents"],
@@ -195,6 +203,13 @@ ${band("Across the estate", [
   ["https://bucklerfamily.estate/", "bucklerfamily.estate", "the campus"],
 ])}
 </main>` });
+}
+
+// Home page since 20 Oct 2026: the Accountability Index (content in accountability.js; the former home is at /theory/).
+function indexPage() {
+  return shell({ title: "Accountability Index — " + BRAND + " — Great House Farm / Tŷ Mawr", kind: "sl-home",
+    description: "Public bodies ranked by clarification questions the record had already answered, with dates, quotes, days lost and the statutory clock. Our case, prospective. Not a finding of any court.",
+    main: ACCOUNTABILITY_MAIN });
 }
 
 async function handleGraphQL(request, env) {
