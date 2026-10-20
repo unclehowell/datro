@@ -6,14 +6,14 @@
 import fs from "fs"; import path from "path";
 const here = path.dirname(new URL(import.meta.url).pathname);
 export const publicDir = path.join(here, "..", "public");
-export const SITE = "Buckler Family Estate Projects — PRINCE2";
+export const SITE = "Cedwyn Estate Projects — PRINCE2";
 const OLD_SITE = "Great House Farm Projects — PRINCE2";
 const WIKI_HOST = ["greathousefarmwiki", "wordpress", "com"].join(".");
 const WIKI_RE = new RegExp("https?://" + WIKI_HOST.replace(/\./g, "\\.") + "[^\"'\\s<>)]*", "g");
 const A_RE = new RegExp("<a\\b([^>]*?)href=\"(https?://" + WIKI_HOST.replace(/\./g, "\\.") + "[^\"]*)\"([^>]*)>([\\s\\S]*?)</a>", "g");
 export const NAV_LINKS = [["/", `<strong>${SITE}</strong>`], ["/overview/", "Overview"], ["/estate/asset-register/", "Asset register"], ["/estate/pid/", "PID"], ["/estate/risk-register/", "Registers"], ["/estate/highlight-reports/", "Reports"], ["/workstreams/evidence-recovery/", "Evidence recovery"], ["/programme/", "Programme"]];
 const NAV_INNER = NAV_LINKS.map(([h, t]) => `<a href="${h}">${t}</a>`).join('<span class="sep" aria-hidden="true"> · </span>');
-export const FOOT = `<footer class="sl-foot"><div class="sl-foot-in"><a class="sl-foot-title" href="/">${SITE}</a><a href="/">PID (home)</a><a href="/overview/">Overview</a><a href="/estate/mandate/">Mandate</a><a href="/programme/">Programme charter</a><a href="/estate/asset-register/">Asset register</a><a href="/workstreams/evidence-recovery/">Workstream: evidence recovery</a><a href="https://bucklerfamily.estate/">bucklerfamily.estate campus</a><a href="https://bucklerfamily.estate/ebook/">Get the e-book (from £0.00 · £9.99 – v0.02 · all four £31.99)</a><a href="/posts.json">posts.json</a></div></footer>`;
+export const FOOT = `<footer class="sl-foot"><div class="sl-foot-in"><a class="sl-foot-title" href="/">${SITE}</a><a href="/">PID (home)</a><a href="/overview/">Overview</a><a href="/estate/mandate/">Mandate</a><a href="/programme/">Programme charter</a><a href="/estate/asset-register/">Asset register</a><a href="/workstreams/evidence-recovery/">Workstream: evidence recovery</a><a href="https://bucklerfamily.estate/">Cedwyn Estate map</a><a href="https://bucklerfamily.estate/ebook/">Get the e-book (from £0.00 · £9.99 – v0.02 · all four £31.99)</a><a href="/posts.json">posts.json</a></div></footer>`;
 
 function localMap(dir) {
   const m = new Map();
