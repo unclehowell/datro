@@ -1431,6 +1431,7 @@ INSERT INTO nodes VALUES ('doc-glamorgan-archives-2026-4097b','document','Glamor
 INSERT INTO nodes VALUES ('doc-glamorgan-archives-llandough-parish-tithe','document','Lead: Llandough-juxta-Penarth vestry, tithe, enclosure','{"holder": "Glamorgan Archives", "reference": "location lead drafted 7 Oct 2026 (no authority reference yet)", "date": "2026-10-07"}');
 INSERT INTO nodes VALUES ('doc-heneb-GGAT02038s','document','Heneb replies, 6 and 14 October 2026','{"holder": "Heneb (Glamorgan-Gwent HER)", "reference": "GGAT02038s (request 8 Sep 2026; 6 Oct reply; 14 Oct digitisation update)", "date": "2026-10-14"}');
 INSERT INTO nodes VALUES ('doc-heneb-her-schedule-2026-10-16','document','heneb-her-schedule-2026-10-16.md','{"holder": "Heneb (The Trust for Welsh Archaeology) / Historic Environment Record", "reference": "GHF/HENEB/2026-09-20 schedule reply", "date": "2026-10-16"}');
+INSERT INTO nodes VALUES ('doc-hmlr-D260928','document','HM Land Registry — D260928 SAR supplement + new EIR','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-hmlr-historical-title-great-house-farm-location-lead','document','HMLR historical title location lead','{"holder": "HM Land Registry", "reference": "draft r-6678427177936368728 (not sent)", "date": "2026-10-15"}');
 INSERT INTO nodes VALUES ('doc-itv-wales-ty-mawr-media-location-lead','document','ITV Wales archive location lead for Ty Mawr / Great House Farm media, 14 October 2026','{"holder": "ITV Wales / ITV Cymru Archive", "reference": "none (initial enquiry re Ty Mawr Llandoche)", "date": "2026-10-14"}');
 INSERT INTO nodes VALUES ('doc-llandough-cc-internal-review-request-2026-10-12','document','Llandough Community Council — internal review request, new FOI/EIR, SAR (12 October 2026)','{"holder": "", "reference": "", "date": ""}');
@@ -1509,6 +1510,7 @@ INSERT INTO nodes VALUES ('ref:RC26-0371','reference','RC26-0371','{}');
 INSERT INTO nodes VALUES ('ref:RC26-0375','reference','RC26-0375','{}');
 INSERT INTO nodes VALUES ('ref:WA231076','reference','WA231076','{}');
 INSERT INTO nodes VALUES ('ref:WA240304','reference','WA240304','{}');
+INSERT INTO nodes VALUES ('ref:WA513690','reference','WA513690','{}');
 INSERT INTO nodes VALUES ('ref:WA735527','reference','WA735527','{}');
 INSERT INTO nodes VALUES ('ref:X.6(12)','reference','X.6(12)','{}');
 INSERT INTO nodes VALUES ('ref:XLVII.6','reference','XLVII.6','{}');
@@ -3262,6 +3264,11 @@ INSERT INTO edges VALUES ('doc-glamorgan-archives-2026-4097b','ref:X.6(12)','cit
 INSERT INTO edges VALUES ('doc-glamorgan-archives-2026-4097b','ref:XLVII.6','cites');
 INSERT INTO edges VALUES ('doc-glamorgan-archives-llandough-parish-tithe','ref:2026/4097b','cites');
 INSERT INTO edges VALUES ('doc-heneb-GGAT02038s','ref:GGAT02038s','cites');
+INSERT INTO edges VALUES ('doc-hmlr-D260928','ref:N610CGV','cites');
+INSERT INTO edges VALUES ('doc-hmlr-D260928','ref:WA231076','cites');
+INSERT INTO edges VALUES ('doc-hmlr-D260928','ref:WA240304','cites');
+INSERT INTO edges VALUES ('doc-hmlr-D260928','ref:WA513690','cites');
+INSERT INTO edges VALUES ('doc-hmlr-D260928','ref:WA735527','cites');
 INSERT INTO edges VALUES ('doc-llandough-cc-internal-review-request-2026-10-12','ref:89/01396/OUT','cites');
 INSERT INTO edges VALUES ('doc-mod-FOI2026-23272','ref:FOI2026/23272','cites');
 INSERT INTO edges VALUES ('doc-mod-dbs-DPR2026-46503','ref:DPR2026/46503','cites');
