@@ -4,6 +4,14 @@ import { applyAll } from "./theme/apply.mjs";
 import { runEstate } from "./estate/build.mjs";
 console.log("theme", JSON.stringify(applyAll())); // themes any page still in the old plain format (idempotent)
 console.log("estate", JSON.stringify(runEstate())); // independence: wiki links -> local pages or plain text; estate nav/footer (idempotent)
+
+// ghf-lang (20 Oct 2026): English / Cymraeg / Español dropdown on every page (idempotent; interface text only)
+{
+  const GHF_LANG = '<script src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js" defer></script>';
+  const rootL = path.join(path.dirname(new URL(import.meta.url).pathname), "public"); let nL = 0;
+  (function walkL(d) { for (const f of fs.readdirSync(d)) { const p = path.join(d, f); if (fs.statSync(p).isDirectory()) walkL(p); else if (f.endsWith(".html")) { const t = fs.readFileSync(p, "utf8"); if (!t.includes("ghf-lang.js") && t.includes("</head>")) { fs.writeFileSync(p, t.replace("</head>", GHF_LANG + "\n</head>")); nL++; } } } })(rootL);
+  console.log("ghf-lang", nL);
+}
 const root = path.join(path.dirname(new URL(import.meta.url).pathname), "public");
 const bad = [/Robin Hill/i, /hywelapbuckler/i, /7845\s?933\s?262/, /(?:\+44\s?7|\b07)\d{3}\s?\d{3}\s?\d{3}\b/, /[\w.+-]+@(?:gmail|hotmail|yahoo|outlook|icloud|btinternet|aol)\.[\w.]+/i, /family(?:'s|’s|&#8217;s)? (?:account|testimony)/i, /wordpress\.com/i];
 let files = 0, fails = [];
