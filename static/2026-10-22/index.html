@@ -2,14 +2,16 @@
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tŷ Mawr at Council</title>
-<meta name="description" content="Meeting toolkit for Llandough Community Council, 22 October 2026: Great House Farm / Tŷ Mawr. What to raise, in what order, and the pack for the Clerk.">
-<meta property="og:title" content="Preserving our identity: Tŷ Mawr at Llandough Community Council">
-<meta property="og:description" content="320 years at home. Gone before breakfast. 38 years without a voice. The meeting toolkit for 22 October 2026.">
-<meta property="og:image" content="img/tymawr-29-july-1988.jpg">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Llandough Community Council meeting, Thursday 22 October 2026, 19:00 (remote)</title>
+<meta name="description" content="Llandough Community Council meeting, Thursday 22 October 2026, 19:00 (remote). Item 10: the burials, and community outreach.">
+<meta property="og:title" content="Llandough Community Council meeting, Thursday 22 October 2026, 19:00 (remote)">
+<meta property="og:description" content="Item 10: the burials, and community outreach.">
+<meta property="og:image" content="https://2026-10-22.bucklerfamily.estate/img/tymawr-29-july-1988-white-wall.jpg">
 <meta name="theme-color" content="#26313a">
 <link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="alternate" type="application/json" href="/agent-index.json" title="Machine-readable meeting toolkit index">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="Agent reading guide">
 <style>
 @font-face{font-family:"Archivo";src:url(fonts/archivo-latin-wdth-normal.woff2) format("woff2-variations"),url(fonts/archivo-latin-wdth-normal.woff2) format("woff2");font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"Archivo";src:url(fonts/archivo-latin-ext-wdth-normal.woff2) format("woff2-variations"),url(fonts/archivo-latin-ext-wdth-normal.woff2) format("woff2");font-weight:100 900;font-stretch:62% 125%;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
@@ -31,604 +33,188 @@
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:64px;-webkit-text-size-adjust:100%}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
-body{margin:0;background:var(--white);color:var(--ink);font-family:var(--text);font-size:17px;line-height:1.55;font-stretch:100%}
-a{color:inherit;text-underline-offset:3px}
-:focus-visible{outline:3px solid var(--red);outline-offset:3px}
-.skip{position:absolute;left:-999px;top:0;background:var(--red);color:#fff;padding:10px 14px;z-index:99}.skip:focus{left:8px}
-h1,h2,.b-line,.tile-big,.pillar-h,.court-h,.row-h,.step-h,.brand,.said,.mission-q{font-family:var(--display);font-stretch:62%;font-weight:850;text-transform:uppercase;letter-spacing:-.01em;line-height:.9}
-
-/* nav */
-.nav{position:sticky;top:0;z-index:30;background:var(--slate);color:var(--white)}
-.nav-in{max-width:var(--max);margin:auto;display:flex;align-items:center;gap:18px;padding:10px 16px}
-.brand{font-size:1.45rem;text-decoration:none;white-space:nowrap}.brand span{color:var(--stone)}
-.links{display:flex;gap:18px;overflow-x:auto;flex:1;scrollbar-width:none}.links::-webkit-scrollbar{display:none}
-.links a{text-decoration:none;font-size:.86rem;font-weight:600;white-space:nowrap;color:#dfe5e1}.links a:hover{color:#fff;text-decoration:underline}
-.toggle{background:none;border:1px solid #ffffff55;color:#fff;font:600 .8rem var(--text);padding:8px 12px;cursor:pointer;white-space:nowrap}
-.toggle:hover{border-color:#fff}
-.btn-red,.btn-white,.btn-line{display:inline-block;font:700 .9rem var(--text);text-decoration:none;padding:10px 16px;border:2px solid transparent;cursor:pointer;white-space:nowrap}
-.btn-red{background:var(--red);color:#fff}.btn-red:hover{background:#a50d26;color:#fff}
-.btn-white{background:#fff;color:var(--red)}.btn-white:hover{background:var(--lime)}
-.btn-line{background:none;border-color:currentColor;color:var(--white)}.btn-line.light{color:#fff}
-.big{font-size:1.02rem;padding:15px 22px}
-
-/* hero */
-.hero{background:var(--slate);color:var(--white);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);min-height:calc(100svh - 56px)}
-.hero-text{padding:clamp(36px,6vw,84px) clamp(16px,4vw,56px) 48px max(16px,calc((100vw - var(--max))/2 + 16px));display:flex;flex-direction:column;justify-content:center}
-.when-line{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.92rem;color:var(--stone);margin:0 0 22px}
-.when-line span+span::before{content:"";display:inline-block;width:18px;height:2px;background:var(--red);vertical-align:middle;margin-right:18px}
-h1{font-size:clamp(3.6rem,7.4vw,8.4rem);margin:0;color:var(--white);overflow-wrap:break-word}
-.lede{font-size:clamp(1.05rem,1.6vw,1.25rem);max-width:34em;color:#d8dfda;margin:26px 0 30px}
-.ctas{display:flex;flex-wrap:wrap;gap:12px}
-.hero-photo{margin:0;position:relative;background:#1b232a}
-.hero-photo img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.15) contrast(1.05)}
-.hero-photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 18px 14px;font-size:.82rem;color:#e8ece9;background:linear-gradient(transparent,#000000b0)}
-
-/* one breath */
-.breath{background:var(--red);color:#fff}
-.breath ol{list-style:none;margin:0 auto;padding:clamp(36px,6vw,72px) 16px;max-width:var(--max);display:grid;gap:22px}
-.breath li{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 20px}
-.b-line{font-size:clamp(2.6rem,8.4vw,7.2rem)}
-.b-note{font-size:.95rem;color:#ffe3e7}
-
-/* sections */
-.sec{padding:clamp(56px,8vw,104px) 16px}
-.sec>*{max-width:var(--max);margin-left:auto;margin-right:auto}
-.sec-slate{background:var(--slate);color:var(--white)}
-.sec-lime{background:var(--lime)}
-.sec-head{margin-bottom:34px}
-.sec-head h2{font-size:clamp(3rem,8vw,6.4rem);margin:0 0 14px}
-.sec-head p{max-width:36em;margin:0;font-size:1.08rem;color:var(--muted)}
-.sec-slate .sec-head p{color:#cdd5d0}
-.sec>.aside{font-size:.95rem;color:var(--muted);max-width:var(--max);padding-right:min(40%,460px);margin-top:26px}.aside.light{color:#b9c2bd}
-.readmore{font-size:.85rem;font-weight:700;color:var(--red);white-space:nowrap}
-.sec-slate .readmore{color:#ff8a9b}
-details>summary{list-style:none;cursor:pointer}details>summary::-webkit-details-marker{display:none}
-details[open] .readmore{visibility:hidden}
-.more{padding-top:14px}
-.more p{margin:0 0 12px;max-width:42em}
-
-/* asks */
-.rows{border-top:3px solid var(--ink)}
-.row{border-bottom:1px solid var(--rule)}
-.row summary{display:grid;grid-template-columns:3.2rem minmax(0,1fr) 28px;gap:4px 14px;padding:20px 0;align-items:baseline}
-.num{font:800 1rem var(--text);color:var(--red);font-variant-numeric:tabular-nums}
-.row-h{font-size:clamp(1.9rem,4.4vw,3rem);grid-column:2}
-.row-l{grid-column:2;color:var(--muted);font-size:1rem}
-.plus{grid-column:3;grid-row:1;width:22px;height:22px;position:relative;align-self:center}
-.plus::before,.plus::after{content:"";position:absolute;left:0;right:0;top:10px;height:2px;background:currentColor;transition:transform .2s}
-.plus::after{transform:rotate(90deg)}details[open]>summary .plus::after{transform:rotate(0)}
-.row summary:hover .row-h{color:var(--red)}
-.row .more{padding:0 0 24px 3.2rem;padding-left:calc(3.2rem + 14px)}
-.why{color:var(--muted)}
-.resolution{border-left:4px solid var(--red);padding:12px 16px;background:var(--lime);font-size:1rem}
-.resolution span{display:block;font-weight:800;font-size:.8rem;color:var(--red);margin-bottom:4px}
-
-/* running order */
-.steps{display:grid;gap:2px;background:var(--slate)}
-.step{background:var(--slate-2);padding:0}
-.step summary,.step .static{display:grid;grid-template-columns:minmax(120px,190px) minmax(0,1fr) 28px;gap:4px 18px;padding:18px 18px;align-items:baseline}
-.when{font-weight:800;color:var(--stone);font-size:.92rem}
-.step-h{font-size:clamp(1.6rem,3.4vw,2.3rem);grid-column:2}
-.step-l{grid-column:2;color:#cdd5d0;font-size:.98rem}
-.step .plus{grid-column:3;grid-row:1}
-.step-main{background:var(--red)}.step-main .when,.step-main .step-l{color:#fff}
-.step .more{padding:0 18px 20px;padding-left:calc(18px + min(190px,30vw) + 18px)}
-.step .more ul{margin:0;padding-left:18px;color:#e4e9e6}.step .more li{margin-bottom:8px;max-width:42em}
-
-/* pillars */
-.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:3px solid var(--ink)}
-.pillar{padding:22px 22px 26px 0;border-right:1px solid var(--rule)}
-.pillar+.pillar{padding-left:22px}.pillar:last-child{border-right:0}
-.pillar summary{display:flex;flex-direction:column;gap:10px}
-.pillar-k{font-weight:800;color:var(--red);font-size:.95rem}
-.pillar-h{font-size:clamp(2rem,3.6vw,2.9rem)}
-.pillar-l{color:var(--muted)}
-.pillar ul{margin:0;padding-left:18px}.pillar li{margin-bottom:10px}
-.mission{margin-top:56px;background:var(--slate);color:#fff;padding:clamp(24px,4vw,44px)}
-.mission-q{font-size:clamp(2.2rem,5.6vw,4.4rem);margin:0 0 18px}
-.mission-by{color:var(--stone);margin:0 0 8px}
-.mission ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 24px}
-.mission li::before{content:"";display:inline-block;width:10px;height:10px;background:var(--red);margin-right:10px}
-
-/* tiles */
-.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;background:var(--rule);border:2px solid var(--rule)}
-.tile{background:#fff;padding:22px 20px 22px}
-.tile summary{display:flex;flex-direction:column;gap:8px;min-height:200px}
-.tile-big{font-size:clamp(2.4rem,3.6vw,3.2rem);color:var(--red);overflow-wrap:anywhere}
-.tile-h{font-weight:800;font-size:1.1rem}
-.tile-l{color:var(--muted);font-size:.95rem;flex:1}
-.tile[open]{grid-column:span 2}
-.tile .more p{font-size:.96rem}
-
-/* story */
-.swaps{list-style:none;margin-top:0;margin-bottom:0;padding:0;border-top:3px solid var(--ink)}
-.swap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:6px 28px;padding:22px 0;border-bottom:1px solid var(--rule);align-items:baseline}
-.said{font-size:clamp(2.2rem,5vw,3.8rem);color:var(--stone);text-decoration-color:var(--red);text-decoration-thickness:5px}
-.truth{font-size:clamp(1.05rem,1.8vw,1.3rem);font-weight:600}
-.barn{margin:48px auto 0}
-.barn img{width:100%;height:auto;display:block;max-height:520px;object-fit:cover}
-.barn figcaption{font-size:.85rem;color:var(--muted);margin-top:8px}
-.court,.council,.speech,.src{margin-top:36px;border-top:3px solid currentColor;padding-top:18px}
-.court summary,.council summary,.speech summary,.src summary{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px}
-.court-h{font-size:clamp(1.9rem,4vw,3rem)}
-.court-l{color:var(--muted);flex:1 1 20em}
-.sec-slate .court-l{color:#cdd5d0}
-.court ul{padding-left:18px;margin:0 0 14px}.court li{margin-bottom:10px;max-width:46em}
-.note{font-size:.95rem;color:var(--muted)}
-
-/* labels */
-.tag{display:inline-block;font:700 .72rem var(--text);padding:3px 8px;border-radius:20px;vertical-align:middle;white-space:nowrap;margin-left:4px}
-.tag-rec{background:#dfe9e3;color:var(--moss)}.tag-fam{background:#f6dfe3;color:#8f0b21}.tag-open{background:#ececec;color:#444}
-.keys{list-style:none;padding:0;margin:0 0 18px}.keys li{margin-bottom:6px}.keys .tag{margin:0 8px 0 0}
-
-/* wall */
-.ring-key{list-style:none;padding:0;margin:0 auto 18px;display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.85rem;color:#cdd5d0}
-.ring-key b{color:#fff;margin-right:2px}
-.wall{list-style:none;margin:0 auto;padding:0;border-top:1px solid #ffffff30}
-.wall-row{display:grid;grid-template-columns:minmax(0,1.1fr) 176px minmax(0,1.3fr);gap:6px 18px;align-items:center;padding:11px 0;border-bottom:1px solid #ffffff22}
-.wall-name{font-weight:700}
-.rings{display:grid;grid-template-columns:repeat(8,1fr);gap:3px}
-.rings i{height:14px;background:#ffffff1c;display:block}.rings i.on{background:var(--stone)}
-.wall-us .rings i.on{background:var(--red)}.wall-us .wall-name{color:#fff}.wall-us{background:#ffffff0d}
-.wall-status{font-size:.9rem;color:#cdd5d0}
-.dates{list-style:none;padding:0;margin:0}.dates li{display:grid;grid-template-columns:150px 1fr;gap:4px 18px;padding:10px 0;border-bottom:1px solid #ffffff22}.dates b{color:var(--stone)}
-.regimes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.regime{border-top:4px solid var(--red);padding-top:12px}
-.regime-k{display:block;font:850 2.6rem/1 var(--display);font-stretch:62%}
-.regime-n{display:block;font-size:.85rem;color:var(--stone);margin:4px 0 8px}
-.regime p{font-size:.95rem;color:#e4e9e6}
-
-/* briefing */
-.cmps{border-top:3px solid var(--ink)}
-.cmp{border-bottom:1px solid var(--rule)}
-.cmp summary{display:grid;grid-template-columns:3.4rem minmax(0,1fr) 28px;gap:6px 16px;padding:22px 0;align-items:baseline}
-.cmp-id{font:850 1.5rem/1 var(--display);font-stretch:62%;color:var(--red);grid-row:1/3}
-.cmp-t{font:850 clamp(1.5rem,3vw,2rem)/1 var(--display);font-stretch:62%;text-transform:uppercase;color:var(--muted);grid-column:2}
-.cmp-say{grid-column:2;font-size:clamp(1.15rem,2.1vw,1.45rem);font-weight:700;line-height:1.35;max-width:42em}
-.cmp .plus{grid-column:3;grid-row:1}
-.cmp summary:hover .cmp-say{color:var(--red)}
-.cmp-body{padding:0 0 24px calc(3.4rem + 16px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 28px}
-.cmp-col h4{margin:0 0 8px;font-size:.85rem;font-weight:800;color:var(--red)}
-.cmp-col ul{margin:0;padding-left:18px}.cmp-col li{margin-bottom:8px;font-size:.98rem}
-.cmp-ask,.cmp-body .ref{grid-column:1/-1;margin:4px 0 0}
-.cmp-against{grid-column:1/-1;border-top:1px dashed var(--rule);padding-top:10px}
-.cmp-against h4{color:var(--ink)}
-.cmp-ask{background:var(--lime);border-left:4px solid var(--ink);padding:10px 14px}
-.threshold-box{margin-top:40px;background:var(--slate);color:#fff;padding:clamp(20px,3vw,32px)}
-.threshold-box>p{font-size:1.1rem;max-width:44em;margin:0 0 20px}
-.threshold-box .counts{border-top-color:#fff;margin-bottom:0}
-.threshold-box .counts li+li{border-left-color:#ffffff30}
-.threshold-box .c-src{color:var(--stone)}
-.rows+.aside+.mission{margin-top:40px}
-/* on record */
-.counts{list-style:none;margin:0 auto 34px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:3px solid var(--ink)}
-.counts li{padding:18px 20px 18px 0;display:flex;flex-direction:column;gap:4px}
-.counts li+li{padding-left:20px;border-left:1px solid var(--rule)}
-.c-big{font:850 clamp(3.4rem,8vw,6rem)/.85 var(--display);font-stretch:62%;color:var(--red)}
-.c-l{font-weight:800;font-size:1.05rem}
-.c-src{font-size:.85rem;color:var(--muted)}
-.known .row-h{font-size:clamp(1.6rem,3.6vw,2.5rem)}
-.ref{font-size:.85rem;color:var(--muted)}.ref .tag{margin:0 8px 0 0}
-.sub-h{font:850 clamp(1.7rem,3.4vw,2.4rem)/1 var(--display);font-stretch:62%;text-transform:uppercase;margin:0 auto 14px}
-.sub-h+.ring-key{margin-top:0}
-.withheld{list-style:none;margin:0 auto;padding:0;border-top:2px solid #fff}
-.withheld li{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.6fr);gap:4px 18px;padding:12px 0;border-bottom:1px solid #ffffff22}
-.wh-b{font-weight:800}.wh-p{color:#dfe5e1}
-.withheld+.aside{margin-bottom:44px}
-.risks{list-style:none;counter-reset:k;margin-top:0;margin-bottom:0;padding:0;border-top:3px solid var(--ink)}
-.risks li{counter-increment:k;display:grid;grid-template-columns:3.2rem minmax(0,1fr);gap:2px 14px;padding:18px 0;border-bottom:1px solid var(--rule)}
-.risks li::before{content:counter(k,decimal-leading-zero);font-weight:800;color:var(--red);grid-row:1/3}
-.risk-h{font:850 clamp(1.7rem,3.8vw,2.6rem)/.95 var(--display);font-stretch:62%;text-transform:uppercase}
-.risk-l{color:var(--muted);max-width:44em}
-/* mic */
-.rules{list-style:none;counter-reset:r;padding:0;margin-top:0;margin-bottom:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;border-top:3px solid var(--ink);padding-top:18px}
-.rules li{counter-increment:r}.rules li::before{content:counter(r);display:block;font:850 3rem/1 var(--display);font-stretch:62%;color:var(--red);margin-bottom:6px}
-.rules b{display:block;font-size:1.1rem;margin-bottom:4px}
-.speech-text{max-width:40em}.speech-text p{font-size:1.12rem;line-height:1.65}
-.small{font-size:.9rem!important}
-
-/* pack */
-.pack{background:var(--red);color:#fff;padding:clamp(56px,8vw,104px) 16px}
-.pack-in{max-width:var(--max);margin:auto}
-.pack h2{font-size:clamp(3.2rem,9vw,7.4rem);margin:0 0 16px}
-.pack p{max-width:36em;font-size:1.1rem;margin:0 0 28px;color:#ffe3e7}
-.small-sec{padding-top:40px;padding-bottom:40px}
-.sources{padding-left:20px;font-size:.92rem}.sources li{margin-bottom:6px}
-.foot{background:var(--ink);color:#aeb7b2;font-size:.85rem;padding:28px 16px}
-.foot p{max-width:var(--max);margin:0 auto 6px}.foot a{margin-right:16px;color:#fff}
-
-@media (max-width:980px){
-  .hero{grid-template-columns:1fr;min-height:0}.hero-photo{order:-1;aspect-ratio:16/10}
-  .hero-text{padding:36px 16px 44px}
-  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .pillars{grid-template-columns:1fr}.pillar,.pillar+.pillar{padding:20px 0;border-right:0;border-bottom:1px solid var(--rule)}
-  .regimes,.rules{grid-template-columns:1fr}
-  .links{display:none}
-}
-@media (max-width:640px){
-  body{font-size:16px}
-  .nav-in{gap:10px}.toggle{display:none}.brand{font-size:1.25rem}
-  .tiles{grid-template-columns:1fr}.tile[open]{grid-column:auto}.tile summary{min-height:0}
-  .swap{grid-template-columns:1fr}
-  .wall-row{grid-template-columns:1fr 120px}.wall-status{grid-column:1/-1}
-  .step summary,.step .static{grid-template-columns:minmax(0,1fr) 28px}.when{grid-column:1}.step-h,.step-l{grid-column:1}.step .plus{grid-column:2}
-  .step .more,.row .more{padding-left:18px}.row .more{padding-left:0}
-  .row summary{grid-template-columns:2.4rem minmax(0,1fr) 24px}
-  .mission ul{grid-template-columns:1fr}
-  .dates li{grid-template-columns:1fr}
-  .cmp-body{grid-template-columns:1fr;padding-left:0}.cmp summary{grid-template-columns:2.6rem minmax(0,1fr) 24px}
-  .counts{grid-template-columns:1fr}.counts li+li{padding-left:0;border-left:0;border-top:1px solid var(--rule)}
-  .withheld li{grid-template-columns:1fr}
-  .risks li{grid-template-columns:2.4rem minmax(0,1fr)}
-}
-@media print{
-  .nav,.skip,.ctas,.toggle,.readmore,.plus{display:none!important}
-  body{font-size:11pt}
-  .hero{min-height:0;display:block}.hero-photo{max-height:90mm;overflow:hidden}
-  .sec,.pack,.breath ol{padding:14mm 0}
-  section{break-inside:auto}.row,.tile,.wall-row,.swap,.step{break-inside:avoid}
-  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:64px}
+body{margin:0;background:var(--lime);color:var(--ink);font:17px/1.55 var(--text)}
+a{color:var(--moss)}
+.bar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;height:52px;padding:0 12px;background:var(--slate);color:#fff}
+.bar .home{color:#fff;text-decoration:none;font-size:14px;opacity:.9}
+.burger{appearance:none;border:0;background:transparent;color:#fff;font-size:26px;line-height:1;width:44px;height:44px;cursor:pointer}
+.menu{position:fixed;top:0;right:0;bottom:0;z-index:40;width:min(86vw,360px);background:#fff;box-shadow:-8px 0 30px rgba(0,0,0,.25);padding:14px 16px;overflow:auto}
+.menu-head{display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-size:18px;margin-bottom:8px}
+.menu .x{appearance:none;border:0;background:none;font-size:22px;width:44px;height:44px;cursor:pointer}
+.menu ol{list-style:none;margin:0;padding:0}
+.menu li a{display:flex;gap:12px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--rule);color:var(--ink);text-decoration:none;font-weight:600}
+.menu li a span{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--slate);color:#fff;font-size:14px;flex:none}
+.menu-foot{margin-top:16px;font-size:15px}
+.scrim{position:fixed;inset:0;z-index:30;background:rgba(0,0,0,.35)}
+[hidden]{display:none!important}
+main{max-width:760px;margin:0 auto;padding:0 0 24px}
+.hero figure{margin:0;background:var(--slate)}
+.hero img{display:block;width:100%;height:auto}
+.hero figcaption{padding:8px 16px 10px;font-size:12px;line-height:1.45;color:#dfe4e1;background:var(--slate)}
+.hero figcaption a{color:#fff}
+.hero h1{margin:22px 16px 4px;font-family:var(--display);font-stretch:88%;font-weight:800;font-size:clamp(30px,8vw,46px);line-height:1.05;letter-spacing:-.01em;color:var(--slate)}
+.hero h1 span{display:block;margin-top:8px;font-size:clamp(18px,4.6vw,24px);font-weight:600;color:var(--red);letter-spacing:0}
+.kicker{margin:6px 16px 18px;color:var(--muted);font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.segs{padding:0 12px;display:flex;flex-direction:column;gap:10px}
+details>summary{list-style:none;cursor:pointer}
+details>summary::-webkit-details-marker{display:none}
+.seg{background:#fff;border:1px solid var(--rule);border-radius:14px;overflow:hidden}
+.seg>summary{display:flex;align-items:center;gap:14px;min-height:76px;padding:14px 16px}
+.seg[open]>summary{background:var(--slate);color:#fff}
+.seg-n{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--red);color:#fff;font-weight:800;font-family:var(--display)}
+.seg-t{flex:1;min-width:0}
+.seg-h{display:block;font-family:var(--display);font-weight:800;font-size:20px;line-height:1.15}
+.seg-l{display:block;margin-top:3px;font-size:14.5px;color:var(--muted)}
+.seg[open] .seg-l{color:#cfd6d2}
+.chev{flex:none;width:12px;height:12px;border-right:2.5px solid currentColor;border-bottom:2.5px solid currentColor;transform:rotate(45deg);margin:0 6px 4px 0;transition:transform .2s}
+details[open]>summary>.chev{transform:rotate(-135deg);margin-bottom:-4px}
+.seg-body{padding:14px 16px 16px}
+.lead{margin:0 0 12px;font-size:16px}
+.sub{border:1px solid var(--rule);border-radius:10px;margin:8px 0;background:var(--lime)}
+.sub>summary{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:52px;padding:10px 14px;font-weight:700}
+.sub[open]>summary{border-bottom:1px solid var(--rule)}
+.sub-body{padding:6px 14px 10px;background:#fff;border-radius:0 0 10px 10px}
+.sub .sub{background:#fff}
+.card>summary{font-size:15px}
+blockquote{margin:8px 0;padding:4px 0 4px 14px;border-left:4px solid var(--red);font-size:16.5px}
+.speech p{margin:.6em 0}
+.src{font-size:13.5px;color:var(--muted);margin:8px 0}
+.qs{margin:0;padding-left:0;list-style:none;counter-reset:q}
+.qs li{counter-increment:q}
+.qs .sub>summary span:first-child::before{content:counter(q) ". ";color:var(--red)}
+.qs .sub>summary{font-weight:600;font-size:15.5px;line-height:1.35}
+.sign{margin:14px 0 0;font-weight:700}
+.go{display:flex;flex-direction:column;gap:2px;margin:8px 0;padding:14px 16px;border-radius:12px;background:var(--slate);color:#fff;text-decoration:none;font-weight:700;font-size:17px}
+.go::after{content:"Open →";font-size:13px;font-weight:600;color:#cfd6d2;margin-top:4px}
+.go small{font-weight:400;font-size:13px;color:#cfd6d2}
+.files{font-size:14.5px;margin:14px 0 0}
+.back{appearance:none;display:block;width:100%;margin-top:14px;padding:12px;border:1px solid var(--rule);border-radius:10px;background:var(--lime);font:600 15px var(--text);color:var(--slate);cursor:pointer}
+.foot{max-width:760px;margin:10px auto 0;padding:18px 16px 40px;border-top:1px solid var(--rule);font-size:14px;color:var(--muted)}
+.foot .disclaimer{font-weight:700;color:var(--ink)}
+.foot .sig{font-style:italic}
+.small{font-size:13px}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+@media (min-width:900px){.hero img{max-height:56vh;object-fit:cover}.segs{padding:0}.hero h1,.kicker{margin-left:0;margin-right:0}main{padding:0 0 24px}.hero figure{border-radius:0 0 14px 14px;overflow:hidden}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media print{.bar,.menu,.scrim,.back{display:none!important}.seg{break-inside:auto;border:0}}
 </style>
-<script src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js" defer></script>
-<script src="https://bucklerfamily.estate/ebook/cta.js" defer></script>
-<link rel="alternate" type="application/json" href="/agent-index.json" title="Machine-readable meeting toolkit index">
-<link rel="alternate" type="text/plain" href="/llms.txt" title="Agent reading guide">\n</head>
+</head>
 <body>
-<a class="skip" href="#brief">Skip to the briefing</a>
-<header class="nav">
-  <div class="nav-in">
-    <a class="brand" href="#top">Tŷ Mawr <span>at Council</span></a>
-    <nav class="links" aria-label="Sections">
-      <a href="#brief">The briefing</a><a href="#ask">The ask</a><a href="#order">Running order</a><a href="#story">The story</a><a href="#wall">The wall</a><a href="#risks">The risks</a><a href="#mic">At the mic</a><a href="https://greathousefarmwiki.wordpress.com/" target="_blank" rel="noopener noreferrer">Evidence Wiki ↗</a>
-    </nav>
-    <button class="toggle" type="button" data-expand>Open everything</button>
-    <a class="btn-red" href="meeting-pack.pdf" download>Download PDF</a>
-  </div>
+<header class="bar">
+  <a class="home" href="https://bucklerfamily.estate/">← bucklerfamily.estate</a>
+  <button type="button" class="burger" aria-label="Menu" aria-controls="menu" aria-expanded="false" data-menu>☰</button>
 </header>
+<nav id="menu" class="menu" aria-label="Sections" hidden>
+  <div class="menu-head"><strong>The meeting</strong><button type="button" class="x" aria-label="Close menu" data-menu-close>✕</button></div>
+  <ol><li><a href="#agenda" data-go="agenda"><span>1</span>The two agenda points</a></li><li><a href="#statement" data-go="statement"><span>2</span>My statement</a></li><li><a href="#questions" data-go="questions"><span>3</span>Questions sent to the Council</a></li><li><a href="#records" data-go="records"><span>4</span>Records requests</a></li><li><a href="#clerk" data-go="clerk"><span>5</span>Correspondence with the Clerk</a></li><li><a href="#road" data-go="road"><span>6</span>The road to this meeting</a></li></ol>
+  <p class="menu-foot"><a href="#top" data-collapse>Back to all options</a></p>
+</nav>
+<div class="scrim" data-menu-close hidden></div>
 
 <main id="top">
 <section class="hero">
-  <div class="hero-text">
-    <p class="when-line"><span>Llandough Community Council</span><span>Thursday 22 October 2026, 7.00pm</span></p>
-    <h1>Preserving our identity.</h1>
-    <p class="lede">That is the Council&#x27;s own mission statement. On 22 October it considers Tŷ Mawr, the Great House of Llandough: a home our family traces back to 1667 (as the Western Mail also reported in 1958), demolished at about 4am on 6 December 1988. Its wider heritage and the family&#x27;s unresolved title questions are still largely absent from the Council&#x27;s published story.</p>
-    <div class="ctas">
-      <a class="btn-red big" href="meeting-pack.pdf" download>Download the meeting pack</a>
-      <a class="btn-line" href="#brief">Read the briefing</a>
-      <a class="btn-line" href="https://greathousefarmwiki.wordpress.com/" target="_blank" rel="noopener noreferrer">Read the evidence Wiki ↗</a>
-    </div>
-  </div>
-  <figure class="hero-photo">
-    <img src="img/tymawr-29-july-1988.jpg" alt="Tŷ Mawr: a two-storey limewashed stone farmhouse with three chimneys behind a rubble-stone wall, under a dark sky" width="1110" height="763">
-    <figcaption>Tŷ Mawr, 29 July 1988. Cadw photograph, released to the family in May 2026. The house was demolished 130 days later.</figcaption>
+  <figure>
+    <img src="img/tymawr-29-july-1988-white-wall.jpg" width="1110" height="763" alt="Tŷ Mawr, a long two-storey farmhouse, shown with its front wall whitewashed. An edited illustration.">
+    <figcaption>Illustration: Tŷ Mawr with its wall shown whitewashed (edited from a Cadw photograph). Not a photograph of the house as it stands. Original: Cadw photograph, 29 July 1988, released to the family in May 2026. <a href="img/tymawr-29-july-1988.jpg">Original photograph</a>.</figcaption>
   </figure>
+  <h1>Llandough Community Council meeting<span>Thursday 22 October 2026, 19:00 (remote)</span></h1>
+  <p class="kicker">Tŷ Mawr · Great House Farm · Item 10</p>
 </section>
 
-<section class="breath" aria-label="The case in one breath">
-  <ol><li><span class="b-line">320 years at home.</span><span class="b-note">Per the Buckler case, 1667–1988</span></li><li><span class="b-line">Gone before breakfast.</span><span class="b-note">Demolished from about 4am, 6 December 1988</span></li><li><span class="b-line">38 years out of the story.</span><span class="b-note">Great House remains absent from the Council&#x27;s published village history</span></li></ol>
-</section>
-
-<section class="sec" id="brief">
-  <div class="sec-head">
-    <h2>The briefing.</h2>
-    <p>Nine compartments, in order. Say the line in bold, then move on. Open a compartment only if a councillor asks: the record is underneath, with what is still being tested and the answer to the obvious objection.</p>
-  </div>
-  <div class="cmps">
-      <details class="cmp" id="c1">
-        <summary><span class="cmp-id">C1</span><span class="cmp-t">Who we are</span><span class="cmp-say">We are the Williams–Buckler family of Tŷ Mawr, the Great House of Llandough. Our family lived there for 320 years.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more cmp-body"><div class="cmp-col"><h4>On the record</h4><ul><li>Heneb&#x27;s Historic Environment Record says the manorial courts of Llandough and Leckwith were held at Great House. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Mary Williams&#x27;s statement of about 1974, and the 1974 press, record the family at Great House since 1667. <span class="tag tag-fam" title="The Buckler case (named testimony or legal position), being tested">Buckler case</span></li><li>William Buckler was born in the house. In 1988 three small children lived there. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Trade directories from 1868 to 1901 list “Williams John, Great house”; an 1892 press report names “Mr. John Williams, Great House Farm, Llandough” (wiki EV-0225, EV-0226). <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>The 1881 census lists John Williams, farmer, at “Llandough Home Farm” (RG11/5288 p.2, wiki EV-0224). Per Sion Buckler, this is Great House Farm under another name. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>The Western Mail, 20 November 1958 (snippet only, wiki EV-0037), reported the land as “farmed by her family since 1667”. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div><div class="cmp-col"><h4>Still being tested</h4><ul><li>No deed of 1667 has yet been found. The 1670 hearth tax and Bute estate leases are being searched. <span class="tag tag-open" title="Not yet established; records requested">Being sought</span></li></ul></div><div class="cmp-col cmp-against"><h4>What cuts against us</h4><ul><li>The heritage record says the Vaughans held Great House as the chief freehold farm from the mid-16th to the late 18th century. Both accounts can be true only if the Williamses held under them. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>A 1904 report says John Williams “succeeded his father in the tenancy of the farm in 1855” (wiki EV-0227): a tenancy, and of “Llandough Farm”, matched to Great House by inference. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>“Home Farm” appears in no other source, and the 1881 acreage may read 170, closer to the neighbouring Llandough Farm of the Rees family (wiki EV-0228). <span class="tag tag-open" title="Not yet established; records requested">Being sought</span></li></ul></div>
-          <p class="cmp-ask"><b>If asked “Weren&#x27;t you tenants?”</b> The 1939 tenancy plan, now held, depicts the eastern fields only, not the house. Mary refused the tenancies offered for the house.</p>
-          <p class="ref">Evidence: Wiki: The Williams / Buckler Family · Wiki: Mary Williams&#x27;s Statement (c. 1974) · Heneb HER GGAT02038s</p>
-        </div>
-      </details>
-      <details class="cmp" id="c2">
-        <summary><span class="cmp-id">C2</span><span class="cmp-t">What lies there</span><span class="cmp-say">The ground at Church View Close held one of the great early Christian cemeteries of Wales. Nothing marks it.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more cmp-body"><div class="cmp-col"><h4>On the record</h4><ul><li>A published study reports 1,026 burials from the early medieval cemetery excavated there in 1994, the largest such population recovered in Wales. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>St Dochdwy&#x27;s monastery is attested from the 7th century. Heneb says its exact site has not been established. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Medieval pottery was found on the slope beside the house in 1962–63. The Roman villa south of the church is a separate site. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Published sources record Peerless Jim Driscoll&#x27;s first fight in a barn at Great House Farm. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Marconi&#x27;s 1897 wireless trials crossed from Lavernock to Flat Holm. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div><div class="cmp-col"><h4>Still being tested</h4><ul><li>Family tradition that Thomas Williams of Great House carted Marconi&#x27;s equipment. <span class="tag tag-fam" title="The Buckler case (named testimony or legal position), being tested">Buckler case</span></li><li>Where the monastery stood. It is not proven to lie beneath Tŷ Mawr. <span class="tag tag-open" title="Not yet established; records requested">Being sought</span></li></ul></div><div class="cmp-col cmp-against"><h4>What cuts against us</h4><ul><li>Museum Wales traces the medieval spur and spearhead linked to the “armour” story to Church Farm, 1858, not to Great House. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>It has not been shown that the 1994 burials lay on the family&#x27;s own parcel. <span class="tag tag-open" title="Not yet established; records requested">Being sought</span></li></ul></div>
-          <p class="cmp-ask"><b>If asked “Isn&#x27;t this history already told?”</b> The Council&#x27;s own village history says 800 burials and does not mention Great House at all.</p>
-          <p class="ref">Evidence: Holbrook and Thomas, Medieval Archaeology 49 (2005) · Wiki: Archaeology and Heritage · Stead and Williams, Wales and its Boxers (2008)</p>
-        </div>
-      </details>
-      <details class="cmp" id="c3">
-        <summary><span class="cmp-id">C3</span><span class="cmp-t">Mary&#x27;s parcel</span><span class="cmp-say">For decades Mary Williams said the house was hers. She was treated as a tenant, and in 1983 her home was registered to BP while she lived in it.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more cmp-body"><div class="cmp-col"><h4>On the record</h4><ul><li>April 1974: Mary opened the house to the public and told the Daily Telegraph it was hers. Her solicitors said she had a valid claim. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>She refused the tenancies offered for the house in 1959 and 1965. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>BP&#x27;s 1974 action, in which she pleaded ownership, was adjourned and not relisted. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>23 February 1983: BP&#x27;s solicitors applied to register the farmhouse as a separate title, certifying no question or doubt. Mary died on 26 March 1983. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>2 February 1987: that title was amalgamated into the fields title, before the Court of Appeal hearing. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>The 1939 tenancy plan depicts the eastern fields, Parcel B, only. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>The Land Registry&#x27;s 43-item schedule does not list the 1969 deed recited as the root of BP&#x27;s title. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div><div class="cmp-col"><h4>Still being tested</h4><ul><li>The family&#x27;s case: two parcels since 1877, the house parcel theirs from 1928. <span class="tag tag-fam" title="The Buckler case (named testimony or legal position), being tested">Buckler case</span></li><li>A 15 May 1924 agreement on the Land Registry file, not yet read. <span class="tag tag-open" title="Not yet established; records requested">Being sought</span></li><li>The “synthetic Parcel A” working hypothesis: that registration and merger made the house appear to follow the fields&#x27; title. <span class="tag tag-open" title="Not yet established; records requested">Being sought</span></li><li>Per the Buckler case: notice of registration reached them only after Mary&#x27;s death. <span class="tag tag-fam" title="The Buckler case (named testimony or legal position), being tested">Buckler case</span></li></ul></div><div class="cmp-col cmp-against"><h4>What cuts against us</h4><ul><li>The 1916 tenancy described the farm as one holding, and later documents repeated that wording. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>HM Land Registry says there is no evidence of a mistake; its stage-two decision says the title is registered correctly. That decision is with the Independent Complaints Reviewer. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div>
-          <p class="cmp-ask"><b>If asked “The register is conclusive.”</b> The register can be corrected for mistake, and a person in actual occupation in 1982 had protected rights.</p>
-          <p class="ref">Evidence: Wiki: The Two Parcels · Wiki: Land Registry Titles · Wiki: Anomalies A-008 to A-012, A-025, A-026 · Wiki: 1987 HMLR amalgamation during appeal</p>
-        </div>
-      </details>
-      <details class="cmp" id="c4">
-        <summary><span class="cmp-id">C4</span><span class="cmp-t">The courts</span><span class="cmp-say">The family lost every round on who could stay. No court has ruled on who owned the house.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more cmp-body"><div class="cmp-col"><h4>On the record</h4><ul><li>High Court 1986 and Court of Appeal 1987 decided possession. The House of Lords refused leave in 1988; Strasbourg found the application inadmissible in 1989. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>The Court of Appeal counted the possession period from a 1955 order. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>The appeal judgment notes certain documents were never produced. Mary&#x27;s statement says the family&#x27;s papers went missing in 1950–52. <span class="tag tag-fam" title="The Buckler case (named testimony or legal position), being tested">Buckler case</span></li><li>On 5 December 1988 the court refused to wait for Strasbourg. The house came down the next morning. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>The House of Lords papers were identified on 23 September 2026 after earlier searches missed them. The Strasbourg file was destroyed in 2000. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div><div class="cmp-col"><h4>Still being tested</h4><ul><li>Procedural unfairness, court error and non-disclosure. Reopening needs new primary evidence; the Lords papers are not yet read. <span class="tag tag-open" title="Not yet established; records requested">Being sought</span></li></ul></div><div class="cmp-col cmp-against"><h4>What cuts against us</h4><ul><li>The Court of Appeal found the 1974 letters made later occupation permissive, whether or not Mary accepted them. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Strasbourg held the interference with William Buckler&#x27;s home lawful and justified. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div>
-          <p class="cmp-ask"><b>If asked “The courts have decided this.”</b> They decided possession. The family&#x27;s title case on the house parcel has not been tried.</p>
-          <p class="ref">Evidence: BP Properties Ltd v Buckler [1987] EWCA Civ 2 · Wiki: BP v Buckler, Scope, Decided and Undecided · Wiki: Potential Miscarriage of Justice register</p>
-        </div>
-      </details>
-      <details class="cmp" id="c5">
-        <summary><span class="cmp-id">C5</span><span class="cmp-t">The dispossession</span><span class="cmp-say">In 1988 a Welsh family was removed from its home and the house demolished before dawn. It was reported as an eviction.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more cmp-body"><div class="cmp-col"><h4>On the record</h4><ul><li>Press, 29 April 1988: five bailiffs and about fifteen police; doors broken with poleaxes, children behind them. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Press, December 1988: William Buckler injured, taken to hospital, and charged from his hospital bed. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Press, 6 December 1988: bulldozers from about 4am; William&#x27;s wife and their three children watched; nothing standing by breakfast. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Press, 1989: the family&#x27;s possessions lost and the family rehoused with relatives. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Press: a Vale councillor called the demolition “disgusting”; villagers met their councillors. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div><div class="cmp-col"><h4>Still being tested</h4><ul><li>Per the Buckler case: police searched the house and removed documents. <span class="tag tag-fam" title="The Buckler case (named testimony or legal position), being tested">Buckler case</span></li></ul></div><div class="cmp-col cmp-against"><h4>What cuts against us</h4><ul><li>Press, 1989: one charge was withdrawn as out of time; William Buckler pleaded guilty to the others. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div>
-          <p class="cmp-ask"><b>If asked “Why has it taken so long?”</b> Witnesses died, papers were lost and the trauma silenced the family. Key records surfaced only in 2026.</p>
-          <p class="ref">Evidence: Wiki: 1988, Possession and Demolition · Press transcripts GHF-E090-N07 to N15</p>
-        </div>
-      </details>
-      <details class="cmp" id="c6">
-        <summary><span class="cmp-id">C6</span><span class="cmp-t">The heritage erased</span><span class="cmp-say">A Welsh manor house beside an early Christian site was cleared, and the official record was left saying almost nothing.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more cmp-body"><div class="cmp-col"><h4>On the record</h4><ul><li>The Local Plan said the buildings should be retained. GGAT&#x27;s 1989 report described the farmhouse as a “county treasure”. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Cadw refused to list it on 5 December 1988. No assessment file or destruction record has been produced. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>GGAT warned in 1982. In 1990 untested ground was zoned low potential. Burials were found there in 1994. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>The heritage record classes the site “Post Medieval – Farm”. The Royal Commission recorded it only in part. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>A 1983 fire destroyed relics from years of excavations (South Wales Echo, 18 March 1983). <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div><div class="cmp-col"><h4>Still being tested</h4><ul><li>Per the Buckler case: the fire was at a Neath store and Llandough material was lost. <span class="tag tag-fam" title="The Buckler case (named testimony or legal position), being tested">Buckler case</span></li><li>Whether the 1990 evaluation was adequate on what was known then. <span class="tag tag-open" title="Not yet established; records requested">Being sought</span></li></ul></div><div class="cmp-col cmp-against"><h4>What cuts against us</h4><ul><li>GGAT disclosed its dual role in 1990, recommended recording and protection, and did not advise demolition. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Cadw said in 1988 that the house was not of sufficient architectural merit to list. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div>
-          <p class="cmp-ask"><b>If asked “Missing records prove nothing.”</b> Agreed, on their own. These are files public bodies had a duty to keep, and they should account for the gaps.</p>
-          <p class="ref">Evidence: Wiki: Anomalies A-036 to A-052, PL-002 to PL-008 · Wiki: Missing Records M-018 to M-028</p>
-        </div>
-      </details>
-      <details class="cmp" id="c7">
-        <summary><span class="cmp-id">C7</span><span class="cmp-t">The records wall</span><span class="cmp-say">More than twenty bodies have been asked for the records over eighteen months. What would settle the questions has not yet been produced.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more cmp-body"><div class="cmp-col"><h4>On the record</h4><ul><li>54 records identified as missing, withheld or not yet produced. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>The Ministry of Justice has not yet answered our MP. The Ministry of Defence will neither confirm nor deny whether it holds certain records. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>This Council refused on cost; a review is pending. The Vale&#x27;s scrutiny team declined, citing the Welsh Government, Cadw, MSs and MPs. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>The Wales Office searched only digital records. Planning appendices B–E have not been produced. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div><div class="cmp-col"><h4>Still being tested</h4><ul><li>Fraud, deliberate concealment and improper government involvement are not established. Disclosure is the test, whichever way it falls. <span class="tag tag-open" title="Not yet established; records requested">Being sought</span></li></ul></div><div class="cmp-col cmp-against"><h4>What cuts against us</h4><ul><li>Several bodies have disclosed material: the Royal Commission, Museum Wales, Cadw&#x27;s photographs and the Land Registry schedule. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>A missing record is not, on its own, proof of concealment. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div>
-          <p class="cmp-ask"><b>If asked “Isn&#x27;t this a fishing expedition?”</b> Every request names a specific record. The registers list them one by one.</p>
-          <p class="ref">Evidence: Wiki: Missing Records Register · Wiki: Records Access Chronology · dartboard.bucklerfamily.estate</p>
-        </div>
-      </details>
-      <details class="cmp" id="c8">
-        <summary><span class="cmp-id">C8</span><span class="cmp-t">Rights, identity, public interest</span><span class="cmp-say">This is a matter of human rights, Welsh heritage and public interest, not one family&#x27;s grievance.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more cmp-body"><div class="cmp-col"><h4>On the record</h4><ul><li>In 1989 Strasbourg accepted the possession order interfered with William Buckler&#x27;s home, but held it justified. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>About a thousand people signed to save the house in 1974. An MP asked the Lord Chancellor to review the case in 1988. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>In 1980 the Commons heard Western Ground Rents called the most rapacious ground landlord in South Wales. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>The Western Mail, 20 November 1958 (snippet only, wiki EV-0037), reported Mrs Buckler&#x27;s claim that the water was cut off from her house “for nearly 10 years by order of Western Ground Rents”, calling it “a Welsh case of Crichel Down”. That is a press report of her claim, and its date (about 1948–58) conflicts with a c.1988 date elsewhere (wiki SC-48). <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li><li>Tonight&#x27;s agenda already asks about Welsh culture (Item 14) and local identity (Item 12). <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div><div class="cmp-col"><h4>Still being tested</h4><ul><li>The family&#x27;s view: Welsh land, history and identity were overridden and erased, as indigenous peoples&#x27; have been elsewhere. <span class="tag tag-fam" title="The Buckler case (named testimony or legal position), being tested">Buckler case</span></li></ul></div><div class="cmp-col cmp-against"><h4>What cuts against us</h4><ul><li>Indigenous-rights language is the family&#x27;s framing; it is not a legal category UK courts currently apply to Wales. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></li></ul></div>
-          <p class="cmp-ask"><b>If asked “Why should a community council get involved?”</b> Its own mission is preserving our identity. It is the community&#x27;s voice to the Senedd and the Vale.</p>
-          <p class="ref">Evidence: Hansard, 22 May 1980 · Buckler v United Kingdom (14464/88) · Wiki: Q&amp;A, Human Rights and Public Law</p>
-        </div>
-      </details>
-      <details class="cmp" id="c9">
-        <summary><span class="cmp-id">C9</span><span class="cmp-t">What we ask</span><span class="cmp-say">Put it on the record. Make it a standing item. Recommend an independent inquiry. Support disclosure, and the family. We are not seeking anyone&#x27;s home at Church View Close.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more cmp-body">
-          <p class="cmp-ask"><b>If asked “What can a community council do?”</b> Record it, write letters, recommend an inquiry, and keep it on the agenda. That is how this starts.</p>
-          <p class="ref">Evidence: The ask, below</p>
-        </div>
-      </details></div>
-  <div class="threshold-box">
-    <p>Research has only started. The family does not claim that fraud, deliberate concealment or improper government involvement has been established or that the legal threshold to reopen the case has been met. Some records have been disclosed; others are missing, reported destroyed, not yet produced or still under review. The public record establishes important facts but leaves specific title and procedural questions unresolved.</p>
-    <ul class="counts"><li><span class="c-big">86</span><span class="c-l">open lines of enquiry</span><span class="c-src">Anomalies Register: 71 issues plus 15 planning anomalies</span></li><li><span class="c-big">54</span><span class="c-l">records missing or withheld</span><span class="c-src">Missing Records Register, M-001 to M-054</span></li><li><span class="c-big">20+</span><span class="c-l">bodies asked since November 2025</span><span class="c-src">Records Access Chronology</span></li></ul>
-  </div>
-</section>
-
-<section class="sec" id="ask">
-  <div class="sec-head">
-    <h2>Item 10 is too small for this.</h2>
-    <p>Ten proposals are set out below. The priority decisions sought tonight are (1) receive and minute the pack, (2) make the matter a standing item and appoint a liaison councillor, and (5) write to record-holders in support of disclosure and preservation. Ask the Council to discuss the remaining proposals; if there is insufficient time or agenda authority to decide them, request named referrals or a properly notified future agenda rather than rushing ten separate resolutions.</p>
-  </div>
-  <div class="rows">
-      <details class="row">
-        <summary><span class="num">01</span><span class="row-h">Put it on the record</span><span class="row-l">Receive the family&#x27;s statement and this pack, and minute them.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more">
-          <p class="why">The Council&#x27;s published village-history page omits Great House. Receiving this statement would place the Buckler case in the record of this meeting.</p>
-          <p class="resolution"><span>Draft resolution</span>That the Council receives the statement and meeting pack of the Williams–Buckler family, records them in the minutes, and publishes them with the papers for this meeting.</p>
-        </div>
-      </details>
-      <details class="row">
-        <summary><span class="num">02</span><span class="row-h">Make it a standing item</span><span class="row-l">Name a councillor. Bring it back every meeting until it is resolved.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more">
-          <p class="why">This is the first meeting, not the last. Detail belongs to later meetings, in public, with papers in advance.</p>
-          <p class="resolution"><span>Draft resolution</span>That “Great House Farm / Tŷ Mawr” is placed on the agenda of each ordinary meeting until the Council resolves otherwise, and that Councillor ______ acts as the Council&#x27;s liaison with the family.</p>
-        </div>
-      </details>
-      <details class="row">
-        <summary><span class="num">03</span><span class="row-h">Recommend an independent inquiry</span><span class="row-l">Ask the Senedd to consider an independent public inquiry.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more">
-          <p class="why">The Vale&#x27;s scrutiny team declined because the matter is already before the Welsh Government, Cadw, MSs and MPs. That makes it a Senedd-level question. The Senedd has already advised the family to petition.</p>
-          <p class="resolution"><span>Draft resolution</span>That the Council writes to the Senedd&#x27;s Petitions Committee and Culture Committee and to the area&#x27;s Members of the Senedd, recommending that an independent inquiry be considered into the dispossession of the Williams–Buckler family, the demolition of Great House in 1988, the handling of the site&#x27;s heritage, and the records since; and that it supports any petition the family brings.</p>
-        </div>
-      </details>
-      <details class="row">
-        <summary><span class="num">04</span><span class="row-h">Acknowledge the harm</span><span class="row-l">Recognise what the family went through, and ask for support for them.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more">
-          <p class="why">Three generations lived through the evictions, the demolition and 38 years without a hearing. Recognition costs the Council nothing.</p>
-          <p class="resolution"><span>Draft resolution</span>That the Council acknowledges the distress and indignity suffered by the Williams–Buckler family in the 1988 dispossession and since, and writes to Cardiff and Vale University Health Board supporting the family&#x27;s access to trauma-informed counselling.</p>
-        </div>
-      </details>
-      <details class="row">
-        <summary><span class="num">05</span><span class="row-h">Speak up for disclosure</span><span class="row-l">Write to the bodies holding the records, and ask them to keep everything.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more">
-          <p class="why">A letter from the community&#x27;s own council carries weight no family letter can. It asks for openness, not a verdict.</p>
-          <p class="resolution"><span>Draft resolution</span>That the Clerk writes on the Council&#x27;s behalf to Cadw, the Vale of Glamorgan Council, HM Land Registry, Amgueddfa Cymru and the National Library of Wales, and to the Ministry of Justice about its outstanding reply to Stephen Doughty MP, copied to Mr Doughty and the area&#x27;s Members of the Senedd, supporting full and prompt disclosure to the family and the preservation of all records meanwhile.</p>
-        </div>
-      </details>
-      <details class="row">
-        <summary><span class="num">06</span><span class="row-h">Open the Council&#x27;s own records</span><span class="row-l">An independent review, separate answers, and a hold on the files.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more">
-          <p class="why">The refusal priced the request at 224 sets of minutes and gave figures that do not reconcile. Land and heritage records can fall under the Environmental Information Regulations, which have no automatic cost cap.</p>
-          <p class="resolution"><span>Draft resolution</span>That the internal review of the 11 October refusal is conducted by a person other than the officer who made it; that the environmental-information request and the subject access request of 12 October are each answered under their own law and time limit; and that all Council records concerning Great House, Church View Close and village green VG41 are preserved.</p>
-        </div>
-      </details>
-      <details class="row">
-        <summary><span class="num">07</span><span class="row-h">Correct the Council&#x27;s own history</span><span class="row-l">The village history page says 800 burials and nothing about Great House.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more">
-          <p class="why">The page gives “over 800 burials” (the published report counts 1,026), dates the Roman villa to the 1990s (it was excavated in 1978–79), and does not mention Great House, the Williams family or the demolition.</p>
-          <p class="resolution"><span>Draft resolution</span>That the Council&#x27;s published village history is revised, with heritage advice and the family&#x27;s input, to record Great House, the manorial courts held there, its demolition in 1988, and the 1,026 inhumation burials reported in the published excavation study.</p>
-        </div>
-      </details>
-      <details class="row">
-        <summary><span class="num">08</span><span class="row-h">Mark it on the ground</span><span class="row-l">A board or memorial near the green: monastery, the 1,026 dead, the manor, Marconi, Peerless Jim.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more">
-          <p class="why">There is nothing on the ground that records any of it. The family has offered a free talk to the Council or residents.</p>
-          <p class="resolution"><span>Draft resolution</span>That a working group is set up to scope an interpretation board or memorial near the green, covering St Dochdwy&#x27;s monastery, the 1,026 early medieval burials, Great House and the manor, the 1897 wireless trials and Peerless Jim Driscoll, with wording checked against sources and agreed with the family; and to explore a Llandough companion to the Marconi artwork on the Cardiff Barrage; that the working group consults the residents of Church View Close, St Dochdwy&#x27;s parish and the family before any wording is agreed; and that the Council asks Amgueddfa Cymru what is planned for the long-term care of the human remains excavated in 1994, including whether reburial near the church has been considered.</p>
-        </div>
-      </details>
-      <details class="row">
-        <summary><span class="num">09</span><span class="row-h">Find the witnesses</span><span class="row-l">Invite people who remember the village from the 1950s to the 1990s to come forward.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more">
-          <p class="why">This is the request already listed as Item 10(a). Forwarding an invitation discloses nobody&#x27;s data.</p>
-          <p class="resolution"><span>Draft resolution</span>That the Council forwards the family&#x27;s invitation to former members, former clerks and long-standing residents, leaving it to them whether to make contact; no personal details to be disclosed without consent.</p>
-        </div>
-      </details>
-      <details class="row">
-        <summary><span class="num">10</span><span class="row-h">Carry it into tonight&#x27;s other business</span><span class="row-l">Items 12 and 14 are about identity and culture. Tŷ Mawr belongs in both.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more">
-          <p class="why">The agenda already asks the Council to think about Welsh culture, sport and local identity. Here is Llandough&#x27;s strongest example.</p>
-          <p class="resolution"><span>Draft resolution</span>That Tŷ Mawr&#x27;s heritage, including Peerless Jim Driscoll and the 1897 wireless trials, is considered in the Council&#x27;s response to the Welsh Government call for evidence on culture and sport (Item 14, closing 18 December 2026) and in the heritage and identity of the proposed Llandough and Cwrtyrala Community Council (Item 12).</p>
-        </div>
-      </details></div>
-  <p class="aside">Not asked: for the Council to decide ownership, fraud or whether any court was right. Those belong to courts and regulators. The Council is asked to put the matter on record and use its own powers.</p>
-  <div class="mission">
-    <p class="mission-q">“Serving our community, preserving our identity.”</p>
-    <p class="mission-by">The Council's mission statement, and its four commitments:</p>
-    <ul><li>Be open and accessible in all our decision making</li><li>Be accountable in all our council activities</li><li>Be responsive to the needs of the community</li><li>Encourage community participation</li></ul>
-  </div>
-</section>
-
-<section class="sec sec-slate" id="order">
-  <div class="sec-head">
-    <h2>The running order.</h2>
-    <p>Where each point fits on the published agenda, from now until the minutes.</p>
-  </div>
-  <div class="steps">
-      <details class="step">
-        <summary><span class="when">By Friday 16 October</span><span class="step-h">Send the pack to the Clerk</span><span class="step-l">Ask for a properly worded Item 10, circulation to members, and time to speak.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more"><ul><li>Email this PDF to clerk@llandough-cc.co.uk with the covering letter on page 1.</li><li>Ask the Clerk and Chair to confirm whether the expanded Item 10 wording can be added through a supplementary or revised agenda under the Council&#x27;s standing orders and applicable notice requirements. If permitted, ask for publication by Saturday 17 October. Do not assume that a narrower published item can automatically be expanded.</li><li>Ask a community councillor to give written notice of a motion in the same terms, so the Council can decide something on the night.</li><li>Ask the Chair for up to ten minutes under Item 10, as well as the public session.</li><li>Ask the Clerk to list the family&#x27;s letters of 12 October under Item 16.</li><li>Ask the Clerk for the Council&#x27;s standing orders on public speaking: time allowed, and whether the Chair may invite the family to speak under Item 10.</li><li>Tell the Clerk of any access needs in good time: Welsh-language contribution, large-print copies, or remote attendance.</li></ul></div>
-      </details>
-      <details class="step">
-        <summary><span class="when">Item 1</span><span class="step-h">Declarations of interest</span><span class="step-l">Listen. Members connected to the site or the parties should declare.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more"><ul><li>Anyone living on or next to Church View Close, or with links to the developer, landowner or the 1980s parties, should say so before the item is discussed.</li></ul></div>
-      </details>
-      <details class="step">
-        <summary><span class="when">Item 4</span><span class="step-h">Public participation</span><span class="step-l">The three-minute statement. Scope, not detail. End with the four asks.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more"><ul><li>Use the statement in “At the microphone”.</li><li>Ask the Chair at the start whether you may make an audio record of Item 10 for your own notes. Wales has no automatic right to film or record community council meetings, so ask rather than assume.</li><li>Ask the Chair, before you sit down, whether the family may speak again when Item 10 is reached.</li></ul></div>
-      </details>
-      <details class="step">
-        <summary><span class="when">Item 5</span><span class="step-h">Councillor George Carroll</span><span class="step-l">The Vale ward member for Llandough. Ask him to take three things to the Vale.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more"><ul><li>The missing Appendices C, D and E from the Vale&#x27;s FOI disclosure (request 00211557).</li><li>The Vale Scrutiny Committee&#x27;s reply that it was unable to consider the family&#x27;s request.</li><li>The history of village green VG41, registered 16 June 1970 beside the farm.</li></ul></div>
-      </details>
-      <details class="step step-main">
-        <summary><span class="when">Item 10</span><span class="step-h">Great House Farm / Tŷ Mawr</span><span class="step-l">The main event. Walk the ten asks. Push for a decision on the first, second and fifth.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more"><ul><li>If the Council cannot decide everything tonight, ask for a working group and a date.</li><li>Ask that every action is minuted with a name and a deadline.</li></ul></div>
-      </details>
-      <div class="step">
-        <div class="static"><span class="when">Item 12</span><span class="step-h">Llandough and Cwrtyrala Community Council</span><span class="step-l">A new council needs a heritage. Ask that Tŷ Mawr is part of it.</span></div>
-        
-      </div>
-      <div class="step">
-        <div class="static"><span class="when">Item 14</span><span class="step-h">Welsh Government: culture and sport</span><span class="step-l">Peerless Jim and Marconi make Llandough a case study. Offer to help draft.</span></div>
-        
-      </div>
-      <div class="step">
-        <div class="static"><span class="when">Item 16</span><span class="step-h">Correspondence</span><span class="step-l">Check the family&#x27;s 12 October letters are listed. No decisions can be taken here.</span></div>
-        
-      </div>
-      <details class="step">
-        <summary><span class="when">Within a week</span><span class="step-h">Follow up</span><span class="step-l">Ask for the draft minutes, the named liaison councillor, and the date the item returns.</span><span class="plus" aria-hidden="true"></span></summary>
-        <div class="more"><ul><li>Check the draft minutes against your own notes and ask for any correction in writing.</li><li>Publish the outcome, unedited, on the Wiki and in the project highlight report, including anything that went against the family.</li><li>Thank the Council in writing, whatever it decided.</li></ul></div>
-      </details></div>
-</section>
-
-<section class="sec" id="story">
-  <div class="sec-head">
-    <h2>The story they told.</h2>
-    <p>Contemporary coverage framed the dispute as an eviction. These articles show what was reported at the time; they do not prove every claim in print.</p>
-  </div>
-  <ul class="swaps">
-      <li class="swap"><s class="said">Squatters.</s><span class="truth">Per the Buckler case, the Williams–Bucklers were a long-established household asserting a separate title. <span class="tag tag-fam" title="The Buckler case (named testimony or legal position), being tested">Buckler case</span></span></li>
-      <li class="swap"><s class="said">An eviction.</s><span class="truth">A possession enforcement followed by demolition at about 4am on 6 December 1988. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></span></li>
-      <li class="swap"><s class="said">A farmer&#x27;s feud.</s><span class="truth">A long-running land and possession dispute involving a property company owned by the BP pension fund. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></span></li>
-      <li class="swap"><s class="said">An old farmhouse.</s><span class="truth">A building whose manorial role is recorded in the official Historic Environment Record. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></span></li>
-      <li class="swap"><s class="said">Nobody cared.</s><span class="truth">Contemporary reports recorded petitions and protests; the extent of public support should be tied to the particular source. <span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span></span></li>
-      <li class="swap"><s class="said">The courts settled it.</s><span class="truth">The possession litigation went against the family; the present title research tests parcel descriptions and instruments without asking the Council to re-decide the case. <span class="tag tag-fam" title="The Buckler case (named testimony or legal position), being tested">Buckler case</span></span></li></ul>
-  <figure class="barn">
-    <img src="img/tymawr-barn-29-july-1988.jpg" alt="The stone barn at Great House Farm, 1988" width="1109" height="763">
-    <figcaption>The barn at Great House Farm, 29 July 1988 (Cadw). Peerless Jim Driscoll's first fight is recorded in a barn here.</figcaption>
-  </figure>
-</section>
-
-<section class="sec sec-slate" id="wall">
-  <div class="sec-head">
-    <h2>The wall.</h2>
-    <p>Twenty organisations asked for records over eighteen months. Eight steps each before a request is exhausted. 60 of 160 steps taken; none has reached a tribunal.</p>
-  </div>
-  <h3 class="sub-h">Where disclosure stands.</h3>
-  <ul class="withheld"><li><span class="wh-b">Ministry of Justice</span><span class="wh-p">The family records that a reply to Stephen Doughty MP remains outstanding; the probate request is on hold.</span></li><li><span class="wh-b">Ministry of Defence</span><span class="wh-p">A separate request received a neither-confirm-nor-deny response under FOIA s.23(5). That response alone does not establish a link to the land dispute.</span></li><li><span class="wh-b">This Council</span><span class="wh-p">The 11 October section 12 refusal is under internal review; the separate EIR and subject access requests were sent on 12 October.</span></li><li><span class="wh-b">HM Land Registry</span><span class="wh-p">The disclosed 43-item schedule does not list the 1969 conveyance or 1971 abstract; preservation and access to the full first-registration files remain live issues.</span></li><li><span class="wh-b">Cadw</span><span class="wh-p">Cadw says the 1988 assessment file was likely destroyed; no destruction record has been produced.</span></li><li><span class="wh-b">Vale of Glamorgan</span><span class="wh-p">Planning Appendices B–E have not been produced; an internal review remains outstanding.</span></li><li><span class="wh-b">Amgueddfa Cymru</span><span class="wh-p">Two earlier “not held” refusals were upheld on review. A response to FOI 2026-036 on 5 October disclosed Church Farm records (accession 63.24). The Wiki treats “Llandough Church Farm” as source-specific wording, not an established synonym for Great House Farm.</span></li><li><span class="wh-b">The National Archives</span><span class="wh-p">The House of Lords bundle YHL/PO/JO/10/11/2536 was identified on 23 September; it still needs to be obtained and examined.</span></li></ul>
-  <p class="aside light">No complaint has yet gone to the Information Commissioner or the Public Services Ombudsman for Wales. Those are the next steps if disclosure does not come.</p>
-  <h3 class="sub-h">Every request, every step.</h3>
-  <ol class="ring-key"><li><b>1</b> Enquiry</li><li><b>2</b> Reply</li><li><b>3</b> Chase</li><li><b>4</b> Review</li><li><b>5</b> Complaint</li><li><b>6</b> Regulator</li><li><b>7</b> Democratic</li><li><b>8</b> Tribunal</li></ol>
-  <ul class="wall"><li class="wall-row wall-us"><span class="wall-name">Llandough Community Council</span><span class="rings" aria-label="6 of 8 stages opened"><i class="on" title="Enquiry"></i><i class="on" title="Reply"></i><i class="on" title="Chase"></i><i class="on" title="Review"></i><i class="on" title="Complaint"></i><i class="" title="Regulator"></i><i class="on" title="Democratic"></i><i class="" title="Tribunal"></i></span><span class="wall-status">Cost refusal; review, EIR and subject access requests pending; this meeting</span></li><li class="wall-row"><span class="wall-name">Cadw and Welsh Government</span><span class="rings" aria-label="5 of 8 stages opened"><i class="on" title="Enquiry"></i><i class="on" title="Reply"></i><i class="on" title="Chase"></i><i class="on" title="Review"></i><i class="on" title="Complaint"></i><i class="" title="Regulator"></i><i class="" title="Democratic"></i><i class="" title="Tribunal"></i></span><span class="wall-status">1988 listing file “quite likely” destroyed, no destruction record</span></li><li class="wall-row"><span class="wall-name">HM Land Registry</span><span class="rings" aria-label="5 of 8 stages opened"><i class="on" title="Enquiry"></i><i class="on" title="Reply"></i><i class="on" title="Chase"></i><i class="" title="Review"></i><i class="on" title="Complaint"></i><i class="on" title="Regulator"></i><i class="" title="Democratic"></i><i class="" title="Tribunal"></i></span><span class="wall-status">“No evidence of a mistake”; referred to the Independent Complaints Reviewer</span></li><li class="wall-row"><span class="wall-name">Amgueddfa Cymru</span><span class="rings" aria-label="4 of 8 stages opened"><i class="on" title="Enquiry"></i><i class="on" title="Reply"></i><i class="on" title="Chase"></i><i class="on" title="Review"></i><i class="" title="Complaint"></i><i class="" title="Regulator"></i><i class="" title="Democratic"></i><i class="" title="Tribunal"></i></span><span class="wall-status">FOI 2026-036 answered 5 October with Church Farm records (accession 63.24); source identity and relevance require checking</span></li><li class="wall-row"><span class="wall-name">National Library of Wales</span><span class="rings" aria-label="4 of 8 stages opened"><i class="on" title="Enquiry"></i><i class="on" title="Reply"></i><i class="on" title="Chase"></i><i class="on" title="Review"></i><i class="" title="Complaint"></i><i class="" title="Regulator"></i><i class="" title="Democratic"></i><i class="" title="Tribunal"></i></span><span class="wall-status">Bute Estate series searched; one point outstanding</span></li><li class="wall-row"><span class="wall-name">Ministry of Defence</span><span class="rings" aria-label="4 of 8 stages opened"><i class="on" title="Enquiry"></i><i class="on" title="Reply"></i><i class="on" title="Chase"></i><i class="on" title="Review"></i><i class="" title="Complaint"></i><i class="" title="Regulator"></i><i class="" title="Democratic"></i><i class="" title="Tribunal"></i></span><span class="wall-status">Neither confirm nor deny; subject access found nothing in scope</span></li><li class="wall-row"><span class="wall-name">Vale of Glamorgan Council</span><span class="rings" aria-label="3 of 8 stages opened"><i class="on" title="Enquiry"></i><i class="on" title="Reply"></i><i class="on" title="Chase"></i><i class="" title="Review"></i><i class="" title="Complaint"></i><i class="" title="Regulator"></i><i class="" title="Democratic"></i><i class="" title="Tribunal"></i></span><span class="wall-status">Planning Appendices C, D and E still missing</span></li><li class="wall-row"><span class="wall-name">South Wales Police</span><span class="rings" aria-label="3 of 8 stages opened"><i class="on" title="Enquiry"></i><i class="on" title="Reply"></i><i class="" title="Chase"></i><i class="on" title="Review"></i><i class="" title="Complaint"></i><i class="" title="Regulator"></i><i class="" title="Democratic"></i><i class="" title="Tribunal"></i></span><span class="wall-status">Request 1264/26 live; review 1188/26 opened</span></li><li class="wall-row"><span class="wall-name">Wales Office</span><span class="rings" aria-label="3 of 8 stages opened"><i class="on" title="Enquiry"></i><i class="on" title="Reply"></i><i class="" title="Chase"></i><i class="on" title="Review"></i><i class="" title="Complaint"></i><i class="" title="Regulator"></i><i class="" title="Democratic"></i><i class="" title="Tribunal"></i></span><span class="wall-status">Internal review IR/26/16</span></li><li class="wall-row"><span class="wall-name">RCAHMW (Royal Commission)</span><span class="rings" aria-label="3 of 8 stages opened"><i class="on" title="Enquiry"></i><i class="on" title="Reply"></i><i class="on" title="Chase"></i><i class="" title="Review"></i><i class="" title="Complaint"></i><i class="" title="Regulator"></i><i class="" title="Democratic"></i><i class="" title="Tribunal"></i></span><span class="wall-status">Scans ordered, not yet received</span></li><li class="wall-row"><span class="wall-name">The National Archives</span><span class="rings" aria-label="3 of 8 stages opened"><i class="on" title="Enquiry"></i><i class="on" title="Reply"></i><i class="on" title="Chase"></i><i class="" title="Review"></i><i class="" title="Complaint"></i><i class="" title="Regulator"></i><i class="" title="Democratic"></i><i class="" title="Tribunal"></i></span><span class="wall-status">One request past its deadline</span></li><li class="wall-row"><span class="wall-name">Cardiff Register Office</span><span class="rings" aria-label="3 of 8 stages opened"><i class="on" title="Enquiry"></i><i class="on" title="Reply"></i><i class="on" title="Chase"></i><i class="" title="Review"></i><i class="" title="Complaint"></i><i class="" title="Regulator"></i><i class="" title="Democratic"></i><i class="" title="Tribunal"></i></span><span class="wall-status">Entry not held; asked to pass on</span></li><li class="wall-row"><span class="wall-name">Ministry of Justice</span><span class="rings" aria-label="2 of 8 stages opened"><i class="on" title="Enquiry"></i><i class="" title="Reply"></i><i class="" title="Chase"></i><i class="on" title="Review"></i><i class="" title="Complaint"></i><i class="" title="Regulator"></i><i class="" title="Democratic"></i><i class="" title="Tribunal"></i></span><span class="wall-status">Internal review acknowledged</span></li><li class="wall-row"><span class="wall-name">Vale of Glamorgan Scrutiny</span><span class="rings" aria-label="2 of 8 stages opened"><i class="on" title="Enquiry"></i><i class="on" title="Reply"></i><i class="" title="Chase"></i><i class="" title="Review"></i><i class="" title="Complaint"></i><i class="" title="Regulator"></i><i class="" title="Democratic"></i><i class="" title="Tribunal"></i></span><span class="wall-status">“Unable to consider”</span></li><li class="wall-row"><span class="wall-name">Counter Terrorism Security Office</span><span class="rings" aria-label="2 of 8 stages opened"><i class="on" title="Enquiry"></i><i class="on" title="Reply"></i><i class="" title="Chase"></i><i class="" title="Review"></i><i class="" title="Complaint"></i><i class="" title="Regulator"></i><i class="" title="Democratic"></i><i class="" title="Tribunal"></i></span><span class="wall-status">Several responses</span></li><li class="wall-row"><span class="wall-name">Stephen Doughty MP</span><span class="rings" aria-label="2 of 8 stages opened"><i class="on" title="Enquiry"></i><i class="on" title="Reply"></i><i class="" title="Chase"></i><i class="" title="Review"></i><i class="" title="Complaint"></i><i class="" title="Regulator"></i><i class="" title="Democratic"></i><i class="" title="Tribunal"></i></span><span class="wall-status">Automatic reply only</span></li><li class="wall-row"><span class="wall-name">Cotswold Archaeology</span><span class="rings" aria-label="2 of 8 stages opened"><i class="on" title="Enquiry"></i><i class="on" title="Reply"></i><i class="" title="Chase"></i><i class="" title="Review"></i><i class="" title="Complaint"></i><i class="" title="Regulator"></i><i class="" title="Democratic"></i><i class="" title="Tribunal"></i></span><span class="wall-status">Pointed to the published report</span></li><li class="wall-row"><span class="wall-name">ITV Archive</span><span class="rings" aria-label="2 of 8 stages opened"><i class="on" title="Enquiry"></i><i class="on" title="Reply"></i><i class="" title="Chase"></i><i class="" title="Review"></i><i class="" title="Complaint"></i><i class="" title="Regulator"></i><i class="" title="Democratic"></i><i class="" title="Tribunal"></i></span><span class="wall-status">Automated dead end</span></li><li class="wall-row"><span class="wall-name">Glamorgan Archives</span><span class="rings" aria-label="1 of 8 stages opened"><i class="on" title="Enquiry"></i><i class="" title="Reply"></i><i class="" title="Chase"></i><i class="" title="Review"></i><i class="" title="Complaint"></i><i class="" title="Regulator"></i><i class="" title="Democratic"></i><i class="" title="Tribunal"></i></span><span class="wall-status">Location enquiry</span></li><li class="wall-row"><span class="wall-name">Linklaters (BP&#x27;s solicitors, 1982–88)</span><span class="rings" aria-label="1 of 8 stages opened"><i class="on" title="Enquiry"></i><i class="" title="Reply"></i><i class="" title="Chase"></i><i class="" title="Review"></i><i class="" title="Complaint"></i><i class="" title="Regulator"></i><i class="" title="Democratic"></i><i class="" title="Tribunal"></i></span><span class="wall-status">Preservation and access request, no reply</span></li></ul>
-  <p class="aside light">From the family&#x27;s own correspondence log, to 12 October 2026. A ring counts as opened when the family has taken that step with that body; it is not a finding about how any body behaved.</p>
-  <details class="council">
-    <summary><span class="court-h">This Council's own file.</span><span class="court-l">A cost refusal that does not add up, reviewed by the person who made it.</span><span class="readmore">Read more</span></summary>
-    <div class="more"><ol class="dates"><li><b>21 September 2026</b><span>Request to the Council for records of Great House, the green and the 1982 transfer.</span></li><li><b>11 October 2026</b><span>Refused on cost: reading and assessing 224 sets of minutes, 2002–2016. The letter gives 20 + 10 minutes a set (6,720 minutes) but totals “over 2,240 minutes”.</span></li><li><b>12 October 2026</b><span>Internal review requested, plus a separate environmental-information request, a subject access request and a request to preserve records. Review asked of the same Clerk.</span></li><li><b>9 November 2026</b><span>Twenty working days: environmental-information reply due.</span></li><li><b>12 November 2026</b><span>One month: subject access reply due.</span></li></ol></div>
-  </details>
-  <details class="council">
-    <summary><span class="court-h">Three rights, not one.</span><span class="court-l">Freedom of information, environmental information and your own data are separate laws.</span><span class="readmore">Read more</span></summary>
-    <div class="more regimes"><div class="regime"><span class="regime-k">FOI</span><span class="regime-n">Freedom of Information Act 2000</span><p>General recorded information. Twenty working days. A council may refuse if compliance would cost more than £450 (18 hours at £25), but must estimate reasonably and offer advice to narrow the request.</p></div><div class="regime"><span class="regime-k">EIR</span><span class="regime-n">Environmental Information Regulations 2004</span><p>Information on land, development and the historic environment. Twenty working days. No automatic cost cap: refusal only if “manifestly unreasonable”, and then only if the public interest favours it.</p></div><div class="regime"><span class="regime-k">SAR</span><span class="regime-n">UK GDPR, Article 15</span><p>Information about the person asking. One month, free. Covers what the Council holds about the living family members; it does not cover records about people who have died.</p></div></div>
-  </details>
-</section>
-
-<section class="sec sec-lime" id="risks">
-  <div class="sec-head">
-    <h2>If nothing is done.</h2>
-    <p>The concerns the Council should hear, whichever way the records eventually fall.</p>
-  </div>
-  <ol class="risks"><li><span class="risk-h">Records keep disappearing.</span><span class="risk-l">Preservation of the Land Registry files has not been confirmed. Every year without a hold is another chance of loss.</span></li><li><span class="risk-h">Witnesses are dying.</span><span class="risk-l">Mary died in 1983, William in 1992. People who remember the 1950s to the 1980s will not be here for long.</span></li><li><span class="risk-h">The dead stay unmarked.</span><span class="risk-l">1,026 people from St Dochdwy&#x27;s monastic cemetery, with nothing on the ground to say so.</span></li><li><span class="risk-h">The wrong story becomes the official one.</span><span class="risk-l">The heritage record classes the site as “Post Medieval – Farm”. The Council&#x27;s own history omits it.</span></li><li><span class="risk-h">The green has a history too.</span><span class="risk-l">The family&#x27;s case is that village green VG41 was part of their farm until 1955. The Council&#x27;s records on it are among those requested.</span></li></ol>
-</section>
-
-<section class="sec" id="mic">
-  <div class="sec-head">
-    <h2>At the microphone.</h2>
-    <p>About three minutes in the public session. Sixty seconds if time is short.</p>
-  </div>
-  <ol class="rules"><li><b>Name the source.</b> Say where a fact comes from: the court, the heritage record, the newspaper, the archive.</li><li><b>Say whose account it is.</b> “My grandmother said…” or “Our case is…” is accurate, and accuracy is hard to dismiss.</li><li><b>Ask for a decision and a date.</b> Every ask ends with who does it and when it comes back.</li></ol>
-  <details class="speech">
-    <summary><span class="court-h">The sixty-second version</span><span class="readmore">Read it</span></summary>
-    <div class="more speech-text"><p>Chair, councillors, thank you. My family lived at Great House Farm, Tŷ Mawr, beside St Dochdwy&#x27;s Church, from 1667 until it was demolished at about 4am on 6 December 1988. The manorial courts sat in that house. A published study reports 1,026 early medieval burials from the ground beside it. In 1983 the farmhouse was registered to BP while my grandmother lived in it; the courts decided possession, not ownership. Your own village history mentions none of this. Our research has only started, and the records that would test it have not yet been produced. Tonight we ask four things: put our statement on the record, make Tŷ Mawr a standing item with a named councillor, recommend a Senedd inquiry, and write in support of disclosure. Your mission is preserving our identity. Tŷ Mawr is part of it. Thank you.</p></div>
-  </details>
-  <details class="speech">
-    <summary><span class="court-h">The three-minute statement</span><span class="readmore">Read it</span></summary>
-    <div class="more speech-text"><p>Chair, councillors, thank you for placing this on the agenda.</p><p>My grandmother was Mary Williams of Great House Farm, Tŷ Mawr, beside St Dochdwy&#x27;s Church. Our family&#x27;s case is that we lived in that house from 1667 until it was demolished at about four in the morning on 6 December 1988.</p><p>Item 10 describes a plaque and a mailing list. The subject is wider than that, so I will take it in short parts.</p><p>The house. Heneb&#x27;s record says the manorial courts of Llandough and Leckwith sat at Great House. The Local Plan said its buildings should be retained. It was never fully recorded before it came down.</p><p>The ground. A published study reports 1,026 burials from the early medieval cemetery excavated there in 1994, the largest such population recovered in Wales. The monastery&#x27;s exact site has never been established. Nothing on the ground marks any of it, and the Council&#x27;s own village history does not mention Great House.</p><p>My grandmother. For decades she said the house was hers. She refused every tenancy offered for it. In February 1983, while she lived there, BP applied to register the farmhouse as its own title; she died that March. In 1987, while the appeal was running, that title was merged into the fields.</p><p>The courts. They decided who could stay. The family lost. They did not decide who owned the house. The house came down the morning after Cadw refused to list it, while our Strasbourg application was pending.</p><p>My truth. In my view, what happened in 1988 was at least an imperial, colonial act. Our ancestral land and home were turned into some 20 houses. To my family it feels as if our land has become something like a work camp. That is my truth, not a finding of any court.</p><p>The records. More than twenty bodies have been asked. Cadw&#x27;s 1988 file is missing with no record of destruction. The Land Registry&#x27;s list of 43 documents does not include the 1969 deed BP&#x27;s title rests on. The Ministry of Justice has not yet answered our MP.</p><p>Our research has only started. Nothing yet meets the threshold to reopen the case, and we do not claim it does. That is why the records matter.</p><p>We ask for four things. Put our statement on the public record. Make Great House Farm a standing item, with a named councillor. Recommend to the Senedd that an independent inquiry be considered. And write in support of disclosure and preservation of the records. We also ask you to recognise what three generations of my family have been through. We are not seeking anyone&#x27;s home at Church View Close.</p><p>Your mission is “Serving our community, preserving our identity”. Tŷ Mawr is part of that identity. Thank you.</p><p class="small"><a href="meeting-script.txt">Plain-text version for printing</a></p></div>
-  </details>
-</section>
-
-<section class="pack" id="pack">
-  <div class="pack-in">
-    <h2>Send it to the Clerk.</h2>
-    <p>One PDF: covering letter, the replacement wording for Item 10, draft resolutions, running order, statement, the record and the sources. Ready to email to clerk@llandough-cc.co.uk.</p>
-    <div class="ctas">
-      <a class="btn-white big" href="meeting-pack.pdf" download>Download the meeting pack (PDF)</a>
-      <button class="btn-line light" type="button" data-print>Print this whole page</button>
+<section class="segs" aria-label="Choose a section">
+  <details class="seg" id="agenda" name="seg">
+    <summary><span class="seg-n">1</span><span class="seg-t"><span class="seg-h">The two agenda points</span><span class="seg-l">Item 10: the burials, and community outreach</span></span><span class="chev" aria-hidden="true"></span></summary>
+    <div class="seg-body"><p class="lead">Item 10 on the Council's agenda of 13 October 2026: “To receive a request from Mr SB in relation to the following matters:”</p>
+      <details class="sub "><summary><span>The burials · item 10(b)</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><blockquote>Whether the Council would consider, in due course, whether an interpretation board or a plaque near the green would be appropriate. The excavation on the land beneath Church View Close recorded 1,026 burials, described in the published report as by far the largest early medieval burial population so far recovered from Wales, above a Roman villa and an Iron Age roundhouse. That history belongs to Llandough as much as to my family, and there is nothing on the ground that records it. I would be glad to give the Council or the community a short talk on the documentary record, without charge, if that would be useful.</blockquote><p class="src">The Clerk's agenda, 13 October 2026, item 10(b), word for word.</p></div></details>
+      <details class="sub "><summary><span>Community outreach · item 10(a)</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><blockquote>I am asking whether the Council would be willing to pass my details to any former member, former clerk or long-standing resident who might remember the village between the 1950s and the 1990s, leaving it entirely to them whether to contact me. I appreciate the Council may have data protection or administrative reasons for declining, and I would not press it</blockquote><p class="src">The Clerk's agenda, 13 October 2026, item 10(a), word for word.</p></div></details><p class="src"><a href="http://www.llandough-cc.co.uk/" rel="noopener">The Council's website</a> and noticeboards carry the published agenda.</p>
+      <button type="button" class="back" data-close>▲ Back to all options</button>
     </div>
-  </div>
-</section>
-
-<section class="sec small-sec" id="cymraeg" lang="cy">
-  <details class="src">
-    <summary><span class="court-h">Tŷ Mawr gerbron y Cyngor</span><span class="court-l">Crynodeb yn Gymraeg</span><span class="readmore">Agor</span></summary>
-    <div class="more"><p>Ar 22 Hydref 2026 bydd Cyngor Cymuned Llandochau yn ystyried Tŷ Mawr (Great House Farm), cartref teulu Williams–Buckler nes iddo gael ei ddymchwel ar 6 Rhagfyr 1988.</p><p>Mae&#x27;r teulu&#x27;n gofyn i&#x27;r Cyngor roi eu datganiad ar y cofnod cyhoeddus; gwneud Tŷ Mawr yn eitem sefydlog gyda chynghorydd cyswllt; argymell i&#x27;r Senedd y dylid ystyried ymchwiliad annibynnol; ac ysgrifennu i gefnogi datgelu a diogelu&#x27;r cofnodion.</p><p>Nid yw&#x27;r teulu&#x27;n ceisio cartref neb yn Church View Close.</p><p>Cenhadaeth y Cyngor yw “Gwasanaethu ein cymuned, gwarchod ein hunaniaeth”. Mae Tŷ Mawr yn rhan o&#x27;r hunaniaeth honno.</p><p class="note">Cyfieithiad drafft o&#x27;r crynodeb Saesneg. Croesawn gywiriadau gan siaradwyr Cymraeg.</p></div>
   </details>
-</section>
-
-<section class="sec small-sec" id="provenance">
-  <details class="src">
-    <summary><span class="court-h">How this was prepared</span><span class="court-l">Version 4.3, 14 October 2026. Method, corrections and right of reply.</span><span class="readmore">Open</span></summary>
-    <div class="more"><p>Sion Buckler, grandson of Mary Williams, for the Williams–Buckler family.</p><p>Drafted with AI assistance from the family&#x27;s public Wiki registers, its correspondence log and published sources, then checked and approved by the family. Every statement carries a label: on record, Buckler case (named testimony or position), or being sought. Statements that cut against the family&#x27;s case are shown alongside it.</p><p>If anything here is wrong, please tell us through the Great House Farm Wiki (greathousefarmwiki.wordpress.com). Corrections are made openly, dated, and noted in the change history. Any person or body named here is invited to reply, and replies will be published in full on the Wiki.</p><p class="note">Source and full change history: github.com/unclehowell/datro, branch 2026-10-22, folder static/2026-10-22.</p></div>
+  <details class="seg" id="statement" name="seg">
+    <summary><span class="seg-n">2</span><span class="seg-t"><span class="seg-h">My statement</span><span class="seg-l">The read-aloud statement for the meeting</span></span><span class="chev" aria-hidden="true"></span></summary>
+    <div class="seg-body"><p class="lead">Thursday 22 October 2026, 7.00pm. About three minutes.</p>
+      <details class="sub "><summary><span>The statement</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><div class="speech"><p>Chair, councillors, thank you for placing this on the agenda.</p><p>My grandmother was Mary Williams of Great House Farm, Tŷ Mawr, beside St Dochdwy&#x27;s Church. Our family&#x27;s case is that we lived in that house from 1667 until it was demolished at about four in the morning on 6 December 1988.</p><p>Item 10 describes a plaque and a mailing list. The subject is wider than that, so I will take it in short parts.</p><p>The house. Heneb&#x27;s record says the manorial courts of Llandough and Leckwith sat at Great House. The Local Plan said its buildings should be retained. It was never fully recorded before it came down.</p><p>The ground. A published study reports 1,026 burials from the early medieval cemetery excavated there in 1994, the largest such population recovered in Wales. The monastery&#x27;s exact site has never been established. Nothing on the ground marks any of it, and the Council&#x27;s own village history does not mention Great House.</p><p>My grandmother. For decades she said the house was hers. She refused every tenancy offered for it. In February 1983, while she lived there, BP applied to register the farmhouse as its own title; she died that March. In 1987, while the appeal was running, that title was merged into the fields.</p><p>The courts. They decided who could stay. The family lost. They did not decide who owned the house. The house came down the morning after Cadw refused to list it, while our Strasbourg application was pending.</p><p>My truth. In my view, what happened in 1988 was at least an imperial, colonial act. Our ancestral land and home were turned into some 20 houses. To my family it feels as if our land has become something like a work camp. That is my truth, not a finding of any court.</p><p>The records. More than twenty bodies have been asked. Cadw&#x27;s 1988 file is missing with no record of destruction. The Land Registry&#x27;s list of 43 documents does not include the 1969 deed BP&#x27;s title rests on. The Ministry of Justice has not yet answered our MP.</p><p>Our research has only started. Nothing yet meets the threshold to reopen the case, and we do not claim it does. That is why the records matter.</p><p>We ask for four things. Put our statement on the public record. Make Great House Farm a standing item, with a named councillor. Recommend to the Senedd that an independent inquiry be considered. And write in support of disclosure and preservation of the records. We also ask you to recognise what three generations of my family have been through. We are not seeking anyone&#x27;s home at Church View Close.</p><p>Your mission is “Serving our community, preserving our identity”. Tŷ Mawr is part of that identity. Thank you.</p></div></div></details>
+      <details class="sub "><summary><span>Sixty-second version</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><div class="speech"><p>Chair, councillors, thank you. My family lived at Great House Farm, Tŷ Mawr, beside St Dochdwy&#x27;s Church, from 1667 until it was demolished at about 4am on 6 December 1988. The manorial courts sat in that house. A published study reports 1,026 early medieval burials from the ground beside it. In 1983 the farmhouse was registered to BP while my grandmother lived in it; the courts decided possession, not ownership. Your own village history mentions none of this. Our research has only started, and the records that would test it have not yet been produced. Tonight we ask four things: put our statement on the record, make Tŷ Mawr a standing item with a named councillor, recommend a Senedd inquiry, and write in support of disclosure. Your mission is preserving our identity. Tŷ Mawr is part of it. Thank you.</p></div></div></details>
+      <details class="sub "><summary><span>The four asks for tonight</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><ol><li>Receive our statement and pack, and minute them.</li><li>Make Great House Farm / Tŷ Mawr a standing item, with a named councillor.</li><li>Recommend to the Senedd that an independent inquiry be considered.</li><li>Write to the bodies holding the records in support of disclosure and preservation.</li></ol></div></details>
+      <details class="sub "><summary><span>Briefing cue card</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p class="src">BRIEFING CUE CARD (say the line, move on; expand only if asked)</p>
+      <details class="sub card"><summary><span>C1  WHO WE ARE</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p>SAY: We are the Williams–Buckler family of Tŷ Mawr, the Great House of Llandough. Our family lived there for 320 years.</p><p>IF ASKED “Weren&#x27;t you tenants?” The 1939 tenancy plan, now held, depicts the eastern fields only, not the house. Mary refused the tenancies offered for the house.</p><p>AGAINST US: The heritage record says the Vaughans held Great House as the chief freehold farm from the mid-16th to the late 18th century. Both accounts can be true only if the Williamses held under them.</p><p>AGAINST US: A 1904 report says John Williams “succeeded his father in the tenancy of the farm in 1855” (wiki EV-0227): a tenancy, and of “Llandough Farm”, matched to Great House by inference.</p><p>AGAINST US: “Home Farm” appears in no other source, and the 1881 acreage may read 170, closer to the neighbouring Llandough Farm of the Rees family (wiki EV-0228).</p></div></details>
+      <details class="sub card"><summary><span>C2  WHAT LIES THERE</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p>SAY: The ground at Church View Close held one of the great early Christian cemeteries of Wales. Nothing marks it.</p><p>IF ASKED “Isn&#x27;t this history already told?” The Council&#x27;s own village history says 800 burials and does not mention Great House at all.</p><p>AGAINST US: Museum Wales traces the medieval spur and spearhead linked to the “armour” story to Church Farm, 1858, not to Great House.</p><p>AGAINST US: It has not been shown that the 1994 burials lay on the family&#x27;s own parcel.</p></div></details>
+      <details class="sub card"><summary><span>C3  MARY&#x27;S PARCEL</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p>SAY: For decades Mary Williams said the house was hers. She was treated as a tenant, and in 1983 her home was registered to BP while she lived in it.</p><p>IF ASKED “The register is conclusive.” The register can be corrected for mistake, and a person in actual occupation in 1982 had protected rights.</p><p>AGAINST US: The 1916 tenancy described the farm as one holding, and later documents repeated that wording.</p><p>AGAINST US: HM Land Registry says there is no evidence of a mistake; its stage-two decision says the title is registered correctly. That decision is with the Independent Complaints Reviewer.</p></div></details>
+      <details class="sub card"><summary><span>C4  THE COURTS</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p>SAY: The family lost every round on who could stay. No court has ruled on who owned the house.</p><p>IF ASKED “The courts have decided this.” They decided possession. The family&#x27;s title case on the house parcel has not been tried.</p><p>AGAINST US: The Court of Appeal found the 1974 letters made later occupation permissive, whether or not Mary accepted them.</p><p>AGAINST US: Strasbourg held the interference with William Buckler&#x27;s home lawful and justified.</p></div></details>
+      <details class="sub card"><summary><span>C5  THE DISPOSSESSION</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p>SAY: In 1988 a Welsh family was removed from its home and the house demolished before dawn. It was reported as an eviction.</p><p>IF ASKED “Why has it taken so long?” Witnesses died, papers were lost and the trauma silenced the family. Key records surfaced only in 2026.</p><p>AGAINST US: Press, 1989: one charge was withdrawn as out of time; William Buckler pleaded guilty to the others.</p></div></details>
+      <details class="sub card"><summary><span>C6  THE HERITAGE ERASED</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p>SAY: A Welsh manor house beside an early Christian site was cleared, and the official record was left saying almost nothing.</p><p>IF ASKED “Missing records prove nothing.” Agreed, on their own. These are files public bodies had a duty to keep, and they should account for the gaps.</p><p>AGAINST US: GGAT disclosed its dual role in 1990, recommended recording and protection, and did not advise demolition.</p><p>AGAINST US: Cadw said in 1988 that the house was not of sufficient architectural merit to list.</p></div></details>
+      <details class="sub card"><summary><span>C7  THE RECORDS WALL</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p>SAY: More than twenty bodies have been asked for the records over eighteen months. What would settle the questions has not yet been produced.</p><p>IF ASKED “Isn&#x27;t this a fishing expedition?” Every request names a specific record. The registers list them one by one.</p><p>AGAINST US: Several bodies have disclosed material: the Royal Commission, Museum Wales, Cadw&#x27;s photographs and the Land Registry schedule.</p><p>AGAINST US: A missing record is not, on its own, proof of concealment.</p></div></details>
+      <details class="sub card"><summary><span>C8  RIGHTS, IDENTITY, PUBLIC INTEREST</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p>SAY: This is a matter of human rights, Welsh heritage and public interest, not one family&#x27;s grievance.</p><p>IF ASKED “Why should a community council get involved?” Its own mission is preserving our identity. It is the community&#x27;s voice to the Senedd and the Vale.</p><p>AGAINST US: Indigenous-rights language is the family&#x27;s framing; it is not a legal category UK courts currently apply to Wales.</p></div></details>
+      <details class="sub card"><summary><span>C9  WHAT WE ASK</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p>SAY: Put it on the record. Make it a standing item. Recommend an independent inquiry. Support disclosure, and the family. We are not seeking anyone&#x27;s home at Church View Close.</p><p>IF ASKED “What can a community council do?” Record it, write letters, recommend an inquiry, and keep it on the agenda. That is how this starts.</p></div></details></div></details><p class="files"><a href="meeting-script.txt">Plain text</a> · <a href="meeting-pack.pdf" download>Clerk pack (PDF)</a> · <a href="pack.html">Clerk pack (HTML)</a></p>
+      <button type="button" class="back" data-close>▲ Back to all options</button>
+    </div>
   </details>
-</section>
-
-<section class="sec small-sec" id="sources">
-  <details class="src">
-    <summary><span class="court-h">How to read the labels, and the sources</span><span class="readmore">Open</span></summary>
-    <div class="more"><ul class="keys"><li><span class="tag tag-rec" title="Court, heritage record, archive, Hansard or contemporary newspaper">On record</span> Court, heritage record, archive, Hansard or contemporary newspaper</li><li><span class="tag tag-fam" title="The Buckler case (named testimony or legal position), being tested">Buckler case</span> The Buckler case (named testimony or legal position), being tested</li><li><span class="tag tag-open" title="Not yet established; records requested">Being sought</span> Not yet established; records requested</li></ul><ol class="sources"><li>Agenda, Council meeting 22 October 2026 (issued 13 October 2026)</li><li><a href="https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s" rel="noopener">Heneb Historic Environment Record GGAT02038s, Great House, Llandough</a></li><li><a href="https://www.tandfonline.com/doi/abs/10.1179/007660905x54044" rel="noopener">Holbrook and Thomas, The Early Medieval Monastic Cemetery at Llandough, Medieval Archaeology 49 (2005)</a></li><li><a href="https://archaeologydataservice.ac.uk/archives/view/llandough_cadw_2004" rel="noopener">Archaeology Data Service: Llandough cemetery archive</a></li><li><a href="https://coflein.gov.uk/en/site/400051/" rel="noopener">Coflein NPRN 400051, Roman villa site, Llandough</a></li><li><a href="https://www.llandough-cc.co.uk/About_Us_20117.aspx" rel="noopener">Llandough Community Council, About Llandough</a></li><li><a href="https://museum.wales/collections/online/object/5f7f51a9-7b6b-3956-84c9-31b5f96214aa/GPO-trials-of-Marconi-in-1897-booklet/" rel="noopener">Amgueddfa Cymru, GPO trials of Marconi in 1897</a></li><li><a href="https://en.wikipedia.org/wiki/Jim_Driscoll" rel="noopener">Jim Driscoll (citing the National Monuments Record for Wales)</a></li><li><a href="https://books.google.com/books?id=emMNAQAAMAAJ" rel="noopener">Stead and Williams (eds), Wales and its Boxers: The Fighting Tradition (University of Wales Press, 2008)</a></li><li><a href="https://vlex.co.uk/vid/b-p-properties-ltd-793844841" rel="noopener">BP Properties Ltd v Buckler [1987] EWCA Civ 2</a></li><li>Hansard, House of Commons, 22 May 1980 (Ted Rowlands MP on Western Ground Rents)</li><li>Buckler v United Kingdom, European Commission of Human Rights, inadmissible 14 April 1989</li><li><a href="https://ico.org.uk/for-organisations/foi/freedom-of-information-and-environmental-information-regulations/calculating-costs-where-a-request-spans-different-access-regimes/" rel="noopener">ICO: requests spanning FOI, EIR and data protection</a></li><li><a href="https://www.gov.wales/vision-culture-and-sport-wales-call-evidence" rel="noopener">Welsh Government: A vision for culture and sport in Wales, call for evidence</a></li><li><a href="https://www.valeofglamorgan.gov.uk/en/our_council/Council-Structure/councillors/Carroll-George.aspx" rel="noopener">Vale of Glamorgan Council: Cllr George Carroll, Llandough ward</a></li><li><a href="https://bpvsbuckler.bucklerfamily.estate/" rel="noopener">The full story: bpvsbuckler.bucklerfamily.estate</a></li><li><a href="https://dartboard.bucklerfamily.estate/" rel="noopener">Records-access tracker: dartboard.bucklerfamily.estate</a></li><li><a href="https://greathousefarmwiki.wordpress.com/" rel="noopener">Great House Farm Wiki — public documentary archive</a></li><li><a href="https://greathousefarmwiki.wordpress.com/the-two-parcels/" rel="noopener">Wiki: The Two Parcels — full Parcel A / separate eastern Parcel B</a></li><li><a href="https://greathousefarmwiki.wordpress.com/1939-revised-tenancy/" rel="noopener">Wiki: 1939 revised tenancy agreement and plan</a></li><li><a href="https://greathousefarmwiki.wordpress.com/evidence/ev-0224-1881-census-llandough-rg11-5288/" rel="noopener">Wiki EV-0224: 1881 census, RG11/5288 p.2, “Llandough Home Farm”</a></li><li><a href="https://greathousefarmwiki.wordpress.com/evidence/ev-0225-trade-directories-1868-1901-john-williams-great-house/" rel="noopener">Wiki EV-0225: trade directories 1868–1901, John Williams at Great House</a></li><li><a href="https://greathousefarmwiki.wordpress.com/evidence/ev-0226-south-wales-star-1892-john-williams-great-house-farm/" rel="noopener">Wiki EV-0226: South Wales Star, 1892, Great House Farm</a></li><li><a href="https://greathousefarmwiki.wordpress.com/evidence/ev-0227-cardiff-times-1904-john-williams-tenancy-since-1855/" rel="noopener">Wiki EV-0227: Cardiff Times, 1904, tenancy since 1855</a></li><li><a href="https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/court-judicial-issues/bp-v-buckler-scope-decided-undecided/" rel="noopener">Wiki: BP v Buckler — scope, decided and undecided</a></li><li><a href="https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/procedural-fairness-notice/1982-83-registration-opportunity-to-object/" rel="noopener">Wiki: 1982–83 registration and opportunity to object</a></li><li><a href="https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/procedural-fairness-notice/1987-hmlr-amalgamation-during-appeal/" rel="noopener">Wiki: 1987 HMLR amalgamation during appeal</a></li><li><a href="https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e115-1877-bute-thomas-agreement/" rel="noopener">Wiki: 1877 Bute–Thomas agreement — original not yet obtained</a></li><li><a href="https://greathousefarmwiki.wordpress.com/land-registry-titles/" rel="noopener">Wiki: Land Registry titles and newly identified 1924 agreement</a></li><li><a href="https://greathousefarmwiki.wordpress.com/anomalies-register/" rel="noopener">Wiki: Anomalies Register (lines of enquiry)</a></li><li><a href="https://greathousefarmwiki.wordpress.com/missing-records-register/" rel="noopener">Wiki: Missing Records Register</a></li><li><a href="https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/master-scrutiny-issue-register/" rel="noopener">Wiki: Master Scrutiny Issue Register</a></li><li><a href="https://greathousefarmwiki.wordpress.com/records-access-chronology/" rel="noopener">Wiki: Records Access Chronology</a></li><li><a href="https://greathousefarmwiki.wordpress.com/constructive-criticism-counterarguments/" rel="noopener">Wiki: Anticipated Objections and the Family&#x27;s Answers</a></li><li><a href="https://greathousefarmwiki.wordpress.com/demolition-1988/" rel="noopener">Wiki: 1988, Possession and Demolition (press transcripts)</a></li><li><a href="https://web.archive.org/web/20261010064556/https://greathousefarmwiki.wordpress.com/" rel="noopener">Great House Farm Wiki (archived 10 October 2026)</a></li></ol></div>
+  <details class="seg" id="questions" name="seg">
+    <summary><span class="seg-n">3</span><span class="seg-t"><span class="seg-h">Questions sent to the Council</span><span class="seg-l">12 questions, sent to the Clerk on 21 October</span></span><span class="chev" aria-hidden="true"></span></summary>
+    <div class="seg-body"><p class="lead">Sent by email to the Clerk, 21 October 2026, 00:25 BST, for the meeting papers. Each one rests on a point already raised in correspondence; tap a question to see where.</p><ol class="qs"><li>
+      <details class="sub q"><summary><span>What consideration was my first approach given before the reply of 20 November 2025?</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p class="src">Raised before: Clerk&#x27;s reply, 20 Nov 2025, “RE: BP vs Buckler”: “unable to assist with the matter you raise”.</p></div></details></li><li>
+      <details class="sub q"><summary><span>Does the Council hold any Tŷ Mawr records besides the minute books deposited in 2002 (my email of 14 June)?</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p class="src">Raised before: Email of 14 Jun 2026, “Re: Great House Farm”.</p></div></details></li><li>
+      <details class="sub q"><summary><span>Which agenda items cover the “other matters” your email of 11 October said would be considered in October?</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p class="src">Raised before: Clerk, 11 Oct 2026, FOI reply (s.12): the other matters “will be considered at the October meeting of the council”.</p></div></details></li><li>
+      <details class="sub q"><summary><span>Who decided the meeting would be remote only, and on what date?</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p class="src">Raised before: Email of 13 Oct; the Clerk&#x27;s emails of 13 Oct (agenda offering the Council Chamber) and 16 Oct (“remotely only”).</p></div></details></li><li>
+      <details class="sub q"><summary><span>When was the website agenda revised and republished?</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p class="src">Raised before: Email of 20 Oct, question 2: the website agenda carries the same 13 October date but reads “remotely only”.</p></div></details></li><li>
+      <details class="sub q"><summary><span>Where are the published arrangements for multi-location meetings (s.47, LGE(W)A 2021)?</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p class="src">Raised before: Objection of 16 Oct, point 3; repeated 20 Oct.</p></div></details></li><li>
+      <details class="sub q"><summary><span>Was a physical public venue considered?</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p class="src">Raised before: Objection of 16 Oct, points 1 and 4.</p></div></details></li><li>
+      <details class="sub q"><summary><span>When will my internal review (13 October) and narrower request (20 October) be answered, and will the review apply the EIR?</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p class="src">Raised before: Clerk, 13 Oct: “a full response will be sent to you in due course”; emails of 13 Oct and 20 Oct.</p></div></details></li><li>
+      <details class="sub q"><summary><span>Will my statement and briefing pack be received and minuted?</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p class="src">Raised before: Briefing site proposal 01 (sent 14 Oct); emails of 16 and 20 Oct.</p></div></details></li><li>
+      <details class="sub q"><summary><span>If the remote-only decision stands, will its reasons be minuted?</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p class="src">Raised before: Objection of 16 Oct, last paragraph.</p></div></details></li><li>
+      <details class="sub q"><summary><span>Which councillor is my point of contact?</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p class="src">Raised before: Email to the Chair, 21 Sep, passed to the Clerk 28 Sep; briefing site proposal 02.</p></div></details></li><li>
+      <details class="sub q"><summary><span>How do I place the wider matters on a future agenda?</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body"><p class="src">Raised before: Email of 20 Oct, part (c).</p></div></details></li></ol><p class="sign">Sion Buckler</p>
+      <button type="button" class="back" data-close>▲ Back to all options</button>
+    </div>
+  </details>
+  <details class="seg" id="records" name="seg">
+    <summary><span class="seg-n">4</span><span class="seg-t"><span class="seg-h">Records requests</span><span class="seg-l">Public requests on WhatDoTheyKnow</span></span><span class="chev" aria-hidden="true"></span></summary>
+    <div class="seg-body"><a class="go" href="https://www.whatdotheyknow.com/request/meeting_of_22_october_2026_remot" rel="noopener"><span>The request about this meeting</span><small>WhatDoTheyKnow</small></a><a class="go" href="https://www.whatdotheyknow.com/user/sion_buckler" rel="noopener"><span>Every public request we have made</span><small>WhatDoTheyKnow profile</small></a>
+      <button type="button" class="back" data-close>▲ Back to all options</button>
+    </div>
+  </details>
+  <details class="seg" id="clerk" name="seg">
+    <summary><span class="seg-n">5</span><span class="seg-t"><span class="seg-h">Correspondence with the Clerk</span><span class="seg-l">The emails, open for all to read</span></span><span class="chev" aria-hidden="true"></span></summary>
+    <div class="seg-body"><a class="go" href="https://email.bucklerfamily.estate/" rel="noopener"><span>Read the correspondence</span><small>email.bucklerfamily.estate · public, read-only archive</small></a><p class="src">The Clerk writes in an official capacity. Personal contact details are left out.</p>
+      <button type="button" class="back" data-close>▲ Back to all options</button>
+    </div>
+  </details>
+  <details class="seg" id="road" name="seg">
+    <summary><span class="seg-n">6</span><span class="seg-t"><span class="seg-h">The road to this meeting</span><span class="seg-l">Every request it took to get here</span></span><span class="chev" aria-hidden="true"></span></summary>
+    <div class="seg-body"><a class="go" href="https://dartboard.bucklerfamily.estate/" rel="noopener"><span>Open the board</span><small>dartboard.bucklerfamily.estate · opens on Llandough Community Council</small></a><p class="src">Every request, review and complaint it took to reach this meeting, body by body.</p>
+      <button type="button" class="back" data-close>▲ Back to all options</button>
+    </div>
   </details>
 </section>
 </main>
 
 <footer class="foot">
-  <p>Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth. Meeting toolkit for Thursday 22 October 2026. Version 4.3, 14 October 2026. <a href="#provenance">How this was prepared</a> · <a href="#cymraeg" lang="cy">Cymraeg</a></p>
-  <p>Not Llandough-juxta-Cowbridge, and not the Great House at Llandow or Aberthin.</p>
-  <p><a href="https://bpvsbuckler.bucklerfamily.estate/">The full story</a> <a href="https://dartboard.bucklerfamily.estate/">Records tracker</a> <a href="meeting-pack.pdf" download>Meeting pack (PDF)</a></p>
+  <p class="disclaimer">Our case, prospective. Not a finding of any court.</p>
+  <p id="agent-access" class="small"><a href="meeting-pack.pdf" download>Clerk pack (PDF)</a> · <a href="pack.html">Clerk pack (HTML)</a> · <a href="meeting-script.txt">Meeting script</a> · <a href="/agent-index.json">Agent index</a> · <a href="/llms.txt">llms.txt</a></p>
+  <p class="sig">— Sion's Tab agent</p>
 </footer>
 
 <script>
 (function(){
-  var all=function(){return Array.prototype.slice.call(document.querySelectorAll('details'));};
-  var btn=document.querySelector('[data-expand]');
-  function sync(){var open=all().every(function(d){return d.open;});btn.textContent=open?'Close everything':'Open everything';}
-  btn.addEventListener('click',function(){var open=!all().every(function(d){return d.open;});all().forEach(function(d){d.open=open;});sync();});
-  all().forEach(function(d){d.addEventListener('toggle',sync);});
+  var segs=[].slice.call(document.querySelectorAll('details.seg'));
+  // one top-level segment open at a time (fallback for browsers without details[name])
+  segs.forEach(function(d){d.addEventListener('toggle',function(){if(d.open){segs.forEach(function(o){if(o!==d)o.open=false;});}});});
+  [].forEach.call(document.querySelectorAll('[data-close]'),function(b){b.addEventListener('click',function(){var d=b.closest('details.seg');d.open=false;[].forEach.call(d.querySelectorAll('details'),function(x){x.open=false;});d.scrollIntoView({block:'nearest'});d.querySelector('summary').focus();});});
+  var menu=document.getElementById('menu'),scrim=document.querySelector('.scrim'),burger=document.querySelector('[data-menu]');
+  function setMenu(open){menu.hidden=!open;scrim.hidden=!open;burger.setAttribute('aria-expanded',open?'true':'false');if(open)menu.querySelector('a').focus();}
+  burger.addEventListener('click',function(){setMenu(menu.hidden);});
+  [].forEach.call(document.querySelectorAll('[data-menu-close]'),function(x){x.addEventListener('click',function(){setMenu(false);});});
+  document.addEventListener('keydown',function(ev){if(ev.key==='Escape')setMenu(false);});
+  [].forEach.call(document.querySelectorAll('[data-go]'),function(a){a.addEventListener('click',function(ev){ev.preventDefault();var d=document.getElementById(a.getAttribute('data-go'));setMenu(false);d.open=true;d.scrollIntoView({behavior:'smooth',block:'start'});});});
+  var c=document.querySelector('[data-collapse]');c.addEventListener('click',function(ev){ev.preventDefault();setMenu(false);[].forEach.call(document.querySelectorAll('details'),function(x){x.open=false;});window.scrollTo({top:0,behavior:'smooth'});});
+  function fromHash(){var d=location.hash&&document.getElementById(location.hash.slice(1));if(d&&d.tagName==='DETAILS'){d.open=true;}}
+  fromHash();window.addEventListener('hashchange',fromHash);
   var saved=[];
-  window.addEventListener('beforeprint',function(){saved=all().map(function(d){return d.open;});all().forEach(function(d){d.open=true;});});
-  window.addEventListener('afterprint',function(){all().forEach(function(d,i){d.open=!!saved[i];});sync();});
-  var p=document.querySelector('[data-print]');if(p)p.addEventListener('click',function(){window.print();});
+  window.addEventListener('beforeprint',function(){var all=[].slice.call(document.querySelectorAll('details'));saved=all.map(function(d){return d.open;});all.forEach(function(d){d.removeAttribute('name');d.open=true;});});
+  window.addEventListener('afterprint',function(){[].slice.call(document.querySelectorAll('details')).forEach(function(d,i){d.open=!!saved[i];if(d.classList.contains('seg'))d.setAttribute('name','seg');});});
 })();
 </script>
-<section id="agent-access" aria-label="AI-agent access" style="max-width:1160px;margin:28px auto;padding:14px 16px;border-top:1px solid #d5dad6;font:14px/1.5 system-ui,sans-serif;color:inherit"><strong>AI-agent access</strong><p id="webmcp-status">WebMCP provides read-only tools in compatible browsers. Agent index, meeting script and HTML pack are available without WebMCP.</p><p><a href="/agent-index.json">Machine-readable resource catalogue</a> · <a href="/llms.txt">Agent reading guide</a> · <a href="/meeting-script.txt">Meeting script</a> · <a href="/pack.html">Clerk pack (HTML)</a></p></section><script src="/agent-tools.js" defer></script></body>
+<script src="/agent-tools.js" defer></script>
+</body>
 </html>

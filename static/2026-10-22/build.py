@@ -49,7 +49,7 @@ def label(kind, small=False):
 
 
 # ------------------------------------------------------------------ website
-def site():
+def site_v1():
     asks = "".join(f"""
       <details class="row">
         <summary><span class="num">{i:02d}</span><span class="row-h">{e(h)}</span><span class="row-l">{e(line)}</span><span class="plus" aria-hidden="true"></span></summary>
@@ -578,6 +578,297 @@ details[open] .readmore{visibility:hidden}
   section{break-inside:auto}.row,.tile,.wall-row,.swap,.step{break-inside:avoid}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
+"""
+
+
+
+# ------------------------------------------------------------------ website (v2: progressive disclosure)
+# Sion, 00:26 BST 21 Oct 2026: a site dedicated to this one meeting; minimal landing,
+# detail only on tapping a segment (each tap reveals more), all top-level options always
+# visible or one tap away, and a way back at every level. pack(), meeting-script.txt and
+# the PDF are unchanged; the old long page is kept as site_v1() for reference.
+
+SITE2 = {
+    "title": "Llandough Community Council meeting",
+    "when": "Thursday 22 October 2026, 19:00 (remote)",
+    "img": "img/tymawr-29-july-1988-white-wall.jpg",
+    "img_original": "img/tymawr-29-july-1988.jpg",
+    "img_caption": ("Illustration: Tŷ Mawr with its wall shown whitewashed (edited from a Cadw photograph). "
+                    "Not a photograph of the house as it stands."),
+    "img_credit": "Original: Cadw photograph, 29 July 1988, released to the family in May 2026.",
+    "agenda_date": "13 October 2026",
+    "agenda_item": "To receive a request from Mr SB in relation to the following matters:",
+    "burials": ("Whether the Council would consider, in due course, whether an interpretation board or a plaque near "
+                "the green would be appropriate. The excavation on the land beneath Church View Close recorded 1,026 "
+                "burials, described in the published report as by far the largest early medieval burial population so "
+                "far recovered from Wales, above a Roman villa and an Iron Age roundhouse. That history belongs to "
+                "Llandough as much as to my family, and there is nothing on the ground that records it. I would be glad "
+                "to give the Council or the community a short talk on the documentary record, without charge, if that "
+                "would be useful."),
+    "outreach": ("I am asking whether the Council would be willing to pass my details to any former member, former clerk "
+                 "or long-standing resident who might remember the village between the 1950s and the 1990s, leaving it "
+                 "entirely to them whether to contact me. I appreciate the Council may have data protection or "
+                 "administrative reasons for declining, and I would not press it"),
+    "questions_sent": "Sent by email to the Clerk, 21 October 2026, 00:25 BST, for the meeting papers.",
+    "questions_sign": "Sion Buckler",
+    "questions": [
+        ("What consideration was my first approach given before the reply of 20 November 2025?",
+         "Clerk's reply, 20 Nov 2025, “RE: BP vs Buckler”: “unable to assist with the matter you raise”."),
+        ("Does the Council hold any Tŷ Mawr records besides the minute books deposited in 2002 (my email of 14 June)?",
+         "Email of 14 Jun 2026, “Re: Great House Farm”."),
+        ("Which agenda items cover the “other matters” your email of 11 October said would be considered in October?",
+         "Clerk, 11 Oct 2026, FOI reply (s.12): the other matters “will be considered at the October meeting of the council”."),
+        ("Who decided the meeting would be remote only, and on what date?",
+         "Email of 13 Oct; the Clerk's emails of 13 Oct (agenda offering the Council Chamber) and 16 Oct (“remotely only”)."),
+        ("When was the website agenda revised and republished?",
+         "Email of 20 Oct, question 2: the website agenda carries the same 13 October date but reads “remotely only”."),
+        ("Where are the published arrangements for multi-location meetings (s.47, LGE(W)A 2021)?",
+         "Objection of 16 Oct, point 3; repeated 20 Oct."),
+        ("Was a physical public venue considered?",
+         "Objection of 16 Oct, points 1 and 4."),
+        ("When will my internal review (13 October) and narrower request (20 October) be answered, and will the review apply the EIR?",
+         "Clerk, 13 Oct: “a full response will be sent to you in due course”; emails of 13 Oct and 20 Oct."),
+        ("Will my statement and briefing pack be received and minuted?",
+         "Briefing site proposal 01 (sent 14 Oct); emails of 16 and 20 Oct."),
+        ("If the remote-only decision stands, will its reasons be minuted?",
+         "Objection of 16 Oct, last paragraph."),
+        ("Which councillor is my point of contact?",
+         "Email to the Chair, 21 Sep, passed to the Clerk 28 Sep; briefing site proposal 02."),
+        ("How do I place the wider matters on a future agenda?",
+         "Email of 20 Oct, part (c)."),
+    ],
+    "wdtk_user": "https://www.whatdotheyknow.com/user/sion_buckler",
+    "wdtk_request": "https://www.whatdotheyknow.com/request/meeting_of_22_october_2026_remot",
+    "email_site": "https://email.bucklerfamily.estate/",
+    "dartboard": "https://dartboard.bucklerfamily.estate/",
+    "council_site": "http://www.llandough-cc.co.uk/",
+}
+
+
+def _script_parts(txt):
+    """Split meeting-script.txt (exactly as built) into its four parts, words untouched."""
+    heads = ["SIXTY-SECOND VERSION", "THE FOUR ASKS FOR TONIGHT",
+             "BRIEFING CUE CARD (say the line, move on; expand only if asked)"]
+    lines = txt.split("\n")
+    idx = [lines.index(h) for h in heads]
+    statement = [l for l in lines[2:idx[0]] if l.strip()]
+    sixty = [l for l in lines[idx[0] + 1:idx[1]] if l.strip()]
+    asks = [l for l in lines[idx[1] + 1:idx[2]] if l.strip()]
+    cards, cur = [], None
+    for l in lines[idx[2] + 1:]:
+        if not l.strip():
+            continue
+        if not l.startswith(" "):
+            cur = [l, []]
+            cards.append(cur)
+        elif cur is not None:
+            cur[1].append(l.strip())
+    return lines[0], lines[1], statement, sixty, asks, cards, heads
+
+
+def site():
+    S = SITE2
+    title, sub, statement, sixty, asks, cards, heads = _script_parts(script_txt())
+
+    def seg(i, sid, h, teaser, body):
+        return f"""
+  <details class="seg" id="{sid}" name="seg">
+    <summary><span class="seg-n">{i}</span><span class="seg-t"><span class="seg-h">{e(h)}</span><span class="seg-l">{e(teaser)}</span></span><span class="chev" aria-hidden="true"></span></summary>
+    <div class="seg-body">{body}
+      <button type="button" class="back" data-close>▲ Back to all options</button>
+    </div>
+  </details>"""
+
+    def sub_(h, body, cls=""):
+        return f"""
+      <details class="sub {cls}"><summary><span>{e(h)}</span><span class="chev" aria-hidden="true"></span></summary><div class="sub-body">{body}</div></details>"""
+
+    # 1. the two agenda points
+    agenda = (f'<p class="lead">Item 10 on the Council\'s agenda of {e(S["agenda_date"])}: “{e(S["agenda_item"])}”</p>'
+              + sub_("The burials · item 10(b)", f'<blockquote>{e(S["burials"])}</blockquote><p class="src">The Clerk\'s agenda, {e(S["agenda_date"])}, item 10(b), word for word.</p>')
+              + sub_("Community outreach · item 10(a)", f'<blockquote>{e(S["outreach"])}</blockquote><p class="src">The Clerk\'s agenda, {e(S["agenda_date"])}, item 10(a), word for word.</p>')
+              + f'<p class="src"><a href="{e(S["council_site"])}" rel="noopener">The Council\'s website</a> and noticeboards carry the published agenda.</p>')
+
+    # 2. the statement (meeting-script.txt, unchanged)
+    stmt_html = "".join(f"<p>{e(p)}</p>" for p in statement)
+    sixty_html = "".join(f"<p>{e(p)}</p>" for p in sixty)
+    asks_html = "<ol>" + "".join(f"<li>{e(a.split('. ', 1)[1] if a[:1].isdigit() else a)}</li>" for a in asks) + "</ol>"
+    cards_html = "".join(sub_(c[0], "".join(f"<p>{e(x)}</p>" for x in c[1]), "card") for c in cards)
+    statement_body = (f'<p class="lead">{e(sub)}</p>'
+                      + sub_("The statement", f'<div class="speech">{stmt_html}</div>')
+                      + sub_(heads[0].capitalize(), f'<div class="speech">{sixty_html}</div>')
+                      + sub_(heads[1].capitalize(), asks_html)
+                      + sub_("Briefing cue card", f'<p class="src">{e(heads[2])}</p>{cards_html}')
+                      + '<p class="files"><a href="meeting-script.txt">Plain text</a> · <a href="meeting-pack.pdf" download>Clerk pack (PDF)</a> · <a href="pack.html">Clerk pack (HTML)</a></p>')
+
+    # 3. questions
+    qs = "".join("<li>" + sub_(q, '<p class="src">Raised before: ' + e(src) + "</p>", "q") + "</li>" for q, src in S["questions"])
+    questions_body = (f'<p class="lead">{e(S["questions_sent"])} Each one rests on a point already raised in correspondence; tap a question to see where.</p>'
+                      f'<ol class="qs">{qs}</ol><p class="sign">{e(S["questions_sign"])}</p>')
+
+    # 4-6. links out
+    def go(url, label, note):
+        return f'<a class="go" href="{e(url)}" rel="noopener"><span>{e(label)}</span><small>{e(note)}</small></a>'
+    wdtk_body = (go(S["wdtk_request"], "The request about this meeting", "WhatDoTheyKnow")
+                 + go(S["wdtk_user"], "Every public request we have made", "WhatDoTheyKnow profile"))
+    email_body = (go(S["email_site"], "Read the correspondence", "email.bucklerfamily.estate · public, read-only archive")
+                  + '<p class="src">The Clerk writes in an official capacity. Personal contact details are left out.</p>')
+    dart_body = (go(S["dartboard"], "Open the board", "dartboard.bucklerfamily.estate · opens on Llandough Community Council")
+                 + '<p class="src">Every request, review and complaint it took to reach this meeting, body by body.</p>')
+
+    segs = [
+        ("agenda", "The two agenda points", "Item 10: the burials, and community outreach", agenda),
+        ("statement", "My statement", "The read-aloud statement for the meeting", statement_body),
+        ("questions", "Questions sent to the Council", "12 questions, sent to the Clerk on 21 October", questions_body),
+        ("records", "Records requests", "Public requests on WhatDoTheyKnow", wdtk_body),
+        ("clerk", "Correspondence with the Clerk", "The emails, open for all to read", email_body),
+        ("road", "The road to this meeting", "Every request it took to get here", dart_body),
+    ]
+    seg_html = "".join(seg(i, sid, h, t, b) for i, (sid, h, t, b) in enumerate(segs, 1))
+    menu = "".join(f'<li><a href="#{sid}" data-go="{sid}"><span>{i}</span>{e(h)}</a></li>' for i, (sid, h, t, b) in enumerate(segs, 1))
+    full_title = f'{S["title"]}, {S["when"]}'
+
+    return f"""<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{e(full_title)}</title>
+<meta name="description" content="{e(full_title)}. Item 10: the burials, and community outreach.">
+<meta property="og:title" content="{e(full_title)}">
+<meta property="og:description" content="Item 10: the burials, and community outreach.">
+<meta property="og:image" content="https://2026-10-22.bucklerfamily.estate/{e(S['img'])}">
+<meta name="theme-color" content="#26313a">
+<link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="alternate" type="application/json" href="/agent-index.json" title="Machine-readable meeting toolkit index">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="Agent reading guide">
+<style>{FONT_CSS}{TOKENS}{SITE2_CSS}</style>
+</head>
+<body>
+<header class="bar">
+  <a class="home" href="https://bucklerfamily.estate/">← bucklerfamily.estate</a>
+  <button type="button" class="burger" aria-label="Menu" aria-controls="menu" aria-expanded="false" data-menu>☰</button>
+</header>
+<nav id="menu" class="menu" aria-label="Sections" hidden>
+  <div class="menu-head"><strong>The meeting</strong><button type="button" class="x" aria-label="Close menu" data-menu-close>✕</button></div>
+  <ol>{menu}</ol>
+  <p class="menu-foot"><a href="#top" data-collapse>Back to all options</a></p>
+</nav>
+<div class="scrim" data-menu-close hidden></div>
+
+<main id="top">
+<section class="hero">
+  <figure>
+    <img src="{e(S['img'])}" width="1110" height="763" alt="Tŷ Mawr, a long two-storey farmhouse, shown with its front wall whitewashed. An edited illustration.">
+    <figcaption>{e(S['img_caption'])} {e(S['img_credit'])} <a href="{e(S['img_original'])}">Original photograph</a>.</figcaption>
+  </figure>
+  <h1>{e(S['title'])}<span>{e(S['when'])}</span></h1>
+  <p class="kicker">Tŷ Mawr · Great House Farm · Item 10</p>
+</section>
+
+<section class="segs" aria-label="Choose a section">{seg_html}
+</section>
+</main>
+
+<footer class="foot">
+  <p class="disclaimer">Our case, prospective. Not a finding of any court.</p>
+  <p id="agent-access" class="small"><a href="meeting-pack.pdf" download>Clerk pack (PDF)</a> · <a href="pack.html">Clerk pack (HTML)</a> · <a href="meeting-script.txt">Meeting script</a> · <a href="/agent-index.json">Agent index</a> · <a href="/llms.txt">llms.txt</a></p>
+  <p class="sig">— Sion's Tab agent</p>
+</footer>
+
+<script>
+(function(){{
+  var segs=[].slice.call(document.querySelectorAll('details.seg'));
+  // one top-level segment open at a time (fallback for browsers without details[name])
+  segs.forEach(function(d){{d.addEventListener('toggle',function(){{if(d.open){{segs.forEach(function(o){{if(o!==d)o.open=false;}});}}}});}});
+  [].forEach.call(document.querySelectorAll('[data-close]'),function(b){{b.addEventListener('click',function(){{var d=b.closest('details.seg');d.open=false;[].forEach.call(d.querySelectorAll('details'),function(x){{x.open=false;}});d.scrollIntoView({{block:'nearest'}});d.querySelector('summary').focus();}});}});
+  var menu=document.getElementById('menu'),scrim=document.querySelector('.scrim'),burger=document.querySelector('[data-menu]');
+  function setMenu(open){{menu.hidden=!open;scrim.hidden=!open;burger.setAttribute('aria-expanded',open?'true':'false');if(open)menu.querySelector('a').focus();}}
+  burger.addEventListener('click',function(){{setMenu(menu.hidden);}});
+  [].forEach.call(document.querySelectorAll('[data-menu-close]'),function(x){{x.addEventListener('click',function(){{setMenu(false);}});}});
+  document.addEventListener('keydown',function(ev){{if(ev.key==='Escape')setMenu(false);}});
+  [].forEach.call(document.querySelectorAll('[data-go]'),function(a){{a.addEventListener('click',function(ev){{ev.preventDefault();var d=document.getElementById(a.getAttribute('data-go'));setMenu(false);d.open=true;d.scrollIntoView({{behavior:'smooth',block:'start'}});}});}});
+  var c=document.querySelector('[data-collapse]');c.addEventListener('click',function(ev){{ev.preventDefault();setMenu(false);[].forEach.call(document.querySelectorAll('details'),function(x){{x.open=false;}});window.scrollTo({{top:0,behavior:'smooth'}});}});
+  function fromHash(){{var d=location.hash&&document.getElementById(location.hash.slice(1));if(d&&d.tagName==='DETAILS'){{d.open=true;}}}}
+  fromHash();window.addEventListener('hashchange',fromHash);
+  var saved=[];
+  window.addEventListener('beforeprint',function(){{var all=[].slice.call(document.querySelectorAll('details'));saved=all.map(function(d){{return d.open;}});all.forEach(function(d){{d.removeAttribute('name');d.open=true;}});}});
+  window.addEventListener('afterprint',function(){{[].slice.call(document.querySelectorAll('details')).forEach(function(d,i){{d.open=!!saved[i];if(d.classList.contains('seg'))d.setAttribute('name','seg');}});}});
+}})();
+</script>
+<script src="/agent-tools.js" defer></script>
+</body>
+</html>
+"""
+
+
+SITE2_CSS = r"""
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:64px}
+body{margin:0;background:var(--lime);color:var(--ink);font:17px/1.55 var(--text)}
+a{color:var(--moss)}
+.bar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;height:52px;padding:0 12px;background:var(--slate);color:#fff}
+.bar .home{color:#fff;text-decoration:none;font-size:14px;opacity:.9}
+.burger{appearance:none;border:0;background:transparent;color:#fff;font-size:26px;line-height:1;width:44px;height:44px;cursor:pointer}
+.menu{position:fixed;top:0;right:0;bottom:0;z-index:40;width:min(86vw,360px);background:#fff;box-shadow:-8px 0 30px rgba(0,0,0,.25);padding:14px 16px;overflow:auto}
+.menu-head{display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-size:18px;margin-bottom:8px}
+.menu .x{appearance:none;border:0;background:none;font-size:22px;width:44px;height:44px;cursor:pointer}
+.menu ol{list-style:none;margin:0;padding:0}
+.menu li a{display:flex;gap:12px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--rule);color:var(--ink);text-decoration:none;font-weight:600}
+.menu li a span{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--slate);color:#fff;font-size:14px;flex:none}
+.menu-foot{margin-top:16px;font-size:15px}
+.scrim{position:fixed;inset:0;z-index:30;background:rgba(0,0,0,.35)}
+[hidden]{display:none!important}
+main{max-width:760px;margin:0 auto;padding:0 0 24px}
+.hero figure{margin:0;background:var(--slate)}
+.hero img{display:block;width:100%;height:auto}
+.hero figcaption{padding:8px 16px 10px;font-size:12px;line-height:1.45;color:#dfe4e1;background:var(--slate)}
+.hero figcaption a{color:#fff}
+.hero h1{margin:22px 16px 4px;font-family:var(--display);font-stretch:88%;font-weight:800;font-size:clamp(30px,8vw,46px);line-height:1.05;letter-spacing:-.01em;color:var(--slate)}
+.hero h1 span{display:block;margin-top:8px;font-size:clamp(18px,4.6vw,24px);font-weight:600;color:var(--red);letter-spacing:0}
+.kicker{margin:6px 16px 18px;color:var(--muted);font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.segs{padding:0 12px;display:flex;flex-direction:column;gap:10px}
+details>summary{list-style:none;cursor:pointer}
+details>summary::-webkit-details-marker{display:none}
+.seg{background:#fff;border:1px solid var(--rule);border-radius:14px;overflow:hidden}
+.seg>summary{display:flex;align-items:center;gap:14px;min-height:76px;padding:14px 16px}
+.seg[open]>summary{background:var(--slate);color:#fff}
+.seg-n{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--red);color:#fff;font-weight:800;font-family:var(--display)}
+.seg-t{flex:1;min-width:0}
+.seg-h{display:block;font-family:var(--display);font-weight:800;font-size:20px;line-height:1.15}
+.seg-l{display:block;margin-top:3px;font-size:14.5px;color:var(--muted)}
+.seg[open] .seg-l{color:#cfd6d2}
+.chev{flex:none;width:12px;height:12px;border-right:2.5px solid currentColor;border-bottom:2.5px solid currentColor;transform:rotate(45deg);margin:0 6px 4px 0;transition:transform .2s}
+details[open]>summary>.chev{transform:rotate(-135deg);margin-bottom:-4px}
+.seg-body{padding:14px 16px 16px}
+.lead{margin:0 0 12px;font-size:16px}
+.sub{border:1px solid var(--rule);border-radius:10px;margin:8px 0;background:var(--lime)}
+.sub>summary{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:52px;padding:10px 14px;font-weight:700}
+.sub[open]>summary{border-bottom:1px solid var(--rule)}
+.sub-body{padding:6px 14px 10px;background:#fff;border-radius:0 0 10px 10px}
+.sub .sub{background:#fff}
+.card>summary{font-size:15px}
+blockquote{margin:8px 0;padding:4px 0 4px 14px;border-left:4px solid var(--red);font-size:16.5px}
+.speech p{margin:.6em 0}
+.src{font-size:13.5px;color:var(--muted);margin:8px 0}
+.qs{margin:0;padding-left:0;list-style:none;counter-reset:q}
+.qs li{counter-increment:q}
+.qs .sub>summary span:first-child::before{content:counter(q) ". ";color:var(--red)}
+.qs .sub>summary{font-weight:600;font-size:15.5px;line-height:1.35}
+.sign{margin:14px 0 0;font-weight:700}
+.go{display:flex;flex-direction:column;gap:2px;margin:8px 0;padding:14px 16px;border-radius:12px;background:var(--slate);color:#fff;text-decoration:none;font-weight:700;font-size:17px}
+.go::after{content:"Open →";font-size:13px;font-weight:600;color:#cfd6d2;margin-top:4px}
+.go small{font-weight:400;font-size:13px;color:#cfd6d2}
+.files{font-size:14.5px;margin:14px 0 0}
+.back{appearance:none;display:block;width:100%;margin-top:14px;padding:12px;border:1px solid var(--rule);border-radius:10px;background:var(--lime);font:600 15px var(--text);color:var(--slate);cursor:pointer}
+.foot{max-width:760px;margin:10px auto 0;padding:18px 16px 40px;border-top:1px solid var(--rule);font-size:14px;color:var(--muted)}
+.foot .disclaimer{font-weight:700;color:var(--ink)}
+.foot .sig{font-style:italic}
+.small{font-size:13px}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+@media (min-width:900px){.hero img{max-height:56vh;object-fit:cover}.segs{padding:0}.hero h1,.kicker{margin-left:0;margin-right:0}main{padding:0 0 24px}.hero figure{border-radius:0 0 14px 14px;overflow:hidden}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media print{.bar,.menu,.scrim,.back{display:none!important}.seg{break-inside:auto;border:0}}
 """
 
 
