@@ -1431,6 +1431,7 @@ Democratic@valeofglamorgan.gov.uk
 
 cc: FoiUnit@valeofglamorgan.gov.uk (for inform','{"kind": "reply", "pairing": "thread", "party": "vale"}');
 INSERT INTO nodes VALUES ('doc-cadw-1988-listing-location-lead','document','Cadw 1988 listing / assessment file — location lead','{"holder": "Cadw / Welsh Government", "reference": "none yet (draft)", "date": "2026-10-13"}');
+INSERT INTO nodes VALUES ('doc-defra-FOI2026-23886','document','Defra FOI2026/23886 acknowledgement – wartime/post-war farm records','{"holder": "Defra (successor to MAF)", "reference": "FOI2026/23886", "date": "2026-10-20"}');
 INSERT INTO nodes VALUES ('doc-defra-auto-ack-foi-maf-2026-10-20','document','Defra FOI/EIR auto-acknowledgement – MAF wartime records','{"holder": "Defra (successor to MAF)", "reference": "none assigned in auto-ack", "date": "2026-10-20"}');
 INSERT INTO nodes VALUES ('doc-defra-undeliverable-foi-maf-2026-10-20','document','Defra FOI/EIR undeliverable – MAF wartime records','{"holder": "Defra (successor to MAF)", "reference": "none (undelivered)", "date": "2026-10-20"}');
 INSERT INTO nodes VALUES ('doc-draft-cedwyn-estate-wiki-page','document','Cedwyn Estate: an affirmative reconstruction of the Williams/Buckler title chain','{"holder": "", "reference": "", "date": ""}');
@@ -1512,6 +1513,7 @@ INSERT INTO nodes VALUES ('ref:FOI 719/26','reference','FOI 719/26','{}');
 INSERT INTO nodes VALUES ('ref:FOI2026/09019','reference','FOI2026/09019','{}');
 INSERT INTO nodes VALUES ('ref:FOI2026/118465','reference','FOI2026/118465','{}');
 INSERT INTO nodes VALUES ('ref:FOI2026/23272','reference','FOI2026/23272','{}');
+INSERT INTO nodes VALUES ('ref:FOI2026/23886','reference','FOI2026/23886','{}');
 INSERT INTO nodes VALUES ('ref:GGAT00768s','reference','GGAT00768s','{}');
 INSERT INTO nodes VALUES ('ref:GGAT02038s','reference','GGAT02038s','{}');
 INSERT INTO nodes VALUES ('ref:GGAT03586s','reference','GGAT03586s','{}');
@@ -3279,6 +3281,7 @@ INSERT INTO edges VALUES ('qa:qa-d13c16097336','scene:ghf-obvious-10','bears_on'
 INSERT INTO edges VALUES ('qa:qa-18b0a0b8f769','scene:ghf-obvious-10','bears_on');
 INSERT INTO edges VALUES ('qa:qa-e4056db41d87','scene:ghf-obvious-10','bears_on');
 INSERT INTO edges VALUES ('qa:qa-47019bbec9a9','scene:ghf-obvious-10','bears_on');
+INSERT INTO edges VALUES ('doc-defra-FOI2026-23886','ref:FOI2026/23886','cites');
 INSERT INTO edges VALUES ('doc-draft-cedwyn-estate-wiki-page','ref:D153/4-8','cites');
 INSERT INTO edges VALUES ('doc-draft-cedwyn-estate-wiki-page','ref:WA231076','cites');
 INSERT INTO edges VALUES ('doc-draft-cedwyn-estate-wiki-page','ref:WA240304','cites');
