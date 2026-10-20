@@ -1449,6 +1449,7 @@ INSERT INTO nodes VALUES ('doc-llandough-cc-internal-review-request-2026-10-12',
 INSERT INTO nodes VALUES ('doc-llandough-cc-narrower-foi-eir-2026-10-20','document','Llandough Community Council — narrower FOI/EIR request (20 October 2026)','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-mod-FOI2026-23272','document','MOD Army Policy & Secretariat FOI2026/23272','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-mod-dbs-DPR2026-46503','document','MOD DBS SAR, 9 October 2026','{"holder": "Ministry of Defence, Defence Business Services (DBS) Civilian Disclosures Team", "reference": "DPR2026/46503", "date": "2026-10-09"}');
+INSERT INTO nodes VALUES ('doc-museum-wales-FOI-2026-024-clarification-2026-10-20','document','Amgueddfa Cymru FOI 2026-024 / 032 / 036 – clarification on c.1880 medieval ironwork','{"holder": "Amgueddfa Cymru – Museum Wales", "reference": "FOI 2026-024 / 032 / 036 (new request of 19 Oct 2026)", "date": "2026-10-20"}');
 INSERT INTO nodes VALUES ('doc-museum-wales-FOI-2026-024','document','Amgueddfa Cymru FOI 2026-024 / 032 / 036 – recorded basis for out-of-scope / searches','{"holder": "Amgueddfa Cymru – Museum Wales", "reference": "FOI 2026-024 / 032 / 036", "date": "2026-10-16"}');
 INSERT INTO nodes VALUES ('doc-museum-wales-FOI-2026-036','document','Amgueddfa Cymru FOI 2026-036','{"holder": "Amgueddfa Cymru – Museum Wales", "reference": "FOI 2026-036", "date": "2026-10-10"}');
 INSERT INTO nodes VALUES ('doc-rcahmw-RC26-0375','document','RCAHMW RC26-0375 further responses, 6 and 13 October 2026','{"holder": "RCAHMW (NMRW)", "reference": "RC26-0375 (includes RC26-0353, RC26-0368, RC26-0371)", "date": "2026-10-13"}');
@@ -3304,6 +3305,7 @@ INSERT INTO edges VALUES ('doc-llandough-cc-narrower-foi-eir-2026-10-20','ref:89
 INSERT INTO edges VALUES ('doc-llandough-cc-narrower-foi-eir-2026-10-20','ref:92/00671/RES','cites');
 INSERT INTO edges VALUES ('doc-mod-FOI2026-23272','ref:FOI2026/23272','cites');
 INSERT INTO edges VALUES ('doc-mod-dbs-DPR2026-46503','ref:DPR2026/46503','cites');
+INSERT INTO edges VALUES ('doc-museum-wales-FOI-2026-024-clarification-2026-10-20','ref:FOI 2026-024','cites');
 INSERT INTO edges VALUES ('doc-museum-wales-FOI-2026-024','ref:FOI 2026-024','cites');
 INSERT INTO edges VALUES ('doc-museum-wales-FOI-2026-036','ref:FOI 2026-032','cites');
 INSERT INTO edges VALUES ('doc-museum-wales-FOI-2026-036','ref:FOI 2026-036','cites');
