@@ -3,6 +3,10 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import appCss from "../styles.css?url";
 
+// English / Cymraeg / Español dropdown shared by the Great House Farm sites (bucklerfamily.estate/ghf-lang/).
+// Loaded after hydration so it never races React's first render.
+const GHF_LANG_LOADER = "(function(){function go(){if(document.querySelector('script[src*=\"ghf-lang.js\"]'))return;var s=document.createElement('script');s.src='https://bucklerfamily.estate/ghf-lang/ghf-lang.js';s.setAttribute('data-site','dartboard');s.async=true;document.head.appendChild(s);}function later(){setTimeout(go,600);}if(document.readyState==='complete')later();else window.addEventListener('load',later);})();";
+
 const APP_NAME = "Disclosure Rings";
 
 export const Route = createRootRoute({
@@ -33,6 +37,7 @@ export const Route = createRootRoute({
     <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <script dangerouslySetInnerHTML={{ __html: GHF_LANG_LOADER }} />
       </head>
       <body>
         <PreviewHostBridge />
