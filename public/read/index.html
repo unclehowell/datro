@@ -1,0 +1,165 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>PDF reader · Great House Farm e-books</title><style>html,body{margin:0;height:100%;background:#3a3a3a}</style><style id="edp-css">
+/* edition picker v3 (worker 905038f0): rows are the action; brand pair from basecamp.js --ghf-p / --ghf-s */
+.edp-box{min-width:0;max-width:100%}
+.edp{contain:inline-size;width:100%;box-sizing:border-box;--edp-row:58px;--edp-p:var(--ghf-p,#4A1942);--edp-s:var(--ghf-s,#F2C94C);border:1px solid #555;margin:0 0 .7rem;padding:0;min-width:0;background:#0d0d0d;max-width:460px;display:block}
+.edp-lg{display:block;padding:9px 12px 7px;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#bbb;border-bottom:1px solid #333;background:#000}
+.edp-hint{letter-spacing:.06em;text-transform:none;color:#8a8a8a;font-size:.72rem;margin-left:.3em}
+.edp-arr{display:flex;align-items:center;justify-content:center;width:100%;height:34px;margin:0;padding:0;border:0;border-radius:0;background:var(--edp-p);color:var(--edp-s);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.edp-arr:disabled{opacity:.55;cursor:default}
+.edp-arr:not(:disabled):hover{filter:brightness(1.25)}
+.edp-arr:focus-visible{outline:2px solid var(--edp-s);outline-offset:-3px}
+.edp-list{list-style:none;margin:0;padding:0;max-height:calc(var(--edp-row) * 3);overflow-y:auto;overscroll-behavior:contain;scroll-snap-type:y mandatory;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.edp-list li{margin:0;padding:0;scroll-snap-align:start;list-style:none}
+.edp-list li::before{content:none}
+.edp a.edp-row,.edp-row{display:flex;align-items:center;gap:10px;min-height:var(--edp-row);box-sizing:border-box;padding:7px 10px 7px 12px;border-top:1px solid #262626;cursor:pointer;color:#fff;text-decoration:none;text-transform:none;letter-spacing:0;font-size:1rem;background:transparent;-webkit-tap-highlight-color:transparent}
+.edp-list li:first-child .edp-row{border-top:0}
+.edp-row:hover,.edp-row:focus-visible{background:#1c1c1c;box-shadow:inset 4px 0 0 var(--edp-s)}
+.edp-row:focus-visible{outline:2px solid var(--edp-s);outline-offset:-2px}
+.edp-txt{display:flex;flex-direction:column;min-width:0;flex:1 1 auto;line-height:1.25}
+.edp-l1{font-size:1rem;color:#fff}
+.edp-price{font-weight:600}
+.edp-tag{display:inline-block;margin-left:.5em;padding:1px 6px;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;vertical-align:2px;color:#000;background:var(--edp-s)}
+.edp-note{font-size:.76rem;color:#a8a8a8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.edp-go{flex:0 0 auto;display:inline-flex;align-items:center;gap:4px;padding:7px 10px;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--edp-s);color:var(--edp-p);border-radius:2px}
+.edp-pin{border-top:2px solid var(--edp-s)!important;background:#050505}
+.edp-pin .edp-tag{background:transparent;color:var(--edp-s);border:1px solid var(--edp-s)}
+.edp-pin .edp-go{background:transparent;color:var(--edp-s);border:1px solid var(--edp-s);padding:6px 9px}
+.edp-pay{margin:.1rem 0 0}
+.edp-c{--edp-row:54px;margin:.4rem 0 .5rem}
+@media (prefers-reduced-motion:reduce){.edp-list{scroll-behavior:auto}}
+.edp-mod{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.78);padding:max(10px,env(safe-area-inset-top)) 10px max(10px,env(safe-area-inset-bottom))}
+.edp-mod[hidden]{display:none}
+.edp-mbox{--edp-p:var(--ghf-p,#4A1942);--edp-s:var(--ghf-s,#F2C94C);display:flex;flex-direction:column;width:100%;max-width:900px;height:100%;max-height:100%;background:#111;border:1px solid var(--edp-s);box-shadow:0 10px 40px rgba(0,0,0,.6)}
+.edp-mhd{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:6px 6px 6px 12px;background:var(--edp-p);color:#fff}
+.edp-mt{flex:1 1 auto;min-width:0;margin:0;font:600 .95rem/1.25 system-ui,-apple-system,Segoe UI,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff}
+.edp-mt small{display:block;font-weight:400;font-size:.72rem;color:var(--edp-s);letter-spacing:.04em}
+.edp-ic{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin:0;padding:0;border:1px solid var(--edp-s);border-radius:2px;background:transparent;color:var(--edp-s);cursor:pointer;text-decoration:none}
+.edp-ic:hover{background:var(--edp-s);color:var(--edp-p)}
+.edp-ic:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.edp-mbody{flex:1 1 auto;min-height:0;overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;background:#3a3a3a;padding:8px;position:relative}
+.edp-mbody:focus-visible{outline:2px solid var(--edp-s);outline-offset:-2px}
+.edp-mbody iframe{display:block;width:100%;height:100%;border:0;background:#3a3a3a}
+.edp-fr{padding:0;overflow:hidden}
+.edp-pg{position:relative;margin:0 auto 8px;background:#fff;max-width:100%;box-shadow:0 1px 4px rgba(0,0,0,.5)}
+.edp-pg canvas{display:block;width:100%;height:100%}
+.edp-st{color:#eee;font:1rem/1.45 system-ui,-apple-system,Segoe UI,sans-serif;text-align:center;padding:2rem 1rem}
+.edp-st a{color:var(--edp-s,#F2C94C)}
+.edp-full{position:fixed;inset:0;padding:8px}
+html.edp-lock,html.edp-lock body{overflow:hidden!important}
+</style></head><body><div class="edp-mbody edp-full" data-edp-viewer tabindex="0" role="document" aria-label="PDF reader"></div><script>
+(function(){
+if(window.__edp)return;window.__edp=3;
+var PDFJS='https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/',VIEWER='https://ebooks.bucklerfamily.estate/read/?book=';
+var T={
+edition:{en:'Edition',cy:'Argraffiad',es:'Edición'},
+hint:{en:'newest first · tap a price',cy:'y diweddaraf yn gyntaf · tapiwch bris',es:'la más reciente primero · toque un precio'},
+up:{en:'Show newer editions',cy:'Dangos argraffiadau mwy newydd',es:'Mostrar ediciones más recientes'},
+down:{en:'Show older editions',cy:'Dangos argraffiadau hŷn',es:'Mostrar ediciones anteriores'},
+list:{en:'Editions, newest and dearest first',cy:'Argraffiadau, y diweddaraf a’r drutaf yn gyntaf',es:'Ediciones, la más reciente y cara primero'},
+newest:{en:'Newest',cy:'Diweddaraf',es:'Más reciente'},
+pinned:{en:'Always available',cy:'Ar gael bob amser',es:'Siempre disponible'},
+n_current:{en:'Newest edition: the complete book',cy:'Argraffiad diweddaraf: y llyfr cyflawn',es:'Edición más reciente: el libro completo'},
+n_preview:{en:'Preview: the opening chapters',cy:'Rhagolwg: y penodau agoriadol',es:'Vista previa: los primeros capítulos'},
+n_first:{en:'First edition',cy:'Argraffiad cyntaf',es:'Primera edición'},
+n_archive:{en:'Earlier edition',cy:'Argraffiad cynharach',es:'Edición anterior'},
+pages:{en:'pages',cy:'tudalen',es:'páginas'},
+buy:{en:'Buy',cy:'Prynu',es:'Comprar'},
+read:{en:'Read',cy:'Darllen',es:'Leer'},
+buyl:{en:'Buy at checkout:',cy:'Prynu wrth y til:',es:'Comprar en el pago:'},
+readl:{en:'Read the PDF:',cy:'Darllen y PDF:',es:'Leer el PDF:'},
+pay:{en:'Paid editions open secure Stripe checkout · £0.00 opens the PDF here',cy:'Mae argraffiadau â thâl yn agor til diogel Stripe · Mae £0.00 yn agor y PDF yma',es:'Las ediciones de pago abren el pago seguro de Stripe · £0.00 abre el PDF aquí'},
+dl:{en:'Download the PDF',cy:'Lawrlwytho’r PDF',es:'Descargar el PDF'},
+close:{en:'Close',cy:'Cau',es:'Cerrar'},
+loading:{en:'Opening the PDF…',cy:'Yn agor y PDF…',es:'Abriendo el PDF…'},
+fail:{en:'This browser could not show the PDF here.',cy:'Ni allai’r porwr hwn ddangos y PDF yma.',es:'Este navegador no pudo mostrar el PDF aquí.'},
+open:{en:'Open it in a new tab',cy:'Ei agor mewn tab newydd',es:'Abrirlo en una pestaña nueva'},
+or:{en:'or use the download icon above.',cy:'neu defnyddiwch yr eicon lawrlwytho uchod.',es:'o use el icono de descarga de arriba.'},
+pdf:{en:'PDF reader',cy:'Darllenydd PDF',es:'Lector de PDF'}};
+function L(){var l='en';try{l=(window.GHFLang&&GHFLang.get())||document.documentElement.getAttribute('lang')||'en';}catch(e){}l=String(l).slice(0,2);return T.edition[l]?l:'en';}
+function t(k){var l=L();return (T[k]&&(T[k][l]||T[k].en))||k;}
+function nf(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function el(tag,attrs,txt){var x=document.createElement(tag);for(var k in attrs)x.setAttribute(k,attrs[k]);if(txt!=null)x.textContent=txt;return x;}
+function rowLabel(a){var p=a.querySelector('.edp-price'),v=a.querySelector('.edp-v');return (a.classList.contains('edp-free')?t('readl'):t('buyl'))+' '+(p?p.textContent:'')+' – '+(v?v.textContent:'');}
+function words(root){
+ [].forEach.call(root.querySelectorAll('[data-t]'),function(x){var k=x.getAttribute('data-t');
+  if(/^n_/.test(k)){var pg=x.getAttribute('data-pages');x.textContent=t(k)+(pg?' · '+nf(pg)+' '+t('pages'):'');}else x.textContent=t(k);});
+ [].forEach.call(root.querySelectorAll('[data-ta]'),function(x){x.setAttribute('aria-label',t(x.getAttribute('data-ta')));});
+ [].forEach.call(root.querySelectorAll('.edp-list'),function(x){x.setAttribute('aria-label',t('list'));});
+ [].forEach.call(root.querySelectorAll('.edp-row'),function(a){a.setAttribute('aria-label',rowLabel(a));});}
+function arrows(f){var li=f.querySelector('.edp-list'),u=f.querySelector('.edp-up'),d=f.querySelector('.edp-dn');if(!li)return;
+ var top=li.scrollTop<=1,bot=li.scrollTop+li.clientHeight>=li.scrollHeight-1;if(u)u.disabled=top;if(d)d.disabled=bot;}
+function rowH(li){var r=li.querySelector('.edp-row');return r?r.offsetHeight:58;}
+/* ---------- the PDF modal ---------- */
+var M=null,opener=null,job=0,lib=null;
+var ICDL='<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M12 3v12M6.5 10l5.5 5.5 5.5-5.5M4 20h16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+var ICX='<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>';
+function build(){if(M)return M;
+ M=el('div',{'class':'edp-mod',role:'dialog','aria-modal':'true','aria-labelledby':'edp-mt',hidden:''});M.setAttribute('data-no-translate','');
+ M.innerHTML='<div class="edp-mbox"><div class="edp-mhd"><p class="edp-mt" id="edp-mt"></p>'+
+  '<a class="edp-ic edp-dl" href="#" download rel="nofollow">'+ICDL+'</a><button type="button" class="edp-ic edp-x">'+ICX+'</button></div>'+
+  '<div class="edp-mbody" tabindex="0" role="document"></div></div>';
+ document.body.appendChild(M);
+ M.querySelector('.edp-x').addEventListener('click',close);
+ M.addEventListener('click',function(ev){if(ev.target===M)close();});
+ M.addEventListener('keydown',function(ev){if(ev.key==='Escape'){ev.preventDefault();close();return;}
+  if(ev.key==='Tab'){var f=[].slice.call(M.querySelectorAll('.edp-dl,.edp-x,.edp-mbody,.edp-mbody a,.edp-mbody iframe'));if(!f.length)return;
+   var i=f.indexOf(document.activeElement);if(ev.shiftKey&&i<=0){ev.preventDefault();f[f.length-1].focus();}else if(!ev.shiftKey&&i===f.length-1){ev.preventDefault();f[0].focus();}}});
+ return M;}
+function close(){if(!M||M.hidden)return;job++;M.hidden=true;document.documentElement.classList.remove('edp-lock');
+ var b=M.querySelector('.edp-mbody');b.innerHTML='';b.classList.remove('edp-fr');if(window.__edpDoc){try{window.__edpDoc.destroy();}catch(e){}window.__edpDoc=null;}
+ if(opener&&opener.focus)opener.focus();opener=null;}
+function sameHost(u){try{return new URL(u,location.href).origin===location.origin;}catch(e){return false;}}
+function loadLib(){if(lib)return lib;lib=new Promise(function(ok,no){if(window.pdfjsLib)return ok(window.pdfjsLib);
+ var s=el('script',{src:PDFJS+'pdf.min.js',crossorigin:'anonymous'});s.onload=function(){try{pdfjsLib.GlobalWorkerOptions.workerSrc=PDFJS+'pdf.worker.min.js';ok(pdfjsLib);}catch(e){no(e);}};
+ s.onerror=function(){lib=null;no(new Error('pdf.js'));};document.head.appendChild(s);});return lib;}
+function failMsg(box,url){box.innerHTML='';var d=el('div',{'class':'edp-st'});d.appendChild(el('p',{},t('fail')));
+ var p=el('p',{});p.appendChild(el('a',{href:url,target:'_blank',rel:'noopener nofollow'},t('open')));p.appendChild(document.createTextNode(' '+t('or')));d.appendChild(p);box.appendChild(d);}
+/* render(box,url): PDF.js pages, drawn as they scroll near, dropped when far away (2,000-page books stay light) */
+function render(box,url,my){my=my||job;box.innerHTML='';var st=el('div',{'class':'edp-st'},t('loading'));box.appendChild(st);
+ return loadLib().then(function(L){return L.getDocument({url:url,disableAutoFetch:true,rangeChunkSize:262144}).promise;}).then(function(doc){
+  if(my!==job){doc.destroy();return;}window.__edpDoc=doc;
+  return doc.getPage(1).then(function(p1){if(my!==job)return;var v1=p1.getViewport({scale:1}),ratio=v1.height/v1.width;st.remove();
+   var W=function(){return Math.max(200,box.clientWidth-16);};var pages=[];
+   for(var n=1;n<=doc.numPages;n++){var d=el('div',{'class':'edp-pg','data-n':n,'aria-label':t('pages')+' '+n});d.style.width=W()+'px';d.style.height=Math.round(W()*ratio)+'px';box.appendChild(d);pages.push(d);}
+   var draw=function(d){if(d.__on)return;d.__on=1;var n=+d.getAttribute('data-n');doc.getPage(n).then(function(pg){if(my!==job||!d.__on)return;
+     var w=W(),v=pg.getViewport({scale:1}),dpr=Math.min(window.devicePixelRatio||1,2),sc=w/v.width,vp=pg.getViewport({scale:sc*dpr});
+     var c=el('canvas',{});c.width=Math.floor(vp.width);c.height=Math.floor(vp.height);d.style.width=w+'px';d.style.height=Math.round(v.height*sc)+'px';
+     d.innerHTML='';d.appendChild(c);d.__task=pg.render({canvasContext:c.getContext('2d'),viewport:vp});d.__task.promise.catch(function(){});});};
+   var drop=function(d){if(!d.__on)return;d.__on=0;if(d.__task){try{d.__task.cancel();}catch(e){}}d.innerHTML='';};
+   if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)draw(e.target);});},{root:box,rootMargin:'900px 0px'});
+    var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)drop(e.target);});},{root:box,rootMargin:'4000px 0px'});
+    pages.forEach(function(d){io.observe(d);io2.observe(d);});}else{pages.slice(0,5).forEach(draw);}
+  });}).catch(function(){if(my===job)failMsg(box,url);});}
+window.__edpRender=render;
+function open(a){var url=a.getAttribute('data-edp-pdf');if(!url)return false;build();opener=a;job++;
+ var title=a.getAttribute('data-title')||'PDF',gb=a.getAttribute('data-gb')||'';
+ var mt=M.querySelector('.edp-mt');mt.textContent=title;var ed=a.getAttribute('data-ed');mt.appendChild(el('small',{},(ed?ed+' · ':'')+t('pdf')));
+ var dl=M.querySelector('.edp-dl');dl.href=url;dl.setAttribute('aria-label',t('dl'));dl.title=t('dl');
+ var x=M.querySelector('.edp-x');x.setAttribute('aria-label',t('close'));x.title=t('close');
+ var box=M.querySelector('.edp-mbody');M.hidden=false;document.documentElement.classList.add('edp-lock');
+ if(sameHost(url))render(box,url);
+ else if(gb&&/^[a-z0-9-]+@[0-9a-z.\-]+$/.test(gb)){box.classList.add('edp-fr');box.innerHTML='';box.appendChild(el('iframe',{src:VIEWER+encodeURIComponent(gb),title:title,loading:'eager'}));}
+ else failMsg(box,url);
+ x.focus();return true;}
+document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a[data-edp-pdf]');if(!a||ev.button||ev.metaKey||ev.ctrlKey||ev.shiftKey||ev.altKey)return;
+ if(open(a))ev.preventDefault();});
+/* ---------- rows ---------- */
+function init(){
+ [].forEach.call(document.querySelectorAll('.edp'),function(f){
+  var li=f.querySelector('.edp-list');
+  [].forEach.call(f.querySelectorAll('.edp-arr'),function(a){a.addEventListener('click',function(){var dir=a.classList.contains('edp-up')?-1:1;li.scrollBy({top:dir*rowH(li),behavior:'smooth'});setTimeout(function(){arrows(f);},350);});});
+  if(li){li.addEventListener('scroll',function(){arrows(f);},{passive:true});}
+  var rs=[].slice.call(f.querySelectorAll('.edp-row'));
+  rs.forEach(function(r,k){r.addEventListener('keydown',function(ev){var n=null;if(ev.key==='ArrowDown')n=rs[k+1];else if(ev.key==='ArrowUp')n=rs[k-1];else if(ev.key==='Home')n=rs[0];else if(ev.key==='End')n=rs[rs.length-1];
+    if(n){ev.preventDefault();n.focus();setTimeout(function(){arrows(f);},200);}
+    else if(ev.key===' '&&r.hasAttribute('data-edp-pdf')){ev.preventDefault();open(r);}});
+   r.addEventListener('focus',function(){if(r.closest('.edp-list'))r.scrollIntoView({block:'nearest'});});});
+  arrows(f);});
+ [].forEach.call(document.querySelectorAll('.edp-box'),words);
+ window.addEventListener('resize',function(){[].forEach.call(document.querySelectorAll('.edp'),arrows);});
+ document.addEventListener('ghf-lang-change',function(){[].forEach.call(document.querySelectorAll('.edp-box'),words);});
+ var vb=document.querySelector('[data-edp-viewer]');if(vb){var gb=new URLSearchParams(location.search).get('book')||'';
+  if(/^[a-z0-9-]+@[0-9a-z.\-]+$/.test(gb))render(vb,'/api/free?book='+encodeURIComponent(gb));else vb.textContent='';}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script></body></html>
