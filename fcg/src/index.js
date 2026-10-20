@@ -115,6 +115,7 @@ function shell({ title, description = "", kind, main }) {
   <link rel="preload" href="/assets/fonts/barlow-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin/>
   <link rel="stylesheet" href="/assets/theme.css?v=${ASSET_V}"/>
   <script src="/assets/theme.js?v=${ASSET_V}" defer></script>
+  <script src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js" defer></script>
 </head>
 <body class="${kind}">${NAV}
 ${main}
