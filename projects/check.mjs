@@ -12,6 +12,14 @@ console.log("estate", JSON.stringify(runEstate())); // independence: wiki links 
   (function walkL(d) { for (const f of fs.readdirSync(d)) { const p = path.join(d, f); if (fs.statSync(p).isDirectory()) walkL(p); else if (f.endsWith(".html")) { const t = fs.readFileSync(p, "utf8"); if (!t.includes("ghf-lang.js") && t.includes("</head>")) { fs.writeFileSync(p, t.replace("</head>", GHF_LANG + "\n</head>")); nL++; } } } })(rootL);
   console.log("ghf-lang", nL);
 }
+
+// ebook cta (20 Oct 2026): shared "Get the e-book (£49.99)" card on every page (idempotent; links to the shop page)
+{
+  const EBK = '<script src="https://bucklerfamily.estate/ebook/cta.js" defer></script>';
+  const rootE = path.join(path.dirname(new URL(import.meta.url).pathname), "public"); let nE = 0;
+  (function walkE(d) { for (const f of fs.readdirSync(d)) { const p = path.join(d, f); if (fs.statSync(p).isDirectory()) walkE(p); else if (f.endsWith(".html")) { const t = fs.readFileSync(p, "utf8"); if (!t.includes("ebook/cta.js") && t.includes("</head>")) { fs.writeFileSync(p, t.replace("</head>", EBK + "\n</head>")); nE++; } } } })(rootE);
+  console.log("ebook-cta", nE);
+}
 const root = path.join(path.dirname(new URL(import.meta.url).pathname), "public");
 const bad = [/Robin Hill/i, /hywelapbuckler/i, /7845\s?933\s?262/, /(?:\+44\s?7|\b07)\d{3}\s?\d{3}\s?\d{3}\b/, /[\w.+-]+@(?:gmail|hotmail|yahoo|outlook|icloud|btinternet|aol)\.[\w.]+/i, /family(?:'s|’s|&#8217;s)? (?:account|testimony)/i, /wordpress\.com/i];
 let files = 0, fails = [];
