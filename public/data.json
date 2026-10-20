@@ -1,13 +1,13 @@
 {
- "generated": "2026-10-20 17:28 UTC",
+ "generated": "2026-10-20 17:49 UTC",
  "period": "1 Apr 2025 – today",
  "balance": 0.0,
  "income": 0,
- "spend": 154.34,
- "ai": 154.34,
+ "spend": 186.58,
+ "ai": 186.58,
  "hmlr": 0.0,
- "pending": 4,
- "count": 24,
+ "pending": 3,
+ "count": 25,
  "months": [
   {
    "m": "2025-04",
@@ -27,12 +27,12 @@
   {
    "m": "2025-07",
    "in": 0.0,
-   "out": 0.0
+   "out": 28.49
   },
   {
    "m": "2025-08",
    "in": 0.0,
-   "out": 0.0
+   "out": 3.75
   },
   {
    "m": "2025-09",
@@ -108,14 +108,14 @@
  "bycat": [
   [
    "AI tokens",
-   154.34
-  ],
-  [
-   "Disclosure: HM Land Registry",
-   0.0
+   186.58
   ],
   [
    "Hosting and domains",
+   0.0
+  ],
+  [
+   "Disclosure: HM Land Registry",
    0.0
   ],
   [
@@ -129,12 +129,12 @@
    85.8
   ],
   [
-   "Anthropic",
-   29.7
+   "xAI (Grok)",
+   48.72
   ],
   [
-   "xAI (Grok)",
-   16.48
+   "Anthropic",
+   29.7
   ],
   [
    "OpenAI",
@@ -148,6 +148,36 @@
  "rows": [
   {
    "ref": "R-001",
+   "date": "2025-07-15",
+   "payee": "xAI (via Google Play)",
+   "narration": "SuperGrok subscription, monthly",
+   "account": "Expenses:AI:Tokens:XAI",
+   "category": "AI tokens",
+   "provider": "xAI (Grok)",
+   "gbp": 28.49,
+   "original": "",
+   "fx": "",
+   "status": "receipt",
+   "class": "project",
+   "pending": false
+  },
+  {
+   "ref": "R-002",
+   "date": "2025-08-06",
+   "payee": "xAI",
+   "narration": "xAI API usage invoice, August 2025",
+   "account": "Expenses:AI:Tokens:XAI",
+   "category": "AI tokens",
+   "provider": "xAI (Grok)",
+   "gbp": 3.75,
+   "original": "5.00 USD",
+   "fx": "~ 0.75 GBP/USD estimate",
+   "status": "invoice",
+   "class": "project",
+   "pending": false
+  },
+  {
+   "ref": "R-003",
    "date": "2025-09-13",
    "payee": "OpenAI",
    "narration": "API credit top-up (organisation wwfm)",
@@ -162,7 +192,7 @@
    "pending": false
   },
   {
-   "ref": "R-002",
+   "ref": "R-004",
    "date": "2025-09-14",
    "payee": "OpenAI",
    "narration": "Refund of unused API credit",
@@ -177,7 +207,7 @@
    "pending": false
   },
   {
-   "ref": "R-003",
+   "ref": "R-005",
    "date": "2026-02-25",
    "payee": "Anthropic",
    "narration": "API credit purchase",
@@ -192,7 +222,7 @@
    "pending": false
   },
   {
-   "ref": "R-004",
+   "ref": "R-006",
    "date": "2026-02-26",
    "payee": "ElevenLabs",
    "narration": "Subscription (voice generation)",
@@ -207,7 +237,7 @@
    "pending": false
   },
   {
-   "ref": "R-005",
+   "ref": "R-007",
    "date": "2026-02-28",
    "payee": "Groq",
    "narration": "API usage invoice",
@@ -222,7 +252,7 @@
    "pending": false
   },
   {
-   "ref": "R-006",
+   "ref": "R-008",
    "date": "2026-03-01",
    "payee": "Groq",
    "narration": "API usage invoice",
@@ -237,7 +267,7 @@
    "pending": false
   },
   {
-   "ref": "R-007",
+   "ref": "R-009",
    "date": "2026-03-06",
    "payee": "Groq",
    "narration": "API usage invoice",
@@ -252,22 +282,7 @@
    "pending": false
   },
   {
-   "ref": "R-008",
-   "date": "2026-03-23",
-   "payee": "HM Land Registry",
-   "narration": "Official copy of register WA231076 (emailed by HMLR, ref WA231076/A/216/LG) - fee not yet traced to a receipt; HMLR published fees: £7 online, £11 by post",
-   "account": "Expenses:Disclosure:HMLR",
-   "category": "Disclosure: HM Land Registry",
-   "provider": "",
-   "gbp": 0.0,
-   "original": "",
-   "fx": "",
-   "status": "SOURCE PENDING",
-   "class": "case",
-   "pending": true
-  },
-  {
-   "ref": "R-009",
+   "ref": "R-010",
    "date": "2026-03-25",
    "payee": "Anthropic",
    "narration": "API credit purchase",
@@ -282,7 +297,7 @@
    "pending": false
   },
   {
-   "ref": "R-010",
+   "ref": "R-011",
    "date": "2026-04-06",
    "payee": "Groq",
    "narration": "API usage invoice",
@@ -297,7 +312,7 @@
    "pending": false
   },
   {
-   "ref": "R-011",
+   "ref": "R-012",
    "date": "2026-04-12",
    "payee": "OpenAI",
    "narration": "API credit top-up",
@@ -312,7 +327,7 @@
    "pending": false
   },
   {
-   "ref": "R-012",
+   "ref": "R-013",
    "date": "2026-05-06",
    "payee": "Groq",
    "narration": "API usage invoice",
@@ -327,7 +342,7 @@
    "pending": false
   },
   {
-   "ref": "R-013",
+   "ref": "R-014",
    "date": "2026-06-06",
    "payee": "Groq",
    "narration": "API usage invoice",
@@ -342,7 +357,7 @@
    "pending": false
   },
   {
-   "ref": "R-014",
+   "ref": "R-015",
    "date": "2026-07-06",
    "payee": "Groq",
    "narration": "API usage invoice",
@@ -357,7 +372,7 @@
    "pending": false
   },
   {
-   "ref": "R-015",
+   "ref": "R-016",
    "date": "2026-07-28",
    "payee": "Groq",
    "narration": "API usage invoice",
@@ -372,7 +387,7 @@
    "pending": false
   },
   {
-   "ref": "R-016",
+   "ref": "R-017",
    "date": "2026-08-06",
    "payee": "Groq",
    "narration": "API usage invoice",
@@ -387,7 +402,7 @@
    "pending": false
   },
   {
-   "ref": "R-017",
+   "ref": "R-018",
    "date": "2026-09-05",
    "payee": "xAI",
    "narration": "Grok receipt",
@@ -402,7 +417,7 @@
    "pending": false
   },
   {
-   "ref": "R-018",
+   "ref": "R-019",
    "date": "2026-09-06",
    "payee": "Groq",
    "narration": "API usage invoice",
@@ -417,7 +432,7 @@
    "pending": false
   },
   {
-   "ref": "R-019",
+   "ref": "R-020",
    "date": "2026-09-18",
    "payee": "Anthropic (via Google Play)",
    "narration": "Claude Pro subscription, monthly",
@@ -432,7 +447,7 @@
    "pending": false
   },
   {
-   "ref": "R-020",
+   "ref": "R-021",
    "date": "2026-09-23",
    "payee": "xAI (via Google Play)",
    "narration": "Grok credits",
@@ -447,7 +462,7 @@
    "pending": false
   },
   {
-   "ref": "R-021",
+   "ref": "R-022",
    "date": "2026-09-28",
    "payee": "xAI (via Google Play)",
    "narration": "Grok credits",
@@ -462,7 +477,7 @@
    "pending": false
   },
   {
-   "ref": "R-022",
+   "ref": "R-023",
    "date": "2026-10-20",
    "payee": "Domain registrar",
    "narration": "bucklerfamily.estate domain registration - registrar receipt not yet traced",
@@ -477,10 +492,10 @@
    "pending": true
   },
   {
-   "ref": "R-023",
+   "ref": "R-024",
    "date": "2026-10-20",
    "payee": "HM Land Registry",
-   "narration": "Other official copies and title documents the family bought - number, dates and fees not yet traced to receipts",
+   "narration": "Official copies and title documents the family bought - number, dates and fees not yet traced to receipts (no HMLR payment receipt in the connected mailbox since Apr 2025)",
    "account": "Expenses:Disclosure:HMLR",
    "category": "Disclosure: HM Land Registry",
    "provider": "",
@@ -492,7 +507,7 @@
    "pending": true
   },
   {
-   "ref": "R-024",
+   "ref": "R-025",
    "date": "2026-10-20",
    "payee": "Postage",
    "narration": "Postage for disclosure and records requests sent by post - no receipts found in the connected mailbox",
@@ -572,14 +587,14 @@
    "route": "Pre-action letter; an innocent purchaser for value is protected (Limitation Act 1980 s.32(3))"
   }
  ],
- "case_costs": 154.34,
+ "case_costs": 186.58,
  "by_account": {
   "Assets:Allied:Balance": 0.0,
   "Expenses:AI:Tokens:Anthropic": 29.7,
   "Expenses:AI:Tokens:ElevenLabs": 9.9,
   "Expenses:AI:Tokens:Groq": 85.8,
   "Expenses:AI:Tokens:OpenAI": 12.46,
-  "Expenses:AI:Tokens:XAI": 16.48,
+  "Expenses:AI:Tokens:XAI": 48.72,
   "Expenses:Disclosure:HMLR": 0.0,
   "Expenses:Hosting:Domains": 0.0,
   "Expenses:Postage": 0.0

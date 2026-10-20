@@ -28,8 +28,24 @@ option "operating_currency" "GBP"
   Assets:Allied:Balance   0.00 GBP
   Equity:Opening-Balances
 
-2025-09-13 * "OpenAI" "API credit top-up (organisation wwfm)"
+2025-07-15 * "xAI (via Google Play)" "SuperGrok subscription, monthly"
   evidence: "R-001"
+  class: "project"
+  status: "receipt"
+  Expenses:AI:Tokens:XAI   28.49 GBP
+  Liabilities:Funded:Family
+
+2025-08-06 * "xAI" "xAI API usage invoice, August 2025"
+  evidence: "R-002"
+  class: "project"
+  status: "invoice"
+  original: "5.00 USD"
+  fx: "~ 0.75 GBP/USD estimate"
+  Expenses:AI:Tokens:XAI   3.75 GBP
+  Liabilities:Funded:Family
+
+2025-09-13 * "OpenAI" "API credit top-up (organisation wwfm)"
+  evidence: "R-003"
   class: "project"
   status: "receipt"
   original: "20.40 USD"
@@ -38,7 +54,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2025-09-14 * "OpenAI" "Refund of unused API credit"
-  evidence: "R-002"
+  evidence: "R-004"
   class: "project"
   status: "refund"
   original: "-20.29 USD"
@@ -47,7 +63,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-02-25 * "Anthropic" "API credit purchase"
-  evidence: "R-003"
+  evidence: "R-005"
   class: "project"
   status: "receipt"
   original: "6.00 USD"
@@ -56,7 +72,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-02-26 * "ElevenLabs" "Subscription (voice generation)"
-  evidence: "R-004"
+  evidence: "R-006"
   class: "project"
   status: "receipt"
   original: "13.20 USD"
@@ -65,7 +81,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-02-28 * "Groq" "API usage invoice"
-  evidence: "R-005"
+  evidence: "R-007"
   class: "project"
   status: "invoice"
   original: "1.22 USD"
@@ -74,7 +90,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-03-01 * "Groq" "API usage invoice"
-  evidence: "R-006"
+  evidence: "R-008"
   class: "project"
   status: "invoice"
   original: "5.14 USD"
@@ -83,7 +99,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-03-06 * "Groq" "API usage invoice"
-  evidence: "R-007"
+  evidence: "R-009"
   class: "project"
   status: "invoice"
   original: "3.75 USD"
@@ -91,15 +107,8 @@ option "operating_currency" "GBP"
   Expenses:AI:Tokens:Groq   2.81 GBP
   Liabilities:Funded:Family
 
-2026-03-23 ! "HM Land Registry" "Official copy of register WA231076 (emailed by HMLR, ref WA231076/A/216/LG) - fee not yet traced to a receipt; HMLR published fees: £7 online, £11 by post"
-  evidence: "R-008"
-  class: "case"
-  status: "SOURCE PENDING"
-  Expenses:Disclosure:HMLR   0.00 GBP
-  Liabilities:Funded:Family
-
 2026-03-25 * "Anthropic" "API credit purchase"
-  evidence: "R-009"
+  evidence: "R-010"
   class: "project"
   status: "receipt"
   original: "9.60 USD"
@@ -108,7 +117,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-04-06 * "Groq" "API usage invoice"
-  evidence: "R-010"
+  evidence: "R-011"
   class: "project"
   status: "invoice"
   original: "62.68 USD"
@@ -117,7 +126,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-04-12 * "OpenAI" "API credit top-up"
-  evidence: "R-011"
+  evidence: "R-012"
   class: "project"
   status: "receipt"
   original: "16.51 USD"
@@ -126,7 +135,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-05-06 * "Groq" "API usage invoice"
-  evidence: "R-012"
+  evidence: "R-013"
   class: "project"
   status: "invoice"
   original: "4.73 USD"
@@ -135,7 +144,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-06-06 * "Groq" "API usage invoice"
-  evidence: "R-013"
+  evidence: "R-014"
   class: "project"
   status: "invoice"
   original: "0.05 USD"
@@ -144,7 +153,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-07-06 * "Groq" "API usage invoice"
-  evidence: "R-014"
+  evidence: "R-015"
   class: "project"
   status: "invoice"
   original: "4.66 USD"
@@ -153,7 +162,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-07-28 * "Groq" "API usage invoice"
-  evidence: "R-015"
+  evidence: "R-016"
   class: "project"
   status: "invoice"
   original: "17.87 USD"
@@ -162,7 +171,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-08-06 * "Groq" "API usage invoice"
-  evidence: "R-016"
+  evidence: "R-017"
   class: "project"
   status: "invoice"
   original: "13.60 USD"
@@ -171,7 +180,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-09-05 * "xAI" "Grok receipt"
-  evidence: "R-017"
+  evidence: "R-018"
   class: "project"
   status: "receipt"
   original: "10.00 USD"
@@ -180,7 +189,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-09-06 * "Groq" "API usage invoice"
-  evidence: "R-018"
+  evidence: "R-019"
   class: "project"
   status: "invoice"
   original: "0.69 USD"
@@ -189,42 +198,42 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-09-18 * "Anthropic (via Google Play)" "Claude Pro subscription, monthly"
-  evidence: "R-019"
+  evidence: "R-020"
   class: "case"
   status: "receipt"
   Expenses:AI:Tokens:Anthropic   18.00 GBP
   Liabilities:Funded:Family
 
 2026-09-23 * "xAI (via Google Play)" "Grok credits"
-  evidence: "R-020"
-  class: "case"
-  status: "receipt"
-  Expenses:AI:Tokens:XAI   4.49 GBP
-  Liabilities:Funded:Family
-
-2026-09-28 * "xAI (via Google Play)" "Grok credits"
   evidence: "R-021"
   class: "case"
   status: "receipt"
   Expenses:AI:Tokens:XAI   4.49 GBP
   Liabilities:Funded:Family
 
-2026-10-20 ! "Domain registrar" "bucklerfamily.estate domain registration - registrar receipt not yet traced"
+2026-09-28 * "xAI (via Google Play)" "Grok credits"
   evidence: "R-022"
+  class: "case"
+  status: "receipt"
+  Expenses:AI:Tokens:XAI   4.49 GBP
+  Liabilities:Funded:Family
+
+2026-10-20 ! "Domain registrar" "bucklerfamily.estate domain registration - registrar receipt not yet traced"
+  evidence: "R-023"
   class: "case"
   status: "SOURCE PENDING"
   Expenses:Hosting:Domains   0.00 GBP
   Liabilities:Funded:Family
 
-2026-10-20 ! "HM Land Registry" "Other official copies and title documents the family bought - number, dates and fees not yet traced to receipts"
-  evidence: "R-023"
+2026-10-20 ! "HM Land Registry" "Official copies and title documents the family bought - number, dates and fees not yet traced to receipts (no HMLR payment receipt in the connected mailbox since Apr 2025)"
+  evidence: "R-024"
   class: "case"
   status: "SOURCE PENDING"
   Expenses:Disclosure:HMLR   0.00 GBP
   Liabilities:Funded:Family
 
 2026-10-20 ! "Postage" "Postage for disclosure and records requests sent by post - no receipts found in the connected mailbox"
-  evidence: "R-024"
+  evidence: "R-025"
   class: "case"
   status: "SOURCE PENDING"
   Expenses:Postage   0.00 GBP
