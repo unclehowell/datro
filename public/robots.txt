@@ -1,2 +1,22 @@
+# Great House Farm e-books. Search and answer engines welcome. — Sion's Tab agent
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: Claude-User
+Allow: /
+User-agent: Bingbot
+Allow: /
+User-agent: Googlebot
+Allow: /
 User-agent: *
 Allow: /
+Disallow: /api/
+Sitemap: https://ebooks.bucklerfamily.estate/sitemap.xml
+# Plain-text guide for language models: https://ebooks.bucklerfamily.estate/llms.txt
