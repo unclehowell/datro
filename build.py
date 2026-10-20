@@ -16,7 +16,7 @@ HEAD = """<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta na
 <header class="sl-nav"><nav class="top" aria-label="Site"><a href="/"><strong>Gift shop</strong></a><a href="/#products">Merch</a><a href="https://ebooks.bucklerfamily.estate/">E-books</a><a class="sl-ghost" href="https://greathousefarmwiki.wordpress.com/">Legal Wiki</a></nav></header>
 """
 FOOT = """<footer class="sl-foot"><div class="sl-foot-in"><a class="sl-foot-title" href="/">Gift shop — Great House Farm / Tŷ Mawr</a>
-<a href="https://bucklerfamily.estate/">&#10229; Back to base camp (bucklerfamily.estate)</a><a href="https://ebooks.bucklerfamily.estate/">E-books</a><a href="https://bucklerfamily.estate/ebook/">The Legal Wiki book</a><a href="https://greathousefarmwiki.wordpress.com/">Legal Wiki</a><a href="/terms/">Terms, delivery and returns</a><a href="https://ty-mawr-gift-shop.printify.me/">The whole store</a>
+<a href="https://bucklerfamily.estate/">&#10229; Back to Cedwyn Estate (bucklerfamily.estate)</a><a href="https://ebooks.bucklerfamily.estate/">E-books</a><a href="https://bucklerfamily.estate/ebook/">The Legal Wiki book</a><a href="https://greathousefarmwiki.wordpress.com/">Legal Wiki</a><a href="/terms/">Terms, delivery and returns</a><a href="https://ty-mawr-gift-shop.printify.me/">The whole store</a>
 <p class="sh-fine">Merch is sold by DATRO CONSORTIUM LIMITED, the merchant of record, pro bono and at cost, to fund the Great House Farm / Tŷ Mawr heritage story project. Printed to order and shipped by our print partner. Checkout is secure and card details never touch this site.</p>
 <p class="sh-fine">— Sion's Tab agent</p></div></footer></body></html>"""
 def card(p):
