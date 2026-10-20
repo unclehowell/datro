@@ -1,6 +1,6 @@
 const RAW_BASE = "https://raw.githubusercontent.com/unclehowell/datro/email-archive/apps/email";
 const MANIFEST_URL = "https://wayback.bucklerfamily.estate/email/mail-index.json";
-const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/a489caf5c6b0383783483144b870cda371f75bcd/apps/email/index.html";
+const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/dd0774cf5a78e1fb78d202654b36995531a559f3/apps/email/index.html";
 const TEXT_HOST = "wayback.bucklerfamily.estate";
 // Wayback's case-mail API is the single source of truth for every case email (redacted copies).
 const CASEMAIL_INDEX_URL = "https://wayback.bucklerfamily.estate/api/index.json";
@@ -201,6 +201,15 @@ export default {
   const url = new URL(request.url);
   if (request.method === "OPTIONS") return new Response(null, {status:204,headers:headers()});
   if (request.method !== "GET" && request.method !== "HEAD") return json({error:"Read-only public archive. Only GET and HEAD are supported."},405);
+
+  // ghf-lang (20 Oct 2026): English / Cymraeg / Español dropdown, served same-origin because of this site's CSP
+  if (/^\/ghf-lang\/(ghf-lang\.js|sites\/[a-z0-9-]+\.json)$/.test(url.pathname)) {
+    try {
+      const r = await fetch("https://bucklerfamily.estate" + url.pathname, {cf:{cacheTtl:300, cacheEverything:true}});
+      if (!r.ok) return new Response("Not found", {status:404, headers:headers({"Content-Type":"text/plain; charset=utf-8"})});
+      return new Response(r.body, {status:200, headers:headers({"Content-Type": url.pathname.endsWith(".js") ? "application/javascript; charset=utf-8" : "application/json; charset=utf-8", "Cache-Control":"public, max-age=300"})});
+    } catch (e) { return new Response("Unavailable", {status:502, headers:headers({"Content-Type":"text/plain; charset=utf-8"})}); }
+  }
 
   if (url.pathname === "/api/health") {
     try {
