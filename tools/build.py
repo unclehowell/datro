@@ -41,7 +41,7 @@ def main():
     rows.sort(key=lambda r: (r["date"], r["ref"]))
     # bean-query: totals by account (the same numbers the dashboard shows)
     rtypes, rrows = bq.run_query(entries, options,
-        "SELECT account, sum(number) AS total WHERE account ~ '^(Expenses|Income|Assets:Allied)' GROUP BY account ORDER BY account")
+        "SELECT account, sum(number) AS total WHERE account ~ '^(Expenses|Income|Assets:Allied|Assets:Receivable|Liabilities)' GROUP BY account ORDER BY account")
     by_account = {r[0]: float(r[1] or 0) for r in rrows}
     spend = sum(r["gbp"] for r in rows if r["account"].startswith("Expenses"))
     income = -sum(r["gbp"] for r in rows if r["account"].startswith("Income"))
@@ -73,6 +73,8 @@ def main():
         "months": [{"m": k, **{kk: round(vv, 2) for kk, vv in v.items()}} for k, v in sorted(month.items())],
         "bycat": sorted([[k, round(v, 2)] for k, v in bycat.items()], key=lambda x: -x[1]),
         "byprov": sorted([[k, round(v, 2)] for k, v in byprov.items()], key=lambda x: -x[1]),
+        "funded": round(-by_account.get("Liabilities:Funded:Family", 0.0), 2), "payable": round(-sum(v for k, v in by_account.items() if k.startswith("Liabilities:Payable")), 2),
+        "coins_liability": round(-by_account.get("Liabilities:Coins:Unspent", 0.0), 2), "coins_income": round(-by_account.get("Income:Coins:Stripe", 0.0), 2),
         "rows": rows, "claimed": claimed, "case_costs": case_costs, "by_account": by_account}
     json.dump(out, open(os.path.join(PUB, "data.json"), "w"), indent=1, ensure_ascii=False)
     with open(os.path.join(PUB, "ledger.csv"), "w", newline="", encoding="utf-8") as f:

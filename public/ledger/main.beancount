@@ -9,6 +9,7 @@ option "operating_currency" "GBP"
 
 2025-04-01 open Assets:Allied:Balance GBP
 2025-04-01 open Liabilities:Funded:Family GBP
+2025-04-01 open Liabilities:Payable:Groq GBP
 2025-04-01 open Equity:Opening-Balances GBP
 2025-04-01 open Income:Ebooks:Stripe GBP
 2025-04-01 open Income:Ebooks:Gumroad GBP
@@ -35,8 +36,17 @@ option "operating_currency" "GBP"
   Expenses:AI:Tokens:XAI   28.49 GBP
   Liabilities:Funded:Family
 
-2025-08-06 * "xAI" "xAI API usage invoice, August 2025"
+2025-07-22 * "GoDaddy" "DATRO.xyz domain renewal, 1 year (DATRO Consortium, which runs the project), incl. VAT"
   evidence: "R-002"
+  class: "project"
+  status: "receipt"
+  original: "26.63 USD"
+  fx: "~ 0.75 GBP/USD estimate"
+  Expenses:Hosting:Domains   19.97 GBP
+  Liabilities:Funded:Family
+
+2025-08-06 * "xAI" "xAI API usage invoice, August 2025"
+  evidence: "R-003"
   class: "project"
   status: "invoice"
   original: "5.00 USD"
@@ -45,7 +55,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2025-09-13 * "OpenAI" "API credit top-up (organisation wwfm)"
-  evidence: "R-003"
+  evidence: "R-004"
   class: "project"
   status: "receipt"
   original: "20.40 USD"
@@ -54,7 +64,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2025-09-14 * "OpenAI" "Refund of unused API credit"
-  evidence: "R-004"
+  evidence: "R-005"
   class: "project"
   status: "refund"
   original: "-20.29 USD"
@@ -63,7 +73,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-02-25 * "Anthropic" "API credit purchase"
-  evidence: "R-005"
+  evidence: "R-006"
   class: "project"
   status: "receipt"
   original: "6.00 USD"
@@ -72,7 +82,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-02-26 * "ElevenLabs" "Subscription (voice generation)"
-  evidence: "R-006"
+  evidence: "R-007"
   class: "project"
   status: "receipt"
   original: "13.20 USD"
@@ -81,7 +91,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-02-28 * "Groq" "API usage invoice"
-  evidence: "R-007"
+  evidence: "R-008"
   class: "project"
   status: "invoice"
   original: "1.22 USD"
@@ -90,16 +100,17 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-03-01 * "Groq" "API usage invoice"
-  evidence: "R-008"
+  evidence: "R-009"
   class: "project"
   status: "invoice"
+  payment: "overdue per supplier reminder 14 Apr 2026; payment not traced"
   original: "5.14 USD"
   fx: "~ 0.75 GBP/USD estimate"
   Expenses:AI:Tokens:Groq   3.85 GBP
-  Liabilities:Funded:Family
+  Liabilities:Payable:Groq
 
 2026-03-06 * "Groq" "API usage invoice"
-  evidence: "R-009"
+  evidence: "R-010"
   class: "project"
   status: "invoice"
   original: "3.75 USD"
@@ -108,7 +119,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-03-25 * "Anthropic" "API credit purchase"
-  evidence: "R-010"
+  evidence: "R-011"
   class: "project"
   status: "receipt"
   original: "9.60 USD"
@@ -117,16 +128,17 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-04-06 * "Groq" "API usage invoice"
-  evidence: "R-011"
+  evidence: "R-012"
   class: "project"
   status: "invoice"
+  payment: "overdue per supplier reminder 14 Apr 2026; payment not traced"
   original: "62.68 USD"
   fx: "~ 0.75 GBP/USD estimate"
   Expenses:AI:Tokens:Groq   47.01 GBP
-  Liabilities:Funded:Family
+  Liabilities:Payable:Groq
 
 2026-04-12 * "OpenAI" "API credit top-up"
-  evidence: "R-012"
+  evidence: "R-013"
   class: "project"
   status: "receipt"
   original: "16.51 USD"
@@ -135,7 +147,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-05-06 * "Groq" "API usage invoice"
-  evidence: "R-013"
+  evidence: "R-014"
   class: "project"
   status: "invoice"
   original: "4.73 USD"
@@ -144,7 +156,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-06-06 * "Groq" "API usage invoice"
-  evidence: "R-014"
+  evidence: "R-015"
   class: "project"
   status: "invoice"
   original: "0.05 USD"
@@ -153,7 +165,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-07-06 * "Groq" "API usage invoice"
-  evidence: "R-015"
+  evidence: "R-016"
   class: "project"
   status: "invoice"
   original: "4.66 USD"
@@ -162,7 +174,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-07-28 * "Groq" "API usage invoice"
-  evidence: "R-016"
+  evidence: "R-017"
   class: "project"
   status: "invoice"
   original: "17.87 USD"
@@ -170,8 +182,17 @@ option "operating_currency" "GBP"
   Expenses:AI:Tokens:Groq   13.40 GBP
   Liabilities:Funded:Family
 
+2026-08-03 * "Namecheap" "bucklerfamily.estate domain registration, 1 year (registry record: registered 3 Aug 2026 via NameCheap)"
+  evidence: "R-018"
+  class: "case"
+  status: "receipt"
+  original: "7.18 USD"
+  fx: "~ 0.75 GBP/USD estimate"
+  Expenses:Hosting:Domains   5.38 GBP
+  Liabilities:Funded:Family
+
 2026-08-06 * "Groq" "API usage invoice"
-  evidence: "R-017"
+  evidence: "R-019"
   class: "project"
   status: "invoice"
   original: "13.60 USD"
@@ -180,7 +201,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-09-05 * "xAI" "Grok receipt"
-  evidence: "R-018"
+  evidence: "R-020"
   class: "project"
   status: "receipt"
   original: "10.00 USD"
@@ -189,7 +210,7 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-09-06 * "Groq" "API usage invoice"
-  evidence: "R-019"
+  evidence: "R-021"
   class: "project"
   status: "invoice"
   original: "0.69 USD"
@@ -198,47 +219,52 @@ option "operating_currency" "GBP"
   Liabilities:Funded:Family
 
 2026-09-18 * "Anthropic (via Google Play)" "Claude Pro subscription, monthly"
-  evidence: "R-020"
+  evidence: "R-022"
   class: "case"
   status: "receipt"
   Expenses:AI:Tokens:Anthropic   18.00 GBP
   Liabilities:Funded:Family
 
 2026-09-23 * "xAI (via Google Play)" "Grok credits"
-  evidence: "R-021"
+  evidence: "R-023"
   class: "case"
   status: "receipt"
   Expenses:AI:Tokens:XAI   4.49 GBP
   Liabilities:Funded:Family
 
 2026-09-28 * "xAI (via Google Play)" "Grok credits"
-  evidence: "R-022"
+  evidence: "R-024"
   class: "case"
   status: "receipt"
   Expenses:AI:Tokens:XAI   4.49 GBP
   Liabilities:Funded:Family
 
-2026-10-20 ! "Domain registrar" "bucklerfamily.estate domain registration - registrar receipt not yet traced"
-  evidence: "R-023"
-  class: "case"
-  status: "SOURCE PENDING"
-  Expenses:Hosting:Domains   0.00 GBP
-  Liabilities:Funded:Family
-
 2026-10-20 ! "HM Land Registry" "Official copies and title documents the family bought - number, dates and fees not yet traced to receipts (no HMLR payment receipt in the connected mailbox since Apr 2025)"
-  evidence: "R-024"
+  evidence: "R-025"
   class: "case"
   status: "SOURCE PENDING"
   Expenses:Disclosure:HMLR   0.00 GBP
   Liabilities:Funded:Family
 
 2026-10-20 ! "Postage" "Postage for disclosure and records requests sent by post - no receipts found in the connected mailbox"
-  evidence: "R-025"
+  evidence: "R-026"
   class: "case"
   status: "SOURCE PENDING"
   Expenses:Postage   0.00 GBP
   Liabilities:Funded:Family
 
+; Cedwyn Estate coins (store credit, https://bucklerfamily.estate/coins/). Posting rules: work/coins/accounts-note.md.
+; Pack sold: Assets:Receivable:Stripe / Liabilities:Coins:Unspent (deferred). Coins spent: Liabilities:Coins:Unspent / Income:Coins:Stripe.
+; Stripe fees: Expenses:Fees:Stripe. Coins do not expire, so no breakage income is booked. Session ids and voucher codes are never published.
+2026-10-20 open Assets:Receivable:Stripe GBP
+2026-10-20 open Liabilities:Coins:Unspent GBP
+2026-10-20 open Income:Coins:Stripe GBP
+2026-10-20 open Expenses:Fees:Stripe GBP
+; 20 Oct 2026: Stripe shows 0 charges, so 0 coin packs sold and £0.00 unspent coin liability.
+2026-10-21 balance Liabilities:Coins:Unspent 0.00 GBP
+2026-10-21 balance Assets:Receivable:Stripe 0.00 GBP
+
 2026-10-20 balance Assets:Allied:Balance 0.00 GBP
 
+; Hosting: Cloudflare invoices Apr–Oct 2026 were all $0.00 (free plan); GitHub and Cloudflare Pages cost nothing.
 ; Income check, 20 Oct 2026: Stripe balance £0.00 with 0 charges; Printify 0 orders. No income to record yet.

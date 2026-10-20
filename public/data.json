@@ -1,13 +1,13 @@
 {
- "generated": "2026-10-20 17:49 UTC",
+ "generated": "2026-10-20 17:53 UTC",
  "period": "1 Apr 2025 – today",
  "balance": 0.0,
  "income": 0,
- "spend": 186.58,
+ "spend": 211.93,
  "ai": 186.58,
  "hmlr": 0.0,
- "pending": 3,
- "count": 25,
+ "pending": 2,
+ "count": 26,
  "months": [
   {
    "m": "2025-04",
@@ -27,7 +27,7 @@
   {
    "m": "2025-07",
    "in": 0.0,
-   "out": 28.49
+   "out": 48.46
   },
   {
    "m": "2025-08",
@@ -92,7 +92,7 @@
   {
    "m": "2026-08",
    "in": 0.0,
-   "out": 10.2
+   "out": 15.58
   },
   {
    "m": "2026-09",
@@ -112,7 +112,7 @@
   ],
   [
    "Hosting and domains",
-   0.0
+   25.35
   ],
   [
    "Disclosure: HM Land Registry",
@@ -145,6 +145,10 @@
    9.9
   ]
  ],
+ "funded": 161.07,
+ "payable": 50.86,
+ "coins_liability": -0.0,
+ "coins_income": -0.0,
  "rows": [
   {
    "ref": "R-001",
@@ -163,6 +167,21 @@
   },
   {
    "ref": "R-002",
+   "date": "2025-07-22",
+   "payee": "GoDaddy",
+   "narration": "DATRO.xyz domain renewal, 1 year (DATRO Consortium, which runs the project), incl. VAT",
+   "account": "Expenses:Hosting:Domains",
+   "category": "Hosting and domains",
+   "provider": "",
+   "gbp": 19.97,
+   "original": "26.63 USD",
+   "fx": "~ 0.75 GBP/USD estimate",
+   "status": "receipt",
+   "class": "project",
+   "pending": false
+  },
+  {
+   "ref": "R-003",
    "date": "2025-08-06",
    "payee": "xAI",
    "narration": "xAI API usage invoice, August 2025",
@@ -177,7 +196,7 @@
    "pending": false
   },
   {
-   "ref": "R-003",
+   "ref": "R-004",
    "date": "2025-09-13",
    "payee": "OpenAI",
    "narration": "API credit top-up (organisation wwfm)",
@@ -192,7 +211,7 @@
    "pending": false
   },
   {
-   "ref": "R-004",
+   "ref": "R-005",
    "date": "2025-09-14",
    "payee": "OpenAI",
    "narration": "Refund of unused API credit",
@@ -207,7 +226,7 @@
    "pending": false
   },
   {
-   "ref": "R-005",
+   "ref": "R-006",
    "date": "2026-02-25",
    "payee": "Anthropic",
    "narration": "API credit purchase",
@@ -222,7 +241,7 @@
    "pending": false
   },
   {
-   "ref": "R-006",
+   "ref": "R-007",
    "date": "2026-02-26",
    "payee": "ElevenLabs",
    "narration": "Subscription (voice generation)",
@@ -237,7 +256,7 @@
    "pending": false
   },
   {
-   "ref": "R-007",
+   "ref": "R-008",
    "date": "2026-02-28",
    "payee": "Groq",
    "narration": "API usage invoice",
@@ -252,7 +271,7 @@
    "pending": false
   },
   {
-   "ref": "R-008",
+   "ref": "R-009",
    "date": "2026-03-01",
    "payee": "Groq",
    "narration": "API usage invoice",
@@ -267,7 +286,7 @@
    "pending": false
   },
   {
-   "ref": "R-009",
+   "ref": "R-010",
    "date": "2026-03-06",
    "payee": "Groq",
    "narration": "API usage invoice",
@@ -282,7 +301,7 @@
    "pending": false
   },
   {
-   "ref": "R-010",
+   "ref": "R-011",
    "date": "2026-03-25",
    "payee": "Anthropic",
    "narration": "API credit purchase",
@@ -297,7 +316,7 @@
    "pending": false
   },
   {
-   "ref": "R-011",
+   "ref": "R-012",
    "date": "2026-04-06",
    "payee": "Groq",
    "narration": "API usage invoice",
@@ -312,7 +331,7 @@
    "pending": false
   },
   {
-   "ref": "R-012",
+   "ref": "R-013",
    "date": "2026-04-12",
    "payee": "OpenAI",
    "narration": "API credit top-up",
@@ -327,7 +346,7 @@
    "pending": false
   },
   {
-   "ref": "R-013",
+   "ref": "R-014",
    "date": "2026-05-06",
    "payee": "Groq",
    "narration": "API usage invoice",
@@ -342,7 +361,7 @@
    "pending": false
   },
   {
-   "ref": "R-014",
+   "ref": "R-015",
    "date": "2026-06-06",
    "payee": "Groq",
    "narration": "API usage invoice",
@@ -357,7 +376,7 @@
    "pending": false
   },
   {
-   "ref": "R-015",
+   "ref": "R-016",
    "date": "2026-07-06",
    "payee": "Groq",
    "narration": "API usage invoice",
@@ -372,7 +391,7 @@
    "pending": false
   },
   {
-   "ref": "R-016",
+   "ref": "R-017",
    "date": "2026-07-28",
    "payee": "Groq",
    "narration": "API usage invoice",
@@ -387,7 +406,22 @@
    "pending": false
   },
   {
-   "ref": "R-017",
+   "ref": "R-018",
+   "date": "2026-08-03",
+   "payee": "Namecheap",
+   "narration": "bucklerfamily.estate domain registration, 1 year (registry record: registered 3 Aug 2026 via NameCheap)",
+   "account": "Expenses:Hosting:Domains",
+   "category": "Hosting and domains",
+   "provider": "",
+   "gbp": 5.38,
+   "original": "7.18 USD",
+   "fx": "~ 0.75 GBP/USD estimate",
+   "status": "receipt",
+   "class": "case",
+   "pending": false
+  },
+  {
+   "ref": "R-019",
    "date": "2026-08-06",
    "payee": "Groq",
    "narration": "API usage invoice",
@@ -402,7 +436,7 @@
    "pending": false
   },
   {
-   "ref": "R-018",
+   "ref": "R-020",
    "date": "2026-09-05",
    "payee": "xAI",
    "narration": "Grok receipt",
@@ -417,7 +451,7 @@
    "pending": false
   },
   {
-   "ref": "R-019",
+   "ref": "R-021",
    "date": "2026-09-06",
    "payee": "Groq",
    "narration": "API usage invoice",
@@ -432,7 +466,7 @@
    "pending": false
   },
   {
-   "ref": "R-020",
+   "ref": "R-022",
    "date": "2026-09-18",
    "payee": "Anthropic (via Google Play)",
    "narration": "Claude Pro subscription, monthly",
@@ -447,7 +481,7 @@
    "pending": false
   },
   {
-   "ref": "R-021",
+   "ref": "R-023",
    "date": "2026-09-23",
    "payee": "xAI (via Google Play)",
    "narration": "Grok credits",
@@ -462,7 +496,7 @@
    "pending": false
   },
   {
-   "ref": "R-022",
+   "ref": "R-024",
    "date": "2026-09-28",
    "payee": "xAI (via Google Play)",
    "narration": "Grok credits",
@@ -477,22 +511,7 @@
    "pending": false
   },
   {
-   "ref": "R-023",
-   "date": "2026-10-20",
-   "payee": "Domain registrar",
-   "narration": "bucklerfamily.estate domain registration - registrar receipt not yet traced",
-   "account": "Expenses:Hosting:Domains",
-   "category": "Hosting and domains",
-   "provider": "",
-   "gbp": 0.0,
-   "original": "",
-   "fx": "",
-   "status": "SOURCE PENDING",
-   "class": "case",
-   "pending": true
-  },
-  {
-   "ref": "R-024",
+   "ref": "R-025",
    "date": "2026-10-20",
    "payee": "HM Land Registry",
    "narration": "Official copies and title documents the family bought - number, dates and fees not yet traced to receipts (no HMLR payment receipt in the connected mailbox since Apr 2025)",
@@ -507,7 +526,7 @@
    "pending": true
   },
   {
-   "ref": "R-025",
+   "ref": "R-026",
    "date": "2026-10-20",
    "payee": "Postage",
    "narration": "Postage for disclosure and records requests sent by post - no receipts found in the connected mailbox",
@@ -587,7 +606,7 @@
    "route": "Pre-action letter; an innocent purchaser for value is protected (Limitation Act 1980 s.32(3))"
   }
  ],
- "case_costs": 186.58,
+ "case_costs": 211.93,
  "by_account": {
   "Assets:Allied:Balance": 0.0,
   "Expenses:AI:Tokens:Anthropic": 29.7,
@@ -596,7 +615,9 @@
   "Expenses:AI:Tokens:OpenAI": 12.46,
   "Expenses:AI:Tokens:XAI": 48.72,
   "Expenses:Disclosure:HMLR": 0.0,
-  "Expenses:Hosting:Domains": 0.0,
-  "Expenses:Postage": 0.0
+  "Expenses:Hosting:Domains": 25.35,
+  "Expenses:Postage": 0.0,
+  "Liabilities:Funded:Family": -161.07,
+  "Liabilities:Payable:Groq": -50.86
  }
 }
