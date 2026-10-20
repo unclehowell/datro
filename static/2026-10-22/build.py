@@ -149,6 +149,7 @@ def site():
 <meta name="theme-color" content="#26313a">
 <link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>{FONT_CSS}{TOKENS}{SITE_CSS}</style>
+<script src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#brief">Skip to the briefing</a>
