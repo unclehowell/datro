@@ -1,0 +1,34 @@
+/* shop.bucklerfamily.estate — on top of the shared Starlink-style theme (theme.css, Barlow). Mobile first, 390px. */
+.bc-back{position:fixed;left:10px;bottom:10px;z-index:60;background:rgba(0,0,0,.82);color:#e8e8e8;border:1px solid #444;padding:7px 11px;font-size:.72rem;letter-spacing:.04em;text-decoration:none;border-radius:2px}
+.bc-back:hover{border-color:#c9a25a;color:#fff}
+.sh-hero{min-height:0!important;padding:6.4rem 1.1rem 2.4rem!important;background:linear-gradient(180deg,rgba(0,0,0,.25),#000 92%),url(/img/hero.webp) center/cover no-repeat}
+.sh-hero h1{font-size:clamp(2.3rem,10vw,4.8rem);margin:.2rem 0 .8rem}
+.sh-hero p{max-width:40rem}
+.sh-k{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#c9a25a}
+.sh-sec{max-width:1100px;margin:0 auto;padding:30px 18px 10px}
+.sh-sec h2{font-size:1.35rem;text-transform:uppercase;letter-spacing:.06em;font-weight:500;margin:0 0 .3rem}
+.sh-lead{color:#aaa;margin:0 0 1.1rem;font-size:.92rem}
+.sh-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(min-width:760px){.sh-grid{grid-template-columns:repeat(3,1fr);gap:22px}}
+@media(min-width:1060px){.sh-grid{grid-template-columns:repeat(4,1fr)}}
+.sh-card{border:1px solid #2a2a2a;background:#070707;display:flex;flex-direction:column}
+.sh-img{aspect-ratio:1/1;background:#111;overflow:hidden}.sh-img img{width:100%;height:100%;object-fit:cover;display:block}
+.sh-body{padding:10px 10px 12px;display:flex;flex-direction:column;gap:.35rem;flex:1}
+.sh-body h3{font-size:.9rem;line-height:1.2;margin:0;font-weight:500;text-transform:uppercase;letter-spacing:.02em}
+.sh-body p{margin:0;color:#bdbdbd;font-size:.78rem;line-height:1.4}
+.sh-kind{font-size:.6rem!important;letter-spacing:.16em;text-transform:uppercase;color:#888!important}
+.sh-buy{margin-top:auto;text-align:center;font-size:.72rem!important;padding:.6rem .4rem!important}
+.sh-off{opacity:.55;cursor:default}
+.sh-dgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(min-width:760px){.sh-dgrid{grid-template-columns:repeat(4,1fr)}}
+.sh-d{margin:0;border:1px solid #222;background:#0e0e10}.sh-d img{width:100%;height:auto;display:block}
+.sh-d figcaption{padding:7px 8px 9px;font-size:.74rem;color:#aaa;line-height:1.35}.sh-d strong{display:block;color:#eee;font-weight:500}
+.sh-books{display:grid;gap:12px}@media(min-width:760px){.sh-books{grid-template-columns:1fr 1fr}}
+.sh-book{display:block;border:1px solid #333;padding:14px;text-decoration:none;color:#eee}.sh-book span{display:block;color:#aaa;font-size:.84rem;margin-top:.25rem}
+.sh-book:hover{border-color:#c9a25a}
+.sh-steps{color:#cfcfcf;font-size:.9rem;line-height:1.5;padding-left:1.2rem}.sh-steps li{margin:.35rem 0}
+.sh-fine{color:#888;font-size:.76rem;line-height:1.45;max-width:46rem}
+.sh-page{max-width:760px;margin:0 auto;padding:6rem 18px 3rem;color:#d6d6d6;line-height:1.55}
+.sh-page h1{font-size:1.8rem;text-transform:uppercase;font-weight:500}.sh-page h2{font-size:1rem;text-transform:uppercase;letter-spacing:.06em;margin-top:1.6rem}
+.sh-page a,.sh-steps a{color:#e8d3a6}
+.sh-note{border:1px solid #5a4a2a;background:#14110a;color:#e8d3a6;padding:9px 11px;font-size:.84rem;margin:0 0 14px}
