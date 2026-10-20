@@ -65,6 +65,24 @@ def version_assets(doc):
     return re.sub(r'((?:src|href)=")((?:\.\./)*|/)?(comments\.js|script\.js|styles\.css|fb\.css)(?:\?v=[0-9a-z]+)?(")',
                   lambda m: m.group(1) + (m.group(2) or "") + m.group(3) + "?v=" + asset_v(m.group(3)) + m.group(4), doc)
 
+SEARCH = ('<form class="fx-search" action="/index.html" method="get" role="search"><label><span class="fx-sr">Search farmbook</span>'
+          '<svg viewBox="0 0 24 24" aria-hidden="true" class="fx-si"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/>'
+          '<path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>'
+          '<input type="search" name="q" placeholder="Search farmbook" autocomplete="off" enterkeyhint="search"></label></form>')
+MENU = [("Home", "/index.html", "home"), ("Photos", "/photos.html", "photo"), ("Maps", "https://maps.bucklerfamily.estate/", "map"),
+        ("Archive / Legal Wiki", "https://greathousefarmwiki.wordpress.com/", "book"), ("Privacy", "https://bucklerfamily.estate/privacy/", "lock"), ("Sign in / Sign up", "/m/login", "user")]
+MICO = {"home": '<path d="M4 11.5 12 4l8 7.5V20h-5.5v-5h-5v5H4z" fill="currentColor"/>',
+        "photo": '<rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="10" r="1.8" fill="currentColor"/><path d="m5 17 5-5 3 3 2.5-2.5L19 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
+        "map": '<path d="M9 4 3 6.5v13.5L9 17.5l6 2.5 6-2.5V4l-6 2.5z M9 4v13.5 M15 6.5V20" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
+        "book": '<path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16z M5 16a2.5 2.5 0 0 1 2.5-2.5H18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
+        "lock": '<rect x="5" y="10.5" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" fill="none" stroke="currentColor" stroke-width="2"/>',
+        "user": '<circle cx="12" cy="8.5" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>'}
+def menu_html():
+    items = "".join('<a href="%s"%s%s><span class="fx-mi"><svg viewBox="0 0 24 24" aria-hidden="true">%s</svg></span><span>%s</span></a>'
+                    % (u, ' data-fx-auth=""' if ic == "user" else "", ' rel="noopener"' if u.startswith("https://greathouse") else "", MICO[ic], l) for l, u, ic in MENU)
+    return ('<details class="fx-menu"><summary aria-label="Menu" title="Menu"><svg viewBox="0 0 24 24" aria-hidden="true" class="fx-i">'
+            '<path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>'
+            '<nav class="fx-mp" aria-label="Menu">' + items + '</nav></details>')
 def chrome(doc, page_rel):
     """Shared page chrome: top-bar icon nav, desktop left-hand menu, fb.css, the members script. Idempotent (marked blocks)."""
     doc = re.sub(r"<!--fx-[a-z]+-->.*?<!--/fx-[a-z]+-->", "", doc, flags=re.S)
@@ -74,7 +92,7 @@ def chrome(doc, page_rel):
     head = '<!--fx-head--><link rel="stylesheet" href="/fb.css"><script src="/m/social.js" defer></script><!--/fx-head-->'
     doc = doc.replace("</head>", head + "</head>", 1)
     nav = "".join('<a href="%s" aria-label="%s"%s>%s</a>' % (u, l, ' aria-current="page"' if u == cur else "", ico(k)) for k, u, l in NAV)
-    doc = re.sub(r'(<header class="topbar"><div class="tb-in">.*?)(</div></header>)', lambda m: m.group(1) + '<!--fx-nav--><nav class="fx-nav" aria-label="Main">' + nav + "</nav><!--/fx-nav-->" + m.group(2), doc, count=1, flags=re.S)
+    doc = re.sub(r'(<header class="topbar"><div class="tb-in">.*?)(</div></header>)', lambda m: m.group(1) + '<!--fx-nav-->' + SEARCH + '<nav class="fx-nav" aria-label="Main">' + nav + "</nav>" + menu_html() + "<!--/fx-nav-->" + m.group(2), doc, count=1, flags=re.S)
     rail = "".join('<a href="%s"%s><span class="fx-ri">%s</span><span>%s</span></a>' % (u, ' aria-current="page"' if u == cur else "", ico(k), l) for k, u, l in RAIL)
     rail = ('<!--fx-rail--><nav class="fx-rail" aria-label="Menu"><a href="/index.html" class="fx-me"><img src="/img/crest.svg" alt="" width="36" height="36"><span>Williams / Buckler family</span></a>'
             + rail + '<p class="fx-rf">farmbook · a family archive. Not affiliated with any social network.</p></nav><!--/fx-rail-->')
