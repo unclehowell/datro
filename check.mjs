@@ -15,9 +15,10 @@ for(const p of posts){
   }
   if(!/<p class="psrc">Source: /.test(p)) errors.push(`post ${id} has no source line`);
 }
-const banned=[/robin\s*hill/i,/hywelapbuckler/i,/7845\s*933\s*262/,/\b0?7\d{3}\s?\d{3}\s?\d{3}\b/,/\+44\s?7\d{3}/,/\b[A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2}\b/,/[\w.+-]+@[\w-]+\.[\w.]+/,/family[’']?s? (account|testimony)/i,/\bfacebook\b/i];
+// 20 Oct 2026: the word "Facebook" is allowed (the Preserved-from-Facebook page, asked for by the family) and the sales@ takedown address is allowed.
+const banned=[/robin\s*hill/i,/hywelapbuckler/i,/7845\s*933\s*262/,/\b0?7\d{3}\s?\d{3}\s?\d{3}\b/,/\+44\s?7\d{3}/,/\b[A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2}\b/,/[\w.+-]+@[\w-]+\.[\w.]+/,/family[’']?s? (account|testimony)/i];
 for(const f of readdirSync(dir).filter(f=>/\.(html|js|css)$/.test(f))){
-  const t=readFileSync(new URL(f,dir),'utf8').replace(/<svg[\s\S]*?<\/svg>/g,'');
+  const t=readFileSync(new URL(f,dir),'utf8').replace(/<svg[\s\S]*?<\/svg>/g,'').replace(/sales@bucklerfamily\.estate/g,'');
   for(const re of banned){const m=t.match(re); if(m) errors.push(`${f}: banned pattern ${re} -> "${m[0]}"`);}
 }
 if(posts.length<50) errors.push('too few posts: '+posts.length);
