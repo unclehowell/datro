@@ -5,3 +5,5 @@
   Cache-Control: public, max-age=86400
 /data/*
   Cache-Control: public, max-age=300
+/data/archive/*
+  Cache-Control: public, max-age=86400

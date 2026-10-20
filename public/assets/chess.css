@@ -76,3 +76,46 @@ button,input,select{font-family:var(--font);font-size:14px}
   .foot .fl{display:none}
   .hint{bottom:100px;white-space:normal;width:78vw;text-align:center}
 }
+
+/* ---- sudoku mode, modal, archive text (20 Oct 2026) ---- */
+.pad{position:fixed;left:0;right:0;z-index:17;background:rgba(0,0,0,.92);border-top:1px solid var(--line);padding:6px 8px 7px;display:none;flex-direction:column;gap:6px}
+body.su .pad{display:flex}
+.pz-row{display:flex;gap:6px;align-items:center;justify-content:center}
+.pz-info{flex:1;min-width:0;text-align:center;line-height:1.2}
+.pz-info b{display:block;color:#fff;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.pz-info span{display:block;color:var(--muted);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.digits{display:grid;grid-template-columns:repeat(9,1fr);gap:4px;max-width:520px;margin:0 auto;width:100%}
+.digits .d{padding:0;height:40px;font-size:19px;font-weight:600;letter-spacing:0;color:#22d3ee;border-color:rgba(34,211,238,.6)}
+.pad.armed .digits .d{background:rgba(34,211,238,.12)}
+.digits .d.done{opacity:.25}
+.acts .btn{font-size:10.5px;padding:6px 7px}
+.toast{position:fixed;left:50%;top:120px;transform:translateX(-50%);z-index:40;background:#111;border:1px solid rgba(229,72,77,.8);color:#fff;padding:8px 14px;border-radius:2px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .25s}
+.toast.on{opacity:1}
+.modal{position:fixed;inset:0;z-index:35;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:12px}
+.modal.open{display:flex}
+.modal .card{background:var(--panel);border:1px solid rgba(214,178,94,.8);box-shadow:0 18px 60px rgba(0,0,0,.7);width:min(540px,100%);max-height:84vh;display:flex;flex-direction:column;animation:pop .22s ease-out}
+@keyframes pop{from{transform:translateY(14px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+.modal #m-h{color:#f1d9a0;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.m-f{padding:10px 14px;border-top:1px solid var(--line);display:flex;justify-content:flex-end}
+.btn.primary{background:#fff;color:#000}
+.ex{padding:4px 0 14px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.ex:last-child{border-bottom:0;margin-bottom:0}
+.ex-t{color:#fff;font-size:19px;font-weight:500;line-height:1.25;margin:8px 0 4px}
+.ex-x{margin:8px 0}
+.ex-s{font-size:13px;overflow-wrap:anywhere}
+.ex-a{margin-top:10px;padding:8px 10px;border-left:2px solid #22d3ee;background:#111;font-size:14px;line-height:1.55}
+.ex-a p{margin:6px 0}
+.won{border:1px solid #86efac;color:#bbf7d0;padding:8px 10px;margin-bottom:12px;font-size:14px}
+.stl{padding-left:0;list-style:none;margin:0}
+.stl li{margin:0 0 6px}
+.lnk{background:none;border:0;color:var(--body);text-align:left;font:inherit;font-size:14.5px;cursor:pointer;padding:6px 0;line-height:1.4}
+.lnk:hover{color:#fff}
+#story{left:50%;top:50%;transform:translate(-50%,-50%);width:min(560px,94vw);max-height:80vh}
+.ach{margin:12px 0 0;padding:0 0 10px;border-bottom:1px solid var(--line);font-size:14.5px;line-height:1.6}
+.ach p{margin:6px 0}
+.kh{margin:16px 0 4px;color:#fff;font-weight:500;letter-spacing:.12em;text-transform:uppercase;font-size:12px}
+@media (max-width:640px){ .digits .d{height:38px} .modal .card{max-height:80vh} #story{width:100%;max-height:74vh;top:auto;bottom:0;left:0;transform:none} }
+
+/* shared base-camp link (bucklerfamily.estate/basecamp.js): keep it clear of the footer and the sudoku pad */
+html body .ghf-bc{bottom:var(--bcb,40px)!important}
+body:has(.sheet.open) .ghf-bc,body:has(.modal.open) .ghf-bc{display:none!important}
