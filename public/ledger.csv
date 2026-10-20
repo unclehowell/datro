@@ -1,0 +1,25 @@
+ref,date,payee,description,account,category,provider,amount_gbp,original,fx,status,class
+R-001,2025-09-13,OpenAI,API credit top-up (organisation wwfm),Expenses:AI:Tokens:OpenAI,AI tokens,OpenAI,15.30,20.40 USD,~ 0.75 GBP/USD estimate,receipt,project
+R-002,2025-09-14,OpenAI,Refund of unused API credit,Expenses:AI:Tokens:OpenAI,AI tokens,OpenAI,-15.22,-20.29 USD,~ 0.75 GBP/USD estimate,refund,project
+R-003,2026-02-25,Anthropic,API credit purchase,Expenses:AI:Tokens:Anthropic,AI tokens,Anthropic,4.50,6.00 USD,~ 0.75 GBP/USD estimate,receipt,project
+R-004,2026-02-26,ElevenLabs,Subscription (voice generation),Expenses:AI:Tokens:ElevenLabs,AI tokens,ElevenLabs,9.90,13.20 USD,~ 0.75 GBP/USD estimate,receipt,project
+R-005,2026-02-28,Groq,API usage invoice,Expenses:AI:Tokens:Groq,AI tokens,Groq,0.92,1.22 USD,~ 0.75 GBP/USD estimate,invoice,project
+R-006,2026-03-01,Groq,API usage invoice,Expenses:AI:Tokens:Groq,AI tokens,Groq,3.85,5.14 USD,~ 0.75 GBP/USD estimate,invoice,project
+R-007,2026-03-06,Groq,API usage invoice,Expenses:AI:Tokens:Groq,AI tokens,Groq,2.81,3.75 USD,~ 0.75 GBP/USD estimate,invoice,project
+R-008,2026-03-23,HM Land Registry,"Official copy of register WA231076 (emailed by HMLR, ref WA231076/A/216/LG) - fee not yet traced to a receipt; HMLR published fees: £7 online, £11 by post",Expenses:Disclosure:HMLR,Disclosure: HM Land Registry,,0.00,,,SOURCE PENDING,case
+R-009,2026-03-25,Anthropic,API credit purchase,Expenses:AI:Tokens:Anthropic,AI tokens,Anthropic,7.20,9.60 USD,~ 0.75 GBP/USD estimate,receipt,project
+R-010,2026-04-06,Groq,API usage invoice,Expenses:AI:Tokens:Groq,AI tokens,Groq,47.01,62.68 USD,~ 0.75 GBP/USD estimate,invoice,project
+R-011,2026-04-12,OpenAI,API credit top-up,Expenses:AI:Tokens:OpenAI,AI tokens,OpenAI,12.38,16.51 USD,~ 0.75 GBP/USD estimate,receipt,project
+R-012,2026-05-06,Groq,API usage invoice,Expenses:AI:Tokens:Groq,AI tokens,Groq,3.55,4.73 USD,~ 0.75 GBP/USD estimate,invoice,project
+R-013,2026-06-06,Groq,API usage invoice,Expenses:AI:Tokens:Groq,AI tokens,Groq,0.04,0.05 USD,~ 0.75 GBP/USD estimate,invoice,project
+R-014,2026-07-06,Groq,API usage invoice,Expenses:AI:Tokens:Groq,AI tokens,Groq,3.50,4.66 USD,~ 0.75 GBP/USD estimate,invoice,project
+R-015,2026-07-28,Groq,API usage invoice,Expenses:AI:Tokens:Groq,AI tokens,Groq,13.40,17.87 USD,~ 0.75 GBP/USD estimate,invoice,project
+R-016,2026-08-06,Groq,API usage invoice,Expenses:AI:Tokens:Groq,AI tokens,Groq,10.20,13.60 USD,~ 0.75 GBP/USD estimate,invoice,project
+R-017,2026-09-05,xAI,Grok receipt,Expenses:AI:Tokens:XAI,AI tokens,xAI (Grok),7.50,10.00 USD,~ 0.75 GBP/USD estimate,receipt,project
+R-018,2026-09-06,Groq,API usage invoice,Expenses:AI:Tokens:Groq,AI tokens,Groq,0.52,0.69 USD,~ 0.75 GBP/USD estimate,invoice,project
+R-019,2026-09-18,Anthropic (via Google Play),"Claude Pro subscription, monthly",Expenses:AI:Tokens:Anthropic,AI tokens,Anthropic,18.00,,,receipt,case
+R-020,2026-09-23,xAI (via Google Play),Grok credits,Expenses:AI:Tokens:XAI,AI tokens,xAI (Grok),4.49,,,receipt,case
+R-021,2026-09-28,xAI (via Google Play),Grok credits,Expenses:AI:Tokens:XAI,AI tokens,xAI (Grok),4.49,,,receipt,case
+R-022,2026-10-20,Domain registrar,bucklerfamily.estate domain registration - registrar receipt not yet traced,Expenses:Hosting:Domains,Hosting and domains,,0.00,,,SOURCE PENDING,case
+R-023,2026-10-20,HM Land Registry,"Other official copies and title documents the family bought - number, dates and fees not yet traced to receipts",Expenses:Disclosure:HMLR,Disclosure: HM Land Registry,,0.00,,,SOURCE PENDING,case
+R-024,2026-10-20,Postage,Postage for disclosure and records requests sent by post - no receipts found in the connected mailbox,Expenses:Postage,Postage,,0.00,,,SOURCE PENDING,case

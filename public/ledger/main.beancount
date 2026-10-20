@@ -1,0 +1,235 @@
+; Great House Farm / Tŷ Mawr — public accounts (allied camp)
+; Plain-text double-entry ledger (Beancount). Compiled by Sion's Tab agent from receipts on file; not audited.
+; Only case- and project-related spending is published. Personal spending is left out.
+; Amounts in GBP. USD receipts are converted at ~0.75 GBP per USD (an estimate; marked fx: "~") unless the receipt states a GBP amount.
+; Each entry carries an evidence reference (R-nnn). The receipts themselves are kept privately and are not published.
+
+option "title" "Great House Farm (Tŷ Mawr) — allied camp accounts"
+option "operating_currency" "GBP"
+
+2025-04-01 open Assets:Allied:Balance GBP
+2025-04-01 open Liabilities:Funded:Family GBP
+2025-04-01 open Equity:Opening-Balances GBP
+2025-04-01 open Income:Ebooks:Stripe GBP
+2025-04-01 open Income:Ebooks:Gumroad GBP
+2025-04-01 open Income:Merch:Printify GBP
+2025-04-01 open Expenses:AI:Tokens:Anthropic GBP
+2025-04-01 open Expenses:AI:Tokens:ElevenLabs GBP
+2025-04-01 open Expenses:AI:Tokens:Groq GBP
+2025-04-01 open Expenses:AI:Tokens:OpenAI GBP
+2025-04-01 open Expenses:AI:Tokens:XAI GBP
+2025-04-01 open Expenses:Disclosure:HMLR GBP
+2025-04-01 open Expenses:Disclosure:Other GBP
+2025-04-01 open Expenses:Hosting:Cloudflare GBP
+2025-04-01 open Expenses:Hosting:Domains GBP
+2025-04-01 open Expenses:Postage GBP
+
+2025-04-01 * "Opening balance" "Allied camp balance at the start of the 18-month period: £0.00"
+  Assets:Allied:Balance   0.00 GBP
+  Equity:Opening-Balances
+
+2025-09-13 * "OpenAI" "API credit top-up (organisation wwfm)"
+  evidence: "R-001"
+  class: "project"
+  status: "receipt"
+  original: "20.40 USD"
+  fx: "~ 0.75 GBP/USD estimate"
+  Expenses:AI:Tokens:OpenAI   15.30 GBP
+  Liabilities:Funded:Family
+
+2025-09-14 * "OpenAI" "Refund of unused API credit"
+  evidence: "R-002"
+  class: "project"
+  status: "refund"
+  original: "-20.29 USD"
+  fx: "~ 0.75 GBP/USD estimate"
+  Expenses:AI:Tokens:OpenAI   -15.22 GBP
+  Liabilities:Funded:Family
+
+2026-02-25 * "Anthropic" "API credit purchase"
+  evidence: "R-003"
+  class: "project"
+  status: "receipt"
+  original: "6.00 USD"
+  fx: "~ 0.75 GBP/USD estimate"
+  Expenses:AI:Tokens:Anthropic   4.50 GBP
+  Liabilities:Funded:Family
+
+2026-02-26 * "ElevenLabs" "Subscription (voice generation)"
+  evidence: "R-004"
+  class: "project"
+  status: "receipt"
+  original: "13.20 USD"
+  fx: "~ 0.75 GBP/USD estimate"
+  Expenses:AI:Tokens:ElevenLabs   9.90 GBP
+  Liabilities:Funded:Family
+
+2026-02-28 * "Groq" "API usage invoice"
+  evidence: "R-005"
+  class: "project"
+  status: "invoice"
+  original: "1.22 USD"
+  fx: "~ 0.75 GBP/USD estimate"
+  Expenses:AI:Tokens:Groq   0.92 GBP
+  Liabilities:Funded:Family
+
+2026-03-01 * "Groq" "API usage invoice"
+  evidence: "R-006"
+  class: "project"
+  status: "invoice"
+  original: "5.14 USD"
+  fx: "~ 0.75 GBP/USD estimate"
+  Expenses:AI:Tokens:Groq   3.85 GBP
+  Liabilities:Funded:Family
+
+2026-03-06 * "Groq" "API usage invoice"
+  evidence: "R-007"
+  class: "project"
+  status: "invoice"
+  original: "3.75 USD"
+  fx: "~ 0.75 GBP/USD estimate"
+  Expenses:AI:Tokens:Groq   2.81 GBP
+  Liabilities:Funded:Family
+
+2026-03-23 ! "HM Land Registry" "Official copy of register WA231076 (emailed by HMLR, ref WA231076/A/216/LG) - fee not yet traced to a receipt; HMLR published fees: £7 online, £11 by post"
+  evidence: "R-008"
+  class: "case"
+  status: "SOURCE PENDING"
+  Expenses:Disclosure:HMLR   0.00 GBP
+  Liabilities:Funded:Family
+
+2026-03-25 * "Anthropic" "API credit purchase"
+  evidence: "R-009"
+  class: "project"
+  status: "receipt"
+  original: "9.60 USD"
+  fx: "~ 0.75 GBP/USD estimate"
+  Expenses:AI:Tokens:Anthropic   7.20 GBP
+  Liabilities:Funded:Family
+
+2026-04-06 * "Groq" "API usage invoice"
+  evidence: "R-010"
+  class: "project"
+  status: "invoice"
+  original: "62.68 USD"
+  fx: "~ 0.75 GBP/USD estimate"
+  Expenses:AI:Tokens:Groq   47.01 GBP
+  Liabilities:Funded:Family
+
+2026-04-12 * "OpenAI" "API credit top-up"
+  evidence: "R-011"
+  class: "project"
+  status: "receipt"
+  original: "16.51 USD"
+  fx: "~ 0.75 GBP/USD estimate"
+  Expenses:AI:Tokens:OpenAI   12.38 GBP
+  Liabilities:Funded:Family
+
+2026-05-06 * "Groq" "API usage invoice"
+  evidence: "R-012"
+  class: "project"
+  status: "invoice"
+  original: "4.73 USD"
+  fx: "~ 0.75 GBP/USD estimate"
+  Expenses:AI:Tokens:Groq   3.55 GBP
+  Liabilities:Funded:Family
+
+2026-06-06 * "Groq" "API usage invoice"
+  evidence: "R-013"
+  class: "project"
+  status: "invoice"
+  original: "0.05 USD"
+  fx: "~ 0.75 GBP/USD estimate"
+  Expenses:AI:Tokens:Groq   0.04 GBP
+  Liabilities:Funded:Family
+
+2026-07-06 * "Groq" "API usage invoice"
+  evidence: "R-014"
+  class: "project"
+  status: "invoice"
+  original: "4.66 USD"
+  fx: "~ 0.75 GBP/USD estimate"
+  Expenses:AI:Tokens:Groq   3.50 GBP
+  Liabilities:Funded:Family
+
+2026-07-28 * "Groq" "API usage invoice"
+  evidence: "R-015"
+  class: "project"
+  status: "invoice"
+  original: "17.87 USD"
+  fx: "~ 0.75 GBP/USD estimate"
+  Expenses:AI:Tokens:Groq   13.40 GBP
+  Liabilities:Funded:Family
+
+2026-08-06 * "Groq" "API usage invoice"
+  evidence: "R-016"
+  class: "project"
+  status: "invoice"
+  original: "13.60 USD"
+  fx: "~ 0.75 GBP/USD estimate"
+  Expenses:AI:Tokens:Groq   10.20 GBP
+  Liabilities:Funded:Family
+
+2026-09-05 * "xAI" "Grok receipt"
+  evidence: "R-017"
+  class: "project"
+  status: "receipt"
+  original: "10.00 USD"
+  fx: "~ 0.75 GBP/USD estimate"
+  Expenses:AI:Tokens:XAI   7.50 GBP
+  Liabilities:Funded:Family
+
+2026-09-06 * "Groq" "API usage invoice"
+  evidence: "R-018"
+  class: "project"
+  status: "invoice"
+  original: "0.69 USD"
+  fx: "~ 0.75 GBP/USD estimate"
+  Expenses:AI:Tokens:Groq   0.52 GBP
+  Liabilities:Funded:Family
+
+2026-09-18 * "Anthropic (via Google Play)" "Claude Pro subscription, monthly"
+  evidence: "R-019"
+  class: "case"
+  status: "receipt"
+  Expenses:AI:Tokens:Anthropic   18.00 GBP
+  Liabilities:Funded:Family
+
+2026-09-23 * "xAI (via Google Play)" "Grok credits"
+  evidence: "R-020"
+  class: "case"
+  status: "receipt"
+  Expenses:AI:Tokens:XAI   4.49 GBP
+  Liabilities:Funded:Family
+
+2026-09-28 * "xAI (via Google Play)" "Grok credits"
+  evidence: "R-021"
+  class: "case"
+  status: "receipt"
+  Expenses:AI:Tokens:XAI   4.49 GBP
+  Liabilities:Funded:Family
+
+2026-10-20 ! "Domain registrar" "bucklerfamily.estate domain registration - registrar receipt not yet traced"
+  evidence: "R-022"
+  class: "case"
+  status: "SOURCE PENDING"
+  Expenses:Hosting:Domains   0.00 GBP
+  Liabilities:Funded:Family
+
+2026-10-20 ! "HM Land Registry" "Other official copies and title documents the family bought - number, dates and fees not yet traced to receipts"
+  evidence: "R-023"
+  class: "case"
+  status: "SOURCE PENDING"
+  Expenses:Disclosure:HMLR   0.00 GBP
+  Liabilities:Funded:Family
+
+2026-10-20 ! "Postage" "Postage for disclosure and records requests sent by post - no receipts found in the connected mailbox"
+  evidence: "R-024"
+  class: "case"
+  status: "SOURCE PENDING"
+  Expenses:Postage   0.00 GBP
+  Liabilities:Funded:Family
+
+2026-10-20 balance Assets:Allied:Balance 0.00 GBP
+
+; Income check, 20 Oct 2026: Stripe balance £0.00 with 0 charges; Printify 0 orders. No income to record yet.

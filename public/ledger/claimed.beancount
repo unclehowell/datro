@@ -1,0 +1,98 @@
+; Costs claimed (prospective) — memorandum ledger, kept apart from the cash accounts in main.beancount.
+; Our case, prospective. Not a finding of any court. Nothing here has been awarded, admitted or ordered.
+; Source: Legal Wiki page 5475, "Reparations Schedule & Proposed Apportionment" v1.0.0 (figures taken from page 5298),
+; https://greathousefarmwiki.wordpress.com/project-management/damages/reparations-schedule/
+; Route C (widest) totals: low 1,099,480 / mid 3,443,760 / high 5,195,420 GBP (ESTIMATE, CONDITIONAL).
+; Each body's figure = its proposed share x the route C total. Mid figures match page 5475's illustration; low and high are the same share applied to its low and high totals.
+; Roots are renamed so this memo can never be mixed with cash: Claimed = costs claimed by the family; Prospective = the balancing memo entry.
+option "title" "Great House Farm (Tŷ Mawr) — costs claimed (prospective)"
+option "operating_currency" "GBP"
+option "name_assets" "Claimed"
+option "name_equity" "Prospective"
+
+
+2026-10-20 open Prospective:Route-C GBP
+2026-10-20 open Claimed:Costs:BP-plc GBP
+2026-10-20 open Claimed:Costs:HM-Land-Registry GBP
+2026-10-20 open Claimed:Costs:Vale-of-Glamorgan-Council GBP
+2026-10-20 open Claimed:Costs:Welsh-Government-Cadw GBP
+2026-10-20 open Claimed:Costs:South-Wales-Police GBP
+2026-10-20 open Claimed:Costs:Former-Solicitors GBP
+2026-10-20 open Claimed:Costs:Developer-Successors GBP
+
+2026-10-20 * "BP plc (successor to BP Properties Ltd / BP Pension Trust)" "Proposed share 60% of route C (prospective)"
+  body: "BP plc (successor to BP Properties Ltd / BP Pension Trust)"
+  share: "60"
+  low: "659688.00"
+  high: "3117252.00"
+  basis: "Primary actor and the party that took the land and its value"
+  route: "Pre-action letter; civil proceedings; application to set aside the 1987 judgment (Takhar v Gracefield [2019] UKSC 13)"
+  source: "Legal Wiki 5475 v1.0.0"
+  Claimed:Costs:BP-plc   2066256.00 GBP
+  Prospective:Route-C
+
+2026-10-20 * "HM Land Registry" "Proposed share 20% of route C (prospective)"
+  body: "HM Land Registry"
+  share: "20"
+  low: "219896.00"
+  high: "1039084.00"
+  basis: "Public register: the State guarantee of title is the statutory backstop for a register mistake"
+  route: "HMLR complaint (stages 1–2 done); Independent Complaints Reviewer; indemnity under LRA 2002 Sch 8"
+  source: "Legal Wiki 5475 v1.0.0"
+  Claimed:Costs:HM-Land-Registry   688752.00 GBP
+  Prospective:Route-C
+
+2026-10-20 * "Vale of Glamorgan Council" "Proposed share 5% of route C (prospective)"
+  body: "Vale of Glamorgan Council"
+  share: "5"
+  low: "54974.00"
+  high: "259771.00"
+  basis: "Planning and conservation authority with power to intervene"
+  route: "Corporate complaint, then the Public Services Ombudsman for Wales"
+  source: "Legal Wiki 5475 v1.0.0"
+  Claimed:Costs:Vale-of-Glamorgan-Council   172188.00 GBP
+  Prospective:Route-C
+
+2026-10-20 * "Welsh Government / Cadw" "Proposed share 5% of route C (prospective)"
+  body: "Welsh Government / Cadw"
+  share: "5"
+  low: "54974.00"
+  high: "259771.00"
+  basis: "Heritage authority; the 1988 listing file is lost"
+  route: "Welsh Government complaints, then the Public Services Ombudsman for Wales"
+  source: "Legal Wiki 5475 v1.0.0"
+  Claimed:Costs:Welsh-Government-Cadw   172188.00 GBP
+  Prospective:Route-C
+
+2026-10-20 * "South Wales Police" "Proposed share 5% of route C (prospective)"
+  body: "South Wales Police"
+  share: "5"
+  low: "54974.00"
+  high: "259771.00"
+  basis: "Public authority at the 1988 eviction (SOURCE PENDING)"
+  route: "SWP Professional Standards, then the IOPC"
+  source: "Legal Wiki 5475 v1.0.0"
+  Claimed:Costs:South-Wales-Police   172188.00 GBP
+  Prospective:Route-C
+
+2026-10-20 * "The family's former solicitors (1986–87)" "Proposed share 3% of route C (prospective)"
+  body: "The family's former solicitors (1986–87)"
+  share: "3"
+  low: "32984.40"
+  high: "155862.60"
+  basis: "Professional negligence by the family's own advisers (SOURCE PENDING)"
+  route: "Firm's complaints procedure, then the Legal Ombudsman"
+  source: "Legal Wiki 5475 v1.0.0"
+  Claimed:Costs:Former-Solicitors   103312.80 GBP
+  Prospective:Route-C
+
+2026-10-20 * "Developer that bought the site in 1993 (successors)" "Proposed share 2% of route C (prospective)"
+  body: "Developer that bought the site in 1993 (successors)"
+  share: "2"
+  low: "21989.60"
+  high: "103908.40"
+  basis: "Developer that took the benefit of the site"
+  route: "Pre-action letter; an innocent purchaser for value is protected (Limitation Act 1980 s.32(3))"
+  source: "Legal Wiki 5475 v1.0.0"
+  Claimed:Costs:Developer-Successors   68875.20 GBP
+  Prospective:Route-C
