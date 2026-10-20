@@ -108,7 +108,7 @@ function draw(){
     var q=B.sq[i], show=visible(q);
     if(!show){ ctx.fillStyle=dark?hideB:hideW; ctx.fillRect(x,y,S+ov,S+ov); continue }
     ctx.fillStyle=dark?fillB:fillW; ctx.fillRect(x,y,S+ov,S+ov);
-    if(px>=5){ ctx.fillStyle=KIND[q.k].m; var m=S*(px<30?0.34:0.16); ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x+m,y); ctx.lineTo(x,y+m); ctx.closePath(); ctx.fill() }
+    if(px>=5){ ctx.fillStyle=KIND[q.k].m; var m=S*(px<30?0.34:px>=640?0.04:0.16); ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x+m,y); ctx.lineTo(x,y+m); ctx.closePath(); ctx.fill() }
     if(q.th&&px>=12){ ctx.strokeStyle=dark?"rgba(214,178,94,.85)":"rgba(150,110,20,.9)"; ctx.lineWidth=Math.max(1.2/s,1.6); ctx.setLineDash([5,4]); ctx.strokeRect(x+3,y+3,S-6,S-6); ctx.setLineDash([]) }
     if(px>=46) drawText(q,x,y,dark,px,i);
     if(dim&&!opt.hits.has(i)){ ctx.fillStyle=dark?"rgba(0,0,0,.72)":"rgba(0,0,0,.62)"; ctx.fillRect(x,y,S+ov,S+ov) }
@@ -290,8 +290,8 @@ var wordW=new Map(),pageCache=new Map(),EMF=100;
 function ww(word,wt){ var k=wt+"|"+word, v=wordW.get(k); if(v!=null)return v;
   ctx.save(); ctx.setTransform(1,0,0,1,0,0); ctx.font=fontStr(wt,EMF); v=ctx.measureText(word).width/EMF; ctx.restore();
   if(wordW.size>200000)wordW.clear(); wordW.set(k,v); return v }
-function blocksFor(chunks){ var out=[];
-  chunks.forEach(function(c,n){ out.push({k:1,t:segLabel(c)}); if(c[2])out.push({k:2,t:"Theory · Our case, prospective. Not a finding of any court."});
+function blocksFor(chunks){ var out=[], last=-1;
+  chunks.forEach(function(c,n){ if(c[0]!==last)out.push({k:1,t:segLabel(c)}); last=c[0]; if(c[2])out.push({k:2,t:"Theory · Our case, prospective. Not a finding of any court."});
     String(c[3]).split("\n").forEach(function(p){ if(p.trim())out.push({k:0,t:p.trim()}) }); out.push({k:3}) });
   return out }
 function wrapEm(text,maxEm,wt){ var words=text.split(/\s+/),lines=[],line="",lw=0,sp=ww(" ",wt);
@@ -308,30 +308,30 @@ function flow(blocks,f,ncol,colW,colH){ // returns lines with col & y, or null i
       out.push({t:ls[j],k:bl.k,c:col,y:y,f:fs}); y+=l2 } }
   return out }
 function pageLayout(i,chunks){ var hit=pageCache.get(i); if(hit)return hit;
-  var q=B.sq[i], pad=5, w=S-pad*2, hdr=pad+3.2*1.35+4.6*1.15*2+2.6*1.3*3+3, colH=S-pad-4.2-hdr, gap=2.2, blocks=blocksFor(chunks), best=null;
+  var q=B.sq[i], pad=5, w=S-pad*2, hdr=pad+1.7*1.35+2.6*1.15*2+1.7*1.3*3+2.5, colH=S-pad-2.6-hdr, gap=2.2, blocks=blocksFor(chunks), best=null;
   for(var n=1;n<=6;n++){ var colW=(w-gap*(n-1))/n, lo=0.25, hi=3.2, ok=null;
     for(var it=0;it<15;it++){ var mid=(lo+hi)/2, r=flow(blocks,mid,n,colW,colH); if(r){ok={f:mid,lines:r};lo=mid}else hi=mid }
     if(ok&&colW/(0.5*ok.f)>=30&&(!best||ok.f>best.f)) best={f:ok.f,lines:ok.lines,n:n,colW:colW} }
   if(!best){ var colW=(w-gap*5)/6, r=flow(blocks,0.25,6,colW,1e9); best={f:0.25,lines:r,n:6,colW:colW} }
   best.hdr=hdr; best.gap=gap; best.pad=pad;
-  var title=wrap(q.t,w,4.6,600,2), summ=wrap(q.x,w,2.6,400,3); best.title=title; best.summ=summ;
+  var title=wrap(q.t,w,2.6,700,2), summ=wrap(q.x,w,1.7,400,3); best.title=title; best.summ=summ;
   pageCache.set(i,best); if(pageCache.size>60)pageCache.delete(pageCache.keys().next().value); return best }
 function drawPage(q,x,y,dark,px,i){
   var ch=arChunks(i); if(!ch)return false; if(!ch.length)return false;
   var P=pageLayout(i,ch), s=view.s, X=function(wx){return view.x+wx*s}, Y=function(wy){return view.y+wy*s};
   ctx.save(); ctx.setTransform(dpr,0,0,dpr,0,0); ctx.beginPath(); ctx.rect(X(x),Y(y),S*s,S*s); ctx.clip(); ctx.textBaseline="top";
   var ink=dark?"#ececec":"#141414", sub=dark?"rgba(255,255,255,.6)":"rgba(0,0,0,.58)", gold=dark?"#e6c983":"#7a5a10", pad=P.pad, ty=y+pad;
-  ctx.fillStyle=sub; ctx.font=fontStr(500,3.2*s); ctx.fillText(((q.d||"Undated")+" · "+(KIND[q.k].c==="b"?"black square":"white square")+" · "+ch.length+" archive extracts").toUpperCase(),X(x+pad),Y(ty)); ty+=3.2*1.35;
-  ctx.fillStyle=dark?KIND[q.k].t:"#111"; ctx.font=fontStr(600,4.6*s); P.title.forEach(function(l){ctx.fillText(l,X(x+pad),Y(ty));ty+=4.6*1.15});
-  ctx.fillStyle=sub; ctx.font=fontStr(400,2.6*s); P.summ.forEach(function(l){ctx.fillText(l,X(x+pad),Y(ty));ty+=2.6*1.3});
+  ctx.fillStyle=sub; ctx.font=fontStr(500,1.7*s); ctx.fillText(((q.d||"Undated")+" · "+(KIND[q.k].c==="b"?"black square":"white square")+" · "+ch.length+" archive extracts").toUpperCase(),X(x+pad),Y(ty)); ty+=1.7*1.35;
+  ctx.fillStyle=dark?KIND[q.k].t:"#111"; ctx.font=fontStr(700,2.6*s); P.title.forEach(function(l){ctx.fillText(l,X(x+pad),Y(ty));ty+=2.6*1.15});
+  ctx.fillStyle=sub; ctx.font=fontStr(400,1.7*s); P.summ.forEach(function(l){ctx.fillText(l,X(x+pad),Y(ty));ty+=1.7*1.3});
   var yb=y+P.hdr; ctx.strokeStyle=dark?"rgba(255,255,255,.25)":"rgba(0,0,0,.25)"; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(X(x+pad),Y(yb-1.2)); ctx.lineTo(X(x+S-pad),Y(yb-1.2)); ctx.stroke();
   var lastK=-1,lastF=0;
   for(var j=0;j<P.lines.length;j++){ var ln=P.lines[j], lx=x+pad+ln.c*(P.colW+P.gap), ly=yb+ln.y, sy=Y(ly);
     if(sy>H+20||sy+ln.f*s*1.4<-20||X(lx)>W||X(lx+P.colW)<0)continue;
     if(ln.k!==lastK||ln.f!==lastF){ ctx.font=fontStr(ln.k?600:400,ln.f*s); ctx.fillStyle=ln.k===1?sub:ln.k===2?gold:ink; lastK=ln.k; lastF=ln.f }
     ctx.fillText(ln.t,X(lx),sy) }
-  ctx.fillStyle=sub; ctx.font=fontStr(500,2.4*s);
-  ctx.fillText(q.th?"Our case, prospective. Not a finding of any court. · Text distributed from the free archive edition and the public GHF sites":"Text distributed from the free archive edition (v0.1.0) and the public GHF sites · tap for the full text",X(x+pad),Y(y+S-pad-2.6));
+  ctx.fillStyle=sub; ctx.font=fontStr(500,1.5*s);
+  ctx.fillText(q.th?"Our case, prospective. Not a finding of any court. · Text distributed from the free archive edition and the public GHF sites":"Text distributed from the free archive edition (v0.1.0) and the public GHF sites · tap for the full text",X(x+pad),Y(y+S-pad-1.6));
   ctx.restore(); return true }
 
 /* ---------- sudoku board: the same 808 squares, in time order, poured into ten 9×9 sudoku grids ---------- */
@@ -374,7 +374,7 @@ function drawSudoku(){
     if(!q){ ctx.fillStyle="#0c0c0c"; ctx.fillRect(x,y,S+ov,S+ov) }
     else if(!show){ ctx.fillStyle=dark?"#0f0f0f":"#262626"; ctx.fillRect(x,y,S+ov,S+ov) }
     else if(lit){ ctx.fillStyle=dark?"#000":"#f5f3ee"; ctx.fillRect(x,y,S+ov,S+ov);
-      if(px>=5){ ctx.fillStyle=KIND[q.k].m; var m=S*(px<30?0.34:0.16); ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x+m,y); ctx.lineTo(x,y+m); ctx.closePath(); ctx.fill() }
+      if(px>=5){ ctx.fillStyle=KIND[q.k].m; var m=S*(px<30?0.34:px>=640?0.04:0.16); ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x+m,y); ctx.lineTo(x,y+m); ctx.closePath(); ctx.fill() }
       if(q.th&&px>=12){ ctx.strokeStyle=dark?"rgba(214,178,94,.85)":"rgba(150,110,20,.9)"; ctx.lineWidth=Math.max(1.2/s,1.6); ctx.setLineDash([5,4]); ctx.strokeRect(x+3,y+3,S-6,S-6); ctx.setLineDash([]) } }
     else { ctx.fillStyle=dark?"#151515":"#3d3b36"; ctx.fillRect(x,y,S+ov,S+ov) }
     if(a.k===sk&&(Math.floor(a.t/9)===Math.floor(st/9)||a.t%9===st%9||(Math.floor(a.t/27)===Math.floor(st/27)&&Math.floor(a.t%9/3)===Math.floor(st%9/3)))){ ctx.fillStyle="rgba(34,211,238,.13)"; ctx.fillRect(x,y,S,S) }
@@ -496,5 +496,6 @@ requestAnimationFrame(loop);
 window.ChessBoard={fit:function(){fit(false)},zoomTo:function(id,px,open){var i=B.sq.findIndex(function(q){return q.id===id});if(i<0)return false;anim=null;var s=Math.min(maxS,(px||Math.min(W,H)*0.78)/S);view={s:s,x:W/2-(B.sq[i].c+.5)*S*s,y:H/2-(B.sq[i].r+.5)*S*s};dirty=true;if(open)openPanel(i);return true},
   ids:function(){return B.sq.map(function(q){return q.id})},view:function(){return view},
   mode:setMode, su:function(){return SU}, place:suPlace, select:function(k,t){SU.cur=k;SU.sel=k*81+t;suPad();dirty=true}, block:function(k){blockFit(k,false)},
-  arch:function(i,cb){return arChunks(i,cb)}, panel:openPanel};
+  arch:function(i,cb){return arChunks(i,cb)}, panel:openPanel,
+  setView:function(s,x,y){anim=null;view={s:s,x:x,y:y};dirty=true}, pos:function(i){return [posR(i),posC(i)]}};
 })();

@@ -119,3 +119,4 @@ body.su .pad{display:flex}
 /* shared base-camp link (bucklerfamily.estate/basecamp.js): keep it clear of the footer and the sudoku pad */
 html body .ghf-bc{bottom:var(--bcb,40px)!important}
 body:has(.sheet.open) .ghf-bc,body:has(.modal.open) .ghf-bc{display:none!important}
+body.su .ghf-bc-next{display:none!important}
