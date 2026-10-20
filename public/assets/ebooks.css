@@ -72,3 +72,11 @@
 .eb-arch{margin:.7rem 0 .2rem}.eb-arch h3{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#888;margin:0 0 .3rem;font-weight:500}
 .eb-arch ul{list-style:none;padding:0;margin:0;display:grid;gap:6px}.eb-arch li{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid #333;padding:8px 10px;font-size:.84rem;color:#ccc;line-height:1.35}
 .eb-arch-price{color:#fff}.eb-arch-f,.eb-arch-c{color:#999;font-size:.78rem}.eb-arch-btn{flex:none;border:1px solid #888;padding:6px 10px;color:#fff;text-decoration:none;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+
+/* edition dropdown (ladder worker ee7b4c03) */
+.eb-ed{display:flex;flex-direction:column;gap:4px;margin:0 0 .7rem}
+.eb-ed label{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#999}
+.eb-ed-sel{-webkit-appearance:none;appearance:none;width:100%;min-height:46px;font:inherit;font-size:1rem;color:#fff;background:#111 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23fff' stroke-width='1.6' fill='none'/%3E%3C/svg%3E") no-repeat right 14px center;border:1px solid #666;border-radius:0;padding:10px 40px 10px 12px}
+.eb-ed-sel:focus{outline:2px solid #fff;outline-offset:2px}
+.eb-ed-c{margin:.4rem 0 .5rem}
+.eb-edbox .eb-ed-note{margin:.4rem 0 0;color:#aaa}
