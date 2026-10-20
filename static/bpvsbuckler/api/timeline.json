@@ -21,7 +21,7 @@
   },
   "version": "v0.0.0.68",
   "last_updated": "2026-10-19",
-  "total_entries": 133,
+  "total_entries": 134,
   "acts": [
     {
       "id": "P",
@@ -4469,6 +4469,72 @@
     {
       "order": 82,
       "ref": "VI.10",
+      "id": "ghf-19881204-1",
+      "act": "VI",
+      "date": "1988-12-04",
+      "when": "1988 — date not established (before 5 December 1988)",
+      "title": "Cadw inspection of the house",
+      "place": "Great House Farm",
+      "parcel": "A",
+      "basis": "Witness statement",
+      "narration": "Cadw officers come into the house, carry out a survey and report, and remark on the roof beams being high (witness statement of Branwen, who lived at the farm until 1988, given on 19 October 2026). Cadw confirms in writing that the house was visited and assessed for listing by its inspectors; its two photographs are dated 29 July 1988. A further Cadw visit was announced for the weekend of 3–4 December 1988, and Cadw declined to list on 5 December. Our case: the inspection took place in the days before that refusal; the exact date is source pending.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold claim: Billy Buckler, evicted 29 November 1988 · never adjudicated, never extinguished",
+        "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · in possession from 29 November 1988"
+      },
+      "title_moves": [],
+      "received_account": "Cadw judged the house from the outside and found nothing worth listing.",
+      "received_wording": [
+        {
+          "said": "\"the roof beams being high\"",
+          "note": "What the Cadw officers remarked inside the house, as Branwen recalls (statement of 19 October 2026)."
+        }
+      ],
+      "what_we_now_know": "Cadw officers came inside the house and looked at its fabric, roof beams included (witness statement of Branwen, 19 October 2026). Cadw confirms the house was visited and assessed by its inspectors, but holds only two photographs of 29 July 1988: no survey, no notes, no report and no record of the officers. The date of the visit Branwen describes is source pending; our case is that it fell in the days before the 5 December 1988 refusal.",
+      "cast": [
+        "branwen",
+        "cadw"
+      ],
+      "institutions": [
+        "cadw"
+      ],
+      "evidence": [
+        {
+          "type": "Witness statement",
+          "title": "EV-0255 — Witness statement of Branwen: Cadw inspection of the house, 1988",
+          "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0255-witness-statement-branwen-cadw-inspection-1988/"
+        },
+        {
+          "type": "Official correspondence",
+          "title": "Cadw, 21 May 2026: assessed and rejected for listing in the 1988 community survey of Llandough; photographs dated 29 July 1988",
+          "url": "https://greathousefarmwiki.wordpress.com/evidence/cadw-welsh-government-correspondence/#m12"
+        },
+        {
+          "type": "Photograph",
+          "title": "Cadw survey photograph of the farmhouse, 29 July 1988 (released 2026, ATISN 27021)",
+          "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/#R37",
+          "image": "https://bpvsbuckler.bucklerfamily.estate/media/1988-cadw-farmhouse.jpg"
+        },
+        {
+          "type": "Newspaper",
+          "title": "South Wales Echo, 3 December 1988 — inspector to visit the farmhouse 'this weekend'",
+          "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n08"
+        },
+        {
+          "type": "Photograph",
+          "title": "Roof (loft) beams at Great House Farm — undated photograph, Great House Farm Part 1, no. 080 (Wayback archive): the roof beams referred to",
+          "url": "https://wayback.bucklerfamily.estate/images/0000-00-00%20-%20Great%20House%20Farm%20Part%201%20-%20080%20-%20EN%20-%20V0.0.0.00.jpg",
+          "image": "https://bpvsbuckler.bucklerfamily.estate/media/ghf-album-p1-080-roof-beams.jpg"
+        }
+      ],
+      "image": "https://bpvsbuckler.bucklerfamily.estate/media/ghf-album-p1-080-roof-beams.jpg",
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881204-1"
+    },
+    {
+      "order": 83,
+      "ref": "VI.11",
       "id": "ghf-19881205-1",
       "act": "VI",
       "date": "1988-12-05",
@@ -4515,8 +4581,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881205-1"
     },
     {
-      "order": 83,
-      "ref": "VI.11",
+      "order": 84,
+      "ref": "VI.12",
       "id": "ghf-19881206-1",
       "act": "VI",
       "date": "1988-12-06",
@@ -4583,8 +4649,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881206-1"
     },
     {
-      "order": 84,
-      "ref": "VI.12",
+      "order": 85,
+      "ref": "VI.13",
       "id": "ghf-19881208-1",
       "act": "VI",
       "date": "1988-12-07",
@@ -4639,8 +4705,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881208-1"
     },
     {
-      "order": 85,
-      "ref": "VI.13",
+      "order": 86,
+      "ref": "VI.14",
       "id": "ghf-19881212-1",
       "act": "VI",
       "date": "1988-12-12",
@@ -4692,7 +4758,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881212-1"
     },
     {
-      "order": 86,
+      "order": 87,
       "ref": "VII.1",
       "id": "ghf-19890320-1",
       "act": "VII",
@@ -4728,7 +4794,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19890320-1"
     },
     {
-      "order": 87,
+      "order": 88,
       "ref": "VII.2",
       "id": "ghf-19890323-1",
       "act": "VII",
@@ -4787,7 +4853,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19890323-1"
     },
     {
-      "order": 88,
+      "order": 89,
       "ref": "VII.3",
       "id": "ghf-19890325-1",
       "act": "VII",
@@ -4824,7 +4890,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19890325-1"
     },
     {
-      "order": 89,
+      "order": 90,
       "ref": "VII.4",
       "id": "ghf-19890414-1",
       "act": "VII",
@@ -4871,7 +4937,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19890414-1"
     },
     {
-      "order": 90,
+      "order": 91,
       "ref": "VII.5",
       "id": "ghf-19891107-1",
       "act": "VII",
@@ -4937,7 +5003,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19891107-1"
     },
     {
-      "order": 91,
+      "order": 92,
       "ref": "VII.6",
       "id": "ghf-19900313-1",
       "act": "VII",
@@ -4988,7 +5054,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19900313-1"
     },
     {
-      "order": 92,
+      "order": 93,
       "ref": "VII.7",
       "id": "ghf-19900529-1",
       "act": "VII",
@@ -5028,7 +5094,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19900529-1"
     },
     {
-      "order": 93,
+      "order": 94,
       "ref": "VII.8",
       "id": "ghf-19900801-1",
       "act": "VII",
@@ -5086,7 +5152,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19900801-1"
     },
     {
-      "order": 94,
+      "order": 95,
       "ref": "VII.9",
       "id": "ghf-19910821-1",
       "act": "VII",
@@ -5136,7 +5202,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19910821-1"
     },
     {
-      "order": 95,
+      "order": 96,
       "ref": "VII.10",
       "id": "ghf-19920514-1",
       "act": "VII",
@@ -5175,7 +5241,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19920514-1"
     },
     {
-      "order": 96,
+      "order": 97,
       "ref": "VII.11",
       "id": "ghf-19920727-1",
       "act": "VII",
@@ -5214,7 +5280,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19920727-1"
     },
     {
-      "order": 97,
+      "order": 98,
       "ref": "VII.12",
       "id": "ghf-19920903-1",
       "act": "VII",
@@ -5255,7 +5321,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19920903-1"
     },
     {
-      "order": 98,
+      "order": 99,
       "ref": "VII.13",
       "id": "ghf-19931203-1",
       "act": "VII",
@@ -5321,7 +5387,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19931203-1"
     },
     {
-      "order": 99,
+      "order": 100,
       "ref": "VII.14",
       "id": "ghf-19940504-1",
       "act": "VII",
@@ -5367,7 +5433,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19940504-1"
     },
     {
-      "order": 100,
+      "order": 101,
       "ref": "VII.15",
       "id": "ghf-19940728-1",
       "act": "VII",
@@ -5415,7 +5481,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19940728-1"
     },
     {
-      "order": 101,
+      "order": 102,
       "ref": "VII.16",
       "id": "ghf-19941110-1",
       "act": "VII",
@@ -5466,7 +5532,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19941110-1"
     },
     {
-      "order": 102,
+      "order": 103,
       "ref": "VII.17",
       "id": "ghf-20050101-1",
       "act": "VII",
@@ -5512,7 +5578,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20050101-1"
     },
     {
-      "order": 103,
+      "order": 104,
       "ref": "VII.18",
       "id": "ghf-20190320-1",
       "act": "VII",
@@ -5551,7 +5617,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20190320-1"
     },
     {
-      "order": 104,
+      "order": 105,
       "ref": "VIII.1",
       "id": "ghf-20251117-1",
       "act": "VIII",
@@ -5595,7 +5661,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20251117-1"
     },
     {
-      "order": 105,
+      "order": 106,
       "ref": "VIII.2",
       "id": "ghf-20260323-1",
       "act": "VIII",
@@ -5646,7 +5712,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260323-1"
     },
     {
-      "order": 106,
+      "order": 107,
       "ref": "VIII.3",
       "id": "ghf-20260419-1",
       "act": "VIII",
@@ -5691,7 +5757,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260419-1"
     },
     {
-      "order": 107,
+      "order": 108,
       "ref": "VIII.4",
       "id": "ghf-20260521-1",
       "act": "VIII",
@@ -5750,7 +5816,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260521-1"
     },
     {
-      "order": 108,
+      "order": 109,
       "ref": "VIII.5",
       "id": "ghf-20260730-1",
       "act": "VIII",
@@ -5796,7 +5862,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260730-1"
     },
     {
-      "order": 109,
+      "order": 110,
       "ref": "VIII.6",
       "id": "ghf-20260825-1",
       "act": "VIII",
@@ -5837,7 +5903,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260825-1"
     },
     {
-      "order": 110,
+      "order": 111,
       "ref": "VIII.7",
       "id": "ghf-20260908-1",
       "act": "VIII",
@@ -5875,7 +5941,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260908-1"
     },
     {
-      "order": 111,
+      "order": 112,
       "ref": "VIII.8",
       "id": "ghf-20260917-1",
       "act": "VIII",
@@ -5935,7 +6001,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260917-1"
     },
     {
-      "order": 112,
+      "order": 113,
       "ref": "VIII.9",
       "id": "ghf-20260923-1",
       "act": "VIII",
@@ -5986,7 +6052,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260923-1"
     },
     {
-      "order": 113,
+      "order": 114,
       "ref": "VIII.10",
       "id": "ghf-20260925-1",
       "act": "VIII",
@@ -6027,7 +6093,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260925-1"
     },
     {
-      "order": 114,
+      "order": 115,
       "ref": "VIII.11",
       "id": "ghf-20260927-1",
       "act": "VIII",
@@ -6072,7 +6138,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260927-1"
     },
     {
-      "order": 115,
+      "order": 116,
       "ref": "VIII.12",
       "id": "ghf-20260929-1",
       "act": "VIII",
@@ -6124,7 +6190,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260929-1"
     },
     {
-      "order": 116,
+      "order": 117,
       "ref": "VIII.13",
       "id": "ghf-20261006-1",
       "act": "VIII",
@@ -6188,7 +6254,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20261006-1"
     },
     {
-      "order": 117,
+      "order": 118,
       "ref": "VIII.14",
       "id": "ghf-20261019-1",
       "act": "VIII",
@@ -6251,7 +6317,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20261019-1"
     },
     {
-      "order": 118,
+      "order": 119,
       "ref": "O.1",
       "id": "ghf-obvious-01",
       "act": "O",
@@ -6295,7 +6361,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-01"
     },
     {
-      "order": 119,
+      "order": 120,
       "ref": "O.2",
       "id": "ghf-obvious-02",
       "act": "O",
@@ -6346,7 +6412,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-02"
     },
     {
-      "order": 120,
+      "order": 121,
       "ref": "O.3",
       "id": "ghf-obvious-03",
       "act": "O",
@@ -6395,7 +6461,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-03"
     },
     {
-      "order": 121,
+      "order": 122,
       "ref": "O.4",
       "id": "ghf-obvious-04",
       "act": "O",
@@ -6439,7 +6505,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-04"
     },
     {
-      "order": 122,
+      "order": 123,
       "ref": "O.5",
       "id": "ghf-obvious-05",
       "act": "O",
@@ -6488,7 +6554,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-05"
     },
     {
-      "order": 123,
+      "order": 124,
       "ref": "O.6",
       "id": "ghf-obvious-06",
       "act": "O",
@@ -6542,7 +6608,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-06"
     },
     {
-      "order": 124,
+      "order": 125,
       "ref": "O.7",
       "id": "ghf-obvious-07",
       "act": "O",
@@ -6589,7 +6655,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-07"
     },
     {
-      "order": 125,
+      "order": 126,
       "ref": "O.8",
       "id": "ghf-obvious-08",
       "act": "O",
@@ -6636,7 +6702,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-08"
     },
     {
-      "order": 126,
+      "order": 127,
       "ref": "O.9",
       "id": "ghf-obvious-09",
       "act": "O",
@@ -6682,7 +6748,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-09"
     },
     {
-      "order": 127,
+      "order": 128,
       "ref": "O.10",
       "id": "ghf-obvious-10",
       "act": "O",
@@ -6731,7 +6797,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-10"
     },
     {
-      "order": 128,
+      "order": 129,
       "ref": "O.11",
       "id": "ghf-obvious-11",
       "act": "O",
@@ -6776,7 +6842,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-11"
     },
     {
-      "order": 129,
+      "order": 130,
       "ref": "E.1",
       "id": "ghf-99990101-1",
       "act": "E",
@@ -6848,7 +6914,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-1"
     },
     {
-      "order": 130,
+      "order": 131,
       "ref": "E.2",
       "id": "ghf-99990101-4",
       "act": "E",
@@ -6910,7 +6976,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-4"
     },
     {
-      "order": 131,
+      "order": 132,
       "ref": "E.3",
       "id": "ghf-99990101-2",
       "act": "E",
@@ -6957,7 +7023,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-2"
     },
     {
-      "order": 132,
+      "order": 133,
       "ref": "E.4",
       "id": "ghf-99990101-3",
       "act": "E",
@@ -6998,7 +7064,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-3"
     },
     {
-      "order": 133,
+      "order": 134,
       "ref": "E.5",
       "id": "ghf-99990102-1",
       "act": "E",
