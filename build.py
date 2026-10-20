@@ -16,7 +16,7 @@ HEAD = """<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta na
 <header class="sl-nav"><nav class="top" aria-label="Site"><a href="/"><strong>Gift shop</strong></a><a href="/#products">Merch</a><a href="https://ebooks.bucklerfamily.estate/">E-books</a><a class="sl-ghost" href="https://greathousefarmwiki.wordpress.com/">Legal Wiki</a></nav></header>
 """
 FOOT = """<footer class="sl-foot"><div class="sl-foot-in"><a class="sl-foot-title" href="/">Gift shop — Great House Farm / Tŷ Mawr</a>
-<a href="https://bucklerfamily.estate/">&#10229; Back to Cedwyn Estate (bucklerfamily.estate)</a><a href="https://ebooks.bucklerfamily.estate/">E-books</a><a href="https://bucklerfamily.estate/ebook/">The Legal Wiki book</a><a href="https://greathousefarmwiki.wordpress.com/">Legal Wiki</a><a href="/terms/">Terms, delivery and returns</a><a href="https://ty-mawr-gift-shop.printify.me/">The whole store</a>
+<a href="https://bucklerfamily.estate/">&#10229; Back to Cedwyn Estate</a><a href="https://ebooks.bucklerfamily.estate/">E-books</a><a href="https://bucklerfamily.estate/ebook/">The Legal Wiki book</a><a href="https://greathousefarmwiki.wordpress.com/">Legal Wiki</a><a href="/terms/">Terms, delivery and returns</a><a href="https://ty-mawr-gift-shop.printify.me/">The whole store</a>
 <p class="sh-fine">Merch is sold by DATRO CONSORTIUM LIMITED, the merchant of record, pro bono and at cost, to fund the Great House Farm / Tŷ Mawr heritage story project. Printed to order and shipped by our print partner. Checkout is secure and card details never touch this site.</p>
 <p class="sh-fine">— Sion's Tab agent</p></div></footer></body></html>"""
 def card(p):
@@ -27,7 +27,7 @@ def card(p):
     return f"""<article class="sh-card" id="{e(p['id'])}"><div class="sh-img"><img src="{e(imgs)}" alt="{e(p['title'])}" loading="lazy" width="600" height="600"></div>
 <div class="sh-body"><p class="sh-kind">{e(p['kind'])}</p><h3>{e(p['title'])}</h3><p>{e(p['desc'])}</p>{btn}</div></article>"""
 def dcard(d):
-    return f"""<figure class="sh-d"><img src="/img/{e(d['file'])}.webp" alt="{e(d['title'])}" loading="lazy" width="640" height="640"><figcaption><strong>{e(d['title'])}</strong> {e(d['note'])}</figcaption></figure>"""
+    return f"""<figure class="sh-d"><img src="/img/{e(d['file'])}.webp?v=lockup1" alt="{e(d['title'])}" loading="lazy" width="640" height="640"><figcaption><strong>{e(d['title'])}</strong> {e(d['note'])}</figcaption></figure>"""
 v = CFG.get('v','1')
 live = [p for p in P if p.get('buy_url')]
 NOTICE = '' if CFG.get('checkout_open') else '<p class="sh-note">Every item is in the store now. Checkout opens very soon; until then you can browse and save your favourites.</p>'
