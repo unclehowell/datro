@@ -143,13 +143,15 @@ function drawRanks(px){
   ctx.textBaseline="middle"; var lastBottom=-1e9;
   B.eras.forEach(function(e){
     var ya=view.y+e.r0*px, yb=view.y+e.r1*px; if(yb<0||ya>H)return; var hgt=yb-ya;
-    if(Math.max(ya+12,16)-10<lastBottom+2)return;
     var yc=Math.max(ya+12,Math.min(yb-12,Math.max(16,ya+12)));
-    if(px>=110&&ya>16) { var right=true }
+    var right=(px>=110&&ya>16);
+    if(right) yc=ya+11;
+    if(yc-10<lastBottom+2) yc=lastBottom+12;          // a short band above: slide this label down inside its own band
+    if(yc>yb-3) return;                                // no room left inside the band at this zoom
     var label=e.label+(hgt>40?"  ·  "+e.years:"");
     ctx.font=fontStr(600,hgt>40?12:10.5); var tw=ctx.measureText(label).width+14;
     var xL=Math.max(4,view.x+4); if(xL+tw>W-54)xL=Math.max(4,W-54-tw);
-    if(right){ xL=Math.min(W-54,view.x+boardW()*view.s)-tw-4; yc=ya+11 }
+    if(right){ xL=Math.min(W-54,view.x+boardW()*view.s)-tw-4 }
     ctx.fillStyle="rgba(0,0,0,.78)"; ctx.fillRect(xL,yc-10,tw,20); ctx.strokeStyle="rgba(214,178,94,.9)"; ctx.lineWidth=1; ctx.strokeRect(xL+.5,yc-9.5,tw-1,19);
     ctx.fillStyle="#f1d9a0"; ctx.fillText(label,xL+7,yc+.5); lastBottom=yc+10;
   });
