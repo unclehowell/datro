@@ -162,10 +162,13 @@ document.addEventListener('click',(e)=>{const b=e.target.closest('[data-body]');
   history.replaceState(null,'','#q-'+c.dataset.copy);}});
 document.addEventListener('toggle',(e)=>{const d=e.target;if(d.matches&&d.matches('details.qa')&&d.open){history.replaceState(null,'','#q-'+d.dataset.id);}},true);
 function toast(t){const el=$('toast');el.textContent=t;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),1600);}
+// Deep links (campus enemy camp, 20 Oct 2026): ?institution=<slug> (same slugs as bpvsbuckler), ?body=<exact body name>, ?q=<search>.
+const QA_INST={"cadw": {"body": "Cadw / Welsh Government"}, "welsh-government": {"body": "Cadw / Welsh Government"}, "vale-council": {"body": "Vale of Glamorgan Council"}, "glamorgan-archives": {"body": "Glamorgan Archives"}, "hmlr": {"body": "HM Land Registry"}, "south-wales-police": {"body": "South Wales Police"}, "national-archives": {"body": "The National Archives"}, "mod": {"body": "Ministry of Defence"}, "llandough-community-council": {"body": "Llandough Community Council"}, "ico": {"body": "Information Commissioner's Office"}, "courts": {"body": "Ministry of Justice / HMCTS"}, "bp": {"q": "BP Properties"}, "cardiff-council": {"q": "Cardiff Council"}, "south-glamorgan": {"q": "South Glamorgan"}, "forest-of-cardiff": {"q": "Forest of Cardiff"}, "land-authority-wales": {"q": "Land Authority"}};
+function fromQuery(){try{const p=new URLSearchParams(location.search);let body=p.get('body')||'',q=p.get('q')||'';const inst=(p.get('institution')||'').toLowerCase();if(inst&&QA_INST[inst]){body=QA_INST[inst].body||body;q=QA_INST[inst].q||q;}if(body&&!ALL.some(x=>x.body===body))body='';if(!body&&!q)return false;state={q:q,body:body,status:''};$('q').value=q;render();return true;}catch(e){return false;}}
 function fromHash(){const h=decodeURIComponent(location.hash.replace(/^#/,''));if(h.startsWith('q-')){const id=h.slice(2);if(ALL.some(x=>x.id===id)){state={q:'',body:'',status:''};$('q').value='';render(id);return true;}}return false;}
 window.addEventListener('hashchange',fromHash);
 fetch('/kb.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{ALL=(d.items||[]).map(x=>Object.assign(x,{_hay:[x.question,x.answer,x.body,x.reference,x.status,x.exemption].join(' ').toLowerCase()}));
- if(!fromHash())render();}).catch(()=>{$('list').innerHTML='<div class="empty">Could not load the questions. Please refresh.</div>';$('count').textContent='';});
+ if(!fromHash()&&!fromQuery())render();}).catch(()=>{$('list').innerHTML='<div class="empty">Could not load the questions. Please refresh.</div>';$('count').textContent='';});
 </script>
 </body>
 </html>
