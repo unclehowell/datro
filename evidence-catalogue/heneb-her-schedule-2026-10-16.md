@@ -12,6 +12,6 @@ wayback URL: https://wayback.bucklerfamily.estate/text/2026-10-16%20-%20Heneb%20
 what was given or withheld: Mostly not held or publicly available on Archwilio; change log not releasable (GDPR); paper records location Baglan; entity confirmation.
 ---
 
-Response to schedule of 19 Sep 2026. Not an FOI body (limited company); EIR/statutory HER access considered. Working theory: two parcels; Mary Williams Parcel A.
+Response to schedule of 19 Sep 2026. Not an FOI body (limited company); EIR/statutory HER access considered. Working theory: two parcels; Mary (Nancy) Williams Parcel A.
 
 WP not written (live WordPress at bpvsbuckler.datro.xyz not this file).

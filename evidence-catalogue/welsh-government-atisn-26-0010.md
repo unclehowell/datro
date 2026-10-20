@@ -14,7 +14,7 @@ Requester's email of 19 October 2026 requesting internal review of ATISN 26-0010
 ## Location / Series
 - References prior registered files: A--CL172-06-017/1 Community of Llandough, CL172-10-001/1, A--CL172-10-002/1, A--CL172-10-001/1 and six files of potential interest (from ATISN 27021 IR).
 - Concerns Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth; Western Ground Rents Ltd; BP Properties Ltd.
-- Two parcels; Mary Williams Parcel A; synthetic title by false permissive occupancy (context only; no allegations added).
+- Two parcels; Mary (Nancy) Williams Parcel A; synthetic title by false permissive occupancy (context only; no allegations added).
 
 ## Notes
 - Clock on original ATISN 26-0010 stopped by 19 Oct disclosure (due 6 Nov).

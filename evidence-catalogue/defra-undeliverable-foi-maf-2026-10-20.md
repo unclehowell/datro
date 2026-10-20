@@ -24,4 +24,4 @@ Bounce of 20 October 2026 reports SMTP 554 5.4.12 hop count exceeded / possible 
 
 Correct FOI address per GOV.UK is InformationRequests@defra.gov.uk. Draft prepared to resend there.
 
-Working theory preserved, not rewritten: two parcels; Mary Williams Parcel A; synthetic title by false permissive occupancy.
+Working theory preserved, not rewritten: two parcels; Mary (Nancy) Williams Parcel A; synthetic title by false permissive occupancy.

@@ -18,4 +18,4 @@ wp_note: WP not written this run.
 
 15 October 2026 follow-up sent as draft (DRAFT_AT stamped in HubSpot ticket) requesting the same six points and the statutory deadline for the follow-up. Still location-only; no copy or production requested.
 
-Prior draft of 4 October not sent. HubSpot ticket 438004489452 confirmationStatus CONFIRMED. Working theory preserved: two parcels; Mary Williams owned Parcel A (house/garden); synthetic title by false permissive occupancy.
+Prior draft of 4 October not sent. HubSpot ticket 438004489452 confirmationStatus CONFIRMED. Working theory preserved: two parcels; Mary (Nancy) Williams owned Parcel A (house/garden); synthetic title by false permissive occupancy.

@@ -22,4 +22,4 @@ Location in scope: Great House Farm / Tŷ Mawr, Llandough, November–December 1
 
 Automatic reply of 10 October 2026 19:14 UTC confirms receipt of correspondence. Requests high volume and backlog; response may exceed 20 working days. Instructs not to reply to the auto-reply. No reference number, no exemptions, no attachments, no physical-check confirmation.
 
-Working theory preserved, not rewritten: two parcels; Mary Williams Parcel A; synthetic title by false permissive occupancy.
+Working theory preserved, not rewritten: two parcels; Mary (Nancy) Williams Parcel A; synthetic title by false permissive occupancy.

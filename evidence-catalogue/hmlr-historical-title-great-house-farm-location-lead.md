@@ -14,4 +14,4 @@ wp_note: WP not written this run. HubSpot ticket 438148791525. DRAFT_AT=2026-10-
 
 # HMLR historical title location lead
 
-New rotating evidence lead. Asks for location of historical title register, title plan, SIM, index map entry, day list, pending applications and any deed packet relating to Great House Farm / Ty Mawr, Llandough-juxta-Penarth, before any viewing. No contradiction with existing catalogue or wayback. Working theory preserved: two parcels; Mary Williams owned Parcel A (house/garden); synthetic title by false permissive occupancy.
+New rotating evidence lead. Asks for location of historical title register, title plan, SIM, index map entry, day list, pending applications and any deed packet relating to Great House Farm / Ty Mawr, Llandough-juxta-Penarth, before any viewing. No contradiction with existing catalogue or wayback. Working theory preserved: two parcels; Mary (Nancy) Williams owned Parcel A (house/garden); synthetic title by false permissive occupancy.

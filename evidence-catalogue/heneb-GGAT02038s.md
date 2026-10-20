@@ -20,4 +20,4 @@ Given (14 Oct): HER source file digitised and uploaded to Archwilio 02038s as PD
 
 Withheld / not supplied previously: the four source-file items in the 8 September request (1880 ironwork text and sources; RCAHMW/Suggett 1988 copy; museum accession slip; distinction from 1979 villa iron and 1994 Burial 631). 19 September email deferred.
 
-Location and physical check of original not answered. Viewing not requested. confirmationStatus CONFIRMED. Two parcels; Mary Williams Parcel A; synthetic title by false permissive occupancy (not added as allegation).
+Location and physical check of original not answered. Viewing not requested. confirmationStatus CONFIRMED. Two parcels; Mary (Nancy) Williams Parcel A; synthetic title by false permissive occupancy (not added as allegation).

@@ -137,7 +137,7 @@ Evidence-link repair. Story wording, scene order, scene ids, evidence titles and
 
 ### Fixed
 - Cadw survey photographs of the farmhouse and barn, 29 July 1988 (ATISN 27021), in VI.5 and VIII.6: `archaeology/#cadw-1988` no longer exists; now link to the ATISN 27021 response entry (GHF-E106-R37) in the FOI & Public-Authority Reply Register, `records-access-chronology/foi-reply-register/#R37`
-- Mary Williams — 1965 offer (III.11): `mary-williams/#offer-1965` no longer exists; now links to the Chronology section of the Mary Williams page, `mary-williams/#chronology`, which holds the 2 March 1965 entry
+- Mary (Nancy) Williams — 1965 offer (III.11): `mary-williams/#offer-1965` no longer exists; now links to the Chronology section of the Mary (Nancy) Williams page, `mary-williams/#chronology`, which holds the 2 March 1965 entry
 - The Williams / Buckler Family (P.5, II.10, III.12, III.14, IV.17, VII.14): the page's sections no longer carry anchors, so `#origins`, `#william` and `#rumoured-sale` are removed and these entries link to `williams-buckler-family/`
 
 ## [bpvsbuckler-v0.0.0.50] - 2026-10-06
@@ -200,7 +200,7 @@ Re-release as a documentary storyboard.
 
 ### Changed
 - Timeline brought in line with the Great House Farm Wiki (greathousefarmwiki.wordpress.com): 99 -> 112 scenes
-- Corrected: Mary Williams born 10 Aug 1913 and married 1936; 1938 Bute reversion to WGR replaces the unrecorded 1926 "Penarth Estate Company" sale; 1955 High Court order and 1962 Cardiff County Court order; 1986 High Court judgment dated 10 July (Hollis J); 1978-79 Roman villa marked as a separate site; 1994 excavation is an early-medieval cemetery (1,026 burials); "armour" find given its Museum Wales provenance (Church Farm, 1858)
+- Corrected: Mary (Nancy) Williams born 10 Aug 1913 and married 1936; 1938 Bute reversion to WGR replaces the unrecorded 1926 "Penarth Estate Company" sale; 1955 High Court order and 1962 Cardiff County Court order; 1986 High Court judgment dated 10 July (Hollis J); 1978-79 Roman villa marked as a separate site; 1994 excavation is an early-medieval cemetery (1,026 burials); "armour" find given its Museum Wales provenance (Church Farm, 1858)
 - Added: 1877 Daniel Thomas sale and the two parcels, 1877 Bute lease, 1908, 1928, 1944, 1950-52 papers taken, 1963 committal, 1965 offer, 1967, 1977 open day, 1982 GGAT warning, 1987 amalgamation, 1988 House of Lords and first eviction attempt, 1989 ECHR decision and planning, 1990 evaluation, 1992, 1993, 2019, 2026 campaign
 - Removed scenes with no supporting record: 1978 and 1980 hearings, 1986 demolition application, Roman villa scenes, 2024 duplicate
 - Challenges reworded as family contentions, per the Wiki's evidence standard

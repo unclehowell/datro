@@ -25,4 +25,4 @@ Yes (logo image).
 https://wayback.bucklerfamily.estate (text transcript committed: wayback/text/2026-10-20 - Ordnance Survey FOI-26-46 - EN - V0.0.0.00.txt, commit 7bdcd58607c0f9ff603a0b903700fef90668f4a1)
 
 ## Notes
-Live WordPress not written (catalogue via GitHub only). Two parcels; Mary Williams Parcel A; synthetic title by false permissive occupancy (context only, no allegations added). Clock starts; no reply required.
+Live WordPress not written (catalogue via GitHub only). Two parcels; Mary (Nancy) Williams Parcel A; synthetic title by false permissive occupancy (context only, no allegations added). Clock starts; no reply required.

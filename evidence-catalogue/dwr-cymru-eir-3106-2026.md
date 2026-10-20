@@ -21,4 +21,4 @@ Acknowledgement of request dated 12 October 2026 concerning recorded information
 
 Outcome: acknowledgement. 20 working days response time. No physical check, no holdings stated, no exemptions.
 
-Cross-check: new. Not previously on wayback or catalogue. https://bpvsbuckler.datro.xyz storyboard does not record this. Working theory (two parcels; Mary Williams Parcel A; synthetic title) preserved and not restated as allegation.
+Cross-check: new. Not previously on wayback or catalogue. https://bpvsbuckler.datro.xyz storyboard does not record this. Working theory (two parcels; Mary (Nancy) Williams Parcel A; synthetic title) preserved and not restated as allegation.

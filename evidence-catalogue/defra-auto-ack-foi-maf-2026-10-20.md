@@ -22,4 +22,4 @@ Location in scope: Great House Farm / Tŷ Mawr, Llandough, 1936–1955. MAF / Gl
 
 Automatic reply of 20 October 2026 00:40 UTC confirms the email address received the request (resend after bounce to foi@defra.gov.uk). States the address is for FOIA/EIR recorded-information requests only. No reference number, no exemptions, no attachments, no physical-check confirmation, no series or NPRN.
 
-Working theory preserved, not rewritten: two parcels; Mary Williams Parcel A; synthetic title by false permissive occupancy.
+Working theory preserved, not rewritten: two parcels; Mary (Nancy) Williams Parcel A; synthetic title by false permissive occupancy.

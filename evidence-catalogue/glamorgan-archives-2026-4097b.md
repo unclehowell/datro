@@ -20,4 +20,4 @@ Given: no deeds located for the 1877 Daniel Thomas transaction after a catalogue
 
 Withheld / not done: physical retrieval of D696. Remaining emails to be answered in due course.
 
-Working theory preserved, not rewritten: two parcels; Mary Williams owned Parcel A (house/garden); synthetic title by false permissive occupancy. This reply does not verify or contradict the 1877 instrument.
+Working theory preserved, not rewritten: two parcels; Mary (Nancy) Williams owned Parcel A (house/garden); synthetic title by false permissive occupancy. This reply does not verify or contradict the 1877 instrument.

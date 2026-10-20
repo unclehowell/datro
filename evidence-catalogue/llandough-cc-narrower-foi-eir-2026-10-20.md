@@ -12,6 +12,6 @@
 **Clock:** new 20 working days to 17 November 2026
 **Wayback:** https://wayback.bucklerfamily.estate (or GitHub wayback/text/2026-10-20 - Llandough Community Council narrower-FOI-EIR - EN - V0.0.0.00.txt; commit e0d464ce9af5b8740735143fc5722404a16acebf)
 **Live WordPress:** not written
-**Notes:** Two parcels; Mary Williams Parcel A; synthetic title by false permissive occupancy (context only; no allegations added). Does not search minutes. Requests specific files on VG41 registration 1970, planning 89/01396/OUT and 92/00671/RES, correspondence with Vale/BP/Church View Close, and pre-2002 records location/disposal.
+**Notes:** Two parcels; Mary (Nancy) Williams Parcel A; synthetic title by false permissive occupancy (context only; no allegations added). Does not search minutes. Requests specific files on VG41 registration 1970, planning 89/01396/OUT and 92/00671/RES, correspondence with Vale/BP/Church View Close, and pre-2002 records location/disposal.
 **HubSpot:** to be upserted
 **confirmationStatus:** CONFIRMED

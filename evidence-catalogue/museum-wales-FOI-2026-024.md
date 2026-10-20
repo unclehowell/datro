@@ -26,4 +26,4 @@ Prior reply of 12 October 2026 14:56 UTC confirmed no separate search log, file 
 
 Physical check: not confirmed by named staff, date, store, box or shelf. Searches described as Collections staff review of identified records and accession registers.
 
-Working theory preserved, not rewritten: two parcels; Mary Williams owned Parcel A (house/garden). These museum hits are not shown to be that parcel.
+Working theory preserved, not rewritten: two parcels; Mary (Nancy) Williams owned Parcel A (house/garden). These museum hits are not shown to be that parcel.

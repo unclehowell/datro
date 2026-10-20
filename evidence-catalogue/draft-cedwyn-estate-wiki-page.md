@@ -25,11 +25,11 @@ See also [GHF-E173 — Cedwyn / Cwm-Cedwyn name index](https://greathousefarmwik
 
 ## 2. The Williams family claim from 1667
 
-Mary Williams's c.1974 statement says that her family lived and farmed at Great House Farm from 1667. A 1974 newspaper report also attributes to her the claim that the family first acquired Tŷ Mawr around that date. These are attributable family and press sources for the date and the family's understanding of its interest. They are not the same thing as a surviving 1667 conveyance.
+Mary (Nancy) Williams's c.1974 statement says that her family lived and farmed at Great House Farm from 1667. A 1974 newspaper report also attributes to her the claim that the family first acquired Tŷ Mawr around that date. These are attributable family and press sources for the date and the family's understanding of its interest. They are not the same thing as a surviving 1667 conveyance.
 
 The affirmative argument treats 1667 as the start of the claimed Williams family estate history and asks what legal or beneficial interest was acquired, inherited or recognised at that time. The inquiry must trace family names through parish records, wills, deeds, estate rentals, leases and plans, and then determine whether the later label “tenant” described the whole interest or only a particular portion or tenure. It should not assume that later estate terminology settles the original nature of the family's interest.
 
-Primary starting point: [Mary Williams's statement](https://greathousefarmwiki.wordpress.com/mary-williams-statement/); press reference: [GHF-E090-N03/N04 as indexed by the wiki](https://greathousefarmwiki.wordpress.com/anomalies-register/bpvsbuckler-archive-research-leads/).
+Primary starting point: [Mary (Nancy) Williams's statement](https://greathousefarmwiki.wordpress.com/mary-williams-statement/); press reference: [GHF-E090-N03/N04 as indexed by the wiki](https://greathousefarmwiki.wordpress.com/anomalies-register/bpvsbuckler-archive-research-leads/).
 
 ## 3. What the later Bute acquisition does—and does not—answer
 
@@ -51,7 +51,7 @@ The limeworks entry is currently a retrieval target: the wiki identifies Bute pa
 
 ## 5. The 1877 split and the Williams/Buckler Parcel A claim
 
-Mary Williams's statement describes a 1877 transaction in which the Bute Estate sold the farmhouse, buildings and about 10 acres to Daniel Thomas, retaining about 9 acres “up on the top”. Her account says the family had arrangements with both Daniel Thomas and Bute and that the Thomas quarrying agreement included a provision for the freehold to pass to her grandfather when quarrying ceased. The original operative deed is not currently transcribed; the related plan image at [GHF-E115](https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e115-1877-bute-thomas-agreement/) is partial evidence and does not, by itself, decide whether the instrument was a freehold sale, quarry lease, or a combination of interests.
+Mary (Nancy) Williams's statement describes a 1877 transaction in which the Bute Estate sold the farmhouse, buildings and about 10 acres to Daniel Thomas, retaining about 9 acres “up on the top”. Her account says the family had arrangements with both Daniel Thomas and Bute and that the Thomas quarrying agreement included a provision for the freehold to pass to her grandfather when quarrying ceased. The original operative deed is not currently transcribed; the related plan image at [GHF-E115](https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e115-1877-bute-thomas-agreement/) is partial evidence and does not, by itself, decide whether the instrument was a freehold sale, quarry lease, or a combination of interests.
 
 The family's affirmative case is that quarrying ended and the final rent to Alfred Thomas was paid in 1928, bringing the agreed transfer to the Williams family into effect. On that reconstruction, the house/quarrying parcel (Parcel A) has a separate chain from the eastern fields retained by Bute (Parcel B). This distinction is central to examining the later Bute-to-WGR-to-BP narrative: a later transfer of one parcel or a landlord's reversion should be checked against what was actually retained or conveyed in 1877.
 
@@ -75,7 +75,7 @@ The intended endpoint of the investigation is a parcel-by-parcel provenance map 
 | What was Bute's root of farm freehold? | Bute rental/deed leads; HER historical summary; 1824 survey | Identify the actual Vaughan-to-Bute instrument and separate it from the lordship acquisition. |
 | Did William Evans Williams own or benefit from the 33-acre quarry block? | NLW D242/17, D258; Glamorgan Archives D153/4–8 | Match estate schedules, leases, rent receipts and quarry plans; establish whether the same acres are involved. |
 | What does the Clock Tower dispute establish? | Reported family research and newspaper lead | Identify exact newspapers/dates/pages and quote the source faithfully. |
-| Did the 1877 condition transfer Parcel A in 1928? | Mary Williams statement; GHF-E115 plan; D153/4–8; Bute X.6(12) | Locate and transcribe the full instrument and counterpart lease; link the 1928 receipt and map. |
+| Did the 1877 condition transfer Parcel A in 1928? | Mary (Nancy) Williams statement; GHF-E115 plan; D153/4–8; Bute X.6(12) | Locate and transcribe the full instrument and counterpart lease; link the 1928 receipt and map. |
 | Did WGR/BP receive title to both parcels? | 1938 deed and plan; 1939 tenancy plan; 1969 deed; WA231076/WA240304 files | Compare the operative conveyances and title plans, not only later title descriptions. |
 | How did Llandough and Leckwith administrative areas relate to the farm? | Manor court references and estate papers | Build separate manor, freehold, leasehold and parcel maps with identified sources. |
 
@@ -86,7 +86,7 @@ The affirmative case is that a historically named Cydwin/Cydfin/Tŷ Mawr holding
 The immediate goal is to locate the instruments and plans that join—or fail to join—those strands. This page advances the family’s positive hypothesis while keeping each step source-labelled so that the case can become more precise as original records are obtained.
 
 ### Core links
-- [Mary Williams's statement](https://greathousefarmwiki.wordpress.com/mary-williams-statement/)
+- [Mary (Nancy) Williams's statement](https://greathousefarmwiki.wordpress.com/mary-williams-statement/)
 - [Cedwyn / Cwm-Cedwyn index GHF-E173](https://greathousefarmwiki.wordpress.com/ghf-e173-cedwyn-cwm-cedwyn-place-name-notes/)
 - [GHF-E178 — 1547 Cydwin lease](https://greathousefarmwiki.wordpress.com/ghf-e173-cedwyn-cwm-cedwyn-place-name-notes/ghf-e178-1547-sir-george-herbert-grants-vaughan-a-1000-year-lease-of-cydwin/)
 - [GHF-E179 — 1552–1824 Cydfin/Tŷ Mawr names](https://greathousefarmwiki.wordpress.com/ghf-e173-cedwyn-cwm-cedwyn-place-name-notes/ghf-e179-1552-1824-bute-records-call-it-cedfin-cydfin-ken-fin-farm-or-ty-mawr-farm/)

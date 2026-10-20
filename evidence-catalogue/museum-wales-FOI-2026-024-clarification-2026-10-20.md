@@ -26,4 +26,4 @@ Requester clarification (draft 20 Oct 2026): Confirms seeking records relating t
 
 Physical check: not confirmed. No named store, box, shelf, staff or retrieval date in the hold email.
 
-Working theory preserved, not rewritten: two parcels; Mary Williams Parcel A. These requests concern published statements of medieval ironwork in Museum collections from the farm; not shown to be that parcel.
+Working theory preserved, not rewritten: two parcels; Mary (Nancy) Williams Parcel A. These requests concern published statements of medieval ironwork in Museum collections from the farm; not shown to be that parcel.

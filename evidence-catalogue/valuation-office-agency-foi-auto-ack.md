@@ -6,7 +6,7 @@
 - **Class**: acknowledgement
 - **Date of this communication**: 20 October 2026
 - **Target response date**: 20 working days from receipt (statutory timescale stated)
-- **Location**: Great House Farm / Tÿ Mawr, Llandough (two parcels; Mary Williams Parcel A)
+- **Location**: Great House Farm / Tÿ Mawr, Llandough (two parcels; Mary (Nancy) Williams Parcel A)
 - **Physical-check status**: not confirmed (acknowledgement only; no statement on search or physical examination)
 - **Exemptions**: none stated
 - **Attachments**: none

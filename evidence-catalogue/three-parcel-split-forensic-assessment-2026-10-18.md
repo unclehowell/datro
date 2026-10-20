@@ -10,7 +10,7 @@
 The most valuable new analytical move is to stop treating Parcel A as one undifferentiated object. The record may contain at least three different land histories inside the area the family calls Parcel A:
 
 1. **A-North — woodland/forest:** the wooded area north of the house, later associated with Forest of Cardiff and modern woodland title references.
-2. **A-Centre — occupied core:** the farmhouse, associated buildings, yard and garden that remained occupied by Mary Buckler/Williams and family members and later formed the centre of the BP possession litigation.
+2. **A-Centre — occupied core:** the farmhouse, associated buildings, yard and garden that remained occupied by Mary (Nancy) Williams, formerly Buckler and family members and later formed the centre of the BP possession litigation.
 3. **A-South-East — green/VG41 ground:** the land south-east of the house and garden later recorded in connection with village-green register entry VG41; its exact ownership, management and title must not be assumed merely from the Council's role in maintaining a register.
 
 Parcel B is the separate eastern agricultural-field area in the family’s working model. The 1939 WGR–John Williams agreement and plan are reported to depict Parcel B rather than the full Parcel A. That matters because a farm name, a tenancy description, a court order and a registered title can each refer to different interests or extents even when they use similar labels.

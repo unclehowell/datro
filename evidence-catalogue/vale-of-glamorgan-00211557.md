@@ -28,4 +28,4 @@ Does not replace or narrow the original request or restart clocks.
 
 Outcome: outgoing request; no response yet. No exemptions, no attachments, no physical check confirmation, no series/box/shelf/title/NPRN.
 
-Cross-check: not previously stored on wayback or catalogue. https://bpvsbuckler.datro.xyz records heritage context (GGAT county treasure description vs Cadw never listed). Two parcels; Mary Williams Parcel A; synthetic title by false permissive occupancy — context preserved, no allegations added.
+Cross-check: not previously stored on wayback or catalogue. https://bpvsbuckler.datro.xyz records heritage context (GGAT county treasure description vs Cadw never listed). Two parcels; Mary (Nancy) Williams Parcel A; synthetic title by false permissive occupancy — context preserved, no allegations added.

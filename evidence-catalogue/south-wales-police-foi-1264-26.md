@@ -24,4 +24,4 @@ Automatic reply received 16 October 2026 08:45 UTC confirming receipt of the fur
 
 Physical check not confirmed. No exemptions. No series/box/shelf/title/NPRN. No attachments.
 
-Working theory preserved, not rewritten: two parcels; Mary Williams Parcel A; synthetic title by false permissive occupancy.
+Working theory preserved, not rewritten: two parcels; Mary (Nancy) Williams Parcel A; synthetic title by false permissive occupancy.

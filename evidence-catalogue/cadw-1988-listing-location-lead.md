@@ -20,4 +20,4 @@ wp_note: Live WordPress not written this run. Live site bpvsbuckler.datro.xyz no
 
 Draft request 13 October 2026 for the precise record location (series, accession, box, shelf, CALM/Discovery) and physical-check status of any Cadw or predecessor file, photographs or notes on Great House Farm / Tÿ Mawr, Llandough (approx. ST 168 733), July–December 1988, including any 29 July 1988 material.
 
-Not a request for viewing or copy. Working theory preserved: two parcels; Mary Williams Parcel A.
+Not a request for viewing or copy. Working theory preserved: two parcels; Mary (Nancy) Williams Parcel A.

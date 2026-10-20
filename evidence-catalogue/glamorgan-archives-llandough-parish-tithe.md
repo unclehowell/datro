@@ -16,4 +16,4 @@ wp_note: WP not written. Live site bpvsbuckler.datro.xyz not updated from this f
 
 Draft only, 7 October 2026, to glamro@cardiff.gov.uk. Asks for series, accession, box, shelf, CALM id, and whether staff physically checked the item, for vestry minutes and churchwardens' accounts 1870–1930, tithe apportionment and map, and any enclosure award naming Great House / Ty Mawr. Not a viewing request. Does not duplicate 2026/4097b.
 
-Working theory preserved: two parcels; Mary Williams owned Parcel A (house/garden).
+Working theory preserved: two parcels; Mary (Nancy) Williams owned Parcel A (house/garden).

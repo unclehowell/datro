@@ -35,7 +35,7 @@ def echo(k, date):
             'url': f'{WIKI}/evidence-library/press-articles-index/'}
 HER = {'type': 'Heritage record', 'title': 'Historic Environment Record GGAT 02038s (Archwilio)',
        'url': 'https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s'}
-MARY = w('/mary-williams-statement/', "Mary Williams's statement (c. 1974)", "Mary's statement")
+MARY = w('/mary-williams-statement/', "Mary (Nancy) Williams's statement (c. 1974)", "Mary's statement")
 TL = w('/timeline/', 'Master Timeline')
 LRT = lambda a, t='Land Registry Titles': w('/land-registry-titles/#' + a, t, 'Land Registry record')
 RAC = w('/records-access-chronology/', 'Records Access Chronology', 'Official correspondence')
@@ -89,7 +89,7 @@ ACTS = [
 ]
 
 CAST = [
-    {'id': 'mary', 'name': 'Mary Williams (Mrs Buckler)', 'years': '1913 – 1983',
+    {'id': 'mary', 'name': 'Mary (Nancy) Williams, formerly Buckler', 'years': '1913 – 1983',
      'role': 'Born in the farmhouse in 1913 and died there in 1983. Refused the tenancies offered in 1959 and 1965 and the 1974 letters; pleaded ownership in 1974.',
      'match': ['Mary']},
     {'id': 'john', 'name': 'John Williams', 'years': 'd. after 1949',
@@ -173,7 +173,7 @@ sc('P', 'ghf-12000101-1', '1200-01-01', '12th – 14th century', "Medieval occup
    [HER, ARCH, GGAT_REV], aliases=['ghf-12150102-1', 'ghf-12150101-1', 'ghf-11000101-1'])
 sc('P', 'ghf-15450101-1', '1545-01-01', '1536 – 1793', "The lordship of the manor", 'Manor of Llandough', 'AB',
    'Public record',
-   "Llandough belongs to Tewkesbury Abbey until the Dissolution of 1536–39. Cardiff Records states that in 1543 Henry VIII granted the manor to Lord Clynton and Say and Robert Turwitt, and that by 1545 it was held by Sir George Herbert. The Western Mail letter says the Herberts held the lordship until the Earl of Bute bought it in 1793; Cardiff Records places William Hurst and others in the account from 1767. The same 1974 newspaper record identifies Mary Williams's family as occupying the manorial home since 1667. That occupation and the lordship are separate from the farmhouse freehold. The family's case is that the Williamses were virtual freeholders under the 1877 bargain while quarrying continued, and that Parcel A's freehold passed to them in 1928 when quarrying ended.",
+   "Llandough belongs to Tewkesbury Abbey until the Dissolution of 1536–39. Cardiff Records states that in 1543 Henry VIII granted the manor to Lord Clynton and Say and Robert Turwitt, and that by 1545 it was held by Sir George Herbert. The Western Mail letter says the Herberts held the lordship until the Earl of Bute bought it in 1793; Cardiff Records places William Hurst and others in the account from 1767. The same 1974 newspaper record identifies Mary (Nancy) Williams's family as occupying the manorial home since 1667. That occupation and the lordship are separate from the farmhouse freehold. The family's case is that the Williamses were virtual freeholders under the 1877 bargain while quarrying continued, and that Parcel A's freehold passed to them in 1928 when quarrying ended.",
    [press('N04', "Western Mail, 'Grievous loss' (1974 letter giving manorial descent and the Williams occupation)"),
     MARY,
     w('/1877-agreement/#sale-1877', 'The 1877 Agreement — the sale'),
@@ -205,7 +205,7 @@ sc('P', 'ghf-15600101-1', '1560-01-01', 'Mid 16th – late 18th century', "The V
    ledger={'W': 'Farm freehold: the Vaughans · lordship of the manor: the Herberts (a separate interest)'})
 sc('P', 'ghf-16670101-1', '1667-01-01', '1667', "The Williams family at Great House", 'Great House Farm', 'A',
    "Mary's statement",
-   "Mary Williams's c.1974 statement says her family had lived and farmed at Great House since 1667. A 1974 newspaper report also attributes to her a claim that her family first acquired Tŷ Mawr around that date. The affirmative Cedwyn thesis treats 1667 as the opening of the family's own estate history and tests that claim against the Cydwin/Cydfin lease and farm-name records. The surviving statement and press report support the Buckler case; a 1667 conveyance has not yet been identified.",
+   "Mary (Nancy) Williams's c.1974 statement says her family had lived and farmed at Great House since 1667. A 1974 newspaper report also attributes to her a claim that her family first acquired Tŷ Mawr around that date. The affirmative Cedwyn thesis treats 1667 as the opening of the family's own estate history and tests that claim against the Cydwin/Cydfin lease and farm-name records. The surviving statement and press report support the Buckler case; a 1667 conveyance has not yet been identified.",
    [MARY, w('/williams-buckler-family/', 'The Williams / Buckler Family — origins')],
    aliases=['ghf-16770101-1'],
    ledger={'W': 'Farm freehold: the Vaughans · lordship of the manor: the Herberts · in the house: the Williamses'})
@@ -281,7 +281,7 @@ sc('I', 'ghf-18760101-1', '1876-01-01', '1876 – c. 1912', "The limeworks", 'Ll
    [w('/llandough-limeworks/', 'Llandough Limeworks')])
 sc('I', 'ghf-18770101-1', '1877-01-01', '1877', "Division of the farm", 'Bute Estate Office', 'AB',
    "Mary's statement",
-   "Mary Williams's statement records that in 1877 the Bute Estate sold the farmhouse, buildings and about 10 acres to Daniel Thomas, and kept about 9 acres. The Williamses remained as tenants of both. The deed is missing.",
+   "Mary (Nancy) Williams's statement records that in 1877 the Bute Estate sold the farmhouse, buildings and about 10 acres to Daniel Thomas, and kept about 9 acres. The Williamses remained as tenants of both. The deed is missing.",
    [MARY, w('/1877-agreement/#sale-1877', 'The 1877 Agreement — the sale'), w('/1877-agreement/#plan', 'The 1877 Agreement — plan'),
     w('/the-two-parcels/', 'The Two Parcels'), w('/1877-agreement/#sale-1877', 'The 1877 Agreement — Bute lease'), w('/forensic-master-chronology-authoritative-corrected-6-october-2026/', 'Forensic Master Chronology (6 October 2026)', 'Analysis')],
    aliases=['ghf-18771106-1'],
@@ -410,10 +410,10 @@ sc('I', 'ghf-19080106-1', '1908-01-06', '6 January 1908', 'A poacher caught on G
    [
     {'type': 'Newspaper', 'title': '[VERIFIED] Evening Express, 10 January 1908, p.3 — "Two months for a poacher": "poaching on Great House Farm, Llandough" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/4184741/4184744/84/'}
    ])
-sc('I', 'ghf-19130810-1', '1913-08-10', '10 August 1913', "Birth of Mary Williams", 'Great House Farm', 'A',
+sc('I', 'ghf-19130810-1', '1913-08-10', '10 August 1913', "Birth of Mary (Nancy) Williams", 'Great House Farm', 'A',
    "Mary's statement",
-   "Mary Williams is born in the farmhouse on 10 August 1913.",
-   [w('/mary-williams/', 'Mary Williams'), MARY])
+   "Mary (Nancy) Williams is born in the farmhouse on 10 August 1913.",
+   [w('/mary-williams/', 'Mary (Nancy) Williams'), MARY])
 
 # ---------------------------------------------------------------- ACT II
 sc('II', 'ghf-19160201-1', '1916-02-01', 'February 1916', "The 1916 tenancy", 'Great House Farm', 'AB',
@@ -423,14 +423,14 @@ sc('II', 'ghf-19160201-1', '1916-02-01', 'February 1916', "The 1916 tenancy", 'G
    ledger={'S': 'Seed (a landlord\'s wording, not the family\'s): the words "the whole farm" in a Bute tenancy (Bute can only let Parcel B)'})
 sc('II', 'ghf-19280101-1', '1928-01-01', '1928', "Last rent on the house", 'Great House Farm', 'A',
    "Mary's statement",
-   "Mary Williams's statement records that in 1928 the last quarry machinery left, and John Williams paid a final rent of about £4 to Alfred Thomas. She saw the receipt. It is missing.",
+   "Mary (Nancy) Williams's statement records that in 1928 the last quarry machinery left, and John Williams paid a final rent of about £4 to Alfred Thomas. She saw the receipt. It is missing.",
    [MARY, w('/1877-agreement/#takes-effect', 'The 1877 Agreement — takes effect 1928'),
     LRT('deeds-before-registration', 'Land Registry Titles — deeds before registration (15 May 1924 agreement)'), w('/forensic-master-chronology-authoritative-corrected-6-october-2026/', 'Forensic Master Chronology (6 October 2026)', 'Analysis'), w('/the-two-parcels/', 'The Two Parcels')],
    aliases=['ghf-19240515-1'],
    ledger={'A': 'Freehold: the Williamses (Bute → Thomas → Williams; 1877 agreement and 1928 receipt kept at the house)'})
 sc('II', 'ghf-19360101-1', '1936-01-01', '1936', "Marriage", 'Great House Farm', 'A',
    'Newspaper',
-   "Mary Williams marries Frederick Buckler, who comes to live at the farmhouse. They have seven children. The Western Mail of 5 August 1936 reports the wedding of Mr. Fred Buckler of Barry and Miss Mary Doreen (Nancy) Williams of Great House Farm (snippet only).",
+   "Mary (Nancy) Williams marries Frederick Buckler, who comes to live at the farmhouse. They have seven children. The Western Mail of 5 August 1936 reports the wedding of Mr. Fred Buckler of Barry and Miss Mary Doreen (Nancy) Williams of Great House Farm (snippet only).",
    [{'type': 'Newspaper', 'title': 'EV-0230 — Western Mail, 5 August 1936, p.10: "Llandough Bride", Buckler–Williams wedding (SNIPPET ONLY; wiki evidence page)', 'url': WIKI + '/evidence/ev-0230-western-mail-1936-llandough-bride-buckler-williams/'},
     w('/frederick-buckler/#marriage', 'Frederick Buckler — marriage'), w('/frederick-buckler/', 'Frederick Buckler'),
     w('/williams-buckler-family/', 'The Williams / Buckler Family')],
@@ -476,7 +476,7 @@ sc('III', 'ghf-19490202-1', '1949-02-02', '2 February 1949', "The 1949 tenancy",
            'B': 'Freehold: Western Ground Rents · tenant: Frederick Buckler (unwritten, from 1949)'})
 sc('III', 'ghf-19500601-1', '1950-06-01', 'June 1950 – c. 1952', "The blanket box", 'Great House Farm', 'A',
    "Mary's statement",
-   "Mary Williams's statement records that in June 1950 Mr Knapp, a Penarth estate agent, placed a lodger, Bruce Sutherland, at the farmhouse. He stayed about two years, and later told her he had taken \"the papers which were in the blanket box including the agreement relating to the farm\" and given them to Mr Knapp.",
+   "Mary (Nancy) Williams's statement records that in June 1950 Mr Knapp, a Penarth estate agent, placed a lodger, Bruce Sutherland, at the farmhouse. He stayed about two years, and later told her he had taken \"the papers which were in the blanket box including the agreement relating to the farm\" and given them to Mr Knapp.",
    [MARY, w('/1877-agreement/#papers-taken', 'The 1877 Agreement — papers taken'), w('/scrutiny-and-accountability/case-analysis-connections-patterns-questions/', 'Case Analysis — Connections, Patterns and Questions', 'Analysis'), w('/scrutiny-and-accountability/master-scrutiny-issue-register/additions-2026-10-06/', 'Register Additions — 6 October 2026 (A-080: Mr Knapp)', 'Analysis')],
    ledger={'A': 'Freehold: the Williamses · their deeds taken from the blanket box (missing from now on; title buried, not extinguished)'})
 sc('III', 'ghf-19521010-1', '1952-10-10', '1952 – 53', "Last rent on the fields", "Landlords' agents", 'B',
@@ -497,7 +497,7 @@ sc('III', 'ghf-19550318-1', '1955-03-18', '18 March 1955', 'Leckwith Woods lease
    [w('/evidence/ev-0259-leckwith-woods-1955-cardiff-forestry-commission-lease-and-boundary-measure/', 'EV-0259 — Western Mail 1955: Leckwith Woods lease; boundary measurement', 'Newspaper')])
 sc('III', 'ghf-19581119-1', '1958-11-19', '19 November 1958', "\"A Welsh case of Crichel Down\"", 'Glamorgan County Council planning committee, Cardiff', 'A',
    'Newspaper',
-   "Mary Williams, as Mrs M. D. Buckler, objects to Glamorgan County Council's planning committee about industrial development beside Tŷ Mawr. The Western Mail reports her saying that land \"farmed by her family since 1667\" had been \"wrongfully appropriated\", that \"This is a Welsh case of Crichel Down\", and that \"the water was cut off from her house and grounds for nearly 10 years by order of Western Ground Rents\".",
+   "Mary (Nancy) Williams, as Mrs M. D. Buckler, objects to Glamorgan County Council's planning committee about industrial development beside Tŷ Mawr. The Western Mail reports her saying that land \"farmed by her family since 1667\" had been \"wrongfully appropriated\", that \"This is a Welsh case of Crichel Down\", and that \"the water was cut off from her house and grounds for nearly 10 years by order of Western Ground Rents\".",
    [{'type': 'Newspaper', 'title': 'Western Mail, 20 November 1958, p.7, "It\'s a Crichel Down, says woman farmer" (SNIPPET ONLY: read from British Newspaper Archive search text; the page itself not yet seen)',
      'url': 'https://www.britishnewspaperarchive.co.uk/search/results/1950-01-01/1965-12-31?basicsearch=buckler+%22western+ground+rents%22+water&exactsearch=false&retrievecountrycounts=false'},
     w('/evidence/ev-0037-western-mail-1958-crichel-down/', 'EV-0037 — Western Mail, 1958: "Crichel Down"'),
@@ -525,7 +525,7 @@ sc('III', 'ghf-19630601-1', '1963-06-01', 'June 1963', "Committal proceedings", 
 sc('III', 'ghf-19650301-1', '1965-03-02', 'January – March 1965', "1965 tenancy offer", "Landlords' agents", 'A',
    'Document',
    "On 2 March 1965 the landlord's agents offer \"Mrs Williams\" a weekly tenancy of the farmhouse and garden at £2 a week. It is not signed or returned and no rent is paid.",
-   [w('/1962-possession-order/#offer-1965', 'The 1965 offer'), w('/mary-williams/#chronology', 'Mary Williams — 1965 offer')],
+   [w('/1962-possession-order/#offer-1965', 'The 1965 offer'), w('/mary-williams/#chronology', 'Mary (Nancy) Williams — 1965 offer')],
    ledger={'S': 'Attempt 5: weekly tenancy offered to "Mrs Williams" (not signed; her occupation now treated as adverse)'})
 sc('III', 'ghf-19640101-1', '1965-06-01', '1964 – 68', "Reported sale by the eldest son", 'Great House Farm', '?',
    'Source pending',
@@ -570,7 +570,7 @@ sc('IV', 'ghf-19740703-1', '1974-07-03', '3 July 1974', "1974 possession action"
    ledger={'A': 'Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)'})
 sc('IV', 'ghf-19741031-1', '1974-10-31', 'September – October 1974', "The 1974 letters", 'Great House Farm', 'A',
    'Court record',
-   "On 19 September 1974 BP is given leave to enforce the 1962 order; Mary had not been given notice. On 31 October the warrant is withdrawn, and BP writes to \"Mrs Buckler (Mrs Williams)\" that she may remain in the farmhouse under licence. She does not accept.",
+   "On 19 September 1974 BP is given leave to enforce the 1962 order; Mary had not been given notice. On 31 October the warrant is withdrawn, and BP writes to \"Mary Buckler\" (the family copy; the Court of Appeal describes the letters as addressed to Mrs Buckler, \"described again as Mrs Williams\") that she may remain in the farmhouse under licence. She does not accept.",
    [w('/1974-licence-letters/#letters', 'The 1974 Licence Letters', 'Court record'), JUDG,
     w('/1974-licence-letters/#warrant', 'The 1974 Licence Letters — the warrant', 'Court record')],
    aliases=['ghf-19741031-2', 'ghf-19740919-1'],
@@ -612,10 +612,10 @@ sc('IV', 'ghf-19830223-1', '1983-02-23', '23 February 1983', "Farmhouse title", 
    "On 23 February 1983 BP's solicitors apply to register the farmhouse and garden as a separate title, WA240304, on the 1975 conveyance, certifying they know of no question or doubt affecting the title.",
    [LRT('first-registration', 'Land Registry Titles — first registration'), LEGAL],
    ledger={'S': 'Paper: registered as a separate title, WA240304, on the 1975 conveyance ("no question or doubt")'})
-sc('IV', 'ghf-19830326-1', '1983-03-26', '26 March 1983', "Death of Mary Williams", 'Great House Farm', 'A',
+sc('IV', 'ghf-19830326-1', '1983-03-26', '26 March 1983', "Death of Mary (Nancy) Williams", 'Great House Farm', 'A',
    'Source pending',
-   "Mary Williams dies in the farmhouse on 26 March 1983. Her son William inherits her estate.",
-   [w('/mary-williams/#death', 'Mary Williams — death'), w('/williams-buckler-family/', 'The Williams / Buckler Family — William')],
+   "Mary (Nancy) Williams dies in the farmhouse on 26 March 1983. Her son William inherits her estate.",
+   [w('/mary-williams/#death', 'Mary (Nancy) Williams — death'), w('/williams-buckler-family/', 'The Williams / Buckler Family — William')],
    ledger={'A': 'Freehold claim passes to Billy Buckler, in occupation · never decided, never extinguished'})
 sc('IV', 'ghf-19830408-1', '1983-04-08', '8 April – 12 May 1983', "Registration correspondence", 'HM Land Registry', 'A',
    'Land Registry record',
@@ -938,7 +938,7 @@ sc('O', 'ghf-obvious-01', '9998-01-01', 'Plainly', "They were not squatters", ''
    [MARY, w('/williams-buckler-family/', 'The Williams / Buckler Family')])
 sc('O', 'ghf-obvious-02', '9998-01-02', 'Plainly', "Mary never asked for permission", '', '',
    'Analysis',
-   "Mary Williams refused the tenancies offered in 1959 and 1965 and did not accept the 1974 letters.",
+   "Mary (Nancy) Williams refused the tenancies offered in 1959 and 1965 and did not accept the 1974 letters.",
    [w('/1962-possession-order/#refusal-1959', 'The 1959 refusal', 'Court record'), w('/1962-possession-order/#offer-1965', 'The 1965 offer'), w('/1974-licence-letters/#letters', 'The 1974 Licence Letters', 'Court record')])
 sc('O', 'ghf-obvious-03', '9998-01-03', 'Plainly', "Nobody produced a deed to the house", '', '',
    'Analysis',
@@ -966,7 +966,7 @@ sc('O', 'ghf-obvious-08', '9998-01-08', 'Plainly', "The public was on their side
    [press('N03', "Daily Telegraph, 16 April 1974", 'ghf-e090-n03-1974-open-day-telegraph.jpg'), echo('03', '12 May 1988'), echo('08', '7 December 1988')])
 sc('O', 'ghf-obvious-09', '9998-01-09', 'Plainly', "The papers did not leave on their own", '', '',
    'Analysis',
-   "Mary Williams's statement records that the family papers were taken from the blanket box in 1950–52 by a lodger placed in the house by an estate agent, and given to the agent.",
+   "Mary (Nancy) Williams's statement records that the family papers were taken from the blanket box in 1950–52 by a lodger placed in the house by an estate agent, and given to the agent.",
    [MARY, w('/1877-agreement/#papers-taken', 'The 1877 Agreement — papers taken')])
 sc('O', 'ghf-obvious-10', '9998-01-10', 'Plainly', "A decision with no file", '', '',
    'Analysis',

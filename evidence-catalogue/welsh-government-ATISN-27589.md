@@ -31,7 +31,7 @@ https://wayback.bucklerfamily.estate
 ## Related
 - Prior: ATISN 27021 (FOI release: https://www.gov.wales/foi-release-27021-great-house-farm)
 - HubSpot ticket: 437332091110 (updated)
-- Two parcels; Mary Williams Parcel A; synthetic title by false permissive occupancy (working theory only; no allegations added)
+- Two parcels; Mary (Nancy) Williams Parcel A; synthetic title by false permissive occupancy (working theory only; no allegations added)
 
 ## Live WordPress
 Not written. Catalogue committed to GitHub only.

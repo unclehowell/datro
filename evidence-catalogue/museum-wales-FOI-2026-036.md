@@ -33,4 +33,4 @@ Reply of 8 October 2026 09:22 UTC (not-held close): the Museum has reviewed the 
 
 Requester follow-up of 10 October 2026 19:14 UTC: notes the not-held on the exclusion schedule and asks which systems were searched (collections database, search-export, review log, email, paper file) and whether a physical file was retrieved, by whom and on what date (FOIA s.16). Asks confirmation whether the MS 3360/3 catalogue or page names which Llandough (Llandough-juxta-Penarth or Llandough-juxta-Cowbridge); if not, say so. Treats Ref 13.2 as the Penarth hospital site unless a further recorded field says otherwise. Not asking for a new search or a document said not to be held.
 
-Working theory preserved, not rewritten: two parcels; Mary Williams owned Parcel A (house/garden). These museum hits are not shown to be that parcel.
+Working theory preserved, not rewritten: two parcels; Mary (Nancy) Williams owned Parcel A (house/garden). These museum hits are not shown to be that parcel.

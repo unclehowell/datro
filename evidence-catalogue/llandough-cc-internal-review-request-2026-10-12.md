@@ -22,7 +22,7 @@
 
 **Live WordPress:** not written.
 
-**Working theory (preserved, no new allegations):** two parcels; Mary Williams Parcel A; synthetic title by false permissive occupancy.
+**Working theory (preserved, no new allegations):** two parcels; Mary (Nancy) Williams Parcel A; synthetic title by false permissive occupancy.
 
 **Clocks:** original request clock stopped by 11 October s.12 refusal. This email starts internal review clock (requested within 20 working days), new request clocks, and SAR one-month clock from receipt. Preservation confirmation requested within 5 working days.
 

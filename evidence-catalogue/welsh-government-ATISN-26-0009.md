@@ -22,4 +22,4 @@ Location: Great House Farm / Tŷ Mawr / Llandough. Request asks for existing rec
 
 Outcome: acknowledgement. Request received 10 October 2026. Response by 6 November 2026. No exemptions, no physical check, no series/box/shelf/title/NPRN stated.
 
-Cross-check: not previously on wayback/text or evidence-catalogue. New HubSpot ticket created. https://bpvsbuckler.datro.xyz is the Ty Mawr storyboard and does not record this reference. Parcel context (two parcels; Mary Williams Parcel A) is separate and is not restated here.
+Cross-check: not previously on wayback/text or evidence-catalogue. New HubSpot ticket created. https://bpvsbuckler.datro.xyz is the Ty Mawr storyboard and does not record this reference. Parcel context (two parcels; Mary (Nancy) Williams Parcel A) is separate and is not restated here.
