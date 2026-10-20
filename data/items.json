@@ -1956,22 +1956,6 @@
 "origin": "wiki"
 },
 {
-"id": "u0919",
-"code": "E",
-"th": false,
-"t": "1881 census: John Williams farming at Llandough",
-"x": "The 1881 census for Llandough (RG11/5288, page 2), taken on 3 April 1881, lists John Williams, farmer, at “Llandough Home Farm”.",
-"d": "3 Apr 1881",
-"y": 1881.25,
-"src": [
-[
-"EV-0224 — Legal Wiki evidence page",
-"https://greathousefarmwiki.wordpress.com/evidence/ev-0224-1881-census-llandough-rg11-5288/"
-]
-],
-"origin": "wiki"
-},
-{
 "id": "u0713",
 "code": "H",
 "th": false,
@@ -2267,6 +2251,26 @@
 [
 "Legal Wiki: 1988: Possession and Demolition",
 "https://greathousefarmwiki.wordpress.com/demolition-1988/"
+]
+],
+"origin": "wiki"
+},
+{
+"id": "u0646",
+"code": "K",
+"th": false,
+"t": "WGR document reads as a small grazing let",
+"x": "The typed terms of a WGR document signed by John Williams show a monthly let at 8s, kept “as meadow or pasture”, filed by the DBDT catalogue among small Llandough plot lets. It reads as a separate grazing let, not a revised farm tenancy; page 1 (parcels and acreage) is not online (EV-0023). Compare the 1939 plan square.",
+"d": "1939",
+"y": 1939,
+"src": [
+[
+"Legal Wiki: Counter-Evidence & Disconfirmation",
+"https://greathousefarmwiki.wordpress.com/counter-evidence-disconfirmation/"
+],
+[
+"EV-0023 (Legal Wiki evidence page)",
+"https://greathousefarmwiki.wordpress.com/evidence/ev-0023-1939-wgr-john-williams-tenancy-plan/"
 ]
 ],
 "origin": "wiki"
@@ -2693,7 +2697,8 @@
 "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/legal-review-addendum-6-october-2026-fresh-reassessment/"
 ]
 ],
-"origin": "wiki"
+"origin": "wiki",
+"band": "law"
 },
 {
 "id": "u0417",
@@ -2751,26 +2756,6 @@
 [
 "Legal Wiki: 1988: Possession and Demolition",
 "https://greathousefarmwiki.wordpress.com/demolition-1988/#demolition"
-]
-],
-"origin": "wiki"
-},
-{
-"id": "u0646",
-"code": "K",
-"th": false,
-"t": "WGR document reads as a small grazing let",
-"x": "The typed terms of a WGR document signed by John Williams show a monthly let at 8s, kept “as meadow or pasture”, filed by the DBDT catalogue among small Llandough plot lets. It reads as a separate grazing let, not a revised farm tenancy; page 1 (parcels and acreage) is not online (EV-0023).",
-"d": "1939",
-"y": 1939.42,
-"src": [
-[
-"Legal Wiki: Counter-Evidence & Disconfirmation",
-"https://greathousefarmwiki.wordpress.com/counter-evidence-disconfirmation/"
-],
-[
-"EV-0023 (Legal Wiki evidence page)",
-"https://greathousefarmwiki.wordpress.com/evidence/ev-0023-1939-wgr-john-williams-tenancy-plan/"
 ]
 ],
 "origin": "wiki"
@@ -2873,7 +2858,8 @@
 "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/"
 ]
 ],
-"origin": "wiki"
+"origin": "wiki",
+"band": "law"
 },
 {
 "id": "u2007",
@@ -2908,17 +2894,21 @@
 "origin": "wiki"
 },
 {
-"id": "u3047",
-"code": "E",
+"id": "u2883",
+"code": "K",
 "th": false,
-"t": "Limitation Act 1980 s.32: fraud and concealment",
-"x": "Section 32 of the Limitation Act 1980 postpones limitation in actions based on fraud, deliberate concealment of a relevant fact, or mistake, until the claimant discovers it or could with reasonable diligence have done so. The statutory conditions must be met for each cause of action.",
-"d": "1980",
-"y": 1980.01,
+"t": "1938 particulars: possibly a different farm",
+"x": "Sale particulars of 15 Nov 1938 (Glamorgan Archives DSA/6/1158) for “Great House Farm, Llandough” name D.J. Jenkins as owner and a sale for £5,500 to L.D. Thomas of Porthcawl. Possibly a different farm: a 1938 Western Mail report places a Great House Farm of that sale near Cowbridge.",
+"d": "15 Nov 1938",
+"y": 1938.87,
 "src": [
 [
-"Legal Wiki: The Tightrope",
-"https://greathousefarmwiki.wordpress.com/the-tightrope/"
+"Legal Wiki: Source Conflicts Register — Where Public-Authority Replies and the Wiki Disagree",
+"https://greathousefarmwiki.wordpress.com/records-access-chronology/source-conflicts-register/"
+],
+[
+"Legal Wiki: GHF-E106-R52 — Glamorgan Archives email, 11 June 2026",
+"https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/ghf-e106-r52-glamorgan-archives-email-11-june-2026/"
 ]
 ],
 "origin": "wiki"
@@ -3065,7 +3055,8 @@
 "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/"
 ]
 ],
-"origin": "wiki"
+"origin": "wiki",
+"band": "law"
 },
 {
 "id": "u2602",
@@ -3205,7 +3196,8 @@
 "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/legal-review-addendum-6-october-2026-fresh-reassessment/"
 ]
 ],
-"origin": "wiki"
+"origin": "wiki",
+"band": "law"
 },
 {
 "id": "u2248",
@@ -3641,12 +3633,13 @@
 "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/master-scrutiny-issue-register/additions-2026-10-06/"
 ]
 ],
-"origin": "wiki"
+"origin": "wiki",
+"band": "law"
 },
 {
 "id": "u2968",
 "code": "C",
-"th": false,
+"th": true,
 "t": "Farm papers taken from the blanket box, 1950",
 "x": "The statement of Mary (Nancy) Williams records that a lodger placed at the farmhouse in June 1950 by a Penarth estate agent later told her he had taken “the papers which were in the blanket box including the agreement relating to the farm” and given them to the agent.",
 "d": "Jun 1950",
@@ -4227,7 +4220,7 @@
 "id": "u2888",
 "code": "K",
 "th": false,
-"t": "1924 sale’s “Great House” lay in Llanfair parish",
+"t": "1924 “Great House”: possibly a different farm",
 "x": "Museum Wales (7 Oct 2026) records that the “Great House” in the 1924 Llandough Estate sale particulars (MS 3360/3) was occupied by W.G. Thomas & Sons, comprised about 202 acres and lay in the Parish of Llanfair, the Llandough near Cowbridge, not this farm.",
 "d": "1924",
 "y": 1924.5,
@@ -4313,7 +4306,8 @@
 "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/master-scrutiny-issue-register/additions-2026-10-06/"
 ]
 ],
-"origin": "wiki"
+"origin": "wiki",
+"band": "law"
 },
 {
 "id": "u3071",
@@ -4327,6 +4321,26 @@
 [
 "Legal Wiki: The Two Parcels",
 "https://greathousefarmwiki.wordpress.com/the-two-parcels/"
+]
+],
+"origin": "wiki"
+},
+{
+"id": "u3098",
+"code": "H",
+"th": false,
+"t": "Death of William (Billy) Buckler, 1990",
+"x": "William (Billy) Buckler, born at Great House Farm around 1948–49, the middle one of seven children, died in 1990 at Llandough Hospital. Two dates are on record: 29 May 1990, and 29 April 1990 in the probate calendar (William Beverley Buckler of Penarth).",
+"d": "29 Apr or 29 May 1990",
+"y": 1990.41,
+"src": [
+[
+"Legal Wiki: The Williams / Buckler Family",
+"https://greathousefarmwiki.wordpress.com/williams-buckler-family/"
+],
+[
+"Legal Wiki: Great House Farm (Tŷ Mawr)",
+"https://greathousefarmwiki.wordpress.com/great-house-farm/"
 ]
 ],
 "origin": "wiki"
@@ -4439,22 +4453,6 @@
 [
 "EV-0080 (Legal Wiki evidence page)",
 "https://greathousefarmwiki.wordpress.com/evidence/ev-0080-bp-properties-v-buckler-judgment/"
-]
-],
-"origin": "wiki"
-},
-{
-"id": "u1187",
-"code": "E",
-"th": false,
-"t": "Limitation postponed for fraud or concealment",
-"x": "Section 32 of the Limitation Act 1980 can postpone limitation where an action is based on fraud, deliberate concealment or mistake, until it was discovered or could reasonably have been discovered. Deliberate concealment requires intentional conduct.",
-"d": "1980",
-"y": 1980,
-"src": [
-[
-"Legal Wiki: Forensic Master Chronology — Authoritative Corrected Version (6 October 2026)",
-"https://greathousefarmwiki.wordpress.com/forensic-master-chronology-authoritative-corrected-6-october-2026/"
 ]
 ],
 "origin": "wiki"
@@ -4660,26 +4658,6 @@
 "origin": "wiki"
 },
 {
-"id": "u2883",
-"code": "K",
-"th": false,
-"t": "1938 particulars name another owner",
-"x": "Stephenson & Alexander sale particulars of 15 Nov 1938 (Glamorgan Archives DSA/6/1158) for “Great House Farm, Llandough” name D.J. Jenkins as owner and a sale for £5,500 to L.D. Thomas of Porthcawl. Which Llandough farm they describe is unresolved.",
-"d": "15 Nov 1938",
-"y": 1938.87,
-"src": [
-[
-"Legal Wiki: Source Conflicts Register — Where Public-Authority Replies and the Wiki Disagree",
-"https://greathousefarmwiki.wordpress.com/records-access-chronology/source-conflicts-register/"
-],
-[
-"Legal Wiki: GHF-E106-R52 — Glamorgan Archives email, 11 June 2026",
-"https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/ghf-e106-r52-glamorgan-archives-email-11-june-2026/"
-]
-],
-"origin": "wiki"
-},
-{
 "id": "u1327",
 "code": "C",
 "th": true,
@@ -4714,7 +4692,7 @@
 {
 "id": "u2319",
 "code": "K",
-"th": false,
+"th": true,
 "t": "1881 census: John Williams at “Llandough Home Farm”",
 "x": "The 1881 census records John Williams, 53, “Farmer of 170 [or 120] ac.”, with his wife Mary and children at “Llandough Home Farm”, Llandough (RG11/5288 p.2). Working theory: the census entry refers to Great House Farm under another name (EV-0224).",
 "d": "3 Apr 1881",
@@ -4877,7 +4855,8 @@
 "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/legal-review-addendum-6-october-2026-fresh-reassessment/"
 ]
 ],
-"origin": "wiki"
+"origin": "wiki",
+"band": "law"
 },
 {
 "id": "u2847",
@@ -5213,7 +5192,8 @@
 "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/procedural-fairness-notice/1983-first-registration-parcel-a-title-basis-alleged-hmlr-mistake/"
 ]
 ],
-"origin": "wiki"
+"origin": "wiki",
+"band": "law"
 },
 {
 "id": "u0107",
@@ -5245,7 +5225,8 @@
 "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/case-analysis-connections-patterns-questions/"
 ]
 ],
-"origin": "wiki"
+"origin": "wiki",
+"band": "law"
 },
 {
 "id": "u0615",
@@ -5385,7 +5366,8 @@
 "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/"
 ]
 ],
-"origin": "wiki"
+"origin": "wiki",
+"band": "law"
 },
 {
 "id": "u2011",
@@ -5521,7 +5503,8 @@
 "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/case-analysis-connections-patterns-questions/"
 ]
 ],
-"origin": "wiki"
+"origin": "wiki",
+"band": "law"
 },
 {
 "id": "u1180",
@@ -5905,7 +5888,8 @@
 "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/case-analysis-connections-patterns-questions/"
 ]
 ],
-"origin": "wiki"
+"origin": "wiki",
+"band": "law"
 },
 {
 "id": "u0977",
@@ -6017,7 +6001,8 @@
 "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/master-scrutiny-issue-register/additions-2026-10-06/"
 ]
 ],
-"origin": "wiki"
+"origin": "wiki",
+"band": "law"
 },
 {
 "id": "u3427",
@@ -7128,6 +7113,22 @@
 "origin": "wiki"
 },
 {
+"id": "u0005",
+"code": "E",
+"th": false,
+"t": "1939 tenancy plan shows Parcel B only",
+"x": "The plan attached to the 1939 tenancy shows the land let as Parcel B, the fields east of the house, not the farmhouse plot (Parcel A). The plan is held. Read beside the WGR grazing-let square, which cuts against it.",
+"d": "1939",
+"y": 1939,
+"src": [
+[
+"Legal Wiki: 1938–39: Sale to WGR and the Revised Tenancy",
+"https://greathousefarmwiki.wordpress.com/1939-revised-tenancy/"
+]
+],
+"origin": "wiki"
+},
+{
 "id": "u0509",
 "code": "K",
 "th": false,
@@ -7540,22 +7541,6 @@
 "origin": "wiki"
 },
 {
-"id": "u0302",
-"code": "E",
-"th": false,
-"t": "Limitation does not run during concealment",
-"x": "Under section 32 of the Limitation Act 1980, time does not run while fraud or deliberate concealment keeps the relevant facts hidden; key records, including the 1924 record, have only recently come to light.",
-"d": "1980",
-"y": 1980,
-"src": [
-[
-"Legal Wiki: Anticipated Objections and the Family’s Answers",
-"https://greathousefarmwiki.wordpress.com/constructive-criticism-counterarguments/"
-]
-],
-"origin": "wiki"
-},
-{
 "id": "u0421",
 "code": "C",
 "th": false,
@@ -7713,7 +7698,8 @@
 "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/legal-review-addendum-6-october-2026-fresh-reassessment/"
 ]
 ],
-"origin": "wiki"
+"origin": "wiki",
+"band": "law"
 },
 {
 "id": "u2090",
@@ -8576,26 +8562,6 @@
 "origin": "wiki"
 },
 {
-"id": "u3098",
-"code": "H",
-"th": false,
-"t": "Death of William (Billy) Buckler, 1990",
-"x": "William (Billy) Buckler, born at Great House Farm around 1948–49, the middle one of seven children, died on 29 May 1990 at Llandough Hospital; the probate calendar date of 29 April 1990 conflicts.",
-"d": "29 May 1990",
-"y": 1990.41,
-"src": [
-[
-"Legal Wiki: The Williams / Buckler Family",
-"https://greathousefarmwiki.wordpress.com/williams-buckler-family/"
-],
-[
-"Legal Wiki: Great House Farm (Tŷ Mawr)",
-"https://greathousefarmwiki.wordpress.com/great-house-farm/"
-]
-],
-"origin": "wiki"
-},
-{
 "id": "u2843",
 "code": "H",
 "th": false,
@@ -8873,7 +8839,8 @@
 "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/"
 ]
 ],
-"origin": "wiki"
+"origin": "wiki",
+"band": "law"
 },
 {
 "id": "u2374",
@@ -9509,7 +9476,8 @@
 "https://www.legislation.gov.uk/ukpga/1965/64/section/7/enacted"
 ]
 ],
-"origin": "wiki"
+"origin": "wiki",
+"band": "law"
 },
 {
 "id": "u1102",
@@ -10375,22 +10343,6 @@
 [
 "Legal Wiki: GHF-E141 — 31 July 1987 Court of Appeal judgment: BP Properties Ltd v Buckler [1987] EWCA Civ 2",
 "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e141-31-july-1987-court-of-appeal-judgment-bp-properties-v-buckler/"
-]
-],
-"origin": "wiki"
-},
-{
-"id": "u1188",
-"code": "E",
-"th": false,
-"t": "Takhar: fraud-obtained judgments can be set aside",
-"x": "Takhar v Gracefield Developments Ltd [2019] UKSC 13 allows a fresh action to set aside a judgment obtained by fraud. The fraud must concern how the judgment was obtained.",
-"d": "2019",
-"y": 2019.2,
-"src": [
-[
-"Legal Wiki: Forensic Master Chronology — Authoritative Corrected Version (6 October 2026)",
-"https://greathousefarmwiki.wordpress.com/forensic-master-chronology-authoritative-corrected-6-october-2026/"
 ]
 ],
 "origin": "wiki"
@@ -11437,7 +11389,8 @@
 "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/"
 ]
 ],
-"origin": "wiki"
+"origin": "wiki",
+"band": "law"
 },
 {
 "id": "u2390",
@@ -11515,6 +11468,22 @@
 [
 "Legal Wiki: Missing Records Register",
 "https://greathousefarmwiki.wordpress.com/missing-records-register/"
+]
+],
+"origin": "wiki"
+},
+{
+"id": "u3089",
+"code": "K",
+"th": false,
+"t": "1960s parcel sale (source pending)",
+"x": "A recollection records that Frederick’s eldest son sold a land parcel in the 1960s. Which parcel is unknown and no deed has been located (source pending).",
+"d": "1960s",
+"y": 1965,
+"src": [
+[
+"Legal Wiki: The Williams / Buckler Family",
+"https://greathousefarmwiki.wordpress.com/williams-buckler-family/"
 ]
 ],
 "origin": "wiki"
@@ -11619,22 +11588,6 @@
 [
 "Legal Wiki: HM Land Registry — correspondence with David Buckler (email)",
 "https://greathousefarmwiki.wordpress.com/evidence/hm-land-registry-correspondence/#m77"
-]
-],
-"origin": "wiki"
-},
-{
-"id": "u0005",
-"code": "E",
-"th": false,
-"t": "1939 tenancy plan shows Parcel B only",
-"x": "The plan attached to the 1939 tenancy shows the land let as Parcel B, the fields east of the house, not the farmhouse plot (Parcel A). The plan is held.",
-"d": "1939",
-"y": 1939.4,
-"src": [
-[
-"Legal Wiki: 1938–39: Sale to WGR and the Revised Tenancy",
-"https://greathousefarmwiki.wordpress.com/1939-revised-tenancy/"
 ]
 ],
 "origin": "wiki"
@@ -12275,22 +12228,6 @@
 [
 "Legal Wiki: The 1962 Possession Order",
 "https://greathousefarmwiki.wordpress.com/1962-possession-order/#committal"
-]
-],
-"origin": "wiki"
-},
-{
-"id": "u2951",
-"code": "H",
-"th": false,
-"t": "Probate entry for William Beverley Buckler, 1990",
-"x": "A probate calendar entry records a William Beverley Buckler of Penarth, died 29 April 1990; it is not yet confirmed as William (Billy) Buckler.",
-"d": "29 Apr 1990",
-"y": 1990.33,
-"src": [
-[
-"Legal Wiki: Testimony — William “Billy” Buckler",
-"https://greathousefarmwiki.wordpress.com/testimony/william-buckler/"
 ]
 ],
 "origin": "wiki"

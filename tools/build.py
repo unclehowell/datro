@@ -81,16 +81,18 @@ ERAS = [('Origins', 'before 1800', -1e9, 1800), ('Bute tenancy', '1800–1876', 
         ('Possession orders', '1955–1968', 1955, 1969), ('BP conveyances and licence letters', '1969–1981', 1969, 1982),
         ('Registration and litigation', '1982–1987', 1982, 1988), ('Eviction and demolition', '1988', 1988, 1989),
         ('Aftermath and redevelopment', '1989–1999', 1989, 2000), ('Later years', '2000–2025', 2000, 2026),
-        ('Records sought and answered', '2026', 2026, 3000), ('Undated', 'no date', None, None)]
+        ('Records sought and answered', '2026', 2026, 3000), ('Undated', 'no date', None, None),
+        ('Law and remedies', 'statute and case law', None, None)]
+UNDATED = len(ERAS) - 2; LAWBAND = len(ERAS) - 1
 def era_of(y):
-    if y is None: return len(ERAS) - 1
-    for i, e in enumerate(ERAS[:-1]):
+    if y is None: return UNDATED
+    for i, e in enumerate(ERAS[:UNDATED]):
         if e[2] <= y < e[3]: return i
-    return len(ERAS) - 2
+    return UNDATED - 1
 buckets = [{'b': [], 'w': []} for _ in ERAS]
 for it in items:
     if it.get('y') is None: it['y'] = year_of(it['d'])
-    buckets[era_of(it['y'])][COLOUR[it['code']]].append(it)
+    buckets[LAWBAND if it.get('band') == 'law' else era_of(it['y'])][COLOUR[it['code']]].append(it)
 for b in buckets:
     for k in 'bw': b[k].sort(key=lambda it: (it['y'] if it['y'] is not None else 9999, it['t']))
 def rows_for(cols):
