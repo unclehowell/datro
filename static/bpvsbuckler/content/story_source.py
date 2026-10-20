@@ -682,8 +682,8 @@ sc('VI', 'ghf-19881130-1', '1988-11-30', '29 – 30 November 1988', "Eviction", 
     press('N09', "South Wales Echo, 3 December 1988 — 'Billy's unhappy family'", 'ghf-e090-n09-1988-billys-unhappy-family.jpg')],
    image='/media/ghf-e090-n14-1988-echo-front-page.jpg',
    aliases=['ghf-press-n14', 'ghf-press-n15-04', 'ghf-press-n09'],
-   ledger={'A': 'Freehold claim: Billy Buckler, evicted 29 November 1988 · never adjudicated, never extinguished',
-           'M': 'WA231076, BP Properties · in possession from 29 November 1988'})
+   ledger={'A': 'Freehold claim: Billy Buckler, evicted 29/30 November 1988 · never adjudicated, never extinguished',
+           'M': 'WA231076, BP Properties · in possession from 29/30 November 1988'})
 sc('VI', 'ghf-19881201-1', '1988-12-01', '1 December 1988', "Belongings", 'Llandough Hospital', 'A',
    'Newspaper',
    "The family's belongings, including Mary's papers and photographs, are left in the house or put in the road.",
@@ -704,7 +704,7 @@ sc('VI', 'ghf-19881203-1', '1988-12-03', '3 – 5 December 1988', "Spot-listing"
    'Official correspondence',
    "Over the weekend of 3–5 December 1988 Cadw considers spot-listing without access to the interior.",
    [CADW_CRIT, press('N08', "South Wales Echo, 3 December 1988 — Cadw considering spot-listing")])
-sc('VI', 'ghf-19881204-1', '1988-12-04', '1988 — date not established (before 5 December 1988)', "Cadw inspection of the house", 'Great House Farm', 'A',
+sc('VI', 'ghf-19881204-1', '1988-12-04', '1988 (date not established)', "Cadw inspection of the house", 'Great House Farm', 'A',
    'Witness statement',
    "Cadw officers come into the house, carry out a survey and report, and remark on the roof beams being high (witness statement of Branwen, who lived at the farm until 1988, given on 19 October 2026). Cadw confirms in writing that the house was visited and assessed for listing by its inspectors; its two photographs are dated 29 July 1988. A further Cadw visit was announced for the weekend of 3–4 December 1988, and Cadw declined to list on 5 December. Our case: the inspection took place in the days before that refusal; the exact date is source pending.",
    [w('/evidence/ev-0255-witness-statement-branwen-cadw-inspection-1988/', 'EV-0255 — Witness statement of Branwen: Cadw inspection of the house, 1988', 'Witness statement'),
