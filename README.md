@@ -37,3 +37,12 @@ Live at dartboard.bucklerfamily.estate. The page is visual: a dartboard on top a
 - **Email links.** email.bucklerfamily.estate keys on its own record ids, not Gmail ids. `emailLinks` holds the emails matched to an archive record (date plus subject or body text); the rest open the archive's reference lookup with the subject, date and refs to search for.
 - **HER.** The Historic Environment Record (Glamorgan-Gwent HER, kept by Heneb) is its own institution. Its emails also count for Heneb, which runs it.
 - **Attached letters (19 Oct 2026).** An email can carry `from` (sender by role), `sum` (one-line summary), `q` (verbatim key passages) and `pdf` (the attached letter) in `src/data/avenues.ts`; a wheel cell can carry `docs`. The sheet shows them under "Attached letter" and "Key passages". First used for the two Welsh Government replies of 19 October 2026: ATISN 26-0010 (no files found) and Cadw ATISN 27589 (refused under FOIA s.14(2)). Public copies of both letters are in `public/docs/` (served at `/docs/…`) and in the Wayback archive under `pdf/foi/`. The only change from the originals is that the requester's personal email address is redacted.
+
+
+## Rights and licence
+
+© Williams–Buckler family. All rights reserved. Licence terms apply.
+
+The content and original code in this repository are not open source. You may read it, link to it and quote it fairly with credit. Any other copying, adaptation or commercial use (books, film, TV, documentary, podcasts, paid articles, AI training) needs a written licence first. Full terms: https://bucklerfamily.estate/licence/ · Apply: https://bucklerfamily.estate/enquire/ · See `LICENSE` and `NOTICE`. Third-party components keep their own licences.
+
+Our case, prospective. Not a finding of any court. Not legal advice. — Sion's Tab agent
