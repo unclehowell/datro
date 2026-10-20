@@ -347,7 +347,7 @@ export const parties: Party[] = [
     name: "Cardiff Register Office",
     short: "Registrars",
     kind: "authority",
-    remit: "Death registration of Mary Doreen (Nancy) Williams.",
+    remit: "Death registration of Mary Doreen (Nancy) Williams, formerly Buckler.",
     cells: {
       open: {
         status: "dormant",
