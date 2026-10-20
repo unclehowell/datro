@@ -17,7 +17,8 @@ Output (all paths relative to the wayback/ directory):
 Ids are "gm-" + the Gmail message id, so re-running is idempotent: an existing id is rewritten
 in place (same content -> same bytes), new mail is added, nothing is deleted.
 
-Privacy: email addresses, phone numbers, the family's private address and postcodes are
+Privacy: email addresses, phone numbers, the family's private address, postcodes and meeting joining
+details (video-call links, meeting IDs, passcodes) are
 redacted in everything published. Officials keep their names; addresses never leave Gmail.
 Usage: python3 gmail_ingest.py messages.json path/to/wayback [--generated 2026-10-19T00:00:00Z]
 """
@@ -60,7 +61,24 @@ def is_phone(s):
         return 10 <= len(d) <= 11 and not re.search(r"\d{4}-\d{2}-\d{2}", s)
     return False
 
+MEET_REPL = "[meeting joining details removed — available from the Clerk]"
+# Meeting joining details (video-call links, meeting IDs, passcodes, one-tap dial strings) never
+# go public: anyone holding them could join or disrupt a council meeting (21 Oct 2026).
+MEET_BLOCK_RE = re.compile(r"^((?:>[ \t]?)*)[ \t]*Topic:[^\n]*\n(?:.*\n){0,40}?.*zoom\.us/meetings/\S*[^\n]*$", re.M | re.I)
+MEET_URL_RE = re.compile(r"<?https?://(?:[\w-]+\.)*(?:zoom\.us|zoom\.com|zoomgov\.com|meet\.google\.com|teams\.microsoft\.com/l/meetup-join|teams\.live\.com/meet|[\w-]+\.webex\.com)/[^\s>]*>?", re.I)
+MEET_LINE_RE = re.compile(r"(?im)^((?:>[ \t]?)*)[ \t]*(?:Meeting ID|Webinar ID|Conference ID|Passcode|Password|Pass code|PIN)\s*[:#][^\n]*$")
+MEET_DIAL_RE = re.compile(r"[^\n]*,,\d{6,}#[^\n]*")
+
+def redact_meeting(t, c):
+    t, n1 = MEET_BLOCK_RE.subn(lambda m: m.group(1) + MEET_REPL, t)
+    t, n2 = MEET_URL_RE.subn(MEET_REPL, t)
+    t, n3 = MEET_LINE_RE.subn(lambda m: m.group(1) + MEET_REPL, t)
+    t, n4 = MEET_DIAL_RE.subn(MEET_REPL, t)
+    c["meeting"] += n1 + n2 + n3 + n4
+    return t
+
 def redact(t, c):
+    t = redact_meeting(t, c)
     t = MAILTO_RE.sub(lambda m: (c.update(["email"]) or "[email redacted]"), t)
     t = EMAIL_RE.sub(lambda m: (c.update(["email"]) or "[email redacted]"), t)
     def ph(m):
