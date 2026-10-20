@@ -11,9 +11,9 @@ const OLD_SITE = "Great House Farm Projects — PRINCE2";
 const WIKI_HOST = ["greathousefarmwiki", "wordpress", "com"].join(".");
 const WIKI_RE = new RegExp("https?://" + WIKI_HOST.replace(/\./g, "\\.") + "[^\"'\\s<>)]*", "g");
 const A_RE = new RegExp("<a\\b([^>]*?)href=\"(https?://" + WIKI_HOST.replace(/\./g, "\\.") + "[^\"]*)\"([^>]*)>([\\s\\S]*?)</a>", "g");
-export const NAV_LINKS = [["/", `<strong>${SITE}</strong>`], ["/estate/asset-register/", "Asset register"], ["/estate/pid/", "PID"], ["/estate/risk-register/", "Registers"], ["/estate/highlight-reports/", "Reports"], ["/workstreams/evidence-recovery/", "Evidence recovery"]];
+export const NAV_LINKS = [["/", `<strong>${SITE}</strong>`], ["/overview/", "Overview"], ["/estate/asset-register/", "Asset register"], ["/estate/pid/", "PID"], ["/estate/risk-register/", "Registers"], ["/estate/highlight-reports/", "Reports"], ["/workstreams/evidence-recovery/", "Evidence recovery"]];
 const NAV_INNER = NAV_LINKS.map(([h, t]) => `<a href="${h}">${t}</a>`).join('<span class="sep" aria-hidden="true"> · </span>');
-export const FOOT = `<footer class="sl-foot"><div class="sl-foot-in"><a class="sl-foot-title" href="/">${SITE}</a><a href="/estate/mandate/">Mandate</a><a href="/estate/asset-register/">Asset register</a><a href="/workstreams/evidence-recovery/">Workstream: evidence recovery</a><a href="https://bucklerfamily.estate/">bucklerfamily.estate campus</a><a href="/posts.json">posts.json</a></div></footer>`;
+export const FOOT = `<footer class="sl-foot"><div class="sl-foot-in"><a class="sl-foot-title" href="/">${SITE}</a><a href="/">PID (home)</a><a href="/overview/">Overview</a><a href="/estate/mandate/">Mandate</a><a href="/estate/asset-register/">Asset register</a><a href="/workstreams/evidence-recovery/">Workstream: evidence recovery</a><a href="https://bucklerfamily.estate/">bucklerfamily.estate campus</a><a href="/posts.json">posts.json</a></div></footer>`;
 
 function localMap(dir) {
   const m = new Map();
@@ -60,12 +60,25 @@ export function fixPosts(dir) {
   if (ch || out !== fs.readFileSync(p, "utf8")) fs.writeFileSync(p, out);
   return ch;
 }
+
+// Home page (Sion, 20 Oct 2026): the site's front page IS the Project Initiation Documentation. index.html is written from
+// estate/pid/index.html on every build (so the two never drift); /estate/pid/ keeps working; the former front page lives at /overview/.
+const CANON = '<link rel="canonical" href="https://projects.bucklerfamily.estate/"/>';
+export function homeFromPid(dir = publicDir) {
+  const src = path.join(dir, "estate", "pid", "index.html"); if (!fs.existsSync(src)) return false;
+  let t = fs.readFileSync(src, "utf8");
+  if (!t.includes('rel="canonical"')) { t = t.replace("</head>", "  " + CANON + "\n</head>"); fs.writeFileSync(src, t); }
+  const out = path.join(dir, "index.html");
+  if (fs.existsSync(out) && fs.readFileSync(out, "utf8") === t) return false;
+  fs.writeFileSync(out, t); return true;
+}
 export function runEstate(dir = publicDir) {
   const map = localMap(dir); const stats = { files: 0, changed: 0, local: 0, plain: 0, text: 0 };
   (function walk(d) { for (const f of fs.readdirSync(d)) { const p = path.join(d, f);
     if (fs.statSync(p).isDirectory()) { if (f !== "assets") walk(p); }
     else if (/\.(html|txt|xml)$/.test(f)) { stats.files++; const t = fs.readFileSync(p, "utf8"); const o = f.endsWith(".html") ? fixHtml(t, map, dir, stats) : t.split(WIKI_HOST).join("the Great House Farm wiki"); if (o !== t) { fs.writeFileSync(p, o); stats.changed++; } } } })(dir);
   stats.posts = fixPosts(dir);
+  stats.home = homeFromPid(dir);
   return stats;
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(new URL(import.meta.url).pathname)) console.log("estate", JSON.stringify(runEstate()));
