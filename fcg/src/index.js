@@ -103,7 +103,7 @@ function relabel(res, state) {
 }
 
 const NAV = `<header class="sl-nav"><nav class="top" aria-label="Site"><a href="/"><strong>${BRAND}</strong></a><a href="/theory/">Theory</a><a href="/case">Our case</a><a href="/case#inst">Institutions</a><a class="sl-ghost" href="/mandate">Mandate</a></nav></header>`;
-const FOOT = `<footer class="sl-foot"><div class="sl-foot-in"><a class="sl-foot-title" href="/">${BRAND} — ${BRAND_LONG}</a><a href="/">Accountability Index</a><a href="/theory/">Theory home</a><a href="/case">Our case</a><a href="/mandate">Mandate</a><a href="/graphql">GraphQL</a><a href="https://projects.bucklerfamily.estate/">Projects (PRINCE2)</a><a href="https://greathousefarmwiki.wordpress.com/">Legal Wiki</a><a href="https://bucklerfamily.estate/">bucklerfamily.estate campus</a></div></footer>`;
+const FOOT = `<footer class="sl-foot"><div class="sl-foot-in"><a class="sl-foot-title" href="/">${BRAND} — ${BRAND_LONG}</a><a href="/">Accountability Index</a><a href="/theory/">Theory home</a><a href="/case">Our case</a><a href="/mandate">Mandate</a><a href="/graphql">GraphQL</a><a href="https://projects.bucklerfamily.estate/">Projects (PRINCE2)</a><a href="https://greathousefarmwiki.wordpress.com/">Legal Wiki</a><a href="https://bucklerfamily.estate/">Cedwyn Estate map</a></div></footer>`;
 
 function shell({ title, description = "", kind, main }) {
   return `<!DOCTYPE html>
