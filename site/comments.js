@@ -9,6 +9,9 @@
   var started = Date.now(), feed = {}, single = document.body.getAttribute("data-post");
   var LS = { get: function (k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }, set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
   var ICON = {
+    x: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>',
+    prev: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.5 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    next: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     like: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 8.5v8h-3v-8zm1.5 8V9l3.2-5.6c.3-.5.9-.7 1.4-.4.6.3.9 1 .7 1.6L12.6 8h3.6c1 0 1.8.9 1.6 1.9l-1.1 5.3c-.2.8-.9 1.3-1.7 1.3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>',
     likeOn: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8.5h3.5v8.5H3zm5 8.5V9l3.2-5.6c.3-.5.9-.7 1.4-.4.6.3.9 1 .7 1.6L12.6 8h3.6c1 0 1.8.9 1.6 1.9l-1.1 5.3c-.2.8-.9 1.3-1.7 1.3z" fill="currentColor"/></svg>',
     cmt: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3c4.4 0 7.5 2.9 7.5 6.5S14.4 16 10 16c-1 0-1.9-.1-2.7-.4L3.5 17l1-3.1C3.3 12.7 2.5 11.2 2.5 9.5 2.5 5.9 5.6 3 10 3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>',
@@ -24,7 +27,9 @@
   function ago(ts) { var s = (Date.now() - new Date(ts).getTime()) / 1000; if (!(s >= 0)) s = 0; if (s < 60) return "Just now"; if (s < 3600) return Math.floor(s / 60) + "m"; if (s < 86400) return Math.floor(s / 3600) + "h"; if (s < 604800) return Math.floor(s / 86400) + "d"; if (s < 2419200) return Math.floor(s / 604800) + "w"; try { return new Date(ts).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }); } catch (e) { return ""; } }
   function pidOf(a) { return a.id.toLowerCase(); }
   function link(id) { return location.origin + "/p/" + id + ".html"; }
-  function myName() { return LS.get("ghfc-name", "") || "Guest"; }
+  var ME = null; // signed-in family member (from /m/api/me), else null: guests comment as before
+  function myName() { return ME ? ME.name : (LS.get("ghfc-name", "") || "Guest"); }
+  function avImg(src, size, href, label) { var pa = el(href ? "a" : "span", "fbc-av fbc-av-img"); if (href) { pa.href = href; pa.setAttribute("aria-label", label + " profile"); } var pi = el("img"); pi.src = src; pi.alt = ""; pi.width = pi.height = size; pi.loading = "lazy"; pa.appendChild(pi); pa.style.width = pa.style.height = size + "px"; return pa; }
   var liked = LS.get("ghfc-likes", {});
   function mine() { var m = LS.get("ghfc-mine", []), now = Date.now(); return m.filter(function (x) { return x.status === "pending" ? now - x.at < 14 * 864e5 : now - x.at < 6e5; }); }
   function remember(post, c, status) { var m = mine(); m.push({ post: post, status: status, at: Date.now(), c: c }); LS.set("ghfc-mine", m.slice(-50)); }
@@ -35,11 +40,13 @@
 
   function commentNode(st, c, isReply) {
     var wrap = el("div", "fbc-c" + (isReply ? " fbc-r" : "")); wrap.id = "c-" + c.id;
-    if (c.host && c.avatar) { var pa = el("a", "fbc-av fbc-av-img"); pa.href = c.profile || "/profile/paul/"; pa.setAttribute("aria-label", c.name + " profile"); var pi = el("img"); pi.src = c.avatar; pi.alt = ""; pi.width = pi.height = isReply ? 24 : 32; pa.appendChild(pi); pa.style.width = pa.style.height = (isReply ? 24 : 32) + "px"; wrap.appendChild(pa); }
+    if ((c.host || c.member) && c.avatar) wrap.appendChild(avImg(c.avatar, isReply ? 24 : 32, c.profile || (c.host ? "/profile/paul/" : ""), c.name));
+    else if (c.member && c.profile) { var ia = el("a", "fbc-avl"); ia.href = c.profile; ia.setAttribute("aria-label", c.name + " profile"); ia.appendChild(avatar(c.name, isReply ? 24 : 32)); wrap.appendChild(ia); }
     else wrap.appendChild(avatar(c.name, isReply ? 24 : 32, c.agent));
     var col = el("div", "fbc-col");
     var bub = el("div", "fbc-bub"), nm = el("div", "fbc-nm");
-    if (c.host && c.profile) { var na = el("a", "fbc-pn"); na.href = c.profile; na.appendChild(el("b", null, c.name)); nm.appendChild(na); } else nm.appendChild(el("b", null, c.name || "Guest"));
+    if ((c.host || c.member) && c.profile) { var na = el("a", "fbc-pn"); na.href = c.profile; na.appendChild(el("b", null, c.name)); nm.appendChild(na); } else nm.appendChild(el("b", null, c.name || "Guest"));
+    if (c.member) { var mm = el("span", "fbc-mem", "Member"); mm.title = "Signed-in family member"; nm.appendChild(mm); }
     if (c.agent) { var bd = el("span", "fbc-bot", "🤖 AI agent"); bd.title = "Posted by an AI agent (self-declared)"; nm.appendChild(bd); }
     bub.appendChild(nm); var tx = el("div", "fbc-tx"); tx.textContent = c.text; bub.appendChild(tx);
     var key = st.post + "/" + c.id, n = c.likes || 0;
@@ -62,7 +69,7 @@
   function composer(st, opts) {
     opts = opts || {};
     var f = el("form", "fbc-form" + (opts.reply ? " fbc-form-r" : "")); f.noValidate = true;
-    var av = avatar(myName(), opts.reply ? 24 : 32); f.appendChild(av);
+    var av = ME && ME.avatar ? avImg(ME.avatar, opts.reply ? 24 : 32, ME.profile, ME.name) : avatar(myName(), opts.reply ? 24 : 32); f.appendChild(av);
     var col = el("div", "fbc-col");
     var pill = el("div", "fbc-pill");
     var ta = el("textarea"); ta.rows = 1; ta.maxLength = 1000; ta.placeholder = opts.reply ? "Reply to " + opts.to + "…" : "Write a comment…"; ta.setAttribute("aria-label", ta.placeholder); ta.enterKeyHint = "send";
@@ -70,15 +77,15 @@
     pill.appendChild(ta); pill.appendChild(send); col.appendChild(pill);
     var hp = el("input", "fbc-hp"); hp.name = "website"; hp.tabIndex = -1; hp.autocomplete = "off"; hp.setAttribute("aria-hidden", "true"); col.appendChild(hp);
     var sub = el("div", "fbc-sub"); var as = el("span", null, "Commenting as "); var nb = el("button", "fbc-name", myName()); nb.type = "button"; nb.title = "Change your display name";
-    as.appendChild(nb); sub.appendChild(as); var msg = el("span", "fbc-msg"); msg.setAttribute("role", "status"); sub.appendChild(msg); col.appendChild(sub); f.appendChild(col);
-    nb.addEventListener("click", function () { var v = prompt("Your display name (optional, shown with your comments):", LS.get("ghfc-name", "")); if (v === null) return; v = v.replace(/\s+/g, " ").trim().slice(0, 40); LS.set("ghfc-name", v); document.querySelectorAll(".fbc-name").forEach(function (b) { b.textContent = v || "Guest"; }); document.querySelectorAll(".fbc-form > .fbc-av").forEach(function (a) { a.textContent = initials(v || "Guest"); a.style.setProperty("--h", hue(v || "Guest")); }); });
+    if (ME) { nb.disabled = true; nb.title = "Signed in as " + ME.name; nb.classList.add("fbc-name-me"); } as.appendChild(nb); if (ME) as.appendChild(el("span", "fbc-mem", "Member")); sub.appendChild(as); var msg = el("span", "fbc-msg"); msg.setAttribute("role", "status"); sub.appendChild(msg); col.appendChild(sub); f.appendChild(col);
+    nb.addEventListener("click", function () { if (ME) return; var v = prompt("Your display name (optional, shown with your comments):", LS.get("ghfc-name", "")); if (v === null) return; v = v.replace(/\s+/g, " ").trim().slice(0, 40); LS.set("ghfc-name", v); document.querySelectorAll(".fbc-name").forEach(function (b) { b.textContent = v || "Guest"; }); document.querySelectorAll(".fbc-form > .fbc-av").forEach(function (a) { a.textContent = initials(v || "Guest"); a.style.setProperty("--h", hue(v || "Guest")); }); });
     function grow() { ta.style.height = "auto"; ta.style.height = Math.min(ta.scrollHeight, 160) + "px"; send.disabled = ta.value.trim().length < 2; }
     ta.addEventListener("input", grow);
     ta.addEventListener("keydown", function (e) { if (e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); if (!send.disabled) f.requestSubmit ? f.requestSubmit() : f.dispatchEvent(new Event("submit", { cancelable: true })); } });
     f.addEventListener("submit", function (e) {
       e.preventDefault(); var text = ta.value.trim(); if (text.length < 2 || send.disabled) return;
       send.disabled = true; msg.textContent = "Posting…";
-      var body = { post: st.post, name: myName(), text: text, website: hp.value, started: started }; if (opts.parent) body.parent = opts.parent;
+      var body = { post: st.post, name: myName(), text: text, website: hp.value, started: started }; if (opts.parent) body.parent = opts.parent; if (ME && ME.token) body.member_token = ME.token;
       api("/api/comments", body).then(function (d) {
         if (d && d.ok && d.comment) {
           ta.value = ""; grow(); msg.textContent = "";
@@ -94,7 +101,8 @@
     f._ta = ta; return f;
   }
 
-  function wire(a) {
+  function wire(a, o) {
+    o = o || {};
     if (a.querySelector(".fbc")) return;
     var post = pidOf(a), data = feed[post] || { likes: 0, count: 0, top: [] };
     var st = { post: post, all: false, comments: (data.top || []).slice(), count: data.count || 0, likes: data.likes || 0 };
@@ -108,7 +116,7 @@
     function paintLike() { var on = !!liked[post]; lb.innerHTML = (on ? ICON.likeOn : ICON.like) + "<span>Like</span>"; lb.classList.toggle("on", on); lb.setAttribute("aria-pressed", on); }
     cb.innerHTML = ICON.cmt + "<span>Comment</span>"; sb.innerHTML = ICON.share + "<span>Share</span>";
     lb.addEventListener("click", function () { var on = !liked[post]; if (on) liked[post] = 1; else delete liked[post]; LS.set("ghfc-likes", liked); st.likes = Math.max(0, st.likes + (on ? 1 : -1)); paintLike(); paintBar(); likeReq(post, null, on).then(function (d) { if (d && typeof d.likes === "number") { st.likes = d.likes; paintBar(); } }).catch(function () {}); });
-    sb.addEventListener("click", function () { var url = link(post), title = (a.querySelector(".pt") || {}).textContent || document.title; if (navigator.share) { navigator.share({ title: "Williams / Buckler family · farmbook", text: title.slice(0, 120), url: url }).catch(function () {}); } else if (navigator.clipboard) { navigator.clipboard.writeText(url).then(function () { toast("Link copied"); }, function () { prompt("Copy this link:", url); }); } else prompt("Copy this link:", url); });
+    sb.addEventListener("click", function () { var url = o.link || link(post), title = o.title || (a.querySelector(".pt") || {}).textContent || document.title; if (navigator.share) { navigator.share({ title: "Williams / Buckler family · farmbook", text: title.slice(0, 120), url: url }).catch(function () {}); } else if (navigator.clipboard) { navigator.clipboard.writeText(url).then(function () { toast("Link copied"); }, function () { prompt("Copy this link:", url); }); } else prompt("Copy this link:", url); });
     var box = el("div", "fbc"), list = el("div", "fbc-list"), more = el("button", "fbc-more"); more.type = "button";
     var form = composer(st);
     cb.addEventListener("click", function () { form._ta.focus(); form._ta.scrollIntoView({ block: "center", behavior: "smooth" }); });
@@ -169,15 +177,86 @@
     more.addEventListener("click", loadAll);
     box.appendChild(more); box.appendChild(list); box.appendChild(form);
     var nt = el("p", "fbc-note"); nt.innerHTML = NOTE.replace(/&/g, "&amp;").replace(/</g, "&lt;") + ' No sign-in; we keep your display name, comment and time, no email or IP. <a href="https://bucklerfamily.estate/privacy/#comments">Privacy</a> · <a href="/api/">API for AI agents</a>';
-    box.appendChild(nt); if (!single) { nt.hidden = true; form._ta.addEventListener("focus", function () { nt.hidden = false; }); }
+    box.appendChild(nt); if (!single && !o.full) { nt.hidden = true; form._ta.addEventListener("focus", function () { nt.hidden = false; }); }
     if (old) { old.parentNode.insertBefore(bar, old); old.parentNode.replaceChild(acts, old); } else { a.appendChild(bar); a.appendChild(acts); }
     acts.parentNode.insertBefore(box, acts.nextSibling);
     paintBar(); paintLike(); render();
-    if (single) loadAll();
+    if (single || o.full) loadAll();
+    return st;
+  }
+
+
+  // ---- photo viewer: every archive photo (img[data-ph]) opens with its own likes, comments and share, like a post ----
+  var LBX = null;
+  function photoList() { var seen = {}, out = []; document.querySelectorAll("img[data-ph]").forEach(function (im) { var id = im.getAttribute("data-ph"); if (!seen[id] && !im.closest(".fbl")) { seen[id] = 1; out.push(im); } }); return out; }
+  function photoInfo(im) {
+    var id = im.getAttribute("data-ph"), art = im.closest("article.post[id]"), fig = im.closest("figure"), cap = fig && fig.querySelector("figcaption");
+    var when = art ? (art.querySelector(".pd time") || {}).textContent : (cap && cap.querySelector("strong") ? cap.querySelector("strong").textContent : "");
+    var href = (im.closest("a") && /\.(jpe?g|png|webp)$/i.test(im.closest("a").getAttribute("href") || "")) ? im.closest("a").href : im.currentSrc || im.src;
+    return { id: id, src: href, alt: im.alt || "Photo", cap: cap, when: when || "", post: art ? art.id.toLowerCase() : null, link: location.origin + location.pathname + "#photo=" + id };
+  }
+  function openPhoto(im, push) {
+    var list = photoList(), i = list.indexOf(im); if (i < 0) return;
+    var p = photoInfo(im);
+    if (!LBX) {
+      LBX = el("div", "fbl"); LBX.setAttribute("role", "dialog"); LBX.setAttribute("aria-modal", "true"); LBX.tabIndex = -1;
+      LBX.innerHTML = '<div class="fbl-stage"><button type="button" class="fbl-x" aria-label="Close">' + ICON.x + '</button><a class="fbl-logo" href="/index.html">farmbook</a><button type="button" class="fbl-nav fbl-prev" aria-label="Previous photo">' + ICON.prev + '</button><img class="fbl-img" alt=""><button type="button" class="fbl-nav fbl-next" aria-label="Next photo">' + ICON.next + '</button></div><div class="fbl-side"></div>';
+      document.body.appendChild(LBX);
+      LBX.querySelector(".fbl-x").addEventListener("click", closePhoto);
+      LBX.querySelector(".fbl-prev").addEventListener("click", function () { step(-1); });
+      LBX.querySelector(".fbl-next").addEventListener("click", function () { step(1); });
+      LBX.querySelector(".fbl-stage").addEventListener("click", function (e) { if (e.target === this) closePhoto(); });
+      var x0 = null, y0 = 0; var stg = LBX.querySelector(".fbl-stage");
+      stg.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+      stg.addEventListener("touchend", function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0; x0 = null; if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) step(dx < 0 ? 1 : -1); });
+      document.addEventListener("keydown", function (e) { if (!LBX || LBX.hidden) return; if (e.key === "Escape") closePhoto(); else if (e.target.tagName !== "TEXTAREA" && e.target.tagName !== "INPUT") { if (e.key === "ArrowRight") step(1); if (e.key === "ArrowLeft") step(-1); } });
+    }
+    LBX._list = list; LBX._i = i; LBX._from = LBX._from || document.activeElement;
+    var img = LBX.querySelector(".fbl-img"); img.src = p.src; img.alt = p.alt;
+    LBX.querySelector(".fbl-prev").hidden = i === 0; LBX.querySelector(".fbl-next").hidden = i === list.length - 1;
+    var side = LBX.querySelector(".fbl-side"); side.textContent = ""; side.scrollTop = 0;
+    var hd = el("div", "ph fbl-hd"); hd.innerHTML = '<a class="pav" href="/index.html"><img src="/img/crest.svg" alt="" width="40" height="40"></a>';
+    var who = el("div"); who.innerHTML = '<a class="pn" href="/index.html">Williams / Buckler family</a>'; var d = el("div", "pd"); d.textContent = (p.when ? p.when + " · " : "") + "Photo " + (i + 1) + " of " + list.length; who.appendChild(d); hd.appendChild(who); side.appendChild(hd);
+    var cap = el("div", "pt fbl-cap"); if (p.cap) { cap.innerHTML = p.cap.innerHTML; } else cap.textContent = p.alt; side.appendChild(cap);
+    if (p.post) { var sp = el("a", "fbl-post", "See the post"); sp.href = "/p/" + p.post + ".html"; side.appendChild(sp); }
+    var holder = el("div", "fbl-c"); holder.id = p.id; side.appendChild(holder);
+    wire(holder, { full: true, link: p.link, title: p.alt });
+    LBX.hidden = false; document.documentElement.classList.add("fbl-open");
+    if (push !== false) { try { history.replaceState(history.state, "", "#photo=" + p.id); } catch (e) {} }
+    LBX.focus({ preventScroll: true });
+    [list[i - 1], list[i + 1]].forEach(function (n) { if (n) { var pre = new Image(); pre.src = photoInfo(n).src; } });
+  }
+  function step(k) { if (!LBX) return; var n = LBX._list[LBX._i + k]; if (n) openPhoto(n); }
+  function closePhoto() {
+    if (!LBX) return; LBX.hidden = true; LBX.querySelector(".fbl-side").textContent = ""; document.documentElement.classList.remove("fbl-open");
+    try { history.replaceState(history.state, "", location.pathname + location.search); } catch (e) {}
+    if (LBX._from && LBX._from.focus) LBX._from.focus({ preventScroll: true }); LBX._from = null;
+  }
+  function photos() {
+    document.addEventListener("click", function (e) {
+      if (e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      var im = e.target.closest && e.target.closest("img[data-ph]"); if (!im || im.closest(".fbl")) return;
+      e.preventDefault(); openPhoto(im);
+    });
+    photoList().forEach(function (im) { im.setAttribute("role", "button"); im.tabIndex = im.closest("a") ? -1 : 0; im.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openPhoto(im); } }); });
+    var m = /#photo=(p-ph-[a-z0-9-]+)/.exec(location.hash);
+    if (m) { var im = document.querySelector('img[data-ph="' + m[1] + '"]'); if (im) openPhoto(im, false); }
   }
 
   function css() {
     var s = el("style"); s.textContent =
+
+      ".fbc-mem{display:inline-block;margin-left:6px;font-size:11px;font-weight:600;color:#3b5998;background:#e7f0fd;border-radius:4px;padding:1px 5px;vertical-align:1px}.fbc-avl{flex:none;text-decoration:none!important}.fbc-name-me{cursor:default!important;text-decoration:none!important}" +
+      "html.fbl-open{overflow:hidden}.fbl[hidden]{display:none!important}.fbl{position:fixed;inset:0;z-index:2147483600;background:#fff;display:flex;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch;outline:0}" +
+      ".fbl-stage{position:relative;flex:none;height:58vh;min-height:260px;background:#000;display:flex;align-items:center;justify-content:center}" +
+      ".fbl-img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}" +
+      ".fbl-x{position:absolute;left:10px;top:10px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(0,0,0,.55);color:#fff;display:grid;place-items:center;cursor:pointer;z-index:2}.fbl-x svg{width:22px;height:22px}" +
+      ".fbl-logo{position:absolute;left:58px;top:12px;color:#fff;font:800 22px/36px 'Helvetica Neue',Arial,sans-serif;letter-spacing:-.5px;text-decoration:none!important;z-index:2;text-shadow:0 1px 3px rgba(0,0,0,.6)}" +
+      ".fbl-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.85);color:#050505;display:grid;place-items:center;cursor:pointer;z-index:2;box-shadow:0 1px 4px rgba(0,0,0,.4)}.fbl-nav svg{width:24px;height:24px}.fbl-nav:hover{background:#fff}.fbl-prev{left:8px}.fbl-next{right:8px}.fbl-nav[hidden]{display:none}" +
+      ".fbl-side{flex:1 0 auto;background:#fff;color:#050505;padding-bottom:24px}.fbl-hd{padding:12px 16px 0}.fbl-cap{margin:8px 16px 4px;font-size:15px}.fbl-cap strong{display:block}.fbl-post{display:inline-block;margin:0 16px 4px;font-size:13px;font-weight:600}" +
+      ".fbl-c .fbc-bar,.fbl-c .fbc-acts{margin-left:16px;margin-right:16px}.fbl-c .fbc{padding:6px 16px 10px}" +
+      "@media (min-width:900px){.fbl{flex-direction:row;overflow:hidden}.fbl-stage{flex:1;height:auto}.fbl-side{flex:none;width:360px;overflow-y:auto;box-shadow:-1px 0 0 #ced0d4}.fbl-nav{width:48px;height:48px}.fbl-prev{left:16px}.fbl-next{right:16px}}" +
+      "@media (prefers-color-scheme:dark){.fbl,.fbl-side{background:#242526;color:#e4e6eb}}" +
       ".fbc-bar[hidden],.fbc [hidden]{display:none!important}" +
       ".fbc-bar{display:flex;align-items:center;justify-content:space-between;margin:8px 12px 0;min-height:22px;color:#65676b;font-size:14px}" +
       ".fbc-bl{display:flex;align-items:center;gap:5px}.fbc-bl svg{width:18px;height:18px}.fbc-bc{background:none;border:0;color:inherit;font:inherit;cursor:pointer;padding:0}.fbc-bc:hover{text-decoration:underline}" +
@@ -215,7 +294,10 @@
     css();
     var posts = document.querySelectorAll("article.post[id]");
     var go = function () { for (var i = 0; i < posts.length; i++) wire(posts[i]); };
-    fetch(API + "/api/feed").then(function (r) { return r.json(); }).then(function (d) { feed = (d && d.posts) || {}; go(); }).catch(go);
+    // signed-in family member (fail-safe: guests carry on if the members service is down or slow)
+    var me = new Promise(function (res) { var t = setTimeout(function () { res(null); }, 2500); fetch("/m/api/me", { credentials: "same-origin" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) { clearTimeout(t); res(d && d.signedIn && d.name ? d : null); }).catch(function () { clearTimeout(t); res(null); }); });
+    var fd = fetch(API + "/api/feed").then(function (r) { return r.json(); }).then(function (d) { feed = (d && d.posts) || {}; }).catch(function () {});
+    Promise.all([me, fd]).then(function (v) { ME = v[0]; go(); photos(); });
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
 })();
