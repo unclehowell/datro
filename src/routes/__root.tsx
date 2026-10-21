@@ -38,6 +38,8 @@ export const Route = createRootRoute({
       <head>
         <HeadContent />
         <script dangerouslySetInnerHTML={{ __html: GHF_LANG_LOADER }} />
+        {/* Header standard v2.0.3: synchronous loader, so the shared bars are in place before the first paint (React 19 skips nodes it did not render in <body>). */}
+        <script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.0.3" />
       </head>
       <body>
         <PreviewHostBridge />
