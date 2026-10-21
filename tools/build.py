@@ -136,7 +136,7 @@ for e in eras:
     for q in sorted([q for q in sq if eras[q['e']] is e], key=lambda q: (q['r'], q['c'])):
         col = 'b' if COLOUR[q['k']] == 'b' else 'w'
         src = ' · '.join(f'<a href="{html.escape(s[1])}" rel="noopener">{html.escape(s[0])}</a>' for s in q['src'])
-        th = '<em class="th">Our case, prospective. Not a finding of any court.</em>' if q['th'] else ''
+        th = '' if q['th'] else ''
         out.append(f'<li class="{col} k{q["k"]}" id="{q["id"]}"><span class="tag">{"Black" if col=="b" else "White"} · {KN[q["k"]]}</span> <span class="dt">{html.escape(q["d"] or "Undated")}</span><h3>{html.escape(q["t"])}</h3><p>{html.escape(q["x"])}</p>{th}<p class="src">{src} · <a href="/#s={q["id"]}">on the board</a></p></li>')
     out.append('</ol>')
 listhtml = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -148,7 +148,7 @@ listhtml = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta
 <main class="lv"><h1>The board as a list</h1><p class="note">Every square of the board in time order, era by era. Black: actions, legal framings and omissions against Williams/Buckler ownership. White: evidence of ownership, occupation, heritage and the trees. {sum(1 for q in sq if COLOUR[q['k']]=='b')} black and {sum(1 for q in sq if COLOUR[q['k']]=='w')} white squares. Built {built}.</p>
 <nav class="eras">{' · '.join(f'<a href="#era-{e["r0"]}">{html.escape(e["label"])}</a>' for e in eras)}</nav>
 {''.join(out)}
-<footer><p><strong>Our case, prospective. Not a finding of any court.</strong> Cited historic record from the Great House Farm Legal Wiki (greathousefarmwiki.wordpress.com).</p></footer></main></body></html>"""
+<footer><p>Cited historic record from the Great House Farm Legal Wiki (greathousefarmwiki.wordpress.com).</p></footer></main></body></html>"""
 (ROOT/'public/list').mkdir(parents=True, exist_ok=True); (ROOT/'public/list/index.html').write_text(listhtml)
 nb = sum(1 for q in sq if COLOUR[q['k']] == 'b'); nw = len(sq) - nb
 kinds = {}

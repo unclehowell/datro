@@ -29,14 +29,14 @@ occupation, heritage and lineage, and the trees and land. Rows are eras; squares
   Rows = 16 eras; columns = 16 kinds of evidence in four grade bands (Corroborated record, Documented, Inference, Theory not yet
   proven to a legal standard); symbols 1–9, A–G = 16 actors and records; boxes = an era band × a grade band. Each correct entry
   opens the record placed in that cell with its grade and a Visit website link; theory cells read as hypotheses with
-  "Our case, prospective. Not a finding of any court." Notes, same-symbol highlight, undo, hint, reveal cell, progress in localStorage.
+  "" Notes, same-symbol highlight, undo, hint, reveal cell, progress in localStorage.
 - **Difficulty by evidence grade.** `tools/sudoku16/gen.js 1987 12,9,5,1` removes givens band by band (12/9/5/1 per box), keeping
   exactly one solution and a no-guess logic solve. Measured: 111 givens; the Corroborated band needs only naked singles (solve
   wave 1.3 on average), Documented hidden singles (wave 2.8), Inference locked candidates (wave 15.9), Theory pairs (wave 22.1).
 - **Test:** `node tools/sudoku16/verify.js` (exactly one solution, equals the stored solution, logic-solvable, every cell has a record).
   **Gate:** `python3 tools/archive/gate.py` (banned wording + privacy grep over every public file, decoded).
 
-Our case, prospective. Not a finding of any court. — Sion's Tab agent
+ — Sion's Tab agent
 
 
 ## Rights and licence
@@ -45,4 +45,4 @@ Our case, prospective. Not a finding of any court. — Sion's Tab agent
 
 The content and original code in this repository are not open source. You may read it, link to it and quote it fairly with credit. Any other copying, adaptation or commercial use (books, film, TV, documentary, podcasts, paid articles, AI training) needs a written licence first. Full terms: https://bucklerfamily.estate/licence/ · Apply: https://bucklerfamily.estate/enquire/ · See `LICENSE` and `NOTICE`. Third-party components keep their own licences.
 
-Our case, prospective. Not a finding of any court. Not legal advice. — Sion's Tab agent
+ — Sion's Tab agent

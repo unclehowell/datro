@@ -102,13 +102,13 @@ function cardHTML(i){ var r=R(i),c=C(i),g=GR(i),v=SOL[i], q=B.sq[IDX[J.cards[i]]
     '<div class="sc-cell"><b>'+CH[v]+' · '+esc(J.syms[v-1][0])+'</b> in <b>'+esc(J.rows[r][0])+'</b> ('+esc(J.rows[r][1])+'), seen through <b>'+esc(J.cols[c])+'</b></div>';
   if(g===3) h+='<div class="sc-q">Hypothesis, '+esc(THQ[c-12])+': does this record point that way, and what evidence would prove or disprove it?</div>';
   h+='<div class="kindtag">'+esc(q.d||"Undated")+'</div><div class="ex-t">'+esc(q.t)+'</div><div class="ex-x">'+esc(q.x)+'</div>';
-  if(g===3||q.th) h+='<div class="theory">Our case, prospective. Not a finding of any court.</div>';
+  if(g===3||q.th) h+='';
   if(J.match[i]==="0") h+='<p class="note sc-el">The record placed here holds nothing direct on '+esc(J.syms[v-1][0])+' in this era. The symbol was found by elimination alone, and that gap is where evidence is still missing.</p>';
   h+='<div class="navrow">'+(u?'<a class="btn primary visit" href="'+esc(u)+'" target="_blank" rel="noopener">Visit website ↗</a>':'')+'<button class="btn" id="sc-board">Show on chessboard</button></div>';
   return h }
 function openCard(i,done){ var g=GR(i);
   $("sc-h").textContent=(P[i]?"Given · ":"Solved · ")+GRADE_SHORT[g]+" · row "+(R(i)+1)+", column "+(C(i)+1);
-  $("sc-b").innerHTML=(done?'<div class="won">The whole case sudoku is solved. Every actor has its place in every era, every kind of evidence and every box. Our case, prospective. Not a finding of any court.</div>':'')+cardHTML(i);
+  $("sc-b").innerHTML=(done?'<div class="won">The whole case sudoku is solved. Every actor has its place in every era, every kind of evidence and every box.</div>':'')+cardHTML(i);
   var sb=$("sc-board"); if(sb) sb.onclick=function(){ var id=J.cards[i]; closeCard(); if(window.ChessBoard){ ChessBoard.mode("chess"); setTimeout(function(){ ChessBoard.zoomTo(id,null,true) },80) } };
   $("su-card").classList.add("open"); $("sc-b").scrollTop=0 }
 function closeCard(){ $("su-card").classList.remove("open") }
@@ -123,7 +123,7 @@ function legend(){ var el=$("su-legend"); if(!el)return; var st=J.stats||{};
   '<li><span class="chip g0">Corroborated record</span> court judgments, registers and dated events on record, such as the 1969 sale, the 1987 judgment, the eviction of 30 Nov 1988 and the demolition of 6 Dec 1988. Many givens; the easiest moves solve it.</li>'+
   '<li><span class="chip g1">Documented</span> estate papers, letters, maps and press reports. Fewer givens.</li>'+
   '<li><span class="chip g2">Inference</span> timing, gaps, discrepancies and refusals. Sparse; needs locked candidates.</li>'+
-  '<li><span class="chip g3">Theory, not yet proven to a legal standard</span> fraud, concealment, government involvement and grounds to reopen, each posed as a question. Almost no givens; the hardest moves. Our case, prospective. Not a finding of any court.</li></ul></div>'+
+  '<li><span class="chip g3">Theory, not yet proven to a legal standard</span> fraud, concealment, government involvement and grounds to reopen, each posed as a question. Almost no givens; the hardest moves.</li></ul></div>'+
   '<p class="note">Checked by a solver: exactly one solution'+(st.givens?', '+st.givens+' givens':'')+', solvable by logic alone with no guessing. A solver working the easy moves first clears the Corroborated band first and the Theory band last.</p>';
   el.innerHTML=h }
 function fit(){ var wrap=$("su-wrap"); if(!wrap)return; var W=wrap.clientWidth-6; cs=Math.max(18,Math.min(44,Math.floor((W-36)/16))); setCS() }

@@ -148,7 +148,7 @@ function drawText(q,x,y,dark,px,i){
     var thH=q.th?bsz*1.25:0;
     var maxL=Math.floor((sy+w-pad-footH-thH-ty)/(bsz*1.3));
     if(maxL>0){ ctx.font=fontStr(400,bsz); ctx.fillStyle=bodyCol; var bl=wrap(q.x,iw,bsz,400,maxL); for(var k=0;k<bl.length;k++){ ctx.fillText(bl[k],sx+pad,ty); ty+=bsz*1.3 } }
-    if(q.th){ ctx.font=fontStr(600,q2(bsz*0.82)); ctx.fillStyle=dark?"#e6c983":"#7a5a10"; ctx.fillText(wrap("Theory · our case, prospective. Not a finding of any court.",iw,q2(bsz*0.82),600,1)[0],sx+pad,sy+w-pad-footH-thH+bsz*0.15) }
+    if(q.th){ ctx.font=fontStr(600,q2(bsz*0.82)); ctx.fillStyle=dark?"#e6c983":"#7a5a10"; ctx.fillText(wrap("Theory",iw,q2(bsz*0.82),600,1)[0],sx+pad,sy+w-pad-footH-thH+bsz*0.15) }
     // Read more tab
     var fh=bsz*1.75, fs=q2(bsz*0.9); ctx.font=fontStr(600,fs); var lab="Read more ›", lw=ctx.measureText(lab).width+fs*1.4;
     var fx=sx+pad, fy=sy+w-pad-fh;
@@ -233,7 +233,7 @@ function openPanel(i){ var q=B.sq[i],k=KIND[q.k]; opt.sel=i; dirty=true;
   var pa=$("p-arch"); if(pa){ pa.innerHTML='<div class="srcs-h">Full content of this square</div><p class="note">Loading…</p>';
     arChunks(i,function(ch){ if(opt.sel!==i)return; pa.innerHTML='<div class="srcs-h">Full content of this square · '+ch.length+' extract'+(ch.length===1?'':'s')+' from the archive edition and the public sites</div>'+ch.map(function(c){
       var sg=AR.idx.segs[c[0]]||[], u=sg[1]?visitURL(sg[1],c[4]):"";
-      return '<div class="ach"><div class="kindtag">'+esc(segLabel(c))+'</div>'+(c[2]?'<div class="theory">Our case, prospective. Not a finding of any court.</div>':'')+'<p>'+esc(c[3]).replace(/\n/g,"<br>")+'</p>'+
+      return '<div class="ach"><div class="kindtag">'+esc(segLabel(c))+'</div>'+(c[2]?'':'')+'<p>'+esc(c[3]).replace(/\n/g,"<br>")+'</p>'+
         (u?'<a class="btn visit sm" href="'+esc(u)+'" target="_blank" rel="noopener">'+(c[4]&&c[4].indexOf(":~:text=")>=0?"Visit website at this passage ↗":"Visit website ↗")+'</a>':'')+'</div>' }).join("") }) }
   panel.classList.add("open"); $("panel-bd").classList.add("open"); panel.querySelector(".sheet-b").scrollTop=0; history.replaceState(null,"","#s="+q.id);
 }
