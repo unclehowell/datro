@@ -430,7 +430,7 @@
   - 1916 – John Williams granted agricultural tenancy by Marquess of Bute
   - 1949 – Intended tenancy transfer from John Williams to Frederick Buckler
   - 1959 – Mary (Nancy) Williams, formerly Buckler asserted hereditary ownership claim
-  - 1969 – Great House Farm sold to BP Pension Trust Ltd
+  - 1969 – Parcel B, and an interest in the 1962 order on Parcel A, passed to BP Pension Trust Ltd (our case: not the whole farm)
   - 1970 – Llandough Primary School opened on former farm land
   - 1974 – Judge Watkin Powell granted leave to enforce 1962 possession order
   - 1974 – Mary (Nancy) Williams, formerly Buckler opposed eviction through press coverage
