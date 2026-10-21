@@ -10,7 +10,7 @@ SITE = os.path.join(ROOT, "site")
 BASE = "https://fb.bucklerfamily.estate"
 BOOT = '<script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.0.3"></script>'
 HONEST = "A reconstruction: these outlets’ real articles shown as if posted online. Not their own accounts."
-FOOT = "Our case, prospective. Not a finding of any court."
+FOOT = "A creative, educational retelling built from public records. Our case, prospective. Not a finding of any court."
 RECON = "A reconstruction: this announcement is written for this archive from the record in “Source”; the profile shown did not post it."
 RECON_E = "A reconstruction: this entry is written for this archive from the record in “Source”; the place, body or person shown did not post it."
 WORDING = "Words in [square brackets] are the archive’s: neutral words in place of the original’s, or gaps filled. Quotes from named people appear as their comments, word for word."
@@ -110,7 +110,7 @@ def composer(up=""):
     return ('<div class="fb-compose"><img src="%simg/social/you.svg" alt="" width="40" height="40"><a class="fb-pill" href="/m/login">What’s on your mind?</a><a class="fb-ic fb-ic-photo" href="/photos.html" aria-label="Photos">%s</a></div>' % (up, ico("photo")))
 
 def foot():
-    return ('<footer class="sb-foot"><p><strong>%s</strong></p><p>%s farmbook is the Williams / Buckler family archive’s own site. It is not affiliated with Meta or with any newspaper or broadcaster shown; their names, mastheads and logos identify the source of each article. Each post’s “Source” gives the citation. Tab.bot is an AI agent, labelled as such.</p></footer>'
+    return ('<footer class="sb-foot"><p><strong>%s</strong></p><p>%s The profiles here are characters in a retelling, written from the record; none is the person’s, place’s or body’s own account. farmbook is the Williams / Buckler family archive’s own site. It is not affiliated with Meta or with any newspaper or broadcaster shown; their names, mastheads and logos identify the source of each article. Each post’s “Source” gives the citation. Tab.bot is an AI agent, labelled as such.</p></footer>'
             '</body></html>') % (e(FOOT), e(HONEST))
 
 def link(u):
@@ -171,7 +171,7 @@ def card(p, up, single=False):
     h.append("</article>")
     return "".join(h)
 
-DECADES = [("1820s", "1820"), ("1860s", "1860"), ("1880s", "1880"), ("1890s", "1890"), ("1900s", "1900"), ("1930s", "1930"), ("1950s", "1950"), ("1960s", "1960"), ("1970s", "1970"), ("1980–87", "1980"), ("1988", "1988"), ("1989", "1989"), ("1990s", "1990"), ("2020s", "2020")]
+DECADES = [("1820s", "1820"), ("1860s", "1860"), ("1880s", "1880"), ("1890s", "1890"), ("1900s", "1900"), ("1930s", "1930"), ("1950s", "1950"), ("1960s", "1960"), ("1970s", "1970"), ("1980–87", "1980"), ("1988", "1988"), ("1989", "1989"), ("1990s", "1990"), ("2000s", "2000"), ("2020s", "2020")]
 def anchor_for(p):
     y = int(p["date"][:4]); best = None
     for lab, start in DECADES:
@@ -242,7 +242,12 @@ def build():
                         photos.append((src, cap, p["id"]))
         _s = set(); photos = [x for x in photos if not (x[0] in _s or _s.add(x[0]))]
         grid = "".join('<a href="%s"><img src="../%s" alt="%s" loading="lazy"></a>' % (("../n/%s.html" % pid) if pid else "../" + src, src, e(cap)) for src, cap, pid in photos) or "<p class=\"muted\">No photos yet.</p>"
-        about = '<p>%s</p>' % e(x["about"])
+        about = ''
+        if x.get("plaque"):
+            pq = x["plaque"]
+            about += ('<div class="plaque" role="note"><span class="plaque-ring">%s</span><strong>%s</strong><p>%s</p><p class="plaque-dates">%s</p><p class="plaque-now"><b>Now:</b> %s</p>'
+                      '<p class="plaque-foot">A virtual plaque. There is none on the ground. Sources: each entry below.</p></div>') % (e(x.get("initials", "")), e(x["name"]), e(pq["stood"]), e(pq["dates"]), e(pq["now"]))
+        about += '<p>%s</p>' % e(x["about"])
         if x.get("entity"): about += '<p class="muted">A profile written for this archive from the records named under each entry’s “Source”; this place, body or person did not post here.</p>'
         if x.get("ai"): about += '<p class="muted">Tab.bot is an AI agent. Its posts are written by it and checked against the record before they go up.</p>'
         if x.get("cover_credit"): about += '<p class="muted">Cover: %s</p>' % e(x["cover_credit"])
@@ -260,21 +265,33 @@ def build():
             body = '<h2 class="pf-h" id="posts">Posts</h2>' + "".join(card(p, "../") for p in mine)
             count = "%d post%s" % (len(mine), "" if len(mine) == 1 else "s")
         shared = [p for p in POSTS if slug in p.get("shares", [])]
+        if x.get("entity"):
+            count = "%d %s" % (len(mine), "entry" if len(mine) == 1 else "entries") + (" · %d shared" % len(shared) if shared else "")
+            body = body.replace('<h2 class="pf-h" id="posts">Posts</h2>', '<h2 class="pf-h" id="posts">In the record</h2>', 1) if mine else ""
         if shared:
             body += '<h2 class="pf-h" id="shared">Shared</h2>' + "".join(
                 '<a class="pf-c" href="../n/%s.html"><span><strong>%s</strong> shared %s’s post</span><span class="muted">%s · %s</span></a>' % (p["id"], e(x["name"]), e(prof(p["outlet"])["name"]), e(p["headline"]), e(p["when"])) for p in shared)
-        ptabs = '<nav class="pf-tabs">%s<a href="#about">About</a><a href="#photos">Photos</a></nav>' % ("".join('<a href="#%s">%s</a>' % (a, l) for a, l, ok in [("posts", "Posts", bool(mine)), ("comments", "Comments", is_person and not (mine and not any(1 for q in POSTS for c in q.get("comments", []) if (c["who"] if isinstance(c, dict) else c[0]) == slug)))] if ok) or '<a href="#posts">Posts</a>')
+        ptabs = '<nav class="pf-tabs">%s<a href="#about">About</a><a href="#photos">Photos</a></nav>' % ("".join('<a href="#%s">%s</a>' % (a, l) for a, l, ok in [("posts", "In the record" if x.get("entity") else "Posts", bool(mine)), ("comments", "Comments", is_person and not (mine and not any(1 for q in POSTS for c in q.get("comments", []) if (c["who"] if isinstance(c, dict) else c[0]) == slug)))] if ok) or '<a href="#posts">Posts</a>')
         prov = ('<p class="pf-prov"><a href="../%s">Restored photo · original</a></p>' % x["avatar_original"]) if x.get("avatar_original") else ""
         page = (cover + '<div class="pf-id"><img class="pf-av" src="../%s" alt="" width="120" height="120"><div><h1>%s%s</h1><p class="muted">%s · %s</p>%s</div></div>' % (x["avatar"], e(x["name"]), ('<span class="sp-ai" title="AI agent">AI</span>' if x.get("ai") else ""), e(x["kind"]), count, prov)
                 + ptabs + '<section class="pf-card" id="about"><h2 class="pf-h">About</h2>%s%s</section>' % (about, "" if is_person else '<p class="muted">A reconstruction of this outlet’s reports, not its own account.</p>')
                 + '<section class="pf-card" id="photos"><h2 class="pf-h">Photos</h2><div class="pf-grid">%s</div></section>' % grid + body)
         write("u/%s.html" % slug, head("%s · farmbook" % x["name"], x["about"], "u/x.html", x.get("cover") or x["avatar"], "u/%s.html" % slug) + "<body>" + top("", "../") + '<main id="main" class="sb-main sb-prof">' + page + "</main>" + tabs("", "../") + foot())
-    # profiles index
-    rows = []
-    for slug in list(PEO) + list(OUT):
+    # profiles index: the cast, grouped
+    def _row(slug):
         x = prof(slug); n = len([p for p in POSTS if p["outlet"] == slug]) if slug in OUT else len([1 for p in POSTS for c in p.get("comments", []) if (c["who"] if isinstance(c, dict) else c[0]) == slug]) + len([p for p in POSTS if p["outlet"] == slug])
-        rows.append('<a class="pl" href="u/%s.html"><img src="%s" alt="" width="48" height="48" loading="lazy"><span><strong>%s</strong><span class="muted">%s · %d %s</span></span></a>' % (slug, x["avatar"], e(x["name"]), e(x["kind"]), n, ("entry" if n == 1 else "entries") if x.get("entity") else ("posts and comments" if slug in PEO else "posts")))
-    write("profiles.html", head("Profiles · farmbook", "Every newspaper, broadcaster and person on farmbook.", "profiles.html") + "<body>" + top("pages") + '<main id="main" class="sb-main"><h1 class="sb-h1">Profiles</h1><div class="pf-card">%s</div></main>' % "".join(rows) + tabs("people") + foot())
+        if x.get("entity"): n += len([p for p in POSTS if slug in p.get("shares", [])])
+        return '<a class="pl" href="u/%s.html"><img src="%s" alt="" width="48" height="48" loading="lazy"><span><strong>%s</strong><span class="muted">%s · %d %s</span></span></a>' % (slug, x["avatar"], e(x["name"]), e(x["kind"]), n, ("entry" if n == 1 else "entries") if x.get("entity") else ("posts and comments" if slug in PEO else "posts"))
+    groups = [("The family", [s for s in PEO if not PEO[s].get("entity") and not PEO[s].get("ai")]),
+              ("People in the record", [s for s in PEO if PEO[s].get("entity") and PEO[s]["kind"].startswith("Person")]),
+              ("Places", [s for s in PEO if PEO[s].get("entity") and PEO[s]["kind"].startswith("Place")]),
+              ("Bodies and institutions", [s for s in PEO if PEO[s].get("entity") and not PEO[s]["kind"].startswith(("Person", "Place"))]),
+              ("Tab.bot", [s for s in PEO if PEO[s].get("ai")]),
+              ("Newspapers and broadcasters", list(OUT))]
+    rows = []
+    for title, slugs in groups:
+        if slugs: rows.append('<h2 class="pf-h">%s</h2>' % e(title)); rows += [_row(s) for s in slugs]
+    write("profiles.html", head("Profiles · farmbook", "The cast: the family, the people, places and bodies in the record, and every newspaper and broadcaster on farmbook.", "profiles.html") + "<body>" + top("pages") + '<main id="main" class="sb-main"><h1 class="sb-h1">Profiles</h1><div class="pf-card">%s</div></main>' % "".join(rows) + tabs("people") + foot())
     # posts.json merge (old timeline posts keep their entries; social posts added)
     pjp = os.path.join(SITE, "posts.json"); pj = json.load(open(pjp, encoding="utf-8"))
     old = [x for x in pj["posts"] if not x["id"].startswith(("n-", "d-", "r-"))]
