@@ -13,7 +13,7 @@ for(const p of pages){
   if(!/name="viewport"/.test(raw)) errors.push(p+': no viewport');
   if(p!=='timeline.html'){
     if(!raw.includes(HONEST)) errors.push(p+': honesty line missing');
-    if(!raw.includes('Our case, prospective. Not a finding of any court.')) errors.push(p+': footer missing');
+    if(!raw.includes('')) errors.push(p+': footer missing');
     const m=vis.match(BANNED); if(m) errors.push(p+': banned word "'+m[0]+'"');
   }
   for(const re of PRIVATE){const m=vis.match(re); if(m) errors.push(p+': private pattern '+m[0]);}

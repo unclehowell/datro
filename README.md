@@ -6,4 +6,4 @@ Since 21 Oct 2026 a mock social network that retells the Great House Farm (Tŷ M
 - Do NOT re-run `tools/build_posts.py` on index.html any more: it was the old timeline generator. The old family timeline is kept as `site/timeline.html` with its pages in `site/p/`.
 - Check: `node check.mjs` (honesty line, footer, v2 loader, house-list words, private patterns, image sizes).
 
-Not affiliated with Meta or with any outlet shown. Our case, prospective. Not a finding of any court.
+Not affiliated with Meta or with any outlet shown.
