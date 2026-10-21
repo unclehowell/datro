@@ -7,13 +7,13 @@ body{font-family:Barlow,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:
 a{color:var(--acc)}
 .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 main{max-width:760px;margin:0 auto;padding:10px 14px 32px}
-.top{display:flex;align-items:center;gap:10px;justify-content:space-between;margin:4px 0 18px}
+.tools{display:flex;align-items:center;gap:10px;justify-content:space-between;margin:4px 0 12px}
+.tl{font:inherit;font-size:14px;font-weight:600;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:999px!important;padding:8px 14px;cursor:pointer;text-decoration:none}
 .brand{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--fg);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:14px}
 .brand img{display:block}
 .ib{font:inherit;font-size:20px;line-height:1;width:42px;height:42px;display:inline-flex;align-items:center;justify-content:center;background:var(--panel);color:var(--fg);border:1px solid var(--line);border-radius:10px;cursor:pointer;text-decoration:none;flex:none}
 .join{font-size:14px;font-weight:600;text-decoration:none;color:var(--fg);border:1px solid var(--line);border-radius:999px;padding:8px 14px;background:var(--panel)}
-.top span{width:42px}
-.search label{display:block;font-size:clamp(22px,6.2vw,34px);line-height:1.15;font-weight:600;margin:6vh 0 14px;letter-spacing:-.01em}
+.search{margin-top:8px}
 .nw{white-space:nowrap;color:var(--mut);font-weight:500}
 .box{display:flex;border:1.5px solid var(--fg);border-radius:14px;overflow:hidden;background:var(--card)}
 .box input{flex:1;min-width:0;font:inherit;font-size:18px;padding:14px 14px;border:0;background:transparent;color:var(--fg);outline:none}
@@ -68,4 +68,4 @@ h1{font-size:26px;line-height:1.2;margin:0 0 8px}
 footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);color:var(--mut);font-size:13px}
 footer p{margin:6px 0}
 .small{font-size:12px}
-@media (min-width:900px){main{padding-top:18px}.search label{margin-top:10vh}}
+@media (min-width:900px){main{padding-top:18px}}
