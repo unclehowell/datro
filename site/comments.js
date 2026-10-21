@@ -5,7 +5,7 @@
 (function () {
   "use strict";
   var API = "https://comments.bucklerfamily.estate";
-  var NOTE = "Comments appear straight away. Be respectful; no allegations about named people. Posts that break this are hidden.";
+  var NOTE = "Comments appear straight away. Be respectful; no accusations about named people. Posts that break this are hidden.";
   var started = Date.now(), feed = {}, single = document.body.getAttribute("data-post");
   var LS = { get: function (k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }, set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
   var ICON = {
