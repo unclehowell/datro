@@ -150,7 +150,7 @@ INSERT INTO nodes VALUES ('scene:ghf-19890414-1','scene','VII.5 European Commiss
 INSERT INTO nodes VALUES ('scene:ghf-19891107-1','scene','VII.6 Outline application','{"date": "1989-11-07", "act": "VII", "grade": "documented"}');
 INSERT INTO nodes VALUES ('scene:ghf-19900223-1','scene','VII.7 Homes bid and a village-green request','{"date": "1990-02-23", "act": "VII", "grade": "single-source"}');
 INSERT INTO nodes VALUES ('scene:ghf-19900313-1','scene','VII.8 Outline permission','{"date": "1990-03-13", "act": "VII", "grade": "single-source"}');
-INSERT INTO nodes VALUES ('scene:ghf-19900529-1','scene','VII.9 Death of William Buckler','{"date": "1990-05-29", "act": "VII", "grade": "single-source"}');
+INSERT INTO nodes VALUES ('scene:ghf-19900529-1','scene','VII.9 Death of William Buckler','{"date": "1990-05-29", "act": "VII", "grade": "documented"}');
 INSERT INTO nodes VALUES ('scene:ghf-19900801-1','scene','VII.10 Evaluation trenches','{"date": "1990-08-01", "act": "VII", "grade": "documented"}');
 INSERT INTO nodes VALUES ('scene:ghf-19910821-1','scene','VII.11 Heritage record entry','{"date": "1991-08-21", "act": "VII", "grade": "single-source"}');
 INSERT INTO nodes VALUES ('scene:ghf-19920514-1','scene','VII.12 Reserved matters application','{"date": "1992-05-14", "act": "VII", "grade": "single-source"}');
@@ -162,7 +162,8 @@ INSERT INTO nodes VALUES ('scene:ghf-19940728-1','scene','VII.17 Finds to the Na
 INSERT INTO nodes VALUES ('scene:ghf-19941110-1','scene','VII.18 Woodland title and houses','{"date": "1994-11-10", "act": "VII", "grade": "documented"}');
 INSERT INTO nodes VALUES ('scene:ghf-19970516-1','scene','VII.19 Western Ground Rents wound up','{"date": "1997-05-16", "act": "VII", "grade": "single-source"}');
 INSERT INTO nodes VALUES ('scene:ghf-20050101-1','scene','VII.20 Publication','{"date": "2005-01-01", "act": "VII", "grade": "documented"}');
-INSERT INTO nodes VALUES ('scene:ghf-20190320-1','scene','VII.21 1990 assessment archived','{"date": "2019-03-20", "act": "VII", "grade": "single-source"}');
+INSERT INTO nodes VALUES ('scene:ghf-20051202-1','scene','VII.21 Woodland land sold','{"date": "2005-12-02", "act": "VII", "grade": "single-source"}');
+INSERT INTO nodes VALUES ('scene:ghf-20190320-1','scene','VII.22 1990 assessment archived','{"date": "2019-03-20", "act": "VII", "grade": "single-source"}');
 INSERT INTO nodes VALUES ('scene:ghf-20251117-1','scene','VIII.1 Records requests begin','{"date": "2025-11-17", "act": "VIII", "grade": "single-source"}');
 INSERT INTO nodes VALUES ('scene:ghf-20260323-1','scene','VIII.2 Land Registry reply','{"date": "2026-03-23", "act": "VIII", "grade": "documented"}');
 INSERT INTO nodes VALUES ('scene:ghf-20260419-1','scene','VIII.3 Complaint decisions','{"date": "2026-04-19", "act": "VIII", "grade": "single-source"}');

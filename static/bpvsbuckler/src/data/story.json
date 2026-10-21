@@ -9357,14 +9357,24 @@
    "title": "Death of William Buckler",
    "place": "Llandough",
    "parcel": "A",
-   "basis": "Source pending (date corrected from family information)",
-   "narration": "William Buckler died on 29 May 1990 at Llandough Hospital. Funeral and burial details require confirmation against the obituary and relevant records. The 1991 probate calendar lists a \"William Beverley Buckler\" of Penarth who died on 29 April 1990, with administration granted at Llandaff on 11 July 1991: a probable match, not proven, and the dates conflict.",
+   "basis": "Newspaper",
+   "narration": "William Buckler died on 29 May 1990 at Llandough Hospital. The South Wales Echo of Saturday 2 June 1990 reports that \"Billy died suddenly this week\", which fits 29 May, and that he \"made a detour around Llandough so never had to pass the site of Great House Farm\". The 1991 probate calendar lists a \"William Beverley Buckler\" of Penarth who died on 29 April 1990, with administration granted at Llandaff on 11 July 1991: a probable match, not proven, and the dates conflict.",
    "case": null,
    "evidence": [
     {
      "type": "Wiki page",
      "title": "The Williams / Buckler Family — William",
      "url": "https://greathousefarmwiki.wordpress.com/williams-buckler-family/"
+    },
+    {
+     "type": "Newspaper",
+     "title": "EV-0290 — South Wales Echo, 2 June 1990, p.2: \"Billy died suddenly this week\" (snippet; wiki evidence page)",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0290-snippet-only-south-wales-echo-2-jun-1990-p-2-billy-died-suddenly-this-week-he-made/"
+    },
+    {
+     "type": "Probate record",
+     "title": "EV-0274 — Probate calendar 1991: William Beverley Buckler (wiki evidence page)",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0274-probate-calendar-1991-william-beverley-buckler/"
     },
     {
      "type": "Public record",
@@ -9397,8 +9407,8 @@
    "moved": [
     "A"
    ],
-   "grade": "single-source",
-   "grade_text": "Single source: one primary record so far.",
+   "grade": "documented",
+   "grade_text": "Documented: two or more primary records.",
    "questions": [],
    "qa": [],
    "media": []
@@ -10143,7 +10153,7 @@
    "place": "Medieval Archaeology",
    "parcel": "?",
    "basis": "Archaeological record",
-   "narration": "The excavation is published in Medieval Archaeology 49 (2005): 1,026 burials, 814 articulated. On 22 December 2005 part of the woodland title is divided off.",
+   "narration": "The excavation is published in Medieval Archaeology 49 (2005): 1,026 burials, 814 articulated.",
    "case": null,
    "evidence": [
     {
@@ -10190,6 +10200,54 @@
    "media": []
   },
   {
+   "id": "ghf-20051202-1",
+   "act": "VII",
+   "date": "2005-12-02",
+   "when": "2 December 2005",
+   "title": "Woodland land sold",
+   "place": "Woodland (title WA735527)",
+   "parcel": "A",
+   "basis": "Company accounts",
+   "narration": "On 2 December 2005 Forest of Cardiff transfers land to Goldsworthy Homes, and on 22 December part of the woodland title is divided off. Forest of Cardiff's accounts for the year to 30 June 2006 record \"Sale of Land — Leckwith Road, Llandough 20,000\". Which land was sold is not known until the transfer plan is read.",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Company accounts",
+     "title": "EV-0217 — Forest of Cardiff accounts to 30 June 2006, note 13: \"Sale of Land — Leckwith Road, Llandough\" (wiki evidence page)",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0217-forest-of-cardiff-accounts-2006-sale-of-land-leckwith-road/"
+    }
+   ],
+   "image": null,
+   "aliases": [],
+   "no": 113,
+   "ref": "VII.21",
+   "cast": [],
+   "received": "The woodland charity sold a piece of land at Leckwith Road.",
+   "received_words": [
+    [
+     "\"Sale of Land\"",
+     "The charity's own accounts. The land was not on its balance sheet."
+    ]
+   ],
+   "known": "HELD (EV-0217, Companies House). £20,000 received in the year to 30 June 2006. Which land, and how the charity came to hold it in 1994, are open questions.",
+   "ledger": [
+    [
+     "A",
+     "Freehold claim: Mary's heirs · never adjudicated, never extinguished · woodland now registered to the Forest of Cardiff (WA735527) · land to the south a village green"
+    ],
+    [
+     "M",
+     "WA231076 and the house titles carved from it (Church View Close)"
+    ]
+   ],
+   "moved": [],
+   "grade": "single-source",
+   "grade_text": "Single source: one primary record so far.",
+   "questions": [],
+   "qa": [],
+   "media": []
+  },
+  {
    "id": "ghf-20190320-1",
    "act": "VII",
    "date": "2019-03-20",
@@ -10209,8 +10267,8 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 113,
-   "ref": "VII.21",
+   "no": 114,
+   "ref": "VII.22",
    "cast": [
     "ggat"
    ],
@@ -10256,7 +10314,7 @@
    "aliases": [
     "ghf-20260123-1"
    ],
-   "no": 114,
+   "no": 115,
    "ref": "VIII.1",
    "cast": [
     "mary",
@@ -10311,7 +10369,7 @@
    "aliases": [
     "ghf-20260213-1"
    ],
-   "no": 115,
+   "no": 116,
    "ref": "VIII.2",
    "cast": [
     "hmlr"
@@ -10445,7 +10503,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 116,
+   "no": 117,
    "ref": "VIII.3",
    "cast": [
     "hmlr"
@@ -10597,7 +10655,7 @@
    ],
    "image": "/media/1988-cadw-barn.jpg",
    "aliases": [],
-   "no": 117,
+   "no": 118,
    "ref": "VIII.4",
    "cast": [
     "cadw"
@@ -10757,7 +10815,7 @@
    "aliases": [
     "ghf-20260602-1"
    ],
-   "no": 118,
+   "no": 119,
    "ref": "VIII.5",
    "cast": [
     "hmlr"
@@ -10886,7 +10944,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 119,
+   "no": 120,
    "ref": "VIII.6",
    "cast": [],
    "received": null,
@@ -10934,7 +10992,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 120,
+   "no": 121,
    "ref": "VIII.7",
    "cast": [
     "bute"
@@ -11081,7 +11139,7 @@
    "aliases": [
     "ghf-20260918-1"
    ],
-   "no": 121,
+   "no": 122,
    "ref": "VIII.8",
    "cast": [
     "hmlr",
@@ -11139,7 +11197,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 122,
+   "no": 123,
    "ref": "VIII.9",
    "cast": [
     "bp",
@@ -11238,7 +11296,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 123,
+   "no": 124,
    "ref": "VIII.10",
    "cast": [],
    "received": null,
@@ -11307,7 +11365,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 124,
+   "no": 125,
    "ref": "VIII.11",
    "cast": [
     "hmlr",
@@ -11378,7 +11436,7 @@
    "aliases": [
     "ghf-20261005-1"
    ],
-   "no": 125,
+   "no": 126,
    "ref": "VIII.12",
    "cast": [
     "rcahmw"
@@ -11446,7 +11504,7 @@
     "ghf-20260922-1",
     "ghf-20261003-1"
    ],
-   "no": 126,
+   "no": 127,
    "ref": "VIII.13",
    "cast": [
     "ggat",
@@ -11537,7 +11595,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 127,
+   "no": 128,
    "ref": "VIII.14",
    "cast": [
     "wgr",
@@ -11650,7 +11708,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 128,
+   "no": 129,
    "ref": "O.1",
    "cast": [],
    "received": "A squatter was evicted after losing in court.",
@@ -11708,7 +11766,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 129,
+   "no": 130,
    "ref": "O.2",
    "cast": [
     "mary"
@@ -11763,7 +11821,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 130,
+   "no": 131,
    "ref": "O.3",
    "cast": [
     "wgr",
@@ -11814,7 +11872,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 131,
+   "no": 132,
    "ref": "O.4",
    "cast": [
     "bp"
@@ -11869,7 +11927,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 132,
+   "no": 133,
    "ref": "O.5",
    "cast": [
     "courts"
@@ -11930,7 +11988,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 133,
+   "no": 134,
    "ref": "O.6",
    "cast": [
     "billy"
@@ -11996,7 +12054,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 134,
+   "no": 135,
    "ref": "O.7",
    "cast": [],
    "received": "An old building was cleared for housing.",
@@ -12065,7 +12123,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 135,
+   "no": 136,
    "ref": "O.8",
    "cast": [
     "mps"
@@ -12125,7 +12183,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 136,
+   "no": 137,
    "ref": "O.9",
    "cast": [
     "mary"
@@ -12181,7 +12239,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 137,
+   "no": 138,
    "ref": "O.10",
    "cast": [
     "cadw"
@@ -12295,7 +12353,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 138,
+   "no": 139,
    "ref": "O.11",
    "cast": [
     "mary",
@@ -12356,7 +12414,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 139,
+   "no": 140,
    "ref": "E.1",
    "cast": [],
    "received": "A landlord and its successors recovered their farm from tenants who stayed on without paying, and the courts confirmed it.",
@@ -12435,7 +12493,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 140,
+   "no": 141,
    "ref": "E.2",
    "cast": [],
    "received": "It was always one farm, and nobody suggested otherwise.",
@@ -12497,7 +12555,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 141,
+   "no": 142,
    "ref": "E.3",
    "cast": [],
    "received": "A modern estate on a former farm.",
@@ -12545,7 +12603,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 142,
+   "no": 143,
    "ref": "E.4",
    "cast": [],
    "received": null,
@@ -12593,7 +12651,7 @@
    ],
    "image": "/media/1988-cadw-farmhouse.jpg",
    "aliases": [],
-   "no": 143,
+   "no": 144,
    "ref": "E.5",
    "cast": [],
    "received": null,
@@ -13067,7 +13125,7 @@
  "graph": {
   "messages": 397,
   "parties": 13,
-  "scenes": 143,
+  "scenes": 144,
   "case_questions": 21,
   "documents": 37,
   "qa": 309,
