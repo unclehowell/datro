@@ -14,7 +14,6 @@ and against the live page.
   rules or routes the case uses (marked “Why kept”). Unrelated pages are moved to `excluded.json` with the reason; nothing is deleted.
 - Static site: Cloudflare Pages project bucklerfamily-watchtower, branch `watchtower`, output `public/`, no build step.
 
-Our case, prospective. Not a finding of any court.
 
 — Sion's Tab agent
 

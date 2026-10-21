@@ -115,7 +115,7 @@ function openItem(i){
   if(i.comments!=null)h+='<p class="small">Public comments on the post: '+esc(i.comments)+'</p>';
   var tl=i.thread&&C.tmap[i.thread];if(tl&&tl.length>1){h+='<h3>This thread ('+tl.length+')</h3><ol class="tl">';tl.forEach(function(x){var cc=C.cmap[x.cls]||{};h+='<li'+(x===i?' class="cur"':'')+'><i class="d'+(x.cls==='raised'?' o':'')+'" style="'+(x.cls==='raised'?'border-color:'+cc.color:'background:'+cc.color)+'"></i>'+fmt(x.date)+' · '+esc(cc.label||x.cls)+'</li>'});h+='</ol>'}
   h+='<div class="links">';if(i.src)h+='<a href="'+esc(i.src)+'" target="_blank" rel="noopener">Source</a>';if(i.wb)h+='<a href="'+esc(i.wb)+'" target="_blank" rel="noopener">Wayback copy</a>';if(i.site)h+='<a href="'+esc(i.site)+'" target="_blank" rel="noopener">Thread view</a>';h+='</div>';
-  h+='<p class="small">Reply types are sorted by the words in each reply; the source is the record. Our case, prospective. Not a finding of any court.</p>';
+  h+='<p class="small">Reply types are sorted by the words in each reply; the source is the record.</p>';
   show(h,'i='+encodeURIComponent(i.id));
 }
 function openChange(c){
@@ -127,7 +127,7 @@ function openChange(c){
   if(c.after){h+='<h3>After · '+fmt(c.date)+'</h3><blockquote class="add">'+esc(c.after)+'</blockquote>'}
   h+='<div class="links">';if(c.before_url)h+='<a href="'+esc(c.before_url)+'" target="_blank" rel="noopener">Archived before</a>';if(c.after_url&&c.after_url!==p.url)h+='<a href="'+esc(c.after_url)+'" target="_blank" rel="noopener">Archived after</a>';h+='<a href="'+esc(p.url)+'" target="_blank" rel="noopener">Live page</a></div>';
   if(p.wayback)h+='<p class="small">Our wayback copy: <a href="'+esc(p.wayback)+'" target="_blank" rel="noopener">'+esc(p.wayback)+'</a></p>';
-  h+='<p class="small">Our case, prospective. Not a finding of any court.</p>';show(h,'c='+c.id);
+  h+='';show(h,'c='+c.id);
 }
 dlg.addEventListener('close',function(){history.replaceState(null,'',location.pathname+(mode==='changes'?'#changes':''))});
 dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close()});
@@ -137,7 +137,7 @@ function info(){
     Object.keys(C.years).sort().forEach(function(y){h+='<tr><td>'+y+'</td><td>'+C.years[y]+'</td></tr>'});h+='</table><h3>Bodies and channels ('+C.parties.length+')</h3><table><tr><th>Body</th><th>First</th><th>Items</th></tr>';
     C.parties.forEach(function(p){h+='<tr><td>'+esc(p.name)+'</td><td>'+fmt(p.first)+'</td><td>'+p.n+'</td></tr>'});h+='</table><p class="small">Data: <a href="data/contacts.json">contacts.json</a>.</p>';}
   else{h+='<p>Every institution web link found in the case emails received, plus institution pages that mention Llandough, Great House Farm or Tŷ Mawr, compared against the Internet Archive and the live page.</p><p class="small">'+esc(D.method)+'</p><p class="small">Red: removed or no longer served. Green: added. Blue: changed. From 2016 to mid-2025 the archive index is read once per page per year: a faded dot means that year\'s archived copies differ; tap it for the copies.</p><p class="small">Data: <a href="data/changes.json">changes.json</a>. Re-checked daily at midday.</p>'}
-  h+='<p class="small">Our case, prospective. Not a finding of any court.</p>';show(h);
+  h+='';show(h);
 }
 document.getElementById('info').addEventListener('click',info);
 sel.addEventListener('change',function(){draw()});
