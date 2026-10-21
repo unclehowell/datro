@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Great House Farm — Artifact index (wayback)</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1d1b;--mut:#666;--line:#e3e0d8;--acc:#2f5d50}
+@media(prefers-color-scheme:dark){:root{--bg:#141414;--fg:#eee;--mut:#aaa;--line:#333;--acc:#8fc7b5}}
+body{margin:0;font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--fg)}
+header{padding:18px 16px 8px;max-width:1100px;margin:auto}h1{font-size:1.35rem;margin:0 0 4px}
+.note{color:var(--mut);font-size:.9rem}main{max-width:1100px;margin:auto;padding:0 16px 40px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}input,select{font:inherit;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:transparent;color:inherit}
+input{flex:1;min-width:200px}table{width:100%;border-collapse:collapse}td,th{border-bottom:1px solid var(--line);padding:7px 6px;text-align:left;vertical-align:top}
+th{font-size:.8rem;color:var(--mut);font-weight:600}td.id{white-space:nowrap;font-family:ui-monospace,monospace;font-size:.85rem}
+.st{font-size:.72rem;padding:2px 6px;border-radius:10px;border:1px solid var(--line);white-space:nowrap}
+.HELD{border-color:#2f8f5b;color:#2f8f5b}.SOURCE.PENDING,.PENDING{border-color:#b7791f;color:#b7791f}
+a{color:var(--acc)}tr:target{background:rgba(47,93,80,.12)}.f a{display:inline-block;margin-right:8px;font-size:.85rem}
+@media(max-width:700px){td.src,th.src,td.type,th.type{display:none}}
+</style></head><body><header><h1>Great House Farm — Artifact index</h1>
+<div class="note">Central store for the evidence catalogue shown on the Legal Wiki. Our case, prospective. Not a finding of any court.
+Machine-readable: <a href="manifest.json">manifest.json</a> · format: <a href="SPEC.md">SPEC.md</a> · <span id="cnt"></span></div></header>
+<main><div class="bar"><input id="q" placeholder="Search title, id, institution, date…"><select id="s"><option value="">All statuses</option><option>HELD</option><option>CATALOGUE ENTRY</option><option>SOURCE PENDING</option></select>
+<select id="h"><option value="">With or without files</option><option value="1">Files in wayback</option></select></div>
+<table><thead><tr><th>ID</th><th>Date</th><th>Title</th><th class="type">Type</th><th class="src">Source</th><th>Status</th><th>Files / page</th></tr></thead><tbody id="tb"></tbody></table>
+<p class="note" id="col"></p></main>
+<script>
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let M;fetch('manifest.json?n='+Date.now()).then(r=>r.json()).then(async j=>{const ps=await Promise.all(j.parts.map(p=>fetch(p.url+'?n='+Date.now()).then(r=>r.json())));j.items=ps.flatMap(p=>p.items);M=j;draw();
+document.getElementById('col').innerHTML='Collections: '+j.collections.map(c=>'<a href="'+esc(c.index)+'">'+esc(c.name)+'</a>'+(c.count?' ('+c.count+')':'')).join(' · ');
+if(location.hash){const e=document.getElementById(location.hash.slice(1));e&&e.scrollIntoView()}});
+function draw(){const q=document.getElementById('q').value.toLowerCase(),s=document.getElementById('s').value,h=document.getElementById('h').value;
+const rows=M.items.filter(i=>(!s||i.status===s)&&(!h||(i.files&&i.files.length))&&(!q||JSON.stringify([i.id,i.title,i.date,i.institution,i.type,i.keys]).toLowerCase().includes(q)));
+document.getElementById('cnt').textContent=rows.length+' of '+M.count+' entries';
+document.getElementById('tb').innerHTML=rows.map(i=>'<tr id="'+esc(i.id)+'"><td class="id"><a href="#'+esc(i.id)+'">'+esc(i.id)+'</a></td><td>'+esc(i.date)+'</td><td>'+esc(i.title)+(i.note?'<div class="note">'+esc(i.note)+'</div>':'')+'</td><td class="type">'+esc(i.type)+'</td><td class="src">'+esc((i.source||{}).kind||'')+(i.institution?' · '+esc(i.institution):'')+'</td><td><span class="st '+esc(i.status)+'">'+esc(i.status)+'</span></td><td class="f">'+(i.files||[]).map((f,n)=>'<a href="'+esc(f.url)+'">'+(f.mime&&f.mime.includes('pdf')?'PDF':f.mime&&f.mime.startsWith('image')?'image':f.mime&&f.mime.startsWith('video')?'video':'file')+((i.files.length>1)?' '+(n+1):'')+'</a>').join('')+(i.wiki?'<a href="'+esc(i.wiki.url)+'">wiki</a>':'')+'</td></tr>').join('')}
+['q','s','h'].forEach(x=>document.getElementById(x).addEventListener('input',draw));
+</script></body></html>
+<!-- v1 ca3641 -->              
