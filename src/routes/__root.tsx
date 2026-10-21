@@ -20,7 +20,6 @@ export const Route = createRootRoute({
         content:
           "Concentric rings of every FOI, review and complaint on the Great House Farm case.",
       },
-      { name: "theme-color", content: "#14110e" },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
@@ -38,8 +37,8 @@ export const Route = createRootRoute({
       <head>
         <HeadContent />
         <script dangerouslySetInnerHTML={{ __html: GHF_LANG_LOADER }} />
-        {/* Header standard v2.0.3: synchronous loader, so the shared bars are in place before the first paint (React 19 skips nodes it did not render in <body>). */}
-        <script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.0.3" />
+        {/* Header standard v2.1.0: synchronous loader, so the shared bars are in place before the first paint (React 19 skips nodes it did not render in <body>). */}
+        <script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.1.0" />
       </head>
       <body>
         <PreviewHostBridge />
