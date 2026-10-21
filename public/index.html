@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Tŷ Mawr title map, 1877–1987 · Great House Farm, Llandough</title>
-<meta name="description" content="A narrated map chronology of the Great House Farm (Tŷ Mawr) land at Llandough-juxta-Penarth: the 1877 split into Parcel A and Parcel B, and the 1987 merger of the house parcel with the fields. The Williams-Buckler family’s case, prospective.">
-<meta property="og:title" content="Tŷ Mawr title map, 1877–1987">
+<title>Tŷ Mawr title-chain map, c.1841–2026 · Church View Close, Llandough</title>
+<meta name="description" content="This is the story of the true owners of Church View Close, Llandough, and why people incorrectly think it&#x27;s Cardiff Forest, BP and Llandough Council. A narrated video map of the title-chain map on the Legal Wiki home page, one step per station, c.1841 to 2026.">
+<meta property="og:title" content="Tŷ Mawr title-chain map, c.1841–2026">
 <meta property="og:description" content="Drag the slider or press play: the Great House Farm title story on the Ordnance Survey maps of each era, narrated.">
 <meta property="og:image" content="https://maps.bucklerfamily.estate/img/og.jpg">
 <meta name="theme-color" content="#111214">
 <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
-<link rel="stylesheet" href="style.css?v=1.3.0">
+<link rel="stylesheet" href="style.css?v=1.4.0">
 <link rel="alternate" type="application/json" href="data/story.json" title="Story data (steps, holders, sources)">
 <link rel="alternate" type="application/geo+json" href="data/parcels.geojson" title="Parcel outlines">
 <script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.0.3"></script>
@@ -20,7 +20,7 @@
 <div id="map" aria-label="Map" data-ghf-keep></div>
 
 <div id="top">
-  <a class="brand" href="https://bucklerfamily.estate/" title="Back to base camp"><b>Tŷ Mawr</b> <span>title map 1877–1987</span></a>
+  <a class="brand" href="https://bucklerfamily.estate/" title="Back to base camp"><b>Tŷ Mawr</b> <span>title-chain map c.1841–2026</span></a>
   <div class="tools">
     <div class="seg" role="group" aria-label="Colour the parcels by">
       <button id="mCase" class="on" aria-pressed="true" title="Colour by the Williams-Buckler family’s case (prospective)">Family’s case</button><button id="mRec" aria-pressed="false" title="Colour by what the records held show">Records</button>
@@ -65,18 +65,19 @@
   <div class="abox">
     <button id="aClose" class="ic sm close" aria-label="Close">✕</button>
     <h2>About this map</h2>
-    <p>The story of the Great House Farm (Tŷ Mawr) land at Llandough-juxta-Penarth, from the 1877 split into <b>Parcel A</b> (house, yard, wood and green) and <b>Parcel B</b> (the fields east of the house) to the 1987 merger of the house parcel with the fields, and what followed.</p>
-    <p><b>Colours.</b> “Family’s case” colours each parcel by the holder the Williams-Buckler family’s case puts forward (prospective). “Records” colours it by what the records held show at that date (possession, tenancy or registered title). Tap any parcel for both.</p>
-    <p><b>Synthetic parcels.</b> From 1949 the woodland (the top third of Parcel A, pink) and from 1955 the green (the lower third, yellow) are drawn as synthetic parcels carved out of Parcel A. A dotted edge means the piece is being carved out but not yet registered. The Williams-Buckler family asserts that in 1969 only Parcel B, with the benefit of an unenforced 1962 order on the house, passed to BP Pension Trust; Parcel A did not.</p>
-    <p><b>Lines.</b> Solid outlines are traced from a source (an OS sheet or the 1939 tenancy plan), by eye. <span class="hatchkey"></span> Hatched outlines are reconstructions or estimates. They are not recorded boundaries. Every popup shows how each line was made.</p>
-    <p><b>Old maps.</b> Ordnance Survey six-inch (1878–79) and 25-inch (1900, 1920, 1947) sheets, images from the National Library of Scotland, reproduced under CC-BY (“Reproduced with the permission of the National Library of Scotland”). The 1920 and 1947 sheets were fitted to the 1900 sheet by matching the engraving (accuracy a few metres). Aerial: Esri World Imagery. Narration: a synthetic voice (Piper “Cori”, trained on public-domain LibriVox recordings); if audio is blocked your browser's own voice reads the caption.</p>
-    <p><b>Data.</b> <a href="data/story.json">story.json</a> · <a href="data/parcels.geojson">parcels.geojson</a> · Evidence: <a href="https://greathousefarmwiki.wordpress.com/timeline/">Legal Wiki timeline</a> · <a href="https://wayback.bucklerfamily.estate/">Primary records</a></p>
+    <p><b>This is the story of the true owners of Church View Close, Llandough, and why people incorrectly think it&#x27;s Cardiff Forest, BP and Llandough Council.</b></p>
+    <p>This map follows the <a href="https://greathousefarmwiki.wordpress.com/">title-chain map on the Legal Wiki home page</a>, one step per dated station, in the same order (35 stations, c.1841 to 2026), with the home page’s own wording and labels: VERIFIED, TESTIMONY, SOURCE PENDING, UNVERIFIED.</p>
+    <p>Three attempts to make Mary’s occupation look permissive were rejected. Each was followed by a registration of part of Parcel A in another name. And the Williams title to Parcel A was never extinguished: the line runs on.</p>
+    <p><b>Colours.</b> Each parcel is coloured by the holder on the home page’s line for it at that station. The dotted white line is the whole of Parcel A from the 1877 split. The woodland (pink) and the green (yellow, the lower third of Parcel A) are drawn as parts carved from Parcel A; a dotted edge means the area is not proved by plan. Tap any parcel for details.</p>
+    <p><b>Lines.</b> Solid outlines are traced from a source (an OS sheet or the 1939 tenancy plan), by eye. <span class="hatchkey"></span> Hatched outlines are reconstructions or estimates. They are not recorded boundaries.</p>
+    <p><b>Old maps.</b> Ordnance Survey six-inch (1878–79) and 25-inch (1900, 1920, 1947) sheets, images from the National Library of Scotland, reproduced under CC-BY (“Reproduced with the permission of the National Library of Scotland”). The 1920 and 1947 sheets were fitted to the 1900 sheet by matching the engraving (accuracy a few metres). Aerial: Esri World Imagery. Narration: a synthetic British voice; if audio is blocked your browser's own voice reads the caption.</p>
+    <p><b>Data.</b> <a href="data/story.json">story.json</a> · <a href="data/parcels.geojson">parcels.geojson</a> · Evidence: <a href="https://greathousefarmwiki.wordpress.com/">Legal Wiki home page</a> · <a href="https://wayback.bucklerfamily.estate/">Primary records</a></p>
     <div class="legal" data-ghf-legal-foot="1"><p><b>© Williams–Buckler family. All rights reserved. Licence terms apply.</b></p><p role="navigation" aria-label="Legal"><a href="https://bucklerfamily.estate/licence/">Licence</a> · <a href="https://bucklerfamily.estate/privacy/">Privacy</a> · <a href="https://bucklerfamily.estate/cookies/">Cookies</a> · <a href="https://bucklerfamily.estate/terms/">Terms</a> · <a href="https://bucklerfamily.estate/disclaimer/">Disclaimer</a> · <a href="https://bucklerfamily.estate/accessibility/">Accessibility</a> · <a href="https://bucklerfamily.estate/enquire/">Enquire</a> · <a href="https://bucklerfamily.estate/">Base camp</a></p></div>
-    <p class="small">The Williams-Buckler family’s case, prospective. Not a finding of any court. No allegation is made against any person or body. — Sion's Tab agent · v1.3.0</p>
+    <p class="small">The Williams-Buckler family’s case, prospective. Not a finding of any court. No allegation is made against any person or body. — Sion's Tab agent · v1.4.0</p>
   </div>
 </div>
 <audio id="voice" preload="none"></audio>
 <script src="vendor/leaflet/leaflet.js"></script>
-<script src="app.js?v=1.3.0"></script>
+<script src="app.js?v=1.4.0"></script>
 </body>
 </html>
