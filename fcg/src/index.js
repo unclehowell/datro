@@ -108,7 +108,7 @@ function relabel(res, state) {
 }
 
 const NAV = `<header class="sl-nav"><nav class="top" aria-label="Site"><a href="/"><strong>${BRAND}</strong></a><a href="/">Clearance</a><a href="/standard">Standard</a><a href="/accountability/">Accountability</a><a href="/theory/">Theory</a><a class="sl-ghost" href="/case">Our case</a></nav></header>`;
-const FOOT = `<footer class="sl-foot"><div class="sl-foot-in"><a class="sl-foot-title" href="/">${BRAND} — Security clearance</a><span class="sl-foot-note">Our case, prospective. Not a finding of any court.</span><a href="/">Clearance ranking</a><a href="/standard">Clearance standard</a><a href="/accountability/">Accountability Index</a><a href="/theory/">Theory home</a><a href="/case">Our case</a><a href="/mandate">Mandate</a><a href="/graphql">GraphQL</a><a href="https://projects.bucklerfamily.estate/">Projects (PRINCE2)</a><a href="https://greathousefarmwiki.wordpress.com/">Legal Wiki</a><a href="https://bucklerfamily.estate/">bucklerfamily.estate campus</a></div></footer>`;
+const FOOT = `<footer class="sl-foot"><div class="sl-foot-in"><a class="sl-foot-title" href="/">${BRAND} — Security clearance</a><a href="/">Clearance ranking</a><a href="/standard">Clearance standard</a><a href="/accountability/">Accountability Index</a><a href="/theory/">Theory home</a><a href="/case">Our case</a><a href="/mandate">Mandate</a><a href="/graphql">GraphQL</a><a href="https://projects.bucklerfamily.estate/">Projects (PRINCE2)</a><a href="https://greathousefarmwiki.wordpress.com/">Legal Wiki</a><a href="https://bucklerfamily.estate/">bucklerfamily.estate campus</a></div></footer>`;
 
 function shell({ title, description = "", kind, main }) {
   return `<!DOCTYPE html>
@@ -169,19 +169,19 @@ async function handlePage(url, env) {
   const title = words(row.title);
   const excerpt = words(row.excerpt);
   if (meta.hub) {
-    return html(shell({ title: title + " — " + BRAND, description: excerpt, kind: "sl-home",
+    return html(shell({ title: title + "— " + BRAND, description: excerpt, kind: "sl-home",
       main: `<header class="sl-hero"><div class="sl-hero-in"><p class="sl-kicker">${BRAND} · Great House Farm / Tŷ Mawr</p><h1>${esc(title)}</h1>${excerpt ? `<p>${esc(excerpt)}</p>` : ""}<div class="sl-actions"><a class="sl-btn solid" href="#sections">Sections</a><a class="sl-btn" href="#inst">Institutions</a></div></div><span class="sl-scroll" aria-hidden="true"></span></header>
 <main class="sl-main">${tidy(row.content)}</main>` }));
   }
   const kicker = row.slug.startsWith("case/") ? `<p class="sl-kicker">${BRAND} · Our case</p>` : `<p class="sl-kicker">${BRAND}</p>`;
   const back = row.slug.startsWith("case/") ? `<nav class="fcg-pager" aria-label="More"><a class="sl-btn" href="/case">All case pages</a><a class="sl-btn" href="/">Home</a></nav>` : `<nav class="fcg-pager" aria-label="More"><a class="sl-btn" href="/case">Our case</a><a class="sl-btn" href="/">Home</a></nav>`;
-  return html(shell({ title: title + " — " + BRAND, description: excerpt, kind: "sl-page",
+  return html(shell({ title: title + "— " + BRAND, description: excerpt, kind: "sl-page",
     main: `<article><header class="sl-hero"><div class="sl-hero-in">${kicker}<h1>${esc(title)}</h1>${excerpt ? `<p class="meta">${esc(excerpt)}</p>` : ""}</div></header><div class="sl-article"><div class="content">${tidy(row.content)}</div></div></article>${back}` }));
 }
 
 function homePage(env) {
   const band = (h, items) => `<section class="sl-band"><h2>${h}</h2>\n<ul class="idx">${items.map(([href, t, m]) => `<li><a href="${href}"><strong>${t}</strong></a> <span class="meta">${m}</span></li>`).join("\n")}</ul></section>`;
-  return shell({ title: "Theory — " + BRAND + " — " + BRAND_LONG, kind: "sl-home",
+  return shell({ title: "Theory — " + BRAND + "— " + BRAND_LONG, kind: "sl-home",
     description: "Our case on fraud, concealment and government involvement in the Great House Farm (Tŷ Mawr) case. Not findings of any court or public body.",
     main: `<header class="sl-hero"><div class="sl-hero-in"><p class="sl-kicker">${BRAND} · Great House Farm / Tŷ Mawr</p><h1>${BRAND_LONG}</h1><p>Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth: our case and lines of enquiry on fraud, concealment and the handling of the case by government, courts and public bodies. Not findings of any court or public body.</p><div class="sl-actions"><a class="sl-btn solid" href="/case">Our case</a><a class="sl-btn" href="/">Accountability Index</a><a class="sl-btn" href="/mandate">Project Mandate</a></div></div><span class="sl-scroll" aria-hidden="true"></span></header>
 <main class="sl-main">
@@ -213,18 +213,18 @@ ${band("Across the estate", [
 
 // Home page since 20 Oct 2026: the Accountability Index (content in accountability.js; the former home is at /theory/).
 function clearancePage() {
-  return shell({ title: "Security clearance — " + BRAND + " — Great House Farm / Tŷ Mawr", kind: "sl-home",
-    description: "Institutions ranked out of 1000 on how they answered requests for the Great House Farm record: every point from a dated email or letter. Our case, prospective. Not a finding of any court.",
+  return shell({ title: "Security clearance — " + BRAND + "— Great House Farm / Tŷ Mawr", kind: "sl-home",
+    description: "Institutions ranked out of 1000 on how they answered requests for the Great House Farm record: every point from a dated email or letter.",
     main: CLEARANCE_HOME });
 }
 function standardPage() {
   return shell({ title: "Clearance standard — " + BRAND, kind: "sl-plainpage",
-    description: "How FCG clearance scores are worked out: start at 500, fixed point rules, statutory clocks, cleared at 900. Our case, prospective. Not a finding of any court.",
+    description: "How FCG clearance scores are worked out: start at 500, fixed point rules, statutory clocks, cleared at 900.",
     main: CLEARANCE_STANDARD });
 }
 function indexPage() {
-  return shell({ title: "Accountability Index — " + BRAND + " — Great House Farm / Tŷ Mawr", kind: "sl-home",
-    description: "Public bodies ranked by clarification questions the record had already answered, with dates, quotes, days lost and the statutory clock. Our case, prospective. Not a finding of any court.",
+  return shell({ title: "Accountability Index — " + BRAND + "— Great House Farm / Tŷ Mawr", kind: "sl-home",
+    description: "Public bodies ranked by clarification questions the record had already answered, with dates, quotes, days lost and the statutory clock.",
     main: ACCOUNTABILITY_MAIN });
 }
 
