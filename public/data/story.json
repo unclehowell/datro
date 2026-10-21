@@ -1,5 +1,5 @@
 {
- "version": "1.4.1",
+ "version": "1.4.2",
  "center": [
   51.4527,
   -3.1985
@@ -132,10 +132,6 @@
   "hp-testimony-mary-williams": {
    "t": "Mary (Nancy) Williams testimony",
    "u": "https://greathousefarmwiki.wordpress.com/testimony/mary-williams/"
-  },
-  "hp-nce-ev-0012-bute-will-press-reports-1900": {
-   "t": "EV-0012",
-   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0012-bute-will-press-reports-1900/"
   },
   "hp-bailii-org-ew-cases-ewca-civ-1987-2-html": {
    "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2",
@@ -449,48 +445,6 @@
   },
   {
    "id": "s03",
-   "date": "1894 / 1900",
-   "year": 1894,
-   "base": "1900",
-   "title": "Will → Lord Colum",
-   "headline": "1894 / 1900 · Bute’s will: Llandough estates to Lord Colum Crichton-Stuart",
-   "labels": [
-    "VERIFIED · press"
-   ],
-   "short": "1894: the Marquess of Bute’s will leaves his Llandough estates to Lord Colum Crichton-Stuart.",
-   "text": "1894 / 1900 · Bute’s will: Llandough estates to Lord Colum Crichton-Stuart. VERIFIED · press. The 3rd Marquess’s will (30 Jul 1894, reported Oct 1900) left his estates in Leckwith-with-Llandough to Lord Colum. Whether the land stayed with him or came back to Bute/Mountjoy before 1938 is open. A 23 Feb 1905 “Bute conveyance” is a lead from the WA231076 file history; UNVERIFIED, copy not seen.",
-   "parcels": {
-    "AN": {
-     "rec": "thomas",
-     "case": "thomas",
-     "note": ""
-    },
-    "AM": {
-     "rec": "thomas",
-     "case": "thomas",
-     "note": ""
-    },
-    "AS": {
-     "rec": "thomas",
-     "case": "thomas",
-     "note": ""
-    },
-    "B": {
-     "rec": "bute",
-     "case": "bute",
-     "note": ""
-    }
-   },
-   "src": [
-    "home",
-    "hp-nce-ev-0012-bute-will-press-reports-1900",
-    "os1900"
-   ],
-   "dur": 6.66,
-   "say": "Eighteen ninety-four: the Marquess of Bute's will leaves his Lan-dock estates to Lord Colum Cryton-Stuart."
-  },
-  {
-   "id": "s04",
    "date": "1916",
    "year": 1916,
    "base": "1920",
@@ -503,19 +457,19 @@
    "text": "1916 · Bute → John Williams: yearly tenancy of the “whole farm”. VERIFIED · judgment. The Court of Appeal’s history describes a February 1916 yearly agricultural tenancy of the “whole farm”. It covered Parcel A: the last tenancy of Parcel A, whose occupiers the Williams family had been since 1667. The tenancy (EV-0014) is not held.",
    "parcels": {
     "AN": {
-     "rec": "thomas",
-     "case": "thomas",
-     "note": ""
+     "rec": "williams",
+     "case": "williams",
+     "note": "1916 tenancy: John Williams. The last tenancy of Parcel A."
     },
     "AM": {
-     "rec": "thomas",
-     "case": "thomas",
-     "note": ""
+     "rec": "williams",
+     "case": "williams",
+     "note": "1916 tenancy: John Williams. The last tenancy of Parcel A."
     },
     "AS": {
-     "rec": "thomas",
-     "case": "thomas",
-     "note": ""
+     "rec": "williams",
+     "case": "williams",
+     "note": "1916 tenancy: John Williams. The last tenancy of Parcel A."
     },
     "B": {
      "rec": "bute",
@@ -529,11 +483,11 @@
     "hp--ev-0014-bute-tenancy-john-williams-1916",
     "os1920"
    ],
-   "dur": 9.80,
+   "dur": 9.8,
    "say": "Nineteen sixteen: Bute grants John Williams a yearly tenancy of the whole farm, Parcel A included. It is the last tenancy of Parcel A."
   },
   {
-   "id": "s05",
+   "id": "s04",
    "date": "1926",
    "year": 1926,
    "base": "1920",
@@ -575,7 +529,7 @@
    "say": "Nineteen twenty-six: the remaining Bute property becomes Mountjoy Limited."
   },
   {
-   "id": "s06",
+   "id": "s05",
    "date": "1928",
    "year": 1928,
    "base": "1920",
@@ -623,7 +577,7 @@
    }
   },
   {
-   "id": "s07",
+   "id": "s06",
    "date": "1938",
    "year": 1938,
    "base": "1920",
@@ -667,7 +621,7 @@
    "say": "Nineteen thirty-eight: Mountjoy and Bute sell to Western Ground Rents. Which land that deed conveyed is the open question."
   },
   {
-   "id": "s08",
+   "id": "s07",
    "date": "1939",
    "year": 1939,
    "base": "1920",
@@ -709,7 +663,7 @@
    "say": "Nineteen thirty-nine: a Western Ground Rents agreement with John Williams. Its plan shows Parcel B only."
   },
   {
-   "id": "s09",
+   "id": "s08",
    "date": "1940–42",
    "year": 1940,
    "base": "1947",
@@ -752,7 +706,7 @@
    "say": "Nineteen forty to forty-two: Western Ground Rents gives Leckwith Woods to Cardiff Corporation. No record puts Great House Farm land in that gift."
   },
   {
-   "id": "s10",
+   "id": "s09",
    "date": "1949",
    "year": 1949,
    "base": "1947",
@@ -804,7 +758,7 @@
    }
   },
   {
-   "id": "s11",
+   "id": "s10",
    "date": "1949–53",
    "year": 1949,
    "base": "1947",
@@ -847,7 +801,7 @@
    "say": "Nineteen forty-nine: Frederick Buckler's farm tenancy from Western Ground Rents. No record shows it covered Parcel A."
   },
   {
-   "id": "s12",
+   "id": "s11",
    "date": "4 Jul 1955",
    "year": 1955,
    "base": "1947",
@@ -902,7 +856,7 @@
    }
   },
   {
-   "id": "s13",
+   "id": "s12",
    "date": "1958",
    "year": 1958,
    "base": "1947",
@@ -952,7 +906,7 @@
    }
   },
   {
-   "id": "s14",
+   "id": "s13",
    "date": "1958/9",
    "year": 1958,
    "base": "1947",
@@ -1005,7 +959,7 @@
    }
   },
   {
-   "id": "s15",
+   "id": "s14",
    "date": "29 Mar 1961",
    "year": 1961,
    "base": "1947",
@@ -1055,7 +1009,7 @@
    ]
   },
   {
-   "id": "s16",
+   "id": "s15",
    "date": "11 Dec 1962",
    "year": 1962,
    "base": "1947",
@@ -1101,7 +1055,7 @@
    ]
   },
   {
-   "id": "s17",
+   "id": "s16",
    "date": "1965",
    "year": 1965,
    "base": "1947",
@@ -1151,7 +1105,7 @@
    }
   },
   {
-   "id": "s18",
+   "id": "s17",
    "date": "1967",
    "year": 1967,
    "base": "1947",
@@ -1196,7 +1150,7 @@
    ]
   },
   {
-   "id": "s19",
+   "id": "s18",
    "date": "31 Dec 1969",
    "year": 1969,
    "base": "1947",
@@ -1242,7 +1196,7 @@
    ]
   },
   {
-   "id": "s20",
+   "id": "s19",
    "date": "16 Jun 1970",
    "year": 1970,
    "base": "1947",
@@ -1285,7 +1239,7 @@
    "say": "16 June nineteen seventy: the green is registered as village green V G forty-one, about twelve years after the nineteen fifty-eight attempt."
   },
   {
-   "id": "s21",
+   "id": "s20",
    "date": "1971",
    "year": 1971,
    "base": "1947",
@@ -1329,7 +1283,7 @@
    "say": "Nineteen seventy-one: Shon Buckler describes an alteration of the Ordnance Survey. No record of it is on the wiki yet."
   },
   {
-   "id": "s22",
+   "id": "s21",
    "date": "1974",
    "year": 1974,
    "base": "1947",
@@ -1378,7 +1332,7 @@
    }
   },
   {
-   "id": "s23",
+   "id": "s22",
    "date": "31 Oct 1974",
    "year": 1974,
    "base": "1947",
@@ -1425,7 +1379,7 @@
    }
   },
   {
-   "id": "s24",
+   "id": "s23",
    "date": "30 Nov 1982",
    "year": 1982,
    "base": "1947",
@@ -1468,7 +1422,7 @@
    "say": "30 November nineteen eighty-two: B P Properties applies to register the farm."
   },
   {
-   "id": "s25",
+   "id": "s24",
    "date": "23 Feb 1983",
    "year": 1983,
    "base": "1947",
@@ -1515,7 +1469,7 @@
    }
   },
   {
-   "id": "s26",
+   "id": "s25",
    "date": "2 Feb 1987",
    "year": 1987,
    "base": "1947",
@@ -1563,7 +1517,7 @@
    }
   },
   {
-   "id": "s27",
+   "id": "s26",
    "date": "31 Jul 1987",
    "year": 1987,
    "base": "1947",
@@ -1611,7 +1565,7 @@
    }
   },
   {
-   "id": "s28",
+   "id": "s27",
    "date": "Nov–Dec 1988",
    "year": 1988,
    "base": "1947",
@@ -1655,7 +1609,7 @@
    "merged": true
   },
   {
-   "id": "s29",
+   "id": "s28",
    "date": "1989–90",
    "year": 1989,
    "base": "aerial",
@@ -1699,7 +1653,7 @@
    "merged": true
   },
   {
-   "id": "s30",
+   "id": "s29",
    "date": "1992",
    "year": 1992,
    "base": "aerial",
@@ -1742,7 +1696,7 @@
    "merged": true
   },
   {
-   "id": "s31",
+   "id": "s30",
    "date": "3 Dec 1993",
    "year": 1993,
    "base": "aerial",
@@ -1784,7 +1738,7 @@
    "merged": true
   },
   {
-   "id": "s32",
+   "id": "s31",
    "date": "10 Nov 1994",
    "year": 1994,
    "base": "aerial",
@@ -1827,7 +1781,7 @@
    "merged": true
   },
   {
-   "id": "s33",
+   "id": "s32",
    "date": "2005–06",
    "year": 2005,
    "base": "aerial",
@@ -1870,7 +1824,7 @@
    "merged": true
   },
   {
-   "id": "s34",
+   "id": "s33",
    "date": "2026",
    "year": 2026,
    "base": "aerial",
@@ -1914,7 +1868,7 @@
    "merged": true
   },
   {
-   "id": "s35",
+   "id": "s34",
    "date": "2026",
    "year": 2026,
    "base": "aerial",
@@ -2051,7 +2005,8 @@
  "source_page": {
   "url": "https://greathousefarmwiki.wordpress.com/",
   "captured": "2026-10-21T04:01:13Z",
-  "stations": 35,
-  "note": "One step per dated station of the homepage title-chain map, in its order. Wording from the homepage, with three verbs neutralised (reports / states) and “we say” dropped from the lane labels."
+  "stations": 34,
+  "note": "One step per dated station of the homepage title-chain map, in its order. Wording from the homepage, with three verbs neutralised (reports / states) and “we say” dropped from the lane labels.",
+  "captured_note": "1894/1900 station removed from the homepage 21 Oct 2026 (05:00 UTC); 34 stations."
  }
 }
