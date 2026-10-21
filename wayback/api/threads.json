@@ -1,9 +1,9 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-10-20T23:58:47Z",
- "count": 770,
- "threadCount": 411,
+ "generated": "2026-10-21T12:54:32Z",
+ "count": 823,
+ "threadCount": 446,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
@@ -13,6 +13,81 @@
   "text": "/mail/<id>.txt"
  },
  "threads": [
+  {
+   "threadId": "gt-1a156ac8b40758c6",
+   "subject": "FOI request — Western Ground Rents Ltd (company no. 00342092, dissolved 1997): any bona vacantia property or interests at Llandough, Vale of Glamorgan",
+   "threadSlug": "foi-request-western-ground-rents-ltd-company-no-00342092-dissolved-1997-any-bona",
+   "institutions": [
+    "bona-vacantia"
+   ],
+   "first": "2026-10-20T00:18:30Z",
+   "last": "2026-10-21T11:27:31Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a156ac8b40758c6",
+    "gm-1a15e3779a430212"
+   ]
+  },
+  {
+   "threadId": "gt-1a15e2cfd24eaf4d",
+   "subject": "Re: Information Request – Great House Farm / Tŷy Mawr, near Penarth, Vale of Glamorgan",
+   "threadSlug": "information-request-great-house-farm-tyy-mawr-near-penarth-vale-of-glamorgan",
+   "institutions": [
+    "historic-england"
+   ],
+   "first": "2026-10-21T11:15:57Z",
+   "last": "2026-10-21T11:15:57Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a15e2cfd24eaf4d"
+   ]
+  },
+  {
+   "threadId": "gt-1a15e1f613adbd58",
+   "subject": "Great House Farm / suspected historic fraud",
+   "threadSlug": "great-house-farm-suspected-historic-fraud",
+   "institutions": [
+    "cps"
+   ],
+   "first": "2026-10-21T11:01:11Z",
+   "last": "2026-10-21T11:01:11Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a15e1f613adbd58"
+   ]
+  },
+  {
+   "threadId": "gt-1a123ef587a83fad",
+   "subject": "ICR/090/26 – further formal points on the first-registration file and 1987 amalgamation",
+   "threadSlug": "icr-090-26-further-formal-points-on-the-first-registration-file-and-1987-amalgam",
+   "institutions": [
+    "hmlr-icr"
+   ],
+   "first": "2026-10-10T19:11:32Z",
+   "last": "2026-10-21T10:54:58Z",
+   "count": 4,
+   "messageIds": [
+    "gm-1a1273a47146ed2d",
+    "gm-1a12f9732739a69e",
+    "gm-1a156b64e8e56807",
+    "gm-1a15e19a4609a6ad"
+   ]
+  },
+  {
+   "threadId": "gt-1a1526ec926276db",
+   "subject": "Great House Farm / Tŷ Mawr, Llandough – follow-up to my preservation notice of 28 September 2026",
+   "threadSlug": "great-house-farm-ty-mawr-llandough-follow-up-to-my-preservation-notice-of-28-sep",
+   "institutions": [
+    "ads"
+   ],
+   "first": "2026-10-19T22:14:06Z",
+   "last": "2026-10-21T08:53:10Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a1563aa4a42a029",
+    "gm-1a15daaa6d10bd96"
+   ]
+  },
   {
    "threadId": "gt-1a136e2b51f9d191",
    "subject": "MEETING OF THE COUNCIL - 22 OCTOBER AT 7.00PM",
@@ -37,6 +112,557 @@
    ]
   },
   {
+   "threadId": "gt-1a159d2b98aea981",
+   "subject": "Ref No: FOI-26-46 (Mapping information - Ty Mawr/ Great House Farm/ Red Fen (Cedfin), Llandough, Cardiff) - Acknowledgement of receipt of a request for information",
+   "threadSlug": "ref-no-foi-26-46-mapping-information-ty-mawr-great-house-farm-red-fen-cedfin-lla",
+   "institutions": [
+    "os"
+   ],
+   "first": "2026-10-20T14:58:59Z",
+   "last": "2026-10-20T14:58:59Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a159d2b98aea981"
+   ]
+  },
+  {
+   "threadId": "gt-1a1598079be2517d",
+   "subject": "Correction to my email of 20 October 2026 – Great House Farm (Tŷ Mawr) information request",
+   "threadSlug": "correction-to-my-email-of-20-october-2026-great-house-farm-ty-mawr-information-r",
+   "institutions": [
+    "llandough"
+   ],
+   "first": "2026-10-20T13:29:14Z",
+   "last": "2026-10-20T13:29:14Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1598079be2517d"
+   ]
+  },
+  {
+   "threadId": "gt-1a156ad529447920",
+   "subject": "Request for information – LGA and predecessor associations: guidance to councils on land with disputed title; any record of Great House Farm / Tŷ Mawr, Llandough",
+   "threadSlug": "request-for-information-lga-and-predecessor-associations-guidance-to-councils-on",
+   "institutions": [
+    "lga"
+   ],
+   "first": "2026-10-20T00:19:22Z",
+   "last": "2026-10-20T12:32:07Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a156ad529447920",
+    "gm-1a1594c5dd452d5e"
+   ]
+  },
+  {
+   "threadId": "gt-1a1592f05965e88d",
+   "subject": "Re: Information Request – Great House Farm / Tŷ Mawr, near Penarth, Vale of Glamorgan",
+   "threadSlug": "information-request-great-house-farm-ty-mawr-near-penarth-vale-of-glamorgan",
+   "institutions": [
+    "historic-england"
+   ],
+   "first": "2026-10-20T12:00:08Z",
+   "last": "2026-10-20T12:00:08Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1592f05965e88d"
+   ]
+  },
+  {
+   "threadId": "gt-1a0e9e9889be4e6a",
+   "subject": "Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy records — Matter of public interest",
+   "threadSlug": "preservation-notice-great-house-farm-ty-mawr-llandough-do-not-destroy-records-ma",
+   "institutions": [
+    "blake-morgan",
+    "bp",
+    "cadw",
+    "cotswold",
+    "linklaters",
+    "moj",
+    "museum"
+   ],
+   "first": "2026-09-28T21:39:38Z",
+   "last": "2026-10-20T10:49:26Z",
+   "count": 6,
+   "messageIds": [
+    "gm-1a0e9f58d1f3cf15",
+    "gm-1a0eca2b89512fe9",
+    "gm-1a11c210b3442ac5",
+    "gm-1a14386a609c7540",
+    "gm-1a156bb48de3312f",
+    "gm-1a158ee36fed63d2"
+   ]
+  },
+  {
+   "threadId": "gt-1a15877f505dbb0b",
+   "subject": "Request for information - Ref: FOI2026/118465",
+   "threadSlug": "request-for-information-ref-foi2026-118465",
+   "institutions": [
+    "voa"
+   ],
+   "first": "2026-10-20T08:40:18Z",
+   "last": "2026-10-20T08:40:18Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a15877f505dbb0b"
+   ]
+  },
+  {
+   "threadId": "gt-1a1563a58cdf4ebf",
+   "subject": "FOI 2026-024 / 032 / 036 — c.1880 medieval ironwork from Great House Farm, Llandough: published sources say it is in the National Museum",
+   "threadSlug": "foi-2026-024-032-036-c-1880-medieval-ironwork-from-great-house-farm-llandough-pu",
+   "institutions": [
+    "museum"
+   ],
+   "first": "2026-10-19T22:13:50Z",
+   "last": "2026-10-20T07:14:35Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a1563a667d5c9b9",
+    "gm-1a158298d6ff819a"
+   ]
+  },
+  {
+   "threadId": "gt-1a156c62f0744603",
+   "subject": "FOI request — Audit Wales: external audit records of council land dealings at Great House Farm / Tŷ Mawr, Llandough, 1970–1996",
+   "threadSlug": "foi-request-audit-wales-external-audit-records-of-council-land-dealings-at-great",
+   "institutions": [
+    "audit-wales"
+   ],
+   "first": "2026-10-20T00:46:31Z",
+   "last": "2026-10-20T00:46:31Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a156c62f0744603"
+   ]
+  },
+  {
+   "threadId": "gt-1a156c125e06a456",
+   "subject": "Automatic reply: FOI/EIR request – Defra (successor to MAF): wartime and post-war farm records for Great House Farm / Tŷ Mawr, Llandough, 1936–1955",
+   "threadSlug": "automatic-reply-foi-eir-request-defra-successor-to-maf-wartime-and-post-war-farm",
+   "institutions": [
+    "defra"
+   ],
+   "first": "2026-10-20T00:40:59Z",
+   "last": "2026-10-20T00:40:59Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a156c125e06a456"
+   ]
+  },
+  {
+   "threadId": "gt-1a156bfe07db1662",
+   "subject": "FOI/EIR request – Defra (successor to MAF): wartime and post-war farm records for Great House Farm / Tŷ Mawr, Llandough, 1936–1955",
+   "threadSlug": "foi-eir-request-defra-successor-to-maf-wartime-and-post-war-farm-records-for-gre",
+   "institutions": [
+    "defra"
+   ],
+   "first": "2026-10-20T00:39:37Z",
+   "last": "2026-10-20T00:39:37Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a156bfe07db1662"
+   ]
+  },
+  {
+   "threadId": "gt-1a156b33bce23290",
+   "subject": "FOI/EIR request – Defra (successor to MAF): wartime and post-war farm records for Great House Farm / Tŷ Mawr, Llandough, 1936–1955",
+   "threadSlug": "foi-eir-request-defra-successor-to-maf-wartime-and-post-war-farm-records-for-gre",
+   "institutions": [
+    "defra"
+   ],
+   "first": "2026-10-20T00:25:49Z",
+   "last": "2026-10-20T00:33:47Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a156b33bce23290",
+    "gm-1a156ba92e1db932"
+   ]
+  },
+  {
+   "threadId": "gt-1a0e3b180d95f228",
+   "subject": "Preservation and disclosure request — Church View Close / Great House Farm, Llandough — titles WA231076 / WA240304",
+   "threadSlug": "preservation-and-disclosure-request-church-view-close-great-house-farm-llandough",
+   "institutions": [
+    "persimmon"
+   ],
+   "first": "2026-09-27T17:39:27Z",
+   "last": "2026-10-20T00:32:49Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a0e3f34cc06c477",
+    "gm-1a156b9a5d8a0e20"
+   ]
+  },
+  {
+   "threadId": "gt-1a0c1e36871ebfd1",
+   "subject": "Re: Great House Farm (Tŷ Mawr), Llandough — request for information under FOIA 2000 / EIR 2004",
+   "threadSlug": "great-house-farm-ty-mawr-llandough-request-for-information-under-foia-2000-eir-2",
+   "institutions": [
+    "llandough"
+   ],
+   "first": "2026-09-21T02:59:13Z",
+   "last": "2026-10-20T00:32:09Z",
+   "count": 7,
+   "messageIds": [
+    "gm-1a0c1e743d10b2b2",
+    "gm-1a0e723a463e74e1",
+    "gm-1a0e72bb71f6b0d9",
+    "gm-1a0e731a41ab4507",
+    "gm-1a12a57b87f563cc",
+    "gm-1a132cc8710993ff",
+    "gm-1a156b90b31efeca"
+   ]
+  },
+  {
+   "threadId": "gt-1a0b4a3e3f9a72b6",
+   "subject": "Automatic reply: From the Office of Stephen Doghty MP",
+   "threadSlug": "automatic-reply-from-the-office-of-stephen-doghty-mp",
+   "institutions": [
+    "mp"
+   ],
+   "first": "2026-10-20T00:31:18Z",
+   "last": "2026-10-20T00:31:18Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a156b857585cd44"
+   ]
+  },
+  {
+   "threadId": "gt-1a0b3cb33eb0553d",
+   "subject": "From the Office of Stephen Doghty MP",
+   "threadSlug": "from-the-office-of-stephen-doghty-mp",
+   "institutions": [
+    "mp"
+   ],
+   "first": "2026-09-18T09:13:47Z",
+   "last": "2026-10-20T00:31:03Z",
+   "count": 4,
+   "messageIds": [
+    "gm-1a0b3cb33eb0553d",
+    "gm-1a0b4a2578a1c042",
+    "gm-1a0b7ad7c7c10d58",
+    "gm-1a156b8096d9cdaa"
+   ]
+  },
+  {
+   "threadId": "gt-1a0e3f997bc1bf94",
+   "subject": "Subject access request — WA231076 / WA240304 — Great House Farm, Llandough — Williams / Buckler",
+   "threadSlug": "subject-access-request-wa231076-wa240304-great-house-farm-llandough-williams-buc",
+   "institutions": [
+    "hmlr"
+   ],
+   "first": "2026-09-28T21:41:54Z",
+   "last": "2026-10-20T00:30:25Z",
+   "count": 3,
+   "messageIds": [
+    "gm-1a0e9f7a1a4fa353",
+    "gm-1a0f7a430c36b98b",
+    "gm-1a156b774d4f98b2"
+   ]
+  },
+  {
+   "threadId": "gt-1a156b5af7d8295c",
+   "subject": "Automatic reply: FOI request — Valuation Office Agency: rating and valuation records for Great House Farm / Tŷ Mawr, Llandough, 1955–1995",
+   "threadSlug": "automatic-reply-foi-request-valuation-office-agency-rating-and-valuation-records",
+   "institutions": [
+    "voa"
+   ],
+   "first": "2026-10-20T00:28:25Z",
+   "last": "2026-10-20T00:28:25Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a156b5af7d8295c"
+   ]
+  },
+  {
+   "threadId": "gt-1a156b4d228c23d2",
+   "subject": "FOI request — Valuation Office Agency: rating and valuation records for Great House Farm / Tŷ Mawr, Llandough, 1955–1995",
+   "threadSlug": "foi-request-valuation-office-agency-rating-and-valuation-records-for-great-house",
+   "institutions": [
+    "voa"
+   ],
+   "first": "2026-10-20T00:27:33Z",
+   "last": "2026-10-20T00:27:33Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a156b4d228c23d2"
+   ]
+  },
+  {
+   "threadId": "gt-1a156b4a9e8729a6",
+   "subject": "FOI request — Audit Wales: external audit records of council land dealings at Great House Farm / Tŷ Mawr, Llandough, 1970–1996",
+   "threadSlug": "foi-request-audit-wales-external-audit-records-of-council-land-dealings-at-great",
+   "institutions": [
+    "audit-wales"
+   ],
+   "first": "2026-10-20T00:27:22Z",
+   "last": "2026-10-20T00:27:22Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a156b4a9e8729a6"
+   ]
+  },
+  {
+   "threadId": "gt-19f09c8c7ddc8f3c",
+   "subject": "Ty Mawr/ Great House Farm/ Red Fen (Cedfin), Llandough, Cardiff",
+   "threadSlug": "ty-mawr-great-house-farm-red-fen-cedfin-llandough-cardiff",
+   "institutions": [
+    "os"
+   ],
+   "first": "2026-06-27T15:55:30Z",
+   "last": "2026-10-20T00:24:53Z",
+   "count": 4,
+   "messageIds": [
+    "gm-19f09cb101e038e4",
+    "gm-19f18269393340ea",
+    "gm-19f1aa5d5d6d832e",
+    "gm-1a156b262a532dcc"
+   ]
+  },
+  {
+   "threadId": "gt-19fd90bc1cfc812a",
+   "subject": "Marconi, Great House Farm, Llandough",
+   "threadSlug": "marconi-great-house-farm-llandough",
+   "institutions": [
+    "bt-archives"
+   ],
+   "first": "2026-10-20T00:24:01Z",
+   "last": "2026-10-20T00:24:01Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a156b195dd68381"
+   ]
+  },
+  {
+   "threadId": "gt-1a156b0fb558e0a3",
+   "subject": "Automatic reply: Records request — Lambeth Palace Library / Church Commissioners: glebe, exchange and Bute Estate records, Llandough-juxta-Penarth (ECE/6/3/372/CD27551)",
+   "threadSlug": "automatic-reply-records-request-lambeth-palace-library-church-commissioners-gleb",
+   "institutions": [
+    "church-of-england"
+   ],
+   "first": "2026-10-20T00:23:18Z",
+   "last": "2026-10-20T00:23:18Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a156b0fb558e0a3"
+   ]
+  },
+  {
+   "threadId": "gt-1a156b0b5929168e",
+   "subject": "Records request — Lambeth Palace Library / Church Commissioners: glebe, exchange and Bute Estate records, Llandough-juxta-Penarth (ECE/6/3/372/CD27551)",
+   "threadSlug": "records-request-lambeth-palace-library-church-commissioners-glebe-exchange-and-b",
+   "institutions": [
+    "church-of-england"
+   ],
+   "first": "2026-10-20T00:23:03Z",
+   "last": "2026-10-20T00:23:03Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a156b0b5929168e"
+   ]
+  },
+  {
+   "threadId": "gt-1a156adec7a23f4b",
+   "subject": "Records request – WLGA: guidance on land with disputed title; the 1996 allocation of South Glamorgan land at Llandough and Leckwith; Great House Farm / Tŷ Mawr",
+   "threadSlug": "records-request-wlga-guidance-on-land-with-disputed-title-the-1996-allocation-of",
+   "institutions": [
+    "lga"
+   ],
+   "first": "2026-10-20T00:20:01Z",
+   "last": "2026-10-20T00:20:01Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a156adec7a23f4b"
+   ]
+  },
+  {
+   "threadId": "gt-1a156ad030c56a7f",
+   "subject": "FOI request — Historic England: records of Great House Farm / Tŷ Mawr, Llandough (Wales), including an item transferred to RCAHMW on 15 January 2018",
+   "threadSlug": "foi-request-historic-england-records-of-great-house-farm-ty-mawr-llandough-wales",
+   "institutions": [
+    "historic-england"
+   ],
+   "first": "2026-10-20T00:19:01Z",
+   "last": "2026-10-20T00:19:01Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a156ad030c56a7f"
+   ]
+  },
+  {
+   "threadId": "gt-1a1563e23f35bd02",
+   "subject": "Your submission to LibAnswers was received.",
+   "threadSlug": "your-submission-to-libanswers-was-received",
+   "institutions": [
+    "nlw"
+   ],
+   "first": "2026-10-19T22:17:55Z",
+   "last": "2026-10-19T22:17:55Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1563e23f35bd02"
+   ]
+  },
+  {
+   "threadId": "gt-1a1563b141b2baa3",
+   "subject": "Automatic reply: Enquiry – original South Glamorgan \"County Treasures\" inventory: entry for Great House Farm / Tŷ Mawr, Llandough",
+   "threadSlug": "automatic-reply-enquiry-original-south-glamorgan-county-treasures-inventory-entr",
+   "institutions": [
+    "glamorgan"
+   ],
+   "first": "2026-10-19T22:14:31Z",
+   "last": "2026-10-19T22:14:31Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1563b141b2baa3"
+   ]
+  },
+  {
+   "threadId": "gt-1a1563a9efad7a9d",
+   "subject": "Follow-up to research visit request of 15 October — Bute Estate (Glamorgan), Llandough-juxta-Penarth",
+   "threadSlug": "follow-up-to-research-visit-request-of-15-october-bute-estate-glamorgan-llandoug",
+   "institutions": [
+    "mount-stuart"
+   ],
+   "first": "2026-10-19T22:14:09Z",
+   "last": "2026-10-19T22:14:09Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1563ab10f64fba"
+   ]
+  },
+  {
+   "threadId": "gt-1a13aa68b250b8de",
+   "subject": "Response to National Archives enquiry. Case number CAS-359317-Q8Q4R9 CRM:022001165",
+   "threadSlug": "response-to-national-archives-enquiry-case-number-cas-359317-q8q4r9-crm-02200116",
+   "institutions": [
+    "tna"
+   ],
+   "first": "2026-10-14T13:42:29Z",
+   "last": "2026-10-19T22:14:08Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a13aa68b250b8de",
+    "gm-1a1563aae0fa411a"
+   ]
+  },
+  {
+   "threadId": "gt-1a1526f6e1b9996a",
+   "subject": "Records enquiry – BP Properties Ltd / BP Pension Trust: Great House Farm / Tŷ Mawr, Llandough, 1969–1993 (several items)",
+   "threadSlug": "records-enquiry-bp-properties-ltd-bp-pension-trust-great-house-farm-ty-mawr-llan",
+   "institutions": [
+    "bp"
+   ],
+   "first": "2026-10-19T22:14:06Z",
+   "last": "2026-10-19T22:14:06Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1563aa61190422"
+   ]
+  },
+  {
+   "threadId": "gt-1a1526ec443d3ca3",
+   "subject": "Enquiry – original South Glamorgan \"County Treasures\" inventory: entry for Great House Farm / Tŷ Mawr, Llandough",
+   "threadSlug": "enquiry-original-south-glamorgan-county-treasures-inventory-entry-for-great-hous",
+   "institutions": [
+    "glamorgan"
+   ],
+   "first": "2026-10-19T22:14:05Z",
+   "last": "2026-10-19T22:14:05Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1563aa32adcc72"
+   ]
+  },
+  {
+   "threadId": "gt-1a1526dbb7d77751",
+   "subject": "Glamorgan County Council deed wallet 1756 (Llandough school site)  – follow-up to FOI 00211027",
+   "threadSlug": "glamorgan-county-council-deed-wallet-1756-llandough-school-site-follow-up-to-foi",
+   "institutions": [
+    "vale-foi"
+   ],
+   "first": "2026-10-19T22:14:05Z",
+   "last": "2026-10-19T22:14:05Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1563aa0b94af1b"
+   ]
+  },
+  {
+   "threadId": "gt-1a1526f7cd0d98cb",
+   "subject": "RE: Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy records — Matter of public interest",
+   "threadSlug": "preservation-notice-great-house-farm-ty-mawr-llandough-do-not-destroy-records-ma",
+   "institutions": [
+    "moj"
+   ],
+   "first": "2026-10-19T22:13:48Z",
+   "last": "2026-10-19T22:13:48Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1563a5fd1f8170"
+   ]
+  },
+  {
+   "threadId": "gt-1a1526f6d8a1233b",
+   "subject": "Enquiry 9816877 – Great House Farm / Tŷ Mawr (Cedfin), Llandough-juxta-Penarth: Bute Estate records and related items (several items)",
+   "threadSlug": "enquiry-9816877-great-house-farm-ty-mawr-cedfin-llandough-juxta-penarth-bute-est",
+   "institutions": [
+    "nlw"
+   ],
+   "first": "2026-10-19T22:13:47Z",
+   "last": "2026-10-19T22:13:47Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1563a5d85ffa54"
+   ]
+  },
+  {
+   "threadId": "gt-1a1526eca2820200",
+   "subject": "Great House Farm / Tŷ Mawr, Llandough – follow-up to my preservation notice of 28 September 2026",
+   "threadSlug": "great-house-farm-ty-mawr-llandough-follow-up-to-my-preservation-notice-of-28-sep",
+   "institutions": [
+    "cotswold"
+   ],
+   "first": "2026-10-19T22:13:47Z",
+   "last": "2026-10-19T22:13:47Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1563a5b056dbb0"
+   ]
+  },
+  {
+   "threadId": "gt-1a0bbdf18c9ea3b9",
+   "subject": "Great House Farm, Llandough, Cardiff",
+   "threadSlug": "great-house-farm-llandough-cardiff",
+   "institutions": [
+    "heneb"
+   ],
+   "first": "2026-09-19T22:55:27Z",
+   "last": "2026-10-19T22:13:31Z",
+   "count": 3,
+   "messageIds": [
+    "gm-1a0bbe1ba706aa71",
+    "gm-1a145570b9618f41",
+    "gm-1a1563a1cfcaeb44"
+   ]
+  },
+  {
+   "threadId": "gt-1a1537b442f27f72",
+   "subject": "Welsh Government response to request for information ATISN 26-0010 (Retention & destruction schedules))",
+   "threadSlug": "welsh-government-response-to-request-for-information-atisn-26-0010-retention-des",
+   "institutions": [
+    "cadw"
+   ],
+   "first": "2026-10-19T09:25:46Z",
+   "last": "2026-10-19T22:13:30Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a1537b442f27f72",
+    "gm-1a1563a1a05563ce"
+   ]
+  },
+  {
    "threadId": "gt-1a154577a09c3329",
    "subject": "RE: FOI — Welsh Office / Cadw papers, July–December 1988 — Great House Farm (Ty Mawr), Llandough — following 26FOI 103 (ATISN 27589)",
    "threadSlug": "foi-welsh-office-cadw-papers-julydecember-1988-great-house-farm-ty-mawr-llandoug",
@@ -48,20 +674,6 @@
    "count": 1,
    "messageIds": [
     "gm-1a154577a09c3329"
-   ]
-  },
-  {
-   "threadId": "gt-1a1537b442f27f72",
-   "subject": "Welsh Government response to request for information ATISN 26-0010 (Retention & destruction schedules))",
-   "threadSlug": "welsh-government-response-to-request-for-information-atisn-26-0010-retention-des",
-   "institutions": [
-    "cadw"
-   ],
-   "first": "2026-10-19T09:25:46Z",
-   "last": "2026-10-19T09:25:46Z",
-   "count": 1,
-   "messageIds": [
-    "gm-1a1537b442f27f72"
    ]
   },
   {
@@ -124,31 +736,17 @@
    ]
   },
   {
-   "threadId": "gt-1a0bbdf18c9ea3b9",
-   "subject": "Great House Farm, Llandough, Cardiff",
-   "threadSlug": "great-house-farm-llandough-cardiff",
-   "institutions": [
-    "heneb"
-   ],
-   "first": "2026-09-19T22:55:27Z",
-   "last": "2026-10-16T15:31:20Z",
-   "count": 2,
-   "messageIds": [
-    "gm-1a0bbe1ba706aa71",
-    "gm-1a145570b9618f41"
-   ]
-  },
-  {
    "threadId": "gt-1a143bfd5d432cf5",
-   "subject": "RE: ALLANOL/EXTERNAL - FOI 2026-024 / 032 / 036 – outstanding item 7: recorded basis for treating already-found records as “unrelated / not in scope”",
+   "subject": "Re: ALLANOL/EXTERNAL - FOI 2026-024 / 032 / 036 – outstanding item 7: recorded basis for treating already-found records as “unrelated / not in scope”",
    "threadSlug": "foi-2026-024-032-036-outstanding-item-7-recorded-basis-for-treating-already-foun",
    "institutions": [
     "museum"
    ],
-   "first": "2026-10-16T12:35:13Z",
+   "first": "2026-10-16T08:45:04Z",
    "last": "2026-10-16T12:35:13Z",
-   "count": 1,
+   "count": 2,
    "messageIds": [
+    "gm-1a143e2e17c95ddb",
     "gm-1a144b5a227786ef"
    ]
   },
@@ -280,28 +878,6 @@
    ]
   },
   {
-   "threadId": "gt-1a0e9e9889be4e6a",
-   "subject": "Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy records — Matter of public interest",
-   "threadSlug": "preservation-notice-great-house-farm-ty-mawr-llandough-do-not-destroy-records-ma",
-   "institutions": [
-    "bp",
-    "cadw",
-    "cotswold",
-    "linklaters",
-    "moj",
-    "museum"
-   ],
-   "first": "2026-09-28T21:39:38Z",
-   "last": "2026-10-16T07:04:17Z",
-   "count": 4,
-   "messageIds": [
-    "gm-1a0e9f58d1f3cf15",
-    "gm-1a0eca2b89512fe9",
-    "gm-1a11c210b3442ac5",
-    "gm-1a14386a609c7540"
-   ]
-  },
-  {
    "threadId": "gt-1a141ffbc39607dd",
    "subject": "Your submission to LibAnswers was received.",
    "threadSlug": "your-submission-to-libanswers-was-received",
@@ -372,6 +948,34 @@
    ]
   },
   {
+   "threadId": "gt-1a141cd2ab07bcb5",
+   "subject": "Automatic reply: [External] Research visit request — Bute Estate (Glamorgan) records, 1667 and 1875–1880 — Llandough-juxta-Penarth",
+   "threadSlug": "automatic-reply-external-research-visit-request-bute-estate-glamorgan-records-16",
+   "institutions": [
+    "mount-stuart"
+   ],
+   "first": "2026-10-15T23:02:03Z",
+   "last": "2026-10-15T23:02:03Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a141cd2ab07bcb5"
+   ]
+  },
+  {
+   "threadId": "gt-1a141ccdfba02bb7",
+   "subject": "Research visit request — Bute Estate (Glamorgan) records, 1667 and 1875–1880 — Llandough-juxta-Penarth",
+   "threadSlug": "research-visit-request-bute-estate-glamorgan-records-1667-and-18751880-llandough",
+   "institutions": [
+    "mount-stuart"
+   ],
+   "first": "2026-10-15T23:01:51Z",
+   "last": "2026-10-15T23:01:51Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a141ccee6dea9c9"
+   ]
+  },
+  {
    "threadId": "gt-1a141cc67c7f3f3b",
    "subject": "Re: Response to National Archives enquiry. Case number CAS-359317-Q8Q4R9 - incomplete location response under FOIA",
    "threadSlug": "response-to-national-archives-enquiry-case-number-cas-359317-q8q4r9-incomplete-l",
@@ -411,6 +1015,20 @@
    "count": 1,
    "messageIds": [
     "gm-1a141cc1e5c13858"
+   ]
+  },
+  {
+   "threadId": "gt-1a141cc0df45c1e9",
+   "subject": "Enquiry:  261015-6844273",
+   "threadSlug": "enquiry-261015-6844273",
+   "institutions": [
+    "hmlr"
+   ],
+   "first": "2026-10-15T23:00:48Z",
+   "last": "2026-10-15T23:00:48Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a141cc0df45c1e9"
    ]
   },
   {
@@ -470,20 +1088,6 @@
     "gm-1a1103d9d380a3b6",
     "gm-1a1273cec9f65619",
     "gm-1a13aff7c0c5d8b4"
-   ]
-  },
-  {
-   "threadId": "gt-1a13aa68b250b8de",
-   "subject": "Response to National Archives enquiry. Case number CAS-359317-Q8Q4R9 CRM:022001165",
-   "threadSlug": "response-to-national-archives-enquiry-case-number-cas-359317-q8q4r9-crm-02200116",
-   "institutions": [
-    "tna"
-   ],
-   "first": "2026-10-14T13:42:29Z",
-   "last": "2026-10-14T13:42:29Z",
-   "count": 1,
-   "messageIds": [
-    "gm-1a13aa68b250b8de"
    ]
   },
   {
@@ -673,25 +1277,6 @@
    ]
   },
   {
-   "threadId": "gt-1a0c1e36871ebfd1",
-   "subject": "Re: Great House Farm (Tŷ Mawr), Llandough — request for information under FOIA 2000 / EIR 2004",
-   "threadSlug": "great-house-farm-ty-mawr-llandough-request-for-information-under-foia-2000-eir-2",
-   "institutions": [
-    "llandough"
-   ],
-   "first": "2026-09-21T02:59:13Z",
-   "last": "2026-10-13T01:07:06Z",
-   "count": 6,
-   "messageIds": [
-    "gm-1a0c1e743d10b2b2",
-    "gm-1a0e723a463e74e1",
-    "gm-1a0e72bb71f6b0d9",
-    "gm-1a0e731a41ab4507",
-    "gm-1a12a57b87f563cc",
-    "gm-1a132cc8710993ff"
-   ]
-  },
-  {
    "threadId": "gt-1a1060d79ae529a6",
    "subject": "FOI — location only — Valuation Office Survey 1910, OS Glamorgan XLVII.6, Llandough / Great House Farm",
    "threadSlug": "foi-location-only-valuation-office-survey-1910-os-glamorgan-xlvii-6-llandough-gr",
@@ -752,21 +1337,6 @@
    "messageIds": [
     "gm-1a1273c992f2cba8",
     "gm-1a13016d4fe95bfd"
-   ]
-  },
-  {
-   "threadId": "gt-1a123ef587a83fad",
-   "subject": "ICR/090/26 – further formal points on the first-registration file and 1987 amalgamation",
-   "threadSlug": "icr-090-26-further-formal-points-on-the-first-registration-file-and-1987-amalgam",
-   "institutions": [
-    "hmlr-icr"
-   ],
-   "first": "2026-10-10T19:11:32Z",
-   "last": "2026-10-12T10:09:57Z",
-   "count": 2,
-   "messageIds": [
-    "gm-1a1273a47146ed2d",
-    "gm-1a12f9732739a69e"
    ]
   },
   {
@@ -1311,21 +1881,6 @@
    "messageIds": [
     "gm-1a0f7dbf9dec61a9",
     "gm-1a0f81abba064237"
-   ]
-  },
-  {
-   "threadId": "gt-1a0e3f997bc1bf94",
-   "subject": "Subject access request — WA231076 / WA240304 — Great House Farm, Llandough — Williams / Buckler",
-   "threadSlug": "subject-access-request-wa231076-wa240304-great-house-farm-llandough-williams-buc",
-   "institutions": [
-    "hmlr"
-   ],
-   "first": "2026-09-28T21:41:54Z",
-   "last": "2026-10-01T13:25:24Z",
-   "count": 2,
-   "messageIds": [
-    "gm-1a0e9f7a1a4fa353",
-    "gm-1a0f7a430c36b98b"
    ]
   },
   {
@@ -1977,20 +2532,6 @@
    ]
   },
   {
-   "threadId": "gt-1a0e3b180d95f228",
-   "subject": "Preservation and disclosure request — Church View Close / Great House Farm, Llandough — titles WA231076 / WA240304",
-   "threadSlug": "preservation-and-disclosure-request-church-view-close-great-house-farm-llandough",
-   "institutions": [
-    "persimmon"
-   ],
-   "first": "2026-09-27T17:39:27Z",
-   "last": "2026-09-27T17:39:27Z",
-   "count": 1,
-   "messageIds": [
-    "gm-1a0e3f34cc06c477"
-   ]
-  },
-  {
    "threadId": "gt-1a0e14ca6951632f",
    "subject": "Further to Your Enquiry: Ref: 260918-6720625 Title No: WA240304",
    "threadSlug": "further-to-your-enquiry-ref-260918-6720625-title-no-wa240304",
@@ -2419,22 +2960,6 @@
    "count": 1,
    "messageIds": [
     "gm-1a0baa224660ca61"
-   ]
-  },
-  {
-   "threadId": "gt-1a0b3cb33eb0553d",
-   "subject": "From the Office of Stephen Doghty MP",
-   "threadSlug": "from-the-office-of-stephen-doghty-mp",
-   "institutions": [
-    "mp"
-   ],
-   "first": "2026-09-18T09:13:47Z",
-   "last": "2026-09-19T03:19:53Z",
-   "count": 3,
-   "messageIds": [
-    "gm-1a0b3cb33eb0553d",
-    "gm-1a0b4a2578a1c042",
-    "gm-1a0b7ad7c7c10d58"
    ]
   },
   {
@@ -4134,22 +4659,6 @@
     "gm-19f1f90e2121384d",
     "gm-19f22a91a12e5a86",
     "gm-19f2461b853376c3"
-   ]
-  },
-  {
-   "threadId": "gt-19f09c8c7ddc8f3c",
-   "subject": "Ty Mawr/ Great House Farm/ Red Fen (Cedfin), Llandough, Cardiff",
-   "threadSlug": "ty-mawr-great-house-farm-red-fen-cedfin-llandough-cardiff",
-   "institutions": [
-    "os"
-   ],
-   "first": "2026-06-27T15:55:30Z",
-   "last": "2026-06-30T22:28:23Z",
-   "count": 3,
-   "messageIds": [
-    "gm-19f09cb101e038e4",
-    "gm-19f18269393340ea",
-    "gm-19f1aa5d5d6d832e"
    ]
   },
   {

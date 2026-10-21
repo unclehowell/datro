@@ -29,6 +29,22 @@ from email.utils import parseaddr
 from datetime import datetime
 
 INSTITUTIONS = {
+  # added 21 Oct 2026 (email-site sync, Sion's Tab agent)
+  "ads": "Archaeology Data Service",
+  "audit-wales": "Audit Wales",
+  "blake-morgan": "Blake Morgan LLP",
+  "bona-vacantia": "Government Legal Department (Bona Vacantia)",
+  "bt-archives": "BT Archives",
+  "cardiff": "Cardiff Council",
+  "church-of-england": "Church of England archives (Lambeth Palace Library)",
+  "defra": "Defra",
+  "historic-england": "Historic England",
+  "lga": "Local Government Association / WLGA",
+  "mount-stuart": "Mount Stuart (Bute archive)",
+  "natural-england": "Natural England",
+  "nrw": "Natural Resources Wales",
+  "penarth-tc": "Penarth Town Council",
+  "voa": "Valuation Office Agency / HMRC",
   "hmlr": "HM Land Registry", "hmlr-icr": "HM Land Registry (Independent Complaints Reviewer)",
   "vale-foi": "Vale of Glamorgan Council", "vale-scrutiny": "Vale of Glamorgan Council (Scrutiny)",
   "llandough": "Llandough Community Council", "cadw": "Welsh Government / Cadw",
