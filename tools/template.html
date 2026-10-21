@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Old Bill · The Tŷ Mawr Ticket Desk</title>
+<meta name="description" content="The Great House Farm (Tŷ Mawr) ticket desk: every wrong on the record gets a ticket, every cost a double-entry ledger line. Team Williams v Team Regime.">
+<meta property="og:title" content="Old Bill · The Tŷ Mawr Ticket Desk">
+<meta property="og:description" content="Team Williams v Team Regime: tickets, scores and a double-entry cost ledger for Great House Farm.">
+<meta name="theme-color" content="#1b1730">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1b1730;--ink:#f6f1e7;--muted:#b9b2d6;--wood:#8a5a2b;--wood2:#5e3a17;--boardW:#1f4a37;--boardR:#2b2f45;--chalk:#fbfaf5;--y:#ffe066;--p:#ff8fab;--g:#7CFFB2;--b:#9ad1ff;--o:#ffb347;--v:#c3a6ff;--r:#ff6b6b}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Patrick Hand',ui-rounded,system-ui,sans-serif;font-size:17px;line-height:1.35}
+body{background-image:radial-gradient(circle at 20% 0%,#2a2350 0,transparent 55%),radial-gradient(circle at 90% 30%,#2b1d3d 0,transparent 50%)}
+a{color:var(--y)}
+.wrap{max-width:980px;margin:0 auto;padding:12px 10px 28px}
+header{display:flex;align-items:center;gap:10px;margin:2px 2px 10px}
+.badge{flex:0 0 52px;height:52px;border-radius:50%;background:conic-gradient(from 0deg,#ffe066,#ff8fab,#9ad1ff,#7CFFB2,#ffe066);display:grid;place-items:center;box-shadow:0 0 0 3px #1b1730,0 0 0 5px #ffe066}
+.badge span{width:40px;height:40px;border-radius:50%;background:#1b1730;display:grid;place-items:center;font:700 10px/1 'Cabin Sketch',cursive;text-align:center;color:var(--y);letter-spacing:.5px}
+h1{font:700 26px/1.05 'Cabin Sketch',cursive;margin:0;color:#fff}
+.sub{margin:2px 0 0;color:var(--muted);font-size:15px}
+.boards{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:relative}
+.board{position:relative;border-radius:12px;padding:10px 9px 11px;border:7px solid var(--wood);box-shadow:inset 0 0 0 2px var(--wood2),0 6px 0 #0006;overflow:hidden;min-height:168px}
+.board:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,#ffffff12,transparent 60%),repeating-linear-gradient(115deg,#ffffff05 0 2px,transparent 2px 9px);pointer-events:none}
+.board.w{background:var(--boardW)}.board.r{background:var(--boardR)}
+.board h2{font:700 19px/1 'Cabin Sketch',cursive;margin:0 0 6px;color:var(--chalk);text-shadow:0 0 1px #fff8}
+.board.w h2 small{color:var(--g)}.board.r h2 small{color:var(--p)}
+.board h2 small{display:block;font:15px/1.1 'Patrick Hand';margin-top:3px}
+.big{font:700 31px/1 'Cabin Sketch',cursive;color:var(--y);text-shadow:0 0 2px #fff6;white-space:nowrap}
+.unit{font-size:14px;color:var(--muted)}
+.line{margin-top:6px;font-size:16px;color:var(--chalk);white-space:nowrap}
+.line b{font:700 21px 'Cabin Sketch',cursive;color:#fff}
+.board .ledge{position:absolute;left:8px;right:8px;bottom:3px;height:4px;border-radius:2px;background:#ffffff22}
+.board .chalkbit{position:absolute;right:12px;bottom:6px;width:18px;height:6px;border-radius:3px;background:#fff;opacity:.85}
+.board.r .chalkbit{background:var(--p)}
+.toggle{margin:12px 0 4px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.sw{position:relative;display:inline-flex;align-items:center;gap:10px;background:#2c2550;border:2px dashed #ffe06688;border-radius:999px;padding:7px 14px 7px 8px;cursor:pointer;font-size:18px;color:#fff;user-select:none}
+.sw input{position:absolute;opacity:0;pointer-events:none}
+.knob{width:48px;height:26px;border-radius:999px;background:#555;position:relative;transition:background .3s}
+.knob:after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .3s}
+.sw.on .knob{background:var(--g)}.sw.on .knob:after{left:25px}
+.flipnote{text-align:center;color:var(--muted);font-size:15px;min-height:20px}
+.books{display:inline-flex;gap:6px;align-items:center;background:#7CFFB222;color:var(--g);border-radius:999px;padding:3px 10px;font-size:14px}
+.books.bad{background:#ff6b6b22;color:var(--r)}
+.chip{position:fixed;z-index:50;font:700 20px 'Cabin Sketch';pointer-events:none;transition:transform .9s cubic-bezier(.3,.7,.3,1),opacity .9s}
+.orig{margin:14px 0 10px;background:#fff7c2;color:#2b2416;border-radius:6px;padding:12px 12px 10px;position:relative;box-shadow:0 5px 0 #0005;cursor:pointer}
+.orig:before,.orig:after{content:"";position:absolute;left:0;right:0;height:8px;background:radial-gradient(circle at 6px 0,transparent 5px,#fff7c2 5.5px) repeat-x;background-size:12px 8px}
+.orig:before{top:-7px;transform:rotate(180deg)}.orig:after{bottom:-7px}
+.orig .tag{font:700 13px 'Cabin Sketch';letter-spacing:1px;color:#b23a48}
+.orig h3{margin:2px 0 4px;font:700 20px/1.1 'Cabin Sketch'}
+.orig .row{display:flex;justify-content:space-between;gap:8px;align-items:flex-end;margin-top:6px}
+.orig .pts{font:700 26px 'Cabin Sketch';color:#b23a48;white-space:nowrap}
+.orig .fine{font-size:15px}
+.tabs{display:flex;gap:6px;margin:16px 0 8px;position:sticky;top:0;z-index:5;background:var(--bg);padding:6px 0}
+.tabs button{flex:1;font:inherit;font-size:17px;padding:8px 4px;border-radius:10px;border:2px solid #ffffff22;background:#2c2550;color:#fff;cursor:pointer}
+.tabs button.on{background:var(--y);color:#1b1730;border-color:var(--y)}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 8px}
+.filters button{font:inherit;font-size:15px;padding:4px 10px;border-radius:999px;border:1px solid #ffffff33;background:transparent;color:var(--ink);cursor:pointer}
+.filters button.on{background:#fff;color:#1b1730}
+.tk{display:grid;grid-template-columns:6px 1fr auto;gap:0 10px;background:#fffdf6;color:#221d33;border-radius:10px;margin:7px 0;overflow:hidden;cursor:pointer;box-shadow:0 3px 0 #0004;position:relative}
+.tk .stripe{grid-column:1;grid-row:1/4}
+.tk .meta,.tk .to,.tk .what{grid-column:2}.tk .meta{padding-top:7px;font-size:13px;color:#6b6585}
+.tk .to{font-weight:700;font-size:16px;line-height:1.15}
+.tk .what{font-size:15px;padding-bottom:8px;color:#3a3450}
+.tk .pt{grid-column:3;grid-row:1/4;align-self:center;padding:0 10px 0 0;text-align:right;font:700 18px 'Cabin Sketch';white-space:nowrap}
+.tk .pt small{display:block;font:12px 'Patrick Hand';color:#6b6585}
+.tk.williams{background:#effff6}
+.tk.quashed{opacity:.75}
+.tk .stamp{position:absolute;right:8px;top:6px;transform:rotate(-8deg);border:2px solid #b23a48;color:#b23a48;font:700 12px 'Cabin Sketch';padding:1px 6px;border-radius:4px;background:#fffdf6cc}
+.tk.cancel .what{text-decoration:line-through}
+.sum{color:var(--muted);font-size:15px;margin:4px 0}
+.le{background:#fffdf6;color:#221d33;border-radius:10px;margin:8px 0;padding:9px 11px;cursor:pointer;box-shadow:0 3px 0 #0004}
+.le .h{display:flex;justify-content:space-between;gap:8px;font-weight:700;line-height:1.2}
+.le .amt{white-space:nowrap;font:700 18px 'Cabin Sketch'}
+.est{display:inline-block;font-size:12px;background:#ffe06655;border-radius:4px;padding:0 5px;margin-left:4px;color:#5a4b00;font-weight:400}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px;font-size:13px}
+.cols div{background:#f1edff;border-radius:6px;padding:4px 6px}
+.cols div b{display:block;font-size:11px;color:#6b6585;font-weight:400}
+.cols .rg{background:#ffe3ea}
+.pill{display:inline-block;margin-top:6px;font-size:13px;border-radius:999px;padding:2px 9px}
+.pill.borne{background:#e3e0ef;color:#3a3450}.pill.contingent{background:#ffe9b8;color:#6a4a00}.pill.shifted{background:#c8ffe0;color:#0b5a2e}
+.tot{display:flex;justify-content:space-between;font:700 18px 'Cabin Sketch';padding:8px 4px;border-top:2px dashed #ffffff44;margin-top:6px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{padding:4px 6px;border-bottom:1px solid #ffffff1a;text-align:left;vertical-align:top}
+td.n,th.n{text-align:right;white-space:nowrap}
+details{background:#ffffff0d;border-radius:10px;padding:6px 10px;margin:10px 0}
+summary{cursor:pointer;font-size:16px}
+.band{display:flex;gap:10px;align-items:center;margin:6px 0;background:#ffffff0d;border-radius:10px;padding:7px 9px}
+.band .sw2{flex:0 0 14px;height:42px;border-radius:5px}
+.band b{display:block}
+.band .rng{font:700 15px 'Cabin Sketch';color:var(--y)}
+.modal{position:fixed;inset:0;background:#0009;display:none;align-items:flex-end;justify-content:center;z-index:40}
+.modal.on{display:flex}
+.sheet{background:#fffdf6;color:#221d33;width:100%;max-width:640px;max-height:86vh;overflow:auto;border-radius:16px 16px 0 0;padding:14px 16px 22px}
+.sheet h3{font:700 21px/1.15 'Cabin Sketch';margin:4px 0 6px}
+.sheet .x{float:right;font:inherit;font-size:22px;background:none;border:0;cursor:pointer}
+.sheet .kv{font-size:15px;margin:4px 0}
+.sheet .kv b{color:#6b6585;font-weight:400}
+.sheet table td,.sheet table th{border-bottom:1px solid #0001}
+.sheet a{color:#5b3bd6}
+.hide{display:none}
+footer{margin-top:26px;text-align:center;color:var(--muted);font-size:14px}
+@media(min-width:720px){.big{font-size:46px}.board{padding:14px 16px;min-height:200px}.board h2{font-size:26px}h1{font-size:34px}.modal{align-items:center}.sheet{border-radius:16px}}
+@media(max-width:360px){.big{font-size:26px}.line{font-size:14px}}
+@media (prefers-reduced-motion: reduce){.chip{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="badge" aria-hidden="true"><span>OLD<br>BILL</span></div>
+<div><h1>The Tŷ Mawr Ticket Desk</h1><p class="sub">Every wrong on the record gets a ticket. Every cost gets a ledger line. Keep score.</p></div></header>
+
+<section class="boards" aria-label="Scoreboards">
+ <div class="board w" id="bw"><h2>Team Williams<small>tickets on them · cost carried</small></h2>
+  <div class="big" id="wPts">0</div><div class="unit">points</div>
+  <div class="line">🎟 <b id="wN">0</b> <span id="wNw">tickets</span></div>
+  <div class="line">£ <b id="wG">0</b> <span class="unit">borne</span></div>
+  <div class="ledge"></div><div class="chalkbit"></div></div>
+ <div class="board r" id="br"><h2>Team Regime<small>tickets on them · cost carried</small></h2>
+  <div class="big" id="rPts">0</div><div class="unit">points</div>
+  <div class="line">🎟 <b id="rN">0</b> <span id="rNw">tickets</span></div>
+  <div class="line">£ <b id="rG">0</b> <span class="unit">borne</span></div>
+  <div class="ledge"></div><div class="chalkbit"></div></div>
+</section>
+
+<div class="toggle">
+ <label class="sw" id="sw"><input type="checkbox" id="reopen"><span class="knob"></span><span>What if the case reopens?</span></label>
+ <span class="books" id="books">Books balance ✓</span>
+</div>
+<div class="flipnote" id="flipnote"></div>
+
+<div class="orig" id="orig" role="button" tabindex="0"></div>
+
+<nav class="tabs" role="tablist">
+ <button class="on" data-tab="tickets">Tickets</button><button data-tab="ledger">Ledger</button><button data-tab="rubric">Rubric</button>
+</nav>
+
+<section id="tab-tickets">
+ <div class="filters" id="filters"><button class="on" data-f="all">All</button><button data-f="regime">Team Regime</button><button data-f="williams">Team Williams</button></div>
+ <div id="tlist"></div>
+</section>
+
+<section id="tab-ledger" class="hide">
+ <p class="sum">Every cost is two entries: debit the side that carries it, credit the event that caused it. Flip the switch and the contingent lines post across to Team Regime.</p>
+ <div id="llist"></div>
+ <div class="tot"><span>Carried by Team Williams</span><span id="totW">£0</span></div>
+ <div class="tot"><span>Carried by Team Regime</span><span id="totR">£0</span></div>
+ <details><summary>Who picks up the bill if the case reopens</summary><div id="appo"></div></details>
+ <details><summary>The double entries (debits and credits)</summary><div id="journal"></div></details>
+ <details><summary>For scale: value made on the land</summary><div id="memo"></div></details>
+</section>
+
+<section id="tab-rubric" class="hide">
+ <p class="sum">Fixed bands from 1 to 1,000,000 points. A ticket takes its band score, then the multipliers, capped at 1,000,000. The original ticket is the yardstick.</p>
+ <div id="bands"></div>
+ <h3 style="font:700 20px 'Cabin Sketch';margin:14px 0 4px">Multipliers</h3><div id="mults"></div>
+ <h3 style="font:700 20px 'Cabin Sketch';margin:14px 0 4px">How the switch works</h3>
+ <p class="sum">Orders against the family that rest on the title question are quashed and their points re-issued to the party that obtained them. The original ticket stays: it was admitted. Contingent costs post across to Team Regime in the shares proposed on the Reparations Schedule. Lines with no £ on the record yet stay where they are until a figure is found.</p>
+ <p class="sum">Sources: <a href="https://greathousefarmwiki.wordpress.com/start-here/">the Legal Wiki</a> · data: <a href="data/tickets.json">tickets.json</a> · <a href="data/ledger.json">ledger.json</a></p>
+</section>
+
+<footer>© the Williams-Buckler family of Tŷ Mawr · <a href="https://bucklerfamily.estate/licence/">Licence</a></footer>
+</div>
+
+<div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
+
+<script>
+const T=/*__TICKETS__*/null, L=/*__LEDGER__*/null;
+const $=s=>document.querySelector(s), fmt=n=>Math.round(n).toLocaleString('en-GB'), gbp=n=>'£'+Number(n).toLocaleString('en-GB',{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2});
+const compact=(n,money)=>{const a=Math.abs(n);if(a>=1e6)return (n/1e6).toFixed(a>=1e7?1:2).replace(/\.?0+$/,'')+'m';if(a>=1e4&&money)return Math.round(n/1e3)+'k';return fmt(n)};
+const bandOf=k=>T.rubric.bands.find(b=>b.key===k);
+const emo={paper:'📎',silence:'⏰',fair:'⚖️',over:'🚧',court:'🏛️',orders:'📜',property:'🏚️',harm:'🩹',home:'🏠'};
+let reopen=false, filt='all', shown={wPts:0,rPts:0,wN:0,rN:0,wG:0,rG:0};
+function tally(){const s=reopen?T.summary.reopened:T.summary.now;return{wPts:s.williams.points,rPts:s.regime.points,wN:s.williams.tickets,rN:s.regime.tickets,wG:s.williams.gbp,rG:s.regime.gbp}}
+function paint(animate){const t=tally(),st=performance.now(),d=animate?1100:0,from={...shown};
+ const step=now=>{const k=d?Math.min(1,(now-st)/d):1,e=1-Math.pow(1-k,3);
+  for(const id in t){const v=from[id]+(t[id]-from[id])*e;shown[id]=v;const el=document.getElementById(id);
+   el.textContent=id.endsWith('G')?compact(v,true):id.endsWith('N')?fmt(v):compact(v);el.title=id.endsWith('G')?gbp(t[id]):fmt(t[id])}
+  if(k<1)requestAnimationFrame(step)};$('#wNw').textContent=t.wN===1?'ticket':'tickets';$('#rNw').textContent=t.rN===1?'ticket':'tickets';requestAnimationFrame(step);
+ const b=reopen?L.summary.books.reopened:L.summary.books.now;const ok=Math.abs(b[0]-b[1])<0.005;
+ $('#books').className='books'+(ok?'':' bad');$('#books').textContent=ok?'Books balance ✓ '+gbp(b[0])+' Dr = Cr':'Books do not balance';
+ const q=T.tickets.filter(x=>x.reversible).length, moved=L.entries.filter(e=>e.reopen_postings.length).reduce((a,e)=>a+e.amount,0);
+ $('#flipnote').textContent=reopen?`${q} orders quashed and re-issued · ${gbp(moved)} posted across to Team Regime`:'Flip it to see the cost move.';}
+function fly(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;const a=$('#bw').getBoundingClientRect(),b=$('#br').getBoundingClientRect();
+ const [src,dst]=reopen?[a,b]:[b,a];for(let i=0;i<9;i++){const c=document.createElement('div');c.className='chip';c.textContent=i%3?'£':'🎟';c.style.color=['#ffe066','#7CFFB2','#ff8fab'][i%3];
+  c.style.left=(src.left+src.width*(.25+.5*Math.random()))+'px';c.style.top=(src.top+src.height*(.3+.4*Math.random()))+'px';document.body.appendChild(c);
+  setTimeout(()=>{c.style.transform=`translate(${dst.left-src.left}px,${(Math.random()-.5)*60}px) rotate(${(Math.random()-.5)*90}deg)`;c.style.opacity='0'},30+i*60);setTimeout(()=>c.remove(),1400)}}
+function srcLinks(s){return (s||[]).map(x=>`<a href="${x.url}" target="_blank" rel="noopener">${x.title}</a>`).join('<br>')}
+function original(){const a=T.tickets.find(x=>x.original);$('#orig').innerHTML=`<div class="tag">THE ORIGINAL TICKET · THE YARDSTICK</div><h3>${a.issued_to.replace(' (Team Williams)','')}</h3><div>${a.what}</div>
+ <div class="row"><div class="fine"><b>Fine / fee:</b> No record found yet.<br><span style="color:#6b5f3d">${a.date_label} · tap for the record</span></div><div class="pts">${fmt(a.points)}<div style="font:13px 'Patrick Hand';text-align:right">points</div></div></div>`;
+ $('#orig').onclick=()=>openTicket(a);$('#orig').onkeydown=e=>{if(e.key==='Enter')openTicket(a)}}
+function ticketsList(){const box=$('#tlist');const list=T.tickets.filter(x=>!x.original&&(filt==='all'||x.team===filt)).sort((a,b)=>a.date<b.date?-1:1);
+ box.innerHTML=list.map(t=>{const bd=bandOf(t.band),q=reopen&&t.reversible;return `<div class="tk ${t.team}${q?' quashed':''}${t.cancelled?' cancel':''}" data-id="${t.id}">
+ <div class="stripe" style="background:${bd.colour}"></div><div class="meta">${emo[t.desk]||'🎟'} ${t.desk_name} · ${t.date_label}</div>
+ <div class="pt" style="color:${t.team==='regime'?'#b23a48':'#1f6b45'}">${t.cancelled?'0':compact(t.points)}<small>${t.cancelled?'cancelled':'pts'}</small></div>
+ <div class="to">${q?t.reissue_to+' <span style="font-weight:400">(re-issued)</span>':t.issued_to}</div><div class="what">${t.what}</div>${q?'<div class="stamp">QUASHED</div>':''}</div>`}).join('');
+ box.querySelectorAll('.tk').forEach(el=>el.onclick=()=>openTicket(T.tickets.find(x=>x.id===el.dataset.id)));
+ const n=T.tickets.filter(x=>x.team==='regime').length;}
+function openTicket(t){const bd=bandOf(t.band);const m=(t.multipliers||[]).map(x=>`×${x.x} ${x.why}`).join('<br>')||'none';
+ $('#sheet').innerHTML=`<button class="x" aria-label="Close">×</button><div style="font-size:14px;color:#6b6585">${emo[t.desk]||'🎟'} ${t.desk_name} · ${t.id}</div><h3>${t.issued_to}</h3>
+ <p>${t.what}</p><p style="color:#3a3450">${t.detail||''}</p>
+ ${t.fine?`<div class="kv"><b>Fine / fee:</b> ${t.fine}</div>`:''}${t.calibration?`<div class="kv"><b>Calibration:</b> ${t.calibration}</div>`:''}
+ <div class="kv"><b>Date:</b> ${t.date_label}</div><div class="kv"><b>Band:</b> <span style="background:${bd.colour};padding:0 6px;border-radius:4px">${bd.name}</span> (${fmt(bd.lo)}–${fmt(bd.hi)})</div>
+ <div class="kv"><b>Base score:</b> ${fmt(t.base)} · <b>Multipliers:</b> ${m}</div><div class="kv"><b>Points:</b> <span style="font:700 20px 'Cabin Sketch'">${t.cancelled?'0 (cancelled)':fmt(t.points)}</span></div>
+ ${t.reversible?`<div class="kv"><b>If the case reopens:</b> quashed and re-issued to ${t.reissue_to}</div>`:''}
+ <div class="kv" style="margin-top:8px"><b>Source:</b><br>${srcLinks(t.sources)}</div>`;openModal()}
+function statusOf(e){if(e.status==='contingent'&&e.reopen_postings.length)return reopen?['shifted','Shifted']:['contingent','Contingent: shifts if the case reopens'];return['borne','Borne by family']}
+function ledger(){const box=$('#llist');box.innerHTML=L.entries.map(e=>{const s=statusOf(e),moved=reopen&&e.reopen_postings.length;return `<div class="le" data-id="${e.id}"><div class="h"><span>${e.head}</span><span class="amt">${e.nil?'£ —':gbp(e.amount)}</span></div>
+ ${e.estimate?'<span class="est">estimate</span>':''}<div class="cols"><div><b>Borne by</b>${e.borne_by}</div><div class="${moved?'rg':''}"><b>Liable now</b>${moved?'Team Regime':e.liable_now}</div><div class="rg"><b>Liable if reopened</b>${e.liable_if_reopened}</div></div>
+ <span class="pill ${s[0]}">${s[1]}</span></div>`}).join('');
+ box.querySelectorAll('.le').forEach(el=>el.onclick=()=>openEntry(L.entries.find(x=>x.id===el.dataset.id)));
+ const t=tally();$('#totW').textContent=gbp(t.wG);$('#totR').textContent=gbp(t.rG);
+ const cont=L.entries.filter(e=>e.reopen_postings.length).reduce((a,e)=>a+e.amount,0);
+ $('#appo').innerHTML='<table><tr><th>Party</th><th class="n">Share</th><th class="n">£</th></tr>'+L.apportionment.map(a=>`<tr><td>${a.party}<br><span style="color:var(--muted);font-size:13px">${a.basis}</span></td><td class="n">${a.share}%</td><td class="n">${gbp(Math.round(cont*a.share)/100)}</td></tr>`).join('')+`</table><p class="sum">Shares as proposed on <a href="${L.apportionment[0].source.url}" target="_blank" rel="noopener">the Reparations Schedule</a>.</p>`;
+ const rows=[];L.entries.forEach(e=>{e.postings.concat(reopen?e.reopen_postings:[]).forEach(p=>rows.push(`<tr><td>${e.id}</td><td>${p.account}</td><td class="n">${p.dr?gbp(p.dr):''}</td><td class="n">${p.cr?gbp(p.cr):''}</td></tr>`))});
+ const b=reopen?L.summary.books.reopened:L.summary.books.now;
+ $('#journal').innerHTML='<table><tr><th>Entry</th><th>Account</th><th class="n">Dr</th><th class="n">Cr</th></tr>'+rows.join('')+`<tr><th></th><th>Totals</th><th class="n">${gbp(b[0])}</th><th class="n">${gbp(b[1])}</th></tr></table>`;
+ $('#memo').innerHTML=L.memo.map(m=>`<p><b>${m.head}</b>: ${gbp(m.amount)} <span class="est">estimate</span><br><span class="sum">${m.basis}</span> <a href="${m.sources[0].url}" target="_blank" rel="noopener">source</a></p>`).join('')}
+function openEntry(e){const s=statusOf(e),ps=e.postings.concat(e.reopen_postings);
+ $('#sheet').innerHTML=`<button class="x" aria-label="Close">×</button><div style="font-size:14px;color:#6b6585">Ledger · ${e.id}</div><h3>${e.head}</h3>
+ <div class="kv"><b>Amount:</b> <span style="font:700 20px 'Cabin Sketch'">${e.nil?'£ —':gbp(e.amount)}</span> ${e.estimate?'<span class="est">estimate</span>':''}</div><div class="kv"><b>Basis:</b> ${e.basis}</div>
+ <div class="kv"><b>Status:</b> <span class="pill ${s[0]}">${s[1]}</span></div>
+ <table style="margin-top:8px"><tr><th>Posting</th><th class="n">Dr</th><th class="n">Cr</th></tr>${ps.map((p,i)=>`<tr style="${i>=e.postings.length?'color:#b23a48':''}"><td>${p.account}${i===e.postings.length?' <i>(if reopened)</i>':''}</td><td class="n">${p.dr?gbp(p.dr):''}</td><td class="n">${p.cr?gbp(p.cr):''}</td></tr>`).join('')}</table>
+ <div class="kv" style="margin-top:8px"><b>Source:</b><br>${srcLinks(e.sources)}</div>`;openModal()}
+function rubric(){$('#bands').innerHTML=T.rubric.bands.map(b=>`<div class="band"><div class="sw2" style="background:${b.colour}"></div><div><span class="rng">${fmt(b.lo)} – ${fmt(b.hi)}</span><b>${b.name}</b><span class="sum">e.g. ${b.example}</span></div></div>`).join('');
+ $('#mults').innerHTML=T.rubric.multipliers.map(m=>`<div class="band"><div class="sw2" style="background:#fff;height:28px"></div><div><b>×${m.x}</b><span class="sum">${m.why}</span></div></div>`).join('')+`<p class="sum">Cap: ${fmt(T.rubric.cap)} points.</p>`}
+function openModal(){$('#modal').classList.add('on');$('#sheet').querySelector('.x').onclick=closeModal}
+function closeModal(){$('#modal').classList.remove('on')}
+$('#modal').onclick=e=>{if(e.target.id==='modal')closeModal()};document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b));['tickets','ledger','rubric'].forEach(k=>$('#tab-'+k).classList.toggle('hide',k!==b.dataset.tab))});
+document.querySelectorAll('#filters button').forEach(b=>b.onclick=()=>{filt=b.dataset.f;document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x===b));ticketsList()});
+$('#reopen').onchange=e=>{reopen=e.target.checked;$('#sw').classList.toggle('on',reopen);fly();paint(true);ticketsList();ledger();history.replaceState(null,'',reopen?'#reopened':'#')};
+if(location.hash==='#reopened'){reopen=true;$('#reopen').checked=true;$('#sw').classList.add('on')}
+original();ticketsList();ledger();rubric();paint(true);
+</script>
+</body>
+</html>
