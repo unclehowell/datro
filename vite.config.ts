@@ -1,4 +1,4 @@
-import { readdirSync } from "node:fs";
+import { copyFileSync, mkdirSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import type { Plugin } from "vite";
 import { defineConfig } from "vite";
@@ -145,6 +145,33 @@ function authPopupPlugin(): Plugin {
 // `0.0.0.0:8080` is the live-preview contract — don't change host/port.
 // The dev server starts once `src/router.tsx` and `src/routes/` exist — see
 // AGENTS.md § "First scaffold".
+/**
+ * The SSR build's Tailwind output (styles-<hash>.css) differs slightly from the
+ * client build's (server-only modules add a few utilities), so the hash the SSR
+ * HTML links (`?url` import in __root.tsx) is not among the client assets and the
+ * live page 404s on its stylesheet (seen 21 Oct 2026: footer at the top, no dark
+ * theme). Copy every CSS asset the SSR environment emits into the client assets
+ * directory, which is what the Worker serves as static assets.
+ */
+function ssrCssIntoClientAssets(): Plugin {
+  return {
+    name: "app-builder:ssr-css-into-client-assets",
+    apply: "build",
+    applyToEnvironment(env) {
+      return env.name === "ssr";
+    },
+    writeBundle(options, bundle) {
+      const outDir = options.dir ?? "dist/server";
+      const clientAssets = join(outDir, "..", "client", "assets");
+      for (const [fileName, chunk] of Object.entries(bundle)) {
+        if (chunk.type !== "asset" || !fileName.endsWith(".css")) continue;
+        mkdirSync(clientAssets, { recursive: true });
+        copyFileSync(join(outDir, fileName), join(clientAssets, fileName.replace(/^assets\//, "")));
+      }
+    },
+  };
+}
+
 export default defineConfig(() => ({
   server: {
     host: "0.0.0.0",
@@ -169,5 +196,6 @@ export default defineConfig(() => ({
     tailwindcss(),
     tanstackStart(),
     viteReact(),
+    ssrCssIntoClientAssets(),
   ],
 }));
