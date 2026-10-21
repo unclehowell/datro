@@ -1,9 +1,9 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-10-21T12:54:32Z",
- "count": 823,
- "threadCount": 446,
+ "generated": "2026-10-21T19:36:05Z",
+ "count": 846,
+ "threadCount": 464,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
@@ -2026,7 +2026,17 @@
    "refs": [],
    "textUrl": "/mail/gm-1a139da7cf491974.txt",
    "jsonUrl": "/api/message/gm-1a139da7cf491974.json",
-   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "2026-10-14_welsh-government_atisn-26-0010-acknowledgement.odt",
+     "title": "2026-10-14_welsh-government_atisn-26-0010-acknowledgement.odt",
+     "url": "/text/evidence/2026-10-14_welsh-government_atisn-26-0010-acknowledgement.odt",
+     "mime": "application/octet-stream",
+     "bytes": 143006,
+     "sha256": "803c224ff33f1f3392ed2102564b111055f38c678a48ab8779ecc9e156f598b1"
+    }
+   ]
   },
   {
    "id": "gm-1a139d4d2532c331",
@@ -2108,7 +2118,17 @@
    "refs": [],
    "textUrl": "/mail/gm-1a1393f92a4eae63.txt",
    "jsonUrl": "/api/message/gm-1a1393f92a4eae63.json",
-   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "2026-10-13_llandough-community-council_agenda-22-october-2026.pdf",
+     "title": "2026-10-13_llandough-community-council_agenda-22-october-2026.pdf",
+     "url": "/pdf/evidence/2026-10-13_llandough-community-council_agenda-22-october-2026.pdf",
+     "mime": "application/pdf",
+     "bytes": 92595,
+     "sha256": "4417c49486606201987b121ebea0ba437ba2bbe7fc240ae2345fa84c36c9e986"
+    }
+   ]
   },
   {
    "id": "gm-1a1391920ebadfdd",
@@ -2188,7 +2208,17 @@
    "refs": [],
    "textUrl": "/mail/gm-1a136e2b51f9d191.txt",
    "jsonUrl": "/api/message/gm-1a136e2b51f9d191.json",
-   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "Council Agenda 22 October 2026.pdf",
+     "title": "Council Agenda 22 October 2026.pdf",
+     "url": "/pdf/evidence/2026-10-13_llandough-community-council_agenda-22-october-2026.pdf",
+     "mime": "application/pdf",
+     "bytes": 92595,
+     "sha256": "4417c49486606201987b121ebea0ba437ba2bbe7fc240ae2345fa84c36c9e986"
+    }
+   ]
   },
   {
    "id": "gm-1a1363b3030d0960",
@@ -2320,7 +2350,25 @@
    ],
    "textUrl": "/mail/gm-1a135bdc3ab000b2.txt",
    "jsonUrl": "/api/message/gm-1a135bdc3ab000b2.json",
-   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "LES08 Order Form 2021.docx",
+     "title": "LES08 Order Form 2021.docx",
+     "url": "/pdf/foi/2026-05-28_rcahmw_rc26-0205_les08-order-form-2021.docx",
+     "mime": "application/octet-stream",
+     "bytes": 142468,
+     "sha256": "291e3be8baf22b8f7e538ffd565e2a16462b66f5679c94ac3d72093816a18335"
+    },
+    {
+     "name": "LES16 Price List 2026.pdf",
+     "title": "LES16 Price List 2026.pdf",
+     "url": "/pdf/evidence/2026-10-13_rcahmw_les16-price-list-2026.pdf",
+     "mime": "application/pdf",
+     "bytes": 324233,
+     "sha256": "141cafc6cd2b1d21902b55e3c91db2a6622afeea58fba237a0ae844c2280a3bb"
+    }
+   ]
   },
   {
    "id": "gm-1a134f768d97f0eb",
@@ -2588,7 +2636,17 @@
    ],
    "textUrl": "/mail/gm-1a12f9732739a69e.txt",
    "jsonUrl": "/api/message/gm-1a12f9732739a69e.json",
-   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "ICR09026-Blank letter R7-01102026.pdf",
+     "title": "ICR09026-Blank letter R7-01102026.pdf",
+     "url": "/pdf/evidence/2026-10-09_icr_hmlr-complaint-icr-090-26-letter.pdf",
+     "mime": "application/pdf",
+     "bytes": 169508,
+     "sha256": "84e36c1dfc1588f0d14656a0ca1cc546519d3b0447160d049b3a122795e8b5a5"
+    }
+   ]
   },
   {
    "id": "gm-1a12f404420e3087",
@@ -3425,6 +3483,36 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a11fa854d35e082",
+   "gmailMessageId": "1a11fa854d35e082",
+   "threadId": "gt-1a11fa854d35e082",
+   "date": "2026-10-09T07:54:44Z",
+   "direction": "received",
+   "from": "NSUKilo",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "FREEDOM OF INFORMATION ACT (FOIA) INTERNAL REVIEW",
+   "threadSlug": "freedom-of-information-act-foia-internal-review",
+   "refs": [],
+   "textUrl": "/mail/gm-1a11fa854d35e082.txt",
+   "jsonUrl": "/api/message/gm-1a11fa854d35e082.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "IR FOI 260813002 Sion Buckler Response.pdf",
+     "title": "IR FOI 260813002 Sion Buckler Response.pdf",
+     "url": "/pdf/evidence/2026-10-09_moj_ir-foi-260813002-internal-review-response.pdf",
+     "mime": "application/pdf",
+     "bytes": 136101,
+     "sha256": "ff9e9ec343722bc96ab3eb4b3a43b5627253ab53d186d263f5ece9101611fd22"
+    }
+   ]
+  },
+  {
    "id": "gm-1a11c210b3442ac5",
    "gmailMessageId": "1a11c210b3442ac5",
    "threadId": "gt-1a0e9e9889be4e6a",
@@ -3823,6 +3911,28 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a0fd363100cc68b",
+   "gmailMessageId": "1a0fd363100cc68b",
+   "threadId": "gt-1a0fd363100cc68b",
+   "date": "2026-10-02T15:22:58Z",
+   "direction": "received",
+   "from": "NSUKilo",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "Extension - Our reference:  260904007 SAR IR",
+   "threadSlug": "extension-our-reference-260904007-sar-ir",
+   "refs": [
+    "260904007"
+   ],
+   "textUrl": "/mail/gm-1a0fd363100cc68b.txt",
+   "jsonUrl": "/api/message/gm-1a0fd363100cc68b.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a0fb4e443150e10",
    "gmailMessageId": "1a0fb4e443150e10",
    "threadId": "gt-1a0fb4e443150e10",
@@ -3932,7 +4042,33 @@
    ],
    "textUrl": "/mail/gm-1a0f752fb0575943.txt",
    "jsonUrl": "/api/message/gm-1a0f752fb0575943.json",
-   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "Item 01 - Release Schedule_On Discovery_Redacted.csv",
+     "title": "Item 01 - Release Schedule_On Discovery_Redacted.csv",
+     "url": "/pdf/foi/2026-09-23_tna_cas-347296_item01-release-schedule-on-discovery.csv",
+     "mime": "text/csv",
+     "bytes": 549,
+     "sha256": "7050146d5c76fd542fc174736d0591dba7e69a40be9aca1ff3d5850e4c8a8df4"
+    },
+    {
+     "name": "Item 02 - Release Schedule_High Level Delivery Schedule_Redacted.csv",
+     "title": "Item 02 - Release Schedule_High Level Delivery Schedule_Redacted.csv",
+     "url": "/pdf/foi/2026-09-23_tna_cas-347296_item02-high-level-delivery-schedule.csv",
+     "mime": "text/csv",
+     "bytes": 176,
+     "sha256": "2fa452194df3dc863cb4f4ff2b377f12b98e0f756ec9ed22f9f3800d1775f3aa"
+    },
+    {
+     "name": "Item 03 - Collect 27 Series 11_Manifest_Redacted.csv",
+     "title": "Item 03 - Collect 27 Series 11_Manifest_Redacted.csv",
+     "url": "/pdf/foi/2026-09-23_tna_cas-347296_item03-collect27-series11-manifest.csv",
+     "mime": "text/csv",
+     "bytes": 93,
+     "sha256": "10681e85f7a96fc29959599f757aed67ffb745f264d89139e2dd73f315d5daab"
+    }
+   ]
   },
   {
    "id": "gm-1a0f7435f1e7cf6d",
@@ -4125,6 +4261,26 @@
    "refs": [],
    "textUrl": "/mail/gm-1a0f294c9b3320c1.txt",
    "jsonUrl": "/api/message/gm-1a0f294c9b3320c1.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a0f2926630689c3",
+   "gmailMessageId": "1a0f2926630689c3",
+   "threadId": "gt-1a0f2926630689c3",
+   "date": "2026-09-30T13:47:44Z",
+   "direction": "received",
+   "from": "Subject Access Requests",
+   "institutions": [
+    {
+     "id": "swp",
+     "name": "South Wales Police"
+    }
+   ],
+   "subject": "Subject Access Request",
+   "threadSlug": "subject-access-request",
+   "refs": [],
+   "textUrl": "/mail/gm-1a0f2926630689c3.txt",
+   "jsonUrl": "/api/message/gm-1a0f2926630689c3.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -4519,6 +4675,68 @@
    "textUrl": "/mail/gm-1a0ed9a03118aab9.txt",
    "jsonUrl": "/api/message/gm-1a0ed9a03118aab9.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a0ed9801c58b6b2",
+   "gmailMessageId": "1a0ed9801c58b6b2",
+   "threadId": "gt-1a0ed9801c58b6b2",
+   "date": "2026-09-29T14:35:50Z",
+   "direction": "received",
+   "from": "Freedom of Information",
+   "institutions": [
+    {
+     "id": "swp",
+     "name": "South Wales Police"
+    }
+   ],
+   "subject": "Internal Review 1188/26 of FOI 719/26",
+   "threadSlug": "internal-review-1188-26-of-foi-719-26",
+   "refs": [
+    "1188/26"
+   ],
+   "textUrl": "/mail/gm-1a0ed9801c58b6b2.txt",
+   "jsonUrl": "/api/message/gm-1a0ed9801c58b6b2.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a0ed90513b1ae67",
+   "gmailMessageId": "1a0ed90513b1ae67",
+   "threadId": "gt-1a0ed90513b1ae67",
+   "date": "2026-09-29T14:27:25Z",
+   "direction": "received",
+   "from": "Freedom of Information",
+   "institutions": [
+    {
+     "id": "swp",
+     "name": "South Wales Police"
+    }
+   ],
+   "subject": "RESPONSE Freedom of Information 1040/26",
+   "threadSlug": "response-freedom-of-information-1040-26",
+   "refs": [
+    "1040/26"
+   ],
+   "textUrl": "/mail/gm-1a0ed90513b1ae67.txt",
+   "jsonUrl": "/api/message/gm-1a0ed90513b1ae67.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "Response 1040_26.pdf",
+     "title": "Response 1040_26.pdf",
+     "url": "/pdf/evidence/2026-09-29_wp1311_south-wales-police-foi-response-1040-26-29-sep-202.pdf",
+     "mime": "application/pdf",
+     "bytes": 172429,
+     "sha256": "aab3961392173b90f88954d34c0a6cd299e8f143e092724a5a0833f0d4909209"
+    },
+    {
+     "name": "Complaints Procedure.pdf",
+     "title": "Complaints Procedure.pdf",
+     "url": "/pdf/evidence/2026-09-29_swp_foi-complaints-procedure-b1ae67.pdf",
+     "mime": "application/pdf",
+     "bytes": 461447,
+     "sha256": "6fb3957a27f842c14d02898859c5cddde38050828e3bd1a890835cb98b711122"
+    }
+   ]
   },
   {
    "id": "gm-1a0ed5d3ada10e6b",
@@ -5354,6 +5572,28 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a0e7ac13632bea1",
+   "gmailMessageId": "1a0e7ac13632bea1",
+   "threadId": "gt-1a0e7ac13632bea1",
+   "date": "2026-09-28T10:59:59Z",
+   "direction": "received",
+   "from": "Freedom of Information",
+   "institutions": [
+    {
+     "id": "swp",
+     "name": "South Wales Police"
+    }
+   ],
+   "subject": "Freedom of Information Request 1040/26",
+   "threadSlug": "freedom-of-information-request-1040-26",
+   "refs": [
+    "1040/26"
+   ],
+   "textUrl": "/mail/gm-1a0e7ac13632bea1.txt",
+   "jsonUrl": "/api/message/gm-1a0e7ac13632bea1.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a0e73540ec0f961",
    "gmailMessageId": "1a0e73540ec0f961",
    "threadId": "gt-1a0e73540ec0f961",
@@ -6067,7 +6307,17 @@
    "refs": [],
    "textUrl": "/mail/gm-1a0d421cdc687541.txt",
    "jsonUrl": "/api/message/gm-1a0d421cdc687541.json",
-   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "digital photography order form 2025.docx",
+     "title": "digital photography order form 2025.docx",
+     "url": "/pdf/foi/2026-09-07_glamorgan-archives_digital-photography-order-form-2025.docx",
+     "mime": "application/octet-stream",
+     "bytes": 62339,
+     "sha256": "6df6162232f5916a61446e394fc52207302fd79f8bacb0d41340320b0ef26131"
+    }
+   ]
   },
   {
    "id": "gm-1a0d404548a13a54",
@@ -6241,6 +6491,36 @@
    "textUrl": "/mail/gm-1a0c86e31d8df932.txt",
    "jsonUrl": "/api/message/gm-1a0c86e31d8df932.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a0c851592923ec2",
+   "gmailMessageId": "1a0c851592923ec2",
+   "threadId": "gt-1a0c851592923ec2",
+   "date": "2026-09-22T08:52:11Z",
+   "direction": "received",
+   "from": "NIO FOI",
+   "institutions": [
+    {
+     "id": "nio",
+     "name": "Northern Ireland Office"
+    }
+   ],
+   "subject": "26FOI 103 - Buckler - Response",
+   "threadSlug": "26foi-103-buckler-response",
+   "refs": [],
+   "textUrl": "/mail/gm-1a0c851592923ec2.txt",
+   "jsonUrl": "/api/message/gm-1a0c851592923ec2.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "26FOI 103 - Buckler - Response.pdf",
+     "title": "26FOI 103 - Buckler - Response.pdf",
+     "url": "/pdf/foi/2026-09-22_wales-office_26foi-103_response.pdf",
+     "mime": "application/pdf",
+     "bytes": 166430,
+     "sha256": "d92caba80e4cea68845fa8b48048cb4703d2701b248cb6667ad25b26cf101b8d"
+    }
+   ]
   },
   {
    "id": "gm-1a0c7d0f680dc3c6",
@@ -6692,7 +6972,17 @@
    "refs": [],
    "textUrl": "/mail/gm-1a0b3cb33eb0553d.txt",
    "jsonUrl": "/api/message/gm-1a0b3cb33eb0553d.json",
-   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "260900 - Letter to Stephen Doughty MP.pdf",
+     "title": "260900 - Letter to Stephen Doughty MP.pdf",
+     "url": "/pdf/evidence/2026-09-09_hmlr_chief-land-registrar-letter-to-mp.pdf",
+     "mime": "application/pdf",
+     "bytes": 116171,
+     "sha256": "667289b9f3fb8d4f90a4847b7b6b3b35d8c53665f8d3eb6ed0530661128cf99f"
+    }
+   ]
   },
   {
    "id": "gm-1a0b3ad95bcb41e9",
@@ -7186,7 +7476,25 @@
    ],
    "textUrl": "/mail/gm-1a0a07619dc77c41.txt",
    "jsonUrl": "/api/message/gm-1a0a07619dc77c41.json",
-   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "Conveyance dated 11 June 1965.pdf",
+     "title": "Conveyance dated 11 June 1965.pdf",
+     "url": "/pdf/evidence/1965-06-11_vale-foi-00211027_conveyance-11-june-1965.pdf",
+     "mime": "application/pdf",
+     "bytes": 2993988,
+     "sha256": "a09d100e5b4689175fbc13fe9eda3b3cffbd6485fbe910ef7bc48eee4c2119bd"
+    },
+    {
+     "name": "1965 Contract.pdf",
+     "title": "1965 Contract.pdf",
+     "url": "/pdf/evidence/1965-00-00_vale-foi-00211027_contract-for-sale-llandough-school-site.pdf",
+     "mime": "application/pdf",
+     "bytes": 16676219,
+     "sha256": "f7265dcdd788e5c9ce91136e5629651cb929bb09bdf4e9ffa78a3a0f17b2f511"
+    }
+   ]
   },
   {
    "id": "gm-1a09f8df7298670a",
@@ -7349,6 +7657,38 @@
    "textUrl": "/mail/gm-1a086f0f8c32285b.txt",
    "jsonUrl": "/api/message/gm-1a086f0f8c32285b.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a086c4776891280",
+   "gmailMessageId": "1a086c4776891280",
+   "threadId": "gt-1a086c4776891280",
+   "date": "2026-09-09T15:23:22Z",
+   "direction": "received",
+   "from": "NSUKilo",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "Extension - Our reference:  260813002 FOI IR",
+   "threadSlug": "extension-our-reference-260813002-foi-ir",
+   "refs": [
+    "260813002"
+   ],
+   "textUrl": "/mail/gm-1a086c4776891280.txt",
+   "jsonUrl": "/api/message/gm-1a086c4776891280.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "260813002 – FOI IR extension letter.pdf",
+     "title": "260813002 – FOI IR extension letter.pdf",
+     "url": "/pdf/foi/2026-09-09_moj_260813002_foi-ir-extension-letter.pdf",
+     "mime": "application/pdf",
+     "bytes": 129491,
+     "sha256": "ed23a948b3931e5c2885304274b705a0b0cbface365c893d4d98d292e994ae5d"
+    }
+   ]
   },
   {
    "id": "gm-1a0865e98e7a5dcd",
@@ -9653,6 +9993,46 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-19ff4da656ed9ce9",
+   "gmailMessageId": "19ff4da656ed9ce9",
+   "threadId": "gt-19ff4da656ed9ce9",
+   "date": "2026-08-12T07:22:57Z",
+   "direction": "received",
+   "from": "NSUKilo",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "Buckler Sion - 260805002 - FOIA - response",
+   "threadSlug": "buckler-sion-260805002-foia-response",
+   "refs": [
+    "260805002"
+   ],
+   "textUrl": "/mail/gm-19ff4da656ed9ce9.txt",
+   "jsonUrl": "/api/message/gm-19ff4da656ed9ce9.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "Buckler Sion - 260805002 - FOIA - response.pdf",
+     "title": "Buckler Sion - 260805002 - FOIA - response.pdf",
+     "url": "/pdf/foi/2026-08-12_moj_260805002_foia-response.pdf",
+     "mime": "application/pdf",
+     "bytes": 124790,
+     "sha256": "00eabac7457bc9326b47ad7e71630caa3efcd15ee42fee55db3d2a7f8772ccf5"
+    },
+    {
+     "name": "Buckler the owner - 260805002 - FOIA - response.pdf",
+     "title": "Buckler the owner - 260805002 - FOIA - response.pdf",
+     "url": "/pdf/foi/2026-08-12_moj_260805002_foia-response.pdf",
+     "mime": "application/pdf",
+     "bytes": 149403,
+     "sha256": "8704bdd63a8a0f9c97fd4199dad3c5e95803bbfeb70c9373526d7f28bccda99c"
+    }
+   ]
+  },
+  {
    "id": "gm-19ff4d63e990531d",
    "gmailMessageId": "19ff4d63e990531d",
    "threadId": "gt-19fb20f21f899949",
@@ -9756,6 +10136,58 @@
    ],
    "textUrl": "/mail/gm-19feda3903937e59.txt",
    "jsonUrl": "/api/message/gm-19feda3903937e59.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19fec61fb1d20afa",
+   "gmailMessageId": "19fec61fb1d20afa",
+   "threadId": "gt-19fec61fb1d20afa",
+   "date": "2026-08-10T15:54:28Z",
+   "direction": "received",
+   "from": "icocasework",
+   "institutions": [
+    {
+     "id": "ico",
+     "name": "Information Commissioner's Office"
+    }
+   ],
+   "subject": "ICO Case Reference: IC-546505-W6P0",
+   "threadSlug": "ico-case-reference-ic-546505-w6p0",
+   "refs": [
+    "IC-546505-W6P0"
+   ],
+   "textUrl": "/mail/gm-19fec61fb1d20afa.txt",
+   "jsonUrl": "/api/message/gm-19fec61fb1d20afa.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "Letter to SB.pdf",
+     "title": "Letter to SB.pdf",
+     "url": "/pdf/foi/2026-08-10_ico_ic-546505-w6p0_letter.pdf",
+     "mime": "application/pdf",
+     "bytes": 92770,
+     "sha256": "fe1c863b6f90445d43b6df29e8f52a9b5fe9414dfcac0b81c3fdb2bd4d661574"
+    }
+   ]
+  },
+  {
+   "id": "gm-19feb187184eaca3",
+   "gmailMessageId": "19feb187184eaca3",
+   "threadId": "gt-19fd90bc1cfc812a",
+   "date": "2026-08-10T09:54:31Z",
+   "direction": "received",
+   "from": "(name not shown; bt.com)",
+   "institutions": [
+    {
+     "id": "bt-archives",
+     "name": "BT Archives"
+    }
+   ],
+   "subject": "RE: Marconi, Great House Farm, Llandough",
+   "threadSlug": "marconi-great-house-farm-llandough",
+   "refs": [],
+   "textUrl": "/mail/gm-19feb187184eaca3.txt",
+   "jsonUrl": "/api/message/gm-19feb187184eaca3.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -11078,6 +11510,28 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-19f8a5e4cfb0620e",
+   "gmailMessageId": "19f8a5e4cfb0620e",
+   "threadId": "gt-19f682ed8be4fae0",
+   "date": "2026-07-22T15:07:39Z",
+   "direction": "received",
+   "from": "Special Collections",
+   "institutions": [
+    {
+     "id": "cardiff-univ",
+     "name": "Cardiff University Special Collections"
+    }
+   ],
+   "subject": "Re: Freedom of Information / Historical Records Request - Mr. Williams, Cardiff Post Office Engineering Department, 1897 Marconi Lavernock Experiments",
+   "threadSlug": "freedom-of-information-historical-records-request-mr-williams-cardiff-post-offic",
+   "refs": [
+    "1897"
+   ],
+   "textUrl": "/mail/gm-19f8a5e4cfb0620e.txt",
+   "jsonUrl": "/api/message/gm-19f8a5e4cfb0620e.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-19f89db67d0404c4",
    "gmailMessageId": "19f89db67d0404c4",
    "threadId": "gt-19f682ed8be4fae0",
@@ -11095,6 +11549,58 @@
    "refs": [],
    "textUrl": "/mail/gm-19f89db67d0404c4.txt",
    "jsonUrl": "/api/message/gm-19f89db67d0404c4.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19f89b3285482a8a",
+   "gmailMessageId": "19f89b3285482a8a",
+   "threadId": "gt-19f89b3285482a8a",
+   "date": "2026-07-22T12:00:47Z",
+   "direction": "received",
+   "from": "FOI Team",
+   "institutions": [
+    {
+     "id": "dcms",
+     "name": "Department for Culture, Media and Sport"
+    }
+   ],
+   "subject": "FOI2026/06174 - Department for Culture, Media and Sport - Response Letter",
+   "threadSlug": "foi2026-06174-department-for-culture-media-and-sport-response-letter",
+   "refs": [
+    "FOI2026/06174"
+   ],
+   "textUrl": "/mail/gm-19f89b3285482a8a.txt",
+   "jsonUrl": "/api/message/gm-19f89b3285482a8a.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "_FOI2026_06174.pdf",
+     "title": "_FOI2026_06174.pdf",
+     "url": "/pdf/foi/2026-07-22_dcms_foi2026-06174_response.pdf",
+     "mime": "application/pdf",
+     "bytes": 136855,
+     "sha256": "c53f4d343823af5fe435476150a3747a1d194123fca4f1dbadaac36a1b35147a"
+    }
+   ]
+  },
+  {
+   "id": "gm-19f85b7a66dba6f2",
+   "gmailMessageId": "19f85b7a66dba6f2",
+   "threadId": "gt-19f85b6062fea189",
+   "date": "2026-07-21T17:27:07Z",
+   "direction": "received",
+   "from": "Public Enquiries SFO",
+   "institutions": [
+    {
+     "id": "sfo",
+     "name": "Serious Fraud Office"
+    }
+   ],
+   "subject": "Automatic reply: Buckler vs United Kingdom",
+   "threadSlug": "automatic-reply-buckler-vs-united-kingdom",
+   "refs": [],
+   "textUrl": "/mail/gm-19f85b7a66dba6f2.txt",
+   "jsonUrl": "/api/message/gm-19f85b7a66dba6f2.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -11177,6 +11683,28 @@
    ],
    "textUrl": "/mail/gm-19f84b66522474a6.txt",
    "jsonUrl": "/api/message/gm-19f84b66522474a6.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19f84102c22e9e78",
+   "gmailMessageId": "19f84102c22e9e78",
+   "threadId": "gt-19f682ed8be4fae0",
+   "date": "2026-07-21T09:44:37Z",
+   "direction": "received",
+   "from": "Special Collections",
+   "institutions": [
+    {
+     "id": "cardiff-univ",
+     "name": "Cardiff University Special Collections"
+    }
+   ],
+   "subject": "Re: Freedom of Information / Historical Records Request - Mr. Williams, Cardiff Post Office Engineering Department, 1897 Marconi Lavernock Experiments",
+   "threadSlug": "freedom-of-information-historical-records-request-mr-williams-cardiff-post-offic",
+   "refs": [
+    "1897"
+   ],
+   "textUrl": "/mail/gm-19f84102c22e9e78.txt",
+   "jsonUrl": "/api/message/gm-19f84102c22e9e78.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -11382,6 +11910,28 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-19f6b96957251a99",
+   "gmailMessageId": "19f6b96957251a99",
+   "threadId": "gt-19f682ed8be4fae0",
+   "date": "2026-07-16T15:40:54Z",
+   "direction": "received",
+   "from": "Special Collections",
+   "institutions": [
+    {
+     "id": "cardiff-univ",
+     "name": "Cardiff University Special Collections"
+    }
+   ],
+   "subject": "Re: Freedom of Information / Historical Records Request - Mr. Williams, Cardiff Post Office Engineering Department, 1897 Marconi Lavernock Experiments",
+   "threadSlug": "freedom-of-information-historical-records-request-mr-williams-cardiff-post-offic",
+   "refs": [
+    "1897"
+   ],
+   "textUrl": "/mail/gm-19f6b96957251a99.txt",
+   "jsonUrl": "/api/message/gm-19f6b96957251a99.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-19f6b62c2ddc9ed9",
    "gmailMessageId": "19f6b62c2ddc9ed9",
    "threadId": "gt-19f6b62c2ddc9ed9",
@@ -11400,6 +11950,44 @@
    "textUrl": "/mail/gm-19f6b62c2ddc9ed9.txt",
    "jsonUrl": "/api/message/gm-19f6b62c2ddc9ed9.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19f6a82d65fb8e13",
+   "gmailMessageId": "19f6a82d65fb8e13",
+   "threadId": "gt-19f6a82d65fb8e13",
+   "date": "2026-07-16T10:39:43Z",
+   "direction": "received",
+   "from": "Freedom of Information",
+   "institutions": [
+    {
+     "id": "swp",
+     "name": "South Wales Police"
+    }
+   ],
+   "subject": "RESPONSE Freedom of Information Request 719/26",
+   "threadSlug": "response-freedom-of-information-request-719-26",
+   "refs": [],
+   "textUrl": "/mail/gm-19f6a82d65fb8e13.txt",
+   "jsonUrl": "/api/message/gm-19f6a82d65fb8e13.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "Response 719_26.pdf",
+     "title": "Response 719_26.pdf",
+     "url": "/pdf/evidence/2026-07-16_wp1300_south-wales-police-response-to-foi-request-719-26.pdf",
+     "mime": "application/pdf",
+     "bytes": 180775,
+     "sha256": "d6b3e44366c13a29726979ebc178a59de96bef9174b565f1d9b6315a92107c41"
+    },
+    {
+     "name": "Complaints Procedure.pdf",
+     "title": "Complaints Procedure.pdf",
+     "url": "/pdf/evidence/2026-07-16_swp_foi-complaints-procedure-fb8e13.pdf",
+     "mime": "application/pdf",
+     "bytes": 197535,
+     "sha256": "dfd117b0cd39876f45800c6a11e7d8ed5d5c99affd11942a3aa83dbd29bc3a8a"
+    }
+   ]
   },
   {
    "id": "gm-19f6861eda31b943",
@@ -12018,7 +12606,17 @@
    ],
    "textUrl": "/mail/gm-19f22859934ba5c4.txt",
    "jsonUrl": "/api/message/gm-19f22859934ba5c4.json",
-   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "ATISN 27021 Review Ressponse.pdf",
+     "title": "ATISN 27021 Review Ressponse.pdf",
+     "url": "/pdf/evidence/2026-07-02_welsh-government_atisn-27021-internal-review-response.pdf",
+     "mime": "application/pdf",
+     "bytes": 160900,
+     "sha256": "d830b5f8e6f2f54ddc4985a715cf1cd11b5834c94701f5687ed7ffe474ec6754"
+    }
+   ]
   },
   {
    "id": "gm-19f1f90e2121384d",
@@ -12099,6 +12697,38 @@
    "textUrl": "/mail/gm-19f1aa2455a19a61.txt",
    "jsonUrl": "/api/message/gm-19f1aa2455a19a61.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19f18a3ec528e53f",
+   "gmailMessageId": "19f18a3ec528e53f",
+   "threadId": "gt-19f18a3ec528e53f",
+   "date": "2026-06-30T13:06:58Z",
+   "direction": "received",
+   "from": "NSUKilo",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "Buckler - 260607013 - FOI - response",
+   "threadSlug": "buckler-260607013-foi-response",
+   "refs": [
+    "260607013"
+   ],
+   "textUrl": "/mail/gm-19f18a3ec528e53f.txt",
+   "jsonUrl": "/api/message/gm-19f18a3ec528e53f.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "Buckler - 260607013 - FOI - response.pdf",
+     "title": "Buckler - 260607013 - FOI - response.pdf",
+     "url": "/pdf/evidence/2026-06-30_moj_foi-260607013-response.pdf",
+     "mime": "application/pdf",
+     "bytes": 121492,
+     "sha256": "a2543b68152ccb38dffd171af275aa86ff1118aef6ef531306330e6c352eacf8"
+    }
+   ]
   },
   {
    "id": "gm-19f18269393340ea",
@@ -12304,6 +12934,26 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-19eee3fed189ec70",
+   "gmailMessageId": "19eee3fed189ec70",
+   "threadId": "gt-19eee3fed189ec70",
+   "date": "2026-06-22T07:33:41Z",
+   "direction": "received",
+   "from": "Freedom of Information",
+   "institutions": [
+    {
+     "id": "swp",
+     "name": "South Wales Police"
+    }
+   ],
+   "subject": "Freedom of Information request 719/26",
+   "threadSlug": "freedom-of-information-request-719-26",
+   "refs": [],
+   "textUrl": "/mail/gm-19eee3fed189ec70.txt",
+   "jsonUrl": "/api/message/gm-19eee3fed189ec70.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-19ee6a61b242cb74",
    "gmailMessageId": "19ee6a61b242cb74",
    "threadId": "gt-19ee6a51312a8311",
@@ -12469,7 +13119,17 @@
    ],
    "textUrl": "/mail/gm-19ecbf50d494e1ce.txt",
    "jsonUrl": "/api/message/gm-19ecbf50d494e1ce.json",
-   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "Internal Review Acknowledgement Letter.pdf",
+     "title": "Internal Review Acknowledgement Letter.pdf",
+     "url": "/pdf/evidence/2026-06-15_cadw_atisn-27021-internal-review-acknowledgement.pdf",
+     "mime": "application/pdf",
+     "bytes": 242180,
+     "sha256": "c9d3a9f004c8e079eb869bffd80c5f2601c11c5485208dcded8c4af8bf7214bb"
+    }
+   ]
   },
   {
    "id": "gm-19eca94bf5d7a19c",
@@ -12841,6 +13501,22 @@
      "bytes": 120298,
      "sha256": "67c11e5a9c15d72e8e41253485246183e0468f6dbac3476dd49965f1bcab3822",
      "catalogue": "GHF-E106-R37-A1"
+    },
+    {
+     "name": "1988-07-29_cadw_barn-survey-photo-high-resolution.pdf",
+     "title": "1988-07-29_cadw_barn-survey-photo-high-resolution.pdf",
+     "url": "/pdf/evidence/1988-07-29_cadw_barn-survey-photo-high-resolution.pdf",
+     "mime": "application/pdf",
+     "bytes": 960798,
+     "sha256": "3efca3d5ec5bdd878a9846ff6089cf1cc478163a0ab724a281e8c29dd268037d"
+    },
+    {
+     "name": "1988-07-29_cadw_farmhouse-survey-photo-high-resolution.pdf",
+     "title": "1988-07-29_cadw_farmhouse-survey-photo-high-resolution.pdf",
+     "url": "/pdf/evidence/1988-07-29_cadw_farmhouse-survey-photo-high-resolution.pdf",
+     "mime": "application/pdf",
+     "bytes": 962955,
+     "sha256": "451c6e3e28da630364405b75da6c0dd7aa8a3280ff635a0d635d11d3c2c6b54d"
     }
    ]
   },
@@ -12948,7 +13624,25 @@
    ],
    "textUrl": "/mail/gm-19eb1a3f62dd725e.txt",
    "jsonUrl": "/api/message/gm-19eb1a3f62dd725e.json",
-   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "LES16 Price List 2026.pdf",
+     "title": "LES16 Price List 2026.pdf",
+     "url": "/pdf/foi/2026-05-28_rcahmw_rc26-0205_les16-price-list-2026.pdf",
+     "mime": "application/pdf",
+     "bytes": 304904,
+     "sha256": "08666a9e23e13caa10704047249ed2130af5ce2169c2136f4ae6e5f967d3c4a7"
+    },
+    {
+     "name": "LES17 Licence Fees 2026.pdf",
+     "title": "LES17 Licence Fees 2026.pdf",
+     "url": "/pdf/foi/2026-05-28_rcahmw_rc26-0205_les17-licence-fees-2026.pdf",
+     "mime": "application/pdf",
+     "bytes": 315620,
+     "sha256": "6c2e0f5ed166bd822b1b3ead71cf29341ab4c352f04651e6c88149e17526a37e"
+    }
+   ]
   },
   {
    "id": "gm-19eaf9f4ea61801a",
@@ -14368,7 +15062,33 @@
    "refs": [],
    "textUrl": "/mail/gm-19e4b1bc46edc331.txt",
    "jsonUrl": "/api/message/gm-19e4b1bc46edc331.json",
-   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "1990-08-xx - Great House Farmhouse, Llandough - GGAT Assessment.pdf",
+     "title": "1990-08-xx - Great House Farmhouse, Llandough - GGAT Assessment.pdf",
+     "url": "/pdf/evidence/1990-08-00_cadw_ggat-assessment-great-house-farmhouse-llandough.pdf",
+     "mime": "application/pdf",
+     "bytes": 6504003,
+     "sha256": "5ead134e4281cab9f7d4ed99cb85ceb8e247fd7ad3a4076c4267bd75252214e1"
+    },
+    {
+     "name": "1988-07-29 - Barn at Great House Farmhouse, Llandough - survey photo.pdf",
+     "title": "1988-07-29 - Barn at Great House Farmhouse, Llandough - survey photo.pdf",
+     "url": "/pdf/evidence/1988-07-29_cadw_barn-survey-photo-high-resolution.pdf",
+     "mime": "application/pdf",
+     "bytes": 960798,
+     "sha256": "3efca3d5ec5bdd878a9846ff6089cf1cc478163a0ab724a281e8c29dd268037d"
+    },
+    {
+     "name": "1988-07-29 - Great House Farmhouse, Llandough - survey photo.pdf",
+     "title": "1988-07-29 - Great House Farmhouse, Llandough - survey photo.pdf",
+     "url": "/pdf/evidence/1988-07-29_cadw_farmhouse-survey-photo-high-resolution.pdf",
+     "mime": "application/pdf",
+     "bytes": 962955,
+     "sha256": "451c6e3e28da630364405b75da6c0dd7aa8a3280ff635a0d635d11d3c2c6b54d"
+    }
+   ]
   },
   {
    "id": "gm-19e46daebd266c25",
@@ -14408,6 +15128,28 @@
    "refs": [],
    "textUrl": "/mail/gm-19e46a26bb566e05.txt",
    "jsonUrl": "/api/message/gm-19e46a26bb566e05.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19e447ab5b5c77f9",
+   "gmailMessageId": "19e447ab5b5c77f9",
+   "threadId": "gt-19e447ab5b5c77f9",
+   "date": "2026-05-20T08:22:25Z",
+   "direction": "received",
+   "from": "South Wales Police Commissioner - GM",
+   "institutions": [
+    {
+     "id": "swp",
+     "name": "South Wales Police"
+    }
+   ],
+   "subject": "Our Reference: LPB/26/0781",
+   "threadSlug": "our-reference-lpb-26-0781",
+   "refs": [
+    "0781"
+   ],
+   "textUrl": "/mail/gm-19e447ab5b5c77f9.txt",
+   "jsonUrl": "/api/message/gm-19e447ab5b5c77f9.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -14468,6 +15210,28 @@
    "refs": [],
    "textUrl": "/mail/gm-19e34218ade65c61.txt",
    "jsonUrl": "/api/message/gm-19e34218ade65c61.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19e25a1176cfb6e2",
+   "gmailMessageId": "19e25a1176cfb6e2",
+   "threadId": "gt-19e25a1176cfb6e2",
+   "date": "2026-05-14T08:36:04Z",
+   "direction": "received",
+   "from": "South Wales Police Commissioner - GM",
+   "institutions": [
+    {
+     "id": "swp",
+     "name": "South Wales Police"
+    }
+   ],
+   "subject": "Our Reference: LPB/26/0781",
+   "threadSlug": "our-reference-lpb-26-0781",
+   "refs": [
+    "0781"
+   ],
+   "textUrl": "/mail/gm-19e25a1176cfb6e2.txt",
+   "jsonUrl": "/api/message/gm-19e25a1176cfb6e2.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -15013,6 +15777,36 @@
    ]
   },
   {
+   "id": "gm-19d8646886b25a87",
+   "gmailMessageId": "19d8646886b25a87",
+   "threadId": "gt-19d8646886b25a87",
+   "date": "2026-04-13T09:57:33Z",
+   "direction": "received",
+   "from": "_FOI email address",
+   "institutions": [
+    {
+     "id": "hmlr",
+     "name": "HM Land Registry"
+    }
+   ],
+   "subject": "Freedom of Information Request F260213",
+   "threadSlug": "freedom-of-information-request-f260213",
+   "refs": [],
+   "textUrl": "/mail/gm-19d8646886b25a87.txt",
+   "jsonUrl": "/api/message/gm-19d8646886b25a87.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "F260213.pdf",
+     "title": "F260213.pdf",
+     "url": "/pdf/foi/2026-04-13_hmlr_foi-f260213_response.pdf",
+     "mime": "application/pdf",
+     "bytes": 151843,
+     "sha256": "1eab2e746abc57ded489f47d544aec345e4fc42412d7ba0b9f6bd239961c1ffe"
+    }
+   ]
+  },
+  {
    "id": "gm-19d618f33e191b3f",
    "gmailMessageId": "19d618f33e191b3f",
    "threadId": "gt-19d618f33e191b3f",
@@ -15467,6 +16261,26 @@
    "refs": [],
    "textUrl": "/mail/gm-19c8a7763f11a7fc.txt",
    "jsonUrl": "/api/message/gm-19c8a7763f11a7fc.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19c8a4a462ee229a",
+   "gmailMessageId": "19c8a4a462ee229a",
+   "threadId": "gt-19c8a4a462ee229a",
+   "date": "2026-02-23T11:37:23Z",
+   "direction": "received",
+   "from": "Contactcentre",
+   "institutions": [
+    {
+     "id": "legal-regulators",
+     "name": "Legal regulators"
+    }
+   ],
+   "subject": "RE: Historic Adverse Possession Licence Interruption Cases (1950–2000)",
+   "threadSlug": "historic-adverse-possession-licence-interruption-cases-19502000",
+   "refs": [],
+   "textUrl": "/mail/gm-19c8a4a462ee229a.txt",
+   "jsonUrl": "/api/message/gm-19c8a4a462ee229a.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -16824,7 +17638,17 @@
    ],
    "textUrl": "/mail/gm-19ac0350c6c1fde3.txt",
    "jsonUrl": "/api/message/gm-19ac0350c6c1fde3.json",
-   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted.",
+   "attachments": [
+    {
+     "name": "LES16 Price List 2025.pdf",
+     "title": "LES16 Price List 2025.pdf",
+     "url": "/pdf/evidence/2025-11-26_rcahmw_les16-price-list-2025.pdf",
+     "mime": "application/pdf",
+     "bytes": 217630,
+     "sha256": "3dbdfc8e1e0b28455f17f9a8afadae11b6f18e8c3c202286e2aee70789a1a1ae"
+    }
+   ]
   },
   {
    "id": "gm-19ab140a8f4f1727",
