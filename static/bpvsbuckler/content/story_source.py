@@ -103,7 +103,7 @@ CAST = [
      'role': 'Freeholders from the early 19th century; sold the farmhouse parcel to Daniel Thomas in 1877 and their remaining interest to Western Ground Rents in 1938.',
      'match': ['Bute']},
     {'id': 'wgr', 'name': 'Western Ground Rents Ltd', 'years': '',
-     'role': "Bought Bute's interest in 1938; brought the 1955 and 1962 actions; conveyed to BP Pension Trust in 1969.",
+     'role': "Bought Bute's interest in 1938; brought the 1955 and 1962 actions; conveyed Parcel B, and an interest in the 1962 order on Parcel A, to BP Pension Trust in 1969.",
      'match': ['WGR', 'Western Ground Rents']},
     {'id': 'bp', 'name': 'BP Pension Trust / BP Properties Ltd', 'years': '',
      'role': 'Acquired from Western Ground Rents in 1969; registered the land in 1982–83; obtained possession in 1986–88; demolished the buildings in 1988; transferred the site to Ideal Homes in 1993.',
@@ -380,7 +380,7 @@ sc('III', 'ghf-19670101-1', '1967-01-01', '1967', "Death of Frederick Buckler", 
 # ---------------------------------------------------------------- ACT IV
 sc('IV', 'ghf-19691231-1', '1969-12-31', '31 December 1969', "Conveyance to BP Pension Trust", 'Great House Farm', 'AB',
    'Land Registry record',
-   "On 31 December 1969 Western Ground Rents conveys its interest at Great House Farm to BP Pension Trust Ltd. The conveyance is not on the Land Registry files.",
+   "On 31 December 1969 Western Ground Rents conveys Parcel B, and an interest in the 1962 order on Parcel A, to BP Pension Trust Ltd (our case: the land as a whole did not pass). The conveyance is not on the Land Registry files.",
    [LRT('conveyances', 'Land Registry Titles — conveyances')],
    ledger={'B': 'Freehold: BP Pension Trust (Bute → WGR → BP, by deed)',
            'S': 'Held by BP Pension Trust: the 1962 order and the case against Mary (no deed to Parcel A; the 1969 root conveyance now missing)'})
