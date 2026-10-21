@@ -1435,6 +1435,7 @@ Democratic@valeofglamorgan.gov.uk
 
 cc: FoiUnit@valeofglamorgan.gov.uk (for inform','{"kind": "reply", "pairing": "thread", "party": "vale"}');
 INSERT INTO nodes VALUES ('doc-cadw-1988-listing-location-lead','document','Cadw 1988 listing / assessment file — location lead','{"holder": "Cadw / Welsh Government", "reference": "none yet (draft)", "date": "2026-10-13"}');
+INSERT INTO nodes VALUES ('doc-cardiff-council-foi-eir-leckwith-woods-1940-42-2026-10-20','document','Cardiff Council FOI/EIR — 1940–42 transfer of Leckwith Woods from Western Ground Rents Ltd','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-defra-FOI2026-23886','document','Defra FOI2026/23886 acknowledgement – wartime/post-war farm records','{"holder": "Defra (successor to MAF)", "reference": "FOI2026/23886", "date": "2026-10-20"}');
 INSERT INTO nodes VALUES ('doc-defra-auto-ack-foi-maf-2026-10-20','document','Defra FOI/EIR auto-acknowledgement – MAF wartime records','{"holder": "Defra (successor to MAF)", "reference": "none assigned in auto-ack", "date": "2026-10-20"}');
 INSERT INTO nodes VALUES ('doc-defra-undeliverable-foi-maf-2026-10-20','document','Defra FOI/EIR undeliverable – MAF wartime records','{"holder": "Defra (successor to MAF)", "reference": "none (undelivered)", "date": "2026-10-20"}');
@@ -1442,6 +1443,7 @@ INSERT INTO nodes VALUES ('doc-draft-cedwyn-estate-wiki-page','document','Cedwyn
 INSERT INTO nodes VALUES ('doc-dwr-cymru-eir-3106-2026','document','Dŵr Cymru Welsh Water EIR/3106/2026, 14 October 2026','{"holder": "Dŵr Cymru Welsh Water, Environmental Information Requests", "reference": "EIR/3106/2026", "date": "2026-10-14"}');
 INSERT INTO nodes VALUES ('doc-excluded-1878-thomas-williams-ynysawdre','document','Thomas Williams and the Ynysawdre Coal Co., 15 June 1878 — not Great House Farm','{"holder": "Glamorgan Archives (photographed by Sion Buckler, 2nd visit, photos 91–95)", "reference": "archive reference not legible in the photographs (pending)", "date": "1878-06-15"}');
 INSERT INTO nodes VALUES ('doc-glamorgan-archives-2026-4097b','document','Glamorgan Archives 2026/4097b','{"holder": "Glamorgan Archives", "reference": "2026/4097b", "date": "2026-09-30"}');
+INSERT INTO nodes VALUES ('doc-glamorgan-archives-catalogue-enquiry-d696-udpe-2026-10-20','document','Glamorgan Archives catalogue enquiry — Western Ground Rents (D696), Cardiff Corporation 1940–42 and Penarth UDC (UDPE) 1972–74 — Llandough','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-glamorgan-archives-llandough-parish-tithe','document','Lead: Llandough-juxta-Penarth vestry, tithe, enclosure','{"holder": "Glamorgan Archives", "reference": "location lead drafted 7 Oct 2026 (no authority reference yet)", "date": "2026-10-07"}');
 INSERT INTO nodes VALUES ('doc-heneb-GGAT02038s','document','Heneb replies, 6 and 14 October 2026','{"holder": "Heneb (Glamorgan-Gwent HER)", "reference": "GGAT02038s (request 8 Sep 2026; 6 Oct reply; 14 Oct digitisation update)", "date": "2026-10-14"}');
 INSERT INTO nodes VALUES ('doc-heneb-her-schedule-2026-10-16','document','heneb-her-schedule-2026-10-16.md','{"holder": "Heneb (The Trust for Welsh Archaeology) / Historic Environment Record", "reference": "GHF/HENEB/2026-09-20 schedule reply", "date": "2026-10-16"}');
@@ -1466,6 +1468,7 @@ INSERT INTO nodes VALUES ('doc-three-parcel-split-forensic-assessment-2026-10-18
 INSERT INTO nodes VALUES ('doc-tna-IR58-glamorgan-xlvii-6','document','TNA Valuation Office location lead / response','{"holder": "The National Archives", "reference": "CAS-359317-Q8Q4R9 (response 14 Oct 2026; follow-up 15 Oct 2026); prior draft r1281075964076169651", "date": "2026-10-14 (response); 2026-10-15 (follow-up)"}');
 INSERT INTO nodes VALUES ('doc-vale-of-glamorgan-00211557','document','Vale of Glamorgan FOI 00211557, supplement 18 October 2026','{"holder": "Vale of Glamorgan Council, FOI Unit", "reference": "00211557", "date": "2026-10-18"}');
 INSERT INTO nodes VALUES ('doc-vale-of-glamorgan-2020-01590-hyb','document','Vale of Glamorgan Council FOI 2020 01590 HYB — WhatDoTheyKnow overdue reminder','{"holder": "", "reference": "", "date": ""}');
+INSERT INTO nodes VALUES ('doc-vale-of-glamorgan-foi-eir-llandough-planning-1972-1996-2026-10-20','document','Vale of Glamorgan FOI/EIR — Llandough planning records 1972–1996 (Great House Farm / St Dochdwy''s Church green)','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-valuation-office-agency-foi-auto-ack','document','Valuation Office Agency / HMRC FOI auto-ack','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-welsh-government-ATISN-26-0009','document','Welsh Government ATISN 26-0009, 15 October 2026','{"holder": "Welsh Government / Cadw, Historic Environment Inspectorate", "reference": "ATISN 26-0009", "date": "2026-10-15"}');
 INSERT INTO nodes VALUES ('doc-welsh-government-ATISN-26-0010','document','Welsh Government ATISN 26-0010','{"holder": "Welsh Government, Operational Effectiveness Group, Business Management Unit (OEG.FMCO.FOI)", "reference": "ATISN 26-0010", "date": "2026-10-19"}');
@@ -3305,6 +3308,8 @@ INSERT INTO edges VALUES ('doc-glamorgan-archives-2026-4097b','ref:D696','cites'
 INSERT INTO edges VALUES ('doc-glamorgan-archives-2026-4097b','ref:D696/1-3','cites');
 INSERT INTO edges VALUES ('doc-glamorgan-archives-2026-4097b','ref:X.6(12)','cites');
 INSERT INTO edges VALUES ('doc-glamorgan-archives-2026-4097b','ref:XLVII.6','cites');
+INSERT INTO edges VALUES ('doc-glamorgan-archives-catalogue-enquiry-d696-udpe-2026-10-20','ref:D696','cites');
+INSERT INTO edges VALUES ('doc-glamorgan-archives-catalogue-enquiry-d696-udpe-2026-10-20','ref:XLVII.6','cites');
 INSERT INTO edges VALUES ('doc-glamorgan-archives-llandough-parish-tithe','ref:2026/4097b','cites');
 INSERT INTO edges VALUES ('doc-heneb-GGAT02038s','ref:GGAT02038s','cites');
 INSERT INTO edges VALUES ('doc-hmlr-D260928','ref:N610CGV','cites');
