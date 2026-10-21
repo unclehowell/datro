@@ -1,0 +1,730 @@
+{
+ "version": "2.0.0",
+ "built": "2026-10-21",
+ "rule_set": "Rule set applied: the site’s six structural rules S1–S6 (model.json v1.0.0), a CSSCPSG reading of each sentence’s actor, act, object and scope.",
+ "rules": {
+  "S1": "Scope: the operative noun phrase covers more (or other) land than the instrument it rests on evidences",
+  "S2": "Party: the person most affected is not a party, not the addressee, or not shown to have been served",
+  "S3": "Agency: the operative effect is imposed without any act or consent of the person it binds",
+  "S4": "Term shift: a key word (possession, owner, proprietor, possessions) changes meaning between documents",
+  "S5": "Text gap: the operative text itself is not held; it is known only from a later recital or summary",
+  "S6": "Inconsistency: dates, years or descriptions conflict between records of the same act"
+ },
+ "note": "Verbatim passages; red marks are additions only. Paragraph numbers count the BAILII text.",
+ "passages": [
+  {
+   "date": "1877",
+   "sort": "1877-01",
+   "src": "Agreement, Marquess of Bute to Daniel Thomas & Son",
+   "cite": "EV-0006",
+   "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e115-1877-bute-thomas-agreement/",
+   "text": "SOURCE PENDING: the 1877 Bute–Daniel Thomas & Son agreement is not held.",
+   "marks": [],
+   "pending": true,
+   "ev": null
+  },
+  {
+   "date": "6 November 1877",
+   "sort": "1877-11-06",
+   "src": "Lease to John Williams",
+   "cite": "EV-0008",
+   "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e116-6-november-1877-bute-counterpart-lease-john-williams/",
+   "text": "SOURCE PENDING: the lease of 6 November 1877 to John Williams is not held.",
+   "marks": [],
+   "pending": true,
+   "ev": null
+  },
+  {
+   "date": "23 February 1905",
+   "sort": "1905-02-23",
+   "src": "Conveyance, John Marquis of Bute to Cardiff City Corporation, as recorded on the register",
+   "cite": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 1",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112812173.pdf",
+   "text": "The land tinted pink on the filed plan is subject to the rights contained in a Conveyance dated 23 February 1905 made between (1) John Marquis of Bute and Earl of Dumfries and (2) Cardiff City Corporation. NOTE 1: No copies of the plans referred to were supplied on first registration",
+   "marks": [
+    {
+     "p": "No copies of the plans referred to were supplied on first registration",
+     "r": "S5",
+     "why": "The operative plans were never supplied to the registry. The land the 1905 rights cover is known only from the register’s later colouring.",
+     "ev": "EV-0013"
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "February 1916",
+   "sort": "1916-02",
+   "src": "Yearly agricultural tenancy, as recited by the Court of Appeal",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶4",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "Great House Farm used to belong to the Marquis of Bute, and in February 1916 the Marquis granted a yearly agricultural tenancy of the whole of the farm to a Mr John Williams, who was Mr Buckler junior's maternal grandfather. In 1938 the reversion on that tenancy was conveyed to a company called Western Ground Rents Ltd.",
+   "marks": [
+    {
+     "p": "the whole of the farm",
+     "r": "S1",
+     "why": "The phrase sets the scope of the 1916 tenancy at the whole holding. The 1916 agreement and its plan are not held, so the scope rests on this recital alone.",
+     "ev": "EV-0014"
+    },
+    {
+     "p": "In 1938 the reversion on that tenancy was conveyed",
+     "r": "S5",
+     "why": "The 1938 conveyance and its plan are not held. Which parcels passed in 1938 is not shown by any text the court quoted.",
+     "ev": "EV-0019"
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "15 May 1924",
+   "sort": "1924-05-15",
+   "src": "Drain agreement, as recorded on the register",
+   "cite": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 2",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112812173.pdf",
+   "text": "An Agreement dated 15 May 1924 made between (1) John Marquis of Bute and Earl of Dumfries and (2) James Pelham Stuart Corbett relates to the construction and maintenance of a drain.",
+   "marks": [],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "25 December 1938",
+   "sort": "1938-12-25",
+   "src": "Contract for sale, 1965, condition F (root of title)",
+   "cite": "EV-0216: 1965 contract, condition F (Vale of Glamorgan Council, FOI 00211027 reply, 14 September 2026)",
+   "url": "",
+   "text": "F. Title shall be deduced, and shall commence, as follows:- with a Conveyance on sale dated 25th December 1938",
+   "marks": [
+    {
+     "p": "dated 25th December 1938",
+     "r": "S6",
+     "why": "The deed is dated Christmas Day 1938, a Sunday. Press reports of the Bute sale record completion on 23 December 1938.",
+     "ev": "EV-0022"
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "May 1939",
+   "sort": "1939-05",
+   "src": "Agreement, Western Ground Rents to John Williams, with plan (Glamorgan Archives DBDT123/7)",
+   "cite": "EV-0023",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-17901130382388153716561495856833.jpg",
+   "text": "SOURCE PENDING: the 1939 agreement is held as an image; its wording is not yet transcribed.",
+   "marks": [],
+   "pending": true,
+   "ev": null
+  },
+  {
+   "date": "2 February 1949",
+   "sort": "1949-02-02",
+   "src": "Surrender and new yearly tenancy, as recited by the Court of Appeal",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶5",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "It appears that Mr Williams, who may already by then have been elderly, fell into arrears with his rent in the mid-1930s and in the late 1940s. Because of that, agreement was reached for Mr Williams' tenancy to be surrendered and for a new yearly agricultural tenancy commencing at February 2 1949 to be granted to Mr Williams' son-in-law, Mr Frederick Buckler, who was the father of Mr Buckler junior. It was intended that Mr Frederick Buckler should have a written tenancy agreement, but this did not happen because Mr Frederick Buckler also failed to pay the rent. There is a letter from the landlords' agents to their solicitors of October 10 1952 stating that they did not propose to proceed with the letting to Mr Frederick Buckler. However, the conclusion must be that, even though there was no written agreement, Mr Frederick Buckler had a periodic tenancy which was protected by the Agricultural Holdings Act.",
+   "marks": [
+    {
+     "p": "even though there was no written agreement",
+     "r": "S5",
+     "why": "No written tenancy exists for 1949. Its terms and its land are known only from this later recital.",
+     "ev": "EV-0025"
+    },
+    {
+     "p": "It appears that",
+     "r": "S5",
+     "why": "The recital opens on inference. The rent books and the agents’ letter of 10 October 1952 are not quoted.",
+     "ev": "EV-0020"
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "2 February 1955 to 4 July 1955",
+   "sort": "1955-07-04",
+   "src": "High Court possession order under Order 14, as recited by the Court of Appeal (the order itself is not held: EV-0032)",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶6",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "His tenancy was then duly terminated by a notice to quit which expired on February 2 1955. Western Ground Rents then brought proceedings for possession against Mr Frederick Buckler in the High Court and obtained a possession order, under Order 14, in respect of the whole of the farm. On July 4 1955 that possession order was enforced, and possession was taken in respect of all parts of the farm except the farmhouse and garden. The reason why the order was not enforced in respect of the farmhouse and garden was that Mrs Mary Buckler (daughter of Mr Williams, wife of Mr Frederick Buckler and mother of Mr Buckler junior) had recently come out of hospital after having had a leg amputated and was objecting very strongly to leaving the farmhouse.",
+   "marks": [
+    {
+     "p": "against Mr Frederick Buckler",
+     "r": "S2",
+     "why": "The order was sought against the tenant alone. Mary (Nancy) Williams lived in the farmhouse and was not a party.",
+     "ev": "EV-0032"
+    },
+    {
+     "p": "in respect of the whole of the farm",
+     "r": "S1",
+     "why": "The order is recited as covering the whole farm. No plan or parcel list is quoted, and the order itself is not held.",
+     "ev": "EV-0032"
+    },
+    {
+     "p": "all parts of the farm except the farmhouse and garden",
+     "r": "S1",
+     "why": "The enforced area is described by exclusion only. No plan defines the parts taken on 4 July 1955.",
+     "ev": "EV-0034"
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "31 October 1958",
+   "sort": "1958-10-31",
+   "src": "The London Gazette, 31 October 1958, p. 6652",
+   "cite": "EV-0287 (London Gazette notice)",
+   "url": "https://www.thegazette.co.uk/London/issue/41539/page/6652",
+   "text": "the City of Cardiff (Leckwith Common) Compulsory Purchase Order, 1957, confirmed by him on the 8th September 1958, under section 5 of the Physical Training and Recreation Act, 1937",
+   "marks": [],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "By 1959",
+   "sort": "1959",
+   "src": "Tenancy offer for the farmhouse and garden, as recited by the Court of Appeal",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶7",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "By 1959, at any rate, Mrs Mary Buckler, who was also from time to time referred to as Mrs Williams, had conceived the notion that she had a title to the ownership of Great House Farm through her own grandfather and that there were documents in existence which proved her title. No such documents were, however, ever produced. She was offered a tenancy of the farmhouse and garden by Western Ground Rents but refused to accept it.",
+   "marks": [],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "29 March 1961",
+   "sort": "1961-03-29",
+   "src": "Deed, Western Ground Rents, South Western Brick & Tile and Cardiff City Corporation, as recorded on the register",
+   "cite": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 3",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112812173.pdf",
+   "text": "The land tinted pink on the filed plan is subject to the rights contained in a Deed dated 29 March 1961 made between (1) Western Ground Rents Limited (2) The South Western Brick & Tile Company Limited and (3) Cardiff City Corporation.",
+   "marks": [],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "11 December 1962",
+   "sort": "1962-12-11",
+   "src": "Cardiff County Court possession order, as recited by the Court of Appeal",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶9",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "In 1962, however, Western Ground Rents brought a fresh action in Cardiff County Court against Mr Frederick Buckler and Mrs Buckler for possession of the farmhouse and garden and mesne profits since 1955. On December 11 1962 a possession order was made by Judge Temple Morris QC together with an order for payment of mesne profits. The latter was to some extent enforced, in that there seems to have been a suspended committal order against Mr Frederick Buckler in June 1963, but nothing was done before 1974 to enforce the 1962 possession order.",
+   "marks": [],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "11 June 1965",
+   "sort": "1965-06-11",
+   "src": "Conveyance, Lakeside & Llandough Development Co and Western Ground Rents to Glamorgan County Council",
+   "cite": "EV-0042 (Vale of Glamorgan Council, FOI 00211027)",
+   "url": "",
+   "text": "ALL THAT piece or parcel of land situate at Llandough … Three Point Three Five Two acres … part of Enclosure 106 on the Ordnance Survey Map Glamorgan Sheet XLVII.6 (1941 Edition)",
+   "marks": [],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "December 1969",
+   "sort": "1969-12",
+   "src": "Sale, Western Ground Rents to BP Pension Trust Ltd, as recited by the Court of Appeal",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶9",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "In the meantime Mr Frederick Buckler died at some time in the period 1965-67, and in December 1969 Great House Farm, including the farmhouse and garden, was sold by Western Ground Rents to BP Pension Trust Ltd.",
+   "marks": [
+    {
+     "p": "was sold by Western Ground Rents to BP Pension Trust Ltd",
+     "r": "S5",
+     "why": "The 1969 conveyance is recited but not listed on either HM Land Registry first-registration file. Its text and plan are not held.",
+     "ev": "R4; HMLR letter 30 July 2026"
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "16 June 1970",
+   "sort": "1970-06-16",
+   "src": "VG41 village green registration",
+   "cite": "EV-0044",
+   "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e133-16-june-1970-vg41-village-green-registration-and-ownership-file/",
+   "text": "SOURCE PENDING: the VG41 register entry, map and ownership section are not held.",
+   "marks": [],
+   "pending": true,
+   "ev": null
+  },
+  {
+   "date": "3 July 1974",
+   "sort": "1974-07-02",
+   "src": "Defence of Mrs Buckler in the 1974 county court action",
+   "cite": "EV-0049",
+   "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e135-3-july-1974-mary-williams-plea-of-ownership-and-pleadings/",
+   "text": "SOURCE PENDING: the defence pleading ownership is not held; only the Court of Appeal’s summary of it.",
+   "marks": [],
+   "pending": true,
+   "ev": null
+  },
+  {
+   "date": "1974 (part heard 3 July 1974)",
+   "sort": "1974-07-03",
+   "src": "BP Pension Trust Ltd v Mrs Buckler, Cardiff County Court, as recited by the Court of Appeal",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶11",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "In 1974 BP Pension Trust Ltd started a fresh action in the Cardiff County Court for possession and mesne profits against Mrs Buckler (sued as Mrs Williams) and various members of her family, including Mr Buckler junior. This was adjourned part heard on July 3 1974 for a formal defence to be filed on behalf of Mrs Buckler, and a defence was filed asserting that BP Pension Trust's claim was barred by adverse possession under the Limitation Act 1939; so far as Mr Buckler junior is concerned, it was pleaded that he occupied the property as licensee of Mrs Buckler. That action has never been finally heard. However, on September 17 1974 BP Pension Trust Ltd gave notice of an application by them as successors in title to Western Ground Rents for leave to enforce the possession order of December 11 1962 (the order of Judge Temple Morris QC) and on September 19 1974 Judge Watkin Powell on that application gave BP Pension Trust Ltd leave to execute the order for possession of December 11 1962. He ordered that the possession warrant do issue forthwith but be not enforced until October 31 1974.",
+   "marks": [
+    {
+     "p": "as successors in title to Western Ground Rents",
+     "r": "S5",
+     "why": "Leave to enforce rested on succession to the 1962 judgment. The deed that made BP Pension Trust the successor is not on either first-registration file.",
+     "ev": "R4"
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "31 October 1974",
+   "sort": "1974-10-31",
+   "src": "Letter, BP Pension Trust Ltd to Mrs Buckler, as quoted by the Court of Appeal",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶15",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "We have been advised that you are making an application to the Court for a Stay of Execution of the Order for Possession which was recently confirmed, and that you are proposing to apply to have the judgment of the Court, which we were seeking to enforce, set aside. You will, we hope, understand that the Trustees of The British Petroleum Pension Trust are not, and never have been, unsympathetic to your position, but they are bound in law to have a prime regard for the interests of their Pensioners and they had no alternative but to exercise remedies against you which the law provides. The only way in which they could safeguard your future occupation of Great House Farm is by selling the property to a purchaser who is not bound by similar constraints. We are now pleased to advise you that we have found such a purchaser in BP Properties Ltd, who have agreed to buy the property from the Trust. Accordingly, the instructions given to the Bailiff to execute the judgment of the Court have been withdrawn. As the Possession Order will not now be executed, your application for a Stay of Execution becomes unnecessary. Your Solicitors are immediately being advised accordingly.",
+   "marks": [
+    {
+     "p": "who have agreed to buy the property from the Trust",
+     "r": "S6",
+     "why": "No written agreement of this date is held. HM Land Registry lists a plan to the conveyance dated 23 February 1975, almost four months later.",
+     "ev": "R1; HMLR letter 30 July 2026, item 13"
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "31 October 1974",
+   "sort": "1974-10-31",
+   "src": "Letter, BP Properties Ltd to Mrs Buckler, as quoted by the Court of Appeal",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶16",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "You will be hearing separately from our Pension Trust that they are selling Great House Farm to BP Properties Ltd. As BP Properties is not obliged by the same constraints as the Pension Trust and since we wish to help you as much as possible, we are prepared to allow you to remain in occupation of the house and garden rent free for as long as you may wish and for the rest of your life if you so desire. I am pleased accordingly to confirm that we will not require you to give possession during your lifetime or until such time as you may choose no longer to live in the house, and we have given the necessary instructions so that no proceedings will be commenced until you personally no longer live there. I do hope that by making this gesture you will accept the situation and that no further problems will arise in the future.",
+   "marks": [
+    {
+     "p": "we are prepared to allow you to remain in occupation",
+     "r": "S3",
+     "why": "The permission is imposed by the paper owner without any act or consent of the occupier. It is the sentence the whole judgment rests on.",
+     "ev": "Law Com No 271, para 14.56 n 187"
+    },
+    {
+     "p": "they are selling Great House Farm to BP Properties Ltd",
+     "r": "S6",
+     "why": "The sale is stated as present fact. The conveyance to BP Properties Ltd is dated 23 May 1975.",
+     "ev": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 4"
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "4 November 1974",
+   "sort": "1974-11-04",
+   "src": "Hearing and withdrawal of the warrant, as recited by the Court of Appeal",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶13; ¶16",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "Both are addressed to Mrs Buckler (described again as Mrs Williams), but both were in fact sent not to her but to her solicitor, who seems to have received them on the morning of November 4, immediately before he made his application to Judge Watkin Powell in the Cardiff County Court. Because of these two letters the landlords' solicitors did not attend the appointment before the judge on November 4 1974. Mrs Buckler's solicitors produced the letters to the judge, and he stayed execution on the warrant for possession pending Mrs Buckler's agreement to the proposals in the letters. Her solicitor then telephoned Mrs Buckler, told her of the letters and sought her instructions. Before she had given any instructions, however, the landlords' solicitors themselves wrote to the county court, at some date prior to November 25 1974 and withdrew the warrant for possession. Mrs Buckler therefore never expressly accepted or rejected the terms of the two letters. She was left in undisturbed possession of the farmhouse and garden, rent free, until her death, which occurred in March 1983.",
+   "marks": [
+    {
+     "p": "sent not to her but to her solicitor",
+     "r": "S2",
+     "why": "The letters were addressed to Mrs Buckler but delivered to her solicitor. The person bound by the licence did not receive it.",
+     "ev": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶13"
+    },
+    {
+     "p": "pending Mrs Buckler's agreement to the proposals in the letters",
+     "r": "S3",
+     "why": "The court stayed execution pending her agreement. The warrant was then withdrawn before she gave any.",
+     "ev": ""
+    },
+    {
+     "p": "never expressly accepted or rejected",
+     "r": "S3",
+     "why": "The record shows no act of hers either way. The licence still bound her.",
+     "ev": ""
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "23 May 1975",
+   "sort": "1975-05-23",
+   "src": "Conveyance, The British Petroleum Pension Trust Limited and BP Trustees Limited to B.P. Properties Limited, as recorded on the register",
+   "cite": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 4",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112812173.pdf",
+   "text": "A Conveyance of the land tinted blue on the filed plan and other land dated 23 May 1975 made between (1) The British Petroleum Pension Trust Limited (Vendors) (2) BP Trustees Limited and (3) B.P. Properties Limited (Purchaser) contains covenants details of which are set out in the schedule of restrictive covenants hereto.",
+   "marks": [],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "22 May 1980",
+   "sort": "1980-05-22",
+   "src": "House of Commons, Hansard, HC Deb 22 May 1980, vol. 985 (Ted Rowlands MP)",
+   "cite": "EV-0057",
+   "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/n16-1980-hansard-ted-rowlands-western-ground-rents-bp-pension-fund/",
+   "text": "the most rapacious ground landlord, Western Ground Rents, has been bought by the BP pension fund, which is behaving in the same rapacious and, at times, unfeeling and uncaring way in handling the genuine requests of householders.",
+   "marks": [],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "19 November 1982",
+   "sort": "1982-11-19",
+   "src": "Conveyance, BP Pension Trust Ltd and BP Trustees Ltd to B.P. Properties Ltd, as recorded on the register",
+   "cite": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 6",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112812173.pdf",
+   "text": "A Conveyance of the land tinted pink on the filed plan and other land dated 19 November 1982 made between (1) The British Petroleum Pension Trust Limited (2) B.P.Trustees Limited and (3) B.P. Properties Limited contains restrictive covenants.",
+   "marks": [],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "23 February 1983",
+   "sort": "1983-02-23",
+   "src": "HM Land Registry, first registration of the farmhouse and garden (WA240304), as listed in HM Land Registry’s letter of 30 July 2026 (ref N610CGV)",
+   "cite": "HMLR letter, 30 July 2026, WA240304 schedule, items 10–13",
+   "url": "https://wayback.bucklerfamily.estate/pdf/foi/2026-07-30_hmlr_first-registration-schedule.pdf",
+   "text": "(10) Copy of Register edition date 23 February 1983 … (11) Form 1C application form from Linklaters & Paines … (12) Conveyance 23 May 1975 (13) Plan to conveyance dated 23 February 1975",
+   "marks": [
+    {
+     "p": "(11) Form 1C application form",
+     "r": "S2",
+     "why": "The schedule lists no notice to Mary (Nancy) Williams, who was in occupancy and had an ownership plea pending. HM Land Registry wrote on 25 May 2026 that it was unaware of any dispute.",
+     "ev": "R3; HMLR letter 25 May 2026"
+    },
+    {
+     "p": "(13) Plan to conveyance dated 23 February 1975",
+     "r": "S6",
+     "why": "A plan to the sale is dated after the 31 October 1974 letters that recite an agreement to buy.",
+     "ev": "R1"
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "22 May 1984",
+   "sort": "1984-05-22",
+   "src": "Writ for possession, as recorded by the European Commission of Human Rights",
+   "cite": "European Commission of Human Rights, Decision as to the admissibility of Application No. 14464/88, 14 April 1989, The Facts, p. 2",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf",
+   "text": "On 22 May 1984, the applicant was served with a writ by B.P. (Properties) Limited for possession of Great House Farm and adjourning lands to which it held the title. This property had been occupied by the applicant's family since 1916 and on his mother's death on 26 March 1983, the applicant had inherited her estate and continued to live on the farm.",
+   "marks": [
+    {
+     "p": "occupied by the applicant's family since 1916",
+     "r": "S6",
+     "why": "The decision dates the family’s occupancy from 1916. Trade directories list John Williams at Great House from 1868; 1916 is the date of the tenancy the judgment recites.",
+     "ev": "Legal Wiki Master Timeline (directories 1868–1901)"
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "24 July 1986",
+   "sort": "1986-07-24",
+   "src": "Judgment of Hollis J (Queen’s Bench Division, Cardiff), as recited by the Court of Appeal",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶23",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "The judge rejected the primary claim on the ground that Mr Frederick Buckler's possession during his lifetime was not 'adverse', and so time did not begin to run against the landlords until after his death. On the second argument he held that the effect of the letters of October 31 1974 was to constitute Mrs Buckler the licensee of BP Properties Ltd, and thus no longer in adverse possession, even though the letters were written unilaterally and without any agreement with her. The defence under the 1939 and 1980 Acts therefore failed.",
+   "marks": [
+    {
+     "p": "even though the letters were written unilaterally and without any agreement with her",
+     "r": "S3",
+     "why": "The trial judge held the licence effective with no agreement from the person it bound.",
+     "ev": ""
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "31 July 1987",
+   "sort": "1987-07-31",
+   "src": "Court of Appeal: the parties and the title",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶2",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "The action concerns a farm known as Great House Farm at Llandough near Penarth in South Glamorgan. The plaintiffs, BP Properties Ltd, have the paper title to the farm, and indeed since November 1982 they have been the registered proprietors of it at HM Land Registry following first registration.",
+   "marks": [
+    {
+     "p": "have the paper title to the farm",
+     "r": "S5",
+     "why": "The paper title runs through the 1938 conveyance, whose plan is not held. Which parcels it carried is not shown in the judgment.",
+     "ev": "R5"
+    },
+    {
+     "p": "since November 1982",
+     "r": "S6",
+     "why": "HM Land Registry records the farmhouse title (WA240304) from 23 February 1983, about three months later.",
+     "ev": "HMLR letters 23 March and 30 July 2026"
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "31 July 1987",
+   "sort": "1987-07-31",
+   "src": "Court of Appeal: Limitation Act 1939, section 13, as cited",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶8",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "'no person shall be deemed to have been in possession of any land by reason only of having made a formal entry thereon, and no continual or other claim upon or near any land shall preserve any right of action to recover the land'.",
+   "marks": [],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "31 July 1987",
+   "sort": "1987-07-31",
+   "src": "Court of Appeal: Limitation Act 1980, section 15(1), as cited",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶19",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "no action shall be brought by any person to recover any land after the expiration of 12 years from the date on which the right of action accrued to him, or, if it first accrued to some person through whom he claims, to that person.",
+   "marks": [],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "31 July 1987",
+   "sort": "1987-07-31",
+   "src": "Court of Appeal: the enforcement point",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶32",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "It follows that enforcement of the judgment for possession of December 11 1962 was still open to the landlords at October 31 1974, and their title to the farmhouse and garden had not been extinguished. I would accordingly reject the contention that Mrs Buckler had acquired a title by adverse possession before October 31 1974.",
+   "marks": [
+    {
+     "p": "was still open to the landlords",
+     "r": "S5",
+     "why": "The 1962 order was made for Western Ground Rents. Its transfer to BP Pension Trust rests on the 1969 sale, which is not on either first-registration file.",
+     "ev": "R4"
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "31 July 1987",
+   "sort": "1987-07-31",
+   "src": "Court of Appeal: the \"wrong company\" argument",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶22",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "I see nothing in this rather technical point; the letters record sufficiently that BP Properties Ltd had agreed to buy the property from the Pension Trust, and BP Properties Ltd was therefore prima facie in a position to grant a licence to Mrs Buckler.",
+   "marks": [
+    {
+     "p": "the letters record sufficiently that BP Properties Ltd had agreed to buy",
+     "r": "S5",
+     "why": "The agreement itself was not before the court. Its existence rests on the words of the letters alone.",
+     "ev": "R1"
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "31 July 1987",
+   "sort": "1987-07-31",
+   "src": "Court of Appeal: repudiation",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶38",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "It may be that the result would have been different if Mrs Buckler had, as soon as she learned of the letters, plainly told BP Properties Ltd that she did not accept the letters, and maintained her claims to be already the owner of the property; she did not, however, do that.",
+   "marks": [
+    {
+     "p": "she did not, however, do that",
+     "r": "S3",
+     "why": "The finding places the burden of rejection on the occupier. Her silence becomes consent to a licence she never asked for.",
+     "ev": "R2"
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "31 July 1987",
+   "sort": "1987-07-31",
+   "src": "Court of Appeal: the licence",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶40–41",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "The nature of Mrs Buckler's possession after receipt of the letters cannot be decided just by looking at what was locked up in her own mind. It must depend even more, on this aspect of the case, on the position as seen from the standpoint of the person with the paper title. What could that person have done? The rule that possession is not adverse if it can be referred to a lawful title applies even if the person in possession did not know of the lawful title; the lawful title would still preclude the person with the paper title from evicting the person in possession. So far as Mrs Buckler was concerned, even though she did not 'accept' the terms of the letters, BP Properties Ltd would, in the absence of any repudiation by her of the two letters, have been bound to treat her as in possession as licensee on the terms of the letters. They could not have evicted her (if they could have done so at all) without determining the licence. I can see no escape therefore from the conclusion that, whether she liked it or not, from the time of her receipt of the letters, Mrs Buckler was in possession of the farmhouse and garden by the licence of BP Properties Ltd, and her possession was no longer adverse within the meaning of section 10 of the 1939 Act.",
+   "marks": [
+    {
+     "p": "cannot be decided just by looking at what was locked up in her own mind",
+     "r": "S3",
+     "why": "The occupier’s intention is set aside for the owner’s standpoint. The Law Commission later called this assumption discredited.",
+     "ev": "Law Com No 271, para 14.56 n 187"
+    },
+    {
+     "p": "whether she liked it or not",
+     "r": "S3",
+     "why": "The licence binds her without her act or consent.",
+     "ev": ""
+    },
+    {
+     "p": "by the licence of BP Properties Ltd",
+     "r": "S6",
+     "why": "On 31 October 1974 BP Properties Ltd did not hold the title. Its conveyance is dated 23 May 1975.",
+     "ev": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 4"
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "31 July 1987",
+   "sort": "1987-07-31",
+   "src": "Court of Appeal: order",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶42–43",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "Accordingly I would dismiss this appeal. MUSTILL LJ and SIR EDWARD EVELEIGH agreed and did not add anything.",
+   "marks": [],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "3 March 1988 to 6 December 1988",
+   "sort": "1988-12-06",
+   "src": "House of Lords refusal, eviction attempt, possession and demolition, as recorded by the European Commission of Human Rights",
+   "cite": "European Commission of Human Rights, Decision as to the admissibility of Application No. 14464/88, 14 April 1989, The Facts, p. 2",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf",
+   "text": "The applicant applied to the House of Lords, which on 3 March 1988 refused him leave to appeal. A stay of execution of 28 days was ordered to enable the applicant to make alternative arrangements for accommodation. On 29 April 1988, B.P. (Properties) Ltd attempted to evict the applicant and his family. The applicant refused to leave the property however and the bailiffs were obliged to withdraw. On 29 November 1988 the company obtained possession of the property and on 6 December demolition of the farmhouse began.",
+   "marks": [],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "March 1989",
+   "sort": "1989-03",
+   "src": "Sites and Monuments Record card PRN 02038s (Heneb HER, Archwilio GGAT02038s)",
+   "cite": "EV-0118",
+   "url": "https://www.archwilio.org.uk/arch/query/page.php?watprn=GGAT02038s&dbname=ggat&tbname=core",
+   "text": "building destroyed by owners",
+   "marks": [
+    {
+     "p": "owners",
+     "r": "S4",
+     "why": "The card records BP as owners. The 1974 action on ownership was never finally heard, and the 1987 appeal decided possession under the licence.",
+     "ev": "R3"
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "14 April 1989",
+   "sort": "1989-04-14",
+   "src": "European Commission of Human Rights: Article 8 and Article 1 of Protocol No. 1",
+   "cite": "European Commission of Human Rights, Decision as to the admissibility of Application No. 14464/88, 14 April 1989, The Law, paras 2–3, pp. 3–4",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf",
+   "text": "The Commission notes that the applicant has lived in the property in question since his birth and that the decision of the court giving possession to B.P. (Properties) Ltd could be considered as an interference with the applicant's right to respect for his home. The Commission finds however that the order, pursuant to court proceedings, was in accordance with law and was \"necessary in a democratic society\" for the legitimate aim of protecting the rights of 14464/88 ■r 4 - Other, namely, the rights of B.P. (Properties) Ltd, who were held to be owner of the property. The Commission accordingly finds any interference justified within the meaning of Article 8 para. 2 of the Convention. It follows that this complaint is manifestly ill-founded within the meaning of Article 27 para. 2 of the Convention. 3. The applicant has complained that the decisions have interfered within his rights under Article 1 of Protocol No. 1 to the Convention, which provides: \"Every natural or legal person is entitled to the peaceful enjoyment of his possessions. No one shall be deprived of his possessions except in the public interest and subject to the conditions provided for by law and by the general principles of international law. The preceding provisions shall not, however, in any way impair the right of a State to enforce such laws as it deems necessary to control the use of property in accordance with the general interest or to secure the payment of taxes or other contributions or penalties.\" The Commission recalls however that the courts held that the applicant had no right to occupy the property, which belonged to another. The Commission finds, therefore, that there has been no interference with the applicant's possessions within the meaning of Article 1 of Protocol No. 1..",
+   "marks": [
+    {
+     "p": "who were held to be owner of the property",
+     "r": "S4",
+     "why": "The domestic courts decided possession under a licence. The Commission restates that as ownership.",
+     "ev": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶40"
+    },
+    {
+     "p": "which belonged to another",
+     "r": "S4",
+     "why": "The word turns a possession ruling into a title finding. No court quoted the 1938 conveyance or its plan.",
+     "ev": "R5"
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "14 April 1989",
+   "sort": "1989-04-14",
+   "src": "European Commission of Human Rights: decision",
+   "cite": "European Commission of Human Rights, Decision as to the admissibility of Application No. 14464/88, 14 April 1989, p. 4",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf",
+   "text": "For these reasons, the Commission DECLARES THE APPLICATION INADMISSIBLE.",
+   "marks": [],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "10 October 1989",
+   "sort": "1989-10-10",
+   "src": "Transfer, B P Properties Limited to Howard John Gough and Sylvia Mary Gough, as recorded on the register",
+   "cite": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Property Register entry 3",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112812173.pdf",
+   "text": "The land has the benefit of the following rights reserved by a Transfer of land adjoining the Southern boundary of the land in this title dated 10 October 1989 made between (1) B P Properties Limited and (2) Howard John Gough and Sylvia Mary Gough:-",
+   "marks": [],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "8 November 1989 (application)",
+   "sort": "1989-11-08",
+   "src": "Outline planning permission 89/01396/OUT, Great House Farm, Leckwith Road",
+   "cite": "EV-0124",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112968592.pdf",
+   "text": "The Council in pursuance of its powers under the above mentioned Act and Order hereby GRANTS OUTLINE PERMISSION for the carrying out of the proposed development as described above",
+   "marks": [],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "3 September 1992",
+   "sort": "1992-09-03",
+   "src": "Approved planning drawings 92/00671/RES",
+   "cite": "EV-0129",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112987191.pdf",
+   "text": "BOROUGH OF THE VALE OF GLAMORGAN TOWN AND COUNTRY PLANNING ACT, 1990 APPROVED SUBJECT TO COMPLIANCE WITH CONDITIONS IF ANY 3 SEP 1992 ... SCREEN WALL DETAIL ... THIS COURSE ONLY TO BE CONTRASTING BRICK",
+   "marks": [],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "12 January 1994",
+   "sort": "1994-01-12",
+   "src": "Ideal Homes Wales, Llandough Farm: Village Green planting plan (received stamp)",
+   "cite": "EV-0133",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112987583.pdf",
+   "text": "Villge Green to be maintained by LLANDOUGH COMMUNITY COUNCIL and to form part of project GATEWAY TO THE VALE. IDEAL HOMES WALES LLANDOUGH FARM, LLANDOUGH VILLAGE GREEN PLANTING. 3024.VG.01",
+   "marks": [
+    {
+     "p": "Villge Green to be maintained by LLANDOUGH COMMUNITY COUNCIL",
+     "r": "S5",
+     "why": "The plan names who maintains the green but shows no title to the land. The VG41 register entry and its ownership section are not held.",
+     "ev": "EV-0044"
+    }
+   ],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "10 November 1994",
+   "sort": "1994-11-10",
+   "src": "Transfer, Ideal Homes Wales Limited to Forest of Cardiff, as recorded on the register",
+   "cite": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 8",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112812173.pdf",
+   "text": "A Transfer of the land in this title dated 10 November 1994 made between (1) Ideal Homes Wales Limited (Transferor) and (2) Forest of Cardiff (Transferee) contains covenants details of which are set out in the schedule of restrictive covenants hereto.",
+   "marks": [],
+   "pending": false,
+   "ev": null
+  },
+  {
+   "date": "25 November 1994",
+   "sort": "1994-11-25",
+   "src": "Proprietorship Register entry 1",
+   "cite": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Proprietorship Register entry 1 (entry date 1994-11-25)",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112812173.pdf",
+   "text": "PROPRIETOR: FOREST OF CARDIFF (Co. Regn. No. 2591796) of The Wales Conservative Centre, Forest Farm Road, Whitchurch, Cardiff, CF4 7JH.",
+   "marks": [],
+   "pending": false,
+   "ev": null
+  }
+ ]
+}
