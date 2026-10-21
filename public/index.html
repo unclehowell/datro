@@ -244,7 +244,7 @@ function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return{'&':'&
 function open_(id){var x=M[id];if(!x)return;var h=esc(id+' | '+x.d+' | '+x.i)+'\n'+esc(x.c)+'\n';
 x.b.forEach(function(b){h+='\n'+esc(b.rule+' :: '+R[b.rule])+'\n  “'+esc(b.phrase)+'”\n  '+esc(b.why)+'\n';
 b.evidence.forEach(function(e){h+='  src: '+(e.url?'<a href="'+esc(e.url)+'" rel="noopener">'+esc(e.ref)+'</a>':esc(e.ref))+'\n'})});
-h+='\nOur case, prospective. ';mt.innerHTML=h;
+h+='\n ';mt.innerHTML=h;
 if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');}
 document.getElementById('doc').addEventListener('click',function(ev){if(ev.target.closest('a'))return;var s=ev.target.closest('.r');if(s)open_(s.dataset.id)});
 document.getElementById('doc').addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){var s=ev.target.closest('.r');if(s){ev.preventDefault();open_(s.dataset.id)}}});
