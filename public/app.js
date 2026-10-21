@@ -1,5 +1,5 @@
-/* maps.bucklerfamily.estate — Tŷ Mawr title map 1877–1987 · v1.2.0 · Sion's Tab agent
-   Our case, prospective. Not a finding of any court. */
+/* maps.bucklerfamily.estate — Tŷ Mawr title map 1877–1987 · v1.3.0 · Sion's Tab agent
+   The Williams-Buckler family's case, prospective. Not a finding of any court. */
 (function(){
 "use strict";
 var $=function(id){return document.getElementById(id)};
@@ -83,7 +83,7 @@ function popup(id){
   return '<div class="pp"><h3>'+esc(P.name)+'</h3>'+
    '<div class="tag '+(recon?'recon':'traced')+'">'+(recon?'reconstruction / estimate':'traced from a source')+'</div> <span class="k">confidence: '+esc(st.recon_all&&!P.recon?'reconstruction (1877 plan missing)':P.confidence)+'</span>'+
    '<div style="margin-top:6px"><span class="k">At '+esc(st.date)+' — records held:</span> <b>'+esc(hr[0])+'</b></div>'+
-   '<div><span class="k">Our case (prospective):</span> <b>'+esc(hc[0])+'</b></div>'+(p.note?'<div style="margin-top:4px">'+esc(p.note)+'</div>':'')+
+   '<div><span class="k">The Williams-Buckler family’s case (prospective):</span> <b>'+esc(hc[0])+'</b></div>'+(p.note?'<div style="margin-top:4px">'+esc(p.note)+'</div>':'')+
    '<div style="margin-top:6px"><span class="k">Area:</span> '+esc(P.os)+'; this outline ≈'+P.traced_ac+' ac</div>'+
    '<div style="margin-top:4px" class="k">'+esc(P.conf_text)+'</div>'+
    '<div class="k" style="margin-top:6px">Sources</div><ul style="margin:2px 0;padding-left:16px">'+srcList(P.src)+'</ul></div>';
@@ -108,7 +108,7 @@ function render(){
     });
   });
   var y=st.year;D.markers.forEach(function(m){var show=(m.kind==='recollection')?!!st.recollection:(y>=m.from_&&y<=m.to);if(show&&st.base==='aerial')show=false;if(show)m._l.addTo(map);else map.removeLayer(m._l)});
-  var lg='<div class="k" style="color:var(--mut)">'+(mode==='case'?'Our case (prospective)':'Records held')+' at '+esc(st.date)+'</div>';
+  var lg='<div class="k" style="color:var(--mut)">'+(mode==='case'?'The Williams-Buckler family’s case (prospective)':'Records held')+' at '+esc(st.date)+'</div>';
   Object.keys(used).forEach(function(k){lg+='<div><span class="sw" style="background:'+D.holders[k][1]+'"></span>'+esc(D.holders[k][0])+'</div>'});
   if(aOn)lg+='<div><span class="akey"></span> Parcel A, whole (from 1877)</div>';lg+='<div><span class="hatchkey"></span> reconstruction / estimate</div>';$('legend').innerHTML=lg;
 }
@@ -120,7 +120,7 @@ function setBase(b){
 function go(i,user){
   idx=i;var st=D.steps[i];$('slider').value=i;setBase(st.base);
   $('cDate').textContent=st.date;$('cTitle').textContent=st.title;$('cText').textContent=st.short||st.text;var cm=$('cMore');if(cm){$('cLong').textContent=st.text;cm.style.display=(st.short&&st.short!==st.text)?'':'none'}
-  $('cImg').innerHTML=st.img?'<a href="'+esc(st.img.src)+'" target="_blank" rel="noopener"><img src="'+esc(st.img.src)+'" alt="">'+esc(st.img.cap)+'</a>':'';
+  $('cImg').innerHTML=st.img?'<a href="'+esc(st.img.href||st.img.src)+'" target="_blank" rel="noopener"><img src="'+esc(st.img.src)+'" alt="">'+esc(st.img.cap)+'</a>':'';
   $('cSrc').querySelector('ul').innerHTML=srcList(st.src);
   try{history.replaceState(null,'','#step='+st.id)}catch(e){}
   map.closePopup();render();

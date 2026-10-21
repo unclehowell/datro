@@ -1,5 +1,5 @@
 {
- "version": "1.2.0",
+ "version": "1.3.0",
  "center": [
   51.4527,
   -3.1985
@@ -80,7 +80,7 @@
    "#9a9a9a"
   ],
   "wten": [
-   "Williams family: virtual freeholders since 1667, not squatters (our case); 1916 = last tenancy of Parcel A",
+   "Williams family: virtual freeholders since 1667, not squatters (the Williams-Buckler family’s case); 1916 = last tenancy of Parcel A",
    "#7fd1a0"
   ],
   "order": [
@@ -88,11 +88,11 @@
    "#2a9d8f"
   ],
   "woodp": [
-   "Woodland: synthetic parcel carved from A (now held by a public body, to be confirmed)",
+   "Woodland: top third of Parcel A, carved out (registered to Forest of Cardiff since 1994, title WA735527)",
    "#d64f8a"
   ],
   "greenp": [
-   "Green: synthetic parcel carved from A (VG41 from 1970; now held by a public body, to be confirmed)",
+   "Green: lower third of Parcel A, carved out (village green VG41 from 16 Jun 1970)",
    "#e8d23a"
   ]
  },
@@ -135,7 +135,8 @@
   },
   "ca": {
    "t": "BP Properties Ltd v Buckler, Court of Appeal, 31 Jul 1987 ([1987] EWCA Civ 2)",
-   "u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+   "u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "q": "Western Ground Rents then brought proceedings for possession against Mr Frederick Buckler in the High Court and obtained a possession order, under Order 14, in respect of the whole of the farm. On July 4 1955 that possession order was enforced, and possession was taken in respect of all parts of the farm except the farmhouse and garden. The reason why the order was not enforced in respect of the farmhouse and garden was that Mrs Mary Buckler (daughter of Mr Williams, wife of Mr Frederick Buckler and mother of Mr Buckler junior) had recently come out of hospital after having had a leg amputated and was objecting very strongly to leaving the farmhouse."
   },
   "ev16": {
    "t": "1928 last rent receipt and end of quarrying (EV-0016, receipt pending)",
@@ -155,7 +156,8 @@
   },
   "mt": {
    "t": "Master Timeline (Legal Wiki)",
-   "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+   "u": "https://greathousefarmwiki.wordpress.com/timeline/",
+   "q": "1940 – Apr 1942 — Western Ground Rents gives c.109 acres of Leckwith Woods to Cardiff council (offered and accepted 1940, completed April 1942; secondary source) [EV-0220]"
   },
   "reg83": {
    "t": "1983 First Registration: Parcel A title basis (Legal Wiki)",
@@ -211,10 +213,11 @@
   },
   "ev220": {
    "t": "Leckwith Woods gift, WGR to Cardiff Corporation, 1940–42 (EV-0220)",
-   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0220-leckwith-woods-wgr-gift-1940-1942/"
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0220-leckwith-woods-wgr-gift-1940-1942/",
+   "q": "1940 – Apr 1942 — Western Ground Rents gives c.109 acres of Leckwith Woods to Cardiff council (offered and accepted 1940, completed April 1942; secondary source) [EV-0220]"
   },
   "perm": {
-   "t": "Repeated attempts to make the occupation of Parcel A appear permissive (Legal Wiki, our case)",
+   "t": "Repeated attempts to make the occupation of Parcel A appear permissive (Legal Wiki, the Williams-Buckler family’s case)",
    "u": "https://greathousefarmwiki.wordpress.com/claim-repeated-attempts-to-make-mary-williams-occupancy-of-parcel-a-appear-permissive/"
   },
   "o55": {
@@ -227,15 +230,18 @@
   },
   "ev39": {
    "t": "WGR tenancy offers 1959 and 1965 (EV-0039)",
-   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0039-wgr-tenancy-offers-1959-1965/"
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0039-wgr-tenancy-offers-1959-1965/",
+   "q": "Reported: as recited (citing the 1962 page), offers in 1959 and 1965 referred to the remaining occupied house-and-garden area; Court of Appeal states Mary refused a 1959 tenancy offer and claimed ownership. [Original not held.]"
   },
   "ev40": {
    "t": "Deed of 29 March 1961: WGR, South Western Brick & Tile, Cardiff City Corporation (EV-0040)",
-   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0040-1961-wgr-brick-tile-deed/"
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0040-1961-wgr-brick-tile-deed/",
+   "q": "The land tinted pink on the filed plan is subject to the rights contained in a Deed dated 29 March 1961 made between (1) Western Ground Rents Limited (2) The South Western Brick & Tile Company Limited and (3) Cardiff City Corporation. NOTE: Copy filed under WA231076."
   },
   "ev169": {
-   "t": "Woodland title register WA735527 (EV-0169)",
-   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0169-wa735527-title-register-september-2026/"
+   "t": "Woodland title register WA735527, HM Land Registry, copy accessed 18 Sep 2026 (EV-0169)",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0169-wa735527-title-register-september-2026/",
+   "q": "The land tinted pink on the filed plan is subject to the rights contained in a Deed dated 29 March 1961 made between (1) Western Ground Rents Limited (2) The South Western Brick & Tile Company Limited and (3) Cardiff City Corporation. NOTE: Copy filed under WA231076. … PROPRIETOR: FOREST OF CARDIFF (Co. Regn. No. 2591796) [entry date 1994-11-25]"
   },
   "ev41": {
    "t": "Cardiff County Court possession order, 11 Dec 1962 (EV-0041)",
@@ -254,12 +260,55 @@
    "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0044-vg41-village-green-registration-1970/"
   },
   "trees": {
-   "t": "Family photographs: John Williams’s tree planting and the removal of the trees (held by the family; date of removal being established)",
+   "t": "Family photographs of the tree’s removal (Williams TreePlanting & Destruction of Evidence, family PDF): a JCB 3CX, first built 1980, is legible; season autumn",
    "u": ""
   },
   "ukbmd": {
    "t": "UKBMD, Cardiff registration district: Llandough parish abolished 30 Sep 1902 and added to Penarth",
    "u": "https://www.ukbmd.org.uk/reg/districts/cardiff.html"
+  },
+  "ca55": {
+   "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 Jul 1987: the 4 July 1955 enforcement",
+   "u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "q": "Western Ground Rents then brought proceedings for possession against Mr Frederick Buckler in the High Court and obtained a possession order, under Order 14, in respect of the whole of the farm. On July 4 1955 that possession order was enforced, and possession was taken in respect of all parts of the farm except the farmhouse and garden. The reason why the order was not enforced in respect of the farmhouse and garden was that Mrs Mary Buckler (daughter of Mr Williams, wife of Mr Frederick Buckler and mother of Mr Buckler junior) had recently come out of hospital after having had a leg amputated and was objecting very strongly to leaving the farmhouse."
+  },
+  "ca59": {
+   "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2: the tenancy offer refused by 1959",
+   "u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "q": "By 1959, at any rate, Mrs Mary Buckler, who was also from time to time referred to as Mrs Williams, had conceived the notion that she had a title to the ownership of Great House Farm through her own grandfather and that there were documents in existence which proved her title. No such documents were, however, ever produced. She was offered a tenancy of the farmhouse and garden by Western Ground Rents but refused to accept it."
+  },
+  "ca65": {
+   "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2: the March 1965 offer",
+   "u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "q": "at one stage in March 1965 when Western Ground Rents' agents offered Mrs Buckler a tenancy"
+  },
+  "ca74": {
+   "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2: the 1974 defence",
+   "u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "q": "This was adjourned part heard on July 3 1974 for a formal defence to be filed on behalf of Mrs Buckler, and a defence was filed asserting that BP Pension Trust's claim was barred by adverse possession under the Limitation Act 1939"
+  },
+  "mary9": {
+   "t": "Mary (Nancy) Williams (Legal Wiki, page 9)",
+   "u": "https://greathousefarmwiki.wordpress.com/mary-williams/",
+   "q": "1974 — 3 July: pleads ownership and the Limitation Act 1939"
+  },
+  "tmary": {
+   "t": "Testimony — Mary (Nancy) Williams (Mrs Mary Doreen Buckler, 1913–1983) (Legal Wiki)",
+   "u": "https://greathousefarmwiki.wordpress.com/testimony/mary-williams/"
+  },
+  "wm58": {
+   "t": "Western Mail, 20 Nov 1958, p.7: Mrs Buckler at Glamorgan County Council’s planning committee, 19 Nov 1958 (EV-0037; British Newspaper Archive OCR text, page image not yet seen)",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0037-western-mail-1958-crichel-down/",
+   "q": "“A CRIPPLED woman told Glamorgan County Council’s planning committee at Cardiff yesterday that land which had been farmed by her family since 1667 had been “wrongfully appropriated.” … Mrs. M D. Buckler was objecting to further industrial development in the vicinity of her farm, Ty Mawr, Penarth Road, Llandough … Mrs. Buckler maintained that the letting of these sites was “made over her head” by Western Ground Rents, who claimed the ground as their property … “This is a Welsh case of Crichel Down,” said Mrs. Buckler. “The Glamorgan County Council, Penarth Urban and Cardiff Rural Councils and Western Ground Rents have walked in and taken […]”"
+  },
+  "ev263": {
+   "t": "Commons Registration Act 1965: registrations publicised by public notice only (EV-0263)",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0263-commons-registration-1965-publicity-glamorgan-notices-vg41/"
+  },
+  "pcw": {
+   "t": "People’s Collection Wales: “Llandough, Great House Farm, Tree Planting.” (owner Mary Godfrey; uploaded by Vale of Glamorgan Libraries, 20 Aug 2018)",
+   "u": "https://www.peoplescollection.wales/items/871416",
+   "q": "A black and white photograph of tree planting by John Williams (Grandfather) to prove land ownership at Great House Farm, Llandough."
   }
  },
  "steps": [
@@ -269,8 +318,8 @@
    "year": 1876,
    "base": "1878",
    "title": "One parcel",
-   "short": "From 1667 the Williams family farm here. Our case: they were never squatters, but virtual freeholders.",
-   "text": "Mary (Nancy) Williams’s statement puts the start of the Williams family’s occupation in 1667 (Master Timeline; an earlier written source is awaited). Our case: from then the family are virtual freeholders of the holding, never squatters. The tithe survey of about 1841 lists the Bute estate as owner and John Williams as occupier of the holding. Until 1877 it is drawn here as one parcel. The outline is a reconstruction.",
+   "short": "From 1667 the Williams family farm here. The Williams-Buckler family asserts they were never squatters, but virtual freeholders.",
+   "text": "Mary (Nancy) Williams’s witness statement puts the start of the Williams family’s occupation in 1667 (Master Timeline; an earlier written source is awaited). The Williams-Buckler family asserts that from then the family are virtual freeholders of the holding, never squatters. The tithe survey of about 1841 lists the Bute estate as owner and John Williams as occupier of the holding. Until 1877 it is drawn here as one parcel. The outline is a reconstruction.",
    "parcels": {
     "AN": {
      "rec": "bute",
@@ -294,13 +343,18 @@
     }
    },
    "src": [
+    "tmary",
     "tithe",
     "os1878"
    ],
    "one": true,
    "recon_all": true,
-   "say": "From sixteen sixty-seven the Williams family farm here. Our case: they were never squatters, but virtual freeholders.",
-   "dur": 7.78
+   "dur": 8.57,
+   "img": {
+    "src": "img/mary-williams.jpg",
+    "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
+   },
+   "say": "From sixteen sixty-seven the Williams family farm here. The Williams-Buckler family asserts they were never squatters, but virtual freeholders."
   },
   {
    "id": "1877",
@@ -309,7 +363,7 @@
    "base": "1878",
    "title": "The split: Parcel A and Parcel B",
    "short": "In 1877 it is split in two: Parcel A and Parcel B.",
-   "text": "Mary (Nancy) Williams later stated that in 1877 the Bute estate sold the farmhouse, its buildings and about 10 acres to Daniel Thomas & Son, the lime-works firm, and kept about 9 acres. Our case calls these Parcel A (west: wood, house and yard, green) and Parcel B (the fields to the east). The 1877 deed and plan are missing, so the lines on this step are a reconstruction.",
+   "text": "Mary (Nancy) Williams later stated that in 1877 the Bute estate sold the farmhouse, its buildings and about 10 acres to Daniel Thomas & Son, the lime-works firm, and kept about 9 acres. The Williams-Buckler family’s case calls these Parcel A (west: wood, house and yard, green) and Parcel B (the fields to the east). The 1877 deed and plan are missing, so the lines on this step are a reconstruction.",
    "parcels": {
     "AN": {
      "rec": "thomas",
@@ -339,12 +393,12 @@
     "os1878"
    ],
    "recon_all": true,
-   "say": "In eighteen seventy-seven it is split in two: Parcel A and Parcel B.",
    "dur": 4.86,
    "img": {
     "src": "img/mary-williams.jpg",
     "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
-   }
+   },
+   "say": "In eighteen seventy-seven it is split in two: Parcel A and Parcel B."
   },
   {
    "id": "1900",
@@ -353,7 +407,7 @@
    "base": "1900",
    "title": "Two freeholds",
    "short": "Until 1928, a lime-works firm holds the freehold of Parcel A, and Bute holds Parcel B.",
-   "text": "Our case: from 1877 to 1928 the freehold of Parcel A sits with Daniel Thomas & Son and the freehold of Parcel B with the Bute estate. The Ordnance Survey 25-inch sheet (revised 1898, published 1900) shows the farmyard as field 70 (1·334 acres); the Williams plan in the family papers was traced from this sheet.",
+   "text": "The Williams-Buckler family asserts that from 1877 to 1928 the freehold of Parcel A sits with Daniel Thomas & Son and the freehold of Parcel B with the Bute estate. The Ordnance Survey 25-inch sheet (revised 1898, published 1900) shows the farmyard as field 70 (1·334 acres); the Williams plan in the family papers was traced from this sheet.",
    "parcels": {
     "AN": {
      "rec": "thomas",
@@ -385,8 +439,8 @@
     "src": "img/ev-williams-plan.jpg",
     "cap": "The Williams plan (left) beside the 1900 OS sheet (right)"
    },
-   "say": "Until nineteen twenty-eight, a lime-works firm holds the freehold of Parcel A, and Bute holds Parcel B.",
-   "dur": 6.64
+   "dur": 6.64,
+   "say": "Until nineteen twenty-eight, a lime-works firm holds the freehold of Parcel A, and Bute holds Parcel B."
   },
   {
    "id": "1916",
@@ -395,7 +449,7 @@
    "base": "1920",
    "title": "The last tenancy of Parcel A",
    "short": "In 1916 the family sign the last tenancy of Parcel A.",
-   "text": "In February 1916 John Williams took a yearly agricultural tenancy; the 1987 judgment describes it as a tenancy of the \"whole farm\". Our case: this was the last tenancy of Parcel A; the Williams family had been virtual freeholders since 1667. The paper freeholds stay with Thomas (Parcel A) and Bute (Parcel B). The 1916 tenancy itself (EV-0014) is not held.",
+   "text": "In February 1916 John Williams took a yearly agricultural tenancy; the 1987 judgment describes it as a tenancy of the \"whole farm\". The Williams-Buckler family asserts this was the last tenancy of Parcel A, and that the Williams family had been virtual freeholders since 1667. The paper freeholds stay with Thomas (Parcel A) and Bute (Parcel B). The 1916 tenancy itself (EV-0014) is not held.",
    "parcels": {
     "AN": {
      "rec": "thomas",
@@ -422,8 +476,8 @@
     "ev14",
     "ca"
    ],
-   "say": "In nineteen sixteen the family sign the last tenancy of Parcel A.",
-   "dur": 3.87
+   "dur": 3.87,
+   "say": "In nineteen sixteen the family sign the last tenancy of Parcel A."
   },
   {
    "id": "1928",
@@ -431,8 +485,8 @@
    "year": 1928,
    "base": "1920",
    "title": "Parcel A to the Williams family",
-   "short": "In 1928 the last rent for Parcel A is paid. Our case: from then, Parcel A is the Williams family’s own.",
-   "text": "Mary (Nancy) Williams’s statement: the quarry machinery left in 1928 and her father paid the last rent, about £4 a year, to Alfred Thomas. \"After this my father regarded the farm as his own.\" Our case: from 1928 the Williams family are the freeholders of Parcel A. The receipt is not held.",
+   "short": "In 1928 the last rent for Parcel A is paid. From then, the Williams-Buckler family asserts, Parcel A is the Williams family’s own.",
+   "text": "Mary (Nancy) Williams’s statement: the quarry machinery left in 1928 and her father paid the last rent, about £4 a year, to Alfred Thomas. \"After this my father regarded the farm as his own.\" The Williams-Buckler family asserts that from 1928 the Williams family are the freeholders of Parcel A. The receipt is not held.",
    "parcels": {
     "AN": {
      "rec": "thomas",
@@ -459,12 +513,12 @@
     "stmt",
     "ev16"
    ],
-   "say": "In nineteen twenty-eight the last rent for Parcel A is paid. Our case: from then, Parcel A is the Williams family’s own.",
-   "dur": 7.81,
+   "dur": 8.86,
    "img": {
     "src": "img/mary-williams.jpg",
     "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
-   }
+   },
+   "say": "In nineteen twenty-eight the last rent for Parcel A is paid. From then, the Williams-Buckler family asserts, Parcel A is the Williams family’s own."
   },
   {
    "id": "1938",
@@ -473,7 +527,7 @@
    "base": "1920",
    "title": "Western Ground Rents",
    "short": "In 1938 Western Ground Rents buy Parcel B, and the interest in the 1916 agreement.",
-   "text": "The sale was announced on 17 May 1938 and completed in December 1938; later deeds recite \"a Conveyance on sale dated 25th December 1938\" as the root of title. Our case: what Western Ground Rents bought was the Bute freehold of Parcel B and the Bute interest under the 1916 agreement. The 1938 deed and its plan are not held, so exactly which land it conveyed is the open question.",
+   "text": "The sale was announced on 17 May 1938 and completed in December 1938; later deeds recite \"a Conveyance on sale dated 25th December 1938\" as the root of title. The Williams-Buckler family asserts that what Western Ground Rents bought was the Bute freehold of Parcel B and the Bute interest under the 1916 agreement. The 1938 deed and its plan are not held, so exactly which land it conveyed is the open question.",
    "parcels": {
     "AN": {
      "rec": "wgr",
@@ -500,8 +554,8 @@
     "ev216",
     "ev19"
    ],
-   "say": "In nineteen thirty-eight Western Ground Rents buy Parcel B, and the interest in the nineteen sixteen agreement.",
-   "dur": 6.03
+   "dur": 6.03,
+   "say": "In nineteen thirty-eight Western Ground Rents buy Parcel B, and the interest in the nineteen sixteen agreement."
   },
   {
    "id": "1939",
@@ -510,7 +564,7 @@
    "base": "1920",
    "title": "Parcel B only",
    "short": "In 1939 a new agreement covers Parcel B only. Parcel A stands apart.",
-   "text": "In May 1939 Western Ground Rents gave John Williams a new agreement (Glamorgan Archives DBDT123/7), a monthly let \"as meadow or pasture land\". Its plan colours only the fields east of the house: Parcel B. The house, yard, wood and green are not coloured. Our case: this shows Parcel A had severed from what was conveyed in 1938.",
+   "text": "In May 1939 Western Ground Rents gave John Williams a new agreement (Glamorgan Archives DBDT123/7), a monthly let \"as meadow or pasture land\". Its plan colours only the fields east of the house: Parcel B. The house, yard, wood and green are not coloured. The Williams-Buckler family asserts this shows Parcel A had severed from what was conveyed in 1938.",
    "parcels": {
     "AN": {
      "rec": "unknown",
@@ -540,8 +594,8 @@
     "src": "img/ev-1939-plan.jpg",
     "cap": "DBDT123/7, 1939 plan: the coloured fields east of the house"
    },
-   "say": "In nineteen thirty-nine a new agreement covers Parcel B only. Parcel A stands apart.",
-   "dur": 5.56
+   "dur": 5.56,
+   "say": "In nineteen thirty-nine a new agreement covers Parcel B only. Parcel A stands apart."
   },
   {
    "id": "1940",
@@ -549,8 +603,8 @@
    "year": 1940,
    "base": "1920",
    "title": "The twelve-year rule",
-   "short": "In 1940 a new Limitation Act takes effect. Our case: after twelve rent-free years, Parcel A is the family’s.",
-   "text": "The Limitation Act 1939 came into force on 1 July 1940 (s.34(2)). Under s.4(3) no action to recover land may be brought more than twelve years after the right to bring it arose, and under s.16 the paper owner’s title then ends. (A twelve-year period for land goes back to the Real Property Limitation Act 1874.) By then, on Mary (Nancy) Williams’s statement that the last rent was paid in 1928, the family had held Parcel A rent-free for twelve years. Our case treats this rule as the key to what followed.",
+   "short": "In 1940 a new Limitation Act takes effect. After twelve rent-free years, the Williams-Buckler family asserts, Parcel A is the family’s.",
+   "text": "The Limitation Act 1939 came into force on 1 July 1940 (s.34(2)). Under s.4(3) no action to recover land may be brought more than twelve years after the right to bring it arose, and under s.16 the paper owner’s title then ends. (A twelve-year period for land goes back to the Real Property Limitation Act 1874.) By then, on Mary (Nancy) Williams’s statement that the last rent was paid in 1928, the family had held Parcel A rent-free for twelve years. The Williams-Buckler family treats this rule as the key to what followed.",
    "parcels": {
     "AN": {
      "rec": "unknown",
@@ -576,17 +630,21 @@
    "src": [
     "la39"
    ],
-   "say": "In nineteen forty a new Limitation Act takes effect. Our case: after twelve rent-free years, Parcel A is the family’s.",
-   "dur": 8.23
+   "dur": 9.22,
+   "img": {
+    "src": "img/mary-williams.jpg",
+    "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
+   },
+   "say": "In nineteen forty a new Limitation Act takes effect. After twelve rent-free years, the Williams-Buckler family asserts, Parcel A is the family’s."
   },
   {
    "id": "1942",
    "date": "1942",
    "year": 1942,
    "base": "1947",
-   "title": "Dealings in 1942",
-   "short": "In 1942 Western Ground Rents give Leckwith woods to Cardiff. Our case asks whether Parcel A’s woodland went too.",
-   "text": "Between 1940 and April 1942 Western Ground Rents gave about 109 acres of Leckwith Woods to Cardiff Corporation (EV-0220). Our case asks whether the gift took in the woodland of Mary (Nancy) Williams’s Parcel A. The 1942 deed and plan are not held, and no record seen so far puts Great House Farm land in the gift.",
+   "title": "Leckwith Woods to Cardiff",
+   "short": "In 1942 Western Ground Rents complete a gift of about 109 acres of Leckwith Woods to Cardiff council.",
+   "text": "Western Ground Rents gave about 109 acres of Leckwith Woods to Cardiff council: offered and accepted in 1940, completed in April 1942 (Master Timeline; EV-0220, a secondary source; the deed and its plan are not held).",
    "parcels": {
     "AN": {
      "rec": "wgr",
@@ -610,15 +668,12 @@
     }
    },
    "src": [
+    "mt",
     "ev220",
     "os1947"
    ],
-   "say": "In nineteen forty-two Western Ground Rents give Leckwith woods to Cardiff. Our case asks whether Parcel A’s woodland went too.",
-   "dur": 8.18,
-   "img": {
-    "src": "img/mary-williams.jpg",
-    "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
-   }
+   "dur": 7.68,
+   "say": "In nineteen forty-two Western Ground Rents complete a gift of about a hundred and nine acres of Leckwith Woods to Cardiff council."
   },
   {
    "id": "1949",
@@ -626,8 +681,8 @@
    "year": 1949,
    "base": "1947",
    "title": "The woodland splits off",
-   "short": "In 1949, our case asserts, an attempt begins to make Mary’s hold on Parcel A look permissive, starting with the woodland.",
-   "text": "Our case: in 1949 Mary (Nancy) Williams rejected an attempt by Western Ground Rents to bring her under a tenancy, and that attempt concerned the woodland, the top third of Parcel A. From here the woodland begins to be treated as a parcel of its own: a synthetic parcel carved from A (shown dashed until it is registered). No document of the 1949 offer is held yet.",
+   "short": "In 1949, the Williams-Buckler family asserts, an attempt begins to make Mary’s hold on Parcel A look permissive, starting with the woodland.",
+   "text": "The Williams-Buckler family asserts that in 1949 Mary (Nancy) Williams rejected an attempt by Western Ground Rents to bring her under a tenancy, and that attempt concerned the woodland, the top third of Parcel A. From here the woodland begins to be treated as a parcel of its own: a synthetic parcel carved from A (shown dashed until it is registered). No document of the 1949 offer is held yet.",
    "parcels": {
     "AN": {
      "rec": "wgr",
@@ -657,12 +712,12 @@
    "pend": [
     "AN"
    ],
-   "say": "In nineteen forty-nine, our case asserts, an attempt begins to make Mary’s hold on Parcel A look permissive, starting with the woodland.",
-   "dur": 7.68,
+   "dur": 8.72,
    "img": {
     "src": "img/mary-williams.jpg",
     "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
-   }
+   },
+   "say": "In nineteen forty-nine, the Williams-Buckler family asserts, an attempt begins to make Mary’s hold on Parcel A look permissive, starting with the woodland."
   },
   {
    "id": "1950",
@@ -670,8 +725,8 @@
    "year": 1950,
    "base": "1947",
    "title": "Her paper title",
-   "short": "Between 1950 and 1952 the family papers are taken. Our case asserts they included her title to Parcel A.",
-   "text": "The family papers, including the farm agreement, were taken from the blanket box in 1950–52. Our case: Mary (Nancy) Williams’s paper title to Parcel A was taken in 1950–52. Her own statement records how; no person is named here. Our case also asserts a link between this loss and the later attempts to take her home and land.",
+   "short": "Between 1950 and 1952 the family papers are taken. The Williams-Buckler family asserts they included Mary’s title to Parcel A.",
+   "text": "The family papers, including the farm agreement, were taken from the blanket box in 1950–52. The Williams-Buckler family asserts that Mary (Nancy) Williams’s paper title to Parcel A was among them. Her own statement records how; no person is named here. The family also asserts a link between this loss and the later attempts to take her home and land.",
    "parcels": {
     "AN": {
      "rec": "wgr",
@@ -695,26 +750,27 @@
     }
    },
    "src": [
-    "stmt"
+    "stmt",
+    "tmary"
    ],
    "pend": [
     "AN"
    ],
-   "say": "Between nineteen fifty and nineteen fifty-two the family papers are taken. Our case asserts they included her title to Parcel A.",
-   "dur": 8.18,
+   "dur": 8.8,
    "img": {
     "src": "img/mary-williams.jpg",
     "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
-   }
+   },
+   "say": "Between nineteen fifty and nineteen fifty-two the family papers are taken. The Williams-Buckler family asserts they included Mary’s title to Parcel A."
   },
   {
    "id": "1955",
    "date": "1955",
    "year": 1955,
    "base": "1947",
-   "title": "The 1955 order",
-   "short": "In 1955, as an order for Parcel B is enforced, Parcel A’s woodland and green are taken too, on the family’s account.",
-   "text": "A High Court order of 2 February 1955, made against Frederick Buckler, was worded for the whole farm. On 4 July 1955 Western Ground Rents took possession of every part of the farm except the farmhouse and garden (Court of Appeal, 1987). Our case: the order concerned Parcel B, and its ambiguity was used to take the woodland (north third of A) and the green (south third of A). The order plan and execution return are not held.",
+   "title": "4 July 1955",
+   "short": "On 4 July 1955 a possession order is enforced on every part of the farm except the farmhouse and garden. Parcel A’s woodland and green are taken.",
+   "text": "After a notice to quit expired on 2 February 1955, Western Ground Rents obtained a High Court possession order (Order 14) against Frederick Buckler “in respect of the whole of the farm”. The Court of Appeal’s 1987 judgment records: “On July 4 1955 that possession order was enforced, and possession was taken in respect of all parts of the farm except the farmhouse and garden.” Parcel A’s parts outside the farmhouse and garden are its woodland (top third) and its green (lower third), so both were taken that day (Three Parts of Parcel A; 1955 Parcel-A Loss Dossier). In 1958 Mary (Nancy) Williams named who had taken the land (see 1958). The Williams-Buckler family asserts the order concerned Parcel B and that its “whole farm” wording was used to take the woodland and the green. The order’s plan and the execution return are not held.",
    "parcels": {
     "AN": {
      "rec": "wgr",
@@ -738,30 +794,31 @@
     }
    },
    "src": [
+    "ca55",
     "o55",
     "ev32",
-    "ca",
+    "three",
     "loss55"
    ],
    "pend": [
     "AN",
     "AS"
    ],
-   "say": "In nineteen fifty-five, as an order for Parcel B is enforced, Parcel A’s woodland and green are taken too, on the family’s account.",
-   "dur": 8.07,
+   "dur": 10.5,
    "img": {
     "src": "img/mary-williams.jpg",
     "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
-   }
+   },
+   "say": "On the fourth of July, nineteen fifty-five a possession order is enforced on every part of the farm except the farmhouse and garden. Parcel A’s woodland and green are taken."
   },
   {
    "id": "1955b",
    "date": "1955",
    "year": 1955,
    "base": "1947",
-   "title": "She could not defend it",
-   "short": "She had just come home from hospital, after losing her leg.",
-   "text": "The Court of Appeal’s history records that Mary \"had recently come out of hospital after having had a leg amputated\" and objected very strongly to leaving the farmhouse. Our case: she could not defend the woodland or the green when they were taken.",
+   "title": "The attempt on the farmhouse",
+   "short": "The order also covers the farmhouse, but it is not enforced there. Mary, just home from hospital after losing her leg, objects very strongly to leaving.",
+   "text": "The Court of Appeal’s 1987 judgment records that the order “was not enforced in respect of the farmhouse and garden” because Mary “had recently come out of hospital after having had a leg amputated and was objecting very strongly to leaving the farmhouse”. The Williams-Buckler family asserts she could not defend the woodland or the green when they were taken.",
    "parcels": {
     "AN": {
      "rec": "wgr",
@@ -785,27 +842,28 @@
     }
    },
    "src": [
-    "ca"
+    "ca55",
+    "tmary"
    ],
    "pend": [
     "AN",
     "AS"
    ],
-   "say": "She had just come home from hospital, after losing her leg.",
-   "dur": 2.95,
+   "dur": 8.62,
    "img": {
     "src": "img/mary-williams.jpg",
     "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
-   }
+   },
+   "say": "The order also covers the farmhouse, but it is not enforced there. Mary, just home from hospital after losing her leg, objects very strongly to leaving."
   },
   {
-   "id": "1959",
-   "date": "1958–59",
-   "year": 1959,
+   "id": "1958",
+   "date": "19 Nov 1958",
+   "year": 1958,
    "base": "1947",
-   "title": "She refuses a tenancy",
-   "short": "In 1959 she refuses a tenancy of the farmhouse, asserting that Parcel A is hers.",
-   "text": "Our case: a second attempt to make her occupation look permissive came in 1958–59 and concerned the green. The Court of Appeal records that in 1959 Western Ground Rents offered Mary a tenancy and she refused it. Her 1959 statement asserts that they came in and took the woodland and the green of Parcel A in 1955.",
+   "title": "She objects in public",
+   "short": "In November 1958 Mary tells Glamorgan County Council’s planning committee that her family’s land has been wrongfully appropriated, naming Glamorgan County Council, Penarth Urban Council, Cardiff Rural Council and Western Ground Rents.",
+   "text": "The Western Mail of 20 November 1958 (p.7) reports Mrs M. D. Buckler, Mary (Nancy) Williams, at Glamorgan County Council’s planning committee on 19 November 1958. Land farmed by her family since 1667 had been “wrongfully appropriated”; sites had been let “over her head” by Western Ground Rents, one of them used by Penarth Urban Council as a rubbish tip; and “The Glamorgan County Council, Penarth Urban and Cardiff Rural Councils and Western Ground Rents have walked in and taken […]”. She objected publicly in 1958, before the 1961 deed recorded against the woodland and before the green was registered in 1970, so the woodland and the green were not held uncontested from 1955. The newspaper text is read from British Newspaper Archive OCR; the page image is not yet seen.",
    "parcels": {
     "AN": {
      "rec": "wgr",
@@ -829,29 +887,75 @@
     }
    },
    "src": [
+    "wm58",
+    "tmary"
+   ],
+   "pend": [
+    "AN",
+    "AS"
+   ],
+   "img": {
+    "src": "img/mary-williams.jpg",
+    "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
+   },
+   "say": "In November nineteen fifty-eight Mary tells Glamorgan County Council’s planning committee that her family’s land has been wrongfully appropriated, naming Glamorgan County Council, Penarth Urban Council, Cardiff Rural Council and Western Ground Rents.",
+   "dur": 14.86
+  },
+  {
+   "id": "1959",
+   "date": "1959",
+   "year": 1959,
+   "base": "1947",
+   "title": "She refuses a tenancy",
+   "short": "By 1959 Western Ground Rents offer Mary a tenancy of the farmhouse and garden, in Parcel A. She refuses, asserting ownership through her grandfather.",
+   "text": "The Court of Appeal’s 1987 judgment records that by 1959 Mary believed “she had a title to the ownership of Great House Farm through her own grandfather”, and: “She was offered a tenancy of the farmhouse and garden by Western Ground Rents but refused to accept it.” The offer itself (EV-0039) is not held; the Legal Wiki records the 1959 and 1965 offers as concerning the remaining house and garden. The Williams-Buckler family asserts this was the second attempt to make her occupation of Parcel A look permissive.",
+   "parcels": {
+    "AN": {
+     "rec": "wgr",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "wgr",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "src": [
+    "ca59",
     "ev39",
-    "ca",
+    "mary9",
     "perm"
    ],
    "pend": [
     "AN",
     "AS"
    ],
-   "say": "In nineteen fifty-nine she refuses a tenancy of the farmhouse, asserting that Parcel A is hers.",
-   "dur": 5.64,
+   "dur": 10.11,
    "img": {
     "src": "img/mary-williams.jpg",
     "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
-   }
+   },
+   "say": "By nineteen fifty-nine Western Ground Rents offer Mary a tenancy of the farmhouse and garden, in Parcel A. She refuses, asserting ownership through her grandfather."
   },
   {
    "id": "1961",
-   "date": "1961–62",
+   "date": "29 Mar 1961",
    "year": 1961,
    "base": "1947",
-   "title": "The woodland registered",
-   "short": "In 1961–62, our case asserts, the woodland is put in another’s name, about twelve years after 1949.",
-   "text": "The woodland register (WA735527) recites a deed of 29 March 1961 between Western Ground Rents, the South Western Brick & Tile Company and Cardiff City Corporation; the deed and its plan have not been inspected. Our case: the woodland was registered to another about twelve years after the 1949 attempt, relying on twelve years’ uncontested possession, and neither Mary nor the registrar was told of the other’s position.",
+   "title": "The 1961 deed",
+   "short": "In March 1961 a deed is made between Western Ground Rents, the South Western Brick and Tile Company and Cardiff City Corporation. The title of Parcel A’s woodland is later recorded as subject to rights under it.",
+   "text": "HM Land Registry’s register for the woodland, title WA735527, records: “The land tinted pink on the filed plan is subject to the rights contained in a Deed dated 29 March 1961 made between (1) Western Ground Rents Limited (2) The South Western Brick & Tile Company Limited and (3) Cardiff City Corporation.” A copy of the deed is filed under title WA231076; the deed and its plan have not yet been inspected (EV-0040). The same register records a conveyance of 23 May 1975 from The British Petroleum Pension Trust Limited to B.P. Properties Limited, and names Forest of Cardiff (company 2591796) as proprietor from 25 November 1994.",
    "parcels": {
     "AN": {
      "rec": "woodp",
@@ -875,19 +979,14 @@
     }
    },
    "src": [
-    "ev40",
     "ev169",
-    "three"
+    "ev40"
    ],
    "pend": [
     "AS"
    ],
-   "say": "In nineteen sixty-one to sixty-two, our case asserts, the woodland is put in another’s name, about twelve years after nineteen forty-nine.",
-   "dur": 8.15,
-   "img": {
-    "src": "img/mary-williams.jpg",
-    "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
-   }
+   "dur": 13.74,
+   "say": "In March nineteen sixty-one a deed is made between Western Ground Rents, the South Western Brick and Tile Company and Cardiff City Corporation. The title of Parcel A’s woodland is later recorded as subject to rights under it."
   },
   {
    "id": "1962",
@@ -895,8 +994,8 @@
    "year": 1962,
    "base": "1947",
    "title": "The 1962 order",
-   "short": "In 1962 a court order is made for the farmhouse, but it is never enforced.",
-   "text": "On 11 December 1962 Cardiff County Court ordered possession of the farmhouse and garden. It was not enforced. Our case: the order is unenforced and arguably unenforceable, and rests on the ambiguity of the 1955 order, which was for Parcel B.",
+   "short": "In December 1962 a court order is made for the farmhouse and garden, in Parcel A, but it is not enforced.",
+   "text": "On 11 December 1962 Cardiff County Court ordered possession of the farmhouse and garden. The Court of Appeal records that “nothing was done before 1974 to enforce the 1962 possession order”. The Williams-Buckler family asserts the order is unenforced and arguably unenforceable, and rests on the ambiguity of the 1955 order, which was for Parcel B.",
    "parcels": {
     "AN": {
      "rec": "woodp",
@@ -926,12 +1025,12 @@
    "pend": [
     "AS"
    ],
-   "say": "In nineteen sixty-two a court order is made for the farmhouse, but it is never enforced.",
-   "dur": 4.91,
+   "dur": 7.5,
    "img": {
     "src": "img/mary-williams.jpg",
     "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
-   }
+   },
+   "say": "In December nineteen sixty-two a court order is made for the farmhouse and garden, in Parcel A, but it is not enforced."
   },
   {
    "id": "1965",
@@ -940,7 +1039,7 @@
    "base": "1947",
    "title": "Refused again",
    "short": "In 1965 she refuses a third attempt to make her a tenant.",
-   "text": "The Court of Appeal records that in March 1965 Western Ground Rents’ agents offered Mrs Buckler a weekly tenancy. It was not signed and no rent was paid. Our case: this was the third attempt to make her occupation look permissive.",
+   "text": "The Court of Appeal records that in March 1965 Western Ground Rents’ agents offered Mrs Buckler a weekly tenancy. It was not signed and no rent was paid. The Williams-Buckler family asserts this was the third attempt to make her occupation look permissive.",
    "parcels": {
     "AN": {
      "rec": "woodp",
@@ -964,18 +1063,18 @@
     }
    },
    "src": [
-    "ev39",
-    "ca"
+    "ca65",
+    "ev39"
    ],
    "pend": [
     "AS"
    ],
-   "say": "In nineteen sixty-five she refuses a third attempt to make her a tenant.",
    "dur": 3.74,
    "img": {
     "src": "img/mary-williams.jpg",
     "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
-   }
+   },
+   "say": "In nineteen sixty-five she refuses a third attempt to make her a tenant."
   },
   {
    "id": "1969",
@@ -984,7 +1083,7 @@
    "base": "1947",
    "title": "Only Parcel B to BP",
    "short": "In 1969 only Parcel B, and the unenforced 1962 order, pass to BP Pension Trust.",
-   "text": "On 31 December 1969 Western Ground Rents conveyed to BP Pension Trust. Our case: what passed was Parcel B, plus the benefit of the unenforced 1962 order on Parcel A, not the farm as a whole. Parcel A stayed with the Williams family; the woodland had already been carved out. The 1969 conveyance and its plan are not held.",
+   "text": "On 31 December 1969 Western Ground Rents conveyed to BP Pension Trust. The Williams-Buckler family asserts that what passed was Parcel B, plus the benefit of the unenforced 1962 order on Parcel A, not the farm as a whole. Parcel A stayed with the Williams family; the woodland had already been carved out. The 1969 conveyance and its plan are not held.",
    "parcels": {
     "AN": {
      "rec": "woodp",
@@ -1014,8 +1113,8 @@
    "pend": [
     "AS"
    ],
-   "say": "In nineteen sixty-nine only Parcel B, and the unenforced nineteen sixty-two order, pass to BP Pension Trust.",
-   "dur": 7.63
+   "dur": 7.63,
+   "say": "In nineteen sixty-nine only Parcel B, and the unenforced nineteen sixty-two order, pass to BP Pension Trust."
   },
   {
    "id": "1970",
@@ -1023,8 +1122,8 @@
    "year": 1970,
    "base": "1947",
    "title": "The green registered",
-   "short": "In 1970 the green, carved from Parcel A, is registered as village green VG41, about twelve years after 1958.",
-   "text": "On 16 June 1970 land by Leckwith Road was registered as village green VG41. Our case: this was the south third of Parcel A, registered about twelve years after the 1958–59 attempt, and Mary’s 1959 assertion and 1965 refusal were not put before the registration. The VG41 file and its boundary are not held; the shape here is an estimate. The green is now held by a public body (to be confirmed). Llandough Community Council was formed in 1982; before that the village was administered as part of Penarth (Llandough parish was added to the parish of Penarth on 30 September 1902). Which local council of the day (Penarth area) was involved in the 1970 registration is to be confirmed.",
+   "short": "In 1970 the green, the lower third of Parcel A, is registered as village green VG41. Mary had objected in public in 1958.",
+   "text": "On 16 June 1970 land by Leckwith Road was registered as village green VG41 (EV-0044). Registrations were publicised by public notice only (EV-0263). The Williams-Buckler family asserts this was the lower third of Parcel A, taken on 4 July 1955, and that Mary’s public objection of November 1958 and her 1959 and 1965 refusals were not put before the registration. The VG41 file and its boundary are not held: the green is drawn here as the lower third of Parcel A, over the ground the 1985 certified register map points to. Llandough Community Council was formed in 1982; before that the village was administered as part of Penarth (Llandough parish was added to the parish of Penarth on 30 September 1902).",
    "parcels": {
     "AN": {
      "rec": "woodp",
@@ -1049,16 +1148,18 @@
    },
    "src": [
     "ev44",
+    "ev263",
+    "wm58",
     "pl_plans",
     "loss55",
     "ukbmd"
    ],
-   "say": "In nineteen seventy the green, carved from Parcel A, is registered as village green V G forty-one, about twelve years after nineteen fifty-eight.",
-   "dur": 8.88,
+   "dur": 10.4,
    "img": {
     "src": "img/mary-williams.jpg",
     "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
-   }
+   },
+   "say": "In nineteen seventy the green, the lower third of Parcel A, is registered as village green V G forty-one. Mary had objected in public in nineteen fifty-eight."
   },
   {
    "id": "1974",
@@ -1066,8 +1167,8 @@
    "year": 1974,
    "base": "1947",
    "title": "Open day",
-   "short": "In 1974 she opens the farmhouse to the public, and in court pleads ownership and the Limitation Act.",
-   "text": "On 15 April 1974 Mary opened the farmhouse to the public, and about 1,000 people signed a petition. In July a new possession action began; she pleaded ownership and the Limitation Act 1939, and it was never relisted. On 31 October the warrant was withdrawn and licence letters were sent the same day.",
+   "short": "In 1974 Mary opens the farmhouse to the public and, in court, pleads ownership and the Limitation Act 1939.",
+   "text": "On 15 April 1974 Mary opened the farmhouse to the public, and about 1,000 people signed a petition. In BP Pension Trust’s possession action, adjourned part heard on 3 July 1974, she pleaded ownership (Legal Wiki, Mary page: “1974 — 3 July: pleads ownership and the Limitation Act 1939”), and the Court of Appeal records that her defence pleaded that BP Pension Trust’s action “was barred by adverse possession under the Limitation Act 1939”. That action was never finally heard. On 31 October the warrant was withdrawn and licence letters were sent the same day.",
    "parcels": {
     "AN": {
      "rec": "woodp",
@@ -1091,14 +1192,16 @@
     }
    },
    "src": [
+    "ca74",
+    "mary9",
     "mt"
    ],
-   "say": "In nineteen seventy-four she opens the farmhouse to the public, and in court pleads ownership and the Limitation Act.",
-   "dur": 6.24,
+   "dur": 8.65,
    "img": {
     "src": "img/mary-williams.jpg",
     "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
-   }
+   },
+   "say": "In nineteen seventy-four Mary opens the farmhouse to the public and, in court, pleads ownership and the Limitation Act nineteen thirty-nine."
   },
   {
    "id": "1975",
@@ -1133,17 +1236,17 @@
    "src": [
     "reg83"
    ],
-   "say": "In nineteen seventy-five BP Pension Trust passes its interest to BP Properties.",
-   "dur": 5.93
+   "dur": 5.93,
+   "say": "In nineteen seventy-five BP Pension Trust passes its interest to BP Properties."
   },
   {
    "id": "1980",
-   "date": "From 1980",
+   "date": "From autumn 1980",
    "year": 1980,
    "base": "1947",
-   "title": "The trees",
-   "short": "No earlier than 1980, trees the family planted on Parcel A, asserting ownership, are removed.",
-   "text": "Trees the family planted on Parcel A, asserting ownership of Parcel A, were removed in an autumn no earlier than 1980: a JCB 3CX badge is legible in the photographs, and that model dates from 1980. The exact year is still being established. Family photographs show the planting ceremony and the removal of the trees.",
+   "title": "The tree",
+   "short": "No earlier than autumn 1980, the tree John Williams planted on Parcel A to prove ownership is removed. Its planting is photographed in the People’s Collection Wales.",
+   "text": "People’s Collection Wales, the national heritage collection, holds “A black and white photograph of tree planting by John Williams (Grandfather) to prove land ownership at Great House Farm, Llandough” (owner Mary Godfrey; uploaded by Vale of Glamorgan Libraries, 20 August 2018). The tree was removed in an autumn no earlier than 1980: a JCB 3CX badge is legible in the family’s photographs of the removal, and that model was first built in 1980. The exact year is still being established. The Vale of Glamorgan Council is checking whether it holds any record of the removal.",
    "parcels": {
     "AN": {
      "rec": "woodp",
@@ -1167,10 +1270,16 @@
     }
    },
    "src": [
+    "pcw",
     "trees"
    ],
-   "say": "No earlier than nineteen eighty, trees the family planted on Parcel A, asserting ownership, are removed.",
-   "dur": 6.22
+   "dur": 10.63,
+   "img": {
+    "src": "img/pcw-tree-planting.jpg",
+    "cap": "John Williams’s tree planting at Great House Farm. Photo: Mary Godfrey / People’s Collection Wales.",
+    "href": "https://www.peoplescollection.wales/items/871416"
+   },
+   "say": "No earlier than autumn nineteen eighty, the tree John Williams planted on Parcel A to prove ownership is removed. Its planting is photographed in the People’s Collection Wales."
   },
   {
    "id": "1982",
@@ -1178,8 +1287,8 @@
    "year": 1982,
    "base": "1947",
    "title": "First registration: WA231076",
-   "short": "In 1982 BP Properties applies to register, on our reconstruction, Parcel B.",
-   "text": "On 30 November 1982 BP Properties applied for first registration of title WA231076. In our reconstruction this is the fields strand: Parcel B.",
+   "short": "In 1982 BP Properties applies for its first title: Parcel B, on the Williams-Buckler family’s reconstruction.",
+   "text": "On 30 November 1982 BP Properties applied for first registration of title WA231076. On the Williams-Buckler family’s reconstruction this is the fields strand: Parcel B.",
    "parcels": {
     "AN": {
      "rec": "woodp",
@@ -1206,8 +1315,8 @@
     "reg83",
     "ab"
    ],
-   "say": "In nineteen eighty-two BP Properties applies to register, on our reconstruction, Parcel B.",
-   "dur": 5.38
+   "dur": 7.89,
+   "say": "In nineteen eighty-two BP Properties applies for its first title: Parcel B, on the Williams-Buckler family’s reconstruction."
   },
   {
    "id": "1983",
@@ -1243,12 +1352,12 @@
     "reg83",
     "ab"
    ],
-   "say": "In nineteen eighty-three it applies to register the farmhouse too. Mary dies there, never having signed a tenancy.",
    "dur": 6.48,
    "img": {
     "src": "img/mary-williams.jpg",
     "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
-   }
+   },
+   "say": "In nineteen eighty-three it applies to register the farmhouse too. Mary dies there, never having signed a tenancy."
   },
   {
    "id": "1986",
@@ -1284,8 +1393,8 @@
     "ca",
     "mt"
    ],
-   "say": "In nineteen eighty-six the High Court hears BP Properties versus Buckler.",
-   "dur": 4.13
+   "dur": 4.13,
+   "say": "In nineteen eighty-six the High Court hears BP Properties versus Buckler."
   },
   {
    "id": "1987a",
@@ -1322,8 +1431,8 @@
     "reg83"
    ],
    "merged": true,
-   "say": "In nineteen eighty-seven, during the appeal, an application is made to merge the farmhouse title with Parcel B’s.",
-   "dur": 6.11
+   "dur": 6.11,
+   "say": "In nineteen eighty-seven, during the appeal, an application is made to merge the farmhouse title with Parcel B’s."
   },
   {
    "id": "1987b",
@@ -1359,8 +1468,8 @@
     "ca"
    ],
    "merged": true,
-   "say": "In July nineteen eighty-seven the Court of Appeal gives judgment in BP Properties versus Buckler.",
-   "dur": 5.2
+   "dur": 5.2,
+   "say": "In July nineteen eighty-seven the Court of Appeal gives judgment in BP Properties versus Buckler."
   },
   {
    "id": "1988",
@@ -1368,8 +1477,8 @@
    "year": 1988,
    "base": "1947",
    "title": "Taken and demolished",
-   "short": "In 1988 the farmhouse is taken and demolished. Our case: this was not the eviction of squatters from Parcel A.",
-   "text": "In April 1988 the bailiffs were held off. Possession was taken on 30 November, and by 6 December the outbuildings and the farmhouse were demolished. Family recollection, 1988: a courtyard, with the barn to the west, sheds to the north and stables to the south. The wood lay to the north and the green to the south. Our case: this was not the eviction of squatters from Parcel A.",
+   "short": "In 1988 the farmhouse is taken and demolished. The Williams-Buckler family asserts this was not the eviction of squatters from Parcel A.",
+   "text": "In April 1988 the bailiffs were held off. Possession was taken on 30 November, and by 6 December the outbuildings and the farmhouse were demolished. Family recollection, 1988: a courtyard, with the barn to the west, sheds to the north and stables to the south. The wood lay to the north and the green to the south. The Williams-Buckler family asserts this was not the eviction of squatters from Parcel A.",
    "parcels": {
     "AN": {
      "rec": "woodp",
@@ -1398,8 +1507,8 @@
    ],
    "merged": true,
    "recollection": true,
-   "say": "In nineteen eighty-eight the farmhouse is taken and demolished. Our case: this was not the eviction of squatters from Parcel A.",
-   "dur": 7.55
+   "dur": 7.94,
+   "say": "In nineteen eighty-eight the farmhouse is taken and demolished. The Williams-Buckler family asserts this was not the eviction of squatters from Parcel A."
   },
   {
    "id": "1990",
@@ -1407,8 +1516,8 @@
    "year": 1994,
    "base": "aerial",
    "title": "Afterwards",
-   "short": "Today houses stand on the yard of Parcel A. The woodland and the green are held by public bodies, to be confirmed.",
-   "text": "On 13 March 1990 outline permission was granted for housing on about 3·4 acres. In 1992 reserved matters were approved for 20 houses. On 10 November 1994 the wood changed hands as title WA735527; it is now held by a public body (to be confirmed). This is the land as it looks today.",
+   "short": "Today houses stand on the yard of Parcel A. The woodland is registered to the Forest of Cardiff charity, and the green is village green VG41.",
+   "text": "On 13 March 1990 outline permission was granted for housing on about 3·4 acres. In 1992 reserved matters were approved for 20 houses. The woodland’s title, WA735527, names Forest of Cardiff as registered proprietor from 25 November 1994. The green remains registered village green VG41. This is the land as it looks today.",
    "parcels": {
     "AN": {
      "rec": "woodp",
@@ -1435,15 +1544,16 @@
     "pl_form",
     "pl_dec",
     "pl_plans",
-    "woods"
+    "ev169",
+    "ev44"
    ],
    "merged": true,
    "img": {
     "src": "img/ev-1989-location.jpg",
     "cap": "1989 location plan, site edged (89/01396/OUT)"
    },
-   "say": "Today houses stand on the yard of Parcel A. The woodland and the green are held by public bodies, to be confirmed.",
-   "dur": 6.79
+   "dur": 9.51,
+   "say": "Today houses stand on the yard of Parcel A. The woodland is registered to the Forest of Cardiff charity, and the green is village green V G forty-one."
   }
  ],
  "markers": [
@@ -1523,7 +1633,7 @@
    "AS": "1955",
    "AM": "1959"
   },
-  "note": "Dotted outline: the whole of Parcel A as created in 1877 (our reconstruction), kept on every later step. Sub-parcel labels appear at the step that first discusses each.",
+  "note": "Dotted outline: the whole of Parcel A as created in 1877 (the Williams-Buckler family’s reconstruction), kept on every later step. Sub-parcel labels appear at the step that first discusses each. The green is drawn as the lower third of Parcel A.",
   "labelAt": [
    51.4536094,
    -3.1982555
