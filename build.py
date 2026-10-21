@@ -7,7 +7,7 @@ P = json.load(open(M/'products.json')); DS = json.load(open(M/'designs.json')); 
 e = html.escape
 HEAD = """<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title><meta name="description" content="{desc}">
-<meta property="og:title" content="{title}"><meta property="og:description" content="{desc}"><meta property="og:image" content="https://shop.bucklerfamily.estate/img/og-cedwyn.jpg"><meta property="og:url" content="https://shop.bucklerfamily.estate{path}">
+<meta property="og:title" content="{title}"><meta property="og:description" content="{desc}"><meta property="og:image" content="https://shop.bucklerfamily.estate/img/og.jpg"><meta property="og:url" content="https://shop.bucklerfamily.estate{path}">
 <link rel="icon" href="/img/icon.png"><link rel="preload" href="/assets/fonts/barlow-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/theme.css?v={v}"><link rel="stylesheet" href="/assets/shop.css?v={v}">
 <script src="/assets/theme.js?v={v}" defer></script><script src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js?v=2.0.3" data-site="shop" defer></script>
@@ -19,7 +19,6 @@ HEAD = """<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta na
 FOOT = """<footer class="sl-foot"><div class="sl-foot-in"><a class="sl-foot-title" href="/">Cedwyn Estate shop · Tŷ Mawr / Great House Farm</a>
 <a href="https://bucklerfamily.estate/">&#10229; Back to Cedwyn Estate</a><a href="https://ebooks.bucklerfamily.estate/">E-books</a><a href="https://bucklerfamily.estate/ebook/">The Legal Wiki book</a><a href="https://greathousefarmwiki.wordpress.com/">Legal Wiki</a><a href="/terms/">Terms, delivery and returns</a><a href="https://ty-mawr-gift-shop.printify.me/">The whole store</a>
 <p class="sh-fine">Merch is sold by DATRO CONSORTIUM LIMITED, the merchant of record, pro bono and at cost, to fund the Great House Farm / Tŷ Mawr heritage story project. Printed to order and shipped by our print partner. Checkout is secure and card details never touch this site.</p>
-<p class="sh-fine">The arms: a brand device combining the Williams and Buckler arms; not a grant of arms. Crest artwork adapted from Wikimedia Commons works by Sodacan, Glasshouse, Vexald, VIGNERON (after ZigeunerAlt) and 117-M-I-K-E, CC BY-SA 4.0.</p>
 <p class="sh-fine">— Sion's Tab agent</p></div></footer></body></html>"""
 def card(p):
     buy = p.get('buy_url')
@@ -33,13 +32,16 @@ def card(p):
 def dcard(d):
     return f"""<figure class="sh-d"><img src="/img/{e(d['file'])}.webp?v=lockup1" alt="{e(d['title'])}" loading="lazy" width="640" height="640"><figcaption><strong>{e(d['title'])}</strong> {e(d['note'])}</figcaption></figure>"""
 v = CFG.get('v','1')
+# 21 Oct 2026, owner's instruction: no invented heraldry. Crest/arms products and designs are not listed (files and Printify items kept).
+NOHERALDRY = lambda x: not re.search(r'crest|\barms\b', json.dumps(x), re.I)
+P = [p for p in P if NOHERALDRY(p)]; DS = [d for d in DS if NOHERALDRY(d)]
 live = [p for p in P if p.get('buy_url')]
-NOTICE = '' if CFG.get('checkout_open') else '<p class="sh-note">The map pack download can be bought now. Printed items open for checkout very soon; the newest (the Cedwyn Estate map, Lavernock 1897 and Peerless Jim) are marked New.</p>'
+NOTICE = '' if CFG.get('checkout_open') else '<p class="sh-note">The map pack download can be bought now. Printed items open for checkout very soon; the newest (Lavernock 1897 and Peerless Jim) are marked New.</p>'
 idx = HEAD.format(title="Cedwyn Estate shop · Tŷ Mawr / Great House Farm", desc="The Cedwyn Estate shop: the estate map, old Ordnance Survey maps, Lavernock 1897 and Peerless Jim prints, posters, T-shirts, mugs and totes for Tŷ Mawr / Great House Farm, Llandough. Printed to order, sold at cost.", path="/", v=v) + f"""
 <main>
-<section class="sl-hero sh-hero"><div class="sl-hero-in"><img class="sh-arms" src="/img/arms-cedwyn.webp" alt="The Cedwyn Estate arms (a brand device; not a grant of arms)" width="180" height="180"><p class="sh-k">Tŷ Mawr · Great House Farm · Llandough</p>
+<section class="sl-hero sh-hero"><div class="sl-hero-in"><p class="sh-k">Tŷ Mawr · Great House Farm · Llandough</p>
 <h1>Cedwyn Estate</h1>
-<p>The estate as the family theorises it once was, and the farm at its heart. The estate map, old Ordnance Survey maps, local history and the arms, printed when you order and sold at cost.</p>
+<p>The estate as the family theorises it once was, and the farm at its heart. The estate map, old Ordnance Survey maps, and local history, printed when you order and sold at cost.</p>
 <p><a class="sl-btn" href="#products">Shop the collection</a> <a class="sl-btn sl-ghost" href="https://ebooks.bucklerfamily.estate/">The e-books</a></p></div></section>
 <section class="sh-sec" id="products"><h2>The Cedwyn Estate collection</h2><p class="sh-lead">{e(CFG['products_lead'])}</p>
 {NOTICE}<div class="sh-grid">{''.join(card(p) for p in P)}</div></section>
@@ -63,7 +65,7 @@ terms = HEAD.format(title="Terms, delivery and returns · Cedwyn Estate shop", d
 <h2>Returns and faults</h2><p>Items are made to order, so we can't take returns for a change of mind (the right to cancel doesn't apply to personalised or made-to-order goods under the Consumer Contracts Regulations 2013). If an item arrives damaged, misprinted or faulty, tell us within 30 days with a photo and we'll arrange a free reprint or a full refund. Your statutory rights under the Consumer Rights Act 2015 are not affected.</p>
 <h2>Digital downloads</h2><p>The map pack is a PDF sold by DATRO CONSORTIUM LIMITED through Stripe, in pounds sterling. It downloads straight after payment. By paying you ask for it to be supplied at once, and your 14-day right to cancel ends once the download is available (Consumer Contracts Regulations 2013, reg. 37). If the file is faulty we replace it or refund you.</p>
 <h2>Contact</h2><p>Questions about an order: <a href="mailto:{e(CFG['contact_email'])}">{e(CFG['contact_email'])}</a>. Please include your order number.</p>
-<h2>The designs</h2><p>All designs were made for this shop and are © DATRO CONSORTIUM LIMITED for the Great House Farm / Tŷ Mawr project. Pictures of the farm are real photographs from the farm’s own album, restored (upscaled, contrast, toning, sky removal) without changing what they show. The maps are real Ordnance Survey maps (1878–79, 1900, 1920, 1947), reproduced with the permission of the National Library of Scotland under a CC BY licence; they are cropped and titled and otherwise unchanged. The Cedwyn Estate map is a photograph of a hand-coloured estate survey (probably c.1824; original held by the family, archive source pending), restored without redrawing; Parcel A is outlined as the family’s reconstruction, approximate. The Peerless Jim photograph is a public-domain archive photograph (Bain News Service, Library of Congress). The other designs are typography. The arms are a brand device combining the Williams and Buckler arms; not a grant of arms. Crest artwork adapted from Wikimedia Commons works (CC BY-SA 4.0). Our case, prospective. Not a finding of any court.</p>
+<h2>The designs</h2><p>All designs were made for this shop and are © DATRO CONSORTIUM LIMITED for the Great House Farm / Tŷ Mawr project. Pictures of the farm are real photographs from the farm’s own album, restored (upscaled, contrast, toning, sky removal) without changing what they show. The maps are real Ordnance Survey maps (1878–79, 1900, 1920, 1947), reproduced with the permission of the National Library of Scotland under a CC BY licence; they are cropped and titled and otherwise unchanged. The Cedwyn Estate map is a photograph of a hand-coloured estate survey (probably c.1824; original held by the family, archive source pending), restored without redrawing; Parcel A is outlined as the family’s reconstruction, approximate. The Peerless Jim photograph is a public-domain archive photograph (Bain News Service, Library of Congress). The other designs are typography. Our case, prospective. Not a finding of any court.</p>
 <p class="sh-fine">Last updated 21 October 2026. — Sion's Tab agent</p></main>""" + FOOT
 TY_PAGE = HEAD.format(title="Thank you · Cedwyn Estate shop", desc="Your download.", path="/thank-you/", v=v) + """
 <main class="sh-page"><h1>Thank you</h1>
