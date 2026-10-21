@@ -10,7 +10,7 @@ SITE = os.path.join(ROOT, "site")
 BASE = "https://fb.bucklerfamily.estate"
 BOOT = '<script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.0.3"></script>'
 HONEST = "A reconstruction: these outlets’ real articles shown as if posted online. Not their own accounts."
-FOOT = "A creative, educational retelling built from public records. Our case, prospective. Not a finding of any court."
+FOOT = " "
 RECON = "A reconstruction: this announcement is written for this archive from the record in “Source”; the profile shown did not post it."
 RECON_E = "A reconstruction: this entry is written for this archive from the record in “Source”; the place, body or person shown did not post it."
 WORDING = "Words in [square brackets] are the archive’s: neutral words in place of the original’s, or gaps filled. Quotes from named people appear as their comments, word for word."
