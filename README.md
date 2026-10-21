@@ -46,3 +46,9 @@ occupation, heritage and lineage, and the trees and land. Rows are eras; squares
 The content and original code in this repository are not open source. You may read it, link to it and quote it fairly with credit. Any other copying, adaptation or commercial use (books, film, TV, documentary, podcasts, paid articles, AI training) needs a written licence first. Full terms: https://bucklerfamily.estate/licence/ · Apply: https://bucklerfamily.estate/enquire/ · See `LICENSE` and `NOTICE`. Third-party components keep their own licences.
 
  — Sion's Tab agent
+
+## v3 (21 Oct 2026)
+- Two square colours only: pure white (every record in the family's favour: codes E, H, T) and pure black (the opposing narrative: A, L, C, K). Text is black on white and white on black.
+- Empty cells, filtered-out cells and the page background are one purple, #1e1b4b.
+- No labels, era bands, file letters, separators, corner markers or hint drawn over the grid. The era of the rows in view and the tally "White N · Black N" sit in the bar under the board.
+- build.py: the asset version (?v=) hashes chess.js, chess.css and sudoku16.js as well as board.json; a privacy scrub keeps a witness's first name withheld on every rebuild. Build without --theory (the theory squares are already merged into data/items.json).

@@ -20,7 +20,7 @@ for k,t in texts.items():
             if p in BAN and ('://' in seg and ' ' not in seg): continue
             bad.append((k,p,t[max(0,m.start()-50):m.end()+30].replace('\n',' ')))
     for m in re.finditer(r'\bSion\b',t,re.I):
-        if not t[m.start():m.start()+20].startswith("Sion's Tab agent"): bad.append((k,'Sion',t[max(0,m.start()-40):m.end()+20]))
+        bad.append((k,'Sion',t[max(0,m.start()-40):m.end()+20]))   # v3: no allowance, the owner is never named in public files
 print('files',len(texts),'HITS',len(bad))
 for x in bad[:40]: print(x)
 sys.exit(1 if bad else 0)

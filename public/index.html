@@ -4,25 +4,26 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 <title>The Chessboard and the Case Sudoku — Great House Farm / Tŷ Mawr, two records side by side</title>
-<meta name="description" content="Every dated record of the Great House Farm (Tŷ Mawr) case on one zoomable chessboard: black squares for the actions, legal framings and omissions against Williams/Buckler ownership; white squares for the evidence of ownership, occupation, heritage and the trees."/>
-<meta name="theme-color" content="#000000"/>
+<meta name="description" content="Every dated record of the Great House Farm (Tŷ Mawr) case on one zoomable chessboard: white squares for every record in the family’s favour, black squares for the opposing narrative, and a running tally of the two."/>
+<meta name="theme-color" content="#1e1b4b"/>
 <meta property="og:title" content="The Chessboard — Great House Farm / Tŷ Mawr"/>
 <meta property="og:description" content="Two records side by side, square by square, from c. 650 to 2026. Each square carries its own short paragraph; Read more opens the full text with a link to the source. Plus one 16×16 sudoku for the whole case."/>
 <meta property="og:type" content="website"/><meta property="og:url" content="https://chess.bucklerfamily.estate/"/>
 <meta property="og:image" content="https://chess.bucklerfamily.estate/og.png"/>
 <link rel="preload" href="/assets/fonts/barlow-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="preload" href="/data/board.json" as="fetch" crossorigin/>
-<link rel="stylesheet" href="/assets/chess.css?v=fe3a38c3"/>
+<link rel="stylesheet" href="/assets/chess.css?v=add7dac6"/>
 <script src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js?v=2.0.3" data-site="chess" data-dict="/lang/chess.json" defer></script>
 <script src="https://bucklerfamily.estate/ebook/cta.js" defer></script>
 <script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.0.3"></script>
 </head>
 <body>
-<header class="top">
+<header class="top" data-ghf-keep>
   <div class="bar">
     <a class="brand" href="/">The Chessboard<small>Great House Farm / Tŷ Mawr</small></a>
     <button class="btn only-m" id="qtoggle" aria-label="Search" title="Search">Search</button>
     <button class="btn" id="fit" title="Fit the whole board">Fit board</button>
+    <span class="zoom"><button class="btn" id="zin" aria-label="Zoom in">+</button><button class="btn" id="zout" aria-label="Zoom out">−</button></span>
     <button class="btn" id="legend-btn">Key</button>
     <a class="btn only-d" href="/list/" style="text-decoration:none">List</a>
   </div>
@@ -41,8 +42,6 @@
 </header>
 <canvas id="board" aria-label="Zoomable chessboard of the Great House Farm record. Use the List view for a text version."></canvas>
 <div class="loading" id="loading">Setting out the board…</div>
-<div class="hint" id="hint">Each square holds its own paragraph · pinch or scroll to zoom · tap a square for Read more · Fit board shows the whole board</div>
-<div class="zoom"><button class="btn" id="zin" aria-label="Zoom in">+</button><button class="btn" id="zout" aria-label="Zoom out">−</button></div>
 <section class="su16" id="su16" hidden aria-label="The case sudoku">
   <div class="su-top"><div><b>The case sudoku</b> <span id="su-prog"></span></div><div class="su-bands" id="su-bands"></div></div>
   <div class="su-wrap" id="su-wrap"><div class="su-grid" id="su-grid"></div></div>
@@ -50,11 +49,11 @@
   <div class="su-pad" id="su-pad"></div>
 </section>
 <div class="toast" id="toast" role="status"></div>
-<footer class="foot"><span>© Williams–Buckler family. All rights reserved. <a href="https://bucklerfamily.estate/licence/" style="color:inherit">Licence</a> · <span class="fl">Cited historic record; each square links to its source.</span></span><span id="cnt"></span></footer>
+<footer class="foot" data-ghf-keep><div class="under" id="under"><span class="eraline" id="eraline"></span><span class="tally" aria-label="Tally"><b class="tw">White <span id="t-w">0</span></b> · <b class="tb">Black <span id="t-b">0</span></b><i class="tbar" id="t-bar"></i></span></div><div class="fline"><span>© Williams–Buckler family. All rights reserved. <a href="https://bucklerfamily.estate/licence/" style="color:inherit">Licence</a> · <span class="fl">Cited historic record; each square links to its source.</span></span></div></footer>
 
 <div class="panel-bd" id="panel-bd"></div>
 <aside class="sheet sqmodal" id="panel" role="dialog" aria-modal="true" aria-label="Square" aria-live="polite">
-  <div class="sheet-h"><span class="pill" id="p-pill"></span><span class="kindtag" id="p-kind"></span><button class="btn x" id="p-close" aria-label="Close">Close</button></div>
+  <div class="sheet-h"><span class="pill" id="p-pill" data-ghf-keep></span><span class="kindtag" id="p-kind"></span><button class="btn x" id="p-close" aria-label="Close">Close</button></div>
   <div class="sheet-b">
     <div id="p-date"></div>
     <div id="p-title"></div>
@@ -75,13 +74,12 @@
 <aside class="sheet" id="legend" role="dialog" aria-label="Key">
   <div class="sheet-h"><strong style="color:#fff;letter-spacing:.14em;text-transform:uppercase;font-size:13px">How to read the board</strong><button class="btn x" id="l-close">Close</button></div>
   <div class="sheet-b">
-    <p class="note">One square per record, in time order. Each row band is an era (oldest at the top, marked on the left like the ranks of a chessboard); within an era the squares read left to right, earliest first. The last band, Law and remedies, holds the statute and case-law squares, kept apart from the land timeline. Black and white alternate as on a real board, so the two records run side by side. Zoom out to see the whole board; zoom in to read a square; tap it for the full text and its source.</p>
+    <p class="note">One square per record, in time order, oldest at the top; within each era the squares read left to right, earliest first. The era of the rows in view is named in the line under the board. The last band, Law and remedies, holds the statute and case-law squares. Zoom out to see the whole board and which colour carries the weight; zoom in to read a square; tap it for the full text and its source.</p>
     <div class="lg">
-      <h4>Black squares · <span id="nb"></span></h4><div class="sw" style="background:#000"><i style="border-color:#e5484d transparent transparent transparent"></i></div><div><span style="color:#ff9b8f">Actions</span> against Williams/Buckler ownership: sales, proceedings, orders, eviction, demolition, registrations, refusals</div><div class="n" data-n="A"></div><div class="sw" style="background:#000"><i style="border-color:#9b9b9b transparent transparent transparent"></i></div><div><span style="color:#a8a8a8">Legal framing</span> (grey text): possessor, proprietor, licence, “permissive” occupation, “whole farm”, adverse possession</div><div class="n" data-n="L"></div><div class="sw" style="background:#000"><i style="border-color:#ffffff transparent transparent transparent"></i></div><div><span style="color:#fff">Omissions</span> (white text): records missing, withheld, not held, not notified, cut or destroyed</div><div class="n" data-n="C"></div><div class="sw" style="background:#000"><i style="border-color:#a78bfa transparent transparent transparent"></i></div><div><span style="color:#c4b5fd">Records that cut against</span> the case, shown honestly</div><div class="n" data-n="K"></div>
-      <h4>White squares · <span id="nw"></span></h4><div class="sw" style="background:#f5f3ee"><i style="border-color:#2563eb transparent transparent transparent"></i></div><div>Evidence of ownership, occupation and the grounds to reopen the case</div><div class="n" data-n="E"></div><div class="sw" style="background:#f5f3ee"><i style="border-color:#b8860b transparent transparent transparent"></i></div><div>Heritage and lineage: the house, the Williams line, the Cedwyn estate</div><div class="n" data-n="H"></div><div class="sw" style="background:#f5f3ee"><i style="border-color:#2e7d32 transparent transparent transparent"></i></div><div>Trees, woodland and the land the family worked</div><div class="n" data-n="T"></div>
-      <h4>Markings</h4>
-      <div class="sw" style="background:#000;border:1px dashed #d6b25e"></div><div>Dashed gold edge: a working theory.</div><div></div>
-      <div class="sw" style="background:#bdb9b0"></div><div>Plain square: no record placed there</div><div></div>
+      <h4>White squares · <span id="nw"></span></h4><div class="sw" data-ghf-keep style="background:#fff"></div><div>Every record in the family’s favour: evidence of ownership and occupation, the grounds to reopen the case, heritage and lineage, the trees and the land the family worked</div><div></div>
+      <h4>Black squares · <span id="nb"></span></h4><div class="sw" data-ghf-keep style="background:#000;border:1px solid #fff"></div><div>The opposing narrative: actions against Williams/Buckler ownership, the legal framings it rests on, records withheld or not held, and records that cut against the case</div><div></div>
+      <h4>Empty</h4><div class="sw" data-ghf-keep style="background:#1e1b4b;border:1px solid #fff"></div><div>Purple, the colour of the page: no record placed there</div><div></div>
+      <h4>Markings</h4><div class="sw" data-ghf-keep style="background:#fff;color:#000;font-style:italic;font-size:9px;display:flex;align-items:flex-end;padding:2px">Theory</div><div>The word Theory inside a square marks a working theory.</div><div></div>
     </div>
     <h4 class="kh">The text inside the squares</h4>
     <p class="note">Every square carries its own short paragraph, set inside the square. From afar you see the colours; zoom in and each square shows its date and title, then its paragraph and a Read more tab. Read more opens the square's full content: its summary, its sources and every extract placed in it from the free archive edition of the Legal Wiki (version 0.1.0, 2,033 pages) and the public Great House Farm sites. Each extract has a Visit website button that opens the source page at the passage itself where the page allows, and otherwise at the page. Personal details are withheld, and the wording follows the board's house style; the verbatim originals are on the Legal Wiki.</p>
@@ -89,10 +87,9 @@
     <p class="note" style="margin-top:16px">Built from the Great House Farm Legal Wiki (greathousefarmwiki.wordpress.com), the evidence pages EV-0001 onwards, the Master Timeline and the registers. Board built <span id="built"></span>. The record text is in English, the authoritative version.</p>
     <p class="note"><a href="/list/">Read the whole board as a plain list</a> · <a href="https://greathousefarmwiki.wordpress.com/">Legal Wiki</a> · <a href="https://bucklerfamily.estate/">Campus</a></p>
     <div data-ghf-ebook-cta></div>
-    <p class="note">— Sion's Tab agent</p>
   </div>
 </aside>
-<script src="/assets/chess.js?v=fe3a38c3" defer></script>
-<script src="/assets/sudoku16.js?v=fe3a38c3" defer></script>
+<script src="/assets/chess.js?v=add7dac6" defer></script>
+<script src="/assets/sudoku16.js?v=add7dac6" defer></script>
 </body>
 </html>

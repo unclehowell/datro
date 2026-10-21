@@ -2,7 +2,7 @@
    Rows = 16 eras of the timeline. Columns = 16 kinds of evidence in four grade bands (Corroborated record → Documented →
    Inference → Theory). Symbols = 16 actors and records. Boxes = an era band × a grade band. The sudoku rule is the lesson:
    each actor appears once in every era, every kind of evidence and every box, so the missing ones are worked out by elimination.
-   Exactly one solution (tools/sudoku16/verify.js). Data: /data/sudoku16.json + /data/board.json. — Sion's Tab agent */
+   Exactly one solution (tools/sudoku16/verify.js). Data: /data/sudoku16.json + /data/board.json. */
 (function(){
 "use strict";
 var KEY="ghf-sudoku16-v1", CH="0123456789ABCDEFG";

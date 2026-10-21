@@ -48,6 +48,21 @@ if theory_path and pathlib.Path(theory_path).exists():
                       'y': year_of(str(t.get('date') or '')), 'src': s, 'origin': 'theory'})
         merged_theory += 1
 
+# ---- privacy scrub (v3, 21 Oct 2026): a witness's first name stays withheld on every rebuild ----
+def _scrub_url(u):
+    if not re.search(r'branwen', u, re.I): return u
+    m = re.match(r'(https?://[^/]+/[^/]+/)', u)   # point at the wiki's index page for that section
+    return m.group(1) if m else 'https://greathousefarmwiki.wordpress.com/'
+def _scrub_txt(v, title=False):
+    v = re.sub(r'\bBranwen(\s+Buckler)?[’\']s\b', 'A witness’s' if title else 'a witness’s', v)
+    v = re.sub(r'(—\s*)Branwen(\s+Buckler)?:', r'\1witness recollection:', v)
+    v = re.sub(r'Testimony\s*—\s*Branwen(\s+Buckler)?', 'Testimony (witness)', v)
+    v = re.sub(r'\bBranwen(\s+Buckler)?\b', '[name withheld]', v)
+    return v
+for it in items:
+    it['t'] = _scrub_txt(it['t'], True); it['x'] = _scrub_txt(it['x'])
+    it['src'] = [[_scrub_txt(s[0])] + [_scrub_url(s[1]) if len(s) > 1 else ''] + list(s[2:]) for s in it['src']]
+
 # ---- wording & privacy gate ----
 FIX = [(r'\(family research note;\s*', '('), (r'family research note[;,]?\s*', ''), (r'\((document not yet held|verification pending)\)', '(source pending)'), (r'\bMary Williams\b', 'Mary (Nancy) Williams'), (r'\(Nancy\) \(Nancy\)', '(Nancy)'), (r'\breportedly\s+', ''), (r'\ballegedly\s+', '')]
 BAN = [r'\bsays?\b', r'\bsaid\b', r'\bclaim(s|ed|ing)?\b', r'according to', r'hearsay', r'unverified', r'\balleg', r'family\W{0,3}s? account', r'family testimony',
@@ -125,7 +140,8 @@ board = {'v': 1, 'built': built, 'cols': COLS, 'rows': r0, 'eras': eras, 'sq': s
 (ROOT/'public/data').mkdir(parents=True, exist_ok=True)
 js = json.dumps(board, ensure_ascii=False, separators=(',', ':'))
 (ROOT/'public/data/board.json').write_text(js)
-ver = hashlib.sha1(js.encode()).hexdigest()[:8]
+# v3: the cache-busting version covers the assets too (a JS/CSS-only change used to keep the old ?v= and the edge served the stale file)
+ver = hashlib.sha1(js.encode() + b''.join((ROOT/'public/assets'/f).read_bytes() for f in ('chess.js', 'chess.css', 'sudoku16.js'))).hexdigest()[:8]
 tpl = (ROOT/'index.tpl.html').read_text(); (ROOT/'public/index.html').write_text(tpl.replace('__V__', ver))
 
 # ---- list view (text version of the whole board) ----
