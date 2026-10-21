@@ -365,7 +365,7 @@ ACCOUNTS = {
 'ghf-19550318-1': dict(
     received="The forest taken in 1955 was the farm's own woodland.",
     words=[('"bought … for a nominal sum in 1942"', "How the Western Mail describes Cardiff's acquisition of Leckwith Woods.")],
-    known="The 1955 lease concerns Cardiff's Leckwith Woods, which measures wholly outside Llandough; the woods near the farm are Coed Creigiaidd and Reservoir Wood. Any link to the farm is our case, prospective."),
+    known="The 1955 lease concerns Cardiff's Leckwith Woods, which measures wholly outside Llandough; the woods near the farm are Coed Creigiaidd and Reservoir Wood."),
 'ghf-19751201-1': dict(
     received='Every transfer of the farm had to be registered at once.',
     words=[],
