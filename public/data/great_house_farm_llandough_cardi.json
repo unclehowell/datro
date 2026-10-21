@@ -1,0 +1,70 @@
+{
+ "schema": "ghf-wdtk-thread/1",
+ "id": "WB-0402",
+ "ev": "EV-0602",
+ "slug": "great_house_farm_llandough_cardi",
+ "title": "Great House Farm, Llandough, Cardiff (BP vs Buckler 1987)",
+ "authority": "The National Archives",
+ "url": "https://www.whatdotheyknow.com/request/great_house_farm_llandough_cardi",
+ "wdtk_status": "Delayed",
+ "status": "long overdue",
+ "references": [
+  "CAS-347296-M0V4Y1",
+  "CAS-344046-K1S1R2"
+ ],
+ "sent": "2026-09-02",
+ "last_message": "2026-09-02",
+ "outcome": "Taken off hold on 2 September 2026 with a promised reply by 23 September; no reply since.",
+ "deadlines": [
+  {
+   "label": "TNA's own promised date",
+   "from_": "2026-09-02",
+   "due": "2026-09-23",
+   "answered": null,
+   "result": "missed (no reply)"
+  },
+  {
+   "label": "Response (20 working days)",
+   "from_": "2026-09-02",
+   "due": "2026-09-30",
+   "answered": null,
+   "result": "missed (no reply)"
+  }
+ ],
+ "counts": {
+  "messages": 2,
+  "sent": 1,
+  "received": 1,
+  "attachments": 0
+ },
+ "messages": [
+  {
+   "n": 1,
+   "wdtk_anchor": "outgoing-2140769",
+   "direction": "sent",
+   "date": "2026-09-02T05:00:32+01:00",
+   "from": "Requester",
+   "summary": "Clarification of FOI CAS-347296-M0V4Y1 (linked to CAS-344046-K1S1R2): records on Great House Farm / Tŷ Mawr, Llandough, c.1936–1950, including National Farm Survey / MAFF and Glamorgan War Agricultural Executive Committee material.",
+   "response_class": "request",
+   "body_public": null,
+   "wdtk_url": "https://www.whatdotheyknow.com/request/great_house_farm_llandough_cardi#outgoing-2140769",
+   "attachments": []
+  },
+  {
+   "n": 2,
+   "wdtk_anchor": "incoming-3540231",
+   "direction": "received",
+   "date": "2026-09-02T14:50:23+01:00",
+   "from": "The National Archives",
+   "summary": "Request taken off hold; response promised by 23 September 2026.",
+   "response_class": "acknowledgement only",
+   "body_public": "Dear Ret'd Sergeant [requester] Buckler,\nThank you for providing clarification.\nWe have taken your request off hold and we will respond to you\nby 23/09/2026.\nYours sincerely,\nFOI Assessor\nFreedom of Information Centre\nThe National Archives",
+   "wdtk_url": "https://www.whatdotheyknow.com/request/great_house_farm_llandough_cardi#incoming-3540231",
+   "attachments": []
+  }
+ ],
+ "archived": "2026-10-21",
+ "statement": "Our case, prospective. Not a finding of any court.",
+ "site": "https://whatdotheyknow.bucklerfamily.estate/r/great_house_farm_llandough_cardi/",
+ "thread_json": "https://wayback.bucklerfamily.estate/text/evidence/wdtk/2026-09-02_wdtk-tna_great-house-farm-llandough-cardi.json"
+}

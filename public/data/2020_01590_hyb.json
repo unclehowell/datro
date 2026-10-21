@@ -1,0 +1,93 @@
+{
+ "schema": "ghf-wdtk-thread/1",
+ "id": "WB-0401",
+ "ev": "EV-0601",
+ "slug": "2020_01590_hyb",
+ "title": "2020 01590 HYB",
+ "authority": "Vale of Glamorgan Council",
+ "url": "https://www.whatdotheyknow.com/request/2020_01590_hyb",
+ "wdtk_status": "Long overdue",
+ "status": "long overdue",
+ "references": [
+  "Planning application 2020/01590/HYB"
+ ],
+ "sent": "2026-08-21",
+ "last_message": "2026-10-02",
+ "outcome": "No substantive response. One reply (28 September 2026, working day 25) asked for a Council reference.",
+ "deadlines": [
+  {
+   "label": "Response (20 working days)",
+   "from_": "2026-08-21",
+   "due": "2026-09-21",
+   "answered": null,
+   "result": "missed (no reply)"
+  },
+  {
+   "label": "Internal review (20 working days)",
+   "from_": "2026-09-22",
+   "due": "2026-10-20",
+   "answered": null,
+   "result": "missed (no reply)"
+  }
+ ],
+ "counts": {
+  "messages": 4,
+  "sent": 3,
+  "received": 1,
+  "attachments": 0
+ },
+ "messages": [
+  {
+   "n": 1,
+   "wdtk_anchor": "outgoing-2133469",
+   "direction": "sent",
+   "date": "2026-08-21T07:08:06+01:00",
+   "from": "Requester",
+   "summary": "Request for the Council's records on planning application 2020/01590/HYB (Land South of Llandough Hill and Penarth Road): the ownership certificate, statutory notices, who was served, and ownership documents supplied by the applicant, with notice of an ownership concern.",
+   "response_class": "request",
+   "body_public": null,
+   "wdtk_url": "https://www.whatdotheyknow.com/request/2020_01590_hyb#outgoing-2133469",
+   "attachments": []
+  },
+  {
+   "n": 2,
+   "wdtk_anchor": "outgoing-2153042",
+   "direction": "sent",
+   "date": "2026-09-22T20:31:11+01:00",
+   "from": "Requester",
+   "summary": "No response by the 20th working day (21 September 2026). Chaser and formal internal review request.",
+   "response_class": "internal review request",
+   "body_public": null,
+   "wdtk_url": "https://www.whatdotheyknow.com/request/2020_01590_hyb#outgoing-2153042",
+   "attachments": []
+  },
+  {
+   "n": 3,
+   "wdtk_anchor": "incoming-3571218",
+   "direction": "received",
+   "date": "2026-09-28T09:50:10+01:00",
+   "from": "Vale of Glamorgan Council",
+   "summary": "First reply from the Council, on working day 25: asks for the Council's own reference (prefix 002) before it will look into the delay.",
+   "response_class": "clarification demand",
+   "body_public": "Dear [requester]\nYou have placed a number of requests with us. With regard to below we will investigate and consider your concerns regarding delay but can you please provide our reference. Our references currently start with a pre fix of 002\nRegards\nInformation Governance Officer/ / Swyddog Llywodraethu Gwybodaeth\nLegal & Democratic Services /Gwasanaethau Cyfreithol a Democrataidd\nVale of Glamorgan Council / Cyngor Bro Morgannwg\ne-mail / e-bost: [email address]/[email address]\nConsider the environment. Please don't print this e-mail unless you really need to.\nYstyriwch yr amgylchedd. Peidiwch ag argraffu'r neges hon oni bai fod gwir angen.\nVisit our Website at\nhttp://www.valeofglamorgan.gov.uk/\nEwch i'n gwefan yn\nhttp://www.bromorgannwg.gov.uk/\nFind us on Facebook / Cewch ddod o hyd i ni ar Facebook\nFollow us on Twitter / Dilynwch ni ar Twitter\nCorrespondence is welcomed in Welsh or English / Croesewir Gohebiaeth yn y Gymraeg neu yn Saesneg.",
+   "wdtk_url": "https://www.whatdotheyknow.com/request/2020_01590_hyb#incoming-3571218",
+   "attachments": []
+  },
+  {
+   "n": 4,
+   "wdtk_anchor": "outgoing-2161063",
+   "direction": "sent",
+   "date": "2026-10-02T18:32:23+01:00",
+   "from": "Requester",
+   "summary": "Reply: the request was made on this public thread, no reference was ever issued, and the thread itself identifies the request.",
+   "response_class": "follow-up",
+   "body_public": null,
+   "wdtk_url": "https://www.whatdotheyknow.com/request/2020_01590_hyb#outgoing-2161063",
+   "attachments": []
+  }
+ ],
+ "archived": "2026-10-21",
+ "statement": "Our case, prospective. Not a finding of any court.",
+ "site": "https://whatdotheyknow.bucklerfamily.estate/r/2020_01590_hyb/",
+ "thread_json": "https://wayback.bucklerfamily.estate/text/evidence/wdtk/2026-08-21_wdtk-vale_2020-01590-hyb.json"
+}

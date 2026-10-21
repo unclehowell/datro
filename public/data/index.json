@@ -1,0 +1,102 @@
+{
+ "schema": "ghf-wdtk-index/1",
+ "version": "1.0.0",
+ "stats": {
+  "requests": 7,
+  "messages": 43,
+  "sent": 19,
+  "received": 24,
+  "attachments": 17,
+  "refusals": 3,
+  "exemptions": [
+   "s.32",
+   "s.23(5)",
+   "s.23(5)"
+  ],
+  "not_held": 8,
+  "missed": 6,
+  "deadlines": 16,
+  "open_days": 254,
+  "ack": 12
+ },
+ "threads": [
+  {
+   "slug": "bp_vs_buckler_1987",
+   "id": "WB-0400",
+   "ev": "EV-0600",
+   "authority": "Ministry of Justice",
+   "title": "BP vs Buckler 1987",
+   "status": "internal review",
+   "page": "/r/bp_vs_buckler_1987/",
+   "json": "/data/bp_vs_buckler_1987.json",
+   "archive": "https://wayback.bucklerfamily.estate/text/evidence/wdtk/2025-06-28_wdtk-moj_bp-vs-buckler-1987.json"
+  },
+  {
+   "slug": "freedom_of_information_request_a_2133",
+   "id": "WB-0405",
+   "ev": "EV-0605",
+   "authority": "HM Courts and Tribunals Service (Ministry of Justice)",
+   "title": "Freedom of Information Request – Administrative Records for BP Properties Ltd v Buckler (1974)",
+   "status": "partially successful",
+   "page": "/r/freedom_of_information_request_a_2133/",
+   "json": "/data/freedom_of_information_request_a_2133.json",
+   "archive": "https://wayback.bucklerfamily.estate/text/evidence/wdtk/2026-01-28_wdtk-hmcts_freedom-of-information-request-a-2133.json"
+  },
+  {
+   "slug": "1988_dispossession_of_great_hous",
+   "id": "WB-0403",
+   "ev": "EV-0603",
+   "authority": "Ministry of Defence",
+   "title": "1988 Dispossession of Great House Farm, Llandough from the Williams/ Buckler Family",
+   "status": "refused",
+   "page": "/r/1988_dispossession_of_great_hous/",
+   "json": "/data/1988_dispossession_of_great_hous.json",
+   "archive": "https://wayback.bucklerfamily.estate/text/evidence/wdtk/2026-05-01_wdtk-mod_1988-dispossession-of-great-hous.json"
+  },
+  {
+   "slug": "bp_vs_buckler_1987_1988",
+   "id": "WB-0404",
+   "ev": "EV-0604",
+   "authority": "National Police Chiefs' Council (for the National Counter Terrorism Security Office)",
+   "title": "BP vs Buckler 1987",
+   "status": "partially successful",
+   "page": "/r/bp_vs_buckler_1987_1988/",
+   "json": "/data/bp_vs_buckler_1987_1988.json",
+   "archive": "https://wayback.bucklerfamily.estate/text/evidence/wdtk/2026-09-02_wdtk-npcc_bp-vs-buckler-1987-1988.json"
+  },
+  {
+   "slug": "great_house_farm_llandough_cardi",
+   "id": "WB-0402",
+   "ev": "EV-0602",
+   "authority": "The National Archives",
+   "title": "Great House Farm, Llandough, Cardiff (BP vs Buckler 1987)",
+   "status": "long overdue",
+   "page": "/r/great_house_farm_llandough_cardi/",
+   "json": "/data/great_house_farm_llandough_cardi.json",
+   "archive": "https://wayback.bucklerfamily.estate/text/evidence/wdtk/2026-09-02_wdtk-tna_great-house-farm-llandough-cardi.json"
+  },
+  {
+   "slug": "2020_01590_hyb",
+   "id": "WB-0401",
+   "ev": "EV-0601",
+   "authority": "Vale of Glamorgan Council",
+   "title": "2020 01590 HYB",
+   "status": "long overdue",
+   "page": "/r/2020_01590_hyb/",
+   "json": "/data/2020_01590_hyb.json",
+   "archive": "https://wayback.bucklerfamily.estate/text/evidence/wdtk/2026-08-21_wdtk-vale_2020-01590-hyb.json"
+  },
+  {
+   "slug": "meeting_of_22_october_2026_remot",
+   "id": "WB-0406",
+   "ev": "EV-0606",
+   "authority": "Llandough Community Council",
+   "title": "Meeting of 22 October 2026: remote-only arrangements, outstanding questions and the Great House Farm (Tŷ Mawr) records",
+   "status": "awaiting response",
+   "page": "/r/meeting_of_22_october_2026_remot/",
+   "json": "/data/meeting_of_22_october_2026_remot.json",
+   "archive": "https://wayback.bucklerfamily.estate/text/evidence/wdtk/2026-10-20_wdtk-lcc_meeting-of-22-october-2026-remot.json"
+  }
+ ],
+ "statement": "Our case, prospective. Not a finding of any court."
+}
