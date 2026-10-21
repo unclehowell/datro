@@ -1464,6 +1464,7 @@ INSERT INTO nodes VALUES ('doc-rcahmw-RC26-0375','document','RCAHMW RC26-0375 fu
 INSERT INTO nodes VALUES ('doc-science-museum-FOI-2026-0038','document','Science Museum Group FOI/2026/0038 internal review','{"holder": "Science Museum Group", "reference": "FOI/2026/0038", "date": "2026-10-01"}');
 INSERT INTO nodes VALUES ('doc-south-wales-police-auto-ack-foi-great-house-farm-1988','document','South Wales Police FOI auto-acknowledgement','{"holder": "South Wales Police", "reference": "none assigned in auto-ack", "date": "2026-10-10"}');
 INSERT INTO nodes VALUES ('doc-south-wales-police-foi-1264-26','document','South Wales Police FOI 1264/26 – automatic acknowledgement of further deceased-status clarification (08:45 UTC 16 Oct 2026)','{"holder": "South Wales Police", "reference": "FOI 1264/26", "date": "2026-10-16"}');
+INSERT INTO nodes VALUES ('doc-south-wales-police-ir-1188-26','document','South Wales Police — Internal Review 1188/26 of FOI 719/26','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-south-wales-police-sar','document','South Wales Police — SAR clarification','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-tab-whatsapp-gap-audit-2026-10-21','document','WhatsApp research-gap audit — Great House Farm / Tŷ Mawr','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-three-parcel-split-forensic-assessment-2026-10-18','document','Three-part Parcel A: chronology, order scope and later title transfers','{"holder": "", "reference": "", "date": ""}');
@@ -3338,6 +3339,8 @@ INSERT INTO edges VALUES ('doc-rcahmw-RC26-0375','ref:RC26-0371','cites');
 INSERT INTO edges VALUES ('doc-rcahmw-RC26-0375','ref:RC26-0375','cites');
 INSERT INTO edges VALUES ('doc-science-museum-FOI-2026-0038','ref:2026/0038','cites');
 INSERT INTO edges VALUES ('doc-south-wales-police-foi-1264-26','ref:FOI 1264/26','cites');
+INSERT INTO edges VALUES ('doc-south-wales-police-ir-1188-26','ref:1188/26','cites');
+INSERT INTO edges VALUES ('doc-south-wales-police-ir-1188-26','ref:FOI 719/26','cites');
 INSERT INTO edges VALUES ('doc-south-wales-police-sar','ref:1188/26','cites');
 INSERT INTO edges VALUES ('doc-south-wales-police-sar','ref:1264/26','cites');
 INSERT INTO edges VALUES ('doc-south-wales-police-sar','ref:719/26','cites');
