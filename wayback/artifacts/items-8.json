@@ -66,7 +66,10 @@
     "page_id": 4713
    },
    "added": "2026-10-21",
-   "note": "Reserved matters 92/00671/RES (20 houses, Ideal Homes Wales) approved 3 September 1992 under outline 89/01396/OUT of 13 March 1990, whose conditions 16\u201318 concern archaeology. The 12 scans were already catalogued; this item groups them and adds machine-read text of every page."
+   "note": "Reserved matters 92/00671/RES (20 houses, Ideal Homes Wales) approved 3 September 1992 under outline 89/01396/OUT of 13 March 1990, whose conditions 16\u201318 concern archaeology. The 12 scans were already catalogued; this item groups them and adds machine-read text of every page.",
+   "related": [
+    "WB-0810"
+   ]
   },
   {
    "id": "WB-0801",
@@ -123,6 +126,81 @@
    },
    "added": "2026-10-21",
    "note": "Approves the reserved matters \u201csubject to compliance with the outstanding conditions imposed\u201d on outline 89/01396/OUT of 13 March 1990; adds one new condition only (samples of materials, reason: \u201cto safeguard local visual amenities\u201d); signed over the title Chief Executive, dated 3rd September 1992; no mention of archaeology. The 13th document of the 92/00671 file, published on the council's register and not among the 12 family scans."
+  },
+  {
+   "id": "WB-0810",
+   "ev": null,
+   "keys": [
+    "89/01396/OUT"
+   ],
+   "title": "Vale of Glamorgan planning file 89/01396/OUT (1989\u201390), Great House Farm / Ty Mawr, Llandough",
+   "date": "1989\u20131990",
+   "date_sort": "1990-03-13",
+   "date_basis": "document",
+   "type": "register",
+   "status": "HELD",
+   "source": {
+    "kind": "family",
+    "reference": "Vale of Glamorgan Council planning file 89/01396/OUT",
+    "repository": "Supplied by the family from the Vale of Glamorgan Council online planning register (5 PDFs, 21 Oct 2026; register upload dates 9\u201310 Jun 2026)"
+   },
+   "institution": "Vale of Glamorgan Borough Council",
+   "files": [
+    {
+     "path": "text/evidence/1990-03-13_vale-planning-file_89-01396-out-index.txt",
+     "url": "https://wayback.bucklerfamily.estate/text/evidence/1990-03-13_vale-planning-file_89-01396-out-index.txt",
+     "storage": "git",
+     "bytes": 5197,
+     "sha256": "6c447eba474f84f19fa5de6829894e8fc5bb8e53825ecbc81ff80ccef4200768",
+     "mime": "text/plain"
+    },
+    {
+     "path": "text/evidence/1990-03-13_vale-planning-file_89-01396-out-transcripts.txt",
+     "url": "https://wayback.bucklerfamily.estate/text/evidence/1990-03-13_vale-planning-file_89-01396-out-transcripts.txt",
+     "storage": "git",
+     "bytes": 19298,
+     "sha256": "807c9503a041a4d7d518bf127d748275a9e7c4debfdcf9bf4905b132cd05120c",
+     "mime": "text/plain"
+    }
+   ],
+   "members": [
+    "EV-0123",
+    "EV-0113",
+    "EV-0125",
+    "EV-0124",
+    "EV-0207"
+   ],
+   "people": [
+    "BP Properties Ltd",
+    "Debenham Tewson & Chinnocks",
+    "Glamorgan-Gwent Archaeological Trust",
+    "Llandough Community Council",
+    "Cardiff Bay Development Corporation",
+    "National Rivers Authority",
+    "Welsh Water",
+    "Barry Preservation Society and Civic Trust",
+    "Heronhurst Homes Ltd",
+    "Ideal Homes Wales",
+    "Wyn Thomas + Partners"
+   ],
+   "parcels": [
+    "Great House Farm",
+    "Ty Mawr Farm",
+    "Llandough",
+    "St Dochdwy's churchyard",
+    "Village green VG 41"
+   ],
+   "wiki": {
+    "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0114-planning-report-89-01396-out-outline-permission/",
+    "page_id": 4680
+   },
+   "related": [
+    "WB-0800",
+    "EV-0126",
+    "EV-0114"
+   ],
+   "added": "2026-10-21",
+   "note": "Outline permission 89/01396/OUT, BP Properties Ltd, granted 13 March 1990 with archaeology conditions 16\u201318 (16 access for a nominated archaeologist; 17 field evaluation and assessment before any development, within three months; 18 detail plans to pay full regard to the results). The officer's report recommended one standard archaeology condition; the notice carries three. GGAT advised that the application not be determined until BP Properties supplied an assessment, and cited the dark age cemetery found south of the church in 1979. All five scans were already catalogued (EV-0113, EV-0123, EV-0124, EV-0125, EV-0207); this item groups them and adds transcripts."
   }
  ]
 }
