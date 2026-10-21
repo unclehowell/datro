@@ -30,7 +30,6 @@ import {
 import { DartWheel } from "@/components/dart-wheel";
 import { sliceFees, type WheelSlice } from "@/data/wheel";
 import {
-  AvenueGame,
   FIRE_A,
   HEART,
   PAL,
@@ -42,7 +41,7 @@ import { Chip, DetailModal, Row, fmtDate } from "@/components/detail-modal";
 import { ArtifactsSheet, CorrSheet, CourtTiles, OptionsSheet, courtInstitutions } from "@/components/court-ready";
 import { DisclosureRecord } from "@/components/disclosure-record";
 import { ArchaeologyTimeline } from "@/components/archaeology-timeline";
-import { RoadmapRamps } from "@/components/roadmap-ramps";
+import { SnakesLadders } from "@/components/snakes-ladders";
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -321,7 +320,6 @@ function roadmapName(name: string) {
 function Home() {
   const [instId, setInstId] = useState("llandough");
   const [sheet, setSheet] = useState<Sheet | null>(null);
-  const [view, setView] = useState<"roadmap" | "ladder">("roadmap");
   const inst = useMemo(
     () => institutions.find((i) => i.id === instId) ?? institutions[0],
     [instId],
@@ -340,46 +338,7 @@ function Home() {
         />
       </section>
 
-      <div role="tablist" aria-label="Climb view" className="mx-auto flex rounded-full border border-line bg-surface p-1 text-sm">
-        {(
-          [
-            ["roadmap", "Roadmap · dates"],
-            ["ladder", "Ladder · rungs"],
-          ] as const
-        ).map(([k, label]) => (
-          <button
-            key={k}
-            type="button"
-            role="tab"
-            aria-selected={view === k}
-            onClick={() => setView(k)}
-            className={`rounded-full px-4 py-1.5 ${view === k ? "bg-brass font-semibold text-brass-ink" : "text-muted"}`}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
-
-      {view === "roadmap" && <RoadmapRamps preferName={roadmapName(inst.name)} />}
-
-      <section aria-label="Avenues game" hidden={view !== "ladder"}>
-        <AvenueGame
-          instId={inst.id}
-          onInstChange={(id) => {
-            setInstId(id);
-            setSheet((s) => (s?.kind === "game" && s.slide ? null : s));
-          }}
-          onHit={(hit, i) => setSheet({ kind: "game", hit, inst: i })}
-          onSlide={(pick, i) =>
-            setSheet((s) => {
-              if (!pick) return s?.kind === "game" && s.slide ? null : s;
-              const { index, level, ...slide } = pick;
-              return { kind: "game", hit: { kind: "email", index, level }, inst: i, slide };
-            })
-          }
-        />
-        <ExchangeLegend onMore={() => setSheet({ kind: "key" })} />
-      </section>
+      <SnakesLadders />
 
       <button
         type="button"
@@ -1012,44 +971,13 @@ function KeySheet() {
       </div>
       <p className="mt-4 text-sm leading-relaxed text-muted">
         Top: the dartboard. Each slice is an institution, each ring a step inward from first enquiry
-        to tribunal. Below: pick an institution. The ape is that institution and its fireballs are
-        its replies; the climber is the requester. Each girder is one rung of that institution's own
-        ladder, built from UK law and the body's own policies: first step at the bottom, court
-        routes at the top. Tap a girder for its time limit, cost and legal basis; PAID marks a route
-        that costs money. Tap anything for details. The number on each outer slice matches the
-        number in the dropdown. A yellow $ marks where the institution sought or mentioned a fee: a
+        to tribunal; the small chevrons show the flow, from the outside in towards the bull. Below: the
+        snakes and ladders board, the same path square by square. Each counter is an institution on the
+        square it has reached; ladders are lawful shortcuts, snakes procedural setbacks, each named by
+        its law. Gold: a ladder earned. Red: a snake hit. The number on each outer slice matches the
+        institution's number. A yellow $ marks where the institution sought or mentioned a fee: a
         cost-limit refusal, a fees notice, or a copy or search charge.
       </p>
-      <div className="mt-4 flex flex-col gap-2 text-sm text-muted">
-        <p className="flex items-center gap-2">
-          <CloudIcon n={1} /> Our email to that body, numbered in order: 1 is the first, 2 the
-          second, and so on.
-        </p>
-        <p className="flex items-center gap-2">
-          <FireIcon /> Their reply.
-        </p>
-        <p className="flex items-center gap-2">
-          <HeartIcon /> A reply that was fully satisfactory: every question answered and nothing
-          more they could have done. When in doubt it stays a fire.
-        </p>
-        <p className="flex items-center gap-2">
-          <PhoneIcon /> A phone call. <HeartIcon phone /> A good call.
-        </p>
-        <p className="flex items-center gap-2">
-          <DiamondIcon /> On the girder under a reply: they attached something. Tap the diamond to
-          see it.
-        </p>
-        <p className="flex items-center gap-2">
-          <span className="opacity-40">
-            <FireIcon />
-          </span>{" "}
-          Faded: a generic note (thanks, an acknowledgement, an automatic reply).
-        </p>
-        <p className="text-xs text-faint">
-          The classification is kept in one file (src/data/correspondence.json) and corrected by
-          hand.
-        </p>
-      </div>
       <div className="mt-3 flex flex-wrap gap-2">
         {(Object.keys(outcomeInfo) as (keyof typeof outcomeInfo)[]).map((o) => (
           <Chip key={o} colour={outcomeInfo[o].colour}>

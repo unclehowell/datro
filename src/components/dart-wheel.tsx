@@ -3,7 +3,8 @@ import { sliceCell, sliceHasFee, wheelSlices, type WheelSlice } from "@/data/whe
 
 /**
  * The dartboard: one numbered slice per institution (same number as the game's dropdown), one
- * ring per escalation step (outside = first enquiry, bull = tribunal or court). Visual only; a
+ * ring per escalation step (outside = first enquiry, bull = tribunal or court). Small chevrons in every
+ * fifth cell point inward: the direction of flow, from first requests to the bull. Visual only; a
  * tap opens the details. "$" marks a cell where the institution sought or mentioned fees.
  */
 const C = 200;
@@ -40,6 +41,7 @@ export function DartWheel({
   const band = (OUTER - INNER) / rings.length;
   const start = -Math.PI / 2 - slice / 2;
   const fees: { x: number; y: number; size: number; key: string }[] = [];
+  const chevrons: { d: string; key: string }[] = [];
 
   return (
     <svg viewBox="0 0 400 400" className="mx-auto block w-full max-w-[440px] touch-manipulation select-none" role="img" aria-label="Dartboard of institutions and escalation rings">
@@ -90,6 +92,16 @@ export function DartWheel({
             const [fx, fy] = polar((r0 + r1) / 2, a0 + slice / 2);
             const width = ((r0 + r1) / 2) * slice;
             fees.push({ x: fx, y: fy, size: Math.max(8, Math.min(14, width * 0.95, band * 0.95)), key: `${s.label}-${ring.id}` });
+          } else if ((i + 2 * j) % 5 === 0 && ((OUTER - j * band - band / 2) * slice) > 9) {
+            // Flow chevron: every fifth cell along each ring (staggered ring to ring), pointing at the bull.
+            const rm = (r0 + r1) / 2;
+            const am = a0 + slice / 2;
+            const h = Math.min(band * 0.36, rm * slice * 0.3, 4.2);
+            const spread = (h * 0.95) / rm;
+            const [tx, ty] = polar(rm - h * 0.55, am);
+            const [ax, ay] = polar(rm + h * 0.55, am - spread);
+            const [bx, by] = polar(rm + h * 0.55, am + spread);
+            chevrons.push({ d: `M${ax.toFixed(2)} ${ay.toFixed(2)}L${tx.toFixed(2)} ${ty.toFixed(2)}L${bx.toFixed(2)} ${by.toFixed(2)}`, key: `${s.label}-${ring.id}` });
           }
           return (
             <path
@@ -114,6 +126,12 @@ export function DartWheel({
       })}
       {rings.map((ring, j) => (
         <circle key={`c-${ring.id}`} cx={C} cy={C} r={OUTER - j * band} fill="none" stroke="#9a8b74" strokeOpacity="0.3" strokeWidth="0.6" pointerEvents="none" />
+      ))}
+      {chevrons.map((c) => (
+        <g key={`chev-${c.key}`} pointerEvents="none" aria-hidden="true">
+          <path d={c.d} fill="none" stroke="#14110e" strokeOpacity="0.45" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+          <path d={c.d} fill="none" stroke="#f4efe6" strokeOpacity="0.85" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round" />
+        </g>
       ))}
       {fees.map((f) => (
         <text
