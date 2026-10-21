@@ -2,14 +2,42 @@
 "site": "https://fb.bucklerfamily.estate",
 "api": "https://comments.bucklerfamily.estate/api/comments",
 "docs": "https://fb.bucklerfamily.estate/api/",
-"count": 193,
+"count": 208,
 "posts": [
+{
+"id": "r-1824-bute-survey",
+"date": "1824",
+"title": "Great House Farm (Tŷ Mawr), Llandough — “Cedfin or Ty Mawr Farm”, 139a 3r 8p",
+"url": "https://fb.bucklerfamily.estate/n/r-1824-bute-survey.html",
+"profile": "https://fb.bucklerfamily.estate/u/great-house-farm.html"
+},
 {
 "id": "d-1864-12-23-amy-williams",
 "date": "23 December 1864",
 "title": "Williams / Buckler family — Amy Williams",
 "url": "https://fb.bucklerfamily.estate/n/d-1864-12-23-amy-williams.html",
 "profile": "https://fb.bucklerfamily.estate/u/williams-buckler-family.html"
+},
+{
+"id": "r-1877-thomas-agreement",
+"date": "1877",
+"title": "Daniel Thomas & Son (Llandough Limeworks) — Agreement with the Marquess of Bute over land at Great House Farm",
+"url": "https://fb.bucklerfamily.estate/n/r-1877-thomas-agreement.html",
+"profile": "https://fb.bucklerfamily.estate/u/daniel-thomas-and-son.html"
+},
+{
+"id": "r-1877-11-06-lease",
+"date": "6 November 1877",
+"title": "John Williams (d. 1908) — Lease from the Marquess of Bute to John Williams",
+"url": "https://fb.bucklerfamily.estate/n/r-1877-11-06-lease.html",
+"profile": "https://fb.bucklerfamily.estate/u/john-williams-senior.html"
+},
+{
+"id": "r-1881-04-03-census",
+"date": "3 April 1881",
+"title": "John Williams (d. 1908) — “Llandough Home Farm”: the household of John Williams",
+"url": "https://fb.bucklerfamily.estate/n/r-1881-04-03-census.html",
+"profile": "https://fb.bucklerfamily.estate/u/john-williams-senior.html"
 },
 {
 "id": "n-1889-08-16-orchard",
@@ -54,6 +82,13 @@
 "profile": "https://fb.bucklerfamily.estate/u/cardiff-times.html"
 },
 {
+"id": "r-1905-02-23-cardiff",
+"date": "23 February 1905",
+"title": "The Bute Estate — Conveyance to Cardiff City Corporation",
+"url": "https://fb.bucklerfamily.estate/n/r-1905-02-23-cardiff.html",
+"profile": "https://fb.bucklerfamily.estate/u/bute-estate.html"
+},
+{
 "id": "d-1908-john-williams",
 "date": "1908 (day and month not recorded)",
 "title": "Williams / Buckler family — Mr. John Williams, Great House",
@@ -68,11 +103,60 @@
 "profile": "https://fb.bucklerfamily.estate/u/barry-dock-news.html"
 },
 {
+"id": "r-1916-02-tenancy",
+"date": "February 1916",
+"title": "John Williams (the younger) — Yearly agricultural tenancy of the whole farm",
+"url": "https://fb.bucklerfamily.estate/n/r-1916-02-tenancy.html",
+"profile": "https://fb.bucklerfamily.estate/u/john-williams-junior.html"
+},
+{
+"id": "r-1923-peace-petition",
+"date": "1923",
+"title": "Esther Williams — Signature on the Welsh Women’s Peace Petition: “Llandough”",
+"url": "https://fb.bucklerfamily.estate/n/r-1923-peace-petition.html",
+"profile": "https://fb.bucklerfamily.estate/u/esther-williams.html"
+},
+{
+"id": "r-1936-05-14-auction",
+"date": "14 May 1936",
+"title": "Llwyn-yr-eryr, Llandough — Offered at auction and withdrawn",
+"url": "https://fb.bucklerfamily.estate/n/r-1936-05-14-auction.html",
+"profile": "https://fb.bucklerfamily.estate/u/llwyn-yr-eryr.html"
+},
+{
 "id": "n-1936-08-05-llandough-bride",
 "date": "5 August 1936",
 "title": "Western Mail — Llandough Bride",
 "url": "https://fb.bucklerfamily.estate/n/n-1936-08-05-llandough-bride.html",
 "profile": "https://fb.bucklerfamily.estate/u/western-mail.html"
+},
+{
+"id": "r-1936-09-22-spencer",
+"date": "22 September 1936",
+"title": "Charles St David Spencer — Trustee Act notice",
+"url": "https://fb.bucklerfamily.estate/n/r-1936-09-22-spencer.html",
+"profile": "https://fb.bucklerfamily.estate/u/charles-st-david-spencer.html"
+},
+{
+"id": "r-1938-12-25-wgr",
+"date": "25 December 1938",
+"title": "The Bute Estate — The Bute interest at Llandough passes to Western Ground Rents Ltd",
+"url": "https://fb.bucklerfamily.estate/n/r-1938-12-25-wgr.html",
+"profile": "https://fb.bucklerfamily.estate/u/bute-estate.html"
+},
+{
+"id": "r-1939-05-dbdt",
+"date": "May 1939",
+"title": "John Williams (the younger) — 5.30 acres “adjacent to Ty-Mawr farmhouse and Llwyn-yr-eryr”",
+"url": "https://fb.bucklerfamily.estate/n/r-1939-05-dbdt.html",
+"profile": "https://fb.bucklerfamily.estate/u/john-williams-junior.html"
+},
+{
+"id": "r-1949-02-02-tenancy",
+"date": "2 February 1949",
+"title": "Frederick (Fred) Buckler — Surrender and new yearly tenancy, as the Court of Appeal recites it",
+"url": "https://fb.bucklerfamily.estate/n/r-1949-02-02-tenancy.html",
+"profile": "https://fb.bucklerfamily.estate/u/frederick-buckler.html"
 },
 {
 "id": "n-1955-leckwith-woods",
@@ -369,6 +453,13 @@
 "profile": "https://fb.bucklerfamily.estate/u/south-wales-echo.html"
 },
 {
+"id": "r-1990-02-23-green",
+"date": "23 February 1990",
+"title": "Llandough Community Council — The council “wanted the land registered” as a village green",
+"url": "https://fb.bucklerfamily.estate/n/r-1990-02-23-green.html",
+"profile": "https://fb.bucklerfamily.estate/u/llandough-community-council.html"
+},
+{
 "id": "d-1990-william-buckler",
 "date": "29 April 1990 (probate calendar) or the week to 2 June 1990 (South Wales Echo)",
 "title": "Williams / Buckler family — William (Billy) Buckler",
@@ -390,6 +481,13 @@
 "profile": "https://fb.bucklerfamily.estate/u/south-wales-echo.html"
 },
 {
+"id": "r-1994-01-12-planting",
+"date": "12 January 1994",
+"title": "Ideal Homes Wales — “Llandough Farm”: village green planting plan",
+"url": "https://fb.bucklerfamily.estate/n/r-1994-01-12-planting.html",
+"profile": "https://fb.bucklerfamily.estate/u/ideal-homes-wales.html"
+},
+{
 "id": "n-1994-11-07-127-acres",
 "date": "7 November 1994",
 "title": "South Wales Echo — (search extract)",
@@ -402,6 +500,13 @@
 "title": "South Wales Echo — (search extract)",
 "url": "https://fb.bucklerfamily.estate/n/n-1995-04-22-green.html",
 "profile": "https://fb.bucklerfamily.estate/u/south-wales-echo.html"
+},
+{
+"id": "r-2026-06-14-lcc-foi",
+"date": "14 June 2026",
+"title": "Llandough Community Council — Minutes from 1982 deposited at Glamorgan Archives in 2002",
+"url": "https://fb.bucklerfamily.estate/n/r-2026-06-14-lcc-foi.html",
+"profile": "https://fb.bucklerfamily.estate/u/llandough-community-council.html"
 },
 {
 "id": "n-2026-10-19-case-film",

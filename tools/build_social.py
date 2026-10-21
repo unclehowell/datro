@@ -12,6 +12,7 @@ BOOT = '<script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.0.3">
 HONEST = "A reconstruction: these outlets’ real articles shown as if posted online. Not their own accounts."
 FOOT = "Our case, prospective. Not a finding of any court."
 RECON = "A reconstruction: this announcement is written for this archive from the record in “Source”; the profile shown did not post it."
+RECON_E = "A reconstruction: this entry is written for this archive from the record in “Source”; the place, body or person shown did not post it."
 WORDING = "Words in [square brackets] are the archive’s: neutral words in place of the original’s, or gaps filled. Quotes from named people appear as their comments, word for word."
 ns = {}
 exec(open(os.path.join(ROOT, "tools", "social_data.py"), encoding="utf-8").read(), ns)
@@ -34,6 +35,11 @@ for slug, o in OUT.items():
         o["avatar"] = "img/social/av-%s.svg" % slug
 for slug, p in PEO.items():
     p.setdefault("kind", "Person")
+    if p.get("entity") and not os.path.exists(os.path.join(SITE, p["avatar"])):
+        t = p.get("initials") or "".join(w[0] for w in p["name"].split()[:2]).upper(); fs = 44 if len(t) <= 2 else 32
+        svg = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="%s"/>'
+               '<text x="50" y="50" dy=".36em" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-weight="700" font-size="%d" fill="#fff">%s</text></svg>') % (p.get("color", "#65676b"), fs, e(t))
+        open(os.path.join(SITE, p["avatar"]), "w").write(svg)
 
 def prof(slug):
     return OUT.get(slug) or PEO.get(slug)
@@ -83,7 +89,7 @@ def top(active, up=""):
             ) % (ico("menu"), ico("plus"), ico("search"), ico("chat"), menu, ico("x"))
 
 def tabs(active, up=""):
-    n_latest = len([p for p in POSTS if p["date"] >= "2026"])
+    n_latest = len([p for p in POSTS if p["outlet"] == "tab-bot"])
     items = [("/", "feed", "Home", ""), ("/videos.html", "video", "Videos", ""), ("/profiles.html", "people", "Profiles", ""), ("https://shop.bucklerfamily.estate/", "shop", "Gift Shop & Marketplace", ""),
              ("/#latest", "bell", "Latest posts", '<span class="fb-badge">%d</span>' % n_latest)]
     out = ''.join('<a href="%s" aria-label="%s"%s>%s%s</a>' % (h, l, ' aria-current="page"' if active == k else "", ico(k), bd) for h, k, l, bd in items)
@@ -112,7 +118,7 @@ def link(u):
     if u.startswith("@"): return EVL.get(u[1:], PA)
     return u
 
-KIND = {"update": "Update", "announcement": "Announcement", "article": "Article", "extract": "Archive extract", "notice": "Notice", "letter": "Letter to the editor", "video": "Video", "record": "Debate record"}
+KIND = {"update": "Update", "entry": "Record entry", "announcement": "Announcement", "article": "Article", "extract": "Archive extract", "notice": "Notice", "letter": "Letter to the editor", "video": "Video", "record": "Debate record"}
 def phid(src):
     return "p-ph-" + re.sub(r"[^a-z0-9]+", "-", os.path.basename(src).rsplit(".", 1)[0].lower()).strip("-")
 
@@ -140,7 +146,7 @@ def card(p, up, single=False):
              ('<p class="sp-note">Archive note: %s</p>' % e(p["note"])) if p.get("note") else "",
              ('<p class="sp-note">%s</p>' % e(WORDING)) if (p.get("subs") or any(isinstance(c, dict) and c.get("subs") for c in p.get("comments", []))) else ""))
     if p.get("recon"):
-        h.append('<p class="sp-recon">%s</p>' % e(RECON))
+        h.append('<p class="sp-recon">%s</p>' % e(RECON_E if p["kind"] == "entry" else RECON))
     if p.get("shares"):
         h.append('<div class="sp-shares"><p class="sp-sc">%d share%s</p>' % (len(p["shares"]), "" if len(p["shares"]) == 1 else "s"))
         for s in p["shares"]:
@@ -165,7 +171,7 @@ def card(p, up, single=False):
     h.append("</article>")
     return "".join(h)
 
-DECADES = [("1860s", "1860"), ("1880s", "1880"), ("1890s", "1890"), ("1900s", "1900"), ("1930s", "1930"), ("1950s", "1950"), ("1960s", "1960"), ("1970s", "1970"), ("1980–87", "1980"), ("1988", "1988"), ("1989", "1989"), ("1990s", "1990")]
+DECADES = [("1820s", "1820"), ("1860s", "1860"), ("1880s", "1880"), ("1890s", "1890"), ("1900s", "1900"), ("1930s", "1930"), ("1950s", "1950"), ("1960s", "1960"), ("1970s", "1970"), ("1980–87", "1980"), ("1988", "1988"), ("1989", "1989"), ("1990s", "1990"), ("2020s", "2020")]
 def anchor_for(p):
     y = int(p["date"][:4]); best = None
     for lab, start in DECADES:
@@ -188,13 +194,13 @@ def build():
     n_out = len(OUT); n_posts = len(POSTS); nq = sum(len(p.get("comments", [])) for p in POSTS); ns_ = sum(len(p.get("shares", [])) for p in POSTS)
     # feed: the newest posts (2026, Tab.bot) pinned at the top, then the story as the papers told it, oldest first
     seen, cards = set(), []
-    latest = [p for p in POSTS if p["date"] >= "2026"]
+    latest = [p for p in POSTS if p["outlet"] == "tab-bot"]
     if latest:
         cards.append('<h2 class="sb-era" id="latest">Latest</h2>')
         cards += [card(p, "") for p in sorted(latest, key=lambda p: p["date"], reverse=True)]
         cards.append('<h2 class="sb-era" id="story">The story as the papers told it, 1864–1995</h2>')
     for p in POSTS:
-        if p["date"] >= "2026": continue
+        if p["outlet"] == "tab-bot": continue
         a = anchor_for(p)
         if a not in seen:
             seen.add(a); cards.append('<h2 class="sb-era" id="y%s">%s</h2>' % (a, dict((s, l) for l, s in DECADES)[a]))
@@ -237,6 +243,8 @@ def build():
         _s = set(); photos = [x for x in photos if not (x[0] in _s or _s.add(x[0]))]
         grid = "".join('<a href="%s"><img src="../%s" alt="%s" loading="lazy"></a>' % (("../n/%s.html" % pid) if pid else "../" + src, src, e(cap)) for src, cap, pid in photos) or "<p class=\"muted\">No photos yet.</p>"
         about = '<p>%s</p>' % e(x["about"])
+        if x.get("entity"): about += '<p class="muted">A profile written for this archive from the records named under each entry’s “Source”; this place, body or person did not post here.</p>'
+        if x.get("ai"): about += '<p class="muted">Tab.bot is an AI agent. Its posts are written by it and checked against the record before they go up.</p>'
         if x.get("cover_credit"): about += '<p class="muted">Cover: %s</p>' % e(x["cover_credit"])
         if is_person and x.get("avatar_credit"): about += '<p class="muted">Profile picture: %s</p>' % e(x["avatar_credit"])
         if x.get("avatar_original"): about += '<p class="muted">Restored photo: print grain, dust and colour cast removed, light and sharpness corrected; fine face detail filled in by an AI face-restoration tool at its most faithful setting, checked side by side against the original. <a href="../%s">See the original</a></p>' % x["avatar_original"]
@@ -265,11 +273,11 @@ def build():
     rows = []
     for slug in list(PEO) + list(OUT):
         x = prof(slug); n = len([p for p in POSTS if p["outlet"] == slug]) if slug in OUT else len([1 for p in POSTS for c in p.get("comments", []) if (c["who"] if isinstance(c, dict) else c[0]) == slug]) + len([p for p in POSTS if p["outlet"] == slug])
-        rows.append('<a class="pl" href="u/%s.html"><img src="%s" alt="" width="48" height="48" loading="lazy"><span><strong>%s</strong><span class="muted">%s · %d %s</span></span></a>' % (slug, x["avatar"], e(x["name"]), e(x["kind"]), n, "posts and comments" if slug in PEO else "posts"))
+        rows.append('<a class="pl" href="u/%s.html"><img src="%s" alt="" width="48" height="48" loading="lazy"><span><strong>%s</strong><span class="muted">%s · %d %s</span></span></a>' % (slug, x["avatar"], e(x["name"]), e(x["kind"]), n, ("entry" if n == 1 else "entries") if x.get("entity") else ("posts and comments" if slug in PEO else "posts")))
     write("profiles.html", head("Profiles · farmbook", "Every newspaper, broadcaster and person on farmbook.", "profiles.html") + "<body>" + top("pages") + '<main id="main" class="sb-main"><h1 class="sb-h1">Profiles</h1><div class="pf-card">%s</div></main>' % "".join(rows) + tabs("people") + foot())
     # posts.json merge (old timeline posts keep their entries; social posts added)
     pjp = os.path.join(SITE, "posts.json"); pj = json.load(open(pjp, encoding="utf-8"))
-    old = [x for x in pj["posts"] if not x["id"].startswith(("n-", "d-"))]
+    old = [x for x in pj["posts"] if not x["id"].startswith(("n-", "d-", "r-"))]
     new = [{"id": p["id"], "date": p["when"], "title": "%s — %s" % (prof(p["outlet"])["name"], p["headline"]), "url": "%s/n/%s.html" % (BASE, p["id"]), "profile": "%s/u/%s.html" % (BASE, p["outlet"])} for p in POSTS]
     pj["posts"] = new + old; pj["count"] = len(pj["posts"])
     ph_old = [x for x in pj.get("photos", []) if not x["id"].startswith("p-ph-") or os.path.exists(os.path.join(SITE, x["src"].replace(BASE + "/", "")))]
