@@ -11,7 +11,7 @@
     "89/01396/OUT"
    ],
    "title": "Vale of Glamorgan planning file 92/00671 (1992), Great House Farm, Llandough",
-   "date": "1990–1994",
+   "date": "1990\u20131994",
    "date_sort": "1992-09-03",
    "date_basis": "document",
    "type": "register",
@@ -44,7 +44,8 @@
     "EV-0201",
     "EV-0126",
     "EV-0131",
-    "EV-0209"
+    "EV-0209",
+    "WB-0801"
    ],
    "people": [
     "Ideal Homes Wales",
@@ -65,7 +66,63 @@
     "page_id": 4713
    },
    "added": "2026-10-21",
-   "note": "Reserved matters 92/00671/RES (20 houses, Ideal Homes Wales) approved 3 September 1992 under outline 89/01396/OUT of 13 March 1990, whose conditions 16–18 concern archaeology. The 12 scans were already catalogued; this item groups them and adds machine-read text of every page."
+   "note": "Reserved matters 92/00671/RES (20 houses, Ideal Homes Wales) approved 3 September 1992 under outline 89/01396/OUT of 13 March 1990, whose conditions 16\u201318 concern archaeology. The 12 scans were already catalogued; this item groups them and adds machine-read text of every page."
+  },
+  {
+   "id": "WB-0801",
+   "ev": null,
+   "keys": [
+    "92/00671/RES",
+    "89/01396/OUT"
+   ],
+   "title": "Vale of Glamorgan Borough Council: Approval of Reserved Matters 92/00671/RES, decision notice, 3 September 1992 (20 houses at Great House Farm, Leckwith Road, Llandough)",
+   "date": "1992-09-03",
+   "date_sort": "1992-09-03",
+   "date_basis": "document",
+   "type": "letter",
+   "status": "HELD",
+   "source": {
+    "kind": "web",
+    "url": "https://vogonline.planning-register.co.uk/Planning/Display/1992/00671/RES",
+    "repository": "Vale of Glamorgan Council online planning register, application 1992/00671/RES",
+    "reference": "92/00671/RES (register file \"92-00671.pdf\")"
+   },
+   "institution": "Vale of Glamorgan Borough Council",
+   "files": [
+    {
+     "path": "pdf/evidence/1992-09-03_vale-of-glamorgan-council_92-00671-res-decision-notice.pdf",
+     "url": "https://wayback.bucklerfamily.estate/pdf/evidence/1992-09-03_vale-of-glamorgan-council_92-00671-res-decision-notice.pdf",
+     "storage": "r2",
+     "bytes": 30071,
+     "sha256": "0bcce593bdcccf7588d8d65eb53e596fc0c9c45e728b6b3d8f593621a400376f",
+     "mime": "application/pdf",
+     "original_filename": "92-00671.pdf"
+    },
+    {
+     "path": "text/evidence/1992-09-03_vale-of-glamorgan-council_92-00671-res-decision-notice.txt",
+     "url": "https://wayback.bucklerfamily.estate/text/evidence/1992-09-03_vale-of-glamorgan-council_92-00671-res-decision-notice.txt",
+     "storage": "git",
+     "bytes": 1901,
+     "sha256": "add91d4fb0a51d3ccacfcf93e0e294d407366a5e953cce1fe65eb35d82368ad9",
+     "mime": "text/plain"
+    }
+   ],
+   "people": [
+    "Ideal Homes Wales",
+    "Wyn Thomas & Partners",
+    "Chief Executive, Vale of Glamorgan Borough Council"
+   ],
+   "parcels": [
+    "Great House Farm",
+    "Llandough"
+   ],
+   "parent": "WB-0800",
+   "wiki": {
+    "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0128-ggat-letter-reserved-matters-approval/",
+    "page_id": 4713
+   },
+   "added": "2026-10-21",
+   "note": "Approves the reserved matters \u201csubject to compliance with the outstanding conditions imposed\u201d on outline 89/01396/OUT of 13 March 1990; adds one new condition only (samples of materials, reason: \u201cto safeguard local visual amenities\u201d); signed over the title Chief Executive, dated 3rd September 1992; no mention of archaeology. The 13th document of the 92/00671 file, published on the council's register and not among the 12 family scans."
   }
  ]
 }
