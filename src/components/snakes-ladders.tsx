@@ -177,19 +177,10 @@ export function SnakesLadders() {
           const row = Math.floor((s.n - 1) / COLS);
           const dark = (row + ((s.n - 1) % COLS)) % 2 === 0;
           const fin = s.n === data.squares.length;
-          const lines = wrap(s.short);
           return (
             <g key={s.n} onClick={() => setSheet({ kind: "square", n: s.n })} style={{ cursor: "pointer" }}>
               <rect x={p.x + 0.5} y={p.y + 0.5} width={CELL - 1} height={CELL - 1} rx="3" fill={fin ? "#3a2f1c" : dark ? "#2b241d" : "#3b3127"} stroke={fin ? GOLD : "none"} strokeWidth={fin ? 1.2 : 0} />
               <rect x={p.x + 0.5} y={p.y + 0.5} width={CELL - 1} height="2.4" rx="1" fill={TIER[s.tier] ?? "#c4a574"} opacity="0.75" />
-              <text x={p.x + 4} y={p.y + 12} fontFamily="Outfit, system-ui, sans-serif" fontSize="9.5" fontWeight="700" fill="#f4efe6" opacity="0.9">
-                {s.n}
-              </text>
-              {lines.map((l, i) => (
-                <text key={i} x={p.x + CELL / 2} y={p.y + CELL - 5 - (lines.length - 1 - i) * 8} textAnchor="middle" fontFamily="Outfit, system-ui, sans-serif" fontSize="7" fill="#a39888">
-                  {l}
-                </text>
-              ))}
             </g>
           );
         })}
@@ -199,6 +190,22 @@ export function SnakesLadders() {
         {data.snakes.map((j) => (
           <SnakeShape key={j.id} j={j} onPick={() => setSheet({ kind: "jump", id: j.id, snake: true })} />
         ))}
+        {data.squares.map((s) => {
+          const p = pos(s.n);
+          const lines = wrap(s.short);
+          return (
+            <g key={`l-${s.n}`} pointerEvents="none" fontFamily="Outfit, system-ui, sans-serif" stroke="#1b1612" strokeWidth="2.2" paintOrder="stroke" strokeLinejoin="round">
+              <text x={p.x + 4} y={p.y + 12} fontSize="9.5" fontWeight="700" fill="#f4efe6">
+                {s.n}
+              </text>
+              {lines.map((l, i) => (
+                <text key={i} x={p.x + CELL / 2} y={p.y + CELL - 5 - (lines.length - 1 - i) * 8} textAnchor="middle" fontSize="7" fill="#b3a898">
+                  {l}
+                </text>
+              ))}
+            </g>
+          );
+        })}
         {data.squares.map((s) => {
           const list = bySquare.get(s.n);
           if (!list?.length) return null;
@@ -226,7 +233,7 @@ export function SnakesLadders() {
                     style={{ cursor: "pointer" }}
                   >
                     <rect x={x} y={y} width="26" height="11" rx="5.5" fill={it.more ? "#14110e" : "#f4efe6"} stroke={it.more ? "#c4a574" : "#14110e"} strokeWidth="0.8" />
-                    <text x={x + 13} y={y + 5.9} textAnchor="middle" dominantBaseline="central" fontFamily="Outfit, system-ui, sans-serif" fontSize={it.label.length > 5 ? 5.6 : 6.6} fontWeight="700" fill={it.more ? "#c4a574" : "#14110e"}>
+                    <text x={x + 13} y={y + 5.9} textAnchor="middle" dominantBaseline="central" fontFamily="Outfit, system-ui, sans-serif" fontSize={it.label.length > 6 ? 4.6 : it.label.length > 5 ? 5.1 : it.label.length > 4 ? 5.9 : 6.6} fontWeight="700" fill={it.more ? "#c4a574" : "#14110e"}>
                       {it.label}
                     </text>
                   </g>
