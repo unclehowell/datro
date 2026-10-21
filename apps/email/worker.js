@@ -1,10 +1,13 @@
 const RAW_BASE = "https://raw.githubusercontent.com/unclehowell/datro/email-archive/apps/email";
 const MANIFEST_URL = "https://wayback.bucklerfamily.estate/email/mail-index.json";
-const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/dd0774cf5a78e1fb78d202654b36995531a559f3/apps/email/index.html";
+const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/2f57aa9ce958eebac2bf64eeaedec096be131d02/apps/email/index.html";
 const TEXT_HOST = "wayback.bucklerfamily.estate";
 // Wayback's case-mail API is the single source of truth for every case email (redacted copies).
 const CASEMAIL_INDEX_URL = "https://wayback.bucklerfamily.estate/api/index.json";
 const CASEMAIL_CORPUS_URL = "https://wayback.bucklerfamily.estate/api/corpus.json";
+// The evidence sweep's artifact manifest (work/evidence-sweep/MANIFEST_SPEC.md): attachments it has stored are linked to
+// the email they came from by source.gmail_message_id (21 Oct 2026, Sion's Tab agent).
+const ARTIFACTS_URL = "https://wayback.bucklerfamily.estate/artifacts/manifest.json";
 const API_VERSION = "2.0.0";
 
 function headers(extra) {
@@ -82,12 +85,40 @@ async function remoteFetch(url, timeoutMs) {
     clearTimeout(timer);
   }
 }
+async function loadArtifactAttachments() {
+  const by = new Map();
+  try {
+    const r = await remoteFetch(ARTIFACTS_URL, 8000);
+    if (!r.ok) return by;
+    const m = await r.json();
+    for (const it of (m && Array.isArray(m.items) ? m.items : [])) {
+      const gid = it && it.source && it.source.gmail_message_id;
+      if (!gid || it.duplicate_of || !Array.isArray(it.files)) continue;
+      for (const f of it.files) {
+        const p = String((f && f.path) || "").replace(/^\/+/, "");
+        if (!/^(pdf|images|text|video)\/[^?#]+$/.test(p) || p.includes("..")) continue;
+        const list = by.get(String(gid)) || [];
+        list.push({name: String(f.original_filename || p.split("/").pop()), title: String(it.title || ""), url: "/" + p,
+          mime: String(f.mime || ""), bytes: Number.isFinite(f.bytes) ? f.bytes : undefined, sha256: f.sha256 || null, catalogue: it.id});
+        by.set(String(gid), list);
+      }
+    }
+  } catch (e) {}
+  return by;
+}
 async function loadCaseMail() {
   try {
     const r = await remoteFetch(CASEMAIL_INDEX_URL, 12000);
     if (!r.ok) return {records: [], error: "case-mail index returned " + r.status};
     const d = await r.json();
-    return {records: Array.isArray(d.records) ? d.records.map(caseMailRecord) : [], generated: d.generated || null};
+    const extra = await loadArtifactAttachments();
+    const recs = Array.isArray(d.records) ? d.records.map(x => {
+      const more = extra.get(x.gmailMessageId);
+      if (!more || !more.length) return x;
+      const have = new Set((x.attachments || []).map(a => a && a.url));
+      return Object.assign({}, x, {attachments: (x.attachments || []).concat(more.filter(a => !have.has(a.url)))});
+    }) : [];
+    return {records: recs.map(caseMailRecord), generated: d.generated || null};
   } catch (e) { return {records: [], error: String(e && e.message || e)}; }
 }
 let corpusPromise = null;
@@ -204,11 +235,12 @@ export default {
 
   // ghf-lang (20 Oct 2026): English / Cymraeg / Español dropdown, served same-origin because of this site's CSP
   // + basecamp.js (20 Oct 2026): the "Back to base camp" link that ghf-lang.js loads — Sion's Tab agent
-  if (/^\/ghf-lang\/(ghf-lang\.js|basecamp\.js|sites\/[a-z0-9-]+\.json)$/.test(url.pathname)) {
+  // + ghf-theme.css, the tent mark and the Barlow fonts (20 Oct 2026): the shared Cedwyn Estate theme, same-origin for this CSP
+  if (/^\/(ghf-lang\/(ghf-lang\.js|basecamp\.js|ghf-theme\.css|sites\/[a-z0-9-]+\.json)|brand\/cedwyn-tent-icon-(64|128)\.png|fonts\/barlow-latin-(300|400|700)-normal\.woff2)$/.test(url.pathname)) {
     try {
       const r = await fetch("https://bucklerfamily.estate" + url.pathname, {cf:{cacheTtl:300, cacheEverything:true}});
       if (!r.ok) return new Response("Not found", {status:404, headers:headers({"Content-Type":"text/plain; charset=utf-8"})});
-      return new Response(r.body, {status:200, headers:headers({"Content-Type": url.pathname.endsWith(".js") ? "application/javascript; charset=utf-8" : "application/json; charset=utf-8", "Cache-Control":"public, max-age=300"})});
+      return new Response(r.body, {status:200, headers:headers({"Content-Type": url.pathname.endsWith(".js") ? "application/javascript; charset=utf-8" : url.pathname.endsWith(".css") ? "text/css; charset=utf-8" : url.pathname.endsWith(".png") ? "image/png" : url.pathname.endsWith(".woff2") ? "font/woff2" : "application/json; charset=utf-8", "Cache-Control":"public, max-age=300"})});
     } catch (e) { return new Response("Unavailable", {status:502, headers:headers({"Content-Type":"text/plain; charset=utf-8"})}); }
   }
 
