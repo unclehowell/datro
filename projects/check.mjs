@@ -5,12 +5,19 @@ import { runEstate } from "./estate/build.mjs";
 console.log("theme", JSON.stringify(applyAll())); // themes any page still in the old plain format (idempotent)
 console.log("estate", JSON.stringify(runEstate())); // independence: wiki links -> local pages or plain text; estate nav/footer (idempotent)
 
-// ghf-lang (20 Oct 2026): English / Cymraeg / Español dropdown on every page (idempotent; interface text only)
+// ghf-lang (20 Oct 2026) + header standard v2.0.3 (21 Oct 2026): language dropdown and the synchronous ghf-boot.js loader
+// (bars before the first paint) on every page (idempotent; versioned so phones pick up a new release at once)
 {
-  const GHF_LANG = '<script src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js" defer></script>';
+  const GHF_LANG = '<script src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js?v=2.0.3" defer></script>';
+  const GHF_BOOT = '<script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.0.3"></script>';
   const rootL = path.join(path.dirname(new URL(import.meta.url).pathname), "public"); let nL = 0;
-  (function walkL(d) { for (const f of fs.readdirSync(d)) { const p = path.join(d, f); if (fs.statSync(p).isDirectory()) walkL(p); else if (f.endsWith(".html")) { const t = fs.readFileSync(p, "utf8"); if (!t.includes("ghf-lang.js") && t.includes("</head>")) { fs.writeFileSync(p, t.replace("</head>", GHF_LANG + "\n</head>")); nL++; } } } })(rootL);
-  console.log("ghf-lang", nL);
+  (function walkL(d) { for (const f of fs.readdirSync(d)) { const p = path.join(d, f); if (fs.statSync(p).isDirectory()) walkL(p); else if (f.endsWith(".html")) { let t = fs.readFileSync(p, "utf8"); const t0 = t; if (!t.includes("</head>")) continue;
+    t = t.replace(/[ \t]*<script\b[^>]*\bsrc="https:\/\/bucklerfamily\.estate\/basecamp\.js[^"]*"[^>]*><\/script>\n?/g, "");
+    t = t.replace(/(src="https:\/\/bucklerfamily\.estate\/ghf-lang\/(?:ghf-lang|ghf-boot)\.js)(?:\?v=[^"]*)?"/g, '$1?v=2.0.3"');
+    if (!t.includes("ghf-lang.js")) t = t.replace("</head>", GHF_LANG + "\n</head>");
+    if (!t.includes("ghf-boot.js")) t = t.replace("</head>", GHF_BOOT + "\n</head>");
+    if (t !== t0) { fs.writeFileSync(p, t); nL++; } } } })(rootL);
+  console.log("ghf-lang+boot", nL);
 }
 
 // ebook cta (20 Oct 2026): shared e-book card (prices come from cta.js, v3 ladder) on every page (idempotent; links to the shop page)
