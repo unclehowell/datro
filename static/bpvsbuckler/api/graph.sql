@@ -1446,6 +1446,7 @@ INSERT INTO nodes VALUES ('doc-glamorgan-archives-2026-4097b','document','Glamor
 INSERT INTO nodes VALUES ('doc-glamorgan-archives-catalogue-enquiry-d696-udpe-2026-10-20','document','Glamorgan Archives catalogue enquiry — Western Ground Rents (D696), Cardiff Corporation 1940–42 and Penarth UDC (UDPE) 1972–74 — Llandough','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-glamorgan-archives-llandough-parish-tithe','document','Lead: Llandough-juxta-Penarth vestry, tithe, enclosure','{"holder": "Glamorgan Archives", "reference": "location lead drafted 7 Oct 2026 (no authority reference yet)", "date": "2026-10-07"}');
 INSERT INTO nodes VALUES ('doc-government-legal-department-bona-vacantia-western-ground-rents-foi-ack','document','Evidence Catalogue: Government Legal Department / Bona Vacantia — Western Ground Rents Ltd FOI Acknowledgement','{"holder": "", "reference": "", "date": ""}');
+INSERT INTO nodes VALUES ('doc-government-legal-department-western-ground-rents-foi-chase-2026-10-21','document','Government Legal Department — Bona Vacantia FOI chase — Western Ground Rents Ltd Llandough — 21 Oct 2026','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-heneb-GGAT02038s','document','Heneb replies, 6 and 14 October 2026','{"holder": "Heneb (Glamorgan-Gwent HER)", "reference": "GGAT02038s (request 8 Sep 2026; 6 Oct reply; 14 Oct digitisation update)", "date": "2026-10-14"}');
 INSERT INTO nodes VALUES ('doc-heneb-her-schedule-2026-10-16','document','heneb-her-schedule-2026-10-16.md','{"holder": "Heneb (The Trust for Welsh Archaeology) / Historic Environment Record", "reference": "GHF/HENEB/2026-09-20 schedule reply", "date": "2026-10-16"}');
 INSERT INTO nodes VALUES ('doc-hmlr-D260928','document','HM Land Registry — D260928 SAR supplement + new EIR','{"holder": "", "reference": "", "date": ""}');
@@ -1470,6 +1471,7 @@ INSERT INTO nodes VALUES ('doc-south-wales-police-sar','document','South Wales P
 INSERT INTO nodes VALUES ('doc-tab-whatsapp-gap-audit-2026-10-21','document','WhatsApp research-gap audit — Great House Farm / Tŷ Mawr','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-three-parcel-split-forensic-assessment-2026-10-18','document','Three-part Parcel A: chronology, order scope and later title transfers','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-tna-IR58-glamorgan-xlvii-6','document','TNA Valuation Office location lead / response','{"holder": "The National Archives", "reference": "CAS-359317-Q8Q4R9 (response 14 Oct 2026; follow-up 15 Oct 2026); prior draft r1281075964076169651", "date": "2026-10-14 (response); 2026-10-15 (follow-up)"}');
+INSERT INTO nodes VALUES ('doc-vale-of-glamorgan-00211483-00211484-chase-2026-10-21','document','Vale of Glamorgan — FOI/EIR chase — 00211483 and 00211484 — Great House Farm Llandough — 21 Oct 2026','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-vale-of-glamorgan-00211557','document','Vale of Glamorgan FOI 00211557, supplement 18 October 2026','{"holder": "Vale of Glamorgan Council, FOI Unit", "reference": "00211557", "date": "2026-10-18"}');
 INSERT INTO nodes VALUES ('doc-vale-of-glamorgan-2020-01590-hyb','document','Vale of Glamorgan Council FOI 2020 01590 HYB — WhatDoTheyKnow overdue reminder','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-vale-of-glamorgan-foi-eir-llandough-planning-1972-1996-2026-10-20','document','Vale of Glamorgan FOI/EIR — Llandough planning records 1972–1996 (Great House Farm / St Dochdwy''s Church green)','{"holder": "", "reference": "", "date": ""}');
@@ -3355,6 +3357,8 @@ INSERT INTO edges VALUES ('doc-three-parcel-split-forensic-assessment-2026-10-18
 INSERT INTO edges VALUES ('doc-three-parcel-split-forensic-assessment-2026-10-18','ref:WA240304','cites');
 INSERT INTO edges VALUES ('doc-three-parcel-split-forensic-assessment-2026-10-18','ref:WA735527','cites');
 INSERT INTO edges VALUES ('doc-tna-IR58-glamorgan-xlvii-6','ref:CAS-359317-Q8Q4R9','cites');
+INSERT INTO edges VALUES ('doc-vale-of-glamorgan-00211483-00211484-chase-2026-10-21','ref:00211483','cites');
+INSERT INTO edges VALUES ('doc-vale-of-glamorgan-00211483-00211484-chase-2026-10-21','ref:00211484','cites');
 INSERT INTO edges VALUES ('doc-vale-of-glamorgan-00211557','ref:00211557','cites');
 INSERT INTO edges VALUES ('doc-vale-of-glamorgan-00211557','ref:92/00671/RES','cites');
 INSERT INTO edges VALUES ('doc-welsh-government-ATISN-26-0010','ref:ATISN 27589','cites');
