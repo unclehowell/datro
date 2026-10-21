@@ -120,12 +120,24 @@ function setBase(b){
 function go(i,user){
   idx=i;var st=D.steps[i];$('slider').value=i;setBase(st.base);
   $('cDate').textContent=st.date;$('cTitle').textContent=st.title;$('cText').textContent=st.short||st.text;var cm=$('cMore');if(cm){$('cLong').textContent=st.text;cm.style.display=(st.short&&st.short!==st.text)?'':'none'}
-  $('cImg').innerHTML=st.img?'<a href="'+esc(st.img.href||st.img.src)+'" target="_blank" rel="noopener"><img src="'+esc(st.img.src)+'" alt="">'+esc(st.img.cap)+'</a>':'';
+  $('cImg').innerHTML=(st.img&&!st.img.intro)?'<a href="'+esc(st.img.href||st.img.src)+'" target="_blank" rel="noopener"><img src="'+esc(st.img.src)+'" alt="">'+esc(st.img.cap)+'</a>':'';
   $('cSrc').querySelector('ul').innerHTML=srcList(st.src);
+  showIntro(st);setTimeout(function(){if(D.steps[idx]===st)showIntro(st)},120);setTimeout(function(){if(D.steps[idx]===st)showIntro(st)},700);
   try{history.replaceState(null,'','#step='+st.id)}catch(e){}
   map.closePopup();render();
   if(playing){speak()}
 }
+function showIntro(st){var el=$('maryIntro');if(!el)return;var it=st.img&&st.img.intro;
+  if(!it){el.classList.remove('on');el.setAttribute('aria-hidden','true');return}
+  el.querySelector('img').src=st.img.src;el.querySelector('.nm').textContent=it.name;el.querySelector('.ls').textContent=it.life;el.querySelector('img').alt=it.name;
+  placeIntro();el.classList.add('on');el.setAttribute('aria-hidden','false')}
+function placeIntro(){var el=$('maryIntro'),pn=$('panel'),ap=$('app');if(!el||!pn||!ap)return;var A=ap.getBoundingClientRect(),R=pn.getBoundingClientRect(),W=A.width,H=A.height;
+  var side=(R.left-A.left)>W*0.3&&(R.top-A.top)<H*0.5;var top=52,right=0,avail=W,bottom=8;
+  if(side){right=Math.round(A.right-R.left);avail=W-right}else{bottom=Math.max(8,Math.round(A.bottom-R.top)+8)}
+  var h=Math.max(160,H-top-bottom),w=Math.round(avail*2/3);
+  el.style.top=top+'px';el.style.right=right+'px';el.style.width=w+'px';el.style.height=Math.min(h,Math.round(w*1.6))+'px'}
+if(window.ResizeObserver){try{new ResizeObserver(function(){var el=$('maryIntro');if(el&&el.classList.contains('on'))placeIntro()}).observe($('panel'))}catch(e){}}
+window.addEventListener('resize',function(){var el=$('maryIntro');if(el&&el.classList.contains('on'))placeIntro()});
 function speak(){
   clearTimeout(timer);voice.pause();if(window.speechSynthesis)speechSynthesis.cancel();
   if(muted){schedule();return}

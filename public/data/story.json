@@ -1,5 +1,5 @@
 {
- "version": "1.4.4",
+ "version": "1.4.5",
  "center": [
   51.4527,
   -3.1985
@@ -415,10 +415,10 @@
    "title": "Root title splits: A / B",
    "headline": "1877 · Root title splits: Parcel A / Parcel B",
    "labels": [
-    "TESTIMONY · Mary (Nancy) Williams"
+    "TESTIMONY · later statement (c.1974)"
    ],
-   "short": "1877: by Mary (Nancy) Williams’s statement, the title splits. Bute sells Parcel A, the farmhouse and about ten acres, to Daniel Thomas, and keeps Parcel B. When quarrying ceases, Parcel A is to be her grandfather’s.",
-   "text": "1877 · Root title splits: Parcel A / Parcel B. TESTIMONY · Mary (Nancy) Williams. Mary (Nancy) Williams’s statement (c.1974): the Bute Estate sold the farmhouse, buildings and about 10 acres to Daniel Thomas and kept about 9 acres (Parcel B). Her grandfather took a tenancy from Thomas for quarrying, and “when the quarrying ceased the freehold should belong to my grandfather”. The 1877 instrument itself is not held (EV-0006).",
+   "short": "1877: by a later statement (c.1974), the title splits. Bute sells Parcel A, the farmhouse and about ten acres, to Daniel Thomas, and keeps Parcel B. The farmer, John Williams, takes a tenancy from Thomas for quarrying. When quarrying ceases, Parcel A is to be his.",
+   "text": "1877 · Root title splits: Parcel A / Parcel B. TESTIMONY · later statement (c.1974). A later statement (c.1974): the Bute Estate sold the farmhouse, buildings and about 10 acres to Daniel Thomas and kept about 9 acres (Parcel B). John Williams, the farmer at Great House Farm, took a tenancy from Thomas for quarrying (the statement dates his lease 6 November 1877), and “when the quarrying ceased the freehold should belong to [John Williams]”. The 1877 instrument itself is not held (EV-0006).",
    "parcels": {
     "AN": {
      "rec": "thomas",
@@ -448,12 +448,8 @@
     "hp-testimony-mary-williams",
     "os1878"
    ],
-   "dur": 16.04,
-   "say": "Eighteen seventy-seven: by Mary Nancy Williams's statement, the title splits. Bute sells Parcel A, the farmhouse and about ten acres, to Daniel Thomas, and keeps Parcel B. When quarrying ceases, Parcel A is to be her grandfather's.",
-   "img": {
-    "src": "img/mary-williams.jpg",
-    "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
-   }
+   "dur": 17.77,
+   "say": "Eighteen seventy-seven: by a later statement, the title splits. Bute sells Parcel A, the farmhouse and about ten acres, to Daniel Thomas, and keeps Parcel B. The farmer, John Williams, takes a tenancy from Thomas for quarrying. When quarrying ceases, Parcel A is to be his."
   },
   {
    "id": "s03",
@@ -461,12 +457,12 @@
    "year": 1916,
    "base": "1920",
    "title": "Bute tenancy: J. Williams",
-   "headline": "1916 · Bute → John Williams: yearly tenancy of the “whole farm”",
+   "headline": "1916 · Bute → John Williams (the son): yearly tenancy of the “whole farm”",
    "labels": [
     "VERIFIED · judgment"
    ],
-   "short": "1916: Bute grants John Williams a yearly tenancy of the whole farm, Parcel A included. It is the last tenancy of Parcel A.",
-   "text": "1916 · Bute → John Williams: yearly tenancy of the “whole farm”. VERIFIED · judgment. The Court of Appeal’s history describes a February 1916 yearly agricultural tenancy of the “whole farm”. It covered Parcel A: the last tenancy of Parcel A, whose occupiers the Williams family had been since 1667. The tenancy (EV-0014) is not held.",
+   "short": "1916: John Williams’s son, also named John Williams, has farmed Great House Farm since his father died in 1908. Bute grants him a yearly tenancy of the whole farm, Parcel A included. It is the last tenancy of Parcel A.",
+   "text": "1916 · Bute → John Williams (the son): yearly tenancy of the “whole farm”. VERIFIED · judgment. John Williams died in 1908 and his son, also named John Williams, took over the farm (Barry Dock News, 23 Oct 1908, EV-0243; a later statement, c.1974). The Court of Appeal’s history describes a February 1916 yearly agricultural tenancy of the “whole farm”. It covered Parcel A: the last tenancy of Parcel A, whose occupiers the Williams family had been since 1667. The tenancy (EV-0014) is not held.",
    "parcels": {
     "AN": {
      "rec": "williams",
@@ -495,8 +491,8 @@
     "hp--ev-0014-bute-tenancy-john-williams-1916",
     "os1920"
    ],
-   "dur": 9.8,
-   "say": "Nineteen sixteen: Bute grants John Williams a yearly tenancy of the whole farm, Parcel A included. It is the last tenancy of Parcel A."
+   "dur": 15.47,
+   "say": "Nineteen sixteen: John Williams's son, also named John Williams, has farmed Great House Farm since his father died in nineteen oh eight. Bute grants him a yearly tenancy of the whole farm, Parcel A included. It is the last tenancy of Parcel A."
   },
   {
    "id": "s04",
@@ -550,8 +546,8 @@
    "labels": [
     "TESTIMONY · Mary (Nancy) Williams"
    ],
-   "short": "1928: quarrying ends and the last rent is paid. By Mary (Nancy) Williams’s statement, Parcel A becomes the Williams family’s.",
-   "text": "1928 · Last rent paid; quarrying ends: Parcel A becomes the Williams family’s. TESTIMONY · Mary (Nancy) Williams. Mary (Nancy) Williams’s statement (c.1974): the quarry machinery was removed in 1928 and her father made the last payment of rent, about £4 a year, to Alfred Thomas. “After this my father regarded the farm as his own.” Neither the 1877 deed nor the 1928 receipt is held.",
+   "short": "1928: quarrying ends, and John Williams pays the last rent. His daughter, Mary (Nancy) Williams, born at the farm in 1913, later states that from then on he regarded the farm as his own: Parcel A becomes the Williams family’s.",
+   "text": "1928 · Last rent paid; quarrying ends: Parcel A becomes the Williams family’s. TESTIMONY · Mary (Nancy) Williams. Mary (Nancy) Williams, John Williams’s daughter, was born at Great House Farm on 10 August 1913. Her statement (c.1974): the quarry machinery was removed in 1928 and her father made the last payment of rent, about £4 a year, to Alfred Thomas. “After this my father regarded the farm as his own.” Neither the 1877 deed nor the 1928 receipt is held.",
    "parcels": {
     "AN": {
      "rec": "williams",
@@ -581,11 +577,15 @@
     "hp-testimony-mary-williams",
     "os1920"
    ],
-   "dur": 9.93,
-   "say": "Nineteen twenty-eight: quarrying ends and the last rent is paid. By Mary Nancy Williams's statement, Parcel A becomes the Williams family's.",
+   "dur": 15.5,
+   "say": "Nineteen twenty-eight: quarrying ends, and John Williams pays the last rent. His daughter, Mary Nancy Williams, born at the farm in nineteen thirteen, later stated that from then on, he regarded the farm as his own. Parcel A becomes the Williams family's.",
    "img": {
     "src": "img/mary-williams.jpg",
-    "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
+    "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph.",
+    "intro": {
+     "name": "Mary (Nancy) Williams",
+     "life": "(1913 – 1983)"
+    }
    }
   },
   {
@@ -727,8 +727,8 @@
    "labels": [
     "VERIFIED · judgment"
    ],
-   "short": "1949: the Williams tenancy is surrendered, and a new yearly tenancy goes to Frederick Buckler. The written tenancy agreement that was intended never happens. The first attempt to make occupancy permissive, rejected.",
-   "text": "1949 · First attempt to make occupancy permissive, rejected. VERIFIED · judgment. The Court of Appeal (1987) records that Mr Williams “fell into arrears with his rent in the mid-1930s and in the late 1940s. Because of that, agreement was reached for Mr Williams' tenancy to be surrendered and for a new yearly agricultural tenancy commencing at February 2 1949 to be granted to Mr Williams' son-in-law, Mr Frederick Buckler”. It records: “It was intended that Mr Frederick Buckler should have a written tenancy agreement, but this did not happen because Mr Frederick Buckler also failed to pay the rent.” The landlords’ agents wrote to their solicitors on 10 October 1952 “that they did not propose to proceed with the letting to Mr Frederick Buckler”. Mary (Nancy) Williams’s own statement (c.1974): “I have never had any doubt that I was entitled to do so nor have I ever paid rent to or acknowledged the title of anyone as landlord.” In November 1958 she told Glamorgan County Council’s planning committee that “the water was cut off from her house and grounds for nearly 10 years by order of Western Ground Rents” (Western Mail, 20 Nov 1958, p.7; newspaper-archive OCR, page image not seen).",
+   "short": "1949: John Williams’s tenancy is surrendered, and a new yearly tenancy goes to Frederick Buckler, who married Mary in 1936 and has run the farm since 1944. The written tenancy agreement that was intended never happens. The first attempt to make occupancy permissive, rejected.",
+   "text": "1949 · First attempt to make occupancy permissive, rejected. VERIFIED · judgment. Frederick Buckler married Mary (Nancy) Williams in 1936 and, from 1944, ran the farm as manager for her father (her statement, c.1974). The Court of Appeal (1987) records that Mr Williams “fell into arrears with his rent in the mid-1930s and in the late 1940s. Because of that, agreement was reached for Mr Williams' tenancy to be surrendered and for a new yearly agricultural tenancy commencing at February 2 1949 to be granted to Mr Williams' son-in-law, Mr Frederick Buckler”. It records: “It was intended that Mr Frederick Buckler should have a written tenancy agreement, but this did not happen because Mr Frederick Buckler also failed to pay the rent.” The landlords’ agents wrote to their solicitors on 10 October 1952 “that they did not propose to proceed with the letting to Mr Frederick Buckler”. Mary (Nancy) Williams’s own statement (c.1974): “I have never had any doubt that I was entitled to do so nor have I ever paid rent to or acknowledged the title of anyone as landlord.” In November 1958 she told Glamorgan County Council’s planning committee that “the water was cut off from her house and grounds for nearly 10 years by order of Western Ground Rents” (Western Mail, 20 Nov 1958, p.7; newspaper-archive OCR, page image not seen).",
    "parcels": {
     "AN": {
      "rec": "williams",
@@ -760,8 +760,8 @@
     "hp--occupancy-of-parcel-a-appear-permissive",
     "os1947"
    ],
-   "dur": 15.36,
-   "say": "Nineteen forty-nine: the Williams tenancy is surrendered, and a new yearly tenancy goes to Frederick Buckler. The written tenancy agreement that was intended never happens. The first attempt to make occupancy permissive, rejected.",
+   "dur": 20.39,
+   "say": "Nineteen forty-nine: John Williams's tenancy is surrendered, and a new yearly tenancy goes to Frederick Buckler, who married Mary in nineteen thirty-six and has run the farm since nineteen forty-four. The written tenancy agreement that was intended never happens. The first attempt to make occupancy permissive, rejected.",
    "pend": [
     "AN"
    ],
@@ -836,8 +836,8 @@
    "labels": [
     "VERIFIED · press (OCR)"
    ],
-   "short": "7 May 1958: at Cardiff’s Leckwith Common inquiry, Mrs Mary Doreen Buckler does not oppose the plan, so long as it applies only to playing fields. It concerns Leckwith Common, not Parcel A.",
-   "text": "7 May 1958 · Cardiff City Council’s Leckwith Common inquiry (Leckwith Common, not Great House Farm or Parcel A). VERIFIED · press (OCR). At the 6 May 1958 inquiry into Cardiff City Council’s plan to turn Leckwith Common into playing fields, the Western Mail (7 May 1958, p.7) reports: “Mrs. Mary Doreen Buckler, of Great House Farm, Llandough, said she did not oppose the proposal so long as it applied only to playing fields. About 130 years ago Lord Bute allowed her family ‘a slice of land’ which was now Leckwith Common.” The inquiry concerned Leckwith Common, not Great House Farm or Parcel A. Quoted from the newspaper archive’s OCR; page image not seen.",
+   "short": "7 May 1958: at Cardiff’s Leckwith Common inquiry, Mary, reported under her married name as Mrs Mary Doreen Buckler, does not oppose the plan, so long as it applies only to playing fields. It concerns Leckwith Common, not Parcel A.",
+   "text": "7 May 1958 · Cardiff City Council’s Leckwith Common inquiry (Leckwith Common, not Great House Farm or Parcel A). VERIFIED · press (OCR). Mary appears in the press under her married name, Mrs Buckler. At the 6 May 1958 inquiry into Cardiff City Council’s plan to turn Leckwith Common into playing fields, the Western Mail (7 May 1958, p.7) reports: “Mrs. Mary Doreen Buckler, of Great House Farm, Llandough, said she did not oppose the proposal so long as it applied only to playing fields. About 130 years ago Lord Bute allowed her family ‘a slice of land’ which was now Leckwith Common.” The inquiry concerned Leckwith Common, not Great House Farm or Parcel A. Quoted from the newspaper archive’s OCR; page image not seen.",
    "parcels": {
     "AN": {
      "rec": "wgr",
@@ -866,8 +866,8 @@
     "hp-estern-mail-1958-leckwith-common-hearing",
     "os1947"
    ],
-   "dur": 13.3,
-   "say": "7 May nineteen fifty-eight: at Cardiff's Leckwith Common inquiry, Mrs Mary Doreen Buckler does not oppose the plan, so long as it applies only to playing fields. It concerns Leckwith Common, not Parcel A.",
+   "dur": 16.43,
+   "say": "7 May nineteen fifty-eight: at Cardiff's Leckwith Common inquiry, Mary, reported under her married name as Mrs Mary Doreen Buckler, does not oppose the plan, so long as it applies only to playing fields. It concerns Leckwith Common, not Parcel A.",
    "pend": [
     "AN",
     "AS"
@@ -938,7 +938,7 @@
     "VERIFIED · judgment"
    ],
    "short": "1958 to 59, the green: Western Ground Rents offers Mary a tenancy, and she refuses it.",
-   "text": "1958/9 · Green: attempt to make Mary (Nancy) Williams’s occupancy permissive, refused. VERIFIED · judgment. The Court of Appeal records that by 1959 Mary asserted title to Great House Farm through her grandfather, and: “She was offered a tenancy of the farmhouse and garden by Western Ground Rents but refused to accept it. She was also later offered, and refused, alternative accommodation.” The green lies south of the house and garden, now the Church View Close park, and was registered as village green VG41 on 16 June 1970. The offer and her reply (EV-0039) are not held.",
+   "text": "1958/9 · Green: attempt to make Mary (Nancy) Williams’s occupancy permissive, refused. VERIFIED · judgment. The Court of Appeal records that by 1959 Mary asserted title to Great House Farm through her grandfather, John Williams, and: “She was offered a tenancy of the farmhouse and garden by Western Ground Rents but refused to accept it. She was also later offered, and refused, alternative accommodation.” The green lies south of the house and garden, now the Church View Close park, and was registered as village green VG41 on 16 June 1970. The offer and her reply (EV-0039) are not held.",
    "parcels": {
     "AN": {
      "rec": "wgr",
@@ -1082,7 +1082,7 @@
    "labels": [
     "VERIFIED · judgment"
    ],
-   "short": "1965: Mrs Buckler is offered a weekly tenancy. Not signed; no rent paid.",
+   "short": "1965: Mary is offered a weekly tenancy. Not signed; no rent paid.",
    "text": "1965 · Further weekly tenancy offer; not signed, no rent paid. VERIFIED · judgment. Recorded in the Court of Appeal’s history: in March 1965 WGR’s agents offered Mrs Buckler a tenancy. Not signed; no rent paid.",
    "parcels": {
     "AN": {
@@ -1112,8 +1112,8 @@
     "hp-nce-ev-0039-wgr-tenancy-offers-1959-1965",
     "os1947"
    ],
-   "dur": 6.5,
-   "say": "Nineteen sixty-five: Mrs Buckler is offered a weekly tenancy. Not signed; no rent paid.",
+   "dur": 5.38,
+   "say": "Nineteen sixty-five: Mary is offered a weekly tenancy. Not signed; no rent paid.",
    "pend": [
     "AS"
    ],
@@ -1357,7 +1357,7 @@
    "labels": [
     "VERIFIED · judgment"
    ],
-   "short": "31 October 1974: BP’s letters offer her rent-free occupancy of the house. She never expressly accepts or rejects them.",
+   "short": "31 October 1974: BP’s letters offer Mary rent-free occupancy of the house. She never expressly accepts or rejects them.",
    "text": "31 Oct 1974 · BP letters offer continued rent-free occupancy of the house. VERIFIED · judgment. The letters were one-sided: the judgment records that Mrs Buckler “never expressly accepted or rejected the terms of the two letters”. In July 1974 her defence had asserted that the claim was barred by adverse possession. The Court of Appeal (1987) held: “whether she liked it or not, from the time of her receipt of the letters, Mrs Buckler was in possession of the farmhouse and garden by the licence of BP Properties Ltd, and her possession was no longer adverse” (Dillon LJ).",
    "parcels": {
     "AN": {
@@ -1387,8 +1387,8 @@
     "hp-ev-0080-bp-properties-v-buckler-judgment",
     "os1947"
    ],
-   "dur": 10.24,
-   "say": "31 October nineteen seventy-four: B P's letters offer her rent-free occupancy of the house. She never expressly accepts or rejects them.",
+   "dur": 10.36,
+   "say": "31 October nineteen seventy-four: B P's letters offer Mary rent-free occupancy of the house. She never expressly accepts or rejects them.",
    "img": {
     "src": "img/mary-williams.jpg",
     "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
@@ -1542,7 +1542,7 @@
    "labels": [
     "VERIFIED · judgment"
    ],
-   "short": "31 July 1987: the Court of Appeal decides the farmhouse and garden only, and holds that the letters made her possession a licence. From here, no register shows the Williams title to Parcel A.",
+   "short": "31 July 1987: the Court of Appeal decides the farmhouse and garden only, and holds that the letters made Mary’s possession a licence. From here, no register shows the Williams title to Parcel A.",
    "text": "31 Jul 1987 · Court of Appeal: BP Properties Ltd v Buckler [1987] EWCA Civ 2. VERIFIED · judgment. The appeal concerned the farmhouse and garden only. The Court of Appeal (1987) held: “whether she liked it or not, from the time of her receipt of the letters, Mrs Buckler was in possession of the farmhouse and garden by the licence of BP Properties Ltd, and her possession was no longer adverse”, so the adverse-possession claim to the farmhouse and garden failed. From here no register shows the Williams Parcel A title; the line runs on unregistered.",
    "parcels": {
     "AN": {
@@ -1572,8 +1572,8 @@
     "hp-ev-0080-bp-properties-v-buckler-judgment",
     "os1947"
    ],
-   "dur": 13.69,
-   "say": "31 July nineteen eighty-seven: the Court of Appeal decides the farmhouse and garden only, and holds that the letters made her possession a licence. From here, no register shows the Williams title to Parcel A.",
+   "dur": 13.73,
+   "say": "31 July nineteen eighty-seven: the Court of Appeal decides the farmhouse and garden only, and holds that the letters made Mary's possession a licence. From here, no register shows the Williams title to Parcel A.",
    "merged": true,
    "img": {
     "src": "img/mary-williams.jpg",
