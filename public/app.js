@@ -76,7 +76,7 @@ function facts(e){
   if(e.socials&&e.socials.length)r('Social',e.socials.map(function(u){return '<a href="'+esc(u)+'" rel="noopener">'+esc(socn(u))+'</a>'}).join(' · '));
   r('Opening hours',esc(e.hours));
   if(e.food_rating)r('Food hygiene rating',esc(String(e.food_rating).replace(/([a-z])([A-Z])/g,'$1 $2')+(e.food_rating_date&&!/^19/.test(e.food_rating_date)?' (inspected '+e.food_rating_date+')':'')));
-  if(e.company_no)r('Company number','<a href="https://find-and-update.company-information.service.gov.uk/company/'+esc(e.company_no)+'" rel="noopener">'+esc(e.company_no)+'</a>');
+  if(e.company_no)r('Company number','<a href="https://find-and-update.company-information.service.gov.uk/company/'+esc(e.company_no)+'" rel="noopener">'+esc(e.company_no)+'</a>'+(e.company_status?' · '+esc(e.company_status):'')+(e.incorporated?' · incorporated '+esc(e.incorporated):''));
   if(e.charity_no)r('Charity number',esc(e.charity_no));
   r('Heritage',esc(e.heritage));r('Period',esc(e.period));r('Offers',esc(e.offer));
   if(e.lat)r('Map','<a href="https://www.openstreetmap.org/?mlat='+e.lat+'&mlon='+e.lon+'#map=18/'+e.lat+'/'+e.lon+'" rel="noopener">Open map</a>');
