@@ -1451,6 +1451,7 @@ INSERT INTO nodes VALUES ('doc-heneb-her-schedule-2026-10-16','document','heneb-
 INSERT INTO nodes VALUES ('doc-hmlr-D260928','document','HM Land Registry — D260928 SAR supplement + new EIR','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-hmlr-historical-title-great-house-farm-location-lead','document','HMLR historical title location lead','{"holder": "HM Land Registry", "reference": "draft r-6678427177936368728 (not sent)", "date": "2026-10-15"}');
 INSERT INTO nodes VALUES ('doc-hmrc-FOI2026-118465','document','HMRC FOI2026/118465 acknowledgement','{"holder": "HMRC Information Rights Unit", "reference": "FOI2026/118465", "date": "2026-10-20"}');
+INSERT INTO nodes VALUES ('doc-ico-IC-546505-W6P0','document','ICO Case Reference IC-546505-W6P0','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-itv-wales-ty-mawr-media-location-lead','document','ITV Wales archive location lead for Ty Mawr / Great House Farm media, 14 October 2026','{"holder": "ITV Wales / ITV Cymru Archive", "reference": "none (initial enquiry re Ty Mawr Llandoche)", "date": "2026-10-14"}');
 INSERT INTO nodes VALUES ('doc-llandough-cc-internal-review-request-2026-10-12','document','Llandough Community Council — internal review request, new FOI/EIR, SAR (12 October 2026)','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-llandough-cc-narrower-foi-eir-2026-10-20','document','Llandough Community Council — narrower FOI/EIR request (20 October 2026)','{"holder": "", "reference": "", "date": ""}');
@@ -3321,6 +3322,8 @@ INSERT INTO edges VALUES ('doc-hmlr-D260928','ref:WA240304','cites');
 INSERT INTO edges VALUES ('doc-hmlr-D260928','ref:WA513690','cites');
 INSERT INTO edges VALUES ('doc-hmlr-D260928','ref:WA735527','cites');
 INSERT INTO edges VALUES ('doc-hmrc-FOI2026-118465','ref:FOI2026/118465','cites');
+INSERT INTO edges VALUES ('doc-ico-IC-546505-W6P0','ref:ATISN 27021','cites');
+INSERT INTO edges VALUES ('doc-ico-IC-546505-W6P0','ref:ATISN 27589','cites');
 INSERT INTO edges VALUES ('doc-llandough-cc-internal-review-request-2026-10-12','ref:89/01396/OUT','cites');
 INSERT INTO edges VALUES ('doc-llandough-cc-narrower-foi-eir-2026-10-20','ref:89/01396/OUT','cites');
 INSERT INTO edges VALUES ('doc-llandough-cc-narrower-foi-eir-2026-10-20','ref:92/00671/RES','cites');
