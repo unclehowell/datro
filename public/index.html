@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-GB" data-ghf-native="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Watchtower · institution website changes</title>
+<meta name="description" content="Watchtower: dated changes to institution web pages about Great House Farm (Tŷ Mawr), Llandough, compared against the Internet Archive. Red removed, green added, blue altered.">
+<meta property="og:title" content="Watchtower · institution website changes">
+<meta property="og:description" content="Every institution page linked in the case correspondence, compared against the Internet Archive for the last 13 months.">
+<meta name="theme-color" content="#000000">
+<link rel="stylesheet" href="style.css?v=1.0.0">
+<link rel="alternate" type="application/json" href="data/changes.json" title="Changes (data)">
+<script>(function(){function go(){if(document.querySelector('script[src*="ghf-lang.js"]'))return;var s=document.createElement('script');s.src='https://bucklerfamily.estate/ghf-lang/ghf-lang.js';s.setAttribute('data-site','watchtower');s.async=true;document.head.appendChild(s);}function later(){setTimeout(go,600);}if(document.readyState==='complete')later();else window.addEventListener('load',later);})();</script>
+<script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.1.0"></script>
+</head>
+<body>
+<main id="app">
+  <h1 class="vh">Watchtower</h1>
+  <div class="bar">
+    <label class="vh" for="inst">Institution</label>
+    <select id="inst"><option value="">All institutions</option></select>
+    <button id="info" class="ib" type="button" aria-label="About and pages tracked">ⓘ</button>
+  </div>
+  <div class="legend" role="group" aria-label="Show change types">
+    <button type="button" class="chip on" data-t="removed"><i class="d r"></i>Removed <b id="n-removed"></b></button>
+    <button type="button" class="chip on" data-t="added"><i class="d g"></i>Added <b id="n-added"></b></button>
+    <button type="button" class="chip on" data-t="altered"><i class="d b"></i>Altered <b id="n-altered"></b></button>
+    <button type="button" class="chip" id="farm" aria-pressed="false"><i class="d f"></i>Farm &amp; records</button>
+  </div>
+  <div id="chart" aria-label="Scatter graph of page changes by date and institution"></div>
+  <p id="meta" class="meta"></p>
+  <footer><p>Our case, prospective. Not a finding of any court.</p></footer>
+</main>
+<dialog id="dlg"><form method="dialog"><button class="x" aria-label="Close">×</button></form><div id="dbody"></div></dialog>
+<noscript><p style="padding:1em">This page needs JavaScript to draw the graph. The data is at <a href="data/changes.json">data/changes.json</a>.</p></noscript>
+<script src="app.js?v=1.0.0"></script>
+</body>
+</html>

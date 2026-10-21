@@ -1,0 +1,47 @@
+:root{--bg:#000;--fg:#fff;--mut:#9a9a9a;--line:#262626;--red:#e5484d;--green:#30a46c;--blue:#3e7bfa;--gold:#f2c94c;--panel:#0d0d0d}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{font-family:Barlow,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.45}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+main{max-width:1100px;margin:0 auto;padding:10px 12px 28px}
+.bar{display:flex;gap:8px;align-items:center}
+select{flex:1;min-width:0;font:inherit;font-size:16px;color:var(--fg);background:var(--panel);border:1px solid #444;border-radius:0;padding:9px 10px;appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,#bbb 50%),linear-gradient(135deg,#bbb 50%,transparent 50%);background-position:calc(100% - 16px) 50%,calc(100% - 11px) 50%;background-size:5px 5px;background-repeat:no-repeat}
+.ib{font:inherit;font-size:20px;line-height:1;width:42px;height:42px;background:var(--panel);color:var(--fg);border:1px solid #444;border-radius:0;cursor:pointer}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}
+.chip{font:inherit;font-size:13px;letter-spacing:.04em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;padding:6px 9px;background:transparent;color:var(--mut);border:1px solid #333;border-radius:0;cursor:pointer}
+.chip.on{color:var(--fg);border-color:#777}
+.chip b{font-weight:600;color:var(--mut)}
+.d{display:inline-block;width:10px;height:10px;border-radius:50%}
+.d.r{background:var(--red)}.d.g{background:var(--green)}.d.b{background:var(--blue)}.d.f{background:transparent;border:2px solid var(--gold);width:12px;height:12px}
+#chart{position:relative;width:100%;margin-top:6px;touch-action:pan-y}
+#chart svg{display:block;width:100%;height:auto;overflow:visible}
+#chart .lbl{fill:#cfcfcf;font-size:11px;letter-spacing:.02em}
+#chart .tick{fill:var(--mut);font-size:10px}
+#chart .grid{stroke:var(--line);stroke-width:1}
+#chart .row{stroke:#1a1a1a;stroke-width:1}
+#chart circle.dot{stroke:#000;stroke-width:1;cursor:pointer}
+#chart circle.ring{fill:none;stroke:var(--gold);stroke-width:2;pointer-events:none}
+#chart circle.hit{fill:transparent;cursor:pointer}
+#chart .empty{fill:var(--mut);font-size:13px}
+.meta{color:var(--mut);font-size:13px;margin:10px 0 0}
+footer{margin-top:22px;border-top:1px solid var(--line);color:var(--mut);font-size:13px}
+dialog{width:min(640px,calc(100vw - 20px));max-height:calc(100dvh - 40px);overflow:auto;background:var(--panel);color:var(--fg);border:1px solid #444;border-radius:0;padding:16px 16px 18px}
+dialog::backdrop{background:rgba(0,0,0,.7)}
+dialog .x{position:sticky;float:right;top:0;font-size:26px;line-height:1;background:none;border:0;color:var(--fg);cursor:pointer;padding:0 4px}
+dialog h2{font-size:15px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin:0 30px 6px 0}
+dialog h3{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin:14px 0 4px;font-weight:600}
+dialog p{margin:6px 0}
+.tag{display:inline-block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;padding:2px 7px;margin-right:6px}
+.tag.removed{background:var(--red);color:#000}.tag.added{background:var(--green);color:#000}.tag.altered{background:var(--blue);color:#000}.tag.farm{border:1px solid var(--gold);color:var(--gold)}
+.url{word-break:break-all;color:var(--mut);font-size:13px}
+blockquote{margin:4px 0;padding:8px 10px;font-size:14px;white-space:pre-wrap;word-break:break-word;border-left:3px solid #444;background:#050505}
+blockquote.rem{border-color:var(--red)}blockquote.add{border-color:var(--green)}
+.links{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.links a{flex:1 1 150px;text-align:center;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--fg);text-decoration:none;border:1px solid #555;padding:9px 6px}
+.links a:hover{background:#fff;color:#000}
+table{width:100%;border-collapse:collapse;font-size:13px}
+td,th{border-bottom:1px solid var(--line);padding:5px 4px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:.06em}
+td a{color:var(--fg);word-break:break-all}
+.small{font-size:13px;color:var(--mut)}
+@media (min-width:783px){#chart .lbl{font-size:12px}#chart .tick{font-size:11px}}
