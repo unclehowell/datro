@@ -1,0 +1,3055 @@
+{
+ "schema": "csscpsg-chronology/1",
+ "built": "2026-10-21",
+ "rule_set": "S1–S6, data/model.json v1.0.0 (CSSCPSG structural reading: actor, act, object, scope)",
+ "rules": {
+  "S1": "Scope: the operative noun phrase covers more (or other) land than the instrument it rests on evidences",
+  "S2": "Party: the person most affected is not a party, not the addressee, or not shown to have been served",
+  "S3": "Agency: the operative effect is imposed without any act or consent of the person it binds",
+  "S4": "Term shift: a key word (possession, owner, proprietor, possessions) changes meaning between documents",
+  "S5": "Text gap: the operative text itself is not held; it is known only from a later recital or summary",
+  "S6": "Inconsistency: dates, years or descriptions conflict between records of the same act"
+ },
+ "footer": "Our case, prospective. Not a finding of any court.",
+ "append_rule": "Append new items in date order (sort key ISO-like, suffix a–z for same-day order); compliant=false only with a rule S1–S6 and a cited source; never infer a date from a filename; \"date unknown\" sorts last as 9999.",
+ "items": [
+  {
+   "id": "C0001",
+   "sort": "1824",
+   "date": "1824",
+   "instrument": "Survey of the Bute estates, plan 19 “Cedfin or Ty Mawr Farm”, 139a 3r 8p",
+   "cite": "Glamorgan Archives DB/E/1",
+   "source": "Glamorgan Archives DB/E/1; Legal Wiki, Master Timeline (page 33)",
+   "url": "https://greathousefarmwiki.wordpress.com/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0002",
+   "sort": "1876",
+   "date": "1876–1912",
+   "instrument": "Bute deeds: “land (33 a.), formerly part of Great House Farm, for the Llandough Limeworks (33 a.), 1876-1912”; plan engrossed on D153/3 (1875) and 4 (1876)",
+   "cite": "National Library of Wales D153/4–8",
+   "source": "NLW catalogue D153/4–8",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0003",
+   "sort": "1877-01",
+   "date": "1877",
+   "instrument": "Agreement, Marquess of Bute to Daniel Thomas & Son",
+   "cite": "EV-0006",
+   "source": "EV-0006",
+   "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e115-1877-bute-thomas-agreement/",
+   "text": "SOURCE PENDING: the 1877 Bute–Daniel Thomas & Son agreement is not held.",
+   "pending": true,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0004",
+   "sort": "1877-11-06",
+   "date": "6 November 1877",
+   "instrument": "Lease to John Williams",
+   "cite": "EV-0008",
+   "source": "EV-0008",
+   "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e116-6-november-1877-bute-counterpart-lease-john-williams/",
+   "text": "SOURCE PENDING: the lease of 6 November 1877 to John Williams is not held.",
+   "pending": true,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0005",
+   "sort": "1905-02-23",
+   "date": "23 February 1905",
+   "instrument": "Conveyance, John Marquis of Bute to Cardiff City Corporation, as recorded on the register",
+   "cite": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 1",
+   "source": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 1",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112812173.pdf",
+   "text": "The land tinted pink on the filed plan is subject to the rights contained in a Conveyance dated 23 February 1905 made between (1) John Marquis of Bute and Earl of Dumfries and (2) Cardiff City Corporation. NOTE 1: No copies of the plans referred to were supplied on first registration",
+   "pending": false,
+   "compliant": false,
+   "reason": "S5: The operative plans were never supplied to the registry. The land the 1905 rights cover is known only from the register’s later colouring.",
+   "breaches": [
+    {
+     "rule": "S5",
+     "phrase": "No copies of the plans referred to were supplied on first registration",
+     "why": "The operative plans were never supplied to the registry. The land the 1905 rights cover is known only from the register’s later colouring.",
+     "evidence": [
+      {
+       "ref": "EV-0013",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0013"
+      },
+      {
+       "ref": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 1",
+       "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112812173.pdf"
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0006",
+   "sort": "1910",
+   "date": "1910",
+   "instrument": "Valuation Office survey map, OS Glamorgan XLVII.6 (Llandough)",
+   "cite": "The National Archives IR 131/4/96",
+   "source": "TNA location reply, 12 Oct 2026",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0007",
+   "sort": "1916-02",
+   "date": "February 1916",
+   "instrument": "Yearly agricultural tenancy, as recited by the Court of Appeal",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶4",
+   "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶4",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "Great House Farm used to belong to the Marquis of Bute, and in February 1916 the Marquis granted a yearly agricultural tenancy of the whole of the farm to a Mr John Williams, who was Mr Buckler junior's maternal grandfather. In 1938 the reversion on that tenancy was conveyed to a company called Western Ground Rents Ltd.",
+   "pending": false,
+   "compliant": false,
+   "reason": "S1: The phrase sets the scope of the 1916 tenancy at the whole holding. The 1916 agreement and its plan are not held, so the scope rests on this recital alone.; S5: The 1938 conveyance and its plan are not held. Which parcels passed in 1938 is not shown by any text the court quoted.",
+   "breaches": [
+    {
+     "rule": "S1",
+     "phrase": "the whole of the farm",
+     "why": "The phrase sets the scope of the 1916 tenancy at the whole holding. The 1916 agreement and its plan are not held, so the scope rests on this recital alone.",
+     "evidence": [
+      {
+       "ref": "EV-0014",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0014"
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶4",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    },
+    {
+     "rule": "S5",
+     "phrase": "In 1938 the reversion on that tenancy was conveyed",
+     "why": "The 1938 conveyance and its plan are not held. Which parcels passed in 1938 is not shown by any text the court quoted.",
+     "evidence": [
+      {
+       "ref": "EV-0019",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0019"
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶4",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0008",
+   "sort": "1924-05-15",
+   "date": "15 May 1924",
+   "instrument": "Drain agreement, as recorded on the register",
+   "cite": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 2",
+   "source": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 2",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112812173.pdf",
+   "text": "An Agreement dated 15 May 1924 made between (1) John Marquis of Bute and Earl of Dumfries and (2) James Pelham Stuart Corbett relates to the construction and maintenance of a drain.",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0009",
+   "sort": "1938-00",
+   "date": "1938–1997",
+   "instrument": "Company file, Western Ground Rents Ltd, company no. 00342092 (wound up 1997)",
+   "cite": "Companies House 00342092; TNA BT 31 (reference not confirmed)",
+   "source": "EV-0249",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0249",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0010",
+   "sort": "1938-12-25",
+   "date": "25 December 1938",
+   "instrument": "Contract for sale, 1965, condition F (root of title)",
+   "cite": "EV-0216: 1965 contract, condition F (Vale of Glamorgan Council, FOI 00211027 reply, 14 September 2026)",
+   "source": "EV-0216: 1965 contract, condition F (Vale of Glamorgan Council, FOI 00211027 reply, 14 September 2026)",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0216",
+   "text": "F. Title shall be deduced, and shall commence, as follows:- with a Conveyance on sale dated 25th December 1938",
+   "pending": false,
+   "compliant": false,
+   "reason": "S6: The deed is dated Christmas Day 1938, a Sunday. Press reports of the Bute sale record completion on 23 December 1938.",
+   "breaches": [
+    {
+     "rule": "S6",
+     "phrase": "dated 25th December 1938",
+     "why": "The deed is dated Christmas Day 1938, a Sunday. Press reports of the Bute sale record completion on 23 December 1938.",
+     "evidence": [
+      {
+       "ref": "EV-0022",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0022"
+      },
+      {
+       "ref": "EV-0216: 1965 contract, condition F (Vale of Glamorgan Council, FOI 00211027 reply, 14 September 2026)",
+       "url": ""
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0011",
+   "sort": "1938-12-25b",
+   "date": "25 Dec 1938",
+   "instrument": "Conveyance of the Bute interest at Llandough to Western Ground Rents Ltd",
+   "cite": "NLW question ledger NLW-1019-3 (instrument not held)",
+   "source": "NLW question ledger NLW-1019-3",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": false,
+   "reason": "S5: The 25 December 1938 conveyance and its plan are not held by any body that has replied; it is known only from recitals (1965 contract condition F; 1987 judgment ¶4).",
+   "breaches": [
+    {
+     "rule": "S5",
+     "phrase": "Conveyance of the Bute interest",
+     "why": "The 25 December 1938 conveyance and its plan are not held by any body that has replied; it is known only from recitals (1965 contract condition F; 1987 judgment ¶4).",
+     "evidence": [
+      {
+       "ref": "EV-0216",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0216"
+      },
+      {
+       "ref": "EV-0019",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0019"
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, ¶4",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    }
+   ],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0012",
+   "sort": "1939",
+   "date": "1939",
+   "instrument": "Limitation Act 1939, as pleaded in the 1974 defence",
+   "cite": "Limitation Act 1939",
+   "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2; EV-0049",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0049",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0013",
+   "sort": "1939-05",
+   "date": "May 1939",
+   "instrument": "Agreement, Western Ground Rents to John Williams, with plan (Glamorgan Archives DBDT123/7)",
+   "cite": "EV-0023",
+   "source": "EV-0023",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-17901130382388153716561495856833.jpg",
+   "text": "SOURCE PENDING: the 1939 agreement is held as an image; its wording is not yet transcribed.",
+   "pending": true,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0014",
+   "sort": "1941",
+   "date": "1941–43",
+   "instrument": "National Farm Survey, Penarth parish bundle",
+   "cite": "The National Archives MAF 32/1220/39",
+   "source": "TNA catalogue MAF 32/1220/39",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0015",
+   "sort": "1949-02-02",
+   "date": "2 February 1949",
+   "instrument": "Surrender and new yearly tenancy, as recited by the Court of Appeal",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶5",
+   "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶5",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "It appears that Mr Williams, who may already by then have been elderly, fell into arrears with his rent in the mid-1930s and in the late 1940s. Because of that, agreement was reached for Mr Williams' tenancy to be surrendered and for a new yearly agricultural tenancy commencing at February 2 1949 to be granted to Mr Williams' son-in-law, Mr Frederick Buckler, who was the father of Mr Buckler junior. It was intended that Mr Frederick Buckler should have a written tenancy agreement, but this did not happen because Mr Frederick Buckler also failed to pay the rent. There is a letter from the landlords' agents to their solicitors of October 10 1952 stating that they did not propose to proceed with the letting to Mr Frederick Buckler. However, the conclusion must be that, even though there was no written agreement, Mr Frederick Buckler had a periodic tenancy which was protected by the Agricultural Holdings Act.",
+   "pending": false,
+   "compliant": false,
+   "reason": "S5: No written tenancy exists for 1949. Its terms and its land are known only from this later recital.; S5: The recital opens on inference. The rent books and the agents’ letter of 10 October 1952 are not quoted.",
+   "breaches": [
+    {
+     "rule": "S5",
+     "phrase": "even though there was no written agreement",
+     "why": "No written tenancy exists for 1949. Its terms and its land are known only from this later recital.",
+     "evidence": [
+      {
+       "ref": "EV-0025",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0025"
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶5",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    },
+    {
+     "rule": "S5",
+     "phrase": "It appears that",
+     "why": "The recital opens on inference. The rent books and the agents’ letter of 10 October 1952 are not quoted.",
+     "evidence": [
+      {
+       "ref": "EV-0020",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0020"
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶5",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0016",
+   "sort": "1955-07-04",
+   "date": "2 February 1955 to 4 July 1955",
+   "instrument": "High Court possession order under Order 14, as recited by the Court of Appeal (the order itself is not held: EV-0032)",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶6",
+   "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶6",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "His tenancy was then duly terminated by a notice to quit which expired on February 2 1955. Western Ground Rents then brought proceedings for possession against Mr Frederick Buckler in the High Court and obtained a possession order, under Order 14, in respect of the whole of the farm. On July 4 1955 that possession order was enforced, and possession was taken in respect of all parts of the farm except the farmhouse and garden. The reason why the order was not enforced in respect of the farmhouse and garden was that Mrs Mary Buckler (daughter of Mr Williams, wife of Mr Frederick Buckler and mother of Mr Buckler junior) had recently come out of hospital after having had a leg amputated and was objecting very strongly to leaving the farmhouse.",
+   "pending": false,
+   "compliant": false,
+   "reason": "S2: The order was sought against the tenant alone. Mary (Nancy) Williams lived in the farmhouse and was not a party.; S1: The order is recited as covering the whole farm. No plan or parcel list is quoted, and the order itself is not held.; S1: The enforced area is described by exclusion only. No plan defines the parts taken on 4 July 1955.",
+   "breaches": [
+    {
+     "rule": "S2",
+     "phrase": "against Mr Frederick Buckler",
+     "why": "The order was sought against the tenant alone. Mary (Nancy) Williams lived in the farmhouse and was not a party.",
+     "evidence": [
+      {
+       "ref": "EV-0032",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0032"
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶6",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    },
+    {
+     "rule": "S1",
+     "phrase": "in respect of the whole of the farm",
+     "why": "The order is recited as covering the whole farm. No plan or parcel list is quoted, and the order itself is not held.",
+     "evidence": [
+      {
+       "ref": "EV-0032",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0032"
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶6",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    },
+    {
+     "rule": "S1",
+     "phrase": "all parts of the farm except the farmhouse and garden",
+     "why": "The enforced area is described by exclusion only. No plan defines the parts taken on 4 July 1955.",
+     "evidence": [
+      {
+       "ref": "EV-0034",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0034"
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶6",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0017",
+   "sort": "1958-10-31",
+   "date": "31 October 1958",
+   "instrument": "The London Gazette, 31 October 1958, p. 6652",
+   "cite": "EV-0287 (London Gazette notice)",
+   "source": "EV-0287 (London Gazette notice)",
+   "url": "https://www.thegazette.co.uk/London/issue/41539/page/6652",
+   "text": "the City of Cardiff (Leckwith Common) Compulsory Purchase Order, 1957, confirmed by him on the 8th September 1958, under section 5 of the Physical Training and Recreation Act, 1937",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0018",
+   "sort": "1959",
+   "date": "By 1959",
+   "instrument": "Tenancy offer for the farmhouse and garden, as recited by the Court of Appeal",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶7",
+   "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶7",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "By 1959, at any rate, Mrs Mary Buckler, who was also from time to time referred to as Mrs Williams, had conceived the notion that she had a title to the ownership of Great House Farm through her own grandfather and that there were documents in existence which proved her title. No such documents were, however, ever produced. She was offered a tenancy of the farmhouse and garden by Western Ground Rents but refused to accept it.",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0019",
+   "sort": "1961-03-29",
+   "date": "29 March 1961",
+   "instrument": "Deed, Western Ground Rents, South Western Brick & Tile and Cardiff City Corporation, as recorded on the register",
+   "cite": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 3",
+   "source": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 3",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112812173.pdf",
+   "text": "The land tinted pink on the filed plan is subject to the rights contained in a Deed dated 29 March 1961 made between (1) Western Ground Rents Limited (2) The South Western Brick & Tile Company Limited and (3) Cardiff City Corporation.",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0020",
+   "sort": "1962-12-11",
+   "date": "11 December 1962",
+   "instrument": "Cardiff County Court possession order, as recited by the Court of Appeal",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶9",
+   "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶9",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "In 1962, however, Western Ground Rents brought a fresh action in Cardiff County Court against Mr Frederick Buckler and Mrs Buckler for possession of the farmhouse and garden and mesne profits since 1955. On December 11 1962 a possession order was made by Judge Temple Morris QC together with an order for payment of mesne profits. The latter was to some extent enforced, in that there seems to have been a suspended committal order against Mr Frederick Buckler in June 1963, but nothing was done before 1974 to enforce the 1962 possession order.",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0021",
+   "sort": "1965",
+   "date": "1965",
+   "instrument": "Commons Registration Act 1965",
+   "cite": "Commons Registration Act 1965 (VG 41 registered under it)",
+   "source": "EV-0263",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0263",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0022",
+   "sort": "1965-06-11",
+   "date": "11 June 1965",
+   "instrument": "Conveyance, Lakeside & Llandough Development Co and Western Ground Rents to Glamorgan County Council",
+   "cite": "EV-0042 (Vale of Glamorgan Council, FOI 00211027)",
+   "source": "EV-0042 (Vale of Glamorgan Council, FOI 00211027)",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0042",
+   "text": "ALL THAT piece or parcel of land situate at Llandough … Three Point Three Five Two acres … part of Enclosure 106 on the Ordnance Survey Map Glamorgan Sheet XLVII.6 (1941 Edition)",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0023",
+   "sort": "1969-02-15",
+   "date": "15 Feb 1969",
+   "instrument": "Agreed bid, British Petroleum for Western Ground Rents Ltd",
+   "cite": "Legal Wiki, Master Timeline (page 33)",
+   "source": "Legal Wiki, Master Timeline (page 33)",
+   "url": "https://greathousefarmwiki.wordpress.com/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0024",
+   "sort": "1969-12",
+   "date": "December 1969",
+   "instrument": "Sale, Western Ground Rents to BP Pension Trust Ltd, as recited by the Court of Appeal",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶9",
+   "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶9",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "In the meantime Mr Frederick Buckler died at some time in the period 1965-67, and in December 1969 Great House Farm, including the farmhouse and garden, was sold by Western Ground Rents to BP Pension Trust Ltd.",
+   "pending": false,
+   "compliant": false,
+   "reason": "S5: The 1969 conveyance is recited but not listed on either HM Land Registry first-registration file. Its text and plan are not held.",
+   "breaches": [
+    {
+     "rule": "S5",
+     "phrase": "was sold by Western Ground Rents to BP Pension Trust Ltd",
+     "why": "The 1969 conveyance is recited but not listed on either HM Land Registry first-registration file. Its text and plan are not held.",
+     "evidence": [
+      {
+       "ref": "R4 (arguments view, /v2/); HMLR letter 30 July 2026",
+       "url": "https://csscpsg.bucklerfamily.estate/v2/"
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶9",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0025",
+   "sort": "1969-12-31",
+   "date": "31 Dec 1969",
+   "instrument": "Conveyance, Western Ground Rents Ltd to BP Pension Trust Ltd (recited root of title, WA231076 and WA240304)",
+   "cite": "HMLR letter 19 Apr 2026, ref WA231076/A/216/CT",
+   "source": "EV-0045",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0045",
+   "text": "",
+   "pending": false,
+   "compliant": false,
+   "reason": "S5: The deed is recited in both root deeds but is not in HM Land Registry’s schedule of surviving file items of 30 July 2026.",
+   "breaches": [
+    {
+     "rule": "S5",
+     "phrase": "Conveyance … (recited root of title)",
+     "why": "The deed is recited in both root deeds but is not in HM Land Registry’s schedule of surviving file items of 30 July 2026.",
+     "evidence": [
+      {
+       "ref": "HMLR schedule, 30 Jul 2026",
+       "url": ""
+      },
+      {
+       "ref": "EV-0045",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0045"
+      }
+     ]
+    }
+   ],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0026",
+   "sort": "1970-06-16",
+   "date": "16 June 1970",
+   "instrument": "VG41 village green registration",
+   "cite": "EV-0044",
+   "source": "EV-0044",
+   "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e133-16-june-1970-vg41-village-green-registration-and-ownership-file/",
+   "text": "SOURCE PENDING: the VG41 register entry, map and ownership section are not held.",
+   "pending": true,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0027",
+   "sort": "1971",
+   "date": "1971",
+   "instrument": "Abstract of title, “lodged with the application for first registration” (WA231076); “had sight of a copy of a 1971 abstract of title” (WA240304)",
+   "cite": "HMLR letter 19 Apr 2026, ref WA231076/A/216/CT",
+   "source": "EV-0045",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0045",
+   "text": "",
+   "pending": false,
+   "compliant": false,
+   "reason": "S5: The 1971 abstract is not a listed item in HMLR’s 30 July 2026 schedule; its contents are known only from HMLR’s 2026 description.; S6: The same abstract is described as lodged for one title and only sighted as a copy for the other.",
+   "breaches": [
+    {
+     "rule": "S5",
+     "phrase": "Abstract of title",
+     "why": "The 1971 abstract is not a listed item in HMLR’s 30 July 2026 schedule; its contents are known only from HMLR’s 2026 description.",
+     "evidence": [
+      {
+       "ref": "EV-0045",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0045"
+      },
+      {
+       "ref": "HMLR schedule, 30 Jul 2026",
+       "url": ""
+      }
+     ]
+    },
+    {
+     "rule": "S6",
+     "phrase": "“lodged with the application” / “had sight of a copy”",
+     "why": "The same abstract is described as lodged for one title and only sighted as a copy for the other.",
+     "evidence": [
+      {
+       "ref": "EV-0045",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0045"
+      }
+     ]
+    }
+   ],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0028",
+   "sort": "1974-04-26",
+   "date": "26 Apr 1974",
+   "instrument": "Measured survey notes and plan of the farmhouse, annotated “House demolished Nov. 1988”",
+   "cite": "RCAHMW ST 1681 7331",
+   "source": "Cadw review report, 10 Aug 2026 (appendix)",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0029",
+   "sort": "1974-07-02",
+   "date": "3 July 1974",
+   "instrument": "Defence of Mrs Buckler in the 1974 county court action",
+   "cite": "EV-0049",
+   "source": "EV-0049",
+   "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e135-3-july-1974-mary-williams-plea-of-ownership-and-pleadings/",
+   "text": "SOURCE PENDING: the defence pleading ownership is not held; only the Court of Appeal’s summary of it.",
+   "pending": true,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0030",
+   "sort": "1974-07-03",
+   "date": "1974 (part heard 3 July 1974)",
+   "instrument": "BP Pension Trust Ltd v Mrs Buckler, Cardiff County Court, as recited by the Court of Appeal",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶11",
+   "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶11",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "In 1974 BP Pension Trust Ltd started a fresh action in the Cardiff County Court for possession and mesne profits against Mrs Buckler (sued as Mrs Williams) and various members of her family, including Mr Buckler junior. This was adjourned part heard on July 3 1974 for a formal defence to be filed on behalf of Mrs Buckler, and a defence was filed asserting that BP Pension Trust's claim was barred by adverse possession under the Limitation Act 1939; so far as Mr Buckler junior is concerned, it was pleaded that he occupied the property as licensee of Mrs Buckler. That action has never been finally heard. However, on September 17 1974 BP Pension Trust Ltd gave notice of an application by them as successors in title to Western Ground Rents for leave to enforce the possession order of December 11 1962 (the order of Judge Temple Morris QC) and on September 19 1974 Judge Watkin Powell on that application gave BP Pension Trust Ltd leave to execute the order for possession of December 11 1962. He ordered that the possession warrant do issue forthwith but be not enforced until October 31 1974.",
+   "pending": false,
+   "compliant": false,
+   "reason": "S5: Leave to enforce rested on succession to the 1962 judgment. The deed that made BP Pension Trust the successor is not on either first-registration file.",
+   "breaches": [
+    {
+     "rule": "S5",
+     "phrase": "as successors in title to Western Ground Rents",
+     "why": "Leave to enforce rested on succession to the 1962 judgment. The deed that made BP Pension Trust the successor is not on either first-registration file.",
+     "evidence": [
+      {
+       "ref": "R4 (arguments view, /v2/)",
+       "url": "https://csscpsg.bucklerfamily.estate/v2/"
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶11",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0031",
+   "sort": "1974-10-31",
+   "date": "31 October 1974",
+   "instrument": "Letter, BP Pension Trust Ltd to Mrs Buckler, as quoted by the Court of Appeal",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶15",
+   "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶15",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "We have been advised that you are making an application to the Court for a Stay of Execution of the Order for Possession which was recently confirmed, and that you are proposing to apply to have the judgment of the Court, which we were seeking to enforce, set aside. You will, we hope, understand that the Trustees of The British Petroleum Pension Trust are not, and never have been, unsympathetic to your position, but they are bound in law to have a prime regard for the interests of their Pensioners and they had no alternative but to exercise remedies against you which the law provides. The only way in which they could safeguard your future occupation of Great House Farm is by selling the property to a purchaser who is not bound by similar constraints. We are now pleased to advise you that we have found such a purchaser in BP Properties Ltd, who have agreed to buy the property from the Trust. Accordingly, the instructions given to the Bailiff to execute the judgment of the Court have been withdrawn. As the Possession Order will not now be executed, your application for a Stay of Execution becomes unnecessary. Your Solicitors are immediately being advised accordingly.",
+   "pending": false,
+   "compliant": false,
+   "reason": "S6: No written agreement of this date is held. HM Land Registry lists a plan to the conveyance dated 23 February 1975, almost four months later.",
+   "breaches": [
+    {
+     "rule": "S6",
+     "phrase": "who have agreed to buy the property from the Trust",
+     "why": "No written agreement of this date is held. HM Land Registry lists a plan to the conveyance dated 23 February 1975, almost four months later.",
+     "evidence": [
+      {
+       "ref": "R1 (arguments view, /v2/); HMLR letter 30 July 2026, item 13",
+       "url": "https://csscpsg.bucklerfamily.estate/v2/"
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶15",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0032",
+   "sort": "1974-10-31",
+   "date": "31 October 1974",
+   "instrument": "Letter, BP Properties Ltd to Mrs Buckler, as quoted by the Court of Appeal",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶16",
+   "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶16",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "You will be hearing separately from our Pension Trust that they are selling Great House Farm to BP Properties Ltd. As BP Properties is not obliged by the same constraints as the Pension Trust and since we wish to help you as much as possible, we are prepared to allow you to remain in occupation of the house and garden rent free for as long as you may wish and for the rest of your life if you so desire. I am pleased accordingly to confirm that we will not require you to give possession during your lifetime or until such time as you may choose no longer to live in the house, and we have given the necessary instructions so that no proceedings will be commenced until you personally no longer live there. I do hope that by making this gesture you will accept the situation and that no further problems will arise in the future.",
+   "pending": false,
+   "compliant": false,
+   "reason": "S3: The permission is imposed by the paper owner without any act or consent of the occupier. It is the sentence the whole judgment rests on.; S6: The sale is stated as present fact. The conveyance to BP Properties Ltd is dated 23 May 1975.",
+   "breaches": [
+    {
+     "rule": "S3",
+     "phrase": "we are prepared to allow you to remain in occupation",
+     "why": "The permission is imposed by the paper owner without any act or consent of the occupier. It is the sentence the whole judgment rests on.",
+     "evidence": [
+      {
+       "ref": "Law Com No 271, para 14.56 n 187",
+       "url": ""
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶16",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    },
+    {
+     "rule": "S6",
+     "phrase": "they are selling Great House Farm to BP Properties Ltd",
+     "why": "The sale is stated as present fact. The conveyance to BP Properties Ltd is dated 23 May 1975.",
+     "evidence": [
+      {
+       "ref": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 4",
+       "url": ""
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶16",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0033",
+   "sort": "1974-11-04",
+   "date": "4 November 1974",
+   "instrument": "Hearing and withdrawal of the warrant, as recited by the Court of Appeal",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶13; ¶16",
+   "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶13; ¶16",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "Both are addressed to Mrs Buckler (described again as Mrs Williams), but both were in fact sent not to her but to her solicitor, who seems to have received them on the morning of November 4, immediately before he made his application to Judge Watkin Powell in the Cardiff County Court. Because of these two letters the landlords' solicitors did not attend the appointment before the judge on November 4 1974. Mrs Buckler's solicitors produced the letters to the judge, and he stayed execution on the warrant for possession pending Mrs Buckler's agreement to the proposals in the letters. Her solicitor then telephoned Mrs Buckler, told her of the letters and sought her instructions. Before she had given any instructions, however, the landlords' solicitors themselves wrote to the county court, at some date prior to November 25 1974 and withdrew the warrant for possession. Mrs Buckler therefore never expressly accepted or rejected the terms of the two letters. She was left in undisturbed possession of the farmhouse and garden, rent free, until her death, which occurred in March 1983.",
+   "pending": false,
+   "compliant": false,
+   "reason": "S2: The letters were addressed to Mrs Buckler but delivered to her solicitor. The person bound by the licence did not receive it.; S3: The court stayed execution pending her agreement. The warrant was then withdrawn before she gave any.; S3: The licence is treated as binding her without any act or consent of hers. The court’s finding rests on the solicitors’ withdrawal of the warrant; her own reply to the letters is not quoted in the judgment. Our case: she rejected the licence in writing after the offer, and publicly in 1974 (her written reply: SOURCE PENDING).",
+   "breaches": [
+    {
+     "rule": "S2",
+     "phrase": "sent not to her but to her solicitor",
+     "why": "The letters were addressed to Mrs Buckler but delivered to her solicitor. The person bound by the licence did not receive it.",
+     "evidence": [
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶13",
+       "url": ""
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶13; ¶16",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    },
+    {
+     "rule": "S3",
+     "phrase": "pending Mrs Buckler's agreement to the proposals in the letters",
+     "why": "The court stayed execution pending her agreement. The warrant was then withdrawn before she gave any.",
+     "evidence": [
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶13; ¶16",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    },
+    {
+     "rule": "S3",
+     "phrase": "never expressly accepted or rejected",
+     "why": "The licence is treated as binding her without any act or consent of hers. The court’s finding rests on the solicitors’ withdrawal of the warrant; her own reply to the letters is not quoted in the judgment. Our case: she rejected the licence in writing after the offer, and publicly in 1974 (her written reply: SOURCE PENDING).",
+     "evidence": [
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶13; ¶16",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0034",
+   "sort": "1975-05-23",
+   "date": "23 May 1975",
+   "instrument": "Conveyance, The British Petroleum Pension Trust Limited and BP Trustees Limited to B.P. Properties Limited, as recorded on the register",
+   "cite": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 4",
+   "source": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 4",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112812173.pdf",
+   "text": "A Conveyance of the land tinted blue on the filed plan and other land dated 23 May 1975 made between (1) The British Petroleum Pension Trust Limited (Vendors) (2) BP Trustees Limited and (3) B.P. Properties Limited (Purchaser) contains covenants details of which are set out in the schedule of restrictive covenants hereto.",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0035",
+   "sort": "1975-12-01",
+   "date": "1 Dec 1975",
+   "instrument": "Compulsory registration of title begins in the Vale of Glamorgan",
+   "cite": "SI 1975/160",
+   "source": "EV-0265",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0265",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0036",
+   "sort": "1980-05-22",
+   "date": "22 May 1980",
+   "instrument": "House of Commons, Hansard, HC Deb 22 May 1980, vol. 985 (Ted Rowlands MP)",
+   "cite": "EV-0057",
+   "source": "EV-0057",
+   "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/n16-1980-hansard-ted-rowlands-western-ground-rents-bp-pension-fund/",
+   "text": "the most rapacious ground landlord, Western Ground Rents, has been bought by the BP pension fund, which is behaving in the same rapacious and, at times, unfeeling and uncaring way in handling the genuine requests of householders.",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0037",
+   "sort": "1982-10",
+   "date": "Oct 1982",
+   "instrument": "GGAT recommendation: archaeological investigation before development",
+   "cite": "Legal Wiki, Master Timeline (page 33)",
+   "source": "Legal Wiki, Master Timeline (page 33)",
+   "url": "https://greathousefarmwiki.wordpress.com/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0038",
+   "sort": "1982-11-19",
+   "date": "19 November 1982",
+   "instrument": "Conveyance, BP Pension Trust Ltd and BP Trustees Ltd to B.P. Properties Ltd, as recorded on the register",
+   "cite": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 6",
+   "source": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 6",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112812173.pdf",
+   "text": "A Conveyance of the land tinted pink on the filed plan and other land dated 19 November 1982 made between (1) The British Petroleum Pension Trust Limited (2) B.P.Trustees Limited and (3) B.P. Properties Limited contains restrictive covenants.",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0039",
+   "sort": "1982-11-30",
+   "date": "30 Nov 1982",
+   "instrument": "Application for first registration, WA231076, BP Properties Ltd (lodged by Linklaters & Paines)",
+   "cite": "HMLR letter 23 Mar 2026, ref WA231076/A/216",
+   "source": "EV-0147",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0147",
+   "text": "",
+   "pending": false,
+   "compliant": false,
+   "reason": "S6: HMLR dates the WA231076 application 30 Nov 1982; the 1987 judgment dates registration of “the whole of the farm” to November 1982; the farmhouse title WA240304 carries register edition 23 Feb 1983.",
+   "breaches": [
+    {
+     "rule": "S6",
+     "phrase": "30 Nov 1982",
+     "why": "HMLR dates the WA231076 application 30 Nov 1982; the 1987 judgment dates registration of “the whole of the farm” to November 1982; the farmhouse title WA240304 carries register edition 23 Feb 1983.",
+     "evidence": [
+      {
+       "ref": "EV-0147",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0147"
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    }
+   ],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0040",
+   "sort": "1983-02-23",
+   "date": "23 February 1983",
+   "instrument": "HM Land Registry, first registration of the farmhouse and garden (WA240304), as listed in HM Land Registry’s letter of 30 July 2026 (ref N610CGV)",
+   "cite": "HMLR letter, 30 July 2026, WA240304 schedule, items 10–13",
+   "source": "HMLR letter, 30 July 2026, WA240304 schedule, items 10–13",
+   "url": "https://wayback.bucklerfamily.estate/pdf/foi/2026-07-30_hmlr_first-registration-schedule.pdf",
+   "text": "(10) Copy of Register edition date 23 February 1983 … (11) Form 1C application form from Linklaters & Paines … (12) Conveyance 23 May 1975 (13) Plan to conveyance dated 23 February 1975",
+   "pending": false,
+   "compliant": false,
+   "reason": "S2: The schedule lists no notice to Mary (Nancy) Williams, who was in occupancy and had an ownership plea pending. HM Land Registry wrote on 25 May 2026 that it was unaware of any dispute.; S6: A plan to the sale is dated after the 31 October 1974 letters that recite an agreement to buy.",
+   "breaches": [
+    {
+     "rule": "S2",
+     "phrase": "(11) Form 1C application form",
+     "why": "The schedule lists no notice to Mary (Nancy) Williams, who was in occupancy and had an ownership plea pending. HM Land Registry wrote on 25 May 2026 that it was unaware of any dispute.",
+     "evidence": [
+      {
+       "ref": "R3 (arguments view, /v2/); HMLR letter 25 May 2026",
+       "url": "https://csscpsg.bucklerfamily.estate/v2/"
+      },
+      {
+       "ref": "HMLR letter, 30 July 2026, WA240304 schedule, items 10–13",
+       "url": "https://wayback.bucklerfamily.estate/pdf/foi/2026-07-30_hmlr_first-registration-schedule.pdf"
+      }
+     ]
+    },
+    {
+     "rule": "S6",
+     "phrase": "(13) Plan to conveyance dated 23 February 1975",
+     "why": "A plan to the sale is dated after the 31 October 1974 letters that recite an agreement to buy.",
+     "evidence": [
+      {
+       "ref": "R1 (arguments view, /v2/)",
+       "url": "https://csscpsg.bucklerfamily.estate/v2/"
+      },
+      {
+       "ref": "HMLR letter, 30 July 2026, WA240304 schedule, items 10–13",
+       "url": "https://wayback.bucklerfamily.estate/pdf/foi/2026-07-30_hmlr_first-registration-schedule.pdf"
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0041",
+   "sort": "1984-05-22",
+   "date": "22 May 1984",
+   "instrument": "Writ for possession, as recorded by the European Commission of Human Rights",
+   "cite": "European Commission of Human Rights, Decision as to the admissibility of Application No. 14464/88, 14 April 1989, The Facts, p. 2",
+   "source": "European Commission of Human Rights, Decision as to the admissibility of Application No. 14464/88, 14 April 1989, The Facts, p. 2",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf",
+   "text": "On 22 May 1984, the applicant was served with a writ by B.P. (Properties) Limited for possession of Great House Farm and adjourning lands to which it held the title. This property had been occupied by the applicant's family since 1916 and on his mother's death on 26 March 1983, the applicant had inherited her estate and continued to live on the farm.",
+   "pending": false,
+   "compliant": false,
+   "reason": "S6: The decision dates the family’s occupancy from 1916. Trade directories list John Williams at Great House from 1868; 1916 is the date of the tenancy the judgment recites.",
+   "breaches": [
+    {
+     "rule": "S6",
+     "phrase": "occupied by the applicant's family since 1916",
+     "why": "The decision dates the family’s occupancy from 1916. Trade directories list John Williams at Great House from 1868; 1916 is the date of the tenancy the judgment recites.",
+     "evidence": [
+      {
+       "ref": "Legal Wiki Master Timeline (directories 1868–1901)",
+       "url": ""
+      },
+      {
+       "ref": "European Commission of Human Rights, Decision as to the admissibility of Application No. 14464/88, 14 April 1989, The Facts, p. 2",
+       "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf"
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0042",
+   "sort": "1986-07-24",
+   "date": "24 July 1986",
+   "instrument": "Judgment of Hollis J (Queen’s Bench Division, Cardiff), as recited by the Court of Appeal",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶23",
+   "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶23",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "The judge rejected the primary claim on the ground that Mr Frederick Buckler's possession during his lifetime was not 'adverse', and so time did not begin to run against the landlords until after his death. On the second argument he held that the effect of the letters of October 31 1974 was to constitute Mrs Buckler the licensee of BP Properties Ltd, and thus no longer in adverse possession, even though the letters were written unilaterally and without any agreement with her. The defence under the 1939 and 1980 Acts therefore failed.",
+   "pending": false,
+   "compliant": false,
+   "reason": "S3: The trial judge held the licence effective with no agreement from the person it bound.",
+   "breaches": [
+    {
+     "rule": "S3",
+     "phrase": "even though the letters were written unilaterally and without any agreement with her",
+     "why": "The trial judge held the licence effective with no agreement from the person it bound.",
+     "evidence": [
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶23",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0043",
+   "sort": "1987-02-02",
+   "date": "2 Feb 1987",
+   "instrument": "Amalgamation application and supporting plan, WA231076 / WA240304",
+   "cite": "HMLR schedule 30 Jul 2026; FC-004",
+   "source": "HMLR schedule 30 Jul 2026",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0044",
+   "sort": "1987-07-31",
+   "date": "31 July 1987",
+   "instrument": "Court of Appeal: the parties and the title",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶2",
+   "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶2",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "The action concerns a farm known as Great House Farm at Llandough near Penarth in South Glamorgan. The plaintiffs, BP Properties Ltd, have the paper title to the farm, and indeed since November 1982 they have been the registered proprietors of it at HM Land Registry following first registration.",
+   "pending": false,
+   "compliant": false,
+   "reason": "S5: The paper title runs through the 1938 conveyance, whose plan is not held. Which parcels it carried is not shown in the judgment.; S6: HM Land Registry records the farmhouse title (WA240304) from 23 February 1983, about three months later.",
+   "breaches": [
+    {
+     "rule": "S5",
+     "phrase": "have the paper title to the farm",
+     "why": "The paper title runs through the 1938 conveyance, whose plan is not held. Which parcels it carried is not shown in the judgment.",
+     "evidence": [
+      {
+       "ref": "R5 (arguments view, /v2/)",
+       "url": "https://csscpsg.bucklerfamily.estate/v2/"
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶2",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    },
+    {
+     "rule": "S6",
+     "phrase": "since November 1982",
+     "why": "HM Land Registry records the farmhouse title (WA240304) from 23 February 1983, about three months later.",
+     "evidence": [
+      {
+       "ref": "HMLR letters 23 March and 30 July 2026",
+       "url": ""
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶2",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0045",
+   "sort": "1987-07-31",
+   "date": "31 July 1987",
+   "instrument": "Court of Appeal: Limitation Act 1939, section 13, as cited",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶8",
+   "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶8",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "'no person shall be deemed to have been in possession of any land by reason only of having made a formal entry thereon, and no continual or other claim upon or near any land shall preserve any right of action to recover the land'.",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0046",
+   "sort": "1987-07-31",
+   "date": "31 July 1987",
+   "instrument": "Court of Appeal: Limitation Act 1980, section 15(1), as cited",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶19",
+   "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶19",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "no action shall be brought by any person to recover any land after the expiration of 12 years from the date on which the right of action accrued to him, or, if it first accrued to some person through whom he claims, to that person.",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0047",
+   "sort": "1987-07-31",
+   "date": "31 July 1987",
+   "instrument": "Court of Appeal: the enforcement point",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶32",
+   "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶32",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "It follows that enforcement of the judgment for possession of December 11 1962 was still open to the landlords at October 31 1974, and their title to the farmhouse and garden had not been extinguished. I would accordingly reject the contention that Mrs Buckler had acquired a title by adverse possession before October 31 1974.",
+   "pending": false,
+   "compliant": false,
+   "reason": "S5: The 1962 order was made for Western Ground Rents. Its transfer to BP Pension Trust rests on the 1969 sale, which is not on either first-registration file.",
+   "breaches": [
+    {
+     "rule": "S5",
+     "phrase": "was still open to the landlords",
+     "why": "The 1962 order was made for Western Ground Rents. Its transfer to BP Pension Trust rests on the 1969 sale, which is not on either first-registration file.",
+     "evidence": [
+      {
+       "ref": "R4 (arguments view, /v2/)",
+       "url": "https://csscpsg.bucklerfamily.estate/v2/"
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶32",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0048",
+   "sort": "1987-07-31",
+   "date": "31 July 1987",
+   "instrument": "Court of Appeal: the \"wrong company\" argument",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶22",
+   "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶22",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "I see nothing in this rather technical point; the letters record sufficiently that BP Properties Ltd had agreed to buy the property from the Pension Trust, and BP Properties Ltd was therefore prima facie in a position to grant a licence to Mrs Buckler.",
+   "pending": false,
+   "compliant": false,
+   "reason": "S5: The agreement itself was not before the court. Its existence rests on the words of the letters alone.",
+   "breaches": [
+    {
+     "rule": "S5",
+     "phrase": "the letters record sufficiently that BP Properties Ltd had agreed to buy",
+     "why": "The agreement itself was not before the court. Its existence rests on the words of the letters alone.",
+     "evidence": [
+      {
+       "ref": "R1 (arguments view, /v2/)",
+       "url": "https://csscpsg.bucklerfamily.estate/v2/"
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶22",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0049",
+   "sort": "1987-07-31",
+   "date": "31 July 1987",
+   "instrument": "Court of Appeal: repudiation",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶38",
+   "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶38",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "It may be that the result would have been different if Mrs Buckler had, as soon as she learned of the letters, plainly told BP Properties Ltd that she did not accept the letters, and maintained her claims to be already the owner of the property; she did not, however, do that.",
+   "pending": false,
+   "compliant": false,
+   "reason": "S3: The finding places the burden of rejection on the occupier, so the licence binds without any act or consent of hers. Our case: she did reject it, in writing after the offer (SOURCE PENDING).",
+   "breaches": [
+    {
+     "rule": "S3",
+     "phrase": "she did not, however, do that",
+     "why": "The finding places the burden of rejection on the occupier, so the licence binds without any act or consent of hers. Our case: she did reject it, in writing after the offer (SOURCE PENDING).",
+     "evidence": [
+      {
+       "ref": "R2 (arguments view, /v2/)",
+       "url": "https://csscpsg.bucklerfamily.estate/v2/"
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶38",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0050",
+   "sort": "1987-07-31",
+   "date": "31 July 1987",
+   "instrument": "Court of Appeal: the licence",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶40–41",
+   "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶40–41",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "The nature of Mrs Buckler's possession after receipt of the letters cannot be decided just by looking at what was locked up in her own mind. It must depend even more, on this aspect of the case, on the position as seen from the standpoint of the person with the paper title. What could that person have done? The rule that possession is not adverse if it can be referred to a lawful title applies even if the person in possession did not know of the lawful title; the lawful title would still preclude the person with the paper title from evicting the person in possession. So far as Mrs Buckler was concerned, even though she did not 'accept' the terms of the letters, BP Properties Ltd would, in the absence of any repudiation by her of the two letters, have been bound to treat her as in possession as licensee on the terms of the letters. They could not have evicted her (if they could have done so at all) without determining the licence. I can see no escape therefore from the conclusion that, whether she liked it or not, from the time of her receipt of the letters, Mrs Buckler was in possession of the farmhouse and garden by the licence of BP Properties Ltd, and her possession was no longer adverse within the meaning of section 10 of the 1939 Act.",
+   "pending": false,
+   "compliant": false,
+   "reason": "S3: The occupier’s intention is set aside for the owner’s standpoint. The Law Commission later called this assumption discredited.; S3: The licence binds her without her act or consent.; S6: On 31 October 1974 BP Properties Ltd did not hold the title. Its conveyance is dated 23 May 1975.",
+   "breaches": [
+    {
+     "rule": "S3",
+     "phrase": "cannot be decided just by looking at what was locked up in her own mind",
+     "why": "The occupier’s intention is set aside for the owner’s standpoint. The Law Commission later called this assumption discredited.",
+     "evidence": [
+      {
+       "ref": "Law Com No 271, para 14.56 n 187",
+       "url": ""
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶40–41",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    },
+    {
+     "rule": "S3",
+     "phrase": "whether she liked it or not",
+     "why": "The licence binds her without her act or consent.",
+     "evidence": [
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶40–41",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    },
+    {
+     "rule": "S6",
+     "phrase": "by the licence of BP Properties Ltd",
+     "why": "On 31 October 1974 BP Properties Ltd did not hold the title. Its conveyance is dated 23 May 1975.",
+     "evidence": [
+      {
+       "ref": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 4",
+       "url": ""
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶40–41",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0051",
+   "sort": "1987-07-31",
+   "date": "31 July 1987",
+   "instrument": "Court of Appeal: order",
+   "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶42–43",
+   "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶42–43",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+   "text": "Accordingly I would dismiss this appeal. MUSTILL LJ and SIR EDWARD EVELEIGH agreed and did not add anything.",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0052",
+   "sort": "1987-12-17",
+   "date": "17 Dec 1987",
+   "instrument": "Council minutes: request for VG 41 to be “extended up to the farm wall”; Penlan Road licence recorded as terminated by Debenham Tewson",
+   "cite": "Vale of Glamorgan Council minutes, 17 Dec 1987",
+   "source": "EV-0214",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0214",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0053",
+   "sort": "1988-00",
+   "date": "1988",
+   "instrument": "Cadw-to-Minister spot-listing letter (Welsh Office)",
+   "cite": "GHF-E152 (catalogue placeholder; original not held)",
+   "source": "GHF-E152",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": false,
+   "reason": "S5: Known only from a catalogue placeholder; the original is not held.",
+   "breaches": [
+    {
+     "rule": "S5",
+     "phrase": "spot-listing letter",
+     "why": "Known only from a catalogue placeholder; the original is not held.",
+     "evidence": [
+      {
+       "ref": "GHF-E152",
+       "url": ""
+      }
+     ]
+    }
+   ],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0054",
+   "sort": "1988-03-03",
+   "date": "3 Mar 1988",
+   "instrument": "House of Lords: leave to appeal refused, BP Properties Ltd v Buckler",
+   "cite": "Legal Wiki, Master Timeline (page 33)",
+   "source": "Legal Wiki, Master Timeline (page 33)",
+   "url": "https://greathousefarmwiki.wordpress.com/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0055",
+   "sort": "1988-07-29",
+   "date": "29 Jul 1988",
+   "instrument": "Cadw listing inspection of the farmhouse; two exterior photographs",
+   "cite": "ATISN 27021 (reply 11 Jun 2026)",
+   "source": "EV-0094; EV-0095",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0094",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0056",
+   "sort": "1988-12-05",
+   "date": "5 Dec 1988",
+   "instrument": "Cadw: farmhouse not listed",
+   "cite": "Legal Wiki, Master Timeline (page 33); ATISN 27021",
+   "source": "Legal Wiki, Master Timeline (page 33)",
+   "url": "https://greathousefarmwiki.wordpress.com/",
+   "text": "",
+   "pending": false,
+   "compliant": false,
+   "reason": "S5: No assessment report, reasons or site notes for the decision are held; the decision is known only from later summaries.",
+   "breaches": [
+    {
+     "rule": "S5",
+     "phrase": "not listed",
+     "why": "No assessment report, reasons or site notes for the decision are held; the decision is known only from later summaries.",
+     "evidence": [
+      {
+       "ref": "ATISN 27021 reply, 11 Jun 2026",
+       "url": "https://email.bucklerfamily.estate/reference/19e83e88b2d43a0e"
+      },
+      {
+       "ref": "EV-0094",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0094"
+      },
+      {
+       "ref": "EV-0095",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0095"
+      }
+     ]
+    }
+   ],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0057",
+   "sort": "1988-12-06",
+   "date": "3 March 1988 to 6 December 1988",
+   "instrument": "House of Lords refusal, eviction attempt, possession and demolition, as recorded by the European Commission of Human Rights",
+   "cite": "European Commission of Human Rights, Decision as to the admissibility of Application No. 14464/88, 14 April 1989, The Facts, p. 2",
+   "source": "European Commission of Human Rights, Decision as to the admissibility of Application No. 14464/88, 14 April 1989, The Facts, p. 2",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf",
+   "text": "The applicant applied to the House of Lords, which on 3 March 1988 refused him leave to appeal. A stay of execution of 28 days was ordered to enable the applicant to make alternative arrangements for accommodation. On 29 April 1988, B.P. (Properties) Ltd attempted to evict the applicant and his family. The applicant refused to leave the property however and the bailiffs were obliged to withdraw. On 29 November 1988 the company obtained possession of the property and on 6 December demolition of the farmhouse began.",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0058",
+   "sort": "1989-01",
+   "date": "Jan 1989",
+   "instrument": "Summons (threatening behaviour, arising from 29 Apr 1988) withdrawn as out of time",
+   "cite": "Press (Legal Wiki, Master Timeline)",
+   "source": "Legal Wiki, Master Timeline (page 33)",
+   "url": "https://greathousefarmwiki.wordpress.com/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0059",
+   "sort": "1989-03",
+   "date": "March 1989",
+   "instrument": "Sites and Monuments Record card PRN 02038s (Heneb HER, Archwilio GGAT02038s)",
+   "cite": "EV-0118",
+   "source": "EV-0118",
+   "url": "https://www.archwilio.org.uk/arch/query/page.php?watprn=GGAT02038s&dbname=ggat&tbname=core",
+   "text": "building destroyed by owners",
+   "pending": false,
+   "compliant": false,
+   "reason": "S4: The card records BP as owners. The 1974 action on ownership was never finally heard, and the 1987 appeal decided possession under the licence.",
+   "breaches": [
+    {
+     "rule": "S4",
+     "phrase": "owners",
+     "why": "The card records BP as owners. The 1974 action on ownership was never finally heard, and the 1987 appeal decided possession under the licence.",
+     "evidence": [
+      {
+       "ref": "R3 (arguments view, /v2/)",
+       "url": "https://csscpsg.bucklerfamily.estate/v2/"
+      },
+      {
+       "ref": "EV-0118",
+       "url": "https://www.archwilio.org.uk/arch/query/page.php?watprn=GGAT02038s&dbname=ggat&tbname=core"
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0060",
+   "sort": "1989-04-06",
+   "date": "6 Apr 1989",
+   "instrument": "Cadw Llandough community resurvey list (13430, 13431; church 13432 dated 4 Jun 1989)",
+   "cite": "Cadw list entries 13430, 13431, 13432",
+   "source": "EV-0272",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0272",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0061",
+   "sort": "1989-04-14",
+   "date": "14 April 1989",
+   "instrument": "European Commission of Human Rights: Article 8 and Article 1 of Protocol No. 1",
+   "cite": "European Commission of Human Rights, Decision as to the admissibility of Application No. 14464/88, 14 April 1989, The Law, paras 2–3, pp. 3–4",
+   "source": "European Commission of Human Rights, Decision as to the admissibility of Application No. 14464/88, 14 April 1989, The Law, paras 2–3, pp. 3–4",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf",
+   "text": "The Commission notes that the applicant has lived in the property in question since his birth and that the decision of the court giving possession to B.P. (Properties) Ltd could be considered as an interference with the applicant's right to respect for his home. The Commission finds however that the order, pursuant to court proceedings, was in accordance with law and was \"necessary in a democratic society\" for the legitimate aim of protecting the rights of 14464/88 ■r 4 - Other, namely, the rights of B.P. (Properties) Ltd, who were held to be owner of the property. The Commission accordingly finds any interference justified within the meaning of Article 8 para. 2 of the Convention. It follows that this complaint is manifestly ill-founded within the meaning of Article 27 para. 2 of the Convention. 3. The applicant has complained that the decisions have interfered within his rights under Article 1 of Protocol No. 1 to the Convention, which provides: \"Every natural or legal person is entitled to the peaceful enjoyment of his possessions. No one shall be deprived of his possessions except in the public interest and subject to the conditions provided for by law and by the general principles of international law. The preceding provisions shall not, however, in any way impair the right of a State to enforce such laws as it deems necessary to control the use of property in accordance with the general interest or to secure the payment of taxes or other contributions or penalties.\" The Commission recalls however that the courts held that the applicant had no right to occupy the property, which belonged to another. The Commission finds, therefore, that there has been no interference with the applicant's possessions within the meaning of Article 1 of Protocol No. 1..",
+   "pending": false,
+   "compliant": false,
+   "reason": "S4: The domestic courts decided possession under a licence. The Commission restates that as ownership.; S4: The word turns a possession ruling into a title finding. No court quoted the 1938 conveyance or its plan.",
+   "breaches": [
+    {
+     "rule": "S4",
+     "phrase": "who were held to be owner of the property",
+     "why": "The domestic courts decided possession under a licence. The Commission restates that as ownership.",
+     "evidence": [
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶40",
+       "url": ""
+      },
+      {
+       "ref": "European Commission of Human Rights, Decision as to the admissibility of Application No. 14464/88, 14 April 1989, The Law, paras 2–3, pp. 3–4",
+       "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf"
+      }
+     ]
+    },
+    {
+     "rule": "S4",
+     "phrase": "which belonged to another",
+     "why": "The word turns a possession ruling into a title finding. No court quoted the 1938 conveyance or its plan.",
+     "evidence": [
+      {
+       "ref": "R5 (arguments view, /v2/)",
+       "url": "https://csscpsg.bucklerfamily.estate/v2/"
+      },
+      {
+       "ref": "European Commission of Human Rights, Decision as to the admissibility of Application No. 14464/88, 14 April 1989, The Law, paras 2–3, pp. 3–4",
+       "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf"
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0062",
+   "sort": "1989-04-14",
+   "date": "14 April 1989",
+   "instrument": "European Commission of Human Rights: decision",
+   "cite": "European Commission of Human Rights, Decision as to the admissibility of Application No. 14464/88, 14 April 1989, p. 4",
+   "source": "European Commission of Human Rights, Decision as to the admissibility of Application No. 14464/88, 14 April 1989, p. 4",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf",
+   "text": "For these reasons, the Commission DECLARES THE APPLICATION INADMISSIBLE.",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0063",
+   "sort": "1989-10-10",
+   "date": "10 October 1989",
+   "instrument": "Transfer, B P Properties Limited to [private individuals], as recorded on the register",
+   "cite": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Property Register entry 3",
+   "source": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Property Register entry 3",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112812173.pdf",
+   "text": "The land has the benefit of the following rights reserved by a Transfer of land adjoining the Southern boundary of the land in this title dated 10 October 1989 made between (1) B P Properties Limited and (2) [private individuals]:-",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0064",
+   "sort": "1989-11-08",
+   "date": "8 November 1989 (application)",
+   "instrument": "Outline planning permission 89/01396/OUT, Great House Farm, Leckwith Road",
+   "cite": "EV-0124",
+   "source": "EV-0124",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112968592.pdf",
+   "text": "The Council in pursuance of its powers under the above mentioned Act and Order hereby GRANTS OUTLINE PERMISSION for the carrying out of the proposed development as described above",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0065",
+   "sort": "1990-02-08",
+   "date": "8 Feb 1990",
+   "instrument": "GGAT further comments, Appendix B, on the redevelopment application",
+   "cite": "Legal Wiki, Master Timeline (page 33)",
+   "source": "Legal Wiki, Master Timeline (page 33)",
+   "url": "https://greathousefarmwiki.wordpress.com/",
+   "text": "",
+   "pending": false,
+   "compliant": false,
+   "reason": "S5: Missing from the Council’s planning file; GGAT’s own copy has not been produced.",
+   "breaches": [
+    {
+     "rule": "S5",
+     "phrase": "Appendix B",
+     "why": "Missing from the Council’s planning file; GGAT’s own copy has not been produced.",
+     "evidence": [
+      {
+       "ref": "Legal Wiki, Master Timeline (page 33)",
+       "url": "https://greathousefarmwiki.wordpress.com/"
+      }
+     ]
+    }
+   ],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0066",
+   "sort": "1990-03-13",
+   "date": "13 Mar 1990",
+   "instrument": "Outline planning permission, housing on the farm land, 18 conditions (89/01396/OUT)",
+   "cite": "89/01396/OUT",
+   "source": "Legal Wiki, Master Timeline (page 33); EV-0124",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0124",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0067",
+   "sort": "1990-10-30",
+   "date": "30 Oct 1990",
+   "instrument": "Old Barry Road, Llandough stopping-up order: proposed 30 Oct 1990; inquiry 5 Nov 1991; made 18 Mar 1992 (Welsh Office)",
+   "cite": "Welsh Office stopping-up order, Old Barry Road, Llandough",
+   "source": "EV-0275",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0275",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0068",
+   "sort": "1992-09-03",
+   "date": "3 September 1992",
+   "instrument": "Approved planning drawings 92/00671/RES",
+   "cite": "EV-0129",
+   "source": "EV-0129",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112987191.pdf",
+   "text": "BOROUGH OF THE VALE OF GLAMORGAN TOWN AND COUNTRY PLANNING ACT, 1990 APPROVED SUBJECT TO COMPLIANCE WITH CONDITIONS IF ANY 3 SEP 1992 ... SCREEN WALL DETAIL ... THIS COURSE ONLY TO BE CONTRASTING BRICK",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0069",
+   "sort": "1993-12-03",
+   "date": "3 Dec 1993",
+   "instrument": "Transfer, BP Properties Ltd to Ideal Homes, registered on WA231076",
+   "cite": "HMLR schedule 30 Jul 2026",
+   "source": "HMLR schedule 30 Jul 2026",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0070",
+   "sort": "1994-01-12",
+   "date": "12 January 1994",
+   "instrument": "Ideal Homes Wales, Llandough Farm: Village Green planting plan (received stamp)",
+   "cite": "EV-0133",
+   "source": "EV-0133",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112987583.pdf",
+   "text": "Villge Green to be maintained by LLANDOUGH COMMUNITY COUNCIL and to form part of project GATEWAY TO THE VALE. IDEAL HOMES WALES LLANDOUGH FARM, LLANDOUGH VILLAGE GREEN PLANTING. 3024.VG.01",
+   "pending": false,
+   "compliant": false,
+   "reason": "S5: The plan names who maintains the green but shows no title to the land. The VG41 register entry and its ownership section are not held.",
+   "breaches": [
+    {
+     "rule": "S5",
+     "phrase": "Villge Green to be maintained by LLANDOUGH COMMUNITY COUNCIL",
+     "why": "The plan names who maintains the green but shows no title to the land. The VG41 register entry and its ownership section are not held.",
+     "evidence": [
+      {
+       "ref": "EV-0044",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0044"
+      },
+      {
+       "ref": "EV-0133",
+       "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112987583.pdf"
+      }
+     ]
+    }
+   ],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0071",
+   "sort": "1994-07-28",
+   "date": "28 Jul 1994",
+   "instrument": "Donation of human remains, “Great House Farm, Llandough” (95.56H): “Ideal Homes Wales Ltd. should be acknowledged as the donor”",
+   "cite": "Amgueddfa Cymru – Museum Wales accession 95.56H",
+   "source": "EV-0293",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0293",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0072",
+   "sort": "1994-11-10",
+   "date": "10 November 1994",
+   "instrument": "Transfer, Ideal Homes Wales Limited to Forest of Cardiff, as recorded on the register",
+   "cite": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 8",
+   "source": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Charges Register entry 8",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112812173.pdf",
+   "text": "A Transfer of the land in this title dated 10 November 1994 made between (1) Ideal Homes Wales Limited (Transferor) and (2) Forest of Cardiff (Transferee) contains covenants details of which are set out in the schedule of restrictive covenants hereto.",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0073",
+   "sort": "1994-11-25",
+   "date": "25 November 1994",
+   "instrument": "Proprietorship Register entry 1",
+   "cite": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Proprietorship Register entry 1 (entry date 1994-11-25)",
+   "source": "HM Land Registry title register WA735527 (Land lying on the North East side of Leckwith Road, Llandough), accessed 18 September 2026, Proprietorship Register entry 1 (entry date 1994-11-25)",
+   "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112812173.pdf",
+   "text": "PROPRIETOR: FOREST OF CARDIFF (Co. Regn. No. 2591796) of The Wales Conservative Centre, Forest Farm Road, Whitchurch, Cardiff, CF4 7JH.",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "record.json v2.0.0"
+  },
+  {
+   "id": "C0074",
+   "sort": "1997-05-16",
+   "date": "16 May 1997",
+   "instrument": "Final meetings, winding-up of Western Ground Rents Ltd and other BP pension companies",
+   "cite": "London Gazette notices",
+   "source": "EV-0249; EV-0277",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0249",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0075",
+   "sort": "2000",
+   "date": "2000",
+   "instrument": "Freedom of Information Act 2000, ss. 9, 10, 12, 14(2), 21",
+   "cite": "Freedom of Information Act 2000",
+   "source": "FOI replies 2026 (Cadw, Llandough CC, TNA)",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0076",
+   "sort": "2004",
+   "date": "2004",
+   "instrument": "Environmental Information Regulations 2004 (SI 2004/3391), regs 5(2), 11(4), 12(4)(b)",
+   "cite": "SI 2004/3391",
+   "source": "EIR replies 2026 (Vale, Dŵr Cymru, Heneb)",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0077",
+   "sort": "2005",
+   "date": "2005",
+   "instrument": "Transfer, part of WA735527, Forest of Cardiff to Goldsworthy Homes",
+   "cite": "HM Land Registry WA735527",
+   "source": "GHF-E150",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0078",
+   "sort": "2018",
+   "date": "2018",
+   "instrument": "Data Protection Act 2018; UK GDPR art. 12(3) (subject access, one month)",
+   "cite": "Data Protection Act 2018; UK GDPR art. 12(3)",
+   "source": "SAR acknowledgements 2026 (HMLR D260928)",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0079",
+   "sort": "2025-11-20",
+   "date": "20 Nov 2025",
+   "instrument": "Llandough Community Council reply: “unable to assist with the matter you raise”",
+   "cite": "Llandough Community Council",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0080",
+   "sort": "2026-01-31",
+   "date": "31 Jan–8 Feb 2026",
+   "instrument": "The National Archives, records enquiry",
+   "cite": "CAS-313954-Y6C0H3",
+   "source": "TNA RESO Records Enquiries",
+   "url": "https://email.bucklerfamily.estate/reference/19c327f2179d7a53",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0081",
+   "sort": "2026-02-02",
+   "date": "2–13 Feb 2026",
+   "instrument": "HM Land Registry Customer Support enquiry; Wales Office letter",
+   "cite": "260202-5732372; WA231076/A/216/LG",
+   "source": "HMLR letters 2–13 Feb 2026",
+   "url": "https://email.bucklerfamily.estate/reference/19c2eaf3dc886f7e",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0082",
+   "sort": "2026-03-23",
+   "date": "23 Mar 2026",
+   "instrument": "HM Land Registry: “No evidence of a mistake in the register”",
+   "cite": "WA231076/A/216",
+   "source": "EV-0147",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0147",
+   "text": "",
+   "pending": false,
+   "compliant": false,
+   "reason": "S6: Dates and descriptions on the record of the same registration conflict: November 1982 (1987 judgment) v register edition 23 Feb 1983; a plan “dated 23 February 1975” for a conveyance of 23 May 1975; recited year quoted as “One thousand One hundred and sixty nine”. On 10 Oct 2026 HMLR opened an internal application “to investigate and correct any error that may have been made”.",
+   "breaches": [
+    {
+     "rule": "S6",
+     "phrase": "“No evidence of a mistake in the register”",
+     "why": "Dates and descriptions on the record of the same registration conflict: November 1982 (1987 judgment) v register edition 23 Feb 1983; a plan “dated 23 February 1975” for a conveyance of 23 May 1975; recited year quoted as “One thousand One hundred and sixty nine”. On 10 Oct 2026 HMLR opened an internal application “to investigate and correct any error that may have been made”.",
+     "evidence": [
+      {
+       "ref": "EV-0147",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0147"
+      },
+      {
+       "ref": "data/model.json, doc C",
+       "url": "https://csscpsg.bucklerfamily.estate/data/model.json"
+      },
+      {
+       "ref": "HMLR N610CGV, 10 Oct 2026",
+       "url": ""
+      }
+     ]
+    }
+   ],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0083",
+   "sort": "2026-04-13",
+   "date": "13 Apr 2026",
+   "instrument": "HM Land Registry FOI response",
+   "cite": "FOI F260213",
+   "source": "EV-0148",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0148",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0084",
+   "sort": "2026-04-19",
+   "date": "19 Apr 2026",
+   "instrument": "HM Land Registry complaint, stage 1 decision",
+   "cite": "WA231076/A/216/CT",
+   "source": "EV-0045",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0045",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0085",
+   "sort": "2026-05-22",
+   "date": "22 May 2026",
+   "instrument": "Heneb: “Heneb is not subject to FOI requests as we are a Limited company.”",
+   "cite": "Heneb (formerly GGAT), records request",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": false,
+   "reason": "S6: On 6 Oct 2026 Heneb described EIR applicability as “a matter of legal determination”; the two replies give different positions on the same regime question.",
+   "breaches": [
+    {
+     "rule": "S6",
+     "phrase": "“not subject to FOI requests”",
+     "why": "On 6 Oct 2026 Heneb described EIR applicability as “a matter of legal determination”; the two replies give different positions on the same regime question.",
+     "evidence": [
+      {
+       "ref": "Heneb reply, 6 Oct 2026",
+       "url": ""
+      }
+     ]
+    }
+   ],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0086",
+   "sort": "2026-05-25",
+   "date": "25 May 2026",
+   "instrument": "HM Land Registry complaint, stage 2 “second and final response”",
+   "cite": "WA231076/A/216",
+   "source": "EV-0153",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0153",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0087",
+   "sort": "2026-06-11",
+   "date": "11 Jun 2026",
+   "instrument": "Cadw reply: 1988 listing file assessed, “did not meet the listing criteria”; only two photographs survive",
+   "cite": "ATISN 27021",
+   "source": "EV-0094; EV-0095",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0094",
+   "text": "",
+   "pending": false,
+   "compliant": false,
+   "reason": "S5: The 1988 assessment file is not held and no destruction record has been produced; the listing decision is known only from this later summary.",
+   "breaches": [
+    {
+     "rule": "S5",
+     "phrase": "only two photographs survive",
+     "why": "The 1988 assessment file is not held and no destruction record has been produced; the listing decision is known only from this later summary.",
+     "evidence": [
+      {
+       "ref": "ATISN 27021",
+       "url": "https://email.bucklerfamily.estate/reference/19e83e88b2d43a0e"
+      },
+      {
+       "ref": "EV-0094",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0094"
+      },
+      {
+       "ref": "EV-0095",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0095"
+      }
+     ]
+    }
+   ],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0088",
+   "sort": "2026-06-14",
+   "date": "14 Jun 2026",
+   "instrument": "Llandough Community Council FOI reply: s.21, minutes from 1982 deposited at Glamorgan Archives in 2002",
+   "cite": "FOIA s.21 (request of 18 May 2026)",
+   "source": "LCC M06",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0089",
+   "sort": "2026-06-20",
+   "date": "20 Jun 2026",
+   "instrument": "Internal review asked, WhatDoTheyKnow FOI “BP vs Buckler 1987” (Ministry of Justice / HMCTS)",
+   "cite": "WhatDoTheyKnow FOI, internal review",
+   "source": "WhatDoTheyKnow",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0090",
+   "sort": "2026-07-02",
+   "date": "2, 10, 29 Jul 2026",
+   "instrument": "Cadw internal review outcomes (listing-file responses)",
+   "cite": "Cadw internal reviews",
+   "source": "Cadw review report, 10 Aug 2026",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0091",
+   "sort": "2026-07-07",
+   "date": "7 Jul 2026",
+   "instrument": "Vale of Glamorgan Council, EIR internal review asked",
+   "cite": "00210772 (EIR reg. 11)",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/reference/19e6955728641e0a",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0092",
+   "sort": "2026-07-16",
+   "date": "16 Jul 2026",
+   "instrument": "South Wales Police FOI reply: “hold no information” (1988 enforcement)",
+   "cite": "FOI 719/26",
+   "source": "EV-0159",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0159",
+   "text": "",
+   "pending": false,
+   "compliant": false,
+   "reason": "S5: The 1988 enforcement is on the record (ECHR decision of 14 Apr 1989; press); its operational records are not held and no retention schedule or destruction record has been stated.",
+   "breaches": [
+    {
+     "rule": "S5",
+     "phrase": "“hold no information”",
+     "why": "The 1988 enforcement is on the record (ECHR decision of 14 Apr 1989; press); its operational records are not held and no retention schedule or destruction record has been stated.",
+     "evidence": [
+      {
+       "ref": "EV-0159",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0159"
+      },
+      {
+       "ref": "European Commission of Human Rights, decision 14 Apr 1989",
+       "url": ""
+      }
+     ]
+    }
+   ],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0093",
+   "sort": "2026-07-30",
+   "date": "30 Jul 2026",
+   "instrument": "HM Land Registry schedule of first-registration files: 30 items (WA231076), 13 items (WA240304); copies £11 each, form OC2",
+   "cite": "WA231076; WA240304",
+   "source": "HMLR letter 30 Jul 2026",
+   "url": "https://email.bucklerfamily.estate/reference/19fb20f21f899949",
+   "text": "",
+   "pending": false,
+   "compliant": false,
+   "reason": "S5: The 31 Dec 1969 conveyance (recited root) and the 1971 abstract are not among the listed items.; S6: The schedule lists a plan dated 23 Feb 1975 for a conveyance of 23 May 1975.",
+   "breaches": [
+    {
+     "rule": "S5",
+     "phrase": "schedule of first-registration files",
+     "why": "The 31 Dec 1969 conveyance (recited root) and the 1971 abstract are not among the listed items.",
+     "evidence": [
+      {
+       "ref": "HMLR letter 30 Jul 2026",
+       "url": ""
+      },
+      {
+       "ref": "EV-0045",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0045"
+      }
+     ]
+    },
+    {
+     "rule": "S6",
+     "phrase": "plan “dated 23 February 1975”",
+     "why": "The schedule lists a plan dated 23 Feb 1975 for a conveyance of 23 May 1975.",
+     "evidence": [
+      {
+       "ref": "data/model.json, doc C",
+       "url": "https://csscpsg.bucklerfamily.estate/data/model.json"
+      }
+     ]
+    }
+   ],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0094",
+   "sort": "2026-08-04",
+   "date": "4 Aug 2026",
+   "instrument": "Cardiff County Court reply: no records held, because of the case’s age (1955–1988 proceedings)",
+   "cite": "HMCTS, Cardiff County Court enquiries",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": false,
+   "reason": "S5: The 1955, 1962 and 1974 orders and pleadings are not held; they are known only from the 1987 recital. No destruction schedule was stated.",
+   "breaches": [
+    {
+     "rule": "S5",
+     "phrase": "no records held",
+     "why": "The 1955, 1962 and 1974 orders and pleadings are not held; they are known only from the 1987 recital. No destruction schedule was stated.",
+     "evidence": [
+      {
+       "ref": "EV-0032",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0032"
+      },
+      {
+       "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+       "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      }
+     ]
+    }
+   ],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0095",
+   "sort": "2026-08-10",
+   "date": "9/10 Aug 2026",
+   "instrument": "Cadw review report (record correction request)",
+   "cite": "Cadw review report",
+   "source": "Cadw review report, 10 Aug 2026",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0096",
+   "sort": "2026-08-13",
+   "date": "13 Aug 2026",
+   "instrument": "Dŵr Cymru EIR reply (data-subject-rights team): no records (request 7 Jun 2026)",
+   "cite": "EIR reg. 5(2)",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0097",
+   "sort": "2026-08-13b",
+   "date": "13 Aug 2026",
+   "instrument": "Ministry of Justice FOI internal review",
+   "cite": "FOI 260813002",
+   "source": "MoJ letter 9 Oct 2026",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0098",
+   "sort": "2026-08-25",
+   "date": "25 Aug 2026",
+   "instrument": "BP Archive: holds material to end-1954; post-1954 not open externally; no pre-1955 documents on the property",
+   "cite": "BP Archive enquiry",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0099",
+   "sort": "2026-08-25b",
+   "date": "25 Aug 2026",
+   "instrument": "Museum Wales: other discoveries at Great House Farm and Church Farm treated as not in scope",
+   "cite": "FOI 2026-024",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/reference/1a123efb2856da1d",
+   "text": "",
+   "pending": false,
+   "compliant": false,
+   "reason": "S1: The scope applied excluded records that later disclosures (FOI 2026-032, 2026-036) released from the same searches.",
+   "breaches": [
+    {
+     "rule": "S1",
+     "phrase": "not in scope",
+     "why": "The scope applied excluded records that later disclosures (FOI 2026-032, 2026-036) released from the same searches.",
+     "evidence": [
+      {
+       "ref": "FOI 2026-032",
+       "url": "https://email.bucklerfamily.estate/reference/1a1149cc3b8ce394"
+      },
+      {
+       "ref": "FOI 2026-036",
+       "url": "https://email.bucklerfamily.estate/reference/1a1149cc3b8ce394"
+      }
+     ]
+    }
+   ],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0100",
+   "sort": "2026-08-27",
+   "date": "27 Aug 2026",
+   "instrument": "Cadw Chief Inspector letter",
+   "cite": "Cadw",
+   "source": "Cadw letters 27 Aug, 4 Sep 2026",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0101",
+   "sort": "2026-09-02",
+   "date": "2 Sep 2026",
+   "instrument": "The National Archives, WhatDoTheyKnow FOI: Great House Farm and BP Properties Ltd v Buckler (1987)",
+   "cite": "FOI (FOIA s.10)",
+   "source": "WhatDoTheyKnow",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0102",
+   "sort": "2026-09-03",
+   "date": "3 Sep 2026",
+   "instrument": "Dŵr Cymru review: treated as an enquiry about the 1988 supply",
+   "cite": "Dŵr Cymru Customer Care",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": false,
+   "reason": "S4: The request was made under the EIR; the review handled it as a customer enquiry. The regime term changes between the request and the reply.",
+   "breaches": [
+    {
+     "rule": "S4",
+     "phrase": "treated as an enquiry",
+     "why": "The request was made under the EIR; the review handled it as a customer enquiry. The regime term changes between the request and the reply.",
+     "evidence": [
+      {
+       "ref": "EIR request 7 Jun 2026",
+       "url": ""
+      },
+      {
+       "ref": "Dŵr Cymru reply 3 Sep 2026",
+       "url": ""
+      }
+     ]
+    }
+   ],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0103",
+   "sort": "2026-09-04",
+   "date": "4 Sep 2026",
+   "instrument": "Cadw Chief Inspector letter",
+   "cite": "Cadw",
+   "source": "Cadw letters 27 Aug, 4 Sep 2026",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0104",
+   "sort": "2026-09-07",
+   "date": "7 and 24 Sep 2026",
+   "instrument": "Glamorgan Archives: £60 for 53 images (ACA/8/2); £50 rate-book search; £50 planning-minutes search",
+   "cite": "Glamorgan Archives ACA/8/2",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0105",
+   "sort": "2026-09-08",
+   "date": "8 Sep 2026",
+   "instrument": "RCAHMW requests (four)",
+   "cite": "RC26-0375",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/reference/1a0f0785e97d9a3e",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0106",
+   "sort": "2026-09-11",
+   "date": "11 Sep 2026",
+   "instrument": "Vale of Glamorgan Council: further historical documentation found and being sifted, “clearer timeframe” to follow",
+   "cite": "00210772",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/reference/19e6955728641e0a",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0107",
+   "sort": "2026-09-14",
+   "date": "14 Sep 2026",
+   "instrument": "Vale of Glamorgan Council reply: 11 Jun 1965 conveyance and 1965 contract released",
+   "cite": "00211027",
+   "source": "EV-0042; EV-0216",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0042",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0108",
+   "sort": "2026-09-20",
+   "date": "20 Sep 2026",
+   "instrument": "Llandough Community Council (Chair): “We have nothing more to add”",
+   "cite": "Llandough Community Council",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0109",
+   "sort": "2026-09-22",
+   "date": "22 Sep 2026",
+   "instrument": "Vale of Glamorgan Council, internal review asked",
+   "cite": "WDTK 2020 01590 HYB",
+   "source": "WhatDoTheyKnow",
+   "url": "https://email.bucklerfamily.estate/reference/1a0c7875d844914a",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0110",
+   "sort": "2026-09-22b",
+   "date": "22 Sep 2026",
+   "instrument": "Museum Wales FOI disclosure",
+   "cite": "FOI 2026-032",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/reference/1a1149cc3b8ce394",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0111",
+   "sort": "2026-09-27",
+   "date": "27 Sep 2026",
+   "instrument": "South Wales Police internal review (of 719/26)",
+   "cite": "Internal review 1188/26",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0112",
+   "sort": "2026-09-27b",
+   "date": "27 Sep 2026",
+   "instrument": "Heneb formal complaint (acknowledged 30 Sep 2026)",
+   "cite": "Heneb complaints procedure",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0113",
+   "sort": "2026-09-28",
+   "date": "28 Sep 2026",
+   "instrument": "HM Land Registry subject access request (acknowledged 1 Oct under UK GDPR)",
+   "cite": "SAR D260928",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0114",
+   "sort": "2026-09-28b",
+   "date": "28 Sep 2026",
+   "instrument": "HM Land Registry Independent Complaints Reviewer, allocated",
+   "cite": "ICR/090/26",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/reference/19fb20f21f899949",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0115",
+   "sort": "2026-09-28c",
+   "date": "28 Sep 2026",
+   "instrument": "Cadw FOI request: July–December 1988 listing papers",
+   "cite": "ATISN 27589",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/thread/gt-1a154577a09c3329-foi-welsh-office-cadw-papers-july-december-1988-great-house-farm-ty-mawr-llandough-following-26foi-103-atisn-27589",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0116",
+   "sort": "2026-09-28d",
+   "date": "28 Sep 2026",
+   "instrument": "Vale of Glamorgan Council request: section 52 and land charges, planning register, EIA screening, conditions 16–18, 92/00671/RES",
+   "cite": "00211557",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0117",
+   "sort": "2026-09-28e",
+   "date": "28 Sep, 16 Oct 2026",
+   "instrument": "Preservation notices to BP (farm, 1982–83 registrations, 1987 case)",
+   "cite": "Preservation notices",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0118",
+   "sort": "2026-09-29",
+   "date": "29 Sep 2026",
+   "instrument": "South Wales Police FOI response by attachment",
+   "cite": "FOI 1040/26",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0119",
+   "sort": "2026-09-29b",
+   "date": "29 Sep 2026",
+   "instrument": "South Wales Police subject access request",
+   "cite": "Subject access (UK GDPR)",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0120",
+   "sort": "2026-10-05",
+   "date": "5 Oct 2026",
+   "instrument": "Museum Wales FOI disclosure: Ref 13.2 (waterwheel), page of MS 3360/3",
+   "cite": "FOI 2026-036",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/reference/1a1149cc3b8ce394",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0121",
+   "sort": "2026-10-06",
+   "date": "6 Oct 2026",
+   "instrument": "Heneb: EIR applicability “a matter of legal determination”",
+   "cite": "Heneb, HER source file GGAT02038s",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/reference/1a0f0785e97d9a3e",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0122",
+   "sort": "2026-10-07",
+   "date": "7 Oct 2026",
+   "instrument": "The National Archives internal review",
+   "cite": "CAS-347296-M0V4Y1",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0123",
+   "sort": "2026-10-07b",
+   "date": "7–12 Oct 2026",
+   "instrument": "Museum Wales: no search log, file note or other document of the “not in scope” assessment is held; “No records remain withheld.”",
+   "cite": "FOI 2026-024, item 7",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/reference/1a123efb2856da1d",
+   "text": "",
+   "pending": false,
+   "compliant": false,
+   "reason": "S5: The scope decision of 25 Aug 2026 has no written record; it is known only from later correspondence.",
+   "breaches": [
+    {
+     "rule": "S5",
+     "phrase": "no … document of the “not in scope” assessment is held",
+     "why": "The scope decision of 25 Aug 2026 has no written record; it is known only from later correspondence.",
+     "evidence": [
+      {
+       "ref": "FOI 2026-024, item 7",
+       "url": "https://email.bucklerfamily.estate/reference/1a123efb2856da1d"
+      }
+     ]
+    }
+   ],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0124",
+   "sort": "2026-10-09",
+   "date": "9 Oct 2026",
+   "instrument": "Ministry of Justice letter (FOI internal review outcome)",
+   "cite": "FOI 260813002",
+   "source": "MoJ letter 9 Oct 2026",
+   "url": "",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0125",
+   "sort": "2026-10-10",
+   "date": "10 Oct 2026",
+   "instrument": "HM Land Registry internal application “to investigate and correct any error that may have been made”",
+   "cite": "N610CGV",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0126",
+   "sort": "2026-10-10b",
+   "date": "10 Oct 2026",
+   "instrument": "Cadw FOI request: inventory, closure note, transfer list, disposal authority, destruction record (1988 file)",
+   "cite": "ATISN 26-0009",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0127",
+   "sort": "2026-10-10c",
+   "date": "10 Oct 2026",
+   "instrument": "Welsh Government FOI request: retention and destruction schedules (pre-1997 files); records on the farm, Western Ground Rents Ltd, BP Properties Ltd",
+   "cite": "ATISN 26-0010",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/reference/1a143bfc1a6b3c2e",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0128",
+   "sort": "2026-10-10d",
+   "date": "10 Oct 2026",
+   "instrument": "South Wales Police FOI request: non-personal operational records, Nov–Dec 1988 (logged 12 Oct)",
+   "cite": "FOI 1264/26",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/reference/19e83e88b2d43a0e",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0129",
+   "sort": "2026-10-10e",
+   "date": "10 Oct 2026",
+   "instrument": "HM Land Registry title enquiries: “Already been raised”",
+   "cite": "Enquiry 260917-6718215",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/reference/1a0ae09b93ceae38",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0130",
+   "sort": "2026-10-11",
+   "date": "11 Oct 2026",
+   "instrument": "Llandough Community Council (Clerk): refused under s.12 (cost)",
+   "cite": "FOIA s.12",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": false,
+   "reason": "S6: The letter states about 20 minutes to read and about 10 minutes to assess each of 224 sets (6,720 minutes, 112 hours) and a total of “over 2240 minutes” (about 37 hours). The figures in the same letter conflict.",
+   "breaches": [
+    {
+     "rule": "S6",
+     "phrase": "“over 2240 minutes”",
+     "why": "The letter states about 20 minutes to read and about 10 minutes to assess each of 224 sets (6,720 minutes, 112 hours) and a total of “over 2240 minutes” (about 37 hours). The figures in the same letter conflict.",
+     "evidence": [
+      {
+       "ref": "Llandough CC s.12 letter, 11 Oct 2026",
+       "url": ""
+      }
+     ]
+    }
+   ],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0131",
+   "sort": "2026-10-11b",
+   "date": "11 Oct 2026",
+   "instrument": "Llandough Community Council EIR request: VG 41 / St Dochdwy’s verge / 89/01396/OUT",
+   "cite": "EIR",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0132",
+   "sort": "2026-10-11c",
+   "date": "11 Oct 2026",
+   "instrument": "Llandough Community Council subject access request",
+   "cite": "Subject access (UK GDPR)",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0133",
+   "sort": "2026-10-11d",
+   "date": "11 Oct 2026",
+   "instrument": "Vale of Glamorgan Council Democratic Services: Task and Finish review declined",
+   "cite": "Vale of Glamorgan Council Scrutiny",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0134",
+   "sort": "2026-10-12",
+   "date": "12 Oct 2026",
+   "instrument": "The National Archives location reply: map identified; access by visit, paid staff search, or independent researcher",
+   "cite": "IR 131/4/96",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0135",
+   "sort": "2026-10-14",
+   "date": "14 Oct 2026",
+   "instrument": "Heneb: HER source file digitised to Archwilio",
+   "cite": "GGAT02038s",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/reference/1a0f0785e97d9a3e",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0136",
+   "sort": "2026-10-15",
+   "date": "15 Oct 2026",
+   "instrument": "Application to alter the register lodged",
+   "cite": "Z084NQV",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0137",
+   "sort": "2026-10-16",
+   "date": "16 Oct 2026",
+   "instrument": "Heneb point-by-point reply to schedule",
+   "cite": "GHF/HENEB/2026-09-20",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0138",
+   "sort": "2026-10-19",
+   "date": "19 Oct 2026",
+   "instrument": "Cadw: refused under FOIA s.14(2) as “substantially similar” to 27021",
+   "cite": "ATISN 27589; FOIA s.14(2)",
+   "source": "EV-0245",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0245",
+   "text": "",
+   "pending": false,
+   "compliant": false,
+   "reason": "S1: Point 3 of ATISN 27589 was not part of ATISN 27021; the refusal’s operative phrase covers a request other than the one it rests on.",
+   "breaches": [
+    {
+     "rule": "S1",
+     "phrase": "“substantially similar”",
+     "why": "Point 3 of ATISN 27589 was not part of ATISN 27021; the refusal’s operative phrase covers a request other than the one it rests on.",
+     "evidence": [
+      {
+       "ref": "EV-0245",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0245"
+      },
+      {
+       "ref": "ATISN 27021",
+       "url": "https://email.bucklerfamily.estate/reference/19e83e88b2d43a0e"
+      }
+     ]
+    }
+   ],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0139",
+   "sort": "2026-10-19b",
+   "date": "19 Oct 2026",
+   "instrument": "Welsh Government reply: no files found; records “would have been destroyed in line with the corporate retention schedule applied at the time”",
+   "cite": "ATISN 26-0010",
+   "source": "EV-0244",
+   "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0244",
+   "text": "",
+   "pending": false,
+   "compliant": false,
+   "reason": "S5: No destruction record, disposal authority or dated schedule entry is produced; the destruction is stated only as a later inference.",
+   "breaches": [
+    {
+     "rule": "S5",
+     "phrase": "“would have been destroyed”",
+     "why": "No destruction record, disposal authority or dated schedule entry is produced; the destruction is stated only as a later inference.",
+     "evidence": [
+      {
+       "ref": "EV-0244",
+       "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0244"
+      }
+     ]
+    }
+   ],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0140",
+   "sort": "2026-10-19c",
+   "date": "19 Oct 2026",
+   "instrument": "Internal review asked: ATISN 27589 (reconsider under the EIR) and 26-0010",
+   "cite": "Cadw / Welsh Government internal review",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0141",
+   "sort": "2026-10-19d",
+   "date": "19 Oct 2026",
+   "instrument": "Records enquiry to BP: custodian of BP Properties / BP Pension Trust records 1969–1993",
+   "cite": "BP group legal",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0142",
+   "sort": "2026-10-19e",
+   "date": "19–20 Oct 2026",
+   "instrument": "Preservation notice to HMCTS: index entries, warrants or bailiff returns",
+   "cite": "Preservation notice",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0143",
+   "sort": "2026-10-19f",
+   "date": "19 Oct 2026",
+   "instrument": "NLW LibAnswers enquiry: D153/4–8, D219, the 1938 conveyance",
+   "cite": "NLW LibAnswers",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0144",
+   "sort": "2026-10-19g",
+   "date": "19 Oct 2026",
+   "instrument": "The National Archives follow-up: IR 58 entries for the HMLR titles; BT 31 reference",
+   "cite": "TNA follow-up",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0145",
+   "sort": "2026-10-19h",
+   "date": "19 Oct 2026",
+   "instrument": "Glamorgan Archives ‘County Treasures’ inventory request",
+   "cite": "Glamorgan Archives",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0146",
+   "sort": "2026-10-20",
+   "date": "20 Oct 2026",
+   "instrument": "HM Land Registry EIR request (first-registration and amalgamation documents)",
+   "cite": "EIR (D260928 thread)",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0147",
+   "sort": "2026-10-20b",
+   "date": "20 Oct 2026",
+   "instrument": "Llandough Community Council narrowed FOI request",
+   "cite": "FOI",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  },
+  {
+   "id": "C0148",
+   "sort": "2026-10-20c",
+   "date": "20 Oct 2026",
+   "instrument": "Llandough Community Council agenda: 22 Oct 2026 meeting remote",
+   "cite": "LCC agenda, 22 Oct 2026",
+   "source": "case mailbox (email.bucklerfamily.estate)",
+   "url": "https://email.bucklerfamily.estate/",
+   "text": "",
+   "pending": false,
+   "compliant": true,
+   "reason": "",
+   "breaches": [],
+   "origin": "forensic register 21 Oct 2026"
+  }
+ ]
+}
