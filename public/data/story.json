@@ -1,5 +1,5 @@
 {
- "version": "1.4.0",
+ "version": "1.4.1",
  "center": [
   51.4527,
   -3.1985
@@ -499,8 +499,8 @@
    "labels": [
     "VERIFIED · judgment"
    ],
-   "short": "1916: Bute grants John Williams a yearly tenancy of the “whole farm”. Whether that includes Parcel A is not settled.",
-   "text": "1916 · Bute → John Williams: yearly tenancy of the “whole farm”. VERIFIED · judgment. The Court of Appeal’s history describes a February 1916 yearly agricultural tenancy of the “whole farm”. That wording sits awkwardly with the 1877 split; it does not settle whether Parcel A was included. The tenancy (EV-0014) is not held.",
+   "short": "1916: Bute grants John Williams a yearly tenancy of the whole farm, Parcel A included. It is the last tenancy of Parcel A.",
+   "text": "1916 · Bute → John Williams: yearly tenancy of the “whole farm”. VERIFIED · judgment. The Court of Appeal’s history describes a February 1916 yearly agricultural tenancy of the “whole farm”. It covered Parcel A: the last tenancy of Parcel A, whose occupiers the Williams family had been since 1667. The tenancy (EV-0014) is not held.",
    "parcels": {
     "AN": {
      "rec": "thomas",
@@ -529,8 +529,8 @@
     "hp--ev-0014-bute-tenancy-john-williams-1916",
     "os1920"
    ],
-   "dur": 8.8,
-   "say": "Nineteen sixteen: Bute grants John Williams a yearly tenancy of the \"whole farm\". Whether that includes Parcel A is not settled."
+   "dur": 9.80,
+   "say": "Nineteen sixteen: Bute grants John Williams a yearly tenancy of the whole farm, Parcel A included. It is the last tenancy of Parcel A."
   },
   {
    "id": "s05",
