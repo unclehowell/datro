@@ -1436,7 +1436,7 @@ Democratic@valeofglamorgan.gov.uk
 cc: FoiUnit@valeofglamorgan.gov.uk (for inform','{"kind": "reply", "pairing": "thread", "party": "vale"}');
 INSERT INTO nodes VALUES ('doc-cadw-1988-listing-location-lead','document','Cadw 1988 listing / assessment file — location lead','{"holder": "Cadw / Welsh Government", "reference": "none yet (draft)", "date": "2026-10-13"}');
 INSERT INTO nodes VALUES ('doc-cardiff-council-foi-eir-leckwith-woods-1940-42-2026-10-20','document','Cardiff Council FOI/EIR — 1940–42 transfer of Leckwith Woods from Western Ground Rents Ltd','{"holder": "", "reference": "", "date": ""}');
-INSERT INTO nodes VALUES ('doc-defra-FOI2026-23886','document','Defra FOI2026/23886 acknowledgement – wartime/post-war farm records','{"holder": "Defra (successor to MAF)", "reference": "FOI2026/23886", "date": "2026-10-20"}');
+INSERT INTO nodes VALUES ('doc-defra-FOI2026-23886','document','Defra FOI2026/23886 not-held – wartime/post-war farm records','{"holder": "Defra (successor to MAF)", "reference": "FOI2026/23886", "date": "2026-10-21"}');
 INSERT INTO nodes VALUES ('doc-defra-auto-ack-foi-maf-2026-10-20','document','Defra FOI/EIR auto-acknowledgement – MAF wartime records','{"holder": "Defra (successor to MAF)", "reference": "none assigned in auto-ack", "date": "2026-10-20"}');
 INSERT INTO nodes VALUES ('doc-defra-undeliverable-foi-maf-2026-10-20','document','Defra FOI/EIR undeliverable – MAF wartime records','{"holder": "Defra (successor to MAF)", "reference": "none (undelivered)", "date": "2026-10-20"}');
 INSERT INTO nodes VALUES ('doc-draft-cedwyn-estate-wiki-page','document','Cedwyn Estate: an affirmative reconstruction of the Williams/Buckler title chain','{"holder": "", "reference": "", "date": ""}');
