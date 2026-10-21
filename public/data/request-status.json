@@ -1,0 +1,8144 @@
+{
+"schema": "ghf-request-status/1",
+"generated": "2026-10-21T12:57:42Z",
+"asOf": "2026-10-21",
+"source": "https://dartboard.bucklerfamily.estate/ (court-ready data); mail at https://wayback.bucklerfamily.estate/api/index.json",
+"note": "Statuses come from the request tracker and reply text, re-dated against statutory clocks (FOI/EIR 20 working days, SAR one month). Reason codes record what a reply said, quoted in evidence; they are not findings. Our case, prospective. Not a finding of any court.",
+"statusLegend": {
+"answered": "Answered",
+"partial": "Partially",
+"refused": "Refused",
+"overdue": "Overdue",
+"ignored": "Ignored (no reply)",
+"pending": "Not yet due",
+"check": "Reply may be elsewhere",
+"noreply": "No reply (no statutory clock)",
+"info": "Information"
+},
+"reasonLegend": [
+{
+"code": "cost",
+"icon": "💲",
+"label": "Cost refusal (FOIA s.12 / EIR reg 12(4)(b) on cost)"
+},
+{
+"code": "repeat",
+"icon": "🔁",
+"label": "\"Repeat request\" refusal (FOIA s.14(2))"
+},
+{
+"code": "notheld",
+"icon": "🗑️",
+"label": "File destroyed, or \"not held\" with no destruction record"
+},
+{
+"code": "lost",
+"icon": "🔥",
+"label": "File lost or gone"
+},
+{
+"code": "obstruct",
+"icon": "🚧",
+"label": "Obstruction, or sent to the wrong team or regime"
+},
+{
+"code": "exempt",
+"icon": "🔒",
+"label": "Withheld under an exemption"
+},
+{
+"code": "privacy",
+"icon": "☣️",
+"label": "Data-protection or privacy reason given"
+},
+{
+"code": "partial",
+"icon": "⚠️",
+"label": "Partial answer"
+},
+{
+"code": "overdue",
+"icon": "⏰",
+"label": "Overdue or ignored"
+},
+{
+"code": "contradiction",
+"icon": "💣",
+"label": "Contradiction between replies"
+},
+{
+"code": "full",
+"icon": "✅🫶🤝✌️",
+"label": "Full, fast, complete disclosure"
+}
+],
+"institutions": [
+{
+"id": "vale-foi",
+"name": "Vale of Glamorgan Council",
+"sent": 52,
+"received": 31,
+"first": "2025-11-14",
+"last": "2026-10-19",
+"statusCounts": {
+"answered": 6,
+"check": 9,
+"pending": 2,
+"partial": 2,
+"noreply": 6
+},
+"open": 19,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "18"
+},
+{
+"k": "Internal review asked",
+"state": "done",
+"v": "1 on record"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made. Next: ICO s50 for failure to respond"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "done",
+"v": "2 complaint thread(s)"
+},
+{
+"k": "Preservation notice",
+"state": "done",
+"v": "1 sent"
+},
+{
+"k": "Archives checked",
+"state": "info",
+"v": "Glamorgan County Council planning minutes, 19 Nov 1958, at Glamorgan Archives (visit not yet made)"
+},
+{
+"k": "Alternative sources",
+"state": "info",
+"v": "Commons register VG41 sheet (requested 18 Oct)"
+}
+],
+"checked": [
+{
+"ref": "WDTK 2020 01590 HYB",
+"item": "IR asked 22 Sep",
+"due": "Tue 20 Oct 2026 (passed)",
+"rule": "ICO guidance IR: 20 wd, 40 max",
+"next": "ICO s50 for failure to respond",
+"status": "OVERDUE (20 wd)"
+}
+]
+},
+{
+"id": "glamorgan",
+"name": "Glamorgan Archives",
+"sent": 42,
+"received": 35,
+"first": "2026-02-06",
+"last": "2026-10-19",
+"statusCounts": {
+"answered": 9,
+"check": 5,
+"pending": 4,
+"noreply": 3
+},
+"open": 12,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "14"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "info",
+"v": "This is the archive"
+},
+{
+"k": "Alternative sources",
+"state": "info",
+"v": "National Library of Wales Bute papers"
+}
+],
+"checked": []
+},
+{
+"id": "cadw",
+"name": "Welsh Government / Cadw",
+"sent": 42,
+"received": 27,
+"first": "2025-11-02",
+"last": "2026-10-19",
+"statusCounts": {
+"check": 6,
+"answered": 6,
+"pending": 3,
+"refused": 1,
+"noreply": 2
+},
+"open": 12,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "13"
+},
+{
+"k": "Internal review asked",
+"state": "done",
+"v": "1 on record"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made. Next: IR to [email], then ICO"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "done",
+"v": "1 complaint thread(s)"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "info",
+"v": "Not yet: Welsh Government transfers to The National Archives / Glamorgan Archives not searched"
+},
+{
+"k": "Alternative sources",
+"state": "info",
+"v": "RCAHMW (National Monuments Record) and Heneb HER for the 1988 survey"
+}
+],
+"checked": [
+{
+"ref": "ATISN 26-0009",
+"item": "Records behind the 1988 listing-file disposal finding",
+"due": "Mon 09 Nov 2026 (counted from Mon 12 Oct; WG may count from 10 Oct = Fri 06 Nov 2026)",
+"rule": "FOIA s10(1): 20 working days",
+"next": "IR to [email], then ICO",
+"status": "Open"
+},
+{
+"ref": "ATISN 26-0010 IR + 27589 s14(2)",
+"item": "IR requested in combined reply of 19 Oct",
+"due": "Mon 16 Nov 2026",
+"rule": "ICO guidance IR: 20 wd, 40 max",
+"next": "ICO s50; for the s14(2) refusal ICO directly (no IR offered) - six weeks from 19 Oct = Mon 30 Nov 2026",
+"status": "Open"
+}
+]
+},
+{
+"id": "hmlr",
+"name": "HM Land Registry",
+"sent": 33,
+"received": 24,
+"first": "2026-01-29",
+"last": "2026-10-20",
+"statusCounts": {
+"check": 8,
+"answered": 7,
+"partial": 1,
+"pending": 1,
+"noreply": 3
+},
+"open": 13,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "12"
+},
+{
+"k": "Internal review asked",
+"state": "open",
+"v": "Not yet — 1 refused, partial or overdue"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made. Next: If nothing or no extension notice by 28 Oct: chase 29 Oct, then ICO data-protection complaint (UK GDPR Art 77)"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "done",
+"v": "2 complaint thread(s)"
+},
+{
+"k": "Preservation notice",
+"state": "done",
+"v": "1 sent"
+},
+{
+"k": "Archives checked",
+"state": "info",
+"v": "Not applicable: the title files are held by HMLR itself"
+},
+{
+"k": "Alternative sources",
+"state": "info",
+"v": "OC2 office copies (paid, the family's decision); ICR complaint ICR/090/26"
+}
+],
+"checked": [
+{
+"ref": "D260928 (SAR)",
+"item": "Subject access request, titles WA231076/WA240304",
+"due": "Wed 28 Oct 2026",
+"rule": "UK GDPR Art 12(3): 1 month",
+"next": "If nothing or no extension notice by 28 Oct: chase 29 Oct, then ICO data-protection complaint (UK GDPR Art 77)",
+"status": "Open; the family added a documents list + EIR request on 20 Oct"
+},
+{
+"ref": "D260928 thread (EIR part)",
+"item": "EIR request for first-registration and amalgamation documents (sections 2-4 of 20 Oct email)",
+"due": "Tue 17 Nov 2026",
+"rule": "EIR reg 5(2): 20 working days",
+"next": "Internal review (EIR reg 11: ask within 40 wd; they must decide within 40 wd), then ICO (EIR reg 18 / FOIA s50)",
+"status": "Sent 20 Oct 01:30 BST; no ack yet"
+}
+]
+},
+{
+"id": "moj",
+"name": "Ministry of Justice / HMCTS",
+"sent": 17,
+"received": 29,
+"first": "2025-06-28",
+"last": "2026-10-20",
+"statusCounts": {
+"answered": 7,
+"check": 7,
+"pending": 1,
+"noreply": 3
+},
+"open": 11,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "15"
+},
+{
+"k": "Internal review asked",
+"state": "done",
+"v": "2 on record"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made. Next: ICO s50"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "done",
+"v": "1 sent"
+},
+{
+"k": "Archives checked",
+"state": "info",
+"v": "The National Archives court-record transfers (not yet searched)"
+},
+{
+"k": "Alternative sources",
+"state": "info",
+"v": "Solicitors' client file (Hugh James, successor to Loosemores)"
+}
+],
+"checked": [
+{
+"ref": "WDTK 'BP vs Buckler 1987' IR",
+"item": "IR asked 20 Jun 2026",
+"due": "Wed 19 Aug 2026 (passed)",
+"rule": "ICO guidance IR: 40 wd max",
+"next": "ICO s50",
+"status": "OVERDUE 4 months"
+},
+{
+"ref": "preservation notice thread",
+"item": "Surviving records of 1987-88 possession/enforcement",
+"due": "Mon 02 Nov 2026 (date the family asked for; not statutory)",
+"rule": "Not FOIA: court records are exempt (FOIA s32). HMCTS records retention schedule governs",
+"next": "Reply now with every identifier he holds; MoJ SAR IR 260904007 runs separately",
+"status": "Their 20 Oct question is unanswered"
+},
+{
+"ref": "FOI 260813002 IR outcome",
+"item": "IR outcome letter 9 Oct",
+"due": "Fri 20 Nov 2026 (ICO window)",
+"rule": "ICO: complain within six weeks",
+"next": "ICO s50",
+"status": "Decide on ICO"
+}
+]
+},
+{
+"id": "tna",
+"name": "The National Archives",
+"sent": 23,
+"received": 20,
+"first": "2026-01-31",
+"last": "2026-10-19",
+"statusCounts": {
+"answered": 4,
+"check": 2,
+"partial": 1,
+"pending": 2,
+"noreply": 1
+},
+"open": 6,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "7"
+},
+{
+"k": "Internal review asked",
+"state": "done",
+"v": "1 on record"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made. Next: Chase, then IR for delay, then ICO"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "info",
+"v": "This is the archive"
+},
+{
+"k": "Alternative sources",
+"state": "info",
+"v": "Discovery catalogue search for Welsh Office files"
+}
+],
+"checked": [
+{
+"ref": "WDTK 'Great House Farm, Llandough, Cardiff'",
+"item": "FOI via WDTK",
+"due": "Wed 30 Sep 2026 (TNA promised 23 Sep)",
+"rule": "FOIA s10(1): 20 working days",
+"next": "Chase, then IR for delay, then ICO",
+"status": "OVERDUE"
+},
+{
+"ref": "CAS-347296-M0V4Y1 (IR)",
+"item": "Internal review of 23 Sep disclosure",
+"due": "Wed 04 Nov 2026",
+"rule": "ICO guidance IR: 20 wd, 40 max",
+"next": "ICO s50",
+"status": "Open"
+}
+]
+},
+{
+"id": "mp",
+"name": "Member of Parliament",
+"sent": 14,
+"received": 25,
+"first": "2016-11-20",
+"last": "2026-10-20",
+"statusCounts": {
+"noreply": 4,
+"answered": 2,
+"overdue": 1
+},
+"open": 5,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "1"
+},
+{
+"k": "Internal review asked",
+"state": "open",
+"v": "Not yet — 1 refused, partial or overdue"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "done",
+"v": "2 complaint thread(s)"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "museum",
+"name": "Amgueddfa Cymru - Museum Wales",
+"sent": 18,
+"received": 20,
+"first": "2026-05-29",
+"last": "2026-10-20",
+"statusCounts": {
+"answered": 9,
+"partial": 2,
+"pending": 1,
+"check": 3,
+"noreply": 1
+},
+"open": 7,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "8"
+},
+{
+"k": "Internal review asked",
+"state": "done",
+"v": "3 on record"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made. Next: IR (museum in-house review), then ICO"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "done",
+"v": "1 sent"
+},
+{
+"k": "Archives checked",
+"state": "info",
+"v": "Museum Wales accession files (the subject of the requests)"
+},
+{
+"k": "Alternative sources",
+"state": "info",
+"v": "Cardiff Castle collection records (Cardiff Council)"
+}
+],
+"checked": [
+{
+"ref": "FOI 2026-024/032/036 follow-up",
+"item": "c.1880 medieval ironwork, point 2",
+"due": "Mon 16 Nov 2026 (if no clarification pause)",
+"rule": "FOIA s10(1): 20 working days",
+"next": "IR (museum in-house review), then ICO",
+"status": ". Sending it restarts the 20 days"
+}
+]
+},
+{
+"id": "nlw",
+"name": "National Library of Wales",
+"sent": 16,
+"received": 18,
+"first": "2026-04-30",
+"last": "2026-10-19",
+"statusCounts": {
+"partial": 2,
+"pending": 5,
+"check": 1,
+"noreply": 1,
+"answered": 3
+},
+"open": 9,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "6"
+},
+{
+"k": "Internal review asked",
+"state": "done",
+"v": "2 on record"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "info",
+"v": "Catalogue D153/4–8 found (deeds unread)"
+},
+{
+"k": "Alternative sources",
+"state": "info",
+"v": "Remote copy (paid, the family's decision) or a reading-room visit"
+}
+],
+"checked": []
+},
+{
+"id": "rcahmw",
+"name": "RCAHMW (Royal Commission)",
+"sent": 17,
+"received": 17,
+"first": "2025-11-17",
+"last": "2026-10-13",
+"statusCounts": {
+"check": 4,
+"answered": 5,
+"noreply": 1
+},
+"open": 5,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "6"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "llandough",
+"name": "Llandough Community Council",
+"sent": 18,
+"received": 9,
+"first": "2025-11-20",
+"last": "2026-10-20",
+"statusCounts": {
+"answered": 2,
+"partial": 2,
+"pending": 3,
+"noreply": 1
+},
+"open": 6,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "6"
+},
+{
+"k": "Internal review asked",
+"state": "done",
+"v": "1 on record"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made. Next: ICO s50 after 40 wd or after the outcome. No contact before Thu 22 Oct"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "info",
+"v": "Glamorgan Archives parish/community council deposits (not yet searched)"
+},
+{
+"k": "Alternative sources",
+"state": "info",
+"v": "Vale of Glamorgan Council (VG41 commons register)"
+}
+],
+"checked": [
+{
+"ref": "IR of 11 Oct s12 refusal",
+"item": "Internal review asked 13 Oct",
+"due": "Tue 10 Nov 2026",
+"rule": "ICO guidance IR: 20 wd, 40 max",
+"next": "ICO s50 after 40 wd or after the outcome. No contact before Thu 22 Oct",
+"status": "Open"
+},
+{
+"ref": "narrowed FOI 20 Oct (Gmail)",
+"item": "New narrower request (no minutes search)",
+"due": "Tue 17 Nov 2026",
+"rule": "FOIA s10(1): 20 working days / EIR reg 5(2): 20 working days",
+"next": "IR then ICO",
+"status": "Open (correction sent 20 Oct 14:29)"
+},
+{
+"ref": "WDTK 'Meeting of 22 October 2026 (remote)'",
+"item": "FOI via WDTK",
+"due": "Wed 18 Nov 2026",
+"rule": "FOIA s10(1): 20 working days",
+"next": "IR then ICO",
+"status": "Open"
+}
+]
+},
+{
+"id": "swp",
+"name": "South Wales Police",
+"sent": 11,
+"received": 14,
+"first": "2026-05-29",
+"last": "2026-10-16",
+"statusCounts": {
+"overdue": 1,
+"answered": 3,
+"pending": 2
+},
+"open": 3,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "5"
+},
+{
+"k": "Internal review asked",
+"state": "done",
+"v": "1 on record"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made. Next: If no outcome by the 40-wd date, ICO s50 complaint for delay (ICO accepts without IR outcome after 40 wd)"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "info",
+"v": "Not yet: Glamorgan Archives police collections not searched"
+},
+{
+"k": "Alternative sources",
+"state": "info",
+"v": "Press reports of 1988 (newspaper archives)"
+}
+],
+"checked": [
+{
+"ref": "IR 1188/26 (of FOI 719/26)",
+"item": "Internal review: 'no records held' for 1988 operation",
+"due": "Mon 26 Oct 2026",
+"rule": "ICO guidance: IR in 20 wd, 40 max (FOIA s45 Code)",
+"next": "If no outcome by the 40-wd date, ICO s50 complaint for delay (ICO accepts without IR outcome after 40 wd)",
+"status": "Open, no outcome seen"
+},
+{
+"ref": "SAR (Data Protection Team)",
+"item": "Own personal data re 1988 eviction + handling of his requests",
+"due": "Thu 29 Oct 2026 - BUT clock likely paused",
+"rule": "UK GDPR Art 12(3): 1 month",
+"next": "Answer the 30 Sep question now and ask them to confirm the restart and due date; then ICO Art 77 if late",
+"status": "Stall risk: unanswered clarification"
+},
+{
+"ref": "FOI 1264/26",
+"item": "Non-personal operational records, Nov-Dec 1988",
+"due": "Mon 09 Nov 2026",
+"rule": "FOIA s10(1): 20 working days",
+"next": "IR (SWP review procedure), then ICO s50",
+"status": "Open."
+},
+{
+"ref": "FOI 1040/26",
+"item": "Response 29 Sep (deaths request)",
+"due": "Tue 24 Nov 2026 (last day to ask for review)",
+"rule": "Requester's IR window: 40 wd from response (ICO)",
+"next": "IR then ICO",
+"status": "Decide whether to seek review"
+}
+]
+},
+{
+"id": "senedd",
+"name": "Senedd",
+"sent": 14,
+"received": 10,
+"first": "2026-01-16",
+"last": "2026-09-28",
+"statusCounts": {
+"noreply": 5,
+"partial": 1,
+"answered": 4
+},
+"open": 6,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "open",
+"v": "Not yet — 1 refused, partial or overdue"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "heneb",
+"name": "Heneb (formerly GGAT) / Historic Environment Record",
+"sent": 9,
+"received": 9,
+"first": "2026-05-22",
+"last": "2026-10-19",
+"statusCounts": {
+"pending": 2,
+"noreply": 1,
+"overdue": 1,
+"answered": 1
+},
+"open": 4,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "4"
+},
+{
+"k": "Internal review asked",
+"state": "open",
+"v": "Not yet — 1 refused, partial or overdue"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made. Next: Ask for the complaint outcome; then ICO view on whether Heneb is a public authority for EIR (the ICO decides that question)"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "done",
+"v": "1 complaint thread(s)"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "info",
+"v": "Historic Environment Record (the subject of the requests)"
+},
+{
+"k": "Alternative sources",
+"state": "info",
+"v": "RCAHMW Coflein / NMRW"
+}
+],
+"checked": [
+{
+"ref": "schedule GHF/HENEB/2026-09-20 + complaint 27 Sep",
+"item": "HER records; formal complaint (Mr Foulston)",
+"due": "~3 Nov (complaint target working dates, not a published Heneb timescale)",
+"rule": "None agreed: Heneb's 6 Oct position is that EIR does not apply (it is a charity, not a listed public authority). Arguable under EIR reg 2(2)(c)/(d) for HER functions",
+"next": "Ask for the complaint outcome; then ICO view on whether Heneb is a public authority for EIR (the ICO decides that question)",
+"status": "Open"
+}
+]
+},
+{
+"id": "nhs-cav",
+"name": "Cardiff and Vale University Health Board",
+"sent": 8,
+"received": 9,
+"first": "2026-08-20",
+"last": "2026-08-24",
+"statusCounts": {
+"answered": 1,
+"partial": 1
+},
+"open": 1,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "1"
+},
+{
+"k": "Internal review asked",
+"state": "open",
+"v": "Not yet — 1 refused, partial or overdue"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "nactso",
+"name": "Counter Terrorism Policing (NaCTSO)",
+"sent": 0,
+"received": 16,
+"first": "2026-09-02",
+"last": "2026-10-13",
+"statusCounts": {
+"answered": 1
+},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "1"
+},
+{
+"k": "Internal review asked",
+"state": "done",
+"v": "1 on record"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made. Next: ICO s50"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": [
+{
+"ref": "3065/2026 (WDTK); IR 3157/3176",
+"item": "Searches response 9 Oct; NPCC declines a further IR",
+"due": "Fri 20 Nov 2026 (IR outcome 29 Sep -> Tue 10 Nov 2026)",
+"rule": "ICO: six weeks",
+"next": "ICO s50",
+"status": "Decide by 10 Nov / 20 Nov"
+}
+]
+},
+{
+"id": "mod",
+"name": "Ministry of Defence",
+"sent": 2,
+"received": 14,
+"first": "2026-04-19",
+"last": "2026-10-16",
+"statusCounts": {
+"answered": 2,
+"pending": 4
+},
+"open": 4,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "6"
+},
+{
+"k": "Internal review asked",
+"state": "done",
+"v": "1 on record"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made. Next: ICO s50 (s23(5) is absolute: ICO checks only whether the info would relate to a s23 body)"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": [
+{
+"ref": "FOI2026/09190 (WDTK)",
+"item": "IR outcome 10 Oct: not held; s23(5) NCND upheld; parts sent on as SAR",
+"due": "Sat 21 Nov 2026",
+"rule": "ICO: complain within six weeks",
+"next": "ICO s50 (s23(5) is absolute: ICO checks only whether the info would relate to a s23 body)",
+"status": "Decide on ICO; ask MoD for SAR ref"
+}
+]
+},
+{
+"id": "mp-vale",
+"name": "Member of Parliament (Vale of Glamorgan)",
+"sent": 4,
+"received": 9,
+"first": "2025-11-14",
+"last": "2026-09-24",
+"statusCounts": {
+"noreply": 3
+},
+"open": 3,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "vale-scrutiny",
+"name": "Vale of Glamorgan Council (Scrutiny)",
+"sent": 4,
+"received": 9,
+"first": "2026-09-20",
+"last": "2026-10-18",
+"statusCounts": {
+"answered": 3,
+"noreply": 2
+},
+"open": 2,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "itv",
+"name": "ITV Archive",
+"sent": 6,
+"received": 6,
+"first": "2025-10-28",
+"last": "2026-10-16",
+"statusCounts": {
+"noreply": 4,
+"answered": 2
+},
+"open": 4,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "rct",
+"name": "Coroner's Service (RCT Council)",
+"sent": 4,
+"received": 7,
+"first": "2026-08-20",
+"last": "2026-08-26",
+"statusCounts": {
+"answered": 1
+},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "1"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "bp",
+"name": "BP",
+"sent": 8,
+"received": 2,
+"first": "2026-01-28",
+"last": "2026-10-19",
+"statusCounts": {
+"noreply": 5,
+"answered": 1
+},
+"open": 5,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "done",
+"v": "2 sent"
+},
+{
+"k": "Archives checked",
+"state": "info",
+"v": "BP Archive asked 19 and 21 Oct"
+},
+{
+"k": "Alternative sources",
+"state": "info",
+"v": "Linklaters archives; client-file request to Hugh James"
+}
+],
+"checked": [
+{
+"ref": "records enquiry 19 Oct",
+"item": "BP Properties / BP Pension Trust records 1969-93",
+"due": "Mon 16 Nov 2026working date",
+"rule": "None: BP is not a public authority under FOIA/EIR. Only a UK GDPR SAR to BP plc has a legal clock",
+"next": "No statutory route; a SAR to BP plc for the family's own data is the only enforceable step",
+"status": "Open"
+}
+]
+},
+{
+"id": "dwrcymru",
+"name": "Dwr Cymru Welsh Water",
+"sent": 7,
+"received": 3,
+"first": "2026-06-07",
+"last": "2026-09-29",
+"statusCounts": {
+"answered": 3,
+"check": 5,
+"partial": 1
+},
+"open": 6,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "6"
+},
+{
+"k": "Internal review asked",
+"state": "open",
+"v": "Not yet — 1 refused, partial or overdue"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "hmlr-icr",
+"name": "HM Land Registry (Independent Complaints Reviewer)",
+"sent": 5,
+"received": 5,
+"first": "2026-09-26",
+"last": "2026-10-21",
+"statusCounts": {
+"noreply": 1,
+"answered": 1
+},
+"open": 1,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "done",
+"v": "2 complaint thread(s)"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": [
+{
+"ref": "ICR/090/26",
+"item": "Complaint about HMLR (first registration)",
+"due": "the family's full complaint: target 13 Nov, hard limit ~25 Nov (from ICR letter of 9 Oct)",
+"rule": "Not statutory",
+"next": "Parliamentary and Health Service Ombudsman via MP after ICR",
+"status": "Reminder already scheduled 6 Nov"
+}
+]
+},
+{
+"id": "postal-museum",
+"name": "The Postal Museum",
+"sent": 4,
+"received": 6,
+"first": "2026-07-24",
+"last": "2026-08-06",
+"statusCounts": {
+"answered": 1
+},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "cps",
+"name": "Crown Prosecution Service",
+"sent": 4,
+"received": 5,
+"first": "2026-09-03",
+"last": "2026-10-21",
+"statusCounts": {
+"pending": 1,
+"noreply": 2
+},
+"open": 3,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "1"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "phso",
+"name": "Parliamentary and Health Service Ombudsman",
+"sent": 4,
+"received": 4,
+"first": "2025-11-14",
+"last": "2026-07-20",
+"statusCounts": {
+"noreply": 3
+},
+"open": 3,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "done",
+"v": "2 complaint thread(s)"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "cotswold",
+"name": "Cotswold Archaeology",
+"sent": 3,
+"received": 2,
+"first": "2026-09-28",
+"last": "2026-10-19",
+"statusCounts": {
+"noreply": 1,
+"answered": 1
+},
+"open": 1,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "done",
+"v": "2 sent"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "os",
+"name": "Ordnance Survey",
+"sent": 3,
+"received": 2,
+"first": "2026-06-27",
+"last": "2026-10-20",
+"statusCounts": {
+"answered": 1
+},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "1"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "pacac",
+"name": "Public Administration and Constitutional Affairs Committee",
+"sent": 2,
+"received": 3,
+"first": "2026-01-31",
+"last": "2026-02-05",
+"statusCounts": {
+"answered": 1
+},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "cardiff-reg",
+"name": "Cardiff / Vale Register Office",
+"sent": 2,
+"received": 2,
+"first": "2026-08-20",
+"last": "2026-09-30",
+"statusCounts": {
+"answered": 2
+},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "1"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "defra",
+"name": "Defra",
+"sent": 2,
+"received": 2,
+"first": "2026-10-20",
+"last": "2026-10-20",
+"statusCounts": {},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made. Next: IR then ICO"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": [
+{
+"ref": "(ref awaited)",
+"item": "FOI/EIR: wartime and post-war MAF records (resent to InformationRequests@)",
+"due": "Tue 17 Nov 2026",
+"rule": "FOIA s10(1): 20 working days / EIR reg 5(2): 20 working days",
+"next": "IR then ICO",
+"status": "First address bounced; resent 20 Oct 01:39 BST. No ack yet"
+}
+]
+},
+{
+"id": "legal-regulators",
+"name": "Legal regulators",
+"sent": 4,
+"received": 0,
+"first": "2026-01-31",
+"last": "2026-10-16",
+"statusCounts": {
+"noreply": 4
+},
+"open": 4,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "linklaters",
+"name": "Linklaters",
+"sent": 2,
+"received": 2,
+"first": "2026-09-28",
+"last": "2026-10-10",
+"statusCounts": {
+"noreply": 2
+},
+"open": 2,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "done",
+"v": "2 sent"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "persimmon",
+"name": "Persimmon Homes",
+"sent": 2,
+"received": 2,
+"first": "2026-09-27",
+"last": "2026-10-20",
+"statusCounts": {
+"noreply": 1
+},
+"open": 1,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "done",
+"v": "1 sent"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "historic-england",
+"name": "Historic England",
+"sent": 1,
+"received": 2,
+"first": "2026-10-20",
+"last": "2026-10-21",
+"statusCounts": {},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "lga",
+"name": "Local Government Association / WLGA",
+"sent": 2,
+"received": 1,
+"first": "2026-10-20",
+"last": "2026-10-20",
+"statusCounts": {},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "mount-stuart",
+"name": "Mount Stuart (Bute archive)",
+"sent": 2,
+"received": 1,
+"first": "2026-10-15",
+"last": "2026-10-19",
+"statusCounts": {},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "nio",
+"name": "Northern Ireland Office",
+"sent": 0,
+"received": 3,
+"first": "2026-09-08",
+"last": "2026-09-29",
+"statusCounts": {
+"answered": 1,
+"partial": 1
+},
+"open": 1,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "open",
+"v": "Not yet — 1 refused, partial or overdue"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "psow",
+"name": "Public Services Ombudsman for Wales",
+"sent": 0,
+"received": 3,
+"first": "2026-02-06",
+"last": "2026-05-09",
+"statusCounts": {},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "tfw",
+"name": "Transport for Wales",
+"sent": 0,
+"received": 3,
+"first": "2026-08-29",
+"last": "2026-09-24",
+"statusCounts": {},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "voa",
+"name": "Valuation Office Agency / HMRC",
+"sent": 1,
+"received": 2,
+"first": "2026-10-20",
+"last": "2026-10-20",
+"statusCounts": {},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "wales-office",
+"name": "Wales Office",
+"sent": 3,
+"received": 0,
+"first": "2026-08-29",
+"last": "2026-09-28",
+"statusCounts": {
+"pending": 2,
+"noreply": 1
+},
+"open": 3,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "1"
+},
+{
+"k": "Internal review asked",
+"state": "done",
+"v": "1 on record"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "ads",
+"name": "Archaeology Data Service",
+"sent": 1,
+"received": 1,
+"first": "2026-10-19",
+"last": "2026-10-21",
+"statusCounts": {},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "audit-wales",
+"name": "Audit Wales",
+"sent": 2,
+"received": 0,
+"first": "2026-10-20",
+"last": "2026-10-20",
+"statusCounts": {},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "church-of-england",
+"name": "Church of England archives (Lambeth Palace Library)",
+"sent": 1,
+"received": 1,
+"first": "2026-10-20",
+"last": "2026-10-20",
+"statusCounts": {},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "bona-vacantia",
+"name": "Government Legal Department (Bona Vacantia)",
+"sent": 1,
+"received": 1,
+"first": "2026-10-20",
+"last": "2026-10-21",
+"statusCounts": {},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "bt-archives",
+"name": "BT Archives",
+"sent": 1,
+"received": 0,
+"first": "2026-10-20",
+"last": "2026-10-20",
+"statusCounts": {},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "blake-morgan",
+"name": "Blake Morgan LLP",
+"sent": 1,
+"received": 0,
+"first": "2026-10-20",
+"last": "2026-10-20",
+"statusCounts": {},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "ico",
+"name": "Information Commissioner's Office",
+"sent": 1,
+"received": 0,
+"first": "2026-07-21",
+"last": "2026-07-21",
+"statusCounts": {
+"ignored": 1
+},
+"open": 1,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "1"
+},
+{
+"k": "Internal review asked",
+"state": "open",
+"v": "Not yet — 1 refused, partial or overdue"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "pmo",
+"name": "Prime Minister's Office / Cabinet Office",
+"sent": 0,
+"received": 1,
+"first": "2025-10-05",
+"last": "2025-10-05",
+"statusCounts": {
+"overdue": 1
+},
+"open": 1,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "done",
+"v": "1"
+},
+{
+"k": "Internal review asked",
+"state": "open",
+"v": "Not yet — 1 refused, partial or overdue"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "wdtk?",
+"name": "WhatDoTheyKnow (unconfirmed)",
+"sent": 0,
+"received": 1,
+"first": "2025-06-28",
+"last": "2025-06-28",
+"statusCounts": {},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "ICO complaint",
+"state": "na",
+"v": "Not needed so far"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": []
+},
+{
+"id": "natural-england",
+"name": "Natural England",
+"sent": 0,
+"received": 0,
+"first": "",
+"last": "",
+"statusCounts": {},
+"open": 0,
+"checklist": [
+{
+"k": "Requests made (FOI / EIR / SAR)",
+"state": "open",
+"v": "None on record"
+},
+{
+"k": "Internal review asked",
+"state": "done",
+"v": "1 on record"
+},
+{
+"k": "ICO complaint",
+"state": "open",
+"v": "Not yet made. Next: ICO EIR reg 18 complaint"
+},
+{
+"k": "Complaint / ombudsman",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Preservation notice",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Archives checked",
+"state": "na",
+"v": "—"
+},
+{
+"k": "Alternative sources",
+"state": "na",
+"v": "—"
+}
+],
+"checked": [
+{
+"ref": "IR2026/09427 (WDTK)",
+"item": "IR upheld 'not held' EIR reg 12(4)(a)",
+"due": "Thu 29 Oct 2026",
+"rule": "ICO: six weeks",
+"next": "ICO EIR reg 18 complaint",
+"status": "SOONEST ICO window"
+}
+]
+}
+],
+"requests": [
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "FOI",
+"subject": "Re: death certificate",
+"refs": [],
+"sent": "2026-09-28",
+"due": "2026-10-26",
+"rule": "20 working days",
+"status": "pending",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e7d2841902574"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "SAR",
+"subject": "Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy, transfer or dispose",
+"refs": [],
+"sent": "2026-09-28",
+"due": "2026-10-28",
+"rule": "1 calendar month",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e9e1e5a4586bf"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "FOI",
+"subject": "Delayed response to your FOI request - 2020 01590 HYB",
+"refs": [],
+"sent": "2026-09-22",
+"due": "2026-10-20",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "reply via WDTK (text on WDTK)",
+"firstReply": "2026-09-28",
+"note": "",
+"why": [
+"full"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0c7875d844914a"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "EIR",
+"subject": "Great House Farm, Llandough (89/01396/OUT)",
+"refs": [],
+"sent": "2026-09-18",
+"due": "2026-10-16",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0b1f3976299c3f"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "Preservation notice",
+"subject": "FAO: Barry Preservation Society / the Civic Trust",
+"refs": [],
+"sent": "2026-09-17",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0ad4529e6b01dd"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "Correspondence",
+"subject": "Commercial Guardianship Tenancy Interest: Historic Site Inquiry",
+"refs": [],
+"sent": "2026-09-13",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a098384b56819b4"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "FOI",
+"subject": "Escalation — Llandough ward member silence: Great House Farm / Church View Close and removal of commemorative tree",
+"refs": [],
+"sent": "2026-09-10",
+"due": "2026-10-08",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-09-18",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a08ba0ae4dec885"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "FOI",
+"subject": "Confirm your FOI request to Vale of Glamorgan Council",
+"refs": [],
+"sent": "2026-08-21",
+"due": "2026-09-21",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a022ed5c3971e3e"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "Complaint",
+"subject": "Re: Complaint – Failure to Respond / Failure to Deal Properly with Case – [named individual] (Llandough) – Great House Farm / Church View Cl",
+"refs": [],
+"sent": "2026-08-21",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0235a6860385cb"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "Complaint",
+"subject": "Complaint – Failure to Respond / Failure to Deal Properly with Case – [named individual] (Llandough) – Great House Farm / Church View Close",
+"refs": [],
+"sent": "2026-07-27",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [
+"obstruct"
+],
+"whyEvidence": [
+{
+"code": "obstruct",
+"mail": "gm-19ff65cb074e6c9d",
+"date": "2026-08-12",
+"quote": "accordingly, the issues raised will not be progressed under the council's corporate concerns and complaints policy as they fall outside the scope of that procedure."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19fa56f91e54c219"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "EIR",
+"subject": "Re: FOI/EIR request - Case Ref/ 00211027",
+"refs": [
+"00211027"
+],
+"sent": "2026-07-14",
+"due": "2026-08-11",
+"rule": "20 working days",
+"status": "partial",
+"late": false,
+"outcome": "refused / withheld (in part)",
+"firstReply": "2026-07-14",
+"note": "",
+"why": [
+"partial"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19f6102d609a33a6"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "FOI",
+"subject": "Great House Farm/ Church View Close",
+"refs": [],
+"sent": "2026-07-13",
+"due": "2026-08-10",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19f599e62dd58dd0"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "EIR",
+"subject": "Request for information regarding acquisition of land for Llandough Primary School",
+"refs": [],
+"sent": "2026-07-13",
+"due": "2026-08-10",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19f5994af5fb93e1"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "FOI",
+"subject": "Re: Great House Farm, Williams/ Buckler Family, Llandough, Vale of Glamorgan",
+"refs": [],
+"sent": "2026-06-13",
+"due": "2026-07-10",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-06-12",
+"note": "",
+"why": [
+"full"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ebb2140ec50bbf"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "EIR",
+"subject": "Re: EIR/FOI request - 00210772 (Great House Farm / Church View Close, Llandough) – Further Clarification and Request for Full Disclosure",
+"refs": [
+"00210772",
+"00211463",
+"00211483"
+],
+"sent": "2026-06-07",
+"due": "2026-07-03",
+"rule": "20 working days",
+"status": "partial",
+"late": false,
+"outcome": "refused / withheld (in part)",
+"firstReply": "2026-05-27",
+"note": "",
+"why": [
+"partial"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e6955728641e0a"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "EIR",
+"subject": "Planning Permission Church View Close, Llandough",
+"refs": [],
+"sent": "2026-06-07",
+"due": "2026-07-03",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ea093332b5eb64"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "Correspondence",
+"subject": "Church View Close, Llandough",
+"refs": [],
+"sent": "2026-06-07",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ea03340a417829"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "EIR",
+"subject": "FORMAL DISCLOSURE NOTICE & LITIGATION HOLD: Historic Significance, Planning Approvals, and Displaced Family Tenancy Records for Great House ",
+"refs": [],
+"sent": "2026-05-29",
+"due": "2026-06-26",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-19eb75ec2e0a1cdc",
+"date": "2026-06-11",
+"quote": "we do not hold any records of bp properties ltd or bp pension trust."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e75029f91a5bd9"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "Correspondence",
+"subject": "Re: Setting Aside BP vs Buckler 1987 on grounds of BP with our stolen paper title and identity fraud, court mistakes and procedural unfairne",
+"refs": [],
+"sent": "2026-05-04",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19df0fc1e762dd9a"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "FOI",
+"subject": "Title Fraud and Procedural Concealment – Church View Close, Llandough (formerly Great House Farm/ \"Ty Mawr\")",
+"refs": [],
+"sent": "2026-02-16",
+"due": "2026-03-16",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c5b11eabf87d76"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "FOI",
+"subject": "Freedom of Information Request - Ty Mawr (Great House), Llandough, near Penarth (1938-1987)",
+"refs": [],
+"sent": "2026-02-16",
+"due": "2026-03-16",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c63e3b39172545"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "FOI",
+"subject": "BP v Buckler 1987 and the 1982 land registration of Great House Farm, Llandough (now Church View Close)",
+"refs": [],
+"sent": "2026-01-31",
+"due": "2026-02-27",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c1280880fdd034"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "FOI",
+"subject": "Re: Information Request - BP Properties Ltd v Buckler (1987) - Request Reference 00209998",
+"refs": [],
+"sent": "2025-12-23",
+"due": "2026-01-23",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2025-12-23",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-19b4bcae026b0a3a",
+"date": "2025-12-23",
+"quote": "please be aware that, due to the time that has passed, the council may no longer hold information relating to this matter."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19b4bcae026b0a3a"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "FOI",
+"subject": "Re: BP vs Buckler",
+"refs": [],
+"sent": "2025-11-15",
+"due": "2025-12-12",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2025-11-14",
+"note": "",
+"why": [
+"full"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19a8249da6b74faa"
+},
+{
+"institution": "vale-foi",
+"institutionName": "Vale of Glamorgan Council",
+"type": "Inbound only",
+"subject": "RE: Scrutiny Topic Suggestion / Task and Finish request — Council-held planning, heritage and public-authority record for Great House Farm /",
+"refs": [],
+"sent": "",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2026-10-11",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a1149d647cb33dc"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "FOI",
+"subject": "Location and content request — Glamorgan land tax assessments DBJ/O/90-94 (1691–1707) — Llandough-juxta-Penarth — not a viewing request",
+"refs": [],
+"sent": "2026-10-15",
+"due": "2026-11-12",
+"rule": "20 working days",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a141cd290288f4c"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "FOI",
+"subject": "Mary Doreen Williams — death registration — request passed from Vale of Glamorgan Registration Service on 30 September 2026",
+"refs": [],
+"sent": "2026-10-10",
+"due": "2026-11-06",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-10-12",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-1a12f404420e3087",
+"date": "2026-10-12",
+"quote": "1 cardiff register office does not hold the registration of death for mary doreen williams 2 the indexes that were search were freebmd where the reference number volume 28 page no 3029 comes up."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a11a41ac938b1a5"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "FOI",
+"subject": "Location request — Llandough-juxta-Penarth parish, vestry and tithe records — Great House / Ty Mawr — not a viewing request",
+"refs": [],
+"sent": "2026-10-10",
+"due": "2026-11-06",
+"rule": "20 working days",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a1158080de15320"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "FOI",
+"subject": "RE: 2026/4274 — thank you; D153 at NLW; source of DRA/11/120 note",
+"refs": [],
+"sent": "2026-10-10",
+"due": "2026-11-06",
+"rule": "20 working days",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a123ef991df48ff"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "Correspondence",
+"subject": "Bute X.6(12) — 1877 Bute trustee accounts/receipts and possible Great House Farm / Llandough transaction",
+"refs": [],
+"sent": "2026-10-10",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a11eb95e6e388ee"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "SAR",
+"subject": "Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy, transfer or dispose",
+"refs": [],
+"sent": "2026-09-28",
+"due": "2026-10-28",
+"rule": "1 calendar month",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e9e1e5a4586bf"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "Correspondence",
+"subject": "South Wales Constabulary records, November–December 1988 — Great House Farm, Llandough",
+"refs": [],
+"sent": "2026-09-27",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0cab95d9806099"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "Correspondence",
+"subject": "Enquiry — does D153/1–8 contain a c.1875–1880 Llandough-juxta-Penarth instrument?",
+"refs": [],
+"sent": "2026-09-16",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0ac815c712ae7c"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "FOI",
+"subject": "DBDT79/1 – physical examination of the original",
+"refs": [],
+"sent": "2026-08-26",
+"due": "2026-09-24",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-09-14",
+"note": "",
+"why": [
+"full"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a03f5d330ba15ad"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "Correspondence",
+"subject": "Ty Mawr, Llandough, Cardiff",
+"refs": [],
+"sent": "2026-08-22",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-09-07",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-1a07cc3e251e0967",
+"date": "2026-09-07",
+"quote": "we think you have probably already covered all the material we have on this matter but… 1-3) we do not hold the majority of the bute estate records."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a02ad4c2f0fd6e3"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "Correspondence",
+"subject": "Re: Application for copy death certificates – William Buckler (1990) and Mary Doreen Williams (1983)",
+"refs": [],
+"sent": "2026-08-21",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-08-21",
+"note": "",
+"why": [
+"lost"
+],
+"whyEvidence": [
+{
+"code": "lost",
+"mail": "gm-1a0817bd1497136e",
+"date": "2026-09-08",
+"quote": "we have been unable to find records for either of the requested certificates."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a016601f861000b"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "FOI",
+"subject": "Request for burial / parish register entries – William Buckler (1990) and related records (Mary Doreen Williams)",
+"refs": [],
+"sent": "2026-08-20",
+"due": "2026-09-18",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a016600b59eb32a"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "FOI",
+"subject": "Great House Farm, Llandough, Cardiff",
+"refs": [],
+"sent": "2026-07-27",
+"due": "2026-08-24",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19fa4b5a70ee940a"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "FOI",
+"subject": "Freedom of Information / Historical Records Request - Mr. Williams, Cardiff Post Office Engineering Department, 1897 Marconi Lavernock Exper",
+"refs": [
+"FOI25766"
+],
+"sent": "2026-07-16",
+"due": "2026-08-13",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-07-21",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-19f8530ed18a1ad6",
+"date": "2026-07-21",
+"quote": "glamorgan archives does not hold records of past employees of the post office."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19f682ed8be4fae0"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "FOI",
+"subject": "Great House Farm, Llandough | Cardiff Castle Furniture",
+"refs": [],
+"sent": "2026-07-02",
+"due": "2026-07-30",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19f1c45aa603989e"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "FOI",
+"subject": "Enquiry re: Great House Farm / Ty Mawr, Llandough – Plot references 36.792 & 70/1.334 (Williams / Buckler family, 1876 acquisition)",
+"refs": [],
+"sent": "2026-06-27",
+"due": "2026-07-24",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19f08007fe391d18"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "Correspondence",
+"subject": "Great House Farm, Llandough",
+"refs": [],
+"sent": "2026-06-07",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-06-11",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-19eca94bf5d7a19c",
+"date": "2026-06-15",
+"quote": "i can confirm that we hold no records regarding the williams family or the deed of land transfer associated with daniel thomas and the bute estate."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ea1524cf133911"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "FOI",
+"subject": "Great House Farm - Williams/ Buckler",
+"refs": [],
+"sent": "2026-06-05",
+"due": "2026-07-03",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e97980e4c37546"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "EIR",
+"subject": "FORMAL DISCLOSURE NOTICE & LITIGATION HOLD: Historic Significance, Planning Approvals, and Displaced Family Tenancy Records for Great House ",
+"refs": [],
+"sent": "2026-05-29",
+"due": "2026-06-26",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-06-11",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-19eb75ec2e0a1cdc",
+"date": "2026-06-11",
+"quote": "we do not hold any records of bp properties ltd or bp pension trust."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e75029f91a5bd9"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "Correspondence",
+"subject": "Great House Farm, Llandough, Nr Penarth, Vale of Glamorgan",
+"refs": [],
+"sent": "2026-05-26",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2026-05-28",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e65254e89ffc8c"
+},
+{
+"institution": "glamorgan",
+"institutionName": "Glamorgan Archives",
+"type": "FOI",
+"subject": "Re: Epexio contact us form submission",
+"refs": [],
+"sent": "2026-02-06",
+"due": "2026-03-06",
+"rule": "20 working days",
+"status": "answered",
+"late": true,
+"outcome": "not held",
+"firstReply": "2026-09-07",
+"note": "",
+"why": [
+"notheld",
+"overdue"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c3332c5fd8d6d4"
+},
+{
+"institution": "cadw",
+"institutionName": "Welsh Government / Cadw",
+"type": "FOI",
+"subject": "Re: ATISN 26-0010 - Acknowledgement (Retention & disposal schedules)",
+"refs": [],
+"sent": "2026-10-16",
+"due": "2026-11-13",
+"rule": "20 working days",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a143bfc1a6b3c2e"
+},
+{
+"institution": "cadw",
+"institutionName": "Welsh Government / Cadw",
+"type": "FOI",
+"subject": "Welsh Government response to request for information ATISN 26-0010 (Retention & destruction schedules))",
+"refs": [
+"ATISN26-0010"
+],
+"sent": "2026-10-10",
+"due": "2026-11-09",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-10-19",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/thread/gt-1a1537b442f27f72-welsh-government-response-to-request-for-information-atisn-26-0010-retention-destruction-schedules"
+},
+{
+"institution": "cadw",
+"institutionName": "Welsh Government / Cadw",
+"type": "FOI",
+"subject": "Re: Statutory notice under Historic Environment (Wales) Act 2023 ss.194–195 — HER GGAT02038s still classifies Wales’s largest excavated earl",
+"refs": [
+"RC26-0375"
+],
+"sent": "2026-09-30",
+"due": "2026-10-28",
+"rule": "20 working days",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0f0785e97d9a3e"
+},
+{
+"institution": "cadw",
+"institutionName": "Welsh Government / Cadw",
+"type": "FOI",
+"subject": "RE: FOI — Welsh Office / Cadw papers, July–December 1988 — Great House Farm (Ty Mawr), Llandough — following 26FOI 103 (ATISN 27589)",
+"refs": [
+"ATISN27589",
+"qA2496208",
+"26FOI103"
+],
+"sent": "2026-09-28",
+"due": "2026-10-26",
+"rule": "20 working days",
+"status": "refused",
+"late": false,
+"outcome": "refused",
+"firstReply": "2026-10-19",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/thread/gt-1a154577a09c3329-foi-welsh-office-cadw-papers-july-december-1988-great-house-farm-ty-mawr-llandough-following-26foi-103-atisn-27589"
+},
+{
+"institution": "cadw",
+"institutionName": "Welsh Government / Cadw",
+"type": "SAR",
+"subject": "Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy, transfer or dispose",
+"refs": [],
+"sent": "2026-09-28",
+"due": "2026-10-28",
+"rule": "1 calendar month",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e9e1e5a4586bf"
+},
+{
+"institution": "cadw",
+"institutionName": "Welsh Government / Cadw",
+"type": "Complaint",
+"subject": "Formal complaint of 17 September 2026 — Great House Farm (Tŷ Mawr), Llandough — non-delivery and re-service",
+"refs": [],
+"sent": "2026-09-20",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0bdab5e24ed797"
+},
+{
+"institution": "cadw",
+"institutionName": "Welsh Government / Cadw",
+"type": "FOI",
+"subject": "Great House Farm / Ty Mawr, Llandough – Further Evidence of 1988 Involvement & Request for Comprehensive Records (Ref: Previous Enquiries in",
+"refs": [],
+"sent": "2026-06-07",
+"due": "2026-07-03",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ea0e48eaddf4d1"
+},
+{
+"institution": "cadw",
+"institutionName": "Welsh Government / Cadw",
+"type": "FOI",
+"subject": "Re: Great House Farm/ Church View Close, Llandough, nr. Penarth, Vale of Glamorgan (ATISN 27021)",
+"refs": [
+"1264/26",
+"26FOI103",
+"ATISN27021"
+],
+"sent": "2026-06-01",
+"due": "2026-06-29",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-06-02",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e83e88b2d43a0e"
+},
+{
+"institution": "cadw",
+"institutionName": "Welsh Government / Cadw",
+"type": "EIR",
+"subject": "FORMAL DISCLOSURE NOTICE & LITIGATION HOLD: Historic Significance, Planning Approvals, and Displaced Family Tenancy Records for Great House ",
+"refs": [],
+"sent": "2026-05-29",
+"due": "2026-06-26",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-19eb75ec2e0a1cdc",
+"date": "2026-06-11",
+"quote": "we do not hold any records of bp properties ltd or bp pension trust."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e75029f91a5bd9"
+},
+{
+"institution": "cadw",
+"institutionName": "Welsh Government / Cadw",
+"type": "FOI",
+"subject": "Great House Farm/ Church View Close, Llandough, nr. Penarth, Vale of Glamorgan",
+"refs": [],
+"sent": "2026-05-28",
+"due": "2026-06-25",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e6d0b384495afa"
+},
+{
+"institution": "cadw",
+"institutionName": "Welsh Government / Cadw",
+"type": "Correspondence",
+"subject": "Re: FW: Great House Farm, Llandough (aka Ty Mawr)",
+"refs": [],
+"sent": "2026-05-22",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-05-21",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e4b1bc46edc331"
+},
+{
+"institution": "cadw",
+"institutionName": "Welsh Government / Cadw",
+"type": "FOI",
+"subject": "Re: Great House Farm, Llandough",
+"refs": [],
+"sent": "2026-05-20",
+"due": "2026-06-18",
+"rule": "20 working days",
+"status": "answered",
+"late": true,
+"outcome": "answered",
+"firstReply": "2026-09-04",
+"note": "",
+"why": [
+"overdue"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e46dae9e551406"
+},
+{
+"institution": "cadw",
+"institutionName": "Welsh Government / Cadw",
+"type": "FOI",
+"subject": "BP vs Buckler, Great House Farm, Llandough",
+"refs": [],
+"sent": "2026-05-17",
+"due": "2026-06-15",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e341a533604469"
+},
+{
+"institution": "cadw",
+"institutionName": "Welsh Government / Cadw",
+"type": "Correspondence",
+"subject": "Formal Report of Suspected Indigenous Dispossession, Systemic Fraud, and Archaeological Suppression – Great House Farm, Llandough",
+"refs": [],
+"sent": "2026-02-06",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [
+"obstruct"
+],
+"whyEvidence": [
+{
+"code": "obstruct",
+"mail": "gm-19c9496dba492283",
+"date": "2026-02-25",
+"quote": "however, i must inform you that much of the content in your correspondence falls outside the scope of cadw’s work."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c313b370d627d6"
+},
+{
+"institution": "cadw",
+"institutionName": "Welsh Government / Cadw",
+"type": "FOI",
+"subject": "Cais am Ddeiseb ac Ymchwiliad Cyhoeddus: Achos Buckler v BP (1987) a Dinistr Great House Farm, Llandough / Formal Request for Inquiry: The G",
+"refs": [],
+"sent": "2026-02-01",
+"due": "2026-02-27",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c18bfd989eabaf"
+},
+{
+"institution": "cadw",
+"institutionName": "Welsh Government / Cadw",
+"type": "FOI",
+"subject": "BP vs Buckler 1987 - FOI Request",
+"refs": [],
+"sent": "2026-01-23",
+"due": "2026-02-20",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19beae659165d179"
+},
+{
+"institution": "cadw",
+"institutionName": "Welsh Government / Cadw",
+"type": "Correspondence",
+"subject": "Enquiry re potential acquiring authority route – former family farmland (BP v Buckler 1987)",
+"refs": [],
+"sent": "2025-11-02",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2025-11-04",
+"note": "",
+"why": [
+"obstruct"
+],
+"whyEvidence": [
+{
+"code": "obstruct",
+"mail": "gm-19a4e15727441570",
+"date": "2025-11-04",
+"quote": "pedw’s role is providing an impartial appeals service, we are not the correct department to comment or provide any advice."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19a465d6eea88bd2"
+},
+{
+"institution": "cadw",
+"institutionName": "Welsh Government / Cadw",
+"type": "Inbound only",
+"subject": "Automatic reply: Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy records — Matter of public interest",
+"refs": [],
+"sent": "",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-10-08",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-1a11c210b3442ac5",
+"date": "2026-10-08",
+"quote": "i can also confirm that planning and environment decisions wales (pedw) does not hold any information or records for great house farm / tŷ mawr, llandough-juxta-penarth or planning applications 89/01396/out and 92/00671/res."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e9e9889be4e6a"
+},
+{
+"institution": "hmlr",
+"institutionName": "HM Land Registry",
+"type": "SAR",
+"subject": "Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy, transfer or dispose",
+"refs": [],
+"sent": "2026-09-28",
+"due": "2026-10-28",
+"rule": "1 calendar month",
+"status": "pending",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e9e1e5a4586bf"
+},
+{
+"institution": "hmlr",
+"institutionName": "HM Land Registry",
+"type": "FOI",
+"subject": "Re: Your Ref: EDD Our Ref: WA231076/A/216/SH",
+"refs": [
+"ICR/090/26",
+"N610CGV",
+"Z084NQV"
+],
+"sent": "2026-07-30",
+"due": "2026-08-27",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-07-30",
+"note": "",
+"why": [
+"full"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19fb20f21f899949"
+},
+{
+"institution": "hmlr",
+"institutionName": "HM Land Registry",
+"type": "FOI",
+"subject": "WA231076 / WA240304 – request to confirm scope of first registration file records",
+"refs": [],
+"sent": "2026-06-03",
+"due": "2026-07-01",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e8c5f645277041"
+},
+{
+"institution": "hmlr",
+"institutionName": "HM Land Registry",
+"type": "FOI",
+"subject": "Ref: WA231076 / WA240304",
+"refs": [],
+"sent": "2026-06-03",
+"due": "2026-07-01",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e8c522b6abd40e"
+},
+{
+"institution": "hmlr",
+"institutionName": "HM Land Registry",
+"type": "FOI",
+"subject": "",
+"refs": [],
+"sent": "2026-06-03",
+"due": "2026-07-01",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e8c4ad3afa8c66"
+},
+{
+"institution": "hmlr",
+"institutionName": "HM Land Registry",
+"type": "FOI",
+"subject": "Re: last email",
+"refs": [],
+"sent": "2026-06-03",
+"due": "2026-07-01",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e8c6f80bd64bee"
+},
+{
+"institution": "hmlr",
+"institutionName": "HM Land Registry",
+"type": "Preservation notice",
+"subject": "Request for Preservation of Records – WA231076 / WA240304 (First Registration Files)",
+"refs": [],
+"sent": "2026-06-03",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e8de794edda2e0"
+},
+{
+"institution": "hmlr",
+"institutionName": "HM Land Registry",
+"type": "Complaint",
+"subject": "Request for Clarification of Correspondence – Title WA231076",
+"refs": [],
+"sent": "2026-06-02",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e861826be48ecb"
+},
+{
+"institution": "hmlr",
+"institutionName": "HM Land Registry",
+"type": "FOI",
+"subject": "Re: Your Ref: EDD Our Ref: WA231076/A/216/MC",
+"refs": [],
+"sent": "2026-05-26",
+"due": "2026-06-23",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-05-25",
+"note": "",
+"why": [
+"full"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e5feccba380185"
+},
+{
+"institution": "hmlr",
+"institutionName": "HM Land Registry",
+"type": "Correspondence",
+"subject": "Re: Your Ref: EDD Our Ref: WA231076/A/216/KH",
+"refs": [],
+"sent": "2026-04-21",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-04-21",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19db16a3437e45d9"
+},
+{
+"institution": "hmlr",
+"institutionName": "HM Land Registry",
+"type": "Complaint",
+"subject": "Stage Two Complaint – Title WA231076 – Alleged Mistake in the Register",
+"refs": [],
+"sent": "2026-04-19",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19da726f00b0bc06"
+},
+{
+"institution": "hmlr",
+"institutionName": "HM Land Registry",
+"type": "EIR",
+"subject": "Re: Subject: Freedom of Information Request - Ty Mawr (Great House), Llandough, near Penarth (1938-1987) F260213",
+"refs": [
+"F260213"
+],
+"sent": "2026-03-12",
+"due": "2026-04-13",
+"rule": "20 working days",
+"status": "partial",
+"late": false,
+"outcome": "refused / withheld (in part)",
+"firstReply": "2026-03-12",
+"note": "",
+"why": [
+"partial"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ce1fe9eccc997b"
+},
+{
+"institution": "hmlr",
+"institutionName": "HM Land Registry",
+"type": "FOI",
+"subject": "Freedom of Information Request - Ty Mawr (Great House), Llandough, near Penarth (1938-1987)",
+"refs": [],
+"sent": "2026-02-16",
+"due": "2026-03-16",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c63e3b39172545"
+},
+{
+"institution": "hmlr",
+"institutionName": "HM Land Registry",
+"type": "Correspondence",
+"subject": "Re: Your Ref: EDD Our Ref: WA231076/A/216/LG",
+"refs": [],
+"sent": "2026-02-13",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-02-13",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c5736ed3cd49cf"
+},
+{
+"institution": "hmlr",
+"institutionName": "HM Land Registry",
+"type": "FOI",
+"subject": "Re: FORMAL ALLEGATION OF FRAUD: Ref: 260202-5732372",
+"refs": [],
+"sent": "2026-02-05",
+"due": "2026-03-05",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c2eaf3dc886f7e"
+},
+{
+"institution": "hmlr",
+"institutionName": "HM Land Registry",
+"type": "FOI",
+"subject": "Request for review of potential irregularities in 1982 land registration",
+"refs": [],
+"sent": "2026-01-31",
+"due": "2026-02-27",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c126c7628a9311"
+},
+{
+"institution": "hmlr",
+"institutionName": "HM Land Registry",
+"type": "FOI",
+"subject": "Application to Record or Rectify Interest Omitted at First Registration",
+"refs": [],
+"sent": "2026-01-29",
+"due": "2026-02-26",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c091a0a10b8e0d"
+},
+{
+"institution": "hmlr",
+"institutionName": "HM Land Registry",
+"type": "Inbound only",
+"subject": "Your Ref: EDD Our Ref: WA231076/A/216/CT",
+"refs": [],
+"sent": "",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-04-19",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19da554c9184601b"
+},
+{
+"institution": "hmlr",
+"institutionName": "HM Land Registry",
+"type": "Inbound only",
+"subject": "Further to Your Enquiry: Ref: 260917-6714796 Title No: WA231076",
+"refs": [],
+"sent": "",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2026-09-17",
+"note": "",
+"why": [
+"obstruct"
+],
+"whyEvidence": [
+{
+"code": "obstruct",
+"mail": "gm-1a0ae09b93ceae38",
+"date": "2026-09-17",
+"quote": "we want to ensure that correspondence goes direct to our customer service team."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0ae09b93ceae38"
+},
+{
+"institution": "hmlr",
+"institutionName": "HM Land Registry",
+"type": "Inbound only",
+"subject": "Further to Your Enquiry: Ref: 260917-6714794 Title No: WA231076",
+"refs": [],
+"sent": "",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2026-09-17",
+"note": "",
+"why": [
+"obstruct"
+],
+"whyEvidence": [
+{
+"code": "obstruct",
+"mail": "gm-1a0ae07c905b2060",
+"date": "2026-09-17",
+"quote": "we want to ensure that correspondence goes direct to our customer service team."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0ae07c905b2060"
+},
+{
+"institution": "moj",
+"institutionName": "Ministry of Justice / HMCTS",
+"type": "SAR",
+"subject": "Re: Extension - Our reference: 260904007 SAR IR",
+"refs": [],
+"sent": "2026-10-02",
+"due": "2026-11-02",
+"rule": "1 calendar month",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0fd363100cc68b"
+},
+{
+"institution": "moj",
+"institutionName": "Ministry of Justice / HMCTS",
+"type": "Preservation notice",
+"subject": "Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy records — Matter of public interest",
+"refs": [],
+"sent": "2026-09-28",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "Reply received since 18 Oct (2026-10-20) — read before relying on this status.",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-1a11c210b3442ac5",
+"date": "2026-10-08",
+"quote": "i can also confirm that planning and environment decisions wales (pedw) does not hold any information or records for great house farm / tŷ mawr, llandough-juxta-penarth or planning applications 89/01396/out and 92/00671/res."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e9e9889be4e6a"
+},
+{
+"institution": "moj",
+"institutionName": "Ministry of Justice / HMCTS",
+"type": "FOI",
+"subject": "Re: FOI — Mary Williams probate records — death certificate enclosed",
+"refs": [],
+"sent": "2026-09-27",
+"due": "2026-10-23",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-09-30",
+"note": "",
+"why": [
+"full"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e0b7ebcf0f20f"
+},
+{
+"institution": "moj",
+"institutionName": "Ministry of Justice / HMCTS",
+"type": "SAR",
+"subject": "Re: Response to your request (our reference 260803049 - SAR)",
+"refs": [],
+"sent": "2026-09-03",
+"due": "2026-10-03",
+"rule": "1 calendar month",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a068b690f1fde22"
+},
+{
+"institution": "moj",
+"institutionName": "Ministry of Justice / HMCTS",
+"type": "FOI",
+"subject": "Freedom of Information Act 2000 Request – Historical Court Records and Administrative Records Relating to William (\"Billy\") Buckler (1988–19",
+"refs": [],
+"sent": "2026-08-05",
+"due": "2026-09-03",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19fcf68c9ca9324b"
+},
+{
+"institution": "moj",
+"institutionName": "Ministry of Justice / HMCTS",
+"type": "FOI",
+"subject": "Great House Farm, Llandough, Cardiff",
+"refs": [],
+"sent": "2026-08-03",
+"due": "2026-09-01",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-08-04",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-1a0341444f5bf89d",
+"date": "2026-08-24",
+"quote": "under the records schedule available to this office,” paper records are retained for three years from the last meaningful transaction and then destroyed."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19fc9358eecc11aa"
+},
+{
+"institution": "moj",
+"institutionName": "Ministry of Justice / HMCTS",
+"type": "SAR",
+"subject": "Re: Response to your request (our reference 260702090 - SAR)",
+"refs": [],
+"sent": "2026-08-03",
+"due": "2026-09-03",
+"rule": "1 calendar month",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19fc7331f99b2d8b"
+},
+{
+"institution": "moj",
+"institutionName": "Ministry of Justice / HMCTS",
+"type": "SAR",
+"subject": "Re: Buckler - 260607013 - FOI - response",
+"refs": [],
+"sent": "2026-06-30",
+"due": "2026-07-30",
+"rule": "1 calendar month",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-07-01",
+"note": "",
+"why": [
+"privacy"
+],
+"whyEvidence": [
+{
+"code": "privacy",
+"mail": "gm-19f1d3b6ce31b0fe",
+"date": "2026-07-01",
+"quote": "your request has been handled in line with data protection legislation as a subject access request (sar) for your personal information."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19f18a3ec528e53f"
+},
+{
+"institution": "moj",
+"institutionName": "Ministry of Justice / HMCTS",
+"type": "FOI",
+"subject": "FOI: Great House Farm, Llandough",
+"refs": [],
+"sent": "2026-06-20",
+"due": "2026-07-17",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2026-06-22",
+"note": "",
+"why": [
+"full"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ee6a2303d483b9"
+},
+{
+"institution": "moj",
+"institutionName": "Ministry of Justice / HMCTS",
+"type": "FOI",
+"subject": "Request for Access to Historical Court Records – Great House Farm (Ty Mawr), Llandough",
+"refs": [],
+"sent": "2026-06-10",
+"due": "2026-07-08",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19eaf83ff747233a"
+},
+{
+"institution": "moj",
+"institutionName": "Ministry of Justice / HMCTS",
+"type": "FOI",
+"subject": "FOI - Location & Access to Historical Court Records (Great House Farm, Llandough)",
+"refs": [],
+"sent": "2026-06-07",
+"due": "2026-07-03",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ea14aacd741541"
+},
+{
+"institution": "moj",
+"institutionName": "Ministry of Justice / HMCTS",
+"type": "FOI",
+"subject": "FOI",
+"refs": [],
+"sent": "2026-06-07",
+"due": "2026-07-03",
+"rule": "20 working days",
+"status": "answered",
+"late": true,
+"outcome": "answered",
+"firstReply": "2026-07-28",
+"note": "",
+"why": [
+"privacy",
+"overdue"
+],
+"whyEvidence": [
+{
+"code": "privacy",
+"mail": "gm-19ea6115dd775a77",
+"date": "2026-06-08",
+"quote": "this is because the moj has obligations under the data protection act and in law generally to protect this information."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ea150513c39427"
+},
+{
+"institution": "moj",
+"institutionName": "Ministry of Justice / HMCTS",
+"type": "Correspondence",
+"subject": "Ref: TO130237",
+"refs": [],
+"sent": "2026-04-29",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ddb251d96273d7"
+},
+{
+"institution": "moj",
+"institutionName": "Ministry of Justice / HMCTS",
+"type": "Correspondence",
+"subject": "Re: Reply to your email of September 2025",
+"refs": [],
+"sent": "2026-04-29",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19dce3025cf14e07"
+},
+{
+"institution": "moj",
+"institutionName": "Ministry of Justice / HMCTS",
+"type": "FOI",
+"subject": "New response to your FOI request - Freedom of Information Request – Administrative Records for BP Properties Ltd v Buckler (1974)",
+"refs": [],
+"sent": "2026-01-28",
+"due": "2026-02-25",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "reply via WDTK (text on WDTK)",
+"firstReply": "2026-01-28",
+"note": "",
+"why": [
+"full"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c035a275e5a494"
+},
+{
+"institution": "moj",
+"institutionName": "Ministry of Justice / HMCTS",
+"type": "FOI",
+"subject": "Confirm your FOI request to HM Courts and Tribunals Service",
+"refs": [],
+"sent": "2026-01-28",
+"due": "2026-02-25",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c0355441d65c0a"
+},
+{
+"institution": "moj",
+"institutionName": "Ministry of Justice / HMCTS",
+"type": "FOI",
+"subject": "A survey about your recent Freedom of Information request",
+"refs": [],
+"sent": "2025-07-28",
+"due": "2025-08-26",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1984fa6453d695a9"
+},
+{
+"institution": "moj",
+"institutionName": "Ministry of Justice / HMCTS",
+"type": "FOI",
+"subject": "New response to your FOI request - BP vs Buckler 1987",
+"refs": [],
+"sent": "2025-06-28",
+"due": "2025-07-25",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "reply via WDTK (text on WDTK)",
+"firstReply": "2025-06-28",
+"note": "",
+"why": [
+"full"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/197b4a39099ffb34"
+},
+{
+"institution": "tna",
+"institutionName": "The National Archives",
+"type": "FOI",
+"subject": "FOI — location only — Valuation Office Survey 1910, OS Glamorgan XLVII.6, Llandough / Great House Farm",
+"refs": [],
+"sent": "2026-10-10",
+"due": "2026-11-06",
+"rule": "20 working days",
+"status": "pending",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a1060d79ae529a6"
+},
+{
+"institution": "tna",
+"institutionName": "The National Archives",
+"type": "SAR",
+"subject": "Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy, transfer or dispose",
+"refs": [],
+"sent": "2026-09-28",
+"due": "2026-10-28",
+"rule": "1 calendar month",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e9e1e5a4586bf"
+},
+{
+"institution": "tna",
+"institutionName": "The National Archives",
+"type": "FOI",
+"subject": "New response to your FOI request - Great House Farm, Llandough, Cardiff (BP vs Buckler 1987)",
+"refs": [],
+"sent": "2026-09-02",
+"due": "2026-09-30",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "reply via WDTK (text on WDTK)",
+"firstReply": "2026-09-02",
+"note": "",
+"why": [
+"full"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a062631c902b993"
+},
+{
+"institution": "tna",
+"institutionName": "The National Archives",
+"type": "FOI",
+"subject": "Re: Response to enquiry at The National Archives. Case number CAS-343481-X5H3M6 CRM:016207464",
+"refs": [
+"CAS-343481",
+"CAS-344046",
+"CAS-347296"
+],
+"sent": "2026-07-30",
+"due": "2026-08-27",
+"rule": "20 working days",
+"status": "partial",
+"late": false,
+"outcome": "refused / withheld (in part)",
+"firstReply": "2026-07-30",
+"note": "",
+"why": [
+"partial"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19fb3502cda71764"
+},
+{
+"institution": "tna",
+"institutionName": "The National Archives",
+"type": "FOI",
+"subject": "Great House Farm, Llandough, Cardiff",
+"refs": [],
+"sent": "2026-07-27",
+"due": "2026-08-24",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19fa4b5a70ee940a"
+},
+{
+"institution": "tna",
+"institutionName": "The National Archives",
+"type": "FOI",
+"subject": "Freedom of Information / Historical Records Request - Mr. Williams, Cardiff Post Office Engineering Department, 1897 Marconi Lavernock Exper",
+"refs": [],
+"sent": "2026-07-16",
+"due": "2026-08-13",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-19f8530ed18a1ad6",
+"date": "2026-07-21",
+"quote": "glamorgan archives does not hold records of past employees of the post office."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19f682ed8be4fae0"
+},
+{
+"institution": "tna",
+"institutionName": "The National Archives",
+"type": "FOI",
+"subject": "Re: Manor of Llandough - MDR Entries",
+"refs": [
+"F236775"
+],
+"sent": "2026-02-24",
+"due": "2026-03-24",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-02-24",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-19cb41ce24e28ffe",
+"date": "2026-03-03",
+"quote": "we do not hold any other finding manorial finding aids such as old index cards as the entries were updated in 1990’s summarising the archive services catalogues of the time."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c908fa7cddd153"
+},
+{
+"institution": "tna",
+"institutionName": "The National Archives",
+"type": "Correspondence",
+"subject": "Formal Notice for Record: Church View Close, Llandough / BP vs Buckler 1987",
+"refs": [],
+"sent": "2026-02-10",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-02-18",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c46d234b84d200"
+},
+{
+"institution": "tna",
+"institutionName": "The National Archives",
+"type": "Correspondence",
+"subject": "Re: Response to enquiry at The National Archives. Case number: CAS-313954-Y6C0H3 CRM:052900508",
+"refs": [
+"CAS-313954",
+"CAS-315609",
+"CAS-344122"
+],
+"sent": "2026-02-06",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-02-06",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c327f2179d7a53"
+},
+{
+"institution": "tna",
+"institutionName": "The National Archives",
+"type": "Correspondence",
+"subject": "Concern regarding historical record following disputed land dispossession",
+"refs": [],
+"sent": "2026-01-31",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c129f423e151ce"
+},
+{
+"institution": "mp",
+"institutionName": "Member of Parliament",
+"type": "Correspondence",
+"subject": "Great House Farm, Llandough — two questions for HM Land Registry (ref N610CGV)",
+"refs": [
+"26FOI103",
+"ICR/090/26",
+"N610CGV"
+],
+"sent": "2026-09-19",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0ba9e77a49f085"
+},
+{
+"institution": "mp",
+"institutionName": "Member of Parliament",
+"type": "Correspondence",
+"subject": "Re: From the Office of Stephen Doghty MP",
+"refs": [],
+"sent": "2026-09-18",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-09-18",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0b3cb33eb0553d"
+},
+{
+"institution": "mp",
+"institutionName": "Member of Parliament",
+"type": "Correspondence",
+"subject": "Great House Farm, Llandough",
+"refs": [],
+"sent": "2026-08-28",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a04a61cde22259f"
+},
+{
+"institution": "mp",
+"institutionName": "Member of Parliament",
+"type": "Complaint",
+"subject": "Complaint - Great House Farm, Llandough",
+"refs": [],
+"sent": "2026-07-27",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-08-05",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19fa5759a198dbff"
+},
+{
+"institution": "mp",
+"institutionName": "Member of Parliament",
+"type": "Complaint",
+"subject": "Re: Automatic reply: Complaint of maladministration – defective notice, enforcement process, and loss of opportunity (Great House Farm, Llan",
+"refs": [
+"ATISN27021",
+"RC26-0205"
+],
+"sent": "2026-06-25",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19efdbacc43cd375"
+},
+{
+"institution": "mp",
+"institutionName": "Member of Parliament",
+"type": "Correspondence",
+"subject": "Great House Farm, Llandough (now Church View Close)",
+"refs": [],
+"sent": "2026-06-12",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ebbb0423f9ba3b"
+},
+{
+"institution": "mp",
+"institutionName": "Member of Parliament",
+"type": "Records request",
+"subject": "Re: Automatic reply: FORMAL DISCLOSURE NOTICE & LITIGATION HOLD: Historic Significance, Planning Approvals, and Displaced Family Tenancy Rec",
+"refs": [],
+"sent": "2026-05-31",
+"due": "2026-06-26",
+"rule": "20 working days",
+"status": "overdue",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [
+"overdue"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e750cbad1114c0"
+},
+{
+"institution": "museum",
+"institutionName": "Amgueddfa Cymru - Museum Wales",
+"type": "FOI",
+"subject": "FOI 2026-024 / 032 / 036 – outstanding item 7: recorded basis for treating already-found records as “unrelated / not in scope”",
+"refs": [],
+"sent": "2026-10-10",
+"due": "2026-11-06",
+"rule": "20 working days",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a123efb2856da1d"
+},
+{
+"institution": "museum",
+"institutionName": "Amgueddfa Cymru - Museum Wales",
+"type": "FOI",
+"subject": "RE: FOI 2026-036 – Great House Farm, Llandough – filtered schedule still not supplied; unanswered points from FOI 2026-032 correction",
+"refs": [],
+"sent": "2026-10-07",
+"due": "2026-11-04",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-10-07",
+"note": "",
+"why": [
+"notheld",
+"obstruct"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-1a115341cd46142d",
+"date": "2026-10-07",
+"quote": "in relation to the filtered schedule, amgueddfa cymru does not hold a separate recorded document identifying, item by item, which search results were excluded following review."
+},
+{
+"code": "obstruct",
+"mail": "gm-1a130a221be37fde",
+"date": "2026-10-12",
+"quote": "the document should therefore be regarded as outside the scope of foi 2026-036."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a1149cc3b8ce394"
+},
+{
+"institution": "museum",
+"institutionName": "Amgueddfa Cymru - Museum Wales",
+"type": "Preservation notice",
+"subject": "Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy records — Matter of public interest",
+"refs": [],
+"sent": "2026-09-28",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "Reply received since 18 Oct (2026-10-20) — read before relying on this status.",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-1a11c210b3442ac5",
+"date": "2026-10-08",
+"quote": "i can also confirm that planning and environment decisions wales (pedw) does not hold any information or records for great house farm / tŷ mawr, llandough-juxta-penarth or planning applications 89/01396/out and 92/00671/res."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e9e9889be4e6a"
+},
+{
+"institution": "museum",
+"institutionName": "Amgueddfa Cymru - Museum Wales",
+"type": "FOI",
+"subject": "RE: FOI - 2026-032 - Great House Farm, Llandough",
+"refs": [],
+"sent": "2026-09-27",
+"due": "2026-10-23",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-09-22",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-1a0e6dc8c61aeba3",
+"date": "2026-09-28",
+"quote": "in relation to item 7 of your email of 26 august, we do not hold any separate recorded information explaining the basis on which staff concluded that the identified records were unrelated to the reported nineteenth-century discovery."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0c8b62d56ff57c"
+},
+{
+"institution": "museum",
+"institutionName": "Amgueddfa Cymru - Museum Wales",
+"type": "FOI",
+"subject": "Re: FOI: 2026-036 - Great House Farm, Llandough, Cardiff",
+"refs": [],
+"sent": "2026-09-08",
+"due": "2026-10-06",
+"rule": "20 working days",
+"status": "partial",
+"late": false,
+"outcome": "refused / withheld (in part)",
+"firstReply": "2026-09-08",
+"note": "",
+"why": [
+"partial"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a08046912368e30"
+},
+{
+"institution": "museum",
+"institutionName": "Amgueddfa Cymru - Museum Wales",
+"type": "Internal review",
+"subject": "Re: Internal Review: FOI 2026-020 - Great House Farm, Llandough | Cardiff Castle Furniture",
+"refs": [],
+"sent": "2026-09-08",
+"due": "2026-10-06",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-09-08",
+"note": "",
+"why": [
+"notheld",
+"obstruct"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-1a080232600c3e70",
+"date": "2026-09-08",
+"quote": "the review therefore upholds the original decision that amgueddfa cymru does not hold recorded information concerning furniture, furnishings, antiques, fixtures, heirlooms or other movable property originating from great house farm (ty mawr"
+},
+{
+"code": "obstruct",
+"mail": "gm-1a080232600c3e70",
+"date": "2026-09-08",
+"quote": "the reviewer is therefore satisfied that they fall outside the scope of the request."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a080232600c3e70"
+},
+{
+"institution": "museum",
+"institutionName": "Amgueddfa Cymru - Museum Wales",
+"type": "Internal review",
+"subject": "Great House Farm, Llandough, Cardiff",
+"refs": [],
+"sent": "2026-09-08",
+"due": "2026-10-06",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a07ef81245f400b"
+},
+{
+"institution": "museum",
+"institutionName": "Amgueddfa Cymru - Museum Wales",
+"type": "Internal review",
+"subject": "Re: FOI - 2026-024 - Great House Farm, Llandough",
+"refs": [],
+"sent": "2026-08-26",
+"due": "2026-09-24",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-08-25",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a037cf4054f6219"
+},
+{
+"institution": "museum",
+"institutionName": "Amgueddfa Cymru - Museum Wales",
+"type": "FOI",
+"subject": "Re: FOI 2026-020 - Great House Farm, Llandough | Cardiff Castle Furniture",
+"refs": [],
+"sent": "2026-08-03",
+"due": "2026-09-01",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-08-03",
+"note": "",
+"why": [
+"notheld",
+"obstruct"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-19fc7d9d48f162aa",
+"date": "2026-08-03",
+"quote": "accordingly, amgueddfa cymru does not hold recorded information falling within the scope of items 1 to 9 of your request relating to such objects."
+},
+{
+"code": "obstruct",
+"mail": "gm-19fc7d9d48f162aa",
+"date": "2026-08-03",
+"quote": "however, archaeological finds are outside the scope of this response because they do not fall within your request for furniture, furnishings, antiques, fixtures, heirlooms and other movable property."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19fc7d9d48f162aa"
+},
+{
+"institution": "museum",
+"institutionName": "Amgueddfa Cymru - Museum Wales",
+"type": "EIR",
+"subject": "FOI - Great House Farm, Llandough",
+"refs": [],
+"sent": "2026-07-27",
+"due": "2026-08-24",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19fa128887d5cab6"
+},
+{
+"institution": "museum",
+"institutionName": "Amgueddfa Cymru - Museum Wales",
+"type": "FOI",
+"subject": "Re: ALLANOL/EXTERNAL - Great House Farm, Llandough | Cardiff Castle Furniture",
+"refs": [],
+"sent": "2026-07-13",
+"due": "2026-08-10",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-07-13",
+"note": "",
+"why": [
+"full"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19f5b28bbe6ecdbc"
+},
+{
+"institution": "museum",
+"institutionName": "Amgueddfa Cymru - Museum Wales",
+"type": "EIR",
+"subject": "FORMAL DISCLOSURE NOTICE & LITIGATION HOLD: Historic Significance, Planning Approvals, and Displaced Family Tenancy Records for Great House ",
+"refs": [],
+"sent": "2026-05-29",
+"due": "2026-06-26",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-19eb75ec2e0a1cdc",
+"date": "2026-06-11",
+"quote": "we do not hold any records of bp properties ltd or bp pension trust."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e75029f91a5bd9"
+},
+{
+"institution": "museum",
+"institutionName": "Amgueddfa Cymru - Museum Wales",
+"type": "Inbound only",
+"subject": "Ref 2026/024 - FOI - Great House Farm, Llandough",
+"refs": [],
+"sent": "",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-07-27",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19fa4156c4788452"
+},
+{
+"institution": "museum",
+"institutionName": "Amgueddfa Cymru - Museum Wales",
+"type": "Inbound only",
+"subject": "FOI Internal Review - 2026-024 - Great House Farm, Llandough",
+"refs": [],
+"sent": "",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-09-22",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-1a0c86e31d8df932",
+"date": "2026-09-22",
+"quote": "i therefore uphold the original conclusion that amgueddfa cymru does not hold recorded information falling within the scope of your request."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0c86e31d8df932"
+},
+{
+"institution": "museum",
+"institutionName": "Amgueddfa Cymru - Museum Wales",
+"type": "Inbound only",
+"subject": "FW: 2026-036- Great House Farm, Llandough, Cardiff",
+"refs": [],
+"sent": "",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-10-05",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a10c2ac609d288e"
+},
+{
+"institution": "museum",
+"institutionName": "Amgueddfa Cymru - Museum Wales",
+"type": "Inbound only",
+"subject": "RE: ALLANOL/EXTERNAL - FOI 2026-024 / 032 / 036 – outstanding item 7: recorded basis for treating already-found records as “unrelated / not ",
+"refs": [],
+"sent": "",
+"due": "",
+"rule": "",
+"status": "partial",
+"late": false,
+"outcome": "refused / withheld (in part)",
+"firstReply": "2026-10-12",
+"note": "",
+"why": [
+"notheld",
+"obstruct",
+"partial"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-1a1309dc33154ec9",
+"date": "2026-10-12",
+"quote": "in relation to your request for the recorded basis on which records were treated as outside the scope of foi 2026-024, amgueddfa cymru does not hold a separate search log, file note, internal note or other recorded document setting out the"
+},
+{
+"code": "obstruct",
+"mail": "gm-1a1309dc33154ec9",
+"date": "2026-10-12",
+"quote": "in relation to your request for the recorded basis on which records were treated as outside the scope of foi 2026-024, amgueddfa cymru does not hold a separate search log, file note, internal note or other recorded document setting out the"
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a1309dc33154ec9"
+},
+{
+"institution": "nlw",
+"institutionName": "National Library of Wales",
+"type": "FOI",
+"subject": "Re: [NLW English] Bute Estate records — Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth — ticket #9816877",
+"refs": [],
+"sent": "2026-10-15",
+"due": "2026-11-12",
+"rule": "20 working days",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a141fc5ee03da4f"
+},
+{
+"institution": "nlw",
+"institutionName": "National Library of Wales",
+"type": "Internal review",
+"subject": "New FOI request (outside FOI/2026/09) — 1610 Herbert survey S7 and Cardiff MSS microfilm of Bute X.6(12) — Llandough-juxta-Penarth",
+"refs": [],
+"sent": "2026-10-15",
+"due": "2026-11-12",
+"rule": "20 working days",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a141fc4254e01d4"
+},
+{
+"institution": "nlw",
+"institutionName": "National Library of Wales",
+"type": "FOI",
+"subject": "FOI/2026/09 and subsequent correspondence – thank you and one remaining point",
+"refs": [],
+"sent": "2026-10-10",
+"due": "2026-11-06",
+"rule": "20 working days",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a11eaa0af2e3861"
+},
+{
+"institution": "nlw",
+"institutionName": "National Library of Wales",
+"type": "SAR",
+"subject": "Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy, transfer or dispose",
+"refs": [],
+"sent": "2026-09-28",
+"due": "2026-10-28",
+"rule": "1 calendar month",
+"status": "pending",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e9e1e5a4586bf"
+},
+{
+"institution": "nlw",
+"institutionName": "National Library of Wales",
+"type": "FOI",
+"subject": "Research enquiry — Bute Estate records GB 0210 BUTE / D153 / D219: Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth — 1877 split and 1916",
+"refs": [],
+"sent": "2026-09-27",
+"due": "2026-10-23",
+"rule": "20 working days",
+"status": "pending",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0d4d42318ac190"
+},
+{
+"institution": "nlw",
+"institutionName": "National Library of Wales",
+"type": "FOI",
+"subject": "Great House Farm, Llandough, Cardiff",
+"refs": [],
+"sent": "2026-07-27",
+"due": "2026-08-24",
+"rule": "20 working days",
+"status": "partial",
+"late": false,
+"outcome": "refused / withheld (in part)",
+"firstReply": "2026-07-28",
+"note": "",
+"why": [
+"partial"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19fa4b5a70ee940a"
+},
+{
+"institution": "nlw",
+"institutionName": "National Library of Wales",
+"type": "FOI",
+"subject": "Re: [NLW English] Great House Farm, Llandough | Cardiff Castle Furniture",
+"refs": [],
+"sent": "2026-07-20",
+"due": "2026-08-17",
+"rule": "20 working days",
+"status": "partial",
+"late": false,
+"outcome": "refused / withheld (in part)",
+"firstReply": "2026-07-03",
+"note": "",
+"why": [
+"partial"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19f1c45aa603989e"
+},
+{
+"institution": "nlw",
+"institutionName": "National Library of Wales",
+"type": "Internal review",
+"subject": "Re: [NLW English] Great House Farm, Llandough | Cardiff Castle Furniture 2/2",
+"refs": [],
+"sent": "2026-07-20",
+"due": "2026-08-17",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19f81087a6d94d66"
+},
+{
+"institution": "nlw",
+"institutionName": "National Library of Wales",
+"type": "Correspondence",
+"subject": "Research Enquiry - Great House Farm, Llandough (Williams/Buckler, Bute Estates, Daniel Thomas)",
+"refs": [],
+"sent": "2026-06-07",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-06-19",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ea148fc3e83020"
+},
+{
+"institution": "nlw",
+"institutionName": "National Library of Wales",
+"type": "Correspondence",
+"subject": "Enquiry; BP vs Buckler",
+"refs": [],
+"sent": "2026-04-30",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19de014f20579466"
+},
+{
+"institution": "nlw",
+"institutionName": "National Library of Wales",
+"type": "Inbound only",
+"subject": "[NLW English] Great House Farm, Llandough",
+"refs": [
+"N610CGV"
+],
+"sent": "",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2026-10-14",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e03138143e763"
+},
+{
+"institution": "nlw",
+"institutionName": "National Library of Wales",
+"type": "Inbound only",
+"subject": "Your submission to LibAnswers was received.",
+"refs": [],
+"sent": "",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2026-06-07",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ea14d9d2fcc6fe"
+},
+{
+"institution": "rcahmw",
+"institutionName": "RCAHMW (Royal Commission)",
+"type": "EIR",
+"subject": "Re: RC26-0375 (gan gynnwys RC26-0353, -0368, a -0371) - Ty Mawr/ Great House, Llandough, Cardiff",
+"refs": [
+"RC26-0353",
+"RC26-0375"
+],
+"sent": "2026-09-30",
+"due": "2026-10-28",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-09-29",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0ed5d3ada10e6b"
+},
+{
+"institution": "rcahmw",
+"institutionName": "RCAHMW (Royal Commission)",
+"type": "SAR",
+"subject": "Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy, transfer or dispose",
+"refs": [],
+"sent": "2026-09-28",
+"due": "2026-10-28",
+"rule": "1 calendar month",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2026-09-29",
+"note": "",
+"why": [
+"full"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e9e1e5a4586bf"
+},
+{
+"institution": "rcahmw",
+"institutionName": "RCAHMW (Royal Commission)",
+"type": "EIR",
+"subject": "Ty Mawr/ Great House, Llandough, Cardiff",
+"refs": [],
+"sent": "2026-09-20",
+"due": "2026-10-16",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0bda2634ae66e1"
+},
+{
+"institution": "rcahmw",
+"institutionName": "RCAHMW (Royal Commission)",
+"type": "FOI",
+"subject": "Great House Farm, Llandough",
+"refs": [],
+"sent": "2026-09-17",
+"due": "2026-10-15",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0ad615441a4131"
+},
+{
+"institution": "rcahmw",
+"institutionName": "RCAHMW (Royal Commission)",
+"type": "Correspondence",
+"subject": "Catalogue check – ERC RCS2/1/1777 “Great House (Ty Mawr), Bonvilston”",
+"refs": [],
+"sent": "2026-09-15",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0a6ba8235d6122"
+},
+{
+"institution": "rcahmw",
+"institutionName": "RCAHMW (Royal Commission)",
+"type": "EIR",
+"subject": "Great House Farm, Llandough, Cardiff",
+"refs": [],
+"sent": "2026-09-08",
+"due": "2026-10-06",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a07ef67ca845e50"
+},
+{
+"institution": "rcahmw",
+"institutionName": "RCAHMW (Royal Commission)",
+"type": "FOI",
+"subject": "FAO: [named individual]: Aerial Discoveries & a Buried History",
+"refs": [],
+"sent": "2026-08-02",
+"due": "2026-08-28",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19fc40b846363f4e"
+},
+{
+"institution": "rcahmw",
+"institutionName": "RCAHMW (Royal Commission)",
+"type": "Correspondence",
+"subject": "Re: RC26-0205 - Great House Farm, Williams/ Buckler Family, Llandough, Vale of Glamorgan",
+"refs": [
+"RC26-0205"
+],
+"sent": "2026-05-29",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-05-28",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e6f0e4a747d5bc"
+},
+{
+"institution": "rcahmw",
+"institutionName": "RCAHMW (Royal Commission)",
+"type": "Correspondence",
+"subject": "Re: RC25-0464 - Information related to Great House Farm, Llandough",
+"refs": [
+"RC25-0464"
+],
+"sent": "2025-11-26",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2025-11-26",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ac0350c6c1fde3"
+},
+{
+"institution": "rcahmw",
+"institutionName": "RCAHMW (Royal Commission)",
+"type": "Inbound only",
+"subject": "RE: Great House Farm, Williams/ Buckler Family, Llandough, Vale of Glamorgan",
+"refs": [],
+"sent": "",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-05-22",
+"note": "",
+"why": [
+"obstruct"
+],
+"whyEvidence": [
+{
+"code": "obstruct",
+"mail": "gm-19e501c1312a8496",
+"date": "2026-05-22",
+"quote": "heneb is not subject to foi requests as we are a limited company."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e46e010d552d92"
+},
+{
+"institution": "llandough",
+"institutionName": "Llandough Community Council",
+"type": "SAR",
+"subject": "Supplement and plain-language clarification to my email of 13 October 2026 (03:25 UTC)",
+"refs": [],
+"sent": "2026-10-16",
+"due": "2026-11-16",
+"rule": "1 calendar month",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a143eb18a1da9f7"
+},
+{
+"institution": "llandough",
+"institutionName": "Llandough Community Council",
+"type": "FOI",
+"subject": "Re: MEETING OF THE COUNCIL - 22 OCTOBER AT 7.00PM",
+"refs": [],
+"sent": "2026-10-14",
+"due": "2026-11-11",
+"rule": "20 working days",
+"status": "pending",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "Reply received since 18 Oct (2026-10-20) — read before relying on this status.",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a136e2b51f9d191"
+},
+{
+"institution": "llandough",
+"institutionName": "Llandough Community Council",
+"type": "SAR",
+"subject": "Apologies Gentlemen - Disregard Last Email Por Favor",
+"refs": [],
+"sent": "2026-10-13",
+"due": "2026-11-13",
+"rule": "1 calendar month",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a13347b9572d705"
+},
+{
+"institution": "llandough",
+"institutionName": "Llandough Community Council",
+"type": "EIR",
+"subject": "Re: Great House Farm (Tŷ Mawr), Llandough — request for information under FOIA 2000 / EIR 2004",
+"refs": [],
+"sent": "2026-09-21",
+"due": "2026-10-19",
+"rule": "20 working days",
+"status": "partial",
+"late": false,
+"outcome": "refused / withheld (in part)",
+"firstReply": "2026-09-28",
+"note": "",
+"why": [
+"cost",
+"partial"
+],
+"whyEvidence": [
+{
+"code": "cost",
+"mail": "gm-1a12a57b87f563cc",
+"date": "2026-10-11",
+"quote": "under the provisions of the act and as defined by \"the freedom of information and data protection (appropriate limit and fees) regulations 2004\" (the regulations) , an authority is not obliged to comply with a request for information if the"
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0c1e36871ebfd1"
+},
+{
+"institution": "llandough",
+"institutionName": "Llandough Community Council",
+"type": "Correspondence",
+"subject": "Great House Farm (Tŷ Mawr) — heritage research and a Welsh museum project in Patagonia",
+"refs": [],
+"sent": "2026-09-20",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2026-09-20",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0bcd6554c4ebec"
+},
+{
+"institution": "llandough",
+"institutionName": "Llandough Community Council",
+"type": "Correspondence",
+"subject": "Follow up",
+"refs": [],
+"sent": "2026-06-14",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ec7fdd4aa96df1"
+},
+{
+"institution": "llandough",
+"institutionName": "Llandough Community Council",
+"type": "FOI",
+"subject": "Re: Great House Farm",
+"refs": [],
+"sent": "2026-05-18",
+"due": "2026-06-16",
+"rule": "20 working days",
+"status": "partial",
+"late": false,
+"outcome": "refused / withheld (in part)",
+"firstReply": "2026-06-14",
+"note": "",
+"why": [
+"exempt",
+"partial"
+],
+"whyEvidence": [
+{
+"code": "exempt",
+"mail": "gm-19ec6e0894a49c27",
+"date": "2026-06-14",
+"quote": "section 21 of the freedom of information act (foia) is an absolute exemption that allows public authorities to refuse a request if the requested information is already reasonably accessible to the applicant by other means."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e3900c32c4c541"
+},
+{
+"institution": "llandough",
+"institutionName": "Llandough Community Council",
+"type": "FOI",
+"subject": "Re: BP vs Buckler",
+"refs": [],
+"sent": "2025-11-20",
+"due": "2025-12-18",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2025-11-20",
+"note": "",
+"why": [
+"full"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19a8249da6b74faa"
+},
+{
+"institution": "swp",
+"institutionName": "South Wales Police",
+"type": "SAR",
+"subject": "Re: Subject Access Request",
+"refs": [],
+"sent": "2026-09-29",
+"due": "2026-10-29",
+"rule": "1 calendar month",
+"status": "pending",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0edc455b623659"
+},
+{
+"institution": "swp",
+"institutionName": "South Wales Police",
+"type": "SAR",
+"subject": "Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy, transfer or dispose",
+"refs": [],
+"sent": "2026-09-28",
+"due": "2026-10-28",
+"rule": "1 calendar month",
+"status": "pending",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e9e1e5a4586bf"
+},
+{
+"institution": "swp",
+"institutionName": "South Wales Police",
+"type": "FOI",
+"subject": "Freedom of Information Request – Records relating to the deaths of William Buckler (1990) and Mary Doreen Williams (1983)",
+"refs": [],
+"sent": "2026-08-20",
+"due": "2026-09-18",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-09-29",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0165feee8e5161"
+},
+{
+"institution": "swp",
+"institutionName": "South Wales Police",
+"type": "FOI",
+"subject": "Follow-up – FOI Request 719/26 (Great House Farm / 1988 Dispossession)",
+"refs": [
+"1264/26",
+"719/26",
+"FOI1264"
+],
+"sent": "2026-08-02",
+"due": "2026-08-28",
+"rule": "20 working days",
+"status": "overdue",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [
+"overdue"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19fbdf07c28ad2ef"
+},
+{
+"institution": "swp",
+"institutionName": "South Wales Police",
+"type": "EIR",
+"subject": "FOI/EIR Request – 1988 Police/Bailiff Involvement in Dispossession at Great House Farm (Ty Mawr), Llandough (Ref: Buckler/Williams Family, B",
+"refs": [],
+"sent": "2026-06-07",
+"due": "2026-07-03",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-06-22",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ea129e59750f6b"
+},
+{
+"institution": "swp",
+"institutionName": "South Wales Police",
+"type": "Inbound only",
+"subject": "Automatic reply: FORMAL DISCLOSURE NOTICE & LITIGATION HOLD: Historic Significance, Planning Approvals, and Displaced Family Tenancy Records",
+"refs": [],
+"sent": "",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2026-05-29",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-19eb75ec2e0a1cdc",
+"date": "2026-06-11",
+"quote": "we do not hold any records of bp properties ltd or bp pension trust."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e75029f91a5bd9"
+},
+{
+"institution": "senedd",
+"institutionName": "Senedd",
+"type": "Correspondence",
+"subject": "Re: Acknowledgement from the Culture, Communications, Cymraeg and Sport Committee",
+"refs": [
+"ATISN27021"
+],
+"sent": "2026-08-11",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-08-11",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ff079027ee0614"
+},
+{
+"institution": "senedd",
+"institutionName": "Senedd",
+"type": "Correspondence",
+"subject": "BP vs Buckler 1987 (fraud & Consealment)",
+"refs": [],
+"sent": "2026-07-17",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19f6fb3c8d4c11bc"
+},
+{
+"institution": "senedd",
+"institutionName": "Senedd",
+"type": "Correspondence",
+"subject": "Re: ATB/RE: ATB/RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorg",
+"refs": [],
+"sent": "2026-05-12",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-05-12",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e1baa351088e79"
+},
+{
+"institution": "senedd",
+"institutionName": "Senedd",
+"type": "Correspondence",
+"subject": "Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan",
+"refs": [],
+"sent": "2026-05-11",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e187143a277d81"
+},
+{
+"institution": "senedd",
+"institutionName": "Senedd",
+"type": "Correspondence",
+"subject": "Re: ATB/RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan",
+"refs": [],
+"sent": "2026-05-11",
+"due": "",
+"rule": "",
+"status": "partial",
+"late": false,
+"outcome": "refused / withheld (in part)",
+"firstReply": "2026-05-11",
+"note": "",
+"why": [
+"partial"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e179ad0a4405b6"
+},
+{
+"institution": "senedd",
+"institutionName": "Senedd",
+"type": "Correspondence",
+"subject": "Historic Adverse Possession Licence Interruption Cases (1950–2000)",
+"refs": [],
+"sent": "2026-02-14",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c5b8fa4ec2ed3d"
+},
+{
+"institution": "senedd",
+"institutionName": "Senedd",
+"type": "Correspondence",
+"subject": "Cais am Ddeiseb ac Ymchwiliad Cyhoeddus: Achos Buckler v BP (1987) a Dinistr Great House Farm, Llandough / Formal Request for Inquiry: The G",
+"refs": [],
+"sent": "2026-02-01",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c18bfd989eabaf"
+},
+{
+"institution": "senedd",
+"institutionName": "Senedd",
+"type": "Correspondence",
+"subject": "Fwd: FW: BP vs Buckler",
+"refs": [],
+"sent": "2026-01-16",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19a8249da6b74faa"
+},
+{
+"institution": "senedd",
+"institutionName": "Senedd",
+"type": "Inbound only",
+"subject": "ATB/RE: Cais am Ddeiseb ac Ymchwiliad Cyhoeddus: Achos Buckler v BP (1987) a Dinistr Great House Farm, Llandough / Formal Request for Inquir",
+"refs": [],
+"sent": "",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2026-02-23",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c89b943b5257b0"
+},
+{
+"institution": "senedd",
+"institutionName": "Senedd",
+"type": "Inbound only",
+"subject": "RE: Great House Farm, Llandough",
+"refs": [
+"N610CGV"
+],
+"sent": "",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2026-09-28",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e03138143e763"
+},
+{
+"institution": "heneb",
+"institutionName": "Heneb (formerly GGAT) / Historic Environment Record",
+"type": "SAR",
+"subject": "Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy, transfer or dispose",
+"refs": [],
+"sent": "2026-09-28",
+"due": "2026-10-28",
+"rule": "1 calendar month",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e9e1e5a4586bf"
+},
+{
+"institution": "heneb",
+"institutionName": "Heneb (formerly GGAT) / Historic Environment Record",
+"type": "Complaint",
+"subject": "Formal complaint — GGAT / Heneb: Great House Farm (Tŷ Mawr), Llandough — HER identifiers and the 1978–1995 record",
+"refs": [],
+"sent": "2026-09-27",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0ceb50ec8ec412"
+},
+{
+"institution": "heneb",
+"institutionName": "Heneb (formerly GGAT) / Historic Environment Record",
+"type": "Records request",
+"subject": "FOI \"Llandough Roman villa & medieval house finds were destroyed in a 1983 fire\"",
+"refs": [],
+"sent": "2026-09-24",
+"due": "2026-10-22",
+"rule": "20 working days",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0d3d85a7ef4715"
+},
+{
+"institution": "heneb",
+"institutionName": "Heneb (formerly GGAT) / Historic Environment Record",
+"type": "Records request",
+"subject": "Great House Farm, Llandough, Cardiff",
+"refs": [],
+"sent": "2026-09-08",
+"due": "2026-10-06",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-10-06",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a07efa0b6b10900"
+},
+{
+"institution": "heneb",
+"institutionName": "Heneb (formerly GGAT) / Historic Environment Record",
+"type": "Records request",
+"subject": "Re: Great House Farm, Williams/ Buckler Family, Llandough, Vale of Glamorgan",
+"refs": [],
+"sent": "2026-05-23",
+"due": "2026-06-22",
+"rule": "20 working days",
+"status": "overdue",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [
+"overdue"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e46e010d552d92"
+},
+{
+"institution": "nhs-cav",
+"institutionName": "Cardiff and Vale University Health Board",
+"type": "FOI",
+"subject": "Access to Deceased Health Records / FOI Request – William Buckler (1990) and Mary Doreen Williams (1983)",
+"refs": [],
+"sent": "2026-08-20",
+"due": "2026-09-18",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-08-21",
+"note": "",
+"why": [
+"full"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0165fcfe194d80"
+},
+{
+"institution": "nhs-cav",
+"institutionName": "Cardiff and Vale University Health Board",
+"type": "Correspondence",
+"subject": "Enquiry regarding historical deaths – William Buckler (1990) and Mary Doreen Williams (1983)",
+"refs": [],
+"sent": "2026-08-20",
+"due": "",
+"rule": "",
+"status": "partial",
+"late": false,
+"outcome": "refused / withheld (in part)",
+"firstReply": "2026-08-21",
+"note": "",
+"why": [
+"notheld",
+"partial"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-1a0231a6334e8952",
+"date": "2026-08-21",
+"quote": "unfortunately, we do not hold ay records dating back this far and data protection would not allow us to release these either if they were held."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a016607283cece4"
+},
+{
+"institution": "nactso",
+"institutionName": "Counter Terrorism Policing (NaCTSO)",
+"type": "FOI",
+"subject": "New response to your FOI request - BP vs Buckler 1987",
+"refs": [],
+"sent": "2026-09-02",
+"due": "2026-09-30",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "reply via WDTK (text on WDTK)",
+"firstReply": "2026-09-02",
+"note": "",
+"why": [
+"full"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0603fa99788e6d"
+},
+{
+"institution": "mod",
+"institutionName": "Ministry of Defence",
+"type": "FOI",
+"subject": "Re: FOI2026/23272 - 1988 Dispossession of Great House Farm, Llandough",
+"refs": [],
+"sent": "2026-10-16",
+"due": "2026-11-13",
+"rule": "20 working days",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a143bf813010f09"
+},
+{
+"institution": "mod",
+"institutionName": "Ministry of Defence",
+"type": "FOI",
+"subject": "FOI2026/09019 — clarification of the non-Special-Forces remainder and existing retention/search records",
+"refs": [],
+"sent": "2026-10-10",
+"due": "2026-11-06",
+"rule": "20 working days",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a11eb8cc384c312"
+},
+{
+"institution": "mod",
+"institutionName": "Ministry of Defence",
+"type": "SAR",
+"subject": "DPR2026/46503 – internal review of handling and classification",
+"refs": [],
+"sent": "2026-10-10",
+"due": "2026-11-10",
+"rule": "1 calendar month",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a123ef40f2cf0cd"
+},
+{
+"institution": "mod",
+"institutionName": "Ministry of Defence",
+"type": "SAR",
+"subject": "Re: DBS Response to your Subject Access Request (SAR)",
+"refs": [],
+"sent": "2026-10-10",
+"due": "2026-11-10",
+"rule": "1 calendar month",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-10-09",
+"note": "",
+"why": [
+"full"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a11f64eb5e1f45a"
+},
+{
+"institution": "mod",
+"institutionName": "Ministry of Defence",
+"type": "SAR",
+"subject": "Formal complaint — overdue subject access request arising from FOI2026/09019 — identity sent 5 August 2026",
+"refs": [],
+"sent": "2026-09-28",
+"due": "2026-10-28",
+"rule": "1 calendar month",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e3f9ceb89ae67"
+},
+{
+"institution": "mod",
+"institutionName": "Ministry of Defence",
+"type": "FOI",
+"subject": "New response to your FOI request - 1988 Dispossession of Great House Farm, Llandough from the Williams/ Buckler Family",
+"refs": [],
+"sent": "2026-05-29",
+"due": "2026-06-26",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "reply via WDTK (text on WDTK)",
+"firstReply": "2026-05-29",
+"note": "",
+"why": [
+"full"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e746788a06645c"
+},
+{
+"institution": "mp-vale",
+"institutionName": "Member of Parliament (Vale of Glamorgan)",
+"type": "Correspondence",
+"subject": "Introducing Great House Farm Wiki: Archival & Historical Record",
+"refs": [],
+"sent": "2026-09-24",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0d548fc34cb6b4"
+},
+{
+"institution": "mp-vale",
+"institutionName": "Member of Parliament (Vale of Glamorgan)",
+"type": "Correspondence",
+"subject": "Re: Automatic reply: Cais am Ddeiseb ac Ymchwiliad Cyhoeddus: Achos Buckler v BP (1987) a Dinistr Great House Farm, Llandough / Formal Reque",
+"refs": [],
+"sent": "2026-02-01",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c18e247be89104"
+},
+{
+"institution": "mp-vale",
+"institutionName": "Member of Parliament (Vale of Glamorgan)",
+"type": "Correspondence",
+"subject": "BP vs Buckler",
+"refs": [],
+"sent": "2025-11-14",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19a8249da6b74faa"
+},
+{
+"institution": "vale-scrutiny",
+"institutionName": "Vale of Glamorgan Council (Scrutiny)",
+"type": "Correspondence",
+"subject": "Fwd: MEETING OF THE COUNCIL - 22 OCTOBER AT 7.00PM",
+"refs": [],
+"sent": "2026-10-14",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "Reply received since 18 Oct (2026-10-20) — read before relying on this status.",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a136e2b51f9d191"
+},
+{
+"institution": "vale-scrutiny",
+"institutionName": "Vale of Glamorgan Council (Scrutiny)",
+"type": "Correspondence",
+"subject": "Scrutiny Topic Suggestion / Task and Finish request — Council-held planning, heritage and public-authority record for Great House Farm / Tÿ ",
+"refs": [],
+"sent": "2026-10-10",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a1149d647cb33dc"
+},
+{
+"institution": "vale-scrutiny",
+"institutionName": "Vale of Glamorgan Council (Scrutiny)",
+"type": "Correspondence",
+"subject": "Great House Farm, Llandough",
+"refs": [],
+"sent": "2026-09-28",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2026-10-05",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e8f80ef591718"
+},
+{
+"institution": "vale-scrutiny",
+"institutionName": "Vale of Glamorgan Council (Scrutiny)",
+"type": "Inbound only",
+"subject": "In Touch with Llandough!",
+"refs": [],
+"sent": "",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2026-10-04",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a10812c4dfa50fc"
+},
+{
+"institution": "vale-scrutiny",
+"institutionName": "Vale of Glamorgan Council (Scrutiny)",
+"type": "Inbound only",
+"subject": "In Touch with Llandough!",
+"refs": [],
+"sent": "",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2026-10-07",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a11605721df7522"
+},
+{
+"institution": "itv",
+"institutionName": "ITV Archive",
+"type": "Correspondence",
+"subject": "Re: You can search ITV Wales database on National Library of Wales website",
+"refs": [],
+"sent": "2026-10-16",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-10-16",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a13a27945463893"
+},
+{
+"institution": "itv",
+"institutionName": "ITV Archive",
+"type": "Correspondence",
+"subject": "Re: Ty Mawr Llandoche",
+"refs": [],
+"sent": "2026-10-14",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2026-10-13",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a1362dbffa34acd"
+},
+{
+"institution": "itv",
+"institutionName": "ITV Archive",
+"type": "Correspondence",
+"subject": "Archive search request — Great House Farm / Tŷ Mawr, Llandough, Cardiff — December 1988 (personal research)",
+"refs": [],
+"sent": "2026-10-10",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a1273c8e61a8b71"
+},
+{
+"institution": "itv",
+"institutionName": "ITV Archive",
+"type": "Correspondence",
+"subject": "Archive search request — Great House Farm / Tŷ Mawr, Llandough, Cardiff — December 1988",
+"refs": [],
+"sent": "2026-10-10",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a11eb9014d1ea5f"
+},
+{
+"institution": "itv",
+"institutionName": "ITV Archive",
+"type": "Correspondence",
+"subject": "Record now public — Great House Farm (Tŷ Mawr), Llandough — 1987 case, 1988 demolition, 2026 disclosure",
+"refs": [
+"00210772",
+"26FOI103",
+"N610CGV"
+],
+"sent": "2026-09-28",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e9f77fcdf6f43"
+},
+{
+"institution": "itv",
+"institutionName": "ITV Archive",
+"type": "Correspondence",
+"subject": "BP vs Buckler 1987 - Documentary",
+"refs": [],
+"sent": "2025-10-28",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19a2cf51f41ad5bf"
+},
+{
+"institution": "rct",
+"institutionName": "Coroner's Service (RCT Council)",
+"type": "FOI",
+"subject": "FOI / Records Request – Deaths of William (Billy) Buckler (1990) and Mary Doreen Williams (1983)",
+"refs": [],
+"sent": "2026-08-20",
+"due": "2026-09-18",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-08-21",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0165faa913f91d"
+},
+{
+"institution": "bp",
+"institutionName": "BP",
+"type": "Preservation notice",
+"subject": "Document preservation notice — Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth (BP Properties Ltd v Buckler, 1984–1988)",
+"refs": [],
+"sent": "2026-10-16",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a1439902c7e1dc4"
+},
+{
+"institution": "bp",
+"institutionName": "BP",
+"type": "Preservation notice",
+"subject": "Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy records — Matter of public interest",
+"refs": [],
+"sent": "2026-09-28",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "Reply received since 18 Oct (2026-10-20) — read before relying on this status.",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-1a11c210b3442ac5",
+"date": "2026-10-08",
+"quote": "i can also confirm that planning and environment decisions wales (pedw) does not hold any information or records for great house farm / tŷ mawr, llandough-juxta-penarth or planning applications 89/01396/out and 92/00671/res."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e9e9889be4e6a"
+},
+{
+"institution": "bp",
+"institutionName": "BP",
+"type": "Correspondence",
+"subject": "Reading Room request",
+"refs": [],
+"sent": "2026-08-15",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-08-25",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0073ad95b3bb32"
+},
+{
+"institution": "bp",
+"institutionName": "BP",
+"type": "Correspondence",
+"subject": "Formal Request for Information & Litigation Hold – Great House Farm Dispossession 1988 (Williams/Buckler Family, Titles WA231076/WA240304)",
+"refs": [],
+"sent": "2026-06-07",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ea12fc5bb465a4"
+},
+{
+"institution": "bp",
+"institutionName": "BP",
+"type": "Correspondence",
+"subject": "Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan",
+"refs": [],
+"sent": "2026-05-09",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19e0e8e99ba39f9c"
+},
+{
+"institution": "bp",
+"institutionName": "BP",
+"type": "Correspondence",
+"subject": "For the Attention of Group General Counsel – BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+"refs": [],
+"sent": "2026-01-28",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c033a551662faa"
+},
+{
+"institution": "dwrcymru",
+"institutionName": "Dwr Cymru Welsh Water",
+"type": "Correspondence",
+"subject": "Re: Welsh Water - Mail reference: 93027237/01",
+"refs": [
+"93027237/01"
+],
+"sent": "2026-09-17",
+"due": "",
+"rule": "",
+"status": "partial",
+"late": false,
+"outcome": "refused / withheld (in part)",
+"firstReply": "2026-09-17",
+"note": "",
+"why": [
+"lost",
+"notheld",
+"partial"
+],
+"whyEvidence": [
+{
+"code": "lost",
+"mail": "gm-1a0afe15770e3994",
+"date": "2026-09-17",
+"quote": "despite these searches, we have been unable to locate any records relating to either the property or yourself on our current systems."
+},
+{
+"code": "notheld",
+"mail": "gm-1a0afe15770e3994",
+"date": "2026-09-17",
+"quote": "based on the information available, our position remains that we do not hold any records relating to great house farm (ty mawr)."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0afe15770e3994"
+},
+{
+"institution": "dwrcymru",
+"institutionName": "Dwr Cymru Welsh Water",
+"type": "Correspondence",
+"subject": "Re: Welsh Water - Mail reference: 92994223/01",
+"refs": [
+"92994223/01"
+],
+"sent": "2026-09-03",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-09-03",
+"note": "",
+"why": [
+"notheld",
+"lost"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-1a067c8479753b0e",
+"date": "2026-09-03",
+"quote": "i can see that our data subject access request (dsar) team responded to your previous email on 13 august 2026 and advised that we hold no records relating either to yourself or the property in question."
+},
+{
+"code": "lost",
+"mail": "gm-1a067c8479753b0e",
+"date": "2026-09-03",
+"quote": "as previously advised, we have been unable to locate any records relating to the property following the searches undertaken."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a067c8479753b0e"
+},
+{
+"institution": "dwrcymru",
+"institutionName": "Dwr Cymru Welsh Water",
+"type": "FOI",
+"subject": "Re: General Data Protection Regulation – Data Subject Rights Request - DP/2961/2026",
+"refs": [],
+"sent": "2026-08-13",
+"due": "2026-09-11",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-08-13",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ffaa6c4a634311"
+},
+{
+"institution": "dwrcymru",
+"institutionName": "Dwr Cymru Welsh Water",
+"type": "FOI",
+"subject": "Re: General Data Protection Regulation – Data Subject Rights Request",
+"refs": [],
+"sent": "2026-08-13",
+"due": "2026-09-11",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ff4c436f415d3c"
+},
+{
+"institution": "dwrcymru",
+"institutionName": "Dwr Cymru Welsh Water",
+"type": "EIR",
+"subject": "Follow-up – Outstanding information request (Great House Farm, Llandough) – originally sent 20 June 2026",
+"refs": [],
+"sent": "2026-08-11",
+"due": "2026-09-09",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19feeb273de10513"
+},
+{
+"institution": "dwrcymru",
+"institutionName": "Dwr Cymru Welsh Water",
+"type": "EIR",
+"subject": "Great House Farm, Llandough FOI",
+"refs": [],
+"sent": "2026-08-01",
+"due": "2026-08-28",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19fbde9f8e40e11e"
+},
+{
+"institution": "dwrcymru",
+"institutionName": "Dwr Cymru Welsh Water",
+"type": "SAR",
+"subject": "FOI: Great House Farm, Llandough",
+"refs": [],
+"sent": "2026-06-20",
+"due": "2026-07-20",
+"rule": "1 calendar month",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ee6a51312a8311"
+},
+{
+"institution": "dwrcymru",
+"institutionName": "Dwr Cymru Welsh Water",
+"type": "EIR",
+"subject": "EIR Request - Historic Water Supply Records for Great House Farm, Llandough (Mary Williams/Buckler, 1950s-1990s)",
+"refs": [],
+"sent": "2026-06-07",
+"due": "2026-07-03",
+"rule": "20 working days",
+"status": "check",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19ea1459e1ca52e1"
+},
+{
+"institution": "dwrcymru",
+"institutionName": "Dwr Cymru Welsh Water",
+"type": "Inbound only",
+"subject": "Welsh Water - Mail reference 93047764/01",
+"refs": [
+"93047764/01"
+],
+"sent": "",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "not held",
+"firstReply": "2026-09-29",
+"note": "",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-1a0edcd27db639d9",
+"date": "2026-09-29",
+"quote": "as no records have been located, we are unable to provide evidence of their historical existence, confirm whether they were ever held, or provide deletion logs, audit records, or other documentation that we do not hold."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0edcd27db639d9"
+},
+{
+"institution": "hmlr-icr",
+"institutionName": "HM Land Registry (Independent Complaints Reviewer)",
+"type": "Complaint",
+"subject": "Referral to the Independent Complaints Reviewer — HM Land Registry, titles WA231076 / WA240304 (Llandough)",
+"refs": [
+"ICR/090/26",
+"N610CGV"
+],
+"sent": "2026-09-27",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-09-29",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0cab93bfe29b3d"
+},
+{
+"institution": "hmlr-icr",
+"institutionName": "HM Land Registry (Independent Complaints Reviewer)",
+"type": "Complaint",
+"subject": "Great House Farm, Llandough",
+"refs": [],
+"sent": "2026-09-26",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0d618398424383"
+},
+{
+"institution": "postal-museum",
+"institutionName": "The Postal Museum",
+"type": "Correspondence",
+"subject": "Marconi, Great House Farm, Llandough",
+"refs": [],
+"sent": "2026-07-24",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-07-29",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19f94ad9e6597d2e"
+},
+{
+"institution": "cps",
+"institutionName": "Crown Prosecution Service",
+"type": "SAR",
+"subject": "Re: Great House Farm / suspected historic fraud — further information and request for consideration",
+"refs": [],
+"sent": "2026-09-30",
+"due": "2026-10-30",
+"rule": "1 calendar month",
+"status": "pending",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0ee493c00fb442"
+},
+{
+"institution": "cps",
+"institutionName": "Crown Prosecution Service",
+"type": "Correspondence",
+"subject": "Chase — submission of 3 September 2026: Great House Farm / suspected historic fraud",
+"refs": [],
+"sent": "2026-09-27",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e0b1a2b1ebbc3"
+},
+{
+"institution": "cps",
+"institutionName": "Crown Prosecution Service",
+"type": "Correspondence",
+"subject": "Re-Opening of BP vs Buckler 1987",
+"refs": [],
+"sent": "2026-09-03",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0693988a9de5f0"
+},
+{
+"institution": "phso",
+"institutionName": "Parliamentary and Health Service Ombudsman",
+"type": "Complaint",
+"subject": "Re: PHSO Case Ref: C-2205633",
+"refs": [],
+"sent": "2026-07-16",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19f6b62c2ddc9ed9"
+},
+{
+"institution": "phso",
+"institutionName": "Parliamentary and Health Service Ombudsman",
+"type": "Complaint",
+"subject": "Complaint of maladministration – defective notice, enforcement process, and loss of opportunity (Great House Farm, Llandough)",
+"refs": [],
+"sent": "2026-06-25",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19efdb5116ec642f"
+},
+{
+"institution": "phso",
+"institutionName": "Parliamentary and Health Service Ombudsman",
+"type": "Correspondence",
+"subject": "BP vs Buckler 1987",
+"refs": [],
+"sent": "2026-01-31",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c1272a0ff5003b"
+},
+{
+"institution": "cotswold",
+"institutionName": "Cotswold Archaeology",
+"type": "Preservation notice",
+"subject": "Request for any retained copy of the 1994 Llandough / Great House Farm archaeological material",
+"refs": [],
+"sent": "2026-10-10",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2026-10-12",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a11eaa835381426"
+},
+{
+"institution": "cotswold",
+"institutionName": "Cotswold Archaeology",
+"type": "Preservation notice",
+"subject": "Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy records — Matter of public interest",
+"refs": [],
+"sent": "2026-09-28",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "Reply received since 18 Oct (2026-10-20) — read before relying on this status.",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-1a11c210b3442ac5",
+"date": "2026-10-08",
+"quote": "i can also confirm that planning and environment decisions wales (pedw) does not hold any information or records for great house farm / tŷ mawr, llandough-juxta-penarth or planning applications 89/01396/out and 92/00671/res."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e9e9889be4e6a"
+},
+{
+"institution": "os",
+"institutionName": "Ordnance Survey",
+"type": "FOI",
+"subject": "Ty Mawr/ Great House Farm/ Red Fen (Cedfin), Llandough, Cardiff",
+"refs": [],
+"sent": "2026-06-27",
+"due": "2026-07-24",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-06-30",
+"note": "",
+"why": [
+"full"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19f09c8c7ddc8f3c"
+},
+{
+"institution": "pacac",
+"institutionName": "Public Administration and Constitutional Affairs Committee",
+"type": "Correspondence",
+"subject": "Systemic governance concern regarding historic land registration and administrative reliance - BP vs Buckler 1987 (inc. BP Land Registry 198",
+"refs": [],
+"sent": "2026-01-31",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-02-05",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c12a31e632de61"
+},
+{
+"institution": "cardiff-reg",
+"institutionName": "Cardiff / Vale Register Office",
+"type": "FOI",
+"subject": "Re: death certificate",
+"refs": [],
+"sent": "2026-09-30",
+"due": "2026-10-28",
+"rule": "20 working days",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2026-09-30",
+"note": "",
+"why": [
+"full"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e7d2841902574"
+},
+{
+"institution": "cardiff-reg",
+"institutionName": "Cardiff / Vale Register Office",
+"type": "Correspondence",
+"subject": "Application for copy death certificates – William Buckler (1990) and Mary Doreen Williams (1983)",
+"refs": [],
+"sent": "2026-08-20",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "reply (other)",
+"firstReply": "2026-09-08",
+"note": "",
+"why": [
+"lost"
+],
+"whyEvidence": [
+{
+"code": "lost",
+"mail": "gm-1a0817bd1497136e",
+"date": "2026-09-08",
+"quote": "we have been unable to find records for either of the requested certificates."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a016601f861000b"
+},
+{
+"institution": "legal-regulators",
+"institutionName": "Legal regulators",
+"type": "Correspondence",
+"subject": "Enquiry — barrister or chambers involvement in BP Properties Ltd v Buckler (Great House Farm, Llandough, 1984–1988)",
+"refs": [],
+"sent": "2026-10-16",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a1439f0c75c3ab1"
+},
+{
+"institution": "legal-regulators",
+"institutionName": "Legal regulators",
+"type": "Correspondence",
+"subject": "BP vs Buckler: Great House Farm, Llandough",
+"refs": [],
+"sent": "2026-02-04",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c276698ea3ff31"
+},
+{
+"institution": "legal-regulators",
+"institutionName": "Legal regulators",
+"type": "Correspondence",
+"subject": "Historical conveyancing and registration process concern - BP vs Buckler 1987",
+"refs": [],
+"sent": "2026-01-31",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c129cd06379870"
+},
+{
+"institution": "legal-regulators",
+"institutionName": "Legal regulators",
+"type": "Correspondence",
+"subject": "BP vs Buckler 1987",
+"refs": [],
+"sent": "2026-01-31",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19c129b9c14b528d"
+},
+{
+"institution": "linklaters",
+"institutionName": "Linklaters",
+"type": "Preservation notice",
+"subject": "Preservation / access request – historical BP Properties / BP Pension Trust files relating to Great House Farm / Llandough 1982–1988",
+"refs": [],
+"sent": "2026-10-10",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a11eaa7a327d405"
+},
+{
+"institution": "linklaters",
+"institutionName": "Linklaters",
+"type": "Preservation notice",
+"subject": "Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy records — Matter of public interest",
+"refs": [],
+"sent": "2026-09-28",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "Reply received since 18 Oct (2026-10-20) — read before relying on this status.",
+"why": [
+"notheld"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-1a11c210b3442ac5",
+"date": "2026-10-08",
+"quote": "i can also confirm that planning and environment decisions wales (pedw) does not hold any information or records for great house farm / tŷ mawr, llandough-juxta-penarth or planning applications 89/01396/out and 92/00671/res."
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e9e9889be4e6a"
+},
+{
+"institution": "persimmon",
+"institutionName": "Persimmon Homes",
+"type": "Preservation notice",
+"subject": "Preservation and disclosure request — Church View Close / Great House Farm, Llandough — titles WA231076 / WA240304",
+"refs": [],
+"sent": "2026-09-27",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "acknowledged only",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e3b180d95f228"
+},
+{
+"institution": "nio",
+"institutionName": "Northern Ireland Office",
+"type": "Inbound only",
+"subject": "Fwd: FW: Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy, transfer or dispose",
+"refs": [],
+"sent": "",
+"due": "",
+"rule": "",
+"status": "answered",
+"late": false,
+"outcome": "answered",
+"firstReply": "2026-09-29",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e9e1e5a4586bf"
+},
+{
+"institution": "nio",
+"institutionName": "Northern Ireland Office",
+"type": "Inbound only",
+"subject": "26FOI 103 - Buckler - Acknowledgement",
+"refs": [
+"26FOI103"
+],
+"sent": "",
+"due": "",
+"rule": "",
+"status": "partial",
+"late": false,
+"outcome": "refused / withheld (in part)",
+"firstReply": "2026-09-08",
+"note": "",
+"why": [
+"notheld",
+"partial"
+],
+"whyEvidence": [
+{
+"code": "notheld",
+"mail": "gm-1a080b3334e0eb9f",
+"date": "2026-09-08",
+"quote": "the relevant retention period"
+}
+],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a080b3334e0eb9f"
+},
+{
+"institution": "wales-office",
+"institutionName": "Wales Office",
+"type": "SAR",
+"subject": "Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy, transfer or dispose",
+"refs": [],
+"sent": "2026-09-28",
+"due": "2026-10-28",
+"rule": "1 calendar month",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e9e1e5a4586bf"
+},
+{
+"institution": "wales-office",
+"institutionName": "Wales Office",
+"type": "Internal review",
+"subject": "Request for Internal Review — 26FOI 103 — response dated 22 September 2026",
+"refs": [
+"26FOI103"
+],
+"sent": "2026-09-28",
+"due": "2026-10-26",
+"rule": "20 working days",
+"status": "pending",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a0e4fb51bacf452"
+},
+{
+"institution": "wales-office",
+"institutionName": "Wales Office",
+"type": "Correspondence",
+"subject": "Williams Heirs, Great House Farm, Llandough (Est. 1667)",
+"refs": [],
+"sent": "2026-08-29",
+"due": "",
+"rule": "",
+"status": "noreply",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/1a04ac6f688b848e"
+},
+{
+"institution": "ico",
+"institutionName": "Information Commissioner's Office",
+"type": "Records request",
+"subject": "Buckler vs United Kingdom",
+"refs": [],
+"sent": "2026-07-21",
+"due": "2026-08-18",
+"rule": "20 working days",
+"status": "ignored",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [
+"overdue"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/19f858eac3b093ec"
+},
+{
+"institution": "pmo",
+"institutionName": "Prime Minister's Office / Cabinet Office",
+"type": "FOI",
+"subject": "Confirm your FOI request to Prime Minister's Office",
+"refs": [],
+"sent": "2025-10-05",
+"due": "2025-10-31",
+"rule": "20 working days",
+"status": "overdue",
+"late": false,
+"outcome": "",
+"firstReply": "",
+"note": "",
+"why": [
+"overdue"
+],
+"whyEvidence": [],
+"threadUrl": "https://email.bucklerfamily.estate/reference/199b31946d71f259"
+}
+],
+"count": 254
+}

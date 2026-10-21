@@ -39,13 +39,17 @@ import {
 } from "@/components/avenue-game";
 import { cloudNumber, corr } from "@/data/correspondence";
 import { Chip, DetailModal, Row, fmtDate } from "@/components/detail-modal";
+import { ArtifactsSheet, CorrSheet, CourtTiles, OptionsSheet, courtInstitutions } from "@/components/court-ready";
 
 export const Route = createFileRoute("/")({ component: Home });
 
 type Sheet =
   | { kind: "cell"; party: Party; ring: Ring; slice: WheelSlice }
   | { kind: "game"; hit: GameHit; inst: AvInstitution; slide?: Omit<SlidePick, "index" | "level"> }
-  | { kind: "key" };
+  | { kind: "key" }
+  | { kind: "corr"; inst: string }
+  | { kind: "art" }
+  | { kind: "opt"; inst: string };
 
 /**
  * Cells written before 19 Oct link to /reference/<Gmail thread id> with nothing to search for.
@@ -352,6 +356,13 @@ function Home() {
         ))}
       </button>
 
+      <CourtTiles
+        onOpen={(k) => {
+          const cid = courtInstitutions.some((c) => c.id === inst.id) ? inst.id : courtInstitutions[0].id;
+          setSheet(k === "art" ? { kind: "art" } : { kind: k, inst: cid });
+        }}
+      />
+
       <DetailModal
         open={sheet !== null}
         onClose={close}
@@ -370,6 +381,13 @@ function Home() {
           />
         )}
         {sheet?.kind === "key" && <KeySheet />}
+        {sheet?.kind === "corr" && (
+          <CorrSheet instId={sheet.inst} onInst={(id) => setSheet({ kind: "corr", inst: id })} />
+        )}
+        {sheet?.kind === "art" && <ArtifactsSheet onInst={(id) => setSheet({ kind: "corr", inst: id })} />}
+        {sheet?.kind === "opt" && (
+          <OptionsSheet instId={sheet.inst} onInst={(id) => setSheet({ kind: "opt", inst: id })} />
+        )}
       </DetailModal>
     </main>
   );
