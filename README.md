@@ -7,8 +7,8 @@ double-entry ledger in [Beancount](https://beancount.github.io/). No login, no s
   by the family post to `Liabilities:Funded:Family`. Only case- and project-related spending is published; personal spending is left out.
   Each entry carries an evidence reference (`evidence: "R-nnn"`); receipts are kept privately and never published.
   SOURCE PENDING entries (flag `!`) are costs known to exist whose receipt is not yet traced; they carry £0.00 until it is.
-- `ledger/claimed.beancount` — a separate memorandum of costs claimed by the family (prospective). Its roots are renamed
-  (`Claimed`, `Prospective`) so it can never be mixed with cash. Our case, prospective. Not a finding of any court.
+- `ledger/claimed.beancount` — a separate memorandum of costs claimed by the family. Its roots are renamed
+  (`Claimed`, `Prospective`) so it can never be mixed with cash.
 - `tools/build.py` — loads both ledgers, runs bean-query, writes `public/` (dashboard, `data.json`, `ledger.csv`).
   Run it after every ledger change and commit `public/` with the ledger; Cloudflare Pages (project bucklerfamily-accounts) serves `public/` on every push.
 
