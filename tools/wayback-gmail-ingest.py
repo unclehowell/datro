@@ -159,7 +159,7 @@ def main(src, root, generated):
     tlist.sort(key=lambda t: t["last"] or "", reverse=True)
     meta = {"title": "Great House Farm / Ty Mawr case correspondence (Wayback)", "apiVersion": "1.0.0",
             "generated": generated, "count": len(ordered), "threadCount": len(tlist),
-            "privacy": "Email addresses, phone numbers, the family's private address and postcodes are redacted. Officials appear by name or role.",
+            "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
             "endpoints": {"index": "/api/index.json", "threads": "/api/threads.json", "corpus": "/api/corpus.json", "message": "/api/message/<id>.json", "text": "/mail/<id>.txt"}}
     write_if_changed(idx_path, json.dumps(dict(meta, records=ordered), ensure_ascii=False, indent=1) + "\n")
     corpus = {}

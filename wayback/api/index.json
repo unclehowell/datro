@@ -1,10 +1,10 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-10-19T21:00:00Z",
- "count": 767,
+ "generated": "2026-10-20T23:58:47Z",
+ "count": 770,
  "threadCount": 411,
- "privacy": "Email addresses, phone numbers, the family's private address and postcodes are redacted. Officials appear by name or role.",
+ "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
   "threads": "/api/threads.json",
@@ -13,6 +13,66 @@
   "text": "/mail/<id>.txt"
  },
  "records": [
+  {
+   "id": "gm-1a15ba18a498992d",
+   "gmailMessageId": "1a15ba18a498992d",
+   "threadId": "gt-1a136e2b51f9d191",
+   "date": "2026-10-20T23:24:35Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "llandough",
+     "name": "Llandough Community Council"
+    }
+   ],
+   "subject": "MEETING OF THE COUNCIL - 22 OCTOBER AT 7.00PM",
+   "threadSlug": "meeting-of-the-council-22-october-at-7-00pm",
+   "refs": [],
+   "textUrl": "/mail/gm-1a15ba18a498992d.txt",
+   "jsonUrl": "/api/message/gm-1a15ba18a498992d.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a15b80e111654ae",
+   "gmailMessageId": "1a15b80e111654ae",
+   "threadId": "gt-1a136e2b51f9d191",
+   "date": "2026-10-20T22:48:55Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "llandough",
+     "name": "Llandough Community Council"
+    }
+   ],
+   "subject": "MEETING OF THE COUNCIL - 22 OCTOBER AT 7.00PM",
+   "threadSlug": "meeting-of-the-council-22-october-at-7-00pm",
+   "refs": [],
+   "textUrl": "/mail/gm-1a15b80e111654ae.txt",
+   "jsonUrl": "/api/message/gm-1a15b80e111654ae.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a15a5ea5f7f9995",
+   "gmailMessageId": "1a15a5ea5f7f9995",
+   "threadId": "gt-1a136e2b51f9d191",
+   "date": "2026-10-20T17:31:53Z",
+   "direction": "received",
+   "from": "Paul Egan",
+   "institutions": [
+    {
+     "id": "llandough",
+     "name": "Llandough Community Council"
+    }
+   ],
+   "subject": "Re: MEETING OF THE COUNCIL - 22 OCTOBER AT 7.00PM",
+   "threadSlug": "meeting-of-the-council-22-october-at-7-00pm",
+   "refs": [],
+   "textUrl": "/mail/gm-1a15a5ea5f7f9995.txt",
+   "jsonUrl": "/api/message/gm-1a15a5ea5f7f9995.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
   {
    "id": "gm-1a154577a09c3329",
    "gmailMessageId": "1a154577a09c3329",

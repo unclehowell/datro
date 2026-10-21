@@ -1,10 +1,10 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-10-19T21:00:00Z",
- "count": 767,
+ "generated": "2026-10-20T23:58:47Z",
+ "count": 770,
  "threadCount": 411,
- "privacy": "Email addresses, phone numbers, the family's private address and postcodes are redacted. Officials appear by name or role.",
+ "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
   "threads": "/api/threads.json",
@@ -13,6 +13,29 @@
   "text": "/mail/<id>.txt"
  },
  "threads": [
+  {
+   "threadId": "gt-1a136e2b51f9d191",
+   "subject": "MEETING OF THE COUNCIL - 22 OCTOBER AT 7.00PM",
+   "threadSlug": "meeting-of-the-council-22-october-at-7-00pm",
+   "institutions": [
+    "llandough",
+    "vale-scrutiny"
+   ],
+   "first": "2026-10-13T20:09:48Z",
+   "last": "2026-10-20T23:24:35Z",
+   "count": 9,
+   "messageIds": [
+    "gm-1a136e2b51f9d191",
+    "gm-1a139171a68e4688",
+    "gm-1a1393f92a4eae63",
+    "gm-1a143e2fb7f43d90",
+    "gm-1a144212a91e2ce8",
+    "gm-1a144e8abd7a5cfa",
+    "gm-1a15a5ea5f7f9995",
+    "gm-1a15b80e111654ae",
+    "gm-1a15ba18a498992d"
+   ]
+  },
   {
    "threadId": "gt-1a154577a09c3329",
    "subject": "RE: FOI — Welsh Office / Cadw papers, July–December 1988 — Great House Farm (Ty Mawr), Llandough — following 26FOI 103 (ATISN 27589)",
@@ -113,26 +136,6 @@
    "messageIds": [
     "gm-1a0bbe1ba706aa71",
     "gm-1a145570b9618f41"
-   ]
-  },
-  {
-   "threadId": "gt-1a136e2b51f9d191",
-   "subject": "MEETING OF THE COUNCIL - 22 OCTOBER AT 7.00PM",
-   "threadSlug": "meeting-of-the-council-22-october-at-7-00pm",
-   "institutions": [
-    "llandough",
-    "vale-scrutiny"
-   ],
-   "first": "2026-10-13T20:09:48Z",
-   "last": "2026-10-16T13:31:01Z",
-   "count": 6,
-   "messageIds": [
-    "gm-1a136e2b51f9d191",
-    "gm-1a139171a68e4688",
-    "gm-1a1393f92a4eae63",
-    "gm-1a143e2fb7f43d90",
-    "gm-1a144212a91e2ce8",
-    "gm-1a144e8abd7a5cfa"
    ]
   },
   {
