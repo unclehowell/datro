@@ -17,7 +17,8 @@ Output (all paths relative to the wayback/ directory):
 Ids are "gm-" + the Gmail message id, so re-running is idempotent: an existing id is rewritten
 in place (same content -> same bytes), new mail is added, nothing is deleted.
 
-Privacy: email addresses, phone numbers, the family's private address, postcodes and meeting joining
+Privacy: email addresses, phone numbers, the family's private address, residential street
+addresses (e.g. in signatures), postcodes and meeting joining
 details (video-call links, meeting IDs, passcodes) are
 redacted in everything published. Officials keep their names; addresses never leave Gmail.
 Usage: python3 gmail_ingest.py messages.json path/to/wayback [--generated 2026-10-19T00:00:00Z]
@@ -51,6 +52,10 @@ MAILTO_RE = re.compile(r"mailto:[^\s>\]]+", re.I)
 PHONE_CAND = re.compile(r"(?<![\w/])(\+?\(?\d(?:[\d()\-]|[ \t]{1,3}(?=[\d(+])|\.(?=\d))*\d)(?!\w)")
 MAPS_RE = re.compile(r"<?https?://(?:www\.)?google\.[a-z.]+/maps/search/[^\s>]*>?", re.I)
 ADDR_RE = re.compile(r"(?:\b\d+\s*)?Robin[\s+]+Hill\b", re.I)
+# Residential street addresses count as home addresses and never go public (21 Oct 2026): the
+# clerk's signature carries one. The street, its number and the town line after it (across quote
+# markers, blank lines and stripped map links) become "[address removed]".
+RES_ADDR_RE = re.compile(r"(?<!\d)(?:\d{1,4}[ \t]*)?Woodham[\s+]+Park\b(?:(?:\s|>|,|\[\d+\]|\[map link redacted\])*Barry\b,?)?", re.I)
 PCODE_RE = re.compile(r"\b(?:[A-Z]{1,2}\d[A-Z\d]?)\s*\d[A-Z]{2}\b")
 
 def is_phone(s):
@@ -88,6 +93,7 @@ def redact(t, c):
     t = PHONE_CAND.sub(ph, t)
     t, n = MAPS_RE.subn("[map link redacted]", t); c["address"] += n
     t, n = ADDR_RE.subn("[address redacted]", t); c["address"] += n
+    t, n = RES_ADDR_RE.subn("[address removed]", t); c["address"] += n
     t, n = PCODE_RE.subn("[postcode redacted]", t); c["postcode"] += n
     return t
 
