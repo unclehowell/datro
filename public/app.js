@@ -68,7 +68,7 @@ function open(c){
   var p=pageById(c.page),i=D.imap[c.inst];
   var h='<h2>'+esc(i.name)+'</h2><p class="url">'+esc(p.title||'')+(p.title?'<br>':'')+esc(p.url)+'</p>';
   h+='<p><span class="tag '+c.type+'">'+c.type+'</span>'+(c.farm?'<span class="tag farm">farm / family</span>':'')+'<b>'+fmt(c.date)+'</b></p>';
-  h+='<p>'+esc(c.summary)+'</p>';
+  h+='<p>'+esc(c.summary)+'</p>';  if(c.why)h+='<p class="why"><b>'+(c.rel==='KEEP-AMBIGUOUS'?'Why kept':'Kept')+':</b> '+esc(c.why)+(c.rel==='KEEP-AMBIGUOUS'?' <a href="https://nomenclature.bucklerfamily.estate/" target="_blank" rel="noopener">Names in the records</a>':'')+'</p>';
   if(c.keywords&&c.keywords.length)h+='<p class="small">Words in the changed text: '+esc(c.keywords.join(', '))+'</p>';
   if(c.before){h+='<h3>Before'+(c.d1?' · '+fmt(c.d1):'')+'</h3><blockquote class="rem">'+esc(c.before)+'</blockquote>'}
   if(c.after){h+='<h3>After · '+fmt(c.date)+'</h3><blockquote class="add">'+esc(c.after)+'</blockquote>'}
@@ -90,7 +90,7 @@ function info(){
   h+='<p class="small">'+esc(D.method)+'</p><p class="small">Red: text removed, or the page is no longer served (404 or redirected away). Green: text added. Blue: text changed. A gold ring marks a change whose text mentions the farm, Llandough or the family. "Farm &amp; records" also keeps changes that mention records, retention, FOI or archives.</p>';
   h+='<h3>Pages tracked'+(inst?' · '+esc(D.imap[inst].name):'')+' ('+ps.length+')</h3><table><tr><th>Page</th><th>Archive copies</th><th>Live</th></tr>';
   ps.forEach(function(p){h+='<tr><td><a href="'+esc(p.url)+'" target="_blank" rel="noopener">'+esc(p.short)+'</a><div class="small">'+esc(D.imap[p.inst].short)+(p.kind==='home'?' · homepage (availability only)':'')+'</div></td><td>'+(p.captures||p.baseline?(p.captures+(p.baseline?' + 1 older':'')):'none')+'</td><td>'+esc(p.live_label||'')+'</td></tr>'});
-  h+='</table><p class="small">Data: <a href="data/changes.json">changes.json</a>. Re-checked daily at midday.</p><p class="small">Our case, prospective. Not a finding of any court.</p>';
+  h+='</table>'+(D.filter?'<p class="small">'+esc(D.filter.rule)+' '+D.filter.excluded_pages+' unrelated pages ('+D.filter.excluded_changes+' changes) were moved out; they are kept on file, not deleted. <a href="'+esc(D.filter.lexicon)+'" target="_blank" rel="noopener">The names in the records</a>.</p>':'')+'<p class="small">Data: <a href="data/changes.json">changes.json</a>. Re-checked daily at midday.</p><p class="small">Our case, prospective. Not a finding of any court.</p>';
   body.innerHTML=h;if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');
 }
 document.getElementById('info').addEventListener('click',info);

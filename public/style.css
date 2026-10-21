@@ -47,3 +47,5 @@ td a{color:var(--fg);word-break:break-all}
 @media (min-width:783px){#chart .lbl{font-size:12px}#chart .tick{font-size:11px}}
 
 dialog a{color:var(--fg)}
+
+.why{font-size:13px;color:#cfcfcf;border-left:3px solid var(--gold);padding:4px 8px;margin:8px 0}.why a{color:var(--gold)}
