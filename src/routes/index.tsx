@@ -40,6 +40,8 @@ import {
 import { cloudNumber, corr } from "@/data/correspondence";
 import { Chip, DetailModal, Row, fmtDate } from "@/components/detail-modal";
 import { ArtifactsSheet, CorrSheet, CourtTiles, OptionsSheet, courtInstitutions } from "@/components/court-ready";
+import { DisclosureRecord } from "@/components/disclosure-record";
+import { ArchaeologyTimeline } from "@/components/archaeology-timeline";
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -362,6 +364,10 @@ function Home() {
           setSheet(k === "art" ? { kind: "art" } : { kind: k, inst: cid });
         }}
       />
+
+      <DisclosureRecord />
+
+      <ArchaeologyTimeline />
 
       <DetailModal
         open={sheet !== null}
@@ -951,8 +957,6 @@ function DiamondSheet({ index, inst }: { index: number; inst: AvInstitution }) {
         <p className="text-xs tracking-[0.16em] text-brass uppercase">Our reading</p>
         <p className="mt-1 text-sm leading-relaxed text-muted">{d.reading}</p>
       </div>
-      <p className="mt-4 text-[11px] leading-snug text-faint">
-      </p>
     </div>
   );
 }
