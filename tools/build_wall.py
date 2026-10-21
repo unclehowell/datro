@@ -246,7 +246,7 @@ def build():
         cover = ('<figure class="pf-cover"><img src="%s%s" alt=""></figure>' % (up, p["cover"])) if p.get("cover") else ('<figure class="pf-cover pf-cover-t" style="--c:%s"><span>%s</span></figure>' % (p.get("color", "#455a64"), e(p["name"])))
         fk = p.get("face_kind")
         yrs = sorted({x["date"][:4] for x in evs})
-        cnt = ("%d posts · %s" % (len(evs), (yrs[0] + "–" + yrs[-1]) if len(yrs) > 1 else yrs[0])) if evs else "No posts yet"
+        cnt = ("%d post%s · %s" % (len(evs), "" if len(evs) == 1 else "s", (yrs[0] + "–" + yrs[-1]) if len(yrs) > 1 else yrs[0])) if evs else "No posts yet"
         ab = fix(p.get("about", "")); first = re.split(r"(?<=[.!?”])\s+", ab, 1)[0] if ab else ""
         if len(first) > 150: first = first[:147].rsplit(" ", 1)[0] + "…"
         about = '<section class="pf-card wl-about" id="about"><details><summary><b>About</b> %s</summary><p>%s</p>%s%s</details></section>' % (
@@ -255,7 +255,7 @@ def build():
         stm = [x for x in evs if x["kind"] in ("Public statement",) or x["kind"].startswith("Reply") and x["actor"] == sl and x.get("quote")]
         sec = ('<section id="statements" class="wl-sec-wrap"><h2 class="wl-sec">Their posts, newest first</h2>%s</section>' %
                ("".join(card(x, up) for x in evs) if evs else '<div class="wl-empty"><span class="st"></span>No public statements found yet.</div>'))
-        if evs and not stm: sec = sec.replace('<h2 class="wl-sec">', '<p class="wl-empty" style="margin-bottom:6px">No public statements found yet; the record below involves them.</p><h2 class="wl-sec">', 1)
+        if evs and not stm and not p.get("fictional") and sl != "hope-desk": sec = sec.replace('<h2 class="wl-sec">', '<p class="wl-empty" style="margin-bottom:6px">No public statements found yet; the record below involves them.</p><h2 class="wl-sec">', 1)
         if evs: sec = sec.replace('</h2>', '</h2><span class="st" hidden></span>', 1)
         body = ('<main id="main" class="sb-main sb-prof">%s<div class="pf-id"><img class="pf-av%s" src="%s%s" alt="" width="120" height="120"><div><h1>%s</h1><p class="muted">%s</p><p class="pf-counts">%s</p></div></div>'
                 '<nav class="pf-tabs"><a class="ln" href="#statements">Posts</a><a class="ln" href="#about">About</a></nav>%s%s</main>'
