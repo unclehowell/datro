@@ -1,0 +1,71 @@
+{
+ "schema": "ghf-artifacts/1",
+ "part": 8,
+ "of": 8,
+ "items": [
+  {
+   "id": "WB-0800",
+   "ev": null,
+   "keys": [
+    "92/00671/RES",
+    "89/01396/OUT"
+   ],
+   "title": "Vale of Glamorgan planning file 92/00671 (1992), Great House Farm, Llandough",
+   "date": "1990–1994",
+   "date_sort": "1992-09-03",
+   "date_basis": "document",
+   "type": "register",
+   "status": "HELD",
+   "source": {
+    "kind": "family",
+    "reference": "Vale of Glamorgan Council planning file 92/00671",
+    "repository": "Supplied by the family from the Vale of Glamorgan Council planning file 92/00671 (12 PDFs, 21 Oct 2026)"
+   },
+   "institution": "Vale of Glamorgan Borough Council",
+   "files": [
+    {
+     "path": "text/evidence/1992-09-03_vale-planning-file_92-00671-index.txt",
+     "url": "https://wayback.bucklerfamily.estate/text/evidence/1992-09-03_vale-planning-file_92-00671-index.txt",
+     "storage": "git",
+     "bytes": 13175,
+     "sha256": "15848c1d5f91acbcc5df01346eac4938e5238860fb415c432ad3570d0c4310e8",
+     "mime": "text/plain"
+    }
+   ],
+   "members": [
+    "EV-0127",
+    "EV-0208",
+    "EV-0129",
+    "EV-0133",
+    "EV-0135",
+    "EV-0196",
+    "EV-0194",
+    "EV-0197",
+    "EV-0201",
+    "EV-0126",
+    "EV-0131",
+    "EV-0209"
+   ],
+   "people": [
+    "Ideal Homes Wales",
+    "Wyn Thomas + Partners",
+    "Glamorgan-Gwent Archaeological Trust",
+    "Cotswold Archaeological Trust",
+    "B P Properties Ltd",
+    "Debenham Tewson"
+   ],
+   "parcels": [
+    "Great House Farm",
+    "Llandough",
+    "St Dochdwy's churchyard",
+    "Village green VG 41"
+   ],
+   "wiki": {
+    "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0128-ggat-letter-reserved-matters-approval/",
+    "page_id": 4713
+   },
+   "added": "2026-10-21",
+   "note": "Reserved matters 92/00671/RES (20 houses, Ideal Homes Wales) approved 3 September 1992 under outline 89/01396/OUT of 13 March 1990, whose conditions 16–18 concern archaeology. The 12 scans were already catalogued; this item groups them and adds machine-read text of every page."
+  }
+ ]
+}
