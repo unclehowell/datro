@@ -39,6 +39,12 @@ Live at dartboard.bucklerfamily.estate. The page is visual: a dartboard on top a
 - **Attached letters (19 Oct 2026).** An email can carry `from` (sender by role), `sum` (one-line summary), `q` (verbatim key passages) and `pdf` (the attached letter) in `src/data/avenues.ts`; a wheel cell can carry `docs`. The sheet shows them under "Attached letter" and "Key passages". First used for the two Welsh Government replies of 19 October 2026: ATISN 26-0010 (no files found) and Cadw ATISN 27589 (refused under FOIA s.14(2)). Public copies of both letters are in `public/docs/` (served at `/docs/…`) and in the Wayback archive under `pdf/foi/`. The only change from the originals is that the requester's personal email address is redacted.
 
 
+## 21 Oct 2026: visual correspondence
+
+- **Every exchange is drawn on its girder.** Our emails float as clouds numbered per body (1 = the first email to that body). Their replies burn as original pixel-art fires; a reply that was fully satisfactory shows a heart with an envelope inside. Calls show a phone (a phone inside a heart for a good call, e.g. the ITV Wales archivist). Generic notes (thanks, acknowledgements, automatic replies) are drawn at 40% opacity. A diamond on the girder under a reply means they attached something; tapping it opens the attachment from the Wayback archive, a "More info" link to the Legal Wiki, a plain description and "Our reading (prospective)".
+- **One file to correct by hand:** `src/data/correspondence.json`. `emails` is keyed by the index into `avenueEmails` (k = his / theirs / phone, g = generic, h = heart, a = attachment, doubt = why a call was hard). `extra` adds exchanges after the 19 Oct pass and the phone call. `diamonds` holds each attachment's links and texts. When unsure, a reply stays a fire and carries a `doubt` note.
+- **Sources:** the case mail archive on wayback.bucklerfamily.estate (770 records), Gmail read-only for attachment names and the 19–21 Oct messages. Inline signature images are not counted as attachments.
+
 ## Rights and licence
 
 © Williams–Buckler family. All rights reserved. Licence terms apply.

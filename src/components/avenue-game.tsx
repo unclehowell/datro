@@ -9,17 +9,21 @@ import {
   type AvInstitution,
   type AvLevel,
 } from "@/data/avenues";
+import { cloudNumber, corr, type CorrKind } from "@/data/correspondence";
 
 /**
  * "Avenues": an original arcade-style climb. The ape at the top is the institution and every
  * barrel it throws is one of its replies. The climber is Sion. Each girder is one avenue of that
- * institution's escalation roadmap, bottom (first step) to top (court-ordered disclosure). Crates
- * on a girder are emails Sion sent on that avenue; small barrels resting there are replies.
- * All art is drawn here in code.
+ * institution's escalation roadmap, bottom (first step) to top (court-ordered disclosure).
+ * On each girder: our emails float as numbered clouds (1 = first email to that body), their replies
+ * burn as pixel fires (a heart when the reply was fully satisfactory), calls show as phones, generic
+ * notes are faded to 40%, and a diamond on the girder under a reply marks a real attachment.
+ * All art is original and drawn here in code.
  */
 
 export type GameHit =
   | { kind: "email"; index: number; level: AvLevel }
+  | { kind: "diamond"; index: number; level: AvLevel }
   | { kind: "level"; level: AvLevel; levelIndex: number }
   | { kind: "boss" };
 
@@ -34,8 +38,36 @@ const X1 = W - 14;
 const GAP = 30;
 const TILT = 7;
 
-type Slot = { x: number; y: number; s: number; index: number; out: boolean; colour: string; level: number; fee: boolean };
-type Barrel = { x: number; y: number; vx: number; vy: number; level: number; index: number; rot: number; falling: boolean; colour: string; fee: boolean };
+type Slot = {
+  x: number;
+  y: number;
+  s: number;
+  index: number;
+  out: boolean;
+  colour: string;
+  level: number;
+  fee: boolean;
+  kind: CorrKind;
+  heart: boolean;
+  generic: boolean;
+  num: number;
+  /** Diamond on the girder line under this reply (an attachment came with it). */
+  dx?: number;
+  dy?: number;
+};
+type Barrel = {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  level: number;
+  index: number;
+  rot: number;
+  falling: boolean;
+  colour: string;
+  fee: boolean;
+  heart: boolean;
+};
 
 function girder(level: number, n: number) {
   // Each girder rises towards its ladder, so the climber only ever walks uphill and climbs up.
@@ -47,7 +79,14 @@ function girder(level: number, n: number) {
   const right = highRight ? X1 : X1 - GAP;
   const yL = highRight ? yBase + TILT / 2 : yBase - TILT / 2;
   const yR = highRight ? yBase - TILT / 2 : yBase + TILT / 2;
-  return { left, right, yL, yR, highRight, yAt: (x: number) => yL + ((x - left) / (right - left)) * (yR - yL) };
+  return {
+    left,
+    right,
+    yL,
+    yR,
+    highRight,
+    yAt: (x: number) => yL + ((x - left) / (right - left)) * (yR - yL),
+  };
 }
 
 /** x of the ladder from girder `level` up to the next one: at this girder's high end. */
@@ -72,20 +111,39 @@ function layoutSlots(inst: AvInstitution) {
     if (!level.items.length) return;
     const g = girder(li, n);
     const usable = g.right - g.left - 44;
-    let s = 8;
-    let perRow = Math.max(1, Math.floor(usable / (s + 2)));
+    let s = 12;
+    let perRow = Math.max(1, Math.floor(usable / (s + 3)));
     let rows = Math.ceil(level.items.length / perRow);
-    while (rows > 3 && s > 4) {
+    while (rows > 3 && s > 5) {
       s -= 1;
-      perRow = Math.max(1, Math.floor(usable / (s + 2)));
+      perRow = Math.max(1, Math.floor(usable / (s + 3)));
       rows = Math.ceil(level.items.length / perRow);
     }
     level.items.forEach((index, k) => {
       const row = Math.floor(k / perRow);
       const col = k % perRow;
-      const x = g.left + 38 + col * (s + 2) + s / 2;
-      const y = g.yAt(x) - 4 - row * (s + 1) - s / 2;
-      slots.push({ x, y, s, index, out: avenueEmails[index].out, colour: itemColour(level, index), level: li, fee: !avenueEmails[index].out && isFee(index) });
+      const x = g.left + 38 + col * (s + 3) + s / 2;
+      const y = g.yAt(x) - 5 - row * (s + 2) - s / 2;
+      const c = corr(index);
+      const slot: Slot = {
+        x,
+        y,
+        s,
+        index,
+        out: avenueEmails[index].out,
+        colour: itemColour(level, index),
+        level: li,
+        fee: !avenueEmails[index].out && isFee(index),
+        kind: c.kind,
+        heart: c.heart,
+        generic: c.generic,
+        num: c.kind === "his" ? cloudNumber(inst, index) : 0,
+      };
+      if (c.kind !== "his" && c.diamonds.length) {
+        slot.dx = x;
+        slot.dy = g.yAt(x) + 2.5;
+      }
+      slots.push(slot);
     });
   });
   return slots;
@@ -99,7 +157,13 @@ function frontier(inst: AvInstitution) {
   return f;
 }
 
-function drawGirder(ctx: CanvasRenderingContext2D, level: AvLevel, li: number, n: number, t: number) {
+function drawGirder(
+  ctx: CanvasRenderingContext2D,
+  level: AvLevel,
+  li: number,
+  n: number,
+  t: number,
+) {
   const g = girder(li, n);
   const colour = statusInfo[level.status].colour;
   const h = 7;
@@ -176,39 +240,196 @@ function drawLadder(ctx: CanvasRenderingContext2D, li: number, n: number) {
   ctx.stroke();
 }
 
-function drawCrate(ctx: CanvasRenderingContext2D, s: Slot) {
-  const h = s.s;
-  ctx.fillStyle = s.colour;
-  ctx.fillRect(s.x - h / 2, s.y - h / 2, h, h);
-  ctx.strokeStyle = "rgba(0,0,0,0.55)";
-  ctx.lineWidth = 1;
-  ctx.strokeRect(s.x - h / 2 + 0.5, s.y - h / 2 + 0.5, h - 1, h - 1);
-  if (h >= 6) {
-    // envelope flap
-    ctx.beginPath();
-    ctx.moveTo(s.x - h / 2 + 1, s.y - h / 2 + 1);
-    ctx.lineTo(s.x, s.y);
-    ctx.lineTo(s.x + h / 2 - 1, s.y - h / 2 + 1);
-    ctx.stroke();
+/** Original pixel-art sprites (our own grids, not taken from any game). */
+export const FIRE_A = [
+  "...r.....",
+  "..rr..r..",
+  ".rror.rr.",
+  ".roorrro.",
+  "rrooyoorr",
+  "royyyyoor",
+  "royywyyor",
+  ".roywwyr.",
+  "..royyor.",
+  "...rrrr..",
+];
+const FIRE_B = [
+  ".....r...",
+  "..r..rr..",
+  ".rr.rorr.",
+  ".orrroor.",
+  "rrooyoorr",
+  "rooyyyyor",
+  "royywyyor",
+  ".rywwyor.",
+  ".royyor..",
+  "..rrrr...",
+];
+export const HEART = [
+  ".rr...rr.",
+  "rrrr.rrrr",
+  "rrrrrrrrr",
+  "rrrrrrrrr",
+  ".rrrrrrr.",
+  "..rrrrr..",
+  "...rrr...",
+  "....r....",
+];
+export const PAL: Record<string, string> = {
+  r: "#e0301e",
+  o: "#ff7a1a",
+  y: "#ffd34d",
+  w: "#fff6d6",
+  h: "#ff3b5c",
+};
+
+function drawGrid(
+  ctx: CanvasRenderingContext2D,
+  grid: string[],
+  cx: number,
+  cy: number,
+  size: number,
+  pal: Record<string, string>,
+) {
+  const rows = grid.length;
+  const cols = grid[0].length;
+  const p = size / Math.max(rows, cols);
+  const x0 = cx - (cols * p) / 2;
+  const y0 = cy - (rows * p) / 2;
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const ch = grid[r][c];
+      if (ch === ".") continue;
+      ctx.fillStyle = pal[ch] ?? ch;
+      ctx.fillRect(x0 + c * p, y0 + r * p, p + 0.35, p + 0.35);
+    }
   }
 }
 
-function drawBarrel(ctx: CanvasRenderingContext2D, x: number, y: number, r: number, colour: string, rot: number) {
+function drawFire(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  t: number,
+  seed: number,
+) {
+  const frame = Math.floor((t + seed * 137) / 180) % 2 === 0 ? FIRE_A : FIRE_B;
+  drawGrid(ctx, frame, x, y - size * 0.08, size * 1.15, PAL);
+}
+
+function drawPhoneGlyph(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  colour: string,
+) {
+  // A simple handset: two ear/mouth pads joined by a curved grip.
   ctx.save();
   ctx.translate(x, y);
-  ctx.rotate(rot);
-  ctx.fillStyle = colour;
+  ctx.rotate(-0.6);
+  ctx.strokeStyle = colour;
+  ctx.lineCap = "round";
+  ctx.lineWidth = Math.max(1.6, size * 0.2);
   ctx.beginPath();
-  ctx.ellipse(0, 0, r, r * 0.92, 0, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.strokeStyle = "rgba(0,0,0,0.6)";
-  ctx.lineWidth = Math.max(1, r / 4);
-  ctx.beginPath();
-  ctx.moveTo(-r * 0.55, -r * 0.75);
-  ctx.lineTo(-r * 0.55, r * 0.75);
-  ctx.moveTo(r * 0.55, -r * 0.75);
-  ctx.lineTo(r * 0.55, r * 0.75);
+  ctx.arc(0, size * 0.05, size * 0.36, Math.PI * 1.15, Math.PI * 1.85, false);
   ctx.stroke();
+  ctx.fillStyle = colour;
+  const pad = Math.max(1.6, size * 0.2);
+  ctx.fillRect(-size * 0.42, -size * 0.06, pad, pad * 1.4);
+  ctx.fillRect(size * 0.42 - pad, -size * 0.06, pad, pad * 1.4);
+  ctx.restore();
+}
+
+function drawHeart(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  t: number,
+  inner: "mail" | "phone",
+) {
+  const beat = 1 + Math.max(0, Math.sin(t / 220)) * 0.06;
+  const sz = size * 1.2 * beat;
+  drawGrid(ctx, HEART, x, y, sz, { r: PAL.h });
+  // icon inside the heart: an envelope for an email, a red-on-white phone for a call
+  const w = sz * 0.42;
+  const h = sz * 0.28;
+  const cy = y - sz * 0.08;
+  if (inner === "mail") {
+    ctx.fillStyle = "#fff6d6";
+    ctx.fillRect(x - w / 2, cy - h / 2, w, h);
+    ctx.strokeStyle = PAL.h;
+    ctx.lineWidth = Math.max(0.8, sz / 14);
+    ctx.beginPath();
+    ctx.moveTo(x - w / 2, cy - h / 2);
+    ctx.lineTo(x, cy + h * 0.1);
+    ctx.lineTo(x + w / 2, cy - h / 2);
+    ctx.stroke();
+  } else {
+    ctx.fillStyle = "#fff6d6";
+    ctx.beginPath();
+    ctx.arc(x, cy, sz * 0.25, 0, Math.PI * 2);
+    ctx.fill();
+    drawPhoneGlyph(ctx, x, cy + sz * 0.02, sz * 0.36, "#d81e2c");
+  }
+}
+
+function drawPhone(ctx: CanvasRenderingContext2D, x: number, y: number, size: number) {
+  drawPhoneGlyph(ctx, x, y, size, "#e0301e");
+}
+
+function drawCloud(ctx: CanvasRenderingContext2D, x: number, y: number, size: number, num: number) {
+  const r = size * 0.32;
+  ctx.fillStyle = "#eef3ff";
+  ctx.beginPath();
+  ctx.arc(x - r * 0.9, y + r * 0.25, r * 0.85, 0, Math.PI * 2);
+  ctx.arc(x, y - r * 0.2, r * 1.05, 0, Math.PI * 2);
+  ctx.arc(x + r * 0.9, y + r * 0.25, r * 0.85, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillRect(x - r * 0.9, y + r * 0.1, r * 1.8, r);
+  if (num > 0 && size >= 6) {
+    const label = String(num);
+    const fs = Math.max(5, size * (label.length > 2 ? 0.46 : label.length > 1 ? 0.55 : 0.66));
+    ctx.font = `800 ${fs}px Outfit, system-ui, sans-serif`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = "#1b2440";
+    ctx.fillText(label, x, y + r * 0.3);
+  }
+}
+
+function drawDiamond(ctx: CanvasRenderingContext2D, x: number, y: number, t: number) {
+  const r = 4.6;
+  ctx.save();
+  ctx.shadowColor = "#7ff3ff";
+  ctx.shadowBlur = 4 + Math.sin(t / 300) * 2;
+  ctx.fillStyle = "#5ee6ff";
+  ctx.beginPath();
+  ctx.moveTo(x, y - r);
+  ctx.lineTo(x + r * 0.85, y);
+  ctx.lineTo(x, y + r);
+  ctx.lineTo(x - r * 0.85, y);
+  ctx.closePath();
+  ctx.fill();
+  ctx.shadowBlur = 0;
+  ctx.fillStyle = "#e9fdff";
+  ctx.fillRect(x - 0.9, y - r * 0.55, 1.5, 1.5);
+  ctx.restore();
+}
+
+function drawExchange(ctx: CanvasRenderingContext2D, s: Slot, t: number, bob: boolean) {
+  ctx.save();
+  if (s.generic) ctx.globalAlpha = 0.4;
+  if (s.kind === "his") {
+    const dy = bob ? Math.sin(t / 700 + s.index) * 0.8 : 0;
+    drawCloud(ctx, s.x, s.y + dy, s.s + 2, s.num);
+  } else if (s.kind === "phone") {
+    if (s.heart) drawHeart(ctx, s.x, s.y, s.s, t, "phone");
+    else drawPhone(ctx, s.x, s.y, s.s);
+  } else if (s.heart) drawHeart(ctx, s.x, s.y, s.s, t, "mail");
+  else drawFire(ctx, s.x, s.y, s.s, t, s.index);
   ctx.restore();
 }
 
@@ -228,7 +449,13 @@ function drawFee(ctx: CanvasRenderingContext2D, x: number, y: number, r: number)
   ctx.restore();
 }
 
-function drawApe(ctx: CanvasRenderingContext2D, x: number, y: number, t: number, throwing: boolean) {
+function drawApe(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  t: number,
+  throwing: boolean,
+) {
   // Original chunky pixel ape: 3px "pixels", arms up when throwing.
   const p = 3;
   const px = (cx: number, cy: number, w: number, h: number, c: string) => {
@@ -262,7 +489,14 @@ function drawApe(ctx: CanvasRenderingContext2D, x: number, y: number, t: number,
   ctx.restore();
 }
 
-function drawClimber(ctx: CanvasRenderingContext2D, x: number, y: number, dir: number, t: number, duck: boolean) {
+function drawClimber(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  dir: number,
+  t: number,
+  duck: boolean,
+) {
   const p = 2;
   const px = (cx: number, cy: number, w: number, h: number, c: string) => {
     ctx.fillStyle = c;
@@ -287,7 +521,6 @@ function drawClimber(ctx: CanvasRenderingContext2D, x: number, y: number, dir: n
   px(-2, -4, 2, 3 + step, "#2b2b3a"); // legs
   px(0, -4, 2, 4 - step, "#2b2b3a");
 }
-
 
 /* ---------- "Slide me": a second man visitors drag along the climb to read each email ---------- */
 
@@ -333,7 +566,12 @@ function pointAt(path: { segs: PathSeg[] }, p: number) {
     if (p <= s.p0 + s.len) break;
   }
   const t = Math.max(0, Math.min(1, (p - seg.p0) / seg.len));
-  return { x: seg.a.x + (seg.b.x - seg.a.x) * t, y: seg.a.y + (seg.b.y - seg.a.y) * t, level: seg.level, ladder: seg.ladder };
+  return {
+    x: seg.a.x + (seg.b.x - seg.a.x) * t,
+    y: seg.a.y + (seg.b.y - seg.a.y) * t,
+    level: seg.level,
+    ladder: seg.ladder,
+  };
 }
 
 /** Nearest point on the path to (x, y); among near-ties, the one closest to where he already is. */
@@ -360,12 +598,21 @@ function snapToPath(path: { segs: PathSeg[] }, x: number, y: number, curP: numbe
 
 /** Path position of a point on girder `level` at x (the main low-to-high run of that girder). */
 function pathPosOnGirder(path: { segs: PathSeg[] }, level: number, x: number) {
-  const seg = path.segs.find((s) => s.level === level && !s.ladder && Math.abs(s.b.x - s.a.x) > 40) ?? path.segs[0];
+  const seg =
+    path.segs.find((s) => s.level === level && !s.ladder && Math.abs(s.b.x - s.a.x) > 40) ??
+    path.segs[0];
   const t = Math.max(0, Math.min(1, (x - seg.a.x) / (seg.b.x - seg.a.x)));
   return seg.p0 + t * seg.len;
 }
 
-function drawSlider(ctx: CanvasRenderingContext2D, x: number, y: number, t: number, active: boolean, idle: boolean) {
+function drawSlider(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  t: number,
+  active: boolean,
+  idle: boolean,
+) {
   // Original pixel figure, visibly different from the climber: green overalls, white hard hat,
   // holding a board up on a pole that reads SLIDE ME.
   const p = 2;
@@ -430,7 +677,13 @@ function drawPick(ctx: CanvasRenderingContext2D, s: Slot, t: number) {
   ctx.restore();
 }
 
-export type SlidePick = { index: number; level: AvLevel; pos: number; total: number; dock: "top" | "bottom" };
+export type SlidePick = {
+  index: number;
+  level: AvLevel;
+  pos: number;
+  total: number;
+  dock: "top" | "bottom";
+};
 
 export function AvenueGame({
   instId,
@@ -444,7 +697,10 @@ export function AvenueGame({
   /** The slide-me man is over a log (or, with null, over none). `final` on release / key step. */
   onSlide: (pick: SlidePick | null, inst: AvInstitution, final: boolean) => void;
 }) {
-  const inst = useMemo(() => institutions.find((i) => i.id === instId) ?? institutions[0], [instId]);
+  const inst = useMemo(
+    () => institutions.find((i) => i.id === instId) ?? institutions[0],
+    [instId],
+  );
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
   const stateRef = useRef<{ barrels: Barrel[]; slots: Slot[] }>({ barrels: [], slots: [] });
@@ -455,7 +711,8 @@ export function AvenueGame({
   const H = TOP + n * lhFor(n) + BOTTOM;
   const replies = useMemo(() => {
     const seen = new Set<number>();
-    for (const level of inst.levels) for (const i of level.items) if (!avenueEmails[i].out) seen.add(i);
+    for (const level of inst.levels)
+      for (const i of level.items) if (!avenueEmails[i].out) seen.add(i);
     return [...seen].sort((a, b) => avenueEmails[a].d.localeCompare(avenueEmails[b].d));
   }, [inst]);
 
@@ -467,6 +724,12 @@ export function AvenueGame({
     if (!ctx) return;
     const slots = layoutSlots(inst);
     stateRef.current = { barrels: [], slots };
+    // diamond positions (canvas units), for tests and assistive tools
+    canvas.dataset.gems = JSON.stringify(
+      slots
+        .filter((s) => s.dx !== undefined)
+        .map((s) => [Math.round(s.dx ?? 0), Math.round(s.dy ?? 0)]),
+    );
     const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
     let raf = 0;
     let visible = true;
@@ -482,7 +745,18 @@ export function AvenueGame({
       const g0 = girder(0, n);
       return g0.highRight ? g0.left + 10 : g0.right - 10;
     };
-    const climber = { level: 0, x: startX(), y: 0, dir: girder(0, n).highRight ? 1 : -1, mode: "walk" as "walk" | "climb" | "rest" | "fade", t: 0, h: 0, vh: 0, duck: 0, alpha: 0 };
+    const climber = {
+      level: 0,
+      x: startX(),
+      y: 0,
+      dir: girder(0, n).highRight ? 1 : -1,
+      mode: "walk" as "walk" | "climb" | "rest" | "fade",
+      t: 0,
+      h: 0,
+      vh: 0,
+      duck: 0,
+      alpha: 0,
+    };
 
     const resize = () => {
       const cssW = wrap.clientWidth;
@@ -514,11 +788,25 @@ export function AvenueGame({
         return B.sl.y - A.sl.y;
       })
       .map((o) => o.k);
-    const slide = { p: 0, dragging: false, grabDy: 0, lift: 0, sel: -1, shown: -2, pointer: -1, downX: 0, downY: 0, moved: false };
+    const slide = {
+      p: 0,
+      dragging: false,
+      grabDy: 0,
+      lift: 0,
+      sel: -1,
+      shown: -2,
+      pointer: -1,
+      downX: 0,
+      downY: 0,
+      moved: false,
+    };
     let slideTimer = 0;
     const toCanvas = (clientX: number, clientY: number) => {
       const rect = canvas.getBoundingClientRect();
-      return { x: ((clientX - rect.left) / rect.width) * W, y: ((clientY - rect.top) / rect.height) * H };
+      return {
+        x: ((clientX - rect.left) / rect.width) * W,
+        y: ((clientY - rect.top) / rect.height) * H,
+      };
     };
     const slidePoint = () => pointAt(path, slide.p);
     /** The log under him: same girder, his x inside its column; with stacked rows, the lift picks the row. */
@@ -531,8 +819,13 @@ export function AvenueGame({
         .sort((A, B) => Math.abs(A.sl.x - pt.x) - Math.abs(B.sl.x - pt.x) || B.sl.y - A.sl.y);
       if (!col.length) return -1;
       const cx = col[0].sl.x;
-      const stack = col.filter(({ sl }) => Math.abs(sl.x - cx) < 0.5).sort((A, B) => B.sl.y - A.sl.y);
-      const row = Math.max(0, Math.min(stack.length - 1, Math.round(slide.lift / (stack[0].sl.s + 1))));
+      const stack = col
+        .filter(({ sl }) => Math.abs(sl.x - cx) < 0.5)
+        .sort((A, B) => B.sl.y - A.sl.y);
+      const row = Math.max(
+        0,
+        Math.min(stack.length - 1, Math.round(slide.lift / (stack[0].sl.s + 1))),
+      );
       return stack[row].k;
     };
     const dockFor = () => {
@@ -553,7 +846,17 @@ export function AvenueGame({
           return;
         }
         const sl = slots[k];
-        slideCb.current({ index: sl.index, level: inst.levels[sl.level], pos: order.indexOf(k) + 1, total: order.length, dock: dockFor() }, inst, final);
+        slideCb.current(
+          {
+            index: sl.index,
+            level: inst.levels[sl.level],
+            pos: order.indexOf(k) + 1,
+            total: order.length,
+            dock: dockFor(),
+          },
+          inst,
+          final,
+        );
       };
       // a new log settles after a short pause (no flicker while sliding past several); off the
       // logs, the last email stays up a little longer before it closes
@@ -567,7 +870,10 @@ export function AvenueGame({
       wrap.setAttribute("aria-valuenow", String(slide.sel >= 0 ? order.indexOf(slide.sel) + 1 : 0));
       if (slide.sel >= 0) {
         const e = avenueEmails[slots[slide.sel].index];
-        wrap.setAttribute("aria-valuetext", `Email ${order.indexOf(slide.sel) + 1} of ${order.length}, ${e.out ? "sent" : "received"} ${e.d}: ${e.s || "no subject"}`);
+        wrap.setAttribute(
+          "aria-valuetext",
+          `Email ${order.indexOf(slide.sel) + 1} of ${order.length}, ${e.out ? "sent" : "received"} ${e.d}: ${e.s || "no subject"}`,
+        );
       } else wrap.setAttribute("aria-valuetext", "At the start, not over an email");
       wrap.setAttribute("aria-valuemax", String(order.length));
     };
@@ -639,8 +945,10 @@ export function AvenueGame({
     const onKey = (ev: KeyboardEvent) => {
       if (!order.length) return;
       let pos = slide.sel >= 0 ? order.indexOf(slide.sel) : -1;
-      if (ev.key === "ArrowRight" || ev.key === "ArrowUp") pos = Math.min(order.length - 1, pos + 1);
-      else if (ev.key === "ArrowLeft" || ev.key === "ArrowDown") pos = Math.max(0, pos < 0 ? 0 : pos - 1);
+      if (ev.key === "ArrowRight" || ev.key === "ArrowUp")
+        pos = Math.min(order.length - 1, pos + 1);
+      else if (ev.key === "ArrowLeft" || ev.key === "ArrowDown")
+        pos = Math.max(0, pos < 0 ? 0 : pos - 1);
       else if (ev.key === "Home") pos = 0;
       else if (ev.key === "End") pos = order.length - 1;
       else return;
@@ -648,7 +956,9 @@ export function AvenueGame({
       const k = order[pos];
       const sl = slots[k];
       slide.p = pathPosOnGirder(path, sl.level, sl.x);
-      const stack = slots.filter((o) => o.level === sl.level && Math.abs(o.x - sl.x) < 0.5).sort((A, B) => B.y - A.y);
+      const stack = slots
+        .filter((o) => o.level === sl.level && Math.abs(o.x - sl.x) < 0.5)
+        .sort((A, B) => B.y - A.y);
       slide.lift = stack.indexOf(sl) * (sl.s + 1);
       slide.sel = k;
       publish();
@@ -676,7 +986,19 @@ export function AvenueGame({
         replyCursor += 1;
         const g = girder(n - 1, n);
         const bx = g.highRight ? g.right - 20 : g.left + 20;
-        st.barrels.push({ x: bx, y: g.yAt(bx) - 6, vx: 0, vy: 0, level: n - 1, index, rot: 0, falling: false, colour: outcomeInfo[avenueEmails[index].o].colour, fee: isFee(index) });
+        st.barrels.push({
+          x: bx,
+          y: g.yAt(bx) - 6,
+          vx: 0,
+          vy: 0,
+          level: n - 1,
+          index,
+          rot: 0,
+          falling: false,
+          colour: outcomeInfo[avenueEmails[index].o].colour,
+          fee: isFee(index),
+          heart: corr(index).heart,
+        });
         throwAnim = 350;
         nextThrow = reduce ? 6000 : 2300 + Math.random() * 900;
       }
@@ -715,10 +1037,17 @@ export function AvenueGame({
       // climber: uphill only, bottom to the highest avenue reached, then back to the bottom
       const walk = (reduce ? 0.02 : 0.045) * dt;
       const cg = girder(climber.level, n);
-      climber.alpha = climber.mode === "fade" ? Math.max(0, climber.alpha - dt / 350) : Math.min(1, climber.alpha + dt / 350);
+      climber.alpha =
+        climber.mode === "fade"
+          ? Math.max(0, climber.alpha - dt / 350)
+          : Math.min(1, climber.alpha + dt / 350);
       if (climber.mode === "walk") {
         const atTop = climber.level >= front;
-        const target = atTop ? (cg.highRight ? cg.right - 12 : cg.left + 12) : ladderX(climber.level, n) + 4;
+        const target = atTop
+          ? cg.highRight
+            ? cg.right - 12
+            : cg.left + 12
+          : ladderX(climber.level, n) + 4;
         if (climber.duck <= 0) climber.x += climber.dir * walk;
         if ((climber.dir > 0 && climber.x >= target) || (climber.dir < 0 && climber.x <= target)) {
           climber.x = target;
@@ -756,7 +1085,11 @@ export function AvenueGame({
       if (climber.mode === "walk") {
         // a barrel coming down his girder towards him: hop it (mostly) or duck under it, never retreat
         const threat = st.barrels.find(
-          (b) => b.level === climber.level && !b.falling && (b.x - climber.x) * climber.dir > -4 && Math.abs(b.x - climber.x) < 24,
+          (b) =>
+            b.level === climber.level &&
+            !b.falling &&
+            (b.x - climber.x) * climber.dir > -4 &&
+            Math.abs(b.x - climber.x) < 24,
         );
         if (threat && climber.h === 0 && climber.duck <= 0) {
           if (Math.random() < 0.75) climber.vh = 0.2;
@@ -807,7 +1140,14 @@ export function AvenueGame({
       inst.levels.forEach((level, li) => {
         const g = girder(li, n);
         ctx.fillStyle = level.status === "na" ? "#59606b" : "rgba(244,239,230,0.62)";
-        const label = (li + 1).toString() + " " + (level.rung ? level.rung.s : level.phase === "foi" && !level.applicable ? "FOI" : shortName(level));
+        const label =
+          (li + 1).toString() +
+          " " +
+          (level.rung
+            ? level.rung.s
+            : level.phase === "foi" && !level.applicable
+              ? "FOI"
+              : shortName(level));
         ctx.fillText(label, g.left + 2, g.yAt(g.left + 2) + 17);
         if (level.rung && isPaid(level.rung)) {
           // PAID rung: a money route, not used (Sion pays for nothing)
@@ -816,22 +1156,38 @@ export function AvenueGame({
           ctx.fillText(" PAID", g.left + 2 + w, g.yAt(g.left + 2) + 17);
         }
       });
-      for (const s of st.slots) {
-        if (s.out) drawCrate(ctx, s);
-        else drawBarrel(ctx, s.x, s.y, s.s / 2, s.colour, 0);
-      }
-      for (const s of st.slots) if (s.fee) drawFee(ctx, s.x, s.y, s.s / 2);
+      for (const s of st.slots)
+        if (s.dx !== undefined && s.dy !== undefined) drawDiamond(ctx, s.dx, s.dy, now);
+      for (const s of st.slots) drawExchange(ctx, s, reduce ? 0 : now, !reduce);
+      for (const s of st.slots) if (s.fee) drawFee(ctx, s.x, s.y - s.s / 2 - 3, 2);
       for (const b of st.barrels) {
-        drawBarrel(ctx, b.x, b.y, 6, b.colour, b.rot);
-        if (b.fee) drawFee(ctx, b.x, b.y, 6);
+        // thrown replies come down as fireballs (hearts when the reply was fully satisfactory)
+        if (b.heart) drawHeart(ctx, b.x, b.y, 11, now, "mail");
+        else drawFire(ctx, b.x, b.y, 12, now, b.index);
+        if (b.fee) drawFee(ctx, b.x, b.y - 9, 2);
       }
-      const cy = climber.mode === "climb" ? climber.y : girder(climber.level, n).yAt(climber.x) - climber.h;
+      const cy =
+        climber.mode === "climb" ? climber.y : girder(climber.level, n).yAt(climber.x) - climber.h;
       ctx.save();
       ctx.globalAlpha = climber.alpha;
-      drawClimber(ctx, climber.x, cy, climber.dir, climber.mode === "rest" ? 0 : now, climber.duck > 0);
+      drawClimber(
+        ctx,
+        climber.x,
+        cy,
+        climber.dir,
+        climber.mode === "rest" ? 0 : now,
+        climber.duck > 0,
+      );
       ctx.restore();
       const sp = slidePoint();
-      drawSlider(ctx, sp.x, sp.y, now, slide.dragging || slide.sel >= 0, slide.p === 0 && !slide.dragging);
+      drawSlider(
+        ctx,
+        sp.x,
+        sp.y,
+        now,
+        slide.dragging || slide.sel >= 0,
+        slide.p === 0 && !slide.dragging,
+      );
       // the log he is over glows on top of him, so it stays visible under his feet
       if (slide.sel >= 0) drawPick(ctx, slots[slide.sel], now);
     };
@@ -859,6 +1215,21 @@ export function AvenueGame({
     const x = ((clientX - rect.left) / rect.width) * W;
     const y = ((clientY - rect.top) / rect.height) * H;
     const st = stateRef.current;
+    // a diamond (attachment) on the girder line wins over the icon above it
+    let gem: Slot | null = null;
+    let gemD = 9;
+    for (const s of st.slots) {
+      if (s.dx === undefined || s.dy === undefined) continue;
+      const d = Math.hypot(s.dx - x, s.dy - y);
+      if (d < gemD) {
+        gem = s;
+        gemD = d;
+      }
+    }
+    if (gem) {
+      onHit({ kind: "diamond", index: gem.index, level: inst.levels[gem.level] }, inst);
+      return;
+    }
     for (const b of st.barrels) {
       if (Math.hypot(b.x - x, b.y - y) < 15) {
         const level = inst.levels[b.level] ?? inst.levels[0];
@@ -924,7 +1295,8 @@ export function AvenueGame({
       </div>
       {inst.ramp && (
         <p className="mb-2 px-1 text-xs leading-snug text-muted" data-ramp={inst.id}>
-          <span className="text-fg">{inst.ramp.rungs.length} rungs</span> · {inst.ramp.regimes.join(" · ")}
+          <span className="text-fg">{inst.ramp.rungs.length} rungs</span> ·{" "}
+          {inst.ramp.regimes.join(" · ")}
         </p>
       )}
       <div
