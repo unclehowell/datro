@@ -1,6 +1,6 @@
 {
  "schema": "ghf-artifacts/1",
- "generated": "2026-10-21T13:21:03Z",
+ "generated": "2026-10-21T13:58:24Z",
  "base_url": "https://wayback.bucklerfamily.estate/",
  "spec": "https://wayback.bucklerfamily.estate/artifacts/SPEC.md",
  "statement": "Our case, prospective. Not a finding of any court.",
@@ -30,32 +30,32 @@
    "index": "https://wayback.bucklerfamily.estate/images/_treeview.json"
   }
  ],
- "count": 316,
+ "count": 330,
  "parts": [
   {
    "url": "items-1.json",
-   "count": 109,
+   "count": 107,
    "first": "EV-0001",
-   "last": "EV-0110"
+   "last": "EV-0108"
   },
   {
    "url": "items-2.json",
-   "count": 91,
-   "first": "EV-0111",
-   "last": "EV-0201"
+   "count": 90,
+   "first": "EV-0109",
+   "last": "EV-0198"
   },
   {
    "url": "items-3.json",
    "count": 115,
-   "first": "EV-0202",
-   "last": "WB-0023"
+   "first": "EV-0199",
+   "last": "WB-0020"
   },
   {
    "url": "items-4.json",
-   "count": 1,
-   "first": "WB-0024",
-   "last": "WB-0024"
+   "count": 18,
+   "first": "WB-0021",
+   "last": "WB-0038"
   }
  ],
  "note": "Items are split across the files in \"parts\" (each under 100 KB). Fetch each part and join the \"items\" arrays in order."
-}                                           
+}                            
