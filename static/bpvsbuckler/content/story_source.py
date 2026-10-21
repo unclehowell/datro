@@ -278,11 +278,11 @@ sc('I', 'ghf-18700101-2', '1870-01-02', '1870 — Pwllypant probate and estate p
 sc('I', 'ghf-18760101-1', '1876-01-01', '1876 – c. 1912', "The limeworks", 'Llandough Limeworks', 'A',
    'Estate papers',
    "The Wiki's archive lead identifies about 33 acres used by the Llandough Limeworks from 1876 to about 1912, with Bute papers D153/4–8 to be obtained and inspected. The block's precise boundaries and title line remain to be matched to the 1877 plan and the estate schedules. For the Cedwyn reconstruction, this is a critical parcel-control point: identify who owned the freehold, who granted the quarrying rights, who received rent, and whether all four descriptions refer to the same acres.",
-   [w('/llandough-limeworks/', 'Llandough Limeworks')])
+   [{'type': 'Newspaper', 'title': 'EV-0280 — Llandough Lime Works and quarry, 1876–1947: contemporary record set', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0280-llandough-lime-works-and-quarry-1876-1947-daniel-thomas-s-kilns-quarry-workers-kel/'}, w('/llandough-limeworks/', 'Llandough Limeworks')])
 sc('I', 'ghf-18770101-1', '1877-01-01', '1877', "Division of the farm", 'Bute Estate Office', 'AB',
    "Mary's statement",
    "Mary (Nancy) Williams's statement records that in 1877 the Bute Estate sold the farmhouse, buildings and about 10 acres to Daniel Thomas, and kept about 9 acres. The Williamses remained as tenants of both. The deed is missing.",
-   [MARY, w('/1877-agreement/#sale-1877', 'The 1877 Agreement — the sale'), w('/1877-agreement/#plan', 'The 1877 Agreement — plan'),
+   [{'type': 'Archive catalogue', 'title': 'EV-0278 — NLW Bute records: Llandough manor rentals 1808–1881 and presentments 1793–1934 (catalogue entries)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0278-nlw-bute-estate-records-llandough-manor-rentals-1808-1881-r-6-27-45-and-presentmen/'}, MARY, w('/1877-agreement/#sale-1877', 'The 1877 Agreement — the sale'), w('/1877-agreement/#plan', 'The 1877 Agreement — plan'),
     w('/the-two-parcels/', 'The Two Parcels'), w('/1877-agreement/#sale-1877', 'The 1877 Agreement — Bute lease'), w('/forensic-master-chronology-authoritative-corrected-6-october-2026/', 'Forensic Master Chronology (6 October 2026)', 'Analysis')],
    aliases=['ghf-18771106-1'],
    ledger={'W': None,
@@ -296,6 +296,11 @@ sc('I', 'ghf-18810403-1', '1881-04-03', '3 April 1881', "The 1881 census: \"Llan
     {'type': 'Newspaper', 'title': 'EV-0228 — Llandough Farm and the Rees family, 1841–1910: a separate Bute farm (wiki evidence page)', 'url': WIKI + '/evidence/ev-0228-llandough-farm-rees-family-1841-1910/'},
     w('/evidence/ev-0223-1881-census-name-variant/', 'EV-0223 — 1881 census: a dictated variant of the farm name (pending)')],
    image='/media/1881-census-rg11-5288-p2.jpg')
+sc('I', 'ghf-18890811-1', '1889-08-11', '11 August 1889', "Apples from the orchard", 'Great House Farm — the orchard by the railway', 'AB',
+   'Newspaper',
+   "Four boys climb \"over the hedge from the railway\" into \"the orchard of Great House Farm\" and take apples, \"the property of John Williams\". John Williams junior helps the constable catch three of them, and tells the Penarth magistrates that about half the apples in his father's orchard have gone.",
+   [{'type': 'Newspaper', 'title': 'EV-0279 — Barry Dock News, 16 August 1889, p.2: "the orchard of Great House Farm … the property of John Williams" (wiki evidence page)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0279-barry-dock-news-16-aug-1889-p-2-apples-taken-from-the-orchard-of-great-house-farm/'},
+    {'type': 'Newspaper', 'title': 'Barry Dock News, 16 August 1889, p.2 — "A Batch of Orchard Looters at Llandough" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/4594680/4594682/18/'}])
 sc('I', 'ghf-18911111-1', '1891-11-11', '11 November 1891', "Theft of geese", 'Llandough — court report', 'AB',
    'Newspaper',
    "Three geese are stolen from \"Mr. John Williams, Great House Farm, Llandough\". The theft is reported from court.",
@@ -391,14 +396,14 @@ sc('I', 'ghf-18970527-1', '1897-05-27', 'Late May – July 1897', 'The first wir
 sc('I', 'ghf-19070401-1', '1907-04-01', '1 April 1907', 'Air-rifle meeting at Great House Farm', 'Great House Farm', '?',
    'Newspaper',
    'The Llandough Air-rifle Club holds its Easter Monday meeting at Great House Farm: ten shots at twenty yards. A Llandough man, J. Griffiths, comes third.',
-   [
+   [{'type': 'Newspaper', 'title': 'EV-0282 — Evening Express 1907–1908: air-rifle meeting and poacher at Great House Farm (wiki evidence page)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0282-evening-express-27-mar-and-2-apr-1907-air-rifle-meeting-at-great-house-farm-llando/'}, 
     {'type': 'Newspaper', 'title': '[VERIFIED] Evening Express, 27 March 1907, p.3 — notice: an air-rifle shooting competition "at the Great House Farm, Llandough, on Monday next" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/4174604/4174607/109/'},
     {'type': 'Newspaper', 'title': '[VERIFIED] Evening Express, 2 April 1907, p.4 — "Air-rifle shooting. The Llandough meeting … held on Monday at Great House Farm, Llandough" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/4174794/4174798/123/'}
    ])
 sc('I', 'ghf-19080101-1', '1908-01-01', '1908', "John Williams", 'Great House Farm', 'AB',
    "Mary's statement",
    "Mary's grandfather dies. John Williams takes over the house from the Thomases and the fields from Bute.",
-   [MARY, w('/john-williams/#y1908', 'John Williams — 1908'),
+   [{'type': 'Newspaper', 'title': 'EV-0283 — Bute Court Leet at Llandough 1904–1917: “John Williams” on the 1910 jury (wiki evidence page)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0283-bute-court-leet-at-llandough-press-reports-1904-1917-john-williams-on-the-1910-gra/'}, MARY, w('/john-williams/#y1908', 'John Williams — 1908'),
     LRT('deeds-before-registration', 'Land Registry Titles — deeds before registration (1905 Bute conveyance)'),
     w('/evidence/ev-0243-barry-dock-news-1908-court-leet-john-williams-great-house/', "EV-0243 — Barry Dock News, 23 Oct 1908, p.3: court leet vote of sympathy with \"the family of the late Mr. John Williams, Great House, Llandough\" (wiki evidence page)", 'Newspaper')],
    aliases=['ghf-19050223-1'],
@@ -407,7 +412,7 @@ sc('I', 'ghf-19080101-1', '1908-01-01', '1908', "John Williams", 'Great House Fa
 sc('I', 'ghf-19080106-1', '1908-01-06', '6 January 1908', 'A poacher caught on Great House Farm', 'Great House Farm', '?',
    'Newspaper',
    'Shortly before three in the morning two keepers on their round at Llandough see a man net two rabbits on Great House Farm and catch him before he leaves the field. At Barry he is sent to gaol for two months.',
-   [
+   [{'type': 'Newspaper', 'title': 'EV-0282 — Evening Express 1907–1908: air-rifle meeting and poacher at Great House Farm (wiki evidence page)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0282-evening-express-27-mar-and-2-apr-1907-air-rifle-meeting-at-great-house-farm-llando/'}, 
     {'type': 'Newspaper', 'title': '[VERIFIED] Evening Express, 10 January 1908, p.3 — "Two months for a poacher": "poaching on Great House Farm, Llandough" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/4184741/4184744/84/'}
    ])
 sc('I', 'ghf-19130810-1', '1913-08-10', '10 August 1913', "Birth of Mary (Nancy) Williams", 'Great House Farm', 'A',
@@ -1068,3 +1073,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

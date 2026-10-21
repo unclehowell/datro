@@ -89,6 +89,10 @@ ACCOUNTS = {
     received="",
     words=[('"Llandough Home Farm"', 'The enumerator\'s label. No other source found uses it: no newspaper (Welsh Newspapers Online, 1804–1919), directory or Ordnance Survey map.')],
     known="The household is the John Williams whom the directories place at Great House before and after 1881. The Rees family were at Llandough Farm. On identity the record supports Sion Buckler's reading. Against it: \"Home Farm\" appears nowhere else, so it cannot be offered as a second name for the farm; and the acreage is hard to read: 170 would fit Llandough Farm (166 acres in 1824–32) better than Great House (about 120 acres in the 1841 tithe), while 120 fits Great House. Folio and enumeration district: source pending. EV-0223 records a different, dictated reading of the farm name that this page does not show."),
+'ghf-18890811-1': dict(
+    received="A minor court report.",
+    words=[('"the property of John Williams"', 'The apples were his; the report is silent on who owned the land.')],
+    known="VERIFIED (Barry Dock News, 16 August 1889, read on Welsh Newspapers Online; EV-0279). Contemporary record that John Williams held Great House Farm in 1889, with his grown son John Williams junior working it, and that the orchard lay against a railway hedge."),
 'ghf-18911111-1': dict(
     received="A minor court report.",
     words=[],
