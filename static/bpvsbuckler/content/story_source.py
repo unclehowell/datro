@@ -809,9 +809,9 @@ sc('VII', 'ghf-19900313-1', '1990-03-13', 'February – March 1990', "Outline pe
    "On 13 March 1990 outline permission is granted with 18 conditions. The officer's report notes the farm buildings \"were unfortunately demolished a little while ago\". GGAT's further comments of 8 February 1990 are missing from the file.",
    [REDEV, LEGAL], aliases=['ghf-19900208-1'])
 sc('VII', 'ghf-19900529-1', '1990-05-29', '29 May 1990', "Death of William Buckler", 'Llandough', 'A',
-   'Source pending (date corrected from family information)',
-   "William Buckler died on 29 May 1990 at Llandough Hospital. Funeral and burial details require confirmation against the obituary and relevant records. The 1991 probate calendar lists a \"William Beverley Buckler\" of Penarth who died on 29 April 1990, with administration granted at Llandaff on 11 July 1991: a probable match, not proven, and the dates conflict.",
-   [w('/williams-buckler-family/', 'The Williams / Buckler Family — William')],
+   'Newspaper',
+   "William Buckler died on 29 May 1990 at Llandough Hospital. The South Wales Echo of Saturday 2 June 1990 reports that \"Billy died suddenly this week\", which fits 29 May, and that he \"made a detour around Llandough so never had to pass the site of Great House Farm\". The 1991 probate calendar lists a \"William Beverley Buckler\" of Penarth who died on 29 April 1990, with administration granted at Llandaff on 11 July 1991: a probable match, not proven, and the dates conflict.",
+   [w('/williams-buckler-family/', 'The Williams / Buckler Family — William'), {'type': 'Newspaper', 'title': 'EV-0290 — South Wales Echo, 2 June 1990, p.2: "Billy died suddenly this week" (snippet; wiki evidence page)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0290-snippet-only-south-wales-echo-2-jun-1990-p-2-billy-died-suddenly-this-week-he-made/'}, {'type': 'Probate record', 'title': 'EV-0274 — Probate calendar 1991: William Beverley Buckler (wiki evidence page)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0274-probate-calendar-1991-william-beverley-buckler/'}],
    aliases=['ghf-19920515-1'],
    ledger={'A': "Freehold claim: Mary's heirs · never adjudicated, never extinguished"})
 sc('VII', 'ghf-19900801-1', '1990-08-01', 'August – October 1990', "Evaluation trenches", 'Former farm site', '?',
@@ -863,10 +863,14 @@ sc('VII', 'ghf-19970516-1', '1997-05-16', '16 May 1997', 'Western Ground Rents w
    [w('/evidence/ev-0277-london-gazette-1996-1997-western-ground-rents-creditors-and-final-meetings/', 'EV-0277 — London Gazette 1996–97: WGR creditors notice and final meetings', 'Public record')])
 sc('VII', 'ghf-20050101-1', '2005-01-01', '2005', "Publication", 'Medieval Archaeology', '?',
    'Archaeological record',
-   "The excavation is published in Medieval Archaeology 49 (2005): 1,026 burials, 814 articulated. On 22 December 2005 part of the woodland title is divided off.",
+   "The excavation is published in Medieval Archaeology 49 (2005): 1,026 burials, 814 articulated.",
    [ARCH, {'type': 'Publication', 'title': 'Holbrook and Thomas, Medieval Archaeology 49 (2005)', 'url': WIKI + '/archaeology/'},
     w('/woodland/', 'Woodland')],
    aliases=['ghf-20051222-1'])
+sc('VII', 'ghf-20051202-1', '2005-12-02', '2 December 2005', "Woodland land sold", 'Woodland (title WA735527)', 'A',
+   'Company accounts',
+   "On 2 December 2005 Forest of Cardiff transfers land to Goldsworthy Homes, and on 22 December part of the woodland title is divided off. Forest of Cardiff's accounts for the year to 30 June 2006 record \"Sale of Land — Leckwith Road, Llandough 20,000\". Which land was sold is not known until the transfer plan is read.",
+   [{'type': 'Company accounts', 'title': 'EV-0217 — Forest of Cardiff accounts to 30 June 2006, note 13: "Sale of Land — Leckwith Road, Llandough" (wiki evidence page)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0217-forest-of-cardiff-accounts-2006-sale-of-land-leckwith-road/'}])
 sc('VII', 'ghf-20190320-1', '2019-03-20', '20 March 2019', "1990 assessment archived", 'RCAHMW national archive', '?',
    'Heritage record',
    "On 20 March 2019 GGAT's 1990 assessment is added to the national record.",

@@ -471,6 +471,10 @@ ACCOUNTS = {
     received="",
     words=[],
     known="The Forest of Cardiff says it bought the woodland in 1994. Per the Buckler case, this woodland, part of Parcel A, had been taken in 1955, and the charity has not used it. (SOURCE PENDING: not yet recorded on the wiki.)"),
+'ghf-20051202-1': dict(
+    received="The woodland charity sold a piece of land at Leckwith Road.",
+    words=[('"Sale of Land"', 'The charity\'s own accounts. The land was not on its balance sheet.')],
+    known="HELD (EV-0217, Companies House). £20,000 received in the year to 30 June 2006. Which land, and how the charity came to hold it in 1994, are open questions."),
 'ghf-20050101-1': dict(
     received="",
     words=[],
