@@ -1,6 +1,6 @@
 const RAW_BASE = "https://raw.githubusercontent.com/unclehowell/datro/email-archive/apps/email";
 const MANIFEST_URL = "https://wayback.bucklerfamily.estate/email/mail-index.json";
-const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/2f57aa9ce958eebac2bf64eeaedec096be131d02/apps/email/index.html";
+const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/573f68bb4f0b7312bf1bde36cbd41652e3d776d2/apps/email/index.html";
 const TEXT_HOST = "wayback.bucklerfamily.estate";
 // Wayback's case-mail API is the single source of truth for every case email (redacted copies).
 const CASEMAIL_INDEX_URL = "https://wayback.bucklerfamily.estate/api/index.json";
