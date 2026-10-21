@@ -129,7 +129,7 @@ function go(i,user){
 function speak(){
   clearTimeout(timer);voice.pause();if(window.speechSynthesis)speechSynthesis.cancel();
   if(muted){schedule();return}
-  var st=D.steps[idx];voice.src='audio/'+st.id+'.mp3';var pr=voice.play();if(pr&&pr.catch)pr.catch(function(){schedule()});
+  var st=D.steps[idx];voice.src='audio/'+st.id+'.mp3?v='+encodeURIComponent(D.version||'');var pr=voice.play();if(pr&&pr.catch)pr.catch(function(){schedule()});
 }
 function webSpeech(){
   if(!window.speechSynthesis){schedule();return}

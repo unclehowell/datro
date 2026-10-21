@@ -1,5 +1,5 @@
 {
- "version": "1.4.3",
+ "version": "1.4.4",
  "center": [
   51.4527,
   -3.1985
@@ -723,12 +723,12 @@
    "year": 1949,
    "base": "1947",
    "title": "Occupancy attempt rejected",
-   "headline": "1949 · Another attempt to make occupancy permissive, rejected",
+   "headline": "1949 · First attempt to make occupancy permissive, rejected",
    "labels": [
     "VERIFIED · judgment"
    ],
-   "short": "1949: the Williams tenancy is surrendered, and a new yearly tenancy goes to Frederick Buckler. The written tenancy agreement that was intended never happens. Another attempt to make occupancy permissive, rejected.",
-   "text": "1949 · Another attempt to make occupancy permissive, rejected. VERIFIED · judgment. The Court of Appeal (1987) records that Mr Williams “fell into arrears with his rent in the mid-1930s and in the late 1940s. Because of that, agreement was reached for Mr Williams' tenancy to be surrendered and for a new yearly agricultural tenancy commencing at February 2 1949 to be granted to Mr Williams' son-in-law, Mr Frederick Buckler”. It records: “It was intended that Mr Frederick Buckler should have a written tenancy agreement, but this did not happen because Mr Frederick Buckler also failed to pay the rent.” The landlords’ agents wrote to their solicitors on 10 October 1952 “that they did not propose to proceed with the letting to Mr Frederick Buckler”. Mary (Nancy) Williams’s own statement (c.1974): “I have never had any doubt that I was entitled to do so nor have I ever paid rent to or acknowledged the title of anyone as landlord.” In November 1958 she told Glamorgan County Council’s planning committee that “the water was cut off from her house and grounds for nearly 10 years by order of Western Ground Rents” (Western Mail, 20 Nov 1958, p.7; newspaper-archive OCR, page image not seen).",
+   "short": "1949: the Williams tenancy is surrendered, and a new yearly tenancy goes to Frederick Buckler. The written tenancy agreement that was intended never happens. The first attempt to make occupancy permissive, rejected.",
+   "text": "1949 · First attempt to make occupancy permissive, rejected. VERIFIED · judgment. The Court of Appeal (1987) records that Mr Williams “fell into arrears with his rent in the mid-1930s and in the late 1940s. Because of that, agreement was reached for Mr Williams' tenancy to be surrendered and for a new yearly agricultural tenancy commencing at February 2 1949 to be granted to Mr Williams' son-in-law, Mr Frederick Buckler”. It records: “It was intended that Mr Frederick Buckler should have a written tenancy agreement, but this did not happen because Mr Frederick Buckler also failed to pay the rent.” The landlords’ agents wrote to their solicitors on 10 October 1952 “that they did not propose to proceed with the letting to Mr Frederick Buckler”. Mary (Nancy) Williams’s own statement (c.1974): “I have never had any doubt that I was entitled to do so nor have I ever paid rent to or acknowledged the title of anyone as landlord.” In November 1958 she told Glamorgan County Council’s planning committee that “the water was cut off from her house and grounds for nearly 10 years by order of Western Ground Rents” (Western Mail, 20 Nov 1958, p.7; newspaper-archive OCR, page image not seen).",
    "parcels": {
     "AN": {
      "rec": "williams",
@@ -760,8 +760,8 @@
     "hp--occupancy-of-parcel-a-appear-permissive",
     "os1947"
    ],
-   "dur": 14.65,
-   "say": "Nineteen forty-nine: the Williams tenancy is surrendered, and a new yearly tenancy goes to Frederick Buckler. The written tenancy agreement that was intended never happens. Another attempt to make occupancy permissive, rejected.",
+   "dur": 15.36,
+   "say": "Nineteen forty-nine: the Williams tenancy is surrendered, and a new yearly tenancy goes to Frederick Buckler. The written tenancy agreement that was intended never happens. The first attempt to make occupancy permissive, rejected.",
    "pend": [
     "AN"
    ],
@@ -772,50 +772,6 @@
   },
   {
    "id": "s10",
-   "date": "1949–53",
-   "year": 1949,
-   "base": "1947",
-   "title": "Frederick’s farm tenancy",
-   "headline": "1949–53 · Frederick Buckler’s farm tenancy (from WGR)",
-   "labels": [
-    "VERIFIED · judgment"
-   ],
-   "short": "1949: Frederick Buckler’s farm tenancy from Western Ground Rents. On the 1939 plan, the land let is Parcel B only.",
-   "text": "1949–53 · Frederick Buckler’s farm tenancy (from WGR). VERIFIED · judgment. The Court of Appeal accepted a protected periodic agricultural tenancy (no written agreement). On the 1939 WGR plan the land let is Parcel B only, so this tenancy most likely covered Parcel B (EV-0023). SOURCE PENDING A reported 1954 attempt to make Frederick a tenant again (EV-0031).",
-   "parcels": {
-    "AN": {
-     "rec": "williams",
-     "case": "williams",
-     "note": ""
-    },
-    "AM": {
-     "rec": "williams",
-     "case": "williams",
-     "note": ""
-    },
-    "AS": {
-     "rec": "williams",
-     "case": "williams",
-     "note": ""
-    },
-    "B": {
-     "rec": "wgr",
-     "case": "wgr",
-     "note": ""
-    }
-   },
-   "src": [
-    "home",
-    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html",
-    "hp-nce-ev-0031-1954-buckler-tenancy-attempt",
-    "os1947",
-    "hp-0023-1939-wgr-john-williams-tenancy-plan"
-   ],
-   "dur": 9.85,
-   "say": "Nineteen forty-nine: Frederick Buckler's farm tenancy from Western Ground Rents. On the nineteen thirty-nine plan, the land let is Parcel B only."
-  },
-  {
-   "id": "s11",
    "date": "4 Jul 1955",
    "year": 1955,
    "base": "1947",
@@ -871,7 +827,7 @@
    }
   },
   {
-   "id": "s12",
+   "id": "s11",
    "date": "7 May 1958",
    "year": 1958,
    "base": "1947",
@@ -922,7 +878,7 @@
    }
   },
   {
-   "id": "s13",
+   "id": "s12",
    "date": "20 Nov 1958",
    "year": 1958,
    "base": "1947",
@@ -972,7 +928,7 @@
    }
   },
   {
-   "id": "s14",
+   "id": "s13",
    "date": "1958/9",
    "year": 1958,
    "base": "1947",
@@ -1023,7 +979,7 @@
    }
   },
   {
-   "id": "s15",
+   "id": "s14",
    "date": "29 Mar 1961",
    "year": 1961,
    "base": "1947",
@@ -1070,7 +1026,7 @@
    ]
   },
   {
-   "id": "s16",
+   "id": "s15",
    "date": "11 Dec 1962",
    "year": 1962,
    "base": "1947",
@@ -1117,7 +1073,7 @@
    ]
   },
   {
-   "id": "s17",
+   "id": "s16",
    "date": "1965",
    "year": 1965,
    "base": "1947",
@@ -1167,7 +1123,7 @@
    }
   },
   {
-   "id": "s18",
+   "id": "s17",
    "date": "1967",
    "year": 1967,
    "base": "1947",
@@ -1212,7 +1168,7 @@
    ]
   },
   {
-   "id": "s19",
+   "id": "s18",
    "date": "31 Dec 1969",
    "year": 1969,
    "base": "1947",
@@ -1258,7 +1214,7 @@
    ]
   },
   {
-   "id": "s20",
+   "id": "s19",
    "date": "16 Jun 1970",
    "year": 1970,
    "base": "1947",
@@ -1301,7 +1257,7 @@
    "say": "16 June nineteen seventy: the green is registered as village green V G forty-one, about twelve years after the nineteen fifty-eight attempt."
   },
   {
-   "id": "s21",
+   "id": "s20",
    "date": "1971",
    "year": 1971,
    "base": "1947",
@@ -1343,7 +1299,7 @@
    "say": "Nineteen seventy-one: an alteration of the Ordnance Survey. The source is pending."
   },
   {
-   "id": "s22",
+   "id": "s21",
    "date": "1974",
    "year": 1974,
    "base": "1947",
@@ -1392,7 +1348,7 @@
    }
   },
   {
-   "id": "s23",
+   "id": "s22",
    "date": "31 Oct 1974",
    "year": 1974,
    "base": "1947",
@@ -1439,7 +1395,7 @@
    }
   },
   {
-   "id": "s24",
+   "id": "s23",
    "date": "30 Nov 1982",
    "year": 1982,
    "base": "1947",
@@ -1482,7 +1438,7 @@
    "say": "30 November nineteen eighty-two: B P Properties applies to register the farm."
   },
   {
-   "id": "s25",
+   "id": "s24",
    "date": "23 Feb 1983",
    "year": 1983,
    "base": "1947",
@@ -1529,7 +1485,7 @@
    }
   },
   {
-   "id": "s26",
+   "id": "s25",
    "date": "2 Feb 1987",
    "year": 1987,
    "base": "1947",
@@ -1577,7 +1533,7 @@
    }
   },
   {
-   "id": "s27",
+   "id": "s26",
    "date": "31 Jul 1987",
    "year": 1987,
    "base": "1947",
@@ -1625,7 +1581,7 @@
    }
   },
   {
-   "id": "s28",
+   "id": "s27",
    "date": "Nov–Dec 1988",
    "year": 1988,
    "base": "1947",
@@ -1669,7 +1625,7 @@
    "merged": true
   },
   {
-   "id": "s29",
+   "id": "s28",
    "date": "1989–90",
    "year": 1989,
    "base": "aerial",
@@ -1713,7 +1669,7 @@
    "merged": true
   },
   {
-   "id": "s30",
+   "id": "s29",
    "date": "1992",
    "year": 1992,
    "base": "aerial",
@@ -1756,7 +1712,7 @@
    "merged": true
   },
   {
-   "id": "s31",
+   "id": "s30",
    "date": "3 Dec 1993",
    "year": 1993,
    "base": "aerial",
@@ -1798,7 +1754,7 @@
    "merged": true
   },
   {
-   "id": "s32",
+   "id": "s31",
    "date": "10 Nov 1994",
    "year": 1994,
    "base": "aerial",
@@ -1841,7 +1797,7 @@
    "merged": true
   },
   {
-   "id": "s33",
+   "id": "s32",
    "date": "2005–06",
    "year": 2005,
    "base": "aerial",
@@ -1884,7 +1840,7 @@
    "merged": true
   },
   {
-   "id": "s34",
+   "id": "s33",
    "date": "2026",
    "year": 2026,
    "base": "aerial",
@@ -1928,7 +1884,7 @@
    "merged": true
   },
   {
-   "id": "s35",
+   "id": "s34",
    "date": "2026",
    "year": 2026,
    "base": "aerial",
@@ -2049,8 +2005,8 @@
   "label": "Parcel A",
   "labelFrom": {
    "AN": "s10",
-   "AS": "s12",
-   "AM": "s17"
+   "AS": "s11",
+   "AM": "s16"
   },
   "note": "Dotted outline: the whole of Parcel A from the 1877 split (Mary (Nancy) Williams’s statement), kept on every later step. The woodland, green and house-and-yard labels appear at the step that first discusses each; the green is drawn as the lower third of Parcel A.",
   "labelAt": [
