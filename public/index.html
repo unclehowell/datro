@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#000000"/>
 <link rel="canonical" href="https://csscpsg.bucklerfamily.estate/"/>
 <meta property="og:title" content="csscpsg chronology · Great House Farm"/>
-<meta property="og:description" content="The legal record in date order, plain text. Our case, prospective. Not a finding of any court."/>
+<meta property="og:description" content="The legal record in date order, plain text."/>
 <meta property="og:type" content="website"/><meta property="og:url" content="https://csscpsg.bucklerfamily.estate/"/>
 <script>if(location.hostname.indexOf('csscpsgp.')===0){location.replace('https://csscpsg.bucklerfamily.estate'+location.pathname+location.search+location.hash)}</script>
 <style>
@@ -233,8 +233,7 @@ dialog button{font:inherit;margin:0 14px 14px;padding:6px 12px;background:var(--
 :S5: Text gap: the operative text itself is not held; it is known only from a later recital or summary
 :S6: Inconsistency: dates, years or descriptions conflict between records of the same act
 
-.. data: /data/chronology.json :: rule set: /data/model.json v1.0.0 :: earlier view: /v2/
-Our case, prospective. Not a finding of any court.</pre>
+.. data: /data/chronology.json :: rule set: /data/model.json v1.0.0 :: earlier view: /v2/</pre>
 </main>
 <dialog id="m" aria-label="Breach"><pre id="mt"></pre><button type="button" id="mc">close</button></dialog>
 <script>
@@ -245,7 +244,7 @@ function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return{'&':'&
 function open_(id){var x=M[id];if(!x)return;var h=esc(id+' | '+x.d+' | '+x.i)+'\n'+esc(x.c)+'\n';
 x.b.forEach(function(b){h+='\n'+esc(b.rule+' :: '+R[b.rule])+'\n  “'+esc(b.phrase)+'”\n  '+esc(b.why)+'\n';
 b.evidence.forEach(function(e){h+='  src: '+(e.url?'<a href="'+esc(e.url)+'" rel="noopener">'+esc(e.ref)+'</a>':esc(e.ref))+'\n'})});
-h+='\nOur case, prospective. Not a finding of any court.';mt.innerHTML=h;
+h+='\nOur case, prospective. ';mt.innerHTML=h;
 if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');}
 document.getElementById('doc').addEventListener('click',function(ev){if(ev.target.closest('a'))return;var s=ev.target.closest('.r');if(s)open_(s.dataset.id)});
 document.getElementById('doc').addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){var s=ev.target.closest('.r');if(s){ev.preventDefault();open_(s.dataset.id)}}});
