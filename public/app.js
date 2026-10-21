@@ -47,10 +47,18 @@ function search(q){
   return out.map(function(x){return x[1]});
 }
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function acts(e){
+  var a=[];
+  if(e.phone)a.push('<a class="act" href="tel:'+esc(e.phone.replace(/[^0-9+]/g,''))+'">Call</a>');
+  if(e.email)a.push('<a class="act" href="mailto:'+esc(e.email)+'">Email</a>');
+  if(e.website)a.push('<a class="act" href="'+esc(e.website)+'" rel="noopener">Website</a>');
+  return a.length?'<p class="acts">'+a.join('')+'</p>':'';
+}
+function socn(u){var m=/(facebook|instagram|twitter|x|linkedin|tiktok|youtube)\.com/i.exec(u);var n=m?m[1].toLowerCase():'link';return {x:'X',twitter:'X',facebook:'Facebook',instagram:'Instagram',linkedin:'LinkedIn',tiktok:'TikTok',youtube:'YouTube'}[n]||n}
 function card(e){
-  var t=[];if(e.area)t.push(e.area);if(e.food_rating)t.push('Food hygiene '+e.food_rating);if(e.heritage)t.push(e.heritage);if(e.website)t.push('<span class="tag w">Website</span>');if(e.member)t.push('Member');
+  var t=[];if(e.area)t.push(e.area);if(e.food_rating)t.push('Food hygiene '+e.food_rating);if(e.heritage)t.push(e.heritage);if(e.member)t.push('Member');
   var sub=(e.labels&&e.labels.length?e.labels.slice(0,2).join(' · '):(D.types[e.type]||''));
-  return '<li><button class="card" type="button" data-id="'+esc(e.id)+'"><h2>'+esc(e.name)+'</h2><p>'+esc(sub)+'</p><div class="tags">'+t.map(function(x){return x.indexOf('<span')===0?x:'<span class="tag">'+esc(x)+'</span>'}).join('')+'</div></button></li>';
+  return '<li><button class="card" type="button" data-id="'+esc(e.id)+'"><h2>'+esc(e.name)+'</h2><p>'+esc(sub)+'</p><div class="tags">'+t.map(function(x){return x.indexOf('<span')===0?x:'<span class="tag">'+esc(x)+'</span>'}).join('')+'</div></button>'+acts(e)+'</li>';
 }
 function render(list,q){
   last=list;var r=$('#res');
@@ -65,13 +73,14 @@ function facts(e){
   if(e.website)r('Website','<a href="'+esc(e.website)+'" rel="noopener">'+esc(e.website.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''))+'</a>');
   if(e.email)r('Email','<a href="mailto:'+esc(e.email)+'">'+esc(e.email)+'</a>');
   if(e.phone)r('Phone','<a href="tel:'+esc(e.phone.replace(/[^0-9+]/g,''))+'">'+esc(e.phone)+'</a>');
+  if(e.socials&&e.socials.length)r('Social',e.socials.map(function(u){return '<a href="'+esc(u)+'" rel="noopener">'+esc(socn(u))+'</a>'}).join(' · '));
   r('Opening hours',esc(e.hours));
-  if(e.food_rating)r('Food hygiene rating',esc(e.food_rating+(e.food_rating_date?' (inspected '+e.food_rating_date+')':'')));
+  if(e.food_rating)r('Food hygiene rating',esc(String(e.food_rating).replace(/([a-z])([A-Z])/g,'$1 $2')+(e.food_rating_date&&!/^19/.test(e.food_rating_date)?' (inspected '+e.food_rating_date+')':'')));
   if(e.company_no)r('Company number','<a href="https://find-and-update.company-information.service.gov.uk/company/'+esc(e.company_no)+'" rel="noopener">'+esc(e.company_no)+'</a>');
   if(e.charity_no)r('Charity number',esc(e.charity_no));
   r('Heritage',esc(e.heritage));r('Period',esc(e.period));r('Offers',esc(e.offer));
   if(e.lat)r('Map','<a href="https://www.openstreetmap.org/?mlat='+e.lat+'&mlon='+e.lon+'#map=18/'+e.lat+'/'+e.lon+'" rel="noopener">Open map</a>');
-  return '<dl class="facts">'+rows.join('')+'</dl>';
+  return acts(e)+'<dl class="facts">'+rows.join('')+'</dl>';
 }
 function open(id){
   var e=D.entities.concat(MEM).filter(function(x){return x.id===id})[0];if(!e)return;

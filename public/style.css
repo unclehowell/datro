@@ -69,3 +69,7 @@ footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);color:v
 footer p{margin:6px 0}
 .small{font-size:12px}
 @media (min-width:900px){main{padding-top:18px}}
+
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}
+.acts .act{font-size:14px;font-weight:600;text-decoration:none;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+#res li>.acts{margin:-4px 0 10px 2px}
