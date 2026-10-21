@@ -17,7 +17,8 @@
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-html, body, #root { height: 100%; margin: 0; }
+html, body { height: 100%; margin: 0; }
+#root { min-height: 100%; margin: 0; } /* grows with the page: with height:100% the splash overflowed the root and the AI-agent block below it was drawn over the buttons on phones (seen 21 Oct 2026) */
 body { background: var(--slate); color: var(--limewash); font-family: var(--sans); font-size: 15px; -webkit-font-smoothing: antialiased; }
 a { color: inherit; }
 button { font: inherit; color: inherit; cursor: pointer; }
