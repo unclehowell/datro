@@ -207,6 +207,10 @@ ACCOUNTS = {
     received="The landlord recovered the farm in 1955; the family stayed on in the house only through the landlord's forbearance, and from 1955 their occupation was adverse to the landlord.",
     words=[('"the whole of the farm"', 'The order\'s description, quoted in 1987.'), ('adverse possession from 1955', 'The clock the courts later counted on the house.')],
     known="An order against a tenant of the fields can only give back the fields, and that is what was taken. Mary was not a party and was never heard. She had just come home from hospital and stood her ground for her house. Any clock that started in 1955 was a clock on the fields. That the order reached the house was an insinuation, later read as fact. Per the Buckler case, the woodland of Parcel A was taken in 1955 too, passing to a couple in Llandough and later to the Forest of Cardiff. (SOURCE PENDING: not yet recorded on the wiki.)"),
+'ghf-19580506-1': dict(
+    received="She did not oppose Cardiff's plan.",
+    words=[('"did not oppose"', 'Cut short, it reads as consent. The full sentence is conditional: "so long as it applied only to playing fields".')],
+    known="VERIFIED (Western Mail OCR, EV-0035; London Gazette, EV-0287). Her statement was conditional on recreational use, the order was made under the playing-fields statute, and it concerned Leckwith Common, not Parcel A."),
 'ghf-19581119-1': dict(
     received="",
     words=[],
@@ -595,3 +599,4 @@ ACCOUNTS = {
     words=[],
     known="Every body involved is being given the opportunity to put it right before the family return to court."),
 }
+
