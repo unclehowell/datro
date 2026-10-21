@@ -1,61 +1,61 @@
 {
-  "schema": "ghf-artifacts/1",
-  "generated": "2026-10-21T16:45:17Z",
-  "base_url": "https://wayback.bucklerfamily.estate/",
-  "spec": "https://wayback.bucklerfamily.estate/artifacts/SPEC.md",
-  "statement": "Our case, prospective. Not a finding of any court.",
-  "collections": [
-    {
-      "name": "Case correspondence (email archive)",
-      "index": "https://wayback.bucklerfamily.estate/api/index.json",
-      "count": 770,
-      "note": "Each message: /api/message/gm-<gmailId>.json and /mail/gm-<gmailId>.txt. Contact details redacted."
-    },
-    {
-      "name": "FOI and public-authority reply attachments",
-      "index": "https://wayback.bucklerfamily.estate/pdf/foi/manifest.json",
-      "count": 36
-    },
-    {
-      "name": "Planning file 89/01396/OUT",
-      "index": "https://wayback.bucklerfamily.estate/pdf/_treeview.json",
-      "count": 5
-    },
-    {
-      "name": "Text transcripts and notes",
-      "index": "https://wayback.bucklerfamily.estate/text/_treeview.json"
-    },
-    {
-      "name": "Facebook archive images",
-      "index": "https://wayback.bucklerfamily.estate/images/_treeview.json"
-    }
-  ],
-  "count": 331,
-  "parts": [
-    {
-      "url": "items-1.json",
-      "count": 107,
-      "first": "EV-0001",
-      "last": "EV-0108"
-    },
-    {
-      "url": "items-2.json",
-      "count": 90,
-      "first": "EV-0109",
-      "last": "EV-0198"
-    },
-    {
-      "url": "items-3.json",
-      "count": 115,
-      "first": "EV-0199",
-      "last": "WB-0020"
-    },
-    {
-      "url": "items-4.json",
-      "count": 19,
-      "first": "WB-0021",
-      "last": "WB-0039"
-    }
-  ],
-  "note": "Items are split across the files in \"parts\" (each under 100 KB). Fetch each part and join the \"items\" arrays in order."
+ "schema": "ghf-artifacts/1",
+ "generated": "2026-10-21T18:26:21Z",
+ "base_url": "https://wayback.bucklerfamily.estate/",
+ "spec": "https://wayback.bucklerfamily.estate/artifacts/SPEC.md",
+ "statement": "Our case, prospective. Not a finding of any court.",
+ "collections": [
+  {
+   "name": "Case correspondence (email archive)",
+   "index": "https://wayback.bucklerfamily.estate/api/index.json",
+   "count": 770,
+   "note": "Each message: /api/message/gm-<gmailId>.json and /mail/gm-<gmailId>.txt. Contact details redacted."
+  },
+  {
+   "name": "FOI and public-authority reply attachments",
+   "index": "https://wayback.bucklerfamily.estate/pdf/foi/manifest.json",
+   "count": 36
+  },
+  {
+   "name": "Planning file 89/01396/OUT",
+   "index": "https://wayback.bucklerfamily.estate/pdf/_treeview.json",
+   "count": 5
+  },
+  {
+   "name": "Text transcripts and notes",
+   "index": "https://wayback.bucklerfamily.estate/text/_treeview.json"
+  },
+  {
+   "name": "Facebook archive images",
+   "index": "https://wayback.bucklerfamily.estate/images/_treeview.json"
+  }
+ ],
+ "count": 346,
+ "parts": [
+  {
+   "url": "items-1.json",
+   "count": 99,
+   "first": "EV-0001",
+   "last": "EV-0100"
+  },
+  {
+   "url": "items-2.json",
+   "count": 78,
+   "first": "EV-0101",
+   "last": "EV-0178"
+  },
+  {
+   "url": "items-3.json",
+   "count": 105,
+   "first": "EV-0179",
+   "last": "EV-0283"
+  },
+  {
+   "url": "items-4.json",
+   "count": 64,
+   "first": "EV-0284",
+   "last": "WB-0414"
+  }
+ ],
+ "note": "Items are split across the files in \"parts\" (each under 100 KB). Fetch each part and join the \"items\" arrays in order."
 }
