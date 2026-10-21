@@ -591,11 +591,12 @@ details[open] .readmore{visibility:hidden}
 SITE2 = {
     "title": "Llandough Community Council meeting",
     "when": "Thursday 22 October 2026, 19:00 (remote)",
-    "img": "img/tymawr-29-july-1988-white-wall.jpg",
-    "img_original": "img/tymawr-29-july-1988.jpg",
-    "img_caption": ("Illustration: Tŷ Mawr with its wall shown whitewashed (edited from a Cadw photograph). "
-                    "Not a photograph of the house as it stands."),
-    "img_credit": "Original: Cadw photograph, 29 July 1988, released to the family in May 2026.",
+    "img": "img/mary-williams-tymawr-family-photo.jpg",
+    "img_w": 900,
+    "img_h": 1006,
+    "img_alt": "Mary (Nancy) Williams in her wheelchair in front of the whitewashed wall of Tŷ Mawr. A family photograph.",
+    "img_caption": ("Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr — family photograph, "
+                    "from a family heirloom collection, disclosed 2026."),
     "agenda_date": "13 October 2026",
     "agenda_item": "To receive a request from Mr SB in relation to the following matters:",
     "burials": ("Whether the Council would consider, in due course, whether an interpretation board or a plaque near "
@@ -759,8 +760,8 @@ def site():
 <main id="top">
 <section class="hero">
   <figure>
-    <img src="{e(S['img'])}" width="1110" height="763" alt="Tŷ Mawr, a long two-storey farmhouse, shown with its front wall whitewashed. An edited illustration.">
-    <figcaption>{e(S['img_caption'])} {e(S['img_credit'])} <a href="{e(S['img_original'])}">Original photograph</a>.</figcaption>
+    <img src="{e(S['img'])}" width="{S['img_w']}" height="{S['img_h']}" alt="{e(S['img_alt'])}">
+    <figcaption>{e(S['img_caption'])}</figcaption>
   </figure>
   <h1>{e(S['title'])}<span>{e(S['when'])}</span></h1>
   <p class="kicker">Tŷ Mawr · Great House Farm · Item 10</p>
@@ -867,7 +868,7 @@ blockquote{margin:8px 0;padding:4px 0 4px 14px;border-left:4px solid var(--red);
 .foot .sig{font-style:italic}
 .small{font-size:13px}
 :focus-visible{outline:3px solid var(--red);outline-offset:2px}
-@media (min-width:900px){.hero img{max-height:56vh;object-fit:cover}.segs{padding:0}.hero h1,.kicker{margin-left:0;margin-right:0}main{padding:0 0 24px}.hero figure{border-radius:0 0 14px 14px;overflow:hidden}}
+@media (min-width:900px){.hero img{max-height:56vh;object-fit:cover;object-position:50% 38%}.segs{padding:0}.hero h1,.kicker{margin-left:0;margin-right:0}main{padding:0 0 24px}.hero figure{border-radius:0 0 14px 14px;overflow:hidden}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 @media print{.bar,.menu,.scrim,.back{display:none!important}.seg{break-inside:auto;border:0}}
 """
