@@ -14,6 +14,7 @@ import { FOOT } from "../estate/build.mjs"; // estate-wide footer (no wiki link)
 
 export function themePage(t) {
   if (t.includes('href="/assets/theme.css"')) return null;
+  if (t.includes('/assets/p2.css')) return null; // PRINCE2 7 pages (21 Oct 2026) carry their own stylesheet
   const h = t.indexOf("</head>"); if (h < 0) return null;
   let head = t.slice(0, h), rest = t.slice(h);
   head = head.replace(/<style>[\s\S]*?<\/style>/, HEAD);
