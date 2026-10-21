@@ -4,7 +4,7 @@
   <!-- Release 0.1.0: unified Text / Email navigation; archive media served from the existing R2 binding. -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DATRO Wayback Archive</title>
+  <title>The Wayback Vault</title>
   <style>
     * { box-sizing: border-box; }
 
@@ -138,8 +138,7 @@
 <script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.0.3"></script>
 </head>
 <body>
-  <p class="main-title" id="main-title">DATRO Wayback Archive 0.0.0.18</p>
-  <p style="text-align:center;margin:0.1rem 0 0.5rem"><a href="/ebooks/" style="color:#fca;font-weight:bold;font-size:0.9rem;text-decoration:none">📚 E-book editions: every version, plus a free archive edition</a></p>
+    <p style="text-align:center;margin:0.1rem 0 0.5rem"><a href="/ebooks/" style="color:#fca;font-weight:bold;font-size:0.9rem;text-decoration:none">📚 E-book editions: every version, plus a free archive edition</a></p>
 
   <div class="tabs" id="tabs"></div>
   <div id="all-search-wrapper" style="display:none"><input type="text" id="all-search" placeholder="Search all files..."></div>
@@ -150,7 +149,7 @@
   <div class="pagination" id="pagination"></div>
 
   <footer style="text-align:center;padding:1rem;font-size:0.75rem;color:#666;border-top:1px solid rgba(255,255,255,0.1);margin-top:2rem">
-    &copy; 2026 DATRO Consortium.
+    &copy; 2026 DATRO Consortium. <span id="main-title" class="wb-ver"></span>
   </footer>
 
   <script data-cfasync="true">
@@ -192,8 +191,8 @@
             if (wb) {
               const ver = wb.tag_name.replace('wayback-', '');
               const titleEl = document.getElementById('main-title');
-              if (titleEl) titleEl.textContent = `DATRO Wayback Archive ${ver}`;
-              document.title = `DATRO Wayback Archive ${ver}`;
+              if (titleEl) titleEl.textContent = `· Archive ${ver}`;
+              document.title = 'The Wayback Vault';
               return;
             }
           }
@@ -202,8 +201,8 @@
         try {
           const ver = (await xhrGet('version.txt')).trim();
           const titleEl = document.getElementById('main-title');
-          if (titleEl) titleEl.textContent = `DATRO Wayback Archive ${ver}`;
-          document.title = `DATRO Wayback Archive ${ver}`;
+          if (titleEl) titleEl.textContent = `· Archive ${ver}`;
+          document.title = 'The Wayback Vault';
         } catch(e) {}
       })();
 
