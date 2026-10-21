@@ -639,7 +639,7 @@ function upcoming(lanes: Lane[], todayStr: string): Up[] {
       const t = ms(s.date);
       const now = s.status === "pending" && t <= t0;
       if (now || (t >= t0 && t <= t1))
-        out.push({ date: now ? todayStr : s.date, lane, kind: "action due", what: `${s.label}${lane.lead?.ref ? ` (${lane.lead.ref})` : ""}`, url: s.link ?? lane.lead?.url ?? null, dueNow: now });
+        out.push({ date: now ? todayStr : s.date, lane, kind: "action due", what: `${s.label}${lane.lead ? ` · ${lane.lead.title}` : ""}${lane.lead?.ref ? ` (${lane.lead.ref})` : ""}`, url: s.link ?? lane.lead?.url ?? null, dueNow: now });
     }
   }
   return out.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : a.kind === b.kind ? a.lane.name.localeCompare(b.lane.name) : a.kind === "action due" ? -1 : 1));
