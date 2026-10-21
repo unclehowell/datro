@@ -43,7 +43,7 @@ for pid in ids:
     walk(cs); lines.append("")
     time.sleep(0.3)
 if total == 0: lines.append("No public comments on the site yet.")
-lines += ["", "Posted by you and want it removed? Email sales@bucklerfamily.estate.", "Our case, prospective. Not a finding of any court.", "— Sion's Tab agent"]
+lines += ["", "Posted by you and want it removed? Email sales@bucklerfamily.estate.", "", "— Sion's Tab agent"]
 os.makedirs(os.path.join(root, "text", "facebook"), exist_ok=True)
 fn = "comments-mirror - fb.bucklerfamily.estate - EN - V1.0.0.00.txt"
 with open(os.path.join(root, "text", "facebook", fn), "w") as f: f.write("\n".join(lines) + "\n")

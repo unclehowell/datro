@@ -62,7 +62,7 @@ Items live in the part files (`/artifacts/items-N.json`, each `{ "schema", "part
 - Match items by `id`; de-duplicate new material by `source.gmail_message_id` + `files[].original_filename`, or by `files[].sha256`.
 - Writers other than the sweep: append items with the next free `WB-` number, never edit another item's `id`, `files[].path` or `sha256`; fetch + rebase before every push; never force-push; commit messages end "— Sion's Tab agent".
 - Privacy: the repo is public. No subject-access (SAR) disclosures, private phone numbers, private home addresses, personal ID documents, or the account holder's own name in public text. Such items are listed with `status` as usual, `files: []`, and `note: "held privately"`.
-- Wording: plain, neutral; dates from the document; "Our case, prospective. Not a finding of any court."
+- Wording: plain, neutral; dates from the document; ""
 
 
 RULE (Sion, 21 Oct 14:12): in the email archive, leave the account holder's name in email headers and signatures as in the originals. Do not redact it. This exception applies to the email archive only.
