@@ -49,3 +49,27 @@ td a{color:var(--fg);word-break:break-all}
 dialog a{color:var(--fg)}
 
 .why{font-size:13px;color:#cfcfcf;border-left:3px solid var(--gold);padding:4px 8px;margin:8px 0}.why a{color:var(--gold)}
+
+/* v2.0.0 contacts since 2016 */
+.seg{display:flex;margin:0 0 8px;border:1px solid #444}
+.seg button{flex:1;font:inherit;font-size:13px;letter-spacing:.05em;text-transform:uppercase;padding:9px 6px;background:transparent;color:var(--mut);border:0;cursor:pointer}
+.seg button+button{border-left:1px solid #444}
+.seg button.on{background:#fff;color:#000}
+.d.o{background:transparent;border:2px solid var(--gold);width:11px;height:11px}
+.d.nr{background:transparent;border:1.5px dashed #bbb;width:12px;height:12px}
+#chart circle.nr{fill:none;stroke:#cfcfcf;stroke-width:1.2;stroke-dasharray:2 2;pointer-events:none}
+#chart circle.early{fill:none;stroke:var(--gold);stroke-opacity:.35;stroke-width:1;pointer-events:none}
+#chart circle.dot.yearly{opacity:.55}
+#chart .tick.sm{font-size:9px}
+#chart .grid.yr{stroke:#3a3a3a}
+.tag.nr{border:1px dashed #bbb;color:#ddd}
+.ttl{font-weight:600}
+ol.tl{list-style:none;margin:4px 0;padding:0;font-size:13px;color:#cfcfcf}
+ol.tl li{display:flex;align-items:center;gap:7px;padding:3px 0;border-bottom:1px solid var(--line)}
+ol.tl li.cur{color:#fff;font-weight:600}
+
+details.key{margin:8px 0 2px}
+details.key>summary{cursor:pointer;list-style:none;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--mut);padding:6px 0;border-bottom:1px solid var(--line)}
+details.key>summary::-webkit-details-marker{display:none}
+details.key>summary::after{content:" ▾"}
+details.key[open]>summary::after{content:" ▴"}
