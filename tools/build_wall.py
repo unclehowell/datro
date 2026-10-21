@@ -21,7 +21,8 @@ spec = importlib.util.spec_from_file_location("build_social", os.path.join(ROOT,
 BS = importlib.util.module_from_spec(spec); spec.loader.exec_module(BS)
 e = lambda s: html.escape(str(s), quote=True)
 BASE = BS.BASE
-TODAY = dt.date.today()
+from zoneinfo import ZoneInfo
+TODAY = dt.datetime.now(ZoneInfo("Europe/London")).date()   # the family's day, not the box's UTC day
 BANNED = re.compile(r"\b(thief|thieves|stolen|looted|criminal|racket|lawfare|fraud\w*|says|claims|claimed|claiming|according to|alleged\w*|allegation\w*|hearsay|unverified)\b|(?<!Coed )\bSion\b"
                     r"|family[’']?s? (account|position)|Branwen\s+Buckler|robin\s*hill|hywelapbuckler|7845|[\w.+-]+@[\w-]+\.[\w.]+|Not a finding|Our case|prospective", re.I)
 def ok(s): return bool(s) and not BANNED.search(s)
