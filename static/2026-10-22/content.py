@@ -18,7 +18,7 @@ MEETING = {
     "place": "Council Chamber, rear of Llandough War Memorial Hall, and on Zoom",
     "clerk": "Paul R. Egan, Clerk to the Council",
     "clerk_email": "clerk@llandough-cc.co.uk",
-    "updated": "14 October 2026",
+    "updated": "21 October 2026",
 }
 
 MISSION = "Serving our community, preserving our identity"
@@ -364,42 +364,49 @@ REGIMES = [
 ]
 
 STATEMENT_60 = (
-    "Chair, councillors, thank you. My family lived at Great House Farm, Tŷ Mawr, beside St Dochdwy's Church, from 1667 "
-    "until it was demolished at about 4am on 6 December 1988. The manorial courts sat in that house. A published study reports "
-    "1,026 early medieval burials from the ground beside it. In 1983 the farmhouse was registered to BP while my grandmother "
-    "lived in it; the courts decided possession, not ownership. Your own village history mentions none of this. Our research "
-    "has only started, and the records that would test it have not yet been produced. Tonight we ask four things: put our "
-    "statement on the record, make Tŷ Mawr a standing item with a named councillor, recommend a Senedd inquiry, and write in "
-    "support of disclosure. Your mission is preserving our identity. Tŷ Mawr is part of it. Thank you."
+    "Chair, councillors, thank you. Our family's case traces its connection to Great House Farm, Tŷ Mawr, to 1667; that "
+    "history remains contested, which is why the records matter. The house was demolished before dawn on 6 December 1988. "
+    "Heneb records the manorial courts of Llandough and Leckwith at Great House. A 1994 excavation in the wider area recorded "
+    "1,026 early-medieval burials, but their location within our parcel has not been established. The family lost the possession "
+    "proceedings, and the Court of Appeal rejected the adverse-possession argument. I am not asking this Council to overturn "
+    "that judgment. Please minute our statement, make Tŷ Mawr a standing item with a named councillor, support disclosure and "
+    "preservation, and recommend that the Senedd consider an independent inquiry. We are not seeking anyone's home. Tŷ Mawr "
+    "belongs in our community's history. Thank you."
 )
 
 
 STATEMENT = [
-    "Chair, councillors, thank you for placing this on the agenda.",
-    "My grandmother was Mary Williams of Great House Farm, Tŷ Mawr, beside St Dochdwy's Church. Our family's case is that we "
-    "lived in that house from 1667 until it was demolished at about four in the morning on 6 December 1988.",
-    "Item 10 describes a plaque and a mailing list. The subject is wider than that, so I will take it in short parts.",
-    "The house. Heneb's record says the manorial courts of Llandough and Leckwith sat at Great House. The Local Plan said its "
-    "buildings should be retained. It was never fully recorded before it came down.",
-    "The ground. A published study reports 1,026 burials from the early medieval cemetery excavated there in 1994, the largest "
-    "such population recovered in Wales. The monastery's exact site has never been established. Nothing on the ground marks any of it, "
-    "and the Council's own village history does not mention Great House.",
-    "My grandmother. For decades she said the house was hers. She refused every tenancy offered for it. In February 1983, while "
-    "she lived there, BP applied to register the farmhouse as its own title; she died that March. In 1987, while the appeal was "
-    "running, that title was merged into the fields.",
-    "The courts. They decided who could stay. The family lost. They did not decide who owned the house. The house came down the "
-    "morning after Cadw refused to list it, while our Strasbourg application was pending.",
-    "My truth. In my view, what happened in 1988 was at least an imperial, colonial act. "
-    "Our ancestral land and home were turned into some 20 houses. "
-    "To my family it feels as if our land has become something like a work camp. That is my truth, not a finding of any court.",
-    "The records. More than twenty bodies have been asked. Cadw's 1988 file is missing with no record of destruction. The Land "
-    "Registry's list of 43 documents does not include the 1969 deed BP's title rests on. The Ministry of Justice has not yet answered our MP.",
-    "Our research has only started. Nothing yet meets the threshold to reopen the case, and we do not claim it does. That is "
-    "why the records matter.",
-    "We ask for four things. Put our statement on the public record. Make Great House Farm a standing item, with a named "
-    "councillor. Recommend to the Senedd that an independent inquiry be considered. And write in support of disclosure and "
-    "preservation of the records. We also ask you to recognise what three generations of my family have been through. We are not seeking anyone's home at Church View Close.",
-    "Your mission is “Serving our community, preserving our identity”. Tŷ Mawr is part of that identity. Thank you.",
+    "Chair, councillors, thank you for allowing me to speak on Item 10.",
+    "My grandmother was Mary Williams of Great House Farm, Tŷ Mawr. Our family's case is that its connection to the house goes "
+    "back to 1667. A 1958 newspaper report and Mary's later statement recorded that claim, but the full chain of occupation and "
+    "title remains contested. The house was demolished before dawn on 6 December 1988.",
+    "I am not asking this Council to decide a land-title dispute or to find that anyone acted improperly. I am asking for the "
+    "surviving records to be disclosed, preserved and examined, and for Tŷ Mawr to be acknowledged in the history of this community.",
+    "First, the heritage. Heneb's Historic Environment Record says the manorial courts of Llandough and Leckwith were held at "
+    "Great House. The local plan called for the buildings to be retained, but the house was demolished before a complete record "
+    "of the building was made.",
+    "A published archaeological study reports 1,026 early-medieval burials from an excavation in the wider area in 1994. I am "
+    "not claiming that this proves the burials lay within our particular parcel, or that the monastery's exact location is known. "
+    "These records make a better account of the wider landscape worthwhile. The Council's published village history does not "
+    "mention Great House or its demolition.",
+    "Second, my grandmother's home and the property records. In February 1983, while Mary was still living there, BP applied to "
+    "register the farmhouse under a separate title. She died the following month. In February 1987, that title was amalgamated "
+    "with the adjoining fields while the litigation was continuing. These events should be traced through the original deeds, "
+    "plans and registration papers.",
+    "The family lost the possession proceedings. The Court of Appeal rejected our adverse-possession argument, including in "
+    "light of the 1974 letters. I respect that judgment, and I am not asking this Council to overturn it or determine ownership. "
+    "My present questions concern the wider conveyance and registration history. They should be tested against the original "
+    "records, not assumed in our favour.",
+    "Third, disclosure. I have made specific records requests to more than twenty bodies. Cadw has supplied two photographs, "
+    "but a complete 1988 assessment file and a destruction record have not been produced. The Land Registry's schedule of 43 "
+    "documents does not identify the 1969 deed recited in the title history. A missing record does not, by itself, prove "
+    "concealment. It does warrant a clear account of what searches were made, what survives and what cannot be found.",
+    "So I ask for four practical steps: receive and minute my statement and pack; make Great House Farm / Tŷ Mawr a standing "
+    "agenda item with a named councillor; write to the relevant record-holding bodies in support of disclosure and preservation; "
+    "and recommend that the Senedd consider an independent inquiry.",
+    "We are not seeking anyone's home at Church View Close. We ask for a fair examination of the records and recognition of "
+    "Tŷ Mawr in our community's history.",
+    "Your mission is “Serving our community, preserving our identity”. Tŷ Mawr belongs in that history. Thank you.",
 ]
 
 
@@ -512,7 +519,7 @@ BRIEF_INTRO = ("Nine compartments, in order. Say the line in bold, then move on.
 
 BRIEF = [
     {"id": "C1", "title": "Who we are",
-     "say": "We are the Williams–Buckler family of Tŷ Mawr, the Great House of Llandough. Our family lived there for 320 years.",
+     "say": "Our family's case traces its connection to Tŷ Mawr to 1667, a date reported in the 1958 press and in Mary's later statement. The full chain of occupation and title remains contested.",
      "record": [
          ("Heneb's Historic Environment Record says the manorial courts of Llandough and Leckwith were held at Great House.", "rec"),
          ("Mary Williams's statement of about 1974, and the 1974 press, record the family at Great House since 1667.", "fam"),
@@ -530,9 +537,9 @@ BRIEF = [
      "refs": ["Wiki: The Williams / Buckler Family", "Wiki: Mary Williams's Statement (c. 1974)", "Heneb HER GGAT02038s"]},
 
     {"id": "C2", "title": "What lies there",
-     "say": "The ground at Church View Close held one of the great early Christian cemeteries of Wales. Nothing marks it.",
+     "say": "A published study reports 1,026 early-medieval burials from an excavation in the wider area in 1994. It has not been shown that those burials lay within our particular parcel, and the monastery's exact site remains unestablished.",
      "record": [
-         ("A published study reports 1,026 burials from the early medieval cemetery excavated there in 1994, the largest such population recovered in Wales.", "rec"),
+         ("A published study reports 1,026 early-medieval burials from the 1994 excavation in the wider area; it has not been shown that they lay within the family's particular parcel.", "rec"),
          ("St Dochdwy's monastery is attested from the 7th century. Heneb says its exact site has not been established.", "rec"),
          ("Medieval pottery was found on the slope beside the house in 1962–63. The Roman villa south of the church is a separate site.", "rec"),
          ("Published sources record Peerless Jim Driscoll's first fight in a barn at Great House Farm.", "rec"),
@@ -546,7 +553,7 @@ BRIEF = [
      "refs": ["Holbrook and Thomas, Medieval Archaeology 49 (2005)", "Wiki: Archaeology and Heritage", "Stead and Williams, Wales and its Boxers (2008)"]},
 
     {"id": "C3", "title": "Mary's parcel",
-     "say": "For decades Mary Williams said the house was hers. She was treated as a tenant, and in 1983 her home was registered to BP while she lived in it.",
+     "say": "For decades Mary Williams said the house was hers. In February 1983, BP applied to register the farmhouse under a separate title while she lived there; she died the following month. The title was amalgamated with the adjoining fields in February 1987.",
      "record": [
          ("April 1974: Mary opened the house to the public and told the Daily Telegraph it was hers. Her solicitors said she had a valid claim.", "rec"),
          ("She refused the tenancies offered for the house in 1959 and 1965.", "rec"),
@@ -562,11 +569,11 @@ BRIEF = [
                 ("Per the Buckler case: notice of registration reached them only after Mary's death.", "fam")],
      "against": [('The 1916 tenancy described the farm as one holding, and later documents repeated that wording.', 'rec'), ('HM Land Registry says there is no evidence of a mistake; its stage-two decision says the title is registered correctly. That decision is with the Independent Complaints Reviewer.', 'rec')],
      "if_asked": ("“The register is conclusive.”",
-                  "The register can be corrected for mistake, and a person in actual occupation in 1982 had protected rights."),
+                  "I accept the register is important. I am asking for the supporting deeds and plans, and a reasoned response from HM Land Registry; I am not asking this Council to decide whether the register is wrong."),
      "refs": ["Wiki: The Two Parcels", "Wiki: Land Registry Titles", "Wiki: Anomalies A-008 to A-012, A-025, A-026", "Wiki: 1987 HMLR amalgamation during appeal"]},
 
     {"id": "C4", "title": "The courts",
-     "say": "The family lost every round on who could stay. No court has ruled on who owned the house.",
+     "say": "The family lost the possession proceedings. The Court of Appeal rejected the adverse-possession argument and considered the 1974 letters. I am not asking the Council to retry that case; I am asking for help with disclosure and a full documentary account.",
      "record": [
          ("High Court 1986 and Court of Appeal 1987 decided possession. The House of Lords refused leave in 1988; Strasbourg found the application inadmissible in 1989.", "rec"),
          ("The Court of Appeal counted the possession period from a 1955 order.", "rec"),
@@ -577,7 +584,7 @@ BRIEF = [
      "tested": [("Procedural unfairness, court error and non-disclosure. Reopening needs new primary evidence; the Lords papers are not yet read.", "open")],
      "against": [('The Court of Appeal found the 1974 letters made later occupation permissive, whether or not Mary accepted them.', 'rec'), ("Strasbourg held the interference with William Buckler's home lawful and justified.", 'rec')],
      "if_asked": ("“The courts have decided this.”",
-                  "They decided possession. The family's title case on the house parcel has not been tried."),
+                  "They ruled against the family's possession case, including by considering the 1974 letters, and the Strasbourg application was declared inadmissible. I accept those outcomes. My present request is for records to be disclosed and examined, not for this Council to retry the case."),
      "refs": ["BP Properties Ltd v Buckler [1987] EWCA Civ 2", "Wiki: BP v Buckler, Scope, Decided and Undecided", "Wiki: Potential Miscarriage of Justice register"]},
 
     {"id": "C5", "title": "The dispossession",
@@ -596,7 +603,7 @@ BRIEF = [
      "refs": ["Wiki: 1988, Possession and Demolition", "Press transcripts GHF-E090-N07 to N15"]},
 
     {"id": "C6", "title": "The heritage erased",
-     "say": "A Welsh manor house beside an early Christian site was cleared, and the official record was left saying almost nothing.",
+     "say": "Great House was demolished on 6 December 1988, the day after Cadw refused listing. The local plan called for retention. Cadw has supplied two photographs, but a complete assessment file and a destruction record have not been produced.",
      "record": [
          ("The Local Plan said the buildings should be retained. GGAT's 1989 report described the farmhouse as a “county treasure”.", "rec"),
          ("Cadw refused to list it on 5 December 1988. No assessment file or destruction record has been produced.", "rec"),
@@ -608,11 +615,11 @@ BRIEF = [
                 ("Whether the 1990 evaluation was adequate on what was known then.", "open")],
      "against": [('GGAT disclosed its dual role in 1990, recommended recording and protection, and did not advise demolition.', 'rec'), ('Cadw said in 1988 that the house was not of sufficient architectural merit to list.', 'rec')],
      "if_asked": ("“Missing records prove nothing.”",
-                  "Agreed, on their own. These are files public bodies had a duty to keep, and they should account for the gaps."),
+                  "Agreed. Missing records alone do not prove wrongdoing. I ask the bodies concerned to explain what was searched, what survives and what cannot be found."),
      "refs": ["Wiki: Anomalies A-036 to A-052, PL-002 to PL-008", "Wiki: Missing Records M-018 to M-028"]},
 
     {"id": "C7", "title": "The records wall",
-     "say": "More than twenty bodies have been asked for the records over eighteen months. What would settle the questions has not yet been produced.",
+     "say": "More than twenty bodies have received specific records requests over eighteen months. Several identified records remain outstanding; their absence alone does not prove concealment.",
      "record": [
          ("54 records identified as missing, withheld or not yet produced.", "rec"),
          ("The Ministry of Justice has not yet answered our MP. The Ministry of Defence will neither confirm nor deny whether it holds certain records.", "rec"),
@@ -622,7 +629,7 @@ BRIEF = [
      "tested": [("Fraud, deliberate concealment and improper government involvement are not established. Disclosure is the test, whichever way it falls.", "open")],
      "against": [("Several bodies have disclosed material: the Royal Commission, Museum Wales, Cadw's photographs and the Land Registry schedule.", 'rec'), ('A missing record is not, on its own, proof of concealment.', 'rec')],
      "if_asked": ("“Isn't this a fishing expedition?”",
-                  "Every request names a specific record. The registers list them one by one."),
+                  "Each request identifies a record or a bounded class of records and seeks a recorded search, not a general trawl. I accept that several bodies have already disclosed material."),
      "refs": ["Wiki: Missing Records Register", "Wiki: Records Access Chronology", "dartboard.bucklerfamily.estate"]},
 
     {"id": "C8", "title": "Rights, identity, public interest",
@@ -641,7 +648,7 @@ BRIEF = [
      "refs": ["Hansard, 22 May 1980", "Buckler v United Kingdom (14464/88)", "Wiki: Q&A, Human Rights and Public Law"]},
 
     {"id": "C9", "title": "What we ask",
-     "say": "Put it on the record. Make it a standing item. Recommend an independent inquiry. Support disclosure, and the family. We are not seeking anyone's home at Church View Close.",
+     "say": "Please minute our statement and pack; make Tŷ Mawr a standing item with a named councillor; support disclosure and preservation; and recommend that the Senedd consider an independent inquiry. We are not seeking anyone's home at Church View Close.",
      "record": [], "tested": [],
      "if_asked": ("“What can a community council do?”",
                   "Record it, write letters, recommend an inquiry, and keep it on the agenda. That is how this starts."),
@@ -651,8 +658,8 @@ BRIEF = [
 
 # ---- Provenance, corrections and accessibility (for later scrutiny) ----
 VERSION = {
-    "version": "4.3",
-    "date": "14 October 2026",
+    "version": "4.4",
+    "date": "21 October 2026",
     "prepared_by": "Sion Buckler, grandson of Mary Williams, for the Williams–Buckler family",
     "method": ("Drafted with AI assistance from the family's public Wiki registers, its correspondence log and published "
                "sources, then checked and approved by the family. Every statement carries a label: on record, Buckler case "
