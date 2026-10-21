@@ -1,14 +1,14 @@
 /* social.css — farmbook, the Great House Farm story as a social feed (mobile-first, 390px). Own name and colours; no third-party brand marks. — Sion's Tab agent */
-:root{--bg:#f0f2f5;--card:#fff;--ink:#1c1e21;--muted:#65676b;--line:#dadde1;--blue:#1d5fa8;--blue2:#e7f0fb;--bub:#f0f2f5}
+:root{--bg:#f0f2f5;--card:#fff;--ink:#050505;--muted:#65676b;--line:#ced0d4;--fbb:#1877f2;--fbb2:#e7f3ff;--bub:#f0f2f5;--sb-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow-x:hidden}
-a{color:var(--blue)}
+a{color:var(--fbb)}
 img,video{max-width:100%;display:block}
 .skip{position:absolute;left:-999px;top:0;background:#fff;padding:8px;z-index:20}.skip:focus{left:8px}
 .muted{color:var(--muted)}
 .sb-sticky{position:sticky;top:0;z-index:10}
-.sb-top{display:flex;align-items:center;justify-content:space-between;gap:8px;height:52px;padding:0 10px 0 14px;background:var(--blue);color:#fff}
+.sb-top{display:flex;align-items:center;justify-content:space-between;gap:8px;height:56px;padding:0 10px 0 14px;background:var(--fbb);color:#fff;box-shadow:0 1px 2px rgba(0,0,0,.2)}
 .sb-brand{color:#fff;text-decoration:none;font-weight:800;font-size:22px;letter-spacing:-.5px}
 .sb-nav{display:flex;align-items:center;gap:2px}
 .sb-nav>a,.sb-menu>summary{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;color:#fff;cursor:pointer;list-style:none}
@@ -26,10 +26,10 @@ img,video{max-width:100%;display:block}
 .sb-intro p{margin:0 0 10px;color:var(--muted);font-size:14px}
 .sb-strip{display:flex;gap:10px;overflow-x:auto;padding:4px 0 8px;scrollbar-width:none}.sb-strip::-webkit-scrollbar{display:none}
 .st{flex:0 0 68px;text-align:center;text-decoration:none;color:var(--ink);font-size:11px;line-height:1.2}
-.st img{width:56px;height:56px;border-radius:50%;object-fit:cover;margin:0 auto 4px;border:2px solid var(--blue);padding:2px;background:#fff}
+.st img{width:56px;height:56px;border-radius:50%;object-fit:cover;margin:0 auto 4px;border:2px solid var(--fbb);padding:2px;background:#fff}
 .st span{display:block;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 .sb-years{display:flex;gap:6px;overflow-x:auto;padding:2px 0;scrollbar-width:none}.sb-years::-webkit-scrollbar{display:none}
-.sb-years a{flex:0 0 auto;padding:6px 12px;border-radius:16px;background:var(--blue2);color:var(--blue);text-decoration:none;font-weight:600;font-size:13px}
+.sb-years a{flex:0 0 auto;padding:6px 12px;border-radius:16px;background:var(--fbb2);color:var(--fbb);text-decoration:none;font-weight:600;font-size:13px}
 .sb-era{margin:16px 14px 8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);scroll-margin-top:110px}
 .sp{background:var(--card);margin:0 0 10px;padding:12px 0 4px;scroll-margin-top:100px}
 .sp-h{display:flex;gap:10px;align-items:center;padding:0 14px 8px}
@@ -51,7 +51,7 @@ img,video{max-width:100%;display:block}
 .sp-src summary{display:inline-block;cursor:pointer;color:var(--muted);font-weight:600;padding:4px 10px;border-radius:14px;background:var(--bub);list-style:none}
 .sp-src summary::-webkit-details-marker{display:none}
 .sp-src summary::before{content:"ⓘ ";}
-.sp-src[open] summary{background:var(--blue2);color:var(--blue)}
+.sp-src[open] summary{background:var(--fbb2);color:var(--fbb)}
 .sp-src p{margin:6px 0;overflow-wrap:anywhere}
 .sp-note{color:var(--muted)}
 .acts{border-top:1px solid var(--line);margin:4px 14px 0}
@@ -91,3 +91,39 @@ h2.pf-h#posts,h2.pf-h#comments{margin:6px 14px 8px}
 .sb-foot{max-width:680px;margin:0 auto;padding:16px 14px 40px;font-size:12.5px;color:var(--muted)}
 .sb-foot p{margin:0 0 6px}
 :focus-visible{outline:3px solid #f7b500;outline-offset:2px}
+
+/* ---- blue social-feed look restored (21 Oct 2026). The shared estate shell (ghf-theme.css / basecamp.js) shows light sites
+   inverted in its night mode, sets this site's --blue to the estate hue and swaps the type to thin uppercase Barlow. farmbook keeps
+   its own light blue look in both modes; the shared header bars above it keep their own colours. — Sion's Tab agent */
+html.ghf-inv{filter:none!important}
+html.ghf-inv :is(img,video,canvas,iframe,embed,object,svg image,.ghf-ui,.ghf-bgimg,[data-ghf-keep]){filter:none!important}
+html body,html[data-ghf-native] body,html[data-ghf-native]:not(.ghf-inv) body{background-color:var(--bg)!important;color:var(--ink)}
+html[data-ghf-native]:not(.ghf-inv){background-color:var(--bg)!important}
+.ghf-glow{display:none!important}
+:is(.sb-sticky,.sb-main,.sb-foot),:is(.sb-sticky,.sb-main,.sb-foot) :is(p,li,a,span,strong,b,em,small,button,input,summary,figcaption,label,div,time,nav,header,footer,h1,h2,h3,h4){font-family:var(--sb-font)!important}
+:is(.sb-sticky,.sb-main,.sb-foot) :is(h1,h2,h3,h4):not(#ghf-x){text-transform:none!important;letter-spacing:normal!important;font-weight:700!important}
+.sb-main .sb-era:not(#ghf-x){text-transform:uppercase!important;letter-spacing:.06em!important;font-weight:600!important}
+@media (max-width:480px){:is(.sb-intro h1,.pf-id h1):not(#ghf-x){font-size:21px!important}.sp-t:not(#ghf-x){font-size:17px!important}.pf-h:not(#ghf-x){font-size:17px!important}.sb-h1:not(#ghf-x){font-size:20px!important}.sb-era:not(#ghf-x){font-size:13px!important}}
+.sp{border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,.2);margin:0 8px 12px}
+.sb-intro{border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,.2);margin:0 8px 12px}
+.sb-h1,.pf-card,.pf-c,.sb-pn{border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,.2);margin-left:8px;margin-right:8px}
+.sp-n{font-size:15px}
+.sp[data-kind="announcement"]{border-top:4px solid #8a8d91}
+.sp-recon{margin:0 14px 6px;font-size:12px;color:var(--muted);font-style:italic}
+.sp-shares{margin:2px 14px 0;padding:4px 0 2px}
+.sp-sc{margin:0 0 4px;font-size:13px;color:var(--muted)}
+.sh{display:flex;align-items:center;gap:8px;padding:4px 0;color:var(--ink);text-decoration:none;font-size:13.5px}
+.sh img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid var(--line);background:#fff}
+.sh:hover strong{text-decoration:underline}
+.sq-flag{margin:2px 12px 0;font-size:12px;color:#8a5a00}
+.sq-src{margin:2px 12px 4px;font-size:12px}
+.sq-src summary{cursor:pointer;color:var(--muted);font-weight:700;list-style:none;display:inline}
+.sq-src summary::-webkit-details-marker{display:none}
+.sq-src p{margin:4px 0;overflow-wrap:anywhere;color:var(--muted)}
+.pf-id{background:linear-gradient(transparent 44px,var(--card) 44px)}
+.pf-av{border-color:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.sb-top.ghf-hdr:not(#ghf-x),.sb-top.ghf-hdr-edge:not(#ghf-x){background:var(--fbb)!important;border-bottom:0!important}
+.sb-main .ghf-btn:not(#ghf-x){background:var(--fbb)!important;color:#fff!important;border:0!important;border-radius:6px!important;text-transform:none!important;letter-spacing:normal!important;font-weight:600!important}
+.sb-main .ghf-ghost:not(#ghf-x){background:#e4e6eb!important;color:var(--ink)!important;border:0!important;border-radius:6px!important;text-transform:none!important;letter-spacing:normal!important;font-weight:600!important}
+.ghfc-btn:not(#ghf-x){background:var(--fbb)!important;color:#fff!important}.ghfc-btn:not(#ghf-x) svg{stroke:#fff!important}
+.pf-cover img:not(#ghf-x){width:100%!important;max-width:none!important;height:100%!important;object-fit:cover}

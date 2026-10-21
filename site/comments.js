@@ -176,7 +176,7 @@
     }
     more.addEventListener("click", loadAll);
     box.appendChild(more); box.appendChild(list); box.appendChild(form);
-    var nt = el("p", "fbc-note"); nt.innerHTML = NOTE.replace(/&/g, "&amp;").replace(/</g, "&lt;") + ' No sign-in; we keep your display name, comment and time, no email or IP. <a href="https://bucklerfamily.estate/privacy/#comments">Privacy</a> · <a href="/api/">API for AI agents</a>';
+    var nt = el("p", "fbc-note"); nt.innerHTML = NOTE.replace(/&/g, "&amp;").replace(/</g, "&lt;") + ' No sign-in; we keep your display name, comment and time, no email or IP. <a class="ln" href="https://bucklerfamily.estate/privacy/#comments">Privacy</a> · <a class="ln" href="/api/">API for AI agents</a>';
     box.appendChild(nt); if (!single && !o.full) { nt.hidden = true; form._ta.addEventListener("focus", function () { nt.hidden = false; }); }
     if (old) { old.parentNode.insertBefore(bar, old); old.parentNode.replaceChild(acts, old); } else { a.appendChild(bar); a.appendChild(acts); }
     acts.parentNode.insertBefore(box, acts.nextSibling);

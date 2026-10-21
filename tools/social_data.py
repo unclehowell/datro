@@ -28,10 +28,12 @@ OUTLETS = {
 }
 
 PEOPLE = {
+ "williams-buckler-family": dict(name="Williams / Buckler family", kind="Family page", about="Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth. The family archive’s own page. Its posts are written for this archive from the record each one cites.",
+     avatar="img/crest.svg", avatar_credit="The family crest drawn for this archive (the farmhouse)", color="#1877f2"),
  "william-buckler": dict(name="William (Billy) Buckler", about="Farmer at Great House Farm (Tŷ Mawr), Llandough; son of Mary (Nancy) Williams. In the papers as Bill or Billy Buckler. His comments here are his own words as the papers printed them.",
      avatar="img/social/william-avatar.webp", avatar_credit="From the chainsaw report photograph, April 1988",
      cover="img/social/william-cover-tractor.webp", cover_credit="Tractor at Great House Farm (family photograph, date not recorded; Wayback Vault)"),
- "mary-williams": dict(name="Mary (Nancy) Williams", about="Mary (Nancy) Williams, formerly Buckler, of Great House Farm (Tŷ Mawr), Llandough. Born 10 August 1913; died 1983. In the papers as Mrs M. D. Buckler, Mrs Mary Doreen Buckler and Mrs Mary Williams. Her comments here are her own words as the papers printed them.",
+ "mary-williams": dict(name="Mary (Nancy) Williams", about="Mary (Nancy) Williams, formerly Buckler, of Great House Farm (Tŷ Mawr), Llandough. Born 10 August 1913. In the papers as Mrs M. D. Buckler, Mrs Mary Doreen Buckler and Mrs Mary Williams. Her comments here are her own words as the papers printed them.",
      avatar="img/social/mary-avatar.webp", avatar_credit="Family photograph",
      cover="img/social/mary-cover-farmhouse.webp", cover_credit="The farmhouse, Cadw survey photograph, 29 July 1988"),
 }
@@ -40,12 +42,6 @@ PEOPLE = {
 POSTS = []
 def P(**k): POSTS.append(k)
 
-P(id="n-1864-12-30-amy-williams", outlet="cardiff-times", date="1864-12-30", when="30 December 1864", kind="notice", headline="Deaths",
-  body=["On the 23rd instant, at Llandough, near Cardiff, Amy, relict of the late Mr. John Williams, Great House farm, aged 65 years."],
-  source=dict(cite="Cardiff Times, 30 December 1864, death notice. Legal Wiki EV-0246.", ev="EV-0246", links=[("Welsh Newspapers Online","https://newspapers.library.wales/view/3383386/3383391/14/"),("EV-0246","@EV-0246")]))
-P(id="n-1864-12-30-amy-williams-cmg", outlet="cardiff-merthyr-guardian", date="1864-12-30", when="30 December 1864", kind="notice", headline="Deaths",
-  body=["WILLIAMS.—Dec. 23, at Llandough, near Cardiff, Amy relict of the late Mr. John Williams, Great House farm, aged 65."],
-  source=dict(cite="Cardiff and Merthyr Guardian, 30 December 1864, death notice. Legal Wiki EV-0246.", ev="EV-0246", links=[("Welsh Newspapers Online","https://newspapers.library.wales/view/3094324/3094329/21/"),("EV-0246","@EV-0246")]))
 P(id="n-1891-11-farmyard-theft", outlet="unidentified", date="1891-11-20", when="November 1891", kind="article", headline="Llandough. [Reported] Farmyard Theft.",
   body=["Robert Williams, a mason’s labourer, was on Tuesday charged (before Mr. John Duncan and Mr. J. S. Corbett) at the offices of the clerk to the Penarth magistrates, High-street, Cardiff, with stealing three geese, the property of Mr. John Williams, Great House Farm, Llandough, on November 11, 1891.—Sergeant Ferris, of the Cardiff Borough Police Force, deposed that he saw the prisoner early on the morning in question in Clive-street, Grangetown, carrying the geese on his back. He at once started after Williams, who dropped the geese and got away.—Police-constable Morgan, of the county constabulary, said he arrested the prisoner when he was leaving Cardiff Gaol on Monday. The prisoner, when charged with stealing the geese, replied, “All right.”—The prisoner was remanded until Monday at Penarth."],
   subs=["headline: “Alleged” → “[Reported]”"],
@@ -80,13 +76,14 @@ P(id="n-1957-10-09-mrs-buckler", outlet="western-mail", date="1957-10-09", when=
   source=dict(cite="Western Mail, 9 October 1957, p.6. British Newspaper Archive search-result text only. Legal Wiki EV-0242.", ev="EV-0242", links=[("EV-0242","@EV-0242")]))
 P(id="n-1958-05-07-leckwith-common", outlet="western-mail", date="1958-05-07", when="7 May 1958", kind="extract", headline="City wants common for play-field",
   body=["Mrs. Mary Doreen Buckler, of Great House Farm, Llandough, said she did not oppose the proposal so long as it applied only to playing fields. About 130 years ago Lord Bute allowed her family “a slice of land” which was now Leckwith Common."],
-  source=dict(cite="Western Mail, 7 May 1958, p.7 (Leckwith Common inquiry, 6 May 1958). British Newspaper Archive search-result text. Legal Wiki EV-0035.", ev="EV-0035", links=[("EV-0035","@EV-0035")]))
+  source=dict(cite="Western Mail, 7 May 1958, p.7 (Leckwith Common inquiry, 6 May 1958). British Newspaper Archive search-result text. Legal Wiki EV-0035; the order’s confirmation, London Gazette, 31 October 1958: EV-0287.", ev="EV-0035", links=[("EV-0035","@EV-0035"),("EV-0287 (London Gazette)","@EV-0287")]))
 P(id="n-1958-11-20-crichel-down", outlet="western-mail", date="1958-11-20", when="20 November 1958", kind="extract", headline="“It’s a Crichel Down …” woman farmer",
   body=["Mrs. M D. Buckler was objecting to further industrial development in the vicinity of her farm, Ty Mawr, Penarth Road, Llandough. Land farmed by her family since 1667 had been “wrongfully appropriated.”",
         "Mrs. Buckler [stated] that the water was cut off from her house and grounds for nearly 10 years by order of Western Ground Rents.",
-        "[Herd loss] This, she added, resulted in loss of a complete herd of Friesian cattle."],
-  comments=[("mary-williams","This is a Welsh case of Crichel Down."),("mary-williams","The Glamorgan County Council, Penarth Urban and Cardiff Rural Councils and Western Ground Rents have walked …")],
-  note="Read from search-result text only; the page image has not been seen. Her second comment breaks off where the snippet ends.",
+        "[Herd loss] This, she added, resulted in loss of a complete herd of Friesian cattle.",
+        "Mrs. Buckler maintained that the letting of these sites was “made over her head” by Western Ground Rents, who [stated] the ground as their property."],
+  comments=[("mary-williams","This is a Welsh case of Crichel Down."),dict(who="mary-williams", text="The Glamorgan County Council, Penarth Urban and Cardiff Rural Councils and Western Ground Rents have walked in and taken …", label="Quoted in this article", flag="Cut off after “taken”: the search-result text (OCR) ends there.")],
+  note="Read from search-result text only; the page image has not been seen. Her second comment breaks off after “taken”, where the search-result text (OCR) ends.",
   subs=["headline: “says” removed (shown as …)","body: “claimed” → “[stated]”"],
   source=dict(cite="Western Mail, Thursday 20 November 1958, p.7 (Glamorgan County Council planning committee, 19 November 1958). British Newspaper Archive search-result text. Legal Wiki EV-0037.", ev="EV-0037", links=[("EV-0037","@EV-0037")]))
 P(id="n-1974-04-16-open-day", outlet="daily-telegraph", date="1974-04-16", when="16 April 1974", kind="article", headline="‘Open day’ to save ancient Welsh house", byline="By Godfrey Francis",
@@ -310,3 +307,54 @@ P(id="n-1994-11-07-127-acres", outlet="south-wales-echo", date="1994-11-07", whe
 P(id="n-1995-04-22-green", outlet="south-wales-echo", date="1995-04-22", when="22 April 1995", kind="extract", headline="(search extract)",
   body=["… It enabled the council to pay contractors working on the nearby Great House Farm housing development to improve the grassed area …"],
   source=dict(cite="South Wales Echo, 22 April 1995 (British Newspaper Archive search-result text). Legal Wiki EV-0276.", ev="EV-0276", links=[("EV-0276","@EV-0276")]))
+
+# ---------- death announcements (Sion, 21 Oct 2026 07:31: no death dates on profiles; a family member's post announces each death,
+# the papers' items and people's words about it sit underneath as comments, and others share the post) ----------
+P(id="d-1864-12-23-amy-williams", outlet="williams-buckler-family", date="1864-12-23", when="23 December 1864", kind="announcement",
+  headline="Amy Williams",
+  body=["The Williams / Buckler family announces the passing of Amy Williams, relict of the late Mr. John Williams, Great House farm. She died at Llandough, near Cardiff, on 23 December 1864, aged 65."],
+  comments=[dict(who="cardiff-times", when="30 December 1864", label="Death notice", text="On the 23rd instant, at Llandough, near Cardiff, Amy, relict of the late Mr. John Williams, Great House farm, aged 65 years.",
+                 cite="Cardiff Times, 30 December 1864, death notice. Legal Wiki EV-0246.", links=[("Welsh Newspapers Online","https://newspapers.library.wales/view/3383386/3383391/14/"),("EV-0246","@EV-0246")]),
+            dict(who="cardiff-merthyr-guardian", when="30 December 1864", label="Death notice", text="WILLIAMS.—Dec. 23, at Llandough, near Cardiff, Amy relict of the late Mr. John Williams, Great House farm, aged 65.",
+                 cite="Cardiff and Merthyr Guardian, 30 December 1864, death notice. Legal Wiki EV-0246.", links=[("Welsh Newspapers Online","https://newspapers.library.wales/view/3094324/3094329/21/"),("EV-0246","@EV-0246")])],
+  shares=["cardiff-times","cardiff-merthyr-guardian"], recon=True,
+  source=dict(cite="Death notices in the Cardiff Times and the Cardiff and Merthyr Guardian, 30 December 1864. Legal Wiki EV-0246.", ev="EV-0246", links=[("EV-0246","@EV-0246")]))
+P(id="d-1908-john-williams", outlet="williams-buckler-family", date="1908-10-22", when="1908 (day and month not recorded)", dt="1908", kind="announcement",
+  headline="Mr. John Williams, Great House",
+  body=["The Williams / Buckler family announces the passing of Mr. John Williams, Great House, Llandough, in 1908."],
+  comments=[dict(who="barry-dock-news", when="23 October 1908", label="From “Court Leet at Llandough”", text="A vote of sympathy was passed with the family of the late Mr. John Williams, Great House, Llandough, for many years a juror of the court.",
+                 cite="Barry Dock News, 23 October 1908, p.3. Legal Wiki EV-0243.", links=[("Welsh Newspapers Online","https://newspapers.library.wales/view/4611107/4611110/29/"),("EV-0243","@EV-0243")]),
+            dict(who="mary-williams", when="c. 1974", label="From her statement", text="In the year 1908 my grandfather died and my father took over the farm.",
+                 cite="Mary (Nancy) Williams’s statement (c. 1974), as quoted on Legal Wiki EV-0243 (full transcription GHF-E196-01).", links=[("EV-0243","@EV-0243"),("Her statement","https://greathousefarmwiki.wordpress.com/testimony/mary-williams/")])],
+  shares=["barry-dock-news","mary-williams"], recon=True,
+  note="The day and month of his death are not in the record held; the court report of 23 October 1908 calls him “the late Mr. John Williams”.",
+  source=dict(cite="Barry Dock News, 23 October 1908, p.3 (EV-0243); Mary (Nancy) Williams’s statement, c. 1974.", ev="EV-0243", links=[("EV-0243","@EV-0243")]))
+P(id="d-1967-frederick-buckler", outlet="mary-williams", date="1967-01-01", when="1965–67 (the records differ: see below)", dt="1967", kind="announcement",
+  headline="Frederick Buckler",
+  body=["Mary (Nancy) Williams announces the passing of Frederick Buckler, aged 58.",
+        "His death is registered in the March quarter of 1967 (GRO death index, East Glamorgan 8b 364). The Court of Appeal gives “some time in the period 1965-67”; an estate paper gives December 1965. All three are shown; none is chosen."],
+  shares=["william-buckler"], recon=True,
+  source=dict(cite="GRO death index, March quarter 1967, East Glamorgan 8b 364 (FreeBMD transcription); BP Properties Ltd v Buckler [1987] EWCA Civ 2; Legal Wiki, “Two Mary Bucklers?” timeline.", ev="", links=[("Court of Appeal judgment","https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"),("Legal Wiki timeline","https://greathousefarmwiki.wordpress.com/two-mary-bucklers-name-identity-timeline/")]))
+P(id="d-1983-03-26-mary-williams", outlet="william-buckler", date="1983-03-26", when="26 March 1983", kind="announcement",
+  headline="Mary (Nancy) Williams",
+  body=["William (Billy) Buckler announces the passing of his mother, Mary Doreen (Nancy) Williams, formerly Buckler, of Great House Farm, Llandough, on 26 March 1983."],
+  comments=[dict(who="unidentified", when="30 April 1988", label="From “Chainsaw farmer vows to fight on”", text="He [stated] the farm was owned by BP Properties, which allowed Mr Buckler’s late mother to live in it rent-free because of her ill health. “When Mrs Buckler died in 1983 it became clear her son was not going to leave,” said the spokesman.",
+                 cite="Cutting, newspaper not identified; reports the eviction attempt of 29 April 1988 (a BP PLC spokesman, London). Legal Wiki EV-0089 · GHF-E090-N07.", links=[("EV-0089","@EV-0089"),("The full post","n/n-1988-04-30-chainsaw.html")], subs=True)],
+  shares=["unidentified"], recon=True,
+  source=dict(cite="GRO death index, March quarter 1983, South Glamorgan 28/3029, indexed under both BUCKLER and WILLIAMS, Mary Doreen (FreeBMD transcription). Legal Wiki EV-0067.", ev="EV-0067", links=[("EV-0067","@EV-0067"),("Legal Wiki timeline","https://greathousefarmwiki.wordpress.com/two-mary-bucklers-name-identity-timeline/")]))
+P(id="d-1990-william-buckler", outlet="williams-buckler-family", date="1990-04-29", when="29 April 1990 (probate calendar) or the week to 2 June 1990 (South Wales Echo)", dt="1990", kind="announcement",
+  headline="William (Billy) Buckler",
+  body=["The Williams / Buckler family announces the passing of William (Billy) Buckler, formerly of Great House Farm, Llandough.",
+        "The probate calendar gives his death as 29 April 1990; the South Wales Echo of 2 June 1990 reported that he “died suddenly this week”. The two do not agree, and both are shown."],
+  comments=[dict(who="south-wales-echo", when="2 June 1990", label="Search-result text, p.2", text="[FARMER] Billy died suddenly this week … [when] travelling through the area he made a detour around Llandough so never had to pass the site of Great House Farm",
+                 flag="Search-result text (OCR) only; square brackets mark words the OCR garbles. The full page has not been read.",
+                 cite="South Wales Echo, Saturday 2 June 1990, p.2. British Newspaper Archive search-result text. Legal Wiki EV-0290.", links=[("EV-0290","@EV-0290")])],
+  shares=["south-wales-echo"], recon=True,
+  source=dict(cite="Probate calendar 1991: “BUCKLER, William Beverley … of [Penarth] S Glam died 29 April 1990”, administration Llandaff 11 July 1991 (a probable match; EV-0274). South Wales Echo, 2 June 1990, p.2 (EV-0290).", ev="EV-0290", links=[("EV-0274","@EV-0274"),("EV-0290","@EV-0290")]))
+
+# ---------- decade-sweep sync, 21 Oct 2026 ----------
+P(id="n-1889-08-16-orchard", outlet="barry-dock-news", date="1889-08-16", when="16 August 1889", kind="article", headline="A Batch of Orchard Looters at Llandough",
+  body=["… four … boys … appeared in answer to the charge of breaking into the orchard of Great House Farm, on Sunday morning, and [taking] therefrom a number of apples, the property of John Williams … P.C. Herbert Evans said … with the assistance of Mr John Williams, junior, caught three of the offenders … The boys got into the orchard over the hedge from the railway … John Williams, junior, corroborated the evidence of the constable, and added that about half the apples in his father’s orchard had been [taken]."],
+  note="Before the Penarth magistrates (Messrs J. S. Corbett and V. Trayes); each boy was fined 10s and costs. Library OCR; gaps marked ….",
+  subs=["body: “stealing” → “[taking]”","body: “stolen” → “[taken]”"],
+  source=dict(cite="Barry Dock News, 16 August 1889, p.2. Legal Wiki EV-0279.", ev="EV-0279", links=[("Welsh Newspapers Online","https://newspapers.library.wales/view/4594680/4594682/18/"),("EV-0279","@EV-0279")]))
