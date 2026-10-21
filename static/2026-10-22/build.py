@@ -797,6 +797,7 @@ def site():
 }})();
 </script>
 <script src="/agent-tools.js" defer></script>
+<script src="https://bucklerfamily.estate/basecamp.js" defer></script>
 </body>
 </html>
 """
@@ -810,14 +811,14 @@ a{color:var(--moss)}
 .bar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;height:52px;padding:0 12px;background:var(--slate);color:#fff}
 .bar .home{color:#fff;text-decoration:none;font-size:14px;opacity:.9}
 .burger{appearance:none;border:0;background:transparent;color:#fff;font-size:26px;line-height:1;width:44px;height:44px;cursor:pointer}
-.menu{position:fixed;top:0;right:0;bottom:0;z-index:40;width:min(86vw,360px);background:#fff;box-shadow:-8px 0 30px rgba(0,0,0,.25);padding:14px 16px;overflow:auto}
+.menu{position:fixed;top:0;right:0;bottom:0;z-index:2147483000;width:min(86vw,360px);background:#fff;box-shadow:-8px 0 30px rgba(0,0,0,.25);padding:14px 16px;overflow:auto}
 .menu-head{display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-size:18px;margin-bottom:8px}
 .menu .x{appearance:none;border:0;background:none;font-size:22px;width:44px;height:44px;cursor:pointer}
 .menu ol{list-style:none;margin:0;padding:0}
 .menu li a{display:flex;gap:12px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--rule);color:var(--ink);text-decoration:none;font-weight:600}
 .menu li a span{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--slate);color:#fff;font-size:14px;flex:none}
 .menu-foot{margin-top:16px;font-size:15px}
-.scrim{position:fixed;inset:0;z-index:30;background:rgba(0,0,0,.35)}
+.scrim{position:fixed;inset:0;z-index:2147482999;background:rgba(0,0,0,.35)}
 [hidden]{display:none!important}
 main{max-width:760px;margin:0 auto;padding:0 0 24px}
 .hero figure{margin:0;background:var(--slate)}
