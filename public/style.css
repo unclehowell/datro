@@ -73,3 +73,5 @@ details.key>summary{cursor:pointer;list-style:none;font-size:13px;letter-spacing
 details.key>summary::-webkit-details-marker{display:none}
 details.key>summary::after{content:" ▾"}
 details.key[open]>summary::after{content:" ▴"}
+
+html.ghf-inv dialog{filter:invert(1) hue-rotate(180deg)}
