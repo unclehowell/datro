@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Tŷ Mawr title-chain map, c.1841–2026 · Church View Close, Llandough</title>
-<meta name="description" content="This is the story of the true owners of Church View Close, Llandough, and why people incorrectly think it&#x27;s Cardiff Forest, BP and Llandough Council. A narrated video map of the title-chain map on the Legal Wiki home page, one step per station, c.1841 to 2026.">
-<meta property="og:title" content="Tŷ Mawr title-chain map, c.1841–2026">
-<meta property="og:description" content="Drag the slider or press play: the Great House Farm title story on the Ordnance Survey maps of each era, narrated.">
+<title>Tŷ Mawr, the Great House of Llandough: an ancient Welsh home to Church View Close</title>
+<meta name="description" content="Our case, told forward: how Tŷ Mawr, the Great House of Llandough, an ancient Welsh home stewarded since 1667, became Church View Close. A narrated map story, 50 steps, every claim sourced. Not a finding of any court.">
+<meta property="og:title" content="Tŷ Mawr, the Great House of Llandough: an ancient Welsh home to Church View Close">
+<meta property="og:description" content="Press play: an ancient Welsh home becomes a housing estate, on the Ordnance Survey maps of each era, narrated, with every source. Our case, prospective.">
 <meta property="og:image" content="https://maps.bucklerfamily.estate/img/og.jpg">
 <meta name="theme-color" content="#111214">
 <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
-<link rel="stylesheet" href="style.css?v=1.4.5">
+<link rel="stylesheet" href="style.css?v=1.6.0">
 <link rel="alternate" type="application/json" href="data/story.json" title="Story data (steps, holders, sources)">
 <link rel="alternate" type="application/geo+json" href="data/parcels.geojson" title="Parcel outlines">
 <script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.0.3"></script>
@@ -21,7 +21,7 @@
 <div id="maryIntro" aria-hidden="true" data-ghf-keep><img src="" alt=""><div class="gr"></div><div class="tx"><div class="nm"></div><div class="ls"></div></div><button class="x" type="button" aria-label="Close photo" onclick="this.parentNode.classList.remove('on')">×</button></div>
 
 <div id="top">
-  <a class="brand" href="https://bucklerfamily.estate/" title="Back to base camp"><b>Tŷ Mawr</b> <span>title-chain map c.1841–2026</span></a>
+  <a class="brand" href="https://bucklerfamily.estate/" title="Back to base camp"><b>Tŷ Mawr</b> <span>the Great House, 1667–2026</span></a>
   <div class="tools">
     <div class="seg" role="group" aria-label="Colour the parcels by">
       <button id="mCase" class="on" aria-pressed="true" title="Colour by the Williams-Buckler family’s case (prospective)">Family’s case</button><button id="mRec" aria-pressed="false" title="Colour by what the records held show">Records</button>
@@ -41,8 +41,11 @@
 
 <section id="panel" aria-live="polite">
   <div id="cap">
+    <div id="cPart"></div>
     <div class="caphead"><span id="cDate"></span><span id="cTitle"></span><button id="bInfo" class="ic sm" title="About this map" aria-label="About this map">i</button><button id="bCollapse" class="ic sm" aria-label="Hide caption" title="Hide caption">▾</button></div>
+    <div id="cChips"></div>
     <p id="cText"></p>
+    <blockquote id="cQuote"><p></p><cite></cite></blockquote>
     <details id="cMore"><summary>More</summary><p id="cLong"></p></details>
     <div id="cImg"></div>
     <details id="cSrc"><summary>Sources</summary><ul></ul></details>
@@ -66,9 +69,9 @@
   <div class="abox">
     <button id="aClose" class="ic sm close" aria-label="Close">✕</button>
     <h2>About this map</h2>
-    <p><b>This is the story of the true owners of Church View Close, Llandough, and why people incorrectly think it&#x27;s Cardiff Forest, BP and Llandough Council.</b></p>
-    <p>This map follows the <a href="https://greathousefarmwiki.wordpress.com/">title-chain map on the Legal Wiki home page</a>, one step per dated station, in the same order (34 stations, c.1841 to 2026), with the home page’s own wording and labels: VERIFIED, TESTIMONY, SOURCE PENDING, UNVERIFIED.</p>
-    <p>Three attempts to make Mary’s occupancy look permissive were rejected. Each was followed by a registration of part of Parcel A in another name. And the Williams title to Parcel A was never extinguished: the line runs on.</p>
+    <p><b>Our case: an ancient Welsh home, Tŷ Mawr, the Great House of Llandough, stewarded by one family since at least 1667, became Church View Close, an estate of twenty houses.</b></p>
+    <p>Step by step, from the Iron Age to 2026, each claim shows its source. What the records prove is marked VERIFIED; what the courts said is marked COURT; what the family says and has not yet proved is marked CASE, prospective, not a finding of any court; what is not yet formally recorded is marked as such.</p>
+    <p>Sources are listed under each step. Our case, prospective. Not a finding of any court.</p>
     <p><b>Colours.</b> Each parcel is coloured by the holder on the home page’s line for it at that station. The dotted white line is the whole of Parcel A from the 1877 split. The woodland (pink) and the green (yellow, the lower third of Parcel A) are drawn as parts carved from Parcel A; a dotted edge means the area is not proved by plan. Tap any parcel for details.</p>
     <p><b>Lines.</b> Solid outlines are traced from a source (an OS sheet or the 1939 tenancy plan), by eye. <span class="hatchkey"></span> Hatched outlines are reconstructions or estimates. They are not recorded boundaries.</p>
     <p><b>Old maps.</b> Ordnance Survey six-inch (1878–79) and 25-inch (1900, 1920, 1947) sheets, images from the National Library of Scotland, reproduced under CC-BY (“Reproduced with the permission of the National Library of Scotland”). The 1920 and 1947 sheets were fitted to the 1900 sheet by matching the engraving (accuracy a few metres). Aerial: Esri World Imagery. Narration: a synthetic British voice; if audio is blocked your browser's own voice reads the caption.</p>
@@ -79,6 +82,6 @@
 </div>
 <audio id="voice" preload="none"></audio>
 <script src="vendor/leaflet/leaflet.js"></script>
-<script src="app.js?v=1.4.5"></script>
+<script src="app.js?v=1.6.0"></script>
 </body>
 </html>

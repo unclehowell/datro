@@ -72,3 +72,30 @@ html.ghf-shell body{overflow:hidden!important}
 .akey{display:inline-block;width:18px;height:0;border-top:3px dotted #fff;margin:0 6px 3px 0;vertical-align:middle}
 
 #maryIntro{position:absolute;z-index:900;right:0;top:52px;width:66.667%;height:50%;overflow:hidden;border-radius:10px 0 0 10px;border:1px solid var(--line);border-right:0;background:#000;opacity:0;visibility:hidden;transform:translateX(24px);transition:opacity .45s,transform .45s,visibility 0s .45s;box-shadow:0 6px 24px rgba(0,0,0,.5)}#maryIntro.on{opacity:1;visibility:visible;transform:none;transition:opacity .45s,transform .45s}#maryIntro img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}#maryIntro .gr{position:absolute;left:0;right:0;bottom:0;height:55%;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.6) 40%,rgba(0,0,0,.88))}#maryIntro .tx{position:absolute;left:0;right:0;top:56%;text-align:center;padding:0 8px;text-shadow:0 2px 8px #000}#maryIntro .nm{font-weight:700;font-size:clamp(17px,5.4vw,40px);line-height:1.1;color:#fff}#maryIntro .ls{font-size:clamp(14px,4.2vw,28px);color:#f2e6c9;margin-top:4px}#maryIntro .x{position:absolute;top:6px;right:6px;width:30px;height:30px;border-radius:15px;border:1px solid rgba(255,255,255,.4);background:rgba(0,0,0,.55);color:#fff;font-size:16px;line-height:1}
+
+/* v1.6.0: part kicker, evidence chips, quote */
+#cPart{font:700 11px/1.2 system-ui,sans-serif;letter-spacing:.14em;color:#b8860b;text-transform:uppercase;margin:0 0 4px}
+#cChips{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0 4px}
+#cChips .chip{font:600 10.5px/1.3 system-ui,sans-serif;padding:2px 7px;border-radius:10px;border:1px solid;letter-spacing:.02em}
+#cChips .cv{background:#E3F4E8;color:#14532D;border-color:#9FD3B0}
+#cChips .cu{background:#ECECEC;color:#222;border-color:#AAA}
+#cChips .cc{background:#FDE2E4;color:#8A1020;border-color:#E8A0A8}
+#cChips .ct{background:#E6EEFB;color:#1E3A8A;border-color:#A8BFEA}
+#cChips .cp{background:#FFF4D6;color:#7A4B00;border-color:#E9C46A}
+#cQuote{margin:8px 0;padding:8px 12px;border-left:4px solid #C8102E;background:rgba(200,16,46,.06);border-radius:3px}
+#cQuote p{margin:0;font:italic 15px/1.45 Georgia,'Times New Roman',serif}
+#cQuote cite{display:block;margin-top:6px;font:600 11px/1.3 system-ui,sans-serif;font-style:normal;color:#8A1020}
+
+/* v1.6.0 layout (Sion, 21 Oct): one full-viewport map framed from Parcel A west to Parcel B east; floating caption and media bar */
+#map{background:#111}
+#panel,#panel.collapsed{position:absolute!important;inset:0!important;left:0!important;top:0!important;right:0!important;bottom:0!important;width:auto!important;padding:0!important;border:0!important;background:none!important;display:block!important;pointer-events:none;z-index:1000}
+#cap{pointer-events:auto;position:absolute;left:8px;top:8px;width:var(--capW,400px);max-width:calc(100% - 16px);max-height:var(--capMaxH,42vh)!important;flex:none!important;overflow:auto;box-sizing:border-box;background:rgba(17,18,20,.80);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:8px 10px}
+#panel.collapsed #cap{display:block!important}
+#panel.collapsed #cap>*:not(.caphead){display:none!important}
+#bar{pointer-events:auto;position:absolute;left:50%;transform:translateX(-50%);bottom:calc(8px + env(safe-area-inset-bottom));width:min(560px,calc(100% - 16px));box-sizing:border-box;margin:0!important;padding:4px 14px 0 6px;height:52px;background:rgba(17,18,20,.72);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.14);border-radius:26px;align-items:center}
+#bar .play{width:40px;height:40px;font-size:17px}#bar .ic{min-width:34px;height:34px;background:transparent;border-color:rgba(255,255,255,.18)}
+#bar .slider{padding-bottom:14px}
+#panel .foot{pointer-events:none;position:absolute;left:0;right:0;bottom:calc(64px + env(safe-area-inset-bottom));text-align:center;font-size:10px;line-height:1.3;color:rgba(255,255,255,.85);text-shadow:0 1px 3px #000;padding:0 8px;margin:0;border:0;background:none}
+#panel .foot .attr{display:none}
+#map.os{background:#ece6d6}
+#cQuote{background:rgba(200,16,46,.22)!important}#cQuote p{color:#fff!important}#cQuote cite{color:#ffb3bd!important}

@@ -3,12 +3,12 @@
 (function(){
 "use strict";
 var $=function(id){return document.getElementById(id)};
-var moved=false,allB=null,D,G,GA=null,pA=null,pAh=null,pAt=null,map,overlay=null,curBase=null,layers={},labelsOn=true,mode='case',idx=0,playing=false,muted=false,timer=null;
+var TILE=null,moved=false,allB=null,D,G,GA=null,pA=null,pAh=null,pAt=null,map,overlay=null,curBase=null,layers={},labelsOn=true,mode='case',idx=0,playing=false,muted=false,timer=null;
 var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
 var BASES={'1878':'OS six-inch, surveyed 1878–79','1900':'OS 25-inch, revised 1898 (pub. 1900)','1920':'OS 25-inch, revised 1915 (pub. 1920)','1947':'OS 25-inch, revised 1941 (pub. 1947)','aerial':"Today's aerial (Esri World Imagery)"};
 var voice=$('voice');
 // Cedwyn Estate shell (basecamp.js) puts its bar and location strip at the top of the page: start the app below them.
-function shellH(){var m=0;document.querySelectorAll('.ghf-ui').forEach(function(e){if(e.matches('nav.ghf-bc,.ghf-lf,.ghf-glow')||e.closest('#app'))return;var r=e.getBoundingClientRect();if(r.height>0&&r.top<140&&r.bottom<240&&r.width>window.innerWidth*0.5)m=Math.max(m,r.bottom)});var v=Math.round(m)+'px';if(document.documentElement.style.getPropertyValue('--shellH')!==v){document.documentElement.style.setProperty('--shellH',v);if(map)setTimeout(function(){map.invalidateSize();if(!moved&&allB)fit(allB)},60)}}
+function shellH(){var m=0;document.querySelectorAll('.ghf-ui').forEach(function(e){if(e.matches('nav.ghf-bc,.ghf-lf,.ghf-glow')||e.closest('#app'))return;var r=e.getBoundingClientRect();if(r.height>0&&r.top<140&&r.bottom<240&&r.width>window.innerWidth*0.5)m=Math.max(m,r.bottom)});var v=Math.round(m)+'px';if(document.documentElement.style.getPropertyValue('--shellH')!==v){document.documentElement.style.setProperty('--shellH',v);if(map)setTimeout(function(){map.invalidateSize();if(allB)fit(allB)},60)}}
 var shTicks=0,shI=setInterval(function(){shellH();if(++shTicks>20)clearInterval(shI)},400);window.addEventListener('resize',shellH);
 
 try{muted=localStorage.getItem('maps-muted')==='1'}catch(e){}
@@ -17,9 +17,9 @@ Promise.all([fetch('data/story.json').then(function(r){return r.json()}),fetch('
 function srcList(keys){return (keys||[]).map(function(k){var s=D.sources[k];if(!s)return'';return '<li>'+(s.u?'<a href="'+esc(s.u)+'" target="_blank" rel="noopener">'+esc(s.t)+'</a>':esc(s.t))+'</li>'}).join('')}
 
 function init(){
-  map=L.map('map',{zoomControl:false,attributionControl:false,minZoom:14,maxZoom:20,zoomSnap:0.25,tap:true});
+  map=L.map('map',{zoomControl:false,attributionControl:false,minZoom:14,maxZoom:21,zoomSnap:0,zoomDelta:0.5,tap:true});
   
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:20,maxNativeZoom:19,attribution:'Aerial: Esri, Maxar, Earthstar Geographics, GIS User Community'}).addTo(map);
+  TILE=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:20,maxNativeZoom:19,attribution:'Aerial: Esri, Maxar, Earthstar Geographics, GIS User Community'}).addTo(map);
   // SVG hatch patterns
   map.whenReady(function(){});
   var all=L.geoJSON(G);allB=all.getBounds();fit(allB);map.on('dragstart',function(){moved=true});
@@ -59,7 +59,7 @@ function init(){
   $('bInfo').onclick=function(){$('about').classList.remove('hidden')};$('aClose').onclick=function(){$('about').classList.add('hidden')};
   $('about').addEventListener('click',function(e){if(e.target.id==='about')$('about').classList.add('hidden')});
   $('bCollapse').onclick=function(){var p=$('panel');p.classList.toggle('collapsed');$('bCollapse').textContent=p.classList.contains('collapsed')?'▴':'▾'};
-  $('fade').addEventListener('input',function(){if(overlay)overlay.setOpacity(this.value/100)});
+  $('fade').addEventListener('input',function(){if(overlay)overlay.setOpacity(this.value/100);if(TILE)TILE.setOpacity(curBase==='aerial'||this.value<100?1:0)});
   $('showLabels').addEventListener('change',function(){labelsOn=this.checked;render()});
   voice.addEventListener('ended',function(){if(playing)timer=setTimeout(nextAuto,1200)});
   voice.addEventListener('error',function(){if(playing&&!muted)webSpeech()});
@@ -68,7 +68,17 @@ function init(){
   var h=location.hash.match(/step=([\w]+)/),start=0;if(h){D.steps.forEach(function(st,i){if(st.id===h[1])start=i})}
   go(start,false);
 }
-function fit(b){map.fitBounds(b.pad(window.innerWidth<600?0.12:0.25),{paddingTopLeft:[0,60],paddingBottomRight:[window.innerWidth>window.innerHeight&&window.innerHeight<520?Math.min(window.innerWidth*.46,420):0,window.innerHeight<520?0:Math.min(window.innerHeight*.42,330)]})}
+function fit(b){b=b||allB;if(!b||!map)return;var ap=$('app'),bar=$('bar'),cap=$('cap'),R=document.documentElement.style;var W=ap.clientWidth,H=ap.clientHeight,bh=bar?bar.offsetHeight+14:0;
+  var p1=map.project(b.getNorthWest(),18),p2=map.project(b.getSouthEast(),18),asp=Math.abs(p2.x-p1.x)/Math.max(1,Math.abs(p2.y-p1.y));
+  var m=6,availW=W-2*m,availH=H-bh-2*m,tl=[m,m],br=[m,m+bh];
+  var mapH=Math.min(availH,availW/asp),mapW=Math.min(availW,availH*asp);
+  var spareV=availH-mapH,spareH=availW-mapW;
+  if(spareV>=110&&spareV>=spareH){R.setProperty('--capW',(W-16)+'px');R.setProperty('--capMaxH',Math.max(110,spareV-6)+'px');tl=[m,m+spareV];br=[m,m+bh]}
+  else if(spareH>=250){var cw=Math.min(440,spareH-6);R.setProperty('--capW',cw+'px');R.setProperty('--capMaxH',(H-bh-24)+'px');tl=[m+spareH,m];br=[m,m+bh]}
+  else{R.setProperty('--capW',Math.min(400,W-16)+'px');R.setProperty('--capMaxH',Math.round(Math.min(H*0.42,360))+'px')}
+  map.fitBounds(b,{paddingTopLeft:tl,paddingBottomRight:br,animate:false})}
+window.addEventListener('orientationchange',function(){setTimeout(function(){if(map){map.invalidateSize();fit()}},250)});
+window.addEventListener('resize',function(){clearTimeout(window.__fitT);window.__fitT=setTimeout(function(){if(map){map.invalidateSize();fit()}},120)});
 function makePatterns(r){
   var svg=r._container;if(!svg)return;var ns='http://www.w3.org/2000/svg';var defs=svg.querySelector('defs')||svg.insertBefore(document.createElementNS(ns,'defs'),svg.firstChild);
   Object.keys(D.holders).forEach(function(k){var c=D.holders[k][1];var p=document.createElementNS(ns,'pattern');p.setAttribute('id','h-'+k);p.setAttribute('patternUnits','userSpaceOnUse');p.setAttribute('width','9');p.setAttribute('height','9');p.setAttribute('patternTransform','rotate(45)');
@@ -114,12 +124,12 @@ function render(){
 }
 function setBase(b){
   if(b===curBase)return;curBase=b;$('baseName').textContent=BASES[b]||b;
-  if(overlay){map.removeLayer(overlay);overlay=null}
+  if(overlay){map.removeLayer(overlay);overlay=null}if(TILE)TILE.setOpacity(b==='aerial'||$('fade').value<100?1:0);$('map').classList.toggle('os',b!=='aerial');
   if(b!=='aerial'&&D.overlays[b]){overlay=L.imageOverlay('img/os'+b+'.webp',D.overlays[b],{opacity:$('fade').value/100,attribution:'OS maps: National Library of Scotland (CC-BY)',interactive:false}).addTo(map);overlay.bringToBack()}
 }
 function go(i,user){
   idx=i;var st=D.steps[i];$('slider').value=i;setBase(st.base);
-  $('cDate').textContent=st.date;$('cTitle').textContent=st.title;$('cText').textContent=st.short||st.text;var cm=$('cMore');if(cm){$('cLong').textContent=st.text;cm.style.display=(st.short&&st.short!==st.text)?'':'none'}
+  $('cDate').textContent=st.date;$('cTitle').textContent=st.title;var cp=$('cPart');if(cp){cp.textContent=st.part||'';cp.style.display=st.part?'':'none'}var cc=$('cChips');if(cc){cc.innerHTML=(st.labels||[]).map(function(l){var u=l.toUpperCase(),c=u.indexOf('VERIFIED')===0?'cv':u.indexOf('COURT')===0?'cu':u.indexOf('CASE')===0?'cc':u.indexOf('TESTIMONY')===0?'ct':'cp';return '<span class="chip '+c+'">'+esc(l)+'</span>'}).join('')}var cq=$('cQuote');if(cq){if(st.quote){cq.querySelector('p').textContent='\u201c'+st.quote+'\u201d';cq.querySelector('cite').textContent=st.quote_by||'';cq.style.display=''}else cq.style.display='none'}$('cText').textContent=st.short||st.text;var cm=$('cMore');if(cm){$('cLong').textContent=st.text;cm.style.display=(st.short&&st.short!==st.text)?'':'none'}
   $('cImg').innerHTML=(st.img&&!st.img.intro)?'<a href="'+esc(st.img.href||st.img.src)+'" target="_blank" rel="noopener"><img src="'+esc(st.img.src)+'" alt="">'+esc(st.img.cap)+'</a>':'';
   $('cSrc').querySelector('ul').innerHTML=srcList(st.src);
   showIntro(st);setTimeout(function(){if(D.steps[idx]===st)showIntro(st)},120);setTimeout(function(){if(D.steps[idx]===st)showIntro(st)},700);
@@ -131,7 +141,7 @@ function showIntro(st){var el=$('maryIntro');if(!el)return;var it=st.img&&st.img
   if(!it){el.classList.remove('on');el.setAttribute('aria-hidden','true');return}
   el.querySelector('img').src=st.img.src;el.querySelector('.nm').textContent=it.name;el.querySelector('.ls').textContent=it.life;el.querySelector('img').alt=it.name;
   placeIntro();el.classList.add('on');el.setAttribute('aria-hidden','false')}
-function placeIntro(){var el=$('maryIntro'),pn=$('panel'),ap=$('app');if(!el||!pn||!ap)return;var A=ap.getBoundingClientRect(),R=pn.getBoundingClientRect(),W=A.width,H=A.height;
+function placeIntro(){var el=$('maryIntro'),pn=$('bar'),ap=$('app');if(!el||!pn||!ap)return;var A=ap.getBoundingClientRect(),R=pn.getBoundingClientRect(),W=A.width,H=A.height;
   var side=(R.left-A.left)>W*0.3&&(R.top-A.top)<H*0.5;var top=52,right=0,avail=W,bottom=8;
   if(side){right=Math.round(A.right-R.left);avail=W-right}else{bottom=Math.max(8,Math.round(A.bottom-R.top)+8)}
   var h=Math.max(160,H-top-bottom),w=Math.round(avail*2/3);
