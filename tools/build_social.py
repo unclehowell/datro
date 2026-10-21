@@ -183,7 +183,7 @@ def build():
             if p.get("video"): photos.append((p["video"]["poster"], "Still from the video post", p["id"]))
         if x.get("cover") and not is_person: photos.append((x["cover"], x.get("cover_credit", ""), None))
         if is_person:
-            photos = [(x["avatar"], x.get("avatar_credit", ""), None)] + ([(x["cover"], x.get("cover_credit", ""), None)] if x.get("cover") else [])
+            photos = [(x["avatar"], x.get("avatar_credit", ""), None)] + ([(x["avatar_original"], "Original of the profile picture, before restoration", None)] if x.get("avatar_original") else []) + ([(x["cover"], x.get("cover_credit", ""), None)] if x.get("cover") else [])
             for p in POSTS:
                 for src, cap in p.get("photos", []):
                     if (slug == "william-buckler" and any(1 for c in p.get("comments", []) if (c["who"] if isinstance(c, dict) else c[0]) == slug)):
@@ -193,6 +193,7 @@ def build():
         about = '<p>%s</p>' % e(x["about"])
         if x.get("cover_credit"): about += '<p class="muted">Cover: %s</p>' % e(x["cover_credit"])
         if is_person and x.get("avatar_credit"): about += '<p class="muted">Profile picture: %s</p>' % e(x["avatar_credit"])
+        if x.get("avatar_original"): about += '<p class="muted">Restored photo: print grain, dust and colour cast removed, light and sharpness corrected; fine face detail filled in by an AI face-restoration tool at its most faithful setting, checked side by side against the original. <a href="../%s">See the original</a></p>' % x["avatar_original"]
         if is_person:
             cm = [(p, c[1]) for p in POSTS for c in [((x0["who"], x0["text"]) if isinstance(x0, dict) else x0) for x0 in p.get("comments", [])] if c[0] == slug]
             body = '<h2 class="pf-h" id="comments">Comments (%d)</h2>' % len(cm) + "".join(
@@ -209,7 +210,8 @@ def build():
             body += '<h2 class="pf-h" id="shared">Shared</h2>' + "".join(
                 '<a class="pf-c" href="../n/%s.html"><span><strong>%s</strong> shared %s’s post</span><span class="muted">%s · %s</span></a>' % (p["id"], e(x["name"]), e(prof(p["outlet"])["name"]), e(p["headline"]), e(p["when"])) for p in shared)
         tabs = '<nav class="pf-tabs">%s<a href="#about">About</a><a href="#photos">Photos</a></nav>' % ("".join('<a href="#%s">%s</a>' % (a, l) for a, l, ok in [("posts", "Posts", bool(mine)), ("comments", "Comments", is_person and not (mine and not any(1 for q in POSTS for c in q.get("comments", []) if (c["who"] if isinstance(c, dict) else c[0]) == slug)))] if ok) or '<a href="#posts">Posts</a>')
-        page = (cover + '<div class="pf-id"><img class="pf-av" src="../%s" alt="" width="120" height="120"><div><h1>%s</h1><p class="muted">%s · %s</p></div></div>' % (x["avatar"], e(x["name"]), e(x["kind"]), count)
+        prov = ('<p class="pf-prov"><a href="../%s">Restored photo · original</a></p>' % x["avatar_original"]) if x.get("avatar_original") else ""
+        page = (cover + '<div class="pf-id"><img class="pf-av" src="../%s" alt="" width="120" height="120"><div><h1>%s</h1><p class="muted">%s · %s</p>%s</div></div>' % (x["avatar"], e(x["name"]), e(x["kind"]), count, prov)
                 + tabs + '<section class="pf-card" id="about"><h2 class="pf-h">About</h2>%s%s</section>' % (about, "" if is_person else '<p class="muted">A reconstruction of this outlet’s reports, not its own account.</p>')
                 + '<section class="pf-card" id="photos"><h2 class="pf-h">Photos</h2><div class="pf-grid">%s</div></section>' % grid + body)
         write("u/%s.html" % slug, head("%s · farmbook" % x["name"], x["about"], "u/x.html", x.get("cover") or x["avatar"], "u/%s.html" % slug) + "<body>" + top("") + '<main id="main" class="sb-main sb-prof">' + page + "</main>" + foot())

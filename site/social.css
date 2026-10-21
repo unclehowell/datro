@@ -127,3 +127,8 @@ html[data-ghf-native]:not(.ghf-inv){background-color:var(--bg)!important}
 .sb-main .ghf-ghost:not(#ghf-x){background:#e4e6eb!important;color:var(--ink)!important;border:0!important;border-radius:6px!important;text-transform:none!important;letter-spacing:normal!important;font-weight:600!important}
 .ghfc-btn:not(#ghf-x){background:var(--fbb)!important;color:#fff!important}.ghfc-btn:not(#ghf-x) svg{stroke:#fff!important}
 .pf-cover img:not(#ghf-x){width:100%!important;max-width:none!important;height:100%!important;object-fit:cover}
+
+/* restored-photo provenance tap (21 Oct 2026) */
+.pf-prov{margin:.25rem 0 0;font-size:.8rem;line-height:1.3}.pf-prov a{color:inherit;opacity:.72;text-decoration:underline;text-underline-offset:2px}
+.friend .av-ph{display:block;border-radius:50%;object-fit:cover;flex:none}
+.friend .av-in{display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--c);color:#fff;font:600 24px/1 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;letter-spacing:.02em;flex:none}
