@@ -45,3 +45,5 @@ th{color:var(--mut);font-weight:600;text-transform:uppercase;font-size:11px;lett
 td a{color:var(--fg);word-break:break-all}
 .small{font-size:13px;color:var(--mut)}
 @media (min-width:783px){#chart .lbl{font-size:12px}#chart .tick{font-size:11px}}
+
+dialog a{color:var(--fg)}
