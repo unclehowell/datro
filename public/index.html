@@ -10,7 +10,7 @@
 <meta property="og:image" content="https://maps.bucklerfamily.estate/img/og.jpg">
 <meta name="theme-color" content="#111214">
 <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
-<link rel="stylesheet" href="style.css?v=1.0.0">
+<link rel="stylesheet" href="style.css?v=1.1.0">
 <link rel="alternate" type="application/json" href="data/story.json" title="Story data (steps, holders, sources)">
 <link rel="alternate" type="application/geo+json" href="data/parcels.geojson" title="Parcel outlines">
 </head>
@@ -41,6 +41,7 @@
   <div id="cap">
     <div class="caphead"><span id="cDate"></span><span id="cTitle"></span><button id="bInfo" class="ic sm" title="About this map" aria-label="About this map">i</button><button id="bCollapse" class="ic sm" aria-label="Hide caption" title="Hide caption">▾</button></div>
     <p id="cText"></p>
+    <details id="cMore"><summary>More</summary><p id="cLong"></p></details>
     <div id="cImg"></div>
     <details id="cSrc"><summary>Sources</summary><ul></ul></details>
   </div>
@@ -65,16 +66,17 @@
     <h2>About this map</h2>
     <p>The story of the Great House Farm (Tŷ Mawr) land at Llandough-juxta-Penarth, from the 1877 split into <b>Parcel A</b> (house, yard, wood and green) and <b>Parcel B</b> (the fields east of the house) to the 1987 merger of the house parcel with the fields, and what followed.</p>
     <p><b>Colours.</b> “Our case” colours each parcel by the holder our case puts forward (prospective). “Records” colours it by what the records we hold show at that date (possession, tenancy or registered title). Tap any parcel for both.</p>
+    <p><b>Synthetic parcels.</b> From 1949 the woodland (the top third of Parcel A, pink) and from 1955 the green (the south third, yellow) are drawn as synthetic parcels carved out of Parcel A. A dotted edge means the piece is being carved out but not yet registered. Our case: in 1969 only Parcel B, with the benefit of an unenforced 1962 order on the house, passed to BP Pension Trust; Parcel A did not.</p>
     <p><b>Lines.</b> Solid outlines are traced from a source (an OS sheet or the 1939 tenancy plan), by eye. <span class="hatchkey"></span> Hatched outlines are reconstructions or estimates. They are not recorded boundaries. Every popup shows how each line was made.</p>
     <p><b>Old maps.</b> Ordnance Survey six-inch (1878–79) and 25-inch (1900, 1920, 1947) sheets, images from the National Library of Scotland, reproduced under CC-BY (“Reproduced with the permission of the National Library of Scotland”). The 1920 and 1947 sheets were fitted to the 1900 sheet by matching the engraving (accuracy a few metres). Aerial: Esri World Imagery. Narration: a synthetic voice (Piper “Cori”, trained on public-domain LibriVox recordings); if audio is blocked your browser's own voice reads the caption.</p>
     <p><b>Data.</b> <a href="data/story.json">story.json</a> · <a href="data/parcels.geojson">parcels.geojson</a> · Evidence: <a href="https://greathousefarmwiki.wordpress.com/timeline/">Legal Wiki timeline</a> · <a href="https://wayback.bucklerfamily.estate/">Primary records</a></p>
     <div class="legal" data-ghf-legal-foot="1"><p><b>© Williams–Buckler family. All rights reserved. Licence terms apply.</b></p><p role="navigation" aria-label="Legal"><a href="https://bucklerfamily.estate/licence/">Licence</a> · <a href="https://bucklerfamily.estate/privacy/">Privacy</a> · <a href="https://bucklerfamily.estate/cookies/">Cookies</a> · <a href="https://bucklerfamily.estate/terms/">Terms</a> · <a href="https://bucklerfamily.estate/disclaimer/">Disclaimer</a> · <a href="https://bucklerfamily.estate/accessibility/">Accessibility</a> · <a href="https://bucklerfamily.estate/enquire/">Enquire</a> · <a href="https://bucklerfamily.estate/">Base camp</a></p></div>
-    <p class="small">Our case, prospective. Not a finding of any court. No allegation is made against any person or body. — Sion's Tab agent · v1.0.0</p>
+    <p class="small">Our case, prospective. Not a finding of any court. No allegation is made against any person or body. — Sion's Tab agent · v1.1.0</p>
   </div>
 </div>
 <audio id="voice" preload="none"></audio>
 <script src="vendor/leaflet/leaflet.js"></script>
-<script src="app.js?v=1.0.0"></script>
+<script src="app.js?v=1.1.0"></script>
 <script src="https://bucklerfamily.estate/basecamp.js" defer></script>
 </body>
 </html>

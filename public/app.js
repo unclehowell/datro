@@ -89,9 +89,9 @@ function render(){
     L_.lyr.eachLayer(function(l){
       if(!on){l.setStyle({opacity:0,fillOpacity:0});return}
       var c=(D.holders[h]||D.holders.unknown)[1];used[h]=1;var recon=P.recon||st.recon_all;
-      l.setStyle({color:recon?'#fff':c,weight:recon?2:3,dashArray:recon?'6 5':(st.merged&&(id==='AM'||id==='B')?'1 6':null),opacity:1,fillColor:recon?'url(#h-'+h+')':c,fillOpacity:recon?0.95:0.42});
+      var pend=(st.pend||[]).indexOf(id)>=0;if(st.one){l.setStyle({color:c,weight:0,dashArray:null,opacity:0,fillColor:c,fillOpacity:0.55})}else{l.setStyle({color:recon?(pend?c:'#fff'):c,weight:recon?(pend?2.5:2):3,dashArray:pend?'2 7':(recon?'6 5':(st.merged&&(id==='AM'||id==='B')?'1 6':null)),opacity:1,fillColor:recon?'url(#h-'+h+')':c,fillOpacity:recon?(pend?0.6:0.95):0.42})}
       l.unbindTooltip();
-      if(labelsOn){var t=P.short+(recon?' (reconstruction)':'');if(st.merged&&id==='B'&&st.id!=='1990')t='WA231076 (amalgamated): B + house';if(st.merged&&id==='AM'&&st.id!=='1990')t='house parcel, merged 1987';l.bindTooltip(esc(t),{permanent:true,direction:'center',className:'lbl'})}
+      if(labelsOn&&st.one&&id!=='B'){}else if(labelsOn&&st.one){l.bindTooltip('One parcel (reconstruction)',{permanent:true,direction:'center',className:'lbl'})}else if(labelsOn){var t=(h==='woodp'?'Woodland · carved from A':h==='greenp'?'Green · carved from A':P.short)+(recon?' (est.)':'')+((st.pend||[]).indexOf(id)>=0?' · being carved out':'');if(st.merged&&id==='B'&&st.id!=='1990')t='WA231076 (amalgamated): B + house';if(st.merged&&id==='AM'&&st.id!=='1990')t='house parcel, merged 1987';l.bindTooltip(esc(t),{permanent:true,direction:'center',className:'lbl'})}
     });
   });
   var y=st.year;D.markers.forEach(function(m){var show=(m.kind==='recollection')?!!st.recollection:(y>=m.from_&&y<=m.to);if(show&&st.base==='aerial')show=false;if(show)m._l.addTo(map);else map.removeLayer(m._l)});
@@ -106,7 +106,7 @@ function setBase(b){
 }
 function go(i,user){
   idx=i;var st=D.steps[i];$('slider').value=i;setBase(st.base);
-  $('cDate').textContent=st.date;$('cTitle').textContent=st.title;$('cText').textContent=st.text;
+  $('cDate').textContent=st.date;$('cTitle').textContent=st.title;$('cText').textContent=st.short||st.text;var cm=$('cMore');if(cm){$('cLong').textContent=st.text;cm.style.display=(st.short&&st.short!==st.text)?'':'none'}
   $('cImg').innerHTML=st.img?'<a href="'+esc(st.img.src)+'" target="_blank" rel="noopener"><img src="'+esc(st.img.src)+'" alt="">'+esc(st.img.cap)+'</a>':'';
   $('cSrc').querySelector('ul').innerHTML=srcList(st.src);
   try{history.replaceState(null,'','#step='+st.id)}catch(e){}

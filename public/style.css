@@ -65,3 +65,5 @@ button{font:inherit;color:inherit;cursor:pointer}
 html.ghf-shell body{overflow:hidden!important}
 .caphead .ic.sm{margin-left:4px}.foot .attr{font-size:10px;opacity:.8}
 @media (max-width:430px){.brand{max-width:none;padding:7px 10px}.tools{gap:5px}.ic{min-width:34px;padding:0 7px}}
+
+#cMore{font-size:14px;margin:2px 0 6px}#cMore summary{cursor:pointer;color:var(--gold);font-size:13px}#cMore p{margin:6px 0 0;line-height:1.45}
