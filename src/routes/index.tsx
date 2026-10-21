@@ -948,11 +948,10 @@ function DiamondSheet({ index, inst }: { index: number; inst: AvInstitution }) {
         <p className="mt-1 text-sm leading-relaxed text-fg">{d.desc}</p>
       </div>
       <div className="mt-3 rounded-xl border border-brass/30 bg-brass/5 p-3">
-        <p className="text-xs tracking-[0.16em] text-brass uppercase">Our reading (prospective)</p>
+        <p className="text-xs tracking-[0.16em] text-brass uppercase">Our reading</p>
         <p className="mt-1 text-sm leading-relaxed text-muted">{d.reading}</p>
       </div>
       <p className="mt-4 text-[11px] leading-snug text-faint">
-        Our case, prospective. Not a finding of any court.
       </p>
     </div>
   );

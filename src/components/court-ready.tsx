@@ -355,7 +355,7 @@ export function OptionsSheet({ instId, onInst }: { instId: string; onInst: (id: 
         ))}
       </ul>
       <p className="mt-4 text-[11px] leading-snug text-faint">
-        A checklist of steps on the record, not legal advice. Nothing here is a finding of fact or of wrongdoing.
+        A checklist of steps on the record. Nothing here is a finding of fact or of wrongdoing.
       </p>
     </div>
   );

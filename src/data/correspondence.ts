@@ -87,4 +87,4 @@ export function cloudNumber(inst: AvInstitution, index: number): number {
   return m.get(index) ?? 0;
 }
 
-export const corrAbout = "Our case, prospective. Not a finding of any court.";
+export const corrAbout = "";
