@@ -227,3 +227,26 @@ body.sv-open .ghf-v2,body.sv-open .fb-top,body.sv-open .fb-tabs{visibility:hidde
 .plaque .plaque-now{font-size:13px}
 .plaque .plaque-foot{font-size:11px;opacity:.8;margin:8px 0 0}
 html.ghf-inv .plaque{background:#1b4f8a;box-shadow:inset 0 0 0 4px #e4e6eb,inset 0 0 0 6px #1b4f8a,0 2px 6px rgba(0,0,0,.5)}
+
+/* Friends page and Public statements — Sion's Tab agent, 21 Oct 2026 */
+.fr-filters{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.fr-filters button{font:600 13px/1 var(--sb-font,inherit);padding:7px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.fr-filters button[aria-pressed="true"]{background:var(--fbb);border-color:var(--fbb);color:#fff}
+.fr-list{display:grid;gap:8px}
+.fr-a{display:flex;gap:12px;align-items:flex-start;padding:10px;border:1px solid var(--line);border-radius:10px;color:var(--ink);text-decoration:none;background:var(--card)}
+.fr-a:hover,.fr-a:focus-visible{border-color:var(--fbb)}
+.fr-av{width:56px;height:56px;border-radius:50%;object-fit:cover;flex:0 0 56px}
+.fr-t{display:flex;flex-direction:column;gap:3px;min-width:0}
+.fr-t strong{font-size:16px}
+.fr-role{color:var(--muted);font-size:14px;line-height:1.35;overflow-wrap:anywhere}
+.fr-n{font-size:13px;font-weight:600;color:var(--fbb)}
+.fr-n0{color:var(--muted);font-weight:500}
+.st-card .st{border-top:1px solid var(--line);padding:10px 0}
+.st-card .st:first-of-type{border-top:0}
+.st-when{margin:0 0 6px;font-size:13px;font-weight:600;color:var(--muted)}
+.st-q{margin:0 0 6px;padding:2px 0 2px 12px;border-left:3px solid var(--fbb);font-size:16px;line-height:1.45;color:var(--ink);overflow-wrap:anywhere}
+.st-sum{margin:0 0 6px;font-size:15px;line-height:1.45;color:var(--ink)}
+.st-tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 6px;border-radius:4px;background:var(--fbb2);color:var(--fbb);margin-right:4px}
+.st-src{margin:0;font-size:13px;overflow-wrap:anywhere}
+.st-src a{color:var(--fbb)}
+.st-none{margin:0;color:var(--muted)}

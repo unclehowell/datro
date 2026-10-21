@@ -21,6 +21,22 @@ EVL = json.load(open(os.path.join(ROOT, "tools", "ev_links.json"), encoding="utf
 PA = "https://greathousefarmwiki.wordpress.com/press-archive-transcripts/"
 e = lambda s: html.escape(s, quote=True)
 
+# ---------- Friends and public statements (data/friends.json, data/statements.json) ----------
+# The Friends page links every card to its farmbook profile; each profile opens on "Public statements":
+# dated, verbatim (or marked summary) with a source link. A profile with none says so in one line.
+FRIENDS = json.load(open(os.path.join(ROOT, "data", "friends.json"), encoding="utf-8"))["friends"]
+STJ = json.load(open(os.path.join(ROOT, "data", "statements.json"), encoding="utf-8"))
+for _f in FRIENDS:
+    if _f["slug"] not in OUT and _f["slug"] not in PEO:
+        PEO[_f["slug"]] = {"name": _f["name"], "kind": _f.get("kind", "Body"), "entity": True, "initials": _f.get("initials", ""),
+                           "color": _f.get("color", "#65676b"), "about": _f["role"], "avatar": "img/social/av-%s.svg" % _f["slug"]}
+STM = {}
+for _s in STJ["statements"]:
+    for _sl in _s["profiles"]:
+        STM.setdefault(_sl, []).append(_s)
+for _v in STM.values():
+    _v.sort(key=lambda s: s["date"])
+
 def ver(path):
     return hashlib.sha1(open(os.path.join(SITE, path), "rb").read()).hexdigest()[:10]
 
@@ -75,7 +91,7 @@ def head(title, desc, rel, og_img="img/social/william-cover-tractor.webp", canon
 
 def top(active, up=""):
     menu = ''.join('<a href="%s">%s</a>' % (h, e(t)) for h, t in [
-        ("/", "Feed: the story as the papers told it"), ("/videos.html", "Videos and stories"), ("/profiles.html", "All profiles"), ("/u/tab-bot.html", "Tab.bot (AI agent)"),
+        ("/", "Feed: the story as the papers told it"), ("/videos.html", "Videos and stories"), ("/profiles.html", "All profiles"), ("/friends", "Friends: public statements"), ("/u/tab-bot.html", "Tab.bot (AI agent)"),
         ("/timeline.html", "Family archive timeline"), ("/photos.html", "Archive photos"), ("/facebook.html", "Preserved from Facebook"),
         ("https://maps.bucklerfamily.estate/", "The Map Room"), ("https://greathousefarmwiki.wordpress.com/", "The Legal Wiki"), ("https://shop.bucklerfamily.estate/", "Gift Shop & Marketplace"),
         ("/m/login", "Family members: sign in"), ("/api/", "API for AI agents")])
@@ -190,6 +206,50 @@ def write(rel, s):
     s = re.sub(r'<a (?![^>]*\bclass=)', '<a class="ln" ', s)  # classed links keep farmbook's own blue under the shared estate shell
     open(path, "w", encoding="utf-8").write(s)
 
+def statements_of(slug):
+    """Public statements for a profile: rows from data/statements.json; for a newspaper or broadcaster, its reports on farmbook."""
+    rows = list(STM.get(slug, []))
+    if slug in OUT:
+        rows += [{"lead": p["when"] + ":", "quote": p["headline"], "summary": False, "source_title": "The report on farmbook, with its source",
+                  "url": "../n/%s.html" % p["id"], "date": p["date"]} for p in POSTS if p["outlet"] == slug and p.get("headline")]
+        rows.sort(key=lambda s: s["date"])
+    return rows
+
+def statements_html(slug):
+    rows = statements_of(slug)
+    h = '<section class="pf-card st-card" id="statements"><h2 class="pf-h">Public statements</h2>'
+    if not rows:
+        return h + '<p class="st-none">No public statements found yet</p></section>', 0
+    items = []
+    for s in rows:
+        ext = s["url"].startswith("http")
+        q = ('<p class="st-sum"><span class="st-tag">Summary</span> %s</p>' % e(s["quote"])) if s.get("summary") else ('<blockquote class="st-q">“%s”</blockquote>' % e(s["quote"]))
+        items.append('<article class="st"><p class="st-when">%s</p>%s<p class="st-src"><a href="%s"%s>Source: %s</a></p></article>'
+                     % (e(s["lead"]), q, e(s["url"]), ' rel="noopener" target="_blank"' if ext else "", e(s["source_title"])))
+    return h + "".join(items) + "</section>", len(rows)
+
+def build_friends():
+    tags = []
+    for f in FRIENDS:
+        if f["tag"] not in tags: tags.append(f["tag"])
+    btn = '<button type="button" data-f="all" aria-pressed="true">All</button>' + "".join('<button type="button" data-f="%s" aria-pressed="false">%s</button>' % (e(t), e(t.replace("-", " "))) for t in tags)
+    cards = []
+    for f in FRIENDS:
+        x = prof(f["slug"]); n = len(statements_of(f["slug"]))
+        av = (f.get("img") or "/" + x["avatar"]).lstrip("/")
+        cards.append('<article class="fr" id="%s" data-tag="%s"><a class="fr-a" href="u/%s.html#statements"><img class="fr-av" src="%s" alt="" width="56" height="56" loading="lazy">'
+                     '<span class="fr-t"><strong>%s</strong><span class="fr-role">%s</span><span class="fr-n%s">%s</span></span></a></article>'
+                     % (e(f["id"]), e(f["tag"]), e(f["slug"]), e(av), e(f["name"]), e(f["role"]), "" if n else " fr-n0",
+                        ("%d public statement%s" % (n, "" if n == 1 else "s")) if n else "No public statements found yet"))
+    body = ('<main id="main" class="sb-main"><h1 class="sb-h1">Friends <span class="muted">%d</span></h1><div class="pf-card"><p class="muted">Everyone in the story, from landlords to judges. A “friend” here is a person or body in the record; it implies nothing about the relationship. Tap a friend to open their profile at their public statements about the farm, the case, the 1994 cemetery and the council meetings, each with its date and source.</p>'
+            '<div class="fr-filters" role="group" aria-label="Filter friends">%s</div><div class="fr-list">%s</div></div></main>') % (len(FRIENDS), btn, "".join(cards))
+    write("friends.html", head("Friends · farmbook", "Everyone in the Great House Farm story, each with their public statements about the farm, the 1987 case, the 1994 cemetery and council meetings.", "friends.html") + "<body>" + top("pages") + body + tabs("people") + foot())
+    # the data, for agents and the flywheel
+    os.makedirs(os.path.join(SITE, "api"), exist_ok=True)
+    json.dump(STJ, open(os.path.join(SITE, "api", "statements.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump({"friends": FRIENDS}, open(os.path.join(SITE, "api", "friends.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+
+
 def build():
     n_out = len(OUT); n_posts = len(POSTS); nq = sum(len(p.get("comments", [])) for p in POSTS); ns_ = sum(len(p.get("shares", [])) for p in POSTS)
     # feed: the newest posts (2026, Tab.bot) pinned at the top, then the story as the papers told it, oldest first
@@ -271,10 +331,12 @@ def build():
         if shared:
             body += '<h2 class="pf-h" id="shared">Shared</h2>' + "".join(
                 '<a class="pf-c" href="../n/%s.html"><span><strong>%s</strong> shared %s’s post</span><span class="muted">%s · %s</span></a>' % (p["id"], e(x["name"]), e(prof(p["outlet"])["name"]), e(p["headline"]), e(p["when"])) for p in shared)
-        ptabs = '<nav class="pf-tabs">%s<a href="#about">About</a><a href="#photos">Photos</a></nav>' % ("".join('<a href="#%s">%s</a>' % (a, l) for a, l, ok in [("posts", "In the record" if x.get("entity") else "Posts", bool(mine)), ("comments", "Comments", is_person and not (mine and not any(1 for q in POSTS for c in q.get("comments", []) if (c["who"] if isinstance(c, dict) else c[0]) == slug)))] if ok) or '<a href="#posts">Posts</a>')
+        st_sec, n_st = statements_html(slug)
+        count = ("%d statement%s · " % (n_st, "" if n_st == 1 else "s") if n_st else "") + count
+        ptabs = '<nav class="pf-tabs"><a href="#statements">Statements</a>%s<a href="#about">About</a><a href="#photos">Photos</a></nav>' % ("".join('<a href="#%s">%s</a>' % (a, l) for a, l, ok in [("posts", "In the record" if x.get("entity") else "Posts", bool(mine)), ("comments", "Comments", is_person and not (mine and not any(1 for q in POSTS for c in q.get("comments", []) if (c["who"] if isinstance(c, dict) else c[0]) == slug)))] if ok) or '<a href="#posts">Posts</a>')
         prov = ('<p class="pf-prov"><a href="../%s">Restored photo · original</a></p>' % x["avatar_original"]) if x.get("avatar_original") else ""
         page = (cover + '<div class="pf-id"><img class="pf-av" src="../%s" alt="" width="120" height="120"><div><h1>%s%s</h1><p class="muted">%s · %s</p>%s</div></div>' % (x["avatar"], e(x["name"]), ('<span class="sp-ai" title="AI agent">AI</span>' if x.get("ai") else ""), e(x["kind"]), count, prov)
-                + ptabs + '<section class="pf-card" id="about"><h2 class="pf-h">About</h2>%s%s</section>' % (about, "" if is_person else '<p class="muted">A reconstruction of this outlet’s reports, not its own account.</p>')
+                + ptabs + st_sec + '<section class="pf-card" id="about"><h2 class="pf-h">About</h2>%s%s</section>' % (about, "" if is_person else '<p class="muted">A reconstruction of this outlet’s reports, not its own account.</p>')
                 + '<section class="pf-card" id="photos"><h2 class="pf-h">Photos</h2><div class="pf-grid">%s</div></section>' % grid + body)
         write("u/%s.html" % slug, head("%s · farmbook" % x["name"], x["about"], "u/x.html", x.get("cover") or x["avatar"], "u/%s.html" % slug) + "<body>" + top("", "../") + '<main id="main" class="sb-main sb-prof">' + page + "</main>" + tabs("", "../") + foot())
     # profiles index: the cast, grouped
@@ -302,6 +364,7 @@ def build():
     ph_new = [{"id": phid(src), "src": "%s/%s" % (BASE, src), "alt": cap, "url": "%s/n/%s.html#photo=%s" % (BASE, p["id"], phid(src)), "post": p["id"], "social": True} for p in POSTS for src, cap in p.get("photos", [])]
     pj["photos"] = ph_new + ph_old; pj["photo_count"] = len(pj["photos"])
     json.dump(pj, open(pjp, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
+    build_friends()
     print("built: %d profiles (%d outlets, %d people/family), %d posts, %d comments, %d shares" % (n_out + len(PEO), n_out, len(PEO), n_posts, nq, ns_))
 
 if __name__ == "__main__":

@@ -66,3 +66,6 @@
   }
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 })();
+
+/* Friends page filters — Sion's Tab agent */
+(function(){var b=document.querySelectorAll('.fr-filters button');if(!b.length)return;b.forEach(function(x){x.addEventListener('click',function(){b.forEach(function(y){y.setAttribute('aria-pressed',y===x?'true':'false')});document.querySelectorAll('.fr').forEach(function(f){f.hidden=!(x.dataset.f==='all'||f.dataset.tag===x.dataset.f)})})})})();

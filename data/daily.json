@@ -1,0 +1,235 @@
+{
+ "schema": "fb daily v1 — one row per daily highlight report video (make_daily.py)",
+ "days": [
+  {
+   "date": "2026-10-22",
+   "title": "Today at Tŷ Mawr · 22 Oct 2026",
+   "video": "https://wayback.bucklerfamily.estate/pdf/promo/fb-daily/2026-10-22.mp4",
+   "poster": "daily/2026-10-22.jpg",
+   "duration": 54.1,
+   "status": {
+    "requests": 272,
+    "institutions": 54,
+    "answered": 133,
+    "overdue": 4,
+    "due": 22
+   },
+   "next": [
+    {
+     "date": "2026-10-22",
+     "who": "Heneb",
+     "what": "1983 fire and archive custody records request",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0373-heneb-formerly-ggat-historic-environment-record-1983-fire-and-archive-custody-records-r/"
+    },
+    {
+     "date": "2026-10-23",
+     "who": "South Wales Police",
+     "what": "Internal review of 719/26 and chase on death-records request",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0438-south-wales-police-internal-review-of-719-26-and-chase-on-death-records-request/"
+    },
+    {
+     "date": "2026-10-26",
+     "who": "Vale of Glamorgan Council",
+     "what": "00211484 — narrowed request — commemorative tree, Church View Close / Great House Farm",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0473-vale-of-glamorgan-council-00211484-narrowed-request-commemorative-tree-church-view-clos/"
+    }
+   ],
+   "late": [
+    {
+     "date": "2026-10-19",
+     "who": "Vale of Glamorgan Council",
+     "what": "FOI/EIR request - Case Ref/ 00211463 — clarification and refinement of request",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0472-vale-of-glamorgan-council-foi-eir-request-case-ref-00211463-clarification-and-refinemen/"
+    },
+    {
+     "date": "",
+     "who": "Ministry of Justice",
+     "what": "WDTK 'BP vs Buckler 1987' IR",
+     "url": null
+    },
+    {
+     "date": "",
+     "who": "The National Archives",
+     "what": "WDTK 'Great House Farm, Llandough, Cardiff'",
+     "url": null
+    },
+    {
+     "date": "",
+     "who": "Vale of Glamorgan Council",
+     "what": "WDTK 2020 01590 HYB",
+     "url": null
+    }
+   ],
+   "replies": [
+    {
+     "who": "HM Land Registry (Independent Complaints Reviewer)",
+     "short": "Land Registry complaints reviewer",
+     "lane": "hm-land-registry-independent-complaints-reviewer",
+     "date": "2026-10-21",
+     "label": "Complaint outcome",
+     "quote": "She has asked me to confirm that her decision not to investigate further was final.",
+     "summary": "Confirms that the decision not to investigate further is final.",
+     "email": "https://email.bucklerfamily.estate/reference/1a15e19a4609a6ad",
+     "wayback": "https://wayback.bucklerfamily.estate/mail/gm-1a15e19a4609a6ad.txt",
+     "ev": "EV-0370"
+    },
+    {
+     "who": "Archaeology Data Service",
+     "short": "Archaeology Data Service",
+     "lane": "archaeology-data-service",
+     "date": "2026-10-21",
+     "label": "Records disclosed",
+     "quote": "The ADS holds the following metadata records and digital resources",
+     "summary": "The records team lists five metadata records and digital resources on Great House Farm/Tŷ Mawr and describes the catalogue and library searches undertaken.",
+     "email": "https://email.bucklerfamily.estate/reference/1a15daaa6d10bd96",
+     "wayback": "https://wayback.bucklerfamily.estate/mail/gm-1a15daaa6d10bd96.txt",
+     "ev": "EV-0301"
+    },
+    {
+     "who": "Historic England",
+     "short": "Historic England",
+     "lane": "historic-england",
+     "date": "2026-10-21",
+     "label": "Part answer",
+     "quote": "We have also found a record from RACHMW Coflein which may relate to the material from us",
+     "summary": "The records team states no information is held under EIR 12(4)(a) but identifies microfiche archaeological reports transferred to RCAHMW on 12 January 2018 and provides a Coflein link.",
+     "email": "https://email.bucklerfamily.estate/reference/1a15e2cfd24eaf4d",
+     "wayback": "https://wayback.bucklerfamily.estate/mail/gm-1a15e2cfd24eaf4d.txt",
+     "ev": "EV-0375"
+    },
+    {
+     "who": "Crown Prosecution Service",
+     "short": "Crown Prosecution Service",
+     "lane": "crown-prosecution-service",
+     "date": "2026-10-21",
+     "label": "Sent elsewhere",
+     "quote": null,
+     "summary": "The CPS states it cannot accept or consider evidence sent directly by members of the public, has no knowledge of the referenced case, and directs the requester to the police.",
+     "email": "https://email.bucklerfamily.estate/reference/1a15e1f613adbd58",
+     "wayback": "https://wayback.bucklerfamily.estate/mail/gm-1a15e1f613adbd58.txt",
+     "ev": "EV-0320"
+    },
+    {
+     "who": "Government Legal Department (Bona Vacantia)",
+     "short": "Government Legal Department",
+     "lane": "government-legal-department-bona-vacantia",
+     "date": "2026-10-21",
+     "label": "Acknowledged",
+     "quote": null,
+     "summary": "The records team acknowledges receipt of the request and states a response will follow within 20 working days.",
+     "email": "https://email.bucklerfamily.estate/reference/1a15e3779a430212",
+     "wayback": "https://wayback.bucklerfamily.estate/mail/gm-1a15e3779a430212.txt",
+     "ev": "EV-0346"
+    }
+   ],
+   "evidence": [
+    {
+     "title": "Vale register, 1992/00671/RES",
+     "text": "The register holds a 13th document not in the 12 PDFs: the decision notice.",
+     "find": "F-C22-1",
+     "cycle": "cycle-022.md",
+     "date": "2026-10-21"
+    }
+   ],
+   "routes": {
+    "opened": {
+     "ICO complaint": [
+      {
+       "who": "Museum Wales",
+       "what": "ICO complaint: Soldier, horse, visor and lance discovery at Great House Farm (FOI 2026-024)",
+       "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0295-amgueddfa-cymru-museum-wales-soldier-horse-visor-and-lance-discovery-at-great-house-far/",
+       "date": "2026-10-21"
+      }
+     ],
+     "Internal review": [
+      {
+       "who": "RCT Coroner's Service",
+       "what": "Internal review: FOI request for two historical death records",
+       "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0317-coroner-s-service-rct-council-foi-request-for-two-historical-death-records/",
+       "date": "2026-10-21"
+      },
+      {
+       "who": "Counter Terrorism Policing",
+       "what": "Internal review: BP vs Buckler 1987 information request",
+       "url": null,
+       "date": "2026-10-21"
+      },
+      {
+       "who": "Welsh Water",
+       "what": "Internal review: Initial EIR request for farm water records",
+       "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0322-dwr-cymru-welsh-water-initial-eir-request-for-farm-water-records/",
+       "date": "2026-10-21"
+      },
+      {
+       "who": "Glamorgan Archives",
+       "what": "Internal review: FORMAL DISCLOSURE NOTICE & LITIGATION HOLD: Historic Significance, Planning Approva",
+       "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0326-glamorgan-archives-formal-disclosure-notice-litigation-hold-historic-significance-plann/",
+       "date": "2026-10-21"
+      },
+      {
+       "who": "Heneb",
+       "what": "Internal review: HER source file request for Great House Farm (GHF/HENEB/2026-09-20)",
+       "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0372-heneb-formerly-ggat-historic-environment-record-her-source-file-request-for-great-house/",
+       "date": "2026-10-21"
+      },
+      {
+       "who": "Ordnance Survey",
+       "what": "Internal review: Historical OS mapping records for Ty Mawr farm (FOI-26-46)",
+       "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0424-ordnance-survey-historical-os-mapping-records-for-ty-mawr-farm/",
+       "date": "2026-10-21"
+      },
+      {
+       "who": "Prime Minister's Office / Cabinet Office",
+       "what": "Internal review: Request setup confirmation via WhatDoTheyKnow",
+       "url": null,
+       "date": "2026-10-21"
+      },
+      {
+       "who": "RCAHMW",
+       "what": "Internal review: FOI/EIR requests on ironwork, demolition and cataloguing (RC26-0353, RC26-0368, RC2",
+       "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0432-rcahmw-royal-commission-foi-eir-requests-on-ironwork-demolition-and-cataloguing/",
+       "date": "2026-10-21"
+      },
+      {
+       "who": "The National Archives",
+       "what": "Internal review: FOI request for Valuation Office Survey 1910 location",
+       "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0446-the-national-archives-foi-request-for-valuation-office-survey-1910-location/",
+       "date": "2026-10-21"
+      },
+      {
+       "who": "Cadw",
+       "what": "Internal review: FOI request for 1988 Welsh Office/Cadw papers (ATISN 27589)",
+       "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0494-welsh-government-cadw-foi-request-for-1988-welsh-office-cadw-papers/",
+       "date": "2026-10-21"
+      },
+      {
+       "who": "Historic England",
+       "what": "Internal review: Records of Great House Farm / Tŷ Mawr transfer (26/04323)",
+       "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0375-historic-england-records-of-great-house-farm-ty-mawr-transfer/",
+       "date": "2026-10-22"
+      }
+     ],
+     "Chaser": [
+      {
+       "who": "Vale of Glamorgan Council",
+       "what": "Chaser: FOI/EIR request - Case Ref/ 00211463 — clarification and refinement of request (00211463)",
+       "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0472-vale-of-glamorgan-council-foi-eir-request-case-ref-00211463-clarification-and-refinemen/",
+       "date": "2026-10-21"
+      }
+     ]
+    },
+    "ground": {
+     "id": "R3",
+     "label": "the separate 1983 farmhouse registration",
+     "short": 8,
+     "tested": 9,
+     "court_ready": false,
+     "updated": "2026-10-21T23:27:50Z"
+    }
+   },
+   "hope": "Hope is a paper trail. Today it grew longer.",
+   "facebook": null
+  }
+ ],
+ "updated": "2026-10-22"
+}

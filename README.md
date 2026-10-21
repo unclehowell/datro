@@ -6,4 +6,13 @@ Since 21 Oct 2026 a mock social network that retells the Great House Farm (Tŷ M
 - Do NOT re-run `tools/build_posts.py` on index.html any more: it was the old timeline generator. The old family timeline is kept as `site/timeline.html` with its pages in `site/p/`.
 - Check: `node check.mjs` (honesty line, footer, v2 loader, house-list words, private patterns, image sizes).
 
-Not affiliated with Meta or with any outlet shown.
+## The hope wall (22 Oct 2026)
+Sion, 00:00 22 Oct: daily HyperFrames highlight-report videos, the main wall as reverse chronology from today (highlights and key events
+only), and full per-person profiles with their whole chronology, every actor with a face.
+- `python3 tools/build_social.py && python3 tools/build_wall.py` (always both, in that order). build_wall overwrites index.html (the wall),
+  u/<slug>.html (profiles), writes wall/<year>.html, api/wall.json, wall.css, and keeps the press feed as papers.html.
+- Data: `data/daily.json` (written by /home/user/tab/work/fb-daily/make_daily.py), `data/faces.json` (portraits: illustrated, generated from
+  the public role only, never from a real photo; William and Mary keep their family archive photos), `data/statements.json`, `data/friends.json`,
+  and the dartboard roadmap JSON (every reply, request and missed deadline per institution).
+- Push: `python3 tools/push.py "<message> — Sion's Tab agent"` (GitHub API, fetch + fast-forward, force:false).
+- Check: `node check.mjs`.
