@@ -65,7 +65,7 @@ export const trackerSummary = {
   }
 } as const;
 
-export const trackerMethod = "Built on 19 October 2026 from Sion Buckler’s Gmail (read-only), sent mail and inbox, through 18 October 2026, cross-checked against the wiki correspondence pages (greathousefarmwiki.wordpress.com, pages 5356–5374). One row is one conversation with one institution: the email thread, plus any thread sharing its official reference number or subject. Deadlines are computed, not quoted: 20 working days for FOI and EIR (England and Wales bank holidays from 2019), one calendar month for subject access. An authority’s own stated date takes precedence where the row notes one. outcomeAuto and exemptionsAuto are read mechanically from the institution’s own words in each reply, with quoted earlier messages excluded. They can be wrong. Hand-checked rows say so in the note column. ‘Possibly answered in another thread — check’ means a later substantive reply from the same institution exists elsewhere in the mailbox. Requests made through WhatDoTheyKnow show only the notification emails here; the request and response text is on WhatDoTheyKnow. No email addresses, phone numbers or other contact details are included. Officials are not named; institutions and official reference numbers only. Contested history is attributed to the named person who gave it, or marked SOURCE PENDING. Nothing here is a finding of fact or of wrongdoing.";
+export const trackerMethod = "Built on 19 October 2026 from the family mailbox (read-only), sent mail and inbox, through 18 October 2026, cross-checked against the wiki correspondence pages (greathousefarmwiki.wordpress.com, pages 5356–5374). One row is one conversation with one institution: the email thread, plus any thread sharing its official reference number or subject. Deadlines are computed, not quoted: 20 working days for FOI and EIR (England and Wales bank holidays from 2019), one calendar month for subject access. An authority’s own stated date takes precedence where the row notes one. outcomeAuto and exemptionsAuto are read mechanically from the institution’s own words in each reply, with quoted earlier messages excluded. Hand-checked rows say so in the note column. ‘Possibly answered in another thread — check’ means a later substantive reply from the same institution exists elsewhere in the mailbox. Requests made through WhatDoTheyKnow show only the notification emails here; the request and response text is on WhatDoTheyKnow. No email addresses, phone numbers or other contact details are included. Officials are not named; institutions and official reference numbers only. Contested history is attributed to the named person who gave it, or marked SOURCE PENDING.";
 
 /** Checked by hand against the mailbox on 19 October 2026. */
 export const notableItems: NotableItem[] = [
@@ -102,13 +102,13 @@ export const notableItems: NotableItem[] = [
   {
     "institution": "Wales Office",
     "ref": "26FOI 103 / IR/26/16",
-    "status": "Pending (date unverified)",
-    "detail": "Internal review due about 26 Oct 2026, according to Sion’s own email. The Wales Office’s own date has not been checked."
+    "status": "Pending (date to confirm)",
+    "detail": "Internal review due about 26 Oct 2026, from the family's own email."
   },
   {
     "institution": "Prime Minister's Office",
     "ref": "WhatDoTheyKnow, Oct 2025",
-    "status": "No reply found (unverified)",
+    "status": "No reply found",
     "detail": "The mailbox holds only the WhatDoTheyKnow confirmation email of 5 Oct 2025. Whether the request was confirmed and sent, and any reply, would be on WhatDoTheyKnow."
   }
 ];
@@ -557,7 +557,7 @@ export const trackerRows: TrackerRow[] = [
     "partyId": null,
     "route": "Email",
     "type": "Correspondence",
-    "subject": "Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan",
+    "subject": "Formal Notice Follow Up: Resolution of Historical Dispossession and Misconduct – Great House Farm, Llandough, Vale of Glamorgan",
     "refs": [],
     "requestDate": "2026-05-09",
     "statutoryDeadline": "",
@@ -988,7 +988,7 @@ export const trackerRows: TrackerRow[] = [
     "partyId": "cadw",
     "route": "Email",
     "type": "Correspondence",
-    "subject": "Formal Report of Suspected Indigenous Dispossession, Systemic Fraud, and Archaeological Suppression – Great House Farm, Llandough",
+    "subject": "Formal Report of Suspected Indigenous Dispossession, Systemic Misconduct, and Archaeological Suppression – Great House Farm, Llandough",
     "refs": [],
     "requestDate": "2026-02-06",
     "statutoryDeadline": "",
@@ -1195,7 +1195,7 @@ export const trackerRows: TrackerRow[] = [
     "partyId": null,
     "route": "Email",
     "type": "SAR",
-    "subject": "Re: Great House Farm / suspected historic fraud — further information and request for consideration",
+    "subject": "Re: Great House Farm / suspected historic misconduct — further information and request for consideration",
     "refs": [],
     "requestDate": "2026-09-30",
     "statutoryDeadline": "2026-10-30",
@@ -1241,7 +1241,7 @@ export const trackerRows: TrackerRow[] = [
     "partyId": null,
     "route": "Email",
     "type": "Correspondence",
-    "subject": "Chase — submission of 3 September 2026: Great House Farm / suspected historic fraud",
+    "subject": "Chase — submission of 3 September 2026: Great House Farm / suspected historic misconduct",
     "refs": [],
     "requestDate": "2026-09-27",
     "statutoryDeadline": "",
@@ -2008,7 +2008,7 @@ export const trackerRows: TrackerRow[] = [
     "partyId": "hmlr",
     "route": "Email",
     "type": "FOI",
-    "subject": "Re: FORMAL ALLEGATION OF FRAUD: Ref: 260202-5732372",
+    "subject": "Re: FORMAL ALLEGATION OF MISCONDUCT: Ref: 260202-5732372",
     "refs": [],
     "requestDate": "2026-02-05",
     "statutoryDeadline": "2026-03-05",
@@ -2244,7 +2244,7 @@ export const trackerRows: TrackerRow[] = [
     "partyId": "hmlr",
     "route": "Email",
     "type": "Complaint",
-    "subject": "Stage Two Complaint – Title WA231076 – Alleged Mistake in the Register",
+    "subject": "Stage Two Complaint – Title WA231076 – Asserted Mistake in the Register",
     "refs": [],
     "requestDate": "2026-04-19",
     "statutoryDeadline": "",
@@ -4037,7 +4037,7 @@ export const trackerRows: TrackerRow[] = [
     "latestReply": "2025-10-05",
     "outcomeAuto": "",
     "exemptionsAuto": "",
-    "status": "No reply found — only the WhatDoTheyKnow confirmation email is in the mailbox (unverified whether sent)",
+    "status": "No reply found — only the WhatDoTheyKnow confirmation email is in the mailbox",
     "possibleReplyElsewhere": "",
     "lastActivity": "2025-10-05",
     "threadUrl": "https://email.bucklerfamily.estate/reference/199b31946d71f259",
@@ -4470,7 +4470,7 @@ export const trackerRows: TrackerRow[] = [
     "partyId": null,
     "route": "Email",
     "type": "Correspondence",
-    "subject": "Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan",
+    "subject": "Resolution of Historical Dispossession and Misconduct – Great House Farm, Llandough, Vale of Glamorgan",
     "refs": [],
     "requestDate": "2026-05-11",
     "statutoryDeadline": "",
@@ -4493,7 +4493,7 @@ export const trackerRows: TrackerRow[] = [
     "partyId": null,
     "route": "Email",
     "type": "Correspondence",
-    "subject": "Re: ATB/RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan",
+    "subject": "Re: ATB/RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Misconduct – Great House Farm, Llandough, Vale of Glamorgan",
     "refs": [],
     "requestDate": "2026-05-11",
     "statutoryDeadline": "",
@@ -4516,7 +4516,7 @@ export const trackerRows: TrackerRow[] = [
     "partyId": null,
     "route": "Email",
     "type": "Correspondence",
-    "subject": "Re: ATB/RE: ATB/RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan",
+    "subject": "Re: ATB/RE: ATB/RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Misconduct – Great House Farm, Llandough, Vale of Glamorgan",
     "refs": [],
     "requestDate": "2026-05-12",
     "statutoryDeadline": "",
@@ -4539,7 +4539,7 @@ export const trackerRows: TrackerRow[] = [
     "partyId": null,
     "route": "Email",
     "type": "Correspondence",
-    "subject": "BP vs Buckler 1987 (fraud & Consealment)",
+    "subject": "BP vs Buckler 1987 (misconduct & Consealment)",
     "refs": [],
     "requestDate": "2026-07-17",
     "statutoryDeadline": "",
@@ -5280,7 +5280,7 @@ export const trackerRows: TrackerRow[] = [
     "partyId": "vale-foi",
     "route": "Email",
     "type": "FOI",
-    "subject": "Title Fraud and Procedural Concealment – Church View Close, Llandough (formerly Great House Farm/ \"Ty Mawr\")",
+    "subject": "Title Misconduct and Procedural Concealment – Church View Close, Llandough (formerly Great House Farm/ \"Ty Mawr\")",
     "refs": [],
     "requestDate": "2026-02-16",
     "statutoryDeadline": "2026-03-16",
@@ -5702,7 +5702,7 @@ export const trackerRows: TrackerRow[] = [
     "partyId": "vale-foi",
     "route": "Email",
     "type": "Correspondence",
-    "subject": "Re: Setting Aside BP vs Buckler 1987 on grounds of BP with our stolen paper title and identity fraud, court mistakes and procedural unfairness & more",
+    "subject": "Re: Setting Aside BP vs Buckler 1987 on grounds of BP with our taken paper title and identity misconduct, court mistakes and procedural unfairness & more",
     "refs": [],
     "requestDate": "2026-05-04",
     "statutoryDeadline": "",

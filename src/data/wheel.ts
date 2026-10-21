@@ -88,7 +88,7 @@ function synthParty(inst: AvInstitution): Party {
       date: fmt(e.d),
       ref: e.r.join(", ") || undefined,
       url: emailUrl(lastReply ?? last).url,
-      detail: `Latest: ${fmt(e.d)}, “${e.s}” (${outcomeInfo[e.o].label.toLowerCase()}). Built from the mailbox; outcomes are read mechanically and can be wrong.`,
+      detail: `Latest: ${fmt(e.d)}, “${e.s}” (${outcomeInfo[e.o].label.toLowerCase()}). Built from the mailbox.`,
     };
   }
   return { id: inst.id, name: inst.name, short: inst.short, kind: kindOf(inst), remit: "", cells };

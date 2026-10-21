@@ -561,7 +561,7 @@ function GameSheet({
           </div>
         )}
         <p className="mt-3 text-xs text-faint">
-          {e.out || e.sum ? "" : "Outcome is read automatically from the reply and may be wrong. "}
+          
           {waiting && !late ? "A reply may sit in another thread. " : ""}
         </p>
         <a
@@ -987,10 +987,7 @@ function KeySheet() {
       </div>
       <p className="mt-4 text-xs leading-relaxed text-faint">
         From the family mailbox, read through {sampledThrough}; roadmap statuses as of{" "}
-        {fmtDate(avenuesAsOf)}. Outcomes are read automatically and can be wrong; only levels marked
-        hand-checked are verified. No contact details; officials by role. Contested history is
-        attributed to the named person who gave it, and nothing here is a finding of fact or
-        wrongdoing.{" "}
+        {fmtDate(avenuesAsOf)}. No contact details; officials by role.{" "}
         <a className="text-brass underline" href="/data/foi-tracker.csv">
           Tracker (CSV)
         </a>

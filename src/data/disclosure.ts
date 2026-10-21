@@ -154,7 +154,7 @@ export const parties: Party[] = [
         url: g("1a0c1e36871ebfd1"),
         feeMarker: true,
         detail:
-          "The Clerk refused under section 12. He priced staff time at £25 an hour, so £450 is 18 hours, then estimated 224 sets of minutes from 2002–2016. The letter says both “about 20 minutes to read each set” and “about 10 minutes to assess each set”, and reaches “over 2240 minutes” (about 37 hours). The request had not asked for a reading of fourteen years of minutes. It asked the Council to say whether post-2002 records are held. He offered a narrower window, for example 2002–2006, and said the other matters would wait for the October meeting.",
+          "The Clerk refused under section 12. He priced staff time at £25 an hour, so £450 is 18 hours, then estimated 224 sets of minutes from 2002–2016. The letter gives both “about 20 minutes to read each set” and “about 10 minutes to assess each set”, and reaches “over 2240 minutes” (about 37 hours). The request had not asked for a reading of fourteen years of minutes. It asked the Council to say whether post-2002 records are held. He offered a narrower window, for example 2002–2006, and said the other matters would wait for the October meeting.",
       },
       chase: {
         status: "dormant",
@@ -415,7 +415,7 @@ export const parties: Party[] = [
         ref: "Item 7 — recorded basis for “not in scope”",
         url: g("1a1309dc33154ec9"),
         detail:
-          "On 25 August the museum said searches had found records of other archaeological discoveries at Great House Farm and Church Farm, treated as not in scope. You asked for the recorded basis (item 7). On 7, 8 and 12 October they repeated that Amgueddfa Cymru does not hold a separate search log, file note or other document of that assessment. Staff, they say, decided those records were not the alleged discovery of a soldier, horse remains and armour. They say nothing remains withheld. That is their “no more” on the schedule itself.",
+          "On 25 August the museum said searches had found records of other archaeological discoveries at Great House Farm and Church Farm, treated as not in scope. You asked for the recorded basis (item 7). On 7, 8 and 12 October they repeated that Amgueddfa Cymru does not hold a separate search log, file note or other document of that assessment. Their replies record that staff decided those records were not the reported discovery of a soldier, horse remains and armour, and that nothing remains withheld. That is their “no more” on the schedule itself.",
       },
       review: {
         status: "nuisance",
@@ -555,7 +555,7 @@ export const parties: Party[] = [
           },
         ],
         detail:
-          "ATISN 26-0010: the Welsh Government says searches for the farm name, Western Ground Rents Ltd and BP Properties Ltd found no files, and that “any routine records would have been destroyed in line with the corporate retention schedule applied at the time”, or may never have reached it (“disposition would have been carried out by a predecessor body”). Its property, deeds and lease records are “not classed as ‘public records’” and are kept until the property is sold or the lease ends. An internal review can be asked for within 40 working days (by 14 Dec 2026, computed). ATISN 27589: Cadw refused the July–December 1988 request under FOIA section 14(2) as “substantially similar” to ATISN 27021, saying “no new information has been generated or become available”; the letter names the ICO and does not mention an internal review. Earlier on this ring: your 10 October letter refers to a finding that the 1988 listing file was disposed of, the “nothing further is held” position on the file itself.",
+          "ATISN 26-0010: the Welsh Government's reply records that searches for the farm name, Western Ground Rents Ltd and BP Properties Ltd found no files, and that “any routine records would have been destroyed in line with the corporate retention schedule applied at the time”, or may never have reached it (“disposition would have been carried out by a predecessor body”). Its property, deeds and lease records are “not classed as ‘public records’” and are kept until the property is sold or the lease ends. An internal review can be asked for within 40 working days (by 14 Dec 2026, computed). ATISN 27589: Cadw refused the July–December 1988 request under FOIA section 14(2) as “substantially similar” to ATISN 27021, saying “no new information has been generated or become available”; the letter names the ICO and does not mention an internal review. Earlier on this ring: your 10 October letter refers to a finding that the 1988 listing file was disposed of, the “nothing further is held” position on the file itself.",
       },
       chase: {
         status: "dormant",
@@ -1050,7 +1050,7 @@ export const parties: Party[] = [
     name: "Crown Prosecution Service",
     short: "CPS",
     kind: "authority",
-    remit: "Prosecuting authority. Asked to consider the Buckler case’s concerns about suspected historic fraud.",
+    remit: "Prosecuting authority. Asked to consider the Buckler case’s concerns about suspected historic misconduct.",
     cells: {
       open: {
         status: "dormant",
@@ -1060,7 +1060,7 @@ export const parties: Party[] = [
         ref: "Re-opening of BP vs Buckler 1987",
         url: g("1a0693988a9de5f0"),
         detail:
-          "On 3 September 2026 you sent the CPS a submission asking it to consider the Buckler case’s concerns about suspected historic fraud connected with BP Properties Ltd v Buckler. An automatic reply and an acknowledgement followed.",
+          "On 3 September 2026 you sent the CPS a submission asking it to consider the Buckler case’s concerns about suspected historic misconduct connected with BP Properties Ltd v Buckler. An automatic reply and an acknowledgement followed.",
       },
       chase: {
         status: "dormant",
@@ -1088,7 +1088,7 @@ export const parties: Party[] = [
         correspondent: "Relatives (not named here)",
         ref: "Testimony, not an official record",
         detail:
-          "Relatives have been asked, privately and one at a time, what they remember of the farm, the eviction, the demolition and the years after. Nobody is named on this chart. What any relative says is labelled as that named person’s testimony until a record supports it, and is only published with that person’s agreement.",
+          "Relatives have been asked, privately and one at a time, what they remember of the farm, the eviction, the demolition and the years after. Nobody is named on this chart. What any relative recalls is labelled as that named person’s testimony until a record supports it, and is only published with that person’s agreement.",
       },
       reply: {
         status: "evidence",
