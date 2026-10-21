@@ -85,10 +85,10 @@ function facts(e){
 function open(id){
   var e=D.entities.concat(MEM).filter(function(x){return x.id===id})[0];if(!e)return;
   var src=(e.sources||[]).map(function(u){return '<li><a href="'+esc(u)+'" rel="noopener">'+esc(u.replace(/^https?:\/\/(www\.)?/,'').slice(0,70))+'</a></li>'}).join('');
-  var desc=(e.description||'').replace(' Our case, prospective. Not a finding of any court.','');
+  var desc=(e.description||'').replace(' ','');
   $('#dlgc').innerHTML='<button class="ib x" type="button" id="dx" aria-label="Close">×</button><p class="kicker">'+esc(D.types[e.type]||(e.member?'Member':''))+(e.area?' · '+esc(e.area):'')+'</p><h1>'+esc(e.name)+'</h1>'+(desc?'<p class="lede">'+esc(desc)+'</p>':'')+facts(e)+
    (src?'<details class="src"><summary>Sources · last checked '+esc(e.last_checked||'')+'</summary><ul>'+src+'</ul></details>':'')+
-   '<p class="own"><a class="btn" href="'+(e.member?'join/':'p/'+esc(e.id)+'/')+'">'+(e.member?'Update your profile':'Open full page')+'</a> <a href="join/?for='+esc(e.id)+'">Is this yours?</a></p>'+(e['case']?'<p class="small">Our case, prospective. Not a finding of any court.</p>':'');
+   '<p class="own"><a class="btn" href="'+(e.member?'join/':'p/'+esc(e.id)+'/')+'">'+(e.member?'Update your profile':'Open full page')+'</a> <a href="join/?for='+esc(e.id)+'">Is this yours?</a></p>'+(e['case']?'':'');
   var d=$('#dlg');if(d.showModal&&!d.open)d.showModal();$('#dx').onclick=function(){d.close()};
   if(location.hash!=='#/p/'+id)history.replaceState(null,'','#/p/'+id);
 }
