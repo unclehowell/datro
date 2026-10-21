@@ -29,7 +29,7 @@ OUTLETS = {
 
 PEOPLE = {
  "williams-buckler-family": dict(name="Williams / Buckler family", kind="Family page", about="Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth. The family archive’s own page. Its posts are written for this archive from the record each one cites.",
-     avatar="img/crest.svg", avatar_credit="The family crest drawn for this archive (the farmhouse)", color="#1877f2"),
+     avatar="img/social/av-wb.svg", avatar_credit="Initials on a plain circle (no photograph of a family page; no arms)", color="#1877f2"),
  "william-buckler": dict(name="William (Billy) Buckler", about="Farmer at Great House Farm (Tŷ Mawr), Llandough; son of Mary (Nancy) Williams. In the papers as Bill or Billy Buckler. His comments here are his own words as the papers printed them.",
      avatar="img/social/william-avatar.webp", avatar_credit="From the chainsaw report photograph, April 1988 (Legal Wiki EV-0086 · GHF-E090-N07)",
      avatar_original="img/social-orig/william-avatar-original.jpg",

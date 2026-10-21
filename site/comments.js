@@ -215,7 +215,7 @@
     var img = LBX.querySelector(".fbl-img"); img.src = p.src; img.alt = p.alt;
     LBX.querySelector(".fbl-prev").hidden = i === 0; LBX.querySelector(".fbl-next").hidden = i === list.length - 1;
     var side = LBX.querySelector(".fbl-side"); side.textContent = ""; side.scrollTop = 0;
-    var hd = el("div", "ph fbl-hd"); hd.innerHTML = '<a class="pav" href="/index.html"><img src="/img/crest.svg" alt="" width="40" height="40"></a>';
+    var hd = el("div", "ph fbl-hd"); hd.innerHTML = '<a class="pav" href="/index.html"><img src="/img/social/av-wb.svg" alt="" width="40" height="40"></a>';
     var who = el("div"); who.innerHTML = '<a class="pn" href="/index.html">Williams / Buckler family</a>'; var d = el("div", "pd"); d.textContent = (p.when ? p.when + " · " : "") + "Photo " + (i + 1) + " of " + list.length; who.appendChild(d); hd.appendChild(who); side.appendChild(hd);
     var cap = el("div", "pt fbl-cap"); if (p.cap) { cap.innerHTML = p.cap.innerHTML; } else cap.textContent = p.alt; side.appendChild(cap);
     if (p.post) { var sp = el("a", "fbl-post", "See the post"); sp.href = "/p/" + p.post + ".html"; side.appendChild(sp); }
