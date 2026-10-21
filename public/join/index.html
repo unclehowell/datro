@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Join Cedwyn Estate · directory</title>
+<meta name="description" content="Create, update or remove your Cedwyn Estate profile. Free membership for residents and businesses in Llandough and Leckwith.">
+<meta property="og:title" content="Join Cedwyn Estate · directory">
+<meta property="og:description" content="Create, update or remove your Cedwyn Estate profile. Free membership for residents and businesses in Llandough and Leckwith.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="../favicon.ico">
+<link rel="stylesheet" href="../style.css?v=1.0.0">
+<script>(function(){function go(){if(document.querySelector('script[src*="ghf-lang.js"]'))return;var s=document.createElement("script");s.src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js";s.setAttribute("data-site","directory");s.async=true;document.head.appendChild(s);}function later(){setTimeout(go,600);}if(document.readyState==="complete")later();else window.addEventListener("load",later);})();</script>
+<script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.1.0"></script>
+</head>
+<body>
+<main class="prof">
+  <div class="top"><a class="ib back" href="../" aria-label="Back to search">←</a><a class="brand" href="../" aria-label="Cedwyn Estate directory home"><img src="../brand/cedwyn-shield.svg" alt="Cedwyn Estate brand device (shield)" width="28" height="34"><span>Cedwyn Estate</span></a><span></span></div>
+  <h1>Join Cedwyn Estate</h1>
+  <p class="lede">Free for residents and businesses in Llandough, Leckwith and Michaelston-le-Pit. Nothing you send is shown publicly until you confirm by email and we approve it.</p>
+  <form id="jf" class="jf" novalidate>
+    <fieldset><legend>I am</legend>
+      <label class="r"><input type="radio" name="kind" value="resident" checked> A resident</label>
+      <label class="r"><input type="radio" name="kind" value="business"> A business</label>
+      <label class="r"><input type="radio" name="kind" value="organisation"> A club, church, school or group</label>
+    </fieldset>
+    <fieldset><legend>I want to</legend>
+      <label class="r"><input type="radio" name="action" value="create" checked> Create a profile</label>
+      <label class="r"><input type="radio" name="action" value="update"> Update a profile</label>
+      <label class="r"><input type="radio" name="action" value="remove"> Remove a profile</label>
+    </fieldset>
+    <input type="hidden" name="profile" id="profile">
+    <p id="forp" class="note" hidden></p>
+    <label>Name to show <input name="name" required maxlength="120" autocomplete="name"></label>
+    <label class="biz">Business or organisation <input name="org" maxlength="160" autocomplete="organization"></label>
+    <label>Your email (to confirm; never shown unless you tick below) <input name="email" type="email" required maxlength="200" autocomplete="email"></label>
+    <label>Phone (optional) <input name="phone" type="tel" maxlength="40" autocomplete="tel"></label>
+    <label>Area <select name="area"><option>Llandough</option><option>Leckwith</option><option>Michaelston-le-Pit</option></select></label>
+    <label>What can you help people with? <textarea name="offer" maxlength="600" rows="3" placeholder="e.g. garden design, tutoring, catering, dog walking"></textarea></label>
+    <label>Website (optional) <input name="website" type="url" maxlength="200" placeholder="https://"></label>
+    <label class="c"><input type="checkbox" name="show_email" value="1"> Show my email on my profile</label>
+    <label class="c"><input type="checkbox" name="member" value="1" checked> Make me a member of the Cedwyn Estate membership pilot (free; one vote on published rules)</label>
+    <label class="c"><input type="checkbox" name="consent" value="1" required> I agree to the <a href="../privacy/">privacy notice</a>. I can edit or delete my profile at any time.</label>
+    <label class="hp" aria-hidden="true">Leave blank <input name="website2" tabindex="-1" autocomplete="off"></label>
+    <button class="btn" type="submit">Send</button>
+    <p id="msg" class="msg" role="status" aria-live="polite"></p>
+  </form>
+  <footer><nav><a href="../join/">Join Cedwyn Estate</a> · <a href="../privacy/">Privacy &amp; your data</a></nav><p class="small">Businesses and organisations from public registers and listings. Residents appear only if they create their own profile.</p></footer>
+</main>
+<script src="../join.js?v=1.0.0"></script>
+</body></html>
