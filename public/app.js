@@ -1,9 +1,9 @@
-/* maps.bucklerfamily.estate — Tŷ Mawr title map 1877–1987 · v1.0.0 · Sion's Tab agent
+/* maps.bucklerfamily.estate — Tŷ Mawr title map 1877–1987 · v1.2.0 · Sion's Tab agent
    Our case, prospective. Not a finding of any court. */
 (function(){
 "use strict";
 var $=function(id){return document.getElementById(id)};
-var moved=false,allB=null,D,G,map,overlay=null,curBase=null,layers={},labelsOn=true,mode='case',idx=0,playing=false,muted=false,timer=null;
+var moved=false,allB=null,D,G,GA=null,pA=null,pAh=null,pAt=null,map,overlay=null,curBase=null,layers={},labelsOn=true,mode='case',idx=0,playing=false,muted=false,timer=null;
 var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
 var BASES={'1878':'OS six-inch, surveyed 1878–79','1900':'OS 25-inch, revised 1898 (pub. 1900)','1920':'OS 25-inch, revised 1915 (pub. 1920)','1947':'OS 25-inch, revised 1941 (pub. 1947)','aerial':"Today's aerial (Esri World Imagery)"};
 var voice=$('voice');
@@ -12,7 +12,7 @@ function shellH(){var m=0;document.querySelectorAll('.ghf-ui').forEach(function(
 var shTicks=0,shI=setInterval(function(){shellH();if(++shTicks>20)clearInterval(shI)},400);window.addEventListener('resize',shellH);
 
 try{muted=localStorage.getItem('maps-muted')==='1'}catch(e){}
-Promise.all([fetch('data/story.json').then(function(r){return r.json()}),fetch('data/parcels.geojson').then(function(r){return r.json()})]).then(function(a){D=a[0];G=a[1];init()});
+Promise.all([fetch('data/story.json').then(function(r){return r.json()}),fetch('data/parcels.geojson').then(function(r){return r.json()}),fetch('data/parcelA.geojson').then(function(r){return r.ok?r.json():null}).catch(function(){return null})]).then(function(a){D=a[0];G=a[1];GA=a[2];init()});
 
 function srcList(keys){return (keys||[]).map(function(k){var s=D.sources[k];if(!s)return'';return '<li>'+(s.u?'<a href="'+esc(s.u)+'" target="_blank" rel="noopener">'+esc(s.t)+'</a>':esc(s.t))+'</li>'}).join('')}
 
@@ -31,6 +31,12 @@ function init(){
     lyr.on('click',function(e){var mh=map.getSize().y,ph=($('panel').getBoundingClientRect().height||0),side=window.innerWidth>window.innerHeight&&window.innerHeight<520;L.popup({maxWidth:290,maxHeight:Math.max(160,Math.round((side?mh:mh-ph)*0.62)),autoPanPaddingTopLeft:[10,64],autoPanPaddingBottomRight:[side?Math.min(window.innerWidth*.46,420)+10:10,side?10:ph+10]}).setLatLng(e.latlng).setContent(popup(f.properties.id)).openOn(map)});
     layers[f.properties.id]={lyr:lyr,f:f};
   });
+  // Parcel A: one dotted outline round the whole of A, from its creation in 1877 to the end
+  if(GA&&D.parcelA){
+    pAh=L.geoJSON(GA,{renderer:svgR,interactive:false,style:{color:'#000',weight:5.5,opacity:.45,dashArray:'1 8',lineCap:'round',fill:false}});
+    pA=L.geoJSON(GA,{renderer:svgR,interactive:false,style:{color:'#fff',weight:3,opacity:1,dashArray:'1 8',lineCap:'round',fill:false}});
+    pAt=L.tooltip({permanent:true,direction:'top',className:'lbl lblA',offset:[0,-4],interactive:false}).setLatLng(D.parcelA.labelAt).setContent(esc(D.parcelA.label||'Parcel A'));
+  }
   D.markers.forEach(function(m){
     var rec=m.kind==='recollection';
     var cm=L.circleMarker([m.lat,m.lon],{radius:rec?7:6,color:rec?'#ffd27a':'#fff',weight:2,dashArray:rec?'3 3':null,fillColor:rec?'#ffb020':(m.kind==='feature'?'#5fb7ff':'#e9e2d0'),fillOpacity:.9});
@@ -82,22 +88,29 @@ function popup(id){
    '<div style="margin-top:4px" class="k">'+esc(P.conf_text)+'</div>'+
    '<div class="k" style="margin-top:6px">Sources</div><ul style="margin:2px 0;padding-left:16px">'+srcList(P.src)+'</ul></div>';
 }
+function stepIdx(sid){for(var i=0;i<D.steps.length;i++)if(D.steps[i].id===sid)return i;return -1}
+function subShown(id){var lf=D.parcelA&&D.parcelA.labelFrom;if(!lf||!lf[id])return true;var k=stepIdx(lf[id]);return k<0||idx>=k}
 function render(){
   var st=D.steps[idx];if(!st)return;var used={};
+  var aOn=!!(pA&&!st.one&&idx>=stepIdx(D.parcelA.from));
+  [pAh,pA].forEach(function(g){if(!g)return;if(aOn){if(!map.hasLayer(g))g.addTo(map)}else if(map.hasLayer(g))map.removeLayer(g)});
+  if(pA&&aOn){pA.bringToFront()}
+  if(pAt){if(aOn&&labelsOn){if(!map.hasLayer(pAt))pAt.addTo(map)}else if(map.hasLayer(pAt))map.removeLayer(pAt)}
   Object.keys(layers).forEach(function(id){
     var L_=layers[id],P=L_.f.properties,h=holderOf(st,id);var on=!!h;
     L_.lyr.eachLayer(function(l){
       if(!on){l.setStyle({opacity:0,fillOpacity:0});return}
       var c=(D.holders[h]||D.holders.unknown)[1];used[h]=1;var recon=P.recon||st.recon_all;
       var pend=(st.pend||[]).indexOf(id)>=0;if(st.one){l.setStyle({color:c,weight:0,dashArray:null,opacity:0,fillColor:c,fillOpacity:0.55})}else{l.setStyle({color:recon?(pend?c:'#fff'):c,weight:recon?(pend?2.5:2):3,dashArray:pend?'2 7':(recon?'6 5':(st.merged&&(id==='AM'||id==='B')?'1 6':null)),opacity:1,fillColor:recon?'url(#h-'+h+')':c,fillOpacity:recon?(pend?0.6:0.95):0.42})}
+      var sub=!st.one&&!subShown(id);if(sub)l.setStyle({opacity:0,weight:0});
       l.unbindTooltip();
-      if(labelsOn&&st.one&&id!=='B'){}else if(labelsOn&&st.one){l.bindTooltip('One parcel (reconstruction)',{permanent:true,direction:'center',className:'lbl'})}else if(labelsOn){var syn=(h==='woodp'||h==='greenp');var t=(h==='woodp'?'Woodland':h==='greenp'?'Green':P.short)+(syn?((st.pend||[]).indexOf(id)>=0?' · forming':' · from A'):(recon?' (est.)':''));if(st.merged&&id==='B'&&st.id!=='1990')t='WA231076 (amalgamated): B + house';if(st.merged&&id==='AM'&&st.id!=='1990')t='house parcel, merged 1987';l.bindTooltip(esc(t),{permanent:true,direction:'center',className:'lbl'})}
+      if(sub){}else if(labelsOn&&st.one&&id!=='B'){}else if(labelsOn&&st.one){l.bindTooltip('One parcel (reconstruction)',{permanent:true,direction:'center',className:'lbl'})}else if(labelsOn){var syn=(h==='woodp'||h==='greenp');var t=(h==='woodp'?'Woodland':h==='greenp'?'Green':P.short)+(syn?((st.pend||[]).indexOf(id)>=0?' · forming':' · from A'):(recon?' (est.)':''));if(st.merged&&id==='B'&&st.id!=='1990')t='WA231076 (amalgamated): B + house';if(st.merged&&id==='AM'&&st.id!=='1990')t='house parcel, merged 1987';l.bindTooltip(esc(t),{permanent:true,direction:'center',className:'lbl'})}
     });
   });
   var y=st.year;D.markers.forEach(function(m){var show=(m.kind==='recollection')?!!st.recollection:(y>=m.from_&&y<=m.to);if(show&&st.base==='aerial')show=false;if(show)m._l.addTo(map);else map.removeLayer(m._l)});
   var lg='<div class="k" style="color:var(--mut)">'+(mode==='case'?'Our case (prospective)':'Records held')+' at '+esc(st.date)+'</div>';
   Object.keys(used).forEach(function(k){lg+='<div><span class="sw" style="background:'+D.holders[k][1]+'"></span>'+esc(D.holders[k][0])+'</div>'});
-  lg+='<div><span class="hatchkey"></span> reconstruction / estimate</div>';$('legend').innerHTML=lg;
+  if(aOn)lg+='<div><span class="akey"></span> Parcel A, whole (from 1877)</div>';lg+='<div><span class="hatchkey"></span> reconstruction / estimate</div>';$('legend').innerHTML=lg;
 }
 function setBase(b){
   if(b===curBase)return;curBase=b;$('baseName').textContent=BASES[b]||b;
