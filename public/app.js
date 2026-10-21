@@ -5,6 +5,7 @@ var $=function(s){return document.querySelector(s)};
 var STOP={who:1,in:1,can:1,cedwyn:1,estate:1,me:1,my:1,a:1,an:1,the:1,help:1,with:1,i:1,need:1,to:1,for:1,near:1,someone:1,somebody:1,anyone:1,is:1,there:1,do:1,does:1,of:1,and:1,or:1,our:1,us:1,we:1,please:1,get:1,find:1,local:1,around:1,here:1,area:1,on:1,at:1,be:1,good:1,best:1,where:1,what:1,which:1,will:1,could:1,would:1,some:1};
 var SYN=[
  [/car\b|cars|mechanic|mot\b|garage|servicing|tyre|tire|exhaust|van|motorbike|motorcycle|bike|vehicle|brakes|clutch/,['motors'],['car repair','car dealer','tyres','motor','motorcycles','exhaust','vehicle','garage','car parts']],
+ [/pint|beer|ale|lager|pub\b|drinks?\b/,['food'],['pub','bar','inn','legion','social club','club']],
  [/eat|food|lunch|dinner|breakfast|takeaway|coffee|cafe|café|pint|drink|beer|pub|restaurant|cater|party|burger|chips|cake|bake/,['food'],['restaurant','cafe','café','takeaway','pub','food','caterer','catering','coffee','bakery','bar']],
  [/build|builder|extension|roof|electric|plumb|scaffold|fence|fencing|glaz|window|sign|landscap|garden design|gardener|lawn|install|fire|clean/,['trades'],['construction','builder','roof','electrical','plumbing','scaffold','fenc','glaz','sign','garden','landscap','installation','fire','clean']],
  [/kid|child|children|nursery|school|teach|tutor|learn|lesson|course|train|skills|education|class/,['education'],['school','nursery','childcare','training','academy','education','pre-school']],
