@@ -521,6 +521,10 @@ sc('III', 'ghf-19590101-1', '1959-01-01', '1959', "1959 tenancy offer", 'Great H
    "Western Ground Rents offers Mary a tenancy of the farmhouse and garden. She refuses, stating that the house is hers through her grandfather and that documents prove it.",
    [w('/1962-possession-order/#refusal-1959', 'The 1962 Possession Order — 1959 refusal', 'Court record'), JUDG],
    ledger={'S': 'Attempt 3: tenancy of her own farmhouse and garden offered to Mary (refused)'})
+sc('III', 'ghf-19610329-2', '1961-03-29', '29 March 1961', "The 1961 deed", 'Woodland (later title WA735527)', 'A',
+   'Deed',
+   "Western Ground Rents, South Western Brick & Tile Co Ltd and Cardiff City Corporation sign a deed with a plan. The woodland register WA735527 later recites it against land coloured pink, now in the woodland title. The deed and plan have not yet been seen, so what land it touches and what it did are not known. It is not a Buckler family sale.",
+   [{'type': 'Deed', 'title': 'EV-0040 — Deed with plan between WGR, South Western Brick & Tile and Cardiff City Corporation, 29 March 1961 (recited on WA735527; not yet held) (wiki evidence page)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0040-1961-wgr-brick-tile-deed/'}])
 sc('III', 'ghf-19621211-1', '1962-12-11', '11 December 1962', "The 1962 possession order", 'Cardiff County Court', 'A',
    'Court record',
    "On 11 December 1962 Cardiff County Court (Judge Temple Morris QC) orders possession of the farmhouse and garden, with mesne profits from 1955, against Frederick and Mary, on Western Ground Rents' claim. The order is not enforced.",
@@ -552,8 +556,8 @@ sc('III', 'ghf-19670101-1', '1967-01-01', '1967', "Death of Frederick Buckler", 
 # ---------------------------------------------------------------- ACT IV
 sc('IV', 'ghf-19691231-1', '1969-12-31', '31 December 1969', "Conveyance to BP Pension Trust", 'Great House Farm', 'AB',
    'Land Registry record',
-   "On 31 December 1969 Western Ground Rents conveys Parcel B, and an interest in the 1962 order on Parcel A, to BP Pension Trust Ltd (our case: the land as a whole did not pass). The conveyance is not on the Land Registry files.",
-   [LRT('conveyances', 'Land Registry Titles — conveyances')],
+   "In February 1969 British Petroleum agrees to buy the whole of Western Ground Rents for its pension fund. On 31 December 1969 Western Ground Rents conveys Parcel B, and an interest in the 1962 order on Parcel A, to BP Pension Trust Ltd. The 1987 judgment calls it a sale of \"Great House Farm, including the farmhouse and garden\"; no deed to Parcel A has been found. The conveyance is not on the Land Registry files.",
+   [LRT('conveyances', 'Land Registry Titles — conveyances'), {'type': 'Newspaper', 'title': 'EV-0288 — Press snippets, Nov 1968 – Feb 1969: BP buys Western Ground Rents for its pension fund (wiki evidence page)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0288-snippets-only-press-on-the-1968-69-takeover-battle-for-western-ground-rents-ltd-en/'}],
    ledger={'B': 'Freehold: BP Pension Trust (Bute → WGR → BP, by deed)',
            'S': 'Held by BP Pension Trust: the 1962 order and the case against Mary (no deed to Parcel A; the 1969 root conveyance now missing)'})
 sc('IV', 'ghf-19720725-1', '1972-07-25', '1970 – 72', "Village green and planning permission", 'Planning office', 'AB',
