@@ -13,6 +13,5 @@ Rents, the Land Registry titles, and the institutions whose own names changed.
 - Aliases nomlecture.bucklerfamily.estate and nolecture.bucklerfamily.estate forward here.
 - Static site: Cloudflare Pages project bucklerfamily-nomenclature, branch `nomenclature`, output `public/`, no build step.
 
-Our case, prospective. Not a finding of any court.
 
 — Sion's Tab agent
