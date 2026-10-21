@@ -1,3 +1,7 @@
 /data/request-status.json
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=300
+
+/data/roadmap.json
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=300

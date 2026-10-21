@@ -42,6 +42,7 @@ import { Chip, DetailModal, Row, fmtDate } from "@/components/detail-modal";
 import { ArtifactsSheet, CorrSheet, CourtTiles, OptionsSheet, courtInstitutions } from "@/components/court-ready";
 import { DisclosureRecord } from "@/components/disclosure-record";
 import { ArchaeologyTimeline } from "@/components/archaeology-timeline";
+import { RoadmapRamps } from "@/components/roadmap-ramps";
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -303,9 +304,24 @@ function RampRoadmap({ inst }: { inst: AvInstitution }) {
   );
 }
 
+/** Dartboard institution names → roadmap lane names (the manifest's wording). */
+function roadmapName(name: string) {
+  const n = name.toLowerCase();
+  if (n.includes("land registry")) return "HM Land Registry";
+  if (n.includes("cadw") || n.includes("welsh government")) return "Welsh Government / Cadw";
+  if (n.includes("south wales police")) return "South Wales Police";
+  if (n.includes("llandough")) return "Llandough Community Council";
+  if (n.includes("vale of glamorgan")) return "Vale of Glamorgan Council";
+  if (n.includes("national archives")) return "The National Archives";
+  if (n.includes("hmcts") || n.includes("courts")) return "Ministry of Justice / HMCTS";
+  if (n.includes("glamorgan archives")) return "Glamorgan Archives";
+  return name;
+}
+
 function Home() {
   const [instId, setInstId] = useState("llandough");
   const [sheet, setSheet] = useState<Sheet | null>(null);
+  const [view, setView] = useState<"roadmap" | "ladder">("roadmap");
   const inst = useMemo(
     () => institutions.find((i) => i.id === instId) ?? institutions[0],
     [instId],
@@ -324,7 +340,29 @@ function Home() {
         />
       </section>
 
-      <section aria-label="Avenues game">
+      <div role="tablist" aria-label="Climb view" className="mx-auto flex rounded-full border border-line bg-surface p-1 text-sm">
+        {(
+          [
+            ["roadmap", "Roadmap · dates"],
+            ["ladder", "Ladder · rungs"],
+          ] as const
+        ).map(([k, label]) => (
+          <button
+            key={k}
+            type="button"
+            role="tab"
+            aria-selected={view === k}
+            onClick={() => setView(k)}
+            className={`rounded-full px-4 py-1.5 ${view === k ? "bg-brass font-semibold text-brass-ink" : "text-muted"}`}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {view === "roadmap" && <RoadmapRamps preferName={roadmapName(inst.name)} />}
+
+      <section aria-label="Avenues game" hidden={view !== "ladder"}>
         <AvenueGame
           instId={inst.id}
           onInstChange={(id) => {
