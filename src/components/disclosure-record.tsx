@@ -15,7 +15,7 @@ type Conv = {
 type Inst = { name: string; n: number; cnt: Record<string, number>; convs: Conv[] };
 const D = data as unknown as {
   generated: string; asOf: string; classes: string[]; hub: string;
-  totals: { institutions: number; requests: number; sent: number; received: number; attachments: number; met: number; missed: number; missed_late?: number; missed_no_reply?: number; pending: number; clocked: number };
+  totals: { institutions: number; requests: number; sent: number; received: number; attachments: number; met: number; missed: number; pending: number; clocked: number };
   byClass: Record<string, number>; months: { m: string; c: Record<string, number> }[]; institutions: Inst[];
 };
 
@@ -127,7 +127,7 @@ export function DisclosureRecord() {
           [T.institutions, "institutions"],
           [T.attachments, "documents sent to us"],
           [T.met, "clocks met"],
-          [T.missed, T.missed_late != null ? `clocks missed: ${T.missed_late} late, ${T.missed_no_reply} no reply` : "clocks missed"],
+          [T.missed, "clocks missed"],
           [T.pending, "not yet due"],
         ].map(([n, l]) => (
           <div key={String(l)} className="rounded-lg border border-line px-1 py-2">
