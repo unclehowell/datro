@@ -1456,6 +1456,7 @@ INSERT INTO nodes VALUES ('doc-hmlr-D260928','document','HM Land Registry — D2
 INSERT INTO nodes VALUES ('doc-hmlr-historical-title-great-house-farm-location-lead','document','HMLR historical title location lead','{"holder": "HM Land Registry", "reference": "draft r-6678427177936368728 (not sent)", "date": "2026-10-15"}');
 INSERT INTO nodes VALUES ('doc-hmrc-FOI2026-118465','document','HMRC FOI2026/118465 acknowledgement','{"holder": "HMRC Information Rights Unit", "reference": "FOI2026/118465", "date": "2026-10-20"}');
 INSERT INTO nodes VALUES ('doc-ico-IC-546505-W6P0','document','ICO Case Reference IC-546505-W6P0','{"holder": "", "reference": "", "date": ""}');
+INSERT INTO nodes VALUES ('doc-ico-IC-586450-N8N0','document','ICO Case Reference IC-586450-N8N0','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-itv-wales-ty-mawr-media-location-lead','document','ITV Wales archive location lead for Ty Mawr / Great House Farm media, 14 October 2026','{"holder": "ITV Wales / ITV Cymru Archive", "reference": "none (initial enquiry re Ty Mawr Llandoche)", "date": "2026-10-14"}');
 INSERT INTO nodes VALUES ('doc-llandough-cc-internal-review-request-2026-10-12','document','Llandough Community Council — internal review request, new FOI/EIR, SAR (12 October 2026)','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-llandough-cc-narrower-foi-eir-2026-10-20','document','Llandough Community Council — narrower FOI/EIR request (20 October 2026)','{"holder": "", "reference": "", "date": ""}');
