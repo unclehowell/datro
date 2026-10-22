@@ -3,7 +3,7 @@
   var main = document.getElementById('docs'); if (!main) return;
   var WORDS = {
     en: {html: 'Read online', pdf: 'Download PDF', also: 'Also in', v: 'v'},
-    cy: {html: 'Darllen ar-lein', pdf: 'Lawrlwytho PDF', also: 'Hefyd yn', v: 'f'},
+    cy: {html: 'Darllen ar-lein', pdf: 'Lawrlwytho PDF', also: 'Hefyd yn', v: 'v'},
     es: {html: 'Leer en línea', pdf: 'Descargar PDF', also: 'También en', v: 'v'}
   };
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]; }); }

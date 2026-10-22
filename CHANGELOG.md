@@ -6,6 +6,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Rules: DOCS-STAN
 
 ## [Unreleased]
 
+## [docs-0.1.1] - 2026-10-22
+
+### Fixed
+- Landing page: the version shows as `v0.1.0` in every language (the Welsh list read `f0.1.0`).
+
 ## [docs-0.1.0] - 2026-10-22
 
 ### Added
