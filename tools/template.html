@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Great House Farm · the land changing hands</title>
+<title>The Land Changing Hands · Great House Farm</title>
 <meta name="description" content="Tŷ Mawr, Llandough: Parcel A, its three parts A1–A3, and Parcel B, passing between the families, companies and councils that held them, 1877 to today.">
 <meta property="og:title" content="Great House Farm · the land changing hands">
 <meta property="og:description" content="Every known holder of Tŷ Mawr's land around one ring, and each conveyance, sale, lease, order and registration as an arc with its year.">
@@ -15,6 +15,7 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-u
 a{color:#9cc7ff}
 a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .wrap{max-width:1180px;margin:0 auto;padding:14px 12px 24px}
+.intro{font-size:15px;color:var(--muted);margin:6px 2px 10px}
 header h1{font-size:clamp(22px,4.4vw,34px);line-height:1.15;margin:4px 0 4px;letter-spacing:.2px}
 header p{margin:0 0 10px;color:var(--muted);font-size:15px}
 .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:6px 0 10px}
@@ -65,14 +66,16 @@ header p{margin:0 0 10px;color:var(--muted);font-size:15px}
 footer{margin-top:22px;text-align:center;color:var(--muted);font-size:14px}
 /* svg text */
 .nlab{fill:#f3f1ff;paint-order:stroke;stroke:#1d1938;stroke-width:4px}
-.alab{font-weight:600;paint-order:stroke;stroke:#1d1938;stroke-width:4px;fill:#fff}
+.alab{font-weight:400;paint-order:stroke;stroke:#1d1938;stroke-width:3px;fill:#e9e6fb}
+.tlab{font-weight:800;fill:#151229;letter-spacing:.5px;pointer-events:none}
+.poo{cursor:pointer;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
 .pcode{font-weight:800;fill:#151229;text-anchor:middle;dominant-baseline:central}
-.arc{fill:none;stroke-width:3.2;stroke-linecap:round}
-.hit{fill:none;stroke:transparent;stroke-width:20;cursor:pointer;pointer-events:stroke}
+.arc{fill:none;stroke-width:11;stroke-linecap:butt}
+.hit{fill:none;stroke:transparent;stroke-width:26;cursor:pointer;pointer-events:stroke}
 g.t{transition:opacity .2s}
 g.t.dim{opacity:.07}
 g.t.dim .hit{pointer-events:none}
-g.t.sel .arc{stroke-width:5.5}
+g.t.sel .arc{stroke-width:15}
 g.n.dim{opacity:.25}
 @media (max-width:760px){
  .stage{display:block}
@@ -81,13 +84,12 @@ g.n.dim{opacity:.25}
  .mlegend{display:block}
 }
 </style>
+<script type="text/plain" data-ghf-hold src="https://bucklerfamily.estate/ghf-lang/basecamp.js?hold"></script>
+<script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.1.2"></script>
 </head>
 <body>
 <div class="wrap">
-<header>
-<h1>Great House Farm · the land changing hands</h1>
-<p>Tŷ Mawr, Llandough, 1877 to today. Every known holder sits on the ring; each arc carries a parcel from one hand to the next, with its year. Tap an arc for the record.</p>
-</header>
+<p class="intro">Tŷ Mawr, Llandough, 1545 to today. Every known holder sits on the ring; each arc carries a parcel from one hand to the next, with its year and title number. Tap an arc for the record.</p>
 <div class="bar">
  <div class="seg" role="group" aria-label="View"><button id="vRing" aria-pressed="true">Ring</button><button id="vList" aria-pressed="false">List</button></div>
 </div>
@@ -104,7 +106,7 @@ g.n.dim{opacity:.25}
 </section>
 <section id="list" aria-label="Chronology"></section>
 </main>
-<footer>© the Williams-Buckler family of Tŷ Mawr · <a href="https://bucklerfamily.estate/licence/">Licence</a></footer>
+<footer data-ghf-keep>© the Williams-Buckler family of Tŷ Mawr · <a href="https://bucklerfamily.estate/licence/">Licence</a></footer>
 </div>
 <div class="sheet-bg" id="sheetBg"><div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shT"></div></div>
 <script>
@@ -112,34 +114,42 @@ const D=/*__DATA__*/null;
 const svg=document.getElementById('ring');
 const NS='http://www.w3.org/2000/svg';
 const $=s=>document.querySelector(s);
-const P=Object.fromEntries(D.parties.map((p,i)=>[p.id,Object.assign(p,{i})]));
+const RP=D.parties.filter(p=>!p.centre);RP.forEach((p,i)=>{p.i=i});
+const P=Object.fromEntries(D.parties.map(p=>[p.id,p]));
 const PC=Object.fromEntries(D.parcels.map(p=>[p.id,p]));
-const Y0=1870,Y1=2010;
-const STOPS=[[1870,[108,140,255]],[1915,[79,209,197]],[1950,[155,225,93]],[1968,[255,209,102]],[1985,[255,140,66]],[2010,[255,77,109]]];
+const Y0=1540,Y1=2010;
+const STOPS=[[1540,[226,170,255]],[1800,[160,120,255]],[1870,[108,140,255]],[1915,[79,209,197]],[1950,[155,225,93]],[1968,[255,209,102]],[1985,[255,140,66]],[2010,[255,77,109]]];
 function ycol(y){y=Math.max(Y0,Math.min(Y1,y));for(let i=1;i<STOPS.length;i++){const[a,ca]=STOPS[i-1],[b,cb]=STOPS[i];if(y<=b){const f=(y-a)/(b-a);return'rgb('+ca.map((c,k)=>Math.round(c+(cb[k]-c)*f)).join(',')+')'}}return'#fff'}
-const gradCSS='linear-gradient(90deg,'+STOPS.map(([y,c])=>`rgb(${c}) ${((y-Y0)/(Y1-Y0)*100).toFixed(1)}%`).join(',')+')';
+function yf(y){y=Math.max(Y0,Math.min(Y1,y));return y<1870?(y-Y0)/(1870-Y0)*0.2:0.2+(y-1870)/(Y1-1870)*0.8}
+const gradCSS='linear-gradient(90deg,'+STOPS.map(([y,c])=>`rgb(${c}) ${(yf(y)*100).toFixed(1)}%`).join(',')+')';
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let rot=0,focus='all',sel=null;
-const N=D.parties.length;
-function cfg(){const mob=svg.getBoundingClientRect().width<640;return mob?{mob,half:560,R:272,nfs:30,afs:26,cr:13,cfs:12}:{mob,half:600,R:318,nfs:20,afs:15,cr:11,cfs:10.5}}
+let rot=0,focus=new Set(),sel=null;
+const N=RP.length;
+const inFocus=ps=>focus.size===0||ps.some(p=>focus.has(p));
+const pcode=p=>p==='X'?'W':p;
+function cfg(){const mob=svg.getBoundingClientRect().width<640;return mob?{mob,half:560,R:272,nfs:30,afs:15.5,cr:10,cfs:10,sw:13,pfs:76}:{mob,half:600,R:318,nfs:20,afs:9.5,cr:8,cfs:8,sw:10,pfs:58}}
 let C=null,R=320,labelMode='full',lastZ=1;
 function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
 function ang(i){return(-90+rot+i*360/N)*Math.PI/180}
 function pos(i,r){const a=ang(i);return[Math.cos(a)*r,Math.sin(a)*r]}
 function legendHTML(){
- return `<h2>Year</h2><div class="grad" style="background:${gradCSS}"></div><div class="ticks"><span>1870</span><span>1900</span><span>1940</span><span>1970</span><span>2010</span></div>
+ return `<h2>Year</h2><div class="grad" style="background:${gradCSS}"></div><div class="ticks" style="position:relative;height:15px">${[1540,1870,1940,2010].map((y,i,a)=>`<span style="position:absolute;left:${(yf(y)*100).toFixed(1)}%;transform:translateX(${i===0?0:i===a.length-1?-100:-50}%)">${y}</span>`).join('')}</div>
  <div class="sec"><h2>Record</h2>
- <div class="lrow"><svg width="44" height="10"><line x1="2" y1="5" x2="42" y2="5" stroke="#fff" stroke-width="3"/></svg>record held</div>
- <div class="lrow"><svg width="44" height="10"><line x1="2" y1="5" x2="42" y2="5" stroke="#fff" stroke-width="3" stroke-dasharray="7 5"/></svg>per secondary source · record not seen</div></div>
- <div class="sec"><h2>Parcel (circle on the arc)</h2>${D.parcels.map(p=>`<div class="lrow"><span class="dot" style="background:${p.color}">${p.id==='X'?'W':p.id}</span>${esc(p.name)}</div>`).join('')}</div>`}
+ <div class="lrow"><svg width="44" height="10"><line x1="2" y1="5" x2="42" y2="5" stroke="#fff" stroke-width="8"/></svg>record held</div>
+ <div class="lrow"><svg width="44" height="10"><line x1="2" y1="5" x2="42" y2="5" stroke="#fff" stroke-width="8" stroke-dasharray="7 5"/></svg>per secondary source · record not seen</div>
+ <div class="lrow"><svg width="44" height="14"><line x1="2" y1="7" x2="42" y2="7" stroke="#ffd166" stroke-width="12"/><text x="22" y="7.5" font-size="8" font-weight="800" fill="#151229" text-anchor="middle" dominant-baseline="central">WA…</text></svg>title number on the line</div>
+ <div class="lrow"><span style="font-size:22px;width:44px;text-align:center" data-ghf-keep>💩</span>${esc(D.origin.label)}</div></div>
+ <div class="sec"><h2>Parcel (circle on the arc)</h2>${D.parcels.map(p=>`<div class="lrow"><span class="dot" style="background:${p.color}">${pcode(p.id)}</span>${esc(p.name)}</div>`).join('')}</div>`}
 $('#legendD').innerHTML=legendHTML();$('#legendM').innerHTML=legendHTML();
 // chips
 const chips=$('#chips');
-[['all','All parcels',null]].concat(D.parcels.map(p=>[p.id,p.id==='X'?'Woods':p.id,p.color])).forEach(([id,lab,c])=>{
+[['all','All',null]].concat(D.parcels.map(p=>[p.id,p.chip||(p.id==='X'?'Woods':p.name.replace(/^Parcel [A-Z0-9]+ · /,'')),p.color])).forEach(([id,lab,c])=>{
  const b=document.createElement('button');b.className='chip';b.dataset.p=id;b.setAttribute('aria-pressed',id==='all');
- b.innerHTML=(c?`<span class="dot" style="background:${c}">${id==='X'?'W':id}</span>`:'')+esc(c?(PC[id].name.replace(/^Parcel [A-Z0-9]+ · /,'')):lab);
+ b.innerHTML=(c?`<span class="dot" style="background:${c}">${pcode(id)}</span>`:'')+esc(lab);
  if(!c)b.style.paddingLeft='12px';
- b.onclick=()=>{focus=id;chips.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p===id));applyFocus();renderList()};chips.appendChild(b)});
+ b.onclick=()=>{const y=scrollY;if(id==='all')focus.clear();else if(focus.has(id))focus.delete(id);else focus.add(id);syncChips();applyFocus();renderList();scrollTo(0,y)};chips.appendChild(b)});
+function syncChips(){chips.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p==='all'?focus.size===0:focus.has(x.dataset.p)));
+ const u=new URL(location);if(focus.size)u.searchParams.set('p',[...focus].join(','));else u.searchParams.delete('p');history.replaceState(null,'',u)}
 // geometry
 function bez(p0,c,p1,t){const u=1-t;return[u*u*p0[0]+2*u*t*c[0]+t*t*p1[0],u*u*p0[1]+2*u*t*c[1]+t*t*p1[1]]}
 function draw(){
@@ -152,30 +162,43 @@ function draw(){
  // parallel index per unordered pair
  const pairCount={};
  const TT=D.transfers.slice().sort((a,b)=>a.year-b.year);
- const placed=[];
+ const placed=[[-C.pfs*0.7,-C.pfs*0.7,C.pfs*0.7,C.pfs*0.7]];
  TT.forEach(tr=>{
-  const a=P[tr.from].i,b=P[tr.to].i,key=[tr.from,tr.to].sort().join('|');
+  const fromC=!!P[tr.from].centre,key=[tr.from,tr.to].sort().join('|');
   const idx=pairCount[key]=(pairCount[key]===undefined?0:pairCount[key]+1);
-  const p0=pos(a,R-12),p1=pos(b,R-12);
+  const b=P[tr.to].i,p1=pos(b,R-12);let p0,c;
+  if(fromC){// born at the centre: from the 💩 out to the registered proprietor
+   const L1=Math.hypot(p1[0],p1[1]);p0=[p1[0]/L1*C.pfs*0.62,p1[1]/L1*C.pfs*0.62];
+   const mid=[(p0[0]+p1[0])/2,(p0[1]+p1[1])/2];c=[mid[0]-p1[1]/L1*55,mid[1]+p1[0]/L1*55];
+  }else{
+  const a=P[tr.from].i;p0=pos(a,R-12);
   const mid=[(p0[0]+p1[0])/2,(p0[1]+p1[1])/2];
   const d=Math.hypot(p0[0]-p1[0],p0[1]-p1[1])/(2*R);
   let m=0.25+0.45*(1-d)-0.16*idx; 
   // nudge straight-through arcs sideways so they do not all cross the exact centre
-  let c=[mid[0]*m,mid[1]*m];
-  if(d>0.85){const nx=-(p1[1]-p0[1]),ny=p1[0]-p0[0],L=Math.hypot(nx,ny);const s=(idx%2?-1:1)*(60+40*idx);c=[c[0]+nx/L*s,c[1]+ny/L*s]}
+  c=[mid[0]*m,mid[1]*m];
+  if(d>0.85){const nx=-(p1[1]-p0[1]),ny=p1[0]-p0[0],L=Math.hypot(nx,ny);const s=(idx%2?-1:1)*(70+44*idx);c=[c[0]+nx/L*s,c[1]+ny/L*s]}
+  }
   const col=ycol(tr.year);
   const g=el('g',{class:'t','data-id':tr.id,'data-p':tr.parcels.join(' '),tabindex:0,role:'button','aria-label':`${tr.label}: ${tr.parcels.map(x=>PC[x].name).join(', ')}, ${P[tr.from].name} to ${P[tr.to].name}`},gA);
   const dpath=`M${p0[0].toFixed(1)},${p0[1].toFixed(1)} Q${c[0].toFixed(1)},${c[1].toFixed(1)} ${p1[0].toFixed(1)},${p1[1].toFixed(1)}`;
-  el('path',{d:dpath,class:'arc',stroke:col,'stroke-dasharray':tr.status==='dashed'?'9 7':'none'},g);
+  el('path',{d:dpath,class:'arc',stroke:col,'stroke-width':C.sw,'stroke-dasharray':tr.status==='dashed'?(C.sw*1.6)+' '+(C.sw*0.9):'none'},g);
   // arrowhead at p1
-  const tx=p1[0]-c[0],ty=p1[1]-c[1],tl=Math.hypot(tx,ty),ux=tx/tl,uy=ty/tl,s=13;
+  const tx=p1[0]-c[0],ty=p1[1]-c[1],tl=Math.hypot(tx,ty),ux=tx/tl,uy=ty/tl,s=C.sw*1.9;
   el('path',{d:`M${p1[0]},${p1[1]} L${p1[0]-ux*s-uy*s*.55},${p1[1]-uy*s+ux*s*.55} L${p1[0]-ux*s+uy*s*.55},${p1[1]-uy*s-ux*s*.55}Z`,fill:col},g);
   el('path',{d:dpath,class:'hit'},g);
+  if(tr.title){// the title number rides inside the thick stroke, reading left to right
+   const rev=p1[0]<p0[0],tid='tp-'+tr.id,q0=rev?p1:p0,q1=rev?p0:p1;
+   el('path',{id:tid,d:`M${q0[0].toFixed(1)},${q0[1].toFixed(1)} Q${c[0].toFixed(1)},${c[1].toFixed(1)} ${q1[0].toFixed(1)},${q1[1].toFixed(1)}`,fill:'none',stroke:'none'},g);
+   const tt=el('text',{class:'tlab','font-size':(C.sw*0.82).toFixed(1),'dominant-baseline':'central',stroke:col,'stroke-width':C.sw*0.3,'paint-order':'stroke'},g);
+   const tp=el('textPath',{href:'#'+tid,startOffset:'50%','text-anchor':'middle'},tt);tp.textContent=tr.title;
+   const qm=bez(p0,c,p1,0.5),tw=tr.title.length*C.sw*0.62;placed.push([qm[0]-tw/2,qm[1]-tw/2,qm[0]+tw/2,qm[1]+tw/2]);
+  }
   // label placement: try several t values, avoid overlaps
   const fs=C.afs,lab=labelMode==='year'?String(tr.year):tr.label,cw=C.cr*2+2;
-  const w=lab.length*fs*0.58+tr.parcels.length*cw+8,h=Math.max(fs,C.cr*2)+6;
+  const w=lab.length*fs*0.56+tr.parcels.length*cw+8,h=Math.max(fs,C.cr*2)+6;
   let best=null,bestO=1e9;
-  const cands=[];for(const off of [0,1,-1,2,-2])for(const t of [0.5,0.42,0.58,0.34,0.66,0.27,0.73])cands.push([t,off]);
+  const cands=[];for(const off of [0,1,-1,2,-2])for(const t of (tr.title?[0.74,0.26,0.8,0.2,0.68,0.32]:[0.5,0.42,0.58,0.34,0.66,0.27,0.73]))cands.push([t,off]);
   for(const [t,off] of cands){
    const q0=bez(p0,c,p1,t),qa=bez(p0,c,p1,Math.min(1,t+.01)),dx=qa[0]-q0[0],dy=qa[1]-q0[1],dl=Math.hypot(dx,dy)||1;
    const q=[q0[0]-dy/dl*off*(h+2),q0[1]+dx/dl*off*(h+2)];const box=[q[0]-w/2,q[1]-h/2,q[0]+w/2,q[1]+h/2];
@@ -184,13 +207,18 @@ function draw(){
   placed.push(best.box);
   const lg=el('g',{class:'lab'},g);
   let x=best.box[0]+C.cr+1;
-  tr.parcels.forEach(pid=>{el('circle',{cx:x,cy:best.q[1],r:C.cr,fill:PC[pid].color,stroke:'#1d1938','stroke-width':2},lg);const t=el('text',{x:x,y:best.q[1]+.5,class:'pcode','font-size':C.cfs},lg);t.textContent=pid==='X'?'W':pid;x+=cw});
+  tr.parcels.forEach(pid=>{el('circle',{cx:x,cy:best.q[1],r:C.cr,fill:PC[pid].color,stroke:'#1d1938','stroke-width':1.5},lg);const t=el('text',{x:x,y:best.q[1]+.5,class:'pcode','font-size':C.cfs},lg);t.textContent=pcode(pid);x+=cw});
   const t=el('text',{x:x-C.cr+4,y:best.q[1]+fs*0.36,class:'alab','font-size':fs},lg);t.textContent=lab;
   g.addEventListener('click',e=>{e.stopPropagation();open(tr.id)});
   g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(tr.id)}});
  });
+ // the centre: titles first registered without a conveyance from the occupiers
+ const og=el('g',{class:'origin',role:'button',tabindex:0,'aria-label':D.origin.label},gN);
+ el('circle',{cx:0,cy:0,r:C.pfs*0.62,fill:'#1d1938',stroke:'#ffffff33','stroke-width':2},og);
+ const pt=el('text',{x:0,y:C.pfs*0.06,class:'poo','font-size':C.pfs,'text-anchor':'middle','dominant-baseline':'central','data-ghf-keep':''},og);pt.textContent='💩';
+ og.addEventListener('click',e=>{e.stopPropagation();openOrigin()});og.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openOrigin()}});
  // nodes
- D.parties.forEach(p=>{
+ RP.forEach(p=>{
   const [x,y]=pos(p.i,R);const a=ang(p.i)*180/Math.PI;
   const g=el('g',{class:'n','data-id':p.id},gN);
   el('circle',{cx:x,cy:y,r:8,fill:'#f3f1ff',stroke:'#1d1938','stroke-width':3},g);
@@ -207,10 +235,11 @@ function draw(){
 function applyFocus(){
  const used=new Set();
  svg.querySelectorAll('g.t').forEach(g=>{
-  const ps=g.dataset.p.split(' ');const on=(focus==='all'||ps.includes(focus))&&(!sel||g.dataset.id===sel);
+  const ps=g.dataset.p.split(' ');const on=inFocus(ps)&&(!sel||g.dataset.id===sel);
   g.classList.toggle('dim',!on);g.classList.toggle('sel',!!sel&&g.dataset.id===sel);
   if(on){const tr=D.transfers.find(x=>x.id===g.dataset.id);used.add(tr.from);used.add(tr.to)}});
- svg.querySelectorAll('g.n').forEach(g=>g.classList.toggle('dim',(focus!=='all'||sel)&&!used.has(g.dataset.id)));
+ svg.querySelectorAll('g.n').forEach(g=>g.classList.toggle('dim',(focus.size||sel)&&!used.has(g.dataset.id)));
+ const og=svg.querySelector('g.origin');if(og)og.style.opacity=(focus.size||sel)&&!used.has('origin')?.3:1;
 }
 // view box pan/zoom
 let vb={x:-540,y:-540,w:1080};let FULL=1080;
@@ -235,12 +264,18 @@ svg.addEventListener('click',e=>{if(moved){e.stopPropagation();moved=false;retur
 // native pinch on touch while unzoomed is handled by the page; a two-finger gesture zooms the ring once zoomed
 // sheet
 function srcList(s){return'<ul>'+s.map(x=>`<li><a href="${esc(x.u)}" target="_blank" rel="noopener">${esc(x.t)}</a></li>`).join('')+'</ul>'}
-function chipsFor(ps){return ps.map(p=>`<span class="dot" style="background:${PC[p].color}">${p==='X'?'W':p}</span> ${esc(PC[p].name)}`).join('<br>')}
+function chipsFor(ps){return ps.map(p=>`<span class="dot" style="background:${PC[p].color}">${pcode(p)}</span> ${esc(PC[p].name)}`).join('<br>')}
+function openOrigin(){sel=null;applyFocus();const o=D.origin;
+ $('#sheet').innerHTML=`<button class="x" aria-label="Close" id="shX">×</button><h2 id="shT"><span data-ghf-keep>💩</span> The centre</h2><div class="date">${esc(o.label)}</div>
+ <dl>${o.titles.map(x=>{const tr=D.transfers.find(t=>t.id===x.t);return`<dt>${esc(x.title)} · ${esc(tr.label)}</dt><dd>${esc(x.why)} <a href="#" data-open="${x.t}">The arc</a></dd>`}).join('')}
+ <dt>Not drawn from the centre</dt><dd>${esc(o.not)}</dd></dl>`;
+ $('#sheetBg').classList.add('open');$('#shX').onclick=close;$('#shX').focus();
+ $('#sheet').querySelectorAll('[data-open]').forEach(a=>a.onclick=e=>{e.preventDefault();open(a.dataset.open)})}
 function open(id){const tr=D.transfers.find(x=>x.id===id);if(!tr)return;sel=id;applyFocus();
  $('#sheet').innerHTML=`<button class="x" aria-label="Close" id="shX">×</button><h2 id="shT">${esc(tr.label)}</h2><div class="date">${esc(tr.date)}</div>
  <div><span class="pill" style="border-color:${ycol(tr.year)};color:${ycol(tr.year)}">${tr.status==='dashed'?esc(tr.reason):'record held'}</span></div>
- <dl><dt>Parcel</dt><dd>${chipsFor(tr.parcels)}</dd>
- <dt>From → to</dt><dd>${esc(P[tr.from].name)} → ${esc(P[tr.to].name)}</dd>
+ <dl><dt>Parcel</dt><dd>${chipsFor(tr.parcels)}</dd>${tr.title?`<dt>Title</dt><dd>${esc(tr.title)}</dd>`:''}
+ <dt>From → to</dt><dd>${P[tr.from].centre?'💩 '+esc(P[tr.from].name):esc(P[tr.from].name)} → ${esc(P[tr.to].name)}</dd>
  <dt>Instrument</dt><dd>${esc(tr.instrument)}</dd>
  <dt>Note</dt><dd>${esc(tr.note)}</dd>
  <dt>Source</dt><dd>${srcList(tr.sources)}</dd></dl>`;
@@ -251,10 +286,10 @@ $('#sheetBg').addEventListener('click',e=>{if(e.target.id==='sheetBg')close()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#sheetBg').classList.contains('open'))close()});
 // list
 function renderList(){
- const rows=D.transfers.map(t=>Object.assign({type:'t'},t)).concat(D.events.map(e=>Object.assign({type:'e'},e))).filter(r=>focus==='all'||r.parcels.includes(focus)).sort((a,b)=>a.year-b.year||(a.type>b.type?1:-1));
+ const rows=D.transfers.map(t=>Object.assign({type:'t'},t)).concat(D.events.map(e=>Object.assign({type:'e'},e))).filter(r=>inFocus(r.parcels)).sort((a,b)=>a.year-b.year||(a.type>b.type?1:-1));
  $('#list').innerHTML='<h2 style="font-size:18px;margin:12px 0 8px">The chain, year by year</h2>'+rows.map(r=>r.type==='t'?
- `<article class="card ${r.status}" style="border-left-color:${ycol(r.year)}" data-id="${r.id}" tabindex="0"><div class="yr" style="color:${ycol(r.year)}">${r.year}</div><div><h3>${esc(r.label)} · ${r.parcels.map(p=>`<span class="dot" style="background:${PC[p].color}">${p==='X'?'W':p}</span>`).join(' ')}</h3>
- <div>${esc(P[r.from].short)} → ${esc(P[r.to].short)}</div><div class="ft">${esc(r.date)} · <span class="pill">${r.status==='dashed'?esc(r.reason):'record held'}</span></div></div></article>`:
+ `<article class="card ${r.status}" style="border-left-color:${ycol(r.year)}" data-id="${r.id}" tabindex="0"><div class="yr" style="color:${ycol(r.year)}">${r.year}</div><div><h3>${esc(r.label)} · ${r.parcels.map(p=>`<span class="dot" style="background:${PC[p].color}">${pcode(p)}</span>`).join(' ')}${r.title?` <span class="pill">${esc(r.title)}</span>`:''}</h3>
+ <div>${P[r.from].centre?'💩 (no conveyance from the occupiers)':esc(P[r.from].short)} → ${esc(P[r.to].short)}</div><div class="ft">${esc(r.date)} · <span class="pill">${r.status==='dashed'?esc(r.reason):'record held'}</span></div></div></article>`:
  `<article class="card ev"><div class="yr">${r.year}</div><div><h3>${esc(r.label)} · ${r.parcels.map(p=>`<span class="dot" style="background:${PC[p].color}">${p}</span>`).join(' ')}</h3><div class="ft">${esc(r.date)} · no change of hands</div><div>${esc(r.text)}</div><div class="ft">${r.sources.map(s=>`<a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.t)}</a>`).join(' · ')}</div></div></article>`).join('');
  $('#list').querySelectorAll('.card[data-id]').forEach(c=>{c.onclick=()=>open(c.dataset.id);c.onkeydown=e=>{if(e.key==='Enter')open(c.dataset.id)}})}
 function view(v){$('#vRing').setAttribute('aria-pressed',v==='ring');$('#vList').setAttribute('aria-pressed',v==='list');$('#ringView').style.display=v==='ring'?'':'none';$('#list').style.display=v==='list'?'block':'none';
@@ -262,7 +297,9 @@ function view(v){$('#vRing').setAttribute('aria-pressed',v==='ring');$('#vList')
 $('#vRing').onclick=()=>view('ring');$('#vList').onclick=()=>view('list');
 draw();renderList();
 let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(draw,200)});
-const q=new URLSearchParams(location.search);if(q.get('v')==='list')view('list');if(q.get('t'))open(q.get('t'));
+const q=new URLSearchParams(location.search);if(q.get('p')){q.get('p').split(',').forEach(x=>{if(PC[x])focus.add(x)});syncChips();applyFocus();renderList()}if(q.get('v')==='list')view('list');if(q.get('t'))open(q.get('t'));
+// the shared header (basecamp.js) loads after this page's own script has run; ghf-boot.js already reserved its band
+(function(){if(window.GHFBasecamp||document.querySelector('script[data-ghf-basecamp-late]'))return;var s=document.createElement('script');s.src='https://bucklerfamily.estate/ghf-lang/basecamp.js?v='+(window.GHFBoot||'2.1.2');s.setAttribute('data-ghf-basecamp-late','');document.head.appendChild(s)})();
 </script>
 </body>
 </html>

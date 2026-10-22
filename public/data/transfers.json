@@ -1,5 +1,5 @@
 {
- "version": "1.0.0",
+ "version": "2.0.0",
  "updated": "2026-10-22",
  "parties": [
   {
@@ -51,6 +51,12 @@
    "m": "W. Ground Rents"
   },
   {
+   "id": "hurstjones",
+   "short": "Hurst & Jones",
+   "name": "William Hurst of Gabalva and Calvert Richard Jones of Swansea (holders of the manor by 1767)",
+   "m": "Hurst & Jones"
+  },
+  {
    "id": "cefn",
    "short": "Cefn Estates",
    "name": "Cefn Estates",
@@ -73,6 +79,12 @@
    "short": "South Glamorgan CC",
    "name": "South Glamorgan County Council",
    "m": "S. Glamorgan CC"
+  },
+  {
+   "id": "vaughan",
+   "short": "Vaughan family",
+   "name": "The Vaughan family of the Great House (mid-16th to later 18th century)",
+   "m": "Vaughan family"
   },
   {
    "id": "bppt",
@@ -115,9 +127,36 @@
    "short": "Church View Close",
    "name": "Householders at Church View Close",
    "m": "Church View Cl."
+  },
+  {
+   "id": "herbert",
+   "short": "Herbert family",
+   "name": "The Herbert family (Sir George Herbert of Swansea, d. 1570, and the Herberts of Cogan Pill)",
+   "m": "Herbert family"
+  },
+  {
+   "id": "origin",
+   "short": "💩",
+   "name": "Title first registered without a conveyance from the occupiers",
+   "m": "💩",
+   "centre": true
   }
  ],
  "parcels": [
+  {
+   "id": "R",
+   "name": "Root title · the whole farm before 1877",
+   "desc": "Great House (Cydfin / Tŷ Mawr): the farmhouse with Parcels A and B together, before the 1877 split. NLW Bute D219 lists “Cydfin Farm or Ty Mawr Farm (107 a.)”, leases 1552–1824.",
+   "color": "#e7c6ff",
+   "chip": "Root title"
+  },
+  {
+   "id": "M",
+   "name": "Lordship of the manor of Llandough",
+   "desc": "The manorial lordship (rents, courts, waste), which passed separately from the farm freehold until both reached the Bute Estate.",
+   "color": "#b8b2d9",
+   "chip": "Manor"
+  },
   {
    "id": "A",
    "name": "Parcel A",
@@ -157,10 +196,131 @@
  ],
  "transfers": [
   {
+   "id": "t1547",
+   "date": "1547",
+   "year": 1547,
+   "parcels": [
+    "R"
+   ],
+   "from": "herbert",
+   "to": "vaughan",
+   "kind": "lease",
+   "label": "1547 lease",
+   "status": "dashed",
+   "reason": "per family research note",
+   "instrument": "A 1,000-year lease of Cydwin (the Great House) from Sir George Herbert to Vaughan. The lease itself is not in hand.",
+   "note": "Sir George Herbert held the manor of Llandough by 1545 (rent-roll in Cardiff Records). The Vaughans, a minor gentry family, held the Great House, the chief freehold farm of the parish, from the mid-16th century to the later 18th (Heneb HER). Historical family only. A present-day family of the same name has told us it is not related.",
+   "sources": [
+    {
+     "t": "GHF-E178 · 1547 Herbert lease of Cydwin to Vaughan (research note)",
+     "u": "https://greathousefarmwiki.wordpress.com/ghf-e173-cedwyn-cwm-cedwyn-place-name-notes/ghf-e178-1547-sir-george-herbert-grants-vaughan-a-1000-year-lease-of-cydwin"
+    },
+    {
+     "t": "Heneb HER GGAT02038s · Great House Farm (Vaughan freehold; Bute in the early 19th century)",
+     "u": "https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s"
+    },
+    {
+     "t": "Cardiff Records vol. 2, “The manors of Cardiff district” (Cogan; Llandough)",
+     "u": "https://www.british-history.ac.uk/cardiff-records/vol2/pp8-41"
+    },
+    {
+     "t": "History of Parliament: HERBERT, George (1494/95–1570), of Swansea",
+     "u": "https://www.historyofparliamentonline.org/volume/1509-1558/member/herbert-george-149495-1570"
+    }
+   ]
+  },
+  {
+   "id": "t1767",
+   "date": "by 1767",
+   "year": 1767,
+   "parcels": [
+    "M"
+   ],
+   "from": "herbert",
+   "to": "hurstjones",
+   "kind": "marriage",
+   "label": "1767 marriage",
+   "status": "dashed",
+   "reason": "per secondary source",
+   "instrument": "Inheritance by marriage: William Hurst and Calvert Richard Jones had married two heiresses of this branch of the Herbert family, and by 1767 held the manors of Dinas Powys, Llandough East and Cogan.",
+   "note": "Cardiff Records: from 1545 the manor passed from Sir George Herbert to his grandson Sir William Herbert, and stayed with the Herberts of Cogan Pill for several generations.",
+   "sources": [
+    {
+     "t": "Cardiff Records vol. 2, “The manors of Cardiff district” (Cogan; Llandough)",
+     "u": "https://www.british-history.ac.uk/cardiff-records/vol2/pp8-41"
+    },
+    {
+     "t": "Llandough (Penarth): pre-1877 manorial evidence (wiki)",
+     "u": "https://greathousefarmwiki.wordpress.com/anomalies-register/llandough-penarth-cydfin-ty-mawr-manorial-evidence/"
+    }
+   ]
+  },
+  {
+   "id": "t1793",
+   "date": "1793",
+   "year": 1793,
+   "parcels": [
+    "M"
+   ],
+   "from": "hurstjones",
+   "to": "bute",
+   "kind": "purchase",
+   "label": "1793 purchase",
+   "status": "dashed",
+   "reason": "per secondary source",
+   "instrument": "Purchase of the lordship by the Earl of Bute (Cardiff Records: Llandough’s later history follows Cogan, bought by the Earl in 1793).",
+   "note": "The Bute manor presentments for Llandough begin in 1793 (NLW catalogue, not yet seen). The lordship alone did not carry the Great House freehold.",
+   "sources": [
+    {
+     "t": "Cardiff Records vol. 2, “The manors of Cardiff district” (Cogan; Llandough)",
+     "u": "https://www.british-history.ac.uk/cardiff-records/vol2/pp8-41"
+    },
+    {
+     "t": "EV-0278 · NLW Bute records: Llandough manor rentals 1808–1881 and presentments from 1793",
+     "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0278-nlw-bute-estate-records-llandough-manor-rentals-1808-1881-r-6-27-45-and-presentmen/"
+    },
+    {
+     "t": "Llandough (Penarth): pre-1877 manorial evidence (wiki)",
+     "u": "https://greathousefarmwiki.wordpress.com/anomalies-register/llandough-penarth-cydfin-ty-mawr-manorial-evidence/"
+    }
+   ]
+  },
+  {
+   "id": "t1800",
+   "date": "early 19th century",
+   "year": 1800,
+   "parcels": [
+    "R"
+   ],
+   "from": "vaughan",
+   "to": "bute",
+   "kind": "acquisition",
+   "label": "1800s acquisition",
+   "status": "dashed",
+   "reason": "per secondary source",
+   "instrument": "The Bute Estate acquires the freehold of the Great House in the early 19th century; the manorial courts for Llandough and Leckwith are then held in the house. The conveyance, and who sold, are not located.",
+   "note": "Heneb HER GGAT02038s. With lordship and freehold together, this is the root title that Bute split in 1877: Parcel A sold, Parcel B kept. Historical family only. A present-day family of the same name has told us it is not related.",
+   "sources": [
+    {
+     "t": "Heneb HER GGAT02038s · Great House Farm (Vaughan freehold; Bute in the early 19th century)",
+     "u": "https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s"
+    },
+    {
+     "t": "The Bute Estate (wiki)",
+     "u": "https://greathousefarmwiki.wordpress.com/bute-estate/"
+    },
+    {
+     "t": "Llandough (Penarth): pre-1877 manorial evidence (wiki)",
+     "u": "https://greathousefarmwiki.wordpress.com/anomalies-register/llandough-penarth-cydfin-ty-mawr-manorial-evidence/"
+    }
+   ]
+  },
+  {
    "id": "t1877",
    "date": "1877",
    "year": 1877,
    "parcels": [
+    "R",
     "A"
    ],
    "to": "thomas",
@@ -169,7 +329,7 @@
    "status": "dashed",
    "reason": "record not seen",
    "instrument": "Agreement between the Bute Estate and Daniel Thomas & Son: sale, or quarry lease, of the house parcel. The agreement itself is not in hand.",
-   "note": "Known from a later family statement (c.1974): Bute sold the farmhouse, buildings and about 10 acres (Parcel A) and kept about 9 acres (Parcel B). The NLW Bute catalogue has Llandough land “formerly part of Great House Farm” for the lime works, 1876–1912.",
+   "note": "Known from a later family statement (c.1974): Bute sold the farmhouse, buildings and about 10 acres (Parcel A) and kept about 9 acres (Parcel B). The NLW Bute catalogue has Llandough land “formerly part of Great House Farm” for the lime works, 1876–1912. Before 1877 the farm was one holding; see the root title (R) arcs back through the Vaughans to the Herberts.",
    "sources": [
     {
      "t": "EV-0006 · 1877 Bute–Daniel Thomas & Son agreement",
@@ -578,7 +738,8 @@
      "u": "https://greathousefarmwiki.wordpress.com/family-legal-case-control-room/woodland-land-transfer-assessment-1902-2005/"
     }
    ],
-   "from": "wgr"
+   "from": "wgr",
+   "title": "VG41"
   },
   {
    "id": "t1981",
@@ -626,7 +787,8 @@
      "u": "https://greathousefarmwiki.wordpress.com/land-registry-titles/"
     }
    ],
-   "from": "bppt"
+   "from": "bppt",
+   "title": "WA231076"
   },
   {
    "id": "t1983",
@@ -641,7 +803,7 @@
    "status": "solid",
    "reason": null,
    "instrument": "First registration of the house, title WA240304, to BP Properties Ltd (Form 1C application, 23 Feb 1983).",
-   "note": "Mary was living in the house and died on 26 Mar 1983, while the application was still being examined. BP Pension Trust held the benefit of the unenforced 1962 order.",
+   "note": "Mary was living in the house and died on 26 Mar 1983, while the application was still being examined. Before it: BP’s licence letters of 31 Oct 1974 offered her permission to stay rent-free; she never accepted them, and the Court of Appeal later held that they made her possession permissive. The title was first registered on BP’s paper title (the 1969 WGR conveyance and the unenforced 1962 order). No conveyance from the occupiers is on record.",
    "sources": [
     {
      "t": "EV-0066 · WA240304 register, 1983",
@@ -654,9 +816,18 @@
     {
      "t": "Land Registry titles",
      "u": "https://greathousefarmwiki.wordpress.com/land-registry-titles/"
+    },
+    {
+     "t": "Three parts of Parcel A: licence letters (31 Oct 1974), then first registration (wiki)",
+     "u": "https://greathousefarmwiki.wordpress.com/the-two-parcels/three-parts-of-parcel-a-divergent-chronologies/"
+    },
+    {
+     "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (the 1974 letters)",
+     "u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
     }
    ],
-   "from": "family"
+   "from": "origin",
+   "title": "WA240304"
   },
   {
    "id": "t1988",
@@ -782,7 +953,8 @@
      "u": "https://greathousefarmwiki.wordpress.com/family-legal-case-control-room/woodland-land-transfer-assessment-1902-2005/"
     }
    ],
-   "from": "bpp"
+   "from": "bpp",
+   "title": "WA735527"
   },
   {
    "id": "t1993h",
@@ -809,7 +981,8 @@
      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0276-churchview-close-llandough-ideal-homes-persimmon-1994-1996/"
     }
    ],
-   "from": "bpp"
+   "from": "bpp",
+   "title": "WA231076"
   },
   {
    "id": "t1994",
@@ -839,7 +1012,8 @@
      "u": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e149-10-november-1994-transfer-to-forest-of-cardiff-wa735527/"
     }
    ],
-   "from": "ideal"
+   "from": "ideal",
+   "title": "WA735527"
   },
   {
    "id": "t1995h",
@@ -934,7 +1108,8 @@
      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0139-forest-cardiff-goldsworthy-transfer-excision/"
     }
    ],
-   "from": "foc"
+   "from": "foc",
+   "title": "WA735527"
   }
  ],
  "events": [
@@ -981,5 +1156,16 @@
     }
    ]
   }
- ]
+ ],
+ "origin": {
+  "label": "Title first registered without a conveyance from the occupiers",
+  "titles": [
+   {
+    "title": "WA240304",
+    "t": "t1983",
+    "why": "House and yard (A2). Licence letters offered 31 Oct 1974, never accepted; first registration applied for 23 Feb 1983 to BP Properties Ltd while Mary lived there. No conveyance from the occupiers is on record."
+   }
+  ],
+  "not": "Not routed here: WA231076 (the fields, B), first registered in 1982 on the 1938 and 1969 conveyances of land the family rented; WA735527 (the woodland), registered on a 1994 transfer; VG41 (the green), a village-green registration, not a title."
+ }
 }
