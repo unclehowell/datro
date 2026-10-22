@@ -1,0 +1,11 @@
+/* Buckler family docs: small additions to Furo. — Sion's Tab agent */
+.docs-links{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .6rem;padding:.5rem var(--sidebar-item-spacing-horizontal,1rem) .75rem;font-size:var(--sidebar-item-font-size,.9rem)}
+.docs-links a{text-decoration:none}
+.docs-links .docs-pdf{border:1px solid var(--color-brand-primary);border-radius:.3rem;padding:.05rem .45rem}
+.docs-links .docs-ver{color:var(--color-foreground-muted)}
+.docs-langs{display:flex;gap:.3rem;width:100%}
+.docs-langs a{border:1px solid var(--color-background-border);border-radius:.3rem;padding:.05rem .4rem;font-size:.8rem}
+.docs-langs a.current{background:var(--color-brand-primary);color:var(--color-background-primary);border-color:var(--color-brand-primary)}
+figure img{max-width:100%;height:auto}
+table.docutils{display:block;overflow-x:auto;max-width:100%}
+body{overflow-x:hidden}

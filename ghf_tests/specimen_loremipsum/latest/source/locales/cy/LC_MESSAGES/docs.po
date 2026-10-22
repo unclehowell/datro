@@ -1,0 +1,176 @@
+# Cymraeg catalogue for ghf_tests/specimen_loremipsum (DOCS-STANDARD.md §3).
+# Source language: en. Translate msgstr only; leave msgid as written.
+msgid ""
+msgstr ""
+"Project-Id-Version: Specimen Document: Lorem Ipsum 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-22 21:36+0000\n"
+"PO-Revision-Date: 2026-10-22 22:40+0100\n"
+"Last-Translator: Sion's Tab agent\n"
+"Language: cy\n"
+"Language-Team: Cymraeg\n"
+"Plural-Forms: nplurals=5; plural=(n==1 ? 1 : n==2 ? 2 : n==3 ? 3 : n==6 ? 4 : 0);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Document elements"
+msgstr "Elfennau’r ddogfen"
+
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut "
+"labore et dolore magna aliqua. [#filler]_"
+msgstr ""
+
+msgid "Headings"
+msgstr "Penawdau"
+
+msgid "Second-level heading"
+msgstr "Pennawd ail lefel"
+
+msgid ""
+"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo "
+"consequat."
+msgstr ""
+
+msgid "Third-level heading"
+msgstr "Pennawd trydedd lefel"
+
+msgid ""
+"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla "
+"pariatur."
+msgstr ""
+
+msgid "Table"
+msgstr "Tabl"
+
+msgid "Sample values"
+msgstr "Gwerthoedd enghreifftiol"
+
+msgid "Item"
+msgstr "Eitem"
+
+msgid "Value"
+msgstr "Gwerth"
+
+msgid "Note"
+msgstr "Nodyn"
+
+msgid "Water"
+msgstr "Dŵr"
+
+msgid "12"
+msgstr ""
+
+msgid "Lorem ipsum"
+msgstr ""
+
+msgid "House"
+msgstr "Tŷ"
+
+msgid "7"
+msgstr ""
+
+msgid "Dolor sit amet"
+msgstr ""
+
+msgid "Field"
+msgstr "Cae"
+
+msgid "3"
+msgstr ""
+
+msgid "Consectetur adipiscing"
+msgstr ""
+
+msgid "Figure"
+msgstr "Ffigur"
+
+msgid "Image placeholder"
+msgstr "Dalfan delwedd"
+
+msgid "An image placeholder."
+msgstr "Dalfan delwedd."
+
+msgid "Cross-reference"
+msgstr "Croesgyfeiriad"
+
+msgid "The note for the first paragraph is at the end of this page. For running text, see :ref:`text`."
+msgstr ""
+"Mae’r nodyn ar gyfer y paragraff cyntaf ar waelod y dudalen hon. Am destun parhaus, gweler "
+":ref:`text`."
+
+msgid "Notes"
+msgstr "Nodiadau"
+
+msgid "Lorem ipsum is filler text that printers have used since the 1500s."
+msgstr ""
+"Testun llenwi yw Lorem ipsum, a ddefnyddiwyd gan argraffwyr ers yr 1500au. Mae’r ŵyr yn cario dŵr"
+" i’r tŷ."
+
+msgid "Running text"
+msgstr "Testun parhaus"
+
+msgid ""
+"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,"
+" totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae "
+"dicta sunt explicabo."
+msgstr ""
+
+msgid "Lists"
+msgstr "Rhestrau"
+
+msgid "First point"
+msgstr "Pwynt cyntaf"
+
+msgid "Second point"
+msgstr "Ail bwynt"
+
+msgid "Third point"
+msgstr "Trydydd pwynt"
+
+msgid "Quotation"
+msgstr "Dyfyniad"
+
+msgid ""
+"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum "
+"deleniti atque corrupti."
+msgstr ""
+
+msgid "Back to :ref:`elements`."
+msgstr "Yn ôl i :ref:`elements`."
+
+msgid "Contents"
+msgstr "Cynnwys"
+
+msgid "Specimen Document: Lorem Ipsum"
+msgstr "Dogfen Enghreifftiol: Lorem Ipsum"
+
+msgid ""
+"This specimen exercises every element the standard allows: headings, a table, a figure, a "
+"footnote and a cross-reference."
+msgstr ""
+"Mae’r enghraifft hon yn profi pob elfen a ganiateir gan y safon: penawdau, tabl, ffigur, "
+"troednodyn a chroesgyfeiriad."
+
+msgid "Release notes"
+msgstr "Nodiadau rhyddhau"
+
+msgid "This release (version 0.1.0)"
+msgstr "Y fersiwn hon (fersiwn 0.1.0)"
+
+msgid "**2026-Oct-22** - First publication, written to test the build."
+msgstr "**2026-Hyd-22** - Cyhoeddiad cyntaf, wedi’i ysgrifennu i brofi’r adeiladu."
+
+msgid "Older versions"
+msgstr "Fersiynau hŷn"
+
+msgid "There are no older versions of this document."
+msgstr "Nid oes fersiynau hŷn o’r ddogfen hon."
+
+msgid ""
+"A test document that exercises headings, a table, a figure, a footnote and a cross-reference in "
+"HTML and PDF."
+msgstr "Dogfen brawf sy’n profi penawdau, tabl, ffigur, troednodyn a chroesgyfeiriad mewn HTML a PDF."
+

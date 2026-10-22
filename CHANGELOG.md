@@ -1,0 +1,15 @@
+# Changelog
+All changes to this branch are logged here, newest first.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Rules: DOCS-STANDARD.md §9.
+
+## [Unreleased]
+
+## [docs-0.1.0] - 2026-10-22
+
+### Added
+- `DOCS-STANDARD.md` v1.0.0 — the publishing rules, drawn from the library branch's paths, gettext languages and release notes.
+- `_theme-docs/` build kit — Sphinx + Furo HTML, rinohtype PDF (no TeX), generated `docs.json`, landing page, `--check` rules.
+- `ghf_tests/specimen_loremipsum` v0.1.0 (en, cy, es) — lorem ipsum specimen with headings, a table, a figure, a footnote and cross-references.
+- `requirements.txt` with pinned build dependencies; `README.md`; this changelog.
