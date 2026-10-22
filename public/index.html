@@ -181,6 +181,16 @@ function cfg(){const rr=svg.getBoundingClientRect(),mob=(fsOn?Math.min(rr.width,
 let C=null,R=320,labelMode='full',lastZ=1,STAR=null,CNPOS={};
 const RT=D.root||null,RTS=RT?RT.steps:[],RTM=Object.fromEntries(RTS.map(s=>[s.k,s]));
 function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+// v2.5 direction arrows: one <marker> per line colour and kind (solid = record held, gap = dashed / no deed → outline), end or mid
+let MK={},MKD=null;
+function mk(col,gap,mid,sm){const k=col+'|'+(gap?1:0)+'|'+(mid?1:0)+'|'+(sm?1:0);if(MK[k])return'url(#'+MK[k]+')';
+ if(!MKD)MKD=el('defs',{},svg);const id='ah'+Object.keys(MK).length;MK[k]=id;
+ const L=sm?(C.mob?16:9):(C.mob?(mid?20:24):(mid?11:13)),m=el('marker',{id,viewBox:'-1 -1 12 12',refX:mid?5:8.6,refY:5,markerUnits:'userSpaceOnUse',markerWidth:L*1.2,markerHeight:L*1.2,orient:'auto',overflow:'visible'},MKD);
+ el('path',{d:'M0,0.6 L10,5 L0,9.4 L2.4,5Z',fill:gap?'#1d1938':col,'fill-opacity':gap?.55:1,stroke:gap?col:'#1d1938','stroke-width':gap?1.5:0.9,'stroke-linejoin':'round','stroke-opacity':gap?.9:.85,'paint-order':'stroke'},m);
+ return'url(#'+id+')'}
+// a mid-line arrow: an invisible 2-point stub along the direction of travel, carrying a mid marker
+function midArrow(g,a,b,col,gap,sm){const dx=b[0]-a[0],dy=b[1]-a[1],L=Math.hypot(dx,dy)||1,m=[(a[0]+b[0])/2,(a[1]+b[1])/2],e=0.5;
+ return el('path',{d:`M${(m[0]-dx/L*e).toFixed(2)},${(m[1]-dy/L*e).toFixed(2)} L${(m[0]+dx/L*e).toFixed(2)},${(m[1]+dy/L*e).toFixed(2)}`,fill:'none',stroke:'none','marker-end':mk(col,gap,1,sm),class:'marr','pointer-events':'none'},g)}
 function ang(i){return(-90+rot+i*360/N)*Math.PI/180}
 function pos(i,r){const a=ang(i);return[Math.cos(a)*r,Math.sin(a)*r]}
 function legendHTML(){
@@ -205,7 +215,7 @@ function syncChips(){chips.querySelectorAll('.chip').forEach(x=>x.setAttribute('
  const u=new URL(location);if(focus.size)u.searchParams.set('p',[...focus].join(','));else u.searchParams.delete('p');history.replaceState(null,'',u)}
 
 // chains from the centre (data.chains): 💩 → years → the registration on the ring
-const CH=D.chains||[];const CHM=Object.fromEntries(CH.map(c=>[c.id,c]));
+let CHARR=[];const CH=D.chains||[];const CHM=Object.fromEntries(CH.map(c=>[c.id,c]));
 const nodeLab=n=>n.lab||String(n.y);
 const spanLab=(ch,n)=>(n.y===ch.span.from&&ch.span.lab0)?ch.span.lab0:(n.y===ch.span.to&&ch.span.lab)?ch.span.lab:nodeLab(n);
 function drawChains(gp){
@@ -223,9 +233,7 @@ function drawChains(gp){
   // spacing: every gap one unit; the 12-year gaps get at least 2.4 units between them so the bar can carry its label
   const ns=Math.max(1,kj-ki),wIn=Math.max(1,2.6/ns),gw=[];for(let k=1;k<n;k++)gw.push(k>ki&&k<=kj?wIn:1);
   const tot=gw.reduce((a,b)=>a+b,0)||1,ts=[0.17];gw.forEach(w=>ts.push(ts[ts.length-1]+0.71*w/tot));
-  el('path',{d:dpath,fill:'none',stroke:ch.color,'stroke-width':csw,'stroke-linecap':'round'},g);
-  const tx=p1[0]-c[0],ty=p1[1]-c[1],tl=Math.hypot(tx,ty),ax=tx/tl,ay=ty/tl,s=csw*2.8;
-  el('path',{d:`M${p1[0]+ax*4},${p1[1]+ay*4} L${p1[0]-ax*s-ay*s*.6},${p1[1]-ay*s+ax*s*.6} L${p1[0]-ax*s+ay*s*.6},${p1[1]-ay*s-ax*s*.6}Z`,fill:ch.color},g);
+  el('path',{d:dpath,fill:'none',stroke:ch.color,'stroke-width':csw,'stroke-linecap':'round','marker-end':mk(ch.color,false),'data-dir':'💩 origin → '+P[ch.to].name},g);
   el('path',{d:dpath,class:'chit',fill:'none',stroke:'transparent','stroke-width':C.mob?40:24,'pointer-events':'stroke'},g);
   g.addEventListener('click',e=>{e.stopPropagation();openChain(ch.id)});
   g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openChain(ch.id)}});
@@ -241,6 +249,11 @@ function drawChains(gp){
     const q=pts[N2>>1],qa=pts[(N2>>1)+1];let dx=qa[0]-q[0],dy=qa[1]-q[1];const dl=Math.hypot(dx,dy)||1;dx/=dl;dy/=dl;
     const w=8*tfs*0.6+tfs*0.8,h=tfs*1.4,side=-Math.sign(bd),off=bw/2+5+Math.abs(dy)*w/2+Math.abs(dx)*h/2;
     const px=q[0]-dy*off*side,py=q[1]+dx*off*side;pills.push([px,py,w,h,ch.color])}}
+  // v2.5: an arrow in every gap between two years (earlier → later); white on the 12-year bar; skipped where the bar carries its words
+  {const hasWords=kj-ki===1&&(C.mob?18:10)>=tfs*1.05;for(let k=0;k<n;k++){const t0=ts[k],t1=k<n-1?ts[k+1]:1,a=bez(p0,c,p1,t0),b=bez(p0,c,p1,t1),gl=Math.hypot(b[0]-a[0],b[1]-a[1]),inBar=ki>=0&&k>=ki&&k<kj;
+    if(k===n-1)continue;if(inBar&&hasWords&&g.querySelector('.t12'))continue;if(gl<(C.mob?16:9)+dr*2+2)continue;
+    const tm=(t0+t1)/2,qa=bez(p0,c,p1,tm-0.006),qb=bez(p0,c,p1,tm+0.006),nl=ch.nodes[k],nr=ch.nodes[k+1];
+    CHARR.push(()=>{const ag=el('g',{class:'cn','data-cn':ch.id+':'+nl.y,'data-dir':nodeLab(nl)+' → '+nodeLab(nr),'pointer-events':'none'},gL);midArrow(ag,qa,qb,inBar?'#ffffff':ch.color,!!nr.todo,1)})}}
   ch.nodes.forEach((nd,k)=>{const q=bez(p0,c,p1,ts[k]),qa=bez(p0,c,p1,Math.min(1,ts[k]+.01)),qb=bez(p0,c,p1,Math.max(0,ts[k]-.01));let dx=qa[0]-qb[0],dy=qa[1]-qb[1];const dl=Math.hypot(dx,dy)||1;dx/=dl;dy/=dl;
    CNPOS[ch.id+':'+nd.y]=q;
    const isEnd=k===ki||k===kj,ng=el('g',{class:'cn','data-cn':ch.id+':'+nd.y,role:'button',tabindex:0,'aria-label':nd.label},gL);
@@ -253,6 +266,7 @@ function drawChains(gp){
    ng.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openNode(ch.id,nd.y)}});
   });
  });
+ CHARR.forEach(f=>f());CHARR=[];
  pills.forEach(([px,py,w,h,col])=>{const pg=el('g',{class:'lab12'},gL);el('rect',{x:px-w/2,y:py-h/2,width:w,height:h,rx:h/2,fill:col,stroke:'#fff','stroke-width':3},pg);
   const tt=el('text',{x:px,y:py+tfs*0.36,class:'t12','font-size':tfs,'text-anchor':'middle'},pg);tt.textContent='12 years'});
 }
@@ -267,33 +281,35 @@ function drawRoot(gp){
  const col={R:RT.color,A:RT.acol,B:RT.bcol},dash=C.mob?'12 9':'8 6';
  const seg=(s,d,o={})=>{const g=el('g',{class:'rc','data-rk':s.k,'data-p':s.br==='R'?'R':s.br==='A'?'A A1 A2 A3':'B',role:'button',tabindex:0,'aria-label':s.label},g0);
   el('path',{d,fill:'none',stroke:'#1d1938','stroke-width':csw+3,'stroke-linecap':'round'},g);
-  el('path',{d,fill:'none',stroke:col[s.br],'stroke-width':csw,'stroke-linecap':'round','stroke-dasharray':s.todo?dash:'none',id:'rp-'+s.k},g);
+  el('path',{d,fill:'none',stroke:col[s.br],'stroke-width':csw,'stroke-linecap':'round','stroke-dasharray':s.todo?dash:'none',id:'rp-'+s.k,'marker-end':mk(col[s.br],!!s.todo),'data-dir':(P[s.fr]?P[s.fr].name:s.fr)+' → '+(s.to.startsWith('chain:')?'A(2) chain':P[s.to].name)},g);
   el('path',{d,class:'chit',fill:'none',stroke:'transparent','stroke-width':C.mob?40:24,'pointer-events':'stroke'},g);
   g.addEventListener('click',e=>{e.stopPropagation();openRoot(s.k)});
   g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openRoot(s.k)}});return g};
  const tag=(g,x,y,txt,c,big,anc)=>{const t=el('text',{x:x.toFixed(1),y:(y+(big?bfs:fs)*0.35).toFixed(1),class:'rlab'+(big?' b':''),'font-size':big?bfs:fs,'text-anchor':anc||'middle',fill:c},g);t.textContent=txt;return t};
- const arrow=(g,p,ux,uy,c)=>{const s=csw*2.8;el('path',{d:`M${p[0]+ux*3},${p[1]+uy*3} L${p[0]-ux*s-uy*s*.6},${p[1]-uy*s+ux*s*.6} L${p[0]-ux*s+uy*s*.6},${p[1]-uy*s-ux*s*.6}Z`,fill:c},g)};
+ const arrow=()=>{};// v2.5: the arrowhead is the path's own marker-end
+ const onArc=(a0,a1,f,r)=>{let da=a1-a0;while(da>Math.PI)da-=2*Math.PI;while(da<-Math.PI)da+=2*Math.PI;const x=a0+da*f;return[Math.cos(x)*r,Math.sin(x)*r]};
+ const midArc=(g,a0,a1,r,c,gap,f=0.5)=>midArrow(g,onArc(a0,a1,f-0.004,r),onArc(a0,a1,f+0.004,r),c,gap);
  const aV=ang(P.vaughan.i),aB=ang(P.bute.i),aT=ang(P.thomas.i),aM=ang(P.mountjoy.i);
  // 1. incoming root title: star → Vaughan on the ring
  const s1=RTM.r1,av=aV+0.12*2*Math.PI/N,pv=[Math.cos(av)*(R+(C.mob?9:7)),Math.sin(av)*(R+(C.mob?9:7))];
  { const ac=aV+0.3*2*Math.PI/N,rc=R+(C.mob?40:30),cc=[Math.cos(ac)*rc,Math.sin(ac)*rc];
    const g=seg(s1,`M${STAR[0].toFixed(1)},${STAR[1].toFixed(1)} Q${cc[0].toFixed(1)},${cc[1].toFixed(1)} ${pv[0].toFixed(1)},${pv[1].toFixed(1)}`);
-   const dx=pv[0]-cc[0],dy=pv[1]-cc[1],L=Math.hypot(dx,dy);arrow(g,pv,dx/L,dy/L,col.R);
+   const dx=pv[0]-cc[0],dy=pv[1]-cc[1],L=Math.hypot(dx,dy);arrow(g,pv,dx/L,dy/L,col.R);midArrow(g,bez(STAR,cc,pv,0.62),bez(STAR,cc,pv,0.64),col.R,!!s1.todo);
    const m=bez(STAR,cc,pv,0.45),ml=Math.hypot(m[0],m[1]);tag(gT,m[0]/ml*(ml+(C.mob?44:30)),m[1]/ml*(ml+(C.mob?44:30)),s1.lab,col.R,true)}
  // 2. Vaughan → Bute along the inside of the ring (gap: the conveyance is not located)
  const s2=RTM.r2;
- { seg(s2,arcD(aV,aB,rT));const ma=midA(aV,aB),r=rA-(C.mob?36:24);tag(gT,Math.cos(ma)*r,Math.sin(ma)*r,s2.lab,col.R,false)}
+ { const g2=seg(s2,arcD(aV,aB,rT));midArc(g2,aV,aB,rT,col.R,!!s2.todo);const ma=midA(aV,aB),r=rA-(C.mob?36:24);tag(gT,Math.cos(ma)*r,Math.sin(ma)*r,s2.lab,col.R,false)}
  // fork at Bute, 1877
  const pb=[Math.cos(aB)*rT,Math.sin(aB)*rT];
  // 3a. A: back past Vaughan on a deeper track to Daniel Thomas & Son
  const sa=RTM.a1,pbA=[Math.cos(aB)*rA,Math.sin(aB)*rA],ptA=[Math.cos(aT)*rA,Math.sin(aT)*rA],pt=pos(P.thomas.i,R-12);
  { const g=seg(sa,`M${pb[0].toFixed(1)},${pb[1].toFixed(1)} L${pbA[0].toFixed(1)},${pbA[1].toFixed(1)} `+arcD(aB,aT,rA).replace(/^M[^A]+/,'')+` L${pt[0].toFixed(1)},${pt[1].toFixed(1)}`);
-   const ux=pt[0]-ptA[0],uy=pt[1]-ptA[1],L=Math.hypot(ux,uy)||1;arrow(g,pt,ux/L,uy/L,col.A);
+   const ux=pt[0]-ptA[0],uy=pt[1]-ptA[1],L=Math.hypot(ux,uy)||1;arrow(g,pt,ux/L,uy/L,col.A);midArc(g,aB,aT,rA,col.A,!!sa.todo,0.62);
    const ma=aT+0.35*(aB-aT),r=rA-(C.mob?28:18);tag(gT,Math.cos(ma)*r,Math.sin(ma)*r,'A',col.A,true)}
  // 3b. B: kept by Bute in 1877, on along the edge to Mountjoy Ltd (1926)
  const sb=RTM.b1,pm=[Math.cos(aM)*rT,Math.sin(aM)*rT],pmR=pos(P.mountjoy.i,R-12);
  { const g=seg(sb,arcD(aB,aM,rT)+` L${pmR[0].toFixed(1)},${pmR[1].toFixed(1)}`);
-   const ux=pmR[0]-pm[0],uy=pmR[1]-pm[1],L=Math.hypot(ux,uy)||1;arrow(g,pmR,ux/L,uy/L,col.B);
+   const ux=pmR[0]-pm[0],uy=pmR[1]-pm[1],L=Math.hypot(ux,uy)||1;arrow(g,pmR,ux/L,uy/L,col.B);midArc(g,aB,aM,rT,col.B,!!sb.todo,0.3);
    const ma=midA(aB,aM),r=rT-(C.mob?34:22);tag(gT,Math.cos(ma)*r,Math.sin(ma)*r,'B · 1926',col.B,false)}
  // the 1877 fork badge
  { const g=el('g',{class:'rc','data-rk':'a1','data-p':'R A B',role:'button',tabindex:0,'aria-label':'1877 split'},gT);
@@ -304,9 +320,13 @@ function drawRoot(gp){
  // 4. A has no conveyance onward: a dashed gap from Daniel Thomas & Son to the 💩 chain of the house, A(2)
  const sg=RTM.a3,q=CNPOS['A:'+(sg.y)];
  if(q){const p0=ptA,mid=[(p0[0]+q[0])/2,(p0[1]+q[1])/2],dx=q[0]-p0[0],dy=q[1]-p0[1],L=Math.hypot(dx,dy),c=[mid[0]-dy/L*L*0.18,mid[1]+dx/L*L*0.18];
+  // v2.5: the line runs giver (Daniel Thomas & Son) → receiver (the A(2) chain) so its arrow points the right way; the words ride a hidden copy drawn left → right
   const rev=q[0]<p0[0],a=rev?q:p0,b=rev?p0:q;
-  const g=seg(sg,`M${a[0].toFixed(1)},${a[1].toFixed(1)} Q${c[0].toFixed(1)},${c[1].toFixed(1)} ${b[0].toFixed(1)},${b[1].toFixed(1)}`);
-  const t=el('text',{class:'rlab','font-size':C.mob?fs*0.9:fs,fill:col.A,dy:(csw+fs*0.95)},g);const tp=el('textPath',{href:'#rp-'+sg.k,startOffset:rev?'32%':'68%','text-anchor':'middle'},t);tp.textContent='no deed for A'}
+  const qe=(()=>{const ex=q[0]-c[0],ey=q[1]-c[1],el_=Math.hypot(ex,ey)||1,k=(C.mob?7:5)*1.6;return[q[0]-ex/el_*k,q[1]-ey/el_*k]})();// stop at the year dot's rim
+  const g=seg(sg,`M${p0[0].toFixed(1)},${p0[1].toFixed(1)} Q${c[0].toFixed(1)},${c[1].toFixed(1)} ${qe[0].toFixed(1)},${qe[1].toFixed(1)}`);
+  el('path',{id:'rpt-'+sg.k,d:`M${a[0].toFixed(1)},${a[1].toFixed(1)} Q${c[0].toFixed(1)},${c[1].toFixed(1)} ${b[0].toFixed(1)},${b[1].toFixed(1)}`,fill:'none',stroke:'none'},g);
+  midArrow(g,bez(p0,c,q,0.27),bez(p0,c,q,0.29),col.A,true);
+  const t=el('text',{class:'rlab','font-size':C.mob?fs*0.9:fs,fill:col.A,dy:(csw+fs*0.95)},g);const tp=el('textPath',{href:'#rpt-'+sg.k,startOffset:rev?'32%':'68%','text-anchor':'middle'},t);tp.textContent='no deed for A'}
 }
 function openRoot(k){const s=RTM[k];if(!s)return;sel='rc';applyFocus();const tr=s.t&&D.transfers.find(x=>x.id===s.t);
  const cl={R:RT.color,A:RT.acol,B:RT.bcol}[s.br],to=s.to.startsWith('chain:')?'the 💩 chain of the house, A(2)':P[s.to].name;
@@ -354,7 +374,7 @@ function draw(){
  if(C.mob&&labelMode==='full'){const f=Math.max(0.42,Math.min(1,z*1.25));C.afs*=f;C.cr*=f;C.cfs*=f}
  lastZ=z;CNPOS={};
  if(RT){const sp=P[RT.star],v=P.vaughan;const a=ang(v.i)+0.62*2*Math.PI/N,r=R+(C.mob?175:140);STAR=[Math.cos(a)*r,Math.sin(a)*r];sp.xy=STAR}
- svg.innerHTML='';svg.style.setProperty('--sws',(C.sw*1.6)+'px');
+ svg.innerHTML='';MK={};MKD=null;svg.style.setProperty('--sws',(C.sw*1.6)+'px');
  C.rc=R+(C.mob?28:20);C.rl=C.rc+Math.round(R*0.09);// the ring line, then an empty band (9% of R) before any holder name
  el('circle',{cx:0,cy:0,r:C.rc,fill:'none',stroke:'#ffffff70','stroke-width':C.mob?2.5:2,class:'ringline'},svg);
  const gA=el('g',{},svg),gL=el('g',{},svg),gN=el('g',{},svg);
@@ -383,10 +403,10 @@ function draw(){
   const col=ycol(tr.year);
   const g=el('g',{class:'t'+(tr.rootb&&RT?' rt':''),'data-id':tr.id,'data-p':tr.parcels.join(' '),tabindex:0,role:'button','aria-label':`${tr.label}: ${tr.parcels.map(x=>PC[x].name).join(', ')}, ${P[tr.from].name} to ${P[tr.to].name}`},gA);
   const dpath=`M${p0[0].toFixed(1)},${p0[1].toFixed(1)} Q${c[0].toFixed(1)},${c[1].toFixed(1)} ${p1[0].toFixed(1)},${p1[1].toFixed(1)}`;
-  el('path',{d:dpath,class:'arc',stroke:col,'stroke-width':C.sw,'stroke-dasharray':tr.status==='dashed'?(C.sw*1.6)+' '+(C.sw*0.9):'none'},g);
-  // arrowhead at p1
-  const tx=p1[0]-c[0],ty=p1[1]-c[1],tl=Math.hypot(tx,ty),ux=tx/tl,uy=ty/tl,s=C.sw*2.6;
-  el('path',{d:`M${p1[0]},${p1[1]} L${p1[0]-ux*s-uy*s*.55},${p1[1]-uy*s+ux*s*.55} L${p1[0]-ux*s+uy*s*.55},${p1[1]-uy*s-ux*s*.55}Z`,fill:col},g);
+  const gap=tr.status==='dashed';
+  el('path',{d:dpath,class:'arc',stroke:col,'stroke-width':C.sw,'stroke-dasharray':gap?(C.sw*1.6)+' '+(C.sw*0.9):'none','marker-end':mk(col,gap),'data-dir':P[tr.from].name+' → '+P[tr.to].name},g);
+  // v2.5: a second arrow along the line (giver → receiver), clear of the title number at t 0.5
+  {const tm=tr.title?0.3:0.36,qa=bez(p0,c,p1,tm-0.01),qb=bez(p0,c,p1,tm+0.01);midArrow(g,qa,qb,col,gap);const qm=bez(p0,c,p1,tm),hs=C.mob?10:6;placed.push([qm[0]-hs,qm[1]-hs,qm[0]+hs,qm[1]+hs])}
   el('path',{d:dpath,class:'hit'},g);
   if(tr.title){// the title number rides inside the thick stroke, reading left to right
    const rev=p1[0]<p0[0],tid='tp-'+tr.id,q0=rev?p1:p0,q1=rev?p0:p1;
