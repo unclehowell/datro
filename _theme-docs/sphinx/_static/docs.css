@@ -12,3 +12,9 @@ body{overflow-x:hidden}
 .docs-older{width:100%}
 .docs-older summary{cursor:pointer;color:var(--color-foreground-secondary)}
 .docs-older .docs-pdf{display:inline-block;margin:.3rem .3rem 0 0;border-color:#c0392b;color:#c0392b}
+/* family day/night: the family toggle in the shared header is the one switch; the docs. accent pair is a hint only */
+.theme-toggle-container{display:none!important}
+:focus-visible{outline:2px solid var(--ghf-accent,var(--color-brand-primary));outline-offset:2px}
+.sidebar-brand{border-bottom:2px solid var(--ghf-accent,var(--color-brand-primary))}
+.docs-langs a.current{background:var(--ghf-accent,var(--color-brand-primary));border-color:var(--ghf-accent,var(--color-brand-primary));color:var(--color-background-primary)}
+body[data-theme=dark] .docs-older .docs-pdf{border-color:#ff6b5e;color:#ff8a80}

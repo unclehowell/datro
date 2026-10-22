@@ -41,15 +41,26 @@ html_last_updated_fmt = '%Y-%m-%d'
 html_permalinks_icon = '#'
 html_baseurl = os.environ.get('DOCS_BASEURL', '')
 html_theme_options = {
+    # day = the family's white ground, night = its black ground (the page follows <html data-ghf-mode> through docs.js; no inversion);
+    # the docs. accent pair (palette v3: navy #1C2E5C by day, apricot #FFB27A by night) is the brand colour.
     'light_css_variables': {
-        'color-brand-primary': '#2f5d3a',
-        'color-brand-content': '#2f5d3a',
+        'color-brand-primary': '#1C2E5C',
+        'color-brand-content': '#1C2E5C',
+        'color-background-primary': '#ffffff',
+        'color-background-secondary': '#f6f6f7',
+        'color-foreground-primary': '#111111',
         'font-stack': 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
         'font-stack--headings': 'Georgia, "Times New Roman", serif',
     },
     'dark_css_variables': {
-        'color-brand-primary': '#9cc9a5',
-        'color-brand-content': '#9cc9a5',
+        'color-brand-primary': '#FFB27A',
+        'color-brand-content': '#FFB27A',
+        'color-background-primary': '#000000',
+        'color-background-secondary': '#0c0c0e',
+        'color-background-hover': '#1a1a1e',
+        'color-background-border': '#2a2a2e',
+        'color-foreground-primary': '#ffffff',
+        'color-foreground-secondary': '#bdbdbd',
     },
     'sidebar_hide_name': False,
     'navigation_with_keys': True,

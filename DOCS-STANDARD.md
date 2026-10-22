@@ -1,6 +1,6 @@
 # DOCS-STANDARD — how a document is published on docs.bucklerfamily.estate
 
-Version 1.1.0 · 2026-10-22. Drawn from the library branch (library.bucklerfamily.estate), which stays as it is.
+Version 1.2.0 · 2026-10-22. Drawn from the library branch (library.bucklerfamily.estate), which stays as it is.
 The rules are numbered so a change, a review or a build error can point at one. `python3 _theme-docs/build.py --check`
 enforces the ones marked **[checked]**; a deploy fails rather than publish a document that breaks them.
 
@@ -126,6 +126,11 @@ python3 _theme-docs/release.py <collection>/<document> --to X.Y.Z [--date YYYY-M
      Archive PDFs (release.py): rinohtype (pure Python, no TeX), A4, `_theme-docs/sphinx/pdf.rtt` + `pdf.rts`.
 10.5 The site's `_redirects` sends the old PDF addresses (`/<collection>/<document>/latest/pdf/…`) to the document's menu; other missing paths are a 404.
 10.4 Every generated HTML page ends its `<head>` with the family header loader `ghf-boot.js?v=2.1.2`.
+10.5 Day and night follow the family sites: white ground by day, black by night, switched by the family toggle in the shared header
+     (one toggle; Furo's own is hidden). Every generated page carries `<html data-ghf-native="auto">`, so the shared theme never
+     colour-inverts it: Furo's light/dark variables (conf.py) and `library.css` draw both schemes. `docs.js` keeps Furo in step with
+     `<html data-ghf-mode>`. The docs. accent pair (palette v3: navy `#1C2E5C`, apricot `#FFB27A`) comes from `ghf-boot.js` as
+     `--ghf-accent`; it is a hint only (band edges, focus ring, link colour). Green = HTML and red = PDF keep their meaning in both modes.
 
 ## 11. Passing in other markup later
 11.1 Markdown, HTML or Word handed to the docs branch is converted to RST first, then follows §2–§9:

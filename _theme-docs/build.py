@@ -150,6 +150,8 @@ def inject_boot(folder):
         t = f.read_text(encoding='utf-8')
         if 'ghf-boot.js' in t:
             continue
+        if 'data-ghf-native' not in t:   # drawn in both schemes (Furo light/dark follows the family mode): never colour-inverted
+            t = re.sub(r'<html\b', '<html data-ghf-native="auto"', t, count=1)
         t = t.replace('</head>', GHF_BOOT + '\n</head>', 1)
         f.write_text(t, encoding='utf-8')
 
@@ -157,7 +159,7 @@ def inject_boot(folder):
 def redirect_page(path, target_js, fallback, title='docs'):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(f"""<!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en" data-ghf-native="auto"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{_html.escape(title)}</title><meta name="robots" content="noindex"><link rel="canonical" href="{fallback}">
 <script>{target_js}</script>
 {GHF_BOOT}
@@ -239,19 +241,19 @@ def _t(obj, lang='en'):
 
 
 def menu_page(path, title, body, depth, desc=''):
-    """One static menu page in the library's explorer look (dark bands, rounded buttons), no JS needed."""
+    """One static menu page in the library's explorer layout (translucent bands, rounded buttons), no JS needed; family day/night colours."""
     esc = _html.escape
     up = '' if depth == 0 else '<a class="up" href="../" aria-label="Back">&laquo;</a>'
     rel = '../' * depth
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-ghf-native="auto">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc or title)}">
-<meta name="theme-color" content="#333366">
+<meta name="theme-color" content="#000000">
 <link rel="alternate" type="application/json" href="/docs.json" title="Document index">
 <link rel="stylesheet" href="{rel}library.css">
 {GHF_BOOT}

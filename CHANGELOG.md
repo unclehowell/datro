@@ -6,6 +6,16 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Rules: DOCS-STAN
 
 ## [Unreleased]
 
+## [docs-0.3.1] - 2026-10-22
+
+### Changed
+- Day and night like every bucklerfamily.estate site: white ground by day, black by night, following the family toggle.
+  Pages carry `<html data-ghf-native="auto">`, so they are no longer colour-inverted by day (the menus were a lavender
+  inversion of the navy page). `library.css` draws both schemes with the same bands and buttons; Furo's light and dark
+  variables use the family grounds; `docs.js` follows `data-ghf-mode` (it read the wrong attribute) and Furo's own toggle is
+  hidden. DOCS-STANDARD.md v1.2.0 §10.5.
+- The docs. accent pair (navy `#1C2E5C` / apricot `#FFB27A`) is the brand colour and a hint on band edges and focus rings.
+
 ## [docs-0.3.0] - 2026-10-22
 
 ### Changed
