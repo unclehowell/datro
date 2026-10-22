@@ -43,7 +43,9 @@ type MailRow = {
   a?: number;
   g?: string;
 };
-type Mail = { schema: string; lanes: Record<string, MailRow[]> };
+/** A reply the record expects and has not had yet (roadmap.json lanes[].expected, carried in snl-mail.json). */
+type Exp = { d: string; k: string; r: string; t: string; u: string | null; ref: string; b: string };
+type Mail = { schema: string; lanes: Record<string, MailRow[]>; expected?: Record<string, Exp[]> };
 
 type StageKey = "request" | "review" | "sar" | "complaint" | "watchdog" | "mp" | "court";
 type Kind = "ladder" | "snake" | "square";
@@ -57,7 +59,24 @@ type Sq = MailRow & {
 };
 type Lap = { n: number; stage: StageKey; label: string; colour: string; count: number };
 type Jump = { from: number; to: number };
-type Game = { squares: Sq[]; laps: Lap[]; ladders: Jump[]; snakes: Jump[]; goal: number };
+type ExpSq = Exp & { n: number; stage: StageKey; lap: number; lane: string };
+type Game = {
+  squares: Sq[];
+  expected: ExpSq[];
+  laps: Lap[];
+  ladders: Jump[];
+  snakes: Jump[];
+  goal: number;
+};
+/** The stage an expected reply belongs to: a SAR reply on the SAR lap, a review outcome on the review lap. */
+function expStage(e: Exp): StageKey {
+  const r = (e.r || "").toLowerCase();
+  if (/review/.test(r) || /review/.test((e.k || "").toLowerCase())) return "review";
+  if (/sar|subject/.test(r)) return "sar";
+  if (/complaint|icr/.test(r)) return "complaint";
+  if (/ico|ombudsman/.test(r)) return "watchdog";
+  return "request";
+}
 
 const STAGES: Record<StageKey, { label: string; short: string; colour: string }> = {
   request: { label: "Request · FOI / EIR / enquiry", short: "Request", colour: "#c4a574" },
@@ -257,7 +276,11 @@ function buildGame(inst: AvInstitution | null, lanes: string[], mail: Mail | nul
     (a, b) => a.d.localeCompare(b.d) || (a.out === b.out ? 0 : a.out ? -1 : 1),
   );
   const staged = list.map((r) => ({ r, stage: stageOf(r, r.phase, r.lane) }));
+  const exps = lanes
+    .flatMap((lane) => (mail?.expected?.[lane] ?? []).map((e) => ({ e, lane, stage: expStage(e) })))
+    .sort((a, b) => a.e.d.localeCompare(b.e.d));
   const route = new Set<StageKey>(staged.map((x) => x.stage));
+  if (list.length) for (const x of exps) route.add(x.stage);
   for (const p of routePhases) if (PHASE_STAGE[p]) route.add(PHASE_STAGE[p]);
   for (const l of lanes) {
     const ls = laneStage(l);
@@ -301,14 +324,24 @@ function buildGame(inst: AvInstitution | null, lanes: string[], mail: Mail | nul
       lane: r.lane,
     };
   });
-  const goal = squares.length + 1;
+  /** Expected replies sit after the last real email, one faint square each, at their due dates. */
+  const expected: ExpSq[] = list.length
+    ? exps.map(({ e, lane, stage }, i) => ({
+        ...e,
+        n: squares.length + i + 1,
+        stage,
+        lap: lapOf.get(stage)!.n,
+        lane,
+      }))
+    : [];
+  const goal = squares.length + expected.length + 1;
   const ladders = squares
     .filter((q) => q.kind === "ladder")
     .map((q) => ({ from: q.n, to: Math.min(goal, above(q.n)) }));
   const snakes = squares
     .filter((q) => q.kind === "snake")
     .map((q) => ({ from: q.n, to: Math.max(1, below(q.n)) }));
-  return { squares, laps, ladders, snakes, goal };
+  return { squares, expected, laps, ladders, snakes, goal };
 }
 
 function useMail(on: boolean) {
@@ -376,7 +409,7 @@ function useKeepScroll(deps: unknown[]) {
 }
 
 type View = "1d" | "2d";
-type Sheet = { kind: "sq"; n: number } | { kind: "how" } | { kind: "goal" };
+type Sheet = { kind: "sq"; n: number } | { kind: "exp"; i: number } | { kind: "how" } | { kind: "goal" };
 
 export function SnakesLadders({ pick, onPick }: { pick: string; onPick: (id: string) => void }) {
   const play = usePlay();
@@ -529,12 +562,14 @@ export function SnakesLadders({ pick, onPick }: { pick: string; onPick: (id: str
           ) : view === "1d" ? (
             <Board1D
               game={game}
+              onExp={(i) => setSheet({ kind: "exp", i })}
               onSq={(n) => setSheet({ kind: "sq", n })}
               onGoal={() => setSheet({ kind: "goal" })}
             />
           ) : (
             <Board2D
               game={game}
+              onExp={(i) => setSheet({ kind: "exp", i })}
               onSq={(n) => setSheet({ kind: "sq", n })}
               onGoal={() => setSheet({ kind: "goal" })}
             />
@@ -562,6 +597,9 @@ export function SnakesLadders({ pick, onPick }: { pick: string; onPick: (id: str
           </div>
         )}
         {sq && game && <SquareSheet sq={sq} lap={game.laps[sq.lap - 1]} />}
+        {sheet?.kind === "exp" && game?.expected[sheet.i] && (
+          <ExpSheet e={game.expected[sheet.i]} lap={game.laps[game.expected[sheet.i].lap - 1]} />
+        )}
       </DetailModal>
     </section>
   );
@@ -610,6 +648,37 @@ function SquareSheet({ sq, lap }: { sq: Sq; lap: Lap }) {
   );
 }
 
+function ExpSheet({ e, lap }: { e: ExpSq; lap: Lap }) {
+  return (
+    <div>
+      <p className="text-xs uppercase tracking-wide text-faint">
+        Square {e.n} · Lap {lap.n} · {lap.label}
+      </p>
+      <h2 className="mt-1 font-serif text-2xl">Reply due {fmt(e.d)}</h2>
+      <p className="mt-2 text-sm leading-relaxed text-muted">
+        {e.k ? e.k[0].toUpperCase() + e.k.slice(1) : "Reply"}
+        {e.r ? ` (${e.r})` : ""} expected by this date{e.b ? `: ${e.b}` : ""}.
+      </p>
+      {e.t && (
+        <p className="mt-2 text-sm text-fg">
+          {e.t}
+          {e.ref ? <span className="text-faint"> · ref {e.ref}</span> : null}
+        </p>
+      )}
+      {e.u && (
+        <a
+          href={e.u}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-3 inline-block text-sm text-brass underline underline-offset-2"
+        >
+          The request on the record
+        </a>
+      )}
+    </div>
+  );
+}
+
 function Legend({ game }: { game: Game }) {
   return (
     <div className="mt-2 px-1" aria-label="Lap index">
@@ -637,6 +706,11 @@ function Legend({ game }: { game: Game }) {
       </ul>
       <p className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-muted">
         <span>{game.squares.length} squares</span>
+        {game.expected.length > 0 && (
+          <span>
+            ✉ {game.expected.length} {game.expected.length === 1 ? "reply" : "replies"} expected
+          </span>
+        )}
         <span>
           🪜 {game.ladders.length} {game.ladders.length === 1 ? "ladder" : "ladders"}
         </span>
@@ -851,10 +925,12 @@ function SnakeShape({
 function Board1D({
   game,
   onSq,
+  onExp,
   onGoal,
 }: {
   game: Game;
   onSq: (n: number) => void;
+  onExp: (i: number) => void;
   onGoal: () => void;
 }) {
   const total = game.goal;
@@ -870,7 +946,7 @@ function Board1D({
       viewBox={`0 0 ${W} ${H}`}
       className="mt-2 block w-full touch-manipulation select-none"
       role="img"
-      aria-label={`Snakes and ladders board: ${game.squares.length} emails in ${game.laps.length} laps`}
+      aria-label={`Snakes and ladders board: ${game.squares.length} emails in ${game.laps.length} laps, ${game.expected.length} replies expected`}
     >
       {game.squares.map((q) => {
         const p = pos(q.n, rows);
@@ -917,6 +993,70 @@ function Board1D({
                 opacity="0.7"
               />
             )}
+          </g>
+        );
+      })}
+      {game.expected.map((e, i) => {
+        const p = pos(e.n, rows);
+        const col = STAGES[e.stage].colour;
+        const cx = p.x + CELL / 2;
+        const cy = p.y + CELL / 2 + 1;
+        return (
+          <g
+            key={`x${e.n}`}
+            onClick={() => onExp(i)}
+            style={{ cursor: "pointer" }}
+            data-exp={e.n}
+            data-lap={e.lap}
+          >
+            <rect
+              x={p.x + 0.5}
+              y={p.y + 0.5}
+              width={CELL - 1}
+              height={CELL - 1}
+              rx="3"
+              fill="#1d1813"
+              opacity="0.85"
+            />
+            <rect
+              x={p.x + 2.5}
+              y={p.y + 2.5}
+              width={CELL - 5}
+              height={CELL - 5}
+              rx="3"
+              fill="none"
+              stroke={col}
+              strokeWidth="1.1"
+              strokeDasharray="3 2.5"
+              opacity="0.75"
+            />
+            <g opacity="0.5">
+              <rect x={cx - 11} y={cy - 9} width="22" height="15" rx="1.5" fill={col} />
+              <path
+                d={`M${cx - 11} ${cy - 9} L${cx} ${cy - 1} L${cx + 11} ${cy - 9}`}
+                fill="none"
+                stroke="#14110e"
+                strokeWidth="1.2"
+              />
+            </g>
+            <g fontFamily={FONT} pointerEvents="none">
+              <text x={p.x + 4} y={p.y + 12} fontSize="7" fontWeight="700" fill="#b3a898">
+                due
+              </text>
+              <text
+                x={cx}
+                y={p.y + CELL - 6}
+                textAnchor="middle"
+                fontSize="8"
+                fontWeight="700"
+                fill="#e9dfcf"
+                stroke="#1b1612"
+                strokeWidth="2"
+                paintOrder="stroke"
+              >
+                {fmtS(e.d)}
+              </text>
+            </g>
           </g>
         );
       })}
@@ -1236,10 +1376,12 @@ function Man({ x, y }: { x: number; y: number }) {
 function Board2D({
   game,
   onSq,
+  onExp,
   onGoal,
 }: {
   game: Game;
   onSq: (n: number) => void;
+  onExp: (i: number) => void;
   onGoal: () => void;
 }) {
   const levels = game.laps.length;
@@ -1247,16 +1389,25 @@ function Board2D({
   const platY = DTOP - 6;
   /** Each email at its place on its lap's girder, in date order. */
   const placed = useMemo(() => {
-    const out = new Map<number, { x: number; y: number; level: number }>();
+    const out = new Map<number, { x: number; y: number; level: number; k?: number }>();
     game.laps.forEach((lap, li) => {
       const g = dGirder(li, levels);
       const items = game.squares.filter((q) => q.lap === lap.n);
+      const exps = game.expected.filter((e) => e.lap === lap.n);
       const a = g.left + 34;
-      const b = g.right - 10;
+      const b0 = g.right - 10;
+      /** Expected replies get their own stretch at the end of the girder, after the last real email. */
+      const reserve = exps.length ? Math.min(exps.length * 26, (b0 - a) * 0.6) : 0;
+      const b = items.length && exps.length ? b0 - reserve - 10 : b0;
       items.forEach((q, j) => {
         const x = items.length === 1 ? (a + b) / 2 : a + ((b - a) * j) / (items.length - 1);
         const lift = items.length > 24 && j % 2 === 1 ? 9 : 0;
         out.set(q.n, { x, y: g.yAt(x) - lift, level: li });
+      });
+      const ea = items.length ? b0 - reserve + 13 : a;
+      exps.forEach((e, j) => {
+        const x = exps.length === 1 ? (items.length ? b0 - 4 : (ea + b0) / 2) : ea + ((b0 - ea) * j) / (exps.length - 1);
+        out.set(e.n, { x, y: g.yAt(x), level: li, k: j });
       });
     });
     return out;
@@ -1352,6 +1503,60 @@ function Board2D({
           </g>
         );
       })}
+      {game.expected.map((e, i) => {
+        const at = placed.get(e.n);
+        if (!at) return null;
+        const col = STAGES[e.stage].colour;
+        const w = 11;
+        const h = 8;
+        return (
+          <g
+            key={`x${e.n}`}
+            onClick={() => onExp(i)}
+            style={{ cursor: "pointer" }}
+            data-exp={e.n}
+            data-lap={e.lap}
+          >
+            <rect x={at.x - 9} y={at.y - 15} width="18" height="17" fill="transparent" />
+            <rect
+              x={at.x - 8}
+              y={at.y - 13}
+              width="16"
+              height="14"
+              rx="1.5"
+              fill="none"
+              stroke={col}
+              strokeWidth="0.9"
+              strokeDasharray="2 1.6"
+              opacity="0.8"
+            />
+            <g opacity="0.45">
+              <rect x={at.x - w / 2} y={at.y - h - 2.5} width={w} height={h} fill={col} />
+              <path
+                d={`M${at.x - w / 2} ${at.y - h - 2.5} L${at.x} ${at.y - h / 2 - 2} L${at.x + w / 2} ${at.y - h - 2.5}`}
+                fill="none"
+                stroke="#14110e"
+                strokeWidth="0.8"
+              />
+            </g>
+            <text
+              x={at.x}
+              y={at.y - 16 - ((at.k ?? 0) % 2) * 8}
+              textAnchor="middle"
+              fontFamily={FONT}
+              fontSize="6.4"
+              fontWeight="700"
+              fill="#e9dfcf"
+              stroke="#0b0a12"
+              strokeWidth="2"
+              paintOrder="stroke"
+              pointerEvents="none"
+            >
+              {fmtS(e.d)}
+            </text>
+          </g>
+        );
+      })}
       {lastAt && <Man x={lastAt.x} y={lastAt.y - 12} />}
     </svg>
   );
@@ -1385,6 +1590,10 @@ function HowTo() {
           1D shows the path as snakes and ladders; 2D shows the same emails as the Donkey Kong
           climb: one girder per lap, ladders for disclosure, barrels for no-results, the man in
           green on the latest email.
+        </li>
+        <li>
+          ✉ A faint dashed square after the last email is a reply the record expects, with its due
+          date on it. It turns into a real square when the reply arrives.
         </li>
       </ul>
       <div className="mt-3 flex flex-col gap-1.5 text-sm">
