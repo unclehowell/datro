@@ -9,9 +9,9 @@ The current planning structure has **three active projects** and **one condition
 - **P1 — Tŷ Mawr replica museum in Argentina:** source-led interpretation, reconstruction design and feasibility/business case. No Argentine site has been selected, acquired or approved; construction/opening is not underway.
 - **P2 — Wales records, evidence and witness recovery:** urgent preservation, FOI/EIR and archive routes, land/planning/heritage/court records, witness accounts, verification and reconciliation.
 - **P3 — Llandough Parcel A augmented-reality heritage tour:** spatial/source-confidence model, guided route, historic wireframes and an AR-capable prototype. No accepted AR model, working prototype or field pilot is recorded.
-- **P4 — Case reopening / legal remedy:** conditional standby only. It is not initiated unless preserved primary-source material, material relevance, independent written legal advice and a written Executive authorisation pass a defined gate.
+- **P4 — Case reopening / legal remedy:** conditional standby only. It is not initiated unless preserved primary-source material, material relevance, independent written legal advice and written Executive authorisation pass a defined gate.
 
-P1 and P3 may start bounded research/concept work from existing materials while P2 proceeds. P2 supports both through controlled source changes; it is not a blanket precondition. Artefact/object census is a P1 work package with P2 provenance interfaces, not a fourth active project.
+P1 and P3 may start bounded research/concept work from existing material while P2 proceeds. P2 supports both through controlled source changes; it is not a blanket precondition. Artefact/object census is a P1 work package with P2 provenance interfaces, not a fourth active project.
 
 ## Canonical programme products
 
@@ -19,12 +19,14 @@ P1 and P3 may start bounded research/concept work from existing materials while 
 - `/programme-mandate/` — master mandate and brief.
 - `/programme-plan/` — master stage, milestone, dependency and work-package plan.
 - `/programme-highlight-report/` — current master highlight report.
+- `/portfolio-directory/` — reader-facing directory of the public estate sites.
 - `/p1-argentina-museum/` — P1 mandate, milestone → work-package → task plan and highlight report.
 - `/workstreams/evidence-recovery/` — P2 recovery brief, task hierarchy and highlight report.
 - `/p3-ar-heritage-tour/` — P3 mandate, milestone → work-package → task plan and highlight report.
 - `/p4-case-reopening-gate/` — P4 standby conditions and activation gate.
 - `/data/programme.json` — machine-readable project, milestone, work-package, task and status baseline.
-- `/data/pm-dashboard.json` — retained detailed inherited disclosure/correspondence task snapshot.
+- `/data/site-directory.json` — machine-readable reader-facing site directory.
+- `/data/pm-dashboard.json` — detailed inherited disclosure/correspondence task snapshot.
 
 ## Progress-measure rules
 

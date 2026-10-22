@@ -1,0 +1,279 @@
+{
+  "title": "Great House Farm / Tŷ Mawr — Public Site Directory",
+  "checked_at": "2026-10-22",
+  "purpose": "A reader-facing navigation index for public estate websites, records, project pages, visual interpretation and game pages.",
+  "canonical_entry": "https://bucklerfamily.estate/",
+  "public_rule": "A configured domain is not, by itself, proof that a page is working, accurate or a primary historical source. For factual claims, follow the source references to the underlying record.",
+  "groups": [
+    {
+      "name": "Games and interactive projects",
+      "sites": [
+        {
+          "url": "https://althea.bucklerfamily.estate/",
+          "title": "Althea",
+          "purpose": "An interactive project surface separate from the evidence catalogue."
+        },
+        {
+          "url": "https://chess.bucklerfamily.estate/",
+          "title": "Chess",
+          "purpose": "Game page, separate from the historical evidence archive."
+        },
+        {
+          "url": "https://cnei.bucklerfamily.estate/",
+          "title": "CNEI",
+          "purpose": "Technical/interactive project surface; not a source register."
+        },
+        {
+          "url": "https://dcc.bucklerfamily.estate/",
+          "title": "DCC project",
+          "purpose": "Specialist digital project, distinct from the archive."
+        },
+        {
+          "url": "https://gui.bucklerfamily.estate/",
+          "title": "GUI project",
+          "purpose": "Interactive/interface project; not a source register."
+        },
+        {
+          "url": "https://pirateclaw.bucklerfamily.estate/",
+          "title": "PirateClaw",
+          "purpose": "Game/interactive page, separate from the historical evidence archive."
+        }
+      ]
+    },
+    {
+      "name": "Heritage, maps and digital interpretation",
+      "sites": [
+        {
+          "url": "https://ghf-app.bucklerfamily.estate/",
+          "title": "Heritage app",
+          "purpose": "Interactive heritage experience; use evidence-linked source pages for historical statements."
+        },
+        {
+          "url": "https://wave.bucklerfamily.estate/",
+          "title": "Interactive visualisation",
+          "purpose": "Separate visual/interactive project, not a documentary source catalogue."
+        },
+        {
+          "url": "https://webbrich.bucklerfamily.estate/",
+          "title": "Interactive web project",
+          "purpose": "Specialist web/visualisation project; verify its own scope before citing."
+        },
+        {
+          "url": "https://maps.bucklerfamily.estate/",
+          "title": "Maps",
+          "purpose": "Mapping and spatial interpretation; confirm location and source precision."
+        }
+      ]
+    },
+    {
+      "name": "Publishing, shop and community",
+      "sites": [
+        {
+          "url": "https://fb.bucklerfamily.estate/",
+          "title": "Community and stories",
+          "purpose": "Public-facing community/storytelling content."
+        },
+        {
+          "url": "https://ebooks.bucklerfamily.estate/",
+          "title": "E-books",
+          "purpose": "Books and digital publications."
+        },
+        {
+          "url": "https://shop.bucklerfamily.estate/",
+          "title": "Shop",
+          "purpose": "Merchandise and publication shop; not an evidence source."
+        }
+      ]
+    },
+    {
+      "name": "Records and disclosure",
+      "sites": [
+        {
+          "url": "https://archives.bucklerfamily.estate/",
+          "title": "Archive catalogue",
+          "purpose": "Archive-facing material and source references."
+        },
+        {
+          "url": "https://directory.bucklerfamily.estate/",
+          "title": "Directory",
+          "purpose": "Directory of relevant organisations and record-holding bodies."
+        },
+        {
+          "url": "https://whatdotheyknow.bucklerfamily.estate/",
+          "title": "Disclosure request register",
+          "purpose": "FOI/EIR request trail and response history."
+        },
+        {
+          "url": "https://emails.bucklerfamily.estate/",
+          "title": "Email archive",
+          "purpose": "Public correspondence archive; follow source references and message dates."
+        },
+        {
+          "url": "https://review.bucklerfamily.estate/",
+          "title": "Independent review",
+          "purpose": "Review workspace for the Great House Farm record set."
+        },
+        {
+          "url": "https://records.bucklerfamily.estate/",
+          "title": "Primary records",
+          "purpose": "A focused record collection for primary documents and source artefacts."
+        },
+        {
+          "url": "https://authorities.bucklerfamily.estate/",
+          "title": "Public authorities",
+          "purpose": "Public-authority correspondence and disclosure trail."
+        },
+        {
+          "url": "https://watchtower.bucklerfamily.estate/",
+          "title": "Watchtower",
+          "purpose": "Monitoring and backfill tools for relevant public records and historic web material."
+        },
+        {
+          "url": "https://wayback.bucklerfamily.estate/",
+          "title": "Wayback archive",
+          "purpose": "Archive and media store for preserved web items, PDFs and documentary copies."
+        }
+      ]
+    },
+    {
+      "name": "Specialist tools and projects",
+      "sites": [
+        {
+          "url": "https://accounts.bucklerfamily.estate/",
+          "title": "Accounts",
+          "purpose": "Separate account/tool surface; use the main Project Office for programme status."
+        },
+        {
+          "url": "https://bucklervsbp.bucklerfamily.estate/",
+          "title": "bucklervsbp",
+          "purpose": "Separate specialist site; check its own page for the current purpose. It is not automatically a source of evidence about Great House Farm."
+        },
+        {
+          "url": "https://calls.bucklerfamily.estate/",
+          "title": "Calls",
+          "purpose": "Specialist call/communications tool; not a public evidence register."
+        },
+        {
+          "url": "https://command.bucklerfamily.estate/",
+          "title": "Command dashboard",
+          "purpose": "Technical/admin dashboard; not a public record source."
+        },
+        {
+          "url": "https://csscpsgp.bucklerfamily.estate/",
+          "title": "csscpsgp",
+          "purpose": "Separate specialist site; check its own page for the current purpose. It is not automatically a source of evidence about Great House Farm."
+        },
+        {
+          "url": "https://dash.bucklerfamily.estate/",
+          "title": "Dashboard project",
+          "purpose": "Specialist dashboard; use the relevant public project page for context."
+        },
+        {
+          "url": "https://hbnb.bucklerfamily.estate/",
+          "title": "Hotspot BnB",
+          "purpose": "Separate hospitality project, unrelated to the Great House Farm evidence archive."
+        },
+        {
+          "url": "https://library.bucklerfamily.estate/",
+          "title": "Library",
+          "purpose": "Library surface for publications and media."
+        },
+        {
+          "url": "https://ceo.bucklerfamily.estate/",
+          "title": "Operations tool",
+          "purpose": "Separate operations surface, distinct from the public history."
+        },
+        {
+          "url": "https://qa.bucklerfamily.estate/",
+          "title": "qa",
+          "purpose": "Separate specialist site; check its own page for the current purpose. It is not automatically a source of evidence about Great House Farm."
+        },
+        {
+          "url": "https://subrepos.bucklerfamily.estate/",
+          "title": "Repository tools",
+          "purpose": "Technical repository/navigation tool."
+        },
+        {
+          "url": "https://csscpsg.bucklerfamily.estate/",
+          "title": "Specialist project",
+          "purpose": "Separate specialist project; not a source archive."
+        },
+        {
+          "url": "https://www.bucklerfamily.estate/",
+          "title": "www",
+          "purpose": "Separate specialist site; check its own page for the current purpose. It is not automatically a source of evidence about Great House Farm."
+        }
+      ]
+    },
+    {
+      "name": "Start and understand",
+      "sites": [
+        {
+          "url": "https://2026-10-22.bucklerfamily.estate/",
+          "title": "Council meeting brief",
+          "purpose": "Briefing material for the 22 October 2026 Llandough Community Council meeting."
+        },
+        {
+          "url": "https://bucklerfamily.estate/",
+          "title": "Estate home and campus map",
+          "purpose": "Use this as the main orientation map; it links the family’s public project surfaces."
+        },
+        {
+          "url": "https://infographic.bucklerfamily.estate/",
+          "title": "Infographic",
+          "purpose": "Visual explanation of the main parcel/title questions."
+        },
+        {
+          "url": "https://oldbill.bucklerfamily.estate/",
+          "title": "Legacy project",
+          "purpose": "A separate legacy/heritage project page; check its own scope before citing it."
+        },
+        {
+          "url": "https://nolecture.bucklerfamily.estate/",
+          "title": "Nomenclature alias",
+          "purpose": "Alternate domain for the nomenclature project; use the canonical nomenclature address where possible."
+        },
+        {
+          "url": "https://nomlecture.bucklerfamily.estate/",
+          "title": "Nomenclature alias",
+          "purpose": "Alternate domain for the nomenclature project; use the canonical nomenclature address where possible."
+        },
+        {
+          "url": "https://nomenclature.bucklerfamily.estate/",
+          "title": "Nomenclature register",
+          "purpose": "Terminology and event naming conventions."
+        },
+        {
+          "url": "https://projects.bucklerfamily.estate/",
+          "title": "Project Office",
+          "purpose": "Mandates, plans, milestone/work-package tracking and highlight reports."
+        },
+        {
+          "url": "https://projections.bucklerfamily.estate/",
+          "title": "Projections",
+          "purpose": "Visual projection/representation project; distinguish illustration from source records."
+        },
+        {
+          "url": "https://wiki.bucklerfamily.estate/start-here/",
+          "title": "Start Here — Great House Farm Wiki",
+          "purpose": "The main reader entry to the WordPress historical archive, evidence labels and source-linked pages."
+        },
+        {
+          "url": "https://timeline.bucklerfamily.estate/",
+          "title": "Timeline",
+          "purpose": "Timeline and chronology interface; use linked source references to verify entries."
+        },
+        {
+          "url": "https://bpvsbuckler.bucklerfamily.estate/",
+          "title": "Tŷ Mawr story",
+          "purpose": "Narrative and visual history of Great House Farm / Tŷ Mawr and the case chronology."
+        },
+        {
+          "url": "https://wiki.bucklerfamily.estate/",
+          "title": "Wiki domain",
+          "purpose": "A configured wiki-related domain; the WordPress Start Here page is the documented route to the archive."
+        }
+      ]
+    }
+  ]
+}

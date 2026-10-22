@@ -105,3 +105,11 @@
   - 1993 – The Glamorgan Village Book recorded the Roman villa discovery
 
 ## [Unreleased]
+
+
+
+## 2026-10-22 — Reader-facing site directory
+
+- Added a grouped, public-facing directory so readers can tell the estate map, evidence/archive tools, project pages, visual interpretation and game pages apart.
+- Linked the directory from the programme homepage and shared navigation/footer; added a machine-readable public directory and build checks.
+- Kept operational task details, branch inventory and deployment configuration out of the public reader directory.
