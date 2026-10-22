@@ -1463,10 +1463,12 @@ INSERT INTO nodes VALUES ('doc-mod-FOI2026-23272','document','MOD Army Policy & 
 INSERT INTO nodes VALUES ('doc-mod-dbs-DPR2026-46503','document','MOD DBS SAR, 9 October 2026','{"holder": "Ministry of Defence, Defence Business Services (DBS) Civilian Disclosures Team", "reference": "DPR2026/46503", "date": "2026-10-09"}');
 INSERT INTO nodes VALUES ('doc-museum-wales-FOI-2026-024-clarification-2026-10-20','document','Amgueddfa Cymru FOI 2026-024 / 032 / 036 – clarification on c.1880 medieval ironwork','{"holder": "Amgueddfa Cymru – Museum Wales", "reference": "FOI 2026-024 / 032 / 036 (new request of 19 Oct 2026)", "date": "2026-10-20"}');
 INSERT INTO nodes VALUES ('doc-museum-wales-FOI-2026-024-clarification-2026-10-22','document','Museum Wales FOI 2026-024 / 032 / 036 — clarification provided 2026-10-22','{"holder": "", "reference": "", "date": ""}');
+INSERT INTO nodes VALUES ('doc-museum-wales-FOI-2026-024-clarification-sent-2026-10-22','document','Museum Wales FOI 2026-024 / 032 / 036 — sent clarification 22 Oct 2026','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-museum-wales-FOI-2026-024','document','Amgueddfa Cymru FOI 2026-024 / 032 / 036 – recorded basis for out-of-scope / searches','{"holder": "Amgueddfa Cymru – Museum Wales", "reference": "FOI 2026-024 / 032 / 036", "date": "2026-10-16"}');
 INSERT INTO nodes VALUES ('doc-museum-wales-FOI-2026-036','document','Amgueddfa Cymru FOI 2026-036','{"holder": "Amgueddfa Cymru – Museum Wales", "reference": "FOI 2026-036", "date": "2026-10-10"}');
 INSERT INTO nodes VALUES ('doc-ordnance-survey-FOI-26-46','document','Ordnance Survey FOI-26-46','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-rcahmw-RC26-0375','document','RCAHMW RC26-0375 further responses, 6 and 13 October 2026','{"holder": "RCAHMW (NMRW)", "reference": "RC26-0375 (includes RC26-0353, RC26-0368, RC26-0371)", "date": "2026-10-13"}');
+INSERT INTO nodes VALUES ('doc-rctcbc-buckler-williams-deaths-chase-2026-10-22','document','RCTCBC / Beverley Morgan — chase on Buckler/Williams deaths records 22 Oct 2026','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-rctcbc-foi-buckler-williams-deaths-chase-2026-10-22','document','RCTCBC FOI / Records — chase and internal review request 2026-10-22','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-science-museum-FOI-2026-0038','document','Science Museum Group FOI/2026/0038 internal review','{"holder": "Science Museum Group", "reference": "FOI/2026/0038", "date": "2026-10-01"}');
 INSERT INTO nodes VALUES ('doc-south-wales-police-auto-ack-foi-great-house-farm-1988','document','South Wales Police FOI auto-acknowledgement','{"holder": "South Wales Police", "reference": "none assigned in auto-ack", "date": "2026-10-10"}');
@@ -3340,6 +3342,8 @@ INSERT INTO edges VALUES ('doc-mod-dbs-DPR2026-46503','ref:DPR2026/46503','cites
 INSERT INTO edges VALUES ('doc-museum-wales-FOI-2026-024-clarification-2026-10-20','ref:FOI 2026-024','cites');
 INSERT INTO edges VALUES ('doc-museum-wales-FOI-2026-024-clarification-2026-10-22','ref:FOI 2026-024','cites');
 INSERT INTO edges VALUES ('doc-museum-wales-FOI-2026-024-clarification-2026-10-22','ref:FOI-2026-024','cites');
+INSERT INTO edges VALUES ('doc-museum-wales-FOI-2026-024-clarification-sent-2026-10-22','ref:FOI 2026-024','cites');
+INSERT INTO edges VALUES ('doc-museum-wales-FOI-2026-024-clarification-sent-2026-10-22','ref:FOI-2026-024','cites');
 INSERT INTO edges VALUES ('doc-museum-wales-FOI-2026-024','ref:FOI 2026-024','cites');
 INSERT INTO edges VALUES ('doc-museum-wales-FOI-2026-036','ref:FOI 2026-032','cites');
 INSERT INTO edges VALUES ('doc-museum-wales-FOI-2026-036','ref:FOI 2026-036','cites');
