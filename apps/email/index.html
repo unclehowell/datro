@@ -95,7 +95,7 @@ body.reader-open .reader-panel{display:flex}
 .embed-mode .mobile-back{display:none!important}
 
 .message-missing{font-style:italic;opacity:.85}.message-missing a{font-style:normal}
-.inst-wrap{display:block;margin-top:8px}.inst-wrap select{width:100%;max-width:100%;height:36px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:inherit;font:inherit;font-size:13px;padding:0 8px}.list-heading p.sync-line,.sync-line{margin:6px 0 0!important;font-size:12px!important;line-height:1.4!important;letter-spacing:0!important;text-transform:none!important;color:var(--muted)!important;font-weight:400!important}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.inst-tag{display:inline-block;font-size:10px;border:1px solid var(--line);border-radius:999px;padding:1px 7px;margin:3px 4px 0 0;color:var(--muted)}</style>
+.inst-wrap{display:block;margin-top:8px}.inst-wrap select{width:100%;max-width:100%;height:36px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:inherit;font:inherit;font-size:13px;padding:0 8px}.list-heading p.sync-line,.sync-line{margin:6px 0 0!important;font-size:12px!important;line-height:1.4!important;letter-spacing:0!important;text-transform:none!important;color:var(--muted)!important;font-weight:400!important}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.inst-tag{display:inline-block;font-size:10px;border:1px solid var(--line);border-radius:999px;padding:1px 7px;margin:3px 4px 0 0;color:var(--muted)}.fc-btn{display:inline-flex;align-items:center;gap:6px;margin-top:8px;height:34px;padding:0 10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:inherit;font:inherit;font-size:13px;cursor:pointer}.fc-btn[aria-expanded=true]{border-color:var(--ghf-accent,#24DB5B)}.fc-btn[hidden],.fc-panel[hidden]{display:none}.fc-panel{margin-top:8px;border:1px solid var(--line);border-radius:12px;padding:8px;background:var(--surface);font-size:12px;line-height:1.4;max-width:100%;overflow:hidden}.fc-panel svg{display:block;width:100%;height:auto}.fc-panel .fc-top{display:flex;justify-content:space-between;align-items:center;gap:8px;color:var(--muted)}.fc-panel .fc-top b{color:inherit;font-weight:600}.fc-panel .fc-seg button{font:inherit;font-size:12px;border:1px solid var(--line);background:transparent;color:inherit;padding:2px 8px;cursor:pointer}.fc-panel .fc-seg button[aria-pressed=true]{background:var(--line)}.fc-key{display:flex;flex-wrap:wrap;gap:4px 12px;margin:4px 0 0;padding:0;list-style:none;color:var(--muted);font-size:11px}.fc-key li{display:flex;align-items:center;gap:4px}.fc-sel{min-height:2.6em;margin:4px 0 0}.fc-panel details{margin-top:4px;color:var(--muted)}.fc-panel summary{cursor:pointer;color:inherit}.fc-panel ol{margin:4px 0 0;padding-left:18px}.fc-panel ol li{margin:2px 0;overflow-wrap:anywhere}.fc-panel a{color:inherit}</style>
 <script src="/ghf-lang/ghf-lang.js?v=2.1.0" data-site="email" defer></script>
 <script data-ghf-boot-inline>/*! ghf-boot.js v2.1.0 (2026-10-21), inlined same-origin for this strict-CSP site · Sion's Tab agent */
 (function () {
@@ -149,7 +149,7 @@ body.reader-open .reader-panel{display:flex}
    <div class="sidebar-note">Scope: every case email held in the Wayback archive (redacted copies), all years, plus case-related public transcriptions. Grouped by thread; filter by institution below the list heading. This is not Gmail and cannot send or receive mail.</div>
  </nav>
  <section class="list-panel" aria-label="Message threads">
-  <div class="list-heading"><h2 id="list-title">All case records</h2><p id="list-subtitle">Loading the public Wayback case catalogue…</p><label class="inst-wrap"><span class="sr-only">Institution</span><select id="inst-filter" aria-label="Filter by institution"><option value="">All institutions</option></select></label><p id="sync-line" class="sync-line"></p></div>
+  <div class="list-heading"><h2 id="list-title">All case records</h2><p id="list-subtitle">Loading the public Wayback case catalogue…</p><label class="inst-wrap"><span class="sr-only">Institution</span><select id="inst-filter" aria-label="Filter by institution"><option value="">All institutions</option></select></label><button id="fc-btn" class="fc-btn" type="button" hidden aria-expanded="false" aria-controls="fc-panel"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4v16h16"/><circle cx="9" cy="14" r="1.6" fill="currentColor"/><circle cx="13" cy="10" r="1.6" fill="currentColor"/><circle cx="17" cy="7" r="1.6"/><circle cx="16" cy="13" r="1.6"/></svg>forecast</button><div id="fc-panel" class="fc-panel" hidden></div><p id="sync-line" class="sync-line"></p></div>
   <div class="result-list" id="result-list"><div class="empty-list">Loading the public archive index…</div></div>
  </section>
  <section class="reader-panel" aria-label="Selected email thread">
@@ -271,7 +271,7 @@ function updateCounts(){
  $('count-records').textContent=threads.filter(t=>classifyFolder(t)==='records').length;
  $('count-land').textContent=threads.filter(t=>classifyFolder(t)==='land').length;
 }
-function renderList(){
+function renderList(){if(window.fcUpdate)setTimeout(window.fcUpdate,0);
  visibleThreads=filteredThreads();
  $('list-title').textContent=instFilter?(INST_NAMES.get(instFilter)||'Institution'):({all:'All case records',foi:'Council & environmental correspondence',legal:'Court & legal correspondence',records:'Heritage & archive correspondence',land:'Land Registry correspondence'})[folder]||'All case records';
  $('list-subtitle').textContent=visibleThreads.length+' subject groups · '+allRecords.length+' public Wayback source records'+(fullTextMatches?' · full-text search complete':'');
@@ -604,6 +604,50 @@ fetch('/api/records').then(async r=>{if(!r.ok)throw new Error('Catalogue respons
   $('reader-empty').querySelector('p').textContent='This preview needs a specific /thread/<id>?embed=1 URL. Reopen the thread from the archive and copy its embed code.';
  }
 }).catch(e=>{$('list-subtitle').textContent='Could not load the public catalogue: '+(e&&e.message?e.message:String(e));$('result-list').replaceChildren();const d=document.createElement('div');d.className='empty-list';d.textContent='The source index could not be loaded. Please retry later or inspect the repository archive index directly.';$('result-list').appendChild(d);});
+})();
+</script>
+<script>/* forecast scatter for the selected institution (data: /data/forecast.json, the dartboard's per-institution ladder forecast) · Sion's Tab agent */
+(function(){
+var FC=null,FCP=null,open=false,span='all',NS='http://www.w3.org/2000/svg',MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function T(s){return Date.parse(s+'T12:00:00Z');}
+function fd(s){if(!s)return '';var d=new Date(s+'T12:00:00Z');return d.getUTCDate()+' '+MON[d.getUTCMonth()]+' '+d.getUTCFullYear();}
+function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;}
+function load(){if(!FCP)FCP=fetch('/data/forecast.json?d='+new Date().toISOString().slice(0,10)).then(function(r){return r.ok?r.json():null;}).then(function(j){FC=j;return j;}).catch(function(){FCP=null;return null;});return FCP;}
+function instName(){try{return instFilter?(INST_NAMES.get(instFilter)||''):'';}catch(e){return '';}}
+function find(){var n=instName();if(!FC||!n)return null;return FC.institutions.find(function(i){return i.name===n;})||null;}
+var OURS='var(--ghf-accent,#24DB5B)',THEIRS='currentColor',RED='#ef4444';
+function house(g,x,y,s){el('path',{d:'M'+(x-s)+' '+(y+s*.8)+'V'+(y-s*.1)+'L'+x+' '+(y-s)+'L'+(x+s)+' '+(y-s*.1)+'V'+(y+s*.8)+'Z',fill:RED},g);}
+function fish(g,x,y,s){el('path',{d:'M'+(x-s)+' '+y+'Q'+(x-s*.2)+' '+(y-s*.8)+' '+(x+s*.5)+' '+y+'Q'+(x-s*.2)+' '+(y+s*.8)+' '+(x-s)+' '+y+'ZM'+(x+s*.4)+' '+y+'L'+(x+s)+' '+(y-s*.6)+'V'+(y+s*.6)+'Z',fill:RED},g);}
+function render(){var P=document.getElementById('fc-panel');if(!P)return;var I=find();P.replaceChildren();
+ if(!I){P.textContent=FC?'No forecast for this institution yet.':'Loading the forecast…';return;}
+ var today=FC.today,R=I.rungs.length,W=360,PL=26,PR=8,PT=8,ROW=R>12?15:18,PB=24,H=PT+R*ROW+PB;
+ var all=[].concat(I.pts.map(function(p){return p[0];}),I.fc.map(function(p){return p[0];}),I.marks.map(function(m){return m[0];}),[today]).map(T);
+ var t0=span==='ahead'?T(today)-30*864e5:Math.min.apply(null,all),t1=Math.max(Math.max.apply(null,all),T(I.exhaust))+15*864e5;
+ function X(s){return PL+(T(s)-t0)/(t1-t0)*(W-PL-PR);}function Y(n){return PT+(R-n+.5)*ROW;}function vis(s){return T(s)>=t0;}
+ function lab(n){return (I.rungs[n-1]||{}).l||('rung '+n);}
+ var top=document.createElement('div');top.className='fc-top';var tl=document.createElement('span');tl.innerHTML='forecast · last option exhausted <b></b>';tl.querySelector('b').textContent=fd(I.exhaust);
+ var seg=document.createElement('span');seg.className='fc-seg';['all','ahead'].forEach(function(k){var b=document.createElement('button');b.type='button';b.textContent=k;b.setAttribute('aria-pressed',String(span===k));b.onclick=function(){span=k;render();};seg.appendChild(b);});
+ top.append(tl,seg);P.appendChild(top);
+ var svg=el('svg',{viewBox:'0 0 '+W+' '+H,role:'img','aria-label':'Forecast scatter for '+I.name+': '+I.pts.length+' emails so far, '+I.fc.length+' forecast emails and replies, last option exhausted '+fd(I.exhaust)});
+ I.rungs.forEach(function(r){el('line',{x1:PL,x2:W-PR,y1:Y(r.n),y2:Y(r.n),stroke:'currentColor','stroke-opacity':'.18','stroke-width':'.6'},svg);var t=el('text',{x:PL-4,y:Y(r.n)+3,'text-anchor':'end','font-size':'8',fill:'currentColor','fill-opacity':'.65'},svg);t.textContent=r.n+(r.inf?'*':'');});
+ var a=new Date(t0),b=new Date(t1),months=(b.getUTCFullYear()-a.getUTCFullYear())*12+b.getUTCMonth()-a.getUTCMonth(),step=months>30?12:months>14?6:months>6?3:1,d=new Date(Date.UTC(a.getUTCFullYear(),a.getUTCMonth()+1,1)),first=true;
+ while(d.getTime()<t1){if(d.getUTCMonth()%step===0){var x=X(d.toISOString().slice(0,10));el('line',{x1:x,x2:x,y1:PT,y2:H-PB+3,stroke:'currentColor','stroke-opacity':'.15','stroke-width':'.4','stroke-dasharray':'1 2'},svg);var tt=el('text',{x:x,y:H-PB+12,'text-anchor':'middle','font-size':'7.5',fill:'currentColor','fill-opacity':'.65'},svg);tt.textContent=step>=12?String(d.getUTCFullYear()):MON[d.getUTCMonth()]+((d.getUTCMonth()===0||first)?' '+String(d.getUTCFullYear()).slice(2):'');first=false;}d.setUTCMonth(d.getUTCMonth()+1);}
+ el('line',{x1:X(today),x2:X(today),y1:PT-2,y2:H-PB+3,stroke:'currentColor','stroke-width':'1'},svg);var td=el('text',{x:X(today)+2,y:H-3,'font-size':'7.5',fill:'currentColor'},svg);td.textContent='today';
+ var selP=document.createElement('p');selP.className='fc-sel';selP.setAttribute('aria-live','polite');selP.textContent='Tap a dot for its date and rung.';
+ function pick(dd,who,rung,kind,extra){selP.textContent=fd(dd)+' · '+who+' ('+kind+') · '+rung+(extra?' · '+extra:'');}
+ I.fc.forEach(function(p){if(p[1]===1&&p[5]&&vis(p[0]))el('line',{x1:X(p[0]),x2:X(p[5]),y1:Y(p[2]),y2:Y(p[2]),stroke:'currentColor','stroke-opacity':'.25','stroke-width':'3','stroke-linecap':'round'},svg);});
+ I.pts.forEach(function(p){if(!vis(p[0]))return;var x=X(p[0]),y=Y(p[2])+(p[1]===0?-2.5:2.5),e=p[1]===0?el('circle',{cx:x,cy:y,r:2.6,fill:OURS},svg):el('rect',{x:x-2.4,y:y-2.4,width:4.8,height:4.8,fill:THEIRS,'fill-opacity':'.7'},svg);e.style.cursor='pointer';e.addEventListener('click',function(){pick(p[0],p[1]===0?'our email':'their reply',lab(p[2]),'actual',p[4]);});});
+ I.fc.forEach(function(p){if(!vis(p[0]))return;var x=X(p[0]),y=Y(p[2])+(p[1]===0?-2.5:2.5),e=p[1]===0?el('circle',{cx:x,cy:y,r:2.8,fill:'none',stroke:OURS,'stroke-width':'1.2'},svg):el('rect',{x:x-2.6,y:y-2.6,width:5.2,height:5.2,fill:'none',stroke:THEIRS,'stroke-width':'1.2'},svg);e.style.cursor='pointer';e.addEventListener('click',function(){pick(p[0],p[1]===0?'our email':'their reply',lab(p[2]),'forecast',p[4]+(p[5]?' · band to '+fd(p[5]):''));});});
+ I.marks.forEach(function(m){if(!vis(m[0]))return;var g=el('g',{},svg);g.style.cursor='pointer';(m[2]==='house'?house:fish)(g,X(m[0]),Y(m[1])-6,4.5);g.addEventListener('click',function(){pick(m[0],m[2]==='house'?'red house':'red fish',lab(m[1]),'missed deadline',m[3]);});});
+ P.appendChild(svg);
+ var key=document.createElement('ul');key.className='fc-key';key.innerHTML='<li><svg width="10" height="10" aria-hidden="true"><circle cx="5" cy="5" r="3.5" fill="var(--ghf-accent,#24DB5B)"/></svg>our emails</li><li><svg width="10" height="10" aria-hidden="true"><rect x="1.5" y="1.5" width="7" height="7" fill="currentColor" fill-opacity=".7"/></svg>their replies</li><li><svg width="10" height="10" aria-hidden="true"><circle cx="5" cy="5" r="3.5" fill="none" stroke="currentColor"/></svg>hollow = forecast</li><li><svg width="10" height="10" aria-hidden="true"><path d="M1 9V5L5 1L9 5V9Z" fill="#ef4444"/></svg>missed</li>';P.appendChild(key);P.appendChild(selP);
+ var det=document.createElement('details'),sm=document.createElement('summary');sm.textContent=R+' rungs on this ladder'+(I.rungs.some(function(r){return r.inf;})?' (* = our reading)':'');det.appendChild(sm);var ol=document.createElement('ol');
+ I.rungs.forEach(function(r){var li=document.createElement('li'),s=document.createElement('span');s.textContent=r.n+(r.inf?'*':'')+' '+r.l+' · '+r.c+' · ';var aa=document.createElement('a');aa.href=r.src;aa.target='_blank';aa.rel='noopener noreferrer';aa.textContent=r.law;li.append(s,aa);ol.appendChild(li);});det.appendChild(ol);P.appendChild(det);
+ var d2=document.createElement('details'),s2=document.createElement('summary');s2.textContent='How the forecast is made';d2.appendChild(s2);var ul=document.createElement('ul');FC.assumptions.forEach(function(x){var li=document.createElement('li');li.textContent=x;ul.appendChild(li);});var li2=document.createElement('li');li2.textContent=I.late_n?('This body\'s median lateness on record: '+I.late_wd+' working days ('+I.late_n+' late replies).'):'No late replies on record for this body, so no band.';ul.appendChild(li2);d2.appendChild(ul);P.appendChild(d2);
+ var lk=document.createElement('p');var la=document.createElement('a');la.href='https://dartboard.bucklerfamily.estate/#roadmap';la.textContent='The completed board for this institution is on the dartboard';lk.appendChild(la);P.appendChild(lk);}
+window.fcUpdate=function(){var B=document.getElementById('fc-btn'),P=document.getElementById('fc-panel');if(!B||!P)return;var n=instName();if(!n){B.hidden=true;P.hidden=true;return;}
+ load().then(function(){var I=find();B.hidden=!I;if(!I){P.hidden=true;return;}if(open){P.hidden=false;render();}});};
+document.addEventListener('click',function(e){var B=e.target.closest&&e.target.closest('#fc-btn');if(!B)return;open=!open;B.setAttribute('aria-expanded',String(open));var P=document.getElementById('fc-panel');P.hidden=!open;if(open){P.textContent='Loading the forecast…';load().then(render);}});
 })();
 </script>
 </body></html>
