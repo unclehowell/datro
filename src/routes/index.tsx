@@ -319,6 +319,8 @@ function roadmapName(name: string) {
 
 function Home() {
   const [instId, setInstId] = useState("llandough");
+  /** The Snakes & Ladders correspondent: none by default; a wheel slice tap or the board's own dropdown sets it. */
+  const [snlPick, setSnlPick] = useState("");
   const [sheet, setSheet] = useState<Sheet | null>(null);
   const inst = useMemo(
     () => institutions.find((i) => i.id === instId) ?? institutions[0],
@@ -332,13 +334,22 @@ function Home() {
         <DartWheel
           highlight={inst.id}
           onPick={({ party, ring, slice }) => {
-            if (slice.inst) setInstId(slice.inst.id);
+            if (slice.inst) {
+              setInstId(slice.inst.id);
+              setSnlPick(slice.inst.id);
+            }
             setSheet({ kind: "cell", party, ring, slice });
           }}
         />
       </section>
 
-      <SnakesLadders />
+      <SnakesLadders
+        pick={snlPick}
+        onPick={(id) => {
+          setSnlPick(id);
+          if (id) setInstId(id);
+        }}
+      />
 
       <button
         type="button"

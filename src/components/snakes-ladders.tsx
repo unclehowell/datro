@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { DetailModal } from "@/components/detail-modal";
 import boardBundled from "@/data/snl-board.json";
 import playBundled from "@/data/snl-play.json";
+import { avenueEmails, corrExtras, emailUrl, extraIndex, institutions, type AvInstitution } from "@/data/avenues";
+import corrJson from "@/data/correspondence.json";
 
 /**
  * Snakes & Ladders: the disclosure path as a game board, under the dartboard. 36 squares follow the real
@@ -11,8 +13,11 @@ import playBundled from "@/data/snl-play.json";
  *
  * THE BOARD IS FIXED: rules only, identical before anyone plays (/data/snl-board.json, ghf-snl-board/1). Every
  * ladder looks alike, every snake looks alike, and tapping one shows only its rule.
- * GAMEPLAY IS A SEPARATE LAYER, off by default: "The game so far" puts one counter per institution on its current
- * square and lists the ladders climbed and snakes hit per institution (/data/snl-play.json, ghf-snl-play/1).
+ * GAMEPLAY IS A SEPARATE LAYER, one correspondent at a time: the dropdown above the board lists the dartboard's
+ * institutions by their wheel number ("3 · Llandough Community Council"). Nothing is chosen by default (fixed board
+ * only). A choice puts that institution's counter(s) on the board and lists its ladders climbed, snakes hit and its
+ * emails to and from the family under the board (/data/snl-play.json, ghf-snl-play/1; token.dart = wheel slice ids).
+ * Never everyone at once (owner rule, 22 Oct 2026). Shareable as ?r=<wheel number>.
  * Both built by work/roadmap/build_snakes_ladders.py. — Sion's Tab agent, 22 Oct 2026
  */
 
@@ -21,7 +26,7 @@ type Rule = { id: string; from: number; to: number; label: string; law: string; 
 type Token = {
   lane: string; name: string; short: string; square: number; why: string; kind: string; regime: string | null;
   ref: string; title: string; url: string | null; next: { date: string | null; what: string; url: string | null } | null;
-  missed: number; route: string | null;
+  missed: number; route: string | null; dart?: string[];
 };
 type Move = { kind: "ladder" | "snake"; id: string; lane: string | null; name: string | null; date: string | null; ref: string; what: string | null; url: string | null; ev?: string | null };
 type Board = {
@@ -163,22 +168,38 @@ function useJson<T>(url: string, schema: string, initial: T) {
   return v;
 }
 
-export function SnakesLadders() {
+export function SnakesLadders({ pick, onPick }: { pick: string; onPick: (id: string) => void }) {
   const board = useJson<Board>("/data/snl-board.json", "ghf-snl-board/1", boardBundled as unknown as Board);
   const play = useJson<Play>("/data/snl-play.json", "ghf-snl-play/1", playBundled as unknown as Play);
-  const [playOn, setPlayOn] = useState(false);
   const [sheet, setSheet] = useState<Sheet | null>(null);
+  const inst = useMemo(() => institutions.find((i) => i.id === pick) ?? null, [pick]);
+  const num = inst ? institutions.indexOf(inst) + 1 : 0;
+  /** Only the chosen correspondent's counters; none until one is chosen. */
+  const sel = useMemo(() => (pick ? play.tokens.filter((t) => (t.dart ?? []).includes(pick)) : []), [play, pick]);
+  const playOn = sel.length > 0;
+
+  useEffect(() => {
+    const r = Number(new URLSearchParams(window.location.search).get("r"));
+    if (Number.isInteger(r) && r >= 1 && r <= institutions.length) onPick(institutions[r - 1].id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffect(() => {
+    const u = new URL(window.location.href);
+    if (num) u.searchParams.set("r", String(num));
+    else if (!pick) u.searchParams.delete("r");
+    if (u.href !== window.location.href) window.history.replaceState(window.history.state, "", u.href);
+  }, [num, pick]);
 
   const byLane = useMemo(() => new Map(play.tokens.map((t) => [t.lane, t])), [play]);
   const bySquare = useMemo(() => {
     const m = new Map<number, Token[]>();
-    for (const t of play.tokens) m.set(t.square, [...(m.get(t.square) ?? []), t]);
+    for (const t of sel) m.set(t.square, [...(m.get(t.square) ?? []), t]);
     return m;
-  }, [play]);
+  }, [sel]);
   const ruleOf = useMemo(() => new Map([...board.ladders, ...board.snakes].map((r) => [r.id, r])), [board]);
   const start = bySquare.get(0) ?? [];
   const startRows = Math.ceil(start.length / 8) || 1;
-  const START_H = playOn ? 22 + startRows * 15 : 0;
+  const START_H = start.length ? 22 + startRows * 15 : 0;
   const H = CELL * ROWS + START_H;
 
   return (
@@ -189,7 +210,23 @@ export function SnakesLadders() {
           How to read
         </button>
       </div>
-      <svg viewBox={`0 0 ${W} ${H}`} className="mt-2 block w-full touch-manipulation select-none" role="img" aria-label={playOn ? "Snakes and ladders board with the game so far" : "Snakes and ladders board of the disclosure path"}>
+      <label className="sr-only" htmlFor="snl-pick">
+        Correspondent
+      </label>
+      <select
+        id="snl-pick"
+        value={pick}
+        onChange={(event) => onPick(event.target.value)}
+        className="mt-2 h-11 w-full min-w-0 rounded-xl border border-line bg-surface-2 px-3 text-base text-fg"
+      >
+        <option value="">Choose a correspondent</option>
+        {institutions.map((i, k) => (
+          <option key={i.id} value={i.id}>
+            {`${k + 1} · ${i.name}`}
+          </option>
+        ))}
+      </select>
+      <svg viewBox={`0 0 ${W} ${H}`} className="mt-2 block w-full touch-manipulation select-none" role="img" aria-label={playOn ? `Snakes and ladders board with the counter of ${inst?.name ?? ""}` : "Snakes and ladders board of the disclosure path"}>
         {board.squares.map((s) => {
           const p = pos(s.n);
           const row = Math.floor((s.n - 1) / COLS);
@@ -261,15 +298,15 @@ export function SnakesLadders() {
               </g>
             );
           })}
-        {playOn && (
+        {start.length > 0 && (
           <g onClick={() => setSheet({ kind: "square", n: 0 })} style={{ cursor: "pointer" }}>
             <rect x="0.5" y={CELL * ROWS + 4} width={W - 1} height={START_H - 4.5} rx="4" fill="#1b1612" stroke="#3a3228" />
             <text x="6" y={CELL * ROWS + 15} fontFamily="Outfit, system-ui, sans-serif" fontSize="8" fontWeight="700" fill="#c4a574" letterSpacing="0.8">
-              START · NO CLOCK YET · {start.length}
+              START · NO CLOCK YET
             </text>
           </g>
         )}
-        {playOn &&
+        {start.length > 0 &&
           start.map((t, i) => {
             const x = 4 + (i % 8) * 44;
             const y = CELL * ROWS + 20 + Math.floor(i / 8) * 15;
@@ -293,20 +330,8 @@ export function SnakesLadders() {
           </span>
           <span>{board.totals.squares} squares</span>
         </p>
-        <button
-          type="button"
-          role="switch"
-          aria-checked={playOn}
-          onClick={() => setPlayOn((v) => !v)}
-          className="flex items-center gap-2 rounded-full border border-line bg-surface-2 px-3 py-1.5 text-xs text-fg"
-        >
-          <span className="relative inline-block h-4 w-7 rounded-full transition-colors" style={{ background: playOn ? "#c4a574" : "#4a4036" }}>
-            <span className="absolute top-0.5 h-3 w-3 rounded-full bg-[#f4efe6] transition-all" style={{ left: playOn ? "0.875rem" : "0.125rem" }} />
-          </span>
-          The game so far
-        </button>
       </div>
-      {playOn && <PlayPanel board={board} play={play} ruleOf={ruleOf} onToken={(lane) => setSheet({ kind: "token", lane })} />}
+      {inst && <PickPanel key={inst.id} board={board} play={play} inst={inst} num={num} tokens={sel} ruleOf={ruleOf} onToken={(lane) => setSheet({ kind: "token", lane })} />}
 
       <DetailModal open={sheet !== null} onClose={() => setSheet(null)} accent={sheet?.kind === "jump" ? (sheet.snake ? SNAKE : LADDER) : undefined}>
         {sheet?.kind === "square" && sheet.n === -1 && <HowTo board={board} />}
@@ -362,58 +387,130 @@ function MoveLine({ m, r, showName, onToken }: { m: Move; r: Rule | undefined; s
   );
 }
 
-function PlayPanel({ board, play, ruleOf, onToken }: { board: Board; play: Play; ruleOf: Map<string, Rule>; onToken: (lane: string) => void }) {
-  const groups = useMemo(() => {
-    const m = new Map<string, { key: string; lane: string | null; name: string; moves: Move[] }>();
-    for (const h of play.history) {
-      const key = h.lane ?? h.name ?? "—";
-      if (!m.has(key)) m.set(key, { key, lane: h.lane, name: h.name ?? "—", moves: [] });
-      m.get(key)!.moves.push(h);
-    }
-    return [...m.values()].sort((a, b) => (b.moves[0]?.date ?? "").localeCompare(a.moves[0]?.date ?? "") || a.name.localeCompare(b.name));
-  }, [play]);
-  const square = new Map(play.tokens.map((t) => [t.lane, t.square]));
-  const T = play.totals;
+type MailRow = { id: string; d: string; out: boolean; s: string; u: string | null };
+type Mail = { schema: string; lanes: Record<string, MailRow[]> };
+
+/** Gmail message id of each dartboard email (index into avenueEmails), so the two lists merge without repeats. */
+const gmOf: Record<number, string> = (() => {
+  const m: Record<number, string> = {};
+  for (const [k, v] of Object.entries((corrJson as unknown as { emails: Record<string, { gm?: string }> }).emails)) if (v.gm) m[+k] = v.gm;
+  for (const x of corrExtras) if (x.gm) m[extraIndex[x.id]] = x.gm;
+  return m;
+})();
+
+/** The per-lane mail list, fetched only once a correspondent is chosen. */
+function useMail(on: boolean) {
+  const [mail, setMail] = useState<Mail | null>(null);
+  useEffect(() => {
+    if (!on || mail) return;
+    let live = true;
+    fetch(`/data/snl-mail.json?d=${new Date().toISOString().slice(0, 10)}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        if (live && j && j.schema === "ghf-snl-mail/1") setMail(j as Mail);
+      })
+      .catch(() => {});
+    return () => {
+      live = false;
+    };
+  }, [on, mail]);
+  return mail;
+}
+
+const DIR_TO = "#c4a574";
+const DIR_FROM = "#7fb3d5";
+
+/** Emails of one dartboard institution, newest first: every dartboard email tagged with it or on its ramp, plus the
+ *  Gmail manifest's messages for its counters' lanes (the same message is listed once). */
+function instEmails(inst: AvInstitution, lanes: string[], mail: Mail | null): MailRow[] {
+  const idx = new Set<number>();
+  avenueEmails.forEach((e, i) => {
+    if (e.i.includes(inst.id)) idx.add(i);
+  });
+  for (const l of inst.levels) for (const i of l.items) idx.add(i);
+  const rows: MailRow[] = [];
+  const seen = new Set<string>();
+  for (const i of idx) {
+    const id = gmOf[i] ?? `a${i}`;
+    if (seen.has(id)) continue;
+    seen.add(id);
+    rows.push({ id, d: avenueEmails[i].d, out: avenueEmails[i].out, s: avenueEmails[i].s, u: emailUrl(i).url });
+  }
+  for (const lane of lanes) for (const r of mail?.lanes[lane] ?? []) if (!seen.has(r.id)) { seen.add(r.id); rows.push(r); }
+  return rows.sort((a, b) => b.d.localeCompare(a.d) || (a.out === b.out ? 0 : a.out ? 1 : -1));
+}
+
+/** One correspondent: its counter(s), its ladders and snakes, and its emails to and from the family. */
+function PickPanel({ board, play, inst, num, tokens, ruleOf, onToken }: { board: Board; play: Play; inst: AvInstitution; num: number; tokens: Token[]; ruleOf: Map<string, Rule>; onToken: (lane: string) => void }) {
+  const lanes = new Set(tokens.map((t) => t.lane));
+  const moves = play.history.filter((h) => h.lane && lanes.has(h.lane));
+  const mail = useMail(true);
+  const laneKey = tokens.map((t) => t.lane).join("|");
+  const emails = useMemo(() => instEmails(inst, laneKey ? laneKey.split("|") : [], mail), [inst, laneKey, mail]);
+  const sent = emails.filter((e) => e.out).length;
+  const [all, setAll] = useState(false);
+  const shown = all ? emails : emails.slice(0, 10);
   return (
-    <div className="mt-3 border-t border-line px-1 pt-3">
-      <h3 className="font-serif text-lg leading-tight text-fg">The game so far</h3>
-      <p className="mt-1 text-xs text-muted">
-        As of {fmt(play.as_of)} · {T.tokens} counters ({T.on_start} at start) · {T.ladders_climbed} of {board.totals.ladders} ladders climbed · {T.snakes_hit} of {board.totals.snakes} snakes hit · {T.moves} moves by {groups.length} institutions
-      </p>
+    <div className="mt-3 border-t border-line px-1 pt-3" data-snl-pick={num}>
+      <h3 className="font-serif text-lg leading-tight text-fg">
+        {num} · {inst.name}
+      </h3>
       <ul className="mt-2 flex flex-col gap-1.5">
-        {groups.map((g) => {
-          const up = g.moves.filter((m) => m.kind === "ladder").length;
-          const down = g.moves.length - up;
-          const sq = g.lane ? square.get(g.lane) : undefined;
-          return (
-            <li key={g.key}>
-              <details className="rounded-lg border border-line bg-surface-2 px-2.5 py-1.5">
-                <summary className="cursor-pointer text-sm text-fg">
-                  {g.name}
-                  <span className="text-faint">
-                    {sq !== undefined ? ` · square ${sq}` : ""}
-                    {up ? ` · 🪜 ${up}` : ""}
-                    {down ? ` · 🐍 ${down}` : ""}
-                  </span>
-                </summary>
-                <ul className="mt-2 flex flex-col gap-2 pb-1">
-                  {g.moves.map((m, i) => (
-                    <MoveLine key={i} m={m} r={ruleOf.get(m.id)} />
-                  ))}
-                </ul>
-                {g.lane && square.has(g.lane) && (
-                  <button type="button" onClick={() => onToken(g.lane!)} className="mb-1 text-xs text-brass underline underline-offset-2">
-                    Counter and next deadline
-                  </button>
-                )}
-              </details>
-            </li>
-          );
-        })}
+        {tokens.map((t) => (
+          <li key={t.lane}>
+            <button type="button" onClick={() => onToken(t.lane)} className="w-full rounded-lg border border-line bg-surface-2 px-2.5 py-1.5 text-left text-sm">
+              <span className="text-fg">{tokens.length > 1 ? `${t.name}: ` : "Counter: "}</span>
+              <span className="text-brass">{sqName(board, t.square)}</span>
+              <span className="block text-xs text-muted first-letter:uppercase">{t.why}</span>
+            </button>
+          </li>
+        ))}
+        {!tokens.length && <li className="text-sm text-faint">No counter on the board yet.</li>}
       </ul>
-      <p className="mt-2 text-xs text-faint">
-        Built daily from the case mailbox and the roadmap. Data: <a className="text-brass underline" href="/data/snl-play.json">snl-play.json</a>
-      </p>
+      {moves.length > 0 && (
+        <details open className="mt-2 rounded-lg border border-line bg-surface-2 px-2.5 py-1.5">
+          <summary className="cursor-pointer text-sm text-fg">
+            Moves · {moves.filter((m) => m.kind === "ladder").length ? `🪜 ${moves.filter((m) => m.kind === "ladder").length} ` : ""}
+            {moves.filter((m) => m.kind === "snake").length ? `🐍 ${moves.filter((m) => m.kind === "snake").length}` : ""}
+          </summary>
+          <ul className="mt-2 flex flex-col gap-2 pb-1">
+            {moves.map((m, i) => (
+              <MoveLine key={i} m={m} r={ruleOf.get(m.id)} showName={tokens.length > 1} />
+            ))}
+          </ul>
+        </details>
+      )}
+      <details open className="mt-2 rounded-lg border border-line bg-surface-2 px-2.5 py-1.5">
+        <summary className="cursor-pointer text-sm text-fg">
+          Emails to and from the family · {emails.length}
+          <span className="text-faint">
+            {" "}
+            ({sent} sent · {emails.length - sent} received)
+          </span>
+        </summary>
+        <ul className="mt-2 flex flex-col divide-y divide-line pb-1">
+          {shown.map((e) => {
+            const link = e.u ?? undefined;
+            return (
+              <li key={e.id} className="py-1.5 text-sm leading-snug">
+                <span className="text-xs text-faint">{fmt(e.d)}</span>
+                <span className="ml-2 text-xs font-semibold" style={{ color: e.out ? DIR_TO : DIR_FROM }}>
+                  {e.out ? "→ To them" : "← From them"}
+                </span>
+                <a href={link} target="_blank" rel="noreferrer" className="block text-fg underline decoration-line underline-offset-2">
+                  {e.s || "(no subject)"}
+                </a>
+              </li>
+            );
+          })}
+          {!emails.length && <li className="py-1.5 text-sm text-faint">No emails on the record yet.</li>}
+        </ul>
+        {emails.length > shown.length && (
+          <button type="button" onClick={() => setAll(true)} className="mb-1 text-sm text-brass underline underline-offset-2">
+            Show all {emails.length}
+          </button>
+        )}
+      </details>
     </div>
   );
 }
@@ -425,8 +522,9 @@ function HowTo({ board }: { board: Board }) {
       <p className="mt-2 text-sm leading-relaxed text-muted">
         The path to disclosure, square by square from a first request (bottom left) to the case reopened (top). The board
         is fixed: the same squares, ladders and snakes before anyone plays. Ladders are lawful shortcuts; snakes are
-        procedural setbacks. Tap any square, ladder or snake for its rule. Switch on “The game so far” to see each
-        institution’s counter on the square it has reached, and the ladders climbed and snakes hit so far.
+        procedural setbacks. Tap any square, ladder or snake for its rule. Choose a correspondent above the board (the number is
+        its slice on the dartboard) to see its counter on the square it has reached, its ladders climbed and snakes hit,
+        and its emails to and from the family. One correspondent at a time.
       </p>
       <div className="mt-3 flex flex-col gap-1.5 text-sm">
         {board.tiers.map((t) => (
