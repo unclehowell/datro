@@ -72,6 +72,11 @@ h1{font:700 26px/1.05 'Cabin Sketch',cursive;margin:0;color:#fff}
 .tk .stamp{position:absolute;right:118px;top:6px;transform:rotate(-8deg);border:2px solid #b23a48;color:#b23a48;font:700 12px 'Cabin Sketch';padding:1px 6px;border-radius:4px;background:#fffdf6cc}
 .tk.cancel .what{text-decoration:line-through}
 .sum{color:var(--muted);font-size:15px;margin:4px 0}
+.le .basis{font-size:13.5px;color:#3a3450;margin-top:4px;line-height:1.3}
+.le .srcl{font-size:12px;color:#6b6585;margin-top:2px}
+.le .inn{font-size:12px;color:#0b5a2e;background:#c8ffe066;border-radius:6px;padding:2px 6px;margin-top:5px}
+h3.lg{font:700 19px 'Cabin Sketch';margin:14px 0 2px;color:#ffe066}
+.rng{text-align:center;font-size:15px;color:#fffdf6;margin:6px 0 10px}
 .le{background:#fffdf6;color:#221d33;border-radius:10px;margin:8px 0;padding:9px 11px;cursor:pointer;box-shadow:0 3px 0 #0004}
 .le .h{display:flex;justify-content:space-between;gap:8px;font-weight:700;line-height:1.2}
 .le .amt{white-space:nowrap;font:700 18px 'Cabin Sketch'}
@@ -144,13 +149,13 @@ footer{margin-top:26px;text-align:center;color:var(--muted);font-size:14px}
 </section>
 
 <section id="tab-ledger" class="hide">
- <p class="sum">Every cost is two entries: debit the side that carries it, credit the event that caused it. Flip the switch and the contingent lines post across to Team Regime.</p>
+ <p class="sum">The seven heads of loss from the Restitutionary Brief v3 lead the ledger. Every cost is two entries: debit the side that carries it, credit the event that caused it. Flip the switch and they post across to Team Regime.</p>
  <div id="llist"></div>
  <div class="tot"><span>Carried by Team Williams</span><span id="totW">£0</span></div>
  <div class="tot"><span>Carried by Team Regime</span><span id="totR">£0</span></div>
+ <p class="rng" id="rng"></p>
  <details><summary>Who picks up the bill if the case reopens</summary><div id="appo"></div></details>
  <details><summary>The double entries (debits and credits)</summary><div id="journal"></div></details>
- <details><summary>For scale: value made on the land</summary><div id="memo"></div></details>
 </section>
 
 <section id="tab-rubric" class="hide">
@@ -188,7 +193,7 @@ function fly(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
  const [src,dst]=reopen?[a,b]:[b,a];for(let i=0;i<9;i++){const c=document.createElement('div');c.className='chip';c.textContent=i%3?'£':'🎟';c.style.color=['#ffe066','#7CFFB2','#ff8fab'][i%3];
   c.style.left=(src.left+src.width*(.25+.5*Math.random()))+'px';c.style.top=(src.top+src.height*(.3+.4*Math.random()))+'px';document.body.appendChild(c);
   setTimeout(()=>{c.style.transform=`translate(${dst.left-src.left}px,${(Math.random()-.5)*60}px) rotate(${(Math.random()-.5)*90}deg)`;c.style.opacity='0'},30+i*60);setTimeout(()=>c.remove(),1400)}}
-function srcLinks(s){return (s||[]).map(x=>`<a href="${x.url}" target="_blank" rel="noopener">${x.title}</a>`).join('<br>')}
+function srcLinks(s){return (s||[]).map(x=>x.url?`<a href="${x.url}" target="_blank" rel="noopener">${x.title}</a>`:`<span>${x.title}</span>`).join('<br>')}
 function original(){const a=T.tickets.find(x=>x.original);$('#orig').innerHTML=`<div class="tag">THE ORIGINAL TICKET · THE YARDSTICK</div><h3>${a.issued_to.replace(' (Team Williams)','')}</h3><div>${a.what}</div>
  <div class="row"><div class="fine"><b>Fine / fee:</b> No record found yet.<br><span style="color:#6b5f3d">${a.date_label} · tap for the record</span></div><div class="pts">${fmt(a.points)}<div style="font:13px 'Patrick Hand';text-align:right">points</div></div></div>`;
  $('#orig').onclick=()=>openTicket(a);$('#orig').onkeydown=e=>{if(e.key==='Enter')openTicket(a)}}
@@ -208,8 +213,9 @@ function openTicket(t){const bd=bandOf(t.band);const m=(t.multipliers||[]).map(x
  ${t.reversible?`<div class="kv"><b>If the case reopens:</b> quashed and re-issued to ${t.reissue_to}</div>`:''}
  <div class="kv" style="margin-top:8px"><b>Source:</b><br>${srcLinks(t.sources)}</div>`;openModal()}
 function statusOf(e){if(e.status==='contingent'&&e.reopen_postings.length)return reopen?['shifted','Shifted']:['contingent','Contingent: shifts if the case reopens'];return['borne','Borne by family']}
-function ledger(){const box=$('#llist');box.innerHTML=L.entries.map(e=>{const s=statusOf(e),moved=reopen&&e.reopen_postings.length;return `<div class="le" data-id="${e.id}"><div class="h"><span>${e.head}</span><span class="amt">${e.nil?'£ —':gbp(e.amount)}</span></div>
- ${e.estimate?'<span class="est">estimate</span>':''}<div class="cols"><div><b>Borne by</b>${e.borne_by}</div><div class="${moved?'rg':''}"><b>Liable now</b>${moved?'Team Regime':e.liable_now}</div><div class="rg"><b>Liable if reopened</b>${e.liable_if_reopened}</div></div>
+const GROUPS={heads:'The seven heads of loss',small:'Smaller lines outside the heads',nil:'Orders against the family: no £ on the record yet'};
+function ledger(){const box=$('#llist');let lastG='';box.innerHTML=L.entries.map(e=>{const s=statusOf(e),moved=reopen&&e.reopen_postings.length;const gh=e.group&&e.group!==lastG?`<h3 class="lg">${GROUPS[e.group]||''}</h3>`:'';lastG=e.group;const inn=(e.inside||[]).length?`<div class="inn">Inside this head: ${e.inside.length} wiki line${e.inside.length>1?'s':''} (${gbp(e.inside.reduce((a,x)=>a+x.amount,0))}), counted once here</div>`:'';return `${gh}<div class="le" data-id="${e.id}"><div class="h"><span>${e.head}</span><span class="amt">${e.nil?'£ —':gbp(e.amount)}</span></div>
+ ${e.midcase?'<span class="est">mid-case</span>':''}${e.estimate?'<span class="est">estimate</span>':''}<div class="basis">${e.basis}</div><div class="srcl">${e.sources.map(x=>x.title).join(' · ')}</div>${inn}<div class="cols"><div><b>Borne by</b>${e.borne_by}</div><div class="${moved?'rg':''}"><b>Liable now</b>${moved?'Team Regime':e.liable_now}</div><div class="rg"><b>Liable if reopened</b>${e.liable_if_reopened}</div></div>
  <span class="pill ${s[0]}">${s[1]}</span></div>`}).join('');
  box.querySelectorAll('.le').forEach(el=>el.onclick=()=>openEntry(L.entries.find(x=>x.id===el.dataset.id)));
  const t=tally();$('#totW').textContent=gbp(t.wG);$('#totR').textContent=gbp(t.rG);
@@ -218,10 +224,10 @@ function ledger(){const box=$('#llist');box.innerHTML=L.entries.map(e=>{const s=
  const rows=[];L.entries.forEach(e=>{e.postings.concat(reopen?e.reopen_postings:[]).forEach(p=>rows.push(`<tr><td>${e.id}</td><td>${p.account}</td><td class="n">${p.dr?gbp(p.dr):''}</td><td class="n">${p.cr?gbp(p.cr):''}</td></tr>`))});
  const b=reopen?L.summary.books.reopened:L.summary.books.now;
  $('#journal').innerHTML='<table><tr><th>Entry</th><th>Account</th><th class="n">Dr</th><th class="n">Cr</th></tr>'+rows.join('')+`<tr><th></th><th>Totals</th><th class="n">${gbp(b[0])}</th><th class="n">${gbp(b[1])}</th></tr></table>`;
- $('#memo').innerHTML=L.memo.map(m=>`<p><b>${m.head}</b>: ${gbp(m.amount)} <span class="est">estimate</span><br><span class="sum">${m.basis}</span> <a href="${m.sources[0].url}" target="_blank" rel="noopener">source</a></p>`).join('')}
+ $('#rng').innerHTML=`The seven heads: <b>${gbp(L.summary.heads_total)}</b> mid-case · range ${L.range.label}`}
 function openEntry(e){const s=statusOf(e),ps=e.postings.concat(e.reopen_postings);
  $('#sheet').innerHTML=`<button class="x" aria-label="Close">×</button><div style="font-size:14px;color:#6b6585">Ledger · ${e.id}</div><h3>${e.head}</h3>
- <div class="kv"><b>Amount:</b> <span style="font:700 20px 'Cabin Sketch'">${e.nil?'£ —':gbp(e.amount)}</span> ${e.estimate?'<span class="est">estimate</span>':''}</div><div class="kv"><b>Basis:</b> ${e.basis}</div>
+ <div class="kv"><b>Amount:</b> <span style="font:700 20px 'Cabin Sketch'">${e.nil?'£ —':gbp(e.amount)}</span> ${e.midcase?'<span class="est">mid-case</span>':''}${e.estimate?'<span class="est">estimate</span>':''}</div><div class="kv"><b>Basis:</b> ${e.basis}</div>${(e.inside||[]).length?`<div class="kv"><b>Inside this head</b> (wiki lines, counted once in the head):</div><table><tr><th>Line</th><th class="n">£</th></tr>${e.inside.map(x=>`<tr><td>${x.head}<br><span style="color:#6b6585;font-size:12px">${x.basis} ${x.sources.filter(z=>z.url).map(z=>`<a href="${z.url}" target="_blank" rel="noopener">source</a>`).join(' ')}</span></td><td class="n">${x.amount?gbp(x.amount):'£ —'}</td></tr>`).join('')}</table>`:''}
  <div class="kv"><b>Status:</b> <span class="pill ${s[0]}">${s[1]}</span></div>
  <table style="margin-top:8px"><tr><th>Posting</th><th class="n">Dr</th><th class="n">Cr</th></tr>${ps.map((p,i)=>`<tr style="${i>=e.postings.length?'color:#b23a48':''}"><td>${p.account}${i===e.postings.length?' <i>(if reopened)</i>':''}</td><td class="n">${p.dr?gbp(p.dr):''}</td><td class="n">${p.cr?gbp(p.cr):''}</td></tr>`).join('')}</table>
  <div class="kv" style="margin-top:8px"><b>Source:</b><br>${srcLinks(e.sources)}</div>`;openModal()}

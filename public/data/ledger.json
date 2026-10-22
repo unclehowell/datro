@@ -1,6 +1,6 @@
 {
  "schema": "oldbill-ledger/1",
- "generated": "2026-10-21 23:55 UTC",
+ "generated": "2026-10-22 00:14 UTC",
  "currency": "GBP",
  "apportionment": [
   {
@@ -74,328 +74,582 @@
    }
   }
  ],
+ "range": {
+  "lo": 180000000,
+  "hi": 200000000,
+  "mid": 195500000,
+  "label": "£180m–£200m",
+  "source": {
+   "title": "Restitutionary Brief v3 (12 Feb 2026), IV.A",
+   "url": null
+  }
+ },
  "entries": [
   {
-   "id": "L-01",
+   "id": "H-1",
+   "group": "heads",
    "date": "1988-12-06",
-   "head": "The farmhouse, demolished 6 Dec 1988",
-   "account": "Farmhouse",
-   "amount": 539042.0,
-   "estimate": true,
-   "basis": "Vale of Glamorgan detached-house average, Jul 2026 (UK HPI), line 1d of page 5298.",
+   "head": "Estate & Hope Value",
+   "account": "Estate-Hope-Value",
+   "amount": 52500000.0,
+   "midcase": true,
+   "basis": "70 acres × £750k/acre at prime regional development rates (1988 press record; Cardiff Bay uplift).",
    "sources": [
     {
-     "title": "Damages, Losses & Costs Quantification (page 5298)",
-     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
-    },
-    {
-     "title": "1988: Possession and Demolition",
-     "url": "https://greathousefarmwiki.wordpress.com/demolition-1988/"
+     "title": "Restitutionary Brief v3 (12 Feb 2026), IV.A",
+     "url": null
     }
    ],
    "status": "contingent",
+   "inside": [
+    {
+     "id": "L-01",
+     "head": "The farmhouse, demolished 6 Dec 1988",
+     "amount": 539042.0,
+     "basis": "Vale of Glamorgan detached-house average, Jul 2026 (UK HPI), line 1d of page 5298.",
+     "sources": [
+      {
+       "title": "Damages, Losses & Costs Quantification (page 5298)",
+       "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+      },
+      {
+       "title": "1988: Possession and Demolition",
+       "url": "https://greathousefarmwiki.wordpress.com/demolition-1988/"
+      }
+     ]
+    },
+    {
+     "id": "L-02",
+     "head": "The land: Parcel A, about 10 acres (woodland, the green, the house plot)",
+     "amount": 2269958.0,
+     "basis": "Head 1 central £2,809,000 less the farmhouse line.",
+     "sources": [
+      {
+       "title": "Damages, Losses & Costs Quantification (page 5298)",
+       "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+      }
+     ]
+    },
+    {
+     "id": "L-03",
+     "head": "Loss of use and earnings: letting value, Dec 1988 – Oct 2026",
+     "amount": 340300.0,
+     "basis": "Line 2b central: Vale rent (ONS, Aug 2026) back-cast with the Wales HPI.",
+     "sources": [
+      {
+       "title": "Damages, Losses & Costs Quantification (page 5298)",
+       "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+      }
+     ]
+    },
+    {
+     "id": "L-04",
+     "head": "Interest on the loss of use",
+     "amount": 156100.0,
+     "basis": "Line 4c central: Senior Courts Act 1981 s.35A at Bank Rate +1%.",
+     "sources": [
+      {
+       "title": "Damages, Losses & Costs Quantification (page 5298)",
+       "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+      }
+     ]
+    }
+   ],
    "borne_by": "Team Williams",
    "liable_now": "Team Williams",
    "postings": [
     {
-     "account": "Borne:Team-Williams:Farmhouse",
-     "dr": 539042.0
+     "account": "Borne:Team-Williams:Estate-Hope-Value",
+     "dr": 52500000.0
     },
     {
-     "account": "Caused:Farmhouse",
-     "cr": 539042.0
+     "account": "Caused:Estate-Hope-Value",
+     "cr": 52500000.0
     }
    ],
    "liable_if_reopened": "Team Regime, shared out (see the split below)",
    "reopen_postings": [
     {
      "account": "Liable:Team-Regime:BP-plc",
-     "dr": 323425.2
+     "dr": 31500000.0
     },
     {
      "account": "Liable:Team-Regime:HM-Land-Registry",
-     "dr": 107808.4
+     "dr": 10500000.0
     },
     {
      "account": "Liable:Team-Regime:Vale-of-Glamorgan-Council",
-     "dr": 26952.1
+     "dr": 2625000.0
     },
     {
      "account": "Liable:Team-Regime:Welsh-Government-Cadw",
-     "dr": 26952.1
+     "dr": 2625000.0
     },
     {
      "account": "Liable:Team-Regime:South-Wales-Police",
-     "dr": 26952.1
+     "dr": 2625000.0
     },
     {
      "account": "Liable:Team-Regime:Former-solicitors",
-     "dr": 16171.26
+     "dr": 1575000.0
     },
     {
      "account": "Liable:Team-Regime:Developer-successors",
-     "dr": 10780.84
+     "dr": 1050000.0
     },
     {
-     "account": "Borne:Team-Williams:Farmhouse",
-     "cr": 539042.0
+     "account": "Borne:Team-Williams:Estate-Hope-Value",
+     "cr": 52500000.0
     }
    ]
   },
   {
-   "id": "L-02",
-   "date": "1955-07-04",
-   "head": "The land: Parcel A, about 10 acres (woodland, the green, the house plot)",
-   "account": "Land-Parcel-A",
-   "amount": 2269958.0,
-   "estimate": true,
-   "basis": "Head 1 central £2,809,000 (development-land value of the site plus the undeveloped remainder) less the farmhouse line above, so nothing is counted twice.",
+   "id": "H-2",
+   "group": "heads",
+   "date": "1993-01-01",
+   "head": "Restitutionary Disgorgement",
+   "account": "Disgorgement",
+   "amount": 115000000.0,
+   "midcase": true,
+   "basis": "35 years of cumulative benefit from development, ground rents and residential sales. Rukhadze / account of profits principle.",
    "sources": [
     {
-     "title": "Damages, Losses & Costs Quantification (page 5298)",
-     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+     "title": "Restitutionary Brief v3 (12 Feb 2026), IV.A",
+     "url": null
     }
    ],
    "status": "contingent",
+   "inside": [
+    {
+     "id": "M-1",
+     "head": "Value realised on the land: 16 new-build sales at Church View Close, Feb 1995 – Apr 1997",
+     "amount": 1934496.0,
+     "basis": "16 sales × mean £120,906 (HMLR Price Paid, via page 5298).",
+     "sources": [
+      {
+       "title": "Damages, Losses & Costs Quantification (page 5298)",
+       "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+      }
+     ]
+    },
+    {
+     "id": "M-2",
+     "head": "Developed value of the 20 houses today",
+     "amount": 11039000.0,
+     "basis": "Line 1a central: 20 × £551,929 (page 5298).",
+     "sources": [
+      {
+       "title": "Damages, Losses & Costs Quantification (page 5298)",
+       "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+      }
+     ]
+    }
+   ],
    "borne_by": "Team Williams",
    "liable_now": "Team Williams",
    "postings": [
     {
-     "account": "Borne:Team-Williams:Land-Parcel-A",
-     "dr": 2269958.0
+     "account": "Borne:Team-Williams:Disgorgement",
+     "dr": 115000000.0
     },
     {
-     "account": "Caused:Land-Parcel-A",
-     "cr": 2269958.0
+     "account": "Caused:Disgorgement",
+     "cr": 115000000.0
     }
    ],
    "liable_if_reopened": "Team Regime, shared out (see the split below)",
    "reopen_postings": [
     {
      "account": "Liable:Team-Regime:BP-plc",
-     "dr": 1361974.8
+     "dr": 69000000.0
     },
     {
      "account": "Liable:Team-Regime:HM-Land-Registry",
-     "dr": 453991.6
+     "dr": 23000000.0
     },
     {
      "account": "Liable:Team-Regime:Vale-of-Glamorgan-Council",
-     "dr": 113497.9
+     "dr": 5750000.0
     },
     {
      "account": "Liable:Team-Regime:Welsh-Government-Cadw",
-     "dr": 113497.9
+     "dr": 5750000.0
     },
     {
      "account": "Liable:Team-Regime:South-Wales-Police",
-     "dr": 113497.9
+     "dr": 5750000.0
     },
     {
      "account": "Liable:Team-Regime:Former-solicitors",
-     "dr": 68098.74
+     "dr": 3450000.0
     },
     {
      "account": "Liable:Team-Regime:Developer-successors",
-     "dr": 45399.16
+     "dr": 2300000.0
     },
     {
-     "account": "Borne:Team-Williams:Land-Parcel-A",
-     "cr": 2269958.0
+     "account": "Borne:Team-Williams:Disgorgement",
+     "cr": 115000000.0
     }
    ]
   },
   {
-   "id": "L-03",
+   "id": "H-3",
+   "group": "heads",
    "date": "1988-12-06",
-   "head": "Loss of use and earnings: letting value, Dec 1988 – Oct 2026",
-   "account": "Loss-of-use",
-   "amount": 340300.0,
-   "estimate": true,
-   "basis": "Line 2b central: Vale rent (ONS, Aug 2026) back-cast with the Wales HPI. Farm and business income are not yet quantified on the record.",
+   "head": "Historical & Manorial Restoration",
+   "account": "Historical-Manorial",
+   "amount": 10000000.0,
+   "midcase": true,
+   "basis": "13th-century grange + manorial lordship of Llandough + Marconi connection. Irreversible loss.",
    "sources": [
     {
-     "title": "Damages, Losses & Costs Quantification (page 5298)",
-     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+     "title": "Restitutionary Brief v3 (12 Feb 2026), IV.A",
+     "url": null
     }
    ],
    "status": "contingent",
+   "inside": [],
    "borne_by": "Team Williams",
    "liable_now": "Team Williams",
    "postings": [
     {
-     "account": "Borne:Team-Williams:Loss-of-use",
-     "dr": 340300.0
+     "account": "Borne:Team-Williams:Historical-Manorial",
+     "dr": 10000000.0
     },
     {
-     "account": "Caused:Loss-of-use",
-     "cr": 340300.0
+     "account": "Caused:Historical-Manorial",
+     "cr": 10000000.0
     }
    ],
    "liable_if_reopened": "Team Regime, shared out (see the split below)",
    "reopen_postings": [
     {
      "account": "Liable:Team-Regime:BP-plc",
-     "dr": 204180.0
+     "dr": 6000000.0
     },
     {
      "account": "Liable:Team-Regime:HM-Land-Registry",
-     "dr": 68060.0
+     "dr": 2000000.0
     },
     {
      "account": "Liable:Team-Regime:Vale-of-Glamorgan-Council",
-     "dr": 17015.0
+     "dr": 500000.0
     },
     {
      "account": "Liable:Team-Regime:Welsh-Government-Cadw",
-     "dr": 17015.0
+     "dr": 500000.0
     },
     {
      "account": "Liable:Team-Regime:South-Wales-Police",
-     "dr": 17015.0
+     "dr": 500000.0
     },
     {
      "account": "Liable:Team-Regime:Former-solicitors",
-     "dr": 10209.0
+     "dr": 300000.0
     },
     {
      "account": "Liable:Team-Regime:Developer-successors",
-     "dr": 6806.0
+     "dr": 200000.0
     },
     {
-     "account": "Borne:Team-Williams:Loss-of-use",
-     "cr": 340300.0
+     "account": "Borne:Team-Williams:Historical-Manorial",
+     "cr": 10000000.0
     }
    ]
   },
   {
-   "id": "L-04",
-   "date": "2026-10-01",
-   "head": "Interest on the loss of use",
-   "account": "Interest",
-   "amount": 156100.0,
-   "estimate": true,
-   "basis": "Line 4c central: Senior Courts Act 1981 s.35A at Bank Rate +1%.",
+   "id": "H-4",
+   "group": "heads",
+   "date": "1870-01-01",
+   "head": "Archaeological Expropriation",
+   "account": "Archaeological",
+   "amount": 5000000.0,
+   "midcase": true,
+   "basis": "800+ burials, largest early-medieval site in Wales, 1870 Actual Notice.",
    "sources": [
     {
-     "title": "Damages, Losses & Costs Quantification (page 5298)",
-     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+     "title": "Restitutionary Brief v3 (12 Feb 2026), IV.A",
+     "url": null
     }
    ],
    "status": "contingent",
+   "inside": [],
    "borne_by": "Team Williams",
    "liable_now": "Team Williams",
    "postings": [
     {
-     "account": "Borne:Team-Williams:Interest",
-     "dr": 156100.0
+     "account": "Borne:Team-Williams:Archaeological",
+     "dr": 5000000.0
     },
     {
-     "account": "Caused:Interest",
-     "cr": 156100.0
+     "account": "Caused:Archaeological",
+     "cr": 5000000.0
     }
    ],
    "liable_if_reopened": "Team Regime, shared out (see the split below)",
    "reopen_postings": [
     {
      "account": "Liable:Team-Regime:BP-plc",
-     "dr": 93660.0
+     "dr": 3000000.0
     },
     {
      "account": "Liable:Team-Regime:HM-Land-Registry",
-     "dr": 31220.0
+     "dr": 1000000.0
     },
     {
      "account": "Liable:Team-Regime:Vale-of-Glamorgan-Council",
-     "dr": 7805.0
+     "dr": 250000.0
     },
     {
      "account": "Liable:Team-Regime:Welsh-Government-Cadw",
-     "dr": 7805.0
+     "dr": 250000.0
     },
     {
      "account": "Liable:Team-Regime:South-Wales-Police",
-     "dr": 7805.0
+     "dr": 250000.0
     },
     {
      "account": "Liable:Team-Regime:Former-solicitors",
-     "dr": 4683.0
+     "dr": 150000.0
     },
     {
      "account": "Liable:Team-Regime:Developer-successors",
-     "dr": 3122.0
+     "dr": 100000.0
     },
     {
-     "account": "Borne:Team-Williams:Interest",
-     "cr": 156100.0
+     "account": "Borne:Team-Williams:Archaeological",
+     "cr": 5000000.0
     }
    ]
   },
   {
-   "id": "L-05",
+   "id": "H-5",
+   "group": "heads",
    "date": "1988-12-06",
-   "head": "Distress: five people (William, his partner and three children)",
-   "account": "Distress",
-   "amount": 125800.0,
-   "estimate": true,
-   "basis": "Line 5a central: Vento middle-band midpoint (£25,150) × 5, used as an analogy.",
+   "head": "Multi-Generational Trauma",
+   "account": "Multi-Generational-Trauma",
+   "amount": 5000000.0,
+   "midcase": true,
+   "basis": "~25 descendants; 35 years displacement; housing insecurity; loss of life chances.",
    "sources": [
     {
-     "title": "Damages, Losses & Costs Quantification (page 5298)",
-     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+     "title": "Restitutionary Brief v3 (12 Feb 2026), IV.A",
+     "url": null
     }
    ],
    "status": "contingent",
+   "inside": [
+    {
+     "id": "L-05",
+     "head": "Distress: five people (William, his partner and three children)",
+     "amount": 125800.0,
+     "basis": "Line 5a central: Vento middle-band midpoint (£25,150) × 5, used as an analogy.",
+     "sources": [
+      {
+       "title": "Damages, Losses & Costs Quantification (page 5298)",
+       "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+      }
+     ]
+    },
+    {
+     "id": "L-13",
+     "head": "Rehousing after the demolition (the bus, 1989; rent since)",
+     "amount": 0,
+     "basis": "No £ on the record yet (page 5298 head 6).",
+     "sources": [
+      {
+       "title": "Damages, Losses & Costs Quantification (page 5298)",
+       "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+      },
+      {
+       "title": "Press: “From farm to a bus” (N13)",
+       "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e090-n13-from-farm-to-a-bus-1989/"
+      }
+     ]
+    }
+   ],
    "borne_by": "Team Williams",
    "liable_now": "Team Williams",
    "postings": [
     {
-     "account": "Borne:Team-Williams:Distress",
-     "dr": 125800.0
+     "account": "Borne:Team-Williams:Multi-Generational-Trauma",
+     "dr": 5000000.0
     },
     {
-     "account": "Caused:Distress",
-     "cr": 125800.0
+     "account": "Caused:Multi-Generational-Trauma",
+     "cr": 5000000.0
     }
    ],
    "liable_if_reopened": "Team Regime, shared out (see the split below)",
    "reopen_postings": [
     {
      "account": "Liable:Team-Regime:BP-plc",
-     "dr": 75480.0
+     "dr": 3000000.0
     },
     {
      "account": "Liable:Team-Regime:HM-Land-Registry",
-     "dr": 25160.0
+     "dr": 1000000.0
     },
     {
      "account": "Liable:Team-Regime:Vale-of-Glamorgan-Council",
-     "dr": 6290.0
+     "dr": 250000.0
     },
     {
      "account": "Liable:Team-Regime:Welsh-Government-Cadw",
-     "dr": 6290.0
+     "dr": 250000.0
     },
     {
      "account": "Liable:Team-Regime:South-Wales-Police",
-     "dr": 6290.0
+     "dr": 250000.0
     },
     {
      "account": "Liable:Team-Regime:Former-solicitors",
-     "dr": 3774.0
+     "dr": 150000.0
     },
     {
      "account": "Liable:Team-Regime:Developer-successors",
-     "dr": 2516.0
+     "dr": 100000.0
     },
     {
-     "account": "Borne:Team-Williams:Distress",
-     "cr": 125800.0
+     "account": "Borne:Team-Williams:Multi-Generational-Trauma",
+     "cr": 5000000.0
+    }
+   ]
+  },
+  {
+   "id": "H-6",
+   "group": "heads",
+   "date": "1988-12-06",
+   "head": "Wrongful Death (Estates)",
+   "account": "Wrongful-Death",
+   "amount": 5000000.0,
+   "midcase": true,
+   "basis": "Deaths of Mary Williams and Billy Buckler.",
+   "sources": [
+    {
+     "title": "Restitutionary Brief v3 (12 Feb 2026), IV.A",
+     "url": null
+    }
+   ],
+   "status": "contingent",
+   "inside": [],
+   "borne_by": "Team Williams",
+   "liable_now": "Team Williams",
+   "postings": [
+    {
+     "account": "Borne:Team-Williams:Wrongful-Death",
+     "dr": 5000000.0
+    },
+    {
+     "account": "Caused:Wrongful-Death",
+     "cr": 5000000.0
+    }
+   ],
+   "liable_if_reopened": "Team Regime, shared out (see the split below)",
+   "reopen_postings": [
+    {
+     "account": "Liable:Team-Regime:BP-plc",
+     "dr": 3000000.0
+    },
+    {
+     "account": "Liable:Team-Regime:HM-Land-Registry",
+     "dr": 1000000.0
+    },
+    {
+     "account": "Liable:Team-Regime:Vale-of-Glamorgan-Council",
+     "dr": 250000.0
+    },
+    {
+     "account": "Liable:Team-Regime:Welsh-Government-Cadw",
+     "dr": 250000.0
+    },
+    {
+     "account": "Liable:Team-Regime:South-Wales-Police",
+     "dr": 250000.0
+    },
+    {
+     "account": "Liable:Team-Regime:Former-solicitors",
+     "dr": 150000.0
+    },
+    {
+     "account": "Liable:Team-Regime:Developer-successors",
+     "dr": 100000.0
+    },
+    {
+     "account": "Borne:Team-Williams:Wrongful-Death",
+     "cr": 5000000.0
+    }
+   ]
+  },
+  {
+   "id": "H-7",
+   "group": "heads",
+   "date": "1988-11-01",
+   "head": "Aggravated & Exemplary Damages",
+   "account": "Aggravated-Exemplary",
+   "amount": 3000000.0,
+   "midcase": true,
+   "basis": "4am eviction; children present; pre-emptive demolition. Reduced per Rookes v Barnard [1964] HL.",
+   "sources": [
+    {
+     "title": "Restitutionary Brief v3 (12 Feb 2026), IV.A",
+     "url": null
+    }
+   ],
+   "status": "contingent",
+   "inside": [],
+   "borne_by": "Team Williams",
+   "liable_now": "Team Williams",
+   "postings": [
+    {
+     "account": "Borne:Team-Williams:Aggravated-Exemplary",
+     "dr": 3000000.0
+    },
+    {
+     "account": "Caused:Aggravated-Exemplary",
+     "cr": 3000000.0
+    }
+   ],
+   "liable_if_reopened": "Team Regime, shared out (see the split below)",
+   "reopen_postings": [
+    {
+     "account": "Liable:Team-Regime:BP-plc",
+     "dr": 1800000.0
+    },
+    {
+     "account": "Liable:Team-Regime:HM-Land-Registry",
+     "dr": 600000.0
+    },
+    {
+     "account": "Liable:Team-Regime:Vale-of-Glamorgan-Council",
+     "dr": 150000.0
+    },
+    {
+     "account": "Liable:Team-Regime:Welsh-Government-Cadw",
+     "dr": 150000.0
+    },
+    {
+     "account": "Liable:Team-Regime:South-Wales-Police",
+     "dr": 150000.0
+    },
+    {
+     "account": "Liable:Team-Regime:Former-solicitors",
+     "dr": 90000.0
+    },
+    {
+     "account": "Liable:Team-Regime:Developer-successors",
+     "dr": 60000.0
+    },
+    {
+     "account": "Borne:Team-Williams:Aggravated-Exemplary",
+     "cr": 3000000.0
     }
    ]
   },
   {
    "id": "L-06",
+   "group": "small",
    "date": "1988-12-06",
    "head": "Contents lost with the demolition: papers, photographs, belongings",
    "account": "Contents",
@@ -463,12 +717,13 @@
   },
   {
    "id": "L-07",
+   "group": "small",
    "date": "2026-10-01",
    "head": "Family time as litigant in person",
    "account": "Litigant-time",
    "amount": 13000.0,
    "estimate": true,
-   "basis": "Head 8 central (CPR 46.5; PD 46 para 3.4). Hours to be confirmed.",
+   "basis": "Head 8 central of page 5298 (CPR 46.5; PD 46 para 3.4).",
    "sources": [
     {
      "title": "Damages, Losses & Costs Quantification (page 5298)",
@@ -526,6 +781,7 @@
   },
   {
    "id": "L-08",
+   "group": "small",
    "date": "2026-10-20",
    "head": "Project costs paid by the family (cash, to 20 Oct 2026)",
    "account": "Project-cash",
@@ -589,13 +845,14 @@
   },
   {
    "id": "L-09",
+   "group": "nil",
    "date": "1955-02-02",
    "head": "Costs of the 1955 High Court order",
    "account": "Costs-1955",
    "amount": 0,
    "estimate": false,
    "nil": true,
-   "basis": "£ not on the record yet: the order (EV-0032) has not been located.",
+   "basis": "No £ on the record yet: the order (EV-0032) has not been located.",
    "sources": [
     {
      "title": "The 1955 Possession Order",
@@ -620,13 +877,14 @@
   },
   {
    "id": "L-10",
+   "group": "nil",
    "date": "1962-12-11",
    "head": "Costs of the 1962 Cardiff County Court order",
    "account": "Costs-1962",
    "amount": 0,
    "estimate": false,
    "nil": true,
-   "basis": "£ not on the record yet.",
+   "basis": "No £ on the record yet.",
    "sources": [
     {
      "title": "The 1962 Possession Order",
@@ -651,13 +909,14 @@
   },
   {
    "id": "L-11",
+   "group": "nil",
    "date": "1974-07-03",
    "head": "Costs of the 1974 county-court action",
    "account": "Costs-1974",
    "amount": 0,
    "estimate": false,
    "nil": true,
-   "basis": "£ not on the record yet: the action was part-heard and never relisted.",
+   "basis": "No £ on the record yet: the action was part-heard and never relisted.",
    "sources": [
     {
      "title": "GHF-E135 — 1974 pleadings",
@@ -682,13 +941,14 @@
   },
   {
    "id": "L-12",
+   "group": "nil",
    "date": "1987-07-31",
    "head": "Costs of BP Properties Ltd v Buckler (1986 High Court, 1987 Court of Appeal, 1988 House of Lords)",
    "account": "Costs-1986-88",
    "amount": 0,
    "estimate": false,
    "nil": true,
-   "basis": "£ not on the record yet: costs orders and the solicitors’ files are being traced.",
+   "basis": "No £ on the record yet: costs orders and the solicitors’ files are being traced.",
    "sources": [
     {
      "title": "EV-0080 — Court of Appeal judgment",
@@ -710,77 +970,21 @@
    ],
    "liable_if_reopened": "Team Regime once a figure is on the record",
    "reopen_postings": []
-  },
-  {
-   "id": "L-13",
-   "date": "1989-01-01",
-   "head": "Rehousing after the demolition (the bus, 1989; rent since)",
-   "account": "Rehousing",
-   "amount": 0,
-   "estimate": false,
-   "nil": true,
-   "basis": "£ not on the record yet (page 5298 head 6).",
-   "sources": [
-    {
-     "title": "Damages, Losses & Costs Quantification (page 5298)",
-     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
-    },
-    {
-     "title": "Press: “From farm to a bus” (N13)",
-     "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e090-n13-from-farm-to-a-bus-1989/"
-    }
-   ],
-   "status": "borne",
-   "borne_by": "Team Williams",
-   "liable_now": "Team Williams",
-   "postings": [
-    {
-     "account": "Borne:Team-Williams:Rehousing",
-     "dr": 0
-    },
-    {
-     "account": "Caused:Rehousing",
-     "cr": 0
-    }
-   ],
-   "liable_if_reopened": "Team Regime once a figure is on the record",
-   "reopen_postings": []
   }
  ],
- "memo": [
-  {
-   "head": "Value realised on the land: 16 new-build sales at Church View Close, Feb 1995 – Apr 1997",
-   "amount": 1934496.0,
-   "basis": "16 sales × mean £120,906 (HMLR Price Paid, via page 5298). A gain on Team Regime’s side, shown for scale; not a cost, so outside the balance.",
-   "sources": [
-    {
-     "title": "Damages, Losses & Costs Quantification (page 5298)",
-     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
-    }
-   ]
-  },
-  {
-   "head": "Developed value of the 20 houses today",
-   "amount": 11039000.0,
-   "basis": "Line 1a central: 20 × £551,929 (page 5298). Context, not a loss.",
-   "sources": [
-    {
-     "title": "Damages, Losses & Costs Quantification (page 5298)",
-     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
-    }
-   ]
-  }
- ],
+ "memo": [],
  "summary": {
   "books": {
    "now": [
-    3474411.93,
-    3474411.93
+    195543211.93,
+    195543211.93
    ],
    "reopened": [
-    6948823.86,
-    6948823.86
+    391086423.86,
+    391086423.86
    ]
-  }
+  },
+  "heads_total": 195500000.0,
+  "priced_total": 195543211.93
  }
 }

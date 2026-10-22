@@ -1,6 +1,6 @@
 {
  "schema": "oldbill-tickets/1",
- "generated": "2026-10-21 23:55 UTC",
+ "generated": "2026-10-22 00:14 UTC",
  "rubric": {
   "bands": [
    {
@@ -1025,7 +1025,7 @@
    "williams": {
     "points": 570000,
     "tickets": 7,
-    "gbp": 3474411.93
+    "gbp": 195543211.93
    },
    "regime": {
     "points": 2389670,
@@ -1042,24 +1042,24 @@
    "regime": {
     "points": 2939670,
     "tickets": 35,
-    "gbp": 3474411.93
+    "gbp": 195543211.93
    }
   },
   "books": {
    "now": [
-    3474411.93,
-    3474411.93
+    195543211.93,
+    195543211.93
    ],
    "reopened": [
-    6948823.86,
-    6948823.86
+    391086423.86,
+    391086423.86
    ]
   },
   "counts": {
    "tickets": 37,
    "regime_tickets": 29,
    "williams_tickets": 8,
-   "ledger_entries": 13
+   "ledger_entries": 14
   }
  }
 }

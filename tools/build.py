@@ -205,34 +205,57 @@ R = [
 # ---------- LEDGER: costs borne ----------
 S5298 = src('Damages, Losses & Costs Quantification (page 5298)', WIKI + '/project-management/damages/')
 S5475 = src('Reparations Schedule & Proposed Apportionment (page 5475)', WIKI + '/project-management/damages/reparations-schedule/')
+BRIEF = src('Restitutionary Brief v3 (12 Feb 2026), IV.A', None)
+BRIEF_RANGE = {'lo': 180000000, 'hi': 200000000, 'mid': 195500000, 'label': '£180m–£200m', 'source': BRIEF}
+# The wiki-based lines of 22 Oct 2026 (page 5298 etc.), kept as the detail behind a head: shown, never added again.
+def inner(id_, head, amount, basis, sources, ok=True):
+    return dict(id=id_, head=head, amount=amount, basis=basis, sources=sources)
 COSTS = [
-  dict(id='L-01', date='1988-12-06', head='The farmhouse, demolished 6 Dec 1988', account='Farmhouse', amount=539042.00, estimate=True,
-       basis='Vale of Glamorgan detached-house average, Jul 2026 (UK HPI), line 1d of page 5298.', sources=[S5298, src('1988: Possession and Demolition', WIKI + '/demolition-1988/')], status='contingent'),
-  dict(id='L-02', date='1955-07-04', head='The land: Parcel A, about 10 acres (woodland, the green, the house plot)', account='Land-Parcel-A', amount=2269958.00, estimate=True,
-       basis='Head 1 central £2,809,000 (development-land value of the site plus the undeveloped remainder) less the farmhouse line above, so nothing is counted twice.', sources=[S5298], status='contingent'),
-  dict(id='L-03', date='1988-12-06', head='Loss of use and earnings: letting value, Dec 1988 – Oct 2026', account='Loss-of-use', amount=340300.00, estimate=True,
-       basis='Line 2b central: Vale rent (ONS, Aug 2026) back-cast with the Wales HPI. Farm and business income are not yet quantified on the record.', sources=[S5298], status='contingent'),
-  dict(id='L-04', date='2026-10-01', head='Interest on the loss of use', account='Interest', amount=156100.00, estimate=True,
-       basis='Line 4c central: Senior Courts Act 1981 s.35A at Bank Rate +1%.', sources=[S5298], status='contingent'),
-  dict(id='L-05', date='1988-12-06', head='Distress: five people (William, his partner and three children)', account='Distress', amount=125800.00, estimate=True,
-       basis='Line 5a central: Vento middle-band midpoint (£25,150) × 5, used as an analogy.', sources=[S5298], status='contingent'),
-  dict(id='L-06', date='1988-12-06', head='Contents lost with the demolition: papers, photographs, belongings', account='Contents', amount=30000.00, estimate=True,
+  # ---- the seven heads of loss: Restitutionary Brief v3, Section IV.A, mid-case ----
+  dict(id='H-1', group='heads', date='1988-12-06', head='Estate & Hope Value', account='Estate-Hope-Value', amount=52500000.00, midcase=True,
+       basis='70 acres × £750k/acre at prime regional development rates (1988 press record; Cardiff Bay uplift).', sources=[BRIEF], status='contingent',
+       inside=[
+         inner('L-01', 'The farmhouse, demolished 6 Dec 1988', 539042.00, 'Vale of Glamorgan detached-house average, Jul 2026 (UK HPI), line 1d of page 5298.', [S5298, src('1988: Possession and Demolition', WIKI + '/demolition-1988/')]),
+         inner('L-02', 'The land: Parcel A, about 10 acres (woodland, the green, the house plot)', 2269958.00, 'Head 1 central £2,809,000 less the farmhouse line.', [S5298]),
+         inner('L-03', 'Loss of use and earnings: letting value, Dec 1988 – Oct 2026', 340300.00, 'Line 2b central: Vale rent (ONS, Aug 2026) back-cast with the Wales HPI.', [S5298]),
+         inner('L-04', 'Interest on the loss of use', 156100.00, 'Line 4c central: Senior Courts Act 1981 s.35A at Bank Rate +1%.', [S5298]),
+       ]),
+  dict(id='H-2', group='heads', date='1993-01-01', head='Restitutionary Disgorgement', account='Disgorgement', amount=115000000.00, midcase=True,
+       basis='35 years of cumulative benefit from development, ground rents and residential sales. Rukhadze / account of profits principle.', sources=[BRIEF], status='contingent',
+       inside=[
+         inner('M-1', 'Value realised on the land: 16 new-build sales at Church View Close, Feb 1995 – Apr 1997', 16 * 120906.0, '16 sales × mean £120,906 (HMLR Price Paid, via page 5298).', [S5298]),
+         inner('M-2', 'Developed value of the 20 houses today', 11039000.0, 'Line 1a central: 20 × £551,929 (page 5298).', [S5298]),
+       ]),
+  dict(id='H-3', group='heads', date='1988-12-06', head='Historical & Manorial Restoration', account='Historical-Manorial', amount=10000000.00, midcase=True,
+       basis='13th-century grange + manorial lordship of Llandough + Marconi connection. Irreversible loss.', sources=[BRIEF], status='contingent', inside=[]),
+  dict(id='H-4', group='heads', date='1870-01-01', head='Archaeological Expropriation', account='Archaeological', amount=5000000.00, midcase=True,
+       basis='800+ burials, largest early-medieval site in Wales, 1870 Actual Notice.', sources=[BRIEF], status='contingent', inside=[]),
+  dict(id='H-5', group='heads', date='1988-12-06', head='Multi-Generational Trauma', account='Multi-Generational-Trauma', amount=5000000.00, midcase=True,
+       basis='~25 descendants; 35 years displacement; housing insecurity; loss of life chances.', sources=[BRIEF], status='contingent',
+       inside=[
+         inner('L-05', 'Distress: five people (William, his partner and three children)', 125800.00, 'Line 5a central: Vento middle-band midpoint (£25,150) × 5, used as an analogy.', [S5298]),
+         inner('L-13', 'Rehousing after the demolition (the bus, 1989; rent since)', 0, 'No £ on the record yet (page 5298 head 6).', [S5298, src('Press: \u201cFrom farm to a bus\u201d (N13)', WIKI + '/evidence-library/ghf-e090-n13-from-farm-to-a-bus-1989/')]),
+       ]),
+  dict(id='H-6', group='heads', date='1988-12-06', head='Wrongful Death (Estates)', account='Wrongful-Death', amount=5000000.00, midcase=True,
+       basis='Deaths of Mary Williams and Billy Buckler.', sources=[BRIEF], status='contingent', inside=[]),
+  dict(id='H-7', group='heads', date='1988-11-01', head='Aggravated & Exemplary Damages', account='Aggravated-Exemplary', amount=3000000.00, midcase=True,
+       basis='4am eviction; children present; pre-emptive demolition. Reduced per Rookes v Barnard [1964] HL.', sources=[BRIEF], status='contingent', inside=[]),
+  # ---- small lines outside the seven heads ----
+  dict(id='L-06', group='small', date='1988-12-06', head='Contents lost with the demolition: papers, photographs, belongings', account='Contents', amount=30000.00, estimate=True,
        basis='William\u2019s own figure in 1989, about £30,000 (South Wales Echo, \u201cFrom farm to a bus\u201d), not indexed.', sources=[src('Press: \u201cFrom farm to a bus\u201d (N13, 1989)', WIKI + '/evidence-library/ghf-e090-n13-from-farm-to-a-bus-1989/'), src('1988: Possession and Demolition', WIKI + '/demolition-1988/')], status='contingent'),
-  dict(id='L-07', date='2026-10-01', head='Family time as litigant in person', account='Litigant-time', amount=13000.00, estimate=True,
-       basis='Head 8 central (CPR 46.5; PD 46 para 3.4). Hours to be confirmed.', sources=[S5298], status='contingent'),
-  dict(id='L-08', date='2026-10-20', head='Project costs paid by the family (cash, to 20 Oct 2026)', account='Project-cash', amount=211.93, estimate=False,
+  dict(id='L-07', group='small', date='2026-10-01', head='Family time as litigant in person', account='Litigant-time', amount=13000.00, estimate=True,
+       basis='Head 8 central of page 5298 (CPR 46.5; PD 46 para 3.4).', sources=[S5298], status='contingent'),
+  dict(id='L-08', group='small', date='2026-10-20', head='Project costs paid by the family (cash, to 20 Oct 2026)', account='Project-cash', amount=211.93, estimate=False,
        basis='The Counting House cash ledger (accounts.bucklerfamily.estate), receipts on file.', sources=[src('The Counting House — public accounts', 'https://accounts.bucklerfamily.estate/')], status='contingent'),
-  # orders with no £ on the record: carried at £0 so the line is visible; status stays with the family until a figure is found
-  dict(id='L-09', date='1955-02-02', head='Costs of the 1955 High Court order', account='Costs-1955', amount=0, estimate=False, nil=True,
-       basis='£ not on the record yet: the order (EV-0032) has not been located.', sources=[src('The 1955 Possession Order', WIKI + '/1955-possession-order/')], status='borne'),
-  dict(id='L-10', date='1962-12-11', head='Costs of the 1962 Cardiff County Court order', account='Costs-1962', amount=0, estimate=False, nil=True,
-       basis='£ not on the record yet.', sources=[src('The 1962 Possession Order', WIKI + '/1962-possession-order/')], status='borne'),
-  dict(id='L-11', date='1974-07-03', head='Costs of the 1974 county-court action', account='Costs-1974', amount=0, estimate=False, nil=True,
-       basis='£ not on the record yet: the action was part-heard and never relisted.', sources=[src('GHF-E135 — 1974 pleadings', WIKI + '/evidence-library/ghf-e135-3-july-1974-mary-williams-plea-of-ownership-and-pleadings/')], status='borne'),
-  dict(id='L-12', date='1987-07-31', head='Costs of BP Properties Ltd v Buckler (1986 High Court, 1987 Court of Appeal, 1988 House of Lords)', account='Costs-1986-88', amount=0, estimate=False, nil=True,
-       basis='£ not on the record yet: costs orders and the solicitors\u2019 files are being traced.', sources=[src('EV-0080 — Court of Appeal judgment', WIKI + '/evidence/ev-0080-bp-properties-v-buckler-judgment/')], status='borne'),
-  dict(id='L-13', date='1989-01-01', head='Rehousing after the demolition (the bus, 1989; rent since)', account='Rehousing', amount=0, estimate=False, nil=True,
-       basis='£ not on the record yet (page 5298 head 6).', sources=[S5298, src('Press: \u201cFrom farm to a bus\u201d (N13)', WIKI + '/evidence-library/ghf-e090-n13-from-farm-to-a-bus-1989/')], status='borne'),
+  # ---- orders with no £ on the record: carried at £0 so the line is visible ----
+  dict(id='L-09', group='nil', date='1955-02-02', head='Costs of the 1955 High Court order', account='Costs-1955', amount=0, estimate=False, nil=True,
+       basis='No £ on the record yet: the order (EV-0032) has not been located.', sources=[src('The 1955 Possession Order', WIKI + '/1955-possession-order/')], status='borne'),
+  dict(id='L-10', group='nil', date='1962-12-11', head='Costs of the 1962 Cardiff County Court order', account='Costs-1962', amount=0, estimate=False, nil=True,
+       basis='No £ on the record yet.', sources=[src('The 1962 Possession Order', WIKI + '/1962-possession-order/')], status='borne'),
+  dict(id='L-11', group='nil', date='1974-07-03', head='Costs of the 1974 county-court action', account='Costs-1974', amount=0, estimate=False, nil=True,
+       basis='No £ on the record yet: the action was part-heard and never relisted.', sources=[src('GHF-E135 — 1974 pleadings', WIKI + '/evidence-library/ghf-e135-3-july-1974-mary-williams-plea-of-ownership-and-pleadings/')], status='borne'),
+  dict(id='L-12', group='nil', date='1987-07-31', head='Costs of BP Properties Ltd v Buckler (1986 High Court, 1987 Court of Appeal, 1988 House of Lords)', account='Costs-1986-88', amount=0, estimate=False, nil=True,
+       basis='No £ on the record yet: costs orders and the solicitors\u2019 files are being traced.', sources=[src('EV-0080 — Court of Appeal judgment', WIKI + '/evidence/ev-0080-bp-properties-v-buckler-judgment/')], status='borne'),
 ]
 APPORTION = [  # page 5475 proposed shares (route C), used when the case reopens
   ('BP plc (successor to BP Properties Ltd / BP Pension Trust)', 'BP-plc', 60, 'Primary actor and the party that profited from the land'),
@@ -243,14 +266,9 @@ APPORTION = [  # page 5475 proposed shares (route C), used when the case reopens
   ('The family\u2019s former solicitors (1986–87)', 'Former-solicitors', 3, 'The family\u2019s own advisers in the appeal'),
   ('Developer that bought the site in 1993 (successors)', 'Developer-successors', 2, 'Took the benefit of the site'),
 ]
-MEMO = [
-  dict(head='Value realised on the land: 16 new-build sales at Church View Close, Feb 1995 – Apr 1997', amount=16 * 120906.0,
-       basis='16 sales × mean £120,906 (HMLR Price Paid, via page 5298). A gain on Team Regime\u2019s side, shown for scale; not a cost, so outside the balance.', sources=[S5298]),
-  dict(head='Developed value of the 20 houses today', amount=11039000.0,
-       basis='Line 1a central: 20 × £551,929 (page 5298). Context, not a loss.', sources=[S5298]),
-]
+MEMO = []  # v2: the two value-on-the-land lines now sit inside head H-2 (Restitutionary Disgorgement)
 
-BANNED = ['says', 'claims', 'according to', 'hearsay', 'unverified', 'alleged', 'fraud', 'stolen', 'branwen', 'sion', 'disclaimer', 'not a finding']
+BANNED = ['says', 'claims', 'according to', 'hearsay', 'unverified', 'alleged', 'fraud', 'stolen', 'branwen', 'sion', 'disclaimer', 'not a finding', 'subject to', 'illustrative', 'roi', 'cagr', 'co-financier', 'investor']
 
 def band_for(points):
     for b in BANDS:
@@ -316,7 +334,7 @@ def build():
           'desks': DESKS, 'tickets': tickets}
     lj = {'schema': 'oldbill-ledger/1', 'generated': now, 'currency': 'GBP',
           'apportionment': [{'party': n, 'account': 'Liable:Team-Regime:' + a, 'share': s, 'basis': b, 'source': S5475} for n, a, s, b in APPORTION],
-          'entries': entries, 'memo': MEMO}
+          'range': BRIEF_RANGE, 'entries': entries, 'memo': MEMO}
     # boards
     def board(reopen):
         W_ = {'points': 0, 'tickets': 0, 'gbp': 0.0}; R_ = {'points': 0, 'tickets': 0, 'gbp': 0.0}
@@ -334,7 +352,9 @@ def build():
     summary = {'now': board(False), 'reopened': board(True), 'books': {'now': totals(False), 'reopened': totals(True)},
                'counts': {'tickets': len(tickets), 'regime_tickets': sum(1 for t in tickets if t['team'] == 'regime'),
                           'williams_tickets': sum(1 for t in tickets if t['team'] == 'williams'), 'ledger_entries': len(entries)}}
-    tj['summary'] = summary; lj['summary'] = {'books': summary['books']}
+    tj['summary'] = summary; lj['summary'] = {'books': summary['books'], 'heads_total': round(sum(e['amount'] for e in entries if e.get('group') == 'heads'), 2), 'priced_total': round(sum(e['amount'] for e in entries), 2)}
+    assert lj['summary']['heads_total'] == BRIEF_RANGE['mid'], lj['summary']
+    assert BRIEF_RANGE['lo'] <= lj['summary']['heads_total'] <= BRIEF_RANGE['hi']
     (PUB / 'data').mkdir(parents=True, exist_ok=True)
     (PUB / 'data' / 'tickets.json').write_text(json.dumps(tj, ensure_ascii=False, indent=1))
     (PUB / 'data' / 'ledger.json').write_text(json.dumps(lj, ensure_ascii=False, indent=1))
