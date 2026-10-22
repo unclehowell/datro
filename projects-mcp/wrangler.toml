@@ -1,0 +1,7 @@
+name = "projects-data-mcp"
+main = "worker.js"
+compatibility_date = "2026-10-22"
+
+[[r2_buckets]]
+binding = "PROJECTS"
+bucket_name = "projects-private"
