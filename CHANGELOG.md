@@ -6,6 +6,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Rules: DOCS-STAN
 
 ## [Unreleased]
 
+## [docs-0.2.0] - 2026-10-22
+
+### Added
+- `ghf_legalwiki/guide_readthedocs` v1.1.0 (en) — the Legal Wiki's "Read the Docs" guide, moved from the WordPress wiki as a document; every wiki link now points to the same page on research.bucklerfamily.estate.
+- `ghf_legalwiki/collection.json` — the Legal Wiki collection (listed first on the homepage).
+
 ## [docs-0.1.1] - 2026-10-22
 
 ### Fixed
