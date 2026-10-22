@@ -6,7 +6,7 @@ const CANONICAL_ORIGIN = "https://" + CANONICAL_HOST;
 const CALENDAR_ORIGIN = "https://bucklerfamily-emails.pages.dev";
 const CORPUS_TTL_MS = 300000;
 const MANIFEST_URL = "https://wayback.bucklerfamily.estate/email/mail-index.json";
-const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/04291c921ed54917d2d5c8ab50aa76bcc5e1ce3f/apps/email/index.html";
+const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/db637035ea94b3373b99d9019fad96c85912cf25/apps/email/index.html";
 const TEXT_HOST = "wayback.bucklerfamily.estate";
 // Wayback's case-mail API is the single source of truth for every case email (redacted copies).
 const CASEMAIL_INDEX_URL = "https://wayback.bucklerfamily.estate/api/index.json";
