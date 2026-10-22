@@ -16,6 +16,16 @@ Structured records, relationships, change history and uploaded artefacts are sto
 
 The first authenticated data request imports the 81-item asset register and trigger-event SOP graph (34 nodes, 36 edges) from `unclehowell/datro@projects`. Source paths and provenance are recorded. The imported project statuses are snapshots of published materials, not independent verification.
 
+**Operational note (2026-10-22 verification):** R2 now contains `meta/bootstrap-v1.json` and full imported indexes (81 assets, 34 SOP nodes, 5 projects). Live Worker responds to MCP tools and GraphQL. If `meta/bootstrap-v1.json` is missing while indexes exist, requests can hang on re-seed — restore the bootstrap object or redeploy a Worker build that recovers from partial seed.
+
+**Source restore:** If `projects-mcp/worker.js` on this branch is incomplete, restore from commit `7f726e1ed18f69a07954631576b19d372b9a023c`:
+
+```bash
+git checkout 7f726e1ed18f69a07954631576b19d372b9a023c -- projects-mcp/worker.js
+```
+
+Do not redeploy a truncated worker.js over the live Worker.
+
 ## MCP tools
 
 - `project_list`, `project_get`, `project_upsert`
