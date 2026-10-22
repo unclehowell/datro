@@ -2,10 +2,12 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { DetailModal } from "@/components/detail-modal";
 import { CLASS } from "@/components/disclosure-record";
 import { FIRE_A, PAL } from "@/components/avenue-game";
+import { roadmapStepRequirement } from "@/data/legal-routes";
 
 /**
  * Roadmap ramps: the Donkey Kong climb as a dated roadmap. One institution at a time; each girder is one
- * escalation step (Request at the bottom, Court at the top), dates run along the girders, every case email
+ * kind of step (Request at the bottom, Court at the top; a layout, not a compulsory order — each step carries
+ * what it is in law for the lane's regime, from legal-routes.ts), dates run along the girders, every case email
  * sits at its date, replies still due sit as faint envelopes at their due date, missed deadlines burn, and
  * the man in green overalls stands at TODAY (worked out in the browser). Data: /data/roadmap.json.
  * — Sion's Tab agent, 21 Oct 2026
@@ -507,7 +509,7 @@ function StepLine({ lane, level }: { lane: Lane; level: number }) {
   const s = stepAt(lane, level);
   return (
     <p className="text-sm text-muted">
-      {s ? `Step ${s.n} of 11 · ${s.label}` : "Before the first request on the ladder"}
+      {s ? `Step ${s.n} of 11 · ${s.label} · ${roadmapStepRequirement(s.key, lane.regime ?? "").text}` : "Before the first request"}
     </p>
   );
 }
@@ -564,7 +566,7 @@ function Sheet({ hit, lane }: { hit: Hit; lane: Lane }) {
     return (
       <div className="space-y-2">
         {head}
-        <p className="text-sm text-fg">Court: the top of the ladder, reached only after every step below is used up.</p>
+        <p className="text-sm text-fg">Court routes keep their own time limits and are never held back for the steps below. Independent legal advice early.</p>
         <p className="text-sm text-muted">{lane.court ?? "No court route for this body."}</p>
         <StepList lane={lane} />
       </div>
@@ -575,7 +577,7 @@ function Sheet({ hit, lane }: { hit: Hit; lane: Lane }) {
       <div className="space-y-2">
         {head}
         <p className="text-sm text-fg">
-          Today, {fmt(todayIso())}: {s ? `step ${s.n}, ${s.label}` : "before the first request on the ladder"}.
+          Today, {fmt(todayIso())}: {s ? `step ${s.n}, ${s.label}` : "before the first request"}.
         </p>
         {lane.next && (
           <p className="text-sm text-fg">
@@ -597,6 +599,7 @@ function Sheet({ hit, lane }: { hit: Hit; lane: Lane }) {
         <Chip status={s.status} /> {s.status !== "na" && <span>{fmt(s.date)}{s.date_kind === "projected" ? " (projected)" : ""}</span>}
       </p>
       <p className="text-sm text-muted">{s.basis}</p>
+      <p className="text-xs text-faint">{roadmapStepRequirement(s.key, lane.regime ?? "").text}</p>
       {s.body && <p className="text-sm text-muted">With: {s.body}</p>}
       {s.note && <p className="text-sm text-muted">{s.note}</p>}
       <p className="text-sm">

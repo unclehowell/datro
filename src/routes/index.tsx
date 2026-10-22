@@ -43,6 +43,19 @@ import { ArtifactsSheet, CorrSheet, CourtTiles, OptionsSheet, courtInstitutions 
 import { DisclosureRecord } from "@/components/disclosure-record";
 import { ArchaeologyTimeline } from "@/components/archaeology-timeline";
 import { RoadmapRamps } from "@/components/roadmap-ramps";
+import {
+  VERIFIED_ON,
+  classifyRegime,
+  deadlineLabel,
+  evidenceMeta,
+  phaseRequirement,
+  regimeById,
+  regimes,
+  requirementMeta,
+  sources as legalSources,
+  type EvidenceStatus,
+  type Requirement,
+} from "@/data/legal-routes";
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -50,6 +63,7 @@ type Sheet =
   | { kind: "cell"; party: Party; ring: Ring; slice: WheelSlice }
   | { kind: "game"; hit: GameHit; inst: AvInstitution; slide?: Omit<SlidePick, "index" | "level"> }
   | { kind: "key" }
+  | { kind: "routes" }
   | { kind: "corr"; inst: string }
   | { kind: "art" }
   | { kind: "opt"; inst: string };
@@ -217,6 +231,7 @@ function RungSheet({ inst, level, index }: { inst: AvInstitution; level: AvLevel
       <div className="mt-3 flex flex-wrap gap-2">
         <Chip colour={statusInfo[level.status].colour}>{rampStateInfo[rung.st].label}</Chip>
         <CostChip rung={rung} />
+        <ReqChip r={phaseRequirement(rung.ph, rung.t).requirement} text={phaseRequirement(rung.ph, rung.t).text} />
       </div>
       <p className="mt-3 text-sm leading-relaxed text-muted">{rung.w}</p>
       {rung.did && (
@@ -244,7 +259,7 @@ function RungSheet({ inst, level, index }: { inst: AvInstitution; level: AvLevel
               : undefined
           }
         />
-        <Row k="Next open rung" v={next?.rung?.t} />
+        <Row k="Another open route" v={next?.rung?.t} />
       </div>
       <LegalBasis rung={rung} />
       <FeeList list={fees} />
@@ -396,6 +411,14 @@ function Home() {
         ))}
       </button>
 
+      <button
+        type="button"
+        onClick={() => setSheet({ kind: "routes" })}
+        className="mx-auto rounded-full border border-line bg-surface px-4 py-2 text-sm text-brass"
+      >
+        Legal routes by regime
+      </button>
+
       <CourtTiles
         onOpen={(k) => {
           const cid = courtInstitutions.some((c) => c.id === inst.id) ? inst.id : courtInstitutions[0].id;
@@ -425,6 +448,7 @@ function Home() {
           />
         )}
         {sheet?.kind === "key" && <KeySheet />}
+        {sheet?.kind === "routes" && <RoutesSheet />}
         {sheet?.kind === "corr" && (
           <CorrSheet instId={sheet.inst} onInst={(id) => setSheet({ kind: "corr", inst: id })} />
         )}
@@ -476,6 +500,7 @@ function CellSheet({ party, ring, slice }: { party: Party; ring: Ring; slice: Wh
           v={cell.feeMarker ? "$ A fee, cost estimate or chargeable route is recorded" : undefined}
         />
       </div>
+      <CellRoute party={party} cell={cell} />
       <FeeList list={fees} />
       <DocList docs={cell.docs} />
       {url && (
@@ -673,7 +698,7 @@ function LevelSheet({
               : undefined
           }
         />
-        <Row k="Next avenue" v={next ? phases[next.phase].name : undefined} />
+        <Row k="Another route" v={next ? phases[next.phase].name : undefined} />
       </div>
       <FeeList list={fees} />
     </div>
@@ -692,7 +717,7 @@ function RoadmapSheet({ inst }: { inst: AvInstitution }) {
         {instNumber(inst.id)} · {inst.name}
       </h2>
       <p className="mt-2 text-sm text-muted">
-        {used} used up · {open} open · {left} not used yet
+        {used} used · {open} open · {left} not used yet
       </p>
       <ol className="mt-3 flex flex-col-reverse gap-1.5">
         {inst.levels.map((l, i) => (
@@ -1011,11 +1036,14 @@ function KeySheet() {
         ))}
       </div>
       <p className="mt-4 text-sm leading-relaxed text-muted">
-        Top: the dartboard. Each slice is an institution, each ring a step inward from first enquiry
-        to tribunal. Below: pick an institution. The ape is that institution and its fireballs are
+        Top: the dartboard. Each slice is an institution; each ring groups one kind of step, from
+        request (outside) to tribunal or court (centre). The rings are not a compulsory order: each
+        matter follows the route of its own regime, shown under Legal routes. Below: pick an institution. The ape is that institution and its fireballs are
         its replies; the climber is the requester. Each girder is one rung of that institution's own
         ladder, built from UK law and the body's own policies: first step at the bottom, court
-        routes at the top. Tap a girder for its time limit, cost and legal basis; PAID marks a route
+        routes at the top. Girders are the routes open to that body, not a compulsory order; each one
+        is marked statutory, expected, optional or parallel. Tap a girder for its time limit,
+        cost and legal basis; PAID marks a route
         that costs money. Tap anything for details. The number on each outer slice matches the
         number in the dropdown. A yellow $ marks where the institution sought or mentioned a fee: a
         cost-limit refusal, a fees notice, or a copy or search charge.
@@ -1064,6 +1092,102 @@ function KeySheet() {
           Tracker (CSV)
         </a>
       </p>
+    </div>
+  );
+}
+
+
+function ReqChip({ r, text }: { r: Requirement; text?: string }) {
+  const colour =
+    r === "statutory" ? "var(--color-brass)" : r === "expected" ? "#5a7bd8" : r === "parallel" ? "#8a63d2" : "#4a505b";
+  return <Chip colour={colour}>{text ?? requirementMeta[r].label}</Chip>;
+}
+
+/** The regime this cell's words point to, and that regime's steps with what each one is in law. */
+function CellRoute({ party, cell }: { party: Party; cell: { title: string; detail: string; ref?: string } }) {
+  const id = classifyRegime(`${cell.ref ?? ""} ${cell.title} ${cell.detail}`) ?? classifyRegime(party.remit);
+  if (!id) {
+    return (
+      <p className="mt-3 text-xs leading-relaxed text-faint">
+        Regime: to confirm from the original request before any next step is dated.
+      </p>
+    );
+  }
+  const reg = regimeById[id];
+  return (
+    <div className="mt-4 border-t border-line pt-3">
+      <p className="text-xs tracking-[0.16em] text-brass uppercase">Route · {reg.short} (read from this record's words)</p>
+      <ul className="mt-2 flex flex-col gap-1.5">
+        {reg.steps.map((s) => (
+          <li key={s.id} className="text-sm leading-snug text-muted">
+            <ReqChip r={s.requirement} /> <span className="text-fg">{s.label}</span>
+            {s.deadline && <span className="block text-xs text-faint">{deadlineLabel(s)}</span>}
+          </li>
+        ))}
+      </ul>
+      <p className="mt-2 text-xs leading-relaxed text-faint">{reg.notThis}</p>
+    </div>
+  );
+}
+
+function RoutesSheet() {
+  const src = Object.fromEntries(legalSources.map((s) => [s.id, s]));
+  return (
+    <div>
+      <p className="text-xs tracking-[0.16em] text-brass uppercase">Legal routes by regime</p>
+      <h2 className="mt-1 font-serif text-2xl leading-tight">Each matter follows its own route</h2>
+      <p className="mt-2 text-sm leading-relaxed text-muted">
+        The rings group kinds of step; they are not one compulsory ladder. Accountability routes run in
+        parallel and are never a prerequisite. Tribunal and court time limits are never held back to use
+        up other routes. Sources read {fmtDate(VERIFIED_ON)}.
+      </p>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {(Object.keys(requirementMeta) as Requirement[]).map((r) => (
+          <ReqChip key={r} r={r} text={`${requirementMeta[r].label}: ${requirementMeta[r].hint}`} />
+        ))}
+      </div>
+      <div className="mt-4 flex flex-col gap-2">
+        {regimes.map((reg) => (
+          <details key={reg.id} className="rounded-lg border border-line bg-surface px-3 py-2">
+            <summary className="cursor-pointer text-sm text-fg">
+              <span className="font-semibold">{reg.short}</span> · {reg.name}
+            </summary>
+            <p className="mt-2 text-xs leading-relaxed text-muted">{reg.appliesTo}</p>
+            <ol className="mt-2 flex flex-col gap-1.5">
+              {reg.steps.map((s) => (
+                <li key={s.id} className="text-sm leading-snug text-muted">
+                  <ReqChip r={s.requirement} /> <span className="text-fg">{s.label}</span>
+                  {s.deadline && <span className="block text-xs text-faint">{deadlineLabel(s)}</span>}
+                  {s.note && <span className="block text-xs text-faint">{s.note}</span>}
+                  {s.sources.map((id) => (
+                    <a key={id} href={src[id]?.url} target="_blank" rel="noreferrer" className="mr-2 text-xs text-brass underline">
+                      {src[id]?.title}
+                    </a>
+                  ))}
+                </li>
+              ))}
+            </ol>
+            <p className="mt-2 text-xs leading-relaxed text-faint">{reg.notThis}</p>
+            {reg.uncertain && <p className="mt-1 text-xs leading-relaxed text-faint">Open point: {reg.uncertain}</p>}
+          </details>
+        ))}
+      </div>
+      <details className="mt-3 rounded-lg border border-line bg-surface px-3 py-2">
+        <summary className="cursor-pointer text-sm text-fg">Evidence statuses</summary>
+        <ul className="mt-2 flex flex-col gap-1.5">
+          {(Object.keys(evidenceMeta) as EvidenceStatus[]).map((k) => (
+            <li key={k} className="text-sm leading-snug text-muted">
+              <span className="text-fg">{evidenceMeta[k].label}</span>: {evidenceMeta[k].meaning}
+              {evidenceMeta[k].ask && <span className="block text-xs text-faint">Next: {evidenceMeta[k].ask}</span>}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-2 text-xs leading-relaxed text-faint">
+          "Not held", "not located", "withheld", "destroyed" and "never existed" are different findings. A
+          failed search does not show a record never existed; a destruction statement stays the
+          institution's until a disposal record supports it.
+        </p>
+      </details>
     </div>
   );
 }

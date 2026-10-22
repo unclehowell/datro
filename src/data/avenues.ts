@@ -137,13 +137,13 @@ export const phases: Record<PhaseKey, Phase> = {
  "sar": {
   "name": "Subject access",
   "short": "SAR",
-  "what": "Your own personal data under UK GDPR Art. 15 (DPA 2018 s.45 for police law-enforcement data). One month, extendable by two.",
-  "law": "UK GDPR Art. 12(3), 15; DPA 2018 s.45"
+  "what": "Your own personal data under UK GDPR Art. 15: one month, extendable by up to two further months; a clarification request stops the clock. Law-enforcement processing by a competent authority is a separate right (DPA 2018 Part 3, s.45; one month under s.54). A deceased patient's records go by the Access to Health Records Act 1990 s.3, not a SAR.",
+  "law": "UK GDPR Art. 12(3), 15; DPA 2018 s.45, s.54 (Part 3 only); AHRA 1990 s.3 (deceased)"
  },
  "review": {
   "name": "Internal review",
   "short": "Review",
-  "what": "The body reconsiders its own answer. FOI: the Code of Practice sets 20 working days, 40 at most. EIR reg. 11: 40 working days.",
+  "what": "EIR: a statutory review (reg. 11): representations within 40 working days of the failure, decision within 40 working days of receiving them. FOIA: not a statutory requirement; the s.45 Code expects authorities to offer one and the ICO normally expects it to be used before a complaint. The two are separate routes even at the same authority.",
   "law": "FOIA s.45 Code of Practice §5; EIR reg. 11"
  },
  "complaint": {
@@ -155,13 +155,13 @@ export const phases: Record<PhaseKey, Phase> = {
  "ico": {
   "name": "ICO complaint",
   "short": "ICO",
-  "what": "Complaint to the Information Commissioner once review is exhausted. The ICO can issue a decision notice.",
+  "what": "Complaint to the Information Commission. The ICO normally expects the body's own review or complaint route to have been used first, and asks for the complaint within six weeks of the final response (its guidance, not statute). It can issue a decision notice; an appeal to the First-tier Tribunal is due within 28 days of it.",
   "law": "FOIA s.50; EIR reg. 18; DPA 2018 s.165"
  },
  "icr": {
   "name": "Independent Complaints Reviewer",
   "short": "ICR",
-  "what": "Free, independent review of HM Land Registry complaints, after HMLR's own procedure.",
+  "what": "Free, independent review of HM Land Registry service complaints, after HMLR's own two stages. It cannot review or overturn registration decisions or decide points of law; those go by legal routes, which keep their own time limits.",
   "law": "HMLR complaints procedure; ICR terms of reference"
  },
  "psow": {

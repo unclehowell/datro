@@ -152,7 +152,7 @@ export function RingWheel({ selection, onSelect, filter }: Props) {
           }}
         >
           <title id={titleId}>
-            Disclosure rings for Great House Farm. Outside ring is the first enquiry.
+            Disclosure rings for Great House Farm. Each ring is a kind of step, not a compulsory order.
           </title>
           <circle cx={CX} cy={CY} r={OUTER + 8} fill="none" stroke="var(--color-line)" strokeWidth="1" />
           {cells.map(({ party, ring, a0, a1, r0, r1, cell }) => {
@@ -265,7 +265,7 @@ export function RingWheel({ selection, onSelect, filter }: Props) {
             fontFamily="var(--font-sans)"
             fontSize="11"
           >
-            outside is the first ask
+            rings are kinds of step, not a fixed order
           </text>
         </svg>
       </div>

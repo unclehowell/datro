@@ -3,7 +3,8 @@ import { sliceCell, sliceHasFee, wheelSlices, type WheelSlice } from "@/data/whe
 
 /**
  * The dartboard: one numbered slice per institution (same number as the game's dropdown), one
- * ring per escalation step (outside = first enquiry, bull = tribunal or court). Visual only; a
+ * ring per kind of step (outside = request, bull = tribunal or court). The rings group steps; they
+ * are not a compulsory order, and each matter follows its own regime (legal-routes.ts). Visual only; a
  * tap opens the details. "$" marks a cell where the institution sought or mentioned fees.
  */
 const C = 200;
@@ -42,7 +43,7 @@ export function DartWheel({
   const fees: { x: number; y: number; size: number; key: string }[] = [];
 
   return (
-    <svg viewBox="0 0 400 400" className="mx-auto block w-full max-w-[440px] touch-manipulation select-none" role="img" aria-label="Dartboard of institutions and escalation rings">
+    <svg viewBox="0 0 400 400" className="mx-auto block w-full max-w-[440px] touch-manipulation select-none" role="img" aria-label="Dartboard of institutions and kinds of disclosure step">
       <defs>
         <radialGradient id="dw-rim" cx="50%" cy="50%" r="50%">
           <stop offset="85%" stopColor="#1b1612" />

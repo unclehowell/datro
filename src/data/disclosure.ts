@@ -42,55 +42,59 @@ export type Party = {
   cells: Partial<Record<RingId, Cell>>;
 };
 
-/** Outside first. Each step inward is the next route that has to be used up. */
+/**
+ * Each ring groups one kind of step. The rings are not a compulsory sequence: each matter follows
+ * the route of its own regime (see legal-routes.ts), some steps are optional or run in parallel,
+ * and accountability routes are never a prerequisite to a statutory complaint or appeal.
+ */
 export const rings: Ring[] = [
   {
     id: "open",
-    name: "Opening enquiry",
-    short: "Enquiry",
-    blurb: "The first FOI, EIR, subject-access or archive request.",
+    name: "Request",
+    short: "Request",
+    blurb: "The request under its own regime: FOIA, EIR, subject access, law-enforcement access, a Land Registry form, an archive enquiry or a court-record request.",
   },
   {
     id: "reply",
-    name: "Substantive reply",
-    short: "Reply",
-    blurb: "What they actually sent back: a record, a refusal, or a holding note.",
+    name: "Response",
+    short: "Response",
+    blurb: "Disclosure (full, partial or redacted), a refusal with its legal basis, 'not held', 'not located', or a holding note. Each is recorded as itself.",
   },
   {
     id: "chase",
     name: "Clarification and chase",
     short: "Chase",
-    blurb: "Missing schedules, scope fights, and refinements.",
+    blurb: "Clarification changes a clock only where the regime provides and the evidence shows it. A chase is optional and changes no statutory deadline.",
   },
   {
     id: "review",
     name: "Internal review",
     short: "Review",
-    blurb: "The authority reconsidering its own response.",
+    blurb: "EIR: statutory (reg. 11). FOIA: good practice under the s.45 Code, normally expected before an ICO complaint. Other regimes have their own routes, or none.",
   },
   {
     id: "complaint",
-    name: "Formal complaint",
+    name: "Service complaint",
     short: "Complaint",
-    blurb: "Their complaints procedure, a stage-two decision, or a chief inspector.",
+    blurb: "The body's own complaints procedure. Separate from information-rights reviews; it pauses no deadline.",
   },
   {
     id: "regulator",
-    name: "Independent regulator",
+    name: "Regulator or reviewer",
     short: "Regulator",
-    blurb: "The ICO, or the Independent Complaints Reviewer for Land Registry.",
+    blurb: "The Information Commission (ICO) for FOIA, EIR and data access. The Land Registry's Independent Complaints Reviewer for service failures only, never registration decisions or points of law.",
   },
   {
     id: "democratic",
-    name: "Democratic pressure",
-    short: "Democratic",
-    blurb: "MP, scrutiny, the council chamber, or the Public Services Ombudsman for Wales.",
+    name: "Accountability (parallel)",
+    short: "Accountability",
+    blurb: "MPs, MSs, councillors, scrutiny, standards and the ombudsmen. Parallel and optional: never a prerequisite to a statutory complaint or appeal.",
   },
   {
     id: "forum",
     name: "Tribunal or court",
     short: "Tribunal",
-    blurb: "First-tier Tribunal, Upper Tribunal, or a court order for the record.",
+    blurb: "First-tier Tribunal (28 days from an ICO decision) or a court route. Time limits run on their own: never held back to use up other routes.",
   },
 ];
 
@@ -114,8 +118,8 @@ export const statusMeta: Record<
     swatch: "var(--color-nuisance)",
   },
   closed: {
-    label: "Nothing further",
-    hint: "They say there is no more they can do",
+    label: "Institution's final position",
+    hint: "Their stated position (for example 'not held' or 'search complete'). Not proof a record never existed or was destroyed",
     swatch: "var(--color-closed)",
   },
   suspicious: {
