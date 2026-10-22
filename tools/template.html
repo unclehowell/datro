@@ -23,8 +23,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--panel)}
 .seg a,.seg button{border:0;background:none;padding:6px 12px;font-size:14px;text-decoration:none;color:var(--ink);cursor:pointer;min-height:34px;display:inline-flex;align-items:center}
 .seg [aria-pressed=true],.seg [aria-current=page]{background:var(--ink);color:var(--bg)}
-.tabs{display:flex;gap:6px;overflow-x:auto;padding:2px 0 8px;scrollbar-width:none}
-.tabs button{flex:0 0 auto;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:7px 12px;font-size:14px;cursor:pointer;min-height:36px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;padding:2px 0 8px}
+.tabs button{flex:0 0 auto;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:6px 10px;font-size:13.5px;cursor:pointer;min-height:36px}
+details.dd{margin:0 0 4px}details.dd>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px}details.dd>summary::-webkit-details-marker{display:none}details.dd>summary .dh{flex:1}details.dd>summary .cnt{font-size:12px;color:var(--muted);display:flex;gap:4px;align-items:center}details.dd>summary .cnt::after{content:'＋';margin-left:6px}details.dd[open]>summary .cnt::after{content:'－'}
 .tabs button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .legend{display:flex;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--muted);margin:2px 2px 8px}
 .k{display:inline-flex;align-items:center;gap:5px}
@@ -108,7 +109,7 @@ table.pol td{border-top:1px solid var(--line);padding:6px 4px;vertical-align:top
 <p class="intro" id="intro">Every open request, the date each reply falls due, and our follow-ups on fixed dates, assuming the longest extension and a refusal at every step.</p>
 <div class="tabs" role="group" aria-label="View">
  <button data-v="next" aria-pressed="true">Next 14 days</button>
- <button data-v="month" aria-pressed="false">Calendar</button>
+ <button data-v="month" aria-pressed="false">Month</button>
  <button data-v="gantt" aria-pressed="false">Timeline</button>
  <button data-v="ours" aria-pressed="false">Our schedule</button>
 </div>
@@ -168,11 +169,14 @@ function chips(){
 function sync(el,set){el.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.hasAttribute('data-all')?String(!set.size):String(set.has(b.dataset.x))));
  const n=fT.size+fI.size;$('#fsum').textContent=n?'· '+[...fT,...fI].join(', '):'· all'}
 function row(e,showDate){const t=TH[e.thread];return `<button class="row ${e.who}" data-t="${t.id}"><span class="tag ${e.who}">${e.who==='hard'?'Hard':e.who==='him'?'Ours':'Theirs'}</span><div><b>${esc(e.label)}</b><span>${esc(t.inst)} · ${esc(t.ref)}${showDate?' · '+fmt(e.date):''}</span></div></button>`}
-function groupList(list,empty){if(!list.length)return `<p class="empty">${empty}</p>`;let h='',cur='';list.forEach(e=>{if(e.date!==cur){cur=e.date;h+=`<h3 class="dh${e.date===TODAY?' today':''}">${e.date===TODAY?'Today · ':''}${fmt(e.date)}</h3>`}h+=row(e)});return h}
+function groupList(list,empty,openN){if(!list.length)return `<p class="empty">${empty}</p>`;const by={};list.forEach(e=>(by[e.date]=by[e.date]||[]).push(e));
+ return Object.keys(by).sort().map((d,i)=>{const L=by[d];const c={them:0,him:0,hard:0};L.forEach(e=>c[e.who]++);
+  const dots=['hard','him','them'].filter(k=>c[k]).map(k=>`<i class="dot ${k}"></i>${c[k]}`).join(' ');
+  return `<details class="dd"${i<(openN==null?2:openN)?' open':''}><summary><h3 class="dh${d===TODAY?' today':''}">${d===TODAY?'Today · ':''}${fmt(d)}</h3><span class="cnt">${dots}</span></summary>${L.map(e=>row(e)).join('')}</details>`}).join('')}
 function renderNext(){const end=add(TODAY,14);const L=evs().filter(e=>e.date>=TODAY&&e.date<=end);
  const over=DATA.threads.filter(pass).filter(t=>t.next&&t.next.who!=='them'&&false);
  $('#v-next').innerHTML=groupList(L,'Nothing falls in the next 14 days for this filter.')}
-function renderOurs(){const L=evs().filter(e=>e.date>=TODAY&&e.who!=='them');$('#ours').innerHTML=groupList(L,'No actions for this filter.')}
+function renderOurs(){const L=evs().filter(e=>e.date>=TODAY&&e.who!=='them');$('#ours').innerHTML=groupList(L,'No actions for this filter.',1)}
 let mY,mM;
 function renderMonth(){const first=new Date(Date.UTC(mY,mM,1));$('#mt').textContent=first.toLocaleString('en-GB',{month:'long',year:'numeric',timeZone:'UTC'});
  const E=evs();const by={};E.forEach(e=>(by[e.date]=by[e.date]||[]).push(e));
@@ -205,7 +209,7 @@ function open(id){const t=TH[id];if(!t)return;const E=DATA.events.filter(e=>e.th
  <dl class="kv"><dt>Subject</dt><dd>${esc(t.subject)}</dd><dt>Stage</dt><dd>${esc(t.stage_text)}</dd><dt>Clock from</dt><dd>${fmt(t.start)}</dd>
  ${g.last_sent?`<dt>Last sent</dt><dd>${fmt(g.last_sent)}</dd>`:''}${g.last_reply?`<dt>Last reply</dt><dd>${fmt(g.last_reply)}</dd>`:''}
  <dt>Escalation</dt><dd>${esc(t.route)}${t.policy_url?` · <a href="${esc(t.policy_url)}" rel="noopener">their policy</a>`:''}</dd>
- <dt>Dates</dt><dd>${t.date_check==='gmail'?'Checked against the mailbox':'From the case ledger'}</dd>${t.hold?`<dt>Hold</dt><dd>Nothing sent before ${fmt(t.hold)}</dd>`:''}${t.note?`<dt>Note</dt><dd>${esc(t.note)}</dd>`:''}</dl>
+ <dt>Clock date</dt><dd>${t.date_check==='gmail'?'Seen in the mailbox':'From the case ledger'}</dd>${t.hold?`<dt>Hold</dt><dd>Nothing sent before ${fmt(t.hold)}</dd>`:''}${t.note?`<dt>Note</dt><dd>${esc(t.note)}</dd>`:''}</dl>
  <ul class="chain">${E.map(e=>`<li class="${e.date<TODAY?'past':''}"><span class="dt">${short(e.date)}</span><i class="dot ${e.who}" style="margin-top:5px"></i><div>${esc(e.label)}<small>${WHO[e.who]}${e.rule_cite?' · '+(e.rule_url?`<a href="${esc(e.rule_url)}" rel="noopener">${esc(e.rule_cite)}</a>`:esc(e.rule_cite)):''}</small></div></li>`).join('')}</ul>`;
  $('#sbg').classList.add('open');$('#sx').focus();history.replaceState(null,'','#t-'+id)}
 function close(){$('#sbg').classList.remove('open');history.replaceState(null,'',location.pathname+location.search)}

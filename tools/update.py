@@ -133,7 +133,7 @@ def regulator_chain(t, E, outcome, ico_rule='ico_foi'):
     file_on = schedule_him(add_wd(outcome, 5), t)
     hard = outcome + dt.timedelta(weeks=6)
     if file_on > hard: file_on = schedule_him(hard, t)
-    ev(E, t, file_on, 'him', 'File ICO complaint', ico_rule)
+    ev(E, t, file_on, 'him', 'File ICO complaint' if file_on <= hard else 'File ICO complaint (past the usual 6 weeks: give the reason for the delay)', ico_rule)
     ev(E, t, hard, 'hard', 'Last safe day for the ICO complaint', ico_rule)
     dec = add_months(file_on, 6)
     ev(E, t, dec, 'them', 'ICO decision notice (worst case: 6 months)', 'ico_backlog')
@@ -213,6 +213,11 @@ def forecast(t):
         ev(E, t, dec, 'them', 'ICR decision (worst case: 6 months, not upheld)', 'icr')
         ev(E, t, schedule_him(add_wd(dec, 5), t), 'him', 'Ask the MP to refer to the PHSO', 'phso')
         ev(E, t, add_months(dec, 12), 'hard', 'PHSO referral: 12-month limit', 'phso')
+    # catch-up can stack several of our steps on one day: keep only the most advanced one (the last in chain order)
+    seen = {}
+    for i, e in enumerate(E):
+        if e['who'] == 'him': seen[e['date']] = i
+    E = [e for i, e in enumerate(E) if e['who'] != 'him' or seen[e['date']] == i]
     E.sort(key=lambda e: (e['date'], {'them': 0, 'hard': 1, 'him': 2}[e['who']]))
     return E
 
@@ -224,6 +229,7 @@ def build():
     seed = json.load(open(os.path.join(W, 'seed.json')))
     gv = json.load(open(os.path.join(W, 'gmail-verify.json'))) if os.path.exists(os.path.join(W, 'gmail-verify.json')) else {}
     queue = load_queue()
+    scp = os.path.join(W, 'gmail-startcheck.json'); sck = json.load(open(scp)) if os.path.exists(scp) else {}
     rules = {r['k']: dict(r, regime=k) for k, v in POLICY['regimes'].items() for r in v['rules']}
     threads = []; events = []
     # level the catch-up: actions already past their date are spread at most PER_DAY threads per working day, earliest hard deadline first
@@ -243,11 +249,14 @@ def build():
         g = gv.get(t['id']) or {}
         msgs = g.get('msgs') or []
         dom = t.get('dom') or ''
-        theirs = [m for m in msgs if not m['mine'] and (not dom or dom.split('.')[0] in (m.get('from_domain') or ''))]
-        mine = [m for m in msgs if m['mine']]
+        toks = [x.lower() for x in re.findall(r'"([^"]+)"', t.get('q') or '')]
+        subj_ok = lambda m: not toks or any(x in (m.get('subject') or '').lower() for x in toks)
+        theirs = [m for m in msgs if not m['mine'] and (not dom or dom.split('.')[0] in (m.get('from_domain') or '')) and subj_ok(m)]
+        mine = [m for m in msgs if m['mine'] and subj_ok(m)]
         qids = re.findall(r'\b[QN]-[A-Z0-9-]+\b', t.get('src', ''))
         qs = [queue[q] for q in qids if q in queue]
-        verified = bool(g.get('ok')) and bool(msgs)
+        near = lambda m: abs((D(m['date']) - D(t['start'])).days) <= 3
+        verified = any(near(m) for m in theirs + mine) or bool((sck.get(t['id']) or {}).get('found'))  # the clock-start date itself is seen in the mailbox
         sent_seen = max((m['date'] for m in mine), default=None)
         rec_seen = max((m['date'] for m in theirs), default=None)
         E = FC[t['id']]
@@ -257,9 +266,8 @@ def build():
         pol = INST.get(t['id'].split('-')[0], ('', 'ICO'))
         th = {k: t.get(k) for k in ('id', 'inst', 'type', 'ref', 'subject', 'stage', 'regime', 'start', 'due_body', 'hold', 'note')}
         th.update({'stage_text': stage_txt, 'policy_url': pol[0], 'route': pol[1],
-                   'gmail': {'checked': g.get('checked_at'), 'found': len(msgs), 'last_sent': sent_seen, 'last_reply': rec_seen,
-                             'last_reply_subject': next((m['subject'] for m in sorted(theirs, key=lambda m: m['at'], reverse=True)), None)},
-                   'date_check': 'gmail' if verified else ('record' if t.get('src') else 'none'),
+                   'gmail': {'checked': g.get('checked_at'), 'found': len(msgs), 'last_sent': sent_seen, 'last_reply': rec_seen},
+                   'date_check': 'gmail' if verified else 'record',
                    'queue': [{'id': q['id'], 'status': q.get('status'), 'deadline': q.get('deadline')} for q in qs]})
         # reply seen after the clock started: shown, forecast unchanged (worst case treats it as a non-answer)
         if rec_seen and rec_seen > t['start']: th['reply_after_start'] = rec_seen
@@ -272,6 +280,11 @@ def build():
     for e in events: e['rule_cite'] = rules.get(e['rule'], {}).get('cite', ''); e['rule_url'] = rules.get(e['rule'], {}).get('url', '')
     events.sort(key=lambda e: (e['date'], e['thread']))
     meta = {'generated': dt.datetime.now(ZoneInfo('Europe/London')).isoformat(timespec='minutes'), 'today': TODAY.isoformat(), 'threads': len(threads), 'events': len(events), 'scenario': 'Worst-case schedule'}
+    # queue items with a deadline that no seed row names: PROPOSED new rows (kept off the public site)
+    named = set(q for t in seed for q in re.findall(r'\b[QN]-[A-Z0-9-]+\b', t.get('src', '')))
+    prop = [{'id': q['id'], 'party': q.get('party'), 'deadline': q.get('deadline'), 'status': q.get('status')} for q in queue.values()
+            if q.get('deadline') not in (None, 'none') and q['id'] not in named and q.get('status') not in ('done', 'answered', 'info')]
+    json.dump(prop, open(os.path.join(W, 'proposed.json'), 'w'), indent=1, ensure_ascii=False)
     os.makedirs(DATA, exist_ok=True)
     json.dump({'meta': meta, 'threads': threads}, open(os.path.join(DATA, 'threads.json'), 'w'), ensure_ascii=False, indent=1)
     json.dump(POLICY, open(os.path.join(DATA, 'policy.json'), 'w'), ensure_ascii=False, indent=1)
@@ -288,6 +301,7 @@ def write_ics(threads, events):
     tag = {'them': 'Due from them', 'him': 'Our action', 'hard': 'HARD DEADLINE'}
     for i, e in enumerate(events):
         t = tm[e['thread']]; d = D(e['date'])
+        if d < TODAY - dt.timedelta(days=14): continue  # the feed carries the last two weeks and everything ahead
         uid = re.sub(r'[^a-z0-9]+', '-', (e['thread'] + '-' + e['label']).lower())[:90] + '@emails.bucklerfamily.estate'
         out += ['BEGIN:VEVENT', 'UID:' + uid, 'DTSTAMP:' + now, 'DTSTART;VALUE=DATE:' + d.strftime('%Y%m%d'), 'DTEND;VALUE=DATE:' + (d + dt.timedelta(days=1)).strftime('%Y%m%d'),
                 'SUMMARY:' + ics_esc(f"{tag[e['who']]}: {t['inst']} {t['ref']} — {e['label']}"),
@@ -328,6 +342,10 @@ def main():
     if a.gmail:
         if not a.taskdir: sys.exit('--gmail needs --taskdir (request files live in the current task dir)')
         subprocess.run(['timeout', '-k', '5', '2400', sys.executable, os.path.join(W, 'gmail_verify.py'), '--taskdir', a.taskdir])
+        seed = json.load(open(os.path.join(W, 'seed.json')))
+        sck = json.load(open(os.path.join(W, 'gmail-startcheck.json'))) if os.path.exists(os.path.join(W, 'gmail-startcheck.json')) else {}
+        todo = [t['id'] for t in seed if not (sck.get(t['id']) or {}).get('found')]
+        if todo: subprocess.run(['timeout', '-k', '5', '900', sys.executable, os.path.join(W, 'start_check.py'), a.taskdir, ','.join(todo)])
     m = build(); print(json.dumps(m))
     if a.publish:
         env = dict(os.environ); 

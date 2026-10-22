@@ -12,7 +12,7 @@ def ws(req, rq, tries=6):
         d = 4.0 - (time.time() - _last[0])
         if d > 0: time.sleep(d)
         req = dict(req); req.setdefault('query', {}); req['query'] = dict(req['query'], _ts='%s-%d' % (time.time(), a))
-        p = os.path.join(rq, 'emails-site-gmail-req.json'); open(p, 'w').write(json.dumps(req))
+        p = os.path.join(rq, 'emails-site-gmail-req-%d.json' % os.getpid()); open(p, 'w').write(json.dumps(req))
         r = subprocess.run(['timeout', '-k', '5', '100', '/usr/bin/node', '/home/user/tab/workspace-cli.mjs', 'workspace.request', p], capture_output=True, text=True)
         _last[0] = time.time()
         try: o = json.loads(r.stdout); res = o.get('result', o)

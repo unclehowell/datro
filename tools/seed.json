@@ -113,7 +113,7 @@
   "route": "ico",
   "q": "\"00211463\"",
   "dom": "valeofglamorgan.gov.uk",
-  "src": "roadmap lane; queue N-VALE-00211463 (due 19 Oct, missed)"
+  "src": "roadmap lane; queue N-VALE-00211463 (due 19 Oct, missed); queue Q-VALE-00211463-IR (review draft of 21 Oct not sent per Gmail)"
  },
  {
   "id": "vale-00211484",
@@ -167,12 +167,12 @@
   "subject": "Internal review outstanding",
   "stage": "awaiting_review",
   "regime": "foi",
-  "start": "2026-08-26",
+  "start": "2026-07-07",
   "due_body": "2026-10-30",
   "route": "ico",
   "q": "\"00210772\"",
   "dom": "valeofglamorgan.gov.uk",
-  "src": "queue Q-VALE-00210772 (council gave 30 Oct on 18 Oct)"
+  "src": "Gmail: formal chase of 6 Oct names \"Internal Review requested 7 July 2026\"; council reply of 5 Aug; queue Q-VALE-00210772 (council gave 30 Oct on 18 Oct)"
  },
  {
   "id": "tfw",
@@ -259,7 +259,7 @@
   "route": "ico",
   "q": "\"26-0009\"",
   "dom": "gov.wales",
-  "src": "memory (WG gave 6 Nov); deadlines.csv (9 Nov from Mon 12 Oct)"
+  "src": "memory (WG gave 6 Nov); deadlines.csv (9 Nov from Mon 12 Oct); queue Q-CADW-26-0009; Gmail: WG letter of 15 Oct (received 10 Oct)"
  },
  {
   "id": "cadw-27589",
@@ -297,12 +297,13 @@
   "subject": "1988 dispossession of Great House Farm",
   "stage": "awaiting_reply",
   "regime": "foi",
-  "start": "2026-10-09",
+  "start": "2026-10-12",
   "due_body": "2026-11-09",
   "route": "ico",
   "q": "\"FOI2026/23272\"",
   "dom": "mod.gov.uk",
-  "src": "queue Q-MOD-23272 (MoD target 9 Nov)"
+  "src": "Gmail: MoD log of 15 Oct, target date 9 Nov (clock counted back from it); queue Q-MOD-23272",
+  "note": "Clock counted back from the MoD target date of 9 Nov."
  },
  {
   "id": "mod-09190",
@@ -322,15 +323,16 @@
   "id": "dwr",
   "inst": "Dŵr Cymru Welsh Water",
   "type": "EIR",
-  "ref": "EIR (farm water records)",
-  "subject": "Farm water records; reply of 10 Sep",
-  "stage": "answered",
+  "ref": "EIR/3106/2026",
+  "subject": "Farm water records",
+  "stage": "awaiting_reply",
   "regime": "eir",
-  "start": "2026-09-10",
+  "start": "2026-10-14",
   "route": "ico",
-  "q": "(dwrcymru OR \"Welsh Water\") Great House Farm",
+  "q": "(\"EIR/3106/2026\" OR from:dwrcymru.com)",
   "dom": "dwrcymru.com",
-  "src": "roadmap lane dwr-cymru-welsh-water (request 7 Jun, reply 10 Sep)"
+  "src": "Gmail: Dŵr Cymru acknowledgement EIR/3106/2026 of 14 Oct; earlier replies 10, 17 and 29 Sep (roadmap lane dwr-cymru-welsh-water)",
+  "note": "Clock counted from their acknowledgement of 14 Oct; the request may have reached them earlier."
  },
  {
   "id": "bp-archive",
@@ -468,12 +470,12 @@
   "subject": "Review outcome was due 21 Oct",
   "stage": "awaiting_review",
   "regime": "foi",
-  "start": "2026-09-23",
+  "start": "2026-09-25",
   "due_body": "2026-10-21",
   "route": "ico",
   "q": "\"CAS-356384\"",
   "dom": "nationalarchives.gov.uk",
-  "src": "queue Q-TNA-CAS356384"
+  "src": "Gmail: TNA acknowledgement of 28 Sep (review requested 25 Sep, of CAS-347296); queue Q-TNA-CAS356384 (outcome due 21 Oct)"
  },
  {
   "id": "tna-wdtk",
@@ -645,7 +647,7 @@
   "route": "ico",
   "q": "\"23886\"",
   "dom": "defra.gov.uk",
-  "src": "queue N-DEFRA-23886"
+  "src": "queue N-DEFRA-23886; queue Q-DEFRA-EIR (same request of 20 Oct)"
  },
  {
   "id": "nlw",
@@ -689,5 +691,20 @@
   "q": "\"RC26-0375\"",
   "dom": "rcahmw.gov.uk",
   "src": "queue Q-RCAHMW-0375"
+ },
+ {
+  "id": "ico-546505",
+  "inst": "Information Commissioner’s Office",
+  "type": "Complaint",
+  "ref": "IC-546505-W6P0",
+  "subject": "ICO case of 10 Aug: reply of 21 Oct asks for routes and a date",
+  "stage": "awaiting_reply",
+  "regime": "none",
+  "start": "2026-10-21",
+  "due_body": "2026-11-18",
+  "route": "phso",
+  "q": "\"IC-546505\"",
+  "dom": "ico.org.uk",
+  "src": "Gmail: ICO letter 10 Aug, reply sent 21 Oct (reply-sprint log; date asked 18 Nov)"
  }
 ]
