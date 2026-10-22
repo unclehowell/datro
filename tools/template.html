@@ -153,6 +153,7 @@ section[data-verbatim] blockquote{margin:6px 0;padding:0 0 0 8px;border-left:2px
 @media(min-width:720px){.big{font-size:46px}.board{padding:14px 16px;min-height:200px}.board h2{font-size:26px}h1{font-size:34px}.modal{align-items:center}.sheet{border-radius:16px}}
 @media(max-width:360px){.big{font-size:26px}.line{font-size:14px}}
 @media (prefers-reduced-motion: reduce){.chip{display:none}}
+.scard.old{opacity:.72;border-style:dashed}.scard.old h3{color:var(--muted)}
 </style>
 </head>
 <body>
@@ -171,12 +172,12 @@ section[data-verbatim] blockquote{margin:6px 0;padding:0 0 0 8px;border-left:2px
  <p class="alt">Two measures, never added together: the family elects the higher one against each party. Tap a tooth for its working.</p>
 </section>
 
-<h2 class="sec">Two scenarios</h2>
+<h2 class="sec">The working figure</h2>
 <div class="scen">
- <div class="scard"><h3>Analyst build-up</h3><div class="v" id="sA">£0</div><div class="r" id="sAr"></div><ul id="sAl"></ul></div>
- <div class="scard"><h3>Brief v3 mid-case</h3><div class="v" id="sB">£0</div><div class="r" id="sBr"></div><ul id="sBl"></ul></div>
+ <div class="scard"><h3>Analyst build-up · the working figure</h3><div class="v" id="sA">£0</div><div class="r" id="sAr"></div><ul id="sAl"></ul></div>
+ <div class="scard old"><h3>Brief v3 (Feb 2026, superseded)</h3><div class="v" id="sB">£0</div><div class="r" id="sBr"></div><ul id="sBl"></ul></div>
 </div>
-<details class="recon" open><summary>Why the two differ</summary><div id="recon"></div><table class="gap" id="gap"></table></details>
+<details class="recon"><summary>Why the superseded brief was higher</summary><div id="recon"></div><table class="gap" id="gap"></table></details>
 
 <h2 class="sec">The negotiation schedule</h2>
 <p class="sum">Who to claim from, for what, how much, and on what basis. Each party’s rows add to its compensation share; its gain sits beside it, and the higher of the two is the opening figure.</p>
@@ -281,11 +282,12 @@ function ticketsList(){const box=$('#tlist');const list=T.tickets.filter(x=>!x.o
 function openTicket(t){const bd=bandOf(t.band);const m=(t.multipliers||[]).map(x=>`×${x.x} ${x.why}`).join('<br>')||'none';
  $('#sheet').innerHTML=`<button class="x" aria-label="Close">×</button><div style="font-size:14px;color:#6b6585">${emo[t.desk]||'🎟'} ${t.desk_name} · ${t.id}</div><h3>${t.issued_to}</h3>
  <p>${t.what}</p><p style="color:#3a3450">${t.detail||''}</p>
- ${t.fine?`<div class="kv"><b>Fine / fee:</b> ${t.fine}</div>`:''}${t.calibration?`<div class="kv"><b>Calibration:</b> ${t.calibration}</div>`:''}
+ ${t.fine?`<div class="kv"><b>Fine / fee:</b> ${t.fine}</div>`:''}${t.causation?`<div class="kv"><b>Causation:</b> ${t.causation}</div>`:''}${t.tooth&&D.losses.find(x=>x.id===t.tooth)?(()=>{const l=D.losses.find(x=>x.id===t.tooth);return `<div class="kv"><b>Comb tooth:</b> <a href="#" class="tooth-link" data-tooth="${l.id}">${l.label}</a> · ${gm(l.v.mid)} mid (${rng(l.v)})</div>`})():''}${t.calibration?`<div class="kv"><b>Calibration:</b> ${t.calibration}</div>`:''}
  <div class="kv"><b>Date:</b> ${t.date_label}</div><div class="kv"><b>Band:</b> <span style="background:${bd.colour};padding:0 6px;border-radius:4px">${bd.name}</span> (${fmt(bd.lo)}–${fmt(bd.hi)})</div>
  <div class="kv"><b>Base score:</b> ${fmt(t.base)} · <b>Multipliers:</b> ${m}</div><div class="kv"><b>Points:</b> <span style="font:700 20px 'Cabin Sketch'">${t.cancelled?'0 (cancelled)':fmt(t.points)}</span></div>
  ${t.reversible?`<div class="kv"><b>If the case reopens:</b> quashed and re-issued to ${t.reissue_to}</div>`:''}
- <div class="kv" style="margin-top:8px"><b>Source:</b><br>${srcLinks(t.sources)}</div>`;openModal()}
+ <div class="kv" style="margin-top:8px"><b>Source:</b><br>${srcLinks(t.sources)}</div>`;openModal();
+ $('#sheet').querySelectorAll('.tooth-link').forEach(a=>a.onclick=ev=>{ev.preventDefault();closeModal();setTimeout(()=>openTooth(a.dataset.tooth),60)})}
 function statusOf(e){if(e.status==='contingent'&&e.reopen_postings.length)return reopen?['shifted','Shifted']:['contingent','Contingent: shifts if the case reopens'];return['borne','Borne by family']}
 const GROUPS={heads:'The ten loss heads (analyst mid)',nil:'Orders against the family: no £ on the record yet'};
 function ledger(){const box=$('#llist');let lastG='';box.innerHTML=L.entries.map(e=>{const s=statusOf(e),moved=reopen&&e.reopen_postings.length;const gh=e.group&&e.group!==lastG?`<h3 class="lg">${GROUPS[e.group]||''}</h3>`:'';lastG=e.group;const inn=e.low!=null?`<div class="inn">Low ${gbp(e.low)} · high ${gbp(e.high)}${e.causation?' · causation '+e.causation:''}</div>`:'';return `${gh}<div class="le" data-id="${e.id}"><div class="h"><span>${e.head}</span><span class="amt">${e.nil?'£ —':gbp(e.amount)}</span></div>
@@ -372,7 +374,7 @@ function scenarios(){$('#sA').textContent=gm(D.totals.losses.mid);$('#sAr').text
  $('#sB').textContent=gm(D.brief.range.mid);$('#sBr').textContent='range '+gm(D.brief.range.lo)+' – '+gm(D.brief.range.hi);
  $('#sBl').innerHTML=D.brief.heads.map(b=>`<li><span>${b.head}</span><span>${gm(b.amount)}</span></li>`).join('');
  $('#recon').innerHTML=D.reconciliation.map(p=>`<p>${p}</p>`).join('');
- $('#gap').innerHTML='<tr><th>Brief v3 head and its basis</th><th class="n">Brief</th><th class="n">Analyst</th></tr>'+D.brief.heads.map(b=>`<tr><td><b>${b.head}</b><br><span style="color:var(--muted)">${b.basis}</span><br>${b.gap_note}</td><td class="n">${gm(b.amount)}</td><td class="n">${gm(b.analyst_mid)}</td></tr>`).join('')}
+ $('#gap').innerHTML='<tr><th>Brief v3 (superseded) head and its basis</th><th class="n">Old brief</th><th class="n">Analyst</th></tr>'+D.brief.heads.map(b=>`<tr><td><b>${b.head}</b><br><span style="color:var(--muted)">${b.basis}</span><br>${b.gap_note}</td><td class="n">${gm(b.amount)}</td><td class="n">${gm(b.analyst_mid)}</td></tr>`).join('')}
 function ptab(){let h='<thead><tr><th>Claim against</th><th>For what</th><th class="n">Low / mid / high</th><th>Legal basis</th><th>Evidence</th></tr></thead><tbody>';
  PK.forEach(k=>{const p=D.parties[k],rs=D.rows.filter(r=>r.party===k);if(!rs.length&&!p.disgorgement)return;const c=p.compensation,dg=p.disgorgement;const open=Math.max(c.mid,dg?dg.mid:0);
   h+=`<tr class="party"><td colspan="5"><span class="sw3" style="background:${p.colour}"></span><b>${p.name}</b> · compensation ${gm(c.mid)} (${rng(c)})${dg?` · gain ${gm(dg.mid)}`:''}<span class="elect">Opening figure: ${gm(open)} (${dg&&dg.mid>c.mid?'the gain':'the compensation share'}). ${p.route}</span></td></tr>`;

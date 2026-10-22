@@ -124,6 +124,13 @@ R = [
        what='Smashed the gate lock and broke the doors with poleaxes; an axe came through a door with children behind it.',
        detail='Five bailiffs and about 15 police; a four-hour stand-off before the bailiffs backed off. The children were aged two, three and four.',
        base=20000, mult=['child'], sources=[src('Press: \u201cChainsaw farmer vows to fight on\u201d (N07, c. 30 Apr 1988)', WIKI + '/evidence-library/ghf-e090-n07-chainsaw-farmer-vows-to-fight-on/')]),
+  dict(id='R-30', date='1955-07-04', date_label='1953 \u2013 4 Jul 1955', desk='harm', issued_to='Western Ground Rents Ltd (1953\u201355 eviction proceedings)',
+       what='Mary lost a leg during the first eviction dispute, between the 1953 notice and the July 1955 enforcement.',
+       detail='The 1987 Court of Appeal judgment records that when the 1955 possession order was enforced on 4 July 1955, Mary had recently come out of hospital after having a leg amputated and was objecting very strongly to leaving the farmhouse, with a fear she might attempt suicide. So the amputation was done before the enforcement, in the months of the dispute that began with the 1953 notice. The family\u2019s account links it to the stress of those proceedings.',
+       causation='to be proven by medical records and expert evidence.',
+       tooth='L-AMP',
+       base=200000, sources=[src('EV-0080 \u2014 BP Properties Ltd v Buckler [1987] EWCA Civ 2', WIKI + '/evidence/ev-0080-bp-properties-v-buckler-judgment/'),
+                              src('Reparations Schedule & Proposed Apportionment (page 5475)', WIKI + '/project-management/damages/reparations-schedule/')]),
   dict(date='1988-11-30', date_label='30 Nov 1988', desk='harm', issued_to='BP\u2019s bailiffs (Nov 1988)',
        what='Forced entry at Great House Farm; the householder was injured and taken to Llandough Hospital.',
        detail='\u201cAngry scenes as farmer evicted\u201d (South Wales Echo front page). The bailiffs had already taken half the roof off one of the outbuildings.',
@@ -247,7 +254,7 @@ def build():
     tickets = []
     def mk(t, team, idx=None):
         t = dict(t); t['team'] = team
-        if idx is not None: t['id'] = 'R-%02d' % idx
+        if idx is not None and 'id' not in t: t['id'] = 'R-%02d' % idx   # a fixed id keeps the numbers already given out
         t['points'] = 0 if t.get('cancelled') else score(t)
         t['band'] = DESK_BAND[t['desk']]
         t['desk_name'] = DESKS[t['desk']]
@@ -258,7 +265,8 @@ def build():
     anchor = mk(ANCHOR, 'williams'); anchor['original'] = True
     tickets.append(anchor); tickets.append(mk(CANCELLED, 'williams'))
     for o in ORDERS: tickets.append(mk(o, 'williams'))
-    for i, r in enumerate(sorted(R, key=lambda x: x['date']), 1): tickets.append(mk(r, 'regime', i))
+    for i, r in enumerate(sorted([r for r in R if 'id' not in r], key=lambda x: x['date']), 1): tickets.append(mk(r, 'regime', i))
+    for r in [r for r in R if 'id' in r]: tickets.append(mk(r, 'regime'))
     # ledger postings
     entries = []
     for c in COSTS:

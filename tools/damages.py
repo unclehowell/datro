@@ -32,7 +32,7 @@ S = dict(
   ramzan=src('Ramzan v Brookwide Ltd [2011] EWCA Civ 985 (exemplary £60,000)', 'https://www.bailii.org/ew/cases/EWCA/Civ/2011/985.html'),
   thompson=src('Thompson v Commissioner of Police [1998] QB 498 (aggravated and exemplary bands)', 'https://www.bailii.org/ew/cases/EWCA/Civ/1997/3083.html'),
   counting=src('The Counting House — public accounts', 'https://accounts.bucklerfamily.estate/'),
-  brief=src('Ty Mawr Restitutionary Brief v3 (12 Feb 2026), IV.A'),
+  brief=src('Ty Mawr Restitutionary Brief v3 (Feb 2026, superseded), IV.A'),
   takhar=src('Takhar v Gracefield Developments Ltd [2019] UKSC 13', 'https://www.bailii.org/uk/cases/UKSC/2019/13.html'),
 )
 
@@ -248,7 +248,7 @@ BRIEF_HEADS = [
 ]
 
 RECON = [
-  'The two scenarios measure different things. The analyst build-up prices only what the record holds today, by the methods a court uses; Brief v3 prices the family\u2019s full case at development and restitution values. The gap between them is the evidence still to find.',
+  'The analyst build-up is the working figure. Brief v3 (Feb 2026, superseded) was an earlier, outdated pricing and is kept only so the difference can be traced. The analyst build-up prices only what the record holds today, by the methods a court uses; the superseded brief priced the family\u2019s full case at development and restitution values. The gap between them is the evidence still to find.',
   'Land: the brief takes 70 acres at £750k an acre (£52.5m). The record so far holds about 10 acres (Parcel A); Parcel B and the woodland are still to be valued, and the developed-land share today comes to about £276k an acre. Every acre added to the record moves this head toward the brief.',
   'Disgorgement: the brief adds £115m of disgorgement on top of the losses. Disgorgement and compensation are alternatives: the family elects one measure against each party. The gains comb ({g_mid}) is the account-of-profits measure on the profits the record shows: BP\u2019s land value, the developer\u2019s margin, ground-rent and fee income.',
   'Heritage, archaeology, trauma, deaths and exemplary damages carry £28m in the brief and {soft_mid} here. Courts price these heads with the Judicial College brackets, the Fatal Accidents Act and reported awards; the brief\u2019s figures rest on restitution of cultural value and on 25 descendants, which those methods do not reach today.',

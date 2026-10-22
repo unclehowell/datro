@@ -1,6 +1,6 @@
 {
  "schema": "oldbill-tickets/1",
- "generated": "2026-10-22 00:35 UTC",
+ "generated": "2026-10-22 03:17 UTC",
  "rubric": {
   "bands": [
    {
@@ -1018,6 +1018,35 @@
    "multipliers": [],
    "reversible": false,
    "gbp": null
+  },
+  {
+   "id": "R-30",
+   "date": "1955-07-04",
+   "date_label": "1953 – 4 Jul 1955",
+   "desk": "harm",
+   "issued_to": "Western Ground Rents Ltd (1953–55 eviction proceedings)",
+   "what": "Mary lost a leg during the first eviction dispute, between the 1953 notice and the July 1955 enforcement.",
+   "detail": "The 1987 Court of Appeal judgment records that when the 1955 possession order was enforced on 4 July 1955, Mary had recently come out of hospital after having a leg amputated and was objecting very strongly to leaving the farmhouse, with a fear she might attempt suicide. So the amputation was done before the enforcement, in the months of the dispute that began with the 1953 notice. The family’s account links it to the stress of those proceedings.",
+   "causation": "to be proven by medical records and expert evidence.",
+   "tooth": "L-AMP",
+   "base": 200000,
+   "sources": [
+    {
+     "title": "EV-0080 — BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0080-bp-properties-v-buckler-judgment/"
+    },
+    {
+     "title": "Reparations Schedule & Proposed Apportionment (page 5475)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/reparations-schedule/"
+    }
+   ],
+   "team": "regime",
+   "points": 200000,
+   "band": "harm",
+   "desk_name": "Harm Desk",
+   "multipliers": [],
+   "reversible": false,
+   "gbp": null
   }
  ],
  "summary": {
@@ -1028,8 +1057,8 @@
     "gbp": 4538472.0
    },
    "regime": {
-    "points": 2389670,
-    "tickets": 29,
+    "points": 2589670,
+    "tickets": 30,
     "gbp": 0.0
    }
   },
@@ -1040,8 +1069,8 @@
     "gbp": 0.0
    },
    "regime": {
-    "points": 2939670,
-    "tickets": 35,
+    "points": 3139670,
+    "tickets": 36,
     "gbp": 4538472.0
    }
   },
@@ -1056,8 +1085,8 @@
    ]
   },
   "counts": {
-   "tickets": 37,
-   "regime_tickets": 29,
+   "tickets": 38,
+   "regime_tickets": 30,
    "williams_tickets": 8,
    "ledger_entries": 14
   }
