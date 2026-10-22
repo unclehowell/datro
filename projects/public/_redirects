@@ -1,4 +1,18 @@
 # PRINCE2 7 rebuild, 21 Oct 2026: superseded pages redirect to the product that now holds their content
+# Canonical programme map (22 Oct 2026): P1 museum, P2 recovery, P3 AR tour, P4 conditional legal gate.
+/programme/ / 301
+/programme / 301
+/workstreams/evidence-recovery /workstreams/evidence-recovery/ 301
+/p1-evidence-archive-pid/ /workstreams/evidence-recovery/ 301
+/p1-evidence-archive-pid /workstreams/evidence-recovery/ 301
+/p4-t-mawr-replica-museum-pid/ /p1-argentina-museum/ 301
+/p4-t-mawr-replica-museum-pid /p1-argentina-museum/ 301
+/p2-title-justice-accountability-pid/ /p4-case-reopening-gate/ 301
+/p2-title-justice-accountability-pid /p4-case-reopening-gate/ 301
+/p3-artefacts-pid/ /p1-argentina-museum/ 301
+/p3-artefacts-pid /p1-argentina-museum/ 301
+/justice/ /p4-case-reopening-gate/ 301
+/justice /p4-case-reopening-gate/ 301
 /mandate/ /brief/#references 301
 /mandate /brief/#references 301
 /pid/ / 301
@@ -9,10 +23,6 @@
 /project-management /products/ 301
 /overview/ / 301
 /overview / 301
-/workstreams/evidence-recovery/ / 301
-/workstreams/evidence-recovery / 301
-/programme/ /cedwyn-estate/ 301
-/programme /cedwyn-estate/ 301
 /programme/daily-log/ /daily-log/ 301
 /programme/daily-log /daily-log/ 301
 /programme/issue-register/ /issue-register/ 301
@@ -69,14 +79,10 @@
 /delivery-breakdown /work-packages/ 301
 /plan-908/ /plan/ 301
 /plan-908 /plan/ 301
-/justice/ /p2-title-justice-accountability-pid/ 301
-/justice /p2-title-justice-accountability-pid/ 301
 /litigation-activation-human-action-pre-action-plan-8-october-2026/ /stage-plan-s0-s1/ 301
 /litigation-activation-human-action-pre-action-plan-8-october-2026 /stage-plan-s0-s1/ 301
 /stage-plan-litigation-activation-sprint-8-october-14-november-2026/ /stage-plan-s0-s1/ 301
 /stage-plan-litigation-activation-sprint-8-october-14-november-2026 /stage-plan-s0-s1/ 301
-/p1-evidence-archive-pid/ / 301
-/p1-evidence-archive-pid / 301
 /estate/roles/ /estate/pid/#role-descriptions 301
 /estate/roles /estate/pid/#role-descriptions 301
 /estate/communication-plan/ /estate/pid/#communication-management-approach 301

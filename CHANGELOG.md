@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-22 — Programme restructure: three active projects
+
+- Replaced the Parcel A-only root dashboard with programme-level PID/status for P1 museum, P2 Wales recovery and P3 AR heritage tour.
+- Added master mandate, plan and highlight report, individual active-project plans/reports, P4 conditional activation gate and machine-readable baseline.
+- Labelled task-baseline progress separately from end-to-end museum/AR delivery; retained P2's provisional ledger caveat and avoided an ungrounded programme-wide percentage.
+- Re-routed historical PID paths to current canonical projects; archived the former root dashboard as a dated snapshot.
+- Preserved the prior detailed evidence-recovery tracker and archived PID pack.
+
+
 ## [cnei-v0.0.0.48] - 2026-06-04
 
 ### Fixed

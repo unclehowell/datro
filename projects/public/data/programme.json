@@ -1,0 +1,625 @@
+{
+  "programme_id": "GHF-PGM-01",
+  "programme_title": "Great House Farm / Tŷ Mawr Heritage Programme",
+  "last_updated": "2026-10-22",
+  "version": "0.1-working",
+  "approval_state": "Working baseline; Executive acceptance not recorded",
+  "approach": "Tailored PRINCE2 7 at project level. Master programme layer coordinates projects; it is not a replacement for project-specific control.",
+  "hierarchy": [
+    "milestone",
+    "work_package",
+    "task"
+  ],
+  "rules": {
+    "task_completion": "Completed tasks divided by tasks in that baseline; in-progress, blocked and not-started tasks are not complete.",
+    "cross_project_percentage": "Do not publish a programme-wide percentage until the scopes, denominators and weighting are agreed.",
+    "status": "A planning task percentage is not a percentage of a physical build or final digital deliverable unless the task baseline covers that deliverable.",
+    "external_authority": "Plan publication is not spend, land, construction, disclosure or legal-filing authority; explicit approval is required."
+  },
+  "projects": [
+    {
+      "id": "P1",
+      "title": "Tŷ Mawr Replica Museum in Argentina",
+      "state": "active_predevelopment",
+      "rag": "AMBER",
+      "starter_tasks": {
+        "done": 2,
+        "total": 12,
+        "pct": 17,
+        "in_progress": 1,
+        "not_started": 9,
+        "blocked": 0
+      },
+      "end_to_end_museum_delivery": {
+        "pct": 0,
+        "note": "No site selected/acquired/approved; no construction or opening."
+      },
+      "baseline_status": "Provisional 12-task start-up list; Executive acceptance pending.",
+      "milestones": [
+        {
+          "id": "P1-M1",
+          "title": "Research baseline and scope",
+          "work_packages": [
+            "WP-P1-01"
+          ]
+        },
+        {
+          "id": "P1-M2",
+          "title": "Interpretation and reconstruction products",
+          "work_packages": [
+            "WP-P1-02"
+          ]
+        },
+        {
+          "id": "P1-M3",
+          "title": "Argentina feasibility",
+          "work_packages": [
+            "WP-P1-03"
+          ]
+        },
+        {
+          "id": "P1-M4",
+          "title": "Business case and authorisation",
+          "work_packages": [
+            "WP-P1-04"
+          ]
+        }
+      ],
+      "work_packages": [
+        {
+          "id": "WP-P1-01",
+          "milestone": "P1-M1",
+          "title": "Source and visitor brief",
+          "tasks": [
+            "P1-T01",
+            "P1-T02",
+            "P1-T03"
+          ],
+          "acceptance": "Visitor proposition, source catalogue and confidence method recorded."
+        },
+        {
+          "id": "WP-P1-02",
+          "milestone": "P1-M2",
+          "title": "Building, landscape and objects",
+          "tasks": [
+            "P1-T04",
+            "P1-T05",
+            "P1-T06"
+          ],
+          "acceptance": "Source-linked room/landscape schedule and reconstruction specification."
+        },
+        {
+          "id": "WP-P1-03",
+          "milestone": "P1-M3",
+          "title": "Site, permissions and operations",
+          "tasks": [
+            "P1-T07",
+            "P1-T08",
+            "P1-T09"
+          ],
+          "acceptance": "Documented site options, access/permissions and operating assumptions."
+        },
+        {
+          "id": "WP-P1-04",
+          "milestone": "P1-M4",
+          "title": "Funding and delivery gate",
+          "tasks": [
+            "P1-T10",
+            "P1-T11",
+            "P1-T12"
+          ],
+          "acceptance": "Costed business case and written proceed/revise/stop decision."
+        }
+      ],
+      "tasks": [
+        {
+          "id": "P1-T01",
+          "text": "Define museum proposition and independent project scope",
+          "status": "done"
+        },
+        {
+          "id": "P1-T02",
+          "text": "Identify existing historical research and source catalogue",
+          "status": "done"
+        },
+        {
+          "id": "P1-T03",
+          "text": "Prepare source-confidence matrix",
+          "status": "in_progress"
+        },
+        {
+          "id": "P1-T04",
+          "text": "Create room-by-room and landscape product schedule",
+          "status": "not_started"
+        },
+        {
+          "id": "P1-T05",
+          "text": "Produce evidence-graded reconstruction specification and initial wireframes",
+          "status": "not_started"
+        },
+        {
+          "id": "P1-T06",
+          "text": "Integrate object/artefact census and provenance routes into museum work package",
+          "status": "not_started"
+        },
+        {
+          "id": "P1-T07",
+          "text": "Create Argentina candidate-site shortlist",
+          "status": "not_started"
+        },
+        {
+          "id": "P1-T08",
+          "text": "Check title/access, permitted use, planning, environment and services",
+          "status": "not_started"
+        },
+        {
+          "id": "P1-T09",
+          "text": "Assess freight, climate adaptation, construction, conservation, staffing and maintenance",
+          "status": "not_started"
+        },
+        {
+          "id": "P1-T10",
+          "text": "Prepare capital/operating cost model and contingency",
+          "status": "not_started"
+        },
+        {
+          "id": "P1-T11",
+          "text": "Record funding/partner evidence and separate cost controls",
+          "status": "not_started"
+        },
+        {
+          "id": "P1-T12",
+          "text": "Present business case for proceed/revise/stop decision",
+          "status": "not_started"
+        }
+      ],
+      "highlight": {
+        "date": "2026-10-22",
+        "rag": "AMBER",
+        "completed": [
+          "Museum proposition and scope defined in working brief",
+          "Existing historical research corpus identified"
+        ],
+        "in_progress": [
+          "Source-confidence matrix"
+        ],
+        "next": [
+          "Room/landscape schedule",
+          "Bounded site/feasibility options"
+        ],
+        "not_yet_delivered": [
+          "Accepted detailed reconstruction",
+          "Argentine site and permissions",
+          "Whole-life cost model",
+          "Committed funding",
+          "Construction and public opening"
+        ]
+      }
+    },
+    {
+      "id": "P2",
+      "title": "Wales Records, Evidence and Testimony Recovery",
+      "state": "active",
+      "rag": "AMBER",
+      "task_ledger": {
+        "total": 893,
+        "done": 169,
+        "in_progress": 44,
+        "not_started": 645,
+        "blocked": 35,
+        "pct": 19,
+        "snapshot": "2026-10-22T15:42:00Z"
+      },
+      "denominator_status": "Provisional inherited disclosure/correspondence ledger. Does not include a fully reconciled denominator for every preservation, witness and all-source recovery task.",
+      "measurement_caveat": "19% is task-ledger completion, not the percentage of all surviving evidence recovered.",
+      "milestones": [
+        {
+          "id": "P2-M1",
+          "title": "Preservation and source inventory",
+          "work_packages": [
+            "WP-P2-01"
+          ]
+        },
+        {
+          "id": "P2-M2",
+          "title": "Institutional disclosure routes",
+          "work_packages": [
+            "WP-P2-02"
+          ]
+        },
+        {
+          "id": "P2-M3",
+          "title": "Witness accounts and oral history",
+          "work_packages": [
+            "WP-P2-03"
+          ]
+        },
+        {
+          "id": "P2-M4",
+          "title": "Parcel, planning and chronology reconciliation",
+          "work_packages": [
+            "WP-P2-04"
+          ]
+        },
+        {
+          "id": "P2-M5",
+          "title": "Verified source set and disposition",
+          "work_packages": [
+            "WP-P2-05"
+          ]
+        }
+      ],
+      "work_packages": [
+        {
+          "id": "WP-P2-01",
+          "milestone": "P2-M1",
+          "title": "Source inventory and preservation",
+          "tasks": [
+            "P2-T01",
+            "P2-T02",
+            "P2-T03"
+          ]
+        },
+        {
+          "id": "WP-P2-02",
+          "milestone": "P2-M2",
+          "title": "Institution-by-institution disclosure routes",
+          "tasks": [
+            "P2-T04",
+            "P2-T05",
+            "P2-T06"
+          ]
+        },
+        {
+          "id": "WP-P2-03",
+          "milestone": "P2-M3",
+          "title": "Witness accounts and oral history",
+          "tasks": [
+            "P2-T07",
+            "P2-T08",
+            "P2-T09"
+          ],
+          "note": "Task denominator integration pending."
+        },
+        {
+          "id": "WP-P2-04",
+          "milestone": "P2-M4",
+          "title": "Parcel/plan and chronology reconciliation",
+          "tasks": [
+            "P2-T10",
+            "P2-T11",
+            "P2-T12"
+          ]
+        },
+        {
+          "id": "WP-P2-05",
+          "milestone": "P2-M5",
+          "title": "Verification and route closure",
+          "tasks": [
+            "P2-T13",
+            "P2-T14",
+            "P2-T15"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "id": "P2-T01",
+          "text": "Assign stable IDs, dates, source reference, format, provenance and storage location",
+          "status": "in_progress"
+        },
+        {
+          "id": "P2-T02",
+          "text": "Preserve original files/metadata, email headers, attachments, plans and version context",
+          "status": "in_progress"
+        },
+        {
+          "id": "P2-T03",
+          "text": "Prioritise vulnerable sources and live deadlines",
+          "status": "in_progress"
+        },
+        {
+          "id": "P2-T04",
+          "text": "Maintain route records per authority/archive linked to exact request and response",
+          "status": "in_progress"
+        },
+        {
+          "id": "P2-T05",
+          "text": "Separate statutory deadlines from internal follow-up targets",
+          "status": "in_progress"
+        },
+        {
+          "id": "P2-T06",
+          "text": "Record route endpoint, escalation path and residual action before closure",
+          "status": "blocked"
+        },
+        {
+          "id": "P2-T07",
+          "text": "Keep witness/custodian details in restricted ledger with provenance and relevance",
+          "status": "in_progress"
+        },
+        {
+          "id": "P2-T08",
+          "text": "Preserve dated notes/recordings with consent status and first-hand/recollection distinction",
+          "status": "in_progress"
+        },
+        {
+          "id": "P2-T09",
+          "text": "Prepare reviewed redacted source-linked summaries after privacy/release checks",
+          "status": "not_started"
+        },
+        {
+          "id": "P2-T10",
+          "text": "Compare operative title descriptions and original plans at each relevant stage",
+          "status": "in_progress"
+        },
+        {
+          "id": "P2-T11",
+          "text": "Keep tenancy, possession, freehold descriptions and archaeological locations distinct",
+          "status": "in_progress"
+        },
+        {
+          "id": "P2-T12",
+          "text": "Record contradictions and materially disconfirming records",
+          "status": "not_started"
+        },
+        {
+          "id": "P2-T13",
+          "text": "Check historic statements against source copies or mark pending review",
+          "status": "in_progress"
+        },
+        {
+          "id": "P2-T14",
+          "text": "Produce closure matrix with owner, action and reason for every open route",
+          "status": "not_started"
+        },
+        {
+          "id": "P2-T15",
+          "text": "Produce end-stage report and preserve baseline, dated snapshots and lessons",
+          "status": "not_started"
+        }
+      ],
+      "highlight": {
+        "date": "2026-10-22",
+        "rag": "AMBER",
+        "next": [
+          "Preserve vulnerable items",
+          "Maintain FOI/EIR and archive routes",
+          "Integrate witness/preservation tasks into denominator",
+          "Reconcile parcel-level records"
+        ]
+      }
+    },
+    {
+      "id": "P3",
+      "title": "Llandough Parcel A Augmented-Reality Heritage Tour",
+      "state": "active_predevelopment",
+      "rag": "AMBER",
+      "starter_tasks": {
+        "done": 2,
+        "total": 12,
+        "pct": 17,
+        "in_progress": 1,
+        "not_started": 9,
+        "blocked": 0
+      },
+      "ar_delivery": {
+        "pct": 0,
+        "note": "No accepted on-site wireframes, functioning AR prototype, glasses tests or pilot."
+      },
+      "baseline_status": "Provisional 12-task start-up list; Executive acceptance pending.",
+      "milestones": [
+        {
+          "id": "P3-M1",
+          "title": "Evidence and spatial confidence baseline",
+          "work_packages": [
+            "WP-P3-01"
+          ]
+        },
+        {
+          "id": "P3-M2",
+          "title": "Evidence-backed historic wireframes",
+          "work_packages": [
+            "WP-P3-02"
+          ]
+        },
+        {
+          "id": "P3-M3",
+          "title": "Guided AR prototype",
+          "work_packages": [
+            "WP-P3-03"
+          ]
+        },
+        {
+          "id": "P3-M4",
+          "title": "Pilot and release acceptance",
+          "work_packages": [
+            "WP-P3-04"
+          ]
+        }
+      ],
+      "work_packages": [
+        {
+          "id": "WP-P3-01",
+          "milestone": "P3-M1",
+          "title": "Site and source control",
+          "tasks": [
+            "P3-T01",
+            "P3-T02",
+            "P3-T03"
+          ]
+        },
+        {
+          "id": "WP-P3-02",
+          "milestone": "P3-M2",
+          "title": "Roman and early ecclesiastical layers",
+          "tasks": [
+            "P3-T04",
+            "P3-T05",
+            "P3-T06"
+          ]
+        },
+        {
+          "id": "WP-P3-03",
+          "milestone": "P3-M3",
+          "title": "Models and guided route",
+          "tasks": [
+            "P3-T07",
+            "P3-T08",
+            "P3-T09"
+          ]
+        },
+        {
+          "id": "WP-P3-04",
+          "milestone": "P3-M4",
+          "title": "Device, access and user tests",
+          "tasks": [
+            "P3-T10",
+            "P3-T11",
+            "P3-T12"
+          ]
+        }
+      ],
+      "tasks": [
+        {
+          "id": "P3-T01",
+          "text": "Identify existing historical/archaeological source corpus",
+          "status": "done"
+        },
+        {
+          "id": "P3-T02",
+          "text": "Identify existing browser-based visual tour as input, not AR delivery",
+          "status": "done"
+        },
+        {
+          "id": "P3-T03",
+          "text": "Map Parcel A route, features, source references and location confidence",
+          "status": "in_progress"
+        },
+        {
+          "id": "P3-T04",
+          "text": "Verify exact location of Roman villa/farm before any Parcel A placement",
+          "status": "not_started"
+        },
+        {
+          "id": "P3-T05",
+          "text": "Audit early ecclesiastical/monastic attribution, location, dating and source basis",
+          "status": "not_started"
+        },
+        {
+          "id": "P3-T06",
+          "text": "Define visual conventions for on-parcel evidence, nearby context and hypotheticals",
+          "status": "not_started"
+        },
+        {
+          "id": "P3-T07",
+          "text": "Specify Roman-period wireframe and required geometry/source inputs",
+          "status": "not_started"
+        },
+        {
+          "id": "P3-T08",
+          "text": "Specify early ecclesiastical/monastic layer to the confidence allowed by sources",
+          "status": "not_started"
+        },
+        {
+          "id": "P3-T09",
+          "text": "Storyboard guided route and evidence-linked waypoints",
+          "status": "not_started"
+        },
+        {
+          "id": "P3-T10",
+          "text": "Build phone/browser prototype before choosing AR glasses",
+          "status": "not_started"
+        },
+        {
+          "id": "P3-T11",
+          "text": "Test accessibility, route access, safety, privacy and device positioning",
+          "status": "not_started"
+        },
+        {
+          "id": "P3-T12",
+          "text": "Run documented pilot and pass quality/usability acceptance tests",
+          "status": "not_started"
+        }
+      ],
+      "accuracy_constraints": [
+        "The recorded Roman villa/farm south of the church must not be rendered as on Parcel A without site-specific evidence.",
+        "The early ecclesiastical/monastic attribution needs source, date and location checking before depicting an established on-parcel structure.",
+        "Where location confidence is insufficient, show nearby/regional context or a visibly hypothetical reconstruction."
+      ],
+      "highlight": {
+        "date": "2026-10-22",
+        "rag": "AMBER",
+        "completed": [
+          "Existing historical/archaeological sources identified",
+          "Existing browser visual tour identified as input"
+        ],
+        "in_progress": [
+          "Parcel route and spatial source map"
+        ],
+        "not_yet_delivered": [
+          "Approved historic wireframes",
+          "Working AR prototype",
+          "Glasses/device tests",
+          "Field pilot and release acceptance"
+        ]
+      }
+    },
+    {
+      "id": "P4",
+      "title": "Case Reopening / Legal Remedy",
+      "state": "conditional_standby",
+      "rag": "GREY",
+      "completion_pct": null,
+      "baseline_status": "Not initiated. N/A rather than 0%; no delivery tasks authorised.",
+      "monitoring": "Trigger monitoring and preservation are P2 responsibilities while this project is dormant.",
+      "activation_conditions": [
+        "Preserved primary-source item or corroborated source package with provenance and stable evidence ID",
+        "Specific potentially relevant act/event/omission described without treating a lead as a finding",
+        "Material relevance to a specific legal/procedural question explained",
+        "Independent written legal advice on applicable test, route, standing, time/limitation, causation, adverse material and alternatives",
+        "Separate proportionate business case including options, costs, risks and deadlines",
+        "Explicit written Executive go decision approving P4 PID, budget, tolerances and work packages"
+      ],
+      "milestones": [
+        {
+          "id": "P4-G1",
+          "title": "Evidence and legal activation gate",
+          "state": "standby"
+        }
+      ]
+    }
+  ],
+  "programme_milestones": [
+    {
+      "id": "PGM-0",
+      "title": "Programme baseline and authority",
+      "state": "draft"
+    },
+    {
+      "id": "PGM-1",
+      "title": "Start bounded independent P1/P3 work",
+      "state": "awaiting authorisation"
+    },
+    {
+      "id": "PGM-2",
+      "title": "Preservation and recovery in Wales",
+      "state": "active"
+    },
+    {
+      "id": "PGM-3",
+      "title": "Concepts and demonstrators",
+      "state": "not delivered beyond existing inputs"
+    },
+    {
+      "id": "PGM-4",
+      "title": "Separate project acceptance gates",
+      "state": "not started"
+    },
+    {
+      "id": "PGM-5",
+      "title": "Conditional legal activation gate",
+      "state": "standby"
+    }
+  ]
+}

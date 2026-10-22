@@ -6,14 +6,14 @@
 import fs from "fs"; import path from "path";
 const here = path.dirname(new URL(import.meta.url).pathname);
 export const publicDir = path.join(here, "..", "public");
-export const SITE = "Cedwyn Estate Projects — PRINCE2";
+export const SITE = "Great House Farm Programme — PRINCE2";
 const OLD_SITE = "Great House Farm Projects — PRINCE2";
 const WIKI_HOST = ["greathousefarmwiki", "wordpress", "com"].join(".");
 const WIKI_RE = new RegExp("https?://" + WIKI_HOST.replace(/\./g, "\\.") + "[^\"'\\s<>)]*", "g");
 const A_RE = new RegExp("<a\\b([^>]*?)href=\"(https?://" + WIKI_HOST.replace(/\./g, "\\.") + "[^\"]*)\"([^>]*)>([\\s\\S]*?)</a>", "g");
-export const NAV_LINKS = [["/", `<strong>${SITE}</strong>`], ["/overview/", "Overview"], ["/estate/asset-register/", "Asset register"], ["/estate/pid/", "PID"], ["/estate/risk-register/", "Registers"], ["/estate/highlight-reports/", "Reports"], ["/workstreams/evidence-recovery/", "Evidence recovery"], ["/programme/", "Programme"]];
+export const NAV_LINKS = [["/", `<strong>${SITE}</strong>`],["/programme-mandate/", "Mandate"],["/programme-plan/", "Plan"],["/p1-argentina-museum/", "P1 Museum"],["/workstreams/evidence-recovery/", "P2 Evidence"],["/p3-ar-heritage-tour/", "P3 AR Tour"],["/p4-case-reopening-gate/", "P4 Gate"],["/programme-highlight-report/", "Reports"],["/estate/asset-register/", "Registers"]];
 const NAV_INNER = NAV_LINKS.map(([h, t]) => `<a href="${h}">${t}</a>`).join('<span class="sep" aria-hidden="true"> · </span>');
-export const FOOT = `<footer class="sl-foot"><div class="sl-foot-in"><a class="sl-foot-title" href="/">${SITE}</a><a href="/">PID (home)</a><a href="/overview/">Overview</a><a href="/estate/mandate/">Mandate</a><a href="/programme/">Programme charter</a><a href="/estate/asset-register/">Asset register</a><a href="/workstreams/evidence-recovery/">Workstream: evidence recovery</a><a href="https://bucklerfamily.estate/">Cedwyn Estate map</a><a href="https://bucklerfamily.estate/ebook/">Get the e-book (from £0.00 · £9.99 – v0.02 · all four £31.99)</a><a href="/posts.json">posts.json</a></div></footer>`;
+export const FOOT = `<footer class="sl-foot"><div class="sl-foot-in"><a class="sl-foot-title" href="/">Great House Farm Programme — PRINCE2</a><a href="/">Programme dashboard</a><a href="/programme-mandate/">Master mandate and brief</a><a href="/programme-plan/">Master plan</a><a href="/programme-highlight-report/">Master highlight report</a><a href="/p1-argentina-museum/">P1: Argentina replica museum</a><a href="/workstreams/evidence-recovery/">P2: Wales evidence recovery</a><a href="/p3-ar-heritage-tour/">P3: Parcel A AR tour</a><a href="/p4-case-reopening-gate/">P4: conditional legal gate</a><a href="/estate/asset-register/">Digital asset register</a><a href="/products/">PRINCE2 product set</a></div></footer>`;
 
 function localMap(dir) {
   const m = new Map();
@@ -61,11 +61,11 @@ export function fixPosts(dir) {
   return ch;
 }
 
-// Home page (Sion, 20 Oct 2026): the site's front page IS the Project Initiation Documentation. index.html is written from
-// estate/pid/index.html on every build (so the two never drift); /estate/pid/ keeps working; the former front page lives at /overview/.
+// Home page: the root is the programme-level Project Initiation Documentation; the prior single-project dashboard is archived. index.html is written from
+// estate/pid/index.html only when the root is not already a PRINCE2 PID; /estate/pid/ remains the separate digital-estate PID.
 const CANON = '<link rel="canonical" href="https://projects.bucklerfamily.estate/"/>';
 export function homeFromPid(dir = publicDir) {
-  // 21 Oct 2026: the home page is the Parcel A PID, generated in PRINCE2 7 form; it is no longer copied from estate/pid.
+  // 22 Oct 2026: the root is the programme PID; do not overwrite it with the digital-estate PID.
   { const h = path.join(dir, "index.html"); if (fs.existsSync(h) && fs.readFileSync(h, "utf8").includes("/assets/p2.css")) return false; }
   const src = path.join(dir, "estate", "pid", "index.html"); if (!fs.existsSync(src)) return false;
   let t = fs.readFileSync(src, "utf8");
