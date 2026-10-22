@@ -613,7 +613,7 @@ function T(s){return Date.parse(s+'T12:00:00Z');}
 function fd(s){if(!s)return '';var d=new Date(s+'T12:00:00Z');return d.getUTCDate()+' '+MON[d.getUTCMonth()]+' '+d.getUTCFullYear();}
 function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;}
 function load(){if(!FCP)FCP=fetch('/data/forecast.json?d='+new Date().toISOString().slice(0,10)).then(function(r){return r.ok?r.json():null;}).then(function(j){FC=j;return j;}).catch(function(){FCP=null;return null;});return FCP;}
-function instName(){try{return instFilter?(INST_NAMES.get(instFilter)||''):'';}catch(e){return '';}}
+function instName(){var s=document.getElementById('inst-filter'),t=document.getElementById('list-title');return s&&s.value&&t?t.textContent.trim():'';}
 function find(){var n=instName();if(!FC||!n)return null;return FC.institutions.find(function(i){return i.name===n;})||null;}
 var OURS='var(--ghf-accent,#24DB5B)',THEIRS='currentColor',RED='#ef4444';
 function house(g,x,y,s){el('path',{d:'M'+(x-s)+' '+(y+s*.8)+'V'+(y-s*.1)+'L'+x+' '+(y-s)+'L'+(x+s)+' '+(y-s*.1)+'V'+(y+s*.8)+'Z',fill:RED},g);}
