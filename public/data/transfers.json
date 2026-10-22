@@ -1,5 +1,5 @@
 {
- "version": "6",
+ "version": "2.6.0",
  "updated": "2026-10-22",
  "parties": [
   {
@@ -13,6 +13,13 @@
    "short": "SW Brick & Tile",
    "name": "The South Western Brick & Tile Company Ltd",
    "m": "SW Brick & Tile"
+  },
+  {
+   "id": "origin",
+   "short": "Permissive occupancy (fraud?)",
+   "name": "Permissive occupancy (fraud?)",
+   "m": "Permissive occupancy (fraud?)",
+   "icon": "💩"
   },
   {
    "id": "wgr",
@@ -134,13 +141,6 @@
    "name": "The Herbert family (Sir George Herbert of Swansea, d. 1570, and the Herberts of Cogan Pill)",
    "m": "Herbert family",
    "outside": true
-  },
-  {
-   "id": "origin",
-   "short": "💩",
-   "name": "Title first registered without a conveyance from the occupiers",
-   "m": "💩",
-   "centre": true
   }
  ],
  "parcels": [
@@ -545,7 +545,7 @@
      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0034-writ-possession-execution-return-1955/"
     }
    ],
-   "from": "family"
+   "from": "origin"
   },
   {
    "id": "t1955a",
@@ -576,7 +576,7 @@
      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0032-1955-order-14-possession-order/"
     }
    ],
-   "from": "family"
+   "from": "origin"
   },
   {
    "id": "t1961",
@@ -658,7 +658,7 @@
      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0041-cardiff-county-court-possession-order-1962/"
     }
    ],
-   "from": "family"
+   "from": "origin"
   },
   {
    "id": "t1969",
@@ -866,7 +866,7 @@
      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0108-south-wales-echo-bp-demolition-anger/"
     }
    ],
-   "from": "family"
+   "from": "origin"
   },
   {
    "id": "t1988s",
@@ -1175,8 +1175,8 @@
     "why": "House and yard (A2). Licence letters offered 31 Oct 1974, never accepted; first registration applied for 23 Feb 1983 to BP Properties Ltd while Mary lived there. No conveyance from the occupiers is on record."
    }
   ],
-  "not": "Not drawn from the centre: WA231076 (the fields, B), first registered in 1982 on the 1938 and 1969 conveyances of land the family rented. WA735527 (the woodland) was registered on the 1994 transfer; the 1961 deed in the woodland chain is recited on it. WA513690 (Oakview, sold by BP on 10 Oct 1989) is held but its extent is not yet transcribed, so it is not placed.",
-  "intro": "Three chains run from here to the ring, each ending at the registration it led to. A “12 years” bar marks the 12-year limitation period on each line, with its start and finish years."
+  "not": "WA231076 (the fields, B), first registered in 1982 on the 1938 and 1969 conveyances of land the family rented. WA735527 (the woodland) was registered on the 1994 transfer; the 1961 deed in the woodland chain is recited on it. WA513690 (Oakview, sold by BP on 10 Oct 1989) is held but its extent is not yet transcribed, so it is not placed.",
+  "intro": "Three chains run from here across the ring, each ending at the registration it led to. A “12 years” bar marks the 12-year limitation period on each line, with its start and finish years."
  },
  "chains": [
   {
@@ -1376,7 +1376,9 @@
      "t": "t1983",
      "title": "WA240304"
     }
-   ]
+   ],
+   "cpi": 11.6,
+   "cpr": 0.15
   },
   {
    "id": "B",
@@ -1421,7 +1423,9 @@
        "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (judgment)",
        "u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
       }
-     ]
+     ],
+     "lane": 0,
+     "side": 1
     },
     {
      "y": 1955,
@@ -1442,7 +1446,9 @@
        "u": "https://greathousefarmwiki.wordpress.com/timeline/"
       }
      ],
-     "t": "t1955a"
+     "t": "t1955a",
+     "lane": 0,
+     "side": 1
     },
     {
      "y": 1958,
@@ -1462,7 +1468,9 @@
        "t": "Legal Wiki · Master Timeline (page 33)",
        "u": "https://greathousefarmwiki.wordpress.com/timeline/"
       }
-     ]
+     ],
+     "lane": 0,
+     "side": -1
     },
     {
      "y": 1961,
@@ -1490,9 +1498,13 @@
      ],
      "t": "t1961",
      "title": "WA735527",
-     "part": "record held for 1961 · source to add for 1962"
+     "part": "record held for 1961 · source to add for 1962",
+     "lane": 0,
+     "side": -1
     }
-   ]
+   ],
+   "cpi": 5.2,
+   "cpr": 0.4
   },
   {
    "id": "C",
@@ -1545,8 +1557,7 @@
        "u": "https://greathousefarmwiki.wordpress.com/timeline/"
       }
      ],
-     "t": "t1955a",
-     "lane": 1
+     "t": "t1955a"
     },
     {
      "y": 1958,
@@ -1592,7 +1603,9 @@
      "t": "t1970",
      "title": "VG41"
     }
-   ]
+   ],
+   "cpi": 15.9,
+   "cpr": 0.3
   }
  ],
  "root": {
@@ -1847,12 +1860,12 @@
     "lab": "no deed",
     "date": "1928 → 1983",
     "fr": "thomas",
-    "to": "chain:A",
+    "to": "origin",
     "br": "A",
     "kind": "gap",
     "todo": true,
     "label": "Parcel A · no conveyance from Daniel Thomas & Son or the family on record",
-    "text": "No deed on file carries Parcel A, or the house and yard A(2), from Daniel Thomas & Son, or from the family who held it from 1928, to Western Ground Rents, BP or anyone else. The house title WA240304 was first registered in 1983 out of the 💩 chain instead (1955 order → 1962 → … → 1983). Gap: source to add, if such a deed exists.",
+    "text": "No deed on file carries Parcel A, or the house and yard A(2), from Daniel Thomas & Son, or from the family who held it from 1928, to Western Ground Rents, BP or anyone else. The house title WA240304 was first registered in 1983 out of the 💩 chain instead, which starts at the 💩 on the ring (1955 order → 1962 → … → 1983). Gap: source to add, if such a deed exists.",
     "src": [
      {
       "t": "The Two Parcels",
