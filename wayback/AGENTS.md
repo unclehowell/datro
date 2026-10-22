@@ -17,3 +17,8 @@ semantic_version_preference:
 - Last two digits (XX) = release_count % 100, zero-padded to 2 digits
 - Example: release 9 → v0.0.0.09, release 104 → v0.0.1.04, release 555 → v0.0.5.55
 - No major.minor.patch semantics — pure release counter
+
+## Email reader text corpus
+- `email/text-corpus.json` and its shards `email/text-corpus-N.json` are a derived read cache of the `/text/` files that `email/mail-index.json` points at. The `/text/` files stay the master.
+- The email reader (email.bucklerfamily.estate) uses the cache for search, export and threads, because one fetch per file broke Cloudflare's 50-subrequest limit. `/api/message` always reads the file live.
+- After editing, redacting, adding or renaming any `/text/` file or mail-index record, rebuild it: `python3 tools/build-email-text-corpus.py OUT_DIR`, then commit OUT_DIR/* to `wayback/email/`. Entries whose sourcePath no longer matches the index are ignored automatically.
