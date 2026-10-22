@@ -1,5 +1,5 @@
 {
- "version": "2.6.0",
+ "version": "2.7.0",
  "updated": "2026-10-22",
  "parties": [
   {
@@ -38,12 +38,6 @@
    "short": "Hurst & Jones",
    "name": "William Hurst of Gabalva and Calvert Richard Jones of Swansea (holders of the manor by 1767)",
    "m": "Hurst & Jones"
-  },
-  {
-   "id": "cefn",
-   "short": "Cefn Estates",
-   "name": "Cefn Estates",
-   "m": "Cefn Estates"
   },
   {
    "id": "ild",
@@ -185,7 +179,7 @@
   {
    "id": "B",
    "name": "Parcel B · the fields",
-   "desc": "The fields east of the house, about 9 acres (OS 1900 fields 71 and 78; 1939 tenancy plan). Title WA231076.",
+   "desc": "The fields east of the house, about 9 acres (OS 1900 fields 71 and 78). Title WA231076.",
    "color": "#5aa9ff"
   },
   {
@@ -351,32 +345,6 @@
    "root": true
   },
   {
-   "id": "t1916",
-   "date": "1916",
-   "year": 1916,
-   "parcels": [
-    "B"
-   ],
-   "to": "family",
-   "kind": "lease",
-   "label": "1916 lease",
-   "status": "solid",
-   "reason": null,
-   "instrument": "Bute yearly agricultural tenancy to the family, with plan.",
-   "note": "The Court of Appeal recounts the 1916 tenancy. On the family’s case the Bute Estate could let only Parcel B.",
-   "sources": [
-    {
-     "t": "EV-0014 · 1916 Bute yearly tenancy, with plan",
-     "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0014-bute-tenancy-john-williams-1916/"
-    },
-    {
-     "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (judgment)",
-     "u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
-    }
-   ],
-   "from": "bute"
-  },
-  {
    "id": "t1926",
    "date": "1926",
    "year": 1926,
@@ -439,7 +407,7 @@
    "status": "solid",
    "reason": null,
    "instrument": "Conveyance on sale, Mountjoy / Bute to Western Ground Rents Ltd, 25 Dec 1938 (recited in later WGR deeds).",
-   "note": "The deed and its plan are not held, so exactly which land it carried is still open. A 1939 tenancy plan shows WGR letting Parcel B only.",
+   "note": "The deed and its plan are not held, so exactly which land it carried is still open. A 1939 Western Ground Rents plan (EV-0023) covers Parcel B only.",
    "sources": [
     {
      "t": "EV-0216 · recital of the conveyance of 25 Dec 1938",
@@ -456,28 +424,6 @@
    ],
    "from": "mountjoy",
    "rootb": true
-  },
-  {
-   "id": "t1939",
-   "date": "May 1939",
-   "year": 1939,
-   "parcels": [
-    "B"
-   ],
-   "to": "family",
-   "kind": "lease",
-   "label": "1939 lease",
-   "status": "solid",
-   "reason": null,
-   "instrument": "WGR tenancy of land at Llandough to the family, with plan.",
-   "note": "The plan shows Parcel B only.",
-   "sources": [
-    {
-     "t": "EV-0023 · 1939 WGR tenancy plan (Parcel B)",
-     "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0023-1939-wgr-john-williams-tenancy-plan/"
-    }
-   ],
-   "from": "wgr"
   },
   {
    "id": "t1942",
@@ -748,28 +694,6 @@
    ],
    "from": "wgr",
    "title": "VG41"
-  },
-  {
-   "id": "t1981",
-   "date": "Feb 1981",
-   "year": 1981,
-   "parcels": [
-    "X"
-   ],
-   "to": "cefn",
-   "kind": "sale",
-   "label": "1981 sale",
-   "status": "dashed",
-   "reason": "per secondary source",
-   "instrument": "Sale of BP Pension Trust’s residential freehold ground rents in South Wales to Cefn Estates.",
-   "note": "Press snippets only. The ground-rent estate WGR brought into BP was sold on; the Llandough land was kept.",
-   "sources": [
-    {
-     "t": "EV-0289 · BP Pension Trust in South Wales, 1981–83 (press)",
-     "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0289-snippets-only-bp-pension-trust-in-south-wales-1981-83-sale-of-its-residential-grou/"
-    }
-   ],
-   "from": "bppt"
   },
   {
    "id": "t1982",
@@ -1377,7 +1301,7 @@
      "title": "WA240304"
     }
    ],
-   "cpi": 11.6,
+   "cpi": 10.6,
    "cpr": 0.15
   },
   {
@@ -1503,7 +1427,7 @@
      "side": -1
     }
    ],
-   "cpi": 5.2,
+   "cpi": 5.1,
    "cpr": 0.4
   },
   {
@@ -1604,7 +1528,7 @@
      "title": "VG41"
     }
    ],
-   "cpi": 15.9,
+   "cpi": 14.9,
    "cpr": 0.3
   }
  ],
@@ -1732,7 +1656,7 @@
     "kind": "forkB",
     "t": "t1926",
     "label": "1877 split · Parcel B kept by the Bute Estate, then Mountjoy Ltd (1926)",
-    "text": "In 1877 the Bute Estate keeps about 9 acres “up on the top” (Parcel B; Timeline page 33). Bute still lets it in 1916 (yearly tenancy with plan, EV-0014). In 1926 the remaining Bute property is incorporated as Mountjoy Ltd (Glamorgan Archives DA catalogue). The records place Mountjoy in 1926, not 1877.",
+    "text": "In 1877 the Bute Estate keeps about 9 acres “up on the top” (Parcel B; Timeline page 33). The Bute Estate still holds it in 1916 (EV-0014). In 1926 the remaining Bute property is incorporated as Mountjoy Ltd (Glamorgan Archives DA catalogue). The records place Mountjoy in 1926, not 1877.",
     "src": [
      {
       "t": "Legal Wiki · Master Timeline (page 33), 1877",
