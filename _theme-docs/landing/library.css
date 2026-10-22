@@ -2,7 +2,7 @@
    bands, rounded buttons; green = HTML, red = PDF. Colours follow the family day/night mode like every bucklerfamily.estate site:
    night = black ground, light text; day = white ground, dark text (<html data-ghf-native="auto">: drawn in both, never inverted).
    The docs. accent pair (--ghf-accent, from ghf-boot.js; palette v3) is a hint on the band edges and the focus ring. — Sion's Tab agent */
-html{--lib-bg:#000;--lib-fg:rgba(255,255,255,.62);--lib-dim:rgba(255,255,255,.42);--lib-strong:rgba(255,255,255,.9);--lib-band:rgba(255,255,255,.06);
+html{--lib-bg:#000;--lib-fg:rgba(255,255,255,.62);--lib-dim:rgba(255,255,255,.52);--lib-strong:rgba(255,255,255,.9);--lib-band:rgba(255,255,255,.06);
   --lib-line:rgba(255,255,255,.16);--lib-btn:rgba(255,255,255,.05);--lib-btn-h:rgba(255,255,255,.12);--lib-edge-a:rgba(255,255,255,.3);--lib-edge-b:rgba(0,0,0,.5);
   --lib-html:rgba(40,190,80,.85);--lib-pdf:rgba(255,90,80,.75);--lib-title:#b4bfd0;--lib-acc:var(--ghf-accent,#FFB27A);
   background:var(--lib-bg);color:var(--lib-fg);overflow-x:hidden;color-scheme:dark}
