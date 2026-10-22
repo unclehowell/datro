@@ -1,28 +1,37 @@
 import { useEffect, useMemo, useState } from "react";
 import { DetailModal } from "@/components/detail-modal";
-import bundled from "@/data/snakes-ladders.json";
+import boardBundled from "@/data/snl-board.json";
+import playBundled from "@/data/snl-play.json";
 
 /**
  * Snakes & Ladders: the disclosure path as a game board, under the dartboard. 36 squares follow the real
  * escalation route (request → deadline → internal review → ICO → tribunal; SAR → ICO; complaint → ombudsman;
  * pre-action letter → CPR 31.16 / 31.17 disclosure → court; then the trigger-event SOP to the reopening).
- * Ladders are procedural shortcuts and snakes procedural setbacks, each named by the law. One counter per
- * institution on its current square; gold ladders were earned and red snakes were hit, from the record.
- * Data: /data/snakes-ladders.json (work/roadmap/build_snakes_ladders.py). — Sion's Tab agent, 22 Oct 2026
+ * Ladders are procedural shortcuts and snakes procedural setbacks, each named by the law.
+ *
+ * THE BOARD IS FIXED: rules only, identical before anyone plays (/data/snl-board.json, ghf-snl-board/1). Every
+ * ladder looks alike, every snake looks alike, and tapping one shows only its rule.
+ * GAMEPLAY IS A SEPARATE LAYER, off by default: "The game so far" puts one counter per institution on its current
+ * square and lists the ladders climbed and snakes hit per institution (/data/snl-play.json, ghf-snl-play/1).
+ * Both built by work/roadmap/build_snakes_ladders.py. — Sion's Tab agent, 22 Oct 2026
  */
 
 type Square = { n: number; label: string; short: string; law: string; url: string | null; tier: string };
-type Hit = { lane: string | null; name: string | null; date: string | null; ref: string; what: string | null; url: string | null; ev?: string | null };
-type Jump = { id: string; from: number; to: number; label: string; law: string; effect: string; hits: Hit[]; lanes: string[]; earned?: boolean; hit?: boolean };
+type Rule = { id: string; from: number; to: number; label: string; law: string; effect: string };
 type Token = {
   lane: string; name: string; short: string; square: number; why: string; kind: string; regime: string | null;
   ref: string; title: string; url: string | null; next: { date: string | null; what: string; url: string | null } | null;
   missed: number; route: string | null;
 };
+type Move = { kind: "ladder" | "snake"; id: string; lane: string | null; name: string | null; date: string | null; ref: string; what: string | null; url: string | null; ev?: string | null };
 type Board = {
-  as_of: string; cols: number; squares: Square[]; ladders: Jump[]; snakes: Jump[]; tokens: Token[];
+  schema: string; cols: number; squares: Square[]; ladders: Rule[]; snakes: Rule[];
   tiers: { id: string; label: string; from: number; to: number }[];
-  totals: { squares: number; ladders: number; snakes: number; tokens: number; on_start: number; ladders_earned: number; snakes_hit: number };
+  totals: { squares: number; ladders: number; snakes: number };
+};
+type Play = {
+  schema: string; as_of: string; tokens: Token[]; history: Move[];
+  totals: { tokens: number; on_start: number; ladders_climbed: number; snakes_hit: number; moves: number };
 };
 
 const MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -31,8 +40,10 @@ const CELL = 60;
 const COLS = 6;
 const ROWS = 6;
 const W = CELL * COLS;
-const GOLD = "#ffd34d";
-const RED = "#e5484d";
+const GOLD = "#ffd34d"; // the final square only
+/** Every ladder looks alike and every snake looks alike: the board is fixed, before anyone plays. */
+const LADDER = "#c9a86a";
+const SNAKE = "#6f9a5a";
 const TIER: Record<string, string> = {
   request: "#c4a574", review: "#e07a2f", regulator: "#5a7bd8", tribunal: "#9b6bd8", court: "#c23b32", reopen: "#2e9e57",
 };
@@ -63,7 +74,7 @@ function wrap(s: string, max = 13) {
   return lines.slice(0, 2);
 }
 
-function LadderShape({ j, onPick }: { j: Jump; onPick: () => void }) {
+function LadderShape({ j, onPick }: { j: Rule; onPick: () => void }) {
   const a = centre(j.from);
   const b = centre(j.to);
   const dx = b.x - a.x;
@@ -71,8 +82,8 @@ function LadderShape({ j, onPick }: { j: Jump; onPick: () => void }) {
   const len = Math.hypot(dx, dy);
   const nx = (-dy / len) * 5;
   const ny = (dx / len) * 5;
-  const col = j.earned ? GOLD : "#9a8b74";
-  const op = j.earned ? 1 : 0.5;
+  const col = LADDER;
+  const op = 0.92;
   const rungs = Math.max(2, Math.floor(len / 10));
   return (
     <g onClick={onPick} style={{ cursor: "pointer" }} opacity={op}>
@@ -91,7 +102,7 @@ function LadderShape({ j, onPick }: { j: Jump; onPick: () => void }) {
   );
 }
 
-function SnakeShape({ j, onPick }: { j: Jump; onPick: () => void }) {
+function SnakeShape({ j, onPick }: { j: Rule; onPick: () => void }) {
   const h = centre(j.from);
   const t = centre(j.to);
   const dx = t.x - h.x;
@@ -113,8 +124,8 @@ function SnakeShape({ j, onPick }: { j: Jump; onPick: () => void }) {
     const c2y = h.y + dy * (t1 - 0.33 / seg) + ny * amp * s;
     d += ` C${c1x.toFixed(1)} ${c1y.toFixed(1)} ${c2x.toFixed(1)} ${c2y.toFixed(1)} ${(h.x + dx * t1).toFixed(1)} ${(h.y + dy * t1).toFixed(1)}`;
   }
-  const col = j.hit ? RED : "#7d8f6a";
-  const op = j.hit ? 1 : 0.55;
+  const col = SNAKE;
+  const op = 0.92;
   const ux = dx / len;
   const uy = dy / len;
   return (
@@ -135,33 +146,40 @@ type Sheet =
   | { kind: "token"; lane: string }
   | { kind: "jump"; id: string; snake: boolean };
 
-export function SnakesLadders() {
-  const [data, setData] = useState<Board>(bundled as unknown as Board);
-  const [sheet, setSheet] = useState<Sheet | null>(null);
+function useJson<T>(url: string, schema: string, initial: T) {
+  const [v, setV] = useState<T>(initial);
   useEffect(() => {
     let live = true;
-    fetch(`/data/snakes-ladders.json?d=${new Date().toISOString().slice(0, 10)}`)
+    fetch(`${url}?d=${new Date().toISOString().slice(0, 10)}`)
       .then((r) => (r.ok ? r.json() : null))
       .then((j) => {
-        if (live && j && j.schema === "ghf-snakes-ladders/1") setData(j as Board);
+        if (live && j && j.schema === schema) setV(j as T);
       })
       .catch(() => {});
     return () => {
       live = false;
     };
-  }, []);
+  }, [url, schema]);
+  return v;
+}
 
-  const byLane = useMemo(() => new Map(data.tokens.map((t) => [t.lane, t])), [data]);
+export function SnakesLadders() {
+  const board = useJson<Board>("/data/snl-board.json", "ghf-snl-board/1", boardBundled as unknown as Board);
+  const play = useJson<Play>("/data/snl-play.json", "ghf-snl-play/1", playBundled as unknown as Play);
+  const [playOn, setPlayOn] = useState(false);
+  const [sheet, setSheet] = useState<Sheet | null>(null);
+
+  const byLane = useMemo(() => new Map(play.tokens.map((t) => [t.lane, t])), [play]);
   const bySquare = useMemo(() => {
     const m = new Map<number, Token[]>();
-    for (const t of data.tokens) m.set(t.square, [...(m.get(t.square) ?? []), t]);
+    for (const t of play.tokens) m.set(t.square, [...(m.get(t.square) ?? []), t]);
     return m;
-  }, [data]);
+  }, [play]);
+  const ruleOf = useMemo(() => new Map([...board.ladders, ...board.snakes].map((r) => [r.id, r])), [board]);
   const start = bySquare.get(0) ?? [];
   const startRows = Math.ceil(start.length / 8) || 1;
-  const START_H = 22 + startRows * 15;
+  const START_H = playOn ? 22 + startRows * 15 : 0;
   const H = CELL * ROWS + START_H;
-  const T = data.totals;
 
   return (
     <section id="snakes-ladders" aria-label="Snakes and ladders" className="rounded-[var(--radius-card)] border border-line bg-surface p-2">
@@ -171,12 +189,12 @@ export function SnakesLadders() {
           How to read
         </button>
       </div>
-      <svg viewBox={`0 0 ${W} ${H}`} className="mt-2 block w-full touch-manipulation select-none" role="img" aria-label="Snakes and ladders board of the disclosure path">
-        {data.squares.map((s) => {
+      <svg viewBox={`0 0 ${W} ${H}`} className="mt-2 block w-full touch-manipulation select-none" role="img" aria-label={playOn ? "Snakes and ladders board with the game so far" : "Snakes and ladders board of the disclosure path"}>
+        {board.squares.map((s) => {
           const p = pos(s.n);
           const row = Math.floor((s.n - 1) / COLS);
           const dark = (row + ((s.n - 1) % COLS)) % 2 === 0;
-          const fin = s.n === data.squares.length;
+          const fin = s.n === board.squares.length;
           return (
             <g key={s.n} onClick={() => setSheet({ kind: "square", n: s.n })} style={{ cursor: "pointer" }}>
               <rect x={p.x + 0.5} y={p.y + 0.5} width={CELL - 1} height={CELL - 1} rx="3" fill={fin ? "#3a2f1c" : dark ? "#2b241d" : "#3b3127"} stroke={fin ? GOLD : "none"} strokeWidth={fin ? 1.2 : 0} />
@@ -184,13 +202,13 @@ export function SnakesLadders() {
             </g>
           );
         })}
-        {data.ladders.map((j) => (
+        {board.ladders.map((j) => (
           <LadderShape key={j.id} j={j} onPick={() => setSheet({ kind: "jump", id: j.id, snake: false })} />
         ))}
-        {data.snakes.map((j) => (
+        {board.snakes.map((j) => (
           <SnakeShape key={j.id} j={j} onPick={() => setSheet({ kind: "jump", id: j.id, snake: true })} />
         ))}
-        {data.squares.map((s) => {
+        {board.squares.map((s) => {
           const p = pos(s.n);
           const lines = wrap(s.short);
           return (
@@ -206,100 +224,212 @@ export function SnakesLadders() {
             </g>
           );
         })}
-        {data.squares.map((s) => {
-          const list = bySquare.get(s.n);
-          if (!list?.length) return null;
-          const p = pos(s.n);
-          const shown = list.length > 4 ? list.slice(0, 3) : list;
-          const more = list.length - shown.length;
-          const items: { key: string; label: string; onClick: () => void; more?: boolean }[] = shown.map((t) => ({
-            key: t.lane,
-            label: t.short,
-            onClick: () => setSheet({ kind: "token", lane: t.lane }),
-          }));
-          if (more > 0) items.push({ key: "more", label: `+${more}`, more: true, onClick: () => setSheet({ kind: "square", n: s.n }) });
-          return (
-            <g key={`t-${s.n}`}>
-              {items.map((it, i) => {
-                const x = p.x + 3 + (i % 2) * 27.5;
-                const y = p.y + 16 + Math.floor(i / 2) * 13;
-                return (
-                  <g
-                    key={it.key}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      it.onClick();
-                    }}
-                    style={{ cursor: "pointer" }}
-                  >
-                    <rect x={x} y={y} width="26" height="11" rx="5.5" fill={it.more ? "#14110e" : "#f4efe6"} stroke={it.more ? "#c4a574" : "#14110e"} strokeWidth="0.8" />
-                    <text x={x + 13} y={y + 5.9} textAnchor="middle" dominantBaseline="central" fontFamily="Outfit, system-ui, sans-serif" fontSize={it.label.length > 6 ? 4.6 : it.label.length > 5 ? 5.1 : it.label.length > 4 ? 5.9 : 6.6} fontWeight="700" fill={it.more ? "#c4a574" : "#14110e"}>
-                      {it.label}
-                    </text>
-                  </g>
-                );
-              })}
-            </g>
-          );
-        })}
-        <g onClick={() => setSheet({ kind: "square", n: 0 })} style={{ cursor: "pointer" }}>
-          <rect x="0.5" y={CELL * ROWS + 4} width={W - 1} height={START_H - 4.5} rx="4" fill="#1b1612" stroke="#3a3228" />
-          <text x="6" y={CELL * ROWS + 15} fontFamily="Outfit, system-ui, sans-serif" fontSize="8" fontWeight="700" fill="#c4a574" letterSpacing="0.8">
-            START · NO CLOCK YET · {start.length}
-          </text>
-        </g>
-        {start.map((t, i) => {
-          const x = 4 + (i % 8) * 44;
-          const y = CELL * ROWS + 20 + Math.floor(i / 8) * 15;
-          return (
-            <g key={t.lane} onClick={() => setSheet({ kind: "token", lane: t.lane })} style={{ cursor: "pointer" }}>
-              <rect x={x} y={y} width="41" height="12" rx="6" fill="#f4efe6" opacity="0.85" />
-              <text x={x + 20.5} y={y + 6.4} textAnchor="middle" dominantBaseline="central" fontFamily="Outfit, system-ui, sans-serif" fontSize="6.6" fontWeight="700" fill="#14110e">
-                {t.short}
-              </text>
-            </g>
-          );
-        })}
+        {playOn &&
+          board.squares.map((s) => {
+            const list = bySquare.get(s.n);
+            if (!list?.length) return null;
+            const p = pos(s.n);
+            const shown = list.length > 4 ? list.slice(0, 3) : list;
+            const more = list.length - shown.length;
+            const items: { key: string; label: string; onClick: () => void; more?: boolean }[] = shown.map((t) => ({
+              key: t.lane,
+              label: t.short,
+              onClick: () => setSheet({ kind: "token", lane: t.lane }),
+            }));
+            if (more > 0) items.push({ key: "more", label: `+${more}`, more: true, onClick: () => setSheet({ kind: "square", n: s.n }) });
+            return (
+              <g key={`t-${s.n}`}>
+                {items.map((it, i) => {
+                  const x = p.x + 3 + (i % 2) * 27.5;
+                  const y = p.y + 16 + Math.floor(i / 2) * 13;
+                  return (
+                    <g
+                      key={it.key}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        it.onClick();
+                      }}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <rect x={x} y={y} width="26" height="11" rx="5.5" fill={it.more ? "#14110e" : "#f4efe6"} stroke={it.more ? "#c4a574" : "#14110e"} strokeWidth="0.8" />
+                      <text x={x + 13} y={y + 5.9} textAnchor="middle" dominantBaseline="central" fontFamily="Outfit, system-ui, sans-serif" fontSize={it.label.length > 6 ? 4.6 : it.label.length > 5 ? 5.1 : it.label.length > 4 ? 5.9 : 6.6} fontWeight="700" fill={it.more ? "#c4a574" : "#14110e"}>
+                        {it.label}
+                      </text>
+                    </g>
+                  );
+                })}
+              </g>
+            );
+          })}
+        {playOn && (
+          <g onClick={() => setSheet({ kind: "square", n: 0 })} style={{ cursor: "pointer" }}>
+            <rect x="0.5" y={CELL * ROWS + 4} width={W - 1} height={START_H - 4.5} rx="4" fill="#1b1612" stroke="#3a3228" />
+            <text x="6" y={CELL * ROWS + 15} fontFamily="Outfit, system-ui, sans-serif" fontSize="8" fontWeight="700" fill="#c4a574" letterSpacing="0.8">
+              START · NO CLOCK YET · {start.length}
+            </text>
+          </g>
+        )}
+        {playOn &&
+          start.map((t, i) => {
+            const x = 4 + (i % 8) * 44;
+            const y = CELL * ROWS + 20 + Math.floor(i / 8) * 15;
+            return (
+              <g key={t.lane} onClick={() => setSheet({ kind: "token", lane: t.lane })} style={{ cursor: "pointer" }}>
+                <rect x={x} y={y} width="41" height="12" rx="6" fill="#f4efe6" opacity="0.85" />
+                <text x={x + 20.5} y={y + 6.4} textAnchor="middle" dominantBaseline="central" fontFamily="Outfit, system-ui, sans-serif" fontSize="6.6" fontWeight="700" fill="#14110e">
+                  {t.short}
+                </text>
+              </g>
+            );
+          })}
       </svg>
-      <p className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 px-1 text-[11px] text-muted">
-        <span className="flex items-center gap-1">
-          <span className="inline-block h-[3px] w-4 rounded" style={{ background: GOLD }} /> ladder earned {T.ladders_earned}/{T.ladders}
-        </span>
-        <span className="flex items-center gap-1">
-          <span className="inline-block h-[3px] w-4 rounded" style={{ background: RED }} /> snake hit {T.snakes_hit}/{T.snakes}
-        </span>
-        <span>{T.tokens} counters · as of {fmt(data.as_of)}</span>
-      </p>
+      <div className="mt-2 flex flex-wrap items-center justify-between gap-2 px-1">
+        <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-muted">
+          <span className="flex items-center gap-1">
+            <span className="inline-block h-[3px] w-4 rounded" style={{ background: LADDER }} /> {board.totals.ladders} ladders
+          </span>
+          <span className="flex items-center gap-1">
+            <span className="inline-block h-[3px] w-4 rounded" style={{ background: SNAKE }} /> {board.totals.snakes} snakes
+          </span>
+          <span>{board.totals.squares} squares</span>
+        </p>
+        <button
+          type="button"
+          role="switch"
+          aria-checked={playOn}
+          onClick={() => setPlayOn((v) => !v)}
+          className="flex items-center gap-2 rounded-full border border-line bg-surface-2 px-3 py-1.5 text-xs text-fg"
+        >
+          <span className="relative inline-block h-4 w-7 rounded-full transition-colors" style={{ background: playOn ? "#c4a574" : "#4a4036" }}>
+            <span className="absolute top-0.5 h-3 w-3 rounded-full bg-[#f4efe6] transition-all" style={{ left: playOn ? "0.875rem" : "0.125rem" }} />
+          </span>
+          The game so far
+        </button>
+      </div>
+      {playOn && <PlayPanel board={board} play={play} ruleOf={ruleOf} onToken={(lane) => setSheet({ kind: "token", lane })} />}
 
-      <DetailModal open={sheet !== null} onClose={() => setSheet(null)} accent={sheet?.kind === "jump" ? (sheet.snake ? RED : GOLD) : undefined}>
-        {sheet?.kind === "square" && sheet.n === -1 && <HowTo data={data} />}
+      <DetailModal open={sheet !== null} onClose={() => setSheet(null)} accent={sheet?.kind === "jump" ? (sheet.snake ? SNAKE : LADDER) : undefined}>
+        {sheet?.kind === "square" && sheet.n === -1 && <HowTo board={board} />}
         {sheet?.kind === "square" && sheet.n >= 0 && (
-          <SquareSheet data={data} n={sheet.n} tokens={bySquare.get(sheet.n) ?? []} onToken={(lane) => setSheet({ kind: "token", lane })} onJump={(id, snake) => setSheet({ kind: "jump", id, snake })} />
+          <SquareSheet board={board} n={sheet.n} tokens={playOn ? bySquare.get(sheet.n) ?? [] : null} onToken={(lane) => setSheet({ kind: "token", lane })} onJump={(id, snake) => setSheet({ kind: "jump", id, snake })} />
         )}
         {sheet?.kind === "token" && byLane.get(sheet.lane) && (
-          <TokenSheet data={data} t={byLane.get(sheet.lane)!} onJump={(id, snake) => setSheet({ kind: "jump", id, snake })} />
+          <TokenSheet board={board} play={play} t={byLane.get(sheet.lane)!} ruleOf={ruleOf} onJump={(id, snake) => setSheet({ kind: "jump", id, snake })} />
         )}
-        {sheet?.kind === "jump" && (
-          <JumpSheet data={data} j={(sheet.snake ? data.snakes : data.ladders).find((x) => x.id === sheet.id)!} snake={sheet.snake} onToken={(lane) => setSheet({ kind: "token", lane })} />
-        )}
+        {sheet?.kind === "jump" && ruleOf.get(sheet.id) && <JumpSheet board={board} j={ruleOf.get(sheet.id)!} snake={sheet.snake} />}
       </DetailModal>
     </section>
   );
 }
 
-const sqName = (data: Board, n: number) => (n === 0 ? "Start" : `${n} · ${data.squares.find((s) => s.n === n)?.label ?? ""}`);
+const sqName = (board: Board, n: number) => (n === 0 ? "Start" : `${n} · ${board.squares.find((s) => s.n === n)?.label ?? ""}`);
 
-function HowTo({ data }: { data: Board }) {
+function MoveLine({ m, r, showName, onToken }: { m: Move; r: Rule | undefined; showName?: boolean; onToken?: (lane: string) => void }) {
+  const snake = m.kind === "snake";
+  return (
+    <li className="text-sm leading-snug">
+      <span style={{ color: snake ? SNAKE : LADDER }}>{snake ? "🐍 Snake hit" : "🪜 Ladder climbed"}</span>
+      <span className="text-fg">: {r?.label ?? m.id}</span>
+      {r && (
+        <span className="text-faint">
+          {" "}
+          ({r.from} → {r.to})
+        </span>
+      )}
+      {showName && m.name && (
+        <span className="block">
+          {m.lane && onToken ? (
+            <button type="button" onClick={() => onToken(m.lane!)} className="text-fg underline underline-offset-2">
+              {m.name}
+            </button>
+          ) : (
+            <span className="text-fg">{m.name}</span>
+          )}
+        </span>
+      )}
+      <span className="block text-faint">
+        {fmt(m.date)}
+        {m.ref ? ` · ref ${m.ref}` : ""}
+        {m.ev ? ` · ${m.ev}` : ""}
+      </span>
+      {m.what && <span className="block text-muted">{m.what}</span>}
+      {m.url && (
+        <a href={m.url} target="_blank" rel="noreferrer" className="text-xs text-brass underline underline-offset-2">
+          Source
+        </a>
+      )}
+    </li>
+  );
+}
+
+function PlayPanel({ board, play, ruleOf, onToken }: { board: Board; play: Play; ruleOf: Map<string, Rule>; onToken: (lane: string) => void }) {
+  const groups = useMemo(() => {
+    const m = new Map<string, { key: string; lane: string | null; name: string; moves: Move[] }>();
+    for (const h of play.history) {
+      const key = h.lane ?? h.name ?? "—";
+      if (!m.has(key)) m.set(key, { key, lane: h.lane, name: h.name ?? "—", moves: [] });
+      m.get(key)!.moves.push(h);
+    }
+    return [...m.values()].sort((a, b) => (b.moves[0]?.date ?? "").localeCompare(a.moves[0]?.date ?? "") || a.name.localeCompare(b.name));
+  }, [play]);
+  const square = new Map(play.tokens.map((t) => [t.lane, t.square]));
+  const T = play.totals;
+  return (
+    <div className="mt-3 border-t border-line px-1 pt-3">
+      <h3 className="font-serif text-lg leading-tight text-fg">The game so far</h3>
+      <p className="mt-1 text-xs text-muted">
+        As of {fmt(play.as_of)} · {T.tokens} counters ({T.on_start} at start) · {T.ladders_climbed} of {board.totals.ladders} ladders climbed · {T.snakes_hit} of {board.totals.snakes} snakes hit · {T.moves} moves by {groups.length} institutions
+      </p>
+      <ul className="mt-2 flex flex-col gap-1.5">
+        {groups.map((g) => {
+          const up = g.moves.filter((m) => m.kind === "ladder").length;
+          const down = g.moves.length - up;
+          const sq = g.lane ? square.get(g.lane) : undefined;
+          return (
+            <li key={g.key}>
+              <details className="rounded-lg border border-line bg-surface-2 px-2.5 py-1.5">
+                <summary className="cursor-pointer text-sm text-fg">
+                  {g.name}
+                  <span className="text-faint">
+                    {sq !== undefined ? ` · square ${sq}` : ""}
+                    {up ? ` · 🪜 ${up}` : ""}
+                    {down ? ` · 🐍 ${down}` : ""}
+                  </span>
+                </summary>
+                <ul className="mt-2 flex flex-col gap-2 pb-1">
+                  {g.moves.map((m, i) => (
+                    <MoveLine key={i} m={m} r={ruleOf.get(m.id)} />
+                  ))}
+                </ul>
+                {g.lane && square.has(g.lane) && (
+                  <button type="button" onClick={() => onToken(g.lane!)} className="mb-1 text-xs text-brass underline underline-offset-2">
+                    Counter and next deadline
+                  </button>
+                )}
+              </details>
+            </li>
+          );
+        })}
+      </ul>
+      <p className="mt-2 text-xs text-faint">
+        Built daily from the case mailbox and the roadmap. Data: <a className="text-brass underline" href="/data/snl-play.json">snl-play.json</a>
+      </p>
+    </div>
+  );
+}
+
+function HowTo({ board }: { board: Board }) {
   return (
     <div>
       <h2 className="font-serif text-2xl">Snakes &amp; Ladders</h2>
       <p className="mt-2 text-sm leading-relaxed text-muted">
-        The path to disclosure, square by square from a first request (bottom left) to the case reopened (top). Each
-        counter is one institution, standing on the square it has reached. Ladders are lawful shortcuts; snakes are
-        procedural setbacks. Gold: a ladder already earned. Red: a snake already hit. Tap any square, counter, ladder or snake.
+        The path to disclosure, square by square from a first request (bottom left) to the case reopened (top). The board
+        is fixed: the same squares, ladders and snakes before anyone plays. Ladders are lawful shortcuts; snakes are
+        procedural setbacks. Tap any square, ladder or snake for its rule. Switch on “The game so far” to see each
+        institution’s counter on the square it has reached, and the ladders climbed and snakes hit so far.
       </p>
       <div className="mt-3 flex flex-col gap-1.5 text-sm">
-        {data.tiers.map((t) => (
+        {board.tiers.map((t) => (
           <p key={t.id} className="flex items-center gap-2 text-muted">
             <span className="inline-block h-1.5 w-5 rounded" style={{ background: TIER[t.id] }} />
             {t.from}–{t.to} · {t.label}
@@ -307,18 +437,18 @@ function HowTo({ data }: { data: Board }) {
         ))}
       </div>
       <p className="mt-3 text-xs text-faint">
-        Built daily from the case mailbox and the roadmap. Data: <a className="text-brass underline" href="/data/snakes-ladders.json">snakes-ladders.json</a>
+        Rules: <a className="text-brass underline" href="/data/snl-board.json">snl-board.json</a> · game: <a className="text-brass underline" href="/data/snl-play.json">snl-play.json</a>
       </p>
     </div>
   );
 }
 
-function SquareSheet({ data, n, tokens, onToken, onJump }: { data: Board; n: number; tokens: Token[]; onToken: (lane: string) => void; onJump: (id: string, snake: boolean) => void }) {
-  const s = data.squares.find((x) => x.n === n);
-  const out = [...data.ladders.filter((j) => j.from === n).map((j) => ({ j, snake: false })), ...data.snakes.filter((j) => j.from === n).map((j) => ({ j, snake: true }))];
+function SquareSheet({ board, n, tokens, onToken, onJump }: { board: Board; n: number; tokens: Token[] | null; onToken: (lane: string) => void; onJump: (id: string, snake: boolean) => void }) {
+  const s = board.squares.find((x) => x.n === n);
+  const out = [...board.ladders.filter((j) => j.from === n).map((j) => ({ j, snake: false })), ...board.snakes.filter((j) => j.from === n).map((j) => ({ j, snake: true }))];
   return (
     <div>
-      <p className="text-xs tracking-[0.16em] text-brass uppercase">{n === 0 ? "Start" : `Square ${n} of ${data.squares.length}`}</p>
+      <p className="text-xs tracking-[0.16em] text-brass uppercase">{n === 0 ? "Start" : `Square ${n} of ${board.squares.length}`}</p>
       <h2 className="mt-1 font-serif text-2xl leading-tight">{n === 0 ? "No statutory clock yet" : s?.label}</h2>
       {s && (
         <p className="mt-2 text-sm text-muted">
@@ -333,30 +463,29 @@ function SquareSheet({ data, n, tokens, onToken, onJump }: { data: Board; n: num
       )}
       {n === 0 && <p className="mt-2 text-sm text-muted">Institutions written to where no FOI, EIR or SAR clock has started.</p>}
       {out.map(({ j, snake }) => (
-        <button key={j.id} type="button" onClick={() => onJump(j.id, snake)} className="mt-2 block text-left text-sm" style={{ color: snake ? RED : GOLD }}>
+        <button key={j.id} type="button" onClick={() => onJump(j.id, snake)} className="mt-2 block text-left text-sm" style={{ color: snake ? SNAKE : LADDER }}>
           {snake ? "Snake" : "Ladder"} to {j.to}: {j.label}
         </button>
       ))}
-      <div className="mt-3 flex flex-wrap gap-2">
-        {tokens.map((t) => (
-          <button key={t.lane} type="button" onClick={() => onToken(t.lane)} className="rounded-full border border-line bg-surface-2 px-3 py-1.5 text-sm text-fg">
-            {t.name}
-          </button>
-        ))}
-        {!tokens.length && <p className="text-sm text-faint">No counter here today.</p>}
-      </div>
+      {tokens && (
+        <div className="mt-3 flex flex-wrap gap-2">
+          {tokens.map((t) => (
+            <button key={t.lane} type="button" onClick={() => onToken(t.lane)} className="rounded-full border border-line bg-surface-2 px-3 py-1.5 text-sm text-fg">
+              {t.name}
+            </button>
+          ))}
+          {!tokens.length && <p className="text-sm text-faint">No counter here today.</p>}
+        </div>
+      )}
     </div>
   );
 }
 
-function TokenSheet({ data, t, onJump }: { data: Board; t: Token; onJump: (id: string, snake: boolean) => void }) {
-  const mine = [
-    ...data.ladders.filter((j) => j.lanes.includes(t.lane)).map((j) => ({ j, snake: false })),
-    ...data.snakes.filter((j) => j.lanes.includes(t.lane)).map((j) => ({ j, snake: true })),
-  ];
+function TokenSheet({ board, play, t, ruleOf, onJump }: { board: Board; play: Play; t: Token; ruleOf: Map<string, Rule>; onJump: (id: string, snake: boolean) => void }) {
+  const mine = play.history.filter((h) => h.lane === t.lane);
   return (
     <div>
-      <p className="text-xs tracking-[0.16em] text-brass uppercase">{sqName(data, t.square)}</p>
+      <p className="text-xs tracking-[0.16em] text-brass uppercase">{sqName(board, t.square)}</p>
       <h2 className="mt-1 font-serif text-2xl leading-tight">{t.name}</h2>
       <p className="mt-2 text-sm text-muted first-letter:uppercase">{t.why}</p>
       <dl className="mt-3 grid grid-cols-[6.5rem_1fr] gap-x-2 gap-y-1.5 text-sm">
@@ -377,7 +506,7 @@ function TokenSheet({ data, t, onJump }: { data: Board; t: Token; onJump: (id: s
             <dt className="text-faint">Next deadline</dt>
             <dd className="text-fg">
               {fmt(t.next.date)}
-              {t.next.date && t.next.date < data.as_of ? " (overdue)" : ""} · {t.next.what}
+              {t.next.date && t.next.date < play.as_of ? " (overdue)" : ""} · {t.next.what}
             </dd>
           </>
         )}
@@ -395,9 +524,16 @@ function TokenSheet({ data, t, onJump }: { data: Board; t: Token; onJump: (id: s
         )}
       </dl>
       {t.title && <p className="mt-3 text-sm leading-snug text-fg">{t.title}</p>}
-      {mine.map(({ j, snake }) => (
-        <button key={j.id} type="button" onClick={() => onJump(j.id, snake)} className="mt-2 block text-left text-sm" style={{ color: snake ? RED : GOLD }}>
-          {snake ? "Snake hit" : "Ladder earned"}: {j.label} ({j.law.split(";")[0]})
+      {mine.length > 0 && (
+        <ul className="mt-3 flex flex-col gap-2">
+          {mine.map((m, i) => (
+            <MoveLine key={i} m={m} r={ruleOf.get(m.id)} />
+          ))}
+        </ul>
+      )}
+      {[...new Set(mine.map((m) => m.id))].map((id) => (
+        <button key={id} type="button" onClick={() => onJump(id, ruleOf.get(id) ? board.snakes.some((s) => s.id === id) : false)} className="mt-2 block text-left text-xs text-brass underline underline-offset-2">
+          The rule: {ruleOf.get(id)?.label ?? id}
         </button>
       ))}
       <p className="mt-3 flex flex-wrap gap-3 text-sm">
@@ -416,44 +552,18 @@ function TokenSheet({ data, t, onJump }: { data: Board; t: Token; onJump: (id: s
   );
 }
 
-function JumpSheet({ data, j, snake, onToken }: { data: Board; j: Jump; snake: boolean; onToken: (lane: string) => void }) {
-  if (!j) return null;
-  const on = snake ? j.hit : j.earned;
+/** A ladder or snake shows only its rule: the law or procedure, and the squares from → to. */
+function JumpSheet({ board, j, snake }: { board: Board; j: Rule; snake: boolean }) {
   return (
     <div>
-      <p className="text-xs tracking-[0.16em] uppercase" style={{ color: snake ? RED : GOLD }}>
+      <p className="text-xs tracking-[0.16em] uppercase" style={{ color: snake ? SNAKE : LADDER }}>
         {snake ? "Snake" : "Ladder"} · {j.from} → {j.to}
       </p>
       <h2 className="mt-1 font-serif text-2xl leading-tight">{j.label}</h2>
       <p className="mt-2 text-sm text-fg">{j.law}</p>
       <p className="mt-2 text-sm text-muted">
-        {sqName(data, j.from)} → {sqName(data, j.to)}. {j.effect}
+        {sqName(board, j.from)} → {sqName(board, j.to)}. {j.effect}
       </p>
-      <p className="mt-3 text-xs tracking-[0.16em] text-brass uppercase">{on ? (snake ? `Hit ${j.hits.length}×` : `Earned ${j.hits.length}×`) : snake ? "Not hit yet" : "Not earned yet"}</p>
-      <ul className="mt-1 flex flex-col gap-2">
-        {j.hits.slice(0, 40).map((h, i) => (
-          <li key={i} className="text-sm leading-snug">
-            {h.lane ? (
-              <button type="button" onClick={() => onToken(h.lane!)} className="text-fg underline underline-offset-2">
-                {h.name}
-              </button>
-            ) : (
-              <span className="text-fg">{h.name}</span>
-            )}
-            <span className="text-faint">
-              {" "}
-              · {fmt(h.date)}
-              {h.ref ? ` · ${h.ref}` : ""}
-            </span>
-            {h.what && <span className="block text-muted">{h.what}</span>}
-            {h.url && (
-              <a href={h.url} target="_blank" rel="noreferrer" className="text-xs text-brass underline underline-offset-2">
-                Source
-              </a>
-            )}
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
