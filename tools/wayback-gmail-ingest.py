@@ -14,8 +14,10 @@ Output (all paths relative to the wayback/ directory):
   api/index.json             every record (no text), newest first
   api/threads.json           records grouped by Gmail thread
   api/corpus.json            lists api/corpus-N.json shards holding every redacted text (id -> text), for full-text search
-Ids are "gm-" + the Gmail message id, so re-running is idempotent: an existing id is rewritten
-in place (same content -> same bytes), new mail is added, nothing is deleted.
+Ids are "gm-" + the Gmail message id, so re-running is idempotent: new mail is added, nothing is deleted.
+An id already in api/index.json is KEPT as published (22 Oct 2026): hand redactions made after ingest
+(e.g. phone numbers the patterns missed, commit a60bb98) can never be reintroduced by a re-run.
+Pass --rewrite to regenerate existing ids from Gmail on purpose (then re-apply any hand redactions).
 
 Privacy: email addresses, phone numbers, the family's private address, residential street
 addresses (e.g. in signatures), postcodes and meeting joining
@@ -24,6 +26,7 @@ redacted in everything published. Officials keep their names; addresses never le
 Usage: python3 gmail_ingest.py messages.json path/to/wayback [--generated 2026-10-19T00:00:00Z]
 """
 import json, os, re, sys, unicodedata
+REWRITE = False
 from collections import Counter, defaultdict
 from email.utils import parseaddr
 from datetime import datetime
@@ -37,6 +40,7 @@ INSTITUTIONS = {
   "bt-archives": "BT Archives",
   "cardiff": "Cardiff Council",
   "church-of-england": "Church of England archives (Lambeth Palace Library)",
+  "dcms": "Department for Culture, Media and Sport",
   "defra": "Defra",
   "historic-england": "Historic England",
   "lga": "Local Government Association / WLGA",
@@ -145,6 +149,7 @@ def main(src, root, generated):
         if m.get("incase") is False: skipped["not_verified_case"] += 1; continue
         if not (m.get("text") or "").strip(): skipped["empty"] += 1; continue
         rid = "gm-" + m["id"]
+        if rid in old and not REWRITE: skipped["kept_existing"] += 1; continue
         ts = m.get("ts") or ""
         orgs = [o for o in (m.get("orgs") or []) if o]
         subj = redact(m.get("subject") or "", c)
@@ -204,5 +209,6 @@ def main(src, root, generated):
 
 if __name__ == "__main__":
     a = sys.argv[1:]
+    REWRITE = "--rewrite" in a
     gen = a[a.index("--generated") + 1] if "--generated" in a else datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
     main(a[0], a[1], gen)

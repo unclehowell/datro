@@ -1,9 +1,9 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-10-21T19:36:05Z",
- "count": 846,
- "threadCount": 464,
+ "generated": "2026-10-22T13:06:14Z",
+ "count": 885,
+ "threadCount": 476,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
@@ -14,6 +14,65 @@
  },
  "threads": [
   {
+   "threadId": "gt-1a0e9e9889be4e6a",
+   "subject": "Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy records — Matter of public interest",
+   "threadSlug": "preservation-notice-great-house-farm-ty-mawr-llandough-do-not-destroy-records-ma",
+   "institutions": [
+    "blake-morgan",
+    "bp",
+    "cadw",
+    "cotswold",
+    "linklaters",
+    "moj",
+    "museum"
+   ],
+   "first": "2026-09-28T21:39:38Z",
+   "last": "2026-10-22T11:29:06Z",
+   "count": 7,
+   "messageIds": [
+    "gm-1a0e9f58d1f3cf15",
+    "gm-1a0eca2b89512fe9",
+    "gm-1a11c210b3442ac5",
+    "gm-1a14386a609c7540",
+    "gm-1a156bb48de3312f",
+    "gm-1a158ee36fed63d2",
+    "gm-1a1635f9eb7683f5"
+   ]
+  },
+  {
+   "threadId": "gt-1a1149d647cb33dc",
+   "subject": "Scrutiny Topic Suggestion / Task and Finish request — Council-held planning, heritage and public-authority record for Great House Farm / Tÿ Mawr, Llandough",
+   "threadSlug": "scrutiny-topic-suggestion-task-and-finish-request-council-held-planning-heritage",
+   "institutions": [
+    "vale-foi",
+    "vale-scrutiny"
+   ],
+   "first": "2026-10-10T19:15:29Z",
+   "last": "2026-10-22T09:28:23Z",
+   "count": 4,
+   "messageIds": [
+    "gm-1a1273de327c97d5",
+    "gm-1a12ad2c5353945c",
+    "gm-1a15f094419c7eee",
+    "gm-1a162f0c37aaddcc"
+   ]
+  },
+  {
+   "threadId": "gt-1a0cab95d9806099",
+   "subject": "South Wales Constabulary records, November–December 1988 — Great House Farm, Llandough",
+   "threadSlug": "south-wales-constabulary-records-novemberdecember-1988-great-house-farm-llandoug",
+   "institutions": [
+    "glamorgan"
+   ],
+   "first": "2026-09-27T04:16:47Z",
+   "last": "2026-10-22T09:14:37Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a0e1146d5796081",
+    "gm-1a162e42b9146d7b"
+   ]
+  },
+  {
    "threadId": "gt-1a156ac8b40758c6",
    "subject": "FOI request — Western Ground Rents Ltd (company no. 00342092, dissolved 1997): any bona vacantia property or interests at Llandough, Vale of Glamorgan",
    "threadSlug": "foi-request-western-ground-rents-ltd-company-no-00342092-dissolved-1997-any-bona",
@@ -21,11 +80,436 @@
     "bona-vacantia"
    ],
    "first": "2026-10-20T00:18:30Z",
-   "last": "2026-10-21T11:27:31Z",
-   "count": 2,
+   "last": "2026-10-22T08:55:27Z",
+   "count": 4,
    "messageIds": [
     "gm-1a156ac8b40758c6",
-    "gm-1a15e3779a430212"
+    "gm-1a15e3779a430212",
+    "gm-1a15f47239c2d0d7",
+    "gm-1a162d2a3641b73c"
+   ]
+  },
+  {
+   "threadId": "gt-1a0d4d42318ac190",
+   "subject": "Research enquiry — Bute Estate records GB 0210 BUTE / D153 / D219: Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth — 1877 split and 1916 tenancy",
+   "threadSlug": "research-enquiry-bute-estate-records-gb-0210-bute-d153-d219-great-house-farm-ty",
+   "institutions": [
+    "nlw"
+   ],
+   "first": "2026-09-27T04:15:12Z",
+   "last": "2026-10-22T08:54:27Z",
+   "count": 5,
+   "messageIds": [
+    "gm-1a0e112fa9acda07",
+    "gm-1a1273ceb33ceda8",
+    "gm-1a139b4ba7873d07",
+    "gm-1a15f50af42db702",
+    "gm-1a162d1a1d4be7f8"
+   ]
+  },
+  {
+   "threadId": "gt-1a0fd0b4ece5d975",
+   "subject": "Re: Further to Your Enquiry: Ref: 260928-6762800",
+   "threadSlug": "further-to-your-enquiry-ref-260928-6762800",
+   "institutions": [
+    "hmlr"
+   ],
+   "first": "2026-10-21T15:15:15Z",
+   "last": "2026-10-22T07:03:16Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a15f07e4d32f435",
+    "gm-1a1626be1f05ad1a"
+   ]
+  },
+  {
+   "threadId": "gt-1a15f6be39d85a48",
+   "subject": "Automatic reply: Request for Referral to the Parliamentary and Health Service Ombudsman – HM Land Registry Complaint (Case Ref: KN806)",
+   "threadSlug": "automatic-reply-request-for-referral-to-the-parliamentary-and-health-service-omb",
+   "institutions": [
+    "mp-vale"
+   ],
+   "first": "2026-10-21T17:04:25Z",
+   "last": "2026-10-21T17:04:25Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a15f6be39d85a48"
+   ]
+  },
+  {
+   "threadId": "gt-19e932cec78222f5",
+   "subject": "Re: Request for Referral to the Parliamentary and Health Service Ombudsman – HM Land Registry Complaint (Case Ref: KN806)",
+   "threadSlug": "request-for-referral-to-the-parliamentary-and-health-service-ombudsman-hm-land-r",
+   "institutions": [
+    "mp-vale"
+   ],
+   "first": "2026-10-21T17:04:16Z",
+   "last": "2026-10-21T17:04:16Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a15f6bb601dadaa"
+   ]
+  },
+  {
+   "threadId": "gt-1a016600b59eb32a",
+   "subject": "Request for burial / parish register entries – William Buckler (1990) and related records (Mary Doreen Williams)",
+   "threadSlug": "request-for-burial-parish-register-entries-william-buckler-1990-and-related-reco",
+   "institutions": [
+    "glamorgan"
+   ],
+   "first": "2026-08-20T19:33:57Z",
+   "last": "2026-10-21T16:55:33Z",
+   "count": 3,
+   "messageIds": [
+    "gm-1a020aa7634d2f36",
+    "gm-1a035c288e566f41",
+    "gm-1a15f63bb0dcad1e"
+   ]
+  },
+  {
+   "threadId": "gt-1a15f63521eae4d2",
+   "subject": "Automatic reply: Access to Deceased Health Records / FOI Request – William Buckler (1990) and Mary Doreen Williams (1983)",
+   "threadSlug": "automatic-reply-access-to-deceased-health-records-foi-request-william-buckler-19",
+   "institutions": [
+    "nhs-cav"
+   ],
+   "first": "2026-10-21T16:55:03Z",
+   "last": "2026-10-21T16:55:03Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a15f63521eae4d2"
+   ]
+  },
+  {
+   "threadId": "gt-1a0165fcfe194d80",
+   "subject": "Access to Deceased Health Records / FOI Request – William Buckler (1990) and Mary Doreen Williams (1983)",
+   "threadSlug": "access-to-deceased-health-records-foi-request-william-buckler-1990-and-mary-dore",
+   "institutions": [
+    "nhs-cav"
+   ],
+   "first": "2026-08-20T19:34:16Z",
+   "last": "2026-10-21T16:54:58Z",
+   "count": 3,
+   "messageIds": [
+    "gm-1a020aac15169bb2",
+    "gm-1a0234649e74f858",
+    "gm-1a15f63308fcfde9"
+   ]
+  },
+  {
+   "threadId": "gt-1a01a9ea1c9795b9",
+   "subject": "Re: IR2026/06711 - Department for Culture, Media and Sport - Response Letter",
+   "threadSlug": "ir2026-06711-department-for-culture-media-and-sport-response-letter",
+   "institutions": [
+    "dcms"
+   ],
+   "first": "2026-10-21T16:54:23Z",
+   "last": "2026-10-21T16:54:23Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a15f62a92742020"
+   ]
+  },
+  {
+   "threadId": "gt-1a0f2926630689c3",
+   "subject": "Subject Access Request",
+   "threadSlug": "subject-access-request",
+   "institutions": [
+    "swp"
+   ],
+   "first": "2026-09-30T13:47:44Z",
+   "last": "2026-10-21T16:41:49Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a0f2926630689c3",
+    "gm-1a15f5724d2f2ce4"
+   ]
+  },
+  {
+   "threadId": "gt-1a0ede5733d4fb7c",
+   "subject": "IR/26/16 - Buckler - Acknowledgement",
+   "threadSlug": "ir-26-16-buckler-acknowledgement",
+   "institutions": [
+    "nio"
+   ],
+   "first": "2026-09-29T15:59:53Z",
+   "last": "2026-10-21T16:40:13Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a0ede5733d4fb7c",
+    "gm-1a15f55aead048aa"
+   ]
+  },
+  {
+   "threadId": "gt-1a13fa747f9c0dd3",
+   "subject": "Request for information - ref FOI2026/23272 - 1988 Dispossession of Great House Farm, Llandough Non-SF Information",
+   "threadSlug": "request-for-information-ref-foi2026-23272-1988-dispossession-of-great-house-farm",
+   "institutions": [
+    "mod"
+   ],
+   "first": "2026-10-15T13:01:28Z",
+   "last": "2026-10-21T16:36:13Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a13fa747f9c0dd3",
+    "gm-1a15f52068163c3a"
+   ]
+  },
+  {
+   "threadId": "gt-1a07efa0b6b10900",
+   "subject": "Great House Farm, Llandough, Cardiff",
+   "threadSlug": "great-house-farm-llandough-cardiff",
+   "institutions": [
+    "heneb"
+   ],
+   "first": "2026-09-08T03:05:49Z",
+   "last": "2026-10-21T16:31:13Z",
+   "count": 5,
+   "messageIds": [
+    "gm-1a07efaa39026122",
+    "gm-1a1103d9d380a3b6",
+    "gm-1a1273cec9f65619",
+    "gm-1a13aff7c0c5d8b4",
+    "gm-1a15f4d72750e83d"
+   ]
+  },
+  {
+   "threadId": "gt-1a0b534a66786f28",
+   "subject": "FOI/EIR request - Case Ref/ 00211484",
+   "threadSlug": "foi-eir-request-case-ref-00211484",
+   "institutions": [
+    "vale-foi"
+   ],
+   "first": "2026-09-18T15:48:34Z",
+   "last": "2026-10-21T16:29:22Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a0b534a66786f28",
+    "gm-1a15f4bc01cdf18e"
+   ]
+  },
+  {
+   "threadId": "gt-1a15877f505dbb0b",
+   "subject": "Request for information - Ref: FOI2026/118465",
+   "threadSlug": "request-for-information-ref-foi2026-118465",
+   "institutions": [
+    "voa"
+   ],
+   "first": "2026-10-20T08:40:18Z",
+   "last": "2026-10-21T16:26:08Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a15877f505dbb0b",
+    "gm-1a15f48c942639bc"
+   ]
+  },
+  {
+   "threadId": "gt-1a15ee71949f5b94",
+   "subject": "RE: [2] Re: Supplement to complaint re-served 20 September 2026 — Great House Farm (Tŷ Mawr), Llandough (TO/HF/05677/26)",
+   "threadSlug": "2-re-supplement-to-complaint-re-served-20-september-2026-great-house-farm-ty-maw",
+   "institutions": [
+    "cadw"
+   ],
+   "first": "2026-10-21T14:39:21Z",
+   "last": "2026-10-21T16:23:26Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a15ee71949f5b94",
+    "gm-1a15f46517f42662"
+   ]
+  },
+  {
+   "threadId": "gt-1a15f43e150dde4d",
+   "subject": "Automatic reply: RESPONSE Freedom of Information 1189/26",
+   "threadSlug": "automatic-reply-response-freedom-of-information-1189-26",
+   "institutions": [
+    "swp"
+   ],
+   "first": "2026-10-21T16:20:39Z",
+   "last": "2026-10-21T16:20:39Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a15f43e150dde4d"
+   ]
+  },
+  {
+   "threadId": "gt-1a15eff3a07ac34b",
+   "subject": "RESPONSE Freedom of Information 1189/26",
+   "threadSlug": "response-freedom-of-information-1189-26",
+   "institutions": [
+    "swp"
+   ],
+   "first": "2026-10-21T15:05:41Z",
+   "last": "2026-10-21T16:20:32Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a15eff3a07ac34b",
+    "gm-1a15f43a9f1f22f6"
+   ]
+  },
+  {
+   "threadId": "gt-1a15f28811081705",
+   "subject": "We have received your email. Rydym wedi derbyn eich ebost",
+   "threadSlug": "we-have-received-your-email-rydym-wedi-derbyn-eich-ebost",
+   "institutions": [
+    "ico"
+   ],
+   "first": "2026-10-21T15:50:50Z",
+   "last": "2026-10-21T15:50:50Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a15f28811081705"
+   ]
+  },
+  {
+   "threadId": "gt-19fec61fb1d20afa",
+   "subject": "ICO Case Reference: IC-546505-W6P0",
+   "threadSlug": "ico-case-reference-ic-546505-w6p0",
+   "institutions": [
+    "ico"
+   ],
+   "first": "2026-08-10T15:54:28Z",
+   "last": "2026-10-21T15:50:42Z",
+   "count": 2,
+   "messageIds": [
+    "gm-19fec61fb1d20afa",
+    "gm-1a15f285df2fb1de"
+   ]
+  },
+  {
+   "threadId": "gt-1a15f27d7071dd5f",
+   "subject": "Automatic reply: RESPONSE Freedom of Information 1040/26",
+   "threadSlug": "automatic-reply-response-freedom-of-information-1040-26",
+   "institutions": [
+    "swp"
+   ],
+   "first": "2026-10-21T15:50:06Z",
+   "last": "2026-10-21T15:50:06Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a15f27d7071dd5f"
+   ]
+  },
+  {
+   "threadId": "gt-1a0ed90513b1ae67",
+   "subject": "RESPONSE Freedom of Information 1040/26",
+   "threadSlug": "response-freedom-of-information-1040-26",
+   "institutions": [
+    "swp"
+   ],
+   "first": "2026-09-29T14:27:25Z",
+   "last": "2026-10-21T15:49:57Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a0ed90513b1ae67",
+    "gm-1a15f27ac84986fc"
+   ]
+  },
+  {
+   "threadId": "gt-1a07b3bf0b65e56c",
+   "subject": "RE: Epexio contact us form submission",
+   "threadSlug": "epexio-contact-us-form-submission",
+   "institutions": [
+    "glamorgan"
+   ],
+   "first": "2026-09-07T09:36:38Z",
+   "last": "2026-10-21T15:18:52Z",
+   "count": 6,
+   "messageIds": [
+    "gm-1a07b3bf0b65e56c",
+    "gm-1a07c8b70851bfd9",
+    "gm-1a0d421cdc687541",
+    "gm-1a0e112511993a85",
+    "gm-1a15e9a1a2129ef3",
+    "gm-1a15f0b3734dbbe0"
+   ]
+  },
+  {
+   "threadId": "gt-1a15f0a3dde6b898",
+   "subject": "Automatic reply: Internal Review 1188/26 of FOI 719/26",
+   "threadSlug": "automatic-reply-internal-review-1188-26-of-foi-719-26",
+   "institutions": [
+    "swp"
+   ],
+   "first": "2026-10-21T15:17:45Z",
+   "last": "2026-10-21T15:17:45Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a15f0a3dde6b898"
+   ]
+  },
+  {
+   "threadId": "gt-1a0ed9801c58b6b2",
+   "subject": "Internal Review 1188/26 of FOI 719/26",
+   "threadSlug": "internal-review-1188-26-of-foi-719-26",
+   "institutions": [
+    "swp"
+   ],
+   "first": "2026-09-29T14:35:50Z",
+   "last": "2026-10-21T15:17:40Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a0ed9801c58b6b2",
+    "gm-1a15f0a1a98c3eeb"
+   ]
+  },
+  {
+   "threadId": "gt-1a0ed914794badec",
+   "subject": "RE: Freedom of Information Request: Reference CAS-347296-M0V4Y1 — clarification",
+   "threadSlug": "freedom-of-information-request-reference-cas-347296-m0v4y1-clarification",
+   "institutions": [
+    "tna"
+   ],
+   "first": "2026-10-01T11:56:40Z",
+   "last": "2026-10-21T15:17:00Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a0f752fb0575943",
+    "gm-1a15f0980aac7907"
+   ]
+  },
+  {
+   "threadId": "gt-1a135bdc3ab000b2",
+   "subject": "RC26-0375 – thank you and three remaining points & Order for scans",
+   "threadSlug": "rc26-0375-thank-you-and-three-remaining-points-order-for-scans",
+   "institutions": [
+    "rcahmw"
+   ],
+   "first": "2026-10-13T14:49:40Z",
+   "last": "2026-10-21T15:13:23Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a135bdc3ab000b2",
+    "gm-1a15f0631aeba10f"
+   ]
+  },
+  {
+   "threadId": "gt-1a15e1f613adbd58",
+   "subject": "Great House Farm / suspected historic fraud",
+   "threadSlug": "great-house-farm-suspected-historic-fraud",
+   "institutions": [
+    "cps"
+   ],
+   "first": "2026-10-21T11:01:11Z",
+   "last": "2026-10-21T15:12:47Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a15e1f613adbd58",
+    "gm-1a15f05a4547ae7d"
+   ]
+  },
+  {
+   "threadId": "gt-1a15f01d6f789066",
+   "subject": "Request response: Wartime and post-war farm records for Great House Farm / Tŷ Mawr, Llandough, 1936–1955 (FOI2026/23886)",
+   "threadSlug": "request-response-wartime-and-post-war-farm-records-for-great-house-farm-ty-mawr",
+   "institutions": [
+    "defra"
+   ],
+   "first": "2026-10-21T15:08:38Z",
+   "last": "2026-10-21T15:08:38Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a15f01d6f789066"
    ]
   },
   {
@@ -40,20 +524,6 @@
    "count": 1,
    "messageIds": [
     "gm-1a15e2cfd24eaf4d"
-   ]
-  },
-  {
-   "threadId": "gt-1a15e1f613adbd58",
-   "subject": "Great House Farm / suspected historic fraud",
-   "threadSlug": "great-house-farm-suspected-historic-fraud",
-   "institutions": [
-    "cps"
-   ],
-   "first": "2026-10-21T11:01:11Z",
-   "last": "2026-10-21T11:01:11Z",
-   "count": 1,
-   "messageIds": [
-    "gm-1a15e1f613adbd58"
    ]
   },
   {
@@ -166,45 +636,6 @@
    "count": 1,
    "messageIds": [
     "gm-1a1592f05965e88d"
-   ]
-  },
-  {
-   "threadId": "gt-1a0e9e9889be4e6a",
-   "subject": "Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy records — Matter of public interest",
-   "threadSlug": "preservation-notice-great-house-farm-ty-mawr-llandough-do-not-destroy-records-ma",
-   "institutions": [
-    "blake-morgan",
-    "bp",
-    "cadw",
-    "cotswold",
-    "linklaters",
-    "moj",
-    "museum"
-   ],
-   "first": "2026-09-28T21:39:38Z",
-   "last": "2026-10-20T10:49:26Z",
-   "count": 6,
-   "messageIds": [
-    "gm-1a0e9f58d1f3cf15",
-    "gm-1a0eca2b89512fe9",
-    "gm-1a11c210b3442ac5",
-    "gm-1a14386a609c7540",
-    "gm-1a156bb48de3312f",
-    "gm-1a158ee36fed63d2"
-   ]
-  },
-  {
-   "threadId": "gt-1a15877f505dbb0b",
-   "subject": "Request for information - Ref: FOI2026/118465",
-   "threadSlug": "request-for-information-ref-foi2026-118465",
-   "institutions": [
-    "voa"
-   ],
-   "first": "2026-10-20T08:40:18Z",
-   "last": "2026-10-20T08:40:18Z",
-   "count": 1,
-   "messageIds": [
-    "gm-1a15877f505dbb0b"
    ]
   },
   {
@@ -1061,37 +1492,6 @@
    ]
   },
   {
-   "threadId": "gt-1a13fa747f9c0dd3",
-   "subject": "Request for information - ref FOI2026/23272 - 1988 Dispossession of Great House Farm, Llandough Non-SF Information",
-   "threadSlug": "request-for-information-ref-foi2026-23272-1988-dispossession-of-great-house-farm",
-   "institutions": [
-    "mod"
-   ],
-   "first": "2026-10-15T13:01:28Z",
-   "last": "2026-10-15T13:01:28Z",
-   "count": 1,
-   "messageIds": [
-    "gm-1a13fa747f9c0dd3"
-   ]
-  },
-  {
-   "threadId": "gt-1a07efa0b6b10900",
-   "subject": "Great House Farm, Llandough, Cardiff",
-   "threadSlug": "great-house-farm-llandough-cardiff",
-   "institutions": [
-    "heneb"
-   ],
-   "first": "2026-09-08T03:05:49Z",
-   "last": "2026-10-14T15:19:37Z",
-   "count": 4,
-   "messageIds": [
-    "gm-1a07efaa39026122",
-    "gm-1a1103d9d380a3b6",
-    "gm-1a1273cec9f65619",
-    "gm-1a13aff7c0c5d8b4"
-   ]
-  },
-  {
    "threadId": "gt-1a13a11f16d19b46",
    "subject": "In Touch with Llandough!",
    "threadSlug": "in-touch-with-llandough",
@@ -1156,22 +1556,6 @@
    ]
   },
   {
-   "threadId": "gt-1a0d4d42318ac190",
-   "subject": "Research enquiry — Bute Estate records GB 0210 BUTE / D153 / D219: Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth — 1877 split and 1916 tenancy",
-   "threadSlug": "research-enquiry-bute-estate-records-gb-0210-bute-d153-d219-great-house-farm-ty",
-   "institutions": [
-    "nlw"
-   ],
-   "first": "2026-09-27T04:15:12Z",
-   "last": "2026-10-14T09:18:28Z",
-   "count": 3,
-   "messageIds": [
-    "gm-1a0e112fa9acda07",
-    "gm-1a1273ceb33ceda8",
-    "gm-1a139b4ba7873d07"
-   ]
-  },
-  {
    "threadId": "gt-1a1391920ebadfdd",
    "subject": "Please update the status of your request - 1988 Dispossession of Great House Farm, Llandough from the Williams/ Buckler Family",
    "threadSlug": "please-update-the-status-of-your-request-1988-dispossession-of-great-house-farm",
@@ -1215,20 +1599,6 @@
     "gm-1a1344cdc78c3aaa",
     "gm-1a13602f78dfa3d1",
     "gm-1a1363a8a12eaf81"
-   ]
-  },
-  {
-   "threadId": "gt-1a135bdc3ab000b2",
-   "subject": "RC26-0375 – thank you and three remaining points & Order for scans",
-   "threadSlug": "rc26-0375-thank-you-and-three-remaining-points-order-for-scans",
-   "institutions": [
-    "rcahmw"
-   ],
-   "first": "2026-10-13T14:49:40Z",
-   "last": "2026-10-13T14:49:40Z",
-   "count": 1,
-   "messageIds": [
-    "gm-1a135bdc3ab000b2"
    ]
   },
   {
@@ -1352,22 +1722,6 @@
    "count": 1,
    "messageIds": [
     "gm-1a12c11105793977"
-   ]
-  },
-  {
-   "threadId": "gt-1a1149d647cb33dc",
-   "subject": "Scrutiny Topic Suggestion / Task and Finish request — Council-held planning, heritage and public-authority record for Great House Farm / Tÿ Mawr, Llandough",
-   "threadSlug": "scrutiny-topic-suggestion-task-and-finish-request-council-held-planning-heritage",
-   "institutions": [
-    "vale-foi",
-    "vale-scrutiny"
-   ],
-   "first": "2026-10-10T19:15:29Z",
-   "last": "2026-10-11T11:56:54Z",
-   "count": 2,
-   "messageIds": [
-    "gm-1a1273de327c97d5",
-    "gm-1a12ad2c5353945c"
    ]
   },
   {
@@ -1913,20 +2267,6 @@
    ]
   },
   {
-   "threadId": "gt-1a0ed914794badec",
-   "subject": "RE: Freedom of Information Request: Reference CAS-347296-M0V4Y1 — clarification",
-   "threadSlug": "freedom-of-information-request-reference-cas-347296-m0v4y1-clarification",
-   "institutions": [
-    "tna"
-   ],
-   "first": "2026-10-01T11:56:40Z",
-   "last": "2026-10-01T11:56:40Z",
-   "count": 1,
-   "messageIds": [
-    "gm-1a0f752fb0575943"
-   ]
-  },
-  {
    "threadId": "gt-1a0f7428edff878c",
    "subject": "New response to your FOI request - BP vs Buckler 1987",
    "threadSlug": "new-response-to-your-foi-request-bp-vs-buckler-1987",
@@ -2024,20 +2364,6 @@
    "messageIds": [
     "gm-1a0f263c660894bb",
     "gm-1a0f297acf478271"
-   ]
-  },
-  {
-   "threadId": "gt-1a0f2926630689c3",
-   "subject": "Subject Access Request",
-   "threadSlug": "subject-access-request",
-   "institutions": [
-    "swp"
-   ],
-   "first": "2026-09-30T13:47:44Z",
-   "last": "2026-09-30T13:47:44Z",
-   "count": 1,
-   "messageIds": [
-    "gm-1a0f2926630689c3"
    ]
   },
   {
@@ -2215,20 +2541,6 @@
    ]
   },
   {
-   "threadId": "gt-1a0ede5733d4fb7c",
-   "subject": "IR/26/16 - Buckler - Acknowledgement",
-   "threadSlug": "ir-26-16-buckler-acknowledgement",
-   "institutions": [
-    "nio"
-   ],
-   "first": "2026-09-29T15:59:53Z",
-   "last": "2026-09-29T15:59:53Z",
-   "count": 1,
-   "messageIds": [
-    "gm-1a0ede5733d4fb7c"
-   ]
-  },
-  {
    "threadId": "gt-1a0edcd27db639d9",
    "subject": "Welsh Water - Mail reference 93047764/01",
    "threadSlug": "welsh-water-mail-reference-93047764-01",
@@ -2254,34 +2566,6 @@
    "count": 1,
    "messageIds": [
     "gm-1a0edb423c542093"
-   ]
-  },
-  {
-   "threadId": "gt-1a0ed9801c58b6b2",
-   "subject": "Internal Review 1188/26 of FOI 719/26",
-   "threadSlug": "internal-review-1188-26-of-foi-719-26",
-   "institutions": [
-    "swp"
-   ],
-   "first": "2026-09-29T14:35:50Z",
-   "last": "2026-09-29T14:35:50Z",
-   "count": 1,
-   "messageIds": [
-    "gm-1a0ed9801c58b6b2"
-   ]
-  },
-  {
-   "threadId": "gt-1a0ed90513b1ae67",
-   "subject": "RESPONSE Freedom of Information 1040/26",
-   "threadSlug": "response-freedom-of-information-1040-26",
-   "institutions": [
-    "swp"
-   ],
-   "first": "2026-09-29T14:27:25Z",
-   "last": "2026-09-29T14:27:25Z",
-   "count": 1,
-   "messageIds": [
-    "gm-1a0ed90513b1ae67"
    ]
   },
   {
@@ -2687,20 +2971,6 @@
    ]
   },
   {
-   "threadId": "gt-1a0cab95d9806099",
-   "subject": "South Wales Constabulary records, November–December 1988 — Great House Farm, Llandough",
-   "threadSlug": "south-wales-constabulary-records-novemberdecember-1988-great-house-farm-llandoug",
-   "institutions": [
-    "glamorgan"
-   ],
-   "first": "2026-09-27T04:16:47Z",
-   "last": "2026-09-27T04:16:47Z",
-   "count": 1,
-   "messageIds": [
-    "gm-1a0e1146d5796081"
-   ]
-  },
-  {
    "threadId": "gt-1a0e1142c3b0174a",
    "subject": "Your submission to LibAnswers was received.",
    "threadSlug": "your-submission-to-libanswers-was-received",
@@ -2726,23 +2996,6 @@
    "count": 1,
    "messageIds": [
     "gm-1a0e11391052951a"
-   ]
-  },
-  {
-   "threadId": "gt-1a07b3bf0b65e56c",
-   "subject": "RE: Epexio contact us form submission",
-   "threadSlug": "epexio-contact-us-form-submission",
-   "institutions": [
-    "glamorgan"
-   ],
-   "first": "2026-09-07T09:36:38Z",
-   "last": "2026-09-27T04:14:28Z",
-   "count": 4,
-   "messageIds": [
-    "gm-1a07b3bf0b65e56c",
-    "gm-1a07c8b70851bfd9",
-    "gm-1a0d421cdc687541",
-    "gm-1a0e112511993a85"
    ]
   },
   {
@@ -3075,20 +3328,6 @@
     "gm-1a08bb3809f8a66b",
     "gm-1a0b4d2ccd7bfc79",
     "gm-1a0b55432e14a224"
-   ]
-  },
-  {
-   "threadId": "gt-1a0b534a66786f28",
-   "subject": "FOI/EIR request - Case Ref/ 00211484",
-   "threadSlug": "foi-eir-request-case-ref-00211484",
-   "institutions": [
-    "vale-foi"
-   ],
-   "first": "2026-09-18T15:48:34Z",
-   "last": "2026-09-18T15:48:34Z",
-   "count": 1,
-   "messageIds": [
-    "gm-1a0b534a66786f28"
    ]
   },
   {
@@ -3895,21 +4134,6 @@
    ]
   },
   {
-   "threadId": "gt-1a016600b59eb32a",
-   "subject": "Request for burial / parish register entries – William Buckler (1990) and related records (Mary Doreen Williams)",
-   "threadSlug": "request-for-burial-parish-register-entries-william-buckler-1990-and-related-reco",
-   "institutions": [
-    "glamorgan"
-   ],
-   "first": "2026-08-20T19:33:57Z",
-   "last": "2026-08-24T21:52:14Z",
-   "count": 2,
-   "messageIds": [
-    "gm-1a020aa7634d2f36",
-    "gm-1a035c288e566f41"
-   ]
-  },
-  {
    "threadId": "gt-19fa56f91e54c219",
    "subject": "Complaint – Failure to Respond / Failure to Deal Properly with Case – Cllr George Carroll (Llandough) – Great House Farm / Church View Close",
    "threadSlug": "complaint-failure-to-respond-failure-to-deal-properly-with-case-cllr-george-carr",
@@ -3970,21 +4194,6 @@
    "count": 1,
    "messageIds": [
     "gm-1a02361876a70fbf"
-   ]
-  },
-  {
-   "threadId": "gt-1a0165fcfe194d80",
-   "subject": "Access to Deceased Health Records / FOI Request – William Buckler (1990) and Mary Doreen Williams (1983)",
-   "threadSlug": "access-to-deceased-health-records-foi-request-william-buckler-1990-and-mary-dore",
-   "institutions": [
-    "nhs-cav"
-   ],
-   "first": "2026-08-20T19:34:16Z",
-   "last": "2026-08-21T07:43:19Z",
-   "count": 2,
-   "messageIds": [
-    "gm-1a020aac15169bb2",
-    "gm-1a0234649e74f858"
    ]
   },
   {
@@ -4206,20 +4415,6 @@
    "count": 1,
    "messageIds": [
     "gm-19feeb428c9f92d6"
-   ]
-  },
-  {
-   "threadId": "gt-19fec61fb1d20afa",
-   "subject": "ICO Case Reference: IC-546505-W6P0",
-   "threadSlug": "ico-case-reference-ic-546505-w6p0",
-   "institutions": [
-    "ico"
-   ],
-   "first": "2026-08-10T15:54:28Z",
-   "last": "2026-08-10T15:54:28Z",
-   "count": 1,
-   "messageIds": [
-    "gm-19fec61fb1d20afa"
    ]
   },
   {
