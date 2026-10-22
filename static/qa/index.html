@@ -74,10 +74,39 @@ footer{max-width:900px;margin:0 auto;padding:10px 14px 40px;color:var(--muted);f
 .toast.on{opacity:.92}
 @media (min-width:720px){h1{font-size:2rem}.hero{padding:34px 20px 34px}main{padding:18px 20px 40px}}
 @media (max-width:420px){.body{padding-left:16px}}
+#corr{margin:4px 0 18px}
+#corr .sec{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:0 0 10px;overflow:hidden}
+#corr .sec>summary{list-style:none;cursor:pointer;display:flex;gap:12px;align-items:center;padding:13px 14px}
+#corr summary::-webkit-details-marker{display:none}
+#corr .big{flex:0 0 auto;width:34px;height:34px;border-radius:9px;background:var(--navy);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+#corr .cn2{display:block;font-size:.82rem;color:var(--muted);margin-top:2px}
+#corr .pad{padding:0 14px;font-size:.86rem}
+#corr .bd{border-top:1px solid var(--line)}
+#corr .bd>summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:10px 14px}
+#corr .bn{flex:1 1 100%;font-weight:600;font-size:.95rem;min-width:0;overflow-wrap:anywhere}
+#corr .cn{font-size:.8rem;color:var(--muted)}
+#corr .cb{display:inline-flex;align-items:center;gap:3px;font-size:.72rem;font-weight:700;border-radius:999px;padding:1px 7px;margin-right:6px;white-space:nowrap}
+#corr .cb.red{background:var(--rb);color:var(--r)} #corr .cb.ok{background:var(--gb);color:var(--g)} #corr .cb.wait{background:var(--ab);color:var(--a)} #corr .cb.k{background:var(--sb);color:var(--s)}
+#corr .ico{width:13px;height:13px;vertical-align:-2px}
+#corr .bx{padding:0 10px 10px}
+#corr .rq{border:1px solid var(--line);border-radius:10px;margin:6px 0;background:#fbfcfe}
+#corr .rq>summary{list-style:none;cursor:pointer;padding:9px 11px}
+#corr .rt{display:block;font-weight:600;font-size:.9rem;overflow-wrap:anywhere}
+#corr .rm{display:block;font-size:.78rem;color:var(--muted);margin-top:3px;overflow-wrap:anywhere}
+#corr .rb{padding:0 11px 10px;font-size:.88rem;overflow-wrap:anywhere}
+#corr .facts{margin:6px 0}
+#corr .lb{font-weight:700;margin:10px 0 4px;font-size:.84rem;color:var(--navy)}
+#corr ul.em,#corr ol.qs{margin:0 0 8px;padding-left:20px}
+#corr ol.qs li,#corr ul.em li{margin:0 0 6px}
+#corr .st{font-size:.72rem;font-weight:700;background:var(--sb);color:var(--s);border-radius:999px;padding:1px 7px;white-space:nowrap}
+#corr .mu{color:var(--muted)} #corr .nx{margin:8px 4px;font-size:.88rem} #corr .fi{background:#f7f9fc;border-radius:8px;padding:8px 10px}
+#corr .mini summary{cursor:pointer;color:var(--blue);font-size:.84rem;padding:2px 4px}
+#corr .flash{outline:3px solid #ffb703;outline-offset:2px}
 </style>
 <script src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js?v=2.0.3" defer></script>
 <script src="https://bucklerfamily.estate/ebook/cta.js" defer></script>
-<script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.0.3"></script>
+<script src="/ledger.js" defer></script>
+<script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.1.2"></script>
 </head>
 <body>
 <header class="hero">
@@ -94,6 +123,7 @@ footer{max-width:900px;margin:0 auto;padding:10px 14px 40px;color:var(--muted);f
  </div>
 </header>
 <main class="wrap">
+ <section id="corr" aria-label="Questions asked and answers received"><p class="mu">Loading the correspondence list…</p></section>
  <section class="filters" aria-label="Filters">
   <div class="flabel">Body</div>
   <div class="chips" id="bodies"></div>
