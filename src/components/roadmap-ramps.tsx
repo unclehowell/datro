@@ -16,7 +16,7 @@ import { roadmapStepRequirement } from "@/data/legal-routes";
 type Step = {
   n: number; key: string; label: string; date: string | null; date_kind: "actual" | "projected";
   status: "done" | "missed" | "pending" | "not yet reached" | "na"; basis: string; body: string | null;
-  link: string | null; ev: string | null; note: string | null; axis: string | null;
+  link: string | null; ev: string | null; note: string | null; axis: string | null; rule?: string; req?: string;
 };
 type Email = {
   id: string; date: string; dir: "sent" | "received"; cls: string; subject: string; summary: string;
@@ -28,9 +28,15 @@ type Lane = {
   id: string; name: string; kind: string; regime: string | null; note: string; ombudsman: string | null; court: string | null;
   anchored: boolean; lead: { cid: string; ev: string | null; url: string | null; title: string; ref: string; regime: string } | null;
   reached: number; next: { n: number; label: string; date: string | null; status: string } | null;
-  counts: { emails: number; sent: number; received: number; requests: number; missed: number; met: number; expected: number };
+  counts: { emails: number; sent: number; received: number; requests: number; missed: number; met: number; expected: number; red_house?: number; red_fish?: number };
   steps: Step[]; emails: Email[]; expected: Due[]; missed: Due[]; met: Due[];
   requests: { cid: string; ev: string | null; url: string | null; title: string }[];
+  route?: string; route_basis?: string; fails?: Fail[];
+};
+/** A failure marker from work/failures-ledger: red house = no reply by the due date; red fish = late and/or questions left unanswered. */
+type Fail = {
+  icon: "house" | "fish"; date: string; id: string; title: string; ref: string; sent: string; replied: string | null; days: number | null;
+  rule: string; rule_url: string; policy: string; policy_url: string; standard_type: string; unanswered: number; finding: string;
 };
 type Roadmap = { as_of: string; generated: string; lanes: Lane[]; totals: { institutions: number; steps: number } };
 
@@ -53,16 +59,21 @@ export const STATUS: Record<Step["status"], { label: string; colour: string }> =
   na: { label: "Not applicable", colour: "#4a505b" },
 };
 
-/* ---------- geometry: 12 girders (0 = before the first request, 1..11 = the ladder) ---------- */
+/* ---------- geometry: one girder per step of the chosen body's own route, plus girder 0 (before the first request) ---------- */
 const W = 360;
-const N = 12;
+let N = 12;
 const TOP = 70;
 const LH = 47;
 const X0 = 10;
 const X1 = W - 10;
 const GAP = 26;
 const TILT = 6;
-const H = TOP + N * LH + 18;
+let H = TOP + N * LH + 18;
+/** Each body has its own route length; set the girder count before laying out, drawing or hit-testing a lane. */
+function setGeom(lane: Lane | null) {
+  N = lane ? lane.steps.length + 1 : 12;
+  H = TOP + N * LH + 18;
+}
 
 function girder(level: number) {
   const yBase = TOP + (N - 1 - level) * LH + 30;
@@ -238,14 +249,70 @@ type Hit =
   | { kind: "met"; level: number; item: Due }
   | { kind: "step"; level: number }
   | { kind: "today"; level: number }
+  | { kind: "fail"; level: number; item: Fail }
   | { kind: "court" };
 type Target = { x: number; y: number; r: number; hit: Hit };
+
+/** Red house: no reply by the due date. Red fish: a reply came late and/or left questions unanswered. */
+function drawHouse(ctx: CanvasRenderingContext2D, x: number, y: number) {
+  ctx.save();
+  ctx.fillStyle = "#e5484d";
+  ctx.strokeStyle = "#0d0b09";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(x - 7, y);
+  ctx.lineTo(x, y - 7);
+  ctx.lineTo(x + 7, y);
+  ctx.lineTo(x + 5, y);
+  ctx.lineTo(x + 5, y + 6);
+  ctx.lineTo(x - 5, y + 6);
+  ctx.lineTo(x - 5, y);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+  ctx.fillStyle = "#0d0b09";
+  ctx.fillRect(x - 1.5, y + 2, 3, 4);
+  ctx.restore();
+}
+function drawFish(ctx: CanvasRenderingContext2D, x: number, y: number) {
+  ctx.save();
+  ctx.fillStyle = "#e5484d";
+  ctx.strokeStyle = "#0d0b09";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.ellipse(x - 1, y, 6, 3.6, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(x + 4, y);
+  ctx.lineTo(x + 9, y - 4);
+  ctx.lineTo(x + 9, y + 4);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+  ctx.fillStyle = "#0d0b09";
+  ctx.beginPath();
+  ctx.arc(x - 4, y - 1, 0.9, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+export function HouseIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M1 8 8 1l7 7h-2v6H3V8z" fill="#e5484d" /><rect x="6.5" y="10" width="3" height="4" fill="#0d0b09" /></svg>
+  );
+}
+export function FishIcon() {
+  return (
+    <svg width="16" height="12" viewBox="0 0 20 12" aria-hidden="true"><ellipse cx="8" cy="6" rx="7" ry="4.2" fill="#e5484d" /><path d="M13 6l6-5v10z" fill="#e5484d" /><circle cx="4.5" cy="5" r="1" fill="#0d0b09" /></svg>
+  );
+}
 
 function stepColour(s: Step | undefined) {
   return s ? STATUS[s.status].colour : "#8a817a";
 }
 
 function layout(lane: Lane, today: number) {
+  setGeom(lane);
   const axis = buildAxis(lane, today);
   const targets: Target[] = [];
   // email stacks: bucket by level + 10px of x
@@ -269,6 +336,12 @@ function layout(lane: Lane, today: number) {
   const due = marks(lane.expected, "due");
   const missed = marks(lane.missed, "missed");
   const met = marks(lane.met, "met");
+  const fails = (lane.fails ?? []).map((f, i) => {
+    const p = placeAt(axis, ms(f.date));
+    const y = p.y - 24 - (i % 2) * 10;
+    targets.push({ x: p.x, y, r: 11, hit: { kind: "fail", level: p.level, item: f } });
+    return { ...p, y, f };
+  });
   const tp = placeAt(axis, today);
   targets.push({ x: tp.x, y: tp.y - 14, r: 14, hit: { kind: "today", level: tp.level } });
   for (let lv = 1; lv < N; lv++) {
@@ -278,7 +351,7 @@ function layout(lane: Lane, today: number) {
   const top = girder(N - 1);
   const apeX = top.highRight ? top.right - 30 : top.left + 30;
   targets.push({ x: apeX, y: top.yAt(apeX) - 28, r: 26, hit: { kind: "court" } });
-  return { axis, stacks, due, missed, met, tp, apeX, targets };
+  return { axis, stacks, due, missed, met, fails, tp, apeX, targets };
 }
 
 function monthTicks(axis: Axis, lv: number) {
@@ -482,6 +555,7 @@ function draw(ctx: CanvasRenderingContext2D, lane: Lane, L: ReturnType<typeof la
   }
   // missed deadlines: fire
   for (const m of L.missed) drawGrid(ctx, FIRE_A, m.x, m.y - 9, 13);
+  for (const m of L.fails) (m.f.icon === "house" ? drawHouse : drawFish)(ctx, m.x, m.y);
   // the man at today
   drawMan(ctx, L.tp.x, L.tp.y - 1, motion ? t : 0, `TODAY ${fmtShort(todayStr)}`);
 }
@@ -509,7 +583,7 @@ function StepLine({ lane, level }: { lane: Lane; level: number }) {
   const s = stepAt(lane, level);
   return (
     <p className="text-sm text-muted">
-      {s ? `Step ${s.n} of 11 · ${s.label} · ${roadmapStepRequirement(s.key, lane.regime ?? "").text}` : "Before the first request"}
+      {s ? `Step ${s.n} of ${lane.steps.length} · ${s.label} · ${s.rule ?? roadmapStepRequirement(s.key, lane.regime ?? "").text}` : "Before the first request"}
     </p>
   );
 }
@@ -562,6 +636,25 @@ function Sheet({ hit, lane }: { hit: Hit; lane: Lane }) {
       </div>
     );
   }
+  if (hit.kind === "fail") {
+    const f = hit.item;
+    return (
+      <div className="space-y-2">
+        {head}
+        <p className="flex items-center gap-2 text-sm font-semibold text-fg">
+          {f.icon === "house" ? <HouseIcon /> : <FishIcon />}
+          {f.icon === "house" ? "No reply by the due date" : f.replied ? "Reply after the due date" : "Questions left unanswered"}
+        </p>
+        <p className="text-sm text-fg">{f.title}{f.ref ? ` (${f.ref})` : ""}</p>
+        <p className="text-sm text-muted">Sent {f.sent || "—"} · due {fmt(f.date)} · {f.replied ? `replied ${fmt(f.replied)}` : "no reply on the record"}{f.days ? ` · ${f.days} working day${f.days > 1 ? "s" : ""} ${f.replied ? "late" : "overdue"}` : ""}</p>
+        <p className="text-sm text-muted">Rule: <A href={f.rule_url}>{f.rule}</A>{f.standard_type !== "statute" ? " (the body's own published standard)" : ""}</p>
+        {f.policy && <p className="text-sm text-muted">Own policy: <A href={f.policy_url || null}>{f.policy}</A></p>}
+        {f.unanswered > 0 && <p className="text-sm text-muted">{f.unanswered} question{f.unanswered > 1 ? "s" : ""} not answered.</p>}
+        <p className="text-sm text-muted">{f.finding}</p>
+        <p className="text-xs text-faint">Working days exclude weekends and England &amp; Wales bank holidays; the day after receipt is day 1.</p>
+      </div>
+    );
+  }
   if (hit.kind === "court")
     return (
       <div className="space-y-2">
@@ -593,13 +686,13 @@ function Sheet({ hit, lane }: { hit: Hit; lane: Lane }) {
     <div className="space-y-2">
       {head}
       <p className="text-sm text-fg">
-        Step {s.n} of 11 · <span className="font-semibold">{s.label}</span>
+        Step {s.n} of {lane.steps.length} · <span className="font-semibold">{s.label}</span>
       </p>
       <p className="flex flex-wrap items-center gap-2 text-sm text-fg">
         <Chip status={s.status} /> {s.status !== "na" && <span>{fmt(s.date)}{s.date_kind === "projected" ? " (projected)" : ""}</span>}
       </p>
       <p className="text-sm text-muted">{s.basis}</p>
-      <p className="text-xs text-faint">{roadmapStepRequirement(s.key, lane.regime ?? "").text}</p>
+      <p className="text-xs text-faint">{s.rule ? `${s.rule} · ${s.req ?? ""}` : roadmapStepRequirement(s.key, lane.regime ?? "").text}</p>
       {s.body && <p className="text-sm text-muted">With: {s.body}</p>}
       {s.note && <p className="text-sm text-muted">{s.note}</p>}
       <p className="text-sm">
@@ -703,6 +796,7 @@ export function RoadmapRamps({ preferName }: { preferName?: string }) {
     const motion = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
     let visible = true;
+    setGeom(lane);
     const size = () => {
       const w = wrap.clientWidth;
       const dpr = Math.min(window.devicePixelRatio || 1, 2.5);
@@ -739,6 +833,7 @@ export function RoadmapRamps({ preferName }: { preferName?: string }) {
   const onTap = (cx: number, cy: number) => {
     const canvas = canvasRef.current;
     if (!canvas || !L) return;
+    setGeom(lane);
     const r = canvas.getBoundingClientRect();
     const x = ((cx - r.left) / r.width) * W;
     const y = ((cy - r.top) / r.height) * H;
@@ -822,9 +917,12 @@ export function RoadmapRamps({ preferName }: { preferName?: string }) {
           {lane.counts.missed ? <span style={{ color: STATUS.missed.colour }}> · {lane.counts.missed} deadline{lane.counts.missed > 1 ? "s" : ""} missed</span> : null}
           {lane.counts.expected ? ` · ${lane.counts.expected} repl${lane.counts.expected > 1 ? "ies" : "y"} due` : ""}
           {lane.next ? ` · next: ${lane.next.label}, ${fmt(lane.next.date)}` : ""}
+          {lane.counts.red_house ? <span className="inline-flex items-center gap-1" style={{ color: STATUS.missed.colour }}> · <HouseIcon /> {lane.counts.red_house} no reply by the due date</span> : null}
+          {lane.counts.red_fish ? <span className="inline-flex items-center gap-1" style={{ color: STATUS.missed.colour }}> · <FishIcon /> {lane.counts.red_fish} late or part-answered</span> : null}
+          {lane.route_basis ? <span className="block text-faint">Route: {lane.route_basis} · {lane.steps.length} steps</span> : null}
         </p>
       )}
-      <div ref={wrapRef} className="overflow-hidden rounded-2xl border border-line bg-[#0d0b09]" style={{ aspectRatio: `${W} / ${H}` }}>
+      <div ref={wrapRef} className="overflow-hidden rounded-2xl border border-line bg-[#0d0b09]" style={{ aspectRatio: `${W} / ${lane ? TOP + (lane.steps.length + 1) * LH + 18 : H}` }}>
         {failed ? (
           <p className="p-4 text-sm text-muted">The roadmap data did not load. Open /data/roadmap.json directly.</p>
         ) : (
@@ -842,6 +940,8 @@ export function RoadmapRamps({ preferName }: { preferName?: string }) {
         <li className="flex items-center gap-1"><span className="inline-block h-2 w-3 rounded-[1px] bg-[#8b5cf6]" />reply (colour = what came back)</li>
         <li className="flex items-center gap-1"><span className="inline-block h-2 w-3 rounded-[1px] border border-dashed border-[#f4efe6] opacity-60" />reply due</li>
         <li className="flex items-center gap-1"><span aria-hidden>🔥</span>deadline missed</li>
+        <li className="flex items-center gap-1"><HouseIcon />no reply by the due date</li>
+        <li className="flex items-center gap-1"><FishIcon />late or questions unanswered</li>
         <li className="flex items-center gap-1"><span className="inline-block h-2 w-1 bg-[#2e9e57]" />deadline met</li>
         <li className="flex items-center gap-1"><span className="inline-block size-2 rounded-full bg-[#2fa36b]" />today</li>
       </ul>
