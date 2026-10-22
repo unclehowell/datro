@@ -1,6 +1,5 @@
 <div class="docs-links">
   <a class="docs-home" href="{{ docs_home }}">&larr; {{ docs_home_label }}</a>
-  {%- if docs_pdf %}<a class="docs-pdf" href="{{ docs_pdf }}" download>PDF</a>{% endif %}
   <span class="docs-ver">v{{ docs_version }}</span>
   {%- if docs_languages|length > 1 %}
   <nav class="docs-langs" aria-label="Language">
@@ -8,5 +7,12 @@
     <a href="{{ l.href }}{{ pagename }}.html" lang="{{ l.code }}" hreflang="{{ l.code }}"{% if l.current %} aria-current="true" class="current"{% endif %}>{{ l.code|upper }}</a>
     {%- endfor %}
   </nav>
+  {%- endif %}
+  {%- if docs_archive %}
+  <details class="docs-older"><summary>{{ docs_archive_label }}</summary>
+    {%- for a in docs_archive %}
+    <a class="docs-pdf" href="{{ a.pdf }}" title="{{ a.date }}">{{ a.version|replace(".", "-") }}</a>
+    {%- endfor %}
+  </details>
   {%- endif %}
 </div>

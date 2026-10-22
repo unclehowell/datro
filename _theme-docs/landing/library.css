@@ -1,0 +1,30 @@
+/* docs.bucklerfamily.estate menus, in the look of the owner's library explorer (library.bucklerfamily.estate):
+   navy page, full-width translucent bands, rounded buttons; green = HTML, red = PDF. */
+html{background:#336;color:rgba(255,255,255,.5);overflow-x:hidden}
+body{margin:0;background:#336;font-family:sans-serif;-webkit-text-size-adjust:100%}
+.lib{max-width:100%;padding:.2rem 0 4rem;position:relative;background:#336;min-height:70vh;color:rgba(255,255,255,.5);font-family:sans-serif}
+.lib h1,.lib h2,.lib .title-line,.lib .doc-title{text-transform:none!important}
+.lib a{text-decoration:none}
+.up{position:sticky;top:.6rem;z-index:2;display:inline-block;margin:.6rem 0 0 calc(.5vw + .5rem);padding:0 .45rem;line-height:30px;
+  font:bold 1.1rem/30px monospace;color:rgba(255,255,255,.55);background:#336;border-radius:10px;opacity:.85;
+  border-top:2px solid rgba(255,255,255,.3);border-left:2px solid rgba(255,255,255,.3);border-right:2px solid rgba(0,0,0,.5);border-bottom:2px solid rgba(0,0,0,.5)}
+.band{margin:1.4rem 0 .4rem}
+.title-line{margin:0 0 .6rem;padding:.55rem 1rem;font:normal clamp(18px,4.6vw,26px)/1.4 sans-serif;letter-spacing:.25rem;word-spacing:-.1em;
+  color:rgba(255,255,255,.3);background:rgba(255,255,255,.05);border-top:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15);
+  box-shadow:3px 10px 34px -3px rgb(0 0 0/20%);display:flex;align-items:center;gap:.8rem}
+.btns{display:flex;flex-wrap:wrap;gap:.5rem .5rem;padding:0 .5rem 0 1rem}
+.btn{display:inline-flex;align-items:center;min-height:28px;padding:calc(4px + .1em) .75em;font-size:clamp(17px,4.2vw,26px);line-height:1.25em;
+  white-space:nowrap;word-spacing:.15em;color:rgba(255,255,255,.5);background:rgba(255,255,255,.05);border:1px solid grey;border-radius:10px}
+.btn:hover,.btn:focus{color:rgba(255,255,255,.85);background:rgba(255,255,255,.1)}
+.btn.html{border:2px solid rgba(0,128,0,.7)}
+.btn.pdf{border:2px solid rgba(255,0,0,.4)}
+.code{display:inline-block;min-width:2.1em;padding:.05em .3em;font:bold .62em/1.5 monospace;letter-spacing:.05em;text-align:center;
+  color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.3);border-radius:.25em}
+.doc-title{margin:1rem 1rem .3rem;font:bolder clamp(20px,6vw,33px)/1.1 sans-serif;color:lightslategrey;text-align:center}
+.about{margin:0 1rem;text-align:center;font-size:.95rem}
+.about summary{cursor:pointer;list-style:none;color:rgba(255,255,255,.35);letter-spacing:.05em;padding:.3rem 0}
+.about summary::-webkit-details-marker{display:none}
+.about .key{margin-right:.8rem;font-size:.8em;letter-spacing:.1em}
+.about .g{color:rgba(0,170,0,.9)}.about .r{color:rgba(255,80,80,.85)}
+.about p{max-width:40rem;margin:.4rem auto;color:rgba(255,255,255,.55);line-height:1.45}
+@media (min-width:900px){.btns{padding-left:2rem}.title-line{padding-left:2rem}}

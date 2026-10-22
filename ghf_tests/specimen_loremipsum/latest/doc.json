@@ -5,8 +5,23 @@
   "version": "0.1.0",
   "date": "2026-10-22",
   "updated": "2026-10-22",
-  "languages": ["en", "cy", "es"],
+  "languages": [
+    "en",
+    "cy",
+    "es"
+  ],
   "source_language": "en",
   "author": "Estate office, Great House Farm (Tŷ Mawr)",
-  "status": "test"
+  "status": "test",
+  "archive": [
+    {
+      "version": "0.0.1",
+      "date": "2026-10-22",
+      "pdf": {
+        "en": "https://wayback.bucklerfamily.estate/pdf/docs-archive/ghf_tests/specimen_loremipsum/en/2026-10-22_ghf_tests-specimen_loremipsum_en_v0-0-1.pdf",
+        "cy": "https://wayback.bucklerfamily.estate/pdf/docs-archive/ghf_tests/specimen_loremipsum/cy/2026-10-22_ghf_tests-specimen_loremipsum_cy_v0-0-1.pdf",
+        "es": "https://wayback.bucklerfamily.estate/pdf/docs-archive/ghf_tests/specimen_loremipsum/es/2026-10-22_ghf_tests-specimen_loremipsum_es_v0-0-1.pdf"
+      }
+    }
+  ]
 }

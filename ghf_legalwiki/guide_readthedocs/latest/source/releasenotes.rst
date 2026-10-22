@@ -9,6 +9,8 @@ This release (version 1.1.0)
 Older versions
 --------------
 
+Version 1.0.1 is archived as a PDF in the wayback archive; the document's menu links it to the right of this version.
+
 .. list-table::
    :header-rows: 1
 

@@ -8,8 +8,9 @@ Checks only:            python3 _theme-docs/build.py --check
 
 For every document (<collection>/<document>/latest/doc.json) and every language it lists:
   HTML -> public/<collection>/<document>/latest/html/<lang>/            (Sphinx, Furo theme)
-  PDF  -> public/<collection>/<document>/latest/pdf/<lang>/<collection>-<document>.pdf   (rinohtype, no TeX)
-then public/docs.json (the navigation index), public/sitemap.xml and the landing page.
+then public/docs.json (the navigation index), the library-style menus (home -> collection -> document)
+and public/sitemap.xml. The site is HTML only: older versions are PDFs in the wayback archive, made by
+_theme-docs/release.py when a version is replaced and listed in each doc.json "archive" (DOCS-STANDARD.md §6).
 — Sion's Tab agent
 """
 import json, os, re, shutil, subprocess, sys, tempfile, datetime, pathlib, html as _html
@@ -23,10 +24,16 @@ GHF_BOOT = '<script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.1
 ID_RE = re.compile(r'^[a-z0-9]+_[a-z0-9]+$')
 VER_RE = re.compile(r'^\d+\.\d+\.\d+$')
 DATE_RE = re.compile(r'^\d{4}-\d{2}-\d{2}$')
+SEMVER = lambda v: tuple(int(x) for x in v.split('.'))
 REQUIRED = ['id', 'title', 'summary', 'version', 'date', 'updated', 'languages', 'source_language', 'author', 'status']
 LANG_NAMES = {'en': 'English', 'cy': 'Cymraeg', 'es': 'Español', 'de': 'Deutsch', 'fr': 'Français', 'it': 'Italiano', 'pt': 'Português'}
 WORD_HOME = {'en': 'All documents', 'cy': 'Pob dogfen', 'es': 'Todos los documentos', 'de': 'Alle Dokumente', 'fr': 'Tous les documents'}
 WORD_VERSION = {'en': 'Version', 'cy': 'Fersiwn', 'es': 'Versión', 'de': 'Version', 'fr': 'Version'}
+WAYBACK = os.environ.get('DOCS_WAYBACK_URL', 'https://wayback.bucklerfamily.estate')
+ARCHIVE_DIR = 'pdf/docs-archive'                       # wayback branch: wayback/pdf/docs-archive/..., served at /pdf/docs-archive/...
+WORD_LATEST = {'en': 'Latest', 'cy': 'Diweddaraf', 'es': 'Reciente', 'de': 'Neueste', 'fr': 'Dernier'}
+WORD_OLDER = {'en': 'Older versions (PDF)', 'cy': 'Fersiynau hŷn (PDF)', 'es': 'Versiones anteriores (PDF)',
+              'de': 'Ältere Versionen (PDF)', 'fr': 'Versions précédentes (PDF)'}
 BANNED = ['says', 'claims', 'according to', 'hearsay', 'unverified', 'alleged', 'fraud', 'stolen']
 
 
@@ -59,6 +66,7 @@ def validate(coll, slug, meta):
     for k in ('date', 'updated'):
         if not DATE_RE.match(str(d.get(k, ''))):
             errs.append(f'{k} must be YYYY-MM-DD')
+    errs += check_archive(coll, slug, d)
     src = meta.parent / 'source'
     if not (src / 'index.rst').exists():
         errs.append('source/index.rst is missing')
@@ -79,6 +87,38 @@ def validate(coll, slug, meta):
         if re.search(r'\b' + re.escape(word) + r'\b', text):
             errs.append(f'banned word "{word}" in the text')
     return d, errs
+
+
+def archive_name(coll, slug, lang, version, date):
+    """Library naming for an archived edition: YYYY-MM-DD_<collection>-<document>_<lang>_vX-Y-Z.pdf (language before version)."""
+    return f"{date}_{coll}-{slug}_{lang}_v{version.replace('.', '-')}.pdf"
+
+
+def archive_url(coll, slug, lang, version, date):
+    return f"{WAYBACK}/{ARCHIVE_DIR}/{coll}/{slug}/{lang}/{archive_name(coll, slug, lang, version, date)}"
+
+
+def check_archive(coll, slug, d):
+    """doc.json "archive": [{"version", "date", "pdf": {"<lang>": "<wayback url>"}}], newest first, every version older than the current one."""
+    errs, seen = [], []
+    arc = d.get('archive', [])
+    if not isinstance(arc, list):
+        return ['archive must be a list']
+    cur = d.get('version', '0.0.0')
+    for a in arc:
+        v, dt, pdf = str(a.get('version', '')), str(a.get('date', '')), a.get('pdf') or {}
+        if not VER_RE.match(v) or not DATE_RE.match(dt) or not isinstance(pdf, dict) or not pdf:
+            errs.append(f'archive entry {a} needs version (x.y.z), date (YYYY-MM-DD) and pdf {{lang: url}}')
+            continue
+        if VER_RE.match(cur) and SEMVER(v) >= SEMVER(cur):
+            errs.append(f'archive version {v} is not older than the current version {cur}')
+        if seen and SEMVER(v) >= SEMVER(seen[-1]):
+            errs.append('archive entries must be newest first')
+        seen.append(v)
+        for lang, url in pdf.items():
+            if url != archive_url(coll, slug, lang, v, dt):
+                errs.append(f'archive {v} [{lang}] url must be {archive_url(coll, slug, lang, v, dt)}')
+    return errs
 
 
 def po_lookup(src, lang, msgid):
@@ -125,93 +165,147 @@ def redirect_page(path, target_js, fallback, title='docs'):
 """, encoding='utf-8')
 
 
+def doc_env(coll, slug, meta, d, lang, extra=None):
+    """Environment for one Sphinx run of one document in one language (shared by the HTML build and release.py)."""
+    src = meta.parent / 'source'
+    title = po_lookup(src, lang, d['title']) if lang != d['source_language'] else d['title']
+    env = dict(os.environ, DOCS_DOC_JSON=str(meta), DOCS_LANG=lang, DOCS_TITLE=title,
+               DOCS_SUBTITLE=f"{WORD_VERSION.get(lang, 'Version')} {d['version']} · {d['updated']}")
+    env.update(extra or {})
+    return title, env
+
+
+def build_pdf(coll, slug, meta, d, lang, out_dir):
+    """One PDF of the document as it stands in the working tree (rinohtype, no TeX). Used by release.py only:
+    the site itself serves no PDFs; replaced editions are archived to wayback (DOCS-STANDARD.md §6)."""
+    src = meta.parent / 'source'
+    pdf_name = f'{coll}-{slug}.pdf'
+    _, env = doc_env(coll, slug, meta, d, lang)
+    out_dir = pathlib.Path(out_dir)
+    with tempfile.TemporaryDirectory(prefix='docs-pdf-') as tmp:
+        tmp = pathlib.Path(tmp)
+        sphinx('rinoh', src, tmp / 'pdf', env, tmp / 'dt')
+        out_dir.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(tmp / 'pdf' / pdf_name, out_dir / pdf_name)
+    for mo in src.rglob('*.mo'):
+        mo.unlink()
+    return out_dir / pdf_name
+
+
 def build_doc(coll, slug, meta, d):
     src = meta.parent / 'source'
     base = OUT / coll / slug / 'latest'
     langs = d['languages']
-    pdf_name = f'{coll}-{slug}.pdf'
     entry = {'id': d['id'], 'collection': coll, 'document': slug, 'version': d['version'], 'date': d['date'],
              'updated': d['updated'], 'author': d['author'], 'status': d['status'], 'source_language': d['source_language'],
+             'archive': [{'version': a['version'], 'date': a['date'], 'languages': sorted(a['pdf'])} for a in d.get('archive', [])],
              'languages': []}
     with tempfile.TemporaryDirectory(prefix='docs-') as tmp:
         tmp = pathlib.Path(tmp)
         for lang in langs:
-            title = po_lookup(src, lang, d['title']) if lang != d['source_language'] else d['title']
+            older = [{'version': a['version'], 'date': a['date'], 'pdf': a['pdf'][lang]}
+                     for a in d.get('archive', []) if lang in a['pdf']]
+            title, env = doc_env(coll, slug, meta, d, lang, {
+                'DOCS_LANG_LINKS': json.dumps([{'code': l, 'name': LANG_NAMES.get(l, l), 'href': f'../{l}/',
+                                                'current': l == lang} for l in langs]),
+                'DOCS_ARCHIVE': json.dumps(older), 'DOCS_ARCHIVE_LABEL': WORD_OLDER.get(lang, WORD_OLDER['en']),
+                'DOCS_HOME_HREF': '/', 'DOCS_HOME_LABEL': WORD_HOME.get(lang, 'All documents'),
+                'DOCS_BASEURL': f'{SITE}/{coll}/{slug}/latest/html/{lang}/'})
             summary = po_lookup(src, lang, d['summary']) if lang != d['source_language'] else d['summary']
             html_out = base / 'html' / lang
-            pdf_out = base / 'pdf' / lang
-            env = dict(os.environ,
-                       DOCS_DOC_JSON=str(meta), DOCS_LANG=lang, DOCS_TITLE=title,
-                       DOCS_SUBTITLE=f"{WORD_VERSION.get(lang, 'Version')} {d['version']} · {d['updated']}",
-                       DOCS_LANG_LINKS=json.dumps([{'code': l, 'name': LANG_NAMES.get(l, l), 'href': f'../{l}/',
-                                                    'current': l == lang} for l in langs]),
-                       DOCS_PDF_HREF=f'../../pdf/{lang}/{pdf_name}',
-                       DOCS_HOME_HREF='../../../../../', DOCS_HOME_LABEL=WORD_HOME.get(lang, 'All documents'),
-                       DOCS_BASEURL=f'{SITE}/{coll}/{slug}/latest/html/{lang}/')
             log(f'{d["id"]} [{lang}] html')
             sphinx('html', src, html_out, env, tmp / f'dt-html-{lang}')
             for junk in ('.buildinfo', 'objects.inv'):
                 (html_out / junk).unlink(missing_ok=True)
             inject_boot(html_out)
-            log(f'{d["id"]} [{lang}] pdf')
-            sphinx('rinoh', src, tmp / f'pdf-{lang}', env, tmp / f'dt-pdf-{lang}')
-            pdf_out.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(tmp / f'pdf-{lang}' / pdf_name, pdf_out / pdf_name)
-            rel = f'{coll}/{slug}/latest'
             entry['languages'].append({
                 'code': lang, 'name': LANG_NAMES.get(lang, lang), 'title': title, 'summary': summary,
-                'html': f'/{rel}/html/{lang}/', 'pdf': f'/{rel}/pdf/{lang}/{pdf_name}',
-                'pdf_bytes': (pdf_out / pdf_name).stat().st_size})
+                'html': f'/{coll}/{slug}/latest/html/{lang}/', 'archive': older})
     codes = json.dumps(langs)
     redirect_page(base / 'html' / 'index.html',
                   f"var L={codes},n=(navigator.language||'').slice(0,2);location.replace('./'+(L.indexOf(n)>-1?n:'{d['source_language']}')+'/');",
                   f'./{d["source_language"]}/', d['title'])
-    redirect_page(OUT / coll / slug / 'index.html', "location.replace('./latest/html/'+location.hash);",
-                  './latest/html/', d['title'])
     for mo in src.rglob('*.mo'):
         mo.unlink()                                   # compiled catalogues are build output, never committed
     entry['title'] = entry['languages'][0]['title'] if entry['languages'] else d['title']
+    entry['summary'] = entry['languages'][0]['summary'] if entry['languages'] else d['summary']
     return entry
 
 
-LANDING_WORDS = {'en': ('Read online', 'Download PDF', 'Also in', 'v')}
+# ---- Library-style menus: home (collections) -> collection (documents) -> document (languages: HTML, older PDFs) ----
+
+def _t(obj, lang='en'):
+    return obj.get(lang) or obj.get('en') or next(iter(obj.values()), '') if isinstance(obj, dict) else str(obj)
 
 
-def render_langs(index):
-    codes = []
-    for e in index['documents']:
-        for l in e['languages']:
-            if l['code'] not in codes:
-                codes.append(l['code'])
-    return ''.join(f'<button type="button" value="{c}" lang="{c}" aria-pressed="{str(c == "en").lower()}" title="{LANG_NAMES.get(c, c)}">'
-                   f'{c.upper()}</button>' for c in codes)
-
-
-def render_list(index, lang):
-    """The landing list, pre-rendered for no-JS readers and agents; landing.js renders the same markup per language."""
+def menu_page(path, title, body, depth, desc=''):
+    """One static menu page in the library's explorer look (dark bands, rounded buttons), no JS needed."""
     esc = _html.escape
-    html_w, pdf_w, also_w, v = LANDING_WORDS['en']
-    out = []
-    for c in index['collections']:
-        docs = [d for d in index['documents'] if d['collection'] == c['id']]
-        if not docs:
-            continue
-        out.append(f'<details class="coll" open><summary>{esc(c["title"].get(lang) or c["title"].get("en") or c["id"])}</summary><ul class="docs">')
-        for d in docs:
-            L = next((l for l in d['languages'] if l['code'] == lang), d['languages'][0])
-            others = [l for l in d['languages'] if l['code'] != L['code']]
-            size = f"{round(L['pdf_bytes'] / 1024)} KB" if L['pdf_bytes'] < 1048576 else f"{L['pdf_bytes'] / 1048576:.1f} MB"
-            codes = ' '.join(l['code'].upper() for l in d['languages'])
-            out.append(f'<li><details class="doc" id="{esc(d["collection"] + "-" + d["document"])}"><summary><span class="t" lang="{L["code"]}">{esc(L["title"])}</span>'
-                       f'<span class="m">{v}{esc(d["version"])} · {esc(d["updated"])} · {codes}</span></summary><div class="body">'
-                       f'<p lang="{L["code"]}">{esc(L["summary"])}</p><div class="acts"><a class="html" href="{esc(L["html"])}">{html_w}</a>'
-                       f'<a class="pdf" href="{esc(L["pdf"])}" download>{pdf_w} · {size}</a></div>')
-            if others:
-                out.append(f'<div class="other">{also_w}: ' + ' · '.join(
-                    f'<a href="{esc(o["html"])}" lang="{o["code"]}">{esc(o["name"])}</a><a href="{esc(o["pdf"])}" download>PDF</a>' for o in others) + '</div>')
-            out.append('</div></details></li>')
-        out.append('</ul></details>')
-    return ''.join(out)
+    up = '' if depth == 0 else '<a class="up" href="../" aria-label="Back">&laquo;</a>'
+    rel = '../' * depth
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{esc(title)}</title>
+<meta name="description" content="{esc(desc or title)}">
+<meta name="theme-color" content="#333366">
+<link rel="alternate" type="application/json" href="/docs.json" title="Document index">
+<link rel="stylesheet" href="{rel}library.css">
+{GHF_BOOT}
+</head>
+<body>
+<main class="lib">
+{up}{body}
+</main>
+</body>
+</html>
+""", encoding='utf-8')
+
+
+def band(label, buttons, cls=''):
+    return f'<section class="band {cls}"><h2 class="title-line">{label}</h2><div class="btns">{"".join(buttons)}</div></section>'
+
+
+def render_menus(index, entries):
+    esc = _html.escape
+    colls = index['collections']
+    # home: one band per subsidiary (the part of the collection id before "_"), one button per collection
+    groups = {}
+    for c in colls:
+        groups.setdefault(c['subsidiary'], []).append(c)
+    body = ''
+    for sub, cs in groups.items():
+        body += band(esc(_t(cs[0]['subsidiary_title'])),
+                     [f'<a class="btn" href="/{c["id"]}/">{esc(_t(c["title"]))}</a>' for c in cs])
+    menu_page(OUT / 'index.html', 'Docs · bucklerfamily.estate', body, 0,
+              'Documents of the Buckler family estate: pick a category, then a document; each language reads online, older versions are PDFs.')
+    # collection: one band per document group (the part of the document id before "_"), one button per document
+    for c in colls:
+        docs = [e for e in entries if e['collection'] == c['id']]
+        groups = {}
+        for e in docs:
+            groups.setdefault(e['document'].split('_')[0], []).append(e)
+        body = ''
+        for g, es in groups.items():
+            label = _t(c.get('groups', {}).get(g, {'en': g.capitalize()}))
+            body += band(esc(label), [f'<a class="btn" href="/{e["id"]}/">{esc(e["title"])}</a>' for e in es])
+        menu_page(OUT / c['id'] / 'index.html', f'{_t(c["title"])} · docs', body, 1)
+    # document: the document's title, then one band per language: Latest (HTML, green) and older versions (PDF, red) to its right
+    for e in entries:
+        rows = ''
+        for l in e['languages']:
+            btns = [f'<a class="btn html" href="{esc(l["html"])}" lang="{l["code"]}" title="HTML · v{esc(e["version"])}">'
+                    f'{esc(WORD_LATEST.get(l["code"], "Latest"))}</a>']
+            btns += [f'<a class="btn pdf" href="{esc(a["pdf"])}" title="PDF · v{esc(a["version"])} · {esc(a["date"])}">'
+                     f'{esc(a["version"].replace(".", "-"))}</a>' for a in l['archive']]
+            rows += band(f'<span class="code">{l["code"].upper()}</span>{esc(l["name"])}', btns, 'lang')
+        head = (f'<h1 class="doc-title">{esc(e["title"])}</h1>'
+                f'<details class="about"><summary><span class="key"><b class="g">HTML</b> | <b class="r">PDF</b></span>'
+                f'v{esc(e["version"])} · {esc(e["updated"])}</summary><p>{esc(e["summary"])}</p><p>{esc(e["author"])}</p></details>')
+        menu_page(OUT / e['collection'] / e['document'] / 'index.html', e['title'], head + rows, 2, e['summary'])
 
 
 def update_po(only):
@@ -263,25 +357,30 @@ def main():
     collections = {}
     for c in sorted({e['collection'] for e in entries}):
         cj = json.loads((ROOT / c / 'collection.json').read_text(encoding='utf-8'))
-        collections[c] = {'id': c, 'title': cj['title'], 'order': cj.get('order', 50)}
+        sub = c.split('_')[0]
+        collections[c] = {'id': c, 'title': cj['title'], 'order': cj.get('order', 50), 'subsidiary': sub,
+                          'subsidiary_title': cj.get('subsidiary_title', {'en': sub.upper()}), 'groups': cj.get('groups', {})}
     index = {
         'site': SITE, 'generated': datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
         'commit': os.environ.get('CF_PAGES_COMMIT_SHA', '')[:7], 'branch': os.environ.get('CF_PAGES_BRANCH', ''),
-        'standard': 'DOCS-STANDARD.md', 'count': len(entries),
+        'standard': 'DOCS-STANDARD.md', 'archive_base': f'{WAYBACK}/{ARCHIVE_DIR}/', 'count': len(entries),
         'collections': sorted(collections.values(), key=lambda c: (c['order'], c['id'])),
         'documents': sorted(entries, key=lambda e: (collections[e['collection']]['order'], e['id'])),
     }
     (OUT / 'docs.json').write_text(json.dumps(index, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    # landing page + headers
-    for f in (KIT / 'landing').iterdir():
+    for f in (KIT / 'landing').iterdir():          # library.css and _headers
         shutil.copy2(f, OUT / f.name)
-    landing = (OUT / 'index.html').read_text(encoding='utf-8')
-    landing = landing.replace('<!--DOCS-LANGS-->', render_langs(index)).replace('<!--DOCS-LIST-->', render_list(index, 'en'))
-    (OUT / 'index.html').write_text(landing, encoding='utf-8')
-    urls = [f'{SITE}/'] + [SITE + l['html'] for e in entries for l in e['languages']] + [SITE + l['pdf'] for e in entries for l in e['languages']]
+    render_menus(index, index['documents'])
+    # no PDFs on this site: old PDF addresses go to the document's menu (its older versions are there); anything else is a 404
+    (OUT / '_redirects').write_text('/:coll/:doc/latest/pdf/* /:coll/:doc/ 301\n', encoding='utf-8')
+    menu_page(OUT / '404.html', 'Not found · docs', '<section class="band"><h2 class="title-line">404</h2>'
+              '<div class="btns"><a class="btn" href="/">docs.bucklerfamily.estate</a></div></section>', 0)
+    urls = ([f'{SITE}/'] + [f'{SITE}/{c["id"]}/' for c in index['collections']] + [f'{SITE}/{e["id"]}/' for e in entries]
+            + [SITE + l['html'] for e in entries for l in e['languages']])
     (OUT / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                      + ''.join(f'  <url><loc>{_html.escape(u)}</loc></url>\n' for u in urls) + '</urlset>\n', encoding='utf-8')
-    log(f'done: {len(entries)} document(s), {sum(len(e["languages"]) for e in entries)} language build(s) -> {OUT}')
+    log(f'done: {len(entries)} document(s), {sum(len(e["languages"]) for e in entries)} HTML language build(s), '
+        f'{sum(len(l["archive"]) for e in entries for l in e["languages"])} archived PDF link(s) -> {OUT}')
 
 
 if __name__ == '__main__':

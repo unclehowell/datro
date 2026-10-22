@@ -1,5 +1,21 @@
 {
   "id": "ghf_tests",
-  "title": {"en": "Tests", "cy": "Profion", "es": "Pruebas"},
-  "order": 90
+  "title": {
+    "en": "Tests",
+    "cy": "Profion",
+    "es": "Pruebas"
+  },
+  "order": 90,
+  "subsidiary_title": {
+    "en": "Great House Farm",
+    "cy": "Tŷ Mawr",
+    "es": "Great House Farm"
+  },
+  "groups": {
+    "specimen": {
+      "en": "Specimens",
+      "cy": "Enghreifftiau",
+      "es": "Muestras"
+    }
+  }
 }

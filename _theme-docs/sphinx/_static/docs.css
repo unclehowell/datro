@@ -9,3 +9,6 @@
 figure img{max-width:100%;height:auto}
 table.docutils{display:block;overflow-x:auto;max-width:100%}
 body{overflow-x:hidden}
+.docs-older{width:100%}
+.docs-older summary{cursor:pointer;color:var(--color-foreground-secondary)}
+.docs-older .docs-pdf{display:inline-block;margin:.3rem .3rem 0 0;border-color:#c0392b;color:#c0392b}

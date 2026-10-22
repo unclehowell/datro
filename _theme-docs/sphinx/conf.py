@@ -59,13 +59,15 @@ html_sidebars = {'**': ['sidebar/brand.html', 'sidebar/docs-links.html', 'sideba
 html_context = {
     'docs_languages': json.loads(os.environ.get('DOCS_LANG_LINKS', '[]')),   # [{code, name, current}]
     'docs_lang': _lang,
-    'docs_pdf': os.environ.get('DOCS_PDF_HREF', ''),
+    'docs_archive': json.loads(os.environ.get('DOCS_ARCHIVE', '[]')),          # [{version, date, pdf}] older editions in wayback
+    'docs_archive_label': os.environ.get('DOCS_ARCHIVE_LABEL', 'Older versions (PDF)'),
     'docs_home': os.environ.get('DOCS_HOME_HREF', '/'),
     'docs_home_label': os.environ.get('DOCS_HOME_LABEL', 'All documents'),
     'docs_version': version,
 }
 
-# PDF (rinohtype: pure Python, no TeX)
+# PDF (rinohtype: pure Python, no TeX). Used only by _theme-docs/release.py to archive a replaced edition to wayback;
+# the deploy build makes HTML only.
 rinoh_documents = [dict(
     doc='index',
     target=_target,
