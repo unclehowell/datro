@@ -1,0 +1,2032 @@
+{
+ "schema": "oldbill-damages/1",
+ "reconciliation": [
+  "The two scenarios measure different things. The analyst build-up prices only what the record holds today, by the methods a court uses; Brief v3 prices the family’s full case at development and restitution values. The gap between them is the evidence still to find.",
+  "Land: the brief takes 70 acres at £750k an acre (£52.5m). The record so far holds about 10 acres (Parcel A); Parcel B and the woodland are still to be valued, and the developed-land share today comes to about £276k an acre. Every acre added to the record moves this head toward the brief.",
+  "Disgorgement: the brief adds £115m of disgorgement on top of the losses. Disgorgement and compensation are alternatives: the family elects one measure against each party. The gains comb (£6.10m) is the account-of-profits measure on the profits the record shows: BP’s land value, the developer’s margin, ground-rent and fee income.",
+  "Heritage, archaeology, trauma, deaths and exemplary damages carry £28m in the brief and £0.80m here. Courts price these heads with the Judicial College brackets, the Fatal Accidents Act and reported awards; the brief’s figures rest on restitution of cultural value and on 25 descendants, which those methods do not reach today.",
+  "What closes the gap: title to the wider 70 acres, the real 1993 sale price and BP’s accounts (for an account of profits), medical evidence on causation for Mary and William, and a setting-aside of the 1987 judgment, which opens the larger heads."
+ ],
+ "parties": {
+  "BP": {
+   "name": "BP Properties Ltd / BP Pension Trust (now BP plc)",
+   "short": "BP",
+   "colour": "#2fbf71",
+   "gainer": true,
+   "route": "Letter before claim; set the 1987 judgment aside (Takhar v Gracefield, the gateway); deceit, trespass and mesne profits, unjust enrichment / account of profits; s.32 Limitation Act 1980 if concealment is shown.",
+   "compensation": {
+    "low": 833128,
+    "mid": 2803044,
+    "high": 4734321
+   },
+   "disgorgement": {
+    "low": 1027036,
+    "mid": 3528819,
+    "high": 4701676
+   }
+  },
+  "DEV": {
+   "name": "Ideal Homes (Wales), now Persimmon Homes",
+   "short": "Developer",
+   "colour": "#ffb347",
+   "gainer": true,
+   "route": "Mesne profits for 1993–95 possession (trespass); unjust enrichment. An innocent purchaser for value is protected (Limitation Act 1980 s.32(3)).",
+   "compensation": {
+    "low": 114840,
+    "mid": 403557,
+    "high": 599756
+   },
+   "disgorgement": {
+    "low": 405176,
+    "mid": 759704,
+    "high": 1012939
+   }
+  },
+  "WGR": {
+   "name": "Western Ground Rents Ltd (and successors)",
+   "short": "Western Ground Rents",
+   "colour": "#9ad1ff",
+   "gainer": true,
+   "route": "Mary’s estate (Law Reform (Miscellaneous Provisions) Act 1934); negligence in the 1953–55 proceedings and their enforcement; s.32 if concealment is shown.",
+   "compensation": {
+    "low": 0,
+    "mid": 139456,
+    "high": 272521
+   },
+   "disgorgement": {
+    "low": 0,
+    "mid": 411842,
+    "high": 411842
+   }
+  },
+  "HMLR": {
+   "name": "HM Land Registry",
+   "short": "HMLR",
+   "colour": "#c3a6ff",
+   "gainer": true,
+   "route": "Indemnity for a register mistake (Land Registration Act 2002 Sch 8); rectification (Sch 4); Independent Complaints Reviewer (ICR/090/26).",
+   "compensation": {
+    "low": 252926,
+    "mid": 862282,
+    "high": 1227541
+   },
+   "disgorgement": {
+    "low": 3200,
+    "mid": 6000,
+    "high": 12000
+   }
+  },
+  "VALE": {
+   "name": "Vale of Glamorgan Council",
+   "short": "Vale Council",
+   "colour": "#4dd0e1",
+   "gainer": true,
+   "route": "Negligence in planning and conservation duties; Human Rights Act 1998 / A1P1 for acts after 2 Oct 2000; Public Services Ombudsman for Wales.",
+   "compensation": {
+    "low": 1788,
+    "mid": 57185,
+    "high": 135100
+   },
+   "disgorgement": {
+    "low": 0,
+    "mid": 1394687,
+    "high": 1741861
+   }
+  },
+  "WG": {
+   "name": "Welsh Government / Cadw",
+   "short": "WG / Cadw",
+   "colour": "#e9e3ff",
+   "gainer": false,
+   "route": "Negligence in the 1988 listing process; Human Rights Act 1998 / A1P1 for acts after 2 Oct 2000; Public Services Ombudsman for Wales.",
+   "compensation": {
+    "low": 1788,
+    "mid": 90781,
+    "high": 216196
+   },
+   "disgorgement": null
+  },
+  "SWP": {
+   "name": "South Wales Police",
+   "short": "SWP",
+   "colour": "#e9e3ff",
+   "gainer": false,
+   "route": "Trespass to the person and misfeasance in public office (1988); IOPC complaint route.",
+   "compensation": {
+    "low": 10325,
+    "mid": 41718,
+    "high": 128060
+   },
+   "disgorgement": null
+  },
+  "SOL": {
+   "name": "The family’s former solicitors (1986–87)",
+   "short": "Former solicitors",
+   "colour": "#e9e3ff",
+   "gainer": false,
+   "route": "Professional negligence; 15-year longstop (Limitation Act 1980 s.14B) unless s.32 applies.",
+   "compensation": {
+    "low": 31050,
+    "mid": 140450,
+    "high": 204800
+   },
+   "disgorgement": null
+  }
+ },
+ "gains": [
+  {
+   "id": "G-WGR",
+   "party": "WGR",
+   "label": "Western Ground Rents",
+   "what": "The reversion, bought at auction in 1938 and sold to BP in 1969",
+   "v": {
+    "low": 0,
+    "mid": 411842,
+    "high": 411842
+   },
+   "estimate": true,
+   "method": "Price realised in 1969 minus the 1938 cost, carried to 2026 £ by the ONS composite price index. The farm’s share of BP’s 1969 bid for the whole company (about £18–19m) is not separable, so the 1969 value is the 1938 price held at its money value (estimate). Low: no gain in real terms. Rents for 1938–53: £ not on the record yet.",
+   "inputs": [
+    [
+     "1938 auction price",
+     "£5,500"
+    ],
+    [
+     "CDKO 1938 → 1969",
+     "16.8 → 68.7 (×4.09)"
+    ],
+    [
+     "1969 value (estimate)",
+     "£22,491"
+    ],
+    [
+     "Nominal gain 1969",
+     "£16,991"
+    ],
+    [
+     "CDKO 1969 → Sep 2026",
+     "×24.24"
+    ]
+   ],
+   "facts": [
+    [
+     "1938: Bute sold the reversion at auction for £5,500 to Western Ground Rents Ltd.",
+     {
+      "title": "Ty Mawr Restitutionary Brief v3 (12 Feb 2026), IV.A",
+      "url": null
+     }
+    ],
+    [
+     "15 Feb 1969: BP made an agreed cash bid of 17s a share, about £18–19 million, to pass the company’s properties to its pension fund.",
+     {
+      "title": "EV-0288 — 1968–69 takeover of Western Ground Rents by BP (press)",
+      "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0288-snippets-only-press-on-the-1968-69-takeover-battle-for-western-ground-rents-ltd-en/"
+     }
+    ],
+    [
+     "1955 and 1962: possession orders were obtained while it held the reversion.",
+     {
+      "title": "EV-0080 — BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+      "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0080-bp-properties-v-buckler-judgment/"
+     }
+    ]
+   ],
+   "sources": [
+    {
+     "title": "EV-0288 — 1968–69 takeover of Western Ground Rents by BP (press)",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0288-snippets-only-press-on-the-1968-69-takeover-battle-for-western-ground-rents-ltd-en/"
+    },
+    {
+     "title": "ONS composite price index CDKO (from 1800)",
+     "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/cdko/mm23"
+    },
+    {
+     "title": "Ty Mawr Restitutionary Brief v3 (12 Feb 2026), IV.A",
+     "url": null
+    }
+   ],
+   "party_name": "Western Ground Rents Ltd (and successors)",
+   "colour": "#9ad1ff"
+  },
+  {
+   "id": "G-BP",
+   "party": "BP",
+   "label": "BP",
+   "what": "Land value realised: possession in 1988, sale to Ideal Homes on 3 Dec 1993",
+   "v": {
+    "low": 1027036,
+    "mid": 3528819,
+    "high": 4701676
+   },
+   "estimate": true,
+   "method": "Price realised minus acquisition, uplifted to 2026. The Dec 1993 price is not on the record, so it is taken as the land share of the houses’ sale value (residual method, 20% / 25% / 33% as on page 5298) less the 1969 acquisition value. Low is uplifted by CPI (money value); mid and high by the Vale of Glamorgan HPI (land value).",
+   "inputs": [
+    [
+     "Sale value of the 20 houses, 1995–97",
+     "£2,418,120 (16 recorded sales, mean £120,906; 4 at the mean)"
+    ],
+    [
+     "Land share low / mid / high",
+     "20% / 25% / 33%"
+    ],
+    [
+     "Less 1969 acquisition value (estimate)",
+     "£22,491"
+    ],
+    [
+     "CPI Dec 1993 → Sep 2026",
+     "×2.23"
+    ],
+    [
+     "Vale HPI Jan 1995 → Jul 2026",
+     "17.5 → 106.1 (×6.06)"
+    ]
+   ],
+   "facts": [
+    [
+     "31 Jul 1987: the Court of Appeal gave BP Properties Ltd possession.",
+     {
+      "title": "EV-0080 — BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+      "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0080-bp-properties-v-buckler-judgment/"
+     }
+    ],
+    [
+     "29/30 Nov 1988: the family was evicted; demolition followed in early Dec 1988.",
+     {
+      "title": "1988: Possession and Demolition",
+      "url": "https://greathousefarmwiki.wordpress.com/demolition-1988/"
+     }
+    ],
+    [
+     "3 Dec 1993: BP transferred the site to Ideal Homes (Wales).",
+     {
+      "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+      "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+     }
+    ],
+    [
+     "16 new houses sold Feb 1995 – Apr 1997 for £1,934,496.",
+     {
+      "title": "HM Land Registry Price Paid: Church View Close, Penarth",
+      "url": "https://landregistry.data.gov.uk/app/ppd/?street=CHURCH+VIEW+CLOSE&town=PENARTH"
+     }
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+    },
+    {
+     "title": "HM Land Registry Price Paid: Church View Close, Penarth",
+     "url": "https://landregistry.data.gov.uk/app/ppd/?street=CHURCH+VIEW+CLOSE&town=PENARTH"
+    },
+    {
+     "title": "UK House Price Index: Vale of Glamorgan",
+     "url": "https://landregistry.data.gov.uk/app/ukhpi/browse?location=http%3A%2F%2Flandregistry.data.gov.uk%2Fid%2Fregion%2Fvale-of-glamorgan"
+    },
+    {
+     "title": "ONS CPI index D7BT (the series behind the Bank of England inflation calculator)",
+     "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bt/mm23"
+    }
+   ],
+   "party_name": "BP Properties Ltd / BP Pension Trust (now BP plc)",
+   "colour": "#2fbf71"
+  },
+  {
+   "id": "G-DEV",
+   "party": "DEV",
+   "label": "Developer",
+   "what": "Margin on the houses built and sold at Church View Close, 1995–97",
+   "v": {
+    "low": 405176,
+    "mid": 759704,
+    "high": 1012939
+   },
+   "estimate": true,
+   "method": "Standard housebuilder margin on sale value (GDV), after land and build cost: 10% low (16 recorded sales only), 15% mid and 20% high (20 houses), the range Planning Practice Guidance treats as a normal developer return. The land cost is BP’s share above, already inside the other 80–90%. Carried to 2026 £ by CPI (1996 → Sep 2026).",
+   "inputs": [
+    [
+     "Recorded sales, 16 houses",
+     "£1,934,496"
+    ],
+    [
+     "20 houses at the mean",
+     "£2,418,120"
+    ],
+    [
+     "Margin low / mid / high",
+     "10% / 15% / 20% of GDV"
+    ],
+    [
+     "CPI 1996 → Sep 2026",
+     "×2.09"
+    ]
+   ],
+   "facts": [
+    [
+     "Ideal Homes (Wales) built Church View Close; first buyers by Jan 1995.",
+     {
+      "title": "EV-0276 — Ideal Homes (Wales) built Church View Close; Persimmon bought Ideal Homes in 1996",
+      "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0276-churchview-close-llandough-ideal-homes-persimmon-1994-1996/"
+     }
+    ],
+    [
+     "Persimmon bought Ideal Homes in early 1996 and sold the last house by Sep 1996.",
+     {
+      "title": "EV-0276 — Ideal Homes (Wales) built Church View Close; Persimmon bought Ideal Homes in 1996",
+      "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0276-churchview-close-llandough-ideal-homes-persimmon-1994-1996/"
+     }
+    ],
+    [
+     "The 1994 cemetery excavation was carried out on behalf of Ideal Homes Wales.",
+     {
+      "title": "EV-0293 — 1994 cemetery excavation “on behalf of Ideal Homes Wales”, 1,026 burials",
+      "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0293-llandough-1994-cemetery-excavation-her-ggat02272s-museum-wales-95-56h-burial-631/"
+     }
+    ]
+   ],
+   "sources": [
+    {
+     "title": "EV-0276 — Ideal Homes (Wales) built Church View Close; Persimmon bought Ideal Homes in 1996",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0276-churchview-close-llandough-ideal-homes-persimmon-1994-1996/"
+    },
+    {
+     "title": "HM Land Registry Price Paid: Church View Close, Penarth",
+     "url": "https://landregistry.data.gov.uk/app/ppd/?street=CHURCH+VIEW+CLOSE&town=PENARTH"
+    },
+    {
+     "title": "Planning Practice Guidance: Viability, para 018 (developer return 15–20% of GDV)",
+     "url": "https://www.gov.uk/guidance/viability"
+    },
+    {
+     "title": "ONS CPI index D7BT (the series behind the Bank of England inflation calculator)",
+     "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bt/mm23"
+    }
+   ],
+   "party_name": "Ideal Homes (Wales), now Persimmon Homes",
+   "colour": "#ffb347"
+  },
+  {
+   "id": "G-HMLR",
+   "party": "HMLR",
+   "label": "HMLR",
+   "what": "Registration fees on the land, 1982 – 2026",
+   "v": {
+    "low": 3200,
+    "mid": 6000,
+    "high": 12000
+   },
+   "estimate": true,
+   "method": "Applications on the record × a typical fee per application in 2026 £ (£80 / £150 / £300): 2 first registrations (1982, 1983), the 1987 amalgamation, the 1993 transfer, 32 sales in Price Paid and 4 new-build sales not in it = 40. HMLR’s larger exposure is its statutory indemnity (in the table below), not its fees.",
+   "inputs": [
+    [
+     "Applications",
+     "40"
+    ],
+    [
+     "Fee per application, 2026 £",
+     "£80 / £150 / £300 (estimate)"
+    ]
+   ],
+   "facts": [
+    [
+     "HMLR registered BP’s titles WA231076 (30 Nov 1982) and WA240304 (23 Feb 1983) and amalgamated them on 2 Feb 1987.",
+     {
+      "title": "Reparations Schedule & Proposed Apportionment (wiki page 5475)",
+      "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/reparations-schedule/"
+     }
+    ],
+    [
+     "Price Paid lists 32 sales on Church View Close.",
+     {
+      "title": "HM Land Registry Price Paid: Church View Close, Penarth",
+      "url": "https://landregistry.data.gov.uk/app/ppd/?street=CHURCH+VIEW+CLOSE&town=PENARTH"
+     }
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Reparations Schedule & Proposed Apportionment (wiki page 5475)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/reparations-schedule/"
+    },
+    {
+     "title": "HM Land Registry Price Paid: Church View Close, Penarth",
+     "url": "https://landregistry.data.gov.uk/app/ppd/?street=CHURCH+VIEW+CLOSE&town=PENARTH"
+    }
+   ],
+   "party_name": "HM Land Registry",
+   "colour": "#c3a6ff"
+  },
+  {
+   "id": "G-VALE",
+   "party": "VALE",
+   "label": "Vale Council",
+   "what": "Planning fees (1989, 1992) and council tax on the new houses since 1996",
+   "v": {
+    "low": 0,
+    "mid": 1394687,
+    "high": 1741861
+   },
+   "estimate": true,
+   "method": "Council tax: 19 extra dwellings (20 houses less the one farmhouse) × 30 years (1996/97 – 2025/26) × the 2025/26 Llandough Band F charge (estimate of band), in 2026 £. Mid takes the council’s own element (80%, estimate); high adds the police and community precepts. Council tax pays for services, so low is nil: this tooth measures revenue the houses brought in, not a sum to recover. Planning fees for 89/01396/OUT and 92/00671/RES: about £2,500 (estimate), CPI to 2026.",
+   "inputs": [
+    [
+     "2025/26 Llandough Band A",
+     "£1,405.56"
+    ],
+    [
+     "Band F = A × 13/6",
+     "£3,045.38"
+    ],
+    [
+     "Extra dwellings × years",
+     "19 × 30"
+    ],
+    [
+     "Council element (mid)",
+     "80% (estimate)"
+    ],
+    [
+     "Planning fees, 2026 £",
+     "£5,994"
+    ]
+   ],
+   "facts": [
+    [
+     "Planning permissions 89/01396/OUT and 92/00671/RES for housing on the site.",
+     {
+      "title": "Reparations Schedule & Proposed Apportionment (wiki page 5475)",
+      "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/reparations-schedule/"
+     }
+    ],
+    [
+     "Mar 1992: full permission granted with no archaeological condition.",
+     {
+      "title": "Ty Mawr Restitutionary Brief v3 (12 Feb 2026), IV.A",
+      "url": null
+     }
+    ]
+   ],
+   "sources": [
+    {
+     "title": "Vale of Glamorgan Council: 2025/26 council tax bands (Llandough)",
+     "url": "https://www.valeofglamorgan.gov.uk/Documents/Our%20Council/Council%20Tax%20&%20Benefits/CTAX-2025-26/2025-26-Council-Tax-Bands.pdf"
+    },
+    {
+     "title": "Reparations Schedule & Proposed Apportionment (wiki page 5475)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/reparations-schedule/"
+    },
+    {
+     "title": "ONS CPI index D7BT (the series behind the Bank of England inflation calculator)",
+     "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bt/mm23"
+    }
+   ],
+   "party_name": "Vale of Glamorgan Council",
+   "colour": "#4dd0e1"
+  }
+ ],
+ "losses": [
+  {
+   "id": "L-LAND",
+   "label": "Home & land",
+   "head": "The farmhouse and the land (Parcel A, about 10 acres)",
+   "v": {
+    "low": 621000,
+    "mid": 2809000,
+    "high": 4096000
+   },
+   "alloc": {
+    "BP": 60,
+    "HMLR": 25,
+    "DEV": 10,
+    "SOL": 5
+   },
+   "estimate": true,
+   "method": "Market value today, HPI-uplifted (page 5298 Head 1). Low: existing-use value: the Vale detached-house average (£539,042, Jul 2026) plus 10 acres at £8,200/acre. Mid / high: the land share (25% / 33%) of the developed value today (20 houses × £551,929 / £605,565) plus the woodland and green at farmland rates.",
+   "inputs": [
+    [
+     "Vale detached average, Jul 2026",
+     "£539,042"
+    ],
+    [
+     "House value today, mid / high",
+     "£551,929 / £605,565"
+    ],
+    [
+     "Land share mid / high",
+     "25% / 33%"
+    ]
+   ],
+   "facts": [
+    [
+     "The Court of Appeal gave possession to BP Properties Ltd on 31 Jul 1987.",
+     {
+      "title": "EV-0080 — BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+      "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0080-bp-properties-v-buckler-judgment/"
+     }
+    ],
+    [
+     "The house was demolished from 6 Dec 1988.",
+     {
+      "title": "1988: Possession and Demolition",
+      "url": "https://greathousefarmwiki.wordpress.com/demolition-1988/"
+     }
+    ],
+    [
+     "20 houses now stand on the site.",
+     {
+      "title": "HM Land Registry Price Paid: Church View Close, Penarth",
+      "url": "https://landregistry.data.gov.uk/app/ppd/?street=CHURCH+VIEW+CLOSE&town=PENARTH"
+     }
+    ]
+   ],
+   "legal": "Restitution of the land or its value; deceit (Smith New Court v Scrimgeour Vickers [1997] AC 254) once the 1987 judgment is set aside; indemnity (LRA 2002 Sch 8).",
+   "sources": [
+    {
+     "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+    },
+    {
+     "title": "EV-0080 — BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0080-bp-properties-v-buckler-judgment/"
+    },
+    {
+     "title": "HM Land Registry Price Paid: Church View Close, Penarth",
+     "url": "https://landregistry.data.gov.uk/app/ppd/?street=CHURCH+VIEW+CLOSE&town=PENARTH"
+    }
+   ],
+   "maps_to": [
+    "BP",
+    "HMLR",
+    "DEV"
+   ]
+  },
+  {
+   "id": "L-USE",
+   "label": "Loss of use",
+   "head": "Loss of use and mesne profits, Dec 1988 – Oct 2026",
+   "v": {
+    "low": 308800,
+    "mid": 340300,
+    "high": 425400
+   },
+   "alloc": {
+    "BP": 70,
+    "HMLR": 20,
+    "DEV": 10
+   },
+   "estimate": true,
+   "method": "Rental value × years since 1988: the Vale market rent (ONS, Aug 2026) back-cast year by year with the Wales HPI, summed Dec 1988 – Oct 2026 (page 5298 line 2b).",
+   "inputs": [
+    [
+     "Period",
+     "Dec 1988 – Oct 2026 (about 38 years)"
+    ],
+    [
+     "Rent today",
+     "ONS private rents, Vale of Glamorgan, Aug 2026"
+    ]
+   ],
+   "facts": [
+    [
+     "Dispossession on 29/30 Nov 1988.",
+     {
+      "title": "1988: Possession and Demolition",
+      "url": "https://greathousefarmwiki.wordpress.com/demolition-1988/"
+     }
+    ],
+    [
+     "BP in possession to 3 Dec 1993, then Ideal Homes.",
+     {
+      "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+      "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+     }
+    ]
+   ],
+   "legal": "Trespass and mesne profits at the ordinary letting value (Inverugie Investments v Hackett [1995] 1 WLR 713); Limitation Act 1980 s.2, extended by s.32 if concealment is shown.",
+   "sources": [
+    {
+     "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+    }
+   ],
+   "maps_to": [
+    "BP",
+    "HMLR",
+    "DEV"
+   ]
+  },
+  {
+   "id": "L-CONT",
+   "label": "Contents",
+   "head": "Contents lost with the demolition",
+   "v": {
+    "low": 30000,
+    "mid": 30000,
+    "high": 30000
+   },
+   "alloc": {
+    "BP": 90,
+    "SWP": 10
+   },
+   "estimate": false,
+   "method": "William’s own figure in 1989: about £30,000 (press cutting N13), taken at its 1988 value. Interest on it is in the interest head.",
+   "inputs": [
+    [
+     "Figure",
+     "£30,000 (1989)"
+    ]
+   ],
+   "facts": [
+    [
+     "“From farm to a bus”: William put the loss of contents at about £30,000.",
+     {
+      "title": "Press: “From farm to a bus” (N13, 1989)",
+      "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e090-n13-from-farm-to-a-bus-1989/"
+     }
+    ]
+   ],
+   "legal": "Conversion and trespass to goods (Torts (Interference with Goods) Act 1977).",
+   "sources": [
+    {
+     "title": "Press: “From farm to a bus” (N13, 1989)",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e090-n13-from-farm-to-a-bus-1989/"
+    },
+    {
+     "title": "1988: Possession and Demolition",
+     "url": "https://greathousefarmwiki.wordpress.com/demolition-1988/"
+    }
+   ],
+   "maps_to": [
+    "BP"
+   ]
+  },
+  {
+   "id": "L-DIST",
+   "label": "Distress",
+   "head": "Distress and psychiatric injury: William, his partner and three children",
+   "v": {
+    "low": 35750,
+    "mid": 135820,
+    "high": 269125
+   },
+   "alloc": {
+    "BP": 75,
+    "SWP": 10,
+    "HMLR": 5,
+    "VALE": 5,
+    "WG": 5
+   },
+   "estimate": true,
+   "method": "Judicial College Guidelines (17th ed.), psychiatric damage generally. Low: 5 × the foot of the moderate bracket. Mid: 2 adults at the middle of moderately severe + 3 children at the middle of moderate. High: 2 adults at the foot of severe + 3 children at the middle of moderately severe.",
+   "inputs": [
+    [
+     "Moderate",
+     "£7,150 – £23,270"
+    ],
+    [
+     "Moderately severe",
+     "£23,270 – £66,920"
+    ],
+    [
+     "Severe",
+     "£66,920 – £141,240"
+    ],
+    [
+     "People",
+     "5 (two adults, three children aged two to four in 1988)"
+    ]
+   ],
+   "facts": [
+    [
+     "29 Apr 1988: an axe came through a door with the children behind it.",
+     {
+      "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+      "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+     }
+    ],
+    [
+     "Nov 1988: the householder was injured in the eviction and taken to Llandough Hospital.",
+     {
+      "title": "Press: “Angry scenes as farmer evicted” (N14, 1988)",
+      "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/n14-1988-angry-scenes-as-farmer-evicted/"
+     }
+    ],
+    [
+     "A pregnant family member was put over the farm gate by the removal team; her shoulder was dislocated.",
+     {
+      "title": "Legal Wiki — Testimony (GHF-E114)",
+      "url": "https://greathousefarmwiki.wordpress.com/testimony/"
+     }
+    ]
+   ],
+   "legal": "Trespass to the person and to land; damages for psychiatric injury (primary victims); Human Rights Act 1998 Art 8 only for acts after 2 Oct 2000.",
+   "sources": [
+    {
+     "title": "Judicial College Guidelines for the Assessment of General Damages in Personal Injury Cases, 17th ed. (2024)",
+     "url": "https://uk.practicallaw.thomsonreuters.com/Browse/Home/Books/Judicial"
+    },
+    {
+     "title": "Legal Wiki — Testimony (GHF-E114)",
+     "url": "https://greathousefarmwiki.wordpress.com/testimony/"
+    },
+    {
+     "title": "Press: “Angry scenes as farmer evicted” (N14, 1988)",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/n14-1988-angry-scenes-as-farmer-evicted/"
+    }
+   ],
+   "maps_to": [
+    "BP",
+    "HMLR",
+    "VALE"
+   ]
+  },
+  {
+   "id": "L-AMP",
+   "label": "Mary’s leg",
+   "head": "Mary Williams: leg amputation (c.1955)",
+   "v": {
+    "low": 0,
+    "mid": 132220,
+    "high": 157390
+   },
+   "alloc": {
+    "WGR": 100
+   },
+   "estimate": true,
+   "causation": "to be proven",
+   "method": "The family’s account: the stress of the first eviction dispute (notice 1953, order 1955) brought on the amputation. Judicial College Guidelines bracket for amputation of one leg (16th ed. +22%, the 17th ed. uplift): below-knee £112,180 – £152,260, above-knee £120,020 – £157,390. Low nil (causation not established); mid the middle of below-knee; high the top of above-knee. Causation: to be proven by medical records and expert evidence.",
+   "inputs": [
+    [
+     "Below-knee bracket",
+     "£112,180 – £152,260"
+    ],
+    [
+     "Above-knee bracket",
+     "£120,020 – £157,390"
+    ],
+    [
+     "Causation",
+     "to be proven"
+    ]
+   ],
+   "facts": [
+    [
+     "The 1987 judgment records that when the 1955 order was enforced on 4 July 1955, Mrs Buckler “had recently come out of hospital after having had a leg amputated and was objecting very strongly to leaving the farmhouse”, with a fear she might attempt suicide.",
+     {
+      "title": "EV-0080 — BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+      "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0080-bp-properties-v-buckler-judgment/"
+     }
+    ],
+    [
+     "The family’s account links the amputation to the stress of the dispute.",
+     {
+      "title": "Reparations Schedule & Proposed Apportionment (wiki page 5475)",
+      "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/reparations-schedule/"
+     }
+    ],
+    [
+     "Mary died in March 1983.",
+     {
+      "title": "Reparations Schedule & Proposed Apportionment (wiki page 5475)",
+      "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/reparations-schedule/"
+     }
+    ]
+   ],
+   "legal": "Personal injury through Mary’s estate (Law Reform (Miscellaneous Provisions) Act 1934); negligence or harassment in the 1953–55 proceedings; s.32 if concealment is shown.",
+   "sources": [
+    {
+     "title": "EV-0080 — BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0080-bp-properties-v-buckler-judgment/"
+    },
+    {
+     "title": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (BAILII)",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "title": "Reparations Schedule & Proposed Apportionment (wiki page 5475)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/reparations-schedule/"
+    },
+    {
+     "title": "Judicial College Guidelines for the Assessment of General Damages in Personal Injury Cases, 17th ed. (2024)",
+     "url": "https://uk.practicallaw.thomsonreuters.com/Browse/Home/Books/Judicial"
+    }
+   ],
+   "maps_to": [
+    "WGR"
+   ]
+  },
+  {
+   "id": "L-DEATH",
+   "label": "Deaths",
+   "head": "Wrongful death: the estates of Mary (d. 1983) and William “Billy” Buckler (d. 1990)",
+   "v": {
+    "low": 0,
+    "mid": 24120,
+    "high": 383771
+   },
+   "alloc": {
+    "BP": 70,
+    "WGR": 30
+   },
+   "estimate": true,
+   "causation": "to be proven",
+   "method": "Fatal Accidents Act 1976: the statutory bereavement award (£15,120) for William’s widow, plus two funerals at about £4,500 each today (estimate). High adds dependency for William’s partner and three children: 2/3 of an assumed £15,000 net a year × 15 years to the children’s majority, carried to 2026 £ by CPI (£359,651; earnings not on the record yet). Low nil (causation not established). Causation: to be proven.",
+   "inputs": [
+    [
+     "Bereavement award",
+     "£15,120"
+    ],
+    [
+     "Funerals",
+     "2 × £4,500 (estimate)"
+    ],
+    [
+     "Dependency (high only)",
+     "£359,651 (estimate)"
+    ]
+   ],
+   "facts": [
+    [
+     "Mary died in March 1983.",
+     {
+      "title": "Reparations Schedule & Proposed Apportionment (wiki page 5475)",
+      "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/reparations-schedule/"
+     }
+    ],
+    [
+     "South Wales Echo, 2 Jun 1990: “Billy died suddenly this week”.",
+     {
+      "title": "EV-0290 — South Wales Echo, 2 Jun 1990: “Billy died suddenly this week”",
+      "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0290-snippet-only-south-wales-echo-2-jun-1990-p-2-billy-died-suddenly-this-week-he-made/"
+     }
+    ],
+    [
+     "Probate calendar 1991: William Beverley Buckler, died 29 April 1990 (probable match).",
+     {
+      "title": "EV-0274 — Probate calendar 1991",
+      "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0274-probate-calendar-1991-william-beverley-buckler/"
+     }
+    ]
+   ],
+   "legal": "Fatal Accidents Act 1976 ss.1A, 3; Law Reform (Miscellaneous Provisions) Act 1934 for the estates; causation by medical evidence.",
+   "sources": [
+    {
+     "title": "Fatal Accidents Act 1976 s.1A (bereavement £15,120, SI 2020/316)",
+     "url": "https://www.legislation.gov.uk/ukpga/1976/30/section/1A"
+    },
+    {
+     "title": "EV-0290 — South Wales Echo, 2 Jun 1990: “Billy died suddenly this week”",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0290-snippet-only-south-wales-echo-2-jun-1990-p-2-billy-died-suddenly-this-week-he-made/"
+    },
+    {
+     "title": "EV-0274 — Probate calendar 1991",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0274-probate-calendar-1991-william-beverley-buckler/"
+    },
+    {
+     "title": "Reparations Schedule & Proposed Apportionment (wiki page 5475)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/reparations-schedule/"
+    }
+   ],
+   "maps_to": [
+    "BP",
+    "WGR"
+   ]
+  },
+  {
+   "id": "L-AGG",
+   "label": "Aggravated",
+   "head": "Aggravated and exemplary damages: the 1988 eviction and demolition",
+   "v": {
+    "low": 25000,
+    "mid": 167570,
+    "high": 654323
+   },
+   "alloc": {
+    "BP": 85,
+    "SWP": 15
+   },
+   "estimate": true,
+   "method": "Aggravated: £5,000 / £15,000 / £25,000 per person × 5 (Thompson v Commissioner of Police bands, indexed). Exemplary: nil low; mid the £60,000 award in Ramzan v Brookwide (2011) carried to 2026 £ by CPI (£92,570); high 15% of BP’s mid gain (£529,323), because category 2 is measured against the profit (Rookes v Barnard [1964] AC 1129).",
+   "inputs": [
+    [
+     "People",
+     "5"
+    ],
+    [
+     "Ramzan exemplary, 2026 £",
+     "£92,570"
+    ],
+    [
+     "BP mid gain × 15%",
+     "£529,323"
+    ]
+   ],
+   "facts": [
+    [
+     "Five bailiffs and about 20 police attended; three young children were present; a pregnant family member was put over the gate.",
+     {
+      "title": "Legal Wiki — Testimony (GHF-E114)",
+      "url": "https://greathousefarmwiki.wordpress.com/testimony/"
+     }
+    ],
+    [
+     "Demolition began within hours, while a High Court interim injunction covered the farmhouse and its contents.",
+     {
+      "title": "1988: Possession and Demolition",
+      "url": "https://greathousefarmwiki.wordpress.com/demolition-1988/"
+     }
+    ]
+   ],
+   "legal": "Rookes v Barnard [1964] AC 1129 (category 2: conduct calculated to profit); Kuddus v Chief Constable [2001] UKHL 29; Archer v Brown [1985] QB 401.",
+   "sources": [
+    {
+     "title": "Thompson v Commissioner of Police [1998] QB 498 (aggravated and exemplary bands)",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1997/3083.html"
+    },
+    {
+     "title": "Ramzan v Brookwide Ltd [2011] EWCA Civ 985 (exemplary £60,000)",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/2011/985.html"
+    },
+    {
+     "title": "1988: Possession and Demolition",
+     "url": "https://greathousefarmwiki.wordpress.com/demolition-1988/"
+    }
+   ],
+   "maps_to": [
+    "BP"
+   ]
+  },
+  {
+   "id": "L-HER",
+   "label": "Heritage",
+   "head": "Heritage and archaeological loss: the medieval farmhouse and the 1994 cemetery",
+   "v": {
+    "low": 0,
+    "mid": 335958,
+    "high": 810958
+   },
+   "alloc": {
+    "BP": 50,
+    "WG": 25,
+    "VALE": 15,
+    "DEV": 10
+   },
+   "estimate": true,
+   "method": "Reinstatement premium: the cost of rebuilding a comparable historic farmhouse (250 m² at £3,500/m² mid; 300 m² at £4,500/m² high; floor area estimate) less its market value already in the land head (£539,042). Archaeology: no one owns human remains, so the 1,026 burials carry no money value; the finds (Museum Wales 95.56H) are a return-or-copy remedy in kind, £0 here.",
+   "inputs": [
+    [
+     "Floor area (estimate)",
+     "250 m² / 300 m²"
+    ],
+    [
+     "Rebuild rate (estimate)",
+     "£3,500 / £4,500 per m²"
+    ],
+    [
+     "Less market value in the land head",
+     "£539,042"
+    ]
+   ],
+   "facts": [
+    [
+     "3 Dec 1988: Cadw was considering an emergency spot-listing.",
+     {
+      "title": "Ty Mawr Restitutionary Brief v3 (12 Feb 2026), IV.A",
+      "url": null
+     }
+    ],
+    [
+     "1994: the cemetery excavation recorded 1,026 burials, carried out on behalf of Ideal Homes Wales.",
+     {
+      "title": "EV-0293 — 1994 cemetery excavation “on behalf of Ideal Homes Wales”, 1,026 burials",
+      "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0293-llandough-1994-cemetery-excavation-her-ggat02272s-museum-wales-95-56h-burial-631/"
+     }
+    ]
+   ],
+   "legal": "Damages for loss of the building at reinstatement cost where reinstatement is reasonable (Lodge Holes Colliery v Wednesbury [1908] AC 323 principle); delivery up of identified items.",
+   "sources": [
+    {
+     "title": "EV-0293 — 1994 cemetery excavation “on behalf of Ideal Homes Wales”, 1,026 burials",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0293-llandough-1994-cemetery-excavation-her-ggat02272s-museum-wales-95-56h-burial-631/"
+    },
+    {
+     "title": "Reparations Schedule & Proposed Apportionment (wiki page 5475)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/reparations-schedule/"
+    },
+    {
+     "title": "Ty Mawr Restitutionary Brief v3 (12 Feb 2026), IV.A",
+     "url": null
+    }
+   ],
+   "maps_to": [
+    "BP",
+    "VALE",
+    "DEV"
+   ]
+  },
+  {
+   "id": "L-COST",
+   "label": "Costs",
+   "head": "Costs borne by the family",
+   "v": {
+    "low": 6692,
+    "mid": 13172,
+    "high": 26132
+   },
+   "alloc": {
+    "BP": 80,
+    "HMLR": 20
+   },
+   "estimate": true,
+   "method": "Litigant-in-person time at £24 an hour (CPR 46.5) × 270 / 540 / 1,080 hours (page 5298 line 8a), plus £211.93 of receipted cash. The costs of the 1955, 1962, 1974 and 1986–88 proceedings: £ not on the record yet.",
+   "inputs": [
+    [
+     "Rate",
+     "£24 an hour (CPR 46.5)"
+    ],
+    [
+     "Hours",
+     "270 / 540 / 1,080"
+    ],
+    [
+     "Cash with receipts",
+     "£211.93"
+    ]
+   ],
+   "facts": [
+    [
+     "Project cash to 20 Oct 2026: £211.93.",
+     {
+      "title": "The Counting House — public accounts",
+      "url": "https://accounts.bucklerfamily.estate/"
+     }
+    ]
+   ],
+   "legal": "CPR 46.5 (litigant in person); a costs order in the claim.",
+   "sources": [
+    {
+     "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+    },
+    {
+     "title": "The Counting House — public accounts",
+     "url": "https://accounts.bucklerfamily.estate/"
+    }
+   ],
+   "maps_to": [
+    "BP",
+    "HMLR"
+   ]
+  },
+  {
+   "id": "L-INT",
+   "label": "Interest",
+   "head": "Interest on the loss of use and the contents",
+   "v": {
+    "low": 218602,
+    "mid": 550312,
+    "high": 665196
+   },
+   "alloc": {
+    "BP": 75,
+    "HMLR": 15,
+    "DEV": 10
+   },
+   "estimate": true,
+   "method": "Mid and high at 8% simple, the Judgments Act rate, on each year’s loss of use from when it fell due (page 5298 line 4c: £459,400 on the mid rent; scaled to the high rent) and on the £30,000 contents from Dec 1988 (37.88 years). Low at Bank Rate +1% (s.35A Senior Courts Act 1981; mean Bank Rate 4.5%). No interest on the land head: its value is already carried to today by the HPI.",
+   "inputs": [
+    [
+     "Rate, mid / high",
+     "8% simple"
+    ],
+    [
+     "Rate, low",
+     "Bank Rate +1% (mean 5.50%)"
+    ],
+    [
+     "Contents interest at 8%",
+     "£90,912"
+    ]
+   ],
+   "facts": [
+    [
+     "Page 5298 sets out the interest lines at Bank Rate, Bank Rate +1% and 8%.",
+     {
+      "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+      "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+     }
+    ]
+   ],
+   "legal": "Senior Courts Act 1981 s.35A; Judgments Act 1838 (8%).",
+   "sources": [
+    {
+     "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+    }
+   ],
+   "maps_to": [
+    "BP",
+    "HMLR",
+    "DEV"
+   ]
+  }
+ ],
+ "rows": [
+  {
+   "party": "BP",
+   "party_name": "BP Properties Ltd / BP Pension Trust (now BP plc)",
+   "head": "L-LAND",
+   "what": "The farmhouse and the land (Parcel A, about 10 acres)",
+   "share": 60,
+   "v": {
+    "low": 372600,
+    "mid": 1685400,
+    "high": 2457600
+   },
+   "legal": "Restitution of the land or its value; deceit (Smith New Court v Scrimgeour Vickers [1997] AC 254) once the 1987 judgment is set aside; indemnity (LRA 2002 Sch 8).",
+   "route": "Letter before claim; set the 1987 judgment aside (Takhar v Gracefield, the gateway); deceit, trespass and mesne profits, unjust enrichment / account of profits; s.32 Limitation Act 1980 if concealment is shown.",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+    },
+    {
+     "title": "EV-0080 — BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0080-bp-properties-v-buckler-judgment/"
+    }
+   ]
+  },
+  {
+   "party": "BP",
+   "party_name": "BP Properties Ltd / BP Pension Trust (now BP plc)",
+   "head": "L-USE",
+   "what": "Loss of use and mesne profits, Dec 1988 – Oct 2026",
+   "share": 70,
+   "v": {
+    "low": 216160,
+    "mid": 238210,
+    "high": 297780
+   },
+   "legal": "Trespass and mesne profits at the ordinary letting value (Inverugie Investments v Hackett [1995] 1 WLR 713); Limitation Act 1980 s.2, extended by s.32 if concealment is shown.",
+   "route": "Letter before claim; set the 1987 judgment aside (Takhar v Gracefield, the gateway); deceit, trespass and mesne profits, unjust enrichment / account of profits; s.32 Limitation Act 1980 if concealment is shown.",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+    }
+   ]
+  },
+  {
+   "party": "BP",
+   "party_name": "BP Properties Ltd / BP Pension Trust (now BP plc)",
+   "head": "L-CONT",
+   "what": "Contents lost with the demolition",
+   "share": 90,
+   "v": {
+    "low": 27000,
+    "mid": 27000,
+    "high": 27000
+   },
+   "legal": "Conversion and trespass to goods (Torts (Interference with Goods) Act 1977).",
+   "route": "Letter before claim; set the 1987 judgment aside (Takhar v Gracefield, the gateway); deceit, trespass and mesne profits, unjust enrichment / account of profits; s.32 Limitation Act 1980 if concealment is shown.",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Press: “From farm to a bus” (N13, 1989)",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e090-n13-from-farm-to-a-bus-1989/"
+    },
+    {
+     "title": "1988: Possession and Demolition",
+     "url": "https://greathousefarmwiki.wordpress.com/demolition-1988/"
+    }
+   ]
+  },
+  {
+   "party": "BP",
+   "party_name": "BP Properties Ltd / BP Pension Trust (now BP plc)",
+   "head": "L-DIST",
+   "what": "Distress and psychiatric injury: William, his partner and three children",
+   "share": 75,
+   "v": {
+    "low": 26812,
+    "mid": 101865,
+    "high": 201844
+   },
+   "legal": "Trespass to the person and to land; damages for psychiatric injury (primary victims); Human Rights Act 1998 Art 8 only for acts after 2 Oct 2000.",
+   "route": "Letter before claim; set the 1987 judgment aside (Takhar v Gracefield, the gateway); deceit, trespass and mesne profits, unjust enrichment / account of profits; s.32 Limitation Act 1980 if concealment is shown.",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Judicial College Guidelines for the Assessment of General Damages in Personal Injury Cases, 17th ed. (2024)",
+     "url": "https://uk.practicallaw.thomsonreuters.com/Browse/Home/Books/Judicial"
+    },
+    {
+     "title": "Legal Wiki — Testimony (GHF-E114)",
+     "url": "https://greathousefarmwiki.wordpress.com/testimony/"
+    }
+   ]
+  },
+  {
+   "party": "BP",
+   "party_name": "BP Properties Ltd / BP Pension Trust (now BP plc)",
+   "head": "L-DEATH",
+   "what": "Wrongful death: the estates of Mary (d. 1983) and William “Billy” Buckler (d. 1990)",
+   "share": 70,
+   "v": {
+    "low": 0,
+    "mid": 16884,
+    "high": 268640
+   },
+   "legal": "Fatal Accidents Act 1976 ss.1A, 3; Law Reform (Miscellaneous Provisions) Act 1934 for the estates; causation by medical evidence.",
+   "route": "Letter before claim; set the 1987 judgment aside (Takhar v Gracefield, the gateway); deceit, trespass and mesne profits, unjust enrichment / account of profits; s.32 Limitation Act 1980 if concealment is shown.",
+   "causation": "to be proven",
+   "evidence": [
+    {
+     "title": "Fatal Accidents Act 1976 s.1A (bereavement £15,120, SI 2020/316)",
+     "url": "https://www.legislation.gov.uk/ukpga/1976/30/section/1A"
+    },
+    {
+     "title": "EV-0290 — South Wales Echo, 2 Jun 1990: “Billy died suddenly this week”",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0290-snippet-only-south-wales-echo-2-jun-1990-p-2-billy-died-suddenly-this-week-he-made/"
+    }
+   ]
+  },
+  {
+   "party": "BP",
+   "party_name": "BP Properties Ltd / BP Pension Trust (now BP plc)",
+   "head": "L-AGG",
+   "what": "Aggravated and exemplary damages: the 1988 eviction and demolition",
+   "share": 85,
+   "v": {
+    "low": 21250,
+    "mid": 142434,
+    "high": 556175
+   },
+   "legal": "Rookes v Barnard [1964] AC 1129 (category 2: conduct calculated to profit); Kuddus v Chief Constable [2001] UKHL 29; Archer v Brown [1985] QB 401.",
+   "route": "Letter before claim; set the 1987 judgment aside (Takhar v Gracefield, the gateway); deceit, trespass and mesne profits, unjust enrichment / account of profits; s.32 Limitation Act 1980 if concealment is shown.",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Thompson v Commissioner of Police [1998] QB 498 (aggravated and exemplary bands)",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1997/3083.html"
+    },
+    {
+     "title": "Ramzan v Brookwide Ltd [2011] EWCA Civ 985 (exemplary £60,000)",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/2011/985.html"
+    }
+   ]
+  },
+  {
+   "party": "BP",
+   "party_name": "BP Properties Ltd / BP Pension Trust (now BP plc)",
+   "head": "L-HER",
+   "what": "Heritage and archaeological loss: the medieval farmhouse and the 1994 cemetery",
+   "share": 50,
+   "v": {
+    "low": 0,
+    "mid": 167979,
+    "high": 405479
+   },
+   "legal": "Damages for loss of the building at reinstatement cost where reinstatement is reasonable (Lodge Holes Colliery v Wednesbury [1908] AC 323 principle); delivery up of identified items.",
+   "route": "Letter before claim; set the 1987 judgment aside (Takhar v Gracefield, the gateway); deceit, trespass and mesne profits, unjust enrichment / account of profits; s.32 Limitation Act 1980 if concealment is shown.",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "EV-0293 — 1994 cemetery excavation “on behalf of Ideal Homes Wales”, 1,026 burials",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0293-llandough-1994-cemetery-excavation-her-ggat02272s-museum-wales-95-56h-burial-631/"
+    },
+    {
+     "title": "Reparations Schedule & Proposed Apportionment (wiki page 5475)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/reparations-schedule/"
+    }
+   ]
+  },
+  {
+   "party": "BP",
+   "party_name": "BP Properties Ltd / BP Pension Trust (now BP plc)",
+   "head": "L-COST",
+   "what": "Costs borne by the family",
+   "share": 80,
+   "v": {
+    "low": 5354,
+    "mid": 10538,
+    "high": 20906
+   },
+   "legal": "CPR 46.5 (litigant in person); a costs order in the claim.",
+   "route": "Letter before claim; set the 1987 judgment aside (Takhar v Gracefield, the gateway); deceit, trespass and mesne profits, unjust enrichment / account of profits; s.32 Limitation Act 1980 if concealment is shown.",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+    },
+    {
+     "title": "The Counting House — public accounts",
+     "url": "https://accounts.bucklerfamily.estate/"
+    }
+   ]
+  },
+  {
+   "party": "BP",
+   "party_name": "BP Properties Ltd / BP Pension Trust (now BP plc)",
+   "head": "L-INT",
+   "what": "Interest on the loss of use and the contents",
+   "share": 75,
+   "v": {
+    "low": 163952,
+    "mid": 412734,
+    "high": 498897
+   },
+   "legal": "Senior Courts Act 1981 s.35A; Judgments Act 1838 (8%).",
+   "route": "Letter before claim; set the 1987 judgment aside (Takhar v Gracefield, the gateway); deceit, trespass and mesne profits, unjust enrichment / account of profits; s.32 Limitation Act 1980 if concealment is shown.",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+    }
+   ]
+  },
+  {
+   "party": "DEV",
+   "party_name": "Ideal Homes (Wales), now Persimmon Homes",
+   "head": "L-LAND",
+   "what": "The farmhouse and the land (Parcel A, about 10 acres)",
+   "share": 10,
+   "v": {
+    "low": 62100,
+    "mid": 280900,
+    "high": 409600
+   },
+   "legal": "Restitution of the land or its value; deceit (Smith New Court v Scrimgeour Vickers [1997] AC 254) once the 1987 judgment is set aside; indemnity (LRA 2002 Sch 8).",
+   "route": "Mesne profits for 1993–95 possession (trespass); unjust enrichment. An innocent purchaser for value is protected (Limitation Act 1980 s.32(3)).",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+    },
+    {
+     "title": "EV-0080 — BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0080-bp-properties-v-buckler-judgment/"
+    }
+   ]
+  },
+  {
+   "party": "DEV",
+   "party_name": "Ideal Homes (Wales), now Persimmon Homes",
+   "head": "L-USE",
+   "what": "Loss of use and mesne profits, Dec 1988 – Oct 2026",
+   "share": 10,
+   "v": {
+    "low": 30880,
+    "mid": 34030,
+    "high": 42540
+   },
+   "legal": "Trespass and mesne profits at the ordinary letting value (Inverugie Investments v Hackett [1995] 1 WLR 713); Limitation Act 1980 s.2, extended by s.32 if concealment is shown.",
+   "route": "Mesne profits for 1993–95 possession (trespass); unjust enrichment. An innocent purchaser for value is protected (Limitation Act 1980 s.32(3)).",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+    }
+   ]
+  },
+  {
+   "party": "DEV",
+   "party_name": "Ideal Homes (Wales), now Persimmon Homes",
+   "head": "L-HER",
+   "what": "Heritage and archaeological loss: the medieval farmhouse and the 1994 cemetery",
+   "share": 10,
+   "v": {
+    "low": 0,
+    "mid": 33596,
+    "high": 81096
+   },
+   "legal": "Damages for loss of the building at reinstatement cost where reinstatement is reasonable (Lodge Holes Colliery v Wednesbury [1908] AC 323 principle); delivery up of identified items.",
+   "route": "Mesne profits for 1993–95 possession (trespass); unjust enrichment. An innocent purchaser for value is protected (Limitation Act 1980 s.32(3)).",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "EV-0293 — 1994 cemetery excavation “on behalf of Ideal Homes Wales”, 1,026 burials",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0293-llandough-1994-cemetery-excavation-her-ggat02272s-museum-wales-95-56h-burial-631/"
+    },
+    {
+     "title": "Reparations Schedule & Proposed Apportionment (wiki page 5475)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/reparations-schedule/"
+    }
+   ]
+  },
+  {
+   "party": "DEV",
+   "party_name": "Ideal Homes (Wales), now Persimmon Homes",
+   "head": "L-INT",
+   "what": "Interest on the loss of use and the contents",
+   "share": 10,
+   "v": {
+    "low": 21860,
+    "mid": 55031,
+    "high": 66520
+   },
+   "legal": "Senior Courts Act 1981 s.35A; Judgments Act 1838 (8%).",
+   "route": "Mesne profits for 1993–95 possession (trespass); unjust enrichment. An innocent purchaser for value is protected (Limitation Act 1980 s.32(3)).",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+    }
+   ]
+  },
+  {
+   "party": "WGR",
+   "party_name": "Western Ground Rents Ltd (and successors)",
+   "head": "L-AMP",
+   "what": "Mary Williams: leg amputation (c.1955)",
+   "share": 100,
+   "v": {
+    "low": 0,
+    "mid": 132220,
+    "high": 157390
+   },
+   "legal": "Personal injury through Mary’s estate (Law Reform (Miscellaneous Provisions) Act 1934); negligence or harassment in the 1953–55 proceedings; s.32 if concealment is shown.",
+   "route": "Mary’s estate (Law Reform (Miscellaneous Provisions) Act 1934); negligence in the 1953–55 proceedings and their enforcement; s.32 if concealment is shown.",
+   "causation": "to be proven",
+   "evidence": [
+    {
+     "title": "EV-0080 — BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0080-bp-properties-v-buckler-judgment/"
+    },
+    {
+     "title": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (BAILII)",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    }
+   ]
+  },
+  {
+   "party": "WGR",
+   "party_name": "Western Ground Rents Ltd (and successors)",
+   "head": "L-DEATH",
+   "what": "Wrongful death: the estates of Mary (d. 1983) and William “Billy” Buckler (d. 1990)",
+   "share": 30,
+   "v": {
+    "low": 0,
+    "mid": 7236,
+    "high": 115131
+   },
+   "legal": "Fatal Accidents Act 1976 ss.1A, 3; Law Reform (Miscellaneous Provisions) Act 1934 for the estates; causation by medical evidence.",
+   "route": "Mary’s estate (Law Reform (Miscellaneous Provisions) Act 1934); negligence in the 1953–55 proceedings and their enforcement; s.32 if concealment is shown.",
+   "causation": "to be proven",
+   "evidence": [
+    {
+     "title": "Fatal Accidents Act 1976 s.1A (bereavement £15,120, SI 2020/316)",
+     "url": "https://www.legislation.gov.uk/ukpga/1976/30/section/1A"
+    },
+    {
+     "title": "EV-0290 — South Wales Echo, 2 Jun 1990: “Billy died suddenly this week”",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0290-snippet-only-south-wales-echo-2-jun-1990-p-2-billy-died-suddenly-this-week-he-made/"
+    }
+   ]
+  },
+  {
+   "party": "HMLR",
+   "party_name": "HM Land Registry",
+   "head": "L-LAND",
+   "what": "The farmhouse and the land (Parcel A, about 10 acres)",
+   "share": 25,
+   "v": {
+    "low": 155250,
+    "mid": 702250,
+    "high": 1024000
+   },
+   "legal": "Restitution of the land or its value; deceit (Smith New Court v Scrimgeour Vickers [1997] AC 254) once the 1987 judgment is set aside; indemnity (LRA 2002 Sch 8).",
+   "route": "Indemnity for a register mistake (Land Registration Act 2002 Sch 8); rectification (Sch 4); Independent Complaints Reviewer (ICR/090/26).",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+    },
+    {
+     "title": "EV-0080 — BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0080-bp-properties-v-buckler-judgment/"
+    }
+   ]
+  },
+  {
+   "party": "HMLR",
+   "party_name": "HM Land Registry",
+   "head": "L-USE",
+   "what": "Loss of use and mesne profits, Dec 1988 – Oct 2026",
+   "share": 20,
+   "v": {
+    "low": 61760,
+    "mid": 68060,
+    "high": 85080
+   },
+   "legal": "Trespass and mesne profits at the ordinary letting value (Inverugie Investments v Hackett [1995] 1 WLR 713); Limitation Act 1980 s.2, extended by s.32 if concealment is shown.",
+   "route": "Indemnity for a register mistake (Land Registration Act 2002 Sch 8); rectification (Sch 4); Independent Complaints Reviewer (ICR/090/26).",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+    }
+   ]
+  },
+  {
+   "party": "HMLR",
+   "party_name": "HM Land Registry",
+   "head": "L-DIST",
+   "what": "Distress and psychiatric injury: William, his partner and three children",
+   "share": 5,
+   "v": {
+    "low": 1788,
+    "mid": 6791,
+    "high": 13456
+   },
+   "legal": "Trespass to the person and to land; damages for psychiatric injury (primary victims); Human Rights Act 1998 Art 8 only for acts after 2 Oct 2000.",
+   "route": "Indemnity for a register mistake (Land Registration Act 2002 Sch 8); rectification (Sch 4); Independent Complaints Reviewer (ICR/090/26).",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Judicial College Guidelines for the Assessment of General Damages in Personal Injury Cases, 17th ed. (2024)",
+     "url": "https://uk.practicallaw.thomsonreuters.com/Browse/Home/Books/Judicial"
+    },
+    {
+     "title": "Legal Wiki — Testimony (GHF-E114)",
+     "url": "https://greathousefarmwiki.wordpress.com/testimony/"
+    }
+   ]
+  },
+  {
+   "party": "HMLR",
+   "party_name": "HM Land Registry",
+   "head": "L-COST",
+   "what": "Costs borne by the family",
+   "share": 20,
+   "v": {
+    "low": 1338,
+    "mid": 2634,
+    "high": 5226
+   },
+   "legal": "CPR 46.5 (litigant in person); a costs order in the claim.",
+   "route": "Indemnity for a register mistake (Land Registration Act 2002 Sch 8); rectification (Sch 4); Independent Complaints Reviewer (ICR/090/26).",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+    },
+    {
+     "title": "The Counting House — public accounts",
+     "url": "https://accounts.bucklerfamily.estate/"
+    }
+   ]
+  },
+  {
+   "party": "HMLR",
+   "party_name": "HM Land Registry",
+   "head": "L-INT",
+   "what": "Interest on the loss of use and the contents",
+   "share": 15,
+   "v": {
+    "low": 32790,
+    "mid": 82547,
+    "high": 99779
+   },
+   "legal": "Senior Courts Act 1981 s.35A; Judgments Act 1838 (8%).",
+   "route": "Indemnity for a register mistake (Land Registration Act 2002 Sch 8); rectification (Sch 4); Independent Complaints Reviewer (ICR/090/26).",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+    }
+   ]
+  },
+  {
+   "party": "VALE",
+   "party_name": "Vale of Glamorgan Council",
+   "head": "L-DIST",
+   "what": "Distress and psychiatric injury: William, his partner and three children",
+   "share": 5,
+   "v": {
+    "low": 1788,
+    "mid": 6791,
+    "high": 13456
+   },
+   "legal": "Trespass to the person and to land; damages for psychiatric injury (primary victims); Human Rights Act 1998 Art 8 only for acts after 2 Oct 2000.",
+   "route": "Negligence in planning and conservation duties; Human Rights Act 1998 / A1P1 for acts after 2 Oct 2000; Public Services Ombudsman for Wales.",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Judicial College Guidelines for the Assessment of General Damages in Personal Injury Cases, 17th ed. (2024)",
+     "url": "https://uk.practicallaw.thomsonreuters.com/Browse/Home/Books/Judicial"
+    },
+    {
+     "title": "Legal Wiki — Testimony (GHF-E114)",
+     "url": "https://greathousefarmwiki.wordpress.com/testimony/"
+    }
+   ]
+  },
+  {
+   "party": "VALE",
+   "party_name": "Vale of Glamorgan Council",
+   "head": "L-HER",
+   "what": "Heritage and archaeological loss: the medieval farmhouse and the 1994 cemetery",
+   "share": 15,
+   "v": {
+    "low": 0,
+    "mid": 50394,
+    "high": 121644
+   },
+   "legal": "Damages for loss of the building at reinstatement cost where reinstatement is reasonable (Lodge Holes Colliery v Wednesbury [1908] AC 323 principle); delivery up of identified items.",
+   "route": "Negligence in planning and conservation duties; Human Rights Act 1998 / A1P1 for acts after 2 Oct 2000; Public Services Ombudsman for Wales.",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "EV-0293 — 1994 cemetery excavation “on behalf of Ideal Homes Wales”, 1,026 burials",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0293-llandough-1994-cemetery-excavation-her-ggat02272s-museum-wales-95-56h-burial-631/"
+    },
+    {
+     "title": "Reparations Schedule & Proposed Apportionment (wiki page 5475)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/reparations-schedule/"
+    }
+   ]
+  },
+  {
+   "party": "WG",
+   "party_name": "Welsh Government / Cadw",
+   "head": "L-DIST",
+   "what": "Distress and psychiatric injury: William, his partner and three children",
+   "share": 5,
+   "v": {
+    "low": 1788,
+    "mid": 6791,
+    "high": 13456
+   },
+   "legal": "Trespass to the person and to land; damages for psychiatric injury (primary victims); Human Rights Act 1998 Art 8 only for acts after 2 Oct 2000.",
+   "route": "Negligence in the 1988 listing process; Human Rights Act 1998 / A1P1 for acts after 2 Oct 2000; Public Services Ombudsman for Wales.",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Judicial College Guidelines for the Assessment of General Damages in Personal Injury Cases, 17th ed. (2024)",
+     "url": "https://uk.practicallaw.thomsonreuters.com/Browse/Home/Books/Judicial"
+    },
+    {
+     "title": "Legal Wiki — Testimony (GHF-E114)",
+     "url": "https://greathousefarmwiki.wordpress.com/testimony/"
+    }
+   ]
+  },
+  {
+   "party": "WG",
+   "party_name": "Welsh Government / Cadw",
+   "head": "L-HER",
+   "what": "Heritage and archaeological loss: the medieval farmhouse and the 1994 cemetery",
+   "share": 25,
+   "v": {
+    "low": 0,
+    "mid": 83990,
+    "high": 202740
+   },
+   "legal": "Damages for loss of the building at reinstatement cost where reinstatement is reasonable (Lodge Holes Colliery v Wednesbury [1908] AC 323 principle); delivery up of identified items.",
+   "route": "Negligence in the 1988 listing process; Human Rights Act 1998 / A1P1 for acts after 2 Oct 2000; Public Services Ombudsman for Wales.",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "EV-0293 — 1994 cemetery excavation “on behalf of Ideal Homes Wales”, 1,026 burials",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0293-llandough-1994-cemetery-excavation-her-ggat02272s-museum-wales-95-56h-burial-631/"
+    },
+    {
+     "title": "Reparations Schedule & Proposed Apportionment (wiki page 5475)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/reparations-schedule/"
+    }
+   ]
+  },
+  {
+   "party": "SWP",
+   "party_name": "South Wales Police",
+   "head": "L-CONT",
+   "what": "Contents lost with the demolition",
+   "share": 10,
+   "v": {
+    "low": 3000,
+    "mid": 3000,
+    "high": 3000
+   },
+   "legal": "Conversion and trespass to goods (Torts (Interference with Goods) Act 1977).",
+   "route": "Trespass to the person and misfeasance in public office (1988); IOPC complaint route.",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Press: “From farm to a bus” (N13, 1989)",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e090-n13-from-farm-to-a-bus-1989/"
+    },
+    {
+     "title": "1988: Possession and Demolition",
+     "url": "https://greathousefarmwiki.wordpress.com/demolition-1988/"
+    }
+   ]
+  },
+  {
+   "party": "SWP",
+   "party_name": "South Wales Police",
+   "head": "L-DIST",
+   "what": "Distress and psychiatric injury: William, his partner and three children",
+   "share": 10,
+   "v": {
+    "low": 3575,
+    "mid": 13582,
+    "high": 26912
+   },
+   "legal": "Trespass to the person and to land; damages for psychiatric injury (primary victims); Human Rights Act 1998 Art 8 only for acts after 2 Oct 2000.",
+   "route": "Trespass to the person and misfeasance in public office (1988); IOPC complaint route.",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Judicial College Guidelines for the Assessment of General Damages in Personal Injury Cases, 17th ed. (2024)",
+     "url": "https://uk.practicallaw.thomsonreuters.com/Browse/Home/Books/Judicial"
+    },
+    {
+     "title": "Legal Wiki — Testimony (GHF-E114)",
+     "url": "https://greathousefarmwiki.wordpress.com/testimony/"
+    }
+   ]
+  },
+  {
+   "party": "SWP",
+   "party_name": "South Wales Police",
+   "head": "L-AGG",
+   "what": "Aggravated and exemplary damages: the 1988 eviction and demolition",
+   "share": 15,
+   "v": {
+    "low": 3750,
+    "mid": 25136,
+    "high": 98148
+   },
+   "legal": "Rookes v Barnard [1964] AC 1129 (category 2: conduct calculated to profit); Kuddus v Chief Constable [2001] UKHL 29; Archer v Brown [1985] QB 401.",
+   "route": "Trespass to the person and misfeasance in public office (1988); IOPC complaint route.",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Thompson v Commissioner of Police [1998] QB 498 (aggravated and exemplary bands)",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1997/3083.html"
+    },
+    {
+     "title": "Ramzan v Brookwide Ltd [2011] EWCA Civ 985 (exemplary £60,000)",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/2011/985.html"
+    }
+   ]
+  },
+  {
+   "party": "SOL",
+   "party_name": "The family’s former solicitors (1986–87)",
+   "head": "L-LAND",
+   "what": "The farmhouse and the land (Parcel A, about 10 acres)",
+   "share": 5,
+   "v": {
+    "low": 31050,
+    "mid": 140450,
+    "high": 204800
+   },
+   "legal": "Restitution of the land or its value; deceit (Smith New Court v Scrimgeour Vickers [1997] AC 254) once the 1987 judgment is set aside; indemnity (LRA 2002 Sch 8).",
+   "route": "Professional negligence; 15-year longstop (Limitation Act 1980 s.14B) unless s.32 applies.",
+   "causation": null,
+   "evidence": [
+    {
+     "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+     "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+    },
+    {
+     "title": "EV-0080 — BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0080-bp-properties-v-buckler-judgment/"
+    }
+   ]
+  }
+ ],
+ "totals": {
+  "gains": {
+   "low": 1435412,
+   "mid": 6101052,
+   "high": 7880318
+  },
+  "losses": {
+   "low": 1245844,
+   "mid": 4538472,
+   "high": 7518295
+  }
+ },
+ "brief": {
+  "heads": [
+   {
+    "head": "Estate & Hope Value",
+    "amount": 52500000,
+    "basis": "70 acres × £750k/acre at prime regional development rates (1988 press record; Cardiff Bay uplift).",
+    "analyst": [
+     "L-LAND",
+     "L-USE"
+    ],
+    "gap_note": "The record holds about 10 acres (Parcel A); Parcel B (9 acres) and the woodland are not yet valued. The developed-land share today works out at about £276k an acre, against £750k in the brief.",
+    "analyst_mid": 3149300
+   },
+   {
+    "head": "Restitutionary Disgorgement",
+    "amount": 115000000,
+    "basis": "35 years of cumulative benefit from development, ground rents and residential sales. Rukhadze / account of profits principle.",
+    "analyst": [
+     "GAINS"
+    ],
+    "gap_note": "An account of profits reaches the profits a party actually made from the land: the gains comb. It is the alternative to compensation, so it is shown beside the losses and never added to them.",
+    "analyst_mid": 6101052
+   },
+   {
+    "head": "Historical & Manorial Restoration",
+    "amount": 10000000,
+    "basis": "13th-century grange + manorial lordship of Llandough + Marconi connection.",
+    "analyst": [
+     "L-HER"
+    ],
+    "gap_note": "Priced here at the reinstatement premium of the farmhouse. No lordship title document is on the record yet; heritage loss is mostly remedied in kind.",
+    "analyst_mid": 335958
+   },
+   {
+    "head": "Archaeological Expropriation",
+    "amount": 5000000,
+    "basis": "800+ burials, largest early-medieval site in Wales, 1870 Actual Notice.",
+    "analyst": [],
+    "gap_note": "No one owns human remains in English law, so burials carry no money value; identified finds go back or are copied, a remedy in kind.",
+    "analyst_mid": 0
+   },
+   {
+    "head": "Multi-Generational Trauma",
+    "amount": 5000000,
+    "basis": "~25 descendants; 35 years displacement; housing insecurity; loss of life chances.",
+    "analyst": [
+     "L-DIST"
+    ],
+    "gap_note": "The Judicial College brackets price recognised psychiatric injury for the five people present; descendants who were not there have no claim of their own under the secondary-victim rules (Alcock).",
+    "analyst_mid": 135820
+   },
+   {
+    "head": "Wrongful Death (estates)",
+    "amount": 5000000,
+    "basis": "Deaths of Mary Williams and Billy Buckler.",
+    "analyst": [
+     "L-DEATH",
+     "L-AMP"
+    ],
+    "gap_note": "The Fatal Accidents Act gives a fixed bereavement award and dependency; with causation proven the two estates and Mary’s amputation come to about £0.16m mid.",
+    "analyst_mid": 156340
+   },
+   {
+    "head": "Aggravated & Exemplary Damages",
+    "amount": 3000000,
+    "basis": "4am eviction; children present; pre-emptive demolition. Reduced per Rookes v Barnard [1964] HL.",
+    "analyst": [
+     "L-AGG"
+    ],
+    "gap_note": "Reported awards (Thompson, Ramzan) put this head in the low hundreds of thousands, rising toward the profit under Rookes category 2.",
+    "analyst_mid": 167570
+   }
+  ],
+  "range": {
+   "lo": 180000000,
+   "mid": 195500000,
+   "hi": 200000000
+  },
+  "source": {
+   "title": "Ty Mawr Restitutionary Brief v3 (12 Feb 2026), IV.A",
+   "url": null
+  }
+ },
+ "indices": {
+  "cdko_1938": 16.8,
+  "cdko_1969": 68.7,
+  "cdko_2026": 1665.2,
+  "cpi_1989": 52.2,
+  "cpi_1991": 60.1,
+  "cpi_dec1993": 64.7,
+  "cpi_1996": 68.8,
+  "cpi_2011": 93.4,
+  "cpi_now": 144.1,
+  "hpi_vale_jan1995": 17.5,
+  "hpi_vale_jul2026": 106.1
+ },
+ "bank_mean": 4.5,
+ "interest_rate": "8% simple (Judgments Act 1838) mid and high; Bank Rate +1% low",
+ "sources": {
+  "d5298": {
+   "title": "Damages, Losses & Costs Quantification (wiki page 5298)",
+   "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/"
+  },
+  "d5475": {
+   "title": "Reparations Schedule & Proposed Apportionment (wiki page 5475)",
+   "url": "https://greathousefarmwiki.wordpress.com/project-management/damages/reparations-schedule/"
+  },
+  "ev0080": {
+   "title": "EV-0080 — BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+   "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0080-bp-properties-v-buckler-judgment/"
+  },
+  "bailii": {
+   "title": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (BAILII)",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+  },
+  "ev0288": {
+   "title": "EV-0288 — 1968–69 takeover of Western Ground Rents by BP (press)",
+   "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0288-snippets-only-press-on-the-1968-69-takeover-battle-for-western-ground-rents-ltd-en/"
+  },
+  "ev0276": {
+   "title": "EV-0276 — Ideal Homes (Wales) built Church View Close; Persimmon bought Ideal Homes in 1996",
+   "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0276-churchview-close-llandough-ideal-homes-persimmon-1994-1996/"
+  },
+  "ev0293": {
+   "title": "EV-0293 — 1994 cemetery excavation “on behalf of Ideal Homes Wales”, 1,026 burials",
+   "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0293-llandough-1994-cemetery-excavation-her-ggat02272s-museum-wales-95-56h-burial-631/"
+  },
+  "ev0290": {
+   "title": "EV-0290 — South Wales Echo, 2 Jun 1990: “Billy died suddenly this week”",
+   "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0290-snippet-only-south-wales-echo-2-jun-1990-p-2-billy-died-suddenly-this-week-he-made/"
+  },
+  "ev0274": {
+   "title": "EV-0274 — Probate calendar 1991",
+   "url": "https://greathousefarmwiki.wordpress.com/evidence/ev-0274-probate-calendar-1991-william-beverley-buckler/"
+  },
+  "n13": {
+   "title": "Press: “From farm to a bus” (N13, 1989)",
+   "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e090-n13-from-farm-to-a-bus-1989/"
+  },
+  "n14": {
+   "title": "Press: “Angry scenes as farmer evicted” (N14, 1988)",
+   "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/n14-1988-angry-scenes-as-farmer-evicted/"
+  },
+  "demo": {
+   "title": "1988: Possession and Demolition",
+   "url": "https://greathousefarmwiki.wordpress.com/demolition-1988/"
+  },
+  "testimony": {
+   "title": "Legal Wiki — Testimony (GHF-E114)",
+   "url": "https://greathousefarmwiki.wordpress.com/testimony/"
+  },
+  "ppd": {
+   "title": "HM Land Registry Price Paid: Church View Close, Penarth",
+   "url": "https://landregistry.data.gov.uk/app/ppd/?street=CHURCH+VIEW+CLOSE&town=PENARTH"
+  },
+  "hpi": {
+   "title": "UK House Price Index: Vale of Glamorgan",
+   "url": "https://landregistry.data.gov.uk/app/ukhpi/browse?location=http%3A%2F%2Flandregistry.data.gov.uk%2Fid%2Fregion%2Fvale-of-glamorgan"
+  },
+  "cpi": {
+   "title": "ONS CPI index D7BT (the series behind the Bank of England inflation calculator)",
+   "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bt/mm23"
+  },
+  "cdko": {
+   "title": "ONS composite price index CDKO (from 1800)",
+   "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/cdko/mm23"
+  },
+  "vct": {
+   "title": "Vale of Glamorgan Council: 2025/26 council tax bands (Llandough)",
+   "url": "https://www.valeofglamorgan.gov.uk/Documents/Our%20Council/Council%20Tax%20&%20Benefits/CTAX-2025-26/2025-26-Council-Tax-Bands.pdf"
+  },
+  "jcg": {
+   "title": "Judicial College Guidelines for the Assessment of General Damages in Personal Injury Cases, 17th ed. (2024)",
+   "url": "https://uk.practicallaw.thomsonreuters.com/Browse/Home/Books/Judicial"
+  },
+  "faa": {
+   "title": "Fatal Accidents Act 1976 s.1A (bereavement £15,120, SI 2020/316)",
+   "url": "https://www.legislation.gov.uk/ukpga/1976/30/section/1A"
+  },
+  "ppg": {
+   "title": "Planning Practice Guidance: Viability, para 018 (developer return 15–20% of GDV)",
+   "url": "https://www.gov.uk/guidance/viability"
+  },
+  "ramzan": {
+   "title": "Ramzan v Brookwide Ltd [2011] EWCA Civ 985 (exemplary £60,000)",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/2011/985.html"
+  },
+  "thompson": {
+   "title": "Thompson v Commissioner of Police [1998] QB 498 (aggravated and exemplary bands)",
+   "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1997/3083.html"
+  },
+  "counting": {
+   "title": "The Counting House — public accounts",
+   "url": "https://accounts.bucklerfamily.estate/"
+  },
+  "brief": {
+   "title": "Ty Mawr Restitutionary Brief v3 (12 Feb 2026), IV.A",
+   "url": null
+  },
+  "takhar": {
+   "title": "Takhar v Gracefield Developments Ltd [2019] UKSC 13",
+   "url": "https://www.bailii.org/uk/cases/UKSC/2019/13.html"
+  }
+ },
+ "generated": "2026-10-22 00:35 UTC",
+ "ledger_mid": 4538472.0
+}

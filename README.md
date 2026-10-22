@@ -1,48 +1,62 @@
-# oldbill.bucklerfamily.estate — the Tŷ Mawr Ticket Desk
+# oldbill.bucklerfamily.estate — Who gained, who lost (draft damages schedule) and the Tŷ Mawr Ticket Desk
 
-A playful scoreboard and double-entry cost ledger for Great House Farm (Tŷ Mawr). Two chalkboards (Team Williams, Team Regime),
-one ticket per sourced event, one pair of ledger entries per cost, and a "What if the case reopens?" switch that quashes the
-orders resting on the title question and posts the contingent costs across to Team Regime.
+v3 (22 Oct 2026): the page leads with a draft damages schedule built the way a loss analyst would build it.
 
-Ledger v2 (22 Oct 2026): the seven heads of loss from the Restitutionary Brief v3 (12 Feb 2026), Section IV.A, are the main
-ledger lines at their mid-case figures (£195,500,000 in all; range £180m–£200m). The earlier Legal Wiki lines (Damages page 5298)
-sit inside the head they belong to as detail (`inside[]`), shown but never added again.
+1. **The double comb** (hero, plain SVG drawn by the page's JS from `data/damages.json`): the upper comb's teeth point up, one per
+   party that gained (height = £ mid, whiskers = low/high); the lower comb's teeth point down, one per head of the family's loss.
+   Coloured connectors run from each loss to the gainer(s) it is claimed from (stroke width = share). Hatched teeth are estimates;
+   pale-red loss teeth carry "causation to be proven". Tap a tooth: method, inputs, facts with source links, low/mid/high.
+   Totals sit at each comb's end. Gains (disgorgement) and losses (compensation) are alternatives and are never added.
+2. **Two scenarios**: the analyst build-up (low/mid/high) beside the Restitutionary Brief v3 mid-case (£195.5m, Section IV.A
+   heads and one-line bases only), with a written reconciliation and a per-head gap table.
+3. **The negotiation schedule**: one row per (party, loss head) from each head's allocation, grouped by party, with the party's
+   compensation share, its gain, the higher of the two as the opening figure, the legal basis and evidence links. The legal test
+   for setting the 1987 judgment aside is quoted verbatim inside `<section data-verbatim="legal-test">` (the one place the gate
+   stands aside).
+4. **The ticket desk** (below): chalkboards, tickets, the "What if the case reopens?" switch and the double-entry ledger, whose
+   lines are now the ten analyst loss heads at mid (re-tallied; books balance both ways).
+
+One disclaimer line at the top only: "Draft for legal review — a starting schedule for negotiation, not an assessment by a court."
 
 Static site: `public/` (Cloudflare Pages project `bucklerfamily-oldbill`, datro branch `oldbill`). Built by `tools/build.py`
-from the tables inside it plus `tools/template.html`. Every ticket and every wiki cost line carries a Legal Wiki source URL; the seven heads cite the Restitutionary Brief v3, IV.A (a source with no URL).
+(tickets, ledger, gate) which imports `tools/damages.py` (gains, losses, allocations, brief scenario, reconciliation; every
+figure computed from stated inputs and index values) plus `tools/template.html`. `tools/export.py` writes the lawyers' copy
+(Markdown + PDF) from the same data.
 
 ## Rebuild
-    python3 tools/build.py            # writes public/index.html, public/data/tickets.json, public/data/ledger.json
-The build fails if a banned word, a hedge phrase or a withheld name appears in public text, if debits and credits do not balance,
-or if the seven heads do not total the brief's mid-case £195,500,000.
+    python3 tools/build.py      # public/index.html + data/tickets.json, ledger.json, damages.json
+    python3 tools/export.py     # damages-schedule-draft.md / .pdf (offline copy; not published)
+The build fails on a banned word, a hedge phrase or a withheld name in public text (outside the legal-test section), if debits and
+credits do not balance in either state, if the ledger does not equal the losses comb mid total, if anything priced fails to move
+across when the case reopens, if a low/mid/high is out of order, or if a loss head's allocation does not total 100%.
+
+## data/damages.json (schema oldbill-damages/1)
+- `parties{key}`: `name, short, colour, gainer` (true = a tooth on the upper comb), `route` (legal route), `compensation{low,mid,high}`
+  (sum of its allocated shares), `disgorgement{low,mid,high}` (its gain tooth, or null).
+- `gains[]`: `id` (G-…), `party, party_name, label, what, v{low,mid,high}, estimate, method, inputs[[label,value]], facts[[text,source]], sources[]`.
+- `losses[]`: `id` (L-…), `label, head, v{low,mid,high}, estimate, causation` (null or "to be proven"), `method, inputs, facts,
+  alloc{party: % }` (totals 100), `maps_to[]` (the gainers among alloc = the connectors), `legal, sources[]`.
+- `rows[]`: the negotiation schedule, one per (party, loss head): `party, party_name, head, what, share, v{}, legal, route, causation, evidence[]`.
+- `totals.gains / totals.losses`: `{low, mid, high}`. `brief.heads[]`: `head, amount, basis, analyst[], analyst_mid, gap_note`; `brief.range`.
+- `reconciliation[]` (paragraphs), `indices` (CDKO, CPI, Vale HPI values used), `bank_mean`, `interest_rate`, `sources{}`.
 
 ## data/tickets.json (schema oldbill-tickets/1)
 - `rubric.bands[]`: `key, name, lo, hi, colour, example` — fixed point bands from 1 to 1,000,000.
-- `rubric.multipliers[]`: `key, x, why` (child or pregnant person ×2; done while a court/Strasbourg process was running ×2); `cap` 1,000,000.
-- `tickets[]`:
-  - `id` (T-000 = the original ticket, W-nn = orders against the family, R-nn = tickets to Team Regime), `team` (`williams` | `regime`)
-  - `date` (ISO, for sorting), `date_label`, `desk` (paper, silence, fair, over, court, orders, property, harm, home), `desk_name`, `band`
-  - `issued_to` (an institution or role; family members are the only people named), `what` (one line), `detail`
-  - `base`, `multipliers[]`, `points` = min(cap, base × multipliers); `cancelled` true scores 0
-  - `reversible` + `reissue_to`: quashed and re-issued to that party when the switch is on
-  - `sources[]`: `title, url`; the original ticket also has `fine` and `calibration`
+- `rubric.multipliers[]`: `key, x, why`; `cap` 1,000,000.
+- `tickets[]`: `id` (T-000 original ticket, W-nn orders against the family, R-nn Team Regime), `team`, `date`, `date_label`, `desk`,
+  `desk_name`, `band`, `issued_to` (institution or role), `what`, `detail`, `base`, `multipliers[]`, `points`, `cancelled`,
+  `reversible` + `reissue_to`, `sources[]`; the original ticket also has `fine` and `calibration`.
 - `summary`: board totals `now` and `reopened`, books totals, counts.
 
 ## data/ledger.json (schema oldbill-ledger/1)
-- `entries[]`: `id, group` (`heads` = the seven brief heads H-1…H-7 | `small` = lines outside the heads | `nil` = orders with no £ yet),
-  `date, head, account, amount (GBP), midcase` (brief mid-case figure), `estimate, nil (no £ on the record yet), basis` (one line), `sources[]`,
-  `inside[]` (heads only: the folded wiki lines `{id, head, amount, basis, sources[]}`; detail, never added to any total),
-  `status` (`borne` | `contingent`; shown as "Shifted" when the switch is on), `borne_by`, `liable_now`, `liable_if_reopened`,
-  `postings[]` (`{account, dr}` / `{account, cr}`: Dr `Borne:Team-Williams:<head>`, Cr `Caused:<head>`),
-  `reopen_postings[]` (Dr `Liable:Team-Regime:<party>` by share, Cr `Borne:Team-Williams:<head>`).
-- `apportionment[]`: `party, account, share, basis, source` (shares from the Reparations Schedule, page 5475).
-- `range`: `{lo, hi, mid, label, source}`, the brief's range, shown once beside the total.
-- `memo[]`: empty since v2 (the value-on-the-land lines are inside H-2).
-- `summary`: `books` (Dr, Cr per state), `heads_total`, `priced_total`.
-- Debits equal credits in both states; the page shows "Books balance ✓".
+- `entries[]`: `id, group` (`heads` = the ten analyst loss heads at mid | `nil` = orders with no £ yet), `head, account, amount`
+  (GBP, mid), `low, high, estimate, causation, nil, basis` (the method), `sources[]`, `alloc{}`, `status` (`borne` | `contingent`),
+  `borne_by`, `liable_now`, `liable_if_reopened` (the parties and shares), `postings[]` (Dr `Borne:Team-Williams:<head>`,
+  Cr `Caused:<head>`), `reopen_postings[]` (Dr `Liable:Team-Regime:<party>` by the head's allocation, Cr `Borne:Team-Williams:<head>`).
+- `parties[]`: `party, account, route`. `summary`: `books` (Dr, Cr per state), `heads_total`, `priced_total`.
 
-## Adding a ticket
-Append a dict to `R` (Team Regime) or `ORDERS` (orders against the family) in `tools/build.py` with `date, date_label, desk,
-issued_to, what, detail, base, mult, sources`. Tickets go to institutions and roles only. Rebuild, then publish.
+## Adding or changing a figure
+Change the inputs in `tools/damages.py` (never a total by hand), rebuild, export, publish. A new gainer needs a record source;
+gains are for institutions and companies only. Tickets: append to `R` or `ORDERS` in `tools/build.py`.
 
 © the Williams-Buckler family of Tŷ Mawr. Licence: https://bucklerfamily.estate/licence/

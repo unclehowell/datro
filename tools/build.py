@@ -202,51 +202,14 @@ R = [
        base=300, sources=[src('Vale of Glamorgan Council — Email Correspondence Catalogue', WIKI + '/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/')]),
 ]
 
-# ---------- LEDGER: costs borne ----------
+# ---------- LEDGER: costs borne (v2: the analyst loss heads at mid, from damages.py) ----------
+import damages as DMG
 S5298 = src('Damages, Losses & Costs Quantification (page 5298)', WIKI + '/project-management/damages/')
 S5475 = src('Reparations Schedule & Proposed Apportionment (page 5475)', WIKI + '/project-management/damages/reparations-schedule/')
-BRIEF = src('Restitutionary Brief v3 (12 Feb 2026), IV.A', None)
-BRIEF_RANGE = {'lo': 180000000, 'hi': 200000000, 'mid': 195500000, 'label': '£180m–£200m', 'source': BRIEF}
-# The wiki-based lines of 22 Oct 2026 (page 5298 etc.), kept as the detail behind a head: shown, never added again.
-def inner(id_, head, amount, basis, sources, ok=True):
-    return dict(id=id_, head=head, amount=amount, basis=basis, sources=sources)
-COSTS = [
-  # ---- the seven heads of loss: Restitutionary Brief v3, Section IV.A, mid-case ----
-  dict(id='H-1', group='heads', date='1988-12-06', head='Estate & Hope Value', account='Estate-Hope-Value', amount=52500000.00, midcase=True,
-       basis='70 acres × £750k/acre at prime regional development rates (1988 press record; Cardiff Bay uplift).', sources=[BRIEF], status='contingent',
-       inside=[
-         inner('L-01', 'The farmhouse, demolished 6 Dec 1988', 539042.00, 'Vale of Glamorgan detached-house average, Jul 2026 (UK HPI), line 1d of page 5298.', [S5298, src('1988: Possession and Demolition', WIKI + '/demolition-1988/')]),
-         inner('L-02', 'The land: Parcel A, about 10 acres (woodland, the green, the house plot)', 2269958.00, 'Head 1 central £2,809,000 less the farmhouse line.', [S5298]),
-         inner('L-03', 'Loss of use and earnings: letting value, Dec 1988 – Oct 2026', 340300.00, 'Line 2b central: Vale rent (ONS, Aug 2026) back-cast with the Wales HPI.', [S5298]),
-         inner('L-04', 'Interest on the loss of use', 156100.00, 'Line 4c central: Senior Courts Act 1981 s.35A at Bank Rate +1%.', [S5298]),
-       ]),
-  dict(id='H-2', group='heads', date='1993-01-01', head='Restitutionary Disgorgement', account='Disgorgement', amount=115000000.00, midcase=True,
-       basis='35 years of cumulative benefit from development, ground rents and residential sales. Rukhadze / account of profits principle.', sources=[BRIEF], status='contingent',
-       inside=[
-         inner('M-1', 'Value realised on the land: 16 new-build sales at Church View Close, Feb 1995 – Apr 1997', 16 * 120906.0, '16 sales × mean £120,906 (HMLR Price Paid, via page 5298).', [S5298]),
-         inner('M-2', 'Developed value of the 20 houses today', 11039000.0, 'Line 1a central: 20 × £551,929 (page 5298).', [S5298]),
-       ]),
-  dict(id='H-3', group='heads', date='1988-12-06', head='Historical & Manorial Restoration', account='Historical-Manorial', amount=10000000.00, midcase=True,
-       basis='13th-century grange + manorial lordship of Llandough + Marconi connection. Irreversible loss.', sources=[BRIEF], status='contingent', inside=[]),
-  dict(id='H-4', group='heads', date='1870-01-01', head='Archaeological Expropriation', account='Archaeological', amount=5000000.00, midcase=True,
-       basis='800+ burials, largest early-medieval site in Wales, 1870 Actual Notice.', sources=[BRIEF], status='contingent', inside=[]),
-  dict(id='H-5', group='heads', date='1988-12-06', head='Multi-Generational Trauma', account='Multi-Generational-Trauma', amount=5000000.00, midcase=True,
-       basis='~25 descendants; 35 years displacement; housing insecurity; loss of life chances.', sources=[BRIEF], status='contingent',
-       inside=[
-         inner('L-05', 'Distress: five people (William, his partner and three children)', 125800.00, 'Line 5a central: Vento middle-band midpoint (£25,150) × 5, used as an analogy.', [S5298]),
-         inner('L-13', 'Rehousing after the demolition (the bus, 1989; rent since)', 0, 'No £ on the record yet (page 5298 head 6).', [S5298, src('Press: \u201cFrom farm to a bus\u201d (N13)', WIKI + '/evidence-library/ghf-e090-n13-from-farm-to-a-bus-1989/')]),
-       ]),
-  dict(id='H-6', group='heads', date='1988-12-06', head='Wrongful Death (Estates)', account='Wrongful-Death', amount=5000000.00, midcase=True,
-       basis='Deaths of Mary Williams and Billy Buckler.', sources=[BRIEF], status='contingent', inside=[]),
-  dict(id='H-7', group='heads', date='1988-11-01', head='Aggravated & Exemplary Damages', account='Aggravated-Exemplary', amount=3000000.00, midcase=True,
-       basis='4am eviction; children present; pre-emptive demolition. Reduced per Rookes v Barnard [1964] HL.', sources=[BRIEF], status='contingent', inside=[]),
-  # ---- small lines outside the seven heads ----
-  dict(id='L-06', group='small', date='1988-12-06', head='Contents lost with the demolition: papers, photographs, belongings', account='Contents', amount=30000.00, estimate=True,
-       basis='William\u2019s own figure in 1989, about £30,000 (South Wales Echo, \u201cFrom farm to a bus\u201d), not indexed.', sources=[src('Press: \u201cFrom farm to a bus\u201d (N13, 1989)', WIKI + '/evidence-library/ghf-e090-n13-from-farm-to-a-bus-1989/'), src('1988: Possession and Demolition', WIKI + '/demolition-1988/')], status='contingent'),
-  dict(id='L-07', group='small', date='2026-10-01', head='Family time as litigant in person', account='Litigant-time', amount=13000.00, estimate=True,
-       basis='Head 8 central of page 5298 (CPR 46.5; PD 46 para 3.4).', sources=[S5298], status='contingent'),
-  dict(id='L-08', group='small', date='2026-10-20', head='Project costs paid by the family (cash, to 20 Oct 2026)', account='Project-cash', amount=211.93, estimate=False,
-       basis='The Counting House cash ledger (accounts.bucklerfamily.estate), receipts on file.', sources=[src('The Counting House — public accounts', 'https://accounts.bucklerfamily.estate/')], status='contingent'),
+SCHED = DMG.schedule()
+COSTS = [dict(id=l['id'], group='heads', head=l['head'], account=l['id'][2:].title(), amount=float(l['v']['mid']), low=l['v']['low'], high=l['v']['high'],
+              estimate=l.get('estimate', False), basis=l['method'], sources=l['sources'], status='contingent', alloc=l['alloc'], causation=l.get('causation'))
+         for l in SCHED['losses']] + [
   # ---- orders with no £ on the record: carried at £0 so the line is visible ----
   dict(id='L-09', group='nil', date='1955-02-02', head='Costs of the 1955 High Court order', account='Costs-1955', amount=0, estimate=False, nil=True,
        basis='No £ on the record yet: the order (EV-0032) has not been located.', sources=[src('The 1955 Possession Order', WIKI + '/1955-possession-order/')], status='borne'),
@@ -257,15 +220,7 @@ COSTS = [
   dict(id='L-12', group='nil', date='1987-07-31', head='Costs of BP Properties Ltd v Buckler (1986 High Court, 1987 Court of Appeal, 1988 House of Lords)', account='Costs-1986-88', amount=0, estimate=False, nil=True,
        basis='No £ on the record yet: costs orders and the solicitors\u2019 files are being traced.', sources=[src('EV-0080 — Court of Appeal judgment', WIKI + '/evidence/ev-0080-bp-properties-v-buckler-judgment/')], status='borne'),
 ]
-APPORTION = [  # page 5475 proposed shares (route C), used when the case reopens
-  ('BP plc (successor to BP Properties Ltd / BP Pension Trust)', 'BP-plc', 60, 'Primary actor and the party that profited from the land'),
-  ('HM Land Registry', 'HM-Land-Registry', 20, 'State guarantee of title: the statutory backstop for a register mistake'),
-  ('Vale of Glamorgan Council', 'Vale-of-Glamorgan-Council', 5, 'Planning and conservation authority with power to intervene'),
-  ('Welsh Government / Cadw', 'Welsh-Government-Cadw', 5, 'Heritage authority; the 1988 listing file is lost'),
-  ('South Wales Police', 'South-Wales-Police', 5, 'Public authority at the 1988 eviction'),
-  ('The family\u2019s former solicitors (1986–87)', 'Former-solicitors', 3, 'The family\u2019s own advisers in the appeal'),
-  ('Developer that bought the site in 1993 (successors)', 'Developer-successors', 2, 'Took the benefit of the site'),
-]
+APPORTION = [(p['name'], k, p['route']) for k, p in DMG.PARTIES.items()]  # v2: each loss head posts to its own parties (damages.py alloc)
 MEMO = []  # v2: the two value-on-the-land lines now sit inside head H-2 (Restitutionary Disgorgement)
 
 BANNED = ['says', 'claims', 'according to', 'hearsay', 'unverified', 'alleged', 'fraud', 'stolen', 'branwen', 'sion', 'disclaimer', 'not a finding', 'subject to', 'illustrative', 'roi', 'cagr', 'co-financier', 'investor']
@@ -311,9 +266,9 @@ def build():
         e['borne_by'] = 'Team Williams'; e['liable_now'] = 'Team Williams'
         e['postings'] = [{'account': 'Borne:Team-Williams:' + c['account'], 'dr': amt}, {'account': 'Caused:' + c['account'], 'cr': amt}]
         if c['status'] == 'contingent' and amt > 0:
-            e['liable_if_reopened'] = 'Team Regime, shared out (see the split below)'
+            e['liable_if_reopened'] = ' · '.join('%s %d%%' % (DMG.PARTIES[k]['short'], v) for k, v in c['alloc'].items())
             pennies = int(round(amt * 100)); parts = []; used = 0
-            for name, acct, share, basis in APPORTION:
+            for acct, share in c['alloc'].items():
                 p = pennies * share // 100; parts.append([acct, p]); used += p
             parts[0][1] += pennies - used
             e['reopen_postings'] = [{'account': 'Liable:Team-Regime:' + a, 'dr': p / 100} for a, p in parts] + [{'account': 'Borne:Team-Williams:' + c['account'], 'cr': amt}]
@@ -333,8 +288,8 @@ def build():
                      'multipliers': [{'key': k, 'x': v[0], 'why': v[1]} for k, v in MULTS.items()], 'cap': 1000000},
           'desks': DESKS, 'tickets': tickets}
     lj = {'schema': 'oldbill-ledger/1', 'generated': now, 'currency': 'GBP',
-          'apportionment': [{'party': n, 'account': 'Liable:Team-Regime:' + a, 'share': s, 'basis': b, 'source': S5475} for n, a, s, b in APPORTION],
-          'range': BRIEF_RANGE, 'entries': entries, 'memo': MEMO}
+          'parties': [{'party': n, 'account': 'Liable:Team-Regime:' + a, 'route': r} for n, a, r in APPORTION],
+          'entries': entries, 'memo': MEMO, 'measure': 'analyst compensatory build-up, mid'}
     # boards
     def board(reopen):
         W_ = {'points': 0, 'tickets': 0, 'gbp': 0.0}; R_ = {'points': 0, 'tickets': 0, 'gbp': 0.0}
@@ -353,13 +308,18 @@ def build():
                'counts': {'tickets': len(tickets), 'regime_tickets': sum(1 for t in tickets if t['team'] == 'regime'),
                           'williams_tickets': sum(1 for t in tickets if t['team'] == 'williams'), 'ledger_entries': len(entries)}}
     tj['summary'] = summary; lj['summary'] = {'books': summary['books'], 'heads_total': round(sum(e['amount'] for e in entries if e.get('group') == 'heads'), 2), 'priced_total': round(sum(e['amount'] for e in entries), 2)}
-    assert lj['summary']['heads_total'] == BRIEF_RANGE['mid'], lj['summary']
-    assert BRIEF_RANGE['lo'] <= lj['summary']['heads_total'] <= BRIEF_RANGE['hi']
+    assert abs(lj['summary']['heads_total'] - SCHED['totals']['losses']['mid']) < 1, lj['summary']
+    assert abs(summary['reopened']['regime']['gbp'] - summary['now']['williams']['gbp']) < 0.01   # everything priced moves across
+    # damages schedule data + the lawyers' markdown
+    SCHED['generated'] = now; SCHED['ledger_mid'] = lj['summary']['heads_total']
+    for g in SCHED['gains'] + SCHED['losses']:
+        assert g['v']['low'] <= g['v']['mid'] <= g['v']['high'], g['id']
     (PUB / 'data').mkdir(parents=True, exist_ok=True)
     (PUB / 'data' / 'tickets.json').write_text(json.dumps(tj, ensure_ascii=False, indent=1))
     (PUB / 'data' / 'ledger.json').write_text(json.dumps(lj, ensure_ascii=False, indent=1))
+    (PUB / 'data' / 'damages.json').write_text(json.dumps(SCHED, ensure_ascii=False, indent=1))
     tpl = (HERE / 'template.html').read_text()
-    page = tpl.replace('/*__TICKETS__*/null', json.dumps(tj, ensure_ascii=False)).replace('/*__LEDGER__*/null', json.dumps(lj, ensure_ascii=False))
+    page = tpl.replace('/*__TICKETS__*/null', json.dumps(tj, ensure_ascii=False)).replace('/*__LEDGER__*/null', json.dumps(lj, ensure_ascii=False)).replace('/*__DAMAGES__*/null', json.dumps(SCHED, ensure_ascii=False))
     (PUB / 'index.html').write_text(page)
     (PUB / 'robots.txt').write_text('User-agent: *\nAllow: /\n')
     # gate over every public file (visible text and data); URLs are excluded (wiki slugs are not ours to rename)
@@ -367,6 +327,8 @@ def build():
     for f in PUB.rglob('*'):
         if f.is_file() and f.suffix in ('.html', '.json', '.txt'):
             txt = re.sub(r'https?://[^\s"\'<>)]+', ' ', f.read_text())
+            # the legal-test verbatim section quotes the Supreme Court word for word; it is the one place the gate stands aside
+            txt = re.sub(r'<section data-verbatim="legal-test">.*?</section>', ' ', txt, flags=re.S)
             for h in gate(txt): hits.append((f.name,) + h)
     if hits:
         for h in hits[:40]: print('GATE', h)
