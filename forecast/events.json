@@ -1,0 +1,120 @@
+{
+ "about": "Hand-kept facts the seed and roadmap do not yet carry. side us = our email, them = their reply. Add a row when mail moves; build_forecast.py reads it. — Sion's Tab agent",
+ "events": [
+  {
+   "lane": "amgueddfa-cymru-museum-wales",
+   "date": "2026-10-22",
+   "side": "us",
+   "rung": "foi",
+   "ref": "FOI 2026-024 clarification",
+   "note": "sent 22 Oct 19:20; clarification restarts the clock",
+   "seed": "museum",
+   "due": "2026-11-17",
+   "due_src": "diarised due date (root notes, 23 Oct)"
+  },
+  {
+   "lane": "glamorgan-archives",
+   "date": "2026-10-22",
+   "side": "us",
+   "rung": "enquiry",
+   "ref": "2026/4460",
+   "due": "2026-10-29",
+   "note": "sent 22 Oct 19:20",
+   "seed": "glam-4460"
+  },
+  {
+   "lane": "the-national-archives",
+   "date": "2026-10-22",
+   "side": "us",
+   "rung": "foi_ir",
+   "ref": "CAS-356384",
+   "note": "sent 22 Oct 19:20; bounced, not delivered",
+   "bounced": true,
+   "seed": "tna-356384"
+  },
+  {
+   "lane": "vale-of-glamorgan-council",
+   "date": "2026-10-22",
+   "side": "us",
+   "rung": "eir_ir",
+   "ref": "00211463",
+   "note": "reg 11 representations sent 22 Oct 19:20",
+   "seed": "vale-00211463",
+   "due": "2026-12-14",
+   "due_src": "diarised reg 11 date (root notes, 23 Oct)"
+  },
+  {
+   "lane": "coroner-s-service-rct-council",
+   "date": "2026-10-22",
+   "side": "us",
+   "rung": "coroner",
+   "ref": "follow-up of 26 Aug",
+   "note": "sent 22 Oct 19:20",
+   "seed": "rct-coroner"
+  },
+  {
+   "lane": "historic-england",
+   "date": "2026-10-22",
+   "side": "us",
+   "rung": "eir_ir",
+   "ref": "26/04323",
+   "note": "reg 11 reconsideration sent 22 Oct 19:20",
+   "seed": "he-04323"
+  },
+  {
+   "lane": "ministry-of-justice-hmcts",
+   "date": "2026-10-22",
+   "side": "us",
+   "rung": "ico",
+   "ref": "FOI 260813002",
+   "note": "s.50 complaint to the ICO sent 22 Oct 19:20",
+   "seed": "moj-260813002"
+  },
+  {
+   "lane": "information-commissioner-s-office",
+   "date": "2026-10-22",
+   "side": "us",
+   "rung": "ico_case",
+   "ref": "MoJ FOI 260813002",
+   "note": "s.50 complaint sent 22 Oct 19:20"
+  },
+  {
+   "lane": "hm-land-registry-independent-complaints-reviewer",
+   "date": "2026-11-13",
+   "side": "plan",
+   "rung": "icr",
+   "ref": "ICR/090/26",
+   "note": "full complaint aimed for 13 Nov (hard limit about 25 Nov)",
+   "seed": "icr-090"
+  },
+  {
+   "lane": "hm-land-registry",
+   "date": "2026-11-13",
+   "side": "plan",
+   "rung": "icr",
+   "ref": "ICR/090/26",
+   "note": "full complaint aimed for 13 Nov",
+   "seed": "icr-090"
+  },
+  {
+   "lane": "south-wales-police",
+   "side": "due",
+   "seed": "swp-ir1188",
+   "rung": "foi_ir",
+   "date": "2026-10-26",
+   "due": "2026-10-26",
+   "ref": "IR 1188/26",
+   "note": "diarised due date"
+  },
+  {
+   "lane": "transport-for-wales",
+   "side": "due",
+   "seed": "tfw",
+   "rung": "foi",
+   "date": "2026-10-23",
+   "due": "2026-10-23",
+   "ref": "628912926",
+   "note": "diarised due date (IR)"
+  }
+ ]
+}

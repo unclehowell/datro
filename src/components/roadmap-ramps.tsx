@@ -3,6 +3,7 @@ import { DetailModal } from "@/components/detail-modal";
 import { CLASS } from "@/components/disclosure-record";
 import { FIRE_A, PAL } from "@/components/avenue-game";
 import { roadmapStepRequirement } from "@/data/legal-routes";
+import { BoardIcon, ForecastAssumptions, ForecastBoard, ForecastScatter, GraphIcon, useForecast } from "@/components/forecast-panel";
 
 /**
  * Roadmap ramps: the Donkey Kong climb as a dated roadmap. One institution at a time; each girder is one
@@ -807,6 +808,9 @@ export function RoadmapRamps({ preferName }: { preferName?: string }) {
   const [hit, setHit] = useState<Hit | null>(null);
   const [todayStr, setTodayStr] = useState<string | null>(null);
   const [all, setAll] = useState(false);
+  const [fcOpen, setFcOpen] = useState(false);
+  const [fcBoard, setFcBoard] = useState(false);
+  const { doc: fdoc, failed: ffailed } = useForecast(fcOpen || fcBoard);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
 
@@ -927,6 +931,7 @@ export function RoadmapRamps({ preferName }: { preferName?: string }) {
     wrapRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
   const idx = lane ? lanes.indexOf(lane) : -1;
+  const finst = fdoc && lane ? fdoc.institutions.find((i) => i.id === lane.id) ?? null : null;
   const dueNow = up.filter((u) => u.dueNow);
   const later = up.filter((u) => !u.dueNow);
   const shown = all ? later : later.slice(0, 10);
@@ -970,6 +975,30 @@ export function RoadmapRamps({ preferName }: { preferName?: string }) {
         </button>
       </div>
       {lane && (
+        <div className="mb-2 flex flex-wrap items-center gap-2 px-1">
+          <button type="button" onClick={() => setFcOpen((v) => !v)} aria-expanded={fcOpen} aria-controls="roadmap-forecast"
+            className={`flex h-9 items-center gap-1.5 rounded-xl border px-2.5 text-xs ${fcOpen ? "border-[var(--ghf-accent,#EE4EF4)] text-fg" : "border-line text-muted"} bg-surface`}>
+            <GraphIcon /> forecast
+          </button>
+          <button type="button" onClick={() => setFcBoard((v) => !v)} aria-pressed={fcBoard}
+            className={`flex h-9 items-center gap-1.5 rounded-xl border px-2.5 text-xs ${fcBoard ? "border-[var(--ghf-accent,#EE4EF4)] text-fg" : "border-line text-muted"} bg-surface`}>
+            <BoardIcon /> {fcBoard ? "back to the board now" : "completed board (forecast)"}
+          </button>
+        </div>
+      )}
+      {lane && fcOpen && (
+        <div id="roadmap-forecast" className="mb-2 rounded-2xl border border-line bg-surface p-2">
+          {finst && fdoc ? (
+            <>
+              <ForecastScatter inst={finst} today={todayStr ?? fdoc.today} />
+              <ForecastAssumptions doc={fdoc} inst={finst} />
+            </>
+          ) : (
+            <p className="p-2 text-xs text-muted">{ffailed ? "The forecast did not load. Open /data/forecast.json directly." : "Loading the forecast…"}</p>
+          )}
+        </div>
+      )}
+      {lane && (
         <p className="mb-2 px-1 text-xs leading-snug text-muted">
           <span className="text-fg">{lane.counts.emails} emails</span> · {lane.counts.requests} requests
           {lane.counts.missed ? <span style={{ color: STATUS.missed.colour }}> · {lane.counts.missed} deadline{lane.counts.missed > 1 ? "s" : ""} missed</span> : null}
@@ -980,18 +1009,31 @@ export function RoadmapRamps({ preferName }: { preferName?: string }) {
           {lane.route_basis ? <span className="block text-faint">Route: {lane.route_basis} · {lane.steps.length} steps</span> : null}
         </p>
       )}
-      <div ref={wrapRef} className="overflow-hidden rounded-2xl border border-line bg-[#0d0b09]" style={{ aspectRatio: `${W} / ${lane ? TOP + (lane.steps.length + 1) * LH + 18 : H}` }}>
+      <div ref={wrapRef} className="relative overflow-hidden rounded-2xl border border-line bg-[#0d0b09]" style={{ aspectRatio: `${W} / ${lane ? TOP + (lane.steps.length + 1) * LH + 18 : H}` }}>
         {failed ? (
           <p className="p-4 text-sm text-muted">The roadmap data did not load. Open /data/roadmap.json directly.</p>
         ) : (
           <canvas
             ref={canvasRef}
             className="block touch-manipulation"
+            style={fcBoard && finst ? { opacity: 0.35 } : undefined}
             onClick={(e) => onTap(e.clientX, e.clientY)}
             role="img"
             title={lane ? `The gorilla is ${apeName(lane)}` : undefined}
             aria-label={lane ? `Roadmap for ${lane.name} (the gorilla at the top is ${apeName(lane)}): ${lane.steps.map((s) => `${s.n} ${s.label} ${STATUS[s.status].label} ${s.date ?? ""}`).join("; ")}` : "Roadmap loading"}
           />
+        )}
+        {lane && fcBoard && finst && (
+          <>
+            <ForecastBoard inst={finst} vw={W} vh={TOP + (lane.steps.length + 1) * LH + 18} />
+            <button type="button" onClick={() => setFcBoard(false)} data-ghf-keep
+              className="absolute right-2 top-2 rounded-lg border border-[#c4a574] bg-[#0d0b09]/90 px-2 py-1 text-xs text-[#f4efe6]">
+              ✕ now
+            </button>
+          </>
+        )}
+        {lane && fcBoard && !finst && (
+          <p className="absolute inset-x-0 top-2 text-center text-xs text-[#f4efe6]">{ffailed ? "The forecast did not load." : "Loading the forecast…"}</p>
         )}
       </div>
       <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1 px-1 text-xs text-muted" aria-label="Key">
