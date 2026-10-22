@@ -52,6 +52,31 @@ header p{margin:0 0 10px;color:var(--muted);font-size:15px}
 .card .ft{color:var(--muted);font-size:14px}
 .pill{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--muted)}
 .card.ev{cursor:default;border-left-color:#666}
+/* chains from the centre */
+.chains{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin-top:10px}
+.chains h2{font-size:13px;margin:0 0 4px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+.chains .lead{font-size:13px;color:var(--muted);margin:0 0 6px}
+.chrow{border-top:1px solid var(--line);padding:8px 0 6px}
+.chhd{display:flex;align-items:center;gap:8px;background:none;border:0;color:var(--ink);font:inherit;font-size:15px;font-weight:600;padding:2px 0;cursor:pointer;text-align:left;width:100%}
+.chhd .sw{flex:none;width:22px;height:8px;border-radius:4px}
+.chhd .ttl{margin-left:auto;font-size:12px;font-weight:700;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--muted)}
+.yrs{display:flex;flex-wrap:wrap;gap:4px 3px;align-items:center;margin:6px 0 2px}
+.yb{font:inherit;font-size:14px;font-weight:600;border:1.5px solid var(--line);background:#ffffff0d;color:var(--ink);border-radius:8px;padding:4px 7px;min-height:34px;cursor:pointer}
+.yb.in{color:#151229;border-color:transparent}
+.yb.end{font-weight:800;outline:2px solid #fff;outline-offset:1px}
+.yb.todo{border-style:dashed;border-color:#ffffffaa}
+.yb.in.todo{border-color:#151229}
+.ar{color:var(--muted);font-size:12px}
+.cap{font-size:12.5px;color:var(--muted);margin:3px 0 0}
+.cap b{color:var(--ink)}
+.c12{display:inline-block;font-size:12px;font-weight:800;color:#151229;border-radius:999px;padding:1px 8px;margin-right:4px}
+.t12{font-weight:800;fill:#151229;pointer-events:none}
+.cyl{paint-order:stroke;stroke:#1d1938;stroke-width:5px;fill:#f3f1ff;font-weight:600}
+.cyl.b{font-weight:800;fill:#fff}
+g.ch{cursor:pointer}
+g.ch.dim{opacity:.1}
+g.ch.dim .chit{pointer-events:none}
+g.cn{cursor:pointer}
 /* sheet */
 .sheet-bg{position:fixed;inset:0;background:#0009;display:none;align-items:flex-end;justify-content:center;z-index:20}
 .sheet-bg.open{display:flex}
@@ -75,6 +100,7 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:14px}
 .hit{fill:none;stroke:transparent;stroke-width:26;cursor:pointer;pointer-events:stroke}
 g.t{transition:opacity .2s}
 g.t.dim{opacity:.07}
+svg.haschains g.t:not(.dim):not(.sel){opacity:.5}
 g.t.dim .hit{pointer-events:none}
 g.t.sel .arc{stroke-width:15}
 g.n.dim{opacity:.25}
@@ -90,7 +116,7 @@ g.n.dim{opacity:.25}
 </head>
 <body>
 <div class="wrap">
-<p class="intro">Tŷ Mawr, Llandough, 1545 to today. Every known holder sits on the ring; each arc carries a parcel from one hand to the next, with its year and title number. Tap an arc for the record.</p>
+<p class="intro">Tŷ Mawr, Llandough, 1545 to today. Every known holder sits on the ring; each arc carries a parcel from one hand to the next, with its year and title number. Three chains run from the 💩 at the centre to the registrations they led to, each with its 12-year limitation period marked. Tap an arc or a year for the record.</p>
 <div class="bar">
  <div class="seg" role="group" aria-label="View"><button id="vRing" aria-pressed="true">Ring</button><button id="vList" aria-pressed="false">List</button></div>
 </div>
@@ -102,6 +128,7 @@ g.n.dim{opacity:.25}
 <div class="ctl"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button><button id="rot" aria-label="Rotate the ring">⟳</button><button id="rst" aria-label="Reset view">⤢</button></div></div>
 <div class="legend" id="legendD"></div>
 </div>
+<section class="chains" id="chainsBox" aria-label="Three chains from the centre" data-ghf-keep></section>
 <div class="legend mlegend" id="legendM" data-ghf-keep></div>
 <p class="hint">Use + to zoom in (the full labels appear), drag to move, ⟳ to turn the ring, or switch to List.</p>
 </section>
@@ -139,7 +166,9 @@ function legendHTML(){
  <div class="lrow"><svg width="44" height="10"><line x1="2" y1="5" x2="42" y2="5" stroke="#fff" stroke-width="8"/></svg>record held</div>
  <div class="lrow"><svg width="44" height="10"><line x1="2" y1="5" x2="42" y2="5" stroke="#fff" stroke-width="8" stroke-dasharray="7 5"/></svg>per secondary source · record not seen</div>
  <div class="lrow"><svg width="44" height="14"><line x1="2" y1="7" x2="42" y2="7" stroke="#ffd166" stroke-width="12"/><text x="22" y="7.5" font-size="8" font-weight="800" fill="#151229" text-anchor="middle" dominant-baseline="central">WA…</text></svg>title number on the line</div>
- <div class="lrow"><span style="font-size:22px;width:44px;text-align:center" data-ghf-keep>💩</span>${esc(D.origin.label)}</div></div>
+ <div class="lrow"><span style="font-size:22px;width:44px;text-align:center" data-ghf-keep>💩</span>${esc(D.origin.label)}</div>
+ <div class="lrow"><svg width="44" height="16"><line x1="2" y1="8" x2="42" y2="8" stroke="#fff" stroke-width="12"/><line x1="2" y1="8" x2="42" y2="8" stroke="#ffd166" stroke-width="7"/></svg>12-year limitation period on a chain</div>
+ <div class="lrow"><svg width="44" height="16"><circle cx="22" cy="8" r="6" fill="#1d1938" stroke="#fff" stroke-width="2" stroke-dasharray="3 2"/></svg>year with a source to add</div></div>
  <div class="sec"><h2>Parcel (circle on the arc)</h2>${D.parcels.map(p=>`<div class="lrow"><span class="dot" data-ghf-keep style="background:${p.color}">${pcode(p.id)}</span>${esc(p.name)}</div>`).join('')}</div>`}
 $('#legendD').innerHTML=legendHTML();$('#legendM').innerHTML=legendHTML();
 // chips
@@ -151,6 +180,81 @@ const chips=$('#chips');
  b.onclick=()=>{const y=scrollY;if(id==='all')focus.clear();else if(focus.has(id))focus.delete(id);else focus.add(id);syncChips();applyFocus();renderList();scrollTo(0,y)};chips.appendChild(b)});
 function syncChips(){chips.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p==='all'?focus.size===0:focus.has(x.dataset.p)));
  const u=new URL(location);if(focus.size)u.searchParams.set('p',[...focus].join(','));else u.searchParams.delete('p');history.replaceState(null,'',u)}
+
+// chains from the centre (data.chains): 💩 → years → the registration on the ring
+const CH=D.chains||[];const CHM=Object.fromEntries(CH.map(c=>[c.id,c]));
+const nodeLab=n=>n.lab||String(n.y);
+const spanLab=(ch,n)=>(n.y===ch.span.from&&ch.span.lab0)?ch.span.lab0:(n.y===ch.span.to&&ch.span.lab)?ch.span.lab:nodeLab(n);
+function drawChains(gp){
+ const gC=el('g',{},gp),gL=el('g',{},gp);
+ const fz=(C.mob&&labelMode==='full')?Math.max(0.5,Math.min(1,lastZ*1.25)):1;
+ const yfs=(C.mob?28:15)*fz,bfs=(C.mob?34:18)*fz,tfs=(C.mob?30:15)*fz,csw=C.mob?11:7,dr=(C.mob?7:6)*Math.max(.7,fz);
+ const pills=[];
+ CH.forEach(ch=>{
+  const b=P[ch.to].i,p1=pos(b,R-14),L1=Math.hypot(p1[0],p1[1]),ux=p1[0]/L1,uy=p1[1]/L1,bd=ch.bend||1;
+  const p0=[ux*C.pfs*0.66,uy*C.pfs*0.66],mid=[(p0[0]+p1[0])/2,(p0[1]+p1[1])/2],bend=bd*(C.mob?70:62);
+  const c=[mid[0]-uy*bend,mid[1]+ux*bend];
+  const g=el('g',{class:'ch','data-ch':ch.id,'data-p':ch.parcels.join(' '),role:'button',tabindex:0,'aria-label':ch.name+': '+ch.nodes.map(nodeLab).join(', ')},gC);
+  const dpath=`M${p0[0].toFixed(1)},${p0[1].toFixed(1)} Q${c[0].toFixed(1)},${c[1].toFixed(1)} ${p1[0].toFixed(1)},${p1[1].toFixed(1)}`;
+  const n=ch.nodes.length,sp=ch.span,ki=ch.nodes.findIndex(x=>x.y===sp.from),kj=ch.nodes.findIndex(x=>x.y===sp.to);
+  // spacing: every gap one unit; the 12-year gaps get at least 2.4 units between them so the bar can carry its label
+  const ns=Math.max(1,kj-ki),wIn=Math.max(1,2.6/ns),gw=[];for(let k=1;k<n;k++)gw.push(k>ki&&k<=kj?wIn:1);
+  const tot=gw.reduce((a,b)=>a+b,0)||1,ts=[0.17];gw.forEach(w=>ts.push(ts[ts.length-1]+0.71*w/tot));
+  el('path',{d:dpath,fill:'none',stroke:ch.color,'stroke-width':csw,'stroke-linecap':'round'},g);
+  const tx=p1[0]-c[0],ty=p1[1]-c[1],tl=Math.hypot(tx,ty),ax=tx/tl,ay=ty/tl,s=csw*2;
+  el('path',{d:`M${p1[0]+ax*4},${p1[1]+ay*4} L${p1[0]-ax*s-ay*s*.6},${p1[1]-ay*s+ax*s*.6} L${p1[0]-ax*s+ay*s*.6},${p1[1]-ay*s-ax*s*.6}Z`,fill:ch.color},g);
+  el('path',{d:dpath,class:'chit',fill:'none',stroke:'transparent','stroke-width':C.mob?40:24,'pointer-events':'stroke'},g);
+  g.addEventListener('click',e=>{e.stopPropagation();openChain(ch.id)});
+  g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openChain(ch.id)}});
+  if(ki>=0&&kj>=0){const N2=28,pts=[];for(let s=0;s<=N2;s++)pts.push(bez(p0,c,p1,ts[ki]+(ts[kj]-ts[ki])*s/N2));
+   const rev=pts[N2][0]<pts[0][0],pp=(rev?pts.slice().reverse():pts).map(q=>q[0].toFixed(1)+','+q[1].toFixed(1)).join(' L');
+   const bw=C.mob?40:21,id='c12-'+ch.id,pg=el('g',{class:'lab12'},g);
+   el('path',{d:'M'+pp,fill:'none',stroke:'#fff','stroke-width':bw+6,'stroke-linecap':'round'},pg);
+   el('path',{id:id,d:'M'+pp,fill:'none',stroke:ch.color,'stroke-width':bw,'stroke-linecap':'round'},pg);
+   let bl=0;for(let s=1;s<=N2;s++)bl+=Math.hypot(pts[s][0]-pts[s-1][0],pts[s][1]-pts[s-1][1]);
+   if(kj-ki===1&&bl-dr*4.5>8*tfs*0.6+12){const tt=el('text',{class:'t12','font-size':tfs,'dominant-baseline':'central'},pg);
+    const tp=el('textPath',{href:'#'+id,startOffset:'50%','text-anchor':'middle'},tt);tp.textContent='12 years'}
+   else{// too short for the words inside: a pill beside the bar, past the year labels
+    const q=pts[N2>>1],qa=pts[(N2>>1)+1];let dx=qa[0]-q[0],dy=qa[1]-q[1];const dl=Math.hypot(dx,dy)||1;dx/=dl;dy/=dl;
+    const w=8*tfs*0.6+tfs*0.8,h=tfs*1.4,side=-Math.sign(bd),off=bw/2+5+Math.abs(dy)*w/2+Math.abs(dx)*h/2;
+    const px=q[0]-dy*off*side,py=q[1]+dx*off*side;pills.push([px,py,w,h,ch.color])}}
+  ch.nodes.forEach((nd,k)=>{const q=bez(p0,c,p1,ts[k]),qa=bez(p0,c,p1,Math.min(1,ts[k]+.01)),qb=bez(p0,c,p1,Math.max(0,ts[k]-.01));let dx=qa[0]-qb[0],dy=qa[1]-qb[1];const dl=Math.hypot(dx,dy)||1;dx/=dl;dy/=dl;
+   const isEnd=k===ki||k===kj,ng=el('g',{class:'cn','data-cn':ch.id+':'+nd.y,role:'button',tabindex:0,'aria-label':nd.label},gL);
+   el('circle',{cx:q[0],cy:q[1],r:isEnd?dr*1.25:dr,fill:nd.todo?'#1d1938':ch.color,stroke:nd.todo?'#fff':'#1d1938','stroke-width':nd.todo?2.5:2,'stroke-dasharray':nd.todo?'4 3':'none'},ng);
+   el('circle',{cx:q[0],cy:q[1],r:C.mob?24:13,fill:'transparent'},ng);
+   const lab=spanLab(ch,nd),fs=isEnd?bfs:yfs,hw=lab.length*fs*0.29,hh=fs*0.5,inS=k>=ki&&k<=kj&&ki>=0,side=inS?Math.sign(bd):(k%2?1:-1)*Math.sign(bd),ext=2*hw*Math.abs(dy)+2*hh*Math.abs(dx)+3,lane=inS?((k-ki)%3)*ext:(n>5&&Math.floor(k/2)%2)?ext:0,off=dr+(C.mob?6:3)+lane+hw*Math.abs(dy)+hh*Math.abs(dx);
+   const lx=q[0]-dy*off*side,ly=q[1]+dx*off*side;
+   const te=el('text',{x:lx,y:ly+fs*0.35,class:'cyl'+(isEnd?' b':''),'font-size':fs,'text-anchor':'middle'},ng);te.textContent=lab;
+   ng.addEventListener('click',e=>{e.stopPropagation();openNode(ch.id,nd.y)});
+   ng.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openNode(ch.id,nd.y)}});
+  });
+ });
+ pills.forEach(([px,py,w,h,col])=>{const pg=el('g',{class:'lab12'},gL);el('rect',{x:px-w/2,y:py-h/2,width:w,height:h,rx:h/2,fill:col,stroke:'#fff','stroke-width':3},pg);
+  const tt=el('text',{x:px,y:py+tfs*0.36,class:'t12','font-size':tfs,'text-anchor':'middle'},pg);tt.textContent='12 years'});
+}
+function renderChains(){const box=$('#chainsBox');if(!CH.length){box.style.display='none';return}
+ box.innerHTML=`<h2><span data-ghf-keep>💩</span> Three chains to the ring</h2><p class="lead">${esc(D.origin.intro||'')} A dashed year has a source to add. Tap a year for its record.</p>`+CH.map(ch=>{const sp=ch.span;
+  const ys=ch.nodes.map((n,k)=>{const inS=n.y>=sp.from&&n.y<=sp.to,end=n.y===sp.from||n.y===sp.to;
+   return(k?'<span class="ar">→</span>':'')+`<button class="yb${inS?' in':''}${end?' end':''}${n.todo?' todo':''}" data-cn="${ch.id}:${n.y}"${inS?` style="background:${ch.color}"`:''} aria-label="${esc(n.label)}">${esc(spanLab(ch,n))}</button>`}).join('');
+  return`<div class="chrow" data-p="${ch.parcels.join(' ')}"><button class="chhd" data-ch="${ch.id}"><span class="sw" style="background:${ch.color}"></span>${esc(ch.name)}<span class="ttl">${esc(ch.title)}</span></button>
+ <div class="yrs">${ys}</div><p class="cap"><span class="c12" style="background:${ch.color}">12 years</span><b>${esc(sp.lab0||sp.from)} → ${esc(sp.lab||sp.to)}</b> · ${esc(sp.cap)}</p></div>`}).join('');
+ box.querySelectorAll('[data-cn]').forEach(b=>b.onclick=()=>{const[c,y]=b.dataset.cn.split(':');openNode(c,+y)});
+ box.querySelectorAll('[data-ch]').forEach(b=>b.onclick=()=>openChain(b.dataset.ch))}
+function wireSheet(){$('#sheetBg').classList.add('open');$('#shX').onclick=close;$('#shX').focus();
+ $('#sheet').querySelectorAll('[data-open]').forEach(a=>a.onclick=e=>{e.preventDefault();open(a.dataset.open)});
+ $('#sheet').querySelectorAll('[data-chain]').forEach(a=>a.onclick=e=>{e.preventDefault();openChain(a.dataset.chain)});
+ $('#sheet').querySelectorAll('[data-node]').forEach(a=>a.onclick=e=>{e.preventDefault();const[c,y]=a.dataset.node.split(':');openNode(c,+y)})}
+function openNode(cid,y){const ch=CHM[cid],nd=ch&&ch.nodes.find(n=>n.y===y);if(!nd)return;sel='ch:'+cid;applyFocus();
+ const sp=ch.span,inS=y>=sp.from&&y<=sp.to,tr=nd.t&&D.transfers.find(x=>x.id===nd.t);
+ $('#sheet').innerHTML=`<button class="x" aria-label="Close" id="shX">×</button><h2 id="shT">${esc(nd.label)}</h2><div class="date">${esc(nd.date)}</div>
+ <div><span class="pill" style="border-color:${ch.color};color:${ch.color}">${nd.todo?'source to add':nd.part?esc(nd.part):'source on file'}</span>${inS?` <span class="pill">12 years: ${esc(sp.lab0||sp.from)} → ${esc(sp.lab||sp.to)}</span>`:''}</div>
+ <dl><dt>Chain</dt><dd><span data-ghf-keep>💩</span> → ${esc(ch.name)} → ${esc(P[ch.to].name)} · <a href="#" data-chain="${cid}">the whole chain</a></dd>
+ ${nd.title?`<dt>Title</dt><dd>${esc(nd.title)}</dd>`:''}<dt>Record</dt><dd>${esc(nd.text)}</dd>
+ <dt>Source</dt><dd>${srcList(nd.src)}</dd>${tr?`<dt>On the ring</dt><dd><a href="#" data-open="${tr.id}">${esc(tr.label)}</a></dd>`:''}</dl>`;wireSheet()}
+function openChain(cid){const ch=CHM[cid];if(!ch)return;sel='ch:'+cid;applyFocus();const sp=ch.span;
+ $('#sheet').innerHTML=`<button class="x" aria-label="Close" id="shX">×</button><h2 id="shT"><span data-ghf-keep>💩</span> → ${esc(ch.name)}</h2><div class="date">${esc(ch.end)}</div>
+ <p class="cap"><span class="c12" style="background:${ch.color}">12 years</span><b>${esc(sp.lab0||sp.from)} → ${esc(sp.lab||sp.to)}</b> · ${esc(sp.cap)}</p>
+ <dl>${ch.nodes.map(n=>`<dt>${esc(n.date)}${n.todo?' · source to add':''}</dt><dd><a href="#" data-node="${cid}:${n.y}">${esc(n.label)}</a></dd>`).join('')}</dl>`;wireSheet()}
 // geometry
 function bez(p0,c,p1,t){const u=1-t;return[u*u*p0[0]+2*u*t*c[0]+t*t*p1[0],u*u*p0[1]+2*u*t*c[1]+t*t*p1[1]]}
 function draw(){
@@ -166,6 +270,7 @@ function draw(){
  const placed=[[-C.pfs*0.7,-C.pfs*0.7,C.pfs*0.7,C.pfs*0.7]];
  TT.forEach(tr=>{
   const fromC=!!P[tr.from].centre,key=[tr.from,tr.to].sort().join('|');
+  if(fromC&&CH.length)return;// drawn as a chain from the centre instead
   const idx=pairCount[key]=(pairCount[key]===undefined?0:pairCount[key]+1);
   const b=P[tr.to].i,p1=pos(b,R-12);let p0,c;
   if(fromC){// born at the centre: from the 💩 out to the registered proprietor
@@ -213,6 +318,7 @@ function draw(){
   g.addEventListener('click',e=>{e.stopPropagation();open(tr.id)});
   g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(tr.id)}});
  });
+ drawChains(gA);svg.classList.toggle('haschains',CH.length>0);
  // the centre: titles first registered without a conveyance from the occupiers
  const og=el('g',{class:'origin',role:'button',tabindex:0,'aria-label':D.origin.label},gN);
  el('circle',{cx:0,cy:0,r:C.pfs*0.62,fill:'#1d1938',stroke:'#ffffff33','stroke-width':2},og);
@@ -239,6 +345,9 @@ function applyFocus(){
   const ps=g.dataset.p.split(' ');const on=inFocus(ps)&&(!sel||g.dataset.id===sel);
   g.classList.toggle('dim',!on);g.classList.toggle('sel',!!sel&&g.dataset.id===sel);
   if(on){const tr=D.transfers.find(x=>x.id===g.dataset.id);used.add(tr.from);used.add(tr.to)}});
+ svg.querySelectorAll('g.ch').forEach(g=>{const ch=CHM[g.dataset.ch],on=inFocus(ch.parcels)&&(!sel||sel==='ch:'+ch.id);g.classList.toggle('dim',!on);if(on){used.add(ch.to);used.add('origin')}});
+ svg.querySelectorAll('g.cn').forEach(g=>{const ch=CHM[g.dataset.cn.split(':')[0]];g.style.opacity=(inFocus(ch.parcels)&&(!sel||sel==='ch:'+ch.id))?1:.1});
+ document.querySelectorAll('.chrow').forEach(r=>{r.style.opacity=inFocus(r.dataset.p.split(' '))?1:.35});
  svg.querySelectorAll('g.n').forEach(g=>g.classList.toggle('dim',(focus.size||sel)&&!used.has(g.dataset.id)));
  const og=svg.querySelector('g.origin');if(og)og.style.opacity=(focus.size||sel)&&!used.has('origin')?.3:1;
 }
@@ -268,10 +377,9 @@ function srcList(s){return'<ul>'+s.map(x=>`<li><a href="${esc(x.u)}" target="_bl
 function chipsFor(ps){return ps.map(p=>`<span class="dot" data-ghf-keep style="background:${PC[p].color}">${pcode(p)}</span> ${esc(PC[p].name)}`).join('<br>')}
 function openOrigin(){sel=null;applyFocus();const o=D.origin;
  $('#sheet').innerHTML=`<button class="x" aria-label="Close" id="shX">×</button><h2 id="shT"><span data-ghf-keep>💩</span> The centre</h2><div class="date">${esc(o.label)}</div>
- <dl>${o.titles.map(x=>{const tr=D.transfers.find(t=>t.id===x.t);return`<dt>${esc(x.title)} · ${esc(tr.label)}</dt><dd>${esc(x.why)} <a href="#" data-open="${x.t}">The arc</a></dd>`}).join('')}
+ ${o.intro?`<p>${esc(o.intro)}</p>`:''}<dl>${CH.length?CH.map(ch=>`<dt>${esc(ch.name)} · ${esc(ch.title)}</dt><dd>${esc(ch.nodes.map(nodeLab).join(' → '))} · <a href="#" data-chain="${ch.id}">the chain</a></dd>`).join(''):o.titles.map(x=>{const tr=D.transfers.find(t=>t.id===x.t);return`<dt>${esc(x.title)} · ${esc(tr.label)}</dt><dd>${esc(x.why)} <a href="#" data-open="${x.t}">The arc</a></dd>`}).join('')}
  <dt>Not drawn from the centre</dt><dd>${esc(o.not)}</dd></dl>`;
- $('#sheetBg').classList.add('open');$('#shX').onclick=close;$('#shX').focus();
- $('#sheet').querySelectorAll('[data-open]').forEach(a=>a.onclick=e=>{e.preventDefault();open(a.dataset.open)})}
+ wireSheet()}
 function open(id){const tr=D.transfers.find(x=>x.id===id);if(!tr)return;sel=id;applyFocus();
  $('#sheet').innerHTML=`<button class="x" aria-label="Close" id="shX">×</button><h2 id="shT">${esc(tr.label)}</h2><div class="date">${esc(tr.date)}</div>
  <div><span class="pill" style="border-color:${ycol(tr.year)};color:${ycol(tr.year)}">${tr.status==='dashed'?esc(tr.reason):'record held'}</span></div>
@@ -296,7 +404,7 @@ function renderList(){
 function view(v){$('#vRing').setAttribute('aria-pressed',v==='ring');$('#vList').setAttribute('aria-pressed',v==='list');$('#ringView').style.display=v==='ring'?'':'none';$('#list').style.display=v==='list'?'block':'none';
  const u=new URL(location);if(v==='list')u.searchParams.set('v','list');else u.searchParams.delete('v');history.replaceState(null,'',u)}
 $('#vRing').onclick=()=>view('ring');$('#vList').onclick=()=>view('list');
-draw();renderList();
+renderChains();draw();renderList();
 let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(draw,200)});
 const q=new URLSearchParams(location.search);if(q.get('p')){q.get('p').split(',').forEach(x=>{if(PC[x])focus.add(x)});syncChips();applyFocus();renderList()}if(q.get('v')==='list')view('list');if(q.get('t'))open(q.get('t'));
 // the shared header (basecamp.js) loads after this page's own script has run; ghf-boot.js already reserved its band
