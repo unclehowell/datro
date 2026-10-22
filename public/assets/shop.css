@@ -34,7 +34,7 @@
 .sh-note{border:1px solid #5a4a2a;background:#14110a;color:#e8d3a6;padding:9px 11px;font-size:.84rem;margin:0 0 14px}
 
 /* Cedwyn Estate brand v3 (21 Oct 2026) */
-.sh-hero{background:linear-gradient(180deg,rgba(0,0,0,.55),#000 94%),url(/img/hero-cedwyn.webp?v=c1) center 30%/cover no-repeat!important}
+.sh-hero{background:linear-gradient(180deg,rgba(0,0,0,.55),#000 94%),url(/img/hero.webp?v=2) center 30%/cover no-repeat!important}
 .sh-arms{display:block;width:120px;height:auto;margin:0 0 .6rem;filter:drop-shadow(0 2px 6px rgba(0,0,0,.6))}
 @media(min-width:760px){.sh-arms{width:160px}}
 .sh-hero h1{font-family:Cinzel,Georgia,serif!important;letter-spacing:.04em;font-weight:400}

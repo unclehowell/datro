@@ -36,19 +36,19 @@ v = CFG.get('v','1')
 NOHERALDRY = lambda x: not re.search(r'crest|\barms\b', json.dumps(x), re.I)
 P = [p for p in P if NOHERALDRY(p)]; DS = [d for d in DS if NOHERALDRY(d)]
 live = [p for p in P if p.get('buy_url')]
-NOTICE = '' if CFG.get('checkout_open') else '<p class="sh-note">The map pack download can be bought now. Printed items open for checkout very soon; the newest (Lavernock 1897 and Peerless Jim) are marked New.</p>'
-idx = HEAD.format(title="Cedwyn Estate shop · Tŷ Mawr / Great House Farm", desc="The Cedwyn Estate shop: the estate map, old Ordnance Survey maps, Lavernock 1897 and Peerless Jim prints, posters, T-shirts, mugs and totes for Tŷ Mawr / Great House Farm, Llandough. Printed to order, sold at cost.", path="/", v=v) + f"""
+NOTICE = '' if CFG.get('checkout_open') else '<p class="sh-note">Printed items open for checkout very soon; the newest (Lavernock 1897 and Peerless Jim) are marked New.</p>'
+idx = HEAD.format(title="Cedwyn Estate shop · Tŷ Mawr / Great House Farm", desc="The Cedwyn Estate shop: photographs from the farm’s own album, Lavernock 1897 and Peerless Jim prints, posters, T-shirts, mugs and totes for Tŷ Mawr / Great House Farm, Llandough. Printed to order, sold at cost.", path="/", v=v) + f"""
 <main>
 <section class="sl-hero sh-hero"><div class="sl-hero-in"><p class="sh-k">Tŷ Mawr · Great House Farm · Llandough</p>
 <h1>Cedwyn Estate</h1>
-<p>The estate as the family theorises it once was, and the farm at its heart. The estate map, old Ordnance Survey maps, and local history, printed when you order and sold at cost.</p>
+<p>The estate as the family theorises it once was, and the farm at its heart. Photographs from the farm’s own album and local history, printed when you order and sold at cost.</p>
 <p><a class="sl-btn" href="#products">Shop the collection</a> <a class="sl-btn sl-ghost" href="https://ebooks.bucklerfamily.estate/">The e-books</a></p></div></section>
 <section class="sh-sec" id="products"><h2>The Cedwyn Estate collection</h2><p class="sh-lead">{e(CFG['products_lead'])}</p>
 {NOTICE}<div class="sh-grid">{''.join(card(p) for p in P)}</div></section>
 <section class="sh-sec" id="books"><h2>Books</h2><p class="sh-lead">The story behind the designs, in full.</p>
 <div class="sh-books"><a class="sh-book" href="https://bucklerfamily.estate/ebook/"><strong>The Great House Farm Legal Wiki</strong><span>The whole wiki as one e-book · from £0.00 · £9.99 – v0.02 · all four £31.99</span></a>
 <a class="sh-book" href="https://ebooks.bucklerfamily.estate/"><strong>All the e-books</strong><span>Every book from £0.00 – v0.01 and £9.99 – v0.02; all four for £31.99</span></a></div></section>
-<section class="sh-sec" id="designs"><h2>The designs</h2><p class="sh-lead">Every picture of the farm is a real photograph from the farm’s own album: restored and toned, never redrawn or generated. No photograph shows a person. The maps are real Ordnance Survey maps, reproduced with the permission of the National Library of Scotland (CC BY): cropped and titled, never redrawn. The Cedwyn Estate map is a restored photograph of the estate survey, never redrawn.</p>
+<section class="sh-sec" id="designs"><h2>The designs</h2><p class="sh-lead">Every picture of the farm is a real photograph from the farm’s own album: restored and toned, never redrawn or generated. No photograph shows a person.</p>
 <div class="sh-dgrid">{''.join(dcard(d) for d in DS)}</div></section>
 <section class="sh-sec" id="how"><h2>How an order works</h2><ol class="sh-steps">
 <li>Pick an item and press the button. It opens in our print partner's secure store, where you choose size and colour and pay.</li>
@@ -63,27 +63,20 @@ terms = HEAD.format(title="Terms, delivery and returns · Cedwyn Estate shop", d
 <h2>Payment</h2><p>You pay at our print partner's secure checkout ({e(CFG['partner_name'])}). Card details are handled by the payment processor and never pass through this website.</p>
 <h2>Printing and delivery</h2><p>Each item is printed when you order it, usually within 2–5 working days, then posted with tracking. The delivery price and estimated time for your address are shown at checkout before you pay.</p>
 <h2>Returns and faults</h2><p>Items are made to order, so we can't take returns for a change of mind (the right to cancel doesn't apply to personalised or made-to-order goods under the Consumer Contracts Regulations 2013). If an item arrives damaged, misprinted or faulty, tell us within 30 days with a photo and we'll arrange a free reprint or a full refund. Your statutory rights under the Consumer Rights Act 2015 are not affected.</p>
-<h2>Digital downloads</h2><p>The map pack is a PDF sold by DATRO CONSORTIUM LIMITED through Stripe, in pounds sterling. It downloads straight after payment. By paying you ask for it to be supplied at once, and your 14-day right to cancel ends once the download is available (Consumer Contracts Regulations 2013, reg. 37). If the file is faulty we replace it or refund you.</p>
 <h2>Contact</h2><p>Questions about an order: <a href="mailto:{e(CFG['contact_email'])}">{e(CFG['contact_email'])}</a>. Please include your order number.</p>
-<h2>The designs</h2><p>All designs were made for this shop and are © DATRO CONSORTIUM LIMITED for the Great House Farm / Tŷ Mawr project. Pictures of the farm are real photographs from the farm’s own album, restored (upscaled, contrast, toning, sky removal) without changing what they show. The maps are real Ordnance Survey maps (1878–79, 1900, 1920, 1947), reproduced with the permission of the National Library of Scotland under a CC BY licence; they are cropped and titled and otherwise unchanged. The Cedwyn Estate map is a photograph of a hand-coloured estate survey (probably c.1824; original held by the family, archive source pending), restored without redrawing; Parcel A is outlined as the family’s reconstruction, approximate. The Peerless Jim photograph is a public-domain archive photograph (Bain News Service, Library of Congress). The other designs are typography.</p>
-<p class="sh-fine">Last updated 21 October 2026. — Sion's Tab agent</p></main>""" + FOOT
-TY_PAGE = HEAD.format(title="Thank you · Cedwyn Estate shop", desc="Your download.", path="/thank-you/", v=v) + """
-<main class="sh-page"><h1>Thank you</h1>
-<div id="ok" style="display:none"><p>Your map pack is ready.</p><p><a class="sl-btn" id="dl" href="#" rel="nofollow">Download the map pack (PDF, 11 MB)</a></p>
-<p class="sh-fine">On iPhone or iPad: tap Download, then Share → “Save to Files”. Bookmark this page to download again later. Payment shows on your statement as DATRO CONSORTIUM LTD.</p></div>
-<div id="no"><p>This page opens after you buy. If you have paid and still see this, open the link from the Stripe confirmation page in the browser you paid in, or email <a href="mailto:{mail}">{mail}</a> with the email address you paid with and we will send your copy.</p></div>
-<p><a href="/">&#10229; Back to the Cedwyn Estate shop</a></p></main>
-<script>(function(){var q=new URLSearchParams(location.search),s=q.get('session_id')||'',K='ghf_shop_session_map';try{if(!s)s=localStorage.getItem(K)||'';}catch(e){}
-if(!/^cs_live_[A-Za-z0-9]{20,200}$/.test(s))return;try{localStorage.setItem(K,s);}catch(e){}
-document.getElementById('dl').href='https://ebooks.bucklerfamily.estate/api/download?book=os-map-pack&session_id='+encodeURIComponent(s);
-document.getElementById('no').style.display='none';document.getElementById('ok').style.display='block';})();</script>""".replace("{mail}", e(CFG['contact_email'])) + FOOT
+<h2>The designs</h2><p>All designs were made for this shop and are © DATRO CONSORTIUM LIMITED for the Great House Farm / Tŷ Mawr project. Pictures of the farm are real photographs from the farm’s own album, restored (upscaled, contrast, toning, sky removal) without changing what they show. The Peerless Jim photograph is a public-domain archive photograph (Bain News Service, Library of Congress). The other designs are typography.</p>
+<p class="sh-fine">Last updated 22 October 2026. — Sion's Tab agent</p></main>""" + FOOT
+# 22 Oct 2026: the map pack download was withdrawn (no licence held), so the thank-you page is gone; /thank-you/ redirects to the shop (public/_redirects).
+NF_PAGE = HEAD.format(title="Not found · Cedwyn Estate shop", desc="This page is not in the Cedwyn Estate shop.", path="/404", v=v) + """
+<main class="sh-page"><h1>Not found</h1><p>This item or page is not in the shop.</p>
+<p><a class="sl-btn" href="/">&#10229; Back to the Cedwyn Estate shop</a></p></main>""" + FOOT
 BANNED = re.compile(r"\b(says|claims|according to|hearsay|unverified|alleged|allegedly|family account|family's account|family testimony)\b", re.I)
 PRIV = re.compile(r"Robin Hill|hywelapbuckler|7845 ?933 ?262|(\+44 ?7|\b07)\d{3} ?\d{3} ?\d{3}|\b[A-Z]{1,2}\d[A-Z\d]? ?\d[A-Z]{2}\b|@(gmail|hotmail|yahoo|outlook|icloud|btinternet|aol)\.|\bSion Buckler\b")
 bad = []
-for name, txt in (('index', idx), ('terms', terms), ('thank-you', TY_PAGE)):
+for name, txt in (('index', idx), ('terms', terms), ('404', NF_PAGE)):
     plain = re.sub(r'<[^>]+>', ' ', txt)
     for m in BANNED.finditer(plain): bad.append((name, 'banned', m.group(0)))
     for m in PRIV.finditer(txt): bad.append((name, 'privacy', m.group(0)))
 if bad: sys.exit('GATE FAILED: %r' % bad)
-(PUB/'index.html').write_text(idx); (PUB/'thank-you').mkdir(exist_ok=True); (PUB/'thank-you'/'index.html').write_text(TY_PAGE); (PUB/'terms').mkdir(exist_ok=True); (PUB/'terms'/'index.html').write_text(terms)
+(PUB/'index.html').write_text(idx); (PUB/'404.html').write_text(NF_PAGE); (PUB/'terms').mkdir(exist_ok=True); (PUB/'terms'/'index.html').write_text(terms)
 print('built', len(P), 'products', len(live), 'live;', len(DS), 'designs; gate ok')
