@@ -648,7 +648,8 @@
   "route": "ico",
   "q": "\"23886\"",
   "dom": "defra.gov.uk",
-  "src": "queue N-DEFRA-23886; queue Q-DEFRA-EIR (same request of 20 Oct)"
+  "src": "queue N-DEFRA-23886; queue Q-DEFRA-EIR (same request of 20 Oct)",
+  "note": "Replied 21 Oct 2026: not held; may be held by the Welsh Government."
  },
  {
   "id": "nlw",
@@ -707,5 +708,37 @@
   "q": "\"IC-546505\"",
   "dom": "ico.org.uk",
   "src": "Gmail: ICO letter 10 Aug, reply sent 21 Oct (reply-sprint log; date asked 18 Nov)"
+ },
+ {
+  "id": "blake-morgan",
+  "inst": "Blake Morgan LLP",
+  "type": "Other",
+  "ref": "Preservation notice",
+  "subject": "File not held (London office closed 1996)",
+  "stage": "replied",
+  "regime": "none",
+  "start": "2026-10-22",
+  "due_body": "2026-10-22",
+  "route": "none",
+  "q": "\"Preservation notice\"",
+  "dom": "blakemorgan.co.uk",
+  "src": "Gmail 1a1635f9eb7683f5 (22 Oct 2026 11:29Z)",
+  "note": "Replied 22 Oct 2026: the firm's file was at its London office, closed in 1996; nothing remains."
+ },
+ {
+  "id": "glam-4460",
+  "inst": "Glamorgan Archives",
+  "type": "Other",
+  "ref": "2026/4460",
+  "subject": "South Wales Constabulary records Nov–Dec 1988: partly answered",
+  "stage": "replied",
+  "regime": "none",
+  "start": "2026-10-22",
+  "due_body": "2026-10-22",
+  "route": "none",
+  "q": "\"4460\"",
+  "dom": "cardiff.gov.uk",
+  "src": "Gmail 1a162e42b9146d7b (22 Oct 2026 09:14Z)",
+  "note": "Replied 22 Oct 2026 (partly answered): occurrence books end May 1984; 1988 Weekly Orders held but closed (a paid search is offered); no press-office files."
  }
 ]

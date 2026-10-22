@@ -1,9 +1,9 @@
 {
  "meta": {
-  "generated": "2026-10-22T14:22+01:00",
+  "generated": "2026-10-22T15:27+01:00",
   "today": "2026-10-22",
-  "threads": 49,
-  "events": 477,
+  "threads": 51,
+  "events": 479,
   "scenario": "Worst-case schedule"
  },
  "threads": [
@@ -1849,7 +1849,7 @@
    "start": "2026-10-21",
    "due_body": null,
    "hold": null,
-   "note": null,
+   "note": "Replied 21 Oct 2026: not held; may be held by the Welsh Government.",
    "stage_text": "Reply in: review to request",
    "policy_url": "https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs/about/personal-information-charter",
    "route": "ICO",
@@ -2046,6 +2046,78 @@
     "rule_url": ""
    },
    "end": "2026-12-11"
+  },
+  {
+   "id": "blake-morgan",
+   "inst": "Blake Morgan LLP",
+   "type": "Other",
+   "ref": "Preservation notice",
+   "subject": "File not held (London office closed 1996)",
+   "stage": "replied",
+   "regime": "none",
+   "start": "2026-10-22",
+   "due_body": "2026-10-22",
+   "hold": null,
+   "note": "Replied 22 Oct 2026: the firm's file was at its London office, closed in 1996; nothing remains.",
+   "stage_text": "Replied: no further step scheduled",
+   "policy_url": "",
+   "route": "ICO",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null
+   },
+   "date_check": "record",
+   "queue": [],
+   "next_hard": null,
+   "next": {
+    "thread": "blake-morgan",
+    "date": "2026-10-22",
+    "who": "them",
+    "label": "Reply received",
+    "rule": "working",
+    "note": "",
+    "rule_cite": "Case schedule",
+    "rule_url": ""
+   },
+   "end": "2026-10-22"
+  },
+  {
+   "id": "glam-4460",
+   "inst": "Glamorgan Archives",
+   "type": "Other",
+   "ref": "2026/4460",
+   "subject": "South Wales Constabulary records Nov–Dec 1988: partly answered",
+   "stage": "replied",
+   "regime": "none",
+   "start": "2026-10-22",
+   "due_body": "2026-10-22",
+   "hold": null,
+   "note": "Replied 22 Oct 2026 (partly answered): occurrence books end May 1984; 1988 Weekly Orders held but closed (a paid search is offered); no press-office files.",
+   "stage_text": "Replied: no further step scheduled",
+   "policy_url": "https://glamarchives.gov.uk/visiting-us/tour/",
+   "route": "ICO",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null
+   },
+   "date_check": "record",
+   "queue": [],
+   "next_hard": null,
+   "next": {
+    "thread": "glam-4460",
+    "date": "2026-10-22",
+    "who": "them",
+    "label": "Reply received",
+    "rule": "working",
+    "note": "",
+    "rule_cite": "Case schedule",
+    "rule_url": ""
+   },
+   "end": "2026-10-22"
   }
  ]
 }

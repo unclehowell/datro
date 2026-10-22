@@ -188,6 +188,8 @@ def forecast(t):
         ev(E, t, add_months(dpo, 3), 'hard', 'Last safe day for the ICO complaint (3 months)', 'ico_dp')
         ev(E, t, add_months(ico, 6), 'them', 'ICO outcome (worst case: 6 months)', 'ico_backlog')
         ev(E, t, schedule_him(add_wd(add_months(ico, 6), 10), t), 'him', 'Next stage: compliance order application', 'dp_court')
+    elif st == 'replied':
+        ev(E, t, s, 'them', 'Reply received', 'working')
     elif reg == 'none':
         wd = D(t['due_body'])
         ev(E, t, wd, 'them', 'Reply by the date asked (no statutory clock)', 'working')
@@ -262,7 +264,7 @@ def build():
         E = FC[t['id']]
         stage_txt = {'awaiting_reply': 'Waiting for their reply', 'awaiting_review': 'Waiting for internal review', 'answered': 'Reply in: review to request',
                      'review_answered': 'Review done: regulator next', 'regulator_window': 'Regulator complaint window open', 'complaint': 'Complaint with the body',
-                     'complaint_prep': 'Complaint to the reviewer in preparation'}[t['stage']]
+                     'complaint_prep': 'Complaint to the reviewer in preparation', 'replied': 'Replied: no further step scheduled'}[t['stage']]
         pol = INST.get(t['id'].split('-')[0], ('', 'ICO'))
         th = {k: t.get(k) for k in ('id', 'inst', 'type', 'ref', 'subject', 'stage', 'regime', 'start', 'due_body', 'hold', 'note')}
         th.update({'stage_text': stage_txt, 'policy_url': pol[0], 'route': pol[1],
@@ -322,6 +324,15 @@ def write_ics(threads, events):
     open(os.path.join(SITE, 'emails.ics'), 'w', newline='').write('\r\n'.join(lines) + '\r\n')
 def write_html(meta, threads, events):
     tpl = open(os.path.join(W, 'template.html')).read()
+    obp = os.path.join(W, 'outbox.json')
+    if os.path.exists(obp) and '<!--__OUTBOX__-->' in tpl:  # scheduled outbox (HubSpot send-email tasks with a planned send date), 22 Oct 2026
+        import html as _h
+        ob = json.load(open(obp)); rows = sorted(ob.get('items', []), key=lambda x: x['send'])
+        fmt = lambda d: D(d).strftime('%a %-d %b %Y')
+        li = ''.join(f'<li><b>{_h.escape(fmt(x["send"]))}</b> · {_h.escape(x["body"])}<br><span class="sub">Chases: {_h.escape(x["chases"])}</span><br><span class="sub">Route step: {_h.escape(x["step"])} · HubSpot task {_h.escape(x["task"])}</span>' + (f'<br><span class="sub">{_h.escape(x["note"])}</span>' if x.get('note') else '') + '</li>' for x in rows)
+        box = (f'<details class="box" id="outbox" style="margin-top:14px"><summary><span>Scheduled outbox · {len(rows)} planned sends</span></summary><div class="inner">'
+               f'<p class="sub" style="margin:0 0 8px">{_h.escape(ob.get("intro", ""))}</p><ol class="obx" style="margin:0;padding-left:18px;line-height:1.5">{li}</ol></div></details>')
+        tpl = tpl.replace('<!--__OUTBOX__-->', box)
     blob = json.dumps({'meta': meta, 'threads': threads, 'events': events, 'policy': POLICY}, ensure_ascii=False).replace('</', '<\\/')
     open(os.path.join(SITE, 'index.html'), 'w').write(tpl.replace('/*__DATA__*/null', blob))
 def gate():
