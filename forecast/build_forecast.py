@@ -196,10 +196,11 @@ def main(outs):
         # complaint ladder for every body that has one and no thread on it
         has_cmp = any(r['track'] == 'complaint' for r in rungs)
         fc = []  # forecast points
-        board = {r['key']: {'us': None, 'them': None, 'done': False} for r in rungs}
+        board = {r['key']: {'us': None, 'them': None, 'done': False, 'played': False} for r in rungs}
         for p in pts:
             k = keys[p[2] - 1]; b = board[k]
-            if p[1] == 0: b['us'] = min(b['us'] or p[0], p[0]); b['done'] = b['done'] or False
+            b['played'] = True
+            if p[1] == 0: b['us'] = min(b['us'] or p[0], p[0])
             else: b['them'] = max(b['them'] or p[0], p[0])
         ends = []; walked = set()
         def walk(th):

@@ -14,7 +14,7 @@ export type FInst = {
   pts: [string, number, number, number, string][];
   fc: [string, number, number, number, string, (string | null)?][];
   marks: [string, number, "house" | "fish", string][];
-  board: { n: number; us: string | null; them: string | null; done: boolean; missed?: string }[];
+  board: { n: number; us: string | null; them: string | null; done: boolean; played?: boolean; missed?: string }[];
   threads: { track: string; rung: number | null; state: string; date: string; ref: string }[];
 };
 export type FDoc = { generated: string; today: string; assumptions: string[]; institutions: FInst[] };
@@ -123,17 +123,17 @@ export function ForecastScatter({ inst, today }: { inst: FInst; today: string })
         {inst.rungs.map((r) => (
           <g key={r.n}>
             <line x1={PADL} x2={W - PADR} y1={Y(r.n)} y2={Y(r.n)} stroke="var(--color-line, #3a3228)" strokeWidth="0.6" />
-            <text x={PADL - 4} y={Y(r.n) + 3} textAnchor="end" fontSize="8" fill="var(--color-muted, #a39888)">{r.n}{r.inf ? "*" : ""}</text>
+            <text x={PADL - 4} y={Y(r.n) + 3} textAnchor="end" fontSize="9" fill="var(--color-muted, #a39888)">{r.n}{r.inf ? "*" : ""}</text>
           </g>
         ))}
         {ticks.map((k, i) => (
           <g key={i}>
             <line x1={k.x} x2={k.x} y1={PADT} y2={H - PADB + 3} stroke="var(--color-line, #3a3228)" strokeWidth="0.4" strokeDasharray="1 2" />
-            <text x={k.x} y={H - PADB + 12} textAnchor="middle" fontSize="7.5" fill="var(--color-muted, #a39888)">{k.lab}</text>
+            <text x={k.x} y={H - PADB + 12} textAnchor="middle" fontSize="8.5" fill="var(--color-muted, #a39888)">{k.lab}</text>
           </g>
         ))}
         <line x1={X(today)} x2={X(today)} y1={PADT - 2} y2={H - PADB + 3} stroke="var(--color-fg, #f4efe6)" strokeWidth="1" />
-        <text x={X(today) + 2} y={H - 3} fontSize="7.5" fill="var(--color-fg, #f4efe6)">today</text>
+        <text x={X(today) + 2} y={H - 3} fontSize="8.5" fill="var(--color-fg, #f4efe6)">today</text>
         {inst.fc.filter((p) => p[1] === 1 && p[5] && vis(p[0])).map((p, i) => (
           <line key={`b${i}`} x1={X(p[0])} x2={X(p[5] as string)} y1={Y(p[2])} y2={Y(p[2])} stroke={THEIRS} strokeWidth="3" strokeOpacity="0.35" strokeLinecap="round" />
         ))}
@@ -196,7 +196,7 @@ export function ForecastAssumptions({ doc, inst }: { doc: FDoc; inst: FInst }) {
 /** The completed board: every rung of this body's own ladder played to exhaustion, dated, drawn over the board. */
 export function ForecastBoard({ inst, vw, vh }: { inst: FInst; vw: number; vh: number }) {
   const R = inst.rungs.length;
-  const top = 34, bot = 10;
+  const top = 50, bot = 10;
   const row = (vh - top - bot) / R;
   const left = 16, right = vw - 16;
   const tilt = Math.min(10, row * 0.28);
@@ -212,16 +212,21 @@ export function ForecastBoard({ inst, vw, vh }: { inst: FInst; vw: number; vh: n
     <svg viewBox={`0 0 ${vw} ${vh}`} className="absolute inset-0 h-full w-full" role="img" data-ghf-keep
       aria-label={`Forecast completed board for ${inst.name}: ${inst.rungs.map((r) => `${r.n} ${r.l}, ${fdate(b.get(r.n)?.us)} to ${fdate(b.get(r.n)?.them)}`).join("; ")}; last option exhausted ${fdate(inst.exhaust)}`}>
       <rect x="0" y="0" width={vw} height={vh} fill="#0d0b09" fillOpacity="0.72" />
-      <text x={vw / 2} y={20} textAnchor="middle" fontSize={fs + 2} fontWeight="700" fill="#f4efe6">forecast · all options exhausted {fdate(inst.exhaust)}</text>
+      <text x={12} y={21} fontSize={Math.min(fs + 1, 14)} fontWeight="700" fill="#f4efe6">forecast · exhausted {fdate(inst.exhaust)}</text>
+      <g fontSize={Math.min(fs, 11)} fill="#e9e2d4">
+        <line x1={vw - 250} x2={vw - 232} y1={top - 12} y2={top - 12} stroke="#EE4EF4" strokeWidth="4" /><text x={vw - 228} y={top - 8}>played</text>
+        <line x1={vw - 178} x2={vw - 160} y1={top - 12} y2={top - 12} stroke="#c4a574" strokeWidth="4" strokeDasharray="6 4" /><text x={vw - 156} y={top - 8}>forecast</text>
+        <line x1={vw - 96} x2={vw - 78} y1={top - 12} y2={top - 12} stroke={RED} strokeWidth="4" /><text x={vw - 74} y={top - 8}>missed</text>
+      </g>
       {inst.rungs.map((r) => {
         const st = b.get(r.n);
-        const done = !!st?.done, missed = !!st?.missed;
+        const done = !!(st?.done || st?.played), missed = !!st?.missed, unused = !st?.us && !st?.them && !missed;
         const col = missed ? RED : done ? "#EE4EF4" : "#c4a574";
         const x1 = left, x2 = right;
         const lx = r.n % 2 === 1 ? left + 6 : left + 6;
         return (
           <g key={r.n}>
-            <line x1={x1} y1={y(r.n, x1)} x2={x2} y2={y(r.n, x2)} stroke={col} strokeWidth={Math.max(3, row * 0.12)} strokeOpacity={done ? 0.95 : 0.7} strokeDasharray={done ? undefined : "10 6"} />
+            <line x1={x1} y1={y(r.n, x1)} x2={x2} y2={y(r.n, x2)} stroke={col} strokeWidth={Math.max(3, row * 0.12)} strokeOpacity={unused ? 0.3 : done ? 0.95 : 0.75} strokeDasharray={done ? undefined : "10 6"} />
             {r.n < R && (
               <g stroke="#c4a574" strokeOpacity="0.55" strokeWidth="1.6">
                 {(() => { const lxp = r.n % 2 === 1 ? right - 40 : left + 40; const ya = y(r.n, lxp), yb = y(r.n + 1, lxp); return (<>
@@ -234,7 +239,7 @@ export function ForecastBoard({ inst, vw, vh }: { inst: FInst; vw: number; vh: n
               {r.n}{r.inf ? "*" : ""} {r.l.length > 34 ? `${r.l.slice(0, 33)}…` : r.l}
             </text>
             <text x={right - 4} y={y(r.n, right - 4) + fs + 1} textAnchor="end" fontSize={fs * 0.9} fill={missed ? RED : "#e9e2d4"}>
-              {st?.us ? fdate(st.us) : "—"} → {st?.them ? fdate(st.them) : missed ? `no reply (${fdate(st?.missed)})` : "—"}
+              {unused ? "not on the forecast route" : <>{st?.us ? fdate(st.us) : "—"} → {st?.them ? fdate(st.them) : missed ? `no reply (${fdate(st?.missed)})` : "—"}</>}
             </text>
           </g>
         );
