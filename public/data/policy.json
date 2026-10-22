@@ -1,0 +1,232 @@
+{
+ "regimes": {
+  "foi": {
+   "name": "Freedom of Information Act 2000",
+   "rules": [
+    {
+     "k": "foi_reply",
+     "what": "Reply within 20 working days of receipt",
+     "n": "20 wd",
+     "cite": "FOIA s.10(1)",
+     "url": "https://www.legislation.gov.uk/ukpga/2000/36/section/10"
+    },
+    {
+     "k": "foi_pi",
+     "what": "Public-interest extension: a “reasonable” further time; treated here as up to 20 more working days",
+     "n": "+20 wd",
+     "cite": "FOIA s.10(3); s.45 Code of Practice",
+     "url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+    },
+    {
+     "k": "foi_ir_ask",
+     "what": "Ask for an internal review within 40 working days of the reply",
+     "n": "40 wd",
+     "cite": "s.45 Code of Practice, para 5.3",
+     "url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice",
+     "hard": true
+    },
+    {
+     "k": "foi_ir_reply",
+     "what": "Internal review outcome within 20 working days, 40 at most",
+     "n": "20–40 wd",
+     "cite": "s.45 Code of Practice, para 5.5",
+     "url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+    }
+   ]
+  },
+  "eir": {
+   "name": "Environmental Information Regulations 2004",
+   "rules": [
+    {
+     "k": "eir_reply",
+     "what": "Reply within 20 working days of receipt",
+     "n": "20 wd",
+     "cite": "EIR reg 5(2)",
+     "url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/5"
+    },
+    {
+     "k": "eir_ext",
+     "what": "Extension to 40 working days where the request is complex and voluminous",
+     "n": "40 wd",
+     "cite": "EIR reg 7(1)",
+     "url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/7"
+    },
+    {
+     "k": "eir_ir_ask",
+     "what": "Representations (review) within 40 working days of the reply",
+     "n": "40 wd",
+     "cite": "EIR reg 11(2)",
+     "url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11",
+     "hard": true
+    },
+    {
+     "k": "eir_ir_reply",
+     "what": "Reconsideration decided within 40 working days",
+     "n": "40 wd",
+     "cite": "EIR reg 11(4)",
+     "url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
+    }
+   ]
+  },
+  "sar": {
+   "name": "UK GDPR / Data Protection Act 2018 (subject access)",
+   "rules": [
+    {
+     "k": "sar_reply",
+     "what": "Reply within one month of receipt",
+     "n": "1 month",
+     "cite": "UK GDPR Art.12(3); DPA 2018 s.45 and s.54 (law-enforcement processing)",
+     "url": "https://www.legislation.gov.uk/eur/2016/679/article/12"
+    },
+    {
+     "k": "sar_ext",
+     "what": "Extension by two further months for complex or numerous requests, notified within the first month",
+     "n": "+2 months",
+     "cite": "UK GDPR Art.12(3)",
+     "url": "https://www.legislation.gov.uk/eur/2016/679/article/12"
+    },
+    {
+     "k": "sar_body_complaint",
+     "what": "Complaint to the body’s data protection officer before the ICO",
+     "n": "1 month assumed",
+     "cite": "DPA 2018 s.164A (complaints to controllers)",
+     "url": "https://www.legislation.gov.uk/ukpga/2018/12/section/164A"
+    },
+    {
+     "k": "ico_dp",
+     "what": "ICO complaint; the ICO asks for it within 3 months of the last meaningful contact",
+     "n": "3 months",
+     "cite": "UK GDPR Art.77; DPA 2018 s.165; ICO practice",
+     "url": "https://ico.org.uk/make-a-complaint/data-protection-complaints/",
+     "hard": true
+    },
+    {
+     "k": "dp_court",
+     "what": "Compliance order from the court",
+     "n": "no fixed limit",
+     "cite": "DPA 2018 s.167",
+     "url": "https://www.legislation.gov.uk/ukpga/2018/12/section/167"
+    }
+   ]
+  },
+  "ico": {
+   "name": "Information Commissioner (FOI / EIR)",
+   "rules": [
+    {
+     "k": "ico_foi",
+     "what": "Complaint to the ICO after the internal review; the ICO asks for it within 6 weeks of the review outcome",
+     "n": "6 weeks",
+     "cite": "FOIA s.50; EIR reg 18; ICO practice",
+     "url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/",
+     "hard": true
+    },
+    {
+     "k": "ico_backlog",
+     "what": "ICO decision notice: worst case taken as 6 months from the complaint (case backlog)",
+     "n": "6 months",
+     "cite": "FOIA s.50(3)",
+     "url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
+    },
+    {
+     "k": "ftt",
+     "what": "Appeal to the First-tier Tribunal (General Regulatory Chamber) within 28 days of the decision notice",
+     "n": "28 days",
+     "cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
+     "url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22",
+     "hard": true
+    }
+   ]
+  },
+  "complaint": {
+   "name": "Body’s own complaints procedure",
+   "rules": [
+    {
+     "k": "stage1",
+     "what": "Stage 1 (informal) response, Welsh model policy: 10 working days",
+     "n": "10 wd",
+     "cite": "PSOW Model Complaints Policy",
+     "url": "https://www.ombudsman.wales/complaints-standards-authority/"
+    },
+    {
+     "k": "stage2",
+     "what": "Stage 2 (formal) response, Welsh model policy: 20 working days",
+     "n": "20 wd",
+     "cite": "PSOW Model Complaints Policy",
+     "url": "https://www.ombudsman.wales/complaints-standards-authority/"
+    },
+    {
+     "k": "psow",
+     "what": "Public Services Ombudsman for Wales, within 12 months of becoming aware of the matter",
+     "n": "12 months",
+     "cite": "Public Services Ombudsman (Wales) Act 2019",
+     "url": "https://www.legislation.gov.uk/anaw/2019/3/contents",
+     "hard": true
+    },
+    {
+     "k": "phso",
+     "what": "Parliamentary and Health Service Ombudsman, referred by an MP, within 12 months",
+     "n": "12 months",
+     "cite": "Parliamentary Commissioner Act 1967 s.5, s.6(3)",
+     "url": "https://www.legislation.gov.uk/ukpga/1967/13",
+     "hard": true
+    },
+    {
+     "k": "police",
+     "what": "Police complaint to the force’s professional standards, review by the PCC or IOPC",
+     "n": "12 months",
+     "cite": "Police Reform Act 2002 Sch.3",
+     "url": "https://www.legislation.gov.uk/ukpga/2002/30/schedule/3"
+    }
+   ]
+  },
+  "icr": {
+   "name": "HM Land Registry complaints",
+   "rules": [
+    {
+     "k": "icr",
+     "what": "Independent Complaints Reviewer after HM Land Registry’s own procedure",
+     "n": "case dates",
+     "cite": "HM Land Registry complaints procedure",
+     "url": "https://www.gov.uk/government/organisations/land-registry/about/complaints-procedure"
+    },
+    {
+     "k": "phso",
+     "what": "Then the Parliamentary and Health Service Ombudsman via an MP, within 12 months",
+     "n": "12 months",
+     "cite": "Parliamentary Commissioner Act 1967 s.5, s.6(3)",
+     "url": "https://www.legislation.gov.uk/ukpga/1967/13",
+     "hard": true
+    }
+   ]
+  },
+  "none": {
+   "name": "No statutory clock",
+   "rules": [
+    {
+     "k": "working",
+     "what": "Working date set in the request; chaser the next working day, a second after 10 working days",
+     "n": "own date",
+     "cite": "Case schedule",
+     "url": ""
+    },
+    {
+     "k": "sar_fallback",
+     "what": "If the body holds personal data, a subject access request starts a statutory clock",
+     "n": "1 month",
+     "cite": "UK GDPR Art.15, Art.12(3)",
+     "url": "https://www.legislation.gov.uk/eur/2016/679/article/15"
+    }
+   ]
+  }
+ },
+ "working_days": {
+  "calendar": "England and Wales bank holidays",
+  "url": "https://www.gov.uk/bank-holidays.json",
+  "count": "Day 1 is the first working day after receipt"
+ },
+ "assumptions": [
+  "Every body takes the longest extension the rules allow.",
+  "Every reply is a refusal or a non-answer, so every review and escalation step is needed.",
+  "Our side acts on fixed dates: a chaser the working day after any lapse, a review request 5 working days after a refusal, a regulator complaint 5 working days after a review outcome, and never later than the hard date."
+ ]
+}

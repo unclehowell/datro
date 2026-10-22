@@ -1,0 +1,2042 @@
+{
+ "meta": {
+  "generated": "2026-10-22T06:19+01:00",
+  "today": "2026-10-22",
+  "threads": 48,
+  "events": 474,
+  "scenario": "Worst-case schedule"
+ },
+ "threads": [
+  {
+   "id": "hmlr-sar",
+   "inst": "HM Land Registry",
+   "type": "SAR",
+   "ref": "D260928 / N610CGV",
+   "subject": "Subject access request: titles WA231076 and WA240304",
+   "stage": "awaiting_reply",
+   "regime": "sar",
+   "start": "2026-09-28",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.gov.uk/government/organisations/land-registry/about/complaints-procedure",
+   "route": "ICO; ICR then PHSO via an MP",
+   "gmail": {
+    "checked": "2026-10-22T05:12+00:00",
+    "found": 4,
+    "last_sent": "2026-10-21",
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "gmail",
+   "queue": [
+    {
+     "id": "Q-HMLR-SAR",
+     "status": "queued",
+     "deadline": "2026-10-28"
+    },
+    {
+     "id": "Q-HMLR-SAR-CS",
+     "status": "queued",
+     "deadline": "2026-10-28"
+    }
+   ],
+   "next_hard": "2027-04-30",
+   "next": {
+    "thread": "hmlr-sar",
+    "date": "2026-10-28",
+    "who": "them",
+    "label": "SAR reply due (one month)",
+    "rule": "sar_reply",
+    "note": "",
+    "rule_cite": "UK GDPR Art.12(3); DPA 2018 s.45 and s.54 (law-enforcement processing)",
+    "rule_url": "https://www.legislation.gov.uk/eur/2016/679/article/12"
+   },
+   "end": "2027-08-13"
+  },
+  {
+   "id": "hmlr-eir",
+   "inst": "HM Land Registry",
+   "type": "EIR",
+   "ref": "D260928 (EIR part)",
+   "subject": "First-registration and amalgamation documents",
+   "stage": "awaiting_reply",
+   "regime": "eir",
+   "start": "2026-10-20",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.gov.uk/government/organisations/land-registry/about/complaints-procedure",
+   "route": "ICO; ICR then PHSO via an MP",
+   "gmail": {
+    "checked": "2026-10-22T05:13+00:00",
+    "found": 1,
+    "last_sent": "2026-10-20",
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "gmail",
+   "queue": [
+    {
+     "id": "Q-HMLR-EIR",
+     "status": "queued",
+     "deadline": "2026-11-17"
+    }
+   ],
+   "next_hard": "2027-02-12",
+   "next": {
+    "thread": "hmlr-eir",
+    "date": "2026-11-17",
+    "who": "them",
+    "label": "Statutory reply due (20 working days)",
+    "rule": "eir_reply",
+    "note": "",
+    "rule_cite": "EIR reg 5(2)",
+    "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/5"
+   },
+   "end": "2027-09-23"
+  },
+  {
+   "id": "icr-090",
+   "inst": "HMLR Independent Complaints Reviewer",
+   "type": "Complaint",
+   "ref": "ICR/090/26",
+   "subject": "Complaint about HM Land Registry first registration",
+   "stage": "complaint_prep",
+   "regime": "icr",
+   "start": "2026-09-27",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Complaint to the reviewer in preparation",
+   "policy_url": "https://www.gov.uk/government/organisations/land-registry/about/complaints-procedure",
+   "route": "PHSO via an MP",
+   "gmail": {
+    "checked": "2026-10-22T05:13+00:00",
+    "found": 4,
+    "last_sent": "2026-10-21",
+    "last_reply": "2026-10-21",
+    "last_reply_subject": "RE: ICR/090/26 – further formal points on the first-registration file and 1987 amalgamation"
+   },
+   "date_check": "gmail",
+   "queue": [],
+   "reply_after_start": "2026-10-21",
+   "next_hard": "2026-11-25",
+   "next": {
+    "thread": "icr-090",
+    "date": "2026-11-13",
+    "who": "him",
+    "label": "Send the full ICR complaint (target)",
+    "rule": "icr",
+    "note": "",
+    "rule_cite": "HM Land Registry complaints procedure",
+    "rule_url": "https://www.gov.uk/government/organisations/land-registry/about/complaints-procedure"
+   },
+   "end": "2028-05-25"
+  },
+  {
+   "id": "swp-ir1188",
+   "inst": "South Wales Police",
+   "type": "FOI",
+   "ref": "IR 1188/26 (FOI 719/26)",
+   "subject": "Internal review: 1988 operation records",
+   "stage": "awaiting_review",
+   "regime": "foi",
+   "start": "2026-09-27",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for internal review",
+   "policy_url": "https://www.south-wales.police.uk/rqo/request/ri/request-information/rip/request-information-police/",
+   "route": "ICO; police complaints via PCC / IOPC",
+   "gmail": {
+    "checked": "2026-10-22T05:13+00:00",
+    "found": 4,
+    "last_sent": "2026-10-21",
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "gmail",
+   "queue": [
+    {
+     "id": "Q-SWP-IR1188",
+     "status": "queued",
+     "deadline": "2026-10-26"
+    }
+   ],
+   "next_hard": "2027-01-01",
+   "next": {
+    "thread": "swp-ir1188",
+    "date": "2026-10-23",
+    "who": "them",
+    "label": "Internal review outcome due",
+    "rule": "foi_ir_reply",
+    "note": "",
+    "rule_cite": "s.45 Code of Practice, para 5.5",
+    "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+   },
+   "end": "2027-06-24"
+  },
+  {
+   "id": "swp-sar",
+   "inst": "South Wales Police",
+   "type": "SAR",
+   "ref": "SAR (Data Protection Team)",
+   "subject": "Own personal data: 1988 eviction",
+   "stage": "awaiting_reply",
+   "regime": "sar",
+   "start": "2026-09-29",
+   "due_body": null,
+   "hold": null,
+   "note": "Their 30 Sep clarification question is unanswered; the clock may be paused until it is.",
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.south-wales.police.uk/rqo/request/ri/request-information/rip/request-information-police/",
+   "route": "ICO; police complaints via PCC / IOPC",
+   "gmail": {
+    "checked": "2026-10-22T05:14+00:00",
+    "found": 4,
+    "last_sent": null,
+    "last_reply": "2026-10-13",
+    "last_reply_subject": "RE: FOI 1264/26 - non-personal operational records concerning Great House Farm / Tŷ Mawr, Llandough, November–December 1988"
+   },
+   "date_check": "gmail",
+   "queue": [],
+   "reply_after_start": "2026-10-13",
+   "next_hard": "2027-04-30",
+   "next": {
+    "thread": "swp-sar",
+    "date": "2026-10-29",
+    "who": "them",
+    "label": "SAR reply due (one month)",
+    "rule": "sar_reply",
+    "note": "",
+    "rule_cite": "UK GDPR Art.12(3); DPA 2018 s.45 and s.54 (law-enforcement processing)",
+    "rule_url": "https://www.legislation.gov.uk/eur/2016/679/article/12"
+   },
+   "end": "2027-08-13"
+  },
+  {
+   "id": "swp-1040",
+   "inst": "South Wales Police",
+   "type": "FOI",
+   "ref": "FOI 1040/26",
+   "subject": "Deaths records: internal review",
+   "stage": "awaiting_review",
+   "regime": "foi",
+   "start": "2026-10-21",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for internal review",
+   "policy_url": "https://www.south-wales.police.uk/rqo/request/ri/request-information/rip/request-information-police/",
+   "route": "ICO; police complaints via PCC / IOPC",
+   "gmail": {
+    "checked": "2026-10-22T05:14+00:00",
+    "found": 4,
+    "last_sent": "2026-10-21",
+    "last_reply": "2026-10-21",
+    "last_reply_subject": "Automatic reply: RESPONSE Freedom of Information 1040/26"
+   },
+   "date_check": "gmail",
+   "queue": [
+    {
+     "id": "Q-SWP-IR1040",
+     "status": "queued",
+     "deadline": "2026-11-18"
+    }
+   ],
+   "next_hard": "2027-01-27",
+   "next": {
+    "thread": "swp-1040",
+    "date": "2026-11-18",
+    "who": "them",
+    "label": "Internal review outcome due",
+    "rule": "foi_ir_reply",
+    "note": "",
+    "rule_cite": "s.45 Code of Practice, para 5.5",
+    "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+   },
+   "end": "2027-07-21"
+  },
+  {
+   "id": "swp-1264",
+   "inst": "South Wales Police",
+   "type": "FOI",
+   "ref": "FOI 1264/26",
+   "subject": "Operational records, Nov–Dec 1988",
+   "stage": "awaiting_reply",
+   "regime": "foi",
+   "start": "2026-10-10",
+   "due_body": "2026-11-09",
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.south-wales.police.uk/rqo/request/ri/request-information/rip/request-information-police/",
+   "route": "ICO; police complaints via PCC / IOPC",
+   "gmail": {
+    "checked": "2026-10-22T05:15+00:00",
+    "found": 4,
+    "last_sent": "2026-10-21",
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "gmail",
+   "queue": [
+    {
+     "id": "Q-SWP-1264",
+     "status": "queued",
+     "deadline": "2026-11-09"
+    }
+   ],
+   "next_hard": "2027-02-03",
+   "next": {
+    "thread": "swp-1264",
+    "date": "2026-11-06",
+    "who": "them",
+    "label": "Statutory reply due (20 working days)",
+    "rule": "foi_reply",
+    "note": "",
+    "rule_cite": "FOIA s.10(1)",
+    "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/10"
+   },
+   "end": "2027-09-14"
+  },
+  {
+   "id": "vale-00211463",
+   "inst": "Vale of Glamorgan Council",
+   "type": "EIR",
+   "ref": "00211463",
+   "subject": "Great House Farm records (refined request)",
+   "stage": "awaiting_reply",
+   "regime": "eir",
+   "start": "2026-09-21",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.valeofglamorgan.gov.uk/en/our_council/freedom_of_information/Requests-for-Information.aspx",
+   "route": "ICO; PSOW",
+   "gmail": {
+    "checked": "2026-10-22T05:15+00:00",
+    "found": 4,
+    "last_sent": "2026-10-10",
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "gmail",
+   "queue": [
+    {
+     "id": "N-VALE-00211463",
+     "status": "drafted",
+     "deadline": "2026-10-19"
+    }
+   ],
+   "next_hard": "2027-01-14",
+   "next": {
+    "thread": "vale-00211463",
+    "date": "2026-10-27",
+    "who": "him",
+    "label": "Chaser (if no reply)",
+    "rule": "eir_reply",
+    "note": "",
+    "rule_cite": "EIR reg 5(2)",
+    "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/5"
+   },
+   "end": "2027-08-25"
+  },
+  {
+   "id": "vale-00211484",
+   "inst": "Vale of Glamorgan Council",
+   "type": "EIR",
+   "ref": "00211484",
+   "subject": "Removal of a commemorative tree",
+   "stage": "awaiting_reply",
+   "regime": "eir",
+   "start": "2026-09-18",
+   "due_body": "2026-10-26",
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.valeofglamorgan.gov.uk/en/our_council/freedom_of_information/Requests-for-Information.aspx",
+   "route": "ICO; PSOW",
+   "gmail": {
+    "checked": "2026-10-22T05:16+00:00",
+    "found": 4,
+    "last_sent": "2026-10-21",
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "gmail",
+   "queue": [
+    {
+     "id": "Q-VALE-00211484",
+     "status": "queued",
+     "deadline": "2026-10-26"
+    }
+   ],
+   "next_hard": "2027-01-13",
+   "next": {
+    "thread": "vale-00211484",
+    "date": "2026-10-26",
+    "who": "them",
+    "label": "Reply date given by the body",
+    "rule": "eir_reply",
+    "note": "",
+    "rule_cite": "EIR reg 5(2)",
+    "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/5"
+   },
+   "end": "2027-08-24"
+  },
+  {
+   "id": "vale-00211557",
+   "inst": "Vale of Glamorgan Council",
+   "type": "EIR",
+   "ref": "00211557",
+   "subject": "Great House Farm / Church View Close",
+   "stage": "awaiting_reply",
+   "regime": "eir",
+   "start": "2026-09-28",
+   "due_body": "2026-10-26",
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.valeofglamorgan.gov.uk/en/our_council/freedom_of_information/Requests-for-Information.aspx",
+   "route": "ICO; PSOW",
+   "gmail": {
+    "checked": "2026-10-22T05:16+00:00",
+    "found": 4,
+    "last_sent": "2026-10-18",
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "gmail",
+   "queue": [
+    {
+     "id": "Q-VALE-00211557",
+     "status": "queued",
+     "deadline": "2026-10-26"
+    }
+   ],
+   "next_hard": "2027-01-21",
+   "next": {
+    "thread": "vale-00211557",
+    "date": "2026-10-26",
+    "who": "them",
+    "label": "Statutory reply due (20 working days)",
+    "rule": "eir_reply",
+    "note": "",
+    "rule_cite": "EIR reg 5(2)",
+    "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/5"
+   },
+   "end": "2027-09-01"
+  },
+  {
+   "id": "vale-sar",
+   "inst": "Vale of Glamorgan Council",
+   "type": "SAR",
+   "ref": "SAR (DPO), 28 Sep",
+   "subject": "Formal concern, preservation and subject access",
+   "stage": "awaiting_reply",
+   "regime": "sar",
+   "start": "2026-09-28",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.valeofglamorgan.gov.uk/en/our_council/freedom_of_information/Requests-for-Information.aspx",
+   "route": "ICO; PSOW",
+   "gmail": {
+    "checked": "2026-10-22T05:16+00:00",
+    "found": 4,
+    "last_sent": "2026-10-07",
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "gmail",
+   "queue": [
+    {
+     "id": "Q-VALE-SAR",
+     "status": "queued",
+     "deadline": "2026-10-28"
+    }
+   ],
+   "next_hard": "2027-04-30",
+   "next": {
+    "thread": "vale-sar",
+    "date": "2026-10-28",
+    "who": "them",
+    "label": "SAR reply due (one month)",
+    "rule": "sar_reply",
+    "note": "",
+    "rule_cite": "UK GDPR Art.12(3); DPA 2018 s.45 and s.54 (law-enforcement processing)",
+    "rule_url": "https://www.legislation.gov.uk/eur/2016/679/article/12"
+   },
+   "end": "2027-08-13"
+  },
+  {
+   "id": "vale-00210772",
+   "inst": "Vale of Glamorgan Council",
+   "type": "FOI",
+   "ref": "00210772 (internal review)",
+   "subject": "Internal review outstanding",
+   "stage": "awaiting_review",
+   "regime": "foi",
+   "start": "2026-08-26",
+   "due_body": "2026-10-30",
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for internal review",
+   "policy_url": "https://www.valeofglamorgan.gov.uk/en/our_council/freedom_of_information/Requests-for-Information.aspx",
+   "route": "ICO; PSOW",
+   "gmail": {
+    "checked": "2026-10-22T05:17+00:00",
+    "found": 4,
+    "last_sent": "2026-10-21",
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "gmail",
+   "queue": [
+    {
+     "id": "Q-VALE-00210772",
+     "status": "queued",
+     "deadline": "2026-10-30"
+    }
+   ],
+   "next_hard": "2026-12-03",
+   "next": {
+    "thread": "vale-00210772",
+    "date": "2026-10-22",
+    "who": "them",
+    "label": "Review outcome, latest (worst case: refusal upheld)",
+    "rule": "foi_ir_reply",
+    "note": "",
+    "rule_cite": "s.45 Code of Practice, para 5.5",
+    "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+   },
+   "end": "2027-05-27"
+  },
+  {
+   "id": "tfw",
+   "inst": "Transport for Wales",
+   "type": "FOI",
+   "ref": "628912926",
+   "subject": "Llandough villa fire finds",
+   "stage": "awaiting_reply",
+   "regime": "foi",
+   "start": "2026-09-24",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://tfw.wales/about-us/transparency/freedom-of-information",
+   "route": "ICO",
+   "gmail": {
+    "checked": "2026-10-22T05:17+00:00",
+    "found": 1,
+    "last_sent": null,
+    "last_reply": "2026-09-24",
+    "last_reply_subject": "Re: FOI \"Llandough Roman villa & medieval house finds were destroyed in a 1983 fire\" #628912926"
+   },
+   "date_check": "gmail",
+   "queue": [],
+   "next_hard": "2027-01-19",
+   "next": {
+    "thread": "tfw",
+    "date": "2026-10-22",
+    "who": "them",
+    "label": "Statutory reply due (20 working days)",
+    "rule": "foi_reply",
+    "note": "",
+    "rule_cite": "FOIA s.10(1)",
+    "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/10"
+   },
+   "end": "2027-08-30"
+  },
+  {
+   "id": "wo-nio",
+   "inst": "Wales Office / Northern Ireland Office",
+   "type": "FOI",
+   "ref": "26FOI 103 · IR/26/16",
+   "subject": "Farm ownership records: internal review",
+   "stage": "awaiting_review",
+   "regime": "foi",
+   "start": "2026-09-28",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for internal review",
+   "policy_url": "https://www.ombudsman.org.uk/making-complaint",
+   "route": "ICO; PHSO via an MP",
+   "gmail": {
+    "checked": "2026-10-22T05:17+00:00",
+    "found": 4,
+    "last_sent": "2026-10-21",
+    "last_reply": "2026-10-19",
+    "last_reply_subject": "RE: FOI — Welsh Office / Cadw papers, July–December 1988 — Great House Farm (Ty Mawr), Llandough — following 26FOI 103 (ATISN 27589)"
+   },
+   "date_check": "gmail",
+   "queue": [
+    {
+     "id": "Q-WALES-OFFICE-IR",
+     "status": "queued",
+     "deadline": "2026-10-28"
+    }
+   ],
+   "reply_after_start": "2026-10-19",
+   "next_hard": "2027-01-04",
+   "next": {
+    "thread": "wo-nio",
+    "date": "2026-10-26",
+    "who": "them",
+    "label": "Internal review outcome due",
+    "rule": "foi_ir_reply",
+    "note": "",
+    "rule_cite": "s.45 Code of Practice, para 5.5",
+    "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+   },
+   "end": "2027-06-27"
+  },
+  {
+   "id": "hmcts",
+   "inst": "HMCTS Cardiff County Court",
+   "type": "Other",
+   "ref": "Preservation notice",
+   "subject": "Surviving 1987–88 possession / enforcement records",
+   "stage": "awaiting_reply",
+   "regime": "none",
+   "start": "2026-10-19",
+   "due_body": "2026-11-02",
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.ombudsman.org.uk/making-complaint",
+   "route": "PHSO via an MP",
+   "gmail": {
+    "checked": "2026-10-22T05:18+00:00",
+    "found": 3,
+    "last_sent": "2026-10-20",
+    "last_reply": "2026-10-20",
+    "last_reply_subject": "RE: Preservation notice — Great House Farm (Tŷ Mawr), Llandough — do not destroy records — Matter of public interest"
+   },
+   "date_check": "gmail",
+   "queue": [
+    {
+     "id": "Q-HMCTS-CARDIFF",
+     "status": "queued",
+     "deadline": "2026-11-02"
+    }
+   ],
+   "reply_after_start": "2026-10-20",
+   "next_hard": null,
+   "next": {
+    "thread": "hmcts",
+    "date": "2026-11-02",
+    "who": "them",
+    "label": "Reply by the date asked (no statutory clock)",
+    "rule": "working",
+    "note": "",
+    "rule_cite": "Case schedule",
+    "rule_url": ""
+   },
+   "end": "2026-11-24"
+  },
+  {
+   "id": "museum",
+   "inst": "Amgueddfa Cymru – Museum Wales",
+   "type": "FOI",
+   "ref": "FOI 2026-024 follow-up",
+   "subject": "c.1880 find at Great House Farm (clarification)",
+   "stage": "awaiting_reply",
+   "regime": "foi",
+   "start": "2026-10-19",
+   "due_body": null,
+   "hold": null,
+   "note": "On hold until the clarification reply goes; sending it restarts the 20 working days.",
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://museum.wales/freedom-of-information/",
+   "route": "ICO",
+   "gmail": {
+    "checked": "2026-10-22T05:18+00:00",
+    "found": 4,
+    "last_sent": "2026-10-19",
+    "last_reply": "2026-10-20",
+    "last_reply_subject": "RE: FOI 2026-024 / 032 / 036 — c.1880 medieval ironwork from Great House Farm, Llandough: published sources say it is in the National Museum"
+   },
+   "date_check": "gmail",
+   "queue": [
+    {
+     "id": "Q-MUSEUM",
+     "status": "queued",
+     "deadline": "2026-11-16"
+    },
+    {
+     "id": "N-MUSEUM-CLARIFY",
+     "status": "drafted",
+     "deadline": null
+    }
+   ],
+   "reply_after_start": "2026-10-20",
+   "next_hard": "2027-02-11",
+   "next": {
+    "thread": "museum",
+    "date": "2026-11-16",
+    "who": "them",
+    "label": "Statutory reply due (20 working days)",
+    "rule": "foi_reply",
+    "note": "",
+    "rule_cite": "FOIA s.10(1)",
+    "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/10"
+   },
+   "end": "2027-09-22"
+  },
+  {
+   "id": "ico-museum",
+   "inst": "ICO (complaint about Museum Wales)",
+   "type": "Complaint",
+   "ref": "FOI 2026-024 · review 22 Sep",
+   "subject": "Section 50 complaint",
+   "stage": "regulator_window",
+   "regime": "ico",
+   "start": "2026-09-22",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Regulator complaint window open",
+   "policy_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/",
+   "route": "First-tier Tribunal",
+   "gmail": {
+    "checked": "2026-10-22T05:19+00:00",
+    "found": 4,
+    "last_sent": "2026-10-19",
+    "last_reply": "2026-10-20",
+    "last_reply_subject": "RE: FOI 2026-024 / 032 / 036 — c.1880 medieval ironwork from Great House Farm, Llandough: published sources say it is in the National Museum"
+   },
+   "date_check": "gmail",
+   "queue": [
+    {
+     "id": "N-ICO-MUSEUM",
+     "status": "drafted",
+     "deadline": "2026-11-03"
+    }
+   ],
+   "reply_after_start": "2026-10-20",
+   "next_hard": "2026-11-03",
+   "next": {
+    "thread": "ico-museum",
+    "date": "2026-10-22",
+    "who": "him",
+    "label": "File ICO complaint",
+    "rule": "ico_foi",
+    "note": "",
+    "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+   },
+   "end": "2027-05-20"
+  },
+  {
+   "id": "cadw-260009",
+   "inst": "Welsh Government / Cadw",
+   "type": "FOI",
+   "ref": "ATISN 26-0009",
+   "subject": "Records behind the 1988 listing-file disposal finding",
+   "stage": "awaiting_reply",
+   "regime": "foi",
+   "start": "2026-10-10",
+   "due_body": "2026-11-06",
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.gov.wales/freedom-of-information-responses",
+   "route": "ICO; PSOW",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [],
+   "next_hard": "2027-02-03",
+   "next": {
+    "thread": "cadw-260009",
+    "date": "2026-11-06",
+    "who": "them",
+    "label": "Statutory reply due (20 working days)",
+    "rule": "foi_reply",
+    "note": "",
+    "rule_cite": "FOIA s.10(1)",
+    "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/10"
+   },
+   "end": "2027-09-14"
+  },
+  {
+   "id": "cadw-27589",
+   "inst": "Welsh Government / Cadw",
+   "type": "FOI",
+   "ref": "ATISN 27589",
+   "subject": "Refused under s.14(2)",
+   "stage": "review_answered",
+   "regime": "foi",
+   "start": "2026-10-19",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Review done: regulator next",
+   "policy_url": "https://www.gov.wales/freedom-of-information-responses",
+   "route": "ICO; PSOW",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [],
+   "next_hard": "2026-11-30",
+   "next": {
+    "thread": "cadw-27589",
+    "date": "2026-10-26",
+    "who": "him",
+    "label": "File ICO complaint",
+    "rule": "ico_foi",
+    "note": "",
+    "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+   },
+   "end": "2027-05-24"
+  },
+  {
+   "id": "wg-260010",
+   "inst": "Welsh Government",
+   "type": "FOI",
+   "ref": "ATISN 26-0010 (internal review)",
+   "subject": "Land / CPO files 1970–97",
+   "stage": "awaiting_review",
+   "regime": "foi",
+   "start": "2026-10-19",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for internal review",
+   "policy_url": "https://www.gov.wales/freedom-of-information-responses",
+   "route": "ICO; PSOW",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-WG-IR-26-0010",
+     "status": "queued",
+     "deadline": "2026-11-16"
+    }
+   ],
+   "next_hard": "2027-01-25",
+   "next": {
+    "thread": "wg-260010",
+    "date": "2026-11-16",
+    "who": "them",
+    "label": "Internal review outcome due",
+    "rule": "foi_ir_reply",
+    "note": "",
+    "rule_cite": "s.45 Code of Practice, para 5.5",
+    "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+   },
+   "end": "2027-07-19"
+  },
+  {
+   "id": "mod-23272",
+   "inst": "Ministry of Defence",
+   "type": "FOI",
+   "ref": "FOI2026/23272",
+   "subject": "1988 dispossession of Great House Farm",
+   "stage": "awaiting_reply",
+   "regime": "foi",
+   "start": "2026-10-09",
+   "due_body": "2026-11-09",
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.gov.uk/government/organisations/ministry-of-defence/about/publication-scheme",
+   "route": "ICO; PHSO via an MP",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-MOD-23272",
+     "status": "queued",
+     "deadline": "2026-11-09"
+    }
+   ],
+   "next_hard": "2027-02-03",
+   "next": {
+    "thread": "mod-23272",
+    "date": "2026-11-06",
+    "who": "them",
+    "label": "Statutory reply due (20 working days)",
+    "rule": "foi_reply",
+    "note": "",
+    "rule_cite": "FOIA s.10(1)",
+    "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/10"
+   },
+   "end": "2027-09-14"
+  },
+  {
+   "id": "mod-09190",
+   "inst": "Ministry of Defence",
+   "type": "FOI",
+   "ref": "FOI2026/09190",
+   "subject": "Review upheld: not held, s.23(5)",
+   "stage": "review_answered",
+   "regime": "foi",
+   "start": "2026-10-10",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Review done: regulator next",
+   "policy_url": "https://www.gov.uk/government/organisations/ministry-of-defence/about/publication-scheme",
+   "route": "ICO; PHSO via an MP",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-MOD-ICO",
+     "status": "queued",
+     "deadline": "2026-11-21"
+    }
+   ],
+   "next_hard": "2026-11-21",
+   "next": {
+    "thread": "mod-09190",
+    "date": "2026-10-23",
+    "who": "him",
+    "label": "File ICO complaint",
+    "rule": "ico_foi",
+    "note": "",
+    "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+   },
+   "end": "2027-05-21"
+  },
+  {
+   "id": "dwr",
+   "inst": "Dŵr Cymru Welsh Water",
+   "type": "EIR",
+   "ref": "EIR (farm water records)",
+   "subject": "Farm water records; reply of 10 Sep",
+   "stage": "answered",
+   "regime": "eir",
+   "start": "2026-09-10",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Reply in: review to request",
+   "policy_url": "https://corporate.dwrcymru.com/en/community/environment/environmental-information-regulations",
+   "route": "ICO; CCW",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [],
+   "next_hard": "2026-11-05",
+   "next": {
+    "thread": "dwr",
+    "date": "2026-10-22",
+    "who": "him",
+    "label": "Ask for reconsideration (reg 11)",
+    "rule": "eir_ir_ask",
+    "note": "",
+    "rule_cite": "EIR reg 11(2)",
+    "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
+   },
+   "end": "2027-07-22"
+  },
+  {
+   "id": "bp-archive",
+   "inst": "BP Archive",
+   "type": "Other",
+   "ref": "Records enquiry, 19 Oct",
+   "subject": "BP Properties / BP Pension Trust records 1969–93",
+   "stage": "awaiting_reply",
+   "regime": "none",
+   "start": "2026-10-19",
+   "due_body": "2026-11-16",
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.bp.com/en/global/privacy/contact-us.html",
+   "route": "SAR route; ICO",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-ARCHIVES-1019",
+     "status": "queued",
+     "deadline": "2026-11-16"
+    }
+   ],
+   "next_hard": null,
+   "next": {
+    "thread": "bp-archive",
+    "date": "2026-11-16",
+    "who": "them",
+    "label": "Reply by the date asked (no statutory clock)",
+    "rule": "working",
+    "note": "",
+    "rule_cite": "Case schedule",
+    "rule_url": ""
+   },
+   "end": "2026-12-08"
+  },
+  {
+   "id": "gld-bv",
+   "inst": "Government Legal Department (Bona Vacantia)",
+   "type": "FOI",
+   "ref": "FOI 20 Oct (Western Ground Rents Ltd)",
+   "subject": "Bona vacantia interests of the company",
+   "stage": "awaiting_reply",
+   "regime": "foi",
+   "start": "2026-10-20",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.gov.uk/guidance/bona-vacantia-and-freedom-of-information-foi-requests",
+   "route": "ICO; PHSO via an MP",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-GLD-BV",
+     "status": "queued",
+     "deadline": "2026-11-17"
+    }
+   ],
+   "next_hard": "2027-02-12",
+   "next": {
+    "thread": "gld-bv",
+    "date": "2026-11-17",
+    "who": "them",
+    "label": "Statutory reply due (20 working days)",
+    "rule": "foi_reply",
+    "note": "",
+    "rule_cite": "FOIA s.10(1)",
+    "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/10"
+   },
+   "end": "2027-09-23"
+  },
+  {
+   "id": "moj-260813002",
+   "inst": "Ministry of Justice",
+   "type": "FOI",
+   "ref": "FOI 260813002",
+   "subject": "Review outcome 9 Oct",
+   "stage": "review_answered",
+   "regime": "foi",
+   "start": "2026-10-09",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Review done: regulator next",
+   "policy_url": "https://www.ombudsman.org.uk/making-complaint",
+   "route": "ICO; PHSO via an MP",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-ICO-MOJ",
+     "status": "drafted",
+     "deadline": "2026-11-20"
+    }
+   ],
+   "next_hard": "2026-11-20",
+   "next": {
+    "thread": "moj-260813002",
+    "date": "2026-10-23",
+    "who": "him",
+    "label": "File ICO complaint",
+    "rule": "ico_foi",
+    "note": "",
+    "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+   },
+   "end": "2027-05-21"
+  },
+  {
+   "id": "moj-wdtk",
+   "inst": "Ministry of Justice",
+   "type": "FOI",
+   "ref": "WDTK review (1987 case papers)",
+   "subject": "Internal review asked 20 Jun",
+   "stage": "awaiting_review",
+   "regime": "foi",
+   "start": "2026-06-20",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for internal review",
+   "policy_url": "https://www.ombudsman.org.uk/making-complaint",
+   "route": "ICO; PHSO via an MP",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [],
+   "next_hard": "2027-05-25",
+   "next": {
+    "thread": "moj-wdtk",
+    "date": "2026-10-27",
+    "who": "him",
+    "label": "Chaser if no review outcome",
+    "rule": "foi_ir_reply",
+    "note": "",
+    "rule_cite": "s.45 Code of Practice, para 5.5",
+    "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+   },
+   "end": "2027-05-25"
+  },
+  {
+   "id": "cps-foi",
+   "inst": "Crown Prosecution Service",
+   "type": "FOI",
+   "ref": "FOI 21 Oct",
+   "subject": "Records 1986–90",
+   "stage": "awaiting_reply",
+   "regime": "foi",
+   "start": "2026-10-21",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.cps.gov.uk/publication/freedom-information",
+   "route": "ICO; PHSO via an MP",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-CPS-FOI",
+     "status": "queued",
+     "deadline": "2026-11-18"
+    }
+   ],
+   "next_hard": "2027-02-15",
+   "next": {
+    "thread": "cps-foi",
+    "date": "2026-11-18",
+    "who": "them",
+    "label": "Statutory reply due (20 working days)",
+    "rule": "foi_reply",
+    "note": "",
+    "rule_cite": "FOIA s.10(1)",
+    "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/10"
+   },
+   "end": "2027-09-29"
+  },
+  {
+   "id": "cps-sar",
+   "inst": "Crown Prosecution Service",
+   "type": "SAR",
+   "ref": "SAR (DPA 2018 s.45), 21 Oct",
+   "subject": "Own personal data",
+   "stage": "awaiting_reply",
+   "regime": "sar",
+   "start": "2026-10-21",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.cps.gov.uk/publication/freedom-information",
+   "route": "ICO; PHSO via an MP",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-CPS-SAR",
+     "status": "queued",
+     "deadline": "2026-11-21"
+    }
+   ],
+   "next_hard": "2027-05-22",
+   "next": {
+    "thread": "cps-sar",
+    "date": "2026-11-23",
+    "who": "them",
+    "label": "SAR reply due (one month)",
+    "rule": "sar_reply",
+    "note": "",
+    "rule_cite": "UK GDPR Art.12(3); DPA 2018 s.45 and s.54 (law-enforcement processing)",
+    "rule_url": "https://www.legislation.gov.uk/eur/2016/679/article/12"
+   },
+   "end": "2027-09-07"
+  },
+  {
+   "id": "cps-930",
+   "inst": "Crown Prosecution Service",
+   "type": "Other",
+   "ref": "Request of 30 Sep",
+   "subject": "Earlier request",
+   "stage": "awaiting_reply",
+   "regime": "none",
+   "start": "2026-09-30",
+   "due_body": "2026-10-30",
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.cps.gov.uk/publication/freedom-information",
+   "route": "ICO; PHSO via an MP",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-CPS",
+     "status": "queued",
+     "deadline": "2026-10-30"
+    }
+   ],
+   "next_hard": null,
+   "next": {
+    "thread": "cps-930",
+    "date": "2026-10-30",
+    "who": "them",
+    "label": "Reply by the date asked (no statutory clock)",
+    "rule": "working",
+    "note": "",
+    "rule_cite": "Case schedule",
+    "rule_url": ""
+   },
+   "end": "2026-11-23"
+  },
+  {
+   "id": "he-04323",
+   "inst": "Historic England",
+   "type": "EIR",
+   "ref": "26/04323",
+   "subject": "Not-held answer of 21 Oct: reconsideration",
+   "stage": "answered",
+   "regime": "eir",
+   "start": "2026-10-21",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Reply in: review to request",
+   "policy_url": "https://historicengland.org.uk/about/what-we-do/access-to-information/placing-a-request/",
+   "route": "ICO; PHSO via an MP",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "N-HE-REVIEW",
+     "status": "drafted",
+     "deadline": null
+    }
+   ],
+   "next_hard": "2026-12-16",
+   "next": {
+    "thread": "he-04323",
+    "date": "2026-10-28",
+    "who": "him",
+    "label": "Ask for reconsideration (reg 11)",
+    "rule": "eir_ir_ask",
+    "note": "",
+    "rule_cite": "EIR reg 11(2)",
+    "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
+   },
+   "end": "2027-08-01"
+  },
+  {
+   "id": "tna-347296",
+   "inst": "The National Archives",
+   "type": "FOI",
+   "ref": "CAS-347296-M0V4Y1 (review)",
+   "subject": "Review of the 23 Sep disclosure",
+   "stage": "awaiting_review",
+   "regime": "foi",
+   "start": "2026-10-07",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for internal review",
+   "policy_url": "https://discovery.nationalarchives.gov.uk/",
+   "route": "ICO; PHSO via an MP",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-TNA-IR",
+     "status": "queued",
+     "deadline": "2026-11-04"
+    }
+   ],
+   "next_hard": "2027-01-13",
+   "next": {
+    "thread": "tna-347296",
+    "date": "2026-11-04",
+    "who": "them",
+    "label": "Internal review outcome due",
+    "rule": "foi_ir_reply",
+    "note": "",
+    "rule_cite": "s.45 Code of Practice, para 5.5",
+    "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+   },
+   "end": "2027-07-07"
+  },
+  {
+   "id": "tna-356384",
+   "inst": "The National Archives",
+   "type": "FOI",
+   "ref": "CAS-356384 (review)",
+   "subject": "Review outcome was due 21 Oct",
+   "stage": "awaiting_review",
+   "regime": "foi",
+   "start": "2026-09-23",
+   "due_body": "2026-10-21",
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for internal review",
+   "policy_url": "https://discovery.nationalarchives.gov.uk/",
+   "route": "ICO; PHSO via an MP",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-TNA-CAS356384",
+     "status": "queued",
+     "deadline": "2026-10-21"
+    }
+   ],
+   "next_hard": "2026-12-30",
+   "next": {
+    "thread": "tna-356384",
+    "date": "2026-10-27",
+    "who": "him",
+    "label": "Chaser if no review outcome",
+    "rule": "foi_ir_reply",
+    "note": "",
+    "rule_cite": "s.45 Code of Practice, para 5.5",
+    "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+   },
+   "end": "2027-06-22"
+  },
+  {
+   "id": "tna-wdtk",
+   "inst": "The National Archives",
+   "type": "FOI",
+   "ref": "WDTK 'Great House Farm, Llandough, Cardiff'",
+   "subject": "Request of 2 Sep",
+   "stage": "awaiting_reply",
+   "regime": "foi",
+   "start": "2026-09-02",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://discovery.nationalarchives.gov.uk/",
+   "route": "ICO; PHSO via an MP",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [],
+   "next_hard": "2026-12-23",
+   "next": {
+    "thread": "tna-wdtk",
+    "date": "2026-10-26",
+    "who": "him",
+    "label": "Chaser (if no reply)",
+    "rule": "foi_reply",
+    "note": "",
+    "rule_cite": "FOIA s.10(1)",
+    "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/10"
+   },
+   "end": "2027-08-08"
+  },
+  {
+   "id": "audit-wales",
+   "inst": "Audit Wales",
+   "type": "FOI",
+   "ref": "FOI 20 Oct",
+   "subject": "Audit records of council land dealings at Great House Farm",
+   "stage": "awaiting_reply",
+   "regime": "foi",
+   "start": "2026-10-20",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.audit.wales/openness-and-transparency/freedom-information",
+   "route": "ICO",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-AUDIT-WALES-RESEND",
+     "status": "answered-check",
+     "deadline": null
+    },
+    {
+     "id": "N-AUDIT-WALES-CHASE",
+     "status": "queued",
+     "deadline": "2026-11-17"
+    }
+   ],
+   "next_hard": "2027-02-12",
+   "next": {
+    "thread": "audit-wales",
+    "date": "2026-11-17",
+    "who": "them",
+    "label": "Statutory reply due (20 working days)",
+    "rule": "foi_reply",
+    "note": "",
+    "rule_cite": "FOIA s.10(1)",
+    "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/10"
+   },
+   "end": "2027-09-23"
+  },
+  {
+   "id": "os-2646",
+   "inst": "Ordnance Survey",
+   "type": "FOI",
+   "ref": "FOI-26-46",
+   "subject": "Historical OS mapping records (follow-up 20 Oct)",
+   "stage": "awaiting_reply",
+   "regime": "foi",
+   "start": "2026-10-20",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.ordnancesurvey.co.uk/governance/public-information/foi-request",
+   "route": "ICO",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "N-OS-FOI-26-46",
+     "status": "queued",
+     "deadline": "2026-11-17"
+    }
+   ],
+   "next_hard": "2027-02-12",
+   "next": {
+    "thread": "os-2646",
+    "date": "2026-11-17",
+    "who": "them",
+    "label": "Statutory reply due (20 working days)",
+    "rule": "foi_reply",
+    "note": "",
+    "rule_cite": "FOIA s.10(1)",
+    "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/10"
+   },
+   "end": "2027-09-23"
+  },
+  {
+   "id": "rct-coroner",
+   "inst": "Coroner’s Service (RCT Council)",
+   "type": "FOI",
+   "ref": "FOI 20 Aug + follow-up 26 Aug",
+   "subject": "Two historical death records",
+   "stage": "awaiting_reply",
+   "regime": "foi",
+   "start": "2026-08-26",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.ombudsman.wales/how-to-complain/",
+   "route": "ICO; PSOW",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "N-RCT-CORONER",
+     "status": "drafted",
+     "deadline": null
+    }
+   ],
+   "next_hard": "2026-12-17",
+   "next": {
+    "thread": "rct-coroner",
+    "date": "2026-10-22",
+    "who": "them",
+    "label": "Latest reply with maximum extension (worst case: refusal)",
+    "rule": "foi_pi",
+    "note": "",
+    "rule_cite": "FOIA s.10(3); s.45 Code of Practice",
+    "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+   },
+   "end": "2027-08-02"
+  },
+  {
+   "id": "natural-england",
+   "inst": "Natural England",
+   "type": "EIR",
+   "ref": "IR2026/09427",
+   "subject": "Review upheld “not held” (reg 12(4)(a))",
+   "stage": "review_answered",
+   "regime": "eir",
+   "start": "2026-09-17",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Review done: regulator next",
+   "policy_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/",
+   "route": "ICO",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [],
+   "next_hard": "2026-10-29",
+   "next": {
+    "thread": "natural-england",
+    "date": "2026-10-22",
+    "who": "him",
+    "label": "File ICO complaint",
+    "rule": "ico_foi",
+    "note": "",
+    "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+   },
+   "end": "2027-05-20"
+  },
+  {
+   "id": "npcc",
+   "inst": "NPCC (for NaCTSO)",
+   "type": "FOI",
+   "ref": "3065/2026",
+   "subject": "Searches response; no further review",
+   "stage": "review_answered",
+   "regime": "foi",
+   "start": "2026-10-09",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Review done: regulator next",
+   "policy_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/",
+   "route": "ICO",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-NPCC-ICO",
+     "status": "queued",
+     "deadline": "2026-11-20"
+    }
+   ],
+   "next_hard": "2026-11-20",
+   "next": {
+    "thread": "npcc",
+    "date": "2026-10-23",
+    "who": "him",
+    "label": "File ICO complaint",
+    "rule": "ico_foi",
+    "note": "",
+    "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+   },
+   "end": "2027-05-21"
+  },
+  {
+   "id": "heneb-cmp",
+   "inst": "Heneb (formerly GGAT)",
+   "type": "Complaint",
+   "ref": "Complaint 27 Sep",
+   "subject": "HER records: formal complaint",
+   "stage": "complaint",
+   "regime": "complaint",
+   "start": "2026-09-27",
+   "due_body": "2026-11-03",
+   "hold": null,
+   "note": null,
+   "stage_text": "Complaint with the body",
+   "policy_url": "https://heneb.org.uk/contact/",
+   "route": "ICO (EIR)",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-HENEB-CMP",
+     "status": "queued",
+     "deadline": "2026-11-03"
+    }
+   ],
+   "next_hard": "2027-01-19",
+   "next": {
+    "thread": "heneb-cmp",
+    "date": "2026-11-03",
+    "who": "them",
+    "label": "Complaint outcome target",
+    "rule": "stage1",
+    "note": "",
+    "rule_cite": "PSOW Model Complaints Policy",
+    "rule_url": "https://www.ombudsman.wales/complaints-standards-authority/"
+   },
+   "end": "2027-07-13"
+  },
+  {
+   "id": "heneb-fire",
+   "inst": "Heneb (formerly GGAT)",
+   "type": "EIR",
+   "ref": "Request 24 Sep (1983 fire)",
+   "subject": "1983 warehouse fire and archive custody",
+   "stage": "awaiting_reply",
+   "regime": "eir",
+   "start": "2026-09-24",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://heneb.org.uk/contact/",
+   "route": "ICO (EIR)",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-HENEB-FIRE",
+     "status": "queued",
+     "deadline": "2026-10-22"
+    }
+   ],
+   "next_hard": "2027-01-19",
+   "next": {
+    "thread": "heneb-fire",
+    "date": "2026-10-22",
+    "who": "them",
+    "label": "Statutory reply due (20 working days)",
+    "rule": "eir_reply",
+    "note": "",
+    "rule_cite": "EIR reg 5(2)",
+    "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/5"
+   },
+   "end": "2027-08-30"
+  },
+  {
+   "id": "glam-4439",
+   "inst": "Glamorgan Archives",
+   "type": "Other",
+   "ref": "2026/4439",
+   "subject": "Follow-up of 21 Oct",
+   "stage": "awaiting_reply",
+   "regime": "none",
+   "start": "2026-10-21",
+   "due_body": "2026-11-18",
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://glamarchives.gov.uk/visiting-us/tour/",
+   "route": "ICO",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-GLAMARCH-4439",
+     "status": "queued",
+     "deadline": "2026-11-18"
+    }
+   ],
+   "next_hard": null,
+   "next": {
+    "thread": "glam-4439",
+    "date": "2026-11-18",
+    "who": "them",
+    "label": "Reply by the date asked (no statutory clock)",
+    "rule": "working",
+    "note": "",
+    "rule_cite": "Case schedule",
+    "rule_url": ""
+   },
+   "end": "2026-12-10"
+  },
+  {
+   "id": "lcc-ir",
+   "inst": "Llandough Community Council",
+   "type": "FOI",
+   "ref": "Review of 11 Oct s.12 refusal",
+   "subject": "Internal review asked 13 Oct",
+   "stage": "awaiting_review",
+   "regime": "foi",
+   "start": "2026-10-13",
+   "due_body": null,
+   "hold": "2026-10-23",
+   "note": null,
+   "stage_text": "Waiting for internal review",
+   "policy_url": "http://www.llandough-cc.co.uk/Council_Policies_20122.aspx",
+   "route": "ICO; PSOW",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-LCC-IR",
+     "status": "queued",
+     "deadline": "2026-11-10"
+    }
+   ],
+   "next_hard": "2027-01-19",
+   "next": {
+    "thread": "lcc-ir",
+    "date": "2026-11-10",
+    "who": "them",
+    "label": "Internal review outcome due",
+    "rule": "foi_ir_reply",
+    "note": "",
+    "rule_cite": "s.45 Code of Practice, para 5.5",
+    "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+   },
+   "end": "2027-07-13"
+  },
+  {
+   "id": "lcc-narrow",
+   "inst": "Llandough Community Council",
+   "type": "FOI",
+   "ref": "Narrowed FOI 20 Oct",
+   "subject": "Narrower request (no minutes search)",
+   "stage": "awaiting_reply",
+   "regime": "foi",
+   "start": "2026-10-20",
+   "due_body": null,
+   "hold": "2026-10-23",
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "http://www.llandough-cc.co.uk/Council_Policies_20122.aspx",
+   "route": "ICO; PSOW",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-LCC-FOI-NARROWED",
+     "status": "queued",
+     "deadline": "2026-11-17"
+    }
+   ],
+   "next_hard": "2027-02-12",
+   "next": {
+    "thread": "lcc-narrow",
+    "date": "2026-11-17",
+    "who": "them",
+    "label": "Statutory reply due (20 working days)",
+    "rule": "foi_reply",
+    "note": "",
+    "rule_cite": "FOIA s.10(1)",
+    "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/10"
+   },
+   "end": "2027-09-23"
+  },
+  {
+   "id": "defra-23886",
+   "inst": "Defra",
+   "type": "EIR",
+   "ref": "FOI2026/23886",
+   "subject": "“Not held”, points to Welsh Government",
+   "stage": "answered",
+   "regime": "eir",
+   "start": "2026-10-21",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Reply in: review to request",
+   "policy_url": "https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs/about/personal-information-charter",
+   "route": "ICO",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "N-DEFRA-23886",
+     "status": "info",
+     "deadline": null
+    }
+   ],
+   "next_hard": "2026-12-16",
+   "next": {
+    "thread": "defra-23886",
+    "date": "2026-10-28",
+    "who": "him",
+    "label": "Ask for reconsideration (reg 11)",
+    "rule": "eir_ir_ask",
+    "note": "",
+    "rule_cite": "EIR reg 11(2)",
+    "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
+   },
+   "end": "2027-08-01"
+  },
+  {
+   "id": "nlw",
+   "inst": "National Library of Wales",
+   "type": "FOI",
+   "ref": "FOI 15 Oct",
+   "subject": "1610 survey and microfilm records",
+   "stage": "awaiting_reply",
+   "regime": "foi",
+   "start": "2026-10-15",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.library.wales/about-nlw/about-us/governance/information-management/freedom-of-information-act",
+   "route": "ICO",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-NLW-HERBERT",
+     "status": "queued",
+     "deadline": "2026-11-12"
+    }
+   ],
+   "next_hard": "2027-02-09",
+   "next": {
+    "thread": "nlw",
+    "date": "2026-11-12",
+    "who": "them",
+    "label": "Statutory reply due (20 working days)",
+    "rule": "foi_reply",
+    "note": "",
+    "rule_cite": "FOIA s.10(1)",
+    "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/10"
+   },
+   "end": "2027-09-20"
+  },
+  {
+   "id": "hmrc",
+   "inst": "HMRC / Valuation Office Agency",
+   "type": "FOI",
+   "ref": "FOI2026/118465",
+   "subject": "Valuation records",
+   "stage": "awaiting_reply",
+   "regime": "foi",
+   "start": "2026-10-20",
+   "due_body": null,
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://www.gov.uk/government/collections/valuation-office-agency-freedom-of-information-disclosure-log",
+   "route": "ICO",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-HMRC-118465",
+     "status": "queued",
+     "deadline": "2026-11-17"
+    }
+   ],
+   "next_hard": "2027-02-12",
+   "next": {
+    "thread": "hmrc",
+    "date": "2026-11-17",
+    "who": "them",
+    "label": "Statutory reply due (20 working days)",
+    "rule": "foi_reply",
+    "note": "",
+    "rule_cite": "FOIA s.10(1)",
+    "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/10"
+   },
+   "end": "2027-09-23"
+  },
+  {
+   "id": "rcahmw",
+   "inst": "RCAHMW",
+   "type": "Other",
+   "ref": "RC26-0375",
+   "subject": "Reply of 21 Oct",
+   "stage": "awaiting_reply",
+   "regime": "none",
+   "start": "2026-10-21",
+   "due_body": "2026-11-18",
+   "hold": null,
+   "note": null,
+   "stage_text": "Waiting for their reply",
+   "policy_url": "https://rcahmw.gov.uk/services/rcahmw-library/",
+   "route": "ICO",
+   "gmail": {
+    "checked": null,
+    "found": 0,
+    "last_sent": null,
+    "last_reply": null,
+    "last_reply_subject": null
+   },
+   "date_check": "record",
+   "queue": [
+    {
+     "id": "Q-RCAHMW-0375",
+     "status": "queued",
+     "deadline": "2026-11-18"
+    }
+   ],
+   "next_hard": null,
+   "next": {
+    "thread": "rcahmw",
+    "date": "2026-11-18",
+    "who": "them",
+    "label": "Reply by the date asked (no statutory clock)",
+    "rule": "working",
+    "note": "",
+    "rule_cite": "Case schedule",
+    "rule_url": ""
+   },
+   "end": "2026-12-10"
+  }
+ ]
+}
