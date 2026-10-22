@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated": "2026-10-22T06:36+01:00",
+  "generated": "2026-10-22T07:16+01:00",
   "today": "2026-10-22",
   "threads": 49,
   "events": 477,
@@ -9,7 +9,7 @@
  "events": [
   {
    "thread": "moj-wdtk",
-   "date": "2026-07-17",
+   "date": "2026-07-20",
    "who": "them",
    "label": "Internal review outcome due",
    "rule": "foi_ir_reply",
@@ -19,7 +19,7 @@
   },
   {
    "thread": "vale-00210772",
-   "date": "2026-08-04",
+   "date": "2026-08-06",
    "who": "them",
    "label": "Internal review outcome due",
    "rule": "foi_ir_reply",
@@ -29,7 +29,7 @@
   },
   {
    "thread": "moj-wdtk",
-   "date": "2026-08-14",
+   "date": "2026-08-18",
    "who": "them",
    "label": "Review outcome, latest (worst case: refusal upheld)",
    "rule": "foi_ir_reply",
@@ -39,7 +39,7 @@
   },
   {
    "thread": "vale-00210772",
-   "date": "2026-09-02",
+   "date": "2026-09-04",
    "who": "them",
    "label": "Review outcome, latest (worst case: refusal upheld)",
    "rule": "foi_ir_reply",
@@ -79,7 +79,7 @@
   },
   {
    "thread": "moj-wdtk",
-   "date": "2026-09-25",
+   "date": "2026-09-29",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
    "rule": "ico_foi",
@@ -129,7 +129,7 @@
   },
   {
    "thread": "vale-00210772",
-   "date": "2026-10-14",
+   "date": "2026-10-16",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
    "rule": "ico_foi",
@@ -192,6 +192,16 @@
    "date": "2026-10-21",
    "who": "them",
    "label": "Review date given by the body",
+   "rule": "foi_ir_reply",
+   "note": "",
+   "rule_cite": "s.45 Code of Practice, para 5.5",
+   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+  },
+  {
+   "thread": "tna-356384",
+   "date": "2026-10-21",
+   "who": "them",
+   "label": "Internal review outcome due",
    "rule": "foi_ir_reply",
    "note": "",
    "rule_cite": "s.45 Code of Practice, para 5.5",
@@ -318,30 +328,10 @@
    "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/10"
   },
   {
-   "thread": "tna-356384",
-   "date": "2026-10-23",
-   "who": "them",
-   "label": "Internal review outcome due",
-   "rule": "foi_ir_reply",
-   "note": "",
-   "rule_cite": "s.45 Code of Practice, para 5.5",
-   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
-  },
-  {
    "thread": "cadw-27589",
    "date": "2026-10-26",
    "who": "him",
    "label": "File ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "moj-wdtk",
-   "date": "2026-10-26",
-   "who": "him",
-   "label": "File ICO complaint (past the usual 6 weeks: give the reason for the delay)",
    "rule": "ico_foi",
    "note": "",
    "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
@@ -418,6 +408,16 @@
    "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
   },
   {
+   "thread": "moj-wdtk",
+   "date": "2026-10-27",
+   "who": "him",
+   "label": "File ICO complaint (past the usual 6 weeks: give the reason for the delay)",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
    "thread": "vale-00210772",
    "date": "2026-10-27",
    "who": "him",
@@ -484,7 +484,7 @@
    "label": "SAR reply due (one month)",
    "rule": "sar_reply",
    "note": "",
-   "rule_cite": "UK GDPR Art.12(3); DPA 2018 s.45 and s.54 (law-enforcement processing)",
+   "rule_cite": "UK GDPR Art.12(3). Law-enforcement processing by a competent authority is a separate right: DPA 2018 Part 3 s.45, one month under s.54",
    "rule_url": "https://www.legislation.gov.uk/eur/2016/679/article/12"
   },
   {
@@ -504,7 +504,7 @@
    "label": "SAR reply due (one month)",
    "rule": "sar_reply",
    "note": "",
-   "rule_cite": "UK GDPR Art.12(3); DPA 2018 s.45 and s.54 (law-enforcement processing)",
+   "rule_cite": "UK GDPR Art.12(3). Law-enforcement processing by a competent authority is a separate right: DPA 2018 Part 3 s.45, one month under s.54",
    "rule_url": "https://www.legislation.gov.uk/eur/2016/679/article/12"
   },
   {
@@ -514,7 +514,7 @@
    "label": "Chaser: ask for the data or the extension notice",
    "rule": "sar_reply",
    "note": "",
-   "rule_cite": "UK GDPR Art.12(3); DPA 2018 s.45 and s.54 (law-enforcement processing)",
+   "rule_cite": "UK GDPR Art.12(3). Law-enforcement processing by a competent authority is a separate right: DPA 2018 Part 3 s.45, one month under s.54",
    "rule_url": "https://www.legislation.gov.uk/eur/2016/679/article/12"
   },
   {
@@ -544,7 +544,7 @@
    "label": "SAR reply due (one month)",
    "rule": "sar_reply",
    "note": "",
-   "rule_cite": "UK GDPR Art.12(3); DPA 2018 s.45 and s.54 (law-enforcement processing)",
+   "rule_cite": "UK GDPR Art.12(3). Law-enforcement processing by a competent authority is a separate right: DPA 2018 Part 3 s.45, one month under s.54",
    "rule_url": "https://www.legislation.gov.uk/eur/2016/679/article/12"
   },
   {
@@ -564,7 +564,7 @@
    "label": "Chaser: ask for the data or the extension notice",
    "rule": "sar_reply",
    "note": "",
-   "rule_cite": "UK GDPR Art.12(3); DPA 2018 s.45 and s.54 (law-enforcement processing)",
+   "rule_cite": "UK GDPR Art.12(3). Law-enforcement processing by a competent authority is a separate right: DPA 2018 Part 3 s.45, one month under s.54",
    "rule_url": "https://www.legislation.gov.uk/eur/2016/679/article/12"
   },
   {
@@ -584,7 +584,7 @@
    "label": "Chaser: ask for the data or the extension notice",
    "rule": "sar_reply",
    "note": "",
-   "rule_cite": "UK GDPR Art.12(3); DPA 2018 s.45 and s.54 (law-enforcement processing)",
+   "rule_cite": "UK GDPR Art.12(3). Law-enforcement processing by a competent authority is a separate right: DPA 2018 Part 3 s.45, one month under s.54",
    "rule_url": "https://www.legislation.gov.uk/eur/2016/679/article/12"
   },
   {
@@ -1128,6 +1128,16 @@
    "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
   },
   {
+   "thread": "tna-356384",
+   "date": "2026-11-18",
+   "who": "them",
+   "label": "Review outcome, latest (worst case: refusal upheld)",
+   "rule": "foi_ir_reply",
+   "note": "",
+   "rule_cite": "s.45 Code of Practice, para 5.5",
+   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+  },
+  {
    "thread": "cps-foi",
    "date": "2026-11-19",
    "who": "him",
@@ -1248,16 +1258,6 @@
    "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
   },
   {
-   "thread": "tna-356384",
-   "date": "2026-11-20",
-   "who": "them",
-   "label": "Review outcome, latest (worst case: refusal upheld)",
-   "rule": "foi_ir_reply",
-   "note": "",
-   "rule_cite": "s.45 Code of Practice, para 5.5",
-   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
-  },
-  {
    "thread": "vale-00211484",
    "date": "2026-11-20",
    "who": "him",
@@ -1294,7 +1294,7 @@
    "label": "SAR reply due (one month)",
    "rule": "sar_reply",
    "note": "",
-   "rule_cite": "UK GDPR Art.12(3); DPA 2018 s.45 and s.54 (law-enforcement processing)",
+   "rule_cite": "UK GDPR Art.12(3). Law-enforcement processing by a competent authority is a separate right: DPA 2018 Part 3 s.45, one month under s.54",
    "rule_url": "https://www.legislation.gov.uk/eur/2016/679/article/12"
   },
   {
@@ -1334,7 +1334,7 @@
    "label": "Chaser: ask for the data or the extension notice",
    "rule": "sar_reply",
    "note": "",
-   "rule_cite": "UK GDPR Art.12(3); DPA 2018 s.45 and s.54 (law-enforcement processing)",
+   "rule_cite": "UK GDPR Art.12(3). Law-enforcement processing by a competent authority is a separate right: DPA 2018 Part 3 s.45, one month under s.54",
    "rule_url": "https://www.legislation.gov.uk/eur/2016/679/article/12"
   },
   {
@@ -1368,6 +1368,16 @@
    "rule_url": "https://www.gov.uk/government/organisations/land-registry/about/complaints-procedure"
   },
   {
+   "thread": "tna-356384",
+   "date": "2026-11-25",
+   "who": "him",
+   "label": "File ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
    "thread": "heneb-fire",
    "date": "2026-11-26",
    "who": "him",
@@ -1409,16 +1419,6 @@
   },
   {
    "thread": "swp-ir1188",
-   "date": "2026-11-27",
-   "who": "him",
-   "label": "File ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "tna-356384",
    "date": "2026-11-27",
    "who": "him",
    "label": "File ICO complaint",
@@ -1439,7 +1439,7 @@
   },
   {
    "thread": "vale-00211557",
-   "date": "2026-11-30",
+   "date": "2026-12-01",
    "who": "him",
    "label": "Ask for reconsideration (reg 11)",
    "rule": "eir_ir_ask",
@@ -1449,7 +1449,7 @@
   },
   {
    "thread": "wo-nio",
-   "date": "2026-11-30",
+   "date": "2026-12-01",
    "who": "him",
    "label": "File ICO complaint",
    "rule": "ico_foi",
@@ -1459,7 +1459,7 @@
   },
   {
    "thread": "bp-archive",
-   "date": "2026-12-01",
+   "date": "2026-12-02",
    "who": "him",
    "label": "Second chaser",
    "rule": "working",
@@ -1469,7 +1469,7 @@
   },
   {
    "thread": "tna-347296",
-   "date": "2026-12-02",
+   "date": "2026-12-03",
    "who": "them",
    "label": "Review outcome, latest (worst case: refusal upheld)",
    "rule": "foi_ir_reply",
@@ -1479,7 +1479,7 @@
   },
   {
    "thread": "tna-wdtk",
-   "date": "2026-12-02",
+   "date": "2026-12-03",
    "who": "them",
    "label": "Internal review outcome due",
    "rule": "foi_ir_reply",
@@ -1489,7 +1489,7 @@
   },
   {
    "thread": "glam-4439",
-   "date": "2026-12-03",
+   "date": "2026-12-04",
    "who": "him",
    "label": "Second chaser",
    "rule": "working",
@@ -1499,7 +1499,7 @@
   },
   {
    "thread": "ico-546505",
-   "date": "2026-12-03",
+   "date": "2026-12-04",
    "who": "him",
    "label": "Second chaser",
    "rule": "working",
@@ -1509,7 +1509,7 @@
   },
   {
    "thread": "rcahmw",
-   "date": "2026-12-03",
+   "date": "2026-12-04",
    "who": "him",
    "label": "Second chaser",
    "rule": "working",
@@ -1519,7 +1519,7 @@
   },
   {
    "thread": "tna-wdtk",
-   "date": "2026-12-03",
+   "date": "2026-12-04",
    "who": "him",
    "label": "Chaser if no review outcome",
    "rule": "foi_ir_reply",
@@ -1529,7 +1529,7 @@
   },
   {
    "thread": "cadw-260009",
-   "date": "2026-12-04",
+   "date": "2026-12-07",
    "who": "them",
    "label": "Latest reply with maximum extension (worst case: refusal)",
    "rule": "foi_pi",
@@ -1539,7 +1539,7 @@
   },
   {
    "thread": "swp-1264",
-   "date": "2026-12-04",
+   "date": "2026-12-07",
    "who": "them",
    "label": "Latest reply with maximum extension (worst case: refusal)",
    "rule": "foi_pi",
@@ -1549,7 +1549,7 @@
   },
   {
    "thread": "cadw-260009",
-   "date": "2026-12-07",
+   "date": "2026-12-08",
    "who": "him",
    "label": "Second chaser: extension lapsed",
    "rule": "foi_pi",
@@ -1559,7 +1559,7 @@
   },
   {
    "thread": "mod-23272",
-   "date": "2026-12-07",
+   "date": "2026-12-08",
    "who": "them",
    "label": "Latest reply with maximum extension (worst case: refusal)",
    "rule": "foi_pi",
@@ -1569,7 +1569,7 @@
   },
   {
    "thread": "swp-1264",
-   "date": "2026-12-07",
+   "date": "2026-12-08",
    "who": "him",
    "label": "Second chaser: extension lapsed",
    "rule": "foi_pi",
@@ -1579,7 +1579,7 @@
   },
   {
    "thread": "bp-archive",
-   "date": "2026-12-08",
+   "date": "2026-12-09",
    "who": "him",
    "label": "Next stage: formal request (FOI / EIR / SAR) to start a statutory clock",
    "rule": "sar_fallback",
@@ -1589,7 +1589,7 @@
   },
   {
    "thread": "heneb-cmp",
-   "date": "2026-12-08",
+   "date": "2026-12-09",
    "who": "them",
    "label": "Final-stage response (worst case: rejected)",
    "rule": "stage2",
@@ -1599,7 +1599,7 @@
   },
   {
    "thread": "lcc-ir",
-   "date": "2026-12-08",
+   "date": "2026-12-09",
    "who": "them",
    "label": "Review outcome, latest (worst case: refusal upheld)",
    "rule": "foi_ir_reply",
@@ -1609,7 +1609,7 @@
   },
   {
    "thread": "mod-23272",
-   "date": "2026-12-08",
+   "date": "2026-12-09",
    "who": "him",
    "label": "Second chaser: extension lapsed",
    "rule": "foi_pi",
@@ -1619,7 +1619,7 @@
   },
   {
    "thread": "dwr",
-   "date": "2026-12-09",
+   "date": "2026-12-10",
    "who": "them",
    "label": "Latest reply with maximum extension (worst case: refusal)",
    "rule": "eir_ext",
@@ -1629,7 +1629,7 @@
   },
   {
    "thread": "tna-347296",
-   "date": "2026-12-09",
+   "date": "2026-12-10",
    "who": "him",
    "label": "File ICO complaint",
    "rule": "ico_foi",
@@ -1639,7 +1639,7 @@
   },
   {
    "thread": "dwr",
-   "date": "2026-12-10",
+   "date": "2026-12-11",
    "who": "him",
    "label": "Second chaser: extension lapsed",
    "rule": "eir_ext",
@@ -1649,7 +1649,7 @@
   },
   {
    "thread": "glam-4439",
-   "date": "2026-12-10",
+   "date": "2026-12-11",
    "who": "him",
    "label": "Next stage: formal request (FOI / EIR / SAR) to start a statutory clock",
    "rule": "sar_fallback",
@@ -1659,7 +1659,7 @@
   },
   {
    "thread": "ico-546505",
-   "date": "2026-12-10",
+   "date": "2026-12-11",
    "who": "him",
    "label": "Next stage: formal request (FOI / EIR / SAR) to start a statutory clock",
    "rule": "sar_fallback",
@@ -1669,7 +1669,7 @@
   },
   {
    "thread": "nlw",
-   "date": "2026-12-10",
+   "date": "2026-12-11",
    "who": "them",
    "label": "Latest reply with maximum extension (worst case: refusal)",
    "rule": "foi_pi",
@@ -1679,7 +1679,7 @@
   },
   {
    "thread": "rcahmw",
-   "date": "2026-12-10",
+   "date": "2026-12-11",
    "who": "him",
    "label": "Next stage: formal request (FOI / EIR / SAR) to start a statutory clock",
    "rule": "sar_fallback",
@@ -1689,7 +1689,7 @@
   },
   {
    "thread": "cadw-260009",
-   "date": "2026-12-11",
+   "date": "2026-12-14",
    "who": "him",
    "label": "Request internal review",
    "rule": "foi_ir_ask",
@@ -1699,7 +1699,7 @@
   },
   {
    "thread": "nlw",
-   "date": "2026-12-11",
+   "date": "2026-12-14",
    "who": "him",
    "label": "Second chaser: extension lapsed",
    "rule": "foi_pi",
@@ -1709,7 +1709,7 @@
   },
   {
    "thread": "swp-1264",
-   "date": "2026-12-11",
+   "date": "2026-12-14",
    "who": "him",
    "label": "Request internal review",
    "rule": "foi_ir_ask",
@@ -1719,7 +1719,7 @@
   },
   {
    "thread": "mod-23272",
-   "date": "2026-12-14",
+   "date": "2026-12-15",
    "who": "him",
    "label": "Request internal review",
    "rule": "foi_ir_ask",
@@ -1729,7 +1729,7 @@
   },
   {
    "thread": "museum",
-   "date": "2026-12-14",
+   "date": "2026-12-15",
    "who": "them",
    "label": "Latest reply with maximum extension (worst case: refusal)",
    "rule": "foi_pi",
@@ -1739,7 +1739,7 @@
   },
   {
    "thread": "wg-260010",
-   "date": "2026-12-14",
+   "date": "2026-12-15",
    "who": "them",
    "label": "Review outcome, latest (worst case: refusal upheld)",
    "rule": "foi_ir_reply",
@@ -1749,7 +1749,7 @@
   },
   {
    "thread": "audit-wales",
-   "date": "2026-12-15",
+   "date": "2026-12-16",
    "who": "them",
    "label": "Latest reply with maximum extension (worst case: refusal)",
    "rule": "foi_pi",
@@ -1759,7 +1759,7 @@
   },
   {
    "thread": "gld-bv",
-   "date": "2026-12-15",
+   "date": "2026-12-16",
    "who": "them",
    "label": "Latest reply with maximum extension (worst case: refusal)",
    "rule": "foi_pi",
@@ -1769,7 +1769,7 @@
   },
   {
    "thread": "heneb-cmp",
-   "date": "2026-12-15",
+   "date": "2026-12-16",
    "who": "him",
    "label": "File ICO complaint",
    "rule": "ico_foi",
@@ -1779,7 +1779,7 @@
   },
   {
    "thread": "hmlr-eir",
-   "date": "2026-12-15",
+   "date": "2026-12-16",
    "who": "them",
    "label": "Latest reply with maximum extension (worst case: refusal)",
    "rule": "eir_ext",
@@ -1789,7 +1789,7 @@
   },
   {
    "thread": "hmrc",
-   "date": "2026-12-15",
+   "date": "2026-12-16",
    "who": "them",
    "label": "Latest reply with maximum extension (worst case: refusal)",
    "rule": "foi_pi",
@@ -1799,7 +1799,7 @@
   },
   {
    "thread": "lcc-ir",
-   "date": "2026-12-15",
+   "date": "2026-12-16",
    "who": "him",
    "label": "File ICO complaint",
    "rule": "ico_foi",
@@ -1809,7 +1809,7 @@
   },
   {
    "thread": "lcc-narrow",
-   "date": "2026-12-15",
+   "date": "2026-12-16",
    "who": "them",
    "label": "Latest reply with maximum extension (worst case: refusal)",
    "rule": "foi_pi",
@@ -1819,7 +1819,7 @@
   },
   {
    "thread": "museum",
-   "date": "2026-12-15",
+   "date": "2026-12-16",
    "who": "him",
    "label": "Second chaser: extension lapsed",
    "rule": "foi_pi",
@@ -1829,7 +1829,7 @@
   },
   {
    "thread": "os-2646",
-   "date": "2026-12-15",
+   "date": "2026-12-16",
    "who": "them",
    "label": "Latest reply with maximum extension (worst case: refusal)",
    "rule": "foi_pi",
@@ -1839,7 +1839,7 @@
   },
   {
    "thread": "audit-wales",
-   "date": "2026-12-16",
+   "date": "2026-12-17",
    "who": "him",
    "label": "Second chaser: extension lapsed",
    "rule": "foi_pi",
@@ -1849,7 +1849,7 @@
   },
   {
    "thread": "cps-foi",
-   "date": "2026-12-16",
+   "date": "2026-12-17",
    "who": "them",
    "label": "Latest reply with maximum extension (worst case: refusal)",
    "rule": "foi_pi",
@@ -1859,7 +1859,7 @@
   },
   {
    "thread": "defra-23886",
-   "date": "2026-12-16",
+   "date": "2026-12-17",
    "who": "hard",
    "label": "Last day to ask for a review (40 working days)",
    "rule": "eir_ir_ask",
@@ -1869,7 +1869,7 @@
   },
   {
    "thread": "dwr",
-   "date": "2026-12-16",
+   "date": "2026-12-17",
    "who": "him",
    "label": "Ask for reconsideration (reg 11)",
    "rule": "eir_ir_ask",
@@ -1879,7 +1879,7 @@
   },
   {
    "thread": "gld-bv",
-   "date": "2026-12-16",
+   "date": "2026-12-17",
    "who": "him",
    "label": "Second chaser: extension lapsed",
    "rule": "foi_pi",
@@ -1889,7 +1889,7 @@
   },
   {
    "thread": "he-04323",
-   "date": "2026-12-16",
+   "date": "2026-12-17",
    "who": "hard",
    "label": "Last day to ask for a review (40 working days)",
    "rule": "eir_ir_ask",
@@ -1899,7 +1899,7 @@
   },
   {
    "thread": "hmlr-eir",
-   "date": "2026-12-16",
+   "date": "2026-12-17",
    "who": "him",
    "label": "Second chaser: extension lapsed",
    "rule": "eir_ext",
@@ -1909,7 +1909,7 @@
   },
   {
    "thread": "hmrc",
-   "date": "2026-12-16",
+   "date": "2026-12-17",
    "who": "him",
    "label": "Second chaser: extension lapsed",
    "rule": "foi_pi",
@@ -1919,7 +1919,7 @@
   },
   {
    "thread": "lcc-narrow",
-   "date": "2026-12-16",
+   "date": "2026-12-17",
    "who": "him",
    "label": "Second chaser: extension lapsed",
    "rule": "foi_pi",
@@ -1929,7 +1929,7 @@
   },
   {
    "thread": "os-2646",
-   "date": "2026-12-16",
+   "date": "2026-12-17",
    "who": "him",
    "label": "Second chaser: extension lapsed",
    "rule": "foi_pi",
@@ -1939,7 +1939,7 @@
   },
   {
    "thread": "swp-1040",
-   "date": "2026-12-16",
+   "date": "2026-12-17",
    "who": "them",
    "label": "Review outcome, latest (worst case: refusal upheld)",
    "rule": "foi_ir_reply",
@@ -1949,7 +1949,7 @@
   },
   {
    "thread": "cps-foi",
-   "date": "2026-12-17",
+   "date": "2026-12-18",
    "who": "him",
    "label": "Second chaser: extension lapsed",
    "rule": "foi_pi",
@@ -1959,7 +1959,7 @@
   },
   {
    "thread": "nlw",
-   "date": "2026-12-17",
+   "date": "2026-12-18",
    "who": "him",
    "label": "Request internal review",
    "rule": "foi_ir_ask",
@@ -1969,7 +1969,7 @@
   },
   {
    "thread": "rct-coroner",
-   "date": "2026-12-17",
+   "date": "2026-12-18",
    "who": "hard",
    "label": "Last day to ask for a review (40 working days)",
    "rule": "foi_ir_ask",
@@ -1979,7 +1979,7 @@
   },
   {
    "thread": "museum",
-   "date": "2026-12-21",
+   "date": "2026-12-22",
    "who": "him",
    "label": "Request internal review",
    "rule": "foi_ir_ask",
@@ -1989,7 +1989,7 @@
   },
   {
    "thread": "wg-260010",
-   "date": "2026-12-21",
+   "date": "2026-12-22",
    "who": "him",
    "label": "File ICO complaint",
    "rule": "ico_foi",
@@ -1999,7 +1999,7 @@
   },
   {
    "thread": "audit-wales",
-   "date": "2026-12-22",
+   "date": "2026-12-23",
    "who": "him",
    "label": "Request internal review",
    "rule": "foi_ir_ask",
@@ -2009,7 +2009,7 @@
   },
   {
    "thread": "gld-bv",
-   "date": "2026-12-22",
+   "date": "2026-12-23",
    "who": "him",
    "label": "Request internal review",
    "rule": "foi_ir_ask",
@@ -2019,7 +2019,7 @@
   },
   {
    "thread": "hmlr-eir",
-   "date": "2026-12-22",
+   "date": "2026-12-23",
    "who": "him",
    "label": "Ask for reconsideration (reg 11)",
    "rule": "eir_ir_ask",
@@ -2029,7 +2029,7 @@
   },
   {
    "thread": "hmrc",
-   "date": "2026-12-22",
+   "date": "2026-12-23",
    "who": "him",
    "label": "Request internal review",
    "rule": "foi_ir_ask",
@@ -2039,7 +2039,7 @@
   },
   {
    "thread": "lcc-narrow",
-   "date": "2026-12-22",
+   "date": "2026-12-23",
    "who": "him",
    "label": "Request internal review",
    "rule": "foi_ir_ask",
@@ -2049,7 +2049,7 @@
   },
   {
    "thread": "os-2646",
-   "date": "2026-12-22",
+   "date": "2026-12-23",
    "who": "him",
    "label": "Request internal review",
    "rule": "foi_ir_ask",
@@ -2059,7 +2059,7 @@
   },
   {
    "thread": "cps-foi",
-   "date": "2026-12-23",
+   "date": "2026-12-24",
    "who": "him",
    "label": "Request internal review",
    "rule": "foi_ir_ask",
@@ -2069,7 +2069,7 @@
   },
   {
    "thread": "defra-23886",
-   "date": "2026-12-23",
+   "date": "2026-12-24",
    "who": "them",
    "label": "Reconsideration due (worst case: refusal upheld)",
    "rule": "eir_ir_reply",
@@ -2079,7 +2079,7 @@
   },
   {
    "thread": "he-04323",
-   "date": "2026-12-23",
+   "date": "2026-12-24",
    "who": "them",
    "label": "Reconsideration due (worst case: refusal upheld)",
    "rule": "eir_ir_reply",
@@ -2089,7 +2089,7 @@
   },
   {
    "thread": "swp-1040",
-   "date": "2026-12-23",
+   "date": "2026-12-24",
    "who": "him",
    "label": "File ICO complaint",
    "rule": "ico_foi",
@@ -2099,7 +2099,7 @@
   },
   {
    "thread": "tna-wdtk",
-   "date": "2026-12-23",
+   "date": "2026-12-24",
    "who": "hard",
    "label": "Last day to ask for a review (40 working days)",
    "rule": "foi_ir_ask",
@@ -2109,7 +2109,7 @@
   },
   {
    "thread": "defra-23886",
-   "date": "2026-12-24",
+   "date": "2026-12-29",
    "who": "him",
    "label": "Chaser if no review outcome",
    "rule": "eir_ir_reply",
@@ -2119,33 +2119,13 @@
   },
   {
    "thread": "he-04323",
-   "date": "2026-12-24",
+   "date": "2026-12-29",
    "who": "him",
    "label": "Chaser if no review outcome",
    "rule": "eir_ir_reply",
    "note": "",
    "rule_cite": "EIR reg 11(4)",
    "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
-  },
-  {
-   "thread": "rct-coroner",
-   "date": "2026-12-24",
-   "who": "them",
-   "label": "Review outcome, latest (worst case: refusal upheld)",
-   "rule": "foi_ir_reply",
-   "note": "",
-   "rule_cite": "s.45 Code of Practice, para 5.5",
-   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
-  },
-  {
-   "thread": "tfw",
-   "date": "2026-12-24",
-   "who": "them",
-   "label": "Internal review outcome due",
-   "rule": "foi_ir_reply",
-   "note": "",
-   "rule_cite": "s.45 Code of Practice, para 5.5",
-   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
   },
   {
    "thread": "hmlr-sar",
@@ -2156,6 +2136,16 @@
    "note": "",
    "rule_cite": "UK GDPR Art.12(3)",
    "rule_url": "https://www.legislation.gov.uk/eur/2016/679/article/12"
+  },
+  {
+   "thread": "rct-coroner",
+   "date": "2026-12-29",
+   "who": "them",
+   "label": "Review outcome, latest (worst case: refusal upheld)",
+   "rule": "foi_ir_reply",
+   "note": "",
+   "rule_cite": "s.45 Code of Practice, para 5.5",
+   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
   },
   {
    "thread": "swp-sar",
@@ -2170,8 +2160,8 @@
   {
    "thread": "tfw",
    "date": "2026-12-29",
-   "who": "him",
-   "label": "Chaser if no review outcome",
+   "who": "them",
+   "label": "Internal review outcome due",
    "rule": "foi_ir_reply",
    "note": "",
    "rule_cite": "s.45 Code of Practice, para 5.5",
@@ -2206,6 +2196,26 @@
    "note": "",
    "rule_cite": "DPA 2018 s.164A (complaints to controllers)",
    "rule_url": "https://www.legislation.gov.uk/ukpga/2018/12/section/164A"
+  },
+  {
+   "thread": "tfw",
+   "date": "2026-12-30",
+   "who": "him",
+   "label": "Chaser if no review outcome",
+   "rule": "foi_ir_reply",
+   "note": "",
+   "rule_cite": "s.45 Code of Practice, para 5.5",
+   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+  },
+  {
+   "thread": "tna-356384",
+   "date": "2026-12-30",
+   "who": "hard",
+   "label": "Last safe day for the ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
   },
   {
    "thread": "vale-sar",
@@ -2228,46 +2238,6 @@
    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
   },
   {
-   "thread": "tna-356384",
-   "date": "2027-01-01",
-   "who": "hard",
-   "label": "Last safe day for the ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "defra-23886",
-   "date": "2027-01-04",
-   "who": "him",
-   "label": "File ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "he-04323",
-   "date": "2027-01-04",
-   "who": "him",
-   "label": "File ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "tna-wdtk",
-   "date": "2027-01-04",
-   "who": "them",
-   "label": "Review outcome, latest (worst case: refusal upheld)",
-   "rule": "foi_ir_reply",
-   "note": "",
-   "rule_cite": "s.45 Code of Practice, para 5.5",
-   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
-  },
-  {
    "thread": "wo-nio",
    "date": "2027-01-04",
    "who": "hard",
@@ -2278,8 +2248,18 @@
    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
   },
   {
-   "thread": "rct-coroner",
-   "date": "2027-01-05",
+   "thread": "defra-23886",
+   "date": "2027-01-06",
+   "who": "him",
+   "label": "File ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
+   "thread": "he-04323",
+   "date": "2027-01-06",
    "who": "him",
    "label": "File ICO complaint",
    "rule": "ico_foi",
@@ -2289,7 +2269,17 @@
   },
   {
    "thread": "tna-wdtk",
-   "date": "2027-01-11",
+   "date": "2027-01-06",
+   "who": "them",
+   "label": "Review outcome, latest (worst case: refusal upheld)",
+   "rule": "foi_ir_reply",
+   "note": "",
+   "rule_cite": "s.45 Code of Practice, para 5.5",
+   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+  },
+  {
+   "thread": "rct-coroner",
+   "date": "2027-01-07",
    "who": "him",
    "label": "File ICO complaint",
    "rule": "ico_foi",
@@ -2298,8 +2288,28 @@
    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
   },
   {
-   "thread": "cadw-260009",
+   "thread": "tna-wdtk",
    "date": "2027-01-13",
+   "who": "him",
+   "label": "File ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
+   "thread": "tna-347296",
+   "date": "2027-01-14",
+   "who": "hard",
+   "label": "Last safe day for the ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
+   "thread": "cadw-260009",
+   "date": "2027-01-15",
    "who": "them",
    "label": "Internal review outcome due",
    "rule": "foi_ir_reply",
@@ -2309,7 +2319,7 @@
   },
   {
    "thread": "swp-1264",
-   "date": "2027-01-13",
+   "date": "2027-01-15",
    "who": "them",
    "label": "Internal review outcome due",
    "rule": "foi_ir_reply",
@@ -2318,18 +2328,8 @@
    "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
   },
   {
-   "thread": "tna-347296",
-   "date": "2027-01-13",
-   "who": "hard",
-   "label": "Last safe day for the ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
    "thread": "vale-00211484",
-   "date": "2027-01-13",
+   "date": "2027-01-15",
    "who": "hard",
    "label": "Last day to ask for a review (40 working days)",
    "rule": "eir_ir_ask",
@@ -2339,7 +2339,7 @@
   },
   {
    "thread": "cadw-260009",
-   "date": "2027-01-14",
+   "date": "2027-01-18",
    "who": "him",
    "label": "Chaser if no review outcome",
    "rule": "foi_ir_reply",
@@ -2349,7 +2349,7 @@
   },
   {
    "thread": "mod-23272",
-   "date": "2027-01-14",
+   "date": "2027-01-18",
    "who": "them",
    "label": "Internal review outcome due",
    "rule": "foi_ir_reply",
@@ -2359,7 +2359,7 @@
   },
   {
    "thread": "swp-1264",
-   "date": "2027-01-14",
+   "date": "2027-01-18",
    "who": "him",
    "label": "Chaser if no review outcome",
    "rule": "foi_ir_reply",
@@ -2369,7 +2369,7 @@
   },
   {
    "thread": "vale-00211463",
-   "date": "2027-01-14",
+   "date": "2027-01-18",
    "who": "hard",
    "label": "Last day to ask for a review (40 working days)",
    "rule": "eir_ir_ask",
@@ -2379,7 +2379,7 @@
   },
   {
    "thread": "mod-23272",
-   "date": "2027-01-15",
+   "date": "2027-01-19",
    "who": "him",
    "label": "Chaser if no review outcome",
    "rule": "foi_ir_reply",
@@ -2389,73 +2389,23 @@
   },
   {
    "thread": "heneb-cmp",
-   "date": "2027-01-19",
+   "date": "2027-01-20",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
    "rule": "ico_foi",
    "note": "",
    "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "heneb-fire",
-   "date": "2027-01-19",
-   "who": "hard",
-   "label": "Last day to ask for a review (40 working days)",
-   "rule": "eir_ir_ask",
-   "note": "",
-   "rule_cite": "EIR reg 11(2)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
   },
   {
    "thread": "lcc-ir",
-   "date": "2027-01-19",
+   "date": "2027-01-20",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
    "rule": "ico_foi",
    "note": "",
    "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "nlw",
-   "date": "2027-01-19",
-   "who": "them",
-   "label": "Internal review outcome due",
-   "rule": "foi_ir_reply",
-   "note": "",
-   "rule_cite": "s.45 Code of Practice, para 5.5",
-   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
-  },
-  {
-   "thread": "tfw",
-   "date": "2027-01-19",
-   "who": "hard",
-   "label": "Last day to ask for a review (40 working days)",
-   "rule": "foi_ir_ask",
-   "note": "",
-   "rule_cite": "s.45 Code of Practice, para 5.3",
-   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
-  },
-  {
-   "thread": "nlw",
-   "date": "2027-01-20",
-   "who": "him",
-   "label": "Chaser if no review outcome",
-   "rule": "foi_ir_reply",
-   "note": "",
-   "rule_cite": "s.45 Code of Practice, para 5.5",
-   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
-  },
-  {
-   "thread": "vale-00211484",
-   "date": "2027-01-20",
-   "who": "them",
-   "label": "Reconsideration due (worst case: refusal upheld)",
-   "rule": "eir_ir_reply",
-   "note": "",
-   "rule_cite": "EIR reg 11(4)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
   },
   {
    "thread": "cps-sar",
@@ -2468,37 +2418,7 @@
    "rule_url": "https://www.legislation.gov.uk/eur/2016/679/article/12"
   },
   {
-   "thread": "museum",
-   "date": "2027-01-21",
-   "who": "them",
-   "label": "Internal review outcome due",
-   "rule": "foi_ir_reply",
-   "note": "",
-   "rule_cite": "s.45 Code of Practice, para 5.5",
-   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
-  },
-  {
-   "thread": "vale-00211463",
-   "date": "2027-01-21",
-   "who": "them",
-   "label": "Reconsideration due (worst case: refusal upheld)",
-   "rule": "eir_ir_reply",
-   "note": "",
-   "rule_cite": "EIR reg 11(4)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
-  },
-  {
-   "thread": "vale-00211484",
-   "date": "2027-01-21",
-   "who": "him",
-   "label": "Chaser if no review outcome",
-   "rule": "eir_ir_reply",
-   "note": "",
-   "rule_cite": "EIR reg 11(4)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
-  },
-  {
-   "thread": "vale-00211557",
+   "thread": "heneb-fire",
    "date": "2027-01-21",
    "who": "hard",
    "label": "Last day to ask for a review (40 working days)",
@@ -2508,13 +2428,23 @@
    "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
   },
   {
-   "thread": "audit-wales",
-   "date": "2027-01-22",
+   "thread": "nlw",
+   "date": "2027-01-21",
    "who": "them",
    "label": "Internal review outcome due",
    "rule": "foi_ir_reply",
    "note": "",
    "rule_cite": "s.45 Code of Practice, para 5.5",
+   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+  },
+  {
+   "thread": "tfw",
+   "date": "2027-01-21",
+   "who": "hard",
+   "label": "Last day to ask for a review (40 working days)",
+   "rule": "foi_ir_ask",
+   "note": "",
+   "rule_cite": "s.45 Code of Practice, para 5.3",
    "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
   },
   {
@@ -2528,8 +2458,78 @@
    "rule_url": "https://www.legislation.gov.uk/ukpga/2018/12/section/164A"
   },
   {
-   "thread": "gld-bv",
+   "thread": "nlw",
    "date": "2027-01-22",
+   "who": "him",
+   "label": "Chaser if no review outcome",
+   "rule": "foi_ir_reply",
+   "note": "",
+   "rule_cite": "s.45 Code of Practice, para 5.5",
+   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+  },
+  {
+   "thread": "vale-00211484",
+   "date": "2027-01-22",
+   "who": "them",
+   "label": "Reconsideration due (worst case: refusal upheld)",
+   "rule": "eir_ir_reply",
+   "note": "",
+   "rule_cite": "EIR reg 11(4)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
+  },
+  {
+   "thread": "museum",
+   "date": "2027-01-25",
+   "who": "them",
+   "label": "Internal review outcome due",
+   "rule": "foi_ir_reply",
+   "note": "",
+   "rule_cite": "s.45 Code of Practice, para 5.5",
+   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+  },
+  {
+   "thread": "vale-00211463",
+   "date": "2027-01-25",
+   "who": "them",
+   "label": "Reconsideration due (worst case: refusal upheld)",
+   "rule": "eir_ir_reply",
+   "note": "",
+   "rule_cite": "EIR reg 11(4)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
+  },
+  {
+   "thread": "vale-00211484",
+   "date": "2027-01-25",
+   "who": "him",
+   "label": "Chaser if no review outcome",
+   "rule": "eir_ir_reply",
+   "note": "",
+   "rule_cite": "EIR reg 11(4)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
+  },
+  {
+   "thread": "vale-00211557",
+   "date": "2027-01-25",
+   "who": "hard",
+   "label": "Last day to ask for a review (40 working days)",
+   "rule": "eir_ir_ask",
+   "note": "",
+   "rule_cite": "EIR reg 11(2)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
+  },
+  {
+   "thread": "audit-wales",
+   "date": "2027-01-26",
+   "who": "them",
+   "label": "Internal review outcome due",
+   "rule": "foi_ir_reply",
+   "note": "",
+   "rule_cite": "s.45 Code of Practice, para 5.5",
+   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+  },
+  {
+   "thread": "gld-bv",
+   "date": "2027-01-26",
    "who": "them",
    "label": "Internal review outcome due",
    "rule": "foi_ir_reply",
@@ -2539,7 +2539,7 @@
   },
   {
    "thread": "hmrc",
-   "date": "2027-01-22",
+   "date": "2027-01-26",
    "who": "them",
    "label": "Internal review outcome due",
    "rule": "foi_ir_reply",
@@ -2549,7 +2549,7 @@
   },
   {
    "thread": "lcc-narrow",
-   "date": "2027-01-22",
+   "date": "2027-01-26",
    "who": "them",
    "label": "Internal review outcome due",
    "rule": "foi_ir_reply",
@@ -2559,7 +2559,7 @@
   },
   {
    "thread": "museum",
-   "date": "2027-01-22",
+   "date": "2027-01-26",
    "who": "him",
    "label": "Chaser if no review outcome",
    "rule": "foi_ir_reply",
@@ -2569,7 +2569,7 @@
   },
   {
    "thread": "os-2646",
-   "date": "2027-01-22",
+   "date": "2027-01-26",
    "who": "them",
    "label": "Internal review outcome due",
    "rule": "foi_ir_reply",
@@ -2579,7 +2579,7 @@
   },
   {
    "thread": "vale-00211463",
-   "date": "2027-01-22",
+   "date": "2027-01-26",
    "who": "him",
    "label": "Chaser if no review outcome",
    "rule": "eir_ir_reply",
@@ -2588,8 +2588,18 @@
    "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
   },
   {
+   "thread": "wg-260010",
+   "date": "2027-01-26",
+   "who": "hard",
+   "label": "Last safe day for the ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
    "thread": "audit-wales",
-   "date": "2027-01-25",
+   "date": "2027-01-27",
    "who": "him",
    "label": "Chaser if no review outcome",
    "rule": "foi_ir_reply",
@@ -2599,7 +2609,7 @@
   },
   {
    "thread": "cps-foi",
-   "date": "2027-01-25",
+   "date": "2027-01-27",
    "who": "them",
    "label": "Internal review outcome due",
    "rule": "foi_ir_reply",
@@ -2609,7 +2619,7 @@
   },
   {
    "thread": "gld-bv",
-   "date": "2027-01-25",
+   "date": "2027-01-27",
    "who": "him",
    "label": "Chaser if no review outcome",
    "rule": "foi_ir_reply",
@@ -2619,7 +2629,7 @@
   },
   {
    "thread": "hmrc",
-   "date": "2027-01-25",
+   "date": "2027-01-27",
    "who": "him",
    "label": "Chaser if no review outcome",
    "rule": "foi_ir_reply",
@@ -2629,7 +2639,7 @@
   },
   {
    "thread": "lcc-narrow",
-   "date": "2027-01-25",
+   "date": "2027-01-27",
    "who": "him",
    "label": "Chaser if no review outcome",
    "rule": "foi_ir_reply",
@@ -2639,7 +2649,7 @@
   },
   {
    "thread": "os-2646",
-   "date": "2027-01-25",
+   "date": "2027-01-27",
    "who": "him",
    "label": "Chaser if no review outcome",
    "rule": "foi_ir_reply",
@@ -2648,18 +2658,8 @@
    "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
   },
   {
-   "thread": "wg-260010",
-   "date": "2027-01-25",
-   "who": "hard",
-   "label": "Last safe day for the ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
    "thread": "cps-foi",
-   "date": "2027-01-26",
+   "date": "2027-01-28",
    "who": "him",
    "label": "Chaser if no review outcome",
    "rule": "foi_ir_reply",
@@ -2669,7 +2669,7 @@
   },
   {
    "thread": "heneb-fire",
-   "date": "2027-01-26",
+   "date": "2027-01-28",
    "who": "them",
    "label": "Reconsideration due (worst case: refusal upheld)",
    "rule": "eir_ir_reply",
@@ -2678,8 +2678,18 @@
    "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
   },
   {
+   "thread": "swp-1040",
+   "date": "2027-01-28",
+   "who": "hard",
+   "label": "Last safe day for the ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
    "thread": "tfw",
-   "date": "2027-01-26",
+   "date": "2027-01-28",
    "who": "them",
    "label": "Review outcome, latest (worst case: refusal upheld)",
    "rule": "foi_ir_reply",
@@ -2689,56 +2699,6 @@
   },
   {
    "thread": "heneb-fire",
-   "date": "2027-01-27",
-   "who": "him",
-   "label": "Chaser if no review outcome",
-   "rule": "eir_ir_reply",
-   "note": "",
-   "rule_cite": "EIR reg 11(4)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
-  },
-  {
-   "thread": "swp-1040",
-   "date": "2027-01-27",
-   "who": "hard",
-   "label": "Last safe day for the ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "vale-00211484",
-   "date": "2027-01-27",
-   "who": "him",
-   "label": "File ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "vale-00211463",
-   "date": "2027-01-28",
-   "who": "him",
-   "label": "File ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "vale-00211557",
-   "date": "2027-01-28",
-   "who": "them",
-   "label": "Reconsideration due (worst case: refusal upheld)",
-   "rule": "eir_ir_reply",
-   "note": "",
-   "rule_cite": "EIR reg 11(4)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
-  },
-  {
-   "thread": "vale-00211557",
    "date": "2027-01-29",
    "who": "him",
    "label": "Chaser if no review outcome",
@@ -2748,6 +2708,16 @@
    "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
   },
   {
+   "thread": "vale-00211484",
+   "date": "2027-01-29",
+   "who": "him",
+   "label": "File ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
    "thread": "hmlr-sar",
    "date": "2027-01-30",
    "who": "them",
@@ -2798,6 +2768,26 @@
    "rule_url": "https://ico.org.uk/make-a-complaint/data-protection-complaints/"
   },
   {
+   "thread": "vale-00211463",
+   "date": "2027-02-01",
+   "who": "him",
+   "label": "File ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
+   "thread": "vale-00211557",
+   "date": "2027-02-01",
+   "who": "them",
+   "label": "Reconsideration due (worst case: refusal upheld)",
+   "rule": "eir_ir_reply",
+   "note": "",
+   "rule_cite": "EIR reg 11(4)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
+  },
+  {
    "thread": "vale-sar",
    "date": "2027-02-01",
    "who": "him",
@@ -2808,38 +2798,18 @@
    "rule_url": "https://ico.org.uk/make-a-complaint/data-protection-complaints/"
   },
   {
-   "thread": "heneb-fire",
+   "thread": "vale-00211557",
    "date": "2027-02-02",
    "who": "him",
-   "label": "File ICO complaint",
-   "rule": "ico_foi",
+   "label": "Chaser if no review outcome",
+   "rule": "eir_ir_reply",
    "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "tfw",
-   "date": "2027-02-02",
-   "who": "him",
-   "label": "File ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "cadw-260009",
-   "date": "2027-02-03",
-   "who": "hard",
-   "label": "Last day to ask for a review (40 working days)",
-   "rule": "foi_ir_ask",
-   "note": "",
-   "rule_cite": "s.45 Code of Practice, para 5.3",
-   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+   "rule_cite": "EIR reg 11(4)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
   },
   {
    "thread": "defra-23886",
-   "date": "2027-02-03",
+   "date": "2027-02-04",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
    "rule": "ico_foi",
@@ -2849,36 +2819,6 @@
   },
   {
    "thread": "he-04323",
-   "date": "2027-02-03",
-   "who": "hard",
-   "label": "Last safe day for the ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "swp-1264",
-   "date": "2027-02-03",
-   "who": "hard",
-   "label": "Last day to ask for a review (40 working days)",
-   "rule": "foi_ir_ask",
-   "note": "",
-   "rule_cite": "s.45 Code of Practice, para 5.3",
-   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
-  },
-  {
-   "thread": "mod-23272",
-   "date": "2027-02-04",
-   "who": "hard",
-   "label": "Last day to ask for a review (40 working days)",
-   "rule": "foi_ir_ask",
-   "note": "",
-   "rule_cite": "s.45 Code of Practice, para 5.3",
-   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
-  },
-  {
-   "thread": "rct-coroner",
    "date": "2027-02-04",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
@@ -2888,7 +2828,7 @@
    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
   },
   {
-   "thread": "vale-00211557",
+   "thread": "heneb-fire",
    "date": "2027-02-04",
    "who": "him",
    "label": "File ICO complaint",
@@ -2898,8 +2838,68 @@
    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
   },
   {
-   "thread": "dwr",
+   "thread": "tfw",
+   "date": "2027-02-04",
+   "who": "him",
+   "label": "File ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
+   "thread": "cadw-260009",
+   "date": "2027-02-05",
+   "who": "hard",
+   "label": "Last day to ask for a review (40 working days)",
+   "rule": "foi_ir_ask",
+   "note": "",
+   "rule_cite": "s.45 Code of Practice, para 5.3",
+   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+  },
+  {
+   "thread": "swp-1264",
+   "date": "2027-02-05",
+   "who": "hard",
+   "label": "Last day to ask for a review (40 working days)",
+   "rule": "foi_ir_ask",
+   "note": "",
+   "rule_cite": "s.45 Code of Practice, para 5.3",
+   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+  },
+  {
+   "thread": "mod-23272",
    "date": "2027-02-08",
+   "who": "hard",
+   "label": "Last day to ask for a review (40 working days)",
+   "rule": "foi_ir_ask",
+   "note": "",
+   "rule_cite": "s.45 Code of Practice, para 5.3",
+   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+  },
+  {
+   "thread": "vale-00211557",
+   "date": "2027-02-08",
+   "who": "him",
+   "label": "File ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
+   "thread": "rct-coroner",
+   "date": "2027-02-09",
+   "who": "hard",
+   "label": "Last safe day for the ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
+   "thread": "dwr",
+   "date": "2027-02-10",
    "who": "hard",
    "label": "Last day to ask for a review (40 working days)",
    "rule": "eir_ir_ask",
@@ -2909,7 +2909,7 @@
   },
   {
    "thread": "nlw",
-   "date": "2027-02-09",
+   "date": "2027-02-11",
    "who": "hard",
    "label": "Last day to ask for a review (40 working days)",
    "rule": "foi_ir_ask",
@@ -2919,7 +2919,7 @@
   },
   {
    "thread": "cadw-260009",
-   "date": "2027-02-10",
+   "date": "2027-02-12",
    "who": "them",
    "label": "Review outcome, latest (worst case: refusal upheld)",
    "rule": "foi_ir_reply",
@@ -2929,7 +2929,7 @@
   },
   {
    "thread": "swp-1264",
-   "date": "2027-02-10",
+   "date": "2027-02-12",
    "who": "them",
    "label": "Review outcome, latest (worst case: refusal upheld)",
    "rule": "foi_ir_reply",
@@ -2939,7 +2939,7 @@
   },
   {
    "thread": "mod-23272",
-   "date": "2027-02-11",
+   "date": "2027-02-15",
    "who": "them",
    "label": "Review outcome, latest (worst case: refusal upheld)",
    "rule": "foi_ir_reply",
@@ -2949,7 +2949,7 @@
   },
   {
    "thread": "museum",
-   "date": "2027-02-11",
+   "date": "2027-02-15",
    "who": "hard",
    "label": "Last day to ask for a review (40 working days)",
    "rule": "foi_ir_ask",
@@ -2959,7 +2959,7 @@
   },
   {
    "thread": "audit-wales",
-   "date": "2027-02-12",
+   "date": "2027-02-16",
    "who": "hard",
    "label": "Last day to ask for a review (40 working days)",
    "rule": "foi_ir_ask",
@@ -2969,7 +2969,7 @@
   },
   {
    "thread": "gld-bv",
-   "date": "2027-02-12",
+   "date": "2027-02-16",
    "who": "hard",
    "label": "Last day to ask for a review (40 working days)",
    "rule": "foi_ir_ask",
@@ -2979,7 +2979,7 @@
   },
   {
    "thread": "hmlr-eir",
-   "date": "2027-02-12",
+   "date": "2027-02-16",
    "who": "hard",
    "label": "Last day to ask for a review (40 working days)",
    "rule": "eir_ir_ask",
@@ -2989,7 +2989,7 @@
   },
   {
    "thread": "hmrc",
-   "date": "2027-02-12",
+   "date": "2027-02-16",
    "who": "hard",
    "label": "Last day to ask for a review (40 working days)",
    "rule": "foi_ir_ask",
@@ -2999,7 +2999,7 @@
   },
   {
    "thread": "lcc-narrow",
-   "date": "2027-02-12",
+   "date": "2027-02-16",
    "who": "hard",
    "label": "Last day to ask for a review (40 working days)",
    "rule": "foi_ir_ask",
@@ -3009,7 +3009,7 @@
   },
   {
    "thread": "os-2646",
-   "date": "2027-02-12",
+   "date": "2027-02-16",
    "who": "hard",
    "label": "Last day to ask for a review (40 working days)",
    "rule": "foi_ir_ask",
@@ -3019,7 +3019,7 @@
   },
   {
    "thread": "cps-foi",
-   "date": "2027-02-15",
+   "date": "2027-02-17",
    "who": "hard",
    "label": "Last day to ask for a review (40 working days)",
    "rule": "foi_ir_ask",
@@ -3029,7 +3029,7 @@
   },
   {
    "thread": "dwr",
-   "date": "2027-02-15",
+   "date": "2027-02-17",
    "who": "them",
    "label": "Reconsideration due (worst case: refusal upheld)",
    "rule": "eir_ir_reply",
@@ -3039,7 +3039,7 @@
   },
   {
    "thread": "tna-wdtk",
-   "date": "2027-02-15",
+   "date": "2027-02-17",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
    "rule": "ico_foi",
@@ -3049,7 +3049,7 @@
   },
   {
    "thread": "dwr",
-   "date": "2027-02-16",
+   "date": "2027-02-18",
    "who": "him",
    "label": "Chaser if no review outcome",
    "rule": "eir_ir_reply",
@@ -3059,7 +3059,7 @@
   },
   {
    "thread": "nlw",
-   "date": "2027-02-16",
+   "date": "2027-02-18",
    "who": "them",
    "label": "Review outcome, latest (worst case: refusal upheld)",
    "rule": "foi_ir_reply",
@@ -3069,7 +3069,7 @@
   },
   {
    "thread": "cadw-260009",
-   "date": "2027-02-17",
+   "date": "2027-02-19",
    "who": "him",
    "label": "File ICO complaint",
    "rule": "ico_foi",
@@ -3079,103 +3079,13 @@
   },
   {
    "thread": "swp-1264",
-   "date": "2027-02-17",
+   "date": "2027-02-19",
    "who": "him",
    "label": "File ICO complaint",
    "rule": "ico_foi",
    "note": "",
    "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "mod-23272",
-   "date": "2027-02-18",
-   "who": "him",
-   "label": "File ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "museum",
-   "date": "2027-02-18",
-   "who": "them",
-   "label": "Review outcome, latest (worst case: refusal upheld)",
-   "rule": "foi_ir_reply",
-   "note": "",
-   "rule_cite": "s.45 Code of Practice, para 5.5",
-   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
-  },
-  {
-   "thread": "audit-wales",
-   "date": "2027-02-19",
-   "who": "them",
-   "label": "Review outcome, latest (worst case: refusal upheld)",
-   "rule": "foi_ir_reply",
-   "note": "",
-   "rule_cite": "s.45 Code of Practice, para 5.5",
-   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
-  },
-  {
-   "thread": "gld-bv",
-   "date": "2027-02-19",
-   "who": "them",
-   "label": "Review outcome, latest (worst case: refusal upheld)",
-   "rule": "foi_ir_reply",
-   "note": "",
-   "rule_cite": "s.45 Code of Practice, para 5.5",
-   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
-  },
-  {
-   "thread": "hmlr-eir",
-   "date": "2027-02-19",
-   "who": "them",
-   "label": "Reconsideration due (worst case: refusal upheld)",
-   "rule": "eir_ir_reply",
-   "note": "",
-   "rule_cite": "EIR reg 11(4)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
-  },
-  {
-   "thread": "hmrc",
-   "date": "2027-02-19",
-   "who": "them",
-   "label": "Review outcome, latest (worst case: refusal upheld)",
-   "rule": "foi_ir_reply",
-   "note": "",
-   "rule_cite": "s.45 Code of Practice, para 5.5",
-   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
-  },
-  {
-   "thread": "lcc-narrow",
-   "date": "2027-02-19",
-   "who": "them",
-   "label": "Review outcome, latest (worst case: refusal upheld)",
-   "rule": "foi_ir_reply",
-   "note": "",
-   "rule_cite": "s.45 Code of Practice, para 5.5",
-   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
-  },
-  {
-   "thread": "os-2646",
-   "date": "2027-02-19",
-   "who": "them",
-   "label": "Review outcome, latest (worst case: refusal upheld)",
-   "rule": "foi_ir_reply",
-   "note": "",
-   "rule_cite": "s.45 Code of Practice, para 5.5",
-   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
-  },
-  {
-   "thread": "cps-foi",
-   "date": "2027-02-22",
-   "who": "them",
-   "label": "Review outcome, latest (worst case: refusal upheld)",
-   "rule": "foi_ir_reply",
-   "note": "",
-   "rule_cite": "s.45 Code of Practice, para 5.5",
-   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
   },
   {
    "thread": "cps-sar",
@@ -3188,7 +3098,7 @@
    "rule_url": "https://www.legislation.gov.uk/ukpga/2018/12/section/164A"
   },
   {
-   "thread": "dwr",
+   "thread": "mod-23272",
    "date": "2027-02-22",
    "who": "him",
    "label": "File ICO complaint",
@@ -3198,14 +3108,24 @@
    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
   },
   {
-   "thread": "hmlr-eir",
+   "thread": "museum",
    "date": "2027-02-22",
-   "who": "him",
-   "label": "Chaser if no review outcome",
-   "rule": "eir_ir_reply",
+   "who": "them",
+   "label": "Review outcome, latest (worst case: refusal upheld)",
+   "rule": "foi_ir_reply",
    "note": "",
-   "rule_cite": "EIR reg 11(4)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
+   "rule_cite": "s.45 Code of Practice, para 5.5",
+   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+  },
+  {
+   "thread": "audit-wales",
+   "date": "2027-02-23",
+   "who": "them",
+   "label": "Review outcome, latest (worst case: refusal upheld)",
+   "rule": "foi_ir_reply",
+   "note": "",
+   "rule_cite": "s.45 Code of Practice, para 5.5",
+   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
   },
   {
    "thread": "cps-sar",
@@ -3218,8 +3138,68 @@
    "rule_url": "https://ico.org.uk/make-a-complaint/data-protection-complaints/"
   },
   {
-   "thread": "nlw",
+   "thread": "gld-bv",
    "date": "2027-02-23",
+   "who": "them",
+   "label": "Review outcome, latest (worst case: refusal upheld)",
+   "rule": "foi_ir_reply",
+   "note": "",
+   "rule_cite": "s.45 Code of Practice, para 5.5",
+   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+  },
+  {
+   "thread": "hmlr-eir",
+   "date": "2027-02-23",
+   "who": "them",
+   "label": "Reconsideration due (worst case: refusal upheld)",
+   "rule": "eir_ir_reply",
+   "note": "",
+   "rule_cite": "EIR reg 11(4)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
+  },
+  {
+   "thread": "hmrc",
+   "date": "2027-02-23",
+   "who": "them",
+   "label": "Review outcome, latest (worst case: refusal upheld)",
+   "rule": "foi_ir_reply",
+   "note": "",
+   "rule_cite": "s.45 Code of Practice, para 5.5",
+   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+  },
+  {
+   "thread": "lcc-narrow",
+   "date": "2027-02-23",
+   "who": "them",
+   "label": "Review outcome, latest (worst case: refusal upheld)",
+   "rule": "foi_ir_reply",
+   "note": "",
+   "rule_cite": "s.45 Code of Practice, para 5.5",
+   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+  },
+  {
+   "thread": "os-2646",
+   "date": "2027-02-23",
+   "who": "them",
+   "label": "Review outcome, latest (worst case: refusal upheld)",
+   "rule": "foi_ir_reply",
+   "note": "",
+   "rule_cite": "s.45 Code of Practice, para 5.5",
+   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+  },
+  {
+   "thread": "cps-foi",
+   "date": "2027-02-24",
+   "who": "them",
+   "label": "Review outcome, latest (worst case: refusal upheld)",
+   "rule": "foi_ir_reply",
+   "note": "",
+   "rule_cite": "s.45 Code of Practice, para 5.5",
+   "rule_url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
+  },
+  {
+   "thread": "dwr",
+   "date": "2027-02-24",
    "who": "him",
    "label": "File ICO complaint",
    "rule": "ico_foi",
@@ -3228,7 +3208,17 @@
    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
   },
   {
-   "thread": "museum",
+   "thread": "hmlr-eir",
+   "date": "2027-02-24",
+   "who": "him",
+   "label": "Chaser if no review outcome",
+   "rule": "eir_ir_reply",
+   "note": "",
+   "rule_cite": "EIR reg 11(4)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11"
+  },
+  {
+   "thread": "nlw",
    "date": "2027-02-25",
    "who": "him",
    "label": "File ICO complaint",
@@ -3238,67 +3228,7 @@
    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
   },
   {
-   "thread": "audit-wales",
-   "date": "2027-02-26",
-   "who": "him",
-   "label": "File ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "gld-bv",
-   "date": "2027-02-26",
-   "who": "him",
-   "label": "File ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "hmlr-eir",
-   "date": "2027-02-26",
-   "who": "him",
-   "label": "File ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "hmrc",
-   "date": "2027-02-26",
-   "who": "him",
-   "label": "File ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "lcc-narrow",
-   "date": "2027-02-26",
-   "who": "him",
-   "label": "File ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "os-2646",
-   "date": "2027-02-26",
-   "who": "him",
-   "label": "File ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "cps-foi",
+   "thread": "museum",
    "date": "2027-03-01",
    "who": "him",
    "label": "File ICO complaint",
@@ -3308,8 +3238,78 @@
    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
   },
   {
-   "thread": "vale-00211484",
+   "thread": "audit-wales",
+   "date": "2027-03-02",
+   "who": "him",
+   "label": "File ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
+   "thread": "gld-bv",
+   "date": "2027-03-02",
+   "who": "him",
+   "label": "File ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
+   "thread": "hmlr-eir",
+   "date": "2027-03-02",
+   "who": "him",
+   "label": "File ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
+   "thread": "hmrc",
+   "date": "2027-03-02",
+   "who": "him",
+   "label": "File ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
+   "thread": "lcc-narrow",
+   "date": "2027-03-02",
+   "who": "him",
+   "label": "File ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
+   "thread": "os-2646",
+   "date": "2027-03-02",
+   "who": "him",
+   "label": "File ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
+   "thread": "cps-foi",
    "date": "2027-03-03",
+   "who": "him",
+   "label": "File ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
+   "thread": "vale-00211484",
+   "date": "2027-03-05",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
    "rule": "ico_foi",
@@ -3319,7 +3319,7 @@
   },
   {
    "thread": "vale-00211463",
-   "date": "2027-03-04",
+   "date": "2027-03-08",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
    "rule": "ico_foi",
@@ -3329,26 +3329,6 @@
   },
   {
    "thread": "heneb-fire",
-   "date": "2027-03-09",
-   "who": "hard",
-   "label": "Last safe day for the ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "tfw",
-   "date": "2027-03-09",
-   "who": "hard",
-   "label": "Last safe day for the ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "vale-00211557",
    "date": "2027-03-11",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
@@ -3358,8 +3338,28 @@
    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
   },
   {
+   "thread": "tfw",
+   "date": "2027-03-11",
+   "who": "hard",
+   "label": "Last safe day for the ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
+   "thread": "vale-00211557",
+   "date": "2027-03-15",
+   "who": "hard",
+   "label": "Last safe day for the ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
    "thread": "cadw-260009",
-   "date": "2027-03-24",
+   "date": "2027-03-26",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
    "rule": "ico_foi",
@@ -3369,7 +3369,7 @@
   },
   {
    "thread": "swp-1264",
-   "date": "2027-03-24",
+   "date": "2027-03-26",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
    "rule": "ico_foi",
@@ -3379,16 +3379,6 @@
   },
   {
    "thread": "mod-23272",
-   "date": "2027-03-25",
-   "who": "hard",
-   "label": "Last safe day for the ICO complaint",
-   "rule": "ico_foi",
-   "note": "",
-   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
-   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
-  },
-  {
-   "thread": "dwr",
    "date": "2027-03-29",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
@@ -3398,8 +3388,8 @@
    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
   },
   {
-   "thread": "nlw",
-   "date": "2027-03-30",
+   "thread": "dwr",
+   "date": "2027-03-31",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
    "rule": "ico_foi",
@@ -3408,7 +3398,7 @@
    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
   },
   {
-   "thread": "museum",
+   "thread": "nlw",
    "date": "2027-04-01",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
@@ -3418,8 +3408,18 @@
    "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
   },
   {
+   "thread": "museum",
+   "date": "2027-04-05",
+   "who": "hard",
+   "label": "Last safe day for the ICO complaint",
+   "rule": "ico_foi",
+   "note": "",
+   "rule_cite": "FOIA s.50; EIR reg 18; ICO practice",
+   "rule_url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/"
+  },
+  {
    "thread": "audit-wales",
-   "date": "2027-04-02",
+   "date": "2027-04-06",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
    "rule": "ico_foi",
@@ -3429,7 +3429,7 @@
   },
   {
    "thread": "gld-bv",
-   "date": "2027-04-02",
+   "date": "2027-04-06",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
    "rule": "ico_foi",
@@ -3439,7 +3439,7 @@
   },
   {
    "thread": "hmlr-eir",
-   "date": "2027-04-02",
+   "date": "2027-04-06",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
    "rule": "ico_foi",
@@ -3449,7 +3449,7 @@
   },
   {
    "thread": "hmrc",
-   "date": "2027-04-02",
+   "date": "2027-04-06",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
    "rule": "ico_foi",
@@ -3459,7 +3459,7 @@
   },
   {
    "thread": "lcc-narrow",
-   "date": "2027-04-02",
+   "date": "2027-04-06",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
    "rule": "ico_foi",
@@ -3469,7 +3469,7 @@
   },
   {
    "thread": "os-2646",
-   "date": "2027-04-02",
+   "date": "2027-04-06",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
    "rule": "ico_foi",
@@ -3479,7 +3479,7 @@
   },
   {
    "thread": "cps-foi",
-   "date": "2027-04-05",
+   "date": "2027-04-07",
    "who": "hard",
    "label": "Last safe day for the ICO complaint",
    "rule": "ico_foi",
@@ -3549,7 +3549,7 @@
   },
   {
    "thread": "moj-wdtk",
-   "date": "2027-04-26",
+   "date": "2027-04-27",
    "who": "them",
    "label": "ICO decision notice (worst case: 6 months)",
    "rule": "ico_backlog",
@@ -3659,7 +3659,7 @@
   },
   {
    "thread": "moj-wdtk",
-   "date": "2027-05-04",
+   "date": "2027-05-05",
    "who": "him",
    "label": "Lodge First-tier Tribunal appeal",
    "rule": "ftt",
@@ -3748,16 +3748,6 @@
    "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
   },
   {
-   "thread": "moj-wdtk",
-   "date": "2027-05-24",
-   "who": "hard",
-   "label": "Tribunal appeal deadline (28 days)",
-   "rule": "ftt",
-   "note": "",
-   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
-  },
-  {
    "thread": "icr-090",
    "date": "2027-05-25",
    "who": "them",
@@ -3766,6 +3756,26 @@
    "note": "",
    "rule_cite": "HM Land Registry complaints procedure",
    "rule_url": "https://www.gov.uk/government/organisations/land-registry/about/complaints-procedure"
+  },
+  {
+   "thread": "moj-wdtk",
+   "date": "2027-05-25",
+   "who": "hard",
+   "label": "Tribunal appeal deadline (28 days)",
+   "rule": "ftt",
+   "note": "",
+   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
+  },
+  {
+   "thread": "tna-356384",
+   "date": "2027-05-25",
+   "who": "them",
+   "label": "ICO decision notice (worst case: 6 months)",
+   "rule": "ico_backlog",
+   "note": "",
+   "rule_cite": "FOIA s.50(3)",
+   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
   },
   {
    "thread": "vale-00210772",
@@ -3788,18 +3798,8 @@
    "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
   },
   {
-   "thread": "tna-356384",
-   "date": "2027-05-27",
-   "who": "them",
-   "label": "ICO decision notice (worst case: 6 months)",
-   "rule": "ico_backlog",
-   "note": "",
-   "rule_cite": "FOIA s.50(3)",
-   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
-  },
-  {
    "thread": "wo-nio",
-   "date": "2027-05-30",
+   "date": "2027-06-01",
    "who": "them",
    "label": "ICO decision notice (worst case: 6 months)",
    "rule": "ico_backlog",
@@ -3818,6 +3818,16 @@
    "rule_url": "https://www.legislation.gov.uk/ukpga/1967/13"
   },
   {
+   "thread": "tna-356384",
+   "date": "2027-06-02",
+   "who": "him",
+   "label": "Lodge First-tier Tribunal appeal",
+   "rule": "ftt",
+   "note": "",
+   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
+  },
+  {
    "thread": "swp-ir1188",
    "date": "2027-06-04",
    "who": "him",
@@ -3828,18 +3838,8 @@
    "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
   },
   {
-   "thread": "tna-356384",
-   "date": "2027-06-04",
-   "who": "him",
-   "label": "Lodge First-tier Tribunal appeal",
-   "rule": "ftt",
-   "note": "",
-   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
-  },
-  {
    "thread": "wo-nio",
-   "date": "2027-06-07",
+   "date": "2027-06-08",
    "who": "him",
    "label": "Lodge First-tier Tribunal appeal",
    "rule": "ftt",
@@ -3849,7 +3849,7 @@
   },
   {
    "thread": "tna-347296",
-   "date": "2027-06-09",
+   "date": "2027-06-10",
    "who": "them",
    "label": "ICO decision notice (worst case: 6 months)",
    "rule": "ico_backlog",
@@ -3859,27 +3859,27 @@
   },
   {
    "thread": "heneb-cmp",
-   "date": "2027-06-15",
-   "who": "them",
-   "label": "ICO decision notice (worst case: 6 months)",
-   "rule": "ico_backlog",
-   "note": "",
-   "rule_cite": "FOIA s.50(3)",
-   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
-  },
-  {
-   "thread": "lcc-ir",
-   "date": "2027-06-15",
-   "who": "them",
-   "label": "ICO decision notice (worst case: 6 months)",
-   "rule": "ico_backlog",
-   "note": "",
-   "rule_cite": "FOIA s.50(3)",
-   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
-  },
-  {
-   "thread": "tna-347296",
    "date": "2027-06-16",
+   "who": "them",
+   "label": "ICO decision notice (worst case: 6 months)",
+   "rule": "ico_backlog",
+   "note": "",
+   "rule_cite": "FOIA s.50(3)",
+   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
+  },
+  {
+   "thread": "lcc-ir",
+   "date": "2027-06-16",
+   "who": "them",
+   "label": "ICO decision notice (worst case: 6 months)",
+   "rule": "ico_backlog",
+   "note": "",
+   "rule_cite": "FOIA s.50(3)",
+   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
+  },
+  {
+   "thread": "tna-347296",
+   "date": "2027-06-17",
    "who": "him",
    "label": "Lodge First-tier Tribunal appeal",
    "rule": "ftt",
@@ -3888,8 +3888,18 @@
    "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
   },
   {
+   "thread": "tna-356384",
+   "date": "2027-06-22",
+   "who": "hard",
+   "label": "Tribunal appeal deadline (28 days)",
+   "rule": "ftt",
+   "note": "",
+   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
+  },
+  {
    "thread": "wg-260010",
-   "date": "2027-06-21",
+   "date": "2027-06-22",
    "who": "them",
    "label": "ICO decision notice (worst case: 6 months)",
    "rule": "ico_backlog",
@@ -3899,7 +3909,7 @@
   },
   {
    "thread": "heneb-cmp",
-   "date": "2027-06-22",
+   "date": "2027-06-23",
    "who": "him",
    "label": "Lodge First-tier Tribunal appeal",
    "rule": "ftt",
@@ -3909,7 +3919,7 @@
   },
   {
    "thread": "lcc-ir",
-   "date": "2027-06-22",
+   "date": "2027-06-23",
    "who": "him",
    "label": "Lodge First-tier Tribunal appeal",
    "rule": "ftt",
@@ -3919,7 +3929,7 @@
   },
   {
    "thread": "swp-1040",
-   "date": "2027-06-23",
+   "date": "2027-06-24",
    "who": "them",
    "label": "ICO decision notice (worst case: 6 months)",
    "rule": "ico_backlog",
@@ -3938,28 +3948,8 @@
    "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
   },
   {
-   "thread": "tna-356384",
-   "date": "2027-06-24",
-   "who": "hard",
-   "label": "Tribunal appeal deadline (28 days)",
-   "rule": "ftt",
-   "note": "",
-   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
-  },
-  {
-   "thread": "wo-nio",
-   "date": "2027-06-27",
-   "who": "hard",
-   "label": "Tribunal appeal deadline (28 days)",
-   "rule": "ftt",
-   "note": "",
-   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
-  },
-  {
    "thread": "wg-260010",
-   "date": "2027-06-28",
+   "date": "2027-06-29",
    "who": "him",
    "label": "Lodge First-tier Tribunal appeal",
    "rule": "ftt",
@@ -3968,8 +3958,18 @@
    "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
   },
   {
+   "thread": "wo-nio",
+   "date": "2027-06-29",
+   "who": "hard",
+   "label": "Tribunal appeal deadline (28 days)",
+   "rule": "ftt",
+   "note": "",
+   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
+  },
+  {
    "thread": "swp-1040",
-   "date": "2027-06-30",
+   "date": "2027-07-01",
    "who": "him",
    "label": "Lodge First-tier Tribunal appeal",
    "rule": "ftt",
@@ -3979,7 +3979,7 @@
   },
   {
    "thread": "defra-23886",
-   "date": "2027-07-04",
+   "date": "2027-07-06",
    "who": "them",
    "label": "ICO decision notice (worst case: 6 months)",
    "rule": "ico_backlog",
@@ -3989,7 +3989,7 @@
   },
   {
    "thread": "he-04323",
-   "date": "2027-07-04",
+   "date": "2027-07-06",
    "who": "them",
    "label": "ICO decision notice (worst case: 6 months)",
    "rule": "ico_backlog",
@@ -3999,7 +3999,7 @@
   },
   {
    "thread": "rct-coroner",
-   "date": "2027-07-05",
+   "date": "2027-07-07",
    "who": "them",
    "label": "ICO decision notice (worst case: 6 months)",
    "rule": "ico_backlog",
@@ -4009,7 +4009,7 @@
   },
   {
    "thread": "tna-347296",
-   "date": "2027-07-07",
+   "date": "2027-07-08",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
    "rule": "ftt",
@@ -4018,8 +4018,18 @@
    "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
   },
   {
+   "thread": "tna-wdtk",
+   "date": "2027-07-13",
+   "who": "them",
+   "label": "ICO decision notice (worst case: 6 months)",
+   "rule": "ico_backlog",
+   "note": "",
+   "rule_cite": "FOIA s.50(3)",
+   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
+  },
+  {
    "thread": "defra-23886",
-   "date": "2027-07-09",
+   "date": "2027-07-14",
    "who": "him",
    "label": "Lodge First-tier Tribunal appeal",
    "rule": "ftt",
@@ -4029,27 +4039,7 @@
   },
   {
    "thread": "he-04323",
-   "date": "2027-07-09",
-   "who": "him",
-   "label": "Lodge First-tier Tribunal appeal",
-   "rule": "ftt",
-   "note": "",
-   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
-  },
-  {
-   "thread": "tna-wdtk",
-   "date": "2027-07-11",
-   "who": "them",
-   "label": "ICO decision notice (worst case: 6 months)",
-   "rule": "ico_backlog",
-   "note": "",
-   "rule_cite": "FOIA s.50(3)",
-   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
-  },
-  {
-   "thread": "rct-coroner",
-   "date": "2027-07-12",
+   "date": "2027-07-14",
    "who": "him",
    "label": "Lodge First-tier Tribunal appeal",
    "rule": "ftt",
@@ -4059,7 +4049,7 @@
   },
   {
    "thread": "heneb-cmp",
-   "date": "2027-07-13",
+   "date": "2027-07-14",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
    "rule": "ftt",
@@ -4069,7 +4059,7 @@
   },
   {
    "thread": "lcc-ir",
-   "date": "2027-07-13",
+   "date": "2027-07-14",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
    "rule": "ftt",
@@ -4078,8 +4068,18 @@
    "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
   },
   {
+   "thread": "rct-coroner",
+   "date": "2027-07-15",
+   "who": "him",
+   "label": "Lodge First-tier Tribunal appeal",
+   "rule": "ftt",
+   "note": "",
+   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
+  },
+  {
    "thread": "tna-wdtk",
-   "date": "2027-07-16",
+   "date": "2027-07-20",
    "who": "him",
    "label": "Lodge First-tier Tribunal appeal",
    "rule": "ftt",
@@ -4089,7 +4089,7 @@
   },
   {
    "thread": "wg-260010",
-   "date": "2027-07-19",
+   "date": "2027-07-20",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
    "rule": "ftt",
@@ -4099,7 +4099,7 @@
   },
   {
    "thread": "swp-1040",
-   "date": "2027-07-21",
+   "date": "2027-07-22",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
    "rule": "ftt",
@@ -4109,43 +4109,13 @@
   },
   {
    "thread": "vale-00211484",
-   "date": "2027-07-27",
+   "date": "2027-07-29",
    "who": "them",
    "label": "ICO decision notice (worst case: 6 months)",
    "rule": "ico_backlog",
    "note": "",
    "rule_cite": "FOIA s.50(3)",
    "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
-  },
-  {
-   "thread": "vale-00211463",
-   "date": "2027-07-28",
-   "who": "them",
-   "label": "ICO decision notice (worst case: 6 months)",
-   "rule": "ico_backlog",
-   "note": "",
-   "rule_cite": "FOIA s.50(3)",
-   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
-  },
-  {
-   "thread": "defra-23886",
-   "date": "2027-08-01",
-   "who": "hard",
-   "label": "Tribunal appeal deadline (28 days)",
-   "rule": "ftt",
-   "note": "",
-   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
-  },
-  {
-   "thread": "he-04323",
-   "date": "2027-08-01",
-   "who": "hard",
-   "label": "Tribunal appeal deadline (28 days)",
-   "rule": "ftt",
-   "note": "",
-   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
   },
   {
    "thread": "hmlr-sar",
@@ -4168,6 +4138,16 @@
    "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
   },
   {
+   "thread": "vale-00211463",
+   "date": "2027-08-01",
+   "who": "them",
+   "label": "ICO decision notice (worst case: 6 months)",
+   "rule": "ico_backlog",
+   "note": "",
+   "rule_cite": "FOIA s.50(3)",
+   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
+  },
+  {
    "thread": "vale-sar",
    "date": "2027-08-01",
    "who": "them",
@@ -4178,8 +4158,28 @@
    "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
   },
   {
+   "thread": "defra-23886",
+   "date": "2027-08-03",
+   "who": "hard",
+   "label": "Tribunal appeal deadline (28 days)",
+   "rule": "ftt",
+   "note": "",
+   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
+  },
+  {
+   "thread": "he-04323",
+   "date": "2027-08-03",
+   "who": "hard",
+   "label": "Tribunal appeal deadline (28 days)",
+   "rule": "ftt",
+   "note": "",
+   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
+  },
+  {
    "thread": "heneb-fire",
-   "date": "2027-08-02",
+   "date": "2027-08-04",
    "who": "them",
    "label": "ICO decision notice (worst case: 6 months)",
    "rule": "ico_backlog",
@@ -4189,7 +4189,7 @@
   },
   {
    "thread": "rct-coroner",
-   "date": "2027-08-02",
+   "date": "2027-08-04",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
    "rule": "ftt",
@@ -4199,7 +4199,7 @@
   },
   {
    "thread": "tfw",
-   "date": "2027-08-02",
+   "date": "2027-08-04",
    "who": "them",
    "label": "ICO decision notice (worst case: 6 months)",
    "rule": "ico_backlog",
@@ -4209,17 +4209,7 @@
   },
   {
    "thread": "vale-00211484",
-   "date": "2027-08-03",
-   "who": "him",
-   "label": "Lodge First-tier Tribunal appeal",
-   "rule": "ftt",
-   "note": "",
-   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
-  },
-  {
-   "thread": "vale-00211463",
-   "date": "2027-08-04",
+   "date": "2027-08-06",
    "who": "him",
    "label": "Lodge First-tier Tribunal appeal",
    "rule": "ftt",
@@ -4229,7 +4219,7 @@
   },
   {
    "thread": "vale-00211557",
-   "date": "2027-08-04",
+   "date": "2027-08-08",
    "who": "them",
    "label": "ICO decision notice (worst case: 6 months)",
    "rule": "ico_backlog",
@@ -4238,8 +4228,18 @@
    "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
   },
   {
+   "thread": "vale-00211463",
+   "date": "2027-08-09",
+   "who": "him",
+   "label": "Lodge First-tier Tribunal appeal",
+   "rule": "ftt",
+   "note": "",
+   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
+  },
+  {
    "thread": "tna-wdtk",
-   "date": "2027-08-08",
+   "date": "2027-08-10",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
    "rule": "ftt",
@@ -4249,26 +4249,6 @@
   },
   {
    "thread": "heneb-fire",
-   "date": "2027-08-09",
-   "who": "him",
-   "label": "Lodge First-tier Tribunal appeal",
-   "rule": "ftt",
-   "note": "",
-   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
-  },
-  {
-   "thread": "tfw",
-   "date": "2027-08-09",
-   "who": "him",
-   "label": "Lodge First-tier Tribunal appeal",
-   "rule": "ftt",
-   "note": "",
-   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
-  },
-  {
-   "thread": "vale-00211557",
    "date": "2027-08-11",
    "who": "him",
    "label": "Lodge First-tier Tribunal appeal",
@@ -4278,8 +4258,28 @@
    "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
   },
   {
-   "thread": "hmlr-sar",
+   "thread": "tfw",
+   "date": "2027-08-11",
+   "who": "him",
+   "label": "Lodge First-tier Tribunal appeal",
+   "rule": "ftt",
+   "note": "",
+   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
+  },
+  {
+   "thread": "vale-00211557",
    "date": "2027-08-13",
+   "who": "him",
+   "label": "Lodge First-tier Tribunal appeal",
+   "rule": "ftt",
+   "note": "",
+   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
+  },
+  {
+   "thread": "hmlr-sar",
+   "date": "2027-08-16",
    "who": "him",
    "label": "Next stage: compliance order application",
    "rule": "dp_court",
@@ -4289,7 +4289,7 @@
   },
   {
    "thread": "swp-sar",
-   "date": "2027-08-13",
+   "date": "2027-08-16",
    "who": "him",
    "label": "Next stage: compliance order application",
    "rule": "dp_court",
@@ -4299,7 +4299,7 @@
   },
   {
    "thread": "vale-sar",
-   "date": "2027-08-13",
+   "date": "2027-08-16",
    "who": "him",
    "label": "Next stage: compliance order application",
    "rule": "dp_court",
@@ -4309,7 +4309,7 @@
   },
   {
    "thread": "cadw-260009",
-   "date": "2027-08-17",
+   "date": "2027-08-19",
    "who": "them",
    "label": "ICO decision notice (worst case: 6 months)",
    "rule": "ico_backlog",
@@ -4319,7 +4319,7 @@
   },
   {
    "thread": "swp-1264",
-   "date": "2027-08-17",
+   "date": "2027-08-19",
    "who": "them",
    "label": "ICO decision notice (worst case: 6 months)",
    "rule": "ico_backlog",
@@ -4329,16 +4329,6 @@
   },
   {
    "thread": "mod-23272",
-   "date": "2027-08-18",
-   "who": "them",
-   "label": "ICO decision notice (worst case: 6 months)",
-   "rule": "ico_backlog",
-   "note": "",
-   "rule_cite": "FOIA s.50(3)",
-   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
-  },
-  {
-   "thread": "dwr",
    "date": "2027-08-22",
    "who": "them",
    "label": "ICO decision notice (worst case: 6 months)",
@@ -4358,8 +4348,18 @@
    "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
   },
   {
+   "thread": "dwr",
+   "date": "2027-08-24",
+   "who": "them",
+   "label": "ICO decision notice (worst case: 6 months)",
+   "rule": "ico_backlog",
+   "note": "",
+   "rule_cite": "FOIA s.50(3)",
+   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
+  },
+  {
    "thread": "nlw",
-   "date": "2027-08-23",
+   "date": "2027-08-25",
    "who": "them",
    "label": "ICO decision notice (worst case: 6 months)",
    "rule": "ico_backlog",
@@ -4369,7 +4369,7 @@
   },
   {
    "thread": "cadw-260009",
-   "date": "2027-08-24",
+   "date": "2027-08-26",
    "who": "him",
    "label": "Lodge First-tier Tribunal appeal",
    "rule": "ftt",
@@ -4379,7 +4379,7 @@
   },
   {
    "thread": "swp-1264",
-   "date": "2027-08-24",
+   "date": "2027-08-26",
    "who": "him",
    "label": "Lodge First-tier Tribunal appeal",
    "rule": "ftt",
@@ -4389,7 +4389,7 @@
   },
   {
    "thread": "vale-00211484",
-   "date": "2027-08-24",
+   "date": "2027-08-26",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
    "rule": "ftt",
@@ -4399,96 +4399,6 @@
   },
   {
    "thread": "mod-23272",
-   "date": "2027-08-25",
-   "who": "him",
-   "label": "Lodge First-tier Tribunal appeal",
-   "rule": "ftt",
-   "note": "",
-   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
-  },
-  {
-   "thread": "museum",
-   "date": "2027-08-25",
-   "who": "them",
-   "label": "ICO decision notice (worst case: 6 months)",
-   "rule": "ico_backlog",
-   "note": "",
-   "rule_cite": "FOIA s.50(3)",
-   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
-  },
-  {
-   "thread": "vale-00211463",
-   "date": "2027-08-25",
-   "who": "hard",
-   "label": "Tribunal appeal deadline (28 days)",
-   "rule": "ftt",
-   "note": "",
-   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
-  },
-  {
-   "thread": "audit-wales",
-   "date": "2027-08-26",
-   "who": "them",
-   "label": "ICO decision notice (worst case: 6 months)",
-   "rule": "ico_backlog",
-   "note": "",
-   "rule_cite": "FOIA s.50(3)",
-   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
-  },
-  {
-   "thread": "gld-bv",
-   "date": "2027-08-26",
-   "who": "them",
-   "label": "ICO decision notice (worst case: 6 months)",
-   "rule": "ico_backlog",
-   "note": "",
-   "rule_cite": "FOIA s.50(3)",
-   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
-  },
-  {
-   "thread": "hmlr-eir",
-   "date": "2027-08-26",
-   "who": "them",
-   "label": "ICO decision notice (worst case: 6 months)",
-   "rule": "ico_backlog",
-   "note": "",
-   "rule_cite": "FOIA s.50(3)",
-   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
-  },
-  {
-   "thread": "hmrc",
-   "date": "2027-08-26",
-   "who": "them",
-   "label": "ICO decision notice (worst case: 6 months)",
-   "rule": "ico_backlog",
-   "note": "",
-   "rule_cite": "FOIA s.50(3)",
-   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
-  },
-  {
-   "thread": "lcc-narrow",
-   "date": "2027-08-26",
-   "who": "them",
-   "label": "ICO decision notice (worst case: 6 months)",
-   "rule": "ico_backlog",
-   "note": "",
-   "rule_cite": "FOIA s.50(3)",
-   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
-  },
-  {
-   "thread": "os-2646",
-   "date": "2027-08-26",
-   "who": "them",
-   "label": "ICO decision notice (worst case: 6 months)",
-   "rule": "ico_backlog",
-   "note": "",
-   "rule_cite": "FOIA s.50(3)",
-   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
-  },
-  {
-   "thread": "dwr",
    "date": "2027-08-27",
    "who": "him",
    "label": "Lodge First-tier Tribunal appeal",
@@ -4498,8 +4408,8 @@
    "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
   },
   {
-   "thread": "heneb-fire",
-   "date": "2027-08-30",
+   "thread": "vale-00211463",
+   "date": "2027-08-29",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
    "rule": "ftt",
@@ -4508,18 +4418,8 @@
    "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
   },
   {
-   "thread": "tfw",
-   "date": "2027-08-30",
-   "who": "hard",
-   "label": "Tribunal appeal deadline (28 days)",
-   "rule": "ftt",
-   "note": "",
-   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
-  },
-  {
-   "thread": "nlw",
-   "date": "2027-08-31",
+   "thread": "dwr",
+   "date": "2027-09-01",
    "who": "him",
    "label": "Lodge First-tier Tribunal appeal",
    "rule": "ftt",
@@ -4528,17 +4428,7 @@
    "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
   },
   {
-   "thread": "cps-foi",
-   "date": "2027-09-01",
-   "who": "them",
-   "label": "ICO decision notice (worst case: 6 months)",
-   "rule": "ico_backlog",
-   "note": "",
-   "rule_cite": "FOIA s.50(3)",
-   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
-  },
-  {
-   "thread": "vale-00211557",
+   "thread": "heneb-fire",
    "date": "2027-09-01",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
@@ -4549,6 +4439,76 @@
   },
   {
    "thread": "museum",
+   "date": "2027-09-01",
+   "who": "them",
+   "label": "ICO decision notice (worst case: 6 months)",
+   "rule": "ico_backlog",
+   "note": "",
+   "rule_cite": "FOIA s.50(3)",
+   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
+  },
+  {
+   "thread": "tfw",
+   "date": "2027-09-01",
+   "who": "hard",
+   "label": "Tribunal appeal deadline (28 days)",
+   "rule": "ftt",
+   "note": "",
+   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
+  },
+  {
+   "thread": "audit-wales",
+   "date": "2027-09-02",
+   "who": "them",
+   "label": "ICO decision notice (worst case: 6 months)",
+   "rule": "ico_backlog",
+   "note": "",
+   "rule_cite": "FOIA s.50(3)",
+   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
+  },
+  {
+   "thread": "gld-bv",
+   "date": "2027-09-02",
+   "who": "them",
+   "label": "ICO decision notice (worst case: 6 months)",
+   "rule": "ico_backlog",
+   "note": "",
+   "rule_cite": "FOIA s.50(3)",
+   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
+  },
+  {
+   "thread": "hmlr-eir",
+   "date": "2027-09-02",
+   "who": "them",
+   "label": "ICO decision notice (worst case: 6 months)",
+   "rule": "ico_backlog",
+   "note": "",
+   "rule_cite": "FOIA s.50(3)",
+   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
+  },
+  {
+   "thread": "hmrc",
+   "date": "2027-09-02",
+   "who": "them",
+   "label": "ICO decision notice (worst case: 6 months)",
+   "rule": "ico_backlog",
+   "note": "",
+   "rule_cite": "FOIA s.50(3)",
+   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
+  },
+  {
+   "thread": "lcc-narrow",
+   "date": "2027-09-02",
+   "who": "them",
+   "label": "ICO decision notice (worst case: 6 months)",
+   "rule": "ico_backlog",
+   "note": "",
+   "rule_cite": "FOIA s.50(3)",
+   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
+  },
+  {
+   "thread": "nlw",
    "date": "2027-09-02",
    "who": "him",
    "label": "Lodge First-tier Tribunal appeal",
@@ -4558,60 +4518,30 @@
    "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
   },
   {
-   "thread": "audit-wales",
-   "date": "2027-09-03",
-   "who": "him",
-   "label": "Lodge First-tier Tribunal appeal",
-   "rule": "ftt",
-   "note": "",
-   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
-  },
-  {
-   "thread": "gld-bv",
-   "date": "2027-09-03",
-   "who": "him",
-   "label": "Lodge First-tier Tribunal appeal",
-   "rule": "ftt",
-   "note": "",
-   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
-  },
-  {
-   "thread": "hmlr-eir",
-   "date": "2027-09-03",
-   "who": "him",
-   "label": "Lodge First-tier Tribunal appeal",
-   "rule": "ftt",
-   "note": "",
-   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
-  },
-  {
-   "thread": "hmrc",
-   "date": "2027-09-03",
-   "who": "him",
-   "label": "Lodge First-tier Tribunal appeal",
-   "rule": "ftt",
-   "note": "",
-   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
-  },
-  {
-   "thread": "lcc-narrow",
-   "date": "2027-09-03",
-   "who": "him",
-   "label": "Lodge First-tier Tribunal appeal",
-   "rule": "ftt",
-   "note": "",
-   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
-  },
-  {
    "thread": "os-2646",
+   "date": "2027-09-02",
+   "who": "them",
+   "label": "ICO decision notice (worst case: 6 months)",
+   "rule": "ico_backlog",
+   "note": "",
+   "rule_cite": "FOIA s.50(3)",
+   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
+  },
+  {
+   "thread": "cps-foi",
    "date": "2027-09-03",
-   "who": "him",
-   "label": "Lodge First-tier Tribunal appeal",
+   "who": "them",
+   "label": "ICO decision notice (worst case: 6 months)",
+   "rule": "ico_backlog",
+   "note": "",
+   "rule_cite": "FOIA s.50(3)",
+   "rule_url": "https://www.legislation.gov.uk/ukpga/2000/36/section/50"
+  },
+  {
+   "thread": "vale-00211557",
+   "date": "2027-09-05",
+   "who": "hard",
+   "label": "Tribunal appeal deadline (28 days)",
    "rule": "ftt",
    "note": "",
    "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
@@ -4628,7 +4558,7 @@
    "rule_url": "https://www.legislation.gov.uk/ukpga/2018/12/section/167"
   },
   {
-   "thread": "cps-foi",
+   "thread": "museum",
    "date": "2027-09-08",
    "who": "him",
    "label": "Lodge First-tier Tribunal appeal",
@@ -4638,8 +4568,78 @@
    "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
   },
   {
+   "thread": "audit-wales",
+   "date": "2027-09-09",
+   "who": "him",
+   "label": "Lodge First-tier Tribunal appeal",
+   "rule": "ftt",
+   "note": "",
+   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
+  },
+  {
+   "thread": "gld-bv",
+   "date": "2027-09-09",
+   "who": "him",
+   "label": "Lodge First-tier Tribunal appeal",
+   "rule": "ftt",
+   "note": "",
+   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
+  },
+  {
+   "thread": "hmlr-eir",
+   "date": "2027-09-09",
+   "who": "him",
+   "label": "Lodge First-tier Tribunal appeal",
+   "rule": "ftt",
+   "note": "",
+   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
+  },
+  {
+   "thread": "hmrc",
+   "date": "2027-09-09",
+   "who": "him",
+   "label": "Lodge First-tier Tribunal appeal",
+   "rule": "ftt",
+   "note": "",
+   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
+  },
+  {
+   "thread": "lcc-narrow",
+   "date": "2027-09-09",
+   "who": "him",
+   "label": "Lodge First-tier Tribunal appeal",
+   "rule": "ftt",
+   "note": "",
+   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
+  },
+  {
+   "thread": "os-2646",
+   "date": "2027-09-09",
+   "who": "him",
+   "label": "Lodge First-tier Tribunal appeal",
+   "rule": "ftt",
+   "note": "",
+   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
+  },
+  {
+   "thread": "cps-foi",
+   "date": "2027-09-10",
+   "who": "him",
+   "label": "Lodge First-tier Tribunal appeal",
+   "rule": "ftt",
+   "note": "",
+   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
+  },
+  {
    "thread": "cadw-260009",
-   "date": "2027-09-14",
+   "date": "2027-09-16",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
    "rule": "ftt",
@@ -4649,7 +4649,7 @@
   },
   {
    "thread": "swp-1264",
-   "date": "2027-09-14",
+   "date": "2027-09-16",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
    "rule": "ftt",
@@ -4659,16 +4659,6 @@
   },
   {
    "thread": "mod-23272",
-   "date": "2027-09-15",
-   "who": "hard",
-   "label": "Tribunal appeal deadline (28 days)",
-   "rule": "ftt",
-   "note": "",
-   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
-   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
-  },
-  {
-   "thread": "dwr",
    "date": "2027-09-19",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
@@ -4678,8 +4668,8 @@
    "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
   },
   {
-   "thread": "nlw",
-   "date": "2027-09-20",
+   "thread": "dwr",
+   "date": "2027-09-21",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
    "rule": "ftt",
@@ -4688,7 +4678,7 @@
    "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
   },
   {
-   "thread": "museum",
+   "thread": "nlw",
    "date": "2027-09-22",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
@@ -4698,8 +4688,18 @@
    "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
   },
   {
+   "thread": "museum",
+   "date": "2027-09-29",
+   "who": "hard",
+   "label": "Tribunal appeal deadline (28 days)",
+   "rule": "ftt",
+   "note": "",
+   "rule_cite": "FOIA s.57; GRC Rules 2009 r.22(1)(b)",
+   "rule_url": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22"
+  },
+  {
    "thread": "audit-wales",
-   "date": "2027-09-23",
+   "date": "2027-09-30",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
    "rule": "ftt",
@@ -4709,7 +4709,7 @@
   },
   {
    "thread": "gld-bv",
-   "date": "2027-09-23",
+   "date": "2027-09-30",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
    "rule": "ftt",
@@ -4719,7 +4719,7 @@
   },
   {
    "thread": "hmlr-eir",
-   "date": "2027-09-23",
+   "date": "2027-09-30",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
    "rule": "ftt",
@@ -4729,7 +4729,7 @@
   },
   {
    "thread": "hmrc",
-   "date": "2027-09-23",
+   "date": "2027-09-30",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
    "rule": "ftt",
@@ -4739,7 +4739,7 @@
   },
   {
    "thread": "lcc-narrow",
-   "date": "2027-09-23",
+   "date": "2027-09-30",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
    "rule": "ftt",
@@ -4749,7 +4749,7 @@
   },
   {
    "thread": "os-2646",
-   "date": "2027-09-23",
+   "date": "2027-09-30",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
    "rule": "ftt",
@@ -4759,7 +4759,7 @@
   },
   {
    "thread": "cps-foi",
-   "date": "2027-09-29",
+   "date": "2027-10-01",
    "who": "hard",
    "label": "Tribunal appeal deadline (28 days)",
    "rule": "ftt",

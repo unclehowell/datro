@@ -16,13 +16,13 @@ PER_DAY = 3
 BANNED = ['says', 'claims', 'according to', 'hearsay', 'unverified', 'alleged', 'fraud', 'stolen', 'sion', 'branwen', 'buckler', 'hywel', 'disclaimer']
 D = dt.date.fromisoformat
 
-# ---------- working days (England & Wales) ----------
-FALLBACK_BH = ['2026-01-01','2026-04-03','2026-04-06','2026-05-04','2026-05-25','2026-08-31','2026-12-25','2026-12-28','2027-01-01','2027-03-26','2027-03-29','2027-05-03','2027-05-31','2027-08-30','2027-12-27','2027-12-28','2028-01-03','2028-04-14','2028-04-17','2028-05-01','2028-05-29','2028-08-28','2028-12-25','2028-12-26']
+# ---------- working days: bank holidays in ANY part of the UK (FOIA s.10(6); EIR reg 2 adopts it) — corrected 22 Oct 2026 ----------
+FALLBACK_BH = ['2026-01-02','2026-03-17','2026-07-13','2026-08-03','2026-11-30','2027-01-04','2027-03-17','2027-07-12','2027-08-02','2027-11-30','2026-01-01','2026-04-03','2026-04-06','2026-05-04','2026-05-25','2026-08-31','2026-12-25','2026-12-28','2027-01-01','2027-03-26','2027-03-29','2027-05-03','2027-05-31','2027-08-30','2027-12-27','2027-12-28','2028-01-03','2028-04-14','2028-04-17','2028-05-01','2028-05-29','2028-08-28','2028-12-25','2028-12-26']
 def bank_holidays():
     cache = os.path.join(W, 'bank-holidays.json')
     try:
         with urllib.request.urlopen('https://www.gov.uk/bank-holidays.json', timeout=20) as r: j = json.load(r)
-        days = [e['date'] for e in j['england-and-wales']['events']]
+        days = sorted({e['date'] for div in ('england-and-wales', 'scotland', 'northern-ireland') for e in j[div]['events']})
         json.dump(days, open(cache, 'w'))
     except Exception:
         days = json.load(open(cache)) if os.path.exists(cache) else FALLBACK_BH
@@ -52,21 +52,21 @@ POLICY = {
   'foi': {'name': 'Freedom of Information Act 2000', 'rules': [
     {'k': 'foi_reply', 'what': 'Reply within 20 working days of receipt', 'n': '20 wd', 'cite': 'FOIA s.10(1)', 'url': L + 'ukpga/2000/36/section/10'},
     {'k': 'foi_pi', 'what': 'Public-interest extension: a “reasonable” further time; treated here as up to 20 more working days', 'n': '+20 wd', 'cite': 'FOIA s.10(3); s.45 Code of Practice', 'url': 'https://www.gov.uk/government/publications/freedom-of-information-code-of-practice'},
-    {'k': 'foi_ir_ask', 'what': 'Ask for an internal review within 40 working days of the reply', 'n': '40 wd', 'cite': 's.45 Code of Practice, para 5.3', 'url': 'https://www.gov.uk/government/publications/freedom-of-information-code-of-practice', 'hard': True},
-    {'k': 'foi_ir_reply', 'what': 'Internal review outcome within 20 working days, 40 at most', 'n': '20–40 wd', 'cite': 's.45 Code of Practice, para 5.5', 'url': 'https://www.gov.uk/government/publications/freedom-of-information-code-of-practice'}]},
+    {'k': 'foi_ir_ask', 'what': 'Ask for an internal review within 40 working days of the reply (code of practice, not statutory)', 'n': '40 wd', 'cite': 's.45 Code of Practice, para 5.3', 'url': 'https://www.gov.uk/government/publications/freedom-of-information-code-of-practice', 'hard': True},
+    {'k': 'foi_ir_reply', 'what': 'Internal review outcome within 20 working days, 40 at most (code of practice target, not statutory)', 'n': '20–40 wd', 'cite': 's.45 Code of Practice, para 5.5', 'url': 'https://www.gov.uk/government/publications/freedom-of-information-code-of-practice'}]},
   'eir': {'name': 'Environmental Information Regulations 2004', 'rules': [
     {'k': 'eir_reply', 'what': 'Reply within 20 working days of receipt', 'n': '20 wd', 'cite': 'EIR reg 5(2)', 'url': L + 'uksi/2004/3391/regulation/5'},
     {'k': 'eir_ext', 'what': 'Extension to 40 working days where the request is complex and voluminous', 'n': '40 wd', 'cite': 'EIR reg 7(1)', 'url': L + 'uksi/2004/3391/regulation/7'},
-    {'k': 'eir_ir_ask', 'what': 'Representations (review) within 40 working days of the reply', 'n': '40 wd', 'cite': 'EIR reg 11(2)', 'url': L + 'uksi/2004/3391/regulation/11', 'hard': True},
+    {'k': 'eir_ir_ask', 'what': 'Regulation 11 representations within 40 working days of the failure (statutory, separate from any FOIA review)', 'n': '40 wd', 'cite': 'EIR reg 11(2)', 'url': L + 'uksi/2004/3391/regulation/11', 'hard': True},
     {'k': 'eir_ir_reply', 'what': 'Reconsideration decided within 40 working days', 'n': '40 wd', 'cite': 'EIR reg 11(4)', 'url': L + 'uksi/2004/3391/regulation/11'}]},
   'sar': {'name': 'UK GDPR / Data Protection Act 2018 (subject access)', 'rules': [
-    {'k': 'sar_reply', 'what': 'Reply within one month of receipt', 'n': '1 month', 'cite': 'UK GDPR Art.12(3); DPA 2018 s.45 and s.54 (law-enforcement processing)', 'url': L + 'eur/2016/679/article/12'},
+    {'k': 'sar_reply', 'what': 'Reply within one month of receipt', 'n': '1 month', 'cite': 'UK GDPR Art.12(3). Law-enforcement processing by a competent authority is a separate right: DPA 2018 Part 3 s.45, one month under s.54', 'url': L + 'eur/2016/679/article/12'},
     {'k': 'sar_ext', 'what': 'Extension by two further months for complex or numerous requests, notified within the first month', 'n': '+2 months', 'cite': 'UK GDPR Art.12(3)', 'url': L + 'eur/2016/679/article/12'},
     {'k': 'sar_body_complaint', 'what': 'Complaint to the body’s data protection officer before the ICO', 'n': '1 month assumed', 'cite': 'DPA 2018 s.164A (complaints to controllers)', 'url': L + 'ukpga/2018/12/section/164A'},
     {'k': 'ico_dp', 'what': 'ICO complaint; the ICO asks for it within 3 months of the last meaningful contact', 'n': '3 months', 'cite': 'UK GDPR Art.77; DPA 2018 s.165; ICO practice', 'url': 'https://ico.org.uk/make-a-complaint/data-protection-complaints/', 'hard': True},
     {'k': 'dp_court', 'what': 'Compliance order from the court', 'n': 'no fixed limit', 'cite': 'DPA 2018 s.167', 'url': L + 'ukpga/2018/12/section/167'}]},
   'ico': {'name': 'Information Commissioner (FOI / EIR)', 'rules': [
-    {'k': 'ico_foi', 'what': 'Complaint to the ICO after the internal review; the ICO asks for it within 6 weeks of the review outcome', 'n': '6 weeks', 'cite': 'FOIA s.50; EIR reg 18; ICO practice', 'url': 'https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/', 'hard': True},
+    {'k': 'ico_foi', 'what': 'Complaint to the ICO, normally after the review (expected, not a statutory precondition); the ICO asks for it within 6 weeks of the final response (guidance)', 'n': '6 weeks', 'cite': 'FOIA s.50; EIR reg 18; ICO practice', 'url': 'https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/', 'hard': True},
     {'k': 'ico_backlog', 'what': 'ICO decision notice: worst case taken as 6 months from the complaint (case backlog)', 'n': '6 months', 'cite': 'FOIA s.50(3)', 'url': L + 'ukpga/2000/36/section/50'},
     {'k': 'ftt', 'what': 'Appeal to the First-tier Tribunal (General Regulatory Chamber) within 28 days of the decision notice', 'n': '28 days', 'cite': 'FOIA s.57; GRC Rules 2009 r.22(1)(b)', 'url': L + 'uksi/2009/1976/rule/22', 'hard': True}]},
   'complaint': {'name': 'Body’s own complaints procedure', 'rules': [
@@ -82,8 +82,8 @@ POLICY = {
     {'k': 'working', 'what': 'Working date set in the request; chaser the next working day, a second after 10 working days', 'n': 'own date', 'cite': 'Case schedule', 'url': ''},
     {'k': 'sar_fallback', 'what': 'If the body holds personal data, a subject access request starts a statutory clock', 'n': '1 month', 'cite': 'UK GDPR Art.15, Art.12(3)', 'url': L + 'eur/2016/679/article/15'}]},
  },
- 'working_days': {'calendar': 'England and Wales bank holidays', 'url': 'https://www.gov.uk/bank-holidays.json', 'count': 'Day 1 is the first working day after receipt'},
- 'assumptions': ['Every body takes the longest extension the rules allow.', 'Every reply is a refusal or a non-answer, so every review and escalation step is needed.', 'Our side acts on fixed dates: a chaser the working day after any lapse, a review request 5 working days after a refusal, a regulator complaint 5 working days after a review outcome, and never later than the hard date.'],
+ 'working_days': {'calendar': 'UK bank holidays in any part of the UK (FOIA s.10(6); EIR reg 2)', 'url': 'https://www.gov.uk/bank-holidays.json', 'count': 'Day 1 is the first working day after receipt'},
+ 'assumptions': ['Each matter follows its own regime: FOIA, EIR, subject access, law-enforcement access, deceased health records, Land Registry, archives and court records are separate routes. MPs, MSs and ombudsmen run in parallel and are never a prerequisite; tribunal and court time limits are never held back.', 'Every body takes the longest extension the rules allow.', 'Every reply is a refusal or a non-answer, so every review and escalation step is needed.', 'Our side acts on fixed dates: a chaser the working day after any lapse, a review request 5 working days after a refusal, a regulator complaint 5 working days after a review outcome, and never later than the hard date.'],
 }
 INST = {  # seed id prefix -> (published policy URL, ombudsman/route note)
  'hmlr': ('https://www.gov.uk/government/organisations/land-registry/about/complaints-procedure', 'ICO; ICR then PHSO via an MP'),

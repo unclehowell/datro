@@ -19,7 +19,7 @@
     },
     {
      "k": "foi_ir_ask",
-     "what": "Ask for an internal review within 40 working days of the reply",
+     "what": "Ask for an internal review within 40 working days of the reply (code of practice, not statutory)",
      "n": "40 wd",
      "cite": "s.45 Code of Practice, para 5.3",
      "url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice",
@@ -27,7 +27,7 @@
     },
     {
      "k": "foi_ir_reply",
-     "what": "Internal review outcome within 20 working days, 40 at most",
+     "what": "Internal review outcome within 20 working days, 40 at most (code of practice target, not statutory)",
      "n": "20–40 wd",
      "cite": "s.45 Code of Practice, para 5.5",
      "url": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice"
@@ -53,7 +53,7 @@
     },
     {
      "k": "eir_ir_ask",
-     "what": "Representations (review) within 40 working days of the reply",
+     "what": "Regulation 11 representations within 40 working days of the failure (statutory, separate from any FOIA review)",
      "n": "40 wd",
      "cite": "EIR reg 11(2)",
      "url": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11",
@@ -75,7 +75,7 @@
      "k": "sar_reply",
      "what": "Reply within one month of receipt",
      "n": "1 month",
-     "cite": "UK GDPR Art.12(3); DPA 2018 s.45 and s.54 (law-enforcement processing)",
+     "cite": "UK GDPR Art.12(3). Law-enforcement processing by a competent authority is a separate right: DPA 2018 Part 3 s.45, one month under s.54",
      "url": "https://www.legislation.gov.uk/eur/2016/679/article/12"
     },
     {
@@ -114,7 +114,7 @@
    "rules": [
     {
      "k": "ico_foi",
-     "what": "Complaint to the ICO after the internal review; the ICO asks for it within 6 weeks of the review outcome",
+     "what": "Complaint to the ICO, normally after the review (expected, not a statutory precondition); the ICO asks for it within 6 weeks of the final response (guidance)",
      "n": "6 weeks",
      "cite": "FOIA s.50; EIR reg 18; ICO practice",
      "url": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/",
@@ -220,11 +220,12 @@
   }
  },
  "working_days": {
-  "calendar": "England and Wales bank holidays",
+  "calendar": "UK bank holidays in any part of the UK (FOIA s.10(6); EIR reg 2)",
   "url": "https://www.gov.uk/bank-holidays.json",
   "count": "Day 1 is the first working day after receipt"
  },
  "assumptions": [
+  "Each matter follows its own regime: FOIA, EIR, subject access, law-enforcement access, deceased health records, Land Registry, archives and court records are separate routes. MPs, MSs and ombudsmen run in parallel and are never a prerequisite; tribunal and court time limits are never held back.",
   "Every body takes the longest extension the rules allow.",
   "Every reply is a refusal or a non-answer, so every review and escalation step is needed.",
   "Our side acts on fixed dates: a chaser the working day after any lapse, a review request 5 working days after a refusal, a regulator complaint 5 working days after a review outcome, and never later than the hard date."
