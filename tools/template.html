@@ -33,8 +33,10 @@ header p{margin:0 0 10px;color:var(--muted);font-size:15px}
 .svgbox{position:relative}
 /* full screen: the ring fills the viewport (CSS, so it works on iPhone too; the browser's own full screen is asked for where it exists) */
 html.fs-lock,html.fs-lock body{overflow:hidden!important}
-.svgbox.fs{position:fixed;inset:0;z-index:2147483600;background:var(--panel);display:flex;align-items:center;justify-content:center;overscroll-behavior:contain}
-.svgbox.fs #ring{width:min(100vw,calc(100vh - 128px));width:min(100vw,calc(100dvh - 128px));touch-action:none}
+.svgbox.fs{position:fixed;inset:0;top:0;left:0;z-index:2147483600;background:var(--panel);display:flex;align-items:center;justify-content:center;overscroll-behavior:contain}
+.svgbox.fs{width:100vw;height:100vh;height:100dvh}
+.svgbox.fs #ring{width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;aspect-ratio:auto!important;touch-action:none}
+@media (orientation:landscape){.svgbox.fs .ctl{flex-direction:column;left:max(12px,env(safe-area-inset-left));right:auto;top:0;bottom:0;justify-content:center;pointer-events:none}.svgbox.fs .ctl button{pointer-events:auto}}
 .svgbox.fs .ctl{position:fixed;left:0;right:0;bottom:max(14px,env(safe-area-inset-bottom));justify-content:center;padding:0}
 .svgbox.fs #fs{position:fixed;top:max(12px,env(safe-area-inset-top));right:12px;width:48px;height:48px;font-size:22px;background:#151229;border-color:#ffffff66}
 .nlead{stroke:#ffffff40;stroke-width:1.5}
@@ -175,7 +177,7 @@ let rot=0,focus=new Set(),sel=null;
 const N=RP.length;
 const inFocus=ps=>focus.size===0||ps.some(p=>focus.has(p));
 const pcode=p=>p==='X'?'W':p;
-function cfg(){const mob=svg.getBoundingClientRect().width<640;return mob?{mob,half:540,R:380,nfs:22,afs:15.5,cr:10,cfs:10,sw:6,pfs:76,tfs:10.5}:{mob,half:600,R:420,nfs:15,afs:9.5,cr:8,cfs:8,sw:4.5,pfs:58,tfs:8}}
+function cfg(){const rr=svg.getBoundingClientRect(),mob=(fsOn?Math.min(rr.width,rr.height||rr.width):rr.width)<640;return mob?{mob,half:540,R:380,nfs:22,afs:15.5,cr:10,cfs:10,sw:6,pfs:76,tfs:10.5}:{mob,half:600,R:420,nfs:15,afs:9.5,cr:8,cfs:8,sw:4.5,pfs:58,tfs:8}}
 let C=null,R=320,labelMode='full',lastZ=1,STAR=null,CNPOS={};
 const RT=D.root||null,RTS=RT?RT.steps:[],RTM=Object.fromEntries(RTS.map(s=>[s.k,s]));
 function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
@@ -348,12 +350,13 @@ function openChain(cid){const ch=CHM[cid];if(!ch)return;sel='ch:'+cid;applyFocus
 // geometry
 function bez(p0,c,p1,t){const u=1-t;return[u*u*p0[0]+2*u*t*c[0]+t*t*p1[0],u*u*p0[1]+2*u*t*c[1]+t*t*p1[1]]}
 function draw(){
- C=cfg();R=C.R;const z=Math.min(1,vb.w/(C.half*2));labelMode=(C.mob&&z>0.62)?'year':'full';
+ C=cfg();R=C.R;const wasHome=!HOME||vb.w>=HOME.w-0.5;const z=HOME?Math.min(1,vb.w/HOME.w):1;labelMode=(C.mob&&z>0.62)?'year':'full';
  if(C.mob&&labelMode==='full'){const f=Math.max(0.42,Math.min(1,z*1.25));C.afs*=f;C.cr*=f;C.cfs*=f}
  lastZ=z;CNPOS={};
  if(RT){const sp=P[RT.star],v=P.vaughan;const a=ang(v.i)+0.62*2*Math.PI/N,r=R+(C.mob?175:140);STAR=[Math.cos(a)*r,Math.sin(a)*r];sp.xy=STAR}
  svg.innerHTML='';svg.style.setProperty('--sws',(C.sw*1.6)+'px');
- el('circle',{cx:0,cy:0,r:R,fill:'none',stroke:'#ffffff14','stroke-width':1},svg);
+ C.rc=R+(C.mob?28:20);C.rl=C.rc+Math.round(R*0.09);// the ring line, then an empty band (9% of R) before any holder name
+ el('circle',{cx:0,cy:0,r:C.rc,fill:'none',stroke:'#ffffff70','stroke-width':C.mob?2.5:2,class:'ringline'},svg);
  const gA=el('g',{},svg),gL=el('g',{},svg),gN=el('g',{},svg);
  // parallel index per unordered pair
  const pairCount={};
@@ -439,22 +442,31 @@ function draw(){
   let L=0;try{L=t.getComputedTextLength()}catch(e){}if(!L)L=t.textContent.length*C.nfs*0.56;
   const st=rx*lu[0]+ry*lu[1]>=0;t.setAttribute('text-anchor',st?'start':'end');
   let best=null,bestO=1e18;
-  for(let d=gap;d<=gap+lh*7;d+=lh*0.5){
+  const d0=C.rl-R;for(let d=d0;d<=d0+lh*7;d+=lh*0.5){
    const ax=x+rx*d,ay=y+ry*d,a0=ax*lu[0]+ay*lu[1],b0=ax*ln[0]+ay*ln[1];
    const bx=st?[a0-2,b0-lh/2,a0+L+2,b0+lh/2]:[a0-L-2,b0-lh/2,a0+2,b0+lh/2];
-   const ddx=Math.max(bx[0],0,-bx[2]),ddy=Math.max(bx[1],0,-bx[3]);if(Math.hypot(ddx,ddy)<R+gap-2)continue;
+   const ddx=Math.max(bx[0],0,-bx[2]),ddy=Math.max(bx[1],0,-bx[3]);if(Math.hypot(ddx,ddy)<C.rl)continue;
    let o=0;for(const q of placedL){const ix=Math.max(0,Math.min(bx[2],q[2])-Math.max(bx[0],q[0])),iy=Math.max(0,Math.min(bx[3],q[3])-Math.max(bx[1],q[1]));o+=ix*iy}
    if(o<bestO-0.5){bestO=o;best={ax,ay,bx,d}}if(o===0)break}
-  if(!best){const d=gap+lh*7,ax=x+rx*d,ay=y+ry*d;best={ax,ay,bx:[0,0,0,0],d}}
+  if(!best){const d=d0+lh*7,ax=x+rx*d,ay=y+ry*d;best={ax,ay,bx:[0,0,0,0],d}}
   placedL.push(best.bx);
-  if(best.d>gap+lh*0.6)el('line',{x1:x+rx*10,y1:y+ry*10,x2:best.ax-rx*3,y2:best.ay-ry*3,class:'nlead'},g);
+  if(best.d>d0+lh*0.6)el('line',{x1:x+rx*(d0+2),y1:y+ry*(d0+2),x2:best.ax-rx*3,y2:best.ay-ry*3,class:'nlead'},g);
   t.setAttribute('x',best.ax.toFixed(1));t.setAttribute('y',best.ay.toFixed(1));t.setAttribute('transform',`rotate(-45 ${best.ax.toFixed(1)} ${best.ay.toFixed(1)})`);
   el('circle',{cx:x,cy:y,r:C.mob?8:6,fill:'#f3f1ff',stroke:'#1d1938','stroke-width':3},g);
   const ti=el('title',{},g);ti.textContent=p.name;
  });
  applyFocus();
- if(!svg.getAttribute('data-init')){svg.setAttribute('data-init','1');vb={x:-C.half,y:-C.half,w:C.half*2}}
- svg.setAttribute('viewBox',`${vb.x} ${vb.y} ${vb.w} ${vb.w}`);svg.classList.toggle('zoomed',vb.w<C.half*2);
+ fitHome(wasHome);
+}
+// the home view box is the whole drawing (ring, every name, the star), never a fixed square: nothing is cut off
+function fitHome(wasHome){
+ let b;try{b=svg.getBBox()}catch(e){b=null}if(!b||!b.width)b={x:-C.half,y:-C.half,width:C.half*2,height:C.half*2};
+ const pad=C.mob?16:12;let x=b.x-pad,y=b.y-pad,w=b.width+pad*2,h=b.height+pad*2;
+ if(!fsOn){svg.style.aspectRatio=(w/h).toFixed(4)}else svg.style.aspectRatio='';
+ const rr=svg.getBoundingClientRect(),A=fsOn&&rr.height?rr.width/rr.height:w/h;
+ if(w/h<A){const nw=h*A;x-=(nw-w)/2;w=nw}else{const nh=w/A;y-=(nh-h)/2;h=nh}
+ HOME={x,y,w,h};FULL=w;
+ if(wasHome)vb={x,y,w,h};setVB(true)
 }
 function applyFocus(){
  const used=new Set();
@@ -470,21 +482,22 @@ function applyFocus(){
  const og=svg.querySelector('g.origin');if(og)og.style.opacity=(focus.size||sel)&&!used.has('origin')?.3:1;
 }
 // view box pan/zoom
-let vb={x:-540,y:-540,w:1080};let FULL=1080;
-function setVB(){FULL=C.half*2;vb.w=Math.max(FULL/4,Math.min(FULL,vb.w));vb.x=Math.max(-C.half,Math.min(C.half-vb.w,vb.x));vb.y=Math.max(-C.half,Math.min(C.half-vb.w,vb.y));
- if(vb.w>=FULL){vb.x=-C.half;vb.y=-C.half}
- svg.setAttribute('viewBox',`${vb.x} ${vb.y} ${vb.w} ${vb.w}`);svg.classList.toggle('zoomed',vb.w<FULL);
+let vb={x:-540,y:-540,w:1080,h:1080},HOME=null;let FULL=1080;
+function setVB(noRedraw){const H=HOME||{x:-C.half,y:-C.half,w:C.half*2,h:C.half*2};FULL=H.w;vb.w=Math.max(FULL/4,Math.min(FULL,vb.w));vb.h=vb.w*H.h/H.w;vb.x=Math.max(H.x,Math.min(H.x+H.w-vb.w,vb.x));vb.y=Math.max(H.y,Math.min(H.y+H.h-vb.h,vb.y));
+ if(vb.w>=FULL-0.5){vb={x:H.x,y:H.y,w:H.w,h:H.h}}
+ svg.setAttribute('viewBox',`${vb.x.toFixed(1)} ${vb.y.toFixed(1)} ${vb.w.toFixed(1)} ${vb.h.toFixed(1)}`);svg.setAttribute('preserveAspectRatio','xMidYMid meet');svg.classList.toggle('zoomed',vb.w<FULL-0.5);
+ if(noRedraw)return;
  if(C.mob&&Math.abs(vb.w/FULL-lastZ)>0.04){clearTimeout(window._dz);window._dz=setTimeout(draw,60)}}
-function zoom(f,cx,cy){const ox=cx===undefined?vb.x+vb.w/2:cx,oy=cy===undefined?vb.y+vb.w/2:cy;const nw=Math.max(FULL/4,Math.min(FULL,vb.w*f));vb.x=ox-(ox-vb.x)*nw/vb.w;vb.y=oy-(oy-vb.y)*nw/vb.w;vb.w=nw;setVB()}
+function zoom(f,cx,cy){const ox=cx===undefined?vb.x+vb.w/2:cx,oy=cy===undefined?vb.y+vb.h/2:cy;const nw=Math.max(FULL/4,Math.min(FULL,vb.w*f));vb.x=ox-(ox-vb.x)*nw/vb.w;vb.y=oy-(oy-vb.y)*nw/vb.w;vb.w=nw;setVB()}
 $('#zin').onclick=()=>zoom(0.7);$('#zout').onclick=()=>zoom(1/0.7);
-$('#rst').onclick=()=>{vb={x:-C.half,y:-C.half,w:C.half*2};setVB()};
+$('#rst').onclick=()=>{if(HOME)vb={...HOME};setVB()};
 $('#rot').onclick=()=>{rot=(rot+360/N*2)%360;draw()};
-function svgPt(e){const r=svg.getBoundingClientRect();return[vb.x+(e.clientX-r.left)/r.width*vb.w,vb.y+(e.clientY-r.top)/r.height*vb.w]}
+function svgPt(e){const r=svg.getBoundingClientRect();return[vb.x+(e.clientX-r.left)/r.width*vb.w,vb.y+(e.clientY-r.top)/r.height*vb.h]}
 svg.addEventListener('wheel',e=>{if(!e.ctrlKey&&vb.w>=FULL&&e.deltaY>0)return;e.preventDefault();const [x,y]=svgPt(e);zoom(e.deltaY<0?0.85:1/0.85,x,y)},{passive:false});
 const ptrs=new Map();let pinch0=null,moved=false;
 svg.addEventListener('pointerdown',e=>{if(vb.w>=FULL&&e.pointerType==='touch'&&!fsOn)return;ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});moved=false;if(ptrs.size===2){const[a,b]=[...ptrs.values()];pinch0={d:Math.hypot(a.x-b.x,a.y-b.y),w:vb.w}}});
 svg.addEventListener('pointermove',e=>{if(!ptrs.has(e.pointerId))return;const prev=ptrs.get(e.pointerId);const r=svg.getBoundingClientRect();
- if(ptrs.size===1&&vb.w<FULL){const dx=(e.clientX-prev.x)/r.width*vb.w,dy=(e.clientY-prev.y)/r.height*vb.w;if(Math.abs(dx)+Math.abs(dy)>1)moved=true;vb.x-=dx;vb.y-=dy;setVB()}
+ if(ptrs.size===1&&vb.w<FULL){const dx=(e.clientX-prev.x)/r.width*vb.w,dy=(e.clientY-prev.y)/r.height*vb.h;if(Math.abs(dx)+Math.abs(dy)>1)moved=true;vb.x-=dx;vb.y-=dy;setVB()}
  ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});
  if(ptrs.size===2&&pinch0){const[a,b]=[...ptrs.values()];const d=Math.hypot(a.x-b.x,a.y-b.y);const cx=(a.x+b.x)/2,cy=(a.y+b.y)/2;const p=svgPt({clientX:cx,clientY:cy});zoom((pinch0.w*pinch0.d/d)/vb.w,p[0],p[1]);moved=true}});
 ['pointerup','pointercancel','pointerleave'].forEach(n=>svg.addEventListener(n,e=>{ptrs.delete(e.pointerId);if(ptrs.size<2)pinch0=null}));
@@ -531,7 +544,7 @@ function setFs(on){if(on===fsOn)return;fsOn=on;const bx=$('.svgbox'),de=document
  else{bx.classList.remove('fs');bx.removeAttribute('data-ghf-keep');if(fsHome)fsHome.insertBefore(bx,fsNext);de.classList.remove('fs-lock');
   try{if(document.fullscreenElement&&document.exitFullscreen){const pr=document.exitFullscreen();if(pr&&pr.catch)pr.catch(()=>{})}}catch(e){}}
  fsBtn.textContent=on?'✕':'⛶';fsBtn.setAttribute('aria-label',on?'Close full screen':'Full screen');fsBtn.setAttribute('aria-pressed',String(on));
- svg.removeAttribute('data-init');draw();if(on)fsBtn.focus()}
+ HOME=null;draw();if(on)fsBtn.focus()}
 fsBtn.onclick=e=>{e.stopPropagation();setFs(!fsOn)};
 document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&fsOn)setFs(false)});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&fsOn&&!$('#sheetBg').classList.contains('open'))setFs(false)},true);
