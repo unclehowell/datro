@@ -1,0 +1,50 @@
+{
+  "schema": "ghf-docs-archive/1",
+  "about": "Older versions of documents on docs.bucklerfamily.estate, one PDF per language. Written by _theme-docs/release.py in the docs branch.",
+  "items": [
+    {
+      "id": "ghf_legalwiki/guide_readthedocs",
+      "title": "Read the Docs: Great House Farm Legal Wiki",
+      "version": "1.0.1",
+      "date": "2026-10-18",
+      "replaced_by": "1.1.0",
+      "archived": "2026-10-22",
+      "docs_url": "https://docs.bucklerfamily.estate/ghf_legalwiki/guide_readthedocs/",
+      "files": [
+        {
+          "lang": "en",
+          "url": "https://wayback.bucklerfamily.estate/pdf/docs-archive/ghf_legalwiki/guide_readthedocs/en/2026-10-18_ghf_legalwiki-guide_readthedocs_en_v1-0-1.pdf",
+          "bytes": 395634
+        }
+      ]
+    },
+    {
+      "id": "ghf_tests/specimen_loremipsum",
+      "title": "Specimen Document: Lorem Ipsum",
+      "version": "0.0.1",
+      "date": "2026-10-22",
+      "replaced_by": "0.1.0",
+      "archived": "2026-10-22",
+      "docs_url": "https://docs.bucklerfamily.estate/ghf_tests/specimen_loremipsum/",
+      "files": [
+        {
+          "lang": "en",
+          "url": "https://wayback.bucklerfamily.estate/pdf/docs-archive/ghf_tests/specimen_loremipsum/en/2026-10-22_ghf_tests-specimen_loremipsum_en_v0-0-1.pdf",
+          "bytes": 344109
+        },
+        {
+          "lang": "cy",
+          "url": "https://wayback.bucklerfamily.estate/pdf/docs-archive/ghf_tests/specimen_loremipsum/cy/2026-10-22_ghf_tests-specimen_loremipsum_cy_v0-0-1.pdf",
+          "bytes": 344309
+        },
+        {
+          "lang": "es",
+          "url": "https://wayback.bucklerfamily.estate/pdf/docs-archive/ghf_tests/specimen_loremipsum/es/2026-10-22_ghf_tests-specimen_loremipsum_es_v0-0-1.pdf",
+          "bytes": 344275
+        }
+      ]
+    }
+  ],
+  "updated": "2026-10-22T22:22:56Z",
+  "count": 2
+}
