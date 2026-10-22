@@ -194,6 +194,64 @@ function drawApe(ctx: CanvasRenderingContext2D, x: number, y: number, t: number)
   px(-5, -1, 4, 2, "#3e2a1a");
   px(1, -1, 4, 2, "#3e2a1a");
 }
+/** The gorilla is the institution chosen in the dropdown above the climb (never a fixed "Court"). */
+function apeName(lane: Lane | null) {
+  return lane?.name?.trim() || "Institution";
+}
+function fitText(ctx: CanvasRenderingContext2D, s: string, max: number) {
+  if (ctx.measureText(s).width <= max) return s;
+  let t = s;
+  while (t.length > 1 && ctx.measureText(`${t}…`).width > max) t = t.slice(0, -1);
+  return `${t.trimEnd()}…`;
+}
+const APE_TAG_DY = 72;
+/** Brass name tag in the band above the top girder, with an elbow arrow coming down on the ape's LEFT and pointing at him. */
+function apeTagBox(ax: number) {
+  const bodyL = ax - 25;
+  const right = ax - 26 > 150 ? bodyL - 4 : W - 4;
+  return { bodyL, left: 4, right };
+}
+function drawApeTag(ctx: CanvasRenderingContext2D, ax: number, ay: number, name: string) {
+  const { bodyL, left, right } = apeTagBox(ax);
+  const onRight = ax - 26 > 150;
+  ctx.save();
+  ctx.font = "800 9px Outfit, system-ui, sans-serif";
+  ctx.textBaseline = "middle";
+  const label = fitText(ctx, name, right - left - 14);
+  const w = ctx.measureText(label).width + 14;
+  const x0 = onRight ? right - w : left;
+  const yc = ay - APE_TAG_DY;
+  ctx.fillStyle = "#c4a574";
+  if (typeof ctx.roundRect === "function") {
+    ctx.beginPath();
+    ctx.roundRect(x0, yc - 8, w, 16, 4);
+    ctx.fill();
+  } else ctx.fillRect(x0, yc - 8, w, 16);
+  ctx.fillStyle = "#14110e";
+  ctx.textAlign = "left";
+  ctx.fillText(label, x0 + 7, yc + 0.5);
+  // arrow: down the ape's left side, then into him
+  const stem = onRight ? Math.max(x0 + 8, bodyL - 16) : x0 + 2;
+  const yA = ay - 27;
+  const tip = bodyL;
+  ctx.strokeStyle = "#ffd34d";
+  ctx.fillStyle = "#ffd34d";
+  ctx.lineWidth = 2;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+  ctx.beginPath();
+  ctx.moveTo(stem, yc + 8);
+  ctx.lineTo(stem, yA);
+  ctx.lineTo(tip - 5, yA);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(tip, yA);
+  ctx.lineTo(tip - 6, yA - 4.5);
+  ctx.lineTo(tip - 6, yA + 4.5);
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
 function drawMan(ctx: CanvasRenderingContext2D, x: number, y: number, t: number, label: string) {
   const p = 2;
   const bob = Math.round(Math.sin(t / 300) * 1.2);
@@ -351,6 +409,11 @@ function layout(lane: Lane, today: number) {
   const top = girder(N - 1);
   const apeX = top.highRight ? top.right - 30 : top.left + 30;
   targets.push({ x: apeX, y: top.yAt(apeX) - 28, r: 26, hit: { kind: "court" } });
+  {
+    const { left, right } = apeTagBox(apeX);
+    const tx = apeX - 26 > 150 ? right - 40 : left + 40;
+    targets.push({ x: tx, y: top.yAt(apeX) - 1 - APE_TAG_DY, r: 14, hit: { kind: "court" } });
+  }
   return { axis, stacks, due, missed, met, fails, tp, apeX, targets };
 }
 
@@ -480,17 +543,11 @@ function draw(ctx: CanvasRenderingContext2D, lane: Lane, L: ReturnType<typeof la
     }
   }
   ctx.textAlign = "start";
-  // court + ape at the top
+  // the ape at the top IS the chosen institution: its name on a brass tag, an arrow on his left pointing at him
   const top = girder(N - 1);
   const ax = L.apeX;
   const ay = top.yAt(ax) - 1;
-  ctx.fillStyle = "#c4a574";
-  ctx.fillRect(ax - 26, ay - 66, 52, 14);
-  ctx.fillStyle = "#14110e";
-  ctx.font = "800 8.5px Outfit, system-ui, sans-serif";
-  ctx.textAlign = "center";
-  ctx.fillText("COURT", ax, ay - 56);
-  ctx.textAlign = "start";
+  drawApeTag(ctx, ax, ay, apeName(lane));
   drawApe(ctx, ax, ay, motion ? t : 0);
   // barrels rolling down the climb (decorative: the fob-offs)
   if (motion) {
@@ -659,6 +716,7 @@ function Sheet({ hit, lane }: { hit: Hit; lane: Lane }) {
     return (
       <div className="space-y-2">
         {head}
+        <p className="text-sm text-fg">The gorilla at the top of this climb is {lane.name}, the body chosen above.</p>
         <p className="text-sm text-fg">Court routes keep their own time limits and are never held back for the steps below. Independent legal advice early.</p>
         <p className="text-sm text-muted">{lane.court ?? "No court route for this body."}</p>
         <StepList lane={lane} />
@@ -931,7 +989,8 @@ export function RoadmapRamps({ preferName }: { preferName?: string }) {
             className="block touch-manipulation"
             onClick={(e) => onTap(e.clientX, e.clientY)}
             role="img"
-            aria-label={lane ? `Roadmap for ${lane.name}: ${lane.steps.map((s) => `${s.n} ${s.label} ${STATUS[s.status].label} ${s.date ?? ""}`).join("; ")}` : "Roadmap loading"}
+            title={lane ? `The gorilla is ${apeName(lane)}` : undefined}
+            aria-label={lane ? `Roadmap for ${lane.name} (the gorilla at the top is ${apeName(lane)}): ${lane.steps.map((s) => `${s.n} ${s.label} ${STATUS[s.status].label} ${s.date ?? ""}`).join("; ")}` : "Roadmap loading"}
           />
         )}
       </div>
