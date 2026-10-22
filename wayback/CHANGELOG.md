@@ -1,3 +1,10 @@
+## Unreleased - 2026-10-22
+
+### Added
+- New item in the **Video** tab: `video/2026-10-22_ty-mawr-great-house-story-on-the-map.webm`, "Tŷ Mawr, the Great House of Llandough: the story on the map" (13 min 34 s, 9.9 MB, 1600x720 WebM, VP9/Opus), with a poster frame `video/2026-10-22_ty-mawr-great-house-story-on-the-map-poster.jpg`. It is the narrated map story of the farm, 1547 to 2026, recorded from maps.bucklerfamily.estate and trimmed to the narration (in 16.6 s, out 830.9 s of the recording).
+- Like the other archive videos, the WebM sits in the `wayback_media` R2 store under the same `video/` key (md5 d553adceb1590dc753d477f56e0c041b) and is served through the media function with byte ranges; the poster frame is a static file in this branch.
+- `video/_treeview.json`, `agent-index.json` and `llms.txt` list it.
+
 ## Unreleased - 2026-10-19 (evening)
 
 ### Added

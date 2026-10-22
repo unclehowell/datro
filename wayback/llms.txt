@@ -9,7 +9,7 @@ Agent starting points:
 - /text/_treeview.json — machine-readable text file listing.
 - /pdf/_treeview.json — machine-readable PDF listing.
 - /images/_treeview.json — public image listing.
-- /video/_treeview.json — public video listing (case films, MP4).
+- /video/_treeview.json — public video listing (case films and the narrated map story; MP4 and WebM).
 - /pdf/foi/manifest.json — recent FOI/EIR PDF manifest.
 - /api/index.json — case-mail API (redacted emails); records with an `attachments` list link each email to its attached letters under /pdf/foi/ (e.g. the 19 Oct 2026 Welsh Government replies ATISN 26-0010 and ATISN 27589).
 - /AGENTS.md — archive conventions and agent notes.
