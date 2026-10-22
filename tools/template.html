@@ -31,6 +31,13 @@ header p{margin:0 0 10px;color:var(--muted);font-size:15px}
 #ring.zoomed{touch-action:none;cursor:grab}
 .ctl{position:absolute;left:10px;bottom:10px;display:flex;gap:6px}
 .svgbox{position:relative}
+/* full screen: the ring fills the viewport (CSS, so it works on iPhone too; the browser's own full screen is asked for where it exists) */
+html.fs-lock,html.fs-lock body{overflow:hidden!important}
+.svgbox.fs{position:fixed;inset:0;z-index:2147483600;background:var(--panel);display:flex;align-items:center;justify-content:center;overscroll-behavior:contain}
+.svgbox.fs #ring{width:min(100vw,calc(100vh - 128px));width:min(100vw,calc(100dvh - 128px));touch-action:none}
+.svgbox.fs .ctl{position:fixed;left:0;right:0;bottom:max(14px,env(safe-area-inset-bottom));justify-content:center;padding:0}
+.svgbox.fs #fs{position:fixed;top:max(12px,env(safe-area-inset-top));right:12px;width:48px;height:48px;font-size:22px;background:#151229;border-color:#ffffff66}
+.nlead{stroke:#ffffff40;stroke-width:1.5}
 /* day mode: the shared theme inverts this dark page; the figure (.stage, mobile legend) and the parcel dots carry data-ghf-keep so the year and parcel colours stay true */
 .ctl button{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#151229e6;color:var(--ink);font-size:20px;cursor:pointer}
 .legend{background:#151229ee;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13px;color:var(--ink)}
@@ -78,7 +85,7 @@ g.ch.dim{opacity:.1}
 g.ch.dim .chit{pointer-events:none}
 g.cn{cursor:pointer}
 /* sheet */
-.sheet-bg{position:fixed;inset:0;background:#0009;display:none;align-items:flex-end;justify-content:center;z-index:20}
+.sheet-bg{position:fixed;inset:0;background:#0009;display:none;align-items:flex-end;justify-content:center;z-index:2147483620}
 .sheet-bg.open{display:flex}
 .sheet{background:#201b40;border:1px solid var(--line);border-radius:18px 18px 0 0;max-width:640px;width:100%;max-height:62vh;overflow:auto;padding:16px 16px 22px}
 .sheet h2{margin:0 0 2px;font-size:22px}
@@ -96,13 +103,13 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:14px}
 .tlab{font-weight:800;fill:#151229;letter-spacing:.5px;pointer-events:none}
 .poo{cursor:pointer;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
 .pcode{font-weight:800;fill:#151229;text-anchor:middle;dominant-baseline:central}
-.arc{fill:none;stroke-width:11;stroke-linecap:butt}
+.arc{fill:none;stroke-linecap:butt}
 .hit{fill:none;stroke:transparent;stroke-width:26;cursor:pointer;pointer-events:stroke}
 g.t{transition:opacity .2s}
 g.t.dim{opacity:.07}
 svg.haschains g.t:not(.dim):not(.sel){opacity:.5}
 g.t.dim .hit{pointer-events:none}
-g.t.sel .arc{stroke-width:15}
+g.t.sel .arc{stroke-width:var(--sws,9px)}
 g.n.dim{opacity:.25}
 @media (max-width:760px){
  .stage{display:block}
@@ -125,12 +132,12 @@ g.n.dim{opacity:.25}
 <section id="ringView" aria-label="Ring diagram">
 <div class="stage" style="margin-top:10px" data-ghf-keep>
 <div class="svgbox"><svg id="ring" viewBox="-540 -540 1080 1080" role="img" aria-label="Circular network of the holders of Great House Farm land, with an arc for each transfer"></svg>
-<div class="ctl"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button><button id="rot" aria-label="Rotate the ring">⟳</button><button id="rst" aria-label="Reset view">⤢</button></div></div>
+<div class="ctl"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button><button id="rot" aria-label="Rotate the ring">⟳</button><button id="rst" aria-label="Reset zoom" style="font-size:15px;font-weight:700">1×</button><button id="fs" aria-label="Full screen" aria-pressed="false">⛶</button></div></div>
 <div class="legend" id="legendD"></div>
 </div>
 <section class="chains" id="chainsBox" aria-label="Three chains from the centre" data-ghf-keep></section>
 <div class="legend mlegend" id="legendM" data-ghf-keep></div>
-<p class="hint">Use + to zoom in (the full labels appear), drag to move, ⟳ to turn the ring, or switch to List.</p>
+<p class="hint">Use + to zoom in (the full labels appear), drag to move, ⟳ to turn the ring, ⛶ for full screen, or switch to List.</p>
 </section>
 <section id="list" aria-label="Chronology"></section>
 </main>
@@ -155,7 +162,7 @@ let rot=0,focus=new Set(),sel=null;
 const N=RP.length;
 const inFocus=ps=>focus.size===0||ps.some(p=>focus.has(p));
 const pcode=p=>p==='X'?'W':p;
-function cfg(){const mob=svg.getBoundingClientRect().width<640;return mob?{mob,half:560,R:272,nfs:30,afs:15.5,cr:10,cfs:10,sw:13,pfs:76}:{mob,half:600,R:318,nfs:20,afs:9.5,cr:8,cfs:8,sw:10,pfs:58}}
+function cfg(){const mob=svg.getBoundingClientRect().width<640;return mob?{mob,half:540,R:380,nfs:22,afs:15.5,cr:10,cfs:10,sw:6,pfs:76,tfs:10.5}:{mob,half:600,R:420,nfs:15,afs:9.5,cr:8,cfs:8,sw:4.5,pfs:58,tfs:8}}
 let C=null,R=320,labelMode='full',lastZ=1;
 function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
 function ang(i){return(-90+rot+i*360/N)*Math.PI/180}
@@ -163,11 +170,11 @@ function pos(i,r){const a=ang(i);return[Math.cos(a)*r,Math.sin(a)*r]}
 function legendHTML(){
  return `<h2>Year</h2><div class="grad" style="background:${gradCSS}"></div><div class="ticks" style="position:relative;height:15px">${[1540,1870,1940,2010].map((y,i,a)=>`<span style="position:absolute;left:${(yf(y)*100).toFixed(1)}%;transform:translateX(${i===0?0:i===a.length-1?-100:-50}%)">${y}</span>`).join('')}</div>
  <div class="sec"><h2>Record</h2>
- <div class="lrow"><svg width="44" height="10"><line x1="2" y1="5" x2="42" y2="5" stroke="#fff" stroke-width="8"/></svg>record held</div>
- <div class="lrow"><svg width="44" height="10"><line x1="2" y1="5" x2="42" y2="5" stroke="#fff" stroke-width="8" stroke-dasharray="7 5"/></svg>per secondary source · record not seen</div>
+ <div class="lrow"><svg width="44" height="10"><line x1="2" y1="5" x2="42" y2="5" stroke="#fff" stroke-width="4"/></svg>record held</div>
+ <div class="lrow"><svg width="44" height="10"><line x1="2" y1="5" x2="42" y2="5" stroke="#fff" stroke-width="4" stroke-dasharray="7 4"/></svg>per secondary source · record not seen</div>
  <div class="lrow"><svg width="44" height="14"><line x1="2" y1="7" x2="42" y2="7" stroke="#ffd166" stroke-width="12"/><text x="22" y="7.5" font-size="8" font-weight="800" fill="#151229" text-anchor="middle" dominant-baseline="central">WA…</text></svg>title number on the line</div>
  <div class="lrow"><span style="font-size:22px;width:44px;text-align:center" data-ghf-keep>💩</span>${esc(D.origin.label)}</div>
- <div class="lrow"><svg width="44" height="16"><line x1="2" y1="8" x2="42" y2="8" stroke="#fff" stroke-width="12"/><line x1="2" y1="8" x2="42" y2="8" stroke="#ffd166" stroke-width="7"/></svg>12-year limitation period on a chain</div>
+ <div class="lrow"><svg width="44" height="16"><line x1="2" y1="8" x2="42" y2="8" stroke="#fff" stroke-width="9"/><line x1="2" y1="8" x2="42" y2="8" stroke="#ffd166" stroke-width="6"/></svg>12-year limitation period on a chain</div>
  <div class="lrow"><svg width="44" height="16"><circle cx="22" cy="8" r="6" fill="#1d1938" stroke="#fff" stroke-width="2" stroke-dasharray="3 2"/></svg>year with a source to add</div></div>
  <div class="sec"><h2>Parcel (circle on the arc)</h2>${D.parcels.map(p=>`<div class="lrow"><span class="dot" data-ghf-keep style="background:${p.color}">${pcode(p.id)}</span>${esc(p.name)}</div>`).join('')}</div>`}
 $('#legendD').innerHTML=legendHTML();$('#legendM').innerHTML=legendHTML();
@@ -188,11 +195,11 @@ const spanLab=(ch,n)=>(n.y===ch.span.from&&ch.span.lab0)?ch.span.lab0:(n.y===ch.
 function drawChains(gp){
  const gC=el('g',{},gp),gL=el('g',{},gp);
  const fz=(C.mob&&labelMode==='full')?Math.max(0.5,Math.min(1,lastZ*1.25)):1;
- const yfs=(C.mob?28:15)*fz,bfs=(C.mob?34:18)*fz,tfs=(C.mob?30:15)*fz,csw=C.mob?11:7,dr=(C.mob?7:6)*Math.max(.7,fz);
+ const yfs=(C.mob?28:15)*fz,bfs=(C.mob?34:18)*fz,tfs=(C.mob?30:15)*fz,csw=C.mob?5:3.5,dr=(C.mob?6:5)*Math.max(.7,fz);
  const pills=[];
  CH.forEach(ch=>{
   const b=P[ch.to].i,p1=pos(b,R-14),L1=Math.hypot(p1[0],p1[1]),ux=p1[0]/L1,uy=p1[1]/L1,bd=ch.bend||1;
-  const p0=[ux*C.pfs*0.66,uy*C.pfs*0.66],mid=[(p0[0]+p1[0])/2,(p0[1]+p1[1])/2],bend=bd*(C.mob?70:62);
+  const p0=[ux*C.pfs*0.66,uy*C.pfs*0.66],mid=[(p0[0]+p1[0])/2,(p0[1]+p1[1])/2],bend=bd*R*0.24;
   const c=[mid[0]-uy*bend,mid[1]+ux*bend];
   const g=el('g',{class:'ch','data-ch':ch.id,'data-p':ch.parcels.join(' '),role:'button',tabindex:0,'aria-label':ch.name+': '+ch.nodes.map(nodeLab).join(', ')},gC);
   const dpath=`M${p0[0].toFixed(1)},${p0[1].toFixed(1)} Q${c[0].toFixed(1)},${c[1].toFixed(1)} ${p1[0].toFixed(1)},${p1[1].toFixed(1)}`;
@@ -201,18 +208,18 @@ function drawChains(gp){
   const ns=Math.max(1,kj-ki),wIn=Math.max(1,2.6/ns),gw=[];for(let k=1;k<n;k++)gw.push(k>ki&&k<=kj?wIn:1);
   const tot=gw.reduce((a,b)=>a+b,0)||1,ts=[0.17];gw.forEach(w=>ts.push(ts[ts.length-1]+0.71*w/tot));
   el('path',{d:dpath,fill:'none',stroke:ch.color,'stroke-width':csw,'stroke-linecap':'round'},g);
-  const tx=p1[0]-c[0],ty=p1[1]-c[1],tl=Math.hypot(tx,ty),ax=tx/tl,ay=ty/tl,s=csw*2;
+  const tx=p1[0]-c[0],ty=p1[1]-c[1],tl=Math.hypot(tx,ty),ax=tx/tl,ay=ty/tl,s=csw*2.8;
   el('path',{d:`M${p1[0]+ax*4},${p1[1]+ay*4} L${p1[0]-ax*s-ay*s*.6},${p1[1]-ay*s+ax*s*.6} L${p1[0]-ax*s+ay*s*.6},${p1[1]-ay*s-ax*s*.6}Z`,fill:ch.color},g);
   el('path',{d:dpath,class:'chit',fill:'none',stroke:'transparent','stroke-width':C.mob?40:24,'pointer-events':'stroke'},g);
   g.addEventListener('click',e=>{e.stopPropagation();openChain(ch.id)});
   g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openChain(ch.id)}});
   if(ki>=0&&kj>=0){const N2=28,pts=[];for(let s=0;s<=N2;s++)pts.push(bez(p0,c,p1,ts[ki]+(ts[kj]-ts[ki])*s/N2));
    const rev=pts[N2][0]<pts[0][0],pp=(rev?pts.slice().reverse():pts).map(q=>q[0].toFixed(1)+','+q[1].toFixed(1)).join(' L');
-   const bw=C.mob?40:21,id='c12-'+ch.id,pg=el('g',{class:'lab12'},g);
-   el('path',{d:'M'+pp,fill:'none',stroke:'#fff','stroke-width':bw+6,'stroke-linecap':'round'},pg);
+   const bw=C.mob?18:10,id='c12-'+ch.id,pg=el('g',{class:'lab12'},g);
+   el('path',{d:'M'+pp,fill:'none',stroke:'#fff','stroke-width':bw+4,'stroke-linecap':'round'},pg);
    el('path',{id:id,d:'M'+pp,fill:'none',stroke:ch.color,'stroke-width':bw,'stroke-linecap':'round'},pg);
    let bl=0;for(let s=1;s<=N2;s++)bl+=Math.hypot(pts[s][0]-pts[s-1][0],pts[s][1]-pts[s-1][1]);
-   if(kj-ki===1&&bl-dr*4.5>8*tfs*0.6+12){const tt=el('text',{class:'t12','font-size':tfs,'dominant-baseline':'central'},pg);
+   if(kj-ki===1&&bw>=tfs*1.05&&bl-dr*4.5>8*tfs*0.6+12){const tt=el('text',{class:'t12','font-size':tfs,'dominant-baseline':'central'},pg);
     const tp=el('textPath',{href:'#'+id,startOffset:'50%','text-anchor':'middle'},tt);tp.textContent='12 years'}
    else{// too short for the words inside: a pill beside the bar, past the year labels
     const q=pts[N2>>1],qa=pts[(N2>>1)+1];let dx=qa[0]-q[0],dy=qa[1]-q[1];const dl=Math.hypot(dx,dy)||1;dx/=dl;dy/=dl;
@@ -261,7 +268,7 @@ function draw(){
  C=cfg();R=C.R;const z=Math.min(1,vb.w/(C.half*2));labelMode=(C.mob&&z>0.62)?'year':'full';
  if(C.mob&&labelMode==='full'){const f=Math.max(0.42,Math.min(1,z*1.25));C.afs*=f;C.cr*=f;C.cfs*=f}
  lastZ=z;
- svg.innerHTML='';
+ svg.innerHTML='';svg.style.setProperty('--sws',(C.sw*1.6)+'px');
  el('circle',{cx:0,cy:0,r:R,fill:'none',stroke:'#ffffff14','stroke-width':1},svg);
  const gA=el('g',{},svg),gL=el('g',{},svg),gN=el('g',{},svg);
  // parallel index per unordered pair
@@ -290,15 +297,15 @@ function draw(){
   const dpath=`M${p0[0].toFixed(1)},${p0[1].toFixed(1)} Q${c[0].toFixed(1)},${c[1].toFixed(1)} ${p1[0].toFixed(1)},${p1[1].toFixed(1)}`;
   el('path',{d:dpath,class:'arc',stroke:col,'stroke-width':C.sw,'stroke-dasharray':tr.status==='dashed'?(C.sw*1.6)+' '+(C.sw*0.9):'none'},g);
   // arrowhead at p1
-  const tx=p1[0]-c[0],ty=p1[1]-c[1],tl=Math.hypot(tx,ty),ux=tx/tl,uy=ty/tl,s=C.sw*1.9;
+  const tx=p1[0]-c[0],ty=p1[1]-c[1],tl=Math.hypot(tx,ty),ux=tx/tl,uy=ty/tl,s=C.sw*2.6;
   el('path',{d:`M${p1[0]},${p1[1]} L${p1[0]-ux*s-uy*s*.55},${p1[1]-uy*s+ux*s*.55} L${p1[0]-ux*s+uy*s*.55},${p1[1]-uy*s-ux*s*.55}Z`,fill:col},g);
   el('path',{d:dpath,class:'hit'},g);
   if(tr.title){// the title number rides inside the thick stroke, reading left to right
    const rev=p1[0]<p0[0],tid='tp-'+tr.id,q0=rev?p1:p0,q1=rev?p0:p1;
    el('path',{id:tid,d:`M${q0[0].toFixed(1)},${q0[1].toFixed(1)} Q${c[0].toFixed(1)},${c[1].toFixed(1)} ${q1[0].toFixed(1)},${q1[1].toFixed(1)}`,fill:'none',stroke:'none'},g);
-   const tt=el('text',{class:'tlab','font-size':(C.sw*0.82).toFixed(1),'dominant-baseline':'central',stroke:col,'stroke-width':C.sw*0.3,'paint-order':'stroke'},g);
+   const tt=el('text',{class:'tlab','font-size':C.tfs,'dominant-baseline':'central',stroke:col,'stroke-width':C.tfs*0.55,'stroke-linejoin':'round','paint-order':'stroke'},g);
    const tp=el('textPath',{href:'#'+tid,startOffset:'50%','text-anchor':'middle'},tt);tp.textContent=tr.title;
-   const qm=bez(p0,c,p1,0.5),tw=tr.title.length*C.sw*0.62;placed.push([qm[0]-tw/2,qm[1]-tw/2,qm[0]+tw/2,qm[1]+tw/2]);
+   const qm=bez(p0,c,p1,0.5),tw=tr.title.length*C.tfs*0.75;placed.push([qm[0]-tw/2,qm[1]-tw/2,qm[0]+tw/2,qm[1]+tw/2]);
   }
   // label placement: try several t values, avoid overlaps
   const fs=C.afs,lab=labelMode==='year'?String(tr.year):tr.label,cw=C.cr*2+2;
@@ -324,15 +331,27 @@ function draw(){
  el('circle',{cx:0,cy:0,r:C.pfs*0.62,fill:'#1d1938',stroke:'#ffffff33','stroke-width':2},og);
  const pt=el('text',{x:0,y:C.pfs*0.06,class:'poo','font-size':C.pfs,'text-anchor':'middle','dominant-baseline':'central','data-ghf-keep':''},og);pt.textContent='💩';
  og.addEventListener('click',e=>{e.stopPropagation();openOrigin()});og.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openOrigin()}});
- // nodes
- RP.forEach(p=>{
-  const [x,y]=pos(p.i,R);const a=ang(p.i)*180/Math.PI;
+ // nodes: every holder's name at one rising angle (bottom-left to top-right), compact, set just clear of the ring
+ const LA=-Math.PI/4,lu=[Math.cos(LA),Math.sin(LA)],ln=[-lu[1],lu[0]],lh=C.nfs*1.18,gap=C.mob?12:9,placedL=[];
+ const ordN=RP.slice().sort((a,b)=>Math.abs(Math.cos(ang(b.i))*lu[0]+Math.sin(ang(b.i))*lu[1])-Math.abs(Math.cos(ang(a.i))*lu[0]+Math.sin(ang(a.i))*lu[1]));
+ ordN.forEach(p=>{
+  const a=ang(p.i),rx=Math.cos(a),ry=Math.sin(a),[x,y]=pos(p.i,R);
   const g=el('g',{class:'n','data-id':p.id},gN);
-  el('circle',{cx:x,cy:y,r:8,fill:'#f3f1ff',stroke:'#1d1938','stroke-width':3},g);
-  const right=Math.cos(ang(p.i))>=-0.001;
-  const [lx,ly]=pos(p.i,R+16);
-  const t=el('text',{x:lx,y:ly,class:'nlab','font-size':C.nfs,'text-anchor':right?'start':'end','dominant-baseline':'central',transform:`rotate(${right?a:a+180} ${lx} ${ly})`},g);
-  t.textContent=C.mob?p.m:p.short;
+  const t=el('text',{x:0,y:0,class:'nlab','font-size':C.nfs,'dominant-baseline':'central'},g);t.textContent=C.mob?p.m:p.short;
+  let L=0;try{L=t.getComputedTextLength()}catch(e){}if(!L)L=t.textContent.length*C.nfs*0.56;
+  const st=rx*lu[0]+ry*lu[1]>=0;t.setAttribute('text-anchor',st?'start':'end');
+  let best=null,bestO=1e18;
+  for(let d=gap;d<=gap+lh*7;d+=lh*0.5){
+   const ax=x+rx*d,ay=y+ry*d,a0=ax*lu[0]+ay*lu[1],b0=ax*ln[0]+ay*ln[1];
+   const bx=st?[a0-2,b0-lh/2,a0+L+2,b0+lh/2]:[a0-L-2,b0-lh/2,a0+2,b0+lh/2];
+   const ddx=Math.max(bx[0],0,-bx[2]),ddy=Math.max(bx[1],0,-bx[3]);if(Math.hypot(ddx,ddy)<R+gap-2)continue;
+   let o=0;for(const q of placedL){const ix=Math.max(0,Math.min(bx[2],q[2])-Math.max(bx[0],q[0])),iy=Math.max(0,Math.min(bx[3],q[3])-Math.max(bx[1],q[1]));o+=ix*iy}
+   if(o<bestO-0.5){bestO=o;best={ax,ay,bx,d}}if(o===0)break}
+  if(!best){const d=gap+lh*7,ax=x+rx*d,ay=y+ry*d;best={ax,ay,bx:[0,0,0,0],d}}
+  placedL.push(best.bx);
+  if(best.d>gap+lh*0.6)el('line',{x1:x+rx*10,y1:y+ry*10,x2:best.ax-rx*3,y2:best.ay-ry*3,class:'nlead'},g);
+  t.setAttribute('x',best.ax.toFixed(1));t.setAttribute('y',best.ay.toFixed(1));t.setAttribute('transform',`rotate(-45 ${best.ax.toFixed(1)} ${best.ay.toFixed(1)})`);
+  el('circle',{cx:x,cy:y,r:C.mob?8:6,fill:'#f3f1ff',stroke:'#1d1938','stroke-width':3},g);
   const ti=el('title',{},g);ti.textContent=p.name;
  });
  applyFocus();
@@ -364,7 +383,7 @@ $('#rot').onclick=()=>{rot=(rot+360/N*2)%360;draw()};
 function svgPt(e){const r=svg.getBoundingClientRect();return[vb.x+(e.clientX-r.left)/r.width*vb.w,vb.y+(e.clientY-r.top)/r.height*vb.w]}
 svg.addEventListener('wheel',e=>{if(!e.ctrlKey&&vb.w>=FULL&&e.deltaY>0)return;e.preventDefault();const [x,y]=svgPt(e);zoom(e.deltaY<0?0.85:1/0.85,x,y)},{passive:false});
 const ptrs=new Map();let pinch0=null,moved=false;
-svg.addEventListener('pointerdown',e=>{if(vb.w>=FULL&&e.pointerType==='touch')return;ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});moved=false;if(ptrs.size===2){const[a,b]=[...ptrs.values()];pinch0={d:Math.hypot(a.x-b.x,a.y-b.y),w:vb.w}}});
+svg.addEventListener('pointerdown',e=>{if(vb.w>=FULL&&e.pointerType==='touch'&&!fsOn)return;ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});moved=false;if(ptrs.size===2){const[a,b]=[...ptrs.values()];pinch0={d:Math.hypot(a.x-b.x,a.y-b.y),w:vb.w}}});
 svg.addEventListener('pointermove',e=>{if(!ptrs.has(e.pointerId))return;const prev=ptrs.get(e.pointerId);const r=svg.getBoundingClientRect();
  if(ptrs.size===1&&vb.w<FULL){const dx=(e.clientX-prev.x)/r.width*vb.w,dy=(e.clientY-prev.y)/r.height*vb.w;if(Math.abs(dx)+Math.abs(dy)>1)moved=true;vb.x-=dx;vb.y-=dy;setVB()}
  ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});
@@ -404,6 +423,19 @@ function renderList(){
 function view(v){$('#vRing').setAttribute('aria-pressed',v==='ring');$('#vList').setAttribute('aria-pressed',v==='list');$('#ringView').style.display=v==='ring'?'':'none';$('#list').style.display=v==='list'?'block':'none';
  const u=new URL(location);if(v==='list')u.searchParams.set('v','list');else u.searchParams.delete('v');history.replaceState(null,'',u)}
 $('#vRing').onclick=()=>view('ring');$('#vList').onclick=()=>view('list');
+
+// full screen: CSS takes the ring over the whole viewport (iPhone Safari has no element full screen); the browser's own full screen is asked for where it exists
+let fsOn=false,fsHome=null,fsNext=null;const fsBtn=$('#fs');
+function setFs(on){if(on===fsOn)return;fsOn=on;const bx=$('.svgbox'),de=document.documentElement;
+ if(on){fsHome=bx.parentNode;fsNext=bx.nextSibling;document.body.appendChild(bx);bx.classList.add('fs');bx.setAttribute('data-ghf-keep','');de.classList.add('fs-lock');
+  try{if(document.fullscreenEnabled&&de.requestFullscreen&&!document.fullscreenElement){const pr=de.requestFullscreen();if(pr&&pr.catch)pr.catch(()=>{})}}catch(e){}}
+ else{bx.classList.remove('fs');bx.removeAttribute('data-ghf-keep');if(fsHome)fsHome.insertBefore(bx,fsNext);de.classList.remove('fs-lock');
+  try{if(document.fullscreenElement&&document.exitFullscreen){const pr=document.exitFullscreen();if(pr&&pr.catch)pr.catch(()=>{})}}catch(e){}}
+ fsBtn.textContent=on?'✕':'⛶';fsBtn.setAttribute('aria-label',on?'Close full screen':'Full screen');fsBtn.setAttribute('aria-pressed',String(on));
+ svg.removeAttribute('data-init');draw();if(on)fsBtn.focus()}
+fsBtn.onclick=e=>{e.stopPropagation();setFs(!fsOn)};
+document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&fsOn)setFs(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&fsOn&&!$('#sheetBg').classList.contains('open'))setFs(false)},true);
 renderChains();draw();renderList();
 let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(draw,200)});
 const q=new URLSearchParams(location.search);if(q.get('p')){q.get('p').split(',').forEach(x=>{if(PC[x])focus.add(x)});syncChips();applyFocus();renderList()}if(q.get('v')==='list')view('list');if(q.get('t'))open(q.get('t'));
