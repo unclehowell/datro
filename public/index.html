@@ -31,6 +31,7 @@ header p{margin:0 0 10px;color:var(--muted);font-size:15px}
 #ring.zoomed{touch-action:none;cursor:grab}
 .ctl{position:absolute;left:10px;bottom:10px;display:flex;gap:6px}
 .svgbox{position:relative}
+/* day mode: the shared theme inverts this dark page; the figure (.stage, mobile legend) and the parcel dots carry data-ghf-keep so the year and parcel colours stay true */
 .ctl button{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#151229e6;color:var(--ink);font-size:20px;cursor:pointer}
 .legend{background:#151229ee;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13px;color:var(--ink)}
 .stage .legend{margin:12px 12px 12px 0}
@@ -96,12 +97,12 @@ g.n.dim{opacity:.25}
 <div class="chips" id="chips" role="group" aria-label="Show parcel"></div>
 <main>
 <section id="ringView" aria-label="Ring diagram">
-<div class="stage" style="margin-top:10px">
+<div class="stage" style="margin-top:10px" data-ghf-keep>
 <div class="svgbox"><svg id="ring" viewBox="-540 -540 1080 1080" role="img" aria-label="Circular network of the holders of Great House Farm land, with an arc for each transfer"></svg>
 <div class="ctl"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button><button id="rot" aria-label="Rotate the ring">⟳</button><button id="rst" aria-label="Reset view">⤢</button></div></div>
 <div class="legend" id="legendD"></div>
 </div>
-<div class="legend mlegend" id="legendM"></div>
+<div class="legend mlegend" id="legendM" data-ghf-keep></div>
 <p class="hint">Use + to zoom in (the full labels appear), drag to move, ⟳ to turn the ring, or switch to List.</p>
 </section>
 <section id="list" aria-label="Chronology"></section>
@@ -139,13 +140,13 @@ function legendHTML(){
  <div class="lrow"><svg width="44" height="10"><line x1="2" y1="5" x2="42" y2="5" stroke="#fff" stroke-width="8" stroke-dasharray="7 5"/></svg>per secondary source · record not seen</div>
  <div class="lrow"><svg width="44" height="14"><line x1="2" y1="7" x2="42" y2="7" stroke="#ffd166" stroke-width="12"/><text x="22" y="7.5" font-size="8" font-weight="800" fill="#151229" text-anchor="middle" dominant-baseline="central">WA…</text></svg>title number on the line</div>
  <div class="lrow"><span style="font-size:22px;width:44px;text-align:center" data-ghf-keep>💩</span>${esc(D.origin.label)}</div></div>
- <div class="sec"><h2>Parcel (circle on the arc)</h2>${D.parcels.map(p=>`<div class="lrow"><span class="dot" style="background:${p.color}">${pcode(p.id)}</span>${esc(p.name)}</div>`).join('')}</div>`}
+ <div class="sec"><h2>Parcel (circle on the arc)</h2>${D.parcels.map(p=>`<div class="lrow"><span class="dot" data-ghf-keep style="background:${p.color}">${pcode(p.id)}</span>${esc(p.name)}</div>`).join('')}</div>`}
 $('#legendD').innerHTML=legendHTML();$('#legendM').innerHTML=legendHTML();
 // chips
 const chips=$('#chips');
 [['all','All',null]].concat(D.parcels.map(p=>[p.id,p.chip||(p.id==='X'?'Woods':p.name.replace(/^Parcel [A-Z0-9]+ · /,'')),p.color])).forEach(([id,lab,c])=>{
  const b=document.createElement('button');b.className='chip';b.dataset.p=id;b.setAttribute('aria-pressed',id==='all');
- b.innerHTML=(c?`<span class="dot" style="background:${c}">${pcode(id)}</span>`:'')+esc(lab);
+ b.innerHTML=(c?`<span class="dot" data-ghf-keep style="background:${c}">${pcode(id)}</span>`:'')+esc(lab);
  if(!c)b.style.paddingLeft='12px';
  b.onclick=()=>{const y=scrollY;if(id==='all')focus.clear();else if(focus.has(id))focus.delete(id);else focus.add(id);syncChips();applyFocus();renderList();scrollTo(0,y)};chips.appendChild(b)});
 function syncChips(){chips.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p==='all'?focus.size===0:focus.has(x.dataset.p)));
@@ -264,7 +265,7 @@ svg.addEventListener('click',e=>{if(moved){e.stopPropagation();moved=false;retur
 // native pinch on touch while unzoomed is handled by the page; a two-finger gesture zooms the ring once zoomed
 // sheet
 function srcList(s){return'<ul>'+s.map(x=>`<li><a href="${esc(x.u)}" target="_blank" rel="noopener">${esc(x.t)}</a></li>`).join('')+'</ul>'}
-function chipsFor(ps){return ps.map(p=>`<span class="dot" style="background:${PC[p].color}">${pcode(p)}</span> ${esc(PC[p].name)}`).join('<br>')}
+function chipsFor(ps){return ps.map(p=>`<span class="dot" data-ghf-keep style="background:${PC[p].color}">${pcode(p)}</span> ${esc(PC[p].name)}`).join('<br>')}
 function openOrigin(){sel=null;applyFocus();const o=D.origin;
  $('#sheet').innerHTML=`<button class="x" aria-label="Close" id="shX">×</button><h2 id="shT"><span data-ghf-keep>💩</span> The centre</h2><div class="date">${esc(o.label)}</div>
  <dl>${o.titles.map(x=>{const tr=D.transfers.find(t=>t.id===x.t);return`<dt>${esc(x.title)} · ${esc(tr.label)}</dt><dd>${esc(x.why)} <a href="#" data-open="${x.t}">The arc</a></dd>`}).join('')}
@@ -288,9 +289,9 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#sheetBg').class
 function renderList(){
  const rows=D.transfers.map(t=>Object.assign({type:'t'},t)).concat(D.events.map(e=>Object.assign({type:'e'},e))).filter(r=>inFocus(r.parcels)).sort((a,b)=>a.year-b.year||(a.type>b.type?1:-1));
  $('#list').innerHTML='<h2 style="font-size:18px;margin:12px 0 8px">The chain, year by year</h2>'+rows.map(r=>r.type==='t'?
- `<article class="card ${r.status}" style="border-left-color:${ycol(r.year)}" data-id="${r.id}" tabindex="0"><div class="yr" style="color:${ycol(r.year)}">${r.year}</div><div><h3>${esc(r.label)} · ${r.parcels.map(p=>`<span class="dot" style="background:${PC[p].color}">${pcode(p)}</span>`).join(' ')}${r.title?` <span class="pill">${esc(r.title)}</span>`:''}</h3>
+ `<article class="card ${r.status}" style="border-left-color:${ycol(r.year)}" data-id="${r.id}" tabindex="0"><div class="yr" style="color:${ycol(r.year)}">${r.year}</div><div><h3>${esc(r.label)} · ${r.parcels.map(p=>`<span class="dot" data-ghf-keep style="background:${PC[p].color}">${pcode(p)}</span>`).join(' ')}${r.title?` <span class="pill">${esc(r.title)}</span>`:''}</h3>
  <div>${P[r.from].centre?'💩 (no conveyance from the occupiers)':esc(P[r.from].short)} → ${esc(P[r.to].short)}</div><div class="ft">${esc(r.date)} · <span class="pill">${r.status==='dashed'?esc(r.reason):'record held'}</span></div></div></article>`:
- `<article class="card ev"><div class="yr">${r.year}</div><div><h3>${esc(r.label)} · ${r.parcels.map(p=>`<span class="dot" style="background:${PC[p].color}">${p}</span>`).join(' ')}</h3><div class="ft">${esc(r.date)} · no change of hands</div><div>${esc(r.text)}</div><div class="ft">${r.sources.map(s=>`<a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.t)}</a>`).join(' · ')}</div></div></article>`).join('');
+ `<article class="card ev"><div class="yr">${r.year}</div><div><h3>${esc(r.label)} · ${r.parcels.map(p=>`<span class="dot" data-ghf-keep style="background:${PC[p].color}">${p}</span>`).join(' ')}</h3><div class="ft">${esc(r.date)} · no change of hands</div><div>${esc(r.text)}</div><div class="ft">${r.sources.map(s=>`<a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.t)}</a>`).join(' · ')}</div></div></article>`).join('');
  $('#list').querySelectorAll('.card[data-id]').forEach(c=>{c.onclick=()=>open(c.dataset.id);c.onkeydown=e=>{if(e.key==='Enter')open(c.dataset.id)}})}
 function view(v){$('#vRing').setAttribute('aria-pressed',v==='ring');$('#vList').setAttribute('aria-pressed',v==='list');$('#ringView').style.display=v==='ring'?'':'none';$('#list').style.display=v==='list'?'block':'none';
  const u=new URL(location);if(v==='list')u.searchParams.set('v','list');else u.searchParams.delete('v');history.replaceState(null,'',u)}
