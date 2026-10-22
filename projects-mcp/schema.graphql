@@ -1,36 +1,36 @@
-# Supported GraphQL-compatible fields. Use variables for mutation inputs.
+# GraphQL-compatible subset implemented at /graphql (POST JSON + Bearer token).
+# For arbitrary typed operations and GraphRAG, prefer the MCP tools in /mcp.
 
-type Project { id: ID! slug: String name: String status: String priority: String owner: String stage: String nextGate: String summary: String publicUrl: String updatedAt: String }
-type Asset { id: ID! group: String name: String url: String purpose: String platform: String repo: String owner: String status: String backup: String projectId: ID updatedAt: String }
-type WorkPackage { id: ID! projectId: ID title: String description: String status: String owner: String dueDate: String priority: String updatedAt: String }
-type RiskIssue { id: ID! kind: String projectId: ID title: String description: String status: String probability: String impact: String owner: String dueDate: String mitigation: String updatedAt: String }
-type Evidence { id: ID! projectId: ID title: String sourceUrl: String artifactId: ID sha256: String status: String confidence: String sourceType: String notes: String updatedAt: String }
-type SOPNode { id: ID! kind: String label: String owner: String status: String text: String link: String projectId: ID updatedAt: String }
-type Relationship { id: ID! fromType: String! fromId: ID! relationship: String! toType: String! toId: ID! label: String provenance: String updatedAt: String }
 scalar JSON
 
+type Project { id: ID! slug: String name: String status: String priority: String owner: String stage: String nextGate: String summary: String publicUrl: String createdAt: String updatedAt: String }
+type Asset { id: ID! group: String name: String url: String purpose: String platform: String repo: String owner: String status: String backup: String projectId: ID updatedAt: String }
+type WorkPackage { id: ID! projectId: ID title: String description: String status: String owner: String dueDate: String priority: String dependencies: [String] updatedAt: String }
+type RiskIssue { id: ID! kind: String projectId: ID title: String description: String status: String probability: String impact: String owner: String dueDate: String mitigation: String updatedAt: String }
+type Evidence { id: ID! projectId: ID title: String sourceUrl: String artifactId: ID sha256: String status: String confidence: String sourceType: String notes: String updatedAt: String }
+type SOPNode { id: ID! kind: String phase: Int label: String owner: String status: String text: String link: String projectId: ID updatedAt: String }
+type Relationship { id: ID! fromType: String! fromId: ID! relationship: String! toType: String! toId: String! label: String provenance: String updatedAt: String }
 type Query {
   projects(query: String, status: String, limit: Int): [Project]
   project(id: ID, slug: String): Project
   assets(query: String, group: String, status: String, limit: Int): [Asset]
-  asset(id: ID!): Asset
+  asset(id: ID): Asset
   workPackages(projectId: ID, status: String, query: String, limit: Int): [WorkPackage]
-  workPackage(id: ID!): WorkPackage
-  riskIssues(kind: String, projectId: ID, status: String, query: String, limit: Int): [RiskIssue]
+  riskIssues(projectId: ID, status: String, query: String, limit: Int): [RiskIssue]
   evidence(projectId: ID, status: String, query: String, limit: Int): [Evidence]
-  sopNodes(kind: String, status: String, query: String, limit: Int): [SOPNode]
+  sopNodes(status: String, query: String, limit: Int): [SOPNode]
+  relationships(query: String, limit: Int): [Relationship]
   graphNeighbors(id: ID!, type: String): JSON
   search(query: String!, limit: Int): JSON
 }
 type Mutation {
   upsertProject(input: JSON!): Project
-  upsertAsset(input: JSON!): Asset
-  upsertWorkPackage(input: JSON!): WorkPackage
-  upsertRiskIssue(input: JSON!): RiskIssue
-  upsertEvidence(input: JSON!): Evidence
-  upsertSopNode(input: JSON!): SOPNode
-  upsertRelationship(input: JSON!): Relationship
+  upsertRecord(input: JSON!): JSON
 }
-# Example: query { projects { id slug name status stage nextGate updatedAt } }
-# Example: query Search($q: String!) { assets(query: $q, limit: 10) { id name group status url } }
-# Example: mutation Save($input: JSON!) { upsertProject(input: $input) { id slug name status updatedAt } }
+# Query example:
+# query { projects { id slug name status stage nextGate updatedAt } }
+# query Assets($q: String!) { assets(query: $q, limit: 10) { id name group status url } }
+# Mutation example:
+# mutation Save($input: JSON!) { upsertProject(input: $input) { id slug name status updatedAt } }
+# Generic record mutation example:
+# mutation Save($input: JSON!) { upsertRecord(input: $input) { kind record } }
