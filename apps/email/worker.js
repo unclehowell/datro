@@ -1,10 +1,21 @@
-const RAW_BASE = "https://raw.githubusercontent.com/unclehowell/datro/email-archive/apps/email";
+// Canonical host (22 Oct 2026): email.bucklerfamily.estate is the reader. Wayback is the only master; this Worker
+// keeps no copy of its own. The correspondence calendar is a separate Pages project mounted at /calendar/.
+// RAW_BASE (an unused pointer to the email-archive branch) was removed so no second master can be read. — Sion's Tab agent
+const CANONICAL_HOST = "email.bucklerfamily.estate";
+const CANONICAL_ORIGIN = "https://" + CANONICAL_HOST;
+const CALENDAR_ORIGIN = "https://bucklerfamily-emails.pages.dev";
+const CORPUS_TTL_MS = 300000;
 const MANIFEST_URL = "https://wayback.bucklerfamily.estate/email/mail-index.json";
-const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/573f68bb4f0b7312bf1bde36cbd41652e3d776d2/apps/email/index.html";
+const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/04291c921ed54917d2d5c8ab50aa76bcc5e1ce3f/apps/email/index.html";
 const TEXT_HOST = "wayback.bucklerfamily.estate";
 // Wayback's case-mail API is the single source of truth for every case email (redacted copies).
 const CASEMAIL_INDEX_URL = "https://wayback.bucklerfamily.estate/api/index.json";
 const CASEMAIL_CORPUS_URL = "https://wayback.bucklerfamily.estate/api/corpus.json";
+// Legacy-record text corpus (22 Oct 2026): a Wayback-hosted bundle of the /text/ files the catalogue points at, built from
+// Wayback's own served bytes. Bulk endpoints (search, export, thread) read it so they stay under the Workers subrequest
+// limit (one fetch per legacy file made 538 of 1,431 records fail with "Too many subrequests"). An entry is used only when
+// its sourcePath still matches the catalogue's; anything else is read live from Wayback. /api/message always reads live.
+const TEXT_CORPUS_URL = "https://wayback.bucklerfamily.estate/email/text-corpus.json";
 // The evidence sweep's artifact manifest (work/evidence-sweep/MANIFEST_SPEC.md): attachments it has stored are linked to
 // the email they came from by source.gmail_message_id (21 Oct 2026, Sion's Tab agent).
 const ARTIFACTS_URL = "https://wayback.bucklerfamily.estate/artifacts/manifest.json";
@@ -122,21 +133,44 @@ async function loadCaseMail() {
   } catch (e) { return {records: [], error: String(e && e.message || e)}; }
 }
 let corpusPromise = null;
+let corpusAt = 0;
+async function loadShardedCorpus(indexUrl, label) {
+  const r = await remoteFetch(indexUrl, 12000);
+  if (!r.ok) throw new Error(label + " index returned " + r.status);
+  const d = await r.json();
+  const texts = {}, paths = {}, missing = {};
+  await Promise.all((d.shards || []).map(async u => {
+    const s = await remoteFetch("https://" + TEXT_HOST + u, 20000);
+    if (!s.ok) throw new Error(label + " shard returned " + s.status);
+    const j = await s.json();
+    Object.assign(texts, j.texts || {});
+    Object.assign(paths, j.paths || {});
+    Object.assign(missing, j.missing || {});
+  }));
+  return {texts, paths, missing};
+}
 async function loadCorpus() {
   // One fetch per shard instead of one per message (keeps search and export under the subrequest limit).
-  if (!corpusPromise) corpusPromise = (async () => {
-    const r = await remoteFetch(CASEMAIL_CORPUS_URL, 12000);
-    if (!r.ok) throw new Error("corpus index returned " + r.status);
-    const d = await r.json();
-    const texts = {};
-    await Promise.all((d.shards || []).map(async u => {
-      const s = await remoteFetch("https://" + TEXT_HOST + u, 20000);
-      if (!s.ok) throw new Error("corpus shard returned " + s.status);
-      Object.assign(texts, (await s.json()).texts || {});
-    }));
-    return texts;
-  })().catch(e => { corpusPromise = null; throw e; });
+  // Re-read from Wayback every 5 minutes so a long-lived isolate never serves a stale copy.
+  if (corpusPromise && Date.now() - corpusAt > CORPUS_TTL_MS) corpusPromise = null;
+  if (!corpusPromise) { corpusAt = Date.now(); corpusPromise = (async () => {
+    const [mail, legacy] = await Promise.all([
+      loadShardedCorpus(CASEMAIL_CORPUS_URL, "corpus"),
+      loadShardedCorpus(TEXT_CORPUS_URL, "text corpus").catch(() => ({texts:{}, paths:{}, missing:{}}))
+    ]);
+    return {mail: mail.texts, legacy};
+  })().catch(e => { corpusPromise = null; throw e; }); }
   return corpusPromise;
+}
+// Text for one record from the bundled corpora, or undefined (read live), or null (known missing file).
+function corpusText(record, corpus) {
+  if (!corpus) return undefined;
+  if (record.threadId) return typeof corpus.mail[record.id] === "string" ? corpus.mail[record.id] : undefined;
+  const L = corpus.legacy;
+  if (!L || L.paths[record.id] !== record.sourcePath) return undefined;
+  if (typeof L.texts[record.id] === "string") return L.texts[record.id];
+  if (L.missing[record.id] === record.sourcePath) return null;
+  return undefined;
 }
 async function loadManifest() {
   const [r, caseMail] = await Promise.all([remoteFetch(MANIFEST_URL, 12000), loadCaseMail()]);
@@ -174,7 +208,9 @@ async function loadRecordText(record) {
 }
 async function recordWithText(record, corpus) {
   try {
-    if (corpus && record.threadId && typeof corpus[record.id] === "string") return {...publicRecord(record), textStatus:"available", text:corpus[record.id]};
+    const bundled = corpusText(record, corpus);
+    if (typeof bundled === "string") return {...publicRecord(record), textStatus:"available", text:bundled};
+    if (bundled === null) throw new SourceMissing(NOT_RECOVERED);
     return {...publicRecord(record), textStatus:"available", text:await loadRecordText(record)};
   } catch (error) {
     if (error instanceof SourceMissing) return {...publicRecord(record), textStatus:"not-recovered", text:null, textNotice:NOT_RECOVERED};
@@ -233,6 +269,30 @@ export default {
   if (request.method === "OPTIONS") return new Response(null, {status:204,headers:headers()});
   if (request.method !== "GET" && request.method !== "HEAD") return json({error:"Read-only public archive. Only GET and HEAD are supported."},405);
 
+  // Any other bucklerfamily.estate host that reaches this Worker goes to the canonical host (emails. → /calendar/).
+  if (url.hostname !== CANONICAL_HOST && url.hostname.endsWith(".bucklerfamily.estate")) {
+    const prefix = url.hostname === "emails.bucklerfamily.estate" ? "/calendar" : "";
+    return new Response(null, {status:301, headers:headers({"Location": CANONICAL_ORIGIN + prefix + url.pathname + url.search, "Cache-Control":"public, max-age=3600"})});
+  }
+
+  // The correspondence calendar (Pages project bucklerfamily-emails), mounted under the canonical host.
+  if (url.pathname === "/calendar") return new Response(null, {status:301, headers:headers({"Location": "/calendar/" + url.search})});
+  if (url.pathname.startsWith("/calendar/")) {
+    const rest = url.pathname.slice("/calendar".length);
+    if (!/^\/[A-Za-z0-9._\-\/]*$/.test(rest) || rest.includes("..")) return new Response("Not found", {status:404, headers:headers({"Content-Type":"text/plain; charset=utf-8"})});
+    try {
+      const r = await fetch(CALENDAR_ORIGIN + rest + url.search, {method: request.method, redirect: "manual"});
+      if (r.status >= 300 && r.status < 400) {
+        const loc = r.headers.get("Location") || "/";
+        const to = new URL(loc, CALENDAR_ORIGIN);
+        return new Response(null, {status:r.status, headers:headers({"Location": "/calendar" + to.pathname + to.search})});
+      }
+      const h = headers({"X-Robots-Tag":"noindex, nofollow"});
+      for (const k of ["Content-Type","Cache-Control","ETag","Last-Modified"]) { const v = r.headers.get(k); if (v) h.set(k, v); }
+      return new Response(request.method === "HEAD" ? null : r.body, {status:r.status, headers:h});
+    } catch (e) { return new Response("The calendar is unavailable", {status:502, headers:headers({"Content-Type":"text/plain; charset=utf-8"})}); }
+  }
+
   // ghf-lang (20 Oct 2026): English / Cymraeg / Español dropdown, served same-origin because of this site's CSP
   // + basecamp.js (20 Oct 2026): the "Back to base camp" link that ghf-lang.js loads — Sion's Tab agent
   // + ghf-theme.css, the tent mark and the Barlow fonts (20 Oct 2026): the shared Cedwyn Estate theme, same-origin for this CSP
@@ -244,6 +304,16 @@ export default {
     } catch (e) { return new Response("Unavailable", {status:502, headers:headers({"Content-Type":"text/plain; charset=utf-8"})}); }
   }
 
+  // Forecast data for the reader's per-institution scatter: the dartboard's forecast.json, served same-origin (strict CSP connect-src 'self'). — Sion's Tab agent
+  if (url.pathname === "/data/forecast.json") {
+    for (const src of ["https://raw.githubusercontent.com/unclehowell/datro/dartboard/public/data/forecast.json", "https://dartboard.bucklerfamily.estate/data/forecast.json"]) {
+      try {
+        const r = await fetch(src, {cf:{cacheTtl:300, cacheEverything:true}});
+        if (r.ok) return new Response(r.body, {status:200, headers:headers({"Content-Type":"application/json; charset=utf-8", "Cache-Control":"public, max-age=300"})});
+      } catch (e) {}
+    }
+    return json({error:"The forecast could not be loaded."}, 502);
+  }
   if (url.pathname === "/api/health") {
     try {
       const m = await loadManifest();
@@ -308,7 +378,8 @@ export default {
     const m = await loadManifest();
     const group = m.records.filter(x => slugFor(x) === slug);
     if (!group.length) return json({error:"No in-scope thread matches that slug",availableSlugs:Array.from(new Set(m.records.map(slugFor)))},404);
-    const messages = await limitedMap(group, 4, recordWithText);
+    let corpus = null; try { corpus = await loadCorpus(); } catch (e) {}
+    const messages = await limitedMap(group, 4, record => recordWithText(record, corpus));
     return json({subject:group[0].subject,slug,count:group.length,scope:m.scope,messages});
    } catch(e) { return json({error:"Could not load the public FOI/EIR thread",detail:String(e)},502); }
   }
@@ -341,7 +412,9 @@ export default {
     let corpus = null; try { corpus = await loadCorpus(); } catch (e) {}
     const checks = await limitedMap(m.records, 5, async record => {
       let text;
-      if (record.threadId && corpus && typeof corpus[record.id] === "string") text = corpus[record.id];
+      const bundled = corpusText(record, corpus);
+      if (bundled === null) return null;
+      if (typeof bundled === "string") text = bundled;
       else try { text = await loadRecordText(record); }
       catch (error) { if (error instanceof SourceMissing) return null; throw error; }
       const queryLower = q.toLowerCase();
@@ -368,7 +441,9 @@ export default {
    try {
     const r = await remoteFetch(PAGE_URL,12000);
     if (!r.ok) return new Response("The archive interface could not be loaded from the repository branch.",{status:502,headers:headers({"Content-Type":"text/plain; charset=utf-8"})});
-    return new Response(await r.text(),{status:200,headers:headers({
+    const canonicalPath = url.pathname === "/index.html" ? "/" : url.pathname;
+    const html = (await r.text()).replace(/<link[^>]+rel="canonical"[^>]*>/gi, "").replace(/<\/head>/i, '<link rel="canonical" href="' + CANONICAL_ORIGIN + canonicalPath + '">\n</head>');
+    return new Response(html,{status:200,headers:headers({
       "Content-Type":"text/html; charset=utf-8",
       "Cache-Control":"no-store, max-age=0",
       "Content-Security-Policy":"default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; object-src 'none'; frame-ancestors 'self' https://greathousefarmwiki.wordpress.com https://*.wordpress.com; form-action 'none'",
@@ -379,7 +454,7 @@ export default {
   }
 
   if (url.pathname === "/robots.txt") return new Response(
-    "User-agent: *\nAllow: /\nSitemap: "+url.origin+"/sitemap.xml\n",
+    "User-agent: *\nAllow: /\nDisallow: /calendar/\nSitemap: "+CANONICAL_ORIGIN+"/sitemap.xml\n",
     {headers:headers({"Content-Type":"text/plain; charset=utf-8","Cache-Control":"public, max-age=3600"})}
   );
 
