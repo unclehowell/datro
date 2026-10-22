@@ -544,11 +544,289 @@ function htmlShell(title, body, env) {
   const footer = '<footer class="site-footer"><p class="quality-legend"><strong>Evidence-status standard:</strong> <span class="assured-inline">□ Assured</span> (very pale green, direct and concrete support); <span class="not-assured-inline">◇ Not assured</span> (very pale amber, support incomplete or inconclusive); unmarked text is ambiguous or unassessed and remains unhighlighted.</p>' +
     '<p>Research mirror of <a href="' + SOURCE_SITE + '">' + SOURCE_HOST + '</a>. Editorial status is not a legal finding. Agent guide: <a href="/llms.txt">/llms.txt</a> · <a href="/agent-index.json">machine-readable index</a> · <a href="/read-the-docs/">Read the docs</a>.</p></footer>';
   return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow"><title>' + escapeHtml(title) + '</title>' +
-    '<style>' +
-    ' :root{color-scheme:light;--assured:#f6fcf4;--assured-mark:#c7e8bd;--notassured:#fffaf1;--notassured-mark:#f2d6aa;--line:#e7e4dd;--ink:#222;--muted:#6b6b6b}' +
-    ' *{box-sizing:border-box}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;max-width:76rem;margin:0 auto;padding:1.25rem;line-height:1.62;color:var(--ink);background:#fff}a{color:#184e8a}img,video,iframe{max-width:100%}img{height:auto}.content{overflow-wrap:anywhere}.content table{border-collapse:collapse;max-width:100%;display:block;overflow:auto}.content th,.content td{border:1px solid var(--line);padding:.4rem}.meta{font-size:.83rem;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:.75rem}.article h1{line-height:1.2}.content p[data-evidence-status="assured"],.content li[data-evidence-status="assured"],.content blockquote[data-evidence-status="assured"]{background:var(--assured);border-radius:2px}.content p[data-evidence-status="not-assured"],.content li[data-evidence-status="not-assured"],.content blockquote[data-evidence-status="not-assured"]{background:var(--notassured);border-radius:2px}.quality-marker{display:inline-block;font-weight:700;font-size:.86em;margin-right:.42em;padding:0 .1em;user-select:none}.quality-marker.assured,.assured-inline,.quality-key.assured{background:var(--assured-mark)}.quality-marker.not-assured,.not-assured-inline,.quality-key.not-assured{background:var(--notassured-mark)}.content p[data-evidence-status="assured"] .quality-marker,.content p[data-evidence-status="not-assured"] .quality-marker{opacity:.9}.quality-key{padding:.08rem .25rem;border-radius:2px}.quality-key.unassessed{border-bottom:1px dotted #999}.quality-docs{border-top:1px solid var(--line);margin-top:2rem;padding-top:1rem}.site-footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:1rem;font-size:.76rem;color:#565656}.site-footer p{margin:.4rem 0}.quality-legend{background:#fff}.browse-index{margin-top:2rem;border-top:1px solid var(--line);padding-top:1rem}.browse-index li{margin:.8rem 0}.index-excerpt{font-size:.9rem;color:var(--muted);margin:.1rem 0;overflow-wrap:anywhere}.browse-index a{overflow-wrap:anywhere}.back{margin-top:2rem}.preview-modal{position:fixed;z-index:10000;right:1rem;bottom:1rem;width:min(27rem,calc(100vw - 2rem));max-height:65vh;overflow:auto;background:#fff;border:1px solid #c9c9c9;border-radius:.45rem;box-shadow:0 8px 32px #0002;padding:1rem}.preview-modal[hidden]{display:none}.preview-modal h2{font-size:1rem;margin:.1rem 0 .5rem}.preview-modal p{font-size:.9rem;margin:.4rem 0}.preview-modal .preview-actions{display:flex;justify-content:space-between;align-items:center;margin-top:.6rem}.preview-modal button{border:1px solid #aaa;background:#f7f7f7;padding:.35rem .6rem;border-radius:.25rem;cursor:pointer}form input{max-width:70%;padding:.5rem;border:1px solid #bbb;border-radius:.25rem}button{padding:.5rem .75rem;border:1px solid #bbb;border-radius:.25rem;background:#f5f5f5}@media(max-width:600px){body{padding:.85rem}.site-footer{font-size:.72rem}}' +
-    '</style><script src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js" defer></script></head><body><header><a href="/" aria-label="Mirror home" style="text-decoration:none;color:inherit"><small>' + escapeHtml(siteTitle) + '</small></a></header><main>' + body + '</main>' + footer +
-    '<aside id="evidence-preview" class="preview-modal" role="dialog" aria-live="polite" aria-label="Linked evidence preview" hidden><div class="preview-actions"><strong>Linked evidence preview</strong><button type="button" id="preview-close" aria-label="Close preview">Close</button></div><h2 id="preview-title"></h2><p id="preview-body"></p><div class="preview-actions"><a id="preview-link" href="#">Open page / artifact</a></div></aside>' +
+    `
+<style>
+:root {
+  color-scheme: light;
+  --wiki-bg: #f8f9fa;
+  --wiki-paper: #ffffff;
+  --wiki-text: #202122;
+  --wiki-muted: #54595d;
+  --wiki-border: #a2a9b1;
+  --wiki-soft-border: #c8ccd1;
+  --wiki-link: #0645ad;
+  --wiki-visited: #0b0080;
+  --wiki-control: #f8f9fa;
+  --wiki-control-border: #a2a9b1;
+  --wiki-table-head: #eaecf0;
+  --wiki-table-alt: #f8f9fa;
+  --assured: #f6fcf4;
+  --assured-mark: #c7e8bd;
+  --notassured: #fffaf1;
+  --notassured-mark: #f2d6aa;
+}
+html[data-theme="dark"], body[data-theme="dark"],
+html[data-color-theme="dark"], body[data-color-theme="dark"],
+html.dark, body.dark, html.dark-mode, body.dark-mode,
+html.theme-dark, body.theme-dark, body[data-mw-color-scheme="dark"] {
+  color-scheme: dark;
+  --wiki-bg: #101418;
+  --wiki-paper: #202122;
+  --wiki-text: #eaecf0;
+  --wiki-muted: #a7acb1;
+  --wiki-border: #54595d;
+  --wiki-soft-border: #72777d;
+  --wiki-link: #8ab4f8;
+  --wiki-visited: #c0a5e8;
+  --wiki-control: #27292d;
+  --wiki-control-border: #72777d;
+  --wiki-table-head: #303338;
+  --wiki-table-alt: #27292d;
+  --assured: #202d25;
+  --assured-mark: #344d39;
+  --notassured: #30291d;
+  --notassured-mark: #5c4829;
+}
+* { box-sizing: border-box; }
+html { background: var(--wiki-bg); }
+body {
+  margin: 0;
+  padding: 0;
+  max-width: none;
+  color: var(--wiki-text);
+  background: var(--wiki-bg);
+  font-family: Arial, "Liberation Sans", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+a { color: var(--wiki-link); text-decoration: none; }
+a:visited { color: var(--wiki-visited); }
+a:hover { text-decoration: underline; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--wiki-link);
+  outline-offset: 2px;
+}
+img, video, iframe, svg { max-width: 100%; }
+img { height: auto; }
+body > header {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 1rem clamp(1rem, 3vw, 2.25rem) .75rem;
+  color: var(--wiki-text);
+  background: var(--wiki-bg);
+  border-bottom: 1px solid var(--wiki-border);
+}
+body > header a { color: var(--wiki-text); }
+body > header a:visited { color: var(--wiki-text); }
+body > header small { font-size: 1.05rem; font-weight: 600; }
+header, nav, [class*="header-row"], [class*="headerRow"], [data-header-row] {
+  color: var(--wiki-text);
+}
+main {
+  width: 100%;
+  max-width: 1320px;
+  min-height: 60vh;
+  margin: 0 auto;
+  padding: 1.5rem clamp(1rem, 3vw, 2.5rem) 3rem;
+  color: var(--wiki-text);
+  background: var(--wiki-paper);
+  border-left: 1px solid var(--wiki-soft-border);
+  border-right: 1px solid var(--wiki-soft-border);
+}
+.article { width: 100%; min-width: 0; }
+.article h1, .article h2, .article h3, .article h4 {
+  color: var(--wiki-text);
+  font-family: "Linux Libertine", "Georgia", "Times New Roman", serif;
+  font-weight: normal;
+  overflow-wrap: anywhere;
+}
+.article h1 {
+  margin: 0 0 .35rem;
+  padding: 0 0 .2em;
+  font-size: 1.9rem;
+  line-height: 1.25;
+  border-bottom: 1px solid var(--wiki-border);
+}
+.article .meta {
+  margin: .2rem 0 1.2rem;
+  padding: 0 0 .55rem;
+  color: var(--wiki-muted);
+  font-size: .82rem;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--wiki-soft-border);
+}
+.content {
+  min-width: 0;
+  color: var(--wiki-text);
+  font-size: .9rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.content p { margin: .5em 0; }
+.content h2 {
+  margin: 1.25em 0 .4em;
+  padding-bottom: .18em;
+  font-size: 1.55rem;
+  line-height: 1.35;
+  border-bottom: 1px solid var(--wiki-border);
+}
+.content h3 { margin: 1em 0 .35em; font-size: 1.25rem; line-height: 1.4; }
+.content h4 { margin: .8em 0 .3em; font-size: 1.08rem; font-weight: 600; }
+.content ul, .content ol { padding-left: 1.8em; }
+.content li { margin: .18em 0; }
+.content blockquote {
+  margin: .7em 1.5em;
+  padding: .2em .8em;
+  color: var(--wiki-muted);
+  border-left: 3px solid var(--wiki-soft-border);
+}
+.content hr { border: 0; border-top: 1px solid var(--wiki-soft-border); margin: 1.5em 0; }
+.content table {
+  border: 1px solid var(--wiki-border);
+  border-collapse: collapse;
+  border-spacing: 0;
+  max-width: 100%;
+  margin: 1em 0;
+  color: var(--wiki-text);
+  background: var(--wiki-paper);
+}
+.content th, .content td {
+  border: 1px solid var(--wiki-border);
+  padding: .35em .6em;
+  vertical-align: top;
+}
+.content th { font-weight: 600; background: var(--wiki-table-head); }
+.content tr:nth-child(even) td { background: var(--wiki-table-alt); }
+.content pre, .content code, code, pre {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+.content pre, pre {
+  max-width: 100%;
+  overflow: auto;
+  padding: .8em;
+  border: 1px solid var(--wiki-soft-border);
+  background: var(--wiki-table-alt);
+  color: var(--wiki-text);
+}
+.content code, code { overflow-wrap: anywhere; }
+.content figure { max-width: 100%; margin: 1em 0; }
+.content figcaption { color: var(--wiki-muted); font-size: .85rem; }
+.content img { max-width: 100%; }
+.content p[data-evidence-status="assured"],
+.content li[data-evidence-status="assured"],
+.content blockquote[data-evidence-status="assured"] {
+  background: var(--assured);
+  border-radius: 2px;
+}
+.content p[data-evidence-status="not-assured"],
+.content li[data-evidence-status="not-assured"],
+.content blockquote[data-evidence-status="not-assured"] {
+  background: var(--notassured);
+  border-radius: 2px;
+}
+.quality-marker {
+  display: inline-block;
+  font-weight: 700;
+  font-size: .86em;
+  margin-right: .42em;
+  padding: 0 .1em;
+  user-select: none;
+}
+.quality-marker.assured, .assured-inline, .quality-key.assured { background: var(--assured-mark); }
+.quality-marker.not-assured, .not-assured-inline, .quality-key.not-assured { background: var(--notassured-mark); }
+.content p[data-evidence-status="assured"] .quality-marker,
+.content p[data-evidence-status="not-assured"] .quality-marker { opacity: .9; }
+.quality-key { padding: .08rem .25rem; border-radius: 2px; }
+.quality-key.unassessed { border-bottom: 1px dotted var(--wiki-muted); }
+.quality-docs {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--wiki-border);
+}
+.site-footer {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 1rem clamp(1rem, 3vw, 2.25rem) 1.5rem;
+  color: var(--wiki-muted);
+  background: var(--wiki-bg);
+  border-top: 1px solid var(--wiki-border);
+  font-size: .8rem;
+}
+.site-footer p { margin: .4rem 0; }
+.quality-legend { color: var(--wiki-muted); }
+.browse-index {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--wiki-border);
+}
+.browse-index h2 {
+  font-family: "Linux Libertine", Georgia, "Times New Roman", serif;
+  font-size: 1.55rem;
+  font-weight: normal;
+  border-bottom: 1px solid var(--wiki-border);
+}
+.browse-index form { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; margin: .75rem 0 1rem; }
+.browse-index li { margin: .75rem 0; }
+.index-excerpt { margin: .15rem 0; color: var(--wiki-muted); font-size: .88rem; overflow-wrap: anywhere; }
+.browse-index a { overflow-wrap: anywhere; }
+.back { margin-top: 2rem; padding-top: .75rem; border-top: 1px solid var(--wiki-soft-border); }
+input, select, textarea {
+  max-width: 100%;
+  padding: .45rem .6rem;
+  border: 1px solid var(--wiki-control-border);
+  border-radius: 2px;
+  background: var(--wiki-paper);
+  color: var(--wiki-text);
+  font: inherit;
+}
+button, input[type="submit"], input[type="button"], [role="button"] {
+  padding: .45rem .75rem;
+  border: 1px solid var(--wiki-control-border);
+  border-radius: 2px;
+  background: var(--wiki-control);
+  color: var(--wiki-text);
+  font: inherit;
+  cursor: pointer;
+}
+button:hover, input[type="submit"]:hover, input[type="button"]:hover, [role="button"]:hover {
+  background: var(--wiki-table-head);
+}
+.theme-toggle, #theme-toggle, [data-theme-toggle] { color: var(--wiki-text); background: var(--wiki-control); }
+.preview-modal {
+  position: fixed;
+  z-index: 10000;
+  right: 1rem;
+  bottom: 1rem;
+  width: min(27rem, calc(100vw - 2rem));
+  max-height: 65vh;
+  overflow: auto;
+  color: var(--wiki-text);
+  background: var(--wiki-paper);
+  border: 1px solid var(--wiki-border);
+  border-radius: 2px;
+  box-shadow: 0 8px 32px #0002;
+  padding: 1rem;
+}
+.preview-modal[hidden] { display: none; }
+.preview-modal h2 { font-size: 1rem; margin: .1rem 0 .5rem; }
+.preview-modal p { font-size: .9rem; margin: .4rem 0; }
+.preview-modal .preview-actions { display: flex; justify-content: space-between; align-items: center; gap: .5rem; margin-top: .6rem; }
+.preview-modal button { padding: .35rem .6rem; }
+@media (min-width: 1100px) {
+  .content { font-size: .92rem; }
+}
+@media (max-width: 700px) {
+  body { font-size: 14px; }
+  body > header { padding: .8rem 1rem .6rem; }
+  main { padding: 1rem .9rem 2rem; border-left: 0; border-right: 0; }
+  .article h1 { font-size: 1.65rem; }
+  .content h2 { font-size: 1.35rem; }
+  .content table { display: block; overflow-x: auto; }
+  .content blockquote { margin-left: .5rem; margin-right: .5rem; }
+  .site-footer { padding: .8rem 1rem 1.2rem; }
+}
+</style><script src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js" defer></script>` +
     '<script>' +
     '(function(){' +
     'var box=document.getElementById("evidence-preview"),title=document.getElementById("preview-title"),body=document.getElementById("preview-body"),link=document.getElementById("preview-link"),close=document.getElementById("preview-close"),active=null,timer=null;' +
