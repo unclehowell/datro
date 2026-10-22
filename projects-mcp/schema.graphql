@@ -1,5 +1,5 @@
-# GraphQL-compatible subset implemented at /graphql (POST JSON + Bearer token).
-# For arbitrary typed operations and GraphRAG, prefer the MCP tools in /mcp.
+# Supported GraphQL-compatible subset at /graphql. POST JSON + Bearer token.
+# Use MCP at /mcp for richer tool calls and graph retrieval.
 
 scalar JSON
 
@@ -10,27 +10,32 @@ type RiskIssue { id: ID! kind: String projectId: ID title: String description: S
 type Evidence { id: ID! projectId: ID title: String sourceUrl: String artifactId: ID sha256: String status: String confidence: String sourceType: String notes: String updatedAt: String }
 type SOPNode { id: ID! kind: String phase: Int label: String owner: String status: String text: String link: String projectId: ID updatedAt: String }
 type Relationship { id: ID! fromType: String! fromId: ID! relationship: String! toType: String! toId: String! label: String provenance: String updatedAt: String }
+
 type Query {
   projects(query: String, status: String, limit: Int): [Project]
   project(id: ID, slug: String): Project
   assets(query: String, group: String, status: String, limit: Int): [Asset]
-  asset(id: ID): Asset
+  asset(id: ID!): Asset
   workPackages(projectId: ID, status: String, query: String, limit: Int): [WorkPackage]
-  riskIssues(projectId: ID, status: String, query: String, limit: Int): [RiskIssue]
+  workPackage(id: ID!): WorkPackage
+  riskIssues(kind: String, projectId: ID, status: String, query: String, limit: Int): [RiskIssue]
   evidence(projectId: ID, status: String, query: String, limit: Int): [Evidence]
-  sopNodes(status: String, query: String, limit: Int): [SOPNode]
-  relationships(query: String, limit: Int): [Relationship]
+  sopNodes(kind: String, status: String, query: String, limit: Int): [SOPNode]
   graphNeighbors(id: ID!, type: String): JSON
   search(query: String!, limit: Int): JSON
 }
+
 type Mutation {
   upsertProject(input: JSON!): Project
-  upsertRecord(input: JSON!): JSON
+  upsertAsset(input: JSON!): Asset
+  upsertWorkPackage(input: JSON!): WorkPackage
+  upsertRiskIssue(input: JSON!): RiskIssue
+  upsertEvidence(input: JSON!): Evidence
+  upsertSopNode(input: JSON!): SOPNode
+  upsertRelationship(input: JSON!): Relationship
 }
-# Query example:
-# query { projects { id slug name status stage nextGate updatedAt } }
-# query Assets($q: String!) { assets(query: $q, limit: 10) { id name group status url } }
-# Mutation example:
-# mutation Save($input: JSON!) { upsertProject(input: $input) { id slug name status updatedAt } }
-# Generic record mutation example:
-# mutation Save($input: JSON!) { upsertRecord(input: $input) { kind record } }
+
+# Query: query { projects { id slug name status stage nextGate updatedAt } }
+# Query: query Assets($q: String!) { assets(query: $q, limit: 10) { id name group status url } }
+# Search: use MCP graph_search for nested match and graph-edge context.
+# Mutation: mutation Save($input: JSON!) { upsertProject(input: $input) { id slug name status updatedAt } }
