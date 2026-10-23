@@ -552,12 +552,22 @@ def rings(up):
     for r in R_:
         for s_ in r["slides"]:
             for k_ in ("t", "x", "by"): s_[k_] = roles(s_.get(k_, ""))
+    # Story covers (Sion, 03:14 BST 23 Oct 2026): every card's first slide and preview is a wayback.bucklerfamily.estate image (data/story_covers.json); "Today" keeps its highlight-video poster.
+    COV = json.load(open(os.path.join(ROOT, "data", "story_covers.json"), encoding="utf-8")); ed = "now" if NOW else "then"; pool = COV["pool_" + ed]; pi = 0
+    for r in R_:
+        s0 = r["slides"][0]
+        if s0.get("video") and s0.get("poster"): continue
+        c = COV[ed].get(r["id"])
+        if not c: c = pool[pi % len(pool)]; pi += 1
+        s0["img"] = c["img"]; s0["alt"] = c["alt"]
+    bad = [r["id"] for r in R_ if not (r["slides"][0].get("img") or r["slides"][0].get("poster"))]
+    if bad: raise SystemExit("STORY IMAGE GATE: story cards without an image: " + ", ".join(bad))
     PAIR = ("#2E1B6A", "#FF8A5B") if NOW else ("#6A1B50", "#F55CC2")   # the site's colour pair (palette.md)
     def card_(i, r):
-        sl = r["slides"]; pv = next((x for x in sl if x.get("poster") or x.get("img")), None)
+        sl = r["slides"]; pv = sl[0] if (sl[0].get("poster") or sl[0].get("img")) else next((x for x in sl if x.get("poster") or x.get("img")), None)
         lz = "" if i < 4 else ' loading="lazy"'
         if pv:
-            bg = '<img class="sc-pv" src="%s" alt=""%s>' % (e(pv.get("poster") or pv["img"]), lz)
+            bg = '<img class="sc-pv" src="%s" alt="%s"%s>' % (e(pv.get("poster") or pv["img"]), e(pv.get("alt", "")), lz)
         else:
             s0 = sl[0]; t0 = (s0.get("t") or "").strip(); x0 = (s0.get("x") or "").strip()
             if len(t0) < 10 and x0: t0, x0 = re.sub(r"^In short:\s*", "", x0), ""

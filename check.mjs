@@ -37,6 +37,19 @@ if(NOW){ const SRC=/^https:\/\/(email|dartboard)\.bucklerfamily\.estate\//; let 
   for(const f of ['facebook.html','timeline.html','photos.html']) if(existsSync(new URL(f,dir))) errors.push(f+' must not be on fb2 (source lock)');
   for(const p of pages){ if(/href="[^"]*facebook\.html"/.test(read(p))) errors.push(p+': link to the retired Facebook copy'); }
   console.log('source lock: '+items+' items, '+exc+' highlight-report exception(s)'); }
+// Story cards (Sion, 03:14 BST 23 Oct 2026): every story card on both editions carries a picture (its first slide's image or video poster); fb2 images may come from wayback.bucklerfamily.estate (Sion's authorisation of wayback media), names and text still only from email./dartboard.
+{ const rail=(idx.match(/<div class="rgs"[\s\S]*?<\/div><script type="application\/json" id="fb-rings-data">([\s\S]*?)<\/script>/)||[]);
+  const cards=[...(rail[0]||'').matchAll(/<a class="rg sc[^"]*"[\s\S]*?<\/a>/g)].map(m=>m[0]);
+  const bare=cards.filter(a=>!/<img class="sc-pv" src="[^"]+"/.test(a));
+  let rd=[]; try{ rd=JSON.parse(rail[1]||'[]'); }catch(_){ errors.push('stories: #fb-rings-data unreadable'); }
+  const noimg=rd.filter(r=>!(r.slides&&r.slides[0]&&(r.slides[0].img||r.slides[0].poster))).map(r=>r.id);
+  if(!cards.length) errors.push('stories: no story cards on the wall');
+  if(bare.length) errors.push('stories: '+bare.length+' story card(s) without an image');
+  if(noimg.length) errors.push('stories: first slide without an image: '+noimg.join(', '));
+  const IMGHOST=/^(?:https:\/\/(?:wayback|email|dartboard)\.bucklerfamily\.estate\/|(?:\.\.\/)?(?:img|daily)\/)/;
+  for(const r of rd) for(const s of (r.slides||[])) for(const u of [s.img,s.poster].filter(Boolean)) if(!IMGHOST.test(u)) errors.push('stories: image not hosted on wayback./the site: '+u);
+  if(NOW) for(const p of pages) for(const m of read(p).matchAll(/<img[^>]+src="(https?:\/\/[^"]+)"/g)) if(!/^https:\/\/(?:wayback|email|dartboard)\.bucklerfamily\.estate\//.test(m[1])) errors.push(p+': image from outside wayback./email./dartboard.: '+m[1]);
+  console.log('stories: '+cards.length+' cards, '+(cards.length-bare.length)+' with an image'); }
 if(NOW){ const HJ=existsSync(new URL('../data/highlights.json',dir))?JSON.parse(readFileSync(new URL('../data/highlights.json',dir),'utf8')):{days:[]};
   if(HJ.days.length && !idx.includes('id="hf-'+HJ.days[0].date+'"')) errors.push('wall: newest highlight report video missing from index.html'); }
 const FJ=JSON.parse(readFileSync(new URL('../data/faces.json',import.meta.url.replace(/[^/]*$/,'')+'data/faces.json'),'utf8'));
