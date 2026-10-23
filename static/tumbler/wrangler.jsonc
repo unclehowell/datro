@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developers.cloudflare.com/pages/functions/wrangler-configuration/",
+  "name": "tumbler",
+  "pages_build_output_dir": ".",
+  "compatibility_date": "2026-10-23",
+  "ai": {
+    "binding": "AI"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
