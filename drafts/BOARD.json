@@ -11,7 +11,39 @@
       "open_issues": 6,
       "last_change": "2026-10-23T13:39:23Z",
       "last_agent": "Tab",
-      "rounds": 5
+      "rounds": 5,
+      "context": {
+        "body": "BP",
+        "as_of": "2026-10-23T15:27Z",
+        "archive": {
+          "search": "https://email.bucklerfamily.estate/api/search?q=BP",
+          "thread": "https://email.bucklerfamily.estate/reference/1a16814eff6e8660",
+          "api_thread": "https://email.bucklerfamily.estate/api/thread?slug=gt-1a1439902c7e1dc4-document-preservation-notice-great-house-farm-t-mawr-llandough-juxta-penarth-bp-properties-ltd-v-buckler-1984-1988",
+          "thread_last": {
+            "date": "2026-10-23",
+            "dir": "received",
+            "class": "declined"
+          }
+        },
+        "last_in": "2026-10-23",
+        "last_out": "2026-10-19",
+        "dartboard": {
+          "url": "https://bucklerfamily.estate/?r=16#roadmap",
+          "lane": "bp",
+          "wheel_number": 16
+        },
+        "stage": "no rung reached yet",
+        "next_deadline": null,
+        "rungs_spent": [],
+        "markers": {
+          "red_fish": 0,
+          "red_house": 0,
+          "fee": false
+        },
+        "open_questions": null,
+        "route": "private",
+        "regime": "SAR"
+      }
     },
     {
       "id": "cardiff-central-library-bute-x6-12-reply",
@@ -22,7 +54,42 @@
       "open_issues": 9,
       "last_change": "2026-10-23T15:17:05Z",
       "last_agent": "ChatGPT",
-      "rounds": 4
+      "rounds": 4,
+      "context": {
+        "body": "Cardiff Central Library",
+        "as_of": "2026-10-23T15:27Z",
+        "archive": {
+          "search": "https://email.bucklerfamily.estate/api/search?q=Cardiff%20Central%20Library",
+          "thread": "https://email.bucklerfamily.estate/reference/1a16876a2f78ac5e",
+          "api_thread": "https://email.bucklerfamily.estate/api/thread?slug=gt-1a11eb95e6e388ee-bute-x-6-12-1877-bute-trustee-accounts-receipts-and-possible-great-house-farm-llandough-transaction",
+          "thread_last": {
+            "date": "2026-10-23",
+            "dir": "received",
+            "class": "not found"
+          }
+        },
+        "last_in": "2026-10-23",
+        "last_out": "2026-10-10",
+        "dartboard": {
+          "url": "https://bucklerfamily.estate/#roadmap",
+          "lane": "cardiff-central-library",
+          "wheel_number": null
+        },
+        "stage": "no rung reached yet",
+        "next_deadline": {
+          "date": "2026-11-09",
+          "what": "Bute X.6(12) (red fish)"
+        },
+        "rungs_spent": [],
+        "markers": {
+          "red_fish": 1,
+          "red_house": 0,
+          "fee": true
+        },
+        "open_questions": 3,
+        "route": "welsh_public_body",
+        "regime": "FOI"
+      }
     },
     {
       "id": "hmlr-eir-1961-deed",
@@ -33,7 +100,42 @@
       "open_issues": null,
       "last_change": "2026-10-23T13:36:44Z",
       "last_agent": "Tab",
-      "rounds": 1
+      "rounds": 1,
+      "context": {
+        "body": "HM Land Registry",
+        "as_of": "2026-10-23T15:27Z",
+        "archive": {
+          "search": "https://email.bucklerfamily.estate/api/search?q=HM%20Land%20Registry",
+          "thread": null,
+          "note": "no matching thread yet (new request): read the body search and the dartboard lane"
+        },
+        "last_in": "2026-10-23",
+        "last_out": "2026-10-21",
+        "dartboard": {
+          "url": "https://bucklerfamily.estate/?r=1#roadmap",
+          "lane": "hm-land-registry",
+          "wheel_number": 1
+        },
+        "stage": "Request (FOI / EIR) (2026-09-28)",
+        "next_deadline": {
+          "date": "2026-10-28",
+          "what": "SAR reply date"
+        },
+        "rungs_spent": [
+          "Complaint, stage 1",
+          "Subject access request",
+          "Request (FOI / EIR)"
+        ],
+        "markers": {
+          "red_fish": 0,
+          "red_house": 0,
+          "fee": false
+        },
+        "open_questions": null,
+        "route": "hmlr",
+        "regime": "SAR",
+        "kb_items": 23
+      }
     },
     {
       "id": "hmlr-sar-wa735527-wa513690",
@@ -44,7 +146,42 @@
       "open_issues": null,
       "last_change": "2026-10-23T13:36:49Z",
       "last_agent": "Tab",
-      "rounds": 1
+      "rounds": 1,
+      "context": {
+        "body": "HM Land Registry",
+        "as_of": "2026-10-23T15:27Z",
+        "archive": {
+          "search": "https://email.bucklerfamily.estate/api/search?q=HM%20Land%20Registry",
+          "thread": null,
+          "note": "no matching thread yet (new request): read the body search and the dartboard lane"
+        },
+        "last_in": "2026-10-23",
+        "last_out": "2026-10-21",
+        "dartboard": {
+          "url": "https://bucklerfamily.estate/?r=1#roadmap",
+          "lane": "hm-land-registry",
+          "wheel_number": 1
+        },
+        "stage": "Request (FOI / EIR) (2026-09-28)",
+        "next_deadline": {
+          "date": "2026-10-28",
+          "what": "SAR reply date"
+        },
+        "rungs_spent": [
+          "Complaint, stage 1",
+          "Subject access request",
+          "Request (FOI / EIR)"
+        ],
+        "markers": {
+          "red_fish": 0,
+          "red_house": 0,
+          "fee": false
+        },
+        "open_questions": null,
+        "route": "hmlr",
+        "regime": "SAR",
+        "kb_items": 23
+      }
     },
     {
       "id": "vale-eir-vg41",
@@ -55,7 +192,44 @@
       "open_issues": null,
       "last_change": "2026-10-23T13:36:54Z",
       "last_agent": "Tab",
-      "rounds": 1
+      "rounds": 1,
+      "context": {
+        "body": "Vale of Glamorgan Council",
+        "as_of": "2026-10-23T15:27Z",
+        "archive": {
+          "search": "https://email.bucklerfamily.estate/api/search?q=Vale%20of%20Glamorgan%20Council",
+          "thread": null,
+          "note": "no matching thread yet (new request): read the body search and the dartboard lane"
+        },
+        "last_in": "2026-10-11",
+        "last_out": "2026-10-22",
+        "dartboard": {
+          "url": "https://bucklerfamily.estate/?r=2#roadmap",
+          "lane": "vale-of-glamorgan-council",
+          "wheel_number": 2
+        },
+        "stage": "Internal review (2026-10-22)",
+        "next_deadline": {
+          "date": "2026-10-28",
+          "what": "SAR reply date"
+        },
+        "rungs_spent": [
+          "Corporate complaint, stage 1",
+          "Request (FOI / EIR)",
+          "Subject access request",
+          "Chaser",
+          "Internal review"
+        ],
+        "markers": {
+          "red_fish": 5,
+          "red_house": 7,
+          "fee": false
+        },
+        "open_questions": 54,
+        "route": "welsh_council",
+        "regime": "EIR",
+        "kb_items": 64
+      }
     },
     {
       "id": "glamorgan-archives-vg41-catalogue",
@@ -66,7 +240,38 @@
       "open_issues": null,
       "last_change": "2026-10-23T13:38:46Z",
       "last_agent": "Tab",
-      "rounds": 1
+      "rounds": 1,
+      "context": {
+        "body": "Glamorgan Archives",
+        "as_of": "2026-10-23T15:27Z",
+        "archive": {
+          "search": "https://email.bucklerfamily.estate/api/search?q=Glamorgan%20Archives",
+          "thread": null,
+          "note": "no matching thread yet (new request): read the body search and the dartboard lane"
+        },
+        "last_in": "2026-10-22",
+        "last_out": "2026-10-22",
+        "dartboard": {
+          "url": "https://bucklerfamily.estate/?r=9#roadmap",
+          "lane": "glamorgan-archives",
+          "wheel_number": 9
+        },
+        "stage": "Statutory reply date (2026-06-26)",
+        "next_deadline": null,
+        "rungs_spent": [
+          "FOI for a closed or uncatalogued record",
+          "Statutory reply date"
+        ],
+        "markers": {
+          "red_fish": 0,
+          "red_house": 0,
+          "fee": true
+        },
+        "open_questions": null,
+        "route": "archives",
+        "regime": "EIR",
+        "kb_items": 31
+      }
     },
     {
       "id": "hmlr-eir-vg41",
@@ -77,7 +282,42 @@
       "open_issues": null,
       "last_change": "2026-10-23T13:37:04Z",
       "last_agent": "Tab",
-      "rounds": 1
+      "rounds": 1,
+      "context": {
+        "body": "HM Land Registry",
+        "as_of": "2026-10-23T15:27Z",
+        "archive": {
+          "search": "https://email.bucklerfamily.estate/api/search?q=HM%20Land%20Registry",
+          "thread": null,
+          "note": "no matching thread yet (new request): read the body search and the dartboard lane"
+        },
+        "last_in": "2026-10-23",
+        "last_out": "2026-10-21",
+        "dartboard": {
+          "url": "https://bucklerfamily.estate/?r=1#roadmap",
+          "lane": "hm-land-registry",
+          "wheel_number": 1
+        },
+        "stage": "Request (FOI / EIR) (2026-09-28)",
+        "next_deadline": {
+          "date": "2026-10-28",
+          "what": "SAR reply date"
+        },
+        "rungs_spent": [
+          "Complaint, stage 1",
+          "Subject access request",
+          "Request (FOI / EIR)"
+        ],
+        "markers": {
+          "red_fish": 0,
+          "red_house": 0,
+          "fee": false
+        },
+        "open_questions": null,
+        "route": "hmlr",
+        "regime": "SAR",
+        "kb_items": 23
+      }
     },
     {
       "id": "tna-hmlr-commons-records-1960-72",
@@ -88,7 +328,43 @@
       "open_issues": null,
       "last_change": "2026-10-23T13:37:09Z",
       "last_agent": "Tab",
-      "rounds": 1
+      "rounds": 1,
+      "context": {
+        "body": "The National Archives",
+        "as_of": "2026-10-23T15:27Z",
+        "archive": {
+          "search": "https://email.bucklerfamily.estate/api/search?q=The%20National%20Archives",
+          "thread": "https://email.bucklerfamily.estate/reference/1a15f0980aac7907",
+          "api_thread": "https://email.bucklerfamily.estate/api/thread?slug=gt-1a0ed914794badec-freedom-of-information-request-reference-cas-347296-m0v4y1-clarification",
+          "thread_last": {
+            "date": "2026-10-21",
+            "dir": "sent",
+            "class": "clarification given"
+          }
+        },
+        "last_in": "2026-10-23",
+        "last_out": "2026-10-22",
+        "dartboard": {
+          "url": "https://bucklerfamily.estate/?r=8#roadmap",
+          "lane": "the-national-archives",
+          "wheel_number": 8
+        },
+        "stage": "Statutory reply date (2026-11-06)",
+        "next_deadline": null,
+        "rungs_spent": [
+          "FOI for a closed or uncatalogued record",
+          "Statutory reply date"
+        ],
+        "markers": {
+          "red_fish": 0,
+          "red_house": 2,
+          "fee": true
+        },
+        "open_questions": 2,
+        "route": "archives",
+        "regime": "FOI",
+        "kb_items": 16
+      }
     },
     {
       "id": "hmlr-customer-support-titles",
@@ -99,7 +375,42 @@
       "open_issues": null,
       "last_change": "2026-10-23T13:37:14Z",
       "last_agent": "Tab",
-      "rounds": 1
+      "rounds": 1,
+      "context": {
+        "body": "HM Land Registry",
+        "as_of": "2026-10-23T15:27Z",
+        "archive": {
+          "search": "https://email.bucklerfamily.estate/api/search?q=HM%20Land%20Registry",
+          "thread": null,
+          "note": "no matching thread yet (new request): read the body search and the dartboard lane"
+        },
+        "last_in": "2026-10-23",
+        "last_out": "2026-10-21",
+        "dartboard": {
+          "url": "https://bucklerfamily.estate/?r=1#roadmap",
+          "lane": "hm-land-registry",
+          "wheel_number": 1
+        },
+        "stage": "Request (FOI / EIR) (2026-09-28)",
+        "next_deadline": {
+          "date": "2026-10-28",
+          "what": "SAR reply date"
+        },
+        "rungs_spent": [
+          "Complaint, stage 1",
+          "Subject access request",
+          "Request (FOI / EIR)"
+        ],
+        "markers": {
+          "red_fish": 0,
+          "red_house": 0,
+          "fee": false
+        },
+        "open_questions": null,
+        "route": "hmlr",
+        "regime": "SAR",
+        "kb_items": 23
+      }
     },
     {
       "id": "hmlr-wales-office-z084nqv",
@@ -110,7 +421,47 @@
       "open_issues": null,
       "last_change": "2026-10-23T13:37:19Z",
       "last_agent": "Tab",
-      "rounds": 1
+      "rounds": 1,
+      "context": {
+        "body": "HM Land Registry (Wales Office)",
+        "as_of": "2026-10-23T15:27Z",
+        "archive": {
+          "search": "https://email.bucklerfamily.estate/api/search?q=HM%20Land%20Registry",
+          "thread": "https://email.bucklerfamily.estate/reference/1a141cb5de1ebfc1",
+          "api_thread": "https://email.bucklerfamily.estate/api/thread?slug=gt-1a141af7e036c3a1-z084nqv-n610cgv-wa240304-and-wa231076-application-to-alter-the-register-schedule-4-lra-2002-and-follow-up-on-the-1983-fi",
+          "thread_last": {
+            "date": "2026-10-15",
+            "dir": "sent",
+            "class": "request"
+          }
+        },
+        "last_in": "2026-10-23",
+        "last_out": "2026-10-21",
+        "dartboard": {
+          "url": "https://bucklerfamily.estate/?r=1#roadmap",
+          "lane": "hm-land-registry",
+          "wheel_number": 1
+        },
+        "stage": "Request (FOI / EIR) (2026-09-28)",
+        "next_deadline": {
+          "date": "2026-10-28",
+          "what": "SAR reply date"
+        },
+        "rungs_spent": [
+          "Complaint, stage 1",
+          "Subject access request",
+          "Request (FOI / EIR)"
+        ],
+        "markers": {
+          "red_fish": 0,
+          "red_house": 0,
+          "fee": false
+        },
+        "open_questions": null,
+        "route": "hmlr",
+        "regime": "SAR",
+        "kb_items": 23
+      }
     },
     {
       "id": "cardiff-eir-1961-deed",
@@ -121,7 +472,28 @@
       "open_issues": null,
       "last_change": "2026-10-23T13:37:24Z",
       "last_agent": "Tab",
-      "rounds": 1
+      "rounds": 1,
+      "context": {
+        "body": "Cardiff Council",
+        "as_of": "2026-10-23T15:27Z",
+        "archive": {
+          "search": "https://email.bucklerfamily.estate/api/search?q=Cardiff%20Council"
+        },
+        "dartboard": {
+          "url": "https://bucklerfamily.estate/#roadmap",
+          "lane": null,
+          "note": "no lane on the dartboard yet"
+        },
+        "stage": "not yet on the dartboard",
+        "next_deadline": null,
+        "markers": {
+          "red_fish": 0,
+          "red_house": 0,
+          "fee": false
+        },
+        "open_questions": null,
+        "rungs_spent": []
+      }
     }
   ],
   "events": [
@@ -195,5 +567,6 @@
       "agent": "ChatGPT",
       "event": "independent review; turn to Grok"
     }
-  ]
+  ],
+  "context_note": "drafts[].context = metadata-only context pack (recipient body, archive thread link, dartboard link, stage, next deadline, markers, open questions, rungs spent); built by hive_context.py from the dartboard roadmap, the email archive API and qa kb.json. Hive protocol v3.1.0 context sweep."
 }
