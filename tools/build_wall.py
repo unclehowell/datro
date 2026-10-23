@@ -696,6 +696,7 @@ def build():
         for d_ in ("n", "p"): shutil.rmtree(os.path.join(SITE, d_), ignore_errors=True)
         for f_ in ("facebook.html", "timeline.html", "photos.html"):
             if os.path.exists(os.path.join(SITE, f_)): os.remove(os.path.join(SITE, f_))
+        write("404.html", head("Not found · farmbook 2", "This page is not on farmbook 2.", "404.html") + "<body>" + BS.top("feed") + '<main id="main" class="sb-main"><section class="wl-hero"><h1>Not found</h1><p>This page is not on farmbook 2. <a href="/">Back to the wall</a>.</p></section></main>' + page_end(""))
         vids = [dict(s_, by=PM) for s_ in BS.STORIES if s_["id"].startswith("s-hr-")]   # the highlight-report videos only (the exception)
         vc = "".join('<article class="post sp wl" id="v-%s" data-src-exception="highlight-report"><header class="sp-h"><span class="sp-av">%s</span><div class="sp-who"><a class="sp-n" href="u/%s.html">%s</a> <span class="wl-verb">shared a video</span><div class="sp-d">%s</div></div></header>'
                      '<div class="sp-b"><h2 class="pt sp-t">%s</h2><figure class="wl-vid"><video controls playsinline preload="none" poster="%s" src="%s"></video></figure></div>'
