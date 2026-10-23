@@ -4,7 +4,7 @@ new blobs uploaded in parallel (only those GitHub does not already have), then e
 (no base_tree, so GitHub never has to rewrite the big branch tree — the slow step that made large pushes time out),
 bottom-up, each sha checked against the local `git write-tree`; one commit; ref PATCH with force:false. Never force-pushes.
 Usage: python3 tools/push_fast.py "<message> — Sion's Tab agent"   (23 Oct 2026) — Sion's Tab agent"""
-import os, sys, json, base64, subprocess, concurrent.futures as cf
+import os, re, sys, json, base64, subprocess, concurrent.futures as cf
 sys.path.insert(0, "/home/user/tab/work/site-flywheels/tools")
 from gh import gh
 REPO, BRANCH = "unclehowell/datro", "fb"
@@ -13,6 +13,10 @@ def git(*a, inp=None):
     r = subprocess.run(["timeout", "-k", "5", "120", "git", *a], cwd=ROOT, capture_output=True, text=inp is None or isinstance(inp, str), input=inp)
     if r.returncode: raise SystemExit("git %s: %s" % (" ".join(a), (r.stderr or "")[-400:]))
     return r.stdout
+def tsha_of(t):
+    # a large answer can arrive as text (body_head); the tree's sha leads it
+    if isinstance(t, dict): return t.get("sha")
+    m = re.match(r'\s*\{"sha":"([0-9a-f]{40})"', str(t)); return m.group(1) if m else None
 def main():
     msg = sys.argv[1] if len(sys.argv) > 1 else "farmbook update — Sion's Tab agent"
     if not msg.rstrip().endswith("— Sion's Tab agent"): msg = msg.rstrip() + " — Sion's Tab agent"
@@ -42,7 +46,7 @@ def main():
         data = subprocess.run(["git", "cat-file", "blob", sha], cwd=ROOT, capture_output=True).stdout
         for attempt in range(4):
             st, b = gh("POST", f"/repos/{REPO}/git/blobs", {"content": base64.b64encode(data).decode(), "encoding": "base64"})
-            if st in (200, 201) and b.get("sha") == sha: return sha
+            if st in (200, 201) and tsha_of(b) == sha: return sha
         raise RuntimeError("blob %s (%s) failed: %s %s" % (sha[:7], path, st, str(b)[:200]))
     with cf.ThreadPoolExecutor(6) as ex:
         for i, _ in enumerate(ex.map(up, blobs.items())):
@@ -50,8 +54,8 @@ def main():
     for tsha, path, ents in trees:
         for attempt in range(4):
             st, t = gh("POST", f"/repos/{REPO}/git/trees", {"tree": ents})
-            if st in (200, 201): break
-        if st not in (200, 201) or t.get("sha") != tsha: raise SystemExit("tree %s (%s) failed or differs: %s %s" % (tsha[:7], path or "/", st, str(t)[:200]))
+            if st in (200, 201) and tsha_of(t): break
+        if tsha_of(t) != tsha: raise SystemExit("tree %s (%s) failed or differs: %s %s" % (tsha[:7], path or "/", st, str(t)[:200]))
     st, cm = gh("POST", f"/repos/{REPO}/git/commits", {"message": msg, "tree": T, "parents": [head]})
     if st not in (200, 201): raise SystemExit("commit failed %s %s" % (st, str(cm)[:300]))
     st, u = gh("PATCH", f"/repos/{REPO}/git/refs/heads/{BRANCH}", {"sha": cm["sha"], "force": False})

@@ -516,7 +516,9 @@ def split_static():
         t = open(a, encoding="utf-8").read()
         if re.search(r'data-y0="20(0[5-9]|[12]\d)"', t):
             t2 = keep(t, True).replace('href="/"', 'href="%s/"' % NOW_URL) if not os.path.exists(os.path.join(S2, f)) else None
-            if t2: open(os.path.join(S2, f), "w", encoding="utf-8").write(t2)
+            if t2:
+                t2 = re.sub(r"<strong>\d+ posts</strong> from c\. 650 to 2026", "<strong>%d posts</strong> from 2005 to 2026" % len(re.findall(r'<article class="post"', t2)), t2)
+                open(os.path.join(S2, f), "w", encoding="utf-8").write(t2)
             t1 = keep(t, False)
             t1 = re.sub(r'<h2 class="era" id="era-20[12]0s">[^<]*</h2>', "", t1)
             t1 = re.sub(r'<a href="#p-20(0[5-9]|[12]\d)[^"]*">[^<]*</a>', "", t1)
