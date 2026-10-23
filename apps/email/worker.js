@@ -6,7 +6,7 @@ const CANONICAL_ORIGIN = "https://" + CANONICAL_HOST;
 const CALENDAR_ORIGIN = "https://bucklerfamily-emails.pages.dev";
 const CORPUS_TTL_MS = 300000;
 const MANIFEST_URL = "https://wayback.bucklerfamily.estate/email/mail-index.json";
-const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/38c7f4775df0f74c027aad6bb965c60ca16f0ec8/apps/email/index.html";
+const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/0f9030693571bcb5403bec00bdc35a2505b346a9/apps/email/index.html";
 const TEXT_HOST = "wayback.bucklerfamily.estate";
 // Wayback's case-mail API is the single source of truth for every case email (redacted copies).
 const CASEMAIL_INDEX_URL = "https://wayback.bucklerfamily.estate/api/index.json";
@@ -304,6 +304,18 @@ export default {
     } catch (e) { return new Response("Unavailable", {status:502, headers:headers({"Content-Type":"text/plain; charset=utf-8"})}); }
   }
 
+  // Hive drafts pipeline (promotion tiers, metadata only), served same-origin for the strict CSP: data + widget from hive.bucklerfamily.estate. — Sion's Tab agent
+  if (url.pathname === "/data/hive.json" || url.pathname === "/data/pipeline.js") {
+    const js = url.pathname.endsWith(".js");
+    const srcs = js ? ["https://hive.bucklerfamily.estate/pipeline.js", "https://raw.githubusercontent.com/unclehowell/datro/watch/worker/pipeline.js"] : ["https://hive.bucklerfamily.estate/hive.json"];
+    for (const src of srcs) {
+      try {
+        const r = await fetch(src, {cf:{cacheTtl:60, cacheEverything:true}});
+        if (r.ok) return new Response(r.body, {status:200, headers:headers({"Content-Type": js ? "application/javascript; charset=utf-8" : "application/json; charset=utf-8", "Cache-Control":"public, max-age=60"})});
+      } catch (e) {}
+    }
+    return js ? new Response("/* pipeline unavailable */", {status:502, headers:headers({"Content-Type":"application/javascript; charset=utf-8"})}) : json({error:"The drafts pipeline could not be loaded."}, 502);
+  }
   // Forecast data for the reader's per-institution scatter: the dartboard's forecast.json, served same-origin (strict CSP connect-src 'self'). — Sion's Tab agent
   if (url.pathname === "/data/forecast.json") {
     for (const src of ["https://raw.githubusercontent.com/unclehowell/datro/dartboard/public/data/forecast.json", "https://dartboard.bucklerfamily.estate/data/forecast.json"]) {
