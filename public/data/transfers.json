@@ -1,5 +1,5 @@
 {
- "version": "3.0.0",
+ "version": "3.1.0",
  "updated": "2026-10-23",
  "parties": [
   {
@@ -1886,8 +1886,8 @@
   ]
  },
  "paths": {
-  "version": "3.0.0",
-  "intro": "Pick a part of Parcel A (A1, A2, A3) or Parcel B to light only its path. 💩 marks a permissive-occupancy step, 💩💩 a seizure or possession step. Each year sits where the line arrives.",
+  "version": "3.1.0",
+  "intro": "Pick a part of Parcel A (A1, A2, A3) or Parcel B to light only its path. 💩 marks a permissive-occupancy step, 💩💩 a seizure or possession step. Each year sits where the line arrives. The shaded field is the vacuum: its only origin is the 💩, and each registration of a part is born from it about 12 years on.",
   "question": {
    "from": "family",
    "to": "poo",
@@ -1931,6 +1931,19 @@
     "at": 8.0,
     "r": 0.6,
     "parcel": "B"
+   },
+   "papers1950": {
+    "icon": "🦹",
+    "name": "Parcel A’s papers, 1950",
+    "sub": "Bruce Sutherland, brought by Mr. Knapp, estate agent of Penarth (statement of Mary Williams, c. 1974)",
+    "at": 18.87,
+    "r": 0.53,
+    "rr": 26,
+    "p": "A",
+    "step": "a-1950",
+    "under": "Bruce Sutherland",
+    "over": "Mr. Knapp",
+    "over2": "estate agent"
    }
   },
   "starts": [
@@ -2032,7 +2045,8 @@
       "t": "Legal Wiki · Master Timeline (page 33)",
       "u": "https://greathousefarmwiki.wordpress.com/timeline/"
      }
-    ]
+    ],
+    "birth": "c.12 yrs on"
    },
    {
     "id": "a1-couple",
@@ -2129,7 +2143,8 @@
       "t": "Woodland & Land-Transfer Assessment 1902–2005",
       "u": "https://greathousefarmwiki.wordpress.com/family-legal-case-control-room/woodland-land-transfer-assessment-1902-2005/"
      }
-    ]
+    ],
+    "birth": "c.12 yrs on"
    },
    {
     "id": "a3-today",
@@ -2386,7 +2401,9 @@
       "u": "https://greathousefarmwiki.wordpress.com/timeline/"
      }
     ],
-    "tnum": "WA240304"
+    "tnum": "WA240304",
+    "birth": "c.12 yrs on",
+    "birthUp": true
    },
    {
     "id": "b-1987",
@@ -2436,6 +2453,33 @@
      }
     ],
     "color": "#ff4d6d"
+   },
+   {
+    "id": "a-1950",
+    "p": "A",
+    "fr": "family",
+    "to": "papers1950",
+    "lab": "1950",
+    "bend": -0.5,
+    "color": "#ffd166",
+    "title": "Parcel A · 1950 · the family’s papers",
+    "date": "June 1950 (papers taken during a stay of about two years, 1950–52)",
+    "text": "Per the c. 1974 statement of Mary (Nancy) Williams: in the beginning of June 1950 Mr. Knapp, “an Estate Agent who lives at Penarth” and then a lay preacher, asked the family to give a man somewhere quiet to live, and brought Bruce Sutherland to the farmhouse in his car. He stayed about two years. Later he told Mary that he “had taken the papers which were in the blanket box including the agreement relating to the farm and given them to Mr. Knapp.” Those papers were the family’s title evidence for Parcel A. Mary linked their loss to the first possession application, made by Western Ground Rents.",
+    "src": [
+     {
+      "t": "Legal Wiki · Mary (Nancy) Williams’s Statement (c. 1974) (page 196)",
+      "u": "https://greathousefarmwiki.wordpress.com/mary-williams-statement/"
+     },
+     {
+      "t": "Docs · WIKI-0196 — Mary (Nancy) Williams’s Statement (c. 1974)",
+      "u": "https://docs.bucklerfamily.estate/ghf_wiki/pe_marywilliamsstatement/"
+     },
+     {
+      "t": "Q&A · What happened to the family’s papers (the blanket box) in 1950–52?",
+      "u": "https://qa.bucklerfamily.estate/"
+     }
+    ],
+    "labT": 0.78
    }
   ],
   "uses": {
@@ -2445,6 +2489,66 @@
     "t1969",
     "t1982"
    ]
+  },
+  "zones": {
+   "root": {
+    "ids": [
+     "thomas",
+     "vaughan",
+     "bute",
+     "mountjoy",
+     "family"
+    ],
+    "label": "ROOT TITLE CHAIN",
+    "title": "Root title chain",
+    "sub": "the clear wedge of the circle",
+    "text": "The freehold chain from the root: the Vaughan family, then the Bute Estate, which in 1877 split the farm. Parcel A, the house parcel, passed through Daniel Thomas & Son to the family; Parcel B stayed with Bute and passed to Mountjoy Ltd in 1926. This wedge is the only part of the circle with a root title and conveyances behind it.",
+    "src": [
+     {
+      "t": "Legal Wiki · Master Timeline (page 33)",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     },
+     {
+      "t": "Legal Wiki · Mary (Nancy) Williams’s Statement (c. 1974) (page 196)",
+      "u": "https://greathousefarmwiki.wordpress.com/mary-williams-statement/"
+     }
+    ]
+   },
+   "vacuum": {
+    "label": "THE VACUUM · NO ROOT TITLE, NO SALE",
+    "title": "The vacuum",
+    "sub": "the shaded field of the circle",
+    "text": "The shaded field holds the company and council registrations, possession steps and transfers over the three parts of Parcel A. None of it starts from the root title chain or from a sale by the family. Its only origin is the 💩 at the centre: the assertion that Mary’s occupancy was permissive, which the family’s records do not bear out. From that assertion, each time about 12 years on, a registration of a synthetic part of Parcel A is born.",
+    "births": [
+     {
+      "p": "A1",
+      "t": "the woodland: 💩 1949 → registration 1961 (Cardiff City Corporation; title WA735527)"
+     },
+     {
+      "p": "A2",
+      "t": "the house and yard: 💩 1962, renewed 1965–1975 → registration 1983 (BP Properties; title WA240304)"
+     },
+     {
+      "p": "A3",
+      "t": "the green: 💩 1959 → registration 1970 (Glamorgan County Council; village green VG41)"
+     }
+    ],
+    "fill": "#9a8cff",
+    "src": [
+     {
+      "t": "Legal Wiki · Three Parts of Parcel A (page 3356): repeated pattern, 1949–61, 1958/59–70, 1969–83",
+      "u": "https://greathousefarmwiki.wordpress.com/the-two-parcels/three-parts-of-parcel-a-divergent-chronologies/"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33)",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     },
+     {
+      "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (judgment)",
+      "u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+     }
+    ]
+   }
   }
  }
 }

@@ -145,7 +145,7 @@ g.pth.ylab{cursor:pointer}
 </head>
 <body>
 <div class="wrap">
-<p class="intro">Tŷ Mawr, Llandough: the circle shows who held the land. The 💩 at the centre marks permissive occupancy; the dotted “?” line asks how the family, holders of Parcel A on the root title chain, came to be treated as permissive occupiers. Tap A1, A2, A3 or B to light just that path.</p>
+<p class="intro">Tŷ Mawr, Llandough: the circle shows who held the land. The 💩 at the centre marks permissive occupancy; the dotted “?” line asks how the family, holders of Parcel A on the root title chain, came to be treated as permissive occupiers. The shaded field is the vacuum: company activity whose only origin is the 💩. Tap A1, A2, A3 or B to light just that path.</p>
 <div class="bar">
  <div class="seg" role="group" aria-label="View"><button id="vRing" aria-pressed="true">Ring</button><button id="vList" aria-pressed="false">List</button></div>
 </div>
@@ -206,10 +206,13 @@ function legendHTML(){
  <div class="lrow"><svg width="44" height="10"><line x1="2" y1="5" x2="42" y2="5" stroke="#fff" stroke-width="4"/></svg>record held</div>
  <div class="lrow"><svg width="44" height="10"><line x1="2" y1="5" x2="42" y2="5" stroke="#fff" stroke-width="4" stroke-dasharray="7 4"/></svg>per secondary source · record not seen</div>
  <div class="lrow"><svg width="44" height="14"><line x1="2" y1="7" x2="42" y2="7" stroke="#ffd166" stroke-width="12"/><text x="22" y="7.5" font-size="8" font-weight="800" fill="#151229" text-anchor="middle" dominant-baseline="central">WA…</text></svg>title number on the line</div>
- <div class="lrow"><span style="font-size:22px;width:44px;text-align:center" data-ghf-keep>💩</span><span><b>Permissive occupancy</b> · a permissive-occupancy step, at the centre</span></div>
+ <div class="lrow"><svg width="44" height="16"><path d="M3 13 A30 30 0 0 1 41 13" fill="none" stroke="#e7c6ff" stroke-width="7" stroke-linecap="round"/></svg><span><b>Root title chain</b> · the freehold chain from the root to the family</span></div>
+ <div class="lrow"><svg width="44" height="22"><rect x="2" y="2" width="40" height="18" rx="4" fill="#9a8cff" fill-opacity=".22" stroke="#ffffff66" stroke-dasharray="4 3"/></svg><span><b>The vacuum</b> · company activity on Parcel A with no root title or sale behind it; its only origin is the 💩, and from it each registration of a part is born about 12 years on</span></div>
+ <div class="lrow"><span style="font-size:22px;width:44px;text-align:center" data-ghf-keep>💩</span><span><b>Permissive occupancy</b> · the assertion that Mary’s occupancy was permissive, at the centre</span></div>
  <div class="lrow"><span style="font-size:15px;width:44px;text-align:center;letter-spacing:-2px" data-ghf-keep>💩💩</span><span><b>Seizure / possession</b> · a seizure or possession step</span></div>
  <div class="lrow"><svg width="44" height="22"><line x1="2" y1="11" x2="42" y2="11" stroke="#fff" stroke-width="3" stroke-dasharray="1.5 6" stroke-linecap="round"/><circle cx="22" cy="11" r="9" fill="#1d1938" stroke="#fff" stroke-width="2"/><text x="22" y="15" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">?</text></svg><span>The family ⇢ 💩: how the root-title holders of Parcel A came to be treated as permissive occupiers</span></div>
  <div class="lrow"><svg width="44" height="18"><line x1="2" y1="9" x2="26" y2="9" stroke="#34c38f" stroke-width="4"/><rect x="24" y="2" width="19" height="14" rx="7" fill="#34c38f"/></svg>A path line; the year sits where it arrives</div>
+ <div class="lrow"><span style="font-size:22px;width:44px;text-align:center" data-ghf-keep>🦹</span><span><b>Parcel A’s papers, 1950</b> · the party named under it and the estate agent above it, per the statement of Mary Williams</span></div>
  <div class="lrow"><svg width="44" height="22"><circle cx="22" cy="11" r="9" fill="#1d1938" stroke="#ff4d6d" stroke-width="2"/><path d="M17.5 6.5 L26.5 15.5 M26.5 6.5 L17.5 15.5" stroke="#ff4d6d" stroke-width="2.5"/></svg>Stops short and turns back (1974)</div>
  <div class="lrow"><svg width="44" height="16"><line x1="2" y1="8" x2="42" y2="8" stroke="#fff" stroke-width="9"/><line x1="2" y1="8" x2="42" y2="8" stroke="#ffd166" stroke-width="6"/></svg>12-year limitation period on a chain</div>
  <div class="lrow"><svg width="44" height="16"><circle cx="22" cy="8" r="6" fill="#1d1938" stroke="#fff" stroke-width="2" stroke-dasharray="3 2"/></svg>year with a source to add</div></div>
@@ -229,12 +232,48 @@ function syncChips(){chips.querySelectorAll('.chip').forEach(x=>x.setAttribute('
 let CHARR=[];const CH=D.chains||[];const CHT=new Set(((D.origin||{}).titles||[]).map(x=>x.t));const CHM=Object.fromEntries(CH.map(c=>[c.id,c]));
 const nodeLab=n=>n.lab||String(n.y);
 const spanLab=(ch,n)=>(n.y===ch.span.from&&ch.span.lab0)?ch.span.lab0:(n.y===ch.span.to&&ch.span.lab)?ch.span.lab:nodeLab(n);
+
+// v3.1 (Sion, 23 Oct 2026): two zones. The ROOT TITLE CHAIN wedge (the freehold chain from the root to the family) stays clear;
+// the rest of the circle is the shaded vacuum, where the company activity on Parcel A happens with no root title or sale behind it.
+function drawZones(gp){const Z=D.paths&&D.paths.zones;if(!Z)return;const mob=C.mob,st=2*Math.PI/N;
+ const ids=Z.root.ids.filter(k=>P[k]&&P[k].i!==undefined).map(k=>P[k].i),set=new Set(ids);if(!ids.length)return;
+ let s=ids[0];for(const i of ids){if(!set.has((i-1+N)%N)){s=i;break}}
+ const a0=ang(s)-st/2,a1=a0+st*ids.length,rv=C.rc-(mob?3:2),xy=(a,r)=>[(Math.cos(a)*r).toFixed(1),(Math.sin(a)*r).toFixed(1)];
+ const g=el('g',{class:'zones','pointer-events':'none'},gp);
+ // the vacuum: the circle outside the root wedge
+ const v0=xy(a1,rv),v1=xy(a0+2*Math.PI,rv);
+ el('path',{d:`M0,0 L${v0} A${rv},${rv} 0 1 1 ${v1} Z`,fill:Z.vacuum.fill||'#9a8cff','fill-opacity':0.13,stroke:'none',class:'vac'},g);
+ [a0,a1].forEach(a=>el('line',{x1:0,y1:0,x2:xy(a,rv)[0],y2:xy(a,rv)[1],stroke:'#ffffff66','stroke-width':mob?2.5:1.8,'stroke-dasharray':mob?'10 8':'7 6'},g));
+ // its name, in the band just outside the ring over the vacuum's arc (the same band as the root title chain, opposite it)
+ const rb=C.rc+(C.rl-C.rc)*0.5,bw=(C.rl-C.rc)*0.78;
+ {const gv=el('g',{class:'zlab',role:'button',tabindex:0,'aria-label':Z.vacuum.title,'pointer-events':'auto',style:'cursor:pointer'},gp);
+  const c0=xy(a1+st*0.08,rb),c1=xy(a0+2*Math.PI-st*0.08,rb),am=a1+(2*Math.PI-(a1-a0))/2,bot=Math.sin(am)>0.2;
+  el('path',{d:`M${c0} A${rb},${rb} 0 1 1 ${c1}`,fill:'none',stroke:Z.vacuum.fill||'#9a8cff','stroke-width':bw,'stroke-opacity':0.42,'stroke-linecap':'round'},gv);
+  // the words ride a short arc centred opposite the root wedge, reading left to right
+  const spn=Math.min(1.25,(2*Math.PI-(a1-a0))/2-st),pa=bot?[am+spn,am-spn]:[am-spn,am+spn],q0=xy(pa[0],rb),q1=xy(pa[1],rb);
+  el('path',{id:'vacP',d:`M${q0} A${rb},${rb} 0 0 ${bot?0:1} ${q1}`,fill:'none',stroke:'none'},gv);
+  const vt=el('text',{'font-size':bw*0.62,'font-weight':800,'letter-spacing':mob?3:2,fill:'#ffffff','dominant-baseline':'central'},gv);
+  const vp=el('textPath',{href:'#vacP',startOffset:'50%','text-anchor':'middle'},vt);vp.textContent=Z.vacuum.label;
+  gv.addEventListener('click',e=>{e.stopPropagation();openVacuum()});gv.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openVacuum()}})}
+ // the root title chain: a band just outside the ring over the root wedge, named along its length
+ const gr=el('g',{class:'zlab',role:'button',tabindex:0,'aria-label':Z.root.title,'pointer-events':'auto',style:'cursor:pointer'},gp);
+ const b0=xy(a0+st*0.08,rb),b1=xy(a1-st*0.08,rb),top=Math.sin((a0+a1)/2)<0.2;
+ el('path',{d:`M${b0} A${rb},${rb} 0 0 1 ${b1}`,fill:'none',stroke:RT?RT.color:'#e7c6ff','stroke-width':bw,'stroke-opacity':0.9,'stroke-linecap':'round'},gr);
+ el('path',{id:'rootP',d:top?`M${b0} A${rb},${rb} 0 0 1 ${b1}`:`M${b1} A${rb},${rb} 0 0 0 ${b0}`,fill:'none',stroke:'none'},gr);
+ const rt=el('text',{'font-size':bw*0.62,'font-weight':800,'letter-spacing':mob?3:2,fill:'#151229','dominant-baseline':'central'},gr);
+ const rp=el('textPath',{href:'#rootP',startOffset:'54%','text-anchor':'middle'},rt);rp.textContent=Z.root.label;
+ gr.addEventListener('click',e=>{e.stopPropagation();openZone('root')});gr.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openZone('root')}});
+}
+function openVacuum(){openZone('vacuum')}
+function openZone(k){const Z=D.paths.zones[k];sel=null;applyFocus();
+ $('#sheet').innerHTML=`<button class="x" aria-label="Close" id="shX">×</button><h2 id="shT">${esc(Z.title)}</h2><div class="date">${esc(Z.sub||'')}</div>
+ <dl><dt>What it shows</dt><dd>${esc(Z.text)}</dd>${Z.births?`<dt>Registrations born of the 💩</dt><dd>${Z.births.map(b=>`<p><span class="dot" data-ghf-keep style="background:${PC[b.p].color}">${b.p}</span> ${esc(b.t)}</p>`).join('')}</dd>`:''}<dt>Source</dt><dd>${srcList(Z.src||[])}</dd></dl>`;wireSheet()}
 function drawChains(gp){
  // v3.0 (Sion, 23 Oct 2026): the 💩 sits at the centre; a dotted "?" line joins it to the family; each part of Parcel A, and Parcel B, has its own path; the year sits where each line arrives
  const PT=D.paths;if(!PT)return;const mob=C.mob,sw=mob?5:3.6,fsY0=mob?17:12.5,fsY=fsY0,PR={poo:mob?30:22,dpoo:mob?34:25,pB:mob?20:15};
  const PCOL={A1:PC.A1.color,A2:PC.A2.color,A3:PC.A3.color,B:PC.B.color};
  const NP={poo:[0,0]};Object.entries(PT.nodes).forEach(([k,n])=>{if(n.at!==undefined){const a=(-90+rot+n.at*360/N)*Math.PI/180;NP[k]=[Math.cos(a)*R*n.r,Math.sin(a)*R*n.r]}});
- const ptOf=k=>NP[k]||pos(P[k].i,R-12),radOf=k=>PR[k]||0;
+ const ptOf=k=>NP[k]||pos(P[k].i,R-12),radOf=k=>PR[k]||(PT.nodes[k]&&PT.nodes[k].rr?PT.nodes[k].rr*(mob?1:0.74):0);
  const gL=el('g',{class:'pths'},gp),gY=el('g',{},gp),gNd=el('g',{},gp);
  const yTag=(x,y,txt,col,p,id,sc=1)=>{const fsY=fsY0*sc,g=el('g',{class:'pth ylab','data-p':p,'data-pid':id},gY);const w=txt.length*fsY*0.6+10,h=fsY+7;
   el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx:h/2,fill:col,stroke:'#1d1938','stroke-width':1.5},g);
@@ -273,21 +312,27 @@ function drawChains(gp){
   const p0=[a[0]+ux*(radOf(L.fr)+3),a[1]+uy*(radOf(L.fr)+3)],p1=[b[0]-ux*(radOf(L.to)+5),b[1]-uy*(radOf(L.to)+5)];
   const k=(L.bend||0.15)*dl,c=[(p0[0]+p1[0])/2-uy*k,(p0[1]+p1[1])/2+ux*k];
   line(L,`M${p0[0].toFixed(1)},${p0[1].toFixed(1)} Q${c[0].toFixed(1)},${c[1].toFixed(1)} ${p1[0].toFixed(1)},${p1[1].toFixed(1)}`,col);
-  const tY=dl<160?0.62:0.8,q=bez(p0,c,p1,tY);yTag(q[0],q[1],L.lab,col,L.p,L.id)});
+  const tY=L.labT||(dl<160?0.62:0.8),q=bez(p0,c,p1,tY),yg=yTag(q[0],q[1],L.lab,col,L.p,L.id);
+  if(L.birth){const bf=mob?14:10,t=el('text',{x:q[0],y:L.birthUp?q[1]-fsY*0.5-bf*0.75:q[1]+fsY*0.5+bf*1.25,'font-size':bf,'font-weight':700,'font-style':'italic','text-anchor':'middle',class:'nlab'},yg);t.textContent=L.birth}});
  (PT.starts||[]).forEach(S0=>{const c=ptOf(S0.node),col=PCOL[S0.p],r=radOf(S0.node);const a=S0.node==='poo'?(rot+185)*Math.PI/180:(rot+300)*Math.PI/180;
   yTag(c[0]+Math.cos(a)*(r+fsY*1.6),c[1]+Math.sin(a)*(r+fsY*1.6),S0.p+' '+S0.lab,col,S0.p,'s:'+S0.p)});
  // the 💩 nodes
  Object.entries(PT.nodes).forEach(([k,n])=>{const c=ptOf(k),r=radOf(k);
-  const g=el('g',{class:'pn2','data-id':k,'data-p':n.parcel||'A A1 A2 A3',role:'button',tabindex:0,'aria-label':n.name+' · '+n.sub},gNd);
+  const g=el('g',{class:'pn2','data-id':k,'data-p':n.p||n.parcel||'A A1 A2 A3',role:'button',tabindex:0,'aria-label':n.name+' · '+n.sub},gNd);
   el('circle',{cx:c[0],cy:c[1],r,fill:'#1d1938',stroke:n.parcel?PC[n.parcel].color:'#f2d64b','stroke-width':3},g);
   if(n.parcel){const t=el('text',{x:c[0],y:c[1]+r*0.42,'font-size':r*1.15,'font-weight':800,'text-anchor':'middle',fill:PC[n.parcel].color},g);t.textContent=n.icon}
   else{const two=n.icon.length>2,t=el('text',{x:c[0],y:c[1]+(mob?2:1.5),class:'poo','font-size':two?r*0.82:r*1.2,'text-anchor':'middle','dominant-baseline':'central','data-ghf-keep':'','letter-spacing':two?-2:0},g);t.textContent=n.icon}
+  // v3.1: a named node (the 1950 node): the party's name under the icon, the estate agent above, as the statement gives them
+  if(n.under||n.over){const lf=mob?18:13,sm=mob?14:10.5,lab=(txt,y,fs,w,op)=>{const t=el('text',{x:c[0],y,'font-size':fs,'font-weight':w,'text-anchor':'middle',class:'nlab','fill-opacity':op||1},g);t.textContent=txt;return t};
+   if(n.under)lab(n.under,c[1]+r+lf*0.95,lf,800);
+   if(n.over){lab(n.over,c[1]-r-(n.over2?sm*1.35:0)-lf*0.45,lf,800);if(n.over2)lab(n.over2,c[1]-r-sm*0.55,sm,500,0.85)}}
   const ti=el('title',{},g);ti.textContent=n.name+' · '+n.sub;
-  g.addEventListener('click',e=>{e.stopPropagation();k==='poo'?openOrigin():openNodeP(k)});
-  g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();k==='poo'?openOrigin():openNodeP(k)}})});
+  const tap=()=>k==='poo'?openOrigin():n.step?openStep(n.step):openNodeP(k);
+  g.addEventListener('click',e=>{e.stopPropagation();tap()});
+  g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tap()}})});
 }
 const PL=D.paths?Object.fromEntries(D.paths.lines.map(l=>[l.id,l]).concat((D.paths.starts||[]).map(s=>['s:'+s.p,Object.assign({id:'s:'+s.p},s)])).concat([['q',Object.assign({id:'q',p:'A'},D.paths.question)]])):{};
-const PATHP=new Set(D.paths?D.paths.lines.map(l=>l.p):[]);
+const PATHP=new Set(D.paths?D.paths.lines.map(l=>l.p).filter(p=>p!=='A'):[]);
 const PUSE=D.paths&&D.paths.uses||{};
 const PNAME=k=>D.paths&&D.paths.nodes[k]?(D.paths.nodes[k].icon+' '+D.paths.nodes[k].name):(P[k]?P[k].name:k);
 function openStep(id){const L=PL[id];if(!L)return;sel=null;applyFocus();
@@ -398,7 +443,7 @@ function draw(){
  if(RT){const sp=P[RT.star],v=P.vaughan;const a=ang(v.i)+0.62*2*Math.PI/N,r=R+(C.mob?175:140);STAR=[Math.cos(a)*r,Math.sin(a)*r];sp.xy=STAR}
  svg.innerHTML='';MK={};MKD=null;svg.style.setProperty('--sws',(C.sw*1.6)+'px');
  C.rc=R+(C.mob?28:20);C.rl=C.rc+Math.round(R*0.09);// the ring line, then an empty band (9% of R) before any holder name
- el('circle',{cx:0,cy:0,r:C.rc,fill:'none',stroke:'#ffffff70','stroke-width':C.mob?2.5:2,class:'ringline'},svg);
+ drawZones(svg);el('circle',{cx:0,cy:0,r:C.rc,fill:'none',stroke:'#ffffff70','stroke-width':C.mob?2.5:2,class:'ringline'},svg);
  const gA=el('g',{},svg),gL=el('g',{},svg),gN=el('g',{},svg);
  // parallel index per unordered pair
  const pairCount={};
