@@ -282,8 +282,23 @@ export async function onRequestPost({request,env}) {
   const fullPrompt=baseRules.join("\n")+"\n\n--- TUMBLER GENERATED WORK ORDER INPUT ---\n\n"+workOrder;
   try {
     const result=await env.AI.run(MODEL,{prompt:fullPrompt,max_tokens:2600,temperature:0.15});
-    const prompt=String(result?.response||result?.output_text||"").trim();
-    if(!prompt)return responseJson({error:"The model returned no prompt text."},502);
+    // Cloudflare model output shapes vary by model adapter. Support Workers AI's
+    // native response shape and OpenAI-compatible completion/chat shapes.
+    const candidates = [
+      result?.response,
+      result?.output_text,
+      result?.choices?.[0]?.text,
+      result?.choices?.[0]?.message?.content,
+      result?.result?.response,
+      result?.result?.output_text,
+      result?.result?.choices?.[0]?.text,
+      result?.result?.choices?.[0]?.message?.content
+    ];
+    const prompt = candidates.find(value => typeof value === "string" && value.trim().length > 0)?.trim() || "";
+    if(!prompt)return responseJson({
+      error:"The model returned no prompt text.",
+      outputShape:result && typeof result === "object" ? Object.keys(result).slice(0,20) : typeof result
+    },502);
     return responseJson({
       ok:true,prompt,methodology:METHODS[method].label,model:MODEL,
       settings:{propertyLaw,investigation,threshold:investigation?threshold:null,scope:branchScope},
