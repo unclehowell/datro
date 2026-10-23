@@ -201,7 +201,7 @@ def friends_html(sl, FR, up, prof, avimg):
 
 CSS = """
 .fb-rx{display:flex;align-items:center;gap:6px;padding:8px 14px 4px;font-size:.88rem;color:var(--wl-mut,#65676b)}
-.fb-ic i{font-style:normal;display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;font-size:12px;margin-right:-4px;border:2px solid var(--wl-card,#fff)}
+.fb-ic{display:inline-flex;flex:none}.fb-ic i{font-style:normal;display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;font-size:12px;margin-right:-4px;border:2px solid var(--wl-card,#fff)}
 .fb-ic .fb-u{background:#1877f2}.fb-ic .fb-d{background:#e4e6eb}
 .fb-who{margin-left:6px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.fb-cc{white-space:nowrap}
 .fb-rxw{padding:0 14px;font-size:.85rem}.fb-rxw summary{cursor:pointer;color:var(--wl-mut,#65676b)}.fb-rxw p{margin:.3em 0}
