@@ -6,6 +6,23 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Rules: DOCS-STAN
 
 ## [Unreleased]
 
+## [docs-0.5.0] - 2026-10-23
+
+### Added
+- `ghf_wiki` — Wiki pages: 268 Legal Wiki pages that are not evidence entries, one document each (`ghf_wiki/<group>_<page>`,
+  v1.0.0, en), in bands: timelines and chronologies, title chain and history, people and organisations, legal analysis,
+  institutional reviews, correspondence logs, reports, registers and indexes, questions and answers, other pages.
+- `ghf_research` — Research: the 231 pages of research.bucklerfamily.estate that have no wiki twin (the media register
+  entries MR-0001 to MR-0231, the media coverage list, the central chronology, correspondence 20–23 October 2026).
+- `ghf_evidence/ev_0513` (from research.bucklerfamily.estate) and `ghf_evidence/ev_0900` (Legal Wiki page 8427).
+- Each page is kept as published (verbatim record, DOCS-STANDARD §5.6): wiki links lead to the same path on
+  research.bucklerfamily.estate and images are links to their files. Each is also a PDF in wayback (`pdf/docs-archive/…`).
+
+### Changed
+- `build.py`: one shared copy of the theme files at `/_static/` instead of one per document (DOCS-STANDARD v1.4.0 §10.7):
+  about 9 files per document instead of 27, so the library stays far under Cloudflare Pages' 20,000-file cap.
+- Collection menus: bands follow the order of `collection.json` "groups", documents in title order (§10.8).
+
 ## [docs-0.4.1] - 2026-10-23
 
 ### Fixed

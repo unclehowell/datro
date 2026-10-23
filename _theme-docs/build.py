@@ -13,7 +13,7 @@ and public/sitemap.xml. The site is HTML only: older versions are PDFs in the wa
 _theme-docs/release.py when a version is replaced and listed in each doc.json "archive" (DOCS-STANDARD.md §6).
 — Sion's Tab agent
 """
-import json, os, re, shutil, subprocess, sys, tempfile, datetime, pathlib, html as _html
+import json, os, re, shutil, subprocess, sys, tempfile, datetime, pathlib, threading, html as _html
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 KIT = ROOT / '_theme-docs'
@@ -224,6 +224,49 @@ def build_pdf(coll, slug, meta, d, lang, out_dir):
     return out_dir / pdf_name
 
 
+_SHARED_LOCK = threading.Lock()
+SHARED_STATIC = OUT / '_static'
+KEEP_LOCAL = {'documentation_options.js'}            # carries the document's own version and language
+
+
+def share_static(html_out):
+    """One shared copy of the theme files for the whole site (DOCS-STANDARD.md §10.7): every file of a document's _static that is
+    byte-identical to the shared copy at /_static/<same path> is dropped from the document and its pages point at /_static/.
+    A file that differs (another language's search data, a newer theme) stays with its document. Keeps the deploy far under
+    Cloudflare Pages' 20,000-file cap (about 10 files per one-language document instead of 27)."""
+    st = html_out / '_static'
+    if not st.is_dir():
+        return
+    moved = set()
+    for f in sorted(st.rglob('*')):
+        if not f.is_file():
+            continue
+        rel = f.relative_to(st).as_posix()
+        if rel in KEEP_LOCAL:
+            continue
+        data = f.read_bytes()
+        dest = SHARED_STATIC / rel
+        with _SHARED_LOCK:
+            if not dest.exists():
+                dest.parent.mkdir(parents=True, exist_ok=True)
+                dest.write_bytes(data)
+            elif dest.read_bytes() != data:
+                continue
+        f.unlink()
+        moved.add(rel)
+    for sub in sorted(st.rglob('*'), reverse=True):
+        if sub.is_dir() and not any(sub.iterdir()):
+            sub.rmdir()
+    if not moved:
+        return
+    pat = re.compile(r'((?:href|src)=")((?:\.\./)*)_static/([^"?#]+)')
+    for h in html_out.rglob('*.html'):
+        t = h.read_text(encoding='utf-8')
+        t2 = pat.sub(lambda m: m.group(1) + '/_static/' + m.group(3) if m.group(3) in moved else m.group(0), t)
+        if t2 != t:
+            h.write_text(t2, encoding='utf-8')
+
+
 def build_doc(coll, slug, meta, d):
     src = meta.parent / 'source'
     base = OUT / coll / slug / 'latest'
@@ -253,6 +296,7 @@ def build_doc(coll, slug, meta, d):
                 (html_out / junk).unlink(missing_ok=True)
             for m in html_out.rglob('*.map'):          # theme source maps: never requested by readers; keeps the deploy under Pages' file cap
                 m.unlink()
+            share_static(html_out)
             inject_boot(html_out)
             entry['languages'].append({
                 'code': lang, 'name': LANG_NAMES.get(lang, lang), 'title': title, 'summary': summary,
@@ -324,8 +368,10 @@ def render_menus(index, entries):
         groups = {}
         for e in docs:
             groups.setdefault(e['document'].split('_')[0], []).append(e)
+        order = list(c.get('groups', {}))              # bands follow the order of collection.json "groups"; unknown groups after them
         body = ''
-        for g, es in groups.items():
+        for g, es in sorted(groups.items(), key=lambda kv: (order.index(kv[0]) if kv[0] in order else len(order), kv[0])):
+            es = sorted(es, key=lambda e: (e['title'].lower(), e['id']))
             label = _t(c.get('groups', {}).get(g, {'en': g.capitalize()}))
             body += band(esc(label), [f'<a class="btn{" long" if len(e["title"]) > 48 else ""}" href="/{e["id"]}/">{esc(e["title"])}</a>'
                                       for e in es])

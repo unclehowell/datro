@@ -1,6 +1,6 @@
 # DOCS-STANDARD — how a document is published on docs.bucklerfamily.estate
 
-Version 1.3.0 · 2026-10-23. Drawn from the library branch (library.bucklerfamily.estate), which stays as it is.
+Version 1.4.0 · 2026-10-23. Drawn from the library branch (library.bucklerfamily.estate), which stays as it is.
 The rules are numbered so a change, a review or a build error can point at one. `python3 _theme-docs/build.py --check`
 enforces the ones marked **[checked]**; a deploy fails rather than publish a document that breaks them.
 
@@ -137,8 +137,15 @@ python3 _theme-docs/release.py <collection>/<document> --to X.Y.Z [--date YYYY-M
      Archive PDFs (release.py): rinohtype (pure Python, no TeX), A4, `_theme-docs/sphinx/pdf.rtt` + `pdf.rts`.
 10.5 The site's `_redirects` sends the old PDF addresses (`/<collection>/<document>/latest/pdf/…`) to the document's menu; other missing paths are a 404.
 10.6 Documents build side by side, one Sphinx run per CPU (`DOCS_JOBS` overrides); theme source maps (`*.map`) are dropped from
-     the output. About 27 files per one-language document: Cloudflare Pages takes at most 20,000 files per deployment, so past
-     about 650 documents the theme's `_static` has to be shared between documents.
+     the output.
+10.7 One shared copy of the theme files: after each Sphinx run, every file of the document's `_static/` that is byte-identical to
+     the site copy at `/_static/<same path>` is dropped from the document, and its pages point at `/_static/…` (the first build of a
+     file creates the site copy). `documentation_options.js` (the document's own version and language) stays with the document, and
+     so does any file that differs from the site copy (another language's search data). A one-language document is about 9 files
+     (its pages, search index, options file and menu) instead of 27: 1,022 documents built to 9,257 files on 23 Oct 2026, against
+     Cloudflare Pages' 20,000-file cap per deployment (room for about 2,000 more documents).
+10.8 Collection menus: the bands follow the order of the collection's `collection.json` "groups" (a group not listed comes after
+     them); inside a band the documents are in title order.
 10.4 Every generated HTML page ends its `<head>` with the family header loader `ghf-boot.js?v=2.1.2`.
 10.5 Day and night follow the family sites: white ground by day, black by night, switched by the family toggle in the shared header
      (one toggle; Furo's own is hidden). Every generated page carries `<html data-ghf-native="auto">`, so the shared theme never
