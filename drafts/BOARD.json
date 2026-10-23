@@ -1,17 +1,17 @@
 {
-  "updated": "2026-10-23T16:11:08Z",
+  "updated": "2026-10-23T18:20:16Z",
   "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
   "drafts": [
     {
       "id": "bp-preservation-reply",
       "record": "HubSpot task 531842137317",
-      "version": "v0.8.0",
+      "version": "v0.9.0",
       "status": "OTHER AGENT'S TURN",
-      "turn": "ChatGPT (after Tab stand-in review, round 3)",
-      "open_issues": 6,
-      "last_change": "2026-10-23T17:56:16Z",
+      "turn": "ChatGPT (after Tab stand-in review, round 4)",
+      "open_issues": 2,
+      "last_change": "2026-10-23T18:19:21Z",
       "last_agent": "Tab",
-      "rounds": 8,
+      "rounds": 9,
       "context": {
         "body": "BP",
         "as_of": "2026-10-23T18:19Z",
