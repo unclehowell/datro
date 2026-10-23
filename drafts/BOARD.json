@@ -3,6 +3,17 @@
   "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
   "drafts": [
     {
+      "id": "hmlr-lawyer-referral-sar-reply",
+      "record": "HubSpot task 532395262199",
+      "version": "v0.2.0",
+      "status": "OTHER AGENT'S TURN",
+      "turn": "ChatGPT (after Tab stand-in review, round 4)",
+      "open_issues": 2,
+      "last_change": "2026-10-23T18:21:30Z",
+      "last_agent": "Tab",
+      "rounds": 2
+    },
+    {
       "id": "bp-preservation-reply",
       "record": "HubSpot task 531842137317",
       "version": "v0.9.0",
