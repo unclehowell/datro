@@ -229,7 +229,7 @@ export async function onRequestPost({request,env}) {
     const [wiki,qa]=await Promise.all([fallbackWiki(queries),fallbackQa(queries,focus)]);
     fallback=[...wiki,...qa];
   }
-  const sourceContext=[...indexed,...fallback].slice(0,22);
+  const sourceContext=[...indexed,...fallback].slice(0,8).map(item=>({...item,excerpt:String(item.excerpt||"").slice(0,650)}));
   let runCoverage={};
   try{runCoverage=JSON.parse(run?.coverage_json||"{}");}catch{}
   const branchList=(branchScope==="all"?branches:branches.filter(x=>x.name===String(input.branch||"")))
@@ -273,7 +273,7 @@ export async function onRequestPost({request,env}) {
     "TARGET REPOSITORY\nhttps://github.com/unclehowell/datro",
     "SCOPE\n"+(branchScope==="all"?"ALL live repository branches and their current heads.":"Only the explicitly selected branch; do not modify other branches."),
     "LIVE BRANCH HEADS\n"+(branchList.join("\n")||"Branch list unavailable; fetch it before proceeding."),
-    "REGISTERED SOURCE INVENTORY\n"+selectedSources.map(s=>"- "+s.host+" ["+s.kind+"]: "+s.description+" — "+s.url).join("\n"),
+    "REGISTERED SOURCE INVENTORY\n"+selectedSources.map(s=>"- "+s.host+" ["+s.kind+"]").join("\n"),
     "CORPUS COVERAGE AND LIMITATIONS\n"+coverageText,
     "RETRIEVED SOURCES\n"+sourceText,
     "THE PROMPT YOU GENERATE MUST REQUIRE THE IMPLEMENTING AGENT TO\n1. Verify live branch heads and source snapshots before analysis.\n2. Perform the chosen method as concrete checks against repository architecture, code, documentation, metadata and public written content.\n3. Include a scope/coverage matrix and identify sources it could not inspect.\n4. Produce a ranked, source-linked set of findings; for each state claim, premises, direct evidence, contrary evidence, alternatives, uncertainty and how to test it.\n5. Where enabled, apply the property-law filter and the separate hypothesis thresholds above.\n6. Convert findings into minimal, branch-specific file changes and measurable acceptance tests.\n7. Run the relevant automated checks and inspect the final diff before reporting completion.\n8. Record residual uncertainty honestly; never claim the full corpus was reviewed if the coverage ledger says otherwise.",
@@ -281,7 +281,7 @@ export async function onRequestPost({request,env}) {
   ].join("\n\n");
   const fullPrompt=baseRules.join("\n")+"\n\n--- TUMBLER GENERATED WORK ORDER INPUT ---\n\n"+workOrder;
   try {
-    const result=await env.AI.run(MODEL,{prompt:fullPrompt,max_tokens:4200,temperature:0.15});
+    const result=await env.AI.run(MODEL,{prompt:fullPrompt,max_tokens:2600,temperature:0.15});
     const prompt=String(result?.response||result?.output_text||"").trim();
     if(!prompt)return responseJson({error:"The model returned no prompt text."},502);
     return responseJson({
