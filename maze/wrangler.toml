@@ -1,0 +1,6 @@
+name = "maze"
+main = "worker.js"
+compatibility_date = "2026-10-23"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = false
+routes = [{ pattern = "maze.bucklerfamily.estate/*", zone_name = "bucklerfamily.estate" }]
