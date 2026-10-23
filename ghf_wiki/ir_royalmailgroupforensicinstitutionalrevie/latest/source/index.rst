@@ -1,7 +1,7 @@
-Royal Mail Group — Forensic Assessment
-======================================
+WIKI-3107 — Royal Mail Group — Forensic Assessment
+==================================================
 
-Page 3107 of the Great House Farm Legal Wiki, carried over from the version last modified on 2026-10-21. The same page is published at `research.bucklerfamily.estate <https://research.bucklerfamily.estate/scrutiny-and-accountability/government-public-authority-involvement/royal-mail-group-forensic-institutional-review/>`__, and this version is also a `PDF <https://wayback.bucklerfamily.estate/pdf/docs-archive/ghf_wiki/ir_royalmailgroupforensicinstitutionalrevie/en/2026-10-23_ghf_wiki-ir_royalmailgroupforensicinstitutionalrevie_en_v1-0-0.pdf>`__ in the wayback archive.
+Page 3107 of the Great House Farm Legal Wiki, carried over from the version last modified on 2026-10-21. The same page is published at `research.bucklerfamily.estate <https://research.bucklerfamily.estate/scrutiny-and-accountability/government-public-authority-involvement/royal-mail-group-forensic-institutional-review/>`__, and this version is also a `PDF <https://wayback.bucklerfamily.estate/pdf/docs-archive/ghf_wiki/ir_royalmailgroupforensicinstitutionalrevie/en/2026-10-23_WIKI-3107_ghf_wiki-ir_royalmailgroupforensicinstitutionalrevie_en_v1-0-0.pdf>`__ in the wayback archive.
 
 .. toctree::
    :maxdepth: 2

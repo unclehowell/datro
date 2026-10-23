@@ -70,12 +70,12 @@ def current_pdf(coll, slug, meta, d, a, index=None):
         B.log(f'{d["id"]} v{ver} [{lang}] pdf (current)')
         tmpd = STAGE / 'tmp' / f'{coll}-{slug}-{lang}'
         built = B.build_pdf(coll, slug, meta, d, lang, tmpd)
-        name = B.archive_name(coll, slug, lang, ver, dt)
+        name = B.archive_name(coll, slug, lang, ver, dt, d.get('catalogue'))
         dest = STAGE / rel_dir / lang / name
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.move(str(built), dest)
         shutil.rmtree(tmpd, ignore_errors=True)
-        pdf[lang] = B.archive_url(coll, slug, lang, ver, dt)
+        pdf[lang] = B.archive_url(coll, slug, lang, ver, dt, d.get('catalogue'))
         files.append({'lang': lang, 'url': pdf[lang], 'bytes': dest.stat().st_size})
     idx_path, idx = (None, index) if index is not None else load_index()
     idx['items'] = [i for i in idx['items'] if not (i['id'] == d['id'] and i['version'] == ver)]
@@ -131,12 +131,12 @@ def main():
     for lang in [l for l in d['languages'] if l not in published]:
         B.log(f'{d["id"]} v{old} [{lang}] pdf')
         built = B.build_pdf(coll, slug, meta, d, lang, STAGE / 'tmp' / lang)
-        name = B.archive_name(coll, slug, lang, old, old_date)
+        name = B.archive_name(coll, slug, lang, old, old_date, d.get('catalogue'))
         dest = STAGE / rel_dir / lang / name
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.move(str(built), dest)
         staged.append(dest)
-        entry['pdf'][lang] = B.archive_url(coll, slug, lang, old, old_date)
+        entry['pdf'][lang] = B.archive_url(coll, slug, lang, old, old_date, d.get('catalogue'))
     shutil.rmtree(STAGE / 'tmp', ignore_errors=True)
 
     # the archive's own list on wayback: every archived edition of every document
@@ -145,7 +145,7 @@ def main():
     idx['items'] = [i for i in idx['items'] if not (i['id'] == d['id'] and i['version'] == old)]
     idx['items'].append({'id': d['id'], 'title': d['title'], 'version': old, 'date': old_date, 'replaced_by': None if a.keep_version else a.to,
                          'archived': a.date, 'docs_url': f'{B.SITE}/{coll}/{slug}/',
-                         'files': [{'lang': l, 'url': u, 'bytes': _bytes(STAGE / rel_dir / l / B.archive_name(coll, slug, l, old, old_date), before, d['id'], old, l)}
+                         'files': [{'lang': l, 'url': u, 'bytes': _bytes(STAGE / rel_dir / l / u.rsplit('/', 1)[-1], before, d['id'], old, l)}
                                    for l, u in entry['pdf'].items()]})
     idx['items'].sort(key=lambda i: (i['id'], [-int(x) for x in i['version'].split('.')]))
     idx['updated'] = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')

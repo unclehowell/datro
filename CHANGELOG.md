@@ -6,6 +6,19 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Rules: DOCS-STAN
 
 ## [Unreleased]
 
+## [docs-0.6.0] - 2026-10-23
+
+### Added
+- Catalogue ID on every document (DOCS-STANDARD v1.5.0 §3.2): `"catalogue"` in doc.json, at the start of the title (H1, menus,
+  sidebar) and in the PDF file names (§2.7) — EV-NNNN, MR-NNNN, WIKI-NNNN (the Legal Wiki page ID), RES-NNNN, TEST-NNNN.
+  `build.py --check` checks the format, that each ID is used once and that the title starts with it.
+- PDFs open in an in-page dialog (§7.4, `_static/docs-modal.js`, pdf.js): the red version buttons, "This version (PDF)", older
+  versions and PDF links in the text. The files stay in wayback; "Open in new tab" sits beside the close button.
+
+### Changed
+- Current-version PDFs are published again under the new names, with the catalogue ID (same files, same bytes); the names they
+  had before stay in wayback unchanged.
+
 ## [docs-0.5.0] - 2026-10-23
 
 ### Added
@@ -22,6 +35,8 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Rules: DOCS-STAN
 - `build.py`: one shared copy of the theme files at `/_static/` instead of one per document (DOCS-STANDARD v1.4.0 §10.7):
   about 9 files per document instead of 27, so the library stays far under Cloudflare Pages' 20,000-file cap.
 - Collection menus: bands follow the order of `collection.json` "groups", documents in title order (§10.8).
+- Five very long documents have their PDF printed from the HTML build with headless Chromium, where rinohtype could not lay
+  out their tables (§10.9).
 
 ## [docs-0.4.1] - 2026-10-23
 

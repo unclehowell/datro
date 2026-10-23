@@ -1,6 +1,6 @@
 # DOCS-STANDARD — how a document is published on docs.bucklerfamily.estate
 
-Version 1.4.0 · 2026-10-23. Drawn from the library branch (library.bucklerfamily.estate), which stays as it is.
+Version 1.5.0 · 2026-10-23. Drawn from the library branch (library.bucklerfamily.estate), which stays as it is.
 The rules are numbered so a change, a review or a build error can point at one. `python3 _theme-docs/build.py --check`
 enforces the ones marked **[checked]**; a deploy fails rather than publish a document that breaks them.
 
@@ -34,7 +34,10 @@ enforces the ones marked **[checked]**; a deploy fails rather than publish a doc
 /docs.json                                                         navigation index (§7)
 ```
 2.6 File names join the two folder names with a hyphen: `ghf_tests-specimen_loremipsum` (as in the library).
-2.7 Archived (and current, §6.7) editions use `YYYY-MM-DD_<collection>-<document>_<lang>_vX-Y-Z.pdf` — the date of that edition (its `updated`), language before version.
+2.7 Archived (and current, §6.7) editions use `YYYY-MM-DD_<CATALOGUE>_<collection>-<document>_<lang>_vX-Y-Z.pdf` — the date of that
+    edition (its `updated`), the catalogue ID (§3.2), language before version, e.g.
+    `2026-10-23_EV-0031_ghf_evidence-ev_0031_en_v1-0-0.pdf`. Files published before 1.5.0 keep the name they had (without the
+    catalogue ID); they are never renamed or removed.
 2.8 Archived editions live in the wayback branch at `wayback/pdf/docs-archive/<collection>/<document>/<lang>/<name from 2.7>`,
     served at `https://wayback.bucklerfamily.estate/pdf/docs-archive/<collection>/<document>/<lang>/<name>`.
     The archive's own list is `wayback/pdf/docs-archive/index.json`. **[checked: the URL in doc.json must follow this pattern]**
@@ -43,7 +46,8 @@ enforces the ones marked **[checked]**; a deploy fails rather than publish a doc
 ```json
 {
   "id": "ghf_tests/specimen_loremipsum",       // must equal the folder path
-  "title": "Specimen Document: Lorem Ipsum",   // English; identical to the H1 of index.rst
+  "catalogue": "TEST-0001",                     // catalogue ID ref (§3.2)
+  "title": "TEST-0001 — Specimen Document: Lorem Ipsum",   // English; starts with the catalogue ID; identical to the H1 of index.rst
   "summary": "One sentence shown on the homepage.",
   "version": "0.1.0",                           // MAJOR.MINOR.PATCH
   "date": "2026-10-22",                         // first publication, YYYY-MM-DD
@@ -59,6 +63,10 @@ enforces the ones marked **[checked]**; a deploy fails rather than publish a doc
 }
 ```
 3.1 Title and summary are translated in the same `.po` as the text (the build adds them to the catalogue).
+3.2 **Catalogue ID.** Every document carries its catalogue ID ref in `"catalogue"`, at the start of its title (so in the H1, the
+    menus and the sidebar) and in its PDF file names (§2.7): `EV-NNNN` evidence register entries, `MR-NNNN` media register
+    entries, `WIKI-NNNN` other Legal Wiki pages (the wiki's page ID, four digits or more), `RES-NNNN` research pages with no
+    number of their own, `TEST-NNNN` test documents. **[checked: format, unique per document, title starts with "<ID> — "]**
 
 ## 4. Languages
 4.1 **One English RST source, one gettext catalogue per language** (`locales/<lang>/LC_MESSAGES/docs.po`). Why: it is the library's
@@ -115,6 +123,11 @@ python3 _theme-docs/release.py <collection>/<document> --to X.Y.Z [--date YYYY-M
     document id before `_`, label from `groups`) with a button per document; document page = the document's title, then one band per
     language: a green **Latest** button (HTML) and, to its right, a red button per older version (PDF in wayback, `X-Y-Z`). « goes up a level.
 
+7.4 **PDFs open in a dialog.** Every link to a PDF (the red version buttons in the menus, "This version (PDF)" and older versions in
+    the sidebar, PDF links in the text) opens the wayback file in an in-page dialog drawn with pdf.js (`_static/docs-modal.js`,
+    also loaded by the menus): close button, Esc or a tap outside closes it, full height on a phone, and "Open in new tab" beside
+    it. The files themselves stay in wayback (§2.8); without JavaScript the link opens the file as before.
+
 ## 8. Adding or changing a document
 1. Make the two folders (§2), `doc.json` (§3), `source/index.rst`, `source/releasenotes.rst`, chapters; add `collection.json` for a new collection.
 2. `python3 _theme-docs/build.py --update-po <collection>/<document>`; translate the `.po` files.
@@ -146,6 +159,9 @@ python3 _theme-docs/release.py <collection>/<document> --to X.Y.Z [--date YYYY-M
      Cloudflare Pages' 20,000-file cap per deployment (room for about 2,000 more documents).
 10.8 Collection menus: the bands follow the order of the collection's `collection.json` "groups" (a group not listed comes after
      them); inside a band the documents are in title order.
+10.9 Current-version PDFs are made with rinohtype (§6.7). When rinohtype cannot lay a document out in reasonable time and memory
+     (very long or very wide tables: 5 of 1,022 documents on 23 Oct 2026), its PDF is printed from the Sphinx `singlehtml` build of
+     the same source with headless Chromium (A4, page numbers, fonts embedded) and published under the same wayback name.
 10.4 Every generated HTML page ends its `<head>` with the family header loader `ghf-boot.js?v=2.1.2`.
 10.5 Day and night follow the family sites: white ground by day, black by night, switched by the family toggle in the shared header
      (one toggle; Furo's own is hidden). Every generated page carries `<html data-ghf-native="auto">`, so the shared theme never

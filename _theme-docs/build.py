@@ -25,7 +25,8 @@ ID_RE = re.compile(r'^[a-z0-9]+_[a-z0-9]+$')
 VER_RE = re.compile(r'^\d+\.\d+\.\d+$')
 DATE_RE = re.compile(r'^\d{4}-\d{2}-\d{2}$')
 SEMVER = lambda v: tuple(int(x) for x in v.split('.'))
-REQUIRED = ['id', 'title', 'summary', 'version', 'date', 'updated', 'languages', 'source_language', 'author', 'status']
+CAT_RE = re.compile(r'^[A-Z]{2,5}-\d{4}$')   # catalogue ID ref (§3.2)
+REQUIRED = ['id', 'catalogue', 'title', 'summary', 'version', 'date', 'updated', 'languages', 'source_language', 'author', 'status']
 LANG_NAMES = {'en': 'English', 'cy': 'Cymraeg', 'es': 'Español', 'de': 'Deutsch', 'fr': 'Français', 'it': 'Italiano', 'pt': 'Português'}
 WORD_HOME = {'en': 'All documents', 'cy': 'Pob dogfen', 'es': 'Todos los documentos', 'de': 'Alle Dokumente', 'fr': 'Tous les documents'}
 WORD_VERSION = {'en': 'Version', 'cy': 'Fersiwn', 'es': 'Versión', 'de': 'Version', 'fr': 'Version'}
@@ -63,6 +64,11 @@ def validate(coll, slug, meta):
         errs.append('folder names must be <id>_<id> in lowercase letters and digits')
     if d.get('id') != f'{coll}/{slug}':
         errs.append(f'id "{d.get("id")}" does not match its folder {coll}/{slug}')
+    cat = str(d.get('catalogue', ''))
+    if cat and not CAT_RE.match(cat):
+        errs.append('catalogue must be a catalogue ID like EV-0031 (2 to 5 capital letters, a hyphen, 4 digits)')
+    elif cat and not str(d.get('title', '')).startswith(cat + ' — '):
+        errs.append(f'title must start with its catalogue ID: "{cat} — …"')
     if not VER_RE.match(str(d.get('version', ''))):
         errs.append('version must be MAJOR.MINOR.PATCH')
     for k in ('date', 'updated'):
@@ -108,13 +114,15 @@ def validate(coll, slug, meta):
     return d, errs
 
 
-def archive_name(coll, slug, lang, version, date):
-    """Library naming for an archived edition: YYYY-MM-DD_<collection>-<document>_<lang>_vX-Y-Z.pdf (language before version)."""
-    return f"{date}_{coll}-{slug}_{lang}_v{version.replace('.', '-')}.pdf"
+def archive_name(coll, slug, lang, version, date, cat=None):
+    """Library naming for an edition as PDF: YYYY-MM-DD_<CATALOGUE>_<collection>-<document>_<lang>_vX-Y-Z.pdf (§2.7; language
+    before version). Without a catalogue ID: the name editions had before DOCS-STANDARD 1.5.0 (kept for those files)."""
+    c = f"{cat}_" if cat else ''
+    return f"{date}_{c}{coll}-{slug}_{lang}_v{version.replace('.', '-')}.pdf"
 
 
-def archive_url(coll, slug, lang, version, date):
-    return f"{WAYBACK}/{ARCHIVE_DIR}/{coll}/{slug}/{lang}/{archive_name(coll, slug, lang, version, date)}"
+def archive_url(coll, slug, lang, version, date, cat=None):
+    return f"{WAYBACK}/{ARCHIVE_DIR}/{coll}/{slug}/{lang}/{archive_name(coll, slug, lang, version, date, cat)}"
 
 
 def check_archive(coll, slug, d):
@@ -126,7 +134,7 @@ def check_archive(coll, slug, d):
             errs.append('pdf must be {lang: url}')
         else:
             for lang, url in cur_pdf.items():
-                want = archive_url(coll, slug, lang, str(d.get('version', '')), str(d.get('updated', '')))
+                want = archive_url(coll, slug, lang, str(d.get('version', '')), str(d.get('updated', '')), d.get('catalogue'))
                 if lang not in d.get('languages', []):
                     errs.append(f'pdf [{lang}] is not one of the languages')
                 elif url != want:
@@ -146,8 +154,8 @@ def check_archive(coll, slug, d):
             errs.append('archive entries must be newest first')
         seen.append(v)
         for lang, url in pdf.items():
-            if url != archive_url(coll, slug, lang, v, dt):
-                errs.append(f'archive {v} [{lang}] url must be {archive_url(coll, slug, lang, v, dt)}')
+            if url not in (archive_url(coll, slug, lang, v, dt, d.get('catalogue')), archive_url(coll, slug, lang, v, dt)):
+                errs.append(f'archive {v} [{lang}] url must be {archive_url(coll, slug, lang, v, dt, d.get("catalogue"))}')
     return errs
 
 
@@ -334,6 +342,7 @@ def menu_page(path, title, body, depth, desc=''):
 <meta name="theme-color" content="#000000">
 <link rel="alternate" type="application/json" href="/docs.json" title="Document index">
 <link rel="stylesheet" href="{rel}library.css">
+<script src="/_static/docs-modal.js" defer></script>
 {GHF_BOOT}
 </head>
 <body>
@@ -429,6 +438,13 @@ def main():
         d, errs = validate(coll, slug, meta)
         problems += [f'{coll}/{slug}: {e}' for e in errs]
         checked.append((coll, slug, meta, d))
+    if not only:                                       # a catalogue ID belongs to one document (§3.2)
+        seen_cat = {}
+        for coll, slug, meta, d in checked:
+            c = d.get('catalogue')
+            if c and c in seen_cat:
+                problems.append(f'{coll}/{slug}: catalogue {c} is already used by {seen_cat[c]}')
+            seen_cat.setdefault(c, f'{coll}/{slug}')
     if problems:
         for p in problems:
             log('RULE', p)

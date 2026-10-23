@@ -1,7 +1,7 @@
 EV-0235 — OUT OF SCOPE: Hansard, 7 Dec 1962, Leasehold Bill: “Llandough Estate in Penarth” (cols 1671–72)
 =========================================================================================================
 
-Catalogue entry **EV-0235** of the Great House Farm evidence register, carried over from the Legal Wiki evidence page last modified on 2026-10-21. The same record is published at `research.bucklerfamily.estate <https://research.bucklerfamily.estate/evidence/ev-0235-hansard-1962-leasehold-bill-llandough-estate/>`__, and this version is also a `PDF <https://wayback.bucklerfamily.estate/pdf/docs-archive/ghf_evidence/ev_0235/en/2026-10-23_ghf_evidence-ev_0235_en_v1-0-0.pdf>`__ in the wayback archive.
+Catalogue entry **EV-0235** of the Great House Farm evidence register, carried over from the Legal Wiki evidence page last modified on 2026-10-21. The same record is published at `research.bucklerfamily.estate <https://research.bucklerfamily.estate/evidence/ev-0235-hansard-1962-leasehold-bill-llandough-estate/>`__, and this version is also a `PDF <https://wayback.bucklerfamily.estate/pdf/docs-archive/ghf_evidence/ev_0235/en/2026-10-23_EV-0235_ghf_evidence-ev_0235_en_v1-0-0.pdf>`__ in the wayback archive.
 
 .. toctree::
    :maxdepth: 2

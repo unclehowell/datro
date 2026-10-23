@@ -1,0 +1,459 @@
+Record
+======
+
+**Page ID:** 2921 · **Title:** Ministry of Defence — Email Correspondence Catalogue · **Evidence status:** Not yet labelled — see the Editing Protocol · **Version:** 1.0.0 · `Editing Protocol <https://research.bucklerfamily.estate/editing-protocol/>`__
+
+**Evidence type:** Email correspondence (primary record). **Institution:** Ministry of Defence. **Forensic assessment:** `Ministry of Defence — Forensic Institutional Review <https://research.bucklerfamily.estate/scrutiny-and-accountability/government-public-authority-involvement/ministry-of-defence-forensic-institutional-review/>`__. **Register:** `FOI & Public-Authority Reply Register <https://research.bucklerfamily.estate/records-access-chronology/foi-reply-register/>`__.
+
+This page catalogues, word for word, every email exchanged between the Williams/Buckler family and this institution about Great House Farm (Tŷ Mawr), Llandough, grouped by request thread and in date order. Each entry shows the email first, labelled by type. Repeated quoted history and email logos are trimmed so each email appears once. **Privacy redaction (14 October 2026):** the family’s service number, personal email address and telephone numbers, live download links and one-time access codes are withheld and marked “withheld”. Nothing else is altered, including spelling.
+
+Thread index
+------------
+
+#. `Land Registry stage-two complaint, title WA231076 — MOD mailbox automatic reply <#t1>`__
+#. `WhatDoTheyKnow FOI2026/09019 — “1988 Dispossession of Great House Farm, Llandough from the Williams/ Buckler Family” (pointer) <#t2>`__
+#. `Subject access request arising from FOI2026/09019 — identity and chaser (APC Disclosures) <#t3>`__
+#. `Formal complaint to the MOD Data Protection Officer — overdue SAR <#t4>`__
+#. `DPR2026/46503 — DBS response to the subject access request <#t5>`__
+#. `DPR2026/46503 — family reply to DBS and request for internal review <#t6>`__
+#. `DPR2026/46503 — internal review of handling and classification (CIO-FOI-IR) <#t7>`__
+#. `FOI2026/09019 — clarification of the non-Special-Forces remainder <#t8>`__
+
+.. _t1:
+
+Thread 1 — Land Registry stage-two complaint, title WA231076 — MOD mailbox automatic reply
+------------------------------------------------------------------------------------------
+
+**Automatic reply received 19 April 2026, MOD mailbox no longer the primary route; operational mail redirected to another MOD mailbox — full text (the Ministry of Defence)**
+
+| **From:** GUARDIAN-HQ-Mailbox@mod.gov.uk (automatic reply)
+| **To:** Sion Buckler
+| **Date:** 19 April 2026, 19:30 UTC
+| **Subject:** Automatic reply: Subject: Stage Two Complaint – Title WA231076 – Alleged Mistake in the Register
+
+   This MailBox is no longer used as the primary communications regarding Operations or Joint Contingency Plans. Please direct any Operational content to SJCGDN-Ops-MailBox@mod.gov.uk<mailto:sjcgdn-ops-mailbox@mod.gov.uk>
+
+   This inbox is to be used for routine administrative traffic only.
+
+*Note:* Automatic reply generated because this MOD mailbox was among the blind-copied recipients of the family's stage-two complaint to HM Land Registry (Wales Office) of 19 April 2026 about title WA231076, Great House Farm. That complaint is catalogued with HM Land Registry.
+
+.. _t2:
+
+Thread 2 — WhatDoTheyKnow FOI2026/09019 — “1988 Dispossession of Great House Farm, Llandough from the Williams/ Buckler Family” (pointer)
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+**29 May 2026, 15:43 UTC · Email — reply from the Ministry of Defence · New response to your FOI request – 1988 Dispossession of Great House Farm, Llandough from the Williams/ Buckler Family**
+
+| **From:** WhatDoTheyKnow (notification service)
+| **To:** Sion Buckler
+| **Date:** 29 May 2026, 15:43 UTC
+| **Subject:** New response to your FOI request – 1988 Dispossession of Great House Farm, Llandough from the Williams/ Buckler Family
+
+   The FOI request FOI2026/09019 to the Ministry of Defence was made publicly on WhatDoTheyKnow, where the request, the Ministry's responses and the family's follow-ups are published in full: https://www.whatdotheyknow.com/request/1988_dispossession_of_great_hous
+
+   WhatDoTheyKnow notified the family of a new response from the Ministry of Defence on these dates:
+
+   | 29 May 2026 — https://www.whatdotheyknow.com/request/1988_dispossession_of_great_hous#incoming-3431830
+   | 4 July 2026 — https://www.whatdotheyknow.com/request/1988_dispossession_of_great_hous#incoming-3471357
+   | 5 August 2026 — https://www.whatdotheyknow.com/request/1988_dispossession_of_great_hous#incoming-3507980
+   | 10 October 2026 — https://www.whatdotheyknow.com/request/1988_dispossession_of_great_hous#incoming-3588665
+
+   Automated “Please update the status of your request” reminders were also received on 2 June, 9 June, 8 July, 15 July, 8 August, 15 August and 29 August 2026.
+
+*Note:* Pointer only. The correspondence on this request passed through WhatDoTheyKnow and is published there; the notification emails themselves contain no Ministry text.
+
+.. _t3:
+
+Thread 3 — Subject access request arising from FOI2026/09019 — identity and chaser (APC Disclosures)
+----------------------------------------------------------------------------------------------------
+
+**5 August 2026, 11:18 UTC · Email — sent by the family · [no subject line recorded in the mailbox copy]**
+
+| **From:** Sion Buckler
+| **To:** APC-Sp-ParlDiscl-Triage-Mailbox@mod.gov.uk
+| **Date:** 5 August 2026, 11:18 UTC
+| **Subject:** [no subject line recorded in the mailbox copy]
+| **Attachments:** 00894f9c-170c-4bda-b29c-e6eb044a2afa-1_all_4663.png; 27413.gif (identification documents)
+
+   Dear Paula,
+
+   Thank you for your email.
+
+   Please find attached copies of my identification documents to verify my identity for the purposes of my Subject Access Request arising from FOI2026/09019.
+
+   I understand these documents are required to enable the Ministry of Defence to process the UK GDPR Article 15 aspect of my request.
+
+   For the avoidance of doubt, I would be grateful if you could confirm:
+
+   | – Receipt of my identification documents.
+   | – That my Subject Access Request has now been formally logged and processing has commenced.
+   | – That my Freedom of Information Act internal review remains active and will continue independently of the Subject Access Request.
+
+   Thank you for your assistance. I look forward to your confirmation.
+
+   Kind regards,
+
+   | Sion Buckler (Ret'd Sergeant)
+   | Royal Signals Cyber & Electronic Warfare Professional and Life Member
+
+*Note:* Reply to an email from “Paula” of the Army disclosures team asking for identification; that email is not held in this mailbox.
+
+**27 September 2026, 04:17 UTC · Email — sent by the family · Re: Subject Access Request — FOI2026/09019 — overdue**
+
+| **From:** Sion Buckler
+| **To:** APC-Sp-ParlDiscl-Triage-Mailbox@mod.gov.uk
+| **Date:** 27 September 2026, 04:17 UTC
+| **Subject:** Re: Subject Access Request — FOI2026/09019 — overdue
+| **Attachments:** 00894f9c-170c-4bda-b29c-e6eb044a2afa-1_all_4663.png; 27413.gif
+
+   Dear Paula,
+
+   Subject access request arising from FOI2026/09019
+
+   I sent the identification you asked for on 5 August 2026. Under UK GDPR, the response was due one calendar month later, by 5 September 2026. I have not received a response, an extension notice or an acknowledgement that the ID was accepted.
+
+   Please:
+
+   | 1. Confirm that my identification was received and accepted, and give me the SAR reference.
+   | 2. Provide the response, or tell me the date it will be provided and the reason for the delay.
+
+   Separately, the internal review of FOI2026/09019 that I requested on 20 June 2026 (acknowledged 4 July 2026) is also outstanding, well beyond the 40 working days the MOD itself indicated. If you are able to, please pass this to the Information Rights Compliance Team and ask them for a completion date.
+
+   If I do not receive a substantive response within 10 working days, I will complain to the Information Commissioner about both.
+
+   Yours sincerely,
+
+   | Sion Buckler (Ret'd Sergeant)
+   | greathousefarmwiki.wordpress.com
+
+.. _t4:
+
+Thread 4 — Formal complaint to the MOD Data Protection Officer — overdue SAR
+----------------------------------------------------------------------------
+
+**28 September 2026, 21:42 UTC · Email — sent by the family · Formal complaint — overdue subject access request arising from FOI2026/09019 — identity sent 5 August 2026**
+
+| **From:** Sion Buckler
+| **To:** APC-Sp-ParlDiscl-Triage-Mailbox@mod.gov.uk
+| **Date:** 28 September 2026, 21:42 UTC
+| **Subject:** Formal complaint — overdue subject access request arising from FOI2026/09019 — identity sent 5 August 2026
+
+   | Data Protection Officer
+   | Ministry of Defence
+   | APC-Sp-ParlDiscl-Triage-Mailbox@mod.gov.uk
+
+   Sirs/Madam,
+
+   Please pass this to the data-protection officer. This is a complaint about an overdue subject access request. It is not a repeat of the chase sent on the morning of 27 September 2026, and it is not a new Freedom of Information request.
+
+   FOI2026/09019, made on WhatDoTheyKnow, asked about any armed-forces involvement in the 1988 eviction at Great House Farm / Tŷ Mawr, Llandough. The FOI answer was that no information was held on the non-section-23 parts, and section 23(5) neither-confirm-nor-deny on Special Forces. I requested an internal review on 20 June 2026 and asked that personal data be dealt with as a subject access request off that public thread. Your own note was that the SAR should come by a private route. It did. Identity was sent on 5 August 2026. The UK GDPR month ended on 5 September 2026. There has been no disclosure, no extension, and no refusal.
+
+   I complain that the Ministry has not complied with Articles 12 and 15.
+
+   Within 14 days, please:
+
+   | 1. Send the personal data, or a refusal naming the exemption and the right to complain to the Information Commissioner.
+   | 2. Say what systems were searched for data relating to me, as a child in that household in 1988, as distinct from the FOI search already described (Restore, CT&UK, Army, and the keyword list on the review file).
+   | 3. Confirm the file is preserved.
+
+   If that is not done by 12 October 2026 I will complain to the Information Commissioner. This letter is the complaint to the organisation which the Commissioner expects first.
+
+   I do not assert that a unit was deployed. The FOI answer does not establish that either. The open question is whether any record names me. The public evidence index is `https://greathousefarmwiki.wordpress.com/ <https://research.bucklerfamily.estate/>`__ .
+
+   Nothing in this letter abandons any claim. This is not a claim form. Do not publish identity documents.
+
+   Yours faithfully,
+
+   | Sion Buckler (Ret'd Sergeant)
+   | Service no. [withheld]
+   | Royal Signals
+   | [family email address withheld]
+
+.. _t5:
+
+Thread 5 — DPR2026/46503 — DBS response to the subject access request
+---------------------------------------------------------------------
+
+**9 October 2026, 06:41 UTC · Email — reply from the Ministry of Defence · DBS Response to your Subject Access Request (SAR)**
+
+| **From:** DBS Disclosures Officer 6, Defence Business Services Civilian Disclosures Team (dbsitms-ia-sar@mod.gov.uk)
+| **To:** Sion Buckler
+| **Date:** 9 October 2026, 06:41 UTC
+| **Subject:** DBS Response to your Subject Access Request (SAR)
+
+   Ref: Subject Access Request DPR2026/46503
+
+   Dear Mr Buckler,
+
+   Please accept our apologies for the delay in responding to your request, Defence Business Services (DBS) Disclosure Team are receiving a high volume of submissions and as such we are experiencing delays in processing requests.
+
+   Following receipt of your request on 5th August, for information held about you in accordance with Data Protection Legislation. Please see our response below relating to your Subject Access Request (SAR).
+
+   | You can download your response using the below link.
+   | [personal download link withheld]
+   | The files will be available for download until 6 November 2026 11:59pm. Please do not access this link if you are not the intended recipient.
+
+   You asked for:
+
+   I am writing to request information under the Freedom of Information Act 2000 regarding any involvement of UK Armed Forces personnel in mine, my pregnant mother and heart conditioned fathers eviction/dispossession that took place in 1988 at Ty Mawr (Great House Farm), Llandough, near Penarth, Vale of Glamorgan.
+
+   Specifically, I request the following:
+
+   1. Whether any units of the UK Armed Forces, including but not limited to UK Special Forces (e.g. SAS), were deployed, tasked, or otherwise involved in this incident before, during or after the 1988 eviction (involving upto a reported 30 police officers).
+
+   2. Any records, logs, operational reports, orders, requests or communications referring to military support to civil authorities in relation to this event.
+
+   3. Any documentation relating to Military Aid to the Civil Authorities (MACA) requests connected to this incident.
+
+   4. Any correspondence between the Ministry of Defence and:
+
+   + South Wales Police
+
+   + Vale of Glamorgan Council
+
+   + Welsh Office (as it existed at the time)
+
+   concerning the eviction or associated operations.
+
+   5. Any internal assessments, reviews, or after-action reports relating to the use of force or military involvement in this case.
+
+   For clarity, the incident involved the removal of myself and my family from Ty Mawr (Great House Farm) in 1988, reportedly involving a significant and coordinated enforcement presence.
+
+   We have conducted reasonable and proportionate searches for information in relation to yourself at our storage facility and on all Defence Business Services systems using the information you have provided, no information in scope of your request was located.
+
+   | If you are not satisfied with this response or you wish to complain about any aspect of the handling of your request, then you should contact the Disclosures Team (civilian) in the first instance. If you remain dissatisfied then you may apply for an independent internal review by contacting the MOD Information Rights Compliance Team, Zone D, Ground Floor, MOD Main Building, Whitehall, SW1A 2HB (e-mail
+   | CIO-DPA@mod.gov.uk).
+
+   | Alternatively, you can raise a complaint to the Information Commissioner under Section 165 (Complaints by data subjects) of the Data Protection Act 2018. Further details of the role and powers of the Information Commissioner can be found on the Commissioner's website,
+   | http://www.ico.org.uk.
+
+   | Please see the Ministry of Defence Privacy Notice
+   | https://www.gov.uk/government/publications/ministry-of-defence-privacy-notice/mod-privacy-notice. This notice explains your rights and gives you the information that you are entitled to under the Data Protection legislation in response to your Subject Access Request (SAR).
+
+   | Yours sincerely,
+   | DBS Disclosures Officer 6
+   | Defence Business Services Civilian Disclosures Team
+   | On Behalf of
+   | Jo Turton
+   | DBS Data Protection Lead
+   | Knowledge, Information & Business \| Digital, Information & Technology \| Defence Business Services
+
+**Access-code email received 9 October 2026, one-time Secure Share code (withheld) — full text (the Ministry of Defence)**
+
+| **From:** Ministry of Defence Secure Share (mod.data.protection.request@notifications.service.gov.uk)
+| **To:** Sion Buckler
+| **Date:** 9 October 2026, 07:06 UTC
+| **Subject:** Secure Share authentication
+
+   [one-time code withheld] is your Secure Share authentication code. This will expire at 9 October 2026 at 8:21am.
+
+*Note:* One-time code sent when the family opened the Secure Share link to the DPR2026/46503 response; the code expired the same morning.
+
+**Access-code email received 9 October 2026, one-time Secure Share code (withheld) — full text (the Ministry of Defence)**
+
+| **From:** Ministry of Defence Secure Share (mod.data.protection.request@notifications.service.gov.uk)
+| **To:** Sion Buckler
+| **Date:** 9 October 2026, 07:06 UTC
+| **Subject:** Secure Share authentication
+
+   [one-time code withheld] is your Secure Share authentication code. This will expire at 9 October 2026 at 8:21am.
+
+*Note:* One-time code sent when the family opened the Secure Share link to the DPR2026/46503 response; the code expired the same morning.
+
+**Access-code email received 9 October 2026, one-time Secure Share code (withheld) — full text (the Ministry of Defence)**
+
+| **From:** Ministry of Defence Secure Share (mod.data.protection.request@notifications.service.gov.uk)
+| **To:** Sion Buckler
+| **Date:** 9 October 2026, 07:06 UTC
+| **Subject:** Secure Share authentication
+
+   [one-time code withheld] is your Secure Share authentication code. This will expire at 9 October 2026 at 8:21am.
+
+*Note:* One-time code sent when the family opened the Secure Share link to the DPR2026/46503 response; the code expired the same morning.
+
+**Access-code email received 9 October 2026, one-time Secure Share code (withheld) — full text (the Ministry of Defence)**
+
+| **From:** Ministry of Defence Secure Share (mod.data.protection.request@notifications.service.gov.uk)
+| **To:** Sion Buckler
+| **Date:** 9 October 2026, 07:25 UTC
+| **Subject:** Secure Share authentication
+
+   [one-time code withheld] is your Secure Share authentication code. This will expire at 9 October 2026 at 8:40am.
+
+*Note:* One-time code sent when the family opened the Secure Share link to the DPR2026/46503 response; the code expired the same morning.
+
+.. _t6:
+
+Thread 6 — DPR2026/46503 — family reply to DBS and request for internal review
+------------------------------------------------------------------------------
+
+**10 October 2026, 19:11 UTC · Email — sent by the family · Re: DBS Response to your Subject Access Request (SAR)**
+
+| **From:** Sion Buckler
+| **To:** dbsitms-ia-sar@mod.gov.uk; cc CIO-DPA@mod.gov.uk
+| **Date:** 10 October 2026, 19:11 UTC
+| **Subject:** Re: DBS Response to your Subject Access Request (SAR)
+
+   Dear DBS Disclosures Team,
+
+   Thank you for the response of 9 October 2026 to Subject Access Request DPR2026/46503, received by you on 5 August 2026.
+
+   I note the outcome that no information in scope was located after searches at your storage facility and on all Defence Business Services systems. The email itself contains no attachment. The secure-share link is noted, and that it expires at 23:59 on 6 November 2026.
+
+   I am not satisfied with the not-held outcome. Please treat this as a request for an independent internal review by the MOD Information Rights Compliance Team (CIO-DPA@mod.gov.uk), copied. A parallel internal review of the FOIA elements of the original request has been sent separately to CIO-FOI-IR@mod.gov.uk.
+
+   | Please review:
+   | 1. Whether the search covered records of Military Aid to the Civil Authorities and related correspondence about Tý Mawr (Great House Farm), Llandough, 1988, or only Defence Business Services systems and the DBS storage facility.
+   | 2. The search terms and date range used.
+   | 3. Whether any record was excluded as out of scope, and on what basis.
+
+   No exemption was cited. I ask that the review confirm the physical check and state whether any series, box, or file title was examined.
+
+   Yours faithfully,
+
+   | Sion Buckler (Ret'd Sergeant)
+   | Royal Signals Cyber/Electronic Warfare Professional and Life Member
+
+**Automatic reply received 10 October 2026, MOD Data Protection Officer team: SAR delays; chasers logged on a tracking system — full text (the Ministry of Defence)**
+
+| **From:** MOD Data Protection Officer’s Team (CIO-DPA@mod.gov.uk, automatic reply)
+| **To:** Sion Buckler
+| **Date:** 10 October 2026, 19:11 UTC
+| **Subject:** Automatic reply: DBS Response to your Subject Access Request (SAR)
+
+   Thank you for getting in touch with the Ministry of Defence (MOD) Data Protection Officer’s Team. Please read the following:
+
+   | If you want to make a request under data protection law, including a subject access request (SAR)
+   | Guidance on how to submit a request for your personal information can be found at this page<https://www.gov.uk/guidance/obtain-information-about-yourself-held-by-mod&gt;.
+
+   | If you have not received a response to your SAR yet
+   | We are aware that service areas within MOD are currently experiencing a very high volume of disclosure requests which has unfortunately resulted in delays to processing times. Please be assured that our team is actively monitoring the current situation and will log any email chasers for outstanding requests onto a dedicated tracking system. This system is being regularly checked by service disclosure teams, who are working through these requests as a priority. We sincerely apologise for any delays experienced and thank you for your continued patience while MOD works to resolve this issue.
+
+   | If you have received a response to your SAR and are having issues accessing it
+   | Please contact the relevant disclosure cell:
+
+   | \* Royal Navy/Royal Marine (including Royal Fleet Auxiliary) records: NavySec-DiscCellMailbox@mod.gov.uk<mailto:NavySec-DiscCellMailbox@mod.gov.uk>
+   | \* Royal Navy medical records: NAVYINM-NSVetsMedDisc@mod.go.uk<mailto:NAVYINM-NSVetsMedDisc@mod.go.uk>
+   | \* Army records (including medical): APC-Sp-ParlDiscl-Triage-Mailbox@mod.gov.uk<mailto:APC-Sp-ParlDiscl-Triage-Mailbox@mod.gov.uk>
+   | \* Royal Air Force records (including medical): Air-People-CM-Disclosures@mod.gov.uk<mailto:Air-People-CM-Disclosures@mod.gov.uk>
+   | \* If you are currently serving, please direct your request to your local Data Protection Authority
+   | \* Civilian records: DBSITMS-IA-SAR@mod.gov.uk<mailto:DBSITMS-IA-SAR@mod.gov.uk>
+
+   | If you want a reference
+   | Please note that we are not a point of contact for employee references – instead, these should be directed to peopleservices@dbs.mod.uk<mailto:peopleservices@dbs.mod.uk> or the relevant MOD Force.
+
+   | If you are an Afghan seeking assistance
+   | Please get in touch with the UK Foreign and Commonwealth office, Consular Services Special Afghanistan Team on 02475 389980, or email crisis@fcdo.org.uk or help@fcdo.gov.uk\ <mailto:help@fcdo.gov.uk>. The Afghan Relocations and Assistance Policy (ARAP) closed to new applications on 1 July 2025. Applications received before that date will continue to be processed, and applicants can continue to check the progress of their application with the ARAP Eligibility Self-Checker<https://www.gov.uk/government/publications/afghan-relocations-and-assistance-policy/implementation-of-the-online-arap-eligibility-self-checker-for-applicants-beta&gt; tool. For tracking progress on approved ARAP applications please contact: ARAP-Casework@mod.gov.uk\ <mailto:ARAP-Casework@mod.gov.uk>
+
+   | If you want to know more about how MOD handles personal information
+   | See the MOD Personal Information Charter<https://www.gov.uk/government/organisations/ministry-of-defence/about/personal-information-charter&gt; and MOD Privacy Notice<https://www.gov.uk/government/publications/ministry-of-defence-privacy-notice/mod-privacy-notice&gt;.
+
+   We will review your message and endeavour to assist without undue delay.
+
+   | Yours sincerely,
+   | MOD Data Protection Officer’s Team
+
+.. _t7:
+
+Thread 7 — DPR2026/46503 — internal review of handling and classification (CIO-FOI-IR)
+--------------------------------------------------------------------------------------
+
+**10 October 2026, 19:11 UTC · Email — sent by the family · DPR2026/46503 – internal review of handling and classification**
+
+| **From:** Sion Buckler
+| **To:** CIO-FOI-IR@mod.gov.uk
+| **Date:** 10 October 2026, 19:11 UTC
+| **Subject:** DPR2026/46503 – internal review of handling and classification
+
+   Dear MOD Information Rights Compliance Team,
+
+   I request an internal review of the handling of my request concerning possible UK Armed Forces involvement in the 1988 eviction of my family from Tý Mawr (Great House Farm), Llandough, near Penarth.
+
+   | Reference: DPR2026/46503
+   | Response date: 9 October 2026
+
+   1. The request appears to have been handled under the wrong legal regime, or only partially answered
+
+   My original request expressly invoked the Freedom of Information Act 2000 and sought information about potential military deployment, Military Aid to the Civil Authorities (MACA), operational records, interdepartmental correspondence and the conduct of the eviction. The response instead identifies the matter as a Subject Access Request and states that no information within scope was located.
+
+   I recognise that any parts seeking my own personal data may properly be dealt with under data-protection legislation (and a parallel SAR response has been received). However, the request also seeks institutional and operational information that is not limited to my personal data. The Information Commissioner’s guidance states that where a request covers both personal data and other information, the authority should handle the two parts separately under the applicable legal regimes.
+
+   Please therefore confirm whether the non-personal and institutional elements of my original request were formally considered under FOIA. If not, please arrange for those elements to be handled as an FOI request, with a substantive response.
+
+   2. Clarification of the searches conducted
+
+   The response states that searches were conducted at your storage facility and across Defence Business Services systems. Please clarify whether the searches extended to all relevant MOD business areas and historical records within the scope of my request, rather than being confined to the systems described in the letter.
+
+   | In particular, please review whether appropriate searches were made for:
+   | – Records concerning possible Armed Forces involvement in the 1988 eviction, including any requests for military assistance to civil authorities.
+   | – Correspondence between the MOD and South Wales Police, the Vale of Glamorgan Council and the Welsh Office, as it existed at the time.
+   | – Relevant historical operational, administrative and records-management archives, including any records transferred to an archival repository.
+   | – Records concerning the planning, authorisation, coordination or subsequent review of any military support connected with the incident.
+
+   I am not asserting that such records necessarily exist. I am asking that their possible existence be properly investigated and that the scope of the searches be reviewed.
+
+   3. No records located is not the same as a determination that no involvement occurred
+
+   I understand that the MOD has not located information within the scope of the searches described. I do not interpret that finding as proof that military involvement occurred, nor as proof that it did not occur. My request concerns a specific historical incident and seeks to establish what documentary evidence, if any, survives concerning the authorities involved and the decision-making surrounding the eviction.
+
+   If relevant information is not held, please confirm that position under FOIA. If information is held but cannot be disclosed, please identify the applicable exemptions and provide the appropriate decision and explanation.
+
+   4. Administrative discrepancies
+
+   The response refers to receipt of the request on “05/088/2026”, which is not a valid date, and contains the heading “T5(CH) – 27 Nov 20”. Please confirm the correct date on which the request was received and explain whether the heading is simply a document reference or has any bearing on the handling of this request.
+
+   5. Requested outcome
+
+   | I request:
+   | 1. An independent internal review of the handling and classification of the original request.
+   | 2. Confirmation that the FOI elements have been separately identified and considered.
+   | 3. A review of the adequacy and scope of the searches for relevant historical records.
+   | 4. A substantive FOI response addressing the information requested, subject to any applicable statutory exemptions.
+   | 5. Confirmation of the applicable review and complaint procedures, and the expected response date for this internal review.
+
+   This request is made to establish the documentary facts concerning the 1988 incident. It should not be taken as an allegation that any particular military unit was involved.
+
+   Please acknowledge this internal review request and confirm the expected response date.
+
+   Yours faithfully,
+
+   | Sion Buckler (Ret'd Sergeant)
+   | Royal Signals Cyber/Electronic Warfare Professional and Life Member
+
+.. _t8:
+
+Thread 8 — FOI2026/09019 — clarification of the non-Special-Forces remainder
+----------------------------------------------------------------------------
+
+**10 October 2026, 19:14 UTC · Email — sent by the family · FOI2026/09019 — clarification of the non-Special-Forces remainder and existing retention/search records**
+
+| **From:** Sion Buckler
+| **To:** cio-foi@mod.gov.uk
+| **Date:** 10 October 2026, 19:14 UTC
+| **Subject:** FOI2026/09019 — clarification of the non-Special-Forces remainder and existing retention/search records
+
+   Dear Ministry of Defence FOI Team,
+
+   I am writing about FOI2026/09019 and the related outstanding correspondence. I understand that the Ministry relied on section 23(5) in relation to Special Forces material. This message does not ask you to confirm or deny whether Special Forces information is held. I am narrowing the outstanding information request to non-Special-Forces information that can be considered separately, without prejudicing the current internal review or the related subject-access request.
+
+   | For Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth, and the period 1 November–31 December 1988, please disclose any recorded information held by non-Special-Forces parts of the Ministry concerning:
+   | 1. any request, assessment or record of Military Aid to the Civil Authorities (MACA) relating to the location or relevant events;
+   | 2. any incident, deployment, duty-log, correspondence or administrative record held by regular Army, Territorial Army or Royal Military Police units that records activity relating to that location and period; and
+   | 3. any existing search record, case note, retention schedule, transfer list or disposal entry that explains how the non-Special-Forces portion of FOI2026/09019 was searched or what happened to potentially responsive records.
+
+   Please identify, at a level that can properly be disclosed, which non-Special-Forces departments, record systems, date ranges and catalogue/file series were searched for these points. Where responsive information is not held, please distinguish the result of a search from a record showing prior destruction, transfer or disposal; if a transfer or disposal entry exists, provide its date, reference and destination where recorded.
+
+   Please process any severable non-exempt information without treating the section 23(5) response on Special Forces as applying automatically to every non-Special-Forces record. If this narrower scope needs a new reference under your process, please tell me and register only the genuinely new element as a separate request; please do not restart or close the existing request or internal review as a result of this clarification.
+
+   This is an information request, not a request for the Ministry to decide title or the merits of any civil proceedings. It also does not ask you to disclose personal data through FOIA; the separate subject-access route remains separate.
+
+   Please confirm receipt and the applicable response date for any part registered as a new request.
+
+   Yours faithfully,
+
+   | Sion Buckler (Ret'd Sergeant)
+   | Royal Signals Cyber/Electronic Warfare Professional and Life Member
+
+**Related:** `Ministry of Defence — Forensic Institutional Review <https://research.bucklerfamily.estate/scrutiny-and-accountability/government-public-authority-involvement/ministry-of-defence-forensic-institutional-review/>`__ · `FOI & Public-Authority Reply Register <https://research.bucklerfamily.estate/records-access-chronology/foi-reply-register/>`__ · `Records Access Chronology <https://research.bucklerfamily.estate/records-access-chronology/>`__
+
+Change history is maintained on the `Master Change Log <https://research.bucklerfamily.estate/master-change-log-october-2026/>`__; no separate page-local version footer is maintained.

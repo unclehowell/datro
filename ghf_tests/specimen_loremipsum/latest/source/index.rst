@@ -1,5 +1,5 @@
-Specimen Document: Lorem Ipsum
-==============================
+TEST-0001 — Specimen Document: Lorem Ipsum
+==========================================
 
 This specimen exercises every element the standard allows: headings, a table, a figure, a footnote and a cross-reference.
 
