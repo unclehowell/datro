@@ -2,7 +2,8 @@
 """Hive context packs: one metadata-only "context" object per draft in datro@drafts drafts/BOARD.json.
 Reads the dartboard roadmap (stage, next deadline, markers, rungs spent), the email archive API (thread link)
 and qa kb.json (item count per body). No email text. Run: TAB_TASK_ID=$TAB_TASK_ID timeout -k 5 300 python3 work/watch/hive_context.py [--dry]
-Re-run whenever BOARD.json gains a draft or the dartboard refreshes. — Sion's Tab agent"""
+Re-run whenever BOARD.json gains a draft or the dartboard refreshes.
+Public text on fees always reads: fee requests are noted (£), a written quote or estimate may be requested and considered, nothing is agreed, contracted or committed to, and every free route is pursued in parallel. — Sion's Tab agent"""
 import json, sys, re, time, urllib.request, urllib.parse
 sys.path.insert(0, '/home/user/tab/work/site-flywheels/tools'); import gh
 REPO, BR, PATH = 'unclehowell/datro', 'drafts', 'drafts/BOARD.json'
