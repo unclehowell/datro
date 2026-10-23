@@ -86,7 +86,7 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:14px}
 <div class="lrow"><span class="ic" style="color:#b9b4d6">◯</span><span>On the ring: title holders and official actors. Inside it: no title</span></div>
 <div class="lrow"><span class="ic"><svg width="40" height="10" aria-hidden="true"><line x1="2" y1="5" x2="38" y2="5" stroke="#e7c6ff" stroke-width="4" stroke-dasharray="6 5"/></svg></span><span>Dashed: the deed or record is not held</span></div>
 <div class="lrow"><span class="ic" style="font-weight:800;font-size:14px">1938</span><span>Each year sits where the line arrives</span></div>
-<p class="ver">v3.2.0 · 23 Oct 2026</p>
+<p class="ver">v3.2.1 · 23 Oct 2026</p>
 </section>
 </main>
 <footer data-ghf-keep>© the Williams-Buckler family of Tŷ Mawr · <a href="https://bucklerfamily.estate/licence/">Licence</a></footer>
@@ -198,7 +198,7 @@ function select(k,user){cur=k;const F=V.filters.find(x=>x.k===k);
  raf=requestAnimationFrame(tick)}
 function nm(id){const n=N[id];return n.kind==='ring'||n.kind==='out'?n.lab.join(' '):n.kind==='poo'?n.icon+' '+n.cap:n.kind==='named'?'🦹 '+n.under.join(' '):n.kind==='split'?'1877 split':'papers gone'}
 function renderSteps(F,ids,st){const ol=$('#steps');ol.textContent='';
- [...ids].sort((a,b)=>st[a]-st[b]).forEach(id=>{const s=S[id],li=document.createElement('li'),b=document.createElement('button');
+ ids.forEach(id=>{const s=S[id],li=document.createElement('li'),b=document.createElement('button');
   const y=s.lab||(N[s.to].cap)||(s.id==='a-gone'?'1950–52':'');
   b.innerHTML=`<span class="bar${s.dash?' d':''}" style="background:${C[s.g]}"></span><span class="y">${esc(y)}</span><span>${esc(s.near?nm(s.fr)+' → towards the papers, and back':nm(s.fr)+' → '+nm(s.to))}</span>`;
   b.onclick=()=>openSeg(id);li.appendChild(b);ol.appendChild(li)})}
