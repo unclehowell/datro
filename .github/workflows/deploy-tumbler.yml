@@ -52,9 +52,9 @@ jobs:
 
       - name: Smoke-test live app
         run: |
-          curl --fail --silent --show-error --max-time 45 https://tumbler.bucklerfamily.estate/ -o /tmp/tumbler-index.html
-          curl --fail --silent --show-error --max-time 45 https://tumbler.bucklerfamily.estate/api/manifest -o /tmp/tumbler-manifest.json
-          curl --fail --silent --show-error --max-time 45 https://tumbler.bucklerfamily.estate/api/health -o /tmp/tumbler-health.json
+          curl --fail --silent --show-error --max-time 45 https://tumbler-6js.pages.dev/ -o /tmp/tumbler-index.html
+          curl --fail --silent --show-error --max-time 45 https://tumbler-6js.pages.dev/api/manifest -o /tmp/tumbler-manifest.json
+          curl --fail --silent --show-error --max-time 45 https://tumbler-6js.pages.dev/api/health -o /tmp/tumbler-health.json
           python3 - <<'PY'
           import json
           from pathlib import Path
