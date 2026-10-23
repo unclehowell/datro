@@ -1,10 +1,9 @@
 import { createHash } from "node:crypto";
-import { execFileSync, spawnSync } from "node:child_process";
 import { readFile } from "node:fs/promises";
 
-const ACCOUNT = process.env.CLOUDFLARE_ACCOUNT_ID || "42a4a8d7bfb96321118ada213638d050";
-const DB_ID = process.env.TUMBLER_D1_DATABASE_ID || "3ca02c2d-bb78-424d-8574-a653d33f5c05";
 const API_TOKEN = process.env.CLOUDFLARE_API_TOKEN;
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const GITHUB_API = "https://api.github.com/repos/unclehowell/datro";
 const SESSION_URL = "https://tumbler-6js.pages.dev/api/ingest/session";
 const INGEST_URL = "https://tumbler-6js.pages.dev/api/ingest/batch";
 // Use the stable Pages project hostname, not a short-lived deployment URL.
@@ -23,7 +22,7 @@ const MAX_SQL_BATCH = 85;
 if (!API_TOKEN) throw new Error("CLOUDFLARE_API_TOKEN is required.");
 
 const inventory = JSON.parse(await readFile(new URL("../static/tumbler/sources.json", import.meta.url), "utf8"));
-const counts = { branches: 0, gitFiles: 0, webPages: 0, researchItems: 0, qaItems: 0, documentsIndexed: 0, chunks: 0, skippedGitFiles: 0, skippedPrivateHosts: 0, failedHosts: [], errors: [] };
+const counts = { branches: 0, gitFiles: 0, webPages: 0, researchItems: 0, qaItems: 0, documentsIndexed: 0, chunks: 0, skippedGitFiles: 0, skippedPrivateHosts: 0, failedHosts: [], errors: [], phase: "starting" };
 const indexedHosts = new Set();
 let sqlOps = [];
 
@@ -227,104 +226,228 @@ async function crawlHost(source, pageBudget) {
   if (counts.webPages >= MAX_TOTAL_WEB_PAGES) counts.errors.push("Global public-page cap reached; later hosts may not have been crawled.");
   return {host, pages: successCount, visited: seen.size, remaining: queue.length};
 }
-function gitRefs() {
-  const refs = execFileSync("git", ["for-each-ref", "--format=%(refname:short)", "refs/remotes/origin"], {encoding:"utf8", maxBuffer:16*1024*1024})
-    .split(/\r?\n/).map(x=>x.trim()).filter(x=>x.startsWith("origin/") && !x.endsWith("/HEAD"));
-  return [...new Set(refs)];
-}
 function eligibleGitFile(path) {
-  if (!path || skipGitPath(path)) return false;
-  if (path.length > 500) return false;
+  if (!path || skipGitPath(path) || path.length > 500) return false;
   return true;
 }
-async function indexGitBranches() {
-  const refs = gitRefs();
-  if (!refs.length) throw new Error("No origin branch refs found.");
-  counts.branches = refs.length;
-  const records = new Map();
-  const heads = new Map();
-  for (const ref of refs) {
-    const branch = ref.slice("origin/".length);
-    const head = execFileSync("git", ["rev-parse", ref], {encoding:"utf8"}).trim();
-    heads.set(branch, head);
-    let output;
+function skipTreePath(path) {
+  return /(^|\/)(node_modules|vendor|dist|build|coverage|\.git|\.next|\.cache|__pycache__|site-packages|playwright-report|test-results|\.venv)(\/|$)/i.test(path);
+}
+async function githubJson(path, attempt = 0) {
+  if (!GITHUB_TOKEN) throw new Error("GITHUB_TOKEN is required for branch/tree inventory.");
+  const url = path.startsWith("https://") ? path : GITHUB_API + path;
+  const response = await fetch(url, {
+    headers: {
+      "authorization": "Bearer " + GITHUB_TOKEN,
+      "accept": "application/vnd.github+json",
+      "x-github-api-version": "2022-11-28",
+      "user-agent": "TumblerCorpusIndexer/0.2"
+    },
+    signal: AbortSignal.timeout(30000)
+  });
+  if ((response.status === 429 || response.status === 403 || response.status >= 500) && attempt < 5) {
+    const retryHeader = Number(response.headers.get("retry-after") || 0);
+    const delay = retryHeader > 0 ? Math.min(60000, retryHeader * 1000) : Math.min(30000, 800 * (2 ** attempt));
+    await new Promise(resolve => setTimeout(resolve, delay));
+    return githubJson(path, attempt + 1);
+  }
+  if (!response.ok) throw new Error("GitHub API " + response.status + " for " + url + ": " + (await response.text()).slice(0, 350));
+  return response.json();
+}
+async function mapLimit(items, concurrency, fn) {
+  const results = new Array(items.length);
+  let cursor = 0;
+  const workers = Array.from({length: Math.min(concurrency, items.length)}, async () => {
+    while (true) {
+      const index = cursor++;
+      if (index >= items.length) break;
+      try { results[index] = await fn(items[index], index); }
+      catch (error) { results[index] = {__error: String(error?.message || error)}; }
+    }
+  });
+  await Promise.all(workers);
+  return results;
+}
+async function listGitTreeForBranch(branch) {
+  const commit = await githubJson("/git/commits/" + encodeURIComponent(branch.sha));
+  const treeSha = commit?.tree?.sha;
+  if (!treeSha) throw new Error("Commit response contains no root tree SHA.");
+  const recursive = await githubJson("/git/trees/" + encodeURIComponent(treeSha) + "?recursive=1");
+  if (!recursive.truncated) return recursive.tree || [];
+
+  counts.errors.push("GitHub tree API marked branch " + branch.name + " truncated; walking individual subtrees.");
+  const found = [];
+  const queue = [{sha:treeSha,path:""}];
+  const seen = new Set();
+  while (queue.length) {
+    const batch = queue.splice(0, 4);
+    const responses = await Promise.all(batch.map(async dir => {
+      const key = dir.sha + "\u0000" + dir.path;
+      if (seen.has(key)) return {dir, tree:[]};
+      seen.add(key);
+      try {
+        const data = await githubJson("/git/trees/" + encodeURIComponent(dir.sha));
+        return {dir, tree:data.tree || []};
+      } catch(error) {
+        counts.errors.push("Could not list subtree " + (dir.path || "/") + " on " + branch.name + ": " + String(error.message || error).slice(0,180));
+        return {dir, tree:[]};
+      }
+    }));
+    for (const {dir,tree} of responses) {
+      for (const entry of tree) {
+        const path = dir.path ? dir.path + "/" + entry.path : entry.path;
+        if (entry.type === "tree") {
+          if (!skipTreePath(path)) queue.push({sha:entry.sha,path});
+        } else if (entry.type === "blob" && entry.mode !== "120000" && eligibleGitFile(path)) {
+          found.push({...entry,path});
+        }
+      }
+    }
+  }
+  return found;
+}
+async function fetchRawBlob(commitSha, path) {
+  const encodedPath = path.split("/").map(encodeURIComponent).join("/");
+  const url = "https://raw.githubusercontent.com/unclehowell/datro/" + encodeURIComponent(commitSha) + "/" + encodedPath;
+  for (let attempt = 0; attempt < 4; attempt++) {
     try {
-      output = execFileSync("git", ["ls-tree","-r","-z","--full-tree",ref], {encoding:"utf8",maxBuffer:512*1024*1024});
-    } catch (error) {
-      counts.errors.push("Could not list tree for branch " + branch + ": " + String(error.message || error).slice(0,160));
+      const response = await fetch(url, {
+        headers: {"accept":"text/plain,application/octet-stream","user-agent":"TumblerCorpusIndexer/0.2"},
+        signal: AbortSignal.timeout(20000)
+      });
+      if (response.status === 404 || response.status === 410) return null;
+      if ((response.status === 429 || response.status >= 500) && attempt < 3) {
+        await new Promise(resolve => setTimeout(resolve, 400 * (2 ** attempt)));
+        continue;
+      }
+      if (!response.ok) return null;
+      const text = await response.text();
+      if (text.length > MAX_TEXT_BYTES || text.includes("\u0000")) return null;
+      if (text.includes("\uFFFD") && text.length < 1000) return null;
+      return text;
+    } catch {
+      if (attempt === 3) return null;
+      await new Promise(resolve => setTimeout(resolve, 300 * (2 ** attempt)));
+    }
+  }
+  return null;
+}
+async function updateProgress(status = "running", finishedAt = "") {
+  const coverage = {
+    branchHeadsSeen:counts.branches,
+    gitFilesIndexed:counts.gitFiles,
+    webPagesIndexed:counts.webPages,
+    researchItemsIndexed:counts.researchItems,
+    qaItemsIndexed:counts.qaItems,
+    documentsIndexed:counts.documentsIndexed,
+    chunksIndexed:counts.chunks,
+    registeredHosts:inventory.sources.length,
+    indexedHosts:[...indexedHosts],
+    failedHosts:counts.failedHosts,
+    skippedPrivateHosts:counts.skippedPrivateHosts,
+    latestPhase:counts.phase || "starting",
+    errors:counts.errors.slice(-40),
+    note:"Index run progress snapshot. Private service endpoints and binary PDF bodies are not included by the current crawler."
+  };
+  await pushOp(stmt(
+    "UPDATE tumbler_index_runs SET finished_at=?,status=?,source_count=?,document_count=?,chunk_count=?,branch_count=?,host_count=?,errors_json=?,coverage_json=? WHERE id=?",
+    [finishedAt,status,String(counts.documentsIndexed),String(counts.documentsIndexed),String(counts.chunks),String(counts.branches),String(indexedHosts.size),JSON.stringify(counts.errors.slice(-100)).slice(0,100000),JSON.stringify(coverage).slice(0,100000),RUN_ID]
+  ));
+  await flushOps();
+}
+async function indexGitBranches() {
+  counts.phase = "GitHub branch/tree inventory";
+  const branches = [];
+  for (let page = 1; page <= 10; page++) {
+    const data = await githubJson("/branches?per_page=100&page=" + page);
+    if (!Array.isArray(data)) throw new Error("GitHub branches endpoint returned a non-list response.");
+    branches.push(...data.map(x => ({name:x.name, sha:x.commit?.sha || ""})).filter(x => x.name && x.sha));
+    if (data.length < 100) break;
+  }
+  if (!branches.length) throw new Error("No repository branches returned by GitHub API.");
+  counts.branches = branches.length;
+  await updateProgress();
+
+  const treeResults = await mapLimit(branches, 4, async branch => ({
+    branch,
+    tree: await listGitTreeForBranch(branch)
+  }));
+  const records = new Map();
+  const blobGroup = new Map();
+
+  for (const result of treeResults) {
+    if (!result || result.__error || !result.branch) {
+      counts.errors.push("Branch tree failed: " + String(result?.__error || "Unknown branch-tree error").slice(0,240));
       continue;
     }
-    for (const raw of output.split("\u0000")) {
-      if (!raw) continue;
-      const tab = raw.indexOf("\t");
-      if (tab < 0) continue;
-      const [mode,type,sha] = raw.slice(0,tab).split(" ");
-      const path = raw.slice(tab+1);
-      if (type !== "blob" || mode === "120000" || !eligibleGitFile(path)) continue;
-      const key = path + "\u0000" + sha;
-      let item = records.get(key);
-      if (!item) {
-        item = {path,sha,branches:[],heads:[]};
-        records.set(key,item);
+    const {branch,tree} = result;
+    for (const entry of tree) {
+      const path = entry.path;
+      const size = Number(entry.size);
+      if (!eligibleGitFile(path)) continue;
+      if (!Number.isFinite(size) || size < 0 || size > MAX_TEXT_BYTES) {
+        counts.skippedGitFiles++;
+        continue;
       }
-      item.branches.push(branch);
-      item.heads.push(head);
+      const key = path + "\u0000" + entry.sha;
+      let record = records.get(key);
+      if (!record) {
+        record = {path,sha:entry.sha,size,branches:[],heads:[]};
+        records.set(key,record);
+      }
+      record.branches.push(branch.name);
+      record.heads.push(branch.sha);
+      let group = blobGroup.get(entry.sha);
+      if (!group) {
+        group = {sha:entry.sha,size,representative:{head:branch.sha,path},records:[]};
+        blobGroup.set(entry.sha,group);
+      }
+      group.records.push(record);
     }
   }
-  const sizeMeta = new Map();
-  const blobIds = [...new Set([...records.values()].map(x=>x.sha))];
-  for (let i=0;i<blobIds.length;i+=800) {
-    const batch = blobIds.slice(i,i+800);
-    const result = spawnSync("git", ["cat-file","--batch-check=%(objectname) %(objecttype) %(objectsize)"], {
-      input:batch.join("\n")+"\n", encoding:"utf8", maxBuffer:64*1024*1024
-    });
-    if (result.status !== 0) throw new Error("git cat-file size check failed: " + String(result.stderr || "").slice(0,500));
-    for (const line of result.stdout.split(/\r?\n/)) {
-      const parts=line.trim().split(" ");
-      if(parts.length===3 && parts[1]==="blob") sizeMeta.set(parts[0],Number(parts[2]));
+
+  counts.errors.push("GitHub branch inventory found " + records.size + " unique path/blob combinations and " + blobGroup.size + " distinct text blobs.");
+  const blobs = [...blobGroup.values()];
+  console.log("Tumbler: branches", branches.length, "unique path/blob records", records.size, "unique text blobs", blobs.length);
+
+  const blobBatch = 4;
+  for (let offset = 0; offset < blobs.length; offset += blobBatch) {
+    const batch = blobs.slice(offset, offset + blobBatch);
+    const content = await Promise.all(batch.map(async blob => ({blob, text:await fetchRawBlob(blob.representative.head,blob.representative.path)})));
+    for (const item of content) {
+      const blob = item.blob;
+      if (item.text === null) {
+        counts.skippedGitFiles += blob.records.length;
+        counts.errors.push("Could not fetch text blob " + blob.sha + " (" + blob.records[0]?.path + ").");
+        continue;
+      }
+      for (const record of blob.records) {
+        const branchList = [...new Set(record.branches)].sort();
+        const commitList = [...new Set(record.heads)].sort();
+        const representativeBranch = branchList[0] || "unknown";
+        const representativeHead = commitList[0] || "";
+        const encodedPath = record.path.split("/").map(encodeURIComponent).join("/");
+        const url = "https://github.com/unclehowell/datro/blob/" + representativeHead + "/" + encodedPath;
+        const id = hash("git\u0000" + record.path + "\u0000" + record.sha);
+        await indexDocument({
+          id,source_host:"github.com",source_kind:"git-file",
+          source_url:url,title:record.path,path:record.path,
+          branch_name:branchList.join(",").slice(0,1500),
+          commit_sha:commitList.join(",").slice(0,1500),
+          text:item.text
+        });
+        counts.gitFiles++;
+      }
+    }
+    if ((offset + blobBatch) % 100 === 0 || offset + blobBatch >= blobs.length) {
+      await updateProgress();
+      console.log("Tumbler: text blobs processed",Math.min(offset+blobBatch,blobs.length),"/",blobs.length,"indexed files",counts.gitFiles);
     }
   }
-  const eligible = [...records.values()].filter(x => sizeMeta.has(x.sha) && sizeMeta.get(x.sha) <= MAX_TEXT_BYTES);
-  const skippedLarge = records.size - eligible.length;
-  counts.skippedGitFiles = skippedLarge;
-  const needed = [...new Set(eligible.map(x=>x.sha))];
-  const contentBySha = new Map();
-  for (let i=0;i<needed.length;i+=60) {
-    const batch = needed.slice(i,i+60);
-    const result = spawnSync("git",["cat-file","--batch"],{input:batch.join("\n")+"\n",encoding:null,maxBuffer:32*1024*1024});
-    if(result.status!==0) { counts.errors.push("git cat-file batch failed at offset "+i); continue; }
-    const buf = result.stdout;
-    let offset=0;
-    while(offset<buf.length) {
-      const nl=buf.indexOf(10,offset); if(nl<0) break;
-      const header=buf.slice(offset,nl).toString("utf8").trim().split(" ");
-      if(header.length<3 || header[1]!=="blob") break;
-      const sha=header[0], size=Number(header[2]), start=nl+1, end=start+size;
-      if(!Number.isFinite(size) || end>buf.length) break;
-      contentBySha.set(sha,buf.slice(start,end));
-      offset=end+1;
-    }
-  }
-  for (const item of eligible) {
-    const buf=contentBySha.get(item.sha);
-    if(!buf || buf.includes(0)) continue;
-    let text=buf.toString("utf8");
-    if(text.includes("\uFFFD") && text.length<1000) continue;
-    const branchList=[...new Set(item.branches)].sort();
-    const commitList=[...new Set(item.heads)].sort();
-    const branch=branchList[0] || "unknown";
-    const url="https://github.com/unclehowell/datro/blob/"+branch.replace(/#/g,"%23")+"/"+item.path.split("/").map(encodeURIComponent).join("/");
-    const id=hash("git\u0000"+item.path+"\u0000"+item.sha);
-    await indexDocument({
-      id, source_host:"github.com", source_kind:"git-file",
-      source_url:url, title:item.path, path:item.path,
-      branch_name:branchList.join(",").slice(0,1500),
-      commit_sha:commitList.join(",").slice(0,1500),
-      text
-    });
-    counts.gitFiles += 1;
-  }
-  return {branches:refs.length,files:counts.gitFiles,uniquePathBlobs:records.size};
+
+  const result={branches:branches.length,files:counts.gitFiles,uniquePathBlobs:records.size,uniqueTextBlobs:blobs.length,skippedTextFiles:counts.skippedGitFiles};
+  await updateProgress();
+  return result;
 }
 async function crawlResearchMirror() {
   const base="https://research.bucklerfamily.estate";
@@ -405,50 +528,65 @@ async function crawlQaGraph() {
 }
 async function main() {
   await openIngestSession();
+  await postQuery({sql:"UPDATE tumbler_index_runs SET finished_at=?,status='interrupted' WHERE status='running'",params:[STARTED]});
   await postQuery({sql:"INSERT INTO tumbler_index_runs (id,started_at,status,source_count,document_count,chunk_count,branch_count,host_count,errors_json,coverage_json) VALUES (?,?, 'running',0,0,0,0,0,'[]','{}')",params:[RUN_ID,STARTED]});
-  // Fetch each current branch tip with a shallow history; this is for indexing branch heads, not historical commits.
-  const fetch=spawnSync("git",["fetch","--no-tags","--depth=1","--filter=blob:none","origin","+refs/heads/*:refs/remotes/origin/*"],{encoding:"utf8",maxBuffer:128*1024*1024});
-  if(fetch.status!==0) throw new Error("Could not fetch all branch heads: "+String(fetch.stderr||"").slice(0,800));
-  const git=await indexGitBranches();
+
+  const git = await indexGitBranches();
   await flushOps();
+  counts.phase = "research mirror";
+  await updateProgress();
   await crawlResearchMirror();
   await flushOps();
+  counts.phase = "FOI/EIR Q&A graph";
+  await updateProgress();
   await crawlQaGraph();
   await flushOps();
-  const websiteSources=inventory.sources.filter(x=>x.kind==="website"||x.kind==="wordpress");
-  const specialHosts=inventory.sources.filter(x=>x.kind==="private-api");
-  counts.skippedPrivateHosts=specialHosts.length;
-  let remaining=MAX_TOTAL_WEB_PAGES-counts.webPages;
-  for(let i=0;i<websiteSources.length && remaining>0;i+=4) {
-    const group=websiteSources.slice(i,i+4);
-    const results=await Promise.all(group.map(s=>crawlHost(s,Math.min(MAX_PAGES_PER_HOST,Math.max(1,Math.floor(remaining/group.length))))));
-    remaining=MAX_TOTAL_WEB_PAGES-counts.webPages;
-    for(const r of results) {
-      if(!r.pages) counts.failedHosts.push(r.host);
+
+  const websiteSources = inventory.sources.filter(x => x.kind === "website" || x.kind === "wordpress");
+  const specialHosts = inventory.sources.filter(x => x.kind === "private-api");
+  counts.skippedPrivateHosts = specialHosts.length;
+  counts.phase = "public website crawl";
+  await updateProgress();
+
+  let remaining = MAX_TOTAL_WEB_PAGES - counts.webPages;
+  for (let i=0; i<websiteSources.length && remaining>0; i+=4) {
+    const group = websiteSources.slice(i,i+4);
+    const results = await Promise.all(group.map(s => crawlHost(s,Math.min(MAX_PAGES_PER_HOST,Math.max(1,Math.floor(remaining/group.length))))));
+    remaining = MAX_TOTAL_WEB_PAGES - counts.webPages;
+    for (const result of results) {
+      if (!result.pages) counts.failedHosts.push(result.host);
+      await updateProgress();
     }
     await flushOps();
   }
   await flushOps();
-  counts.errors=[...new Set(counts.errors)];
-  const coverage={
-    branchesSeen:counts.branches,
+
+  counts.errors = [...new Set(counts.errors)];
+  const coverage = {
+    branchHeadsSeen:counts.branches,
     gitFilesIndexed:counts.gitFiles,
     webPagesIndexed:counts.webPages,
     researchItemsIndexed:counts.researchItems,
     qaItemsIndexed:counts.qaItems,
     chunksIndexed:counts.chunks,
+    documentsIndexed:counts.documentsIndexed,
     registeredHosts:inventory.sources.length,
-    privateHostsExcluded:specialHosts.map(s=>s.host),
+    indexedHosts:[...indexedHosts],
     failedHosts:counts.failedHosts,
+    privateHostsExcluded:specialHosts.map(s=>s.host),
     limits:{maxPagesPerHost:MAX_PAGES_PER_HOST,maxTotalWebPages:MAX_TOTAL_WEB_PAGES,maxGitTextFileBytes:MAX_TEXT_BYTES},
-    note:"A complete run indexes current branch heads and reachable published HTML/text pages from public website hosts. Private API services are excluded. Binary document contents (including PDFs) are not extracted in this version. Hosts that fail or hit crawl limits are listed."
+    skippedTextFiles:counts.skippedGitFiles,
+    note:"The index includes current Git branch-head text files under size/path filters, indexed published HTML reachable from public website hosts, the research mirror catalogue and available Q&A export. It does not cover historical Git commits, private API services, PDF binary contents, content behind login, unreachable pages or files outside crawl/size limits. Check errors and skipped counts before calling a review exhaustive."
   };
-  const finished=new Date().toISOString();
-  const incomplete=counts.failedHosts.length>0 || counts.skippedGitFiles>0 || counts.errors.some(e=>/Could not list tree|Research mirror|QA graph|Page limit reached|Global public-page cap/i.test(e));
-  const status=!incomplete && counts.branches>0 ? "complete" : "partial";
-  await postQuery({sql:"UPDATE tumbler_index_runs SET finished_at=?,status=?,source_count=?,document_count=?,chunk_count=?,branch_count=?,host_count=?,errors_json=?,coverage_json=? WHERE id=?",params:[finished,status,counts.documentsIndexed,counts.documentsIndexed,counts.chunks,counts.branches,indexedHosts.size,JSON.stringify(counts.errors).slice(0,100000),JSON.stringify(coverage).slice(0,100000),RUN_ID]});
+  const finished = new Date().toISOString();
+  const incomplete = counts.failedHosts.length>0 || counts.skippedGitFiles>0 || counts.errors.some(e => /Could not list|failed|truncated|unavailable|limit reached|Global public-page cap|Could not fetch/i.test(e));
+  const status = !incomplete && counts.branches>0 ? "complete" : "partial";
+  await postQuery({
+    sql:"UPDATE tumbler_index_runs SET finished_at=?,status=?,source_count=?,document_count=?,chunk_count=?,branch_count=?,host_count=?,errors_json=?,coverage_json=? WHERE id=?",
+    params:[finished,status,String(counts.documentsIndexed),String(counts.documentsIndexed),String(counts.chunks),String(counts.branches),String(indexedHosts.size),JSON.stringify(counts.errors).slice(0,100000),JSON.stringify(coverage).slice(0,100000),RUN_ID]
+  });
   console.log(JSON.stringify({runId:RUN_ID,status,git,counts,coverage},null,2));
-  if(status!=="complete") process.exitCode=2;
+  if (status!=="complete") process.exitCode=2;
 }
 try {
   await main();
