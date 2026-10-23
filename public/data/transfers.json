@@ -1,5 +1,5 @@
 {
- "version": "2.8.0",
+ "version": "2.9.0",
  "updated": "2026-10-23",
  "parties": [
   {
@@ -16,11 +16,11 @@
   },
   {
    "id": "origin",
-   "short": "Synthetic origin",
-   "name": "Synthetic Parcel A origin (not a title-holder)",
-   "m": "Synthetic origin",
+   "short": "Permissive occupancy",
+   "name": "Permissive occupancy origin (synthetic Parcel A labels; not a title-holder)",
+   "m": "Permissive occupancy",
    "icon": "💩",
-   "centre": true
+   "outside": true
   },
   {
    "id": "wgr",
@@ -99,6 +99,12 @@
    "short": "Church View Close",
    "name": "Householders at Church View Close",
    "m": "Church View Cl."
+  },
+  {
+   "id": "glamorgan",
+   "short": "Glamorgan CC · VG41",
+   "name": "Glamorgan County Council (VG41 registration authority in 1970)",
+   "m": "Glamorgan County Council"
   },
   {
    "id": "llcc",
@@ -540,7 +546,7 @@
    "status": "solid",
    "reason": null,
    "instrument": "Deed of 29 March 1961 between (1) Western Ground Rents Ltd (2) The South Western Brick & Tile Company Ltd and (3) Cardiff City Corporation, listed on the woodland title WA735527.",
-   "note": "The register lists the deed against the land tinted pink. The deed and its plan have not been inspected, so the rights it created are not known.",
+   "note": "The register lists a 29 Mar 1961 deed between Western Ground Rents Ltd, South Western Brick & Tile and Cardiff City Corporation against land tinted pink. The deed and plan have not been inspected, so neither the rights created nor the precise parcel extent is established. Cardiff City Corporation is a named party, not confirmed as freehold transferee.",
    "sources": [
     {
      "t": "EV-0040 · 29 Mar 1961 deed (WGR, South Western Brick & Tile, Cardiff City Corporation)",
@@ -676,13 +682,13 @@
    "parcels": [
     "A3"
    ],
-   "to": "llcc",
+   "to": "glamorgan",
    "kind": "registration",
    "label": "1970 registration",
    "status": "dashed",
    "reason": "record not seen",
-   "instrument": "Registration of the green as village green VG41 (Commons Registration Act 1965; Glamorgan County Council the registration authority).",
-   "note": "The VG41 file (application, map, ownership section) is not held. Registration alone did not vest the green in anyone. Llandough Community Council describes itself as owning and maintaining the green; how it came to own it is not on record.",
+   "instrument": "Village-green registration VG41, 16 June 1970. Registration authority: Glamorgan County Council. This is a registration record, not a conveyance.",
+   "note": "VG41 was registered on 16 June 1970 by Glamorgan County Council as registration authority. The original VG41 file (application, map, ownership section, notices and any decision) is outstanding. Registration alone did not vest the green in the authority or prove who owned the freehold.",
    "sources": [
     {
      "t": "EV-0044 · VG41 village-green registration",
@@ -697,7 +703,7 @@
      "u": "https://greathousefarmwiki.wordpress.com/family-legal-case-control-room/woodland-land-transfer-assessment-1902-2005/"
     }
    ],
-   "from": "wgr",
+   "from": "origin",
    "title": "VG41",
    "notTitleTransfer": true
   },
@@ -936,10 +942,10 @@
    "to": "foc",
    "kind": "transfer",
    "label": "1994 transfer",
-   "status": "solid",
-   "reason": null,
-   "instrument": "Transfer of the woodland to Forest of Cardiff, title WA735527.",
-   "note": "The title register is held; the transfer deed and plan are not.",
+   "status": "dashed",
+   "reason": "transfer deed and plan not seen",
+   "instrument": "Transfer to Forest of Cardiff under title WA735527, dated 10 Nov 1994 (the current register shows proprietor entry 25 Nov 1994). The transfer and plan are not yet held.",
+   "note": "The current register lists Forest of Cardiff as proprietor from 25 Nov 1994. The transfer deed and plan are not held. The woodland title’s register also recites a 29 Mar 1961 WGR / South Western Brick & Tile / Cardiff City Corporation deed on the earlier strand; its scope and parcel overlap cannot be established until the deed and plan are inspected.",
    "sources": [
     {
      "t": "EV-0169 · title register WA735527",
@@ -1100,21 +1106,69 @@
   }
  ],
  "origin": {
-  "label": "Synthetic-origin marker only · not a freehold owner",
+  "label": "Schematic origin of synthetic A1–A3 records; not a title-holder or a conveyance",
   "titles": [
+   {
+    "title": "WA735527",
+    "t": "t1994",
+    "why": "WOODLAND · 1949 → 1961 deed strand → WA735527 (Forest of Cardiff, 1994)"
+   },
    {
     "title": "WA240304",
     "t": "t1983",
-    "why": "House and yard (A2). Licence letters offered 31 Oct 1974, never accepted; first registration applied for 23 Feb 1983 to BP Properties Ltd while Mary lived there. No conveyance from the occupiers is on record."
+    "why": "HOUSE & YARD · 31 Oct 1974 letters → BP Properties / WA240304 (1983)"
+   },
+   {
+    "title": "VG41",
+    "t": "t1970",
+    "why": "THE GREEN · 1958/59 attempt → VG41 registration (1970)"
    }
   ],
-  "not": "WA240304 is the 1983 first registration of the house and yard (A2); WA735527 is the later woodland title, with the 1961 deed recited in its history; VG41 is a village-green registration. These are separate record strands. The marker does not mean that title passed from Mary Williams or the Williams family to the icon, WGR, BP, or any present holder.",
-  "intro": "The icon is a schematic source marker for the three synthetic Parcel A labels A1, A2 and A3. It is not a landowner, a transferor or a transferee. The separate timelines below compare the dated possession/licence events and later deed or registration records; they do not depict a conveyance of freehold from the icon."
+  "not": "These links are not conveyances. A1: the 29 Mar 1961 deed is recited in the woodland title strand; the deed and plan are not held, and WA735527 lists Forest of Cardiff as proprietor from 1994. A2: BP Properties applied to register WA240304 on 23 Feb 1983 while Mary lived there; no conveyance from the occupiers is on record. A3: VG41 was registered on 16 Jun 1970; Glamorgan County Council was the registration authority, but the entry alone does not establish freehold ownership or vesting in that council.",
+  "intro": "The 💩 sits outside the holder ring. Three coloured arrows run from this schematic permissive-occupancy origin to the recorded endpoint associated with each synthetic Parcel A part: A1 (woodland register WA735527), A2 (BP Properties / WA240304, 1983) and A3 (Glamorgan County Council’s VG41 registration, 1970). The arrows visualise the registration pattern under examination; they do not assert a lawful freehold conveyance from Mary Williams.",
+  "branches": [
+   {
+    "parcel": "A1",
+    "target": "foc",
+    "title": "WA735527",
+    "year": 1994,
+    "transferId": "t1994",
+    "caption": "WOODLAND · 1949 → 1961 deed strand → WA735527 (Forest of Cardiff, 1994)",
+    "label": "A1 · woodland register endpoint",
+    "interval": "The 1949 attempt precedes the 29 Mar 1961 deed by about 12 years. The deed is listed in the woodland title strand; Forest of Cardiff was entered as proprietor in 1994.",
+    "note": "Destination on the ring is Forest of Cardiff, the registered proprietor of WA735527 from 1994. The 1961 deed and plan and their overlap with the identified Parcel A woodland are not established by the records presently on hand. This arrow marks the questioned registration strand, not a proven conveyance from Williams.",
+    "color": "#34c38f"
+   },
+   {
+    "parcel": "A2",
+    "target": "bpp",
+    "title": "WA240304",
+    "year": 1983,
+    "transferId": "t1983",
+    "caption": "HOUSE & YARD · 31 Oct 1974 letters → BP Properties / WA240304 (1983)",
+    "label": "A2 · BP Properties registration",
+    "interval": "BP Properties’ first-registration application is dated 23 Feb 1983, while Mary lived at the house. It followed the 31 Oct 1974 licence letters by about 8 years 4 months; the asserted 1971 abstract is a separate lead.",
+    "note": "Destination is BP Properties Ltd, the applicant/proprietor named in the WA240304 registration. No conveyance from the Williams occupiers is on record. The arrow depicts the registration destination, not a finding that freehold passed lawfully from Williams.",
+    "color": "#c4a484"
+   },
+   {
+    "parcel": "A3",
+    "target": "glamorgan",
+    "title": "VG41",
+    "year": 1970,
+    "transferId": "t1970",
+    "caption": "THE GREEN · 1958/59 attempt → VG41 registration (1970)",
+    "label": "A3 · VG41 registration endpoint",
+    "interval": "VG41 was registered on 16 Jun 1970, about 11–12 years after the recorded 1958/59 attempt.",
+    "note": "Destination is Glamorgan County Council as the 1970 registration authority. The register entry and underlying application/map/ownership file remain outstanding; registration alone does not establish that the council took the green’s freehold.",
+    "color": "#f2d64b"
+   }
+  ]
  },
  "chains": [
   {
    "id": "A",
-   "name": "A2 · house & yard | 1974 licence offer → WA240304 (1983)",
+   "name": "A2 · house & yard | 1974 licence offer → WA240304 (BP, 1983)",
    "short": "A(2) house & yard",
    "parcels": [
     "A2",
@@ -1315,13 +1369,13 @@
   },
   {
    "id": "B",
-   "name": "A1 · woodland | 1949 offer → 1961 deed strand",
+   "name": "A1 · woodland | 1949 attempt → 1961 deed strand → WA735527 (1994)",
    "short": "2(a) woodland",
    "parcels": [
     "A1",
     "A"
    ],
-   "to": "cardiff",
+   "to": "foc",
    "title": "WA735527",
    "color": "#7ee081",
    "bend": -0.35,
@@ -1441,13 +1495,13 @@
   },
   {
    "id": "C",
-   "name": "A3 · green | 1958/59 offer → VG41 entry (1970)",
+   "name": "A3 · green | 1958/59 attempt → VG41 (1970)",
    "short": "1970 green VG41",
    "parcels": [
     "A3",
     "A"
    ],
-   "to": "llcc",
+   "to": "glamorgan",
    "title": "VG41",
    "color": "#8ecbff",
    "bend": 0.35,
@@ -1548,7 +1602,7 @@
   "acol": "#ffd166",
   "bcol": "#5aa9ff",
   "star": "herbert",
-  "intro": "Freehold title path and evidential gaps. Solid lines mark a recorded title-level step; dashed lines mark a missing instrument or a link supported only by secondary material or a family statement. The separate A1–A3 timelines below are possession, licence, deed and registration chronologies—not a continuation of Parcel A's freehold chain.",
+  "intro": "Freehold title path and evidential gaps. The separate three-arrow diagram shows the later synthetic A1–A3 registration endpoints; those arrows are a pattern under examination, not freehold conveyances. Solid lines mark a recorded title-level step; dashed lines mark a missing instrument or a link supported by secondary material or a family statement.",
   "steps": [
    {
     "k": "r1",

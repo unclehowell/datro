@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Land Changing Hands · Great House Farm</title>
-<meta name="description" content="Tŷ Mawr, Llandough: the freehold title path for Parcel A and Parcel B, with later A1–A3 registration chronologies shown separately.">
+<meta name="description" content="Tŷ Mawr, Llandough: the freehold title path, plus three synthetic A1–A3 arrows from the permissive-occupancy marker to the relevant registration endpoints.">
 <meta property="og:title" content="Great House Farm · the land changing hands">
-<meta property="og:description" content="The historic freehold title path for Great House Farm, with missing conveyances marked and the later A1–A3 registration chronologies separated from ownership transfers.">
+<meta property="og:description" content="Great House Farm freehold title path, with a separate schematic diagram linking synthetic Parcel A parts A1–A3 to the recorded registration endpoints; those arrows are not conveyances.">
 <meta name="theme-color" content="#151229">
 <style>
 :root{--bg:#151229;--panel:#1d1938;--line:#ffffff1f;--ink:#f3f1ff;--muted:#b9b4d6;--accent:#ffd166}
@@ -138,7 +138,7 @@ g.n.dim{opacity:.25}
 </head>
 <body>
 <div class="wrap">
-<p class="intro">Tŷ Mawr, Llandough: the ring prioritises the evidenced freehold title path and marks gaps in historic conveyances. The 💩 is a schematic marker for the birth of synthetic labels A1, A2 and A3—not a title-holder. Their possession, licence, deed and registration timelines are shown separately below, with source citations and approximate 12-year intervals identified. Tap any title step or dated record to inspect its sources.</p>
+<p class="intro">Tŷ Mawr, Llandough: the circle shows the freehold title path and its evidential gaps. Outside the circle, the 💩 marks the questioned permissive-occupancy origin. Three colour-coded arrows end at the recorded registration endpoints for A1, A2 and A3: WA735527 / Forest of Cardiff, WA240304 / BP Properties, and VG41 / Glamorgan County Council. These are registration-pattern links, not findings that freehold lawfully passed from the Williams family.</p>
 <div class="bar">
  <div class="seg" role="group" aria-label="View"><button id="vRing" aria-pressed="true">Ring</button><button id="vList" aria-pressed="false">List</button></div>
 </div>
@@ -199,7 +199,8 @@ function legendHTML(){
  <div class="lrow"><svg width="44" height="10"><line x1="2" y1="5" x2="42" y2="5" stroke="#fff" stroke-width="4"/></svg>record held</div>
  <div class="lrow"><svg width="44" height="10"><line x1="2" y1="5" x2="42" y2="5" stroke="#fff" stroke-width="4" stroke-dasharray="7 4"/></svg>per secondary source · record not seen</div>
  <div class="lrow"><svg width="44" height="14"><line x1="2" y1="7" x2="42" y2="7" stroke="#ffd166" stroke-width="12"/><text x="22" y="7.5" font-size="8" font-weight="800" fill="#151229" text-anchor="middle" dominant-baseline="central">WA…</text></svg>title number on the line</div>
- <div class="lrow"><span style="font-size:22px;width:44px;text-align:center" data-ghf-keep>💩</span><span><b>${esc(P.origin.name)}</b> · schematic source of synthetic labels A1–A3 only; not a title-holder or party to a conveyance.</span></div>
+ <div class="lrow"><span style="font-size:22px;width:44px;text-align:center" data-ghf-keep>💩</span><span><b>${esc(P.origin.name)}</b> · outside the circle. The three coloured arrows link synthetic A1–A3 to the relevant record endpoints; arrows are not freehold conveyances.</span></div>
+ <div class="lrow"><svg width="44" height="16"><line x1="2" y1="8" x2="42" y2="8" stroke="#34c38f" stroke-width="4"/><path d="M32 2 L42 8 L32 14" fill="none" stroke="#34c38f" stroke-width="2"/></svg>Synthetic registration endpoint link (A1–A3), not a conveyance</div>
  <div class="lrow"><svg width="44" height="16"><line x1="2" y1="8" x2="42" y2="8" stroke="#fff" stroke-width="9"/><line x1="2" y1="8" x2="42" y2="8" stroke="#ffd166" stroke-width="6"/></svg>12-year limitation period on a chain</div>
  <div class="lrow"><svg width="44" height="16"><circle cx="22" cy="8" r="6" fill="#1d1938" stroke="#fff" stroke-width="2" stroke-dasharray="3 2"/></svg>year with a source to add</div></div>
  <div class="sec"><h2>Parcel (circle on the arc)</h2>${D.parcels.map(p=>`<div class="lrow"><span class="dot" data-ghf-keep style="background:${p.color}">${pcode(p.id)}</span>${esc(p.name)}</div>`).join('')}</div>`}
@@ -219,24 +220,32 @@ let CHARR=[];const CH=D.chains||[];const CHT=new Set(((D.origin||{}).titles||[])
 const nodeLab=n=>n.lab||String(n.y);
 const spanLab=(ch,n)=>(n.y===ch.span.from&&ch.span.lab0)?ch.span.lab0:(n.y===ch.span.to&&ch.span.lab)?ch.span.lab:nodeLab(n);
 function drawChains(gp){
- const g=el('g',{class:'origin-birth',role:'button',tabindex:0,'aria-label':P.origin.name+': synthetic A1–A3 origin marker, not a title-holder'},gp);
- const rr=C.mob?130:124,ir=C.mob?30:24;
- const items=[{id:'A1',x:0,y:-rr,c:PC.A1.color},{id:'A2',x:-rr*.82,y:rr*.58,c:PC.A2.color},{id:'A3',x:rr*.82,y:rr*.58,c:PC.A3.color}];
- items.forEach(p=>{
-  const L=Math.hypot(p.x,p.y)||1,sx=p.x/L*(ir+3),sy=p.y/L*(ir+3),ex=p.x-p.x/L*(C.mob?37:32),ey=p.y-p.y/L*(C.mob?20:17);
-  el('path',{d:'M'+sx.toFixed(1)+','+sy.toFixed(1)+' L'+ex.toFixed(1)+','+ey.toFixed(1),fill:'none',stroke:p.c,'stroke-width':C.mob?3:2.5,'stroke-dasharray':C.mob?'5 6':'4 5','stroke-linecap':'round','opacity':0.9},g);
-  const w=C.mob?72:64,h=C.mob?36:30;
-  el('rect',{x:p.x-w/2,y:p.y-h/2,width:w,height:h,rx:h/2,fill:'#1d1938',stroke:p.c,'stroke-width':2.5},g);
-  const tx=el('text',{x:p.x,y:p.y+(C.mob?5:4),class:'rlab b','font-size':C.mob?18:15,'text-anchor':'middle',fill:p.c},g);tx.textContent=p.id;
-  const ti=el('title',{},g);ti.textContent='Synthetic parcel '+p.id+' · chronology below; not a conveyance';
+ const source=el('g',{class:'origin-birth',role:'button',tabindex:0,'aria-label':P.origin.name+': source marker outside the title-holder ring'},gp);
+ const srcA=-135*Math.PI/180,srcR=R+(C.mob?340:260),src=[Math.cos(srcA)*srcR,Math.sin(srcA)*srcR],ir=C.mob?30:23;
+ el('circle',{cx:src[0],cy:src[1],r:ir,fill:'#1d1938',stroke:'#f2d64b','stroke-width':3},source);
+ const poo=el('text',{x:src[0],y:src[1]+1,class:'poo','font-size':C.mob?34:26,'text-anchor':'middle','dominant-baseline':'central','data-ghf-keep':''},source);poo.textContent=P.origin.icon||'💩';
+ const title=el('text',{x:src[0]+(C.mob?20:18),y:src[1]-(C.mob?24:19),class:'rlab b','font-size':C.mob?18:13,'text-anchor':'start',fill:'#f2d64b'},source);title.textContent='PERMISSIVE OCCUPANCY';
+ const sub=el('text',{x:src[0]+(C.mob?20:18),y:src[1]+(C.mob?0:2),class:'alab','font-size':C.mob?14:10,'text-anchor':'start'},source);sub.textContent='synthetic origin · not a title-holder';
+ const ti=el('title',{},source);ti.textContent=P.origin.name+' · three branches; not a freehold conveyance';
+ source.addEventListener('click',e=>{e.stopPropagation();openOrigin()});
+ source.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openOrigin()}});
+ (D.origin.branches||[]).forEach((br,idx)=>{
+  const target=P[br.target];if(!target||target.i===undefined)return;
+  const end=pos(target.i,R-3),dx=end[0]-src[0],dy=end[1]-src[1],dl=Math.hypot(dx,dy)||1;
+  const p0=[src[0]+dx/dl*(ir+3),src[1]+dy/dl*(ir+3)];
+  const bend=(idx-1)*(C.mob?34:24),mid=[(p0[0]+end[0])/2,(p0[1]+end[1])/2],c=[mid[0]-dy/dl*bend,mid[1]+dx/dl*bend];
+  const color=br.color||'#fff';
+  const g=el('g',{class:'origin-link','data-p':br.parcel,role:'button',tabindex:0,'aria-label':br.caption},gp);
+  const d='M'+p0[0].toFixed(1)+','+p0[1].toFixed(1)+' Q'+c[0].toFixed(1)+','+c[1].toFixed(1)+' '+end[0].toFixed(1)+','+end[1].toFixed(1);
+  el('path',{d,fill:'none',stroke:'#1d1938','stroke-width':C.mob?8:6,'stroke-linecap':'round','opacity':0.92},g);
+  el('path',{d,fill:'none',stroke:color,'stroke-width':C.mob?4.5:3.2,'stroke-linecap':'round','marker-end':mk(color,false),'opacity':0.98},g);
+  const q=bez(p0,c,end,0.68),bw=C.mob?36:27,bh=C.mob?27:21;
+  el('rect',{x:q[0]-bw/2,y:q[1]-bh/2,width:bw,height:bh,rx:bh/2,fill:'#1d1938',stroke:color,'stroke-width':2},g);
+  const badge=el('text',{x:q[0],y:q[1]+(C.mob?5:4),class:'rlab b','font-size':C.mob?16:12,'text-anchor':'middle',fill:color},g);badge.textContent=br.parcel;
+  const ti=el('title',{},g);ti.textContent=br.caption+' · '+br.note;
+  g.addEventListener('click',e=>{e.stopPropagation();open(br.transferId)});
+  g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(br.transferId)}});
  });
- el('circle',{cx:0,cy:0,r:ir,fill:'#1d1938',stroke:'#ffffff70','stroke-width':2.5},g);
- const ico=el('text',{x:0,y:1,class:'poo','font-size':C.mob?32:23,'text-anchor':'middle','dominant-baseline':'central','data-ghf-keep':''},g);ico.textContent=P.origin.icon||'💩';
- const lab=el('text',{x:0,y:ir+17,class:'alab','font-size':C.mob?10:9,'text-anchor':'middle'},g);lab.textContent='synthetic A1–A3 origin';
- const lab2=el('text',{x:0,y:ir+29,class:'alab','font-size':C.mob?9:8,'text-anchor':'middle'},g);lab2.textContent='not a title-holder';
- const ti=el('title',{},g);ti.textContent=P.origin.name+' · the three A1–A3 labels are schematic subdivisions only';
- g.addEventListener('click',e=>{e.stopPropagation();openOrigin()});
- g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openOrigin()}});
 }
 
 function arcD(a0,a1,r){const p0=[Math.cos(a0)*r,Math.sin(a0)*r],p1=[Math.cos(a1)*r,Math.sin(a1)*r];let da=a1-a0;while(da>Math.PI)da-=2*Math.PI;while(da<-Math.PI)da+=2*Math.PI;
@@ -304,7 +313,7 @@ function rootRow(){if(!RT)return'';const b=s=>`<button class="yb rk${s.todo?' to
  <div class="yrs"><span class="sw" style="background:${RT.bcol}"></span><b class="pl">B</b>${b(st('b1'))}<span class="who">kept · 1926 Mountjoy</span>${ar}${b(st('b2'))}<span class="who">WGR</span>${ar}${b(st('b3'))}<span class="who">BP Pension Trust</span>${ar}${b(st('b4'))}<span class="who">WA231076</span></div>
  <p class="cap">${esc(RT.intro)}</p></div>`}
 function renderChains(){const box=$('#chainsBox');if(!CH.length){box.style.display='none';return}
- box.innerHTML=`<h2>Freehold title chain · Parcel A and Parcel B</h2><p class="lead">${esc(D.root.intro||'')} Tap a title step for source citations and missing-instrument notes.</p>`+rootRow()+`<h2>Later synthetic Parcel A registration chronologies</h2><p class="lead">${esc(D.origin.intro)} The coloured A1–A3 chips are schematic subdivisions; the timelines are not conveyance arrows.</p>`+CH.map(ch=>{const sp=ch.span;
+ box.innerHTML=`<h2>Freehold title chain · Parcel A and Parcel B</h2><p class="lead">${esc(D.root.intro||'')} Tap a title step for source citations and missing-instrument notes.</p>`+rootRow()+`<h2>Three synthetic Parcel A branches · registration endpoints</h2><p class="lead">${esc(D.origin.intro)} The arrows start at the outside marker and terminate on the endpoint nodes in the circle. They show the questioned registration pattern, not freehold conveyances.</p>`+CH.map(ch=>{const sp=ch.span;
   const ys=ch.nodes.map((n,k)=>{const inS=n.y>=sp.from&&n.y<=sp.to,end=n.y===sp.from||n.y===sp.to;
    return(k?'<span class="ar">→</span>':'')+`<button class="yb${inS?' in':''}${end?' end':''}${n.todo?' todo':''}" data-cn="${ch.id}:${n.y}"${inS?` style="background:${ch.color}"`:''} aria-label="${esc(n.label)}">${esc(spanLab(ch,n))}</button>`}).join('');
   return`<div class="chrow" data-p="${ch.parcels.join(' ')}"><button class="chhd" data-ch="${ch.id}"><span class="sw" style="background:${ch.color}"></span>${esc(ch.name)}<span class="ttl">${esc(ch.title)}</span></button>
@@ -464,6 +473,7 @@ function applyFocus(){
   if(on){const tr=D.transfers.find(x=>x.id===g.dataset.id);used.add(tr.from);used.add(tr.to)}});
  svg.querySelectorAll('g.ch').forEach(g=>{const ch=CHM[g.dataset.ch],on=inFocus(ch.parcels)&&(!sel||sel==='ch:'+ch.id||(sel==='rc'&&ch.id==='A'));g.classList.toggle('dim',!on);if(on){used.add(ch.to);used.add('origin')}});
  svg.querySelectorAll('g.cn').forEach(g=>{const ch=CHM[g.dataset.cn.split(':')[0]];g.style.opacity=(inFocus(ch.parcels)&&(!sel||sel==='ch:'+ch.id||(sel==='rc'&&ch.id==='A')))?1:.1});
+ svg.querySelectorAll('g.origin-link').forEach(g=>{g.style.opacity=inFocus(g.dataset.p.split(' '))?1:.08;g.classList.toggle('dim',!inFocus(g.dataset.p.split(' ')))});
  svg.querySelectorAll('g.rc').forEach(g=>{const on=inFocus(g.dataset.p.split(' '))&&(!sel||sel==='rc');g.style.opacity=on?1:.1;g.classList.toggle('dim',!on);if(on){const s=RTM[g.dataset.rk];if(s){used.add(s.fr);if(!s.to.startsWith('chain:'))used.add(s.to)}}});
  document.querySelectorAll('.chrow').forEach(r=>{r.style.opacity=inFocus(r.dataset.p.split(' '))?1:.35});
  svg.querySelectorAll('g.n').forEach(g=>g.classList.toggle('dim',(focus.size||sel)&&!used.has(g.dataset.id)));
@@ -497,7 +507,7 @@ function chipsFor(ps){return ps.map(p=>`<span class="dot" data-ghf-keep style="b
 function openOrigin(){sel=null;applyFocus();const o=D.origin;
  $('#sheet').innerHTML=`<button class="x" aria-label="Close" id="shX">×</button><h2 id="shT"><span data-ghf-keep>💩</span> ${esc(P.origin.name)}</h2><div class="date">${esc(o.label)}</div>
  ${o.intro?`<p>${esc(o.intro)}</p>`:''}<dl>${CH.length?CH.map(ch=>`<dt>${esc(ch.name)} · ${esc(ch.title)}</dt><dd>${esc(ch.nodes.map(nodeLab).join(' → '))} · <a href="#" data-chain="${ch.id}">the chain</a></dd>`).join(''):o.titles.map(x=>{const tr=D.transfers.find(t=>t.id===x.t);return`<dt>${esc(x.title)} · ${esc(tr.label)}</dt><dd>${esc(x.why)} <a href="#" data-open="${x.t}">The arc</a></dd>`}).join('')}
- <dt>What the marker means</dt><dd>${esc(o.not)}</dd></dl>`;
+ <dt>Registration branches</dt><dd>${o.branches.map(b=>`<p><b>${esc(b.caption)}</b><br>${esc(b.interval)}<br>${esc(b.note)} <a href="#" data-open="${b.transferId}">Open cited record</a></p>`).join("")}</dd><dt>What the marker means</dt><dd>${esc(o.not)}</dd></dl>`;
  wireSheet()}
 function open(id){const tr=D.transfers.find(x=>x.id===id);if(!tr)return;sel=id;applyFocus();
  $('#sheet').innerHTML=`<button class="x" aria-label="Close" id="shX">×</button><h2 id="shT">${esc(tr.label)}</h2><div class="date">${esc(tr.date)}</div>

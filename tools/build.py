@@ -12,9 +12,9 @@ def human(d):
 tpl = (W/'template.html').read_text()
 visible = re.sub(r'<script>.*?</script>|<style>.*?</style>|<[^>]+>', ' ', tpl, flags=re.S)
 text = '\n'.join(human(data)) + '\n' + visible
-# v2.8: exempt the one schematic-origin label from the public-words scan
-OWNER_LABEL = 'Synthetic Parcel A origin (not a title-holder)'
-assert [p for p in data['parties'] if p.get('name') == OWNER_LABEL], 'synthetic-origin marker missing'
+# v2.9: exempt the single outside marker label from the public-words scan
+OWNER_LABEL = 'Permissive occupancy origin (synthetic Parcel A labels; not a title-holder)'
+assert [p for p in data['parties'] if p.get('name') == OWNER_LABEL], 'outside synthetic-origin marker missing'
 text = text.replace(OWNER_LABEL, ' ')
 bad = [w for w in BANNED if re.search(r'\b' + w + r'\b', text, re.I)]
 if bad: sys.exit('banned words: %s' % bad)
