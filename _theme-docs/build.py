@@ -327,7 +327,8 @@ def render_menus(index, entries):
         body = ''
         for g, es in groups.items():
             label = _t(c.get('groups', {}).get(g, {'en': g.capitalize()}))
-            body += band(esc(label), [f'<a class="btn" href="/{e["id"]}/">{esc(e["title"])}</a>' for e in es])
+            body += band(esc(label), [f'<a class="btn{" long" if len(e["title"]) > 48 else ""}" href="/{e["id"]}/">{esc(e["title"])}</a>'
+                                      for e in es])
         menu_page(OUT / c['id'] / 'index.html', f'{_t(c["title"])} · docs', body, 1)
     # document: the document's title, then one band per language: Latest (HTML, green) and older versions (PDF, red) to its right
     for e in entries:

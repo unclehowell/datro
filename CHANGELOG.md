@@ -6,6 +6,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Rules: DOCS-STAN
 
 ## [Unreleased]
 
+## [docs-0.4.1] - 2026-10-23
+
+### Fixed
+- Collection menus: a document title longer than 48 characters (the evidence records) wraps inside the screen in a smaller
+  size instead of running off it (the Evidence menu scrolled sideways at 390 px).
+
 ## [docs-0.4.0] - 2026-10-23
 
 ### Added

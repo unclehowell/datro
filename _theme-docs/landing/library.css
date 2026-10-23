@@ -40,3 +40,6 @@ body{margin:0;background:var(--lib-bg);font-family:sans-serif;-webkit-text-size-
 .about .g{color:var(--lib-html)}.about .r{color:var(--lib-pdf)}
 .about p{max-width:40rem;margin:.4rem auto;color:var(--lib-fg);line-height:1.45}
 @media (min-width:900px){.btns{padding-left:2rem}.title-line{padding-left:2rem}}
+/* long document titles (e.g. evidence records) wrap inside the screen and use a smaller size; short buttons are unchanged */
+.btn{max-width:calc(100% - 1.5rem);box-sizing:border-box}
+.btn.long{white-space:normal;overflow-wrap:anywhere;font-size:clamp(15px,3.6vw,19px);line-height:1.3em}
