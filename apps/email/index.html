@@ -552,7 +552,7 @@ async function openExternalReference(ref){
    return;
   }catch(e){}
  }
- showReferenceLanding(ref,candidates,'No source email matching this reference was found in the current curated public archive ('+allRecords.length+' indexed source records). No private mailbox link is provided; the original message must be added to the public archive to make its full text available here.');
+ showReferenceLanding(Object.assign({},ref,{notYet:true}),candidates,'Not yet in the public archive. No email matching this reference has been added to the archive yet ('+allRecords.length+' indexed records), so its text cannot be shown here. It will open here once its redacted copy is added.');
 }
 window.addEventListener('popstate',()=>{
  const linked=threadFromCurrentUrl();
