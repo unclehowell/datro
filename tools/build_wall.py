@@ -703,6 +703,7 @@ def build():
                      '<details class="sp-src"><summary>Source</summary><p>%s</p></details></article>'
                      % (e(v_["id"]), avimg(v_["by"], "", 40), v_["by"], e(prof(v_["by"])["name"]), e(v_.get("credit", "")[:80]), e(v_["title"]), e(v_["thumb"]), e(v_["src"]), e(v_.get("credit", "")))
                      for v_ in vids if v_.get("kind") == "video" and v_.get("src"))
+        vc = re.sub(r'id="v-(s-hr-[^"]+)"', r'id="v-\1" data-story="\1"', vc)   # verify_fb.js finds the day's card by data-story
         write("videos.html", head("Videos · farmbook 2", "The daily highlight-report videos, posted by the project manager.", "videos.html")
               + "<body>" + BS.top("video") + '<main id="main" class="sb-main"><h1 class="sb-h1">Videos</h1>' + vc + "</main>" + page_end("", "video"))
     else:
