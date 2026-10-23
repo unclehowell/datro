@@ -57,8 +57,8 @@ export const Route = createRootRoute({
         <HeadContent />
         <script dangerouslySetInnerHTML={{ __html: GHF_LANG_LOADER }} />
         <script type="text/plain" data-ghf-hold="" src={BASECAMP_HOLD} />
-        {/* Header standard v2.1.0: synchronous loader (mode + reserved band before the first paint); its basecamp.js comes after hydration, see BASECAMP_HOLD. */}
-        <script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.1.0" />
+        {/* Header standard v2.1.2: synchronous loader (mode + reserved band before the first paint); its basecamp.js comes after hydration, see BASECAMP_HOLD. */}
+        <script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.1.2" />
       </head>
       <body>
         <PreviewHostBridge />

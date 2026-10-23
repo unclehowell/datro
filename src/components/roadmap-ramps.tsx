@@ -23,6 +23,8 @@ type Email = {
   id: string; date: string; dir: "sent" | "received"; cls: string; subject: string; summary: string;
   url: string | null; wayback: string | null; ev: string | null; cid: string; att: number;
   deadline: string | null; deadline_met: string;
+  /** A reply that asks for a fee is marked £ (the family does not pay for disclosure). */
+  fee?: string | null;
 };
 type Due = { date: string; kind: string; cid: string | null; ev: string | null; url: string | null; title: string; ref: string; regime?: string; basis?: string; status?: string };
 type Lane = {
@@ -312,6 +314,24 @@ type Hit =
   | { kind: "court" };
 type Target = { x: number; y: number; r: number; hit: Hit };
 
+/** £: a reply that asks for a fee before disclosure. */
+function drawPound(ctx: CanvasRenderingContext2D, x: number, y: number) {
+  ctx.save();
+  ctx.fillStyle = "#ffd34d";
+  ctx.strokeStyle = "#0d0b09";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.arc(x, y, 5.5, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.stroke();
+  ctx.fillStyle = "#0d0b09";
+  ctx.font = "800 8px Outfit, system-ui, sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText("£", x, y + 0.5);
+  ctx.restore();
+}
+
 /** Red house: no reply by the due date. Red fish: a reply came late and/or left questions unanswered. */
 function drawHouse(ctx: CanvasRenderingContext2D, x: number, y: number) {
   ctx.save();
@@ -589,6 +609,7 @@ function draw(ctx: CanvasRenderingContext2D, lane: Lane, L: ReturnType<typeof la
       const fill = e.dir === "sent" ? "#e9e2d4" : (CLASS[e.cls] ?? CLASS["no reply"]).colour;
       envelope(ctx, s.x, s.y - 2 - i * 7, fill, 1, false);
     });
+    if (s.items.some((e) => e.dir === "received" && e.fee)) drawPound(ctx, s.x + 9, s.y - 9);
     if (s.items.length > 3) {
       ctx.fillStyle = "#ffd34d";
       ctx.font = "800 7px Outfit, system-ui, sans-serif";
@@ -661,6 +682,7 @@ function Sheet({ hit, lane }: { hit: Hit; lane: Lane }) {
               </p>
               <p className="text-sm font-semibold text-fg">{e.subject}</p>
               {e.summary && <p className="text-sm text-muted">{e.summary}</p>}
+              {e.dir === "received" && e.fee && <p className="text-xs font-semibold text-brass">£ Fee asked: {e.fee}</p>}
               {e.deadline && <p className="text-xs text-muted">Statutory deadline {fmt(e.deadline)} · {e.deadline_met}</p>}
               <p className="mt-1 flex flex-wrap gap-3 text-sm">
                 <A href={e.url}>Email</A>
