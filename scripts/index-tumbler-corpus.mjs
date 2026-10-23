@@ -18,7 +18,8 @@ const MAX_SQL_BATCH = 85;
 if (!API_TOKEN) throw new Error("CLOUDFLARE_API_TOKEN is required.");
 
 const inventory = JSON.parse(await readFile(new URL("../static/tumbler/sources.json", import.meta.url), "utf8"));
-const counts = { branches: 0, gitFiles: 0, webPages: 0, researchItems: 0, qaItems: 0, chunks: 0, skippedPrivateHosts: 0, failedHosts: [], errors: [] };
+const counts = { branches: 0, gitFiles: 0, webPages: 0, researchItems: 0, qaItems: 0, documentsIndexed: 0, chunks: 0, skippedGitFiles: 0, skippedPrivateHosts: 0, failedHosts: [], errors: [] };
+const indexedHosts = new Set();
 let sqlOps = [];
 
 function hash(value) {
@@ -105,6 +106,8 @@ async function indexDocument(doc) {
     await pushOp(stmt("INSERT INTO tumbler_chunks_fts (id,document_id,text) VALUES (?,?,?)", [chunkId,id,chunks[i]]));
     counts.chunks += 1;
   }
+  counts.documentsIndexed += 1;
+  indexedHosts.add(doc.source_host);
 }
 async function fetchResponse(url, timeoutMs = 12000) {
   try {
@@ -205,6 +208,7 @@ async function crawlHost(source, pageBudget) {
     }
   }
   if (queue.length && seen.size >= pageBudget) counts.errors.push("Page limit reached for " + host + " (" + pageBudget + ").");
+  if (counts.webPages >= MAX_TOTAL_WEB_PAGES) counts.errors.push("Global public-page cap reached; later hosts may not have been crawled.");
   return {host, pages: successCount, visited: seen.size, remaining: queue.length};
 }
 function gitRefs() {
@@ -266,7 +270,7 @@ async function indexGitBranches() {
   }
   const eligible = [...records.values()].filter(x => sizeMeta.has(x.sha) && sizeMeta.get(x.sha) <= MAX_TEXT_BYTES);
   const skippedLarge = records.size - eligible.length;
-  counts.errors.push("Git branch tree inventory: " + records.size + " unique path/blob combinations; skipped " + skippedLarge + " files without readable-size metadata or over " + MAX_TEXT_BYTES + " bytes.");
+  counts.skippedGitFiles = skippedLarge;
   const needed = [...new Set(eligible.map(x=>x.sha))];
   const contentBySha = new Map();
   for (let i=0;i<needed.length;i+=60) {
@@ -386,7 +390,7 @@ async function crawlQaGraph() {
 async function main() {
   await postQuery({sql:"INSERT INTO tumbler_index_runs (id,started_at,status,source_count,document_count,chunk_count,branch_count,host_count,errors_json,coverage_json) VALUES (?,?, 'running',0,0,0,0,0,'[]','{}')",params:[RUN_ID,STARTED]});
   // Fetch each current branch tip with a shallow history; this is for indexing branch heads, not historical commits.
-  const fetch=spawnSync("git",["fetch","--no-tags","--depth=1","origin","+refs/heads/*:refs/remotes/origin/*"],{encoding:"utf8",maxBuffer:128*1024*1024});
+  const fetch=spawnSync("git",["fetch","--no-tags","--depth=1","--filter=blob:none","origin","+refs/heads/*:refs/remotes/origin/*"],{encoding:"utf8",maxBuffer:128*1024*1024});
   if(fetch.status!==0) throw new Error("Could not fetch all branch heads: "+String(fetch.stderr||"").slice(0,800));
   const git=await indexGitBranches();
   await flushOps();
@@ -423,8 +427,9 @@ async function main() {
     note:"A complete run indexes current branch heads and reachable published HTML/text pages from public website hosts. Private API services are excluded. Binary document contents (including PDFs) are not extracted in this version. Hosts that fail or hit crawl limits are listed."
   };
   const finished=new Date().toISOString();
-  const status=counts.failedHosts.length===0 && counts.branches>0 ? "complete" : "partial";
-  await postQuery({sql:"UPDATE tumbler_index_runs SET finished_at=?,status=?,source_count=?,document_count=?,chunk_count=?,branch_count=?,host_count=?,errors_json=?,coverage_json=? WHERE id=?",params:[finished,status,counts.gitFiles+counts.webPages+counts.researchItems+counts.qaItems,counts.gitFiles+counts.webPages+counts.researchItems+counts.qaItems,counts.chunks,counts.branches,websiteSources.length-counts.failedHosts.length,JSON.stringify(counts.errors).slice(0,100000),JSON.stringify(coverage).slice(0,100000),RUN_ID]});
+  const incomplete=counts.failedHosts.length>0 || counts.skippedGitFiles>0 || counts.errors.some(e=>/Could not list tree|Research mirror|QA graph|Page limit reached|Global public-page cap/i.test(e));
+  const status=!incomplete && counts.branches>0 ? "complete" : "partial";
+  await postQuery({sql:"UPDATE tumbler_index_runs SET finished_at=?,status=?,source_count=?,document_count=?,chunk_count=?,branch_count=?,host_count=?,errors_json=?,coverage_json=? WHERE id=?",params:[finished,status,counts.documentsIndexed,counts.documentsIndexed,counts.chunks,counts.branches,indexedHosts.size,JSON.stringify(counts.errors).slice(0,100000),JSON.stringify(coverage).slice(0,100000),RUN_ID]});
   console.log(JSON.stringify({runId:RUN_ID,status,git,counts,coverage},null,2));
   if(status!=="complete") process.exitCode=2;
 }
