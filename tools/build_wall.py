@@ -28,7 +28,7 @@ THEN_URL, NOW_URL = BS.THEN_URL, BS.NOW_URL
 os.makedirs(os.path.join(SITE, "img", "social"), exist_ok=True)
 from zoneinfo import ZoneInfo
 TODAY = dt.datetime.now(ZoneInfo("Europe/London")).date()   # the family's day, not the box's UTC day
-BANNED = re.compile(r"\b(thief|thieves|stolen|looted|criminal|racket|lawfare|fraud\w*|says|claims|claimed|claiming|according to|alleged\w*|allegation\w*|hearsay|unverified)\b|(?<!Coed )\bSion\b" + (r"(?! Buckler\b)" if NOW else "") + r"|\bHywel\b"
+BANNED = re.compile(r"\b(thief|thieves|stolen|looted|criminal|racket|lawfare|fraud\w*|says|claims|claimed|claiming|according to|alleged\w*|allegation\w*|hearsay|unverified)\b|(?<!Coed )\bSion\b" + (r"(?! Buckler\b)" if NOW else "") + r"|(?<!Coed Sion )\bHywel\b"
                     r"|family[’']?s? (account|position)|Branwen\s+Buckler|robin\s*hill|hywelapbuckler|7845|[\w.+-]+@[\w-]+\.[\w.]+|Not a finding|Our case|prospective", re.I)
 def ok(s): return bool(s) and not BANNED.search(s)
 FIX = [(r"\s*Where the family['’]s position goes beyond a document, it is written as “our position”\.", ""), (r"\s*Every post names its source; where the family['’]s position goes beyond a document, it is written as “our position”\.", " Every post names its source."),
@@ -423,7 +423,7 @@ def years(up):
     return '<nav class="sb-years wl-years" aria-label="Earlier years">%s</nav>' % "".join('<a href="%swall/%s.html">%s</a>' % (up, y, y) for y in ys)
 WALLCSS = """/* wall.css — the hope wall and full profiles (22 Oct 2026). — Sion's Tab agent */
 .wl-hero{background:var(--card);padding:14px 14px 10px;margin:0 0 10px}
-.wl-hero h1{margin:0;font-size:21px}.wl-hero p{margin:4px 0 0;color:var(--muted);font-size:14px}
+.wl-hero h1{margin:0;font-size:21px}.wl-hero p{margin:0;color:var(--muted);font-size:14px}
 .wl-years{padding:8px 0 2px}
 .sp-av img.wf,.pf-av.wf{object-fit:cover}
 .wl-with{font-weight:400;color:var(--muted);font-size:14px}.wl-with a{color:var(--ink);font-weight:600;text-decoration:none}
@@ -453,11 +453,19 @@ WALLCSS = """/* wall.css — the hope wall and full profiles (22 Oct 2026). — 
 .wl-cn{font-weight:600;font-size:13px;color:var(--ink);text-decoration:none}.wl-cl,.wl-cw{font-size:11.5px;color:var(--muted)}.wl-cw{display:block;margin-top:2px}
 .wl-eras{display:flex;gap:6px;margin:10px 0 2px}.wl-eras a{flex:1;text-align:center;padding:7px 8px;border-radius:18px;background:var(--bub);color:var(--ink);text-decoration:none;font-weight:600;font-size:14px}
 .wl-eras a[aria-current]{background:var(--fbb);color:#fff!important}.wl-eras a:not([aria-current]){color:var(--ink)!important}.wl-hero .sb-years{background:transparent!important}
-.rgs{display:flex;gap:10px;overflow-x:auto;padding:10px 12px 8px;margin:0 0 10px;background:var(--card);scrollbar-width:none;-webkit-overflow-scrolling:touch}.rgs::-webkit-scrollbar{display:none}
-.rg{flex:none;width:68px;display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;color:var(--ink);font-size:11.5px;line-height:1.2;text-align:center}
-.rg-i{width:62px;height:62px;border-radius:50%;padding:3px;background:conic-gradient(var(--ghf-s,#F55CC2),var(--fbb,#1877f2),var(--ghf-s,#F55CC2))}
-.rg-i img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid var(--card);background:var(--card);display:block}
-.rg-seen .rg-i{background:var(--line)}.rg span{max-width:68px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.rgs{display:flex;gap:8px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;padding:12px 12px 12px;margin:0 0 10px;background:var(--card);scrollbar-width:none;-webkit-overflow-scrolling:touch}.rgs::-webkit-scrollbar{display:none}
+.sc{flex:none;position:relative;display:block;width:min(120px,calc((100vw - 36px)/3.3));aspect-ratio:110/190;border-radius:12px;overflow:hidden;scroll-snap-align:start;text-decoration:none;color:#fff!important;background:#242526;box-shadow:inset 0 0 0 1px rgba(127,127,127,.18);transition:opacity .2s,filter .2s}
+.sc-pv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s}.sc:hover .sc-pv{transform:scale(1.04)}
+.sc-t{background:linear-gradient(165deg,var(--sc1) 0%,var(--sc1) 38%,var(--sc2) 135%)}.sc-alt{background:linear-gradient(200deg,var(--sc1) 0%,var(--sc1) 34%,var(--sc2) 140%)}
+.sc-tx{position:absolute;left:8px;right:8px;top:52px;bottom:50px;display:flex;flex-direction:column;gap:4px;overflow:hidden}
+.sc-tx b{font-size:14px;line-height:1.2;font-weight:800;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.sc-tx span{font-size:11.5px;line-height:1.3;opacity:.86;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sc::after{content:"";position:absolute;left:0;right:0;bottom:0;height:46%;background:linear-gradient(transparent,rgba(0,0,0,.72));pointer-events:none}
+.sc-av{position:absolute;top:8px;left:8px;z-index:2;width:40px;height:40px;border-radius:50%;padding:2px;background:var(--fbb,#1877f2);box-sizing:border-box}
+.sc-av img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #fff;background:#fff;display:block;box-sizing:border-box}
+.sc-nm{position:absolute;left:8px;right:8px;bottom:8px;z-index:2;font-weight:700;font-size:12.5px;line-height:1.2;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sc.rg-seen{opacity:.55;filter:saturate(.6)}.sc.rg-seen .sc-av{background:#8a8d91}
+.sc:focus-visible{outline:3px solid var(--fbb,#1877f2);outline-offset:2px}
 html.rg-open{overflow:hidden}
 .rgv{position:fixed;inset:0;z-index:2147483000;background:#000;color:#fff;display:flex;flex-direction:column;outline:0;touch-action:pan-y}
 .rgv-bars{display:flex;gap:3px;padding:8px 8px 0;position:relative;z-index:3}.rgv-bars i{flex:1;height:3px;background:rgba(255,255,255,.35);border-radius:2px;overflow:hidden}.rgv-bars b{display:block;height:100%;width:0;background:#fff}
@@ -478,7 +486,7 @@ html.rg-open{overflow:hidden}
 /* night: the family's real dark (black ground), day stays white/light — 23 Oct 2026 */
 html[data-ghf-mode="night"]{--bg:#000;--card:#18191a;--ink:#e4e6eb;--muted:#b0b3b8;--line:#3e4042;--bub:#3a3b3c;--fbb2:#263951;color-scheme:dark}
 html[data-ghf-mode="night"] .pf-av{border-color:#18191a}
-html[data-ghf-mode="night"] .sp-src a,html[data-ghf-mode="night"] .sb-main a:not(.sp-n):not(.wl-cn):not(.fr-a):not(.rg):not(.wl-more-link){color:#8ab4f8}
+html[data-ghf-mode="night"] .sp-src a,html[data-ghf-mode="night"] .sb-main a:not(.sp-n):not(.wl-cn):not(.fr-a):not(.rg):not(.sc):not(.wl-more-link){color:#8ab4f8}
 html[data-ghf-mode="night"] .wl-q{border-color:#d4b25a}
 """
 
@@ -529,10 +537,22 @@ def rings(up):
     for r in R_:
         for s_ in r["slides"]:
             for k_ in ("t", "x", "by"): s_[k_] = roles(s_.get(k_, ""))
-    rail = "".join('<a class="rg" href="#" data-ring="%s" data-i="%d"><span class="rg-i"><img src="%s" alt="" width="56" height="56" loading="lazy"></span><span>%s</span></a>'
-                   % (e(r["id"]), i, e(r["av"]), e(r["name"])) for i, r in enumerate(R_))
-    return ('<div class="rgs" aria-label="Stories">%s</div><script type="application/json" id="fb-rings-data">%s</script><script src="%sstories.js?v=%s" defer></script>'
-            % (rail, json.dumps(R_, ensure_ascii=False).replace("</", "<\\/"), up, ver("stories.js")))
+    PAIR = ("#2E1B6A", "#FF8A5B") if NOW else ("#6A1B50", "#F55CC2")   # the site's colour pair (palette.md)
+    def card_(i, r):
+        sl = r["slides"]; pv = next((x for x in sl if x.get("poster") or x.get("img")), None)
+        lz = "" if i < 4 else ' loading="lazy"'
+        if pv:
+            bg = '<img class="sc-pv" src="%s" alt=""%s>' % (e(pv.get("poster") or pv["img"]), lz)
+        else:
+            s0 = sl[0]; t0 = (s0.get("t") or "").strip(); x0 = (s0.get("x") or "").strip()
+            if len(t0) < 10 and x0: t0, x0 = re.sub(r"^In short:\s*", "", x0), ""
+            x0 = re.sub(r"^In short:\s*", "", x0)
+            bg = '<span class="sc-tx"><b>%s</b>%s</span>' % (e(short(t0, 70)), ('<span>%s</span>' % e(short(x0, 90))) if x0 else "")
+        return ('<a class="rg sc%s" href="#" data-ring="%s" data-i="%d" aria-label="%s: story">%s<span class="sc-av"><img src="%s" alt="" width="36" height="36"%s></span>'
+                '<span class="sc-nm">%s</span></a>' % ("" if pv else " sc-t" + (" sc-alt" if i % 2 else ""), e(r["id"]), i, e(r["name"]), bg, e(r["av"]), lz, e(r["name"])))
+    rail = "".join(card_(i, r) for i, r in enumerate(R_))
+    return ('<div class="rgs" aria-label="Stories" style="--sc1:%s;--sc2:%s">%s</div><script type="application/json" id="fb-rings-data">%s</script><script src="%sstories.js?v=%s" defer></script>'
+            % (PAIR[0], PAIR[1], rail, json.dumps(R_, ensure_ascii=False).replace("</", "<\\/"), up, ver("stories.js")))
 CAST_GROUPS = [("Title chain and owners", lambda sl, p: sl in ("herbert-family", "vaughan-family", "hurst-and-jones", "bute-estate", "mountjoy", "daniel-thomas-and-son", "sw-brick-tile", "cefn-estates", "wgr", "bp-pension-trust", "bp", "cardiff-corporation", "intercontinental", "land-authority-wales", "goldsworthy-homes", "ideal-homes-wales", "forest-of-cardiff", "persimmon")),
                ("Courts and the land register", lambda sl, p: any(w in (p.get("kind", "") + p["name"]).lower() for w in ("court", "judge", "justice", " lj", "counsel", "land registry", "house of lords", "commission of human", "tribunal", "ombudsman", "coroner"))),
                ("Councils and public bodies", lambda sl, p: p.get("entity") and sl not in OUT and any(w in (p.get("kind", "") + p["name"]).lower() for w in ("council", "public authority", "government", "office", "ministry", "police", "cadw", "heneb", "ggat", "museum", "archive", "library", "senedd", "parliament", "commission", "department", "agency", "service", "survey", "mp"))),
@@ -634,10 +654,10 @@ def build():
         lasty = y; cards.append(card(x, ""))
     nxt = first[-1]["date"][:4] if first else str(TODAY.year)
     if NOW:
-        hero = ('<section class="wl-hero"><h1>Today at Tŷ Mawr</h1><p>The campaign since 2005, posted by the bodies that acted: requests, replies, refusals, '
+        hero = ('<section class="wl-hero"><p>The campaign since 2005, posted by the bodies that acted: requests, replies, refusals, '
                 'missed deadlines and the daily highlight report, newest first. Every post links to its record.</p>%s%s</section>' % (eras(""), years("")))
     else:
-        hero = ('<section class="wl-hero"><h1>Tŷ Mawr, then</h1><p>The farm’s story to 2004, retold as if it all happened on social media: each post is by the party '
+        hero = ('<section class="wl-hero"><p>The farm’s story to 2004, retold as if it all happened on social media: each post is by the party '
                 'that acted, and each one links to its record.</p>%s%s</section>' % (eras(""), years("")))
     hero = rings("") + hero
     write("index.html", head(("farmbook 2 · Today at Tŷ Mawr" if NOW else "farmbook · Tŷ Mawr, then"), ("The campaign for Great House Farm (Tŷ Mawr), Llandough, since 2005, retold as a social feed: each request, reply, refusal and missed deadline posted by the body that acted, with the daily highlight report." if NOW else "Great House Farm (Tŷ Mawr), Llandough, to 2004, retold as a social feed: the title chain, the courts, the press and the family, each post by the party that acted, each linked to its record."), "index.html")
@@ -652,7 +672,7 @@ def build():
         items = [x for x in wall if x["date"][:4] == y]
         older = ys[i + 1] if i + 1 < len(ys) else None
         write("wall/%s.html" % y, head("%s · farmbook wall" % y, "Key events of %s on the Great House Farm (Tŷ Mawr) wall, newest first." % y, "wall/%s.html" % y)
-              + "<body>" + BS.top("feed", "../") + '<main id="main" class="sb-main"><section class="wl-hero"><h1>%s</h1><p>%d key events, newest first.</p>%s</section>' % (y, len(items), years("../"))
+              + "<body>" + BS.top("feed", "../") + '<main id="main" class="sb-main"><section class="wl-hero"><p>%s · %d key events, newest first.</p>%s</section>' % (y, len(items), years("../"))
               + "".join(card(x, "../") for x in items)
               + ('<a class="wl-more-link" href="%s.html">Earlier: %s →</a>' % (older, older) if older else '<a class="wl-more-link" href="../index.html">Back to today</a>')
               + "</main>" + page_end("../"))
