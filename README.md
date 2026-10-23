@@ -21,15 +21,17 @@ Each change entry:
 - `commit`: a branch head moved in unclehowell/datro or unclehowell/BucklerFamilyFarm — all commits since the previous head (up to 10), author, agent, message, compare URL. This catches agents' work on every branch, even before or without a deploy.
 - `up` / `down`: availability flips (status, error, latency).
 - `note`: an agent announced its own update with log_update.
+- `baton`: a claim or release (agent, side, turn, note, next).
+- Commit entries also carry `files` (from the commit's diffstat), `stat`, `side` and `baton_turn`.
 - `site_added`, `branch_created`, `branch_deleted`.
 
-"agent" is read from the commit message signature (e.g. "— Sion's Tab agent", "Co-authored-by: …", claude/ or codex/ branches); every commit is made through the one GitHub login unclehowell, so the login alone does not say which agent.
+"agent" is read from the commit message: an `Agent: <name>` trailer, a closing "— <name> agent" signature, "Co-authored-by: …", or claude/ and codex/ branch names; every commit is made through the one GitHub login unclehowell, so the login alone does not say which agent.
 
 ## For agents: MCP / WebMCP (no signup, no key, no human)
 - MCP (streamable HTTP, JSON-RPC 2.0, POST): `https://watch.bucklerfamily.estate/mcp` — `initialize`, `tools/list`, `tools/call`
 - Discovery: `https://watch.bucklerfamily.estate/.well-known/mcp.json` (also /.well-known/webmcp.json, /agent/tools.json)
 - WebMCP (navigator.modelContext): `<script src="https://watch.bucklerfamily.estate/agent/webmcp.js"></script>` registers the tools as watch_<name>; the page itself loads it
-- Tools: `list_sites`, `get_changes(since, site, kind, limit)`, `get_status(site)`, `add_site(url, id?, branch?, added_by?)`, `log_update(site, agent, summary, commit?)`, `check_now(site)`
+- Tools: `list_sites`, `get_changes(since, site, kind, side, branch, limit)`, `get_status(site)`, `add_site(url, id?, branch?, added_by?)`, `log_update(site, agent, summary, commit?)`, `check_now(site)`, `get_baton(branch)`, `claim_baton(branch, agent)`, `release_baton(branch, agent, note, next?)`, `check_text(text)`
 - Plain REST mirrors: `GET /api/get_changes?since=…`, `POST /api/add_site {"url": …}`, `POST /api/log_update {"site","agent","summary"}`, `GET /api/check_now?site=…`
 - add_site accepts https URLs on *.bucklerfamily.estate, greathousefarmwiki.wordpress.com, *.sites.tab.bot, *.pages.dev (max 60 added sites).
 
@@ -38,7 +40,7 @@ Example:
 curl -4 -s -X POST https://watch.bucklerfamily.estate/mcp -H 'content-type: application/json' \
   -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"get_changes","arguments":{"since":"2026-10-23T12:00:00Z"}}}'
 curl -4 -s -X POST https://watch.bucklerfamily.estate/api/log_update -H 'content-type: application/json' \
-  -d '{"site":"research","agent":"Sion\'s Tab agent","summary":"Landing page nav updated","commit":"abc1234"}'
+  -d '{"site":"research","agent":"Example agent","summary":"Landing page nav updated","commit":"abc1234"}'
 ```
 
 ## What it watches and how often
@@ -60,3 +62,12 @@ curl -4 -s -X POST https://watch.bucklerfamily.estate/api/log_update -H 'content
 
 ## Why our own (23 Oct 2026 check)
 No free hosted monitor lets an agent sign up and configure itself with no human: UptimeRobot, Better Stack and Checkly all need an account created by a person with e-mail verification (and Better Stack/Checkly gate content checks behind paid tiers); changedetection.io needs an always-on server we do not have (self-hosted) or a paid hosted plan; Upptime runs on GitHub Actions but only checks up/down and commits to the repo every run. None records which commit or agent changed a page. A Cloudflare Worker on the existing free account does all of it at no cost. (Based on the services' published signup flows; no account was created anywhere.)
+
+## Improvement flywheel
+Rules for every agent: AGENTS.md in this branch, served live at https://watch.bucklerfamily.estate/agents.md.
+
+## Known limits
+- A check made in request context (check_now) does not pass through the zone's route Workers (e.g. agent-ready), so its hash can differ from the scheduled check; scheduled (cron) checks see the full live page. Only cron-to-cron hashes are compared.
+- KV is eventually consistent (up to ~60 s) and the change log is one KV value: two writers in the same second (a cron run and an agent's log_update/claim) can drop one entry. Cheap and rare at this traffic; a Durable Object would fix it but is not on the free plan's simple path.
+- GitHub's commit Atom feed lists at most the 20 newest commits per branch; the monitor stores up to 10 per move.
+- Seven hosts were down (Cloudflare 522) at launch: archive, althea, call, ccan, dash, ghf-app, subrepos — real outages/unconfigured, also seen from outside.
