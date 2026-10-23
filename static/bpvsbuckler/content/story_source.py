@@ -95,10 +95,10 @@ CAST = [
     {'id': 'john', 'name': 'John Williams', 'years': 'd. after 1949',
      'role': "Mary's father. Tenant of the house and fields from 1908; paid the last rent on the house in 1928.",
      'match': ['John Williams']},
-    {'id': 'frederick', 'name': 'Frederick Buckler', 'years': '1910/11 – 1967',
+    {'id': 'frederick', 'name': 'Frederick Buckler', 'years': 'c. 1908/09 – 1967',
      'role': "Mary's husband. Held an unwritten yearly tenancy from 1949; the 1955 and 1962 orders were made against him.",
      'match': ['Frederick']},
-    {'id': 'billy', 'name': 'William "Billy" Buckler', 'years': 'c. 1948 – 1990',
+    {'id': 'billy', 'name': 'William "Billy" Buckler', 'years': '1948 – 1990',
      'role': "Mary's son, born at the farm. Defendant in BP Properties Ltd v Buckler; evicted in November 1988.",
      'match': ['Billy', 'William Buckler', 'Bill Buckler', 'Mr Buckler', 'William (Billy)']},
     {'id': 'branwen', 'name': 'Branwen Buckler', 'years': '',
@@ -469,7 +469,7 @@ sc('II', 'ghf-19470101-1', '1947-01-01', '1947', 'The Lavernock plaque', "St Law
    ])
 sc('II', 'ghf-19480101-1', '1948-01-01', 'c. 1948 – 49', "Birth of William Buckler", 'Great House Farm', 'A',
    'Source pending',
-   "William (Billy) Buckler is born at the farm.",
+   "William (Billy) Buckler is born at the farm on 25 August 1948 (the date given in the 1987 Court of Appeal judgment).",
    [w('/williams-buckler-family/', 'The Williams / Buckler Family — William')])
 
 # ---------------------------------------------------------------- ACT III
@@ -491,7 +491,7 @@ sc('III', 'ghf-19521010-1', '1952-10-10', '1952 – 53', "Last rent on the field
    aliases=['ghf-19530101-1'])
 sc('III', 'ghf-19550202-1', '1955-02-02', '2 February 1955', "The 1955 possession order", 'High Court / Great House Farm', 'AB',
    'Court record',
-   "On 2 February 1955 Western Ground Rents obtains a High Court order for possession against Frederick Buckler, by summary judgment, described as \"the whole of the farm\". On 4 July 1955 possession is taken of everything except the farmhouse and garden; the 1987 judgment attributes the exception to Mary's recent return from hospital and her strong objection.",
+   "On 2 February 1955 a notice to quit served on Frederick Buckler expires. Western Ground Rents then obtains a High Court order for possession against him, by summary judgment, described as \"the whole of the farm\". On 4 July 1955 possession is taken of everything except the farmhouse and garden; the 1987 judgment attributes the exception to Mary's recent return from hospital and her strong objection.",
    [w('/1955-possession-order/#order', 'The 1955 Possession Order', 'Court record'), w('/1955-possession-order/#enforcement', 'The 1955 Possession Order — enforcement', 'Court record'), w('/scrutiny-and-accountability/case-analysis-connections-patterns-questions/', 'Case Analysis — Connections, Patterns and Questions', 'Analysis')],
    ledger={'A': 'Freehold: the Williamses (Mary in the house) · woodland: per the Buckler case, taken in 1955 (SOURCE PENDING: not yet on the wiki)',
            'S': 'Attempt 2: High Court order against the fields tenant for "the whole of the farm" (house not taken; Mary never heard)',
@@ -549,7 +549,7 @@ sc('III', 'ghf-19640101-1', '1965-06-01', '1964 – 68', "Reported sale by the e
    aliases=['ghf-19680901-1'])
 sc('III', 'ghf-19670101-1', '1967-01-01', '1967', "Death of Frederick Buckler", 'Great House Farm', 'A',
    'Source pending',
-   "Frederick Buckler dies, aged 56. Mary takes back the name Williams and remains in the farmhouse.",
+   "Frederick Buckler dies, aged 58; his death is registered in the first quarter of 1967 (GRO death index, East Glamorgan 8b 364). Mary takes back the name Williams and remains in the farmhouse.",
    [w('/frederick-buckler/#death', 'Frederick Buckler — death')],
    ledger={'B': 'Freehold and possession: Western Ground Rents'})
 
@@ -562,7 +562,7 @@ sc('IV', 'ghf-19691231-1', '1969-12-31', '31 December 1969', "Conveyance to BP P
            'S': 'Held by BP Pension Trust: the 1962 order and the case against Mary (no deed to Parcel A; the 1969 root conveyance now missing)'})
 sc('IV', 'ghf-19720725-1', '1972-07-25', '1970 – 72', "Village green and planning permission", 'Planning office', 'AB',
    'Planning file',
-   "On 16 June 1970 land beside Leckwith Road is registered as village green VG41. On 25 July 1972 planning permission is granted for housing on the site, while Mary lives in the farmhouse.",
+   "In 1970 land beside Leckwith Road is registered as village green VG41. On 25 July 1972 planning permission is granted for housing on the site, while Mary lives in the farmhouse.",
    [REDEV, TL,
     {'type': 'Legislation', 'title': 'Commons Registration (Glamorgan) Act 1983 (c. ix): validates the registers of common land only; village greens are not covered',
      'url': 'https://www.legislation.gov.uk/ukla/1983/9'},
@@ -580,9 +580,9 @@ sc('IV', 'ghf-19740415-1', '1974-04-15', '15 April 1974', "Open day", 'Great Hou
    image='/media/ghf-e090-n03-1974-open-day-telegraph.jpg')
 sc('IV', 'ghf-19740703-1', '1974-07-03', '3 July 1974', "1974 possession action", 'County court', 'A',
    'Court record',
-   "BP Pension Trust brings a county court action for possession. On 3 July 1974 Mary pleads ownership and the Limitation Act 1939. Her statement describes the 1877 sale. The case is part heard and adjourned, and not relisted.",
+   "BP Pension Trust brings a county court action for possession. On 3 July 1974 the case is part heard and adjourned for a formal defence to be filed; Mary's defence then pleads that the claim is barred under the Limitation Act 1939. Her statement describes the 1877 sale. The case is never relisted.",
    [w('/1974-licence-letters/#action', 'The 1974 Licence Letters — the action', 'Court record'), JUDG],
-   ledger={'A': 'Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)'})
+   ledger={'A': 'Freehold claimed by Mary, in occupation · ownership pleaded in her defence after the 3 July 1974 adjournment (never decided)'})
 sc('IV', 'ghf-19741031-1', '1974-10-31', 'September – October 1974', "The 1974 letters", 'Great House Farm', 'A',
    'Court record',
    "On 19 September 1974 BP is given leave to enforce the 1962 order; Mary had not been given notice. On 31 October the warrant is withdrawn, and BP writes to \"Mary Buckler\" (the family copy; the Court of Appeal describes the letters as addressed to Mrs Buckler, \"described again as Mrs Williams\") that she may remain in the farmhouse under licence. She does not accept.",
@@ -644,9 +644,9 @@ sc('V', 'ghf-19840522-1', '1984-05-22', '1984', "The writ", 'BP Properties', 'A'
    [w('/bp-properties-v-buckler/#writ', 'BP Properties Ltd v Buckler — the writ', 'Court record'), w('/1877-agreement/#library-1984', 'The 1877 Agreement — library copy missing'),
     LRT('first-registration')],
    aliases=['ghf-19840113-1'])
-sc('V', 'ghf-19860710-1', '1986-07-10', '10 July 1986', "High Court judgment", 'High Court, Cardiff', 'A',
+sc('V', 'ghf-19860710-1', '1986-07-10', '10 July 1986', "High Court hearing and judgment", 'High Court, Cardiff', 'A',
    'Court record',
-   "On 10 July 1986 Mr Justice Hollis gives judgment for BP, holding that the 1974 letters gave Mary a licence.",
+   "On 10 July 1986 the case is heard before Mr Justice Hollis in the High Court at Cardiff. On 24 July 1986 he gives judgment for BP, holding that the 1974 letters gave Mary a licence.",
    [w('/bp-properties-v-buckler/#high-court', 'BP Properties Ltd v Buckler — High Court', 'Court record'),
     w('/scrutiny-and-accountability/court-judicial-issues/bp-v-buckler-scope-decided-undecided/', 'BP v Buckler: Scope, Decided & Undecided', 'Analysis')])
 sc('V', 'ghf-19860711-1', '1986-07-11', '1986 – 87', "Royal Commission correspondence", 'Royal Commission (RCAHMW)', 'A',
