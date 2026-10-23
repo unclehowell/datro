@@ -19,6 +19,10 @@ The older migration note in this README reports **442 published pages**. That is
 
 The public site also has a live agent index, evidence library, timeline, page hierarchy, linked artifacts and machine-readable routes. Checking the homepage alone cannot establish coverage for these collections or all linked attachments.
 
+## Source inventory artifact
+
+The branch now contains [source-inventory-2026-10-23.json](audit/source-inventory-2026-10-23.json), a source-derived metadata snapshot of all 975 published pages and 130 media-library records. It intentionally includes **only the aggregate count** for the 59 non-public pages; their individual identifiers, titles and links are omitted. The manifest does **not** contain page bodies or media bytes and is not itself proof of mirroring.
+
 ## Target and live-service observations
 
 - Target hostname: https://research.bucklerfamily.estate
@@ -37,7 +41,8 @@ A direct live-fetch verification of `/health` and representative routes could no
 1. Re-read the current WordPress.com source inventory: 975 published pages, zero published posts, 130 media records and 59 pages outside public status.
 2. Reset `migration_state.auto_import_cursor` to `page:1`, reset the import lock to `0`, cleared the prior completion timestamp, and recorded the reason in `auto_import_restart_reason`. The scheduled importer may resume when D1 allows reads/writes; **its progress and completion have not been verified** because the daily row-read limit was reached.
 3. Updated the README gate so future work does not confuse the historic 442-page baseline with the current source inventory.
-4. Attempted a media-metadata batch based on the 130 source-listed attachments. The D1 quota rejected the write. No media import completion is claimed.
+4. Preserved the source metadata inventory in `audit/source-inventory-2026-10-23.json`, without individual details for non-public pages.
+5. Attempted a media-metadata batch based on the 130 source-listed attachments. The D1 quota rejected the write. No media import completion is claimed.
 
 ## Known gaps and risks
 
