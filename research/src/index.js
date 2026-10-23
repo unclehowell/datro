@@ -4,6 +4,8 @@
  */
 import { LANDING_CSS, LANDING_TITLE, LANDING_HTML, STATIC_PAGES, ADDENDA } from "./landing.js";
 const SOURCE_SITE = "https://greathousefarmwiki.wordpress.com";
+// Drafts pipeline panel on the landing page (Hive promotion pyramid; data https://hive.bucklerfamily.estate/hive.json, CORS *). — Sion's Tab agent
+const HIVE_PIPELINE_HTML = '<div class="landing-block" style="padding-left:.6rem" data-hive-pipeline="full"><p><a href="https://hive.bucklerfamily.estate/">Drafts pipeline: open the Hive</a></p></div><script src="/hive-pipeline.js" defer></script>';
 const FRESH_SECONDS = 300;
 const SOURCE_HOST = "greathousefarmwiki.wordpress.com";
 const WP_API_FIELDS = "id,slug,link,title,content,excerpt,date,date_gmt,modified,modified_gmt,status,parent,menu_order,author,featured_media,source_url,media_type,mime_type,alt_text,caption,description,post";
@@ -15,6 +17,16 @@ const app = {
       return cors(new Response(null, { status: 204 }));
     }
     try {
+      // Hive drafts pipeline widget (promotion tiers, metadata only), same-origin copy of https://hive.bucklerfamily.estate/pipeline.js. — Sion's Tab agent
+      if (url.pathname === "/hive-pipeline.js") {
+        for (const src of ["https://hive.bucklerfamily.estate/pipeline.js", "https://raw.githubusercontent.com/unclehowell/datro/watch/worker/pipeline.js"]) {
+          try {
+            const r = await fetch(src, { cf: { cacheTtl: 60, cacheEverything: true } });
+            if (r.ok) return cors(new Response(r.body, { status: 200, headers: { "Content-Type": "application/javascript; charset=utf-8", "Cache-Control": "public, max-age=60" } }));
+          } catch (e) {}
+        }
+        return cors(new Response("/* pipeline unavailable */", { status: 502, headers: { "Content-Type": "application/javascript; charset=utf-8" } }));
+      }
       if (url.pathname === "/health") {
         const count = await env.DB.prepare("SELECT COUNT(*) AS count FROM content_items WHERE status = 'publish'").first();
         const grouped = await env.DB.prepare("SELECT source_type, COUNT(*) AS count FROM content_items WHERE status = 'publish' GROUP BY source_type").all();
@@ -914,7 +926,7 @@ export default {
     const path = normalisePath(url.pathname);
     if ((request.method === "GET" || request.method === "HEAD") && (path === "/" || Object.prototype.hasOwnProperty.call(STATIC_PAGES, path))) {
       if (url.pathname !== "/" && url.pathname !== path) return Response.redirect(url.origin + path + url.search, 301);
-      if (path === "/") return cors(html(htmlShell(LANDING_TITLE, LANDING_HTML, env, { landing: true }), 200, "public, max-age=" + FRESH_SECONDS));
+      if (path === "/") return cors(html(htmlShell(LANDING_TITLE, LANDING_HTML.replace(/^(<nav[\s\S]*?<\/nav>)/, "$1" + HIVE_PIPELINE_HTML), env, { landing: true }), 200, "public, max-age=" + FRESH_SECONDS));
       const sp = STATIC_PAGES[path];
       return cors(html(htmlShell(sp.title + " — Great House Farm Wiki", '<article class="article"><h1>' + escapeHtml(sp.title) + '</h1><div class="content">' + sp.html + '</div></article>', env), 200, "public, max-age=" + FRESH_SECONDS));
     }
