@@ -1,6 +1,6 @@
 {
  "schema": "ghf-forecast-institutions/1",
- "generated": "2026-10-22",
+ "generated": "2026-10-23",
  "by": "Sion's Tab agent",
  "about": "One escalation ladder per institution (its Donkey Kong ramp). Each rung: our email opens it, their reply closes it, on the clock shown. inferred: true marks our reading, not a published rule.",
  "clock_units": {
@@ -14,7 +14,7 @@
   {
    "id": "vale-of-glamorgan-council",
    "name": "Vale of Glamorgan Council",
-   "route": null,
+   "route": "welsh_council",
    "regime": "EIR",
    "policy": "https://www.valeofglamorgan.gov.uk/en/our_council/achieving_our_vision/standards_of_service.aspx",
    "ombudsman": "PSOW",
@@ -271,7 +271,7 @@
   {
    "id": "hm-land-registry",
    "name": "HM Land Registry",
-   "route": null,
+   "route": "hmlr",
    "regime": "SAR",
    "policy": "https://www.gov.uk/government/organisations/land-registry/about/complaints-procedure",
    "ombudsman": "ICR, then PHSO via an MP",
@@ -520,7 +520,7 @@
   {
    "id": "glamorgan-archives",
    "name": "Glamorgan Archives",
-   "route": null,
+   "route": "archives",
    "regime": "EIR",
    "policy": "https://glamarchives.gov.uk/contact/",
    "ombudsman": "PSOW",
@@ -704,7 +704,7 @@
   {
    "id": "member-of-parliament",
    "name": "Member of Parliament",
-   "route": null,
+   "route": "representative",
    "regime": null,
    "policy": "https://www.parliament.uk/mps-lords-and-offices/standards-and-financial-interests/parliamentary-commissioner-for-standards/complaints-and-investigations/",
    "ombudsman": null,
@@ -796,7 +796,7 @@
   {
    "id": "ministry-of-justice-hmcts",
    "name": "Ministry of Justice / HMCTS",
-   "route": null,
+   "route": "court_records",
    "regime": "SAR",
    "policy": "https://www.gov.uk/government/organisations/hm-courts-and-tribunals-service/about/complaints-procedure",
    "ombudsman": "PHSO via an MP",
@@ -1062,7 +1062,7 @@
   {
    "id": "welsh-government-cadw",
    "name": "Welsh Government / Cadw",
-   "route": null,
+   "route": "welsh_gov",
    "regime": "FOI",
    "policy": "https://www.gov.wales/how-make-complaint-about-welsh-government-html",
    "ombudsman": "PSOW",
@@ -1319,210 +1319,9 @@
    }
   },
   {
-   "id": "south-wales-police",
-   "name": "South Wales Police",
-   "route": null,
-   "regime": "FOI",
-   "policy": "https://www.south-wales.police.uk/fo/feedback/complaints/complaints/",
-   "ombudsman": "IOPC review",
-   "note": "FOI, Part 3 subject access, police complaints and the IOPC review",
-   "rungs": [
-    {
-     "key": "foi",
-     "label": "FOI request",
-     "track": "info",
-     "law": "FOIA 2000 s.1, s.10(1): reply in 20 working days; s.10(3) public-interest extension",
-     "src": "https://www.legislation.gov.uk/ukpga/2000/36/section/10",
-     "clock": {
-      "u": "wd",
-      "n": 20
-     },
-     "us": "request",
-     "them": "reply or refusal notice",
-     "ext": "+20 wd (public interest, s.10(3); s.45 Code)",
-     "n": 1
-    },
-    {
-     "key": "foi_ir",
-     "label": "Internal review (FOI)",
-     "track": "info",
-     "law": "s.45 Code of Practice para 5: ask within 40 working days; outcome in 20, 40 at most",
-     "src": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice",
-     "clock": {
-      "u": "wd",
-      "n": 20
-     },
-     "us": "review request",
-     "them": "review outcome",
-     "ext": "40 wd max",
-     "n": 2
-    },
-    {
-     "key": "ico",
-     "label": "ICO complaint (FOIA s.50)",
-     "track": "info",
-     "law": "FOIA s.50 / EIR reg 18; the ICO asks for complaints within 6 weeks of the final response",
-     "src": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/",
-     "clock": {
-      "u": "cm",
-      "n": 6
-     },
-     "us": "s.50 complaint",
-     "them": "decision notice",
-     "inferred": true,
-     "note": "ICO decision time: 6 months is the board's worst-case assumption (no published statutory time)",
-     "n": 3
-    },
-    {
-     "key": "ftt",
-     "label": "First-tier Tribunal (Information Rights)",
-     "track": "info",
-     "law": "FOIA s.57; GRC Rules 2009 r.22(1)(b): appeal within 28 days of the decision notice",
-     "src": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22",
-     "clock": {
-      "u": "cm",
-      "n": 6
-     },
-     "us": "notice of appeal",
-     "them": "tribunal decision",
-     "inferred": true,
-     "note": "appeal window is statutory; the 6-month decision time is our assumption",
-     "n": 4
-    },
-    {
-     "key": "ut",
-     "label": "Upper Tribunal (point of law)",
-     "track": "info",
-     "law": "TCEA 2007 s.11; GRC Rules 2009 r.42: ask the FtT for permission within 28 days",
-     "src": "https://www.legislation.gov.uk/uksi/2009/1976/rule/42",
-     "clock": {
-      "u": "cm",
-      "n": 2
-     },
-     "us": "permission application",
-     "them": "permission decision",
-     "inferred": true,
-     "note": "available only on a point of law; 2-month decision time is our assumption",
-     "n": 5
-    },
-    {
-     "key": "sar",
-     "label": "Subject access (DPA 2018 Part 3)",
-     "track": "sar",
-     "law": "DPA 2018 s.45, s.54: law-enforcement processing, one month",
-     "src": "https://www.legislation.gov.uk/ukpga/2018/12/section/45",
-     "clock": {
-      "u": "cm",
-      "n": 1
-     },
-     "us": "subject access request",
-     "them": "disclosure of personal data",
-     "n": 6
-    },
-    {
-     "key": "sar_cmp",
-     "label": "Data protection complaint to the body",
-     "track": "sar",
-     "law": "DPA 2018 s.164A: complaints to controllers (acknowledge within 30 days)",
-     "src": "https://www.legislation.gov.uk/ukpga/2018/12/section/164A",
-     "clock": {
-      "u": "cd",
-      "n": 30
-     },
-     "us": "complaint to the DPO",
-     "them": "complaint outcome",
-     "inferred": true,
-     "note": "30 days to an outcome is our assumption; the section sets acknowledgement and \"without undue delay\"",
-     "n": 7
-    },
-    {
-     "key": "ico_dp",
-     "label": "ICO complaint (data protection)",
-     "track": "sar",
-     "law": "UK GDPR Art 77; DPA 2018 s.165; the ICO asks within 3 months of the last meaningful contact",
-     "src": "https://ico.org.uk/make-a-complaint/data-protection-complaints/",
-     "clock": {
-      "u": "cm",
-      "n": 3
-     },
-     "us": "complaint to the ICO",
-     "them": "ICO outcome",
-     "inferred": true,
-     "note": "3-month outcome time is our assumption",
-     "n": 8
-    },
-    {
-     "key": "pcmp",
-     "label": "South Wales Police: police complaint",
-     "track": "complaint",
-     "law": "Police Reform Act 2002 Sch 3: complaint recorded and handled by Professional Standards",
-     "src": "https://www.south-wales.police.uk/fo/feedback/complaints/complaints/",
-     "clock": {
-      "u": "cm",
-      "n": 4
-     },
-     "us": "complaint",
-     "them": "outcome letter",
-     "inferred": true,
-     "note": "4 months to an outcome is our assumption",
-     "n": 9
-    },
-    {
-     "key": "iopc",
-     "label": "Review (IOPC or local policing body)",
-     "track": "complaint",
-     "law": "Police (Complaints and Misconduct) Regulations 2020: apply within 28 days of the outcome letter",
-     "src": "https://www.policeconduct.gov.uk/complaints/reviews-and-appeals",
-     "clock": {
-      "u": "cm",
-      "n": 3
-     },
-     "us": "review application",
-     "them": "review outcome",
-     "inferred": true,
-     "note": "3 months to a review outcome is our assumption",
-     "n": 10
-    },
-    {
-     "key": "pap",
-     "label": "Pre-action letter (judicial review)",
-     "track": "court",
-     "law": "Pre-Action Protocol for Judicial Review: reply normally within 14 days",
-     "src": "https://www.justice.gov.uk/courts/procedure-rules/civil/protocol/prot_jrv",
-     "clock": {
-      "u": "cd",
-      "n": 14
-     },
-     "us": "letter before claim",
-     "them": "response",
-     "n": 11
-    },
-    {
-     "key": "jr",
-     "label": "Judicial review claim",
-     "track": "court",
-     "law": "CPR 54.5: claim promptly and within 3 months of the decision",
-     "src": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part54",
-     "clock": {
-      "u": "cm",
-      "n": 3
-     },
-     "us": "claim form",
-     "them": "permission decision",
-     "inferred": true,
-     "note": "3 months to the permission decision is our assumption",
-     "n": 12
-    }
-   ],
-   "counts": {
-    "rungs": 12,
-    "inferred": 8
-   }
-  },
-  {
    "id": "the-national-archives",
    "name": "The National Archives",
-   "route": null,
+   "route": "archives",
    "regime": "FOI",
    "policy": "https://cdn.nationalarchives.gov.uk/documents/complaints-policy-november-2025.pdf",
    "ombudsman": "PHSO via an MP",
@@ -1723,9 +1522,210 @@
    }
   },
   {
+   "id": "south-wales-police",
+   "name": "South Wales Police",
+   "route": "police",
+   "regime": "FOI",
+   "policy": "https://www.south-wales.police.uk/fo/feedback/complaints/complaints/",
+   "ombudsman": "IOPC review",
+   "note": "FOI, Part 3 subject access, police complaints and the IOPC review",
+   "rungs": [
+    {
+     "key": "foi",
+     "label": "FOI request",
+     "track": "info",
+     "law": "FOIA 2000 s.1, s.10(1): reply in 20 working days; s.10(3) public-interest extension",
+     "src": "https://www.legislation.gov.uk/ukpga/2000/36/section/10",
+     "clock": {
+      "u": "wd",
+      "n": 20
+     },
+     "us": "request",
+     "them": "reply or refusal notice",
+     "ext": "+20 wd (public interest, s.10(3); s.45 Code)",
+     "n": 1
+    },
+    {
+     "key": "foi_ir",
+     "label": "Internal review (FOI)",
+     "track": "info",
+     "law": "s.45 Code of Practice para 5: ask within 40 working days; outcome in 20, 40 at most",
+     "src": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice",
+     "clock": {
+      "u": "wd",
+      "n": 20
+     },
+     "us": "review request",
+     "them": "review outcome",
+     "ext": "40 wd max",
+     "n": 2
+    },
+    {
+     "key": "ico",
+     "label": "ICO complaint (FOIA s.50)",
+     "track": "info",
+     "law": "FOIA s.50 / EIR reg 18; the ICO asks for complaints within 6 weeks of the final response",
+     "src": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/",
+     "clock": {
+      "u": "cm",
+      "n": 6
+     },
+     "us": "s.50 complaint",
+     "them": "decision notice",
+     "inferred": true,
+     "note": "ICO decision time: 6 months is the board's worst-case assumption (no published statutory time)",
+     "n": 3
+    },
+    {
+     "key": "ftt",
+     "label": "First-tier Tribunal (Information Rights)",
+     "track": "info",
+     "law": "FOIA s.57; GRC Rules 2009 r.22(1)(b): appeal within 28 days of the decision notice",
+     "src": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22",
+     "clock": {
+      "u": "cm",
+      "n": 6
+     },
+     "us": "notice of appeal",
+     "them": "tribunal decision",
+     "inferred": true,
+     "note": "appeal window is statutory; the 6-month decision time is our assumption",
+     "n": 4
+    },
+    {
+     "key": "ut",
+     "label": "Upper Tribunal (point of law)",
+     "track": "info",
+     "law": "TCEA 2007 s.11; GRC Rules 2009 r.42: ask the FtT for permission within 28 days",
+     "src": "https://www.legislation.gov.uk/uksi/2009/1976/rule/42",
+     "clock": {
+      "u": "cm",
+      "n": 2
+     },
+     "us": "permission application",
+     "them": "permission decision",
+     "inferred": true,
+     "note": "available only on a point of law; 2-month decision time is our assumption",
+     "n": 5
+    },
+    {
+     "key": "sar",
+     "label": "Subject access (DPA 2018 Part 3)",
+     "track": "sar",
+     "law": "DPA 2018 s.45, s.54: law-enforcement processing, one month",
+     "src": "https://www.legislation.gov.uk/ukpga/2018/12/section/45",
+     "clock": {
+      "u": "cm",
+      "n": 1
+     },
+     "us": "subject access request",
+     "them": "disclosure of personal data",
+     "n": 6
+    },
+    {
+     "key": "sar_cmp",
+     "label": "Data protection complaint to the body",
+     "track": "sar",
+     "law": "DPA 2018 s.164A: complaints to controllers (acknowledge within 30 days)",
+     "src": "https://www.legislation.gov.uk/ukpga/2018/12/section/164A",
+     "clock": {
+      "u": "cd",
+      "n": 30
+     },
+     "us": "complaint to the DPO",
+     "them": "complaint outcome",
+     "inferred": true,
+     "note": "30 days to an outcome is our assumption; the section sets acknowledgement and \"without undue delay\"",
+     "n": 7
+    },
+    {
+     "key": "ico_dp",
+     "label": "ICO complaint (data protection)",
+     "track": "sar",
+     "law": "UK GDPR Art 77; DPA 2018 s.165; the ICO asks within 3 months of the last meaningful contact",
+     "src": "https://ico.org.uk/make-a-complaint/data-protection-complaints/",
+     "clock": {
+      "u": "cm",
+      "n": 3
+     },
+     "us": "complaint to the ICO",
+     "them": "ICO outcome",
+     "inferred": true,
+     "note": "3-month outcome time is our assumption",
+     "n": 8
+    },
+    {
+     "key": "pcmp",
+     "label": "South Wales Police: police complaint",
+     "track": "complaint",
+     "law": "Police Reform Act 2002 Sch 3: complaint recorded and handled by Professional Standards",
+     "src": "https://www.south-wales.police.uk/fo/feedback/complaints/complaints/",
+     "clock": {
+      "u": "cm",
+      "n": 4
+     },
+     "us": "complaint",
+     "them": "outcome letter",
+     "inferred": true,
+     "note": "4 months to an outcome is our assumption",
+     "n": 9
+    },
+    {
+     "key": "iopc",
+     "label": "Review (IOPC or local policing body)",
+     "track": "complaint",
+     "law": "Police (Complaints and Misconduct) Regulations 2020: apply within 28 days of the outcome letter",
+     "src": "https://www.policeconduct.gov.uk/complaints/reviews-and-appeals",
+     "clock": {
+      "u": "cm",
+      "n": 3
+     },
+     "us": "review application",
+     "them": "review outcome",
+     "inferred": true,
+     "note": "3 months to a review outcome is our assumption",
+     "n": 10
+    },
+    {
+     "key": "pap",
+     "label": "Pre-action letter (judicial review)",
+     "track": "court",
+     "law": "Pre-Action Protocol for Judicial Review: reply normally within 14 days",
+     "src": "https://www.justice.gov.uk/courts/procedure-rules/civil/protocol/prot_jrv",
+     "clock": {
+      "u": "cd",
+      "n": 14
+     },
+     "us": "letter before claim",
+     "them": "response",
+     "n": 11
+    },
+    {
+     "key": "jr",
+     "label": "Judicial review claim",
+     "track": "court",
+     "law": "CPR 54.5: claim promptly and within 3 months of the decision",
+     "src": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part54",
+     "clock": {
+      "u": "cm",
+      "n": 3
+     },
+     "us": "claim form",
+     "them": "permission decision",
+     "inferred": true,
+     "note": "3 months to the permission decision is our assumption",
+     "n": 12
+    }
+   ],
+   "counts": {
+    "rungs": 12,
+    "inferred": 8
+   }
+  },
+  {
    "id": "member-of-parliament-vale-of-glamorgan",
    "name": "Member of Parliament (Vale of Glamorgan)",
-   "route": null,
+   "route": "representative",
    "regime": null,
    "policy": "https://www.parliament.uk/mps-lords-and-offices/standards-and-financial-interests/parliamentary-commissioner-for-standards/complaints-and-investigations/",
    "ombudsman": null,
@@ -1772,7 +1772,7 @@
   {
    "id": "bp",
    "name": "BP",
-   "route": null,
+   "route": "private",
    "regime": "SAR",
    "policy": "https://www.bp.com/en_gb/united-kingdom/home/products-and-services/bpme/privacy-policy.html",
    "ombudsman": null,
@@ -1850,7 +1850,7 @@
   {
    "id": "llandough-community-council",
    "name": "Llandough Community Council",
-   "route": null,
+   "route": "community_council",
    "regime": "FOI",
    "policy": "https://www.ombudsman.wales/fact-sheets/complaints-aginsts-community-town-councils-general-information/",
    "ombudsman": "PSOW",
@@ -2098,7 +2098,7 @@
   {
    "id": "national-library-of-wales",
    "name": "National Library of Wales",
-   "route": null,
+   "route": "welsh_public_body",
    "regime": "FOI",
    "policy": "https://www.library.wales/enquiries",
    "ombudsman": "PSOW",
@@ -2330,7 +2330,7 @@
   {
    "id": "rcahmw-royal-commission",
    "name": "RCAHMW (Royal Commission)",
-   "route": null,
+   "route": "welsh_public_body",
    "regime": "FOI",
    "policy": "https://rcahmw.gov.uk/about-us/corporate-information/policies/complaints-policy/",
    "ombudsman": "PSOW",
@@ -2578,7 +2578,7 @@
   {
    "id": "amgueddfa-cymru-museum-wales",
    "name": "Amgueddfa Cymru - Museum Wales",
-   "route": null,
+   "route": "welsh_public_body",
    "regime": "FOI",
    "policy": "https://museum.wales/freedom-of-information/public-task-document/",
    "ombudsman": "PSOW",
@@ -2837,7 +2837,7 @@
   {
    "id": "itv-archive",
    "name": "ITV Archive",
-   "route": null,
+   "route": "private",
    "regime": "SAR",
    "policy": "https://www.itvplc.com/site-services/privacy-and-cookie-notice",
    "ombudsman": null,
@@ -2931,7 +2931,7 @@
   {
    "id": "legal-regulators",
    "name": "Legal regulators",
-   "route": null,
+   "route": "law_firm",
    "regime": "SAR",
    "policy": "https://www.legalombudsman.org.uk/for-consumers/factsheets/investigating-your-complaint/",
    "ombudsman": "PHSO via an MP",
@@ -3165,7 +3165,7 @@
   {
    "id": "heneb-formerly-ggat-historic-environment-record",
    "name": "Heneb (formerly GGAT) / Historic Environment Record",
-   "route": null,
+   "route": "welsh_public_body",
    "regime": "EIR",
    "policy": "https://heneb.org.uk/contact/",
    "ombudsman": null,
@@ -3382,7 +3382,7 @@
   {
    "id": "vale-of-glamorgan-council-scrutiny",
    "name": "Vale of Glamorgan Council (Scrutiny)",
-   "route": null,
+   "route": "welsh_council",
    "regime": "FOI",
    "policy": "https://www.valeofglamorgan.gov.uk/en/our_council/achieving_our_vision/standards_of_service.aspx",
    "ombudsman": "PSOW",
@@ -3655,7 +3655,7 @@
   {
    "id": "cardiff-and-vale-university-health-board",
    "name": "Cardiff and Vale University Health Board",
-   "route": null,
+   "route": "welsh_public_body",
    "regime": "FOI",
    "policy": "https://www.gov.wales/nhs-wales-complaints-and-concerns-putting-things-right",
    "ombudsman": "PSOW",
@@ -3867,9 +3867,150 @@
    }
   },
   {
+   "id": "information-commissioner-s-office",
+   "name": "Information Commissioner's Office",
+   "route": "regulator_body",
+   "regime": "FOI",
+   "policy": "https://ico.org.uk/make-a-complaint/complaints-and-compliments-about-us/complain-about-us/",
+   "ombudsman": "PHSO via an MP",
+   "note": "the regulator's own decision goes to the Tribunal; its service goes to the PHSO",
+   "rungs": [
+    {
+     "key": "ico_case",
+     "label": "ICO case to decision notice",
+     "track": "info",
+     "law": "FOIA s.50: the Commissioner decides the complaint and serves a decision notice",
+     "src": "https://www.legislation.gov.uk/ukpga/2000/36/section/50",
+     "clock": {
+      "u": "cm",
+      "n": 6
+     },
+     "us": "complaint",
+     "them": "decision notice",
+     "inferred": true,
+     "note": "6 months is our assumption",
+     "n": 1
+    },
+    {
+     "key": "ftt",
+     "label": "First-tier Tribunal (Information Rights)",
+     "track": "info",
+     "law": "FOIA s.57; GRC Rules 2009 r.22(1)(b): appeal within 28 days of the decision notice",
+     "src": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22",
+     "clock": {
+      "u": "cm",
+      "n": 6
+     },
+     "us": "notice of appeal",
+     "them": "tribunal decision",
+     "inferred": true,
+     "note": "appeal window is statutory; the 6-month decision time is our assumption",
+     "n": 2
+    },
+    {
+     "key": "ut",
+     "label": "Upper Tribunal (point of law)",
+     "track": "info",
+     "law": "TCEA 2007 s.11; GRC Rules 2009 r.42: ask the FtT for permission within 28 days",
+     "src": "https://www.legislation.gov.uk/uksi/2009/1976/rule/42",
+     "clock": {
+      "u": "cm",
+      "n": 2
+     },
+     "us": "permission application",
+     "them": "permission decision",
+     "inferred": true,
+     "note": "available only on a point of law; 2-month decision time is our assumption",
+     "n": 3
+    },
+    {
+     "key": "ico_svc",
+     "label": "ICO service complaint",
+     "track": "complaint",
+     "law": "ICO complaints about our service",
+     "src": "https://ico.org.uk/make-a-complaint/complaints-and-compliments-about-us/complain-about-us/",
+     "clock": {
+      "u": "wd",
+      "n": 30
+     },
+     "us": "service complaint",
+     "them": "response",
+     "inferred": true,
+     "note": "30 working days is our assumption",
+     "n": 4
+    },
+    {
+     "key": "mp",
+     "label": "MP referral to the PHSO",
+     "track": "complaint",
+     "law": "Parliamentary Commissioner Act 1967 s.5(1): the PHSO acts on an MP's referral; within 12 months, s.6(3)",
+     "src": "https://www.legislation.gov.uk/ukpga/1967/13/section/5",
+     "clock": {
+      "u": "wd",
+      "n": 20
+     },
+     "us": "letter to the MP",
+     "them": "MP refers the complaint",
+     "inferred": true,
+     "note": "20 working days for the MP's referral is our assumption",
+     "n": 5
+    },
+    {
+     "key": "phso",
+     "label": "Parliamentary and Health Service Ombudsman",
+     "track": "complaint",
+     "law": "Parliamentary Commissioner Act 1967 s.5, s.10: investigation and report",
+     "src": "https://www.ombudsman.org.uk/making-complaint",
+     "clock": {
+      "u": "cm",
+      "n": 12
+     },
+     "us": "case file to the PHSO",
+     "them": "ombudsman decision",
+     "inferred": true,
+     "note": "12 months to a decision is our assumption",
+     "n": 6
+    },
+    {
+     "key": "pap",
+     "label": "Pre-action letter (judicial review)",
+     "track": "court",
+     "law": "Pre-Action Protocol for Judicial Review: reply normally within 14 days",
+     "src": "https://www.justice.gov.uk/courts/procedure-rules/civil/protocol/prot_jrv",
+     "clock": {
+      "u": "cd",
+      "n": 14
+     },
+     "us": "letter before claim",
+     "them": "response",
+     "n": 7
+    },
+    {
+     "key": "jr",
+     "label": "Judicial review claim",
+     "track": "court",
+     "law": "CPR 54.5: claim promptly and within 3 months of the decision",
+     "src": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part54",
+     "clock": {
+      "u": "cm",
+      "n": 3
+     },
+     "us": "claim form",
+     "them": "permission decision",
+     "inferred": true,
+     "note": "3 months to the permission decision is our assumption",
+     "n": 8
+    }
+   ],
+   "counts": {
+    "rungs": 8,
+    "inferred": 7
+   }
+  },
+  {
    "id": "ministry-of-defence",
    "name": "Ministry of Defence",
-   "route": null,
+   "route": "uk_gov",
    "regime": "FOI",
    "policy": "https://www.gov.uk/government/organisations/ministry-of-defence/about/complaints-procedure",
    "ombudsman": "PHSO via an MP",
@@ -4117,7 +4258,7 @@
   {
    "id": "northern-ireland-office",
    "name": "Northern Ireland Office",
-   "route": null,
+   "route": "uk_gov",
    "regime": "FOI",
    "policy": "https://www.gov.uk/government/organisations/northern-ireland-office/about/complaints-procedure",
    "ombudsman": "PHSO via an MP",
@@ -4383,7 +4524,7 @@
   {
    "id": "senedd",
    "name": "Senedd",
-   "route": null,
+   "route": "representative",
    "regime": "FOI",
    "policy": "https://senedd.wales/committees/standards-of-conduct-committee/",
    "ombudsman": null,
@@ -4475,7 +4616,7 @@
   {
    "id": "transport-for-wales",
    "name": "Transport for Wales",
-   "route": null,
+   "route": "welsh_public_body",
    "regime": "FOI",
    "policy": "https://tfw.wales/about-us/transparency/complaints-handling-procedure",
    "ombudsman": "PSOW",
@@ -4707,7 +4848,7 @@
   {
    "id": "coroner-s-service-rct-council",
    "name": "Coroner's Service (RCT Council)",
-   "route": null,
+   "route": "welsh_council",
    "regime": "FOI",
    "policy": "https://www.rctcbc.gov.uk/EN/GetInvolved/CommentsandCompliments/Commentscomplimentsandcomplaints.aspx",
    "ombudsman": "PSOW",
@@ -4984,7 +5125,7 @@
   {
    "id": "cotswold-archaeology",
    "name": "Cotswold Archaeology",
-   "route": null,
+   "route": "private",
    "regime": "SAR",
    "policy": "https://cotswoldarchaeology.co.uk/privacy-policy/",
    "ombudsman": null,
@@ -5062,7 +5203,7 @@
   {
    "id": "dwr-cymru-welsh-water",
    "name": "Dwr Cymru Welsh Water",
-   "route": null,
+   "route": "water",
    "regime": "EIR",
    "policy": "https://contact.dwrcymru.com/en/customer-care",
    "ombudsman": "CCW, then WATRS",
@@ -5295,150 +5436,9 @@
    }
   },
   {
-   "id": "information-commissioner-s-office",
-   "name": "Information Commissioner's Office",
-   "route": null,
-   "regime": "FOI",
-   "policy": "https://ico.org.uk/make-a-complaint/complaints-and-compliments-about-us/complain-about-us/",
-   "ombudsman": "PHSO via an MP",
-   "note": "the regulator's own decision goes to the Tribunal; its service goes to the PHSO",
-   "rungs": [
-    {
-     "key": "ico_case",
-     "label": "ICO case to decision notice",
-     "track": "info",
-     "law": "FOIA s.50: the Commissioner decides the complaint and serves a decision notice",
-     "src": "https://www.legislation.gov.uk/ukpga/2000/36/section/50",
-     "clock": {
-      "u": "cm",
-      "n": 6
-     },
-     "us": "complaint",
-     "them": "decision notice",
-     "inferred": true,
-     "note": "6 months is our assumption",
-     "n": 1
-    },
-    {
-     "key": "ftt",
-     "label": "First-tier Tribunal (Information Rights)",
-     "track": "info",
-     "law": "FOIA s.57; GRC Rules 2009 r.22(1)(b): appeal within 28 days of the decision notice",
-     "src": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22",
-     "clock": {
-      "u": "cm",
-      "n": 6
-     },
-     "us": "notice of appeal",
-     "them": "tribunal decision",
-     "inferred": true,
-     "note": "appeal window is statutory; the 6-month decision time is our assumption",
-     "n": 2
-    },
-    {
-     "key": "ut",
-     "label": "Upper Tribunal (point of law)",
-     "track": "info",
-     "law": "TCEA 2007 s.11; GRC Rules 2009 r.42: ask the FtT for permission within 28 days",
-     "src": "https://www.legislation.gov.uk/uksi/2009/1976/rule/42",
-     "clock": {
-      "u": "cm",
-      "n": 2
-     },
-     "us": "permission application",
-     "them": "permission decision",
-     "inferred": true,
-     "note": "available only on a point of law; 2-month decision time is our assumption",
-     "n": 3
-    },
-    {
-     "key": "ico_svc",
-     "label": "ICO service complaint",
-     "track": "complaint",
-     "law": "ICO complaints about our service",
-     "src": "https://ico.org.uk/make-a-complaint/complaints-and-compliments-about-us/complain-about-us/",
-     "clock": {
-      "u": "wd",
-      "n": 30
-     },
-     "us": "service complaint",
-     "them": "response",
-     "inferred": true,
-     "note": "30 working days is our assumption",
-     "n": 4
-    },
-    {
-     "key": "mp",
-     "label": "MP referral to the PHSO",
-     "track": "complaint",
-     "law": "Parliamentary Commissioner Act 1967 s.5(1): the PHSO acts on an MP's referral; within 12 months, s.6(3)",
-     "src": "https://www.legislation.gov.uk/ukpga/1967/13/section/5",
-     "clock": {
-      "u": "wd",
-      "n": 20
-     },
-     "us": "letter to the MP",
-     "them": "MP refers the complaint",
-     "inferred": true,
-     "note": "20 working days for the MP's referral is our assumption",
-     "n": 5
-    },
-    {
-     "key": "phso",
-     "label": "Parliamentary and Health Service Ombudsman",
-     "track": "complaint",
-     "law": "Parliamentary Commissioner Act 1967 s.5, s.10: investigation and report",
-     "src": "https://www.ombudsman.org.uk/making-complaint",
-     "clock": {
-      "u": "cm",
-      "n": 12
-     },
-     "us": "case file to the PHSO",
-     "them": "ombudsman decision",
-     "inferred": true,
-     "note": "12 months to a decision is our assumption",
-     "n": 6
-    },
-    {
-     "key": "pap",
-     "label": "Pre-action letter (judicial review)",
-     "track": "court",
-     "law": "Pre-Action Protocol for Judicial Review: reply normally within 14 days",
-     "src": "https://www.justice.gov.uk/courts/procedure-rules/civil/protocol/prot_jrv",
-     "clock": {
-      "u": "cd",
-      "n": 14
-     },
-     "us": "letter before claim",
-     "them": "response",
-     "n": 7
-    },
-    {
-     "key": "jr",
-     "label": "Judicial review claim",
-     "track": "court",
-     "law": "CPR 54.5: claim promptly and within 3 months of the decision",
-     "src": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part54",
-     "clock": {
-      "u": "cm",
-      "n": 3
-     },
-     "us": "claim form",
-     "them": "permission decision",
-     "inferred": true,
-     "note": "3 months to the permission decision is our assumption",
-     "n": 8
-    }
-   ],
-   "counts": {
-    "rungs": 8,
-    "inferred": 7
-   }
-  },
-  {
    "id": "linklaters",
    "name": "Linklaters",
-   "route": null,
+   "route": "law_firm",
    "regime": "SAR",
    "policy": "https://www.linklaters.com/en/legal-notices/complaints",
    "ombudsman": "Legal Ombudsman",
@@ -5546,7 +5546,7 @@
   {
    "id": "local-government-association-wlga",
    "name": "Local Government Association / WLGA",
-   "route": null,
+   "route": "private",
    "regime": "FOI",
    "policy": "https://www.wlga.wales/",
    "ombudsman": null,
@@ -5640,7 +5640,7 @@
   {
    "id": "parliamentary-and-health-service-ombudsman",
    "name": "Parliamentary and Health Service Ombudsman",
-   "route": null,
+   "route": "regulator_body",
    "regime": "FOI",
    "policy": "https://www.ombudsman.org.uk/about-us/feedback-about-our-service",
    "ombudsman": null,
@@ -5842,7 +5842,7 @@
   {
    "id": "public-services-ombudsman-for-wales",
    "name": "Public Services Ombudsman for Wales",
-   "route": null,
+   "route": "regulator_body",
    "regime": "FOI",
    "policy": "https://www.ombudsman.wales/fact-sheets/complaints-against-public-bodies-our-procedure/",
    "ombudsman": null,
@@ -6044,7 +6044,7 @@
   {
    "id": "archaeology-data-service",
    "name": "Archaeology Data Service",
-   "route": null,
+   "route": "uk_gov",
    "regime": "FOI",
    "policy": "https://www.york.ac.uk/news-and-events/news/2023/quality/archaeology-data-service-national-archives/",
    "ombudsman": null,
@@ -6246,7 +6246,7 @@
   {
    "id": "audit-wales",
    "name": "Audit Wales",
-   "route": null,
+   "route": "welsh_public_body",
    "regime": "FOI",
    "policy": "https://www.audit.wales/making-a-complaint",
    "ombudsman": "PSOW",
@@ -6478,7 +6478,7 @@
   {
    "id": "bt-archives",
    "name": "BT Archives",
-   "route": null,
+   "route": "private",
    "regime": "SAR",
    "policy": "https://www.bt.com/privacy-policy",
    "ombudsman": null,
@@ -6572,7 +6572,7 @@
   {
    "id": "blake-morgan-llp",
    "name": "Blake Morgan LLP",
-   "route": null,
+   "route": "law_firm",
    "regime": "SAR",
    "policy": "https://www.blakemorgan.co.uk/complaints-procedure/",
    "ombudsman": "Legal Ombudsman",
@@ -6680,7 +6680,7 @@
   {
    "id": "cardiff-vale-register-office",
    "name": "Cardiff / Vale Register Office",
-   "route": null,
+   "route": "welsh_council",
    "regime": "FOI",
    "policy": "https://www.cardiffregisteroffice.co.uk/",
    "ombudsman": "PSOW",
@@ -6955,9 +6955,270 @@
    }
   },
   {
+   "id": "cardiff-central-library",
+   "name": "Cardiff Central Library",
+   "route": "welsh_public_body",
+   "regime": "FOI",
+   "policy": "https://www.cardiff.gov.uk/ENG/Your-Council/Have-your-say/Comments-compliments-and-complaints/Pages/default.aspx",
+   "ombudsman": "PSOW",
+   "note": "Cardiff Council library service (Central Library Hub): FOIA/EIR public authority; corporate complaints then PSOW",
+   "rungs": [
+    {
+     "key": "foi",
+     "label": "FOI request",
+     "track": "info",
+     "law": "FOIA 2000 s.1, s.10(1): reply in 20 working days; s.10(3) public-interest extension",
+     "src": "https://www.legislation.gov.uk/ukpga/2000/36/section/10",
+     "clock": {
+      "u": "wd",
+      "n": 20
+     },
+     "us": "request",
+     "them": "reply or refusal notice",
+     "ext": "+20 wd (public interest, s.10(3); s.45 Code)",
+     "n": 1
+    },
+    {
+     "key": "eir",
+     "label": "EIR request",
+     "track": "info",
+     "law": "EIR 2004 reg 5(2): 20 working days; reg 7: 40 if complex and voluminous",
+     "src": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/5",
+     "clock": {
+      "u": "wd",
+      "n": 20
+     },
+     "us": "request",
+     "them": "reply or refusal",
+     "ext": "40 wd (reg 7)",
+     "n": 2
+    },
+    {
+     "key": "foi_ir",
+     "label": "Internal review (FOI)",
+     "track": "info",
+     "law": "s.45 Code of Practice para 5: ask within 40 working days; outcome in 20, 40 at most",
+     "src": "https://www.gov.uk/government/publications/freedom-of-information-code-of-practice",
+     "clock": {
+      "u": "wd",
+      "n": 20
+     },
+     "us": "review request",
+     "them": "review outcome",
+     "ext": "40 wd max",
+     "n": 3
+    },
+    {
+     "key": "eir_ir",
+     "label": "Reconsideration (EIR reg 11)",
+     "track": "info",
+     "law": "EIR 2004 reg 11(2)-(4): representations within 40 working days; decision within 40",
+     "src": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11",
+     "clock": {
+      "u": "wd",
+      "n": 40
+     },
+     "us": "reg 11 representations",
+     "them": "reconsideration decision",
+     "n": 4
+    },
+    {
+     "key": "ico",
+     "label": "ICO complaint (FOIA s.50)",
+     "track": "info",
+     "law": "FOIA s.50 / EIR reg 18; the ICO asks for complaints within 6 weeks of the final response",
+     "src": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/",
+     "clock": {
+      "u": "cm",
+      "n": 6
+     },
+     "us": "s.50 complaint",
+     "them": "decision notice",
+     "inferred": true,
+     "note": "ICO decision time: 6 months is the board's worst-case assumption (no published statutory time)",
+     "n": 5
+    },
+    {
+     "key": "ftt",
+     "label": "First-tier Tribunal (Information Rights)",
+     "track": "info",
+     "law": "FOIA s.57; GRC Rules 2009 r.22(1)(b): appeal within 28 days of the decision notice",
+     "src": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22",
+     "clock": {
+      "u": "cm",
+      "n": 6
+     },
+     "us": "notice of appeal",
+     "them": "tribunal decision",
+     "inferred": true,
+     "note": "appeal window is statutory; the 6-month decision time is our assumption",
+     "n": 6
+    },
+    {
+     "key": "ut",
+     "label": "Upper Tribunal (point of law)",
+     "track": "info",
+     "law": "TCEA 2007 s.11; GRC Rules 2009 r.42: ask the FtT for permission within 28 days",
+     "src": "https://www.legislation.gov.uk/uksi/2009/1976/rule/42",
+     "clock": {
+      "u": "cm",
+      "n": 2
+     },
+     "us": "permission application",
+     "them": "permission decision",
+     "inferred": true,
+     "note": "available only on a point of law; 2-month decision time is our assumption",
+     "n": 7
+    },
+    {
+     "key": "sar",
+     "label": "Subject access request",
+     "track": "sar",
+     "law": "UK GDPR Art 15, Art 12(3): one month, +2 months if complex",
+     "src": "https://www.legislation.gov.uk/eur/2016/679/article/12",
+     "clock": {
+      "u": "cm",
+      "n": 1
+     },
+     "us": "subject access request",
+     "them": "disclosure of personal data",
+     "ext": "+2 months (Art 12(3))",
+     "n": 8
+    },
+    {
+     "key": "sar_cmp",
+     "label": "Data protection complaint to the body",
+     "track": "sar",
+     "law": "DPA 2018 s.164A: complaints to controllers (acknowledge within 30 days)",
+     "src": "https://www.legislation.gov.uk/ukpga/2018/12/section/164A",
+     "clock": {
+      "u": "cd",
+      "n": 30
+     },
+     "us": "complaint to the DPO",
+     "them": "complaint outcome",
+     "inferred": true,
+     "note": "30 days to an outcome is our assumption; the section sets acknowledgement and \"without undue delay\"",
+     "n": 9
+    },
+    {
+     "key": "ico_dp",
+     "label": "ICO complaint (data protection)",
+     "track": "sar",
+     "law": "UK GDPR Art 77; DPA 2018 s.165; the ICO asks within 3 months of the last meaningful contact",
+     "src": "https://ico.org.uk/make-a-complaint/data-protection-complaints/",
+     "clock": {
+      "u": "cm",
+      "n": 3
+     },
+     "us": "complaint to the ICO",
+     "them": "ICO outcome",
+     "inferred": true,
+     "note": "3-month outcome time is our assumption",
+     "n": 10
+    },
+    {
+     "key": "s167",
+     "label": "Compliance order (DPA 2018 s.167)",
+     "track": "court",
+     "law": "DPA 2018 s.167: court order to comply with the data subject's rights",
+     "src": "https://www.legislation.gov.uk/ukpga/2018/12/section/167",
+     "clock": {
+      "u": "cm",
+      "n": 6
+     },
+     "us": "claim",
+     "them": "order",
+     "inferred": true,
+     "note": "6 months to an order is our assumption; county court or High Court",
+     "n": 11
+    },
+    {
+     "key": "cmp1",
+     "label": "Cardiff Council: complaint stage 1",
+     "track": "complaint",
+     "law": "Cardiff Council complaints procedure: reply in 10 working days",
+     "src": "https://www.cardiff.gov.uk/ENG/Your-Council/Have-your-say/Comments-compliments-and-complaints/Pages/default.aspx",
+     "clock": {
+      "u": "wd",
+      "n": 10
+     },
+     "us": "stage 1 complaint",
+     "them": "stage 1 response",
+     "inferred": true,
+     "note": "Cardiff Council corporate complaints: stage 1 and stage 2; PSOW model times assumed",
+     "n": 12
+    },
+    {
+     "key": "cmp2",
+     "label": "Cardiff Council: complaint stage 2",
+     "track": "complaint",
+     "law": "Cardiff Council complaints procedure: reply in 20 working days",
+     "src": "https://www.cardiff.gov.uk/ENG/Your-Council/Have-your-say/Comments-compliments-and-complaints/Pages/default.aspx",
+     "clock": {
+      "u": "wd",
+      "n": 20
+     },
+     "us": "stage 2 complaint",
+     "them": "stage 2 response",
+     "inferred": true,
+     "note": "Cardiff Council corporate complaints: stage 1 and stage 2; PSOW model times assumed",
+     "n": 13
+    },
+    {
+     "key": "psow",
+     "label": "Public Services Ombudsman for Wales",
+     "track": "complaint",
+     "law": "Public Services Ombudsman (Wales) Act 2019: complain within 12 months; investigations take around 12 months",
+     "src": "https://www.ombudsman.wales/fact-sheets/complaints-against-public-bodies-our-procedure/",
+     "clock": {
+      "u": "cm",
+      "n": 12
+     },
+     "us": "complaint to the PSOW",
+     "them": "ombudsman decision",
+     "n": 14
+    },
+    {
+     "key": "pap",
+     "label": "Pre-action letter (judicial review)",
+     "track": "court",
+     "law": "Pre-Action Protocol for Judicial Review: reply normally within 14 days",
+     "src": "https://www.justice.gov.uk/courts/procedure-rules/civil/protocol/prot_jrv",
+     "clock": {
+      "u": "cd",
+      "n": 14
+     },
+     "us": "letter before claim",
+     "them": "response",
+     "n": 15
+    },
+    {
+     "key": "jr",
+     "label": "Judicial review claim",
+     "track": "court",
+     "law": "CPR 54.5: claim promptly and within 3 months of the decision",
+     "src": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part54",
+     "clock": {
+      "u": "cm",
+      "n": 3
+     },
+     "us": "claim form",
+     "them": "permission decision",
+     "inferred": true,
+     "note": "3 months to the permission decision is our assumption",
+     "n": 16
+    }
+   ],
+   "counts": {
+    "rungs": 16,
+    "inferred": 9
+   }
+  },
+  {
    "id": "church-of-england-archives-lambeth-palace-librar",
    "name": "Church of England archives (Lambeth Palace Library)",
-   "route": null,
+   "route": "private",
    "regime": "SAR",
    "policy": "https://www.lambethpalacelibrary.org/",
    "ombudsman": null,
@@ -7051,7 +7312,7 @@
   {
    "id": "counter-terrorism-policing-nactso",
    "name": "Counter Terrorism Policing (NaCTSO)",
-   "route": null,
+   "route": "police",
    "regime": "FOI",
    "policy": "https://www.npcc.police.uk/About-Us/governance-and-accountability/foi-and-subject-access-request/",
    "ombudsman": "IOPC review",
@@ -7252,7 +7513,7 @@
   {
    "id": "crown-prosecution-service",
    "name": "Crown Prosecution Service",
-   "route": null,
+   "route": "uk_gov",
    "regime": "FOI",
    "policy": "https://www.cps.gov.uk/feedback-and-complaints/independent-assessor-complaints",
    "ombudsman": "IAC, then PHSO via an MP",
@@ -7499,7 +7760,7 @@
   {
    "id": "defra",
    "name": "Defra",
-   "route": null,
+   "route": "uk_gov",
    "regime": "FOI",
    "policy": "https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs/about/complaints-procedure",
    "ombudsman": "PHSO via an MP",
@@ -7746,7 +8007,7 @@
   {
    "id": "department-for-culture-media-and-sport",
    "name": "Department for Culture, Media and Sport",
-   "route": null,
+   "route": "uk_gov",
    "regime": "FOI",
    "policy": "https://www.gov.uk/government/organisations/department-for-culture-media-and-sport/about/complaints-procedure",
    "ombudsman": "PHSO via an MP",
@@ -7996,7 +8257,7 @@
   {
    "id": "government-legal-department-bona-vacantia",
    "name": "Government Legal Department (Bona Vacantia)",
-   "route": null,
+   "route": "uk_gov",
    "regime": "FOI",
    "policy": "https://www.gov.uk/government/organisations/government-legal-department/about/complaints-procedure",
    "ombudsman": "PHSO via an MP",
@@ -8262,7 +8523,7 @@
   {
    "id": "hm-land-registry-independent-complaints-reviewer",
    "name": "HM Land Registry (Independent Complaints Reviewer)",
-   "route": null,
+   "route": "regulator_body",
    "regime": "FOI",
    "policy": "https://www.icrev.org.uk/faqs/",
    "ombudsman": "PHSO via an MP",
@@ -8369,7 +8630,7 @@
   {
    "id": "historic-england",
    "name": "Historic England",
-   "route": null,
+   "route": "uk_gov",
    "regime": "EIR",
    "policy": "https://historicengland.org.uk/advice/planning/our-planning-services/charter/contact-us/",
    "ombudsman": "PHSO via an MP",
@@ -8617,7 +8878,7 @@
   {
    "id": "mount-stuart-bute-archive",
    "name": "Mount Stuart (Bute archive)",
-   "route": null,
+   "route": "private",
    "regime": "SAR",
    "policy": "https://www.mountstuart.com/privacy-policy",
    "ombudsman": null,
@@ -8709,9 +8970,240 @@
    }
   },
   {
+   "id": "natural-resources-wales",
+   "name": "Natural Resources Wales",
+   "route": "welsh_public_body",
+   "regime": "EIR",
+   "policy": "https://naturalresources.wales/about-us/contact-us/complaints/",
+   "ombudsman": "PSOW",
+   "note": "Welsh Government sponsored body: EIR for environmental information; PSOW",
+   "rungs": [
+    {
+     "key": "eir",
+     "label": "EIR request",
+     "track": "info",
+     "law": "EIR 2004 reg 5(2): 20 working days; reg 7: 40 if complex and voluminous",
+     "src": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/5",
+     "clock": {
+      "u": "wd",
+      "n": 20
+     },
+     "us": "request",
+     "them": "reply or refusal",
+     "ext": "40 wd (reg 7)",
+     "n": 1
+    },
+    {
+     "key": "eir_ir",
+     "label": "Reconsideration (EIR reg 11)",
+     "track": "info",
+     "law": "EIR 2004 reg 11(2)-(4): representations within 40 working days; decision within 40",
+     "src": "https://www.legislation.gov.uk/uksi/2004/3391/regulation/11",
+     "clock": {
+      "u": "wd",
+      "n": 40
+     },
+     "us": "reg 11 representations",
+     "them": "reconsideration decision",
+     "n": 2
+    },
+    {
+     "key": "ico",
+     "label": "ICO complaint (FOIA s.50)",
+     "track": "info",
+     "law": "FOIA s.50 / EIR reg 18; the ICO asks for complaints within 6 weeks of the final response",
+     "src": "https://ico.org.uk/make-a-complaint/foi-and-eir-complaints/",
+     "clock": {
+      "u": "cm",
+      "n": 6
+     },
+     "us": "s.50 complaint",
+     "them": "decision notice",
+     "inferred": true,
+     "note": "ICO decision time: 6 months is the board's worst-case assumption (no published statutory time)",
+     "n": 3
+    },
+    {
+     "key": "ftt",
+     "label": "First-tier Tribunal (Information Rights)",
+     "track": "info",
+     "law": "FOIA s.57; GRC Rules 2009 r.22(1)(b): appeal within 28 days of the decision notice",
+     "src": "https://www.legislation.gov.uk/uksi/2009/1976/rule/22",
+     "clock": {
+      "u": "cm",
+      "n": 6
+     },
+     "us": "notice of appeal",
+     "them": "tribunal decision",
+     "inferred": true,
+     "note": "appeal window is statutory; the 6-month decision time is our assumption",
+     "n": 4
+    },
+    {
+     "key": "ut",
+     "label": "Upper Tribunal (point of law)",
+     "track": "info",
+     "law": "TCEA 2007 s.11; GRC Rules 2009 r.42: ask the FtT for permission within 28 days",
+     "src": "https://www.legislation.gov.uk/uksi/2009/1976/rule/42",
+     "clock": {
+      "u": "cm",
+      "n": 2
+     },
+     "us": "permission application",
+     "them": "permission decision",
+     "inferred": true,
+     "note": "available only on a point of law; 2-month decision time is our assumption",
+     "n": 5
+    },
+    {
+     "key": "sar",
+     "label": "Subject access request",
+     "track": "sar",
+     "law": "UK GDPR Art 15, Art 12(3): one month, +2 months if complex",
+     "src": "https://www.legislation.gov.uk/eur/2016/679/article/12",
+     "clock": {
+      "u": "cm",
+      "n": 1
+     },
+     "us": "subject access request",
+     "them": "disclosure of personal data",
+     "ext": "+2 months (Art 12(3))",
+     "n": 6
+    },
+    {
+     "key": "sar_cmp",
+     "label": "Data protection complaint to the body",
+     "track": "sar",
+     "law": "DPA 2018 s.164A: complaints to controllers (acknowledge within 30 days)",
+     "src": "https://www.legislation.gov.uk/ukpga/2018/12/section/164A",
+     "clock": {
+      "u": "cd",
+      "n": 30
+     },
+     "us": "complaint to the DPO",
+     "them": "complaint outcome",
+     "inferred": true,
+     "note": "30 days to an outcome is our assumption; the section sets acknowledgement and \"without undue delay\"",
+     "n": 7
+    },
+    {
+     "key": "ico_dp",
+     "label": "ICO complaint (data protection)",
+     "track": "sar",
+     "law": "UK GDPR Art 77; DPA 2018 s.165; the ICO asks within 3 months of the last meaningful contact",
+     "src": "https://ico.org.uk/make-a-complaint/data-protection-complaints/",
+     "clock": {
+      "u": "cm",
+      "n": 3
+     },
+     "us": "complaint to the ICO",
+     "them": "ICO outcome",
+     "inferred": true,
+     "note": "3-month outcome time is our assumption",
+     "n": 8
+    },
+    {
+     "key": "s167",
+     "label": "Compliance order (DPA 2018 s.167)",
+     "track": "court",
+     "law": "DPA 2018 s.167: court order to comply with the data subject's rights",
+     "src": "https://www.legislation.gov.uk/ukpga/2018/12/section/167",
+     "clock": {
+      "u": "cm",
+      "n": 6
+     },
+     "us": "claim",
+     "them": "order",
+     "inferred": true,
+     "note": "6 months to an order is our assumption; county court or High Court",
+     "n": 9
+    },
+    {
+     "key": "cmp1",
+     "label": "Natural Resources Wales: complaint stage 1",
+     "track": "complaint",
+     "law": "Natural Resources Wales complaints procedure: reply in 10 working days",
+     "src": "https://naturalresources.wales/about-us/contact-us/complaints/",
+     "clock": {
+      "u": "wd",
+      "n": 10
+     },
+     "us": "stage 1 complaint",
+     "them": "stage 1 response",
+     "inferred": true,
+     "note": "NRW complaints: stage times assumed",
+     "n": 10
+    },
+    {
+     "key": "cmp2",
+     "label": "Natural Resources Wales: complaint stage 2",
+     "track": "complaint",
+     "law": "Natural Resources Wales complaints procedure: reply in 20 working days",
+     "src": "https://naturalresources.wales/about-us/contact-us/complaints/",
+     "clock": {
+      "u": "wd",
+      "n": 20
+     },
+     "us": "stage 2 complaint",
+     "them": "stage 2 response",
+     "inferred": true,
+     "note": "NRW complaints: stage times assumed",
+     "n": 11
+    },
+    {
+     "key": "psow",
+     "label": "Public Services Ombudsman for Wales",
+     "track": "complaint",
+     "law": "Public Services Ombudsman (Wales) Act 2019: complain within 12 months; investigations take around 12 months",
+     "src": "https://www.ombudsman.wales/fact-sheets/complaints-against-public-bodies-our-procedure/",
+     "clock": {
+      "u": "cm",
+      "n": 12
+     },
+     "us": "complaint to the PSOW",
+     "them": "ombudsman decision",
+     "n": 12
+    },
+    {
+     "key": "pap",
+     "label": "Pre-action letter (judicial review)",
+     "track": "court",
+     "law": "Pre-Action Protocol for Judicial Review: reply normally within 14 days",
+     "src": "https://www.justice.gov.uk/courts/procedure-rules/civil/protocol/prot_jrv",
+     "clock": {
+      "u": "cd",
+      "n": 14
+     },
+     "us": "letter before claim",
+     "them": "response",
+     "n": 13
+    },
+    {
+     "key": "jr",
+     "label": "Judicial review claim",
+     "track": "court",
+     "law": "CPR 54.5: claim promptly and within 3 months of the decision",
+     "src": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part54",
+     "clock": {
+      "u": "cm",
+      "n": 3
+     },
+     "us": "claim form",
+     "them": "permission decision",
+     "inferred": true,
+     "note": "3 months to the permission decision is our assumption",
+     "n": 14
+    }
+   ],
+   "counts": {
+    "rungs": 14,
+    "inferred": 9
+   }
+  },
+  {
    "id": "ordnance-survey",
    "name": "Ordnance Survey",
-   "route": null,
+   "route": "uk_gov",
    "regime": "FOI",
    "policy": "https://www.ordnancesurvey.co.uk/contact-us/complaint",
    "ombudsman": "PHSO via an MP",
@@ -8961,7 +9453,7 @@
   {
    "id": "persimmon-homes",
    "name": "Persimmon Homes",
-   "route": null,
+   "route": "private",
    "regime": "SAR",
    "policy": "https://www.persimmonhomes.com/privacy-policy",
    "ombudsman": null,
@@ -9039,7 +9531,7 @@
   {
    "id": "prime-minister-s-office-cabinet-office",
    "name": "Prime Minister's Office / Cabinet Office",
-   "route": null,
+   "route": "uk_gov",
    "regime": "FOI",
    "policy": "https://www.gov.uk/government/organisations/cabinet-office/about/complaints-procedure",
    "ombudsman": "PHSO via an MP",
@@ -9289,7 +9781,7 @@
   {
    "id": "public-administration-and-constitutional-affairs",
    "name": "Public Administration and Constitutional Affairs Committee",
-   "route": null,
+   "route": "representative",
    "regime": null,
    "policy": "https://www.parliament.uk/site-information/freedom-of-information/",
    "ombudsman": null,
@@ -9365,7 +9857,7 @@
   {
    "id": "serious-fraud-office",
    "name": "Serious Fraud Office",
-   "route": null,
+   "route": "uk_gov",
    "regime": "FOI",
    "policy": "https://www.gov.uk/government/organisations/serious-fraud-office/about/complaints-procedure",
    "ombudsman": "PHSO via an MP",
@@ -9615,7 +10107,7 @@
   {
    "id": "the-postal-museum",
    "name": "The Postal Museum",
-   "route": null,
+   "route": "private",
    "regime": "SAR",
    "policy": "https://postalmuseum.org/wp-content/uploads/2016/09/Data-Protection-Policy-v1.pdf",
    "ombudsman": null,
@@ -9709,7 +10201,7 @@
   {
    "id": "valuation-office-agency-hmrc",
    "name": "Valuation Office Agency / HMRC",
-   "route": null,
+   "route": "uk_gov",
    "regime": "FOI",
    "policy": "https://www.gov.uk/government/publications/adjudicators-office-service-level-agreement-with-hmrc-and-voa/service-level-agreement-for-the-provision-of-complaints-adjudication-services-for-hm-revenue-and-customs-and-valuation-office-agency-by-the-adjudicato",
    "ombudsman": "Adjudicator, then PHSO via an MP",
@@ -9975,7 +10467,7 @@
   {
    "id": "wales-office",
    "name": "Wales Office",
-   "route": null,
+   "route": "uk_gov",
    "regime": "FOI",
    "policy": "https://www.gov.uk/government/organisations/office-of-the-secretary-of-state-for-wales/about/complaints-procedure",
    "ombudsman": "PHSO via an MP",
@@ -10225,7 +10717,7 @@
   {
    "id": "whatdotheyknow-unconfirmed",
    "name": "WhatDoTheyKnow (unconfirmed)",
-   "route": null,
+   "route": "private",
    "regime": "FOI",
    "policy": "https://www.whatdotheyknow.com/help/about",
    "ombudsman": null,
