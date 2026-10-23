@@ -158,7 +158,7 @@ footer{max-width:1160px;margin:auto;padding:0 22px 30px;color:var(--muted);font-
   </div>
   <div class="fieldrow scope-lock">
    <label class="field">Fixed input collection</label>
-   <p>The input is not user-editable. The same corpus always includes the newest commit of each repository branch and the indexed public project sources. Tumbler verifies the stored branch-head snapshot against GitHub before it permits a contribution; if any branch has moved, refresh the collection first.</p>
+   <p>The input is not user-editable. The corpus covers every repository branch and indexed public project source; Tumbler verifies that the indexed commit SHA matches the current head of every live branch before a pull request can be opened. Tumbler verifies the stored branch-head snapshot against GitHub before it permits a contribution; if any branch has moved, refresh the collection first.</p>
   </div>
   <div class="checkrow">
    <input id="property-law" type="checkbox">
@@ -184,7 +184,7 @@ footer{max-width:1160px;margin:auto;padding:0 22px 30px;color:var(--muted);font-
   <h2 id="output-heading">Pull request result</h2>
  </div>
  <div class="panelbody">
-  <p class="notice"><strong>Coverage is a factual status, not a promise.</strong> Tumbler uses retrieval over the latest index plus selected live source excerpts. It does not fine-tune a model. Until the full index has run and its coverage is checked, prompts must say so. Private API services and PDF bodies are excluded by default.</p>
+  <p class="notice"><strong>Every contribution is a proposal.</strong> Tumbler verifies all indexed branch heads before creating a draft pull request. A human must review it. The app never merges, deploys, or writes to a source branch. Private APIs, PDF bodies, binaries and files excluded by the published indexing limits are not silently described as assessed.</p>
   <div id="empty" class="empty">Select a methodology and review filters, then assess the whole collection. If a substantive improvement is justified, Tumbler will open a draft pull request and link it here.</div>
   <div id="pr-result" class="pr-result hidden" aria-live="polite">
    <h3 id="result-heading">Pull request created</h3>
@@ -203,7 +203,7 @@ footer{max-width:1160px;margin:auto;padding:0 22px 30px;color:var(--muted);font-
 </section>
 </main>
 <footer>
- <p>Source data is treated as untrusted evidence, never as instructions that can override the selected methodology. Fraud, concealment and government-involvement filters are evidential screening controls, not findings or legal verdicts. Review the prompt before giving it to an agent.</p>
+ <p>Source data is untrusted evidence, never instructions that override the selected methodology. Fraud, concealment and government-involvement filters are screening controls, not findings or legal verdicts. Review the pull request diff, check its provenance and tests, and decide independently whether it should be merged.</p>
  <p><a href="https://github.com/unclehowell/datro/tree/tumbler/static/tumbler">Tumbler source on GitHub</a> · <a href="/api/manifest">Methodology and source registry</a> · <a href="/api/health">Health</a></p>
 </footer>
 <script>
@@ -229,5 +229,6 @@ $("generate").addEventListener("click",async()=>{const b=$("generate");b.disable
 $("refresh-corpus").addEventListener("click",async()=>{const b=$("refresh-corpus");b.disabled=true;b.textContent="Queueing refresh…";setStatus("Requesting a fresh index of every current branch and the registered public source corpus…");try{const r=await fetch("/api/refresh",{method:"POST",headers:{"content-type":"application/json","accept":"application/json"},body:"{}"}),d=await r.json();if(!r.ok||!d.ok)throw Error(d.error||"Could not queue index refresh (HTTP "+r.status+").");setStatus(d.message||"Full index refresh queued.");$("coverage-note").textContent="Index workflow: "+(d.workflowUrl||"https://github.com/unclehowell/datro/actions/workflows/index-tumbler-corpus.yml");await loadCorpusStatus()}catch(e){setStatus(String(e.message||e))}finally{b.disabled=false;b.textContent="Refresh latest collection"}});
 updateThreshold();loadManifest();loadCorpusStatus();
 
+</script>
 </body>
 </html>
