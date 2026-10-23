@@ -23,7 +23,7 @@ type Email = {
   id: string; date: string; dir: "sent" | "received"; cls: string; subject: string; summary: string;
   url: string | null; wayback: string | null; ev: string | null; cid: string; att: number;
   deadline: string | null; deadline_met: string;
-  /** A reply that asks for a fee is marked £ (the family does not pay for disclosure). */
+  /** A reply that asks for a fee is marked £ (the body asked for a fee). */
   fee?: string | null;
 };
 type Due = { date: string; kind: string; cid: string | null; ev: string | null; url: string | null; title: string; ref: string; regime?: string; basis?: string; status?: string };
@@ -1065,7 +1065,7 @@ export function RoadmapRamps({ preferName }: { preferName?: string }) {
         <li className="flex items-center gap-1"><span aria-hidden>🔥</span>deadline missed</li>
         <li className="flex items-center gap-1"><HouseIcon />no reply by the due date</li>
         <li className="flex items-center gap-1"><FishIcon />late or questions unanswered</li>
-        <li className="flex items-center gap-1"><span aria-hidden className="inline-flex size-3 items-center justify-center rounded-full bg-[#ffd34d] text-[8px] font-extrabold text-[#0d0b09]">£</span>fee asked (not paid)</li>
+        <li className="flex items-center gap-1"><span aria-hidden className="inline-flex size-3 items-center justify-center rounded-full bg-[#ffd34d] text-[8px] font-extrabold text-[#0d0b09]">£</span>fee asked</li>
         <li className="flex items-center gap-1"><span className="inline-block h-2 w-1 bg-[#2e9e57]" />deadline met</li>
         <li className="flex items-center gap-1"><span className="inline-block size-2 rounded-full bg-[#2fa36b]" />today</li>
       </ul>
