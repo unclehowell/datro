@@ -1,192 +1,199 @@
 {
- "updated": "2026-10-23T14:58:42Z",
- "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
- "drafts": [
-  {
-   "id": "bp-preservation-reply",
-   "record": "HubSpot task 531842137317",
-   "version": "v0.5.0",
-   "status": "OTHER AGENT'S TURN",
-   "turn": "other agent",
-   "open_issues": 6,
-   "last_change": "2026-10-23T13:39:23Z",
-   "last_agent": "Tab",
-   "rounds": 5
-  },
-  {
-   "id": "cardiff-central-library-bute-x6-12-reply",
-   "record": "HubSpot task 532014813379",
-   "version": "v0.3.0",
-   "status": "OTHER AGENT'S TURN",
-   "turn": "other agent",
-   "open_issues": 9,
-   "last_change": "2026-10-23T14:37:15Z",
-   "last_agent": "Tab",
-   "rounds": 3
-  },
-  {
-   "id": "hmlr-eir-1961-deed",
-   "record": "HubSpot task 532017103065",
-   "version": "v0.1.0",
-   "status": "DRAFT",
-   "turn": "either agent (first review not started)",
-   "open_issues": null,
-   "last_change": "2026-10-23T13:36:44Z",
-   "last_agent": "Tab",
-   "rounds": 1
-  },
-  {
-   "id": "hmlr-sar-wa735527-wa513690",
-   "record": "HubSpot task 532323118282",
-   "version": "v0.1.0",
-   "status": "DRAFT",
-   "turn": "either agent (first review not started)",
-   "open_issues": null,
-   "last_change": "2026-10-23T13:36:49Z",
-   "last_agent": "Tab",
-   "rounds": 1
-  },
-  {
-   "id": "vale-eir-vg41",
-   "record": "HubSpot task 532332112063",
-   "version": "v0.1.0",
-   "status": "DRAFT",
-   "turn": "either agent (first review not started)",
-   "open_issues": null,
-   "last_change": "2026-10-23T13:36:54Z",
-   "last_agent": "Tab",
-   "rounds": 1
-  },
-  {
-   "id": "glamorgan-archives-vg41-catalogue",
-   "record": "HubSpot task 531846786282",
-   "version": "v0.1.0",
-   "status": "DRAFT",
-   "turn": "either agent (first review not started)",
-   "open_issues": null,
-   "last_change": "2026-10-23T13:38:46Z",
-   "last_agent": "Tab",
-   "rounds": 1
-  },
-  {
-   "id": "hmlr-eir-vg41",
-   "record": "HubSpot task 532326659316",
-   "version": "v0.1.0",
-   "status": "DRAFT",
-   "turn": "either agent (first review not started)",
-   "open_issues": null,
-   "last_change": "2026-10-23T13:37:04Z",
-   "last_agent": "Tab",
-   "rounds": 1
-  },
-  {
-   "id": "tna-hmlr-commons-records-1960-72",
-   "record": "HubSpot task 531839534314",
-   "version": "v0.1.0",
-   "status": "DRAFT",
-   "turn": "either agent (first review not started)",
-   "open_issues": null,
-   "last_change": "2026-10-23T13:37:09Z",
-   "last_agent": "Tab",
-   "rounds": 1
-  },
-  {
-   "id": "hmlr-customer-support-titles",
-   "record": "HubSpot task 531853903073",
-   "version": "v0.1.0",
-   "status": "DRAFT",
-   "turn": "either agent (first review not started)",
-   "open_issues": null,
-   "last_change": "2026-10-23T13:37:14Z",
-   "last_agent": "Tab",
-   "rounds": 1
-  },
-  {
-   "id": "hmlr-wales-office-z084nqv",
-   "record": "HubSpot task 531877440723",
-   "version": "v0.1.0",
-   "status": "DRAFT",
-   "turn": "either agent (first review not started)",
-   "open_issues": null,
-   "last_change": "2026-10-23T13:37:19Z",
-   "last_agent": "Tab",
-   "rounds": 1
-  },
-  {
-   "id": "cardiff-eir-1961-deed",
-   "record": "HubSpot task 531873818841",
-   "version": "v0.1.0",
-   "status": "DRAFT",
-   "turn": "either agent (first review not started)",
-   "open_issues": null,
-   "last_change": "2026-10-23T13:37:24Z",
-   "last_agent": "Tab",
-   "rounds": 1
-  }
- ],
- "events": [
-  {
-   "at": "2026-10-23",
-   "draft": "bp-preservation-reply",
-   "version": "v0.1.0",
-   "agent": "ChatGPT",
-   "event": "draft/review (time not recorded)"
-  },
-  {
-   "at": "2026-10-23",
-   "draft": "bp-preservation-reply",
-   "version": "v0.2.0",
-   "agent": "ChatGPT",
-   "event": "draft/review (time not recorded)"
-  },
-  {
-   "at": "2026-10-23",
-   "draft": "bp-preservation-reply",
-   "version": "v0.3.0",
-   "agent": "ChatGPT",
-   "event": "draft/review (time not recorded)"
-  },
-  {
-   "at": "2026-10-23T12:02:00Z",
-   "draft": "bp-preservation-reply",
-   "version": "v0.4.0",
-   "agent": "Tab",
-   "event": "review"
-  },
-  {
-   "at": "2026-10-23",
-   "draft": "cardiff-central-library-bute-x6-12-reply",
-   "version": "v0.1.0",
-   "agent": "Tab",
-   "event": "first draft (time not recorded)"
-  },
-  {
-   "at": "2026-10-23T13:39:23Z",
-   "draft": "bp-preservation-reply",
-   "version": "v0.5.0",
-   "agent": "Tab",
-   "event": "review; turn to ChatGPT"
-  },
-  {
-   "at": "2026-10-23T14:19:40Z",
-   "draft": "cardiff-central-library-bute-x6-12-reply",
-   "version": "v0.2.0",
-   "agent": "ChatGPT",
-   "event": "review; turn to Tab"
-  },
-  {
-   "at": "2026-10-23T14:22:52Z",
-   "draft": "cardiff-central-library-bute-x6-12-reply",
-   "version": "v0.2.0",
-   "agent": "Tab",
-   "event": "input note added; text unchanged"
-  },
-  {
-   "at": "2026-10-23T14:37:15Z",
-   "draft": "cardiff-central-library-bute-x6-12-reply",
-   "version": "v0.3.0",
-   "agent": "Tab",
-   "event": "review; turn to ChatGPT"
-  }
- ]
+  "updated": "2026-10-23T15:17:05Z",
+  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
+  "drafts": [
+    {
+      "id": "bp-preservation-reply",
+      "record": "HubSpot task 531842137317",
+      "version": "v0.5.0",
+      "status": "OTHER AGENT'S TURN",
+      "turn": "other agent",
+      "open_issues": 6,
+      "last_change": "2026-10-23T13:39:23Z",
+      "last_agent": "Tab",
+      "rounds": 5
+    },
+    {
+      "id": "cardiff-central-library-bute-x6-12-reply",
+      "record": "HubSpot task 532014813379",
+      "version": "v0.4.0",
+      "status": "OTHER AGENT'S TURN",
+      "turn": "Grok",
+      "open_issues": 9,
+      "last_change": "2026-10-23T15:17:05Z",
+      "last_agent": "ChatGPT",
+      "rounds": 4
+    },
+    {
+      "id": "hmlr-eir-1961-deed",
+      "record": "HubSpot task 532017103065",
+      "version": "v0.1.0",
+      "status": "DRAFT",
+      "turn": "either agent (first review not started)",
+      "open_issues": null,
+      "last_change": "2026-10-23T13:36:44Z",
+      "last_agent": "Tab",
+      "rounds": 1
+    },
+    {
+      "id": "hmlr-sar-wa735527-wa513690",
+      "record": "HubSpot task 532323118282",
+      "version": "v0.1.0",
+      "status": "DRAFT",
+      "turn": "either agent (first review not started)",
+      "open_issues": null,
+      "last_change": "2026-10-23T13:36:49Z",
+      "last_agent": "Tab",
+      "rounds": 1
+    },
+    {
+      "id": "vale-eir-vg41",
+      "record": "HubSpot task 532332112063",
+      "version": "v0.1.0",
+      "status": "DRAFT",
+      "turn": "either agent (first review not started)",
+      "open_issues": null,
+      "last_change": "2026-10-23T13:36:54Z",
+      "last_agent": "Tab",
+      "rounds": 1
+    },
+    {
+      "id": "glamorgan-archives-vg41-catalogue",
+      "record": "HubSpot task 531846786282",
+      "version": "v0.1.0",
+      "status": "DRAFT",
+      "turn": "either agent (first review not started)",
+      "open_issues": null,
+      "last_change": "2026-10-23T13:38:46Z",
+      "last_agent": "Tab",
+      "rounds": 1
+    },
+    {
+      "id": "hmlr-eir-vg41",
+      "record": "HubSpot task 532326659316",
+      "version": "v0.1.0",
+      "status": "DRAFT",
+      "turn": "either agent (first review not started)",
+      "open_issues": null,
+      "last_change": "2026-10-23T13:37:04Z",
+      "last_agent": "Tab",
+      "rounds": 1
+    },
+    {
+      "id": "tna-hmlr-commons-records-1960-72",
+      "record": "HubSpot task 531839534314",
+      "version": "v0.1.0",
+      "status": "DRAFT",
+      "turn": "either agent (first review not started)",
+      "open_issues": null,
+      "last_change": "2026-10-23T13:37:09Z",
+      "last_agent": "Tab",
+      "rounds": 1
+    },
+    {
+      "id": "hmlr-customer-support-titles",
+      "record": "HubSpot task 531853903073",
+      "version": "v0.1.0",
+      "status": "DRAFT",
+      "turn": "either agent (first review not started)",
+      "open_issues": null,
+      "last_change": "2026-10-23T13:37:14Z",
+      "last_agent": "Tab",
+      "rounds": 1
+    },
+    {
+      "id": "hmlr-wales-office-z084nqv",
+      "record": "HubSpot task 531877440723",
+      "version": "v0.1.0",
+      "status": "DRAFT",
+      "turn": "either agent (first review not started)",
+      "open_issues": null,
+      "last_change": "2026-10-23T13:37:19Z",
+      "last_agent": "Tab",
+      "rounds": 1
+    },
+    {
+      "id": "cardiff-eir-1961-deed",
+      "record": "HubSpot task 531873818841",
+      "version": "v0.1.0",
+      "status": "DRAFT",
+      "turn": "either agent (first review not started)",
+      "open_issues": null,
+      "last_change": "2026-10-23T13:37:24Z",
+      "last_agent": "Tab",
+      "rounds": 1
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-10-23",
+      "draft": "bp-preservation-reply",
+      "version": "v0.1.0",
+      "agent": "ChatGPT",
+      "event": "draft/review (time not recorded)"
+    },
+    {
+      "at": "2026-10-23",
+      "draft": "bp-preservation-reply",
+      "version": "v0.2.0",
+      "agent": "ChatGPT",
+      "event": "draft/review (time not recorded)"
+    },
+    {
+      "at": "2026-10-23",
+      "draft": "bp-preservation-reply",
+      "version": "v0.3.0",
+      "agent": "ChatGPT",
+      "event": "draft/review (time not recorded)"
+    },
+    {
+      "at": "2026-10-23T12:02:00Z",
+      "draft": "bp-preservation-reply",
+      "version": "v0.4.0",
+      "agent": "Tab",
+      "event": "review"
+    },
+    {
+      "at": "2026-10-23",
+      "draft": "cardiff-central-library-bute-x6-12-reply",
+      "version": "v0.1.0",
+      "agent": "Tab",
+      "event": "first draft (time not recorded)"
+    },
+    {
+      "at": "2026-10-23T13:39:23Z",
+      "draft": "bp-preservation-reply",
+      "version": "v0.5.0",
+      "agent": "Tab",
+      "event": "review; turn to ChatGPT"
+    },
+    {
+      "at": "2026-10-23T14:19:40Z",
+      "draft": "cardiff-central-library-bute-x6-12-reply",
+      "version": "v0.2.0",
+      "agent": "ChatGPT",
+      "event": "review; turn to Tab"
+    },
+    {
+      "at": "2026-10-23T14:22:52Z",
+      "draft": "cardiff-central-library-bute-x6-12-reply",
+      "version": "v0.2.0",
+      "agent": "Tab",
+      "event": "input note added; text unchanged"
+    },
+    {
+      "at": "2026-10-23T14:37:15Z",
+      "draft": "cardiff-central-library-bute-x6-12-reply",
+      "version": "v0.3.0",
+      "agent": "Tab",
+      "event": "review; turn to ChatGPT"
+    },
+    {
+      "at": "2026-10-23T15:17:05Z",
+      "draft": "cardiff-central-library-bute-x6-12-reply",
+      "version": "v0.4.0",
+      "agent": "ChatGPT",
+      "event": "independent review; turn to Grok"
+    }
+  ]
 }
