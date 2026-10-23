@@ -6,7 +6,7 @@ const CANONICAL_ORIGIN = "https://" + CANONICAL_HOST;
 const CALENDAR_ORIGIN = "https://bucklerfamily-emails.pages.dev";
 const CORPUS_TTL_MS = 300000;
 const MANIFEST_URL = "https://wayback.bucklerfamily.estate/email/mail-index.json";
-const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/738aa01140a2d52cdc634b11e0451b7a408cf302/apps/email/index.html";
+const PAGE_URL = "https://raw.githubusercontent.com/unclehowell/datro/bd00d9ddf8b376b5337bcead5e2bad62c108a3aa/apps/email/index.html";
 const TEXT_HOST = "wayback.bucklerfamily.estate";
 // Wayback's case-mail API is the single source of truth for every case email (redacted copies).
 const CASEMAIL_INDEX_URL = "https://wayback.bucklerfamily.estate/api/index.json";
@@ -313,6 +313,16 @@ export default {
       } catch (e) {}
     }
     return json({error:"The forecast could not be loaded."}, 502);
+  }
+  // The dartboard's roadmap (cited emails with EV numbers and dates), same-origin for the reader's "not yet in the public archive" card. — Sion's Tab agent
+  if (url.pathname === "/data/roadmap.json") {
+    for (const src of ["https://raw.githubusercontent.com/unclehowell/datro/dartboard/public/data/roadmap.json", "https://dartboard.bucklerfamily.estate/data/roadmap.json"]) {
+      try {
+        const r = await fetch(src, {cf:{cacheTtl:300, cacheEverything:true}});
+        if (r.ok) return new Response(r.body, {status:200, headers:headers({"Content-Type":"application/json; charset=utf-8", "Cache-Control":"public, max-age=300"})});
+      } catch (e) {}
+    }
+    return json({error:"The roadmap could not be loaded."}, 502);
   }
   if (url.pathname === "/api/health") {
     try {
