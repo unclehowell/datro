@@ -1,0 +1,68 @@
+name: Deploy Tumbler to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - tumbler
+    paths:
+      - 'static/tumbler/**'
+      - '.github/workflows/deploy-tumbler.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-tumbler
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: static/tumbler
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || '42a4a8d7bfb96321118ada213638d050' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate source inventory and API functions
+        run: |
+          node -e "const fs=require('fs');const d=JSON.parse(fs.readFileSync('sources.json','utf8'));if(!Array.isArray(d.sources)||d.sources.length<10)throw Error('source inventory missing');if(new Set(d.sources.map(x=>x.host)).size!==d.sources.length)throw Error('duplicate hosts');console.log('Source hosts:',d.sources.length)"
+          for f in functions/api/*.js; do
+            node --input-type=module --check < "$f"
+          done
+          python3 - <<'PY'
+          from pathlib import Path
+          html = Path("index.html").read_text(encoding="utf-8")
+          if "<title>Tumbler" not in html:
+              raise SystemExit("Tumbler page title missing")
+          script = html.rsplit("<script>", 1)[1].split("</script>", 1)[0]
+          Path("/tmp/tumbler-inline-check.mjs").write_text(script, encoding="utf-8")
+          PY
+          node --check /tmp/tumbler-inline-check.mjs
+
+      - name: Deploy to Cloudflare Pages
+        run: npx --yes wrangler@latest pages deploy . --project-name=tumbler --branch=tumbler --commit-dirty=true
+
+      - name: Smoke-test live app
+        run: |
+          curl --fail --silent --show-error --max-time 45 https://tumbler.bucklerfamily.estate/ -o /tmp/tumbler-index.html
+          curl --fail --silent --show-error --max-time 45 https://tumbler.bucklerfamily.estate/api/manifest -o /tmp/tumbler-manifest.json
+          curl --fail --silent --show-error --max-time 45 https://tumbler.bucklerfamily.estate/api/health -o /tmp/tumbler-health.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          html = Path("/tmp/tumbler-index.html").read_text(encoding="utf-8")
+          manifest = json.loads(Path("/tmp/tumbler-manifest.json").read_text(encoding="utf-8"))
+          health = json.loads(Path("/tmp/tumbler-health.json").read_text(encoding="utf-8"))
+          assert "<title>Tumbler" in html, "Missing homepage title"
+          assert len(manifest.get("inventory", {}).get("sources", [])) >= 10, "Missing source inventory"
+          assert health.get("service") == "tumbler", "Health route failed"
+          print("UI/API smoke tests passed; hosts:", len(manifest["inventory"]["sources"]), "AI binding:", health.get("aiBindingConfigured"))
+          PY
