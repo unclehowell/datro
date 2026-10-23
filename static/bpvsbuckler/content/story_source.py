@@ -489,7 +489,7 @@ sc('III', 'ghf-19521010-1', '1952-10-10', '1952 – 53', "Last rent on the field
    "On 10 October 1952 the landlord's agents write that they will not proceed with a letting to Frederick. He pays his last rent in 1953.",
    [w('/frederick-buckler/#tenancy-1949', 'Frederick Buckler — 1952 letter', 'Court record'), TL],
    aliases=['ghf-19530101-1'])
-sc('III', 'ghf-19550202-1', '1955-02-02', '2 February 1955', "The 1955 possession order", 'High Court / Great House Farm', 'AB',
+sc('III', 'ghf-19550202-1', '1955-02-02', '2 February – 4 July 1955', "The 1955 possession order", 'High Court / Great House Farm', 'AB',
    'Court record',
    "On 2 February 1955 a notice to quit served on Frederick Buckler expires. Western Ground Rents then obtains a High Court order for possession against him, by summary judgment, described as \"the whole of the farm\". On 4 July 1955 possession is taken of everything except the farmhouse and garden; the 1987 judgment attributes the exception to Mary's recent return from hospital and her strong objection.",
    [w('/1955-possession-order/#order', 'The 1955 Possession Order', 'Court record'), w('/1955-possession-order/#enforcement', 'The 1955 Possession Order — enforcement', 'Court record'), w('/scrutiny-and-accountability/case-analysis-connections-patterns-questions/', 'Case Analysis — Connections, Patterns and Questions', 'Analysis')],
@@ -562,12 +562,12 @@ sc('IV', 'ghf-19691231-1', '1969-12-31', '31 December 1969', "Conveyance to BP P
            'S': 'Held by BP Pension Trust: the 1962 order and the case against Mary (no deed to Parcel A; the 1969 root conveyance now missing)'})
 sc('IV', 'ghf-19720725-1', '1972-07-25', '1970 – 72', "Village green and planning permission", 'Planning office', 'AB',
    'Planning file',
-   "In 1970 land beside Leckwith Road is registered as village green VG41. On 25 July 1972 planning permission is granted for housing on the site, while Mary lives in the farmhouse.",
+   "On 16 June 1970 land beside Leckwith Road is provisionally registered as village green VG41 (the date stamped on the VG 41 provisional register map). On 25 July 1972 planning permission is granted for housing on the site, while Mary lives in the farmhouse.",
    [REDEV, TL,
     {'type': 'Legislation', 'title': 'Commons Registration (Glamorgan) Act 1983 (c. ix): validates the registers of common land only; village greens are not covered',
      'url': 'https://www.legislation.gov.uk/ukla/1983/9'},
     {'type': 'Legislation', 'title': 'EV-0232 — Commons Registration (Glamorgan) Act 1983: common land registers only (wiki evidence page)', 'url': WIKI + '/evidence/ev-0232-commons-registration-glamorgan-act-1983/'}], aliases=['ghf-19700616-1'],
-   ledger={'A': 'Freehold: the Williamses (Mary in the house) · land beside Leckwith Road registered as village green VG41 (1970)'})
+   ledger={'A': 'Freehold: the Williamses (Mary in the house) · land beside Leckwith Road provisionally registered as village green VG41 (16 June 1970)'})
 sc('IV', 'ghf-19740101-1', '1974-01-01', '1974', "Royal Commission survey", 'Great House — interior', 'A',
    'Heritage record',
    "H. J. Thomas's 1974 survey and R. F. Suggett's December 1988 note are separate records. The HER entry says the house remained partially recorded because access was restricted by an ownership dispute. The survey predates demolition on 6 December 1988; Suggett's note postdates it. The evidence currently identified does not establish that listing was legally required, that demolition was unlawful, or what was submitted to the European Commission of Human Rights.",
@@ -644,7 +644,7 @@ sc('V', 'ghf-19840522-1', '1984-05-22', '1984', "The writ", 'BP Properties', 'A'
    [w('/bp-properties-v-buckler/#writ', 'BP Properties Ltd v Buckler — the writ', 'Court record'), w('/1877-agreement/#library-1984', 'The 1877 Agreement — library copy missing'),
     LRT('first-registration')],
    aliases=['ghf-19840113-1'])
-sc('V', 'ghf-19860710-1', '1986-07-10', '10 July 1986', "High Court hearing and judgment", 'High Court, Cardiff', 'A',
+sc('V', 'ghf-19860710-1', '1986-07-10', '10 – 24 July 1986', "High Court hearing and judgment", 'High Court, Cardiff', 'A',
    'Court record',
    "On 10 July 1986 the case is heard before Mr Justice Hollis in the High Court at Cardiff. On 24 July 1986 he gives judgment for BP, holding that the 1974 letters gave Mary a licence.",
    [w('/bp-properties-v-buckler/#high-court', 'BP Properties Ltd v Buckler — High Court', 'Court record'),

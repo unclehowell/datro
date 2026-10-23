@@ -64,11 +64,19 @@ jobs:
           PY
 
       - name: Build story exports
-        run: node scripts/build-timeline-exports.mjs
+        run: |
+          node scripts/build-timeline-exports.mjs
+          # Keep the vite public/ copies of the generated exports identical to the generated files
+          # (public/src/data/story.json is served live at /src/data/story.json and listed in agent-index.json).
+          mkdir -p public/src/data public/api public/story
+          cp src/data/story.json src/data/meta.json public/src/data/
+          cp api/timeline.json api/graph.json api/qa.json public/api/
+          cp llms.txt public/llms.txt
+          cp story/transcript.txt public/story/transcript.txt
 
       - name: Commit generated story exports to the branch
         run: |
-          git add src/data/story.json src/data/meta.json api/timeline.json api/graph.json api/qa.json api/graph.sql content/graph/seed content/graph/corpus llms.txt story/index.html story/transcript.txt sitemap.xml
+          git add src/data/story.json src/data/meta.json api/timeline.json api/graph.json api/qa.json api/graph.sql content/graph/seed content/graph/corpus llms.txt story/index.html story/transcript.txt sitemap.xml public/src/data public/api/timeline.json public/api/graph.json public/api/qa.json public/llms.txt public/story/transcript.txt
           if ! git diff --cached --quiet; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -79,7 +87,7 @@ jobs:
               # only if the remote generated outputs match; never overwrite a
               # newer, different export set.
               git fetch origin bpvsbuckler
-              if git diff --quiet FETCH_HEAD -- src/data/story.json src/data/meta.json api/timeline.json api/graph.json api/qa.json api/graph.sql content/graph/seed content/graph/corpus llms.txt story/index.html story/transcript.txt sitemap.xml; then
+              if git diff --quiet FETCH_HEAD -- src/data/story.json src/data/meta.json api/timeline.json api/graph.json api/qa.json api/graph.sql content/graph/seed content/graph/corpus llms.txt story/index.html story/transcript.txt sitemap.xml public/src/data public/api/timeline.json public/api/graph.json public/api/qa.json public/llms.txt public/story/transcript.txt; then
                 echo "Generated exports are already current on bpvsbuckler."
               else
                 echo "Remote branch advanced with different generated exports; refusing to overwrite."
