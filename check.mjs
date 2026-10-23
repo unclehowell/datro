@@ -17,7 +17,9 @@ for(const p of pages){
   for(const re of PRIVATE){const m=vis.match(re); if(m) errors.push(p+': private pattern '+m[0]);}
   for(const m of raw.matchAll(/(?:src|href|poster)="((?:\.\.\/)?(?:img|daily)\/[^"?#]+)"/g)){const f=m[1].replace(/^\.\.\//,''); if(!existsSync(new URL(f,dir))) errors.push(p+': missing '+f);}
   // the edition split: fb. shows nothing dated 2005 or later, fb2. nothing before 2005
-  if(p!=='timeline.html') for(const m of raw.matchAll(/<time datetime="(\d{4})/g)){ dated++; if((m[1]>='2005')!==NOW || (!NOW && m[1]>'1994')) errors.push(p+': dated '+m[1]+' is outside this edition'); }
+  // fb2 is open to press (Sion, 17:52 BST 23 Oct 2026, "Publish all"): a media-register post on fb2 may carry a 1995–2004 date; nothing before 1995
+  let rawd=raw; if(NOW) rawd=raw.replace(/<article class="post sp wl" data-src="media-register"[^>]*>[\s\S]*?<\/article>/g,a=>{ for(const m of a.matchAll(/<time datetime="(\d{4})/g)){ dated++; if(m[1]<'1995') errors.push(p+': media-register post dated '+m[1]+' is before 1995'); } return ''; });
+  if(p!=='timeline.html') for(const m of rawd.matchAll(/<time datetime="(\d{4})/g)){ dated++; if((m[1]>='2005')!==NOW || (!NOW && m[1]>'1994')) errors.push(p+': dated '+m[1]+' is outside this edition'); }
 }
 const idx=read('index.html'); const posts=idx.split('<article class="post sp').slice(1);
 for(const a of posts){ if(!/<details class="sp-src"><summary>Source<\/summary>/.test(a)) errors.push('post without Source: '+(a.match(/id="([^"]+)"/)||[])[1]); }
@@ -29,14 +31,18 @@ for(const pg of ['friends.html','profiles.html']){ const fr=read(pg); const frl=
   for(const s of frl){ if(!existsSync(new URL('u/'+s+'.html',dir))) errors.push(pg+': card links to missing profile u/'+s+'.html'); } }
 for(const f of ls('u/')){ const r=read('u/'+f); if(!/id="statements"/.test(r)) errors.push('u/'+f+': no posts section'); if(!/class="st"|No public statements found yet/.test(r)) errors.push('u/'+f+': posts section empty'); }
 // fb2 source lock (Sion, 02:18 BST 23 Oct 2026): every item rests on an email. or dartboard. record; the daily highlight-report video is the one marked exception
-if(NOW){ const SRC=/^https:\/\/(email|dartboard)\.bucklerfamily\.estate\//; let items=0, exc=0;
+if(NOW){ const SRC=/^https:\/\/(email|dartboard)\.bucklerfamily\.estate\//; let items=0, exc=0, press=0;
   for(const p of pages){ for(const a of read(p).split('<article class="post sp').slice(1)){ items++; const tag=a.slice(0,a.indexOf('>'));
     if(/data-src-exception="highlight-report"/.test(tag)){ exc++; continue; }
+    // media-register posts (Sion, 17:52 BST 23 Oct 2026: fb2 open to press): register id + source URL + the register page; emails still email./dartboard. only
+    if(/data-src="media-register"/.test(tag)){ press++; const mr=(tag.match(/data-mr="(MR-\d{4}[^"]*)"/)||[])[1]; const s=(a.match(/<details class="sp-src">([\s\S]*?)<\/details>/)||[])[1]||''; const links=[...s.matchAll(/href="([^"]+)"/g)].map(m=>m[1]);
+      if(!mr||links.length<2||!links.some(u=>u==='https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/')||!links.every(u=>/^https?:\/\//.test(u))) errors.push(p+': media-register post without its register id, source URL and register link: '+((a.match(/id="([^"]+)"/)||[])[1]));
+      continue; }
     const s=(a.match(/<details class="sp-src">([\s\S]*?)<\/details>/)||[])[1]||''; const links=[...s.matchAll(/href="([^"]+)"/g)].map(m=>m[1]);
     if(!links.length||!links.every(u=>SRC.test(u))) errors.push(p+': item without an email./dartboard. source: '+((a.match(/id="([^"]+)"/)||[])[1])+' '+links.slice(0,2).join(' ')); } }
   for(const f of ['facebook.html','timeline.html','photos.html']) if(existsSync(new URL(f,dir))) errors.push(f+' must not be on fb2 (source lock)');
   for(const p of pages){ if(/href="[^"]*facebook\.html"/.test(read(p))) errors.push(p+': link to the retired Facebook copy'); }
-  console.log('source lock: '+items+' items, '+exc+' highlight-report exception(s)'); }
+  console.log('source lock: '+items+' items, '+exc+' highlight-report exception(s), '+press+' media-register post(s)'); }
 // Story cards (Sion, 03:14 BST 23 Oct 2026): every story card on both editions carries a picture (its first slide's image or video poster); fb2 images may come from wayback.bucklerfamily.estate (Sion's authorisation of wayback media), names and text still only from email./dartboard.
 { const rail=(idx.match(/<div class="rgs"[\s\S]*?<\/div><script type="application\/json" id="fb-rings-data">([\s\S]*?)<\/script>/)||[]);
   const cards=[...(rail[0]||'').matchAll(/<a class="rg sc[^"]*"[\s\S]*?<\/a>/g)].map(m=>m[0]);

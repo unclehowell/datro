@@ -1,0 +1,1748 @@
+{
+ "version": "1.0.0 · 23 Oct 2026 · Sion's Tab agent",
+ "rule": "fb2 media-register posts (Sion, 17:52 BST 23 Oct 2026: \"Publish all\"): every public register item dated 1995 or later, from /home/user/tab/work/media-register/register.json via work/chronology/fb_items.json. Post = 1–2 sentence neutral summary, the source's own title as the quote, hashtags; dated to publication (year-only and month-only items show only the year or month, the site's convention); Source = the item's URL, its Internet Archive copy when one exists, and the media register page. Embeddable YouTube items play on a tap through youtube-nocookie; unavailable ones are link only. Never in the shorts unless they carry a photo, mp4 or hyperframe.",
+ "skipped": {
+  "MR-0121": "its title carries a word on the house list (the build gate refuses it)",
+  "MR-0118": "the family channel itself, not a dated item: it is the profile of 'YouTube — family channel' (link in its About)"
+ },
+ "merged": {
+  "MR-0092": "MR-0093 (the same Gazette winding-up notices)",
+  "MR-0094": "MR-0095 (the same Churchview Close press set)",
+  "MR-0097": "MR-0096 (the free copy of the same report)"
+ },
+ "profiles": {
+  "mr-daily-express": {
+   "name": "Daily Express",
+   "kind": "Newspaper",
+   "about": "Daily Express: coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-south-wales-echo": {
+   "name": "South Wales Echo",
+   "kind": "Newspaper",
+   "about": "South Wales Echo: coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-london-gazette": {
+   "name": "London Gazette",
+   "kind": "Publisher",
+   "about": "London Gazette: coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-medieval-archaeology": {
+   "name": "Medieval Archaeology",
+   "kind": "Journal",
+   "about": "Medieval Archaeology: coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-amgueddfa-cymru-museum-wales": {
+   "name": "Amgueddfa Cymru – Museum Wales",
+   "kind": "Website",
+   "about": "Amgueddfa Cymru – Museum Wales: coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-hk-land-law-blog": {
+   "name": "HK Land Law blog",
+   "kind": "Website",
+   "about": "HK Land Law blog: coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-unitedtechnocracy-blog": {
+   "name": "unitedtechnocracy (blog)",
+   "kind": "Website",
+   "about": "unitedtechnocracy (blog): coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-coflein-rcahmw": {
+   "name": "Coflein (RCAHMW)",
+   "kind": "Heritage record",
+   "about": "Coflein (RCAHMW): coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-pubmed-central-open-access": {
+   "name": "PubMed Central (open access)",
+   "kind": "Journal",
+   "about": "PubMed Central (open access): coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-people-s-collection-wales": {
+   "name": "People's Collection Wales",
+   "kind": "Heritage record",
+   "about": "People's Collection Wales: coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-youtube-justice-lawyer": {
+   "name": "YouTube — Justice Lawyer",
+   "kind": "YouTube channel",
+   "about": "YouTube — Justice Lawyer: coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-heirs-and-successes": {
+   "name": "Heirs and Successes",
+   "kind": "Website",
+   "about": "Heirs and Successes: coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-barry-district-news": {
+   "name": "Barry & District News",
+   "kind": "Newspaper",
+   "about": "Barry & District News: coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-whatdotheyknow": {
+   "name": "WhatDoTheyKnow",
+   "kind": "Publisher",
+   "about": "WhatDoTheyKnow: coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-great-house-farm-wiki": {
+   "name": "Great House Farm Wiki",
+   "kind": "Website",
+   "about": "Great House Farm Wiki: coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-bpvsbuckler-bucklerfamily-estate": {
+   "name": "bpvsbuckler.bucklerfamily.estate",
+   "kind": "Website",
+   "about": "bpvsbuckler.bucklerfamily.estate: coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-research-bucklerfamily-estate": {
+   "name": "research.bucklerfamily.estate",
+   "kind": "Website",
+   "about": "research.bucklerfamily.estate: coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-glamorgan-history-group": {
+   "name": "Glamorgan History Group (Facebook)",
+   "kind": "Publisher",
+   "about": "Glamorgan History Group (Facebook): coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-vale-of-glamorgan-hub": {
+   "name": "Vale of Glamorgan HUB (Facebook)",
+   "kind": "Publisher",
+   "about": "Vale of Glamorgan HUB (Facebook): coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-great-house-farm-ii-facebook-page": {
+   "name": "Great House Farm II (Facebook page)",
+   "kind": "Publisher",
+   "about": "Great House Farm II (Facebook page): coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-youtube-family-channel": {
+   "name": "YouTube — family channel",
+   "kind": "YouTube channel",
+   "about": "The family’s YouTube channel: videos on Great House Farm (Tŷ Mawr), Llandough, the 1987 case and the daily highlight report.",
+   "url": "https://www.youtube.com/@sionbuckler5713"
+  },
+  "mr-ipsa-loquitur": {
+   "name": "Ipsa Loquitur",
+   "kind": "Website",
+   "about": "Ipsa Loquitur: coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-welsh-government": {
+   "name": "Welsh Government",
+   "kind": "Publisher",
+   "about": "Welsh Government: coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  }
+ },
+ "posts": [
+  {
+   "id": "mr-0089",
+   "mr": "MR-0089",
+   "date": "1995-02-03",
+   "when": "3 February 1995",
+   "dtiso": "1995-02-03",
+   "actor": "mr-daily-express",
+   "kind": "Press",
+   "text": "The Daily Express carried a classified advertisement for Ideal Homes four-bedroom houses at Church View Close, Llandough, built on the former farm land.",
+   "key": "LLANDOUGH, Church View Close. 4 bed houses",
+   "hashtags": [
+    "#press",
+    "#dailyexpress",
+    "#1995",
+    "#redevelopment",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The report: Daily Express 3 Feb 1995 p.55",
+     "https://www.britishnewspaperarchive.co.uk/search/results/1995-01-30/1995-02-04?basicsearch=llandough&exactsearch=false&retrievecountrycounts=false"
+    ],
+    [
+     "Media register MR-0089",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0090",
+   "mr": "MR-0090",
+   "date": "1995-03-16",
+   "when": "16 March 1995",
+   "dtiso": "1995-03-16",
+   "actor": "mr-south-wales-echo",
+   "kind": "Press",
+   "text": "The Echo’s property column reported that a third of the Church View Close development at Llandough had sold.",
+   "key": "LLANDOUGH IDEAL: A third of the Church View Close development has been sold",
+   "hashtags": [
+    "#press",
+    "#southwalesecho",
+    "#1995",
+    "#redevelopment",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The report: South Wales Echo 16 Mar 1995 p.83",
+     "https://www.britishnewspaperarchive.co.uk/search/results/1995-03-13/1995-03-18?basicsearch=llandough&exactsearch=false&retrievecountrycounts=false"
+    ],
+    [
+     "Media register MR-0090",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0091",
+   "mr": "MR-0091",
+   "date": "1995-10-05",
+   "when": "5 October 1995",
+   "dtiso": "1995-10-05",
+   "actor": "mr-south-wales-echo",
+   "kind": "Press",
+   "text": "An Echo property feature covered the Ideal Homes development beside St Dochdwy’s Church, and how a local Sunday School pupil chose the name Church View Close.",
+   "key": "Jenny has the right idea",
+   "hashtags": [
+    "#press",
+    "#southwalesecho",
+    "#1995",
+    "#redevelopment",
+    "#vg41",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The report: South Wales Echo 5 Oct 1995 p.79",
+     "https://www.britishnewspaperarchive.co.uk/search/results/1994-01-01/1996-12-31?basicsearch=%22church%20view%20close%22&exactsearch=true&retrievecountrycounts=false"
+    ],
+    [
+     "Media register MR-0091",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0093",
+   "mr": "MR-0093+MR-0092",
+   "date": "1996-07-03",
+   "when": "3 July 1996",
+   "dtiso": "1996-07-03",
+   "actor": "mr-london-gazette",
+   "kind": "Notice",
+   "text": "The London Gazette published the members’ voluntary winding-up of Western Ground Rents Ltd (company no. 342092), with a notice to creditors and, in April 1997, notice of the final meetings.",
+   "key": "London Gazette, 3 July 1996 (Issue 54455, p. 8982): Western Ground Rents Ltd (no. 342092) placed in members’ voluntary l",
+   "hashtags": [
+    "#londongazette",
+    "#1996",
+    "#widerestate",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The source: London Gazette",
+     "https://greathousefarmwiki.wordpress.com/evidence/ev-0249-london-gazette-3-jul-1996-western-ground-rents-bp-group-liquidation/"
+    ],
+    [
+     "Also: MR-0092",
+     "https://greathousefarmwiki.wordpress.com/evidence/ev-0277-london-gazette-1996-1997-western-ground-rents-creditors-and-final-meetings/"
+    ],
+    [
+     "Media register MR-0093",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0095",
+   "mr": "MR-0095+MR-0094",
+   "date": "1996-09-26",
+   "when": "26 September 1996",
+   "dtiso": "1996-09-26",
+   "actor": "mr-south-wales-echo",
+   "kind": "Press",
+   "text": "An Echo property feature covered Churchview Close beside St Dochdwy’s, Llandough: building began in 1994, Persimmon bought Ideal Homes in early 1996, and the last house there sold by that September.",
+   "key": "Ideal Homes' select Churchview Close development in Llandough (property feature)",
+   "hashtags": [
+    "#press",
+    "#southwalesecho",
+    "#1996",
+    "#redevelopment",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The report: South Wales Echo, Thursday 26 September 1996, p.79 (Property)",
+     "https://www.britishnewspaperarchive.co.uk/search/results/1994-01-01/1996-12-31?basicsearch=%22churchview%20close%22&exactsearch=true&retrievecountrycounts=false"
+    ],
+    [
+     "Also: MR-0094",
+     "https://greathousefarmwiki.wordpress.com/evidence/ev-0276-churchview-close-llandough-ideal-homes-persimmon-1994-1996/"
+    ],
+    [
+     "Media register MR-0095",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0096",
+   "mr": "MR-0096+MR-0097",
+   "date": "2005-01-01",
+   "when": "2005",
+   "dtiso": "2005",
+   "actor": "mr-medieval-archaeology",
+   "kind": "Journal",
+   "text": "Medieval Archaeology published the full report on the 1994 excavation at Llandough: 1,026 burials from an early-medieval monastic cemetery beside the Roman villa. The excavating unit’s free copy is linked below.",
+   "key": "An Early-medieval Monastic Cemetery at Llandough, Glamorgan: Excavations in 1994",
+   "hashtags": [
+    "#journal",
+    "#medievalarchaeology",
+    "#2005",
+    "#1994excavation",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The article: Medieval Archaeology",
+     "https://www.tandfonline.com/doi/abs/10.1179/007660905x54044"
+    ],
+    [
+     "Free copy: Cotswold Archaeology",
+     "https://cotswoldarchaeology.co.uk/wp-content/uploads/2011/07/llandough-pdf-1.pdf"
+    ],
+    [
+     "Internet Archive copy (MR-0097)",
+     "http://web.archive.org/web/20240621165103/https://cotswoldarchaeology.co.uk/wp-content/uploads/2011/07/llandough-pdf-1.pdf"
+    ],
+    [
+     "Media register MR-0096",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0098",
+   "mr": "MR-0098",
+   "date": "2005-01-01",
+   "when": "2005",
+   "dtiso": "2005",
+   "actor": "mr-medieval-archaeology",
+   "kind": "Journal",
+   "text": "A companion paper in Medieval Archaeology set the Llandough excavation in context, from the Roman villa to the early-medieval monastery.",
+   "key": "From Villa to Monastery: Llandough in Context",
+   "hashtags": [
+    "#journal",
+    "#medievalarchaeology",
+    "#2005",
+    "#1994excavation",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The article: Medieval Archaeology",
+     "https://www.tandfonline.com/doi/abs/10.1179/007660905x54053"
+    ],
+    [
+     "Media register MR-0098",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0099",
+   "mr": "MR-0099",
+   "date": "2007-05-02",
+   "when": "2 May 2007",
+   "dtiso": "2007-05-02",
+   "actor": "mr-amgueddfa-cymru-museum-wales",
+   "kind": "Blog",
+   "text": "Amgueddfa Cymru – Museum Wales blogged about one skeleton, burial 631, from the 1994 Llandough excavation.",
+   "key": "The suffering of burial 631",
+   "hashtags": [
+    "#blog",
+    "#amgueddfacymrumuseumwales",
+    "#2007",
+    "#1994excavation",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The post: Amgueddfa Cymru – Museum Wales",
+     "https://museum.wales/blog/1345/The-suffering-of-burial-631/"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023162934/https://museum.wales/blog/1345/The-suffering-of-burial-631/"
+    ],
+    [
+     "Media register MR-0099",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0100",
+   "mr": "MR-0100",
+   "date": "2011-10-12",
+   "when": "12 October 2011",
+   "dtiso": "2011-10-12",
+   "actor": "mr-hk-land-law-blog",
+   "kind": "Blog",
+   "text": "A Hong Kong land-law blog discussed the 1987 Court of Appeal decision on how a unilateral licence can stop time running for adverse possession.",
+   "key": "Unilateral licence can stop time running for adverse possession",
+   "hashtags": [
+    "#blog",
+    "#hklandlawblog",
+    "#2011",
+    "#1987case",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The post: HK Land Law blog",
+     "https://hklandlaw.wordpress.com/2011/10/12/unilateral-licence-can-stop-time-running-for-adverse-possession/"
+    ],
+    [
+     "Internet Archive copy",
+     "http://web.archive.org/web/20220617215011/https://hklandlaw.wordpress.com/2011/10/12/unilateral-licence-can-stop-time-running-for-adverse-possession/"
+    ],
+    [
+     "Media register MR-0100",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0101",
+   "mr": "MR-0101",
+   "date": "2012-08-29",
+   "when": "29 August 2012",
+   "dtiso": "2012-08-29",
+   "actor": "mr-unitedtechnocracy-blog",
+   "kind": "Blog",
+   "text": "A blog post set out the historical, archaeological and family record of Great House Farm.",
+   "key": "The Great House Farm Story",
+   "hashtags": [
+    "#blog",
+    "#unitedtechnocracy",
+    "#2012",
+    "#greathousefarm",
+    "#1987case",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The post: unitedtechnocracy (blog)",
+     "https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"
+    ],
+    [
+     "Internet Archive copy",
+     "http://web.archive.org/web/20261021184803/https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"
+    ],
+    [
+     "Media register MR-0101",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0102",
+   "mr": "MR-0102",
+   "date": "2014-06-09",
+   "when": "9 June 2014",
+   "dtiso": "2014-06-09",
+   "actor": "mr-coflein-rcahmw",
+   "kind": "Heritage record",
+   "text": "Coflein, the national record of the RCAHMW, holds a site record for the early-medieval cemetery excavated at Llandough in 1994 (project archive CA017).",
+   "key": "Coflein NPRN 802090: Llandough early medieval cemetery",
+   "hashtags": [
+    "#heritage",
+    "#coflein",
+    "#2014",
+    "#1994excavation",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The record: Coflein (RCAHMW)",
+     "https://coflein.gov.uk/en/site/802090/"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023163008/https://coflein.gov.uk/en/sites/802090"
+    ],
+    [
+     "Media register MR-0102",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0103",
+   "mr": "MR-0103",
+   "date": "2017-01-01",
+   "when": "2017",
+   "dtiso": "2017",
+   "actor": "mr-pubmed-central-open-access",
+   "kind": "Journal",
+   "text": "An open-access journal article on early-medieval diet in western Britain includes isotope data from the Llandough cemetery.",
+   "key": "A multi-isotope investigation of diet and subsistence amongst island and mainland populations from early medieval western Britain",
+   "hashtags": [
+    "#journal",
+    "#pubmedcentral",
+    "#2017",
+    "#1994excavation",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The article: PubMed Central (open access)",
+     "https://pmc.ncbi.nlm.nih.gov/articles/PMC5324698/"
+    ],
+    [
+     "Media register MR-0103",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0104",
+   "mr": "MR-0104",
+   "date": "2018-08-20",
+   "when": "20 August 2018",
+   "dtiso": "2018-08-20",
+   "actor": "mr-people-s-collection-wales",
+   "kind": "Heritage record",
+   "text": "People’s Collection Wales published a colour photograph of the entrance gate of Great House Farm, Llandough.",
+   "key": "Great House Farm, Llandough. (entrance gate)",
+   "hashtags": [
+    "#heritage",
+    "#peoplescollectionwales",
+    "#2018",
+    "#greathousefarm",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The record: People's Collection Wales",
+     "https://www.peoplescollection.wales/items/871591"
+    ],
+    [
+     "Internet Archive copy",
+     "http://web.archive.org/web/20221013001441/https://www.peoplescollection.wales/items/871591"
+    ],
+    [
+     "Media register MR-0104",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0105",
+   "mr": "MR-0105",
+   "date": "2018-08-20",
+   "when": "20 August 2018",
+   "dtiso": "2018-08-20",
+   "actor": "mr-people-s-collection-wales",
+   "kind": "Heritage record",
+   "text": "People’s Collection Wales published a black-and-white photograph of the farm with the barn behind, from a chapel Sale of Work.",
+   "key": "Great House Farm, Llandough. (chapel Sale of Work)",
+   "hashtags": [
+    "#heritage",
+    "#peoplescollectionwales",
+    "#2018",
+    "#greathousefarm",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The record: People's Collection Wales",
+     "https://www.peoplescollection.wales/items/871431"
+    ],
+    [
+     "Internet Archive copy",
+     "http://web.archive.org/web/20221016030241/https://www.peoplescollection.wales/items/871431"
+    ],
+    [
+     "Media register MR-0105",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0106",
+   "mr": "MR-0106",
+   "date": "2020-07-08",
+   "when": "8 July 2020",
+   "dtiso": "2020-07-08",
+   "actor": "mr-youtube-justice-lawyer",
+   "kind": "Video",
+   "text": "A case-law channel posted a video on the 1987 judgment and the meaning of factual possession.",
+   "key": "[Case Law Land] ['factual possession'] BP Properties v Buckler (1987) 55 P & CR 337 CA",
+   "hashtags": [
+    "#youtube",
+    "#youtubejusticelawyer",
+    "#2020",
+    "#1987case",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=kn4yVOuVkgg"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023163120/https://www.youtube.com/watch?v=kn4yVOuVkgg"
+    ],
+    [
+     "Media register MR-0106",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "yt": "kn4yVOuVkgg"
+  },
+  {
+   "id": "mr-0107",
+   "mr": "MR-0107",
+   "date": "2025-04-07",
+   "when": "7 April 2025",
+   "dtiso": "2025-04-07",
+   "actor": "mr-heirs-and-successes",
+   "kind": "Blog",
+   "text": "A practitioners’ blog discussed the 1987 judgment as a cautionary case on adverse possession.",
+   "key": "Possession, Permission, and Prevarication: A Cautionary Case on Adverse Possession",
+   "hashtags": [
+    "#blog",
+    "#heirsandsuccesses",
+    "#2025",
+    "#1987case",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The post: Heirs and Successes",
+     "https://heirsandsuccesses.com/2025/04/07/possession-permission-and-prevarication-a-cautionary-case-on-adverse-possession/"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023163141/https://heirsandsuccesses.com/2025/04/07/possession-permission-and-prevarication-a-cautionary-case-on-adverse-possession-in-nsw/"
+    ],
+    [
+     "Media register MR-0107",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0108",
+   "mr": "MR-0108",
+   "date": "2025-05-14",
+   "when": "14 May 2025",
+   "dtiso": "2025-05-14",
+   "actor": "mr-barry-district-news",
+   "kind": "Press",
+   "text": "The Barry & District News ran a heritage piece on the early-medieval monument at Llandough.",
+   "key": "The early medieval monument at Llandough, near Cardiff",
+   "hashtags": [
+    "#press",
+    "#barrydistrictnews",
+    "#2025",
+    "#heritage",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The report: Barry & District News",
+     "https://www.barryanddistrictnews.co.uk/news/25159660.early-medieval-monument-llandough-near-cardiff/"
+    ],
+    [
+     "Internet Archive copy",
+     "http://web.archive.org/web/20260115043613/https://www.barryanddistrictnews.co.uk/news/25159660.early-medieval-monument-llandough-near-cardiff/"
+    ],
+    [
+     "Media register MR-0108",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0109",
+   "mr": "MR-0109",
+   "date": "2026-01-01",
+   "when": "2026",
+   "dtiso": "2026",
+   "actor": "mr-whatdotheyknow",
+   "kind": "Request",
+   "text": "A public information request on WhatDoTheyKnow asks for the records of the 1988 dispossession of Great House Farm.",
+   "key": "1988 Dispossession of Great House Farm, Llandough from the Williams/ Buckler Family",
+   "hashtags": [
+    "#post",
+    "#whatdotheyknow",
+    "#2026",
+    "#1988demolition",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The source: WhatDoTheyKnow",
+     "https://www.whatdotheyknow.com/request/1988_dispossession_of_great_hous"
+    ],
+    [
+     "Media register MR-0109",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0110",
+   "mr": "MR-0110",
+   "date": "2026-01-01",
+   "when": "2026",
+   "dtiso": "2026",
+   "actor": "mr-whatdotheyknow",
+   "kind": "Request",
+   "text": "A public information request on WhatDoTheyKnow asks The National Archives for its records on Great House Farm and the 1987 case.",
+   "key": "Great House Farm, Llandough, Cardiff (BP vs Buckler 1987)",
+   "hashtags": [
+    "#post",
+    "#whatdotheyknow",
+    "#2026",
+    "#1987case",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The source: WhatDoTheyKnow",
+     "https://www.whatdotheyknow.com/request/great_house_farm_llandough_cardi"
+    ],
+    [
+     "Media register MR-0110",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0111",
+   "mr": "MR-0111",
+   "date": "2026-01-01",
+   "when": "2026",
+   "dtiso": "2026",
+   "actor": "mr-whatdotheyknow",
+   "kind": "Request",
+   "text": "A public information request on WhatDoTheyKnow asks for records of the 1987 case.",
+   "key": "BP vs Buckler 1987",
+   "hashtags": [
+    "#post",
+    "#whatdotheyknow",
+    "#2026",
+    "#1987case",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The source: WhatDoTheyKnow",
+     "https://www.whatdotheyknow.com/request/bp_vs_buckler_1987_1988"
+    ],
+    [
+     "Media register MR-0111",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0112",
+   "mr": "MR-0112",
+   "date": "2026-01-01",
+   "when": "2026",
+   "dtiso": "2026",
+   "actor": "mr-great-house-farm-wiki",
+   "kind": "Blog",
+   "text": "The Great House Farm Wiki is the public documentary archive of the farm, the case and the evidence register.",
+   "key": "Great House Farm Wiki",
+   "hashtags": [
+    "#blog",
+    "#greathousefarmwiki",
+    "#2026",
+    "#greathousefarm",
+    "#1987case",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The post: Great House Farm Wiki",
+     "https://greathousefarmwiki.wordpress.com/"
+    ],
+    [
+     "Internet Archive copy",
+     "http://web.archive.org/web/20261015094544/https://greathousefarmwiki.wordpress.com/"
+    ],
+    [
+     "Media register MR-0112",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0113",
+   "mr": "MR-0113",
+   "date": "2026-01-01",
+   "when": "2026",
+   "dtiso": "2026",
+   "actor": "mr-bpvsbuckler-bucklerfamily-estate",
+   "kind": "Blog",
+   "text": "The story site tells the farm’s story with a timeline and a media catalogue.",
+   "key": "Tŷ Mawr — The Great House Farm Story",
+   "hashtags": [
+    "#blog",
+    "#bpvsbucklerbucklerfamilyestate",
+    "#2026",
+    "#greathousefarm",
+    "#1987case",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The post: bpvsbuckler.bucklerfamily.estate",
+     "https://bpvsbuckler.bucklerfamily.estate/"
+    ],
+    [
+     "Internet Archive copy",
+     "http://web.archive.org/web/20261023092041/https://bpvsbuckler.bucklerfamily.estate/"
+    ],
+    [
+     "Media register MR-0113",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0114",
+   "mr": "MR-0114",
+   "date": "2026-01-01",
+   "when": "2026",
+   "dtiso": "2026",
+   "actor": "mr-research-bucklerfamily-estate",
+   "kind": "Blog",
+   "text": "The research site mirrors the wiki and opens with a start-here guide to the farm and the case.",
+   "key": "Start Here — Great House Farm (Tŷ Mawr)",
+   "hashtags": [
+    "#blog",
+    "#researchbucklerfamilyestate",
+    "#2026",
+    "#greathousefarm",
+    "#parcela",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The post: research.bucklerfamily.estate",
+     "https://research.bucklerfamily.estate/start-here/"
+    ],
+    [
+     "Media register MR-0114",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0115",
+   "mr": "MR-0115",
+   "date": "2026-01-01",
+   "when": "2026",
+   "dtiso": "2026",
+   "actor": "mr-glamorgan-history-group",
+   "kind": "Post",
+   "text": "A post in the Glamorgan History Group asked members for memories and records of Great House Farm, Llandough.",
+   "key": "Glamorgan History Group post: researching Great House Farm, Llandough",
+   "hashtags": [
+    "#post",
+    "#glamorganhistorygroup",
+    "#2026",
+    "#greathousefarm",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The source: Glamorgan History Group (Facebook)",
+     "https://www.facebook.com/groups/glamorganhistory/posts/27194287970221799/"
+    ],
+    [
+     "Media register MR-0115",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0116",
+   "mr": "MR-0116",
+   "date": "2026-01-01",
+   "when": "2026",
+   "dtiso": "2026",
+   "actor": "mr-vale-of-glamorgan-hub",
+   "kind": "Post",
+   "text": "A post in the Vale of Glamorgan HUB community group shared the story of Great House Farm (Tŷ Mawr) and the Cedwyn Estate.",
+   "key": "Vale of Glamorgan HUB post: Great House Farm (Ty Mawr), Cedwyn Estate",
+   "hashtags": [
+    "#post",
+    "#valeofglamorganhub",
+    "#2026",
+    "#greathousefarm",
+    "#cedwynestate",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The source: Vale of Glamorgan HUB (Facebook)",
+     "https://www.facebook.com/groups/valeofglamorgan/posts/1430801139157693/"
+    ],
+    [
+     "Media register MR-0116",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0117",
+   "mr": "MR-0117",
+   "date": "2026-01-01",
+   "when": "2026",
+   "dtiso": "2026",
+   "actor": "mr-great-house-farm-ii-facebook-page",
+   "kind": "Post",
+   "text": "The Great House Farm II Facebook page shares the farm’s story.",
+   "key": "Great House Farm II (Facebook page)",
+   "hashtags": [
+    "#post",
+    "#greathousefarmii",
+    "#2026",
+    "#greathousefarm",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The source: Great House Farm II (Facebook page)",
+     "https://www.facebook.com/p/Great-House-Farm-II-61587177023506/"
+    ],
+    [
+     "Media register MR-0117",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0119",
+   "mr": "MR-0119",
+   "date": "2026-01-01",
+   "when": "2026",
+   "dtiso": "2026",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a video.",
+   "key": "Great House Farm, Llandough, Wales [Update]",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#greathousefarm",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=XuArB_vYWWA"
+    ],
+    [
+     "Media register MR-0119",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0120",
+   "mr": "MR-0120",
+   "date": "2026-01-01",
+   "when": "2026",
+   "dtiso": "2026",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a video.",
+   "key": "Great House Farm (Ty Mawr/ Cedfin/ Cedwyn) and St Dochdwy's Church, Llandough",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#cedwynestate",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=J8Dt2UBuHt0"
+    ],
+    [
+     "Media register MR-0120",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0122",
+   "mr": "MR-0122",
+   "date": "2026-01-01",
+   "when": "2026",
+   "dtiso": "2026",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a video.",
+   "key": "BP vs Buckler 1987. Church View Close, Llandough. Formerly Great House Farm.",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#1987case",
+    "#redevelopment",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=0eXOoj7eUCo"
+    ],
+    [
+     "Media register MR-0122",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0123",
+   "mr": "MR-0123",
+   "date": "2026-01-01",
+   "when": "2026",
+   "dtiso": "2026",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a video.",
+   "key": "BP vs Buckler 1987",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#1987case",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=ADs8MemYWYw"
+    ],
+    [
+     "Media register MR-0123",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0124",
+   "mr": "MR-0124",
+   "date": "2026-01-01",
+   "when": "2026",
+   "dtiso": "2026",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a video.",
+   "key": "BP vs Buckler 1987",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#1987case",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=4GXmR7mAas0"
+    ],
+    [
+     "Media register MR-0124",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0125",
+   "mr": "MR-0125",
+   "date": "2026-02-15",
+   "when": "15 February 2026",
+   "dtiso": "2026-02-15",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a video.",
+   "key": "BP Vs Buckler 1987",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#1987case",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=hzbCZg_3V9k"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023163213/https://www.youtube.com/watch?v=hzbCZg_3V9k"
+    ],
+    [
+     "Media register MR-0125",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "yt": "hzbCZg_3V9k"
+  },
+  {
+   "id": "mr-0126",
+   "mr": "MR-0126",
+   "date": "2026-04-05",
+   "when": "5 April 2026",
+   "dtiso": "2026-04-05",
+   "actor": "mr-ipsa-loquitur",
+   "kind": "Blog",
+   "text": "A student case summary set out the adverse-possession and unilateral-licence points of the 1987 judgment.",
+   "key": "BP Properties Ltd v Buckler – Case Summary",
+   "hashtags": [
+    "#blog",
+    "#ipsaloquitur",
+    "#2026",
+    "#1987case",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The post: Ipsa Loquitur",
+     "https://ipsaloquitur.com/land-law/cases/bp-properties-v-buckler/"
+    ],
+    [
+     "Media register MR-0126",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0127",
+   "mr": "MR-0127",
+   "date": "2026-06-01",
+   "when": "June 2026",
+   "dtiso": "2026-06",
+   "actor": "mr-welsh-government",
+   "kind": "Release",
+   "text": "The Welsh Government released information held with Cadw about Great House Farm, Llandough, under request ATISN 27021.",
+   "key": "Great House Farm, Llandough (ATISN 27021)",
+   "hashtags": [
+    "#post",
+    "#welshgovernment",
+    "#2026",
+    "#greathousefarm",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The source: Welsh Government",
+     "https://www.gov.wales/sites/default/files/publications/2026-06/atisn27021.pdf"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023163251/https://www.gov.wales/sites/default/files/publications/2026-06/atisn27021.pdf"
+    ],
+    [
+     "Media register MR-0127",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0128",
+   "mr": "MR-0128",
+   "date": "2026-06-04",
+   "when": "4 June 2026",
+   "dtiso": "2026-06-04",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a video.",
+   "key": "BP vs Buckler 1987 (2026 Update) #news #british #bp #crime #law #britishchambers #wales",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#1987case",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=SNUY-XFAjyE"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023163304/https://www.youtube.com/watch?v=SNUY-XFAjyE"
+    ],
+    [
+     "Media register MR-0128",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0129",
+   "mr": "MR-0129",
+   "date": "2026-07-02",
+   "when": "2 July 2026",
+   "dtiso": "2026-07-02",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a video.",
+   "key": "Great House Farm, Llandough, Cardiff in Wales & Great House Farm II Museum/ Open House in Patagonia",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#widerarea",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=aazpNjlzRtQ"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023163349/https://www.youtube.com/watch?v=aazpNjlzRtQ"
+    ],
+    [
+     "Media register MR-0129",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "yt": "aazpNjlzRtQ"
+  },
+  {
+   "id": "mr-0130",
+   "mr": "MR-0130",
+   "date": "2026-07-03",
+   "when": "3 July 2026",
+   "dtiso": "2026-07-03",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a video.",
+   "key": "BP vs Buckler 1987 || GREAT HOUSE 2, Patagonia, Argentina 🏴󠁧󠁢󠁷󠁬󠁳󠁿🇦🇷",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#1987case",
+    "#widerarea",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=Yv7q1POk550"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023163501/https://www.youtube.com/watch?v=Yv7q1POk550"
+    ],
+    [
+     "Media register MR-0130",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "yt": "Yv7q1POk550"
+  },
+  {
+   "id": "mr-0131",
+   "mr": "MR-0131",
+   "date": "2026-07-09",
+   "when": "9 July 2026",
+   "dtiso": "2026-07-09",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a video.",
+   "key": "Great House Farm II, Tre Llandough, Patagonia",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#greathousefarm",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=05_Ei82HSeE"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023163511/https://www.youtube.com/watch?v=05_Ei82HSeE"
+    ],
+    [
+     "Media register MR-0131",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "yt": "05_Ei82HSeE"
+  },
+  {
+   "id": "mr-0132",
+   "mr": "MR-0132",
+   "date": "2026-07-13",
+   "when": "13 July 2026",
+   "dtiso": "2026-07-13",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a video.",
+   "key": "Great House Farm II",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#greathousefarm",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=baMrjvG6hl8"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023163556/https://www.youtube.com/watch?v=baMrjvG6hl8"
+    ],
+    [
+     "Media register MR-0132",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "yt": "baMrjvG6hl8"
+  },
+  {
+   "id": "mr-0133",
+   "mr": "MR-0133",
+   "date": "2026-07-31",
+   "when": "31 July 2026",
+   "dtiso": "2026-07-31",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a video.",
+   "key": "Great House Farm, Llandough, Cardiff, Wales",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#widerarea",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=-c0UvjM-lwA"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023163715/https://www.youtube.com/watch?v=-c0UvjM-lwA"
+    ],
+    [
+     "Media register MR-0133",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "yt": "-c0UvjM-lwA"
+  },
+  {
+   "id": "mr-0134",
+   "mr": "MR-0134",
+   "date": "2026-10-22",
+   "when": "22 October 2026",
+   "dtiso": "2026-10-22",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a video.",
+   "key": "Tŷ Mawr, the Great House of Llandough: the story on the map (1547–2026)",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#greathousefarm",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=duISt8CMOfM"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023163729/https://www.youtube.com/watch?v=duISt8CMOfM"
+    ],
+    [
+     "Media register MR-0134",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "yt": "duISt8CMOfM"
+  },
+  {
+   "id": "mr-0135",
+   "mr": "MR-0135",
+   "date": "2026-10-23",
+   "when": "23 October 2026",
+   "dtiso": "2026-10-23",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a short video.",
+   "key": "Highlight Report HR-06 · 19–23 Oct 2026 · Great House Farm #Shorts",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#redevelopment",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=vnhbyahwQWk"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023163813/https://www.youtube.com/watch?v=vnhbyahwQWk"
+    ],
+    [
+     "Media register MR-0135",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "yt": "vnhbyahwQWk"
+  },
+  {
+   "id": "mr-0136",
+   "mr": "MR-0136",
+   "date": "2026-10-23",
+   "when": "23 October 2026",
+   "dtiso": "2026-10-23",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a short video.",
+   "key": "30 skeletons beneath a demolished Welsh farm (Llandough, 1994) #Shorts",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#1994excavation",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=p7xEURn9kb8"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023163946/https://www.youtube.com/watch?v=p7xEURn9kb8"
+    ],
+    [
+     "Media register MR-0136",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "yt": "p7xEURn9kb8"
+  },
+  {
+   "id": "mr-0137",
+   "mr": "MR-0137",
+   "date": "2026-10-23",
+   "when": "23 October 2026",
+   "dtiso": "2026-10-23",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a short video.",
+   "key": "22 May 1980: a name from the farm's records in Parliament #Shorts",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#1987case",
+    "#widerestate",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=dnQ0gFhcbEA"
+    ],
+    [
+     "Media register MR-0137",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "yt": "dnQ0gFhcbEA"
+  },
+  {
+   "id": "mr-0138",
+   "mr": "MR-0138",
+   "date": "2026-10-23",
+   "when": "23 October 2026",
+   "dtiso": "2026-10-23",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a short video.",
+   "key": "1,026 burials under one Welsh farmyard #Shorts",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#1994excavation",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=6o07JL4ZoGY"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023164208/https://www.youtube.com/watch?v=6o07JL4ZoGY"
+    ],
+    [
+     "Media register MR-0138",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "yt": "6o07JL4ZoGY"
+  },
+  {
+   "id": "mr-0139",
+   "mr": "MR-0139",
+   "date": "2026-10-23",
+   "when": "23 October 2026",
+   "dtiso": "2026-10-23",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a short video.",
+   "key": "How to read an 1841 farm record in 3 steps #Shorts",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#widerestate",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=Z1GRL_h31Y8"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023164222/https://www.youtube.com/watch?v=Z1GRL_h31Y8"
+    ],
+    [
+     "Media register MR-0139",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "yt": "Z1GRL_h31Y8"
+  },
+  {
+   "id": "mr-0140",
+   "mr": "MR-0140",
+   "date": "2026-10-23",
+   "when": "23 October 2026",
+   "dtiso": "2026-10-23",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a short video.",
+   "key": "Open day to save a Welsh farmhouse, April 1974 #Shorts",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#greathousefarm",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=5wCBtClDkyQ"
+    ],
+    [
+     "Media register MR-0140",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "yt": "5wCBtClDkyQ"
+  },
+  {
+   "id": "mr-0141",
+   "mr": "MR-0141",
+   "date": "2026-10-23",
+   "when": "23 October 2026",
+   "dtiso": "2026-10-23",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a short video.",
+   "key": "Today at Tŷ Mawr · highlight report · 22 Oct 2026 #Shorts",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#greathousefarm",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=HcZzIyEhhO8"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023164417/https://www.youtube.com/watch?v=HcZzIyEhhO8"
+    ],
+    [
+     "Media register MR-0141",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "yt": "HcZzIyEhhO8"
+  },
+  {
+   "id": "mr-0142",
+   "mr": "MR-0142",
+   "date": "2026-10-23",
+   "when": "23 October 2026",
+   "dtiso": "2026-10-23",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a short video.",
+   "key": "1916: \"the whole of the farm\" · Great House Farm Ep 7 #Shorts",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#widerestate",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=aRRvkt3ryXg"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023164443/https://www.youtube.com/watch?v=aRRvkt3ryXg"
+    ],
+    [
+     "Media register MR-0142",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "yt": "aRRvkt3ryXg"
+  },
+  {
+   "id": "mr-0143",
+   "mr": "MR-0143",
+   "date": "2026-10-23",
+   "when": "23 October 2026",
+   "dtiso": "2026-10-23",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a short video.",
+   "key": "1900 and 1905: the paper trail · Great House Farm Ep 6 #Shorts",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#widerestate",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=XPM6vi1R7VA"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023164546/https://www.youtube.com/watch?v=XPM6vi1R7VA"
+    ],
+    [
+     "Media register MR-0143",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "yt": "XPM6vi1R7VA"
+  },
+  {
+   "id": "mr-0144",
+   "mr": "MR-0144",
+   "date": "2026-10-23",
+   "when": "23 October 2026",
+   "dtiso": "2026-10-23",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a short video.",
+   "key": "BP Properties v Buckler (1987): the land-law case students still read #Shorts",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#1987case",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=nYxHueeoLmc"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023164627/https://www.youtube.com/watch?v=nYxHueeoLmc"
+    ],
+    [
+     "Media register MR-0144",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "yt": "nYxHueeoLmc"
+  },
+  {
+   "id": "mr-0145",
+   "mr": "MR-0145",
+   "date": "2026-10-23",
+   "when": "23 October 2026",
+   "dtiso": "2026-10-23",
+   "actor": "mr-youtube-family-channel",
+   "kind": "Video",
+   "text": "The family channel posted a short video.",
+   "key": "Marconi at Lavernock, May 1897: radio crossed the sea here #Shorts",
+   "hashtags": [
+    "#youtube",
+    "#youtubefamilychannel",
+    "#2026",
+    "#widerarea",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=hS4aN9dBr4I"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023164641/https://www.youtube.com/watch?v=hS4aN9dBr4I"
+    ],
+    [
+     "Media register MR-0145",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "yt": "hS4aN9dBr4I"
+  }
+ ]
+}

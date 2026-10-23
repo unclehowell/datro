@@ -320,6 +320,23 @@ if NOW:
         x["src"] = [(t_, u_) for t_, u_ in x.get("src", []) if u_ and SRC_OK.match(u_)]
         if x["src"]: _keep.append(x)
     EV = _keep
+    # MEDIA REGISTER ON fb2 (Sion, 17:52 BST 23 Oct 2026, "Publish all"): fb2 is open to press. Every public media-register item dated 1995 or
+    # later (press, journals, blogs, heritage records, notices, YouTube) is a post by its outlet, from data/press_now.json; the article carries
+    # data-src="media-register" data-mr="MR-xxxx" and its Source links the item, its Internet Archive copy and the register page. Emails unchanged.
+    _pnp = os.path.join(ROOT, "data", "press_now.json")
+    if os.path.exists(_pnp):
+        PN = json.load(open(_pnp, encoding="utf-8")); _byname = {p_["name"]: sl_ for sl_, p_ in FB2.items()}; _alias = {}
+        for i_, (sl_, p_) in enumerate(PN["profiles"].items()):
+            if p_["name"] in _byname: _alias[sl_] = _byname[p_["name"]]; continue
+            FB2[sl_] = {"name": p_["name"], "kind": p_["kind"] + " · media register", "entity": True, "initials": initials(p_["name"]), "color": COLORS[i_ % len(COLORS)],
+                        "about": p_["about"] if ok(p_["about"]) else p_["name"], "avatar": "img/social/av-fb2-%s.svg" % sl_}
+            t_ = FB2[sl_]["initials"]; fs_ = 44 if len(t_) <= 2 else 32
+            open(os.path.join(SITE, FB2[sl_]["avatar"]), "w").write(('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="%s"/>'
+                '<text x="50" y="50" dy=".36em" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-weight="700" font-size="%d" fill="#fff">%s</text></svg>') % (FB2[sl_]["color"], fs_, e(t_)))
+        for r_ in PN["posts"]:
+            x = dict(r_); x["actor"] = _alias.get(r_["actor"], r_["actor"]); x["tags"] = []; x["wall"] = True; x["rank"] = 2; x["press"] = r_["mr"]
+            x["lead"] = ""; x["quote"] = None; x["src"] = [tuple(s_) for s_ in r_["src"]]
+            if prof(x["actor"]) and r_["date"][:4] >= "1995": EV.append(x)
 EV.sort(key=lambda x: (x["date"], -x.get("rank", 3)), reverse=True)
 REPLY_DATES = collections.defaultdict(list); LETTERS = collections.defaultdict(list)
 for x in sorted(EV, key=lambda x: x["date"]):
@@ -396,6 +413,7 @@ def card(x, up):
             "".join(' <span class="wl-with">with <a href="%su/%s.html">%s</a></span>' % (up, t, e(prof(t)["name"])) for t in x["tags"][:2] if t and prof(t) and t != a and x["kind"] != "Highlight report") if not (x.get("life") or x["kind"] == "Letter sent") else ""),
             e(x.get("dtiso") or x["date"]), e(x["when"]), (" at %s" % e(x["at"])) if x.get("at") else "", "Email" if x.get("email") else e(x["kind"]))]
     if x.get("exception"): h[0] = h[0].replace('<article class="post sp wl" ', '<article class="post sp wl" data-src-exception="highlight-report" ', 1)
+    if x.get("press"): h[0] = h[0].replace('<article class="post sp wl" ', '<article class="post sp wl" data-src="media-register" data-mr="%s" ' % e(x["press"]), 1)
     h.append('<div class="sp-b">')
     if x.get("daily"):
         d = x["daily"]; st = d["status"]
@@ -426,6 +444,7 @@ def card(x, up):
         if x.get("text2"): h.append('<p class="wl-lead">%s</p>' % e(x["text2"]))
         if x.get("photo") and os.path.exists(os.path.join(SITE, x["photo"])): h.append('<figure class="sp-media"><img src="%s%s" alt="" loading="lazy"></figure>' % (up, e(x["photo"])))
     if not x.get("daily") and not x.get("hf"): h.append(TS.media_html(x, up))
+    if x.get("yt"): h.append(yt_html(x))
     if x.get("hf"): h.append(hf_block(x["hf"], up, bool(x.get("daily"))))
     h.append("</div>")
     h.append(social_bits(x, up))
@@ -435,6 +454,12 @@ def card(x, up):
              "<p>" + " · ".join('<a href="%s" rel="noopener">%s</a>' % (e(u), e(t)) for t, u in srcs if u) + "</p>"))
     h.append("</article>")
     return "".join(h)
+def yt_html(x):
+    """A media-register YouTube item: the youtube-nocookie player loads only on a tap (the site's video pattern); no thumbnail from outside the site."""
+    js = ("var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+this.dataset.yt+'?autoplay=1&amp;rel=0&amp;playsinline=1';"
+          "f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title=this.getAttribute('aria-label');f.loading='lazy';this.replaceWith(f)")
+    return ('<figure class="wl-vid mr-yt"><button type="button" class="mr-ytp" data-yt="%s" aria-label="Play: %s" onclick="%s"><span class="mr-play" aria-hidden="true">▶</span>'
+            '<span class="mr-ytt">%s</span></button></figure>' % (e(x["yt"]), e(x.get("key") or "Video"), js, e(x.get("key") or "Video")))
 def hf_block(r, up, under_daily):
     """The highlight-report video and its post text (the caption): first two lines shown, the rest behind a tap."""
     lines = [l for l in r["caption"].split("\n") if l.strip() and not l.startswith("#") and not l.startswith("Full report:") and not (r["hr_id"] in l and r["period"] in l)]
@@ -462,6 +487,11 @@ TAGCSS = """
 .wl-key{font-style:italic}
 html[data-ghf-mode="night"] .wl-tags{color:#8ab4ff}
 @media (prefers-color-scheme:dark){html:not([data-ghf-mode="day"]) .wl-tags{color:#8ab4ff}}
+/* media-register YouTube items: tap to play (Sion, 17:52 BST 23 Oct 2026) */
+.mr-yt{margin:8px 0 0}.mr-yt iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:8px;background:#000}
+.mr-ytp{display:flex;align-items:center;gap:12px;width:100%;aspect-ratio:16/9;max-height:60vh;padding:14px;border:0;border-radius:8px;background:linear-gradient(135deg,#2E1B6A,#111);color:#fff;font:inherit;text-align:left;cursor:pointer;box-sizing:border-box}
+.mr-play{flex:0 0 52px;height:52px;border-radius:50%;background:#FF8A5B;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px}
+.mr-ytt{font-size:15px;font-weight:600;line-height:1.3;overflow-wrap:anywhere}
 """
 WALLCSS = """/* wall.css — the hope wall and full profiles (22 Oct 2026). — Sion's Tab agent */
 .wl-hero{background:var(--card);padding:14px 14px 10px;margin:0 0 10px}
@@ -726,7 +756,7 @@ def build():
     nxt = first[-1]["date"][:4] if first else str(TODAY.year)
     if NOW:
         hero = ('<section class="wl-hero"><p>The campaign since 2005, posted by the bodies that acted: requests, replies, refusals, '
-                'missed deadlines and the daily highlight report, newest first. Every post links to its record.</p>%s%s</section>' % (eras(""), years("")))
+                'missed deadlines and the daily highlight report, with the press, heritage and video coverage since 1995, newest first. Every post links to its record.</p>%s%s</section>' % (eras(""), years("")))
     else:
         hero = ('<section class="wl-hero"><p>The freehold title chain, 1877 to 1994, retold as if it all happened on Facebook: each post is by the party '
                 'that acted, and each one links to its record.</p>%s%s</section>' % (eras(""), years("")))

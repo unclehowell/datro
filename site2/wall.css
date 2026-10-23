@@ -71,3 +71,8 @@ html[data-ghf-mode="night"] .wl-q{border-color:#d4b25a}
 .wl-key{font-style:italic}
 html[data-ghf-mode="night"] .wl-tags{color:#8ab4ff}
 @media (prefers-color-scheme:dark){html:not([data-ghf-mode="day"]) .wl-tags{color:#8ab4ff}}
+/* media-register YouTube items: tap to play (Sion, 17:52 BST 23 Oct 2026) */
+.mr-yt{margin:8px 0 0}.mr-yt iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:8px;background:#000}
+.mr-ytp{display:flex;align-items:center;gap:12px;width:100%;aspect-ratio:16/9;max-height:60vh;padding:14px;border:0;border-radius:8px;background:linear-gradient(135deg,#2E1B6A,#111);color:#fff;font:inherit;text-align:left;cursor:pointer;box-sizing:border-box}
+.mr-play{flex:0 0 52px;height:52px;border-radius:50%;background:#FF8A5B;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px}
+.mr-ytt{font-size:15px;font-weight:600;line-height:1.3;overflow-wrap:anywhere}
