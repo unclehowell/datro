@@ -65,3 +65,20 @@ html[data-ghf-mode="night"]{--bg:#000;--card:#18191a;--ink:#e4e6eb;--muted:#b0b3
 html[data-ghf-mode="night"] .pf-av{border-color:#18191a}
 html[data-ghf-mode="night"] .sp-src a,html[data-ghf-mode="night"] .sb-main a:not(.sp-n):not(.wl-cn):not(.fr-a):not(.rg):not(.sc):not(.wl-more-link){color:#8ab4f8}
 html[data-ghf-mode="night"] .wl-q{border-color:#d4b25a}
+
+.fb-rx{display:flex;align-items:center;gap:6px;padding:8px 14px 4px;font-size:.88rem;color:var(--wl-mut,#65676b)}
+.fb-ic i{font-style:normal;display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;font-size:12px;margin-right:-4px;border:2px solid var(--wl-card,#fff)}
+.fb-ic .fb-u{background:#1877f2}.fb-ic .fb-d{background:#e4e6eb}
+.fb-who{margin-left:6px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.fb-cc{white-space:nowrap}
+.fb-rxw{padding:0 14px;font-size:.85rem}.fb-rxw summary{cursor:pointer;color:var(--wl-mut,#65676b)}.fb-rxw p{margin:.3em 0}
+.fb-act{display:flex;justify-content:space-around;border-top:1px solid var(--wl-line,#e4e6eb);margin:6px 14px 0;padding:6px 0;color:var(--wl-mut,#65676b);font-weight:600;font-size:.9rem}
+.fb-q{margin:.2em 0}.fb-cm .wl-cw a{color:inherit;text-decoration:underline}
+.fb-yt{position:relative;aspect-ratio:16/9;margin:8px 0;background:#000}.fb-yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.fb-mp4 video{display:block;width:100%;max-height:75vh;background:#000}
+.fb-wb img{display:block;width:100%;height:auto;max-height:520px;object-fit:contain;background:var(--wl-line,#e4e6eb)}
+.fb-fr{margin:12px 0;padding:12px 14px;background:var(--wl-card,#fff);border-radius:10px}
+.fb-fr h2{font-size:1.1rem;margin:0 0 8px}.fb-fr h2 span{color:var(--wl-mut,#65676b);font-weight:400}
+.fb-fg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.fb-f{display:flex;flex-direction:column;gap:2px;text-decoration:none;color:inherit;min-width:0}
+.fb-f img{width:100%;height:auto;aspect-ratio:1;border-radius:8px;object-fit:cover}
+.fb-f b{font-size:.82rem;line-height:1.2;overflow-wrap:anywhere}.fb-f small{font-size:.74rem;color:var(--wl-mut,#65676b)}

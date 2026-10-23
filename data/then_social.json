@@ -1,0 +1,468 @@
+{
+ "version": "1.0.0 · 23 Oct 2026 · Sion's Tab agent",
+ "rule": "fb. = the freehold title-chain story 1877–1994 retold as Facebook (Sion, 03:06 BST 23 Oct 2026). Freehold only: no tenancy, rent or lease lines. Every post links its source.",
+ "end": "1994-12-31",
+ "drop": {
+  "r-1877-11-06-lease": "lease line",
+  "n-1904-07-16-rent-audit": "rent line",
+  "tr-t1916": "tenancy line",
+  "r-1916-02-tenancy": "tenancy line",
+  "tr-t1939": "tenancy line",
+  "r-1939-05-dbdt": "tenancy plan",
+  "r-1949-02-02-tenancy": "tenancy line",
+  "r-1955-leckwith-lease": "lease line",
+  "n-1889-08-16-orchard": "not the title chain",
+  "n-1891-11-farmyard-theft": "not the title chain",
+  "n-1892-06-10-geese": "not the title chain",
+  "n-1894-08-03-swine-fever": "not the title chain",
+  "n-1897-05-15-marconi": "not the title chain",
+  "n-1908-10-23-court-leet": "not the title chain",
+  "n-1936-08-05-llandough-bride": "not the title chain",
+  "r-1923-peace-petition": "not the title chain",
+  "n-1980-04-17-historical-society": "not the title chain",
+  "r-1936-05-14-auction": "leasehold sale of a neighbouring house, not the freehold chain"
+ },
+ "fold": {
+  "st-the-courts-1987-07-31-53": "ev-e1987b",
+  "st-dillon-lj-1987-07-31-12": "ev-e1987b",
+  "st-dillon-lj-1987-07-31-13": "ev-e1987b",
+  "st-mustill-lj-1987-07-31-47": "ev-e1987b",
+  "st-sir-edward-eveleigh-1987-07-31-49": "ev-e1987b",
+  "st-bp-1988-04-30-01": "ev-e1987b",
+  "st-william-buckler-1988-04-30-61": "ev-e1987b",
+  "st-william-buckler-1988-04-30-62": "ev-e1987b",
+  "st-ideal-homes-wales-1994-02-04-32": "st-heneb-1993-12-15-19",
+  "st-mary-williams-1958-11-20-43": "n-1958-11-20-crichel-down",
+  "st-mary-williams-1974-04-16-44": "n-1974-04-16-open-day",
+  "st-mary-williams-1974-04-16-45": "n-1974-04-16-open-day",
+  "st-ted-rowlands-mp-1980-05-22-52": "n-1980-05-22-rowlands",
+  "st-hollis-j-high-court-1986-07-24-30": "r-1986-07-24-hollis",
+  "st-cadw-1988-12-06-03": "n-1988-12-06-fight-ends",
+  "st-alun-michael-mp-1988-05-12-00": "n-1988-05-12-alun-michael",
+  "st-william-buckler-1988-12-13-63": "n-1988-12-13-clothes",
+  "st-william-buckler-1989-03-24-64": "n-1989-03-24-fight-on",
+  "st-llandough-community-council-1990-02-23-38": "n-1990-02-23-homes-bid"
+ },
+ "trim": {
+  "st-william-buckler-1988-04-30-62": "They have got no documents for it.",
+  "st-dillon-lj-1987-07-31-13": "I can see no escape therefore from the conclusion that, whether she liked it or not, from the time of her receipt of the letters, Mrs Buckler was in possession of the farmhouse and garden by the licence of BP Properties Ltd, and her possession was no longer adverse within the meaning of section 10 of the 1939 Act. Accordingly I would dismiss this appeal."
+ },
+ "reacts": {
+  "tr-t1767": {
+   "up": [
+    "herbert-family",
+    "hurst-and-jones"
+   ]
+  },
+  "tr-t1793": {
+   "up": [
+    "hurst-and-jones",
+    "bute-estate"
+   ]
+  },
+  "tr-t1800": {
+   "up": [
+    "vaughan-family",
+    "bute-estate"
+   ]
+  },
+  "tr-t1877": {
+   "up": [
+    "bute-estate",
+    "daniel-thomas-and-son"
+   ]
+  },
+  "r-1877-thomas-agreement": {
+   "up": [
+    "bute-estate",
+    "daniel-thomas-and-son"
+   ]
+  },
+  "r-1905-02-23-cardiff": {
+   "up": [
+    "bute-estate",
+    "cardiff-corporation"
+   ]
+  },
+  "tr-t1926": {
+   "up": [
+    "bute-estate",
+    "mountjoy"
+   ]
+  },
+  "tr-t1938": {
+   "up": [
+    "mountjoy",
+    "wgr"
+   ]
+  },
+  "r-1938-12-25-wgr": {
+   "up": [
+    "mountjoy",
+    "wgr"
+   ]
+  },
+  "tr-t1942": {
+   "up": [
+    "wgr",
+    "cardiff-corporation"
+   ]
+  },
+  "r-1942-04-leckwith-gift": {
+   "up": [
+    "wgr",
+    "cardiff-corporation"
+   ]
+  },
+  "tr-t1955b": {
+   "up": [
+    "wgr",
+    "high-court-1955"
+   ],
+   "down": [
+    "mary-williams",
+    "williams-buckler-family"
+   ]
+  },
+  "tr-t1955a": {
+   "up": [
+    "wgr"
+   ],
+   "down": [
+    "mary-williams"
+   ]
+  },
+  "n-1958-11-20-crichel-down": {
+   "down": [
+    "mary-williams"
+   ]
+  },
+  "tr-t1961": {
+   "up": [
+    "wgr",
+    "sw-brick-tile",
+    "cardiff-corporation"
+   ]
+  },
+  "tr-t1961s": {
+   "up": [
+    "wgr",
+    "sw-brick-tile",
+    "cardiff-corporation"
+   ]
+  },
+  "tr-t1962": {
+   "up": [
+    "wgr",
+    "cardiff-county-court"
+   ],
+   "down": [
+    "mary-williams",
+    "williams-buckler-family"
+   ]
+  },
+  "tr-t1969": {
+   "up": [
+    "wgr",
+    "bp-pension-trust"
+   ]
+  },
+  "r-1969-12-31-bp": {
+   "up": [
+    "wgr",
+    "bp-pension-trust"
+   ]
+  },
+  "n-1974-04-16-open-day": {
+   "up": [
+    "mary-williams",
+    "great-house-farm"
+   ]
+  },
+  "tr-t1982": {
+   "up": [
+    "bp",
+    "bp-pension-trust",
+    "hm-land-registry"
+   ]
+  },
+  "tr-t1983": {
+   "up": [
+    "bp",
+    "hm-land-registry"
+   ]
+  },
+  "r-1986-07-24-hollis": {
+   "up": [
+    "bp",
+    "paul-morgan-counsel"
+   ],
+   "down": [
+    "williams-buckler-family",
+    "william-buckler",
+    "j-b-w-mcdonnell-qc-and-m-jarman"
+   ]
+  },
+  "n-1986-07-25-high-court": {
+   "up": [
+    "bp"
+   ],
+   "down": [
+    "william-buckler"
+   ]
+  },
+  "ev-e1987": {
+   "up": [
+    "bp",
+    "hm-land-registry"
+   ],
+   "down": [
+    "williams-buckler-family"
+   ]
+  },
+  "ev-e1987b": {
+   "up": [
+    "bp",
+    "paul-morgan-counsel",
+    "dillon-lj",
+    "mustill-lj",
+    "sir-edward-eveleigh",
+    "bp-pension-trust"
+   ],
+   "down": [
+    "williams-buckler-family",
+    "william-buckler",
+    "j-b-w-mcdonnell-qc-and-m-jarman"
+   ]
+  },
+  "x-1987-07-31-video": {
+   "down": [
+    "williams-buckler-family",
+    "william-buckler"
+   ]
+  },
+  "st-house-of-lords-1988-03-03-31": {
+   "up": [
+    "bp"
+   ],
+   "down": [
+    "williams-buckler-family",
+    "william-buckler"
+   ]
+  },
+  "tr-t1988": {
+   "up": [
+    "bp"
+   ],
+   "down": [
+    "william-buckler",
+    "williams-buckler-family"
+   ]
+  },
+  "n-1988-04-30-chainsaw": {
+   "down": [
+    "bp"
+   ],
+   "up": [
+    "william-buckler",
+    "williams-buckler-family"
+   ]
+  },
+  "st-judge-norman-francis-1988-12-05-34": {
+   "up": [
+    "bp"
+   ],
+   "down": [
+    "william-buckler",
+    "williams-buckler-family"
+   ]
+  },
+  "n-1988-12-06-fight-ends": {
+   "up": [
+    "bp"
+   ],
+   "down": [
+    "williams-buckler-family",
+    "william-buckler"
+   ]
+  },
+  "n-1988-12-03-history-fight": {
+   "up": [
+    "williams-buckler-family",
+    "william-buckler"
+   ]
+  },
+  "st-european-commission-of-human-rights-1989-04-14-14": {
+   "up": [
+    "bp"
+   ],
+   "down": [
+    "williams-buckler-family",
+    "william-buckler"
+   ]
+  },
+  "st-heneb-1993-12-15-19": {
+   "up": [
+    "heneb"
+   ],
+   "down": [
+    "ideal-homes-wales"
+   ]
+  },
+  "st-heneb-1993-12-15-18": {
+   "up": [
+    "heneb"
+   ],
+   "down": [
+    "ideal-homes-wales"
+   ]
+  },
+  "tr-t1993h": {
+   "up": [
+    "bp",
+    "ideal-homes-wales"
+   ]
+  },
+  "tr-t1993w": {
+   "up": [
+    "bp",
+    "ideal-homes-wales"
+   ]
+  },
+  "tr-t1994": {
+   "up": [
+    "ideal-homes-wales",
+    "forest-of-cardiff"
+   ]
+  },
+  "x-1994-excavation": {
+   "up": [
+    "ideal-homes-wales",
+    "heneb",
+    "museum-wales"
+   ]
+  }
+ },
+ "images": {
+  "tr-t1877": "https://wayback.bucklerfamily.estate/images/0000-00-00%20-%20Great%20House%20Farm%20Part%201%20-%20011%20-%20EN%20-%20V0.0.0.00.jpg",
+  "tr-t1983": "https://wayback.bucklerfamily.estate/images/0000-00-00%20-%20Great%20House%20Farm%20Part%201%20-%20011%20-%20EN%20-%20V0.0.0.00.jpg",
+  "tr-t1969": "https://wayback.bucklerfamily.estate/images/0000-00-00%20-%20Great%20House%20Farm%20Part%201%20-%20018%20-%20EN%20-%20V0.0.0.00.jpg",
+  "n-1974-04-16-open-day": "https://wayback.bucklerfamily.estate/images/2026-02-16_consortium-newspaper_bpvsbuckler__en_v0-0-1.jpg",
+  "n-1988-04-30-chainsaw": "https://wayback.bucklerfamily.estate/images/0000-00-00%20-%20Great%20House%20Farm%20Part%203%20-%20035%20-%20EN%20-%20V0.0.0.00.jpg",
+  "n-1988-04-30-refuses-to-leave": "https://wayback.bucklerfamily.estate/images/0000-00-00%20-%20Great%20House%20Farm%20Part%203%20-%20034%20-%20EN%20-%20V0.0.0.00.jpg",
+  "n-1988-05-12-alun-michael": "https://wayback.bucklerfamily.estate/images/1988-05-12_consortium-news-buckler_bpvsbuckler__en_v0-0-1.png",
+  "n-1988-11-30-angry-scenes": "https://wayback.bucklerfamily.estate/images/1988-11-30_consortium-news-eviction_bpvsbuckler__en_v0-0-1.png",
+  "st-judge-norman-francis-1988-12-05-34": "https://wayback.bucklerfamily.estate/images/1988-12-05_wales-at-six_bpvsbuckler__en_v0-0-1.png",
+  "n-1989-03-20-lorries": "https://wayback.bucklerfamily.estate/images/1989-03-20_consortium-news-farmhouse_bpvsbuckler__en_v0-0-1.png",
+  "x-1994-excavation": "https://wayback.bucklerfamily.estate/images/0000-00-00%20-%20Great%20House%20Farm%20Part%203%20-%20015%20-%20EN%20-%20V0.0.0.00.jpg"
+ },
+ "videos": {
+  "n-1988-12-01-itv-report": {
+   "yt": "4GXmR7mAas0",
+   "title": "Great House Farm: eviction and injunction (HTV Wales, 1988)",
+   "wiki": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e113-itv-wales-report-great-house-farm-1988/"
+  },
+  "x-1987-07-31-video": {
+   "yt": "0eXOoj7eUCo",
+   "title": "BP Properties Ltd v Buckler, 1987",
+   "wiki": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/"
+  },
+  "r-1905-02-23-cardiff": {
+   "mp4": "https://wayback.bucklerfamily.estate/pdf/promo/hf-series/fixed/e06-1900-1905.mp4"
+  },
+  "tr-t1955b": {
+   "mp4": "https://wayback.bucklerfamily.estate/pdf/promo/hf-series/fixed/e12-1955-order.mp4"
+  },
+  "n-1958-11-20-crichel-down": {
+   "mp4": "https://wayback.bucklerfamily.estate/pdf/promo/hf-series/fixed/e13-crichel-down.mp4"
+  },
+  "ev-e1987b": {
+   "mp4": "https://wayback.bucklerfamily.estate/pdf/promo/hf-series/fixed/e18-bp-v-buckler-1987.mp4"
+  },
+  "n-1988-04-30-refuses-to-leave": {
+   "mp4": "https://wayback.bucklerfamily.estate/pdf/promo/hf-series/fixed/e20-stand-off-1988.mp4"
+  },
+  "n-1988-12-06-fight-ends": {
+   "mp4": "https://wayback.bucklerfamily.estate/pdf/promo/hf-series/fixed/e21-bulldozed.mp4"
+  },
+  "st-european-commission-of-human-rights-1989-04-14-14": {
+   "mp4": "https://wayback.bucklerfamily.estate/pdf/promo/hf-series/fixed/e22-strasbourg.mp4"
+  },
+  "st-heneb-1992-07-27-17": {
+   "mp4": "https://wayback.bucklerfamily.estate/pdf/promo/ig/p-1992-ggat-letter.mp4"
+  },
+  "x-1994-excavation": {
+   "mp4": "https://wayback.bucklerfamily.estate/pdf/promo/ig/p-1994-llandough-cemetery-clean.mp4"
+  }
+ },
+ "profiles": {
+  "museum-wales": {
+   "name": "Amgueddfa Cymru – Museum Wales",
+   "kind": "Body · national museum",
+   "about": "The national museum of Wales. The 1994 finds from Great House Farm were donated to it on 28 July 1994 (accession 95.56H)."
+  },
+  "cotswold-archaeological-trust": {
+   "name": "Cotswold Archaeological Trust",
+   "kind": "Body · archaeology contractor",
+   "about": "The archaeologists who excavated the land north of St Dochdwy’s church at Great House Farm in 1994, on behalf of Ideal Homes Wales."
+  }
+ },
+ "add": [
+  {
+   "id": "x-1987-07-31-video",
+   "date": "1987-07-31",
+   "when": "31 July 1987",
+   "actor": "williams-buckler-family",
+   "kind": "Video",
+   "title": "BP Properties Ltd v Buckler, 1987",
+   "tags": [
+    "bp",
+    "court-of-appeal"
+   ],
+   "src": [
+    [
+     "Legal Wiki: the video as embedded",
+     "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/"
+    ],
+    [
+     "YouTube",
+     "https://www.youtube.com/watch?v=0eXOoj7eUCo"
+    ]
+   ]
+  },
+  {
+   "id": "x-1994-excavation",
+   "date": "1994-07-28",
+   "when": "1994",
+   "actor": "cotswold-archaeological-trust",
+   "kind": "Excavation",
+   "title": "Excavation north of St Dochdwy’s, Great House Farm",
+   "quote": "Excavation of an area of 0.22ha immediately to the north of the church of St Dochdwy was undertaken on behalf of Ideal Homes Wales following an earlier evaluation by Glamorgan-Gwent Archaeological Trust in 1990",
+   "lead": "via the Heneb Historic Environment Record, GGAT02272s",
+   "tags": [
+    "ideal-homes-wales",
+    "heneb",
+    "st-dochdwys",
+    "museum-wales"
+   ],
+   "cm": [
+    {
+     "who": "museum-wales",
+     "text": "Should any artefacts be placed on display in any museum, then Ideal Homes Wales Ltd. should be acknowledged as the donor.",
+     "src": "https://greathousefarmwiki.wordpress.com/evidence/ev-0293-llandough-1994-cemetery-excavation-her-ggat02272s-museum-wales-95-56h-burial-631/",
+     "when": "28 Jul 1994"
+    }
+   ],
+   "src": [
+    [
+     "EV-0293 · the 1994 excavation records",
+     "https://greathousefarmwiki.wordpress.com/evidence/ev-0293-llandough-1994-cemetery-excavation-her-ggat02272s-museum-wales-95-56h-burial-631/"
+    ],
+    [
+     "EV-0900 · archaeology 1990–1994",
+     "https://greathousefarmwiki.wordpress.com/evidence/ev-0900-archaeology-1990-ggat-evaluation-and-1994-excavation/"
+    ]
+   ]
+  }
+ ]
+}

@@ -19,6 +19,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(ROOT, "site")
 spec = importlib.util.spec_from_file_location("build_social", os.path.join(ROOT, "tools", "build_social.py"))
 BS = importlib.util.module_from_spec(spec); spec.loader.exec_module(BS)
+_ts = importlib.util.spec_from_file_location("then_social", os.path.join(ROOT, "tools", "then_social.py"))
+TS = importlib.util.module_from_spec(_ts); _ts.loader.exec_module(TS)   # fb. as entirely Facebook, 1877–1994 (Sion, 03:06 BST 23 Oct 2026)
 e = lambda s: html.escape(str(s), quote=True)
 BASE = BS.BASE
 # Editions (Sion, 01:24 BST 23 Oct 2026): FB_EDITION=then → fb.bucklerfamily.estate (site/, everything before 2005);
@@ -227,6 +229,11 @@ for _sl, (_r, _names) in ROLE.items():
     if prof(_sl): prof(_sl)["name"] = _r
     ROLE_SUBS += [(n, _r) for n in _names]
 ROLE_SUBS.sort(key=lambda x: -len(x[0]))
+# one date per post (Sion, 03:06 BST 23 Oct 2026: "You have dates twice"): no year in a name, the date lives in the post header only
+ROLE_SUBS = [(a, TS.strip_year(b)) for a, b in ROLE_SUBS]
+for _p in list(PEO.values()) + list(OUT.values()):
+    if isinstance(_p, dict) and _p.get("name"): _p["name"] = TS.strip_year(_p["name"])
+if not NOW: TS.add_profiles(PEO, initials, badge); TS.freehold_profiles(PEO, OUT)
 def roles(t):
     for a, b in ROLE_SUBS: t = t.replace(a, b)
     return t
@@ -237,6 +244,10 @@ HIST_ONLY = {"herbert-family", "vaughan-family", "hurst-and-jones", "mountjoy", 
 EV = [x for x in EV if x["date"] <= TODAY.isoformat() and prof(x["actor"])]
 HAS_MODERN = {sl for x in EV if x["date"][:4] >= SPLIT for sl in [x["actor"]] + list(x["tags"]) if sl}
 EV = [x for x in EV if (x["date"][:4] >= SPLIT) == NOW and not (not NOW and x["actor"] == "tab-bot")]
+TS.undate(EV)
+for x in EV: x["kind"] = re.sub(r"^(Life event) · (?:by |early |c\. )?\d{4}(?:[–-]\d{2,4})?s?\s*", r"\1 · ", x["kind"]).rstrip(" ·")
+THEN_LOG, THEN_FOLDED = [], set()
+if not NOW: EV, THEN_LOG, THEN_FOLDED = TS.apply_then(EV, prof)   # the 1877–1994 freehold chain, reactions, comment threads, wayback media
 
 # SOURCE LOCK (Sion, 02:18 BST 23 Oct 2026: "use the data and names from email. And dartboard.bucklerfamily.estate subdomains. Only them").
 # fb2 keeps only: emails (email.bucklerfamily.estate/reference/<id>) and missed deadlines (dartboard /data/roadmap.json), posted by the
@@ -297,6 +308,7 @@ REPLY_DATES = collections.defaultdict(list); LETTERS = collections.defaultdict(l
 for x in sorted(EV, key=lambda x: x["date"]):
     if x["kind"].startswith("Reply"): REPLY_DATES[x["actor"]].append(x["date"])
     if x["kind"] == "Letter sent" and x["tags"]: LETTERS[x["tags"][0]].append(x)
+FR = TS.graph(EV, prof) if not NOW else {}
 BYP = collections.defaultdict(list)
 for x in EV:
     for sl in [x["actor"]] + [t for t in x["tags"] if t and t != x["actor"]]:
@@ -337,7 +349,8 @@ def cbubble(sl, text, when, up, label=""):
 def social_bits(x, up):
     out = []; k = x["kind"]; a = x["actor"]
     rx = [t for t in x["tags"] if t and prof(t) and t != a]
-    if rx and k not in ("Letter sent", "Deadline passed", "Highlight report"):
+    if x.get("up") or x.get("down"): out.append(TS.reacts_html(x, up, prof))
+    elif rx and k not in ("Letter sent", "Deadline passed", "Highlight report"):
         em = "🤝" if x.get("life") else ("⚖️" if k in ("Shared a judgment", "Title updated") else "👍❤️")
         out.append('<div class="wl-rx"><span aria-hidden="true">%s</span> %s%s</div>' % (em, e(prof(rx[0])["name"]), (" and %d other%s" % (len(rx) - 1, "" if len(rx) == 2 else "s")) if len(rx) > 1 else ""))
     cms = []
@@ -354,6 +367,7 @@ def social_bits(x, up):
         prev = next((l for l in reversed(LETTERS.get(a, [])) if l["date"] <= x["date"]), None)
         if prev: cms.insert(0, cbubble("williams-buckler-family", "Sent %s%s." % (prev.get("what", "a letter"), ""), prev["when"], up, "earlier"))
     if cms: out.append('<div class="wl-cms">%s</div>' % "".join(cms))
+    if x.get("rcm"): out.append(TS.comments_html(x, up, prof, avimg))
     return "".join(out)
 
 def card(x, up):
@@ -391,6 +405,7 @@ def card(x, up):
         if x.get("text"): h.append("<p>%s</p>" % e(fix(x["text"])))
         if x.get("text2"): h.append('<p class="wl-lead">%s</p>' % e(x["text2"]))
         if x.get("photo") and os.path.exists(os.path.join(SITE, x["photo"])): h.append('<figure class="sp-media"><img src="%s%s" alt="" loading="lazy"></figure>' % (up, e(x["photo"])))
+    if not x.get("daily") and not x.get("hf"): h.append(TS.media_html(x, up))
     if x.get("hf"): h.append(hf_block(x["hf"], up, bool(x.get("daily"))))
     h.append("</div>")
     h.append(social_bits(x, up))
@@ -492,8 +507,8 @@ html[data-ghf-mode="night"] .wl-q{border-color:#d4b25a}
 
 # ------------------------------------------------------------------ editions: stories, cast, links between Then and Now (23 Oct 2026)
 def eras(up):
-    return ('<nav class="wl-eras" aria-label="Then and now"><a href="%s/"%s>Then · to 2004</a><a href="%s/"%s>Now · 2005 on</a></nav>'
-            % (THEN_URL, "" if NOW else ' aria-current="page"', NOW_URL, ' aria-current="page"' if NOW else ""))
+    return ('<nav class="wl-eras" aria-label="Then and now"><a href="%s/"%s>Then · %s</a><a href="%s/"%s>Now · 2005 on</a></nav>'
+            % (THEN_URL, "" if NOW else ' aria-current="page"', "to 2004" if NOW else "1877–1994", NOW_URL, ' aria-current="page"' if NOW else ""))
 def short(t, n=220):
     t = re.sub(r"\s+", " ", fix(t or "")).strip()
     return t if len(t) <= n else t[:n - 1].rsplit(" ", 1)[0] + "…"
@@ -569,7 +584,7 @@ def cast_page(CAST, rel, title):
     up = ""
     secs = "".join('<section class="cast-g"><h2>%s · %d</h2>%s</section>' % (e(g), len(v), "".join(
         '<a class="fr-a" href="u/%s.html">%s<span><strong>%s</strong>%s</span></a>' % (sl, avimg(sl, up, 44), e(prof(sl)["name"]), e(prof(sl).get("kind", ""))) for sl in v)) for g, v in groups.items() if v)
-    desc = ("Everyone in the farm’s story to 2004: the title chain, the courts, the councils, the press of the day and the family." if not NOW
+    desc = ("Everyone in the farm’s story, 1877 to 1994: the title chain, the courts, the councils, the press of the day and the family." if not NOW
             else "Every body in the campaign since 2005: councils, the land register, police, regulators, archives, museums, ministries and offices.")
     write(rel, head("%s · farmbook" % title, desc, rel) + "<body>" + BS.top("people") + '<main id="main" class="sb-main"><h1 class="sb-h1">%s <span class="muted">%d</span></h1>%s%s</main>'
           % (e(title), len(CAST), '<div class="pf-card"><p class="muted">%s</p>%s</div>' % (e(desc), eras("")), secs) + page_end("", "people"))
@@ -587,14 +602,15 @@ def split_static():
     """then build: the hand-made timeline, photos and Facebook pages keep their pre-2005 items on fb; the rest moves to site2 (fb2)."""
     S1, S2 = os.path.join(ROOT, "site"), os.path.join(ROOT, "site2"); os.makedirs(S2, exist_ok=True)
     def keep(t, modern):
-        t = re.sub(r'<article class="post" id="p-[^"]*" data-y0="(\d{4})"[\s\S]*?</article>', lambda m: m.group(0) if (m.group(1) >= SPLIT) == modern else "", t)
-        t = re.sub(r'<figure id="ph-\d+" data-y0="(\d{4})"[\s\S]*?</figure>', lambda m: m.group(0) if (m.group(1) >= SPLIT) == modern else "", t)
+        inn = lambda y: (y >= SPLIT) == modern and (modern or y <= "1994")   # fb. ends with 1994 (Sion, 03:06 BST 23 Oct 2026)
+        t = re.sub(r'<article class="post" id="p-[^"]*" data-y0="(\d{4})"[\s\S]*?</article>', lambda m: m.group(0) if inn(m.group(1)) else "", t)
+        t = re.sub(r'<figure id="ph-\d+" data-y0="(\d{4})"[\s\S]*?</figure>', lambda m: m.group(0) if inn(m.group(1)) else "", t)
         return t
     for f in ("timeline.html", "photos.html"):
         a = os.path.join(S1, f)
         if not os.path.exists(a): continue
         t = open(a, encoding="utf-8").read()
-        if re.search(r'data-y0="20(0[5-9]|[12]\d)"', t):
+        if re.search(r'data-y0="(199[5-9]|20\d\d)"', t):
             t2 = keep(t, True).replace('href="/"', 'href="%s/"' % NOW_URL) if not os.path.exists(os.path.join(S2, f)) else None
             if t2:
                 t2 = re.sub(r"<strong>\d+ posts</strong> from c\. 650 to 2026", "<strong>%d posts</strong> from 2005 to 2026" % len(re.findall(r'<article class="post"', t2)), t2)
@@ -603,10 +619,15 @@ def split_static():
             t1 = re.sub(r'<h2 class="era" id="era-20[12]0s">[^<]*</h2>', "", t1)
             t1 = re.sub(r'<a href="#p-20(0[5-9]|[12]\d)[^"]*">[^<]*</a>', "", t1)
             n = len(re.findall(r'<article class="post"', t1))
-            t1 = re.sub(r"<strong>\d+ posts</strong> from c\. 650 to 2026", "<strong>%d posts</strong> from c. 650 to 2004" % n, t1)
+            t1 = re.sub(r"<strong>\d+ posts</strong> from c\. 650 to 2026", "<strong>%d posts</strong> from c. 650 to 1994" % n, t1)
             open(a, "w", encoding="utf-8").write(t1)
     a = os.path.join(S1, "facebook.html")
     if os.path.exists(a): os.remove(a)   # 'Preserved from Facebook' is retired on both editions (Sion, 02:18 BST 23 Oct 2026); git history keeps it
+    for sub, pat in (("n", r"^n-(199[5-9]|200[0-4])"), ("wall", r"^\d{4}\.html$"), ("p", r"^p-(ph-)?(199[5-9]|200[0-4])")):
+        dd_ = os.path.join(S1, sub)
+        if os.path.isdir(dd_):
+            for f in os.listdir(dd_):
+                if re.match(pat, f): os.remove(os.path.join(dd_, f))   # 1995–2004 is in neither edition: fb. ends with 1994, fb2. is email./dartboard. only
     pd = os.path.join(S1, "p")
     if os.path.isdir(pd):
         for f in os.listdir(pd):
@@ -641,7 +662,7 @@ def page_end(up, active="feed"): return BS.tabs(active, up) + "</body></html>"
 def build():
     if NOW: os.makedirs(SITE, exist_ok=True); copy_assets()
     else: split_static()
-    write("wall.css", WALLCSS)
+    write("wall.css", WALLCSS + ("" if NOW else TS.CSS))
     # keep the press feed as papers.html
     idx = os.path.join(SITE, "index.html")
     if not NOW and os.path.exists(idx) and "wl-hero" not in open(idx, encoding="utf-8").read(): shutil.copy(idx, os.path.join(SITE, "papers.html"))
@@ -657,10 +678,10 @@ def build():
         hero = ('<section class="wl-hero"><p>The campaign since 2005, posted by the bodies that acted: requests, replies, refusals, '
                 'missed deadlines and the daily highlight report, newest first. Every post links to its record.</p>%s%s</section>' % (eras(""), years("")))
     else:
-        hero = ('<section class="wl-hero"><p>The farm’s story to 2004, retold as if it all happened on social media: each post is by the party '
+        hero = ('<section class="wl-hero"><p>The freehold title chain, 1877 to 1994, retold as if it all happened on Facebook: each post is by the party '
                 'that acted, and each one links to its record.</p>%s%s</section>' % (eras(""), years("")))
     hero = rings("") + hero
-    write("index.html", head(("farmbook 2 · Today at Tŷ Mawr" if NOW else "farmbook · Tŷ Mawr, then"), ("The campaign for Great House Farm (Tŷ Mawr), Llandough, since 2005, retold as a social feed: each request, reply, refusal and missed deadline posted by the body that acted, with the daily highlight report." if NOW else "Great House Farm (Tŷ Mawr), Llandough, to 2004, retold as a social feed: the title chain, the courts, the press and the family, each post by the party that acted, each linked to its record."), "index.html")
+    write("index.html", head(("farmbook 2 · Today at Tŷ Mawr" if NOW else "farmbook · Tŷ Mawr, then"), ("The campaign for Great House Farm (Tŷ Mawr), Llandough, since 2005, retold as a social feed: each request, reply, refusal and missed deadline posted by the body that acted, with the daily highlight report." if NOW else "Great House Farm (Tŷ Mawr), Llandough: the freehold title chain 1877–1994, retold as a social feed: the title chain, the courts, the press and the family, each post by the party that acted, each linked to its record."), "index.html")
           + "<body>" + BS.top("feed") + '<main id="main" class="sb-main">' + hero + "".join(cards)
           + '<a class="wl-more-link" href="wall/%s.html">Earlier: %s and before →</a></main>' % (nxt, nxt) + page_end(""))
     ys = sorted({x["date"][:4] for x in wall}, reverse=True)
@@ -704,8 +725,9 @@ def build():
         if evs and not stm and not p.get("fictional") and sl not in ("hope-desk", "sion-buckler-project-manager", "williams-buckler-family"): sec = sec.replace('<h2 class="wl-sec">', '<p class="wl-empty" style="margin-bottom:6px">No public statements found yet; the record below involves them.</p><h2 class="wl-sec">', 1)
         if evs: sec = sec.replace('</h2>', '</h2><span class="st" hidden></span>', 1)
         body = ('<main id="main" class="sb-main sb-prof">%s<div class="pf-id"><img class="pf-av%s" src="%s%s" alt="" width="120" height="120"><div><h1>%s</h1><p class="muted">%s</p><p class="pf-counts">%s</p></div></div>'
-                '<nav class="pf-tabs"><a class="ln" href="#statements">Posts</a><a class="ln" href="#about">About</a></nav>%s%s%s</main>'
-                % (cover, " wf" if (p.get("face") or not p.get("entity")) else "", up, av(sl), e(p["name"]), e(p.get("kind", "")), e(cnt), about, fc_panel(sl) if NOW else "", sec))
+                '<nav class="pf-tabs"><a class="ln" href="#statements">Posts</a><a class="ln" href="#about">About</a>%s</nav>%s%s%s%s</main>'
+                % (cover, " wf" if (p.get("face") or not p.get("entity")) else "", up, av(sl), e(p["name"]), e(p.get("kind", "")), e(cnt + ((" · %d friends" % len(FR.get(sl, ()))) if not NOW else "")),
+                   '<a class="ln" href="#friends">Friends</a>' if not NOW else "", about, TS.friends_html(sl, FR, up, prof, avimg) if not NOW else "", fc_panel(sl) if NOW else "", sec))
         write("u/%s.html" % sl, head("%s · farmbook" % p["name"], fix(p.get("about") or p["name"])[:300], "u/%s.html" % sl, av(sl)) + "<body>" + BS.top("people", up) + body + page_end(up, "people"))
     # contacts: the whole cast of this edition, grouped (profiles.html and friends.html)
     cast_page(CAST, "profiles.html", "Contacts")
@@ -791,6 +813,11 @@ def build():
                 vis = html.unescape(re.sub(r"<[^>]+>", " ", vis)); m = BANNED.search(vis)
                 if m: bad.append((f, m.group(0), vis[max(0, m.start() - 60):m.end() + 40]))
     if bad: raise SystemExit("WALL GATE: " + json.dumps(bad[:12], ensure_ascii=False))
+    dd = TS.check(SITE)   # one date per post, no year in a name (both editions)
+    if dd: raise SystemExit("DATE GATE: " + json.dumps(dd[:12], ensure_ascii=False))
+    if not NOW:
+        json.dump({"schema": "fb friends v1", "edges": sorted([a, b] for a in FR for b in FR[a] if a < b), "left_out": THEN_LOG, "folded_into_comments": sorted(THEN_FOLDED)},
+                  open(os.path.join(SITE, "api", "graph.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     print("wall built: %d events (%d on the wall, %d daily reports), %d profiles, %d with faces, years %s" % (len(EV), len(wall), len(DAILY), n_prof, sum(1 for s in FACES if prof(s)), ",".join(ys[:3]) + "…"))
 
 if __name__ == "__main__":

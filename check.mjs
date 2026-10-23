@@ -17,7 +17,7 @@ for(const p of pages){
   for(const re of PRIVATE){const m=vis.match(re); if(m) errors.push(p+': private pattern '+m[0]);}
   for(const m of raw.matchAll(/(?:src|href|poster)="((?:\.\.\/)?(?:img|daily)\/[^"?#]+)"/g)){const f=m[1].replace(/^\.\.\//,''); if(!existsSync(new URL(f,dir))) errors.push(p+': missing '+f);}
   // the edition split: fb. shows nothing dated 2005 or later, fb2. nothing before 2005
-  if(p!=='timeline.html') for(const m of raw.matchAll(/<time datetime="(\d{4})/g)){ dated++; if((m[1]>='2005')!==NOW) errors.push(p+': dated '+m[1]+' is outside this edition'); }
+  if(p!=='timeline.html') for(const m of raw.matchAll(/<time datetime="(\d{4})/g)){ dated++; if((m[1]>='2005')!==NOW || (!NOW && m[1]>'1994')) errors.push(p+': dated '+m[1]+' is outside this edition'); }
 }
 const idx=read('index.html'); const posts=idx.split('<article class="post sp').slice(1);
 for(const a of posts){ if(!/<details class="sp-src"><summary>Source<\/summary>/.test(a)) errors.push('post without Source: '+(a.match(/id="([^"]+)"/)||[])[1]); }
