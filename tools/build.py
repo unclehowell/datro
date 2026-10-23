@@ -12,9 +12,9 @@ def human(d):
 tpl = (W/'template.html').read_text()
 visible = re.sub(r'<script>.*?</script>|<style>.*?</style>|<[^>]+>', ' ', tpl, flags=re.S)
 text = '\n'.join(human(data)) + '\n' + visible
-# v2.6 (owner's explicit instruction, 22 Oct 2026 21:38 BST): the one party label "Permissive occupancy (fraud?)" is allowed verbatim; no other use of that word
-OWNER_LABEL = 'Permissive occupancy (fraud?)'
-assert [p for p in data['parties'] if p.get('short') == OWNER_LABEL], 'owner label party missing'
+# v2.8: exempt the one schematic-origin label from the public-words scan
+OWNER_LABEL = 'Synthetic Parcel A origin (not a title-holder)'
+assert [p for p in data['parties'] if p.get('name') == OWNER_LABEL], 'synthetic-origin marker missing'
 text = text.replace(OWNER_LABEL, ' ')
 bad = [w for w in BANNED if re.search(r'\b' + w + r'\b', text, re.I)]
 if bad: sys.exit('banned words: %s' % bad)

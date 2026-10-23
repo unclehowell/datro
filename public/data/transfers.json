@@ -1,6 +1,6 @@
 {
- "version": "2.7.0",
- "updated": "2026-10-22",
+ "version": "2.8.0",
+ "updated": "2026-10-23",
  "parties": [
   {
    "id": "family",
@@ -16,10 +16,11 @@
   },
   {
    "id": "origin",
-   "short": "Permissive occupancy (fraud?)",
-   "name": "Permissive occupancy (fraud?)",
-   "m": "Permissive occupancy (fraud?)",
-   "icon": "💩"
+   "short": "Synthetic origin",
+   "name": "Synthetic Parcel A origin (not a title-holder)",
+   "m": "Synthetic origin",
+   "icon": "💩",
+   "centre": true
   },
   {
    "id": "wgr",
@@ -376,11 +377,11 @@
    ],
    "to": "family",
    "kind": "freehold",
-   "label": "1928 title",
+   "label": "1928 freehold asserted",
    "status": "dashed",
    "reason": "per family statement",
-   "instrument": "No deed held. Rent last paid in 1928; the quarrying ended.",
-   "note": "Family statement (c.1974): rent was last paid in 1928, after which the family held Parcel A as its own.",
+   "instrument": "No deed held. On the family's case, the 1877 arrangement resulted in Parcel A passing to the Williams family when quarrying ended and the last rent was paid in 1928.",
+   "note": "The family's stated freehold line reaches Williams in 1928. The receipt and statement are cited below; no later freehold conveyance from Williams is presently on record.",
    "sources": [
     {
      "t": "EV-0016 · 1928 last rent receipt",
@@ -491,7 +492,8 @@
      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0034-writ-possession-execution-return-1955/"
     }
    ],
-   "from": "origin"
+   "from": "origin",
+   "notTitleTransfer": true
   },
   {
    "id": "t1955a",
@@ -522,7 +524,8 @@
      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0032-1955-order-14-possession-order/"
     }
    ],
-   "from": "origin"
+   "from": "origin",
+   "notTitleTransfer": true
   },
   {
    "id": "t1961",
@@ -548,7 +551,8 @@
      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0169-wa735527-title-register-september-2026/"
     }
    ],
-   "from": "wgr"
+   "from": "wgr",
+   "notTitleTransfer": true
   },
   {
    "id": "t1961s",
@@ -574,7 +578,8 @@
      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0169-wa735527-title-register-september-2026/"
     }
    ],
-   "from": "wgr"
+   "from": "wgr",
+   "notTitleTransfer": true
   },
   {
    "id": "t1962",
@@ -604,15 +609,15 @@
      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0041-cardiff-county-court-possession-order-1962/"
     }
    ],
-   "from": "origin"
+   "from": "origin",
+   "notTitleTransfer": true
   },
   {
    "id": "t1969",
    "date": "31 Dec 1969 (agreed bid of 15 Feb 1969)",
    "year": 1969,
    "parcels": [
-    "B",
-    "A2"
+    "B"
    ],
    "to": "bppt",
    "kind": "conveyance",
@@ -620,7 +625,7 @@
    "status": "solid",
    "reason": null,
    "instrument": "Conveyance, WGR to BP Pension Trust, recited as the root of BP’s title. For the house it carried the benefit of the 1962 order.",
-   "note": "BP’s agreed bid of 15 Feb 1969 took WGR’s properties “for their pension fund” (press). In September 1974 BP applied for leave to enforce the 1962 order. The conveyance and plan are not held.",
+   "note": "The freehold conveyance was of the WGR fields (Parcel B) to BP Pension Trust. The deed is missing; the judgment/record describes the benefit of the 1962 possession order in relation to the house, which is not the same as a conveyance of the A2 freehold.",
    "sources": [
     {
      "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (judgment)",
@@ -693,7 +698,8 @@
     }
    ],
    "from": "wgr",
-   "title": "VG41"
+   "title": "VG41",
+   "notTitleTransfer": true
   },
   {
    "id": "t1982",
@@ -721,7 +727,8 @@
    ],
    "from": "bppt",
    "title": "WA231076",
-   "rootb": true
+   "rootb": true,
+   "notTitleTransfer": true
   },
   {
    "id": "t1983",
@@ -760,7 +767,8 @@
     }
    ],
    "from": "origin",
-   "title": "WA240304"
+   "title": "WA240304",
+   "notTitleTransfer": true
   },
   {
    "id": "t1988",
@@ -790,7 +798,8 @@
      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0108-south-wales-echo-bp-demolition-anger/"
     }
    ],
-   "from": "origin"
+   "from": "origin",
+   "notTitleTransfer": true
   },
   {
    "id": "t1988s",
@@ -1091,7 +1100,7 @@
   }
  ],
  "origin": {
-  "label": "Origin without a root title: no conveyance from the occupiers",
+  "label": "Synthetic-origin marker only · not a freehold owner",
   "titles": [
    {
     "title": "WA240304",
@@ -1099,13 +1108,13 @@
     "why": "House and yard (A2). Licence letters offered 31 Oct 1974, never accepted; first registration applied for 23 Feb 1983 to BP Properties Ltd while Mary lived there. No conveyance from the occupiers is on record."
    }
   ],
-  "not": "WA231076 (the fields, B), first registered in 1982 on the 1938 and 1969 conveyances of land the family rented. WA735527 (the woodland) was registered on the 1994 transfer; the 1961 deed in the woodland chain is recited on it. WA513690 (Oakview, sold by BP on 10 Oct 1989) is held but its extent is not yet transcribed, so it is not placed.",
-  "intro": "Three chains run from the 💩 party on the ring, each ending at the registration it led to. A “12 years” bar marks the 12-year limitation period on each line, with its start and finish years."
+  "not": "WA240304 is the 1983 first registration of the house and yard (A2); WA735527 is the later woodland title, with the 1961 deed recited in its history; VG41 is a village-green registration. These are separate record strands. The marker does not mean that title passed from Mary Williams or the Williams family to the icon, WGR, BP, or any present holder.",
+  "intro": "The icon is a schematic source marker for the three synthetic Parcel A labels A1, A2 and A3. It is not a landowner, a transferor or a transferee. The separate timelines below compare the dated possession/licence events and later deed or registration records; they do not depict a conveyance of freehold from the icon."
  },
  "chains": [
   {
    "id": "A",
-   "name": "House & yard · synthetic parcel A(2)",
+   "name": "A2 · house & yard | 1974 licence offer → WA240304 (1983)",
    "short": "A(2) house & yard",
    "parcels": [
     "A2",
@@ -1306,7 +1315,7 @@
   },
   {
    "id": "B",
-   "name": "Woodland · synthetic parcel 2(a)",
+   "name": "A1 · woodland | 1949 offer → 1961 deed strand",
    "short": "2(a) woodland",
    "parcels": [
     "A1",
@@ -1432,7 +1441,7 @@
   },
   {
    "id": "C",
-   "name": "The green · 1970 registration (VG41)",
+   "name": "A3 · green | 1958/59 offer → VG41 entry (1970)",
    "short": "1970 green VG41",
    "parcels": [
     "A3",
@@ -1539,7 +1548,7 @@
   "acol": "#ffd166",
   "bcol": "#5aa9ff",
   "star": "herbert",
-  "intro": "The documentary root: the Herbert manor, the Vaughans’ Great House, the Bute Estate, then the 1877 split into Parcel A and Parcel B. Solid = a dated record on file; dashed = gap, source to add.",
+  "intro": "Freehold title path and evidential gaps. Solid lines mark a recorded title-level step; dashed lines mark a missing instrument or a link supported only by secondary material or a family statement. The separate A1–A3 timelines below are possession, licence, deed and registration chronologies—not a continuation of Parcel A's freehold chain.",
   "steps": [
    {
     "k": "r1",
@@ -1551,8 +1560,8 @@
     "br": "R",
     "kind": "in",
     "t": "t1547",
-    "label": "Herbert → Vaughan: the Great House (Cydwin)",
-    "text": "Sir George Herbert, lord of the manor of Llandough by 1545, grants the Vaughans a 1,000-year lease of Cydwin, the Great House (research note GHF-E178; Evidence Register EV-0002, lease not yet in hand). The Heneb HER records the Vaughans holding the Great House, the chief freehold farm of the parish, from the mid-16th century to the later 18th. Historical families only.",
+    "label": "Vaughan freehold evidenced from the mid-16th century",
+    "text": "Heneb's HER records the Vaughans holding the Great House—the parish's chief freehold farm—from the mid-16th century to the later 18th. A 1547, 1,000-year lease from Sir George Herbert to Vaughan is also recorded in the research note, but that lease is not itself proof of the freehold conveyance; the instrument is not in hand. The diagram treats the Vaughan freehold as supported by historical evidence, not as a fully inspected conveyance.",
     "src": [
      {
       "t": "GHF-E178 · 1547 Herbert lease of Cydwin to Vaughan (research note)",
@@ -1575,7 +1584,8 @@
       "u": "https://greathousefarmwiki.wordpress.com/evidence/"
      }
     ],
-    "note": "lease not yet in hand"
+    "note": "Historical freehold tenure is recorded by Heneb; the cited 1547 lease is not a freehold conveyance instrument.",
+    "todo": true
    },
    {
     "k": "r2",
@@ -1588,8 +1598,8 @@
     "kind": "edge",
     "t": "t1800",
     "todo": true,
-    "label": "Vaughan → Bute Estate: freehold of the Great House",
-    "text": "The Heneb HER records the Bute Estate holding the Great House freehold in the early 19th century, with the manorial courts for Llandough and Leckwith held in the house. The conveyance, its date and who sold are not located: gap, source to add. The Bute records for “Cydfin Farm or Ty Mawr Farm” run 1552–1824 (EV-0003). The lordship of the manor reached Bute separately: Herbert → Hurst & Jones by 1767 → Bute 1793.",
+    "label": "Vaughan → Bute Estate · freehold, early 19th century",
+    "text": "Heneb's HER records the Bute Estate holding the Great House freehold in the early 19th century, with the manorial courts for Llandough and Leckwith held in the house. The conveyance, its exact date and the vendor are not located: this link is an explicit evidential gap. The manorial lordship reached Bute separately (Herbert → Hurst & Jones by 1767 → Bute in 1793); that is not treated as the house-farm freehold transfer.",
     "src": [
      {
       "t": "Heneb HER GGAT02038s · Great House Farm (Vaughan freehold; Bute in the early 19th century)",
@@ -1620,7 +1630,7 @@
     "kind": "forkA",
     "t": "t1877",
     "label": "1877 split · Parcel A to Daniel Thomas & Son",
-    "text": "The Bute Estate parts with the farmhouse, buildings and about 10 acres (Parcel A) to Daniel Thomas & Son of the Llandough lime works, by sale or quarry lease, and keeps about 9 acres (Parcel B). Known from Mary (Nancy) Williams’s statement (Timeline page 33); the 1877 agreement (EV-0006) is not yet located. The NLW Bute catalogue has Llandough land “formerly part of Great House Farm” for the lime works, 1876–1912 (EV-0291).",
+    "text": "The working title-chain hypothesis is that the Bute Estate parted with the farmhouse, buildings and about 10 acres (Parcel A) to Daniel Thomas & Son in 1877, while retaining about 9 acres (Parcel B). The agreement is not in hand, so the precise legal instrument and whether it was a freehold sale or quarry arrangement remain unresolved. The cited family statement and NLW catalogue are supporting sources, not a substitute for the deed.",
     "src": [
      {
       "t": "EV-0006 · 1877 Bute–Daniel Thomas & Son agreement",
@@ -1643,7 +1653,8 @@
       "u": "https://greathousefarmwiki.wordpress.com/the-two-parcels/three-parts-of-parcel-a-divergent-chronologies/"
      }
     ],
-    "note": "agreement not yet in hand"
+    "note": "agreement not yet in hand",
+    "todo": true
    },
    {
     "k": "b1",
@@ -1760,8 +1771,8 @@
     "br": "A",
     "kind": "arc",
     "t": "t1928",
-    "label": "Parcel A · the family holds it after the last rent to Thomas",
-    "text": "Quarrying ends and the last rent of about £4 is paid to Alfred Thomas, son of Daniel Thomas; on the family’s case the 1877 arrangement then takes effect and Parcel A passes to the Williams family (Mary’s statement; the 1928 receipt, EV-0016, is pending). No deed is held.",
+    "label": "Parcel A · Williams family (1928 on the family's case)",
+    "text": "Quarrying ended and the last rent of about £4 was paid to Alfred Thomas, son of Daniel Thomas. On the family's case, Parcel A then passed to the Williams family under the 1877 arrangement. The 1928 receipt and Mary (Nancy) Williams's statement are the cited sources; no conveyance deed has been located.",
     "src": [
      {
       "t": "EV-0016 · 1928 last rent receipt",
@@ -1776,38 +1787,41 @@
       "u": "https://greathousefarmwiki.wordpress.com/timeline/"
      }
     ],
-    "note": "receipt pending"
+    "note": "receipt pending",
+    "todo": true
    },
    {
     "k": "a3",
-    "y": 1955,
-    "lab": "no deed",
-    "date": "1928 → 1983",
-    "fr": "thomas",
-    "to": "origin",
+    "y": 1928,
+    "lab": "No later deed",
+    "date": "After 1928",
+    "fr": "family",
+    "to": "family",
     "br": "A",
     "kind": "gap",
     "todo": true,
-    "label": "Parcel A · no conveyance from Daniel Thomas & Son or the family on record",
-    "text": "No deed on file carries Parcel A, or the house and yard A(2), from Daniel Thomas & Son, or from the family who held it from 1928, to Western Ground Rents, BP or anyone else. The house title WA240304 was first registered in 1983 out of the 💩 chain instead, which starts at the 💩 on the ring (1955 order → 1962 → … → 1983). Gap: source to add, if such a deed exists.",
+    "label": "Parcel A · no later freehold conveyance located",
+    "text": "On the documents presently identified, the freehold chain for Parcel A stops with the Williams family after 1928. No later deed has been located conveying Parcel A, or its parts A1, A2 or A3, from Williams to WGR, BP or a current possessor. The later possession orders, licence letters, deeds and registrations are separately displayed below as record chronologies; they are not shown as conveyances from Williams.",
     "src": [
      {
       "t": "The Two Parcels",
       "u": "https://greathousefarmwiki.wordpress.com/the-two-parcels/"
      },
      {
-      "t": "Legal Wiki · Three parts of Parcel A (page 3356)",
+      "t": "Legal Wiki · Three parts of Parcel A",
       "u": "https://greathousefarmwiki.wordpress.com/the-two-parcels/three-parts-of-parcel-a-divergent-chronologies/"
      },
      {
-      "t": "Land Registry titles",
-      "u": "https://greathousefarmwiki.wordpress.com/land-registry-titles/"
+      "t": "EV-0016 · 1928 last rent receipt",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0016-1928-last-rent-receipt-quarrying/"
      },
      {
-      "t": "EV-0066 · WA240304 register, 1983",
-      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0066-hmlr-wa240304-item-10-register-1983/"
+      "t": "Legal Wiki · Land Registry titles",
+      "u": "https://greathousefarmwiki.wordpress.com/land-registry-titles/"
      }
-    ]
+    ],
+    "noteOnly": true,
+    "note": "Stop in the presently identified freehold record, not a finding that no instrument can exist."
    }
   ]
  }
