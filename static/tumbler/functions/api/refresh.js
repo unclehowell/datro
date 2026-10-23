@@ -6,9 +6,13 @@ export async function onRequestPost({request,env}){
  if(!env.CORPUS_DB)return reply({ok:false,error:"Corpus database is not configured."},503);
  try{
   const ip=request.headers.get("cf-connecting-ip")||"unknown",window=Math.floor(Date.now()/1800000),bucket="refresh-"+(await digest(ip+"|"+window)).slice(0,44);
-  await env.CORPUS_DB.prepare("INSERT INTO tumbler_generation_limits (bucket_id,requests,expires_at) VALUES (?,1,?) ON CONFLICT(bucket_id) DO UPDATE SET requests=requests+1,expires_at=excluded.expires_at").bind(bucket,String((window+1)*1800+120)).run();
+  const expiry=String((window+1)*1800+120),globalDay=Math.floor(Date.now()/86400000),globalBucket="refresh-global-"+globalDay;
+  await env.CORPUS_DB.prepare("INSERT INTO tumbler_generation_limits (bucket_id,requests,expires_at) VALUES (?,1,?) ON CONFLICT(bucket_id) DO UPDATE SET requests=requests+1,expires_at=excluded.expires_at").bind(bucket,expiry).run();
+  await env.CORPUS_DB.prepare("INSERT INTO tumbler_generation_limits (bucket_id,requests,expires_at) VALUES (?,1,?) ON CONFLICT(bucket_id) DO UPDATE SET requests=requests+1,expires_at=excluded.expires_at").bind(globalBucket,String((globalDay+1)*86400+120)).run();
   const row=await env.CORPUS_DB.prepare("SELECT requests FROM tumbler_generation_limits WHERE bucket_id=?").bind(bucket).first();
+  const globalRow=await env.CORPUS_DB.prepare("SELECT requests FROM tumbler_generation_limits WHERE bucket_id=?").bind(globalBucket).first();
   if(Number(row?.requests||0)>1)return reply({ok:false,error:"A collection refresh has already been requested from this connection during the current 30-minute window."},429);
+  if(Number(globalRow?.requests||0)>4)return reply({ok:false,error:"The daily refresh safety limit has been reached. The scheduled index will continue to run."},429);
  }catch{return reply({ok:false,error:"The refresh safety limiter is unavailable; refresh has been stopped."},503)}
  try{
   const response=await fetch("https://api.github.com/repos/"+REPO+"/actions/workflows/index-tumbler-corpus.yml/dispatches",{
