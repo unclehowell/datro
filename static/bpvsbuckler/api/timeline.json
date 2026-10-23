@@ -117,13 +117,13 @@
     {
       "id": "frederick",
       "name": "Frederick Buckler",
-      "years": "1910/11 – 1967",
+      "years": "c. 1908/09 – 1967",
       "role": "Mary's husband. Held an unwritten yearly tenancy from 1949; the 1955 and 1962 orders were made against him."
     },
     {
       "id": "billy",
       "name": "William \"Billy\" Buckler",
-      "years": "c. 1948 – 1990",
+      "years": "1948 – 1990",
       "role": "Mary's son, born at the farm. Defendant in BP Properties Ltd v Buckler; evicted in November 1988."
     },
     {
@@ -2463,7 +2463,7 @@
       "place": "Great House Farm",
       "parcel": "A",
       "basis": "Source pending",
-      "narration": "William (Billy) Buckler is born at the farm.",
+      "narration": "William (Billy) Buckler is born at the farm on 25 August 1948 (the date given in the 1987 Court of Appeal judgment).",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses, by the 1877 bargain and by title by possession (twelve years rent-free, 1928–1940)",
@@ -2475,9 +2475,12 @@
       "received_wording": [],
       "what_we_now_know": "Mary's son and heir, who defended the house in court and was evicted in 1988.",
       "cast": [
-        "billy"
+        "billy",
+        "courts"
       ],
-      "institutions": [],
+      "institutions": [
+        "courts"
+      ],
       "evidence": [
         {
           "type": "Wiki page",
@@ -2667,7 +2670,7 @@
       "place": "High Court / Great House Farm",
       "parcel": "AB",
       "basis": "Court record",
-      "narration": "On 2 February 1955 Western Ground Rents obtains a High Court order for possession against Frederick Buckler, by summary judgment, described as \"the whole of the farm\". On 4 July 1955 possession is taken of everything except the farmhouse and garden; the 1987 judgment attributes the exception to Mary's recent return from hospital and her strong objection.",
+      "narration": "On 2 February 1955 a notice to quit served on Frederick Buckler expires. Western Ground Rents then obtains a High Court order for possession against him, by summary judgment, described as \"the whole of the farm\". On 4 July 1955 possession is taken of everything except the farmhouse and garden; the 1987 judgment attributes the exception to Mary's recent return from hospital and her strong objection.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses (Mary in the house) · woodland: per the Buckler case, taken in 1955 (SOURCE PENDING: not yet on the wiki)",
@@ -3203,7 +3206,7 @@
       "place": "Great House Farm",
       "parcel": "A",
       "basis": "Source pending",
-      "narration": "Frederick Buckler dies, aged 56. Mary takes back the name Williams and remains in the farmhouse.",
+      "narration": "Frederick Buckler dies, aged 58; his death is registered in the first quarter of 1967 (GRO death index, East Glamorgan 8b 364). Mary takes back the name Williams and remains in the farmhouse.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses (Mary in the house) · woodland: per the Buckler case, taken in 1955 (SOURCE PENDING: not yet on the wiki)",
@@ -3307,7 +3310,7 @@
       "place": "Planning office",
       "parcel": "AB",
       "basis": "Planning file",
-      "narration": "On 16 June 1970 land beside Leckwith Road is registered as village green VG41. On 25 July 1972 planning permission is granted for housing on the site, while Mary lives in the farmhouse.",
+      "narration": "In 1970 land beside Leckwith Road is registered as village green VG41. On 25 July 1972 planning permission is granted for housing on the site, while Mary lives in the farmhouse.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses (Mary in the house) · land beside Leckwith Road registered as village green VG41 (1970)",
@@ -3481,10 +3484,10 @@
       "place": "County court",
       "parcel": "A",
       "basis": "Court record",
-      "narration": "BP Pension Trust brings a county court action for possession. On 3 July 1974 Mary pleads ownership and the Limitation Act 1939. Her statement describes the 1877 sale. The case is part heard and adjourned, and not relisted.",
+      "narration": "BP Pension Trust brings a county court action for possession. On 3 July 1974 the case is part heard and adjourned for a formal defence to be filed; Mary's defence then pleads that the claim is barred under the Limitation Act 1939. Her statement describes the 1877 sale. The case is never relisted.",
       "family_case": null,
       "title_ledger": {
-        "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)",
+        "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in her defence after the 3 July 1974 adjournment (never decided)",
         "Synthetic Parcel A": "Held by BP Pension Trust: the 1962 order and the case against Mary (no deed to Parcel A; the 1969 root conveyance now missing)",
         "Parcel B: the fields": "Freehold: BP Pension Trust (Bute → WGR → BP, by deed)"
       },
@@ -3538,7 +3541,7 @@
       "narration": "On 19 September 1974 BP is given leave to enforce the 1962 order; Mary had not been given notice. On 31 October the warrant is withdrawn, and BP writes to \"Mary Buckler\" (the family copy; the Court of Appeal describes the letters as addressed to Mrs Buckler, \"described again as Mrs Williams\") that she may remain in the farmhouse under licence. She does not accept.",
       "family_case": null,
       "title_ledger": {
-        "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)",
+        "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in her defence after the 3 July 1974 adjournment (never decided)",
         "Synthetic Parcel A": "Attempt 6: BP's \"licence\" letters to Mary, 31 October 1974 (never accepted); 1962 warrant withdrawn",
         "Parcel B: the fields": "Freehold: BP Pension Trust (Bute → WGR → BP, by deed)"
       },
@@ -3604,7 +3607,7 @@
       "narration": "A letter to the Western Mail, dated 19 November (year unclear), traces the land's descent.",
       "family_case": null,
       "title_ledger": {
-        "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)",
+        "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in her defence after the 3 July 1974 adjournment (never decided)",
         "Synthetic Parcel A": "Attempt 6: BP's \"licence\" letters to Mary, 31 October 1974 (never accepted); 1962 warrant withdrawn",
         "Parcel B: the fields": "Freehold: BP Pension Trust (Bute → WGR → BP, by deed)"
       },
@@ -3645,7 +3648,7 @@
       "narration": "On 23 May 1975 BP Pension Trust conveys property at Great House Farm, with a plan, to BP Properties Ltd. The Court of Appeal later calls it \"the actual conveyance of the farmhouse and garden\".",
       "family_case": null,
       "title_ledger": {
-        "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)",
+        "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in her defence after the 3 July 1974 adjournment (never decided)",
         "Synthetic Parcel A": "Paper: conveyance BP Pension Trust → BP Properties of \"the farmhouse and garden\" (no earlier deed to Parcel A behind it)",
         "Parcel B: the fields": "Freehold: BP Pension Trust (Bute → WGR → BP, by deed)"
       },
@@ -3693,7 +3696,7 @@
       "narration": "From 1 December 1975 a sale of land in the Vale of Glamorgan must be registered at HM Land Registry. The 1969 and May 1975 conveyances come before this date; the November 1982 sale of the fields falls after it and is lodged within eleven days. The February 1983 application for the farmhouse was most likely voluntary.",
       "family_case": null,
       "title_ledger": {
-        "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)",
+        "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in her defence after the 3 July 1974 adjournment (never decided)",
         "Synthetic Parcel A": "Paper: conveyance BP Pension Trust → BP Properties of \"the farmhouse and garden\" (no earlier deed to Parcel A behind it)",
         "Parcel B: the fields": "Freehold: BP Pension Trust (Bute → WGR → BP, by deed)"
       },
@@ -3732,7 +3735,7 @@
       "narration": "On 22 May 1980 Ted Rowlands MP tells the House of Commons that Western Ground Rents, \"the most rapacious ground landlord\" in South Wales, has been bought by the BP pension fund.",
       "family_case": null,
       "title_ledger": {
-        "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)",
+        "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in her defence after the 3 July 1974 adjournment (never decided)",
         "Synthetic Parcel A": "Paper: conveyance BP Pension Trust → BP Properties of \"the farmhouse and garden\" (no earlier deed to Parcel A behind it)",
         "Parcel B: the fields": "Freehold: BP Pension Trust (Bute → WGR → BP, by deed)"
       },
@@ -3774,7 +3777,7 @@
       "narration": "On 1 October 1982 GGAT advises the planners that occupation may continue in the area and asks for investigation before development.",
       "family_case": null,
       "title_ledger": {
-        "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)",
+        "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in her defence after the 3 July 1974 adjournment (never decided)",
         "Synthetic Parcel A": "Paper: conveyance BP Pension Trust → BP Properties of \"the farmhouse and garden\" (no earlier deed to Parcel A behind it)",
         "Parcel B: the fields": "Freehold: BP Pension Trust (Bute → WGR → BP, by deed)"
       },
@@ -3833,7 +3836,7 @@
       "narration": "On 30 November 1982 Linklaters & Paines apply to register BP Properties as owner of the land, title WA231076. Mary is living in the farmhouse.",
       "family_case": null,
       "title_ledger": {
-        "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)",
+        "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in her defence after the 3 July 1974 adjournment (never decided)",
         "Synthetic Parcel A": "Paper: conveyance BP Pension Trust → BP Properties of \"the farmhouse and garden\" (no earlier deed to Parcel A behind it)",
         "Parcel B: the fields": "Registered: BP Properties, main title WA231076 (applied 30 November 1982)"
       },
@@ -3886,7 +3889,7 @@
       "narration": "On 23 February 1983 BP's solicitors apply to register the farmhouse and garden as a separate title, WA240304, on the 1975 conveyance, certifying they know of no question or doubt affecting the title.",
       "family_case": null,
       "title_ledger": {
-        "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)",
+        "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in her defence after the 3 July 1974 adjournment (never decided)",
         "Synthetic Parcel A": "Paper: registered as a separate title, WA240304, on the 1975 conveyance (\"no question or doubt\")",
         "Parcel B: the fields": "Registered: BP Properties, main title WA231076 (applied 30 November 1982)"
       },
@@ -4080,11 +4083,11 @@
       "act": "V",
       "date": "1986-07-10",
       "when": "10 July 1986",
-      "title": "High Court judgment",
+      "title": "High Court hearing and judgment",
       "place": "High Court, Cardiff",
       "parcel": "A",
       "basis": "Court record",
-      "narration": "On 10 July 1986 Mr Justice Hollis gives judgment for BP, holding that the 1974 letters gave Mary a licence.",
+      "narration": "On 10 July 1986 the case is heard before Mr Justice Hollis in the High Court at Cardiff. On 24 July 1986 he gives judgment for BP, holding that the 1974 letters gave Mary a licence.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim passes to Billy Buckler, in occupation · never decided, never extinguished",

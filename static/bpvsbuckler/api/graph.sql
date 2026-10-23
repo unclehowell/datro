@@ -122,7 +122,7 @@ INSERT INTO nodes VALUES ('scene:ghf-19830223-1','scene','IV.13 Farmhouse title'
 INSERT INTO nodes VALUES ('scene:ghf-19830326-1','scene','IV.14 Death of Mary (Nancy) Williams','{"date": "1983-03-26", "act": "IV", "grade": "testimony-only"}');
 INSERT INTO nodes VALUES ('scene:ghf-19830408-1','scene','IV.15 Registration correspondence','{"date": "1983-04-08", "act": "IV", "grade": "single-source"}');
 INSERT INTO nodes VALUES ('scene:ghf-19840522-1','scene','V.1 The writ','{"date": "1984-05-22", "act": "V", "grade": "documented"}');
-INSERT INTO nodes VALUES ('scene:ghf-19860710-1','scene','V.2 High Court judgment','{"date": "1986-07-10", "act": "V", "grade": "single-source"}');
+INSERT INTO nodes VALUES ('scene:ghf-19860710-1','scene','V.2 High Court hearing and judgment','{"date": "1986-07-10", "act": "V", "grade": "single-source"}');
 INSERT INTO nodes VALUES ('scene:ghf-19860711-1','scene','V.3 Royal Commission correspondence','{"date": "1986-07-11", "act": "V", "grade": "single-source"}');
 INSERT INTO nodes VALUES ('scene:ghf-19870202-1','scene','V.4 Amalgamation of titles','{"date": "1987-02-02", "act": "V", "grade": "single-source"}');
 INSERT INTO nodes VALUES ('scene:ghf-19870731-1','scene','V.5 Court of Appeal','{"date": "1987-07-31", "act": "V", "grade": "documented"}');
@@ -196,8 +196,8 @@ INSERT INTO nodes VALUES ('scene:ghf-99990101-3','scene','E.4 Village history','
 INSERT INTO nodes VALUES ('scene:ghf-99990102-1','scene','E.5 The family''s requests','{"date": "9999-01-03", "act": "E", "grade": "argument"}');
 INSERT INTO nodes VALUES ('person:mary','person','Mary (Nancy) Williams, formerly Buckler','{"years": "1913 – 1983"}');
 INSERT INTO nodes VALUES ('person:john','person','John Williams','{"years": "d. after 1949"}');
-INSERT INTO nodes VALUES ('person:frederick','person','Frederick Buckler','{"years": "1910/11 – 1967"}');
-INSERT INTO nodes VALUES ('person:billy','person','William "Billy" Buckler','{"years": "c. 1948 – 1990"}');
+INSERT INTO nodes VALUES ('person:frederick','person','Frederick Buckler','{"years": "c. 1908/09 – 1967"}');
+INSERT INTO nodes VALUES ('person:billy','person','William "Billy" Buckler','{"years": "1948 – 1990"}');
 INSERT INTO nodes VALUES ('person:branwen','person','Branwen Buckler','{"years": ""}');
 INSERT INTO nodes VALUES ('person:eldest','person','Frederick and Mary''s eldest son','{"years": "b. c. 1937–40"}');
 INSERT INTO nodes VALUES ('person:thomas','person','Daniel and Alfred Thomas','{"years": ""}');
@@ -1604,6 +1604,7 @@ INSERT INTO edges VALUES ('scene:ghf-19390501-1','person:wgr','features');
 INSERT INTO edges VALUES ('scene:ghf-19440101-1','person:john','features');
 INSERT INTO edges VALUES ('scene:ghf-19440101-1','person:frederick','features');
 INSERT INTO edges VALUES ('scene:ghf-19480101-1','person:billy','features');
+INSERT INTO edges VALUES ('scene:ghf-19480101-1','person:courts','features');
 INSERT INTO edges VALUES ('scene:ghf-19490202-1','person:john','features');
 INSERT INTO edges VALUES ('scene:ghf-19490202-1','person:frederick','features');
 INSERT INTO edges VALUES ('scene:ghf-19490202-1','person:wgr','features');
