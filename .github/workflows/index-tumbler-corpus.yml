@@ -16,7 +16,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: tumbler-corpus-index
+  group: tumbler-corpus-index-v2
   cancel-in-progress: true
 
 jobs:
