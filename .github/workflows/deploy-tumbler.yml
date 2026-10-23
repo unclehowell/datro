@@ -6,7 +6,6 @@ on:
       - tumbler
     paths:
       - 'static/tumbler/**'
-      - '.github/workflows/deploy-tumbler.yml'
   workflow_dispatch:
 
 permissions:
