@@ -1,0 +1,375 @@
+{
+  "schemaVersion": 1,
+  "inventoryDate": "2026-10-23",
+  "repository": "unclehowell/datro",
+  "allBranchesInScope": true,
+  "note": "Dated inventory of custom domains discovered from the connected Cloudflare account, plus the WordPress source. This is not a claim that every route or page is reachable or indexed. Refresh from Cloudflare and the source APIs before any exhaustive assessment.",
+  "sources": [
+    {
+      "host": "greathousefarmwiki.wordpress.com",
+      "kind": "wordpress",
+      "url": "https://greathousefarmwiki.wordpress.com/",
+      "description": "Original Great House Farm Wiki"
+    },
+    {
+      "host": "bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://bucklerfamily.estate/",
+      "description": "Main site"
+    },
+    {
+      "host": "www.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://www.bucklerfamily.estate/",
+      "description": "Main site alias"
+    },
+    {
+      "host": "research.bucklerfamily.estate",
+      "kind": "api",
+      "url": "https://research.bucklerfamily.estate/",
+      "description": "Read-only WordPress mirror; /api/content?search= and /api/content/{path}"
+    },
+    {
+      "host": "wiki.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://wiki.bucklerfamily.estate/",
+      "description": "Wiki deployment; branch wiki"
+    },
+    {
+      "host": "qa.bucklerfamily.estate",
+      "kind": "api",
+      "url": "https://qa.bucklerfamily.estate/",
+      "description": "FOI/EIR Q&A graph; /api/ask?q="
+    },
+    {
+      "host": "bpvsbuckler.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://bpvsbuckler.bucklerfamily.estate/",
+      "description": "BP v Buckler; branch bpvsbuckler"
+    },
+    {
+      "host": "bucklervsbp.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://bucklervsbp.bucklerfamily.estate/",
+      "description": "Buckler v BP; branch bucklervsbp"
+    },
+    {
+      "host": "2026-10-22.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://2026-10-22.bucklerfamily.estate/",
+      "description": "Council meeting toolkit; branch 2026-10-22"
+    },
+    {
+      "host": "projects.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://projects.bucklerfamily.estate/",
+      "description": "Project programme; branch projects"
+    },
+    {
+      "host": "mcp.projects.bucklerfamily.estate",
+      "kind": "private-api",
+      "url": "https://mcp.projects.bucklerfamily.estate/",
+      "description": "Private project-data API; never query without authorised credentials"
+    },
+    {
+      "host": "wayback.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://wayback.bucklerfamily.estate/",
+      "description": "Wayback archive; branch wayback"
+    },
+    {
+      "host": "records.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://records.bucklerfamily.estate/",
+      "description": "Primary records; branch ghf-primary-records"
+    },
+    {
+      "host": "authorities.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://authorities.bucklerfamily.estate/",
+      "description": "Public authorities; branch ghf-public-authorities"
+    },
+    {
+      "host": "review.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://review.bucklerfamily.estate/",
+      "description": "Independent review; branch ghf-independent-review"
+    },
+    {
+      "host": "emails.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://emails.bucklerfamily.estate/",
+      "description": "Email archive index; branch emails"
+    },
+    {
+      "host": "email.bucklerfamily.estate",
+      "kind": "private-api",
+      "url": "https://email.bucklerfamily.estate/",
+      "description": "Email service; content may be sensitive"
+    },
+    {
+      "host": "clerk.bucklerfamily.estate",
+      "kind": "private-api",
+      "url": "https://clerk.bucklerfamily.estate/",
+      "description": "Council clerk toolkit"
+    },
+    {
+      "host": "dartboard.bucklerfamily.estate",
+      "kind": "private-api",
+      "url": "https://dartboard.bucklerfamily.estate/",
+      "description": "Institution routing service"
+    },
+    {
+      "host": "fcg.bucklerfamily.estate",
+      "kind": "private-api",
+      "url": "https://fcg.bucklerfamily.estate/",
+      "description": "FCG WordPress mirror"
+    },
+    {
+      "host": "chat.bucklerfamily.estate",
+      "kind": "private-api",
+      "url": "https://chat.bucklerfamily.estate/",
+      "description": "Chat service"
+    },
+    {
+      "host": "app.bucklerfamily.estate",
+      "kind": "private-api",
+      "url": "https://app.bucklerfamily.estate/",
+      "description": "Application hub"
+    },
+    {
+      "host": "apps.bucklerfamily.estate",
+      "kind": "private-api",
+      "url": "https://apps.bucklerfamily.estate/",
+      "description": "Application hub alias"
+    },
+    {
+      "host": "comments.bucklerfamily.estate",
+      "kind": "private-api",
+      "url": "https://comments.bucklerfamily.estate/",
+      "description": "Comments service"
+    },
+    {
+      "host": "engineroom.bucklerfamily.estate",
+      "kind": "private-api",
+      "url": "https://engineroom.bucklerfamily.estate/",
+      "description": "Engine room service"
+    },
+    {
+      "host": "fb.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://fb.bucklerfamily.estate/",
+      "description": "Branch fb"
+    },
+    {
+      "host": "fb2.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://fb2.bucklerfamily.estate/",
+      "description": "Branch fb; separate Pages project"
+    },
+    {
+      "host": "oldbill.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://oldbill.bucklerfamily.estate/",
+      "description": "Branch oldbill"
+    },
+    {
+      "host": "docs.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://docs.bucklerfamily.estate/",
+      "description": "Branch docs"
+    },
+    {
+      "host": "nolecture.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://nolecture.bucklerfamily.estate/",
+      "description": "Branch nomenclature alias"
+    },
+    {
+      "host": "nomenclature.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://nomenclature.bucklerfamily.estate/",
+      "description": "Branch nomenclature"
+    },
+    {
+      "host": "nomlecture.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://nomlecture.bucklerfamily.estate/",
+      "description": "Branch nomenclature alias"
+    },
+    {
+      "host": "directory.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://directory.bucklerfamily.estate/",
+      "description": "Branch directory"
+    },
+    {
+      "host": "whatdotheyknow.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://whatdotheyknow.bucklerfamily.estate/",
+      "description": "Branch whatdotheyknow"
+    },
+    {
+      "host": "watchtower.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://watchtower.bucklerfamily.estate/",
+      "description": "Branch watchtower"
+    },
+    {
+      "host": "maps.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://maps.bucklerfamily.estate/",
+      "description": "Branch maps"
+    },
+    {
+      "host": "ebooks.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://ebooks.bucklerfamily.estate/",
+      "description": "Branch ebooks"
+    },
+    {
+      "host": "accounts.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://accounts.bucklerfamily.estate/",
+      "description": "Branch accounts"
+    },
+    {
+      "host": "shop.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://shop.bucklerfamily.estate/",
+      "description": "Branch merch"
+    },
+    {
+      "host": "csscpsg.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://csscpsg.bucklerfamily.estate/",
+      "description": "Branch csscpsg"
+    },
+    {
+      "host": "csscpsgp.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://csscpsgp.bucklerfamily.estate/",
+      "description": "Branch csscpsg alias"
+    },
+    {
+      "host": "cnei.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://cnei.bucklerfamily.estate/",
+      "description": "Branch cnei"
+    },
+    {
+      "host": "webbrich.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://webbrich.bucklerfamily.estate/",
+      "description": "Branch webbrich"
+    },
+    {
+      "host": "chess.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://chess.bucklerfamily.estate/",
+      "description": "Branch chess"
+    },
+    {
+      "host": "pirateclaw.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://pirateclaw.bucklerfamily.estate/",
+      "description": "Branch pirateclaw"
+    },
+    {
+      "host": "archives.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://archives.bucklerfamily.estate/",
+      "description": "Branch archives"
+    },
+    {
+      "host": "althea.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://althea.bucklerfamily.estate/",
+      "description": "Branch althea"
+    },
+    {
+      "host": "ceo.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://ceo.bucklerfamily.estate/",
+      "description": "Branch ceo"
+    },
+    {
+      "host": "projections.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://projections.bucklerfamily.estate/",
+      "description": "Branch gh-pages"
+    },
+    {
+      "host": "timeline.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://timeline.bucklerfamily.estate/",
+      "description": "Branch gh-pages"
+    },
+    {
+      "host": "infographic.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://infographic.bucklerfamily.estate/",
+      "description": "Branch infographic"
+    },
+    {
+      "host": "ghf-app.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://ghf-app.bucklerfamily.estate/",
+      "description": "Branch ghf-app"
+    },
+    {
+      "host": "wave.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://wave.bucklerfamily.estate/",
+      "description": "Branch wave"
+    },
+    {
+      "host": "hbnb.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://hbnb.bucklerfamily.estate/",
+      "description": "Branch hbnb"
+    },
+    {
+      "host": "command.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://command.bucklerfamily.estate/",
+      "description": "Branch command"
+    },
+    {
+      "host": "subrepos.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://subrepos.bucklerfamily.estate/",
+      "description": "Branch subrepos"
+    },
+    {
+      "host": "dash.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://dash.bucklerfamily.estate/",
+      "description": "Branch dash"
+    },
+    {
+      "host": "calls.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://calls.bucklerfamily.estate/",
+      "description": "Branch calls"
+    },
+    {
+      "host": "library.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://library.bucklerfamily.estate/",
+      "description": "Branch library"
+    },
+    {
+      "host": "gui.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://gui.bucklerfamily.estate/",
+      "description": "Branch gui"
+    },
+    {
+      "host": "dcc.bucklerfamily.estate",
+      "kind": "website",
+      "url": "https://dcc.bucklerfamily.estate/",
+      "description": "Branch dcc"
+    }
+  ]
+}
