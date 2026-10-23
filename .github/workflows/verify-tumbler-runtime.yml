@@ -1,0 +1,78 @@
+name: Verify Tumbler runtime
+
+on:
+  push:
+    branches:
+      - tumbler
+    paths:
+      - '.github/workflows/verify-tumbler-runtime.yml'
+      - 'static/tumbler/functions/api/generate.js'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-tumbler-runtime
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check deployed homepage, source manifest and corpus status
+        run: |
+          set -eu
+          BASE="https://tumbler-6js.pages.dev"
+          curl --fail --silent --show-error --max-time 45 "$BASE/" -o /tmp/tumbler-home.html
+          curl --fail --silent --show-error --max-time 45 "$BASE/api/manifest" -o /tmp/tumbler-manifest.json
+          curl --fail --silent --show-error --max-time 45 "$BASE/api/health" -o /tmp/tumbler-health.json
+          curl --fail --silent --show-error --max-time 45 "$BASE/api/corpus-status" -o /tmp/tumbler-corpus.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          html = Path("/tmp/tumbler-home.html").read_text(encoding="utf-8")
+          manifest = json.loads(Path("/tmp/tumbler-manifest.json").read_text(encoding="utf-8"))
+          health = json.loads(Path("/tmp/tumbler-health.json").read_text(encoding="utf-8"))
+          corpus = json.loads(Path("/tmp/tumbler-corpus.json").read_text(encoding="utf-8"))
+          assert "<title>Tumbler" in html, "Home page title missing"
+          methods = {x.get("id") for x in manifest.get("methods", [])}
+          assert {"socratic", "prince2", "roberts"}.issubset(methods), "Expected methods missing"
+          assert len(manifest.get("inventory", {}).get("sources", [])) >= 10, "Source inventory missing"
+          assert health.get("service") == "tumbler", "Health route failed"
+          assert "exhaustiveWholeEstateIndex" in corpus, "Corpus coverage status missing"
+          run = corpus.get("latestRun") or {}
+          print("Tumbler runtime:", "methods", len(methods), "hosts", len(manifest["inventory"]["sources"]),
+                "AI binding", health.get("aiBindingConfigured"),
+                "latest corpus status", run.get("status", "not indexed"),
+                "documents", (corpus.get("corpus") or {}).get("documents", 0))
+          PY
+
+      - name: Test real prompt generation and preserve diagnostics
+        run: |
+          set -u
+          BASE="https://tumbler-6js.pages.dev"
+          curl --silent --show-error --max-time 120 -X POST "$BASE/api/generate" \
+            -H "content-type: application/json" \
+            -d '{"method":"socratic","focus":"Runtime smoke test. Produce an agent prompt requiring source-linked findings, counterevidence and acceptance checks.","propertyLaw":false,"investigation":false,"allBranches":true}' \
+            -o /tmp/tumbler-generate.json || echo '{"error":"curl failed or timed out"}' > /tmp/tumbler-generate.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          raw = Path("/tmp/tumbler-generate.json").read_text(encoding="utf-8")
+          try:
+              data = json.loads(raw)
+          except Exception:
+              raise SystemExit("Prompt generation returned non-JSON: " + raw[:900])
+          if data.get("ok") is not True or len(data.get("prompt", "")) < 300:
+              print("Prompt-generation response (diagnostic only):")
+              print(json.dumps({k:v for k,v in data.items() if k != "prompt"}, ensure_ascii=False)[:1800])
+              raise SystemExit("Runtime prompt-generation smoke test failed.")
+          coverage = data.get("coverage") or {}
+          print("Prompt generation passed; methodology:", data.get("methodology"),
+                "characters:", len(data["prompt"]),
+                "live branches:", coverage.get("branchHeadsLive"),
+                "indexed excerpts:", coverage.get("retrievedExcerpts"),
+                "exhaustive index:", coverage.get("exhaustiveWholeEstateIndex"))
+          PY
