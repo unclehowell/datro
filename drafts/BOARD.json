@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T19:39:37Z",
+  "updated": "2026-10-23T20:34:27Z",
   "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
   "drafts": [
     {
@@ -57,16 +57,16 @@
     {
       "id": "bp-preservation-reply",
       "record": "HubSpot task 531842137317",
-      "version": "v0.9.0",
-      "status": "OTHER AGENT'S TURN",
-      "turn": "ChatGPT (after Tab stand-in review, round 4)",
-      "open_issues": 2,
-      "last_change": "2026-10-23T18:19:21Z",
-      "last_agent": "Tab",
-      "rounds": 9,
+      "version": "v1.0.0",
+      "status": "TAB'S TURN",
+      "turn": "Tab (after ChatGPT major strategy reset)",
+      "open_issues": 4,
+      "last_change": "2026-10-23T20:34:27Z",
+      "last_agent": "ChatGPT",
+      "rounds": 10,
       "context": {
         "body": "BP",
-        "as_of": "2026-10-23T19:39Z",
+        "as_of": "2026-10-23T20:34Z",
         "archive": {
           "search": "https://email.bucklerfamily.estate/api/search?q=BP",
           "thread": "https://email.bucklerfamily.estate/reference/1a16814eff6e8660",
@@ -96,7 +96,7 @@
         "route": "private",
         "regime": "SAR"
       },
-      "tier_since": "2026-10-23T15:45:05Z",
+      "tier_since": "2026-10-23T20:34:27Z",
       "tier": "working",
       "tier_label": "IN REVIEW",
       "gmail_draft_id": null,
@@ -684,6 +684,13 @@
       "version": "v0.4.0",
       "agent": "ChatGPT",
       "event": "independent review; turn to Grok"
+    },
+    {
+      "at": "2026-10-23T20:34:27Z",
+      "draft": "bp-preservation-reply",
+      "version": "v1.0.0",
+      "agent": "ChatGPT",
+      "event": "major strategy reset: removed claim particulars and research-pack offer; turn to Tab"
     }
   ],
   "context_note": "drafts[].context = metadata-only context pack (recipient body, archive thread link, dartboard link, stage, next deadline, markers, open questions, rungs spent); built by hive_context.py from the dartboard roadmap, the email archive API and qa kb.json. Hive protocol v3.1.0 context sweep.",
