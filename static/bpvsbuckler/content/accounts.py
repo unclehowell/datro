@@ -606,6 +606,79 @@ ACCOUNTS = {
     received="",
     words=[],
     known="Every body involved is being given the opportunity to put it right before the family return to court."),
+# coverage pass 24 Oct 2026 (research chronology) — Sion's Tab agent
+'ghf-06500101-1': dict(
+    received="",
+    words=[],
+    known='The church and its early burial ground sit next to the farm; the 1994 cemetery excavation north of the church took place on former farm land.'),
+'ghf-18871215-1': dict(
+    received="",
+    words=[],
+    known='Daniel Thomas held the Llandough lime kilns under the 1877 arrangement with Bute; the works passed to his family and continued after his death.'),
+'ghf-19021129-1': dict(
+    received="",
+    words=[],
+    known='The woodland north of the house was managed by Bute as coppice in 1902; whether the land itself changed hands then is not shown.'),
+'ghf-19271214-1': dict(
+    received="",
+    words=[],
+    known="The death of Daniel Thomas's son and heir in December 1927 comes immediately before the 1928 end of quarrying and of rent on the house."),
+'ghf-19420401-1': dict(
+    received="",
+    words=[],
+    known="The extent of the 1940–42 gift is not yet laid over the farm's boundaries; the 1942 conveyance and its plan would settle it."),
+'ghf-19690215-1': dict(
+    received="",
+    words=[],
+    known='From 1969 the landlord that brought the 1955 and 1962 actions and the buyer of the farm were in the same group.'),
+'ghf-19710101-1': dict(
+    received="",
+    words=[],
+    known='The 1971 abstract was the paper on which both first registrations rested; HM Land Registry no longer lists it among the surviving file items.'),
+'ghf-19720101-1': dict(
+    received="",
+    words=[],
+    known='The SSSI notification file would list the owners and occupiers notified in 1972 and 1985; that list has not been seen.'),
+'ghf-19720731-1': dict(
+    received="",
+    words=[],
+    known="VG41's objection window closed with public notice only; whether the occupiers of the farmhouse ever knew of it is not recorded."),
+'ghf-19810207-1': dict(
+    received="",
+    words=[],
+    known='BP Pension Trust kept the Great House Farm land when it sold its South Wales ground rents in 1981.'),
+'ghf-19831026-1': dict(
+    received="",
+    words=[],
+    known='The house was named as a notable building in 1983, five years before the listing decision of December 1988.'),
+'ghf-19871217-1': dict(
+    received="",
+    words=[],
+    known="In 1987, while the appeal was decided, the council's minutes treated the farm roadway as unofficial and recorded BP Properties' agents ending its licence."),
+'ghf-19950101-1': dict(
+    received="",
+    words=[],
+    known='The registration file ends with the utility rights and the Persimmon correspondence of 1995–96.'),
+'ghf-20260614-1': dict(
+    received="",
+    words=[],
+    known="The council's own minutes for 1982, the year of first registration, are at Glamorgan Archives."),
+'ghf-20260716-1': dict(
+    received="",
+    words=[],
+    known='South Wales Police hold no information in answer to request 719/26.'),
+'ghf-20260914-1': dict(
+    received="",
+    words=[],
+    known="The 1965 school-site conveyance is now held and can be laid against the farm's boundaries."),
+'ghf-20261010-1': dict(
+    received="",
+    words=[],
+    known='An application to alter the register of both titles is open at HM Land Registry.'),
+'ghf-20261011-1': dict(
+    received="",
+    words=[],
+    known="The council's records request stands refused on cost, with an internal review asked for."),
 }
 
 

@@ -167,6 +167,10 @@ sc('P', 'ghf-02000101-1', '-0200-01-01', 'Late Iron Age (approx. 2,200 years ago
     {'type': 'Heritage record', 'title': 'Heneb HER GGAT00768s — Llandough Roman Villa (Iron Age farmstead / possible round hut)', 'url': 'https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT00768s'},
     {'type': 'National monument record', 'title': 'Coflein NPRN 400051 — Roman Villa Site, Llandough; excavation in 1979', 'url': 'https://coflein.gov.uk/en/site/400051/'}
    ])
+sc('P', 'ghf-06500101-1', '0650-01-01', 'c. 650 (approximate)', "St Dochdwy's", 'Llandough churchyard, beside the farm', 'x',
+   'Archaeological record',
+   "Beside the farm stands St Dochdwy's, Llandough. It is thought to have been an early monastery, founded around the year 650; the churchyard and the ground north of it hold the burials later excavated in 1994.",
+   [ARCH, HER])  # coverage: research chronology — Sion's Tab agent
 sc('P', 'ghf-12000101-1', '1200-01-01', '12th – 14th century', "Medieval occupation", 'Great House — north-east slope', 'A',
    'Archaeological record',
    "In 1962–63 E. J. Beare reports pottery of the 12th to 14th centuries on the slope north-east of the house. The Royal Commission classes the house as sub-medieval, probably 17th century, possibly with a medieval core.",
@@ -296,6 +300,10 @@ sc('I', 'ghf-18810403-1', '1881-04-03', '3 April 1881', "The 1881 census: \"Llan
     {'type': 'Newspaper', 'title': 'EV-0228 — Llandough Farm and the Rees family, 1841–1910: a separate Bute farm (wiki evidence page)', 'url': WIKI + '/evidence/ev-0228-llandough-farm-rees-family-1841-1910/'},
     w('/evidence/ev-0223-1881-census-name-variant/', 'EV-0223 — 1881 census: a dictated variant of the farm name (pending)')],
    image='/media/1881-census-rg11-5288-p2.jpg')
+sc('I', 'ghf-18871215-1', '1887-12-15', '15 December 1887 (obituary)', 'Death of Daniel Thomas', 'Penylan, Cardiff', 'A',
+   'Newspaper',
+   'Daniel Thomas of Penylan dies. His obituary in Tarian y Gweithiwr describes him as a contractor under Lord Bute and the owner of "valuable lime kilns at Llandough". In April 1888 a local man is described as "a labourer at Llandough Quarry": the quarry beside the farm is still worked.',
+   [w('/evidence/ev-0280-llandough-lime-works-and-quarry-1876-1947-daniel-thomas-s-kilns-quarry-workers-kel/', 'EV-0280 — Llandough lime works and quarry, 1876–1947: Daniel Thomas’s kilns and quarry workers', 'Newspaper')])  # coverage: research chronology — Sion's Tab agent
 sc('I', 'ghf-18890811-1', '1889-08-11', '11 August 1889', "Apples from the orchard", 'Great House Farm — the orchard by the railway', 'AB',
    'Newspaper',
    "Four boys climb \"over the hedge from the railway\" into \"the orchard of Great House Farm\" and take apples, \"the property of John Williams\". John Williams junior helps the constable catch three of them, and tells the Penarth magistrates that about half the apples in his father's orchard have gone.",
@@ -393,6 +401,10 @@ sc('I', 'ghf-18970527-1', '1897-05-27', 'Late May – July 1897', 'The first wir
     {'type': 'Newspaper', 'title': '[VERIFIED] Carnarvon and Denbigh Herald, 9 July 1897, p.2 — Preece: "Marconi only left England on Monday" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3603372/3603374/10/'},
     {'type': 'Newspaper', 'title': '[VERIFIED] Y Negesydd, 23 July 1897, p.1 — "Pellebru heb wifrau": experiments "yn agos i Benarth, Caerdydd" by Mr Preece and Marconi (Welsh) (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3819134/3819135/2/'}
    ])
+sc('I', 'ghf-19021129-1', '1902-11-29', '29 November 1902', 'Coppice woods offered at auction', 'Cwm Cydfin Wood, Leckwith and Llandough', '?',
+   'Sale particulars',
+   'Stephenson & Alexander offer the Marquess of Bute\'s coppice woods at auction, including "Cwm Cydfin Wood, Leckwith and Llandough", the woodland north of the house (particular 192). The particulars do not state whether the land or only the coppice is offered.',
+   [w('/evidence/ev-0219-bute-coppice-woods-sale-1902-cwm-cydfin-wood/', 'EV-0219 — Bute coppice woods sale, 1902: Cwm Cydfin Wood', 'Sale particulars')])  # coverage: research chronology — Sion's Tab agent
 sc('I', 'ghf-19070401-1', '1907-04-01', '1 April 1907', 'Air-rifle meeting at Great House Farm', 'Great House Farm', '?',
    'Newspaper',
    'The Llandough Air-rifle Club holds its Easter Monday meeting at Great House Farm: ten shots at twenty yards. A Llandough man, J. Griffiths, comes third.',
@@ -426,6 +438,10 @@ sc('II', 'ghf-19160201-1', '1916-02-01', 'February 1916', "The 1916 tenancy", 'G
    "Bute grants John Williams a yearly tenancy described as \"the whole farm\". The document has not been found.",
    [w('/1916-tenancy/#grant', 'The 1916 Tenancy', 'Court record'), JUDG, w('/the-two-parcels/whole-farm-nomenclature/', 'The Farm / Whole Farm Nomenclature')],
    ledger={'S': 'Seed (a landlord\'s wording, not the family\'s): the words "the whole farm" in a Bute tenancy (Bute can only let Parcel B)'})
+sc('II', 'ghf-19271214-1', '1927-12-14', '14 December 1927', 'Death of Lord Pontypridd', 'Cardiff', 'A',
+   'Newspaper',
+   'Alfred Thomas, Lord Pontypridd, son of Daniel Thomas of the Llandough lime works, dies unmarried. The next year the last quarry machinery leaves and the final rent on the house is paid.',
+   [w('/evidence/ev-0284-alfred-thomas-lord-pontypridd-son-of-daniel-thomas-of-the-llandough-lime-works-die/', 'EV-0284 — Alfred Thomas, Lord Pontypridd, son of Daniel Thomas of the Llandough lime works, dies 1927', 'Newspaper')])  # coverage: research chronology — Sion's Tab agent
 sc('II', 'ghf-19280101-1', '1928-01-01', '1928', "Last rent on the house", 'Great House Farm', 'A',
    "Mary's statement",
    "Mary (Nancy) Williams's statement records that in 1928 the last quarry machinery left, and John Williams paid a final rent of about £4 to Alfred Thomas. She saw the receipt. It is missing.",
@@ -455,6 +471,10 @@ sc('II', 'ghf-19400101-1', '1940-01-01', 'c. 1940', "Twelve years", 'Great House
    "By 1940, twelve years after 1928, no rent has been paid on the house.",
    [w('/1939-revised-tenancy/#c1940', '1938–39 — c. 1940'), w('/forensic-master-chronology-authoritative-corrected-6-october-2026/', 'Forensic Master Chronology (6 October 2026)', 'Analysis')],
    ledger={'A': 'Freehold: the Williamses, by the 1877 bargain and by title by possession (twelve years rent-free, 1928–1940)'})
+sc('II', 'ghf-19420401-1', '1942-04-01', '1940 – April 1942', 'The gift of Leckwith Woods', 'Leckwith Woods', '?',
+   'Public record',
+   'Western Ground Rents gives about 109 acres of Leckwith Woods to Cardiff council. The gift is offered and accepted in 1940 and completed in April 1942. Whether it takes in any of the woodland beside the farm is a question for the 1942 conveyance plan.',
+   [{'type': 'Archive catalogue', 'title': 'Cardiff Parks Committee minutes, 1940–42 (Glamorgan Archives BC/C/6/79)', 'url': 'https://canfod.glamarchives.gov.uk/en/records/BC/C/6/79'}, TL])  # coverage: research chronology — Sion's Tab agent
 sc('II', 'ghf-19440101-1', '1944-01-01', '1944', "Farm management", 'Great House Farm', 'B',
    "Mary's statement",
    "The War Agricultural Executive Committee is dissatisfied with the farm. Frederick Buckler takes over running it as manager for John Williams.",
@@ -554,12 +574,24 @@ sc('III', 'ghf-19670101-1', '1967-01-01', '1967', "Death of Frederick Buckler", 
    ledger={'B': 'Freehold and possession: Western Ground Rents'})
 
 # ---------------------------------------------------------------- ACT IV
+sc('IV', 'ghf-19690215-1', '1969-02-15', '15 February 1969', 'BP bids for Western Ground Rents', 'London', 'AB',
+   'Newspaper',
+   'British Petroleum makes an agreed bid for the whole of Western Ground Rents Ltd, wanting its "shops, offices, houses in London and South Wales — for their pension fund", after rival bids from Amalgamated Investment & Property and Great Portland Estates. The December 1969 sale of the farm to BP Pension Trust follows.',
+   [w('/evidence/ev-0288-snippets-only-press-on-the-1968-69-takeover-battle-for-western-ground-rents-ltd-en/', 'EV-0288 — Press on the 1968–69 takeover contest for Western Ground Rents Ltd (snippets)', 'Newspaper')])  # coverage: research chronology — Sion's Tab agent
 sc('IV', 'ghf-19691231-1', '1969-12-31', '31 December 1969', "Conveyance to BP Pension Trust", 'Great House Farm', 'AB',
    'Land Registry record',
    "In February 1969 British Petroleum agrees to buy the whole of Western Ground Rents for its pension fund. On 31 December 1969 Western Ground Rents conveys Parcel B, and an interest in the 1962 order on Parcel A, to BP Pension Trust Ltd. The 1987 judgment calls it a sale of \"Great House Farm, including the farmhouse and garden\"; no deed to Parcel A has been found. The conveyance is not on the Land Registry files.",
    [LRT('conveyances', 'Land Registry Titles — conveyances'), {'type': 'Newspaper', 'title': 'EV-0288 — Press snippets, Nov 1968 – Feb 1969: BP buys Western Ground Rents for its pension fund (wiki evidence page)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0288-snippets-only-press-on-the-1968-69-takeover-battle-for-western-ground-rents-ltd-en/'}],
    ledger={'B': 'Freehold: BP Pension Trust (Bute → WGR → BP, by deed)',
            'S': 'Held by BP Pension Trust: the 1962 order and the case against Mary (no deed to Parcel A; the 1969 root conveyance now missing)'})
+sc('IV', 'ghf-19710101-1', '1971-01-01', '1971', 'The 1971 abstract of title', 'BP Pension Trust', 'AB',
+   'Land Registry record',
+   'An abstract of title is prepared for BP Pension Trust. In 2026 HM Land Registry writes that an abstract "dated 1971 was lodged with the application for first registration" of WA231076, and that for WA240304 "we had sight of a copy of a 1971 abstract of title". It is not listed among the surviving records, and its contents are not held.',
+   [w('/evidence/hm-land-registry-correspondence/#m39', 'HM Land Registry correspondence — letter of 19 April 2026 (M39)', 'Official correspondence'), {'type': 'Evidence catalogue', 'title': 'EV-0045 — HM Land Registry letter, 19 April 2026', 'url': 'https://wayback.bucklerfamily.estate/artifacts/#EV-0045'}])  # coverage: research chronology — Sion's Tab agent
+sc('IV', 'ghf-19720101-1', '1972-01-01', '1972 (re-notified 9 December 1985)', 'Cwm Cydfin SSSI', 'Cwm Cydfin, Leckwith', '?',
+   'Public record',
+   'Cwm Cydfin, the wooded valley at Leckwith, is notified as a Site of Special Scientific Interest (SSSI 0524). It is re-notified on 9 December 1985.',
+   [w('/evidence/ev-0218-cwm-cydfin-sssi-0524-citation-and-boundary/', 'EV-0218 — Cwm Cydfin SSSI 0524: citation and boundary', 'Public record'), w('/evidence/ev-0221-nrw-sssi-0524-notification-file/', 'EV-0221 — NRW SSSI 0524 notification file', 'Public record')])  # coverage: research chronology — Sion's Tab agent
 sc('IV', 'ghf-19720725-1', '1972-07-25', '1970 – 72', "Village green and planning permission", 'Planning office', 'AB',
    'Planning file',
    "On 16 June 1970 land beside Leckwith Road is provisionally registered as village green VG41 (the date stamped on the VG 41 provisional register map). On 25 July 1972 planning permission is granted for housing on the site, while Mary lives in the farmhouse.",
@@ -568,6 +600,10 @@ sc('IV', 'ghf-19720725-1', '1972-07-25', '1970 – 72', "Village green and plann
      'url': 'https://www.legislation.gov.uk/ukla/1983/9'},
     {'type': 'Legislation', 'title': 'EV-0232 — Commons Registration (Glamorgan) Act 1983: common land registers only (wiki evidence page)', 'url': WIKI + '/evidence/ev-0232-commons-registration-glamorgan-act-1983/'}], aliases=['ghf-19700616-1'],
    ledger={'A': 'Freehold: the Williamses (Mary in the house) · land beside Leckwith Road provisionally registered as village green VG41 (16 June 1970)'})
+sc('IV', 'ghf-19720731-1', '1972-07-31', '31 July 1972', 'Village green objections close', 'Leckwith Road, Llandough', 'A',
+   'Public record',
+   'The second objection period under the Commons Registration Act 1965 ends. It covers VG41, the land by Leckwith Road provisionally registered as a village green on 16 June 1970. Notice of the registration is given to the public; no personal notice to the occupiers of the farm is required.',
+   [w('/evidence/ev-0263-commons-registration-1965-publicity-glamorgan-notices-vg41/', 'EV-0263 — Commons registration 1965: publicity and Glamorgan notices (VG41)', 'Public record')])  # coverage: research chronology — Sion's Tab agent
 sc('IV', 'ghf-19740101-1', '1974-01-01', '1974', "Royal Commission survey", 'Great House — interior', 'A',
    'Heritage record',
    "H. J. Thomas's 1974 survey and R. F. Suggett's December 1988 note are separate records. The HER entry says the house remained partially recorded because access was restricted by an ownership dispute. The survey predates demolition on 6 December 1988; Suggett's note postdates it. The evidence currently identified does not establish that listing was legally required, that demolition was unlawful, or what was submitted to the European Commission of Human Rights.",
@@ -609,6 +645,10 @@ sc('IV', 'ghf-19800522-1', '1980-05-22', '22 May 1980', "Hansard", 'House of Com
    "On 22 May 1980 Ted Rowlands MP tells the House of Commons that Western Ground Rents, \"the most rapacious ground landlord\" in South Wales, has been bought by the BP pension fund.",
    [press('N16', 'Hansard, 22 May 1980', 'ghf-e090-n16-1980-hansard-rowlands.jpg')],
    image='/media/ghf-e090-n16-1980-hansard-rowlands.jpg')
+sc('IV', 'ghf-19810207-1', '1981-02-07', '7 February 1981', 'Ground rents sold', 'South Wales', '',
+   'Newspaper',
+   'BP Pension Trust sells its residential freehold ground rents in South Wales to Cefn Estates.',
+   [w('/evidence/ev-0289-snippets-only-bp-pension-trust-in-south-wales-1981-83-sale-of-its-residential-grou/', 'EV-0289 — BP Pension Trust in South Wales, 1981–83: sale of its residential ground rents (snippets)', 'Newspaper')])  # coverage: research chronology — Sion's Tab agent
 sc('IV', 'ghf-19821001-1', '1982-10-01', '1 October 1982', "GGAT advice", 'GGAT', 'AB',
    'Planning file',
    "On 1 October 1982 GGAT advises the planners that occupation may continue in the area and asks for investigation before development.",
@@ -638,6 +678,10 @@ sc('IV', 'ghf-19830408-1', '1983-04-08', '8 April – 12 May 1983', "Registratio
    [LRT('first-registration', 'Land Registry Titles — first registration')])
 
 # ---------------------------------------------------------------- ACT V
+sc('IV', 'ghf-19831026-1', '1983-10-26', '26 October 1983', 'Conservation reports', 'Llandough', 'A',
+   'Newspaper',
+   'The South Wales Echo reports that the Community Council and the Vale planners have Great House Farm in view in their conservation reports as a notable building. No listing or decision follows.',
+   [w('/evidence/ev-0072-south-wales-echo-1983-conservation/', 'EV-0072 — South Wales Echo, 26 October 1983, p.9 (conservation)', 'Newspaper')])  # coverage: research chronology — Sion's Tab agent
 sc('V', 'ghf-19840522-1', '1984-05-22', '1984', "The writ", 'BP Properties', 'A',
    'Court record',
    "On 22 May 1984 BP Properties issues a writ for possession of Great House Farm and adjoining land against William Buckler. The defence relies on adverse possession from 1955.",
@@ -668,6 +712,10 @@ sc('V', 'ghf-19870731-1', '1987-07-31', '31 July 1987', "Court of Appeal", 'Cour
    [JUDG, w('/bp-properties-v-buckler/#omits', 'BP Properties Ltd v Buckler — what it omits', 'Analysis')],
    ledger={'A': 'Freehold claim: Billy Buckler · never adjudicated, never extinguished (judgment decides possession only)',
            'M': 'WA231076, BP Properties · right to possession upheld (1962 order + 1974 licence)'})
+sc('V', 'ghf-19871217-1', '1987-12-17', '1987 – 17 December 1987', 'Village green extension request', 'Llandough Community Council', 'A',
+   'Council minutes',
+   'Llandough Community Council minutes for 1987 record that there is "no justification" for submitting a right of way from Great House Farm to the Swiss Cottages, and name Debenham Tewson as "the agents for BP Properties". At the meeting of 17 December 1987 a resident\'s letter asks for VG41 to be "extended up to the farm wall"; the farm roadway is called "an unofficial access route", and the council\'s Penlan Road licence is recorded as terminated by Debenham Tewson.',
+   [w('/evidence/ev-0214-llandough-community-council-minutes-1987/', 'EV-0214 — Llandough Community Council minutes, 1987', 'Council minutes')])  # coverage: research chronology — Sion's Tab agent
 sc('V', 'ghf-19880303-1', '1988-03-03', '3 March 1988', "House of Lords", 'House of Lords', 'A',
    'Court record',
    "On 3 March 1988 the House of Lords refuses leave to appeal. The family are given 28 days to leave.",
@@ -857,6 +905,10 @@ sc('VII', 'ghf-19941110-1', '1994-11-10', '1994 – 96', "Woodland title and hou
    aliases=['ghf-19950628-1'],
    ledger={'M': 'WA231076 and the house titles carved from it (Church View Close)',
            'A': "Freehold claim: Mary's heirs · never adjudicated, never extinguished · woodland now registered to the Forest of Cardiff (WA735527) · land to the south a village green"})
+sc('VII', 'ghf-19950101-1', '1995-01-01', '1995 – 1996', 'Last dealings on the title', 'HM Land Registry', 'AB',
+   'Land Registry record',
+   'Rights are granted to South Wales Electricity, and correspondence with Persimmon follows; these are the last dealings on the registration file.',
+   [TL, LRT('later-dealings', 'Land Registry Titles — later dealings')])  # coverage: research chronology — Sion's Tab agent
 sc('VII', 'ghf-19970516-1', '1997-05-16', '16 May 1997', 'Western Ground Rents wound up', 'London', 'x',
    'Public record',
    "Western Ground Rents Ltd, placed in members' voluntary liquidation with other BP pension companies in 1996, holds its final meeting on 16 May 1997, where the liquidator lays an account of how the companies' property has been disposed of.",
@@ -898,6 +950,14 @@ sc('VIII', 'ghf-20260521-1', '2026-05-21', '21 May 2026', "Cadw disclosure", 'Ca
    'Official correspondence',
    "On 21 May 2026 Cadw releases two photographs of 29 July 1988, coded \"YYY\", which it describes as \"marginally below the bar\"; on 10 July it says the code meant the building did not meet the criteria. It says its paper file is \"quite likely\" destroyed, and later \"most likely\"; it holds no destruction record.",
    [RAC, CADW_CRIT, CADW_PH, w('/records-access-chronology/source-conflicts-register/', 'Source Conflicts Register', 'Analysis')], image='/media/1988-cadw-barn.jpg')
+sc('VIII', 'ghf-20260614-1', '2026-06-14', '14 June 2026', 'Council minutes at the archives', 'Llandough Community Council', '',
+   'Official correspondence',
+   "The Clerk to Llandough Community Council replies that the council's minutes from 1982 were deposited at Glamorgan Archives in 2002, and refuses the rest under section 21 of the Freedom of Information Act. The family's follow-up the same day goes unanswered.",
+   [w('/evidence/llandough-community-council-correspondence/#m07', 'Llandough Community Council correspondence (M06, M07)', 'Official correspondence')])  # coverage: research chronology — Sion's Tab agent
+sc('VIII', 'ghf-20260716-1', '2026-07-16', '16 July 2026', 'Police records', 'South Wales Police', '',
+   'Official correspondence',
+   'South Wales Police answer freedom of information request 719/26: they "hold no information".',
+   [w('/evidence/south-wales-police-correspondence/#m33', 'South Wales Police correspondence (M33; EV-0159)', 'Official correspondence')])  # coverage: research chronology — Sion's Tab agent
 sc('VIII', 'ghf-20260730-1', '2026-07-30', 'June – July 2026', "Schedule of registration documents", 'HM Land Registry', 'AB',
    'Official correspondence',
    "On 30 July 2026 HM Land Registry supplies a schedule of 43 documents on the first-registration files. The 31 December 1969 conveyance and the 1971 abstract are not listed.",
@@ -911,6 +971,10 @@ sc('VIII', 'ghf-20260908-1', '2026-09-08', '8 September 2026', "Glamorgan Archiv
    'Official correspondence',
    "On 8 September 2026 Glamorgan Archives report no deeds for the 1877 sale, and identify Bute X.6(12), the trustees' 1877 book of payments, at Cardiff Library.",
    [w('/1877-agreement/#glamorgan-2026-4097b', 'The 1877 Agreement — Glamorgan Archives reply', 'Official correspondence')])
+sc('VIII', 'ghf-20260914-1', '2026-09-14', '14 September 2026', 'The 1965 school-site conveyance', 'Vale of Glamorgan Council', '?',
+   'Official correspondence',
+   'In answer to request 00211027 the Vale of Glamorgan Council releases the conveyance of the school site dated 11 June 1965 and the 1965 contract.',
+   [w('/evidence/vale-of-glamorgan-council-correspondence/#m109', 'Vale of Glamorgan Council correspondence (M109; EV-0042, EV-0216)', 'Official correspondence')])  # coverage: research chronology — Sion's Tab agent
 sc('VIII', 'ghf-20260917-1', '2026-09-17', '17 – 21 September 2026', "Complaints and correspondence", 'Cadw / Stephen Doughty MP', 'A',
    'Official correspondence',
    "September 2026: the family make a formal complaint to Cadw (investigation commenced 29 September), write to Stephen Doughty MP on 18 and 19 September, and request records from Heneb on 20 September. On 21 September an HM Land Registry support agent states the title was \"closed in 2005\".",
@@ -939,6 +1003,14 @@ sc('VIII', 'ghf-20261006-1', '2026-10-06', 'September – October 2026', "HER so
    "The public HER entry GGAT02038s already referred to H. J. Thomas's 1974 survey and cited R. F. Suggett's December 1988 note. Following the family's September 2026 records request, Heneb reportedly stated on 14 October that the underlying source file had been digitised and uploaded to Archwilio as PDFs in the sources section. Heneb responded to the schedule of records on 16 October. This distinguishes the earlier public citation from the later availability of the underlying source-file material; it does not by itself establish concealment or what the Strasbourg Commission received.",
    [HER, LEGAL, w('/evidence-library/ghf-e183-heneb-her-source-file-request-and-replies-september-october-2026/', 'GHF-E183 — Heneb / HER source-file request and replies, September–October 2026', 'Evidence catalogue'), w('/evidence-library/ghf-e184-heneb-schedule-of-records-and-16-october-response/', 'GHF-E184 — Heneb schedule of records and 16 October response', 'Evidence catalogue'), w('/evidence-library/ghf-e145-echr-application-14464-88-and-commission-decision-14-april-1989/', 'GHF-E145 — ECHR application 14464/88 and Commission decision, 14 April 1989', 'Evidence catalogue')],
    aliases=['ghf-20260922-1', 'ghf-20261003-1'])
+sc('VIII', 'ghf-20261010-1', '2026-10-10', '10 – 15 October 2026', 'Application to correct the register', 'HM Land Registry', 'AB',
+   'Land Registry record',
+   'HM Land Registry opens internal application Z084NQV (ref N610CGV) "to investigate and correct any error that may have been made" on WA231076, after the family raises the matter. On 15 October the family applies to alter the register of WA240304 and WA231076.',
+   [w('/evidence/hm-land-registry-correspondence/#m77', 'HM Land Registry correspondence — application Z084NQV (M77)', 'Official correspondence'), w('/evidence/hm-land-registry-correspondence/#m78', 'HM Land Registry correspondence — application to alter the register (M78)', 'Official correspondence')])  # coverage: research chronology — Sion's Tab agent
+sc('VIII', 'ghf-20261011-1', '2026-10-11', '11 – 13 October 2026', 'Council refuses on cost', 'Llandough Community Council', '',
+   'Official correspondence',
+   'The Clerk to Llandough Community Council refuses the family\'s request of 21 September under section 12 (cost); other matters are to be "considered at the October meeting". On 13 October the family asks for an internal review.',
+   [w('/evidence/llandough-community-council-correspondence/#m15', 'Llandough Community Council correspondence (M15)', 'Official correspondence'), w('/evidence/llandough-community-council-correspondence/#m18', 'Llandough Community Council correspondence (M18)', 'Official correspondence')])  # coverage: research chronology — Sion's Tab agent
 sc('VIII', 'ghf-20261019-1', '2026-10-19', '19 October 2026', "Welsh Government and Cadw replies", 'Welsh Government / Cadw', '',
    'Official correspondence',
    "On 19 October 2026 the Welsh Government answers ATISN 26-0010: searches for the farm name, Western Ground Rents and BP Properties found no files, and \"any routine records would have been destroyed in line with the corporate retention schedule applied at the time\". The same day Cadw refuses ATISN 27589 under section 14(2) of the Freedom of Information Act, as \"substantially similar\" to ATISN 27021, already answered and internally reviewed. Neither letter says when, or under which schedule, any file was destroyed.",
@@ -1035,6 +1107,15 @@ _RECONCILE_EVIDENCE = {
 }
 for _s in S:
     _s['evidence'] = _s['evidence'] + _RECONCILE_EVIDENCE.get(_s['id'], [])
+
+# Coverage pass (24 Oct 2026): press items on the research chronology attached as evidence to the scene they report. — Sion's Tab agent
+_COVERAGE_EVIDENCE = {
+    'ghf-19870731-1': [w('/evidence/ev-0079-south-wales-echo-1987-may/', 'EV-0079 — South Wales Echo, 6 May 1987, front page: the dispute between the High Court judgment and the appeal', 'Newspaper')],
+    'ghf-19881007-1': [w('/evidence/ev-0093-estates-gazette-1988-bp-welsh-sales/', 'EV-0093 — Estates Gazette, 9 July 1988, “BP signal Welsh sales”', 'Newspaper')],
+    'ghf-19881208-1': [w('/evidence/ev-0111-echo-readers-letter-bulldozed-report/', 'EV-0111 — South Wales Echo, 21 December 1988, reader’s letter', 'Newspaper')],
+}
+for _s in S:
+    _s['evidence'] = _s['evidence'] + _COVERAGE_EVIDENCE.get(_s['id'], [])
 
 
 # ---------------------------------------------------------------- build
