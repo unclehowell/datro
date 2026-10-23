@@ -2,11 +2,13 @@
  * Research — isolated serverless mirror of the Great House Farm WordPress.com wiki.
  * Runs as a Cloudflare Worker with its own D1 database. It never writes upstream.
  */
+import { LANDING_CSS, LANDING_TITLE, LANDING_HTML, STATIC_PAGES, ADDENDA } from "./landing.js";
 const SOURCE_SITE = "https://greathousefarmwiki.wordpress.com";
+const FRESH_SECONDS = 300;
 const SOURCE_HOST = "greathousefarmwiki.wordpress.com";
 const WP_API_FIELDS = "id,slug,link,title,content,excerpt,date,date_gmt,modified,modified_gmt,status,parent,menu_order,author,featured_media,source_url,media_type,mime_type,alt_text,caption,description,post";
 
-export default {
+const app = {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (request.method === "OPTIONS") {
@@ -491,7 +493,7 @@ async function handleHtml(url, env) {
   }
   if (row) {
     const title = titleText(row.title);
-    const content = rewriteContentLinks(row.content_html);
+    const content = rewriteContentLinks(row.content_html) + (ADDENDA[path] || "");
     const readerDocs = path === "/read-the-docs/" ? qualityDocs() : "";
     const body = '<article class="article" data-source-type="' + escapeHtml(row.source_type) + '" data-source-id="' + Number(row.source_id) + '">' +
       '<h1>' + escapeHtml(title) + '</h1>' +
@@ -539,10 +541,8 @@ function qualityDocs() {
     '<p>Hover over or focus a paragraph that links to a mirrored page to preview that page. The preview is a navigation aid; a reviewer must still check whether the artifact directly supports the statement.</p></section>';
 }
 
-function htmlShell(title, body, env) {
-  const siteTitle = env && env.SITE_TITLE || "Great House Farm Wiki — Research Mirror";
-  const footer = '<footer class="site-footer"><p class="quality-legend"><strong>Evidence-status standard:</strong> <span class="assured-inline">□ Assured</span> (very pale green, direct and concrete support); <span class="not-assured-inline">◇ Not assured</span> (very pale amber, support incomplete or inconclusive); unmarked text is ambiguous or unassessed and remains unhighlighted.</p>' +
-    '<p>Research mirror of <a href="' + SOURCE_SITE + '">' + SOURCE_HOST + '</a>. Editorial status is not a legal finding. Agent guide: <a href="/llms.txt">/llms.txt</a> · <a href="/agent-index.json">machine-readable index</a> · <a href="/read-the-docs/">Read the docs</a>.</p></footer>';
+function htmlShell(title, body, env, opts) {
+  const footer = '<footer class="site-footer"><p>© 2026 the Williams–Buckler family of Tŷ Mawr (Great House Farm), Llandough. All rights reserved. <a href="https://bucklerfamily.estate/licence/">Licence</a></p></footer>';
   return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow"><title>' + escapeHtml(title) + '</title>' +
     `
 <style>
@@ -826,7 +826,11 @@ button:hover, input[type="submit"]:hover, input[type="button"]:hover, [role="but
   .content blockquote { margin-left: .5rem; margin-right: .5rem; }
   .site-footer { padding: .8rem 1rem 1.2rem; }
 }
-</style><script src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js" defer></script>` +
+` + LANDING_CSS + `</style><script src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js" defer></script>
+<script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.1.2"></script>
+</head><body>` +
+    '<main' + (opts && opts.landing ? ' class="landing"' : '') + '>' + body + '</main>' + footer +
+    '<aside id="evidence-preview" class="preview-modal" role="dialog" aria-live="polite" aria-label="Linked evidence preview" hidden><div class="preview-actions"><strong>Linked evidence preview</strong><button type="button" id="preview-close" aria-label="Close preview">Close</button></div><h2 id="preview-title"></h2><p id="preview-body"></p><div class="preview-actions"><a id="preview-link" href="#">Open page / artifact</a></div></aside>' +
     '<script>' +
     '(function(){' +
     'var box=document.getElementById("evidence-preview"),title=document.getElementById("preview-title"),body=document.getElementById("preview-body"),link=document.getElementById("preview-link"),close=document.getElementById("preview-close"),active=null,timer=null;' +
@@ -841,8 +845,8 @@ button:hover, input[type="submit"]:hover, input[type="button"]:hover, [role="but
     '</script></body></html>';
 }
 
-function html(body, status) {
-  return new Response(body, { status: status || 200, headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" } });
+function html(body, status, cacheControl) {
+  return new Response(body, { status: status || 200, headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": cacheControl || "no-store" } });
 }
 
 function parseJson(value) {
@@ -890,3 +894,55 @@ async function handleGraphQL(request, env) {
 function graphqlRow(row) {
   return { id: String(row.source_id), title: row.title, slug: row.slug, path: row.path, content: row.content_html, excerpt: row.excerpt_html, status: row.status, postType: row.source_type, date: row.date_gmt, modified: row.modified_gmt, sourceLink: row.source_link };
 }
+
+
+// Front door (23 Oct 2026): static pages need no database; every other GET is cached at the edge for
+// FRESH_SECONDS, with a 7-day copy kept back. When the database refuses (e.g. its daily read limit), a page
+// seen before is served from that copy, and an HTML page never seen gets a plain notice with the menu
+// instead of a JSON error. This keeps reads low and the site up. — Tab agent
+const JSON_PATHS = ["/health", "/llms.txt", "/agent-index.json", "/.well-known/agent.json", "/robots.txt", "/sitemap.xml"];
+function isHtmlPath(pathname) {
+  return !JSON_PATHS.includes(pathname) && !pathname.startsWith("/api/") && !pathname.startsWith("/media/") && pathname !== "/asset" && pathname !== "/graphql" && !pathname.startsWith("/admin");
+}
+function unavailablePage(env) {
+  const nav = (LANDING_HTML.match(/^<nav[\s\S]*?<\/nav>/) || [""])[0];
+  return htmlShell("Page not available right now — Great House Farm Wiki", nav + '<p>This page cannot be shown right now. Please try again later.</p><p><a href="/">Home</a> · <a href="/evidence/ev-0513-llandough-community-council-agenda-22-october-2026-item-10/">EV-0513</a></p>', env, { landing: true });
+}
+export default {
+  async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+    const path = normalisePath(url.pathname);
+    if ((request.method === "GET" || request.method === "HEAD") && (path === "/" || Object.prototype.hasOwnProperty.call(STATIC_PAGES, path))) {
+      if (url.pathname !== "/" && url.pathname !== path) return Response.redirect(url.origin + path + url.search, 301);
+      if (path === "/") return cors(html(htmlShell(LANDING_TITLE, LANDING_HTML, env, { landing: true }), 200, "public, max-age=" + FRESH_SECONDS));
+      const sp = STATIC_PAGES[path];
+      return cors(html(htmlShell(sp.title + " — Great House Farm Wiki", '<article class="article"><h1>' + escapeHtml(sp.title) + '</h1><div class="content">' + sp.html + '</div></article>', env), 200, "public, max-age=" + FRESH_SECONDS));
+    }
+    const cacheable = request.method === "GET" && !request.headers.get("Authorization") && isHtmlPath(url.pathname) && url.pathname !== "/search/" || request.method === "GET" && url.pathname === "/health";
+    if (!cacheable) {
+      const r = await app.fetch(request, env, ctx);
+      if (r.status >= 500 && request.method === "GET" && isHtmlPath(url.pathname)) return cors(html(unavailablePage(env), 503, "no-store"));
+      return r;
+    }
+    const cache = caches.default;
+    const key = new Request(url.origin + url.pathname + url.search, { method: "GET" });
+    const staleKey = new Request(url.origin + "/__stale__" + url.pathname + url.search, { method: "GET" });
+    const hit = await cache.match(key);
+    if (hit) return hit;
+    const resp = await app.fetch(request, env, ctx);
+    if (resp.status === 200) {
+      const buf = await resp.arrayBuffer();
+      const fresh = new Response(buf, resp); fresh.headers.set("Cache-Control", "public, max-age=" + FRESH_SECONDS);
+      const stale = new Response(buf, resp); stale.headers.set("Cache-Control", "public, max-age=604800");
+      ctx.waitUntil(Promise.all([cache.put(key, fresh), cache.put(staleKey, stale)]));
+      const out = new Response(buf, resp); out.headers.set("X-Research-Cache", "miss");
+      return out;
+    }
+    if (resp.status >= 500) {
+      const old = await cache.match(staleKey);
+      if (old) { const o = new Response(old.body, old); o.headers.set("Cache-Control", "no-store"); o.headers.set("X-Research-Cache", "stale"); return o; }
+      if (isHtmlPath(url.pathname)) return cors(html(unavailablePage(env), 503, "no-store"));
+    }
+    return resp;
+  }
+};

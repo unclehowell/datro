@@ -81,3 +81,10 @@ Each copied record retains its original WordPress ID, permalink, content type an
 ## Read the docs / agent guidance
 
 Agents must distinguish original records, transcriptions, interpretation, allegations and working theories. Do not treat the mirror itself as verification. The quality symbols are the current annotation status of individual paragraphs, not a legal adjudication or a blanket statement about the case.
+
+## Static pages and the D1-safe front door (23 Oct 2026)
+
+- `/` is a static mirror of the live greathousefarmwiki.wordpress.com home page (same menu groups, sections and order; detail behind a tap), held in `src/landing.js` and served without D1.
+- `STATIC_PAGES` in `src/landing.js` holds evidence pages authored on this site (EV-0513 onward); `ADDENDA` appends a short linked section to named mirrored pages (timeline, Evidence Register, the 22 Oct 2026 Item 10 page).
+- Every other GET is cached at the edge for 300 s with a 7-day copy kept back; when D1 refuses (for example the account's daily row-read limit), a page seen before is served from that copy and an unseen HTML page gets a plain notice with the menu.
+- Deploy: upload a version through the Cloudflare Workers versions API with modules `index.js` and `landing.js`, inheriting `ADMIN_TOKEN`, then deploy it at 100%.
