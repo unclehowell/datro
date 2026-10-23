@@ -2,7 +2,7 @@
    Renders the promotion pyramid (IN REVIEW -> READY TO SEND -> DEFINITELY READY TO SEND -> GMAIL DRAFT -> WAYBACK)
    into every element with [data-hive-pipeline]. Data: data-src (default https://hive.bucklerfamily.estate/hive.json, CORS *).
    Metadata only: draft ids, recipient bodies, tiers. No email text. Inherits the host page's font and colours.
-   Options: data-hive-pipeline="full" (pyramid, default) | "strip" (one-line counts; tap opens the pyramid) | "bar" (4-step bar per draft); data-lane="<dartboard lane id>" filters. — Sion's Tab agent */
+   Options: data-hive-pipeline="full" (pyramid, default) | "strip" (one-line counts; tap opens the pyramid) | "bar" (4-step bar per draft); data-lane="<dartboard lane id>" filters. — the project's Tab agent */
 (function () {
   var HIVE = "https://hive.bucklerfamily.estate";
   var ORDER = ["working", "ready", "definitely_ready", "gmail_draft", "sent_archived"];
