@@ -92,6 +92,7 @@ async function repoHeads(repo) {
   for (const m of t.matchAll(/([0-9a-f]{40}) refs\/heads\/([^\s\0]+)/g)) h[m[2]] = m[1];
   return h;
 }
+const ent = (s) => String(s).replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;|&#x27;|&apos;/g, "'").replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n)).replace(/&amp;/g, "&");
 async function branchCommits(repo, branch, fromSha) {
   const r = await fetch(`https://github.com/${repo}/commits/${encodeURIComponent(branch).replace(/%2F/g, "/")}.atom`, { headers: { "user-agent": UA, accept: "application/atom+xml" } });
   if (!r.ok) return [];
@@ -100,8 +101,8 @@ async function branchCommits(repo, branch, fromSha) {
     const sha1 = (e.match(/Commit\/([0-9a-f]{40})/) || [])[1]; if (!sha1) continue;
     if (fromSha && sha1 === fromSha) break;
     const msgHtml = (e.match(/<content[^>]*>([\s\S]*?)<\/content>/) || [])[1] || "";
-    const msg = msgHtml.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, "&").replace(/<[^>]+>/g, "").trim();
-    const author = ((e.match(/<author>\s*<name>([\s\S]*?)<\/name>/) || [])[1] || "").trim();
+    const msg = ent(ent(msgHtml).replace(/<[^>]+>/g, "")).trim(); // XML-escaped HTML: decode, strip tags, decode again
+    const author = ent((e.match(/<author>\s*<name>([\s\S]*?)<\/name>/) || [])[1] || "").trim();
     const at = ((e.match(/<updated>([^<]+)<\/updated>/) || [])[1] || "").trim();
     out.push({ sha: sha1, at, author, agent: agentOf(msg, author, branch), message: msg.slice(0, 400) });
     if (out.length >= 10) break;
