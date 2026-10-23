@@ -1,9 +1,9 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-10-22T13:06:14Z",
- "count": 885,
- "threadCount": 476,
+ "generated": "2026-10-23T15:00:00Z",
+ "count": 903,
+ "threadCount": 486,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
@@ -13,6 +13,371 @@
   "text": "/mail/<id>.txt"
  },
  "records": [
+  {
+   "id": "gm-1a168f453b3abea1",
+   "gmailMessageId": "1a168f453b3abea1",
+   "threadId": "gt-1a168f453b3abea1",
+   "date": "2026-10-23T13:30:00Z",
+   "direction": "received",
+   "from": "Information Officer",
+   "institutions": [
+    {
+     "id": "audit-wales",
+     "name": "Audit Wales"
+    }
+   ],
+   "subject": "IR1038 - Great House Farm / Tŷ Mawr",
+   "threadSlug": "ir1038-great-house-farm-ty-mawr",
+   "refs": [
+    "IR1038"
+   ],
+   "textUrl": "/mail/gm-1a168f453b3abea1.txt",
+   "jsonUrl": "/api/message/gm-1a168f453b3abea1.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a168c69031bff64",
+   "gmailMessageId": "1a168c69031bff64",
+   "threadId": "gt-1a168c69031bff64",
+   "date": "2026-10-23T12:40:01Z",
+   "direction": "received",
+   "from": "_FOI email address",
+   "institutions": [
+    {
+     "id": "hmlr",
+     "name": "HM Land Registry"
+    }
+   ],
+   "subject": "Environmental Information Regulations 2004 - F261029 and Freedom of Information request - F261030",
+   "threadSlug": "environmental-information-regulations-2004-f261029-and-freedom-of-information-re",
+   "refs": [
+    "F261029",
+    "F261030"
+   ],
+   "textUrl": "/mail/gm-1a168c69031bff64.txt",
+   "jsonUrl": "/api/message/gm-1a168c69031bff64.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a16882d4f515f19",
+   "gmailMessageId": "1a16882d4f515f19",
+   "threadId": "gt-1a16882d4f515f19",
+   "date": "2026-10-23T11:26:02Z",
+   "direction": "received",
+   "from": "FOI Requests",
+   "institutions": [
+    {
+     "id": "tna",
+     "name": "The National Archives"
+    }
+   ],
+   "subject": "Internal Review Request: Reference CAS-356384-B2F5L9 CRM:013201602",
+   "threadSlug": "internal-review-request-reference-cas-356384-b2f5l9-crm-013201602",
+   "refs": [
+    "CAS-356384-B2F5L9"
+   ],
+   "textUrl": "/mail/gm-1a16882d4f515f19.txt",
+   "jsonUrl": "/api/message/gm-1a16882d4f515f19.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a16876a2f78ac5e",
+   "gmailMessageId": "1a16876a2f78ac5e",
+   "threadId": "gt-1a11eb95e6e388ee",
+   "date": "2026-10-23T11:12:42Z",
+   "direction": "received",
+   "from": "Library Central",
+   "institutions": [
+    {
+     "id": "cardiff",
+     "name": "Cardiff Council"
+    }
+   ],
+   "subject": "Re: Bute X.6(12) — 1877 Bute trustee accounts/receipts and possible Great House Farm / Llandough transaction",
+   "threadSlug": "bute-x-6-12-1877-bute-trustee-accounts-receipts-and-possible-great-house-farm-ll",
+   "refs": [
+    "Bute X.6(12)"
+   ],
+   "textUrl": "/mail/gm-1a16876a2f78ac5e.txt",
+   "jsonUrl": "/api/message/gm-1a16876a2f78ac5e.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a16814eff6e8660",
+   "gmailMessageId": "1a16814eff6e8660",
+   "threadId": "gt-1a1439902c7e1dc4",
+   "date": "2026-10-23T09:26:01Z",
+   "direction": "received",
+   "from": "Sheehy, Jack (Contractor)",
+   "institutions": [
+    {
+     "id": "bp",
+     "name": "BP"
+    }
+   ],
+   "subject": "RE: Document preservation notice — Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth (BP Properties Ltd v Buckler, 1984–1988)",
+   "threadSlug": "document-preservation-notice-great-house-farm-ty-mawr-llandough-juxta-penarth-bp",
+   "refs": [],
+   "textUrl": "/mail/gm-1a16814eff6e8660.txt",
+   "jsonUrl": "/api/message/gm-1a16814eff6e8660.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a16524a6cdda5a9",
+   "gmailMessageId": "1a16524a6cdda5a9",
+   "threadId": "gt-1a16524a6cdda5a9",
+   "date": "2026-10-22T19:44:15Z",
+   "direction": "received",
+   "from": "icocasework",
+   "institutions": [
+    {
+     "id": "ico",
+     "name": "Information Commissioner's Office"
+    }
+   ],
+   "subject": "ICO Case Reference IC-586450-N8N0. Cyfeirnod achos yr ICO IC-586450-N8N0",
+   "threadSlug": "ico-case-reference-ic-586450-n8n0-cyfeirnod-achos-yr-ico-ic-586450-n8n0",
+   "refs": [
+    "IC-586450-N8N0"
+   ],
+   "textUrl": "/mail/gm-1a16524a6cdda5a9.txt",
+   "jsonUrl": "/api/message/gm-1a16524a6cdda5a9.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a164d7545000183",
+   "gmailMessageId": "1a164d7545000183",
+   "threadId": "gt-1a164d7545000183",
+   "date": "2026-10-22T18:19:53Z",
+   "direction": "received",
+   "from": "icocasework",
+   "institutions": [
+    {
+     "id": "ico",
+     "name": "Information Commissioner's Office"
+    }
+   ],
+   "subject": "We have received your email. Rydym wedi derbyn eich ebost",
+   "threadSlug": "we-have-received-your-email-rydym-wedi-derbyn-eich-ebost",
+   "refs": [],
+   "textUrl": "/mail/gm-1a164d7545000183.txt",
+   "jsonUrl": "/api/message/gm-1a164d7545000183.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a164d73591d629f",
+   "gmailMessageId": "1a164d73591d629f",
+   "threadId": "gt-1a161f06b5caf28b",
+   "date": "2026-10-22T18:19:47Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "ico",
+     "name": "Information Commissioner's Office"
+    }
+   ],
+   "subject": "FOI complaint (s50) — Ministry of Justice / HMCTS, IR FOI 260813002, internal review of 9 October 2026",
+   "threadSlug": "foi-complaint-s50-ministry-of-justice-hmcts-ir-foi-260813002-internal-review-of",
+   "refs": [
+    "IR FOI 260813002"
+   ],
+   "textUrl": "/mail/gm-1a164d73591d629f.txt",
+   "jsonUrl": "/api/message/gm-1a164d73591d629f.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a164d722d430fad",
+   "gmailMessageId": "1a164d722d430fad",
+   "threadId": "gt-1a15e2cfd24eaf4d",
+   "date": "2026-10-22T18:19:43Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "historic-england",
+     "name": "Historic England"
+    }
+   ],
+   "subject": "Re: Information Request – Great House Farm / Tŷy Mawr, near Penarth, Vale of Glamorgan",
+   "threadSlug": "information-request-great-house-farm-tyy-mawr-near-penarth-vale-of-glamorgan",
+   "refs": [
+    "26/04323"
+   ],
+   "textUrl": "/mail/gm-1a164d722d430fad.txt",
+   "jsonUrl": "/api/message/gm-1a164d722d430fad.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a164d713cc77c18",
+   "gmailMessageId": "1a164d713cc77c18",
+   "threadId": "gt-1a0165faa913f91d",
+   "date": "2026-10-22T18:19:39Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "rct",
+     "name": "Coroner's Service (RCT Council)"
+    }
+   ],
+   "subject": "Re: FOI / Records Request – Deaths of William (Billy) Buckler (1990) and Mary Doreen Williams (1983)",
+   "threadSlug": "foi-records-request-deaths-of-william-billy-buckler-1990-and-mary-doreen-william",
+   "refs": [],
+   "textUrl": "/mail/gm-1a164d713cc77c18.txt",
+   "jsonUrl": "/api/message/gm-1a164d713cc77c18.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a164d701e8cac8f",
+   "gmailMessageId": "1a164d701e8cac8f",
+   "threadId": "gt-1a0c1c87a6f1717d",
+   "date": "2026-10-22T18:19:34Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "vale-foi",
+     "name": "Vale of Glamorgan Council"
+    }
+   ],
+   "subject": "Re: FOI/EIR request - Case Ref/ 00211463 — clarification and refinement of request",
+   "threadSlug": "foi-eir-request-case-ref-00211463-clarification-and-refinement-of-request",
+   "refs": [
+    "00211463"
+   ],
+   "textUrl": "/mail/gm-1a164d701e8cac8f.txt",
+   "jsonUrl": "/api/message/gm-1a164d701e8cac8f.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a164d6eee708c9a",
+   "gmailMessageId": "1a164d6eee708c9a",
+   "threadId": "gt-1a162bfa198ed55f",
+   "date": "2026-10-22T18:19:29Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "tna",
+     "name": "The National Archives"
+    }
+   ],
+   "subject": "FOI request — location of closed or Discovery records relating to Great House Farm / Tŷ Mawr, Llandough (Valuation Office / IR58 / County Series)",
+   "threadSlug": "foi-request-location-of-closed-or-discovery-records-relating-to-great-house-farm",
+   "refs": [],
+   "textUrl": "/mail/gm-1a164d6eee708c9a.txt",
+   "jsonUrl": "/api/message/gm-1a164d6eee708c9a.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a164d6dc2533d83",
+   "gmailMessageId": "1a164d6dc2533d83",
+   "threadId": "gt-1a1149d647cb33dc",
+   "date": "2026-10-22T18:19:25Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "vale-scrutiny",
+     "name": "Vale of Glamorgan Council (Scrutiny)"
+    }
+   ],
+   "subject": "Re: Scrutiny Topic Suggestion / Task and Finish request — Council-held planning, heritage and public-authority record for Great House Farm / Tÿ Mawr, Llandough",
+   "threadSlug": "scrutiny-topic-suggestion-task-and-finish-request-council-held-planning-heritage",
+   "refs": [],
+   "textUrl": "/mail/gm-1a164d6dc2533d83.txt",
+   "jsonUrl": "/api/message/gm-1a164d6dc2533d83.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a164d6cc1c5ea3d",
+   "gmailMessageId": "1a164d6cc1c5ea3d",
+   "threadId": "gt-1a1645f237df4972",
+   "date": "2026-10-22T18:19:21Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "glamorgan",
+     "name": "Glamorgan Archives"
+    }
+   ],
+   "subject": "RE: Preservation notice — Great House Farm (Ty Mawr), Llandough — do not destroy, transfer or dispose",
+   "threadSlug": "preservation-notice-great-house-farm-ty-mawr-llandough-do-not-destroy-transfer-o",
+   "refs": [
+    "2026/4461"
+   ],
+   "textUrl": "/mail/gm-1a164d6cc1c5ea3d.txt",
+   "jsonUrl": "/api/message/gm-1a164d6cc1c5ea3d.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a164d6a51fd045c",
+   "gmailMessageId": "1a164d6a51fd045c",
+   "threadId": "gt-1a1563a58cdf4ebf",
+   "date": "2026-10-22T18:19:10Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "museum",
+     "name": "Amgueddfa Cymru - Museum Wales"
+    }
+   ],
+   "subject": "RE: FOI 2026-024 / 032 / 036 — c.1880 medieval ironwork from Great House Farm, Llandough: published sources say it is in the National Museum",
+   "threadSlug": "foi-2026-024-032-036-c-1880-medieval-ironwork-from-great-house-farm-llandough-pu",
+   "refs": [
+    "FOI 2026-024 / 032 / 036"
+   ],
+   "textUrl": "/mail/gm-1a164d6a51fd045c.txt",
+   "jsonUrl": "/api/message/gm-1a164d6a51fd045c.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1645f237df4972",
+   "gmailMessageId": "1a1645f237df4972",
+   "threadId": "gt-1a1645f237df4972",
+   "date": "2026-10-22T16:08:34Z",
+   "direction": "received",
+   "from": "Glamro / Swyddfa Cofnodion Morgannwg",
+   "institutions": [
+    {
+     "id": "glamorgan",
+     "name": "Glamorgan Archives"
+    }
+   ],
+   "subject": "RE: Preservation notice — Great House Farm (Ty Mawr), Llandough — do not destroy, transfer or dispose",
+   "threadSlug": "preservation-notice-great-house-farm-ty-mawr-llandough-do-not-destroy-transfer-o",
+   "refs": [
+    "2026/4461"
+   ],
+   "textUrl": "/mail/gm-1a1645f237df4972.txt",
+   "jsonUrl": "/api/message/gm-1a1645f237df4972.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a163b9bb8538edf",
+   "gmailMessageId": "1a163b9bb8538edf",
+   "threadId": "gt-1a163b9bb8538edf",
+   "date": "2026-10-22T13:07:54Z",
+   "direction": "received",
+   "from": "FOI Requests",
+   "institutions": [
+    {
+     "id": "tna",
+     "name": "The National Archives"
+    }
+   ],
+   "subject": "Freedom of Information Request: Reference CAS-361652-D3X8X9 CRM:005401570",
+   "threadSlug": "freedom-of-information-request-reference-cas-361652-d3x8x9-crm-005401570",
+   "refs": [
+    "CAS-361652-D3X8X9"
+   ],
+   "textUrl": "/mail/gm-1a163b9bb8538edf.txt",
+   "jsonUrl": "/api/message/gm-1a163b9bb8538edf.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
   {
    "id": "gm-1a1635f9eb7683f5",
    "gmailMessageId": "1a1635f9eb7683f5",
@@ -1596,6 +1961,26 @@
    "refs": [],
    "textUrl": "/mail/gm-1a156b0b5929168e.txt",
    "jsonUrl": "/api/message/gm-1a156b0b5929168e.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a156ae46b1bad14",
+   "gmailMessageId": "1a156ae46b1bad14",
+   "threadId": "gt-1a156ae46b1bad14",
+   "date": "2026-10-20T00:20:24Z",
+   "direction": "sent",
+   "from": "Sion Buckler",
+   "institutions": [
+    {
+     "id": "nrw",
+     "name": "Natural Resources Wales"
+    }
+   ],
+   "subject": "EIR request — Cwm Cydfin SSSI (0524) notification and owner/occupier records; woodland title WA735527, Llandough; Forestry Commission lease of Leckwith Woods",
+   "threadSlug": "eir-request-cwm-cydfin-sssi-0524-notification-and-owner-occupier-records-woodlan",
+   "refs": [],
+   "textUrl": "/mail/gm-1a156ae46b1bad14.txt",
+   "jsonUrl": "/api/message/gm-1a156ae46b1bad14.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
