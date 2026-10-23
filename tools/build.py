@@ -57,7 +57,7 @@ CANCELLED = {
 # reversible: the order rests on the title question; if the case reopens and title is restored it is quashed and its points are re-issued to reissue_to.
 ORDERS = [
   dict(id='W-01', date='1955-02-02', date_label='2 Feb 1955', desk='orders', issued_to='Frederick Buckler (Team Williams)', reissue_to='Western Ground Rents Ltd',
-       what='High Court possession order (Order 14) for \u201cthe whole of the farm\u201d.',
+       what='High Court possession order (Order 14) for \u201cthe whole of the farm\u201d, made after the notice to quit expired on 2 Feb 1955.',
        detail='Western Ground Rents sued Frederick alone and obtained summary judgment for possession of the whole farm. Enforced on 4 Jul 1955: every part except the farmhouse and garden was taken.',
        base=100000, mult=[], reversible=True, sources=[src('The 1955 Possession Order', WIKI + '/1955-possession-order/')]),
   dict(id='W-02', date='1962-12-11', date_label='11 Dec 1962', desk='orders', issued_to='Frederick and Mary (Team Williams)', reissue_to='Western Ground Rents Ltd',
@@ -89,7 +89,7 @@ R = [
        detail='The 1987 Court of Appeal judgment records: \u201cIt was intended that Mr Frederick Buckler should have a written tenancy agreement, but this did not happen.\u201d',
        base=50, sources=[src('EV-0025 — Frederick Buckler\u2019s unwritten tenancy, 1949', WIKI + '/evidence/ev-0025-frederick-buckler-unwritten-tenancy-1949/')]),
   dict(date='1955-02-02', date_label='2 Feb 1955', desk='court', issued_to='The High Court (1955 order)',
-       what='Order for \u201cthe whole of the farm\u201d made against Frederick alone; Mary, living in the Parcel A farmhouse, was not a party.',
+       what='Order for \u201cthe whole of the farm\u201d made against Frederick alone after the notice to quit expired on 2 Feb 1955; Mary, living in the Parcel A farmhouse, was not a party.',
        detail='Procedural point: a summary Order 14 judgment against one tenant was worded to cover the whole farm, including land occupied by a person who was never joined or heard.',
        base=60000, sources=[src('The 1955 Possession Order', WIKI + '/1955-possession-order/')]),
   dict(date='1955-07-04', date_label='4 Jul 1955', desk='property', issued_to='Western Ground Rents Ltd',
