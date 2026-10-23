@@ -51,14 +51,20 @@ jobs:
           curl --fail --silent --show-error --max-time 45 https://tumbler-6js.pages.dev/ -o /tmp/tumbler-index.html
           curl --fail --silent --show-error --max-time 45 https://tumbler-6js.pages.dev/api/manifest -o /tmp/tumbler-manifest.json
           curl --fail --silent --show-error --max-time 45 https://tumbler-6js.pages.dev/api/health -o /tmp/tumbler-health.json
+          curl --fail --silent --show-error --max-time 90 https://tumbler-6js.pages.dev/api/corpus-status -o /tmp/tumbler-corpus.json
+          curl --fail --silent --show-error --max-time 120 -X POST https://tumbler-6js.pages.dev/api/generate -H "content-type: application/json" -d '{"method":"socratic","focus":"Deployment smoke test: require traceable findings and acceptance checks.","propertyLaw":false,"investigation":false,"allBranches":true}' -o /tmp/tumbler-generate.json
           python3 - <<'PY'
           import json
           from pathlib import Path
           html = Path("/tmp/tumbler-index.html").read_text(encoding="utf-8")
           manifest = json.loads(Path("/tmp/tumbler-manifest.json").read_text(encoding="utf-8"))
           health = json.loads(Path("/tmp/tumbler-health.json").read_text(encoding="utf-8"))
+          corpus = json.loads(Path("/tmp/tumbler-corpus.json").read_text(encoding="utf-8"))
+          generated = json.loads(Path("/tmp/tumbler-generate.json").read_text(encoding="utf-8"))
           assert "<title>Tumbler" in html, "Missing homepage title"
           assert len(manifest.get("inventory", {}).get("sources", [])) >= 10, "Missing source inventory"
           assert health.get("service") == "tumbler", "Health route failed"
-          print("UI/API smoke tests passed; hosts:", len(manifest["inventory"]["sources"]), "AI binding:", health.get("aiBindingConfigured"))
+          assert "exhaustiveWholeEstateIndex" in corpus, "Missing explicit corpus coverage status"
+          assert generated.get("ok") is True and len(generated.get("prompt", "")) > 300, "Prompt-generation smoke test failed: " + str(generated.get("error", "empty output"))
+          print("UI, source manifest, status and prompt-generation smoke tests passed; hosts:", len(manifest["inventory"]["sources"]), "AI binding:", health.get("aiBindingConfigured"), "prompt chars:", len(generated["prompt"]))
           PY
