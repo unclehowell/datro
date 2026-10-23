@@ -1,666 +1,666 @@
 {
-  "updated": "2026-10-23T16:11:08Z",
-  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
-  "drafts": [
-    {
-      "id": "bp-preservation-reply",
-      "record": "HubSpot task 531842137317",
-      "version": "v0.8.0",
-      "status": "OTHER AGENT'S TURN",
-      "turn": "ChatGPT (after Tab stand-in review, round 3)",
-      "open_issues": 6,
-      "last_change": "2026-10-23T17:56:16Z",
-      "last_agent": "Tab",
-      "rounds": 8,
-      "context": {
-        "body": "BP",
-        "as_of": "2026-10-23T18:01Z",
-        "archive": {
-          "search": "https://email.bucklerfamily.estate/api/search?q=BP",
-          "thread": "https://email.bucklerfamily.estate/reference/1a16814eff6e8660",
-          "api_thread": "https://email.bucklerfamily.estate/api/thread?slug=gt-1a1439902c7e1dc4-document-preservation-notice-great-house-farm-t-mawr-llandough-juxta-penarth-bp-properties-ltd-v-buckler-1984-1988",
-          "thread_last": {
-            "date": "2026-10-23",
-            "dir": "received",
-            "class": "declined"
-          }
-        },
-        "last_in": "2026-10-23",
-        "last_out": "2026-10-19",
-        "dartboard": {
-          "url": "https://bucklerfamily.estate/?r=16#roadmap",
-          "lane": "bp",
-          "wheel_number": 16
-        },
-        "stage": "no rung reached yet",
-        "next_deadline": null,
-        "rungs_spent": [],
-        "markers": {
-          "red_fish": 0,
-          "red_house": 0,
-          "fee": false
-        },
-        "open_questions": null,
-        "route": "private",
-        "regime": "SAR"
-      },
-      "tier_since": "2026-10-23T15:45:05Z",
-      "tier": "working",
-      "tier_label": "IN REVIEW",
-      "gmail_draft_id": null,
-      "sent_at": null,
-      "archive_url": null
+ "updated": "2026-10-23T16:11:08Z",
+ "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
+ "drafts": [
+  {
+   "id": "bp-preservation-reply",
+   "record": "HubSpot task 531842137317",
+   "version": "v0.8.0",
+   "status": "OTHER AGENT'S TURN",
+   "turn": "ChatGPT (after Tab stand-in review, round 3)",
+   "open_issues": 6,
+   "last_change": "2026-10-23T17:56:16Z",
+   "last_agent": "Tab",
+   "rounds": 8,
+   "context": {
+    "body": "BP",
+    "as_of": "2026-10-23T18:01Z",
+    "archive": {
+     "search": "https://email.bucklerfamily.estate/api/search?q=BP",
+     "thread": "https://email.bucklerfamily.estate/reference/1a16814eff6e8660",
+     "api_thread": "https://email.bucklerfamily.estate/api/thread?slug=gt-1a1439902c7e1dc4-document-preservation-notice-great-house-farm-t-mawr-llandough-juxta-penarth-bp-properties-ltd-v-buckler-1984-1988",
+     "thread_last": {
+      "date": "2026-10-23",
+      "dir": "received",
+      "class": "declined"
+     }
     },
-    {
-      "id": "cardiff-central-library-bute-x6-12-reply",
-      "record": "HubSpot task 532014813379",
-      "version": "v0.7.0",
-      "status": "OTHER AGENT'S TURN",
-      "turn": "ChatGPT (after Tab stand-in review, round 3)",
-      "open_issues": 9,
-      "last_change": "2026-10-23T17:57:13Z",
-      "last_agent": "Tab",
-      "rounds": 7,
-      "context": {
-        "body": "Cardiff Central Library",
-        "as_of": "2026-10-23T18:01Z",
-        "archive": {
-          "search": "https://email.bucklerfamily.estate/api/search?q=Cardiff%20Central%20Library",
-          "thread": "https://email.bucklerfamily.estate/reference/1a16876a2f78ac5e",
-          "api_thread": "https://email.bucklerfamily.estate/api/thread?slug=gt-1a11eb95e6e388ee-bute-x-6-12-1877-bute-trustee-accounts-receipts-and-possible-great-house-farm-llandough-transaction",
-          "thread_last": {
-            "date": "2026-10-23",
-            "dir": "received",
-            "class": "not found"
-          }
-        },
-        "last_in": "2026-10-23",
-        "last_out": "2026-10-10",
-        "dartboard": {
-          "url": "https://bucklerfamily.estate/#roadmap",
-          "lane": "cardiff-central-library",
-          "wheel_number": null
-        },
-        "stage": "no rung reached yet",
-        "next_deadline": {
-          "date": "2026-11-09",
-          "what": "Bute X.6(12) (red fish)"
-        },
-        "rungs_spent": [],
-        "markers": {
-          "red_fish": 1,
-          "red_house": 0,
-          "fee": true
-        },
-        "open_questions": 3,
-        "route": "welsh_public_body",
-        "regime": "FOI"
-      },
-      "tier_since": "2026-10-23T15:45:05Z",
-      "tier": "working",
-      "tier_label": "IN REVIEW",
-      "gmail_draft_id": null,
-      "sent_at": null,
-      "archive_url": null
+    "last_in": "2026-10-23",
+    "last_out": "2026-10-19",
+    "dartboard": {
+     "url": "https://bucklerfamily.estate/?r=16#roadmap",
+     "lane": "bp",
+     "wheel_number": 16
     },
-    {
-      "id": "hmlr-eir-1961-deed",
-      "record": "HubSpot task 532017103065",
-      "version": "v0.6.0",
-      "status": "OTHER AGENT'S TURN",
-      "turn": "ChatGPT (after Tab stand-in review, round 3)",
-      "open_issues": null,
-      "last_change": "2026-10-23T17:49:44Z",
-      "last_agent": "Tab",
-      "rounds": 6,
-      "context": {
-        "body": "HM Land Registry",
-        "as_of": "2026-10-23T18:01Z",
-        "archive": {
-          "search": "https://email.bucklerfamily.estate/api/search?q=HM%20Land%20Registry",
-          "thread": null,
-          "note": "no matching thread yet (new request): read the body search and the dartboard lane"
-        },
-        "last_in": "2026-10-23",
-        "last_out": "2026-10-21",
-        "dartboard": {
-          "url": "https://bucklerfamily.estate/?r=1#roadmap",
-          "lane": "hm-land-registry",
-          "wheel_number": 1
-        },
-        "stage": "Request (FOI / EIR) (2026-09-28)",
-        "next_deadline": {
-          "date": "2026-10-28",
-          "what": "SAR reply date"
-        },
-        "rungs_spent": [
-          "Complaint, stage 1",
-          "Subject access request",
-          "Request (FOI / EIR)"
-        ],
-        "markers": {
-          "red_fish": 0,
-          "red_house": 0,
-          "fee": false
-        },
-        "open_questions": null,
-        "route": "hmlr",
-        "regime": "SAR",
-        "kb_items": 23
-      },
-      "tier_since": "2026-10-23T15:45:05Z",
-      "tier": "working",
-      "tier_label": "IN REVIEW",
-      "gmail_draft_id": null,
-      "sent_at": null,
-      "archive_url": null
+    "stage": "no rung reached yet",
+    "next_deadline": null,
+    "rungs_spent": [],
+    "markers": {
+     "red_fish": 0,
+     "red_house": 0,
+     "fee": false
     },
-    {
-      "id": "hmlr-sar-wa735527-wa513690",
-      "record": "HubSpot task 532323118282",
-      "version": "v0.6.0",
-      "status": "OTHER AGENT'S TURN",
-      "turn": "ChatGPT (after Tab stand-in review, round 3)",
-      "open_issues": null,
-      "last_change": "2026-10-23T17:51:53Z",
-      "last_agent": "Tab",
-      "rounds": 6,
-      "context": {
-        "body": "HM Land Registry",
-        "as_of": "2026-10-23T18:01Z",
-        "archive": {
-          "search": "https://email.bucklerfamily.estate/api/search?q=HM%20Land%20Registry",
-          "thread": null,
-          "note": "no matching thread yet (new request): read the body search and the dartboard lane"
-        },
-        "last_in": "2026-10-23",
-        "last_out": "2026-10-21",
-        "dartboard": {
-          "url": "https://bucklerfamily.estate/?r=1#roadmap",
-          "lane": "hm-land-registry",
-          "wheel_number": 1
-        },
-        "stage": "Request (FOI / EIR) (2026-09-28)",
-        "next_deadline": {
-          "date": "2026-10-28",
-          "what": "SAR reply date"
-        },
-        "rungs_spent": [
-          "Complaint, stage 1",
-          "Subject access request",
-          "Request (FOI / EIR)"
-        ],
-        "markers": {
-          "red_fish": 0,
-          "red_house": 0,
-          "fee": false
-        },
-        "open_questions": null,
-        "route": "hmlr",
-        "regime": "SAR",
-        "kb_items": 23
-      },
-      "tier_since": "2026-10-23T15:45:05Z",
-      "tier": "working",
-      "tier_label": "IN REVIEW",
-      "gmail_draft_id": null,
-      "sent_at": null,
-      "archive_url": null
+    "open_questions": null,
+    "route": "private",
+    "regime": "SAR"
+   },
+   "tier_since": "2026-10-23T15:45:05Z",
+   "tier": "working",
+   "tier_label": "IN REVIEW",
+   "gmail_draft_id": null,
+   "sent_at": null,
+   "archive_url": null
+  },
+  {
+   "id": "cardiff-central-library-bute-x6-12-reply",
+   "record": "HubSpot task 532014813379",
+   "version": "v0.7.0",
+   "status": "OTHER AGENT'S TURN",
+   "turn": "ChatGPT (after Tab stand-in review, round 3)",
+   "open_issues": 9,
+   "last_change": "2026-10-23T17:57:13Z",
+   "last_agent": "Tab",
+   "rounds": 7,
+   "context": {
+    "body": "Cardiff Central Library",
+    "as_of": "2026-10-23T18:01Z",
+    "archive": {
+     "search": "https://email.bucklerfamily.estate/api/search?q=Cardiff%20Central%20Library",
+     "thread": "https://email.bucklerfamily.estate/reference/1a16876a2f78ac5e",
+     "api_thread": "https://email.bucklerfamily.estate/api/thread?slug=gt-1a11eb95e6e388ee-bute-x-6-12-1877-bute-trustee-accounts-receipts-and-possible-great-house-farm-llandough-transaction",
+     "thread_last": {
+      "date": "2026-10-23",
+      "dir": "received",
+      "class": "not found"
+     }
     },
-    {
-      "id": "vale-eir-vg41",
-      "record": "HubSpot task 532332112063",
-      "version": "v0.6.0",
-      "status": "OTHER AGENT'S TURN",
-      "turn": "ChatGPT (after Tab stand-in review, round 3)",
-      "open_issues": null,
-      "last_change": "2026-10-23T17:50:53Z",
-      "last_agent": "Tab",
-      "rounds": 6,
-      "context": {
-        "body": "Vale of Glamorgan Council",
-        "as_of": "2026-10-23T18:01Z",
-        "archive": {
-          "search": "https://email.bucklerfamily.estate/api/search?q=Vale%20of%20Glamorgan%20Council",
-          "thread": null,
-          "note": "no matching thread yet (new request): read the body search and the dartboard lane"
-        },
-        "last_in": "2026-10-11",
-        "last_out": "2026-10-22",
-        "dartboard": {
-          "url": "https://bucklerfamily.estate/?r=2#roadmap",
-          "lane": "vale-of-glamorgan-council",
-          "wheel_number": 2
-        },
-        "stage": "Internal review (2026-10-22)",
-        "next_deadline": {
-          "date": "2026-10-28",
-          "what": "SAR reply date"
-        },
-        "rungs_spent": [
-          "Corporate complaint, stage 1",
-          "Request (FOI / EIR)",
-          "Subject access request",
-          "Chaser",
-          "Internal review"
-        ],
-        "markers": {
-          "red_fish": 5,
-          "red_house": 7,
-          "fee": false
-        },
-        "open_questions": 54,
-        "route": "welsh_council",
-        "regime": "EIR",
-        "kb_items": 64
-      },
-      "tier_since": "2026-10-23T15:45:05Z",
-      "tier": "working",
-      "tier_label": "IN REVIEW",
-      "gmail_draft_id": null,
-      "sent_at": null,
-      "archive_url": null
+    "last_in": "2026-10-23",
+    "last_out": "2026-10-10",
+    "dartboard": {
+     "url": "https://bucklerfamily.estate/#roadmap",
+     "lane": "cardiff-central-library",
+     "wheel_number": null
     },
-    {
-      "id": "glamorgan-archives-vg41-catalogue",
-      "record": "HubSpot task 531846786282",
-      "version": "v0.4.0",
-      "status": "OTHER AGENT'S TURN",
-      "turn": "ChatGPT (after Tab stand-in review, round 3)",
-      "open_issues": null,
-      "last_change": "2026-10-23T17:58:55Z",
-      "last_agent": "Tab",
-      "rounds": 4,
-      "context": {
-        "body": "Glamorgan Archives",
-        "as_of": "2026-10-23T18:01Z",
-        "archive": {
-          "search": "https://email.bucklerfamily.estate/api/search?q=Glamorgan%20Archives",
-          "thread": null,
-          "note": "no matching thread yet (new request): read the body search and the dartboard lane"
-        },
-        "last_in": "2026-10-22",
-        "last_out": "2026-10-22",
-        "dartboard": {
-          "url": "https://bucklerfamily.estate/?r=9#roadmap",
-          "lane": "glamorgan-archives",
-          "wheel_number": 9
-        },
-        "stage": "Statutory reply date (2026-06-26)",
-        "next_deadline": null,
-        "rungs_spent": [
-          "FOI for a closed or uncatalogued record",
-          "Statutory reply date"
-        ],
-        "markers": {
-          "red_fish": 0,
-          "red_house": 0,
-          "fee": true
-        },
-        "open_questions": null,
-        "route": "archives",
-        "regime": "EIR",
-        "kb_items": 31
-      },
-      "tier_since": "2026-10-23T15:45:05Z",
-      "tier": "working",
-      "tier_label": "IN REVIEW",
-      "gmail_draft_id": null,
-      "sent_at": null,
-      "archive_url": null
+    "stage": "no rung reached yet",
+    "next_deadline": {
+     "date": "2026-11-09",
+     "what": "Bute X.6(12) (red fish)"
     },
-    {
-      "id": "hmlr-eir-vg41",
-      "record": "HubSpot task 532326659316",
-      "version": "v0.6.0",
-      "status": "OTHER AGENT'S TURN",
-      "turn": "ChatGPT (after Tab stand-in review, round 3)",
-      "open_issues": null,
-      "last_change": "2026-10-23T17:52:49Z",
-      "last_agent": "Tab",
-      "rounds": 6,
-      "context": {
-        "body": "HM Land Registry",
-        "as_of": "2026-10-23T18:01Z",
-        "archive": {
-          "search": "https://email.bucklerfamily.estate/api/search?q=HM%20Land%20Registry",
-          "thread": null,
-          "note": "no matching thread yet (new request): read the body search and the dartboard lane"
-        },
-        "last_in": "2026-10-23",
-        "last_out": "2026-10-21",
-        "dartboard": {
-          "url": "https://bucklerfamily.estate/?r=1#roadmap",
-          "lane": "hm-land-registry",
-          "wheel_number": 1
-        },
-        "stage": "Request (FOI / EIR) (2026-09-28)",
-        "next_deadline": {
-          "date": "2026-10-28",
-          "what": "SAR reply date"
-        },
-        "rungs_spent": [
-          "Complaint, stage 1",
-          "Subject access request",
-          "Request (FOI / EIR)"
-        ],
-        "markers": {
-          "red_fish": 0,
-          "red_house": 0,
-          "fee": false
-        },
-        "open_questions": null,
-        "route": "hmlr",
-        "regime": "SAR",
-        "kb_items": 23
-      },
-      "tier_since": "2026-10-23T15:45:05Z",
-      "tier": "working",
-      "tier_label": "IN REVIEW",
-      "gmail_draft_id": null,
-      "sent_at": null,
-      "archive_url": null
+    "rungs_spent": [],
+    "markers": {
+     "red_fish": 1,
+     "red_house": 0,
+     "fee": true
     },
-    {
-      "id": "tna-hmlr-commons-records-1960-72",
-      "record": "HubSpot task 531839534314",
-      "version": "v0.4.0",
-      "status": "OTHER AGENT'S TURN",
-      "turn": "ChatGPT (after Tab stand-in review, round 3)",
-      "open_issues": null,
-      "last_change": "2026-10-23T17:59:57Z",
-      "last_agent": "Tab",
-      "rounds": 4,
-      "context": {
-        "body": "The National Archives",
-        "as_of": "2026-10-23T18:01Z",
-        "archive": {
-          "search": "https://email.bucklerfamily.estate/api/search?q=The%20National%20Archives",
-          "thread": "https://email.bucklerfamily.estate/reference/1a15f0980aac7907",
-          "api_thread": "https://email.bucklerfamily.estate/api/thread?slug=gt-1a0ed914794badec-freedom-of-information-request-reference-cas-347296-m0v4y1-clarification",
-          "thread_last": {
-            "date": "2026-10-21",
-            "dir": "sent",
-            "class": "clarification given"
-          }
-        },
-        "last_in": "2026-10-23",
-        "last_out": "2026-10-22",
-        "dartboard": {
-          "url": "https://bucklerfamily.estate/?r=8#roadmap",
-          "lane": "the-national-archives",
-          "wheel_number": 8
-        },
-        "stage": "Statutory reply date (2026-11-06)",
-        "next_deadline": null,
-        "rungs_spent": [
-          "FOI for a closed or uncatalogued record",
-          "Statutory reply date"
-        ],
-        "markers": {
-          "red_fish": 0,
-          "red_house": 2,
-          "fee": true
-        },
-        "open_questions": 2,
-        "route": "archives",
-        "regime": "FOI",
-        "kb_items": 16
-      },
-      "tier_since": "2026-10-23T15:45:05Z",
-      "tier": "working",
-      "tier_label": "IN REVIEW",
-      "gmail_draft_id": null,
-      "sent_at": null,
-      "archive_url": null
+    "open_questions": 3,
+    "route": "welsh_public_body",
+    "regime": "FOI"
+   },
+   "tier_since": "2026-10-23T15:45:05Z",
+   "tier": "working",
+   "tier_label": "IN REVIEW",
+   "gmail_draft_id": null,
+   "sent_at": null,
+   "archive_url": null
+  },
+  {
+   "id": "hmlr-eir-1961-deed",
+   "record": "HubSpot task 532017103065",
+   "version": "v0.6.0",
+   "status": "OTHER AGENT'S TURN",
+   "turn": "ChatGPT (after Tab stand-in review, round 3)",
+   "open_issues": null,
+   "last_change": "2026-10-23T17:49:44Z",
+   "last_agent": "Tab",
+   "rounds": 6,
+   "context": {
+    "body": "HM Land Registry",
+    "as_of": "2026-10-23T18:01Z",
+    "archive": {
+     "search": "https://email.bucklerfamily.estate/api/search?q=HM%20Land%20Registry",
+     "thread": null,
+     "note": "no matching thread yet (new request): read the body search and the dartboard lane"
     },
-    {
-      "id": "hmlr-customer-support-titles",
-      "record": "HubSpot task 531853903073",
-      "version": "v0.6.0",
-      "status": "OTHER AGENT'S TURN",
-      "turn": "ChatGPT (after Tab stand-in review, round 3)",
-      "open_issues": null,
-      "last_change": "2026-10-23T17:54:52Z",
-      "last_agent": "Tab",
-      "rounds": 6,
-      "context": {
-        "body": "HM Land Registry",
-        "as_of": "2026-10-23T18:01Z",
-        "archive": {
-          "search": "https://email.bucklerfamily.estate/api/search?q=HM%20Land%20Registry",
-          "thread": null,
-          "note": "no matching thread yet (new request): read the body search and the dartboard lane"
-        },
-        "last_in": "2026-10-23",
-        "last_out": "2026-10-21",
-        "dartboard": {
-          "url": "https://bucklerfamily.estate/?r=1#roadmap",
-          "lane": "hm-land-registry",
-          "wheel_number": 1
-        },
-        "stage": "Request (FOI / EIR) (2026-09-28)",
-        "next_deadline": {
-          "date": "2026-10-28",
-          "what": "SAR reply date"
-        },
-        "rungs_spent": [
-          "Complaint, stage 1",
-          "Subject access request",
-          "Request (FOI / EIR)"
-        ],
-        "markers": {
-          "red_fish": 0,
-          "red_house": 0,
-          "fee": false
-        },
-        "open_questions": null,
-        "route": "hmlr",
-        "regime": "SAR",
-        "kb_items": 23
-      },
-      "tier_since": "2026-10-23T15:45:05Z",
-      "tier": "working",
-      "tier_label": "IN REVIEW",
-      "gmail_draft_id": null,
-      "sent_at": null,
-      "archive_url": null
+    "last_in": "2026-10-23",
+    "last_out": "2026-10-21",
+    "dartboard": {
+     "url": "https://bucklerfamily.estate/?r=1#roadmap",
+     "lane": "hm-land-registry",
+     "wheel_number": 1
     },
-    {
-      "id": "hmlr-wales-office-z084nqv",
-      "record": "HubSpot task 531877440723",
-      "version": "v0.4.0",
-      "status": "OTHER AGENT'S TURN",
-      "turn": "ChatGPT (after Tab stand-in review, round 3)",
-      "open_issues": null,
-      "last_change": "2026-10-23T18:00:49Z",
-      "last_agent": "Tab",
-      "rounds": 4,
-      "context": {
-        "body": "HM Land Registry (Wales Office)",
-        "as_of": "2026-10-23T18:01Z",
-        "archive": {
-          "search": "https://email.bucklerfamily.estate/api/search?q=HM%20Land%20Registry",
-          "thread": "https://email.bucklerfamily.estate/reference/1a141cb5de1ebfc1",
-          "api_thread": "https://email.bucklerfamily.estate/api/thread?slug=gt-1a141af7e036c3a1-z084nqv-n610cgv-wa240304-and-wa231076-application-to-alter-the-register-schedule-4-lra-2002-and-follow-up-on-the-1983-fi",
-          "thread_last": {
-            "date": "2026-10-15",
-            "dir": "sent",
-            "class": "request"
-          }
-        },
-        "last_in": "2026-10-23",
-        "last_out": "2026-10-21",
-        "dartboard": {
-          "url": "https://bucklerfamily.estate/?r=1#roadmap",
-          "lane": "hm-land-registry",
-          "wheel_number": 1
-        },
-        "stage": "Request (FOI / EIR) (2026-09-28)",
-        "next_deadline": {
-          "date": "2026-10-28",
-          "what": "SAR reply date"
-        },
-        "rungs_spent": [
-          "Complaint, stage 1",
-          "Subject access request",
-          "Request (FOI / EIR)"
-        ],
-        "markers": {
-          "red_fish": 0,
-          "red_house": 0,
-          "fee": false
-        },
-        "open_questions": null,
-        "route": "hmlr",
-        "regime": "SAR",
-        "kb_items": 23
-      },
-      "tier_since": "2026-10-23T15:45:05Z",
-      "tier": "working",
-      "tier_label": "IN REVIEW",
-      "gmail_draft_id": null,
-      "sent_at": null,
-      "archive_url": null
+    "stage": "Request (FOI / EIR) (2026-09-28)",
+    "next_deadline": {
+     "date": "2026-10-28",
+     "what": "SAR reply date"
     },
-    {
-      "id": "cardiff-eir-1961-deed",
-      "record": "HubSpot task 531873818841",
-      "version": "v0.6.0",
-      "status": "OTHER AGENT'S TURN",
-      "turn": "ChatGPT (after Tab stand-in review, round 3)",
-      "open_issues": null,
-      "last_change": "2026-10-23T17:58:02Z",
-      "last_agent": "Tab",
-      "rounds": 6,
-      "context": {
-        "body": "Cardiff Council",
-        "as_of": "2026-10-23T18:01Z",
-        "archive": {
-          "search": "https://email.bucklerfamily.estate/api/search?q=Cardiff%20Council"
-        },
-        "dartboard": {
-          "url": "https://bucklerfamily.estate/#roadmap",
-          "lane": null,
-          "note": "no lane on the dartboard yet"
-        },
-        "stage": "not yet on the dartboard",
-        "next_deadline": null,
-        "markers": {
-          "red_fish": 0,
-          "red_house": 0,
-          "fee": false
-        },
-        "open_questions": null,
-        "rungs_spent": []
-      },
-      "tier_since": "2026-10-23T15:45:05Z",
-      "tier": "working",
-      "tier_label": "IN REVIEW",
-      "gmail_draft_id": null,
-      "sent_at": null,
-      "archive_url": null
-    }
-  ],
-  "events": [
-    {
-      "at": "2026-10-23",
-      "draft": "bp-preservation-reply",
-      "version": "v0.1.0",
-      "agent": "ChatGPT",
-      "event": "draft/review (time not recorded)"
+    "rungs_spent": [
+     "Complaint, stage 1",
+     "Subject access request",
+     "Request (FOI / EIR)"
+    ],
+    "markers": {
+     "red_fish": 0,
+     "red_house": 0,
+     "fee": false
     },
-    {
-      "at": "2026-10-23",
-      "draft": "bp-preservation-reply",
-      "version": "v0.2.0",
-      "agent": "ChatGPT",
-      "event": "draft/review (time not recorded)"
+    "open_questions": null,
+    "route": "hmlr",
+    "regime": "SAR",
+    "kb_items": 23
+   },
+   "tier_since": "2026-10-23T15:45:05Z",
+   "tier": "working",
+   "tier_label": "IN REVIEW",
+   "gmail_draft_id": null,
+   "sent_at": null,
+   "archive_url": null
+  },
+  {
+   "id": "hmlr-sar-wa735527-wa513690",
+   "record": "HubSpot task 532323118282",
+   "version": "v0.6.0",
+   "status": "OTHER AGENT'S TURN",
+   "turn": "ChatGPT (after Tab stand-in review, round 3)",
+   "open_issues": null,
+   "last_change": "2026-10-23T17:51:53Z",
+   "last_agent": "Tab",
+   "rounds": 6,
+   "context": {
+    "body": "HM Land Registry",
+    "as_of": "2026-10-23T18:01Z",
+    "archive": {
+     "search": "https://email.bucklerfamily.estate/api/search?q=HM%20Land%20Registry",
+     "thread": null,
+     "note": "no matching thread yet (new request): read the body search and the dartboard lane"
     },
-    {
-      "at": "2026-10-23",
-      "draft": "bp-preservation-reply",
-      "version": "v0.3.0",
-      "agent": "ChatGPT",
-      "event": "draft/review (time not recorded)"
+    "last_in": "2026-10-23",
+    "last_out": "2026-10-21",
+    "dartboard": {
+     "url": "https://bucklerfamily.estate/?r=1#roadmap",
+     "lane": "hm-land-registry",
+     "wheel_number": 1
     },
-    {
-      "at": "2026-10-23T12:02:00Z",
-      "draft": "bp-preservation-reply",
-      "version": "v0.4.0",
-      "agent": "Tab",
-      "event": "review"
+    "stage": "Request (FOI / EIR) (2026-09-28)",
+    "next_deadline": {
+     "date": "2026-10-28",
+     "what": "SAR reply date"
     },
-    {
-      "at": "2026-10-23",
-      "draft": "cardiff-central-library-bute-x6-12-reply",
-      "version": "v0.1.0",
-      "agent": "Tab",
-      "event": "first draft (time not recorded)"
+    "rungs_spent": [
+     "Complaint, stage 1",
+     "Subject access request",
+     "Request (FOI / EIR)"
+    ],
+    "markers": {
+     "red_fish": 0,
+     "red_house": 0,
+     "fee": false
     },
-    {
-      "at": "2026-10-23T13:39:23Z",
-      "draft": "bp-preservation-reply",
-      "version": "v0.5.0",
-      "agent": "Tab",
-      "event": "review; turn to ChatGPT"
+    "open_questions": null,
+    "route": "hmlr",
+    "regime": "SAR",
+    "kb_items": 23
+   },
+   "tier_since": "2026-10-23T15:45:05Z",
+   "tier": "working",
+   "tier_label": "IN REVIEW",
+   "gmail_draft_id": null,
+   "sent_at": null,
+   "archive_url": null
+  },
+  {
+   "id": "vale-eir-vg41",
+   "record": "HubSpot task 532332112063",
+   "version": "v0.6.0",
+   "status": "OTHER AGENT'S TURN",
+   "turn": "ChatGPT (after Tab stand-in review, round 3)",
+   "open_issues": null,
+   "last_change": "2026-10-23T17:50:53Z",
+   "last_agent": "Tab",
+   "rounds": 6,
+   "context": {
+    "body": "Vale of Glamorgan Council",
+    "as_of": "2026-10-23T18:01Z",
+    "archive": {
+     "search": "https://email.bucklerfamily.estate/api/search?q=Vale%20of%20Glamorgan%20Council",
+     "thread": null,
+     "note": "no matching thread yet (new request): read the body search and the dartboard lane"
     },
-    {
-      "at": "2026-10-23T14:19:40Z",
-      "draft": "cardiff-central-library-bute-x6-12-reply",
-      "version": "v0.2.0",
-      "agent": "ChatGPT",
-      "event": "review; turn to Tab"
+    "last_in": "2026-10-11",
+    "last_out": "2026-10-22",
+    "dartboard": {
+     "url": "https://bucklerfamily.estate/?r=2#roadmap",
+     "lane": "vale-of-glamorgan-council",
+     "wheel_number": 2
     },
-    {
-      "at": "2026-10-23T14:22:52Z",
-      "draft": "cardiff-central-library-bute-x6-12-reply",
-      "version": "v0.2.0",
-      "agent": "Tab",
-      "event": "input note added; text unchanged"
+    "stage": "Internal review (2026-10-22)",
+    "next_deadline": {
+     "date": "2026-10-28",
+     "what": "SAR reply date"
     },
-    {
-      "at": "2026-10-23T14:37:15Z",
-      "draft": "cardiff-central-library-bute-x6-12-reply",
-      "version": "v0.3.0",
-      "agent": "Tab",
-      "event": "review; turn to ChatGPT"
+    "rungs_spent": [
+     "Corporate complaint, stage 1",
+     "Request (FOI / EIR)",
+     "Subject access request",
+     "Chaser",
+     "Internal review"
+    ],
+    "markers": {
+     "red_fish": 5,
+     "red_house": 7,
+     "fee": false
     },
-    {
-      "at": "2026-10-23T15:17:05Z",
-      "draft": "cardiff-central-library-bute-x6-12-reply",
-      "version": "v0.4.0",
-      "agent": "ChatGPT",
-      "event": "independent review; turn to Grok"
-    }
-  ],
-  "context_note": "drafts[].context = metadata-only context pack (recipient body, archive thread link, dartboard link, stage, next deadline, markers, open questions, rungs spent); built by hive_context.py from the dartboard roadmap, the email archive API and qa kb.json. Hive protocol v3.1.0 context sweep.",
-  "tiers": [
-    {
-      "tier": "working",
-      "label": "IN REVIEW",
-      "row": 0
+    "open_questions": 54,
+    "route": "welsh_council",
+    "regime": "EIR",
+    "kb_items": 64
+   },
+   "tier_since": "2026-10-23T15:45:05Z",
+   "tier": "working",
+   "tier_label": "IN REVIEW",
+   "gmail_draft_id": null,
+   "sent_at": null,
+   "archive_url": null
+  },
+  {
+   "id": "glamorgan-archives-vg41-catalogue",
+   "record": "HubSpot task 531846786282",
+   "version": "v0.4.0",
+   "status": "OTHER AGENT'S TURN",
+   "turn": "ChatGPT (after Tab stand-in review, round 3)",
+   "open_issues": null,
+   "last_change": "2026-10-23T17:58:55Z",
+   "last_agent": "Tab",
+   "rounds": 4,
+   "context": {
+    "body": "Glamorgan Archives",
+    "as_of": "2026-10-23T18:01Z",
+    "archive": {
+     "search": "https://email.bucklerfamily.estate/api/search?q=Glamorgan%20Archives",
+     "thread": null,
+     "note": "no matching thread yet (new request): read the body search and the dartboard lane"
     },
-    {
-      "tier": "ready",
-      "label": "READY TO SEND",
-      "row": 1
+    "last_in": "2026-10-22",
+    "last_out": "2026-10-22",
+    "dartboard": {
+     "url": "https://bucklerfamily.estate/?r=9#roadmap",
+     "lane": "glamorgan-archives",
+     "wheel_number": 9
     },
-    {
-      "tier": "definitely_ready",
-      "label": "DEFINITELY READY TO SEND",
-      "row": 2
+    "stage": "Statutory reply date (2026-06-26)",
+    "next_deadline": null,
+    "rungs_spent": [
+     "FOI for a closed or uncatalogued record",
+     "Statutory reply date"
+    ],
+    "markers": {
+     "red_fish": 0,
+     "red_house": 0,
+     "fee": true
     },
-    {
-      "tier": "gmail_draft",
-      "label": "GMAIL DRAFT",
-      "row": 3
+    "open_questions": null,
+    "route": "archives",
+    "regime": "EIR",
+    "kb_items": 31
+   },
+   "tier_since": "2026-10-23T15:45:05Z",
+   "tier": "working",
+   "tier_label": "IN REVIEW",
+   "gmail_draft_id": null,
+   "sent_at": null,
+   "archive_url": null
+  },
+  {
+   "id": "hmlr-eir-vg41",
+   "record": "HubSpot task 532326659316",
+   "version": "v0.6.0",
+   "status": "OTHER AGENT'S TURN",
+   "turn": "ChatGPT (after Tab stand-in review, round 3)",
+   "open_issues": null,
+   "last_change": "2026-10-23T17:52:49Z",
+   "last_agent": "Tab",
+   "rounds": 6,
+   "context": {
+    "body": "HM Land Registry",
+    "as_of": "2026-10-23T18:01Z",
+    "archive": {
+     "search": "https://email.bucklerfamily.estate/api/search?q=HM%20Land%20Registry",
+     "thread": null,
+     "note": "no matching thread yet (new request): read the body search and the dartboard lane"
     },
-    {
-      "tier": "sent_archived",
-      "label": "WAYBACK",
-      "row": 4
-    }
-  ],
-  "tier_note": "Promotion pyramid (Hive protocol v3.2.0): working (drafting rounds) -> row 1 READY TO SEND (consensus) -> row 2 DEFINITELY READY TO SEND (final three-hat) -> row 3 GMAIL DRAFT (Tab creates the in-thread Gmail draft only after DEFINITELY READY TO SEND; the project owner reviews and sends) -> row 4 WAYBACK (sent, archived on email. and wayback.). Set by work/watch/hive_tier.py from the HubSpot subject; gmail_draft_id / sent_at / archive_url kept once set."
+    "last_in": "2026-10-23",
+    "last_out": "2026-10-21",
+    "dartboard": {
+     "url": "https://bucklerfamily.estate/?r=1#roadmap",
+     "lane": "hm-land-registry",
+     "wheel_number": 1
+    },
+    "stage": "Request (FOI / EIR) (2026-09-28)",
+    "next_deadline": {
+     "date": "2026-10-28",
+     "what": "SAR reply date"
+    },
+    "rungs_spent": [
+     "Complaint, stage 1",
+     "Subject access request",
+     "Request (FOI / EIR)"
+    ],
+    "markers": {
+     "red_fish": 0,
+     "red_house": 0,
+     "fee": false
+    },
+    "open_questions": null,
+    "route": "hmlr",
+    "regime": "SAR",
+    "kb_items": 23
+   },
+   "tier_since": "2026-10-23T15:45:05Z",
+   "tier": "working",
+   "tier_label": "IN REVIEW",
+   "gmail_draft_id": null,
+   "sent_at": null,
+   "archive_url": null
+  },
+  {
+   "id": "tna-hmlr-commons-records-1960-72",
+   "record": "HubSpot task 531839534314",
+   "version": "v0.4.0",
+   "status": "OTHER AGENT'S TURN",
+   "turn": "ChatGPT (after Tab stand-in review, round 3)",
+   "open_issues": null,
+   "last_change": "2026-10-23T17:59:57Z",
+   "last_agent": "Tab",
+   "rounds": 4,
+   "context": {
+    "body": "The National Archives",
+    "as_of": "2026-10-23T18:01Z",
+    "archive": {
+     "search": "https://email.bucklerfamily.estate/api/search?q=The%20National%20Archives",
+     "thread": "https://email.bucklerfamily.estate/reference/1a15f0980aac7907",
+     "api_thread": "https://email.bucklerfamily.estate/api/thread?slug=gt-1a0ed914794badec-freedom-of-information-request-reference-cas-347296-m0v4y1-clarification",
+     "thread_last": {
+      "date": "2026-10-21",
+      "dir": "sent",
+      "class": "clarification given"
+     }
+    },
+    "last_in": "2026-10-23",
+    "last_out": "2026-10-22",
+    "dartboard": {
+     "url": "https://bucklerfamily.estate/?r=8#roadmap",
+     "lane": "the-national-archives",
+     "wheel_number": 8
+    },
+    "stage": "Statutory reply date (2026-11-06)",
+    "next_deadline": null,
+    "rungs_spent": [
+     "FOI for a closed or uncatalogued record",
+     "Statutory reply date"
+    ],
+    "markers": {
+     "red_fish": 0,
+     "red_house": 2,
+     "fee": true
+    },
+    "open_questions": 2,
+    "route": "archives",
+    "regime": "FOI",
+    "kb_items": 16
+   },
+   "tier_since": "2026-10-23T15:45:05Z",
+   "tier": "working",
+   "tier_label": "IN REVIEW",
+   "gmail_draft_id": null,
+   "sent_at": null,
+   "archive_url": null
+  },
+  {
+   "id": "hmlr-customer-support-titles",
+   "record": "HubSpot task 531853903073",
+   "version": "v0.6.0",
+   "status": "OTHER AGENT'S TURN",
+   "turn": "ChatGPT (after Tab stand-in review, round 3)",
+   "open_issues": null,
+   "last_change": "2026-10-23T17:54:52Z",
+   "last_agent": "Tab",
+   "rounds": 6,
+   "context": {
+    "body": "HM Land Registry",
+    "as_of": "2026-10-23T18:01Z",
+    "archive": {
+     "search": "https://email.bucklerfamily.estate/api/search?q=HM%20Land%20Registry",
+     "thread": null,
+     "note": "no matching thread yet (new request): read the body search and the dartboard lane"
+    },
+    "last_in": "2026-10-23",
+    "last_out": "2026-10-21",
+    "dartboard": {
+     "url": "https://bucklerfamily.estate/?r=1#roadmap",
+     "lane": "hm-land-registry",
+     "wheel_number": 1
+    },
+    "stage": "Request (FOI / EIR) (2026-09-28)",
+    "next_deadline": {
+     "date": "2026-10-28",
+     "what": "SAR reply date"
+    },
+    "rungs_spent": [
+     "Complaint, stage 1",
+     "Subject access request",
+     "Request (FOI / EIR)"
+    ],
+    "markers": {
+     "red_fish": 0,
+     "red_house": 0,
+     "fee": false
+    },
+    "open_questions": null,
+    "route": "hmlr",
+    "regime": "SAR",
+    "kb_items": 23
+   },
+   "tier_since": "2026-10-23T15:45:05Z",
+   "tier": "working",
+   "tier_label": "IN REVIEW",
+   "gmail_draft_id": null,
+   "sent_at": null,
+   "archive_url": null
+  },
+  {
+   "id": "hmlr-wales-office-z084nqv",
+   "record": "HubSpot task 531877440723",
+   "version": "v0.4.0",
+   "status": "OTHER AGENT'S TURN",
+   "turn": "ChatGPT (after Tab stand-in review, round 3)",
+   "open_issues": null,
+   "last_change": "2026-10-23T18:00:49Z",
+   "last_agent": "Tab",
+   "rounds": 4,
+   "context": {
+    "body": "HM Land Registry (Wales Office)",
+    "as_of": "2026-10-23T18:01Z",
+    "archive": {
+     "search": "https://email.bucklerfamily.estate/api/search?q=HM%20Land%20Registry",
+     "thread": "https://email.bucklerfamily.estate/reference/1a141cb5de1ebfc1",
+     "api_thread": "https://email.bucklerfamily.estate/api/thread?slug=gt-1a141af7e036c3a1-z084nqv-n610cgv-wa240304-and-wa231076-application-to-alter-the-register-schedule-4-lra-2002-and-follow-up-on-the-1983-fi",
+     "thread_last": {
+      "date": "2026-10-15",
+      "dir": "sent",
+      "class": "request"
+     }
+    },
+    "last_in": "2026-10-23",
+    "last_out": "2026-10-21",
+    "dartboard": {
+     "url": "https://bucklerfamily.estate/?r=1#roadmap",
+     "lane": "hm-land-registry",
+     "wheel_number": 1
+    },
+    "stage": "Request (FOI / EIR) (2026-09-28)",
+    "next_deadline": {
+     "date": "2026-10-28",
+     "what": "SAR reply date"
+    },
+    "rungs_spent": [
+     "Complaint, stage 1",
+     "Subject access request",
+     "Request (FOI / EIR)"
+    ],
+    "markers": {
+     "red_fish": 0,
+     "red_house": 0,
+     "fee": false
+    },
+    "open_questions": null,
+    "route": "hmlr",
+    "regime": "SAR",
+    "kb_items": 23
+   },
+   "tier_since": "2026-10-23T15:45:05Z",
+   "tier": "working",
+   "tier_label": "IN REVIEW",
+   "gmail_draft_id": null,
+   "sent_at": null,
+   "archive_url": null
+  },
+  {
+   "id": "cardiff-eir-1961-deed",
+   "record": "HubSpot task 531873818841",
+   "version": "v0.6.0",
+   "status": "OTHER AGENT'S TURN",
+   "turn": "ChatGPT (after Tab stand-in review, round 3)",
+   "open_issues": null,
+   "last_change": "2026-10-23T17:58:02Z",
+   "last_agent": "Tab",
+   "rounds": 6,
+   "context": {
+    "body": "Cardiff Council",
+    "as_of": "2026-10-23T18:01Z",
+    "archive": {
+     "search": "https://email.bucklerfamily.estate/api/search?q=Cardiff%20Council"
+    },
+    "dartboard": {
+     "url": "https://bucklerfamily.estate/#roadmap",
+     "lane": null,
+     "note": "no lane on the dartboard yet"
+    },
+    "stage": "not yet on the dartboard",
+    "next_deadline": null,
+    "markers": {
+     "red_fish": 0,
+     "red_house": 0,
+     "fee": false
+    },
+    "open_questions": null,
+    "rungs_spent": []
+   },
+   "tier_since": "2026-10-23T15:45:05Z",
+   "tier": "working",
+   "tier_label": "IN REVIEW",
+   "gmail_draft_id": null,
+   "sent_at": null,
+   "archive_url": null
+  }
+ ],
+ "events": [
+  {
+   "at": "2026-10-23",
+   "draft": "bp-preservation-reply",
+   "version": "v0.1.0",
+   "agent": "ChatGPT",
+   "event": "draft/review (time not recorded)"
+  },
+  {
+   "at": "2026-10-23",
+   "draft": "bp-preservation-reply",
+   "version": "v0.2.0",
+   "agent": "ChatGPT",
+   "event": "draft/review (time not recorded)"
+  },
+  {
+   "at": "2026-10-23",
+   "draft": "bp-preservation-reply",
+   "version": "v0.3.0",
+   "agent": "ChatGPT",
+   "event": "draft/review (time not recorded)"
+  },
+  {
+   "at": "2026-10-23T12:02:00Z",
+   "draft": "bp-preservation-reply",
+   "version": "v0.4.0",
+   "agent": "Tab",
+   "event": "review"
+  },
+  {
+   "at": "2026-10-23",
+   "draft": "cardiff-central-library-bute-x6-12-reply",
+   "version": "v0.1.0",
+   "agent": "Tab",
+   "event": "first draft (time not recorded)"
+  },
+  {
+   "at": "2026-10-23T13:39:23Z",
+   "draft": "bp-preservation-reply",
+   "version": "v0.5.0",
+   "agent": "Tab",
+   "event": "review; turn to ChatGPT"
+  },
+  {
+   "at": "2026-10-23T14:19:40Z",
+   "draft": "cardiff-central-library-bute-x6-12-reply",
+   "version": "v0.2.0",
+   "agent": "ChatGPT",
+   "event": "review; turn to Tab"
+  },
+  {
+   "at": "2026-10-23T14:22:52Z",
+   "draft": "cardiff-central-library-bute-x6-12-reply",
+   "version": "v0.2.0",
+   "agent": "Tab",
+   "event": "input note added; text unchanged"
+  },
+  {
+   "at": "2026-10-23T14:37:15Z",
+   "draft": "cardiff-central-library-bute-x6-12-reply",
+   "version": "v0.3.0",
+   "agent": "Tab",
+   "event": "review; turn to ChatGPT"
+  },
+  {
+   "at": "2026-10-23T15:17:05Z",
+   "draft": "cardiff-central-library-bute-x6-12-reply",
+   "version": "v0.4.0",
+   "agent": "ChatGPT",
+   "event": "independent review; turn to Grok"
+  }
+ ],
+ "context_note": "drafts[].context = metadata-only context pack (recipient body, archive thread link, dartboard link, stage, next deadline, markers, open questions, rungs spent); built by hive_context.py from the dartboard roadmap, the email archive API and qa kb.json. Hive protocol v3.1.0 context sweep.",
+ "tiers": [
+  {
+   "tier": "working",
+   "label": "IN REVIEW",
+   "row": 0
+  },
+  {
+   "tier": "ready",
+   "label": "READY TO SEND",
+   "row": 1
+  },
+  {
+   "tier": "definitely_ready",
+   "label": "DEFINITELY READY TO SEND",
+   "row": 2
+  },
+  {
+   "tier": "gmail_draft",
+   "label": "GMAIL DRAFT",
+   "row": 3
+  },
+  {
+   "tier": "sent_archived",
+   "label": "WAYBACK",
+   "row": 4
+  }
+ ],
+ "tier_note": "Promotion pyramid (Hive protocol v3.2.0): working (drafting rounds) -> row 1 READY TO SEND (consensus) -> row 2 DEFINITELY READY TO SEND (final three-hat) -> row 3 GMAIL DRAFT (Tab creates the in-thread Gmail draft only after DEFINITELY READY TO SEND; the project owner reviews and sends) -> row 4 WAYBACK (sent, archived on email. and wayback.). Set by work/watch/hive_tier.py from the HubSpot subject; gmail_draft_id / sent_at / archive_url kept once set."
 }
