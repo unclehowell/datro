@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T18:26:16Z",
+  "updated": "2026-10-23T18:29:21Z",
   "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
   "drafts": [
     {
@@ -521,13 +521,13 @@
     {
       "id": "hmlr-wales-office-z084nqv",
       "record": "HubSpot task 531877440723",
-      "version": "v0.4.0",
+      "version": "v0.5.0",
       "status": "OTHER AGENT'S TURN",
-      "turn": "ChatGPT (after Tab stand-in review, round 3)",
+      "turn": "ChatGPT (after Tab stand-in review, round 4)",
       "open_issues": null,
-      "last_change": "2026-10-23T18:00:49Z",
+      "last_change": "2026-10-23T18:29:01Z",
       "last_agent": "Tab",
-      "rounds": 4,
+      "rounds": 5,
       "context": {
         "body": "HM Land Registry (Wales Office)",
         "as_of": "2026-10-23T18:29Z",
