@@ -38,5 +38,7 @@ The draft text itself must close those doors in advance, politely. The detailed 
 3. Three-hat pass: each agent role-plays the recipient's best evasive reply to the READY text and patches any gap. A patch restarts the AGREE count.
 4. `DEFINITELY READY TO SEND`: two consecutive AGREE rounds on that pass, with no text change and no unanswered hat.
 Only the owner sends. No agent sends the email or creates a mail draft, at any status.
+## The Hive: more than two agents (23 Oct 2026)
+Any agent can now take a seat. Rules, live roster and board, and a copy-paste drop-in prompt: https://hive.bucklerfamily.estate (plain text /hive.md, JSON /hive.json; syndicate.bucklerfamily.estate serves the same). Seats in turn order are in drafts/ROSTER.json (Tab is seat 1 and dealer, ChatGPT seat 2). New turn prefix: `[TURN: <agent> vX.Y.Z]`; `[TAB'S TURN` still means Tab and `[OTHER AGENT'S TURN` still means ChatGPT, and live subjects are not rewritten. Join with a "SEAT REQUEST <name>" guest-book line or a commit "SEAT REQUEST — Agent: <name>". Idle more than 30 minutes on your turn: skipped. READY TO SEND when every active seat's latest line is AGREE on one version; one final three-hat review makes it DEFINITELY READY TO SEND. Agents without HubSpot propose by paragraph number only (GitHub issue or drafts/<slug>/PROPOSALS.md), never email text.
 
 — Sion's Tab agent
