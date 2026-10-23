@@ -5,7 +5,9 @@ import { readFile } from "node:fs/promises";
 const ACCOUNT = process.env.CLOUDFLARE_ACCOUNT_ID || "42a4a8d7bfb96321118ada213638d050";
 const DB_ID = process.env.TUMBLER_D1_DATABASE_ID || "3ca02c2d-bb78-424d-8574-a653d33f5c05";
 const API_TOKEN = process.env.CLOUDFLARE_API_TOKEN;
-const API = "https://api.cloudflare.com/client/v4/accounts/" + ACCOUNT + "/d1/database/" + DB_ID + "/query";
+const SESSION_URL = "https://tumbler-6js.pages.dev/api/ingest/session";
+const INGEST_URL = "https://tumbler-6js.pages.dev/api/ingest/batch";
+let INGEST_SESSION = "";
 const RUN_ID = new Date().toISOString().replace(/[^0-9TZ]/g, "-");
 const STARTED = new Date().toISOString();
 const MAX_TEXT_BYTES = 512 * 1024;
@@ -28,20 +30,31 @@ function hash(value) {
 function stmt(sql, params = []) {
   return { sql, params: params.map(v => v === null || v === undefined ? "" : String(v)) };
 }
-async function postQuery(body) {
-  const res = await fetch(API, {
+async function openIngestSession() {
+  const res = await fetch(SESSION_URL, {
     method: "POST",
     headers: { "authorization": "Bearer " + API_TOKEN, "content-type": "application/json", "accept": "application/json" },
+    body: "{}",
+    signal: AbortSignal.timeout(20000)
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || data.ok !== true || typeof data.token !== "string") {
+    throw new Error("Tumbler ingest-session exchange failed (HTTP " + res.status + "): " + JSON.stringify(data).slice(0, 600));
+  }
+  INGEST_SESSION = data.token;
+}
+async function postQuery(body) {
+  if (!INGEST_SESSION) throw new Error("No authenticated Tumbler ingest session.");
+  const res = await fetch(INGEST_URL, {
+    method: "POST",
+    headers: { "authorization": "Bearer " + INGEST_SESSION, "content-type": "application/json", "accept": "application/json" },
     body: JSON.stringify(body),
     signal: AbortSignal.timeout(45000)
   });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok || data.success !== true) {
-    throw new Error("D1 API HTTP " + res.status + ": " + JSON.stringify(data.errors || data).slice(0, 700));
+  if (!res.ok || data.ok !== true) {
+    throw new Error("Tumbler corpus write HTTP " + res.status + ": " + JSON.stringify(data).slice(0, 700));
   }
-  const results = Array.isArray(data.result) ? data.result : [];
-  const failed = results.find(x => x && x.success === false);
-  if (failed) throw new Error("D1 query failed: " + JSON.stringify(failed).slice(0, 700));
   return data;
 }
 async function flushOps() {
@@ -388,6 +401,7 @@ async function crawlQaGraph() {
   }
 }
 async function main() {
+  await openIngestSession();
   await postQuery({sql:"INSERT INTO tumbler_index_runs (id,started_at,status,source_count,document_count,chunk_count,branch_count,host_count,errors_json,coverage_json) VALUES (?,?, 'running',0,0,0,0,0,'[]','{}')",params:[RUN_ID,STARTED]});
   // Fetch each current branch tip with a shallow history; this is for indexing branch heads, not historical commits.
   const fetch=spawnSync("git",["fetch","--no-tags","--depth=1","--filter=blob:none","origin","+refs/heads/*:refs/remotes/origin/*"],{encoding:"utf8",maxBuffer:128*1024*1024});
