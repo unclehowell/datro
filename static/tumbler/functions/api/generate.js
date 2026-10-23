@@ -1,6 +1,6 @@
 import inventory from "../../sources.json";
 
-const MODEL = "@cf/meta/llama-3.1-8b-instruct";
+const MODEL = "@cf/zai-org/glm-4.7-flash";
 const METHODS = {
   socratic: {
     label: "Socratic method",
