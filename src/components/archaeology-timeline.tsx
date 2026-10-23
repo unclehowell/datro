@@ -6,7 +6,7 @@ import data from "@/data/archaeology-timeline.json";
  * — Sion's Tab agent, 21 Oct 2026
  */
 type Item = { date: string; event: string; source: string; url: string };
-const D = data as unknown as { generated: string; wiki: string; report: string; items: Item[] };
+const D = data as unknown as { generated: string; wiki: string; report: string; chronology?: string; media?: string; items: Item[] };
 
 export function ArchaeologyTimeline() {
   return (
@@ -30,6 +30,18 @@ export function ArchaeologyTimeline() {
         <p className="px-4 pb-4 text-xs opacity-80">
           The 1990 report: <a className="underline" href={D.report}>EV-0126</a> · full timeline with record numbers:{" "}
           <a className="underline" href={D.wiki}>EV-0900</a>
+          {D.chronology ? (
+            <>
+              {" "}· every event of the case:{" "}
+              <a className="underline" href={D.chronology}>central chronology</a>
+            </>
+          ) : null}
+          {D.media ? (
+            <>
+              {" "}· press and video:{" "}
+              <a className="underline" href={D.media}>media coverage</a>
+            </>
+          ) : null}
         </p>
       </details>
     </section>
