@@ -275,7 +275,7 @@ function drawChains(gp){
  const NP={poo:[0,0]};Object.entries(PT.nodes).forEach(([k,n])=>{if(n.at!==undefined){const a=(-90+rot+n.at*360/N)*Math.PI/180;NP[k]=[Math.cos(a)*R*n.r,Math.sin(a)*R*n.r]}});
  const ptOf=k=>NP[k]||pos(P[k].i,R-12),radOf=k=>PR[k]||(PT.nodes[k]&&PT.nodes[k].rr?PT.nodes[k].rr*(mob?1:0.74):0);
  const gL=el('g',{class:'pths'},gp),gY=el('g',{},gp),gNd=el('g',{},gp);
- const yTag=(x,y,txt,col,p,id,sc=1)=>{const fsY=fsY0*sc,g=el('g',{class:'pth ylab','data-p':p,'data-pid':id},gY);const w=txt.length*fsY*0.6+10,h=fsY+7;
+ const yTag=(x,y,txt,col,p,id,sc=1)=>{const fsY=fsY0*sc,g=el('g',{class:'pth ylab','data-p':p+(/^A\d/.test(p)?' A':''),'data-pid':id},gY);const w=txt.length*fsY*0.6+10,h=fsY+7;
   el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx:h/2,fill:col,stroke:'#1d1938','stroke-width':1.5},g);
   const t=el('text',{x:x,y:y+fsY*0.36,'font-size':fsY,'font-weight':800,'text-anchor':'middle',fill:'#151229'},g);t.textContent=txt;
   g.addEventListener('click',e=>{e.stopPropagation();openStep(id)});return g};
