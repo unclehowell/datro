@@ -71,7 +71,6 @@ jobs:
           assert manifest.get("capabilities", {}).get("draftPullRequestGeneration") is True, "Manifest does not advertise PR workflow"
           assert health.get("service") == "tumbler", "Health route failed"
           assert "exhaustiveWholeEstateIndex" in corpus, "Missing explicit corpus coverage status"
-          assert int(__import__("os").environ.get("CONTRIBUTE_CODE", "0")) if False else True
           assert contribute.get("replacement") == "POST /api/contribute" or contribute.get("error") or "configurationRequired" in contribute, "Contribution validation did not return a safe response"
           assert legacy.get("replacement") == "POST /api/contribute" and legacy.get("error"), "Legacy prompt endpoint was not retired"
           print("UI, source manifest, health, corpus coverage, safe contribution probe and retired endpoint checks passed; hosts:", len(manifest["inventory"]["sources"]), "AI binding:", health.get("aiBindingConfigured"))
