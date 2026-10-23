@@ -1,0 +1,324 @@
+// watch.bucklerfamily.estate — change monitor for every *.bucklerfamily.estate site (Sion's Tab agent, 23 Oct 2026).
+// Cron (every 5 min) checks one shard of the sites (each site about every 30 min): HTTP status, latency, a hash of the
+// page with volatile bits stripped, the visible-text diff when it changes, and the git branch heads of the repos that
+// build the sites (git smart-HTTP refs, one request per repo; commit author/message from the branch's public Atom feed).
+// Storage: Workers KV only (one state write per run; change log and text snapshots only on change). No D1.
+// Read: /status.json · /changes.json?since= · /feed.xml · /sites.json · MCP (JSON-RPC) at /mcp · /.well-known/mcp.json · /agent/webmcp.js
+import SEEDTXT from "./seed.txt";
+const SEED = JSON.parse(SEEDTXT);
+const VER = "1.0.0";
+const PERIOD_MIN = 5;          // cron interval
+const PER_RUN = 14;            // sites per run (free plan: 50 subrequests per invocation)
+const MAX_CHANGES = 800;
+const MAX_ADDED = 60;
+const KV_WRITE_CAP = 850;      // free plan: 1,000 KV writes/day; keep headroom
+const UA = "ghf-watch/1.0 (+https://watch.bucklerfamily.estate/; change monitor)";
+const ALLOW_HOST = /(^|\.)bucklerfamily\.estate$|^greathousefarmwiki\.wordpress\.com$|\.sites\.tab\.bot$|\.pages\.dev$/;
+
+const H = { "access-control-allow-origin": "*", "access-control-allow-headers": "content-type, mcp-session-id, mcp-protocol-version", "access-control-allow-methods": "GET, POST, OPTIONS", "x-ghf-watch": VER };
+const J = (o, s = 200, cache = 60) => new Response(JSON.stringify(o, null, 1), { status: s, headers: { ...H, "content-type": "application/json; charset=utf-8", "cache-control": cache ? `public, max-age=${cache}` : "no-store" } });
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const now = () => new Date().toISOString().replace(/\.\d+Z$/, "Z");
+const day = () => now().slice(0, 10);
+
+async function sha(s) { const d = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)); return [...new Uint8Array(d)].slice(0, 8).map((b) => b.toString(16).padStart(2, "0")).join(""); }
+
+// volatile bits: Cloudflare email obfuscation / beacons / nonces / challenge tokens, ISO timestamps, epoch numbers, cache-busting hashes
+const VOL = /data-cfemail="[^"]*"|\/cdn-cgi\/[^"' )]*|<script[^>]*cloudflareinsights[^>]*><\/script>|nonce="[^"]*"|integrity="[^"]*"|__cf[a-z_]*=[^"'&;\s]*|"?(?:csrf|_token|token|nonce|buildId|build_id)"?\s*[:=]\s*"[^"]{6,}"|\b20\d\d-\d\d-\d\dT\d\d:\d\d(?::\d\d(?:\.\d+)?)?(?:Z|[+-]\d\d:?\d\d)?\b|\b1[6-9]\d{8}(?:\d{3})?\b|[?&](?:t|ts|_|cb|cachebust)=\d+/g;
+function textLines(html) {
+  let t = html.replace(/<(script|style|noscript|svg|template)\b[\s\S]*?<\/\1>/gi, " ").replace(/<!--[\s\S]*?-->/g, " ");
+  t = t.replace(/<\/?(p|div|li|h[1-6]|tr|td|th|br|section|article|header|footer|nav|main|aside|details|summary|dt|dd|figcaption|option|button|a)\b[^>]*>/gi, "\n").replace(/<[^>]+>/g, " ");
+  t = t.replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;|&#x27;/g, "'");
+  const out = []; const seen = new Set();
+  for (let l of t.split("\n")) { l = l.replace(/\s+/g, " ").trim(); if (l.length < 2 || seen.has(l)) continue; seen.add(l); out.push(l.slice(0, 240)); if (out.length >= 600) break; }
+  return out;
+}
+const titleOf = (html) => ((html.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1] || "").replace(/\s+/g, " ").trim().slice(0, 160);
+const agentOf = (msg, author, branch) => {
+  const m = String(msg || "");
+  let a = (m.match(/[—–-]{1,2}\s*([^\n—–]{3,60}?(?:agent|Agent|bot|Bot|Claude|Codex|Copilot|GPT|Tab))\s*$/m) || [])[1];
+  if (!a) a = (m.match(/Co-authored-by:\s*([^<\n]+)</i) || [])[1];
+  if (!a && /^claude\//.test(branch || "")) a = "Claude (branch " + branch + ")";
+  if (!a && /^codex\//.test(branch || "")) a = "Codex (branch " + branch + ")";
+  return (a || author || "unknown").trim();
+};
+
+async function loadAll(env) {
+  const [state, added] = await Promise.all([env.WATCH.get("state", "json"), env.WATCH.get("added", "json")]);
+  return { state: state || { v: 1, run: 0, sites: {}, heads: {}, commits: {}, kvw: { day: day(), n: 0 } }, added: added || [] };
+}
+function allSites(added) {
+  const seen = new Set(); const out = [];
+  for (const s of [...SEED.sites, ...added]) { if (seen.has(s.url)) continue; seen.add(s.url); out.push(s); }
+  return out;
+}
+async function kvPut(env, st, key, val, opts) {
+  if (st.kvw.day !== day()) st.kvw = { day: day(), n: 0 };
+  if (st.kvw.n >= KV_WRITE_CAP && key !== "state") return false;
+  st.kvw.n++; await env.WATCH.put(key, typeof val === "string" ? val : JSON.stringify(val), opts); return true;
+}
+
+async function probe(s, prev) {
+  const t0 = Date.now();
+  try {
+    const r = await fetch(s.url, { redirect: "manual", headers: { "user-agent": UA, accept: "text/html,application/json;q=0.9,*/*;q=0.8" }, cf: { cacheTtl: 0, cacheEverything: false }, signal: AbortSignal.timeout(15000) });
+    const ms = Date.now() - t0;
+    const loc = r.headers.get("location");
+    const ct = r.headers.get("content-type") || "";
+    let body = "";
+    if (r.status >= 300 && r.status < 400) { body = "REDIRECT " + r.status + " " + (loc || ""); }
+    else { body = await r.text(); if (body.length > 1500000) body = body.slice(0, 1500000); }
+    const raw = await sha(body);
+    const norm = prev && prev.raw === raw && prev.hash ? null : body.replace(VOL, " ");
+    return { status: r.status, ms, ct: ct.split(";")[0], location: loc || undefined, bytes: body.length, raw, hash: norm === null ? prev.hash : await sha(norm), body, edge: r.headers.get("x-agent-ready") ? "agent-ready " + r.headers.get("x-agent-ready") : undefined };
+  } catch (e) { return { status: 0, ms: Date.now() - t0, error: String(e).slice(0, 200), hash: null, body: "" }; }
+}
+
+async function repoHeads(repo) {
+  // git protocol v2 ls-refs limited to branches: ~5 KB instead of the 250 KB ref advertisement
+  const pkt = (s) => (s.length + 4).toString(16).padStart(4, "0") + s;
+  const r = await fetch(`https://github.com/${repo}.git/git-upload-pack`, { method: "POST", body: pkt("command=ls-refs\n") + "0001" + pkt("ref-prefix refs/heads/\n") + "0000", headers: { "user-agent": "git/2.40 ghf-watch", "git-protocol": "version=2", "content-type": "application/x-git-upload-pack-request" } });
+  if (!r.ok) throw new Error("refs " + r.status);
+  const t = await r.text(); const h = {};
+  for (const m of t.matchAll(/([0-9a-f]{40}) refs\/heads\/([^\s\0]+)/g)) h[m[2]] = m[1];
+  return h;
+}
+async function branchCommits(repo, branch, fromSha) {
+  const r = await fetch(`https://github.com/${repo}/commits/${encodeURIComponent(branch).replace(/%2F/g, "/")}.atom`, { headers: { "user-agent": UA, accept: "application/atom+xml" } });
+  if (!r.ok) return [];
+  const x = await r.text(); const out = [];
+  for (const e of x.split("<entry>").slice(1)) {
+    const sha1 = (e.match(/Commit\/([0-9a-f]{40})/) || [])[1]; if (!sha1) continue;
+    if (fromSha && sha1 === fromSha) break;
+    const msgHtml = (e.match(/<content[^>]*>([\s\S]*?)<\/content>/) || [])[1] || "";
+    const msg = msgHtml.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, "&").replace(/<[^>]+>/g, "").trim();
+    const author = ((e.match(/<author>\s*<name>([\s\S]*?)<\/name>/) || [])[1] || "").trim();
+    const at = ((e.match(/<updated>([^<]+)<\/updated>/) || [])[1] || "").trim();
+    out.push({ sha: sha1, at, author, agent: agentOf(msg, author, branch), message: msg.slice(0, 400) });
+    if (out.length >= 10) break;
+  }
+  return out;
+}
+
+async function cron(env, ctx, sched) {
+  const { state: st, added } = await loadAll(env);
+  const changes = []; const tStart = Date.now();
+  st.run = (st.run || 0) + 1;
+  // 1. git branch heads (one request per repo); moved branches get their commits from the Atom feed (max 4 per run)
+  let atomBudget = 4;
+  for (const repo of SEED.repos) {
+    try {
+      const h = await repoHeads(repo); const key = (b) => repo + "@" + b;
+      for (const [b, s1] of Object.entries(h)) {
+        const k = key(b), old = st.heads[k];
+        if (!old) { st.heads[k] = s1; if (st.run > 1 && st.repoSeen?.[repo]) changes.push({ kind: "branch_created", repo, branch: b, sha: s1.slice(0, 7) }); continue; }
+        if (old === s1) continue;
+        if (atomBudget <= 0) continue; // handled next run (head stays at the old sha)
+        atomBudget--;
+        const cs = await branchCommits(repo, b, old);
+        const last = cs[0] || { sha: s1, at: now(), author: "unknown", agent: "unknown", message: "(commit details not available yet)" };
+        st.commits[k] = { sha: s1, at: last.at, author: last.author, agent: last.agent, message: last.message.split("\n")[0].slice(0, 200), seen: now() };
+        changes.push({ kind: "commit", repo, branch: b, old_sha: old.slice(0, 7), new_sha: s1.slice(0, 7), commits: cs.length ? cs.map((c) => ({ sha: c.sha.slice(0, 7), at: c.at, author: c.author, agent: c.agent, message: c.message.split("\n")[0].slice(0, 200) })) : [{ sha: s1.slice(0, 7) }], agent: last.agent, author: last.author, compare: `https://github.com/${repo}/compare/${old.slice(0, 7)}...${s1.slice(0, 7)}` });
+        st.heads[k] = s1;
+      }
+      for (const k of Object.keys(st.heads)) if (k.startsWith(repo + "@") && !(k.slice(repo.length + 1) in h)) { changes.push({ kind: "branch_deleted", repo, branch: k.slice(repo.length + 1), sha: st.heads[k].slice(0, 7) }); delete st.heads[k]; }
+      st.repoSeen = st.repoSeen || {}; st.repoSeen[repo] = now();
+    } catch (e) { st.repoError = { repo, at: now(), error: String(e).slice(0, 160) }; }
+  }
+  // 2. this run's shard of sites
+  const sites = allSites(added); const shards = Math.max(1, Math.ceil(sites.length / PER_RUN));
+  // shard by the scheduled time, so a run that fails (e.g. CPU limit) does not pin the same shard
+  const slot = Math.floor((sched?.scheduledTime || Date.now()) / (PERIOD_MIN * 60e3));
+  const shard = ((slot % shards) + shards) % shards; const mine = sites.filter((_, i) => i % shards === shard);
+  st.shards = shards; st.cycle_minutes = shards * PERIOD_MIN;
+  const results = await Promise.all(mine.map((s) => probe(s, st.sites[s.url])));
+  for (let i = 0; i < mine.length; i++) {
+    const s = mine[i], r = results[i], p = st.sites[s.url] || {};
+    const up = r.status >= 200 && r.status < 400;
+    const rec = { id: s.id, url: s.url, status: r.status, up, ms: r.ms, ct: r.ct, bytes: r.bytes, hash: r.hash, raw: r.raw, location: r.location, edge: r.edge, error: r.error, checked: now(), title: r.body ? titleOf(r.body) : p.title, changed: p.changed, checks: (p.checks || 0) + 1, changes: p.changes || 0, down_since: up ? undefined : (p.down_since || now()), up_since: up ? (p.up ? p.up_since : now()) : undefined };
+    if (p.checks) {
+      if (!!p.up !== up || (up && p.status !== r.status && Math.floor(p.status / 100) !== Math.floor(r.status / 100))) {
+        changes.push({ kind: up ? "up" : "down", site: s.id, url: s.url, status_old: p.status, status_new: r.status, error: r.error, ms: r.ms });
+      }
+      if (up && r.hash && p.hash && r.hash !== p.hash) {
+        const lines = textLines(r.body); const tkey = "t:" + s.url;
+        const oldLines = (await env.WATCH.get(tkey, "json")) || [];
+        const oldSet = new Set(oldLines), newSet = new Set(lines);
+        const addedL = lines.filter((l) => !oldSet.has(l)), removedL = oldLines.filter((l) => !newSet.has(l));
+        const textChanged = addedL.length + removedL.length > 0 || !oldLines.length;
+        // attribution: newest commit on the site's branch seen in the last 3 h
+        const ck = s.branch ? (s.repo || "unclehowell/datro") + "@" + s.branch : null; const c = ck ? st.commits[ck] : null;
+        const recent = c && (Date.now() - Date.parse(c.seen || c.at)) < 3 * 3600e3;
+        changes.push({ kind: textChanged ? "content" : "markup", site: s.id, url: s.url, old_hash: p.hash, new_hash: r.hash, title_old: p.title !== rec.title ? p.title : undefined, title_new: p.title !== rec.title ? rec.title : undefined,
+          diff: { added: addedL.length, removed: removedL.length, sample_added: addedL.slice(0, 5), sample_removed: removedL.slice(0, 5), bytes_old: p.bytes, bytes_new: r.bytes },
+          branch: s.branch || undefined, commit: recent ? { sha: c.sha.slice(0, 7), at: c.at, author: c.author, agent: c.agent, message: c.message } : undefined,
+          agent: recent ? c.agent : undefined,
+          attribution: recent ? `commit ${c.sha.slice(0, 7)} on ${ck} by ${c.agent}` : (s.branch ? `no new commit on ${s.branch} in the last 3 h: a Worker deploy, database content or another runtime change` : "no git branch mapped to this site: a Worker deploy, database content or another runtime change") });
+        rec.changed = now(); rec.changes = (p.changes || 0) + 1;
+        await kvPut(env, st, tkey, lines);
+      } else if (up && r.hash && !p.hash) { await kvPut(env, st, "t:" + s.url, textLines(r.body)); }
+    } else if (up && r.body) { await kvPut(env, st, "t:" + s.url, textLines(r.body)); rec.first_seen = now(); }
+    for (const k of Object.keys(rec)) if (rec[k] === undefined) delete rec[k];
+    st.sites[s.url] = rec;
+  }
+  st.last_run = { at: now(), shard, of: shards, checked: mine.length, wall_ms: Date.now() - tStart, cron: sched?.cron };
+  if (changes.length) await appendChanges(env, st, changes);
+  await kvPut(env, st, "state", st);
+}
+
+async function appendChanges(env, st, evs) {
+  const log = (await env.WATCH.get("changes", "json")) || [];
+  const at = now(); let seq = Math.max(st.seq || 0, log.length ? log[log.length - 1].n || 0 : 0);
+  for (const e of evs) { seq++; log.push({ n: seq, at: e.at || at, ...e }); }
+  st.seq = seq;
+  while (log.length > MAX_CHANGES) log.shift();
+  await kvPut(env, st, "changes", log);
+}
+
+// ---- tools (shared by REST, MCP and WebMCP) ----
+const TOOLS = [
+  { name: "list_sites", description: "List every monitored site (all *.bucklerfamily.estate subdomains and extra pages) with its current state: up/down, HTTP status, latency, content hash, last change, mapped git branch.", inputSchema: { type: "object", properties: { only_down: { type: "boolean", description: "Only sites that are down" } } }, annotations: { readOnlyHint: true } },
+  { name: "get_changes", description: "Change log, newest last: content/markup changes (old vs new hash, text diff summary, the commit and agent that made it when known), up/down events, git commits on the repos that build the sites, notes posted by agents, and sites added. Use since= (ISO time or change number) to read only what is new.", inputSchema: { type: "object", properties: { since: { type: "string", description: "ISO 8601 time (e.g. 2026-10-23T12:00:00Z) or a change number n" }, site: { type: "string", description: "Site id or host, e.g. research or research.bucklerfamily.estate" }, kind: { type: "string", description: "content, markup, commit, up, down, note, site_added, branch_created, branch_deleted" }, limit: { type: "integer", description: "Max entries (default 100, max 500)" } } }, annotations: { readOnlyHint: true } },
+  { name: "get_status", description: "Current state of one site (or all), and the monitor's own run status.", inputSchema: { type: "object", properties: { site: { type: "string" } } }, annotations: { readOnlyHint: true } },
+  { name: "add_site", description: "Self-register a URL to be monitored (no signup). Allowed: any https URL on *.bucklerfamily.estate, greathousefarmwiki.wordpress.com, *.sites.tab.bot or *.pages.dev. It is picked up on the next run.", inputSchema: { type: "object", required: ["url"], properties: { url: { type: "string" }, id: { type: "string", description: "Short id (defaults to the subdomain)" }, branch: { type: "string", description: "Git branch in unclehowell/datro that builds it, if any" }, added_by: { type: "string", description: "Who is adding it (agent name)" } } } },
+  { name: "log_update", description: "Announce an update you (an agent) made or are about to make to a site, so other agents reading the change log know who did it and why. Appears in get_changes as kind=note.", inputSchema: { type: "object", required: ["site", "agent", "summary"], properties: { site: { type: "string" }, agent: { type: "string", description: "Your agent name" }, summary: { type: "string", description: "What changed, one or two sentences" }, commit: { type: "string", description: "Commit sha, if any" } } } },
+  { name: "check_now", description: "Fetch one monitored site live right now and compare its hash with the last stored check (read-only: nothing is stored; the scheduled run records it).", inputSchema: { type: "object", required: ["site"], properties: { site: { type: "string" } } }, annotations: { readOnlyHint: true } },
+];
+function findSite(sites, q) { if (!q) return null; q = String(q).toLowerCase().replace(/^https?:\/\//, "").replace(/\/$/, ""); return sites.find((s) => s.id.toLowerCase() === q || s.url.toLowerCase().replace(/^https?:\/\//, "").replace(/\/$/, "") === q || s.url.toLowerCase().includes("//" + q + ".bucklerfamily.estate/")) || null; }
+const rate = new Map();
+async function callTool(env, name, a = {}, ip = "") {
+  const { state: st, added } = await loadAll(env); const sites = allSites(added);
+  if (name === "list_sites") {
+    let rows = sites.map((s) => { const r = st.sites[s.url] || {}; return { id: s.id, url: s.url, up: r.up, status: r.status, ms: r.ms, hash: r.hash, title: r.title, checked: r.checked, changed: r.changed, changes: r.changes, branch: s.branch || null, repo: s.branch ? s.repo || "unclehowell/datro" : null, via: s.via, edge: r.edge, location: r.location, added_by: s.added_by }; });
+    if (a.only_down) rows = rows.filter((r) => r.up === false);
+    return { count: rows.length, up: rows.filter((r) => r.up).length, down: rows.filter((r) => r.up === false).length, not_yet_checked: rows.filter((r) => r.up === undefined).length, cycle_minutes: st.cycle_minutes, sites: rows };
+  }
+  if (name === "get_status") {
+    const meta = { version: VER, last_run: st.last_run, runs: st.run, cycle_minutes: st.cycle_minutes, kv_writes_today: st.kvw, repos: Object.keys(st.repoSeen || {}), repo_error: st.repoError, branches_tracked: Object.keys(st.heads || {}).length };
+    if (a.site) { const s = findSite(sites, a.site); if (!s) return { error: "unknown site " + a.site }; return { ...meta, site: { ...s, ...(st.sites[s.url] || {}) } }; }
+    return { ...meta, sites: Object.values(st.sites) };
+  }
+  if (name === "get_changes") {
+    let log = (await env.WATCH.get("changes", "json")) || [];
+    if (a.since) { const n = Number(a.since); log = Number.isFinite(n) && String(a.since).length < 9 ? log.filter((e) => e.n > n) : log.filter((e) => e.at > new Date(Date.parse(a.since) || 0).toISOString().replace(/\.\d+Z$/, "Z")); }
+    if (a.site) { const s = findSite(sites, a.site); const q = String(a.site); log = log.filter((e) => (s && (e.url === s.url || (s.branch && e.branch === s.branch))) || e.site === q); }
+    if (a.kind) log = log.filter((e) => e.kind === a.kind);
+    const lim = Math.min(500, Math.max(1, Number(a.limit) || 100));
+    return { count: log.length, returned: Math.min(lim, log.length), latest_n: st.seq || 0, changes: log.slice(-lim) };
+  }
+  if (name === "check_now") {
+    const s = findSite(sites, a.site); if (!s) return { error: "unknown site " + a.site };
+    const k = "cn:" + ip; const t = rate.get(k) || 0; if (Date.now() - t < 3000) return { error: "one check_now every 3 s, please" }; rate.set(k, Date.now());
+    const r = await probe(s); const p = st.sites[s.url] || {};
+    return { id: s.id, url: s.url, status: r.status, ms: r.ms, hash: r.hash, stored_hash: p.hash, stored_checked: p.checked, differs_from_last_check: !!(p.hash && r.hash && p.hash !== r.hash), title: r.body ? titleOf(r.body) : undefined, error: r.error };
+  }
+  if (name === "add_site") {
+    let u; try { u = new URL(String(a.url || "")); } catch { return { error: "url must be a full https URL" }; }
+    if (u.protocol !== "https:" || !ALLOW_HOST.test(u.hostname)) return { error: "only https URLs on *.bucklerfamily.estate, greathousefarmwiki.wordpress.com, *.sites.tab.bot or *.pages.dev" };
+    u.hash = ""; const url = u.href;
+    if (sites.some((s) => s.url === url)) return { ok: true, already_monitored: true, url };
+    if (added.length >= MAX_ADDED) return { error: "the monitor is full (" + MAX_ADDED + " added sites); ask the owner's agent" };
+    if (st.kvw && st.kvw.day === day() && st.kvw.n > KV_WRITE_CAP - 50) return { error: "daily write budget nearly used; try again after 00:00 UTC" };
+    const id = String(a.id || u.hostname.replace(/\.bucklerfamily\.estate$/, "") + (u.pathname !== "/" ? u.pathname.replace(/\/$/, "") : "")).slice(0, 60).replace(/[^\w.\/-]/g, "-");
+    const s = { id, url, branch: a.branch ? String(a.branch).slice(0, 80) : null, via: "added by an agent", source: "add_site", added_by: String(a.added_by || "anonymous agent").slice(0, 80), added_at: now() };
+    added.push(s); await env.WATCH.put("added", JSON.stringify(added));
+    await appendChanges(env, { ...st }, [{ kind: "site_added", site: id, url, agent: s.added_by }]);
+    return { ok: true, added: s, next_check_within_minutes: st.cycle_minutes || 30 };
+  }
+  if (name === "log_update") {
+    if (!a.site || !a.agent || !a.summary) return { error: "site, agent and summary are required" };
+    const k = "lu:" + ip; const t = rate.get(k) || 0; if (Date.now() - t < 10000) return { error: "one log_update every 10 s, please" }; rate.set(k, Date.now());
+    if (st.kvw && st.kvw.day === day() && st.kvw.n > KV_WRITE_CAP - 50) return { error: "daily write budget nearly used; try again after 00:00 UTC" };
+    const s = findSite(sites, a.site);
+    const st3 = { ...st, kvw: { ...(st.kvw || { day: day(), n: 0 }) } };
+    await appendChanges(env, st3, [{ kind: "note", site: s ? s.id : String(a.site).slice(0, 80), url: s ? s.url : undefined, agent: String(a.agent).slice(0, 80), summary: String(a.summary).slice(0, 600), commit: a.commit ? String(a.commit).slice(0, 40) : undefined }]);
+    return { ok: true, n: st3.seq };
+  }
+  return { error: "unknown tool " + name };
+}
+
+async function mcp(env, req, ip) {
+  let m; try { m = await req.json(); } catch { return J({ jsonrpc: "2.0", id: null, error: { code: -32700, message: "parse error" } }, 400, 0); }
+  const one = async (x) => {
+    const id = x.id ?? null;
+    if (x.method === "initialize") return { jsonrpc: "2.0", id, result: { protocolVersion: (x.params && x.params.protocolVersion) || "2025-06-18", capabilities: { tools: { listChanged: false } }, serverInfo: { name: "ghf-watch", title: "bucklerfamily.estate change monitor", version: VER }, instructions: "Read get_changes(since) before editing any bucklerfamily.estate site; call log_update after you change one; add_site to register a new page. No signup or key." } };
+    if (x.method && x.method.startsWith("notifications/")) return null;
+    if (x.method === "ping") return { jsonrpc: "2.0", id, result: {} };
+    if (x.method === "tools/list") return { jsonrpc: "2.0", id, result: { tools: TOOLS } };
+    if (x.method === "tools/call") {
+      const r = await callTool(env, x.params?.name, x.params?.arguments || {}, ip);
+      return { jsonrpc: "2.0", id, result: { content: [{ type: "text", text: JSON.stringify(r) }], structuredContent: r, isError: !!r.error } };
+    }
+    return { jsonrpc: "2.0", id, error: { code: -32601, message: "method not found: " + x.method } };
+  };
+  if (Array.isArray(m)) { const out = (await Promise.all(m.map(one))).filter(Boolean); return out.length ? J(out, 200, 0) : new Response(null, { status: 202, headers: H }); }
+  const r = await one(m); return r ? J(r, 200, 0) : new Response(null, { status: 202, headers: H });
+}
+
+function manifest(origin) {
+  return { schema_version: "2025-06-18", name: "ghf-watch", title: "bucklerfamily.estate change monitor", description: "Up/down and content-change monitor for every *.bucklerfamily.estate site, with the git commit and agent behind each change. No signup, no key.", version: VER,
+    transport: { type: "streamable-http", url: origin + "/mcp" }, endpoints: { mcp: origin + "/mcp", webmcp: origin + "/agent/webmcp.js", status: origin + "/status.json", changes: origin + "/changes.json", feed: origin + "/feed.xml", sites: origin + "/sites.json" },
+    rest: { "GET /changes.json?since=&site=&kind=&limit=": "get_changes", "GET /status.json": "get_status", "GET /sites.json": "list_sites", "POST /api/add_site {url,id?,branch?,added_by?}": "add_site", "POST /api/log_update {site,agent,summary,commit?}": "log_update", "GET /api/check_now?site=": "check_now" },
+    auth: "none", tools: TOOLS };
+}
+
+const WEBMCP = `/*! ghf-watch WebMCP tools · registers the change-monitor tools with navigator.modelContext where the browser supports WebMCP. */
+(function(){var mc=navigator.modelContext;var O=document.currentScript?new URL(document.currentScript.src).origin:"https://watch.bucklerfamily.estate";
+function call(n,a){return fetch(O+"/mcp",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({jsonrpc:"2.0",id:Date.now(),method:"tools/call",params:{name:n,arguments:a||{}}})}).then(function(r){return r.json()}).then(function(j){return j.result||{content:[{type:"text",text:JSON.stringify(j.error)}],isError:true}}).catch(function(e){return{content:[{type:"text",text:"Could not reach "+O+": "+e}],isError:true}})}
+fetch(O+"/.well-known/mcp.json").then(function(r){return r.json()}).then(function(M){var T=M.tools.map(function(t){return{name:"watch_"+t.name,description:t.description+" (watch.bucklerfamily.estate)",inputSchema:t.inputSchema,annotations:t.annotations||{},execute:function(a){return call(t.name,a)}}});
+window.GHFWatchTools=T.map(function(t){return t.name});if(!mc)return;try{if(typeof mc.registerTool==="function")T.forEach(function(t){try{mc.registerTool(t)}catch(e){}});else if(typeof mc.provideContext==="function")mc.provideContext({tools:T})}catch(e){}}).catch(function(){})})();`;
+
+function feed(log, origin) {
+  const items = log.slice(-100).reverse().map((e) => {
+    const t = e.kind === "commit" ? `${e.repo.split("/")[1]}@${e.branch}: ${e.commits?.[0]?.message || e.new_sha} (${e.agent || ""})` : e.kind === "note" ? `${e.site}: ${e.agent}: ${e.summary}` : `${e.site || e.branch}: ${e.kind}${e.diff ? ` +${e.diff.added}/-${e.diff.removed} lines` : ""}${e.agent ? " · " + e.agent : ""}`;
+    const d = e.diff ? [...(e.diff.sample_added || []).map((l) => "+ " + l), ...(e.diff.sample_removed || []).map((l) => "- " + l)].join("\n") : e.summary || e.compare || "";
+    return `<entry><id>${origin}/changes.json#${e.n}</id><title>${esc(t)}</title><updated>${e.at}</updated><link href="${esc(e.url || e.compare || origin)}"/><content type="text">${esc((e.attribution ? e.attribution + "\n" : "") + d)}</content></entry>`;
+  }).join("\n");
+  return `<?xml version="1.0" encoding="utf-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><id>${origin}/feed.xml</id><title>bucklerfamily.estate changes</title><updated>${log.length ? log[log.length - 1].at : now()}</updated><link rel="self" href="${origin}/feed.xml"/>\n${items}\n</feed>`;
+}
+
+function page(st, sites, log, origin) {
+  const rows = sites.map((s) => { const r = st.sites[s.url] || {}; const dot = r.up === undefined ? "○" : r.up ? "●" : "✕"; return `<tr class="${r.up === false ? "dn" : ""}"><td>${dot}</td><td><a href="${esc(s.url)}">${esc(s.url.replace(/^https:\/\//, "").replace(/\/$/, ""))}</a></td><td>${r.status ?? ""}</td><td>${r.ms ?? ""}</td><td>${esc((r.changed || "").replace("T", " ").replace("Z", ""))}</td></tr>`; }).join("");
+  const ch = log.slice(-25).reverse().map((e) => `<li><time>${esc(e.at.replace("T", " ").replace("Z", ""))}</time> ${esc(e.site || (e.repo ? e.repo.split("/")[1] + "@" + e.branch : ""))} · ${esc(e.kind)}${e.diff ? ` +${e.diff.added}/−${e.diff.removed}` : ""}${e.agent ? " · " + esc(e.agent) : ""}${e.kind === "commit" ? " · " + esc(e.commits?.[0]?.message || "") : e.summary ? " · " + esc(e.summary) : ""}</li>`).join("");
+  const up = sites.filter((s) => st.sites[s.url]?.up).length;
+  return `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Change monitor · bucklerfamily.estate</title><meta name="description" content="Up/down and content changes across every bucklerfamily.estate site, with the commit and agent behind each change."><link rel="alternate" type="application/atom+xml" href="/feed.xml"><link rel="mcp" href="/.well-known/mcp.json"><script src="/agent/webmcp.js" defer></script><style>body{font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;color:#1d1d1f;background:#fafaf7}main{max-width:900px;margin:0 auto;padding:14px}details{background:#fff;border:1px solid #e3e3dc;border-radius:10px;margin:10px 0;padding:8px 12px}summary{cursor:pointer;font-weight:600}table{border-collapse:collapse;width:100%;font-size:13px}td{padding:4px 6px;border-top:1px solid #eee;word-break:break-all}tr.dn td{color:#b00020}ul{padding-left:16px;font-size:13px}time{color:#666}code{background:#f0f0ea;padding:1px 4px;border-radius:4px;font-size:12px}footer{max-width:900px;margin:0 auto;padding:14px;font-size:12px;color:#666}a{color:#245}</style>
+<script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.1.2"></script>
+</head><body><main><p>${up} of ${sites.length} sites up · each checked about every ${st.cycle_minutes || 30} min · last run ${esc((st.last_run?.at || "pending").replace("T", " "))}</p>
+<details open><summary>Latest changes</summary><ul>${ch || "<li>No changes recorded yet.</li>"}</ul></details>
+<details><summary>All sites</summary><table><tbody>${rows}</tbody></table></details>
+<details><summary>For agents</summary><p>No signup or key. MCP (streamable HTTP): <code>${origin}/mcp</code> · discovery <a href="/.well-known/mcp.json">/.well-known/mcp.json</a> · WebMCP <a href="/agent/webmcp.js">/agent/webmcp.js</a>. Tools: list_sites, get_changes(since), get_status, add_site(url), log_update(site, agent, summary), check_now(site).</p><p>Plain HTTP: <a href="/status.json">/status.json</a> · <a href="/changes.json">/changes.json?since=</a> · <a href="/feed.xml">/feed.xml</a> · <a href="/sites.json">/sites.json</a>.</p></details></main>
+<footer><p>© Williams–Buckler family. All rights reserved. <a href="https://bucklerfamily.estate/licence/">Licence</a></p></footer></body></html>`;
+}
+
+async function cached(req, ctx, ttl, make) {
+  const c = caches.default; const key = new Request(req.url, { method: "GET" });
+  const hit = await c.match(key); if (hit) return hit;
+  const r = await make(); r.headers.set("cache-control", `public, max-age=${ttl}`);
+  ctx.waitUntil(c.put(key, r.clone())); return r;
+}
+
+export default {
+  async scheduled(ev, env, ctx) { await cron(env, ctx, ev); },
+  async fetch(req, env, ctx) {
+    const u = new URL(req.url); const p = u.pathname; const origin = u.origin; const ip = req.headers.get("cf-connecting-ip") || "";
+    if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: H });
+    if (p === "/mcp") { if (req.method === "POST") return mcp(env, req, ip); return J({ info: "MCP streamable HTTP endpoint: POST JSON-RPC 2.0 here (initialize, tools/list, tools/call). Discovery: /.well-known/mcp.json" }, 200, 300); }
+    if (p === "/.well-known/mcp.json" || p === "/.well-known/webmcp.json" || p === "/agent/tools.json") return J(manifest(origin), 200, 300);
+    if (p === "/agent/webmcp.js") return new Response(WEBMCP, { headers: { ...H, "content-type": "application/javascript; charset=utf-8", "cache-control": "public, max-age=900" } });
+    if (p === "/robots.txt") return new Response("User-agent: *\nAllow: /\n# Agents: " + origin + "/.well-known/mcp.json\n", { headers: { ...H, "content-type": "text/plain" } });
+    if (p === "/llms.txt") return new Response(`# bucklerfamily.estate change monitor\n\nUp/down and content-change monitor for every *.bucklerfamily.estate site; each change carries the git commit and agent behind it when known.\n\n- MCP (streamable HTTP, no key): ${origin}/mcp — tools: list_sites, get_changes(since), get_status, add_site(url), log_update(site, agent, summary), check_now(site)\n- Discovery: ${origin}/.well-known/mcp.json · WebMCP: ${origin}/agent/webmcp.js\n- JSON: ${origin}/status.json · ${origin}/changes.json?since=<ISO time or n> · ${origin}/sites.json · Atom: ${origin}/feed.xml\n- Agents: read get_changes(since) before editing a site; call log_update after you change one.\n`, { headers: { ...H, "content-type": "text/plain; charset=utf-8", "cache-control": "public, max-age=900" } });
+    const q = Object.fromEntries(u.searchParams);
+    if (p === "/status.json") return cached(req, ctx, 60, async () => J(await callTool(env, "get_status", q, ip)));
+    if (p === "/sites.json") return cached(req, ctx, 60, async () => J(await callTool(env, "list_sites", q, ip)));
+    if (p === "/changes.json") return cached(req, ctx, 60, async () => J(await callTool(env, "get_changes", q, ip)));
+    if (p === "/feed.xml") return cached(req, ctx, 120, async () => new Response(feed((await env.WATCH.get("changes", "json")) || [], origin), { headers: { ...H, "content-type": "application/atom+xml; charset=utf-8" } }));
+    if (p.startsWith("/api/")) {
+      const name = p.slice(5); if (!TOOLS.some((t) => t.name === name)) return J({ error: "unknown tool", tools: TOOLS.map((t) => t.name) }, 404, 0);
+      let a = q; if (req.method === "POST") { try { a = { ...q, ...(await req.json()) }; } catch {} }
+      if ((name === "add_site" || name === "log_update") && req.method !== "POST") return J({ error: "POST a JSON body" }, 405, 0);
+      return J(await callTool(env, name, a, ip), 200, 0);
+    }
+    if (p === "/" || p === "/index.html") return cached(req, ctx, 60, async () => { const { state: st, added } = await loadAll(env); const log = (await env.WATCH.get("changes", "json")) || []; return new Response(page(st, allSites(added), log, origin), { headers: { ...H, "content-type": "text/html; charset=utf-8" } }); });
+    return J({ error: "not found", see: origin + "/.well-known/mcp.json" }, 404, 300);
+  },
+};

@@ -1,0 +1,521 @@
+{
+"version": "2026-10-23",
+"built_from": "Cloudflare zone DNS + Workers custom domains + work/site-flywheels/sites.json",
+"repos": [
+"unclehowell/datro",
+"unclehowell/BucklerFamilyFarm"
+],
+"sites": [
+{
+"id": "apex",
+"url": "https://bucklerfamily.estate/",
+"branch": "main",
+"via": "Pages bucklerfamilyfarm",
+"source": "cloudflare-dns",
+"repo": "unclehowell/BucklerFamilyFarm"
+},
+{
+"id": "2026-10-22",
+"url": "https://2026-10-22.bucklerfamily.estate/",
+"branch": "2026-10-22",
+"via": "Pages 2026-10-22",
+"source": "cloudflare-dns"
+},
+{
+"id": "accounts",
+"url": "https://accounts.bucklerfamily.estate/",
+"branch": "accounts",
+"via": "Pages bucklerfamily-accounts",
+"source": "cloudflare-dns"
+},
+{
+"id": "althea",
+"url": "https://althea.bucklerfamily.estate/",
+"branch": "althea",
+"via": "Pages althea-30p",
+"source": "cloudflare-dns"
+},
+{
+"id": "app",
+"url": "https://app.bucklerfamily.estate/",
+"branch": "ghf-app",
+"via": "Worker cedwyn-apps",
+"source": "cloudflare-dns",
+"repo": "unclehowell/BucklerFamilyFarm"
+},
+{
+"id": "apps",
+"url": "https://apps.bucklerfamily.estate/",
+"branch": null,
+"via": "Worker cedwyn-apps",
+"source": "cloudflare-dns"
+},
+{
+"id": "archive",
+"url": "https://archive.bucklerfamily.estate/",
+"branch": "main",
+"via": "alias of bucklerfamily.estate",
+"source": "cloudflare-dns",
+"repo": "unclehowell/BucklerFamilyFarm"
+},
+{
+"id": "archives",
+"url": "https://archives.bucklerfamily.estate/",
+"branch": null,
+"via": "Pages archives-b01",
+"source": "cloudflare-dns"
+},
+{
+"id": "authorities",
+"url": "https://authorities.bucklerfamily.estate/",
+"branch": "ghf-public-authorities",
+"via": "Pages ghf-public-authorities",
+"source": "cloudflare-dns"
+},
+{
+"id": "bpvsbuckler",
+"url": "https://bpvsbuckler.bucklerfamily.estate/",
+"branch": "bpvsbuckler",
+"via": "Pages bpvsbuckler",
+"source": "cloudflare-dns"
+},
+{
+"id": "bucklervsbp",
+"url": "https://bucklervsbp.bucklerfamily.estate/",
+"branch": "bucklervsbp",
+"via": "Pages bucklervsbp",
+"source": "cloudflare-dns"
+},
+{
+"id": "call",
+"url": "https://call.bucklerfamily.estate/",
+"branch": null,
+"via": "Worker route / placeholder DNS",
+"source": "cloudflare-dns"
+},
+{
+"id": "calls",
+"url": "https://calls.bucklerfamily.estate/",
+"branch": null,
+"via": "Pages calls-ck0",
+"source": "cloudflare-dns"
+},
+{
+"id": "ccan",
+"url": "https://ccan.bucklerfamily.estate/",
+"branch": "ccan",
+"via": "Worker route / placeholder DNS",
+"source": "cloudflare-dns"
+},
+{
+"id": "ceo",
+"url": "https://ceo.bucklerfamily.estate/",
+"branch": "ceo",
+"via": "Pages ceo-er3",
+"source": "cloudflare-dns"
+},
+{
+"id": "chat",
+"url": "https://chat.bucklerfamily.estate/",
+"branch": null,
+"via": "Worker ghf-chat",
+"source": "cloudflare-dns"
+},
+{
+"id": "chess",
+"url": "https://chess.bucklerfamily.estate/",
+"branch": "chess",
+"via": "Pages bucklerfamily-chess",
+"source": "cloudflare-dns"
+},
+{
+"id": "clerk",
+"url": "https://clerk.bucklerfamily.estate/",
+"branch": null,
+"via": "Worker cclerk",
+"source": "cloudflare-dns"
+},
+{
+"id": "cnei",
+"url": "https://cnei.bucklerfamily.estate/",
+"branch": "cnei",
+"via": "Pages cnei",
+"source": "cloudflare-dns"
+},
+{
+"id": "command",
+"url": "https://command.bucklerfamily.estate/",
+"branch": "command",
+"via": "Pages command-dashboard-adx",
+"source": "cloudflare-dns"
+},
+{
+"id": "comments",
+"url": "https://comments.bucklerfamily.estate/",
+"branch": null,
+"via": "Worker ghf-comments",
+"source": "cloudflare-dns"
+},
+{
+"id": "csscpsg",
+"url": "https://csscpsg.bucklerfamily.estate/",
+"branch": "csscpsg",
+"via": "Pages bucklerfamily-csscpsg",
+"source": "cloudflare-dns"
+},
+{
+"id": "csscpsgp",
+"url": "https://csscpsgp.bucklerfamily.estate/",
+"branch": "csscpsg",
+"via": "Pages bucklerfamily-csscpsg",
+"source": "cloudflare-dns"
+},
+{
+"id": "dartboard",
+"url": "https://dartboard.bucklerfamily.estate/",
+"branch": "dartboard",
+"via": "Worker dartboard",
+"source": "cloudflare-dns"
+},
+{
+"id": "dash",
+"url": "https://dash.bucklerfamily.estate/",
+"branch": "dash",
+"via": "Pages dash-i09",
+"source": "cloudflare-dns"
+},
+{
+"id": "dcc",
+"url": "https://dcc.bucklerfamily.estate/",
+"branch": "dcc",
+"via": "Pages dcc-cwd",
+"source": "cloudflare-dns"
+},
+{
+"id": "directory",
+"url": "https://directory.bucklerfamily.estate/",
+"branch": "directory",
+"via": "Pages bucklerfamily-directory",
+"source": "cloudflare-dns"
+},
+{
+"id": "dishonor",
+"url": "https://dishonor.bucklerfamily.estate/",
+"branch": null,
+"via": "Worker route / placeholder DNS",
+"source": "cloudflare-dns"
+},
+{
+"id": "dishonour",
+"url": "https://dishonour.bucklerfamily.estate/",
+"branch": null,
+"via": "Worker route / placeholder DNS",
+"source": "cloudflare-dns"
+},
+{
+"id": "docs",
+"url": "https://docs.bucklerfamily.estate/",
+"branch": "docs",
+"via": "Pages bucklerfamily-docs",
+"source": "cloudflare-dns"
+},
+{
+"id": "ebooks",
+"url": "https://ebooks.bucklerfamily.estate/",
+"branch": "ebooks",
+"via": "Pages bucklerfamily-ebooks",
+"source": "cloudflare-dns"
+},
+{
+"id": "email",
+"url": "https://email.bucklerfamily.estate/",
+"branch": "email-archive",
+"via": "Worker email",
+"source": "cloudflare-dns"
+},
+{
+"id": "emails",
+"url": "https://emails.bucklerfamily.estate/",
+"branch": "emails",
+"via": "Pages bucklerfamily-emails",
+"source": "cloudflare-dns"
+},
+{
+"id": "engineroom",
+"url": "https://engineroom.bucklerfamily.estate/",
+"branch": null,
+"via": "Worker engineroom",
+"source": "cloudflare-dns"
+},
+{
+"id": "fb",
+"url": "https://fb.bucklerfamily.estate/",
+"branch": "fb",
+"via": "Pages bucklerfamily-fb",
+"source": "cloudflare-dns"
+},
+{
+"id": "fb2",
+"url": "https://fb2.bucklerfamily.estate/",
+"branch": "fb",
+"via": "Pages bucklerfamily-fb2",
+"source": "cloudflare-dns"
+},
+{
+"id": "fcg",
+"url": "https://fcg.bucklerfamily.estate/",
+"branch": "fcg",
+"via": "Worker fcg-wp",
+"source": "cloudflare-dns"
+},
+{
+"id": "ghf-app",
+"url": "https://ghf-app.bucklerfamily.estate/",
+"branch": "ghf-app",
+"via": "Pages ghf-app",
+"source": "cloudflare-dns",
+"repo": "unclehowell/BucklerFamilyFarm"
+},
+{
+"id": "gui",
+"url": "https://gui.bucklerfamily.estate/",
+"branch": "gui",
+"via": "Pages gui-7ey",
+"source": "cloudflare-dns"
+},
+{
+"id": "hbnb",
+"url": "https://hbnb.bucklerfamily.estate/",
+"branch": "hbnb",
+"via": "Pages datro",
+"source": "cloudflare-dns"
+},
+{
+"id": "infographic",
+"url": "https://infographic.bucklerfamily.estate/",
+"branch": "infographic",
+"via": "Pages bucklerfamily-infographic",
+"source": "cloudflare-dns"
+},
+{
+"id": "library",
+"url": "https://library.bucklerfamily.estate/",
+"branch": "library",
+"via": "Pages library-cgm",
+"source": "cloudflare-dns"
+},
+{
+"id": "maps",
+"url": "https://maps.bucklerfamily.estate/",
+"branch": "maps",
+"via": "Pages bucklerfamily-maps",
+"source": "cloudflare-dns"
+},
+{
+"id": "maze",
+"url": "https://maze.bucklerfamily.estate/",
+"branch": "maze",
+"via": "Worker route / placeholder DNS",
+"source": "cloudflare-dns"
+},
+{
+"id": "mcp.projects",
+"url": "https://mcp.projects.bucklerfamily.estate/",
+"branch": "projects-mcp",
+"via": "Worker projects-data-mcp",
+"source": "cloudflare-dns"
+},
+{
+"id": "nolecture",
+"url": "https://nolecture.bucklerfamily.estate/",
+"branch": "nomenclature",
+"via": "Pages bucklerfamily-nomenclature",
+"source": "cloudflare-dns"
+},
+{
+"id": "nomenclature",
+"url": "https://nomenclature.bucklerfamily.estate/",
+"branch": "nomenclature",
+"via": "Pages bucklerfamily-nomenclature",
+"source": "cloudflare-dns"
+},
+{
+"id": "nomlecture",
+"url": "https://nomlecture.bucklerfamily.estate/",
+"branch": "nomenclature",
+"via": "Pages bucklerfamily-nomenclature",
+"source": "cloudflare-dns"
+},
+{
+"id": "oldbill",
+"url": "https://oldbill.bucklerfamily.estate/",
+"branch": "oldbill",
+"via": "Pages bucklerfamily-oldbill",
+"source": "cloudflare-dns"
+},
+{
+"id": "pirateclaw",
+"url": "https://pirateclaw.bucklerfamily.estate/",
+"branch": "pirateclaw",
+"via": "Pages pirateclaw",
+"source": "cloudflare-dns"
+},
+{
+"id": "projections",
+"url": "https://projections.bucklerfamily.estate/",
+"branch": null,
+"via": "Pages projections",
+"source": "cloudflare-dns"
+},
+{
+"id": "projects",
+"url": "https://projects.bucklerfamily.estate/",
+"branch": "projects",
+"via": "Pages bucklerfamily-projects",
+"source": "cloudflare-dns"
+},
+{
+"id": "qa",
+"url": "https://qa.bucklerfamily.estate/",
+"branch": "qa",
+"via": "Pages qa-acp",
+"source": "cloudflare-dns"
+},
+{
+"id": "records",
+"url": "https://records.bucklerfamily.estate/",
+"branch": "ghf-primary-records",
+"via": "Pages ghf-primary-records",
+"source": "cloudflare-dns"
+},
+{
+"id": "research",
+"url": "https://research.bucklerfamily.estate/",
+"branch": "research",
+"via": "Worker research-wp",
+"source": "cloudflare-dns"
+},
+{
+"id": "review",
+"url": "https://review.bucklerfamily.estate/",
+"branch": "ghf-independent-review",
+"via": "Pages ghf-independent-review",
+"source": "cloudflare-dns"
+},
+{
+"id": "shop",
+"url": "https://shop.bucklerfamily.estate/",
+"branch": "merch",
+"via": "Pages bucklerfamily-shop",
+"source": "cloudflare-dns"
+},
+{
+"id": "subrepos",
+"url": "https://subrepos.bucklerfamily.estate/",
+"branch": "subrepos",
+"via": "Pages subrepos",
+"source": "cloudflare-dns"
+},
+{
+"id": "terrain",
+"url": "https://terrain.bucklerfamily.estate/",
+"branch": null,
+"via": "Worker route / placeholder DNS",
+"source": "cloudflare-dns"
+},
+{
+"id": "timeline",
+"url": "https://timeline.bucklerfamily.estate/",
+"branch": null,
+"via": "Pages timeline-as4",
+"source": "cloudflare-dns"
+},
+{
+"id": "tumbler",
+"url": "https://tumbler.bucklerfamily.estate/",
+"branch": "tumbler",
+"via": "Pages tumbler-6js",
+"source": "cloudflare-dns"
+},
+{
+"id": "watchtower",
+"url": "https://watchtower.bucklerfamily.estate/",
+"branch": "watchtower",
+"via": "Pages bucklerfamily-watchtower",
+"source": "cloudflare-dns"
+},
+{
+"id": "wave",
+"url": "https://wave.bucklerfamily.estate/",
+"branch": "wave",
+"via": "Pages wave-6he",
+"source": "cloudflare-dns"
+},
+{
+"id": "wayback",
+"url": "https://wayback.bucklerfamily.estate/",
+"branch": "wayback",
+"via": "Pages wayback-81x",
+"source": "cloudflare-dns"
+},
+{
+"id": "webbrich",
+"url": "https://webbrich.bucklerfamily.estate/",
+"branch": "webbrich",
+"via": "Pages webbrich",
+"source": "cloudflare-dns"
+},
+{
+"id": "whatdotheyknow",
+"url": "https://whatdotheyknow.bucklerfamily.estate/",
+"branch": "whatdotheyknow",
+"via": "Pages bucklerfamily-whatdotheyknow",
+"source": "cloudflare-dns"
+},
+{
+"id": "wiki",
+"url": "https://wiki.bucklerfamily.estate/",
+"branch": "wiki",
+"via": "Pages greathousefarmwiki",
+"source": "cloudflare-dns"
+},
+{
+"id": "www",
+"url": "https://www.bucklerfamily.estate/",
+"branch": "main",
+"via": "Pages bucklerfamilyfarm",
+"source": "cloudflare-dns",
+"repo": "unclehowell/BucklerFamilyFarm"
+},
+{
+"id": "wiki-wordpress",
+"url": "https://greathousefarmwiki.wordpress.com/",
+"branch": null,
+"via": "WordPress.com (free plan) \u2014 WP REST via saved login / public",
+"source": "site-flywheels/sites.json"
+},
+{
+"id": "emails-calendar",
+"url": "https://email.bucklerfamily.estate/calendar/",
+"branch": "emails",
+"via": "datro@emails (Cloudflare Pages bucklerfamily-emails)",
+"source": "site-flywheels/sites.json"
+},
+{
+"id": "estate",
+"url": "https://bucklerfamily.estate/cedwyn/",
+"branch": "main",
+"via": "unclehowell/BucklerFamilyFarm (Cloudflare Pages)",
+"source": "site-flywheels/sites.json",
+"repo": "unclehowell/BucklerFamilyFarm"
+},
+{
+"id": "cyberspace",
+"url": "https://bucklerfamily.estate/cyberspace/",
+"branch": "main",
+"via": "unclehowell/BucklerFamilyFarm /cyberspace/",
+"source": "site-flywheels/sites.json",
+"repo": "unclehowell/BucklerFamilyFarm"
+}
+]
+}
