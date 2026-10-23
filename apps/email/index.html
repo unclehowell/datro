@@ -457,13 +457,13 @@ function showReferenceLanding(ref,candidates,note){
   if(!value)return;
   const tag=document.createElement('span');tag.className='tag'+(blue?' blue':'');tag.textContent=value;$('reader-tags').appendChild(tag);
  };
- addTag('Public archive reference',true);addTag(ref.date||'Date not stated');addTag('Reference '+ref.id);
+ addTag(ref.notYet?'Not yet in the public archive':'Public archive reference',true);if(ref.ev)addTag(ref.ev);addTag(ref.date||'Date not stated');addTag('Reference '+ref.id);
  const actions=$('reader-actions');actions.replaceChildren();
  const browse=document.createElement('a');browse.href='/';browse.className='btn';browse.textContent='Browse public archive';actions.appendChild(browse);
  const reader=$('reader-scroll');reader.replaceChildren();
  const card=document.createElement('article');card.className='message-card';
  const head=document.createElement('div');head.className='message-head';
- const heading=document.createElement('div');heading.className='message-title';heading.textContent='Archive lookup for this disclosure-chart reference';
+ const heading=document.createElement('div');heading.className='message-title';heading.textContent=ref.notYet?'Not yet in the public archive':'Archive lookup for this disclosure-chart reference';
  const meta=document.createElement('div');meta.className='message-source';meta.textContent='Reference ID: '+ref.id;
  head.append(heading,meta);
  const body=document.createElement('div');body.className='message-body';body.textContent=note;
@@ -471,7 +471,7 @@ function showReferenceLanding(ref,candidates,note){
  const metadata=document.createElement('article');metadata.className='message-card';
  const mh=document.createElement('div');mh.className='message-head';const mt=document.createElement('div');mt.className='message-title';mt.textContent='Details supplied by the disclosure chart';mh.appendChild(mt);
  const mb=document.createElement('div');mb.className='message-body';const rows=[
-  ['Title',ref.title],['Date shown on chart',ref.date],['Correspondent',ref.correspondent],['Reference / subject',ref.caseRef]
+  ['Title',ref.title],['Evidence number',ref.ev],['Date shown on chart',ref.date],['Correspondent',ref.correspondent],['Reference / subject',ref.caseRef],['Summary',ref.summary]
  ].filter(x=>x[1]);
  mb.textContent=rows.map(x=>x[0]+': '+x[1]).join('\n');
  metadata.append(mh,mb);reader.appendChild(metadata);
@@ -490,6 +490,16 @@ function showReferenceLanding(ref,candidates,note){
  const p=document.createElement('p');p.textContent='This is a public archive lookup, not the original message. If no source match is available, the original email must be added to the curated public archive before it can be displayed here.';$('thread-summary').appendChild(p);
 }
 async function openExternalReference(ref){
+ // The dartboard's roadmap ramp links by Gmail message id: open that exact record (gm-<id>) when the archive holds it.
+ const rid='gm-'+String(ref.id).toLowerCase();
+ const byMsg=threads.find(t=>t.items.some(item=>item.id===rid));
+ if(byMsg){
+  await openThread(byMsg,false);
+  const card=Array.from(document.querySelectorAll('.message-card')).find(el=>el.id.endsWith('-'+rid));
+  try{window.history.replaceState({emailThread:byMsg.key,emailRecord:rid},'',threadUrl(byMsg,false)+(card?'#'+card.id:''));}catch(e){}
+  if(card)card.scrollIntoView({behavior:'auto',block:'start'});
+  return;
+ }
  // Exact match first: the dartboard links by Gmail thread id, which the Wayback case-mail records carry.
  const direct=threads.find(t=>t.items.some(item=>item.threadId&&String(item.threadId).replace(/^gt-/,'').toLowerCase()===String(ref.id).toLowerCase()));
  if(direct){
@@ -501,6 +511,18 @@ async function openExternalReference(ref){
   if(card)card.scrollIntoView({behavior:'auto',block:'start'});
   return;
  }
+ // Cited on the dartboard but not in this archive: say so with its evidence number and date, no fuzzy search.
+ try{
+  const rm=await fetch('/data/roadmap.json').then(r=>r.ok?r.json():null);
+  let cited=null;
+  (rm&&rm.lanes||[]).some(l=>(l.emails||[]).some(e=>{if(String(e.id||'').toLowerCase()===rid){cited=e;return true;}return false;}));
+  if(cited){
+   const day=fmtStamp(cited.date||'')||cited.date||'';
+   const full={id:ref.id,title:ref.title||cited.subject||'',date:ref.date||cited.date||'',correspondent:ref.correspondent,caseRef:ref.caseRef,ev:cited.ev||'',summary:cited.summary||'',notYet:true};
+   showReferenceLanding(full,[],'Not yet in the public archive. This email'+(full.ev?' ('+full.ev+(day?', '+day:'')+')':(day?' ('+day+')':''))+' is cited on the dartboard, but its redacted copy has not been added to this archive, so its text cannot be shown here.');
+   return;
+  }
+ }catch(e){}
  const candidates=externalSearchCandidates(ref);
  showReferenceLanding(ref,candidates,'Searching the public archive for a matching source message…');
  for(const candidate of candidates){
