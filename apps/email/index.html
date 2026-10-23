@@ -523,35 +523,8 @@ async function openExternalReference(ref){
    return;
   }
  }catch(e){}
+ // No match by id: show the not-yet card straight away. No search by title, which could open a different thread (23 Oct 2026).
  const candidates=externalSearchCandidates(ref);
- showReferenceLanding(ref,candidates,'Searching the public archive for a matching source message…');
- for(const candidate of candidates){
-  try{
-   const data=await agentApi('/api/search?q='+encodeURIComponent(candidate.text));
-   const found=data.records||[];
-   if(!found.length)continue;
-   const ranked=found.slice().sort((a,b)=>{
-    const q=normalize(candidate.text);
-    const score=x=>{
-     const subject=normalize(x.subject||'');const name=normalize(x.name||'');
-     return (subject===q?100:subject.includes(q)?80:0)+(name.includes(q)?25:0);
-    };
-    return score(b)-score(a);
-   });
-   const record=ranked[0];
-   const targetThread=threads.find(t=>t.items.some(item=>item.id===record.id));
-   if(!targetThread)continue;
-   await openThread(targetThread,false);
-   const card=Array.from(document.querySelectorAll('.message-card')).find(el=>el.id.endsWith('-'+record.id));
-   if(card){
-    try{window.history.replaceState({emailThread:targetThread.key,emailRecord:record.id},'',threadUrl(targetThread,false)+'#'+card.id);}catch(e){}
-    card.scrollIntoView({behavior:'auto',block:'start'});
-   }
-   const notice=document.createElement('p');notice.className='message-source';notice.textContent='Opened a public archive source matching reference “'+candidate.text+'”. This is a match to the indexed source, not a claim that the Gmail thread ID and archive record ID are identical.';
-   $('reader-tags').appendChild(notice);
-   return;
-  }catch(e){}
- }
  showReferenceLanding(Object.assign({},ref,{notYet:true}),candidates,'Not yet in the public archive. No email matching this reference has been added to the archive yet ('+allRecords.length+' indexed records), so its text cannot be shown here. It will open here once its redacted copy is added.');
 }
 window.addEventListener('popstate',()=>{
