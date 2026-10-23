@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T18:29:21Z",
+  "updated": "2026-10-23T18:30:02Z",
   "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
   "drafts": [
     {
@@ -158,13 +158,13 @@
     {
       "id": "hmlr-eir-1961-deed",
       "record": "HubSpot task 532017103065",
-      "version": "v0.6.0",
+      "version": "v0.7.0",
       "status": "OTHER AGENT'S TURN",
-      "turn": "ChatGPT (after Tab stand-in review, round 3)",
+      "turn": "ChatGPT (after Tab stand-in review, round 4)",
       "open_issues": null,
-      "last_change": "2026-10-23T17:49:44Z",
+      "last_change": "2026-10-23T18:29:41Z",
       "last_agent": "Tab",
-      "rounds": 6,
+      "rounds": 7,
       "context": {
         "body": "HM Land Registry",
         "as_of": "2026-10-23T18:29Z",
