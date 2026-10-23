@@ -719,11 +719,15 @@ def build():
         write("404.html", head("Not found · farmbook 2", "This page is not on farmbook 2.", "404.html") + "<body>" + BS.top("feed") + '<main id="main" class="sb-main"><section class="wl-hero"><h1>Not found</h1><p>This page is not on farmbook 2. <a href="/">Back to the wall</a>.</p></section></main>' + page_end(""))
         vids = [dict(s_, by=PM) for s_ in BS.STORIES if s_["id"].startswith("s-hr-")]   # the highlight-report videos only (the exception)
         vc = "".join('<article class="post sp wl" id="v-%s" data-src-exception="highlight-report"><header class="sp-h"><span class="sp-av">%s</span><div class="sp-who"><a class="sp-n" href="u/%s.html">%s</a> <span class="wl-verb">shared a video</span><div class="sp-d">%s</div></div></header>'
-                     '<div class="sp-b"><h2 class="pt sp-t">%s</h2><figure class="wl-vid"><video controls playsinline preload="none" poster="%s" src="%s"></video></figure></div>'
+                     '<div class="sp-b"><h2 class="pt sp-t">%s</h2><figure class="wl-vid"><video controls playsinline preload="metadata" poster="%s" src="%s"></video></figure></div>'
                      '<details class="sp-src"><summary>Source</summary><p>%s</p></details></article>'
                      % (e(v_["id"]), avimg(v_["by"], "", 40), v_["by"], e(prof(v_["by"])["name"]), e(v_.get("credit", "")[:80]), e(v_["title"]), e(v_["thumb"]), e(v_["src"]), e(v_.get("credit", "")))
                      for v_ in vids if v_.get("kind") == "video" and v_.get("src"))
         vc = re.sub(r'id="v-(s-hr-[^"]+)"', r'id="v-\1" data-story="\1"', vc)   # verify_fb.js finds the day's card by data-story
+        # tapping a video card opens it full-screen in social.js's story player, which reads #fb-stories-data
+        vdata = [{"id": v_["id"], "by": prof(v_["by"])["name"], "av": prof(v_["by"])["avatar"], "title": v_["title"], "kind": "video", "src": v_["src"], "thumb": v_["thumb"],
+                  "seconds": v_.get("seconds"), "credit": v_.get("credit", ""), "link": "index.html#hf-" + v_["id"][5:]} for v_ in vids if v_.get("kind") == "video" and v_.get("src")]
+        vc += '<script type="application/json" id="fb-stories-data">%s</script>' % json.dumps(vdata, ensure_ascii=False).replace("</", "<\\/")
         write("videos.html", head("Videos · farmbook 2", "The daily highlight-report videos, posted by the project manager.", "videos.html")
               + "<body>" + BS.top("video") + '<main id="main" class="sb-main"><h1 class="sb-h1">Videos</h1>' + vc + "</main>" + page_end("", "video"))
     else:
