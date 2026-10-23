@@ -7,6 +7,9 @@ const DB_ID = process.env.TUMBLER_D1_DATABASE_ID || "3ca02c2d-bb78-424d-8574-a65
 const API_TOKEN = process.env.CLOUDFLARE_API_TOKEN;
 const SESSION_URL = "https://tumbler-6js.pages.dev/api/ingest/session";
 const INGEST_URL = "https://tumbler-6js.pages.dev/api/ingest/batch";
+// Use the stable Pages project hostname, not a short-lived deployment URL.
+// The Pages Functions check that the source Cloudflare token is active and has project access,
+// then store only a hash of the short-lived, scoped D1-ingest session.
 let INGEST_SESSION = "";
 const RUN_ID = new Date().toISOString().replace(/[^0-9TZ]/g, "-");
 const STARTED = new Date().toISOString();
