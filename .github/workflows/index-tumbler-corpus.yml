@@ -17,7 +17,7 @@ permissions:
 
 concurrency:
   group: tumbler-corpus-index
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   index:
@@ -27,6 +27,7 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || '42a4a8d7bfb96321118ada213638d050' }}
       TUMBLER_D1_DATABASE_ID: 3ca02c2d-bb78-424d-8574-a653d33f5c05
+      GITHUB_TOKEN: ${{ github.token }}
       TUMBLER_MAX_PAGES_PER_HOST: 350
       TUMBLER_MAX_TOTAL_WEB_PAGES: 18000
     steps:
