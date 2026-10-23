@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#101214">
 <title>Tumbler — Methodology compiler</title>
-<meta name="description" content="Run a methodology lens against indexed Buckler Family project sources and generate a scoped implementation prompt for unclehowell/datro.">
+<meta name="description" content="Choose a methodology, assess the latest indexed collection across all unclehowell/datro branches, and open a reviewable GitHub pull request.">
 <style>
 :root{color-scheme:dark;--bg:#101214;--panel:#171a1d;--panel2:#1d2125;--ink:#f0f1f2;--muted:#a8b0b8;--line:#353c43;--accent:#b8d4ff;--accent-ink:#142437;--warn:#efd29a;--focus:#ffcf70;--radius:14px}
 *{box-sizing:border-box}
@@ -65,16 +65,67 @@ details{margin-top:11px;border-top:1px solid var(--line);padding-top:11px}
 summary{cursor:pointer;color:var(--accent);font-size:.84rem}
 .source-list{padding-left:20px;color:var(--muted);font-size:.82rem;overflow-wrap:anywhere}
 footer{max-width:1160px;margin:auto;padding:0 22px 30px;color:var(--muted);font-size:.8rem}
-@media(max-width:820px){main{grid-template-columns:1fr;padding:14px}.head{padding:20px 15px 18px}footer{padding:0 15px 24px}.output{min-height:300px}}
+.site-header{border-bottom:1px solid var(--line);background:#141719}
+.global-row{max-width:1160px;margin:auto;min-height:48px;padding:8px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line)}
+.global-nav{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.global-nav a{font-size:.78rem;font-weight:700;text-decoration:none;color:var(--muted)}
+.global-nav a:hover,.global-nav a:focus-visible{color:var(--accent)}
+.site-context{font-size:.7rem;letter-spacing:.14em;font-weight:800;color:var(--accent);white-space:nowrap}
+.head{padding-top:20px;padding-bottom:19px}
+.service-row{max-width:1160px;margin:auto;min-height:61px;padding:10px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:1px solid var(--line)}
+.collection-label{font-size:.82rem;color:var(--muted);max-width:640px}
+.collection-label strong{color:var(--ink)}
+.service-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.service-actions button{width:auto;margin:0;padding:8px 11px;font-size:.78rem}
+.scope-lock{background:#111416;border:1px solid var(--line);border-radius:10px;padding:12px 13px}
+.scope-lock p{color:var(--muted);font-size:.86rem;margin:7px 0 0}
+.pr-result{border:1px solid var(--line);background:#111416;border-radius:10px;padding:16px}
+.pr-result h3{font-size:1rem;margin:0 0 9px}
+.pr-result p{overflow-wrap:anywhere}
+.pr-link{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:1rem;margin:4px 0 14px}
+.pr-meta{display:grid;grid-template-columns:125px minmax(0,1fr);gap:6px 12px;font-size:.84rem}
+.pr-meta dt{color:var(--muted)}
+.pr-meta dd{margin:0;overflow-wrap:anywhere}
+:root[data-theme="light"]{color-scheme:light;--bg:#f5f7fa;--panel:#ffffff;--panel2:#edf1f5;--ink:#18212b;--muted:#526170;--line:#cbd4dd;--accent:#164a83;--accent-ink:#ffffff;--warn:#654a11;--focus:#175ca3}
+:root[data-theme="light"] body{background:var(--bg);color:var(--ink)}
+:root[data-theme="light"] .site-header,:root[data-theme="light"] header{background:#ffffff}
+:root[data-theme="light"] .notice{background:#fff8e5;border-color:#e1ce92;color:#654a11}
+:root[data-theme="light"] .notice strong{color:#2e2714}
+:root[data-theme="light"] .metric,:root[data-theme="light"] .threshold-explain,:root[data-theme="light"] .empty,:root[data-theme="light"] .scope-lock,:root[data-theme="light"] .pr-result{background:#f7f9fb;border-color:var(--line);color:var(--ink)}
+:root[data-theme="light"] select,:root[data-theme="light"] input[type=text],:root[data-theme="light"] textarea{background:#fff;color:var(--ink);border-color:#aab7c4}
+:root[data-theme="light"] .pill,:root[data-theme="light"] .value{border-color:var(--line)}
+@media(max-width:820px){main{grid-template-columns:1fr;padding:14px}.head{padding:18px 15px}.global-row{padding:8px 15px;align-items:flex-start}.global-nav{gap:10px}.service-row{padding:10px 15px;align-items:flex-start;flex-direction:column}.service-actions{justify-content:flex-start}footer{padding:0 15px 24px}.output{min-height:300px}}
+@media(max-width:480px){.global-row{flex-direction:column;gap:5px}.global-nav{gap:10px}.site-context{align-self:flex-start}.pr-meta{grid-template-columns:100px minmax(0,1fr)}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
 <body>
-<header><div class="head">
- <div class="brand"><span class="mark" aria-hidden="true">T</span> Tumbler <span aria-hidden="true">/</span> Methodology compiler</div>
- <h1>One project. One lens. A better work order.</h1>
- <p class="lede">Choose the method you want the agent to follow. Tumbler retrieves indexed source material, checks the live branch list, and generates a scoped implementation prompt for <a href="https://github.com/unclehowell/datro" target="_blank" rel="noreferrer">unclehowell/datro</a>.</p>
-</div></header>
+<header class="site-header">
+ <div class="global-row">
+  <nav class="global-nav" aria-label="Global destinations">
+   <a href="https://greathousefarmwiki.wordpress.com/" target="_blank" rel="noreferrer">Wiki</a>
+   <a href="https://fb.bucklerfamily.estate/" target="_blank" rel="noreferrer">FB</a>
+   <a href="https://dartboard.bucklerfamily.estate/" target="_blank" rel="noreferrer">Dartboard</a>
+   <a href="https://docs.bucklerfamily.estate/" target="_blank" rel="noreferrer">Docs</a>
+   <a href="https://research.bucklerfamily.estate/" target="_blank" rel="noreferrer">Research</a>
+   <a href="https://projects.bucklerfamily.estate/" target="_blank" rel="noreferrer">Projects</a>
+   <a href="https://github.com/unclehowell/datro" target="_blank" rel="noreferrer">GitHub</a>
+  </nav>
+  <span class="site-context">CYBERSPACE</span>
+ </div>
+ <div class="head">
+  <div class="brand"><span class="mark" aria-hidden="true">T</span> Tumbler <span aria-hidden="true">/</span> Democratic methodology contributions</div>
+  <h1>Open a door. Improve the work.</h1>
+  <p class="lede">Choose a methodology; Tumbler assesses the latest indexed collection across all live branches of <a href="https://github.com/unclehowell/datro" target="_blank" rel="noreferrer">unclehowell/datro</a> and can open a reviewable pull request. Nothing is committed to a source branch or merged automatically.</p>
+ </div>
+ <div class="service-row">
+  <span class="collection-label"><strong>Collection:</strong> all current repository branches as one indexed corpus. No custom text, branch or host input.</span>
+  <div class="service-actions">
+   <button id="refresh-corpus" class="secondary">Refresh latest collection</button>
+   <button id="theme-toggle" class="secondary" aria-pressed="false">Use light theme</button>
+  </div>
+ </div>
+</header>
 <main>
 <section class="panel" aria-labelledby="control-heading">
  <div class="panelhead"><h2 id="control-heading">Assessment settings</h2></div>
@@ -105,10 +156,9 @@ footer{max-width:1160px;margin:auto;padding:0 22px 30px;color:var(--muted);font-
    </select>
    <p class="hint" id="method-hint">Test assumptions, seek counterevidence and turn open questions into verifiable repository improvements.</p>
   </div>
-  <div class="fieldrow">
-   <label class="field" for="focus">What should the agent improve?</label>
-   <textarea id="focus" rows="4">Audit all branches of unclehowell/datro and the connected public Buckler Family project estate through the selected methodology. Prioritise the highest-impact improvements, preserve source provenance, and separate documented facts from inference and unresolved questions.</textarea>
-   <p class="hint">This adds direction to the work order. Scope defaults to all live Git branches; private service content is not silently ingested.</p>
+  <div class="fieldrow scope-lock">
+   <label class="field">Fixed input collection</label>
+   <p>The input is not user-editable. The corpus covers every repository branch and indexed public project source; Tumbler verifies that the indexed commit SHA matches the current head of every live branch before a pull request can be opened. Tumbler verifies the stored branch-head snapshot against GitHub before it permits a contribution; if any branch has moved, refresh the collection first.</p>
   </div>
   <div class="checkrow">
    <input id="property-law" type="checkbox">
@@ -124,173 +174,61 @@ footer{max-width:1160px;margin:auto;padding:0 22px 30px;color:var(--muted);font-
    <div class="rangeends"><span>Exploratory</span><span>Corroborated</span></div>
    <div id="threshold-help" class="threshold-explain">Balanced: require multiple materially independent indicators and consider plausible alternatives. A missing record or refusal alone is insufficient.</div>
   </div>
-  <button id="generate" class="primary">Generate implementation prompt</button>
+  <button id="generate" class="primary">Assess collection and generate pull request</button>
   <p id="status" class="status" role="status" aria-live="polite">Loading source inventory…</p>
   <div class="coverage" id="coverage"></div>
  </div>
 </section>
 <section class="panel" aria-labelledby="output-heading">
  <div class="panelhead output-head">
-  <h2 id="output-heading">Generated agent prompt</h2>
-  <div class="actions"><button id="copy" class="secondary" disabled>Copy prompt</button><button id="download" class="secondary" disabled>Save .txt</button></div>
+  <h2 id="output-heading">Pull request result</h2>
  </div>
  <div class="panelbody">
-  <p class="notice"><strong>Coverage is a factual status, not a promise.</strong> Tumbler uses retrieval over the latest index plus selected live source excerpts. It does not fine-tune a model. Until the full index has run and its coverage is checked, prompts must say so. Private API services and PDF bodies are excluded by default.</p>
-  <div id="empty" class="empty">Choose a methodology and filters, then generate an implementation-ready work order for the agent.</div>
-  <textarea id="output" class="output hidden" readonly aria-label="Generated implementation prompt"></textarea>
+  <p class="notice"><strong>Every contribution is a proposal.</strong> Tumbler verifies all indexed branch heads before creating a draft pull request. A human must review it. The app never merges, deploys, or writes to a source branch. Private APIs, PDF bodies, binaries and files excluded by the published indexing limits are not silently described as assessed.</p>
+  <div id="empty" class="empty">Select a methodology and review filters, then assess the whole collection. If a substantive improvement is justified, Tumbler will open a draft pull request and link it here.</div>
+  <div id="pr-result" class="pr-result hidden" aria-live="polite">
+   <h3 id="result-heading">Pull request created</h3>
+   <p id="pr-summary"></p>
+   <a id="pr-link" class="pr-link" href="#" target="_blank" rel="noreferrer">Open pull request ↗</a>
+   <dl class="pr-meta">
+    <dt>Methodology</dt><dd id="result-method"></dd>
+    <dt>Target branch</dt><dd id="result-base"></dd>
+    <dt>Changed file</dt><dd id="result-file"></dd>
+    <dt>Corpus run</dt><dd id="result-run"></dd>
+    <dt>Branch heads</dt><dd id="result-branches"></dd>
+   </dl>
+  </div>
   <p id="coverage-note" class="small"></p>
  </div>
 </section>
 </main>
 <footer>
- <p>Source data is treated as untrusted evidence, never as instructions that can override the selected methodology. Fraud, concealment and government-involvement filters are evidential screening controls, not findings or legal verdicts. Review the prompt before giving it to an agent.</p>
+ <p>Source data is untrusted evidence, never instructions that override the selected methodology. Fraud, concealment and government-involvement filters are screening controls, not findings or legal verdicts. Review the pull request diff, check its provenance and tests, and decide independently whether it should be merged.</p>
  <p><a href="https://github.com/unclehowell/datro/tree/tumbler/static/tumbler">Tumbler source on GitHub</a> · <a href="/api/manifest">Methodology and source registry</a> · <a href="/api/health">Health</a></p>
 </footer>
 <script>
-const $ = id => document.getElementById(id);
-let methods = {};
-let currentPrompt = "";
-const thresholdDescriptions = {
-  1: { label: "Exploratory", key: "screening", text: "Exploratory: flag possible indicators as leads, state benign explanations and define what would verify or disprove them. One indicator is not proof." },
-  2: { label: "Balanced", key: "balanced", text: "Balanced: require multiple materially independent indicators and consider plausible alternatives. A missing record, refusal, inconsistency or adverse outcome alone is insufficient." },
-  3: { label: "Corroborated", key: "strict", text: "High/corroborated: require direct documentary support and independent corroboration of the specific act, actor, time and connection. Otherwise leave it unresolved or as a research lead." }
+const $=id=>document.getElementById(id);
+let methods={};
+function setStatus(t){$("status").textContent=t}
+const thresholds={
+  1:{label:"Exploratory",key:"screening",text:"Exploratory: treat indicators as leads, state alternatives and define what would verify or disprove them."},
+  2:{label:"Balanced",key:"balanced",text:"Balanced: require independent indicators, examine counterevidence and consider plausible alternatives; a gap alone is insufficient."},
+  3:{label:"Corroborated",key:"strict",text:"Corroborated: require direct documentary support and independent corroboration of act, actor, timing and link."}
 };
-function setStatus(text) { $("status").textContent = text; }
-function updateThreshold() {
-  const value = thresholdDescriptions[$("threshold").value];
-  $("threshold-value").textContent = value.label;
-  $("threshold-help").textContent = value.text;
-}
-$("threshold").addEventListener("input", updateThreshold);
-$("investigation").addEventListener("change", () => {
-  $("threshold-wrap").classList.toggle("hidden", !$("investigation").checked);
-});
-$("method").addEventListener("change", () => {
-  const method = methods[$("method").value];
-  if (method) $("method-hint").textContent = method.description;
-});
-async function loadManifest() {
-  try {
-    const response = await fetch("/api/manifest", { cache: "no-store" });
-    if (!response.ok) throw new Error("HTTP " + response.status);
-    const data = await response.json();
-    methods = Object.fromEntries((data.methods || []).map(item => [item.id, item]));
-    const sources = data.inventory?.sources || [];
-    $("coverage").innerHTML = [
-      '<span class="pill">' + sources.length + ' discovered hosts</span>',
-      '<span class="pill">All branches by default</span>',
-      '<span class="pill">Socratic method first</span>',
-      '<span class="pill">Full estate index: not yet verified</span>'
-    ].join("");
-    const list = $("host-list");
-    list.replaceChildren();
-    for (const source of sources) {
-      const li = document.createElement("li");
-      const link = document.createElement("a");
-      link.href = source.url;
-      link.target = "_blank";
-      link.rel = "noreferrer";
-      link.textContent = source.host;
-      li.append(link, document.createTextNode(" — " + source.description));
-      list.append(li);
-    }
-    $("method-hint").textContent = methods[$("method").value]?.description || "";
-    setStatus("Source inventory loaded. The live branch list and indexed context are checked when you generate.");
-  } catch {
-    setStatus("Could not load the source manifest. Check the deployed API before relying on a prompt.");
-  }
-}
-async function loadCorpusStatus() {
-  try {
-    const response = await fetch("/api/corpus-status", { cache: "no-store" });
-    const data = await response.json();
-    const corpus = data.corpus || {};
-    const run = data.latestRun;
-    $("metric-docs").textContent = Number(corpus.documents || 0).toLocaleString("en-GB");
-    $("metric-hosts").textContent = Number(corpus.hosts || 0).toLocaleString("en-GB");
-    $("metric-branches").textContent = run ? Number(run.branches || 0).toLocaleString("en-GB") : "—";
-    $("metric-run").textContent = run ? String(run.status || "unknown") : "Not run";
-    if (!run) {
-      $("index-note").textContent = "No corpus index run recorded yet. The generator will only have the connected live excerpts until the indexing workflow runs.";
-    } else {
-      const finished = run.finishedAt ? " · finished " + new Date(run.finishedAt).toLocaleString("en-GB") : "";
-      $("index-note").textContent = Number(run.documents || 0).toLocaleString("en-GB") + " documents and " + Number(run.chunks || 0).toLocaleString("en-GB") + " chunks in latest run" + finished + ". Whole-estate completeness is not guaranteed.";
-    }
-  } catch {
-    $("index-note").textContent = "Corpus status is unavailable. The indexing run should be checked before claiming coverage.";
-  }
-}
-$("generate").addEventListener("click", async () => {
-  const button = $("generate");
-  button.disabled = true;
-  button.textContent = "Generating…";
-  setStatus("Retrieving context, checking branch heads and compiling the work order…");
-  currentPrompt = "";
-  $("copy").disabled = true;
-  $("download").disabled = true;
-  $("coverage-note").textContent = "";
-  try {
-    const threshold = thresholdDescriptions[$("threshold").value];
-    const response = await fetch("/api/generate", {
-      method: "POST",
-      headers: { "content-type": "application/json", "accept": "application/json" },
-      body: JSON.stringify({
-        method: $("method").value,
-        focus: $("focus").value,
-        propertyLaw: $("property-law").checked,
-        investigation: $("investigation").checked,
-        threshold: threshold.key,
-        allBranches: true
-      })
-    });
-    const data = await response.json();
-    if (!response.ok || !data.ok) throw new Error(data.error || "Generation failed (HTTP " + response.status + ").");
-    currentPrompt = data.prompt || "";
-    $("output").value = currentPrompt;
-    $("output").classList.remove("hidden");
-    $("empty").classList.add("hidden");
-    $("copy").disabled = !currentPrompt;
-    $("download").disabled = !currentPrompt;
-    const coverage = data.coverage || {};
-    const run = coverage.corpusRun;
-    $("coverage-note").textContent =
-      "This run: " + (coverage.branchHeadsLive ?? "?") + " live branch heads; " +
-      (coverage.selectedRegisteredHosts ?? "?") + " registered hosts; " +
-      (coverage.retrievedExcerpts ?? 0) + " source excerpts. " +
-      (run ? "Indexed corpus status: " + run.status + " (" + run.documents + " documents, " + run.chunks + " chunks). " : "No completed full corpus index. ") +
-      "Exhaustive whole-estate index: no. Private hosts and PDF bodies are excluded by default.";
-    setStatus("Prompt generated. Check its scope and evidence requirements before giving it to an agent.");
-    await loadCorpusStatus();
-  } catch (error) {
-    setStatus(String(error.message || error));
-  } finally {
-    button.disabled = false;
-    button.textContent = "Generate implementation prompt";
-  }
-});
-$("copy").addEventListener("click", async () => {
-  if (!currentPrompt) return;
-  try {
-    await navigator.clipboard.writeText(currentPrompt);
-    setStatus("Prompt copied to clipboard.");
-  } catch {
-    $("output").focus(); $("output").select();
-    setStatus("Prompt selected. Use your browser's Copy command.");
-  }
-});
-$("download").addEventListener("click", () => {
-  if (!currentPrompt) return;
-  const blob = new Blob([currentPrompt], { type: "text/plain;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "tumbler-agent-prompt.txt";
-  link.click();
-  URL.revokeObjectURL(url);
-});
-updateThreshold();
-loadManifest();
-loadCorpusStatus();
+function updateThreshold(){const x=thresholds[$("threshold").value];$("threshold-value").textContent=x.label;$("threshold-help").textContent=x.text}
+$("threshold").addEventListener("input",updateThreshold);
+$("investigation").addEventListener("change",()=>$("threshold-wrap").classList.toggle("hidden",!$("investigation").checked));
+$("method").addEventListener("change",()=>{const m=methods[$("method").value];if(m)$("method-hint").textContent=m.description});
+function applyTheme(theme){document.documentElement.dataset.theme=theme;localStorage.setItem("tumbler-theme",theme);const light=theme==="light";$("theme-toggle").textContent=light?"Use dark theme":"Use light theme";$("theme-toggle").setAttribute("aria-pressed",String(light))}
+$("theme-toggle").addEventListener("click",()=>applyTheme(document.documentElement.dataset.theme==="light"?"dark":"light"));
+try{applyTheme(localStorage.getItem("tumbler-theme")==="light"?"light":"dark")}catch{document.documentElement.dataset.theme="dark"}
+async function loadManifest(){try{const r=await fetch("/api/manifest",{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status);const d=await r.json();methods=Object.fromEntries((d.methods||[]).map(x=>[x.id,x]));const sources=d.inventory?.sources||[];$("coverage").innerHTML=['<span class="pill">'+sources.length+' discovered hosts</span>','<span class="pill">Every live branch by default</span>','<span class="pill">No free-text input</span>','<span class="pill">Pull requests are drafts</span>'].join("");const list=$("host-list");list.replaceChildren();for(const s of sources){const li=document.createElement("li"),a=document.createElement("a");a.href=s.url;a.target="_blank";a.rel="noreferrer";a.textContent=s.host;li.append(a,document.createTextNode(" — "+s.description));list.append(li)}$("method-hint").textContent=methods[$("method").value]?.description||"";setStatus("Methodologies loaded. The complete live branch snapshot is checked before contribution.")}catch{setStatus("Could not load the method/source registry. Check the deployment before relying on it.")}}
+async function loadCorpusStatus(){try{const r=await fetch("/api/corpus-status",{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status);const d=await r.json(),c=d.corpus||{},run=d.latestRun;$("metric-docs").textContent=Number(c.documents||0).toLocaleString("en-GB");$("metric-hosts").textContent=Number(c.hosts||0).toLocaleString("en-GB");$("metric-branches").textContent=run?Number(run.branches||0).toLocaleString("en-GB"):"—";$("metric-run").textContent=run?String(run.status||"unknown"):"Not run";if(!run){$("index-note").textContent="No corpus index run recorded yet. Refresh the full collection before generating a contribution."}else{const finish=run.finishedAt?" · finished "+new Date(run.finishedAt).toLocaleString("en-GB"):"";$("index-note").textContent=Number(run.documents||0).toLocaleString("en-GB")+" documents / "+Number(run.chunks||0).toLocaleString("en-GB")+" chunks in latest run"+finish+". Branch freshness and branch-tree completeness are checked separately."}}catch{$("index-note").textContent="Corpus status is unavailable. Check the indexing workflow before claiming current coverage."}}
+function showNoChange(d){$("empty").classList.add("hidden");$("pr-result").classList.remove("hidden");$("result-heading").textContent="No pull request created";$("pr-summary").textContent=d.message||"No defensible change was identified.";const link=$("pr-link");link.classList.add("hidden");$("result-method").textContent=d.methodology||$("method").selectedOptions[0].textContent;$("result-base").textContent=d.baseBranch||"No branch changed";$("result-file").textContent=d.sourceFile||"No file changed";$("result-run").textContent=d.coverage?.indexRun||"—";$("result-branches").textContent=d.coverage?.liveBranchHeads??"—"}
+$("generate").addEventListener("click",async()=>{const b=$("generate");b.disabled=true;b.textContent="Assessing and opening PR…";$("pr-result").classList.add("hidden");$("empty").classList.remove("hidden");$("coverage-note").textContent="";setStatus("Verifying the current head of every branch, retrieving methodology-relevant source and preparing a reviewable change…");try{const t=thresholds[$("threshold").value],r=await fetch("/api/contribute",{method:"POST",headers:{"content-type":"application/json","accept":"application/json"},body:JSON.stringify({method:$("method").value,propertyLaw:$("property-law").checked,investigation:$("investigation").checked,threshold:t.key})}),d=await r.json();if(d.noChange){showNoChange(d);setStatus(d.message);return}if(!r.ok||!d.ok){if(d.refreshRequired){setStatus(d.error+" Use “Refresh latest collection”, wait for the full index to finish, then try again.");$("coverage-note").textContent="Latest live branches: "+(d.liveBranchHeads??"?")+"; indexed snapshot branches: "+(d.indexedBranchHeads??"?")+". No pull request was opened."}else setStatus(d.error||"Contribution failed (HTTP "+r.status+").");throw Object.assign(new Error(d.error||"Contribution failed."),{alreadyReported:true})}const p=d.pr||{},q=d.proposal||{},c=d.coverage||{};$("empty").classList.add("hidden");$("pr-result").classList.remove("hidden");$("result-heading").textContent=d.existing?"Matching open pull request found":"Draft pull request created";$("pr-summary").textContent=q.summary||"The proposed methodology-specific change is ready for human review.";const a=$("pr-link");a.href=p.url||"#";a.textContent=(p.title||"Open pull request")+" ↗";a.classList.remove("hidden");$("result-method").textContent=d.methodology||$("method").selectedOptions[0].textContent;$("result-base").textContent=p.base||"—";$("result-file").textContent=q.sourceFile||"—";$("result-run").textContent=c.indexRun||"—";$("result-branches").textContent=c.liveBranchHeads??"—";$("coverage-note").textContent="Corpus snapshot checked against "+(c.liveBranchHeads??"?")+" live branch heads. Indexed "+(c.documents??"?")+" documents / "+(c.chunks??"?")+" chunks. Review the complete diff, check source provenance and verify the acceptance conditions before merging.";setStatus("Pull request ready for review. No source branch was merged or deployed.")}catch(e){if(!e.alreadyReported)setStatus(String(e.message||e))}finally{b.disabled=false;b.textContent="Assess collection and generate pull request";await loadCorpusStatus()}});
+$("refresh-corpus").addEventListener("click",async()=>{const b=$("refresh-corpus");b.disabled=true;b.textContent="Queueing refresh…";setStatus("Requesting a fresh index of every current branch and the registered public source corpus…");try{const r=await fetch("/api/refresh",{method:"POST",headers:{"content-type":"application/json","accept":"application/json"},body:"{}"}),d=await r.json();if(!r.ok||!d.ok)throw Error(d.error||"Could not queue index refresh (HTTP "+r.status+").");setStatus(d.message||"Full index refresh queued.");$("coverage-note").textContent="Index workflow: "+(d.workflowUrl||"https://github.com/unclehowell/datro/actions/workflows/index-tumbler-corpus.yml");await loadCorpusStatus()}catch(e){setStatus(String(e.message||e))}finally{b.disabled=false;b.textContent="Refresh latest collection"}});
+updateThreshold();loadManifest();loadCorpusStatus();
+
 </script>
 </body>
 </html>
