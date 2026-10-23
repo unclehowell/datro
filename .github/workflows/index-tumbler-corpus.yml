@@ -1,0 +1,41 @@
+name: Index Tumbler public corpus
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "43 4 * * 0"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tumbler-corpus-index
+  cancel-in-progress: false
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || '42a4a8d7bfb96321118ada213638d050' }}
+      TUMBLER_D1_DATABASE_ID: 3ca02c2d-bb78-424d-8574-a653d33f5c05
+      TUMBLER_MAX_PAGES_PER_HOST: 350
+      TUMBLER_MAX_TOTAL_WEB_PAGES: 18000
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tumbler
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            scripts
+            static/tumbler
+          sparse-checkout-cone-mode: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate indexer
+        run: node --check scripts/index-tumbler-corpus.mjs
+      - name: Index current Git branches and public written content
+        run: node scripts/index-tumbler-corpus.mjs
