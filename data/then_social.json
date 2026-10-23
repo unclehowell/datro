@@ -451,6 +451,11 @@
    "name": "industrialgwent (website)",
    "kind": "Website",
    "about": "Industrial-history website covering the brickworks and lime works of South Glamorgan."
+  },
+  "london-evening-standard": {
+   "name": "London Evening Standard",
+   "kind": "Newspaper",
+   "about": "London evening paper; with The Tablet, the Scotsman and others, reported the 1900 Bute will."
   }
  },
  "add": [
@@ -1303,6 +1308,33 @@
     ]
    ],
    "key": "Leasehold Bill: Llandough Estate in Penarth"
+  },
+  {
+   "id": "x-1900-10-20-press-butewill",
+   "date": "1900-10-20",
+   "when": "20 October 1900",
+   "actor": "london-evening-standard",
+   "kind": "Press",
+   "text": "Newspapers across Britain reported that the will of the third Marquess of Bute left the Leckwith-with-Llandough estate to his son, Lord Colum Crichton-Stuart.",
+   "hashtags": [
+    "#press",
+    "#eveningstandard",
+    "#1900",
+    "#butewill",
+    "#buteestate",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Legal Wiki: EV-0012, Bute will press reports 1900",
+     "https://greathousefarmwiki.wordpress.com/evidence/ev-0012-bute-will-press-reports-1900/"
+    ],
+    [
+     "Media register MR-0011",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "key": "Bute’s will left Leckwith-with-Llandough to Colum Crichton-Stuart"
   }
  ]
 }
