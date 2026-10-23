@@ -416,6 +416,41 @@
    "name": "Glamorgan Archives",
    "kind": "Archive",
    "about": "The county record office for Glamorgan in Cardiff; holds the Bute estate papers and the parish copy of the Llandough, Cogan and Leckwith tithe apportionment."
+  },
+  "halifax-evening-courier": {
+   "name": "Halifax Evening Courier",
+   "kind": "Newspaper",
+   "about": "Evening paper in Halifax; carried the wire report of the 1994 Llandough burial-ground find."
+  },
+  "dundee-evening-telegraph": {
+   "name": "Dundee Evening Telegraph",
+   "kind": "Newspaper",
+   "about": "Evening paper in Dundee; carried the wire report of the 1994 Llandough burial-ground find."
+  },
+  "evening-herald-dublin": {
+   "name": "Evening Herald (Dublin)",
+   "kind": "Newspaper",
+   "about": "Dublin evening paper; carried the wire report of the 1994 Llandough burial-ground find."
+  },
+  "express-and-star": {
+   "name": "Wolverhampton Express and Star",
+   "kind": "Newspaper",
+   "about": "Evening paper in Wolverhampton; carried the wire report of the 1994 Llandough burial-ground find."
+  },
+  "leicester-mercury": {
+   "name": "Leicester Daily Mercury",
+   "kind": "Newspaper",
+   "about": "Daily paper in Leicester; carried the wire report of the 1994 Llandough burial-ground find."
+  },
+  "south-wales-daily-news": {
+   "name": "South Wales Daily News",
+   "kind": "Newspaper",
+   "about": "Cardiff daily paper (1872–1928); reported Penarth court cases naming Great House Farm."
+  },
+  "industrialgwent": {
+   "name": "industrialgwent (website)",
+   "kind": "Website",
+   "about": "Industrial-history website covering the brickworks and lime works of South Glamorgan."
   }
  },
  "add": [
@@ -551,7 +586,8 @@
      "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
     ]
    ],
-   "key": "Burial ground find sparks Romans or Dark Ages conflict"
+   "key": "Burial ground find sparks Romans or Dark Ages conflict",
+   "text2": "“The Glamorgan-Gwent Archaeological Trust is urging the council to order a halt to work on site. It's believed the remains of up to 300 bodies buried between the 5th and 11th century lie beneath the now-demolished Great House Farm”"
   },
   {
    "id": "x-1994-09-15-press-churchview",
@@ -951,6 +987,322 @@
     ]
    ],
    "key": "Llandough, Cogan and Leckwith tithe apportionment, 1841"
+  },
+  {
+   "id": "x-1994-04-29-press-halifax",
+   "date": "1994-04-29",
+   "when": "29 April 1994",
+   "actor": "halifax-evening-courier",
+   "kind": "Press",
+   "text": "The Halifax Evening Courier carried the wire report of the burial ground found on a luxury housing site near Cardiff, the former Great House Farm at Llandough.",
+   "hashtags": [
+    "#press",
+    "#halifaxeveningcourier",
+    "#1994",
+    "#excavation",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "British Newspaper Archive: Halifax Evening Courier, 29 Apr 1994, p.32",
+     "https://www.britishnewspaperarchive.co.uk/search/results/1994-04-29/1994-04-29?basicsearch=skeletons&exactsearch=false&retrievecountrycounts=false"
+    ],
+    [
+     "Media register MR-0226",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "key": "Experts have dug up 30 skeletons believed to date from the Dark Ages"
+  },
+  {
+   "id": "x-1994-04-30-press-halifax",
+   "date": "1994-04-30",
+   "when": "30 April 1994",
+   "actor": "halifax-evening-courier",
+   "kind": "Press",
+   "text": "The Halifax Evening Courier ran the wire report of the Llandough burial-ground find on its front page.",
+   "hashtags": [
+    "#press",
+    "#halifaxeveningcourier",
+    "#1994",
+    "#excavation",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "British Newspaper Archive: Halifax Evening Courier, 30 Apr 1994, p.1",
+     "https://www.britishnewspaperarchive.co.uk/search/results/1994-04-27/1994-05-10?basicsearch=%2Bskeletons%20%2Bcardiff%20%2Bhousing&exactsearch=false&retrievecountrycounts=false"
+    ],
+    [
+     "Media register MR-0227",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "key": "one of Britain’s most important ancient graveyards has been uncovered on the site of a luxury housing development near Cardiff"
+  },
+  {
+   "id": "x-1994-04-30-press-dundee",
+   "date": "1994-04-30",
+   "when": "30 April 1994",
+   "actor": "dundee-evening-telegraph",
+   "kind": "Press",
+   "text": "The Dundee Evening Telegraph carried the wire report of the burial ground found by men working on a housing development near Cardiff.",
+   "hashtags": [
+    "#press",
+    "#dundeeeveningtelegraph",
+    "#1994",
+    "#excavation",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "British Newspaper Archive: Dundee Evening Telegraph, 30 Apr 1994, p.5",
+     "https://www.britishnewspaperarchive.co.uk/search/results/1994-04-27/1994-05-10?basicsearch=%2Bskeletons%20%2Bcardiff%20%2Bhousing&exactsearch=false&retrievecountrycounts=false"
+    ],
+    [
+     "Media register MR-0228",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "key": "Experts have dug up 30 skeletons believed to date from the Dark Ages"
+  },
+  {
+   "id": "x-1994-04-30-press-dublin",
+   "date": "1994-04-30",
+   "when": "30 April 1994",
+   "actor": "evening-herald-dublin",
+   "kind": "Press",
+   "text": "Dublin’s Evening Herald carried the wire report of the ancient graveyard uncovered on a luxury housing site near Cardiff.",
+   "hashtags": [
+    "#press",
+    "#eveningherald",
+    "#1994",
+    "#excavation",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "British Newspaper Archive: Evening Herald (Dublin), 30 Apr 1994, p.4",
+     "https://www.britishnewspaperarchive.co.uk/search/results/1994-04-27/1994-05-10?basicsearch=%2Bskeletons%20%2Bcardiff%20%2Bhousing&exactsearch=false&retrievecountrycounts=false"
+    ],
+    [
+     "Media register MR-0229",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "key": "Experts have dug up 30 skeletons believed to date from the Dark Ages"
+  },
+  {
+   "id": "x-1994-04-30-press-wolverhampton",
+   "date": "1994-04-30",
+   "when": "30 April 1994",
+   "actor": "express-and-star",
+   "kind": "Press",
+   "text": "The Wolverhampton Express and Star reported 30 Dark Age skeletons found on a building site near Cardiff, with room for the remains of 300 bodies.",
+   "hashtags": [
+    "#press",
+    "#expressandstar",
+    "#1994",
+    "#excavation",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "British Newspaper Archive: Wolverhampton Express and Star, 30 Apr 1994, pp.4–5",
+     "https://www.britishnewspaperarchive.co.uk/search/results/1994-04-29/1994-05-31?basicsearch=%2Bskeletons%20%2Bcardiff%20%2Bdark&exactsearch=false&retrievecountrycounts=false"
+    ],
+    [
+     "Media register MR-0230",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "key": "Skeletons found on building site"
+  },
+  {
+   "id": "x-1994-05-02-press-leicester",
+   "date": "1994-05-02",
+   "when": "2 May 1994",
+   "actor": "leicester-mercury",
+   "kind": "Press",
+   "text": "The Leicester Daily Mercury reported up to 300 Dark Age skeletons on the site of a luxury housing estate to be built at Cardiff.",
+   "hashtags": [
+    "#press",
+    "#leicestermercury",
+    "#1994",
+    "#excavation",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "British Newspaper Archive: Leicester Daily Mercury, 2 May 1994, p.31",
+     "https://www.britishnewspaperarchive.co.uk/search/results/1994-04-27/1994-05-10?basicsearch=%2Bskeletons%20%2Bcardiff%20%2Bhousing&exactsearch=false&retrievecountrycounts=false"
+    ],
+    [
+     "Media register MR-0231",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "key": "Bones find"
+  },
+  {
+   "id": "x-1896-11-26-press-limeworks",
+   "date": "1896-11-26",
+   "when": "26 November 1896",
+   "actor": "industrialgwent",
+   "kind": "Post",
+   "text": "An industrial-history page traces the Llandough lime works and the brickworks next door, and notes the death of their owner J. E. Billups, reported in the South Wales Daily News.",
+   "hashtags": [
+    "#industry",
+    "#industrialgwent",
+    "#1896",
+    "#limeworks",
+    "#llandough"
+   ],
+   "src": [
+    [
+     "Legal Wiki: EV-0292, Llandough lime works and brickworks",
+     "https://greathousefarmwiki.wordpress.com/evidence/ev-0292-llandough-lime-works-and-brickworks-industrial-sequence-secondary-and-billups-obituary-1896/"
+    ],
+    [
+     "Internet Archive copy",
+     "https://web.archive.org/web/20261023165143/https://greathousefarmwiki.wordpress.com/evidence/ev-0292-llandough-lime-works-and-brickworks-industrial-sequence-secondary-and-billups-obituary-1896/"
+    ],
+    [
+     "Media register MR-0008",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "key": "Llandough Lime Works and the brickworks next door"
+  },
+  {
+   "id": "x-1907-04-02-press-airrifle",
+   "date": "1907-04-02",
+   "when": "2 April 1907",
+   "actor": "evening-express",
+   "kind": "Press",
+   "text": "The Evening Express reported an air-rifle meeting held at Great House Farm, Llandough; a 1908 report named the farm in a poaching case.",
+   "hashtags": [
+    "#press",
+    "#eveningexpress",
+    "#1907",
+    "#llandough",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Legal Wiki: EV-0282, Evening Express 1907–1908",
+     "https://greathousefarmwiki.wordpress.com/evidence/ev-0282-evening-express-27-mar-and-2-apr-1907-air-rifle-meeting-at-great-house-farm-llando/"
+    ],
+    [
+     "Media register MR-0014",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "key": "at Great House Farm, Llandough"
+  },
+  {
+   "id": "x-1917-03-01-press-dog",
+   "date": "1917-03-01",
+   "when": "1 March 1917",
+   "actor": "south-wales-daily-news",
+   "kind": "Press",
+   "text": "The South Wales Daily News reported a Penarth court case over a dangerous dog, in which John Williams of Great House Farm gave evidence that it entered his sheepfold.",
+   "hashtags": [
+    "#press",
+    "#southwalesdailynews",
+    "#1917",
+    "#penarthcourt",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "British Newspaper Archive: South Wales Daily News, 1 Mar 1917, p.6",
+     "https://www.britishnewspaperarchive.co.uk/search/results/1850-01-01/1959-12-31?basicsearch=%22great%20house%20farm%22%20llandough&exactsearch=false&retrievecountrycounts=false"
+    ],
+    [
+     "Media register MR-0016",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "key": "LLANDOUGH."
+  },
+  {
+   "id": "x-1925-03-26-press-sheep",
+   "date": "1925-03-26",
+   "when": "26 March 1925",
+   "actor": "western-mail",
+   "kind": "Press",
+   "text": "The Western Mail reported John Williams of Great House Farm, Llandough, on sheep worrying; the paper named the farm again in 1937 and 1939 notices.",
+   "hashtags": [
+    "#press",
+    "#westernmail",
+    "#1925",
+    "#sheep",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Legal Wiki: EV-0285, Western Mail 1925–1939",
+     "https://greathousefarmwiki.wordpress.com/evidence/ev-0285-snippets-only-western-mail-1925-1939-naming-great-house-farm-llandough-john-willia/"
+    ],
+    [
+     "Media register MR-0017",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "key": "Great House Farm, Llandough"
+  },
+  {
+   "id": "x-1939-02-06-press-gun",
+   "date": "1939-02-06",
+   "when": "6 February 1939",
+   "actor": "western-mail",
+   "kind": "Press",
+   "text": "A Western Mail classified notice listed a twelve-bore gun lost from Great House Farm, Llandough.",
+   "hashtags": [
+    "#press",
+    "#westernmail",
+    "#1939",
+    "#classified",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "British Newspaper Archive: Western Mail, 6 Feb 1939, p.2",
+     "https://www.britishnewspaperarchive.co.uk/search/results/1850-01-01/1959-12-31?basicsearch=%22great%20house%20farm%22%20llandough&exactsearch=false&retrievecountrycounts=false"
+    ],
+    [
+     "Media register MR-0020",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "key": "LOST AND FOUND"
+  },
+  {
+   "id": "x-1962-12-07-hansard-llandoughestate",
+   "date": "1962-12-07",
+   "when": "7 December 1962",
+   "actor": "hansard",
+   "kind": "Hansard",
+   "text": "Two Members raised the Llandough Estate in Penarth, with 350 to 400 new houses, in the Commons debate on the Leasehold Bill.",
+   "hashtags": [
+    "#hansard",
+    "#1962",
+    "#llandoughestate",
+    "#penarth",
+    "#parliament"
+   ],
+   "src": [
+    [
+     "Hansard: HC Deb 7 Dec 1962 (search)",
+     "https://hansard-api.parliament.uk/search/contributions/Spoken.json?queryParameters.searchTerm=llandough"
+    ],
+    [
+     "Media register MR-0031",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ],
+   "key": "Leasehold Bill: Llandough Estate in Penarth"
   }
  ]
 }
