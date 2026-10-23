@@ -1,6 +1,6 @@
 {
- "version": "3.2.1",
- "updated": "2026-10-23",
+ "version": "3.3.0",
+ "updated": "2026-10-24",
  "parties": [
   {
    "id": "family",
@@ -1886,7 +1886,7 @@
   ]
  },
  "paths": {
-  "version": "3.2.1",
+  "version": "3.3.0",
   "R": 320,
   "colors": {
    "AB": "#e7c6ff",
@@ -3563,6 +3563,1697 @@
     "cap": "Into the circle comes A + B; out comes A + B as synthetic A3 and B, plus two more simple lines, SA1 and SA2."
    }
   ],
-  "ploys": "Permissive occupancy ploys"
+  "ploys": "Permissive occupancy ploys",
+  "narr": {
+   "v": "3.3.0",
+   "steps": {
+    "tAB": {
+     "segs": [],
+     "en": "In: one farm, Parcels A and B together, on the root title chain.",
+     "cy": "I mewn: un fferm, Parseli A a B gyda'i gilydd, ar gadwyn y teitl gwraidd.",
+     "es": "Entra: una sola finca, las parcelas A y B juntas, en la cadena de títulos de origen."
+    },
+    "r1": {
+     "segs": [
+      "r-1500"
+     ],
+     "en": "1547. It passes from the Herbert family to the Vaughan family.",
+     "cy": "1547. Mae'n mynd o deulu Herbert i deulu Vaughan.",
+     "es": "1547. Pasa de la familia Herbert a la familia Vaughan."
+    },
+    "r2": {
+     "segs": [
+      "r-1800"
+     ],
+     "en": "Early 1800s. It passes to the Bute Estate.",
+     "cy": "Dechrau'r 1800au. Mae'n mynd i Ystâd Bute.",
+     "es": "Principios del siglo XIX. Pasa al Bute Estate."
+    },
+    "r3": {
+     "segs": [
+      "r-1877"
+     ],
+     "en": "1877. The farm splits in two: Parcel A and Parcel B.",
+     "cy": "1877. Mae'r fferm yn hollti'n ddwy: Parsel A a Pharsel B.",
+     "es": "1877. La finca se divide en dos: parcela A y parcela B."
+    },
+    "tA": {
+     "segs": [],
+     "en": "Parcel A.",
+     "cy": "Parsel A.",
+     "es": "Parcela A."
+    },
+    "a1": {
+     "segs": [
+      "a-1877"
+     ],
+     "en": "Parcel A goes to Daniel Thomas & Son.",
+     "cy": "Mae Parsel A yn mynd i Daniel Thomas & Son.",
+     "es": "La parcela A pasa a Daniel Thomas & Son."
+    },
+    "a2": {
+     "segs": [
+      "a-1928"
+     ],
+     "en": "1928. It comes to the Williams family.",
+     "cy": "1928. Mae'n dod i deulu Williams.",
+     "es": "1928. Pasa a la familia Williams."
+    },
+    "a3": {
+     "segs": [
+      "a-1950"
+     ],
+     "en": "June 1950. Mr. Knapp, estate agent, brings Bruce Sutherland to the farmhouse.",
+     "cy": "Mehefin 1950. Mae Mr. Knapp, asiant tai, yn dod â Bruce Sutherland i'r ffermdy.",
+     "es": "Junio de 1950. Mr. Knapp, agente inmobiliario, lleva a Bruce Sutherland a la casa de labranza."
+    },
+    "a4": {
+     "segs": [
+      "a-gone"
+     ],
+     "en": "The family's papers for Parcel A are taken, and never seen again.",
+     "cy": "Mae papurau'r teulu ar gyfer Parsel A yn cael eu cymryd, a does neb yn eu gweld byth eto.",
+     "es": "Se llevan los papeles de la familia relativos a la parcela A y nunca vuelven a aparecer."
+    },
+    "a5": {
+     "segs": [
+      "a-1974"
+     ],
+     "en": "1974. BP move to enforce against the house, then turn back. The family stays.",
+     "cy": "1974. Mae BP yn dechrau cymryd camau gorfodi yn erbyn y tŷ, ond yn tynnu'n ôl. Mae'r teulu'n aros.",
+     "es": "1974. BP inicia la ejecución contra la casa, pero da marcha atrás. La familia se queda."
+    },
+    "tB": {
+     "segs": [],
+     "en": "Parcel B.",
+     "cy": "Parsel B.",
+     "es": "Parcela B."
+    },
+    "b1": {
+     "segs": [
+      "b-1926"
+     ],
+     "en": "1926. What is left of the Bute Estate becomes Mountjoy Limited.",
+     "cy": "1926. Mae gweddill Ystâd Bute yn dod yn Mountjoy Limited.",
+     "es": "1926. Lo que queda del Bute Estate pasa a ser Mountjoy Limited."
+    },
+    "b2": {
+     "segs": [
+      "b-1938"
+     ],
+     "en": "1938. Sold to Western Ground Rents.",
+     "cy": "1938. Mae'n cael ei werthu i Western Ground Rents.",
+     "es": "1938. Se vende a Western Ground Rents."
+    },
+    "b3": {
+     "segs": [
+      "b-1969"
+     ],
+     "en": "1969. Conveyed to BP Pension Trust.",
+     "cy": "1969. Mae'n cael ei drosglwyddo i BP Pension Trust.",
+     "es": "1969. Se transmite a BP Pension Trust."
+    },
+    "b4": {
+     "segs": [
+      "b-1975"
+     ],
+     "en": "1975. On to BP Properties.",
+     "cy": "1975. Ymlaen i BP Properties.",
+     "es": "1975. Pasa a BP Properties."
+    },
+    "b5": {
+     "segs": [
+      "b-1982"
+     ],
+     "en": "1982. BP Properties apply to register it.",
+     "cy": "1982. Mae BP Properties yn gwneud cais i'w gofrestru.",
+     "es": "1982. BP Properties solicita inscribirla en el registro."
+    },
+    "m1": {
+     "segs": [
+      "m-1987"
+     ],
+     "en": "1987. Parcel B and synthetic A3 merge into one title.",
+     "cy": "1987. Mae Parsel B ac A3 synthetig yn uno'n un teitl.",
+     "es": "1987. La parcela B y la A3 sintética se fusionan en un solo título."
+    },
+    "tSA1": {
+     "segs": [],
+     "en": "Synthetic A1, the woodland.",
+     "cy": "A1 synthetig, y coetir.",
+     "es": "A1 sintética, el bosque."
+    },
+    "s1a": {
+     "segs": [
+      "s1-1955"
+     ],
+     "en": "It is born from a permissive occupancy ploy in 1949, then runs through the double ploy of 1955.",
+     "cy": "Mae'n deillio o ystryw meddiannaeth ganiataol yn 1949, yna'n mynd drwy'r ystryw ddwbl yn 1955.",
+     "es": "Nace de una maniobra de ocupación consentida en 1949 y luego pasa por la doble maniobra de 1955."
+    },
+    "s1b": {
+     "segs": [
+      "s1-1961"
+     ],
+     "en": "1961. It reaches Cardiff City Corporation, an official actor outside the circle.",
+     "cy": "1961. Mae'n cyrraedd Corfforaeth Dinas Caerdydd, corff swyddogol y tu allan i'r cylch.",
+     "es": "1961. Llega a Cardiff City Corporation, una entidad oficial fuera del círculo."
+    },
+    "s1c": {
+     "segs": [
+      "s1-1994"
+     ],
+     "en": "Afterwards, in 1994, the Forest of Cardiff.",
+     "cy": "Wedyn, yn 1994, y Forest of Cardiff.",
+     "es": "Después, en 1994, el Forest of Cardiff."
+    },
+    "tSA2": {
+     "segs": [],
+     "en": "Synthetic A2, the village green.",
+     "cy": "A2 synthetig, maes y pentref.",
+     "es": "A2 sintética, el prado comunal del pueblo."
+    },
+    "s2a": {
+     "segs": [
+      "s2-1959"
+     ],
+     "en": "It is born from the double ploy of 1955, then a ploy in 1959.",
+     "cy": "Mae'n deillio o'r ystryw ddwbl yn 1955, ac yna daw ystryw arall yn 1959.",
+     "es": "Nace de la doble maniobra de 1955 y luego pasa por otra maniobra en 1959."
+    },
+    "s2b": {
+     "segs": [
+      "s2-1970"
+     ],
+     "en": "1970. Glamorgan County Council provisionally registers it as a village green.",
+     "cy": "1970. Mae Cyngor Sir Forgannwg yn ei gofrestru dros dro fel maes pentref.",
+     "es": "1970. El Consejo del Condado de Glamorgan la inscribe provisionalmente como prado comunal."
+    },
+    "s2c": {
+     "segs": [
+      "s2-today"
+     ],
+     "en": "Afterwards, Llandough Community Council.",
+     "cy": "Wedyn, Cyngor Cymuned Llandochau.",
+     "es": "Después, el Consejo Comunitario de Llandough."
+    },
+    "tSA3": {
+     "segs": [],
+     "en": "Synthetic A3, the house and yard.",
+     "cy": "A3 synthetig, y tŷ a'r buarth.",
+     "es": "A3 sintética, la casa y el patio."
+    },
+    "s3a": {
+     "segs": [
+      "s3-1962",
+      "s3-1965",
+      "s3-1969"
+     ],
+     "en": "It is born from the double ploy of 1955. More ploys follow: 1962, 1965, 1969.",
+     "cy": "Mae'n deillio o'r ystryw ddwbl yn 1955. Daw rhagor o ystrywiau: 1962, 1965, 1969.",
+     "es": "Nace de la doble maniobra de 1955. Siguen más maniobras: 1962, 1965, 1969."
+    },
+    "s3b": {
+     "segs": [
+      "s3-1969b"
+     ],
+     "en": "1969. It reaches BP Pension Trust, an official actor.",
+     "cy": "1969. Mae'n cyrraedd BP Pension Trust, corff swyddogol.",
+     "es": "1969. Llega a BP Pension Trust, una entidad oficial."
+    },
+    "s3c": {
+     "segs": [
+      "s3-1971",
+      "s3-1974",
+      "s3-1975"
+     ],
+     "en": "Then more ploys: 1971, 1974, 1975.",
+     "cy": "Yna rhagor o ystrywiau: 1971, 1974, 1975.",
+     "es": "Después, más maniobras: 1971, 1974, 1975."
+    },
+    "s3d": {
+     "segs": [
+      "s3-1975b"
+     ],
+     "en": "1975. BP Properties.",
+     "cy": "1975. BP Properties.",
+     "es": "1975. BP Properties."
+    },
+    "s3e": {
+     "segs": [
+      "s3-1983"
+     ],
+     "en": "1983. BP Properties register the house under a new title.",
+     "cy": "1983. Mae BP Properties yn cofrestru'r tŷ dan deitl newydd.",
+     "es": "1983. BP Properties inscribe la casa bajo un título nuevo."
+    },
+    "tSA3B": {
+     "segs": [],
+     "en": "Out: A and B again, but as synthetic A3 and B.",
+     "cy": "Allan: A a B eto, ond fel A3 synthetig a B.",
+     "es": "Salen: A y B de nuevo, pero como A3 sintética y B."
+    },
+    "tALL": {
+     "segs": [],
+     "en": "The whole story, line by line.",
+     "cy": "Y stori gyfan, fesul llinell.",
+     "es": "La historia completa, línea a línea."
+    },
+    "eALL": {
+     "segs": [],
+     "en": "In came A and B. Out go synthetic A3 and B, plus SA1 and SA2.",
+     "cy": "Daeth A a B i mewn. Mae A3 synthetig a B yn mynd allan, ynghyd ag SA1 ac SA2.",
+     "es": "Entraron A y B. Salen la A3 sintética y la B, además de SA1 y SA2."
+    }
+   },
+   "cues": {
+    "AB": {
+     "en": {
+      "d": 17.751,
+      "c": [
+       [
+        "tAB",
+        0.25,
+        5.548
+       ],
+       [
+        "r1",
+        5.948,
+        9.802
+       ],
+       [
+        "r2",
+        10.202,
+        12.885
+       ],
+       [
+        "r3",
+        13.285,
+        17.751
+       ]
+      ]
+     },
+     "cy": {
+      "d": 22.319,
+      "c": [
+       [
+        "tAB",
+        0.25,
+        5.986
+       ],
+       [
+        "r1",
+        6.386,
+        10.976
+       ],
+       [
+        "r2",
+        11.376,
+        15.692
+       ],
+       [
+        "r3",
+        16.092,
+        22.319
+       ]
+      ]
+     },
+     "es": {
+      "d": 23.776,
+      "c": [
+       [
+        "tAB",
+        0.25,
+        7.294
+       ],
+       [
+        "r1",
+        7.694,
+        12.717
+       ],
+       [
+        "r2",
+        13.117,
+        17.286
+       ],
+       [
+        "r3",
+        17.686,
+        23.776
+       ]
+      ]
+     }
+    },
+    "A": {
+     "en": {
+      "d": 34.918,
+      "c": [
+       [
+        "tA",
+        0.25,
+        1.054
+       ],
+       [
+        "r1",
+        1.454,
+        5.308
+       ],
+       [
+        "r2",
+        5.708,
+        8.391
+       ],
+       [
+        "r3",
+        8.791,
+        13.257
+       ],
+       [
+        "a1",
+        13.657,
+        15.678
+       ],
+       [
+        "a2",
+        16.078,
+        18.973
+       ],
+       [
+        "a3",
+        19.373,
+        25.066
+       ],
+       [
+        "a4",
+        25.466,
+        28.887
+       ],
+       [
+        "a5",
+        29.287,
+        34.918
+       ]
+      ]
+     },
+     "cy": {
+      "d": 47.159,
+      "c": [
+       [
+        "tA",
+        0.25,
+        1.207
+       ],
+       [
+        "r1",
+        1.607,
+        6.197
+       ],
+       [
+        "r2",
+        6.597,
+        10.914
+       ],
+       [
+        "r3",
+        11.314,
+        17.54
+       ],
+       [
+        "a1",
+        17.94,
+        21.073
+       ],
+       [
+        "a2",
+        21.473,
+        24.785
+       ],
+       [
+        "a3",
+        25.185,
+        31.907
+       ],
+       [
+        "a4",
+        32.307,
+        38.109
+       ],
+       [
+        "a5",
+        38.509,
+        47.159
+       ]
+      ]
+     },
+     "es": {
+      "d": 49.157,
+      "c": [
+       [
+        "tA",
+        0.25,
+        1.041
+       ],
+       [
+        "r1",
+        1.441,
+        6.464
+       ],
+       [
+        "r2",
+        6.864,
+        11.033
+       ],
+       [
+        "r3",
+        11.433,
+        17.523
+       ],
+       [
+        "a1",
+        17.923,
+        20.358
+       ],
+       [
+        "a2",
+        20.758,
+        24.788
+       ],
+       [
+        "a3",
+        25.188,
+        34.211
+       ],
+       [
+        "a4",
+        34.611,
+        40.435
+       ],
+       [
+        "a5",
+        40.835,
+        49.157
+       ]
+      ]
+     }
+    },
+    "B": {
+     "en": {
+      "d": 35.724,
+      "c": [
+       [
+        "tB",
+        0.25,
+        1.074
+       ],
+       [
+        "r1",
+        1.474,
+        5.328
+       ],
+       [
+        "r2",
+        5.728,
+        8.411
+       ],
+       [
+        "r3",
+        8.811,
+        13.277
+       ],
+       [
+        "b1",
+        13.677,
+        18.176
+       ],
+       [
+        "b2",
+        18.576,
+        21.382
+       ],
+       [
+        "b3",
+        21.782,
+        24.652
+       ],
+       [
+        "b4",
+        25.052,
+        27.616
+       ],
+       [
+        "b5",
+        28.016,
+        30.911
+       ],
+       [
+        "m1",
+        31.311,
+        35.724
+       ]
+      ]
+     },
+     "cy": {
+      "d": 49.386,
+      "c": [
+       [
+        "tB",
+        0.25,
+        1.213
+       ],
+       [
+        "r1",
+        1.613,
+        6.204
+       ],
+       [
+        "r2",
+        6.604,
+        10.92
+       ],
+       [
+        "r3",
+        11.32,
+        17.547
+       ],
+       [
+        "b1",
+        17.947,
+        23.19
+       ],
+       [
+        "b2",
+        23.59,
+        27.999
+       ],
+       [
+        "b3",
+        28.399,
+        33.177
+       ],
+       [
+        "b4",
+        33.577,
+        37.452
+       ],
+       [
+        "b5",
+        37.852,
+        42.712
+       ],
+       [
+        "m1",
+        43.112,
+        49.386
+       ]
+      ]
+     },
+     "es": {
+      "d": 49.919,
+      "c": [
+       [
+        "tB",
+        0.25,
+        1.008
+       ],
+       [
+        "r1",
+        1.408,
+        6.431
+       ],
+       [
+        "r2",
+        6.831,
+        11.0
+       ],
+       [
+        "r3",
+        11.4,
+        17.49
+       ],
+       [
+        "b1",
+        17.89,
+        23.987
+       ],
+       [
+        "b2",
+        24.387,
+        27.971
+       ],
+       [
+        "b3",
+        28.371,
+        31.992
+       ],
+       [
+        "b4",
+        32.392,
+        36.238
+       ],
+       [
+        "b5",
+        36.638,
+        42.32
+       ],
+       [
+        "m1",
+        42.72,
+        49.919
+       ]
+      ]
+     }
+    },
+    "SA1": {
+     "en": {
+      "d": 19.001,
+      "c": [
+       [
+        "tSA1",
+        0.25,
+        1.982
+       ],
+       [
+        "s1a",
+        2.382,
+        9.726
+       ],
+       [
+        "s1b",
+        10.126,
+        15.481
+       ],
+       [
+        "s1c",
+        15.881,
+        19.001
+       ]
+      ]
+     },
+     "cy": {
+      "d": 22.254,
+      "c": [
+       [
+        "tSA1",
+        0.25,
+        2.469
+       ],
+       [
+        "s1a",
+        2.869,
+        11.224
+       ],
+       [
+        "s1b",
+        11.624,
+        18.186
+       ],
+       [
+        "s1c",
+        18.586,
+        22.254
+       ]
+      ]
+     },
+     "es": {
+      "d": 24.714,
+      "c": [
+       [
+        "tSA1",
+        0.25,
+        1.701
+       ],
+       [
+        "s1a",
+        2.101,
+        12.063
+       ],
+       [
+        "s1b",
+        12.463,
+        20.028
+       ],
+       [
+        "s1c",
+        20.428,
+        24.714
+       ]
+      ]
+     }
+    },
+    "SA2": {
+     "en": {
+      "d": 14.771,
+      "c": [
+       [
+        "tSA2",
+        0.25,
+        2.2
+       ],
+       [
+        "s2a",
+        2.6,
+        7.223
+       ],
+       [
+        "s2b",
+        7.623,
+        12.43
+       ],
+       [
+        "s2c",
+        12.83,
+        14.771
+       ]
+      ]
+     },
+     "cy": {
+      "d": 20.169,
+      "c": [
+       [
+        "tSA2",
+        0.25,
+        2.895
+       ],
+       [
+        "s2a",
+        3.295,
+        10.573
+       ],
+       [
+        "s2b",
+        10.973,
+        17.358
+       ],
+       [
+        "s2c",
+        17.758,
+        20.169
+       ]
+      ]
+     },
+     "es": {
+      "d": 23.995,
+      "c": [
+       [
+        "tSA2",
+        0.25,
+        3.449
+       ],
+       [
+        "s2a",
+        3.849,
+        11.299
+       ],
+       [
+        "s2b",
+        11.699,
+        20.04
+       ],
+       [
+        "s2c",
+        20.44,
+        23.995
+       ]
+      ]
+     }
+    },
+    "SA3": {
+     "en": {
+      "d": 31.191,
+      "c": [
+       [
+        "tSA3",
+        0.25,
+        2.63
+       ],
+       [
+        "s3a",
+        3.03,
+        10.803
+       ],
+       [
+        "s3b",
+        11.203,
+        15.314
+       ],
+       [
+        "s3c",
+        15.714,
+        19.57
+       ],
+       [
+        "s3d",
+        19.97,
+        21.915
+       ],
+       [
+        "s3e",
+        22.315,
+        26.379
+       ],
+       [
+        "m1",
+        26.779,
+        31.191
+       ]
+      ]
+     },
+     "cy": {
+      "d": 42.919,
+      "c": [
+       [
+        "tSA3",
+        0.25,
+        2.978
+       ],
+       [
+        "s3a",
+        3.378,
+        13.951
+       ],
+       [
+        "s3b",
+        14.351,
+        19.801
+       ],
+       [
+        "s3c",
+        20.201,
+        26.317
+       ],
+       [
+        "s3d",
+        26.717,
+        30.374
+       ],
+       [
+        "s3e",
+        30.774,
+        36.245
+       ],
+       [
+        "m1",
+        36.645,
+        42.919
+       ]
+      ]
+     },
+     "es": {
+      "d": 46.398,
+      "c": [
+       [
+        "tSA3",
+        0.25,
+        2.702
+       ],
+       [
+        "s3a",
+        3.102,
+        15.506
+       ],
+       [
+        "s3b",
+        15.906,
+        21.401
+       ],
+       [
+        "s3c",
+        21.801,
+        29.958
+       ],
+       [
+        "s3d",
+        30.358,
+        32.517
+       ],
+       [
+        "s3e",
+        32.917,
+        38.8
+       ],
+       [
+        "m1",
+        39.2,
+        46.398
+       ]
+      ]
+     }
+    },
+    "SA3B": {
+     "en": {
+      "d": 61.5,
+      "c": [
+       [
+        "tSA3B",
+        0.25,
+        3.102
+       ],
+       [
+        "r1",
+        3.502,
+        7.356
+       ],
+       [
+        "r2",
+        7.756,
+        10.439
+       ],
+       [
+        "r3",
+        10.839,
+        15.305
+       ],
+       [
+        "b1",
+        15.705,
+        20.204
+       ],
+       [
+        "b2",
+        20.604,
+        23.41
+       ],
+       [
+        "b3",
+        23.81,
+        26.68
+       ],
+       [
+        "b4",
+        27.08,
+        29.644
+       ],
+       [
+        "b5",
+        30.044,
+        32.939
+       ],
+       [
+        "s3a",
+        33.339,
+        41.112
+       ],
+       [
+        "s3b",
+        41.512,
+        45.623
+       ],
+       [
+        "s3c",
+        46.023,
+        49.879
+       ],
+       [
+        "s3d",
+        50.279,
+        52.224
+       ],
+       [
+        "s3e",
+        52.624,
+        56.688
+       ],
+       [
+        "m1",
+        57.088,
+        61.5
+       ]
+      ]
+     },
+     "cy": {
+      "d": 86.195,
+      "c": [
+       [
+        "tSA3B",
+        0.25,
+        4.755
+       ],
+       [
+        "r1",
+        5.155,
+        9.745
+       ],
+       [
+        "r2",
+        10.145,
+        14.462
+       ],
+       [
+        "r3",
+        14.862,
+        21.089
+       ],
+       [
+        "b1",
+        21.489,
+        26.731
+       ],
+       [
+        "b2",
+        27.131,
+        31.54
+       ],
+       [
+        "b3",
+        31.94,
+        36.719
+       ],
+       [
+        "b4",
+        37.119,
+        40.994
+       ],
+       [
+        "b5",
+        41.394,
+        46.254
+       ],
+       [
+        "s3a",
+        46.654,
+        57.226
+       ],
+       [
+        "s3b",
+        57.626,
+        63.076
+       ],
+       [
+        "s3c",
+        63.476,
+        69.592
+       ],
+       [
+        "s3d",
+        69.992,
+        73.649
+       ],
+       [
+        "s3e",
+        74.049,
+        79.521
+       ],
+       [
+        "m1",
+        79.921,
+        86.195
+       ]
+      ]
+     },
+     "es": {
+      "d": 89.161,
+      "c": [
+       [
+        "tSA3B",
+        0.25,
+        4.153
+       ],
+       [
+        "r1",
+        4.553,
+        9.576
+       ],
+       [
+        "r2",
+        9.976,
+        14.145
+       ],
+       [
+        "r3",
+        14.545,
+        20.634
+       ],
+       [
+        "b1",
+        21.034,
+        27.131
+       ],
+       [
+        "b2",
+        27.531,
+        31.116
+       ],
+       [
+        "b3",
+        31.516,
+        35.136
+       ],
+       [
+        "b4",
+        35.536,
+        39.383
+       ],
+       [
+        "b5",
+        39.783,
+        45.465
+       ],
+       [
+        "s3a",
+        45.865,
+        58.269
+       ],
+       [
+        "s3b",
+        58.669,
+        64.164
+       ],
+       [
+        "s3c",
+        64.564,
+        72.721
+       ],
+       [
+        "s3d",
+        73.121,
+        75.28
+       ],
+       [
+        "s3e",
+        75.68,
+        81.563
+       ],
+       [
+        "m1",
+        81.963,
+        89.161
+       ]
+      ]
+     }
+    },
+    "ALL": {
+     "en": {
+      "d": 133.548,
+      "c": [
+       [
+        "tALL",
+        0.25,
+        2.36
+       ],
+       [
+        "tAB",
+        2.76,
+        8.058
+       ],
+       [
+        "r1",
+        8.458,
+        12.312
+       ],
+       [
+        "r2",
+        12.712,
+        15.395
+       ],
+       [
+        "r3",
+        15.795,
+        20.261
+       ],
+       [
+        "tA",
+        20.661,
+        21.465
+       ],
+       [
+        "a1",
+        21.865,
+        23.886
+       ],
+       [
+        "a2",
+        24.286,
+        27.181
+       ],
+       [
+        "a3",
+        27.581,
+        33.274
+       ],
+       [
+        "a4",
+        33.674,
+        37.095
+       ],
+       [
+        "a5",
+        37.495,
+        43.126
+       ],
+       [
+        "tB",
+        43.526,
+        44.349
+       ],
+       [
+        "b1",
+        44.749,
+        49.248
+       ],
+       [
+        "b2",
+        49.648,
+        52.455
+       ],
+       [
+        "b3",
+        52.855,
+        55.724
+       ],
+       [
+        "b4",
+        56.124,
+        58.689
+       ],
+       [
+        "b5",
+        59.089,
+        61.984
+       ],
+       [
+        "tSA1",
+        62.384,
+        64.116
+       ],
+       [
+        "s1a",
+        64.516,
+        71.86
+       ],
+       [
+        "s1b",
+        72.26,
+        77.615
+       ],
+       [
+        "s1c",
+        78.015,
+        81.135
+       ],
+       [
+        "tSA2",
+        81.535,
+        83.486
+       ],
+       [
+        "s2a",
+        83.886,
+        88.508
+       ],
+       [
+        "s2b",
+        88.908,
+        93.715
+       ],
+       [
+        "s2c",
+        94.115,
+        96.056
+       ],
+       [
+        "tSA3",
+        96.456,
+        98.836
+       ],
+       [
+        "s3a",
+        99.236,
+        107.009
+       ],
+       [
+        "s3b",
+        107.409,
+        111.52
+       ],
+       [
+        "s3c",
+        111.92,
+        115.776
+       ],
+       [
+        "s3d",
+        116.176,
+        118.121
+       ],
+       [
+        "s3e",
+        118.521,
+        122.585
+       ],
+       [
+        "m1",
+        122.985,
+        127.397
+       ],
+       [
+        "eALL",
+        127.797,
+        133.548
+       ]
+      ]
+     },
+     "cy": {
+      "d": 177.152,
+      "c": [
+       [
+        "tALL",
+        0.25,
+        2.773
+       ],
+       [
+        "tAB",
+        3.173,
+        8.909
+       ],
+       [
+        "r1",
+        9.309,
+        13.899
+       ],
+       [
+        "r2",
+        14.299,
+        18.616
+       ],
+       [
+        "r3",
+        19.016,
+        25.242
+       ],
+       [
+        "tA",
+        25.642,
+        26.599
+       ],
+       [
+        "a1",
+        26.999,
+        30.132
+       ],
+       [
+        "a2",
+        30.532,
+        33.844
+       ],
+       [
+        "a3",
+        34.244,
+        40.966
+       ],
+       [
+        "a4",
+        41.366,
+        47.168
+       ],
+       [
+        "a5",
+        47.568,
+        56.218
+       ],
+       [
+        "tB",
+        56.618,
+        57.581
+       ],
+       [
+        "b1",
+        57.981,
+        63.224
+       ],
+       [
+        "b2",
+        63.624,
+        68.033
+       ],
+       [
+        "b3",
+        68.433,
+        73.212
+       ],
+       [
+        "b4",
+        73.612,
+        77.486
+       ],
+       [
+        "b5",
+        77.886,
+        82.747
+       ],
+       [
+        "tSA1",
+        83.147,
+        85.365
+       ],
+       [
+        "s1a",
+        85.765,
+        94.12
+       ],
+       [
+        "s1b",
+        94.52,
+        101.082
+       ],
+       [
+        "s1c",
+        101.482,
+        105.15
+       ],
+       [
+        "tSA2",
+        105.55,
+        108.196
+       ],
+       [
+        "s2a",
+        108.596,
+        115.874
+       ],
+       [
+        "s2b",
+        116.274,
+        122.658
+       ],
+       [
+        "s2c",
+        123.058,
+        125.469
+       ],
+       [
+        "tSA3",
+        125.869,
+        128.597
+       ],
+       [
+        "s3a",
+        128.997,
+        139.57
+       ],
+       [
+        "s3b",
+        139.97,
+        145.42
+       ],
+       [
+        "s3c",
+        145.82,
+        151.936
+       ],
+       [
+        "s3d",
+        152.336,
+        155.993
+       ],
+       [
+        "s3e",
+        156.393,
+        161.864
+       ],
+       [
+        "m1",
+        162.264,
+        168.538
+       ],
+       [
+        "eALL",
+        168.938,
+        177.152
+       ]
+      ]
+     },
+     "es": {
+      "d": 192.417,
+      "c": [
+       [
+        "tALL",
+        0.25,
+        2.522
+       ],
+       [
+        "tAB",
+        2.922,
+        9.966
+       ],
+       [
+        "r1",
+        10.366,
+        15.389
+       ],
+       [
+        "r2",
+        15.789,
+        19.958
+       ],
+       [
+        "r3",
+        20.358,
+        26.448
+       ],
+       [
+        "tA",
+        26.848,
+        27.639
+       ],
+       [
+        "a1",
+        28.039,
+        30.474
+       ],
+       [
+        "a2",
+        30.874,
+        34.904
+       ],
+       [
+        "a3",
+        35.304,
+        44.328
+       ],
+       [
+        "a4",
+        44.728,
+        50.551
+       ],
+       [
+        "a5",
+        50.951,
+        59.273
+       ],
+       [
+        "tB",
+        59.673,
+        60.431
+       ],
+       [
+        "b1",
+        60.831,
+        66.928
+       ],
+       [
+        "b2",
+        67.328,
+        70.912
+       ],
+       [
+        "b3",
+        71.312,
+        74.933
+       ],
+       [
+        "b4",
+        75.333,
+        79.179
+       ],
+       [
+        "b5",
+        79.579,
+        85.262
+       ],
+       [
+        "tSA1",
+        85.662,
+        87.112
+       ],
+       [
+        "s1a",
+        87.512,
+        97.475
+       ],
+       [
+        "s1b",
+        97.875,
+        105.44
+       ],
+       [
+        "s1c",
+        105.84,
+        110.125
+       ],
+       [
+        "tSA2",
+        110.525,
+        113.724
+       ],
+       [
+        "s2a",
+        114.124,
+        121.574
+       ],
+       [
+        "s2b",
+        121.974,
+        130.315
+       ],
+       [
+        "s2c",
+        130.715,
+        134.27
+       ],
+       [
+        "tSA3",
+        134.67,
+        137.122
+       ],
+       [
+        "s3a",
+        137.522,
+        149.926
+       ],
+       [
+        "s3b",
+        150.326,
+        155.821
+       ],
+       [
+        "s3c",
+        156.221,
+        164.378
+       ],
+       [
+        "s3d",
+        164.778,
+        166.937
+       ],
+       [
+        "s3e",
+        167.337,
+        173.219
+       ],
+       [
+        "m1",
+        173.619,
+        180.818
+       ],
+       [
+        "eALL",
+        181.218,
+        192.417
+       ]
+      ]
+     }
+    }
+   }
+  }
  }
 }

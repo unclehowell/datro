@@ -23,7 +23,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-off
 .stage{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:10px}
 #ring{display:block;width:100%;height:auto;aspect-ratio:1040/880;touch-action:pan-y pinch-zoom;user-select:none;-webkit-user-select:none}
 .replay{position:absolute;right:8px;bottom:8px;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#151229e6;color:var(--ink);font-size:20px;cursor:pointer}
-.cap{font-size:15px;margin:10px 2px 6px}
+.cap{font-size:15px;line-height:1.4;margin:8px 2px 8px;min-height:2.8em;text-align:center;font-weight:600}
+.snd{position:absolute;left:8px;bottom:8px;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#151229e6;color:var(--ink);font-size:19px;cursor:pointer}
 .steps{list-style:none;margin:0;padding:0}
 .steps li button{display:grid;grid-template-columns:8px 64px 1fr;gap:10px;align-items:center;width:100%;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:0 0 6px;color:var(--ink);font:inherit;font-size:15px;cursor:pointer}
 .steps .bar{width:8px;height:28px;border-radius:4px}
@@ -68,14 +69,15 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:14px}
 </head>
 <body>
 <div class="wrap">
-<p class="intro">Tŷ Mawr, Llandough. Into the circle comes one farm, A + B, on the root title chain. Out comes A + B again, but as synthetic A3 and B, plus two more simple lines, SA1 and SA2, each born from a permissive occupancy ploy 💩. Pick a line to watch it grow; tap anything for its record.</p>
+<p class="intro">Tŷ Mawr, Llandough. Into the circle comes one farm, A + B, on the root title chain. Out comes A + B again, but as synthetic A3 and B, plus two more simple lines, SA1 and SA2, each born from a permissive occupancy ploy 💩. Pick a line to watch it grow and hear it told; tap anything for its record.</p>
 <div class="chips" id="chips" role="group" aria-label="Show a line"></div>
 <main>
 <div class="stage" data-ghf-keep>
 <svg id="ring" viewBox="-520 -440 1040 880" role="img" aria-label="Circle diagram: title holders and official actors on the ring, permissive occupancy ploys inside it, and the path of each parcel"></svg>
 <button class="replay" id="replay" aria-label="Play the line again">↻</button>
+<button class="snd" id="snd" aria-pressed="true" aria-label="Narration on">🔊</button>
 </div>
-<p class="cap" id="cap" aria-live="polite"></p>
+<p class="cap" id="cap" aria-live="polite" translate="no" data-no-translate></p>
 <ol class="steps" id="steps" aria-label="Steps of the selected line"></ol>
 <section class="legend" data-ghf-keep aria-label="Key">
 <h2>Key</h2>
@@ -86,7 +88,7 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:14px}
 <div class="lrow"><span class="ic" style="color:#b9b4d6">◯</span><span>On the ring: title holders and official actors. Inside it: no title</span></div>
 <div class="lrow"><span class="ic"><svg width="40" height="10" aria-hidden="true"><line x1="2" y1="5" x2="38" y2="5" stroke="#e7c6ff" stroke-width="4" stroke-dasharray="6 5"/></svg></span><span>Dashed: the deed or record is not held</span></div>
 <div class="lrow"><span class="ic" style="font-weight:800;font-size:14px">1938</span><span>Each year sits where the line arrives</span></div>
-<p class="ver">v3.2.1 · 23 Oct 2026</p>
+<p class="ver">v3.3.0 · 24 Oct 2026</p>
 </section>
 </main>
 <footer data-ghf-keep>© the Williams-Buckler family of Tŷ Mawr · <a href="https://bucklerfamily.estate/licence/">Licence</a></footer>
@@ -163,46 +165,80 @@ function ringLab(g,id,x,y,rr){const n=N[id],a=n.ang*Math.PI/180,lx=rr*Math.sin(a
  if(Math.abs(sx)>0.38)anchor=sx>0?'start':'end';
  if(anchor==='middle')y0=cy>0?ly-(k-1)*lh-4:ly+fs*0.7;else y0=ly-(k-1)*lh/2+fs*0.35;
  y0+=(n.ldy||0);n.lab.forEach((t,i)=>el('text',{x:f(lx+(n.ldx||0)),y:f(y0+i*lh),class:'nlab','font-size':fs,'text-anchor':anchor},g).textContent=t)}
-// ---- filter + snake animation
-let cur='ALL',raf=0;const chips=$('#chips');
+// ---- filter + snake animation (v3.3: each step is drawn while its narration line plays)
+let cur='ALL',raf=0,run=null;const chips=$('#chips');const NR=V.narr;
+const LSg=k=>{try{return localStorage.getItem(k)}catch(e){return null}},LSs=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+const PROMPT={en:'▶ Tap a line to watch it drawn and hear it told.',cy:'▶ Tapiwch linell i’w gwylio’n tyfu a’i chlywed.',es:'▶ Toca una línea para verla crecer y escucharla.'};
+function LG(){let l=null;try{l=window.GHFLang&&window.GHFLang.get&&window.GHFLang.get()}catch(e){}l=(l||document.documentElement.getAttribute('lang')||'en').slice(0,2).toLowerCase();return l==='cy'||l==='es'?l:'en'}
+let muted=LSg('ig-mute')==='1';const au=new Audio();au.preload='auto';au.setAttribute('playsinline','');
+const sndB=$('#snd'),capE=$('#cap');
+function paintSnd(){sndB.textContent=muted?'🔇':'🔊';sndB.setAttribute('aria-pressed',String(!muted));sndB.setAttribute('aria-label',muted?'Narration off':'Narration on')}
+function setCap(t,lang){if(capE.textContent!==t)capE.textContent=t;capE.setAttribute('lang',lang==='en'?'en-GB':lang)}
+au.addEventListener('playing',()=>{if(run)run.waiting=false});
+au.addEventListener('error',()=>{if(run){run.audioOn=false;run.waiting=false}});
 V.filters.forEach(F=>{const b=document.createElement('button');b.className='chip';b.dataset.k=F.k;b.setAttribute('aria-pressed','false');
  const cols=[...new Set(F.tracks.flatMap(t=>t.s.map(id=>S[id].g)))].filter(g=>g!=='AB'||F.k==='AB').slice(0,3);
- b.innerHTML=(F.k==='ALL'?'':cols.map(c=>`<i style="background:${C[c]}"></i>`).join(''))+esc(F.lab);b.onclick=()=>select(F.k,true);chips.appendChild(b)});
-function plan(F){const sp=RM.matches?1e9:Math.max(260,Math.min(520,F.tracks.reduce((m,t)=>Math.max(m,t.s.reduce((a,id)=>a+G.segs[id].L,0)),0)/5.2));
+ b.innerHTML=(F.k==='ALL'?'':cols.map(c=>`<i style="background:${C[c]}"></i>`).join(''))+esc(F.lab);b.onclick=()=>select(F.k,true,true);chips.appendChild(b)});
+// silent first draw (no tap yet): the tracks grow side by side, about 2.75x slower than v3.2
+function plan(F){const sp=RM.matches?1e9:Math.max(95,Math.min(190,F.tracks.reduce((m,t)=>Math.max(m,t.s.reduce((a,id)=>a+G.segs[id].L,0)),0)/14.3));
  const st={},en={};let order=[...F.tracks];
- // tracks that wait for a segment run after it
  for(let pass=0;pass<3;pass++)order.forEach(t=>{let tt=t.after?(en[t.after]??Infinity):0;if(!isFinite(tt))return;
-  t.s.forEach(id=>{const d=Math.max(260,G.segs[id].L/sp*1000);if(st[id]===undefined||tt>st[id])st[id]=tt;tt=st[id]+d;en[id]=tt})});
- return {st,en,sp}}
-function select(k,user){cur=k;const F=V.filters.find(x=>x.k===k);
+  t.s.forEach(id=>{const d=Math.max(700,G.segs[id].L/sp*1000);if(st[id]===undefined||tt>st[id])st[id]=tt;tt=st[id]+d;en[id]=tt})});
+ return {st,en}}
+// narrated draw: one step at a time; each step's lines grow over the length of its spoken line
+function nplan(k,lang){const Q=NR.cues[k][lang],st={},en={};
+ Q.c.forEach(([key,c0,c1])=>{const segs=NR.steps[key].segs;if(!segs.length)return;
+  const a=(c0+0.08)*1000,b=Math.max(a+600*segs.length,(c1-0.05)*1000),tot=segs.reduce((s,id)=>s+G.segs[id].L,0);let t=a;
+  segs.forEach(id=>{const d=(b-a)*G.segs[id].L/tot;st[id]=RM.matches?0:t;en[id]=RM.matches?1:t+d;t+=d})});
+ return {st,en,Q}}
+function clock(){if(!run)return 0;const p=performance.now();
+ if(run.audioOn){if(!au.paused&&au.currentTime>0&&!run.waiting){run.t0=p-au.currentTime*1000;return au.currentTime*1000}
+  if(run.waiting&&p-run.req<4000){run.t0=p-run.hold;return run.hold}
+  if(run.waiting){run.waiting=false;run.audioOn=false}}
+ return p-run.t0}
+function startAudio(at){const src=`audio/${run.lang}/${run.k}.mp3?v=3.3.0`;
+ if(!au.src||!au.src.endsWith(src.replace(/^audio/,'/audio')))au.src=src;
+ try{au.currentTime=at/1000}catch(e){}run.audioOn=true;run.waiting=true;run.req=performance.now();run.hold=at;
+ const p=au.play();if(p&&p.catch)p.catch(()=>{if(run){run.audioOn=false;run.waiting=false}})}
+function select(k,user,narr){cur=k;const F=V.filters.find(x=>x.k===k),lang=LG();
  chips.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.k===k)));
- $('#cap').textContent=F.cap;
- const ids=[...new Set(F.tracks.flatMap(t=>t.s))];const on=new Set(ids);
+ const ids=[...new Set(F.tracks.flatMap(t=>t.s))];
  if(user){const u=new URL(location);if(k==='ALL')u.searchParams.delete('p');else u.searchParams.set('p',k);history.replaceState(null,'',u)}
  Object.entries(G.segs).forEach(([id,o])=>{o.g.classList.toggle('on',false);o.mp.setAttribute('stroke-dashoffset',o.L);G.hits[id].classList.toggle('on',false)});
  Object.values(G.pills).forEach(p=>p.classList.add('off'));
- // nodes on this path: when its first line arrives (or at the start), it lights
- const touch={};const {st,en}=plan(F);
+ au.pause();const P=narr?nplan(k,lang):plan(F),{st,en}=P;
+ run={k,lang,narr:!!narr,t0:performance.now(),audioOn:false,waiting:false,done:false,ci:-1,Q:P.Q};
+ if(narr&&!muted)startAudio(0);
+ setCap(narr?'':PROMPT[lang],lang);
+ const touch={};
  ids.forEach(id=>{const s=S[id];if(touch[s.fr]===undefined||st[id]<touch[s.fr])touch[s.fr]=st[id];{const t=S[id].near?st[id]:en[id];if(touch[s.to]===undefined||t<touch[s.to])touch[s.to]=t}});
- if(F.start)touch[F.start]=0;
+ if(F.start&&!narr)touch[F.start]=0;
  Object.entries(G.nodes).forEach(([id,g])=>{const k2=N[id].kind,inside=!['ring','out'].includes(k2);g.classList.remove('dim','off');
-  if(touch[id]===undefined){g.classList.add(inside?'off':'dim')}else if(touch[id]>0){g.classList.add(inside?'off':'dim')}});
+  if(touch[id]===undefined||touch[id]>0)g.classList.add(inside?'off':'dim')});
  renderSteps(F,ids,st);
- cancelAnimationFrame(raf);const t0=performance.now();const done=new Set();
- const tick=now=>{const t=RM.matches?1e12:now-t0;let live=false;
-  ids.forEach(id=>{const o=G.segs[id],s0=st[id],d=en[id]-s0;let p=(t-s0)/d;if(p<0){live=true;return}if(p>1)p=1;else live=true;
+ cancelAnimationFrame(raf);const done=new Set(),me=run;
+ const tick=()=>{if(run!==me)return;const t=clock();let live=false;
+  ids.forEach(id=>{const o=G.segs[id],s0=st[id],d=Math.max(1,en[id]-s0);let p=RM.matches?2:(t-s0)/d;if(p<0){live=true;return}if(p>1)p=1;else live=true;
    o.g.classList.add('on');o.mp.setAttribute('stroke-dashoffset',f(o.L*(1-p)));
    if(p>=1&&!done.has(id)){done.add(id);G.hits[id].classList.add('on');if(G.pills[id])G.pills[id].classList.remove('off')}});
-  Object.entries(touch).forEach(([nid,tt])=>{if(t>=tt)G.nodes[nid].classList.remove('dim','off')});
-  if(live)raf=requestAnimationFrame(tick)};
+  Object.entries(touch).forEach(([nid,tt])=>{if(t>=tt||RM.matches)G.nodes[nid].classList.remove('dim','off')});
+  if(me.narr){const c=me.Q.c;let i=me.ci;while(i+1<c.length&&t>=c[i+1][1]*1000)i++;
+   if(i!==me.ci&&i>=0){me.ci=i;setCap(NR.steps[c[i][0]][me.lang],me.lang)}
+   if(t<me.Q.d*1000+300)live=true;else me.done=true}
+  if(live)raf=requestAnimationFrame(tick);else me.done=true};
  raf=requestAnimationFrame(tick)}
+sndB.onclick=()=>{muted=!muted;LSs('ig-mute',muted?'1':'0');paintSnd();
+ if(muted){au.pause();if(run)run.audioOn=false;return}
+ if(run&&run.narr&&!run.done){startAudio(clock())}else select(cur,false,true)};
+paintSnd();
+document.addEventListener('ghf-lang-change',()=>{if(run&&run.narr&&!run.done)select(cur,false,true);else if(run&&!run.narr)setCap(PROMPT[LG()],LG())});
 function nm(id){const n=N[id];return n.kind==='ring'||n.kind==='out'?n.lab.join(' '):n.kind==='poo'?n.icon+' '+n.cap:n.kind==='named'?'🦹 '+n.under.join(' '):n.kind==='split'?'1877 split':'papers gone'}
 function renderSteps(F,ids,st){const ol=$('#steps');ol.textContent='';
  ids.forEach(id=>{const s=S[id],li=document.createElement('li'),b=document.createElement('button');
   const y=s.lab||(N[s.to].cap)||(s.id==='a-gone'?'1950–52':'');
   b.innerHTML=`<span class="bar${s.dash?' d':''}" style="background:${C[s.g]}"></span><span class="y">${esc(y)}</span><span>${esc(s.near?nm(s.fr)+' → towards the papers, and back':nm(s.fr)+' → '+nm(s.to))}</span>`;
   b.onclick=()=>openSeg(id);li.appendChild(b);ol.appendChild(li)})}
-$('#replay').onclick=()=>select(cur,false);
+$('#replay').onclick=()=>select(cur,false,true);
 // ---- sheet
 function srcList(src){return src&&src.length?'<h3>Sources</h3><ul>'+src.map(x=>`<li><a href="${esc(x.u)}" target="_blank" rel="noopener">${esc(x.t)}</a></li>`).join('')+'</ul>':''}
 let lastFocus=null;
@@ -214,7 +250,7 @@ function openSeg(id){const s=S[id];sheet(`<h2 id="shT">${esc(s.title)}</h2><div 
 function openNode(id){const n=N[id];sheet(`<h2 id="shT">${esc(n.title)}</h2>${n.kind==='named'?`<div class="date">${esc(n.over.join(' '))} · ${esc(n.under.join(' '))}</div>`:''}${n.text?`<p>${esc(n.text)}</p>`:''}${srcList(n.src)}`)}
 draw();
 const q=new URLSearchParams(location.search).get('p');select(V.filters.some(x=>x.k===q)?q:'ALL',false);
-RM.addEventListener&&RM.addEventListener('change',()=>select(cur,false));
+RM.addEventListener&&RM.addEventListener('change',()=>select(cur,false,run&&run.narr));
 // the shared header (basecamp.js) loads after this page's own script has run; ghf-boot.js already reserved its band
 (function(){if(window.GHFBasecamp||document.querySelector('script[data-ghf-basecamp-late]'))return;var s=document.createElement('script');s.src='https://bucklerfamily.estate/ghf-lang/basecamp.js?v='+(window.GHFBoot||'2.1.2');s.setAttribute('data-ghf-basecamp-late','');document.head.appendChild(s)})();
 </script>
