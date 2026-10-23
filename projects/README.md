@@ -28,6 +28,13 @@ P1 and P3 may start bounded research/concept work from existing material while P
 - `/data/site-directory.json` — machine-readable reader-facing site directory.
 - `/data/pm-dashboard.json` — detailed inherited disclosure/correspondence task snapshot.
 
+## Current public-authority follow-through
+
+- `/lcc-meeting-follow-through/` — current control page for Llandough Community Council's meeting of 22 October 2026, linked from the programme dashboard.
+- The meeting-minutes status is preserved as a dated observation: the linked record reports no minutes published at 09:45 BST on 23 October. Do not treat that timestamp as a statement about later availability.
+- The electronic decision note under Local Government Act 1972, Schedule 12, paragraph 26ZA has a latest publication date of **30 October 2026** for this meeting. The deadline is not the same as approval/publication of the full minutes and is not a deadline to produce a verbatim transcript.
+- Verify the live Council page and the actual linked document before marking publication complete. Do not record a missed statutory deadline before the deadline has passed.
+
 ## Progress-measure rules
 
 P1/P3 display 17% as 2/12 completed tasks in small, provisional start-up baselines. This is **not** an end-to-end museum or AR delivery percentage: museum construction/opening and working AR delivery remain 0% at this stage. P2 displays 19% (169/893) from the inherited task ledger snapshot at 22 October 2026 15:42 UTC (44 in progress, 645 not started, 35 blocked); the denominator covers disclosure/correspondence and is not a percentage of all evidence recovered. Preservation and witness tasks need reconciliation into an approved full-scope denominator. No overall programme percentage is calculated until baseline scope and weighting are approved. P4 is N/A, not 0%, because it has not been initiated.
