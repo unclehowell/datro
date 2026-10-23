@@ -12,15 +12,20 @@ export async function onRequestGet() {
   return Response.json({
     ok: true,
     product: "Tumbler",
-    version: "0.1.0",
+    version: "0.2.0",
     methods: METHODS,
     inventory,
     capabilities: {
       liveBranchHeads: true,
+      currentBranchShaVerification: true,
+      allBranchesAsFixedCorpus: true,
+      onDemandCorpusRefresh: true,
+      draftPullRequestGeneration: true,
+      methodologySpecificReview: true,
       researchMirrorRetrieval: true,
       qaGraphRetrieval: true,
       exhaustiveWholeEstateIndex: false
     },
-    coverageWarning: "This first release does not yet contain a verified full-text index of every file on every branch and every registered host. The dated inventory is a discovery seed; each source needs indexing and coverage reporting before an exhaustive assessment can be claimed."
+    coverageWarning: "The corpus input is fixed to the latest indexed collection of eligible text from all current repository branches and registered public sources. Draft pull-request generation is blocked until the recorded branch-head names and SHAs exactly match GitHub and the branch inventory is complete. Binary, oversized, private and otherwise excluded sources remain out of scope; the service never claims exhaustive coverage of those materials."
   }, { headers: { "cache-control": "no-store", "x-content-type-options": "nosniff" } });
 }
