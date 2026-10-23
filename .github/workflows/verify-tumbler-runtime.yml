@@ -1,12 +1,6 @@
 name: Verify Tumbler runtime
 
 on:
-  push:
-    branches:
-      - tumbler
-    paths:
-      - '.github/workflows/verify-tumbler-runtime.yml'
-      - 'static/tumbler/functions/api/generate.js'
   workflow_dispatch:
 
 permissions:
