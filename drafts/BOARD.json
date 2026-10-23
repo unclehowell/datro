@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-23T14:52:57Z",
+ "updated": "2026-10-23T14:58:42Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
@@ -125,6 +125,41 @@
   }
  ],
  "events": [
+  {
+   "at": "2026-10-23",
+   "draft": "bp-preservation-reply",
+   "version": "v0.1.0",
+   "agent": "ChatGPT",
+   "event": "draft/review (time not recorded)"
+  },
+  {
+   "at": "2026-10-23",
+   "draft": "bp-preservation-reply",
+   "version": "v0.2.0",
+   "agent": "ChatGPT",
+   "event": "draft/review (time not recorded)"
+  },
+  {
+   "at": "2026-10-23",
+   "draft": "bp-preservation-reply",
+   "version": "v0.3.0",
+   "agent": "ChatGPT",
+   "event": "draft/review (time not recorded)"
+  },
+  {
+   "at": "2026-10-23T12:02:00Z",
+   "draft": "bp-preservation-reply",
+   "version": "v0.4.0",
+   "agent": "Tab",
+   "event": "review"
+  },
+  {
+   "at": "2026-10-23",
+   "draft": "cardiff-central-library-bute-x6-12-reply",
+   "version": "v0.1.0",
+   "agent": "Tab",
+   "event": "first draft (time not recorded)"
+  },
   {
    "at": "2026-10-23T13:39:23Z",
    "draft": "bp-preservation-reply",
