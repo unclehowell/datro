@@ -35,11 +35,16 @@ def main():
     if parent != git("rev-parse", "origin/" + BRANCH).strip(): raise SystemExit("remote moved during the push; run again")
     st, c = gh("GET", f"/repos/{REPO}/git/commits/{parent}"); tree = c["tree"]["sha"]
     batch, size = [], 0
+    KNOWN = set(l.split()[2] for l in git("ls-tree", "-r", "origin/" + BRANCH).splitlines() if l.split()[1] == "blob")
     def flush(tree, batch):
-        for attempt in range(4):
+        # big bodies sometimes come back as a gateway 502: retry, then split the batch in half (each half chains on the last tree)
+        for attempt in range(3):
             st, t = gh("POST", f"/repos/{REPO}/git/trees", {"base_tree": tree, "tree": batch})
             if st in (200, 201): return t["sha"]
-            time.sleep(5 * (attempt + 1))
+            time.sleep(4 * (attempt + 1))
+        if len(batch) > 1:
+            h = len(batch) // 2
+            return flush(flush(tree, batch[:h]), batch[h:])
         raise SystemExit("tree POST failed: %s %s" % (st, str(t)[:300]))
     for ch in changes:
         code, path = ch[0], ch[-1]
@@ -51,13 +56,20 @@ def main():
                 if "\x00" in txt: raise UnicodeDecodeError("utf-8", b"", 0, 1, "nul")
                 item = {"path": path, "mode": "100644", "type": "blob", "content": txt}
             except UnicodeDecodeError:
+                # the same bytes already in the repository (e.g. site2/ copies of site/ images): point at that blob, upload nothing
+                bsha = git("hash-object", os.path.join(ROOT, path)).strip()
+                if bsha in KNOWN:
+                    item = {"path": path, "mode": "100644", "type": "blob", "sha": bsha}; n = 100
+                    if batch and (len(batch) >= 12 or size + n > 90_000):
+                        tree = flush(tree, batch); batch, size = [], 0
+                    batch.append(item); size += n; continue
                 for attempt in range(4):
                     st, b = gh("POST", f"/repos/{REPO}/git/blobs", {"content": base64.b64encode(data).decode(), "encoding": "base64"})
                     if st in (200, 201): break
                     time.sleep(5 * (attempt + 1))
                 else: raise SystemExit("blob failed for %s: %s" % (path, str(b)[:200]))
                 item = {"path": path, "mode": "100644", "type": "blob", "sha": b["sha"]}; n = 200
-        if batch and (len(batch) >= 20 or size + n > 350_000):
+        if batch and (len(batch) >= 12 or size + n > 90_000):
             tree = flush(tree, batch); batch, size = [], 0
         batch.append(item); size += n
     if batch: tree = flush(tree, batch)

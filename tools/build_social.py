@@ -7,8 +7,16 @@ Run: python3 tools/build_social.py  — Sion's Tab agent"""
 import html, json, os, re, hashlib, shutil
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(ROOT, "site")
-BASE = "https://fb.bucklerfamily.estate"
-BOOT = '<script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.0.3"></script>'
+# Two editions from one generator (Sion, 01:24 BST 23 Oct 2026): FB_EDITION=then (default) builds fb.bucklerfamily.estate into site/
+# with only actors, events and media before 2005; FB_EDITION=now builds fb2.bucklerfamily.estate into site2/ with 2005 onwards.
+EDITION = os.environ.get("FB_EDITION", "then").strip().lower()
+NOW = EDITION == "now"
+SPLIT = "2005"
+THEN_URL, NOW_URL = "https://fb.bucklerfamily.estate", "https://fb2.bucklerfamily.estate"
+BASE = NOW_URL if NOW else THEN_URL
+if NOW: SITE = os.path.join(ROOT, "site2")
+def in_edition(date): return (str(date or "")[:4] >= SPLIT) == NOW
+BOOT = '<script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.1.2"></script>'
 HONEST = "A reconstruction: these outlets’ real articles shown as if posted online. Not their own accounts."
 FOOT = " "
 RECON = "A reconstruction: this announcement is written for this archive from the record in “Source”; the profile shown did not post it."
@@ -17,14 +25,17 @@ WORDING = "Words in [square brackets] are the archive’s: neutral words in plac
 ns = {}
 exec(open(os.path.join(ROOT, "tools", "social_data.py"), encoding="utf-8").read(), ns)
 OUT, PEO, POSTS, STORIES = ns["OUTLETS"], ns["PEOPLE"], sorted(ns["POSTS"], key=lambda p: (p["date"], p["id"])), ns["STORIES"]
+POSTS = [p for p in POSTS if in_edition(p["date"])]
+_HIST_STORIES = {"s-itv-1988", "s-wales-at-six"}   # broadcast in 1988; the films and shorts were made in 2026 and belong to the now edition
+STORIES = [x for x in STORIES if (x["id"] in _HIST_STORIES) != NOW]
 
 # PRINCE2 highlight-report videos (data/highlights.json, work/highlight-video/publish_fb.py): newest 7 lead the Videos page and the Stories rail.
 _hp = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "highlights.json")
 if os.path.exists(_hp):
-    STORIES = [{"id": "s-hr-" + r["date"], "by": "williams-buckler-family", "poster_name": "Williams / Buckler family", "title": r["title"], "kind": "video",
+    STORIES = ([] if not NOW else [{"id": "s-hr-" + r["date"], "by": "williams-buckler-family", "poster_name": "Williams / Buckler family", "title": r["title"], "kind": "video",
                 "src": r["video"], "thumb": r["poster"], "seconds": int(round(r.get("duration", 40))),
                 "credit": "%s · %s. Highlight report video, made for the family archive (Wayback Vault)." % (r["hr_id"], r["period"]),
-                "link": "index.html#hf-%s" % r["date"]} for r in json.load(open(_hp, encoding="utf-8"))["days"][:7]] + list(STORIES)
+                "link": "index.html#hf-%s" % r["date"]} for r in json.load(open(_hp, encoding="utf-8"))["days"][:7]]) + list(STORIES)
 EVL = json.load(open(os.path.join(ROOT, "tools", "ev_links.json"), encoding="utf-8"))
 PA = "https://greathousefarmwiki.wordpress.com/press-archive-transcripts/"
 e = lambda s: html.escape(s, quote=True)
@@ -34,6 +45,7 @@ e = lambda s: html.escape(s, quote=True)
 # dated, verbatim (or marked summary) with a source link. A profile with none says so in one line.
 FRIENDS = json.load(open(os.path.join(ROOT, "data", "friends.json"), encoding="utf-8"))["friends"]
 STJ = json.load(open(os.path.join(ROOT, "data", "statements.json"), encoding="utf-8"))
+STJ["statements"] = [x for x in STJ["statements"] if in_edition(x.get("date"))]
 for _f in FRIENDS:
     if _f["slug"] not in OUT and _f["slug"] not in PEO:
         PEO[_f["slug"]] = {"name": _f["name"], "kind": _f.get("kind", "Body"), "entity": True, "initials": _f.get("initials", ""),
@@ -90,7 +102,7 @@ def ico(k, vb="0 0 24 24", cls="si"):
 
 def head(title, desc, rel, og_img="img/social/william-cover-tractor.webp", canon=""):
     up = "../" * rel.count("/")
-    return ('<!doctype html><html lang="en-GB" data-ghf-native="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+    return ('<!doctype html><html lang="en-GB" data-ghf-native="auto"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
             '<title>%s</title><meta name="description" content="%s"><meta property="og:title" content="%s"><meta property="og:description" content="%s">'
             '<meta property="og:image" content="%s/%s"><meta property="og:url" content="%s/%s"><meta name="theme-color" content="#1877f2">'
             '<link rel="stylesheet" href="/social.css?v=%s"><script src="/social.js?v=%s" defer></script><script src="/comments.js?v=%s" defer></script>'
@@ -98,11 +110,13 @@ def head(title, desc, rel, og_img="img/social/william-cover-tractor.webp", canon
             ) % (e(title), e(desc), e(title), e(desc), BASE, og_img, BASE, canon, ver("social.css"), ver("social.js"), ver("comments.js"), BOOT)
 
 def top(active, up=""):
-    menu = ''.join('<a href="%s">%s</a>' % (h, e(t)) for h, t in [
-        ("/", "Feed: the story as the papers told it"), ("/videos.html", "Videos and stories"), ("/profiles.html", "All profiles"), ("/friends", "Friends: public statements"), ("/u/tab-bot.html", "Tab.bot (AI agent)"),
-        ("/timeline.html", "Family archive timeline"), ("/photos.html", "Archive photos"), ("/facebook.html", "Preserved from Facebook"),
+    menu = ''.join('<a href="%s">%s</a>' % (h, e(t)) for h, t in [*[
+        ("/", "Wall: the campaign, as its parties posted it" if NOW else "Wall: the farm’s story, as its parties posted it"),
+        (THEN_URL + "/", "Then: farmbook, to 2004") if NOW else (NOW_URL + "/", "Now: farmbook 2, 2005 onwards"),
+        ("/videos.html", "Videos and stories"), ("/profiles.html", "Contacts: the whole cast"), ("/friends", "Friends: public statements")] + ([("/u/tab-bot.html", "Tab.bot (AI agent)")] if NOW else []) + [
+        ("/timeline.html", "Family archive timeline"), ("/photos.html", "Archive photos")] + ([("/facebook.html", "Preserved from Facebook")] if NOW else []) + [
         ("https://maps.bucklerfamily.estate/", "The Map Room"), ("https://greathousefarmwiki.wordpress.com/", "The Legal Wiki"), ("https://shop.bucklerfamily.estate/", "Gift Shop & Marketplace"),
-        ("/m/login", "Family members: sign in"), ("/api/", "API for AI agents")])
+        ("/m/login", "Family members: sign in"), ("/api/", "API for AI agents")]])
     return ('<a class="skip" href="#main">Skip to content</a><header class="fb-top"><button type="button" class="fb-ic fb-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="fb-menu">%s</button>'
             '<a class="fb-brand" href="/" aria-label="farmbook home">farmbook</a><div class="fb-acts">'
             '<a class="fb-ic" href="/m/login" aria-label="Create: family members sign in">%s</a>'
@@ -110,12 +124,20 @@ def top(active, up=""):
             '<a class="fb-ic fb-ic-round" href="https://chat.bucklerfamily.estate/" aria-label="Chat: Ask the Archive">%s</a></div></header>'
             '<div class="fb-menu" id="fb-menu" hidden><nav aria-label="Main">%s</nav></div>'
             '<form class="fb-search" role="search" action="/" hidden><input type="search" name="q" placeholder="Search the feed" aria-label="Search the feed" autocomplete="off"><button type="button" class="fb-ic fb-search-x" aria-label="Close search">%s</button></form>'
-            ) % (ico("menu"), ico("plus"), ico("search"), ico("chat"), menu, ico("x"))
+            ) % (ico("menu"), ico("plus"), ico("search"), ico("chat"), menu, ico("x")) if not NOW else re.sub(r'href="(/(?:m/login|api/))"', lambda m: 'href="%s%s"' % (THEN_URL, m.group(1)), (
+            '<a class="skip" href="#main">Skip to content</a><header class="fb-top"><button type="button" class="fb-ic fb-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="fb-menu">%s</button>'
+            '<a class="fb-brand" href="/" aria-label="farmbook 2 home">farmbook 2</a><div class="fb-acts">'
+            '<a class="fb-ic" href="/m/login" aria-label="Create: family members sign in">%s</a>'
+            '<button type="button" class="fb-ic fb-search-btn" aria-label="Search the feed" aria-expanded="false">%s</button>'
+            '<a class="fb-ic fb-ic-round" href="https://chat.bucklerfamily.estate/" aria-label="Chat: Ask the Archive">%s</a></div></header>'
+            '<div class="fb-menu" id="fb-menu" hidden><nav aria-label="Main">%s</nav></div>'
+            '<form class="fb-search" role="search" action="/" hidden><input type="search" name="q" placeholder="Search the feed" aria-label="Search the feed" autocomplete="off"><button type="button" class="fb-ic fb-search-x" aria-label="Close search">%s</button></form>'
+            ) % (ico("menu"), ico("plus"), ico("search"), ico("chat"), menu, ico("x")))
 
 def tabs(active, up=""):
     n_latest = len([p for p in POSTS if p["outlet"] == "tab-bot"])
     items = [("/", "feed", "Home", ""), ("/videos.html", "video", "Videos", ""), ("/profiles.html", "people", "Profiles", ""), ("https://shop.bucklerfamily.estate/", "shop", "Gift Shop & Marketplace", ""),
-             ("/#latest", "bell", "Latest posts", '<span class="fb-badge">%d</span>' % n_latest)]
+             ("/#latest", "bell", "Latest posts", '<span class="fb-badge">%d</span>' % n_latest) if NOW else (NOW_URL + "/", "bell", "Now: farmbook 2", "")]
     out = ''.join('<a href="%s" aria-label="%s"%s>%s%s</a>' % (h, l, ' aria-current="page"' if active == k else "", ico(k), bd) for h, k, l, bd in items)
     out += '<button type="button" class="fb-menu-btn fb-tab-me" aria-label="Menu" aria-expanded="false" aria-controls="fb-menu"><img src="%simg/social/you.svg" alt="" width="28" height="28"><span class="fb-tab-mini">%s</span></button>' % (up, ico("menu"))
     return '<nav class="fb-tabs" aria-label="Sections">%s</nav>' % out

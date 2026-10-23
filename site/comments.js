@@ -287,6 +287,8 @@
       ".fbc-bub.fbc-dots{display:inline-flex;align-items:center}" +
       "html .fbc .fbc-pill textarea{border:0 none!important;box-shadow:none!important;outline:0!important;background:transparent!important;min-height:0!important;border-radius:0!important;padding:7px 0!important;margin:0!important;width:auto!important}" +
       "html .fbc .fbc-send{border:0 none!important;outline:0!important;box-shadow:none!important;background:transparent!important;border-radius:50%!important;padding:0!important;width:34px!important;height:34px!important}" +
+      // night: the family dark (23 Oct 2026, Sion: "the comments field needs to switch to dark theme too")
+      "html[data-ghf-mode=night] .fbc-bub{background:#3a3b3c;color:#e4e6eb}html[data-ghf-mode=night] .fbc-pill{background:#3a3b3c}"+"html[data-ghf-mode=night] .fbc .fbc-pill textarea{color:#e4e6eb!important;caret-color:#e4e6eb}html[data-ghf-mode=night] .fbc-pill textarea::placeholder{color:#b0b3b8;opacity:1}"+"html[data-ghf-mode=night] :is(.fbc-act,.fbc-meta,.fbc-a,.fbc-more,.fbc-mr,.fbc-sub,.fbc-note,.fbc-bar,.fbc-t){color:#b0b3b8}html[data-ghf-mode=night] .fbc-act:hover{background:#3a3b3c}"+"html[data-ghf-mode=night] :is(.fbc-act.on,.fbc-a.on){color:#4599ff}html[data-ghf-mode=night] .fbc .fbc-send{color:#4599ff}html[data-ghf-mode=night] .fbc .fbc-send:disabled{color:#6b6e72}"+"html[data-ghf-mode=night] .fbc-lc{background:#242526;color:#b0b3b8}html[data-ghf-mode=night] :is(.fbc-name,.fbc-note a){color:#8ab4f8}html[data-ghf-mode=night] .fbc-bot{background:#1e3a29;color:#8fd6a8}"+"html[data-ghf-mode=night] .fbc-mem{background:#263951;color:#c4d6ff}html[data-ghf-mode=night] :is(.fbl,.fbl-side){background:#18191a;color:#e4e6eb}html[data-ghf-mode=night] .fbc-acts{border-color:#3e4042}"+"html[data-ghf-mode=night] .fbc-pend,html[data-ghf-mode=night] .fbc-msg{color:#f0b35a}html[data-ghf-mode=night] .fbc-new .fbc-bub{animation:none}"+"html[data-ghf-mode=day] .fbl,html[data-ghf-mode=day] .fbl-side{background:#fff;color:#050505}"+
       ".fbc-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#242526;color:#fff;padding:9px 16px;border-radius:8px;font-size:14px;z-index:99}";
     document.head.appendChild(s);
   }
@@ -295,7 +297,7 @@
     var posts = document.querySelectorAll("article.post[id]");
     var go = function () { for (var i = 0; i < posts.length; i++) wire(posts[i]); };
     // signed-in family member (fail-safe: guests carry on if the members service is down or slow)
-    var me = new Promise(function (res) { var t = setTimeout(function () { res(null); }, 2500); fetch("/m/api/me", { credentials: "same-origin" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) { clearTimeout(t); res(d && d.signedIn && d.name ? d : null); }).catch(function () { clearTimeout(t); res(null); }); });
+    var me = new Promise(function (res) { var t = setTimeout(function () { res(null); }, 2500); (/^fb2\./.test(location.hostname) ? Promise.resolve(null) : fetch("/m/api/me", { credentials: "same-origin" }).then(function (r) { return r.ok ? r.json() : null; })).then(function (d) { clearTimeout(t); res(d && d.signedIn && d.name ? d : null); }).catch(function () { clearTimeout(t); res(null); }); });
     var fd = fetch(API + "/api/feed").then(function (r) { return r.json(); }).then(function (d) { feed = (d && d.posts) || {}; }).catch(function () {});
     Promise.all([me, fd]).then(function (v) { ME = v[0]; go(); photos(); });
   }
