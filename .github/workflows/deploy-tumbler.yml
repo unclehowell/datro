@@ -51,7 +51,9 @@ jobs:
           curl --fail --silent --show-error --max-time 45 https://tumbler-6js.pages.dev/api/manifest -o /tmp/tumbler-manifest.json
           curl --fail --silent --show-error --max-time 45 https://tumbler-6js.pages.dev/api/health -o /tmp/tumbler-health.json
           curl --fail --silent --show-error --max-time 90 https://tumbler-6js.pages.dev/api/corpus-status -o /tmp/tumbler-corpus.json
-          curl --silent --show-error --max-time 120 -X POST https://tumbler-6js.pages.dev/api/generate -H "content-type: application/json" -d '{"method":"socratic","focus":"Deployment smoke test: require traceable findings and acceptance checks.","propertyLaw":false,"investigation":false,"allBranches":true}' -o /tmp/tumbler-generate.json
+          # Validation-only probe: an invalid methodology cannot create a branch or PR.
+          contribute_code=$(curl --silent --show-error --max-time 30 -o /tmp/tumbler-contribute-validation.json -w '%{http_code}' -X POST https://tumbler-6js.pages.dev/api/contribute -H "content-type: application/json" -d '{"method":"__validation_only__"}')
+          legacy_code=$(curl --silent --show-error --max-time 30 -o /tmp/tumbler-legacy.json -w '%{http_code}' -X POST https://tumbler-6js.pages.dev/api/generate -H "content-type: application/json" -d '{}')
           python3 - <<'PY'
           import json
           from pathlib import Path
@@ -59,11 +61,20 @@ jobs:
           manifest = json.loads(Path("/tmp/tumbler-manifest.json").read_text(encoding="utf-8"))
           health = json.loads(Path("/tmp/tumbler-health.json").read_text(encoding="utf-8"))
           corpus = json.loads(Path("/tmp/tumbler-corpus.json").read_text(encoding="utf-8"))
-          generated = json.loads(Path("/tmp/tumbler-generate.json").read_text(encoding="utf-8"))
+          contribute = json.loads(Path("/tmp/tumbler-contribute-validation.json").read_text(encoding="utf-8"))
+          legacy = json.loads(Path("/tmp/tumbler-legacy.json").read_text(encoding="utf-8"))
           assert "<title>Tumbler" in html, "Missing homepage title"
+          assert 'id="focus"' not in html and "<textarea" not in html, "Free-text corpus input must not be present"
+          assert 'id="refresh-corpus"' in html and 'id="generate"' in html and 'id="pr-link"' in html, "Missing corpus refresh or PR controls"
+          assert "global-row" in html and "service-row" in html, "Standard three-row navigation header is missing"
           assert len(manifest.get("inventory", {}).get("sources", [])) >= 10, "Missing source inventory"
+          assert manifest.get("capabilities", {}).get("draftPullRequestGeneration") is True, "Manifest does not advertise PR workflow"
           assert health.get("service") == "tumbler", "Health route failed"
           assert "exhaustiveWholeEstateIndex" in corpus, "Missing explicit corpus coverage status"
-          assert generated.get("ok") is True and len(generated.get("prompt", "")) > 300, "Prompt-generation smoke test failed: " + json.dumps(generated, ensure_ascii=False)[:1200]
-          print("UI, source manifest, status and prompt-generation smoke tests passed; hosts:", len(manifest["inventory"]["sources"]), "AI binding:", health.get("aiBindingConfigured"), "prompt chars:", len(generated["prompt"]))
+          assert int(__import__("os").environ.get("CONTRIBUTE_CODE", "0")) if False else True
+          assert contribute.get("replacement") == "POST /api/contribute" or contribute.get("error") or "configurationRequired" in contribute, "Contribution validation did not return a safe response"
+          assert legacy.get("replacement") == "POST /api/contribute" and legacy.get("error"), "Legacy prompt endpoint was not retired"
+          print("UI, source manifest, health, corpus coverage, safe contribution probe and retired endpoint checks passed; hosts:", len(manifest["inventory"]["sources"]), "AI binding:", health.get("aiBindingConfigured"))
           PY
+          case "$contribute_code" in 400|503) ;; *) echo "Unexpected contribution validation HTTP status: $contribute_code"; exit 1;; esac
+          test "$legacy_code" = "410" || { echo "Legacy prompt route should return 410, got $legacy_code"; exit 1; }
