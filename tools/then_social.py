@@ -180,10 +180,12 @@ def comments_html(x, up, prof, avimg):
 def media_html(x, up):
     h = []
     v = x.get("video")
-    if v and v.get("yt"):
-        h.append('<figure class="wl-vid fb-yt"><iframe src="https://www.youtube-nocookie.com/embed/%s?rel=0&amp;playsinline=1" title="%s" loading="lazy" '
-                 'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen data-yt="%s"></iframe></figure>'
-                 % (e(v["yt"]), e(v.get("title", "Video")), e(v["yt"])))
+    if v and v.get("yt"):   # tap to play (the Facebook pattern): the player, with its own channel overlay, loads only on a tap
+        js = ("var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+this.dataset.yt+'?autoplay=1&amp;rel=0&amp;playsinline=1';"
+              "f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title=this.getAttribute('aria-label');this.replaceWith(f)")
+        h.append('<figure class="wl-vid fb-yt" data-yt="%s"><button type="button" class="fb-ytp" data-yt="%s" aria-label="Play: %s" onclick="%s"><img src="%s" alt="" loading="lazy">'
+                 '<span class="fb-play" aria-hidden="true">▶</span></button><figcaption>%s</figcaption></figure>'
+                 % (e(v["yt"]), e(v["yt"]), e(v.get("title", "Video")), js, e(v.get("poster") or "https://i.ytimg.com/vi/%s/hqdefault.jpg" % v["yt"]), e(v.get("title", "Video"))))
     elif v and v.get("mp4"):
         h.append('<figure class="wl-vid fb-mp4"><video controls playsinline preload="metadata" src="%s#t=0.5"></video></figure>' % e(v["mp4"]))
     if x.get("wbimg"):
@@ -205,7 +207,9 @@ CSS = """
 .fb-rxw{padding:0 14px;font-size:.85rem}.fb-rxw summary{cursor:pointer;color:var(--wl-mut,#65676b)}.fb-rxw p{margin:.3em 0}
 .fb-act{display:flex;justify-content:space-around;border-top:1px solid var(--wl-line,#e4e6eb);margin:6px 14px 0;padding:6px 0;color:var(--wl-mut,#65676b);font-weight:600;font-size:.9rem}
 .fb-q{margin:.2em 0}.fb-cm .wl-cw a{color:inherit;text-decoration:underline}
-.fb-yt{position:relative;aspect-ratio:16/9;margin:8px 0;background:#000}.fb-yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.fb-yt{position:relative;margin:8px 0;background:#000}.fb-yt iframe,.fb-ytp{display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;background:#000;position:relative;cursor:pointer}
+.fb-ytp img{width:100%;height:100%;object-fit:cover;display:block}.fb-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;font-size:28px;display:grid;place-items:center}
+.fb-yt figcaption{font-size:.8rem;padding:4px 14px;color:var(--wl-mut,#65676b);background:var(--wl-card,#fff)}
 .fb-mp4 video{display:block;width:100%;max-height:75vh;background:#000}
 .fb-wb img{display:block;width:100%;height:auto;max-height:520px;object-fit:contain;background:var(--wl-line,#e4e6eb)}
 .fb-fr{margin:12px 0;padding:12px 14px;background:var(--wl-card,#fff);border-radius:10px}

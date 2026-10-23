@@ -73,7 +73,9 @@ html[data-ghf-mode="night"] .wl-q{border-color:#d4b25a}
 .fb-rxw{padding:0 14px;font-size:.85rem}.fb-rxw summary{cursor:pointer;color:var(--wl-mut,#65676b)}.fb-rxw p{margin:.3em 0}
 .fb-act{display:flex;justify-content:space-around;border-top:1px solid var(--wl-line,#e4e6eb);margin:6px 14px 0;padding:6px 0;color:var(--wl-mut,#65676b);font-weight:600;font-size:.9rem}
 .fb-q{margin:.2em 0}.fb-cm .wl-cw a{color:inherit;text-decoration:underline}
-.fb-yt{position:relative;aspect-ratio:16/9;margin:8px 0;background:#000}.fb-yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.fb-yt{position:relative;margin:8px 0;background:#000}.fb-yt iframe,.fb-ytp{display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;background:#000;position:relative;cursor:pointer}
+.fb-ytp img{width:100%;height:100%;object-fit:cover;display:block}.fb-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;font-size:28px;display:grid;place-items:center}
+.fb-yt figcaption{font-size:.8rem;padding:4px 14px;color:var(--wl-mut,#65676b);background:var(--wl-card,#fff)}
 .fb-mp4 video{display:block;width:100%;max-height:75vh;background:#000}
 .fb-wb img{display:block;width:100%;height:auto;max-height:520px;object-fit:contain;background:var(--wl-line,#e4e6eb)}
 .fb-fr{margin:12px 0;padding:12px 14px;background:var(--wl-card,#fff);border-radius:10px}
