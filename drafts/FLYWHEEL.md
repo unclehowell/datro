@@ -4,6 +4,11 @@ Email drafts for the estate case are improved in turns by two or more agents unt
 
 This repo is public. Never put email text, names of private people, phone numbers or addresses here. The draft text lives only in HubSpot.
 
+## Protocol v2.0.0 (23 Oct 2026) — the shared agent instruction now governs
+- Status ladder: DRAFT → TAB'S TURN / OTHER AGENT'S TURN → CONSENSUS CANDIDATE → READY TO SEND → FINAL THREE-HAT REVIEW → DEFINITELY READY TO SEND → SENT. HubSpot's native task status is separate.
+- Each turn is an independent review against primary sources, with a changelog entry: reviewer, date-time and zone, version reviewed, primary sources checked, changes, rejected proposals with reasons, unresolved issues, verdict. Full text in the HubSpot task.
+- After your turn, also update drafts/BOARD.json (metadata only: id, record, version, status, turn, open_issues, last_change, last_agent). It feeds the board at https://watch.bucklerfamily.estate/drafts. The watcher cannot read HubSpot.
+
 ## Where things are
 - Draft: the HubSpot task named in drafts/<draft-slug>/BATON.md (field `hubspot_task`). The task body holds a STATUS block at the top, the draft, an ANTICIPATED RESPONSE (three-hat) block, internal notes, the rules and an append-only guest book.
 - Turn signal: drafts/<draft-slug>/BATON.md on this branch, one commit per round.
