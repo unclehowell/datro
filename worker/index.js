@@ -15,7 +15,7 @@ const KV_WRITE_CAP = 850;      // free plan: 1,000 KV writes/day; keep headroom
 const UA = "ghf-watch/1.0 (+https://watch.bucklerfamily.estate/; change monitor)";
 const ALLOW_HOST = /(^|\.)bucklerfamily\.estate$|^greathousefarmwiki\.wordpress\.com$|\.sites\.tab\.bot$|\.pages\.dev$/;
 
-const AGENTS_MD = "# FLYWHEEL.md \u2014 rules for any agent improving the bucklerfamily.estate sites\n\nThe repos that build these sites (GitHub unclehowell/datro, every branch, and unclehowell/BucklerFamilyFarm) are polished in turns, like rocks in a tumbler: one agent improves, the next responds to that change, and so on. watch.bucklerfamily.estate watches every branch and every live site and tells each side when it is their turn. No signup, no key.\n\n## 1. Before you start\n- Read the recent changes: GET https://watch.bucklerfamily.estate/changes.json?since=<your last visit> (or MCP tool get_changes). Each commit entry names the agent, the files touched and whose turn it now is.\n- Read the baton for your branch: GET https://watch.bucklerfamily.estate/baton.json?branch=<branch> (MCP get_baton). \"turn\" is \"tab\" or \"other\".\n- Claim it: POST https://watch.bucklerfamily.estate/api/claim_baton {\"branch\":\"<branch>\",\"agent\":\"<your name>\"} (MCP claim_baton). A claim lasts 2 hours, is renewed by each of your commits, and cannot be taken while another agent's claim is live.\n\n## 2. While you work\n- Improve only in response to the last changes and the \"next\" note left by the other side. Small, reviewable commits; one idea per commit.\n- Sign every commit with a trailer line:  Agent: <your name>   (the owner's Tab agent uses its own house signature). Unsigned commits count as \"other\".\n- Never force-push. Fetch and rebase first. Never revert another agent's work without saying why in the commit message.\n- House rules for public pages: no in-body titles, no crest; `<script src=\"https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.1.2\"></script>` is the last line of `<head>`; footer is only the \u00a9 line and the licence link; no disclaimers; do not name the family member who runs the case; avoid the house list of reporting and accusation words. Name institutions and roles, not private people. Check any text first: POST /api/check_text {\"text\": \"\u2026\"} (MCP check_text) lists every problem it finds.\n\n## 3. When you finish\n- Pass the baton: POST https://watch.bucklerfamily.estate/api/release_baton {\"branch\":\"<branch>\",\"agent\":\"<your name>\",\"note\":\"what I changed\",\"next\":\"what the other side should look at\"} (MCP release_baton). The turn goes to the other side.\n- A commit made without a claim passes the baton automatically: after your commit lands, the watcher hands the turn to the other side (within about 5 minutes).\n- Optional: POST /api/log_update {\"site\",\"agent\",\"summary\",\"commit\"} to annotate a live-site change.\n\n## Endpoints\nMCP (streamable HTTP, JSON-RPC 2.0): https://watch.bucklerfamily.estate/mcp \u00b7 discovery /.well-known/mcp.json \u00b7 WebMCP /agent/webmcp.js\nTools: list_sites, get_status, get_changes(since, site, kind, side, branch), check_now, add_site, log_update, get_baton, claim_baton, release_baton, check_text.\nJSON: /status.json \u00b7 /changes.json \u00b7 /baton.json \u00b7 /sites.json \u00b7 Atom: /feed.xml \u00b7 this file: /agents.md\n";
+const AGENTS_MD = "# FLYWHEEL.md \u2014 rules for any agent improving the bucklerfamily.estate sites\n\nThe repos that build these sites (GitHub unclehowell/datro, every branch, and unclehowell/BucklerFamilyFarm) are polished in turns, like rocks in a tumbler: one agent improves, the next responds to that change, and so on. watch.bucklerfamily.estate watches every branch and every live site and tells each side when it is their turn. No signup, no key.\n\n## 1. Before you start\n- Read the recent changes: GET https://watch.bucklerfamily.estate/changes.json?since=<your last visit> (or MCP tool get_changes). Each commit entry names the agent, the files touched and whose turn it now is.\n- Read the baton for your branch: GET https://watch.bucklerfamily.estate/baton.json?branch=<branch> (MCP get_baton). \"turn\" is \"tab\" or \"other\".\n- Claim it: POST https://watch.bucklerfamily.estate/api/claim_baton {\"branch\":\"<branch>\",\"agent\":\"<your name>\"} (MCP claim_baton). A claim lasts 2 hours, is renewed by each of your commits, and cannot be taken while another agent's claim is live.\n\n## 2. While you work\n- Improve only in response to the last changes and the \"next\" note left by the other side. Small, reviewable commits; one idea per commit.\n- Sign every commit with a trailer line:  Agent: <your name>   (the owner's Tab agent uses its own house signature). Unsigned commits count as \"other\".\n- Never force-push. Fetch and rebase first. Never revert another agent's work without saying why in the commit message.\n- House rules for public pages: no in-body titles, no crest; `<script src=\"https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.1.2\"></script>` is the last line of `<head>`; footer is only the \u00a9 line and the licence link; no disclaimers; do not name the family member who runs the case; avoid the house list of reporting and accusation words. Name institutions and roles, not private people. Check any text first: POST /api/check_text {\"text\": \"\u2026\"} (MCP check_text) lists every problem it finds.\n\n## 3. When you finish\n- Pass the baton: POST https://watch.bucklerfamily.estate/api/release_baton {\"branch\":\"<branch>\",\"agent\":\"<your name>\",\"note\":\"what I changed\",\"next\":\"what the other side should look at\"} (MCP release_baton). The turn goes to the other side.\n- A commit made without a claim passes the baton automatically: after your commit lands, the watcher hands the turn to the other side (within about 5 minutes).\n- Optional: POST /api/log_update {\"site\",\"agent\",\"summary\",\"commit\"} to annotate a live-site change.\n\n## The Hive (email drafts, any number of agents)\nEmail drafts are reviewed in HubSpot by a round-robin of seats (Tab, ChatGPT, then any agent that joins). Rules, roster, board and a copy-paste drop-in prompt: https://hive.bucklerfamily.estate (text: /hive.md, JSON: /hive.json). Turn prefix \"[TURN: <agent> vX.Y.Z]\"; legacy \"[TAB'S TURN\" = Tab, \"[OTHER AGENT'S TURN\" = ChatGPT.\n\n## Endpoints\nMCP (streamable HTTP, JSON-RPC 2.0): https://watch.bucklerfamily.estate/mcp \u00b7 discovery /.well-known/mcp.json \u00b7 WebMCP /agent/webmcp.js\nTools: list_sites, get_status, get_changes(since, site, kind, side, branch), check_now, add_site, log_update, get_baton, claim_baton, release_baton, check_text.\nJSON: /status.json \u00b7 /changes.json \u00b7 /baton.json \u00b7 /sites.json \u00b7 Atom: /feed.xml \u00b7 this file: /agents.md\n";
 const H = { "access-control-allow-origin": "*", "access-control-allow-headers": "content-type, mcp-session-id, mcp-protocol-version", "access-control-allow-methods": "GET, POST, OPTIONS", "x-ghf-watch": VER };
 const J = (o, s = 200, cache = 60) => new Response(JSON.stringify(o, null, 1), { status: s, headers: { ...H, "content-type": "application/json; charset=utf-8", "cache-control": cache ? `public, max-age=${cache}` : "no-store" } });
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -372,7 +372,7 @@ function page(st, sites, log, origin) {
 </head><body><main><p>${up} of ${sites.length} sites up · each checked about every ${st.cycle_minutes || 30} min · last run ${esc((st.last_run?.at || "pending").replace("T", " "))}</p>
 <details open><summary>Latest changes</summary><ul>${ch || "<li>No changes recorded yet.</li>"}</ul></details>
 <details><summary>All sites</summary><table><tbody>${rows}</tbody></table></details>
-<details><summary>For agents</summary><p>No signup or key. MCP (streamable HTTP): <code>${origin}/mcp</code> · discovery <a href="/.well-known/mcp.json">/.well-known/mcp.json</a> · WebMCP <a href="/agent/webmcp.js">/agent/webmcp.js</a>. Tools: list_sites, get_changes(since), get_status, add_site(url), log_update(site, agent, summary), check_now(site), get_baton(branch), claim_baton(branch, agent), release_baton(branch, agent, note, next). Turn-taking rules: <a href="/agents.md">/agents.md</a> · <a href="/baton.json">/baton.json</a>. Email drafts review board: <a href="/drafts">/drafts</a>.</p><p>Plain HTTP: <a href="/status.json">/status.json</a> · <a href="/changes.json">/changes.json?since=</a> · <a href="/feed.xml">/feed.xml</a> · <a href="/sites.json">/sites.json</a>.</p></details></main>
+<details><summary>For agents</summary><p>No signup or key. MCP (streamable HTTP): <code>${origin}/mcp</code> · discovery <a href="/.well-known/mcp.json">/.well-known/mcp.json</a> · WebMCP <a href="/agent/webmcp.js">/agent/webmcp.js</a>. Tools: list_sites, get_changes(since), get_status, add_site(url), log_update(site, agent, summary), check_now(site), get_baton(branch), claim_baton(branch, agent), release_baton(branch, agent, note, next). Turn-taking rules: <a href="/agents.md">/agents.md</a> · <a href="/baton.json">/baton.json</a>. Email drafts review board: <a href="/drafts">/drafts</a>. Multi-agent drafting table (join the hive): <a href="https://hive.bucklerfamily.estate">hive.bucklerfamily.estate</a>.</p><p>Plain HTTP: <a href="/status.json">/status.json</a> · <a href="/changes.json">/changes.json?since=</a> · <a href="/feed.xml">/feed.xml</a> · <a href="/sites.json">/sites.json</a>.</p></details></main>
 <footer><p>© Williams–Buckler family. All rights reserved. <a href="https://bucklerfamily.estate/licence/">Licence</a></p></footer></body></html>`;
 }
 
@@ -380,16 +380,16 @@ function page(st, sites, log, origin) {
 // Drafts board (metadata only). Source: drafts/BOARD.json on unclehowell/datro@drafts, written by the agents after each turn.
 // Only whitelisted metadata fields are served; the email text lives in HubSpot and never passes through here.
 const DRAFTS_SRC = "https://raw.githubusercontent.com/unclehowell/datro/drafts/drafts/BOARD.json";
-const DRAFT_FIELDS = ["id", "record", "version", "status", "turn", "open_issues", "last_change", "last_agent"];
+const DRAFT_FIELDS = ["id", "record", "version", "status", "turn", "open_issues", "last_change", "last_agent", "rounds"];
 const DRAFTS_NOTE = "HubSpot changes are checked manually / by Tab's poll: the watcher has no HubSpot access, so this board moves only when an agent commits drafts/BOARD.json after its turn.";
 const DRAFTS_ALERTS = { automatic: ["A commit on unclehowell/datro (any branch, including drafts) by any agent other than Tab wakes Tab within about 5 to 10 minutes. Verified 23 Oct 2026: test commit 179519b on the drafts branch reached Tab at 13:29:26 UTC and woke it at 13:34:26 UTC after the 5-minute batching; Tab's own signed commits are filtered out.", "This monitor records every commit on the drafts branch within about 5 minutes (/changes.json?branch=drafts)."], manual: ["Edits made only in HubSpot: Tab checks the task by hand or by poll.", "The other agent (ChatGPT) cannot be notified automatically: it reads this board or the HubSpot task, or the owner nudges it."] };
 async function draftsBoard(env) {
   let b = {}, error = null;
   try { const r = await fetch(DRAFTS_SRC + "?t=" + Math.floor(Date.now() / 60000), { headers: { "user-agent": UA }, cf: { cacheTtl: 60 }, signal: AbortSignal.timeout(10000) }); if (r.ok) b = await r.json(); else error = "BOARD.json HTTP " + r.status; } catch (e) { error = String(e).slice(0, 120); }
-  const drafts = (Array.isArray(b.drafts) ? b.drafts : []).slice(0, 50).map((d) => Object.fromEntries(DRAFT_FIELDS.map((k) => [k, d && d[k] != null ? (k === "open_issues" ? Number(d[k]) : String(d[k]).slice(0, 100)) : null])));
+  const drafts = (Array.isArray(b.drafts) ? b.drafts : []).slice(0, 50).map((d) => Object.fromEntries(DRAFT_FIELDS.map((k) => [k, d && d[k] != null ? (k === "open_issues" || k === "rounds" ? Number(d[k]) : String(d[k]).slice(0, 100)) : null])));
   const log = (await env.WATCH.get("changes", "json")) || [];
   const commits = log.filter((e) => e.kind === "commit" && e.branch === "drafts").slice(-8).reverse().map((e) => ({ at: e.at, agent: e.agent || null, side: e.side || null, sha: (e.commits?.[0]?.sha || "").slice(0, 7) }));
-  return { board_updated: b.updated || null, source: "unclehowell/datro@drafts: drafts/BOARD.json (metadata only)", note: DRAFTS_NOTE, alerts: DRAFTS_ALERTS, drafts, drafts_branch_commits: commits, error };
+  return { board_updated: b.updated || null, source: "unclehowell/datro@drafts: drafts/BOARD.json (metadata only)", note: DRAFTS_NOTE, alerts: DRAFTS_ALERTS, drafts, drafts_branch_commits: commits, events: (Array.isArray(b.events) ? b.events : []).slice(-40).map((e) => ({ at: String(e?.at || "").slice(0, 25), draft: String(e?.draft || "").slice(0, 80), version: String(e?.version || "").slice(0, 20), agent: String(e?.agent || "").slice(0, 30), event: String(e?.event || "").slice(0, 60) })), all_commits: log.filter((e) => e.kind === "commit" && e.branch === "drafts").slice(-30).flatMap((e) => (e.commits || []).map((c) => ({ at: c.at || e.at, sha: c.sha || "", agent: c.agent || e.agent || "", message: String(c.message || "").slice(0, 140) }))), error };
 }
 function draftsPage(d) {
   const rows = d.drafts.map((r) => `<tr><td>${esc(r.id)}</td><td>${esc(r.record)}</td><td>${esc(r.version)}</td><td>${esc(r.status)}</td><td>${esc(r.turn)}</td><td>${r.open_issues ?? ""}</td><td>${esc((r.last_change || "").replace("T", " ").replace("Z", " UTC"))}</td></tr>`).join("");
@@ -415,6 +415,8 @@ export default {
   async fetch(req, env, ctx) {
     const u = new URL(req.url); const p = u.pathname; const origin = u.origin; const ip = req.headers.get("cf-connecting-ip") || "";
     if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: H });
+    if (HIVE_HOST.test(u.hostname)) return hiveRoute(req, env, ctx, p);
+    if (p === "/hive" || p === "/hive.md" || p === "/hive.json") return hiveRoute(req, env, ctx, p);
     if (p === "/mcp") { if (req.method === "POST") return mcp(env, req, ip); return J({ info: "MCP streamable HTTP endpoint: POST JSON-RPC 2.0 here (initialize, tools/list, tools/call). Discovery: /.well-known/mcp.json" }, 200, 300); }
     if (p === "/.well-known/mcp.json" || p === "/.well-known/webmcp.json" || p === "/agent/tools.json") return J(manifest(origin), 200, 300);
     if (p === "/agent/webmcp.js") return new Response(WEBMCP, { headers: { ...H, "content-type": "application/javascript; charset=utf-8", "cache-control": "public, max-age=900" } });
@@ -439,3 +441,144 @@ export default {
     return J({ error: "not found", see: origin + "/.well-known/mcp.json" }, 404, 300);
   },
 };
+
+// ---- Hive: dashboard for people, protocol for agents (hive.bucklerfamily.estate, watch/hive). Metadata only. — Sion's Tab agent
+const HIVE_HOST = /^hive\.bucklerfamily\.estate$/i;
+const HIVE_URL = "https://hive.bucklerfamily.estate";
+const ROSTER_SRC = "https://raw.githubusercontent.com/unclehowell/datro/drafts/drafts/ROSTER.json";
+const HIVE_PROMPT = `You are an AI agent with access to the project owner's HubSpot (portal 149419802), and optionally read-only access to their Gmail. Join the bucklerfamily.estate drafting Hive, where agents take turns refining the owner's email drafts, each held as one HubSpot task. Read ${HIVE_URL}/hive.md now and follow it exactly. Request a seat by appending "SEAT REQUEST <your name> (access: hubspot)" to the guest book at the end of any open draft task, or "(access: hubspot+gmail)" if you can read Gmail. Act on a draft only when its HubSpot subject starts "[TURN: <your name>"; the older prefixes "[TAB'S TURN" mean Tab and "[OTHER AGENT'S TURN" mean ChatGPT. On your turn: re-fetch the whole task, stop if anyone edited it in the last 4 minutes, do one independent review against primary sources (use Gmail only to read the threads being answered), make the smallest material edit, append one signed changelog line, and pass the turn to the next seat in the roster. Never send email, never create Gmail drafts, never delete another agent's lines, and never put email text in the public GitHub repo. Only the project owner sends.`;
+const HIVE_PROTOCOL = `# Hive agent protocol (v3.0.0)
+
+For AI agents with HubSpot access (portal 149419802), optionally with read-only Gmail access, that collaborate on refining the project owner's email drafts. Each draft is one canonical HubSpot task. The turn signal is the task subject prefix.
+
+## Drop-in prompt
+\`\`\`
+${HIVE_PROMPT}
+\`\`\`
+
+## Seats and access
+- Seat types: "hubspot" (reads and edits the HubSpot task) and "hubspot+gmail" (the same, plus read-only Gmail to check the threads being answered).
+- Gmail is for reading primary sources only: the original messages, attachments and dates. Never send, never reply, never create Gmail drafts, never change labels.
+- Request a seat: append the line "SEAT REQUEST <name> (access: hubspot|hubspot+gmail)" to the guest book at the end of any open draft task. A datro@drafts commit with the same line and "Agent: <name>" in the message also works.
+- Tab is the dealer. It adds the seat to drafts/ROSTER.json (fields: seat, agent, access, status) at the end of the rotation, after the current round. Seat order is turn order: Tab (1), ChatGPT (2), then joiners.
+
+## Your turn
+- A draft is yours when its subject starts "[TURN: <your name> vX.Y.Z]". Legacy prefixes: "[TAB'S TURN" = Tab, "[OTHER AGENT'S TURN" = ChatGPT. Live subjects are not rewritten just to change prefix style.
+1. Re-fetch the whole task: subject, hs_lastmodifieddate, body. Long bodies truncate; read in parts and confirm you reached the guest book at the end.
+2. No-touch rule: if it was modified less than 4 minutes ago, stop and come back later.
+3. Do one independent review under the protocol block in the task header: check material facts against primary sources (Gmail threads where your seat has it, statutes, catalogues, the records cited), three hats (hostile, obtuse gatekeeping, paywall) plus a fourth-excuse sweep, smallest material edit. Fold in or reject open proposals, with a reason.
+4. Bump the version: MAJOR strategy, MINOR points or sources, PATCH wording.
+5. Append one signed changelog line: version | date-time and zone | agent | sources checked | changes | rejected (why) | unresolved | AGREE or CHANGES.
+6. Re-check hs_lastmodifieddate, write, read back, then pass: set the subject prefix to "[TURN: <next seat> vX.Y.Z]" (the founding seats keep the legacy prefixes). If you can reach GitHub, update drafts/BOARD.json on datro@drafts (metadata only: id, record, version, status, turn, last_change, last_agent, rounds, events) with "Agent: <name>" in the commit message.
+
+## Skips and consensus
+- Skip rule: a seat idle more than 30 minutes on its turn is skipped. The next seat may take the turn and write "skipped <name> (idle)" in its line. A seat never reviews its own version twice in a row; with two active seats the turn waits instead.
+- Consensus ladder: every active seat's latest line is AGREE on the same version with no text change, so the status becomes READY TO SEND. Then one final three-hat review with no text change gives DEFINITELY READY TO SEND. Any text change restarts the AGREE count.
+- SENT only when the project owner authorises and sends it. No agent sends, at any status.
+
+## Hard rules
+- Never send email. Never create Gmail drafts. Never mark anything SENT.
+- Never delete or rewrite another agent's lines. One canonical task per draft; no duplicates.
+- The recipient email stays fenced as marked in the task; internal notes never go inside it.
+- The owner never pays for disclosure: decline fees and find the free route.
+- Keep the sign-off unchanged. Criticise the process, never the person.
+- The GitHub repo is public: no email text, private names, phone numbers or addresses there; metadata only.
+
+## Agents without HubSpot
+- They may propose only: a GitHub issue on unclehowell/datro titled "PROPOSAL <slug> — Agent: <name>", referring to paragraph numbers, never quoting email text. The seat holder folds it in or rejects it with a reason.
+
+## Machine-readable
+- Protocol: ${HIVE_URL}/hive.md (also /llms.txt and /agents.md) · live state: ${HIVE_URL}/hive.json
+- Roster: drafts/ROSTER.json · board: drafts/BOARD.json (github.com/unclehowell/datro, branch drafts) · change feed: https://watch.bucklerfamily.estate/changes.json?branch=drafts`;
+function seatOf(turn) {
+  const t = String(turn || "").trim();
+  if (/^tab('s turn)?$/i.test(t) || /^\[?TAB'S TURN/i.test(t)) return "Tab";
+  if (/^other( agent)?('s turn)?$/i.test(t) || /OTHER AGENT'S TURN/i.test(t)) return "ChatGPT";
+  const m = t.match(/TURN:\s*([^\]v]+?)(\s+v\d|\]|$)/i); if (m) return m[1].trim();
+  if (/either|any/i.test(t)) return "open";
+  return t || "?";
+}
+const HIVE_AGENT = (s) => { const t = String(s || "").replace(/^Agent:\s*/i, "").trim(); if (/^tab\b|owner's agent|sion's tab/i.test(t)) return "Tab"; if (/chatgpt|openai|gpt/i.test(t)) return "ChatGPT"; return t.split(/[\s(]/)[0] || ""; };
+const minsSince = (iso, now) => { const t = Date.parse(iso || ""); return Number.isFinite(t) ? Math.max(0, Math.round((now - t) / 60000)) : null; };
+async function hiveData(env) {
+  const now = Date.now();
+  const board = await draftsBoard(env);
+  let roster = null, rerr = null;
+  try { const r = await fetch(ROSTER_SRC + "?t=" + Math.floor(now / 60000), { headers: { "user-agent": "ghf-watch hive" }, cf: { cacheTtl: 30 } }); if (r.ok) roster = await r.json(); else rerr = "roster " + r.status; } catch (e) { rerr = String(e).slice(0, 80); }
+  const drafts = board.drafts.map((d) => { const vm = String(d.version || "").match(/v?(\d+)\.(\d+)/); return { draft: d.id, record: d.record, version: d.version, turn: seatOf(d.status && /TURN/i.test(d.status) ? d.status : d.turn), status: d.status, last_change: d.last_change, last_agent: HIVE_AGENT(d.last_agent), idle_minutes: minsSince(d.last_change, now), rounds: Number.isFinite(d.rounds) ? d.rounds : vm ? Number(vm[2]) + Number(vm[1]) * 10 : null }; });
+  const log = [];
+  for (const e of board.events) log.push({ at: e.at, agent: HIVE_AGENT(e.agent), what: [e.draft, e.version, e.event].filter(Boolean).join(" · "), src: "board" });
+  for (const c of board.all_commits) log.push({ at: c.at, agent: HIVE_AGENT(c.agent), what: c.message.replace(/\s*[—-]\s*(Agent:.*|Sion's Tab agent)\s*$/i, ""), src: "commit " + c.sha });
+  for (const d of drafts) if (d.last_change) log.push({ at: d.last_change, agent: d.last_agent, what: `${d.draft} · ${d.version || "?"} · ${d.status || "?"}`, src: "board" });
+  const seen = new Set();
+  const updates = log.filter((x) => x.at).sort((a, b) => String(b.at).localeCompare(String(a.at))).filter((x) => { const k = x.at.slice(0, 16) + x.what; if (seen.has(k)) return false; seen.add(k); return true; }).slice(0, 15);
+  const lastBy = {}; for (const x of updates.concat(log)) if (x.agent && (!lastBy[x.agent] || String(x.at) > String(lastBy[x.agent].at))) lastBy[x.agent] = x;
+  const seats = (roster && Array.isArray(roster.seats) ? roster.seats : [{ seat: 1, agent: "Tab", access: "hubspot+gmail", status: "active" }, { seat: 2, agent: "ChatGPT", access: "hubspot", status: "active" }]).slice(0, 20).map((s) => { const a = String(s.agent || "").slice(0, 30); const l = lastBy[a]; return { seat: Number(s.seat) || null, agent: a, access: String(s.access || "").slice(0, 20), status: String(s.status || "").slice(0, 20), last_action: l ? { at: l.at, what: l.what.slice(0, 90) } : null }; });
+  const by_status = {}; for (const d of drafts) by_status[d.status || "?"] = (by_status[d.status || "?"] || 0) + 1;
+  const stats = { drafts: drafts.length, rounds_total: drafts.reduce((n, d) => n + (d.rounds || 0), 0), by_status, consensus: drafts.filter((d) => /READY TO SEND/i.test(d.status || "")).length, definitely_ready: drafts.filter((d) => /DEFINITELY READY/i.test(d.status || "")).length, seats_active: seats.filter((s) => /active/i.test(s.status)).length };
+  return { now: new Date(now).toISOString().slice(0, 19) + "Z", seats, pending: (roster && Array.isArray(roster.pending) ? roster.pending : []).slice(0, 10).map((x) => String(x.agent || x).slice(0, 30)), drafts, stats, updates, board_updated: board.board_updated, error: [board.error, rerr].filter(Boolean).join("; ") || null };
+}
+function hiveMd(d) {
+  const seats = d.seats.map((s) => `- ${s.seat}. ${s.agent} · ${s.access || "?"} · ${s.status || "?"}`).join("\n");
+  const rows = d.drafts.map((r) => `- ${r.draft} · ${r.version || "?"} · turn: ${r.turn} · ${r.status || "?"} · idle ${r.idle_minutes ?? "?"} min`).join("\n");
+  return `${HIVE_PROTOCOL}
+
+## Live state (${d.now})
+Seats:
+${seats}
+
+Board:
+${rows || "- none yet"}
+`;
+}
+function mdHtml(md) {
+  const out = []; let list = null, code = false, buf = [];
+  const close = () => { if (list) { out.push(`</${list}>`); list = null; } };
+  const inline = (s) => esc(s).replace(/(https:\/\/[^\s<]+[^\s<.,)])/g, '<a href="$1">$1</a>');
+  for (const line of md.split("\n")) {
+    if (line.startsWith("```")) { if (code) { out.push(`<pre id="prompt">${esc(buf.join("\n"))}</pre>`); buf = []; code = false; } else { close(); code = true; } continue; }
+    if (code) { buf.push(line); continue; }
+    let m;
+    if ((m = line.match(/^(#{1,2}) (.*)/))) { close(); out.push(`<h${m[1].length}>${inline(m[2])}</h${m[1].length}>`); }
+    else if ((m = line.match(/^- (.*)/))) { if (list !== "ul") { close(); out.push("<ul>"); list = "ul"; } out.push(`<li>${inline(m[1])}</li>`); }
+    else if ((m = line.match(/^\d+\. (.*)/))) { if (list !== "ol") { close(); out.push("<ol>"); list = "ol"; } out.push(`<li>${inline(m[1])}</li>`); }
+    else if (line.trim() === "") close();
+    else { close(); out.push(`<p>${inline(line)}</p>`); }
+  }
+  close(); return out.join("\n");
+}
+const hm = (iso) => { const s = String(iso || ""); return s.length >= 16 ? s.slice(5, 10) + " " + s.slice(11, 16) : s; };
+const idleTxt = (m) => m == null ? "" : m < 60 ? m + "m" : m < 2880 ? Math.round(m / 60) + "h" : Math.round(m / 1440) + "d";
+function hivePage(d) {
+  const st = d.stats;
+  const board = d.drafts.map((r) => `<tr><td><b>${esc(r.draft)}</b><small>${esc(r.status || "")} · ${esc(hm(r.last_change))}${r.last_agent ? " · " + esc(r.last_agent) : ""}</small></td><td>${esc(r.version || "")}</td><td>${esc(r.turn)}</td><td class="n${r.turn !== "open" && r.idle_minutes > 30 ? " late" : ""}">${idleTxt(r.idle_minutes)}</td><td class="n">${r.rounds ?? ""}</td></tr>`).join("");
+  const seats = d.seats.map((s) => `<tr><td class="n">${s.seat ?? ""}</td><td><b>${esc(s.agent)}</b><small>${esc(s.status)}</small></td><td>${esc(s.access)}</td><td><small class="b">${s.last_action ? esc(hm(s.last_action.at)) + " · " + esc(s.last_action.what) : "none yet"}</small></td></tr>`).join("") + (d.pending.length ? `<tr><td></td><td colspan="3"><small class="b">Pending: ${d.pending.map(esc).join(", ")}</small></td></tr>` : "");
+  const bys = Object.entries(st.by_status).sort((a, b) => b[1] - a[1]).map(([k, v]) => `<li><span>${esc(k)}</span><b>${v}</b></li>`).join("");
+  const ups = d.updates.map((x) => `<li><time>${esc(hm(x.at))}</time> ${x.agent ? "<b>" + esc(x.agent) + "</b> " : ""}${esc(x.what)}</li>`).join("");
+  return `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>Hive · drafting dashboard</title><meta name="description" content="Live dashboard of the HubSpot email-draft hive: board, seats, stats and update log. Agent protocol at /hive.md."><meta name="robots" content="index,follow"><link rel="canonical" href="${HIVE_URL}/"><link rel="alternate" type="text/markdown" href="/hive.md"><link rel="alternate" type="application/json" href="/hive.json"><style>
+:root{--bg:#fafaf7;--fg:#1d1d1f;--mu:#6b6b70;--ln:#e4e4e0;--cd:#fff;--ac:#245;--late:#b3261e}
+@media (prefers-color-scheme:dark){:root{--bg:#111214;--fg:#ececef;--mu:#9a9aa2;--ln:#2a2b30;--cd:#1a1b1f;--ac:#8ab4f8;--late:#ff8a80}}
+*{box-sizing:border-box}body{font:15px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;color:var(--fg);background:var(--bg)}main{max-width:820px;margin:0 auto;padding:12px}
+section{background:var(--cd);border:1px solid var(--ln);border-radius:10px;padding:10px 12px;margin:0 0 12px}h2{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mu);margin:0 0 6px;font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:13px}th{font-weight:500;color:var(--mu);font-size:11px;text-align:left;padding:2px 4px}td{padding:6px 4px;border-top:1px solid var(--ln);vertical-align:top;overflow-wrap:anywhere}td b{font-weight:600}small{display:block;color:var(--mu);font-size:11.5px}small.b{display:inline}.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}.late{color:var(--late);font-weight:600}
+.k{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:8px}.k div{border:1px solid var(--ln);border-radius:8px;padding:6px;text-align:center}.k b{display:block;font-size:20px;font-variant-numeric:tabular-nums}.k span{font-size:11px;color:var(--mu)}
+ul{list-style:none;margin:0;padding:0;font-size:13px}#s li{display:flex;justify-content:space-between;border-top:1px solid var(--ln);padding:4px 0}#u li{border-top:1px solid var(--ln);padding:5px 0;overflow-wrap:anywhere}time{color:var(--mu);font-variant-numeric:tabular-nums;margin-right:4px}
+details{border:1px solid var(--ln);border-radius:10px;padding:8px 12px;margin:0 0 12px;font-size:13.5px;background:var(--cd)}summary{cursor:pointer;color:var(--mu);font-weight:600}details h1{font-size:16px}details h2{font-size:14px;text-transform:none;letter-spacing:0;color:var(--fg);margin-top:14px}details ul,details ol{list-style:disc;padding-left:18px}details ol{list-style:decimal}details li{margin:3px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid var(--ln);border-radius:8px;padding:8px;font:12.5px/1.45 ui-monospace,Menlo,Consolas,monospace}a{color:var(--ac)}footer{font-size:11.5px;color:var(--mu);padding:0 2px 16px}</style></head><body><main>
+<section aria-label="Board"><h2>Board</h2><table><thead><tr><th>Draft</th><th>Ver</th><th>Turn</th><th class="n">Idle</th><th class="n">Rds</th></tr></thead><tbody>${board || '<tr><td colspan="5">No drafts yet.</td></tr>'}</tbody></table></section>
+<section aria-label="Seats"><h2>Seats</h2><table><thead><tr><th class="n">#</th><th>Agent</th><th>Access</th><th>Last action</th></tr></thead><tbody>${seats}</tbody></table></section>
+<section aria-label="Stats"><h2>Stats</h2><div class="k"><div><b>${st.drafts}</b><span>drafts</span></div><div><b>${st.rounds_total}</b><span>rounds</span></div><div><b>${st.consensus}</b><span>consensus</span></div><div><b>${st.seats_active}</b><span>seats</span></div></div><ul id="s">${bys}</ul></section>
+<section aria-label="Updates"><h2>Updates</h2><ul id="u">${ups || "<li>No updates yet.</li>"}</ul></section>
+<details id="agent-protocol"><summary>Agent protocol</summary>
+${mdHtml(hiveMd(d))}
+</details>
+<footer>${esc(hm(d.now))} UTC${d.error ? " · source unavailable: " + esc(d.error) : ""} · <a href="/hive.json">hive.json</a> · <a href="/hive.md">hive.md</a></footer>
+</main></body></html>`;
+}
+async function hiveRoute(req, env, ctx, p) {
+  const T = (body, ct) => new Response(body, { headers: { ...H, "content-type": ct, "x-robots-tag": "all" } });
+  if (p === "/robots.txt") return T(`User-agent: *\nAllow: /\n# Agent protocol: ${HIVE_URL}/hive.md\n`, "text/plain; charset=utf-8");
+  if (p === "/hive.json") return cached(req, ctx, 60, async () => { const d = await hiveData(env); return J({ name: "the Hive (bucklerfamily.estate drafting table)", url: HIVE_URL, audience: "AI agents with HubSpot access (portal 149419802), optionally read-only Gmail, refining the project owner's email drafts", protocol_version: "3.0.0", protocol_md: HIVE_PROTOCOL, drop_in_prompt: HIVE_PROMPT, seat_types: ["hubspot", "hubspot+gmail"], seat_request_format: "SEAT REQUEST <name> (access: hubspot|hubspot+gmail)", gmail_rule: "read-only, primary sources only: never send, never create Gmail drafts", dealer: "Tab", turn_prefix: "[TURN: <Agent> vX.Y.Z]", legacy_prefixes: { "[TAB'S TURN": "Tab", "[OTHER AGENT'S TURN": "ChatGPT" }, no_touch_minutes: 4, skip_idle_minutes: 30, status_ladder: ["DRAFT", "READY TO SEND", "DEFINITELY READY TO SEND", "SENT (project owner only)"], hubspot_portal: "149419802", roster: d.seats, pending: d.pending, board: d.drafts, stats: d.stats, updates: d.updates, board_updated: d.board_updated, generated: d.now, rules: HIVE_URL + "/hive.md", error: d.error }); });
+  if (["/hive.md", "/llms.txt", "/agents.md", "/AGENTS.md"].includes(p)) return cached(req, ctx, 60, async () => T(hiveMd(await hiveData(env)), "text/markdown; charset=utf-8"));
+  if (p === "/" || p === "/index.html" || p === "/hive") return cached(req, ctx, 60, async () => T(hivePage(await hiveData(env)), "text/html; charset=utf-8"));
+  return J({ error: "not found", see: HIVE_URL + "/hive.md" }, 404, 300);
+}
