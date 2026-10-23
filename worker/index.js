@@ -372,7 +372,34 @@ function page(st, sites, log, origin) {
 </head><body><main><p>${up} of ${sites.length} sites up · each checked about every ${st.cycle_minutes || 30} min · last run ${esc((st.last_run?.at || "pending").replace("T", " "))}</p>
 <details open><summary>Latest changes</summary><ul>${ch || "<li>No changes recorded yet.</li>"}</ul></details>
 <details><summary>All sites</summary><table><tbody>${rows}</tbody></table></details>
-<details><summary>For agents</summary><p>No signup or key. MCP (streamable HTTP): <code>${origin}/mcp</code> · discovery <a href="/.well-known/mcp.json">/.well-known/mcp.json</a> · WebMCP <a href="/agent/webmcp.js">/agent/webmcp.js</a>. Tools: list_sites, get_changes(since), get_status, add_site(url), log_update(site, agent, summary), check_now(site), get_baton(branch), claim_baton(branch, agent), release_baton(branch, agent, note, next). Turn-taking rules: <a href="/agents.md">/agents.md</a> · <a href="/baton.json">/baton.json</a>.</p><p>Plain HTTP: <a href="/status.json">/status.json</a> · <a href="/changes.json">/changes.json?since=</a> · <a href="/feed.xml">/feed.xml</a> · <a href="/sites.json">/sites.json</a>.</p></details></main>
+<details><summary>For agents</summary><p>No signup or key. MCP (streamable HTTP): <code>${origin}/mcp</code> · discovery <a href="/.well-known/mcp.json">/.well-known/mcp.json</a> · WebMCP <a href="/agent/webmcp.js">/agent/webmcp.js</a>. Tools: list_sites, get_changes(since), get_status, add_site(url), log_update(site, agent, summary), check_now(site), get_baton(branch), claim_baton(branch, agent), release_baton(branch, agent, note, next). Turn-taking rules: <a href="/agents.md">/agents.md</a> · <a href="/baton.json">/baton.json</a>. Email drafts review board: <a href="/drafts">/drafts</a>.</p><p>Plain HTTP: <a href="/status.json">/status.json</a> · <a href="/changes.json">/changes.json?since=</a> · <a href="/feed.xml">/feed.xml</a> · <a href="/sites.json">/sites.json</a>.</p></details></main>
+<footer><p>© Williams–Buckler family. All rights reserved. <a href="https://bucklerfamily.estate/licence/">Licence</a></p></footer></body></html>`;
+}
+
+
+// Drafts board (metadata only). Source: drafts/BOARD.json on unclehowell/datro@drafts, written by the agents after each turn.
+// Only whitelisted metadata fields are served; the email text lives in HubSpot and never passes through here.
+const DRAFTS_SRC = "https://raw.githubusercontent.com/unclehowell/datro/drafts/drafts/BOARD.json";
+const DRAFT_FIELDS = ["id", "record", "version", "status", "turn", "open_issues", "last_change", "last_agent"];
+const DRAFTS_NOTE = "HubSpot changes are checked manually / by Tab's poll: the watcher has no HubSpot access, so this board moves only when an agent commits drafts/BOARD.json after its turn.";
+const DRAFTS_ALERTS = { automatic: ["A commit on unclehowell/datro (any branch, including drafts) by any agent other than Tab wakes Tab within about 5 to 10 minutes.", "This monitor records every commit on the drafts branch within about 5 minutes (/changes.json?branch=drafts)."], manual: ["Edits made only in HubSpot: Tab checks the task by hand or by poll.", "The other agent (ChatGPT) cannot be notified automatically: it reads this board or the HubSpot task, or the owner nudges it."] };
+async function draftsBoard(env) {
+  let b = {}, error = null;
+  try { const r = await fetch(DRAFTS_SRC + "?t=" + Math.floor(Date.now() / 60000), { headers: { "user-agent": UA }, cf: { cacheTtl: 60 }, signal: AbortSignal.timeout(10000) }); if (r.ok) b = await r.json(); else error = "BOARD.json HTTP " + r.status; } catch (e) { error = String(e).slice(0, 120); }
+  const drafts = (Array.isArray(b.drafts) ? b.drafts : []).slice(0, 50).map((d) => Object.fromEntries(DRAFT_FIELDS.map((k) => [k, d && d[k] != null ? (k === "open_issues" ? Number(d[k]) : String(d[k]).slice(0, 100)) : null])));
+  const log = (await env.WATCH.get("changes", "json")) || [];
+  const commits = log.filter((e) => e.kind === "commit" && e.branch === "drafts").slice(-8).reverse().map((e) => ({ at: e.at, agent: e.agent || null, side: e.side || null, sha: (e.commits?.[0]?.sha || "").slice(0, 7) }));
+  return { board_updated: b.updated || null, source: "unclehowell/datro@drafts: drafts/BOARD.json (metadata only)", note: DRAFTS_NOTE, alerts: DRAFTS_ALERTS, drafts, drafts_branch_commits: commits, error };
+}
+function draftsPage(d) {
+  const rows = d.drafts.map((r) => `<tr><td>${esc(r.id)}</td><td>${esc(r.record)}</td><td>${esc(r.version)}</td><td>${esc(r.status)}</td><td>${esc(r.turn)}</td><td>${r.open_issues ?? ""}</td><td>${esc((r.last_change || "").replace("T", " ").replace("Z", " UTC"))}</td></tr>`).join("");
+  const cm = d.drafts_branch_commits.map((c) => `<li><time>${esc((c.at || "").replace("T", " ").replace("Z", ""))}</time> ${esc(c.sha)} · ${esc(c.agent || c.side || "")}</li>`).join("");
+  return `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Drafts board · bucklerfamily.estate</title><meta name="description" content="Review status of email drafts: record, version, status, whose turn, open issues. Metadata only."><style>body{font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;color:#1d1d1f;background:#fafaf7}main{max-width:900px;margin:0 auto;padding:14px}table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:4px 6px;border-top:1px solid #eee;text-align:left;word-break:break-word}ul{padding-left:16px;font-size:13px}time{color:#666}footer{max-width:900px;margin:0 auto;padding:14px;font-size:12px;color:#666}a{color:#245}</style>
+<script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.1.2"></script>
+</head><body><main><table><thead><tr><th>Draft</th><th>Canonical record</th><th>Version</th><th>Status</th><th>Turn</th><th>Open issues</th><th>Last change</th></tr></thead><tbody>${rows || '<tr><td colspan="7">No drafts listed yet.</td></tr>'}</tbody></table>
+<p>${esc(d.note)}</p><p>Automatic: ${d.alerts.automatic.map(esc).join(" ")}</p><p>Manual: ${d.alerts.manual.map(esc).join(" ")}</p>
+<p>Recent commits on the drafts branch:</p><ul>${cm || "<li>None recorded yet.</li>"}</ul>
+<p><a href="/drafts.json">/drafts.json</a> · <a href="/">all sites</a>${d.error ? " · board source unavailable: " + esc(d.error) : ""}</p></main>
 <footer><p>© Williams–Buckler family. All rights reserved. <a href="https://bucklerfamily.estate/licence/">Licence</a></p></footer></body></html>`;
 }
 
@@ -397,6 +424,8 @@ export default {
     if (p === "/status.json") return cached(req, ctx, 60, async () => J(await callTool(env, "get_status", q, ip)));
     if (p === "/sites.json") return cached(req, ctx, 60, async () => J(await callTool(env, "list_sites", q, ip)));
     if (p === "/changes.json") return cached(req, ctx, 60, async () => J(await callTool(env, "get_changes", q, ip)));
+    if (p === "/drafts.json") return cached(req, ctx, 60, async () => J(await draftsBoard(env)));
+    if (p === "/drafts" || p === "/drafts/") return cached(req, ctx, 60, async () => new Response(draftsPage(await draftsBoard(env)), { headers: { ...H, "content-type": "text/html; charset=utf-8" } }));
     if (p === "/baton.json") return cached(req, ctx, 30, async () => J(await callTool(env, "get_baton", q, ip)));
     if (p === "/agents.md" || p === "/AGENTS.md" || p === "/FLYWHEEL.md" || p === "/flywheel.md") return new Response(AGENTS_MD, { headers: { ...H, "content-type": "text/markdown; charset=utf-8", "cache-control": "public, max-age=900" } });
     if (p === "/feed.xml") return cached(req, ctx, 120, async () => new Response(feed((await env.WATCH.get("changes", "json")) || [], origin), { headers: { ...H, "content-type": "application/atom+xml; charset=utf-8" } }));
