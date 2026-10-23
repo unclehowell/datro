@@ -22,7 +22,7 @@ const MAX_SQL_BATCH = 85;
 if (!API_TOKEN) throw new Error("CLOUDFLARE_API_TOKEN is required.");
 
 const inventory = JSON.parse(await readFile(new URL("../static/tumbler/sources.json", import.meta.url), "utf8"));
-const counts = { branches: 0, gitFiles: 0, webPages: 0, researchItems: 0, qaItems: 0, documentsIndexed: 0, chunks: 0, skippedGitFiles: 0, skippedPrivateHosts: 0, failedHosts: [], errors: [], phase: "starting" };
+const counts = { branches: 0, branchHeadSnapshot: [], gitFiles: 0, webPages: 0, researchItems: 0, qaItems: 0, documentsIndexed: 0, chunks: 0, skippedGitFiles: 0, skippedPrivateHosts: 0, failedHosts: [], errors: [], phase: "starting" };
 const indexedHosts = new Set();
 let sqlOps = [];
 
@@ -335,6 +335,8 @@ async function fetchRawBlob(commitSha, path) {
 async function updateProgress(status = "running", finishedAt = "") {
   const coverage = {
     branchHeadsSeen:counts.branches,
+    branchHeadSnapshot:counts.branchHeadSnapshot,
+    branchInventoryComplete:counts.branchHeadSnapshot.length===counts.branches && !counts.errors.some(error=>/Branch tree failed:|Could not list subtree|Could not fetch text blob/.test(error)),
     gitFilesIndexed:counts.gitFiles,
     webPagesIndexed:counts.webPages,
     researchItemsIndexed:counts.researchItems,
@@ -366,6 +368,7 @@ async function indexGitBranches() {
   }
   if (!branches.length) throw new Error("No repository branches returned by GitHub API.");
   counts.branches = branches.length;
+  counts.branchHeadSnapshot = branches.map(({name,sha}) => ({name,sha})).sort((a,b) => a.name.localeCompare(b.name));
   await updateProgress();
 
   const treeResults = await mapLimit(branches, 4, async branch => ({
@@ -567,6 +570,8 @@ async function main() {
   counts.errors = [...new Set(counts.errors)];
   const coverage = {
     branchHeadsSeen:counts.branches,
+    branchHeadSnapshot:counts.branchHeadSnapshot,
+    branchInventoryComplete:counts.branchHeadSnapshot.length===counts.branches && !counts.errors.some(error=>/Branch tree failed:|Could not list subtree|Could not fetch text blob/.test(error)),
     gitFilesIndexed:counts.gitFiles,
     webPagesIndexed:counts.webPages,
     researchItemsIndexed:counts.researchItems,
