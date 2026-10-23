@@ -34,6 +34,8 @@ ARCHIVE_DIR = 'pdf/docs-archive'                       # wayback branch: wayback
 WORD_LATEST = {'en': 'Latest', 'cy': 'Diweddaraf', 'es': 'Reciente', 'de': 'Neueste', 'fr': 'Dernier'}
 WORD_OLDER = {'en': 'Older versions (PDF)', 'cy': 'Fersiynau hŷn (PDF)', 'es': 'Versiones anteriores (PDF)',
               'de': 'Ältere Versionen (PDF)', 'fr': 'Versions précédentes (PDF)'}
+WORD_THIS_PDF = {'en': 'This version (PDF)', 'cy': 'Y fersiwn hon (PDF)', 'es': 'Esta versión (PDF)',
+                 'de': 'Diese Version (PDF)', 'fr': 'Cette version (PDF)'}
 BANNED = ['says', 'claims', 'according to', 'hearsay', 'unverified', 'alleged', 'fraud', 'stolen']
 
 
@@ -82,7 +84,24 @@ def validate(coll, slug, meta):
         mo.unlink()                                       # stale local compile; Sphinx makes a fresh one
     if (ROOT / coll / 'collection.json').exists() is False:
         errs.append(f'{coll}/collection.json is missing')
-    text = ' '.join(p.read_text(encoding='utf-8').lower() for p in list(src.rglob('*.rst')) + list(src.rglob('*.po')))
+    rec = d.get('record')
+    verbatim = set()
+    if rec is not None:                                   # a record carried over unchanged from its source (§5.6)
+        if not isinstance(rec, dict) or not rec.get('catalogue') or not str(rec.get('source', '')).startswith('https://'):
+            errs.append('record needs "catalogue" and an https "source"')
+        else:
+            verbatim = {src / f for f in rec.get('verbatim', [])}
+            for f in verbatim:
+                if not f.exists():
+                    errs.append(f'record verbatim file {f.name} is missing')
+    def _authored(p):
+        t = p.read_text(encoding='utf-8')
+        if rec is not None and p == src / 'index.rst':
+            t = '\n'.join(t.split('\n')[2:])                 # the H1 is the record's own title (= doc.json title)
+            t = re.sub(r'<https?://[^>\s]+>', '', t)           # link targets to the record's own addresses are not wording
+        return t.lower()
+    text = ' '.join(_authored(p) for p in list(src.rglob('*.rst')) + list(src.rglob('*.po')) if p not in verbatim)
+    text += ' ' + str(d.get('summary', '')).lower()
     for word in BANNED:
         if re.search(r'\b' + re.escape(word) + r'\b', text):
             errs.append(f'banned word "{word}" in the text')
@@ -101,6 +120,17 @@ def archive_url(coll, slug, lang, version, date):
 def check_archive(coll, slug, d):
     """doc.json "archive": [{"version", "date", "pdf": {"<lang>": "<wayback url>"}}], newest first, every version older than the current one."""
     errs, seen = [], []
+    cur_pdf = d.get('pdf')                                # the current version as PDF in wayback (§6.7), optional
+    if cur_pdf is not None:
+        if not isinstance(cur_pdf, dict) or not cur_pdf:
+            errs.append('pdf must be {lang: url}')
+        else:
+            for lang, url in cur_pdf.items():
+                want = archive_url(coll, slug, lang, str(d.get('version', '')), str(d.get('updated', '')))
+                if lang not in d.get('languages', []):
+                    errs.append(f'pdf [{lang}] is not one of the languages')
+                elif url != want:
+                    errs.append(f'pdf [{lang}] url must be {want}')
     arc = d.get('archive', [])
     if not isinstance(arc, list):
         return ['archive must be a list']
@@ -201,6 +231,7 @@ def build_doc(coll, slug, meta, d):
     entry = {'id': d['id'], 'collection': coll, 'document': slug, 'version': d['version'], 'date': d['date'],
              'updated': d['updated'], 'author': d['author'], 'status': d['status'], 'source_language': d['source_language'],
              'archive': [{'version': a['version'], 'date': a['date'], 'languages': sorted(a['pdf'])} for a in d.get('archive', [])],
+             'pdf_languages': sorted(d.get('pdf') or {}),
              'languages': []}
     with tempfile.TemporaryDirectory(prefix='docs-') as tmp:
         tmp = pathlib.Path(tmp)
@@ -211,6 +242,7 @@ def build_doc(coll, slug, meta, d):
                 'DOCS_LANG_LINKS': json.dumps([{'code': l, 'name': LANG_NAMES.get(l, l), 'href': f'../{l}/',
                                                 'current': l == lang} for l in langs]),
                 'DOCS_ARCHIVE': json.dumps(older), 'DOCS_ARCHIVE_LABEL': WORD_OLDER.get(lang, WORD_OLDER['en']),
+                'DOCS_PDF': (d.get('pdf') or {}).get(lang, ''), 'DOCS_PDF_LABEL': WORD_THIS_PDF.get(lang, WORD_THIS_PDF['en']),
                 'DOCS_HOME_HREF': '/', 'DOCS_HOME_LABEL': WORD_HOME.get(lang, 'All documents'),
                 'DOCS_BASEURL': f'{SITE}/{coll}/{slug}/latest/html/{lang}/'})
             summary = po_lookup(src, lang, d['summary']) if lang != d['source_language'] else d['summary']
@@ -219,10 +251,12 @@ def build_doc(coll, slug, meta, d):
             sphinx('html', src, html_out, env, tmp / f'dt-html-{lang}')
             for junk in ('.buildinfo', 'objects.inv'):
                 (html_out / junk).unlink(missing_ok=True)
+            for m in html_out.rglob('*.map'):          # theme source maps: never requested by readers; keeps the deploy under Pages' file cap
+                m.unlink()
             inject_boot(html_out)
             entry['languages'].append({
                 'code': lang, 'name': LANG_NAMES.get(lang, lang), 'title': title, 'summary': summary,
-                'html': f'/{coll}/{slug}/latest/html/{lang}/', 'archive': older})
+                'html': f'/{coll}/{slug}/latest/html/{lang}/', 'pdf': (d.get('pdf') or {}).get(lang), 'archive': older})
     codes = json.dumps(langs)
     redirect_page(base / 'html' / 'index.html',
                   f"var L={codes},n=(navigator.language||'').slice(0,2);location.replace('./'+(L.indexOf(n)>-1?n:'{d['source_language']}')+'/');",
@@ -301,6 +335,9 @@ def render_menus(index, entries):
         for l in e['languages']:
             btns = [f'<a class="btn html" href="{esc(l["html"])}" lang="{l["code"]}" title="HTML · v{esc(e["version"])}">'
                     f'{esc(WORD_LATEST.get(l["code"], "Latest"))}</a>']
+            if l.get('pdf'):
+                btns.append(f'<a class="btn pdf" href="{esc(l["pdf"])}" title="PDF · v{esc(e["version"])} · {esc(e["updated"])}">'
+                            f'{esc(e["version"].replace(".", "-"))}</a>')
             btns += [f'<a class="btn pdf" href="{esc(a["pdf"])}" title="PDF · v{esc(a["version"])} · {esc(a["date"])}">'
                      f'{esc(a["version"].replace(".", "-"))}</a>' for a in l['archive']]
             rows += band(f'<span class="code">{l["code"].upper()}</span>{esc(l["name"])}', btns, 'lang')
@@ -355,7 +392,10 @@ def main():
     if OUT.exists() and not only:
         shutil.rmtree(OUT)
     OUT.mkdir(exist_ok=True)
-    entries = [build_doc(*c) for c in checked]
+    # documents are independent Sphinx runs: build them side by side (one per CPU); the order of entries is kept
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=int(os.environ.get('DOCS_JOBS', 0)) or os.cpu_count() or 2) as pool:
+        entries = list(pool.map(lambda c: build_doc(*c), checked))
     collections = {}
     for c in sorted({e['collection'] for e in entries}):
         cj = json.loads((ROOT / c / 'collection.json').read_text(encoding='utf-8'))
@@ -382,7 +422,8 @@ def main():
     (OUT / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                      + ''.join(f'  <url><loc>{_html.escape(u)}</loc></url>\n' for u in urls) + '</urlset>\n', encoding='utf-8')
     log(f'done: {len(entries)} document(s), {sum(len(e["languages"]) for e in entries)} HTML language build(s), '
-        f'{sum(len(l["archive"]) for e in entries for l in e["languages"])} archived PDF link(s) -> {OUT}')
+        f'{sum(len(l["archive"]) for e in entries for l in e["languages"])} archived PDF link(s), '
+        f'{sum(1 for e in entries for l in e["languages"] if l.get("pdf"))} current PDF link(s) -> {OUT}')
 
 
 if __name__ == '__main__':

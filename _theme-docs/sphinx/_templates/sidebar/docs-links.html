@@ -8,6 +8,9 @@
     {%- endfor %}
   </nav>
   {%- endif %}
+  {%- if docs_pdf %}
+  <a class="docs-pdf docs-pdf-current" href="{{ docs_pdf }}" title="v{{ docs_version }}">{{ docs_pdf_label }}</a>
+  {%- endif %}
   {%- if docs_archive %}
   <details class="docs-older"><summary>{{ docs_archive_label }}</summary>
     {%- for a in docs_archive %}

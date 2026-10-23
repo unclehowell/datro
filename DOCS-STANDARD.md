@@ -1,6 +1,6 @@
 # DOCS-STANDARD — how a document is published on docs.bucklerfamily.estate
 
-Version 1.2.0 · 2026-10-22. Drawn from the library branch (library.bucklerfamily.estate), which stays as it is.
+Version 1.3.0 · 2026-10-23. Drawn from the library branch (library.bucklerfamily.estate), which stays as it is.
 The rules are numbered so a change, a review or a build error can point at one. `python3 _theme-docs/build.py --check`
 enforces the ones marked **[checked]**; a deploy fails rather than publish a document that breaks them.
 
@@ -34,7 +34,7 @@ enforces the ones marked **[checked]**; a deploy fails rather than publish a doc
 /docs.json                                                         navigation index (§7)
 ```
 2.6 File names join the two folder names with a hyphen: `ghf_tests-specimen_loremipsum` (as in the library).
-2.7 Archived editions use `YYYY-MM-DD_<collection>-<document>_<lang>_vX-Y-Z.pdf` — the date of that edition (its `updated`), language before version.
+2.7 Archived (and current, §6.7) editions use `YYYY-MM-DD_<collection>-<document>_<lang>_vX-Y-Z.pdf` — the date of that edition (its `updated`), language before version.
 2.8 Archived editions live in the wayback branch at `wayback/pdf/docs-archive/<collection>/<document>/<lang>/<name from 2.7>`,
     served at `https://wayback.bucklerfamily.estate/pdf/docs-archive/<collection>/<document>/<lang>/<name>`.
     The archive's own list is `wayback/pdf/docs-archive/index.json`. **[checked: the URL in doc.json must follow this pattern]**
@@ -76,6 +76,11 @@ enforces the ones marked **[checked]**; a deploy fails rather than publish a doc
 5.4 Footnotes use auto-numbered `[#name]_`.
 5.5 Public wording rules of the family sites apply: never name a private individual; institutions and roles only; none of the words
     says, claims, according to, hearsay, unverified, alleged, fraud, stolen. **[checked]** No disclaimers, no crest.
+5.6 A **record** carried over unchanged from its source (an evidence-register page, a transcript) is kept as it is: `doc.json`
+    `"record"` names its catalogue number, its `https` source, the source's last-modified time and the `"verbatim"` chapter files.
+    The wording rules (5.5) and the check apply to the text the docs library adds (introduction, release notes, summary); the verbatim
+    chapters, the record's own title (the H1) and link targets to its own addresses are carried as published. **[checked]**
+    Links to wiki pages point to the same path on research.bucklerfamily.estate; images stay links to their source files (not copied).
 
 ## 6. Versions, release notes and the archive SOP
 6.1 `releasenotes.rst` is the first chapter: "This release (version x.y.z)" with dated bullets `**2026-Oct-22** - …`, then "Older versions".
@@ -91,6 +96,12 @@ python3 _theme-docs/release.py <collection>/<document> --to X.Y.Z [--date YYYY-M
 6.4 Then: commit `_release/wayback/` to the **wayback** branch (fetch and rebase, never force-push) and make sure wayback deploys;
     edit the source for X.Y.Z; add the release notes (§6.1) and a CHANGELOG.md line; `build.py --check`; commit the **docs** branch.
 6.5 One PDF per language listed at the time of the outgoing version. Archived PDFs are never rebuilt, replaced or deleted; a correction is a new version.
+6.7 **The current version as PDF.** `python3 _theme-docs/release.py <collection>/<document> --current` builds the current version
+    once per language and stages it at its wayback path under the archive name of §2.7 (date = `updated`, the current version);
+    `doc.json` `"pdf"` gets `{lang: url}` **[checked: same pattern as 2.8, current version and date]** and the archive list marks the
+    edition `"current": true`. The document menu shows it as a red `X-Y-Z` button right of the green **Latest**; the HTML sidebar links
+    it as "This version (PDF)". When the version is replaced, release.py keeps that file as the archived edition (6.5: never rebuilt)
+    and removes `"pdf"`; run `--current` again for the new version once its source is final.
 6.6 Why wayback and not git tags or PDFs on docs: the archive is the family's store of originals, a replaced edition is frozen exactly as it was,
     and the docs build stays fast and HTML only.
 
@@ -125,6 +136,9 @@ python3 _theme-docs/release.py <collection>/<document> --to X.Y.Z [--date YYYY-M
 10.3 HTML: Sphinx + Furo, shared settings in `_theme-docs/sphinx/conf.py` (documents have no conf.py). The deploy makes no PDF.
      Archive PDFs (release.py): rinohtype (pure Python, no TeX), A4, `_theme-docs/sphinx/pdf.rtt` + `pdf.rts`.
 10.5 The site's `_redirects` sends the old PDF addresses (`/<collection>/<document>/latest/pdf/…`) to the document's menu; other missing paths are a 404.
+10.6 Documents build side by side, one Sphinx run per CPU (`DOCS_JOBS` overrides); theme source maps (`*.map`) are dropped from
+     the output. About 27 files per one-language document: Cloudflare Pages takes at most 20,000 files per deployment, so past
+     about 650 documents the theme's `_static` has to be shared between documents.
 10.4 Every generated HTML page ends its `<head>` with the family header loader `ghf-boot.js?v=2.1.2`.
 10.5 Day and night follow the family sites: white ground by day, black by night, switched by the family toggle in the shared header
      (one toggle; Furo's own is hidden). Every generated page carries `<html data-ghf-native="auto">`, so the shared theme never

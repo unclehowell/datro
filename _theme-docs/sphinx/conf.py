@@ -72,6 +72,8 @@ html_context = {
     'docs_lang': _lang,
     'docs_archive': json.loads(os.environ.get('DOCS_ARCHIVE', '[]')),          # [{version, date, pdf}] older editions in wayback
     'docs_archive_label': os.environ.get('DOCS_ARCHIVE_LABEL', 'Older versions (PDF)'),
+    'docs_pdf': os.environ.get('DOCS_PDF', ''),                                # this version as PDF in wayback (doc.json "pdf")
+    'docs_pdf_label': os.environ.get('DOCS_PDF_LABEL', 'This version (PDF)'),
     'docs_home': os.environ.get('DOCS_HOME_HREF', '/'),
     'docs_home_label': os.environ.get('DOCS_HOME_LABEL', 'All documents'),
     'docs_version': version,

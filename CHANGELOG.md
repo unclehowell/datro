@@ -6,6 +6,22 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Rules: DOCS-STAN
 
 ## [Unreleased]
 
+## [docs-0.4.0] - 2026-10-23
+
+### Added
+- `ghf_evidence` — the Evidence collection: one document per catalogue number of the Great House Farm evidence register
+  (`ghf_evidence/ev_NNNN`, e.g. `ev_0031` = EV-0031), v1.0.0 (en), each carried over from its Legal Wiki evidence page.
+  The record is kept as published; wiki links point to the same path on research.bucklerfamily.estate; images are links to
+  their files on the wiki. Each version is also a PDF in wayback (`pdf/docs-archive/ghf_evidence/…`).
+- `doc.json` `"record"` (catalogue, source, verbatim chapters) and `"pdf"` (the current version as PDF), both checked.
+  DOCS-STANDARD.md v1.3.0 §5.6, §6.7, §10.6.
+- `release.py --current` — the current version as one PDF per language at its wayback path; when the version is replaced
+  that file becomes the archived edition instead of a rebuild.
+
+### Changed
+- Document menu: the current version's PDF is a red button right of the green **Latest**; HTML sidebar: "This version (PDF)".
+- `build.py` builds documents side by side (one per CPU) and drops theme source maps from the output.
+
 ## [docs-0.3.1] - 2026-10-22
 
 ### Changed

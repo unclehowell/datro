@@ -18,3 +18,5 @@ body{overflow-x:hidden}
 .sidebar-brand{border-bottom:2px solid var(--ghf-accent,var(--color-brand-primary))}
 .docs-langs a.current{background:var(--ghf-accent,var(--color-brand-primary));border-color:var(--ghf-accent,var(--color-brand-primary));color:var(--color-background-primary)}
 body[data-theme=dark] .docs-older .docs-pdf{border-color:#ff6b5e;color:#ff8a80}
+.docs-links .docs-pdf-current{border-color:#c0392b;color:#c0392b}
+body[data-theme=dark] .docs-links .docs-pdf-current{border-color:#ff6b5e;color:#ff8a80}

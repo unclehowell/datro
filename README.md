@@ -21,6 +21,7 @@ python3 _theme-docs/build.py             # everything → public/
 ```
 pip install -r requirements.txt -r _theme-docs/requirements-release.txt
 python3 _theme-docs/release.py <collection>/<document> --to X.Y.Z      # PDFs staged in _release/wayback/, doc.json updated
+python3 _theme-docs/release.py <collection>/<document> --current       # the current version as PDF too (doc.json "pdf", §6.7)
 ```
 Commit `_release/wayback/` to the `wayback` branch, then edit the source, release notes and CHANGELOG.md and commit `docs`.
 
