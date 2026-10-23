@@ -1,23 +1,18 @@
 # The Disclosure Labyrinth — maze.bucklerfamily.estate
 
-A genuine date-scaled branching maze for the Great House Farm disclosure case. The route progresses down a calendar axis; branches extend to either side. Month boundaries are horizontal rules and faint dotted horizontal rules mark weeks.
+A date-scaled branching maze. The historical path follows correspondence down the calendar; month boundaries are horizontal rules and faint dotted horizontal rules mark weeks. The animated explorer uses a depth-first tour of the graph and traverses each connected corridor edge, including side branches and conditional future paths.
 
 ## Snapshot
-- Source roadmap snapshot: **2026-10-20**.
-- **47** institutional roadmaps; **474** route steps; **776** indexed correspondence entries; **39** attachment/artifact markers.
+- Source roadmaps: **2026-10-20**.
+- **47** institutions; **474** route steps; **776** indexed correspondence entries; **39** attachment/artifact markers.
 
-## Route model
-- Historic message nodes follow their source dates. The gap between dates determines the vertical distance. Where possible, a reply branches to the later outgoing email matched by thread; unmatched responses stay visibly unresolved to the present frontier.
-- Each institution has its own options from the source roadmap. Its open, queued, pending and overdue routes fork beyond today's line; estimated future lengths are visual aids rather than asserted deadlines.
-- The conditional gate at the future horizon separates possible outcomes: artifact/document located, authoritative link found, in-person viewing, documented destruction, or still missing.
-- CSV export records messages and applicable future route steps. Review checkmarks are local to the browser and are not sent to HubSpot or a central service.
+## Interpretation
+Main-route vertical spacing follows elapsed calendar time. Matched replies branch to later outgoing messages where possible. Open replies remain unresolved to the present frontier. Each body’s unused/queued/pending/overdue routes continue beyond today in a separate corridor; future lengths are visual estimates, not official deadlines. The bottom gate leads to conditional outcomes only after applicable routes have recorded results or a reasoned decision not to pursue them.
 
-## Symbols and evidence discipline
-📜 indexed attachment/document marker; 🔗 answered-item marker; 🧐 in-person inspection; 💨 “not held” / missing lead; 🔥 affirmative destruction documentation only; ⛔ refusal; £ paid route; ↗ referral/alternate custodian.
+📜 indexed attachment/document; 🔗 answered item/link; 🧐 in-person viewing; 💨 “not held” / missing lead; 🔥 affirmative destruction documentation only; ⛔ refusal; £ paid option; ↗ alternate custodian/referral. An attachment marker does not certify that the item is the sought deed. “Not held” is not “destroyed”; absence never triggers a fire icon by itself.
 
-The Leckwith in-person inspection marker is based on the requester's statement but has no verified visit date or linked catalogue/item reference in this email index. It is kept as an undated checkpoint at the present frontier, not assigned an invented historic date. An attachment marker is not proof the item is the sought deed. “Not held” is not “destroyed”; absence never automatically produces a fire icon. The current snapshot does not pre-classify any historical record as definitively destroyed.
+The Leckwith in-person checkpoint is user-reported but lacks a verified visit date/catalogue link in this index; it is intentionally undated at the present frontier. No historical email is pre-classified as confirmed destruction in this snapshot.
 
-This is a research/completeness aid, not legal advice, a finding of fraud, or a rule that every conceivable process must be exhausted before a claim. Institutions have different duties and remedies; routes may be alternatives, time-limited, costly, subject to standing or unavailable. Verify original records and current deadlines independently.
+This is a casework completeness aid, not legal advice or a finding of fraud, and not a rule that every conceivable process must be exhausted before a claim. Routes can be alternative, time-limited, costly, subject to standing or unavailable; check original evidence and current law.
 
-## Deploy
-The dedicated Cloudflare Worker serves `maze.bucklerfamily.estate/*`. `/health` exposes only source dates/counts. Refresh `roadmaps.json`, run `node build.mjs`, and deploy via `npx wrangler deploy --config wrangler.toml`.
+Review marks are browser-local. The CSV export does not update HubSpot.
