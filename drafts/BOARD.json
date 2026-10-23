@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-23T14:20:08Z",
+ "updated": "2026-10-23T14:36:53Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent. Never email text.",
  "drafts": [
   {
@@ -15,12 +15,12 @@
   {
    "id": "cardiff-central-library-bute-x6-12-reply",
    "record": "HubSpot task 532014813379",
-   "version": "v0.2.0",
-   "status": "TAB'S TURN",
-   "turn": "tab",
-   "open_issues": 7,
-   "last_change": "2026-10-23T14:19:40Z",
-   "last_agent": "ChatGPT GPT-6"
+   "version": "v0.3.0",
+   "status": "OTHER AGENT'S TURN",
+   "turn": "other agent",
+   "open_issues": 9,
+   "last_change": "2026-10-23T14:36:23Z",
+   "last_agent": "Tab"
   },
   {
    "id": "hmlr-eir-1961-deed",
