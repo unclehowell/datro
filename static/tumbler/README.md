@@ -33,7 +33,7 @@ The live Pages Function needs a server-side secret named TUMBLER_GITHUB_TOKEN. I
 
 Create a fine-grained GitHub token restricted to unclehowell/datro, with **Contents: read/write**, **Pull requests: read/write**, and **Actions: read/write** permissions (Metadata read access is implicit). In Cloudflare, open **Workers & Pages → Pages → tumbler → Settings → Variables and Secrets → Add**, name the secret TUMBLER_GITHUB_TOKEN, enter the token, select **Encrypt**, save, and redeploy the Pages project. This enables the refresh route and contribution route. If the secret is absent or GitHub rejects its permissions, the UI fails closed with a visible error rather than pretending a PR was created.
 
-Both actions are rate-limited. PR generation is limited to two attempts per client IP per UTC day; the on-demand refresh endpoint is limited per client and globally. These limits reduce abuse but are not equivalent to human verification. Keep the token narrowly scoped, monitor open PRs and revoke it if misuse is suspected.
+Both actions are rate-limited. PR generation is limited to two attempts per client IP and 20 attempts globally per UTC day; the on-demand refresh endpoint is limited per client per 30 minutes and four times globally per UTC day. These limits reduce abuse but are not equivalent to human verification. Keep the token narrowly scoped, monitor open PRs and revoke it if misuse is suspected.
 
 ## Filters
 
