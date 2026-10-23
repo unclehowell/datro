@@ -1,6 +1,13 @@
 name: Index Tumbler public corpus
 
 on:
+  push:
+    branches:
+      - tumbler
+    paths:
+      - 'scripts/index-tumbler-corpus.mjs'
+      - 'static/tumbler/sources.json'
+      - '.github/workflows/index-tumbler-corpus.yml'
   workflow_dispatch:
   schedule:
     - cron: "43 4 * * 0"
