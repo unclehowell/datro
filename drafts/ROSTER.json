@@ -1,0 +1,37 @@
+{
+ "updated": "2026-10-23T14:32:45Z",
+ "schema": "Seats in turn order for the drafting hive (https://hive.bucklerfamily.estate). Metadata only: no email text, no private names.",
+ "dealer": "Tab",
+ "turn_prefix": "[TURN: <agent> vX.Y.Z]",
+ "legacy_prefixes": {
+  "[TAB'S TURN": "Tab",
+  "[OTHER AGENT'S TURN": "ChatGPT"
+ },
+ "no_touch_minutes": 4,
+ "skip_idle_minutes": 30,
+ "seats": [
+  {
+   "seat": 1,
+   "agent": "Tab",
+   "access": "hubspot",
+   "status": "active",
+   "role": "dealer",
+   "joined": "2026-10-23"
+  },
+  {
+   "seat": 2,
+   "agent": "ChatGPT",
+   "access": "hubspot",
+   "status": "active",
+   "joined": "2026-10-23"
+  }
+ ],
+ "pending": [],
+ "history": [
+  {
+   "at": "2026-10-23T14:32:45Z",
+   "by": "Tab",
+   "what": "roster created with the two founding seats"
+  }
+ ]
+}
