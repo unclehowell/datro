@@ -6,7 +6,7 @@ const dir=new URL('./'+D+'/',import.meta.url); let errors=[];
 const read=f=>readFileSync(new URL(f,dir),'utf8'); const ls=d=>existsSync(new URL(d,dir))?readdirSync(new URL(d,dir)):[];
 const pages=['index.html','profiles.html','friends.html',...(existsSync(new URL('timeline.html',dir))?['timeline.html']:[]),...ls('u/').map(f=>'u/'+f),...ls('n/').map(f=>'n/'+f),...ls('wall/').map(f=>'wall/'+f)];
 const BANNED=/\b(thief|thieves|stolen|looted|criminal|racket|lawfare|fraud\w*|says|claims|claimed|claiming|according to|alleged\w*|allegation\w*|hearsay|unverified)\b|family[’']?s? (account|position)/i;
-const PRIVATE=[/robin\s*hill/i,/hywelapbuckler/i,/7845\s*933\s*262/,/\b0?7\d{3}\s?\d{3}\s?\d{3}\b/,/\+44\s?7\d{3}/,/[\w.+-]+@[\w-]+\.[\w.]+/,/Branwen\s+Buckler/i,/(?<!Coed )\bSion\b/];
+const PRIVATE=[/robin\s*hill/i,/hywelapbuckler/i,/7845\s*933\s*262/,/\b0?7\d{3}\s?\d{3}\s?\d{3}\b/,/\+44\s?7\d{3}/,/[\w.+-]+@[\w-]+\.[\w.]+/,/Branwen\s+Buckler/i,NOW?/(?<!Coed )\bSion\b(?! Buckler\b)/:/(?<!Coed )\bSion\b/,...(NOW?[/\bHywel\b/i]:[])];
 let dated=0;
 for(const p of pages){
   const raw=read(p);
@@ -28,6 +28,15 @@ for(const pg of ['friends.html','profiles.html']){ const fr=read(pg); const frl=
   if(frl.length<30) errors.push(pg+': too few contacts '+frl.length);
   for(const s of frl){ if(!existsSync(new URL('u/'+s+'.html',dir))) errors.push(pg+': card links to missing profile u/'+s+'.html'); } }
 for(const f of ls('u/')){ const r=read('u/'+f); if(!/id="statements"/.test(r)) errors.push('u/'+f+': no posts section'); if(!/class="st"|No public statements found yet/.test(r)) errors.push('u/'+f+': posts section empty'); }
+// fb2 source lock (Sion, 02:18 BST 23 Oct 2026): every item rests on an email. or dartboard. record; the daily highlight-report video is the one marked exception
+if(NOW){ const SRC=/^https:\/\/(email|dartboard)\.bucklerfamily\.estate\//; let items=0, exc=0;
+  for(const p of pages){ for(const a of read(p).split('<article class="post sp').slice(1)){ items++; const tag=a.slice(0,a.indexOf('>'));
+    if(/data-src-exception="highlight-report"/.test(tag)){ exc++; continue; }
+    const s=(a.match(/<details class="sp-src">([\s\S]*?)<\/details>/)||[])[1]||''; const links=[...s.matchAll(/href="([^"]+)"/g)].map(m=>m[1]);
+    if(!links.length||!links.every(u=>SRC.test(u))) errors.push(p+': item without an email./dartboard. source: '+((a.match(/id="([^"]+)"/)||[])[1])+' '+links.slice(0,2).join(' ')); } }
+  for(const f of ['facebook.html','timeline.html','photos.html']) if(existsSync(new URL(f,dir))) errors.push(f+' must not be on fb2 (source lock)');
+  for(const p of pages){ if(/href="[^"]*facebook\.html"/.test(read(p))) errors.push(p+': link to the retired Facebook copy'); }
+  console.log('source lock: '+items+' items, '+exc+' highlight-report exception(s)'); }
 if(NOW){ const HJ=existsSync(new URL('../data/highlights.json',dir))?JSON.parse(readFileSync(new URL('../data/highlights.json',dir),'utf8')):{days:[]};
   if(HJ.days.length && !idx.includes('id="hf-'+HJ.days[0].date+'"')) errors.push('wall: newest highlight report video missing from index.html'); }
 const FJ=JSON.parse(readFileSync(new URL('../data/faces.json',import.meta.url.replace(/[^/]*$/,'')+'data/faces.json'),'utf8'));

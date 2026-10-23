@@ -51,7 +51,7 @@ ICONS = {
 }
 def ico(k):
     return '<svg viewBox="0 0 24 24" aria-hidden="true" class="fx-i">%s</svg>' % ICONS[k]
-NAV = [("home", "/index.html", "Timeline"), ("friends", "/friends.html", "Friends"), ("photos", "/photos.html", "Photos"), ("threads", "/facebook.html", "Facebook")]
+NAV = [("home", "/index.html", "Timeline"), ("friends", "/friends.html", "Friends"), ("photos", "/photos.html", "Photos")]
 RAIL = NAV[:1] + [("about", "/about.html", "About")] + NAV[1:] + [("host", "/profile/paul/", "Paul Smith · AI host"), ("api", "/api/", "API for AI agents"), ("privacy", "https://bucklerfamily.estate/privacy/", "Privacy")]
 
 ASSET_V = {}
@@ -174,7 +174,7 @@ for a, pid in arts:
     for src in re.findall(r'<img\b[^>]*\ssrc="([^"]+)"', a):
         if PH_SRC.match(src):
             post_of.setdefault(phid(src), pid)
-pages = ["index.html", "photos.html", "facebook.html", "about.html", "friends.html", "api/index.html", "profile/paul/index.html"] + sorted("p/" + f for f in os.listdir(os.path.join(SITE, "p")) if f.endswith(".html"))
+pages = ["index.html", "photos.html", "about.html", "friends.html", "api/index.html", "profile/paul/index.html"] + sorted("p/" + f for f in os.listdir(os.path.join(SITE, "p")) if f.endswith(".html"))
 for rel_ in pages:
     fn = os.path.join(SITE, rel_)
     if not os.path.exists(fn):

@@ -28,7 +28,7 @@ THEN_URL, NOW_URL = BS.THEN_URL, BS.NOW_URL
 os.makedirs(os.path.join(SITE, "img", "social"), exist_ok=True)
 from zoneinfo import ZoneInfo
 TODAY = dt.datetime.now(ZoneInfo("Europe/London")).date()   # the family's day, not the box's UTC day
-BANNED = re.compile(r"\b(thief|thieves|stolen|looted|criminal|racket|lawfare|fraud\w*|says|claims|claimed|claiming|according to|alleged\w*|allegation\w*|hearsay|unverified)\b|(?<!Coed )\bSion\b"
+BANNED = re.compile(r"\b(thief|thieves|stolen|looted|criminal|racket|lawfare|fraud\w*|says|claims|claimed|claiming|according to|alleged\w*|allegation\w*|hearsay|unverified)\b|(?<!Coed )\bSion\b" + (r"(?! Buckler\b)" if NOW else "") + r"|\bHywel\b"
                     r"|family[’']?s? (account|position)|Branwen\s+Buckler|robin\s*hill|hywelapbuckler|7845|[\w.+-]+@[\w-]+\.[\w.]+|Not a finding|Our case|prospective", re.I)
 def ok(s): return bool(s) and not BANNED.search(s)
 FIX = [(r"\s*Where the family['’]s position goes beyond a document, it is written as “our position”\.", ""), (r"\s*Every post names its source; where the family['’]s position goes beyond a document, it is written as “our position”\.", " Every post names its source."),
@@ -46,7 +46,7 @@ PEO[NARRATOR] = {"name": "Morgan Gecko Hope", "kind": "Project manager · the wa
                           "the new finds and posts “Today at Tŷ Mawr”, a short highlight report in the PRINCE2 style: status, what the authorities wrote, "
                           "new evidence, new routes to reopening the case, and one line of hope. Every figure in a report comes from the record linked under it.",
                  "color": "#7b5ea7", "entity": True}
-LANE_ALIAS = {"vale-of-glamorgan-council": "vale-of-glamorgan", "ministry-of-justice-hmcts": "ministry-of-justice", "welsh-government-cadw": "cadw",
+LANE_ALIAS = {"serious-fraud-office": "sfo", "vale-of-glamorgan-council": "vale-of-glamorgan", "ministry-of-justice-hmcts": "ministry-of-justice", "welsh-government-cadw": "cadw",
               "heneb-formerly-ggat-historic-environment-record": "heneb", "cotswold-archaeology": "cotswold-archaeological-trust",
               "linklaters": "linklaters-paines", "persimmon-homes": "persimmon"}
 LANE_NAME = {"serious-fraud-office": "SFO", "whatdotheyknow-unconfirmed": "WhatDoTheyKnow"}
@@ -59,6 +59,10 @@ def initials(name):
     return ("".join(x[0] for x in w[:3]) or name[:2]).upper()
 def lane_slug(L): return LANE_ALIAS.get(L["id"], L["id"])
 def roadmap():
+    if NOW:   # source lock: fb2 reads the dartboard's own published data first
+        try:
+            with urllib.request.urlopen(urllib.request.Request("https://dartboard.bucklerfamily.estate/data/roadmap.json", headers={"User-Agent": "Mozilla/5.0 (farmbook build)"}), timeout=60) as r: return json.loads(r.read())
+        except Exception as ex: print("dartboard roadmap not read, using the local copy it is published from:", ex)
     for src in ("/home/user/tab/work/roadmap/roadmap.json",):
         if os.path.exists(src): return json.load(open(src, encoding="utf-8"))
     with urllib.request.urlopen("https://dartboard.bucklerfamily.estate/data/roadmap.json", timeout=40) as r: return json.loads(r.read())
@@ -89,7 +93,7 @@ def add(**k):
 def ymd(s): return (s + "-01-01")[:10] if len(s) == 4 else ((s + "-01")[:10] if len(s) == 7 else s[:10])
 # 1. daily highlight reports
 dpath = os.path.join(ROOT, "data", "daily.json")
-DAILY = json.load(open(dpath, encoding="utf-8"))["days"] if os.path.exists(dpath) else []
+DAILY = json.load(open(dpath, encoding="utf-8"))["days"] if os.path.exists(dpath) and not NOW else []   # fb2: source lock, no narrator cards
 for d in DAILY:
     add(id="daily-" + d["date"], date=d["date"], when=dt.date.fromisoformat(d["date"]).strftime("%-d %B %Y"), actor=NARRATOR, kind="Highlight report",
         title=d["title"], daily=d, tags=[r["lane"] and lane_slug({"id": r["lane"]}) for r in d.get("replies", []) if r.get("lane")], rank=0)
@@ -233,6 +237,61 @@ HIST_ONLY = {"herbert-family", "vaughan-family", "hurst-and-jones", "mountjoy", 
 EV = [x for x in EV if x["date"] <= TODAY.isoformat() and prof(x["actor"])]
 HAS_MODERN = {sl for x in EV if x["date"][:4] >= SPLIT for sl in [x["actor"]] + list(x["tags"]) if sl}
 EV = [x for x in EV if (x["date"][:4] >= SPLIT) == NOW and not (not NOW and x["actor"] == "tab-bot")]
+
+# SOURCE LOCK (Sion, 02:18 BST 23 Oct 2026: "use the data and names from email. And dartboard.bucklerfamily.estate subdomains. Only them").
+# fb2 keeps only: emails (email.bucklerfamily.estate/reference/<id>) and missed deadlines (dartboard /data/roadmap.json), posted by the
+# institution named in that data; profiles = the dartboard's institutions with their names as published; forecast panel from /data/forecast.json.
+# One exception, ordered by Sion on Farmbook: the daily PRINCE2 highlight-report video (post + "Today" story).
+# Sion, 02:19 BST: "Add me 'Sion Buckler' as the project manager doing the updates" -> PM profile authors the video and the family's sent emails.
+PM = "sion-buckler-project-manager"; FAMILY = "williams-buckler-family"
+SRC_OK = re.compile(r"^https://(email|dartboard)\.bucklerfamily\.estate/")
+DISPLAY = {"serious-fraud-office": "SFO"}   # the house word list bars the middle word of its full name
+if NOW:
+    DBURL = "https://dartboard.bucklerfamily.estate/"
+    FB2 = {}
+    for i_, L_ in enumerate(R["lanes"]):
+        sl_ = lane_slug(L_); f_ = FC.get(sl_, {})
+        nm_ = DISPLAY.get(L_["id"], L_["name"])
+        ab_ = " ".join(x_ for x_ in [(L_.get("note") or "").strip(),
+                                    ("Escalation: %s." % L_["ombudsman"]) if L_.get("ombudsman") else "",
+                                    ("Court: %s." % L_["court"]) if L_.get("court") else "",
+                                    ("Correspondence: %d emails (%d sent, %d received)." % (L_["counts"]["emails"], L_["counts"]["sent"], L_["counts"]["received"])) if L_.get("counts") else ""] if x_)
+        FB2[sl_] = {"name": nm_, "kind": {"public": "Public body", "private": "Organisation", "representative": "Representative (role)", "platform": "Platform"}.get(L_.get("kind"), "Body") + (" · " + L_["regime"] if L_.get("regime") else ""),
+                    "entity": True, "initials": initials(nm_), "color": COLORS[i_ % len(COLORS)], "about": ab_ if ok(ab_) else nm_, "avatar": "img/social/av-fb2-%s.svg" % sl_, "lane": L_["id"]}
+    FB2[PM] = {"name": "Sion Buckler, Project Manager", "kind": "Person · project manager", "entity": False, "initials": "SB", "color": "#1b356a",
+               "about": "Project manager for the family’s campaign: sends the requests, chasers and complaints in the email archive and posts the daily highlight report. Manages the Williams / Buckler family page.",
+               "avatar": "img/social/av-fb2-%s.svg" % PM}
+    FB2[FAMILY] = {"name": "Williams / Buckler family", "kind": "Family page · managed by Sion Buckler, Project Manager", "entity": False, "initials": "WB", "color": "#5d4037",
+                   "about": "The family’s page, managed by Sion Buckler, Project Manager. It carries the daily highlight report.", "avatar": "img/social/av-fb2-%s.svg" % FAMILY}
+    for sl_, p_ in FB2.items():
+        t_ = p_["initials"]; fs_ = 44 if len(t_) <= 2 else 32
+        open(os.path.join(SITE, p_["avatar"]), "w").write(('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="%s"/>'
+            '<text x="50" y="50" dy=".36em" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-weight="700" font-size="%d" fill="#fff">%s</text></svg>') % (p_["color"], fs_, e(t_)))
+    def prof(sl): return FB2.get(sl)
+    FIRST_MAIL = {}
+    for L_ in R["lanes"]:
+        for m_ in sorted(L_["emails"], key=lambda m: m["date"]):
+            if m_.get("cid") and m_.get("url"): FIRST_MAIL.setdefault((L_["id"], m_["cid"]), m_["url"])
+    LANE_OF = {lane_slug(L_): L_ for L_ in R["lanes"]}
+    _keep = []
+    for x in EV:
+        if x["id"].startswith("hr-"):          # the one exception (PRINCE2 highlight report video)
+            x["actor"] = PM; x["tags"] = [FAMILY]; x["src"] = [(t_, u_) for t_, u_ in x.get("src", [])]; x["exception"] = True; _keep.append(x); continue
+        if not (x["id"].startswith("m-") or x["id"].startswith("miss-")): continue
+        x["quote"] = None; x["lead"] = ""
+        if x["kind"] == "Letter sent":
+            to_ = x["tags"][0] if x["tags"] else None
+            if not prof(to_): continue
+            x["actor"] = PM; x["tags"] = [to_, FAMILY]
+            x["text"] = re.sub(r"^The family sent (.*?) to .*?(\s\(deadline [^)]*\))?\.$", lambda m: "Sent %s to %s%s." % (m.group(1), prof(to_)["name"], m.group(2) or ""), x["text"])
+        if not prof(x["actor"]): continue
+        if x["id"].startswith("miss-"):
+            L_ = LANE_OF.get(x["actor"]); mx = next((y for y in L_["missed"] if "miss-%s-%s" % (L_["id"], y["date"]) == x["id"]), {}) if L_ else {}
+            u_ = FIRST_MAIL.get((L_["id"], mx.get("cid"))) if L_ else None
+            x["src"] = ([("The request (email)", u_)] if u_ else []) + [("The board: " + prof(x["actor"])["name"], DBURL)]
+        x["src"] = [(t_, u_) for t_, u_ in x.get("src", []) if u_ and SRC_OK.match(u_)]
+        if x["src"]: _keep.append(x)
+    EV = _keep
 EV.sort(key=lambda x: (x["date"], -x.get("rank", 3)), reverse=True)
 REPLY_DATES = collections.defaultdict(list); LETTERS = collections.defaultdict(list)
 for x in sorted(EV, key=lambda x: x["date"]):
@@ -304,6 +363,7 @@ def card(x, up):
          % (e(x["id"]), pu, avimg(a, up), pu, e(p["name"]), verb(x, up) + (
             "".join(' <span class="wl-with">with <a href="%su/%s.html">%s</a></span>' % (up, t, e(prof(t)["name"])) for t in x["tags"][:2] if t and prof(t) and t != a and x["kind"] != "Highlight report") if not (x.get("life") or x["kind"] == "Letter sent") else ""),
             x["date"], e(x["when"]), e(x["kind"]))]
+    if x.get("exception"): h[0] = h[0].replace('<article class="post sp wl" ', '<article class="post sp wl" data-src-exception="highlight-report" ', 1)
     h.append('<div class="sp-b">')
     if x.get("daily"):
         d = x["daily"]; st = d["status"]
@@ -460,11 +520,11 @@ def rings(up):
                ring("y1994", "1994: the burial ground", "heneb", [x for x in EV if x["date"][:4] in ("1994", "1995")], up),
                ring("papers", "The papers", "south-wales-echo", [x for x in EV if x["actor"] in OUT and x.get("photo")], up, cap=10)]
     else:
-        R_.append(ring("today", "Today", "williams-buckler-family", [x for x in EV if x.get("hf")][:3], up, "#1b356a", cap=3))
-        top = collections.Counter(x["actor"] for x in EV if x["actor"] not in ("williams-buckler-family", NARRATOR, "tab-bot") and x["kind"] != "Letter sent").most_common(12)
+        R_.append(ring("today", "Today", PM, [x for x in EV if x.get("hf")][:3], up, "#1b356a", cap=3))
+        top = collections.Counter(x["actor"] for x in EV if x["actor"] not in (PM, FAMILY, NARRATOR, "tab-bot") and x["kind"] != "Letter sent").most_common(12)
         for sl, _ in top:
             R_.append(ring("b-" + sl, prof(sl)["name"], sl, [x for x in EV if x["actor"] == sl and x["kind"] != "Letter sent"][:6], up))
-        R_.append(ring("missed", "Missed deadlines", "williams-buckler-family", [x for x in EV if x["kind"] == "Deadline passed"][:8], up, "#7f1d1d"))
+        R_.append(ring("missed", "Missed deadlines", PM, [x for x in EV if x["kind"] == "Deadline passed"][:8], up, "#7f1d1d"))
     R_ = [r for r in R_ if r and r["slides"]]
     for r in R_:
         for s_ in r["slides"]:
@@ -526,7 +586,7 @@ def split_static():
             t1 = re.sub(r"<strong>\d+ posts</strong> from c\. 650 to 2026", "<strong>%d posts</strong> from c. 650 to 2004" % n, t1)
             open(a, "w", encoding="utf-8").write(t1)
     a = os.path.join(S1, "facebook.html")
-    if os.path.exists(a): shutil.move(a, os.path.join(S2, "facebook.html"))
+    if os.path.exists(a): os.remove(a)   # 'Preserved from Facebook' is retired on both editions (Sion, 02:18 BST 23 Oct 2026); git history keeps it
     pd = os.path.join(S1, "p")
     if os.path.isdir(pd):
         for f in os.listdir(pd):
@@ -600,7 +660,7 @@ def build():
     keep_always = {"williams-buckler-family", NARRATOR} | ({"tab-bot"} if NOW else set())
     CAST = [sl for sl in list(OUT) + list(PEO) if sl in keep_always or BYP.get(sl) or
             (not NOW and not BYP.get(sl) and sl not in MODERN_ONLY and sl not in HAS_MODERN and not prof(sl).get("fictional")) or (NOW and sl in MODERN_ONLY)]
-    if NOW: CAST = [sl for sl in CAST if sl not in HIST_ONLY]
+    if NOW: CAST = [PM, FAMILY] + [sl for sl in FB2 if sl not in (PM, FAMILY)]   # source lock: the dartboard's institutions + the project manager
     else: CAST = [sl for sl in CAST if sl not in MODERN_ONLY]
     ud = os.path.join(SITE, "u"); moved = []
     if os.path.isdir(ud):
@@ -621,7 +681,7 @@ def build():
         stm = [x for x in evs if x["kind"] in ("Public statement",) or x["kind"].startswith("Reply") and x["actor"] == sl and x.get("quote")]
         sec = ('<section id="statements" class="wl-sec-wrap"><h2 class="wl-sec">Their posts, newest first</h2>%s</section>' %
                ("".join(card(x, up) for x in evs) if evs else '<div class="wl-empty"><span class="st"></span>No public statements found yet.</div>'))
-        if evs and not stm and not p.get("fictional") and sl != "hope-desk": sec = sec.replace('<h2 class="wl-sec">', '<p class="wl-empty" style="margin-bottom:6px">No public statements found yet; the record below involves them.</p><h2 class="wl-sec">', 1)
+        if evs and not stm and not p.get("fictional") and sl not in ("hope-desk", "sion-buckler-project-manager", "williams-buckler-family"): sec = sec.replace('<h2 class="wl-sec">', '<p class="wl-empty" style="margin-bottom:6px">No public statements found yet; the record below involves them.</p><h2 class="wl-sec">', 1)
         if evs: sec = sec.replace('</h2>', '</h2><span class="st" hidden></span>', 1)
         body = ('<main id="main" class="sb-main sb-prof">%s<div class="pf-id"><img class="pf-av%s" src="%s%s" alt="" width="120" height="120"><div><h1>%s</h1><p class="muted">%s</p><p class="pf-counts">%s</p></div></div>'
                 '<nav class="pf-tabs"><a class="ln" href="#statements">Posts</a><a class="ln" href="#about">About</a></nav>%s%s%s</main>'
@@ -632,18 +692,17 @@ def build():
     cast_page(CAST, "friends.html", "Friends")
     if NOW:
         # the modern press posts' own pages move here from fb (site/n → site2/n)
-        ns_ = {}; exec(open(os.path.join(ROOT, "tools", "social_data.py"), encoding="utf-8").read(), ns_)
-        for p_ in ns_["POSTS"]:
-            if str(p_["date"])[:4] >= SPLIT:
-                a_, b_ = os.path.join(ROOT, "site", "n", p_["id"] + ".html"), os.path.join(SITE, "n", p_["id"] + ".html")
-                if os.path.exists(a_): os.makedirs(os.path.dirname(b_), exist_ok=True); shutil.move(a_, b_)
-        vids = [s_ for s_ in BS.STORIES]
-        vc = "".join('<article class="post sp wl" id="v-%s"><header class="sp-h"><span class="sp-av">%s</span><div class="sp-who"><a class="sp-n" href="u/%s.html">%s</a> <span class="wl-verb">shared a video</span><div class="sp-d">%s</div></div></header>'
+        # source lock: no press pages, archive photos, family timeline or the old Facebook copy on fb2
+        for d_ in ("n", "p"): shutil.rmtree(os.path.join(SITE, d_), ignore_errors=True)
+        for f_ in ("facebook.html", "timeline.html", "photos.html"):
+            if os.path.exists(os.path.join(SITE, f_)): os.remove(os.path.join(SITE, f_))
+        vids = [dict(s_, by=PM) for s_ in BS.STORIES if s_["id"].startswith("s-hr-")]   # the highlight-report videos only (the exception)
+        vc = "".join('<article class="post sp wl" id="v-%s" data-src-exception="highlight-report"><header class="sp-h"><span class="sp-av">%s</span><div class="sp-who"><a class="sp-n" href="u/%s.html">%s</a> <span class="wl-verb">shared a video</span><div class="sp-d">%s</div></div></header>'
                      '<div class="sp-b"><h2 class="pt sp-t">%s</h2><figure class="wl-vid"><video controls playsinline preload="none" poster="%s" src="%s"></video></figure></div>'
                      '<details class="sp-src"><summary>Source</summary><p>%s</p></details></article>'
                      % (e(v_["id"]), avimg(v_["by"], "", 40), v_["by"], e(prof(v_["by"])["name"]), e(v_.get("credit", "")[:80]), e(v_["title"]), e(v_["thumb"]), e(v_["src"]), e(v_.get("credit", "")))
                      for v_ in vids if v_.get("kind") == "video" and v_.get("src"))
-        write("videos.html", head("Videos · farmbook 2", "The daily highlight-report videos, the case film and the short films, each with its source.", "videos.html")
+        write("videos.html", head("Videos · farmbook 2", "The daily highlight-report videos, posted by the project manager.", "videos.html")
               + "<body>" + BS.top("video") + '<main id="main" class="sb-main"><h1 class="sb-h1">Videos</h1>' + vc + "</main>" + page_end("", "video"))
     else:
         # anything that moved to the now edition answers with a redirect to fb2
@@ -652,7 +711,7 @@ def build():
         lines = ["/u/%s.html %s/u/%s.html 301" % (m, NOW_URL, m) for m in sorted(set(moved) | MODERN_ONLY)]
         lines += ["/wall/%d.html %s/wall/%d.html 301" % (y_, NOW_URL, y_) for y_ in range(2005, TODAY.year + 1)]
         lines += ["/n/%s* %s/n/%s:splat 301" % (pre, NOW_URL, pre) for pre in ("n-20", "d-20", "r-20")]
-        lines += ["/p/p-20* %s/p/p-20:splat 301" % NOW_URL, "/facebook.html %s/facebook.html 301" % NOW_URL]
+        lines += ["/p/p-20* %s/p/p-20:splat 301" % NOW_URL]
         open(rd, "w", encoding="utf-8").write(old.rstrip("\n") + "\n# fb2 moves (generated)\n" + "\n".join(lines) + "\n# end fb2 moves\n")
         for f in os.listdir(os.path.join(SITE, "n")):
             if re.match(r"[ndr]-20[0-9][0-9]", f) and f[2:6] >= SPLIT: os.remove(os.path.join(SITE, "n", f))
@@ -667,7 +726,22 @@ def build():
             if f.endswith(".html"):
                 fp = os.path.join(root, f); t = open(fp, encoding="utf-8").read(); t2 = roles(t)
                 if t2 != t: open(fp, "w", encoding="utf-8").write(t2)
-    if NOW: print("site2 images copied:", copy_assets())
+    if NOW:
+        print("site2 images copied:", copy_assets())
+        # source lock: images no fb2 page uses any more (old portraits, archive photos) leave site2
+        need = set(); gone = 0
+        for root, _, files in os.walk(SITE):
+            for f in files:
+                if f.endswith((".html", ".js", ".css", ".json")):
+                    t = open(os.path.join(root, f), encoding="utf-8", errors="ignore").read(); rel_dir = os.path.relpath(root, SITE)
+                    for m in re.finditer(r'([\w./-]+\.(?:webp|jpg|jpeg|png|svg|gif))', t):
+                        need.add(os.path.normpath(os.path.join(rel_dir, m.group(1).lstrip("/")))); need.add(os.path.normpath(m.group(1).lstrip("/")))
+        for d_ in ("img", "daily"):
+            for root, _, files in os.walk(os.path.join(SITE, d_)):
+                for f in files:
+                    rp = os.path.relpath(os.path.join(root, f), SITE)
+                    if rp not in need: os.remove(os.path.join(root, f)); gone += 1
+        print("site2 unused images removed:", gone)
     # faces everywhere a person's initials badge was used (profiles list, friends, n/ pages)
     for root, _, files in os.walk(SITE):
         if "/u" in root[len(SITE):][:2] or "/wall" in root[len(SITE):]: continue

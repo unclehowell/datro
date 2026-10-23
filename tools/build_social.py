@@ -113,8 +113,8 @@ def top(active, up=""):
     menu = ''.join('<a href="%s">%s</a>' % (h, e(t)) for h, t in [*[
         ("/", "Wall: the campaign, as its parties posted it" if NOW else "Wall: the farm’s story, as its parties posted it"),
         (THEN_URL + "/", "Then: farmbook, to 2004") if NOW else (NOW_URL + "/", "Now: farmbook 2, 2005 onwards"),
-        ("/videos.html", "Videos and stories"), ("/profiles.html", "Contacts: the whole cast"), ("/friends", "Friends: public statements")] + ([("/u/tab-bot.html", "Tab.bot (AI agent)")] if NOW else []) + [
-        ("/timeline.html", "Family archive timeline"), ("/photos.html", "Archive photos")] + ([("/facebook.html", "Preserved from Facebook")] if NOW else []) + [
+        ("/videos.html", "Videos and stories"), ("/profiles.html", "Contacts: the whole cast")] + ([("/friends.html", "Friends")] if NOW else [("/friends", "Friends: public statements")]) + ([] if NOW else [
+        ("/timeline.html", "Family archive timeline"), ("/photos.html", "Archive photos")]) + [
         ("https://maps.bucklerfamily.estate/", "The Map Room"), ("https://greathousefarmwiki.wordpress.com/", "The Legal Wiki"), ("https://shop.bucklerfamily.estate/", "Gift Shop & Marketplace"),
         ("/m/login", "Family members: sign in"), ("/api/", "API for AI agents")]])
     return ('<a class="skip" href="#main">Skip to content</a><header class="fb-top"><button type="button" class="fb-ic fb-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="fb-menu">%s</button>'
