@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#101214">
+<title>Tumbler — Methodology compiler</title>
+<meta name="description" content="Run a methodology lens against indexed Buckler Family project sources and generate a scoped implementation prompt for unclehowell/datro.">
+<style>
+:root{color-scheme:dark;--bg:#101214;--panel:#171a1d;--panel2:#1d2125;--ink:#f0f1f2;--muted:#a8b0b8;--line:#353c43;--accent:#b8d4ff;--accent-ink:#142437;--warn:#efd29a;--focus:#ffcf70;--radius:14px}
+*{box-sizing:border-box}
+html{font-size:16px;text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+header{border-bottom:1px solid var(--line);background:#141719}
+.head{max-width:1160px;margin:auto;padding:25px 22px 21px}
+.brand{display:flex;align-items:center;gap:10px;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:750}
+.mark{display:inline-grid;place-items:center;width:30px;height:30px;border:1px solid var(--line);border-radius:8px;color:var(--accent);font-size:.95rem}
+h1{font-size:clamp(1.85rem,4vw,2.75rem);line-height:1.08;letter-spacing:-.04em;margin:17px 0 9px}
+.lede{max-width:800px;margin:0;color:var(--muted)}
+main{max-width:1160px;margin:auto;padding:22px;display:grid;grid-template-columns:minmax(310px,.9fr) minmax(0,1.1fr);gap:18px;align-items:start}
+.panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);overflow:hidden;min-width:0}
+.panelhead{padding:15px 17px;border-bottom:1px solid var(--line);background:var(--panel2)}
+.panelhead h2{font-size:1rem;margin:0}
+.panelbody{padding:17px}
+label.field{display:block;font-weight:680;font-size:.9rem;margin:0 0 6px}
+select,input[type=text],textarea{font:inherit;color:var(--ink);background:#0e1012;border:1px solid #48515a;border-radius:9px;padding:11px 12px;width:100%}
+select{min-height:45px}
+.fieldrow{margin-bottom:18px}
+.hint{font-size:.82rem;color:var(--muted);margin:6px 0 0}
+.checkrow{display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-top:1px solid var(--line)}
+.checkrow input{margin-top:5px;accent-color:var(--accent);width:17px;height:17px;flex:none}
+.checkrow label{cursor:pointer}
+.checkrow strong{display:block;font-size:.91rem}
+.checkrow span{display:block;font-size:.82rem;color:var(--muted);margin-top:3px}
+.thresholdhead{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.thresholdhead label{margin:0}
+.value{font-size:.75rem;border:1px solid var(--line);border-radius:6px;padding:3px 7px;color:var(--accent)}
+input[type=range]{width:100%;accent-color:var(--accent);margin:14px 0 4px}
+.rangeends{display:flex;justify-content:space-between;font-size:.76rem;color:var(--muted)}
+.threshold-explain{background:#111416;border:1px solid var(--line);border-radius:9px;padding:11px 12px;font-size:.83rem;color:var(--muted);margin-top:10px}
+button{font:inherit;font-weight:700;border-radius:9px;border:1px solid transparent;padding:11px 15px;cursor:pointer}
+.primary{width:100%;background:var(--accent);color:var(--accent-ink);margin-top:6px}
+.secondary{background:transparent;color:var(--ink);border-color:var(--line)}
+button:disabled{opacity:.55;cursor:wait}
+.status{font-size:.84rem;color:var(--muted);margin:12px 0 0;min-height:1.5em}
+.coverage{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
+.pill{font-size:.76rem;border:1px solid var(--line);padding:4px 8px;border-radius:999px;color:var(--muted)}
+.notice{margin:0 0 14px;background:#201c12;border:1px solid #51452a;color:var(--warn);padding:12px 13px;border-radius:10px;font-size:.84rem}
+.notice strong{color:#fff0c7}
+.output-head{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.output{min-height:480px;resize:vertical;line-height:1.5;white-space:pre-wrap;font-size:.9rem}
+.empty{min-height:330px;display:grid;place-items:center;text-align:center;color:var(--muted);padding:28px;border:1px dashed #3b4248;border-radius:10px}
+.small{font-size:.8rem;color:var(--muted)}
+.hidden{display:none!important}
+.corpus{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:17px}
+.metric{background:#111416;border:1px solid var(--line);border-radius:9px;padding:10px 11px;min-width:0}
+.metric strong{display:block;font-size:1.12rem;letter-spacing:-.02em;overflow-wrap:anywhere}
+.metric span{display:block;font-size:.76rem;color:var(--muted)}
+.line{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:9px}
+details{margin-top:11px;border-top:1px solid var(--line);padding-top:11px}
+summary{cursor:pointer;color:var(--accent);font-size:.84rem}
+.source-list{padding-left:20px;color:var(--muted);font-size:.82rem;overflow-wrap:anywhere}
+footer{max-width:1160px;margin:auto;padding:0 22px 30px;color:var(--muted);font-size:.8rem}
+@media(max-width:820px){main{grid-template-columns:1fr;padding:14px}.head{padding:20px 15px 18px}footer{padding:0 15px 24px}.output{min-height:300px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="head">
+ <div class="brand"><span class="mark" aria-hidden="true">T</span> Tumbler <span aria-hidden="true">/</span> Methodology compiler</div>
+ <h1>One project. One lens. A better work order.</h1>
+ <p class="lede">Choose the method you want the agent to follow. Tumbler retrieves indexed source material, checks the live branch list, and generates a scoped implementation prompt for <a href="https://github.com/unclehowell/datro" target="_blank" rel="noreferrer">unclehowell/datro</a>.</p>
+</div></header>
+<main>
+<section class="panel" aria-labelledby="control-heading">
+ <div class="panelhead"><h2 id="control-heading">Assessment settings</h2></div>
+ <div class="panelbody">
+  <div class="line"><strong>Corpus status</strong><a href="/api/corpus-status" target="_blank" rel="noreferrer">View API status ↗</a></div>
+  <div class="corpus" aria-live="polite">
+   <div class="metric"><strong id="metric-docs">—</strong><span>Indexed documents</span></div>
+   <div class="metric"><strong id="metric-branches">—</strong><span>Branch heads in last index</span></div>
+   <div class="metric"><strong id="metric-hosts">—</strong><span>Indexed source hosts</span></div>
+   <div class="metric"><strong id="metric-run">Not run</strong><span>Latest index status</span></div>
+  </div>
+  <p class="hint" id="index-note">Loading corpus status…</p>
+  <details>
+   <summary>Source coverage and exclusions</summary>
+   <p class="small">The registry contains hostnames discovered in Cloudflare plus the original WordPress wiki. The indexer is designed for current Git branch heads and published public HTML/text. Private API services and PDF document bodies are not included by default. Pages that fail or exceed crawl limits are reported rather than silently counted as complete.</p>
+   <p><a href="https://github.com/unclehowell/datro/actions/workflows/index-tumbler-corpus.yml" target="_blank" rel="noreferrer">Open corpus-indexing workflow ↗</a></p>
+   <ol id="host-list" class="source-list"></ol>
+  </details>
+  <hr style="border:0;border-top:1px solid var(--line);margin:17px 0">
+  <div class="fieldrow">
+   <label class="field" for="method">Methodology / framework</label>
+   <select id="method">
+    <option value="socratic" selected>Socratic method</option>
+    <option value="prince2">PRINCE2 Project Management (Version 7)</option>
+    <option value="roberts">Robert's Rules of Order</option>
+    <option value="evidence">Evidence and archival integrity</option>
+    <option value="engineering">Software engineering and release control</option>
+   </select>
+   <p class="hint" id="method-hint">Test assumptions, seek counterevidence and turn open questions into verifiable repository improvements.</p>
+  </div>
+  <div class="fieldrow">
+   <label class="field" for="focus">What should the agent improve?</label>
+   <textarea id="focus" rows="4">Audit all branches of unclehowell/datro and the connected public Buckler Family project estate through the selected methodology. Prioritise the highest-impact improvements, preserve source provenance, and separate documented facts from inference and unresolved questions.</textarea>
+   <p class="hint">This adds direction to the work order. Scope defaults to all live Git branches; private service content is not silently ingested.</p>
+  </div>
+  <div class="checkrow">
+   <input id="property-law" type="checkbox">
+   <label for="property-law"><strong>Property-law filter</strong><span>Prioritise title, parcel identity, conveyances, possession, occupation, registration, boundaries, court decisions and the legal regime applicable at the relevant date.</span></label>
+  </div>
+  <div class="checkrow">
+   <input id="investigation" type="checkbox" checked>
+   <label for="investigation"><strong>Fraud / concealment / government-involvement threshold</strong><span>Review three separate hypotheses and require supporting evidence, counterevidence, independent corroboration and alternative explanations.</span></label>
+  </div>
+  <div class="fieldrow" id="threshold-wrap" style="margin-top:14px">
+   <div class="thresholdhead"><label class="field" for="threshold">Evidential threshold</label><span id="threshold-value" class="value">Balanced</span></div>
+   <input id="threshold" type="range" min="1" max="3" step="1" value="2" aria-describedby="threshold-help">
+   <div class="rangeends"><span>Exploratory</span><span>Corroborated</span></div>
+   <div id="threshold-help" class="threshold-explain">Balanced: require multiple materially independent indicators and consider plausible alternatives. A missing record or refusal alone is insufficient.</div>
+  </div>
+  <button id="generate" class="primary">Generate implementation prompt</button>
+  <p id="status" class="status" role="status" aria-live="polite">Loading source inventory…</p>
+  <div class="coverage" id="coverage"></div>
+ </div>
+</section>
+<section class="panel" aria-labelledby="output-heading">
+ <div class="panelhead output-head">
+  <h2 id="output-heading">Generated agent prompt</h2>
+  <div class="actions"><button id="copy" class="secondary" disabled>Copy prompt</button><button id="download" class="secondary" disabled>Save .txt</button></div>
+ </div>
+ <div class="panelbody">
+  <p class="notice"><strong>Coverage is a factual status, not a promise.</strong> Tumbler uses retrieval over the latest index plus selected live source excerpts. It does not fine-tune a model. Until the full index has run and its coverage is checked, prompts must say so. Private API services and PDF bodies are excluded by default.</p>
+  <div id="empty" class="empty">Choose a methodology and filters, then generate an implementation-ready work order for the agent.</div>
+  <textarea id="output" class="output hidden" readonly aria-label="Generated implementation prompt"></textarea>
+  <p id="coverage-note" class="small"></p>
+ </div>
+</section>
+</main>
+<footer>
+ <p>Source data is treated as untrusted evidence, never as instructions that can override the selected methodology. Fraud, concealment and government-involvement filters are evidential screening controls, not findings or legal verdicts. Review the prompt before giving it to an agent.</p>
+ <p><a href="https://github.com/unclehowell/datro/tree/tumbler/static/tumbler">Tumbler source on GitHub</a> · <a href="/api/manifest">Methodology and source registry</a> · <a href="/api/health">Health</a></p>
+</footer>
+<script>
+const $ = id => document.getElementById(id);
+let methods = {};
+let currentPrompt = "";
+const thresholdDescriptions = {
+  1: { label: "Exploratory", key: "screening", text: "Exploratory: flag possible indicators as leads, state benign explanations and define what would verify or disprove them. One indicator is not proof." },
+  2: { label: "Balanced", key: "balanced", text: "Balanced: require multiple materially independent indicators and consider plausible alternatives. A missing record, refusal, inconsistency or adverse outcome alone is insufficient." },
+  3: { label: "Corroborated", key: "strict", text: "High/corroborated: require direct documentary support and independent corroboration of the specific act, actor, time and connection. Otherwise leave it unresolved or as a research lead." }
+};
+function setStatus(text) { $("status").textContent = text; }
+function updateThreshold() {
+  const value = thresholdDescriptions[$("threshold").value];
+  $("threshold-value").textContent = value.label;
+  $("threshold-help").textContent = value.text;
+}
+$("threshold").addEventListener("input", updateThreshold);
+$("investigation").addEventListener("change", () => {
+  $("threshold-wrap").classList.toggle("hidden", !$("investigation").checked);
+});
+$("method").addEventListener("change", () => {
+  const method = methods[$("method").value];
+  if (method) $("method-hint").textContent = method.description;
+});
+async function loadManifest() {
+  try {
+    const response = await fetch("/api/manifest", { cache: "no-store" });
+    if (!response.ok) throw new Error("HTTP " + response.status);
+    const data = await response.json();
+    methods = Object.fromEntries((data.methods || []).map(item => [item.id, item]));
+    const sources = data.inventory?.sources || [];
+    $("coverage").innerHTML = [
+      '<span class="pill">' + sources.length + ' discovered hosts</span>',
+      '<span class="pill">All branches by default</span>',
+      '<span class="pill">Socratic method first</span>',
+      '<span class="pill">Full estate index: not yet verified</span>'
+    ].join("");
+    const list = $("host-list");
+    list.replaceChildren();
+    for (const source of sources) {
+      const li = document.createElement("li");
+      const link = document.createElement("a");
+      link.href = source.url;
+      link.target = "_blank";
+      link.rel = "noreferrer";
+      link.textContent = source.host;
+      li.append(link, document.createTextNode(" — " + source.description));
+      list.append(li);
+    }
+    $("method-hint").textContent = methods[$("method").value]?.description || "";
+    setStatus("Source inventory loaded. The live branch list and indexed context are checked when you generate.");
+  } catch {
+    setStatus("Could not load the source manifest. Check the deployed API before relying on a prompt.");
+  }
+}
+async function loadCorpusStatus() {
+  try {
+    const response = await fetch("/api/corpus-status", { cache: "no-store" });
+    const data = await response.json();
+    const corpus = data.corpus || {};
+    const run = data.latestRun;
+    $("metric-docs").textContent = Number(corpus.documents || 0).toLocaleString("en-GB");
+    $("metric-hosts").textContent = Number(corpus.hosts || 0).toLocaleString("en-GB");
+    $("metric-branches").textContent = run ? Number(run.branches || 0).toLocaleString("en-GB") : "—";
+    $("metric-run").textContent = run ? String(run.status || "unknown") : "Not run";
+    if (!run) {
+      $("index-note").textContent = "No corpus index run recorded yet. The generator will only have the connected live excerpts until the indexing workflow runs.";
+    } else {
+      const finished = run.finishedAt ? " · finished " + new Date(run.finishedAt).toLocaleString("en-GB") : "";
+      $("index-note").textContent = Number(run.documents || 0).toLocaleString("en-GB") + " documents and " + Number(run.chunks || 0).toLocaleString("en-GB") + " chunks in latest run" + finished + ". Whole-estate completeness is not guaranteed.";
+    }
+  } catch {
+    $("index-note").textContent = "Corpus status is unavailable. The indexing run should be checked before claiming coverage.";
+  }
+}
+$("generate").addEventListener("click", async () => {
+  const button = $("generate");
+  button.disabled = true;
+  button.textContent = "Generating…";
+  setStatus("Retrieving context, checking branch heads and compiling the work order…");
+  currentPrompt = "";
+  $("copy").disabled = true;
+  $("download").disabled = true;
+  $("coverage-note").textContent = "";
+  try {
+    const threshold = thresholdDescriptions[$("threshold").value];
+    const response = await fetch("/api/generate", {
+      method: "POST",
+      headers: { "content-type": "application/json", "accept": "application/json" },
+      body: JSON.stringify({
+        method: $("method").value,
+        focus: $("focus").value,
+        propertyLaw: $("property-law").checked,
+        investigation: $("investigation").checked,
+        threshold: threshold.key,
+        allBranches: true
+      })
+    });
+    const data = await response.json();
+    if (!response.ok || !data.ok) throw new Error(data.error || "Generation failed (HTTP " + response.status + ").");
+    currentPrompt = data.prompt || "";
+    $("output").value = currentPrompt;
+    $("output").classList.remove("hidden");
+    $("empty").classList.add("hidden");
+    $("copy").disabled = !currentPrompt;
+    $("download").disabled = !currentPrompt;
+    const coverage = data.coverage || {};
+    const run = coverage.corpusRun;
+    $("coverage-note").textContent =
+      "This run: " + (coverage.branchHeadsLive ?? "?") + " live branch heads; " +
+      (coverage.selectedRegisteredHosts ?? "?") + " registered hosts; " +
+      (coverage.retrievedExcerpts ?? 0) + " source excerpts. " +
+      (run ? "Indexed corpus status: " + run.status + " (" + run.documents + " documents, " + run.chunks + " chunks). " : "No completed full corpus index. ") +
+      "Exhaustive whole-estate index: no. Private hosts and PDF bodies are excluded by default.";
+    setStatus("Prompt generated. Check its scope and evidence requirements before giving it to an agent.");
+    await loadCorpusStatus();
+  } catch (error) {
+    setStatus(String(error.message || error));
+  } finally {
+    button.disabled = false;
+    button.textContent = "Generate implementation prompt";
+  }
+});
+$("copy").addEventListener("click", async () => {
+  if (!currentPrompt) return;
+  try {
+    await navigator.clipboard.writeText(currentPrompt);
+    setStatus("Prompt copied to clipboard.");
+  } catch {
+    $("output").focus(); $("output").select();
+    setStatus("Prompt selected. Use your browser's Copy command.");
+  }
+});
+$("download").addEventListener("click", () => {
+  if (!currentPrompt) return;
+  const blob = new Blob([currentPrompt], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "tumbler-agent-prompt.txt";
+  link.click();
+  URL.revokeObjectURL(url);
+});
+updateThreshold();
+loadManifest();
+loadCorpusStatus();
+</script>
+</body>
+</html>
