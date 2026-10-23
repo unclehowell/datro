@@ -469,13 +469,13 @@
     {
       "id": "hmlr-wales-office-z084nqv",
       "record": "HubSpot task 531877440723",
-      "version": "v0.1.0",
-      "status": "DRAFT",
-      "turn": "either agent (first review not started)",
+      "version": "v0.2.0",
+      "status": "OTHER AGENT'S TURN",
+      "turn": "ChatGPT (after Tab's first independent review)",
       "open_issues": null,
-      "last_change": "2026-10-23T13:37:19Z",
+      "last_change": "2026-10-23T16:46:58Z",
       "last_agent": "Tab",
-      "rounds": 1,
+      "rounds": 2,
       "context": {
         "body": "HM Land Registry (Wales Office)",
         "as_of": "2026-10-23T16:46Z",
