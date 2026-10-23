@@ -1065,6 +1065,7 @@ export function RoadmapRamps({ preferName }: { preferName?: string }) {
         <li className="flex items-center gap-1"><span aria-hidden>🔥</span>deadline missed</li>
         <li className="flex items-center gap-1"><HouseIcon />no reply by the due date</li>
         <li className="flex items-center gap-1"><FishIcon />late or questions unanswered</li>
+        <li className="flex items-center gap-1"><span aria-hidden className="inline-flex size-3 items-center justify-center rounded-full bg-[#ffd34d] text-[8px] font-extrabold text-[#0d0b09]">£</span>fee asked (not paid)</li>
         <li className="flex items-center gap-1"><span className="inline-block h-2 w-1 bg-[#2e9e57]" />deadline met</li>
         <li className="flex items-center gap-1"><span className="inline-block size-2 rounded-full bg-[#2fa36b]" />today</li>
       </ul>
