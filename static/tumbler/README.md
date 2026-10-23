@@ -35,18 +35,20 @@ A missing record, FOI/EIR refusal, indexing failure, inconsistency, land-registr
 
 The source registry is `sources.json`, dated 23 October 2026. It records 61 host entries discovered in the connected Cloudflare Pages/Worker domain list, plus the original WordPress wiki and public research/Q&A connectors. It is a discovery seed, not proof that every route or page is reachable.
 
-The full-text indexer in `scripts/index-tumbler-corpus.mjs` is designed to index:
+The full-text indexer in `scripts/index-tumbler-corpus.mjs` uses the GitHub Branches, Git Commits and Git Trees APIs plus pinned raw-content URLs rather than fetching the repository's complete Git object graph. It is designed to index:
 
-1. Text files at current GitHub branch heads for `unclehowell/datro`, preserving branch names, head SHAs, paths, blob-derived identity, URL and content hash.
-2. Public, published HTML pages reachable from sitemaps and same-host links.
+1. Eligible text files at the current head of each branch for `unclehowell/datro`, preserving branch names, commit SHAs, paths, blob identity, source URL and content hash.
+2. Published HTML pages reachable from public host sitemaps and same-host links.
 3. The research mirror's WordPress-shaped content catalogue.
-4. Public FOI/EIR Q&A records.
+4. Public FOI/EIR Q&A records where the graph export is available.
+
+The indexer stores progress snapshots while it runs so the dashboard can show actual counts rather than waiting until the end. GitHub tree truncation, inaccessible branches, skipped oversized text files, host failures and crawl-limit hits are recorded as coverage limitations. A `complete` run is not a claim that private or binary sources were included; use the coverage JSON.
 
 It stores content in separate `tumbler_*` tables in the existing `research-wp-d1` database. Cloudflare limited this account to ten D1 databases, so the app shares that database at the storage layer but does not alter the mirror's existing tables. A dedicated new database was refused by Cloudflare's account database-count limit. The application binds only to the `tumbler_*` tables.
 
 The current indexer intentionally excludes private API services by default, avoids secrets and credential files in repository text, and does not extract binary PDF contents in this version. Files above the configured text-file size limit, unreachable sites, crawl-limit overflows and failures are recorded as limitations. It does not claim a complete index merely because an index run has finished. Each run's manifest and error list are available from `/api/corpus-status`.
 
-The indexer workflow is at `.github/workflows/index-tumbler-corpus.yml`. It can run on updates to its own source registry/indexer and can be scheduled when that workflow is enabled on the repository's default branch. For a manual refresh from the current branch, push a change to the indexer or source registry to trigger the indexing workflow. Before relying on results, inspect the latest status and reported coverage.
+The indexer workflow is at `.github/workflows/index-tumbler-corpus.yml`. Push changes to the indexer or source registry on the `tumbler` branch to trigger a refresh. GitHub schedule/manual-dispatch availability depends on how the workflow is enabled on the repository's default branch. Before relying on results, inspect the latest status and reported coverage. The app must not treat a running, interrupted or partial index as a complete corpus.
 
 ## Generation and safety
 
