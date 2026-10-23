@@ -5,7 +5,7 @@
 **Application root:** `static/tumbler/`  
 **Intended URL:** https://tumbler.bucklerfamily.estate/
 
-Tumbler is a project-aware prompt compiler. It retrieves source material, evaluates gaps through a selected methodology and produces a self-contained implementation work order for a coding agent. It does not fine-tune a model each time the source corpus changes: the corpus is indexed and retrieved as context, while the selected methodology supplies the temporary analytical lens.
+Tumbler is a public methodology-contribution interface. Visitors choose a methodology and optional review filters; the corpus input is fixed to the latest indexed collection of eligible text across all current unclehowell/datro branches plus registered public project sources. Tumbler verifies that every indexed branch-head SHA still matches GitHub before it will propose a change. Where it finds a defensible, narrowly scoped documentation improvement, it creates a draft GitHub pull request against the branch containing that document. It never commits to a source branch, merges or deploys a generated change.
 
 ## Supported methodologies
 
@@ -14,6 +14,26 @@ Tumbler is a project-aware prompt compiler. It retrieves source material, evalua
 - **Robert's Rules of Order** — meeting procedure only where applicable and consistent with adopted rules and superior law.
 - **Evidence and archival integrity** — provenance, chronology, identifiers, versioning, contradictory sources and explicit uncertainty.
 - **Software engineering and release control** — tests, branch integrity, API contracts, security, accessibility and verified releases.
+
+## Public contribution workflow
+
+The browser has no free-text objective, branch selector or source-host selector. A click uses the latest available collection as one corpus; methodology and evidential filters affect how that collection is reviewed, not what the user chooses to supply.
+
+1. **Refresh latest collection** dispatches the existing GitHub Actions workflow to re-index every live branch and the registered public sources. The UI must not describe a queued or running index as complete.
+2. **Assess collection and generate pull request** fetches live branch heads and compares every branch name and commit SHA with the snapshot recorded by the latest completed index. A missing snapshot, branch mismatch or incomplete branch/tree inventory blocks the contribution and directs the user to refresh first.
+3. Tumbler retrieves methodology-relevant repository excerpts, selects a current, hash-matching Markdown guide, and asks the model for a small additional or replaceable marked section. It does not rewrite source records or blindly apply generated source-code patches.
+4. The service creates a new proposal branch and a **draft pull request** against the document's current branch. The pull request records the methodology, index run, target file, branch-head coverage and review conditions. Nothing is merged or deployed automatically.
+5. If no defensible document-specific improvement can be grounded in the corpus, the service reports that no PR was created.
+
+The full eligible text corpus is indexed across branch heads and retrieved from that corpus for each lens; it is not possible to fit every byte of every repository file and every public webpage into one model context. Binary files, oversized text files, private APIs, inaccessible sources and entries excluded by the indexer's stated limits remain coverage limitations. The app must disclose them, not imply they were assessed.
+
+### Enable pull-request generation
+
+The live Pages Function needs a server-side secret named TUMBLER_GITHUB_TOKEN. It must never be placed in browser code or committed to Git.
+
+Create a fine-grained GitHub token restricted to unclehowell/datro, with **Contents: read/write**, **Pull requests: read/write**, and **Actions: read/write** permissions (Metadata read access is implicit). In Cloudflare, open **Workers & Pages → Pages → tumbler → Settings → Variables and Secrets → Add**, name the secret TUMBLER_GITHUB_TOKEN, enter the token, select **Encrypt**, save, and redeploy the Pages project. This enables the refresh route and contribution route. If the secret is absent or GitHub rejects its permissions, the UI fails closed with a visible error rather than pretending a PR was created.
+
+Both actions are rate-limited. PR generation is limited to two attempts per client IP per UTC day; the on-demand refresh endpoint is limited per client and globally. These limits reduce abuse but are not equivalent to human verification. Keep the token narrowly scoped, monitor open PRs and revoke it if misuse is suspected.
 
 ## Filters
 
@@ -52,7 +72,7 @@ The indexer workflow is at `.github/workflows/index-tumbler-corpus.yml`. Push ch
 
 ## Generation and safety
 
-- The default method is Socratic; branch scope is all current repository branches.
+- The default method is Socratic. Branch scope is fixed to all current repository branches; visitors cannot supply a custom corpus.
 - `/api/generate` combines selected methodology rules with retrieved snippets and live branch heads. It uses Cloudflare Workers AI through the `AI` binding.
 - The output must require an implementing agent to re-fetch live branches and verify evidence before changing any files.
 - The app applies a lightweight per-client generation rate limit. This is not a substitute for protecting the interface with Cloudflare Access if generation or the indexed corpus is intended to be private.
