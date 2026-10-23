@@ -21,8 +21,11 @@ only), and full per-person profiles with their whole chronology, every actor wit
 ## Two editions: Then (fb.) and Now (fb2.) — 23 Oct 2026
 One generator, one branch, a build flag. `FB_EDITION=then` (default) builds `site/` for https://fb.bucklerfamily.estate/: only actors, events and media before 2005, retold as social media (each post by the party that acted, "X is now friends with Y" for transfers, "shared a link" for the press, reactions, comments, a Source link on every post). `FB_EDITION=now` builds `site2/` for https://fb2.bucklerfamily.estate/: 2005 onwards (requests, replies, refusals, missed deadlines as posts, "Seen" receipts and check-ins by the body that acted; the daily highlight-report video).
 
+    python3 tools/email_posts.py   # new emails → fb2 posts in the sender's own words (data/email_posts.json)
     python3 tools/build_social.py && python3 tools/build_wall.py && FB_EDITION=now python3 tools/build_wall.py
     node check.mjs site && node check.mjs site2
     python3 tools/push.py "<message> — Sion's Tab agent"
 
 Pages: `bucklerfamily-fb` (build `node check.mjs`, output `site`) and `bucklerfamily-fb2` (build `node check.mjs site2`, output `site2`), both from branch `fb`. Stories: site/stories.js (rings at the top of both walls). Anything moved to fb2 answers on fb with a 301 (site/_redirects, generated block).
+
+Shorts (both editions) carry pictures, video and hyperframes only, never a text slide (SHORTS GATE). fb2 email posts: the sender's own first-person summary, optional key words, hashtags (#email #to/#from …), dated and timed to the email's sent time; no "Reply" labels (23 Oct 2026).

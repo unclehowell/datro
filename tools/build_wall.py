@@ -31,7 +31,7 @@ os.makedirs(os.path.join(SITE, "img", "social"), exist_ok=True)
 from zoneinfo import ZoneInfo
 TODAY = dt.datetime.now(ZoneInfo("Europe/London")).date()   # the family's day, not the box's UTC day
 BANNED = re.compile(r"\b(thief|thieves|stolen|looted|criminal|racket|lawfare|fraud\w*|says|claims|claimed|claiming|according to|alleged\w*|allegation\w*|hearsay|unverified)\b|(?<!Coed )\bSion\b" + (r"(?! Buckler\b)" if NOW else "") + r"|(?<!Coed Sion )\bHywel\b"
-                    r"|family[’']?s? (account|position)|Branwen\s+Buckler|robin\s*hill|hywelapbuckler|7845|[\w.+-]+@[\w-]+\.[\w.]+|Not a finding|Our case|prospective", re.I)
+                    r"|family[’']?s? (account|position)|Branwen\s+Buckler|robin\s*hill|(?<!#)hywelapbuckler|7845|[\w.+-]+@[\w-]+\.[\w.]+|Not a finding|Our case|prospective", re.I)
 def ok(s): return bool(s) and not BANNED.search(s)
 FIX = [(r"\s*Where the family['’]s position goes beyond a document, it is written as “our position”\.", ""), (r"\s*Every post names its source; where the family['’]s position goes beyond a document, it is written as “our position”\.", " Every post names its source."),
        (r"\bOur case film\b", "Film"), (r"\bOur case:\s*", "The family’s case: "), (r"\bIn our case\b", "In the family’s case"), (r"\bour case\b", "the family’s case"), (r"\bOur case\b", "The family’s case")]
@@ -130,21 +130,38 @@ QUOTES = {}
 for d in DAILY:
     for r in d.get("replies", []):
         if r.get("quote") and r.get("wayback"): QUOTES[r["wayback"]] = r["quote"]
+# Email posts (Sion, 17:18 BST 23 Oct 2026, m:1806dbe2): each email is the sender's own post, first person, summed up, with hashtags
+# (#email #to #hywelapbuckler #<body> received; #email #from #hywelapbuckler #to #<body> sent), dated and timed to the email's own sent time
+# (Europe/London). No "Reply"/"Re:" labels. Rows: data/email_posts.json, written by tools/email_posts.py (run it before this build).
+_epp = os.path.join(ROOT, "data", "email_posts.json")
+EPOSTS = json.load(open(_epp, encoding="utf-8"))["posts"] if os.path.exists(_epp) else {}
+def htag(name): return "#" + re.sub(r"[^a-z0-9]", "", name.lower())
+OWNER_TAG = "#hywelapbuckler"   # the owner's own address handle; Sion asked for it (17:18 BST 23 Oct 2026); allowed only as this hashtag
+def email_fields(m, L):
+    ep = EPOSTS.get(m["id"]) or {}
+    d_ = dt.datetime.fromisoformat(ep["dt"]) if len(ep.get("dt", "")) > 10 else None
+    day = d_.date().isoformat() if d_ else m["date"]
+    body_tag = htag(LANE_NAME.get(L["id"], L["name"]))
+    tags = ["#email", "#to", OWNER_TAG, body_tag] if m["dir"] == "received" else ["#email", "#from", OWNER_TAG, "#to", body_tag]
+    summ = (ep.get("summary") or re.sub(r"^In short:\s*", "", m.get("summary", "") or "")).strip()
+    return {"date": day, "when": dt.date.fromisoformat(day).strftime("%-d %B %Y"), "at": d_.strftime("%H:%M") if d_ else "", "dtiso": d_.isoformat() if d_ else day,
+            "text": summ if ok(summ) else "", "key": ep.get("key", "") if ok(ep.get("key", "")) else "", "hashtags": tags, "email": True}
 for L in R["lanes"]:
     sl = lane_slug(L)
     for m in L["emails"]:
-        when = dt.date.fromisoformat(m["date"]).strftime("%-d %B %Y")
+        EF = email_fields(m, L)
+        when = EF["when"]
         src = [(t, u) for t, u in (("Email", m.get("url")), ("Archived text", m.get("wayback")), (m.get("ev") or "", m.get("ev") and "https://greathousefarmwiki.wordpress.com/?s=" + m["ev"])) if u and t]
         if m["dir"] == "received":
             summ = m.get("summary", "") if ok(m.get("summary", "")) else ""
-            add(id="m-" + m["id"], date=m["date"], when=when, actor=sl, kind="Reply · " + LABEL.get(m["cls"], "Reply"), title="",
+            add(id="m-" + m["id"], date=EF["date"], when=when, actor=sl, kind="Reply · " + LABEL.get(m["cls"], "Reply"), title="",
                 quote=QUOTES.get(m.get("wayback")), lead=("Their words, %s:" % when) if QUOTES.get(m.get("wayback")) else "",
-                text=("In short: " + summ) if summ else "", src=src, wall=m["cls"] in KEY_CLS, rank=2)
+                text=EF["text"], key=EF["key"], hashtags=EF["hashtags"], email=True, at=EF["at"], dtiso=EF["dtiso"], src=src, wall=m["cls"] in KEY_CLS, rank=2)
         else:
             what = {"request": "a request for information", "chase": "a chaser", "clarification given": "a clarification", "complaint": "a complaint",
                     "internal review request": "a request for an internal review", "preservation notice": "a preservation notice"}.get(m.get("cls"), "a letter")
-            add(id="m-" + m["id"], date=m["date"], when=when, actor="williams-buckler-family", kind="Letter sent", title="",
-                text="The family sent %s to %s%s." % (what, prof(sl)["name"], (" (deadline %s)" % dt.date.fromisoformat(m["deadline"]).strftime("%-d %b %Y")) if (m.get("deadline") or "")[:4].isdigit() else ""),
+            add(id="m-" + m["id"], date=EF["date"], when=when, actor="williams-buckler-family", kind="Letter sent", title="",
+                text=EF["text"] or "The family sent %s to %s." % (what, prof(sl)["name"]), key=EF["key"], hashtags=EF["hashtags"], email=True, at=EF["at"], dtiso=EF["dtiso"],
                 src=src[:1], tags=[sl], wall=False, rank=4, what=what)
     for x in L["missed"]:
         if "no reply" not in str(x.get("status", "")): continue
@@ -329,6 +346,7 @@ PRESS_VERB = {"Article": "shared a link", "Archive extract": "shared a link", "A
               "Record entry": "added a life event", "Update": "posted an update", "Post": "posted"}
 def verb(x, up):
     k = x["kind"]
+    if x.get("email"): return ""   # an email is the sender's own post: no "replied:" / "sent a message" label (Sion, 17:18 BST 23 Oct 2026)
     if x.get("life"):
         fr = [t for t in x["tags"] if t and prof(t)]
         return (' <span class="wl-verb">is now friends with</span> <a class="sp-n" href="%su/%s.html">%s</a>' % (up, fr[0], e(prof(fr[0])["name"]))) if fr else ' <span class="wl-verb">joined the story</span>'
@@ -360,7 +378,7 @@ def social_bits(x, up):
     if k == "Letter sent":
         t = x["tags"][0] if x["tags"] else None
         nxt = next((d for d in REPLY_DATES.get(t, []) if d >= x["date"]), None)
-        out.append('<p class="wl-seen">%s</p>' % (("Seen ✓ · replied %s" % dt.date.fromisoformat(nxt).strftime("%-d %b %Y")) if nxt else "Delivered · no reply yet"))
+        out.append('<p class="wl-seen">%s</p>' % (("Seen ✓ · answered %s" % dt.date.fromisoformat(nxt).strftime("%-d %b %Y")) if nxt else "Delivered · no reply yet"))
     if k == "Deadline passed":
         out.append('<p class="wl-seen wl-seen-r">Seen · no reply by the deadline</p>')
     if k.startswith("Reply"):
@@ -373,10 +391,10 @@ def social_bits(x, up):
 def card(x, up):
     a = x["actor"]; p = prof(a); pu = "%su/%s.html" % (up, a)
     h = ['<article class="post sp wl" id="%s"><header class="sp-h"><a class="sp-av" href="%s" tabindex="-1" aria-hidden="true">%s</a>'
-         '<div class="sp-who"><a class="sp-n" href="%s">%s</a>%s<div class="sp-d"><time datetime="%s">%s</time> · %s</div></div></header>'
+         '<div class="sp-who"><a class="sp-n" href="%s">%s</a>%s<div class="sp-d"><time datetime="%s">%s</time>%s · %s</div></div></header>'
          % (e(x["id"]), pu, avimg(a, up), pu, e(p["name"]), verb(x, up) + (
             "".join(' <span class="wl-with">with <a href="%su/%s.html">%s</a></span>' % (up, t, e(prof(t)["name"])) for t in x["tags"][:2] if t and prof(t) and t != a and x["kind"] != "Highlight report") if not (x.get("life") or x["kind"] == "Letter sent") else ""),
-            x["date"], e(x["when"]), e(x["kind"]))]
+            e(x.get("dtiso") or x["date"]), e(x["when"]), (" at %s" % e(x["at"])) if x.get("at") else "", "Email" if x.get("email") else e(x["kind"]))]
     if x.get("exception"): h[0] = h[0].replace('<article class="post sp wl" ', '<article class="post sp wl" data-src-exception="highlight-report" ', 1)
     h.append('<div class="sp-b">')
     if x.get("daily"):
@@ -403,6 +421,8 @@ def card(x, up):
         if x.get("lead"): h.append('<p class="wl-lead">%s</p>' % e(x["lead"]))
         if x.get("quote"): h.append('<blockquote class="wl-q%s">%s</blockquote>' % (" wl-sum" if x.get("summary") else "", ("“%s”" % e(x["quote"])) if not x.get("summary") else e(x["quote"])))
         if x.get("text"): h.append("<p>%s</p>" % e(fix(x["text"])))
+        if x.get("key"): h.append('<blockquote class="wl-q wl-key">“%s”</blockquote>' % e(x["key"]))
+        if x.get("hashtags"): h.append('<p class="wl-tags">%s</p>' % " ".join('<span class="wl-ht">%s</span>' % e(t_) for t_ in x["hashtags"]))
         if x.get("text2"): h.append('<p class="wl-lead">%s</p>' % e(x["text2"]))
         if x.get("photo") and os.path.exists(os.path.join(SITE, x["photo"])): h.append('<figure class="sp-media"><img src="%s%s" alt="" loading="lazy"></figure>' % (up, e(x["photo"])))
     if not x.get("daily") and not x.get("hf"): h.append(TS.media_html(x, up))
@@ -436,6 +456,13 @@ def hf_block(r, up, under_daily):
 def years(up):
     ys = sorted({x["date"][:4] for x in EV if x["wall"]}, reverse=True)
     return '<nav class="sb-years wl-years" aria-label="Earlier years">%s</nav>' % "".join('<a href="%swall/%s.html">%s</a>' % (up, y, y) for y in ys)
+TAGCSS = """
+/* email posts: hashtags (Sion, 17:18 BST 23 Oct 2026) */
+.wl-tags{margin:6px 0 2px;display:flex;flex-wrap:wrap;gap:2px 8px;font-size:15px;font-weight:600;color:#1a56c9;overflow-wrap:anywhere}
+.wl-key{font-style:italic}
+html[data-ghf-mode="night"] .wl-tags{color:#8ab4ff}
+@media (prefers-color-scheme:dark){html:not([data-ghf-mode="day"]) .wl-tags{color:#8ab4ff}}
+"""
 WALLCSS = """/* wall.css — the hope wall and full profiles (22 Oct 2026). — Sion's Tab agent */
 .wl-hero{background:var(--card);padding:14px 14px 10px;margin:0 0 10px}
 .wl-hero h1{margin:0;font-size:21px}.wl-hero p{margin:0;color:var(--muted);font-size:14px}
@@ -520,15 +547,23 @@ def slide(x, up):
     if x.get("hf"):
         return {"by": prof(a)["name"], "d": x["when"], "t": x["hf"]["title"], "x": short(x["hf"]["caption"].split("\n\n", 1)[-1], 200),
                 "video": x["hf"]["video"], "poster": up + x["hf"]["poster"], "u": "%sindex.html#%s" % (up, x["id"])}
-    sl = {"by": prof(a)["name"], "av": up + av(a), "d": x["when"], "t": t if ok(t) else "", "x": short(tx) if ok(tx) else "", "u": "%su/%s.html#%s" % (up, a, x["id"])}
+    # Shorts carry pictures, video and hyperframes only (Sion, 17:18 BST 23 Oct 2026): the slide shows the media with its headline, never body text.
+    sl = {"by": prof(a)["name"], "av": up + av(a), "d": x["when"], "t": t if ok(t) and not x.get("email") else "", "x": "", "u": "%su/%s.html#%s" % (up, a, x["id"])}
+    v = x.get("video") or {}
     if img: sl["img"] = up + img
+    elif x.get("wbimg"): sl["img"] = x["wbimg"]
+    if v.get("mp4") and (v.get("poster") or sl.get("img")): sl["video"] = v["mp4"]; sl["poster"] = v.get("poster") or sl["img"]
     return sl
+def has_media(x):
+    v = x.get("video") or {}
+    return bool(x.get("hf") or (x.get("photo") and os.path.exists(os.path.join(SITE, x["photo"]))) or x.get("wbimg") or (v.get("mp4") and (v.get("poster") or x.get("wbimg") or x.get("photo"))))
 def ring(rid, name, av_slug, items, up, color=None, cap=8):
-    items = [x for x in items if x.get("title") or x.get("text") or x.get("quote") or x.get("hf")]
-    if not items: return None
-    with_img = [x for x in items if x.get("photo") or x.get("hf")]
-    pick = sorted((with_img + [x for x in items if x not in with_img])[:cap], key=lambda x: x["date"], reverse=NOW)
-    return {"id": rid, "name": name, "av": up + av(av_slug), "c": color or prof(av_slug).get("color", "#1c2e5c"), "slides": [slide(x, up) for x in pick]}
+    """A story card: its slides are the media posts (photo, wayback picture, mp4, highlight hyperframe) of that group, newest first on fb2.
+    Text-only posts and emails never go in a story (Sion, 17:18 BST 23 Oct 2026: "Shorts are for video and images and hyperframes but not raw text");
+    a group with no media keeps its card as one picture (its wayback cover from data/story_covers.json, added in rings())."""
+    pick = sorted([x for x in items if has_media(x)][:cap], key=lambda x: x["date"], reverse=NOW)
+    return {"id": rid, "name": name, "av": up + av(av_slug), "c": color or prof(av_slug).get("color", "#1c2e5c"), "slides": [slide(x, up) for x in pick],
+            "u": "%su/%s.html" % (up, av_slug)}
 def rings(up):
     R_ = []
     if not NOW:
@@ -548,18 +583,23 @@ def rings(up):
         for sl, _ in top:
             R_.append(ring("b-" + sl, prof(sl)["name"], sl, [x for x in EV if x["actor"] == sl and x["kind"] != "Letter sent"][:6], up))
         R_.append(ring("missed", "Missed deadlines", PM, [x for x in EV if x["kind"] == "Deadline passed"][:8], up, "#7f1d1d"))
-    R_ = [r for r in R_ if r and r["slides"]]
+    R_ = [r for r in R_ if r]
     for r in R_:
         for s_ in r["slides"]:
             for k_ in ("t", "x", "by"): s_[k_] = roles(s_.get(k_, ""))
     # Story covers (Sion, 03:14 BST 23 Oct 2026): every card's first slide and preview is a wayback.bucklerfamily.estate image (data/story_covers.json); "Today" keeps its highlight-video poster.
     COV = json.load(open(os.path.join(ROOT, "data", "story_covers.json"), encoding="utf-8")); ed = "now" if NOW else "then"; pool = COV["pool_" + ed]; pi = 0
     for r in R_:
-        s0 = r["slides"][0]
+        s0 = r["slides"][0] if r["slides"] else {}
         if s0.get("video") and s0.get("poster"): continue
         c = COV[ed].get(r["id"])
         if not c: c = pool[pi % len(pool)]; pi += 1
-        s0["img"] = c["img"]; s0["alt"] = c["alt"]
+        # the cover is its own picture slide in front (never laid over a post's text)
+        r["slides"].insert(0, {"by": r["name"], "av": r["av"], "d": "", "t": c["alt"], "x": "", "u": r["u"], "img": c["img"], "alt": c["alt"]})
+    R_ = [r for r in R_ if r["slides"]]
+    for r in R_:
+        txt = [s_ for s_ in r["slides"] if not (s_.get("img") or s_.get("poster") or s_.get("video"))]
+        if txt: raise SystemExit("SHORTS GATE: text-only story slide in %s" % r["id"])
     bad = [r["id"] for r in R_ if not (r["slides"][0].get("img") or r["slides"][0].get("poster"))]
     if bad: raise SystemExit("STORY IMAGE GATE: story cards without an image: " + ", ".join(bad))
     PAIR = ("#2E1B6A", "#FF8A5B") if NOW else ("#6A1B50", "#F55CC2")   # the site's colour pair (palette.md)
@@ -672,7 +712,7 @@ def page_end(up, active="feed"): return BS.tabs(active, up) + "</body></html>"
 def build():
     if NOW: os.makedirs(SITE, exist_ok=True); copy_assets()
     else: split_static()
-    write("wall.css", WALLCSS + ("" if NOW else TS.CSS))
+    write("wall.css", WALLCSS + ("" if NOW else TS.CSS) + TAGCSS)
     # keep the press feed as papers.html
     idx = os.path.join(SITE, "index.html")
     pass   # papers.html (the old press feed) is retired on fb.: it ran to 1995 and the wall carries the press as shared links

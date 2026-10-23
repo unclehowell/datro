@@ -65,3 +65,9 @@ html[data-ghf-mode="night"]{--bg:#000;--card:#18191a;--ink:#e4e6eb;--muted:#b0b3
 html[data-ghf-mode="night"] .pf-av{border-color:#18191a}
 html[data-ghf-mode="night"] .sp-src a,html[data-ghf-mode="night"] .sb-main a:not(.sp-n):not(.wl-cn):not(.fr-a):not(.rg):not(.sc):not(.wl-more-link){color:#8ab4f8}
 html[data-ghf-mode="night"] .wl-q{border-color:#d4b25a}
+
+/* email posts: hashtags (Sion, 17:18 BST 23 Oct 2026) */
+.wl-tags{margin:6px 0 2px;display:flex;flex-wrap:wrap;gap:2px 8px;font-size:15px;font-weight:600;color:#1a56c9;overflow-wrap:anywhere}
+.wl-key{font-style:italic}
+html[data-ghf-mode="night"] .wl-tags{color:#8ab4ff}
+@media (prefers-color-scheme:dark){html:not([data-ghf-mode="day"]) .wl-tags{color:#8ab4ff}}

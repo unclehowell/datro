@@ -6,7 +6,7 @@ const dir=new URL('./'+D+'/',import.meta.url); let errors=[];
 const read=f=>readFileSync(new URL(f,dir),'utf8'); const ls=d=>existsSync(new URL(d,dir))?readdirSync(new URL(d,dir)):[];
 const pages=['index.html','profiles.html','friends.html',...(existsSync(new URL('timeline.html',dir))?['timeline.html']:[]),...ls('u/').map(f=>'u/'+f),...ls('n/').map(f=>'n/'+f),...ls('wall/').map(f=>'wall/'+f)];
 const BANNED=/\b(thief|thieves|stolen|looted|criminal|racket|lawfare|fraud\w*|says|claims|claimed|claiming|according to|alleged\w*|allegation\w*|hearsay|unverified)\b|family[’']?s? (account|position)/i;
-const PRIVATE=[/(?<!Coed Sion )\bHywel\b/,/robin\s*hill/i,/hywelapbuckler/i,/7845\s*933\s*262/,/\b0?7\d{3}\s?\d{3}\s?\d{3}\b/,/\+44\s?7\d{3}/,/[\w.+-]+@[\w-]+\.[\w.]+/,/Branwen\s+Buckler/i,NOW?/(?<!Coed )\bSion\b(?! Buckler\b)/:/(?<!Coed )\bSion\b/,...(NOW?[/\bHywel\b/i]:[])];
+const PRIVATE=[/(?<!Coed Sion )\bHywel\b/,/robin\s*hill/i,/(?<!#)hywelapbuckler/i,/7845\s*933\s*262/,/\b0?7\d{3}\s?\d{3}\s?\d{3}\b/,/\+44\s?7\d{3}/,/[\w.+-]+@[\w-]+\.[\w.]+/,/Branwen\s+Buckler/i,NOW?/(?<!Coed )\bSion\b(?! Buckler\b)/:/(?<!Coed )\bSion\b/,...(NOW?[/\bHywel\b/i]:[])];
 let dated=0;
 for(const p of pages){
   const raw=read(p);
@@ -46,6 +46,9 @@ if(NOW){ const SRC=/^https:\/\/(email|dartboard)\.bucklerfamily\.estate\//; let 
   if(!cards.length) errors.push('stories: no story cards on the wall');
   if(bare.length) errors.push('stories: '+bare.length+' story card(s) without an image');
   if(noimg.length) errors.push('stories: first slide without an image: '+noimg.join(', '));
+  // shorts carry pictures, video and hyperframes only, never a text-only slide (Sion, 17:18 BST 23 Oct 2026)
+  for(const r of rd) for(const s of (r.slides||[])) if(!(s.img||s.poster||s.video)) errors.push('stories: text-only slide in '+r.id);
+  if(NOW&&/replied: /.test(idx)) errors.push('wall: "replied:" label on a post');
   const IMGHOST=/^(?:https:\/\/(?:wayback|email|dartboard)\.bucklerfamily\.estate\/|(?:\.\.\/)?(?:img|daily)\/)/;
   for(const r of rd) for(const s of (r.slides||[])) for(const u of [s.img,s.poster].filter(Boolean)) if(!IMGHOST.test(u)) errors.push('stories: image not hosted on wayback./the site: '+u);
   if(NOW) for(const p of pages) for(const m of read(p).matchAll(/<img[^>]+src="(https?:\/\/[^"]+)"/g)) if(!/^https:\/\/(?:wayback|email|dartboard)\.bucklerfamily\.estate\//.test(m[1])) errors.push(p+': image from outside wayback./email./dartboard.: '+m[1]);
