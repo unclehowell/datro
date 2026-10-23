@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-20 18:00 UTC",
+ "generated": "2026-10-23 00:57 UTC",
  "period": "1 Apr 2025 – today",
  "balance": 0.0,
  "income": 0,
@@ -541,72 +541,26 @@
    "pending": true
   }
  ],
- "claimed": [
-  {
-   "body": "BP plc (successor to BP Properties Ltd / BP Pension Trust)",
-   "share": 60.0,
-   "low": 659688.0,
-   "mid": 2066256.0,
-   "high": 3117252.0,
-   "basis": "Primary actor and the party that profited from the land",
-   "route": "Pre-action letter; civil proceedings; application to set aside the 1987 judgment (Takhar v Gracefield [2019] UKSC 13)"
-  },
-  {
-   "body": "HM Land Registry",
-   "share": 20.0,
-   "low": 219896.0,
-   "mid": 688752.0,
-   "high": 1039084.0,
-   "basis": "Public register: the State guarantee of title is the statutory backstop for a register mistake",
-   "route": "HMLR complaint (stages 1–2 done); Independent Complaints Reviewer; indemnity under LRA 2002 Sch 8"
-  },
-  {
-   "body": "Vale of Glamorgan Council",
-   "share": 5.0,
-   "low": 54974.0,
-   "mid": 172188.0,
-   "high": 259771.0,
-   "basis": "Planning and conservation authority with power to intervene",
-   "route": "Corporate complaint, then the Public Services Ombudsman for Wales"
-  },
-  {
-   "body": "Welsh Government / Cadw",
-   "share": 5.0,
-   "low": 54974.0,
-   "mid": 172188.0,
-   "high": 259771.0,
-   "basis": "Heritage authority; the 1988 listing file is lost",
-   "route": "Welsh Government complaints, then the Public Services Ombudsman for Wales"
-  },
-  {
-   "body": "South Wales Police",
-   "share": 5.0,
-   "low": 54974.0,
-   "mid": 172188.0,
-   "high": 259771.0,
-   "basis": "Public authority at the 1988 eviction (SOURCE PENDING)",
-   "route": "SWP Professional Standards, then the IOPC"
-  },
-  {
-   "body": "The family's former solicitors (1986–87)",
-   "share": 3.0,
-   "low": 32984.4,
-   "mid": 103312.8,
-   "high": 155862.6,
-   "basis": "Professional negligence by the family's own advisers (SOURCE PENDING)",
-   "route": "Firm's complaints procedure, then the Legal Ombudsman"
-  },
-  {
-   "body": "Developer that bought the site in 1993 (successors)",
-   "share": 2.0,
-   "low": 21989.6,
-   "mid": 68875.2,
-   "high": 103908.4,
-   "basis": "Developer that took the benefit of the site",
-   "route": "Pre-action letter; an innocent purchaser for value is protected (Limitation Act 1980 s.32(3))"
-  }
- ],
+ "claimed": [],
  "case_costs": 211.93,
+ "costs": [
+  [
+   "AI tokens",
+   186.58
+  ],
+  [
+   "Hosting and domains",
+   25.35
+  ],
+  [
+   "Disclosure: HM Land Registry",
+   0.0
+  ],
+  [
+   "Postage",
+   0.0
+  ]
+ ],
  "by_account": {
   "Assets:Allied:Balance": 0.0,
   "Expenses:AI:Tokens:Anthropic": 29.7,

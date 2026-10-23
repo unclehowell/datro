@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Static generator for accounts.bucklerfamily.estate.
-Reads ledger/main.beancount (cash) and ledger/claimed.beancount (prospective memo) with Beancount,
-runs bean-query for the category totals, and writes public/ (index.html, data.json, ledger.csv, the ledger sources).
+Reads ledger/main.beancount (cash) with Beancount and runs bean-query for the category totals.
+ledger/claimed.beancount (costs claimed) is loaded only when it exists: tools/sync_ledgers.py writes it, from the held
+ledger/redress.beancount and oldbill's ledger, once the reopen trigger is met. Until then the claimed memo is not built, and writes public/ (index.html, data.json, ledger.csv, the ledger sources).
 Free to run: no server, no login. Compiled by Sion's Tab agent."""
 import json, csv, os, shutil, datetime, html
 from collections import defaultdict
@@ -11,7 +12,7 @@ from beanquery import query as bq
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PUB = os.path.join(ROOT, "public"); os.makedirs(PUB, exist_ok=True)
-MAIN = os.path.join(ROOT, "ledger", "main.beancount"); MEMO = os.path.join(ROOT, "ledger", "claimed.beancount")
+MAIN = os.path.join(ROOT, "ledger", "main.beancount"); MEMO = os.path.join(ROOT, "ledger", "claimed.beancount")  # absent until the reopen trigger is met (tools/sync_ledgers.py)
 
 PROVIDER = {"OpenAI": "OpenAI", "Anthropic": "Anthropic", "ElevenLabs": "ElevenLabs", "Groq": "Groq", "XAI": "xAI (Grok)"}
 CATEGORY = [("Expenses:AI:Tokens", "AI tokens"), ("Expenses:Disclosure:HMLR", "Disclosure: HM Land Registry"),
@@ -56,16 +57,22 @@ def main():
             month[m]["out"] += r["gbp"]; bycat[r["category"]] += r["gbp"]
             if r["provider"]: byprov[r["provider"]] += r["gbp"]
         else: month[m]["in"] += -r["gbp"]
-    memo_entries, merr, _ = loader.load_file(MEMO)
-    if merr: raise SystemExit("memo errors: %r" % merr[:3])
     claimed = []
-    for e in memo_entries:
-        if not isinstance(e, data.Transaction): continue
-        p = [x for x in e.postings if x.account.startswith("Claimed:")][0]
-        claimed.append({"body": e.meta["body"], "share": float(e.meta["share"]), "low": float(e.meta["low"]),
-            "mid": float(p.units.number), "high": float(e.meta["high"]), "basis": e.meta["basis"], "route": e.meta["route"]})
-    claimed.sort(key=lambda c: -c["share"])
+    if os.path.exists(MEMO):
+        memo_entries, merr, _ = loader.load_file(MEMO)
+        if merr: raise SystemExit("memo errors: %r" % merr[:3])
+        for e in memo_entries:
+            if not isinstance(e, data.Transaction): continue
+            p = [x for x in e.postings if x.account.startswith("Claimed:")][0]
+            claimed.append({"body": e.meta["body"], "share": float(e.meta.get("share", 0)), "low": float(e.meta.get("low", p.units.number)),
+                "mid": float(p.units.number), "high": float(e.meta.get("high", p.units.number)), "basis": e.meta.get("basis", ""), "route": e.meta.get("route", ""),
+                "set": e.meta.get("set", "redress")})
+    claimed.sort(key=lambda c: (c["set"] != "redress", -c["mid"]))
     case_costs = round(sum(r["gbp"] for r in rows if r["account"].startswith("Expenses")), 2)
+    # #costs: costs of pursuit by category; must reconcile with money out and with bean-query's Expenses totals
+    costs = sorted([[k, round(v, 2)] for k, v in bycat.items()], key=lambda x: -x[1])
+    bq_exp = round(sum(v for k, v in by_account.items() if k.startswith("Expenses")), 2)
+    assert abs(sum(v for _, v in costs) - case_costs) < 0.005 and abs(bq_exp - case_costs) < 0.005, (costs, case_costs, bq_exp)
     out = {"generated": datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"), "period": "1 Apr 2025 – today",
         "balance": by_account.get("Assets:Allied:Balance", 0.0), "income": round(income, 2), "spend": round(spend, 2),
         "ai": round(bycat.get("AI tokens", 0), 2), "hmlr": round(bycat.get("Disclosure: HM Land Registry", 0), 2),
@@ -75,16 +82,17 @@ def main():
         "byprov": sorted([[k, round(v, 2)] for k, v in byprov.items()], key=lambda x: -x[1]),
         "funded": round(-by_account.get("Liabilities:Funded:Family", 0.0), 2), "payable": round(-sum(v for k, v in by_account.items() if k.startswith("Liabilities:Payable")), 2),
         "coins_liability": round(-by_account.get("Liabilities:Coins:Unspent", 0.0), 2), "coins_income": round(-by_account.get("Income:Coins:Stripe", 0.0), 2),
-        "rows": rows, "claimed": claimed, "case_costs": case_costs, "by_account": by_account}
+        "rows": rows, "claimed": claimed, "case_costs": case_costs, "costs": costs, "by_account": by_account}
     json.dump(out, open(os.path.join(PUB, "data.json"), "w"), indent=1, ensure_ascii=False)
     with open(os.path.join(PUB, "ledger.csv"), "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f); w.writerow(["ref", "date", "payee", "description", "account", "category", "provider", "amount_gbp", "original", "fx", "status", "class"])
         for r in rows: w.writerow([r["ref"], r["date"], r["payee"], r["narration"], r["account"], r["category"], r["provider"], f'{r["gbp"]:.2f}', r["original"], r["fx"], r["status"], r["class"]])
     os.makedirs(os.path.join(PUB, "ledger"), exist_ok=True)
-    for fn in ("main.beancount", "claimed.beancount"): shutil.copy(os.path.join(ROOT, "ledger", fn), os.path.join(PUB, "ledger", fn))
+    for fn in ("main.beancount", "claimed.beancount"):
+        if os.path.exists(os.path.join(ROOT, "ledger", fn)): shutil.copy(os.path.join(ROOT, "ledger", fn), os.path.join(PUB, "ledger", fn))
     tpl = open(os.path.join(ROOT, "tools", "template.html"), encoding="utf-8").read()
     open(os.path.join(PUB, "index.html"), "w", encoding="utf-8").write(tpl.replace("/*__DATA__*/null", json.dumps(out, ensure_ascii=False)))
-    print("built", len(rows), "rows; spend", out["spend"], "AI", out["ai"], "pending", out["pending"])
+    print("built", len(rows), "rows; spend", out["spend"], "AI", out["ai"], "pending", out["pending"], "costs", case_costs, "claimed", len(claimed))
 
 if __name__ == "__main__":
     main()
