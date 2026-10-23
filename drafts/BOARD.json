@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T18:20:16Z",
+  "updated": "2026-10-23T18:26:16Z",
   "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
   "drafts": [
     {
@@ -262,13 +262,13 @@
     {
       "id": "vale-eir-vg41",
       "record": "HubSpot task 532332112063",
-      "version": "v0.6.0",
+      "version": "v0.7.0",
       "status": "OTHER AGENT'S TURN",
-      "turn": "ChatGPT (after Tab stand-in review, round 3)",
+      "turn": "ChatGPT (after Tab stand-in review, round 4)",
       "open_issues": null,
-      "last_change": "2026-10-23T17:50:53Z",
+      "last_change": "2026-10-23T18:25:52Z",
       "last_agent": "Tab",
-      "rounds": 6,
+      "rounds": 7,
       "context": {
         "body": "Vale of Glamorgan Council",
         "as_of": "2026-10-23T18:26Z",
