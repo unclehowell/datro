@@ -1,6 +1,6 @@
 # The Disclosure Labyrinth — maze.bucklerfamily.estate
 
-A date-scaled branching maze. The historical path follows correspondence down the calendar; month boundaries are horizontal rules and faint dotted horizontal rules mark weeks. The animated explorer uses a depth-first tour, traverses every connected corridor edge (including side branches and future paths), and then finishes down the primary route at the conditional exhaustion gate. A short glowing tail keeps rendering responsive on mobile; email/artifact markers remain on the map.
+A date-scaled branching maze. The historical path follows correspondence down the calendar; month boundaries are horizontal rules and faint dotted horizontal rules mark weeks. The date coordinate is `y(d) = y₀ + 3.25 × calendar-days(d₀, d)`, meaning every calendar day adds 3.25 map units. Same-day nodes receive a small horizontal offset for legibility; no waiting time is inferred. The animated explorer uses a depth-first tour, traverses every connected corridor edge (including side branches and future paths), and then finishes down the primary route at the conditional exhaustion gate. A short glowing tail keeps rendering responsive on mobile; email/artifact markers remain on the map.
 
 ## Snapshot
 - Source roadmaps: **2026-10-20**.
