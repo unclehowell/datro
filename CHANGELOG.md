@@ -10,7 +10,8 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Rules: DOCS-STAN
 
 ### Fixed
 - Collection menus: a document title longer than 48 characters (the evidence records) wraps inside the screen in a smaller
-  size instead of running off it (the Evidence menu scrolled sideways at 390 px).
+  size instead of running off it (the Evidence menu scrolled sideways at 390 px); every menu button now wraps
+  inside the screen when it has to.
 
 ## [docs-0.4.0] - 2026-10-23
 
