@@ -1435,6 +1435,7 @@ Democratic@valeofglamorgan.gov.uk
 
 cc: FoiUnit@valeofglamorgan.gov.uk (for inform','{"kind": "reply", "pairing": "thread", "party": "vale"}');
 INSERT INTO nodes VALUES ('doc-cadw-1988-listing-location-lead','document','Cadw 1988 listing / assessment file — location lead','{"holder": "Cadw / Welsh Government", "reference": "none yet (draft)", "date": "2026-10-13"}');
+INSERT INTO nodes VALUES ('doc-cadw-tfw-628912926','document','Cadw / Transport for Wales — FOI #628912926','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-cardiff-and-vale-uhb-auto-ack-ahra-2026-10-21','document','Cardiff and Vale University Health Board — Automatic Acknowledgement of Access to Deceased Health Records Request','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-cardiff-council-foi-eir-leckwith-woods-1940-42-2026-10-20','document','Cardiff Council FOI/EIR — 1940–42 transfer of Leckwith Woods from Western Ground Rents Ltd','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-defra-FOI2026-23886','document','Defra FOI2026/23886 not-held – wartime/post-war farm records','{"holder": "Defra (successor to MAF)", "reference": "FOI2026/23886", "date": "2026-10-21"}');
