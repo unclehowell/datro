@@ -3,7 +3,7 @@ main = "src/index.js"
 compatibility_date = "2025-01-01"
 
 [triggers]
-crons = ["*/10 * * * *"]
+crons = ["*/5 * * * *"]
 
 [env.production]
 vars = { ENVIRONMENT = "production", CF_ACCOUNT_ID = "77672efb598df743fe4eac6762713248" }
