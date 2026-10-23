@@ -86,6 +86,17 @@ DAILY = json.load(open(dpath, encoding="utf-8"))["days"] if os.path.exists(dpath
 for d in DAILY:
     add(id="daily-" + d["date"], date=d["date"], when=dt.date.fromisoformat(d["date"]).strftime("%-d %B %Y"), actor=NARRATOR, kind="Highlight report",
         title=d["title"], daily=d, tags=[r["lane"] and lane_slug({"id": r["lane"]}) for r in d.get("replies", []) if r.get("lane")], rank=0)
+# 1b. PRINCE2 highlight-report videos (work/highlight-video/publish_fb.py → data/highlights.json): attached to that day's
+#     "Today at Tŷ Mawr" card when there is one, otherwise their own Highlight report card; posted as the family page.
+hpath = os.path.join(ROOT, "data", "highlights.json")
+HIGH = json.load(open(hpath, encoding="utf-8"))["days"] if os.path.exists(hpath) else []
+for hrow in HIGH:
+    dx = next((x for x in EV if x.get("daily") and x["date"] == hrow["date"]), None)
+    if dx:
+        dx["hf"] = hrow; dx["tags"] = ["williams-buckler-family"] + dx["tags"]
+    else:
+        add(id="hr-" + hrow["date"], date=hrow["date"], when=dt.date.fromisoformat(hrow["date"]).strftime("%-d %B %Y"), actor="williams-buckler-family",
+            kind="Highlight report", title=hrow["title"], hf=hrow, src=[("Full report", hrow["report_url"]), ("Video", hrow["video"])], rank=0)
 # 2. the press record (social_data posts → their n/ pages)
 for p in BS.POSTS:
     body = [x for x in p["body"] if ok(x)][:1]
@@ -167,18 +178,39 @@ def card(x, up):
         g = d.get("routes", {}).get("ground")
         if g: h.append("<p><b>Closest reopening route:</b> %s, %d points to the court-ready bar (%d routes under test).</p>" % (e(g["label"]), g["short"], g["tested"]))
         h.append('<p class="wl-hope">%s</p></details>' % e(d["hope"]))
+    elif x.get("hf"):
+        h.append('<h2 class="pt sp-t">%s</h2>' % e(x["hf"]["title"]))
     else:
         if x.get("title"): h.append('<h2 class="pt sp-t">%s</h2>' % e(fix(x["title"])))
         if x.get("lead"): h.append('<p class="wl-lead">%s</p>' % e(x["lead"]))
         if x.get("quote"): h.append('<blockquote class="wl-q%s">%s</blockquote>' % (" wl-sum" if x.get("summary") else "", ("“%s”" % e(x["quote"])) if not x.get("summary") else e(x["quote"])))
         if x.get("text"): h.append("<p>%s</p>" % e(fix(x["text"])))
         if x.get("photo") and os.path.exists(os.path.join(SITE, x["photo"])): h.append('<figure class="sp-media"><img src="%s%s" alt="" loading="lazy"></figure>' % (up, e(x["photo"])))
+    if x.get("hf"): h.append(hf_block(x["hf"], up, bool(x.get("daily"))))
     h.append("</div>")
     srcs = x.get("src") or ([("Video", x["daily"]["video"])] if x.get("daily") else [])
     if x.get("link"): srcs = [("Open the post", up + x["link"])] + list(srcs)
     h.append('<details class="sp-src"><summary>Source</summary>%s%s</details>' % (("<p>%s</p>" % e(fix(x["cite"]))) if x.get("cite") else "",
              "<p>" + " · ".join('<a href="%s" rel="noopener">%s</a>' % (e(u), e(t)) for t, u in srcs if u) + "</p>"))
     h.append("</article>")
+    return "".join(h)
+def hf_block(r, up, under_daily):
+    """The highlight-report video and its post text (the caption): first two lines shown, the rest behind a tap."""
+    lines = [l for l in r["caption"].split("\n") if l.strip() and not l.startswith("#") and not l.startswith("Full report:") and not (r["hr_id"] in l and r["period"] in l)]
+    lead, rest = lines[:2], lines[2:]
+    h = ['<section class="wl-hf" id="hf-%s">' % e(r["date"])]
+    if under_daily: h.append('<p class="wl-hf-k">%s · %s</p>' % (e(r["hr_id"]), e(r["period"])))
+    h.append('<figure class="wl-vid"><video controls playsinline preload="none" poster="%s%s" src="%s"></video></figure>' % (up, e(r["poster"]), e(r["video"])))
+    h.append("".join("<p>%s</p>" % e(l) for l in lead))
+    if rest:
+        body, ul = [], []
+        for l in rest:
+            if l.startswith("• "): ul.append("<li>%s</li>" % e(l[2:])); continue
+            if ul: body.append("<ul>%s</ul>" % "".join(ul)); ul = []
+            body.append("<p><b>%s</b></p>" % e(l) if l.endswith(":") else "<p>%s</p>" % e(l))
+        if ul: body.append("<ul>%s</ul>" % "".join(ul))
+        h.append('<details class="wl-more"><summary>Read the highlight report</summary>%s<p><a href="%s" rel="noopener">The full report</a></p></details>' % ("".join(body), e(r["report_url"])))
+    h.append("</section>")
     return "".join(h)
 def years(up):
     ys = sorted({x["date"][:4] for x in EV if x["wall"]}, reverse=True)
@@ -189,6 +221,7 @@ WALLCSS = """/* wall.css — the hope wall and full profiles (22 Oct 2026). — 
 .wl-years{padding:8px 0 2px}
 .sp-av img.wf,.pf-av.wf{object-fit:cover}
 .wl-with{font-weight:400;color:var(--muted);font-size:14px}.wl-with a{color:var(--ink);font-weight:600;text-decoration:none}
+.wl-hf{margin-top:10px}.wl-hf-k{margin:12px 0 0;font-size:.82rem;opacity:.75;text-transform:uppercase;letter-spacing:.04em}.wl-hf ul{margin:4px 0 8px;padding-left:20px}.wl-hf li{margin:2px 0;overflow-wrap:anywhere}.wl-hf p{overflow-wrap:anywhere}
 .wl-vid{margin:6px -14px 8px}.wl-vid video{width:100%;max-height:78vh;background:#000;aspect-ratio:9/16;object-fit:contain}
 .wl-rag{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 8px}.wl-rag span{padding:4px 10px;border-radius:14px;font-size:13px;background:var(--bub)}
 .wl-rag b{font-size:15px;margin-right:3px}.wl-rag .g b{color:#1e8e3e}.wl-rag .r b{color:#d93025}.wl-rag .a b{color:#b06000}

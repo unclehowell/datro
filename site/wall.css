@@ -4,6 +4,7 @@
 .wl-years{padding:8px 0 2px}
 .sp-av img.wf,.pf-av.wf{object-fit:cover}
 .wl-with{font-weight:400;color:var(--muted);font-size:14px}.wl-with a{color:var(--ink);font-weight:600;text-decoration:none}
+.wl-hf{margin-top:10px}.wl-hf-k{margin:12px 0 0;font-size:.82rem;opacity:.75;text-transform:uppercase;letter-spacing:.04em}.wl-hf ul{margin:4px 0 8px;padding-left:20px}.wl-hf li{margin:2px 0;overflow-wrap:anywhere}.wl-hf p{overflow-wrap:anywhere}
 .wl-vid{margin:6px -14px 8px}.wl-vid video{width:100%;max-height:78vh;background:#000;aspect-ratio:9/16;object-fit:contain}
 .wl-rag{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 8px}.wl-rag span{padding:4px 10px;border-radius:14px;font-size:13px;background:var(--bub)}
 .wl-rag b{font-size:15px;margin-right:3px}.wl-rag .g b{color:#1e8e3e}.wl-rag .r b{color:#d93025}.wl-rag .a b{color:#b06000}

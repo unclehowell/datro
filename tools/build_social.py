@@ -17,6 +17,14 @@ WORDING = "Words in [square brackets] are the archive’s: neutral words in plac
 ns = {}
 exec(open(os.path.join(ROOT, "tools", "social_data.py"), encoding="utf-8").read(), ns)
 OUT, PEO, POSTS, STORIES = ns["OUTLETS"], ns["PEOPLE"], sorted(ns["POSTS"], key=lambda p: (p["date"], p["id"])), ns["STORIES"]
+
+# PRINCE2 highlight-report videos (data/highlights.json, work/highlight-video/publish_fb.py): newest 7 lead the Videos page and the Stories rail.
+_hp = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "highlights.json")
+if os.path.exists(_hp):
+    STORIES = [{"id": "s-hr-" + r["date"], "by": "williams-buckler-family", "poster_name": "Williams / Buckler family", "title": r["title"], "kind": "video",
+                "src": r["video"], "thumb": r["poster"], "seconds": int(round(r.get("duration", 40))),
+                "credit": "%s · %s. Highlight report video, made for the family archive (Wayback Vault)." % (r["hr_id"], r["period"]),
+                "link": "index.html#hf-%s" % r["date"]} for r in json.load(open(_hp, encoding="utf-8"))["days"][:7]] + list(STORIES)
 EVL = json.load(open(os.path.join(ROOT, "tools", "ev_links.json"), encoding="utf-8"))
 PA = "https://greathousefarmwiki.wordpress.com/press-archive-transcripts/"
 e = lambda s: html.escape(s, quote=True)
