@@ -1,22 +1,20 @@
 # infographic.bucklerfamily.estate — Great House Farm: the land changing hands
 
-A circular diagram of the historic freehold title path for Tŷ Mawr / Great House Farm, Llandough. Evidential gaps are marked. The permissive-occupancy 💩 sits at the centre, with a path for each part of Parcel A (A1–A3) and for Parcel B.
+v3.2.0 (23 Oct 2026). One circle. On the ring: title holders and official actors. Inside it: no title — the permissive occupancy ploys (💩, each with its year; 💩💩 = 1955), the two people named in the statement of Mary (Nancy) Williams (🦹 Bruce Sutherland, with Mr. Knapp, estate agent, above), and the shredded-paper icons (papers gone).
 
-- **Ring:** the holders (families by role, companies, councils), in an order that keeps each chain's arcs apart.
-- **Centre (💩):** permissive occupancy. A dotted “?” line joins it to the family: how did the family, holders of Parcel A on the root title chain, come to be treated as permissive occupiers by the three parties that each registered a part of it? 💩💩 marks a seizure or possession step.
-- **Paths (v3.0):** tap A1, A2, A3 or B to light only that path; every other line dims. The year sits where each line arrives. A1: 💩 1949 → 💩💩 1955 → Cardiff Corporation 1961 → a Llandough couple → Forest of Cardiff 1994. A2: 💩💩 → Western Ground Rents 1938 → 💩💩 1955 → 💩 1962, loops 1965, 1969, 1971, 1974, 1975 → BP Properties 1983 (WA240304); 1974 the family → towards BP Pension Trust, turning back (“BP fail to extinguish”). A3: 💩💩 1955 → 💩 1959 → Glamorgan County Council 1970 (VG41) → Llandough Community Council today. B: the B chain to BP Pension Trust, and B → BP Properties 1987 (WA240304 merged into WA231076).
-- **Zones (v3.1):** the clear wedge with its band is the ROOT TITLE CHAIN (Vaughan → Bute → Daniel Thomas & Son → the family for Parcel A; Bute → Mountjoy for Parcel B). The rest of the circle is shaded: the vacuum, where the company activity on Parcel A happens with no root title or sale behind it. Its only origin is the 💩, and each registration of a part is born from it about 12 years on (A1 1949 → 1961, A3 1959 → 1970, A2 1969–71 → 1983).
-- **Parcel A’s papers, 1950 (v3.1):** a line from the family to 🦹, with Bruce Sutherland under it and Mr. Knapp, estate agent, above it, per the c. 1974 statement of Mary (Nancy) Williams (Legal Wiki page 196; docs WIKI-0196). Lit under All and A.
-- **Title arcs:** the freehold path and other title-level steps only. The three outside-to-ring A1–A3 arrows are separately identified as registration-pattern links, not conveyances. Possession orders, licence events, and records which do not themselves transfer freehold remain in the list/timelines.
-  Stroke colour = year (gradient legend). Solid = record held; dashed = per secondary source / record not seen / per family statement.
-- **Circles on the arcs:** the parcel(s) carried: A (whole, from 1877), A1 north wood, A2 house & yard, A3 the green, B the fields,
-  W woods round the farm (link to Parcel A not established). A1–A3 are the three parts of Parcel A on the Legal Wiki's three-part
-  model and the maps site (v1.6.0 ids AN / AM / AS).
-- **Label on each arc:** year + kind ("1938 sale"). On a phone the overview shows the year; zooming in shows the full label.
-- **Tap an arc:** date, parcel, from → to, instrument, note, sources (Legal Wiki pages).
-- **List:** transfers and chronology-only records are distinguished; records marked chronology-only are not displayed as freehold conveyances.
+The message: into the circle comes one farm, A + B, on the root title chain; out comes A + B again, but as synthetic A3 and B (merged at BP Properties, 1987), plus two simple lines, SA1 and SA2.
 
-Data: `public/data/transfers.json` (ghf-infographic/1). Build: `tools/build.py` inlines the data into `tools/template.html`
-and runs the public-words gate. Static, no external assets.
+Lines (pick one; it draws itself from its start to its last official actor; reduced motion draws it at once):
+- **A+B IN:** Herbert family ★ → Vaughan family (1500s) → Bute Estate (early 1800s) → the 1877 split.
+- **A:** + Bute Estate → Daniel Thomas & Son 1877 → Williams family 1928 → 🦹 1950 → papers gone. 1974: a line from the Williams family heads for the papers beside BP Pension Trust, turns back just short and returns.
+- **B:** + Bute Estate → Mountjoy Ltd 1926 → Western Ground Rents 1938 → BP Pension Trust 1969 → BP Properties 1975, again 1982 → merges with SA3, 1987.
+- **SA1 (woodland):** 💩 1949 → 💩💩 1955 → Cardiff City Corporation 1961; afterwards Forest of Cardiff 1994 (dashed: no transfer between held).
+- **SA2 (village green):** 💩💩 1955 → 💩 1959 → Glamorgan County Council 1970 (VG41, provisionally registered 16 June 1970); afterwards Llandough Community Council.
+- **SA3 (house and yard):** 💩💩 1955 → 💩 1962 → 💩 1965 → 💩 1969 → BP Pension Trust 1969 → 💩 1971 → 💩 1974 → 💩 1975 → BP Properties 1975, again 1983 (WA240304) → merges with B, 1987.
+- **SA3+B** draws both into the merge; **All** draws everything.
+
+Each year sits where its line arrives. Dashed = the deed or record is not held. Tap any line, pill or node for its record and sources; the list under the circle repeats the selected line's steps.
+
+Data: `public/data/transfers.json` → `paths` (nodes, segs, filters). Build: `tools/build.py` inlines the data into `tools/template.html` and runs the public-words gate. Static, no external assets.
 
 Compiled by Sion's Tab agent.

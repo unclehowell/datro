@@ -1,5 +1,5 @@
 {
- "version": "3.1.1",
+ "version": "3.2.0",
  "updated": "2026-10-23",
  "parties": [
   {
@@ -1886,73 +1886,436 @@
   ]
  },
  "paths": {
-  "version": "3.1.1",
-  "intro": "Pick a part of Parcel A (A1, A2, A3) or Parcel B to light only its path. 💩 marks a permissive-occupancy step, 💩💩 a seizure or possession step. Each year sits where the line arrives. The shaded field is the vacuum: its only origin is the 💩, and each registration of a part is born from it about 12 years on.",
-  "question": {
-   "from": "family",
-   "to": "poo",
-   "label": "?",
-   "parcels": [
-    "A",
-    "A1",
-    "A2",
-    "A3"
-   ],
-   "title": "The question",
-   "text": "How did the family, holders of Parcel A on the root title chain, come to be treated as permissive occupiers by the three parties that each registered a part of it (A1 the woodland, A2 the house and yard, A3 the green)?",
-   "src": [
-    {
-     "t": "Legal Wiki · Master Timeline (page 33)",
-     "u": "https://greathousefarmwiki.wordpress.com/timeline/"
-    },
-    {
-     "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (judgment)",
-     "u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
-    }
-   ]
+  "version": "3.2.0",
+  "R": 320,
+  "colors": {
+   "AB": "#e7c6ff",
+   "A": "#ffd166",
+   "B": "#5aa9ff",
+   "SA1": "#6fdc8c",
+   "SA2": "#ff8fd8",
+   "SA3": "#ff9f43",
+   "M": "#ffffff"
   },
   "nodes": {
-   "poo": {
-    "icon": "💩",
-    "name": "Permissive occupancy",
-    "sub": "single 💩 · a permissive-occupancy step"
+   "herbert": {
+    "kind": "out",
+    "ang": 322,
+    "r": 1.36,
+    "lab": [
+     "Herbert",
+     "family"
+    ],
+    "icon": "★",
+    "title": "The Herbert family",
+    "text": "Heneb's HER records the Vaughans holding the Great House—the parish's chief freehold farm—from the mid-16th century to the later 18th. A 1547, 1,000-year lease from Sir George Herbert to Vaughan is also recorded in the research note, but that lease is not itself proof of the freehold conveyance; the instrument is not in hand. The diagram treats the Vaughan freehold as supported by historical evidence, not as a fully inspected conveyance.",
+    "src": [
+     {
+      "t": "GHF-E178 · 1547 Herbert lease of Cydwin to Vaughan (research note)",
+      "u": "https://greathousefarmwiki.wordpress.com/ghf-e173-cedwyn-cwm-cedwyn-place-name-notes/ghf-e178-1547-sir-george-herbert-grants-vaughan-a-1000-year-lease-of-cydwin"
+     },
+     {
+      "t": "Heneb HER GGAT02038s · Great House Farm (Vaughan freehold; Bute in the early 19th century)",
+      "u": "https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s"
+     },
+     {
+      "t": "Cardiff Records vol. 2, “The manors of Cardiff district” (Cogan; Llandough)",
+      "u": "https://www.british-history.ac.uk/cardiff-records/vol2/pp8-41"
+     },
+     {
+      "t": "History of Parliament: HERBERT, George (1494/95–1570), of Swansea",
+      "u": "https://www.historyofparliamentonline.org/volume/1509-1558/member/herbert-george-149495-1570"
+     },
+     {
+      "t": "Legal Wiki · Evidence Register (page 4517)",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/"
+     }
+    ]
+   },
+   "vaughan": {
+    "kind": "ring",
+    "ang": 318,
+    "lab": [
+     "Vaughan",
+     "family"
+    ],
+    "title": "The Vaughan family of the Great House",
+    "text": "Heneb's HER records the Vaughans holding the Great House—the parish's chief freehold farm—from the mid-16th century to the later 18th. A 1547, 1,000-year lease from Sir George Herbert to Vaughan is also recorded in the research note, but that lease is not itself proof of the freehold conveyance; the instrument is not in hand. The diagram treats the Vaughan freehold as supported by historical evidence, not as a fully inspected conveyance.",
+    "src": [
+     {
+      "t": "GHF-E178 · 1547 Herbert lease of Cydwin to Vaughan (research note)",
+      "u": "https://greathousefarmwiki.wordpress.com/ghf-e173-cedwyn-cwm-cedwyn-place-name-notes/ghf-e178-1547-sir-george-herbert-grants-vaughan-a-1000-year-lease-of-cydwin"
+     },
+     {
+      "t": "Heneb HER GGAT02038s · Great House Farm (Vaughan freehold; Bute in the early 19th century)",
+      "u": "https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s"
+     },
+     {
+      "t": "Cardiff Records vol. 2, “The manors of Cardiff district” (Cogan; Llandough)",
+      "u": "https://www.british-history.ac.uk/cardiff-records/vol2/pp8-41"
+     },
+     {
+      "t": "History of Parliament: HERBERT, George (1494/95–1570), of Swansea",
+      "u": "https://www.historyofparliamentonline.org/volume/1509-1558/member/herbert-george-149495-1570"
+     },
+     {
+      "t": "Legal Wiki · Evidence Register (page 4517)",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/"
+     }
+    ],
+    "ldy": 22
+   },
+   "bute": {
+    "kind": "ring",
+    "ang": 0,
+    "lab": [
+     "Bute Estate"
+    ],
+    "title": "Bute Estate",
+    "text": "Heneb's HER records the Bute Estate holding the Great House freehold in the early 19th century, with the manorial courts for Llandough and Leckwith held in the house. The conveyance, its exact date and the vendor are not located: this link is an explicit evidential gap. The manorial lordship reached Bute separately (Herbert → Hurst & Jones by 1767 → Bute in 1793); that is not treated as the house-farm freehold transfer.",
+    "src": [
+     {
+      "t": "Heneb HER GGAT02038s · Great House Farm (Vaughan freehold; Bute in the early 19th century)",
+      "u": "https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s"
+     },
+     {
+      "t": "The Bute Estate (wiki)",
+      "u": "https://greathousefarmwiki.wordpress.com/bute-estate/"
+     },
+     {
+      "t": "Llandough (Penarth): pre-1877 manorial evidence (wiki)",
+      "u": "https://greathousefarmwiki.wordpress.com/anomalies-register/llandough-penarth-cydfin-ty-mawr-manorial-evidence/"
+     },
+     {
+      "t": "EV-0003 · Bute Estate records 1552–1824 naming Cydfin / Ty Mawr Farm (Evidence Register)",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/"
+     }
+    ]
+   },
+   "thomas": {
+    "kind": "ring",
+    "ang": 292,
+    "lab": [
+     "Daniel Thomas",
+     "& Son"
+    ],
+    "title": "Daniel Thomas & Son",
+    "text": "Agreement between the Bute Estate and Daniel Thomas & Son: sale, or quarry lease, of the house parcel. The agreement itself is not in hand. Known from a later family statement (c.1974): Bute sold the farmhouse, buildings and about 10 acres (Parcel A) and kept about 9 acres (Parcel B). The NLW Bute catalogue has Llandough land “formerly part of Great House Farm” for the lime works, 1876–1912. Before 1877 the farm was one holding; see the root title (R) arcs back through the Vaughans to the Herberts.",
+    "src": [
+     {
+      "t": "EV-0006 · 1877 Bute–Daniel Thomas & Son agreement",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0006-bute-thomas-agreement-1877/"
+     },
+     {
+      "t": "EV-0291 · NLW Bute Estate catalogue D153 (Llandough limeworks land, 1876–1912)",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0291-nlw-bute-catalogue-d153-llandough-33-acres-great-house-farm-limeworks-and-pwllypant-d242-d247-d258/"
+     },
+     {
+      "t": "The Two Parcels",
+      "u": "https://greathousefarmwiki.wordpress.com/the-two-parcels/"
+     }
+    ]
+   },
+   "family": {
+    "kind": "ring",
+    "ang": 266,
+    "lab": [
+     "Williams",
+     "family"
+    ],
+    "title": "The Williams family of Tŷ Mawr",
+    "text": "No deed held. On the family's case, the 1877 arrangement resulted in Parcel A passing to the Williams family when quarrying ended and the last rent was paid in 1928. The family's stated freehold line reaches Williams in 1928. The receipt and statement are cited below; no later freehold conveyance from Williams is presently on record.",
+    "src": [
+     {
+      "t": "EV-0016 · 1928 last rent receipt",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0016-1928-last-rent-receipt-quarrying/"
+     },
+     {
+      "t": "Mary (Nancy) Williams’s statement",
+      "u": "https://greathousefarmwiki.wordpress.com/mary-williams-statement/"
+     }
+    ]
+   },
+   "mountjoy": {
+    "kind": "ring",
+    "ang": 30,
+    "lab": [
+     "Mountjoy",
+     "Ltd"
+    ],
+    "title": "Mountjoy Ltd",
+    "text": "Remaining Bute property incorporated as Mountjoy Ltd. Archive catalogue history: after 1900 the Glamorgan estate was divided; the remaining Bute property became Mountjoy Ltd in 1926.",
+    "src": [
+     {
+      "t": "Glamorgan Archives DA catalogue (Bute estate history)",
+      "u": "https://discovery.nationalarchives.gov.uk/download/GB%200214%20DA_cld"
+     }
+    ]
+   },
+   "wgr": {
+    "kind": "ring",
+    "ang": 60,
+    "lab": [
+     "Western",
+     "Ground Rents"
+    ],
+    "title": "Western Ground Rents Ltd",
+    "text": "Conveyance on sale, Mountjoy / Bute to Western Ground Rents Ltd, 25 Dec 1938 (recited in later WGR deeds). The deed and its plan are not held, so exactly which land it carried is still open. A 1939 Western Ground Rents plan (EV-0023) covers Parcel B only.",
+    "src": [
+     {
+      "t": "EV-0216 · recital of the conveyance of 25 Dec 1938",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0216-1965-contract-condition-f-conveyance-25-december-1938/"
+     },
+     {
+      "t": "EV-0019 · 1938 Bute–WGR conveyance and plan",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0019-bute-wgr-conveyance-plan-1938/"
+     },
+     {
+      "t": "1938 press report (Trove)",
+      "u": "https://trove.nla.gov.au/newspaper/article/46287600"
+     }
+    ]
+   },
+   "bppt": {
+    "kind": "ring",
+    "ang": 92,
+    "lab": [
+     "BP Pension",
+     "Trust"
+    ],
+    "title": "BP Pension Trust",
+    "text": "Conveyance, WGR to BP Pension Trust, recited as the root of BP’s title. For the house it carried the benefit of the 1962 order. The freehold conveyance was of the WGR fields (Parcel B) to BP Pension Trust. The deed is missing; the judgment/record describes the benefit of the 1962 possession order in relation to the house, which is not the same as a conveyance of the A2 freehold.",
+    "src": [
+     {
+      "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (judgment)",
+      "u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+     },
+     {
+      "t": "EV-0043 · 1969 conveyance, WGR to BP Pension Trust",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0043-wgr-bp-pension-trust-conveyance/"
+     },
+     {
+      "t": "EV-0288 · 1968–69 press on the WGR takeover",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0288-snippets-only-press-on-the-1968-69-takeover-battle-for-western-ground-rents-ltd-en/"
+     }
+    ]
+   },
+   "bpp": {
+    "kind": "ring",
+    "ang": 132,
+    "lab": [
+     "BP",
+     "Properties"
+    ],
+    "title": "BP Properties Ltd",
+    "text": "First registration of the house, title WA240304, to BP Properties Ltd, while Mary lived there. No conveyance from the occupiers and no notice to the occupier is on file. Mary died at the farmhouse on 26 Mar 1983. The title was merged into WA231076 on 2 Feb 1987.",
+    "src": [
+     {
+      "t": "EV-0063 · WA240304 Form 1C application",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0063-hmlr-wa240304-item-11-form-1c/"
+     },
+     {
+      "t": "EV-0066 · WA240304 register, 1983",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0066-hmlr-wa240304-item-10-register-1983/"
+     },
+     {
+      "t": "EV-0147 · HM Land Registry letter: registration history",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0147-hmlr-letter-ty-mawr-registration-history/"
+     },
+     {
+      "t": "Legal Wiki · Land Registry titles: first registration",
+      "u": "https://greathousefarmwiki.wordpress.com/land-registry-titles/#first-registration"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33)",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     }
+    ],
+    "ldy": 14
+   },
+   "merge": {
+    "kind": "out",
+    "ang": 156,
+    "r": 1.3,
+    "lab": [
+     "SA3 + B"
+    ],
+    "icon": "⊕",
+    "title": "1987 · SA3 + B merged",
+    "text": "Title WA240304 (the house and yard) was merged into WA231076, the Parcel B title held by BP Properties, on 2 February 1987. The line marks Parcel B joining the registered house parcel.",
+    "src": [
+     {
+      "t": "EV-0170 · title register WA231076",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0170-wa231076-title-register-september-2026/"
+     },
+     {
+      "t": "Land Registry titles",
+      "u": "https://greathousefarmwiki.wordpress.com/land-registry-titles/"
+     },
+     {
+      "t": "Legal Wiki · Land Registry titles",
+      "u": "https://greathousefarmwiki.wordpress.com/land-registry-titles/"
+     }
+    ]
+   },
+   "foc": {
+    "kind": "ring",
+    "ang": 176,
+    "lab": [
+     "Forest of",
+     "Cardiff"
+    ],
+    "title": "Forest of Cardiff",
+    "text": "The current register lists Forest of Cardiff as proprietor from 25 Nov 1994. The transfer deed and plan are not held. The woodland title’s register also recites a 29 Mar 1961 WGR / South Western Brick & Tile / Cardiff City Corporation deed on the earlier strand; its scope and parcel overlap cannot be established until the deed and plan are inspected.",
+    "src": [
+     {
+      "t": "EV-0169 · title register WA735527",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0169-wa735527-title-register-september-2026/"
+     },
+     {
+      "t": "EV-0136 · 10 Nov 1994 transfer to Forest of Cardiff, with plan",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0136-forest-of-cardiff-woodland-transfer-1994/"
+     },
+     {
+      "t": "GHF-E149 · 1994 woodland transfer, WA735527",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e149-10-november-1994-transfer-to-forest-of-cardiff-wa735527/"
+     }
+    ]
+   },
+   "cardiff": {
+    "kind": "ring",
+    "ang": 198,
+    "lab": [
+     "Cardiff",
+     "Corporation"
+    ],
+    "title": "Cardiff City Corporation",
+    "text": "Deed with plan between Western Ground Rents, South Western Brick & Tile and Cardiff City Corporation, recited on the woodland register WA735527 (pink strand) against land now in the woodland title. The deed and plan are not yet held. Source to add for 1962: no 1962 registration entry for the woodland is on file.",
+    "src": [
+     {
+      "t": "EV-0040 · 29 Mar 1961 deed",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0040-1961-wgr-brick-tile-deed/"
+     },
+     {
+      "t": "GHF-E129 · 1961 WGR / South Western Brick & Tile / Cardiff City deed",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e129-1961-wgr-south-western-brick-and-tile-cardiff-city-deed/"
+     },
+     {
+      "t": "EV-0169 · title register WA735527",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0169-wa735527-title-register-september-2026/"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33)",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     }
+    ]
+   },
+   "glamorgan": {
+    "kind": "ring",
+    "ang": 220,
+    "lab": [
+     "Glamorgan",
+     "County",
+     "Council"
+    ],
+    "title": "Glamorgan County Council",
+    "text": "VG41 was provisionally registered as a village green on 16 June 1970 by Glamorgan County Council as registration authority (the VG 41 provisional register map in Vale of Glamorgan planning file 92/00671, p. 12, is stamped “16 JUN 1970”). The original VG41 file (application, map, ownership section, notices and any decision) is outstanding. Registration alone did not vest the green in the authority or prove who owned the freehold.",
+    "src": [
+     {
+      "t": "EV-0044 · VG41 village-green registration",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0044-vg41-village-green-registration-1970/"
+     },
+     {
+      "t": "Llandough Community Council: village green page",
+      "u": "http://www.llandough-cc.co.uk/Pocket_Parks__and__Village_Green_20140.aspx"
+     },
+     {
+      "t": "Woodland & Land-Transfer Assessment 1902–2005",
+      "u": "https://greathousefarmwiki.wordpress.com/family-legal-case-control-room/woodland-land-transfer-assessment-1902-2005/"
+     }
+    ]
+   },
+   "llcc": {
+    "kind": "ring",
+    "ang": 248,
+    "lab": [
+     "Llandough",
+     "Community",
+     "Council"
+    ],
+    "title": "Llandough Community Council",
+    "text": "Llandough Community Council states that it owns and maintains the village green. How the green came to it is not established: in 1970 Llandough lay in Penarth Urban District, and the Community Council was formed in 1982.",
+    "src": [
+     {
+      "t": "Legal Wiki · Woodland & Land-Transfer Assessment 1902–2005",
+      "u": "https://greathousefarmwiki.wordpress.com/family-legal-case-control-room/woodland-land-transfer-assessment-1902-2005/"
+     },
+     {
+      "t": "Legal Wiki · Llandough Community Council: forensic assessment",
+      "u": "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/llandough-community-council-forensic-institutional-review/"
+     }
+    ]
+   },
+   "split": {
+    "kind": "split",
+    "ang": 0,
+    "r": 0.8,
+    "cap": "1877 split",
+    "title": "1877 · the farm splits",
+    "text": "The working title-chain hypothesis is that the Bute Estate parted with the farmhouse, buildings and about 10 acres (Parcel A) to Daniel Thomas & Son in 1877, while retaining about 9 acres (Parcel B). The agreement is not in hand, so the precise legal instrument and whether it was a freehold sale or quarry arrangement remain unresolved. The cited family statement and NLW catalogue are supporting sources, not a substitute for the deed.",
+    "src": [
+     {
+      "t": "EV-0006 · 1877 Bute–Daniel Thomas & Son agreement",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0006-bute-thomas-agreement-1877/"
+     },
+     {
+      "t": "EV-0291 · NLW Bute Estate catalogue D153 (Llandough limeworks land, 1876–1912)",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0291-nlw-bute-catalogue-d153-llandough-33-acres-great-house-farm-limeworks-and-pwllypant-d242-d247-d258/"
+     },
+     {
+      "t": "The Two Parcels",
+      "u": "https://greathousefarmwiki.wordpress.com/the-two-parcels/"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33), 1877",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     },
+     {
+      "t": "Legal Wiki · Three parts of Parcel A (page 3356)",
+      "u": "https://greathousefarmwiki.wordpress.com/the-two-parcels/three-parts-of-parcel-a-divergent-chronologies/"
+     }
+    ]
    },
    "dpoo": {
+    "kind": "poo",
     "icon": "💩💩",
-    "name": "Seizure / possession",
-    "sub": "double 💩 · a seizure or possession step",
-    "at": 2.5,
-    "r": 0.46
+    "ang": 0,
+    "r": 0,
+    "cap": "1955",
+    "title": "1955 · double 💩",
+    "text": "Enforcing possession of Parcel B under “whole farm” wording, Western Ground Rents took the north forest and the south-east green on 4 July 1955. Mary was objecting strongly. The order’s schedule and plan are not held.",
+    "src": [
+     {
+      "t": "Legal Wiki · 1955 Parcel-A loss dossier: woodland and green",
+      "u": "https://greathousefarmwiki.wordpress.com/family-legal-case-control-room/1955-parcel-a-loss-dossier-woodland-vg41-green/"
+     },
+     {
+      "t": "EV-0034 · 1955 writ of possession, execution return",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0034-writ-possession-execution-return-1955/"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33)",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     }
+    ]
    },
-   "pB": {
-    "icon": "B",
-    "name": "Parcel B · WA231076",
-    "sub": "Parcel B, the fields (title WA231076)",
-    "at": 8.0,
-    "r": 0.6,
-    "parcel": "B"
-   },
-   "papers1950": {
-    "icon": "🦹",
-    "name": "Parcel A’s papers, 1950",
-    "sub": "Bruce Sutherland, brought by Mr. Knapp, estate agent of Penarth (statement of Mary Williams, c. 1974)",
-    "at": 18.87,
-    "r": 0.53,
-    "rr": 26,
-    "p": "A",
-    "step": "a-1950",
-    "under": "Bruce Sutherland",
-    "over": "Mr. Knapp",
-    "over2": "estate agent"
-   }
-  },
-  "starts": [
-   {
-    "p": "A1",
-    "node": "poo",
-    "lab": "1949",
-    "date": "2 Feb 1949",
-    "title": "A1 · 1949 permissive occupancy attempt",
+   "p1949": {
+    "kind": "poo",
+    "icon": "💩",
+    "ang": 14,
+    "r": 0.5,
+    "cap": "1949",
+    "title": "1949 · permissive occupancy ploy",
     "text": "Frederick’s unwritten yearly agricultural letting of Parcel B from Western Ground Rents began on 2 February 1949; the 1987 judgment records that a written agreement was intended. The family records a matching attempt to make Mary’s Parcel-A occupancy permissive, which she refused, asserting ownership. Source to add: the 1949 offer to Mary and her reply have not been found.",
     "src": [
      {
@@ -1973,137 +2336,13 @@
      }
     ]
    },
-   {
-    "p": "A3",
-    "node": "dpoo",
-    "lab": "1955",
-    "date": "4 Jul 1955",
-    "title": "A3 · 1955 seizure of the south-east green",
-    "text": "The same 4 July 1955 enforcement took the south-east green with the north forest. The order’s schedule and plan are not held.",
-    "src": [
-     {
-      "t": "Legal Wiki · 1955 Parcel-A loss dossier: woodland and green",
-      "u": "https://greathousefarmwiki.wordpress.com/family-legal-case-control-room/1955-parcel-a-loss-dossier-woodland-vg41-green/"
-     },
-     {
-      "t": "Legal Wiki · Master Timeline (page 33)",
-      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
-     }
-    ]
-   }
-  ],
-  "lines": [
-   {
-    "id": "a1-1955",
-    "p": "A1",
-    "fr": "poo",
-    "to": "dpoo",
-    "lab": "1955",
-    "bend": 0.32,
-    "date": "4 Jul 1955",
-    "title": "A1 · 1955 seizure of the north forest",
-    "text": "Enforcing possession of Parcel B under “whole farm” wording, Western Ground Rents took the north forest and the south-east green on 4 July 1955. Mary was objecting strongly. The order’s schedule and plan are not held.",
-    "src": [
-     {
-      "t": "Legal Wiki · 1955 Parcel-A loss dossier: woodland and green",
-      "u": "https://greathousefarmwiki.wordpress.com/family-legal-case-control-room/1955-parcel-a-loss-dossier-woodland-vg41-green/"
-     },
-     {
-      "t": "EV-0034 · 1955 writ of possession, execution return",
-      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0034-writ-possession-execution-return-1955/"
-     },
-     {
-      "t": "Legal Wiki · Master Timeline (page 33)",
-      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
-     }
-    ]
-   },
-   {
-    "id": "a1-1961",
-    "p": "A1",
-    "fr": "dpoo",
-    "to": "cardiff",
-    "lab": "1961",
-    "bend": 0.12,
-    "title": "A1 · 1961 deed recited on the woodland register",
-    "date": "29 Mar 1961",
-    "text": "Deed with plan between Western Ground Rents, South Western Brick & Tile and Cardiff City Corporation, recited on the woodland register WA735527 (pink strand) against land now in the woodland title. The deed and plan are not yet held. Source to add for 1962: no 1962 registration entry for the woodland is on file.",
-    "src": [
-     {
-      "t": "EV-0040 · 29 Mar 1961 deed",
-      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0040-1961-wgr-brick-tile-deed/"
-     },
-     {
-      "t": "GHF-E129 · 1961 WGR / South Western Brick & Tile / Cardiff City deed",
-      "u": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e129-1961-wgr-south-western-brick-and-tile-cardiff-city-deed/"
-     },
-     {
-      "t": "EV-0169 · title register WA735527",
-      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0169-wa735527-title-register-september-2026/"
-     },
-     {
-      "t": "Legal Wiki · Master Timeline (page 33)",
-      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
-     }
-    ],
-    "birth": "c.12 yrs on"
-   },
-   {
-    "id": "a1-couple",
-    "p": "A1",
-    "fr": "cardiff",
-    "to": "llcouple",
-    "lab": "?",
-    "bend": 0.1,
-    "dash": true,
-    "title": "A1 · a couple in Llandough",
-    "date": "between 1961 and 1994 (date to add)",
-    "text": "The woodland record lists a couple in Llandough as holders of the woodland before the charity, and that they gave it to the charity. No documentary transfer to or from them is held yet.",
-    "src": [
-     {
-      "t": "Legal Wiki · Source Conflicts Register (SC-44)",
-      "u": "https://greathousefarmwiki.wordpress.com/records-access-chronology/source-conflicts-register/"
-     },
-     {
-      "t": "Q&A · How did the woodland (WA735527) leave the family’s possession?",
-      "u": "https://qa.bucklerfamily.estate/"
-     }
-    ]
-   },
-   {
-    "id": "a1-1994",
-    "p": "A1",
-    "fr": "llcouple",
-    "to": "foc",
-    "lab": "1994",
-    "bend": 0.25,
-    "title": "A1 · 1994 Forest of Cardiff, today’s registered proprietor (WA735527)",
-    "date": "10 Nov 1994",
-    "text": "The current register lists Forest of Cardiff as proprietor from 25 Nov 1994. The transfer deed and plan are not held. The woodland title’s register also recites a 29 Mar 1961 WGR / South Western Brick & Tile / Cardiff City Corporation deed on the earlier strand; its scope and parcel overlap cannot be established until the deed and plan are inspected.",
-    "src": [
-     {
-      "t": "EV-0169 · title register WA735527",
-      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0169-wa735527-title-register-september-2026/"
-     },
-     {
-      "t": "EV-0136 · 10 Nov 1994 transfer to Forest of Cardiff, with plan",
-      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0136-forest-of-cardiff-woodland-transfer-1994/"
-     },
-     {
-      "t": "GHF-E149 · 1994 woodland transfer, WA735527",
-      "u": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e149-10-november-1994-transfer-to-forest-of-cardiff-wa735527/"
-     }
-    ]
-   },
-   {
-    "id": "a3-1959",
-    "p": "A3",
-    "fr": "dpoo",
-    "to": "poo",
-    "lab": "1959",
-    "bend": 0.3,
-    "title": "A3 · 1959 permissive occupancy attempt (refused)",
-    "date": "1958/59",
+   "p1959": {
+    "kind": "poo",
+    "icon": "💩",
+    "ang": 214,
+    "r": 0.52,
+    "cap": "1959",
+    "title": "1959 · permissive occupancy ploy",
     "text": "Mary refused an offer to let her the occupied farmhouse, buildings and garden in 1959 and asserted ownership through her grandfather. The family records this as the step that started the 12 years for the green. The 1987 judgment ties the offer to the farmhouse and garden. Source to add: the 1959 offer and reply, and any 1958 record.",
     "src": [
      {
@@ -2120,117 +2359,13 @@
      }
     ]
    },
-   {
-    "id": "a3-1970",
-    "p": "A3",
-    "fr": "poo",
-    "to": "glamorgan",
-    "lab": "1970",
-    "bend": 0.12,
-    "title": "A3 · 1970 village-green registration VG41",
-    "date": "16 Jun 1970",
-    "text": "VG41 was registered on 16 June 1970 by Glamorgan County Council as registration authority. The original VG41 file (application, map, ownership section, notices and any decision) is outstanding. Registration alone did not vest the green in the authority or prove who owned the freehold.",
-    "src": [
-     {
-      "t": "EV-0044 · VG41 village-green registration",
-      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0044-vg41-village-green-registration-1970/"
-     },
-     {
-      "t": "Llandough Community Council: village green page",
-      "u": "http://www.llandough-cc.co.uk/Pocket_Parks__and__Village_Green_20140.aspx"
-     },
-     {
-      "t": "Woodland & Land-Transfer Assessment 1902–2005",
-      "u": "https://greathousefarmwiki.wordpress.com/family-legal-case-control-room/woodland-land-transfer-assessment-1902-2005/"
-     }
-    ],
-    "birth": "c.12 yrs on"
-   },
-   {
-    "id": "a3-today",
-    "p": "A3",
-    "fr": "glamorgan",
-    "to": "llcc",
-    "lab": "today",
-    "bend": 0.35,
-    "dash": true,
-    "title": "A3 · Llandough Community Council today",
-    "date": "today",
-    "text": "Llandough Community Council states that it owns and maintains the village green. How the green came to it is not established: in 1970 Llandough lay in Penarth Urban District, and the Community Council was formed in 1982.",
-    "src": [
-     {
-      "t": "Legal Wiki · Woodland & Land-Transfer Assessment 1902–2005",
-      "u": "https://greathousefarmwiki.wordpress.com/family-legal-case-control-room/woodland-land-transfer-assessment-1902-2005/"
-     },
-     {
-      "t": "Legal Wiki · Llandough Community Council: forensic assessment",
-      "u": "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/llandough-community-council-forensic-institutional-review/"
-     }
-    ]
-   },
-   {
-    "id": "a2-1938",
-    "p": "A2",
-    "fr": "dpoo",
-    "to": "wgr",
-    "lab": "1938",
-    "bend": 0.22,
-    "title": "A2 · 1938 Western Ground Rents",
-    "date": "Sale announced 17 May 1938; conveyance dated 25 Dec 1938",
-    "text": "The deed and its plan are not held, so exactly which land it carried is still open. A 1939 Western Ground Rents plan (EV-0023) covers Parcel B only.",
-    "src": [
-     {
-      "t": "EV-0216 · recital of the conveyance of 25 Dec 1938",
-      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0216-1965-contract-condition-f-conveyance-25-december-1938/"
-     },
-     {
-      "t": "EV-0019 · 1938 Bute–WGR conveyance and plan",
-      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0019-bute-wgr-conveyance-plan-1938/"
-     },
-     {
-      "t": "1938 press report (Trove)",
-      "u": "https://trove.nla.gov.au/newspaper/article/46287600"
-     }
-    ]
-   },
-   {
-    "id": "a2-1955",
-    "p": "A2",
-    "fr": "wgr",
-    "to": "dpoo",
-    "lab": "1955",
-    "bend": 0.22,
-    "title": "A2 · 1955 possession order",
-    "date": "Jul 1955 (order); 4 Jul 1955 (execution)",
-    "text": "The 1955 possession order was framed for the “whole farm”. On 4 July 1955 possession was taken of every part of the farm except the farmhouse and garden. Its schedule and plan are not held, so which Parcel-A ground it reached is unclear.",
-    "src": [
-     {
-      "t": "EV-0032 · 1955 Order 14 possession order",
-      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0032-1955-order-14-possession-order/"
-     },
-     {
-      "t": "EV-0034 · 1955 writ of possession, execution return",
-      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0034-writ-possession-execution-return-1955/"
-     },
-     {
-      "t": "Legal Wiki · Master Timeline (page 33)",
-      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
-     },
-     {
-      "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (judgment)",
-      "u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
-     }
-    ]
-   },
-   {
-    "id": "a2-1962",
-    "p": "A2",
-    "fr": "dpoo",
-    "to": "poo",
-    "lab": "1962",
-    "bend": 0.62,
-    "title": "A2 · 1962 possession order, not enforced",
-    "date": "11 Dec 1962",
+   "p1962": {
+    "kind": "poo",
+    "icon": "💩",
+    "ang": 72,
+    "r": 0.3,
+    "cap": "1962",
+    "title": "1962 · permissive occupancy ploy",
     "text": "Cardiff County Court possession order against Frederick and Mary for the farmhouse, buildings and garden. It was never enforced. The family’s case is that it could not lawfully be enforced later. The order itself is not yet held (EV-0041 pending).",
     "src": [
      {
@@ -2247,14 +2382,13 @@
      }
     ]
    },
-   {
-    "id": "a2-1965",
-    "p": "A2",
-    "loop": "poo",
-    "ang": 95,
-    "lab": "1965",
-    "title": "1965 permissive occupancy attempt (rejected)",
-    "date": "2 Mar 1965",
+   "p1965": {
+    "kind": "poo",
+    "icon": "💩",
+    "ang": 36,
+    "r": 0.58,
+    "cap": "1965",
+    "title": "1965 · permissive occupancy ploy",
     "text": "Western Ground Rents would not let the fields to Frederick, and offered a weekly letting of the farmhouse to “Mrs Williams” on 2 March 1965. It was not signed.",
     "src": [
      {
@@ -2267,14 +2401,13 @@
      }
     ]
    },
-   {
-    "id": "a2-1969",
-    "p": "A2",
-    "loop": "poo",
-    "ang": 122,
-    "lab": "1969",
-    "title": "1969 sale of an interest in the 1962 order",
-    "date": "31 Dec 1969 (agreed bid 15 Feb 1969)",
+   "p1969": {
+    "kind": "poo",
+    "icon": "💩",
+    "ang": 66,
+    "r": 0.66,
+    "cap": "1969",
+    "title": "1969 · permissive occupancy ploy",
     "text": "Western Ground Rents conveyed Parcel B to BP Pension Trust together with the benefit of the 1962 order on the house. The deed is missing from the Land Registry files.",
     "src": [
      {
@@ -2295,14 +2428,13 @@
      }
     ]
    },
-   {
-    "id": "a2-1971",
-    "p": "A2",
-    "loop": "poo",
-    "ang": 149,
-    "lab": "1971",
-    "title": "1971 abstract of title (BP Pension Trust)",
-    "date": "1971",
+   "p1971": {
+    "kind": "poo",
+    "icon": "💩",
+    "ang": 90,
+    "r": 0.55,
+    "cap": "1971",
+    "title": "1971 · permissive occupancy ploy",
     "text": "Source to add. No record of a 1971 Ordnance Survey map change is on the wiki yet. The 1971 record on file is an abstract of title for BP Pension Trust, lodged with both first registrations (HM Land Registry letter, 19 Apr 2026); its contents are not held. The family’s request for historical OS records is EV-0424.",
     "src": [
      {
@@ -2317,17 +2449,15 @@
       "t": "Legal Wiki · Master Timeline (page 33)",
       "u": "https://greathousefarmwiki.wordpress.com/timeline/"
      }
-    ],
-    "dash": true
+    ]
    },
-   {
-    "id": "a2-1974",
-    "p": "A2",
-    "loop": "poo",
-    "ang": 218,
-    "lab": "1974",
-    "title": "1974 permissive occupancy attempt (licence letters)",
-    "date": "31 Oct 1974",
+   "p1974": {
+    "kind": "poo",
+    "icon": "💩",
+    "ang": 125,
+    "r": 0.4,
+    "cap": "1974",
+    "title": "1974 · permissive occupancy ploy",
     "text": "The warrant was withdrawn and BP’s licence letters were sent the same day, offering Mrs Buckler the house and garden rent free for life. She did not accept them. The 1987 judgment treated the letters as a licence, so her possession after that date was not counted towards the 12 years.",
     "src": [
      {
@@ -2348,13 +2478,794 @@
      }
     ]
    },
+   "p1975": {
+    "kind": "poo",
+    "icon": "💩",
+    "ang": 150,
+    "r": 0.7,
+    "cap": "1975",
+    "title": "1975 · permissive occupancy ploy",
+    "text": "BP Pension Trust to BP Properties, listed among the conveyances. The deed has not been seen.",
+    "src": [
+     {
+      "t": "Legal Wiki · Land Registry titles: conveyances",
+      "u": "https://greathousefarmwiki.wordpress.com/land-registry-titles/#conveyances"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33)",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     }
+    ]
+   },
+   "papers": {
+    "kind": "named",
+    "icon": "🦹",
+    "ang": 300,
+    "r": 0.5,
+    "under": [
+     "Bruce Sutherland"
+    ],
+    "over": [
+     "Mr. Knapp,",
+     "estate agent"
+    ],
+    "title": "Parcel A · 1950",
+    "text": "Per the c. 1974 statement of Mary (Nancy) Williams: in the beginning of June 1950 Mr. Knapp, “an Estate Agent who lives at Penarth” and then a lay preacher, asked the family to give a man somewhere quiet to live, and brought Bruce Sutherland to the farmhouse in his car. He stayed about two years. Later he told Mary that he “had taken the papers which were in the blanket box including the agreement relating to the farm and given them to Mr. Knapp.” Those papers were the family’s title evidence for Parcel A. Mary linked their loss to the first possession application, made by Western Ground Rents.",
+    "src": [
+     {
+      "t": "Legal Wiki · Mary (Nancy) Williams’s Statement (c. 1974) (page 196)",
+      "u": "https://greathousefarmwiki.wordpress.com/mary-williams-statement/"
+     },
+     {
+      "t": "Docs · WIKI-0196 — Mary (Nancy) Williams’s Statement (c. 1974)",
+      "u": "https://docs.bucklerfamily.estate/ghf_wiki/pe_marywilliamsstatement/"
+     },
+     {
+      "t": "Q&A · What happened to the family’s papers (the blanket box) in 1950–52?",
+      "u": "https://qa.bucklerfamily.estate/"
+     }
+    ]
+   },
+   "shredA": {
+    "kind": "shred",
+    "ang": 252,
+    "r": 0.28,
+    "title": "Parcel A’s papers, gone",
+    "text": "The papers taken from the blanket box in 1950–52, the agreement relating to the farm among them, were the family’s title evidence for Parcel A. They have not been seen since.",
+    "src": [
+     {
+      "t": "Legal Wiki · Mary (Nancy) Williams’s Statement (c. 1974) (page 196)",
+      "u": "https://greathousefarmwiki.wordpress.com/mary-williams-statement/"
+     },
+     {
+      "t": "Docs · WIKI-0196 — Mary (Nancy) Williams’s Statement (c. 1974)",
+      "u": "https://docs.bucklerfamily.estate/ghf_wiki/pe_marywilliamsstatement/"
+     },
+     {
+      "t": "Q&A · What happened to the family’s papers (the blanket box) in 1950–52?",
+      "u": "https://qa.bucklerfamily.estate/"
+     }
+    ]
+   },
+   "shredB": {
+    "kind": "shred",
+    "ang": 106,
+    "r": 0.88,
+    "title": "1974 · the papers BP would need",
+    "text": "In September 1974 BP applied for leave to enforce the 1962 order against the house. On 31 October 1974 the warrant was withdrawn and licence letters were sent instead. The order was not carried out, and the family stayed in the house.",
+    "src": [
+     {
+      "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (judgment)",
+      "u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33)",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     }
+    ]
+   }
+  },
+  "segs": [
    {
-    "id": "a2-1975",
-    "p": "A2",
-    "loop": "poo",
-    "ang": 20,
+    "id": "r-1500",
+    "fr": "herbert",
+    "to": "vaughan",
+    "lab": "1500s",
+    "g": "AB",
+    "title": "A + B · Herbert → Vaughan",
+    "date": "1547 (mid-16th century)",
+    "text": "Heneb's HER records the Vaughans holding the Great House—the parish's chief freehold farm—from the mid-16th century to the later 18th. A 1547, 1,000-year lease from Sir George Herbert to Vaughan is also recorded in the research note, but that lease is not itself proof of the freehold conveyance; the instrument is not in hand. The diagram treats the Vaughan freehold as supported by historical evidence, not as a fully inspected conveyance.",
+    "src": [
+     {
+      "t": "GHF-E178 · 1547 Herbert lease of Cydwin to Vaughan (research note)",
+      "u": "https://greathousefarmwiki.wordpress.com/ghf-e173-cedwyn-cwm-cedwyn-place-name-notes/ghf-e178-1547-sir-george-herbert-grants-vaughan-a-1000-year-lease-of-cydwin"
+     },
+     {
+      "t": "Heneb HER GGAT02038s · Great House Farm (Vaughan freehold; Bute in the early 19th century)",
+      "u": "https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s"
+     },
+     {
+      "t": "Cardiff Records vol. 2, “The manors of Cardiff district” (Cogan; Llandough)",
+      "u": "https://www.british-history.ac.uk/cardiff-records/vol2/pp8-41"
+     },
+     {
+      "t": "History of Parliament: HERBERT, George (1494/95–1570), of Swansea",
+      "u": "https://www.historyofparliamentonline.org/volume/1509-1558/member/herbert-george-149495-1570"
+     },
+     {
+      "t": "Legal Wiki · Evidence Register (page 4517)",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/"
+     }
+    ],
+    "dash": true,
+    "bend": -0.18,
+    "pt": 0.5
+   },
+   {
+    "id": "r-1800",
+    "fr": "vaughan",
+    "to": "bute",
+    "lab": "1800s",
+    "g": "AB",
+    "title": "A + B · Vaughan → Bute Estate",
+    "date": "early 19th century",
+    "text": "Heneb's HER records the Bute Estate holding the Great House freehold in the early 19th century, with the manorial courts for Llandough and Leckwith held in the house. The conveyance, its exact date and the vendor are not located: this link is an explicit evidential gap. The manorial lordship reached Bute separately (Herbert → Hurst & Jones by 1767 → Bute in 1793); that is not treated as the house-farm freehold transfer.",
+    "src": [
+     {
+      "t": "Heneb HER GGAT02038s · Great House Farm (Vaughan freehold; Bute in the early 19th century)",
+      "u": "https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s"
+     },
+     {
+      "t": "The Bute Estate (wiki)",
+      "u": "https://greathousefarmwiki.wordpress.com/bute-estate/"
+     },
+     {
+      "t": "Llandough (Penarth): pre-1877 manorial evidence (wiki)",
+      "u": "https://greathousefarmwiki.wordpress.com/anomalies-register/llandough-penarth-cydfin-ty-mawr-manorial-evidence/"
+     },
+     {
+      "t": "EV-0003 · Bute Estate records 1552–1824 naming Cydfin / Ty Mawr Farm (Evidence Register)",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/"
+     }
+    ],
+    "dash": true,
+    "bend": -0.12
+   },
+   {
+    "id": "r-1877",
+    "fr": "bute",
+    "to": "split",
+    "lab": null,
+    "g": "AB",
+    "title": "1877 · the farm splits into A and B",
+    "date": "1877",
+    "text": "The working title-chain hypothesis is that the Bute Estate parted with the farmhouse, buildings and about 10 acres (Parcel A) to Daniel Thomas & Son in 1877, while retaining about 9 acres (Parcel B). The agreement is not in hand, so the precise legal instrument and whether it was a freehold sale or quarry arrangement remain unresolved. The cited family statement and NLW catalogue are supporting sources, not a substitute for the deed.",
+    "src": [
+     {
+      "t": "EV-0006 · 1877 Bute–Daniel Thomas & Son agreement",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0006-bute-thomas-agreement-1877/"
+     },
+     {
+      "t": "EV-0291 · NLW Bute Estate catalogue D153 (Llandough limeworks land, 1876–1912)",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0291-nlw-bute-catalogue-d153-llandough-33-acres-great-house-farm-limeworks-and-pwllypant-d242-d247-d258/"
+     },
+     {
+      "t": "The Two Parcels",
+      "u": "https://greathousefarmwiki.wordpress.com/the-two-parcels/"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33), 1877",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     },
+     {
+      "t": "Legal Wiki · Three parts of Parcel A (page 3356)",
+      "u": "https://greathousefarmwiki.wordpress.com/the-two-parcels/three-parts-of-parcel-a-divergent-chronologies/"
+     }
+    ],
+    "bend": 0
+   },
+   {
+    "id": "a-1877",
+    "fr": "split",
+    "to": "thomas",
+    "lab": "1877",
+    "g": "A",
+    "title": "A · 1877 Bute Estate → Daniel Thomas & Son",
+    "date": "1877",
+    "text": "The working title-chain hypothesis is that the Bute Estate parted with the farmhouse, buildings and about 10 acres (Parcel A) to Daniel Thomas & Son in 1877, while retaining about 9 acres (Parcel B). The agreement is not in hand, so the precise legal instrument and whether it was a freehold sale or quarry arrangement remain unresolved. The cited family statement and NLW catalogue are supporting sources, not a substitute for the deed.",
+    "src": [
+     {
+      "t": "EV-0006 · 1877 Bute–Daniel Thomas & Son agreement",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0006-bute-thomas-agreement-1877/"
+     },
+     {
+      "t": "EV-0291 · NLW Bute Estate catalogue D153 (Llandough limeworks land, 1876–1912)",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0291-nlw-bute-catalogue-d153-llandough-33-acres-great-house-farm-limeworks-and-pwllypant-d242-d247-d258/"
+     },
+     {
+      "t": "The Two Parcels",
+      "u": "https://greathousefarmwiki.wordpress.com/the-two-parcels/"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33), 1877",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     },
+     {
+      "t": "Legal Wiki · Three parts of Parcel A (page 3356)",
+      "u": "https://greathousefarmwiki.wordpress.com/the-two-parcels/three-parts-of-parcel-a-divergent-chronologies/"
+     }
+    ],
+    "bend": 0.12
+   },
+   {
+    "id": "a-1928",
+    "fr": "thomas",
+    "to": "family",
+    "lab": "1928",
+    "g": "A",
+    "title": "A · 1928 to the Williams family",
+    "date": "1928",
+    "text": "No deed held. On the family's case, the 1877 arrangement resulted in Parcel A passing to the Williams family when quarrying ended and the last rent was paid in 1928. The family's stated freehold line reaches Williams in 1928. The receipt and statement are cited below; no later freehold conveyance from Williams is presently on record.",
+    "src": [
+     {
+      "t": "EV-0016 · 1928 last rent receipt",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0016-1928-last-rent-receipt-quarrying/"
+     },
+     {
+      "t": "Mary (Nancy) Williams’s statement",
+      "u": "https://greathousefarmwiki.wordpress.com/mary-williams-statement/"
+     }
+    ],
+    "dash": true,
+    "bend": 0.18,
+    "bow": "in"
+   },
+   {
+    "id": "a-1950",
+    "fr": "family",
+    "to": "papers",
+    "lab": "1950",
+    "g": "A",
+    "title": "A · 1950 the papers",
+    "date": "June 1950 (papers taken during a stay of about two years, 1950–52)",
+    "text": "Per the c. 1974 statement of Mary (Nancy) Williams: in the beginning of June 1950 Mr. Knapp, “an Estate Agent who lives at Penarth” and then a lay preacher, asked the family to give a man somewhere quiet to live, and brought Bruce Sutherland to the farmhouse in his car. He stayed about two years. Later he told Mary that he “had taken the papers which were in the blanket box including the agreement relating to the farm and given them to Mr. Knapp.” Those papers were the family’s title evidence for Parcel A. Mary linked their loss to the first possession application, made by Western Ground Rents.",
+    "src": [
+     {
+      "t": "Legal Wiki · Mary (Nancy) Williams’s Statement (c. 1974) (page 196)",
+      "u": "https://greathousefarmwiki.wordpress.com/mary-williams-statement/"
+     },
+     {
+      "t": "Docs · WIKI-0196 — Mary (Nancy) Williams’s Statement (c. 1974)",
+      "u": "https://docs.bucklerfamily.estate/ghf_wiki/pe_marywilliamsstatement/"
+     },
+     {
+      "t": "Q&A · What happened to the family’s papers (the blanket box) in 1950–52?",
+      "u": "https://qa.bucklerfamily.estate/"
+     }
+    ],
+    "bend": 0.2,
+    "pt": 0.5
+   },
+   {
+    "id": "a-gone",
+    "fr": "papers",
+    "to": "shredA",
+    "lab": null,
+    "g": "A",
+    "title": "A · the papers are gone",
+    "date": "1950–52",
+    "text": "The papers taken from the blanket box in 1950–52, the agreement relating to the farm among them, were the family’s title evidence for Parcel A. They have not been seen since.",
+    "src": [
+     {
+      "t": "Legal Wiki · Mary (Nancy) Williams’s Statement (c. 1974) (page 196)",
+      "u": "https://greathousefarmwiki.wordpress.com/mary-williams-statement/"
+     },
+     {
+      "t": "Docs · WIKI-0196 — Mary (Nancy) Williams’s Statement (c. 1974)",
+      "u": "https://docs.bucklerfamily.estate/ghf_wiki/pe_marywilliamsstatement/"
+     },
+     {
+      "t": "Q&A · What happened to the family’s papers (the blanket box) in 1950–52?",
+      "u": "https://qa.bucklerfamily.estate/"
+     }
+    ],
+    "bend": 0.25
+   },
+   {
+    "id": "a-1974",
+    "fr": "family",
+    "to": "shredB",
+    "lab": "1974",
+    "g": "A",
+    "title": "A · 1974 · BP fail to extinguish",
+    "date": "Sep 1974 (leave to enforce sought) · 31 Oct 1974 (warrant withdrawn)",
+    "text": "In September 1974 BP applied for leave to enforce the 1962 order against the house. On 31 October 1974 the warrant was withdrawn and licence letters were sent instead. The order was not carried out, and the family stayed in the house.",
+    "src": [
+     {
+      "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (judgment)",
+      "u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33)",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     }
+    ],
+    "near": true,
+    "stop": 0.8,
+    "bend": 0.32
+   },
+   {
+    "id": "b-1926",
+    "fr": "split",
+    "to": "mountjoy",
+    "lab": "1926",
+    "g": "B",
+    "title": "B · 1926 Mountjoy Ltd",
+    "date": "1926",
+    "text": "Remaining Bute property incorporated as Mountjoy Ltd. Archive catalogue history: after 1900 the Glamorgan estate was divided; the remaining Bute property became Mountjoy Ltd in 1926.",
+    "src": [
+     {
+      "t": "Glamorgan Archives DA catalogue (Bute estate history)",
+      "u": "https://discovery.nationalarchives.gov.uk/download/GB%200214%20DA_cld"
+     }
+    ],
+    "bend": 0.1,
+    "bow": "out"
+   },
+   {
+    "id": "b-1938",
+    "fr": "mountjoy",
+    "to": "wgr",
+    "lab": "1938",
+    "g": "B",
+    "title": "B · 1938 Western Ground Rents",
+    "date": "Sale announced 17 May 1938; conveyance dated 25 Dec 1938",
+    "text": "Conveyance on sale, Mountjoy / Bute to Western Ground Rents Ltd, 25 Dec 1938 (recited in later WGR deeds). The deed and its plan are not held, so exactly which land it carried is still open. A 1939 Western Ground Rents plan (EV-0023) covers Parcel B only.",
+    "src": [
+     {
+      "t": "EV-0216 · recital of the conveyance of 25 Dec 1938",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0216-1965-contract-condition-f-conveyance-25-december-1938/"
+     },
+     {
+      "t": "EV-0019 · 1938 Bute–WGR conveyance and plan",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0019-bute-wgr-conveyance-plan-1938/"
+     },
+     {
+      "t": "1938 press report (Trove)",
+      "u": "https://trove.nla.gov.au/newspaper/article/46287600"
+     }
+    ],
+    "bend": 0.1,
+    "bow": "out"
+   },
+   {
+    "id": "b-1969",
+    "fr": "wgr",
+    "to": "bppt",
+    "lab": "1969",
+    "g": "B",
+    "title": "B · 1969 BP Pension Trust",
+    "date": "31 Dec 1969 (agreed bid of 15 Feb 1969)",
+    "text": "Conveyance, WGR to BP Pension Trust, recited as the root of BP’s title. For the house it carried the benefit of the 1962 order. The freehold conveyance was of the WGR fields (Parcel B) to BP Pension Trust. The deed is missing; the judgment/record describes the benefit of the 1962 possession order in relation to the house, which is not the same as a conveyance of the A2 freehold.",
+    "src": [
+     {
+      "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (judgment)",
+      "u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+     },
+     {
+      "t": "EV-0043 · 1969 conveyance, WGR to BP Pension Trust",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0043-wgr-bp-pension-trust-conveyance/"
+     },
+     {
+      "t": "EV-0288 · 1968–69 press on the WGR takeover",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0288-snippets-only-press-on-the-1968-69-takeover-battle-for-western-ground-rents-ltd-en/"
+     }
+    ],
+    "bend": 0.1,
+    "bow": "out"
+   },
+   {
+    "id": "b-1975",
+    "fr": "bppt",
+    "to": "bpp",
     "lab": "1975",
-    "title": "1975 conveyance (deed not seen)",
+    "g": "B",
+    "title": "B · 1975 BP Properties",
+    "date": "23 May 1975",
+    "text": "BP Pension Trust to BP Properties Ltd, listed among the conveyances of 23 May 1975. The deed has not been seen.",
+    "src": [
+     {
+      "t": "Legal Wiki · Land Registry titles: conveyances",
+      "u": "https://greathousefarmwiki.wordpress.com/land-registry-titles/#conveyances"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33)",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     }
+    ],
+    "bend": 0.1,
+    "bow": "out",
+    "pt": 0.55
+   },
+   {
+    "id": "b-1982",
+    "fr": "bpp",
+    "to": "bpp",
+    "lab": "1982",
+    "g": "B",
+    "title": "B · 1982 BP Properties again (title WA231076)",
+    "date": "30 Nov 1982 (application)",
+    "text": "BP Properties Ltd applies to register title WA231076 (the farm). The application date is in HM Land Registry’s file schedule. The transfer from BP Pension Trust to BP Properties is not held.",
+    "src": [
+     {
+      "t": "EV-0170 · title register WA231076",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0170-wa231076-title-register-september-2026/"
+     },
+     {
+      "t": "Land Registry titles",
+      "u": "https://greathousefarmwiki.wordpress.com/land-registry-titles/"
+     }
+    ],
+    "loop": -1.7,
+    "outward": true
+   },
+   {
+    "id": "m-1987",
+    "fr": "bpp",
+    "to": "merge",
+    "lab": "1987",
+    "g": "M",
+    "title": "1987 · SA3 and B merge",
+    "date": "2 Feb 1987",
+    "text": "Title WA240304 (the house and yard) was merged into WA231076, the Parcel B title held by BP Properties, on 2 February 1987. The line marks Parcel B joining the registered house parcel.",
+    "src": [
+     {
+      "t": "EV-0170 · title register WA231076",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0170-wa231076-title-register-september-2026/"
+     },
+     {
+      "t": "Land Registry titles",
+      "u": "https://greathousefarmwiki.wordpress.com/land-registry-titles/"
+     },
+     {
+      "t": "Legal Wiki · Land Registry titles",
+      "u": "https://greathousefarmwiki.wordpress.com/land-registry-titles/"
+     }
+    ],
+    "bend": 0.1,
+    "pt": 0.72
+   },
+   {
+    "id": "s1-1955",
+    "fr": "p1949",
+    "to": "dpoo",
+    "lab": null,
+    "g": "SA1",
+    "title": "SA1 · 1955 double 💩",
+    "date": "4 Jul 1955",
+    "text": "Enforcing possession of Parcel B under “whole farm” wording, Western Ground Rents took the north forest and the south-east green on 4 July 1955. Mary was objecting strongly. The order’s schedule and plan are not held.",
+    "src": [
+     {
+      "t": "Legal Wiki · 1955 Parcel-A loss dossier: woodland and green",
+      "u": "https://greathousefarmwiki.wordpress.com/family-legal-case-control-room/1955-parcel-a-loss-dossier-woodland-vg41-green/"
+     },
+     {
+      "t": "EV-0034 · 1955 writ of possession, execution return",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0034-writ-possession-execution-return-1955/"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33)",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     }
+    ],
+    "bend": 0.2
+   },
+   {
+    "id": "s1-1961",
+    "fr": "dpoo",
+    "to": "cardiff",
+    "lab": "1961",
+    "g": "SA1",
+    "title": "SA1 · 1961 Cardiff City Corporation",
+    "date": "29 Mar 1961",
+    "text": "Deed with plan between Western Ground Rents, South Western Brick & Tile and Cardiff City Corporation, recited on the woodland register WA735527 (pink strand) against land now in the woodland title. The deed and plan are not yet held. Source to add for 1962: no 1962 registration entry for the woodland is on file.",
+    "src": [
+     {
+      "t": "EV-0040 · 29 Mar 1961 deed",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0040-1961-wgr-brick-tile-deed/"
+     },
+     {
+      "t": "GHF-E129 · 1961 WGR / South Western Brick & Tile / Cardiff City deed",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e129-1961-wgr-south-western-brick-and-tile-cardiff-city-deed/"
+     },
+     {
+      "t": "EV-0169 · title register WA735527",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0169-wa735527-title-register-september-2026/"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33)",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     }
+    ],
+    "bend": -0.1
+   },
+   {
+    "id": "s1-1994",
+    "fr": "cardiff",
+    "to": "foc",
+    "lab": "1994",
+    "g": "SA1",
+    "title": "SA1 · afterwards: Forest of Cardiff, 1994",
+    "date": "10 Nov 1994",
+    "text": "The current register lists Forest of Cardiff as proprietor from 25 Nov 1994. The transfer deed and plan are not held. The woodland title’s register also recites a 29 Mar 1961 WGR / South Western Brick & Tile / Cardiff City Corporation deed on the earlier strand; its scope and parcel overlap cannot be established until the deed and plan are inspected. Forest of Cardiff’s letter of 25 Sep 2026 has it buying the woodland from Ideal Homes (1993–94); the woodland record also lists a couple in Llandough as holders before the charity. No transfer between 1961 and 1994 is held, so this line is dashed.",
+    "src": [
+     {
+      "t": "EV-0169 · title register WA735527",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0169-wa735527-title-register-september-2026/"
+     },
+     {
+      "t": "EV-0136 · 10 Nov 1994 transfer to Forest of Cardiff, with plan",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0136-forest-of-cardiff-woodland-transfer-1994/"
+     },
+     {
+      "t": "GHF-E149 · 1994 woodland transfer, WA735527",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e149-10-november-1994-transfer-to-forest-of-cardiff-wa735527/"
+     },
+     {
+      "t": "Legal Wiki · Source Conflicts Register (SC-44)",
+      "u": "https://greathousefarmwiki.wordpress.com/records-access-chronology/source-conflicts-register/"
+     },
+     {
+      "t": "Q&A · How did the woodland (WA735527) leave the family’s possession?",
+      "u": "https://qa.bucklerfamily.estate/"
+     }
+    ],
+    "dash": true,
+    "bend": 0.18,
+    "bow": "in"
+   },
+   {
+    "id": "s2-1959",
+    "fr": "dpoo",
+    "to": "p1959",
+    "lab": null,
+    "g": "SA2",
+    "title": "SA2 · 1959 💩",
+    "date": "1958/59",
+    "text": "Mary refused an offer to let her the occupied farmhouse, buildings and garden in 1959 and asserted ownership through her grandfather. The family records this as the step that started the 12 years for the green. The 1987 judgment ties the offer to the farmhouse and garden. Source to add: the 1959 offer and reply, and any 1958 record.",
+    "src": [
+     {
+      "t": "Legal Wiki · The 1962 Possession Order: the 1959 refusal",
+      "u": "https://greathousefarmwiki.wordpress.com/1962-possession-order/#refusal-1959"
+     },
+     {
+      "t": "Legal Wiki · Three Parts of Parcel A (page 3356): repeated pattern, 1949–61, 1958/59–70, 1969–83",
+      "u": "https://greathousefarmwiki.wordpress.com/the-two-parcels/three-parts-of-parcel-a-divergent-chronologies/"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33)",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     }
+    ],
+    "bend": 0.15
+   },
+   {
+    "id": "s2-1970",
+    "fr": "p1959",
+    "to": "glamorgan",
+    "lab": "1970",
+    "g": "SA2",
+    "title": "SA2 · 1970 Glamorgan County Council (VG41)",
+    "date": "16 Jun 1970",
+    "text": "VG41 was provisionally registered as a village green on 16 June 1970 by Glamorgan County Council as registration authority (the VG 41 provisional register map in Vale of Glamorgan planning file 92/00671, p. 12, is stamped “16 JUN 1970”). The original VG41 file (application, map, ownership section, notices and any decision) is outstanding. Registration alone did not vest the green in the authority or prove who owned the freehold.",
+    "src": [
+     {
+      "t": "EV-0044 · VG41 village-green registration",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0044-vg41-village-green-registration-1970/"
+     },
+     {
+      "t": "Llandough Community Council: village green page",
+      "u": "http://www.llandough-cc.co.uk/Pocket_Parks__and__Village_Green_20140.aspx"
+     },
+     {
+      "t": "Woodland & Land-Transfer Assessment 1902–2005",
+      "u": "https://greathousefarmwiki.wordpress.com/family-legal-case-control-room/woodland-land-transfer-assessment-1902-2005/"
+     }
+    ],
+    "bend": 0.1,
+    "pt": 0.7
+   },
+   {
+    "id": "s2-today",
+    "fr": "glamorgan",
+    "to": "llcc",
+    "lab": "today",
+    "g": "SA2",
+    "title": "SA2 · afterwards: Llandough Community Council",
+    "date": "today",
+    "text": "Llandough Community Council states that it owns and maintains the village green. How the green came to it is not established: in 1970 Llandough lay in Penarth Urban District, and the Community Council was formed in 1982.",
+    "src": [
+     {
+      "t": "Legal Wiki · Woodland & Land-Transfer Assessment 1902–2005",
+      "u": "https://greathousefarmwiki.wordpress.com/family-legal-case-control-room/woodland-land-transfer-assessment-1902-2005/"
+     },
+     {
+      "t": "Legal Wiki · Llandough Community Council: forensic assessment",
+      "u": "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/llandough-community-council-forensic-institutional-review/"
+     }
+    ],
+    "dash": true,
+    "bend": 0.3,
+    "bow": "in",
+    "pt": 0.6
+   },
+   {
+    "id": "s3-1962",
+    "fr": "dpoo",
+    "to": "p1962",
+    "lab": null,
+    "g": "SA3",
+    "title": "SA3 · 1962 💩",
+    "date": "11 Dec 1962",
+    "text": "Cardiff County Court possession order against Frederick and Mary for the farmhouse, buildings and garden. It was never enforced. The family’s case is that it could not lawfully be enforced later. The order itself is not yet held (EV-0041 pending).",
+    "src": [
+     {
+      "t": "EV-0041 · 1962 Cardiff County Court possession order (pending)",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0041-cardiff-county-court-possession-order-1962/"
+     },
+     {
+      "t": "Legal Wiki · The 1962 Possession Order",
+      "u": "https://greathousefarmwiki.wordpress.com/1962-possession-order/#order"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33)",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     }
+    ],
+    "bend": 0.2
+   },
+   {
+    "id": "s3-1965",
+    "fr": "p1962",
+    "to": "p1965",
+    "lab": null,
+    "g": "SA3",
+    "title": "SA3 · 1965 💩",
+    "date": "2 Mar 1965",
+    "text": "Western Ground Rents would not let the fields to Frederick, and offered a weekly letting of the farmhouse to “Mrs Williams” on 2 March 1965. It was not signed.",
+    "src": [
+     {
+      "t": "Legal Wiki · The 1962 Possession Order: the 1965 offer",
+      "u": "https://greathousefarmwiki.wordpress.com/1962-possession-order/#offer-1965"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33)",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     }
+    ],
+    "bend": 0.2
+   },
+   {
+    "id": "s3-1969",
+    "fr": "p1965",
+    "to": "p1969",
+    "lab": null,
+    "g": "SA3",
+    "title": "SA3 · 1969 💩",
+    "date": "31 Dec 1969 (agreed bid 15 Feb 1969)",
+    "text": "Western Ground Rents conveyed Parcel B to BP Pension Trust together with the benefit of the 1962 order on the house. The deed is missing from the Land Registry files.",
+    "src": [
+     {
+      "t": "Legal Wiki · Land Registry titles: conveyances",
+      "u": "https://greathousefarmwiki.wordpress.com/land-registry-titles/#conveyances"
+     },
+     {
+      "t": "EV-0043 · 1969 conveyance, WGR to BP Pension Trust",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0043-wgr-bp-pension-trust-conveyance/"
+     },
+     {
+      "t": "EV-0288 · 1968–69 press on the WGR takeover",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0288-snippets-only-press-on-the-1968-69-takeover-battle-for-western-ground-rents-ltd-en/"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33)",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     }
+    ],
+    "bend": 0.2
+   },
+   {
+    "id": "s3-1969b",
+    "fr": "p1969",
+    "to": "bppt",
+    "lab": "1969",
+    "g": "SA3",
+    "title": "SA3 · 1969 BP Pension Trust",
+    "date": "31 Dec 1969 (agreed bid 15 Feb 1969)",
+    "text": "Western Ground Rents conveyed Parcel B to BP Pension Trust together with the benefit of the 1962 order on the house. The deed is missing from the Land Registry files.",
+    "src": [
+     {
+      "t": "Legal Wiki · Land Registry titles: conveyances",
+      "u": "https://greathousefarmwiki.wordpress.com/land-registry-titles/#conveyances"
+     },
+     {
+      "t": "EV-0043 · 1969 conveyance, WGR to BP Pension Trust",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0043-wgr-bp-pension-trust-conveyance/"
+     },
+     {
+      "t": "EV-0288 · 1968–69 press on the WGR takeover",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0288-snippets-only-press-on-the-1968-69-takeover-battle-for-western-ground-rents-ltd-en/"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33)",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     }
+    ],
+    "bend": 0.1,
+    "pt": 0.55
+   },
+   {
+    "id": "s3-1971",
+    "fr": "bppt",
+    "to": "p1971",
+    "lab": null,
+    "g": "SA3",
+    "title": "SA3 · 1971 💩",
+    "date": "1971",
+    "text": "Source to add. No record of a 1971 Ordnance Survey map change is on the wiki yet. The 1971 record on file is an abstract of title for BP Pension Trust, lodged with both first registrations (HM Land Registry letter, 19 Apr 2026); its contents are not held. The family’s request for historical OS records is EV-0424.",
+    "src": [
+     {
+      "t": "EV-0045 · 1971 abstract of title (BP Pension Trust)",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0045-1971-abstract-title-bp-pension/"
+     },
+     {
+      "t": "EV-0424 · Ordnance Survey: historical OS mapping records for Tŷ Mawr",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0424-ordnance-survey-historical-os-mapping-records-for-ty-mawr-farm/"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33)",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     }
+    ],
+    "dash": true,
+    "bend": 0.15
+   },
+   {
+    "id": "s3-1974",
+    "fr": "p1971",
+    "to": "p1974",
+    "lab": null,
+    "g": "SA3",
+    "title": "SA3 · 1974 💩",
+    "date": "31 Oct 1974",
+    "text": "The warrant was withdrawn and BP’s licence letters were sent the same day, offering Mrs Buckler the house and garden rent free for life. She did not accept them. The 1987 judgment treated the letters as a licence, so her possession after that date was not counted towards the 12 years.",
+    "src": [
+     {
+      "t": "Legal Wiki · The 1974 licence letters",
+      "u": "https://greathousefarmwiki.wordpress.com/1974-licence-letters/#letters"
+     },
+     {
+      "t": "EV-0080 · the 1987 judgment",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0080-bp-properties-v-buckler-judgment/"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33)",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     },
+     {
+      "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (judgment)",
+      "u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+     }
+    ],
+    "bend": 0.2
+   },
+   {
+    "id": "s3-1975",
+    "fr": "p1974",
+    "to": "p1975",
+    "lab": null,
+    "g": "SA3",
+    "title": "SA3 · 1975 💩",
     "date": "23 May 1975",
     "text": "BP Pension Trust to BP Properties, listed among the conveyances. The deed has not been seen.",
     "src": [
@@ -2367,16 +3278,37 @@
       "u": "https://greathousefarmwiki.wordpress.com/timeline/"
      }
     ],
-    "dash": true
+    "bend": 0.2
    },
    {
-    "id": "a2-1983",
-    "p": "A2",
-    "fr": "poo",
+    "id": "s3-1975b",
+    "fr": "p1975",
+    "to": "bpp",
+    "lab": "1975",
+    "g": "SA3",
+    "title": "SA3 · 1975 BP Properties",
+    "date": "23 May 1975",
+    "text": "BP Pension Trust to BP Properties, listed among the conveyances. The deed has not been seen.",
+    "src": [
+     {
+      "t": "Legal Wiki · Land Registry titles: conveyances",
+      "u": "https://greathousefarmwiki.wordpress.com/land-registry-titles/#conveyances"
+     },
+     {
+      "t": "Legal Wiki · Master Timeline (page 33)",
+      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
+     }
+    ],
+    "bend": 0.1,
+    "pt": 0.5
+   },
+   {
+    "id": "s3-1983",
+    "fr": "bpp",
     "to": "bpp",
     "lab": "1983",
-    "bend": 0.1,
-    "title": "A2 · 1983 first registration WA240304 to BP Properties",
+    "g": "SA3",
+    "title": "SA3 · 1983 BP Properties again (title WA240304)",
     "date": "23 Feb 1983 (Form 1C application)",
     "text": "First registration of the house, title WA240304, to BP Properties Ltd, while Mary lived there. No conveyance from the occupiers and no notice to the occupier is on file. Mary died at the farmhouse on 26 Mar 1983. The title was merged into WA231076 on 2 Feb 1987.",
     "src": [
@@ -2401,154 +3333,236 @@
       "u": "https://greathousefarmwiki.wordpress.com/timeline/"
      }
     ],
-    "tnum": "WA240304",
-    "birth": "c.12 yrs on",
-    "birthUp": true
-   },
-   {
-    "id": "b-1987",
-    "p": "B",
-    "fr": "pB",
-    "to": "bpp",
-    "lab": "1987",
-    "bend": 0.2,
-    "title": "B · 1987 merge: WA240304 (A2) into WA231076 (B)",
-    "date": "2 Feb 1987",
-    "text": "Title WA240304 (the house and yard) was merged into WA231076, the Parcel B title held by BP Properties, on 2 February 1987. The line marks Parcel B joining the registered house parcel.",
-    "src": [
-     {
-      "t": "EV-0170 · title register WA231076",
-      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0170-wa231076-title-register-september-2026/"
-     },
-     {
-      "t": "Land Registry titles",
-      "u": "https://greathousefarmwiki.wordpress.com/land-registry-titles/"
-     },
-     {
-      "t": "Legal Wiki · Land Registry titles",
-      "u": "https://greathousefarmwiki.wordpress.com/land-registry-titles/"
-     }
-    ]
-   },
-   {
-    "id": "x-1974",
-    "p": "A2",
-    "ext": {
-     "fr": "family",
-     "toward": "bppt",
-     "stop": 0.84
-    },
-    "lab": "1974 · BP fail to extinguish",
-    "title": "1974 · BP fail to extinguish",
-    "date": "Sep 1974 (leave to enforce sought) · 31 Oct 1974 (warrant withdrawn)",
-    "text": "In September 1974 BP applied for leave to enforce the 1962 order against the house. On 31 October 1974 the warrant was withdrawn and licence letters were sent instead. The order was not carried out, and the family stayed in the house.",
-    "src": [
-     {
-      "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (judgment)",
-      "u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
-     },
-     {
-      "t": "Legal Wiki · Master Timeline (page 33)",
-      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
-     }
-    ],
-    "color": "#ff4d6d"
-   },
-   {
-    "id": "a-1950",
-    "p": "A",
-    "fr": "family",
-    "to": "papers1950",
-    "lab": "1950",
-    "bend": -0.5,
-    "color": "#ffd166",
-    "title": "Parcel A · 1950 · the family’s papers",
-    "date": "June 1950 (papers taken during a stay of about two years, 1950–52)",
-    "text": "Per the c. 1974 statement of Mary (Nancy) Williams: in the beginning of June 1950 Mr. Knapp, “an Estate Agent who lives at Penarth” and then a lay preacher, asked the family to give a man somewhere quiet to live, and brought Bruce Sutherland to the farmhouse in his car. He stayed about two years. Later he told Mary that he “had taken the papers which were in the blanket box including the agreement relating to the farm and given them to Mr. Knapp.” Those papers were the family’s title evidence for Parcel A. Mary linked their loss to the first possession application, made by Western Ground Rents.",
-    "src": [
-     {
-      "t": "Legal Wiki · Mary (Nancy) Williams’s Statement (c. 1974) (page 196)",
-      "u": "https://greathousefarmwiki.wordpress.com/mary-williams-statement/"
-     },
-     {
-      "t": "Docs · WIKI-0196 — Mary (Nancy) Williams’s Statement (c. 1974)",
-      "u": "https://docs.bucklerfamily.estate/ghf_wiki/pe_marywilliamsstatement/"
-     },
-     {
-      "t": "Q&A · What happened to the family’s papers (the blanket box) in 1950–52?",
-      "u": "https://qa.bucklerfamily.estate/"
-     }
-    ],
-    "labT": 0.78
+    "loop": 1,
+    "outward": true
    }
   ],
-  "uses": {
-   "B": [
-    "rk:b1",
-    "t1938",
-    "t1969",
-    "t1982"
-   ]
-  },
-  "zones": {
-   "root": {
-    "ids": [
-     "thomas",
-     "vaughan",
-     "bute",
-     "mountjoy",
-     "family"
-    ],
-    "label": "ROOT TITLE CHAIN",
-    "title": "Root title chain",
-    "sub": "the clear wedge of the circle",
-    "text": "The freehold chain from the root: the Vaughan family, then the Bute Estate, which in 1877 split the farm. Parcel A, the house parcel, passed through Daniel Thomas & Son to the family; Parcel B stayed with Bute and passed to Mountjoy Ltd in 1926. This wedge is the only part of the circle with a root title and conveyances behind it.",
-    "src": [
+  "filters": [
+   {
+    "k": "AB",
+    "lab": "A+B IN",
+    "tracks": [
      {
-      "t": "Legal Wiki · Master Timeline (page 33)",
-      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
-     },
-     {
-      "t": "Legal Wiki · Mary (Nancy) Williams’s Statement (c. 1974) (page 196)",
-      "u": "https://greathousefarmwiki.wordpress.com/mary-williams-statement/"
+      "s": [
+       "r-1500",
+       "r-1800",
+       "r-1877"
+      ],
+      "after": null
      }
-    ]
+    ],
+    "cap": "In: one farm, A + B together, on the root title chain: Herbert → Vaughan → Bute Estate, until the 1877 split."
    },
-   "vacuum": {
-    "label": "THE VACUUM · NO ROOT TITLE, NO SALE",
-    "title": "The vacuum",
-    "sub": "the shaded field of the circle",
-    "text": "The shaded field holds the company and council registrations, possession steps and transfers over the three parts of Parcel A. None of it starts from the root title chain or from a sale by the family. Its only origin is the 💩 at the centre: the assertion that Mary’s occupancy was permissive, which the family’s records do not bear out. From that assertion, each time about 12 years on, a registration of a synthetic part of Parcel A is born.",
-    "births": [
+   {
+    "k": "A",
+    "lab": "A",
+    "tracks": [
      {
-      "p": "A1",
-      "t": "the woodland: 💩 1949 → registration 1961 (Cardiff City Corporation; title WA735527)"
+      "s": [
+       "r-1500",
+       "r-1800",
+       "r-1877",
+       "a-1877",
+       "a-1928",
+       "a-1950",
+       "a-gone"
+      ],
+      "after": null
      },
      {
-      "p": "A2",
-      "t": "the house and yard: 💩 1962, renewed 1965–1975 → registration 1983 (BP Properties; title WA240304)"
-     },
-     {
-      "p": "A3",
-      "t": "the green: 💩 1959 → registration 1970 (Glamorgan County Council; village green VG41)"
+      "s": [
+       "a-1974"
+      ],
+      "after": "a-1950"
      }
     ],
-    "fill": "#9a8cff",
-    "src": [
+    "cap": "Parcel A: Bute Estate → Daniel Thomas & Son (1877) → the Williams family (1928). In 1950 the papers go to 🦹 and are gone. In 1974 a line heads for papers beside BP Pension Trust and turns back."
+   },
+   {
+    "k": "B",
+    "lab": "B",
+    "tracks": [
      {
-      "t": "Legal Wiki · Three Parts of Parcel A (page 3356): repeated pattern, 1949–61, 1958/59–70, 1969–83",
-      "u": "https://greathousefarmwiki.wordpress.com/the-two-parcels/three-parts-of-parcel-a-divergent-chronologies/"
-     },
-     {
-      "t": "Legal Wiki · Master Timeline (page 33)",
-      "u": "https://greathousefarmwiki.wordpress.com/timeline/"
-     },
-     {
-      "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (judgment)",
-      "u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+      "s": [
+       "r-1500",
+       "r-1800",
+       "r-1877",
+       "b-1926",
+       "b-1938",
+       "b-1969",
+       "b-1975",
+       "b-1982",
+       "m-1987"
+      ],
+      "after": null
      }
-    ]
+    ],
+    "cap": "Parcel B: Bute Estate → Mountjoy Ltd → Western Ground Rents (1938) → BP Pension Trust (1969) → BP Properties (1975, again 1982) → merges with SA3 (1987)."
+   },
+   {
+    "k": "SA1",
+    "lab": "SA1",
+    "tracks": [
+     {
+      "s": [
+       "s1-1955",
+       "s1-1961",
+       "s1-1994"
+      ],
+      "after": null
+     }
+    ],
+    "start": "p1949",
+    "cap": "Synthetic A1, the woodland: 💩 1949 → 💩💩 1955 → Cardiff City Corporation 1961; afterwards Forest of Cardiff 1994."
+   },
+   {
+    "k": "SA2",
+    "lab": "SA2",
+    "tracks": [
+     {
+      "s": [
+       "s2-1959",
+       "s2-1970",
+       "s2-today"
+      ],
+      "after": null
+     }
+    ],
+    "start": "dpoo",
+    "cap": "Synthetic A2, the village green: 💩💩 1955 → 💩 1959 → Glamorgan County Council 1970 (VG41); afterwards Llandough Community Council."
+   },
+   {
+    "k": "SA3",
+    "lab": "SA3",
+    "tracks": [
+     {
+      "s": [
+       "s3-1962",
+       "s3-1965",
+       "s3-1969",
+       "s3-1969b",
+       "s3-1971",
+       "s3-1974",
+       "s3-1975",
+       "s3-1975b",
+       "s3-1983",
+       "m-1987"
+      ],
+      "after": null
+     }
+    ],
+    "start": "dpoo",
+    "cap": "Synthetic A3, the house and yard: 💩💩 1955 → 💩 1962 → 💩 1965 → 💩 1969 → BP Pension Trust → 💩 1971 → 💩 1974 → 💩 1975 → BP Properties 1975, again 1983 (WA240304) → merges with B, 1987."
+   },
+   {
+    "k": "SA3B",
+    "lab": "SA3+B",
+    "tracks": [
+     {
+      "s": [
+       "r-1500",
+       "r-1800",
+       "r-1877",
+       "b-1926",
+       "b-1938",
+       "b-1969",
+       "b-1975",
+       "b-1982",
+       "m-1987"
+      ],
+      "after": null
+     },
+     {
+      "s": [
+       "s3-1962",
+       "s3-1965",
+       "s3-1969",
+       "s3-1969b",
+       "s3-1971",
+       "s3-1974",
+       "s3-1975",
+       "s3-1975b",
+       "s3-1983",
+       "m-1987"
+      ],
+      "after": null
+     }
+    ],
+    "start": "dpoo",
+    "cap": "Out: A + B again, but as synthetic A3 and B, merged at BP Properties in 1987."
+   },
+   {
+    "k": "ALL",
+    "lab": "All",
+    "tracks": [
+     {
+      "s": [
+       "r-1500",
+       "r-1800",
+       "r-1877",
+       "a-1877",
+       "a-1928",
+       "a-1950",
+       "a-gone"
+      ],
+      "after": null
+     },
+     {
+      "s": [
+       "a-1974"
+      ],
+      "after": "a-1950"
+     },
+     {
+      "s": [
+       "r-1500",
+       "r-1800",
+       "r-1877",
+       "b-1926",
+       "b-1938",
+       "b-1969",
+       "b-1975",
+       "b-1982",
+       "m-1987"
+      ],
+      "after": null
+     },
+     {
+      "s": [
+       "s1-1955",
+       "s1-1961",
+       "s1-1994"
+      ],
+      "after": null
+     },
+     {
+      "s": [
+       "s2-1959",
+       "s2-1970",
+       "s2-today"
+      ],
+      "after": null
+     },
+     {
+      "s": [
+       "s3-1962",
+       "s3-1965",
+       "s3-1969",
+       "s3-1969b",
+       "s3-1971",
+       "s3-1974",
+       "s3-1975",
+       "s3-1975b",
+       "s3-1983",
+       "m-1987"
+      ],
+      "after": null
+     }
+    ],
+    "start": "p1949",
+    "cap": "Into the circle comes A + B; out comes A + B as synthetic A3 and B, plus two more simple lines, SA1 and SA2."
    }
-  }
+  ],
+  "ploys": "Permissive occupancy ploys"
  }
 }

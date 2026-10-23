@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Land Changing Hands · Great House Farm</title>
-<meta name="description" content="Tŷ Mawr, Llandough: the freehold title path, with the permissive-occupancy 💩 at the centre and a path for each part of Parcel A (A1, A2, A3) and for Parcel B.">
+<meta name="description" content="Tŷ Mawr, Llandough: one farm, A + B, comes into the circle on the root title chain; out comes A + B again as synthetic A3 and B, plus synthetic A1 and A2. Pick a line to watch it grow.">
 <meta property="og:title" content="Great House Farm · the land changing hands">
-<meta property="og:description" content="Great House Farm: the freehold title path, the permissive-occupancy 💩 at the centre, and a path for each part of Parcel A and for Parcel B.">
+<meta property="og:description" content="In: A + B on the root title chain. Out: synthetic A3 and B, plus SA1 and SA2, each born from a permissive occupancy ploy.">
 <meta name="theme-color" content="#151229">
 <style>
 :root{--bg:#151229;--panel:#1d1938;--line:#ffffff1f;--ink:#f3f1ff;--muted:#b9b4d6;--accent:#ffd166}
@@ -14,640 +14,207 @@
 html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 a{color:#9cc7ff}
 a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.wrap{max-width:1180px;margin:0 auto;padding:14px 12px 24px}
+.wrap{max-width:860px;margin:0 auto;padding:14px 12px 24px}
 .intro{font-size:15px;color:var(--muted);margin:6px 2px 10px}
-header h1{font-size:clamp(22px,4.4vw,34px);line-height:1.15;margin:4px 0 4px;letter-spacing:.2px}
-header p{margin:0 0 10px;color:var(--muted);font-size:15px}
-.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:6px 0 10px}
-.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
-.seg button{background:none;border:0;color:var(--ink);padding:8px 16px;font:inherit;font-size:15px;cursor:pointer;min-height:40px}
-.seg button[aria-pressed=true]{background:#ffffff22;font-weight:600}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#ffffff0a;color:var(--ink);border-radius:999px;padding:5px 10px 5px 6px;font:inherit;font-size:14px;cursor:pointer;min-height:36px}
-.chip[aria-pressed=true]{background:#ffffff26;border-color:#ffffff66}
-.dot{display:inline-grid;place-items:center;min-width:24px;height:24px;border-radius:12px;font-size:11px;font-weight:700;color:#151229;padding:0 4px}
-.stage{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:0;align-items:start}
-#ring{display:block;width:100%;height:auto;aspect-ratio:1/1;margin:0 auto;touch-action:pan-y pinch-zoom;user-select:none;-webkit-user-select:none}
-#ring.zoomed{touch-action:none;cursor:grab}
-.ctl{position:absolute;left:10px;bottom:10px;display:flex;gap:6px}
-.svgbox{position:relative}
-/* full screen: the ring fills the viewport (CSS, so it works on iPhone too; the browser's own full screen is asked for where it exists) */
-html.fs-lock,html.fs-lock body{overflow:hidden!important}
-.svgbox.fs{position:fixed;inset:0;top:0;left:0;z-index:2147483600;background:var(--panel);display:flex;align-items:center;justify-content:center;overscroll-behavior:contain}
-.svgbox.fs{width:100vw;height:100vh;height:100dvh}
-.svgbox.fs #ring{width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;aspect-ratio:auto!important;touch-action:none}
-@media (orientation:landscape){.svgbox.fs .ctl{flex-direction:column;left:max(12px,env(safe-area-inset-left));right:auto;top:0;bottom:0;justify-content:center;pointer-events:none}.svgbox.fs .ctl button{pointer-events:auto}}
-.svgbox.fs .ctl{position:fixed;left:0;right:0;bottom:max(14px,env(safe-area-inset-bottom));justify-content:center;padding:0}
-.svgbox.fs #fs{position:fixed;top:max(12px,env(safe-area-inset-top));right:12px;width:48px;height:48px;font-size:22px;background:#151229;border-color:#ffffff66}
-.nlead{stroke:#ffffff40;stroke-width:1.5}
-/* day mode: the shared theme inverts this dark page; the figure (.stage, mobile legend) and the parcel dots carry data-ghf-keep so the year and parcel colours stay true */
-.ctl button{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#151229e6;color:var(--ink);font-size:20px;cursor:pointer}
-.legend{background:#151229ee;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13px;color:var(--ink)}
-.stage .legend{margin:12px 12px 12px 0}
-.legend h2{font-size:13px;margin:0 0 6px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
-.grad{height:12px;border-radius:6px;margin:2px 0 2px}
-.ticks{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}
-.lrow{display:flex;align-items:center;gap:8px;margin:4px 0}
-.lrow svg{flex:none}
-.legend .sec{margin-top:10px}
-.mlegend{display:none;margin-top:10px}
-.hint{color:var(--muted);font-size:13px;margin:8px 2px 0}
-/* list */
-#list{display:none}
-.card{display:grid;grid-template-columns:64px 1fr;gap:4px 12px;background:var(--panel);border:1px solid var(--line);border-left:6px solid #888;border-radius:12px;padding:10px 12px;margin:0 0 8px;cursor:pointer}
-.card.dashed{border-left-style:dashed}
-.card .yr{font-size:22px;font-weight:700;line-height:1.1}
-.card h3{margin:0;font-size:16px}
-.card .ft{color:var(--muted);font-size:14px}
-.pill{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--muted)}
-.card.ev{cursor:default;border-left-color:#666}
-/* chains from the centre */
-.chains{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin-top:10px}
-.chains h2{font-size:13px;margin:0 0 4px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
-.chains .lead{font-size:13px;color:var(--muted);margin:0 0 6px}
-.chrow{border-top:1px solid var(--line);padding:8px 0 6px}
-.chhd{display:flex;align-items:center;gap:8px;background:none;border:0;color:var(--ink);font:inherit;font-size:15px;font-weight:600;padding:2px 0;cursor:pointer;text-align:left;width:100%}
-.chhd .sw{flex:none;width:22px;height:8px;border-radius:4px}
-.chhd .ttl{margin-left:auto;font-size:12px;font-weight:700;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--muted)}
-.yrs{display:flex;flex-wrap:wrap;gap:4px 3px;align-items:center;margin:6px 0 2px}
-.yb{font:inherit;font-size:14px;font-weight:600;border:1.5px solid var(--line);background:#ffffff0d;color:var(--ink);border-radius:8px;padding:4px 7px;min-height:34px;cursor:pointer}
-.yb.in{color:#151229;border-color:transparent}
-.yb.end{font-weight:800;outline:2px solid #fff;outline-offset:1px}
-.yb.todo{border-style:dashed;border-color:#ffffffaa}
-.yb.in.todo{border-color:#151229}
-.ar{color:var(--muted);font-size:12px}
-.cap{font-size:12.5px;color:var(--muted);margin:3px 0 0}
-.cap b{color:var(--ink)}
-.c12{display:inline-block;font-size:12px;font-weight:800;color:#151229;border-radius:999px;padding:1px 8px;margin-right:4px}
-.t12{font-weight:800;fill:#151229;pointer-events:none}
-.cyl{paint-order:stroke;stroke:#1d1938;stroke-width:5px;fill:#f3f1ff;font-weight:600}
-.cyl.b{font-weight:800;fill:#fff}
-g.ch{cursor:pointer}
-g.ch.dim{opacity:.1}
-g.ch.dim .chit{pointer-events:none}
-g.cn{cursor:pointer}
-g.rc{cursor:pointer}
-g.rc.dim .chit{pointer-events:none}
-.rlab{font-weight:700;paint-order:stroke;stroke:#1d1938;stroke-width:5px;stroke-linejoin:round}
-.rlab.b{font-weight:800}
-g.n.star{cursor:pointer}
-svg.haschains g.t.rt:not(.dim){opacity:1}
-.chrow.root .yrs{gap:4px 4px}
-.chrow.root .who{font-size:13px;color:var(--ink)}
-.chrow.root .yb.rk{border-width:2px;font-size:13px;min-height:32px;padding:3px 7px}
-.chrow.root .sw.star{background:none;color:#e7c6ff;font-size:16px;width:auto;height:auto}
-.chrow.root .yrs .sw{width:16px;height:8px;border-radius:4px;flex:none;display:inline-block}
-.chrow.root .pl{font-size:13px;margin-right:2px}
-.chrow.root .cap{margin-top:4px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#ffffff0a;color:var(--ink);border-radius:999px;padding:5px 12px 5px 8px;font:inherit;font-size:15px;font-weight:600;cursor:pointer;min-height:40px}
+.chip[aria-pressed=true]{background:#ffffff2b;border-color:#ffffffaa}
+.chip i{display:inline-block;width:14px;height:14px;border-radius:7px;flex:none}
+.stage{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:10px}
+#ring{display:block;width:100%;height:auto;aspect-ratio:1040/880;touch-action:pan-y pinch-zoom;user-select:none;-webkit-user-select:none}
+.replay{position:absolute;right:8px;bottom:8px;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#151229e6;color:var(--ink);font-size:20px;cursor:pointer}
+.cap{font-size:15px;margin:10px 2px 6px}
+.steps{list-style:none;margin:0;padding:0}
+.steps li button{display:grid;grid-template-columns:8px 64px 1fr;gap:10px;align-items:center;width:100%;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:0 0 6px;color:var(--ink);font:inherit;font-size:15px;cursor:pointer}
+.steps .bar{width:8px;height:28px;border-radius:4px}
+.steps .bar.d{background-image:repeating-linear-gradient(180deg,transparent 0 4px,#1d1938 4px 7px)!important}
+.steps .y{font-weight:800}
+.legend{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14px;margin-top:12px}
+.legend h2{font-size:12px;margin:0 0 6px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+.lrow{display:flex;align-items:center;gap:10px;margin:5px 0}
+.lrow .ic{flex:none;width:44px;text-align:center;font-size:18px}
+.ver{color:var(--muted);font-size:12px;margin-top:8px}
+/* svg */
+.em{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;text-anchor:middle;dominant-baseline:central}
+.nlab{fill:#f3f1ff;font-weight:600;paint-order:stroke;stroke:#1d1938;stroke-width:6px;stroke-linejoin:round}
+.cap2{fill:#f3f1ff;font-weight:800;paint-order:stroke;stroke:#1d1938;stroke-width:6px;stroke-linejoin:round;text-anchor:middle}
+.ploy{fill:#d9b38c;font-weight:700;letter-spacing:1px;text-anchor:middle;paint-order:stroke;stroke:#1d1938;stroke-width:6px}
+.pill text{font-weight:800;fill:#151229;text-anchor:middle;dominant-baseline:central}
+.ln{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.hit{fill:none;stroke:transparent;stroke-width:34;cursor:pointer;pointer-events:stroke}
+g.sg{display:none}
+g.sg.on{display:inline}
+g.nd{cursor:pointer;transition:opacity .35s}
+g.nd.off{opacity:0;pointer-events:none}
+g.nd.dim{opacity:.28}
+g.pill{transition:opacity .3s}
+g.pill.off{opacity:0}
+#hits path{pointer-events:none}
+#hits path.on{pointer-events:stroke}
 /* sheet */
 .sheet-bg{position:fixed;inset:0;background:#0009;display:none;align-items:flex-end;justify-content:center;z-index:2147483620}
 .sheet-bg.open{display:flex}
-.sheet{background:#201b40;border:1px solid var(--line);border-radius:18px 18px 0 0;max-width:640px;width:100%;max-height:62vh;overflow:auto;padding:16px 16px 22px}
-.sheet h2{margin:0 0 2px;font-size:22px}
+.sheet{background:#201b40;border:1px solid var(--line);border-radius:18px 18px 0 0;max-width:640px;width:100%;max-height:66vh;overflow:auto;padding:16px 16px 22px}
+.sheet h2{margin:0 0 2px;font-size:20px}
 .sheet .date{color:var(--muted);margin-bottom:8px}
-.sheet dl{margin:10px 0 0}
-.sheet dt{font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-top:10px}
-.sheet dd{margin:2px 0 0}
+.sheet h3{font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin:12px 0 2px}
 .sheet ul{margin:4px 0 0;padding-left:18px}
 .sheet li{margin:4px 0}
 .x{float:right;background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;width:40px;height:40px;font-size:20px;cursor:pointer}
 footer{margin-top:22px;text-align:center;color:var(--muted);font-size:14px}
-/* svg text */
-.nlab{fill:#f3f1ff;paint-order:stroke;stroke:#1d1938;stroke-width:4px}
-.alab{font-weight:400;paint-order:stroke;stroke:#1d1938;stroke-width:3px;fill:#e9e6fb}
-.tlab{font-weight:800;fill:#151229;letter-spacing:.5px;pointer-events:none}
-.poo{cursor:pointer;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
-.pcode{font-weight:800;fill:#151229;text-anchor:middle;dominant-baseline:central}
-.arc{fill:none;stroke-linecap:butt}
-.hit{fill:none;stroke:transparent;stroke-width:26;cursor:pointer;pointer-events:stroke}
-g.t{transition:opacity .2s}
-g.t.dim{opacity:.07}
-svg.haschains g.t:not(.dim):not(.sel){opacity:.5}
-g.t.dim .hit{pointer-events:none}
-g.t.sel .arc{stroke-width:var(--sws,9px)}
-g.n.dim{opacity:.25}
-g.pth{transition:opacity .2s}
-g.pth.dim{opacity:.06}
-g.pth.dim .chit{pointer-events:none}
-g.pth.dim,g.pn2.dim{pointer-events:none}
-g.pn2{cursor:pointer;transition:opacity .2s}
-g.pn2.dim{opacity:.18}
-g.pth.ylab{cursor:pointer}
-@media (max-width:760px){
- .stage{display:block}
- .stage .legend{display:none}
- .ctl{position:static;justify-content:center;padding:4px 0 10px}
- .mlegend{display:block}
-}
 </style>
 <script type="text/plain" data-ghf-hold src="https://bucklerfamily.estate/ghf-lang/basecamp.js?hold"></script>
 <script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.1.2"></script>
 </head>
 <body>
 <div class="wrap">
-<p class="intro">Tŷ Mawr, Llandough: the circle shows who held the land. The 💩 at the centre marks permissive occupancy; the dotted “?” line asks how the family, holders of Parcel A on the root title chain, came to be treated as permissive occupiers. The shaded field is the vacuum: company activity whose only origin is the 💩. Tap A1, A2, A3 or B to light just that path.</p>
-<div class="bar">
- <div class="seg" role="group" aria-label="View"><button id="vRing" aria-pressed="true">Ring</button><button id="vList" aria-pressed="false">List</button></div>
-</div>
-<div class="chips" id="chips" role="group" aria-label="Show parcel"></div>
+<p class="intro">Tŷ Mawr, Llandough. Into the circle comes one farm, A + B, on the root title chain. Out comes A + B again, but as synthetic A3 and B, plus two more simple lines, SA1 and SA2, each born from a permissive occupancy ploy 💩. Pick a line to watch it grow; tap anything for its record.</p>
+<div class="chips" id="chips" role="group" aria-label="Show a line"></div>
 <main>
-<section id="ringView" aria-label="Ring diagram">
-<div class="stage" style="margin-top:10px" data-ghf-keep>
-<div class="svgbox"><svg id="ring" viewBox="-540 -540 1080 1080" role="img" aria-label="Circular network of the holders of Great House Farm land, with an arc for each transfer"></svg>
-<div class="ctl"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button><button id="rot" aria-label="Rotate the ring">⟳</button><button id="rst" aria-label="Reset zoom" style="font-size:15px;font-weight:700">1×</button><button id="fs" aria-label="Full screen" aria-pressed="false">⛶</button></div></div>
-<div class="legend" id="legendD"></div>
+<div class="stage" data-ghf-keep>
+<svg id="ring" viewBox="-520 -440 1040 880" role="img" aria-label="Circle diagram: title holders and official actors on the ring, permissive occupancy ploys inside it, and the path of each parcel"></svg>
+<button class="replay" id="replay" aria-label="Play the line again">↻</button>
 </div>
-<section class="chains" id="chainsBox" aria-label="Freehold title chain and later registration chronologies" data-ghf-keep></section>
-<div class="legend mlegend" id="legendM" data-ghf-keep></div>
-<p class="hint">Use + to zoom in (the full labels appear), drag to move, ⟳ to turn the ring, ⛶ for full screen, or switch to List.</p>
+<p class="cap" id="cap" aria-live="polite"></p>
+<ol class="steps" id="steps" aria-label="Steps of the selected line"></ol>
+<section class="legend" data-ghf-keep aria-label="Key">
+<h2>Key</h2>
+<div class="lrow"><span class="ic em">💩</span><span>Permissive occupancy ploy, with its year</span></div>
+<div class="lrow"><span class="ic em">💩💩</span><span>The double ploy, 1955</span></div>
+<div class="lrow"><span class="ic em">🦹</span><span>Named in the statement of Mary (Nancy) Williams, c. 1974</span></div>
+<div class="lrow"><span class="ic"><svg width="30" height="30" viewBox="-20 -24 40 46" aria-hidden="true"><g id="shredK"></g></svg></span><span>Papers gone (shredded)</span></div>
+<div class="lrow"><span class="ic" style="color:#b9b4d6">◯</span><span>On the ring: title holders and official actors. Inside it: no title</span></div>
+<div class="lrow"><span class="ic"><svg width="40" height="10" aria-hidden="true"><line x1="2" y1="5" x2="38" y2="5" stroke="#e7c6ff" stroke-width="4" stroke-dasharray="6 5"/></svg></span><span>Dashed: the deed or record is not held</span></div>
+<div class="lrow"><span class="ic" style="font-weight:800;font-size:14px">1938</span><span>Each year sits where the line arrives</span></div>
+<p class="ver">v3.2.0 · 23 Oct 2026</p>
 </section>
-<section id="list" aria-label="Chronology"></section>
 </main>
 <footer data-ghf-keep>© the Williams-Buckler family of Tŷ Mawr · <a href="https://bucklerfamily.estate/licence/">Licence</a></footer>
 </div>
 <div class="sheet-bg" id="sheetBg"><div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shT"></div></div>
 <script>
-const D=/*__DATA__*/null;
-const svg=document.getElementById('ring');
-const NS='http://www.w3.org/2000/svg';
-const $=s=>document.querySelector(s);
-const RP=D.parties.filter(p=>!p.centre&&!p.outside);RP.forEach((p,i)=>{p.i=i});
-const P=Object.fromEntries(D.parties.map(p=>[p.id,p]));
-const PC=Object.fromEntries(D.parcels.map(p=>[p.id,p]));
-const Y0=1540,Y1=2010;
-const STOPS=[[1540,[226,170,255]],[1800,[160,120,255]],[1870,[108,140,255]],[1915,[79,209,197]],[1950,[155,225,93]],[1968,[255,209,102]],[1985,[255,140,66]],[2010,[255,77,109]]];
-function ycol(y){y=Math.max(Y0,Math.min(Y1,y));for(let i=1;i<STOPS.length;i++){const[a,ca]=STOPS[i-1],[b,cb]=STOPS[i];if(y<=b){const f=(y-a)/(b-a);return'rgb('+ca.map((c,k)=>Math.round(c+(cb[k]-c)*f)).join(',')+')'}}return'#fff'}
-function yf(y){y=Math.max(Y0,Math.min(Y1,y));return y<1870?(y-Y0)/(1870-Y0)*0.2:0.2+(y-1870)/(Y1-1870)*0.8}
-const gradCSS='linear-gradient(90deg,'+STOPS.map(([y,c])=>`rgb(${c}) ${(yf(y)*100).toFixed(1)}%`).join(',')+')';
+const DATA=/*__DATA__*/null;const V=DATA.paths;const R=V.R,C=V.colors,N=V.nodes,S=Object.fromEntries(V.segs.map(s=>[s.id,s]));
+const NS='http://www.w3.org/2000/svg',$=q=>document.querySelector(q);
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let rot=0,focus=new Set(),sel=null;
-const N=RP.length;
-const inFocus=ps=>focus.size===0||ps.some(p=>focus.has(p));
-const pcode=p=>p==='X'?'W':p;
-function cfg(){const rr=svg.getBoundingClientRect(),mob=(fsOn?Math.min(rr.width,rr.height||rr.width):rr.width)<640;return mob?{mob,half:540,R:380,nfs:22,afs:15.5,cr:10,cfs:10,sw:6,pfs:76,tfs:10.5}:{mob,half:600,R:420,nfs:15,afs:9.5,cr:8,cfs:8,sw:4.5,pfs:58,tfs:8}}
-let C=null,R=320,labelMode='full',lastZ=1,STAR=null,CNPOS={};
-const RT=D.root||null,RTS=RT?RT.steps:[],RTM=Object.fromEntries(RTS.map(s=>[s.k,s]));
-function el(n,a,p){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
-// v2.5 direction arrows: one <marker> per line colour and kind (solid = record held, gap = dashed / no deed → outline), end or mid
-let MK={},MKD=null;
-function mk(col,gap,mid,sm){const k=col+'|'+(gap?1:0)+'|'+(mid?1:0)+'|'+(sm?1:0);if(MK[k])return'url(#'+MK[k]+')';
- if(!MKD)MKD=el('defs',{},svg);const id='ah'+Object.keys(MK).length;MK[k]=id;
- const L=sm?(C.mob?16:9):(C.mob?(mid?20:24):(mid?11:13)),m=el('marker',{id,viewBox:'-1 -1 12 12',refX:mid?5:8.6,refY:5,markerUnits:'userSpaceOnUse',markerWidth:L*1.2,markerHeight:L*1.2,orient:'auto',overflow:'visible'},MKD);
- el('path',{d:'M0,0.6 L10,5 L0,9.4 L2.4,5Z',fill:gap?'#1d1938':col,'fill-opacity':gap?.55:1,stroke:gap?col:'#1d1938','stroke-width':gap?1.5:0.9,'stroke-linejoin':'round','stroke-opacity':gap?.9:.85,'paint-order':'stroke'},m);
- return'url(#'+id+')'}
-// a mid-line arrow: an invisible 2-point stub along the direction of travel, carrying a mid marker
-function midArrow(g,a,b,col,gap,sm){const dx=b[0]-a[0],dy=b[1]-a[1],L=Math.hypot(dx,dy)||1,m=[(a[0]+b[0])/2,(a[1]+b[1])/2],e=0.5;
- return el('path',{d:`M${(m[0]-dx/L*e).toFixed(2)},${(m[1]-dy/L*e).toFixed(2)} L${(m[0]+dx/L*e).toFixed(2)},${(m[1]+dy/L*e).toFixed(2)}`,fill:'none',stroke:'none','marker-end':mk(col,gap,1,sm),class:'marr','pointer-events':'none'},g)}
-function ang(i){return(-90+rot+i*360/N)*Math.PI/180}
-function pos(i,r){const a=ang(i);return[Math.cos(a)*r,Math.sin(a)*r]}
-function legendHTML(){
- return `<h2>Year</h2><div class="grad" style="background:${gradCSS}"></div><div class="ticks" style="position:relative;height:15px">${[1540,1870,1940,2010].map((y,i,a)=>`<span style="position:absolute;left:${(yf(y)*100).toFixed(1)}%;transform:translateX(${i===0?0:i===a.length-1?-100:-50}%)">${y}</span>`).join('')}</div>
- <div class="sec"><h2>Record</h2>
- <div class="lrow"><svg width="44" height="10"><line x1="2" y1="5" x2="42" y2="5" stroke="#fff" stroke-width="4"/></svg>record held</div>
- <div class="lrow"><svg width="44" height="10"><line x1="2" y1="5" x2="42" y2="5" stroke="#fff" stroke-width="4" stroke-dasharray="7 4"/></svg>per secondary source · record not seen</div>
- <div class="lrow"><svg width="44" height="14"><line x1="2" y1="7" x2="42" y2="7" stroke="#ffd166" stroke-width="12"/><text x="22" y="7.5" font-size="8" font-weight="800" fill="#151229" text-anchor="middle" dominant-baseline="central">WA…</text></svg>title number on the line</div>
- <div class="lrow"><svg width="44" height="16"><path d="M3 13 A30 30 0 0 1 41 13" fill="none" stroke="#e7c6ff" stroke-width="7" stroke-linecap="round"/></svg><span><b>Root title chain</b> · the freehold chain from the root to the family</span></div>
- <div class="lrow"><svg width="44" height="22"><rect x="2" y="2" width="40" height="18" rx="4" fill="#9a8cff" fill-opacity=".22" stroke="#ffffff66" stroke-dasharray="4 3"/></svg><span><b>The vacuum</b> · company activity on Parcel A with no root title or sale behind it; its only origin is the 💩, and from it each registration of a part is born about 12 years on</span></div>
- <div class="lrow"><span style="font-size:22px;width:44px;text-align:center" data-ghf-keep>💩</span><span><b>Permissive occupancy</b> · the assertion that Mary’s occupancy was permissive, at the centre</span></div>
- <div class="lrow"><span style="font-size:15px;width:44px;text-align:center;letter-spacing:-2px" data-ghf-keep>💩💩</span><span><b>Seizure / possession</b> · a seizure or possession step</span></div>
- <div class="lrow"><svg width="44" height="22"><line x1="2" y1="11" x2="42" y2="11" stroke="#fff" stroke-width="3" stroke-dasharray="1.5 6" stroke-linecap="round"/><circle cx="22" cy="11" r="9" fill="#1d1938" stroke="#fff" stroke-width="2"/><text x="22" y="15" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">?</text></svg><span>The family ⇢ 💩: how the root-title holders of Parcel A came to be treated as permissive occupiers</span></div>
- <div class="lrow"><svg width="44" height="18"><line x1="2" y1="9" x2="26" y2="9" stroke="#34c38f" stroke-width="4"/><rect x="24" y="2" width="19" height="14" rx="7" fill="#34c38f"/></svg>A path line; the year sits where it arrives</div>
- <div class="lrow"><span style="font-size:22px;width:44px;text-align:center" data-ghf-keep>🦹</span><span><b>Parcel A’s papers, 1950</b> · the party named under it and the estate agent above it, per the statement of Mary Williams</span></div>
- <div class="lrow"><svg width="44" height="22"><circle cx="22" cy="11" r="9" fill="#1d1938" stroke="#ff4d6d" stroke-width="2"/><path d="M17.5 6.5 L26.5 15.5 M26.5 6.5 L17.5 15.5" stroke="#ff4d6d" stroke-width="2.5"/></svg>Stops short and turns back (1974)</div>
- <div class="lrow"><svg width="44" height="16"><line x1="2" y1="8" x2="42" y2="8" stroke="#fff" stroke-width="9"/><line x1="2" y1="8" x2="42" y2="8" stroke="#ffd166" stroke-width="6"/></svg>12-year limitation period on a chain</div>
- <div class="lrow"><svg width="44" height="16"><circle cx="22" cy="8" r="6" fill="#1d1938" stroke="#fff" stroke-width="2" stroke-dasharray="3 2"/></svg>year with a source to add</div></div>
- <div class="sec"><h2>Parcel (circle on the arc)</h2>${D.parcels.map(p=>`<div class="lrow"><span class="dot" data-ghf-keep style="background:${p.color}">${pcode(p.id)}</span>${esc(p.name)}</div>`).join('')}</div>`}
-$('#legendD').innerHTML=legendHTML();$('#legendM').innerHTML=legendHTML();
-// chips
-const chips=$('#chips');
-[['all','All',null]].concat(D.parcels.map(p=>[p.id,p.chip||(p.id==='X'?'Woods':p.name.replace(/^Parcel [A-Z0-9]+ · /,'')),p.color])).forEach(([id,lab,c])=>{
- const b=document.createElement('button');b.className='chip';b.dataset.p=id;b.setAttribute('aria-pressed',id==='all');
- b.innerHTML=(c?`<span class="dot" data-ghf-keep style="background:${c}">${pcode(id)}</span>`:'')+esc(lab);
- if(!c)b.style.paddingLeft='12px';
- b.onclick=()=>{const y=scrollY;if(id==='all')focus.clear();else if(focus.has(id))focus.delete(id);else focus.add(id);syncChips();applyFocus();renderList();scrollTo(0,y)};chips.appendChild(b)});
-function syncChips(){chips.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p==='all'?focus.size===0:focus.has(x.dataset.p)));
- const u=new URL(location);if(focus.size)u.searchParams.set('p',[...focus].join(','));else u.searchParams.delete('p');history.replaceState(null,'',u)}
-
-// chains from the centre (data.chains): 💩 → years → the registration on the ring
-let CHARR=[];const CH=D.chains||[];const CHT=new Set(((D.origin||{}).titles||[]).map(x=>x.t));const CHM=Object.fromEntries(CH.map(c=>[c.id,c]));
-const nodeLab=n=>n.lab||String(n.y);
-const spanLab=(ch,n)=>(n.y===ch.span.from&&ch.span.lab0)?ch.span.lab0:(n.y===ch.span.to&&ch.span.lab)?ch.span.lab:nodeLab(n);
-
-// v3.1 (Sion, 23 Oct 2026): two zones. The ROOT TITLE CHAIN wedge (the freehold chain from the root to the family) stays clear;
-// the rest of the circle is the shaded vacuum, where the company activity on Parcel A happens with no root title or sale behind it.
-function drawZones(gp){const Z=D.paths&&D.paths.zones;if(!Z)return;const mob=C.mob,st=2*Math.PI/N;
- const ids=Z.root.ids.filter(k=>P[k]&&P[k].i!==undefined).map(k=>P[k].i),set=new Set(ids);if(!ids.length)return;
- let s=ids[0];for(const i of ids){if(!set.has((i-1+N)%N)){s=i;break}}
- const a0=ang(s)-st/2,a1=a0+st*ids.length,rv=C.rc-(mob?3:2),xy=(a,r)=>[(Math.cos(a)*r).toFixed(1),(Math.sin(a)*r).toFixed(1)];
- const g=el('g',{class:'zones','pointer-events':'none'},gp);
- // the vacuum: the circle outside the root wedge
- const v0=xy(a1,rv),v1=xy(a0+2*Math.PI,rv);
- el('path',{d:`M0,0 L${v0} A${rv},${rv} 0 1 1 ${v1} Z`,fill:Z.vacuum.fill||'#9a8cff','fill-opacity':0.13,stroke:'none',class:'vac'},g);
- [a0,a1].forEach(a=>el('line',{x1:0,y1:0,x2:xy(a,rv)[0],y2:xy(a,rv)[1],stroke:'#ffffff66','stroke-width':mob?2.5:1.8,'stroke-dasharray':mob?'10 8':'7 6'},g));
- // its name, in the band just outside the ring over the vacuum's arc (the same band as the root title chain, opposite it)
- const rb=C.rc+(C.rl-C.rc)*0.5,bw=(C.rl-C.rc)*0.78;
- {const gv=el('g',{class:'zlab',role:'button',tabindex:0,'aria-label':Z.vacuum.title,'pointer-events':'auto',style:'cursor:pointer'},gp);
-  const c0=xy(a1+st*0.08,rb),c1=xy(a0+2*Math.PI-st*0.08,rb),am=a1+(2*Math.PI-(a1-a0))/2,bot=Math.sin(am)>0.2;
-  el('path',{d:`M${c0} A${rb},${rb} 0 1 1 ${c1}`,fill:'none',stroke:Z.vacuum.fill||'#9a8cff','stroke-width':bw,'stroke-opacity':0.42,'stroke-linecap':'round'},gv);
-  // the words ride a short arc centred opposite the root wedge, reading left to right
-  const spn=Math.min(1.25,(2*Math.PI-(a1-a0))/2-st),pa=bot?[am+spn,am-spn]:[am-spn,am+spn],q0=xy(pa[0],rb),q1=xy(pa[1],rb);
-  el('path',{id:'vacP',d:`M${q0} A${rb},${rb} 0 0 ${bot?0:1} ${q1}`,fill:'none',stroke:'none'},gv);
-  const vt=el('text',{'font-size':bw*0.62,'font-weight':800,'letter-spacing':mob?3:2,fill:'#ffffff','dominant-baseline':'central'},gv);
-  const vp=el('textPath',{href:'#vacP',startOffset:'50%','text-anchor':'middle'},vt);vp.textContent=Z.vacuum.label;
-  gv.addEventListener('click',e=>{e.stopPropagation();openVacuum()});gv.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openVacuum()}})}
- // the root title chain: a band just outside the ring over the root wedge, named along its length
- const gr=el('g',{class:'zlab',role:'button',tabindex:0,'aria-label':Z.root.title,'pointer-events':'auto',style:'cursor:pointer'},gp);
- const b0=xy(a0+st*0.08,rb),b1=xy(a1-st*0.08,rb),top=Math.sin((a0+a1)/2)<0.2;
- el('path',{d:`M${b0} A${rb},${rb} 0 0 1 ${b1}`,fill:'none',stroke:RT?RT.color:'#e7c6ff','stroke-width':bw,'stroke-opacity':0.9,'stroke-linecap':'round'},gr);
- el('path',{id:'rootP',d:top?`M${b0} A${rb},${rb} 0 0 1 ${b1}`:`M${b1} A${rb},${rb} 0 0 0 ${b0}`,fill:'none',stroke:'none'},gr);
- const rt=el('text',{'font-size':bw*0.62,'font-weight':800,'letter-spacing':mob?3:2,fill:'#151229','dominant-baseline':'central'},gr);
- const rp=el('textPath',{href:'#rootP',startOffset:'54%','text-anchor':'middle'},rt);rp.textContent=Z.root.label;
- gr.addEventListener('click',e=>{e.stopPropagation();openZone('root')});gr.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openZone('root')}});
+const RM=matchMedia('(prefers-reduced-motion: reduce)');
+function pos(id){const n=N[id],r=(n.kind==='ring'?1:n.r)*R,a=n.ang*Math.PI/180;return [r*Math.sin(a),-r*Math.cos(a)]}
+function rad(id){const k=N[id].kind;return {ring:13,out:26,poo:24,named:30,shred:22,split:9}[k]+(id==='dpoo'?14:0)}
+const add=(a,b)=>[a[0]+b[0],a[1]+b[1]],sub=(a,b)=>[a[0]-b[0],a[1]-b[1]],mul=(a,k)=>[a[0]*k,a[1]*k],len=a=>Math.hypot(a[0],a[1]),unit=a=>{const l=len(a)||1;return [a[0]/l,a[1]/l]},perp=a=>[-a[1],a[0]];
+const rot=(v,t)=>[v[0]*Math.cos(t)-v[1]*Math.sin(t),v[0]*Math.sin(t)+v[1]*Math.cos(t)];
+const qpt=(p0,c,p1,t)=>[(1-t)*(1-t)*p0[0]+2*(1-t)*t*c[0]+t*t*p1[0],(1-t)*(1-t)*p0[1]+2*(1-t)*t*c[1]+t*t*p1[1]];
+const f=v=>v.toFixed(1),P2=p=>f(p[0])+' '+f(p[1]);
+// geometry of each segment: path d + where its year pill sits
+function geom(s){
+ const A=pos(s.fr),B=pos(s.to);
+ if(s.loop){const u=unit(mul(A,s.outward?1:-1)),th=s.loop*0.62,Lp=118,r=rad(s.fr)+2;
+  const a=add(A,mul(rot(u,th-0.32),r)),b=add(A,mul(rot(u,th+0.32),r)),c1=add(A,mul(rot(u,th-0.55),Lp)),c2=add(A,mul(rot(u,th+0.55),Lp));
+  return {d:`M${P2(a)} C${P2(c1)} ${P2(c2)} ${P2(b)}`,pill:add(A,mul(rot(u,th),Lp*0.78))}}
+ const dv=sub(B,A),mid=mul(add(A,B),0.5);let c=add(mid,mul(perp(dv),s.bend||0));
+ if(s.bow){const c2=add(mid,mul(perp(dv),-(s.bend||0)));if((s.bow==='in')===(len(c2)<len(c)))c=c2}
+ const a=add(A,mul(unit(sub(c,A)),rad(s.fr)+3));
+ if(s.near){let tt=1,E=B;while(tt>0.3){E=qpt(a,c,B,tt);if(len(sub(E,B))>(s.gap||58))break;tt-=0.005}const tv=unit(sub(B,c)),pv=perp(tv),E2=add(E,mul(pv,-46)),h=add(add(E,mul(tv,34)),mul(pv,-23));
+  const back=add(a,mul(pv,-30)),c2=add(c,mul(pv,-46));
+  return {d:`M${P2(a)} Q${P2(c)} ${P2(E)} Q${P2(h)} ${P2(E2)} Q${P2(c2)} ${P2(back)}`,pill:add(add(E,mul(tv,-36)),mul(pv,34))}}
+ const b=add(B,mul(unit(sub(c,B)),rad(s.to)+(s.lab?14:10)));
+ return {d:`M${P2(a)} Q${P2(c)} ${P2(b)}`,pill:qpt(a,c,b,s.pt||(s.to==='merge'?0.55:0.8))}}
+const svg=$('#ring');let G={};
+function shred(g,col){el('path',{d:'M-15 -22 h22 l8 8 v10 h-30 z',fill:col||'#e9e6fb'},g);
+ [-13,-7,-1,5,11].forEach((x,i)=>el('rect',{x:x,y:-1+(i%2)*2,width:4,height:16+(i%3)*3,rx:1,fill:col||'#e9e6fb',transform:`rotate(${(i-2)*6} ${x+2} 0)`},g))}
+shred($('#shredK'));
+function draw(){svg.textContent='';G={segs:{},nodes:{},pills:{},hits:{},masks:{}};
+ const defs=el('defs',{},svg);
+ Object.entries(C).forEach(([k,c])=>{const m=el('marker',{id:'ar-'+k,viewBox:'0 0 10 10',refX:'7',refY:'5',markerUnits:'userSpaceOnUse',markerWidth:'26',markerHeight:'26',orient:'auto'},defs);el('path',{d:'M0 0 L10 5 L0 10 z',fill:c},m)});
+ const rg=el('radialGradient',{id:'inside'},defs);el('stop',{offset:'0','stop-color':'#ffffff','stop-opacity':'.07'},rg);el('stop',{offset:'1','stop-color':'#ffffff','stop-opacity':'.02'},rg);
+ el('circle',{cx:0,cy:0,r:R,fill:'url(#inside)',stroke:'#ffffff55','stroke-width':3},svg);
+ const lay=el('g',{id:'lines'},svg),nl=el('g',{id:'nodes'},svg),pl=el('g',{id:'pills'},svg),hl=el('g',{id:'hits'},svg);
+ // ploys label under the double 💩
+ el('text',{x:0,y:76,class:'ploy','font-size':19},nl).textContent='PERMISSIVE';
+ el('text',{x:0,y:98,class:'ploy','font-size':19},nl).textContent='OCCUPANCY PLOYS';
+ V.segs.forEach(s=>{const g0=geom(s),col=C[s.g],k=s.g;
+  const m=el('mask',{id:'m-'+s.id,maskUnits:'userSpaceOnUse',x:-600,y:-600,width:1200,height:1200},defs);
+  const mp=el('path',{d:g0.d,fill:'none',stroke:'#fff','stroke-width':46,'stroke-linecap':'butt'},m);
+  const g=el('g',{class:'sg',mask:`url(#m-${s.id})`,'data-id':s.id},lay);
+  const p=el('path',{d:g0.d,class:'ln',stroke:col,'stroke-width':s.loop?6:7,'marker-end':`url(#ar-${k})`},g);
+  if(s.dash)p.setAttribute('stroke-dasharray','14 11');
+  const L=mp.getTotalLength();mp.setAttribute('stroke-dasharray',L+' '+(L+10));mp.setAttribute('stroke-dashoffset',L);
+  G.segs[s.id]={g,mp,L};
+  const h=el('path',{d:g0.d,class:'hit'},hl);h.addEventListener('click',()=>openSeg(s.id));G.hits[s.id]=h;
+  if(s.lab){const pg=el('g',{class:'pill off'},pl),fs=s.lab.length>4?22:25,w=s.lab.length*fs*0.62+18;
+   el('rect',{x:f(g0.pill[0]-w/2),y:f(g0.pill[1]-17),width:f(w),height:34,rx:17,fill:col,stroke:'#1d1938','stroke-width':3},pg);
+   el('text',{x:f(g0.pill[0]),y:f(g0.pill[1]+1),'font-size':fs},pg).textContent=s.lab;
+   pg.addEventListener('click',()=>openSeg(s.id));pg.style.cursor='pointer';G.pills[s.id]=pg}});
+ Object.entries(N).forEach(([id,n])=>{const [x,y]=pos(id),g=el('g',{class:'nd',tabindex:0,role:'button','aria-label':n.title},nl);G.nodes[id]=g;
+  g.addEventListener('click',()=>openNode(id));g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openNode(id)}});
+  if(n.kind==='ring'){el('circle',{cx:f(x),cy:f(y),r:13,fill:'#f3f1ff',stroke:'#1d1938','stroke-width':4},g);ringLab(g,id,x,y,R+26)}
+  else if(n.kind==='out'){el('circle',{cx:f(x),cy:f(y),r:26,fill:'#1d1938',stroke:'#ffffff88','stroke-width':3},g);
+   el('text',{x:f(x),y:f(y+1),class:'em','font-size':30,fill:id==='merge'?'#fff':'#e7c6ff'},g).textContent=n.icon;ringLab(g,id,x,y,n.r*R+34)}
+  else if(n.kind==='poo'){el('circle',{cx:f(x),cy:f(y),r:rad(id),fill:'#1d1938',opacity:.85},g);
+   el('text',{x:f(x),y:f(y+2),class:'em','font-size':id==='dpoo'?34:38,'letter-spacing':id==='dpoo'?-3:0},g).textContent=n.icon;
+   el('text',{x:f(x),y:f(y+rad(id)+24),class:'cap2','font-size':24},g).textContent=n.cap}
+  else if(n.kind==='named'){el('text',{x:f(x),y:f(y+2),class:'em','font-size':52},g).textContent=n.icon;
+   n.over.forEach((t,i)=>el('text',{x:f(x),y:f(y-40-(n.over.length-1-i)*24),class:'cap2','font-size':21,style:'font-weight:600'},g).textContent=t);
+   n.under.forEach((t,i)=>el('text',{x:f(x),y:f(y+52+i*24),class:'cap2','font-size':22},g).textContent=t)}
+  else if(n.kind==='shred'){const sg=el('g',{transform:`translate(${f(x)} ${f(y)}) scale(1.25)`},g);shred(sg)}
+  else if(n.kind==='split'){el('circle',{cx:f(x),cy:f(y),r:9,fill:'#e7c6ff'},g);el('text',{x:f(x),y:f(y+36),class:'cap2','font-size':21},g).textContent=n.cap}});
 }
-function openVacuum(){openZone('vacuum')}
-function openZone(k){const Z=D.paths.zones[k];sel=null;applyFocus();
- $('#sheet').innerHTML=`<button class="x" aria-label="Close" id="shX">×</button><h2 id="shT">${esc(Z.title)}</h2><div class="date">${esc(Z.sub||'')}</div>
- <dl><dt>What it shows</dt><dd>${esc(Z.text)}</dd>${Z.births?`<dt>Registrations born of the 💩</dt><dd>${Z.births.map(b=>`<p><span class="dot" data-ghf-keep style="background:${PC[b.p].color}">${b.p}</span> ${esc(b.t)}</p>`).join('')}</dd>`:''}<dt>Source</dt><dd>${srcList(Z.src||[])}</dd></dl>`;wireSheet()}
-function drawChains(gp){
- // v3.0 (Sion, 23 Oct 2026): the 💩 sits at the centre; a dotted "?" line joins it to the family; each part of Parcel A, and Parcel B, has its own path; the year sits where each line arrives
- const PT=D.paths;if(!PT)return;const mob=C.mob,sw=mob?5:3.6,fsY0=mob?17:12.5,fsY=fsY0,PR={poo:mob?30:22,dpoo:mob?34:25,pB:mob?20:15};
- const PCOL={A1:PC.A1.color,A2:PC.A2.color,A3:PC.A3.color,B:PC.B.color};
- const NP={poo:[0,0]};Object.entries(PT.nodes).forEach(([k,n])=>{if(n.at!==undefined){const a=(-90+rot+n.at*360/N)*Math.PI/180;NP[k]=[Math.cos(a)*R*n.r,Math.sin(a)*R*n.r]}});
- const ptOf=k=>NP[k]||pos(P[k].i,R-12),radOf=k=>PR[k]||(PT.nodes[k]&&PT.nodes[k].rr?PT.nodes[k].rr*(mob?1:0.74):0);
- const gL=el('g',{class:'pths'},gp),gY=el('g',{},gp),gNd=el('g',{},gp);
- const yTag=(x,y,txt,col,p,id,sc=1)=>{const fsY=fsY0*sc,g=el('g',{class:'pth ylab','data-p':p+(/^A\d/.test(p)?' A':''),'data-pid':id},gY);const w=txt.length*fsY*0.6+10,h=fsY+7;
-  el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx:h/2,fill:col,stroke:'#1d1938','stroke-width':1.5},g);
-  const t=el('text',{x:x,y:y+fsY*0.36,'font-size':fsY,'font-weight':800,'text-anchor':'middle',fill:'#151229'},g);t.textContent=txt;
-  g.addEventListener('click',e=>{e.stopPropagation();openStep(id)});return g};
- const line=(L,d,col,lp,arrow=true)=>{const g=el('g',{class:'pth','data-p':L.p+(L.p.startsWith('A')?' A':''),'data-pid':L.id,role:'button',tabindex:0,'aria-label':L.title},gL);
-  el('path',{d,fill:'none',stroke:'#1d1938','stroke-width':sw+3,'stroke-linecap':'round'},g);
-  el('path',{d,fill:'none',stroke:col,'stroke-width':sw,'stroke-linecap':'round','stroke-dasharray':L.dash?(sw*1.8)+' '+(sw*1.2):'none','marker-end':arrow?mk(col,!!L.dash):'none'},g);
-  el('path',{d,fill:'none',stroke:'transparent','stroke-width':mob?34:22,'pointer-events':'stroke',class:'chit'},g);
-  g.addEventListener('click',e=>{e.stopPropagation();openStep(L.id)});g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openStep(L.id)}});return g};
- // the question: family ⇢ 💩, dotted, "?" in the middle
- {const Q=PT.question,f=ptOf(Q.from),c=NP.poo,dx=c[0]-f[0],dy=c[1]-f[1],dl=Math.hypot(dx,dy),p1=[c[0]-dx/dl*(PR.poo+4),c[1]-dy/dl*(PR.poo+4)];
-  const g=el('g',{class:'pth q','data-p':Q.parcels.join(' '),'data-pid':'q',role:'button',tabindex:0,'aria-label':Q.title+': '+Q.text},gL);
-  el('line',{x1:f[0],y1:f[1],x2:p1[0],y2:p1[1],stroke:'#ffffff',"stroke-width":mob?4:3,'stroke-dasharray':mob?'2 9':'1.5 7','stroke-linecap':'round'},g);
-  el('line',{x1:f[0],y1:f[1],x2:p1[0],y2:p1[1],stroke:'transparent','stroke-width':mob?34:22,'pointer-events':'stroke',class:'chit'},g);
-  const m=[(f[0]+p1[0])/2,(f[1]+p1[1])/2],qr=mob?19:14;el('circle',{cx:m[0],cy:m[1],r:qr,fill:'#1d1938',stroke:'#fff','stroke-width':2.5},g);
-  const t=el('text',{x:m[0],y:m[1]+qr*0.42,'font-size':qr*1.3,'font-weight':800,'text-anchor':'middle',fill:'#fff'},g);t.textContent=Q.label;
-  g.addEventListener('click',e=>{e.stopPropagation();openStep('q')})}
- PT.lines.forEach(L=>{const col=L.color||PCOL[L.p]||'#fff';
-  if(L.loop){// a loop back to the same 💩
-   const c=ptOf(L.loop),r0=radOf(L.loop)+2,a=(L.ang+rot)*Math.PI/180,Lr=(mob?112:84),da=0.34,db=0.62;
-   const P0=[c[0]+Math.cos(a-da)*r0,c[1]+Math.sin(a-da)*r0],P3=[c[0]+Math.cos(a+da)*r0,c[1]+Math.sin(a+da)*r0];
-   const C1=[c[0]+Math.cos(a-db)*Lr,c[1]+Math.sin(a-db)*Lr],C2=[c[0]+Math.cos(a+db)*Lr,c[1]+Math.sin(a+db)*Lr];
-   line(L,`M${P0[0].toFixed(1)},${P0[1].toFixed(1)} C${C1[0].toFixed(1)},${C1[1].toFixed(1)} ${C2[0].toFixed(1)},${C2[1].toFixed(1)} ${P3[0].toFixed(1)},${P3[1].toFixed(1)}`,col);
-   const ly=Lr*0.8+fsY*0.9;yTag(c[0]+Math.cos(a)*ly,c[1]+Math.sin(a)*ly,L.lab,col,L.p,L.id);return}
-  if(L.ext){// toward a party, stops short, turns back to where it started (red ✕ at the turn)
-   const f=ptOf(L.ext.fr),b=ptOf(L.ext.toward),dx=b[0]-f[0],dy=b[1]-f[1],dl=Math.hypot(dx,dy),nx=-dy/dl,ny=dx/dl,s=L.ext.stop;
-   const tip=[f[0]+dx*s,f[1]+dy*s],w=dl*0.11,F0=[f[0]+nx*(mob?14:10),f[1]+ny*(mob?14:10)],F1=[f[0]-nx*(mob?14:10),f[1]-ny*(mob?14:10)];
-   const c1=[(F0[0]+tip[0])/2+nx*w,(F0[1]+tip[1])/2+ny*w],c2=[(F1[0]+tip[0])/2-nx*w,(F1[1]+tip[1])/2-ny*w];
-   line(L,`M${F0[0].toFixed(1)},${F0[1].toFixed(1)} Q${c1[0].toFixed(1)},${c1[1].toFixed(1)} ${tip[0].toFixed(1)},${tip[1].toFixed(1)} Q${c2[0].toFixed(1)},${c2[1].toFixed(1)} ${F1[0].toFixed(1)},${F1[1].toFixed(1)}`,col);
-   const xg=el('g',{class:'pth','data-p':L.p+' A','data-pid':L.id},gY),xr=mob?15:11;el('circle',{cx:tip[0],cy:tip[1],r:xr,fill:'#1d1938',stroke:col,'stroke-width':2.5},xg);
-   const xs=xr*0.5;el('path',{d:`M${tip[0]-xs},${tip[1]-xs} L${tip[0]+xs},${tip[1]+xs} M${tip[0]+xs},${tip[1]-xs} L${tip[0]-xs},${tip[1]+xs}`,stroke:col,'stroke-width':mob?4:3,'stroke-linecap':'round'},xg);
-   xg.addEventListener('click',e=>{e.stopPropagation();openStep(L.id)});
-   const qa=bez(F0,c1,tip,0.74),qb=bez(tip,c2,F1,0.26);let dg=Math.atan2(dy,dx)*180/Math.PI;if(dg>90)dg-=180;if(dg<-90)dg+=180;const cx=(qa[0]+qb[0])/2,cy=(qa[1]+qb[1])/2;yTag(cx,cy,L.lab,col,L.p,L.id,0.9).setAttribute('transform',`rotate(${dg.toFixed(1)} ${cx.toFixed(1)} ${cy.toFixed(1)})`);return}
-  const a=ptOf(L.fr),b=ptOf(L.to),dx=b[0]-a[0],dy=b[1]-a[1],dl=Math.hypot(dx,dy)||1,ux=dx/dl,uy=dy/dl;
-  const p0=[a[0]+ux*(radOf(L.fr)+3),a[1]+uy*(radOf(L.fr)+3)],p1=[b[0]-ux*(radOf(L.to)+5),b[1]-uy*(radOf(L.to)+5)];
-  const k=(L.bend||0.15)*dl,c=[(p0[0]+p1[0])/2-uy*k,(p0[1]+p1[1])/2+ux*k];
-  line(L,`M${p0[0].toFixed(1)},${p0[1].toFixed(1)} Q${c[0].toFixed(1)},${c[1].toFixed(1)} ${p1[0].toFixed(1)},${p1[1].toFixed(1)}`,col);
-  const tY=L.labT||(dl<160?0.62:0.8),q=bez(p0,c,p1,tY),yg=yTag(q[0],q[1],L.lab,col,L.p,L.id);
-  if(L.birth){const bf=mob?14:10,t=el('text',{x:q[0],y:L.birthUp?q[1]-fsY*0.5-bf*0.75:q[1]+fsY*0.5+bf*1.25,'font-size':bf,'font-weight':700,'font-style':'italic','text-anchor':'middle',class:'nlab'},yg);t.textContent=L.birth}});
- (PT.starts||[]).forEach(S0=>{const c=ptOf(S0.node),col=PCOL[S0.p],r=radOf(S0.node);const a=S0.node==='poo'?(rot+185)*Math.PI/180:(rot+300)*Math.PI/180;
-  yTag(c[0]+Math.cos(a)*(r+fsY*1.6),c[1]+Math.sin(a)*(r+fsY*1.6),S0.p+' '+S0.lab,col,S0.p,'s:'+S0.p)});
- // the 💩 nodes
- Object.entries(PT.nodes).forEach(([k,n])=>{const c=ptOf(k),r=radOf(k);
-  const g=el('g',{class:'pn2','data-id':k,'data-p':n.p||n.parcel||'A A1 A2 A3',role:'button',tabindex:0,'aria-label':n.name+' · '+n.sub},gNd);
-  el('circle',{cx:c[0],cy:c[1],r,fill:'#1d1938',stroke:n.parcel?PC[n.parcel].color:'#f2d64b','stroke-width':3},g);
-  if(n.parcel){const t=el('text',{x:c[0],y:c[1]+r*0.42,'font-size':r*1.15,'font-weight':800,'text-anchor':'middle',fill:PC[n.parcel].color},g);t.textContent=n.icon}
-  else{const two=n.icon.length>2,t=el('text',{x:c[0],y:c[1]+(mob?2:1.5),class:'poo','font-size':two?r*0.82:r*1.2,'text-anchor':'middle','dominant-baseline':'central','data-ghf-keep':'','letter-spacing':two?-2:0},g);t.textContent=n.icon}
-  // v3.1: a named node (the 1950 node): the party's name under the icon, the estate agent above, as the statement gives them
-  if(n.under||n.over){const lf=mob?18:13,sm=mob?14:10.5,lab=(txt,y,fs,w,op)=>{const t=el('text',{x:c[0],y,'font-size':fs,'font-weight':w,'text-anchor':'middle',class:'nlab','fill-opacity':op||1},g);t.textContent=txt;return t};
-   if(n.under)lab(n.under,c[1]+r+lf*0.95,lf,800);
-   if(n.over){lab(n.over,c[1]-r-(n.over2?sm*1.35:0)-lf*0.45,lf,800);if(n.over2)lab(n.over2,c[1]-r-sm*0.55,sm,500,0.85)}}
-  const ti=el('title',{},g);ti.textContent=n.name+' · '+n.sub;
-  const tap=()=>k==='poo'?openOrigin():n.step?openStep(n.step):openNodeP(k);
-  g.addEventListener('click',e=>{e.stopPropagation();tap()});
-  g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tap()}})});
-}
-const PL=D.paths?Object.fromEntries(D.paths.lines.map(l=>[l.id,l]).concat((D.paths.starts||[]).map(s=>['s:'+s.p,Object.assign({id:'s:'+s.p},s)])).concat([['q',Object.assign({id:'q',p:'A'},D.paths.question)]])):{};
-const PATHP=new Set(D.paths?D.paths.lines.map(l=>l.p).filter(p=>p!=='A'):[]);
-const PUSE=D.paths&&D.paths.uses||{};
-const PNAME=k=>D.paths&&D.paths.nodes[k]?(D.paths.nodes[k].icon+' '+D.paths.nodes[k].name):(P[k]?P[k].name:k);
-function openStep(id){const L=PL[id];if(!L)return;sel=null;applyFocus();
- const ft=L.loop?PNAME(L.loop)+' → '+PNAME(L.loop)+' (loop)':L.ext?PNAME(L.ext.fr)+' → towards '+PNAME(L.ext.toward)+', turning back':L.fr?PNAME(L.fr)+' → '+PNAME(L.to):L.node?'starts at '+PNAME(L.node):'';
- $('#sheet').innerHTML=`<button class="x" aria-label="Close" id="shX">×</button><h2 id="shT">${esc(L.title)}</h2><div class="date">${esc(L.date||'')}</div>
- <dl>${L.p&&PC[L.p]?`<dt>Parcel</dt><dd>${chipsFor([L.p])}</dd>`:''}${ft?`<dt>Line</dt><dd>${esc(ft)}</dd>`:''}${L.tnum?`<dt>Title</dt><dd>${esc(L.tnum)}</dd>`:''}
- <dt>Record</dt><dd>${esc(L.text)}</dd><dt>Source</dt><dd>${srcList(L.src||[])}</dd></dl>`;wireSheet()}
-function openNodeP(k){const n=D.paths.nodes[k];sel=null;applyFocus();
- const ls=D.paths.lines.filter(l=>l.to===k||l.fr===k).sort((a,b)=>String(a.lab).localeCompare(String(b.lab)));
- $('#sheet').innerHTML=`<button class="x" aria-label="Close" id="shX">×</button><h2 id="shT"><span data-ghf-keep>${esc(n.icon)}</span> ${esc(n.name)}</h2><div class="date">${esc(n.sub)}</div>
- <dl><dt>Lines</dt><dd>${ls.map(l=>`<p><a href="#" data-step="${l.id}">${esc(l.title)}</a></p>`).join('')}</dd></dl>`;wireSheet();
- $('#sheet').querySelectorAll('[data-step]').forEach(a=>a.onclick=e=>{e.preventDefault();openStep(a.dataset.step)})}
-
-function arcD(a0,a1,r){const p0=[Math.cos(a0)*r,Math.sin(a0)*r],p1=[Math.cos(a1)*r,Math.sin(a1)*r];let da=a1-a0;while(da>Math.PI)da-=2*Math.PI;while(da<-Math.PI)da+=2*Math.PI;
- return`M${p0[0].toFixed(1)},${p0[1].toFixed(1)} A${r},${r} 0 ${Math.abs(da)>Math.PI?1:0} ${da>0?1:0} ${p1[0].toFixed(1)},${p1[1].toFixed(1)}`}
-function midA(a0,a1){let da=a1-a0;while(da>Math.PI)da-=2*Math.PI;while(da<-Math.PI)da+=2*Math.PI;return a0+da/2}
-function drawRoot(gp){
- const g0=el('g',{class:'rcs'},gp),gT=el('g',{class:'rtags'},gp);
- const csw=C.mob?5:3.5,fs=C.mob?25:14,bfs=C.mob?30:16,dr=C.mob?7:5,rT=R-(C.mob?30:22),rA=R-(C.mob?62:44);
- const col={R:RT.color,A:RT.acol,B:RT.bcol},dash=C.mob?'12 9':'8 6';
- const seg=(s,d,o={})=>{const g=el('g',{class:'rc','data-rk':s.k,'data-p':s.br==='R'?'R':s.br==='A'?'A':'B',role:'button',tabindex:0,'aria-label':s.label},g0);
-  el('path',{d,fill:'none',stroke:'#1d1938','stroke-width':csw+3,'stroke-linecap':'round'},g);
-  el('path',{d,fill:'none',stroke:col[s.br],'stroke-width':csw,'stroke-linecap':'round','stroke-dasharray':s.todo?dash:'none',id:'rp-'+s.k,'marker-end':mk(col[s.br],!!s.todo),'data-dir':(P[s.fr]?P[s.fr].name:s.fr)+' → '+(s.to.startsWith('chain:')?'A(2) chain':P[s.to].name)},g);
-  el('path',{d,class:'chit',fill:'none',stroke:'transparent','stroke-width':C.mob?40:24,'pointer-events':'stroke'},g);
-  g.addEventListener('click',e=>{e.stopPropagation();openRoot(s.k)});
-  g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openRoot(s.k)}});return g};
- const tag=(g,x,y,txt,c,big,anc)=>{const t=el('text',{x:x.toFixed(1),y:(y+(big?bfs:fs)*0.35).toFixed(1),class:'rlab'+(big?' b':''),'font-size':big?bfs:fs,'text-anchor':anc||'middle',fill:c},g);t.textContent=txt;return t};
- const arrow=()=>{};// v2.5: the arrowhead is the path's own marker-end
- const onArc=(a0,a1,f,r)=>{let da=a1-a0;while(da>Math.PI)da-=2*Math.PI;while(da<-Math.PI)da+=2*Math.PI;const x=a0+da*f;return[Math.cos(x)*r,Math.sin(x)*r]};
- const midArc=(g,a0,a1,r,c,gap,f=0.5)=>midArrow(g,onArc(a0,a1,f-0.004,r),onArc(a0,a1,f+0.004,r),c,gap);
- const aV=ang(P.vaughan.i),aB=ang(P.bute.i),aT=ang(P.thomas.i),aM=ang(P.mountjoy.i);
- // 1. incoming root title: star → Vaughan on the ring
- const s1=RTM.r1,av=aV+0.12*2*Math.PI/N,pv=[Math.cos(av)*(R+(C.mob?9:7)),Math.sin(av)*(R+(C.mob?9:7))];
- { const ac=aV+0.3*2*Math.PI/N,rc=R+(C.mob?40:30),cc=[Math.cos(ac)*rc,Math.sin(ac)*rc];
-   const g=seg(s1,`M${STAR[0].toFixed(1)},${STAR[1].toFixed(1)} Q${cc[0].toFixed(1)},${cc[1].toFixed(1)} ${pv[0].toFixed(1)},${pv[1].toFixed(1)}`);
-   const dx=pv[0]-cc[0],dy=pv[1]-cc[1],L=Math.hypot(dx,dy);arrow(g,pv,dx/L,dy/L,col.R);midArrow(g,bez(STAR,cc,pv,0.62),bez(STAR,cc,pv,0.64),col.R,!!s1.todo);
-   const m=bez(STAR,cc,pv,0.45),ml=Math.hypot(m[0],m[1]);tag(gT,m[0]/ml*(ml+(C.mob?44:30)),m[1]/ml*(ml+(C.mob?44:30)),s1.lab,col.R,true)}
- // 2. Vaughan → Bute along the inside of the ring (gap: the conveyance is not located)
- const s2=RTM.r2;
- { const g2=seg(s2,arcD(aV,aB,rT));midArc(g2,aV,aB,rT,col.R,!!s2.todo);const ma=midA(aV,aB),r=rA-(C.mob?36:24);tag(gT,Math.cos(ma)*r,Math.sin(ma)*r,s2.lab,col.R,false)}
- // fork at Bute, 1877
- const pb=[Math.cos(aB)*rT,Math.sin(aB)*rT];
- // 3a. A: back past Vaughan on a deeper track to Daniel Thomas & Son
- const sa=RTM.a1,pbA=[Math.cos(aB)*rA,Math.sin(aB)*rA],ptA=[Math.cos(aT)*rA,Math.sin(aT)*rA],pt=pos(P.thomas.i,R-12);
- { const g=seg(sa,`M${pb[0].toFixed(1)},${pb[1].toFixed(1)} L${pbA[0].toFixed(1)},${pbA[1].toFixed(1)} `+arcD(aB,aT,rA).replace(/^M[^A]+/,'')+` L${pt[0].toFixed(1)},${pt[1].toFixed(1)}`);
-   const ux=pt[0]-ptA[0],uy=pt[1]-ptA[1],L=Math.hypot(ux,uy)||1;arrow(g,pt,ux/L,uy/L,col.A);midArc(g,aB,aT,rA,col.A,!!sa.todo,0.62);
-   const ma=aT+0.35*(aB-aT),r=rA-(C.mob?28:18);tag(gT,Math.cos(ma)*r,Math.sin(ma)*r,'A',col.A,true)}
- // 3b. B: kept by Bute in 1877, on along the edge to Mountjoy Ltd (1926)
- const sb=RTM.b1,pm=[Math.cos(aM)*rT,Math.sin(aM)*rT],pmR=pos(P.mountjoy.i,R-12);
- { const g=seg(sb,arcD(aB,aM,rT)+` L${pmR[0].toFixed(1)},${pmR[1].toFixed(1)}`);
-   const ux=pmR[0]-pm[0],uy=pmR[1]-pm[1],L=Math.hypot(ux,uy)||1;arrow(g,pmR,ux/L,uy/L,col.B);midArc(g,aB,aM,rT,col.B,!!sb.todo,0.3);
-   const ma=midA(aB,aM),r=rT-(C.mob?34:22);tag(gT,Math.cos(ma)*r,Math.sin(ma)*r,'B · 1926',col.B,false)}
- // the 1877 fork badge
- { const g=el('g',{class:'rc','data-rk':'a1','data-p':'R A B',role:'button',tabindex:0,'aria-label':'1877 split'},gT);
-   el('circle',{cx:pb[0],cy:pb[1],r:dr*1.5,fill:'#fff',stroke:'#1d1938','stroke-width':2},g);
-   const r=rT-(C.mob?112:76),ab=aB+0.5*2*Math.PI/N;tag(g,Math.cos(ab)*r,Math.sin(ab)*r,'1877',RT.color,true,'start');
-   el('circle',{cx:Math.cos(ab)*r+(C.mob?34:20),cy:Math.sin(ab)*r,r:C.mob?40:24,fill:'transparent'},g);
-   g.addEventListener('click',e=>{e.stopPropagation();openRoot('a1')})}
- // The Parcel A line ends at the Williams family. This note is clickable but is deliberately not drawn as a conveyance to the synthetic-origin marker.
-
-}
-function openRoot(k){const s=RTM[k];if(!s)return;sel='rc';applyFocus();const tr=s.t&&D.transfers.find(x=>x.id===s.t);
- const cl={R:RT.color,A:RT.acol,B:RT.bcol}[s.br],to=s.noteOnly?'no later freehold conveyance located':(s.to.startsWith('chain:')?'the A2 registration chronology':P[s.to].name);
- $('#sheet').innerHTML=`<button class="x" aria-label="Close" id="shX">×</button><h2 id="shT">${esc(s.label)}</h2><div class="date">${esc(s.date)}</div>
- <div><span class="pill" style="border-color:${cl};color:${cl}">${s.todo?'gap · source to add':'record on file'}</span>${s.note?` <span class="pill">${esc(s.note)}</span>`:''}</div>
- <dl><dt>Chain</dt><dd>${s.noteOnly?'Parcel A: freehold evidence presently ends with the Williams family after 1928; no later conveyance has been located.':'★ '+esc(RT.name)+' · '+esc(P[s.fr].name)+' → '+esc(to)}</dd>${s.title?`<dt>Title</dt><dd>${esc(s.title)}</dd>`:''}
- <dt>Record</dt><dd>${esc(s.text)}</dd><dt>Source</dt><dd>${srcList(s.src)}</dd>${tr?`<dt>On the ring</dt><dd><a href="#" data-open="${tr.id}">${esc(tr.label)}</a></dd>`:''}
- <dt>Whole chain</dt><dd>${RTS.map(x=>`<a href="#" data-rk="${x.k}">${esc(x.lab)}</a>`).join(' · ')}</dd></dl>`;wireSheet();
- $('#sheet').querySelectorAll('[data-rk]').forEach(a=>a.onclick=e=>{e.preventDefault();openRoot(a.dataset.rk)})}
-
-function rootRow(){if(!RT)return'';const b=s=>`<button class="yb rk${s.todo?' todo':''}" data-rk="${s.k}" style="border-color:${{R:RT.color,A:RT.acol,B:RT.bcol}[s.br]}" aria-label="${esc(s.label)}">${esc(s.lab)}</button>`,ar='<span class="ar">→</span>',st=k=>RTM[k];
- return`<div class="chrow root" data-p="R A B"><button class="chhd" data-rk="r1"><span class="sw star">★</span>${esc(RT.name)}<span class="ttl">to 1877, then A / B</span></button>
- <div class="yrs"><span class="who">Herbert</span>${ar}${b(st('r1'))}<span class="who">Vaughan</span>${ar}${b(st('r2'))}<span class="who">Bute</span></div>
- <div class="yrs"><span class="sw" style="background:${RT.acol}"></span><b class="pl">A</b>${b(st('a1'))}<span class="who">D. Thomas &amp; Son</span>${ar}${b(st('a2'))}<span class="who">Williams family · 1928 (on the family’s case)</span></div>
- <div class="yrs"><span class="sw" style="background:${RT.acol}"></span><b class="pl">A</b><span class="who">After 1928</span>${b(st('a3'))}<span class="who">no later freehold conveyance located</span></div>
- <div class="yrs"><span class="sw" style="background:${RT.bcol}"></span><b class="pl">B</b>${b(st('b1'))}<span class="who">kept · 1926 Mountjoy</span>${ar}${b(st('b2'))}<span class="who">WGR</span>${ar}${b(st('b3'))}<span class="who">BP Pension Trust</span>${ar}${b(st('b4'))}<span class="who">WA231076</span></div>
- <p class="cap">${esc(RT.intro)}</p></div>`}
-function renderChains(){const box=$('#chainsBox');if(!CH.length){box.style.display='none';return}
- box.innerHTML=`<h2>Freehold title chain · Parcel A and Parcel B</h2><p class="lead">${esc(D.root.intro||'')} Tap a title step for source citations and missing-instrument notes.</p>`+rootRow()+`<h2>Parcel A in three parts · the dated records</h2><p class="lead">${esc(D.paths?D.paths.intro:D.origin.intro)}</p>`+CH.map(ch=>{const sp=ch.span;
-  const ys=ch.nodes.map((n,k)=>{const inS=n.y>=sp.from&&n.y<=sp.to,end=n.y===sp.from||n.y===sp.to;
-   return(k?'<span class="ar">→</span>':'')+`<button class="yb${inS?' in':''}${end?' end':''}${n.todo?' todo':''}" data-cn="${ch.id}:${n.y}"${inS?` style="background:${ch.color}"`:''} aria-label="${esc(n.label)}">${esc(spanLab(ch,n))}</button>`}).join('');
-  return`<div class="chrow" data-p="${ch.parcels.join(' ')}"><button class="chhd" data-ch="${ch.id}"><span class="sw" style="background:${ch.color}"></span>${esc(ch.name)}<span class="ttl">${esc(ch.title)}</span></button>
- <div class="yrs">${ys}</div><p class="cap"><span class="c12" style="background:${ch.color}">12 years</span><b>${esc(sp.lab0||sp.from)} → ${esc(sp.lab||sp.to)}</b> · ${esc(sp.cap)}</p></div>`}).join('');
- box.querySelectorAll('[data-cn]').forEach(b=>b.onclick=()=>{const[c,y]=b.dataset.cn.split(':');openNode(c,+y)});
- box.querySelectorAll('[data-ch]').forEach(b=>b.onclick=()=>openChain(b.dataset.ch));
- box.querySelectorAll('[data-rk]').forEach(b=>b.onclick=()=>openRoot(b.dataset.rk))}
-function wireSheet(){$('#sheetBg').classList.add('open');$('#shX').onclick=close;$('#shX').focus();
- $('#sheet').querySelectorAll('[data-open]').forEach(a=>a.onclick=e=>{e.preventDefault();open(a.dataset.open)});
- $('#sheet').querySelectorAll('[data-chain]').forEach(a=>a.onclick=e=>{e.preventDefault();openChain(a.dataset.chain)});
- $('#sheet').querySelectorAll('[data-node]').forEach(a=>a.onclick=e=>{e.preventDefault();const[c,y]=a.dataset.node.split(':');openNode(c,+y)})}
-function openNode(cid,y){const ch=CHM[cid],nd=ch&&ch.nodes.find(n=>n.y===y);if(!nd)return;sel='ch:'+cid;applyFocus();
- const sp=ch.span,inS=y>=sp.from&&y<=sp.to,tr=nd.t&&D.transfers.find(x=>x.id===nd.t);
- $('#sheet').innerHTML=`<button class="x" aria-label="Close" id="shX">×</button><h2 id="shT">${esc(nd.label)}</h2><div class="date">${esc(nd.date)}</div>
- <div><span class="pill" style="border-color:${ch.color};color:${ch.color}">${nd.todo?'source to add':nd.part?esc(nd.part):'source on file'}</span>${inS?` <span class="pill">12 years: ${esc(sp.lab0||sp.from)} → ${esc(sp.lab||sp.to)}</span>`:''}</div>
- <dl><dt>Registration chronology</dt><dd>${esc(ch.name)} · record endpoint: ${esc(P[ch.to].name)}. This is a dated record sequence, not a conveyance from the synthetic-origin marker. · <a href="#" data-chain="${cid}">the whole chronology</a></dd>
- ${nd.title?`<dt>Title</dt><dd>${esc(nd.title)}</dd>`:''}<dt>Record</dt><dd>${esc(nd.text)}</dd>
- <dt>Source</dt><dd>${srcList(nd.src)}</dd>${tr?`<dt>On the ring</dt><dd><a href="#" data-open="${tr.id}">${esc(tr.label)}</a></dd>`:''}</dl>`;wireSheet()}
-function openChain(cid){const ch=CHM[cid];if(!ch)return;sel='ch:'+cid;applyFocus();const sp=ch.span;
- $('#sheet').innerHTML=`<button class="x" aria-label="Close" id="shX">×</button><h2 id="shT">${esc(ch.name)} · registration chronology</h2><div class="date">${esc(ch.end)}</div>
- <p class="cap"><span class="c12" style="background:${ch.color}">12 years</span><b>${esc(sp.lab0||sp.from)} → ${esc(sp.lab||sp.to)}</b> · ${esc(sp.cap)}</p>
- <dl>${ch.nodes.map(n=>`<dt>${esc(n.date)}${n.todo?' · source to add':''}</dt><dd><a href="#" data-node="${cid}:${n.y}">${esc(n.label)}</a></dd>`).join('')}</dl>`;wireSheet()}
-// geometry
-function bez(p0,c,p1,t){const u=1-t;return[u*u*p0[0]+2*u*t*c[0]+t*t*p1[0],u*u*p0[1]+2*u*t*c[1]+t*t*p1[1]]}
-function draw(){
- C=cfg();R=C.R;const wasHome=!HOME||vb.w>=HOME.w-0.5;const z=HOME?Math.min(1,vb.w/HOME.w):1;labelMode=(C.mob&&z>0.62)?'year':'full';
- if(C.mob&&labelMode==='full'){const f=Math.max(0.42,Math.min(1,z*1.25));C.afs*=f;C.cr*=f;C.cfs*=f}
- lastZ=z;CNPOS={};
- if(RT){const sp=P[RT.star],v=P.vaughan;const a=ang(v.i)+0.62*2*Math.PI/N,r=R+(C.mob?175:140);STAR=[Math.cos(a)*r,Math.sin(a)*r];sp.xy=STAR}
- svg.innerHTML='';MK={};MKD=null;svg.style.setProperty('--sws',(C.sw*1.6)+'px');
- C.rc=R+(C.mob?28:20);C.rl=C.rc+Math.round(R*0.09);// the ring line, then an empty band (9% of R) before any holder name
- drawZones(svg);el('circle',{cx:0,cy:0,r:C.rc,fill:'none',stroke:'#ffffff70','stroke-width':C.mob?2.5:2,class:'ringline'},svg);
- const gA=el('g',{},svg),gL=el('g',{},svg),gN=el('g',{},svg);
- // parallel index per unordered pair
- const pairCount={};
- const TT=D.transfers.slice().sort((a,b)=>a.year-b.year);
- const placed=[];
- TT.forEach(tr=>{
-  if(tr.notTitleTransfer)return;
-  const fromC=!!P[tr.from].centre,key=[tr.from,tr.to].sort().join('|');
-  if((fromC||tr.from==='origin')&&CH.length&&CHT.has(tr.id))return;// v2.6: drawn as a 💩 chain instead
-  if(tr.root&&RT)return;// drawn as the root title chain instead
-  const idx=pairCount[key]=(pairCount[key]===undefined?0:pairCount[key]+1);
-  const b=P[tr.to].i,p1=pos(b,R-12);let p0,c;
-  if(fromC){// born at the centre: from the 💩 out to the registered proprietor
-   const L1=Math.hypot(p1[0],p1[1]);p0=[p1[0]/L1*C.pfs*0.62,p1[1]/L1*C.pfs*0.62];
-   const mid=[(p0[0]+p1[0])/2,(p0[1]+p1[1])/2];c=[mid[0]-p1[1]/L1*55,mid[1]+p1[0]/L1*55];
-  }else{
-  p0=P[tr.from].outside?STAR.slice():pos(P[tr.from].i,R-12);
-  const mid=[(p0[0]+p1[0])/2,(p0[1]+p1[1])/2];
-  const d=Math.hypot(p0[0]-p1[0],p0[1]-p1[1])/(2*R);
-  let m=0.25+0.45*(1-d)-0.16*idx; 
-  // nudge straight-through arcs sideways so they do not all cross the exact centre
-  c=[mid[0]*m,mid[1]*m];
-  if(d>0.85){const nx=-(p1[1]-p0[1]),ny=p1[0]-p0[0],L=Math.hypot(nx,ny);const s=(idx%2?-1:1)*(70+44*idx);c=[c[0]+nx/L*s,c[1]+ny/L*s]}
-  }
-  const col=ycol(tr.year);
-  const g=el('g',{class:'t'+(tr.rootb&&RT?' rt':''),'data-id':tr.id,'data-p':tr.parcels.join(' '),tabindex:0,role:'button','aria-label':`${tr.label}: ${tr.parcels.map(x=>PC[x].name).join(', ')}, ${P[tr.from].name} to ${P[tr.to].name}`},gA);
-  const dpath=`M${p0[0].toFixed(1)},${p0[1].toFixed(1)} Q${c[0].toFixed(1)},${c[1].toFixed(1)} ${p1[0].toFixed(1)},${p1[1].toFixed(1)}`;
-  const gap=tr.status==='dashed';
-  el('path',{d:dpath,class:'arc',stroke:col,'stroke-width':C.sw,'stroke-dasharray':gap?(C.sw*1.6)+' '+(C.sw*0.9):'none','marker-end':mk(col,gap),'data-dir':P[tr.from].name+' → '+P[tr.to].name},g);
-  // v2.5: a second arrow along the line (giver → receiver), clear of the title number at t 0.5
-  {const tm=tr.title?0.3:0.36,qa=bez(p0,c,p1,tm-0.01),qb=bez(p0,c,p1,tm+0.01);midArrow(g,qa,qb,col,gap);const qm=bez(p0,c,p1,tm),hs=C.mob?10:6;placed.push([qm[0]-hs,qm[1]-hs,qm[0]+hs,qm[1]+hs])}
-  el('path',{d:dpath,class:'hit'},g);
-  if(tr.title){// the title number rides inside the thick stroke, reading left to right
-   const rev=p1[0]<p0[0],tid='tp-'+tr.id,q0=rev?p1:p0,q1=rev?p0:p1;
-   el('path',{id:tid,d:`M${q0[0].toFixed(1)},${q0[1].toFixed(1)} Q${c[0].toFixed(1)},${c[1].toFixed(1)} ${q1[0].toFixed(1)},${q1[1].toFixed(1)}`,fill:'none',stroke:'none'},g);
-   const tt=el('text',{class:'tlab','font-size':C.tfs,'dominant-baseline':'central',stroke:col,'stroke-width':C.tfs*0.55,'stroke-linejoin':'round','paint-order':'stroke'},g);
-   const tp=el('textPath',{href:'#'+tid,startOffset:'50%','text-anchor':'middle'},tt);tp.textContent=tr.title;
-   const qm=bez(p0,c,p1,0.5),tw=tr.title.length*C.tfs*0.75;placed.push([qm[0]-tw/2,qm[1]-tw/2,qm[0]+tw/2,qm[1]+tw/2]);
-  }
-  // label placement: try several t values, avoid overlaps
-  const fs=C.afs,lab=labelMode==='year'?String(tr.year):tr.label,cw=C.cr*2+2;
-  const w=lab.length*fs*0.56+tr.parcels.length*cw+8,h=Math.max(fs,C.cr*2)+6;
-  let best=null,bestO=1e9;
-  const cands=[];for(const off of [0,1,-1,2,-2])for(const t of (tr.title?[0.74,0.26,0.8,0.2,0.68,0.32]:[0.5,0.42,0.58,0.34,0.66,0.27,0.73]))cands.push([t,off]);
-  for(const [t,off] of cands){
-   const q0=bez(p0,c,p1,t),qa=bez(p0,c,p1,Math.min(1,t+.01)),dx=qa[0]-q0[0],dy=qa[1]-q0[1],dl=Math.hypot(dx,dy)||1;
-   const q=[q0[0]-dy/dl*off*(h+2),q0[1]+dx/dl*off*(h+2)];const box=[q[0]-w/2,q[1]-h/2,q[0]+w/2,q[1]+h/2];
-   let o=0;for(const pb of placed){const ix=Math.max(0,Math.min(box[2],pb[2])-Math.max(box[0],pb[0])),iy=Math.max(0,Math.min(box[3],pb[3])-Math.max(box[1],pb[1]));o+=ix*iy}
-   if(o<bestO){bestO=o;best={q,box}}if(o===0)break}
-  placed.push(best.box);
-  const lg=el('g',{class:'lab'},g);
-  let x=best.box[0]+C.cr+1;
-  tr.parcels.forEach(pid=>{el('circle',{cx:x,cy:best.q[1],r:C.cr,fill:PC[pid].color,stroke:'#1d1938','stroke-width':1.5},lg);const t=el('text',{x:x,y:best.q[1]+.5,class:'pcode','font-size':C.cfs},lg);t.textContent=pcode(pid);x+=cw});
-  const t=el('text',{x:x-C.cr+4,y:best.q[1]+fs*0.36,class:'alab','font-size':fs},lg);t.textContent=lab;
-  g.addEventListener('click',e=>{e.stopPropagation();open(tr.id)});
-  g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(tr.id)}});
- });
- drawChains(gA);if(RT)drawRoot(gA);svg.classList.toggle('haschains',CH.length>0);
- // v2.6: no centre glyph; the 💩 is a party on the ring (D.parties id origin), drawn with the other names below
- // nodes: every holder's name at one rising angle (bottom-left to top-right), compact, set just clear of the ring
- const LA=-Math.PI/4,lu=[Math.cos(LA),Math.sin(LA)],ln=[-lu[1],lu[0]],lh=C.nfs*1.18,gap=C.mob?12:9,placedL=[];
- if(RT&&STAR){// Herbert: the incoming root title, a star outside the ring
-  const sp=P[RT.star],g=el('g',{class:'n star','data-id':sp.id,role:'button',tabindex:0,'aria-label':sp.name},gN),rs=C.mob?24:16,pts=[];
-  for(let k=0;k<10;k++){const a=-Math.PI/2+k*Math.PI/5,r=k%2?rs*0.45:rs;pts.push((STAR[0]+Math.cos(a)*r).toFixed(1)+','+(STAR[1]+Math.sin(a)*r).toFixed(1))}
-  el('polygon',{points:pts.join(' '),fill:RT.color,stroke:'#1d1938','stroke-width':2.5},g);
-  const t=el('text',{class:'nlab','font-size':C.nfs,'dominant-baseline':'central','text-anchor':'start'},g);t.textContent=C.mob?sp.m:sp.short;
-  let L=0;try{L=t.getComputedTextLength()}catch(e){}if(!L)L=t.textContent.length*C.nfs*0.56;
-  const ax=STAR[0]+rs*0.75,ay=STAR[1]-rs*0.75;t.setAttribute('x',ax.toFixed(1));t.setAttribute('y',ay.toFixed(1));t.setAttribute('transform',`rotate(-45 ${ax.toFixed(1)} ${ay.toFixed(1)})`);
-  const a0=ax*lu[0]+ay*lu[1],b0=ax*ln[0]+ay*ln[1],s0=STAR[0]*lu[0]+STAR[1]*lu[1],t0=STAR[0]*ln[0]+STAR[1]*ln[1];
-  placedL.push([a0-2,b0-lh/2,a0+L+2,b0+lh/2]);placedL.push([s0-rs,t0-rs,s0+rs,t0+rs]);
-  el('circle',{cx:STAR[0],cy:STAR[1],r:C.mob?40:26,fill:'transparent'},g);
-  const ti=el('title',{},g);ti.textContent=sp.name+' · incoming root title';
-  g.addEventListener('click',e=>{e.stopPropagation();openRoot('r1')});
- }
- const ordN=RP.slice().sort((a,b)=>Math.abs(Math.cos(ang(b.i))*lu[0]+Math.sin(ang(b.i))*lu[1])-Math.abs(Math.cos(ang(a.i))*lu[0]+Math.sin(ang(a.i))*lu[1]));
- ordN.forEach(p=>{
-  const a=ang(p.i),rx=Math.cos(a),ry=Math.sin(a),[x,y]=pos(p.i,R);
-  const g=el('g',{class:'n'+(p.icon?' pn':''),'data-id':p.id},gN);
-  const t=el('text',{x:0,y:0,class:'nlab','font-size':C.nfs,'dominant-baseline':'central'},g);
-  // v2.6: a party with an icon (the 💩 party) sets its name on two lines, split before the bracket
-  const nm=C.mob?p.m:p.short,k2=p.icon?nm.lastIndexOf(' ('):-1,lines=k2>0?[nm.slice(0,k2),nm.slice(k2+1)]:[nm];
-  let L=0;if(lines.length>1){lines.forEach((s,j)=>{const ts=el('tspan',{x:0,dy:j?lh:0},t);ts.textContent=s});try{L=Math.max(...[...t.querySelectorAll('tspan')].map(x=>x.getComputedTextLength()))}catch(e){}if(!L)L=Math.max(...lines.map(s=>s.length))*C.nfs*0.56}
-  else{t.textContent=nm;try{L=t.getComputedTextLength()}catch(e){}if(!L)L=t.textContent.length*C.nfs*0.56}
-  const xh=(lines.length-1)*lh;
-  const st=rx*lu[0]+ry*lu[1]>=0;t.setAttribute('text-anchor',st?'start':'end');
-  let best=null,bestO=1e18;
-  const d0=C.rl-R;for(let d=d0;d<=d0+lh*7;d+=lh*0.5){
-   const ax=x+rx*d,ay=y+ry*d,a0=ax*lu[0]+ay*lu[1],b0=ax*ln[0]+ay*ln[1];
-   const bx=st?[a0-2,b0-lh/2,a0+L+2,b0+lh/2+xh]:[a0-L-2,b0-lh/2,a0+2,b0+lh/2+xh];
-   const ddx=Math.max(bx[0],0,-bx[2]),ddy=Math.max(bx[1],0,-bx[3]);if(Math.hypot(ddx,ddy)<C.rl)continue;
-   let o=0;for(const q of placedL){const ix=Math.max(0,Math.min(bx[2],q[2])-Math.max(bx[0],q[0])),iy=Math.max(0,Math.min(bx[3],q[3])-Math.max(bx[1],q[1]));o+=ix*iy}
-   if(o<bestO-0.5){bestO=o;best={ax,ay,bx,d}}if(o===0)break}
-  if(!best){const d=d0+lh*7,ax=x+rx*d,ay=y+ry*d;best={ax,ay,bx:[0,0,0,0],d}}
-  placedL.push(best.bx);
-  if(best.d>d0+lh*0.6)el('line',{x1:x+rx*(d0+2),y1:y+ry*(d0+2),x2:best.ax-rx*3,y2:best.ay-ry*3,class:'nlead'},g);
-  t.setAttribute('x',best.ax.toFixed(1));t.setAttribute('y',best.ay.toFixed(1));t.setAttribute('transform',`rotate(-45 ${best.ax.toFixed(1)} ${best.ay.toFixed(1)})`);
-  t.querySelectorAll('tspan').forEach(ts=>ts.setAttribute('x',best.ax.toFixed(1)));
-  if(p.icon){// the 💩 party: its icon is the node; tap = what it stands for
-   el('circle',{cx:x,cy:y,r:C.mob?21:15,fill:'#1d1938',stroke:'#ffffff55','stroke-width':2},g);
-   const pt=el('text',{x:x,y:y+(C.mob?2:1.5),class:'poo','font-size':C.mob?30:21,'text-anchor':'middle','dominant-baseline':'central','data-ghf-keep':''},g);pt.textContent=p.icon;
-   el('circle',{cx:x,cy:y,r:C.mob?34:22,fill:'transparent'},g);
-   g.setAttribute('role','button');g.setAttribute('tabindex','0');g.setAttribute('aria-label',p.name+': '+D.origin.label);g.style.cursor='pointer';
-   g.addEventListener('click',e=>{e.stopPropagation();openOrigin()});g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openOrigin()}});
-  }else el('circle',{cx:x,cy:y,r:C.mob?8:6,fill:'#f3f1ff',stroke:'#1d1938','stroke-width':3},g);
-  const ti=el('title',{},g);ti.textContent=p.name;
- });
- applyFocus();
- fitHome(wasHome);
-}
-// the home view box is the whole drawing (ring, every name, the star), never a fixed square: nothing is cut off
-function fitHome(wasHome){
- let b;try{b=svg.getBBox()}catch(e){b=null}if(!b||!b.width)b={x:-C.half,y:-C.half,width:C.half*2,height:C.half*2};
- const pad=C.mob?16:12;let x=b.x-pad,y=b.y-pad,w=b.width+pad*2,h=b.height+pad*2;
- if(!fsOn){svg.style.aspectRatio=(w/h).toFixed(4)}else svg.style.aspectRatio='';
- const rr=svg.getBoundingClientRect(),A=fsOn&&rr.height?rr.width/rr.height:w/h;
- if(w/h<A){const nw=h*A;x-=(nw-w)/2;w=nw}else{const nh=w/A;y-=(nh-h)/2;h=nh}
- HOME={x,y,w,h};FULL=w;
- if(wasHome)vb={x,y,w,h};setVB(true)
-}
-function applyFocus(){
- // v3.0: a part with its own path (A1, A2, A3, B) lights ONLY that path; other parcels keep the parcel filter
- const used=new Set(),fp=[...focus],pathOn=ps=>focus.size===0||ps.some(p=>focus.has(p)),
-  ringOn=(ps,key)=>focus.size===0||ps.some(p=>focus.has(p)&&!PATHP.has(p))||fp.some(p=>(PUSE[p]||[]).includes(key));
- svg.querySelectorAll('g.t').forEach(g=>{
-  const ps=g.dataset.p.split(' ');const on=ringOn(ps,g.dataset.id)&&(!sel||g.dataset.id===sel||(sel==='rc'&&g.classList.contains('rt')));
-  g.classList.toggle('dim',!on);g.classList.toggle('sel',!!sel&&g.dataset.id===sel);
-  if(on){const tr=D.transfers.find(x=>x.id===g.dataset.id);used.add(tr.from);used.add(tr.to)}});
- svg.querySelectorAll('g.rc').forEach(g=>{const on=ringOn(g.dataset.p.split(' '),'rk:'+g.dataset.rk)&&(!sel||sel==='rc');g.style.opacity=on?1:.1;g.classList.toggle('dim',!on);if(on){const s=RTM[g.dataset.rk];if(s){used.add(s.fr);if(!s.to.startsWith('chain:'))used.add(s.to)}}});
- svg.querySelectorAll('g.pth').forEach(g=>{const on=pathOn(g.dataset.p.split(' '))&&!sel;g.classList.toggle('dim',!on);
-  if(on){const L=PL[g.dataset.pid];if(L){[L.fr,L.to,L.loop,L.node,L.from,L.ext&&L.ext.fr,L.ext&&L.ext.toward].forEach(x=>x&&used.add(x))}}});
- svg.querySelectorAll('g.pn2').forEach(g=>g.classList.toggle('dim',(focus.size>0||!!sel)&&!used.has(g.dataset.id)));
- svg.querySelectorAll('g.rtags').forEach(g=>{g.style.opacity=(focus.size===0||['R','A','B'].some(p=>focus.has(p)))&&!sel?1:.1});
- document.querySelectorAll('.chrow').forEach(r=>{r.style.opacity=inFocus(r.dataset.p.split(' '))?1:.35});
- svg.querySelectorAll('g.n').forEach(g=>g.classList.toggle('dim',(focus.size||sel)&&!used.has(g.dataset.id)));
-}
-// view box pan/zoom
-let vb={x:-540,y:-540,w:1080,h:1080},HOME=null;let FULL=1080;
-function setVB(noRedraw){const H=HOME||{x:-C.half,y:-C.half,w:C.half*2,h:C.half*2};FULL=H.w;vb.w=Math.max(FULL/4,Math.min(FULL,vb.w));vb.h=vb.w*H.h/H.w;vb.x=Math.max(H.x,Math.min(H.x+H.w-vb.w,vb.x));vb.y=Math.max(H.y,Math.min(H.y+H.h-vb.h,vb.y));
- if(vb.w>=FULL-0.5){vb={x:H.x,y:H.y,w:H.w,h:H.h}}
- svg.setAttribute('viewBox',`${vb.x.toFixed(1)} ${vb.y.toFixed(1)} ${vb.w.toFixed(1)} ${vb.h.toFixed(1)}`);svg.setAttribute('preserveAspectRatio','xMidYMid meet');svg.classList.toggle('zoomed',vb.w<FULL-0.5);
- if(noRedraw)return;
- if(C.mob&&Math.abs(vb.w/FULL-lastZ)>0.04){clearTimeout(window._dz);window._dz=setTimeout(draw,60)}}
-function zoom(f,cx,cy){const ox=cx===undefined?vb.x+vb.w/2:cx,oy=cy===undefined?vb.y+vb.h/2:cy;const nw=Math.max(FULL/4,Math.min(FULL,vb.w*f));vb.x=ox-(ox-vb.x)*nw/vb.w;vb.y=oy-(oy-vb.y)*nw/vb.w;vb.w=nw;setVB()}
-$('#zin').onclick=()=>zoom(0.7);$('#zout').onclick=()=>zoom(1/0.7);
-$('#rst').onclick=()=>{if(HOME)vb={...HOME};setVB()};
-$('#rot').onclick=()=>{rot=(rot+360/N*2)%360;draw()};
-function svgPt(e){const r=svg.getBoundingClientRect();return[vb.x+(e.clientX-r.left)/r.width*vb.w,vb.y+(e.clientY-r.top)/r.height*vb.h]}
-svg.addEventListener('wheel',e=>{if(!e.ctrlKey&&vb.w>=FULL&&e.deltaY>0)return;e.preventDefault();const [x,y]=svgPt(e);zoom(e.deltaY<0?0.85:1/0.85,x,y)},{passive:false});
-const ptrs=new Map();let pinch0=null,moved=false;
-svg.addEventListener('pointerdown',e=>{if(vb.w>=FULL&&e.pointerType==='touch'&&!fsOn)return;ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});moved=false;if(ptrs.size===2){const[a,b]=[...ptrs.values()];pinch0={d:Math.hypot(a.x-b.x,a.y-b.y),w:vb.w}}});
-svg.addEventListener('pointermove',e=>{if(!ptrs.has(e.pointerId))return;const prev=ptrs.get(e.pointerId);const r=svg.getBoundingClientRect();
- if(ptrs.size===1&&vb.w<FULL){const dx=(e.clientX-prev.x)/r.width*vb.w,dy=(e.clientY-prev.y)/r.height*vb.h;if(Math.abs(dx)+Math.abs(dy)>1)moved=true;vb.x-=dx;vb.y-=dy;setVB()}
- ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});
- if(ptrs.size===2&&pinch0){const[a,b]=[...ptrs.values()];const d=Math.hypot(a.x-b.x,a.y-b.y);const cx=(a.x+b.x)/2,cy=(a.y+b.y)/2;const p=svgPt({clientX:cx,clientY:cy});zoom((pinch0.w*pinch0.d/d)/vb.w,p[0],p[1]);moved=true}});
-['pointerup','pointercancel','pointerleave'].forEach(n=>svg.addEventListener(n,e=>{ptrs.delete(e.pointerId);if(ptrs.size<2)pinch0=null}));
-svg.addEventListener('click',e=>{if(moved){e.stopPropagation();moved=false;return}if(sel){sel=null;applyFocus()}},true);
-// native pinch on touch while unzoomed is handled by the page; a two-finger gesture zooms the ring once zoomed
-// sheet
-function srcList(s){return'<ul>'+s.map(x=>`<li><a href="${esc(x.u)}" target="_blank" rel="noopener">${esc(x.t)}</a></li>`).join('')+'</ul>'}
-function chipsFor(ps){return ps.map(p=>`<span class="dot" data-ghf-keep style="background:${PC[p].color}">${pcode(p)}</span> ${esc(PC[p].name)}`).join('<br>')}
-function openOrigin(){sel=null;applyFocus();const Q=D.paths.question,ls=D.paths.lines.filter(l=>l.to==='poo'||l.fr==='poo'||l.loop==='poo');
- $('#sheet').innerHTML=`<button class="x" aria-label="Close" id="shX">×</button><h2 id="shT"><span data-ghf-keep>💩</span> ${esc(D.paths.nodes.poo.name)}</h2><div class="date">${esc(D.paths.nodes.poo.sub)}</div>
- <dl><dt>${esc(Q.title)} <a href="#" data-step="q">?</a></dt><dd>${esc(Q.text)}</dd><dt>Lines</dt><dd>${ls.map(l=>`<p><span class="dot" data-ghf-keep style="background:${(PC[l.p]||{}).color||'#fff'}">${l.p}</span> <a href="#" data-step="${l.id}">${esc(l.title)}</a></p>`).join('')}</dd></dl>`;
- wireSheet();$('#sheet').querySelectorAll('[data-step]').forEach(a=>a.onclick=e=>{e.preventDefault();openStep(a.dataset.step)})}
-function open(id){const tr=D.transfers.find(x=>x.id===id);if(!tr)return;sel=id;applyFocus();
- $('#sheet').innerHTML=`<button class="x" aria-label="Close" id="shX">×</button><h2 id="shT">${esc(tr.label)}</h2><div class="date">${esc(tr.date)}</div>
- <div><span class="pill" style="border-color:${ycol(tr.year)};color:${ycol(tr.year)}">${tr.status==='dashed'?esc(tr.reason):'record held'}</span></div>
- <dl><dt>Parcel</dt><dd>${chipsFor(tr.parcels)}</dd>${tr.title?`<dt>Title</dt><dd>${esc(tr.title)}</dd>`:''}
- ${tr.notTitleTransfer ? '<dt>Record role</dt><dd>Possession, registration or administrative chronology only; not a freehold conveyance from the synthetic-origin marker.</dd>' : `<dt>From → to</dt><dd>${P[tr.from].icon?P[tr.from].icon+' '+esc(P[tr.from].name):esc(P[tr.from].name)} → ${esc(P[tr.to].name)}</dd>`}
- <dt>Instrument</dt><dd>${esc(tr.instrument)}</dd>
- <dt>Note</dt><dd>${esc(tr.note)}</dd>
- <dt>Source</dt><dd>${srcList(tr.sources)}</dd></dl>`;
- $('#sheetBg').classList.add('open');$('#shX').onclick=close;$('#shX').focus();
- const u=new URL(location);u.searchParams.set('t',id);history.replaceState(null,'',u)}
-function close(){$('#sheetBg').classList.remove('open');sel=null;applyFocus();const u=new URL(location);u.searchParams.delete('t');history.replaceState(null,'',u)}
-$('#sheetBg').addEventListener('click',e=>{if(e.target.id==='sheetBg')close()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#sheetBg').classList.contains('open'))close()});
-// list
-function renderList(){
- const rows=D.transfers.map(t=>Object.assign({type:'t'},t)).concat(D.events.map(e=>Object.assign({type:'e'},e))).filter(r=>inFocus(r.parcels)).sort((a,b)=>a.year-b.year||(a.type>b.type?1:-1));
- $('#list').innerHTML='<h2 style="font-size:18px;margin:12px 0 8px">The chain, year by year</h2>'+rows.map(r=>r.type==='t'?
- `<article class="card ${r.status}" style="border-left-color:${ycol(r.year)}" data-id="${r.id}" tabindex="0"><div class="yr" style="color:${ycol(r.year)}">${r.year}</div><div><h3>${esc(r.label)} · ${r.parcels.map(p=>`<span class="dot" data-ghf-keep style="background:${PC[p].color}">${pcode(p)}</span>`).join(' ')}${r.title?` <span class="pill">${esc(r.title)}</span>`:''}</h3>
- <div>${r.notTitleTransfer?'Chronology record · not a freehold conveyance':(P[r.from].icon?P[r.from].icon+' '+esc(P[r.from].short):esc(P[r.from].short))+' → '+esc(P[r.to].short)}</div><div class="ft">${esc(r.date)} · <span class="pill">${r.status==='dashed'?esc(r.reason):'record held'}</span></div></div></article>`:
- `<article class="card ev"><div class="yr">${r.year}</div><div><h3>${esc(r.label)} · ${r.parcels.map(p=>`<span class="dot" data-ghf-keep style="background:${PC[p].color}">${p}</span>`).join(' ')}</h3><div class="ft">${esc(r.date)} · no change of hands</div><div>${esc(r.text)}</div><div class="ft">${r.sources.map(s=>`<a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.t)}</a>`).join(' · ')}</div></div></article>`).join('');
- $('#list').querySelectorAll('.card[data-id]').forEach(c=>{c.onclick=()=>open(c.dataset.id);c.onkeydown=e=>{if(e.key==='Enter')open(c.dataset.id)}})}
-function view(v){$('#vRing').setAttribute('aria-pressed',v==='ring');$('#vList').setAttribute('aria-pressed',v==='list');$('#ringView').style.display=v==='ring'?'':'none';$('#list').style.display=v==='list'?'block':'none';
- const u=new URL(location);if(v==='list')u.searchParams.set('v','list');else u.searchParams.delete('v');history.replaceState(null,'',u)}
-$('#vRing').onclick=()=>view('ring');$('#vList').onclick=()=>view('list');
-
-// full screen: CSS takes the ring over the whole viewport (iPhone Safari has no element full screen); the browser's own full screen is asked for where it exists
-let fsOn=false,fsHome=null,fsNext=null;const fsBtn=$('#fs');
-function setFs(on){if(on===fsOn)return;fsOn=on;const bx=$('.svgbox'),de=document.documentElement;
- if(on){fsHome=bx.parentNode;fsNext=bx.nextSibling;document.body.appendChild(bx);bx.classList.add('fs');bx.setAttribute('data-ghf-keep','');de.classList.add('fs-lock');
-  try{if(document.fullscreenEnabled&&de.requestFullscreen&&!document.fullscreenElement){const pr=de.requestFullscreen();if(pr&&pr.catch)pr.catch(()=>{})}}catch(e){}}
- else{bx.classList.remove('fs');bx.removeAttribute('data-ghf-keep');if(fsHome)fsHome.insertBefore(bx,fsNext);de.classList.remove('fs-lock');
-  try{if(document.fullscreenElement&&document.exitFullscreen){const pr=document.exitFullscreen();if(pr&&pr.catch)pr.catch(()=>{})}}catch(e){}}
- fsBtn.textContent=on?'✕':'⛶';fsBtn.setAttribute('aria-label',on?'Close full screen':'Full screen');fsBtn.setAttribute('aria-pressed',String(on));
- HOME=null;draw();if(on)fsBtn.focus()}
-fsBtn.onclick=e=>{e.stopPropagation();setFs(!fsOn)};
-document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&fsOn)setFs(false)});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&fsOn&&!$('#sheetBg').classList.contains('open'))setFs(false)},true);
-renderChains();draw();renderList();
-let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(draw,200)});
-const q=new URLSearchParams(location.search);if(q.get('p')){q.get('p').split(',').forEach(x=>{if(PC[x])focus.add(x)});syncChips();applyFocus();renderList()}if(q.get('v')==='list')view('list');if(q.get('t'))open(q.get('t'));
+function ringLab(g,id,x,y,rr){const n=N[id],a=n.ang*Math.PI/180,lx=rr*Math.sin(a),ly=-rr*Math.cos(a),fs=26,lh=27,k=n.lab.length;
+ let anchor='middle',y0;const sx=Math.sin(a),cy=Math.cos(a);
+ if(Math.abs(sx)>0.38)anchor=sx>0?'start':'end';
+ if(anchor==='middle')y0=cy>0?ly-(k-1)*lh-4:ly+fs*0.7;else y0=ly-(k-1)*lh/2+fs*0.35;
+ y0+=(n.ldy||0);n.lab.forEach((t,i)=>el('text',{x:f(lx+(n.ldx||0)),y:f(y0+i*lh),class:'nlab','font-size':fs,'text-anchor':anchor},g).textContent=t)}
+// ---- filter + snake animation
+let cur='ALL',raf=0;const chips=$('#chips');
+V.filters.forEach(F=>{const b=document.createElement('button');b.className='chip';b.dataset.k=F.k;b.setAttribute('aria-pressed','false');
+ const cols=[...new Set(F.tracks.flatMap(t=>t.s.map(id=>S[id].g)))].filter(g=>g!=='AB'||F.k==='AB').slice(0,3);
+ b.innerHTML=(F.k==='ALL'?'':cols.map(c=>`<i style="background:${C[c]}"></i>`).join(''))+esc(F.lab);b.onclick=()=>select(F.k,true);chips.appendChild(b)});
+function plan(F){const sp=RM.matches?1e9:Math.max(260,Math.min(520,F.tracks.reduce((m,t)=>Math.max(m,t.s.reduce((a,id)=>a+G.segs[id].L,0)),0)/5.2));
+ const st={},en={};let order=[...F.tracks];
+ // tracks that wait for a segment run after it
+ for(let pass=0;pass<3;pass++)order.forEach(t=>{let tt=t.after?(en[t.after]??Infinity):0;if(!isFinite(tt))return;
+  t.s.forEach(id=>{const d=Math.max(260,G.segs[id].L/sp*1000);if(st[id]===undefined||tt>st[id])st[id]=tt;tt=st[id]+d;en[id]=tt})});
+ return {st,en,sp}}
+function select(k,user){cur=k;const F=V.filters.find(x=>x.k===k);
+ chips.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.k===k)));
+ $('#cap').textContent=F.cap;
+ const ids=[...new Set(F.tracks.flatMap(t=>t.s))];const on=new Set(ids);
+ if(user){const u=new URL(location);if(k==='ALL')u.searchParams.delete('p');else u.searchParams.set('p',k);history.replaceState(null,'',u)}
+ Object.entries(G.segs).forEach(([id,o])=>{o.g.classList.toggle('on',false);o.mp.setAttribute('stroke-dashoffset',o.L);G.hits[id].classList.toggle('on',false)});
+ Object.values(G.pills).forEach(p=>p.classList.add('off'));
+ // nodes on this path: when its first line arrives (or at the start), it lights
+ const touch={};const {st,en}=plan(F);
+ ids.forEach(id=>{const s=S[id];if(touch[s.fr]===undefined||st[id]<touch[s.fr])touch[s.fr]=st[id];{const t=S[id].near?st[id]:en[id];if(touch[s.to]===undefined||t<touch[s.to])touch[s.to]=t}});
+ if(F.start)touch[F.start]=0;
+ Object.entries(G.nodes).forEach(([id,g])=>{const k2=N[id].kind,inside=!['ring','out'].includes(k2);g.classList.remove('dim','off');
+  if(touch[id]===undefined){g.classList.add(inside?'off':'dim')}else if(touch[id]>0){g.classList.add(inside?'off':'dim')}});
+ renderSteps(F,ids,st);
+ cancelAnimationFrame(raf);const t0=performance.now();const done=new Set();
+ const tick=now=>{const t=RM.matches?1e12:now-t0;let live=false;
+  ids.forEach(id=>{const o=G.segs[id],s0=st[id],d=en[id]-s0;let p=(t-s0)/d;if(p<0){live=true;return}if(p>1)p=1;else live=true;
+   o.g.classList.add('on');o.mp.setAttribute('stroke-dashoffset',f(o.L*(1-p)));
+   if(p>=1&&!done.has(id)){done.add(id);G.hits[id].classList.add('on');if(G.pills[id])G.pills[id].classList.remove('off')}});
+  Object.entries(touch).forEach(([nid,tt])=>{if(t>=tt)G.nodes[nid].classList.remove('dim','off')});
+  if(live)raf=requestAnimationFrame(tick)};
+ raf=requestAnimationFrame(tick)}
+function nm(id){const n=N[id];return n.kind==='ring'||n.kind==='out'?n.lab.join(' '):n.kind==='poo'?n.icon+' '+n.cap:n.kind==='named'?'🦹 '+n.under.join(' '):n.kind==='split'?'1877 split':'papers gone'}
+function renderSteps(F,ids,st){const ol=$('#steps');ol.textContent='';
+ [...ids].sort((a,b)=>st[a]-st[b]).forEach(id=>{const s=S[id],li=document.createElement('li'),b=document.createElement('button');
+  const y=s.lab||(N[s.to].cap)||(s.id==='a-gone'?'1950–52':'');
+  b.innerHTML=`<span class="bar${s.dash?' d':''}" style="background:${C[s.g]}"></span><span class="y">${esc(y)}</span><span>${esc(s.near?nm(s.fr)+' → towards the papers, and back':nm(s.fr)+' → '+nm(s.to))}</span>`;
+  b.onclick=()=>openSeg(id);li.appendChild(b);ol.appendChild(li)})}
+$('#replay').onclick=()=>select(cur,false);
+// ---- sheet
+function srcList(src){return src&&src.length?'<h3>Sources</h3><ul>'+src.map(x=>`<li><a href="${esc(x.u)}" target="_blank" rel="noopener">${esc(x.t)}</a></li>`).join('')+'</ul>':''}
+let lastFocus=null;
+function sheet(h){lastFocus=document.activeElement;$('#sheet').innerHTML='<button class="x" id="shX" aria-label="Close">✕</button>'+h;$('#sheetBg').classList.add('open');$('#shX').onclick=closeSheet;$('#shX').focus()}
+function closeSheet(){$('#sheetBg').classList.remove('open');if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+$('#sheetBg').addEventListener('click',e=>{if(e.target.id==='sheetBg')closeSheet()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
+function openSeg(id){const s=S[id];sheet(`<h2 id="shT">${esc(s.title)}</h2><div class="date">${esc(s.date||'')}${s.dash?' · record not held':''}</div><p>${esc(s.text)}</p>${srcList(s.src)}`)}
+function openNode(id){const n=N[id];sheet(`<h2 id="shT">${esc(n.title)}</h2>${n.kind==='named'?`<div class="date">${esc(n.over.join(' '))} · ${esc(n.under.join(' '))}</div>`:''}${n.text?`<p>${esc(n.text)}</p>`:''}${srcList(n.src)}`)}
+draw();
+const q=new URLSearchParams(location.search).get('p');select(V.filters.some(x=>x.k===q)?q:'ALL',false);
+RM.addEventListener&&RM.addEventListener('change',()=>select(cur,false));
 // the shared header (basecamp.js) loads after this page's own script has run; ghf-boot.js already reserved its band
 (function(){if(window.GHFBasecamp||document.querySelector('script[data-ghf-basecamp-late]'))return;var s=document.createElement('script');s.src='https://bucklerfamily.estate/ghf-lang/basecamp.js?v='+(window.GHFBoot||'2.1.2');s.setAttribute('data-ghf-basecamp-late','');document.head.appendChild(s)})();
 </script>
