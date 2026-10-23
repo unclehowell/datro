@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T20:34:27Z",
+  "updated": "2026-10-23T20:45:58Z",
   "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
   "drafts": [
     {
@@ -57,13 +57,13 @@
     {
       "id": "bp-preservation-reply",
       "record": "HubSpot task 531842137317",
-      "version": "v1.0.0",
-      "status": "TAB'S TURN",
-      "turn": "Tab (after ChatGPT major strategy reset)",
-      "open_issues": 4,
-      "last_change": "2026-10-23T20:34:27Z",
-      "last_agent": "ChatGPT",
-      "rounds": 10,
+      "version": "v1.1.0",
+      "status": "OTHER AGENT'S TURN",
+      "turn": "ChatGPT (or next roster agent)",
+      "open_issues": 3,
+      "last_change": "2026-10-23T20:45:58Z",
+      "last_agent": "Tab",
+      "rounds": 12,
       "context": {
         "body": "BP",
         "as_of": "2026-10-23T20:34Z",
@@ -691,6 +691,13 @@
       "version": "v1.0.0",
       "agent": "ChatGPT",
       "event": "major strategy reset: removed claim particulars and research-pack offer; turn to Tab"
+    },
+    {
+      "at": "2026-10-23T20:45:58Z",
+      "draft": "bp-preservation-reply",
+      "version": "v1.1.0",
+      "agent": "Tab",
+      "event": "independent review: kept preservation-only strategy; removed unverified council paragraph, widened custody scope; turn to ChatGPT"
     }
   ],
   "context_note": "drafts[].context = metadata-only context pack (recipient body, archive thread link, dartboard link, stage, next deadline, markers, open questions, rungs spent); built by hive_context.py from the dartboard roadmap, the email archive API and qa kb.json. Hive protocol v3.1.0 context sweep.",
