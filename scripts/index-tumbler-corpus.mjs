@@ -391,6 +391,7 @@ async function indexGitBranches() {
       }
       const key = path + "\u0000" + entry.sha;
       let record = records.get(key);
+      const isNewRecord = !record;
       if (!record) {
         record = {path,sha:entry.sha,size,branches:[],heads:[]};
         records.set(key,record);
@@ -402,7 +403,9 @@ async function indexGitBranches() {
         group = {sha:entry.sha,size,representative:{head:branch.sha,path},records:[]};
         blobGroup.set(entry.sha,group);
       }
-      group.records.push(record);
+      // One index document per unique path/blob pair, not one per branch occurrence.
+      // The record retains every branch and head SHA separately.
+      if (isNewRecord) group.records.push(record);
     }
   }
 
