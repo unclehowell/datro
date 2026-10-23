@@ -1479,6 +1479,7 @@ INSERT INTO nodes VALUES ('doc-south-wales-police-foi-1264-26','document','South
 INSERT INTO nodes VALUES ('doc-south-wales-police-ir-1188-26','document','South Wales Police — Internal Review 1188/26 of FOI 719/26','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-south-wales-police-sar','document','South Wales Police — SAR clarification','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-tab-whatsapp-gap-audit-2026-10-21','document','WhatsApp research-gap audit — Great House Farm / Tŷ Mawr','{"holder": "", "reference": "", "date": ""}');
+INSERT INTO nodes VALUES ('doc-the-national-archives-CAS-356384-B2F5L9','document','The National Archives — CAS-356384-B2F5L9 / CRM:013201602','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-three-parcel-split-forensic-assessment-2026-10-18','document','Three-part Parcel A: chronology, order scope and later title transfers','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-tna-IR58-glamorgan-xlvii-6','document','TNA Valuation Office location lead / response','{"holder": "The National Archives", "reference": "CAS-359317-Q8Q4R9 (response 14 Oct 2026; follow-up 15 Oct 2026); prior draft r1281075964076169651", "date": "2026-10-14 (response); 2026-10-15 (follow-up)"}');
 INSERT INTO nodes VALUES ('doc-vale-of-glamorgan-00211483-00211484-chase-2026-10-21','document','Vale of Glamorgan — FOI/EIR chase — 00211483 and 00211484 — Great House Farm Llandough — 21 Oct 2026','{"holder": "", "reference": "", "date": ""}');
@@ -1514,6 +1515,7 @@ INSERT INTO nodes VALUES ('ref:Archive 6048943','reference','Archive 6048943','{
 INSERT INTO nodes VALUES ('ref:Archive 6048945','reference','Archive 6048945','{}');
 INSERT INTO nodes VALUES ('ref:Archive 6364275','reference','Archive 6364275','{}');
 INSERT INTO nodes VALUES ('ref:CAS-347296-M0V4Y1','reference','CAS-347296-M0V4Y1','{}');
+INSERT INTO nodes VALUES ('ref:CAS-356384-B2F5L9','reference','CAS-356384-B2F5L9','{}');
 INSERT INTO nodes VALUES ('ref:CAS-359317-Q8Q4R9','reference','CAS-359317-Q8Q4R9','{}');
 INSERT INTO nodes VALUES ('ref:D153/1-2','reference','D153/1-2','{}');
 INSERT INTO nodes VALUES ('ref:D153/1-8','reference','D153/1-8','{}');
@@ -3369,6 +3371,7 @@ INSERT INTO edges VALUES ('doc-south-wales-police-sar','ref:FOI 719/26','cites')
 INSERT INTO edges VALUES ('doc-tab-whatsapp-gap-audit-2026-10-21','ref:D696','cites');
 INSERT INTO edges VALUES ('doc-tab-whatsapp-gap-audit-2026-10-21','ref:WA231076','cites');
 INSERT INTO edges VALUES ('doc-tab-whatsapp-gap-audit-2026-10-21','ref:WA240304','cites');
+INSERT INTO edges VALUES ('doc-the-national-archives-CAS-356384-B2F5L9','ref:CAS-356384-B2F5L9','cites');
 INSERT INTO edges VALUES ('doc-three-parcel-split-forensic-assessment-2026-10-18','ref:WA231076','cites');
 INSERT INTO edges VALUES ('doc-three-parcel-split-forensic-assessment-2026-10-18','ref:WA240304','cites');
 INSERT INTO edges VALUES ('doc-three-parcel-split-forensic-assessment-2026-10-18','ref:WA735527','cites');
