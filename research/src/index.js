@@ -928,7 +928,7 @@ export default {
       if (url.pathname !== "/" && url.pathname !== path) return Response.redirect(url.origin + path + url.search, 301);
       if (path === "/") return cors(html(htmlShell(LANDING_TITLE, LANDING_HTML.replace(/^(<nav[\s\S]*?<\/nav>)/, "$1" + HIVE_PIPELINE_HTML), env, { landing: true }), 200, "public, max-age=" + FRESH_SECONDS));
       const sp = STATIC_PAGES[path];
-      return cors(html(htmlShell(sp.title + " — Great House Farm Wiki", '<article class="article"><h1>' + escapeHtml(sp.title) + '</h1><div class="content">' + sp.html + '</div></article>', env), 200, "public, max-age=" + FRESH_SECONDS));
+      return cors(html(htmlShell(sp.title + " — Great House Farm Wiki", '<article class="article">' + (sp.notitle ? '' : '<h1>' + escapeHtml(sp.title) + '</h1>') + '<div class="content">' + sp.html + '</div></article>', env), 200, "public, max-age=" + FRESH_SECONDS));
     }
     const cacheable = request.method === "GET" && !request.headers.get("Authorization") && isHtmlPath(url.pathname) && url.pathname !== "/search/" || request.method === "GET" && url.pathname === "/health";
     if (!cacheable) {
