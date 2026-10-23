@@ -14,6 +14,17 @@ import { BoardIcon, ForecastAssumptions, ForecastBoard, ForecastScatter, GraphIc
  * — Sion's Tab agent, 21 Oct 2026
  */
 
+// Hive drafts pipeline (https://hive.bucklerfamily.estate/hive.json, CORS *): metadata only, one badge per tier for drafts to this lane's body. — Sion's Tab agent, 23 Oct 2026
+type HiveDraft = { draft: string; version?: string; status?: string; tier?: string; context?: { dartboard?: { lane?: string | null } | null } | null };
+const HIVE = "https://hive.bucklerfamily.estate";
+const HIVE_TIERS = ["working", "ready", "definitely_ready", "gmail_draft", "sent_archived"] as const;
+const HIVE_LABEL: Record<string, string> = { working: "IN REVIEW", ready: "READY TO SEND", definitely_ready: "DEFINITELY READY TO SEND", gmail_draft: "GMAIL DRAFT", sent_archived: "WAYBACK (sent)" };
+const hiveTier = (d: HiveDraft): string => {
+  if (d.tier && (HIVE_TIERS as readonly string[]).includes(d.tier)) return d.tier;
+  const s = (d.status || "").toUpperCase();
+  return s.includes("DEFINITELY READY") ? "definitely_ready" : s.includes("READY TO SEND") ? "ready" : "working";
+};
+
 type Step = {
   n: number; key: string; label: string; date: string | null; date_kind: "actual" | "projected";
   status: "done" | "missed" | "pending" | "not yet reached" | "na"; basis: string; body: string | null;
@@ -835,6 +846,17 @@ export function RoadmapRamps({ preferName }: { preferName?: string }) {
   const { doc: fdoc, failed: ffailed } = useForecast(fcOpen || fcBoard);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
+  const [hive, setHive] = useState<HiveDraft[] | null>(null);
+  useEffect(() => {
+    let off = false;
+    fetch(`${HIVE}/hive.json`)
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((j: { board?: HiveDraft[] }) => !off && setHive(Array.isArray(j.board) ? j.board : []))
+      .catch(() => {});
+    return () => {
+      off = true;
+    };
+  }, []);
 
   useEffect(() => {
     setTodayStr(todayIso());
@@ -1006,6 +1028,17 @@ export function RoadmapRamps({ preferName }: { preferName?: string }) {
             className={`flex h-9 items-center gap-1.5 rounded-xl border px-2.5 text-xs ${fcBoard ? "border-[var(--ghf-accent,#EE4EF4)] text-fg" : "border-line text-muted"} bg-surface`}>
             <BoardIcon /> {fcBoard ? "back to the board now" : "completed board (forecast)"}
           </button>
+          {lane && hive && HIVE_TIERS.slice().reverse().map((tier) => {
+            const ds = hive.filter((d) => d.context?.dartboard?.lane === lane.id && hiveTier(d) === tier);
+            if (!ds.length) return null;
+            const href = ds.length === 1 ? `${HIVE}/context/${encodeURIComponent(ds[0].draft)}` : `${HIVE}/`;
+            return (
+              <a key={tier} href={href} title={ds.map((d) => `${d.draft} ${d.version ?? ""}`).join(" · ")}
+                className={`flex h-9 items-center gap-1.5 rounded-xl border px-2.5 text-xs no-underline ${tier === "working" ? "border-line text-muted" : "border-[var(--ghf-accent,#EE4EF4)] text-fg"} bg-surface`}>
+                <span aria-hidden="true">✉</span> {ds.length > 1 ? `Drafts ×${ds.length}` : "Draft"}: {HIVE_LABEL[tier]}
+              </a>
+            );
+          })}
         </div>
       )}
       {lane && fcOpen && (
