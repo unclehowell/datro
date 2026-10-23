@@ -1,5 +1,5 @@
 {
- "version": "1.0.0 · 23 Oct 2026 · Sion's Tab agent",
+ "version": "1.1.0 · 23 Oct 2026 · Sion's Tab agent (phase-2 heritage/social rows)",
  "rule": "fb2 media-register posts (Sion, 17:52 BST 23 Oct 2026: \"Publish all\"): every public register item dated 1995 or later, from /home/user/tab/work/media-register/register.json via work/chronology/fb_items.json. Post = 1–2 sentence neutral summary, the source's own title as the quote, hashtags; dated to publication (year-only and month-only items show only the year or month, the site's convention); Source = the item's URL, its Internet Archive copy when one exists, and the media register page. Embeddable YouTube items play on a tap through youtube-nocookie; unavailable ones are link only. Never in the shorts unless they carry a photo, mp4 or hyperframe.",
  "skipped": {
   "MR-0121": "its title carries a word on the house list (the build gate refuses it)",
@@ -8,7 +8,9 @@
  "merged": {
   "MR-0092": "MR-0093 (the same Gazette winding-up notices)",
   "MR-0094": "MR-0095 (the same Churchview Close press set)",
-  "MR-0097": "MR-0096 (the free copy of the same report)"
+  "MR-0097": "MR-0096 (the free copy of the same report)",
+  "MR-0162": "MR-0104 (the Commons copy of the same photograph)",
+  "MR-0192": "MR-0189 (the comment thread under the same video)"
  },
  "profiles": {
   "mr-daily-express": {
@@ -126,6 +128,61 @@
    "name": "Welsh Government",
    "kind": "Publisher",
    "about": "Welsh Government: coverage of Great House Farm (Tŷ Mawr), Llandough, from the media register."
+  },
+  "mr-sconzani-blog": {
+   "name": "sconzani (blog)",
+   "kind": "Website",
+   "about": "sconzani (blog): coverage of Great House Farm (Tŷ Mawr) and Llandough, from the media register."
+  },
+  "mr-heneb-her-archwilio": {
+   "name": "Heneb HER (Archwilio)",
+   "kind": "Heritage record",
+   "about": "Heneb HER (Archwilio): coverage of Great House Farm (Tŷ Mawr) and Llandough, from the media register."
+  },
+  "mr-vale-of-glamorgan-council-county-treasures": {
+   "name": "Vale of Glamorgan Council (County Treasures)",
+   "kind": "Publisher",
+   "about": "Vale of Glamorgan Council (County Treasures): coverage of Great House Farm (Tŷ Mawr) and Llandough, from the media register."
+  },
+  "mr-youtube-bob-s-rail-relics": {
+   "name": "YouTube — Bob's Rail Relics",
+   "kind": "YouTube channel",
+   "about": "YouTube — Bob's Rail Relics: coverage of Great House Farm (Tŷ Mawr) and Llandough, from the media register."
+  },
+  "mr-youtube-parish-of-penarth-llandough": {
+   "name": "YouTube — Parish of Penarth & Llandough",
+   "kind": "YouTube channel",
+   "about": "YouTube — Parish of Penarth & Llandough: coverage of Great House Farm (Tŷ Mawr) and Llandough, from the media register."
+  },
+  "mr-youtube-local-councillor": {
+   "name": "YouTube — local councillor",
+   "kind": "YouTube channel",
+   "about": "YouTube — local councillor: coverage of Great House Farm (Tŷ Mawr) and Llandough, from the media register."
+  },
+  "mr-penarth-nub-news": {
+   "name": "Penarth Nub News",
+   "kind": "Newspaper",
+   "about": "Penarth Nub News: coverage of Great House Farm (Tŷ Mawr) and Llandough, from the media register."
+  },
+  "mr-research-frameworks-for-the-archaeology-of-wales": {
+   "name": "Research Frameworks for the Archaeology of Wales",
+   "kind": "Journal",
+   "about": "Research Frameworks for the Archaeology of Wales: coverage of Great House Farm (Tŷ Mawr) and Llandough, from the media register."
+  },
+  "mr-penarth-times": {
+   "name": "Penarth Times",
+   "kind": "Newspaper",
+   "about": "Penarth Times: coverage of Great House Farm (Tŷ Mawr) and Llandough, from the media register."
+  },
+  "mr-current-archaeology": {
+   "name": "Current Archaeology",
+   "kind": "Journal",
+   "about": "Current Archaeology: coverage of Great House Farm (Tŷ Mawr) and Llandough, from the media register."
+  },
+  "mr-instagram-family-page": {
+   "name": "Instagram — family page",
+   "kind": "Social account",
+   "about": "The family’s Instagram page: carousels and reels on the records of Great House Farm (Tŷ Mawr), Llandough."
   }
  },
  "posts": [
@@ -500,7 +557,7 @@
   },
   {
    "id": "mr-0104",
-   "mr": "MR-0104",
+   "mr": "MR-0104+MR-0162",
    "date": "2018-08-20",
    "when": "20 August 2018",
    "dtiso": "2018-08-20",
@@ -523,6 +580,10 @@
     [
      "Internet Archive copy",
      "http://web.archive.org/web/20221013001441/https://www.peoplescollection.wales/items/871591"
+    ],
+    [
+     "Wikimedia Commons copy (MR-0162)",
+     "https://commons.wikimedia.org/wiki/File:Great_House_Farm,_Llandough.jpg"
     ],
     [
      "Media register MR-0104",
@@ -1743,6 +1804,493 @@
     ]
    ],
    "yt": "hS4aN9dBr4I"
+  },
+  {
+   "id": "mr-0161",
+   "mr": "MR-0161",
+   "date": "2020-04-05",
+   "when": "5 April 2020",
+   "dtiso": "2020-04-05",
+   "actor": "mr-sconzani-blog",
+   "kind": "Blog",
+   "text": "A local-history blog described the Irbic cross in St Dochdwy’s churchyard: a Sutton-stone pillar-cross of the 10th–11th century with its IRBICI inscription.",
+   "key": "sconzani: Llandough : the Irbic cross",
+   "hashtags": [
+    "#blog",
+    "#sconzani",
+    "#2020",
+    "#heritage",
+    "#church",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The post",
+     "http://sconzani.blogspot.com/2020/04/llandough-irbic-cross.html"
+    ],
+    [
+     "Media register MR-0161",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0163",
+   "mr": "MR-0163",
+   "date": "2020-04-01",
+   "when": "April 2020",
+   "dtiso": "2020-04",
+   "actor": "mr-sconzani-blog",
+   "kind": "Blog",
+   "text": "A local-history blog traced St Dochdwy’s Church: the earlier church moved stone by stone to Leckwith, and the present church consecrated in 1866.",
+   "key": "sconzani: Llandough : St Dochdwy's Church",
+   "hashtags": [
+    "#blog",
+    "#sconzani",
+    "#2020",
+    "#heritage",
+    "#church",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The post",
+     "http://sconzani.blogspot.com/2020/04/llandough-st-dochdwys-church.html"
+    ],
+    [
+     "Media register MR-0163",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0165",
+   "mr": "MR-0165",
+   "date": "2023-11-17",
+   "when": "17 November 2023",
+   "dtiso": "2023-11-17",
+   "actor": "mr-heneb-her-archwilio",
+   "kind": "Heritage record",
+   "text": "The Heneb Historic Environment Record for Llandough Roman Villa: Iron Age farmstead, a two-phase Roman villa, early-medieval burials and a medieval grange, linked to the Great House Farm cemetery record.",
+   "key": "Heneb Historic Environment Record: GGAT00768s",
+   "hashtags": [
+    "#heritage",
+    "#henebher",
+    "#2023",
+    "#villa",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The record",
+     "https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT00768s"
+    ],
+    [
+     "Media register MR-0165",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0176",
+   "mr": "MR-0176",
+   "date": "2007-01-01",
+   "when": "2007",
+   "dtiso": "2007",
+   "actor": "mr-vale-of-glamorgan-council-county-treasures",
+   "kind": "Post",
+   "text": "The Vale of Glamorgan County Treasures survey recorded the locally important buildings of Llandough near Penarth.",
+   "key": "Llandough County Treasures Report",
+   "hashtags": [
+    "#post",
+    "#valeofglamorgancouncil",
+    "#2007",
+    "#heritage",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The source",
+     "http://www.llandough-cc.co.uk/_UserFiles/Files/Stories%20and%20the%20Past/Llandough%20County%20Treasures%20Report.pdf"
+    ],
+    [
+     "Media register MR-0176",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0183",
+   "mr": "MR-0183",
+   "date": "2026-10-22",
+   "when": "22 October 2026",
+   "dtiso": "2026-10-22",
+   "actor": "mr-instagram-family-page",
+   "kind": "Post",
+   "text": "The family’s Instagram carousel set four plans of the farm side by side, from the 1824 Bute estate survey to the May 1939 agreement plan.",
+   "key": "One Welsh farm on four maps, 1824–1939. Swipe through.",
+   "hashtags": [
+    "#instagram",
+    "#familypage",
+    "#2026",
+    "#titlechain",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The post",
+     "https://www.instagram.com/p/DeytWswlXQp/"
+    ],
+    [
+     "Media register MR-0183",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0184",
+   "mr": "MR-0184",
+   "date": "2026-10-22",
+   "when": "22 October 2026",
+   "dtiso": "2026-10-22",
+   "actor": "mr-instagram-family-page",
+   "kind": "Post",
+   "text": "The family’s Instagram reel explained the 1841 tithe apportionment: the Marquess of Bute as landowner, John Williams as occupier, 36 parcels of about 119 acres.",
+   "key": "How to read an 1841 farm record in 3 steps.",
+   "hashtags": [
+    "#instagram",
+    "#familypage",
+    "#2026",
+    "#titlechain",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The post",
+     "https://www.instagram.com/reel/Deysot5DGF5/"
+    ],
+    [
+     "Media register MR-0184",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0189",
+   "mr": "MR-0189+MR-0192",
+   "date": "2023-01-26",
+   "when": "26 January 2023",
+   "dtiso": "2023-01-26",
+   "actor": "mr-youtube-bob-s-rail-relics",
+   "kind": "Video",
+   "text": "A rail-heritage channel visited the disused Penarth Dock station and the short-lived halt at Llandough; viewers’ comments recall the Llandough sidings still busy in 1963.",
+   "key": "Penarth Dock, the staion and the strange halt at Llandough",
+   "hashtags": [
+    "#youtube",
+    "#bobsrailrelics",
+    "#2023",
+    "#heritage",
+    "#railway",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=oSl4X6dg35Y"
+    ],
+    [
+     "Comment thread (MR-0192)",
+     "https://www.youtube.com/watch?v=oSl4X6dg35Y&lc=UgxR31tiNmTnZbE0EJR4AaABAg"
+    ],
+    [
+     "Media register MR-0189",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0190",
+   "mr": "MR-0190",
+   "date": "2020-11-12",
+   "when": "12 November 2020",
+   "dtiso": "2020-11-12",
+   "actor": "mr-youtube-parish-of-penarth-llandough",
+   "kind": "Video",
+   "text": "The Parish of Penarth & Llandough introduced the parish, St Dochdwy’s included, in a short video.",
+   "key": "About the Parish of Penarth & Llandough",
+   "hashtags": [
+    "#youtube",
+    "#parishofpenarthllandough",
+    "#2020",
+    "#heritage",
+    "#church",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=lXtnlEL-oEE"
+    ],
+    [
+     "Media register MR-0190",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0191",
+   "mr": "MR-0191",
+   "date": "2020-11-24",
+   "when": "24 November 2020",
+   "dtiso": "2020-11-24",
+   "actor": "mr-youtube-local-councillor",
+   "kind": "Video",
+   "text": "A local councillor’s video set out proposals for 130 homes at the bottom of Llandough Hill and announced a public online meeting.",
+   "key": "Llandough Hill development",
+   "hashtags": [
+    "#youtube",
+    "#localcouncillor",
+    "#2020",
+    "#planning",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "Watch on YouTube",
+     "https://www.youtube.com/watch?v=q-G5LVbZ9YY"
+    ],
+    [
+     "Media register MR-0191",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0193",
+   "mr": "MR-0193",
+   "date": "2026-10-22",
+   "when": "22 October 2026",
+   "dtiso": "2026-10-22",
+   "actor": "mr-instagram-family-page",
+   "kind": "Post",
+   "text": "The family’s Instagram carousel listed six kinds of record behind the farm’s story, from the 1881 census to the 1987 law report.",
+   "key": "What's in the archive? 6 kinds of record behind one Welsh farm's story, 1881 to 1992. Swipe through.",
+   "hashtags": [
+    "#instagram",
+    "#familypage",
+    "#2026",
+    "#familyhistory",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The post",
+     "https://www.instagram.com/p/Dez_LCrD2jp/"
+    ],
+    [
+     "Media register MR-0193",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0194",
+   "mr": "MR-0194",
+   "date": "2021-04-15",
+   "when": "15 April 2021",
+   "dtiso": "2021-04-15",
+   "actor": "mr-penarth-nub-news",
+   "kind": "Press",
+   "text": "Penarth Nub News ran a book excerpt on Roman South Wales, describing the Llandough villa and its bath block, excavated in 1979 ahead of development.",
+   "key": "'Romans in South Wales' - An excerpt from Karl-James Langford's new book",
+   "hashtags": [
+    "#press",
+    "#penarthnubnews",
+    "#2021",
+    "#heritage",
+    "#villa",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The report: Penarth Nub News",
+     "https://penarth.nub.news/news/local-news/39romans-in-south-wales39-an-excerpt-from-karl-james-langford39s-new-book"
+    ],
+    [
+     "Media register MR-0194",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0199",
+   "mr": "MR-0199",
+   "date": "2026-10-19",
+   "when": "19 October 2026",
+   "dtiso": "2026-10-19",
+   "actor": "mr-vale-of-glamorgan-hub",
+   "kind": "Post",
+   "text": "The family shared a video in the public Vale of Glamorgan HUB group, linking the dartboard timeline of the case.",
+   "key": "Vale of Glamorgan HUB: family video post linking the dartboard timeline",
+   "hashtags": [
+    "#social",
+    "#valeofglamorganhub",
+    "#2026",
+    "#1987case",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The post",
+     "https://www.facebook.com/groups/valeofglamorgan/posts/1428268012744339/"
+    ],
+    [
+     "Media register MR-0199",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0202",
+   "mr": "MR-0202",
+   "date": "2015-01-01",
+   "when": "2015",
+   "dtiso": "2015",
+   "actor": "mr-research-frameworks-for-the-archaeology-of-wales",
+   "kind": "Journal",
+   "text": "The Research Framework for the Archaeology of Wales cites the 1994 Cotswold Archaeological Trust preliminary report on the excavations at Great House Farm, Llandough.",
+   "key": "EARLY MEDIEVAL WALES (research framework bibliography/review)",
+   "hashtags": [
+    "#journal",
+    "#researchframeworksforthearchaeologyofwales",
+    "#2015",
+    "#heritage",
+    "#cemetery",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The article",
+     "https://researchframeworks.org/wales/wp-content/uploads/sites/40/2015/03/VERSION200120EARLY20MEDIEVAL.pdf"
+    ],
+    [
+     "Media register MR-0202",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0203",
+   "mr": "MR-0203",
+   "date": "2020-11-27",
+   "when": "27 November 2020",
+   "dtiso": "2020-11-27",
+   "actor": "mr-penarth-times",
+   "kind": "Press",
+   "text": "The Penarth Times reported residents’ concern over a proposal for about 136 homes on land south of Llandough Hill and Penarth Road.",
+   "key": "Concern over proposed big housing development near Penarth",
+   "hashtags": [
+    "#press",
+    "#penarthtimes",
+    "#2020",
+    "#planning",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The report: Penarth Times",
+     "https://www.penarthtimes.co.uk/news/18903046.concern-proposed-big-housing-development-near-penarth/"
+    ],
+    [
+     "Media register MR-0203",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0204",
+   "mr": "MR-0204",
+   "date": "2023-04-01",
+   "when": "1 April 2023",
+   "dtiso": "2023-04-01",
+   "actor": "mr-penarth-times",
+   "kind": "Press",
+   "text": "The Penarth Times reported that the Vale of Glamorgan Council planning committee granted outline permission for 133 homes south of Llandough Hill.",
+   "key": "Plans for 133 new homes in Llandough approved",
+   "hashtags": [
+    "#press",
+    "#penarthtimes",
+    "#2023",
+    "#planning",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The report: Penarth Times",
+     "https://www.penarthtimes.co.uk/news/23427878.plans-133-new-homes-llandough-approved/"
+    ],
+    [
+     "Media register MR-0204",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0205",
+   "mr": "MR-0205",
+   "date": "2011-11-17",
+   "when": "17 November 2011",
+   "dtiso": "2011-11-17",
+   "actor": "mr-penarth-times",
+   "kind": "Press",
+   "text": "A reader’s letter in the Penarth Times recalled the monastery at Llandough and the gift of Llandough lands to Tewkesbury Abbey around 1106.",
+   "key": "History of St Mary’s",
+   "hashtags": [
+    "#press",
+    "#penarthtimes",
+    "#2011",
+    "#heritage",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The report: Penarth Times",
+     "https://www.penarthtimes.co.uk/news/letters/9367613.history-of-st-marys/"
+    ],
+    [
+     "Media register MR-0205",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
+  },
+  {
+   "id": "mr-0225",
+   "mr": "MR-0225",
+   "date": "1996-01-01",
+   "when": "1996",
+   "dtiso": "1996",
+   "actor": "mr-current-archaeology",
+   "kind": "Journal",
+   "text": "Current Archaeology carried an article by the excavation directors on Llandough church and the 1994 cemetery excavation.",
+   "key": "Llandough (Current Archaeology 146, pp. 73-77)",
+   "hashtags": [
+    "#journal",
+    "#currentarchaeology",
+    "#1996",
+    "#heritage",
+    "#cemetery",
+    "#greathousefarm"
+   ],
+   "src": [
+    [
+     "The article",
+     "http://www.llandough-cc.co.uk/_UserFiles/Files/Buildings/St%20Dochdwys%20Church.pdf#current-archaeology-146"
+    ],
+    [
+     "Media register MR-0225",
+     "https://research.bucklerfamily.estate/evidence/media-coverage-1850-2026/"
+    ]
+   ]
   }
  ]
 }
