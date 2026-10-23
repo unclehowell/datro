@@ -665,7 +665,7 @@ def build():
     write("wall.css", WALLCSS + ("" if NOW else TS.CSS))
     # keep the press feed as papers.html
     idx = os.path.join(SITE, "index.html")
-    if not NOW and os.path.exists(idx) and "wl-hero" not in open(idx, encoding="utf-8").read(): shutil.copy(idx, os.path.join(SITE, "papers.html"))
+    pass   # papers.html (the old press feed) is retired on fb.: it ran to 1995 and the wall carries the press as shared links
     wall = [x for x in EV if x["wall"]]
     first = wall[:45]
     cards = []; lasty = None
@@ -813,6 +813,14 @@ def build():
                 vis = html.unescape(re.sub(r"<[^>]+>", " ", vis)); m = BANNED.search(vis)
                 if m: bad.append((f, m.group(0), vis[max(0, m.start() - 60):m.end() + 40]))
     if bad: raise SystemExit("WALL GATE: " + json.dumps(bad[:12], ensure_ascii=False))
+    if not NOW:   # living family by role only on fb.: the 1988 cutting's names of the living become their roles; the superseded press feed (unlinked, ran to 1995) goes
+        for root, _, files in os.walk(SITE):
+            for f in files:
+                if not f.endswith(".html"): continue
+                fp = os.path.join(root, f); t = open(fp, encoding="utf-8").read()
+                t2 = re.sub(r"his wife Branwen and their three children Hywel, Rhys and Amy", "his wife and their three children", t)
+                if t2 != t: open(fp, "w", encoding="utf-8").write(t2)
+        if os.path.exists(os.path.join(SITE, "papers.html")): os.remove(os.path.join(SITE, "papers.html"))
     dd = TS.check(SITE)   # one date per post, no year in a name (both editions)
     if dd: raise SystemExit("DATE GATE: " + json.dumps(dd[:12], ensure_ascii=False))
     if not NOW:

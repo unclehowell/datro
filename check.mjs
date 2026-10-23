@@ -6,7 +6,7 @@ const dir=new URL('./'+D+'/',import.meta.url); let errors=[];
 const read=f=>readFileSync(new URL(f,dir),'utf8'); const ls=d=>existsSync(new URL(d,dir))?readdirSync(new URL(d,dir)):[];
 const pages=['index.html','profiles.html','friends.html',...(existsSync(new URL('timeline.html',dir))?['timeline.html']:[]),...ls('u/').map(f=>'u/'+f),...ls('n/').map(f=>'n/'+f),...ls('wall/').map(f=>'wall/'+f)];
 const BANNED=/\b(thief|thieves|stolen|looted|criminal|racket|lawfare|fraud\w*|says|claims|claimed|claiming|according to|alleged\w*|allegation\w*|hearsay|unverified)\b|family[’']?s? (account|position)/i;
-const PRIVATE=[/robin\s*hill/i,/hywelapbuckler/i,/7845\s*933\s*262/,/\b0?7\d{3}\s?\d{3}\s?\d{3}\b/,/\+44\s?7\d{3}/,/[\w.+-]+@[\w-]+\.[\w.]+/,/Branwen\s+Buckler/i,NOW?/(?<!Coed )\bSion\b(?! Buckler\b)/:/(?<!Coed )\bSion\b/,...(NOW?[/\bHywel\b/i]:[])];
+const PRIVATE=[/(?<!Coed Sion )\bHywel\b/,/robin\s*hill/i,/hywelapbuckler/i,/7845\s*933\s*262/,/\b0?7\d{3}\s?\d{3}\s?\d{3}\b/,/\+44\s?7\d{3}/,/[\w.+-]+@[\w-]+\.[\w.]+/,/Branwen\s+Buckler/i,NOW?/(?<!Coed )\bSion\b(?! Buckler\b)/:/(?<!Coed )\bSion\b/,...(NOW?[/\bHywel\b/i]:[])];
 let dated=0;
 for(const p of pages){
   const raw=read(p);
