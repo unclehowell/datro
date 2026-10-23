@@ -101,7 +101,7 @@ R = [
        detail='The deed is not on the first-registration schedule. The missing 1969 root deed and the 1971 abstract are a gap in the chain of title.',
        base=2000, sources=[src('BP Properties Ltd and BP Pension Trust — Forensic Assessment', WIKI + '/scrutiny-and-accountability/government-public-authority-involvement/bp-properties-bp-pension-trust-forensic-institutional-review/')]),
   dict(date='1974-07-03', date_label='3 Jul 1974', desk='court', issued_to='Cardiff County Court (1974 action)',
-       what='Mary pleaded ownership under the Limitation Act 1939; the case was part-heard and never relisted, so her plea was never decided.',
+       what='The 1974 action was adjourned part heard on 3 Jul 1974 for a formal defence; Mary\u2019s defence then pleaded ownership under the Limitation Act 1939, and the case was never relisted, so her plea was never decided.',
        detail='Procedural point: a defence of ownership was pleaded and left undecided. Nineteen weeks later the licence letters went out instead of the plea being tried.',
        base=50000, sources=[src('GHF-E135 — Mary\u2019s plea of ownership and the pleadings, 1974', WIKI + '/evidence-library/ghf-e135-3-july-1974-mary-williams-plea-of-ownership-and-pleadings/')]),
   dict(date='1974-10-31', date_label='31 Oct 1974', desk='fair', issued_to='BP Pension Trust Ltd and BP Properties Ltd',
