@@ -2,6 +2,9 @@
 
 This branch is an isolated clone of the `fcg` branch's serverless WordPress-shaped CMS pattern. It deliberately does not modify `fcg` or the source WordPress.com site.
 
+
+> **Migration gate — NOT SAFE TO PURGE THE SOURCE (audit 23 October 2026).** The source WordPress.com content API currently reports **975 published pages, 0 published posts, and 130 media-library records**, plus **59 pages with private/draft/pending/future status**. The older 442-page figure below is historical and must not be used as the current source total. The live D1 row-read quota was exhausted during this audit, preventing verification of current mirror counts and blocking the attempted catch-up write. The import cursor was reset to `page:1` and a reason recorded, but completion has **not** been verified. This mirror does not contain an offline copy of all 130 binaries; many media URLs still resolve to WordPress.com. **Keep the source site live** until the public-page inventory is reconciled, the non-public content has been preserved privately or explicitly excluded, linked assets are copied and verified, routes/internal links work without the source, and a repeatable migration check passes. Full findings: [MIRROR_AUDIT_2026-10-23.md](MIRROR_AUDIT_2026-10-23.md).
+
 ## Deployment shape
 
 - Cloudflare Worker: `research-wp`
