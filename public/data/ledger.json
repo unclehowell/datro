@@ -1,7 +1,9 @@
 {
  "schema": "oldbill-ledger/1",
- "generated": "2026-10-22 03:52 UTC",
+ "generated": "2026-10-23 00:57 UTC",
  "currency": "GBP",
+ "engine": "beancount",
+ "source": "ledger/main.beancount",
  "parties": [
   {
    "party": "BP Properties Ltd / BP Pension Trust (now BP plc)",

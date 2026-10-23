@@ -60,3 +60,12 @@ Change the inputs in `tools/damages.py` (never a total by hand), rebuild, export
 gains are for institutions and companies only. Tickets: append to `R` or `ORDERS` in `tools/build.py`.
 
 © the Williams-Buckler family of Tŷ Mawr. Licence: https://bucklerfamily.estate/licence/
+
+## Ledger (Beancount, 23 Oct 2026)
+The ledger section renders from `ledger/main.beancount`: plain-text Beancount, the same engine and conventions as
+accounts.bucklerfamily.estate (GBP; renamed roots `Borne` / `Caused` / `Liable` so it never mixes with cash; one transaction per
+loss head with its basis, low/high, allocation and sources as metadata; reopen postings as separate `#reopen` transactions
+linked `^L-xxx`). `tools/build.py` loads it with Beancount and takes the books totals from bean-query; a copy is served at
+`/ledger/main.beancount`. After a figure change in `tools/damages.py`:
+`python3 tools/to_beancount.py && bean-check ledger/main.beancount && python3 tools/build.py` (requirements.txt).
+The build stops if the ledger's heads no longer match the damages schedule. Sync with accounts.: see SYNC.md on the accounts branch.

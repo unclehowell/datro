@@ -230,6 +230,56 @@ COSTS = [dict(id=l['id'], group='heads', head=l['head'], account=l['id'][2:].tit
 APPORTION = [(p['name'], k, p['route']) for k, p in DMG.PARTIES.items()]  # v2: each loss head posts to its own parties (damages.py alloc)
 MEMO = []  # v2: the two value-on-the-land lines now sit inside head H-2 (Restitutionary Disgorgement)
 
+
+# ---------- Beancount: the ledger is the source for the ledger section (accounts.bucklerfamily.estate's engine) ----------
+LEDGER = (HERE / 'site' / 'ledger') if (HERE / 'site').exists() else (HERE.parent / 'ledger')
+def _num(s):
+    v = float(s); return int(v) if v == int(v) else v
+def load_ledger():
+    from beancount import loader
+    from beancount.core import data as bdata
+    from beanquery import query as bq
+    ents, errs, opts = loader.load_file(str(LEDGER / 'main.beancount'))
+    if errs: raise SystemExit('ledger errors: %r' % errs[:3])
+    tx = sorted([e for e in ents if isinstance(e, bdata.Transaction)], key=lambda e: e.meta['lineno'])
+    reopen = {e.meta['id']: e for e in tx if 'reopen' in e.tags}
+    out = []
+    for e in tx:
+        if 'reopen' in e.tags: continue
+        m = e.meta; borne = e.postings[0]; acct = borne.account.split(':', 2)[2]; amt = float(borne.units.number)
+        d = {'id': m['id'], 'group': m['group']}
+        if m['group'] != 'heads': d['date'] = e.date.isoformat()
+        d.update(head=e.narration, account=acct, amount=(amt if m['group'] == 'heads' else _num(amt)))
+        if 'low' in m: d.update(low=_num(m['low']), high=_num(m['high']))
+        d['estimate'] = m['estimate'] == 'yes'
+        if m.get('nil') == 'yes': d['nil'] = True
+        d['basis'] = m['basis']
+        d['sources'] = [{'title': t_, 'url': u_ or None} for t_, u_ in (m['source%d' % n].rsplit(' | ', 1) for n in range(1, 99) if 'source%d' % n in m)]
+        d['status'] = m['status']
+        if 'alloc' in m: d['alloc'] = {k: int(v) for k, v in (x.split() for x in m['alloc'].split(', '))}
+        if 'causation' in m: d['causation'] = m['causation'] or None
+        d['borne_by'] = 'Team Williams'; d['liable_now'] = 'Team Williams'
+        a2 = round(amt, 2) if m['group'] == 'heads' else _num(round(amt, 2))
+        d['postings'] = [{'account': borne.account, 'dr': a2}, {'account': e.postings[1].account, 'cr': a2}]
+        r = reopen.get(m['id'])
+        if r:
+            d['liable_if_reopened'] = ' · '.join('%s %d%%' % (DMG.PARTIES[k]['short'], v) for k, v in d['alloc'].items())
+            d['reopen_postings'] = [{'account': p.account, 'dr': float(p.units.number)} for p in r.postings if p.units.number > 0] + \
+                                   [{'account': p.account, 'cr': -float(p.units.number)} for p in r.postings if p.units.number < 0]
+        else:
+            d['liable_if_reopened'] = 'Team Regime once a figure is on the record' if d.get('nil') else 'Team Williams'
+            d['reopen_postings'] = []
+        out.append(d)
+    def bqsum(where):
+        _, rows = bq.run_query(ents, opts, 'SELECT sum(number) WHERE ' + where)
+        return round(abs(float(rows[0][0] or 0)), 2) if rows else 0.0
+    books = {'now': [bqsum("number > 0 AND NOT ('reopen' IN tags)"), bqsum("number < 0 AND NOT ('reopen' IN tags)")],
+             'reopened': [bqsum('number > 0'), bqsum('number < 0')]}
+    for k, (dr, cr) in books.items(): assert abs(dr - cr) < 0.005, ('books do not balance', k, dr, cr)
+    import shutil
+    (PUB / 'ledger').mkdir(parents=True, exist_ok=True); shutil.copy(LEDGER / 'main.beancount', PUB / 'ledger' / 'main.beancount')
+    return out, books
+
 BANNED = ['says', 'claims', 'according to', 'hearsay', 'unverified', 'alleged', 'fraud', 'stolen', 'branwen', 'sion', 'disclaimer', 'not a finding', 'subject to', 'illustrative', 'roi', 'cagr', 'co-financier', 'investor']
 
 def band_for(points):
@@ -267,35 +317,14 @@ def build():
     for o in ORDERS: tickets.append(mk(o, 'williams'))
     for i, r in enumerate(sorted([r for r in R if 'id' not in r], key=lambda x: x['date']), 1): tickets.append(mk(r, 'regime', i))
     for r in [r for r in R if 'id' in r]: tickets.append(mk(r, 'regime'))
-    # ledger postings
-    entries = []
-    for c in COSTS:
-        e = dict(c); amt = round(c['amount'], 2)
-        e['borne_by'] = 'Team Williams'; e['liable_now'] = 'Team Williams'
-        e['postings'] = [{'account': 'Borne:Team-Williams:' + c['account'], 'dr': amt}, {'account': 'Caused:' + c['account'], 'cr': amt}]
-        if c['status'] == 'contingent' and amt > 0:
-            e['liable_if_reopened'] = ' · '.join('%s %d%%' % (DMG.PARTIES[k]['short'], v) for k, v in c['alloc'].items())
-            pennies = int(round(amt * 100)); parts = []; used = 0
-            for acct, share in c['alloc'].items():
-                p = pennies * share // 100; parts.append([acct, p]); used += p
-            parts[0][1] += pennies - used
-            e['reopen_postings'] = [{'account': 'Liable:Team-Regime:' + a, 'dr': p / 100} for a, p in parts] + [{'account': 'Borne:Team-Williams:' + c['account'], 'cr': amt}]
-        else:
-            e['liable_if_reopened'] = 'Team Regime once a figure is on the record' if c.get('nil') else 'Team Williams'
-            e['reopen_postings'] = []
-        entries.append(e)
-    def totals(reopen):
-        dr = sum(p.get('dr', 0) for e in entries for p in e['postings'] + (e['reopen_postings'] if reopen else []))
-        cr = sum(p.get('cr', 0) for e in entries for p in e['postings'] + (e['reopen_postings'] if reopen else []))
-        return round(dr, 2), round(cr, 2)
-    for r_ in (False, True):
-        dr, cr = totals(r_); assert abs(dr - cr) < 0.005, (r_, dr, cr)
+    # ledger: read from the Beancount ledger (ledger/main.beancount, written by tools/to_beancount.py) — same engine as accounts.
+    entries, books = load_ledger()
     now = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')
     tj = {'schema': 'oldbill-tickets/1', 'generated': now,
           'rubric': {'bands': [dict(zip(['key', 'name', 'lo', 'hi', 'colour', 'example'], b)) for b in BANDS],
                      'multipliers': [{'key': k, 'x': v[0], 'why': v[1]} for k, v in MULTS.items()], 'cap': 1000000},
           'desks': DESKS, 'tickets': tickets}
-    lj = {'schema': 'oldbill-ledger/1', 'generated': now, 'currency': 'GBP',
+    lj = {'schema': 'oldbill-ledger/1', 'generated': now, 'currency': 'GBP', 'engine': 'beancount', 'source': 'ledger/main.beancount',
           'parties': [{'party': n, 'account': 'Liable:Team-Regime:' + a, 'route': r} for n, a, r in APPORTION],
           'entries': entries, 'memo': MEMO, 'measure': 'analyst compensatory build-up, mid'}
     # boards
@@ -312,7 +341,7 @@ def build():
             if reopen and e['reopen_postings']: R_['gbp'] += amt
             else: W_['gbp'] += amt
         return {'williams': W_, 'regime': R_}
-    summary = {'now': board(False), 'reopened': board(True), 'books': {'now': totals(False), 'reopened': totals(True)},
+    summary = {'now': board(False), 'reopened': board(True), 'books': books,
                'counts': {'tickets': len(tickets), 'regime_tickets': sum(1 for t in tickets if t['team'] == 'regime'),
                           'williams_tickets': sum(1 for t in tickets if t['team'] == 'williams'), 'ledger_entries': len(entries)}}
     tj['summary'] = summary; lj['summary'] = {'books': summary['books'], 'heads_total': round(sum(e['amount'] for e in entries if e.get('group') == 'heads'), 2), 'priced_total': round(sum(e['amount'] for e in entries), 2)}
