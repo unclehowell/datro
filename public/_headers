@@ -1,0 +1,10 @@
+/assets/*
+  Cache-Control: public, max-age=3600
+/index.json
+  Cache-Control: no-cache
+/captures.json
+  Cache-Control: no-cache
+/*/raw.html
+  Content-Security-Policy: sandbox allow-popups
+/*/raw
+  Content-Security-Policy: sandbox allow-popups
