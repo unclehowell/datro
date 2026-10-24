@@ -42,6 +42,8 @@ npx wrangler deploy
 
 ## GraphQL (POST `/graphql`)
 
+Public reads expose published records only. `posts(status: draft)` is rejected, and `post(slug)` / `page(slug)` constrain both publication status and content type. The source-level regression checks run with `npm test` from this folder.
+
 ```graphql
 query {
   posts(status: PUBLISH, first: 10) {
