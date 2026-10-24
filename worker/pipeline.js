@@ -1,4 +1,4 @@
-/* Hive drafts pipeline widget v1.1.0 — https://hive.bucklerfamily.estate/pipeline.js
+/* Hive drafts pipeline widget v1.2.0 (full mode adds a collapsible "Hive drafts activity" list: latest rounds from hive.json versions, metadata only) — https://hive.bucklerfamily.estate/pipeline.js
    Renders the promotion pyramid: four labelled rows of hex cells, bottom READY TO SEND, then DEFINITELY READY TO SEND,
    GMAIL DRAFT, apex WAYBACK; drafts IN REVIEW are counted beside it (waiting to climb in)
    into every element with [data-hive-pipeline]. Data: data-src (default https://hive.bucklerfamily.estate/hive.json, CORS *).
@@ -38,7 +38,7 @@
     ".hvp .hvp-pl{flex:0 0 136px;width:136px;margin:0!important;padding:0 6px 0 0!important;text-align:right;font-size:11px!important;line-height:1.12!important;font-family:inherit;text-transform:none!important}.hvp .hvp-pl b{display:block;margin:0!important;font-size:11px!important;line-height:1.12!important;font-weight:700;letter-spacing:.02em!important;white-space:nowrap}.hvp .hvp-pl span{display:block;margin:0!important;font-size:10px!important;line-height:1.12!important;opacity:.7;white-space:nowrap}" +
     ".hvp-hx{display:block;flex:0 0 34px;width:34px;height:39px;line-height:0;text-decoration:none}.hvp-hx svg{width:34px;height:39px;display:block}" +
     ".hvp .hvp-rv{text-align:center;font-size:13px;line-height:1.3;margin:8px 0 4px;opacity:.9}.hvp-rv b{font-weight:700}.hvp-rvc{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:4px 0 0}" +
-    ".hvp-li{list-style:none;margin:0;padding:0}.hvp-li li{margin:0 0 8px;font-size:.85em}.hvp-li a{color:inherit}";
+    ".hvp-li{list-style:none;margin:0;padding:0}.hvp-li li{margin:0 0 8px;font-size:.85em}.hvp-li a{color:inherit}.hvp-act{margin:10px 0 0}.hvp-act summary{cursor:pointer}.hvp-al li{margin:0 0 5px;overflow-wrap:anywhere}";
   function style() { if (document.getElementById("hvp-css")) return; var s = document.createElement("style"); s.id = "hvp-css"; s.textContent = CSS; document.head.appendChild(s); }
   function chip(d) {
     var t = tierOf(d), body = (d.context && d.context.body) || d.draft, href;
@@ -77,6 +77,20 @@
       return "<li>" + chip(d) + " <b>" + esc(SHORT[ORDER[k]]) + '</b><div class="hvp-bar">' + s + "</div></li>";
     }).join("") + "</ul>";
   }
+  function fmtUK(s) { try { return new Date(s).toLocaleString("en-GB", { timeZone: "Europe/London", day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" }); } catch (e) { return String(s).slice(0, 16).replace("T", " ") + " UTC"; } }
+  function activity(j) {
+    var cur = {}; (j.board || []).forEach(function (d) { cur[d.draft] = d; });
+    var v = (j.versions || []).filter(function (x) { return x && x.at; }).slice().sort(function (a, b) { return a.at < b.at ? 1 : -1; }).slice(0, 15);
+    if (!v.length) return "";
+    var turns = {}; (j.board || []).forEach(function (d) { var t = String(d.turn || "").split(/[ ,(]/)[0] || "?"; turns[t] = (turns[t] || 0) + 1; });
+    var tw = Object.keys(turns).map(function (k) { return esc(k) + " " + turns[k]; }).join(" \u00b7 ");
+    return '<details class="hvp-act"><summary class="hvp-sum"><b>Hive drafts activity</b> <span class="hvp-n">(latest ' + v.length + " rounds, UK time)</span></summary>" +
+      '<p class="hvp-f">Whose turn now: ' + tw + ' (drafts per seat)</p><ol class="hvp-li hvp-al">' + v.map(function (x) {
+        var d = cur[x.draft] || {}, st = d.version === x.version ? (d.status || "") : "superseded by " + (d.version || "a later version");
+        var name = d.context ? '<a href="' + HIVE + "/context/" + encodeURIComponent(x.draft) + '">' + esc(x.draft) + "</a>" : esc(x.draft);
+        return "<li>" + esc(fmtUK(x.at)) + " \u00b7 " + name + " \u00b7 <b>" + esc(x.version || "") + "</b> \u00b7 " + esc(st) + " \u00b7 " + esc(x.agent || "") + "</li>";
+      }).join("") + "</ol></details>";
+  }
   function render(el, j) {
     var items = (j.board || []).slice(), lane = el.getAttribute("data-lane");
     if (lane) items = items.filter(function (d) { return d.context && d.context.dartboard && d.context.dartboard.lane === lane; });
@@ -90,7 +104,7 @@
     }
     el.innerHTML = '<section class="hvp" aria-label="Drafts pipeline"><div class="hvp-h"><p class="hvp-t">Drafts pipeline</p><a class="hvp-a" href="' + HIVE + '/">open the Hive \u2192</a></div>' +
       (mode === "bar" ? bars(items) : pyramid(items)) +
-      '<p class="hvp-f">Each reply climbs: in review \u2192 ready to send \u2192 definitely ready to send \u2192 Gmail draft (the project owner reviews and sends) \u2192 wayback (sent and archived). ' + items.length + " draft" + (items.length === 1 ? "" : "s") + (j.board_updated ? " \u00b7 board " + esc(String(j.board_updated).slice(0, 16).replace("T", " ")) + " UTC" : "") + ".</p></section>";
+      '<p class="hvp-f">Each reply climbs: in review \u2192 ready to send \u2192 definitely ready to send \u2192 Gmail draft (the project owner reviews and sends) \u2192 wayback (sent and archived). ' + items.length + " draft" + (items.length === 1 ? "" : "s") + (j.board_updated ? " \u00b7 board " + esc(String(j.board_updated).slice(0, 16).replace("T", " ")) + " UTC" : "") + ".</p>" + (mode === "full" ? activity(j) : "") + "</section>";
   }
   function run() {
     var els = document.querySelectorAll("[data-hive-pipeline]"); if (!els.length) return; style();
