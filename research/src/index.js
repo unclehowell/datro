@@ -519,7 +519,24 @@ async function handleHtml(url, env) {
   if (path === "/") {
     return html(htmlShell(env.SITE_TITLE || "Great House Farm Wiki — Research Mirror", '<h1>' + escapeHtml(env.SITE_TITLE || "Great House Farm Wiki — Research Mirror") + '</h1><p>This is the isolated serverless mirror. The source wiki has not been modified.</p>' + await browseIndex(env), env));
   }
+  const moved = await sourceRedirect(path);
+  if (moved) return Response.redirect(url.origin + moved + url.search, 301);
   return html(htmlShell("Not found — " + (env.SITE_TITLE || "Research Mirror"), '<h1>Not found</h1><p>No published mirror page matches <code>' + escapeHtml(path) + '</code>.</p><p><a href="/">Browse the index</a></p>', env), 404);
+}
+
+// Link repair (24 Oct 2026): the wiki answers a short or old slug (e.g. /court-of-appeal-forensic-institutional-review/) with a 301 to the
+// page's current nested path; the mirror now follows the wiki's own redirect instead of showing "Not found". No D1 read. — Sion's Tab agent
+async function sourceRedirect(path) {
+  try {
+    const r = await fetch(SOURCE_SITE + path, { redirect: "manual", headers: { "User-Agent": "research-mirror-link-repair" }, cf: { cacheTtl: 3600, cacheEverything: true } });
+    if (r.status < 300 || r.status >= 400) return null;
+    const loc = new URL(r.headers.get("Location") || "", SOURCE_SITE);
+    if (loc.hostname !== new URL(SOURCE_SITE).hostname) return null;
+    const p = normalisePath(loc.pathname);
+    return p !== path && !p.startsWith("/wp-") ? p : null;
+  } catch (_) {
+    return null;
+  }
 }
 
 async function browseIndex(env) {
@@ -934,7 +951,7 @@ export default {
     if ((request.method === "GET" || request.method === "HEAD") && Object.prototype.hasOwnProperty.call(PATH_ALIASES, path)) {
       return Response.redirect(url.origin + PATH_ALIASES[path] + url.search, 301);
     }
-    if ((request.method === "GET" || request.method === "HEAD") && url.pathname.startsWith("/wp-content/uploads/")) {
+    if ((request.method === "GET" || request.method === "HEAD") && (url.pathname.startsWith("/wp-content/uploads/") || url.pathname === "/feed/" || url.pathname === "/wp-login.php" || url.pathname.startsWith("/wp-admin/"))) {
       return Response.redirect("https://greathousefarmwiki.wordpress.com" + url.pathname + url.search, 302);
     }
     if ((request.method === "GET" || request.method === "HEAD") && (path === "/" || Object.prototype.hasOwnProperty.call(STATIC_PAGES, path))) {
