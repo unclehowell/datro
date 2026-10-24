@@ -70,7 +70,7 @@ jobs:
               url, sep, rest = row.partition(",")
               url = re.sub(r"&gt;?(?=/?$)", "", url, flags=re.I)
               out.append(url + sep + rest)
-          p.write_text("\\n".join(out) + "\\n", encoding="utf-8")
+          p.write_text("\n".join(out) + "\n", encoding="utf-8")
           PY
           python3 tools/build_index.py
           find public -type f -size +24M -print
