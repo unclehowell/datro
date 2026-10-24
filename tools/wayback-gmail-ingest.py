@@ -104,6 +104,8 @@ def redact_meeting(t, c):
 
 # Family holdings volunteered in the family's own emails (standing rule 24 Oct 2026: public pages name no family
 # holdings beyond Mary Williams' statement, family photographs and William Buckler's diaries).
+FAMADDR_RE = re.compile(r"(?:\d+\s*)?Robin(?:\s|\+|%20)+Hill|CF64(?:\s|\+|%20)*4TF", re.I)  # current family address (also inside map-search links)
+FAMTOWN_RE = re.compile(r"living in Dinas Powys")
 HOLDINGS_RE = re.compile(r"considering the heirlooms I\s+have\s+inherited|I hold\s+video\s+footage")
 
 def redact(t, c):
@@ -120,6 +122,8 @@ def redact(t, c):
     t, n = RES_ADDR_RE.subn("[address removed]", t); c["address"] += n
     t, n = PCODE_RE.subn("[postcode redacted]", t); c["postcode"] += n
     t, n = HOLDINGS_RE.subn("[family detail redacted]", t); c["holdings"] += n
+    t, n = FAMADDR_RE.subn("[address redacted]", t); c["address"] += n
+    t, n = FAMTOWN_RE.subn("living [location redacted]", t); c["address"] += n
     return t
 
 def sender_name(s, sent):
