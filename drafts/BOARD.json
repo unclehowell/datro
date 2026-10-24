@@ -1,13 +1,13 @@
 {
- "updated": "2026-10-24T10:46:27Z",
+ "updated": "2026-10-24T10:50:41Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
    "id": "hmlr-lawyer-referral-sar-reply",
    "record": "HubSpot task 532395262199",
    "version": "v0.3.0",
-   "status": "TURN: Grok",
-   "turn": "Grok (seat 3; ChatGPT turn skipped after >30m idle; no review counted)",
+   "status": "TURN: Tab",
+   "turn": "Tab (dealer; reallocated from Grok to avoid duplicate live turns; verify possible 28 Oct SAR date)",
    "open_issues": 2,
    "last_change": "2026-10-23T19:39:02Z",
    "last_agent": "Tab",
@@ -36,7 +36,7 @@
     "stage": "Request (FOI / EIR) (2026-09-28)",
     "next_deadline": {
      "date": "2026-10-28",
-     "what": "SAR reply date"
+     "what": "possible SAR response date — verify against original correspondence; not yet confirmed"
     },
     "rungs_spent": [
      "Complaint, stage 1",
@@ -51,7 +51,8 @@
     "open_questions": null,
     "route": "hmlr",
     "regime": "SAR",
-    "kb_items": 23
+    "kb_items": 23,
+    "note": "The possible 28 October SAR response date is not verified from the original correspondence. Tab must retrieve the full source thread before relying on it."
    },
    "pct": 0,
    "reviews": 2,
@@ -61,7 +62,7 @@
    ],
    "stage": "TURN",
    "pct_at": "2026-10-24T09:35:25Z",
-   "last_action_at": "2026-10-24T10:38:06.610Z",
+   "last_action_at": "2026-10-24T10:49:40.979Z",
    "last_action_by": "ChatGPT",
    "version_reviews": 0,
    "version_distinct_agents": 0,
@@ -920,8 +921,8 @@
    "id": "itv-foi-archive-footage",
    "record": "HubSpot task 532517620954",
    "version": "v0.1.0",
-   "status": "OTHER AGENT'S TURN",
-   "turn": "ChatGPT, then Grok, then Claude (Tab wrote this version, so Tab waits)",
+   "status": "QUEUED: Claude after BP v2.0.1",
+   "turn": "Claude (queued after BP v2.0.1; not yet active)",
    "open_issues": null,
    "last_change": "2026-10-24T04:30:28Z",
    "last_agent": "Tab",
@@ -929,19 +930,22 @@
    "tier": "working",
    "tier_label": "IN REVIEW",
    "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)",
-   "pct": null,
+   "pct": 0,
    "reviews": 0,
    "distinct_agents": 0,
    "agents": [],
-   "stage": "TURN",
+   "stage": "QUEUED",
    "pct_at": "2026-10-24T09:35:25Z",
    "sent_version": null,
    "seat_agreements_version": null,
    "final_three_hat_version": null,
    "attachments_verified_version": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
-   "version_agents": null
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
+   "version_agents": [],
+   "last_action_at": "2026-10-24T10:49:41.151Z",
+   "last_action_by": "ChatGPT",
+   "queue_after": "bp-preservation-reply"
   },
   {
    "id": "nlw-research-enquiry",
@@ -974,8 +978,8 @@
    "id": "tna-foi-resend-22-oct",
    "record": "HubSpot task 532700380367",
    "version": "v0.1.0",
-   "status": "OTHER AGENT'S TURN",
-   "turn": "ChatGPT, then Grok, then Claude (Tab wrote this version, so Tab waits)",
+   "status": "TURN: Grok",
+   "turn": "Grok (seat 3; live assignment confirmed from HubSpot; review exact v0.1.0)",
    "open_issues": null,
    "last_change": "2026-10-24T04:30:38Z",
    "last_agent": "Tab",
@@ -983,7 +987,7 @@
    "tier": "working",
    "tier_label": "IN REVIEW",
    "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)",
-   "pct": null,
+   "pct": 0,
    "reviews": 0,
    "distinct_agents": 0,
    "agents": [],
@@ -993,9 +997,12 @@
    "seat_agreements_version": null,
    "final_three_hat_version": null,
    "attachments_verified_version": null,
-   "version_reviews": null,
-   "version_distinct_agents": null,
-   "version_agents": null
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
+   "version_agents": [],
+   "last_action_at": "2026-10-24T10:50:22.760Z",
+   "last_action_by": "ChatGPT",
+   "queue_after": null
   },
   {
    "id": "cadw-ticket-628912926",
@@ -1518,6 +1525,27 @@
    "version": "schema v3.4.2",
    "agent": "ChatGPT",
    "event": "added explicit per-version seat-agreement, final-three-hat, attachment-verification and sent-version gate fields; unverified/missing values remain null and block promotion"
+  },
+  {
+   "at": "2026-10-24T10:49:40.979Z",
+   "draft": "hmlr-lawyer-referral-sar-reply",
+   "version": "v0.3.0",
+   "agent": "ChatGPT",
+   "event": "reallocated Grok's task to Tab to avoid two live turns for Grok; source thread/date verification remains pending; no recipient text change or review counted"
+  },
+  {
+   "at": "2026-10-24T10:49:41.151Z",
+   "draft": "itv-foi-archive-footage",
+   "version": "v0.1.0",
+   "agent": "ChatGPT",
+   "event": "queued behind Claude's existing BP v2.0.1 review to prevent a second concurrent Claude task; no recipient text change or review counted"
+  },
+  {
+   "at": "2026-10-24T10:50:22.760Z",
+   "draft": "tna-foi-resend-22-oct",
+   "version": "v0.1.0",
+   "agent": "ChatGPT",
+   "event": "aligned internal STATUS block to live HubSpot subject TURN: Grok; no recipient text change or review counted"
   }
  ],
  "context_note": "drafts[].context = metadata-only context pack (recipient body, archive thread link, dartboard link, stage, next deadline, markers, open questions, rungs spent); built by hive_context.py from the dartboard roadmap, the email archive API and qa kb.json. Hive protocol v3.1.0 context sweep.",
