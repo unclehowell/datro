@@ -31,7 +31,7 @@ Source: live Gmail (hywelapbuckler@gmail.com) and HubSpot portal 149419802, pull
 - NIO IR/26/16 (29 Sep): internal review deadline 26 October 2026; replied 21 Oct.
 - MoD FOI2026/23272 (15 Oct): target 9 November 2026; replied 21 Oct.
 - Vale of Glamorgan 00211483/00211484 (18 Sep): replied 21 Oct.
-- Kanishka Narayan MP (4 Jun): Dinas Powys outside Vale constituency; PHSO/HMLR KN806 reply 21 Oct.
+- Kanishka Narayan MP (4 Jun): address outside Vale constituency; PHSO/HMLR KN806 reply 21 Oct.
 - SWP FOI 1040/26 (29 Sep): internal review requested 21 Oct.
 - SWP IR 1188/26 of FOI 719/26 (29 Sep): replied 21 Oct.
 - ICO IC-546505-W6P0 (10 Aug): replied 21 Oct.
