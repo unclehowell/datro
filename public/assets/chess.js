@@ -8,7 +8,7 @@
 var S=100;                         // world size of one square
 var BG="#1e1b4b";                  // page background = empty cells (one colour for both)
 var KIND={A:{n:"Action against Williams/Buckler ownership",m:"#e5484d",t:"#ff9b8f",c:"b"},
-          L:{n:"Legal framing (legalese)",m:"#9b9b9b",t:"#a8a8a8",c:"b"},
+          L:{n:"Legal framing or disputed interpretation",m:"#9b9b9b",t:"#a8a8a8",c:"b"},
           C:{n:"Omission, withholding or possible concealment",m:"#ffffff",t:"#ffffff",c:"b"},
           K:{n:"Record that cuts against the case",m:"#a78bfa",t:"#c4b5fd",c:"b"},
           E:{n:"Evidence: ownership, occupation, reopening",m:"#2563eb",t:"#111111",c:"w"},

@@ -145,14 +145,14 @@ ver = hashlib.sha1(js.encode() + b''.join((ROOT/'public/assets'/f).read_bytes() 
 tpl = (ROOT/'index.tpl.html').read_text(); (ROOT/'public/index.html').write_text(tpl.replace('__V__', ver))
 
 # ---- list view (text version of the whole board) ----
-KN = {'A': 'Action', 'L': 'Legal framing', 'C': 'Omission', 'K': 'Cuts against', 'E': 'Evidence', 'H': 'Heritage', 'T': 'Trees and land'}
+KN = {'A': 'Action', 'L': 'Legal framing / disputed interpretation', 'C': 'Omission', 'K': 'Cuts against', 'E': 'Evidence', 'H': 'Heritage', 'T': 'Trees and land'}
 out = []
 for e in eras:
     out.append(f'<h2 id="era-{e["r0"]}">{html.escape(e["label"])} <small>{html.escape(e["years"])} · {e["nb"]} black · {e["nw"]} white</small></h2><ol>')
     for q in sorted([q for q in sq if eras[q['e']] is e], key=lambda q: (q['r'], q['c'])):
         col = 'b' if COLOUR[q['k']] == 'b' else 'w'
         src = ' · '.join(f'<a href="{html.escape(s[1])}" rel="noopener">{html.escape(s[0])}</a>' for s in q['src'])
-        th = '' if q['th'] else ''
+        th = '<span class="tag theory-tag">Theory · working hypothesis</span>' if q['th'] else ''
         out.append(f'<li class="{col} k{q["k"]}" id="{q["id"]}"><span class="tag">{"Black" if col=="b" else "White"} · {KN[q["k"]]}</span> <span class="dt">{html.escape(q["d"] or "Undated")}</span><h3>{html.escape(q["t"])}</h3><p>{html.escape(q["x"])}</p>{th}<p class="src">{src} · <a href="/#s={q["id"]}">on the board</a></p></li>')
     out.append('</ol>')
 listhtml = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -161,7 +161,7 @@ listhtml = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta
 <script src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js" data-site="chess" data-dict="/lang/chess.json" defer></script>
 <script src="https://bucklerfamily.estate/ebook/cta.js" defer></script></head>
 <body class="listview"><header class="top"><div class="bar"><a class="brand" href="/">The Chessboard<small>Great House Farm / Tŷ Mawr</small></a><a class="btn" href="/" style="text-decoration:none">Board</a><nav class="langmount" aria-label="Language"></nav></div></header>
-<main class="lv"><h1>The board as a list</h1><p class="note">Every square of the board in time order, era by era. Black: actions, legal framings and omissions against Williams/Buckler ownership. White: evidence of ownership, occupation, heritage and the trees. {sum(1 for q in sq if COLOUR[q['k']]=='b')} black and {sum(1 for q in sq if COLOUR[q['k']]=='w')} white squares. Built {built}.</p>
+<main class="lv"><h1>The board as a list</h1><p class="note">Every square of the board in time order, era by era. Black: adverse actions and rulings, disputed title-chain steps, missing instruments, counter-evidence and all working theories. White: sourced positive records of occupation, title history, heritage and land. All Theory-marked hypotheses are black, including hypotheses favourable to Williams/Buckler. Counts are record totals, not a weighting of reliability or legal merits; black is not a finding of fraud, concealment or collusion. {sum(1 for q in sq if COLOUR[q['k']]=='b')} black and {sum(1 for q in sq if COLOUR[q['k']]=='w')} white squares. Built {built}.</p>
 <nav class="eras">{' · '.join(f'<a href="#era-{e["r0"]}">{html.escape(e["label"])}</a>' for e in eras)}</nav>
 {''.join(out)}
 <footer><p>Cited historic record from the Great House Farm Legal Wiki (greathousefarmwiki.wordpress.com).</p></footer></main></body></html>"""

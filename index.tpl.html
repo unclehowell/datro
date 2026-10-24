@@ -4,10 +4,10 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 <title>The Chessboard and the Case Sudoku — Great House Farm / Tŷ Mawr, two records side by side</title>
-<meta name="description" content="Every dated record of the Great House Farm (Tŷ Mawr) case on one zoomable chessboard: white squares for every record in the family’s favour, black squares for the opposing narrative, and a running tally of the two."/>
+<meta name="description" content="A source-linked record of the Great House Farm (Tŷ Mawr) case. Black squares map adverse decisions, disputed title-chain steps, missing records and working theories; white squares map sourced positive occupation, ownership, heritage and land records. Counts are not a verdict."/>
 <meta name="theme-color" content="#1e1b4b"/>
 <meta property="og:title" content="The Chessboard — Great House Farm / Tŷ Mawr"/>
-<meta property="og:description" content="Two records side by side, square by square, from c. 650 to 2026. Each square carries its own short paragraph; Read more opens the full text with a link to the source. Plus one 16×16 sudoku for the whole case."/>
+<meta property="og:description" content="A date-ordered, source-linked record of Great House Farm / Tŷ Mawr. Black squares include adverse decisions, unresolved title-chain questions and working theories; white squares contain sourced positive records. Counts are not a verdict."/>
 <meta property="og:type" content="website"/><meta property="og:url" content="https://chess.bucklerfamily.estate/"/>
 <meta property="og:image" content="https://chess.bucklerfamily.estate/og.png"/>
 <link rel="preload" href="/assets/fonts/barlow-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin/>
@@ -49,7 +49,7 @@
   <div class="su-pad" id="su-pad"></div>
 </section>
 <div class="toast" id="toast" role="status"></div>
-<footer class="foot" data-ghf-keep><div class="under" id="under"><span class="eraline" id="eraline"></span><span class="tally" aria-label="Tally"><b class="tw">White <span id="t-w">0</span></b> · <b class="tb">Black <span id="t-b">0</span></b><i class="tbar" id="t-bar"></i></span></div><div class="fline"><span>© Williams–Buckler family. All rights reserved. <a href="https://bucklerfamily.estate/licence/" style="color:inherit">Licence</a> · <span class="fl">Cited historic record; each square links to its source.</span></span></div></footer>
+<footer class="foot" data-ghf-keep><div class="under" id="under"><span class="eraline" id="eraline"></span><span class="tally" aria-label="Tally"><b class="tw">White <span id="t-w">0</span></b> · <b class="tb">Black <span id="t-b">0</span></b><i class="tbar" id="t-bar"></i></span></div><div class="fline"><span>© Williams–Buckler family. All rights reserved. <a href="https://bucklerfamily.estate/licence/" style="color:inherit">Licence</a> · <span class="fl">Every square links to its cited source; the colours and counts do not decide title.</span></span></div></footer>
 
 <div class="panel-bd" id="panel-bd"></div>
 <aside class="sheet sqmodal" id="panel" role="dialog" aria-modal="true" aria-label="Square" aria-live="polite">
@@ -74,12 +74,12 @@
 <aside class="sheet" id="legend" role="dialog" aria-label="Key">
   <div class="sheet-h"><strong style="color:#fff;letter-spacing:.14em;text-transform:uppercase;font-size:13px">How to read the board</strong><button class="btn x" id="l-close">Close</button></div>
   <div class="sheet-b">
-    <p class="note">One square per record, in time order, oldest at the top; within each era the squares read left to right, earliest first. The era of the rows in view is named in the line under the board. The last band, Law and remedies, holds the statute and case-law squares. Zoom out to see the whole board and which colour carries the weight; zoom in to read a square; tap it for the full text and its source.</p>
+    <p class="note">One square per record, in time order, oldest at the top; within each era the squares read left to right, earliest first. The era of the rows in view is named in the line under the board. The last band, Law and remedies, holds the statute and case-law squares. Zoom out to see the whole board; zoom in to read a square; tap it for the full text and its source. The tally counts records, not their weight or reliability. All Theory-marked hypotheses are black, including those favourable to the family. Black is not a finding of fraud, concealment or collusion; white does not by itself determine title.</p>
     <div class="lg">
-      <h4>White squares · <span id="nw"></span></h4><div class="sw" data-ghf-keep style="background:#fff"></div><div>Every record in the family’s favour: evidence of ownership and occupation, the grounds to reopen the case, heritage and lineage, the trees and the land the family worked</div><div></div>
-      <h4>Black squares · <span id="nb"></span></h4><div class="sw" data-ghf-keep style="background:#000;border:1px solid #fff"></div><div>The opposing narrative: actions against Williams/Buckler ownership, the legal framings it rests on, records withheld or not held, and records that cut against the case</div><div></div>
+      <h4>White squares · <span id="nw"></span></h4><div class="sw" data-ghf-keep style="background:#fff"></div><div>Contemporary and other sourced records supporting Williams/Buckler occupation, title history, heritage and lineage, trees and land, plus public objections to demolition. A white square records support for an aspect of the case; it is not by itself a legal finding of title.</div><div></div>
+      <h4>Black squares · <span id="nb"></span></h4><div class="sw" data-ghf-keep style="background:#000;border:1px solid #fff"></div><div>Adverse actions and judicial rulings; disputed title-chain steps; missing or unlocated instruments and court records; counter-evidence; and every Theory-marked working hypothesis, including hypotheses that favour the family. A black square identifies an issue for scrutiny, not a finding of fraud, concealment or collusion.</div><div></div>
       <h4>Empty</h4><div class="sw" data-ghf-keep style="background:#1e1b4b;border:1px solid #fff"></div><div>Purple, the colour of the page: no record placed there</div><div></div>
-      <h4>Markings</h4><div class="sw" data-ghf-keep style="background:#fff;color:#000;font-style:italic;font-size:9px;display:flex;align-items:flex-end;padding:2px">Theory</div><div>The word Theory inside a square marks a working theory.</div><div></div>
+      <h4>Markings</h4><div class="sw" data-ghf-keep style="background:#fff;color:#000;font-style:italic;font-size:9px;display:flex;align-items:flex-end;padding:2px">Theory</div><div>The word Theory marks a working hypothesis that has not been established. All Theory-marked squares are black so uncertainty remains visible regardless of which side the hypothesis may favour.</div><div></div>
     </div>
     <h4 class="kh">The text inside the squares</h4>
     <p class="note">Every square carries its own short paragraph, set inside the square. From afar you see the colours; zoom in and each square shows its date and title, then its paragraph and a Read more tab. Read more opens the square's full content: its summary, its sources and every extract placed in it from the free archive edition of the Legal Wiki (version 0.1.0, 2,033 pages) and the public Great House Farm sites. Each extract has a Visit website button that opens the source page at the passage itself where the page allows, and otherwise at the page. Personal details are withheld, and the wording follows the board's house style; the verbatim originals are on the Legal Wiki.</p>
