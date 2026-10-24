@@ -2,6 +2,9 @@ name = "fcg-wp"
 main = "src/index.js"
 
 # theme assets bundled into the Worker (20 Oct 2026)
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
 [[rules]]
 type = "Text"
 globs = ["**/*.css", "src/theme.js", "**/*.txt"]
@@ -11,8 +14,6 @@ fallthrough = true
 type = "Data"
 globs = ["**/*.woff2"]
 fallthrough = true
-compatibility_date = "2025-01-01"
-compatibility_flags = ["nodejs_compat"]
 
 [vars]
 ENVIRONMENT = "production"
