@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T10:09:33.970Z",
+  "updated": "2026-10-24T10:13:24.862Z",
   "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
   "drafts": [
     {
@@ -113,12 +113,12 @@
       "gmail_draft_id": null,
       "sent_at": null,
       "archive_url": null,
-      "pct": 61,
-      "reviews": 14,
+      "pct": 34,
+      "reviews": 15,
       "distinct_agents": 2,
       "agents": [
-        "ChatGPT",
-        "Tab"
+        "Tab",
+        "ChatGPT"
       ],
       "stage": "TURN",
       "pct_at": "2026-10-24T09:35:25Z"
@@ -175,12 +175,12 @@
       "gmail_draft_id": null,
       "sent_at": null,
       "archive_url": null,
-      "pct": 53,
+      "pct": 34,
       "reviews": 8,
       "distinct_agents": 2,
       "agents": [
-        "ChatGPT",
-        "Tab"
+        "Tab",
+        "ChatGPT"
       ],
       "stage": "TURN",
       "pct_at": "2026-10-24T09:35:25Z"
