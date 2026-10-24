@@ -1,6 +1,6 @@
 # maps.bucklerfamily.estate
 
-Tŷ Mawr (Great House Farm), Llandough-juxta-Penarth: a narrated, full-screen map story, told as our case, of how an ancient Welsh home, stewarded by one family since at least 1667, became Church View Close. v1.6.1: 56 steps from the Iron Age to 2026, each with its sources and an evidence label (VERIFIED, COURT, CASE, UNVERIFIED / not yet formally recorded).
+Tŷ Mawr (Great House Farm), Llandough-juxta-Penarth: a narrated, full-screen map story, told as our case, of how an ancient Welsh home, stewarded by one family since at least 1667, became Church View Close. v1.7.0: 60 steps from the Iron Age to 2026, each with its sources and an evidence label (VERIFIED, COURT, CASE, UNVERIFIED / not yet formally recorded).
 
 - `public/index.html`, `public/app.js`, `public/style.css`: the app (Leaflet 1.9.4, vendored under `public/vendor/leaflet/`, BSD-2-Clause).
 - `public/data/story.json`: the steps (date, caption, narration text, sources, holder per parcel by the records held and by our case).

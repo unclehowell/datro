@@ -1,5 +1,5 @@
 {
- "version": "1.6.2",
+ "version": "1.7.0",
  "center": [
   51.4527,
   -3.1985
@@ -452,6 +452,26 @@
   "ev0263": {
    "t": "EV-0263 · Commons Registration Act 1965 notices (VG41)",
    "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0263-commons-registration-1965-publicity-glamorgan-notices-vg41/"
+  },
+  "frederick": {
+   "t": "Frederick Buckler",
+   "u": "https://greathousefarmwiki.wordpress.com/frederick-buckler/#death"
+  },
+  "ev0288": {
+   "t": "EV-0288 · Press on the 1968–69 takeover of Western Ground Rents Ltd (snippets)",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0288-snippets-only-press-on-the-1968-69-takeover-battle-for-western-ground-rents-ltd-en/"
+  },
+  "ev0265": {
+   "t": "EV-0265 · HM Land Registry: compulsory registration from 1975 (SI 1975/160)",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0265-hmlr-registration-background-compulsory-1975-r29-certificate/"
+  },
+  "ev0274": {
+   "t": "EV-0274 · Probate calendar 1991: William Beverley Buckler",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0274-probate-calendar-1991-william-beverley-buckler/"
+  },
+  "ev0290": {
+   "t": "EV-0290 · South Wales Echo, 2 Jun 1990, p.2 (snippet)",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0290-snippet-only-south-wales-echo-2-jun-1990-p-2-billy-died-suddenly-this-week-he-made/"
   }
  },
  "steps": [
@@ -1598,6 +1618,48 @@
    "dur": 5.38
   },
   {
+   "date": "1967",
+   "year": 1967,
+   "base": "1947",
+   "title": "Frederick Buckler dies",
+   "headline": "1967 · Frederick Buckler, Mary’s husband, dies aged 58; Mary stays on at the farm",
+   "labels": [
+    "VERIFIED · GRO index + judgment"
+   ],
+   "short": "1967: Frederick Buckler, Mary’s husband, dies aged 58. Mary stays on in her home at the farm.",
+   "text": "1967 · Frederick Buckler, Mary’s husband, dies aged 58. VERIFIED · GRO death index, March quarter 1967, East Glamorgan 8b 364. The Court of Appeal (1987) records that he “died at some time in the period 1965-67”, and that BP admitted “Mrs Buckler was in adverse possession from her husband’s death in 1965-67 until October 31 1974”. One estate paper gives December 1965. Mary stays on at the farm.",
+   "say": "Nineteen sixty-seven. Frederick Buckler, Mary’s husband, dies, aged fifty-eight. Mary stays on in her home at the farm.",
+   "src": [
+    "family",
+    "frederick",
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "order",
+     "case": "order",
+     "note": ""
+    },
+    "AS": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "id": "s23a",
+   "dur": 7.65
+  },
+  {
    "id": "s24",
    "date": "1967",
    "year": 1967,
@@ -1641,6 +1703,47 @@
     "AS"
    ],
    "dur": 6.45
+  },
+  {
+   "date": "15 Feb 1969",
+   "year": 1969,
+   "base": "1947",
+   "title": "BP bids for WGR",
+   "headline": "15 Feb 1969 · British Petroleum makes an agreed bid for Western Ground Rents Ltd, for its pension fund",
+   "labels": [
+    "VERIFIED · press (snippets)"
+   ],
+   "short": "15 February 1969: British Petroleum makes an agreed bid for the whole of Western Ground Rents, for its pension fund. WGR’s interest at the farm passes to BP Pension Trust that December.",
+   "text": "15 Feb 1969 · British Petroleum makes an agreed bid for the whole of Western Ground Rents Ltd, wanting its “shops, offices, houses in London and South Wales — for their pension fund”, after rival bids from Amalgamated Investment & Property and Great Portland Estates. VERIFIED · press (snippets only, EV-0288). The conveyance of 31 Dec 1969 to BP Pension Trust follows.",
+   "say": "Fifteen February, nineteen sixty-nine. British Petroleum makes an agreed bid for Western Ground Rents, for its pension fund. Western Ground Rents’ interest at the farm passes to B P Pension Trust that December.",
+   "src": [
+    "ev0288",
+    "hp--ev-0043-wgr-bp-pension-trust-conveyance"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "order",
+     "case": "order",
+     "note": ""
+    },
+    "AS": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "id": "s24a",
+   "dur": 13.32
   },
   {
    "id": "s25",
@@ -2028,6 +2131,47 @@
    },
    "id": "s32",
    "dur": 12.6
+  },
+  {
+   "date": "1 Dec 1975",
+   "year": 1975,
+   "base": "1947",
+   "title": "Compulsory registration",
+   "headline": "1 Dec 1975 · Registration of title becomes compulsory in the Vale of Glamorgan",
+   "labels": [
+    "VERIFIED · statutory instrument"
+   ],
+   "short": "1 December 1975: registration of title becomes compulsory in the Vale of Glamorgan. From then on, a sale of land here has to be registered at HM Land Registry.",
+   "text": "1 Dec 1975 · Compulsory registration of title begins in the Vale of Glamorgan. VERIFIED · statutory instrument: SI 1975/160 (EV-0265). From this date a conveyance on sale of land in the area has to be followed by first registration at HM Land Registry. The farm’s first registrations, WA231076 and WA240304, are applied for in 1982 and 1983.",
+   "say": "First December, nineteen seventy-five. Registration of title becomes compulsory in the Vale of Glamorgan. From then on, a sale of land here has to be registered at the Land Registry.",
+   "src": [
+    "ev0265",
+    "hp-land-registry-titles"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bppt",
+     "case": "bppt",
+     "note": ""
+    }
+   },
+   "id": "s32a",
+   "dur": 11.65
   },
   {
    "id": "s33",
@@ -2602,6 +2746,48 @@
    "merged": true,
    "part": "THE ESTATE: CHURCH VIEW CLOSE",
    "dur": 7.36
+  },
+  {
+   "date": "1990",
+   "year": 1990,
+   "base": "aerial",
+   "title": "William Buckler dies",
+   "headline": "1990 · William (Billy) Buckler, Mary’s son, dies (date unresolved)",
+   "labels": [
+    "VERIFIED · probate calendar + press · date unresolved"
+   ],
+   "short": "1990: William (Billy) Buckler, Mary’s son, dies (date unresolved). He had made a detour around Llandough “so never had to pass the site of Great House Farm”.",
+   "text": "1990 · William (Billy) Buckler, Mary’s son, dies (date unresolved). The records do not agree on the date. The probate calendar of 1991 lists a William Beverley Buckler of Penarth, probably him, with administration granted on 11 Jul 1991 (EV-0274). The South Wales Echo reports in 1990 that “Billy died suddenly this week”, and that he had “made a detour around Llandough so never had to pass the site of Great House Farm” (snippet, EV-0290).",
+   "say": "Nineteen ninety. William Buckler, Mary’s son, dies; the exact date is unresolved. He had made a detour around Llandough, so that he never had to pass the site of Great House Farm.",
+   "src": [
+    "family",
+    "ev0274",
+    "ev0290"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    }
+   },
+   "id": "s42a",
+   "dur": 11.52
   },
   {
    "id": "s43",
