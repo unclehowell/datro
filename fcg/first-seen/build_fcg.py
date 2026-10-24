@@ -11,7 +11,7 @@ def fd(iso):
 def live(u):
     r=subprocess.run(['timeout','-k','5','30','curl','-4','-s','-o','/dev/null','-w','%{http_code}',u],capture_output=True,text=True); return r.stdout.strip()=='200'
 IA02038='https://web.archive.org/web/20261006195117/https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s'
-OUR0529='https://internetarchive.bucklerfamily.estate/20260529000000/archwilio.org.uk/her/chi3/report/page.php/_q/watprn=GGAT02038s/'
+OUR0529='https://wayback-html.bucklerfamily.estate/archwilio.org.uk/heneb-her-ggat02038s.v1.0.0.html'
 our_ok=live(OUR0529)
 HERMAIL=[('6 Oct 2026','https://email.bucklerfamily.estate/reference/1a1103d9d380a3b6'),('14 Oct 2026','https://email.bucklerfamily.estate/reference/1a13aff7c0c5d8b4'),('16 Oct 2026','https://email.bucklerfamily.estate/reference/1a145570b9618f41')]
 ITEMS=[
