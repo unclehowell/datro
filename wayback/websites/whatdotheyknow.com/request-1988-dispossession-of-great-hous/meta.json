@@ -7,9 +7,9 @@
  "first_captured": "2026-10-24T14:41:57Z",
  "versioning": "first capture v1.0.0; readable-text change = minor; markup/layout-only change = patch; identical capture = no new version",
  "note": "Static copy for reference: scripts, forms, iframes, external styles and images removed; links off bucklerfamily.estate disabled (archived targets point to their Wayback copy).",
- "title": "1988 Dispossession of Great House Farm, Llandough from the Williams/ [requester] Family - a Freedom of Information request to Ministry of Defence - WhatDoTheyKnow",
+ "title": "1988 Dispossession of Great House Farm, Llandough from the Williams/ Buckler Family - a Freedom of Information request to Ministry of Defence - WhatDoTheyKnow",
  "last_captured": "2026-10-24T14:41:57Z",
- "current_version": "v1.0.0",
+ "current_version": "v1.1.0",
  "versions": [
   {
    "version": "v1.0.0",
@@ -22,9 +22,19 @@
    "file": "v1.0.0.html",
    "screenshot": null,
    "published_utc": "2026-10-24T16:09:02Z"
+  },
+  {
+   "version": "v1.1.0",
+   "change": "text",
+   "captured_utc": "2026-10-24T14:41:57Z",
+   "capture_source": "live",
+   "mode": "html",
+   "text_sha256": "4b28f68867e32a98d15eff078f03bafa5e5679de28e50e55b2dd58cd3a7b2e29",
+   "markup_sha256": "ce59b05267a9801717ed41d77a1a13924a4209a8ee59217430d6c5e0b478d521",
+   "file": "v1.1.0.html",
+   "screenshot": "screenshot-v1.1.0.jpg",
+   "published_utc": "2026-10-24T16:36:37Z"
   }
  ],
- "archive_status": "ok: captured from Tab's machine (requester name redacted)",
- "redaction": "requester name redacted",
- "screenshots": "not published (they show the requester name)"
+ "archive_status": "ok: captured from Tab's machine"
 }
