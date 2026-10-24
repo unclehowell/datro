@@ -1,9 +1,6 @@
-Deployment: ghf-primary-records.pages.dev
-Custom domain: records.bucklerfamily.estate
-Production branch: ghf-primary-records
-This branch is an isolated static-site snapshot. It is not the gh-pages branch and does not replace any existing site.
+Retirement: this branch is retained as a historical snapshot for audit and provenance. The production `records.bucklerfamily.estate` route is being redirected to https://research.bucklerfamily.estate/sources-and-archives/ so that primary-record discovery is consolidated in the research wiki.
 
-Cloudflare Pages project and Git integration provisioned on 12 October 2026; initial deployment verification follows.
+This isolated static-site snapshot is not the `gh-pages` branch. Its content is not deleted by the route retirement. The historical source files remain available in Git for comparison.
 
 
 ## Rights and licence
