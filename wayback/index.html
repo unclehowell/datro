@@ -163,6 +163,8 @@
 <script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.0.3"></script>
 </head>
 <body>
+<div style="background:#1f2a24;color:#f3efe6;font:13px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:8px 12px;text-align:center">Archive sites: <a style="color:#ffd27a" href="https://wayback-html.bucklerfamily.estate/">Websites</a> · <a style="color:#ffd27a" href="https://wayback-img.bucklerfamily.estate/">Images</a> · <a style="color:#ffd27a" href="https://wayback-pdf.bucklerfamily.estate/">PDFs &amp; documents</a> · <a style="color:#ffd27a" href="https://wayback-video.bucklerfamily.estate/">Video</a> · <a style="color:#ffd27a" href="https://wayback-text.bucklerfamily.estate/">Text</a></div>
+
     <p style="text-align:center;margin:0.1rem 0 0.5rem"><a href="/ebooks/" style="color:#fca;font-weight:bold;font-size:0.9rem;text-decoration:none">📚 E-book editions: every version, plus a free archive edition</a></p>
 
   <div class="tabs" id="tabs"></div>
@@ -175,7 +177,7 @@
 
 
   <div id="websites-view">
-    <p class="ws-intro">Dated static copies of <b id="ws-count">…</b> web pages that concern Great House Farm (Tŷ Mawr), Llandough, grouped by site. Tap a card to preview the copy here; “Live website” opens the original. Links inside a copy stay in the Vault. Each page’s stable address ends <code>/latest.html</code>; earlier versions sit beside it. <a href="https://projects.bucklerfamily.estate/wayback-websites-archive/" target="_blank" rel="noopener">About this archive</a> · <a href="/websites/index.json">index.json</a></p>
+    <p class="ws-intro">Dated static copies of <b id="ws-count">…</b> web pages that concern Great House Farm (Tŷ Mawr), Llandough, grouped by site. Tap a card to preview the copy here; “Live website” opens the original. Links inside a copy stay in the Vault. The copies now live at <a href="https://wayback-html.bucklerfamily.estate/">wayback-html.bucklerfamily.estate</a> with their original design and short readable addresses; old addresses here forward there. <a href="https://projects.bucklerfamily.estate/wayback-websites-archive/" target="_blank" rel="noopener">About this archive</a> · <a href="/websites/index.json">index.json</a></p>
     <input type="search" id="ws-search" placeholder="Search archived pages…" aria-label="Search archived pages">
     <div id="ws-list"></div>
   </div>
@@ -262,7 +264,7 @@
         wsView.style.display = 'block';
         await wsLoad(); wsRender('');
         const m = location.hash.match(/^#websites\/([^/]+)\/([^/]+)/);
-        if (m) wsOpen(`/websites/${m[1]}/${m[2]}/latest.html`);
+        if (m) { location.replace(`/websites/${m[1]}/${m[2]}/`); return; }
         else if (location.hash !== '#websites') history.replaceState(null, '', '#websites');
       }
       function wsHide() {

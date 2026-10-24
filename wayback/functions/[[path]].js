@@ -3,12 +3,41 @@
 // continue through the ordinary Cloudflare Pages static-asset pipeline.
 const MEDIA_ROOTS = ["images/", "pdf/", "text/", "video/"];
 
+// Website snapshots moved to https://wayback-html.bucklerfamily.estate (design kept, readable names, 24 Oct 2026).
+// Every old /websites/<host>/<slug>/... address answers 301 with the readable address; the map is /websites/moved.json.
+const WS_HTML = "https://wayback-html.bucklerfamily.estate";
+let WS_MOVED = null;
+async function websitesMoved(context, url) {
+  let p; try { p = decodeURIComponent(url.pathname); } catch { return null; }
+  if (p === "/websites/index.json" || p === "/websites/moved.json") return null;
+  if (p === "/websites" || p === "/websites/" || p === "/websites/index.html" || p === "/websites/index") return WS_HTML + "/";
+  if (!WS_MOVED) {
+    try { const r = await context.env.ASSETS.fetch(new URL("/websites/moved.json", url)); WS_MOVED = r.ok ? await r.json() : {}; } catch { WS_MOVED = {}; }
+  }
+  const m = p.match(/^\/websites\/([^/]+)\/([^/]+)(?:\/(.*))?$/);
+  if (!m) return /^\/websites\/[^/]+\/?$/.test(p) ? WS_HTML + "/" : null;
+  const base = WS_MOVED[m[1] + "/" + m[2]];
+  if (!base) return null;
+  if (base === "/") return WS_HTML + "/";
+  const rest = (m[3] || "").replace(/\/$/, "");
+  let v;
+  if ((v = rest.match(/^(v\d+\.\d+\.\d+)(\.html?)?$/))) return WS_HTML + base + "." + v[1] + ".html";
+  if (rest === "meta.json") return WS_HTML + base + ".meta.json";
+  if (rest === "thumb.jpg" || /^screenshot/.test(rest)) return WS_HTML + base + ".thumb.jpg";
+  return WS_HTML + base + ".html";
+}
+
 export async function onRequest(context) {
   const { request, env } = context;
   const url = new URL(request.url);
 
   if (request.method !== "GET" && request.method !== "HEAD") {
     return context.next();
+  }
+
+  if (url.pathname === "/websites" || url.pathname.startsWith("/websites/")) {
+    const moved = await websitesMoved(context, url);
+    if (moved) return Response.redirect(moved, 301);
   }
 
   let key;
