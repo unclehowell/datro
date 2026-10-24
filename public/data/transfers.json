@@ -1,5 +1,5 @@
 {
- "version": "3.3.0",
+ "version": "3.3.1",
  "updated": "2026-10-24",
  "parties": [
   {
@@ -1117,7 +1117,7 @@
    {
     "title": "WA735527",
     "t": "t1994",
-    "why": "WOODLAND · 1949 → 1961 deed strand → WA735527 (Forest of Cardiff, 1994)"
+    "why": "WOODLAND · 1949 → 1961 deed (terms not inspected) · separately WA735527 (Ideal Homes → Forest of Cardiff, 1994)"
    },
    {
     "title": "WA240304",
@@ -1139,9 +1139,9 @@
     "title": "WA735527",
     "year": 1994,
     "transferId": "t1994",
-    "caption": "WOODLAND · 1949 → 1961 deed strand → WA735527 (Forest of Cardiff, 1994)",
+    "caption": "WOODLAND · 1949 → 1961 deed (terms not inspected) · separately WA735527 (Ideal Homes → Forest of Cardiff, 1994)",
     "label": "A1 · woodland register endpoint",
-    "interval": "The 1949 attempt precedes the 29 Mar 1961 deed by about 12 years. The deed is listed in the woodland title strand; Forest of Cardiff was entered as proprietor in 1994.",
+    "interval": "The 29 Mar 1961 deed is recited on the woodland register; its terms and extent have not been inspected. Forest of Cardiff was entered as proprietor in 1994 following a transfer from Ideal Homes.",
     "note": "Destination on the ring is Forest of Cardiff, the registered proprietor of WA735527 from 1994. The 1961 deed and plan and their overlap with the identified Parcel A woodland are not established by the records presently on hand. This arrow marks the questioned registration strand, not a proven conveyance from Williams.",
     "color": "#34c38f"
    },
@@ -1303,7 +1303,7 @@
      "y": 1974,
      "date": "31 Oct 1974",
      "label": "1974 permissive occupancy attempt (licence letters)",
-     "text": "The warrant was withdrawn and BP’s licence letters were sent the same day, offering Mrs Buckler the house and garden rent free for life. She did not accept them. The 1987 judgment treated the letters as a licence, so her possession after that date was not counted towards the 12 years.",
+     "text": "BP’s licence letters, dated 31 October 1974, reached Mrs Buckler’s solicitor on the morning of 4 November, just before the stay application came before the judge, who stayed execution pending her agreement. The landlords’ solicitors then wrote to the county court and withdrew the warrant, on a date before 25 November 1974; the exact day is not recorded. She did not accept the letters. The 1987 judgment treated the letters as a licence, so her possession after them was not counted towards the 12 years.",
      "src": [
       {
        "t": "Legal Wiki · The 1974 licence letters",
@@ -1375,7 +1375,7 @@
   },
   {
    "id": "B",
-   "name": "A1 · woodland | 1949 attempt → 1961 deed strand → WA735527 (1994)",
+   "name": "A1 · woodland | 1949 → 1961 deed (terms not inspected) · separately WA735527 (Ideal Homes → Forest of Cardiff, 1994)",
    "short": "2(a) woodland",
    "parcels": [
     "A1",
@@ -1398,7 +1398,7 @@
      "date": "2 Feb 1949",
      "label": "1949 permissive occupancy attempt (failed)",
      "todo": true,
-     "text": "Frederick’s unwritten yearly agricultural letting of Parcel B from Western Ground Rents began on 2 February 1949; the 1987 judgment records that a written agreement was intended. The family records a matching attempt to make Mary’s Parcel-A occupancy permissive, which she refused, asserting ownership. Source to add: the 1949 offer to Mary and her reply have not been found.",
+     "text": "From 2 February 1949 Frederick held a yearly agricultural letting from Western Ground Rents: the 1987 judgment records “a new yearly agricultural tenancy commencing at February 2 1949”, granted when John Williams’s letting was surrendered; the written agreement that was intended was never made. The judgment records no offer to Mary in 1949, and no 1949 offer to her concerning Parcel A, or reply from her, has been found. The offer to Mary that the judgment does record — she was “offered a tenancy of the farmhouse and garden by Western Ground Rents but refused to accept it” — is undated and comes after 1955 in its account (see 1959).",
      "src": [
       {
        "t": "Legal Wiki · Frederick Buckler: the 1949 tenancy",
@@ -1470,7 +1470,7 @@
      "lab": "1961/62",
      "date": "29 Mar 1961",
      "label": "1961/62 woodland deed and registration",
-     "text": "Deed with plan between Western Ground Rents, South Western Brick & Tile and Cardiff City Corporation, recited on the woodland register WA735527 (pink strand) against land now in the woodland title. The deed and plan are not yet held. Source to add for 1962: no 1962 registration entry for the woodland is on file.",
+     "text": "Named in the deed of 29 March 1961 with Western Ground Rents and South Western Brick & Tile, recited on the woodland register WA735527. The deed and plan are not yet held; its terms and precise extent have not been inspected. No transfer from Cardiff City Corporation to any later holder is on record.",
      "src": [
       {
        "t": "EV-0040 · 29 Mar 1961 deed",
@@ -1886,7 +1886,7 @@
   ]
  },
  "paths": {
-  "version": "3.3.0",
+  "version": "3.3.1",
   "R": 320,
   "colors": {
    "AB": "#e7c6ff",
@@ -2190,7 +2190,7 @@
      "Corporation"
     ],
     "title": "Cardiff City Corporation",
-    "text": "Deed with plan between Western Ground Rents, South Western Brick & Tile and Cardiff City Corporation, recited on the woodland register WA735527 (pink strand) against land now in the woodland title. The deed and plan are not yet held. Source to add for 1962: no 1962 registration entry for the woodland is on file.",
+    "text": "Named in the deed of 29 March 1961 with Western Ground Rents and South Western Brick & Tile, recited on the woodland register WA735527. The deed and plan are not yet held; its terms and precise extent have not been inspected. No transfer from Cardiff City Corporation to any later holder is on record.",
     "src": [
      {
       "t": "EV-0040 · 29 Mar 1961 deed",
@@ -2316,7 +2316,7 @@
     "r": 0.5,
     "cap": "1949",
     "title": "1949 · permissive occupancy ploy",
-    "text": "Frederick’s unwritten yearly agricultural letting of Parcel B from Western Ground Rents began on 2 February 1949; the 1987 judgment records that a written agreement was intended. The family records a matching attempt to make Mary’s Parcel-A occupancy permissive, which she refused, asserting ownership. Source to add: the 1949 offer to Mary and her reply have not been found.",
+    "text": "From 2 February 1949 Frederick held a yearly agricultural letting from Western Ground Rents: the 1987 judgment records “a new yearly agricultural tenancy commencing at February 2 1949”, granted when John Williams’s letting was surrendered; the written agreement that was intended was never made. The judgment records no offer to Mary in 1949, and no 1949 offer to her concerning Parcel A, or reply from her, has been found. The offer to Mary that the judgment does record — she was “offered a tenancy of the farmhouse and garden by Western Ground Rents but refused to accept it” — is undated and comes after 1955 in its account (see 1959).",
     "src": [
      {
       "t": "Legal Wiki · Frederick Buckler: the 1949 tenancy",
@@ -2458,7 +2458,7 @@
     "r": 0.4,
     "cap": "1974",
     "title": "1974 · permissive occupancy ploy",
-    "text": "The warrant was withdrawn and BP’s licence letters were sent the same day, offering Mrs Buckler the house and garden rent free for life. She did not accept them. The 1987 judgment treated the letters as a licence, so her possession after that date was not counted towards the 12 years.",
+    "text": "BP’s licence letters, dated 31 October 1974, reached Mrs Buckler’s solicitor on the morning of 4 November, just before the stay application came before the judge, who stayed execution pending her agreement. The landlords’ solicitors then wrote to the county court and withdrew the warrant, on a date before 25 November 1974; the exact day is not recorded. She did not accept the letters. The 1987 judgment treated the letters as a licence, so her possession after them was not counted towards the 12 years.",
     "src": [
      {
       "t": "Legal Wiki · The 1974 licence letters",
@@ -2552,7 +2552,7 @@
     "ang": 106,
     "r": 0.88,
     "title": "1974 · the papers BP would need",
-    "text": "In September 1974 BP applied for leave to enforce the 1962 order against the house. On 31 October 1974 the warrant was withdrawn and licence letters were sent instead. The order was not carried out, and the family stayed in the house.",
+    "text": "In September 1974 BP applied for leave to enforce the 1962 order against the house. The licence letters are dated 31 October 1974; the stay application came before the judge on 4 November, and the landlords’ solicitors afterwards withdrew the warrant, before 25 November 1974. The order was not carried out, and the family stayed in the house.",
     "src": [
      {
       "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (judgment)",
@@ -2563,6 +2563,35 @@
       "u": "https://greathousefarmwiki.wordpress.com/timeline/"
      }
     ]
+   },
+   "ideal": {
+    "kind": "ring",
+    "ang": 150,
+    "lab": [
+     "Ideal Homes"
+    ],
+    "title": "Ideal Homes (Wales) Ltd",
+    "text": "Transferor of the woodland to Forest of Cardiff in 1994 (Forest of Cardiff’s letter of 25 Sep 2026; woodland register WA735527). The woodland title history has BP Properties transferring to Ideal Homes on 3 December 1993; that deed is not held. Ideal Homes Wales also built Church View Close on the farm (1994–95).",
+    "src": [
+     {
+      "t": "Forest of Cardiff assessment (woodland title history)",
+      "u": "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/forest-of-cardiff-forensic-institutional-review/"
+     },
+     {
+      "t": "Woodland & Land-Transfer Assessment 1902–2005",
+      "u": "https://greathousefarmwiki.wordpress.com/family-legal-case-control-room/woodland-land-transfer-assessment-1902-2005/"
+     },
+     {
+      "t": "EV-0169 · title register WA735527",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0169-wa735527-title-register-september-2026/"
+     },
+     {
+      "t": "EV-0276 · press, 1994–96: Ideal Homes, Church View Close, Persimmon",
+      "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0276-churchview-close-llandough-ideal-homes-persimmon-1994-1996/"
+     }
+    ],
+    "ldy": 40,
+    "ldx": -10
    }
   },
   "segs": [
@@ -2778,8 +2807,8 @@
     "lab": "1974",
     "g": "A",
     "title": "A · 1974 · BP fail to extinguish",
-    "date": "Sep 1974 (leave to enforce sought) · 31 Oct 1974 (warrant withdrawn)",
-    "text": "In September 1974 BP applied for leave to enforce the 1962 order against the house. On 31 October 1974 the warrant was withdrawn and licence letters were sent instead. The order was not carried out, and the family stayed in the house.",
+    "date": "Sep 1974 (leave to enforce sought) · 31 Oct 1974 (letters) · before 25 Nov 1974 (warrant withdrawn)",
+    "text": "In September 1974 BP applied for leave to enforce the 1962 order against the house. The licence letters are dated 31 October 1974; the stay application came before the judge on 4 November, and the landlords’ solicitors afterwards withdrew the warrant, before 25 November 1974. The order was not carried out, and the family stayed in the house.",
     "src": [
      {
       "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (judgment)",
@@ -2966,9 +2995,9 @@
     "to": "cardiff",
     "lab": "1961",
     "g": "SA1",
-    "title": "SA1 · 1961 Cardiff City Corporation",
+    "title": "SA1 · 1961 deed (terms not inspected)",
     "date": "29 Mar 1961",
-    "text": "Deed with plan between Western Ground Rents, South Western Brick & Tile and Cardiff City Corporation, recited on the woodland register WA735527 (pink strand) against land now in the woodland title. The deed and plan are not yet held. Source to add for 1962: no 1962 registration entry for the woodland is on file.",
+    "text": "Deed of 29 March 1961 between Western Ground Rents, South Western Brick & Tile and Cardiff City Corporation, recited on the woodland register WA735527. The deed and plan are not yet held: its terms and precise extent have not been inspected, so it does not show what Cardiff City Corporation received. The woodland line stops here.",
     "src": [
      {
       "t": "EV-0040 · 29 Mar 1961 deed",
@@ -2987,17 +3016,18 @@
       "u": "https://greathousefarmwiki.wordpress.com/timeline/"
      }
     ],
-    "bend": -0.1
+    "bend": -0.1,
+    "dash": true
    },
    {
     "id": "s1-1994",
-    "fr": "cardiff",
+    "fr": "ideal",
     "to": "foc",
     "lab": "1994",
     "g": "SA1",
-    "title": "SA1 · afterwards: Forest of Cardiff, 1994",
+    "title": "SA1 · 1994: Ideal Homes → Forest of Cardiff",
     "date": "10 Nov 1994",
-    "text": "The current register lists Forest of Cardiff as proprietor from 25 Nov 1994. The transfer deed and plan are not held. The woodland title’s register also recites a 29 Mar 1961 WGR / South Western Brick & Tile / Cardiff City Corporation deed on the earlier strand; its scope and parcel overlap cannot be established until the deed and plan are inspected. Forest of Cardiff’s letter of 25 Sep 2026 has it buying the woodland from Ideal Homes (1993–94); the woodland record also lists a couple in Llandough as holders before the charity. No transfer between 1961 and 1994 is held, so this line is dashed.",
+    "text": "Transfer of 10 November 1994: the woodland register WA735527 lists Forest of Cardiff as proprietor from 25 November 1994, and Forest of Cardiff’s letter of 25 Sep 2026 has it buying the woodland from Ideal Homes. The transfer deed and plan are not held, so this line is dashed. It starts at Ideal Homes: no transfer from Cardiff City Corporation is on record, and the 1961 deed recited on the same register has not been inspected. The woodland record also lists a couple in Llandough as holders before the charity.",
     "src": [
      {
       "t": "EV-0169 · title register WA735527",
@@ -3238,7 +3268,7 @@
     "g": "SA3",
     "title": "SA3 · 1974 💩",
     "date": "31 Oct 1974",
-    "text": "The warrant was withdrawn and BP’s licence letters were sent the same day, offering Mrs Buckler the house and garden rent free for life. She did not accept them. The 1987 judgment treated the letters as a licence, so her possession after that date was not counted towards the 12 years.",
+    "text": "BP’s licence letters, dated 31 October 1974, reached Mrs Buckler’s solicitor on the morning of 4 November, just before the stay application came before the judge, who stayed execution pending her agreement. The landlords’ solicitors then wrote to the county court and withdrew the warrant, on a date before 25 November 1974; the exact day is not recorded. She did not accept the letters. The 1987 judgment treated the letters as a licence, so her possession after them was not counted towards the 12 years.",
     "src": [
      {
       "t": "Legal Wiki · The 1974 licence letters",
@@ -3406,14 +3436,19 @@
      {
       "s": [
        "s1-1955",
-       "s1-1961",
-       "s1-1994"
+       "s1-1961"
       ],
       "after": null
+     },
+     {
+      "s": [
+       "s1-1994"
+      ],
+      "after": "s1-1961"
      }
     ],
     "start": "p1949",
-    "cap": "Synthetic A1, the woodland: 💩 1949 → 💩💩 1955 → Cardiff City Corporation 1961; afterwards Forest of Cardiff 1994."
+    "cap": "Synthetic A1, the woodland: 💩 1949 → 💩💩 1955 → the 1961 deed naming Cardiff City Corporation (terms not inspected; the line stops). Separately, 1994: Ideal Homes → Forest of Cardiff."
    },
    {
     "k": "SA2",
@@ -3565,7 +3600,7 @@
   ],
   "ploys": "Permissive occupancy ploys",
   "narr": {
-   "v": "3.3.0",
+   "v": "3.3.1",
    "steps": {
     "tAB": {
      "segs": [],
@@ -3715,17 +3750,17 @@
      "segs": [
       "s1-1961"
      ],
-     "en": "1961. It reaches Cardiff City Corporation, an official actor outside the circle.",
-     "cy": "1961. Mae'n cyrraedd Corfforaeth Dinas Caerdydd, corff swyddogol y tu allan i'r cylch.",
-     "es": "1961. Llega a Cardiff City Corporation, una entidad oficial fuera del círculo."
+     "en": "1961. A deed names Cardiff City Corporation. Its terms have not been inspected, so the line stops here.",
+     "cy": "1961. Mae gweithred yn enwi Corfforaeth Dinas Caerdydd. Nid yw ei thelerau wedi'u harchwilio, felly mae'r llinell yn dod i ben yma.",
+     "es": "1961. Una escritura nombra a Cardiff City Corporation. Sus términos no se han examinado, así que la línea se detiene aquí."
     },
     "s1c": {
      "segs": [
       "s1-1994"
      ],
-     "en": "Afterwards, in 1994, the Forest of Cardiff.",
-     "cy": "Wedyn, yn 1994, y Forest of Cardiff.",
-     "es": "Después, en 1994, el Forest of Cardiff."
+     "en": "Separately, in 1994, Ideal Homes transfers the woodland to the Forest of Cardiff.",
+     "cy": "Ar wahân, yn 1994, mae Ideal Homes yn trosglwyddo'r coetir i'r Forest of Cardiff.",
+     "es": "Por separado, en 1994, Ideal Homes transmite el bosque al Forest of Cardiff."
     },
     "tSA2": {
      "segs": [],
@@ -4225,7 +4260,7 @@
     },
     "SA1": {
      "en": {
-      "d": 19.001,
+      "d": 23.675,
       "c": [
        [
         "tSA1",
@@ -4240,17 +4275,17 @@
        [
         "s1b",
         10.126,
-        15.481
+        18.01
        ],
        [
         "s1c",
-        15.881,
-        19.001
+        18.41,
+        23.675
        ]
       ]
      },
      "cy": {
-      "d": 22.254,
+      "d": 28.456,
       "c": [
        [
         "tSA1",
@@ -4265,17 +4300,17 @@
        [
         "s1b",
         11.624,
-        18.186
+        21.867
        ],
        [
         "s1c",
-        18.586,
-        22.254
+        22.267,
+        28.456
        ]
       ]
      },
      "es": {
-      "d": 24.714,
+      "d": 33.571,
       "c": [
        [
         "tSA1",
@@ -4290,12 +4325,12 @@
        [
         "s1b",
         12.463,
-        20.028
+        24.377
        ],
        [
         "s1c",
-        20.428,
-        24.714
+        24.777,
+        33.571
        ]
       ]
      }
@@ -4743,7 +4778,7 @@
     },
     "ALL": {
      "en": {
-      "d": 133.548,
+      "d": 138.222,
       "c": [
        [
         "tALL",
@@ -4843,77 +4878,77 @@
        [
         "s1b",
         72.26,
-        77.615
+        80.144
        ],
        [
         "s1c",
-        78.015,
-        81.135
+        80.544,
+        85.809
        ],
        [
         "tSA2",
-        81.535,
-        83.486
+        86.209,
+        88.16
        ],
        [
         "s2a",
-        83.886,
-        88.508
+        88.56,
+        93.182
        ],
        [
         "s2b",
-        88.908,
-        93.715
+        93.582,
+        98.389
        ],
        [
         "s2c",
-        94.115,
-        96.056
+        98.789,
+        100.73
        ],
        [
         "tSA3",
-        96.456,
-        98.836
+        101.13,
+        103.51
        ],
        [
         "s3a",
-        99.236,
-        107.009
+        103.91,
+        111.683
        ],
        [
         "s3b",
-        107.409,
-        111.52
+        112.083,
+        116.194
        ],
        [
         "s3c",
-        111.92,
-        115.776
+        116.594,
+        120.45
        ],
        [
         "s3d",
-        116.176,
-        118.121
+        120.85,
+        122.795
        ],
        [
         "s3e",
-        118.521,
-        122.585
+        123.195,
+        127.259
        ],
        [
         "m1",
-        122.985,
-        127.397
+        127.659,
+        132.071
        ],
        [
         "eALL",
-        127.797,
-        133.548
+        132.471,
+        138.222
        ]
       ]
      },
      "cy": {
-      "d": 177.152,
+      "d": 183.354,
       "c": [
        [
         "tALL",
@@ -5013,77 +5048,77 @@
        [
         "s1b",
         94.52,
-        101.082
+        104.763
        ],
        [
         "s1c",
-        101.482,
-        105.15
+        105.163,
+        111.352
        ],
        [
         "tSA2",
-        105.55,
-        108.196
+        111.752,
+        114.398
        ],
        [
         "s2a",
-        108.596,
-        115.874
+        114.798,
+        122.076
        ],
        [
         "s2b",
-        116.274,
-        122.658
+        122.476,
+        128.86
        ],
        [
         "s2c",
-        123.058,
-        125.469
+        129.26,
+        131.671
        ],
        [
         "tSA3",
-        125.869,
-        128.597
+        132.071,
+        134.799
        ],
        [
         "s3a",
-        128.997,
-        139.57
+        135.199,
+        145.772
        ],
        [
         "s3b",
-        139.97,
-        145.42
+        146.172,
+        151.622
        ],
        [
         "s3c",
-        145.82,
-        151.936
+        152.022,
+        158.138
        ],
        [
         "s3d",
-        152.336,
-        155.993
+        158.538,
+        162.195
        ],
        [
         "s3e",
-        156.393,
-        161.864
+        162.595,
+        168.066
        ],
        [
         "m1",
-        162.264,
-        168.538
+        168.466,
+        174.74
        ],
        [
         "eALL",
-        168.938,
-        177.152
+        175.14,
+        183.354
        ]
       ]
      },
      "es": {
-      "d": 192.417,
+      "d": 201.275,
       "c": [
        [
         "tALL",
@@ -5183,72 +5218,72 @@
        [
         "s1b",
         97.875,
-        105.44
+        109.789
        ],
        [
         "s1c",
-        105.84,
-        110.125
+        110.189,
+        118.983
        ],
        [
         "tSA2",
-        110.525,
-        113.724
+        119.383,
+        122.582
        ],
        [
         "s2a",
-        114.124,
-        121.574
+        122.982,
+        130.432
        ],
        [
         "s2b",
-        121.974,
-        130.315
+        130.832,
+        139.173
        ],
        [
         "s2c",
-        130.715,
-        134.27
+        139.573,
+        143.128
        ],
        [
         "tSA3",
-        134.67,
-        137.122
+        143.528,
+        145.98
        ],
        [
         "s3a",
-        137.522,
-        149.926
+        146.38,
+        158.784
        ],
        [
         "s3b",
-        150.326,
-        155.821
+        159.184,
+        164.679
        ],
        [
         "s3c",
-        156.221,
-        164.378
+        165.079,
+        173.236
        ],
        [
         "s3d",
-        164.778,
-        166.937
+        173.636,
+        175.795
        ],
        [
         "s3e",
-        167.337,
-        173.219
+        176.195,
+        182.077
        ],
        [
         "m1",
-        173.619,
-        180.818
+        182.477,
+        189.676
        ],
        [
         "eALL",
-        181.218,
-        192.417
+        190.076,
+        201.275
        ]
       ]
      }

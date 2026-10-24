@@ -88,7 +88,7 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:14px}
 <div class="lrow"><span class="ic" style="color:#b9b4d6">◯</span><span>On the ring: title holders and official actors. Inside it: no title</span></div>
 <div class="lrow"><span class="ic"><svg width="40" height="10" aria-hidden="true"><line x1="2" y1="5" x2="38" y2="5" stroke="#e7c6ff" stroke-width="4" stroke-dasharray="6 5"/></svg></span><span>Dashed: the deed or record is not held</span></div>
 <div class="lrow"><span class="ic" style="font-weight:800;font-size:14px">1938</span><span>Each year sits where the line arrives</span></div>
-<p class="ver">v3.3.0 · 24 Oct 2026</p>
+<p class="ver">v3.3.1 · 24 Oct 2026</p>
 </section>
 </main>
 <footer data-ghf-keep>© the Williams-Buckler family of Tŷ Mawr · <a href="https://bucklerfamily.estate/licence/">Licence</a></footer>
@@ -196,7 +196,7 @@ function clock(){if(!run)return 0;const p=performance.now();
   if(run.waiting&&p-run.req<4000){run.t0=p-run.hold;return run.hold}
   if(run.waiting){run.waiting=false;run.audioOn=false}}
  return p-run.t0}
-function startAudio(at){const src=`audio/${run.lang}/${run.k}.mp3?v=3.3.0`;
+function startAudio(at){const src=`audio/${run.lang}/${run.k}.mp3?v=3.3.1`;
  if(!au.src||!au.src.endsWith(src.replace(/^audio/,'/audio')))au.src=src;
  try{au.currentTime=at/1000}catch(e){}run.audioOn=true;run.waiting=true;run.req=performance.now();run.hold=at;
  const p=au.play();if(p&&p.catch)p.catch(()=>{if(run){run.audioOn=false;run.waiting=false}})}
