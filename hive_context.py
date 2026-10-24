@@ -127,24 +127,50 @@ def context_fingerprint(c):
     return hashlib.sha256(json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf-8')).hexdigest()[:24]
 
 def main(dry):
-    rm = get(DART + '/data/roadmap.json'); lanes = {l['id']: l for l in rm['lanes']}
+    rm = get(DART + '/data/roadmap.json')
+    lanes = {l['id']: l for l in rm['lanes']}
     wheel = {w['id']: i + 1 for i, w in enumerate(get('https://raw.githubusercontent.com/unclehowell/datro/dartboard/src/data/ramps.json')['institutions'])}
     src = open('/home/user/tab/work/roadmap/build_snakes_ladders.py').read()
-    darts = {k: v for k, v in re.findall(r'"([a-z0-9-]+)":\s*\[([^\]]*)\]', src)}; darts = {k: re.findall(r'"([^"]+)"', v) for k, v in darts.items()}
-    kb = get(QA + '/kb.json').get('meta', {}).get('by_body', {})
+    darts = {k: v for k, v in re.findall(r'"([a-z0-9-]+)":\s*\[([^\]]*)\]', src)}
+    darts = {k: re.findall(r'"([^"]+)"', v) for k, v in darts.items()}
+    kb_doc = get(QA + '/kb.json')
+    kb = kb_doc.get('meta', {}).get('by_body', {})
+    source_versions = {'roadmap_as_of': rm.get('asOf') or rm.get('generated'), 'qa_generated': kb_doc.get('meta', {}).get('generated')}
     for rnd in range(4):
-        st, ref = gh.gh('GET', f'/repos/{REPO}/git/ref/heads/{BR}'); head = ref['object']['sha']
-        txt = gh.raw(REPO, head, PATH); B = json.loads(txt)
-        for d in B['drafts']: d['context'] = pack(d, lanes, wheel, darts, kb)
-        B['context_note'] = 'drafts[].context = metadata-only context pack (recipient body, archive thread link, dartboard link, stage, next deadline, markers, open questions, rungs spent); built by hive_context.py from the dartboard roadmap, the email archive API and qa kb.json. Hive protocol v3.1.0 context sweep.'
+        st, ref = gh.gh('GET', f'/repos/{REPO}/git/ref/heads/{BR}')
+        head = ref['object']['sha']
+        txt = gh.raw(REPO, head, PATH)
+        B = json.loads(txt)
+        for d in B['drafts']:
+            old_context = d.get('context') if isinstance(d.get('context'), dict) else {}
+            c = pack(d, lanes, wheel, darts, kb, source_versions)
+            fp = context_fingerprint(c)
+            c['fingerprint'] = fp
+            old_verification = old_context.get('verification')
+            if (old_context.get('fingerprint') == fp and isinstance(old_verification, dict)
+                    and old_verification.get('version') == d.get('version')
+                    and old_verification.get('fingerprint') == fp):
+                c['as_of'] = old_context.get('as_of') or c['as_of']
+                c['verification'] = old_verification
+            else:
+                c['verification'] = {'version': d.get('version'), 'fingerprint': fp, 'status': 'UNVERIFIED',
+                                     'checked_at': None, 'reviewer': None, 'thread_result': None, 'checks': {}}
+            d['context'] = c
+        B['context_note'] = 'drafts[].context is metadata only. Each pack carries source version stamps and a fingerprint. The builder never marks a source sweep verified; the reviewing agent must set context.verification for the exact version and fingerprint after checking the whole thread, dartboard, QA KB, research, wayback, projects and escalation rung. A changed fingerprint or draft version resets verification. Hive protocol v3.4.0.'
         new = json.dumps(B, ensure_ascii=False, indent=2) + '\n'
-        if dry: print(json.dumps([{'id': d['id'], **d['context']} for d in B['drafts']], ensure_ascii=False, indent=1)); return
-        if new == txt: print('nothing to change'); return
+        if dry:
+            print(json.dumps([{'id': d['id'], **d['context']} for d in B['drafts']], ensure_ascii=False, indent=1))
+            return
+        if new == txt:
+            print('nothing to change')
+            return
         st, hc = gh.gh('GET', f'/repos/{REPO}/git/commits/{head}')
         st, t = gh.gh('POST', f'/repos/{REPO}/git/trees', {'base_tree': hc['tree']['sha'], 'tree': [{'path': PATH, 'mode': '100644', 'type': 'blob', 'content': new}]})
-        st, c = gh.gh('POST', f'/repos/{REPO}/git/commits', {'message': "drafts: per-draft context packs (Hive v3.1.0 context sweep; metadata only) — Sion's Tab agent", 'tree': t['sha'], 'parents': [head]})
+        st, c = gh.gh('POST', f'/repos/{REPO}/git/commits', {'message': "drafts: per-draft context packs (Hive v3.4.0; metadata only) — Sion's Tab agent", 'tree': t['sha'], 'parents': [head]})
         st, u = gh.gh('PATCH', f'/repos/{REPO}/git/refs/heads/{BR}', {'sha': c['sha'], 'force': False})
-        if st == 200: print('pushed', c['sha'][:7]); return
+        if st == 200:
+            print('pushed', c['sha'][:7])
+            return
         time.sleep(5)
     raise SystemExit('could not fast-forward')
 if __name__ == '__main__': main('--dry' in sys.argv)
