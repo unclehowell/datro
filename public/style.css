@@ -73,3 +73,5 @@ footer p{margin:6px 0}
 .acts{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}
 .acts .act{font-size:14px;font-weight:600;text-decoration:none;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:7px 14px}
 #res li>.acts{margin:6px 0 12px 0}
+
+.freshness{margin:8px 0 12px;padding:9px 11px;border:1px solid #b45309;border-radius:9px;background:#fff7ed;color:#7c2d12;font-size:13px}.freshness[hidden]{display:none}html[data-ghf-mode="night"] .freshness{background:#451a03;color:#ffedd5;border-color:#b45309}
