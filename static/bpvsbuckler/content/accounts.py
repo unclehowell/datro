@@ -56,6 +56,10 @@ ACCOUNTS = {
     received="Bute owned the farm, and everything after descends from Bute.",
     words=[],
     known="The historical account places the manorial lordship in Bute's hands from 1793 and the Great House farm freehold in the early 19th century. The deed that moved the farm freehold from the Vaughan line is the key missing control point. The L 11 lease assignment and D 219 farm records provide older property and tenure references against which Bute's acquisition, rentals and subsequent 1877 division must be tested. The house was also a centre for the Llandough and Leckwith manorial courts; that administrative role must not be confused with ownership of each parcel."),
+'ghf-18240101-2': dict(
+    received="Bute owned and let the whole farm; the Williamses were later arrivals.",
+    words=[],
+    known="Bute's own 1824 survey of Cedfin or Ty Mawr Farm lists the land of the late Thomas Williams as a separate entry beside the main farm."),
 'ghf-18400101-1': dict(
     received="It was always just a farm.",
     words=[('"Great House Farm"', 'A name that reduced the manor\'s court house to a farmhouse.')],
@@ -635,6 +639,10 @@ ACCOUNTS = {
     received="",
     words=[],
     known='The 1971 abstract was the paper on which both first registrations rested; HM Land Registry no longer lists it among the surviving file items.'),
+'ghf-19710101-2': dict(
+    received="A routine map revision.",
+    words=[('"Great House Farm"', 'The name the farm had carried in directories since the 1880s.')],
+    known="Before 1971 the Ordnance Survey printed \"Ty-mawr\" beside the buildings on the side of the eastern fields. The family's account is that the 1971 revision moved the name onto the house plot and added \"Farm\". The 1971 sheet will show it."),
 'ghf-19720101-1': dict(
     received="",
     words=[],

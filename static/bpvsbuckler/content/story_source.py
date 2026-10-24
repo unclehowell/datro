@@ -233,6 +233,11 @@ sc('P', 'ghf-18000101-1', '1800-01-01', '1793 – early 19th century', "The Bute
    aliases=['ghf-17700101-1', 'ghf-17940101-1',
             'ghf-18180101-2', 'ghf-18180101-1', 'ghf-18200101-1', 'ghf-18210101-1', 'ghf-18240101-1'],
    ledger={'W': 'Lordship of the manor (1793) and farm freehold (early 19th century): the Bute Estate · tenants: the Williamses'})
+sc('P', 'ghf-18240101-2', '1824-01-01', "1824", "The Stewart survey", "Cedfin or Ty Mawr Farm", 'AB',
+   "Estate papers",
+   "David Stewart surveys the Bute estates in Glamorgan. Plan 19 is \"Cedfin or Ty Mawr Farm\". Its reference table enters John Gedrick (reading uncertain) as occupier of the main farm, 107 acres 1 rood 24 perches, and beside it the land of \"late Thos. Williams\", 10 acres 3 roods 39 perches, with about 20 acres of woods: close to 140 acres in all. A Williams name stands on the farm's own plan almost a century before the 1916 tenancy.",
+   [{'type': 'Estate papers', 'title': 'EV-0211 — Glamorgan Archives DB/E/1, plan 19: "Cedfin or Ty Mawr Farm", Stewart survey and reference table (1824)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0211-db-e-1-plan-19-cedfin-ty-mawr-1824/'}, w('/great-house-farm/name-variations/', 'Name & Location Variations (Stewart survey)')],
+   case="The family reads the separate entry for the late Thomas Williams's land as a Williams holding inside Tŷ Mawr that Bute surveyed but did not let with the main farm.")  # tour stop — Sion's Tab agent
 sc('P', 'ghf-18400101-1', '1840-01-01', 'c. 1840', "Great House Farm", 'Census and tithe records', 'AB',
    'Public record',
    "Census and tithe records begin to describe the house as \"Great House Farm\".",
@@ -588,6 +593,11 @@ sc('IV', 'ghf-19710101-1', '1971-01-01', '1971', 'The 1971 abstract of title', '
    'Land Registry record',
    'An abstract of title is prepared for BP Pension Trust. In 2026 HM Land Registry writes that an abstract "dated 1971 was lodged with the application for first registration" of WA231076, and that for WA240304 "we had sight of a copy of a 1971 abstract of title". It is not listed among the surviving records, and its contents are not held.',
    [w('/evidence/hm-land-registry-correspondence/#m39', 'HM Land Registry correspondence — letter of 19 April 2026 (M39)', 'Official correspondence'), {'type': 'Evidence catalogue', 'title': 'EV-0045 — HM Land Registry letter, 19 April 2026', 'url': 'https://wayback.bucklerfamily.estate/artifacts/#EV-0045'}])  # coverage: research chronology — Sion's Tab agent
+sc('IV', 'ghf-19710101-2', '1971-01-02', "1971", "A name on the map", "Ordnance Survey sheet, Llandough", 'AB',
+   "Map",
+   "On the Ordnance Survey's earlier sheets the name is \"Ty-mawr\", printed just east of the farm buildings, towards the fields: on the 25-inch map of about 1900 and again on the six-inch National Grid map of 1949–70. Neither adds \"Farm\". A year later planning permission is granted for about thirteen houses at the farm.",
+   [{'type': 'Map', 'title': 'National Library of Scotland, georeferenced Ordnance Survey maps: 25-inch County Series (Glamorgan XLVII.6, c. 1900) and six-inch National Grid (ST 17 SE, 1949–70); "Ty-mawr" east of the farm buildings on both', 'url': 'https://maps.nls.uk/geo/explore/'}, w('/great-house-farm/name-variations/', 'Name & Location Variations'), {'type': 'Planning file', 'title': 'EV-0046 — Outline planning permission 3/8996/3337 for about 13 houses (1972)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0046-1972-outline-planning-permission-ownership-certificate/'}],
+   case="The family's account: in 1971 the name moved off the eastern fields (Parcel B) onto the house plot (Parcel A) and became \"Great House Farm\", so that one name on the map covered house and fields alike — a year before the 1972 permission and three years before the 1974 attempt to remove Mary. The 1971 sheet itself (1:2,500 ST 1673–1773; six-inch ST 17 SE) is the record that shows where the name went. Trade directories already wrote \"Great House farm\" from 1887.")  # tour stop — Sion's Tab agent
 sc('IV', 'ghf-19720101-1', '1972-01-01', '1972 (re-notified 9 December 1985)', 'Cwm Cydfin SSSI', 'Cwm Cydfin, Leckwith', '?',
    'Public record',
    'Cwm Cydfin, the wooded valley at Leckwith, is notified as a Site of Special Scientific Interest (SSSI 0524). It is re-notified on 9 December 1985.',
@@ -604,16 +614,17 @@ sc('IV', 'ghf-19720731-1', '1972-07-31', '31 July 1972', 'Village green objectio
    'Public record',
    'The second objection period under the Commons Registration Act 1965 ends. It covers VG41, the land by Leckwith Road provisionally registered as a village green on 16 June 1970. Notice of the registration is given to the public; no personal notice to the occupiers of the farm is required.',
    [w('/evidence/ev-0263-commons-registration-1965-publicity-glamorgan-notices-vg41/', 'EV-0263 — Commons registration 1965: publicity and Glamorgan notices (VG41)', 'Public record')])  # coverage: research chronology — Sion's Tab agent
-sc('IV', 'ghf-19740101-1', '1974-01-01', '1974', "Royal Commission survey", 'Great House — interior', 'A',
-   'Heritage record',
-   "H. J. Thomas's 1974 survey and R. F. Suggett's December 1988 note are separate records. The HER entry records that the house remained partially recorded because access was restricted by an ownership dispute. The survey predates demolition on 6 December 1988; Suggett's note postdates it. The evidence currently identified does not establish that listing was legally required, that demolition was unlawful, or what was submitted to the European Commission of Human Rights.",
-   [HER, ARCH, w('/evidence-library/ghf-e137-1974-h-j-thomas-rcahmw-architectural-survey-and-floor-plan/', 'GHF-E137 — 1974 H. J. Thomas / RCAHMW architectural survey and floor plan', 'Evidence catalogue'), w('/evidence-library/ghf-e183-heneb-her-source-file-request-and-replies-september-october-2026/', 'GHF-E183 — Heneb / HER source-file request and replies, September–October 2026', 'Evidence catalogue'), w('/evidence-library/ghf-e145-echr-application-14464-88-and-commission-decision-14-april-1989/', 'GHF-E145 — ECHR application 14464/88 and Commission decision, 14 April 1989', 'Evidence catalogue')])
 sc('IV', 'ghf-19740415-1', '1974-04-15', '15 April 1974', "Open day", 'Great House Farm', 'A',
    'Newspaper',
    "On 15 April 1974 Mary opens the farmhouse to the public. The Daily Telegraph reports her saying ownership has been disputed for 25 years and her solicitors tell her she has a valid case.",
    [press('N03', "Daily Telegraph, 16 April 1974, 'Open day to save ancient Welsh house'", 'ghf-e090-n03-1974-open-day-telegraph.jpg'),
     w('/1974-licence-letters/#action', 'The 1974 Licence Letters')],
    image='/media/ghf-e090-n03-1974-open-day-telegraph.jpg')
+sc('IV', 'ghf-19740101-1', '1974-04-26', "26 April 1974", "Royal Commission survey", "Great House — interior", 'A',
+   "Heritage record",
+   "Ten days after the open day, H. J. Thomas of the Royal Commission measures the ground floor; his plan is dated 26 April 1974. The Commission's 1988 report records that the house \"was surveyed in unusual circumstances in 1974\", that \"much detail was then concealed\", that \"it was not possible to examine the first floor and roof trusses\", and that it \"remained partially recorded because of problems of access created by an ownership dispute\". The upper floor and roof, where the dating evidence lay, are never seen.",
+   [HER, {'type': 'Official correspondence', 'title': 'RCAHMW reply RC26-0375, 29 September 2026, quoting the unpublished 1988 report (archive 6048945) — wiki page', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/rcahmw-correspondence/'}, w('/evidence-library/ghf-e137-1974-h-j-thomas-rcahmw-architectural-survey-and-floor-plan/', 'GHF-E137 — 1974 H. J. Thomas / RCAHMW architectural survey and floor plan', 'Evidence catalogue'), w('/evidence-library/ghf-e183-heneb-her-source-file-request-and-replies-september-october-2026/', 'GHF-E183 — Heneb / HER source-file request and replies, September–October 2026', 'Evidence catalogue'), ARCH],
+   case="The family's reading: Mary had opened her doors to the public that month to save the house, so the access problem came from the paper owner, not from her. A full record of a sub-medieval house would have strengthened the case for its protection. The Commission's file holds no correspondence that shows who limited access.")  # tour stop — Sion's Tab agent
 sc('IV', 'ghf-19740703-1', '1974-07-03', '3 July 1974', "1974 possession action", 'County court', 'A',
    'Court record',
    "BP Pension Trust brings a county court action for possession. On 3 July 1974 the case is part heard and adjourned for a formal defence to be filed; Mary's defence then pleads that the action is barred under the Limitation Act 1939. Her statement describes the 1877 sale. The case is never relisted.",
@@ -856,9 +867,9 @@ sc('VII', 'ghf-19900313-1', '1990-03-13', 'February – March 1990', "Outline pe
    'Planning file',
    "On 13 March 1990 outline permission is granted with 18 conditions. The officer's report notes the farm buildings \"were unfortunately demolished a little while ago\". GGAT's further comments of 8 February 1990 are missing from the file.",
    [REDEV, LEGAL], aliases=['ghf-19900208-1'])
-sc('VII', 'ghf-19900529-1', '1990-05-29', '29 May 1990', "Death of William Buckler", 'Llandough', 'A',
+sc('VII', 'ghf-19900529-1', '1990-05-29', '1990', "Death of William Buckler", 'Llandough', 'A',
    'Newspaper',
-   "William Buckler died on 29 May 1990 at Llandough Hospital. The South Wales Echo of Saturday 2 June 1990 reports that \"Billy died suddenly this week\", which fits 29 May, and that he \"made a detour around Llandough so never had to pass the site of Great House Farm\". The 1991 probate calendar lists a \"William Beverley Buckler\" of Penarth who died on 29 April 1990, with administration granted at Llandaff on 11 July 1991: a probable match, not proven, and the dates conflict.",
+   "William Buckler dies in 1990, aged 41. The South Wales Echo of 2 June 1990 reports that \"Billy died suddenly\" and that he \"made a detour around Llandough so never had to pass the site of Great House Farm\".",
    [w('/williams-buckler-family/', 'The Williams / Buckler Family — William'), {'type': 'Newspaper', 'title': 'EV-0290 — South Wales Echo, 2 June 1990, p.2: "Billy died suddenly this week" (snippet; wiki evidence page)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0290-snippet-only-south-wales-echo-2-jun-1990-p-2-billy-died-suddenly-this-week-he-made/'}, {'type': 'Probate record', 'title': 'EV-0274 — Probate calendar 1991: William Beverley Buckler (wiki evidence page)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0274-probate-calendar-1991-william-beverley-buckler/'}],
    aliases=['ghf-19920515-1'],
    ledger={'A': "Freehold claim: Mary's heirs · never adjudicated, never extinguished"})
