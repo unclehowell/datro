@@ -1,6 +1,6 @@
 # oldbill.bucklerfamily.estate — Who gained, who lost (draft damages schedule) and the Tŷ Mawr Ticket Desk
 
-v3 (22 Oct 2026): the page leads with a draft damages schedule built the way a loss analyst would build it.
+v3.0.1 (24 Oct 2026): the page leads with a draft damages schedule built the way a loss analyst would build it.
 
 1. **The double comb** (hero, plain SVG drawn by the page's JS from `data/damages.json`): the upper comb's teeth point up, one per
    party that gained (height = £ mid, whiskers = low/high); the lower comb's teeth point down, one per head of the family's loss.
