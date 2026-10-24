@@ -13,7 +13,7 @@ Lines (pick one; it draws itself from its start to its last official actor; redu
 - **SA3 (house and yard):** 💩💩 1955 → 💩 1962 → 💩 1965 → 💩 1969 → BP Pension Trust 1969 → 💩 1971 → 💩 1974 → 💩 1975 → BP Properties 1975, again 1983 (WA240304) → merges with B, 1987.
 - **SA3+B** draws both into the merge; **All** draws everything.
 
-Each year sits where its line arrives. Dashed = the deed or record is not held. Tap any line, pill or node for its record and sources; the list under the circle repeats the selected line's steps.
+Each year sits where its line arrives. Dashed = the deed or record is not published here. Tap any line, pill or node for its record and sources; the list under the circle repeats the selected line's steps.
 
 Data: `public/data/transfers.json` → `paths` (nodes, segs, filters). Build: `tools/build.py` inlines the data into `tools/template.html` and runs the public-words gate. Static, no external assets.
 
