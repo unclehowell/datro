@@ -443,6 +443,11 @@ sc('II', 'ghf-19160201-1', '1916-02-01', 'February 1916', "The 1916 tenancy", 'G
    "Bute grants John Williams a yearly tenancy described as \"the whole farm\". The document has not been found.",
    [w('/1916-tenancy/#grant', 'The 1916 Tenancy', 'Court record'), JUDG, w('/the-two-parcels/whole-farm-nomenclature/', 'The Farm / Whole Farm Nomenclature')],
    ledger={'S': 'Seed (a landlord\'s wording, not the family\'s): the words "the whole farm" in a Bute tenancy (Bute can only let Parcel B)'})
+sc('II', 'ghf-19230101-1', '1923-01-01', '1923', "Esther Williams signs for peace", 'Llandough', 'x',
+   'Public record',
+   "The Llandough sheet of the 1923 Welsh Women's Peace Petition carries 36 signatures. Line eight reads \"Esther Williams\", \"Llandough\". Her neighbours sign from Llwyn-yr-Eryr, The Post Office, Lewis Road, the brickworks and the Toll House, \"Llandough Near Cardiff\". The Court of Appeal later records Mr Williams and his wife Mrs Esther Williams living at the farm in 1955. The sheet names no farm: that she is the Esther Williams of Great House Farm is our reading. The date is the National Library of Wales catalogue date; the sheet carries none.",
+   [{'type': 'Archival catalogue', 'title': "National Library of Wales, Petition 1/92: Welsh Women's Peace Petition, Llandough sheet (1923): page images and transcription (wayback WB-0039)", 'url': 'https://wayback.bucklerfamily.estate/artifacts/#WB-0039'},
+    w('/evidence/ev-0294-welsh-womens-peace-petition-1923-llandough-nlw-petition-1-92/', 'EV-0294 — Welsh Women’s Peace Petition 1923, Llandough sheet (wiki evidence page)', 'Public record'), JUDG])
 sc('II', 'ghf-19271214-1', '1927-12-14', '14 December 1927', 'Death of Lord Pontypridd', 'Cardiff', 'A',
    'Newspaper',
    'Alfred Thomas, Lord Pontypridd, son of Daniel Thomas of the Llandough lime works, dies unmarried. The next year the last quarry machinery leaves and the final rent on the house is paid.',
