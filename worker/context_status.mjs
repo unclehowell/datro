@@ -63,7 +63,7 @@ export function contextStatus(draft) {
     }
 
     if (verification.thread_result === "FOUND") {
-      if (!context.archive || !context.archive.thread) blockers.push("thread marked found but thread link missing");
+      if (!context.archive || !context.archive.api_thread) blockers.push("whole-thread API link missing");
     } else if (verification.thread_result === "NONE_FOUND") {
       if (context.archive && context.archive.thread) blockers.push("thread marked absent but thread link exists");
       if (!context.archive || !context.archive.search) blockers.push("no-thread result lacks archive search link");
