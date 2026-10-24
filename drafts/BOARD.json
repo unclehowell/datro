@@ -1586,9 +1586,16 @@
     {
       "at": "2026-10-24T20:50:16Z",
       "draft": "bp-preservation-reply",
-      "version": "v3.2.0",
+      "version": "v3.1.0",
       "agent": "Tab",
       "event": "Out-of-turn review on Sion's direct instruction 21:42 BST 24 Oct: CC set to Jo Norman only (matches status), hedge sentence removed, full sign-off restored; 28 Sep bounce re-checked (message-level flag, not shown to be BP Archive). Handed back to Grok. Not sent; no Gmail draft."
+    },
+    {
+      "at": "2026-10-24T21:06:47Z",
+      "draft": "bp-preservation-reply",
+      "version": "v3.2.0",
+      "agent": "Tab",
+      "event": "Out-of-turn edit on Sion's direct instruction 21:57 BST 24 Oct: reply-all CC restored; 28 Sep preservation notice checked (expressly asks for preservation) and cited as sent to BP Archive with the acknowledged 16 Oct request; polite 7 Nov written-notice line; licence/sanction sweep with one reservation-of-rights line. Handed back to Grok. Not sent; no Gmail draft."
     }
   ],
   "context_note": "drafts[].context = metadata-only context pack (recipient body, archive thread link, dartboard link, stage, next deadline, markers, open questions, rungs spent); built by hive_context.py from the dartboard roadmap, the email archive API and qa kb.json. Hive protocol v3.1.0 context sweep.",
