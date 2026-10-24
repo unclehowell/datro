@@ -13,7 +13,8 @@ function completeDraft(overrides = {}) {
     fingerprint: "ctx-123",
     archive: {
       search: "https://email.bucklerfamily.estate/api/search?q=body",
-      thread: "https://email.bucklerfamily.estate/reference/abc"
+      thread: "https://email.bucklerfamily.estate/reference/abc",
+      api_thread: "https://email.bucklerfamily.estate/api/thread?slug=example"
     },
     dartboard: { url: "https://bucklerfamily.estate/?r=9#roadmap", lane: "example-lane" },
     stage: "internal review",
@@ -74,8 +75,12 @@ test("verification for another version or context fingerprint blocks", () => {
   assert.ok(result.blockers.includes("verification fingerprint mismatch"));
 });
 
-test("a verified archive search with no matching thread is allowed only when explicit", () => {
+test("whole-thread link is required and a verified no-thread search is explicit", () => {
   const draft = completeDraft();
+  draft.context.archive.api_thread = null;
+  assert.ok(contextStatus(draft).blockers.includes("whole-thread API link missing"));
+
+  draft.context.archive.api_thread = "https://email.bucklerfamily.estate/api/thread?slug=example";
   draft.context.archive.thread = null;
   draft.context.verification.thread_result = "NONE_FOUND";
   assert.equal(contextStatus(draft).ok, true);
