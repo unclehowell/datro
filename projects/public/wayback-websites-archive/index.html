@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="en-GB"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Wayback Websites Archive — Project Plan</title><meta name="description" content="PRINCE2 brief, product description, stages, quality criteria, risks and tolerances for the Wayback Websites Archive: dated static copies of the external web pages concerning Great House Farm."/><link rel="stylesheet" href="/assets/p2.css?v=1"/></head><body><main class="p2"><h1 class="vh">Wayback Websites Archive</h1><p class="crumb"><a href="/">Dashboard</a> · <a href="/programme-mandate/">Mandate</a> · <a href="/programme-plan/">Plan</a> · <a href="/programme-highlight-report/">Reports</a> · <a href="/p1-argentina-museum/">P1 Museum</a> · <a href="/workstreams/evidence-recovery/">P2 Recovery</a> · <a href="/p3-ar-heritage-tour/">P3 AR Tour</a> · <a href="/p4-case-reopening-gate/">P4 Legal Gate</a></p>
+<h2>Wayback Websites Archive — project plan (v1.0.0, 24 October 2026)</h2><ul class="facts"><li>Stage <b><span class="chip c-warn">S1 STARTED</span></b></li><li>Parent <b><a href="/workstreams/evidence-recovery/">P2 — Wales records recovery</a></b></li><li>Product <b><a href="https://wayback.bucklerfamily.estate/websites/">Wayback · Websites</a></b></li></ul>
+<p class="lead">Dated, static copies of the external web pages that concern Great House Farm (Tŷ Mawr), Llandough, kept in the Wayback Vault. Readers can still read a source when the publishing body's website is down, and each later change to that source is kept as a new numbered version with its capture date, so it can be compared and cited later.</p>
+<details class="sec" open><summary><h2>Project brief</h2><span class="pv">Purpose, scope, approach</span></summary><div class="body"><ul>
+<li><b>Background:</b> many of the estate sites cite pages held by public bodies and archives (heritage records, archive catalogues, newspapers, council pages). Those sites go offline (for example, the Welsh HER portal returned Cloudflare 522 errors from 13:21 UTC on 24 October 2026) and change without notice.</li>
+<li><b>Objective:</b> one place, the Wayback Vault (datro branch <code>wayback</code>), that holds every archived web page for the programme, with a stable "latest" address per page and numbered versions behind it.</li>
+<li><b>Scope in:</b> the 211 pages that Watchtower tracks as concerning the farm, Tŷ Mawr, Llandough and the 1987 case. Text, structure and a screenshot where one was taken.</li>
+<li><b>Scope out:</b> GGATE003317 (a different Great House Farm, Michaelston Road, Cardiff); the Great House Farm at Mamhilad; paywalled or login-only pages; WhatDoTheyKnow request pages until they are redacted.</li>
+<li><b>Approach:</b> reuse the existing captures (internetarchive branch: GitHub runner and box captures), convert each to a self-contained static page, then move capture and change detection so that they write straight into the Wayback Vault.</li></ul></div></details>
+<details class="sec"><summary><h2>Product description</h2><span class="pv">What an archived page looks like</span></summary><div class="body"><ul>
+<li><b>Address:</b> <code>/websites/&lt;host&gt;/&lt;page&gt;/latest.html</code> is always the newest copy (the stable link target; <code>/websites/&lt;host&gt;/&lt;page&gt;/</code>, <code>latest.htm</code> and <code>#latest</code> resolve to it). Each version is also kept as <code>v1.0.0.html</code>, <code>v1.1.0.html</code> and so on.</li>
+<li><b>Record:</b> <code>meta.json</code> per page (source URL, title, first captured, versions with date and SHA-256 of the normalised text, current version) and <code>/websites/index.json</code> for the whole set.</li>
+<li><b>Versioning:</b> first capture v1.0.0; a change to the readable text is a minor version (v1.1.0); a change to markup or layout only is a patch (v1.0.1); an identical capture adds no version.</li>
+<li><b>Static and self-contained:</b> scripts, trackers, forms, iframes, external styles and hot-linked images removed. Links that leave the estate are disabled; a link to another archived page points to that page's latest copy instead.</li>
+<li><b>Banner:</b> each copy opens with the source URL as plain text, the capture date, the version and one "Live website" link, the only live outbound link on the page.</li>
+<li><b>Websites tab:</b> grouped by site, collapsible; each page is a card with a thumbnail, title, capture date and version, with a "Live website" link directly under the thumbnail. Tapping the card previews the copy inside the Vault.</li></ul></div></details>
+<details class="sec" open><summary><h2>Stages</h2><span class="pv">S1 now; S2 and S3 follow</span></summary><div class="body"><table class="t"><thead><tr><th>Stage</th><th>Products</th><th>Status</th></tr></thead><tbody>
+<tr><td>S1 — Websites tab and migration</td><td>Websites tab; existing farm captures converted to latest.html plus versioned copies; index.json; outbound links disabled in every copy.</td><td><span class="chip c-warn">STARTED 24 Oct 2026</span></td></tr>
+<tr><td>S2 — Change detection into the Vault</td><td>The five-day box recapture and Watchtower's farm comparison write new versions straight into the Vault (minor or patch bump). The internetarchive site keeps its content until the Vault copy is verified; then its address redirects to the Websites tab.</td><td><span class="chip c-mut">NOT STARTED</span></td></tr>
+<tr><td>S3 — Outbound-link rewrite</td><td>Across the estate sites, external links to archived pages point to the Vault's latest copy, with the original live URL kept beside it as "Live website".</td><td><span class="chip c-mut">NOT STARTED</span></td></tr>
+</tbody></table></div></details>
+<details class="sec"><summary><h2>Quality criteria</h2><span class="pv">How each stage is accepted</span></summary><div class="body"><ul>
+<li>Every in-scope page with at least one capture has latest.html, a version file and meta.json, and appears in index.json and the Websites tab.</li>
+<li>No archived copy contains a working link off the estate other than the banner's "Live website" link; no script, iframe or form action survives.</li>
+<li>The landing is minimal with details collapsible, and reads correctly at 390 px wide.</li>
+<li>Neutral, dated wording; no personal data of private individuals; source and capture date shown on every copy.</li>
+<li>Three sample latest.html addresses verified live after each release, with a cache-bust.</li>
+<li>S2: an unchanged recapture adds no version; a changed one adds exactly one, with the correct bump. S3: a link audit before and after, with counts per site.</li></ul></div></details>
+<details class="sec"><summary><h2>Risks</h2><span class="pv">Owner: Project Manager</span></summary><div class="body"><ul>
+<li><b>W1 — Sites block automated capture</b> (403, bot challenges, 522 outages): capture from the box and with a real browser where allowed; keep Internet Archive copies as seeds; record unreachable pages rather than dropping them.</li>
+<li><b>W2 — robots.txt:</b> respect disallow rules; record pages excluded for that reason.</li>
+<li><b>W3 — Upload limits:</b> the upload path refuses requests over about 1 MB; files go one at a time, screenshots as JPEG under 650 KB, commits in small parts.</li>
+<li><b>W4 — Disk space</b> on the working machine: stream page by page; stop below 700 MB free.</li>
+<li><b>W5 — Copyright:</b> copies are kept for reference and research, each with its source, capture date and a link to the live page; a rights holder's request is handled by withdrawing the copy.</li>
+<li><b>W6 — Personal data</b> in third-party pages: private individuals' names, emails and postal addresses redacted before publication.</li>
+<li><b>W7 — Two archives drifting apart</b> during S2: the internetarchive site stays read-only once S2 starts, and is redirected only after the Vault copy is verified.</li></ul></div></details>
+<details class="sec"><summary><h2>Tolerances</h2><span class="pv">Escalate to the Executive if exceeded</span></summary><div class="body"><ul>
+<li><b>Time:</b> S1 within one working session; S2 and S3 each within two.</li>
+<li><b>Cost:</b> no spending.</li>
+<li><b>Scope:</b> no page outside the farm list without a recorded reason; no deletion of internetarchive content before the Vault is verified.</li>
+<li><b>Quality:</b> zero live outbound links in archived copies other than "Live website".</li>
+<li><b>Risk:</b> any personal-data exposure stops publication of that page at once.</li></ul></div></details>
+<details class="sec"><summary><h2>Change log</h2><span class="pv">Plan versions</span></summary><div class="body"><ul><li>v1.0.0 — 24 October 2026: plan created; S1 started.</li></ul></div></details>
+</main></body></html>
