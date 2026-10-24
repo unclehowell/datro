@@ -14,6 +14,24 @@
     "oversize: no Internet Archive copy yet": 1
    },
    "new_captures": 185
+  },
+  {
+   "started_utc": "2026-10-24T14:21:43Z",
+   "finished_utc": "2026-10-24T14:52:43Z",
+   "checked": 701,
+   "pending": 3,
+   "complete": false,
+   "status_counts": {
+    "ok: unchanged": 150,
+    "not captured: robots": 68,
+    "capture failed": 449,
+    "not relevant: no farm or case terms": 194,
+    "ok: captured": 28,
+    "pending": 3,
+    "oversize: no Internet Archive copy yet": 1,
+    "ok: changed, new capture": 1
+   },
+   "new_captures": 42
   }
  ],
  "last_complete_utc": "2026-10-24T13:48:23Z"
