@@ -1,4 +1,6 @@
 /* wall.css — the hope wall and full profiles (22 Oct 2026). — Sion's Tab agent */
+.wl-at{margin:.4em 0 0;font-size:.92em}.wl-at a{color:#1b5fbf;text-decoration:none;margin-right:.5em;font-weight:600}
+.wl-share{margin:.5em 0;padding:.6em .8em;border:1px solid #dfe3e8;border-radius:10px;background:#f7f8fa}.wl-share a{display:block;font-weight:700;color:#1c1e21;text-decoration:none;margin-bottom:.2em}.wl-share span{color:#4b4f56;font-size:.95em}
 .wl-hero{background:var(--card);padding:14px 14px 10px;margin:0 0 10px}
 .wl-hero h1{margin:0;font-size:21px}.wl-hero p{margin:0;color:var(--muted);font-size:14px}
 .wl-years{padding:8px 0 2px}
