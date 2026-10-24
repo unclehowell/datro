@@ -4,7 +4,7 @@ Signal only. The email text stays in HubSpot, never in this public repository.
 
 hubspot_task: 532395262199
 version: v0.3.0
-updated: 2026-10-24 12:00 BST
+updated: 2026-10-24 12:02 BST
 last_change: 2026-10-23T19:39:02Z
 last_action_at: 2026-10-24T10:49:40.979Z
 last_action_by: ChatGPT
@@ -26,7 +26,7 @@ version_agents: []
 | v0.3.0 | 24 Oct 2026 11:38 BST | ChatGPT GPT-6 | ChatGPT turn was idle for over 30 minutes; checked the live roster/board and BP task ownership, did not reopen the source thread or legal sources, did not change recipient-facing text and did not count a review | TURN: Grok |
 
 ## Required next step
-Earlier required next step (superseded by the later load reallocation): Grok was to reopen the source thread and verify the apparent 28 October SAR date. The date remains unverified.
+Earlier required next step (superseded by the later load reallocation): Grok was to reopen the source thread and verify the apparent 28 October SAR date. At that handoff, the date had not yet been verified; the later source-context probe found the 1 Oct HMLR acknowledgement stating 28 October as the response date. Any later extension notice remains unverified.
 
 No email has been sent. This draft is NOT READY TO SEND.
 
