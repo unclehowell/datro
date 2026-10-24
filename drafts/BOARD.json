@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T10:03:53.935Z",
+  "updated": "2026-10-24T10:09:33.970Z",
   "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
   "drafts": [
     {
@@ -65,16 +65,16 @@
     {
       "id": "bp-preservation-reply",
       "record": "HubSpot task 531842137317",
-      "version": "v1.3.0",
-      "status": "OTHER AGENT'S TURN",
-      "turn": "ChatGPT (after Tab's v1.3.0 review)",
-      "open_issues": 3,
-      "last_change": "2026-10-23T22:20:22Z",
-      "last_agent": "Tab",
-      "rounds": 14,
+      "version": "v2.0.0",
+      "status": "TURN: Grok",
+      "turn": "Grok (seat 3; after ChatGPT v2.0.0 review)",
+      "open_issues": 2,
+      "last_change": "2026-10-24T10:07:34.786Z",
+      "last_agent": "ChatGPT",
+      "rounds": 15,
       "context": {
         "body": "BP",
-        "as_of": "2026-10-23T22:09Z",
+        "as_of": "2026-10-24T10:09:33.970Z",
         "archive": {
           "search": "https://email.bucklerfamily.estate/api/search?q=BP",
           "thread": "https://email.bucklerfamily.estate/reference/1a16814eff6e8660",
@@ -92,19 +92,22 @@
           "lane": "bp",
           "wheel_number": 16
         },
-        "stage": "no rung reached yet",
-        "next_deadline": null,
+        "stage": "Preservation response requested by 2026-11-06 (requested, not statutory)",
+        "next_deadline": {
+          "date": "2026-11-06",
+          "what": "requested reply date; not a statutory deadline"
+        },
         "rungs_spent": [],
         "markers": {
           "red_fish": 0,
           "red_house": 0,
           "fee": false
         },
-        "open_questions": null,
+        "open_questions": 2,
         "route": "private",
-        "regime": "SAR"
+        "regime": "preservation / correspondence"
       },
-      "tier_since": "2026-10-23T22:20:22Z",
+      "tier_since": "2026-10-24T10:07:34.786Z",
       "tier": "working",
       "tier_label": "IN REVIEW",
       "gmail_draft_id": null,
@@ -132,7 +135,7 @@
       "rounds": 9,
       "context": {
         "body": "Cardiff Central Library",
-        "as_of": "2026-10-24T10:03:53.935Z",
+        "as_of": "2026-10-24T10:09:33.970Z",
         "archive": {
           "search": "https://email.bucklerfamily.estate/api/search?q=Cardiff%20Central%20Library",
           "thread": "https://email.bucklerfamily.estate/reference/1a16876a2f78ac5e",
@@ -1253,6 +1256,20 @@
       "version": "v0.8.0",
       "agent": "ChatGPT",
       "event": "ChatGPT reviewed v0.7.0; official complaint acknowledgement policy corrected; handoff to Grok; status remains IN REVIEW"
+    },
+    {
+      "at": "2026-10-24T10:07:34.786Z",
+      "draft": "bp-preservation-reply",
+      "version": "v2.0.0",
+      "agent": "ChatGPT",
+      "event": "major attachment-strategy update to core Tabs 1-7 PDF; handoff to Grok; not ready"
+    },
+    {
+      "at": "2026-10-24T10:03:25.972Z",
+      "draft": "cardiff-central-library-bute-x6-12-reply",
+      "version": "v0.8.0",
+      "agent": "ChatGPT",
+      "event": "complaint acknowledgement policy corrected; independent handoff to Grok"
     }
   ],
   "context_note": "drafts[].context = metadata-only context pack (recipient body, archive thread link, dartboard link, stage, next deadline, markers, open questions, rungs spent); built by hive_context.py from the dartboard roadmap, the email archive API and qa kb.json. Hive protocol v3.1.0 context sweep.",
