@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.1.1] - 2026-10-24
+
+### Fixed
+- Replace the non-semantic `0.1-working` programme-data label with a tracked semantic version.
+- Synchronize the programme data, root `.version`, and reader-facing README release marker.
+
+### Reviewed
+- Confirmed production output is `projects/public/`, the home page is the PID, and the checker has required-file/content gates.
+- No project statuses, milestones, completion claims or conditional P4 activation criteria were changed.
+
 ## 2026-10-22 — Programme restructure: three active projects
 
 - Replaced the Parcel A-only root dashboard with programme-level PID/status for P1 museum, P2 Wales recovery and P3 AR heritage tour.
