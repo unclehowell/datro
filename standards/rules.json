@@ -1,0 +1,44 @@
+{
+ "version": "1.0.0",
+ "updated": "2026-10-24",
+ "banned_words_in_own_prose": [
+  "says",
+  "claims",
+  "according to",
+  "hearsay",
+  "unverified",
+  "alleged",
+  "fraud",
+  "stolen"
+ ],
+ "preferred_terms": {
+  "tenant": "occupier"
+ },
+ "commit_signoff": "— Sion's Tab agent",
+ "naming": "Institutions and roles only. Dead family members may be named. No living private person is named in public text; the one exception is the project manager credit on the fb2 edition.",
+ "never_publish": [
+  "disclaimers or hedging lines",
+  "in-body page titles that repeat the header",
+  "payment policy",
+  "private phone numbers or home addresses",
+  "photos of young children",
+  "Leckwith visit photos (Glamorgan Archives undertaking)"
+ ],
+ "no_writes": [
+  "the WordPress Legal Wiki (read only for agents)"
+ ],
+ "verbatim_sites": [
+  "wayback",
+  "email",
+  "watchtower",
+  "records",
+  "fb",
+  "fb2"
+ ],
+ "unresolved_marker": "UNRESOLVED",
+ "labels": {
+  "record": "what a dated primary document shows",
+  "family_account": "the family's account, labelled as such",
+  "hypothesis": "our case, prospective, labelled as such"
+ }
+}

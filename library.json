@@ -1,0 +1,484 @@
+{
+ "version": "1.0.0",
+ "updated": "2026-10-24",
+ "handbook": "https://library.bucklerfamily.estate/handbook.html",
+ "rules": "https://library.bucklerfamily.estate/standards/rules.json",
+ "artifact_store": "https://wayback.bucklerfamily.estate/",
+ "artifact_viewer": "https://wayback.bucklerfamily.estate/viewer/ghf-viewer.js",
+ "evidence_catalogue": "https://docs.bucklerfamily.estate/docs.json",
+ "sites": [
+  {
+   "id": "wayback",
+   "title": "The Wayback Vault",
+   "url": "https://wayback.bucklerfamily.estate/",
+   "branch": "wayback",
+   "deploy": "datro@wayback (Cloudflare Pages)",
+   "owns": "Original artifacts: scans, PDFs, images, audio, video, email copies, transcripts; the chronology (chronology.json, CH ids).",
+   "reads": "Nothing upstream. Additions arrive through the evidence sweep with a manifest entry.",
+   "verbatim": true,
+   "tools": [
+    "search_items"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/wayback.html"
+  },
+  {
+   "id": "docs",
+   "title": "Docs · The Evidence Catalogue",
+   "url": "https://docs.bucklerfamily.estate/",
+   "branch": "docs",
+   "deploy": "Cloudflare Pages project bucklerfamily-docs, built by the branch's own build (Sphinx) on every push",
+   "owns": "One document per Evidence Register entry (EV id), each with an HTML view and a PDF view; older versions as PDFs.",
+   "reads": "The Evidence Register on the Legal Wiki for ids and titles; PDFs are stored on Wayback (pdf/docs-archive/).",
+   "verbatim": false,
+   "tools": [],
+   "sop": "https://library.bucklerfamily.estate/sop/docs.html"
+  },
+  {
+   "id": "wiki",
+   "title": "The Legal Wiki",
+   "url": "https://greathousefarmwiki.wordpress.com/",
+   "branch": null,
+   "deploy": "WordPress.com (free plan) — WP REST via saved login / public REST read",
+   "owns": "The Evidence Register (EV ids) and the Legal Wiki pages: the editorial record of the case.",
+   "reads": "Artifacts from Wayback; documents from Docs.",
+   "verbatim": false,
+   "tools": [],
+   "sop": "https://library.bucklerfamily.estate/sop/wiki.html"
+  },
+  {
+   "id": "research",
+   "title": "Research (Legal Wiki mirror)",
+   "url": "https://research.bucklerfamily.estate/",
+   "branch": "research",
+   "deploy": "Cloudflare Worker serving the Legal Wiki mirror, refreshed from the wiki; research pages in branch research",
+   "owns": "Nothing of its own: a read-only mirror of the Legal Wiki and the research pages.",
+   "reads": "The Legal Wiki; the chronology from Wayback.",
+   "verbatim": false,
+   "tools": [
+    "search_content"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/research.html"
+  },
+  {
+   "id": "records",
+   "title": "Primary Records",
+   "url": "https://records.bucklerfamily.estate/",
+   "branch": "ghf-primary-records",
+   "deploy": "datro@records",
+   "owns": "The index of primary records.",
+   "reads": "Artifacts from Wayback.",
+   "verbatim": true,
+   "tools": [
+    "get_agent_index"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/records.html"
+  },
+  {
+   "id": "authorities",
+   "title": "Public Authorities",
+   "url": "https://authorities.bucklerfamily.estate/",
+   "branch": "ghf-public-authorities",
+   "deploy": "datro@authorities",
+   "owns": "The register of public authorities and what each holds.",
+   "reads": "Requests from the Dartboard; correspondence from the Post Office.",
+   "verbatim": false,
+   "tools": [
+    "get_agent_index"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/authorities.html"
+  },
+  {
+   "id": "dartboard",
+   "title": "Home · The Disclosure Dartboard",
+   "url": "https://bucklerfamily.estate/",
+   "branch": "dartboard",
+   "deploy": "datro@dartboard (Cloudflare Pages)",
+   "owns": "Every disclosure request and its status (data/request-status.json).",
+   "reads": "Correspondence from the Post Office; deadlines from the statutes.",
+   "verbatim": false,
+   "tools": [
+    "get_disclosure_record",
+    "list_institutions"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/dartboard.html"
+  },
+  {
+   "id": "email",
+   "title": "The Post Office",
+   "url": "https://email.bucklerfamily.estate/",
+   "branch": "email-archive",
+   "deploy": "Cloudflare Worker (email) + datro@email-archive",
+   "owns": "The redacted correspondence archive (api/records, api/search).",
+   "reads": "Mail as received; attachments link to Wayback.",
+   "verbatim": true,
+   "tools": [
+    "search_threads"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/email.html"
+  },
+  {
+   "id": "emails",
+   "title": "The Post Office · Calendar",
+   "url": "https://emails.bucklerfamily.estate/",
+   "branch": "emails",
+   "deploy": "datro@emails (Cloudflare Pages bucklerfamily-emails)",
+   "owns": "The correspondence calendar and its forecast.",
+   "reads": "The Post Office archive.",
+   "verbatim": false,
+   "tools": [],
+   "sop": "https://library.bucklerfamily.estate/sop/emails.html"
+  },
+  {
+   "id": "qa",
+   "title": "The Q&A Hall",
+   "url": "https://qa.bucklerfamily.estate/",
+   "branch": "qa",
+   "deploy": "datro@qa (Actions build)",
+   "owns": "Questions asked of authorities and their recorded answers (kb.json).",
+   "reads": "The Post Office archive; the Dartboard.",
+   "verbatim": false,
+   "tools": [
+    "search_qa_kb",
+    "ask"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/qa.html"
+  },
+  {
+   "id": "wdtk",
+   "title": "FOI Requests (WhatDoTheyKnow)",
+   "url": "https://whatdotheyknow.bucklerfamily.estate/",
+   "branch": null,
+   "deploy": "A door page to the FOI requests on WhatDoTheyKnow",
+   "owns": "Nothing of its own: a door to the FOI requests on WhatDoTheyKnow.",
+   "reads": "WhatDoTheyKnow and Wayback text items.",
+   "verbatim": false,
+   "tools": [],
+   "sop": "https://library.bucklerfamily.estate/sop/wdtk.html"
+  },
+  {
+   "id": "story",
+   "title": "The Story",
+   "url": "https://bpvsbuckler.bucklerfamily.estate/",
+   "branch": "bpvsbuckler",
+   "deploy": "datro@bpvsbuckler (GitHub Actions build → Pages)",
+   "owns": "The museum-tour narrative (api/timeline.json) told in eras and stops.",
+   "reads": "Chronology from Wayback; evidence from Docs; artifacts from Wayback.",
+   "verbatim": false,
+   "tools": [
+    "get_timeline"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/story.html"
+  },
+  {
+   "id": "maps",
+   "title": "The Map Room",
+   "url": "https://maps.bucklerfamily.estate/",
+   "branch": "maps",
+   "deploy": "datro@maps",
+   "owns": "The map story (data/story.json).",
+   "reads": "Chronology from Wayback; map sheets and images from Wayback.",
+   "verbatim": false,
+   "tools": [
+    "get_story"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/maps.html"
+  },
+  {
+   "id": "infographic",
+   "title": "The Land Changing Hands",
+   "url": "https://infographic.bucklerfamily.estate/",
+   "branch": "infographic",
+   "deploy": "datro@infographic (Cloudflare Pages bucklerfamily-infographic)",
+   "owns": "The land-transfer graphic (public/data/transfers.json).",
+   "reads": "Title records as published on Docs and Wayback.",
+   "verbatim": false,
+   "tools": [],
+   "sop": "https://library.bucklerfamily.estate/sop/infographic.html"
+  },
+  {
+   "id": "chess",
+   "title": "The Chessboard",
+   "url": "https://chess.bucklerfamily.estate/",
+   "branch": "chess",
+   "deploy": "datro@chess",
+   "owns": "The board model (data/board.json).",
+   "reads": "Chronology from Wayback; parties from the Directory.",
+   "verbatim": false,
+   "tools": [
+    "get_board"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/chess.html"
+  },
+  {
+   "id": "csscpsg",
+   "title": "The Grammar House (CSSCPSGP)",
+   "url": "https://csscpsg.bucklerfamily.estate/",
+   "branch": "csscpsg",
+   "deploy": "datro@csscpsg",
+   "owns": "The grammar-house model (data/model.json).",
+   "reads": "Records from Wayback and Docs.",
+   "verbatim": false,
+   "tools": [
+    "get_model"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/csscpsg.html"
+  },
+  {
+   "id": "fcg",
+   "title": "FCG · Security Clearance",
+   "url": "https://fcg.bucklerfamily.estate/",
+   "branch": "fcg",
+   "deploy": "Cloudflare Worker fcg-wp + D1 (datro@fcg)",
+   "owns": "The clearance model (clearance.json).",
+   "reads": "Records from Wayback and Docs.",
+   "verbatim": false,
+   "tools": [
+    "get_clearance"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/fcg.html"
+  },
+  {
+   "id": "oldbill",
+   "title": "Old Bill · Who Gained, Who Lost",
+   "url": "https://oldbill.bucklerfamily.estate/",
+   "branch": "oldbill",
+   "deploy": "datro@oldbill",
+   "owns": "The who-gained, who-lost analysis.",
+   "reads": "Records on Docs and Wayback.",
+   "verbatim": false,
+   "tools": [],
+   "sop": "https://library.bucklerfamily.estate/sop/oldbill.html"
+  },
+  {
+   "id": "nomenclature",
+   "title": "Nomenclature",
+   "url": "https://nomenclature.bucklerfamily.estate/",
+   "branch": "nomenclature",
+   "deploy": "datro@nomenclature (Cloudflare Pages)",
+   "owns": "The lexicon of names (lexicon.json).",
+   "reads": "Records on Docs and Wayback.",
+   "verbatim": false,
+   "tools": [
+    "search_lexicon"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/nomenclature.html"
+  },
+  {
+   "id": "directory",
+   "title": "Cedwyn Estate Directory",
+   "url": "https://directory.bucklerfamily.estate/",
+   "branch": "directory",
+   "deploy": "datro@directory (Cloudflare Pages bucklerfamily-directory) + Worker cedwyn-directory on /api/*",
+   "owns": "The estate directory of people, bodies and places (data/entities.json).",
+   "reads": "Records on Docs and Wayback.",
+   "verbatim": false,
+   "tools": [
+    "search_entities"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/directory.html"
+  },
+  {
+   "id": "review",
+   "title": "Independent Review",
+   "url": "https://review.bucklerfamily.estate/",
+   "branch": "ghf-independent-review",
+   "deploy": "datro@review",
+   "owns": "The independent review pages.",
+   "reads": "Records on Docs and Wayback.",
+   "verbatim": false,
+   "tools": [
+    "get_agent_index"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/review.html"
+  },
+  {
+   "id": "watchtower",
+   "title": "Watchtower",
+   "url": "https://watchtower.bucklerfamily.estate/",
+   "branch": "watchtower",
+   "deploy": "datro@watchtower (Cloudflare Pages)",
+   "owns": "Tracked pages and their changes (data/changes.json).",
+   "reads": "The public pages it watches.",
+   "verbatim": true,
+   "tools": [
+    "get_items",
+    "list_tracked_pages",
+    "list_institutions"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/watchtower.html"
+  },
+  {
+   "id": "projects",
+   "title": "The Project Office",
+   "url": "https://projects.bucklerfamily.estate/",
+   "branch": "projects",
+   "deploy": "datro@projects",
+   "owns": "The PRINCE2 project office: PID, registers, highlight reports, asset register.",
+   "reads": "Every other site's status.",
+   "verbatim": false,
+   "tools": [
+    "get_registers",
+    "get_highlight_report",
+    "get_pid",
+    "get_asset_register"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/projects.html"
+  },
+  {
+   "id": "estate",
+   "title": "Cedwyn Estate",
+   "url": "https://bucklerfamily.estate/cedwyn/",
+   "branch": "main",
+   "deploy": "unclehowell/BucklerFamilyFarm (Cloudflare Pages)",
+   "owns": "The Cedwyn Estate base camp and the shared header order (chain.json).",
+   "reads": "Every site's title and address.",
+   "verbatim": false,
+   "tools": [
+    "get_disclosure_record",
+    "list_institutions"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/estate.html"
+  },
+  {
+   "id": "cyberspace",
+   "title": "The Digital Estate",
+   "url": "https://bucklerfamily.estate/cyberspace/",
+   "branch": "main",
+   "deploy": "unclehowell/BucklerFamilyFarm /cyberspace/",
+   "owns": "The digital-estate page.",
+   "reads": "Every site's address.",
+   "verbatim": false,
+   "tools": [
+    "get_disclosure_record",
+    "list_institutions"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/cyberspace.html"
+  },
+  {
+   "id": "terrain",
+   "title": "Terrain · Cedwyn Estate in 3D",
+   "url": "https://terrain.bucklerfamily.estate/",
+   "branch": null,
+   "deploy": "Cloudflare Worker 'terrain' (repo unclehowell/terrain; scene in R2 terrain-scene; deploy notes",
+   "owns": "The 3D estate scene.",
+   "reads": "Map sources from Wayback.",
+   "verbatim": false,
+   "tools": [],
+   "sop": "https://library.bucklerfamily.estate/sop/terrain.html"
+  },
+  {
+   "id": "app",
+   "title": "The Case Office",
+   "url": "https://app.bucklerfamily.estate/",
+   "branch": "ghf-app",
+   "deploy": "Cloudflare Worker cedwyn-apps (+ datro WebApp main)",
+   "owns": "The case-office app.",
+   "reads": "The Post Office, the Dartboard and Docs.",
+   "verbatim": false,
+   "tools": [],
+   "sop": "https://library.bucklerfamily.estate/sop/app.html"
+  },
+  {
+   "id": "chat",
+   "title": "Ask the Archive",
+   "url": "https://chat.bucklerfamily.estate/",
+   "branch": null,
+   "deploy": "Cloudflare Worker (chat agent)",
+   "owns": "Nothing of its own: answers come from the archive.",
+   "reads": "Wayback, Docs, the Legal Wiki and the Q&A Hall.",
+   "verbatim": false,
+   "tools": [],
+   "sop": "https://library.bucklerfamily.estate/sop/chat.html"
+  },
+  {
+   "id": "accounts",
+   "title": "The Counting House",
+   "url": "https://accounts.bucklerfamily.estate/",
+   "branch": "accounts",
+   "deploy": "datro@accounts (public/ prebuilt by",
+   "owns": "The counting-house ledger (data.json).",
+   "reads": "Records on Docs and Wayback.",
+   "verbatim": false,
+   "tools": [
+    "get_accounts"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/accounts.html"
+  },
+  {
+   "id": "meeting",
+   "title": "The Council Chamber",
+   "url": "https://2026-10-22.bucklerfamily.estate/",
+   "branch": "2026-10-22",
+   "deploy": "datro@meeting",
+   "owns": "The council-meeting record of 22 Oct 2026 (an archive, frozen).",
+   "reads": "Nothing; it is a closed record.",
+   "verbatim": false,
+   "tools": [],
+   "sop": "https://library.bucklerfamily.estate/sop/meeting.html"
+  },
+  {
+   "id": "library",
+   "title": "The Library (maintainer procedures)",
+   "url": "https://library.bucklerfamily.estate/",
+   "branch": "library",
+   "deploy": "Branch library (this site), served at library.bucklerfamily.estate",
+   "owns": "These maintainer procedures and the API and WebMCP reference.",
+   "reads": "Every site's live behaviour.",
+   "verbatim": false,
+   "tools": [
+    "list_documents"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/library.html"
+  },
+  {
+   "id": "fb",
+   "title": "The Farm Album",
+   "url": "https://fb.bucklerfamily.estate/",
+   "branch": "fb",
+   "deploy": "datro@fb → site/ = the Then edition, before 2005)",
+   "owns": "The family album edition (posts.json): photos and period press.",
+   "reads": "Photos and press cuttings from Wayback.",
+   "verbatim": true,
+   "tools": [
+    "search_posts"
+   ],
+   "sop": "https://library.bucklerfamily.estate/sop/fb.html"
+  },
+  {
+   "id": "fb2",
+   "title": "The Farm Album · Now",
+   "url": "https://fb2.bucklerfamily.estate/",
+   "branch": "fb",
+   "deploy": "datro@fb (FB_EDITION=now → site2/; Pages bucklerfamily-fb2)",
+   "owns": "The 'now' album edition for 2005 onwards.",
+   "reads": "The Post Office and the Dartboard only.",
+   "verbatim": true,
+   "tools": [],
+   "sop": "https://library.bucklerfamily.estate/sop/fb2.html"
+  },
+  {
+   "id": "ebooks",
+   "title": "The E-book Shelf",
+   "url": "https://ebooks.bucklerfamily.estate/",
+   "branch": "ebooks",
+   "deploy": "datro@ebooks",
+   "owns": "The e-book shelf: editions and their files.",
+   "reads": "Text from the Legal Wiki and Docs; images from Wayback.",
+   "verbatim": false,
+   "tools": [],
+   "sop": "https://library.bucklerfamily.estate/sop/ebooks.html"
+  },
+  {
+   "id": "shop",
+   "title": "Gift Shop & Marketplace",
+   "url": "https://shop.bucklerfamily.estate/",
+   "branch": "merch",
+   "deploy": "datro@shop",
+   "owns": "The gift shop catalogue.",
+   "reads": "Images from Wayback.",
+   "verbatim": false,
+   "tools": [],
+   "sop": "https://library.bucklerfamily.estate/sop/shop.html"
+  }
+ ]
+}
