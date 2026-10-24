@@ -9,7 +9,7 @@ export async function onRequest(context) {
   try { p = decodeURIComponent(p); } catch { return context.next(); }
   if (/^\/[^/]+\/_a\/[0-9a-f]{16}\.[a-z0-9]+$/.test(p) || /^\/[^/]+\/[^/]+\.thumb\.jpg$/.test(p)) {
     const o = await env.wayback_media.get("html" + p);
-    if (!o) return new Response("", {status: 404});
+    if (!o) return context.next();   // assets added later by sync_html.py are committed beside the page
     const ext = p.split(".").pop();
     return new Response(request.method === "HEAD" ? null : o.body, {headers: {"content-type": TYPES[ext] || "application/octet-stream",
       "cache-control": "public, max-age=604800, immutable", "x-content-type-options": "nosniff", "access-control-allow-origin": "*"}});
