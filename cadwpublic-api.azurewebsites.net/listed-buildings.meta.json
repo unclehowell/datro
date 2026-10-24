@@ -1,0 +1,32 @@
+{
+ "schema": "wayback-html/1",
+ "title": "Listed Buildings",
+ "url": "https://cadwpublic-api.azurewebsites.net/reports/listedbuilding/FullReport?id=15765",
+ "host": "cadwpublic-api.azurewebsites.net",
+ "name": "listed-buildings",
+ "address": "https://wayback-html.bucklerfamily.estate/cadwpublic-api.azurewebsites.net/listed-buildings.html",
+ "current_version": "v1.0.0",
+ "first_captured": "2026-10-24T14:23:45Z",
+ "last_captured": "2026-10-24T14:23:45Z",
+ "versions": [
+  {
+   "version": "v1.0.0",
+   "captured_utc": "2026-10-24T14:23:45Z",
+   "capture_source": "live",
+   "change": "first",
+   "file": "listed-buildings.v1.0.0.html",
+   "text_sha256": "416340c5fe79acf3f4b7aafa26351a8612285ab86adbe59a6eb79bcce6286ed4",
+   "markup_sha256": "f7344a1d872d3bc8551551b525528c3d603f72e9791a0dff1cd678851dbf6ec2",
+   "design": "kept",
+   "assets": 2,
+   "from": "https://internetarchive.bucklerfamily.estate/20261024142345/cadwpublic-api.azurewebsites.net/reports/listedbuilding/FullReport/_q/id=15765/"
+  }
+ ],
+ "old_addresses": [
+  "https://wayback.bucklerfamily.estate/websites/cadwpublic-api.azurewebsites.net/reports-listedbuilding-fullreport-q-id-15765/latest.html"
+ ],
+ "key": "cadwpublic-api.azurewebsites.net/reports/listedbuilding/FullReport/_q/id=15765",
+ "live_url": "https://cadwpublic-api.azurewebsites.net/reports/listedbuilding/FullReport?id=15765",
+ "archive_status": "ok: captured",
+ "last_checked": "2026-10-24T14:23:45Z"
+}
