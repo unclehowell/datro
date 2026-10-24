@@ -1,3 +1,10 @@
+## [0.9.1.67] - 2026-10-24
+
+### Fixed
+- Repair mojibake in the visible release footer.
+- Announce version-status updates to assistive technology.
+- Align displayed release version/date with the rerelease metadata.
+
 # Changelog
 
 ## [bpvsbuckler-v0.0.0.10-aws] - 2026-05-28
