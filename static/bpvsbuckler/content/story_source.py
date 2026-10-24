@@ -458,7 +458,7 @@ sc('II', 'ghf-19280101-1', '1928-01-01', '1928', "Last rent on the house", 'Grea
    [{'type': 'Biography', 'title': 'EV-0284 — Alfred Thomas, Lord Pontypridd, died 14 Dec 1927; estate report (wiki evidence page)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0284-alfred-thomas-lord-pontypridd-son-of-daniel-thomas-of-the-llandough-lime-works-die/'}, MARY, w('/1877-agreement/#takes-effect', 'The 1877 Agreement — takes effect 1928'),
     LRT('deeds-before-registration', 'Land Registry Titles — deeds before registration (15 May 1924 agreement)'), w('/forensic-master-chronology-authoritative-corrected-6-october-2026/', 'Forensic Master Chronology (6 October 2026)', 'Analysis'), w('/the-two-parcels/', 'The Two Parcels')],
    aliases=['ghf-19240515-1'],
-   ledger={'A': 'Freehold: the Williamses (Bute → Thomas → Williams; 1877 agreement and 1928 receipt kept at the house)'})
+   ledger={'A': 'Freehold: the Williamses (Bute → Thomas → Williams)'})
 sc('II', 'ghf-19360101-1', '1936-01-01', '1936', "Marriage", 'Great House Farm', 'A',
    'Newspaper',
    "Mary (Nancy) Williams marries Frederick Buckler, who comes to live at the farmhouse. They have seven children. The Western Mail of 5 August 1936 reports the wedding of Mr. Fred Buckler of Barry and Miss Mary Doreen (Nancy) Williams of Great House Farm (snippet only).",
