@@ -40,5 +40,20 @@
   "record": "what a dated primary document shows",
   "family_account": "the family's account, labelled as such",
   "hypothesis": "our case, prospective, labelled as such"
+ },
+ "family_holdings": {
+  "may_name_only": [
+   "Mary Williams' statement",
+   "family photographs",
+   "William Buckler's diaries"
+  ],
+  "never": [
+   "statements about what the family holds or does not hold",
+   "current family addresses",
+   "whereabouts of living family members",
+   "heirlooms and where they are kept"
+  ],
+  "instead": "state the public record and the archive that keeps it",
+  "since": "2026-10-24"
  }
 }
