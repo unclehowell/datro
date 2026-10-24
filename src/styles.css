@@ -28,6 +28,16 @@
     cursor: pointer;
   }
 
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [role="button"]:focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 3px;
+  }
+
   html,
   body {
     background: var(--color-bg);
