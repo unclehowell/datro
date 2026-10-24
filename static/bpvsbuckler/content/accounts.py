@@ -639,6 +639,10 @@ ACCOUNTS = {
     received="",
     words=[],
     known='The woodland north of the house was managed by Bute as coppice in 1902; whether the land itself changed hands then is not shown.'),
+'ghf-19230101-1': dict(
+    received="",
+    words=[],
+    known="The Court of Appeal records Mr Williams and his wife Mrs Esther Williams living at the farm in 1955. The petition is a peace petition, not a land document, and gives no house name; the 1921 census and the 1923–24 register of electors for Llandough would show whether this Esther Williams is the farmer's wife."),
 'ghf-19271214-1': dict(
     received="",
     words=[],
