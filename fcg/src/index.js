@@ -71,8 +71,8 @@ function html(body, status = 200, maxAge = 60) {
   let page = String(body ?? "");
   if (!page.includes("data-estate-tour-nav")) {
     const nav = estateTourNav();
-    if (/<\\/header\\s*>/i.test(page)) page = page.replace(/<\\/header\\s*>/i, nav + "</header>");
-    else if (/<body\\b[^>]*>/i.test(page)) page = page.replace(/<body\\b[^>]*>/i, m => m + '<header data-estate-tour-shell style="box-sizing:border-box;width:100%;margin:0;padding:.3rem .7rem;background:#111;color:#f5ead5;border-bottom:1px solid #9f7b42">' + nav + "</header>");
+    if (/<\/header\s*>/i.test(page)) page = page.replace(/<\/header\s*>/i, nav + "</header>");
+    else if (/<body\b[^>]*>/i.test(page)) page = page.replace(/<body\b[^>]*>/i, m => m + '<header data-estate-tour-shell style="box-sizing:border-box;width:100%;margin:0;padding:.3rem .7rem;background:#111;color:#f5ead5;border-bottom:1px solid #9f7b42">' + nav + "</header>");
     else page = nav + page;
   }
   return new Response(page, { status, headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "public, max-age=" + maxAge } });
