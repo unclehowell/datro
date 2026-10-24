@@ -1,4 +1,4 @@
-## [0.8.1.39] - 2026-10-24
+## [0.8.2] - 2026-10-24
 
 ### Fixed
 - Repair mojibake in the release footer so separators and loading text render correctly.
