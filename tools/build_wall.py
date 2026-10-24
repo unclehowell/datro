@@ -795,7 +795,7 @@ def build():
         hero = ('<section class="wl-hero"><p>The freehold title chain, 1877 to 1994, retold as if it all happened on Facebook: each post is by the party '
                 'that acted, and each one links to its record.</p>%s%s</section>' % (eras(""), years("")))
     hero = rings("") + hero
-    write("index.html", head(("farmbook 2 · Today at Tŷ Mawr" if NOW else "farmbook · Tŷ Mawr, then"), ("The campaign for Great House Farm (Tŷ Mawr), Llandough, since 2005, retold as a social feed: each request, reply, refusal and missed deadline posted by the body that acted, with the daily highlight report." if NOW else "Great House Farm (Tŷ Mawr), Llandough: the freehold title chain 1877–1994, retold as a social feed: the title chain, the courts, the press and the family, each post by the party that acted, each linked to its record."), "index.html")
+    write("index.html", head(("farmbook 2 · Today at Tŷ Mawr" if NOW else "farmbook · Tŷ Mawr, then"), ("The campaign for Great House Farm (Tŷ Mawr), Llandough, since 2005, retold as a social feed: each request, reply, refusal and missed deadline posted by the body that acted, with the daily highlight report." if NOW else "Great House Farm (Tŷ Mawr), Llandough: a source-linked social feed from the 1824 survey context through the 1877–1994 title-chain story, with the courts, press and family. Each post is attributed to the party that acted."), "index.html")
           + "<body>" + BS.top("feed") + '<main id="main" class="sb-main">' + hero + "".join(cards)
           + '<a class="wl-more-link" href="wall/%s.html">Earlier: %s and before →</a></main>' % (nxt, nxt) + page_end(""))
     ys = sorted({x["date"][:4] for x in wall}, reverse=True)
