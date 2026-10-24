@@ -268,16 +268,17 @@ async function executeGraphQL(query, variables, env, request) {
   }
   const single = q.match(/\b(page|post)\s*\(\s*slug\s*:\s*["']([^"']+)["']\s*\)/i);
   if (single) {
-    const row = await env.DB.prepare(
-      "SELECT id, title, slug, content, excerpt, status, post_type, date_gmt FROM posts WHERE slug = ? LIMIT 1"
-    ).bind(single[2]).first();
     const key = single[1].toLowerCase();
+    const row = await env.DB.prepare(
+      "SELECT id, title, slug, content, excerpt, status, post_type, date_gmt FROM posts WHERE slug = ? AND status = 'publish' AND post_type = ? LIMIT 1"
+    ).bind(single[2], key).first();
     return { [key]: row ? mapRow(row) : null };
   }
   if (/\bposts\s*[({]/.test(q)) {
     let status = "publish";
     const sm = q.match(/status\s*:\s*(\w+)/i);
     if (sm) status = sm[1].toLowerCase();
+    if (status !== "publish") throw new Error("Only published content is publicly readable");
     let first = 20;
     const fm = q.match(/first\s*:\s*(\d+)/);
     if (fm) first = Math.min(100, parseInt(fm[1], 10));
