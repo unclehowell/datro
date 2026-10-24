@@ -622,7 +622,7 @@ ACCOUNTS = {
 'ghf-19271214-1': dict(
     received="",
     words=[],
-    known="The death of Daniel Thomas's son and heir in December 1927 comes immediately before the 1928 end of quarrying and of rent on the house."),
+    known="The death of Daniel Thomas's son and heir in December 1927 comes after the quarry had stopped (its plant was catalogued for sale in November 1925) and just before the last rent on the house, which Mary recalled as 1928."),
 'ghf-19420401-1': dict(
     received="",
     words=[],
