@@ -13,6 +13,9 @@
 <style>
 :root{--bg:#1b1730;--ink:#f6f1e7;--muted:#b9b2d6;--wood:#8a5a2b;--wood2:#5e3a17;--boardW:#1f4a37;--boardR:#2b2f45;--chalk:#fbfaf5;--y:#ffe066;--p:#ff8fab;--g:#7CFFB2;--b:#9ad1ff;--o:#ffb347;--v:#c3a6ff;--r:#ff6b6b}
 *{box-sizing:border-box}
+/* Keyboard focus: make the chart, scenarios and ticket desk usable without a pointer. */
+:where(a,button,summary,input,select,textarea,[role="button"],[tabindex]):focus-visible{outline:3px solid var(--y);outline-offset:3px;border-radius:3px}
+
 html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Patrick Hand',ui-rounded,system-ui,sans-serif;font-size:17px;line-height:1.35}
 body{background-image:radial-gradient(circle at 20% 0%,#2a2350 0,transparent 55%),radial-gradient(circle at 90% 30%,#2b1d3d 0,transparent 50%)}
 a{color:var(--y)}
