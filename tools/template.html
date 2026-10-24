@@ -39,6 +39,8 @@ footer{max-width:1080px;margin:10px auto 40px;padding:0 14px;font-size:12px;colo
 .tx-m{display:none}@media(max-width:620px){.tx-d{display:none}.tx-m{display:block}}
 .txc{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:0 0 8px}.txc .a{float:right;font-weight:700}
 .txc .d{font-size:12px;color:var(--mut)}
+
+:where(a,button,input,select,textarea,[role="button"],[tabindex]):focus-visible{outline:3px solid var(--s);outline-offset:3px;border-radius:3px}
 </style><script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.1.2"></script>
 </head><body>
 <div class="band"></div>
@@ -78,7 +80,7 @@ footer{max-width:1080px;margin:10px auto 40px;padding:0 14px;font-size:12px;colo
 <li>Class "case" = spent only on the case. Class "project" = AI and software tools used for the case and the wider project; the case share has not been split out.</li>
 <li>US-dollar receipts are converted at about £0.75 per $1, marked "~" as an estimate, unless the receipt states the pounds charged.</li></ul></section>
 </main>
-<footer><p id="gen"></p></footer>
+<footer><p id="gen" role="status" aria-live="polite"></p></footer>
 <script>
 const D=/*__DATA__*/null;
 const f=n=>(n<0?"−":"")+"£"+Math.abs(n).toLocaleString("en-GB",{minimumFractionDigits:2,maximumFractionDigits:2});

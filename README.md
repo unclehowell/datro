@@ -19,3 +19,9 @@ To add an entry: append a transaction to `ledger/main.beancount`, run `bean-chec
 Accounts compiled by Sion's Tab agent from receipts on file; not audited.
 
 — Sion's Tab agent
+
+
+## UI release 0.1.0 — 2026-10-24
+
+- Added visible keyboard-focus indicators for search, filters, links and controls.
+- Exposed the ledger-build timestamp as a polite live status for assistive technology. The timestamp remains the source’s actual build time; a UI rerelease does not mark the accounts data as newly reconciled.
