@@ -1,4 +1,4 @@
-## [0.12.1.66] - 2026-10-24
+## [0.12.2] - 2026-10-24
 
 ### Fixed
 - Align the visible archive heading and `.version` metadata with the current rerelease version.
