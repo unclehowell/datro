@@ -76,13 +76,13 @@
     {
       "id": "bp-preservation-reply",
       "record": "HubSpot task 531842137317",
-      "version": "v3.1.0",
+      "version": "v3.2.0",
       "status": "TURN: Grok",
-      "turn": "Grok (seat 3; independently review v3.1.0; Tab took an out-of-turn review on Sion's direct instruction 21:42 BST 24 Oct)",
-      "open_issues": 4,
-      "last_change": "2026-10-24T20:50:16Z",
+      "turn": "Grok (seat 3; independently review v3.2.0; Tab made an out-of-turn edit on Sion's direct instruction 21:57 BST 24 Oct)",
+      "open_issues": 3,
+      "last_change": "2026-10-24T21:06:47Z",
       "last_agent": "Tab",
-      "rounds": 18,
+      "rounds": 19,
       "context": {
         "body": "BP",
         "as_of": "2026-10-24T10:09:33.970Z",
@@ -103,9 +103,9 @@
           "lane": "bp",
           "wheel_number": 16
         },
-        "stage": "Preservation response requested by 2026-11-06 (requested, not statutory)",
+        "stage": "Preservation response requested by 2026-11-07 (requested, not statutory)",
         "next_deadline": {
-          "date": "2026-11-06",
+          "date": "2026-11-07",
           "what": "requested reply date; not a statutory deadline"
         },
         "rungs_spent": [],
@@ -117,7 +117,7 @@
         "open_questions": 2,
         "route": "private",
         "regime": "preservation / correspondence",
-        "note": "v3.1.0 (Tab, out of turn on Sion's instruction): CC is Jo Norman only, matching the status block; hedge sentence about the earliest verifiable request removed; full two-line sign-off restored. 16 Oct request verified as passed to Jack Sheehy. 28 Sep notice went to BP Archive among many recipients; HubSpot's BOUNCED flag is message-level and its single error matches another recipient's bounce, so delivery to BP Archive is unconfirmed rather than failed. Current-version review counters reset; no Gmail draft and nothing sent."
+        "note": "v3.2.0 (Tab, out of turn on Sion's instruction 21:57 BST): reply-all restored (Jack Sheehy's three CCs); the 28 Sep preservation notice, read in full and found to ask expressly for preservation, is cited as sent to BP Archive alongside the acknowledged 16 Oct request; a polite written notice asks BP to object in writing by 7 Nov; neutral land wording and one reservation-of-rights line. Current-version review counters reset; no Gmail draft and nothing sent."
       },
       "tier_since": "2026-10-24T20:33:30Z",
       "tier": "working",
@@ -135,7 +135,7 @@
       ],
       "stage": "TURN",
       "pct_at": "2026-10-24T20:33:30Z",
-      "last_action_at": "2026-10-24T20:50:16Z",
+      "last_action_at": "2026-10-24T21:06:47Z",
       "last_action_by": "Tab",
       "version_reviews": 0,
       "version_distinct_agents": 0,
@@ -1586,7 +1586,7 @@
     {
       "at": "2026-10-24T20:50:16Z",
       "draft": "bp-preservation-reply",
-      "version": "v3.1.0",
+      "version": "v3.2.0",
       "agent": "Tab",
       "event": "Out-of-turn review on Sion's direct instruction 21:42 BST 24 Oct: CC set to Jo Norman only (matches status), hedge sentence removed, full sign-off restored; 28 Sep bounce re-checked (message-level flag, not shown to be BP Archive). Handed back to Grok. Not sent; no Gmail draft."
     }
