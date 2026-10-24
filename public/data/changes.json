@@ -1,296 +1,297 @@
 {
-"generated": "2026-10-24T13:23Z",
-"window": {
-"from": "2016-03-04",
-"to": "2026-10-24"
-},
-"method": "Every Internet Archive (Wayback Machine) capture of each page is listed; distinct captures are read and the passages that name Great House Farm, Tŷ Mawr, the Llandough monastic cemetery and excavations, BP v Buckler or titles WA231076/WA240304 are compared capture to capture. Each dot sits on the date of the archive capture that shows the change; the capture before it is linked as Before.",
-"institutions": [
-{
-"id": "archwilio",
-"name": "Archwilio (HER)",
-"short": "Archwilio",
-"n_pages": 1,
-"n_changes": 1
-},
-{
-"id": "bailii",
-"name": "BAILII (court judgments)",
-"short": "BAILII",
-"n_pages": 1,
-"n_changes": 1
-},
-{
-"id": "cadw",
-"name": "Cadw / Welsh Government",
-"short": "Cadw / WG",
-"n_pages": 2,
-"n_changes": 2
-},
-{
-"id": "coflein",
-"name": "Coflein (RCAHMW)",
-"short": "Coflein",
-"n_pages": 1,
-"n_changes": 1
-},
-{
-"id": "lcc",
-"name": "Llandough Community Council",
-"short": "Llandough CC",
-"n_pages": 2,
-"n_changes": 2
-},
-{
-"id": "museum",
-"name": "Museum Wales",
-"short": "Museum Wales",
-"n_pages": 2,
-"n_changes": 2
-}
-],
-"pages": [
-{
-"id": "0556367666",
-"url": "https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s",
-"inst": "archwilio",
-"title": "Great House Farm, Llandough",
-"captures": 2,
-"first": "2026-10-06",
-"last": "2026-10-06",
-"mentions_now": true
-},
-{
-"id": "0873fb9ab4",
-"url": "https://coflein.gov.uk/en/site/400051",
-"inst": "coflein",
-"title": "ROMAN VILLA SITE, LLANDOUGH",
-"captures": 15,
-"first": "2016-03-04",
-"last": "2026-01-15",
-"mentions_now": false
-},
-{
-"id": "45f071d53a",
-"url": "https://museum.wales/blog/1345/The-suffering-of-burial-631/",
-"inst": "museum",
-"title": "The suffering of burial 631",
-"captures": 2,
-"first": "2026-10-23",
-"last": "2026-10-23",
-"mentions_now": true
-},
-{
-"id": "55e10b637e",
-"url": "https://museum.wales/blog/2571/Summary-of-an-archaeology-work-placement-2022-23/",
-"inst": "museum",
-"title": "Summary of an archaeology work placement, 2022-23",
-"captures": 17,
-"first": "2023-11-13",
-"last": "2026-09-23",
-"mentions_now": true
-},
-{
-"id": "ac67c9a09b",
-"url": "https://www.gov.wales/sites/default/files/publications/2026-06/atisn27021.pdf",
-"inst": "cadw",
-"title": "atisn27021 (PDF)",
-"captures": 1,
-"first": "2026-10-23",
-"last": "2026-10-23",
-"mentions_now": true
-},
-{
-"id": "0b71eceb08",
-"url": "https://www.llandough-cc.co.uk/_UserFiles/Files/Buildings/St%20Dochdwys%20Church.pdf",
-"inst": "lcc",
-"title": "Llandough Community Council: St Dochdwy's Church (PDF)",
-"captures": 3,
-"first": "2019-09-19",
-"last": "2025-08-08",
-"mentions_now": true
-},
-{
-"id": "aa3126edc9",
-"url": "https://www.llandough-cc.co.uk/_UserFiles/Files/News/Newsletter%20Summer%202019.pdf",
-"inst": "lcc",
-"title": "Llandough Community Council: Newsletter, Summer 2019 (PDF)",
-"captures": 3,
-"first": "2019-09-19",
-"last": "2026-02-14",
-"mentions_now": true
-},
-{
-"id": "4a6dc228ec",
-"url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
-"inst": "bailii",
-"title": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (31 July 1987)",
-"captures": 5,
-"first": "2017-11-08",
-"last": "2025-04-21",
-"mentions_now": true
-},
-{
-"id": "c46705ac6c",
-"url": "https://cadw.gov.wales/sites/default/files/2019-04/InterpplanCelticSaints_EN.pdf",
-"inst": "cadw",
-"title": "Cadw: Celtic Saints interpretation plan (PDF)",
-"captures": 1,
-"first": "2021-11-23",
-"last": "2021-11-23",
-"mentions_now": true
-}
-],
-"changes": [
-{
-"id": "6df971c98c",
-"date": "2026-10-23",
-"d1": null,
-"type": "appeared",
-"inst": "museum",
-"page": "45f071d53a",
-"summary": "First archived copy of this page. It names the farm or the site.",
-"add": [
-"Ideal Homes Wales Ltd had contracted archaeologists from Cotswold Archaeology to excavate land earmarked for a new housing development in Llandough (Vale of Glamorgan).",
-"'An early-medieval girdle from burial 631', by M. Redknap. In N. Holbrook and A Thomas 'An early-medieval monastic cemetary at Llandough, Glamorgan: excavations in 1994', Medieval Archaeology 49 (2005), 53-64."
-],
-"rem": [],
-"before_url": null,
-"after_url": "https://web.archive.org/web/20261023113645/https://museum.wales/blog/1345/The-suffering-of-burial-631/"
-},
-{
-"id": "41d080507c",
-"date": "2026-10-23",
-"d1": null,
-"type": "appeared",
-"inst": "cadw",
-"page": "ac67c9a09b",
-"summary": "First archived copy of this page. It names the farm or the site.",
-"add": [
-"Great House Farm, Llandough (ATISN 27021)",
-"Welsh Government relating to Great House Farm.",
-"relating to Great House Farm / Ty Mawr from the 1970s to 1990s.",
-"Doc 1 Great House Farm inspection photo – dated 29/07/1988",
-"Doc 2 Barn at Great House Farm inspection photo – dated 29/07/1988"
-],
-"rem": [],
-"before_url": null,
-"after_url": "https://web.archive.org/web/20261023163251/https://www.gov.wales/sites/default/files/publications/2026-06/atisn27021.pdf"
-},
-{
-"id": "ca127f45b9",
-"date": "2026-10-06",
-"d1": null,
-"type": "appeared",
-"inst": "archwilio",
-"page": "0556367666",
-"summary": "First archived copy of this page. It names the farm or the site.",
-"add": [
-"Great House Farm, Llandough",
-"Great House Farmhouse and barn formed an attractive group. 17th-19th century.",
-"Great House Farmhouse and barn formed an attractive group, built of local lias limestone, and occupied an historic site next to the parish church. Finds of medieval ironwork and pottery have been reported from the site. Great House was the chief freehold farm of the parish and was occupied by the Vaughan's, a minor gentry family, from the mid C16th until the latter part of the C18th. Several memor",
-"GGAT , 1990 , Land at Great House Farm, Llandough. An Archaeological Assessment ( © GGAT)",
-"Robinson, D. , 1988 , Biglis, Caldicot and Llandough: Three Late Iron Age and Roman-British Sites in South-East Wales, Excavations 1977-79",
-"Suggett, R.F.S. , 1988 , Great House Farm ( © Royal Commission on the Ancient and Historic Monuments of Wales (RCAHMW))"
-],
-"rem": [],
-"before_url": null,
-"after_url": "https://web.archive.org/web/20261006194632/https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s"
-},
-{
-"id": "7fbd8d372f",
-"date": "2023-11-13",
-"d1": null,
-"type": "appeared",
-"inst": "museum",
-"page": "55e10b637e",
-"summary": "First archived copy of this page. It names the farm or the site.",
-"add": [
-"Joining a small group of individuals on placement, some of whom are students from Cardiff’s Archaeological Science course, we worked alongside the Curator to assess skeletons from the early medieval cemetery at Llandough, near Cardiff. The excavations in the early 1990s produced in excess of a thousand skeletons, which have remained in Amgueddfa Cymru’s archive awaiting full examination."
-],
-"rem": [],
-"before_url": null,
-"after_url": "https://web.archive.org/web/20231113133908/https://museum.wales/blog/2571/Summary-of-an-archaeology-work-placement-2022-23/"
-},
-{
-"id": "321d9b46ca",
-"date": "2021-11-23",
-"d1": null,
-"type": "appeared",
-"inst": "cadw",
-"page": "c46705ac6c",
-"summary": "First archived copy of this page. It names the farm or the site.",
-"add": [
-"Knight, J. ‘From Villa to Monastery: Llandough in Context’, Medieval Archaeology 49 (2005) 93-107"
-],
-"rem": [],
-"before_url": null,
-"after_url": "https://web.archive.org/web/20211123103417/https://cadw.gov.wales/sites/default/files/2019-04/InterpplanCelticSaints_EN.pdf"
-},
-{
-"id": "99b155dca1",
-"date": "2019-09-19",
-"d1": null,
-"type": "appeared",
-"inst": "lcc",
-"page": "0b71eceb08",
-"summary": "First archived copy of this page. It names the farm or the site.",
-"add": [
-"A discussion of the church and the cemetery is given in the article “Llandough” by Alan"
-],
-"rem": [],
-"before_url": null,
-"after_url": "https://web.archive.org/web/20190919015739/http://www.llandough-cc.co.uk/_UserFiles/Files/Buildings/St%20Dochdwys%20Church.pdf"
-},
-{
-"id": "379a8d9e94",
-"date": "2019-09-19",
-"d1": null,
-"type": "appeared",
-"inst": "lcc",
-"page": "aa3126edc9",
-"summary": "First archived copy of this page. It names the farm or the site.",
-"add": [
-"Monastic Cemetery at Llandough, in 1994. develop a local action plan. Any offers of help and"
-],
-"rem": [],
-"before_url": null,
-"after_url": "https://web.archive.org/web/20190919025538/http://www.llandough-cc.co.uk/_UserFiles/Files/News/Newsletter%20Summer%202019.pdf"
-},
-{
-"id": "c8509176a3",
-"date": "2017-11-08",
-"d1": null,
-"type": "appeared",
-"inst": "bailii",
-"page": "4a6dc228ec",
-"summary": "First archived copy of this page. It names the farm or the site.",
-"add": [
-"BP Properties Ltd v Buckler [1987] EWCA Civ 2 (31 July 1987)",
-"BP PROPERTIES LTD",
-"The action concerns a farm known as Great House Farm at Llandough near Penarth in South Glamorgan. The plaintiffs, BP Properties Ltd, have the paper title to the farm, and indeed since November 1982 they have been the registered proprietors of it at HM Land Registry following first registration. They claimed possession against the defendant, Mr W Buckler ('Mr Buckler junior') and he sought to set ",
-"So far as the farmhouse and garden are concerned, however, the position on the facts is different, in that there is no doubt that Mr Buckler junior has exclusive possession of the farmhouse and garden, as his parents did before him, and no rent has been paid since 1953.",
-"Great House Farm used to belong to the Marquis of Bute, and in February 1916 the Marquis granted a yearly agricultural tenancy of the whole of the farm to a Mr John Williams, who was Mr Buckler junior's maternal grandfather. In 1938 the reversion on that tenancy was conveyed to a company called Western Ground Rents Ltd.",
-"It is unnecessary to go into the details of the payments made by Mr Frederick Buckler. On the evidence, the last payment of rent made by him - in fact a payment under a judgment for arrears of rent - was made at some time in 1953. His tenancy was then duly terminated by a notice to quit which expired on February 2 1955. Western Ground Rents then brought proceedings for possession against Mr Freder"
-],
-"rem": [],
-"before_url": null,
-"after_url": "https://web.archive.org/web/20171108211400/http://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
-},
-{
-"id": "dae466c6f4",
-"date": "2016-03-04",
-"d1": null,
-"type": "appeared",
-"inst": "coflein",
-"page": "0873fb9ab4",
-"summary": "First archived copy of this page. It names the farm or the site.",
-"add": [
-"ROMAN VILLA SITE, LLANDOUGH"
-],
-"rem": [],
-"before_url": null,
-"after_url": "https://web.archive.org/web/20160304062528/http://www.coflein.gov.uk/en/site/400051/details/ROMAN+VILLA+SITE,+LLANDOUGH/"
-}
-]
+  "generated": "2026-10-24T13:23Z",
+  "window": {
+    "from": "2016-03-04",
+    "to": "2026-10-24"
+  },
+  "method": "Every Internet Archive (Wayback Machine) capture of each page is listed; distinct captures are read and the passages that name Great House Farm, Tŷ Mawr, the Llandough monastic cemetery and excavations, BP v Buckler or titles WA231076/WA240304 are compared capture to capture. Each dot sits on the date of the archive capture that shows the change; the capture before it is linked as Before.",
+  "institutions": [
+    {
+      "id": "archwilio",
+      "name": "Archwilio (HER)",
+      "short": "Archwilio",
+      "n_pages": 1,
+      "n_changes": 1
+    },
+    {
+      "id": "bailii",
+      "name": "BAILII (court judgments)",
+      "short": "BAILII",
+      "n_pages": 1,
+      "n_changes": 1
+    },
+    {
+      "id": "cadw",
+      "name": "Cadw / Welsh Government",
+      "short": "Cadw / WG",
+      "n_pages": 2,
+      "n_changes": 2
+    },
+    {
+      "id": "coflein",
+      "name": "Coflein (RCAHMW)",
+      "short": "Coflein",
+      "n_pages": 1,
+      "n_changes": 1
+    },
+    {
+      "id": "lcc",
+      "name": "Llandough Community Council",
+      "short": "Llandough CC",
+      "n_pages": 2,
+      "n_changes": 2
+    },
+    {
+      "id": "museum",
+      "name": "Museum Wales",
+      "short": "Museum Wales",
+      "n_pages": 2,
+      "n_changes": 2
+    }
+  ],
+  "pages": [
+    {
+      "id": "0556367666",
+      "url": "https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s",
+      "inst": "archwilio",
+      "title": "Great House Farm, Llandough",
+      "captures": 2,
+      "first": "2026-10-06",
+      "last": "2026-10-06",
+      "mentions_now": true
+    },
+    {
+      "id": "0873fb9ab4",
+      "url": "https://coflein.gov.uk/en/site/400051",
+      "inst": "coflein",
+      "title": "ROMAN VILLA SITE, LLANDOUGH",
+      "captures": 15,
+      "first": "2016-03-04",
+      "last": "2026-01-15",
+      "mentions_now": false
+    },
+    {
+      "id": "45f071d53a",
+      "url": "https://museum.wales/blog/1345/The-suffering-of-burial-631/",
+      "inst": "museum",
+      "title": "The suffering of burial 631",
+      "captures": 2,
+      "first": "2026-10-23",
+      "last": "2026-10-23",
+      "mentions_now": true
+    },
+    {
+      "id": "55e10b637e",
+      "url": "https://museum.wales/blog/2571/Summary-of-an-archaeology-work-placement-2022-23/",
+      "inst": "museum",
+      "title": "Summary of an archaeology work placement, 2022-23",
+      "captures": 17,
+      "first": "2023-11-13",
+      "last": "2026-09-23",
+      "mentions_now": true
+    },
+    {
+      "id": "ac67c9a09b",
+      "url": "https://www.gov.wales/sites/default/files/publications/2026-06/atisn27021.pdf",
+      "inst": "cadw",
+      "title": "atisn27021 (PDF)",
+      "captures": 1,
+      "first": "2026-10-23",
+      "last": "2026-10-23",
+      "mentions_now": true
+    },
+    {
+      "id": "0b71eceb08",
+      "url": "https://www.llandough-cc.co.uk/_UserFiles/Files/Buildings/St%20Dochdwys%20Church.pdf",
+      "inst": "lcc",
+      "title": "Llandough Community Council: St Dochdwy's Church (PDF)",
+      "captures": 3,
+      "first": "2019-09-19",
+      "last": "2025-08-08",
+      "mentions_now": true
+    },
+    {
+      "id": "aa3126edc9",
+      "url": "https://www.llandough-cc.co.uk/_UserFiles/Files/News/Newsletter%20Summer%202019.pdf",
+      "inst": "lcc",
+      "title": "Llandough Community Council: Newsletter, Summer 2019 (PDF)",
+      "captures": 3,
+      "first": "2019-09-19",
+      "last": "2026-02-14",
+      "mentions_now": true
+    },
+    {
+      "id": "4a6dc228ec",
+      "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
+      "inst": "bailii",
+      "title": "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (31 July 1987)",
+      "captures": 5,
+      "first": "2017-11-08",
+      "last": "2025-04-21",
+      "mentions_now": true
+    },
+    {
+      "id": "c46705ac6c",
+      "url": "https://cadw.gov.wales/sites/default/files/2019-04/InterpplanCelticSaints_EN.pdf",
+      "inst": "cadw",
+      "title": "Cadw: Celtic Saints interpretation plan (PDF)",
+      "captures": 1,
+      "first": "2021-11-23",
+      "last": "2021-11-23",
+      "mentions_now": true
+    }
+  ],
+  "changes": [
+    {
+      "id": "6df971c98c",
+      "date": "2026-10-23",
+      "d1": null,
+      "type": "appeared",
+      "inst": "museum",
+      "page": "45f071d53a",
+      "summary": "First archived copy of this page. It names the farm or the site.",
+      "add": [
+        "Ideal Homes Wales Ltd had contracted archaeologists from Cotswold Archaeology to excavate land earmarked for a new housing development in Llandough (Vale of Glamorgan).",
+        "'An early-medieval girdle from burial 631', by M. Redknap. In N. Holbrook and A Thomas 'An early-medieval monastic cemetary at Llandough, Glamorgan: excavations in 1994', Medieval Archaeology 49 (2005), 53-64."
+      ],
+      "rem": [],
+      "before_url": null,
+      "after_url": "https://web.archive.org/web/20261023113645/https://museum.wales/blog/1345/The-suffering-of-burial-631/"
+    },
+    {
+      "id": "41d080507c",
+      "date": "2026-10-23",
+      "d1": null,
+      "type": "appeared",
+      "inst": "cadw",
+      "page": "ac67c9a09b",
+      "summary": "First archived copy of this page. It names the farm or the site.",
+      "add": [
+        "Great House Farm, Llandough (ATISN 27021)",
+        "Welsh Government relating to Great House Farm.",
+        "relating to Great House Farm / Ty Mawr from the 1970s to 1990s.",
+        "Doc 1 Great House Farm inspection photo – dated 29/07/1988",
+        "Doc 2 Barn at Great House Farm inspection photo – dated 29/07/1988"
+      ],
+      "rem": [],
+      "before_url": null,
+      "after_url": "https://web.archive.org/web/20261023163251/https://www.gov.wales/sites/default/files/publications/2026-06/atisn27021.pdf"
+    },
+    {
+      "id": "ca127f45b9",
+      "date": "2026-10-06",
+      "d1": null,
+      "type": "appeared",
+      "inst": "archwilio",
+      "page": "0556367666",
+      "summary": "First archived copy of this page. It names the farm or the site.",
+      "add": [
+        "Great House Farm, Llandough",
+        "Great House Farmhouse and barn formed an attractive group. 17th-19th century.",
+        "Great House Farmhouse and barn formed an attractive group, built of local lias limestone, and occupied an historic site next to the parish church. Finds of medieval ironwork and pottery have been reported from the site. Great House was the chief freehold farm of the parish and was occupied by the Vaughan's, a minor gentry family, from the mid C16th until the latter part of the C18th. Several memor",
+        "GGAT , 1990 , Land at Great House Farm, Llandough. An Archaeological Assessment ( © GGAT)",
+        "Robinson, D. , 1988 , Biglis, Caldicot and Llandough: Three Late Iron Age and Roman-British Sites in South-East Wales, Excavations 1977-79",
+        "Suggett, R.F.S. , 1988 , Great House Farm ( © Royal Commission on the Ancient and Historic Monuments of Wales (RCAHMW))"
+      ],
+      "rem": [],
+      "before_url": null,
+      "after_url": "https://web.archive.org/web/20261006194632/https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s"
+    },
+    {
+      "id": "7fbd8d372f",
+      "date": "2023-11-13",
+      "d1": null,
+      "type": "appeared",
+      "inst": "museum",
+      "page": "55e10b637e",
+      "summary": "First archived copy of this page. It names the farm or the site.",
+      "add": [
+        "Joining a small group of individuals on placement, some of whom are students from Cardiff’s Archaeological Science course, we worked alongside the Curator to assess skeletons from the early medieval cemetery at Llandough, near Cardiff. The excavations in the early 1990s produced in excess of a thousand skeletons, which have remained in Amgueddfa Cymru’s archive awaiting full examination."
+      ],
+      "rem": [],
+      "before_url": null,
+      "after_url": "https://web.archive.org/web/20231113133908/https://museum.wales/blog/2571/Summary-of-an-archaeology-work-placement-2022-23/"
+    },
+    {
+      "id": "321d9b46ca",
+      "date": "2021-11-23",
+      "d1": null,
+      "type": "appeared",
+      "inst": "cadw",
+      "page": "c46705ac6c",
+      "summary": "First archived copy of this page. It names the farm or the site.",
+      "add": [
+        "Knight, J. ‘From Villa to Monastery: Llandough in Context’, Medieval Archaeology 49 (2005) 93-107"
+      ],
+      "rem": [],
+      "before_url": null,
+      "after_url": "https://web.archive.org/web/20211123103417/https://cadw.gov.wales/sites/default/files/2019-04/InterpplanCelticSaints_EN.pdf"
+    },
+    {
+      "id": "99b155dca1",
+      "date": "2019-09-19",
+      "d1": null,
+      "type": "appeared",
+      "inst": "lcc",
+      "page": "0b71eceb08",
+      "summary": "First archived copy of this page. It names the farm or the site.",
+      "add": [
+        "A discussion of the church and the cemetery is given in the article “Llandough” by Alan"
+      ],
+      "rem": [],
+      "before_url": null,
+      "after_url": "https://web.archive.org/web/20190919015739/http://www.llandough-cc.co.uk/_UserFiles/Files/Buildings/St%20Dochdwys%20Church.pdf"
+    },
+    {
+      "id": "379a8d9e94",
+      "date": "2019-09-19",
+      "d1": null,
+      "type": "appeared",
+      "inst": "lcc",
+      "page": "aa3126edc9",
+      "summary": "First archived copy of this page. It names the farm or the site.",
+      "add": [
+        "Monastic Cemetery at Llandough, in 1994. develop a local action plan. Any offers of help and"
+      ],
+      "rem": [],
+      "before_url": null,
+      "after_url": "https://web.archive.org/web/20190919025538/http://www.llandough-cc.co.uk/_UserFiles/Files/News/Newsletter%20Summer%202019.pdf"
+    },
+    {
+      "id": "c8509176a3",
+      "date": "2017-11-08",
+      "d1": null,
+      "type": "appeared",
+      "inst": "bailii",
+      "page": "4a6dc228ec",
+      "summary": "First archived copy of this page. It names the farm or the site.",
+      "add": [
+        "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (31 July 1987)",
+        "BP PROPERTIES LTD",
+        "The action concerns a farm known as Great House Farm at Llandough near Penarth in South Glamorgan. The plaintiffs, BP Properties Ltd, have the paper title to the farm, and indeed since November 1982 they have been the registered proprietors of it at HM Land Registry following first registration. They claimed possession against the defendant, Mr W Buckler ('Mr Buckler junior') and he sought to set ",
+        "So far as the farmhouse and garden are concerned, however, the position on the facts is different, in that there is no doubt that Mr Buckler junior has exclusive possession of the farmhouse and garden, as his parents did before him, and no rent has been paid since 1953.",
+        "Great House Farm used to belong to the Marquis of Bute, and in February 1916 the Marquis granted a yearly agricultural tenancy of the whole of the farm to a Mr John Williams, who was Mr Buckler junior's maternal grandfather. In 1938 the reversion on that tenancy was conveyed to a company called Western Ground Rents Ltd.",
+        "It is unnecessary to go into the details of the payments made by Mr Frederick Buckler. On the evidence, the last payment of rent made by him - in fact a payment under a judgment for arrears of rent - was made at some time in 1953. His tenancy was then duly terminated by a notice to quit which expired on February 2 1955. Western Ground Rents then brought proceedings for possession against Mr Freder"
+      ],
+      "rem": [],
+      "before_url": null,
+      "after_url": "https://web.archive.org/web/20171108211400/http://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+      "id": "dae466c6f4",
+      "date": "2016-03-04",
+      "d1": null,
+      "type": "appeared",
+      "inst": "coflein",
+      "page": "0873fb9ab4",
+      "summary": "First archived copy of this page. It names the farm or the site.",
+      "add": [
+        "ROMAN VILLA SITE, LLANDOUGH"
+      ],
+      "rem": [],
+      "before_url": null,
+      "after_url": "https://web.archive.org/web/20160304062528/http://www.coflein.gov.uk/en/site/400051/details/ROMAN+VILLA+SITE,+LLANDOUGH/"
+    }
+  ],
+  "version": "3.0.1"
 }
