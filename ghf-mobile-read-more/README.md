@@ -12,5 +12,8 @@ A Cloudflare Worker proxy prototype that fetches the public WordPress wiki and i
 4. Test pages containing long paragraphs, evidence quotations, lists, tables, images, embedded video, and the mobile navigation.
 5. Fix URL/canonical/navigation behaviour before replacing or redirecting any existing public URL.
 
+## Prototype visibility
+The Worker sends `X-Robots-Tag: noindex, nofollow` on responses so a test proxy is not indexed as a duplicate of the original source. This does not change the existing WordPress site and is not evidence that the proxy is ready for production.
+
 ## Important limitation
 This is not yet a production-ready mirror. WordPress-generated links may navigate to the original WordPress domain, some pages/assets may depend on cookies or origin checks, and a custom hostname requires an available domain/zone and a Cloudflare route. Do not replace the current wiki URL until those checks pass.
