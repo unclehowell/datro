@@ -12,6 +12,10 @@ Public, read-only archive for the Great House Farm / Tŷ Mawr case. The public c
 - **Date accuracy:** names beginning with `0000-00-00` and default `01 January` placeholders are left undated. The reader may use a reliable Date header preserved in the original text for a message anchor; it does not infer a sent date from a placeholder.
 - **Coverage caveat:** this is a best-effort index of the public Wayback text corpus and does not prove that every message ever sent is preserved. Its inclusion rule is recorded in the catalogue and sources should be inspected before relying on metadata.
 
+## Current source release
+
+App source release 2.0.2 adds visible keyboard-focus indicators. The Worker is configured to load the immutable HTML commit; after a Worker deploy, verify `/api/health`, `/api/records`, search, message opening, attachment links and reference deep-links. A source commit alone does not mean the Cloudflare Worker has been redeployed.
+
 ## Public deployment
 
 - Repository: `unclehowell/datro`
