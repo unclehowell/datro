@@ -381,7 +381,7 @@ function page(st, sites, log, origin) {
 // Drafts board (metadata only). Source: drafts/BOARD.json on unclehowell/datro@drafts, written by the agents after each turn.
 // Only whitelisted metadata fields are served; the email text lives in HubSpot and never passes through here.
 const DRAFTS_SRC = "https://raw.githubusercontent.com/unclehowell/datro/drafts/drafts/BOARD.json";
-const DRAFT_FIELDS = ["id", "record", "version", "status", "turn", "open_issues", "last_change", "last_agent", "rounds", "tier", "tier_since", "gmail_draft_id", "sent_at", "archive_url", "pct", "reviews", "distinct_agents", "stage"];
+const DRAFT_FIELDS = ["id", "record", "version", "status", "turn", "open_issues", "last_change", "last_agent", "rounds", "tier", "tier_since", "gmail_draft_id", "sent_at", "archive_url", "pct", "reviews", "distinct_agents", "agents", "version_reviews", "version_distinct_agents", "version_agents", "last_action_at", "last_action_by", "queue_after", "stage"];
 const DRAFTS_NOTE = "HubSpot changes are checked manually / by Tab's poll: the watcher has no HubSpot access, so this board moves only when an agent commits drafts/BOARD.json after its turn.";
 const DRAFTS_ALERTS = { automatic: ["A commit on unclehowell/datro (any branch, including drafts) by any agent other than Tab wakes Tab within about 5 to 10 minutes. Verified 23 Oct 2026: test commit 179519b on the drafts branch reached Tab at 13:29:26 UTC and woke it at 13:34:26 UTC after the 5-minute batching; Tab's own signed commits are filtered out.", "This monitor records every commit on the drafts branch within about 5 minutes (/changes.json?branch=drafts)."], manual: ["Edits made only in HubSpot: Tab checks the task by hand or by poll.", "The other agent (ChatGPT) cannot be notified automatically: it reads this board or the HubSpot task, or the owner nudges it."] };
 // Hive v3.1.1 context pack: metadata only (whitelisted keys, short strings, https links to the family sites only)
@@ -567,16 +567,20 @@ async function hiveData(env) {
     const tier = hiveTierOf(d);
     const rawStatus = String((d && d.status) || "");
     const status = tier === "working" && /READY TO SEND|GMAIL DRAFT/i.test(rawStatus) ? "IN REVIEW — READINESS GATE NOT VERIFIED" : rawStatus;
-    const reviews = d && d.reviews != null && Number.isFinite(Number(d.reviews)) ? Number(d.reviews) : null;
-    const distinct_agents = d && d.distinct_agents != null && Number.isFinite(Number(d.distinct_agents)) ? Number(d.distinct_agents) : null;
-    const gatePct = reviews !== null && distinct_agents !== null ? Math.max(0, Math.min(100, Math.floor(Math.min(reviews / 10 * 100, distinct_agents / 4 * 100)))) : null;
+    const version_reviews = d && d.version_reviews != null && Number.isFinite(Number(d.version_reviews)) ? Number(d.version_reviews) : null;
+    const version_distinct_agents = d && d.version_distinct_agents != null && Number.isFinite(Number(d.version_distinct_agents)) ? Number(d.version_distinct_agents) : null;
+    const version_agents = Array.isArray(d && d.version_agents) ? d.version_agents : null;
+    const reviews_total = d && d.reviews != null && Number.isFinite(Number(d.reviews)) ? Number(d.reviews) : null;
+    const distinct_agents_total = d && d.distinct_agents != null && Number.isFinite(Number(d.distinct_agents)) ? Number(d.distinct_agents) : null;
+    const gatePct = version_reviews !== null && version_distinct_agents !== null ? Math.max(0, Math.min(100, Math.floor(Math.min(version_reviews / 10 * 100, version_distinct_agents / 4 * 100)))) : null;
     const pct = tier === "sent_archived" ? 100 : gatePct === null ? null : tier === "gmail_draft" ? 95 : tier === "definitely_ready" ? 90 : tier === "ready" ? Math.min(79, Math.max(70, Math.floor(gatePct * 0.79))) : Math.min(69, Math.floor(gatePct * 0.69));
-    return { draft: d.id, record: d.record, version: d.version, turn: seatOf(status && /TURN/i.test(status) ? status : d.turn), status, last_change: d.last_change, last_agent: HIVE_AGENT(d.last_agent), idle_minutes: minsSince(d.last_change, now), context: d.context || null, tier, tier_label: HIVE_TIER_LABEL[tier], tier_since: d.tier_since || null, has_gmail_draft: !!d.gmail_draft_id, sent_at: d.sent_at || null, archive_url: famUrl(d.archive_url), rounds: Number.isFinite(d.rounds) ? d.rounds : vm ? Number(vm[2]) + Number(vm[1]) * 10 : null, pct, reviews, distinct_agents, stage: d.stage || null };
+    const turn = seatOf(status && /TURN/i.test(status) ? status : d.turn);
+    return { draft: d.id, record: d.record, version: d.version, turn, status, last_change: d.last_change, last_agent: HIVE_AGENT(d.last_agent), last_action_at: d.last_action_at || d.last_change || null, last_action_by: HIVE_AGENT(d.last_action_by || d.last_agent), idle_minutes: minsSince(d.last_change, now), context: d.context || null, tier, tier_label: HIVE_TIER_LABEL[tier], tier_since: d.tier_since || null, has_gmail_draft: !!d.gmail_draft_id, sent_at: d.sent_at || null, archive_url: famUrl(d.archive_url), rounds: Number.isFinite(d.rounds) ? d.rounds : vm ? Number(vm[2]) + Number(vm[1]) * 10 : null, pct, reviews: version_reviews, distinct_agents: version_distinct_agents, version_reviews, version_distinct_agents, version_agents, reviews_total, distinct_agents_total, agents_total: Array.isArray(d.agents) ? d.agents : null, stage: d.stage || null, queue_after: d.queue_after || null };
   });
   const log = [];
   for (const e of board.events) log.push({ at: e.at, agent: HIVE_AGENT(e.agent), what: [e.draft, e.version, e.event].filter(Boolean).join(" · "), src: "board" });
   for (const c of board.all_commits) log.push({ at: c.at, agent: HIVE_AGENT(c.agent), what: c.message.replace(/\s*[—-]\s*(Agent:.*|Sion's Tab agent)\s*$/i, ""), src: "commit " + c.sha });
-  for (const d of drafts) if (d.last_change) log.push({ at: d.last_change, agent: d.last_agent, what: `${d.draft} · ${d.version || "?"} · ${d.status || "?"}`, src: "board" });
+  for (const d of drafts) if (d.last_action_at || d.last_change) log.push({ at: d.last_action_at || d.last_change, agent: d.last_action_by || d.last_agent, what: `${d.draft} · ${d.version || "?"} · ${d.status || "?"}`, src: "board" });
   const seen = new Set();
   const updates = log.filter((x) => x.at).sort((a, b) => String(b.at).localeCompare(String(a.at))).filter((x) => { const k = x.at.slice(0, 16) + x.what; if (seen.has(k)) return false; seen.add(k); return true; }).slice(0, 15);
   const lastBy = {}; for (const x of updates.concat(log)) if (x.agent && (!lastBy[x.agent] || String(x.at) > String(lastBy[x.agent].at))) lastBy[x.agent] = x;
@@ -586,7 +590,8 @@ async function hiveData(env) {
   for (const d of drafts) { if (!d.draft || !d.version) continue; const k = d.draft + "|" + d.version; if (!cellMap.has(k)) cellMap.set(k, { draft: d.draft, version: d.version, agent: d.last_agent, at: d.last_change }); }
   const cells = [...cellMap.values()].sort((x, y) => String(x.at).localeCompare(String(y.at))).slice(-400);
   const perDraft = {}; for (const c of cells) perDraft[c.draft] = (perDraft[c.draft] || 0) + 1;
-  const live = drafts.filter((d) => d.turn && d.turn !== "open" && d.turn !== "?").sort((x, y) => String(y.last_change).localeCompare(String(x.last_change)))[0];
+  const live = drafts.filter((d) => d.turn && d.turn !== "open" && d.turn !== "?" && d.stage !== "QUEUED" && !/^(QUEUED|PENDING)/i.test(d.status || ""))
+    .sort((x, y) => String(y.last_action_at || y.last_change || "").localeCompare(String(x.last_action_at || x.last_change || "")))[0];
   const working = live ? live.turn : null;
   const pendingNames = (roster && Array.isArray(roster.pending) ? roster.pending : []).slice(0, 10).map((x) => String((x && x.agent) || x).slice(0, 30));
   const by_status = {}; for (const d of drafts) by_status[d.status || "?"] = (by_status[d.status || "?"] || 0) + 1;
@@ -634,11 +639,12 @@ const HIVE_TIER_LABEL = { working: "IN REVIEW", ready: "READY TO SEND", definite
 const HIVE_TIER_SUB = { working: "drafting rounds, waiting at the base outside the pyramid", ready: "consensus reached", definitely_ready: "final three-hat review", gmail_draft: "owner review & send", sent_archived: "sent & archived" };
 function hiveTierOf(d) {
   const s = String((d && d.status) || "").toUpperCase();
-  const reviews = d && d.reviews != null ? Number(d.reviews) : NaN;
-  const agents = d && d.distinct_agents != null ? Number(d.distinct_agents) : NaN;
+  const reviews = d && d.version_reviews != null ? Number(d.version_reviews) : NaN;
+  const agents = d && d.version_distinct_agents != null ? Number(d.version_distinct_agents) : NaN;
   const gate = Number.isFinite(reviews) && reviews >= 10 && Number.isFinite(agents) && agents >= 4;
   // Fail closed: a turn-status always overrides a stale higher tier on the public metadata board.
   if (d && d.sent_at && d.archive_url && (s.startsWith("SENT") || d.tier === "sent_archived")) return "sent_archived";
+  if (s.includes("QUEUED") || s.includes("PENDING")) return "working";
   if (s.includes("TURN") || s.includes("IN REVIEW") || s.includes("OTHER AGENT'S TURN") || s.includes("TAB'S TURN")) return "working";
   if (s.includes("GMAIL DRAFT")) return gate && d && d.gmail_draft_id ? "gmail_draft" : "working";
   if (s.includes("DEFINITELY READY")) return gate ? "definitely_ready" : "working";
@@ -673,7 +679,7 @@ const HIVE_PYR_CSS = ".comb{padding:6px 6px 46px}.pyr{--lw:146px;--hw:min(46px,c
 
 function hivePage(d) {
   const st = d.stats;
-  const board = d.drafts.map((r) => `<tr><td><b>${esc(r.draft)}</b><small><b>${esc(r.tier_label)}</b> · ${esc(r.status || "")} · ${esc(hm(r.last_change))}${r.last_agent ? " · " + esc(r.last_agent) : ""}${r.context ? ` · <a href="/context/${encodeURIComponent(r.draft)}">context</a>${ctxFlags(r.context)}` : ""}</small></td><td class="v">${esc(r.version || "")}</td><td class="v">${esc(r.turn)}</td><td class="n${r.turn !== "open" && r.idle_minutes > 30 ? " late" : ""}">${idleTxt(r.idle_minutes)}</td><td class="n">${r.rounds ?? ""}</td><td class="n"><b>${r.pct != null ? r.pct + "%" : ""}</b></td></tr>`).join("");
+  const board = d.drafts.map((r) => `<tr><td><b>${esc(r.draft)}</b><small><b>${esc(r.tier_label)}</b> · ${esc(r.status || "")} · changed ${esc(hm(r.last_change))}${r.last_agent ? " · " + esc(r.last_agent) : ""}${r.last_action_at && r.last_action_at !== r.last_change ? " · action " + esc(hm(r.last_action_at)) : ""}${r.queue_after ? " · queued after " + esc(r.queue_after) : ""}${r.context ? ` · <a href="/context/${encodeURIComponent(r.draft)}">context</a>${ctxFlags(r.context)}` : ""}</small></td><td class="v">${esc(r.version || "")}</td><td class="v">${esc(r.turn)}</td><td class="n${r.stage !== "QUEUED" && r.turn !== "open" && r.idle_minutes > 30 ? " late" : ""}">${idleTxt(r.idle_minutes)}</td><td class="n">${r.rounds ?? ""}</td><td class="n"><b>${r.pct != null ? r.pct + "%" : ""}</b></td></tr>`).join("");
   const seats = d.seats.map((s) => `<tr><td class="n">${s.seat ?? ""}</td><td class="v"><b>${esc(s.agent)}</b><small>${esc(s.access || "?")}</small><small>${esc(s.status)}</small></td><td><small class="b">${s.last_action ? esc(hm(s.last_action.at)) + " · " + esc(s.last_action.what) : "none yet"}</small></td></tr>`).join("") + (d.pending.length ? `<tr><td></td><td colspan="2"><small class="b">Pending: ${d.pending.map(esc).join(", ")}</small></td></tr>` : "");
   const bys = Object.entries(st.by_status).sort((a, b) => b[1] - a[1]).map(([k, v]) => `<li><span>${esc(k)}</span><b>${v}</b></li>`).join("");
   const ups = d.updates.map((x) => `<li><time>${esc(hm(x.at))}</time> ${x.agent ? "<b>" + esc(x.agent) + "</b> " : ""}${esc(x.what)}</li>`).join("");
@@ -687,7 +693,7 @@ table{border-collapse:collapse;width:100%;font-size:13px}th{font-weight:500;colo
 ul{list-style:none;margin:0;padding:0;font-size:13px}#s li{display:flex;justify-content:space-between;border-top:1px solid var(--ln);padding:4px 0}#u li{border-top:1px solid var(--ln);padding:5px 0;overflow-wrap:anywhere}time{color:var(--mu);font-variant-numeric:tabular-nums;margin-right:4px}
 details{border:1px solid var(--ln);border-radius:10px;padding:8px 12px;margin:0 0 12px;font-size:13.5px;background:var(--cd)}summary{cursor:pointer;color:var(--mu);font-weight:600}details h1{font-size:16px}details h2{font-size:14px;text-transform:none;letter-spacing:0;color:var(--fg);margin-top:14px}details ul,details ol{list-style:disc;padding-left:18px}details ol{list-style:decimal}details li{margin:3px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid var(--ln);border-radius:8px;padding:8px;font:12.5px/1.45 ui-monospace,Menlo,Consolas,monospace}${HIVE_PYR_CSS}a{color:var(--ac)}footer{font-size:11.5px;color:var(--mu);padding:0 2px 16px}</style></head><body><main>
 <section class="comb" aria-label="Honeycomb pyramid">${hivePyramid(d)}<canvas id="bees" aria-hidden="true"></canvas><p class="lg">${d.viz.multi.map((m, i) => `<span><i style="background:${HIVE_PAL[i % HIVE_PAL.length]}"></i>${esc(m)}</span>`).join("")}<span><i style="background:#f0d27a"></i>first drafts</span></p></section>
-<details class="pctk" id="pct-key"><summary>What the % in each cell means</summary><p>% = progress to your Gmail drafts: 10 reviews, 4 agents, DEFINITELY READY TO SEND.</p></details>
+<details class="pctk" id="pct-key"><summary>What the % in each cell means</summary><p>% = progress using material reviews of this exact frozen version only: 10 reviews, 4 distinct actual agents, required seat agreements, no unresolved material defects, final three-hat/fourth-excuse pass and verified attachments are required before DEFINITELY READY TO SEND.</p></details>
 <section aria-label="Board"><h2>Board</h2><p class="b">Draft idle is elapsed time since that HubSpot task’s last recorded edit, not Hive uptime. The five-minute Watch cron checks websites and branch changes; it does not itself invoke reviewer agents. ChatGPT’s automated flywheel is scheduled daily, while other seats act only when their own runners pick up a turn.</p><table><thead><tr><th>Draft</th><th>Ver</th><th>Turn</th><th class="n">Draft idle</th><th class="n">Rds</th><th class="n">%</th></tr></thead><tbody>${board || '<tr><td colspan="6">No drafts yet.</td></tr>'}</tbody></table></section>
 <section aria-label="Seats"><h2>Seats</h2><table><thead><tr><th class="n">#</th><th>Agent · access</th><th>Last action</th></tr></thead><tbody>${seats}</tbody></table></section>
 <section aria-label="Stats"><h2>Stats</h2><div class="k"><div><b>${st.drafts}</b><span>drafts</span></div><div><b>${st.rounds_total}</b><span>rounds</span></div><div><b>${st.consensus}</b><span>consensus</span></div><div><b>${st.seats_active}</b><span>seats</span></div></div><ul id="s">${bys}</ul></section>
