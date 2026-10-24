@@ -1,4 +1,4 @@
-## [0.9.1.67] - 2026-10-24
+## [0.9.2] - 2026-10-24
 
 ### Fixed
 - Repair mojibake in the visible release footer.
