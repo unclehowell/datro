@@ -65,6 +65,10 @@ The intended deployment is Cloudflare Pages project `tumbler`, built from `stati
 
 The first successful deployment must be checked to confirm the AI and D1 bindings are present in the production environment and that the custom domain is active. Workers AI generation may incur account usage charges.
 
+## Current UI release
+
+`0.1.1` shows the dated host-discovery inventory in the coverage badges. The source list is a discovery seed, not an assertion that every route or record is reachable; the full-estate index remains explicitly unverified.
+
 ## API
 
 - `GET /api/manifest` — methods, source inventory and coverage caveat.
