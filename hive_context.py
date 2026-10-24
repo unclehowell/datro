@@ -10,17 +10,18 @@ REPO, BR, PATH = 'unclehowell/datro', 'drafts', 'drafts/BOARD.json'
 DART, EMAIL, QA = 'https://bucklerfamily.estate', 'https://email.bucklerfamily.estate', 'https://qa.bucklerfamily.estate'
 def get(u):
     with urllib.request.urlopen(urllib.request.Request(u, headers={'User-Agent': 'ghf-hive-context'}), timeout=90) as r: return json.loads(r.read().decode())
-# draft id -> (roadmap lane id or None, body name, subject keywords for the thread being answered, kb body name)
+# draft id -> (verified roadmap lane id, None for confirmed no-lane, or __unverified_lane__; body, subject keywords, QA body name)
 MAP = [
   (r'^bp-', 'bp', 'BP', r'preservation', None),
   (r'^cardiff-central-library', 'cardiff-central-library', 'Cardiff Central Library', r'Bute X\.6', None),
   (r'^cardiff-', None, 'Cardiff Council', r'1961|deed', None),
-  (r'^hmcts-cardiff-1955-1962-records', 'moj', 'Ministry of Justice / HMCTS', r'preservation notice|1955|1962|Cardiff County Court', 'Ministry of Justice / HMCTS'),
-  (r'^rics-022900001630-clarification', None, 'RICS', r'022900001630|preservation notice', None),
+  (r'^hmcts-cardiff-1955-1962-records', '__unverified_lane__', 'Ministry of Justice / HMCTS', r'preservation notice|1955|1962|Cardiff County Court', 'Ministry of Justice / HMCTS'),
+  (r'^rics-022900001630-clarification', '__unverified_lane__', 'RICS', r'022900001630|preservation notice', None),
   (r'^hmlr-sar-d260928', 'hm-land-registry', 'HM Land Registry', r'D260928|WA231076|WA240304', 'HM Land Registry'),
   (r'^hmlr-sar', 'hm-land-registry', 'HM Land Registry', r'WA735527|735527|WA513690', 'HM Land Registry'),
   (r'^hmlr-eir-20-oct', 'hm-land-registry', 'HM Land Registry', r'20 October|WA231076|WA240304', 'HM Land Registry'),
   (r'^hmlr-wales-office', 'hm-land-registry', 'HM Land Registry (Wales Office)', r'Z084NQV|Wales Office', 'HM Land Registry'),
+  (r'^hmlr-lawyer-referral', 'hm-land-registry', 'HM Land Registry', r'260918-6720625|N610CGV|lawyer referral|21 October', 'HM Land Registry'),
   (r'^hmlr-customer-support', 'hm-land-registry', 'HM Land Registry', r'customer support|titles held|title list', 'HM Land Registry'),
   (r'^hmlr-.*vg41', 'hm-land-registry', 'HM Land Registry', r'VG41|VG 41', 'HM Land Registry'),
   (r'^hmlr-', 'hm-land-registry', 'HM Land Registry', r'1961', 'HM Land Registry'),
@@ -29,17 +30,17 @@ MAP = [
   (r'^tna-internal-review-cas-347296', 'the-national-archives', 'The National Archives', r'CAS-347296|internal review', 'The National Archives'),
   (r'^tna-foi-resend-22-oct', 'the-national-archives', 'The National Archives', r'location request|resend|22 Oct', 'The National Archives'),
   (r'^tna-', 'the-national-archives', 'The National Archives', r'commons|1960|LAR', 'The National Archives'),
-  (r'^nlw-research-enquiry', 'nlw', 'National Library of Wales', r'Bute Estate|Research enquiry|ITV Wales database', 'National Library of Wales'),
-  (r'^cadw-ticket-628912926', 'cadw', 'Cadw / Welsh Government', r'628912926|Llandough Roman villa|1983 fire', 'Cadw / Welsh Government'),
-  (r'^heneb-her-villa-foi', 'her', 'Heneb (former GGAT)', r'Llandough Roman villa|1983 fire|628912926', 'Heneb (former GGAT)'),
-  (r'^heneb-complaint-outcome', 'heneb', 'Heneb (former GGAT)', r'complaint|outcome|formal complaint', 'Heneb (former GGAT)'),
-  (r'^swp-internal-review-1188-26', 'swp', 'South Wales Police', r'1188/26|internal review', 'South Wales Police'),
-  (r'^swp-foi-1264-26', 'swp', 'South Wales Police', r'1264/26|FOI 1264', 'South Wales Police'),
-  (r'^llandough-cc-internal-review', 'llandough', 'Llandough Community Council', r'internal review|section 12|11 October', 'Llandough Community Council'),
-  (r'^itv-foi-archive-footage', 'itv', 'ITV Archive', r'BP vs Buckler 1987|Great House Farm|archive footage', None),
-  (r'^ico-s50-museum-wales', None, "Information Commissioner's Office", r'FOI 2026-024|Museum Wales|s50', "Information Commissioner's Office"),
-  (r'^defra-foi-eir-20-oct', None, 'Defra (Information Rights)', r'FOI/EIR|20 Oct|Defra', None),
-  (r'^church-in-wales-rb-property', None, 'Church in Wales', r'Representative Body|property', None),
+  (r'^nlw-research-enquiry', '__unverified_lane__', 'National Library of Wales', r'Bute Estate|Research enquiry|ITV Wales database', 'National Library of Wales'),
+  (r'^cadw-ticket-628912926', '__unverified_lane__', 'Cadw / Welsh Government', r'628912926|Llandough Roman villa|1983 fire', 'Cadw / Welsh Government'),
+  (r'^heneb-her-villa-foi', '__unverified_lane__', 'Heneb (former GGAT)', r'Llandough Roman villa|1983 fire|628912926', 'Heneb (former GGAT)'),
+  (r'^heneb-complaint-outcome', '__unverified_lane__', 'Heneb (former GGAT)', r'complaint|outcome|formal complaint', 'Heneb (former GGAT)'),
+  (r'^swp-internal-review-1188-26', '__unverified_lane__', 'South Wales Police', r'1188/26|internal review', 'South Wales Police'),
+  (r'^swp-foi-1264-26', '__unverified_lane__', 'South Wales Police', r'1264/26|FOI 1264', 'South Wales Police'),
+  (r'^llandough-cc-internal-review', '__unverified_lane__', 'Llandough Community Council', r'internal review|section 12|11 October', 'Llandough Community Council'),
+  (r'^itv-foi-archive-footage', '__unverified_lane__', 'ITV Archive', r'BP vs Buckler 1987|Great House Farm|archive footage', None),
+  (r'^ico-s50-museum-wales', '__unverified_lane__', "Information Commissioner's Office", r'FOI 2026-024|Museum Wales|s50', "Information Commissioner's Office"),
+  (r'^defra-foi-eir-20-oct', '__unverified_lane__', 'Defra (Information Rights)', r'FOI/EIR|20 Oct|Defra', None),
+  (r'^church-in-wales-rb-property', '__unverified_lane__', 'Church in Wales', r'Representative Body|property', None),
 ]
 def pack(d, lanes, wheel, darts, kb, source_versions):
     built_at = time.strftime('%Y-%m-%dT%H:%MZ', time.gmtime())
@@ -62,13 +63,18 @@ def pack(d, lanes, wheel, darts, kb, source_versions):
     }
     c['kb_items'] = kb.get(kbname, 0) if kbname else 0
     if not L:
-        c['dartboard'] = {'url': DART + '/#roadmap', 'lane': None, 'note': 'no matching lane in the current roadmap; confirm the escalation route before review'}
-        c['stage'] = 'not yet on the dartboard'
+        if lid == '__unverified_lane__':
+            c['dartboard'] = {'url': DART + '/#roadmap', 'lane': None, 'note': 'lane ID not verified against the current roadmap; resolve before review'}
+            c['stage'] = 'lane mapping unverified'
+            c['note'] = 'recipient is mapped, but the exact roadmap lane ID is unverified; keep IN REVIEW'
+        else:
+            c['dartboard'] = {'url': DART + '/#roadmap', 'lane': None, 'note': 'no matching lane in the current roadmap; confirm the escalation route before review'}
+            c['stage'] = 'not yet on the dartboard'
+            c['note'] = 'no matching dartboard lane; keep IN REVIEW until the route is identified or the exception is explicitly resolved'
         c['next_deadline'] = None
         c['markers'] = {'red_fish': 0, 'red_house': 0, 'fee': False}
         c['open_questions'] = None
         c['rungs_spent'] = []
-        c['note'] = 'no matching dartboard lane; keep IN REVIEW until the route is identified or the exception is explicitly resolved'
         return c
 
     ems = L.get('emails') or []
