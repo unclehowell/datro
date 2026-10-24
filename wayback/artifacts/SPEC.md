@@ -44,7 +44,7 @@ Items live in the part files (`/artifacts/items-N.json`, each `{ "schema", "part
 | `date` | string | `YYYY-MM-DD`, `YYYY-MM`, `YYYY`, a range `YYYY–YYYY`, or `date unknown` |
 | `date_basis` | string | `document` (printed on it), `catalogue` (archive catalogue date), `email` (date of the covering email only), `unknown` |
 | `type` | string | letter, email-attachment, deed, plan, map, photo, newspaper, catalogue-entry, register, report, transcript, video, web-page, dataset, other |
-| `status` | string | `HELD` (we hold a copy) · `CATALOGUE ENTRY` (we hold only a catalogue description) · `SOURCE PENDING` (referenced, not obtained) |
+| `status` | string | `PUBLISHED` (a copy is published here) · `CATALOGUE ENTRY` (a catalogue description only) · `SOURCE PENDING` (referenced, not published here) |
 | `source` | object | `kind` (`gmail`, `drive`, `web`, `archive`, `wordpress`, `family`, `court`), plus any of `gmail_message_id`, `gmail_thread_id`, `email_from` (institution or role, never a private address), `email_date`, `email_subject`, `email_url` (wayback email archive link), `drive_file_id`, `url`, `repository`, `reference` |
 | `institution` | string\|null | the public body / organisation the item came from |
 | `files` | object[] | `path` (repo-relative to `wayback/`), `url`, `storage` (`git`/`r2`/`external`), `bytes`, `sha256`, `mime`, `original_filename` |
