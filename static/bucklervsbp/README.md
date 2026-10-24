@@ -1,8 +1,8 @@
 # BP vs Buckler — Great House Farm Historical Evidence Repository
 
-**Website:** [bucklervsbp.datro.xyz](https://bucklervsbp.datro.xyz)
+**Website:** [bucklervsbp.bucklerfamily.estate](https://bucklervsbp.bucklerfamily.estate)
 
-A structured historical evidence repository documenting the BP Properties Ltd v Buckler (1987) case and the 800-year history of Ty Mawr (Great House Farm), Llandough.
+A structured historical evidence repository documenting the BP Properties Ltd v Buckler (1987) case and the contested chronology and title history of Tŷ Mawr (Great House Farm), Llandough. The frequently repeated “800-year-old” description is a historical report, not an independently established construction date.
 
 ## Pages
 
@@ -25,7 +25,7 @@ A structured historical evidence repository documenting the BP Properties Ltd v 
 
 ## Deployment
 
-Deployed to Cloudflare Pages with custom domain bucklervsbp.datro.xyz.
+Deployed to Cloudflare Pages with custom domain bucklervsbp.bucklerfamily.estate.
 
 ## License
 
