@@ -52,7 +52,7 @@ def deploy(msg):
         raise SystemExit('deployment aborted: missing Worker module(s): ' + ', '.join(missing))
     b = {"compatibility_date": "2025-01-01", "main_module": "index.js",
          "modules": modules,
-         "bindings": [{"type": "kv_namespace", "name": "WATCH", "namespace_id": ST['kv_id']}], "annotations": {"workers/message": msg[:80]}}
+         "bindings": [{"type": "kv_namespace", "name": "WATCH", "namespace_id": ST['kv_id']}, {"type": "inherit", "name": "TG_CHAT_ID"}], "annotations": {"workers/message": msg[:80]}}
     s, up = call('POST', f"/accounts/{ACCT}/workers/workers/{ST['worker_id']}/versions", b)
     if s not in (200, 201): print('version failed', s, json.dumps(up)[:1500]); sys.exit(1)
     vid = up['result']['id']
