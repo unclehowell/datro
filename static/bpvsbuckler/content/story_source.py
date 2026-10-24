@@ -177,7 +177,7 @@ sc('P', 'ghf-12000101-1', '1200-01-01', '12th – 14th century', "Medieval occup
    [HER, ARCH, GGAT_REV], aliases=['ghf-12150102-1', 'ghf-12150101-1', 'ghf-11000101-1'])
 sc('P', 'ghf-15450101-1', '1545-01-01', '1536 – 1793', "The lordship of the manor", 'Manor of Llandough', 'AB',
    'Public record',
-   "Llandough belongs to Tewkesbury Abbey until the Dissolution of 1536–39. Cardiff Records states that in 1543 Henry VIII granted the manor to Lord Clynton and Say and Robert Turwitt, and that by 1545 it was held by Sir George Herbert. The Western Mail letter says the Herberts held the lordship until the Earl of Bute bought it in 1793; Cardiff Records places William Hurst and others in the account from 1767. The same 1974 newspaper record identifies Mary (Nancy) Williams's family as occupying the manorial home since 1667. That occupation and the lordship are separate from the farmhouse freehold. The family's case is that the Williamses were virtual freeholders under the 1877 bargain while quarrying continued, and that Parcel A's freehold passed to them in 1928 when quarrying ended.",
+   "Llandough belongs to Tewkesbury Abbey until the Dissolution of 1536–39. Cardiff Records states that in 1543 Henry VIII granted the manor to Lord Clynton and Say and Robert Turwitt, and that by 1545 it was held by Sir George Herbert. The Western Mail letter states that the Herberts held the lordship until the Earl of Bute bought it in 1793; Cardiff Records places William Hurst and others in the account from 1767. The same 1974 newspaper record identifies Mary (Nancy) Williams's family as occupying the manorial home since 1667. That occupation and the lordship are separate from the farmhouse freehold. The family's case is that the Williamses were virtual freeholders under the 1877 bargain while quarrying continued, and that Parcel A's freehold passed to them in 1928 when quarrying ended.",
    [press('N04', "Western Mail, 'Grievous loss' (1974 letter giving manorial descent and the Williams occupation)"),
     MARY,
     w('/1877-agreement/#sale-1877', 'The 1877 Agreement — the sale'),
@@ -209,7 +209,7 @@ sc('P', 'ghf-15600101-1', '1560-01-01', 'Mid 16th – late 18th century', "The V
    ledger={'W': 'Farm freehold: the Vaughans · lordship of the manor: the Herberts (a separate interest)'})
 sc('P', 'ghf-16670101-1', '1667-01-01', '1667', "The Williams family at Great House", 'Great House Farm', 'A',
    "Mary's statement",
-   "Mary (Nancy) Williams's c.1974 statement says her family had lived and farmed at Great House since 1667. A 1974 newspaper report also attributes to her a claim that her family first acquired Tŷ Mawr around that date. The affirmative Cedwyn thesis treats 1667 as the opening of the family's own estate history and tests that claim against the Cydwin/Cydfin lease and farm-name records. The surviving statement and press report support the Buckler case; a 1667 conveyance has not yet been identified.",
+   "Mary (Nancy) Williams's c.1974 statement records that her family had lived and farmed at Great House since 1667. A 1974 newspaper report also reports her statement that her family first acquired Tŷ Mawr around that date. The affirmative Cedwyn thesis treats 1667 as the opening of the family's own estate history and tests that statement against the Cydwin/Cydfin lease and farm-name records. The surviving statement and press report support the Buckler case; a 1667 conveyance has not yet been identified.",
    [MARY, w('/williams-buckler-family/', 'The Williams / Buckler Family — origins')],
    aliases=['ghf-16770101-1'],
    ledger={'W': 'Farm freehold: the Vaughans · lordship of the manor: the Herberts · in the house: the Williamses'})
@@ -240,7 +240,7 @@ sc('P', 'ghf-18400101-1', '1840-01-01', 'c. 1840', "Great House Farm", 'Census a
    aliases=['ghf-18800101-1'])
 sc('P', 'ghf-18550101-1', '1855-01-01', '1855', "John Williams succeeds his father", 'Great House Farm', 'AB',
    'Newspaper',
-   "John Williams succeeds his father as the Bute Estate's tenant. Reporting the Bute rent audit dinner of July 1904, the Cardiff Times says he \"succeeded his father in the tenancy of the farm in 1855\", and that it was \"his 102nd rent audit\".",
+   "John Williams succeeds his father as occupier of the farm under the Bute Estate. Reporting the Bute rent audit dinner of July 1904, the Cardiff Times reports that he \"succeeded his father in the tenancy of the farm in 1855\", and that it was \"his 102nd rent audit\".",
    [{'type': 'Newspaper', 'title': 'Cardiff Times, 16 July 1904, p.1 — Bute rent audit dinner (Welsh Newspapers Online)',
      'url': 'https://newspapers.library.wales/view/3427270/3427271/13/'},
     {'type': 'Newspaper', 'title': 'EV-0227 — Cardiff Times, 16 July 1904: John Williams, tenancy since 1855 (wiki evidence page)', 'url': WIKI + '/evidence/ev-0227-cardiff-times-1904-john-williams-tenancy-since-1855/'},
@@ -270,7 +270,7 @@ sc('I', 'ghf-18700101-1', '1870-01-01', 'c. 1870', "The armour under the floor",
    aliases=['ghf-18800101-2'])
 sc('I', 'ghf-18700101-2', '1870-01-02', '1870 — Pwllypant probate and estate papers', "A Williams estate bequest to Bute: tracing the land", 'Pwllypant / Llandough title research', '?',
    'Probate and estate catalogue leads',
-   "The National Library of Wales catalogue lists the 1870 will of William Evans Williams of Pwllypant as bequeathing his real and personal estate to the Marquis of Bute, and separately catalogues papers about his real and personal estate. The affirmative title inquiry is parcel-specific: did any land he owned, benefited from, or had let through Bute connect to the 33-acre Llandough Limeworks block or Great House Farm? The will's headline bequest does not identify those acres by itself. The family's research also points to a Clock Tower dispute and newspaper coverage said to complicate the relationship between Williams and Bute; the precise contemporary reports and wording must be located before using that dispute as proof of motive. Estate schedules, title deeds, rent books and the 1876–1912 limeworks accounts are the route to answer the question.",
+   "The National Library of Wales catalogue lists the 1870 will of William Evans Williams of Pwllypant as bequeathing his real and personal estate to the Marquis of Bute, and separately catalogues papers about his real and personal estate. The affirmative title inquiry is parcel-specific: did any land he owned, benefited from, or had let through Bute connect to the 33-acre Llandough Limeworks block or Great House Farm? The will's headline bequest does not identify those acres by itself. The family's research also points to a Clock Tower dispute and newspaper coverage that may have complicated the relationship between Williams and Bute; the precise contemporary reports and wording must be located before using that dispute as proof of motive. Estate schedules, title deeds, rent books and the 1876–1912 limeworks accounts are the route to answer the question.",
    [
     {'type': 'Archive catalogue', 'title': 'National Library of Wales, D242/17 — probate of the will of William Evans Williams of Pwllypant (1870)', 'url': 'https://archives.library.wales/index.php/deeds-and-documents-relating-mainly-to-title-of-pwllypant-estate-including-copy-probate-of-will-of-david-evan%3Bisad?sf_culture=en'},
     {'type': 'Archive catalogue', 'title': 'National Library of Wales, D258 — papers relating to the personal and real estates of William Evans Williams', 'url': 'https://archives.library.wales/index.php/papers-relating-to-personal-and-real-estates-of-william-evans-williams-dec-including-account-of-aberdare-iron-co'},
@@ -285,7 +285,7 @@ sc('I', 'ghf-18760101-1', '1876-01-01', '1876 – c. 1912', "The limeworks", 'Ll
    [{'type': 'Newspaper', 'title': 'EV-0280 — Llandough Lime Works and quarry, 1876–1947: contemporary record set', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0280-llandough-lime-works-and-quarry-1876-1947-daniel-thomas-s-kilns-quarry-workers-kel/'}, w('/llandough-limeworks/', 'Llandough Limeworks')])
 sc('I', 'ghf-18770101-1', '1877-01-01', '1877', "Division of the farm", 'Bute Estate Office', 'AB',
    "Mary's statement",
-   "Mary (Nancy) Williams's statement records that in 1877 the Bute Estate sold the farmhouse, buildings and about 10 acres to Daniel Thomas, and kept about 9 acres. The Williamses remained as tenants of both. The deed is missing.",
+   "Mary (Nancy) Williams's statement records that in 1877 the Bute Estate sold the farmhouse, buildings and about 10 acres to Daniel Thomas, and kept about 9 acres. The Williamses remained the occupiers of both. The deed is missing.",
    [{'type': 'Archive catalogue', 'title': 'EV-0278 — NLW Bute records: Llandough manor rentals 1808–1881 and presentments 1793–1934 (catalogue entries)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0278-nlw-bute-estate-records-llandough-manor-rentals-1808-1881-r-6-27-45-and-presentmen/'}, MARY, w('/1877-agreement/#sale-1877', 'The 1877 Agreement — the sale'), w('/1877-agreement/#plan', 'The 1877 Agreement — plan'),
     w('/the-two-parcels/', 'The Two Parcels'), w('/1877-agreement/#sale-1877', 'The 1877 Agreement — Bute lease'), w('/forensic-master-chronology-authoritative-corrected-6-october-2026/', 'Forensic Master Chronology (6 October 2026)', 'Analysis')],
    aliases=['ghf-18771106-1'],
@@ -311,7 +311,7 @@ sc('I', 'ghf-18890811-1', '1889-08-11', '11 August 1889', "Apples from the orcha
     {'type': 'Newspaper', 'title': 'Barry Dock News, 16 August 1889, p.2 — "A Batch of Orchard Looters at Llandough" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/4594680/4594682/18/'}])
 sc('I', 'ghf-18911111-1', '1891-11-11', '11 November 1891', "Theft of geese", 'Llandough — court report', 'AB',
    'Newspaper',
-   "Three geese are stolen from \"Mr. John Williams, Great House Farm, Llandough\". The theft is reported from court.",
+   "Three geese are taken from \"Mr. John Williams, Great House Farm, Llandough\". The theft is reported from court.",
    [press('N01', '1891 court report — farmyard theft', 'ghf-e090-n01-1891-farmyard-theft.jpg'),
     {'type': 'Newspaper', 'title': 'South Wales Star, 10 June 1892 — geese "the property of Mr. John Williams, Great House Farm, Llandough, on November 11, 1891" (Welsh Newspapers Online)',
      'url': 'https://newspapers.library.wales/view/3019697/3019705/78/'},
@@ -335,7 +335,7 @@ sc('I', 'ghf-18940731-1', '1894-07-31', 'Week of 30 July 1894', 'Swine fever at 
    ])
 sc('I', 'ghf-18970501-1', '1897-05-01', 'Late April – early May 1897', 'Marconi comes to Lavernock', 'Lavernock Point', 'x',
    'Newspaper',
-   'The Cardiff papers announce that the young Italian Guglielmo Marconi, 23, will come to Cardiff "in a few weeks" to signal across the Bristol Channel without wires, with the Post Office\'s staff and apparatus at his disposal. At Lavernock Point the receiving station goes up on the cliff: a tall pole with a zinc cylinder at the top (120 feet, says the Evening Express; 30 yards, says Preece\'s account). The press names the man who put it up only as "Mr. Williams (of the engineering department, Cardiff)". The sending station is on Flat Holm.',
+   'The Cardiff papers announce that the young Italian Guglielmo Marconi, 23, will come to Cardiff "in a few weeks" to signal across the Bristol Channel without wires, with the Post Office\'s staff and apparatus at his disposal. At Lavernock Point the receiving station goes up on the cliff: a tall pole with a zinc cylinder at the top (120 feet in the Evening Express; 30 yards in Preece\'s account). The press names the man who put it up only as "Mr. Williams (of the engineering department, Cardiff)". The sending station is on Flat Holm.',
    [
     {'type': 'Newspaper', 'title': '[VERIFIED] Evening Express, 26 April 1897, p.2 — "Wireless Telegraphy … Coming to Cardiff in a Few Weeks to Experiment Across the Bristol Channel" (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3270301/3270303/28/'},
     {'type': 'Newspaper', 'title': '[VERIFIED] Weekly Mail, 1 May 1897, p.4 — the same report (Welsh Newspapers Online)', 'url': 'https://newspapers.library.wales/view/3370882/3370886/79/'},
@@ -547,7 +547,7 @@ sc('III', 'ghf-19610329-2', '1961-03-29', '29 March 1961', "The 1961 deed", 'Woo
    [{'type': 'Deed', 'title': 'EV-0040 — Deed with plan between WGR, South Western Brick & Tile and Cardiff City Corporation, 29 March 1961 (recited on WA735527; not yet held) (wiki evidence page)', 'url': 'https://greathousefarmwiki.wordpress.com/evidence/ev-0040-1961-wgr-brick-tile-deed/'}])
 sc('III', 'ghf-19621211-1', '1962-12-11', '11 December 1962', "The 1962 possession order", 'Cardiff County Court', 'A',
    'Court record',
-   "On 11 December 1962 Cardiff County Court (Judge Temple Morris QC) orders possession of the farmhouse and garden, with mesne profits from 1955, against Frederick and Mary, on Western Ground Rents' claim. The order is not enforced.",
+   "On 11 December 1962 Cardiff County Court (Judge Temple Morris QC) orders possession of the farmhouse and garden, with mesne profits from 1955, against Frederick and Mary, in Western Ground Rents' action. The order is not enforced.",
    [w('/1962-possession-order/#order', 'The 1962 Possession Order', 'Court record'),
     LRT('deeds-before-registration', 'Land Registry Titles — deeds before registration (29 March 1961 deed)')],
    aliases=['ghf-19610329-1'],
@@ -564,7 +564,7 @@ sc('III', 'ghf-19650301-1', '1965-03-02', 'January – March 1965', "1965 tenanc
    ledger={'S': 'Attempt 5: weekly tenancy offered to "Mrs Williams" (not signed; her occupation now treated as adverse)'})
 sc('III', 'ghf-19640101-1', '1965-06-01', '1964 – 68', "Reported sale by the eldest son", 'Great House Farm', '?',
    'Source pending',
-   "A cousin's account says the eldest son sold \"our land parcel\" through a solicitor without his parents' knowledge. No document has been found. In 1968 his household leaves the farm.",
+   "A cousin's account states that the eldest son sold \"our land parcel\" through a solicitor without his parents' knowledge. No document has been found. In 1968 his household leaves the farm.",
    [w('/williams-buckler-family/', 'The Williams / Buckler Family — rumoured sale'), w('/williams-buckler-family/', 'The Williams / Buckler Family')],
    aliases=['ghf-19680901-1'])
 sc('III', 'ghf-19670101-1', '1967-01-01', '1967', "Death of Frederick Buckler", 'Great House Farm', 'A',
@@ -606,17 +606,17 @@ sc('IV', 'ghf-19720731-1', '1972-07-31', '31 July 1972', 'Village green objectio
    [w('/evidence/ev-0263-commons-registration-1965-publicity-glamorgan-notices-vg41/', 'EV-0263 — Commons registration 1965: publicity and Glamorgan notices (VG41)', 'Public record')])  # coverage: research chronology — Sion's Tab agent
 sc('IV', 'ghf-19740101-1', '1974-01-01', '1974', "Royal Commission survey", 'Great House — interior', 'A',
    'Heritage record',
-   "H. J. Thomas's 1974 survey and R. F. Suggett's December 1988 note are separate records. The HER entry says the house remained partially recorded because access was restricted by an ownership dispute. The survey predates demolition on 6 December 1988; Suggett's note postdates it. The evidence currently identified does not establish that listing was legally required, that demolition was unlawful, or what was submitted to the European Commission of Human Rights.",
+   "H. J. Thomas's 1974 survey and R. F. Suggett's December 1988 note are separate records. The HER entry records that the house remained partially recorded because access was restricted by an ownership dispute. The survey predates demolition on 6 December 1988; Suggett's note postdates it. The evidence currently identified does not establish that listing was legally required, that demolition was unlawful, or what was submitted to the European Commission of Human Rights.",
    [HER, ARCH, w('/evidence-library/ghf-e137-1974-h-j-thomas-rcahmw-architectural-survey-and-floor-plan/', 'GHF-E137 — 1974 H. J. Thomas / RCAHMW architectural survey and floor plan', 'Evidence catalogue'), w('/evidence-library/ghf-e183-heneb-her-source-file-request-and-replies-september-october-2026/', 'GHF-E183 — Heneb / HER source-file request and replies, September–October 2026', 'Evidence catalogue'), w('/evidence-library/ghf-e145-echr-application-14464-88-and-commission-decision-14-april-1989/', 'GHF-E145 — ECHR application 14464/88 and Commission decision, 14 April 1989', 'Evidence catalogue')])
 sc('IV', 'ghf-19740415-1', '1974-04-15', '15 April 1974', "Open day", 'Great House Farm', 'A',
    'Newspaper',
-   "On 15 April 1974 Mary opens the farmhouse to the public. The Daily Telegraph reports her saying ownership has been disputed for 25 years and her solicitors tell her she has a valid claim.",
+   "On 15 April 1974 Mary opens the farmhouse to the public. The Daily Telegraph reports her saying ownership has been disputed for 25 years and her solicitors tell her she has a valid case.",
    [press('N03', "Daily Telegraph, 16 April 1974, 'Open day to save ancient Welsh house'", 'ghf-e090-n03-1974-open-day-telegraph.jpg'),
     w('/1974-licence-letters/#action', 'The 1974 Licence Letters')],
    image='/media/ghf-e090-n03-1974-open-day-telegraph.jpg')
 sc('IV', 'ghf-19740703-1', '1974-07-03', '3 July 1974', "1974 possession action", 'County court', 'A',
    'Court record',
-   "BP Pension Trust brings a county court action for possession. On 3 July 1974 the case is part heard and adjourned for a formal defence to be filed; Mary's defence then pleads that the claim is barred under the Limitation Act 1939. Her statement describes the 1877 sale. The case is never relisted.",
+   "BP Pension Trust brings a county court action for possession. On 3 July 1974 the case is part heard and adjourned for a formal defence to be filed; Mary's defence then pleads that the action is barred under the Limitation Act 1939. Her statement describes the 1877 sale. The case is never relisted.",
    [w('/1974-licence-letters/#action', 'The 1974 Licence Letters — the action', 'Court record'), JUDG],
    ledger={'A': 'Freehold claimed by Mary, in occupation · ownership pleaded in her defence after the 3 July 1974 adjournment (never decided)'})
 sc('IV', 'ghf-19741031-1', '1974-10-31', 'September – October 1974', "The 1974 letters", 'Great House Farm', 'A',
@@ -827,7 +827,7 @@ sc('VII', 'ghf-19890323-1', '1989-03-23', 'January – March 1989', "Charges res
    aliases=['ghf-press-n15-15', 'ghf-press-n15-16', 'ghf-19890115-1', 'ghf-press-n15-13'])
 sc('VII', 'ghf-19890325-1', '1989-03-25', '1989', "Rehousing", 'Penarth', 'A',
    'Newspaper',
-   "The family live with William Buckler's sister in Penarth. He plans to live in a converted bus and says about £30,000 of possessions were taken from the site.",
+   "The family live with William Buckler's sister in Penarth. He plans to live in a converted bus and reports that about £30,000 of possessions were taken from the site.",
    [press('N13', "South Wales Echo, 1989 — 'From farm to a bus'", 'ghf-e090-n13-1989-farm-to-bus.jpg')],
    image='/media/ghf-e090-n13-1989-farm-to-bus.jpg')
 sc('VII', 'ghf-19890406-1', '1989-04-06', '6 April 1989', 'Llandough listing survey issued', 'Cadw', 'A',
@@ -948,7 +948,7 @@ sc('VIII', 'ghf-20260419-1', '2026-04-19', '19 April – 25 May 2026', "Complain
    ledger={'M': "Land Registry, May 2026: 'registered correctly'"})
 sc('VIII', 'ghf-20260521-1', '2026-05-21', '21 May 2026', "Cadw disclosure", 'Cadw', 'A',
    'Official correspondence',
-   "On 21 May 2026 Cadw releases two photographs of 29 July 1988, coded \"YYY\", which it describes as \"marginally below the bar\"; on 10 July it says the code meant the building did not meet the criteria. It says its paper file is \"quite likely\" destroyed, and later \"most likely\"; it holds no destruction record.",
+   "On 21 May 2026 Cadw releases two photographs of 29 July 1988, coded \"YYY\", which it describes as \"marginally below the bar\"; on 10 July it states that the code meant the building did not meet the criteria. It describes its paper file as \"quite likely\" destroyed, and later \"most likely\"; it holds no destruction record.",
    [RAC, CADW_CRIT, CADW_PH, w('/records-access-chronology/source-conflicts-register/', 'Source Conflicts Register', 'Analysis')], image='/media/1988-cadw-barn.jpg')
 sc('VIII', 'ghf-20260614-1', '2026-06-14', '14 June 2026', 'Council minutes at the archives', 'Llandough Community Council', '',
    'Official correspondence',
@@ -965,7 +965,7 @@ sc('VIII', 'ghf-20260730-1', '2026-07-30', 'June – July 2026', "Schedule of re
    aliases=['ghf-20260602-1'])
 sc('VIII', 'ghf-20260825-1', '2026-08-25', '25 August 2026', "Museum Wales reply", 'Museum Wales', '?',
    'Official correspondence',
-   "On 25 August 2026 Museum Wales replies that the information is \"not held\", and in the same letter says it has found records of other discoveries at Great House Farm, which it withholds as \"not in scope\".",
+   "On 25 August 2026 Museum Wales replies that the information is \"not held\", and in the same letter states that it has found records of other discoveries at Great House Farm, which it withholds as \"not in scope\".",
    [RAC])
 sc('VIII', 'ghf-20260908-1', '2026-09-08', '8 September 2026', "Glamorgan Archives reply", 'Glamorgan Archives', 'A',
    'Official correspondence',
@@ -1013,7 +1013,7 @@ sc('VIII', 'ghf-20261011-1', '2026-10-11', '11 – 13 October 2026', 'Council re
    [w('/evidence/llandough-community-council-correspondence/#m15', 'Llandough Community Council correspondence (M15)', 'Official correspondence'), w('/evidence/llandough-community-council-correspondence/#m18', 'Llandough Community Council correspondence (M18)', 'Official correspondence')])  # coverage: research chronology — Sion's Tab agent
 sc('VIII', 'ghf-20261019-1', '2026-10-19', '19 October 2026', "Welsh Government and Cadw replies", 'Welsh Government / Cadw', '',
    'Official correspondence',
-   "On 19 October 2026 the Welsh Government answers ATISN 26-0010: searches for the farm name, Western Ground Rents and BP Properties found no files, and \"any routine records would have been destroyed in line with the corporate retention schedule applied at the time\". The same day Cadw refuses ATISN 27589 under section 14(2) of the Freedom of Information Act, as \"substantially similar\" to ATISN 27021, already answered and internally reviewed. Neither letter says when, or under which schedule, any file was destroyed.",
+   "On 19 October 2026 the Welsh Government answers ATISN 26-0010: searches for the farm name, Western Ground Rents and BP Properties found no files, and \"any routine records would have been destroyed in line with the corporate retention schedule applied at the time\". The same day Cadw refuses ATISN 27589 under section 14(2) of the Freedom of Information Act, as \"substantially similar\" to ATISN 27021, already answered and internally reviewed. Neither letter states when, or under which schedule, any file was destroyed.",
    [w('/evidence/ev-0244-welsh-government-atisn-26-0010-disclosure-response-19-oct-2026/', 'EV-0244 — Welsh Government ATISN 26-0010 response, 19 Oct 2026', 'Official correspondence'),
     w('/evidence/ev-0245-cadw-atisn-27589-response-s14-2-19-oct-2026/', 'EV-0245 — Cadw ATISN 27589 response (s.14(2)), 19 Oct 2026', 'Official correspondence'),
     {'type': 'Official correspondence', 'title': 'Welsh Government letter, ATISN 26-0010, 19 October 2026 (PDF)',
