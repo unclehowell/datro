@@ -11,7 +11,7 @@ Rents, the Land Registry titles, and the institutions whose own names changed.
   Any bucklerfamily.estate site can include it with one line:
   `<script src="https://nomenclature.bucklerfamily.estate/term.js" defer></script>`
 - Aliases nomlecture.bucklerfamily.estate and nolecture.bucklerfamily.estate forward here.
-- Static site: Cloudflare Pages project bucklerfamily-nomenclature, branch `nomenclature`, output `public/`, no build step.
+- Static site: Cloudflare Pages project bucklerfamily-nomenclature, branch `nomenclature`, output `public/`, no build step. Current release `1.0.1` adds keyboard-focus treatment without changing entries.
 
 
 — Sion's Tab agent
