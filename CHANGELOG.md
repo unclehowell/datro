@@ -1,3 +1,10 @@
+## [0.8.1.39] - 2026-10-24
+
+### Fixed
+- Repair the mojibake separators and loading message in the branch release footer.
+- Announce dynamic release information through an `aria-live` region.
+- Align `DB_STATUS`, `.version` and the release date to `0.8.1.39`.
+
 ## 2026-10-18 — Three-part Parcel A forensic review
 
 - Added an interactive, explicitly non-cadastral schematic separating the proposed north woodland, central occupied core and south-eastern VG41 land within Parcel A, while retaining Parcel B as a control area.
