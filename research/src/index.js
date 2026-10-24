@@ -918,6 +918,9 @@ async function handleGraphQL(request, env) {
       const type = /\bpages\b/.test(q) ? "page" : (/\bposts\b/.test(q) ? "post" : "");
       const statusMatch = q.match(/status\s*:\s*(\w+)/i);
       const status = statusMatch ? statusMatch[1].toLowerCase() : "publish";
+      if (status !== "publish") {
+        return json({ errors: [{ message: "Only published content is publicly readable" }] }, 400);
+      }
       const firstMatch = q.match(/first\s*:\s*(\d+)/i);
       const first = Math.max(1, Math.min(100, Number(firstMatch ? firstMatch[1] : 20)));
       let sql = "SELECT * FROM content_items WHERE status=? ";
