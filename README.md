@@ -14,7 +14,7 @@ occupation, heritage and lineage, and the trees and land. Rows are eras; squares
 - Shared estate pieces: ghf-lang (EN/CY/ES interface, dictionary `public/lang/chess.json`) and the e-book card (cta.js).
 - Font: Barlow (SIL OFL, `public/assets/fonts/OFL.txt`).
 
-## v2 (20 Oct 2026): a paragraph inside every square, Read more, Visit website, and one big case sudoku
+## v2.0.1 (24 Oct 2026): a paragraph inside every square, Read more, Visit website, and one big case sudoku
 
 - **Squares.** Every square draws its OWN text inside its own edges (canvas clip): from afar only colours; closer in the date and
   title; from about 120 px per square the square's short paragraph (its summary) and a "Read more ›" tab. Zoom is capped so a square
