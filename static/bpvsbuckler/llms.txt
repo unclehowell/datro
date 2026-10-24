@@ -1,6 +1,6 @@
 # Tŷ Mawr — The Great House Farm Story — llms.txt
 
-> The true story of the Williams/Buckler family and Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth, Vale of Glamorgan, Wales, in 162 scenes across 9 acts with a prologue and epilogue, in strict date order.
+> The true story of the Williams/Buckler family and Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth, Vale of Glamorgan, Wales, in 168 scenes across 9 acts with a prologue and epilogue, in strict date order.
 > Every scene is drawn from the Great House Farm Wiki evidence catalogue (https://greathousefarmwiki.wordpress.com/) and carries its evidence links.
 > Structured JSON (acts, cast, scenes, evidence, stable ids): https://bpvsbuckler.bucklerfamily.estate/api/timeline.json
 > Printable script (static HTML, no JavaScript needed): https://bpvsbuckler.bucklerfamily.estate/story/
@@ -25,7 +25,7 @@ Truth labels follow the Wiki: documented fact, testimony only (named witness), r
 
 ## Full Timeline
 
-162 scenes, in strict date order.
+168 scenes, in strict date order.
 
 ### P.1 (1). Late Iron Age (approx. 2,200 years ago; exact date uncertain) — Iron Age farmstead at Llandough
 
@@ -161,7 +161,20 @@ The historical account places Bute's acquisition of the lordship of Llandough in
 - Estate papers: National Library of Wales, Bute Estate Records R1: Glamorgan Estate rentals — https://archives.library.wales/index.php/glamorgan-estate-rentals
 - Wiki page: Name & Location Variations (Stewart survey, D/d B E/1–2) — https://greathousefarmwiki.wordpress.com/great-house-farm/name-variations/
 
-### P.11 (11). c. 1840 — Great House Farm
+### P.11 (11). 1824 — The Stewart survey
+
+Prologue: To 1857 · Scene id: ghf-18240101-2 · Date: 1824-01-01 · Parcel: Whole farm (A + B) · Basis: Estate papers
+
+David Stewart surveys the Bute estates in Glamorgan. Plan 19 is "Cedfin or Ty Mawr Farm". Its reference table enters John Gedrick (reading uncertain) as occupier of the main farm, 107 acres 1 rood 24 perches, and beside it the land of "late Thos. Williams", 10 acres 3 roods 39 perches, with about 20 acres of woods: close to 140 acres in all. A Williams name stands on the farm's own plan almost a century before the 1916 tenancy.
+
+> The family's case: The family reads the separate entry for the late Thomas Williams's land as a Williams holding inside Tŷ Mawr that Bute surveyed but did not let with the main farm.
+
+> The received account: Bute owned and let the whole farm; the Williamses were later arrivals.
+> What we now know: Bute's own 1824 survey of Cedfin or Ty Mawr Farm lists the land of the late Thomas Williams as a separate entry beside the main farm.
+- Estate papers: EV-0211 — Glamorgan Archives DB/E/1, plan 19: "Cedfin or Ty Mawr Farm", Stewart survey and reference table (1824) — https://greathousefarmwiki.wordpress.com/evidence/ev-0211-db-e-1-plan-19-cedfin-ty-mawr-1824/
+- Wiki page: Name & Location Variations (Stewart survey) — https://greathousefarmwiki.wordpress.com/great-house-farm/name-variations/
+
+### P.12 (12). c. 1840 — Great House Farm
 
 Prologue: To 1857 · Scene id: ghf-18400101-1 · Date: 1840-01-01 · Parcel: Whole farm (A + B) · Basis: Public record
 
@@ -173,7 +186,7 @@ Census and tithe records begin to describe the house as "Great House Farm".
 - Wiki page: Farmhouse Nomenclature — https://greathousefarmwiki.wordpress.com/great-house-farm/farmhouse-nomenclature/
 - Wiki page: Name & Location Variations — https://greathousefarmwiki.wordpress.com/great-house-farm/name-variations/
 
-### P.12 (12). 1855 — John Williams succeeds his father
+### P.13 (13). 1855 — John Williams succeeds his father
 
 Prologue: To 1857 · Scene id: ghf-18550101-1 · Date: 1855-01-01 · Parcel: Whole farm (A + B) · Basis: Newspaper
 
@@ -184,7 +197,7 @@ John Williams succeeds his father as occupier of the farm under the Bute Estate.
 - Newspaper: EV-0227 — Cardiff Times, 16 July 1904: John Williams, tenancy since 1855 (wiki evidence page) — https://greathousefarmwiki.wordpress.com/evidence/ev-0227-cardiff-times-1904-john-williams-tenancy-since-1855/
 - Wiki page: EV-0215 — Tithe apportionment: John Williams, c. 1841 — https://greathousefarmwiki.wordpress.com/evidence/ev-0215-tithe-apportionment-john-williams-c1841/
 
-### I.1 (13). 23 December 1864 — Death of Amy Williams of Great House
+### I.1 (14). 23 December 1864 — Death of Amy Williams of Great House
 
 Act I: Division · Scene id: ghf-18641223-1 · Date: 1864-12-23 · Parcel: Whole farm (A + B) · Basis: Newspaper
 
@@ -196,7 +209,7 @@ Amy Williams dies at Llandough, aged 65. The death notices call her "relict of t
 - Newspaper: [VERIFIED] Cardiff and Merthyr Guardian, 30 December 1864, p.5 — deaths: "WILLIAMS.—Dec. 23, at Llandough, near Cardiff, Amy, relict of the late Mr. John Williams, Great House farm, aged 65" (Welsh Newspapers Online) — https://newspapers.library.wales/view/3094324/3094329/21/
 - Newspaper: EV-0246 — the death notices on the wiki (evidence page) — https://greathousefarmwiki.wordpress.com/evidence/ev-0246-cardiff-times-1864-death-of-amy-williams-great-house-farm/
 
-### I.2 (14). 1868 – 1901 — "Williams John, Great house"
+### I.2 (15). 1868 – 1901 — "Williams John, Great house"
 
 Act I: Division · Scene id: ghf-18680101-1 · Date: 1868-01-01 · Parcel: Whole farm (A + B) · Basis: Publication
 
@@ -213,7 +226,7 @@ The trade directories list the farmers of Llandough parish. Every edition from 1
 - Newspaper: Weekly Mail, 6 November 1886 — Thomas Rees, aged 89, of Llandough Farm, "rented from the Marquess of Bute" — https://newspapers.library.wales/view/3365383/3365390/150/
 - Newspaper: EV-0228 — Llandough Farm and the Rees family, 1841–1910: a separate Bute farm (wiki evidence page) — https://greathousefarmwiki.wordpress.com/evidence/ev-0228-llandough-farm-rees-family-1841-1910/
 
-### I.3 (15). c. 1870 — The armour under the floor
+### I.3 (16). c. 1870 — The armour under the floor
 
 Act I: Division · Scene id: ghf-18700101-1 · Date: 1870-01-01 · Parcel: House parcel (A) · Basis: Source pending
 
@@ -227,7 +240,7 @@ Family tradition records a soldier in armour, with his horse, a lance and a shie
 - Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
 - Analysis: Source Conflicts Register — https://greathousefarmwiki.wordpress.com/records-access-chronology/source-conflicts-register/
 
-### I.4 (16). 1870 — Pwllypant probate and estate papers — A Williams estate bequest to Bute: tracing the land
+### I.4 (17). 1870 — Pwllypant probate and estate papers — A Williams estate bequest to Bute: tracing the land
 
 Act I: Division · Scene id: ghf-18700101-2 · Date: 1870-01-02 · Parcel: Not yet known · Basis: Probate and estate catalogue leads
 
@@ -242,7 +255,7 @@ The National Library of Wales catalogue lists the 1870 will of William Evans Wil
 - Wiki page: The Bute Estate — unresolved early title — https://greathousefarmwiki.wordpress.com/bute-estate/
 - Research annex: Cedwyn Estate — title-chain reconstruction — https://bpvsbuckler.bucklerfamily.estate/research/cedwyn-estate-title-chain.html
 
-### I.5 (17). 1876 – c. 1912 — The limeworks
+### I.5 (18). 1876 – c. 1912 — The limeworks
 
 Act I: Division · Scene id: ghf-18760101-1 · Date: 1876-01-01 · Parcel: House parcel (A) · Basis: Estate papers
 
@@ -253,7 +266,7 @@ The Wiki's archive lead identifies about 33 acres used by the Llandough Limework
 - Newspaper: EV-0280 — Llandough Lime Works and quarry, 1876–1947: contemporary record set — https://greathousefarmwiki.wordpress.com/evidence/ev-0280-llandough-lime-works-and-quarry-1876-1947-daniel-thomas-s-kilns-quarry-workers-kel/
 - Wiki page: Llandough Limeworks — https://greathousefarmwiki.wordpress.com/llandough-limeworks/
 
-### I.6 (18). 1877 — Division of the farm
+### I.6 (19). 1877 — Division of the farm
 
 Act I: Division · Scene id: ghf-18770101-1 · Date: 1877-01-01 · Parcel: Whole farm (A + B) · Basis: Mary's statement
 
@@ -272,7 +285,7 @@ Mary (Nancy) Williams's statement records that in 1877 the Bute Estate sold the 
 - Wiki page: The 1877 Agreement — Bute lease — https://greathousefarmwiki.wordpress.com/1877-agreement/#sale-1877
 - Analysis: Forensic Master Chronology (6 October 2026) — https://greathousefarmwiki.wordpress.com/forensic-master-chronology-authoritative-corrected-6-october-2026/
 
-### I.7 (19). 3 April 1881 — The 1881 census: "Llandough Home Farm"
+### I.7 (20). 3 April 1881 — The 1881 census: "Llandough Home Farm"
 
 Act I: Division · Scene id: ghf-18810403-1 · Date: 1881-04-03 · Parcel: Whole farm (A + B) · Basis: Public record
 
@@ -287,7 +300,7 @@ The 1881 census records "Llandough Home Farm": John Williams, 53, "Farmer of 170
 - Newspaper: EV-0228 — Llandough Farm and the Rees family, 1841–1910: a separate Bute farm (wiki evidence page) — https://greathousefarmwiki.wordpress.com/evidence/ev-0228-llandough-farm-rees-family-1841-1910/
 - Wiki page: EV-0223 — 1881 census: a dictated variant of the farm name (pending) — https://greathousefarmwiki.wordpress.com/evidence/ev-0223-1881-census-name-variant/
 
-### I.8 (20). 15 December 1887 (obituary) — Death of Daniel Thomas
+### I.8 (21). 15 December 1887 (obituary) — Death of Daniel Thomas
 
 Act I: Division · Scene id: ghf-18871215-1 · Date: 1887-12-15 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -296,7 +309,7 @@ Daniel Thomas of Penylan dies. His obituary in Tarian y Gweithiwr describes him 
 > What we now know: Daniel Thomas held the Llandough lime kilns under the 1877 arrangement with Bute; the works passed to his family and continued after his death.
 - Newspaper: EV-0280 — Llandough lime works and quarry, 1876–1947: Daniel Thomas’s kilns and quarry workers — https://greathousefarmwiki.wordpress.com/evidence/ev-0280-llandough-lime-works-and-quarry-1876-1947-daniel-thomas-s-kilns-quarry-workers-kel/
 
-### I.9 (21). 11 August 1889 — Apples from the orchard
+### I.9 (22). 11 August 1889 — Apples from the orchard
 
 Act I: Division · Scene id: ghf-18890811-1 · Date: 1889-08-11 · Parcel: Whole farm (A + B) · Basis: Newspaper
 
@@ -308,7 +321,7 @@ Four boys climb "over the hedge from the railway" into "the orchard of Great Hou
 - Newspaper: EV-0279 — Barry Dock News, 16 August 1889, p.2: "the orchard of Great House Farm … the property of John Williams" (wiki evidence page) — https://greathousefarmwiki.wordpress.com/evidence/ev-0279-barry-dock-news-16-aug-1889-p-2-apples-taken-from-the-orchard-of-great-house-farm/
 - Newspaper: Barry Dock News, 16 August 1889, p.2 — "A Batch of Orchard Looters at Llandough" (Welsh Newspapers Online) — https://newspapers.library.wales/view/4594680/4594682/18/
 
-### I.10 (22). 11 November 1891 — Theft of geese
+### I.10 (23). 11 November 1891 — Theft of geese
 
 Act I: Division · Scene id: ghf-18911111-1 · Date: 1891-11-11 · Parcel: Whole farm (A + B) · Basis: Newspaper
 
@@ -320,7 +333,7 @@ Three geese are taken from "Mr. John Williams, Great House Farm, Llandough". The
 - Newspaper: South Wales Star, 10 June 1892 — geese "the property of Mr. John Williams, Great House Farm, Llandough, on November 11, 1891" (Welsh Newspapers Online) — https://newspapers.library.wales/view/3019697/3019705/78/
 - Newspaper: EV-0226 — South Wales Star, 10 June 1892: "Mr. John Williams, Great House Farm, Llandough" (wiki evidence page) — https://greathousefarmwiki.wordpress.com/evidence/ev-0226-south-wales-star-1892-john-williams-great-house-farm/
 
-### I.11 (23). 1892 — Signals across the water: Preece at Lavernock
+### I.11 (24). 1892 — Signals across the water: Preece at Lavernock
 
 Act I: Division · Scene id: ghf-18920101-1 · Date: 1892-01-01 · Parcel: Not Great House Farm land · Basis: Newspaper
 
@@ -331,7 +344,7 @@ The Post Office engineer William Preece stretches long parallel wires on the sho
 - Newspaper: [VERIFIED] Cardiff Times, 13 March 1897, p.2 — "No Use for Wires": the "wonderful doings" of Mr Preece "at Lavernock and the Flat Holm" (Welsh Newspapers Online) — https://newspapers.library.wales/view/3431204/3431206/41/
 - Publication: [SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Preece's induction method: the Lavernock–Flat Holm trials — https://earlyradiohistory.us/1901fa21.htm
 
-### I.12 (24). Week of 30 July 1894 — Swine fever at Great House
+### I.12 (25). Week of 30 July 1894 — Swine fever at Great House
 
 Act I: Division · Scene id: ghf-18940731-1 · Date: 1894-07-31 · Parcel: Whole farm (A + B) · Basis: Newspaper
 
@@ -342,7 +355,7 @@ Swine fever breaks out at Llandough. Five pigs belonging to Mr Williams of Great
 - Newspaper: [VERIFIED] Glamorgan Gazette, 3 August 1894, p.5 — the same report (herd given as 22) (Welsh Newspapers Online) — https://newspapers.library.wales/view/3874190/3874195/53/
 - Newspaper: EV-0247 — the swine-fever reports on the wiki (evidence page) — https://greathousefarmwiki.wordpress.com/evidence/ev-0247-barry-dock-news-1894-swine-fever-great-house-llandough/
 
-### I.13 (25). Late April – early May 1897 — Marconi comes to Lavernock
+### I.13 (26). Late April – early May 1897 — Marconi comes to Lavernock
 
 Act I: Division · Scene id: ghf-18970501-1 · Date: 1897-05-01 · Parcel: Not Great House Farm land · Basis: Newspaper
 
@@ -360,7 +373,7 @@ The Cardiff papers announce that the young Italian Guglielmo Marconi, 23, will c
 - Official correspondence: Sion Buckler, records request to The National Archives, 16 July 2026, "Mr. Williams, Cardiff Post Office Engineering Department, 1897 Marconi Lavernock Experiments" (TNA replied 30 July 2026 that it is not the right place to ask) — https://greathousefarmwiki.wordpress.com/?p=5363
 - Newspaper: EV-0248 — Marconi in Wales, April–July 1897: the contemporary press record on the wiki (evidence page) — https://greathousefarmwiki.wordpress.com/evidence/ev-0248-marconi-in-wales-may-1897-contemporary-press/
 
-### I.14 (26). 10 May 1897 — Preece's method tried again
+### I.14 (27). 10 May 1897 — Preece's method tried again
 
 Act I: Division · Scene id: ghf-18970510-1 · Date: 1897-05-10 · Parcel: Not Great House Farm land · Basis: Publication
 
@@ -371,7 +384,7 @@ Before Marconi's own trials begin, the Post Office repeats Preece's induction me
 - Publication: [SECONDARY] BBC Wales History blog, "Marconi's Welsh wireless revolution" (May 2012), quoting the same account — https://www.bbc.co.uk/blogs/waleshistory/2012/05/marconi_wireless_open_sea_lavernock_point_flat_holm.html
 - Diary: EV-0256 — George Kemp’s diary, 6–15 May 1897 (Bodleian MS. Marconi 89, extracts quoted by G. R. M. Garratt): Lavernock p — https://greathousefarmwiki.wordpress.com/evidence/ev-0256-kemp-diary-lavernock-1897-bodleian-ms-marconi-89/
 
-### I.15 (27). 11–12 May 1897 — Two days of failure
+### I.15 (28). 11–12 May 1897 — Two days of failure
 
 Act I: Division · Scene id: ghf-18970511-1 · Date: 1897-05-11 · Parcel: Not Great House Farm land · Basis: Newspaper
 
@@ -382,7 +395,7 @@ Marconi's first attempts to receive signals from Flat Holm at the Lavernock clif
 - Publication: [SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Marconi's method, drawing on Preece's Royal Institution lecture of 4 June 1897 — https://earlyradiohistory.us/1901fa23.htm
 - Heritage record: [SECONDARY] Rotary Club of Cardiff plaque, St Lawrence's churchyard, Lavernock (transcription): "BETWEEN LAVERNOCK AND FLAT HOLM 11th MAY, LAVERNOCK AND BREAN DOWN 18th MAY 1897 … ERECTED BY THE ROTARY CLUB OF CARDIFF 1947" — https://readtheplaque.com/plaque/marconi-s-first-radio-transmissions-across-water
 
-### I.16 (28). 13 May 1897 — Signals across the sea
+### I.16 (29). 13 May 1897 — Signals across the sea
 
 Act I: Division · Scene id: ghf-18970513-1 · Date: 1897-05-13 · Parcel: Not Great House Farm land · Basis: Newspaper
 
@@ -398,7 +411,7 @@ The receiver is carried down to the beach below the cliff and joined to the pole
 - Photograph: [SECONDARY: date and place as captioned by the source] Post Office engineers inspect Marconi's apparatus on Flat Holm, 13 May 1897. Photo: Cardiff Council Flat Holm Project, CC BY 3.0, via Wikimedia Commons (File:Post_Office_Engineers.jpg) — https://commons.wikimedia.org/wiki/File:Post_Office_Engineers.jpg
 - Publication: [SECONDARY — conflicting] Later accounts give the first words as "Are you ready?" (We Are Cardiff, 13 May 2016) or "CAN YOU HEAR ME" / "YES LOUD AND CLEAR" (BBC Wales History, 2012). No 1897 source read here gives the words. — https://wearecardiff.co.uk/2016/05/13/marconis-first-wireless-message-transmitted-over-sea-from-flat-holm-to-lavernock-point/
 
-### I.17 (29). 14 May 1897 (Friday) — The demonstration at Lavernock
+### I.17 (30). 14 May 1897 (Friday) — The demonstration at Lavernock
 
 Act I: Division · Scene id: ghf-18970514-1 · Date: 1897-05-14 · Parcel: Not Great House Farm land · Basis: Newspaper
 
@@ -409,7 +422,7 @@ On Friday afternoon Marconi gives a semi-public demonstration. A select company 
 - Newspaper: [VERIFIED] Carnarvon and Denbigh Herald, 21 May 1897, p.4 — "Telegraphing without wires": Preece "during last week" testing Marconi's invention between Lavernock Point and the Flat Holme; a select company of local scientists and engineers invited (Welsh Newspapers Online) — https://newspapers.library.wales/view/3603309/3603313/23/
 - Newspaper: [VERIFIED] Weekly Mail, 22 May 1897, p.8 — "Wireless Telegraphy. Marconi Invention Tested at Lavernock" (same report) (Welsh Newspapers Online) — https://newspapers.library.wales/view/3370921/3370929/162/
 
-### I.18 (30). 18 May 1897 — Lavernock to Brean Down
+### I.18 (31). 18 May 1897 — Lavernock to Brean Down
 
 Act I: Division · Scene id: ghf-18970518-1 · Date: 1897-05-18 · Parcel: Not Great House Farm land · Basis: Newspaper
 
@@ -421,7 +434,7 @@ The range is pushed across the whole Channel. A message sent from Lavernock Poin
 - Heritage record: [SECONDARY] Rotary Club of Cardiff plaque, St Lawrence's churchyard, Lavernock (transcription): "BETWEEN LAVERNOCK AND FLAT HOLM 11th MAY, LAVERNOCK AND BREAN DOWN 18th MAY 1897 … ERECTED BY THE ROTARY CLUB OF CARDIFF 1947" — https://readtheplaque.com/plaque/marconi-s-first-radio-transmissions-across-water
 - Publication: [SECONDARY] J. J. Fahie, A History of Wireless Telegraphy (1899; 2nd ed. 1901), chapter on Marconi's method, drawing on Preece's Royal Institution lecture of 4 June 1897 — https://earlyradiohistory.us/1901fa23.htm
 
-### I.19 (31). Late May – July 1897 — The first wireless telegram goes on show
+### I.19 (32). Late May – July 1897 — The first wireless telegram goes on show
 
 Act I: Division · Scene id: ghf-18970527-1 · Date: 1897-05-27 · Parcel: Not Great House Farm land · Basis: Newspaper
 
@@ -434,7 +447,7 @@ The framed tape of the Brean Down message goes on view in the hall of the Cardif
 - Newspaper: [VERIFIED] Carnarvon and Denbigh Herald, 9 July 1897, p.2 — Preece: "Marconi only left England on Monday" (Welsh Newspapers Online) — https://newspapers.library.wales/view/3603372/3603374/10/
 - Newspaper: [VERIFIED] Y Negesydd, 23 July 1897, p.1 — "Pellebru heb wifrau": experiments "yn agos i Benarth, Caerdydd" by Mr Preece and Marconi (Welsh) (Welsh Newspapers Online) — https://newspapers.library.wales/view/3819134/3819135/2/
 
-### I.20 (32). 29 November 1902 — Coppice woods offered at auction
+### I.20 (33). 29 November 1902 — Coppice woods offered at auction
 
 Act I: Division · Scene id: ghf-19021129-1 · Date: 1902-11-29 · Parcel: Not yet known · Basis: Sale particulars
 
@@ -443,7 +456,7 @@ Stephenson & Alexander offer the Marquess of Bute's coppice woods at auction, in
 > What we now know: The woodland north of the house was managed by Bute as coppice in 1902; whether the land itself changed hands then is not shown.
 - Sale particulars: EV-0219 — Bute coppice woods sale, 1902: Cwm Cydfin Wood — https://greathousefarmwiki.wordpress.com/evidence/ev-0219-bute-coppice-woods-sale-1902-cwm-cydfin-wood/
 
-### I.21 (33). 1 April 1907 — Air-rifle meeting at Great House Farm
+### I.21 (34). 1 April 1907 — Air-rifle meeting at Great House Farm
 
 Act I: Division · Scene id: ghf-19070401-1 · Date: 1907-04-01 · Parcel: Not yet known · Basis: Newspaper
 
@@ -454,7 +467,7 @@ The Llandough Air-rifle Club holds its Easter Monday meeting at Great House Farm
 - Newspaper: [VERIFIED] Evening Express, 27 March 1907, p.3 — notice: an air-rifle shooting competition "at the Great House Farm, Llandough, on Monday next" (Welsh Newspapers Online) — https://newspapers.library.wales/view/4174604/4174607/109/
 - Newspaper: [VERIFIED] Evening Express, 2 April 1907, p.4 — "Air-rifle shooting. The Llandough meeting … held on Monday at Great House Farm, Llandough" (Welsh Newspapers Online) — https://newspapers.library.wales/view/4174794/4174798/123/
 
-### I.22 (34). 1908 — John Williams
+### I.22 (35). 1908 — John Williams
 
 Act I: Division · Scene id: ghf-19080101-1 · Date: 1908-01-01 · Parcel: Whole farm (A + B) · Basis: Mary's statement
 
@@ -472,7 +485,7 @@ Mary's grandfather dies. John Williams takes over the house from the Thomases an
 - Land Registry record: Land Registry Titles — deeds before registration (1905 Bute conveyance) — https://greathousefarmwiki.wordpress.com/land-registry-titles/#deeds-before-registration
 - Newspaper: EV-0243 — Barry Dock News, 23 Oct 1908, p.3: court leet vote of sympathy with "the family of the late Mr. John Williams, Great House, Llandough" (wiki evidence page) — https://greathousefarmwiki.wordpress.com/evidence/ev-0243-barry-dock-news-1908-court-leet-john-williams-great-house/
 
-### I.23 (35). 6 January 1908 — A poacher caught on Great House Farm
+### I.23 (36). 6 January 1908 — A poacher caught on Great House Farm
 
 Act I: Division · Scene id: ghf-19080106-1 · Date: 1908-01-06 · Parcel: Not yet known · Basis: Newspaper
 
@@ -482,7 +495,7 @@ Shortly before three in the morning two keepers on their round at Llandough see 
 - Newspaper: EV-0282 — Evening Express 1907–1908: air-rifle meeting and poacher at Great House Farm (wiki evidence page) — https://greathousefarmwiki.wordpress.com/evidence/ev-0282-evening-express-27-mar-and-2-apr-1907-air-rifle-meeting-at-great-house-farm-llando/
 - Newspaper: [VERIFIED] Evening Express, 10 January 1908, p.3 — "Two months for a poacher": "poaching on Great House Farm, Llandough" (Welsh Newspapers Online) — https://newspapers.library.wales/view/4184741/4184744/84/
 
-### I.24 (36). 10 August 1913 — Birth of Mary (Nancy) Williams
+### I.24 (37). 10 August 1913 — Birth of Mary (Nancy) Williams
 
 Act I: Division · Scene id: ghf-19130810-1 · Date: 1913-08-10 · Parcel: House parcel (A) · Basis: Mary's statement
 
@@ -493,7 +506,7 @@ Mary (Nancy) Williams is born in the farmhouse on 10 August 1913.
 - Wiki page: Mary (Nancy) Williams — https://greathousefarmwiki.wordpress.com/mary-williams/
 - Mary's statement: Mary (Nancy) Williams's statement (c. 1974) — https://greathousefarmwiki.wordpress.com/mary-williams-statement/
 
-### II.1 (37). February 1916 — The 1916 tenancy
+### II.1 (38). February 1916 — The 1916 tenancy
 
 Act II: Tenancies · Scene id: ghf-19160201-1 · Date: 1916-02-01 · Parcel: Whole farm (A + B) · Basis: Court record
 
@@ -509,7 +522,7 @@ Bute grants John Williams a yearly tenancy described as "the whole farm". The do
 - Court record: BP Properties Ltd v Buckler [1987] EWCA Civ 2 — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/
 - Wiki page: The Farm / Whole Farm Nomenclature — https://greathousefarmwiki.wordpress.com/the-two-parcels/whole-farm-nomenclature/
 
-### II.2 (38). 14 December 1927 — Death of Lord Pontypridd
+### II.2 (39). 14 December 1927 — Death of Lord Pontypridd
 
 Act II: Tenancies · Scene id: ghf-19271214-1 · Date: 1927-12-14 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -518,7 +531,7 @@ Alfred Thomas, Lord Pontypridd, son of Daniel Thomas of the Llandough lime works
 > What we now know: The death of Daniel Thomas's son and heir in December 1927 comes after the quarry had stopped (its plant was catalogued for sale in November 1925) and just before the last rent on the house, which Mary recalled as 1928.
 - Newspaper: EV-0284 — Alfred Thomas, Lord Pontypridd, son of Daniel Thomas of the Llandough lime works, dies 1927 — https://greathousefarmwiki.wordpress.com/evidence/ev-0284-alfred-thomas-lord-pontypridd-son-of-daniel-thomas-of-the-llandough-lime-works-die/
 
-### II.3 (39). 1928 — Last rent on the house
+### II.3 (40). 1928 — Last rent on the house
 
 Act II: Tenancies · Scene id: ghf-19280101-1 · Date: 1928-01-01 · Parcel: House parcel (A) · Basis: Mary's statement
 
@@ -535,7 +548,7 @@ Mary (Nancy) Williams's statement records that in 1928 the last quarry machinery
 - Analysis: Forensic Master Chronology (6 October 2026) — https://greathousefarmwiki.wordpress.com/forensic-master-chronology-authoritative-corrected-6-october-2026/
 - Wiki page: The Two Parcels — https://greathousefarmwiki.wordpress.com/the-two-parcels/
 
-### II.4 (40). 1936 — Marriage
+### II.4 (41). 1936 — Marriage
 
 Act II: Tenancies · Scene id: ghf-19360101-1 · Date: 1936-01-01 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -548,7 +561,7 @@ Mary (Nancy) Williams marries Frederick Buckler, who comes to live at the farmho
 - Wiki page: Frederick Buckler — https://greathousefarmwiki.wordpress.com/frederick-buckler/
 - Wiki page: The Williams / Buckler Family — https://greathousefarmwiki.wordpress.com/williams-buckler-family/
 
-### II.5 (41). 1938 — Sale to Western Ground Rents
+### II.5 (42). 1938 — Sale to Western Ground Rents
 
 Act II: Tenancies · Scene id: ghf-19380101-1 · Date: 1938-01-01 · Parcel: Fields (B) · Basis: Court record
 
@@ -565,7 +578,7 @@ The Bute Estate conveys its reversion on the 1916 tenancy to Western Ground Rent
 - Archive catalogue: EV-0257 — Glamorgan Archives D696: Western Ground Rents Ltd records 1938–44 (a syndicate headed by Lord Kennet; Bute urb — https://greathousefarmwiki.wordpress.com/evidence/ev-0257-glamorgan-archives-d696-western-ground-rents-records-custodial-history/
 - Archive catalogue: EV-0262 — TNA LT 13/3048: Western Ground Rents Ltd v the Lord Mayor, Aldermen and Citizens of the City of Cardiff, Lands — https://greathousefarmwiki.wordpress.com/evidence/ev-0262-tna-lt-13-3048-western-ground-rents-v-cardiff-lands-tribunal-1967/
 
-### II.6 (42). May 1939 — The 1939 tenancy
+### II.6 (43). May 1939 — The 1939 tenancy
 
 Act II: Tenancies · Scene id: ghf-19390501-1 · Date: 1939-05-01 · Parcel: Fields (B) · Basis: Document
 
@@ -578,7 +591,7 @@ Western Ground Rents grants John Williams a revised tenancy, with a plan.
 - Wiki page: 1938–39: the 1939 tenancy — https://greathousefarmwiki.wordpress.com/1939-revised-tenancy/#y1939
 - Wiki page: The 1939 tenancy plan — https://greathousefarmwiki.wordpress.com/1939-revised-tenancy/#plan
 
-### II.7 (43). c. 1940 — Twelve years
+### II.7 (44). c. 1940 — Twelve years
 
 Act II: Tenancies · Scene id: ghf-19400101-1 · Date: 1940-01-01 · Parcel: House parcel (A) · Basis: Family case
 
@@ -591,7 +604,7 @@ By 1940, twelve years after 1928, no rent has been paid on the house.
 - Wiki page: 1938–39 — c. 1940 — https://greathousefarmwiki.wordpress.com/1939-revised-tenancy/#c1940
 - Analysis: Forensic Master Chronology (6 October 2026) — https://greathousefarmwiki.wordpress.com/forensic-master-chronology-authoritative-corrected-6-october-2026/
 
-### II.8 (44). 1940 – April 1942 — The gift of Leckwith Woods
+### II.8 (45). 1940 – April 1942 — The gift of Leckwith Woods
 
 Act II: Tenancies · Scene id: ghf-19420401-1 · Date: 1942-04-01 · Parcel: Not yet known · Basis: Public record
 
@@ -601,7 +614,7 @@ Western Ground Rents gives about 109 acres of Leckwith Woods to Cardiff council.
 - Archive catalogue: Cardiff Parks Committee minutes, 1940–42 (Glamorgan Archives BC/C/6/79) — https://canfod.glamarchives.gov.uk/en/records/BC/C/6/79
 - Wiki page: Master Timeline — https://greathousefarmwiki.wordpress.com/timeline/
 
-### II.9 (45). 1944 — Farm management
+### II.9 (46). 1944 — Farm management
 
 Act II: Tenancies · Scene id: ghf-19440101-1 · Date: 1944-01-01 · Parcel: Fields (B) · Basis: Mary's statement
 
@@ -614,7 +627,7 @@ The War Agricultural Executive Committee is dissatisfied with the farm. Frederic
 - Wiki page: John Williams — 1944 — https://greathousefarmwiki.wordpress.com/john-williams/#y1944
 - Archive catalogue: EV-0241 — National Farm Survey 1941–43, Penarth parish, TNA MAF 32/1220/39 (catalogue entry; that the farm's form is in it is an inference; not seen) (wiki evidence page) — https://greathousefarmwiki.wordpress.com/evidence/ev-0241-tna-maf-32-1220-39-national-farm-survey-penarth-1941/
 
-### II.10 (46). 1947 — The Lavernock plaque
+### II.10 (47). 1947 — The Lavernock plaque
 
 Act II: Tenancies · Scene id: ghf-19470101-1 · Date: 1947-01-01 · Parcel: Not Great House Farm land · Basis: Heritage record
 
@@ -624,7 +637,7 @@ The Rotary Club of Cardiff puts up a bronze plaque at St Lawrence's, Lavernock: 
 - Heritage record: [SECONDARY] Rotary Club of Cardiff plaque, St Lawrence's churchyard, Lavernock (transcription): "BETWEEN LAVERNOCK AND FLAT HOLM 11th MAY, LAVERNOCK AND BREAN DOWN 18th MAY 1897 … ERECTED BY THE ROTARY CLUB OF CARDIFF 1947" — https://readtheplaque.com/plaque/marconi-s-first-radio-transmissions-across-water
 - Publication: [SECONDARY] BBC Wales History blog (2012): the plaque "unveiled by the Cardiff Rotary Club" in 1948 (the plaque itself reads 1947) — https://www.bbc.co.uk/blogs/waleshistory/2012/05/marconi_wireless_open_sea_lavernock_point_flat_holm.html
 
-### II.11 (47). c. 1948 – 49 — Birth of William Buckler
+### II.11 (48). c. 1948 – 49 — Birth of William Buckler
 
 Act II: Tenancies · Scene id: ghf-19480101-1 · Date: 1948-01-01 · Parcel: House parcel (A) · Basis: Source pending
 
@@ -633,7 +646,7 @@ William (Billy) Buckler is born at the farm on 25 August 1948 (the date given in
 > What we now know: Mary's son and heir, who defended the house in court and was evicted in 1988.
 - Wiki page: The Williams / Buckler Family — William — https://greathousefarmwiki.wordpress.com/williams-buckler-family/
 
-### III.1 (48). 2 February 1949 — The 1949 tenancy
+### III.1 (49). 2 February 1949 — The 1949 tenancy
 
 Act III: Possession proceedings · Scene id: ghf-19490202-1 · Date: 1949-02-02 · Parcel: Fields (B) · Basis: Court record
 
@@ -650,7 +663,7 @@ John Williams surrenders his tenancy. Frederick Buckler's yearly tenancy from We
 - Wiki page: The Two Parcels — https://greathousefarmwiki.wordpress.com/the-two-parcels/
 - Analysis: Case Analysis — Connections, Patterns and Questions — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/case-analysis-connections-patterns-questions/
 
-### III.2 (49). June 1950 – c. 1952 — The blanket box
+### III.2 (50). June 1950 – c. 1952 — The blanket box
 
 Act III: Possession proceedings · Scene id: ghf-19500601-1 · Date: 1950-06-01 · Parcel: House parcel (A) · Basis: Mary's statement
 
@@ -666,7 +679,7 @@ Mary (Nancy) Williams's statement records that in June 1950 Mr Knapp, a Penarth 
 - Analysis: Case Analysis — Connections, Patterns and Questions — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/case-analysis-connections-patterns-questions/
 - Analysis: Register Additions — 6 October 2026 (A-080: Mr Knapp) — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/master-scrutiny-issue-register/additions-2026-10-06/
 
-### III.3 (50). 1952 – 53 — Last rent on the fields
+### III.3 (51). 1952 – 53 — Last rent on the fields
 
 Act III: Possession proceedings · Scene id: ghf-19521010-1 · Date: 1952-10-10 · Parcel: Fields (B) · Basis: Court record
 
@@ -677,7 +690,7 @@ On 10 October 1952 the landlord's agents write that they will not proceed with a
 - Court record: Frederick Buckler — 1952 letter — https://greathousefarmwiki.wordpress.com/frederick-buckler/#tenancy-1949
 - Wiki page: Master Timeline — https://greathousefarmwiki.wordpress.com/timeline/
 
-### III.4 (51). 2 February – 4 July 1955 — The 1955 possession order
+### III.4 (52). 2 February – 4 July 1955 — The 1955 possession order
 
 Act III: Possession proceedings · Scene id: ghf-19550202-1 · Date: 1955-02-02 · Parcel: Whole farm (A + B) · Basis: Court record
 
@@ -696,7 +709,7 @@ On 2 February 1955 a notice to quit served on Frederick Buckler expires. Western
 - Analysis: Case Analysis — Connections, Patterns and Questions — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/case-analysis-connections-patterns-questions/
 - Archive catalogue: EV-0258 — Glamorgan Archives ACA/2, ACA/3 and ACA/6: Cardiff County Court ordinary actions, plaint and minute books and  — https://greathousefarmwiki.wordpress.com/evidence/ev-0258-glamorgan-archives-aca-2-3-6-cardiff-county-court-survival-map/
 
-### III.5 (52). 18 March 1955 — Leckwith Woods leased to the Forestry Commission
+### III.5 (53). 18 March 1955 — Leckwith Woods leased to the Forestry Commission
 
 Act III: Possession proceedings · Scene id: ghf-19550318-1 · Date: 1955-03-18 · Parcel: Not Great House Farm land · Basis: Newspaper
 
@@ -707,7 +720,7 @@ In March 1955 the Western Mail reports that Cardiff holds a 176-acre Leckwith Wo
 > What we now know: The 1955 lease concerns Cardiff's Leckwith Woods, which measures wholly outside Llandough; the woods near the farm are Coed Creigiaidd and Reservoir Wood.
 - Newspaper: EV-0259 — Western Mail 1955: Leckwith Woods lease; boundary measurement — https://greathousefarmwiki.wordpress.com/evidence/ev-0259-leckwith-woods-1955-cardiff-forestry-commission-lease-and-boundary-measure/
 
-### III.6 (53). 6 May 1958 — The Leckwith Common inquiry
+### III.6 (54). 6 May 1958 — The Leckwith Common inquiry
 
 Act III: Possession proceedings · Scene id: ghf-19580506-1 · Date: 1958-05-06 · Parcel: Not Great House Farm land · Basis: Newspaper
 
@@ -720,7 +733,7 @@ At the inquiry into Cardiff's plan to take Leckwith Common for playing fields, M
 - Official notice: EV-0287 — London Gazette, 31 Oct 1958, p.6652: City of Cardiff (Leckwith Common) Compulsory Purchase Order, 1957, confirmed 8 Sep 1958 (wiki evidence page) — https://greathousefarmwiki.wordpress.com/evidence/ev-0287-london-gazette-31-oct-1958-p-6652-the-city-of-cardiff-leckwith-common-compulsory-p/
 - Official notice: London Gazette 41537, p.6652 (page PDF) — https://www.thegazette.co.uk/London/issue/41537/page/6652/data.pdf
 
-### III.7 (54). 19 November 1958 — "A Welsh case of Crichel Down"
+### III.7 (55). 19 November 1958 — "A Welsh case of Crichel Down"
 
 Act III: Possession proceedings · Scene id: ghf-19581119-1 · Date: 1958-11-19 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -734,7 +747,7 @@ Mary (Nancy) Williams, as Mrs M. D. Buckler, objects to Glamorgan County Council
 - Newspaper: EV-0242 — Western Mail, 9 Oct 1957, p.6: "Mrs. M. D. BUCKLER … Llandough" (SNIPPET ONLY; content unknown) (wiki evidence page) — https://greathousefarmwiki.wordpress.com/evidence/ev-0242-western-mail-1957-mrs-m-d-buckler-snippet/
 - Testimony: Testimony — Branwen Buckler — https://greathousefarmwiki.wordpress.com/testimony/branwen-buckler/
 
-### III.8 (55). 1959 — 1959 tenancy offer
+### III.8 (56). 1959 — 1959 tenancy offer
 
 Act III: Possession proceedings · Scene id: ghf-19590101-1 · Date: 1959-01-01 · Parcel: House parcel (A) · Basis: Court record
 
@@ -748,7 +761,7 @@ Western Ground Rents offers Mary a tenancy of the farmhouse and garden. She refu
 - Court record: The 1962 Possession Order — 1959 refusal — https://greathousefarmwiki.wordpress.com/1962-possession-order/#refusal-1959
 - Court record: BP Properties Ltd v Buckler [1987] EWCA Civ 2 — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/
 
-### III.9 (56). 29 March 1961 — The 1961 deed
+### III.9 (57). 29 March 1961 — The 1961 deed
 
 Act III: Possession proceedings · Scene id: ghf-19610329-2 · Date: 1961-03-29 · Parcel: House parcel (A) · Basis: Deed
 
@@ -759,7 +772,7 @@ Western Ground Rents, South Western Brick & Tile Co Ltd and Cardiff City Corpora
 > What we now know: PENDING (EV-0040). Parties: Western Ground Rents, South Western Brick & Tile Co Ltd, Cardiff City Corporation. Land and effect unknown until the deed and plan are read.
 - Deed: EV-0040 — Deed with plan between WGR, South Western Brick & Tile and Cardiff City Corporation, 29 March 1961 (recited on WA735527; not yet held) (wiki evidence page) — https://greathousefarmwiki.wordpress.com/evidence/ev-0040-1961-wgr-brick-tile-deed/
 
-### III.10 (57). 11 December 1962 — The 1962 possession order
+### III.10 (58). 11 December 1962 — The 1962 possession order
 
 Act III: Possession proceedings · Scene id: ghf-19621211-1 · Date: 1962-12-11 · Parcel: House parcel (A) · Basis: Court record
 
@@ -775,7 +788,7 @@ On 11 December 1962 Cardiff County Court (Judge Temple Morris QC) orders possess
 - Land Registry record: Land Registry Titles — deeds before registration (29 March 1961 deed) — https://greathousefarmwiki.wordpress.com/land-registry-titles/#deeds-before-registration
 - Parliamentary record: EV-0261 — Hansard, 29 January and 5 February 1963 (with 14 November 1946): Western Ground Rents Ltd and ministers: a WGR — https://greathousefarmwiki.wordpress.com/evidence/ev-0261-hansard-1963-western-ground-rents-ministers/
 
-### III.11 (58). June 1963 — Committal proceedings
+### III.11 (59). June 1963 — Committal proceedings
 
 Act III: Possession proceedings · Scene id: ghf-19630601-1 · Date: 1963-06-01 · Parcel: House parcel (A) · Basis: Court record
 
@@ -786,7 +799,7 @@ The mesne profits under the 1962 order are partly enforced against Frederick, an
 - Court record: The 1962 Possession Order — committal — https://greathousefarmwiki.wordpress.com/1962-possession-order/#committal
 - Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
 
-### III.12 (59). January – March 1965 — 1965 tenancy offer
+### III.12 (60). January – March 1965 — 1965 tenancy offer
 
 Act III: Possession proceedings · Scene id: ghf-19650301-1 · Date: 1965-03-02 · Parcel: House parcel (A) · Basis: Document
 
@@ -800,7 +813,7 @@ On 2 March 1965 the landlord's agents offer "Mrs Williams" a weekly tenancy of t
 - Wiki page: The 1965 offer — https://greathousefarmwiki.wordpress.com/1962-possession-order/#offer-1965
 - Wiki page: Mary (Nancy) Williams — 1965 offer — https://greathousefarmwiki.wordpress.com/mary-williams/#chronology
 
-### III.13 (60). 1964 – 68 — Reported sale by the eldest son
+### III.13 (61). 1964 – 68 — Reported sale by the eldest son
 
 Act III: Possession proceedings · Scene id: ghf-19640101-1 · Date: 1965-06-01 · Parcel: Not yet known · Basis: Source pending
 
@@ -810,7 +823,7 @@ A cousin's account states that the eldest son sold "our land parcel" through a s
 - Wiki page: The Williams / Buckler Family — rumoured sale — https://greathousefarmwiki.wordpress.com/williams-buckler-family/
 - Wiki page: The Williams / Buckler Family — https://greathousefarmwiki.wordpress.com/williams-buckler-family/
 
-### III.14 (61). 1967 — Death of Frederick Buckler
+### III.14 (62). 1967 — Death of Frederick Buckler
 
 Act III: Possession proceedings · Scene id: ghf-19670101-1 · Date: 1967-01-01 · Parcel: House parcel (A) · Basis: Source pending
 
@@ -823,7 +836,7 @@ Frederick Buckler dies, aged 58; his death is registered in the first quarter of
 
 - Wiki page: Frederick Buckler — death — https://greathousefarmwiki.wordpress.com/frederick-buckler/#death
 
-### IV.1 (62). 15 February 1969 — BP bids for Western Ground Rents
+### IV.1 (63). 15 February 1969 — BP bids for Western Ground Rents
 
 Act IV: BP · Scene id: ghf-19690215-1 · Date: 1969-02-15 · Parcel: Whole farm (A + B) · Basis: Newspaper
 
@@ -832,7 +845,7 @@ British Petroleum makes an agreed bid for the whole of Western Ground Rents Ltd,
 > What we now know: From 1969 the landlord that brought the 1955 and 1962 actions and the buyer of the farm were in the same group.
 - Newspaper: EV-0288 — Press on the 1968–69 takeover contest for Western Ground Rents Ltd (snippets) — https://greathousefarmwiki.wordpress.com/evidence/ev-0288-snippets-only-press-on-the-1968-69-takeover-battle-for-western-ground-rents-ltd-en/
 
-### IV.2 (63). 31 December 1969 — Conveyance to BP Pension Trust
+### IV.2 (64). 31 December 1969 — Conveyance to BP Pension Trust
 
 Act IV: BP · Scene id: ghf-19691231-1 · Date: 1969-12-31 · Parcel: Whole farm (A + B) · Basis: Land Registry record
 
@@ -848,7 +861,7 @@ In February 1969 British Petroleum agrees to buy the whole of Western Ground Ren
 - Land Registry record: Land Registry Titles — conveyances — https://greathousefarmwiki.wordpress.com/land-registry-titles/#conveyances
 - Newspaper: EV-0288 — Press snippets, Nov 1968 – Feb 1969: BP buys Western Ground Rents for its pension fund (wiki evidence page) — https://greathousefarmwiki.wordpress.com/evidence/ev-0288-snippets-only-press-on-the-1968-69-takeover-battle-for-western-ground-rents-ltd-en/
 
-### IV.3 (64). 1971 — The 1971 abstract of title
+### IV.3 (65). 1971 — The 1971 abstract of title
 
 Act IV: BP · Scene id: ghf-19710101-1 · Date: 1971-01-01 · Parcel: Whole farm (A + B) · Basis: Land Registry record
 
@@ -858,7 +871,22 @@ An abstract of title is prepared for BP Pension Trust. In 2026 HM Land Registry 
 - Official correspondence: HM Land Registry correspondence — letter of 19 April 2026 (M39) — https://greathousefarmwiki.wordpress.com/evidence/hm-land-registry-correspondence/#m39
 - Evidence catalogue: EV-0045 — HM Land Registry letter, 19 April 2026 — https://wayback.bucklerfamily.estate/artifacts/#EV-0045
 
-### IV.4 (65). 1972 (re-notified 9 December 1985) — Cwm Cydfin SSSI
+### IV.4 (66). 1971 — A name on the map
+
+Act IV: BP · Scene id: ghf-19710101-2 · Date: 1971-01-02 · Parcel: Whole farm (A + B) · Basis: Map
+
+On the Ordnance Survey's earlier sheets the name is "Ty-mawr", printed just east of the farm buildings, towards the fields: on the 25-inch map of about 1900 and again on the six-inch National Grid map of 1949–70. Neither adds "Farm". A year later planning permission is granted for about thirteen houses at the farm.
+
+> The family's case: The family's account: in 1971 the name moved off the eastern fields (Parcel B) onto the house plot (Parcel A) and became "Great House Farm", so that one name on the map covered house and fields alike — a year before the 1972 permission and three years before the 1974 attempt to remove Mary. The 1971 sheet itself (1:2,500 ST 1673–1773; six-inch ST 17 SE) is the record that shows where the name went. Trade directories already wrote "Great House farm" from 1887.
+
+> The received account: A routine map revision.
+> Wording: "Great House Farm" — The name the farm had carried in directories since the 1880s.
+> What we now know: Before 1971 the Ordnance Survey printed "Ty-mawr" beside the buildings on the side of the eastern fields. The family's account is that the 1971 revision moved the name onto the house plot and added "Farm". The 1971 sheet will show it.
+- Map: National Library of Scotland, georeferenced Ordnance Survey maps: 25-inch County Series (Glamorgan XLVII.6, c. 1900) and six-inch National Grid (ST 17 SE, 1949–70); "Ty-mawr" east of the farm buildings on both — https://maps.nls.uk/geo/explore/
+- Wiki page: Name & Location Variations — https://greathousefarmwiki.wordpress.com/great-house-farm/name-variations/
+- Planning file: EV-0046 — Outline planning permission 3/8996/3337 for about 13 houses (1972) — https://greathousefarmwiki.wordpress.com/evidence/ev-0046-1972-outline-planning-permission-ownership-certificate/
+
+### IV.5 (67). 1972 (re-notified 9 December 1985) — Cwm Cydfin SSSI
 
 Act IV: BP · Scene id: ghf-19720101-1 · Date: 1972-01-01 · Parcel: Not yet known · Basis: Public record
 
@@ -868,7 +896,7 @@ Cwm Cydfin, the wooded valley at Leckwith, is notified as a Site of Special Scie
 - Public record: EV-0218 — Cwm Cydfin SSSI 0524: citation and boundary — https://greathousefarmwiki.wordpress.com/evidence/ev-0218-cwm-cydfin-sssi-0524-citation-and-boundary/
 - Public record: EV-0221 — NRW SSSI 0524 notification file — https://greathousefarmwiki.wordpress.com/evidence/ev-0221-nrw-sssi-0524-notification-file/
 
-### IV.5 (66). 1970 – 72 — Village green and planning permission
+### IV.6 (68). 1970 – 72 — Village green and planning permission
 
 Act IV: BP · Scene id: ghf-19720725-1 · Date: 1972-07-25 · Parcel: Whole farm (A + B) · Basis: Planning file
 
@@ -885,7 +913,7 @@ On 16 June 1970 land beside Leckwith Road is provisionally registered as village
 - Legislation: EV-0232 — Commons Registration (Glamorgan) Act 1983: common land registers only (wiki evidence page) — https://greathousefarmwiki.wordpress.com/evidence/ev-0232-commons-registration-glamorgan-act-1983/
 - Public record: EV-0263 — Commons Registration Act 1965 s.5 and SI 1968/989: registrations were publicised by public notice only; Glamor — https://greathousefarmwiki.wordpress.com/evidence/ev-0263-commons-registration-1965-publicity-glamorgan-notices-vg41/
 
-### IV.6 (67). 31 July 1972 — Village green objections close
+### IV.7 (69). 31 July 1972 — Village green objections close
 
 Act IV: BP · Scene id: ghf-19720731-1 · Date: 1972-07-31 · Parcel: House parcel (A) · Basis: Public record
 
@@ -894,21 +922,7 @@ The second objection period under the Commons Registration Act 1965 ends. It cov
 > What we now know: VG41's objection window closed with public notice only; whether the occupiers of the farmhouse ever knew of it is not recorded.
 - Public record: EV-0263 — Commons registration 1965: publicity and Glamorgan notices (VG41) — https://greathousefarmwiki.wordpress.com/evidence/ev-0263-commons-registration-1965-publicity-glamorgan-notices-vg41/
 
-### IV.7 (68). 1974 — Royal Commission survey
-
-Act IV: BP · Scene id: ghf-19740101-1 · Date: 1974-01-01 · Parcel: House parcel (A) · Basis: Heritage record
-
-H. J. Thomas's 1974 survey and R. F. Suggett's December 1988 note are separate records. The HER entry records that the house remained partially recorded because access was restricted by an ownership dispute. The survey predates demolition on 6 December 1988; Suggett's note postdates it. The evidence currently identified does not establish that listing was legally required, that demolition was unlawful, or what was submitted to the European Commission of Human Rights.
-
-> The received account: A routine, incomplete survey.
-> What we now know: A public body recorded in 1974 that the ownership of the house was disputed.
-- Heritage record: Historic Environment Record GGAT 02038s (Archwilio) — https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s
-- Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
-- Evidence catalogue: GHF-E137 — 1974 H. J. Thomas / RCAHMW architectural survey and floor plan — https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e137-1974-h-j-thomas-rcahmw-architectural-survey-and-floor-plan/
-- Evidence catalogue: GHF-E183 — Heneb / HER source-file request and replies, September–October 2026 — https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e183-heneb-her-source-file-request-and-replies-september-october-2026/
-- Evidence catalogue: GHF-E145 — ECHR application 14464/88 and Commission decision, 14 April 1989 — https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e145-echr-application-14464-88-and-commission-decision-14-april-1989/
-
-### IV.8 (69). 15 April 1974 — Open day
+### IV.8 (70). 15 April 1974 — Open day
 
 Act IV: BP · Scene id: ghf-19740415-1 · Date: 1974-04-15 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -920,7 +934,23 @@ On 15 April 1974 Mary opens the farmhouse to the public. The Daily Telegraph rep
 - Newspaper: Daily Telegraph, 16 April 1974, 'Open day to save ancient Welsh house' — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n03
 - Wiki page: The 1974 Licence Letters — https://greathousefarmwiki.wordpress.com/1974-licence-letters/#action
 
-### IV.9 (70). 3 July 1974 — 1974 possession action
+### IV.9 (71). 26 April 1974 — Royal Commission survey
+
+Act IV: BP · Scene id: ghf-19740101-1 · Date: 1974-04-26 · Parcel: House parcel (A) · Basis: Heritage record
+
+Ten days after the open day, H. J. Thomas of the Royal Commission measures the ground floor; his plan is dated 26 April 1974. The Commission's 1988 report records that the house "was surveyed in unusual circumstances in 1974", that "much detail was then concealed", that "it was not possible to examine the first floor and roof trusses", and that it "remained partially recorded because of problems of access created by an ownership dispute". The upper floor and roof, where the dating evidence lay, are never seen.
+
+> The family's case: The family's reading: Mary had opened her doors to the public that month to save the house, so the access problem came from the paper owner, not from her. A full record of a sub-medieval house would have strengthened the case for its protection. The Commission's file holds no correspondence that shows who limited access.
+
+> The received account: A routine, incomplete survey.
+> What we now know: A public body recorded in 1974 that the ownership of the house was disputed.
+- Heritage record: Historic Environment Record GGAT 02038s (Archwilio) — https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s
+- Official correspondence: RCAHMW reply RC26-0375, 29 September 2026, quoting the unpublished 1988 report (archive 6048945) — wiki page — https://greathousefarmwiki.wordpress.com/evidence/rcahmw-correspondence/
+- Evidence catalogue: GHF-E137 — 1974 H. J. Thomas / RCAHMW architectural survey and floor plan — https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e137-1974-h-j-thomas-rcahmw-architectural-survey-and-floor-plan/
+- Evidence catalogue: GHF-E183 — Heneb / HER source-file request and replies, September–October 2026 — https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e183-heneb-her-source-file-request-and-replies-september-october-2026/
+- Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
+
+### IV.10 (72). 3 July 1974 — 1974 possession action
 
 Act IV: BP · Scene id: ghf-19740703-1 · Date: 1974-07-03 · Parcel: House parcel (A) · Basis: Court record
 
@@ -934,11 +964,43 @@ BP Pension Trust brings a county court action for possession. On 3 July 1974 the
 - Court record: The 1974 Licence Letters — the action — https://greathousefarmwiki.wordpress.com/1974-licence-letters/#action
 - Court record: BP Properties Ltd v Buckler [1987] EWCA Civ 2 — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/
 
-### IV.10 (71). September – October 1974 — The 1974 letters
+### IV.11 (73). 17 – 19 September 1974 — The 1962 order revived
+
+Act IV: BP · Scene id: ghf-19740919-2 · Date: 1974-09-19 · Parcel: House parcel (A) · Basis: Court record
+
+BP Pension Trust's own action is still waiting for Mary's defence. On 17 September 1974 it gives notice that it will ask, "as successors in title to Western Ground Rents", to enforce the twelve-year-old possession order of 11 December 1962. Two days later Judge Watkin Powell gives leave: the warrant is to issue at once but not be enforced until 31 October 1974. On 30 October Mary's solicitors appeal: she "had had insufficient notice of the application and therefore had had no opportunity of presenting her case".
+
+> The family's case: The 12 years from the 1962 order would run out on 11 December 1974. The family's case is that the order was revived on two days' notice to beat that date, while BP Pension Trust's fresh action, which put the same question, was left unheard.
+
+> The received account: The owner enforced a court order it already held.
+> Wording: "successors in title" — How BP Pension Trust described itself to the court.
+> What we now know: A twelve-year-old order, never enforced, was revived seven weeks before the twelve years ran out, while BP Pension Trust's own action on the same question waited unheard. Mary's appeal said she had no chance to put her case.
+- Court record: BP Properties Ltd v Buckler [1987] EWCA Civ 2 — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/
+- Court record: The 1962 Possession Order — https://greathousefarmwiki.wordpress.com/1962-possession-order/
+- Court record: The 1974 Licence Letters — the action — https://greathousefarmwiki.wordpress.com/1974-licence-letters/#action
+
+### IV.12 (74). Autumn 1974 — Mary
+
+Act IV: BP · Scene id: ghf-19741015-1 · Date: 1974-10-15 · Parcel: House parcel (A) · Basis: Court record
+
+Mary is 61, a widow since Frederick's death, a pensioner, living in the farmhouse where she was born in 1913. After the order is revived, a press campaign starts in South Wales, with some support on television. The Court of Appeal later records how the papers describe her: "an elderly widow, confined to a wheelchair, who was being thrown out of the cottage her family had occupied for centuries, so that the historic cottage could be bulldozed to the ground and developers could build executive houses on the site."
+
+> The family's case: The family's account: Mary was an amputee. By 1974 the north and south thirds of her parcel had gone, and the house with its garden was the last third she held, against two companies of one of the largest groups in the country.
+
+> The received account: An old lady who had to move on.
+> Wording: "elderly widow, confined to a wheelchair" — The press, autumn 1974, as recorded by the Court of Appeal.
+> What we now know: A widowed pensioner of 61, born in the house, holding the last of her family's land against a pension fund and a property company.
+- Court record: BP Properties Ltd v Buckler [1987] EWCA Civ 2 — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/
+- Mary's statement: Mary (Nancy) Williams's statement (c. 1974) — https://greathousefarmwiki.wordpress.com/mary-williams-statement/
+- Court record: The 1974 Licence Letters — https://greathousefarmwiki.wordpress.com/1974-licence-letters/#letters
+
+### IV.13 (75). 31 October 1974 — The licence letters
 
 Act IV: BP · Scene id: ghf-19741031-1 · Date: 1974-10-31 · Parcel: House parcel (A) · Basis: Court record
 
-On 19 September 1974 BP is given leave to enforce the 1962 order; Mary had not been given notice. On 31 October BP writes to "Mary Buckler" (the family copy; the Court of Appeal describes the letters as addressed to Mrs Buckler, "described again as Mrs Williams") that she may remain in the farmhouse under licence. The letters reach her solicitor on 4 November, when the stay application comes before the judge; the landlords' solicitors afterwards withdraw the warrant, at a date before 25 November 1974. She does not accept.
+Two letters are dated Thursday 31 October 1974, the day the hold on the warrant runs out. BP Pension Trust writes that the bailiff's instructions "have been withdrawn" and that her stay application "becomes unnecessary", because BP Properties "have agreed to buy the property". BP Properties writes that it will "allow you to remain in occupation of the house and garden rent free for as long as you may wish and for the rest of your life", adding: "I do hope that by making this gesture you will accept the situation." Both are addressed to "Mrs Williams", but neither is sent to her: both go to her solicitor. BP Properties does not yet own the house; the purchase completes on 23 May 1975.
+
+> The family's case: The family's account: Mary had sought an audience with the judge because BP had crossed a line; the court clerk called the press and two articles followed; the letters were backdated.
 
 > The received account: BP kindly let an elderly, ill woman stay in the house rent free.
 > Wording: "licence" — BP's letters, as the courts later described them.
@@ -950,7 +1012,21 @@ On 19 September 1974 BP is given leave to enforce the 1962 order; Mary had not b
 - Court record: BP Properties Ltd v Buckler [1987] EWCA Civ 2 — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/
 - Court record: The 1974 Licence Letters — the warrant — https://greathousefarmwiki.wordpress.com/1974-licence-letters/#warrant
 
-### IV.11 (72). 19 November, 1970s (year unclear) — Letter to the Western Mail
+### IV.14 (76). Monday 4 November 1974 — Monday 4 November
+
+Act IV: BP · Scene id: ghf-19741104-1 · Date: 1974-11-04 · Parcel: House parcel (A) · Basis: Court record
+
+Her solicitor receives the letters "on the morning of November 4, immediately before he made his application". The landlords' solicitors do not attend. The judge stays the warrant "pending Mrs Buckler's agreement to the proposals in the letters". Her solicitor telephones her and asks for instructions. "Before she had given any instructions, however," the landlords' solicitors write to the court "at some date prior to November 25 1974" and withdraw the warrant. The Court of Appeal's conclusion: "Mrs Buckler therefore never expressly accepted or rejected the terms of the two letters."
+
+> The family's case: Dated on a Thursday, received on the Monday morning minutes before the hearing, and withdrawn before she could answer: the family's case is that Mary was given no time to respond, and that the order was dropped the same day the offer was made.
+
+> The received account: The case was settled amicably.
+> Wording: "pending Mrs Buckler's agreement" — The terms of the judge's stay.
+> What we now know: The letters arrived minutes before the hearing; the landlords stayed away; the warrant was withdrawn before Mary had given her solicitor any instructions. The court itself recorded that she never accepted.
+- Court record: BP Properties Ltd v Buckler [1987] EWCA Civ 2 — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/
+- Court record: The 1974 Licence Letters — the warrant — https://greathousefarmwiki.wordpress.com/1974-licence-letters/#warrant
+
+### IV.15 (77). 19 November, 1970s (year unclear) — Letter to the Western Mail
 
 Act IV: BP · Scene id: ghf-19741119-1 · Date: 1974-11-19 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -961,7 +1037,23 @@ A letter to the Western Mail, dated 19 November (year unclear), traces the land'
 - Newspaper: Western Mail, 'Grievous loss' (letter) — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n04
 - Wiki page: The Restoration Campaign — https://greathousefarmwiki.wordpress.com/restoration-campaign/#open-day-1974
 
-### IV.12 (73). 23 May 1975 — The 1975 conveyance
+### IV.16 (78). November 1974 onward — Mary's answer
+
+Act IV: BP · Scene id: ghf-19741125-1 · Date: 1974-11-25 · Parcel: House parcel (A) · Basis: Court record
+
+Mary pays no rent and stays in the house until her death in March 1983. In 1987 the Court of Appeal accepts that she did not accept: "BP Properties Ltd neither sought nor waited for her acceptance." It still holds that, "in the absence of any repudiation", "whether she liked it or not", her possession ceased to be adverse from the day the letters arrived. It adds: "It may be that the result would have been different if Mrs Buckler had, as soon as she learned of the letters, plainly told BP Properties Ltd that she did not accept the letters ... she did not, however, do that." This one-sided licence is the point the family disputes.
+
+> The family's case: The family's account: Mary wrote back rejecting the letters; it has been family testimony ever since, and it may be recorded in William Buckler's diaries. She had said publicly in April 1974 that her solicitors told her she had a valid case, and she went on acting as owner of the house. Not answering an offer is not accepting it.
+
+> The received account: Mary accepted a licence and lived rent free as BP's licensee.
+> Wording: "in the absence of any repudiation" — The Court of Appeal, 1987.
+> Wording: "whether she liked it or not" — The Court of Appeal, 1987.
+> What we now know: The court agreed she never accepted the letters, and still treated them as binding on her. A written rejection sent to BP would have met the exact point the court said might have changed the result.
+- Court record: BP Properties Ltd v Buckler [1987] EWCA Civ 2 — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/
+- Court record: The 1974 Licence Letters — https://greathousefarmwiki.wordpress.com/1974-licence-letters/#letters
+- Analysis: Legal Review — Fraud, Land and Human Rights — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/
+
+### IV.17 (79). 23 May 1975 — The 1975 conveyance
 
 Act IV: BP · Scene id: ghf-19750523-1 · Date: 1975-05-23 · Parcel: House parcel (A) · Basis: Land Registry record
 
@@ -974,7 +1066,7 @@ On 23 May 1975 BP Pension Trust conveys property at Great House Farm, with a pla
 
 - Land Registry record: Land Registry Titles — conveyances — https://greathousefarmwiki.wordpress.com/land-registry-titles/#conveyances
 
-### IV.13 (74). 1 December 1975 — Compulsory registration begins
+### IV.18 (80). 1 December 1975 — Compulsory registration begins
 
 Act IV: BP · Scene id: ghf-19751201-1 · Date: 1975-12-01 · Parcel: Whole farm (A + B) · Basis: Public record
 
@@ -984,7 +1076,7 @@ From 1 December 1975 a sale of land in the Vale of Glamorgan must be registered 
 > What we now know: Registration became compulsory in the Vale only on 1 December 1975, so the earlier conveyances were not void for want of registration. The Gazette notice series ended about May 1975, so the absence of a 1982–83 notice is not evidence of concealment.
 - Public record: EV-0265 — Compulsory registration 1 Dec 1975; solicitor’s certificate; Gazette notices — https://greathousefarmwiki.wordpress.com/evidence/ev-0265-hmlr-registration-background-compulsory-1975-r29-certificate/
 
-### IV.14 (75). 22 May 1980 — Hansard
+### IV.19 (81). 22 May 1980 — Hansard
 
 Act IV: BP · Scene id: ghf-19800522-1 · Date: 1980-05-22 · Parcel: n/a · Basis: Parliament
 
@@ -993,7 +1085,7 @@ On 22 May 1980 Ted Rowlands MP tells the House of Commons that Western Ground Re
 > What we now know: Western Ground Rents, which brought the 1955 and 1962 actions, and BP, which relied on them, were by 1980 the same group.
 - Newspaper: Hansard, 22 May 1980 — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n16
 
-### IV.15 (76). 7 February 1981 — Ground rents sold
+### IV.20 (82). 7 February 1981 — Ground rents sold
 
 Act IV: BP · Scene id: ghf-19810207-1 · Date: 1981-02-07 · Parcel: n/a · Basis: Newspaper
 
@@ -1002,7 +1094,7 @@ BP Pension Trust sells its residential freehold ground rents in South Wales to C
 > What we now know: BP Pension Trust kept the Great House Farm land when it sold its South Wales ground rents in 1981.
 - Newspaper: EV-0289 — BP Pension Trust in South Wales, 1981–83: sale of its residential ground rents (snippets) — https://greathousefarmwiki.wordpress.com/evidence/ev-0289-snippets-only-bp-pension-trust-in-south-wales-1981-83-sale-of-its-residential-grou/
 
-### IV.16 (77). 1 October 1982 — GGAT advice
+### IV.21 (83). 1 October 1982 — GGAT advice
 
 Act IV: BP · Scene id: ghf-19821001-1 · Date: 1982-10-01 · Parcel: Whole farm (A + B) · Basis: Planning file
 
@@ -1015,7 +1107,7 @@ On 1 October 1982 GGAT advises the planners that occupation may continue in the 
 - Newspaper: Neath Guardian, 17 April 1980 (Roman villa, a separate site) — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n05
 - Newspaper: South Wales Echo, 18 March 1983 — burnt relics (Roman villa finds, a separate site) — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n06
 
-### IV.17 (78). 19 – 30 November 1982 — First registration
+### IV.22 (84). 19 – 30 November 1982 — First registration
 
 Act IV: BP · Scene id: ghf-19821119-1 · Date: 1982-11-19 · Parcel: Whole farm (A + B) · Basis: Land Registry record
 
@@ -1029,7 +1121,7 @@ On 30 November 1982 Linklaters & Paines apply to register BP Properties as owner
 - Land Registry record: Land Registry Titles — first registration — https://greathousefarmwiki.wordpress.com/land-registry-titles/#first-registration
 - Analysis: 1982–83 Registration & Opportunity to Object — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/procedural-fairness-notice/1982-83-registration-opportunity-to-object/
 
-### IV.18 (79). 23 February 1983 — Farmhouse title
+### IV.23 (85). 23 February 1983 — Farmhouse title
 
 Act IV: BP · Scene id: ghf-19830223-1 · Date: 1983-02-23 · Parcel: House parcel (A) · Basis: Land Registry record
 
@@ -1043,7 +1135,7 @@ On 23 February 1983 BP's solicitors apply to register the farmhouse and garden a
 - Land Registry record: Land Registry Titles — first registration — https://greathousefarmwiki.wordpress.com/land-registry-titles/#first-registration
 - Analysis: Legal Review — Fraud, Land and Human Rights — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/
 
-### IV.19 (80). 26 March 1983 — Death of Mary (Nancy) Williams
+### IV.24 (86). 26 March 1983 — Death of Mary (Nancy) Williams
 
 Act IV: BP · Scene id: ghf-19830326-1 · Date: 1983-03-26 · Parcel: House parcel (A) · Basis: Source pending
 
@@ -1057,7 +1149,7 @@ Mary (Nancy) Williams dies in the farmhouse on 26 March 1983. Her son William in
 - Wiki page: Mary (Nancy) Williams — death — https://greathousefarmwiki.wordpress.com/mary-williams/#death
 - Wiki page: The Williams / Buckler Family — William — https://greathousefarmwiki.wordpress.com/williams-buckler-family/
 
-### IV.20 (81). 8 April – 12 May 1983 — Registration correspondence
+### IV.25 (87). 8 April – 12 May 1983 — Registration correspondence
 
 Act IV: BP · Scene id: ghf-19830408-1 · Date: 1983-04-08 · Parcel: House parcel (A) · Basis: Land Registry record
 
@@ -1067,7 +1159,7 @@ On 8 and 12 April and 12 May 1983 Linklaters and the Land Registry exchange lett
 > What we now know: What the Registry asked about the occupiers, and what it was told, is in these letters. The family have asked for them.
 - Land Registry record: Land Registry Titles — first registration — https://greathousefarmwiki.wordpress.com/land-registry-titles/#first-registration
 
-### IV.21 (82). 26 October 1983 — Conservation reports
+### IV.26 (88). 26 October 1983 — Conservation reports
 
 Act IV: BP · Scene id: ghf-19831026-1 · Date: 1983-10-26 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -1076,7 +1168,7 @@ The South Wales Echo reports that the Community Council and the Vale planners ha
 > What we now know: The house was named as a notable building in 1983, five years before the listing decision of December 1988.
 - Newspaper: EV-0072 — South Wales Echo, 26 October 1983, p.9 (conservation) — https://greathousefarmwiki.wordpress.com/evidence/ev-0072-south-wales-echo-1983-conservation/
 
-### V.1 (83). 1984 — The writ
+### V.1 (89). 1984 — The writ
 
 Act V: BP Properties Ltd v Buckler · Scene id: ghf-19840522-1 · Date: 1984-05-22 · Parcel: House parcel (A) · Basis: Court record
 
@@ -1090,7 +1182,7 @@ On 22 May 1984 BP Properties issues a writ for possession of Great House Farm an
 - Wiki page: The 1877 Agreement — library copy missing — https://greathousefarmwiki.wordpress.com/1877-agreement/#library-1984
 - Land Registry record: Land Registry Titles — https://greathousefarmwiki.wordpress.com/land-registry-titles/#first-registration
 
-### V.2 (84). 10 – 24 July 1986 — High Court hearing and judgment
+### V.2 (90). 10 – 24 July 1986 — High Court hearing and judgment
 
 Act V: BP Properties Ltd v Buckler · Scene id: ghf-19860710-1 · Date: 1986-07-10 · Parcel: House parcel (A) · Basis: Court record
 
@@ -1102,7 +1194,7 @@ On 10 July 1986 the case is heard before Mr Justice Hollis in the High Court at 
 - Court record: BP Properties Ltd v Buckler — High Court — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/#high-court
 - Analysis: BP v Buckler: Scope, Decided & Undecided — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/court-judicial-issues/bp-v-buckler-scope-decided-undecided/
 
-### V.3 (85). 1986 – 87 — Royal Commission correspondence
+### V.3 (91). 1986 – 87 — Royal Commission correspondence
 
 Act V: BP Properties Ltd v Buckler · Scene id: ghf-19860711-1 · Date: 1986-07-11 · Parcel: House parcel (A) · Basis: Official correspondence
 
@@ -1111,7 +1203,7 @@ During the trial and appeal, the Royal Commission's correspondence with Mrs Buck
 > What we now know: A record of Mary's own account to a public body was lost while the case was live.
 - Analysis: Legal Review — the loss pattern — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/#loss-pattern
 
-### V.4 (86). 2 February 1987 — Amalgamation of titles
+### V.4 (92). 2 February 1987 — Amalgamation of titles
 
 Act V: BP Properties Ltd v Buckler · Scene id: ghf-19870202-1 · Date: 1987-02-02 · Parcel: Whole farm (A + B) · Basis: Land Registry record
 
@@ -1127,7 +1219,7 @@ On 2 February 1987, while the appeal is pending, an application is made to amalg
 - Wiki page: Cydfin / Ty Mawr and pre-1877 manorial evidence — https://greathousefarmwiki.wordpress.com/anomalies-register/llandough-penarth-cydfin-ty-mawr-manorial-evidence/
 - Research annex: Cedwyn Estate — title-chain reconstruction — https://bpvsbuckler.bucklerfamily.estate/research/cedwyn-estate-title-chain.html
 
-### V.5 (87). 31 July 1987 — Court of Appeal
+### V.5 (93). 31 July 1987 — Court of Appeal
 
 Act V: BP Properties Ltd v Buckler · Scene id: ghf-19870731-1 · Date: 1987-07-31 · Parcel: House parcel (A) · Basis: Court record
 
@@ -1147,7 +1239,7 @@ On 31 July 1987 the Court of Appeal (Dillon LJ, Mustill LJ, Sir Edward Eveleigh)
 - Public record: EV-0274 — Probate calendar 1991: “BUCKLER, William Beverley … of Penarth … died 29 April 1990”, administration granted a — https://greathousefarmwiki.wordpress.com/evidence/ev-0274-probate-calendar-1991-william-beverley-buckler/
 - Newspaper: EV-0079 — South Wales Echo, 6 May 1987, front page: the dispute between the High Court judgment and the appeal — https://greathousefarmwiki.wordpress.com/evidence/ev-0079-south-wales-echo-1987-may/
 
-### V.6 (88). 1987 – 17 December 1987 — Village green extension request
+### V.6 (94). 1987 – 17 December 1987 — Village green extension request
 
 Act V: BP Properties Ltd v Buckler · Scene id: ghf-19871217-1 · Date: 1987-12-17 · Parcel: House parcel (A) · Basis: Council minutes
 
@@ -1156,7 +1248,7 @@ Llandough Community Council minutes for 1987 record that there is "no justificat
 > What we now know: In 1987, while the appeal was decided, the council's minutes treated the farm roadway as unofficial and recorded BP Properties' agents ending its licence.
 - Council minutes: EV-0214 — Llandough Community Council minutes, 1987 — https://greathousefarmwiki.wordpress.com/evidence/ev-0214-llandough-community-council-minutes-1987/
 
-### V.7 (89). 3 March 1988 — House of Lords
+### V.7 (95). 3 March 1988 — House of Lords
 
 Act V: BP Properties Ltd v Buckler · Scene id: ghf-19880303-1 · Date: 1988-03-03 · Parcel: House parcel (A) · Basis: Court record
 
@@ -1166,7 +1258,7 @@ On 3 March 1988 the House of Lords refuses leave to appeal. The family are given
 > What we now know: The end of the possession case. Ownership of Parcel A had still never been decided.
 - Court record: BP Properties Ltd v Buckler — House of Lords — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/#house-of-lords
 
-### VI.1 (90). 29 April 1988, morning — First eviction attempt
+### VI.1 (96). 29 April 1988, morning — First eviction attempt
 
 Act VI: Eviction and demolition · Scene id: ghf-19880429-1 · Date: 1988-04-29 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -1177,7 +1269,7 @@ On 29 April 1988 five bailiffs and about fifteen police arrive. William Buckler 
 - Newspaper: 'Chainsaw farmer vows to fight on', c. 30 April 1988 — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n07
 - Newspaper: South Wales Echo, 29 April 1988 (search extract GHF-E090-N15-01) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 
-### VI.2 (91). 29 April 1988 — The chainsaw
+### VI.2 (97). 29 April 1988 — The chainsaw
 
 Act VI: Eviction and demolition · Scene id: ghf-19880429-2 · Date: 1988-04-29 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -1190,7 +1282,7 @@ The bailiffs break the gate and doors. William Buckler pushes a running chainsaw
 - Newspaper: 'Chainsaw farmer vows to fight on' — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n07
 - Newspaper: South Wales Echo, 30 April 1988 (search extract GHF-E090-N15-02) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 
-### VI.3 (92). May 1988 — Strasbourg and the MP
+### VI.3 (98). May 1988 — Strasbourg and the MP
 
 Act VI: Eviction and demolition · Scene id: ghf-19880512-1 · Date: 1988-05-12 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -1200,7 +1292,7 @@ On 3 May 1988 William Buckler applies to the European Commission of Human Rights
 - Newspaper: South Wales Echo, 12 May 1988 (search extract GHF-E090-N15-03) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 - Court record: BP Properties Ltd v Buckler — ECHR — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/#echr
 
-### VI.4 (93). 29 July 1988 — Cadw inspection
+### VI.4 (99). 29 July 1988 — Cadw inspection
 
 Act VI: Eviction and demolition · Scene id: ghf-19880729-1 · Date: 1988-07-29 · Parcel: House parcel (A) · Basis: Photograph
 
@@ -1212,7 +1304,7 @@ On 29 July 1988 Cadw inspects and photographs the farmhouse and barn while consi
 - Photograph: Cadw survey photograph of the barn, 29 July 1988 (released 2026, ATISN 27021) — https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/#R37
 - Analysis: Cadw — Forensic Critique — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/cadw-forensic-critique-v8-0-0/
 
-### VI.5 (94). October – November 1988 — BP Pension Fund sells the estate land
+### VI.5 (100). October – November 1988 — BP Pension Fund sells the estate land
 
 Act VI: Eviction and demolition · Scene id: ghf-19881007-1 · Date: 1988-10-07 · Parcel: Not Great House Farm land · Basis: Newspaper
 
@@ -1225,7 +1317,7 @@ In October 1988 BP Pension Fund sells about 1,300 acres of Welsh land to Interco
 - Archive catalogue: EV-0269 — TNA WA 9/49: LAW Board minutes, Oct–Nov 1988 — https://greathousefarmwiki.wordpress.com/evidence/ev-0269-tna-wa-9-49-land-authority-for-wales-board-1988/
 - Newspaper: EV-0093 — Estates Gazette, 9 July 1988, “BP signal Welsh sales” — https://greathousefarmwiki.wordpress.com/evidence/ev-0093-estates-gazette-1988-bp-welsh-sales/
 
-### VI.6 (95). 29 – 30 November 1988 — Eviction
+### VI.6 (101). 29 – 30 November 1988 — Eviction
 
 Act VI: Eviction and demolition · Scene id: ghf-19881130-1 · Date: 1988-11-30 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -1241,7 +1333,7 @@ On 29–30 November 1988 bailiffs enter the farmhouse. William Buckler is taken 
 - Newspaper: South Wales Echo, 30 November 1988 (search extract GHF-E090-N15-04) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 - Newspaper: South Wales Echo, 3 December 1988 — 'Billy's unhappy family' — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n09
 
-### VI.7 (96). 1 December 1988 — Belongings
+### VI.7 (102). 1 December 1988 — Belongings
 
 Act VI: Eviction and demolition · Scene id: ghf-19881201-1 · Date: 1988-12-01 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -1251,7 +1343,7 @@ The family's belongings, including Mary's papers and photographs, are left in th
 - Newspaper: South Wales Echo, 3 December 1988 — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n08
 - Newspaper: South Wales Echo, 13 December 1988 (search extract GHF-E090-N15-11) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 
-### VI.8 (97). 2 December 1988 — Injunction
+### VI.8 (103). 2 December 1988 — Injunction
 
 Act VI: Eviction and demolition · Scene id: ghf-19881202-1 · Date: 1988-12-02 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -1261,7 +1353,7 @@ On 2 December 1988 a High Court judge orders that the farmhouse and its contents
 - Newspaper: South Wales Echo, 3 December 1988 — 'History fight to save farm' — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n08
 - Newspaper: South Wales Echo, 2 December 1988 (search extract GHF-E090-N15-05) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 
-### VI.9 (98). 3 December 1988 — Charges
+### VI.9 (104). 3 December 1988 — Charges
 
 Act VI: Eviction and demolition · Scene id: ghf-19881209-1 · Date: 1988-12-03 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -1272,7 +1364,7 @@ William Buckler is taken from hospital and charged with assaulting two bailiffs,
 - Newspaper: South Wales Echo, 3 December 1988 (search extract GHF-E090-N15-06) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 - Newspaper: South Wales Echo, 3 December 1988 — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15
 
-### VI.10 (99). 3 – 5 December 1988 — Spot-listing
+### VI.10 (105). 3 – 5 December 1988 — Spot-listing
 
 Act VI: Eviction and demolition · Scene id: ghf-19881203-1 · Date: 1988-12-03 · Parcel: House parcel (A) · Basis: Official correspondence
 
@@ -1283,7 +1375,7 @@ Over the weekend of 3–5 December 1988 Cadw considers spot-listing without acce
 - Analysis: Cadw — Forensic Critique — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/cadw-forensic-critique-v8-0-0/
 - Newspaper: South Wales Echo, 3 December 1988 — Cadw considering spot-listing — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n08
 
-### VI.11 (100). 1988 (date not established) — Cadw inspection of the house
+### VI.11 (106). 1988 (date not established) — Cadw inspection of the house
 
 Act VI: Eviction and demolition · Scene id: ghf-19881204-1 · Date: 1988-12-04 · Parcel: House parcel (A) · Basis: Witness statement
 
@@ -1299,7 +1391,7 @@ Cadw officers come into the house, carry out a survey and report, and remark on 
 - Photograph: Roof (loft) beams at Great House Farm — undated photograph, Great House Farm Part 1, no. 080 (Wayback archive): the roof beams referred to — https://wayback.bucklerfamily.estate/images/0000-00-00%20-%20Great%20House%20Farm%20Part%201%20-%20080%20-%20EN%20-%20V0.0.0.00.jpg
 - Heritage record: EV-0268 — Cadw 13428, Lower Farmhouse, Rhoose: an early-19th-century Vale farmhouse listed on 12 October 1988 (“Interior — https://greathousefarmwiki.wordpress.com/evidence/ev-0268-cadw-13428-lower-farmhouse-rhoose-listed-12-oct-1988/
 
-### VI.12 (101). Monday 5 December 1988 — Final hearing; listing refused
+### VI.12 (107). Monday 5 December 1988 — Final hearing; listing refused
 
 Act VI: Eviction and demolition · Scene id: ghf-19881205-1 · Date: 1988-12-05 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -1310,7 +1402,7 @@ On 5 December 1988 Judge Norman Francis refuses to continue the injunction pendi
 > What we now know: On the same day, both doors closed: the court refused to wait for Strasbourg, and Cadw refused to list. Nothing now protected the house, and everyone knew it.
 - Newspaper: Western Mail, 6 December 1988 — 'Farmer fails in final eviction hearing' — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n10
 
-### VI.13 (102). 6 December 1988, 4am — Demolition
+### VI.13 (108). 6 December 1988, 4am — Demolition
 
 Act VI: Eviction and demolition · Scene id: ghf-19881206-1 · Date: 1988-12-06 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -1327,7 +1419,7 @@ From about 4am on 6 December 1988 the farmhouse and buildings are demolished.
 - Newspaper: South Wales Echo, 21 December 1988 (reader's letter on "Bulldozed Before Breakfast") (search extract GHF-E090-N15-12) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 - Heritage record: Historic Environment Record GGAT 02038s (Archwilio) — https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s
 
-### VI.14 (103). 7 – 9 December 1988 — Local reaction and bail
+### VI.14 (109). 7 – 9 December 1988 — Local reaction and bail
 
 Act VI: Eviction and demolition · Scene id: ghf-19881208-1 · Date: 1988-12-07 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -1340,7 +1432,7 @@ A Vale of Glamorgan councillor calls the demolition "disgusting". Villagers meet
 - Wiki page: 1988: Possession and Demolition — https://greathousefarmwiki.wordpress.com/demolition-1988/
 - Newspaper: EV-0111 — South Wales Echo, 21 December 1988, reader’s letter — https://greathousefarmwiki.wordpress.com/evidence/ev-0111-echo-readers-letter-bulldozed-report/
 
-### VI.15 (104). December 1988 — Royal Commission in the rubble
+### VI.15 (110). December 1988 — Royal Commission in the rubble
 
 Act VI: Eviction and demolition · Scene id: ghf-19881212-1 · Date: 1988-12-12 · Parcel: House parcel (A) · Basis: Heritage record
 
@@ -1353,7 +1445,7 @@ An examination of the rubble, recorded in the heritage record, notes a fireplace
 - Wiki page: 1988: Possession and Demolition — https://greathousefarmwiki.wordpress.com/demolition-1988/
 - Analysis: Source Conflicts Register — https://greathousefarmwiki.wordpress.com/records-access-chronology/source-conflicts-register/
 
-### VII.1 (105). 20 March 1989 — Site clearance
+### VII.1 (111). 20 March 1989 — Site clearance
 
 Act VII: Development · Scene id: ghf-19890320-1 · Date: 1989-03-20 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -1361,7 +1453,7 @@ On 20 March 1989 lorries clear the site.
 
 - Newspaper: South Wales Echo, 20 March 1989 (search extract GHF-E090-N15-14) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 
-### VII.2 (106). January – March 1989 — Charges resolved
+### VII.2 (112). January – March 1989 — Charges resolved
 
 Act VII: Development · Scene id: ghf-19890323-1 · Date: 1989-03-23 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -1372,7 +1464,7 @@ In January 1989 one charge is dropped as out of time and William Buckler is barr
 - Newspaper: 'Charge against evicted farmer dropped', January 1989 — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n12
 - Newspaper: South Wales Echo, 6 January 1989 (search extract GHF-E090-N15-13) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 
-### VII.3 (107). 1989 — Rehousing
+### VII.3 (113). 1989 — Rehousing
 
 Act VII: Development · Scene id: ghf-19890325-1 · Date: 1989-03-25 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -1381,7 +1473,7 @@ The family live with William Buckler's sister in Penarth. He plans to live in a 
 > What we now know: The family who had lived in the Great House for three centuries were now planning to live in a bus.
 - Newspaper: South Wales Echo, 1989 — 'From farm to a bus' — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n13
 
-### VII.4 (108). 6 April 1989 — Llandough listing survey issued
+### VII.4 (114). 6 April 1989 — Llandough listing survey issued
 
 Act VII: Development · Scene id: ghf-19890406-1 · Date: 1989-04-06 · Parcel: House parcel (A) · Basis: Heritage record
 
@@ -1395,7 +1487,7 @@ On 6 April 1989 Cadw issues the list from its 1988 community survey of Llandough
 - Heritage record: EV-0268 — Cadw 13428 Lower Farmhouse, Rhoose (comparator, 12 Oct 1988) — https://greathousefarmwiki.wordpress.com/evidence/ev-0268-cadw-13428-lower-farmhouse-rhoose-listed-12-oct-1988/
 - Archive catalogue: EV-0271 — TNA BD 34/114: Historic Buildings Council for Wales 1988 — https://greathousefarmwiki.wordpress.com/evidence/ev-0271-tna-bd-34-114-historic-buildings-council-wales-1988-1989/
 
-### VII.5 (109). 14 April 1989 — European Commission decision
+### VII.5 (115). 14 April 1989 — European Commission decision
 
 Act VII: Development · Scene id: ghf-19890414-1 · Date: 1989-04-14 · Parcel: House parcel (A) · Basis: Court record
 
@@ -1407,7 +1499,7 @@ On 14 April 1989 the European Commission of Human Rights declares Buckler v Unit
 - Court record: BP Properties Ltd v Buckler — ECHR — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/#echr
 - Court record: Buckler v United Kingdom, Commission decision (PDF) — https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf
 
-### VII.6 (110). October – November 1989 — Outline application
+### VII.6 (116). October – November 1989 — Outline application
 
 Act VII: Development · Scene id: ghf-19891107-1 · Date: 1989-11-07 · Parcel: Whole farm (A + B) · Basis: Planning file
 
@@ -1421,7 +1513,7 @@ BP applies for outline planning permission for housing (89/01396/OUT, received 8
 - Analysis: Source Conflicts Register — https://greathousefarmwiki.wordpress.com/records-access-chronology/source-conflicts-register/
 - Analysis: Legal Review — Fraud, Land and Human Rights — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/
 
-### VII.7 (111). 23 February 1990 — Homes bid and a village-green request
+### VII.7 (117). 23 February 1990 — Homes bid and a village-green request
 
 Act VII: Development · Scene id: ghf-19900223-1 · Date: 1990-02-23 · Parcel: House parcel (A) · Basis: Newspaper
 
@@ -1433,7 +1525,7 @@ On 23 February 1990 the South Wales Echo's front page reports a bid to build hom
 - Newspaper: EV-0273 — South Wales Echo, 23 Feb 1990, p.1 (snippet) — https://greathousefarmwiki.wordpress.com/evidence/ev-0273-south-wales-echo-23-feb-1990-great-house-farm-homes-bid-village-green/
 - Archive catalogue: EV-0266 — Glamorgan Archives P35/11–29: Community Council minutes 1982–2000 — https://greathousefarmwiki.wordpress.com/evidence/ev-0266-glamorgan-archives-p35-llandough-community-council-minutes-1982-2000/
 
-### VII.8 (112). February – March 1990 — Outline permission
+### VII.8 (118). February – March 1990 — Outline permission
 
 Act VII: Development · Scene id: ghf-19900313-1 · Date: 1990-03-13 · Parcel: Whole farm (A + B) · Basis: Planning file
 
@@ -1444,11 +1536,11 @@ On 13 March 1990 outline permission is granted with 18 conditions. The officer's
 - Planning file: Redevelopment and Church View Close — https://greathousefarmwiki.wordpress.com/redevelopment/
 - Analysis: Legal Review — Fraud, Land and Human Rights — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/
 
-### VII.9 (113). 29 May 1990 — Death of William Buckler
+### VII.9 (119). 1990 — Death of William Buckler
 
 Act VII: Development · Scene id: ghf-19900529-1 · Date: 1990-05-29 · Parcel: House parcel (A) · Basis: Newspaper
 
-William Buckler died on 29 May 1990 at Llandough Hospital. The South Wales Echo of Saturday 2 June 1990 reports that "Billy died suddenly this week", which fits 29 May, and that he "made a detour around Llandough so never had to pass the site of Great House Farm". The 1991 probate calendar lists a "William Beverley Buckler" of Penarth who died on 29 April 1990, with administration granted at Llandaff on 11 July 1991: a probable match, not proven, and the dates conflict.
+William Buckler dies in 1990, aged 41. The South Wales Echo of 2 June 1990 reports that "Billy died suddenly" and that he "made a detour around Llandough so never had to pass the site of Great House Farm".
 
 > What we now know: He was in his forties. He died in the village where he was born, without his home, without ever having had the one question that mattered answered. Mary's claim to the house passed, undecided, to his children.
 > Title move — Parcel A: the true title: Freehold claim: Mary's heirs · never adjudicated, never extinguished
@@ -1458,7 +1550,7 @@ William Buckler died on 29 May 1990 at Llandough Hospital. The South Wales Echo 
 - Probate record: EV-0274 — Probate calendar 1991: William Beverley Buckler (wiki evidence page) — https://greathousefarmwiki.wordpress.com/evidence/ev-0274-probate-calendar-1991-william-beverley-buckler/
 - Public record: EV-0274 — Probate calendar 1991: “BUCKLER, William Beverley … of Penarth … died 29 April 1990”, administration granted a — https://greathousefarmwiki.wordpress.com/evidence/ev-0274-probate-calendar-1991-william-beverley-buckler/
 
-### VII.10 (114). August – October 1990 — Evaluation trenches
+### VII.10 (120). August – October 1990 — Evaluation trenches
 
 Act VII: Development · Scene id: ghf-19900801-1 · Date: 1990-08-01 · Parcel: Not yet known · Basis: Archaeological record
 
@@ -1470,7 +1562,7 @@ In August 1990 GGAT digs eight trenches for BP and finds early medieval burials.
 - Analysis: GGAT — Forensic Review — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/ggat-forensic-review-and-evidence-schedule-v4-0-3/
 - Planning file: Redevelopment and Church View Close — https://greathousefarmwiki.wordpress.com/redevelopment/
 
-### VII.11 (115). 21 August 1991 — Heritage record entry
+### VII.11 (121). 21 August 1991 — Heritage record entry
 
 Act VII: Development · Scene id: ghf-19910821-1 · Date: 1991-08-21 · Parcel: House parcel (A) · Basis: Heritage record
 
@@ -1480,7 +1572,7 @@ The regional Historic Environment Record entry for Great House Farm (GGAT02038s)
 - Analysis: Cadw — Forensic Critique — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/cadw-forensic-critique-v8-0-0/
 - Analysis: Source Conflicts Register — https://greathousefarmwiki.wordpress.com/records-access-chronology/source-conflicts-register/
 
-### VII.12 (116). 14 May 1992 — Reserved matters application
+### VII.12 (122). 14 May 1992 — Reserved matters application
 
 Act VII: Development · Scene id: ghf-19920514-1 · Date: 1992-05-14 · Parcel: Whole farm (A + B) · Basis: Planning file
 
@@ -1489,7 +1581,7 @@ On 14 May 1992 Ideal Homes Wales applies for approval of 20 houses (92/00671/RES
 > What we now know: BP had not yet transferred the land to Ideal Homes.
 - Planning file: Redevelopment and Church View Close — https://greathousefarmwiki.wordpress.com/redevelopment/
 
-### VII.13 (117). 27 July 1992 — GGAT letter
+### VII.13 (123). 27 July 1992 — GGAT letter
 
 Act VII: Development · Scene id: ghf-19920727-1 · Date: 1992-07-27 · Parcel: Not yet known · Basis: Planning file
 
@@ -1497,7 +1589,7 @@ On 27 July 1992 GGAT writes to the council that the 1990 assessment showed signi
 
 - Analysis: GGAT — Forensic Review — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/ggat-forensic-review-and-evidence-schedule-v4-0-3/
 
-### VII.14 (118). 3 September 1992 — Reserved matters approved
+### VII.14 (124). 3 September 1992 — Reserved matters approved
 
 Act VII: Development · Scene id: ghf-19920903-1 · Date: 1992-09-03 · Parcel: Whole farm (A + B) · Basis: Planning file
 
@@ -1506,7 +1598,7 @@ On 3 September 1992 the 20 houses are approved without a new archaeological cond
 - Planning file: Redevelopment and Church View Close — https://greathousefarmwiki.wordpress.com/redevelopment/
 - Analysis: GGAT — Forensic Review — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/ggat-forensic-review-and-evidence-schedule-v4-0-3/
 
-### VII.15 (119). December 1993 — Transfer to Ideal Homes
+### VII.15 (125). December 1993 — Transfer to Ideal Homes
 
 Act VII: Development · Scene id: ghf-19931203-1 · Date: 1993-12-03 · Parcel: Whole farm (A + B) · Basis: Land Registry record
 
@@ -1522,7 +1614,7 @@ On 3 December 1993 BP transfers the site to Ideal Homes and groundworks begin. O
 - Planning file: Redevelopment and Church View Close — https://greathousefarmwiki.wordpress.com/redevelopment/
 - Analysis: Legal Review — Fraud, Land and Human Rights — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/
 
-### VII.16 (120). March – July 1994 — Cemetery excavation
+### VII.16 (126). March – July 1994 — Cemetery excavation
 
 Act VII: Development · Scene id: ghf-19940504-1 · Date: 1994-03-21 · Parcel: Not yet known · Basis: Archaeological record
 
@@ -1534,7 +1626,7 @@ March–July 1994: the Cotswold Archaeological Trust excavates an early medieval
 - Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
 - Analysis: GGAT — Forensic Review — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/ggat-forensic-review-and-evidence-schedule-v4-0-3/
 
-### VII.17 (121). 28 July 1994 — Finds to the National Museum
+### VII.17 (127). 28 July 1994 — Finds to the National Museum
 
 Act VII: Development · Scene id: ghf-19940728-1 · Date: 1994-07-28 · Parcel: Not yet known · Basis: Museum record
 
@@ -1546,7 +1638,7 @@ On 28 July 1994 Ideal Homes Wales, as landowner, gives the human remains and fin
 - Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
 - Analysis: Legal Review — Fraud, Land and Human Rights — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/
 
-### VII.18 (122). 1994 – 96 — Woodland title and houses
+### VII.18 (128). 1994 – 96 — Woodland title and houses
 
 Act VII: Development · Scene id: ghf-19941110-1 · Date: 1994-11-10 · Parcel: House parcel (A) · Basis: Land Registry record
 
@@ -1562,7 +1654,7 @@ On 10 November 1994 Ideal Homes Wales transfers the woodland to the Forest of Ca
 - Newspaper: EV-0276 — Press set, 1994–1996: Ideal Homes (Wales) built “Churchview Close”, Llandough (first buyers by January 1995);  — https://greathousefarmwiki.wordpress.com/evidence/ev-0276-churchview-close-llandough-ideal-homes-persimmon-1994-1996/
 - Newspaper: EV-0270 — Press set, 1988–1995: BP Pension Fund sold about 1,300 acres of Welsh land to Intercontinental Land & Developm — https://greathousefarmwiki.wordpress.com/evidence/ev-0270-bp-pension-fund-1988-sale-intercontinental-law-llandough-press/
 
-### VII.19 (123). 1995 – 1996 — Last dealings on the title
+### VII.19 (129). 1995 – 1996 — Last dealings on the title
 
 Act VII: Development · Scene id: ghf-19950101-1 · Date: 1995-01-01 · Parcel: Whole farm (A + B) · Basis: Land Registry record
 
@@ -1572,7 +1664,7 @@ Rights are granted to South Wales Electricity, and correspondence with Persimmon
 - Wiki page: Master Timeline — https://greathousefarmwiki.wordpress.com/timeline/
 - Land Registry record: Land Registry Titles — later dealings — https://greathousefarmwiki.wordpress.com/land-registry-titles/#later-dealings
 
-### VII.20 (124). 16 May 1997 — Western Ground Rents wound up
+### VII.20 (130). 16 May 1997 — Western Ground Rents wound up
 
 Act VII: Development · Scene id: ghf-19970516-1 · Date: 1997-05-16 · Parcel: Not Great House Farm land · Basis: Public record
 
@@ -1583,7 +1675,7 @@ Western Ground Rents Ltd, placed in members' voluntary liquidation with other BP
 > What we now know: A solvent group winding-up. The liquidator's account (in the TNA BT 31 files) would show what WGR still held and where it went.
 - Public record: EV-0277 — London Gazette 1996–97: WGR creditors notice and final meetings — https://greathousefarmwiki.wordpress.com/evidence/ev-0277-london-gazette-1996-1997-western-ground-rents-creditors-and-final-meetings/
 
-### VII.21 (125). 2005 — Publication
+### VII.21 (131). 2005 — Publication
 
 Act VII: Development · Scene id: ghf-20050101-1 · Date: 2005-01-01 · Parcel: Not yet known · Basis: Archaeological record
 
@@ -1594,7 +1686,7 @@ The excavation is published in Medieval Archaeology 49 (2005): 1,026 burials, 81
 - Publication: Holbrook and Thomas, Medieval Archaeology 49 (2005) — https://greathousefarmwiki.wordpress.com/archaeology/
 - Wiki page: Woodland — https://greathousefarmwiki.wordpress.com/woodland/
 
-### VII.22 (126). 2 December 2005 — Woodland land sold
+### VII.22 (132). 2 December 2005 — Woodland land sold
 
 Act VII: Development · Scene id: ghf-20051202-1 · Date: 2005-12-02 · Parcel: House parcel (A) · Basis: Company accounts
 
@@ -1605,7 +1697,7 @@ On 2 December 2005 Forest of Cardiff transfers land to Goldsworthy Homes, and on
 > What we now know: HELD (EV-0217, Companies House). £20,000 received in the year to 30 June 2006. Which land, and how the charity came to hold it in 1994, are open questions.
 - Company accounts: EV-0217 — Forest of Cardiff accounts to 30 June 2006, note 13: "Sale of Land — Leckwith Road, Llandough" (wiki evidence page) — https://greathousefarmwiki.wordpress.com/evidence/ev-0217-forest-of-cardiff-accounts-2006-sale-of-land-leckwith-road/
 
-### VII.23 (127). 20 March 2019 — 1990 assessment archived
+### VII.23 (133). 20 March 2019 — 1990 assessment archived
 
 Act VII: Development · Scene id: ghf-20190320-1 · Date: 2019-03-20 · Parcel: Not yet known · Basis: Heritage record
 
@@ -1614,7 +1706,7 @@ On 20 March 2019 GGAT's 1990 assessment is added to the national record.
 > What we now know: Twenty-nine years after it was written.
 - Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
 
-### VIII.1 (128). November 2025 – January 2026 — Records requests begin
+### VIII.1 (134). November 2025 – January 2026 — Records requests begin
 
 Act VIII: Records · Scene id: ghf-20251117-1 · Date: 2025-11-17 · Parcel: n/a · Basis: Official correspondence
 
@@ -1624,7 +1716,7 @@ From November 2025 Mary's grandchildren request records from public bodies. On 2
 
 - Official correspondence: Records Access Chronology — https://greathousefarmwiki.wordpress.com/records-access-chronology/
 
-### VIII.2 (129). February – March 2026 — Land Registry reply
+### VIII.2 (135). February – March 2026 — Land Registry reply
 
 Act VIII: Records · Scene id: ghf-20260323-1 · Date: 2026-03-23 · Parcel: Whole farm (A + B) · Basis: Official correspondence
 
@@ -1636,7 +1728,7 @@ On 23 March 2026 HM Land Registry sets out the registration history and states t
 - Land Registry record: Land Registry Titles — 2026 complaint — https://greathousefarmwiki.wordpress.com/land-registry-titles/#hmlr-2026
 - Official correspondence: HMLR holding letter, 13 February 2026 (PDF) — https://github.com/unclehowell/datro/blob/wayback/wayback/pdf/foi/2026-02-13_hmlr_wa231076_holding-letter.pdf
 
-### VIII.3 (130). 19 April – 25 May 2026 — Complaint decisions
+### VIII.3 (136). 19 April – 25 May 2026 — Complaint decisions
 
 Act VIII: Records · Scene id: ghf-20260419-1 · Date: 2026-04-19 · Parcel: Whole farm (A + B) · Basis: Official correspondence
 
@@ -1649,7 +1741,7 @@ On 19 April 2026 HM Land Registry refuses the stage-one complaint. On 25 May the
 
 - Land Registry record: Land Registry Titles — 2026 complaint — https://greathousefarmwiki.wordpress.com/land-registry-titles/#hmlr-2026
 
-### VIII.4 (131). 21 May 2026 — Cadw disclosure
+### VIII.4 (137). 21 May 2026 — Cadw disclosure
 
 Act VIII: Records · Scene id: ghf-20260521-1 · Date: 2026-05-21 · Parcel: House parcel (A) · Basis: Official correspondence
 
@@ -1663,7 +1755,7 @@ On 21 May 2026 Cadw releases two photographs of 29 July 1988, coded "YYY", which
 - Photograph: Cadw survey photograph of the farmhouse, 29 July 1988 (released 2026, ATISN 27021) — https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/#R37
 - Analysis: Source Conflicts Register — https://greathousefarmwiki.wordpress.com/records-access-chronology/source-conflicts-register/
 
-### VIII.5 (132). 14 June 2026 — Council minutes at the archives
+### VIII.5 (138). 14 June 2026 — Council minutes at the archives
 
 Act VIII: Records · Scene id: ghf-20260614-1 · Date: 2026-06-14 · Parcel: n/a · Basis: Official correspondence
 
@@ -1672,7 +1764,7 @@ The Clerk to Llandough Community Council replies that the council's minutes from
 > What we now know: The council's own minutes for 1982, the year of first registration, are at Glamorgan Archives.
 - Official correspondence: Llandough Community Council correspondence (M06, M07) — https://greathousefarmwiki.wordpress.com/evidence/llandough-community-council-correspondence/#m07
 
-### VIII.6 (133). 16 July 2026 — Police records
+### VIII.6 (139). 16 July 2026 — Police records
 
 Act VIII: Records · Scene id: ghf-20260716-1 · Date: 2026-07-16 · Parcel: n/a · Basis: Official correspondence
 
@@ -1681,7 +1773,7 @@ South Wales Police answer freedom of information request 719/26: they "hold no i
 > What we now know: South Wales Police hold no information in answer to request 719/26.
 - Official correspondence: South Wales Police correspondence (M33; EV-0159) — https://greathousefarmwiki.wordpress.com/evidence/south-wales-police-correspondence/#m33
 
-### VIII.7 (134). June – July 2026 — Schedule of registration documents
+### VIII.7 (140). June – July 2026 — Schedule of registration documents
 
 Act VIII: Records · Scene id: ghf-20260730-1 · Date: 2026-07-30 · Parcel: Whole farm (A + B) · Basis: Official correspondence
 
@@ -1691,7 +1783,7 @@ On 30 July 2026 HM Land Registry supplies a schedule of 43 documents on the firs
 - Land Registry record: Land Registry Titles — deeds before registration — https://greathousefarmwiki.wordpress.com/land-registry-titles/#deeds-before-registration
 - Land Registry record: Land Registry Titles — 2026 complaint — https://greathousefarmwiki.wordpress.com/land-registry-titles/#hmlr-2026
 
-### VIII.8 (135). 25 August 2026 — Museum Wales reply
+### VIII.8 (141). 25 August 2026 — Museum Wales reply
 
 Act VIII: Records · Scene id: ghf-20260825-1 · Date: 2026-08-25 · Parcel: Not yet known · Basis: Official correspondence
 
@@ -1700,7 +1792,7 @@ On 25 August 2026 Museum Wales replies that the information is "not held", and i
 > Wording: "not held" — Museum Wales.
 - Official correspondence: Records Access Chronology — https://greathousefarmwiki.wordpress.com/records-access-chronology/
 
-### VIII.9 (136). 8 September 2026 — Glamorgan Archives reply
+### VIII.9 (142). 8 September 2026 — Glamorgan Archives reply
 
 Act VIII: Records · Scene id: ghf-20260908-1 · Date: 2026-09-08 · Parcel: House parcel (A) · Basis: Official correspondence
 
@@ -1709,7 +1801,7 @@ On 8 September 2026 Glamorgan Archives report no deeds for the 1877 sale, and id
 > What we now know: A payment by Daniel Thomas recorded in that book would document the 1877 sale of Parcel A.
 - Official correspondence: The 1877 Agreement — Glamorgan Archives reply — https://greathousefarmwiki.wordpress.com/1877-agreement/#glamorgan-2026-4097b
 
-### VIII.10 (137). 14 September 2026 — The 1965 school-site conveyance
+### VIII.10 (143). 14 September 2026 — The 1965 school-site conveyance
 
 Act VIII: Records · Scene id: ghf-20260914-1 · Date: 2026-09-14 · Parcel: Not yet known · Basis: Official correspondence
 
@@ -1718,7 +1810,7 @@ In answer to request 00211027 the Vale of Glamorgan Council releases the conveya
 > What we now know: The 1965 school-site conveyance is now held and can be laid against the farm's boundaries.
 - Official correspondence: Vale of Glamorgan Council correspondence (M109; EV-0042, EV-0216) — https://greathousefarmwiki.wordpress.com/evidence/vale-of-glamorgan-council-correspondence/#m109
 
-### VIII.11 (138). 17 – 21 September 2026 — Complaints and correspondence
+### VIII.11 (144). 17 – 21 September 2026 — Complaints and correspondence
 
 Act VIII: Records · Scene id: ghf-20260917-1 · Date: 2026-09-17 · Parcel: House parcel (A) · Basis: Official correspondence
 
@@ -1730,7 +1822,7 @@ September 2026: the family make a formal complaint to Cadw (investigation commen
 - Land Registry record: Land Registry Titles — 2026 complaint — https://greathousefarmwiki.wordpress.com/land-registry-titles/#hmlr-2026
 - Analysis: Source Conflicts Register — https://greathousefarmwiki.wordpress.com/records-access-chronology/source-conflicts-register/
 
-### VIII.12 (139). 23 September 2026 — House of Lords papers
+### VIII.12 (145). 23 September 2026 — House of Lords papers
 
 Act VIII: Records · Scene id: ghf-20260923-1 · Date: 2026-09-23 · Parcel: House parcel (A) · Basis: Official correspondence
 
@@ -1740,7 +1832,7 @@ On 23 September 2026 The National Archives reports that the House of Lords judic
 - Analysis: Source Conflicts Register — https://greathousefarmwiki.wordpress.com/records-access-chronology/source-conflicts-register/
 - Analysis: Legal Review — Fraud, Land and Human Rights — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/
 
-### VIII.13 (140). 25 – 27 September 2026 — Woodland offer
+### VIII.13 (146). 25 – 27 September 2026 — Woodland offer
 
 Act VIII: Records · Scene id: ghf-20260925-1 · Date: 2026-09-25 · Parcel: House parcel (A) · Basis: Official correspondence
 
@@ -1750,7 +1842,7 @@ On 25 September 2026 the Forest of Cardiff offers the family a route to ownershi
 - Wiki page: Woodland — https://greathousefarmwiki.wordpress.com/woodland/
 - Official correspondence: Records Access Chronology — https://greathousefarmwiki.wordpress.com/records-access-chronology/
 
-### VIII.14 (141). 27 – 29 September 2026 — Complaints to Heneb and the Reviewer
+### VIII.14 (147). 27 – 29 September 2026 — Complaints to Heneb and the Reviewer
 
 Act VIII: Records · Scene id: ghf-20260927-1 · Date: 2026-09-27 · Parcel: Whole farm (A + B) · Basis: Official correspondence
 
@@ -1759,7 +1851,7 @@ Act VIII: Records · Scene id: ghf-20260927-1 · Date: 2026-09-27 · Parcel: Who
 - Analysis: GGAT — Forensic Review — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/ggat-forensic-review-and-evidence-schedule-v4-0-3/
 - Official correspondence: Records Access Chronology — https://greathousefarmwiki.wordpress.com/records-access-chronology/
 
-### VIII.15 (142). 29 September – 5 October 2026 — Archive releases
+### VIII.15 (148). 29 September – 5 October 2026 — Archive releases
 
 Act VIII: Records · Scene id: ghf-20260929-1 · Date: 2026-09-29 · Parcel: House parcel (A) · Basis: Official correspondence
 
@@ -1770,7 +1862,7 @@ On 29 September 2026 the Royal Commission releases its records, including the 19
 - Wiki page: Where Things Stand — https://greathousefarmwiki.wordpress.com/where-things-stand/
 - Official correspondence: Museum Wales reply (GHF-E106-R33) — https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/ghf-e106-r33-amgueddfa-cymru-reply-further-collections-search-following-8-september-2026-foi/
 
-### VIII.16 (143). September – October 2026 — HER source-file digitisation and publication
+### VIII.16 (149). September – October 2026 — HER source-file digitisation and publication
 
 Act VIII: Records · Scene id: ghf-20261006-1 · Date: 2026-10-06 · Parcel: House parcel (A) · Basis: Official correspondence
 
@@ -1783,7 +1875,7 @@ The public HER entry GGAT02038s already referred to H. J. Thomas's 1974 survey a
 - Evidence catalogue: GHF-E184 — Heneb schedule of records and 16 October response — https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e184-heneb-schedule-of-records-and-16-october-response/
 - Evidence catalogue: GHF-E145 — ECHR application 14464/88 and Commission decision, 14 April 1989 — https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e145-echr-application-14464-88-and-commission-decision-14-april-1989/
 
-### VIII.17 (144). 10 – 15 October 2026 — Application to correct the register
+### VIII.17 (150). 10 – 15 October 2026 — Application to correct the register
 
 Act VIII: Records · Scene id: ghf-20261010-1 · Date: 2026-10-10 · Parcel: Whole farm (A + B) · Basis: Land Registry record
 
@@ -1793,7 +1885,7 @@ HM Land Registry opens internal application Z084NQV (ref N610CGV) "to investigat
 - Official correspondence: HM Land Registry correspondence — application Z084NQV (M77) — https://greathousefarmwiki.wordpress.com/evidence/hm-land-registry-correspondence/#m77
 - Official correspondence: HM Land Registry correspondence — application to alter the register (M78) — https://greathousefarmwiki.wordpress.com/evidence/hm-land-registry-correspondence/#m78
 
-### VIII.18 (145). 11 – 13 October 2026 — Council refuses on cost
+### VIII.18 (151). 11 – 13 October 2026 — Council refuses on cost
 
 Act VIII: Records · Scene id: ghf-20261011-1 · Date: 2026-10-11 · Parcel: n/a · Basis: Official correspondence
 
@@ -1803,7 +1895,7 @@ The Clerk to Llandough Community Council refuses the family's request of 21 Sept
 - Official correspondence: Llandough Community Council correspondence (M15) — https://greathousefarmwiki.wordpress.com/evidence/llandough-community-council-correspondence/#m15
 - Official correspondence: Llandough Community Council correspondence (M18) — https://greathousefarmwiki.wordpress.com/evidence/llandough-community-council-correspondence/#m18
 
-### VIII.19 (146). 19 October 2026 — Welsh Government and Cadw replies
+### VIII.19 (152). 19 October 2026 — Welsh Government and Cadw replies
 
 Act VIII: Records · Scene id: ghf-20261019-1 · Date: 2026-10-19 · Parcel: n/a · Basis: Official correspondence
 
@@ -1816,7 +1908,7 @@ On 19 October 2026 the Welsh Government answers ATISN 26-0010: searches for the 
 - Official correspondence: Cadw letter, ATISN 27589, 19 October 2026 (PDF) — https://wayback.bucklerfamily.estate/pdf/foi/2026-10-19_cadw_atisn-27589_response-s14-2.pdf
 - Official correspondence: Cadw / Welsh Government — correspondence (email) — https://greathousefarmwiki.wordpress.com/evidence/cadw-welsh-government-correspondence/
 
-### O.1 (147). Plainly — They were not squatters
+### O.1 (153). Plainly — They were not squatters
 
 Stating the obvious: Stating the obvious · Scene id: ghf-obvious-01 · Parcel: n/a · Basis: Analysis
 
@@ -1828,7 +1920,7 @@ The Williams family lived at Great House from 1667 to 1988.
 - Mary's statement: Mary (Nancy) Williams's statement (c. 1974) — https://greathousefarmwiki.wordpress.com/mary-williams-statement/
 - Wiki page: The Williams / Buckler Family — https://greathousefarmwiki.wordpress.com/williams-buckler-family/
 
-### O.2 (148). Plainly — Mary never asked for permission
+### O.2 (154). Plainly — Mary never asked for permission
 
 Stating the obvious: Stating the obvious · Scene id: ghf-obvious-02 · Parcel: n/a · Basis: Analysis
 
@@ -1841,7 +1933,7 @@ Mary (Nancy) Williams refused the tenancies offered in 1959 and 1965 and did not
 - Wiki page: The 1965 offer — https://greathousefarmwiki.wordpress.com/1962-possession-order/#offer-1965
 - Court record: The 1974 Licence Letters — https://greathousefarmwiki.wordpress.com/1974-licence-letters/#letters
 
-### O.3 (149). Plainly — Nobody produced a deed to the house
+### O.3 (155). Plainly — Nobody produced a deed to the house
 
 Stating the obvious: Stating the obvious · Scene id: ghf-obvious-03 · Parcel: n/a · Basis: Analysis
 
@@ -1853,7 +1945,7 @@ No conveyance of the farmhouse parcel to Western Ground Rents or to BP, earlier 
 - Land Registry record: Land Registry Titles — deeds before registration — https://greathousefarmwiki.wordpress.com/land-registry-titles/#deeds-before-registration
 - Land Registry record: Land Registry Titles — conveyances — https://greathousefarmwiki.wordpress.com/land-registry-titles/#conveyances
 
-### O.4 (150). Plainly — They knew it was two parcels
+### O.4 (156). Plainly — They knew it was two parcels
 
 Stating the obvious: Stating the obvious · Scene id: ghf-obvious-04 · Parcel: n/a · Basis: Analysis
 
@@ -1864,7 +1956,7 @@ In 1983 BP registered the farmhouse and garden as a separate title. In 1987 it w
 > What we now know: You cannot merge two titles unless there are two. BP knew. The Land Registry knew. The court read a separate conveyance of the farmhouse and garden. The only people never told what that meant were the family.
 - Land Registry record: Land Registry Titles — first registration and amalgamation — https://greathousefarmwiki.wordpress.com/land-registry-titles/#first-registration
 
-### O.5 (151). Plainly — Losing on possession is not losing on ownership
+### O.5 (157). Plainly — Losing on possession is not losing on ownership
 
 Stating the obvious: Stating the obvious · Scene id: ghf-obvious-05 · Parcel: n/a · Basis: Analysis
 
@@ -1876,7 +1968,7 @@ The High Court (1986), the Court of Appeal (1987), the House of Lords (1988) and
 - Court record: BP Properties Ltd v Buckler [1987] EWCA Civ 2 — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/
 - Analysis: BP v Buckler: Scope, Decided & Undecided — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/court-judicial-issues/bp-v-buckler-scope-decided-undecided/
 
-### O.6 (152). Plainly — William Buckler was the last obstacle
+### O.6 (158). Plainly — William Buckler was the last obstacle
 
 Stating the obvious: Stating the obvious · Scene id: ghf-obvious-06 · Parcel: n/a · Basis: Analysis
 
@@ -1889,7 +1981,7 @@ William Buckler was injured during the eviction of 29–30 November 1988, charge
 - Newspaper: South Wales Echo, 3 December 1988 (search extract GHF-E090-N15-06) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 - Newspaper: South Wales Echo, 9 December 1988 (search extract GHF-E090-N15-09) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 
-### O.7 (153). Plainly — Four in the morning was chosen
+### O.7 (159). Plainly — Four in the morning was chosen
 
 Stating the obvious: Stating the obvious · Scene id: ghf-obvious-07 · Parcel: n/a · Basis: Analysis
 
@@ -1901,7 +1993,7 @@ Listing was refused on 5 December 1988. Demolition began at about 4am on 6 Decem
 - Newspaper: 'Tears flow as 800 year-old farm house is razed at last' — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n11
 - Heritage record: Historic Environment Record GGAT 02038s (Archwilio) — https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s
 
-### O.8 (154). Plainly — The public was on their side
+### O.8 (160). Plainly — The public was on their side
 
 Stating the obvious: Stating the obvious · Scene id: ghf-obvious-08 · Parcel: n/a · Basis: Analysis
 
@@ -1913,7 +2005,7 @@ In 1974 about 1,000 people signed a petition to save the house. In 1988 villager
 - Newspaper: South Wales Echo, 12 May 1988 (search extract GHF-E090-N15-03) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 - Newspaper: South Wales Echo, 7 December 1988 (search extract GHF-E090-N15-08) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 
-### O.9 (155). Plainly — The papers did not leave on their own
+### O.9 (161). Plainly — The papers did not leave on their own
 
 Stating the obvious: Stating the obvious · Scene id: ghf-obvious-09 · Parcel: n/a · Basis: Analysis
 
@@ -1925,7 +2017,7 @@ Mary (Nancy) Williams's statement records that the family papers were taken from
 - Mary's statement: Mary (Nancy) Williams's statement (c. 1974) — https://greathousefarmwiki.wordpress.com/mary-williams-statement/
 - Wiki page: The 1877 Agreement — papers taken — https://greathousefarmwiki.wordpress.com/1877-agreement/#papers-taken
 
-### O.10 (156). Plainly — A decision with no file
+### O.10 (162). Plainly — A decision with no file
 
 Stating the obvious: Stating the obvious · Scene id: ghf-obvious-10 · Parcel: n/a · Basis: Analysis
 
@@ -1937,7 +2029,7 @@ Cadw holds two photographs of 29 July 1988 and no other record of its 1988 listi
 - Photograph: Cadw survey photograph of the farmhouse, 29 July 1988 (released 2026, ATISN 27021) — https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/#R37
 - Analysis: Cadw — Forensic Critique — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/cadw-forensic-critique-v8-0-0/
 
-### O.11 (157). Plainly — They never asked a court who owned the house
+### O.11 (163). Plainly — They never asked a court who owned the house
 
 Stating the obvious: Stating the obvious · Scene id: ghf-obvious-11 · Parcel: n/a · Basis: Analysis
 
@@ -1948,7 +2040,7 @@ BP's 1974 action, in which Mary pleaded ownership, was adjourned and not reliste
 - Court record: The 1974 Licence Letters — the action — https://greathousefarmwiki.wordpress.com/1974-licence-letters/#action
 - Court record: BP Properties Ltd v Buckler — the writ — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/#writ
 
-### E.1 (158). Today — The sequence
+### E.1 (164). Today — The sequence
 
 Epilogue: Today · Scene id: ghf-99990101-1 · Parcel: Whole farm (A + B) · Basis: Analysis
 
@@ -1966,7 +2058,7 @@ Epilogue: Today · Scene id: ghf-99990101-1 · Parcel: Whole farm (A + B) · Bas
 - Land Registry record: Land Registry Titles — https://greathousefarmwiki.wordpress.com/land-registry-titles/#first-registration
 - Analysis: Legal Review — Fraud, Land and Human Rights — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/
 
-### E.2 (159). Today — The two parcels in the record
+### E.2 (165). Today — The two parcels in the record
 
 Epilogue: Today · Scene id: ghf-99990101-4 · Parcel: Whole farm (A + B) · Basis: Analysis
 
@@ -1981,7 +2073,7 @@ Records of 1877–1987 describe the property both as one farm and as separate pa
 - Land Registry record: Land Registry Titles — two titles, then one — https://greathousefarmwiki.wordpress.com/land-registry-titles/#first-registration
 - Court record: BP Properties Ltd v Buckler [1987] EWCA Civ 2 — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/
 
-### E.3 (160). Today — The site today
+### E.3 (166). Today — The site today
 
 Epilogue: Today · Scene id: ghf-99990101-2 · Parcel: House parcel (A) · Basis: Analysis
 
@@ -1993,7 +2085,7 @@ Church View Close, twenty houses, stands on the site. The woodland is registered
 - Analysis: Legal Review — Fraud, Land and Human Rights — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/
 - Wiki page: Missing Records Register — https://greathousefarmwiki.wordpress.com/missing-records-register/
 
-### E.4 (161). Today — Village history
+### E.4 (167). Today — Village history
 
 Epilogue: Today · Scene id: ghf-99990101-3 · Parcel: House parcel (A) · Basis: Public record
 
@@ -2003,7 +2095,7 @@ Llandough Community Council's page on the village's history describes the Roman 
 - Public record: Llandough Community Council — About Llandough — https://www.llandough-cc.co.uk/About_Us_20117.aspx
 - Wiki page: Where Things Stand — https://greathousefarmwiki.wordpress.com/where-things-stand/
 
-### E.5 (162). Today — The family's requests
+### E.5 (168). Today — The family's requests
 
 Epilogue: Today · Scene id: ghf-99990102-1 · Parcel: House parcel (A) · Basis: Family case
 
