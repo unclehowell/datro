@@ -45,3 +45,5 @@ footer{max-width:860px;margin:10px auto 0;padding:10px 14px 30px;border-top:1px 
 footer a{color:var(--mut)}footer .case{color:#cfcfcf}
 .small{font-size:13px;color:var(--mut)}
 @media (min-width:783px){.cp h1{font-size:32px}main{padding-top:18px}}
+
+:where(a,button,summary,input,select,textarea,[role="button"],[tabindex]):focus-visible{outline:3px solid var(--gold);outline-offset:3px}
