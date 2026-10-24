@@ -268,14 +268,30 @@ ACCOUNTS = {
     received="An action that went nowhere.",
     words=[('"part-heard"', 'Treated afterwards as if nothing had been decided because nothing needed deciding.')],
     known="The only time Mary's title to Parcel A was put before a court. It was never decided, and so never extinguished. Her statement set out the two parcels; no lawyer of hers ever built a case on it."),
+'ghf-19740919-2': dict(
+    received="The owner enforced a court order it already held.",
+    words=[('"successors in title"', 'How BP Pension Trust described itself to the court.')],
+    known="A twelve-year-old order, never enforced, was revived seven weeks before the twelve years ran out, while BP Pension Trust's own action on the same question waited unheard. Mary's appeal said she had no chance to put her case."),
+'ghf-19741015-1': dict(
+    received="An old lady who had to move on.",
+    words=[('"elderly widow, confined to a wheelchair"', 'The press, autumn 1974, as recorded by the Court of Appeal.')],
+    known="A widowed pensioner of 61, born in the house, holding the last of her family's land against a pension fund and a property company."),
 'ghf-19741031-1': dict(
     received="BP kindly let an elderly, ill woman stay in the house rent free.",
     words=[('"licence"', 'BP\'s letters, as the courts later described them.'), ('"because of her ill health"', 'BP\'s explanation to the press in 1988.')],
     known="A woman in a wheelchair, who had lost a leg, was told by an oil company's pension fund that she could stay in her own house under licence. She never asked for it. She never accepted it. It arrived while her claim to own the house stood undecided before the county court. Thirteen years later the Court of Appeal relied on it to give BP possession."),
+'ghf-19741104-1': dict(
+    received="The case was settled amicably.",
+    words=[('"pending Mrs Buckler\'s agreement"', "The terms of the judge's stay.")],
+    known="The letters arrived minutes before the hearing; the landlords stayed away; the warrant was withdrawn before Mary had given her solicitor any instructions. The court itself recorded that she never accepted."),
 'ghf-19741119-1': dict(
     received="A local antiquarian's objection.",
     words=[],
     known="The chain of title and the site's importance were in print before the demolition."),
+'ghf-19741125-1': dict(
+    received="Mary accepted a licence and lived rent free as BP's licensee.",
+    words=[('"in the absence of any repudiation"', 'The Court of Appeal, 1987.'), ('"whether she liked it or not"', 'The Court of Appeal, 1987.')],
+    known="The court agreed she never accepted the letters, and still treated them as binding on her. A written rejection sent to BP would have met the exact point the court said might have changed the result."),
 'ghf-19750523-1': dict(
     received="An internal transfer within the BP group.",
     words=[('"the actual conveyance of the farmhouse and garden"', 'Court of Appeal, 1987.')],

@@ -73,7 +73,7 @@ ACTS = [
     {'id': 'III', 'label': 'Act III', 'title': 'Possession proceedings', 'span': '1949 – 1968',
      'logline': 'The 1949 tenancy, the papers, the 1955 and 1962 orders, and the tenancy offers.'},
     {'id': 'IV', 'label': 'Act IV', 'title': 'BP', 'span': '1969 – 1983',
-     'logline': 'The 1969 and 1975 conveyances, the 1974 action and letters, and first registration.'},
+     'logline': 'The sale to BP, a name moved on the map, the 1972 permission, the 1974 survey, the revived 1962 order, the licence letters, the 1975 conveyance and first registration.'},
     {'id': 'V', 'label': 'Act V', 'title': 'BP Properties Ltd v Buckler', 'span': '1984 – March 1988',
      'logline': 'The writ, the judgments, and the amalgamation of the titles.'},
     {'id': 'VI', 'label': 'Act VI', 'title': 'Eviction and demolition', 'span': 'April – December 1988',
@@ -630,18 +630,38 @@ sc('IV', 'ghf-19740703-1', '1974-07-03', '3 July 1974', "1974 possession action"
    "BP Pension Trust brings a county court action for possession. On 3 July 1974 the case is part heard and adjourned for a formal defence to be filed; Mary's defence then pleads that the action is barred under the Limitation Act 1939. Her statement describes the 1877 sale. The case is never relisted.",
    [w('/1974-licence-letters/#action', 'The 1974 Licence Letters — the action', 'Court record'), JUDG],
    ledger={'A': 'Freehold claimed by Mary, in occupation · ownership pleaded in her defence after the 3 July 1974 adjournment (never decided)'})
-sc('IV', 'ghf-19741031-1', '1974-10-31', 'September – October 1974', "The 1974 letters", 'Great House Farm', 'A',
-   'Court record',
-   "On 19 September 1974 BP is given leave to enforce the 1962 order; Mary had not been given notice. On 31 October BP writes to \"Mary Buckler\" (the family copy; the Court of Appeal describes the letters as addressed to Mrs Buckler, \"described again as Mrs Williams\") that she may remain in the farmhouse under licence. The letters reach her solicitor on 4 November, when the stay application comes before the judge; the landlords' solicitors afterwards withdraw the warrant, at a date before 25 November 1974. She does not accept.",
-   [w('/1974-licence-letters/#letters', 'The 1974 Licence Letters', 'Court record'), JUDG,
-    w('/1974-licence-letters/#warrant', 'The 1974 Licence Letters — the warrant', 'Court record')],
+sc('IV', 'ghf-19740919-2', '1974-09-19', "17 – 19 September 1974", "The 1962 order revived", "Cardiff County Court", 'A',
+   "Court record",
+   "BP Pension Trust's own action is still waiting for Mary's defence. On 17 September 1974 it gives notice that it will ask, \"as successors in title to Western Ground Rents\", to enforce the twelve-year-old possession order of 11 December 1962. Two days later Judge Watkin Powell gives leave: the warrant is to issue at once but not be enforced until 31 October 1974. On 30 October Mary's solicitors appeal: she \"had had insufficient notice of the application and therefore had had no opportunity of presenting her case\".",
+   [JUDG, w('/1962-possession-order/', 'The 1962 Possession Order', 'Court record'), w('/1974-licence-letters/#action', 'The 1974 Licence Letters — the action', 'Court record')],
+   case="The 12 years from the 1962 order would run out on 11 December 1974. The family's case is that the order was revived on two days' notice to beat that date, while BP Pension Trust's fresh action, which put the same question, was left unheard.")  # tour stop — Sion's Tab agent
+sc('IV', 'ghf-19741015-1', '1974-10-15', "Autumn 1974", "Mary", "Great House Farm", 'A',
+   "Court record",
+   "Mary is 61, a widow since Frederick's death, a pensioner, living in the farmhouse where she was born in 1913. After the order is revived, a press campaign starts in South Wales, with some support on television. The Court of Appeal later records how the papers describe her: \"an elderly widow, confined to a wheelchair, who was being thrown out of the cottage her family had occupied for centuries, so that the historic cottage could be bulldozed to the ground and developers could build executive houses on the site.\"",
+   [JUDG, MARY, w('/1974-licence-letters/#letters', 'The 1974 Licence Letters', 'Court record')],
+   case="The family's account: Mary was an amputee. By 1974 the north and south thirds of her parcel had gone, and the house with its garden was the last third she held, against two companies of one of the largest groups in the country.")  # tour stop — Sion's Tab agent
+sc('IV', 'ghf-19741031-1', '1974-10-31', "31 October 1974", "The licence letters", "Great House Farm", 'A',
+   "Court record",
+   "Two letters are dated Thursday 31 October 1974, the day the hold on the warrant runs out. BP Pension Trust writes that the bailiff's instructions \"have been withdrawn\" and that her stay application \"becomes unnecessary\", because BP Properties \"have agreed to buy the property\". BP Properties writes that it will \"allow you to remain in occupation of the house and garden rent free for as long as you may wish and for the rest of your life\", adding: \"I do hope that by making this gesture you will accept the situation.\" Both are addressed to \"Mrs Williams\", but neither is sent to her: both go to her solicitor. BP Properties does not yet own the house; the purchase completes on 23 May 1975.",
+   [w('/1974-licence-letters/#letters', 'The 1974 Licence Letters', 'Court record'), JUDG, w('/1974-licence-letters/#warrant', 'The 1974 Licence Letters — the warrant', 'Court record')],
+   case="The family's account: Mary had sought an audience with the judge because BP had crossed a line; the court clerk called the press and two articles followed; the letters were backdated.",
    aliases=['ghf-19741031-2', 'ghf-19740919-1'],
-   ledger={'S': 'Attempt 6: BP\'s "licence" letters to Mary, 31 October 1974 (never accepted); 1962 warrant withdrawn before 25 November 1974'})
+   ledger={'S': 'Attempt 6: BP\'s "licence" letters to Mary, 31 October 1974 (never accepted); 1962 warrant withdrawn before 25 November 1974'})  # tour stop — Sion's Tab agent
+sc('IV', 'ghf-19741104-1', '1974-11-04', "Monday 4 November 1974", "Monday 4 November", "Cardiff County Court", 'A',
+   "Court record",
+   "Her solicitor receives the letters \"on the morning of November 4, immediately before he made his application\". The landlords' solicitors do not attend. The judge stays the warrant \"pending Mrs Buckler's agreement to the proposals in the letters\". Her solicitor telephones her and asks for instructions. \"Before she had given any instructions, however,\" the landlords' solicitors write to the court \"at some date prior to November 25 1974\" and withdraw the warrant. The Court of Appeal's conclusion: \"Mrs Buckler therefore never expressly accepted or rejected the terms of the two letters.\"",
+   [JUDG, w('/1974-licence-letters/#warrant', 'The 1974 Licence Letters — the warrant', 'Court record')],
+   case="Dated on a Thursday, received on the Monday morning minutes before the hearing, and withdrawn before she could answer: the family's case is that Mary was given no time to respond, and that the order was dropped the same day the offer was made.")  # tour stop — Sion's Tab agent
 sc('IV', 'ghf-19741119-1', '1974-11-19', '19 November, 1970s (year unclear)', "Letter to the Western Mail", 'Western Mail — letters', 'A',
    'Newspaper',
    "A letter to the Western Mail, dated 19 November (year unclear), traces the land's descent.",
    [press('N04', "Western Mail, 'Grievous loss' (letter)", 'ghf-e090-n03-n04-1974-open-day-and-grievous-loss-page.jpg'),
     w('/restoration-campaign/#open-day-1974', 'The Restoration Campaign')])
+sc('IV', 'ghf-19741125-1', '1974-11-25', "November 1974 onward", "Mary's answer", "Great House Farm", 'A',
+   "Court record",
+   "Mary pays no rent and stays in the house until her death in March 1983. In 1987 the Court of Appeal accepts that she did not accept: \"BP Properties Ltd neither sought nor waited for her acceptance.\" It still holds that, \"in the absence of any repudiation\", \"whether she liked it or not\", her possession ceased to be adverse from the day the letters arrived. It adds: \"It may be that the result would have been different if Mrs Buckler had, as soon as she learned of the letters, plainly told BP Properties Ltd that she did not accept the letters ... she did not, however, do that.\" This one-sided licence is the point the family disputes.",
+   [JUDG, w('/1974-licence-letters/#letters', 'The 1974 Licence Letters', 'Court record'), LEGAL],
+   case="The family's account: Mary wrote back rejecting the letters; it has been family testimony ever since, and it may be recorded in William Buckler's diaries. She had said publicly in April 1974 that her solicitors told her she had a valid case, and she went on acting as owner of the house. Not answering an offer is not accepting it.")  # tour stop — Sion's Tab agent
 sc('IV', 'ghf-19750523-1', '1975-05-23', '23 May 1975', "The 1975 conveyance", 'BP Pension Trust / BP Properties', 'A',
    'Land Registry record',
    "On 23 May 1975 BP Pension Trust conveys property at Great House Farm, with a plan, to BP Properties Ltd. The Court of Appeal later calls it \"the actual conveyance of the farmhouse and garden\".",
