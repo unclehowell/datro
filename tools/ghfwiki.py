@@ -122,7 +122,8 @@ def load_catalogue(pages):
 
 TEMPLATE = """<!doctype html><html lang="en-GB"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{title} – Great House Farm Wiki</title><link rel="stylesheet" href="/assets/wiki.css"></head>
+<title>{title} – Great House Farm Wiki</title><link rel="stylesheet" href="/assets/wiki.css">
+<script src="https://research.bucklerfamily.estate/estate-tour.js?v=20261024" defer data-estate-tour-loader></script></head>
 <body><header class="site"><a href="/">Great House Farm (Tŷ Mawr) Wiki</a> <span>reconstructed archive</span></header>
 <nav class="crumbs">{crumbs}</nav><main><h1>{title}</h1>
 <p class="provenance">Source: {source}. Original address: <a href="https://{host}{path}">https://{host}{path}</a></p>
@@ -131,6 +132,7 @@ TEMPLATE = """<!doctype html><html lang="en-GB"><head><meta charset="utf-8">
 WAYBACK_JUMP = """<!doctype html><html lang="en-GB"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>Great House Farm Wiki – archive</title>
 <link rel="stylesheet" href="/assets/wiki.css">
+<script src="https://research.bucklerfamily.estate/estate-tour.js?v=20261024" defer data-estate-tour-loader></script>
 <script>
 (function(){var p=__PATH_JS__;
  var u="https://web.archive.org/web/2026/https://""" + HOST + """"+p;
