@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-24T10:50:41Z",
+ "updated": "2026-10-24T10:53:08Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
@@ -149,8 +149,8 @@
    "id": "cardiff-central-library-bute-x6-12-reply",
    "record": "HubSpot task 532014813379",
    "version": "v0.8.0",
-   "status": "QUEUED: Claude after BP v2.0.1",
-   "turn": "Claude (queued after BP v2.0.1; not yet active)",
+   "status": "QUEUED: Claude after ITV v0.1.0",
+   "turn": "Claude (queued after BP v2.0.1 then ITV v0.1.0; not yet active)",
    "open_issues": 8,
    "last_change": "2026-10-24T10:03:25.972Z",
    "last_agent": "ChatGPT",
@@ -206,12 +206,12 @@
    ],
    "stage": "QUEUED",
    "pct_at": "2026-10-24T09:35:25Z",
-   "last_action_at": "2026-10-24T10:38:06.803Z",
+   "last_action_at": "2026-10-24T10:53:02.497Z",
    "last_action_by": "ChatGPT",
    "version_reviews": 0,
    "version_distinct_agents": 0,
    "version_agents": [],
-   "queue_after": "bp-preservation-reply",
+   "queue_after": "itv-foi-archive-footage",
    "sent_version": null,
    "seat_agreements_version": null,
    "final_three_hat_version": null,
@@ -1546,6 +1546,13 @@
    "version": "v0.1.0",
    "agent": "ChatGPT",
    "event": "aligned internal STATUS block to live HubSpot subject TURN: Grok; no recipient text change or review counted"
+  },
+  {
+   "at": "2026-10-24T10:53:02.497Z",
+   "draft": "cardiff-central-library-bute-x6-12-reply",
+   "version": "v0.8.0",
+   "agent": "ChatGPT",
+   "event": "clarified serialized Claude queue: BP v2.0.1 → ITV v0.1.0 → Cardiff v0.8.0; status/queue action only, recipient text unchanged, no review counted"
   }
  ],
  "context_note": "drafts[].context = metadata-only context pack (recipient body, archive thread link, dartboard link, stage, next deadline, markers, open questions, rungs spent); built by hive_context.py from the dartboard roadmap, the email archive API and qa kb.json. Hive protocol v3.1.0 context sweep.",
