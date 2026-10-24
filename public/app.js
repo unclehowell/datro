@@ -1,4 +1,4 @@
-/* maps.bucklerfamily.estate — Tŷ Mawr title map 1877–1987 · v1.3.0 · Sion's Tab agent
+/* maps.bucklerfamily.estate — Tŷ Mawr title map 1877–1987 · v1.7.1 · Sion's Tab agent
     */
 (function(){
 "use strict";
