@@ -27,3 +27,4 @@ footer{margin-top:40px;font-size:13px;color:var(--mut);border-top:1px solid var(
 @media (max-width:820px){.wrap{display:block}nav.side{display:none;position:static;width:auto;height:auto;border-right:0;border-bottom:1px solid var(--line)}nav.side.on{display:block}
 .mtop{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--side)}.mtop a{font-weight:700;color:var(--fg);text-decoration:none}
 .mtop button{font:inherit;background:none;border:1px solid var(--line);border-radius:6px;padding:4px 10px;color:var(--fg);min-height:36px}main{padding:16px 14px 50px}}
+main a,main code,td{overflow-wrap:anywhere}
