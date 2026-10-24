@@ -87,6 +87,27 @@ def monolith(url, out, extra=()):
         return os.path.exists(out) and os.path.getsize(out) > 200
     except Exception: return False
 def sha(b): return hashlib.sha256(b).hexdigest()
+# Secret scrub (GitGuardian alert 24 Oct 2026): some third-party pages (coflein.gov.uk) render their server's app settings
+# into the HTML (machine key, auth keys, storage connection strings). Values of secret-looking settings become [REDACTED]
+# before anything is written or published. — Sion's Tab agent
+_SECRET_NAME = r'[A-Za-z0-9_.\-]*(?:key|secret|token|passw(?:or)?d|connection_?string|AzureWebJobsStorage)'   # the setting's name must END with one of these
+_SECRET_RES = [
+    (re.compile(r'("~:' + _SECRET_NAME + r'",")((?:[^"\\]|\\.)+)(")', re.I), r'\1[REDACTED]\3'),      # transit+json
+    (re.compile(r'("' + _SECRET_NAME + r'"\s*:\s*")((?:[^"\\]|\\.){8,})(")', re.I), r'\1[REDACTED]\3'),  # JSON
+    (re.compile(r'\b((?:decryption|validation)Key\s*=\s*["\'])([^"\']+)(["\'])', re.I), r'\1[REDACTED]\3'),  # web.config <machineKey>
+    (re.compile(r'((?:AccountKey|SharedAccessKey|InstrumentationKey)=)([^;"&\s]+)', re.I), r'\1[REDACTED]'),
+]
+_SECRET_KEEP = re.compile(r'^(?:\[REDACTED\]|Blob|Files|true|false|none|null|\d{1,6})$', re.I)
+def scrub_secrets(b):
+    """bytes|str -> (same type, count). Redacts secret values; leaves page text alone."""
+    is_b = isinstance(b, (bytes, bytearray)); s = b.decode('utf-8', 'surrogateescape') if is_b else b; n = [0]
+    def sub(m):
+        if _SECRET_KEEP.match(m.group(2)): return m.group(0)
+        n[0] += 1; return m.expand(rx_rep)
+    for rx, rx_rep in _SECRET_RES:
+        s = rx.sub(sub, s)
+    return (s.encode('utf-8', 'surrogateescape') if is_b else s), n[0]
+
 def wrapper(meta, raw_name):
     url = html.escape(meta['url']); d = html.escape(meta['captured_human'])
     src_note = ''
@@ -104,12 +125,16 @@ def wrapper(meta, raw_name):
 def write_capture(url, title, text, rawbytes, rawext, d, source, http_status, ctype, mode, extra=None):
     k = key_of(url); rel = f'{ts14(d)}/{k}'; folder = os.path.join(PUB, rel); os.makedirs(folder, exist_ok=True)
     raw_name = 'raw.' + rawext
+    if rawext != 'pdf': rawbytes, _n_red = scrub_secrets(rawbytes)   # secret values never reach the branch
+    else: _n_red = 0
     with open(os.path.join(folder, raw_name), 'wb') as f: f.write(rawbytes)
+    text = scrub_secrets(text)[0]
     with open(os.path.join(folder, 'text.txt'), 'w', encoding='utf-8') as f: f.write(text + '\n')
     meta = {'url': url, 'key': k, 'path': '/' + rel + '/', 'captured_utc': d.strftime('%Y-%m-%dT%H:%M:%SZ'), 'captured_human': human(d),
             'source': source, 'http_status': http_status, 'content_type': ctype, 'mode': mode, 'title': title,
             'sha256': sha(rawbytes), 'text_sha256': sha(text.encode('utf-8')), 'bytes': len(rawbytes), 'file': raw_name}
     if extra: meta.update(extra)
+    if _n_red: meta['redaction'] = '%d secret setting value(s) the site exposed in its HTML replaced with [REDACTED]' % _n_red
     with open(os.path.join(folder, 'meta.json'), 'w') as f: json.dump(meta, f, indent=1, ensure_ascii=False)
     with open(os.path.join(folder, 'index.html'), 'w', encoding='utf-8') as f: f.write(wrapper(meta, raw_name))
     return meta
