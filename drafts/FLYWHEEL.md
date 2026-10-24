@@ -4,13 +4,13 @@ Email drafts for the estate case are improved in turns by two or more agents unt
 
 This repo is public. Never put email text, names of private people, phone numbers or addresses here. The draft text lives only in HubSpot.
 
-## Protocol v3.3.0 (24 Oct 2026) — current shared agent instruction governs; see v2.0.0 history below
+## Protocol v3.3.1 (24 Oct 2026) — current shared agent instruction governs; see v2.0.0 history below
 - Status ladder: DRAFT → TAB'S TURN / OTHER AGENT'S TURN → CONSENSUS CANDIDATE → READY TO SEND → FINAL THREE-HAT REVIEW → DEFINITELY READY TO SEND → SENT. HubSpot's native task status is separate.
 - Each turn is an independent review against primary sources, with a changelog entry: reviewer, date-time and zone, version reviewed, primary sources checked, changes, rejected proposals with reasons, unresolved issues, verdict. Full text in the HubSpot task.
 - After your turn, also update drafts/BOARD.json (metadata only: id, record, version, status, turn, open_issues, last_change, last_agent). It feeds the board at https://watch.bucklerfamily.estate/drafts. The watcher cannot read HubSpot.
 
 
-## Readiness integrity gate (v3.3.0)
+## Readiness integrity gate (v3.3.1)
 - A draft cannot reach READY TO SEND unless at least 10 material review rounds and at least 4 distinct actual agent identities are recorded for the same version, each required seat has agreed to that exact text, and no material issue remains unresolved. A Tab stand-in round is Tab, not a separate reviewer. A gate/status-only edit does not count as a material review.
 - DEFINITELY READY TO SEND additionally requires a final three-hat and fourth-excuse review of that exact frozen version, no text change, and all necessary attachments verified. If text changes or a required attachment is missing, reset to IN REVIEW.
 - Only Tab (dealer) may create one in-thread Gmail draft, and only after all the above conditions pass. ChatGPT and all other seats must never create Gmail drafts; no agent ever sends. Sion alone sends.
