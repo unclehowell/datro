@@ -3,7 +3,7 @@
 ### Fixed
 - Repair mojibake in the visible release footer.
 - Announce version-status updates to assistive technology.
-- Align displayed release version/date with the rerelease metadata.
+- Keep the site release in `.version` separate from `DB_STATUS`'s embedded dataset version/date; no source-data regeneration is claimed.
 
 # Changelog
 
