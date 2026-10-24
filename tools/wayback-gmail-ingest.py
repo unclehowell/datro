@@ -102,6 +102,10 @@ def redact_meeting(t, c):
     c["meeting"] += n1 + n2 + n3 + n4
     return t
 
+# Family holdings volunteered in the family's own emails (standing rule 24 Oct 2026: public pages name no family
+# holdings beyond Mary Williams' statement, family photographs and William Buckler's diaries).
+HOLDINGS_RE = re.compile(r"considering the heirlooms I\s+have\s+inherited|I hold\s+video\s+footage")
+
 def redact(t, c):
     t = redact_meeting(t, c)
     t = MAILTO_RE.sub(lambda m: (c.update(["email"]) or "[email redacted]"), t)
@@ -115,6 +119,7 @@ def redact(t, c):
     t, n = ADDR_RE.subn("[address redacted]", t); c["address"] += n
     t, n = RES_ADDR_RE.subn("[address removed]", t); c["address"] += n
     t, n = PCODE_RE.subn("[postcode redacted]", t); c["postcode"] += n
+    t, n = HOLDINGS_RE.subn("[family detail redacted]", t); c["holdings"] += n
     return t
 
 def sender_name(s, sent):
