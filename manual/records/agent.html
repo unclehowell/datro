@@ -23,7 +23,7 @@
  &quot;results&quot;: [
   {
    &quot;score&quot;: 36,
-   &quot;url&quot;: &quot;https://records.bucklerfamily.estate/&quot;,
+   &quot;url&quot;: &quot;https://research.bucklerfamily.estate/sources-and-archives/&quot;,
    &quot;slug&quot;: &quot;&lt;text&gt;&quot;,
    &quot;title&quot;: &quot;&lt;text&gt;&quot;,
    &quot;description&quot;: &quot;&lt;text&gt;&quot;,
@@ -32,12 +32,12 @@
  ]
 }</pre>
 <p><code>get_agent_index</code> (answered 200):</p><pre>curl -4 -s "https://records.bucklerfamily.estate/agent/tool/get_agent_index"</pre><pre>{
- &quot;source&quot;: &quot;https://records.bucklerfamily.estate/agent-index.json&quot;,
+ &quot;source&quot;: &quot;https://research.bucklerfamily.estate/sources-and-archives/&quot;,
  &quot;data&quot;: {
   &quot;schemaVersion&quot;: &quot;1.0&quot;,
   &quot;site&quot;: {
    &quot;name&quot;: &quot;&lt;text&gt;&quot;,
-   &quot;url&quot;: &quot;https://records.bucklerfamily.estate/&quot;,
+   &quot;url&quot;: &quot;https://research.bucklerfamily.estate/sources-and-archives/&quot;,
    &quot;scope&quot;: &quot;&lt;text&gt;&quot;,
    &quot;contentType&quot;: &quot;&lt;text&gt;&quot;
   },
@@ -65,7 +65,7 @@
     &quot;title&quot;: &quot;&lt;text&gt;&quot;,
 
 …</pre>
-<details class="c"><summary>9 · Machine endpoints (as recorded in the SOP)</summary><table><tr><th>Endpoint</th><th>What it returns</th></tr><tr><td><code>GET https://records.bucklerfamily.estate/agent/tool/get_agent_index</code></td><td>The primary record register catalogue (JSON).</td></tr><tr><td><code>https://records.bucklerfamily.estate/agent-index.json</code></td><td>Data file</td></tr></table><p>Every site also serves <code>/llms.txt</code>, <code>/.well-known/mcp.json</code>, <code>/agent/pages.json</code>, <code>/agent/search?q=</code> and <code>/agent/page?slug=</code>. Reference: <a href="/api.html#records">API</a>, <a href="/webmcp.html">WebMCP</a>.</p></details>
+<details class="c"><summary>9 · Machine endpoints (as recorded in the SOP)</summary><table><tr><th>Endpoint</th><th>What it returns</th></tr><tr><td><code>GET https://records.bucklerfamily.estate/agent/tool/get_agent_index</code></td><td>The primary record register catalogue (JSON).</td></tr><tr><td><code>https://research.bucklerfamily.estate/sources-and-archives/</code></td><td>Data file</td></tr></table><p>Every site also serves <code>/llms.txt</code>, <code>/.well-known/mcp.json</code>, <code>/agent/pages.json</code>, <code>/agent/search?q=</code> and <code>/agent/page?slug=</code>. Reference: <a href="/api.html#records">API</a>, <a href="/webmcp.html">WebMCP</a>.</p></details>
 <h2>Gaps</h2><p>None found on the live check.</p>
 <p>Estate-wide: <a href="/api.html">API reference</a> · <a href="/webmcp.html">WebMCP tools</a>. Agents read; writes go through change control.</p>
 <footer>Library 2.0.0 · 24 Oct 2026 · Changes to these procedures follow <a href="/standards/change-control.html">change control</a>. Machine copy: <a href="/library.json">library.json</a>.</footer></main></div>
