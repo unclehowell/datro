@@ -180,7 +180,8 @@ def card(p, up, single=False):
     if p.get("video"):
         v = p["video"]
         h.append('<figure class="sp-media sp-video"><video controls playsinline preload="none" poster="%s%s" src="%s"></video>'
-                 '<figcaption>A %d-second excerpt · <a href="%s" rel="noopener">Watch the full report</a></figcaption></figure>' % (up, v["poster"], v["src"], v["seconds"], v["full"]))
+                 '<figcaption>A %d-second excerpt%s</figcaption></figure>' % (up, v["poster"], v["src"], v["seconds"],
+                 (' · <a href="%s" rel="noopener">Watch the full report</a>' % v["full"]) if v.get("full") else ""))
     if p.get("film"):
         f = p["film"]
         h.append('<figure class="sp-media sp-film"><video controls playsinline preload="none" poster="%s%s" src="%s"></video><figcaption>%s</figcaption></figure>' % (up, f["poster"], f["src"], e(f["label"])))

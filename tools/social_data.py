@@ -173,10 +173,10 @@ P(id="n-1988-11-30-angry-scenes", outlet="south-wales-echo", date="1988-11-30", 
   note="Only the headlines can be read in the copy held; the body text is still to be transcribed from a better copy.",
   source=dict(cite="South Wales Echo, front page and inside page, c. 30 November 1988. Legal Wiki EV-0097 · GHF-E090-N14.", ev="EV-0097", links=[("EV-0097","@EV-0097"),("Press Archive N14","@PA")]))
 P(id="n-1988-12-01-itv-report", outlet="itv-wales", date="1988-12-01", when="Eviction week, 1988", kind="video", headline="Great House Farm: eviction and injunction",
-  video=dict(src="https://bucklerfamily.estate/evidence/video/itv-cymru-great-house-farm-clip.mp4", poster="img/social/itv-1988-still.webp", full="https://youtu.be/4GXmR7mAas0", seconds=5),
+  video=dict(src="https://bucklerfamily.estate/evidence/video/itv-cymru-great-house-farm-clip.mp4", poster="img/social/itv-1988-still.webp", seconds=5),
   body=["“The Buckler family have lived here at Great House Farm for more than four centuries.”"],
-  note="No date is shown on the clip. A 5-second excerpt plays here. The full report is the public viewing copy linked below. Presenter Nicola Heywood-Thomas; reporter Miles Fletcher. The National Library of Wales holds an HTV Wales cassette, ‘Eviction News Material, 30 November 1988’ (item 507738).",
-  source=dict(cite="ITV Cymru Wales copy of HTV Wales news material, 1988 (captions read 6 October 2026). Legal Wiki EV-0083 · GHF-E113.", ev="EV-0083", links=[("Full report (YouTube)","https://youtu.be/4GXmR7mAas0"),("EV-0083","@EV-0083"),("GHF-E113","https://greathousefarmwiki.wordpress.com/ghf-e113-itv-wales-report-great-house-farm-1988/")]))
+  note="No date is shown on the clip. A 5-second excerpt plays here. Presenter Nicola Heywood-Thomas; reporter Miles Fletcher. The National Library of Wales holds an HTV Wales cassette, ‘Eviction News Material, 30 November 1988’ (item 507738).",
+  source=dict(cite="ITV Cymru Wales copy of HTV Wales news material, 1988 (captions read 6 October 2026). Legal Wiki EV-0083 · GHF-E113.", ev="EV-0083", links=[("EV-0083","@EV-0083"),("GHF-E113","https://greathousefarmwiki.wordpress.com/ghf-e113-itv-wales-report-great-house-farm-1988/")]))
 P(id="n-1988-12-02-summons", outlet="south-wales-echo", date="1988-12-02", when="2 December 1988", kind="extract", headline="(search extract)",
   body=["… Monday when a summons against BP will be heard. Mr Justice Anthony Evans has allowed the condition that Mrs Buckler should be able to go into the house and collect belongings as long as BP solicitors agree… The Buckler family have petitioned to have […]"],
   source=dict(cite="South Wales Echo, Friday 2 December 1988 (British Newspaper Archive search extract). Legal Wiki EV-0099 · GHF-E090-N15-05.", ev="EV-0099", links=[("EV-0099","@EV-0099")]))
@@ -371,9 +371,6 @@ PEOPLE["tab-bot"] = {
 }
 
 STORIES = [
- {"id": "s-itv-1988", "by": "itv-wales", "poster_name": "ITV Wales", "title": "Great House Farm, 1988 report", "kind": "youtube", "yt": "4GXmR7mAas0",
-  "thumb": "img/stories/itv.webp", "credit": "ITV Cymru Wales copy of HTV Wales news material, 1988 (Legal Wiki EV-0083). Embedded from the public viewing copy, as on the Legal Wiki homepage.",
-  "link": "https://greathousefarmwiki.wordpress.com/ghf-e113-itv-wales-report-great-house-farm-1988/"},
  {"id": "s-wales-at-six", "by": "itv-wales", "poster_name": "ITV Wales", "title": "Wales at Six (Wales Broadcast Archive), from 19:48", "kind": "youtube", "yt": "vF25-sLZXaM", "start": 1188,
   "thumb": "img/stories/w6.webp", "credit": "Wales Broadcast Archive (Archif Ddarlledu Cymru) copy of ITV Wales’s ‘Wales at Six’. Embedded from the archive’s public copy, as on the Legal Wiki homepage; it starts at 19:48.",
   "link": "https://greathousefarmwiki.wordpress.com/"},

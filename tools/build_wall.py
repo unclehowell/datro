@@ -330,6 +330,13 @@ if NOW:
     _pnp = os.path.join(ROOT, "data", "press_now.json")
     if os.path.exists(_pnp):
         PN = json.load(open(_pnp, encoding="utf-8")); _byname = {p_["name"]: sl_ for sl_, p_ in FB2.items()}; _alias = {}
+        # NEVER SHARE Sion's own YouTube channel or its videos (Sion, 16:54 BST 24 Oct 2026): data/never_share_youtube.json lists the channel,
+        # handle and video ids; any matching profile or post is dropped here, whatever press_now.json carries.
+        _nsp = os.path.join(ROOT, "data", "never_share_youtube.json"); _NS = json.load(open(_nsp, encoding="utf-8")) if os.path.exists(_nsp) else {}
+        _nsk = [k_ for k_ in _NS.get("channels", []) + _NS.get("video_ids", []) if k_]
+        def _ns_hit(o_, sl_=""): s_ = json.dumps(o_, ensure_ascii=False); return sl_ in _NS.get("actors", []) or "family channel" in s_.lower() or any(k_ in s_ for k_ in _nsk)
+        PN["profiles"] = {sl_: p_ for sl_, p_ in PN["profiles"].items() if not _ns_hit(p_, sl_)}
+        PN["posts"] = [r_ for r_ in PN["posts"] if not _ns_hit(r_, r_.get("actor", ""))]
         for i_, (sl_, p_) in enumerate(PN["profiles"].items()):
             if p_["name"] in _byname: _alias[sl_] = _byname[p_["name"]]; continue
             FB2[sl_] = {"name": p_["name"], "kind": p_["kind"] + " · media register", "entity": True, "initials": initials(p_["name"]), "color": COLORS[i_ % len(COLORS)],
