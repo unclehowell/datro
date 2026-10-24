@@ -943,7 +943,9 @@ function unavailablePage(env) {
 const PATH_ALIASES = {
   "/main-page/": "/",
   "/master-timeline/": "/timeline/",
-  "/change-log/": "/master-change-log-october-2026/"
+  "/change-log/": "/master-change-log-october-2026/",
+  "/>*/": "/", // verbatim email text "<http://greathousefarmwiki.wordpress.com>*" auto-linked by WordPress
+  "/%3E*/": "/"
 };
 // Privacy (24 Oct 2026, Sion's rule): pages the wiki made private, left as drafts or moved to the bin are not served by the mirror.
 // They answer 410 Gone. To restore one, delete its line here and redeploy. — Sion's Tab agent
