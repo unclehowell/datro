@@ -596,7 +596,7 @@ SITE2 = {
     "img_h": 1006,
     "img_alt": "Mary (Nancy) Williams in her wheelchair in front of the whitewashed wall of Tŷ Mawr. A family photograph.",
     "img_caption": ("Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr — family photograph, "
-                    "from a family heirloom collection, disclosed 2026."),
+                    "disclosed 2026."),
     "agenda_date": "13 October 2026",
     "agenda_item": "To receive a request from Mr SB in relation to the following matters:",
     "burials": ("Whether the Council would consider, in due course, whether an interpretation board or a plaque near "
