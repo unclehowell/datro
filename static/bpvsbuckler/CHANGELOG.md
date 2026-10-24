@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.0] - 2026-10-24
+
+### Fixed
+- Add the canonical URL for the actual storyboard site.
+- Replace unqualified “true story” and “split in 1877” preview wording with a source-linked documentary description that marks the Parcel A/B division as a working model pending a site-matched conveyance.
+- Apply the source-status description in the export generator, README and agent-facing `llms.txt` so a rebuild preserves the qualification.
+
+### Validated
+- The generated timeline contains 169 entries, each with a stable scene ID, title and an evidence array; the current export has 461 evidence references.
+- The Open Graph image path exists in the media directory; the main application stylesheet already provides visible `:focus-visible` styling.
+
+
 ## [bpvsbuckler-v0.0.0.60] - 2026-10-07
 
 New page: **Records control** (`/control/`), a control panel of every body the family is seeking records from and every procedure available against it.
