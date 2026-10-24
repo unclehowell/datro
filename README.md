@@ -12,7 +12,7 @@ Watchtower: dated changes to institutions' own web pages about Great House Farm 
   site are compared capture to capture, narrowing each change down to two adjacent captures. Each change is one dot: page
   appeared, text added, text removed, text changed, or page gone, with links to the before and after captures.
 - Landing page: one scatter graph (x = date, y = institution) and the full list of changes underneath.
-- Release 3.0.1 adds keyboard-focus styling; data values unchanged. Data: `public/data/changes.json`. Re-checked daily at midday by `work/watchtower/v3/run_daily.py`.
+- Data: `public/data/changes.json`. Re-checked daily at midday by `work/watchtower/v3/run_daily.py`.
 - Archive: the earlier "Raised & replies" layer (correspondence items) and the v2 page-change data are kept unpublished in
   `archive/` (outside `public/`, so the site does not serve them).
 - Static site: Cloudflare Pages project bucklerfamily-watchtower, branch `watchtower`, output `public/`, no build step.
