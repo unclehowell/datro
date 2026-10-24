@@ -19,6 +19,8 @@ only), and full per-person profiles with their whole chronology, every actor wit
 
 
 ## Two editions: Then (fb.) and Now (fb2.) — 23 Oct 2026
+
+Release 0.1.0 clarifies that the feed includes the 1824 survey as context while the title-chain narrative itself is dated 1877–1994.
 One generator, one branch, a build flag. `FB_EDITION=then` (default) builds `site/` for https://fb.bucklerfamily.estate/: only actors, events and media before 2005, retold as social media (each post by the party that acted, "X is now friends with Y" for transfers, "shared a link" for the press, reactions, comments, a Source link on every post). `FB_EDITION=now` builds `site2/` for https://fb2.bucklerfamily.estate/: 2005 onwards (requests, replies, refusals, missed deadlines as posts, "Seen" receipts and check-ins by the body that acted; the daily highlight-report video).
 
     python3 tools/email_posts.py   # new emails → fb2 posts in the sender's own words (data/email_posts.json)
