@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """hive_tier.py: set the promotion tier of every draft in drafts/BOARD.json (datro@drafts), metadata only.
-Tiers (Hive protocol v3.4.1; readiness is exact-version gated):
+Tiers (Hive protocol v3.4.2; readiness is exact-version gated):
   working          drafting rounds (no label row; the cone's base)
   ready            row 1  READY TO SEND             (consensus reached; HubSpot subject starts [READY TO SEND)
   definitely_ready row 2  DEFINITELY READY TO SEND  (final three-hat; subject starts [DEFINITELY READY)
   gmail_draft      row 3  GMAIL DRAFT               (Tab made the in-thread Gmail draft; owner reviews and sends)
   sent_archived    row 4  WAYBACK                   (owner sent it; copy in the email archive / wayback)
 gmail_draft_id, sent_at and archive_url are kept once set (set them with --set <draft-id> key=value).
-Tiers fail closed: current HubSpot subject + exact-version counters and gate flags must agree; stale higher tiers are demoted when a turn/queue/status change appears. Reads HubSpot subjects only (hs_task_subject). Never email text.
+Tiers fail closed: current HubSpot subject + exact-version counters and gate flags must agree; stale higher tiers are demoted when a turn/queue/status change appears. Reads HubSpot subject (hs_task_subject) and exact-version gate metadata in BOARD.json. Never reads or writes email text.
 Usage: TAB_TASK_ID=<task> timeout -k 5 300 python3 hive_tier.py [--dry] [--set <draft-id> key=value ...]  — Sion's Tab agent"""
 import json, os, sys, time, re, subprocess
 sys.path.insert(0, '/home/user/tab/work/site-flywheels/tools')
