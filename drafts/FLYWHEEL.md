@@ -1,8 +1,26 @@
 # FLYWHEEL.md — taking turns on email drafts (any agent)
 
-Email drafts for the estate case are improved in turns by two or more agents until nobody can improve them, the way a tumbler polishes a stone. The canonical draft is always a HubSpot task. This branch only carries the turn signal, so any agent (and watch.bucklerfamily.estate) can see when a turn has passed. HubSpot's current subject, top STATUS block and last changelog entry must agree; BOARD.json/BATON are derived metadata, never authority over a newer HubSpot subject.
+> **Effective operating rules — protocol v3.4.0 (24 Oct 2026). These rules govern the workflow. Older protocol text below is historical and must not override them.**
+>
+> **One canonical record:** each outgoing email draft is a HubSpot TASK. HubSpot's current subject, first STATUS block, append-only changelog and last-modified timestamp are authoritative. The public GitHub branch carries metadata only. Never put email text, private names, email addresses, phone numbers or private addresses in this repository.
+>
+> **Live roster:** read drafts/ROSTER.json every time; do not hard-code active or pending agents. Current verified order on 24 Oct 2026 is Tab → ChatGPT → Grok → Claude → Tab; SpaceXSI remains pending until a valid seat request is verified. One task turn at a time per run; prioritise verified statutory deadlines, then requested deadlines, risk and age. Do not route every stale task to the same reviewer in parallel.
+>
+> **Turn and idle rules:** re-read the complete HubSpot task before acting and verify hs_lastmodifieddate immediately before a write. Enforce the 4-minute no-touch rule. If the assigned reviewer has been idle for more than 30 minutes, do not treat the stale prefix as permission to review content. Record exactly “skipped <agent> (idle)” in an append-only handoff line and route that one item to the next active seat in roster order, unless that would create a parallel overload; in that case clearly queue it and do not falsely label another agent's turn as active. A skipped turn is not a material review and must not alter recipient-facing text.
+>
+> **Source fallback:** before any content change, read the whole source thread and attachments, the relevant Dartboard lane, QA knowledge base, research/Wayback/projects records, and applicable current primary law/policy. A failed custom-domain fetch is not proof the source is missing: use connected GitHub sources (wayback branch for archived messages and packets; dartboard branch for public/data/roadmap.json; qa branch for static/qa/kb.json; research/projects branches for indexed records). Mark each source VERIFIED, REPORTED BY ANOTHER AGENT, INFERENCE or UNRESOLVED; never claim to have read what was not actually read.
+>
+> **One readiness gate:** readiness is per exact frozen version. Require at least 10 material reviews by 4 distinct actual reviewer identities, agreement by every required active seat, no unresolved material defect, a final three-hat plus fourth-excuse review of that exact version, and verified attachments. A Tab stand-in counts as Tab only. A status-only gate check is not a material review. If a text change follows the final review, reset the final gate. If fewer than four actual seats are active, show the blocker; never lower the threshold.
+>
+> **Gmail and sending:** only Tab (dealer) may create one in-thread Gmail draft, only after the frozen version is DEFINITELY READY TO SEND and every gate passes. ChatGPT and all other seats must never create Gmail drafts. No agent sends email; Sion alone sends. The HubSpot task stays NOT_STARTED until the owner actually sends. Do not record SENT, gmail_draft_id, sent_at or archive_url unless independently verified.
+>
+> **Turn completion:** append exactly one changelog line with reviewer, exact version, local time/time zone, primary sources actually checked, changes, rejected proposals/reasons, unresolved issues and verdict; keep earlier entries. Bump semantic version correctly. Sync BOARD.json and the relevant BATON.md with metadata only (version, turn/status, last_change/last agent, material-review count, number of distinct actual reviewers, open issues, gated percentage and an event). HubSpot wins over stale board/baton fields. Never invent legal deadlines, overstate evidence or erase another agent's entry.
+>
+> **Cadence truth:** the Hive/Watch Cloudflare cron runs every five minutes to monitor websites and repository branches; it does not itself invoke Grok, Claude, ChatGPT or edit HubSpot. The ChatGPT automation supports daily/weekly/monthly runs only. Do not promise continuous/five-minute AI review unless a separate agent runner has actually run. Each available run should advance one permitted turn, then record the specific blocker rather than repeatedly retrying the same failed URLs.
+>
+> The protocol sections below are retained as history/reference; where older steps or status names conflict with this effective protocol, the rules above control.
 
-This repo is public. Never put email text, names of private people, phone numbers or addresses here. The draft text lives only in HubSpot.
+## Legacy protocol v3.3.1 and earlier (retained for history)
 
 ## Protocol v3.3.1 (24 Oct 2026) — current shared agent instruction governs; see v2.0.0 history below
 - Status ladder: DRAFT → TAB'S TURN / OTHER AGENT'S TURN → CONSENSUS CANDIDATE → READY TO SEND → FINAL THREE-HAT REVIEW → DEFINITELY READY TO SEND → SENT. HubSpot's native task status is separate.
