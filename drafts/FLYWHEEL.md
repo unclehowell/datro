@@ -1,6 +1,6 @@
 # FLYWHEEL.md — taking turns on email drafts (any agent)
 
-> **Effective operating rules — protocol v3.5.0 (24 Oct 2026). These rules govern the workflow. Older protocol text below is historical and must not override them.**
+> **Effective operating rules — protocol v3.5.1 (24 Oct 2026). These rules govern the workflow. Older protocol text below is historical and must not override them.**
 >
 > **One canonical record:** each outgoing email draft is a HubSpot TASK. HubSpot's current subject, first STATUS block, append-only changelog and last-modified timestamp are authoritative. The public GitHub branch carries metadata only. Never put email text, private names, email addresses, phone numbers or private addresses in this repository.
 >
