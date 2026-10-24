@@ -15,3 +15,9 @@ serves this branch (`ebooks` of unclehowell/datro), output directory `public/`, 
 © Williams–Buckler family. All rights reserved. Licence terms apply.
 
 The content and original code in this repository are not open source. You may read it, link to it and quote it fairly with credit. Any other copying, adaptation or commercial use (books, film, TV, documentary, podcasts, paid articles, AI training) needs a written licence first. Full terms: https://bucklerfamily.estate/licence/ · Apply: https://bucklerfamily.estate/enquire/ · See `public/LICENSE.txt` and `public/NOTICE.txt`. Third-party components keep their own licences.
+
+
+## UI release 0.1.0 — 2026-10-24
+
+- Correct the cover-image alternative text for all nine books to use each catalogue entry's actual semantic version (`MAJOR.MINOR.PATCH`).
+- The HTML and public JSON catalogue are in this branch, but the catalogue source/build script is maintained outside this repository. Mirror the same normalization in that build-box source before its next rebuild, or the generated HTML may regress.
