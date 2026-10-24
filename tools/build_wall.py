@@ -191,8 +191,12 @@ body_profile("court-of-appeal", "Court of Appeal (Civil Division)", "Institution
 if not NOW:
     if "bp" in PEO: PEO["bp"]["name"] = "BP Properties Ltd"
     if "heneb" in PEO: PEO["heneb"]["name"] = "GGAT (Glamorgan-Gwent Archaeological Trust)"
-TRJ = "/home/user/tab/work/infographic/transfers.v2.6.json"
+# The transfer chain lives in this repo (data/transfers.json, from the infographic v2.6 data with the family-holdings wording taken out,
+# owner's privacy rule 24 Oct 2026). It used to be read from a local work file outside the repo, which put "… not held" lines back on every rebuild.
+TRJ = os.path.join(ROOT, "data", "transfers.json")
 TR = json.load(open(TRJ, encoding="utf-8")) if os.path.exists(TRJ) else {"transfers": [], "events": []}
+_held = re.findall(r"[^.\"]*\b(?:not held|is held|are held|not (?:yet )?in hand)\b[^.\"]*", json.dumps(TR, ensure_ascii=False))
+if _held: raise SystemExit("build_wall: holdings wording in data/transfers.json (public sites never say what the family holds or lacks): %r" % _held[:3])
 PMAP = {"family": "williams-buckler-family", "swbt": "sw-brick-tile", "wgr": "wgr", "cardiff": "cardiff-corporation", "hurstjones": "hurst-and-jones",
         "cefn": "cefn-estates", "ild": "intercontinental", "law": "land-authority-wales", "sgcc": "south-glamorgan-cc", "bppt": "bp-pension-trust", "bpp": "bp",
         "gold": "goldsworthy-homes", "foc": "forest-of-cardiff", "ideal": "ideal-homes-wales", "persimmon": "persimmon", "owners": "church-view-close",
