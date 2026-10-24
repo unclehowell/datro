@@ -1,0 +1,43 @@
+name: Deploy FCG Worker
+
+on:
+  push:
+    branches:
+      - fcg
+    paths:
+      - 'fcg/src/**'
+      - 'fcg/wrangler.toml'
+      - 'fcg/package.json'
+      - '.github/workflows/deploy-fcg.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-fcg-worker
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || '42a4a8d7bfb96321118ada213638d050' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Worker dependencies
+        working-directory: fcg
+        run: npm install --no-audit --no-fund
+      - name: Run regression tests
+        working-directory: fcg
+        run: npm test
+      - name: Validate Worker bundle
+        working-directory: fcg
+        run: npx wrangler deploy --dry-run --config wrangler.toml
+      - name: Deploy Worker
+        working-directory: fcg
+        run: npx wrangler deploy --config wrangler.toml
