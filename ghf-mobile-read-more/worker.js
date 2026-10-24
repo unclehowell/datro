@@ -127,12 +127,16 @@ export default {
     });
     const contentType = upstream.headers.get("content-type") || "";
     if (!contentType.includes("text/html") || request.method === "HEAD") {
-      return new Response(upstream.body, { status: upstream.status, statusText: upstream.statusText, headers: upstream.headers });
+      const headers = new Headers(upstream.headers);
+      headers.set("X-Robots-Tag", "noindex, nofollow");
+      return new Response(upstream.body, { status: upstream.status, statusText: upstream.statusText, headers });
     }
     let html = await upstream.text();
     // Avoid injecting twice and preserve original document/evidence content.
     if (html.includes('id="ghf-readmore-script"')) {
-      return new Response(html, { status: upstream.status, headers: upstream.headers });
+      const headers = new Headers(upstream.headers);
+      headers.set("X-Robots-Tag", "noindex, nofollow");
+      return new Response(html, { status: upstream.status, headers });
     }
     if (html.includes("</head>")) html = html.replace("</head>", ENHANCEMENT + "</head>");
     else html = ENHANCEMENT + html;
@@ -141,6 +145,7 @@ export default {
     responseHeaders.delete("content-encoding");
     responseHeaders.delete("content-security-policy");
     responseHeaders.delete("content-security-policy-report-only");
+    responseHeaders.set("X-Robots-Tag", "noindex, nofollow");
     responseHeaders.set("x-ghf-readmore", "injected");
     return new Response(html, { status: upstream.status, statusText: upstream.statusText, headers: responseHeaders });
   }
