@@ -94,6 +94,15 @@ function open(id){
 }
 function run(){var q=$('#q').value.trim();shown=24;render(search(q),q);}
 var EX=['fix my car','cater a party','teach my kids','show me local history'];
+function checkFreshness(){
+  var el=$('#freshness');
+  if(!el||!D||!D.generated)return;
+  var stamp=Date.parse(String(D.generated)+'T00:00:00Z');
+  if(Number.isFinite(stamp)&&(Date.now()-stamp)>72*60*60*1000){
+    el.hidden=false;
+    el.textContent='Directory data may be stale: last generated '+D.generated+'. Check the linked source before relying on contact or listing details.';
+  }
+}
 function init(){
   $('#ex').innerHTML=EX.map(function(x){return '<button type="button">'+esc(x)+'</button>'}).join('');
   $('#ex').onclick=function(ev){var b=ev.target.closest('button');if(!b)return;$('#q').value=b.textContent;run()};
@@ -111,7 +120,7 @@ function init(){
   run();
   var m=/^#\/p\/(.+)$/.exec(location.hash);if(m)open(decodeURIComponent(m[1]));
 }
-fetch('data/entities.json').then(function(r){return r.json()}).then(function(d){D=d;init();
+fetch('data/entities.json').then(function(r){return r.json()}).then(function(d){D=d;checkFreshness();init();
   fetch('/api/members').then(function(r){return r.ok?r.json():{members:[]}}).then(function(m){MEM=(m.members||[]).map(function(x){x.member=true;x.type=x.type||'member';return x});if(MEM.length)run()}).catch(function(){});
 });
 })();
