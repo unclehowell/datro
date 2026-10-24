@@ -2,7 +2,9 @@
 
 Branch `projects` of `unclehowell/datro`. Published at https://projects.bucklerfamily.estate/ by Cloudflare Pages project `bucklerfamily-projects` (build command: `node projects/check.mjs`; output directory: `projects/public`).
 
-## Programme structure — 22 October 2026
+## Programme structure baseline — 22 October 2026
+
+Current machine-readable release: `0.1.0` (first tracked SemVer; baseline content last reviewed 24 October 2026).
 
 The current planning structure has **three active projects** and **one conditional standby project**:
 
