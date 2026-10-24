@@ -1,4 +1,4 @@
-/* Hive drafts pipeline widget v1.2.0 (full mode adds a collapsible "Hive drafts activity" list: latest rounds from hive.json versions, metadata only) — https://hive.bucklerfamily.estate/pipeline.js
+/* Hive drafts pipeline widget v1.3.0 (each cell, chip and activity row shows the draft's % progress to the owner's Gmail drafts, from BOARD.json pct; full mode adds a collapsible "Hive drafts activity" list: latest rounds from hive.json versions, metadata only) — https://hive.bucklerfamily.estate/pipeline.js
    Renders the promotion pyramid: four labelled rows of hex cells, bottom READY TO SEND, then DEFINITELY READY TO SEND,
    GMAIL DRAFT, apex WAYBACK; drafts IN REVIEW are counted beside it (waiting to climb in)
    into every element with [data-hive-pipeline]. Data: data-src (default https://hive.bucklerfamily.estate/hive.json, CORS *).
@@ -38,21 +38,24 @@
     ".hvp .hvp-pl{flex:0 0 136px;width:136px;margin:0!important;padding:0 6px 0 0!important;text-align:right;font-size:11px!important;line-height:1.12!important;font-family:inherit;text-transform:none!important}.hvp .hvp-pl b{display:block;margin:0!important;font-size:11px!important;line-height:1.12!important;font-weight:700;letter-spacing:.02em!important;white-space:nowrap}.hvp .hvp-pl span{display:block;margin:0!important;font-size:10px!important;line-height:1.12!important;opacity:.7;white-space:nowrap}" +
     ".hvp-hx{display:block;flex:0 0 34px;width:34px;height:39px;line-height:0;text-decoration:none}.hvp-hx svg{width:34px;height:39px;display:block}" +
     ".hvp .hvp-rv{text-align:center;font-size:13px;line-height:1.3;margin:8px 0 4px;opacity:.9}.hvp-rv b{font-weight:700}.hvp-rvc{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:4px 0 0}" +
-    ".hvp-li{list-style:none;margin:0;padding:0}.hvp-li li{margin:0 0 8px;font-size:.85em}.hvp-li a{color:inherit}.hvp-act{margin:10px 0 0}.hvp-act summary{cursor:pointer}.hvp-al li{margin:0 0 5px;overflow-wrap:anywhere}";
+    ".hvp-li{list-style:none;margin:0;padding:0}.hvp-li li{margin:0 0 8px;font-size:.85em}.hvp-li a{color:inherit}.hvp-act{margin:10px 0 0}.hvp-act summary{cursor:pointer}.hvp-p{font-weight:700;white-space:nowrap}.hvp-key{margin:8px 0 0}.hvp-al li{margin:0 0 5px;overflow-wrap:anywhere}";
   function style() { if (document.getElementById("hvp-css")) return; var s = document.createElement("style"); s.id = "hvp-css"; s.textContent = CSS; document.head.appendChild(s); }
   function chip(d) {
     var t = tierOf(d), body = (d.context && d.context.body) || d.draft, href;
     if (t === "sent_archived") href = safeUrl(d.archive_url) || (d.context && d.context.archive && safeUrl(d.context.archive.thread));
     href = href || HIVE + "/context/" + encodeURIComponent(d.draft);
-    return '<a class="hvp-c" href="' + esc(href) + '" title="' + esc(d.draft + " \u00b7 " + (d.version || "") + " \u00b7 " + LABEL[t]) + '"><span class="hvp-d" style="background:hsl(' + hue(body) + ',65%,50%)"></span>' + esc(body) + (d.version ? ' <span style="opacity:.65;white-space:nowrap">' + esc(d.version) + "</span>" : "") + "</a>";
+    return '<a class="hvp-c" href="' + esc(href) + '" title="' + esc(d.draft + " \u00b7 " + (d.version || "") + " \u00b7 " + LABEL[t] + pctT(d)) + '"><span class="hvp-d" style="background:hsl(' + hue(body) + ',65%,50%)"></span>' + esc(body) + (d.version ? ' <span style="opacity:.65;white-space:nowrap">' + esc(d.version) + "</span>" : "") + (pctOf(d) != null ? ' <b class="hvp-p">' + pctOf(d) + "%</b>" : "") + "</a>";
   }
+  function pctOf(d) { var n = d && Number(d.pct); return d && d.pct != null && isFinite(n) ? Math.max(0, Math.min(100, Math.floor(n))) : null; }
+  function pctT(d) { var n = pctOf(d); return n == null ? "" : " \u00b7 " + n + "% to Gmail drafts (" + (d.reviews || 0) + " reviews, " + (d.distinct_agents || 0) + " agents)"; }
   function hex(d, empty) {
     var poly = '<svg viewBox="0 0 100 115.5" aria-hidden="true"><polygon points="50,3 97,30 97,85.5 50,112.5 3,85.5 3,30" ';
     if (empty) return '<span class="hvp-hx">' + poly + 'fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="4"/></svg></span>';
     var t = tierOf(d), body = (d.context && d.context.body) || d.draft, href;
     if (t === "sent_archived") href = safeUrl(d.archive_url) || (d.context && d.context.archive && safeUrl(d.context.archive.thread));
     href = href || HIVE + "/context/" + encodeURIComponent(d.draft);
-    return '<a class="hvp-hx" href="' + esc(href) + '" title="' + esc(body + " \u00b7 " + (d.version || "") + " \u00b7 " + LABEL[t]) + '">' + poly + 'fill="hsl(' + hue(body) + ',65%,52%)" stroke="rgba(0,0,0,.25)" stroke-width="3"/></svg></a>';
+    var pc = pctOf(d), txt = pc == null ? "" : '<text x="50" y="68" text-anchor="middle" font-size="' + (pc >= 100 ? 26 : 31) + '" font-weight="700" fill="#111" font-family="system-ui,sans-serif">' + pc + "%</text>";
+    return '<a class="hvp-hx" href="' + esc(href) + '" title="' + esc(body + " \u00b7 " + (d.version || "") + " \u00b7 " + LABEL[t] + pctT(d)) + '">' + poly + 'fill="hsl(' + hue(body) + ',65%,62%)" stroke="rgba(0,0,0,.25)" stroke-width="3"/>' + txt + "</svg></a>";
   }
   function pyramid(items) {
     var rows = ["sent_archived", "gmail_draft", "definitely_ready", "ready"], sub = { ready: "consensus", definitely_ready: "final review", gmail_draft: "owner review & send", sent_archived: "sent & archived" };
@@ -88,7 +91,7 @@
       '<p class="hvp-f">Whose turn now: ' + tw + ' (drafts per seat)</p><ol class="hvp-li hvp-al">' + v.map(function (x) {
         var d = cur[x.draft] || {}, st = d.version === x.version ? (d.status || "") : "superseded by " + (d.version || "a later version");
         var name = d.context ? '<a href="' + HIVE + "/context/" + encodeURIComponent(x.draft) + '">' + esc(x.draft) + "</a>" : esc(x.draft);
-        return "<li>" + esc(fmtUK(x.at)) + " \u00b7 " + name + " \u00b7 <b>" + esc(x.version || "") + "</b> \u00b7 " + esc(st) + " \u00b7 " + esc(x.agent || "") + "</li>";
+        return "<li>" + esc(fmtUK(x.at)) + " \u00b7 " + name + " \u00b7 <b>" + esc(x.version || "") + "</b> \u00b7 " + esc(st) + " \u00b7 " + esc(x.agent || "") + (pctOf(d) != null ? " \u00b7 <b>" + pctOf(d) + "%</b> now" : "") + "</li>";
       }).join("") + "</ol></details>";
   }
   function render(el, j) {
@@ -99,12 +102,12 @@
     if (mode === "strip") {
       var k = ORDER.map(function (t) { var n = items.filter(function (d) { return tierOf(d) === t; }).length; return '<span class="hvp-k' + (n && t !== "working" ? " on" : "") + '" title="' + esc(LABEL[t]) + '">' + esc(SHORT[t]) + " <b>" + n + "</b></span>"; }).join('<span class="hvp-x">\u203a</span>');
       el.innerHTML = '<details class="hvp hvp-strip"><summary class="hvp-sum"><b>Drafts pipeline</b> ' + k + '</summary><div class="hvp-body">' + pyramid(items) +
-        '<p class="hvp-f"><a class="hvp-a" href="' + HIVE + '/">open the Hive \u2192</a> Sent replies link to their archived copy.</p></div></details>';
+        '<p class="hvp-f"><a class="hvp-a" href="' + HIVE + '/">open the Hive \u2192</a> Sent replies link to their archived copy.</p>' + (items.some(function (d) { return pctOf(d) != null; }) ? '<details class="hvp-act hvp-key"><summary class="hvp-sum"><b>What the % means</b></summary><p class="hvp-f">% = progress to your Gmail drafts: 10 reviews, 4 agents, DEFINITELY READY TO SEND.</p></details>' : "") + '</div></details>';
       return;
     }
     el.innerHTML = '<section class="hvp" aria-label="Drafts pipeline"><div class="hvp-h"><p class="hvp-t">Drafts pipeline</p><a class="hvp-a" href="' + HIVE + '/">open the Hive \u2192</a></div>' +
       (mode === "bar" ? bars(items) : pyramid(items)) +
-      '<p class="hvp-f">Each reply climbs: in review \u2192 ready to send \u2192 definitely ready to send \u2192 Gmail draft (the project owner reviews and sends) \u2192 wayback (sent and archived). ' + items.length + " draft" + (items.length === 1 ? "" : "s") + (j.board_updated ? " \u00b7 board " + esc(String(j.board_updated).slice(0, 16).replace("T", " ")) + " UTC" : "") + ".</p>" + (mode === "full" ? activity(j) : "") + "</section>";
+      '<p class="hvp-f">Each reply climbs: in review \u2192 ready to send \u2192 definitely ready to send \u2192 Gmail draft (the project owner reviews and sends) \u2192 wayback (sent and archived). ' + items.length + " draft" + (items.length === 1 ? "" : "s") + (j.board_updated ? " \u00b7 board " + esc(String(j.board_updated).slice(0, 16).replace("T", " ")) + " UTC" : "") + ".</p>" + (items.some(function (d) { return pctOf(d) != null; }) ? '<details class="hvp-act hvp-key"><summary class="hvp-sum"><b>What the % means</b></summary><p class="hvp-f">% = progress to your Gmail drafts: 10 reviews, 4 agents, DEFINITELY READY TO SEND.</p></details>' : "") + (mode === "full" ? activity(j) : "") + "</section>";
   }
   function run() {
     var els = document.querySelectorAll("[data-hive-pipeline]"); if (!els.length) return; style();
