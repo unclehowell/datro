@@ -1,0 +1,40 @@
+{
+ "url": "https://newspapers.library.wales/view/3094324/3094329/21/",
+ "key": "newspapers.library.wales/view/3094324/3094329/21",
+ "title": "Welsh Newspapers — “…Aiargan-t DEATHS WILLIAMS,-Dec. 23, at Llandough, near Cardni, Amv relict ot the late Mr. Johu…”",
+ "host": "newspapers.library.wales",
+ "path": "/websites/newspapers.library.wales/view-3094324-3094329-21/",
+ "latest": "/websites/newspapers.library.wales/view-3094324-3094329-21/latest.html",
+ "first_captured": "2017-09-24T14:07:15Z",
+ "last_captured": "2026-10-24T14:41:33Z",
+ "current_version": "v1.1.0",
+ "versions": [
+  {
+   "version": "v1.0.0",
+   "change": "first",
+   "captured_utc": "2017-09-24T14:07:15Z",
+   "capture_source": "internet-archive",
+   "mode": "html",
+   "text_sha256": "21e66cacdc02ecce0c2e8bc08fa088e414b114e02319dbef94d64a13bb14a304",
+   "markup_sha256": "92d856cdb394b99dc0fa520d1267c364bda9c543fca8a64c4fe3b98cb895fe52",
+   "file": "v1.0.0.html",
+   "screenshot": null,
+   "from": "https://internetarchive.bucklerfamily.estate/20170924140715/newspapers.library.wales/view/3094324/3094329/21/"
+  },
+  {
+   "version": "v1.1.0",
+   "change": "text",
+   "captured_utc": "2026-10-24T14:41:33Z",
+   "capture_source": "live",
+   "mode": "html",
+   "text_sha256": "b996cb7d238bd673ce59f3361921c60eea37cee6ab4f2f04fcbb516e7e8720fa",
+   "markup_sha256": "b76e3eec2f57831ba894a191263d151d279ef708c2ccfdc6f19b6b6b87dbf77f",
+   "file": "v1.1.0.html",
+   "screenshot": "screenshot-v1.1.0.jpg",
+   "from": "https://internetarchive.bucklerfamily.estate/20261024144133/newspapers.library.wales/view/3094324/3094329/21/"
+  }
+ ],
+ "versioning": "first capture v1.0.0; readable-text change = minor; markup/layout-only change = patch; identical capture = no new version",
+ "watch_status": "unchanged",
+ "note": "Static copy for reference: scripts, forms, iframes, external styles and images removed; links off bucklerfamily.estate disabled (archived targets point to their Wayback copy)."
+}

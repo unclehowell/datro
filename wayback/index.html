@@ -130,6 +130,31 @@
       .gallery { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
       .item img, .item video { max-height: 300px; }
     }
+  
+    /* -- WEBSITES (archived web pages, 24 Oct 2026) -- */
+    #websites-view { display:none; max-width: 70rem; margin: 0 auto; }
+    #websites-view .ws-intro { color:#bbc; font-size:0.85rem; margin:0.3rem 0 0.6rem; line-height:1.45; }
+    #websites-view .ws-intro a { color:#9cf; }
+    #ws-search { width:100%; padding:0.55rem 0.7rem; border-radius:8px; border:1px solid rgba(255,255,255,0.25); background:rgba(0,0,0,0.2); color:#eee; font-size:16px; margin-bottom:0.6rem; }
+    .ws-host { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:8px; margin:0 0 0.45rem; }
+    .ws-host > summary { cursor:pointer; padding:0.65rem 0.8rem; font-weight:bold; color:#dde; list-style:none; display:flex; justify-content:space-between; gap:0.5rem; min-height:44px; align-items:center; }
+    .ws-host > summary::-webkit-details-marker { display:none; }
+    .ws-host > summary .n { color:#9a9aa8; font-weight:normal; font-size:0.8rem; white-space:nowrap; }
+    .ws-host > summary .h { word-break:break-all; }
+    .ws-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:0.6rem; padding:0 0.6rem 0.7rem; }
+    .ws-card { background:rgba(0,0,0,0.18); border:1px solid rgba(255,255,255,0.12); border-radius:8px; overflow:hidden; display:flex; flex-direction:column; }
+    .ws-thumb { display:block; padding:0; border:0; background:#223; cursor:pointer; width:100%; aspect-ratio:4/3; }
+    .ws-thumb img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
+    .ws-live { display:block; text-align:center; padding:0.4rem; font-size:0.8rem; font-weight:bold; color:#9cf; text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.1); min-height:36px; }
+    .ws-t { padding:0.4rem 0.5rem 0.1rem; font-size:0.82rem; color:#eee; cursor:pointer; line-height:1.3; overflow-wrap:anywhere; }
+    .ws-m { padding:0 0.5rem 0.5rem; font-size:0.72rem; color:#9a9aa8; }
+    .ws-m a { color:#fca; }
+    #ws-modal { display:none; position:fixed; inset:0; z-index:2147483600; background:rgba(10,10,20,0.92); flex-direction:column; }
+    #ws-modal.open { display:flex; }
+    #ws-modal .bar { display:flex; gap:0.5rem; align-items:center; padding:0.45rem 0.6rem; color:#eee; font-size:0.85rem; flex-wrap:wrap; }
+    #ws-modal .bar .tt { flex:1 1 12rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:bold; }
+    #ws-modal .bar a, #ws-modal .bar button { color:#9cf; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:6px; padding:0.35rem 0.6rem; font-size:0.8rem; text-decoration:none; cursor:pointer; min-height:36px; }
+    #ws-modal iframe { flex:1; width:100%; border:0; background:#fff; }
   </style>
 <link rel="alternate" type="application/json" href="/agent-index.json" title="Machine-readable Wayback archive index">
 <link rel="alternate" type="text/plain" href="/llms.txt" title="Agent reading guide">
@@ -148,6 +173,14 @@
   <div class="gallery" id="gallery"></div>
   <div class="pagination" id="pagination"></div>
 
+
+  <div id="websites-view">
+    <p class="ws-intro">Dated static copies of <b id="ws-count">…</b> web pages that concern Great House Farm (Tŷ Mawr), Llandough, grouped by site. Tap a card to preview the copy here; “Live website” opens the original. Links inside a copy stay in the Vault. Each page’s stable address ends <code>/latest.html</code>; earlier versions sit beside it. <a href="https://projects.bucklerfamily.estate/wayback-websites-archive/" target="_blank" rel="noopener">About this archive</a> · <a href="/websites/index.json">index.json</a></p>
+    <input type="search" id="ws-search" placeholder="Search archived pages…" aria-label="Search archived pages">
+    <div id="ws-list"></div>
+  </div>
+  <div id="ws-modal" role="dialog" aria-modal="true" aria-label="Archived page preview"><div class="bar"><span class="tt" id="ws-mt"></span><a id="ws-mopen" href="#" target="_blank" rel="noopener">Open</a><a id="ws-mlive" href="#" target="_blank" rel="noopener">Live website</a><button id="ws-mclose" type="button">Close ✕</button></div><iframe id="ws-mframe" title="Archived page" sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox" loading="lazy"></iframe></div>
+
   <footer style="text-align:center;padding:1rem;font-size:0.75rem;color:#9a9aa8;border-top:1px solid rgba(255,255,255,0.1);margin-top:2rem">
     &copy; 2026 DATRO Consortium. <span id="main-title" class="wb-ver"></span>
   </footer>
@@ -160,7 +193,8 @@
         { name: 'pdf', label: 'PDF', icon: '📄' },
         { name: 'text', label: 'Text', icon: '📝' },
         { name: 'email', label: 'Case Emails', icon: '✉️' },
-        { name: 'video', label: 'Video', icon: '🎬' }
+        { name: 'video', label: 'Video', icon: '🎬' },
+        { name: 'websites', label: 'Websites', icon: '🌐', virtual: true }
       ];
       const PER_PAGE = 10;
       let allData = {};
@@ -178,6 +212,65 @@
 
       // render tabs immediately so UI is never just the title
       renderTabs();
+
+      // -- WEBSITES tab (24 Oct 2026): archived web pages from /websites/index.json --
+      let wsData = null;
+      const wsView = document.getElementById('websites-view');
+      const wsList = document.getElementById('ws-list');
+      const wsEsc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+      const wsDate = t => { try { return new Date(t).toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'}); } catch(e) { return t; } };
+      async function wsLoad() {
+        if (wsData) return wsData;
+        try { wsData = JSON.parse(await xhrGet('/websites/index.json')); } catch(e) { wsData = {items: []}; }
+        allData.websites = wsData.items || [];
+        renderTabs();
+        return wsData;
+      }
+      function wsRender(q) {
+        const items = (wsData.items || []).filter(i => !q || (i.title + ' ' + i.url).toLowerCase().includes(q));
+        document.getElementById('ws-count').textContent = (wsData.items || []).length;
+        const by = {};
+        items.forEach(i => (by[i.host] = by[i.host] || []).push(i));
+        const hosts = Object.keys(by).sort((a, b) => by[b].length - by[a].length || a.localeCompare(b));
+        wsList.innerHTML = hosts.length ? hosts.map(h => `<details class="ws-host"${q ? ' open' : ''}><summary><span class="h">${wsEsc(h)}</span><span class="n">${by[h].length} page${by[h].length !== 1 ? 's' : ''}</span></summary><div class="ws-grid">` +
+          by[h].map(i => `<div class="ws-card"><button class="ws-thumb" type="button" data-ws="${wsEsc(i.latest)}" aria-label="Preview ${wsEsc(i.title)}"><img loading="lazy" src="${wsEsc(i.thumb)}" alt=""></button>` +
+            `<a class="ws-live" href="${wsEsc(i.url)}" target="_blank" rel="noopener">Live website ↗</a>` +
+            `<div class="ws-t" data-ws="${wsEsc(i.latest)}">${wsEsc(i.title)}</div>` +
+            `<div class="ws-m">${wsDate(i.captured)} · ${wsEsc(i.version)}${i.n_versions > 1 ? ' (' + i.n_versions + ' versions)' : ''} · <a href="${wsEsc(i.latest)}" target="_blank" rel="noopener">latest</a></div></div>`).join('') +
+          `</div></details>`).join('') : '<p style="text-align:center;color:#99a;padding:1.5rem">No archived pages match.</p>';
+        wsList.querySelectorAll('[data-ws]').forEach(el => el.addEventListener('click', () => wsOpen(el.dataset.ws)));
+      }
+      function wsOpen(latest) {
+        const i = (wsData.items || []).find(x => x.latest === latest); if (!i) return;
+        document.getElementById('ws-mt').textContent = i.title + ' · ' + i.version;
+        document.getElementById('ws-mopen').href = latest;
+        document.getElementById('ws-mlive').href = i.url;
+        document.getElementById('ws-mframe').src = latest;
+        document.getElementById('ws-modal').classList.add('open');
+        history.replaceState(null, '', '#websites/' + i.host + '/' + i.slug);
+      }
+      function wsClose() {
+        document.getElementById('ws-modal').classList.remove('open');
+        document.getElementById('ws-mframe').src = 'about:blank';
+        history.replaceState(null, '', '#websites');
+      }
+      document.getElementById('ws-mclose').addEventListener('click', wsClose);
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') wsClose(); });
+      document.getElementById('ws-search').addEventListener('input', e => wsRender(e.target.value.toLowerCase().trim()));
+      async function wsShow() {
+        ['gallery','pagination','hashtag-cloud','category-info','all-search-wrapper'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+        wsView.style.display = 'block';
+        await wsLoad(); wsRender('');
+        const m = location.hash.match(/^#websites\/([^/]+)\/([^/]+)/);
+        if (m) wsOpen(`/websites/${m[1]}/${m[2]}/latest.html`);
+        else if (location.hash !== '#websites') history.replaceState(null, '', '#websites');
+      }
+      function wsHide() {
+        wsView.style.display = 'none';
+        ['gallery','pagination','hashtag-cloud','category-info'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = ''; });
+        if (/^#websites/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search);
+      }
+      wsLoad();
 
       // Dynamic version from GitHub releases API
       (async function updateWaybackVersion() {
@@ -313,6 +406,7 @@
           window.activeTagFilters = new Set(['#email']);
           switchCategory('text');
         }
+        if ((params.get('cat') || '').toLowerCase() === 'websites' || /^#websites/.test(location.hash)) switchCategory('websites');
         const slideParam = params.get('slide') || params.get('s');
         const yearParam = params.get('year') || params.get('y');
         if (slideParam || yearParam) {
@@ -356,6 +450,14 @@
       }
 
       function switchCategory(cat) {
+        if (cat === 'websites') {
+          currentCat = cat;
+          tabsEl.querySelectorAll('.tab').forEach(el => el.classList.toggle('active', el.dataset.cat === cat));
+          allSearchWrapper.style.display = 'none';
+          wsShow();
+          return;
+        }
+        if (wsView.style.display === 'block') wsHide();
         currentCat = cat;
         currentPage = 1;
         tabsEl.querySelectorAll('.tab').forEach(el => {

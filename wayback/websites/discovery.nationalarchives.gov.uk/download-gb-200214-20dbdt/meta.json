@@ -1,0 +1,28 @@
+{
+ "url": "https://discovery.nationalarchives.gov.uk/download/GB%200214%20DBDT",
+ "key": "discovery.nationalarchives.gov.uk/download/GB_200214_20DBDT",
+ "title": "https://discovery.nationalarchives.gov.uk/download/GB%200214%20DBDT",
+ "host": "discovery.nationalarchives.gov.uk",
+ "path": "/websites/discovery.nationalarchives.gov.uk/download-gb-200214-20dbdt/",
+ "latest": "/websites/discovery.nationalarchives.gov.uk/download-gb-200214-20dbdt/latest.html",
+ "first_captured": "2026-10-24T13:53:34Z",
+ "last_captured": "2026-10-24T13:53:34Z",
+ "current_version": "v1.0.0",
+ "versions": [
+  {
+   "version": "v1.0.0",
+   "change": "first",
+   "captured_utc": "2026-10-24T13:53:34Z",
+   "capture_source": "live",
+   "mode": "text",
+   "text_sha256": "36ac3f0e41b690aa1854e092f8f7b96cdcc40ce92d6bd3e5b5adcae365a1e2a1",
+   "markup_sha256": "21e01e43b97db67f6b173ed1a187666d5f8232640210c3c00bf1bdeb20d72273",
+   "file": "v1.0.0.html",
+   "screenshot": null,
+   "from": "https://internetarchive.bucklerfamily.estate/20261024135334/discovery.nationalarchives.gov.uk/download/GB_200214_20DBDT/"
+  }
+ ],
+ "versioning": "first capture v1.0.0; readable-text change = minor; markup/layout-only change = patch; identical capture = no new version",
+ "watch_status": "unchanged",
+ "note": "Static copy for reference: scripts, forms, iframes, external styles and images removed; links off bucklerfamily.estate disabled (archived targets point to their Wayback copy)."
+}

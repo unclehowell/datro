@@ -1,0 +1,40 @@
+{
+ "url": "https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s",
+ "key": "archwilio.org.uk/her/chi3/report/page.php/_q/watprn=GGAT02038s",
+ "title": "Heneb Historic Environment Record: GGAT02038s",
+ "host": "archwilio.org.uk",
+ "path": "/websites/archwilio.org.uk/her-chi3-report-page-php-q-watprn-ggat02038s/",
+ "latest": "/websites/archwilio.org.uk/her-chi3-report-page-php-q-watprn-ggat02038s/latest.html",
+ "first_captured": "2026-05-29T00:00:00Z",
+ "last_captured": "2026-10-06T19:51:17Z",
+ "current_version": "v1.1.0",
+ "versions": [
+  {
+   "version": "v1.0.0",
+   "change": "first",
+   "captured_utc": "2026-05-29T00:00:00Z",
+   "capture_source": "own earlier scrape",
+   "mode": "text",
+   "text_sha256": "0c198d38d25b10ee88bff1ec5361030b10ec88ade9e91586d90214625170bd92",
+   "markup_sha256": "d4276eeee5fdb0f902381829a6156c5b947d433b68049054ef3f9c7375d9e8a3",
+   "file": "v1.0.0.html",
+   "screenshot": null,
+   "from": "https://internetarchive.bucklerfamily.estate/20260529000000/archwilio.org.uk/her/chi3/report/page.php/_q/watprn=GGAT02038s/"
+  },
+  {
+   "version": "v1.1.0",
+   "change": "text",
+   "captured_utc": "2026-10-06T19:51:17Z",
+   "capture_source": "internet-archive",
+   "mode": "html",
+   "text_sha256": "d592dfa86ed17348ead14e76afcc482c96d263b71860a14c7ee935a281b0074b",
+   "markup_sha256": "b99379d0491b3a014bf90edc6e4c2cb36d884391cd77cd345c8c955183a47b9d",
+   "file": "v1.1.0.html",
+   "screenshot": null,
+   "from": "https://internetarchive.bucklerfamily.estate/20261006195117/archwilio.org.uk/her/chi3/report/page.php/_q/watprn=GGAT02038s/"
+  }
+ ],
+ "versioning": "first capture v1.0.0; readable-text change = minor; markup/layout-only change = patch; identical capture = no new version",
+ "watch_status": "unreachable this cycle",
+ "note": "Static copy for reference: scripts, forms, iframes, external styles and images removed; links off bucklerfamily.estate disabled (archived targets point to their Wayback copy)."
+}
