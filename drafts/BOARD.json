@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-24T10:44:50Z",
+ "updated": "2026-10-24T10:46:27Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
@@ -1549,5 +1549,5 @@
   }
  ],
  "tier_note": "Promotion pyramid (Hive protocol v3.2.0): working (drafting rounds) -> row 1 READY TO SEND (consensus) -> row 2 DEFINITELY READY TO SEND (final three-hat) -> row 3 GMAIL DRAFT (Tab creates the in-thread Gmail draft only after DEFINITELY READY TO SEND; the project owner reviews and sends) -> row 4 WAYBACK (sent, archived on email. and wayback.). Set by work/watch/hive_tier.py from the HubSpot subject; gmail_draft_id / sent_at / archive_url kept once set.",
- "pct_rule": "Percent is progress to Gmail drafting for the exact current frozen version only. Gate counters version_reviews and version_distinct_agents must be verified for the current version; historical reviews/distinct_agents are informational only. Promotion beyond IN REVIEW additionally requires open_issues=0 and seat_agreements_version exactly equal to version. DEFINITELY READY TO SEND requires final_three_hat_version and attachments_verified_version both exactly equal to version. GMAIL DRAFT requires gmail_draft_id and the exact-version final gate; WAYBACK requires verified sent_at, archive_url and sent_version equal to version. Missing or mismatched fields always fail closed; never infer readiness from a status prefix or a stale tier."
+ "pct_rule": "Percent is progress to Gmail drafting for the exact current frozen version only. Gate counters version_reviews and version_distinct_agents must be verified for the current version; historical reviews/distinct_agents are informational only. Promotion beyond IN REVIEW additionally requires open_issues=0 and seat_agreements_version exactly equal to version. DEFINITELY READY TO SEND requires final_three_hat_version and attachments_verified_version both exactly equal to version. GMAIL DRAFT requires gmail_draft_id and the exact-version final gate; WAYBACK requires verified sent_at, archive_url and sent_version equal to version. Missing or mismatched fields always fail closed; never infer readiness from a status prefix or a stale tier. A verified GMAIL DRAFT with exact-version gate passed and real gmail_draft_id is 100% to Gmail drafts; verified sent/archived remains 100%."
 }
