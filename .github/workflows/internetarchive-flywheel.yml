@@ -59,6 +59,19 @@ jobs:
           RECHECK_IRRELEVANT: ${{ github.event.inputs.recheck_irrelevant || '0' }}
         run: |
           python3 tools/capture.py
+          # Strip stray HTML closing-tag fragments that some scraped hrefs leak into URL fields.
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          p = Path("sources.csv")
+          rows = p.read_text(encoding="utf-8").splitlines()
+          out = []
+          for row in rows:
+              url, sep, rest = row.partition(",")
+              url = re.sub(r"&gt;?(?=/?$)", "", url, flags=re.I)
+              out.append(url + sep + rest)
+          p.write_text("\\n".join(out) + "\\n", encoding="utf-8")
+          PY
           python3 tools/build_index.py
           find public -type f -size +24M -print
       - name: Commit changed snapshots
