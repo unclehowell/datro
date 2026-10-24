@@ -345,7 +345,7 @@ async function handleContentIndex(url, env) {
     total: countRow ? countRow.total : 0,
     page: page,
     per_page: perPage,
-    items: (result.results || []).map(function(row) {
+    items: visibleRows(result.results).map(function(row) {
       return {
         type: row.source_type,
         id: row.source_id,
@@ -372,7 +372,7 @@ async function handleContentIndex(url, env) {
 async function handleContentItem(url, env) {
   const key = decodeURIComponent(url.pathname.slice("/api/content/".length));
   const row = await env.DB.prepare("SELECT * FROM content_items WHERE path = ? AND status = 'publish' LIMIT 1").bind(normalisePath(key)).first();
-  if (!row) return json({ error: "Not found" }, 404);
+  if (!row || WITHDRAWN_PATHS.has(row.path)) return json({ error: "Not found" }, 404);
   return json({
     type: row.source_type, id: row.source_id, title: row.title, slug: row.slug, path: row.path,
     content_html: row.content_html, excerpt_html: row.excerpt_html, source_link: row.source_link,
@@ -385,7 +385,7 @@ async function handlePreview(url, env) {
   const rawPath = String(url.searchParams.get("path") || "/");
   const path = normalisePath(rawPath);
   const row = await env.DB.prepare("SELECT source_type, source_id, title, path, excerpt_html, content_html, source_link, source_url, mime_type FROM content_items WHERE path = ? AND status = 'publish' LIMIT 1").bind(path).first();
-  if (!row) {
+  if (!row || WITHDRAWN_PATHS.has(row.path)) {
     const mediaUrl = url.searchParams.get("url");
     if (mediaUrl) return json({ found: true, type: "external-artifact", title: "Linked artifact", excerpt: "The paragraph links to this source artifact. Open it to inspect the original item.", url: mediaUrl });
     return json({ found: false, path: path }, 404);
@@ -489,7 +489,7 @@ async function handleAsset(url, env) {
 async function handleSitemap(url, env) {
   const { results } = await env.DB.prepare("SELECT path, modified_gmt FROM content_items WHERE status='publish' AND source_type IN ('page','post') ORDER BY path LIMIT 5000").all();
   const base = "https://" + url.host;
-  const links = (results || []).map(function(row) {
+  const links = visibleRows(results).map(function(row) {
     return "<url><loc>" + escapeHtml(base + row.path) + "</loc>" + (row.modified_gmt ? "<lastmod>" + escapeHtml(row.modified_gmt) + "</lastmod>" : "") + "</url>";
   }).join("");
   return new Response('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + links + "</urlset>", { headers: { "Content-Type": "application/xml; charset=utf-8" } });
@@ -520,7 +520,7 @@ async function handleHtml(url, env) {
     return html(htmlShell(env.SITE_TITLE || "Great House Farm Wiki — Research Mirror", '<h1>' + escapeHtml(env.SITE_TITLE || "Great House Farm Wiki — Research Mirror") + '</h1><p>This is the isolated serverless mirror. The source wiki has not been modified.</p>' + await browseIndex(env), env));
   }
   const moved = await sourceRedirect(path);
-  if (moved) return Response.redirect(url.origin + moved + url.search, 301);
+  if (moved) return moved.startsWith("http") ? Response.redirect(moved + url.search, 302) : Response.redirect(url.origin + moved + url.search, 301);
   return html(htmlShell("Not found — " + (env.SITE_TITLE || "Research Mirror"), '<h1>Not found</h1><p>No published mirror page matches <code>' + escapeHtml(path) + '</code>.</p><p><a href="/">Browse the index</a></p>', env), 404);
 }
 
@@ -529,6 +529,7 @@ async function handleHtml(url, env) {
 async function sourceRedirect(path) {
   try {
     const r = await fetch(SOURCE_SITE + path, { redirect: "manual", headers: { "User-Agent": "research-mirror-link-repair" }, cf: { cacheTtl: 3600, cacheEverything: true } });
+    if (r.status === 200 && (r.headers.get("Content-Type") || "").includes("text/html")) return SOURCE_SITE + path; // on the wiki, not yet imported here
     if (r.status < 300 || r.status >= 400) return null;
     const loc = new URL(r.headers.get("Location") || "", SOURCE_SITE);
     if (loc.hostname !== new URL(SOURCE_SITE).hostname) return null;
@@ -543,7 +544,7 @@ async function browseIndex(env) {
   const { results } = await env.DB.prepare("SELECT title, path, source_type, excerpt_html, menu_order FROM content_items WHERE status='publish' AND source_type IN ('page','post') ORDER BY CASE WHEN path='/' THEN 0 ELSE 1 END, menu_order ASC, title COLLATE NOCASE ASC LIMIT 1000").all();
   if (!results || !results.length) return '<section><h2>Browse the mirror</h2><p>No content has been imported yet. Run the authenticated importer described in the deployment README.</p></section>';
   return '<section class="browse-index"><h2>Browse the mirror</h2><form action="/search/" method="get"><label for="q">Search pages and posts</label> <input id="q" name="q" type="search" placeholder="Search the wiki" /><button type="submit">Search</button></form><ol>' +
-    results.map(function(item) {
+    visibleRows(results).map(function(item) {
       const title = titleText(item.title);
       const excerpt = stripTags(item.excerpt_html);
       return '<li><a href="' + escapeHtml(item.path) + '">' + escapeHtml(title) + '</a>' + (excerpt ? '<p class="index-excerpt">' + escapeHtml(excerpt.slice(0, 300)) + '</p>' : '') + '</li>';
@@ -555,7 +556,7 @@ async function handleSearchHtml(url, env) {
   if (!q) return html(htmlShell("Search — Research Mirror", '<h1>Search the wiki</h1><form action="/search/" method="get"><input name="q" type="search" /><button>Search</button></form><p><a href="/">Return home</a></p>', env));
   const like = "%" + q + "%";
   const { results } = await env.DB.prepare("SELECT title, path, source_type, excerpt_html FROM content_items WHERE status='publish' AND source_type IN ('page','post') AND (title LIKE ? OR slug LIKE ? OR content_html LIKE ? OR excerpt_html LIKE ?) ORDER BY title COLLATE NOCASE LIMIT 100").bind(like, like, like, like).all();
-  const items = (results || []).map(function(item) {
+  const items = visibleRows(results).map(function(item) {
     return '<li><a href="' + escapeHtml(item.path) + '">' + escapeHtml(titleText(item.title)) + '</a><p class="index-excerpt">' + escapeHtml(stripTags(item.excerpt_html).slice(0, 350)) + '</p></li>';
   }).join("");
   return html(htmlShell("Search: " + q, '<h1>Search results</h1><p>Query: ' + escapeHtml(q) + '</p><ol>' + (items || '<li>No results.</li>') + '</ol><p><a href="/">Return home</a></p>', env));
@@ -895,7 +896,7 @@ async function handleGraphQL(request, env) {
     const one = q.match(/\b(page|post)\s*\(\s*slug\s*:\s*["']([^"']+)["']\s*\)/i);
     if (one) {
       const row = await env.DB.prepare("SELECT * FROM content_items WHERE slug=? AND source_type=? AND status='publish' LIMIT 1").bind(one[2], one[1].toLowerCase()).first();
-      return json({ data: { [one[1].toLowerCase()]: row ? graphqlRow(row) : null } });
+      return json({ data: { [one[1].toLowerCase()]: row && !WITHDRAWN_PATHS.has(row.path) ? graphqlRow(row) : null } });
     }
     if (/\b(pages|posts|contentItems)\b/.test(q)) {
       const type = /\bpages\b/.test(q) ? "page" : (/\bposts\b/.test(q) ? "post" : "");
@@ -909,7 +910,7 @@ async function handleGraphQL(request, env) {
       sql += "ORDER BY date_gmt DESC LIMIT ?";
       binds.push(first);
       const rows = await env.DB.prepare(sql).bind(...binds).all();
-      const nodes = (rows.results || []).map(graphqlRow);
+      const nodes = visibleRows(rows.results).map(graphqlRow);
       if (type === "page") return json({ data: { pages: { nodes: nodes } } });
       if (type === "post") return json({ data: { posts: { nodes: nodes } } });
       return json({ data: { contentItems: { nodes: nodes } } });
@@ -944,10 +945,18 @@ const PATH_ALIASES = {
   "/master-timeline/": "/timeline/",
   "/change-log/": "/master-change-log-october-2026/"
 };
+// Privacy (24 Oct 2026, Sion's rule): pages the wiki made private, left as drafts or moved to the bin are not served by the mirror.
+// They answer 410 Gone. To restore one, delete its line here and redeploy. — Sion's Tab agent
+function visibleRows(rows) { return (rows || []).filter(function(r) { return !WITHDRAWN_PATHS.has(r.path); }); }
+const WITHDRAWN_PATHS = new Set(["/corrections-log-18-oct-2026/","/draft-email/","/evidence-library/newspaper-1974-article/","/evidence-library/newspaper-1988-history-fight-to-save-farm/","/evidence-library/newspaper-transcriptions/","/highlight-report-october-2026/","/new-sources-oct-2026/","/project-management/analytics/","/project-management/brief-evidence-recovery-draft/","/project-management/brief/","/project-management/business-case/","/project-management/change-control/","/project-management/communication-management-approach/","/project-management/configuration-item-records/","/project-management/delivery-breakdown/","/project-management/end-stage-report-s0/","/project-management/highlight-reports/","/project-management/highlight-reports/17-october-2026-highlight-report-addendum-county-treasures-cross-institution-packs/","/project-management/highlight-reports/april-2026/","/project-management/highlight-reports/august-2026/","/project-management/highlight-reports/december-2025/","/project-management/highlight-reports/february-2026/","/project-management/highlight-reports/highlight-report-week-36-2026/","/project-management/highlight-reports/highlight-report-week-37-2026/","/project-management/highlight-reports/highlight-report-week-38-2026/","/project-management/highlight-reports/highlight-report-week-39-2026/","/project-management/highlight-reports/highlight-report-week-40-2026/","/project-management/highlight-reports/highlight-report-week-41-2026/","/project-management/highlight-reports/hr-01-2026-10-18/","/project-management/highlight-reports/hr-02-2026-10-18/","/project-management/highlight-reports/hr-02-2026-10-19/","/project-management/highlight-reports/january-2026/","/project-management/highlight-reports/july-2026/","/project-management/highlight-reports/june-2026/","/project-management/highlight-reports/march-2026/","/project-management/highlight-reports/may-2026/","/project-management/highlight-reports/november-2025/","/project-management/highlight-reports/october-2026-highlight-report-addendum-litigation-activation/","/project-management/highlight-reports/october-2026-highlight-report-forensic-reframe-control-point-baseline/","/project-management/highlight-reports/october-2026-highlight-report/","/project-management/highlight-reports/september-2026-highlight-report-full-control-record/","/project-management/highlight-reports/september-2026/","/project-management/justice/","/project-management/justice/brief/","/project-management/justice/mandate/","/project-management/justice/plan/","/project-management/mandate-evidence-recovery-phase-draft/","/project-management/mandate/","/project-management/october-2026-s0-control-register/","/project-management/organisation-roles/","/project-management/plan-evidence-recovery-draft/","/project-management/plan/","/project-management/plan/stage-plan-litigation-activation-sprint-8-october-14-november-2026/","/project-management/prince2-7-compliance-control-manual/","/project-management/prince2-control-registers/","/project-management/prince2-project-initiation-documentation-g0-pack/","/project-management/prince2-project-initiation-documentation-g0-pack/p1-evidence-archive-pid/","/project-management/prince2-project-initiation-documentation-g0-pack/p2-title-justice-accountability-pid/","/project-management/prince2-project-initiation-documentation-g0-pack/p3-artefacts-pid/","/project-management/prince2-project-initiation-documentation-g0-pack/p4-t-mawr-replica-museum-pid/","/project-management/product-breakdown-structure/","/project-management/programme-dashboard/","/project-management/report-templates/","/project-management/stage-plan-s0-s1/","/project-management/work-packages/","/start-here-2/","/the-tightrope-2/","/wiki-sitemap-semver/"]);
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const path = normalisePath(url.pathname);
+    if (WITHDRAWN_PATHS.has(path) && !Object.prototype.hasOwnProperty.call(STATIC_PAGES, path)) {
+      const nav = (LANDING_HTML.match(/^<nav[\s\S]*?<\/nav>/) || [""])[0];
+      return cors(html(htmlShell("Page withdrawn — Great House Farm Wiki", nav + '<h1>Page withdrawn</h1><p>This page is no longer published.</p><p><a href="/">Home</a></p>', env, { landing: true }), 410, "public, max-age=300"));
+    }
     if ((request.method === "GET" || request.method === "HEAD") && Object.prototype.hasOwnProperty.call(PATH_ALIASES, path)) {
       return Response.redirect(url.origin + PATH_ALIASES[path] + url.search, 301);
     }
