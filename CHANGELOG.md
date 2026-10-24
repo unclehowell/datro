@@ -3,7 +3,7 @@
 ### Fixed
 - Repair mojibake in the release footer so separators and loading text render correctly.
 - Announce dynamic release-status updates to assistive technology.
-- Synchronize the displayed release version/date with `.version`.
+- Keep the site release in `.version` separate from `DB_STATUS`'s embedded dataset version/date; no source-data regeneration is claimed.
 
 ## 2026-10-19 — New evidence: 1881 census, directories, 1855 tenancy, 1958 water report
 
