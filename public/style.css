@@ -42,4 +42,4 @@ details.full>summary,details.att>summary{cursor:pointer;font-size:13px;font-weig
 .att.logo{display:flex;align-items:center;gap:8px}.att.logo img{max-height:34px;width:auto;margin:0}
 .att.held{display:flex;flex-direction:column;gap:2px}
 .ft{margin-top:26px;border-top:1px solid var(--ln);padding-top:10px;color:var(--mu)}.ft p{margin:4px 0}
-@media (max-width:420px){.stats{grid-template-columns:repeat(5,1fr);gap:4px}.st b{font-size:19px}.st span{font-size:10px}.b{max-width:94%}}
+@media (max-width:420px){.stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}.st b{font-size:19px}.st span{font-size:10px}.b{max-width:94%}}
