@@ -1,3 +1,10 @@
+## [0.8.1.39] - 2026-10-24
+
+### Fixed
+- Repair mojibake in the release footer so separators and loading text render correctly.
+- Announce dynamic release-status updates to assistive technology.
+- Synchronize the displayed release version/date with `.version`.
+
 ## 2026-10-19 — New evidence: 1881 census, directories, 1855 tenancy, 1958 water report
 
 - New scene, 1881 census (RG11/5288 p.2): "Llandough Home Farm", John Williams, 53, farmer of 170 [? or 120] acres, linked to wiki EV-0224 with the census photograph. Per Sion Buckler this is Great House Farm; what cuts against it (the name appears nowhere else; the acreage) is shown with it. New case question cq-1881-name.
