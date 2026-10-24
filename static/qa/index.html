@@ -102,6 +102,7 @@ footer{max-width:900px;margin:0 auto;padding:10px 14px 40px;color:var(--muted);f
 #corr .mu{color:var(--muted)} #corr .nx{margin:8px 4px;font-size:.88rem} #corr .fi{background:#f7f9fc;border-radius:8px;padding:8px 10px}
 #corr .mini summary{cursor:pointer;color:var(--blue);font-size:.84rem;padding:2px 4px}
 #corr .flash{outline:3px solid #ffb703;outline-offset:2px}
+.freshness{margin:10px 0 0;padding:10px 12px;border:1px solid #a96800;border-radius:9px;background:#fff1d6;color:#633b00;font-size:.85rem}.freshness[hidden]{display:none}
 </style>
 <script src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js?v=2.0.3" defer></script>
 <script src="https://bucklerfamily.estate/ebook/cta.js" defer></script>
@@ -120,6 +121,7 @@ footer{max-width:900px;margin:0 auto;padding:10px 14px 40px;color:var(--muted);f
    <button class="clear" id="clear" aria-label="Clear search">×</button>
   </div>
   <div class="stats" id="stats" aria-label="Questions by status"></div>
+  <p class="freshness" id="data-freshness" role="status" aria-live="polite" hidden></p>
  </div>
 </header>
 <main class="wrap">
@@ -200,7 +202,7 @@ const QA_INST={"cadw": {"body": "Cadw / Welsh Government"}, "welsh-government": 
 function fromQuery(){try{const p=new URLSearchParams(location.search);let body=p.get('body')||'',q=p.get('q')||'';const inst=(p.get('institution')||'').toLowerCase();if(inst&&QA_INST[inst]){body=QA_INST[inst].body||body;q=QA_INST[inst].q||q;}if(body&&!ALL.some(x=>x.body===body))body='';if(!body&&!q)return false;state={q:q,body:body,status:''};$('q').value=q;render();return true;}catch(e){return false;}}
 function fromHash(){const h=decodeURIComponent(location.hash.replace(/^#/,''));if(h.startsWith('q-')){const id=h.slice(2);if(ALL.some(x=>x.id===id)){state={q:'',body:'',status:''};$('q').value='';render(id);return true;}}return false;}
 window.addEventListener('hashchange',fromHash);
-fetch('/kb.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{ALL=(d.items||[]).map(x=>Object.assign(x,{_hay:[x.question,x.answer,x.body,x.reference,x.status,x.exemption].join(' ').toLowerCase()}));
+fetch('/kb.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{const freshness=$('data-freshness');const generated=d.meta&&d.meta.generated;if(freshness&&generated){const age=Date.now()-Date.parse(generated+'T00:00:00Z');if(Number.isFinite(age)&&age>72*60*60*1000){freshness.hidden=false;freshness.textContent='Static Q&A snapshot generated '+generated+'. It may omit later correspondence; verify current status against the linked source.';}}ALL=(d.items||[]).map(x=>Object.assign(x,{_hay:[x.question,x.answer,x.body,x.reference,x.status,x.exemption].join(' ').toLowerCase()}));
  if(!fromHash()&&!fromQuery())render();}).catch(()=>{$('list').innerHTML='<div class="empty">Could not load the questions. Please refresh.</div>';$('count').textContent='';});
 </script>
 </body>
