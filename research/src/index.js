@@ -920,10 +920,23 @@ function unavailablePage(env) {
   const nav = (LANDING_HTML.match(/^<nav[\s\S]*?<\/nav>/) || [""])[0];
   return htmlShell("Page not available right now — Great House Farm Wiki", nav + '<p>This page cannot be shown right now. Please try again later.</p><p><a href="/">Home</a> · <a href="/evidence/ev-0513-llandough-community-council-agenda-22-october-2026-item-10/">EV-0513</a></p>', env, { landing: true });
 }
+// Link repair (24 Oct 2026): old wiki slugs still linked from pages and other sites land on the current page, and links to
+// the wiki's uploaded files open the source copy instead of a mirror 404. — Sion's Tab agent
+const PATH_ALIASES = {
+  "/main-page/": "/",
+  "/master-timeline/": "/timeline/",
+  "/change-log/": "/master-change-log-october-2026/"
+};
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const path = normalisePath(url.pathname);
+    if ((request.method === "GET" || request.method === "HEAD") && Object.prototype.hasOwnProperty.call(PATH_ALIASES, path)) {
+      return Response.redirect(url.origin + PATH_ALIASES[path] + url.search, 301);
+    }
+    if ((request.method === "GET" || request.method === "HEAD") && url.pathname.startsWith("/wp-content/uploads/")) {
+      return Response.redirect("https://greathousefarmwiki.wordpress.com" + url.pathname + url.search, 302);
+    }
     if ((request.method === "GET" || request.method === "HEAD") && (path === "/" || Object.prototype.hasOwnProperty.call(STATIC_PAGES, path))) {
       if (url.pathname !== "/" && url.pathname !== path) return Response.redirect(url.origin + path + url.search, 301);
       if (path === "/") return cors(html(htmlShell(LANDING_TITLE, LANDING_HTML.replace(/^(<nav[\s\S]*?<\/nav>)/, "$1" + HIVE_PIPELINE_HTML), env, { landing: true }), 200, "public, max-age=" + FRESH_SECONDS));
