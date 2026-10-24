@@ -1,3 +1,9 @@
+## [0.12.1.66] - 2026-10-24
+
+### Fixed
+- Align the visible archive heading and `.version` metadata with the current rerelease version.
+- Keep archive content and filtering behaviour unchanged; this is a metadata/UI consistency fix.
+
 ## [0.12.0.40] - 2026-07-16
 
 ## v0.0.0.15
