@@ -60,3 +60,10 @@
     animation: none;
   }
 }
+
+@layer base {
+  :where(a, button, input, select, textarea, [role="button"], [tabindex]):focus-visible {
+    outline: 3px solid var(--color-brass);
+    outline-offset: 3px;
+  }
+}
