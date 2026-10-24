@@ -27,7 +27,7 @@ except Exception:
     prev=open(LV).read().strip() if os.path.exists(LV) else 'unknown'; print('deployments read failed; previous from last_version.txt:',prev,str(cur)[:200])
 def mod(name,ct):
     return {"name":name,"content_type":ct,"content_base64":base64.b64encode(open(os.path.join(W,name),'rb').read()).decode()}
-mods=[mod('index.js','application/javascript+module'),mod('accountability.js','application/javascript+module'),mod('clearance.js','application/javascript+module'),
+mods=[mod('index.js','application/javascript+module'),mod('accountability.js','application/javascript+module'),mod('clearance.js','application/javascript+module'),mod('firstseen.js','application/javascript+module'),
       mod('theme.css','text/plain'),mod('theme.js','text/plain'),mod('fonts/OFL.txt','text/plain')]
 for fn in sorted(os.listdir(os.path.join(W,'fonts'))):
     if fn.endswith('.woff2'): mods.append(mod('fonts/'+fn,'application/octet-stream'))

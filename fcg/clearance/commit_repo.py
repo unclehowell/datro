@@ -3,7 +3,9 @@
 import sys, os, json
 sys.path.insert(0,'/home/user/tab/work/site-flywheels/tools'); from gh import gh
 H='/home/user/tab/work/fcg'; R='unclehowell/datro'; BR='fcg'
-files={'fcg/src/index.js':H+'/worker/index.js','fcg/src/clearance.js':H+'/worker/clearance.js'}
+files={'fcg/src/index.js':H+'/worker/index.js','fcg/src/clearance.js':H+'/worker/clearance.js','fcg/src/firstseen.js':H+'/worker/firstseen.js'}
+FSD='/home/user/tab/work/first-seen'
+for f in ['register.csv','detect.py','build_baseline.py','build_fcg.py','new_items.json','state.json']: files['fcg/first-seen/'+f]=FSD+'/'+f
 for f in ['STANDARD.md','events.json','scores.json','rescore.py','resolve_links.py','build_site.py','deploy.py','commit_repo.py']:
     files['fcg/clearance/'+f]=H+'/'+f
 msg=sys.argv[1] if len(sys.argv)>1 else 'fcg clearance update'

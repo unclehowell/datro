@@ -2,6 +2,7 @@
 
 Version 1.0.0 · 21 October 2026 · Sion's Tab agent
 
+Our case, prospective. Not a finding of any court.
 
 ## What "clearance" means here
 Clearance is a measure of how an institution has dealt with requests for records and information about Great House Farm (Tŷ Mawr), Llandough. It rewards prompt, full, free and straight answers. It deducts for delay, partial answers, "not held" without a record of what happened, cost and repeat refusals, fees, diversion, contradiction and silence. It scores conduct in the correspondence only. It is not a view of any person, and it scores institutions, never individuals.
@@ -62,6 +63,7 @@ A reply earns the 10/10 mark when it is on time, within half the statutory perio
 5. The data (events.json) and the scorer (rescore.py) are kept in the site's repository so anyone can recompute every score.
 6. The scores are re-run every day at midday from new case mail.
 
-## Wording
-Wording on the site is limited to what the record shows ("did not reply by the statutory deadline").
+## What this is not
+It is not a finding of wrongdoing by any person or body and it is not legal advice. Wording on the site is limited to what the record shows ("did not reply by the statutory deadline").
 
+Our case, prospective. Not a finding of any court.

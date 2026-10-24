@@ -1,5 +1,6 @@
 /**
  * fcg-wp — fcg.bucklerfamily.estate. Serverless WP-shaped CMS on Cloudflare Workers + D1, with GraphQL.
+ * 24 Oct 2026: /first-seen — First appeared online register (firstseen.js, built by work/first-seen/build_fcg.py).
  * 21 Oct 2026: home is the Security clearance ranking (clearance.js, built from work/fcg/scores.json); Accountability Index moved to /accountability/.
  * 20 Oct 2026: dark Starlink-style theme shared with projects.bucklerfamily.estate (theme.css / theme.js / Barlow fonts),
  * one page shell for every route, 0 D1 reads on the home page and assets, and an edge cache (5 min fresh,
@@ -16,6 +17,7 @@ import FX700 from "./fonts/barlow-latin-ext-700-normal.woff2";
 import OFL from "./fonts/OFL.txt";
 import ACCOUNTABILITY_MAIN from "./accountability.js";
 import { HOME as CLEARANCE_HOME, STANDARD as CLEARANCE_STANDARD, DATA as CLEARANCE_DATA } from "./clearance.js";
+import { HOME as FIRSTSEEN_HOME, DATA as FIRSTSEEN_DATA } from "./firstseen.js";
 
 const FONTS = {
   "barlow-latin-300-normal.woff2": F300, "barlow-latin-400-normal.woff2": F400, "barlow-latin-500-normal.woff2": F500,
@@ -37,6 +39,8 @@ export default {
       if (a) return cors(a);
       if (url.pathname === "/" || url.pathname === "/index.html") return cors(html(clearancePage(), 200, 300));
       if (url.pathname === "/standard" || url.pathname === "/standard/") return cors(html(standardPage(), 200, 300));
+      if (url.pathname === "/first-seen" || url.pathname === "/first-seen/") return cors(html(firstSeenPage(), 200, 300));
+      if (url.pathname === "/first-seen.json") return cors(new Response(FIRSTSEEN_DATA, { headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "public, max-age=300" } }));
       if (url.pathname === "/clearance.json") return cors(new Response(CLEARANCE_DATA, { headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "public, max-age=300" } }));
       if (url.pathname === "/theory" || url.pathname === "/theory/" || url.pathname === "/theory/index.html") return cors(html(homePage(env), 200, 300));
       if (url.pathname === "/accountability" || url.pathname === "/accountability/") return cors(html(indexPage(), 200, 300));
@@ -107,8 +111,8 @@ function relabel(res, state) {
   return new Response(res.body, { status: res.status, headers: h });
 }
 
-const NAV = `<header class="sl-nav"><nav class="top" aria-label="Site"><a href="/"><strong>${BRAND}</strong></a><a href="/">Clearance</a><a href="/standard">Standard</a><a href="/accountability/">Accountability</a><a href="/theory/">Theory</a><a class="sl-ghost" href="/case">Our case</a></nav></header>`;
-const FOOT = `<footer class="sl-foot"><div class="sl-foot-in"><a class="sl-foot-title" href="/">${BRAND} — Security clearance</a><a href="/">Clearance ranking</a><a href="/standard">Clearance standard</a><a href="/accountability/">Accountability Index</a><a href="/theory/">Theory home</a><a href="/case">Our case</a><a href="/mandate">Mandate</a><a href="/graphql">GraphQL</a><a href="https://projects.bucklerfamily.estate/">Projects (PRINCE2)</a><a href="https://greathousefarmwiki.wordpress.com/">Legal Wiki</a><a href="https://bucklerfamily.estate/">bucklerfamily.estate campus</a></div></footer>`;
+const NAV = `<header class="sl-nav"><nav class="top" aria-label="Site"><a href="/"><strong>${BRAND}</strong></a><a href="/">Clearance</a><a href="/standard">Standard</a><a href="/first-seen">First online</a><a href="/accountability/">Accountability</a><a href="/theory/">Theory</a><a class="sl-ghost" href="/case">Our case</a></nav></header>`;
+const FOOT = `<footer class="sl-foot"><div class="sl-foot-in"><a class="sl-foot-title" href="/">${BRAND} — Security clearance</a><a href="/">Clearance ranking</a><a href="/standard">Clearance standard</a><a href="/first-seen">First appeared online</a><a href="/accountability/">Accountability Index</a><a href="/theory/">Theory home</a><a href="/case">Our case</a><a href="/mandate">Mandate</a><a href="/graphql">GraphQL</a><a href="https://projects.bucklerfamily.estate/">Projects (PRINCE2)</a><a href="https://greathousefarmwiki.wordpress.com/">Legal Wiki</a><a href="https://bucklerfamily.estate/">bucklerfamily.estate campus</a></div></footer>`;
 
 function shell({ title, description = "", kind, main }) {
   return `<!DOCTYPE html>
@@ -221,6 +225,11 @@ function standardPage() {
   return shell({ title: "Clearance standard — " + BRAND, kind: "sl-plainpage",
     description: "How FCG clearance scores are worked out: start at 500, fixed point rules, statutory clocks, cleared at 900.",
     main: CLEARANCE_STANDARD });
+}
+function firstSeenPage() {
+  return shell({ title: "First appeared online — " + BRAND + "— Great House Farm / Tŷ Mawr", kind: "sl-plainpage",
+    description: "When records about Great House Farm, Llandough first became publicly available online, with dated evidence of absence before and the date each was requested.",
+    main: FIRSTSEEN_HOME });
 }
 function indexPage() {
   return shell({ title: "Accountability Index — " + BRAND + "— Great House Farm / Tŷ Mawr", kind: "sl-home",
