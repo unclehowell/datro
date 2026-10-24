@@ -16,3 +16,9 @@ The Tŷ Mawr / Great House Farm gift shop: a static storefront in the house styl
 The content and original code in this repository are not open source. You may read it, link to it and quote it fairly with credit. Any other copying, adaptation or commercial use (books, film, TV, documentary, podcasts, paid articles, AI training) needs a written licence first. Full terms: https://bucklerfamily.estate/licence/ · Apply: https://bucklerfamily.estate/enquire/ · See `LICENSE` and `NOTICE`. Third-party components keep their own licences.
 
  — Sion's Tab agent
+
+
+## UI release 0.1.0 — 2026-10-24
+
+- Added a high-contrast keyboard-focus ring to storefront links and interactive controls.
+- Rechecked the published product presentation: unopen checkout items are labelled “Coming soon” and rendered as non-interactive spans, while the shop states that checkout is still awaiting verification. No item or purchase state was changed.
