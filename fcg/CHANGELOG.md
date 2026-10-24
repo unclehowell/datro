@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.2] - 2026-10-24
+
+### Fixed
+- Add the estate-wide previous/next tour row to every FCG HTML page through the shared HTML response helper.
+- Force the navigation row to use the full header width so it remains a distinct third row instead of sitting beside the logo.
+
+### Deployment
+- Add a guarded Wrangler deployment workflow for the FCG Worker. It runs the source tests and a dry-run build before deploying `fcg-wp`.
+
 ## [0.1.1] - 2026-10-24
 
 ### Fixed
