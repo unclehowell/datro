@@ -484,6 +484,17 @@ def main():
             + [SITE + l['html'] for e in entries for l in e['languages']])
     (OUT / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                      + ''.join(f'  <url><loc>{_html.escape(u)}</loc></url>\n' for u in urls) + '</urlset>\n', encoding='utf-8')
+    # Shared estate tour: include the same previous/next loop on every generated HTML page,
+    # including collection/document menus and every translated document page.
+    estate_tour_tag = '<script src="https://research.bucklerfamily.estate/estate-tour.js?v=20261024" defer data-estate-tour-loader></script>'
+    for page in OUT.rglob('*.html'):
+        text = page.read_text(encoding='utf-8')
+        if 'data-estate-tour-loader' in text:
+            continue
+        updated = re.sub(r'</head\\s*>', lambda m: estate_tour_tag + '\\n' + m.group(0), text, count=1, flags=re.I)
+        if updated != text:
+            page.write_text(updated, encoding='utf-8')
+
     log(f'done: {len(entries)} document(s), {sum(len(e["languages"]) for e in entries)} HTML language build(s), '
         f'{sum(len(l["archive"]) for e in entries for l in e["languages"])} archived PDF link(s), '
         f'{sum(1 for e in entries for l in e["languages"] if l.get("pdf"))} current PDF link(s) -> {OUT}')
