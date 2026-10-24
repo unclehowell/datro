@@ -3,7 +3,7 @@ Record
 
 **Page ID:** 3044 · **Title:** Llandough Community Council — Email Correspondence Catalogue · **Evidence status:** Not yet labelled — see the Editing Protocol · **Version:** 1.0.0 · `Editing Protocol <https://research.bucklerfamily.estate/editing-protocol/>`__
 
-**Scrollable thread preview:** `Open the complete vertically scrollable, timestamp-anchored correspondence thread in Wayback <https://wayback.bucklerfamily.estate/email/llandough-community-council-paul-egan-thread-v1.0.0.html>`__. The hosted thread is the message-reading view; this WordPress catalogue is the citation index and provenance guide.
+**Scrollable thread preview:** `Open the complete vertically scrollable, timestamp-anchored correspondence thread in Wayback <https://wayback.bucklerfamily.estate/email/llandough-community-council-paul-egan-thread-v1.0.0>`__. The hosted thread is the message-reading view; this WordPress catalogue is the citation index and provenance guide.
 
 **Collapsed thread description — correspondence scope, chronology and source limitations**
 
