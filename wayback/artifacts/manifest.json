@@ -1,6 +1,6 @@
 {
  "schema": "ghf-artifacts/1",
- "generated": "2026-10-21T21:19:26Z",
+ "generated": "2026-10-24T14:51:17Z",
  "base_url": "https://wayback.bucklerfamily.estate/",
  "spec": "https://wayback.bucklerfamily.estate/artifacts/SPEC.md",
  "statement": "",
@@ -35,7 +35,7 @@
    "count": 4
   }
  ],
- "count": 353,
+ "count": 367,
  "parts": [
   {
    "url": "items-1.json",
@@ -72,6 +72,12 @@
    "count": 3,
    "first": "WB-0800",
    "last": "WB-0810"
+  },
+  {
+   "url": "items-9.json",
+   "count": 14,
+   "first": "WB-0900",
+   "last": "WB-0913"
   }
  ],
  "note": "Items are split across the files in \"parts\" (each under 100 KB). Fetch each part and join the \"items\" arrays in order."
