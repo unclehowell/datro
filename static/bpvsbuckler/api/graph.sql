@@ -1745,6 +1745,7 @@ INSERT INTO edges VALUES ('scene:ghf-19931203-1','person:ggat','features');
 INSERT INTO edges VALUES ('scene:ghf-19931203-1','person:ideal','features');
 INSERT INTO edges VALUES ('scene:ghf-19940728-1','person:ideal','features');
 INSERT INTO edges VALUES ('scene:ghf-19941110-1','ref:WA735527','cites');
+INSERT INTO edges VALUES ('scene:ghf-19941110-1','person:ideal','features');
 INSERT INTO edges VALUES ('scene:ghf-19970516-1','person:wgr','features');
 INSERT INTO edges VALUES ('scene:ghf-19970516-1','person:bp','features');
 INSERT INTO edges VALUES ('scene:ghf-20190320-1','person:ggat','features');
