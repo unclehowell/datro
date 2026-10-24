@@ -2,7 +2,7 @@
 
 **Website:** [bpvsbuckler.bucklerfamily.estate](https://bpvsbuckler.bucklerfamily.estate)
 
-A narrated film storyboard of the true story of the Williams/Buckler family and Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth, built for documentary development: something a studio, producers and cast can read, play and cite. Every scene is drawn from the [Great House Farm Wiki](https://greathousefarmwiki.wordpress.com/) and links to its evidence.
+A narrated, source-linked documentary storyboard of the Williams/Buckler family and Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth, built for development and citation. Scene wording separates source accounts, supported findings and unresolved questions; the proposed 1877 parcel division remains provisional pending a site-matched conveyance. Every scene is drawn from the [Great House Farm Wiki](https://greathousefarmwiki.wordpress.com/) and links to its evidence.
 
 ## What's on the site
 
