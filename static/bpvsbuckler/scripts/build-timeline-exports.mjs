@@ -50,7 +50,7 @@ const actOf = (id) => acts.find((a) => a.id === id);
 const PARCEL = { A: 'House parcel (A)', B: 'Fields (B)', AB: 'Whole farm (A + B)', '?': 'Not yet known', x: 'Not Great House Farm land', '': '' };
 const castName = (id) => cast.find((c) => c.id === id).name;
 const DESC =
-  'The true story of the Williams/Buckler family and Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth, told scene by scene in date order, with the evidence for every scene. Each scene gives what happened, the received account and its wording, and what we now know; every scene links to its evidence on the Great House Farm Wiki.';
+  'A source-linked documentary account of the Williams/Buckler family and Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth, told scene by scene in date order. Each scene distinguishes the received account, its source wording and what the records now support; the proposed 1877 Parcel A/B division remains a working model pending a site-matched conveyance.';
 
 // --- api/timeline.json --------------------------------------------------
 const entries = scenes.map((s) => ({
