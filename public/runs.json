@@ -1,1 +1,20 @@
-{"runs": []}
+{
+ "runs": [
+  {
+   "started_utc": "2026-10-24T13:48:23Z",
+   "finished_utc": "2026-10-24T14:09:17Z",
+   "checked": 885,
+   "pending": 0,
+   "complete": true,
+   "status_counts": {
+    "ok: captured": 154,
+    "not captured: robots": 66,
+    "capture failed": 459,
+    "not relevant: no farm or case terms": 174,
+    "oversize: no Internet Archive copy yet": 1
+   },
+   "new_captures": 185
+  }
+ ],
+ "last_complete_utc": "2026-10-24T13:48:23Z"
+}
