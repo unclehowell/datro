@@ -4,7 +4,7 @@ Branch `projects` of `unclehowell/datro`. Published at https://projects.bucklerf
 
 ## Programme structure baseline — 22 October 2026
 
-Current machine-readable release: `0.1.0` (first tracked SemVer; baseline content last reviewed 24 October 2026).
+Current machine-readable release: `0.1.1` (first tracked SemVer; baseline content last reviewed 24 October 2026).
 
 The current planning structure has **three active projects** and **one conditional standby project**:
 
