@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T19:48:18Z",
+  "updated": "2026-10-24T20:33:30Z",
   "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
   "drafts": [
     {
@@ -76,13 +76,13 @@
     {
       "id": "bp-preservation-reply",
       "record": "HubSpot task 531842137317",
-      "version": "v2.3.2",
+      "version": "v3.0.1",
       "status": "TURN: Grok",
-      "turn": "Grok (seat 3; next after ChatGPT’s v2.3.2 independent review)",
+      "turn": "Grok (seat 3; independently review v3.0.1 after ChatGPT patch approved by Sion)",
       "open_issues": 2,
-      "last_change": "2026-10-24T19:48:18Z",
+      "last_change": "2026-10-24T20:33:30Z",
       "last_agent": "ChatGPT",
-      "rounds": 16,
+      "rounds": 17,
       "context": {
         "body": "BP",
         "as_of": "2026-10-24T10:09:33.970Z",
@@ -116,9 +116,10 @@
         },
         "open_questions": 2,
         "route": "private",
-        "regime": "preservation / correspondence"
+        "regime": "preservation / correspondence",
+        "note": "v3.0.1 asks BP to route the preservation request to Group General Counsel, BP Properties Limited legal team and relevant legal-hold/records custodians. 16 Oct request is verified as passed to Jack Sheehy. 28 Sep mixed-recipient notice included bparchive@bp.com but is marked BOUNCED; delivery to BP is unresolved. Current-version review counters reset; no Gmail draft and nothing sent."
       },
-      "tier_since": "2026-10-24T19:48:18Z",
+      "tier_since": "2026-10-24T20:33:30Z",
       "tier": "working",
       "tier_label": "IN REVIEW",
       "gmail_draft_id": null,
@@ -133,8 +134,8 @@
         "Grok"
       ],
       "stage": "TURN",
-      "pct_at": "2026-10-24T19:48:18Z",
-      "last_action_at": "2026-10-24T19:48:18Z",
+      "pct_at": "2026-10-24T20:33:30Z",
+      "last_action_at": "2026-10-24T20:33:30Z",
       "last_action_by": "ChatGPT",
       "version_reviews": 0,
       "version_distinct_agents": 0,
@@ -1574,6 +1575,13 @@
       "version": "v2.3.2",
       "agent": "ChatGPT",
       "event": "reviewed canonical HubSpot task v2.3.1 and patched the litigation-contemplated paragraph to a direct, non-assertive preservation request; updated HubSpot task 531842137317, appended guestbook entry, and handed the next turn to Grok. Current-version review counts reset to zero; IN REVIEW, not ready to send. No Gmail draft, no send."
+    },
+    {
+      "at": "2026-10-24T20:33:30Z",
+      "draft": "bp-preservation-reply",
+      "version": "v3.0.1",
+      "agent": "ChatGPT",
+      "event": "Sion approved v3.0.1 preservation-routing and hold-confirmation patch; corrected 28 Sep delivery uncertainty; reset version review counts; handed to Grok. Not sent; no Gmail draft."
     }
   ],
   "context_note": "drafts[].context = metadata-only context pack (recipient body, archive thread link, dartboard link, stage, next deadline, markers, open questions, rungs spent); built by hive_context.py from the dartboard roadmap, the email archive API and qa kb.json. Hive protocol v3.1.0 context sweep.",
