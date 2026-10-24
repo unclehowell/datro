@@ -61,8 +61,21 @@ function cors(res) {
 function json(data, status = 200) {
   return new Response(JSON.stringify(data, null, 2), { status, headers: { "Content-Type": "application/json; charset=utf-8" } });
 }
+function estateTourNav() {
+  return '<nav data-estate-tour-nav aria-label="Estate website tour" style="box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:.65rem;flex-wrap:wrap;flex:0 0 100%;width:100%;max-width:100%;min-height:36px;padding:.45rem .8rem;margin:.35rem 0;background:#1d1b18;color:#f5ead5;border:1px solid #9f7b42;border-radius:7px;font:500 14px/1.35 system-ui,sans-serif;position:relative;z-index:9999">' +
+    '<a style="color:#f5ead5;text-decoration:none;padding:.3rem .2rem" href="https://projects.bucklerfamily.estate/" rel="prev" aria-label="Previous website: Project Office">← Previous</a>' +
+    '<span style="flex:1;text-align:center;min-width:130px;font-size:12px;opacity:.95">Estate tour · 9 / 62 · Family Estate Site</span>' +
+    '<a style="color:#f5ead5;text-decoration:none;padding:.3rem .2rem" href="https://bpvsbuckler.bucklerfamily.estate/" rel="next" aria-label="Next website: BP v Buckler Archive">Next →</a></nav>';
+}
 function html(body, status = 200, maxAge = 60) {
-  return new Response(body, { status, headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "public, max-age=" + maxAge } });
+  let page = String(body ?? "");
+  if (!page.includes("data-estate-tour-nav")) {
+    const nav = estateTourNav();
+    if (/<\\/header\\s*>/i.test(page)) page = page.replace(/<\\/header\\s*>/i, nav + "</header>");
+    else if (/<body\\b[^>]*>/i.test(page)) page = page.replace(/<body\\b[^>]*>/i, m => m + '<header data-estate-tour-shell style="box-sizing:border-box;width:100%;margin:0;padding:.3rem .7rem;background:#111;color:#f5ead5;border-bottom:1px solid #9f7b42">' + nav + "</header>");
+    else page = nav + page;
+  }
+  return new Response(page, { status, headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "public, max-age=" + maxAge } });
 }
 function esc(s) {
   return String(s ?? "").replace(/&(?!#?[A-Za-z0-9]+;)/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
