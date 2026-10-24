@@ -178,6 +178,7 @@ async function loadManifest() {
     const sources = data.inventory?.sources || [];
     $("coverage").innerHTML = [
       '<span class="pill">' + sources.length + ' discovered hosts</span>',
+      '<span class="pill">Inventory dated ' + (data.inventory?.inventoryDate || "date not recorded") + '</span>',
       '<span class="pill">All branches by default</span>',
       '<span class="pill">Socratic method first</span>',
       '<span class="pill">Full estate index: not yet verified</span>'
