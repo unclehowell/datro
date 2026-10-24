@@ -83,7 +83,7 @@ def fetch(url):
     r.close(); return r, b
 def monolith(url, out, extra=()):
     try:
-        p = subprocess.run(['monolith', url, '-o', out, '-t', '60', '-u', UA, '-q'] + list(extra), capture_output=True, timeout=240)
+        p = subprocess.run(['monolith', url, '-o', out, '-t', '60', '-u', UA, '-q', '-e'] + list(extra), capture_output=True, timeout=240)
         return os.path.exists(out) and os.path.getsize(out) > 200
     except Exception: return False
 def sha(b): return hashlib.sha256(b).hexdigest()
@@ -114,23 +114,30 @@ def write_capture(url, title, text, rawbytes, rawext, d, source, http_status, ct
     with open(os.path.join(folder, 'index.html'), 'w', encoding='utf-8') as f: f.write(wrapper(meta, raw_name))
     return meta
 def ia_lookup(url):
-    try:
-        pace('archive.org', 1.5)
-        for v in ([url, url + '/'] if not url.endswith('/') and '?' not in url else [url]):
-            j = S.get('https://archive.org/wayback/available', params={'url': v}, timeout=40).json()
-            c = (j.get('archived_snapshots') or {}).get('closest')
-            if c and c.get('available') and str(c.get('status', '200')).startswith('2'): return c['timestamp'], c['url']
-    except Exception: pass
-    return None, None
+    """(timestamp, url) of the closest 2xx Internet Archive capture; (None, None) when there is none; ('ERR', None) when IA did not answer."""
+    failed = False
+    for v in ([url, url + '/'] if not url.endswith('/') and '?' not in url else [url]):
+        ans = None
+        for wait in (0, 15, 45):
+            time.sleep(wait); pace('archive.org', 3.0)
+            try:
+                r = S.get('https://archive.org/wayback/available', params={'url': v}, timeout=40)
+                if r.status_code == 200: ans = r.json(); break
+            except Exception: pass
+        if ans is None: failed = True; continue
+        c = (ans.get('archived_snapshots') or {}).get('closest')
+        if c and c.get('available') and str(c.get('status', '200')).startswith('2'): return c['timestamp'], c['url']
+    return ('ERR', None) if failed else (None, None)
 def ia_seed(url, d):
     ts, ia_url = ia_lookup(url)
+    if ts == 'ERR': return {'lookup_failed': True}
     if not ts: return None
     orig = re.sub(r'^https?://web\.archive\.org/web/\d+[a-z_]*/', '', ia_url)
     ia_d = dt.datetime.strptime(ts, '%Y%m%d%H%M%S').replace(tzinfo=dt.timezone.utc)
     tmp = f'/tmp/ia_{hashlib.sha1(url.encode()).hexdigest()}.html'
     r = None
     for wait in (0, 20, 60):
-        time.sleep(wait); pace('web.archive.org', 4.0)
+        time.sleep(wait); pace('web.archive.org', 6.0)
         try: r = S.get(f'https://web.archive.org/web/{ts}id_/{orig}', timeout=(20, 90))
         except Exception: r = None; continue
         if r.status_code not in (429, 500, 502, 503, 504): break
@@ -177,7 +184,7 @@ def process(row, caps, man):
         if not entry['captures']:
             m = ia_seed(url, d)
             if m and m.get('lookup_failed'):
-                row['status'] += '; Internet Archive copy exists but could not be fetched this run'
+                row['status'] += '; Internet Archive not answering this run, retried next run'
             elif m and m.get('oversize'):
                 entry['oversize'] = m['ia_url']; row['status'] += '; oversize, linked to Internet Archive'
             elif m:
@@ -206,6 +213,7 @@ def process(row, caps, man):
         row['status'] = 'ok: unchanged'; entry['status'] = row['status']; note(f'checked {day}, unchanged', capture=prev[-1]['path']); return
     if len(body) > MAXB:
         ts, ia = ia_lookup(url)
+        if ts == 'ERR': ts = None
         entry['oversize'] = f'https://web.archive.org/web/{ts}/{url}' if ts else ''
         row['status'] = 'oversize: ' + ('linked to Internet Archive copy' if ts else 'no Internet Archive copy yet'); entry['status'] = row['status']; note(row['status']); return
     if is_pdf: rawb, ext, mode = body, 'pdf', 'pdf'
