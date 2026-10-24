@@ -1,0 +1,42 @@
+{
+ "schema": "wayback-html/1",
+ "title": "Coflein site record: Cemetery, Great House Farm (802090)",
+ "url": "https://coflein.gov.uk/en/sites/802090",
+ "host": "coflein.gov.uk",
+ "name": "cemetery-great-house-farm-802090-2",
+ "address": "https://wayback-html.bucklerfamily.estate/coflein.gov.uk/cemetery-great-house-farm-802090-2.html",
+ "current_version": "v1.1.0",
+ "first_captured": "2026-10-24T14:44:09Z",
+ "last_captured": "2026-10-24T17:08:14Z",
+ "versions": [
+  {
+   "version": "v1.0.0",
+   "captured_utc": "2026-10-24T14:44:09Z",
+   "capture_source": "live",
+   "change": "first",
+   "file": "cemetery-great-house-farm-802090-2.v1.0.0.html",
+   "text_sha256": "78aacc9c3a842d26f23dfcfc0213a72698458bfdd3499e246287c6375fe6e43d",
+   "markup_sha256": "a3b84b2ef64829ee54f63ef5aca8fc5a17cb2d003f529c1a53fa24fd9d29be46",
+   "design": "kept",
+   "assets": 1,
+   "from": "https://internetarchive.bucklerfamily.estate/20261024144409/coflein.gov.uk/en/sites/802090/",
+   "note": "this capture recorded a server error page (502) instead of the record"
+  },
+  {
+   "version": "v1.1.0",
+   "captured_utc": "2026-10-24T17:08:14Z",
+   "capture_source": "live (rendered)",
+   "change": "recaptured: the previous capture recorded a server error page",
+   "file": "cemetery-great-house-farm-802090-2.v1.1.0.html",
+   "design": "kept",
+   "assets": 51
+  }
+ ],
+ "old_addresses": [
+  "https://wayback.bucklerfamily.estate/websites/coflein.gov.uk/en-sites-802090/latest.html"
+ ],
+ "key": "coflein.gov.uk/en/sites/802090",
+ "live_url": "https://coflein.gov.uk/en/sites/802090",
+ "archive_status": "ok: captured from Tab's machine 2026-10-24",
+ "last_checked": "2026-10-24T15:05:50Z"
+}
