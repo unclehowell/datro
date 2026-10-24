@@ -205,6 +205,17 @@ function safeImportedHtml(html) {
     .replace(/(href|src)\s*=\s*(["'])\s*javascript:[\s\S]*?\2/gi, '$1="#"');
 }
 
+const WAYBACK_MEDIA = {"2026/10/2026-05-28_rcahmw_rc26-0205_les17-licence-fees-2026.pdf": "https://wayback.bucklerfamily.estate/pdf/foi/2026-05-28_rcahmw_rc26-0205_les17-licence-fees-2026.pdf","2026/10/2026-06-11_welsh-government_atisn-27021_doc2-1988-07-29-barn-survey-photo.pdf": "https://wayback.bucklerfamily.estate/pdf/foi/2026-06-11_welsh-government_atisn-27021_doc2-1988-07-29-barn-survey-photo.pdf","2026/10/2026-06-11_welsh-government_atisn-27021_doc1-1988-07-29-farmhouse-survey-photo.pdf": "https://wayback.bucklerfamily.estate/pdf/foi/2026-06-11_welsh-government_atisn-27021_doc1-1988-07-29-farmhouse-survey-photo.pdf","2026/10/2026-06-11_welsh-government_atisn-27021_response-letter-r2.pdf": "https://wayback.bucklerfamily.estate/pdf/foi/2026-06-11_welsh-government_atisn-27021_response-letter.pdf","2026/10/2026-04-27_moj_to130237_reply-r.pdf": "https://wayback.bucklerfamily.estate/pdf/foi/2026-04-27_moj_to130237_reply.pdf","2026/10/2026-04-13_hmlr_foi-f260213_response.pdf": "https://wayback.bucklerfamily.estate/pdf/foi/2026-04-13_hmlr_foi-f260213_response.pdf","2026/10/2026-02-26_tna_hmc-9-311_llandough-manor-return.jpg": "https://wayback.bucklerfamily.estate/pdf/foi/2026-02-26_tna_hmc-9-311_llandough-manor-return.jpg","2026/10/2026-08-19_dcms_ir2026-06711_response-r2.pdf": "https://wayback.bucklerfamily.estate/pdf/foi/2026-08-19_dcms_ir2026-06711_response.pdf","2026/10/2026-07-22_dcms_foi2026-06174_response-r2.pdf": "https://wayback.bucklerfamily.estate/pdf/foi/2026-07-22_dcms_foi2026-06174_response.pdf","2026/10/2026-08-10_ico_ic-546505-w6p0_letter-r.pdf": "https://wayback.bucklerfamily.estate/pdf/foi/2026-08-10_ico_ic-546505-w6p0_letter.pdf","2026/10/2026-07-13_hmlr_n610cgv_letter-r.pdf": "https://wayback.bucklerfamily.estate/pdf/foi/2026-07-13_hmlr_n610cgv_letter.pdf","2026/10/2026-09-09_moj_260813002_foi-ir-extension-letter-r.pdf": "https://wayback.bucklerfamily.estate/pdf/foi/2026-09-09_moj_260813002_foi-ir-extension-letter.pdf","2026/10/2026-08-12_moj_260805002_foia-response-r.pdf": "https://wayback.bucklerfamily.estate/pdf/foi/2026-08-12_moj_260805002_foia-response.pdf","2026/10/2026-09-30_glamorgan-archives_bute-10.doc": "https://wayback.bucklerfamily.estate/pdf/foi/2026-09-30_glamorgan-archives_bute-10.doc","2026/10/2026-09-07_glamorgan-archives_digital-photography-order-form-2025.docx": "https://wayback.bucklerfamily.estate/pdf/foi/2026-09-07_glamorgan-archives_digital-photography-order-form-2025.docx","2026/10/2026-09-22_wales-office_26foi-103_response-r2.pdf": "https://wayback.bucklerfamily.estate/pdf/foi/2026-09-22_wales-office_26foi-103_response.pdf","2026/10/2026-09-29_rcahmw_rc26-0375_les16-price-list-2026.pdf": "https://wayback.bucklerfamily.estate/pdf/foi/2026-09-29_rcahmw_rc26-0375_les16-price-list-2026.pdf","2026/10/2026-09-29_rcahmw_rc26-0375_les08-order-form-2023.docx": "https://wayback.bucklerfamily.estate/pdf/foi/2026-09-29_rcahmw_rc26-0375_les08-order-form-2023.docx","2026/10/2026-05-28_rcahmw_rc26-0205_les08-order-form-2021.docx": "https://wayback.bucklerfamily.estate/pdf/foi/2026-05-28_rcahmw_rc26-0205_les08-order-form-2021.docx","2026/10/2026-05-28_rcahmw_rc26-0205_les16-price-list-2026.pdf": "https://wayback.bucklerfamily.estate/pdf/foi/2026-05-28_rcahmw_rc26-0205_les16-price-list-2026.pdf","2026/10/2026-07-24_post-office_foi2026-00751_response-r.pdf": "https://wayback.bucklerfamily.estate/pdf/foi/2026-07-24_post-office_foi2026-00751_response.pdf"};
+// Wiki uploads that have a verified copy on wayback.bucklerfamily.estate (checked 24 Oct 2026: type not HTML, size matches the wiki file) link there, so they keep working when the wiki retires.
+function waybackFor(u) {
+  try {
+    const m = String(u.pathname || "").match(/(\d{4}\/\d{2}\/[^\/]+)$/);
+    if (!m) return "";
+    const k = decodeURIComponent(m[1]).toLowerCase();
+    return WAYBACK_MEDIA[k] || WAYBACK_MEDIA[k.replace(/-\d{2,5}x\d{2,5}(\.[a-z0-9]+)$/, "$1")] || "";
+  } catch (_) { return ""; }
+}
+
 function rewriteContentLinks(html) {
   const safe = safeImportedHtml(html);
   return safe.replace(/\b(href|src)\s*=\s*(["'])(https?:\/\/[^"']+)\2/gi, function(all, attribute, quote, rawUrl) {
@@ -213,16 +224,16 @@ function rewriteContentLinks(html) {
     if (u.protocol === "http:" && (u.hostname === SOURCE_HOST || u.hostname === "files.wordpress.com" || /^i[0-2]\\.wp\\.com$/.test(u.hostname))) u.protocol = "https:";
     if (u.hostname === SOURCE_HOST) {
       if (/\/wp-content\/uploads\//i.test(u.pathname)) {
-        return attribute + "=" + quote + "/asset?url=" + encodeURIComponent(u.href) + quote;
+        return attribute + "=" + quote + (waybackFor(u) || "/asset?url=" + encodeURIComponent(u.href)) + quote;
       }
       if (u.pathname === "/wp-json/" || u.pathname.startsWith("/wp-json/")) return all;
       return attribute + "=" + quote + (u.pathname || "/") + u.search + u.hash + quote;
     }
     if (u.hostname === "files.wordpress.com") {
-      return attribute + "=" + quote + "/asset?url=" + encodeURIComponent(u.href) + quote;
+      return attribute + "=" + quote + (waybackFor(u) || "/asset?url=" + encodeURIComponent(u.href)) + quote;
     }
     if (/^i[0-2]\.wp\.com$/.test(u.hostname) && u.pathname.startsWith("/" + SOURCE_HOST + "/wp-content/uploads/")) {
-      return attribute + "=" + quote + "/asset?url=" + encodeURIComponent(u.href) + quote;
+      return attribute + "=" + quote + (waybackFor(u) || "/asset?url=" + encodeURIComponent(u.href)) + quote;
     }
     return all;
   });
@@ -500,6 +511,11 @@ async function handleHtml(url, env) {
   if (path === "/graphql/" || path === "/graphql") return new Response("Use /graphql", { status: 400 });
   if (path === "/search/") return await handleSearchHtml(url, env);
   let row = await env.DB.prepare("SELECT * FROM content_items WHERE path = ? AND status='publish' AND source_type IN ('page','post') LIMIT 1").bind(path).first();
+  if (!row && /%[0-9A-Fa-f]{2}/.test(path)) {
+    // Imported paths keep the wiki's lower-case %-escapes (e.g. %e2%86%92); browsers may send upper case.
+    const alt = path.replace(/%[0-9A-F]{2}/gi, function(m) { return m.toLowerCase(); });
+    if (alt !== path) row = await env.DB.prepare("SELECT * FROM content_items WHERE path = ? AND status='publish' AND source_type IN ('page','post') LIMIT 1").bind(alt).first();
+  }
   if (!row && path === "/") {
     row = await env.DB.prepare("SELECT * FROM content_items WHERE source_type='page' AND slug='main-page' AND status='publish' LIMIT 1").first();
   }
@@ -966,7 +982,8 @@ export default {
       return Response.redirect(url.origin + PATH_ALIASES[path] + url.search, 301);
     }
     if ((request.method === "GET" || request.method === "HEAD") && (url.pathname.startsWith("/wp-content/uploads/") || url.pathname === "/feed/" || url.pathname === "/wp-login.php" || url.pathname.startsWith("/wp-admin/"))) {
-      return Response.redirect("https://greathousefarmwiki.wordpress.com" + url.pathname + url.search, 302);
+      const wb = url.pathname.startsWith("/wp-content/uploads/") ? waybackFor(url) : "";
+      return Response.redirect(wb || ("https://greathousefarmwiki.wordpress.com" + url.pathname + url.search), wb ? 301 : 302);
     }
     if ((request.method === "GET" || request.method === "HEAD") && (path === "/" || Object.prototype.hasOwnProperty.call(STATIC_PAGES, path))) {
       if (url.pathname !== "/" && url.pathname !== path) return Response.redirect(url.origin + path + url.search, 301);
