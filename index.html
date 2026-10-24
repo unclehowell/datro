@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wayback · Text — Wayback</title><meta name="description" content="Plain-text transcripts and notes from the archive, readable in the page.">
+<style>
+:root{--bg:#f7f5ef;--ink:#1d2420;--mut:#6b716c;--line:#e2ddd2;--acc:#2f5d46;--card:#fff}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+header{background:#1f2a24;color:#f3efe6;padding:14px 16px 10px}
+header h1{margin:0;font-size:19px;font-weight:650;letter-spacing:.2px}header p{margin:2px 0 8px;color:#c9c3b6;font-size:13px}
+nav{display:flex;gap:6px;flex-wrap:wrap}nav a{color:#f3efe6;text-decoration:none;font-size:13px;padding:3px 9px;border:1px solid #4b5a51;border-radius:99px}
+nav a.on{background:#f3efe6;color:#1f2a24;border-color:#f3efe6}
+main{max-width:1100px;margin:0 auto;padding:12px}
+#q{width:100%;padding:10px 12px;font-size:16px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.count{color:var(--mut);font-size:13px;margin:6px 2px 10px}
+details.g{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:0 0 10px;overflow:hidden}
+details.g>summary{cursor:pointer;padding:11px 14px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:8px}
+details.g>summary::-webkit-details-marker{display:none}details.g>summary:after{content:"▸";color:var(--mut)}details.g[open]>summary:after{content:"▾"}
+details.g>summary span{color:var(--mut);font-weight:400;font-size:13px;white-space:nowrap}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;padding:0 12px 12px}
+.rows{padding:0 12px 10px}
+.card{display:block;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.card .th{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top;background:#ece7dc}
+.card .ph{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/3;background:#ece7dc;color:#8b8577;font-weight:700;font-size:22px;letter-spacing:1px}
+.card .tx{padding:7px 8px 8px}.card .t{font-size:13.5px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card .m{font-size:11.5px;color:var(--mut);margin-top:3px;word-break:break-all}
+.live{display:block;font-size:12.5px;padding:5px 8px;border-bottom:1px solid var(--line);color:var(--acc);text-decoration:none;background:#f3f6f1}
+.row{display:flex;gap:8px;align-items:baseline;padding:7px 2px;border-top:1px solid var(--line);text-decoration:none;color:inherit}
+.row .t{flex:1;font-size:14px}.row .m{font-size:12px;color:var(--mut);white-space:nowrap}
+.more{margin:6px 12px 12px;padding:7px 12px;border:1px solid var(--line);background:#fff;border-radius:8px;cursor:pointer}
+#mod{position:fixed;inset:0;background:rgba(18,22,20,.92);display:none;flex-direction:column;z-index:50}
+#mod.on{display:flex}#mbar{display:flex;gap:8px;align-items:center;padding:8px 10px;color:#eee;font-size:13px}
+#mbar .t{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#mbar a,#mbar button{color:#ffd27a;background:none;border:1px solid #555;border-radius:7px;padding:4px 9px;font-size:13px;text-decoration:none;cursor:pointer}
+#mbody{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;align-items:center;padding:0 6px 20px}
+#mbody img.full{max-width:100%;max-height:calc(100vh - 60px);object-fit:contain;margin:auto}
+#mbody canvas{max-width:100%;background:#fff;margin:6px 0;box-shadow:0 1px 6px rgba(0,0,0,.4)}
+#mbody video{max-width:100%;max-height:calc(100vh - 70px);margin:auto;background:#000}
+#mbody pre{white-space:pre-wrap;word-wrap:break-word;background:#fffdf7;color:#222;max-width:46rem;width:100%;padding:16px;border-radius:8px;font:15px/1.6 Georgia,"Times New Roman",serif}
+#mbody .msg{color:#ddd;margin:auto}.nav2{position:fixed;top:50%;background:rgba(0,0,0,.4);color:#fff;border:0;font-size:28px;padding:8px 12px;cursor:pointer}
+footer{color:var(--mut);font-size:12px;text-align:center;padding:20px}
+@media (max-width:480px){.grid{grid-template-columns:repeat(2,1fr);gap:8px;padding:0 8px 10px}header h1{font-size:17px}}
+</style></head><body>
+<header><h1>Wayback · Text</h1><p>Plain-text transcripts and notes from the archive, readable in the page.</p><nav><a href="https://wayback.bucklerfamily.estate/">Hub</a><a href="https://wayback-html.bucklerfamily.estate/">Websites</a><a href="https://wayback-img.bucklerfamily.estate/">Images</a><a href="https://wayback-pdf.bucklerfamily.estate/">PDFs & documents</a><a href="https://wayback-video.bucklerfamily.estate/">Video</a><a href="https://wayback-text.bucklerfamily.estate/" class=on>Text</a></nav></header>
+<main><input id="q" type="search" placeholder="Search texts…" autocomplete="off"><div class="count" id="count"></div><div id="list"></div></main>
+<div id="mod" role="dialog" aria-modal="true"><div id="mbar"><button id="mx" aria-label="Close">✕</button><span class="t" id="mt"></span><a id="mo" href="#" target="_blank" rel="noopener">Open file</a></div><div id="mbody"></div></div>
+<footer>Archived copies kept for reference, with source and date shown on each item. <a href="https://wayback.bucklerfamily.estate/">Wayback hub</a></footer>
+<script>
+const TYPE="text";
+let ALL=[],FLAT=[];const $=s=>document.querySelector(s);
+const esc=s=>String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmtd=d=>d?d:"";
+function thumb(it){ if(TYPE==="html") return `<img class="th" loading="lazy" src="${esc(it.thumb)}" alt="">`;
+  if(it.th) return `<img class="th" loading="lazy" src="/_t/${encodeURIComponent(it.name)}.jpg" alt="" onerror="this.outerHTML='<span class=ph>${TYPE.toUpperCase()}</span>'">`;
+  return `<span class="ph">${(it.name.split(".").pop()||TYPE).toUpperCase()}</span>`;}
+function card(it,i){
+  if(TYPE==="html") return `<div class="card"><a href="${esc(it.href)}">${thumb(it)}</a><a class="live" href="${esc(it.url)}" target="_blank" rel="noopener nofollow">Live website ↗</a><a class="tx" href="${esc(it.href)}" style="display:block;color:inherit;text-decoration:none"><div class="t">${esc(it.title)}</div><div class="m">${esc((it.captured||"").slice(0,10))} · ${esc(it.version)}${it.n_versions>1?" · "+it.n_versions+" versions":""}</div></a></div>`;
+  return `<a class="card" href="/${encodeURIComponent(it.name)}" data-i="${i}">${thumb(it)}<div class="tx"><div class="t">${esc(it.title)}</div><div class="m">${esc(fmtd(it.date))}${it.date?" · ":""}${esc(it.name)}</div></div></a>`;}
+function row(it,i){return `<a class="row" href="/${encodeURIComponent(it.name)}" data-i="${i}"><span class="t">${esc(it.title)}${it.lang?" ("+esc(it.lang)+")":""}</span><span class="m">${esc(it.docver?"v"+it.docver:fmtd(it.date))}</span></a>`;}
+function groupKey(it){return TYPE==="html"?it.host:(it.group||"Other");}
+function render(items){
+  const groups=new Map();items.forEach(it=>{const k=groupKey(it);if(!groups.has(k))groups.set(k,[]);groups.get(k).push(it);});
+  const L=$("#list");L.innerHTML="";let first=true;
+  for(const [k,arr] of groups){const d=document.createElement("details");d.className="g";
+    d.innerHTML=`<summary>${esc(k)}<span>${arr.length}</span></summary>`;
+    const rowsMode=arr.length>150||arr[0].docver;let shown=0;
+    const box=document.createElement("div");box.className=rowsMode?"rows":"grid";d.appendChild(box);
+    const more=document.createElement("button");more.className="more";more.textContent="Show more";
+    const fill=()=>{const next=arr.slice(shown,shown+(rowsMode?120:60));box.insertAdjacentHTML("beforeend",next.map(it=>rowsMode?row(it,it._i):card(it,it._i)).join(""));shown+=next.length;more.style.display=shown<arr.length?"":"none";};
+    d.appendChild(more);more.onclick=fill;
+    d.addEventListener("toggle",()=>{if(d.open&&!shown)fill();});
+    if(first&&groups.size<=3){d.open=true;}first=false;L.appendChild(d);}
+}
+function filt(){const q=$("#q").value.trim().toLowerCase();
+  const items=q?FLAT.filter(it=>it._s.includes(q)):FLAT;$("#count").textContent=`${items.length} of ${FLAT.length} texts`+(q?" matching":"");
+  render(items);if(q)document.querySelectorAll("details.g").forEach((d,i)=>{if(i<4){d.open=true;d.dispatchEvent(new Event("toggle"));}});}
+let pdfjs=null,cur=-1;
+async function openItem(i,push){const it=FLAT[i];if(!it)return;cur=i;const url="/"+encodeURIComponent(it.name);
+  $("#mt").textContent=it.title;$("#mo").href=url;const B=$("#mbody");B.innerHTML="";$("#mod").classList.add("on");document.body.style.overflow="hidden";
+  if(push!==false)history.replaceState(null,"","#"+encodeURIComponent(it.name));
+  if(TYPE==="img"){B.innerHTML=`<img class="full" src="${url}" alt="${esc(it.title)}"><button class="nav2" style="left:4px" onclick="step(-1)">‹</button><button class="nav2" style="right:4px" onclick="step(1)">›</button>`;}
+  else if(TYPE==="video"){B.innerHTML=`<video controls playsinline preload="metadata" ${it.th?`poster="/_t/${encodeURIComponent(it.name)}.jpg"`:""} src="${url}"></video>`;}
+  else if(TYPE==="text"){B.innerHTML='<div class="msg">Loading…</div>';try{const r=await fetch(url);const t=await r.text();B.innerHTML=`<pre>${esc(t)}</pre>`;}catch(e){B.innerHTML='<div class="msg">Could not load the text. Use Open file.</div>';}}
+  else if(TYPE==="pdf"){if(!/\.pdf$/i.test(it.name)){B.innerHTML=`<div class="msg">This file opens in its own app. <a style="color:#ffd27a" href="${url}">Download ${esc(it.name)}</a></div>`;return;}
+    B.innerHTML='<div class="msg">Loading…</div>';
+    try{pdfjs=pdfjs||await import("/pdfjs/pdf.min.mjs");pdfjs.GlobalWorkerOptions.workerSrc="/pdfjs/pdf.worker.min.mjs";
+      const doc=await pdfjs.getDocument({url,standardFontDataUrl:"/pdfjs/standard_fonts/"}).promise;B.innerHTML="";
+      const w=Math.min(B.clientWidth-12,900);const io=new IntersectionObserver(es=>es.forEach(async e=>{if(!e.isIntersecting||e.target.dataset.done)return;e.target.dataset.done=1;io.unobserve(e.target);
+        const pg=await doc.getPage(+e.target.dataset.p);const v0=pg.getViewport({scale:1});const sc=w/v0.width*(window.devicePixelRatio>1?1.6:1);const v=pg.getViewport({scale:sc});
+        const c=e.target;c.width=v.width;c.height=v.height;c.style.width=w+"px";c.style.height=(w*v0.height/v0.width)+"px";await pg.render({canvasContext:c.getContext("2d"),viewport:v}).promise;}),{root:B,rootMargin:"600px"});
+      for(let p=1;p<=doc.numPages;p++){const c=document.createElement("canvas");c.dataset.p=p;c.style.width=w+"px";c.style.height=(w*1.414)+"px";B.appendChild(c);io.observe(c);}
+    }catch(e){B.innerHTML=`<div class="msg">Preview not available here. <a style="color:#ffd27a" href="${url}">Open the PDF</a></div>`;}}
+}
+function step(d){if(cur<0)return;let j=cur+d;if(j<0||j>=FLAT.length)return;openItem(j);}
+function closeM(){$("#mod").classList.remove("on");$("#mbody").innerHTML="";document.body.style.overflow="";cur=-1;history.replaceState(null,"",location.pathname+location.search);}
+$("#mx").onclick=closeM;document.addEventListener("keydown",e=>{if(!$("#mod").classList.contains("on"))return;if(e.key==="Escape")closeM();if(e.key==="ArrowRight")step(1);if(e.key==="ArrowLeft")step(-1);});
+let tx=null;$("#mbody").addEventListener("touchstart",e=>{tx=e.touches[0].clientX},{passive:true});$("#mbody").addEventListener("touchend",e=>{if(TYPE!=="img"||tx===null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>60)step(dx<0?1:-1);tx=null;},{passive:true});
+document.addEventListener("click",e=>{const a=e.target.closest("a[data-i]");if(!a||TYPE==="html"||e.metaKey||e.ctrlKey||e.shiftKey)return;e.preventDefault();openItem(+a.dataset.i);});
+fetch("/data.json").then(r=>r.json()).then(d=>{ALL=d.items||d;FLAT=ALL;FLAT.forEach((it,i)=>{it._i=i;it._s=[it.title,it.name,it.group,it.host,it.date,it.url].join(" ").toLowerCase();});
+  $("#q").addEventListener("input",()=>{clearTimeout(window._t);window._t=setTimeout(filt,150);});filt();
+  const h=decodeURIComponent(location.hash.slice(1));if(h){const j=FLAT.findIndex(it=>it.name===h||it.href==="/"+h);if(j>=0){if(TYPE==="html")location.replace(FLAT[j].href);else openItem(j,false);}}});
+</script></body></html>
