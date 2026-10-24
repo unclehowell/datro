@@ -135,10 +135,90 @@ function batonOnCommit(bt, key, c, branch) {
   bt[key] = b;
 }
 
+// ---- Uptime monitor (24 Oct 2026): Archwilio + controls, every cron run; state lives inside the "state" KV key (no extra writes)
+const UPTIME = [
+  { id: "archwilio", name: "Archwilio", url: "https://archwilio.org.uk/", alert: true },
+  { id: "archwilio-wp", name: "Archwilio /wp/", url: "https://archwilio.org.uk/wp/" },
+  { id: "archwilio-record", name: "Archwilio record GGAT02038s", url: "https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s" },
+  { id: "coflein", name: "Coflein site 20182 (control)", url: "https://coflein.gov.uk/en/site/20182/" },
+  { id: "heneb", name: "Heneb (control)", url: "https://heneb.org.uk/" },
+];
+const UPTIME_KEEP_DAYS = 90, UPTIME_CONFIRM = 2;
+async function uptimeProbe(t) {
+  const t0 = Date.now(); const ac = new AbortController(); const tm = setTimeout(() => ac.abort(), 25000);
+  try {
+    const r = await fetch(t.url, { redirect: "follow", signal: ac.signal, headers: { "user-agent": UA, accept: "text/html,*/*" }, cf: { cacheTtl: 0 } });
+    try { await r.body?.cancel(); } catch (e) {}
+    return { status: r.status, ms: Date.now() - t0 };
+  } catch (e) { return { status: 0, ms: Date.now() - t0, error: ac.signal.aborted ? "timeout 25 s" : String(e).slice(0, 120) }; }
+  finally { clearTimeout(tm); }
+}
+async function uptimeRun(env, st) {
+  const U = (st.uptime = st.uptime || { v: 1, sites: {}, outages: [], alerts: [] });
+  const res = await Promise.all(UPTIME.map(uptimeProbe)); const at = now(); const events = [];
+  UPTIME.forEach((t, i) => {
+    const r = res[i], ok = r.status >= 200 && r.status < 400, p = U.sites[t.id];
+    const rec = { name: t.name, url: t.url, status: r.status, ms: r.ms, error: r.error, checked: at, ok, hist: [[at, r.status, r.ms], ...((p && p.hist) || [])].slice(0, 12) };
+    const openOut = () => U.outages.find((o) => o.site === t.id && !o.end);
+    if (!p) {
+      rec.up = ok; rec.since = at; rec.first = at;
+      if (!ok) U.outages.push({ site: t.id, name: t.name, start: at, start_note: "already down when monitoring began", end: null, codes: [r.status] });
+    } else {
+      rec.up = p.up; rec.since = p.since; rec.first = p.first;
+      if (ok === p.up) { rec.pend = undefined; }
+      else {
+        const pend = p.pend && p.pend.up === ok ? { ...p.pend, n: p.pend.n + 1 } : { up: ok, n: 1, at };
+        if (pend.n >= UPTIME_CONFIRM) {
+          rec.up = ok; rec.since = pend.at; rec.pend = undefined;
+          if (!ok) U.outages.push({ site: t.id, name: t.name, start: pend.at, end: null, codes: [r.status] });
+          else { const o = openOut(); if (o) { o.end = pend.at; o.minutes = Math.round((Date.parse(o.end) - Date.parse(o.start)) / 60e3); } }
+          events.push({ id: t.id, name: t.name, up: ok, at: pend.at, status: r.status, alert: !!t.alert });
+        } else rec.pend = pend;
+      }
+      if (!ok) { const o = openOut(); if (o && !o.codes.includes(r.status)) o.codes = [...o.codes, r.status].slice(-8); }
+    }
+    for (const k of Object.keys(rec)) if (rec[k] === undefined) delete rec[k];
+    U.sites[t.id] = rec;
+  });
+  const cut = Date.now() - UPTIME_KEEP_DAYS * 864e5;
+  U.outages = U.outages.filter((o) => !o.end || Date.parse(o.end) >= cut).slice(-300);
+  U.last = { at, checked: UPTIME.length };
+  for (const e of events.filter((x) => x.alert)) {
+    const msg = `${e.name} is ${e.up ? "back UP" : "DOWN"} (HTTP ${e.status || "no answer"}) since ${e.at.replace("T", " ").replace("Z", " UTC")}, confirmed by ${UPTIME_CONFIRM} checks in a row. https://watch.bucklerfamily.estate/uptime`;
+    const a = { at, msg };
+    if (env.TG_BOT_TOKEN && env.TG_CHAT_ID) {
+      try { const r = await fetch(`https://api.telegram.org/bot${env.TG_BOT_TOKEN}/sendMessage`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ chat_id: env.TG_CHAT_ID, text: msg, disable_web_page_preview: true }) }); a.telegram = "HTTP " + r.status; }
+      catch (err) { a.telegram = "failed: " + String(err).slice(0, 80); }
+    } else a.telegram = "not sent: no Telegram chat id stored for the owner";
+    U.alerts = [a, ...(U.alerts || [])].slice(0, 50);
+  }
+  return events;
+}
+const UKF = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/London", day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit", timeZoneName: "short" });
+const tUTC = (s) => s ? s.slice(0, 16).replace("T", " ") + " UTC" : "";
+const tUK = (s) => { try { return s ? UKF.format(new Date(s)) : ""; } catch (e) { return ""; } };
+const tBoth = (s) => s ? `${esc(tUTC(s))}<br><small>${esc(tUK(s))}</small>` : "";
+function uptimeJSON(st) {
+  const U = st.uptime || { sites: {}, outages: [] };
+  return { checks: UPTIME.map((t) => ({ id: t.id, ...(U.sites[t.id] || { name: t.name, url: t.url, up: null }) })), outages: [...(U.outages || [])].reverse(), alerts: U.alerts || [], last_run: U.last || null, confirm_checks: UPTIME_CONFIRM, every_minutes: PERIOD_MIN, keep_days: UPTIME_KEEP_DAYS };
+}
+function uptimePage(st) {
+  const d = uptimeJSON(st);
+  const rows = d.checks.map((c) => `<tr class="${c.up === false ? "dn" : ""}"><td>${c.up == null ? "○" : c.up ? "● up" : "✕ down"}</td><td><a href="${esc(c.url)}">${esc(c.name)}</a></td><td>${c.status ?? ""}${c.error ? " · " + esc(c.error) : ""}</td><td>${c.ms ?? ""}</td><td>${tBoth(c.since)}</td></tr>`).join("");
+  const outs = d.outages.map((o) => `<tr><td>${esc(o.name)}</td><td>${tBoth(o.start)}${o.start_note ? "<br><small>" + esc(o.start_note) + "</small>" : ""}</td><td>${o.end ? tBoth(o.end) : "ongoing"}</td><td>${o.end ? o.minutes + " min" : ""}</td><td>${esc((o.codes || []).join(", "))}</td></tr>`).join("");
+  return `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Uptime · Archwilio and controls</title><meta name="description" content="Up/down status for Archwilio (Welsh Historic Environment Records) with Coflein and Heneb as controls, checked every 5 minutes."><style>body{font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;color:#1d1d1f;background:#fafaf7}main{max-width:900px;margin:0 auto;padding:14px}details{background:#fff;border:1px solid #e3e3dc;border-radius:10px;margin:10px 0;padding:8px 12px}summary{cursor:pointer;font-weight:600}table{border-collapse:collapse;width:100%;font-size:13px}td,th{padding:4px 6px;border-top:1px solid #eee;text-align:left;vertical-align:top}th{font-weight:600;color:#555}tr.dn td{color:#b00020}small{color:#666}footer{max-width:900px;margin:0 auto;padding:14px;font-size:12px;color:#666}a{color:#245}</style>
+<script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.1.2"></script>
+</head><body><main><p>Checked every ${PERIOD_MIN} min · a change counts after ${UPTIME_CONFIRM} checks in a row · last check ${esc(tUTC(d.last_run?.at) || "pending")}${d.last_run ? " (" + esc(tUK(d.last_run.at)) + ")" : ""}</p>
+<details open><summary>Now</summary><table><thead><tr><th></th><th>Site</th><th>HTTP</th><th>ms</th><th>State since</th></tr></thead><tbody>${rows}</tbody></table></details>
+<details open><summary>Outages (last ${UPTIME_KEEP_DAYS} days)</summary>${outs ? `<table><thead><tr><th>Site</th><th>Start</th><th>End</th><th>Length</th><th>HTTP codes</th></tr></thead><tbody>${outs}</tbody></table>` : "<p>None recorded.</p>"}</details>
+</main><footer>HTTP 0 = no answer within 25 s; 52x = the site's own server did not answer its CDN. JSON: <a href="/uptime.json">/uptime.json</a> · <a href="/">change monitor</a></footer></body></html>`;
+}
+
 async function cron(env, ctx, sched) {
   const { state: st, added } = await loadAll(env);
   const changes = []; const tStart = Date.now();
   st.run = (st.run || 0) + 1;
+  const uptimeP = uptimeRun(env, st).catch((e) => { st.uptime_error = { at: now(), error: String(e).slice(0, 160) }; return []; });
   // 1. git branch heads (one request per repo); moved branches get their commits from the Atom feed (max 4 per run)
   let atomBudget = 4; let batons = null;
   for (const repo of SEED.repos) {
@@ -200,6 +280,7 @@ async function cron(env, ctx, sched) {
     st.sites[s.url] = rec;
   }
   st.last_run = { at: now(), shard, of: shards, checked: mine.length, wall_ms: Date.now() - tStart, cron: sched?.cron };
+  for (const e of await uptimeP) changes.push({ kind: e.up ? "up" : "down", site: "uptime:" + e.id, url: UPTIME.find((t) => t.id === e.id)?.url, status_new: e.status, summary: e.name + (e.up ? " back up" : " down") + " (confirmed)" });
   if (batons) await kvPut(env, st, "baton", scrubDeep(batons));
   if (changes.length) await appendChanges(env, st, changes);
   await kvPut(env, st, "state", st);
@@ -434,6 +515,8 @@ export default {
     if (p === "/robots.txt") return new Response("User-agent: *\nAllow: /\n# Agents: " + origin + "/.well-known/mcp.json\n", { headers: { ...H, "content-type": "text/plain" } });
     if (p === "/llms.txt") return new Response(`# bucklerfamily.estate change monitor\n\nUp/down and content-change monitor for every *.bucklerfamily.estate site; each change carries the git commit and agent behind it when known.\n\n- MCP (streamable HTTP, no key): ${origin}/mcp — tools: list_sites, get_changes(since), get_status, add_site(url), log_update(site, agent, summary), check_now(site), get_baton, claim_baton, release_baton\n- Discovery: ${origin}/.well-known/mcp.json · WebMCP: ${origin}/agent/webmcp.js\n- JSON: ${origin}/status.json · ${origin}/changes.json?since=<ISO time or n> · ${origin}/sites.json · Atom: ${origin}/feed.xml\n- Improvement flywheel (turn-taking baton): rules ${origin}/agents.md · get_baton(branch), claim_baton(branch, agent), release_baton(branch, agent, note, next) · ${origin}/baton.json\n- Agents: read get_changes(since) and get_baton before editing; sign commits "Agent: <name>"; pass the baton when done.\n`, { headers: { ...H, "content-type": "text/plain; charset=utf-8", "cache-control": "public, max-age=900" } });
     const q = Object.fromEntries(u.searchParams);
+    if (p === "/uptime" || p === "/uptime/") return cached(req, ctx, 60, async () => { const { state: st } = await loadAll(env); return new Response(uptimePage(st), { headers: { ...H, "content-type": "text/html; charset=utf-8", "cache-control": "public, max-age=60" } }); });
+    if (p === "/uptime.json") return cached(req, ctx, 60, async () => { const { state: st } = await loadAll(env); return J(uptimeJSON(st)); });
     if (p === "/status.json") return cached(req, ctx, 60, async () => J(await callTool(env, "get_status", q, ip)));
     if (p === "/sites.json") return cached(req, ctx, 60, async () => J(await callTool(env, "list_sites", q, ip)));
     if (p === "/changes.json") return cached(req, ctx, 60, async () => J(await callTool(env, "get_changes", q, ip)));
