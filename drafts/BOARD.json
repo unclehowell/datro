@@ -76,13 +76,13 @@
     {
       "id": "bp-preservation-reply",
       "record": "HubSpot task 531842137317",
-      "version": "v3.0.1",
+      "version": "v3.1.0",
       "status": "TURN: Grok",
-      "turn": "Grok (seat 3; independently review v3.0.1 after ChatGPT patch approved by Sion)",
-      "open_issues": 2,
-      "last_change": "2026-10-24T20:33:30Z",
-      "last_agent": "ChatGPT",
-      "rounds": 17,
+      "turn": "Grok (seat 3; independently review v3.1.0; Tab took an out-of-turn review on Sion's direct instruction 21:42 BST 24 Oct)",
+      "open_issues": 4,
+      "last_change": "2026-10-24T20:50:16Z",
+      "last_agent": "Tab",
+      "rounds": 18,
       "context": {
         "body": "BP",
         "as_of": "2026-10-24T10:09:33.970Z",
@@ -117,7 +117,7 @@
         "open_questions": 2,
         "route": "private",
         "regime": "preservation / correspondence",
-        "note": "v3.0.1 asks BP to route the preservation request to Group General Counsel, BP Properties Limited legal team and relevant legal-hold/records custodians. 16 Oct request is verified as passed to Jack Sheehy. 28 Sep mixed-recipient notice included bparchive@bp.com but is marked BOUNCED; delivery to BP is unresolved. Current-version review counters reset; no Gmail draft and nothing sent."
+        "note": "v3.1.0 (Tab, out of turn on Sion's instruction): CC is Jo Norman only, matching the status block; hedge sentence about the earliest verifiable request removed; full two-line sign-off restored. 16 Oct request verified as passed to Jack Sheehy. 28 Sep notice went to BP Archive among many recipients; HubSpot's BOUNCED flag is message-level and its single error matches another recipient's bounce, so delivery to BP Archive is unconfirmed rather than failed. Current-version review counters reset; no Gmail draft and nothing sent."
       },
       "tier_since": "2026-10-24T20:33:30Z",
       "tier": "working",
@@ -135,8 +135,8 @@
       ],
       "stage": "TURN",
       "pct_at": "2026-10-24T20:33:30Z",
-      "last_action_at": "2026-10-24T20:33:30Z",
-      "last_action_by": "ChatGPT",
+      "last_action_at": "2026-10-24T20:50:16Z",
+      "last_action_by": "Tab",
       "version_reviews": 0,
       "version_distinct_agents": 0,
       "version_agents": [],
@@ -1582,6 +1582,13 @@
       "version": "v3.0.1",
       "agent": "ChatGPT",
       "event": "Sion approved v3.0.1 preservation-routing and hold-confirmation patch; corrected 28 Sep delivery uncertainty; reset version review counts; handed to Grok. Not sent; no Gmail draft."
+    },
+    {
+      "at": "2026-10-24T20:50:16Z",
+      "draft": "bp-preservation-reply",
+      "version": "v3.1.0",
+      "agent": "Tab",
+      "event": "Out-of-turn review on Sion's direct instruction 21:42 BST 24 Oct: CC set to Jo Norman only (matches status), hedge sentence removed, full sign-off restored; 28 Sep bounce re-checked (message-level flag, not shown to be BP Archive). Handed back to Grok. Not sent; no Gmail draft."
     }
   ],
   "context_note": "drafts[].context = metadata-only context pack (recipient body, archive thread link, dartboard link, stage, next deadline, markers, open questions, rungs spent); built by hive_context.py from the dartboard roadmap, the email archive API and qa kb.json. Hive protocol v3.1.0 context sweep.",
