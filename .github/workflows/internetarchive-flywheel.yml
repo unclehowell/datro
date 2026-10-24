@@ -1,0 +1,76 @@
+name: Internet Archive flywheel (5-day snapshots of cited third-party sources)
+# Added by Tab on 24 Oct 2026 for internetarchive.bucklerfamily.estate.
+# Runs daily but captures only when the last complete run is 5+ days old (or a run was cut short);
+# workflow_dispatch always runs. Captures are made here in the runner and committed to the
+# `internetarchive` branch; Cloudflare Pages (project bucklerfamily-internetarchive) redeploys from that branch.
+# Roll back: Actions -> this workflow -> Disable (or delete this file). No alerts are sent.
+on:
+  schedule:
+    - cron: '23 4 * * *'
+  workflow_dispatch:
+    inputs:
+      max_minutes:
+        description: 'Stop starting new captures after this many minutes'
+        default: '150'
+      recheck_irrelevant:
+        description: 'Re-check pages earlier marked not relevant (1 = yes)'
+        default: '0'
+permissions:
+  contents: write
+concurrency:
+  group: internetarchive-flywheel
+  cancel-in-progress: false
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 200
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: internetarchive
+          fetch-depth: 1
+      - name: Due?
+        id: due
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, os, datetime as dt
+          ev = os.environ.get('GITHUB_EVENT_NAME')
+          try: runs = json.load(open('public/runs.json'))
+          except Exception: runs = {'runs': []}
+          last = runs.get('last_complete_utc'); cut = bool(runs['runs']) and not runs['runs'][-1].get('complete', True)
+          due = ev != 'schedule' or not last or cut or (dt.datetime.utcnow() - dt.datetime.strptime(last, '%Y-%m-%dT%H:%M:%SZ')).total_seconds() >= 5*86400 - 7200
+          print('run=' + ('true' if due else 'false'))
+          PY
+      - name: Tools
+        if: steps.due.outputs.run == 'true'
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils >/dev/null
+          python3 -m pip install -q --disable-pip-version-check requests beautifulsoup4 lxml
+          if ! curl -fsSL -o /usr/local/bin/monolith https://github.com/Y2Z/monolith/releases/latest/download/monolith-gnu-linux-x86_64 2>/dev/null; then
+            sudo curl -fsSL -o /usr/local/bin/monolith https://github.com/Y2Z/monolith/releases/latest/download/monolith-gnu-linux-x86_64 || true
+          fi
+          sudo chmod +x /usr/local/bin/monolith 2>/dev/null || true
+          if ! monolith --version >/dev/null 2>&1; then cargo install --locked monolith && sudo cp ~/.cargo/bin/monolith /usr/local/bin/; fi
+          monolith --version
+      - name: Capture
+        if: steps.due.outputs.run == 'true'
+        env:
+          MAX_MINUTES: ${{ github.event.inputs.max_minutes || '150' }}
+          RECHECK_IRRELEVANT: ${{ github.event.inputs.recheck_irrelevant || '0' }}
+        run: |
+          python3 tools/capture.py
+          python3 tools/build_index.py
+          find public -type f -size +24M -print
+      - name: Commit changed snapshots
+        if: steps.due.outputs.run == 'true'
+        run: |
+          git config user.name "Sion's Tab agent (flywheel)"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A sources.csv public
+          if git diff --cached --quiet; then echo "nothing changed"; exit 0; fi
+          n=$(git diff --cached --name-only | grep -c '/meta.json$' || true)
+          git commit -q -m "Archive run $(date -u +%Y-%m-%dT%H:%MZ): ${n} new captures — Sion's Tab agent"
+          for i in 1 2 3; do git push origin HEAD:internetarchive && break; git pull --rebase -q origin internetarchive; done
+      - name: Summary
+        if: always() && steps.due.outputs.run == 'true'
+        run: python3 -c "import json;r=json.load(open('public/runs.json'))['runs'][-1];print(json.dumps(r,indent=1))" >> "$GITHUB_STEP_SUMMARY" || true
