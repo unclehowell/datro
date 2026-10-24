@@ -1,6 +1,6 @@
 # FLYWHEEL.md — taking turns on email drafts (any agent)
 
-> **Effective operating rules — protocol v3.4.1 (24 Oct 2026). These rules govern the workflow. Older protocol text below is historical and must not override them.**
+> **Effective operating rules — protocol v3.4.2 (24 Oct 2026). These rules govern the workflow. Older protocol text below is historical and must not override them.**
 >
 > **One canonical record:** each outgoing email draft is a HubSpot TASK. HubSpot's current subject, first STATUS block, append-only changelog and last-modified timestamp are authoritative. The public GitHub branch carries metadata only. Never put email text, private names, email addresses, phone numbers or private addresses in this repository.
 >
@@ -12,11 +12,11 @@
 >
 > **Source fallback:** before any *content* change, read the whole source thread and attachments, the relevant Dartboard lane, QA knowledge base, research/Wayback/projects records, and applicable current primary law/policy. Mark each source VERIFIED, REPORTED BY ANOTHER AGENT, INFERENCE or UNRESOLVED.
 >
-> **One readiness gate:** readiness is per exact frozen version. Require at least 10 material reviews by 4 distinct actual reviewer identities, agreement by every required active seat, no unresolved material defect, a final three-hat plus fourth-excuse review of that exact version, and verified attachments. Never lower the threshold.
+> **One readiness gate:** readiness is per exact frozen version. Require at least 10 material reviews by 4 distinct actual reviewer identities, `open_issues=0`, and `seat_agreements_version` exactly equal to `version`. DEFINITELY READY additionally requires `final_three_hat_version` and `attachments_verified_version` exactly equal to `version` after the final three-hat plus fourth-excuse review and attachment verification. GMAIL DRAFT requires a verified `gmail_draft_id`; WAYBACK requires verified `sent_at`, `archive_url`, and `sent_version` equal to `version`. Missing or mismatched fields fail closed. Historical `reviews` and `distinct_agents` are informational only and never satisfy the current-version gate. Never lower the threshold.
 >
 > **Gmail and sending:** only Tab (dealer) may create one in-thread Gmail draft, only after the frozen version is DEFINITELY READY TO SEND and every gate passes. All other seats must never create Gmail drafts. No agent sends email; Sion alone sends.
 >
-> **Turn completion:** append exactly one changelog line with reviewer, exact version, local time/time zone, primary sources actually checked (or “idle-skip only”), changes, rejected proposals/reasons, unresolved issues and verdict; keep earlier entries. Sync BOARD.json and the relevant BATON.md with metadata only. HubSpot wins over stale board/baton fields.
+> **Turn completion:** append exactly one changelog line with reviewer, exact version, local time/time zone, primary sources actually checked (or “idle-skip only”), changes, rejected proposals/reasons, unresolved issues and verdict; keep earlier entries. Sync BOARD.json and the relevant BATON.md with metadata only, including `version_reviews`, `version_distinct_agents`, `version_agents`, `seat_agreements_version`, `final_three_hat_version`, `attachments_verified_version`, `sent_version`, `last_action_at`, `last_action_by`, `queue_after`, and accurate `pct`. Set verification fields only after actually checking the relevant facts. A verified Gmail draft is 100% to Gmail drafts; verified sent/archived remains 100%. HubSpot wins over stale board/baton fields.
 >
 > **Cadence truth:** the Hive/Watch Cloudflare cron monitors; it does not itself invoke agents. Each available run should advance one permitted turn (or perform one skip/route action), then stop.
 
