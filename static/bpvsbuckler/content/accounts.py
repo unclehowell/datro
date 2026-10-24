@@ -273,7 +273,7 @@ ACCOUNTS = {
 'ghf-19881201-1': dict(
     received="",
     words=[],
-    known="Mary's photographs, the family heirlooms, the papers, everything left of three centuries, in the house or in the road. Whatever remained of the family's own records went with it."),
+    known="Everything in the house or in the road went with it."),
 'ghf-19881202-1': dict(
     received="",
     words=[],
