@@ -1,5 +1,14 @@
 # Changelog — bucklervsbp
 
+## [0.0.1] - 2026-10-24
+
+### Fixed
+- Correct the documented site URL to match `CNAME` (`bucklervsbp.bucklerfamily.estate`), not the obsolete `datro.xyz` host.
+- Qualify the 1667 occupation date and “800-year-old” house wording as historical reports, not proof of uninterrupted title or an independently established construction date.
+
+### Reviewed
+- Kept the case overview, evidence IDs, dates and open questions intact; no allegation was changed into a finding.
+
 ## [bucklervsbp-v0.0.0.01] - 2026-06-02
 
 ### Added
