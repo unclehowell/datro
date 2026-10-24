@@ -2,6 +2,10 @@
 
 **Since 19 Oct 2026 the homepage is a straight Q&A knowledge base:** one-line questions, each opening to a full answer, with search, body and status filters and a deep link per question (`/#q-<slug>`). Its data is `kb.json` (one record per question: id, question, answer, body, status, exemption, reference, asked, answered, due, sources). The agent APIs below are unchanged.
 
+## Current UI release
+
+Release `0.1.1` displays an accessible warning when the fallback `kb.json` snapshot is more than 72 hours old. The current snapshot's `generated` date is shown by the warning; the Q&A statuses and source records are not changed by this UI-only release.
+
 ## The original graph
 
 **Live:** [qa.bucklerfamily.estate](https://qa.bucklerfamily.estate)
