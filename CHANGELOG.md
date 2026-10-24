@@ -1,4 +1,4 @@
-## [0.8.1.39] - 2026-10-24
+## [0.8.2] - 2026-10-24
 
 ### Fixed
 - Repair the mojibake separators and loading message in the branch release footer.
