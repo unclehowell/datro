@@ -29,3 +29,12 @@ One generator, one branch, a build flag. `FB_EDITION=then` (default) builds `sit
 Pages: `bucklerfamily-fb` (build `node check.mjs`, output `site`) and `bucklerfamily-fb2` (build `node check.mjs site2`, output `site2`), both from branch `fb`. Stories: site/stories.js (rings at the top of both walls). Anything moved to fb2 answers on fb with a 301 (site/_redirects, generated block).
 
 Shorts (both editions) carry pictures, video and hyperframes only, never a text slide (SHORTS GATE). fb2 email posts: the sender's own first-person summary, optional key words, hashtags (#email #to/#from …), dated and timed to the email's sent time; no "Reply" labels (23 Oct 2026).
+
+
+## Authorship rule (24 Oct 2026)
+Sion, 17:00 BST 24 Oct 2026: "If the mp actually said something then have his profile post it. If the newspaper published something have them post it. Other profiles should share or tag if it concerns them."
+- Every post on fb. and fb2. is authored by the party that actually published, said or sent the item: an email by its sender (the archived From header in `data/email_senders.json`, kept by `tools/email_senders.py`), an article by its newspaper, an MP's words by the MP, a judgment by the court, a journal article by the journal, a WhatDoTheyKnow notice by WhatDoTheyKnow. Items with no identifiable publisher go out from the archive profile (fb2: Great House Farm Wiki; fb.: Press cuttings).
+- Everyone else is @mentioned (`mentions`, shown as @Name under the post and listed on their profile) or shares ("X shared Y's post", a `Share` post that only points at the original).
+- `data/publishers.json`: sender rules (From header → profile), new publisher profiles, per-post corrections. `tools/publishers.py` applies it on every build and its `validate()` FAILS THE BUILD if an institution authors an item whose source is not theirs (email sender ≠ author; a media-register item by an institution; a source naming a newspaper or a journal host on an institution's post). New email from a new kind of sender: add a sender rule. New media-register item: author = its outlet in `data/press_now.json`, never a body it mentions.
+- Test hook: `FB_AUTHORSHIP_SKIP_APPLY=1 FB_EDITION=now python3 tools/build_wall.py` must fail (proves the check still bites).
+- People stay by role (ROLE in build_wall.py): MPs, MSs and councillors are shown as their office, not their names.

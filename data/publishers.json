@@ -1,0 +1,304 @@
+{
+ "rule": "AUTHORSHIP RULE (Sion, WhatsApp 17:00 BST 24 Oct 2026: \"If the mp actually said something then have his profile post it. If the newspaper published something have them post it. Other profiles should share or tag if it concerns them.\"). A post's author is the party that actually published, said or sent the item: an email by its sender (From header of the archived mail, data/email_senders.json), an article by its newspaper, a speech by the MP, a judgment by the court, a journal article by the journal, a platform notice by the platform. Other profiles are only @mentioned (tags) or share. Items with no identifiable publisher go out from the archive profile. tools/publishers.py applies this on every build and fails the build if an institution authors an item whose source is not theirs.",
+ "sender_rules": [
+  {
+   "from": "whatdotheyknow",
+   "author": "whatdotheyknow-unconfirmed",
+   "why": "WhatDoTheyKnow platform notice (status reminders, surveys, new-response alerts), not the body's own words"
+  },
+  {
+   "from": "Police (and Crime )?Commissioner",
+   "author": "south-wales-pcc",
+   "why": "the Police and Crime Commissioner's office is separate from the force"
+  },
+  {
+   "from": "\\(Registrars\\)|^Registration Service",
+   "author": "cardiff-vale-register-office",
+   "why": "Register Office"
+  },
+  {
+   "from": "^Library (Cathays|Central)",
+   "author": "cardiff-central-library",
+   "why": "Cardiff libraries (Cardiff Council)"
+  },
+  {
+   "from": "^Special Collections$",
+   "institution": "Cardiff University",
+   "author": "cardiff-university-special-collections",
+   "why": "Cardiff University Special Collections"
+  },
+  {
+   "from": "Hutt, Jane",
+   "author": "jane-hutt-ms",
+   "why": "the Member of the Senedd "
+  },
+  {
+   "from": "Joe Martin",
+   "author": "joe-martin-ms",
+   "why": "the Member of the Senedd's office"
+  },
+  {
+   "from": "Carroll, George|Cllr George Carroll",
+   "author": "cllr-george-carroll",
+   "why": "the councillor "
+  },
+  {
+   "from": "Franks, Christopher",
+   "author": "cllr-christopher-franks",
+   "why": "the councillor "
+  },
+  {
+   "from": "^Cardiff County, Enquiries|possessions\\.cardiff\\.countycourt",
+   "author": "cardiff-county-court",
+   "why": "the county court office"
+  },
+  {
+   "from": "^BPC\\.Cardiff",
+   "author": "business-and-property-courts-wales",
+   "why": "the Business and Property Courts office"
+  },
+  {
+   "from": "^Administrative Court Office",
+   "author": "administrative-court-wales",
+   "why": "the Administrative Court office"
+  },
+  {
+   "from": "NWSSP",
+   "author": "nhs-wales-shared-services",
+   "why": "NHS Wales Shared Services Partnership"
+  },
+  {
+   "from": "MedicalExaminersOffice",
+   "author": "medical-examiner-service-wales",
+   "why": "the Medical Examiner Service"
+  }
+ ],
+ "display_now": {
+  "member-of-parliament": "MP for Cardiff South and Penarth",
+  "member-of-parliament-vale-of-glamorgan": "MP for the Vale of Glamorgan",
+  "whatdotheyknow-unconfirmed": "WhatDoTheyKnow"
+ },
+ "about_now": {
+  "member-of-parliament": "The Member of Parliament for Cardiff South and Penarth. The MP's own replies are posted here.",
+  "member-of-parliament-vale-of-glamorgan": "The Member of Parliament for the Vale of Glamorgan. The MP's own replies are posted here.",
+  "whatdotheyknow-unconfirmed": "The public FOI website. Its own notices (new responses, status reminders, surveys) are posted here; the bodies are tagged."
+ },
+ "profiles_now": {
+  "south-wales-pcc": {
+   "name": "South Wales Police and Crime Commissioner",
+   "kind": "Public body · elected office",
+   "about": "The office of the South Wales Police and Crime Commissioner, separate from the force."
+  },
+  "cardiff-university-special-collections": {
+   "name": "Cardiff University Special Collections",
+   "kind": "Organisation · university archive",
+   "about": "Special Collections and Archives, Cardiff University."
+  },
+  "jane-hutt-ms": {
+   "name": "Member of the Senedd for the Vale of Glamorgan",
+   "kind": "Person · Member of the Senedd",
+   "about": "The Member of the Senedd for the Vale of Glamorgan. The Member's own replies are posted here; the Senedd is tagged."
+  },
+  "joe-martin-ms": {
+   "name": "Member of the Senedd (constituency office)",
+   "kind": "Person · Member of the Senedd",
+   "about": "A Member of the Senedd's constituency office. Its own replies are posted here; the Senedd is tagged."
+  },
+  "cllr-george-carroll": {
+   "name": "Vale of Glamorgan councillor",
+   "kind": "Person · councillor, Vale of Glamorgan Council",
+   "about": "A Vale of Glamorgan councillor. The councillor's own emails and newsletters are posted here; the council is tagged."
+  },
+  "cllr-christopher-franks": {
+   "name": "Vale of Glamorgan councillor (scrutiny)",
+   "kind": "Person · councillor, Vale of Glamorgan Council",
+   "about": "A Vale of Glamorgan councillor on the scrutiny committee. The councillor's own emails are posted here; the council is tagged."
+  },
+  "cardiff-county-court": {
+   "name": "Cardiff County Court (HMCTS)",
+   "kind": "Court · HM Courts & Tribunals Service",
+   "about": "The county court at Cardiff Civil Justice Centre. Its own replies are posted here; HMCTS is tagged."
+  },
+  "business-and-property-courts-wales": {
+   "name": "Business and Property Courts in Wales (HMCTS)",
+   "kind": "Court · HM Courts & Tribunals Service",
+   "about": "The Business and Property Courts office at Cardiff."
+  },
+  "administrative-court-wales": {
+   "name": "Administrative Court in Wales (HMCTS)",
+   "kind": "Court · HM Courts & Tribunals Service",
+   "about": "The Administrative Court office at Cardiff."
+  },
+  "nhs-wales-shared-services": {
+   "name": "NHS Wales Shared Services Partnership",
+   "kind": "Public body · NHS Wales",
+   "about": "NHS Wales Shared Services Partnership (information governance)."
+  },
+  "medical-examiner-service-wales": {
+   "name": "Medical Examiner Service (South Wales Central)",
+   "kind": "Public body · NHS Wales",
+   "about": "The Medical Examiner Service office for South Wales Central."
+  }
+ },
+ "profiles_then": {
+  "baptist-record": {
+   "name": "Baptist Record",
+   "kind": "Newspaper · Welsh Baptist journal",
+   "about": "The Baptist Record, a Welsh Baptist journal (Welsh Journals Online)."
+  }
+ },
+ "posts_then": {
+  "st-william-buckler-1989-06-30": {
+   "author": "south-wales-echo",
+   "mentions": [
+    "william-buckler"
+   ],
+   "lead": "William (Billy) Buckler, quoted:",
+   "share_by": [
+    "william-buckler"
+   ],
+   "why": "quote published by the South Wales Echo",
+   "kind": "Article",
+   "verb": "posted"
+  },
+  "st-judge-norman-francis-1988-12-05": {
+   "author": "western-mail",
+   "mentions": [
+    "judge-norman-francis"
+   ],
+   "lead": "The judge, quoted:",
+   "why": "words published by the Western Mail",
+   "kind": "Article",
+   "verb": "posted"
+  },
+  "st-cadw-1988-12-03": {
+   "author": "south-wales-echo",
+   "mentions": [
+    "cadw"
+   ],
+   "lead": "Cadw, quoted:",
+   "why": "statement published by the South Wales Echo",
+   "kind": "Article",
+   "verb": "posted"
+  },
+  "st-dillon-lj-1987-07-31": {
+   "author": "court-of-appeal",
+   "mentions": [
+    "dillon-lj"
+   ],
+   "lead": "Dillon LJ, giving judgment:",
+   "verb": "shared a judgment",
+   "why": "judgment published by the Court of Appeal",
+   "kind": "Judgment"
+  },
+  "r-1986-07-24-hollis": {
+   "author": "court-of-appeal",
+   "mentions": [
+    "hollis-j-high-court"
+   ],
+   "why": "the recital is in the Court of Appeal's judgment"
+  },
+  "n-1980-05-22-rowlands": {
+   "author": "ted-rowlands-mp",
+   "mentions": [
+    "hansard"
+   ],
+   "verb": "spoke in the Commons",
+   "text_sub": [
+    [
+     "^Mr\\.\\s+",
+     ""
+    ]
+   ],
+   "why": "the MP's own words (Hansard records them)"
+  },
+  "d-1908-john-williams": {
+   "author": "baptist-record",
+   "mentions": [
+    "williams-buckler-family"
+   ],
+   "verb": "published a notice",
+   "text_sub": [
+    [
+     "^The Williams / Buckler family announces the passing of",
+     "The passing of"
+    ]
+   ],
+   "why": "the obituary was published by the Baptist Record"
+  }
+ },
+ "posts_now": {
+  "mr-0183": {
+   "author": "sion-buckler-project-manager",
+   "text_sub": [
+    [
+     "^The family[’']s Instagram",
+     "An Instagram"
+    ]
+   ],
+   "why": "an Instagram post by the project manager's own account; no 'family' label"
+  },
+  "mr-0184": {
+   "author": "sion-buckler-project-manager",
+   "text_sub": [
+    [
+     "^The family[’']s Instagram",
+     "An Instagram"
+    ]
+   ],
+   "why": "as above"
+  },
+  "mr-0193": {
+   "author": "sion-buckler-project-manager",
+   "text_sub": [
+    [
+     "^The family[’']s Instagram",
+     "An Instagram"
+    ]
+   ],
+   "why": "as above"
+  },
+  "mr-0199": {
+   "author": "sion-buckler-project-manager",
+   "mentions": [
+    "mr-vale-of-glamorgan-hub"
+   ],
+   "text_sub": [
+    [
+     "^The family shared",
+     "Shared"
+    ]
+   ],
+   "why": "posted in the group by the project manager; the group did not publish it"
+  },
+  "mr-0115": {
+   "author": "archive",
+   "mentions": [
+    "mr-glamorgan-history-group"
+   ],
+   "verb": "shared a link",
+   "why": "group post by a member not named in the record: archive profile"
+  },
+  "mr-0116": {
+   "author": "archive",
+   "mentions": [
+    "mr-vale-of-glamorgan-hub"
+   ],
+   "verb": "shared a link",
+   "why": "group post by a member not named in the record: archive profile"
+  }
+ },
+ "archive_profile": {
+  "now": "mr-great-house-farm-wiki",
+  "then": "unidentified"
+ },
+ "drop_profiles_now": [
+  "mr-instagram-family-page"
+ ],
+ "newspaper_kinds": "Newspaper|newspaper|Press|outlet|Broadcaster|Journal",
+ "journal_hosts": "tandfonline\\.com|wiley\\.com|jstor\\.org|heinonline|sweetandmaxwell|cambridge\\.org|academic\\.oup\\.com|lawreview|journals\\.",
+ "redirects_now": {
+  "/u/mr-whatdotheyknow.html": "/u/whatdotheyknow-unconfirmed.html",
+  "/u/mr-instagram-family-page.html": "/u/sion-buckler-project-manager.html"
+ }
+}

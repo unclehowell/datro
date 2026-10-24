@@ -22,6 +22,8 @@ BS = importlib.util.module_from_spec(spec); spec.loader.exec_module(BS)
 _ts = importlib.util.spec_from_file_location("then_social", os.path.join(ROOT, "tools", "then_social.py"))
 TS = importlib.util.module_from_spec(_ts); _ts.loader.exec_module(TS)   # fb. as entirely Facebook, 1877–1994 (Sion, 03:06 BST 23 Oct 2026)
 e = lambda s: html.escape(str(s), quote=True)
+_pb = importlib.util.spec_from_file_location("publishers", os.path.join(os.path.dirname(os.path.abspath(__file__)), "publishers.py"))
+PUB = importlib.util.module_from_spec(_pb); _pb.loader.exec_module(PUB)   # the authorship rule (Sion, 17:00 BST 24 Oct 2026)
 BASE = BS.BASE
 # Editions (Sion, 01:24 BST 23 Oct 2026): FB_EDITION=then → fb.bucklerfamily.estate (site/, everything before 2005);
 # FB_EDITION=now → fb2.bucklerfamily.estate (site2/, 2005 onwards). One generator, one branch, two Pages projects.
@@ -188,6 +190,7 @@ body_profile("sw-brick-tile", "South Western Brick & Tile Co.", "Body · brick a
 body_profile("cefn-estates", "Cefn Estates", "Body · estate company", "Cefn Estates, a party in the farm's title chain.", "#006064", "CE")
 body_profile("bp-pension-trust", "BP Pension Trust", "Body · owner from 1969", "BP Pension Trust (the BP Pension Fund), which took the WGR estate in 1969 before BP Properties Ltd.", "#0d47a1", "BPT")
 body_profile("court-of-appeal", "Court of Appeal (Civil Division)", "Institution · Court of Appeal, 1987", "The Court of Appeal heard BP Properties Ltd v Buckler and gave judgment on 31 July 1987 ([1987] EWCA Civ 2).", "#263238", "CA")
+if not NOW: PUB.setup_then(body_profile)   # publisher profiles the authorship rule needs (data/publishers.json)
 if not NOW:
     if "bp" in PEO: PEO["bp"]["name"] = "BP Properties Ltd"
     if "heneb" in PEO: PEO["heneb"]["name"] = "GGAT (Glamorgan-Gwent Archaeological Trust)"
@@ -295,6 +298,9 @@ if NOW:
                "avatar": "img/social/av-fb2-%s.svg" % PM}
     FB2[FAMILY] = {"name": "Williams / Buckler family", "kind": "Family page · managed by Sion Buckler, Project Manager", "entity": False, "initials": "WB", "color": "#5d4037",
                    "about": "The family’s page, managed by Sion Buckler, Project Manager. It carries the daily highlight report.", "avatar": "img/social/av-fb2-%s.svg" % FAMILY}
+    PUB.setup_now(FB2, lambda sl: None, R["lanes"], lane_slug)   # MPs by name, platform notices, the senders' own profiles (avatars written below)
+    for sl_ in PUB.P["profiles_now"]:
+        if sl_ in FB2 and sl_ in FACES: FB2[sl_]["face"] = FACES[sl_]["img"]   # an illustrated portrait already drawn for fb. (public role only)
     for sl_, p_ in FB2.items():
         t_ = p_["initials"]; fs_ = 44 if len(t_) <= 2 else 32
         open(os.path.join(SITE, p_["avatar"]), "w").write(('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="%s"/>'
@@ -346,12 +352,19 @@ if NOW:
                 '<text x="50" y="50" dy=".36em" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-weight="700" font-size="%d" fill="#fff">%s</text></svg>') % (FB2[sl_]["color"], fs_, e(t_)))
         for r_ in PN["posts"]:
             x = dict(r_); x["actor"] = _alias.get(r_["actor"], r_["actor"]); x["tags"] = []; x["wall"] = True; x["rank"] = 2; x["press"] = r_["mr"]
-            x["lead"] = ""; x["quote"] = None; x["src"] = [tuple(s_) for s_ in r_["src"]]
+            x["lead"] = ""; x["quote"] = None; x["src"] = [tuple(s_) for s_ in r_["src"]]; x["press_outlet"] = PN["profiles"].get(r_["actor"], {}).get("name", "")
             if prof(x["actor"]) and r_["date"][:4] >= "1995": EV.append(x)
+# THE AUTHORSHIP RULE (Sion, 17:00 BST 24 Oct 2026): every post by the party that published it, others @mentioned or sharing; the build fails otherwise.
+EV = PUB.apply(EV, prof, NOW)
+if NOW:
+    _used = {x["actor"] for x in EV} | {t for x in EV for t in x.get("tags", [])}
+    for sl_ in PUB.P.get("drop_profiles_now", []):
+        if sl_ in FB2 and sl_ not in _used: del FB2[sl_]
+PUB.validate(EV, prof, NOW, FB2 if NOW else {**PEO, **OUT}); PUB.write_redirects(SITE, NOW)
 EV.sort(key=lambda x: (x["date"], -x.get("rank", 3)), reverse=True)
 REPLY_DATES = collections.defaultdict(list); LETTERS = collections.defaultdict(list)
 for x in sorted(EV, key=lambda x: x["date"]):
-    if x["kind"].startswith("Reply"): REPLY_DATES[x["actor"]].append(x["date"])
+    if x["kind"].startswith("Reply"): REPLY_DATES[x.get("lane_actor", x["actor"])].append(x["date"])
     if x["kind"] == "Letter sent" and x["tags"]: LETTERS[x["tags"][0]].append(x)
 FR = TS.graph(EV, prof) if not NOW else {}
 BYP = collections.defaultdict(list)
@@ -374,6 +387,10 @@ PRESS_VERB = {"Article": "shared a link", "Archive extract": "shared a link", "A
               "Record entry": "added a life event", "Update": "posted an update", "Post": "posted"}
 def verb(x, up):
     k = x["kind"]
+    if x.get("shared"):
+        sa = x.get("shared_author")
+        return (' <span class="wl-verb">shared</span> <a class="sp-n" href="%su/%s.html">%s</a><span class="wl-verb">’s post</span>' % (up, sa, e(prof(sa)["name"]))) if prof(sa) else ' <span class="wl-verb">shared a post</span>'
+    if x.get("verb"): return ' <span class="wl-verb">%s</span>' % e(x["verb"])
     if x.get("email"): return ""   # an email is the sender's own post: no "replied:" / "sent a message" label (Sion, 17:18 BST 23 Oct 2026)
     if x.get("life"):
         fr = [t for t in x["tags"] if t and prof(t)]
@@ -410,7 +427,7 @@ def social_bits(x, up):
     if k == "Deadline passed":
         out.append('<p class="wl-seen wl-seen-r">Seen · no reply by the deadline</p>')
     if k.startswith("Reply"):
-        prev = next((l for l in reversed(LETTERS.get(a, [])) if l["date"] <= x["date"]), None)
+        prev = next((l for l in reversed(LETTERS.get(x.get("lane_actor", a), [])) if l["date"] <= x["date"]), None)
         if prev: cms.insert(0, cbubble("williams-buckler-family", "Sent %s%s." % (prev.get("what", "a letter"), ""), prev["when"], up, "earlier"))
     if cms: out.append('<div class="wl-cms">%s</div>' % "".join(cms))
     if x.get("rcm"): out.append(TS.comments_html(x, up, prof, avimg))
@@ -421,7 +438,7 @@ def card(x, up):
     h = ['<article class="post sp wl" id="%s"><header class="sp-h"><a class="sp-av" href="%s" tabindex="-1" aria-hidden="true">%s</a>'
          '<div class="sp-who"><a class="sp-n" href="%s">%s</a>%s<div class="sp-d"><time datetime="%s">%s</time>%s · %s</div></div></header>'
          % (e(x["id"]), pu, avimg(a, up), pu, e(p["name"]), verb(x, up) + (
-            "".join(' <span class="wl-with">with <a href="%su/%s.html">%s</a></span>' % (up, t, e(prof(t)["name"])) for t in x["tags"][:2] if t and prof(t) and t != a and x["kind"] != "Highlight report") if not (x.get("life") or x["kind"] == "Letter sent") else ""),
+            "".join(' <span class="wl-with">with <a href="%su/%s.html">%s</a></span>' % (up, t, e(prof(t)["name"])) for t in [t_ for t_ in x["tags"] if t_ not in (x.get("mentions") or []) and not x.get("shared")][:2] if t and prof(t) and t != a and x["kind"] != "Highlight report") if not (x.get("life") or x["kind"] == "Letter sent") else ""),
             e(x.get("dtiso") or x["date"]), e(x["when"]), (" at %s" % e(x["at"])) if x.get("at") else "", "Email" if x.get("email") else e(x["kind"]))]
     if x.get("exception"): h[0] = h[0].replace('<article class="post sp wl" ', '<article class="post sp wl" data-src-exception="highlight-report" ', 1)
     if x.get("press"): h[0] = h[0].replace('<article class="post sp wl" ', '<article class="post sp wl" data-src="media-register" data-mr="%s" ' % e(x["press"]), 1)
@@ -445,6 +462,9 @@ def card(x, up):
         h.append('<p class="wl-hope">%s</p></details>' % e(d["hope"]))
     elif x.get("hf"):
         h.append('<h2 class="pt sp-t">%s</h2>' % e(x["hf"]["title"]))
+    elif x.get("shared"):   # "X shared Y's post": the original stays Y's; the sharer adds nothing of its own
+        sa = x.get("shared_author")
+        h.append('<blockquote class="wl-share"><a href="%su/%s.html#%s">%s</a><span>%s</span></blockquote>' % (up, sa, e(x["shared"]), e(prof(sa)["name"]) if prof(sa) else "", e(short(fix(x.get("shared_title") or ""), 180))))
     else:
         if x.get("title") and not x.get("life"): h.append('<h2 class="pt sp-t">%s</h2>' % e(fix(x["title"])))
         if x.get("lead"): h.append('<p class="wl-lead">%s</p>' % e(x["lead"]))
@@ -452,6 +472,7 @@ def card(x, up):
         if x.get("text"): h.append("<p>%s</p>" % e(fix(x["text"])))
         if x.get("key"): h.append('<blockquote class="wl-q wl-key">“%s”</blockquote>' % e(x["key"]))
         if x.get("hashtags"): h.append('<p class="wl-tags">%s</p>' % " ".join('<span class="wl-ht">%s</span>' % e(t_) for t_ in x["hashtags"]))
+        if x.get("mentions"): h.append('<p class="wl-at">%s</p>' % " ".join('<a href="%su/%s.html">@%s</a>' % (up, m_, e(prof(m_)["name"])) for m_ in x["mentions"] if prof(m_)))
         if x.get("text2"): h.append('<p class="wl-lead">%s</p>' % e(x["text2"]))
         if x.get("photo") and os.path.exists(os.path.join(SITE, x["photo"])): h.append('<figure class="sp-media"><img src="%s%s" alt="" loading="lazy"></figure>' % (up, e(x["photo"])))
     if not x.get("daily") and not x.get("hf"): h.append(TS.media_html(x, up))
@@ -505,6 +526,8 @@ html[data-ghf-mode="night"] .wl-tags{color:#8ab4ff}
 .mr-ytt{font-size:15px;font-weight:600;line-height:1.3;overflow-wrap:anywhere}
 """
 WALLCSS = """/* wall.css — the hope wall and full profiles (22 Oct 2026). — Sion's Tab agent */
+.wl-at{margin:.4em 0 0;font-size:.92em}.wl-at a{color:#1b5fbf;text-decoration:none;margin-right:.5em;font-weight:600}
+.wl-share{margin:.5em 0;padding:.6em .8em;border:1px solid #dfe3e8;border-radius:10px;background:#f7f8fa}.wl-share a{display:block;font-weight:700;color:#1c1e21;text-decoration:none;margin-bottom:.2em}.wl-share span{color:#4b4f56;font-size:.95em}
 .wl-hero{background:var(--card);padding:14px 14px 10px;margin:0 0 10px}
 .wl-hero h1{margin:0;font-size:21px}.wl-hero p{margin:0;color:var(--muted);font-size:14px}
 .wl-years{padding:8px 0 2px}
@@ -893,7 +916,7 @@ def build():
             if t2 != t: open(fp, "w", encoding="utf-8").write(t2)
     os.makedirs(os.path.join(SITE, "api"), exist_ok=True)
     json.dump({"schema": "fb wall v1", "generated": dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"), "count": len(EV),
-               "events": [{k: v for k, v in x.items() if k in ("id", "date", "when", "actor", "kind", "title", "quote", "text", "src", "tags", "wall", "link")} for x in EV]},
+               "events": [{k: v for k, v in x.items() if k in ("id", "date", "when", "actor", "kind", "title", "quote", "text", "src", "tags", "wall", "link", "mentions", "shared", "shared_author")} for x in EV]},
               open(os.path.join(SITE, "api", "wall.json"), "w", encoding="utf-8"), ensure_ascii=False)
     # every visible line we wrote passes the house list
     bad = []
