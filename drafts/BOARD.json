@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-24T10:42:00Z",
+ "updated": "2026-10-24T10:44:50Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
@@ -66,7 +66,11 @@
    "version_reviews": 0,
    "version_distinct_agents": 0,
    "version_agents": [],
-   "queue_after": null
+   "queue_after": null,
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null
   },
   {
    "id": "bp-preservation-reply",
@@ -134,7 +138,11 @@
    "version_reviews": 0,
    "version_distinct_agents": 0,
    "version_agents": [],
-   "queue_after": null
+   "queue_after": null,
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null
   },
   {
    "id": "cardiff-central-library-bute-x6-12-reply",
@@ -202,7 +210,11 @@
    "version_reviews": 0,
    "version_distinct_agents": 0,
    "version_agents": [],
-   "queue_after": "bp-preservation-reply"
+   "queue_after": "bp-preservation-reply",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null
   },
   {
    "id": "hmlr-eir-1961-deed",
@@ -263,7 +275,14 @@
     "Tab"
    ],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "hmlr-sar-wa735527-wa513690",
@@ -325,7 +344,14 @@
     "Tab"
    ],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "vale-eir-vg41",
@@ -388,7 +414,14 @@
     "Tab"
    ],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "glamorgan-archives-vg41-catalogue",
@@ -445,7 +478,14 @@
     "Tab"
    ],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "hmlr-eir-vg41",
@@ -506,7 +546,14 @@
     "Tab"
    ],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "tna-hmlr-commons-records-1960-72",
@@ -568,7 +615,14 @@
     "Tab"
    ],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "hmlr-customer-support-titles",
@@ -630,7 +684,14 @@
     "Tab"
    ],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "hmlr-wales-office-z084nqv",
@@ -695,7 +756,14 @@
     "Tab"
    ],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "cardiff-eir-1961-deed",
@@ -743,7 +811,14 @@
     "Tab"
    ],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "hmcts-cardiff-1955-1962-records",
@@ -805,7 +880,14 @@
     "Tab"
    ],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "rics-022900001630-clarification",
@@ -825,7 +907,14 @@
    "distinct_agents": 0,
    "agents": [],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "itv-foi-archive-footage",
@@ -845,7 +934,14 @@
    "distinct_agents": 0,
    "agents": [],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "nlw-research-enquiry",
@@ -865,7 +961,14 @@
    "distinct_agents": 0,
    "agents": [],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "tna-foi-resend-22-oct",
@@ -885,7 +988,14 @@
    "distinct_agents": 0,
    "agents": [],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "cadw-ticket-628912926",
@@ -905,7 +1015,14 @@
    "distinct_agents": 0,
    "agents": [],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "heneb-her-villa-foi",
@@ -925,7 +1042,14 @@
    "distinct_agents": 0,
    "agents": [],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "swp-internal-review-1188-26",
@@ -945,7 +1069,14 @@
    "distinct_agents": 0,
    "agents": [],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "hmlr-sar-d260928",
@@ -965,7 +1096,14 @@
    "distinct_agents": 0,
    "agents": [],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "heneb-complaint-outcome",
@@ -985,7 +1123,14 @@
    "distinct_agents": 0,
    "agents": [],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "tna-internal-review-cas-347296",
@@ -1005,7 +1150,14 @@
    "distinct_agents": 0,
    "agents": [],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "swp-foi-1264-26",
@@ -1025,7 +1177,14 @@
    "distinct_agents": 0,
    "agents": [],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "llandough-cc-internal-review",
@@ -1045,7 +1204,14 @@
    "distinct_agents": 0,
    "agents": [],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "defra-foi-eir-20-oct",
@@ -1065,7 +1231,14 @@
    "distinct_agents": 0,
    "agents": [],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "hmlr-eir-20-oct",
@@ -1085,7 +1258,14 @@
    "distinct_agents": 0,
    "agents": [],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "church-in-wales-rb-property",
@@ -1105,7 +1285,14 @@
    "distinct_agents": 0,
    "agents": [],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   },
   {
    "id": "ico-s50-museum-wales",
@@ -1125,7 +1312,14 @@
    "distinct_agents": 0,
    "agents": [],
    "stage": "TURN",
-   "pct_at": "2026-10-24T09:35:25Z"
+   "pct_at": "2026-10-24T09:35:25Z",
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null,
+   "version_reviews": null,
+   "version_distinct_agents": null,
+   "version_agents": null
   }
  ],
  "events": [
@@ -1317,6 +1511,13 @@
    "version": "schema v3.4.0",
    "agent": "ChatGPT",
    "event": "synced BP/HMLR/Cardiff with HubSpot; version-scoped review counters added to active rows; legacy tiers fail closed and missing current-version counts do not inherit historic review totals"
+  },
+  {
+   "at": "2026-10-24T10:44:50Z",
+   "draft": "board",
+   "version": "schema v3.4.2",
+   "agent": "ChatGPT",
+   "event": "added explicit per-version seat-agreement, final-three-hat, attachment-verification and sent-version gate fields; unverified/missing values remain null and block promotion"
   }
  ],
  "context_note": "drafts[].context = metadata-only context pack (recipient body, archive thread link, dartboard link, stage, next deadline, markers, open questions, rungs spent); built by hive_context.py from the dartboard roadmap, the email archive API and qa kb.json. Hive protocol v3.1.0 context sweep.",
@@ -1348,5 +1549,5 @@
   }
  ],
  "tier_note": "Promotion pyramid (Hive protocol v3.2.0): working (drafting rounds) -> row 1 READY TO SEND (consensus) -> row 2 DEFINITELY READY TO SEND (final three-hat) -> row 3 GMAIL DRAFT (Tab creates the in-thread Gmail draft only after DEFINITELY READY TO SEND; the project owner reviews and sends) -> row 4 WAYBACK (sent, archived on email. and wayback.). Set by work/watch/hive_tier.py from the HubSpot subject; gmail_draft_id / sent_at / archive_url kept once set.",
- "pct_rule": "% = progress to Gmail drafts for the exact current frozen version only. version_reviews / version_distinct_agents count material reviews and actual reviewer identities recorded on that exact version; an edit creates a new version and resets both counters to zero. Historical `reviews`/`distinct_agents` are cumulative display totals only and MUST NOT satisfy the current-version gate. A minimum of 10 material reviews + 4 distinct actual identities, agreement by every required active seat, zero unresolved material defects, final three-hat/fourth-excuse pass and verified attachments are required. Missing exact-version counters mean unknown progress, never fallback to historical totals and never READY/GMAIL."
+ "pct_rule": "Percent is progress to Gmail drafting for the exact current frozen version only. Gate counters version_reviews and version_distinct_agents must be verified for the current version; historical reviews/distinct_agents are informational only. Promotion beyond IN REVIEW additionally requires open_issues=0 and seat_agreements_version exactly equal to version. DEFINITELY READY TO SEND requires final_three_hat_version and attachments_verified_version both exactly equal to version. GMAIL DRAFT requires gmail_draft_id and the exact-version final gate; WAYBACK requires verified sent_at, archive_url and sent_version equal to version. Missing or mismatched fields always fail closed; never infer readiness from a status prefix or a stale tier."
 }
