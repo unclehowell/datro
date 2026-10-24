@@ -566,7 +566,7 @@ async function hiveData(env) {
     const vm = String(d.version || "").match(/v?(\d+)\.(\d+)/);
     const tier = hiveTierOf(d);
     const rawStatus = String((d && d.status) || "");
-    const status = tier === "working" && /READY TO SEND|GMAIL DRAFT/i.test(rawStatus) ? "IN REVIEW — READINESS GATE NOT VERIFIED" : rawStatus;
+    const status = tier === "working" && /READY TO SEND|GMAIL DRAFT/i.test(rawStatus) ? "IN REVIEW — READINESS GATE NOT VERIFIED" : tier === "working" && /SENT/i.test(rawStatus) ? "SENT CLAIM — ARCHIVE GATE NOT VERIFIED" : rawStatus;
     const version_reviews = d && d.version_reviews != null && Number.isFinite(Number(d.version_reviews)) ? Number(d.version_reviews) : null;
     const version_distinct_agents = d && d.version_distinct_agents != null && Number.isFinite(Number(d.version_distinct_agents)) ? Number(d.version_distinct_agents) : null;
     const version_agents = Array.isArray(d && d.version_agents) ? d.version_agents : null;
@@ -645,9 +645,9 @@ function hiveTierOf(d) {
   const gate = Number.isFinite(reviews) && reviews >= 10 && Number.isFinite(agents) && agents >= 4 && Number.isFinite(openIssues) && openIssues === 0 && !!d.version && d.seat_agreements_version === d.version;
   const finalGate = gate && d.final_three_hat_version === d.version && d.attachments_verified_version === d.version;
   // Fail closed: a turn-status always overrides a stale higher tier on the public metadata board.
-  if (d && d.sent_at && d.archive_url && d.sent_version === d.version && (s.startsWith("SENT") || d.tier === "sent_archived")) return "sent_archived";
   if (s.includes("QUEUED") || s.includes("PENDING")) return "working";
   if (s.includes("TURN") || s.includes("IN REVIEW") || s.includes("OTHER AGENT'S TURN") || s.includes("TAB'S TURN")) return "working";
+  if (s.includes("SENT")) return d && d.sent_at && d.archive_url && d.sent_version === d.version ? "sent_archived" : "working";
   if (s.includes("GMAIL DRAFT")) return finalGate && d && d.gmail_draft_id ? "gmail_draft" : "working";
   if (s.includes("DEFINITELY READY")) return finalGate ? "definitely_ready" : "working";
   if (s.includes("READY TO SEND")) return gate ? "ready" : "working";
@@ -655,7 +655,7 @@ function hiveTierOf(d) {
   if (t === "gmail_draft") return finalGate && d && d.gmail_draft_id ? "gmail_draft" : "working";
   if (t === "definitely_ready") return finalGate ? "definitely_ready" : "working";
   if (t === "ready") return gate ? "ready" : "working";
-  if (t === "sent_archived") return d && d.sent_at && d.archive_url ? "sent_archived" : "working";
+  if (t === "sent_archived") return d && d.sent_at && d.archive_url && d.sent_version === d.version ? "sent_archived" : "working";
   return "working";
 }
 function famUrl(u) { return /^https:\/\/([a-z0-9-]+\.)*bucklerfamily\.estate(\/|$)/i.test(String(u || "")) ? String(u).slice(0, 300) : null; }
