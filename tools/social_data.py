@@ -321,16 +321,16 @@ P(id="d-1864-12-23-amy-williams", outlet="williams-buckler-family", date="1864-1
                  cite="Cardiff and Merthyr Guardian, 30 December 1864, death notice. Legal Wiki EV-0246.", links=[("Welsh Newspapers Online","https://newspapers.library.wales/view/3094324/3094329/21/"),("EV-0246","@EV-0246")])],
   shares=["cardiff-times","cardiff-merthyr-guardian"], recon=True,
   source=dict(cite="Death notices in the Cardiff Times and the Cardiff and Merthyr Guardian, 30 December 1864. Legal Wiki EV-0246.", ev="EV-0246", links=[("EV-0246","@EV-0246")]))
-P(id="d-1908-john-williams", outlet="williams-buckler-family", date="1908-10-22", when="1908 (day and month not recorded)", dt="1908", kind="announcement",
+P(id="d-1908-john-williams", outlet="williams-buckler-family", date="1908-07-17", when="17 July 1908", kind="announcement",
   headline="Mr. John Williams, Great House",
-  body=["The Williams / Buckler family announces the passing of Mr. John Williams, Great House, Llandough, in 1908."],
+  body=["The Williams / Buckler family announces the passing of Mr. John Williams, Great House Farm, Llandough, on Friday 17 July 1908, aged 81. He was buried on 21 July."],
   comments=[dict(who="barry-dock-news", when="23 October 1908", label="From “Court Leet at Llandough”", text="A vote of sympathy was passed with the family of the late Mr. John Williams, Great House, Llandough, for many years a juror of the court.",
                  cite="Barry Dock News, 23 October 1908, p.3. Legal Wiki EV-0243.", links=[("Welsh Newspapers Online","https://newspapers.library.wales/view/4611107/4611110/29/"),("EV-0243","@EV-0243")]),
             dict(who="mary-williams", when="c. 1974", label="From her statement", text="In the year 1908 my grandfather died and my father took over the farm.",
                  cite="Mary (Nancy) Williams’s statement (c. 1974), as quoted on Legal Wiki EV-0243 (full transcription GHF-E196-01).", links=[("EV-0243","@EV-0243"),("Her statement","https://greathousefarmwiki.wordpress.com/testimony/mary-williams/")])],
   shares=["barry-dock-news","mary-williams"], recon=True,
-  note="The day and month of his death are not in the record held; the court report of 23 October 1908 calls him “the late Mr. John Williams”.",
-  source=dict(cite="Barry Dock News, 23 October 1908, p.3 (EV-0243); Mary (Nancy) Williams’s statement, c. 1974.", ev="EV-0243", links=[("EV-0243","@EV-0243")]))
+  note="The Baptist Record of October 1908 (Llandough notes) records “the death of Mr. John Williams, of Great House Farm, Llandough, which occurred on Friday, July 17th, and the burial on the 21st, aged 81”.",
+  source=dict(cite="Baptist Record, October 1908 (Vol. 13 no. 139, p.27, Llandough notes); Barry Dock News, 23 October 1908, p.3 (EV-0243); Mary (Nancy) Williams’s statement, c. 1974.", ev="EV-0243", links=[("Baptist Record, Welsh Journals Online","https://journals.library.wales/view/2859107/2906072/26"),("EV-0243","@EV-0243")]))
 P(id="d-1967-frederick-buckler", outlet="mary-williams", date="1967-01-01", when="1965–67 (the records differ: see below)", dt="1967", kind="announcement",
   headline="Frederick Buckler",
   body=["Mary (Nancy) Williams announces the passing of Frederick Buckler, aged 58.",
