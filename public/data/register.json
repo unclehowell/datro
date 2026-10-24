@@ -1,0 +1,651 @@
+{
+ "site": "courtdrills.bucklerfamily.estate",
+ "title": "Court Drills — Procedural unfairness",
+ "version": "1.0.0",
+ "built": "2026-10-24",
+ "categories": {
+  "P": {
+   "label": "procedural unfairness",
+   "count": 10
+  },
+  "M": {
+   "label": "court mistakes",
+   "count": 8
+  },
+  "O": {
+   "label": "other miscarriages of justice",
+   "count": 5
+  }
+ },
+ "proceedings": [
+  {
+   "year": "1955",
+   "forum": "High Court, Order 14",
+   "title": "Western Ground Rents Ltd v Frederick Buckler: possession of the farm",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶6",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    }
+   ]
+  },
+  {
+   "year": "1962",
+   "forum": "Cardiff County Court",
+   "title": "Western Ground Rents Ltd v Frederick Buckler and Mrs Buckler: farmhouse and garden",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶9",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    }
+   ]
+  },
+  {
+   "year": "1974",
+   "forum": "Cardiff County Court",
+   "title": "BP Pension Trust Ltd v Mrs Buckler (sued as Mrs Williams) and others; leave to enforce the 1962 order",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶11",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    }
+   ]
+  },
+  {
+   "year": "1983",
+   "forum": "HM Land Registry",
+   "title": "First registration of the farmhouse and garden (WA240304)",
+   "src": [
+    {
+     "ref": "HM Land Registry letter, 30 July 2026, WA240304 schedule, items 10–13",
+     "url": "https://wayback.bucklerfamily.estate/pdf/foi/2026-07-30_hmlr_first-registration-schedule.pdf"
+    }
+   ]
+  },
+  {
+   "year": "1984",
+   "forum": "High Court, Queen’s Bench Division",
+   "title": "BP Properties Ltd v William Buckler: writ of 22 May 1984",
+   "src": [
+    {
+     "ref": "European Commission of Human Rights, Application No. 14464/88, decision of 14 April 1989, The Facts, p. 2",
+     "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf"
+    }
+   ]
+  },
+  {
+   "year": "1986",
+   "forum": "High Court, Queen’s Bench Division, Cardiff",
+   "title": "Trial: heard 10 July 1986, judgment 24 July 1986",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶1",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "European Commission of Human Rights, Application No. 14464/88, The Facts",
+     "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf"
+    }
+   ]
+  },
+  {
+   "year": "1987",
+   "forum": "Court of Appeal",
+   "title": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, 31 July 1987",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶1",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    }
+   ]
+  },
+  {
+   "year": "1988",
+   "forum": "House of Lords; bailiffs; Strasbourg",
+   "title": "Leave refused 3 March 1988; eviction attempt 29 April; possession 29 November; demolition from 6 December",
+   "src": [
+    {
+     "ref": "European Commission of Human Rights, Application No. 14464/88, The Facts, p. 2",
+     "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf"
+    }
+   ]
+  }
+ ],
+ "points": [
+  {
+   "id": "P01",
+   "k": "P",
+   "date": "1955",
+   "forum": "High Court, Order 14",
+   "proc": "1955",
+   "t": "Possession of the whole farm sought against Frederick Buckler alone, summary judgment, no trial",
+   "what": "Possession of the whole farm was sought against Frederick Buckler alone and obtained under Order 14, the summary procedure, without a trial.",
+   "quote": "Western Ground Rents then brought proceedings for possession against Mr Frederick Buckler in the High Court and obtained a possession order, under Order 14, in respect of the whole of the farm.",
+   "why": "Mary (Nancy) Williams lived in the farmhouse and was not a party. The order that started the chain was made with no hearing of the person whose home it was, and the house was left out of the enforcement on 4 July 1955 because of her.",
+   "basis": "record",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶6",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    }
+   ]
+  },
+  {
+   "id": "M06",
+   "k": "M",
+   "date": "1955 / 1987",
+   "forum": "High Court, Order 14; Court of Appeal",
+   "proc": "1955",
+   "t": "“The whole of the farm”: no parcel or plan identified",
+   "what": "The 1955 order is recited as covering “the whole of the farm”, and the 1916 letting as of “the whole of the farm”. No plan or parcel list is quoted for either.",
+   "quote": "possession was taken in respect of all parts of the farm except the farmhouse and garden",
+   "why": "The land each order bound is described only as “the whole” or by exclusion. The appeal was limited to the farmhouse and garden “shown coloured red on the plan served with the statement of claim” (¶2); that plan is not reproduced in the judgment.",
+   "basis": "record",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶2",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶4",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶6",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    }
+   ]
+  },
+  {
+   "id": "P02",
+   "k": "P",
+   "date": "11 Dec 1962",
+   "forum": "Cardiff County Court",
+   "proc": "1962",
+   "t": "1962 order left unenforced for almost twelve years, then revived by a successor",
+   "what": "A possession order for the farmhouse and garden was made on 11 December 1962 and then left unenforced for almost twelve years.",
+   "quote": "nothing was done before 1974 to enforce the 1962 possession order",
+   "why": "The order was revived in September 1974, less than three months before its twelve years ran out, by a company that was not the party it was made for. The Court of Appeal later held it kept the owner’s title alive to 31 October 1974.",
+   "basis": "record",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶9",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶28",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    }
+   ]
+  },
+  {
+   "id": "P03",
+   "k": "P",
+   "date": "3 Jul 1974",
+   "forum": "Cardiff County Court",
+   "proc": "1974",
+   "t": "The occupier’s 1974 defence filed and never heard",
+   "what": "BP Pension Trust’s own possession action was adjourned part heard for a defence. The defence pleaded that the claim was barred by adverse possession under the Limitation Act 1939.",
+   "quote": "That action has never been finally heard.",
+   "why": "The occupier’s pleaded defence was never decided in the action brought against her. The owner moved instead to enforce the 1962 order, and her defence stayed on the court file, unheard, until her death in March 1983.",
+   "basis": "record",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶11",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "EV-0049, the 1974 defence",
+     "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0049"
+    }
+   ]
+  },
+  {
+   "id": "P04",
+   "k": "P",
+   "date": "17–19 Sep 1974",
+   "forum": "Cardiff County Court",
+   "proc": "1974",
+   "t": "Leave to enforce granted on two days’ notice while the owner’s own action was part heard",
+   "what": "Notice of an application for leave to enforce the 1962 order was given on 17 September 1974; leave was granted on 19 September, two days later, to BP Pension Trust “as successors in title to Western Ground Rents”.",
+   "quote": "on the ground that Mrs Buckler had had insufficient notice of the application and therefore had had no opportunity of presenting her case",
+   "why": "Two days’ notice, while the applicant’s own action against her was part heard. The ground of her appeal, recorded in the judgment, is the want of a hearing.",
+   "basis": "record",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶11",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶12",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    }
+   ]
+  },
+  {
+   "id": "M07",
+   "k": "M",
+   "date": "19 Sep 1974 / 1987",
+   "forum": "Cardiff County Court; Court of Appeal",
+   "proc": "1974",
+   "t": "Succession to the 1962 order rests on a conveyance missing from both registration files",
+   "what": "Leave to enforce the 1962 order was given to BP Pension Trust as “successors in title to Western Ground Rents”, and the Court of Appeal held the order still enforceable by “the landlords” on 31 October 1974.",
+   "quote": "enforcement of the judgment for possession of December 11 1962 was still open to the landlords at October 31 1974",
+   "why": "The succession rests on the December 1969 sale, recited in the judgment. That conveyance is not listed on either HM Land Registry first-registration file.",
+   "basis": "family's case",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶9",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶11",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶28",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "HM Land Registry letter, 30 July 2026 (ref N610CGV), WA240304 schedule, items 10–13",
+     "url": "https://wayback.bucklerfamily.estate/pdf/foi/2026-07-30_hmlr_first-registration-schedule.pdf"
+    }
+   ]
+  },
+  {
+   "id": "P05",
+   "k": "P",
+   "date": "30 Oct 1974",
+   "forum": "Court of Appeal (notice of appeal)",
+   "proc": "1974",
+   "t": "Appeal for want of notice never heard",
+   "what": "The occupier’s solicitors issued a notice of appeal against the leave order, on the ground of insufficient notice, and booked a stay hearing for 4 November.",
+   "quote": "",
+   "why": "The judgment records the notice of appeal and no hearing of it. The warrant was withdrawn before 25 November 1974, so the complaint that she had no chance to present her case was never decided by any court.",
+   "basis": "family's case",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶12",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶16",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    }
+   ]
+  },
+  {
+   "id": "P06",
+   "k": "P",
+   "date": "31 Oct – 4 Nov 1974",
+   "forum": "Cardiff County Court",
+   "proc": "1974",
+   "t": "The letters went to her solicitor, arriving the morning of the hearing",
+   "what": "The two letters of 31 October 1974 were addressed to the occupier but sent to her solicitor, who received them on the morning of 4 November, immediately before the stay hearing. The owner’s solicitors did not attend.",
+   "quote": "both were in fact sent not to her but to her solicitor, who seems to have received them on the morning of November 4",
+   "why": "The documents that later decided the case reached the court, not the person they bound, four days after the warrant became enforceable (31 October, ¶11). She had not seen them before the hearing they were produced at.",
+   "basis": "record",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶13",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶16",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    }
+   ]
+  },
+  {
+   "id": "P07",
+   "k": "P",
+   "date": "4 Nov 1974",
+   "forum": "Cardiff County Court",
+   "proc": "1974",
+   "t": "Stay pending her agreement; warrant withdrawn before she could answer",
+   "what": "The judge stayed execution pending the occupier’s agreement to the proposals in the letters. Before she had given instructions, the owner’s solicitors withdrew the warrant.",
+   "quote": "Before she had given any instructions, however, the landlords’ solicitors themselves wrote to the county court, at some date prior to November 25 1974 and withdrew the warrant for possession.",
+   "why": "The court set her agreement as the next step. The owner then removed the step, so her answer was never asked for, and the 1987 court treated the silence that followed as acceptance of a licence.",
+   "basis": "record",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶16",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    }
+   ]
+  },
+  {
+   "id": "O01",
+   "k": "O",
+   "date": "23 Feb 1983",
+   "forum": "HM Land Registry",
+   "proc": "1983",
+   "t": "Farmhouse registered while her defence stood unheard; no notice to the occupier listed",
+   "what": "The farmhouse and garden were first registered (WA240304) on an application lodged by the owner’s solicitors (Form 1C), while the 1974 action, with the occupier’s pleaded defence, stood unheard.",
+   "quote": "(11) Form 1C application form from Linklaters & Paines",
+   "why": "The schedule lists no notice to the occupier. HM Land Registry wrote on 25 May 2026 that it was unaware of any dispute. She died on 26 March 1983, a month after the registration.",
+   "basis": "record",
+   "src": [
+    {
+     "ref": "HM Land Registry letter, 30 July 2026 (ref N610CGV), WA240304 schedule, items 10–13",
+     "url": "https://wayback.bucklerfamily.estate/pdf/foi/2026-07-30_hmlr_first-registration-schedule.pdf"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶11",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    }
+   ]
+  },
+  {
+   "id": "P08",
+   "k": "P",
+   "date": "22 May 1984",
+   "forum": "High Court, Queen’s Bench Division",
+   "proc": "1984",
+   "t": "1984 writ against her son after her death; her estate never represented",
+   "what": "BP Properties Ltd issued a writ for possession against William Buckler, fourteen months after his mother’s death. No grant of representation to her estate was ever obtained.",
+   "quote": "In fact no grant of representation to the estate of Mrs Buckler has so far been obtained",
+   "why": "Her possession was the issue the case turned on, yet she was dead and her estate was not represented. The person whose acts and silences were judged could not give evidence, and her own 1974 defence was never heard.",
+   "basis": "record",
+   "src": [
+    {
+     "ref": "European Commission of Human Rights, Application No. 14464/88, decision of 14 April 1989, The Facts, p. 2",
+     "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶17",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    }
+   ]
+  },
+  {
+   "id": "O02",
+   "k": "O",
+   "date": "10–24 Jul 1986",
+   "forum": "High Court, Queen’s Bench Division, Cardiff",
+   "proc": "1986",
+   "t": "The 1986 trial judgment: no report or transcript found",
+   "what": "The trial was heard on 10 July 1986 and judgment given on 24 July. No report, transcript or digest of that judgment has been found.",
+   "quote": "",
+   "why": "The reasons of the court that ordered possession are known only from the Court of Appeal’s summary (¶21–22). Law reports, BAILII and The National Archives’ catalogue carry only the 1987 appeal.",
+   "basis": "record",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶1",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶21",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "European Commission of Human Rights, Application No. 14464/88, decision of 14 April 1989, The Facts, p. 2",
+     "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf"
+    }
+   ]
+  },
+  {
+   "id": "M04",
+   "k": "M",
+   "date": "24 Jul 1986",
+   "forum": "High Court, Queen’s Bench Division, Cardiff",
+   "proc": "1986",
+   "t": "Trial judge’s adverse-possession finding reversed as wrong on appeal",
+   "what": "The trial judge held Frederick Buckler was not in adverse possession and that the occupier’s own intention could count for nothing while her husband lived.",
+   "quote": "The judge then held - paradoxically, in my view, on the facts of this case - that he could not give any effect to Mrs Buckler’s obvious animus possidendi while her husband was alive",
+   "why": "The Court of Appeal held “without hesitation” that both were in adverse possession from 2 February 1955 (¶23): the trial finding was wrong. The appeal still failed on the enforcement and licence points, so the error never changed the outcome.",
+   "basis": "record",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶21",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶22",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶23",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    }
+   ]
+  },
+  {
+   "id": "P09",
+   "k": "P",
+   "date": "31 Jul 1987",
+   "forum": "Court of Appeal",
+   "proc": "1987",
+   "t": "A rule the court called new, applied to 1974 conduct",
+   "what": "The court applied a rule it described as new: that a licence granted by one side alone stops the limitation clock.",
+   "quote": "The claim that a unilateral licence can stop time running is a new one.",
+   "why": "The rule was first stated in 1987 and applied to conduct in 1974 by an occupier who died in 1983. The court itself noted it would let an owner avoid enforcing a possession order and keep title alive “until it suits him to evict” (¶32).",
+   "basis": "record",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶32",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    }
+   ]
+  },
+  {
+   "id": "P10",
+   "k": "P",
+   "date": "31 Jul 1987",
+   "forum": "Court of Appeal",
+   "proc": "1987",
+   "t": "Bound by letters whose acceptance was never sought",
+   "what": "The court found the occupier was bound by the letters though BP Properties never asked for her acceptance.",
+   "quote": "BP Properties Ltd neither sought nor waited for her acceptance.",
+   "why": "The burden of answering was placed on a person who was never asked. Silence from someone who was not asked is not the same as consent.",
+   "basis": "family's case",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶33",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶36",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶37",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    }
+   ]
+  },
+  {
+   "id": "M01",
+   "k": "M",
+   "date": "31 Jul 1987",
+   "forum": "Court of Appeal",
+   "proc": "1987",
+   "t": "“In the absence of any repudiation”: her pleaded defence stood on the court file",
+   "what": "The decisive finding: the occupier was a licensee “in the absence of any repudiation” of the 31 October 1974 letters, and was not asserting any claim to ownership after them.",
+   "quote": "In essence she was not asserting during the time from the receipt of the letters until after December 11 1974 - or indeed thereafter - any claim to ownership of the farmhouse and garden",
+   "why": "The same judgment records that her defence in the 1974 action, pleading that the owner’s claim was barred, was filed and “has never been finally heard” (¶11). A pleading asserting her title stood on the court file throughout. The judgment also records that she did nothing on her solicitors’ advice to wait for the twelve years from the 1962 order to expire (¶34); that advice was then counted as acceptance.",
+   "basis": "family's case",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶11",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶34",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶35",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶36",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    }
+   ]
+  },
+  {
+   "id": "M02",
+   "k": "M",
+   "date": "31 Jul 1987",
+   "forum": "Court of Appeal",
+   "proc": "1987",
+   "t": "“Had agreed to buy” taken from the letters alone; conveyance 23 May 1975",
+   "what": "The “wrong company” argument was answered from the letters’ own words that BP Properties Ltd “had agreed to buy”. No agreement was before the court; the conveyance to BP Properties is dated 23 May 1975.",
+   "quote": "the letters record sufficiently that BP Properties Ltd had agreed to buy the property from the Pension Trust",
+   "why": "HM Land Registry’s file lists a plan to the conveyance dated 23 February 1975, almost four months after the letters. The existence of a binding agreement on 31 October 1974 rests on the letters alone.",
+   "basis": "family's case",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶20",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "HM Land Registry letter, 30 July 2026 (ref N610CGV), WA240304 schedule, items 10–13",
+     "url": "https://wayback.bucklerfamily.estate/pdf/foi/2026-07-30_hmlr_first-registration-schedule.pdf"
+    }
+   ]
+  },
+  {
+   "id": "M03",
+   "k": "M",
+   "date": "31 Jul 1987",
+   "forum": "Court of Appeal",
+   "proc": "1987",
+   "t": "“Registered … in November 1982”: the farmhouse title dates from 23 Feb 1983",
+   "what": "The court recorded BP Properties as registered proprietor “of the whole of the farm” since November 1982.",
+   "quote": "BP Properties Ltd were registered as the proprietors of the whole of the farm at HM Land Registry in November 1982",
+   "why": "HM Land Registry dates the application for the farm (WA231076) 30 November 1982, but the farmhouse and garden were registered separately (WA240304, register edition 23 February 1983, Form 1C). The two titles were merged on 2 February 1987. The 1987 wording matches the register as merged in February 1987, not the register as it stood in November 1982.",
+   "basis": "record",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶2",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶17",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "HM Land Registry letter, 30 July 2026 (ref N610CGV), WA240304 schedule, items 10–13",
+     "url": "https://wayback.bucklerfamily.estate/pdf/foi/2026-07-30_hmlr_first-registration-schedule.pdf"
+    },
+    {
+     "ref": "HM Land Registry letter, 23 March 2026, ref WA231076/A/216 (EV-0147)",
+     "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0147"
+    }
+   ]
+  },
+  {
+   "id": "M05",
+   "k": "M",
+   "date": "31 Jul 1987",
+   "forum": "Court of Appeal",
+   "proc": "1987",
+   "t": "Frederick Buckler’s death left as “1965-67”; the GRO index gives 1967",
+   "what": "The date of Frederick Buckler’s death was left as “some time in the period 1965-67”, though the limitation period ran from it.",
+   "quote": "Mr Frederick Buckler died at some time in the period 1965-67",
+   "why": "The twelve years the occupier needed ran from his death (¶19: “at latest in 1979”). The General Register Office index records the death in the March quarter of 1967 (East Glamorgan 8b 364). A decisive date was never fixed.",
+   "basis": "record",
+   "src": [
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶9",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶19",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "GRO death index, March quarter 1967, East Glamorgan 8b 364",
+     "url": ""
+    }
+   ]
+  },
+  {
+   "id": "O03",
+   "k": "O",
+   "date": "29 Nov – 6 Dec 1988",
+   "forum": "Bailiffs; European Commission of Human Rights",
+   "proc": "1988",
+   "t": "Possession and demolition while the Strasbourg application was pending",
+   "what": "Possession was taken on 29 November 1988 and demolition of the farmhouse began on 6 December, while the application to Strasbourg, lodged on 3 May 1988, was pending.",
+   "quote": "On 29 November 1988 the company obtained possession of the property and on 6 December demolition of the farmhouse began.",
+   "why": "The subject of the complaint was destroyed before the Commission decided it (14 April 1989). Whatever the outcome, no remedy could restore the house.",
+   "basis": "record",
+   "src": [
+    {
+     "ref": "European Commission of Human Rights, Application No. 14464/88, decision of 14 April 1989, The Facts, p. 2",
+     "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf"
+    }
+   ]
+  },
+  {
+   "id": "O04",
+   "k": "O",
+   "date": "5 Dec 1988",
+   "forum": "Cadw (Welsh Office)",
+   "proc": "1988",
+   "t": "Not listed on 5 Dec 1988; demolition began the next day; no reasons produced",
+   "what": "Cadw decided not to list the farmhouse on 5 December 1988, after a listing inspection on 29 July 1988. Demolition began the next day.",
+   "quote": "did not meet the listing criteria",
+   "why": "Cadw’s 2026 reply gives the result and two inspection photographs. No assessment, reasons or site notes for the decision have been produced.",
+   "basis": "record",
+   "src": [
+    {
+     "ref": "Cadw, ATISN 27021, reply 11 June 2026 (EV-0094)",
+     "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0094"
+    },
+    {
+     "ref": "European Commission of Human Rights, Application No. 14464/88, decision of 14 April 1989, The Facts, p. 2",
+     "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf"
+    }
+   ]
+  },
+  {
+   "id": "M08",
+   "k": "M",
+   "date": "14 Apr 1989",
+   "forum": "European Commission of Human Rights",
+   "proc": "1988",
+   "t": "Strasbourg dated the family’s occupation from 1916; directories list John Williams from 1868",
+   "what": "The Commission dated the family’s occupation of the farm from 1916.",
+   "quote": "This property had been occupied by the applicant’s family since 1916",
+   "why": "1916 is the date of the yearly letting the 1987 judgment recites (¶4). Trade directories list John Williams at Great House from 1868.",
+   "basis": "record",
+   "src": [
+    {
+     "ref": "European Commission of Human Rights, Application No. 14464/88, decision of 14 April 1989, The Facts, p. 2",
+     "url": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf"
+    },
+    {
+     "ref": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, BAILII text ¶4",
+     "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+    },
+    {
+     "ref": "Legal Wiki, Master Timeline (page 33): trade directories 1868–1901",
+     "url": "https://greathousefarmwiki.wordpress.com/timeline/"
+    }
+   ]
+  },
+  {
+   "id": "O05",
+   "k": "O",
+   "date": "19 Oct 2026",
+   "forum": "Welsh Government",
+   "proc": "1988",
+   "t": "1988 records “would have been destroyed”; no destruction record produced",
+   "what": "The Welsh Government found no files on the 1988 decisions and stated that the records “would have been destroyed in line with the corporate retention schedule applied at the time”.",
+   "quote": "would have been destroyed in line with the corporate retention schedule applied at the time",
+   "why": "No destruction record, disposal authority or dated schedule entry is produced. The destruction is stated as an inference, so the 1988 decisions cannot now be checked.",
+   "basis": "record",
+   "src": [
+    {
+     "ref": "Welsh Government, ATISN 26-0010, reply 19 October 2026 (EV-0244)",
+     "url": "https://wayback.bucklerfamily.estate/artifacts/#EV-0244"
+    }
+   ]
+  }
+ ],
+ "about": "An evidenced register of the Great House Farm (Tŷ Mawr), Llandough proceedings, 1955–1988: procedural unfairness (default view), court mistakes on the face of the record, and other miscarriages of justice. Each point carries its date, forum, what happened, why it matters and its primary source. basis \"record\" = the facts stated are on the face of the cited record; basis \"family's case\" = the reading is the family's argument."
+}

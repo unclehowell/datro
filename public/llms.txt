@@ -1,0 +1,43 @@
+# Court Drills — Procedural unfairness (courtdrills.bucklerfamily.estate)
+
+> An evidenced register of the Great House Farm (Tŷ Mawr), Llandough proceedings, 1955–1988: the 1955 High Court order under Order 14, the 11 December 1962 Cardiff County Court order, the 1974 action and the September 1974 leave to enforce, the 1983 first registration of the farmhouse, the 1984 writ, the 1986 trial in the Queen's Bench Division, Cardiff, BP Properties Ltd v Buckler [1987] EWCA Civ 2, and the 1988 possession and demolition. The default view highlights procedural unfairness; two toggles highlight court mistakes on the face of the record and other miscarriages of justice. Every point gives its date, forum, what happened, why it matters and its primary source (judgment paragraph, register entry, archive or FOI reference).
+
+Version 1.0.0 · built 2026-10-24 · 23 points: 10 procedural unfairness, 8 court mistakes, 5 other miscarriages of justice.
+
+## Data
+- /data/register.json: every point (id, k = P|M|O, date, forum, proc, t, what, quote, why, basis, src[]) and the proceedings it belongs to. basis "record" = the facts stated are on the face of the cited record; basis "family's case" = the reading is the family's argument.
+- Paragraph numbers (¶) are the printed paragraph numbers of the BAILII text of [1987] EWCA Civ 2: https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html
+- Views: /?h=p (default), /?h=m, /?h=o, or any mix (/?h=pmo). A point opens at /#<id>.
+
+## Points
+- P01 (procedural unfairness; 1955; High Court, Order 14): Possession of the whole farm sought against Frederick Buckler alone, summary judgment, no trial. https://courtdrills.bucklerfamily.estate/#P01
+- M06 (court mistakes; 1955 / 1987; High Court, Order 14; Court of Appeal): “The whole of the farm”: no parcel or plan identified. https://courtdrills.bucklerfamily.estate/#M06
+- P02 (procedural unfairness; 11 Dec 1962; Cardiff County Court): 1962 order left unenforced for almost twelve years, then revived by a successor. https://courtdrills.bucklerfamily.estate/#P02
+- P03 (procedural unfairness; 3 Jul 1974; Cardiff County Court): The occupier’s 1974 defence filed and never heard. https://courtdrills.bucklerfamily.estate/#P03
+- P04 (procedural unfairness; 17–19 Sep 1974; Cardiff County Court): Leave to enforce granted on two days’ notice while the owner’s own action was part heard. https://courtdrills.bucklerfamily.estate/#P04
+- M07 (court mistakes; 19 Sep 1974 / 1987; Cardiff County Court; Court of Appeal): Succession to the 1962 order rests on a conveyance missing from both registration files. https://courtdrills.bucklerfamily.estate/#M07
+- P05 (procedural unfairness; 30 Oct 1974; Court of Appeal (notice of appeal)): Appeal for want of notice never heard. https://courtdrills.bucklerfamily.estate/#P05
+- P06 (procedural unfairness; 31 Oct – 4 Nov 1974; Cardiff County Court): The letters went to her solicitor, arriving the morning of the hearing. https://courtdrills.bucklerfamily.estate/#P06
+- P07 (procedural unfairness; 4 Nov 1974; Cardiff County Court): Stay pending her agreement; warrant withdrawn before she could answer. https://courtdrills.bucklerfamily.estate/#P07
+- O01 (other miscarriages of justice; 23 Feb 1983; HM Land Registry): Farmhouse registered while her defence stood unheard; no notice to the occupier listed. https://courtdrills.bucklerfamily.estate/#O01
+- P08 (procedural unfairness; 22 May 1984; High Court, Queen’s Bench Division): 1984 writ against her son after her death; her estate never represented. https://courtdrills.bucklerfamily.estate/#P08
+- O02 (other miscarriages of justice; 10–24 Jul 1986; High Court, Queen’s Bench Division, Cardiff): The 1986 trial judgment: no report or transcript found. https://courtdrills.bucklerfamily.estate/#O02
+- M04 (court mistakes; 24 Jul 1986; High Court, Queen’s Bench Division, Cardiff): Trial judge’s adverse-possession finding reversed as wrong on appeal. https://courtdrills.bucklerfamily.estate/#M04
+- P09 (procedural unfairness; 31 Jul 1987; Court of Appeal): A rule the court called new, applied to 1974 conduct. https://courtdrills.bucklerfamily.estate/#P09
+- P10 (procedural unfairness; 31 Jul 1987; Court of Appeal): Bound by letters whose acceptance was never sought. https://courtdrills.bucklerfamily.estate/#P10
+- M01 (court mistakes; 31 Jul 1987; Court of Appeal): “In the absence of any repudiation”: her pleaded defence stood on the court file. https://courtdrills.bucklerfamily.estate/#M01
+- M02 (court mistakes; 31 Jul 1987; Court of Appeal): “Had agreed to buy” taken from the letters alone; conveyance 23 May 1975. https://courtdrills.bucklerfamily.estate/#M02
+- M03 (court mistakes; 31 Jul 1987; Court of Appeal): “Registered … in November 1982”: the farmhouse title dates from 23 Feb 1983. https://courtdrills.bucklerfamily.estate/#M03
+- M05 (court mistakes; 31 Jul 1987; Court of Appeal): Frederick Buckler’s death left as “1965-67”; the GRO index gives 1967. https://courtdrills.bucklerfamily.estate/#M05
+- O03 (other miscarriages of justice; 29 Nov – 6 Dec 1988; Bailiffs; European Commission of Human Rights): Possession and demolition while the Strasbourg application was pending. https://courtdrills.bucklerfamily.estate/#O03
+- O04 (other miscarriages of justice; 5 Dec 1988; Cadw (Welsh Office)): Not listed on 5 Dec 1988; demolition began the next day; no reasons produced. https://courtdrills.bucklerfamily.estate/#O04
+- M08 (court mistakes; 14 Apr 1989; European Commission of Human Rights): Strasbourg dated the family’s occupation from 1916; directories list John Williams from 1868. https://courtdrills.bucklerfamily.estate/#M08
+- O05 (other miscarriages of justice; 19 Oct 2026; Welsh Government): 1988 records “would have been destroyed”; no destruction record produced. https://courtdrills.bucklerfamily.estate/#O05
+
+## Related
+- https://csscpsg.bucklerfamily.estate/ — the same record, one line per instrument, with the structural rules S1–S6
+- https://bpvsbuckler.bucklerfamily.estate/ — The Story
+- https://greathousefarmwiki.wordpress.com/ — the Legal Wiki
+- https://library.bucklerfamily.estate/manual/courtdrills/ — this site's manual
+
+© Williams–Buckler family. All rights reserved. Licence terms: https://bucklerfamily.estate/licence/
