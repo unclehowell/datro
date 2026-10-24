@@ -1,5 +1,5 @@
 {
- "version": "1.6.0",
+ "version": "1.6.1",
  "center": [
   51.4527,
   -3.1985
@@ -440,6 +440,18 @@
   "case21oct": {
    "t": "The Williams-Buckler family’s case, in words sent 21 Oct 2026",
    "u": "https://greathousefarmwiki.wordpress.com/"
+  },
+  "bpvb": {
+   "t": "BP Properties v Buckler (Legal Wiki case page)",
+   "u": "https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/"
+  },
+  "echr14464": {
+   "t": "European Commission of Human Rights, admissibility decision, Application No. 14464/88, 14 April 1989",
+   "u": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf"
+  },
+  "ev0263": {
+   "t": "EV-0263 · Commons Registration Act 1965 notices (VG41)",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0263-commons-registration-1965-publicity-glamorgan-notices-vg41/"
   }
  },
  "steps": [
@@ -1099,6 +1111,47 @@
    "dur": 7.23
   },
   {
+   "date": "25 Aug 1948",
+   "year": 1948,
+   "base": "1947",
+   "title": "William Buckler born",
+   "headline": "25 Aug 1948 · William (Billy) Buckler, Mary’s son, is born at the farm",
+   "labels": [
+    "VERIFIED · judgment"
+   ],
+   "short": "25 August 1948: William (Billy) Buckler, Mary’s son, is born at the farm, his home until 1988.",
+   "text": "25 Aug 1948 · William (Billy) Buckler, son of Frederick and Mary, is born at the farm. VERIFIED · judgment: the Court of Appeal (1987) records that he was “born on August 25 1948”. He lives at Great House until 1988.",
+   "say": "Twenty-five August, nineteen forty-eight. William Buckler, Mary’s son, is born at the farm. It stays his home until nineteen eighty-eight.",
+   "src": [
+    "family",
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "id": "s15a",
+   "dur": 8.91
+  },
+  {
    "id": "s16",
    "date": "1949",
    "year": 1949,
@@ -1454,6 +1507,47 @@
    "dur": 11.71
   },
   {
+   "date": "Jun 1963",
+   "year": 1963,
+   "base": "1947",
+   "title": "Suspended committal order",
+   "headline": "Jun 1963 · The 1962 order’s mesne profits are partly enforced: a suspended committal order against Frederick",
+   "labels": [
+    "VERIFIED · judgment"
+   ],
+   "short": "June 1963: the mesne profits under the 1962 order are partly enforced, with a suspended committal order against Frederick. The possession order itself is not enforced.",
+   "text": "Jun 1963 · The order for mesne profits made with the 1962 possession order is partly enforced. VERIFIED · judgment: the Court of Appeal records “a suspended committal order against Mr Frederick Buckler in June 1963, but nothing was done before 1974 to enforce the 1962 possession order”.",
+   "say": "June nineteen sixty-three. The money side of the nineteen sixty-two order is partly enforced, with a suspended committal order against Frederick. Nothing is done to enforce possession until nineteen seventy-four.",
+   "src": [
+    "hp-1962-possession-order",
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "order",
+     "case": "order",
+     "note": ""
+    },
+    "AS": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "id": "s22a",
+   "dur": 12.67
+  },
+  {
    "id": "s23",
    "date": "1965",
    "year": 1965,
@@ -1678,6 +1772,47 @@
    ],
    "say": "Nineteen seventy-one: an alteration of the Ordnance Survey. The source is pending.",
    "dur": 8.75
+  },
+  {
+   "date": "31 Jul 1972",
+   "year": 1972,
+   "base": "1947",
+   "title": "VG41 objection period ends",
+   "headline": "31 Jul 1972 · The second objection period for commons and village-green registrations ends, covering VG41",
+   "labels": [
+    "VERIFIED · registers"
+   ],
+   "short": "31 July 1972: the objection period under the Commons Registration Act 1965 ends for registrations including village green VG41. Notice of it was by public notice only.",
+   "text": "31 Jul 1972 · The second objection period under the Commons Registration Act 1965 ends. It covers VG41, the village green provisionally registered on 16 Jun 1970. VERIFIED · registers: public notices in Glamorgan (EV-0263).",
+   "say": "Thirty-one July, nineteen seventy-two. The objection period for the village green, V G forty-one, ends. Notice was given only by public notice.",
+   "src": [
+    "ev0263",
+    "hp-044-vg41-village-green-registration-1970"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "order",
+     "case": "order",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bppt",
+     "case": "bppt",
+     "note": ""
+    }
+   },
+   "id": "s27a",
+   "dur": 10.89
   },
   {
    "date": "15 Apr 1974",
@@ -2075,6 +2210,88 @@
    "quote_by": "The family’s case, beside HM Land Registry’s own words (letter of 25 May 2026)"
   },
   {
+   "date": "22 May 1984",
+   "year": 1984,
+   "base": "1947",
+   "title": "BP’s writ for possession",
+   "headline": "22 May 1984 · BP Properties Ltd issues its writ for possession of the farmhouse and garden",
+   "labels": [
+    "VERIFIED · judgment"
+   ],
+   "short": "22 May 1984: BP Properties issues its writ for possession of the farmhouse and garden against William Buckler.",
+   "text": "22 May 1984 · BP Properties Ltd issues a writ for possession. VERIFIED: the date is recorded in the European Commission of Human Rights decision on Application No. 14464/88 (The Facts, p.2).",
+   "say": "Twenty-two May, nineteen eighty-four. B P Properties issues its writ for possession of the farmhouse and garden.",
+   "src": [
+    "bpvb",
+    "echr14464"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    }
+   },
+   "id": "s36a",
+   "dur": 6.92
+  },
+  {
+   "date": "24 Jul 1986",
+   "year": 1986,
+   "base": "1947",
+   "title": "High Court: judgment for BP",
+   "headline": "24 Jul 1986 · Hollis J, in the High Court at Cardiff, gives judgment for BP; possession suspended for six months",
+   "labels": [
+    "VERIFIED · judgment"
+   ],
+   "short": "24 July 1986: in the High Court at Cardiff, Hollis J gives judgment for BP Properties, with possession suspended for six months. William Buckler appeals.",
+   "text": "24 Jul 1986 · Hollis J, sitting in the Queen’s Bench Division at Cardiff, gives judgment for BP Properties Ltd after a hearing on 10 Jul 1986; possession is suspended for six months. VERIFIED · judgment: the Court of Appeal recites the decision “given on July 24 1986”; South Wales Echo, 25 Jul 1986, p.3.",
+   "say": "Twenty-four July, nineteen eighty-six. In the High Court at Cardiff, Mr Justice Hollis gives judgment for B P. Possession is suspended for six months, and William Buckler appeals.",
+   "src": [
+    "bpvb",
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    }
+   },
+   "id": "s36b",
+   "dur": 11.94
+  },
+  {
    "id": "s37",
    "date": "2 Feb 1987",
    "year": 1987,
@@ -2225,7 +2442,7 @@
     "VERIFIED · press"
    ],
    "short": "April 1988: five bailiffs and about fifteen police break the doors with poleaxes, children behind them. On 5 December the court refuses to wait for Strasbourg. From about 4am on 6 December the house is bulldozed; nothing stands by breakfast.",
-   "text": "Press, 29 April 1988: five bailiffs and about fifteen police; doors broken with poleaxes, children behind them. Press, December 1988: William Buckler, Mary’s son, injured and taken to hospital. On 5 December 1988 the court refused to wait for Strasbourg; from about 4am on 6 December BP’s bulldozers demolished the farmhouse while his wife and their three children watched; nothing was standing by breakfast. A Vale councillor called the demolition “disgusting”. RCAHMW classes the house as sub-medieval, probably 17th-century, possibly with a medieval core.",
+   "text": "Press, 29 April 1988: five bailiffs and about fifteen police; doors broken with poleaxes, children behind them. 29–30 November 1988: possession is obtained; bailiffs force entry and William Buckler, Mary’s son, is taken to Llandough Hospital (press, Wednesday 30 November 1988). On 5 December 1988 the court refused to wait for Strasbourg; from about 4am on 6 December BP’s bulldozers demolished the farmhouse while his wife and their three children watched; nothing was standing by breakfast. A Vale councillor called the demolition “disgusting”. RCAHMW classes the house as sub-medieval, probably 17th-century, possibly with a medieval core.",
    "say": "Nineteen eighty-eight. In April, bailiffs and about fifteen police break down the doors with poleaxes, with children behind them. On five December the court refuses to wait for Strasbourg. From about four in the morning on six December, B P’s bulldozers bring the house down, while the wife and three children of Mary’s son, William Buckler, watch. By breakfast, nothing is standing.",
    "src": [
     "hp-demolition-1988",
@@ -2299,6 +2516,47 @@
    },
    "id": "s41",
    "dur": 17.16
+  },
+  {
+   "date": "3 May 1988 · 14 Apr 1989",
+   "year": 1989,
+   "base": "aerial",
+   "title": "Strasbourg: application 14464/88",
+   "headline": "3 May 1988 · 14 Apr 1989 · William Buckler applies to the European Commission of Human Rights; the application is declared inadmissible",
+   "labels": [
+    "VERIFIED · judgment"
+   ],
+   "short": "3 May 1988: William Buckler applies to the European Commission of Human Rights (No. 14464/88). 14 April 1989: the Commission declares the application inadmissible.",
+   "text": "3 May 1988 · William Buckler applies to the European Commission of Human Rights, Application No. 14464/88, under Article 8 and Article 1 of Protocol No. 1. 14 Apr 1989 · The Commission declares the application inadmissible. VERIFIED: the Commission’s admissibility decision of 14 April 1989.",
+   "say": "Three May, nineteen eighty-eight. William Buckler applies to the European Commission of Human Rights in Strasbourg. On fourteen April nineteen eighty-nine, the Commission declares the application inadmissible.",
+   "src": [
+    "bpvb",
+    "echr14464"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    }
+   },
+   "id": "s41a",
+   "dur": 12.02
   },
   {
    "id": "s42",
