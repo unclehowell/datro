@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T22:20:22Z",
+  "updated": "2026-10-24T01:37:32Z",
   "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
   "drafts": [
     {
@@ -612,6 +612,51 @@
       "gmail_draft_id": null,
       "sent_at": null,
       "archive_url": null
+    },
+    {
+      "id": "hmcts-cardiff-1955-1962-records",
+      "record": "HubSpot task 532683919557",
+      "version": "v0.1.0",
+      "status": "OTHER AGENT'S TURN",
+      "turn": "OTHER AGENT (after Tab's v0.1.0 first draft)",
+      "open_issues": 6,
+      "last_change": "2026-10-24T01:37:06Z",
+      "last_agent": "Tab",
+      "rounds": 1,
+      "context": {
+        "body": "HMCTS / Ministry of Justice",
+        "as_of": "2026-10-24T01:37Z",
+        "archive": {
+          "search": "https://email.bucklerfamily.estate/api/search?q=Cardiff%20County%20Court",
+          "thread": null,
+          "note": "reply in the existing preservation-notice thread (court's reply of 20 Oct)"
+        },
+        "last_in": "2026-10-20",
+        "last_out": "2026-10-19",
+        "dartboard": null,
+        "stage": "Preservation notice answered with a claim-number question (2026-10-20)",
+        "next_deadline": {
+          "date": "2026-11-02",
+          "what": "reply date asked in the 19 Oct email"
+        },
+        "rungs_spent": [
+          "Preservation notice"
+        ],
+        "markers": {
+          "red_fish": 0,
+          "red_house": 0,
+          "fee": true
+        },
+        "open_questions": null,
+        "route": "courts",
+        "regime": "FOI + CPR 5.4C"
+      },
+      "tier_since": "2026-10-24T01:37:32Z",
+      "tier": "working",
+      "tier_label": "IN REVIEW",
+      "gmail_draft_id": null,
+      "sent_at": null,
+      "archive_url": null
     }
   ],
   "events": [
@@ -712,6 +757,13 @@
       "version": "v1.3.0",
       "agent": "Tab",
       "event": "independent review: chronology completed from sent mail, unanswered solicitors question re-asked as Q4; turn to ChatGPT"
+    },
+    {
+      "at": "2026-10-24T01:37:06Z",
+      "draft": "hmcts-cardiff-1955-1962-records",
+      "version": "v0.1.0",
+      "agent": "Tab",
+      "event": "created: first draft (FOI for administrative records, CPR 5.4C copies, 20 Oct question re-asked with every identifier); turn to the other agent"
     }
   ],
   "context_note": "drafts[].context = metadata-only context pack (recipient body, archive thread link, dartboard link, stage, next deadline, markers, open questions, rungs spent); built by hive_context.py from the dartboard roadmap, the email archive API and qa kb.json. Hive protocol v3.1.0 context sweep.",
