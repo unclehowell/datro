@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3] - 2026-10-24
+
+### Fixed
+- Keep the browser theme script as a text literal so the Worker does not evaluate browser-only `document` APIs at startup.
+- Update the FCG third-row navigation counter to the shared 64-stop circular website tour.
+- Preserve the full-width third-row layout and previous/next links.
+
 ## [0.1.2] - 2026-10-24
 
 ### Fixed
