@@ -1,10 +1,14 @@
 # The Library — maintainer procedures for the Great House Farm sites
 
 Canonical URL: https://library.bucklerfamily.estate/
-What it is: standard operating procedures (PRINCE2-style) for the AI agents and people who maintain each bucklerfamily.estate site, plus the API and WebMCP reference.
-Version: 1.0.0 (24 Oct 2026)
+What it is: repo housekeeping for the Great House Farm sites (the Cedwyn digital estate): standards, one five-part manual per site (overview, how it works, upkeep SOP, agent interface, changelog), the brand guideline, information flows, change control and the API and WebMCP reference, so staff and AI agents can maintain every site to one standard.
+Version: 2.0.0 (24 Oct 2026)
 
 Start here:
+- /manual/ — site manuals in tour order
+- /checklist — uniformity checklist and status by site
+- /brand — brand guideline (colours, type, layout, tone)
+- /flows — information flows; Wayback is the single artifact store
 - /handbook.html — roles, stages, tolerances, reports
 - /standards/determinism.html — source first, one owner per fact, UNRESOLVED over guessing
 - /standards/content.html — content standard and public-text rules; word list as data: /standards/rules.json
@@ -16,39 +20,78 @@ Start here:
 - /docs-coverage.html — evidence catalogue coverage on Docs
 - /library.json — machine registry: every site with owner facts, branch, route to live, tools and its SOP URL
 
-Site procedures (one per site):
-- /sop/wayback.html — The Wayback Vault (wayback.bucklerfamily.estate)
-- /sop/docs.html — Docs · The Evidence Catalogue (docs.bucklerfamily.estate)
-- /sop/wiki.html — The Legal Wiki (greathousefarmwiki.wordpress.com)
-- /sop/research.html — Research (Legal Wiki mirror) (research.bucklerfamily.estate)
-- /sop/records.html — Primary Records (records.bucklerfamily.estate)
-- /sop/authorities.html — Public Authorities (authorities.bucklerfamily.estate)
-- /sop/dartboard.html — Home · The Disclosure Dartboard (bucklerfamily.estate)
-- /sop/email.html — The Post Office (email.bucklerfamily.estate)
-- /sop/emails.html — The Post Office · Calendar (emails.bucklerfamily.estate)
-- /sop/qa.html — The Q&A Hall (qa.bucklerfamily.estate)
-- /sop/wdtk.html — FOI Requests (WhatDoTheyKnow) (whatdotheyknow.bucklerfamily.estate)
-- /sop/story.html — The Story (bpvsbuckler.bucklerfamily.estate)
-- /sop/maps.html — The Map Room (maps.bucklerfamily.estate)
-- /sop/infographic.html — The Land Changing Hands (infographic.bucklerfamily.estate)
-- /sop/chess.html — The Chessboard (chess.bucklerfamily.estate)
-- /sop/csscpsg.html — The Grammar House (CSSCPSGP) (csscpsg.bucklerfamily.estate)
-- /sop/fcg.html — FCG · Security Clearance (fcg.bucklerfamily.estate)
-- /sop/oldbill.html — Old Bill · Who Gained, Who Lost (oldbill.bucklerfamily.estate)
-- /sop/nomenclature.html — Nomenclature (nomenclature.bucklerfamily.estate)
-- /sop/directory.html — Cedwyn Estate Directory (directory.bucklerfamily.estate)
-- /sop/review.html — Independent Review (review.bucklerfamily.estate)
-- /sop/watchtower.html — Watchtower (watchtower.bucklerfamily.estate)
-- /sop/projects.html — The Project Office (projects.bucklerfamily.estate)
-- /sop/estate.html — Cedwyn Estate (bucklerfamily.estate)
-- /sop/cyberspace.html — The Digital Estate (bucklerfamily.estate)
-- /sop/terrain.html — Terrain · Cedwyn Estate in 3D (terrain.bucklerfamily.estate)
-- /sop/app.html — The Case Office (app.bucklerfamily.estate)
-- /sop/chat.html — Ask the Archive (chat.bucklerfamily.estate)
-- /sop/accounts.html — The Counting House (accounts.bucklerfamily.estate)
-- /sop/meeting.html — The Council Chamber (2026-10-22.bucklerfamily.estate)
-- /sop/library.html — The Library (maintainer procedures) (library.bucklerfamily.estate)
-- /sop/fb.html — The Farm Album (fb.bucklerfamily.estate)
-- /sop/fb2.html — The Farm Album · Now (fb2.bucklerfamily.estate)
-- /sop/ebooks.html — The E-book Shelf (ebooks.bucklerfamily.estate)
-- /sop/shop.html — Gift Shop & Marketplace (shop.bucklerfamily.estate)
+Site manuals (upkeep SOP of each; overview at /manual/<id>/, agent interface at /manual/<id>/agent):
+- /manual/wayback/upkeep — The Wayback Vault (wayback.bucklerfamily.estate)
+- /manual/docs/upkeep — Docs · The Evidence Catalogue (docs.bucklerfamily.estate)
+- /manual/wiki/upkeep — The Legal Wiki (greathousefarmwiki.wordpress.com)
+- /manual/research/upkeep — Research (Legal Wiki mirror) (research.bucklerfamily.estate)
+- /manual/records/upkeep — Primary Records (records.bucklerfamily.estate)
+- /manual/authorities/upkeep — Public Authorities (authorities.bucklerfamily.estate)
+- /manual/dartboard/upkeep — Home · The Disclosure Dartboard (bucklerfamily.estate)
+- /manual/email/upkeep — The Post Office (email.bucklerfamily.estate)
+- /manual/emails/upkeep — The Post Office · Calendar (emails.bucklerfamily.estate)
+- /manual/qa/upkeep — The Q&A Hall (qa.bucklerfamily.estate)
+- /manual/wdtk/upkeep — FOI Requests (WhatDoTheyKnow) (whatdotheyknow.bucklerfamily.estate)
+- /manual/story/upkeep — The Story (bpvsbuckler.bucklerfamily.estate)
+- /manual/maps/upkeep — The Map Room (maps.bucklerfamily.estate)
+- /manual/infographic/upkeep — The Land Changing Hands (infographic.bucklerfamily.estate)
+- /manual/chess/upkeep — The Chessboard (chess.bucklerfamily.estate)
+- /manual/csscpsg/upkeep — The Grammar House (CSSCPSGP) (csscpsg.bucklerfamily.estate)
+- /manual/fcg/upkeep — FCG · Security Clearance (fcg.bucklerfamily.estate)
+- /manual/oldbill/upkeep — Old Bill · Who Gained, Who Lost (oldbill.bucklerfamily.estate)
+- /manual/nomenclature/upkeep — Nomenclature (nomenclature.bucklerfamily.estate)
+- /manual/directory/upkeep — Cedwyn Estate Directory (directory.bucklerfamily.estate)
+- /manual/review/upkeep — Independent Review (review.bucklerfamily.estate)
+- /manual/watchtower/upkeep — Watchtower (watchtower.bucklerfamily.estate)
+- /manual/projects/upkeep — The Project Office (projects.bucklerfamily.estate)
+- /manual/estate/upkeep — Cedwyn Estate (bucklerfamily.estate)
+- /manual/cyberspace/upkeep — The Digital Estate (bucklerfamily.estate)
+- /manual/terrain/upkeep — Terrain · Cedwyn Estate in 3D (terrain.bucklerfamily.estate)
+- /manual/app/upkeep — The Case Office (app.bucklerfamily.estate)
+- /manual/chat/upkeep — Ask the Archive (chat.bucklerfamily.estate)
+- /manual/accounts/upkeep — The Counting House (accounts.bucklerfamily.estate)
+- /manual/meeting/upkeep — The Council Chamber (2026-10-22.bucklerfamily.estate)
+- /manual/library/upkeep — The Library (maintainer procedures) (library.bucklerfamily.estate)
+- /manual/fb/upkeep — The Farm Album (fb.bucklerfamily.estate)
+- /manual/fb2/upkeep — The Farm Album · Now (fb2.bucklerfamily.estate)
+- /manual/ebooks/upkeep — The E-book Shelf (ebooks.bucklerfamily.estate)
+- /manual/shop/upkeep — Gift Shop & Marketplace (shop.bucklerfamily.estate)
+- /manual/patagonia/upkeep — Great House Farm II · Patagonia Museum (bucklerfamily.estate/patagonia/)
+- /manual/wales/upkeep — Virtual Tour · Wales (bucklerfamily.estate/wales/)
+
+Visitor tour order (the ‹ › bar on every site, shared chain 2.1.4):
+1. Primary Records — https://records.bucklerfamily.estate/
+2. Docs · The Evidence Catalogue — https://docs.bucklerfamily.estate/
+3. The Wayback Vault — https://wayback.bucklerfamily.estate/
+4. Nomenclature — https://nomenclature.bucklerfamily.estate/
+5. The Map Room — https://maps.bucklerfamily.estate/
+6. The Land Changing Hands — https://infographic.bucklerfamily.estate/
+7. The Legal Wiki — https://greathousefarmwiki.wordpress.com/
+8. The E-book Shelf — https://ebooks.bucklerfamily.estate/
+9. The Story — https://bpvsbuckler.bucklerfamily.estate/
+10. The Farm Album — https://fb.bucklerfamily.estate/
+11. The Chessboard — https://chess.bucklerfamily.estate/
+12. The Grammar House (CSSCPSGP) — https://csscpsg.bucklerfamily.estate/
+13. FCG · Security Clearance — https://fcg.bucklerfamily.estate/
+14. Old Bill · Who Gained, Who Lost — https://oldbill.bucklerfamily.estate/
+15. The Counting House — https://accounts.bucklerfamily.estate/
+16. Public Authorities — https://authorities.bucklerfamily.estate/
+17. FOI Requests (WhatDoTheyKnow) — https://whatdotheyknow.bucklerfamily.estate/
+18. Independent Review — https://review.bucklerfamily.estate/
+19. The Q&A Hall — https://qa.bucklerfamily.estate/
+20. The Council Chamber — https://2026-10-22.bucklerfamily.estate/
+21. The Project Office — https://projects.bucklerfamily.estate/
+22. The Case Office — https://app.bucklerfamily.estate/
+23. Ask the Archive — https://chat.bucklerfamily.estate/
+24. Watchtower — https://watchtower.bucklerfamily.estate/
+25. farmbook 2 · Today — https://fb2.bucklerfamily.estate/
+26. The Post Office — https://email.bucklerfamily.estate/
+27. The Post Office · Calendar — https://email.bucklerfamily.estate/calendar/
+28. Home · The Disclosure Dartboard — https://bucklerfamily.estate/
+29. Cedwyn Estate — https://bucklerfamily.estate/cedwyn/
+30. Cedwyn Estate Directory — https://directory.bucklerfamily.estate/
+31. Great House Farm II · Patagonia Museum — https://bucklerfamily.estate/patagonia/
+32. Virtual Tour · Wales — https://bucklerfamily.estate/wales/
+33. Terrain · Cedwyn Estate in 3D — https://terrain.bucklerfamily.estate/
+34. The Digital Estate — https://bucklerfamily.estate/cyberspace/
+35. Gift Shop & Marketplace — https://shop.bucklerfamily.estate/

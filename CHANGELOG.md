@@ -1,5 +1,16 @@
 # Changelog
 
+## [library-v2.0.0] - 2026-10-24
+
+### Changed
+- Landing reframed as repo housekeeping: standards, manuals index, brand, agent interface, change control, uniformity checklist.
+- The 35 site procedures folded into five-part manuals at /manual/<id>/ (overview, how it works, upkeep SOP, agent interface, changelog); /sop/<id> redirects to /manual/<id>/upkeep.
+
+### Added
+- Manuals for the Patagonia museum (/patagonia/) and the virtual tour of Wales (/wales/).
+- /brand (brand guideline from the live tokens), /flows (information flows), /checklist (uniformity checklist with status by site).
+- Visitor tour order (shared chain 2.1.4) in the manuals index, library.json and llms.txt.
+
 ## [library-v0.0.0.16] - 2026-06-07
 
 ### Fixed

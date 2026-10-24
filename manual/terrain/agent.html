@@ -1,0 +1,81 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Terrain · Cedwyn Estate in 3D · Agent interface · The Library</title><meta name="description" content="WebMCP tools and JSON endpoints for Terrain · Cedwyn Estate in 3D."><meta name="theme-color" content="#2a5d8f">
+<link rel="stylesheet" href="/assets/lib.css?v=2.0.0"><link rel="alternate" type="text/plain" href="/llms.txt" title="Guide for language models">
+<link rel="alternate" type="application/json" href="/library.json" title="Maintainer registry (JSON)"></head><body>
+<div class="mtop"><a href="/">The Library</a><button type="button" onclick="document.querySelector('nav.side').classList.toggle('on')" aria-label="Menu">Menu</button></div>
+<div class="wrap"><nav class="side" aria-label="Library"><a class="home" href="/">The Library · repo housekeeping</a>
+<details open><summary>Terrain · Cedwyn Estate in 3D</summary><ul><li><a href="/manual/terrain/">Overview</a></li><li><a href="/manual/terrain/how-it-works">How it works</a></li><li><a href="/manual/terrain/upkeep">Upkeep SOP</a></li><li><a href="/manual/terrain/agent" aria-current="page">Agent interface</a></li><li><a href="/manual/terrain/changelog">Changelog</a></li></ul></details>
+<details><summary>Estate standards</summary><ul><li><a href="/manual/">Manuals index</a></li><li><a href="/checklist">Uniformity checklist</a></li><li><a href="/brand">Brand guideline</a></li><li><a href="/flows">Information flows</a></li><li><a href="/handbook.html">Maintainer handbook</a></li><li><a href="/standards/determinism.html">Determinism and truth</a></li><li><a href="/standards/content.html">Content and public text</a></li><li><a href="/standards/change-control.html">Change control</a></li><li><a href="/standards/deploy-verify.html">Deploy and verify</a></li></ul></details>
+<details><summary>Agent interface</summary><ul><li><a href="/api.html">API reference</a></li><li><a href="/webmcp.html">WebMCP tools</a></li><li><a href="/migration.html">Single-source artifacts</a></li><li><a href="/docs-coverage.html">Docs coverage</a></li></ul></details>
+<details><summary>Tour · The record</summary><ul><li><a href="/manual/records/">1 · Primary Records</a></li><li><a href="/manual/docs/">2 · Docs · The Evidence Catalogue</a></li><li><a href="/manual/wayback/">3 · The Wayback Vault</a></li><li><a href="/manual/nomenclature/">4 · Nomenclature</a></li><li><a href="/manual/maps/">5 · The Map Room</a></li><li><a href="/manual/infographic/">6 · The Land Changing Hands</a></li><li><a href="/manual/wiki/">7 · The Legal Wiki</a></li></ul></details>
+<details><summary>Tour · Read and watch</summary><ul><li><a href="/manual/ebooks/">8 · The E-book Shelf</a></li><li><a href="/manual/story/">9 · The Story</a></li></ul></details>
+<details><summary>Tour · The 1900s</summary><ul><li><a href="/manual/fb/">10 · The Farm Album</a></li></ul></details>
+<details><summary>Tour · The case</summary><ul><li><a href="/manual/chess/">11 · The Chessboard</a></li><li><a href="/manual/csscpsg/">12 · The Grammar House (CSSCPSGP)</a></li><li><a href="/manual/fcg/">13 · FCG · Security Clearance</a></li><li><a href="/manual/oldbill/">14 · Old Bill · Who Gained, Who Lost</a></li><li><a href="/manual/accounts/">15 · The Counting House</a></li><li><a href="/manual/authorities/">16 · Public Authorities</a></li><li><a href="/manual/wdtk/">17 · FOI Requests (WhatDoTheyKnow)</a></li><li><a href="/manual/review/">18 · Independent Review</a></li><li><a href="/manual/qa/">19 · The Q&amp;A Hall</a></li><li><a href="/manual/meeting/">20 · The Council Chamber</a></li><li><a href="/manual/projects/">21 · The Project Office</a></li><li><a href="/manual/app/">22 · The Case Office</a></li><li><a href="/manual/chat/">23 · Ask the Archive</a></li><li><a href="/manual/watchtower/">24 · Watchtower</a></li></ul></details>
+<details open><summary>Tour · The present day</summary><ul><li><a href="/manual/fb2/">25 · farmbook 2 · Today</a></li><li><a href="/manual/email/">26 · The Post Office</a></li><li><a href="/manual/emails/">27 · The Post Office · Calendar</a></li><li><a href="/manual/dartboard/">28 · Home · The Disclosure Dartboard</a></li><li><a href="/manual/estate/">29 · Cedwyn Estate</a></li><li><a href="/manual/directory/">30 · Cedwyn Estate Directory</a></li><li><a href="/manual/patagonia/">31 · Great House Farm II · Patagonia Museum</a></li><li><a href="/manual/wales/">32 · Virtual Tour · Wales</a></li><li><a href="/manual/terrain/">33 · Terrain · Cedwyn Estate in 3D</a></li><li><a href="/manual/cyberspace/">34 · The Digital Estate</a></li><li><a href="/manual/shop/">35 · Gift Shop &amp; Marketplace</a></li></ul></details>
+<details><summary>Off the tour</summary><ul><li><a href="/manual/research/">Research (Legal Wiki mirror)</a></li><li><a href="/manual/library/">The Library</a></li></ul></details></nav><main><div class="crumb">Manual · Terrain · Cedwyn Estate in 3D · Agent interface</div>
+<p class="lead">How AI agents read Terrain · Cedwyn Estate in 3D: the WebMCP tools and the plain JSON endpoints behind them, with requests checked live on 24 Oct 2026.</p>
+<h2>Discovery</h2><ul><li><a href="https://terrain.bucklerfamily.estate/llms.txt">https://terrain.bucklerfamily.estate/llms.txt</a> — guide for language models (200)</li><li><a href="https://terrain.bucklerfamily.estate/.well-known/mcp.json">https://terrain.bucklerfamily.estate/.well-known/mcp.json</a> — every tool as JSON, callable with a plain GET (200)</li><li><a href="https://terrain.bucklerfamily.estate/agent/tools.json">https://terrain.bucklerfamily.estate/agent/tools.json</a> — the tool list (200)</li><li><a href="https://terrain.bucklerfamily.estate/agent/webmcp.js">https://terrain.bucklerfamily.estate/agent/webmcp.js</a> — WebMCP: registers the same tools with <code>navigator.modelContext</code> in browsers that support it (loaded by the shared header, or injected on the home page) (404)</li></ul>
+<h2>Tools</h2><table><tr><th>Tool</th><th>Endpoint</th><th>What it returns</th></tr><tr><td><code>get_scene</code></td><td><code>GET /agent/scene.json</code></td><td>The current 3D scene: every object with id, name, kind, position, colour and link, plus time of day and weather.</td></tr><tr><td><code>list_versions</code></td><td><code>GET /agent/versions.json</code></td><td>Saved versions of the scene, newest first.</td></tr><tr><td><code>search_objects</code></td><td><code>GET /agent/search.json</code></td><td>Find objects in the scene by name or kind.</td></tr><tr><td><code>get_roadmap</code></td><td><code>GET /agent/roadmap.json</code></td><td>The disclosure roadmap: one trail per institution with its eleven escalation steps (request to court), each step&#x27;s status and date.</td></tr><tr><td><code>get_trigger_sop</code></td><td><code>GET /agent/sop.json</code></td><td>The trigger-event procedure as a branching graph of steps, gates, routes and outcomes.</td></tr><tr><td><code>list_due</code></td><td><code>GET /agent/due.json</code></td><td>Roadmap steps falling due in the next N days (0 = today).</td></tr></table>
+<h2>Examples (checked live, 24 Oct 2026)</h2><p>Each answer is shown as its shape: field names, counts and sources as returned, with text values replaced by their type.</p>
+<p><code>get_scene</code> (answered 200):</p><pre>curl -4 -s "https://terrain.bucklerfamily.estate/agent/scene.json"</pre><pre>{
+ &quot;version&quot;: 1,
+ &quot;rev&quot;: 59,
+ &quot;env&quot;: {
+  &quot;time&quot;: &quot;&lt;text&gt;&quot;,
+  &quot;weather&quot;: &quot;&lt;text&gt;&quot;,
+  &quot;camera&quot;: {
+   &quot;pos&quot;: [
+    42,
+    &quot;… 3 items&quot;
+   ],
+   &quot;target&quot;: [
+    0,
+    &quot;… 3 items&quot;
+   ]
+  }
+ },
+ &quot;objects&quot;: [
+  {
+   &quot;id&quot;: &quot;&lt;text&gt;&quot;,
+   &quot;name&quot;: &quot;&lt;text&gt;&quot;,
+   &quot;kind&quot;: &quot;&lt;text&gt;&quot;,
+   &quot;roof&quot;: &quot;&lt;text&gt;&quot;,
+   &quot;pos&quot;: [
+    -9.5,
+    &quot;… 3 items&quot;
+   ],
+   &quot;rot&quot;: -180,
+   &quot;scale&quot;: 1,
+   &quot;size&quot;: [
+    5.6,
+    &quot;… 3 items&quot;
+   ],
+   &quot;color&quot;: &quot;&lt;text&gt;&quot;,
+   &quot;roofColor&quot;: &quot;&lt;text&gt;&quot;,
+   &quot;texture&quot;: &quot;&lt;text&gt;&quot;,
+   &quot;label&quot;: {
+    &quot;n&quot;: 7,
+    &quot;title&quot;: &quot;&lt;text&gt;&quot;,
+    &quot;tag&quot;: &quot;&lt;text&gt;&quot;
+   }
+  },
+  &quot;… 44 items&quot;
+ ],
+ &quot;meta&quot;: {
+  &quot;version&quot;
+…</pre>
+<p><code>list_versions</code> (answered 200):</p><pre>curl -4 -s "https://terrain.bucklerfamily.estate/agent/versions.json"</pre><pre>{
+ &quot;versions&quot;: [
+  {
+   &quot;name&quot;: &quot;&lt;text&gt;&quot;,
+   &quot;label&quot;: &quot;&lt;text&gt;&quot;,
+   &quot;saved&quot;: &quot;&lt;text&gt;&quot;
+  },
+  &quot;… 3 items&quot;
+ ]
+}</pre>
+<details class="c"><summary>9 · Machine endpoints (as recorded in the SOP)</summary><p>Every site also serves <code>/llms.txt</code>, <code>/.well-known/mcp.json</code>, <code>/agent/pages.json</code>, <code>/agent/search?q=</code> and <code>/agent/page?slug=</code>. Reference: <a href="/api.html#terrain">API</a>, <a href="/webmcp.html">WebMCP</a>.</p></details>
+<h2>Gaps</h2><ul><li><code>/agent/search</code> is not served here; the site’s own tools above replace the generic set.</li><li>No <code>/agent/webmcp.js</code> on this host; agents use the JSON endpoints.</li></ul>
+<p>Estate-wide: <a href="/api.html">API reference</a> · <a href="/webmcp.html">WebMCP tools</a>. Agents read; writes go through change control.</p>
+<footer>Library 2.0.0 · 24 Oct 2026 · Changes to these procedures follow <a href="/standards/change-control.html">change control</a>. Machine copy: <a href="/library.json">library.json</a>.</footer></main></div>
+<script src="https://wayback.bucklerfamily.estate/viewer/ghf-viewer.js" defer></script></body></html>

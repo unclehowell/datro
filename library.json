@@ -1,5 +1,5 @@
 {
- "version": "1.0.0",
+ "version": "2.0.0",
  "updated": "2026-10-24",
  "handbook": "https://library.bucklerfamily.estate/handbook.html",
  "rules": "https://library.bucklerfamily.estate/standards/rules.json",
@@ -19,7 +19,11 @@
    "tools": [
     "search_items"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/wayback.html"
+   "sop": "https://library.bucklerfamily.estate/manual/wayback/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/wayback/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/wayback/agent",
+   "agent_gaps": [],
+   "tour_stop": 3
   },
   {
    "id": "docs",
@@ -31,7 +35,13 @@
    "reads": "The Evidence Register on the Legal Wiki for ids and titles; PDFs are stored on Wayback (pdf/docs-archive/).",
    "verbatim": false,
    "tools": [],
-   "sop": "https://library.bucklerfamily.estate/sop/docs.html"
+   "sop": "https://library.bucklerfamily.estate/manual/docs/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/docs/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/docs/agent",
+   "agent_gaps": [
+    "No site-specific data tool: only the generic page tools (list_pages, search, get_page). A tool over the site’s own data file would let agents query it directly."
+   ],
+   "tour_stop": 2
   },
   {
    "id": "wiki",
@@ -43,7 +53,14 @@
    "reads": "Artifacts from Wayback; documents from Docs.",
    "verbatim": false,
    "tools": [],
-   "sop": "https://library.bucklerfamily.estate/sop/wiki.html"
+   "sop": "https://library.bucklerfamily.estate/manual/wiki/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/wiki/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/wiki/agent",
+   "agent_gaps": [
+    "No WebMCP tools and no agent-layer endpoints on the WordPress host (the estate Worker cannot be routed onto wordpress.com).",
+    "The evidence register is read through the REST API page listing and Docs (docs.json), not through a register tool."
+   ],
+   "tour_stop": 7
   },
   {
    "id": "research",
@@ -57,7 +74,11 @@
    "tools": [
     "search_content"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/research.html"
+   "sop": "https://library.bucklerfamily.estate/manual/research/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/research/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/research/agent",
+   "agent_gaps": [],
+   "tour_stop": null
   },
   {
    "id": "records",
@@ -71,7 +92,11 @@
    "tools": [
     "get_agent_index"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/records.html"
+   "sop": "https://library.bucklerfamily.estate/manual/records/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/records/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/records/agent",
+   "agent_gaps": [],
+   "tour_stop": 1
   },
   {
    "id": "authorities",
@@ -85,7 +110,11 @@
    "tools": [
     "get_agent_index"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/authorities.html"
+   "sop": "https://library.bucklerfamily.estate/manual/authorities/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/authorities/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/authorities/agent",
+   "agent_gaps": [],
+   "tour_stop": 16
   },
   {
    "id": "dartboard",
@@ -100,7 +129,11 @@
     "get_disclosure_record",
     "list_institutions"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/dartboard.html"
+   "sop": "https://library.bucklerfamily.estate/manual/dartboard/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/dartboard/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/dartboard/agent",
+   "agent_gaps": [],
+   "tour_stop": 28
   },
   {
    "id": "email",
@@ -114,7 +147,11 @@
    "tools": [
     "search_threads"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/email.html"
+   "sop": "https://library.bucklerfamily.estate/manual/email/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/email/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/email/agent",
+   "agent_gaps": [],
+   "tour_stop": 26
   },
   {
    "id": "emails",
@@ -126,7 +163,13 @@
    "reads": "The Post Office archive.",
    "verbatim": false,
    "tools": [],
-   "sop": "https://library.bucklerfamily.estate/sop/emails.html"
+   "sop": "https://library.bucklerfamily.estate/manual/emails/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/emails/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/emails/agent",
+   "agent_gaps": [
+    "No calendar tool: the correspondence calendar and its forecast have no JSON endpoint or WebMCP tool of their own."
+   ],
+   "tour_stop": 27
   },
   {
    "id": "qa",
@@ -141,7 +184,13 @@
     "search_qa_kb",
     "ask"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/qa.html"
+   "sop": "https://library.bucklerfamily.estate/manual/qa/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/qa/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/qa/agent",
+   "agent_gaps": [
+    "Tool ask answered 502 on the live check; its source ({\n &quot;error&quot;: &quot;source 400&quot;,\n &quot;source&quot;: &quot;/api/ask&quot;\n}) needs a look."
+   ],
+   "tour_stop": 19
   },
   {
    "id": "wdtk",
@@ -153,7 +202,13 @@
    "reads": "WhatDoTheyKnow and Wayback text items.",
    "verbatim": false,
    "tools": [],
-   "sop": "https://library.bucklerfamily.estate/sop/wdtk.html"
+   "sop": "https://library.bucklerfamily.estate/manual/wdtk/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/wdtk/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/wdtk/agent",
+   "agent_gaps": [
+    "No site-specific data tool: only the generic page tools (list_pages, search, get_page). A tool over the site’s own data file would let agents query it directly."
+   ],
+   "tour_stop": 17
   },
   {
    "id": "story",
@@ -167,7 +222,11 @@
    "tools": [
     "get_timeline"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/story.html"
+   "sop": "https://library.bucklerfamily.estate/manual/story/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/story/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/story/agent",
+   "agent_gaps": [],
+   "tour_stop": 9
   },
   {
    "id": "maps",
@@ -181,7 +240,11 @@
    "tools": [
     "get_story"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/maps.html"
+   "sop": "https://library.bucklerfamily.estate/manual/maps/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/maps/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/maps/agent",
+   "agent_gaps": [],
+   "tour_stop": 5
   },
   {
    "id": "infographic",
@@ -193,7 +256,13 @@
    "reads": "Title records as published on Docs and Wayback.",
    "verbatim": false,
    "tools": [],
-   "sop": "https://library.bucklerfamily.estate/sop/infographic.html"
+   "sop": "https://library.bucklerfamily.estate/manual/infographic/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/infographic/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/infographic/agent",
+   "agent_gaps": [
+    "No site-specific data tool: only the generic page tools (list_pages, search, get_page). A tool over the site’s own data file would let agents query it directly."
+   ],
+   "tour_stop": 6
   },
   {
    "id": "chess",
@@ -207,7 +276,11 @@
    "tools": [
     "get_board"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/chess.html"
+   "sop": "https://library.bucklerfamily.estate/manual/chess/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/chess/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/chess/agent",
+   "agent_gaps": [],
+   "tour_stop": 11
   },
   {
    "id": "csscpsg",
@@ -221,7 +294,11 @@
    "tools": [
     "get_model"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/csscpsg.html"
+   "sop": "https://library.bucklerfamily.estate/manual/csscpsg/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/csscpsg/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/csscpsg/agent",
+   "agent_gaps": [],
+   "tour_stop": 12
   },
   {
    "id": "fcg",
@@ -235,7 +312,11 @@
    "tools": [
     "get_clearance"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/fcg.html"
+   "sop": "https://library.bucklerfamily.estate/manual/fcg/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/fcg/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/fcg/agent",
+   "agent_gaps": [],
+   "tour_stop": 13
   },
   {
    "id": "oldbill",
@@ -247,7 +328,13 @@
    "reads": "Records on Docs and Wayback.",
    "verbatim": false,
    "tools": [],
-   "sop": "https://library.bucklerfamily.estate/sop/oldbill.html"
+   "sop": "https://library.bucklerfamily.estate/manual/oldbill/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/oldbill/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/oldbill/agent",
+   "agent_gaps": [
+    "No site-specific data tool: only the generic page tools (list_pages, search, get_page). A tool over the site’s own data file would let agents query it directly."
+   ],
+   "tour_stop": 14
   },
   {
    "id": "nomenclature",
@@ -261,7 +348,11 @@
    "tools": [
     "search_lexicon"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/nomenclature.html"
+   "sop": "https://library.bucklerfamily.estate/manual/nomenclature/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/nomenclature/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/nomenclature/agent",
+   "agent_gaps": [],
+   "tour_stop": 4
   },
   {
    "id": "directory",
@@ -275,7 +366,11 @@
    "tools": [
     "search_entities"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/directory.html"
+   "sop": "https://library.bucklerfamily.estate/manual/directory/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/directory/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/directory/agent",
+   "agent_gaps": [],
+   "tour_stop": 30
   },
   {
    "id": "review",
@@ -289,7 +384,11 @@
    "tools": [
     "get_agent_index"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/review.html"
+   "sop": "https://library.bucklerfamily.estate/manual/review/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/review/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/review/agent",
+   "agent_gaps": [],
+   "tour_stop": 18
   },
   {
    "id": "watchtower",
@@ -305,7 +404,11 @@
     "list_tracked_pages",
     "list_institutions"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/watchtower.html"
+   "sop": "https://library.bucklerfamily.estate/manual/watchtower/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/watchtower/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/watchtower/agent",
+   "agent_gaps": [],
+   "tour_stop": 24
   },
   {
    "id": "projects",
@@ -322,7 +425,11 @@
     "get_pid",
     "get_asset_register"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/projects.html"
+   "sop": "https://library.bucklerfamily.estate/manual/projects/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/projects/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/projects/agent",
+   "agent_gaps": [],
+   "tour_stop": 21
   },
   {
    "id": "estate",
@@ -337,7 +444,11 @@
     "get_disclosure_record",
     "list_institutions"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/estate.html"
+   "sop": "https://library.bucklerfamily.estate/manual/estate/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/estate/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/estate/agent",
+   "agent_gaps": [],
+   "tour_stop": 29
   },
   {
    "id": "cyberspace",
@@ -352,7 +463,11 @@
     "get_disclosure_record",
     "list_institutions"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/cyberspace.html"
+   "sop": "https://library.bucklerfamily.estate/manual/cyberspace/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/cyberspace/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/cyberspace/agent",
+   "agent_gaps": [],
+   "tour_stop": 34
   },
   {
    "id": "terrain",
@@ -364,7 +479,14 @@
    "reads": "Map sources from Wayback.",
    "verbatim": false,
    "tools": [],
-   "sop": "https://library.bucklerfamily.estate/sop/terrain.html"
+   "sop": "https://library.bucklerfamily.estate/manual/terrain/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/terrain/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/terrain/agent",
+   "agent_gaps": [
+    "/agent/search is not served here; the site’s own tools above replace the generic set.",
+    "No /agent/webmcp.js on this host; agents use the JSON endpoints."
+   ],
+   "tour_stop": 33
   },
   {
    "id": "app",
@@ -376,7 +498,13 @@
    "reads": "The Post Office, the Dartboard and Docs.",
    "verbatim": false,
    "tools": [],
-   "sop": "https://library.bucklerfamily.estate/sop/app.html"
+   "sop": "https://library.bucklerfamily.estate/manual/app/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/app/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/app/agent",
+   "agent_gaps": [
+    "No site-specific data tool: only the generic page tools (list_pages, search, get_page). A tool over the site’s own data file would let agents query it directly."
+   ],
+   "tour_stop": 22
   },
   {
    "id": "chat",
@@ -388,7 +516,13 @@
    "reads": "Wayback, Docs, the Legal Wiki and the Q&A Hall.",
    "verbatim": false,
    "tools": [],
-   "sop": "https://library.bucklerfamily.estate/sop/chat.html"
+   "sop": "https://library.bucklerfamily.estate/manual/chat/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/chat/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/chat/agent",
+   "agent_gaps": [
+    "No site-specific data tool: only the generic page tools (list_pages, search, get_page). A tool over the site’s own data file would let agents query it directly."
+   ],
+   "tour_stop": 23
   },
   {
    "id": "accounts",
@@ -402,7 +536,11 @@
    "tools": [
     "get_accounts"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/accounts.html"
+   "sop": "https://library.bucklerfamily.estate/manual/accounts/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/accounts/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/accounts/agent",
+   "agent_gaps": [],
+   "tour_stop": 15
   },
   {
    "id": "meeting",
@@ -414,7 +552,13 @@
    "reads": "Nothing; it is a closed record.",
    "verbatim": false,
    "tools": [],
-   "sop": "https://library.bucklerfamily.estate/sop/meeting.html"
+   "sop": "https://library.bucklerfamily.estate/manual/meeting/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/meeting/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/meeting/agent",
+   "agent_gaps": [
+    "Frozen record: no llms.txt section, no tools. Adding the host to the agent layer is a class C change once the record is closed for edits."
+   ],
+   "tour_stop": 20
   },
   {
    "id": "library",
@@ -428,7 +572,11 @@
    "tools": [
     "list_documents"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/library.html"
+   "sop": "https://library.bucklerfamily.estate/manual/library/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/library/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/library/agent",
+   "agent_gaps": [],
+   "tour_stop": null
   },
   {
    "id": "fb",
@@ -442,7 +590,11 @@
    "tools": [
     "search_posts"
    ],
-   "sop": "https://library.bucklerfamily.estate/sop/fb.html"
+   "sop": "https://library.bucklerfamily.estate/manual/fb/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/fb/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/fb/agent",
+   "agent_gaps": [],
+   "tour_stop": 10
   },
   {
    "id": "fb2",
@@ -454,7 +606,13 @@
    "reads": "The Post Office and the Dartboard only.",
    "verbatim": true,
    "tools": [],
-   "sop": "https://library.bucklerfamily.estate/sop/fb2.html"
+   "sop": "https://library.bucklerfamily.estate/manual/fb2/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/fb2/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/fb2/agent",
+   "agent_gaps": [
+    "No site-specific data tool: only the generic page tools (list_pages, search, get_page). A tool over the site’s own data file would let agents query it directly."
+   ],
+   "tour_stop": 25
   },
   {
    "id": "ebooks",
@@ -466,7 +624,13 @@
    "reads": "Text from the Legal Wiki and Docs; images from Wayback.",
    "verbatim": false,
    "tools": [],
-   "sop": "https://library.bucklerfamily.estate/sop/ebooks.html"
+   "sop": "https://library.bucklerfamily.estate/manual/ebooks/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/ebooks/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/ebooks/agent",
+   "agent_gaps": [
+    "No site-specific data tool: only the generic page tools (list_pages, search, get_page). A tool over the site’s own data file would let agents query it directly."
+   ],
+   "tour_stop": 8
   },
   {
    "id": "shop",
@@ -478,7 +642,261 @@
    "reads": "Images from Wayback.",
    "verbatim": false,
    "tools": [],
-   "sop": "https://library.bucklerfamily.estate/sop/shop.html"
+   "sop": "https://library.bucklerfamily.estate/manual/shop/upkeep",
+   "manual": "https://library.bucklerfamily.estate/manual/shop/",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/shop/agent",
+   "agent_gaps": [
+    "No site-specific data tool: only the generic page tools (list_pages, search, get_page). A tool over the site’s own data file would let agents query it directly."
+   ],
+   "tour_stop": 35
+  },
+  {
+   "id": "patagonia",
+   "title": "Great House Farm II · Patagonia Museum",
+   "url": "https://bucklerfamily.estate/patagonia/",
+   "branch": "main (unclehowell/BucklerFamilyFarm)",
+   "deploy": "unclehowell/BucklerFamilyFarm (Cloudflare Pages), page public/patagonia/ generated by campus/build_locations.py from campus/locations.json",
+   "owns": "The Patagonia museum page: Great House Farm II and the Welsh settlement story in Chubut, in English, Welsh and Spanish.",
+   "reads": "campus/locations.json (the chooser and location pages) and the shared header layer.",
+   "verbatim": false,
+   "tools": [],
+   "manual": "https://library.bucklerfamily.estate/manual/patagonia/",
+   "sop": "https://library.bucklerfamily.estate/manual/patagonia/upkeep",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/patagonia/agent",
+   "agent_gaps": [],
+   "tour_stop": 31
+  },
+  {
+   "id": "wales",
+   "title": "Virtual Tour · Wales",
+   "url": "https://bucklerfamily.estate/wales/",
+   "branch": "main (unclehowell/BucklerFamilyFarm)",
+   "deploy": "unclehowell/BucklerFamilyFarm (Cloudflare Pages), page public/wales/ generated by campus/build_locations.py from campus/locations.json",
+   "owns": "The virtual tour of Great House Farm, Llandough and its Welsh setting.",
+   "reads": "campus/locations.json and the shared header layer.",
+   "verbatim": false,
+   "tools": [],
+   "manual": "https://library.bucklerfamily.estate/manual/wales/",
+   "sop": "https://library.bucklerfamily.estate/manual/wales/upkeep",
+   "agent_interface": "https://library.bucklerfamily.estate/manual/wales/agent",
+   "agent_gaps": [],
+   "tour_stop": 32
+  }
+ ],
+ "manuals": "https://library.bucklerfamily.estate/manual/",
+ "brand": "https://library.bucklerfamily.estate/brand",
+ "flows": "https://library.bucklerfamily.estate/flows",
+ "checklist": "https://library.bucklerfamily.estate/checklist",
+ "tour": [
+  {
+   "stop": 1,
+   "id": "records",
+   "title": "Primary Records",
+   "url": "https://records.bucklerfamily.estate/"
+  },
+  {
+   "stop": 2,
+   "id": "docs",
+   "title": "Docs · The Evidence Catalogue",
+   "url": "https://docs.bucklerfamily.estate/"
+  },
+  {
+   "stop": 3,
+   "id": "wayback",
+   "title": "The Wayback Vault",
+   "url": "https://wayback.bucklerfamily.estate/"
+  },
+  {
+   "stop": 4,
+   "id": "nomenclature",
+   "title": "Nomenclature",
+   "url": "https://nomenclature.bucklerfamily.estate/"
+  },
+  {
+   "stop": 5,
+   "id": "maps",
+   "title": "The Map Room",
+   "url": "https://maps.bucklerfamily.estate/"
+  },
+  {
+   "stop": 6,
+   "id": "infographic",
+   "title": "The Land Changing Hands",
+   "url": "https://infographic.bucklerfamily.estate/"
+  },
+  {
+   "stop": 7,
+   "id": "wiki",
+   "title": "The Legal Wiki",
+   "url": "https://greathousefarmwiki.wordpress.com/"
+  },
+  {
+   "stop": 8,
+   "id": "ebooks",
+   "title": "The E-book Shelf",
+   "url": "https://ebooks.bucklerfamily.estate/"
+  },
+  {
+   "stop": 9,
+   "id": "story",
+   "title": "The Story",
+   "url": "https://bpvsbuckler.bucklerfamily.estate/"
+  },
+  {
+   "stop": 10,
+   "id": "fb",
+   "title": "The Farm Album",
+   "url": "https://fb.bucklerfamily.estate/"
+  },
+  {
+   "stop": 11,
+   "id": "chess",
+   "title": "The Chessboard",
+   "url": "https://chess.bucklerfamily.estate/"
+  },
+  {
+   "stop": 12,
+   "id": "csscpsg",
+   "title": "The Grammar House (CSSCPSGP)",
+   "url": "https://csscpsg.bucklerfamily.estate/"
+  },
+  {
+   "stop": 13,
+   "id": "fcg",
+   "title": "FCG · Security Clearance",
+   "url": "https://fcg.bucklerfamily.estate/"
+  },
+  {
+   "stop": 14,
+   "id": "oldbill",
+   "title": "Old Bill · Who Gained, Who Lost",
+   "url": "https://oldbill.bucklerfamily.estate/"
+  },
+  {
+   "stop": 15,
+   "id": "accounts",
+   "title": "The Counting House",
+   "url": "https://accounts.bucklerfamily.estate/"
+  },
+  {
+   "stop": 16,
+   "id": "authorities",
+   "title": "Public Authorities",
+   "url": "https://authorities.bucklerfamily.estate/"
+  },
+  {
+   "stop": 17,
+   "id": "wdtk",
+   "title": "FOI Requests (WhatDoTheyKnow)",
+   "url": "https://whatdotheyknow.bucklerfamily.estate/"
+  },
+  {
+   "stop": 18,
+   "id": "review",
+   "title": "Independent Review",
+   "url": "https://review.bucklerfamily.estate/"
+  },
+  {
+   "stop": 19,
+   "id": "qa",
+   "title": "The Q&A Hall",
+   "url": "https://qa.bucklerfamily.estate/"
+  },
+  {
+   "stop": 20,
+   "id": "meeting",
+   "title": "The Council Chamber",
+   "url": "https://2026-10-22.bucklerfamily.estate/"
+  },
+  {
+   "stop": 21,
+   "id": "projects",
+   "title": "The Project Office",
+   "url": "https://projects.bucklerfamily.estate/"
+  },
+  {
+   "stop": 22,
+   "id": "app",
+   "title": "The Case Office",
+   "url": "https://app.bucklerfamily.estate/"
+  },
+  {
+   "stop": 23,
+   "id": "chat",
+   "title": "Ask the Archive",
+   "url": "https://chat.bucklerfamily.estate/"
+  },
+  {
+   "stop": 24,
+   "id": "watchtower",
+   "title": "Watchtower",
+   "url": "https://watchtower.bucklerfamily.estate/"
+  },
+  {
+   "stop": 25,
+   "id": "fb2",
+   "title": "farmbook 2 · Today",
+   "url": "https://fb2.bucklerfamily.estate/"
+  },
+  {
+   "stop": 26,
+   "id": "email",
+   "title": "The Post Office",
+   "url": "https://email.bucklerfamily.estate/"
+  },
+  {
+   "stop": 27,
+   "id": "emails",
+   "title": "The Post Office · Calendar",
+   "url": "https://email.bucklerfamily.estate/calendar/"
+  },
+  {
+   "stop": 28,
+   "id": "dartboard",
+   "title": "Home · The Disclosure Dartboard",
+   "url": "https://bucklerfamily.estate/"
+  },
+  {
+   "stop": 29,
+   "id": "estate",
+   "title": "Cedwyn Estate",
+   "url": "https://bucklerfamily.estate/cedwyn/"
+  },
+  {
+   "stop": 30,
+   "id": "directory",
+   "title": "Cedwyn Estate Directory",
+   "url": "https://directory.bucklerfamily.estate/"
+  },
+  {
+   "stop": 31,
+   "id": "patagonia",
+   "title": "Great House Farm II · Patagonia Museum",
+   "url": "https://bucklerfamily.estate/patagonia/"
+  },
+  {
+   "stop": 32,
+   "id": "wales",
+   "title": "Virtual Tour · Wales",
+   "url": "https://bucklerfamily.estate/wales/"
+  },
+  {
+   "stop": 33,
+   "id": "terrain",
+   "title": "Terrain · Cedwyn Estate in 3D",
+   "url": "https://terrain.bucklerfamily.estate/"
+  },
+  {
+   "stop": 34,
+   "id": "cyberspace",
+   "title": "The Digital Estate",
+   "url": "https://bucklerfamily.estate/cyberspace/"
+  },
+  {
+   "stop": 35,
+   "id": "shop",
+   "title": "Gift Shop & Marketplace",
+   "url": "https://shop.bucklerfamily.estate/"
   }
  ]
 }
