@@ -7,7 +7,7 @@
   "S2": "Party: the person most affected is not a party, not the addressee, or not shown to have been served",
   "S3": "Agency: the operative effect is imposed without any act or consent of the person it binds",
   "S4": "Term shift: a key word (possession, owner, proprietor, possessions) changes meaning between documents",
-  "S5": "Text gap: the operative text itself is not held; it is known only from a later recital or summary",
+  "S5": "Text gap: the operative text is known only from a later recital or summary",
   "S6": "Inconsistency: dates, years or descriptions conflict between records of the same act"
  },
  "footer": "",
@@ -51,7 +51,7 @@
    "cite": "EV-0006",
    "source": "EV-0006",
    "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e115-1877-bute-thomas-agreement/",
-   "text": "SOURCE PENDING: the 1877 Bute–Daniel Thomas & Son agreement is not held.",
+   "text": "SOURCE PENDING: the 1877 Bute–Daniel Thomas & Son agreement.",
    "pending": true,
    "compliant": true,
    "reason": "",
@@ -66,7 +66,7 @@
    "cite": "EV-0008",
    "source": "EV-0008",
    "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e116-6-november-1877-bute-counterpart-lease-john-williams/",
-   "text": "SOURCE PENDING: the lease of 6 November 1877 to John Williams is not held.",
+   "text": "SOURCE PENDING: the lease of 6 November 1877 to John Williams.",
    "pending": true,
    "compliant": true,
    "reason": "",
@@ -130,12 +130,12 @@
    "text": "Great House Farm used to belong to the Marquis of Bute, and in February 1916 the Marquis granted a yearly agricultural tenancy of the whole of the farm to a Mr John Williams, who was Mr Buckler junior's maternal grandfather. In 1938 the reversion on that tenancy was conveyed to a company called Western Ground Rents Ltd.",
    "pending": false,
    "compliant": false,
-   "reason": "S1: The phrase sets the scope of the 1916 tenancy at the whole holding. The 1916 agreement and its plan are not held, so the scope rests on this recital alone.; S5: The 1938 conveyance and its plan are not held. Which parcels passed in 1938 is not shown by any text the court quoted.",
+   "reason": "S1: The phrase sets the scope of the 1916 tenancy at the whole holding. The scope rests on this recital alone.; S5: The 1938 conveyance and its plan. Which parcels passed in 1938 is not shown by any text the court quoted.",
    "breaches": [
     {
      "rule": "S1",
      "phrase": "the whole of the farm",
-     "why": "The phrase sets the scope of the 1916 tenancy at the whole holding. The 1916 agreement and its plan are not held, so the scope rests on this recital alone.",
+     "why": "The phrase sets the scope of the 1916 tenancy at the whole holding. The scope rests on this recital alone.",
      "evidence": [
       {
        "ref": "EV-0014",
@@ -150,7 +150,7 @@
     {
      "rule": "S5",
      "phrase": "In 1938 the reversion on that tenancy was conveyed",
-     "why": "The 1938 conveyance and its plan are not held. Which parcels passed in 1938 is not shown by any text the court quoted.",
+     "why": "Which parcels passed in 1938 is not shown by any text the court quoted.",
      "evidence": [
       {
        "ref": "EV-0019",
@@ -356,14 +356,14 @@
    "id": "C0016",
    "sort": "1955-07-04",
    "date": "2 February 1955 to 4 July 1955",
-   "instrument": "High Court possession order under Order 14, as recited by the Court of Appeal (the order itself is not held: EV-0032)",
+   "instrument": "High Court possession order under Order 14, as recited by the Court of Appeal (EV-0032)",
    "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶6",
    "source": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶6",
    "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
    "text": "His tenancy was then duly terminated by a notice to quit which expired on February 2 1955. Western Ground Rents then brought proceedings for possession against Mr Frederick Buckler in the High Court and obtained a possession order, under Order 14, in respect of the whole of the farm. On July 4 1955 that possession order was enforced, and possession was taken in respect of all parts of the farm except the farmhouse and garden. The reason why the order was not enforced in respect of the farmhouse and garden was that Mrs Mary Buckler (daughter of Mr Williams, wife of Mr Frederick Buckler and mother of Mr Buckler junior) had recently come out of hospital after having had a leg amputated and was objecting very strongly to leaving the farmhouse.",
    "pending": false,
    "compliant": false,
-   "reason": "S2: The order was sought against the tenant alone. Mary (Nancy) Williams lived in the farmhouse and was not a party.; S1: The order is recited as covering the whole farm. No plan or parcel list is quoted, and the order itself is not held.; S1: The enforced area is described by exclusion only. No plan defines the parts taken on 4 July 1955.",
+   "reason": "S2: The order was sought against the tenant alone. Mary (Nancy) Williams lived in the farmhouse and was not a party.; S1: The order is recited as covering the whole farm. No plan or parcel list is quoted.; S1: The enforced area is described by exclusion only. No plan defines the parts taken on 4 July 1955.",
    "breaches": [
     {
      "rule": "S2",
@@ -383,7 +383,7 @@
     {
      "rule": "S1",
      "phrase": "in respect of the whole of the farm",
-     "why": "The order is recited as covering the whole farm. No plan or parcel list is quoted, and the order itself is not held.",
+     "why": "The order is recited as covering the whole farm. No plan or parcel list is quoted.",
      "evidence": [
       {
        "ref": "EV-0032",
@@ -529,12 +529,12 @@
    "text": "In the meantime Mr Frederick Buckler died at some time in the period 1965-67, and in December 1969 Great House Farm, including the farmhouse and garden, was sold by Western Ground Rents to BP Pension Trust Ltd.",
    "pending": false,
    "compliant": false,
-   "reason": "S5: The 1969 conveyance is recited but not listed on either HM Land Registry first-registration file. Its text and plan are not held.",
+   "reason": "S5: The 1969 conveyance is recited but not listed on either HM Land Registry first-registration file.",
    "breaches": [
     {
      "rule": "S5",
      "phrase": "was sold by Western Ground Rents to BP Pension Trust Ltd",
-     "why": "The 1969 conveyance is recited but not listed on either HM Land Registry first-registration file. Its text and plan are not held.",
+     "why": "The 1969 conveyance is recited but not listed on either HM Land Registry first-registration file.",
      "evidence": [
       {
        "ref": "R4 (arguments view, /v2/); HMLR letter 30 July 2026",
@@ -588,7 +588,7 @@
    "cite": "EV-0044",
    "source": "EV-0044",
    "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e133-16-june-1970-vg41-village-green-registration-and-ownership-file/",
-   "text": "SOURCE PENDING: the VG41 register entry, map and ownership section are not held.",
+   "text": "SOURCE PENDING: the VG41 register entry, map and ownership section.",
    "pending": true,
    "compliant": true,
    "reason": "",
@@ -660,7 +660,7 @@
    "cite": "EV-0049",
    "source": "EV-0049",
    "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e135-3-july-1974-mary-williams-plea-of-ownership-and-pleadings/",
-   "text": "SOURCE PENDING: the defence pleading ownership is not held; only the Court of Appeal’s summary of it.",
+   "text": "SOURCE PENDING: the defence pleading ownership; only the Court of Appeal’s summary of it.",
    "pending": true,
    "compliant": true,
    "reason": "",
@@ -1064,12 +1064,12 @@
    "text": "The action concerns a farm known as Great House Farm at Llandough near Penarth in South Glamorgan. The plaintiffs, BP Properties Ltd, have the paper title to the farm, and indeed since November 1982 they have been the registered proprietors of it at HM Land Registry following first registration.",
    "pending": false,
    "compliant": false,
-   "reason": "S5: The paper title runs through the 1938 conveyance, whose plan is not held. Which parcels it carried is not shown in the judgment.; S6: HM Land Registry records the farmhouse title (WA240304) from 23 February 1983, about three months later.",
+   "reason": "S5: The paper title runs through the 1938 conveyance, whose plan. Which parcels it carried is not shown in the judgment.; S6: HM Land Registry records the farmhouse title (WA240304) from 23 February 1983, about three months later.",
    "breaches": [
     {
      "rule": "S5",
      "phrase": "have the paper title to the farm",
-     "why": "The paper title runs through the 1938 conveyance, whose plan is not held. Which parcels it carried is not shown in the judgment.",
+     "why": "Which parcels it carried is not shown in the judgment.",
      "evidence": [
       {
        "ref": "R5 (arguments view, /v2/)",
@@ -1320,12 +1320,12 @@
    "text": "",
    "pending": false,
    "compliant": false,
-   "reason": "S5: Known only from a catalogue placeholder; the original is not held.",
+   "reason": "S5: Known only from a catalogue placeholder.",
    "breaches": [
     {
      "rule": "S5",
      "phrase": "spot-listing letter",
-     "why": "Known only from a catalogue placeholder; the original is not held.",
+     "why": "Known only from a catalogue placeholder.",
      "evidence": [
       {
        "ref": "GHF-E152",
@@ -1666,12 +1666,12 @@
    "text": "Villge Green to be maintained by LLANDOUGH COMMUNITY COUNCIL and to form part of project GATEWAY TO THE VALE. IDEAL HOMES WALES LLANDOUGH FARM, LLANDOUGH VILLAGE GREEN PLANTING. 3024.VG.01",
    "pending": false,
    "compliant": false,
-   "reason": "S5: The plan names who maintains the green but shows no title to the land. The VG41 register entry and its ownership section are not held.",
+   "reason": "S5: The plan names who maintains the green but shows no title to the land.",
    "breaches": [
     {
      "rule": "S5",
      "phrase": "Villge Green to be maintained by LLANDOUGH COMMUNITY COUNCIL",
-     "why": "The plan names who maintains the green but shows no title to the land. The VG41 register entry and its ownership section are not held.",
+     "why": "The plan names who maintains the green but shows no title to the land.",
      "evidence": [
       {
        "ref": "EV-0044",
@@ -1969,7 +1969,7 @@
    "text": "",
    "pending": false,
    "compliant": false,
-   "reason": "S5: The 1988 assessment file is not held and no destruction record has been produced; the listing decision is known only from this later summary.",
+   "reason": "S5: No destruction record has been produced; the listing decision is known only from this later summary.",
    "breaches": [
     {
      "rule": "S5",
@@ -2137,7 +2137,7 @@
    "text": "",
    "pending": false,
    "compliant": false,
-   "reason": "S5: The 1955, 1962 and 1974 orders and pleadings are not held; they are known only from the 1987 recital. No destruction schedule was stated.",
+   "reason": "S5: The 1955, 1962 and 1974 orders and pleadings; they are known only from the 1987 recital. No destruction schedule was stated.",
    "breaches": [
     {
      "rule": "S5",

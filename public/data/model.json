@@ -6,7 +6,7 @@
   "S2": "Party: the person most affected is not a party, not the addressee, or not shown to have been served",
   "S3": "Agency: the operative effect is imposed without any act or consent of the person it binds",
   "S4": "Term shift: a key word (possession, owner, proprietor, possessions) changes meaning between documents",
-  "S5": "Text gap: the operative text itself is not held; it is known only from a later recital or summary",
+  "S5": "Text gap: the operative text is known only from a later recital or summary",
   "S6": "Inconsistency: dates, years or descriptions conflict between records of the same act"
  },
  "scale": "0 = not present on the record; 1 = present but contested or SOURCE PENDING; 2 = present on the face of a held record",
@@ -30,7 +30,7 @@
     "S2": "Frederick Buckler alone was sued. Mary, living in the house, was not a party; the 1987 judgment records the order was not enforced against the house because of her.",
     "S3": "A court order against the tenant who was sued. Nothing unusual in the act itself.",
     "S4": "“Possession” of a farm under a tenancy is later read beside an ownership question it did not decide.",
-    "S5": "The order, writ, affidavit and any plan are not held (EV-0032). Known only from the 1987 recital.",
+    "S5": "Known only from the 1987 recital.",
     "S6": "No conflicting record identified yet."
    },
    "t": [

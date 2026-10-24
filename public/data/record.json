@@ -7,7 +7,7 @@
   "S2": "Party: the person most affected is not a party, not the addressee, or not shown to have been served",
   "S3": "Agency: the operative effect is imposed without any act or consent of the person it binds",
   "S4": "Term shift: a key word (possession, owner, proprietor, possessions) changes meaning between documents",
-  "S5": "Text gap: the operative text itself is not held; it is known only from a later recital or summary",
+  "S5": "Text gap: the operative text is known only from a later recital or summary",
   "S6": "Inconsistency: dates, years or descriptions conflict between records of the same act"
  },
  "note": "Verbatim passages; red marks are additions only. Paragraph numbers count the BAILII text.",
@@ -18,7 +18,7 @@
    "src": "Agreement, Marquess of Bute to Daniel Thomas & Son",
    "cite": "EV-0006",
    "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e115-1877-bute-thomas-agreement/",
-   "text": "SOURCE PENDING: the 1877 Bute–Daniel Thomas & Son agreement is not held.",
+   "text": "SOURCE PENDING: the 1877 Bute–Daniel Thomas & Son agreement.",
    "marks": [],
    "pending": true,
    "ev": null
@@ -29,7 +29,7 @@
    "src": "Lease to John Williams",
    "cite": "EV-0008",
    "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e116-6-november-1877-bute-counterpart-lease-john-williams/",
-   "text": "SOURCE PENDING: the lease of 6 November 1877 to John Williams is not held.",
+   "text": "SOURCE PENDING: the lease of 6 November 1877 to John Williams.",
    "marks": [],
    "pending": true,
    "ev": null
@@ -63,13 +63,13 @@
     {
      "p": "the whole of the farm",
      "r": "S1",
-     "why": "The phrase sets the scope of the 1916 tenancy at the whole holding. The 1916 agreement and its plan are not held, so the scope rests on this recital alone.",
+     "why": "The phrase sets the scope of the 1916 tenancy at the whole holding. The scope rests on this recital alone.",
      "ev": "EV-0014"
     },
     {
      "p": "In 1938 the reversion on that tenancy was conveyed",
      "r": "S5",
-     "why": "The 1938 conveyance and its plan are not held. Which parcels passed in 1938 is not shown by any text the court quoted.",
+     "why": "Which parcels passed in 1938 is not shown by any text the court quoted.",
      "ev": "EV-0019"
     }
    ],
@@ -143,7 +143,7 @@
   {
    "date": "2 February 1955 to 4 July 1955",
    "sort": "1955-07-04",
-   "src": "High Court possession order under Order 14, as recited by the Court of Appeal (the order itself is not held: EV-0032)",
+   "src": "High Court possession order under Order 14, as recited by the Court of Appeal (EV-0032)",
    "cite": "BP Properties Ltd v Buckler [1987] EWCA Civ 2, Court of Appeal, 31 July 1987, Dillon LJ, BAILII text ¶6",
    "url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
    "text": "His tenancy was then duly terminated by a notice to quit which expired on February 2 1955. Western Ground Rents then brought proceedings for possession against Mr Frederick Buckler in the High Court and obtained a possession order, under Order 14, in respect of the whole of the farm. On July 4 1955 that possession order was enforced, and possession was taken in respect of all parts of the farm except the farmhouse and garden. The reason why the order was not enforced in respect of the farmhouse and garden was that Mrs Mary Buckler (daughter of Mr Williams, wife of Mr Frederick Buckler and mother of Mr Buckler junior) had recently come out of hospital after having had a leg amputated and was objecting very strongly to leaving the farmhouse.",
@@ -157,7 +157,7 @@
     {
      "p": "in respect of the whole of the farm",
      "r": "S1",
-     "why": "The order is recited as covering the whole farm. No plan or parcel list is quoted, and the order itself is not held.",
+     "why": "The order is recited as covering the whole farm. No plan or parcel list is quoted.",
      "ev": "EV-0032"
     },
     {
@@ -236,7 +236,7 @@
     {
      "p": "was sold by Western Ground Rents to BP Pension Trust Ltd",
      "r": "S5",
-     "why": "The 1969 conveyance is recited but not listed on either HM Land Registry first-registration file. Its text and plan are not held.",
+     "why": "The 1969 conveyance is recited but not listed on either HM Land Registry first-registration file.",
      "ev": "R4; HMLR letter 30 July 2026"
     }
    ],
@@ -249,7 +249,7 @@
    "src": "VG41 village green registration",
    "cite": "EV-0044",
    "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e133-16-june-1970-vg41-village-green-registration-and-ownership-file/",
-   "text": "SOURCE PENDING: the VG41 register entry, map and ownership section are not held.",
+   "text": "SOURCE PENDING: the VG41 register entry, map and ownership section.",
    "marks": [],
    "pending": true,
    "ev": null
@@ -260,7 +260,7 @@
    "src": "Defence of Mrs Buckler in the 1974 county court action",
    "cite": "EV-0049",
    "url": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e135-3-july-1974-mary-williams-plea-of-ownership-and-pleadings/",
-   "text": "SOURCE PENDING: the defence pleading ownership is not held; only the Court of Appeal’s summary of it.",
+   "text": "SOURCE PENDING: the defence pleading ownership; only the Court of Appeal’s summary of it.",
    "marks": [],
    "pending": true,
    "ev": null
@@ -459,7 +459,7 @@
     {
      "p": "have the paper title to the farm",
      "r": "S5",
-     "why": "The paper title runs through the 1938 conveyance, whose plan is not held. Which parcels it carried is not shown in the judgment.",
+     "why": "Which parcels it carried is not shown in the judgment.",
      "ev": "R5"
     },
     {
@@ -697,7 +697,7 @@
     {
      "p": "Villge Green to be maintained by LLANDOUGH COMMUNITY COUNCIL",
      "r": "S5",
-     "why": "The plan names who maintains the green but shows no title to the land. The VG41 register entry and its ownership section are not held.",
+     "why": "The plan names who maintains the green but shows no title to the land.",
      "ev": "EV-0044"
     }
    ],
