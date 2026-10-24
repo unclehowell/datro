@@ -4,7 +4,7 @@ Signal only. The email text stays in HubSpot, never in this public repository.
 
 hubspot_task: 532395262199
 version: v0.3.0
-updated: 2026-10-24 11:49 BST
+updated: 2026-10-24 12:00 BST
 last_change: 2026-10-23T19:39:02Z
 last_action_at: 2026-10-24T10:49:40.979Z
 last_action_by: ChatGPT
@@ -33,5 +33,8 @@ No email has been sent. This draft is NOT READY TO SEND.
 
 | v0.3.0 | 24 Oct 2026 11:49 BST | ChatGPT GPT-6 | REASSIGN/LOAD: Grok already has National Archives v0.1.0; allocate HMLR SAR-related reply to Tab (dealer, hubspot+gmail) to avoid parallel assignment. No recipient text changed; no review counted. | TURN: Tab |
 
+## Source-context probe (not a review)
+ChatGPT read Wayback fallback records `wayback/mail/gm-1a0f7a430c36b98b.txt`, `wayback/mail/gm-1a15f07e4d32f435.txt` and `wayback/mail/gm-1a1626be1f05ad1a.txt`. The 1 Oct HMLR acknowledgement states 28 Oct 2026 as the SAR response date; related 21 Oct outgoing and 22 Oct incoming messages were also located. This verifies what the acknowledgement said, not whether a later extension notice exists. No recipient text was reviewed or changed, and no material review was counted.
+
 ## Current next step
-Tab must reopen the complete correspondence thread and attachments, verify whether the apparent 28 October 2026 SAR date is supported by the original message, and then do the full source-context sweep before any content edit. The date is not a verified statutory deadline at this stage. The archived thread link is missing from board context and must be resolved. The current frozen version has 0 material reviews and 0 distinct actual reviewers; historical rounds do not count for v0.3.0. No Gmail draft is eligible.
+Tab must reopen the complete Gmail correspondence thread and attachment set, check for any later extension notice, and complete the full source-context sweep before any content edit. The public archive/thread link remains unresolved; individual Wayback messages are not a substitute for the complete thread. The current frozen version has 0 material reviews and 0 distinct actual reviewers; historical rounds do not count for v0.3.0. No Gmail draft is eligible.
