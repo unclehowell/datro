@@ -1,13 +1,21 @@
 # FLYWHEEL.md — taking turns on email drafts (any agent)
 
-Email drafts for the estate case are improved in turns by two or more agents until nobody can improve them, the way a tumbler polishes a stone. The canonical draft is always a HubSpot task. This branch only carries the turn signal, so any agent (and watch.bucklerfamily.estate) can see when a turn has passed.
+Email drafts for the estate case are improved in turns by two or more agents until nobody can improve them, the way a tumbler polishes a stone. The canonical draft is always a HubSpot task. This branch only carries the turn signal, so any agent (and watch.bucklerfamily.estate) can see when a turn has passed. HubSpot's current subject, top STATUS block and last changelog entry must agree; BOARD.json/BATON are derived metadata, never authority over a newer HubSpot subject.
 
 This repo is public. Never put email text, names of private people, phone numbers or addresses here. The draft text lives only in HubSpot.
 
-## Protocol v2.0.0 (23 Oct 2026) — the shared agent instruction now governs
+## Protocol v3.3.0 (24 Oct 2026) — current shared agent instruction governs; see v2.0.0 history below
 - Status ladder: DRAFT → TAB'S TURN / OTHER AGENT'S TURN → CONSENSUS CANDIDATE → READY TO SEND → FINAL THREE-HAT REVIEW → DEFINITELY READY TO SEND → SENT. HubSpot's native task status is separate.
 - Each turn is an independent review against primary sources, with a changelog entry: reviewer, date-time and zone, version reviewed, primary sources checked, changes, rejected proposals with reasons, unresolved issues, verdict. Full text in the HubSpot task.
 - After your turn, also update drafts/BOARD.json (metadata only: id, record, version, status, turn, open_issues, last_change, last_agent). It feeds the board at https://watch.bucklerfamily.estate/drafts. The watcher cannot read HubSpot.
+
+
+## Readiness integrity gate (v3.3.0)
+- A draft cannot reach READY TO SEND unless at least 10 material review rounds and at least 4 distinct actual agent identities are recorded for the same version, each required seat has agreed to that exact text, and no material issue remains unresolved. A Tab stand-in round is Tab, not a separate reviewer. A gate/status-only edit does not count as a material review.
+- DEFINITELY READY TO SEND additionally requires a final three-hat and fourth-excuse review of that exact frozen version, no text change, and all necessary attachments verified. If text changes or a required attachment is missing, reset to IN REVIEW.
+- Only Tab (dealer) may create one in-thread Gmail draft, and only after all the above conditions pass. ChatGPT and all other seats must never create Gmail drafts; no agent ever sends. Sion alone sends.
+- Public BOARD.json must include metadata-only `reviews`, `distinct_agents`, and `pct` where known. `pct` is gated by both review count and distinct reviewer count; missing counts mean unknown progress, never 100%. The live Hive UI must fail closed: any TURN/IN REVIEW status overrides a stale higher tier, and missing or insufficient gate metadata collapses the tile back to IN REVIEW.
+- The current roster contains only the seats actually listed as active in drafts/ROSTER.json. Do not count Claude, SpaceXSI or any other pending seat until a valid seat request is accepted by Tab. Keep the 4-agent/10-review gate until the owner changes it; when there are fewer active seats than the gate requires, display the blocker instead of silently lowering the standard.
 
 ## Where things are
 - Draft: the HubSpot task named in drafts/<draft-slug>/BATON.md (field `hubspot_task`). The task body holds a STATUS block at the top, the draft, an ANTICIPATED RESPONSE (three-hat) block, internal notes, the rules and an append-only guest book.
