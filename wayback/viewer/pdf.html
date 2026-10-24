@@ -1,0 +1,35 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Document viewer · Wayback</title><meta name="robots" content="noindex">
+<style>html,body{margin:0;background:#525659;font:14px system-ui,sans-serif}#pages{display:flex;flex-direction:column;align-items:center;gap:10px;padding:10px 6px 30px}
+canvas{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.4);max-width:100%;height:auto}#msg{color:#eee;text-align:center;padding:24px}#msg a{color:#fff}</style></head><body>
+<div id="msg">Loading…</div><div id="pages"></div>
+<script type="module">
+// Wayback document viewer: renders a same-origin PDF page by page (pdf.js, Apache-2.0, served from /viewer/pdfjs/). — Sion's Tab agent
+import * as pdfjsLib from '/viewer/pdfjs/pdf.min.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/viewer/pdfjs/pdf.worker.min.mjs';
+const msg = document.getElementById('msg'), box = document.getElementById('pages');
+const q = new URLSearchParams(location.search).get('file') || '';
+let u; try { u = new URL(q, location.href); } catch (e) {}
+if (!u || u.origin !== location.origin || !/\.pdf$/i.test(u.pathname)) { msg.textContent = 'No document.'; }
+else {
+  const fallback = () => { msg.innerHTML = 'This document could not be shown here. <a href="' + u.href + '">Open the PDF</a>.'; };
+  pdfjsLib.getDocument({ url: u.href, standardFontDataUrl: '/viewer/pdfjs/standard_fonts/' }).promise.then(async (pdf) => {
+    msg.textContent = pdf.numPages + (pdf.numPages === 1 ? ' page' : ' pages');
+    const W = () => Math.min(box.clientWidth - 12, 1000);
+    const io = new IntersectionObserver((ents) => { for (const e of ents) if (e.isIntersecting) { io.unobserve(e.target); draw(e.target); } }, { rootMargin: '600px 0px' });
+    async function draw(c) {
+      const page = await pdf.getPage(+c.dataset.n);
+      const v1 = page.getViewport({ scale: 1 }), scale = W() / v1.width, dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const vp = page.getViewport({ scale: scale * dpr });
+      c.width = vp.width; c.height = vp.height; c.style.width = (vp.width / dpr) + 'px';
+      await page.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise;
+    }
+    const first = await pdf.getPage(1), r = first.getViewport({ scale: 1 });
+    for (let n = 1; n <= pdf.numPages; n++) {
+      const c = document.createElement('canvas'); c.dataset.n = n; c.setAttribute('aria-label', 'Page ' + n);
+      c.width = 10; c.height = Math.round(10 * r.height / r.width); c.style.width = W() + 'px';
+      box.appendChild(c); io.observe(c);
+    }
+  }).catch(fallback);
+}
+</script></body></html>
