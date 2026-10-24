@@ -497,7 +497,7 @@ sc('III', 'ghf-19490202-1', '1949-02-02', '2 February 1949', "The 1949 tenancy",
    'Court record',
    "John Williams surrenders his tenancy. Frederick Buckler's yearly tenancy from Western Ground Rents begins on 2 February 1949. It is not put in writing.",
    [w('/frederick-buckler/#tenancy-1949', "Frederick Buckler — the 1949 tenancy", 'Court record'), JUDG, w('/the-two-parcels/', 'The Two Parcels'), w('/scrutiny-and-accountability/case-analysis-connections-patterns-questions/', 'Case Analysis — Connections, Patterns and Questions', 'Analysis')],
-   ledger={'S': 'Attempt 1 to make Mary look permitted: her house spoken of as part of Frederick\'s unwritten fields tenancy (Mary rejects it; she still holds the paper title)',
+   ledger={'S': 'Attempt 1 to make Mary look permitted: her house spoken of as part of Frederick\'s unwritten fields tenancy (no 1949 offer to Mary concerning Parcel A, or reply from her, has been found; she still holds the paper title)',
            'B': 'Freehold: Western Ground Rents · tenant: Frederick Buckler (unwritten, from 1949)'})
 sc('III', 'ghf-19500601-1', '1950-06-01', 'June 1950 – c. 1952', "The blanket box", 'Great House Farm', 'A',
    "Mary's statement",
@@ -621,11 +621,11 @@ sc('IV', 'ghf-19740703-1', '1974-07-03', '3 July 1974', "1974 possession action"
    ledger={'A': 'Freehold claimed by Mary, in occupation · ownership pleaded in her defence after the 3 July 1974 adjournment (never decided)'})
 sc('IV', 'ghf-19741031-1', '1974-10-31', 'September – October 1974', "The 1974 letters", 'Great House Farm', 'A',
    'Court record',
-   "On 19 September 1974 BP is given leave to enforce the 1962 order; Mary had not been given notice. On 31 October the warrant is withdrawn, and BP writes to \"Mary Buckler\" (the family copy; the Court of Appeal describes the letters as addressed to Mrs Buckler, \"described again as Mrs Williams\") that she may remain in the farmhouse under licence. She does not accept.",
+   "On 19 September 1974 BP is given leave to enforce the 1962 order; Mary had not been given notice. On 31 October BP writes to \"Mary Buckler\" (the family copy; the Court of Appeal describes the letters as addressed to Mrs Buckler, \"described again as Mrs Williams\") that she may remain in the farmhouse under licence. The letters reach her solicitor on 4 November, when the stay application comes before the judge; the landlords' solicitors afterwards withdraw the warrant, at a date before 25 November 1974. She does not accept.",
    [w('/1974-licence-letters/#letters', 'The 1974 Licence Letters', 'Court record'), JUDG,
     w('/1974-licence-letters/#warrant', 'The 1974 Licence Letters — the warrant', 'Court record')],
    aliases=['ghf-19741031-2', 'ghf-19740919-1'],
-   ledger={'S': 'Attempt 6: BP\'s "licence" letters to Mary, 31 October 1974 (never accepted); 1962 warrant withdrawn'})
+   ledger={'S': 'Attempt 6: BP\'s "licence" letters to Mary, 31 October 1974 (never accepted); 1962 warrant withdrawn before 25 November 1974'})
 sc('IV', 'ghf-19741119-1', '1974-11-19', '19 November, 1970s (year unclear)', "Letter to the Western Mail", 'Western Mail — letters', 'A',
    'Newspaper',
    "A letter to the Western Mail, dated 19 November (year unclear), traces the land's descent.",
@@ -900,7 +900,7 @@ sc('VII', 'ghf-19940728-1', '1994-07-28', '28 July 1994', "Finds to the National
    [ARCH, LEGAL])
 sc('VII', 'ghf-19941110-1', '1994-11-10', '1994 – 96', "Woodland title and houses", 'Woodland — WA735527', 'A',
    'Land Registry record',
-   "On 10 November 1994 the woodland passes to the Forest of Cardiff (WA735527). In 1995–96 rights are granted to South Wales Electricity. The houses of Church View Close are built.",
+   "On 10 November 1994 Ideal Homes Wales transfers the woodland to the Forest of Cardiff (WA735527); no transfer from Cardiff City Corporation is on record. In 1995–96 rights are granted to South Wales Electricity. The houses of Church View Close are built.",
    [w('/woodland/', 'Woodland'), LRT('later-dealings', 'Land Registry Titles — later dealings'), REDEV],
    aliases=['ghf-19950628-1'],
    ledger={'M': 'WA231076 and the house titles carved from it (Church View Close)',
