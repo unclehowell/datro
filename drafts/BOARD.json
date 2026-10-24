@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-24T09:26:37Z",
+ "updated": "2026-10-24T09:35:25Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
@@ -52,7 +52,15 @@
     "route": "hmlr",
     "regime": "SAR",
     "kb_items": 23
-   }
+   },
+   "pct": 21,
+   "reviews": 2,
+   "distinct_agents": 1,
+   "agents": [
+    "Tab"
+   ],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "bp-preservation-reply",
@@ -101,7 +109,16 @@
    "tier_label": "IN REVIEW",
    "gmail_draft_id": null,
    "sent_at": null,
-   "archive_url": null
+   "archive_url": null,
+   "pct": 61,
+   "reviews": 14,
+   "distinct_agents": 2,
+   "agents": [
+    "ChatGPT",
+    "Tab"
+   ],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "cardiff-central-library-bute-x6-12-reply",
@@ -153,7 +170,16 @@
    "tier_label": "IN REVIEW",
    "gmail_draft_id": null,
    "sent_at": null,
-   "archive_url": null
+   "archive_url": null,
+   "pct": 53,
+   "reviews": 8,
+   "distinct_agents": 2,
+   "agents": [
+    "ChatGPT",
+    "Tab"
+   ],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "hmlr-eir-1961-deed",
@@ -205,7 +231,16 @@
    "tier_label": "IN REVIEW",
    "gmail_draft_id": null,
    "sent_at": null,
-   "archive_url": null
+   "archive_url": null,
+   "pct": 53,
+   "reviews": 8,
+   "distinct_agents": 2,
+   "agents": [
+    "ChatGPT",
+    "Tab"
+   ],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "hmlr-sar-wa735527-wa513690",
@@ -258,7 +293,16 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "note": "downgraded from READY TO SEND by the Gmail gate (24 Oct 05:3x BST); board reconciled to HubSpot"
+   "note": "downgraded from READY TO SEND by the Gmail gate (24 Oct 05:3x BST); board reconciled to HubSpot",
+   "pct": 49,
+   "reviews": 7,
+   "distinct_agents": 2,
+   "agents": [
+    "ChatGPT",
+    "Tab"
+   ],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "vale-eir-vg41",
@@ -312,7 +356,16 @@
    "tier_label": "IN REVIEW",
    "gmail_draft_id": null,
    "sent_at": null,
-   "archive_url": null
+   "archive_url": null,
+   "pct": 53,
+   "reviews": 8,
+   "distinct_agents": 2,
+   "agents": [
+    "ChatGPT",
+    "Tab"
+   ],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "glamorgan-archives-vg41-catalogue",
@@ -361,7 +414,15 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "note": "downgraded from READY TO SEND by the Gmail gate (24 Oct 05:3x BST); board reconciled to HubSpot"
+   "note": "downgraded from READY TO SEND by the Gmail gate (24 Oct 05:3x BST); board reconciled to HubSpot",
+   "pct": 29,
+   "reviews": 4,
+   "distinct_agents": 1,
+   "agents": [
+    "Tab"
+   ],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "hmlr-eir-vg41",
@@ -413,7 +474,16 @@
    "tier_label": "IN REVIEW",
    "gmail_draft_id": null,
    "sent_at": null,
-   "archive_url": null
+   "archive_url": null,
+   "pct": 53,
+   "reviews": 8,
+   "distinct_agents": 2,
+   "agents": [
+    "ChatGPT",
+    "Tab"
+   ],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "tna-hmlr-commons-records-1960-72",
@@ -467,7 +537,15 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "note": "downgraded from READY TO SEND by the Gmail gate (24 Oct 05:3x BST); board reconciled to HubSpot"
+   "note": "downgraded from READY TO SEND by the Gmail gate (24 Oct 05:3x BST); board reconciled to HubSpot",
+   "pct": 29,
+   "reviews": 4,
+   "distinct_agents": 1,
+   "agents": [
+    "Tab"
+   ],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "hmlr-customer-support-titles",
@@ -520,7 +598,16 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "note": "downgraded from READY TO SEND by the Gmail gate (24 Oct 05:3x BST); board reconciled to HubSpot"
+   "note": "downgraded from READY TO SEND by the Gmail gate (24 Oct 05:3x BST); board reconciled to HubSpot",
+   "pct": 49,
+   "reviews": 7,
+   "distinct_agents": 2,
+   "agents": [
+    "ChatGPT",
+    "Tab"
+   ],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "hmlr-wales-office-z084nqv",
@@ -577,7 +664,15 @@
    "tier_label": "IN REVIEW",
    "gmail_draft_id": null,
    "sent_at": null,
-   "archive_url": null
+   "archive_url": null,
+   "pct": 33,
+   "reviews": 5,
+   "distinct_agents": 1,
+   "agents": [
+    "Tab"
+   ],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "cardiff-eir-1961-deed",
@@ -616,7 +711,16 @@
    "gmail_draft_id": null,
    "sent_at": null,
    "archive_url": null,
-   "note": "downgraded from READY TO SEND by the Gmail gate (24 Oct 05:3x BST); board reconciled to HubSpot"
+   "note": "downgraded from READY TO SEND by the Gmail gate (24 Oct 05:3x BST); board reconciled to HubSpot",
+   "pct": 49,
+   "reviews": 7,
+   "distinct_agents": 2,
+   "agents": [
+    "ChatGPT",
+    "Tab"
+   ],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "hmcts-cardiff-1955-1962-records",
@@ -669,7 +773,16 @@
      "Tab"
     ],
     "needs": "4 agents / 10 reviews"
-   }
+   },
+   "pct": 29,
+   "reviews": 2,
+   "distinct_agents": 2,
+   "agents": [
+    "Claude",
+    "Tab"
+   ],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "rics-022900001630-clarification",
@@ -683,7 +796,13 @@
    "rounds": 0,
    "tier": "working",
    "tier_label": "IN REVIEW",
-   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)"
+   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)",
+   "pct": 6,
+   "reviews": 0,
+   "distinct_agents": 0,
+   "agents": [],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "itv-foi-archive-footage",
@@ -697,7 +816,13 @@
    "rounds": 0,
    "tier": "working",
    "tier_label": "IN REVIEW",
-   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)"
+   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)",
+   "pct": 6,
+   "reviews": 0,
+   "distinct_agents": 0,
+   "agents": [],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "nlw-research-enquiry",
@@ -711,7 +836,13 @@
    "rounds": 0,
    "tier": "working",
    "tier_label": "IN REVIEW",
-   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)"
+   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)",
+   "pct": 6,
+   "reviews": 0,
+   "distinct_agents": 0,
+   "agents": [],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "tna-foi-resend-22-oct",
@@ -725,7 +856,13 @@
    "rounds": 0,
    "tier": "working",
    "tier_label": "IN REVIEW",
-   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)"
+   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)",
+   "pct": 6,
+   "reviews": 0,
+   "distinct_agents": 0,
+   "agents": [],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "cadw-ticket-628912926",
@@ -739,7 +876,13 @@
    "rounds": 0,
    "tier": "working",
    "tier_label": "IN REVIEW",
-   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)"
+   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)",
+   "pct": 6,
+   "reviews": 0,
+   "distinct_agents": 0,
+   "agents": [],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "heneb-her-villa-foi",
@@ -753,7 +896,13 @@
    "rounds": 0,
    "tier": "working",
    "tier_label": "IN REVIEW",
-   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)"
+   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)",
+   "pct": 6,
+   "reviews": 0,
+   "distinct_agents": 0,
+   "agents": [],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "swp-internal-review-1188-26",
@@ -767,7 +916,13 @@
    "rounds": 0,
    "tier": "working",
    "tier_label": "IN REVIEW",
-   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)"
+   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)",
+   "pct": 6,
+   "reviews": 0,
+   "distinct_agents": 0,
+   "agents": [],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "hmlr-sar-d260928",
@@ -781,7 +936,13 @@
    "rounds": 0,
    "tier": "working",
    "tier_label": "IN REVIEW",
-   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)"
+   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)",
+   "pct": 6,
+   "reviews": 0,
+   "distinct_agents": 0,
+   "agents": [],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "heneb-complaint-outcome",
@@ -795,7 +956,13 @@
    "rounds": 0,
    "tier": "working",
    "tier_label": "IN REVIEW",
-   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)"
+   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)",
+   "pct": 6,
+   "reviews": 0,
+   "distinct_agents": 0,
+   "agents": [],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "tna-internal-review-cas-347296",
@@ -809,7 +976,13 @@
    "rounds": 0,
    "tier": "working",
    "tier_label": "IN REVIEW",
-   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)"
+   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)",
+   "pct": 6,
+   "reviews": 0,
+   "distinct_agents": 0,
+   "agents": [],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "swp-foi-1264-26",
@@ -823,7 +996,13 @@
    "rounds": 0,
    "tier": "working",
    "tier_label": "IN REVIEW",
-   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)"
+   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)",
+   "pct": 6,
+   "reviews": 0,
+   "distinct_agents": 0,
+   "agents": [],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "llandough-cc-internal-review",
@@ -837,7 +1016,13 @@
    "rounds": 0,
    "tier": "working",
    "tier_label": "IN REVIEW",
-   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)"
+   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)",
+   "pct": 6,
+   "reviews": 0,
+   "distinct_agents": 0,
+   "agents": [],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "defra-foi-eir-20-oct",
@@ -851,7 +1036,13 @@
    "rounds": 0,
    "tier": "working",
    "tier_label": "IN REVIEW",
-   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)"
+   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)",
+   "pct": 6,
+   "reviews": 0,
+   "distinct_agents": 0,
+   "agents": [],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "hmlr-eir-20-oct",
@@ -865,7 +1056,13 @@
    "rounds": 0,
    "tier": "working",
    "tier_label": "IN REVIEW",
-   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)"
+   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)",
+   "pct": 6,
+   "reviews": 0,
+   "distinct_agents": 0,
+   "agents": [],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "church-in-wales-rb-property",
@@ -879,7 +1076,13 @@
    "rounds": 0,
    "tier": "working",
    "tier_label": "IN REVIEW",
-   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)"
+   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)",
+   "pct": 6,
+   "reviews": 0,
+   "distinct_agents": 0,
+   "agents": [],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   },
   {
    "id": "ico-s50-museum-wales",
@@ -893,7 +1096,13 @@
    "rounds": 0,
    "tier": "working",
    "tier_label": "IN REVIEW",
-   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)"
+   "origin": "first draft or import by Tab, 24 Oct 2026 (not yet reviewed)",
+   "pct": 6,
+   "reviews": 0,
+   "distinct_agents": 0,
+   "agents": [],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z"
   }
  ],
  "events": [
@@ -1066,5 +1275,6 @@
    "row": 4
   }
  ],
- "tier_note": "Promotion pyramid (Hive protocol v3.2.0): working (drafting rounds) -> row 1 READY TO SEND (consensus) -> row 2 DEFINITELY READY TO SEND (final three-hat) -> row 3 GMAIL DRAFT (Tab creates the in-thread Gmail draft only after DEFINITELY READY TO SEND; the project owner reviews and sends) -> row 4 WAYBACK (sent, archived on email. and wayback.). Set by work/watch/hive_tier.py from the HubSpot subject; gmail_draft_id / sent_at / archive_url kept once set."
+ "tier_note": "Promotion pyramid (Hive protocol v3.2.0): working (drafting rounds) -> row 1 READY TO SEND (consensus) -> row 2 DEFINITELY READY TO SEND (final three-hat) -> row 3 GMAIL DRAFT (Tab creates the in-thread Gmail draft only after DEFINITELY READY TO SEND; the project owner reviews and sends) -> row 4 WAYBACK (sent, archived on email. and wayback.). Set by work/watch/hive_tier.py from the HubSpot subject; gmail_draft_id / sent_at / archive_url kept once set.",
+ "pct_rule": "% = progress to the owner's Gmail drafts: 10 reviews, 4 agents, DEFINITELY READY TO SEND. pct = floor(40*min(reviews/10,1) + 30*min(agents/4,1) + 30*stage); stage DRAFT 0, TURN 0.2, CONSENSUS CANDIDATE 0.4, READY TO SEND 0.6, FINAL THREE-HAT 0.8, DEFINITELY READY TO SEND 1.0; capped at 99 until the gate is met and the draft is DEFINITELY READY TO SEND. Reviews and agents from each task's signed changelog (creation is not a review). pct.py, every round."
 }
