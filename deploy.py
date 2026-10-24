@@ -2,7 +2,7 @@
 """Deploy work/watch/worker/ as the Cloudflare Worker ghf-watch (watch.bucklerfamily.estate) through the connected
 Cloudflare account: KV namespace, Worker, version (100%), cron trigger, custom domain. Each step is logged with its
 undo in work/cf-rebalance/changes.json. Usage: timeout -k 5 900 python3 deploy.py "<message>" [--setup]   — Sion's Tab agent"""
-import json, os, sys, base64, datetime as dt
+import json, os, sys, base64, datetime as dt, re
 sys.path.insert(0, '/home/user/tab/work/agent-ready')
 import deploy as AR   # reuse its paced connected-apps caller
 HERE = os.path.dirname(os.path.abspath(__file__)); W = os.path.join(HERE, 'worker')
@@ -35,9 +35,23 @@ def setup():
         print('worker', s, json.dumps(b)[:300]); ST['worker_id'] = b['result']['id']; save()
         log(f"Worker {NAME} created ({ST['worker_id']})", f"DELETE /accounts/{ACCT}/workers/scripts/{NAME} (removes it, its cron and custom domain)")
 def deploy(msg):
-    def mod(name, ct): return {"name": name, "content_type": ct, "content_base64": base64.b64encode(open(os.path.join(W, name), 'rb').read()).decode()}
+    def mod(source_name, ct, module_name=None):
+        # Source filenames may differ from Cloudflare's imported module names (pipeline.js -> pipeline.txt).
+        return {"name": module_name or source_name, "content_type": ct,
+                "content_base64": base64.b64encode(open(os.path.join(W, source_name), 'rb').read()).decode()}
+    modules = [
+        mod('index.js', 'application/javascript+module'),
+        mod('pipeline.js', 'text/plain', 'pipeline.txt'),
+        mod('seed.txt', 'text/plain'),
+    ]
+    # Preflight local imports so a deploy cannot silently omit an imported module.
+    imported = re.findall(r'import\\s+\\w+\\s+from\\s+[\'\"]\\./([^\'\"]+)[\'\"]', open(os.path.join(W, 'index.js'), encoding='utf-8').read())
+    available = {m['name'] for m in modules}
+    missing = sorted(set(imported) - available)
+    if missing:
+        raise SystemExit('deployment aborted: missing Worker module(s): ' + ', '.join(missing))
     b = {"compatibility_date": "2025-01-01", "main_module": "index.js",
-         "modules": [mod('index.js', 'application/javascript+module'), mod('seed.txt', 'text/plain')],
+         "modules": modules,
          "bindings": [{"type": "kv_namespace", "name": "WATCH", "namespace_id": ST['kv_id']}], "annotations": {"workers/message": msg[:80]}}
     s, up = call('POST', f"/accounts/{ACCT}/workers/workers/{ST['worker_id']}/versions", b)
     if s not in (200, 201): print('version failed', s, json.dumps(up)[:1500]); sys.exit(1)
