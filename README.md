@@ -1,6 +1,8 @@
 # infographic.bucklerfamily.estate — Great House Farm: the land changing hands
 
-v3.3.1 (24 Oct 2026). One circle. On the ring: title holders and official actors. Inside it: no title — the permissive occupancy ploys (💩, each with its year; 💩💩 = 1955), the two people named in the statement of Mary (Nancy) Williams (🦹 Bruce Sutherland, with Mr. Knapp, estate agent, above), and the shredded-paper icons (papers gone).
+v3.3.3 (24 Oct 2026). One circle. On the ring: title holders and official actors. Inside it: no title — the permissive occupancy ploys (💩, each with its year; 💩💩 = 1955), the two people named in the statement of Mary (Nancy) Williams (🦹 Bruce Sutherland, with Mr. Knapp, estate agent, above), and the shredded-paper icons (papers gone).
+
+Data-status note: the 1877 A/B division is shown as the working model, not as a verified conveyance. The separate 1877 Clyde Street, Roath lease is excluded as a different property; a Great House Farm-specific instrument is still required to establish the proposed split.
 
 The message: into the circle comes one farm, A + B, on the root title chain; out comes A + B again, but as synthetic A3 and B (merged at BP Properties, 1987), plus two simple lines, SA1 and SA2.
 
