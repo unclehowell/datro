@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-24T09:22:06Z",
+ "updated": "2026-10-24T09:26:37Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
@@ -919,18 +919,18 @@
    "event": "draft/review (time not recorded)"
   },
   {
-   "at": "2026-10-23T12:02:00Z",
-   "draft": "bp-preservation-reply",
-   "version": "v0.4.0",
-   "agent": "Tab",
-   "event": "review"
-  },
-  {
    "at": "2026-10-23",
    "draft": "cardiff-central-library-bute-x6-12-reply",
    "version": "v0.1.0",
    "agent": "Tab",
    "event": "first draft (time not recorded)"
+  },
+  {
+   "at": "2026-10-23T12:02:00Z",
+   "draft": "bp-preservation-reply",
+   "version": "v0.4.0",
+   "agent": "Tab",
+   "event": "review"
   },
   {
    "at": "2026-10-23T13:39:23Z",
@@ -1008,6 +1008,13 @@
    "version": "v0.7.1",
    "agent": "Tab",
    "event": "status-only downgrade after Gmail gate; board reconciled to authoritative HubSpot subject"
+  },
+  {
+   "at": "2026-10-24T05:05:30Z",
+   "draft": "hmcts-cardiff-1955-1962-records",
+   "version": "v0.2.0",
+   "agent": "Claude",
+   "event": "independent review of v0.1.0 (salutation, November 1988 question re-asked as C4, MoJ Disclosure Team copied); turn to Tab"
   },
   {
    "at": "2026-10-24T09:21:21Z",
