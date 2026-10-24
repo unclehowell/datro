@@ -45,7 +45,7 @@ def deploy(msg):
         mod('seed.txt', 'text/plain'),
     ]
     # Preflight local imports so a deploy cannot silently omit an imported module.
-    imported = re.findall(r'import\\s+\\w+\\s+from\\s+[\'\"]\\./([^\'\"]+)[\'\"]', open(os.path.join(W, 'index.js'), encoding='utf-8').read())
+    imported = re.findall(r'import\s+\w+\s+from\s+[\'"]\./([^\'"]+)[\'"]', open(os.path.join(W, 'index.js'), encoding='utf-8').read())
     available = {m['name'] for m in modules}
     missing = sorted(set(imported) - available)
     if missing:
