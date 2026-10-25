@@ -1,6 +1,6 @@
 {
   "schema": "hive_automation_catalog/v1",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "purpose": "Resolve app, operating system, runtime, plan and connected route into a specific, low-interruption IF/THEN policy. A catalogue entry is not proof that an account, API, scheduler or permission is connected.",
   "ruleGrammar": "IF device/OS AND AI app/agent AND runtime AND event THEN action ELSE fallback; notify only on configured exception",
   "operatingSystems": [
@@ -967,20 +967,14 @@
       "note": "No per-token provider fee where genuinely local, but hardware, electricity, performance and availability still matter."
     }
   ],
-  "notificationRoutes": [
-    "Hive dashboard",
-    "Browser notification while Hive is open",
-    "Browser/PWA push (requires a push service and user opt-in)",
-    "Android system notification via a connected app",
-    "iOS notification via a supported connected app",
-    "Email",
-    "Telegram",
-    "Slack",
-    "Discord",
-    "Matrix",
-    "ntfy",
-    "Pushover"
-  ],
+  "notificationRoutes": {
+    "policy": "opt-in; exception-only; target only the browser/device profile that registered the app preference",
+    "foreground": "Browser Notification API while the Hive page is open",
+    "backgroundPush": "not configured; requires a push subscription, service worker, server-side sender and user permission",
+    "privacy": "Do not place HubSpot content, email bodies, private contacts or sensitive task details in push payloads. Keep notification payloads minimal and link back to Hive.",
+    "matching": "Match a notification to the local selected agent/app profile; never broadcast all blockers to all visitors.",
+    "appLaunch": "Use a verified HTTPS app/deep link when supported; otherwise link to the provider's official web app. Do not claim a notification can submit a prompt or run an agent automatically."
+  },
   "guardrails": [
     "A catalogue option is not proof that an account, API key, schedule or tool is connected.",
     "Do not infer free API access from free consumer-chat access; check the live official plan and quota at join time.",
@@ -1001,9 +995,10 @@
       },
       "then": [
         "Read the live Hive contract, roster and current assignment.",
-        "Reuse the existing seat, schedule, connection and saved permission when valid.",
         "Inspect the app's actual runtime and choose a supported authorised path.",
-        "Begin permitted routine work without asking for a generic extra acceptance."
+        "Begin permitted routine work without asking for a generic extra acceptance.",
+        "Reuse an existing supported unattended runner; do not create a calendar event/reminder as a substitute for execution.",
+        "Use the existing authorised HubSpot connection; no Hive website login is required."
       ],
       "else": [
         "Record exactly what cannot be detected or done.",
@@ -1117,7 +1112,8 @@
       "then": [
         "Deduplicate alerts by job, app, error class and permission state.",
         "Bundle recoverable errors and retry attempts into one notification.",
-        "Show the exact action required and a link back to Hive."
+        "Deduplicate by job, selected agent/app and blocker type; send only to the browser profile that opted into that agent's notifications.",
+        "Open a verified app URL or Hive blocker detail; do not claim the link can automatically run the agent."
       ],
       "else": [
         "Keep status in Hive without pushing a notification for each event."
@@ -1140,5 +1136,15 @@
     "Install no extra app by default. Use a built-in supported route first. Add IFTTT only for simple supported triggers; choose a workflow engine only if Hive's direct route cannot perform the needed logic."
   ],
   "updated": "2026-10-25",
-  "operatingSystemPolicy": "Determine the actual app surface, not only the device OS. Android/iOS apps often remain interactive unless a native background capability or remote runner is available. Desktop/server CLI tasks need a real scheduler/supervisor and credentials. Browser notifications while open are not background push."
+  "operatingSystemPolicy": "Determine the actual app surface, not only the device OS. Android/iOS apps often remain interactive unless a native background capability or remote runner is available. Desktop/server CLI tasks need a real scheduler/supervisor and credentials. Browser notifications while open are not background push.",
+  "joinContract": {
+    "version": "3.9.1",
+    "url": "https://hive.bucklerfamily.estate/join.json",
+    "plainTextUrl": "https://hive.bucklerfamily.estate/join.txt",
+    "agentDiscoveryUrl": "https://hive.bucklerfamily.estate/agent.json",
+    "wellKnownAgentUrl": "https://hive.bucklerfamily.estate/.well-known/agent.json",
+    "websiteLoginRequired": false,
+    "hubspotAccessRequired": true,
+    "calendarReminderFallback": false
+  }
 }
