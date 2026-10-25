@@ -213,6 +213,15 @@ function homePage(env) {
 ${band("Accountability", [
   ["/", "Accountability Index", "public bodies ranked by questions the record had already answered"],
 ])}
+<section class="sl-band" id="theories"><h2>Competing theories, most plausible first</h2>
+<p class="meta">Five theories that could account for the record, ordered from most to least plausible on the evidence held today. Each is a theory, not a finding; the courts’ view is ranked with the rest. Evidence for and against each, with links to every record: <a href="https://cedwyn.bucklerfamily.estate/thousand-cuts/">1000 Cuts on Cedwyn</a>.</p>
+<ol class="idx">
+<li><strong>The courts’ view.</strong> On this theory, possession was lawfully recovered and the paper title was never extinguished: the 1962 order stopped the 12-year period, and the 31 Oct 1974 letters made the later possession a licence. <span class="meta">Would be settled by the 1938 Bute–Western Ground Rents conveyance plan, and any written rejection of the 1974 licence.</span></li>
+<li><strong>Lawful steps, timed against the 12-year clock.</strong> On this theory, each step was lawful on its own, but together they kept the family’s possession from running 12 years without the ownership plea being decided. <span class="meta">Would be settled by the 1974 Cardiff County Court file (HMCTS reply due 2 Nov 2026) and BP’s own files on the 1974 and 1983 steps.</span></li>
+<li><strong>The farmhouse parcel stood outside the paper chain.</strong> On this theory, Parcel A, the house parcel, was never conveyed in the Bute → Western Ground Rents chain. <span class="meta">Would be settled by the 1938 conveyance and plan, and the 1905 Bute conveyance.</span></li>
+<li><strong>The 1983 registration misdescribed the occupation.</strong> On this theory, the farmhouse application, made while she lived there and examined after her death, did not give the Registry the occupier’s true position. <span class="meta">Would be settled by the Land Registry’s 1983 application papers and letters (reply due 28 Oct 2026).</span></li>
+<li><strong>A 1988 sale drove the clearance.</strong> On this theory, the site had become an asset for sale in 1988, and the clearance served that sale. <span class="meta">Would be settled by sale particulars for 1988–93, or the Land Registry history of WA231076.</span></li>
+</ol></section>
 ${band("Our case", [
   ["/case#case", "Fraud and concealment", "analysis and legal review"],
   ["/case#claims", "Working theories", "our case, unproven"],
