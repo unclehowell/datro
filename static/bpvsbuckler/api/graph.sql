@@ -1480,6 +1480,7 @@ INSERT INTO nodes VALUES ('doc-government-legal-department-western-ground-rents-
 INSERT INTO nodes VALUES ('doc-heneb-GGAT02038s','document','Heneb replies, 6 and 14 October 2026','{"holder": "Heneb (Glamorgan-Gwent HER)", "reference": "GGAT02038s (request 8 Sep 2026; 6 Oct reply; 14 Oct digitisation update)", "date": "2026-10-14"}');
 INSERT INTO nodes VALUES ('doc-heneb-her-schedule-2026-10-16','document','heneb-her-schedule-2026-10-16.md','{"holder": "Heneb (The Trust for Welsh Archaeology) / Historic Environment Record", "reference": "GHF/HENEB/2026-09-20 schedule reply", "date": "2026-10-16"}');
 INSERT INTO nodes VALUES ('doc-historic-england-26-04323','document','Historic England EIR 26/04323 – Internal review request','{"holder": "", "reference": "", "date": ""}');
+INSERT INTO nodes VALUES ('doc-hmcts-moj-bp-v-buckler-court-file-location-lead','document','HMCTS / MoJ — BP Properties Ltd v Buckler court file location lead','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-hmlr-D260928','document','HM Land Registry — D260928 SAR supplement + new EIR','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-hmlr-F261029-F261030','document','HMLR F261029 (EIR) / F261030 (FOIA)','{"holder": "", "reference": "", "date": ""}');
 INSERT INTO nodes VALUES ('doc-hmlr-historical-title-great-house-farm-location-lead','document','HMLR historical title location lead','{"holder": "HM Land Registry", "reference": "draft r-6678427177936368728 (not sent)", "date": "2026-10-15"}');
