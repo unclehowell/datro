@@ -19,7 +19,7 @@
    "short": "Permissive occupancy",
    "name": "Permissive occupancy origin (synthetic Parcel A labels; not a title-holder)",
    "m": "Permissive occupancy",
-   "icon": "💩",
+   "icon": "◆",
    "outside": true
   },
   {
@@ -1112,7 +1112,7 @@
   }
  ],
  "origin": {
-  "label": "Schematic origin of synthetic A1–A3 records; not a title-holder or a conveyance",
+  "label": "Schematic origin of later A1–A3 records; not a title-holder or a conveyance",
   "titles": [
    {
     "title": "WA735527",
@@ -1131,7 +1131,7 @@
    }
   ],
   "not": "These links are not conveyances. A1: the 29 Mar 1961 deed is recited in the woodland title strand; WA735527 lists Forest of Cardiff as proprietor from 1994. A2: BP Properties applied to register WA240304 on 23 Feb 1983 while Mary lived there; no conveyance from the occupiers is on record. A3: VG41 was registered on 16 Jun 1970; Glamorgan County Council was the registration authority, but the entry alone does not establish freehold ownership or vesting in that council.",
-  "intro": "The 💩 sits at the centre of the ring. A dotted “?” line joins it to the family. Each part of Parcel A has its own path through the 💩 (permissive-occupancy steps) and the 💩💩 (seizure or possession steps) to the parties that registered it.",
+  "intro": "The ◆ sits at the centre of the ring. A dotted “?” line joins it to the family. Each part of Parcel A has its own path through the ◆ (permissive-occupancy steps) and the ◆◆ (seizure or possession steps) to the parties that registered it.",
   "branches": [
    {
     "parcel": "A1",
@@ -1608,7 +1608,7 @@
   "acol": "#ffd166",
   "bcol": "#5aa9ff",
   "star": "herbert",
-  "intro": "Freehold title path and evidential gaps. The separate three-arrow diagram shows the later synthetic A1–A3 registration endpoints; those arrows are a pattern under examination, not freehold conveyances. Solid lines mark a recorded title-level step; dashed lines mark a missing instrument or a link supported by secondary material or a family statement.",
+  "intro": "Freehold title path and evidential gaps. The separate three-arrow diagram shows the later later A1–A3 registration endpoints; those arrows are a pattern under examination, not freehold conveyances. Solid lines mark a recorded title-level step; dashed lines mark a missing instrument or a link supported by secondary material or a family statement.",
   "steps": [
    {
     "k": "r1",
@@ -2288,11 +2288,11 @@
    },
    "dpoo": {
     "kind": "poo",
-    "icon": "💩💩",
+    "icon": "◆◆",
     "ang": 0,
     "r": 0,
     "cap": "1955",
-    "title": "1955 · double 💩",
+    "title": "1955 · double ◆",
     "text": "Enforcing possession of Parcel B under “whole farm” wording, Western Ground Rents took the north forest and the south-east green on 4 July 1955. Mary was objecting strongly.",
     "src": [
      {
@@ -2311,11 +2311,11 @@
    },
    "p1949": {
     "kind": "poo",
-    "icon": "💩",
+    "icon": "◆",
     "ang": 14,
     "r": 0.5,
     "cap": "1949",
-    "title": "1949 · permissive occupancy ploy",
+    "title": "1949 · permissive occupancy step",
     "text": "From 2 February 1949 Frederick held a yearly agricultural letting from Western Ground Rents: the 1987 judgment records “a new yearly agricultural tenancy commencing at February 2 1949”, granted when John Williams’s letting was surrendered; the written agreement that was intended was never made. The judgment records no offer to Mary in 1949, and no 1949 offer to her concerning Parcel A, or reply from her, has been found. The judgment records two later offers to Mary: she was “offered a tenancy of the farmhouse and garden by Western Ground Rents but refused to accept it”, undated and after 1955 in its account (see 1959); and in March 1965 Western Ground Rents’ agents “offered Mrs Buckler a tenancy” (para 22; see 1965).",
     "src": [
      {
@@ -2338,11 +2338,11 @@
    },
    "p1959": {
     "kind": "poo",
-    "icon": "💩",
+    "icon": "◆",
     "ang": 214,
     "r": 0.52,
     "cap": "1959",
-    "title": "1959 · permissive occupancy ploy",
+    "title": "1959 · permissive occupancy step",
     "text": "Mary refused an offer to let her the occupied farmhouse, buildings and garden in 1959 and asserted ownership through her grandfather. The family records this as the step that started the 12 years for the green. The 1987 judgment ties the offer to the farmhouse and garden. Source to add: the 1959 offer and reply, and any 1958 record.",
     "src": [
      {
@@ -2361,11 +2361,11 @@
    },
    "p1962": {
     "kind": "poo",
-    "icon": "💩",
+    "icon": "◆",
     "ang": 72,
     "r": 0.3,
     "cap": "1962",
-    "title": "1962 · permissive occupancy ploy",
+    "title": "1962 · permissive occupancy step",
     "text": "Cardiff County Court possession order against Frederick and Mary for the farmhouse, buildings and garden. It was never enforced. The family’s case is that it could not lawfully be enforced later.",
     "src": [
      {
@@ -2384,11 +2384,11 @@
    },
    "p1965": {
     "kind": "poo",
-    "icon": "💩",
+    "icon": "◆",
     "ang": 36,
     "r": 0.58,
     "cap": "1965",
-    "title": "1965 · permissive occupancy ploy",
+    "title": "1965 · permissive occupancy step",
     "text": "Western Ground Rents would not let the fields to Frederick, and offered a weekly letting of the farmhouse to “Mrs Williams” on 2 March 1965. It was not signed.",
     "src": [
      {
@@ -2403,11 +2403,11 @@
    },
    "p1969": {
     "kind": "poo",
-    "icon": "💩",
+    "icon": "◆",
     "ang": 66,
     "r": 0.66,
     "cap": "1969",
-    "title": "1969 · permissive occupancy ploy",
+    "title": "1969 · permissive occupancy step",
     "text": "Western Ground Rents conveyed Parcel B to BP Pension Trust together with the benefit of the 1962 order on the house. The deed is missing from the Land Registry files.",
     "src": [
      {
@@ -2430,11 +2430,11 @@
    },
    "p1971": {
     "kind": "poo",
-    "icon": "💩",
+    "icon": "◆",
     "ang": 90,
     "r": 0.55,
     "cap": "1971",
-    "title": "1971 · permissive occupancy ploy",
+    "title": "1971 · permissive occupancy step",
     "text": "Source to add. No record of a 1971 Ordnance Survey map change is on the wiki yet. The 1971 record on file is an abstract of title for BP Pension Trust, lodged with both first registrations (HM Land Registry letter, 19 Apr 2026). The family’s request for historical OS records is EV-0424.",
     "src": [
      {
@@ -2453,11 +2453,11 @@
    },
    "p1974": {
     "kind": "poo",
-    "icon": "💩",
+    "icon": "◆",
     "ang": 125,
     "r": 0.4,
     "cap": "1974",
-    "title": "1974 · permissive occupancy ploy",
+    "title": "1974 · permissive occupancy step",
     "text": "BP’s licence letters, dated 31 October 1974, reached Mrs Buckler’s solicitor on the morning of 4 November, just before the stay application came before the judge, who stayed execution pending her agreement. The landlords’ solicitors then wrote to the county court and withdrew the warrant, on a date before 25 November 1974; the exact day is not recorded. She did not accept the letters. The 1987 judgment treated the letters as a licence, so her possession after them was not counted towards the 12 years.",
     "src": [
      {
@@ -2480,11 +2480,11 @@
    },
    "p1975": {
     "kind": "poo",
-    "icon": "💩",
+    "icon": "◆",
     "ang": 150,
     "r": 0.7,
     "cap": "1975",
-    "title": "1975 · permissive occupancy ploy",
+    "title": "1975 · permissive occupancy step",
     "text": "BP Pension Trust to BP Properties, listed among the conveyances. The deed has not been seen.",
     "src": [
      {
@@ -2970,7 +2970,7 @@
     "to": "dpoo",
     "lab": null,
     "g": "SA1",
-    "title": "SA1 · 1955 double 💩",
+    "title": "SA1 · 1955 double ◆",
     "date": "4 Jul 1955",
     "text": "Enforcing possession of Parcel B under “whole farm” wording, Western Ground Rents took the north forest and the south-east green on 4 July 1955. Mary was objecting strongly.",
     "src": [
@@ -3060,7 +3060,7 @@
     "to": "p1959",
     "lab": null,
     "g": "SA2",
-    "title": "SA2 · 1959 💩",
+    "title": "SA2 · 1959 ◆",
     "date": "1958/59",
     "text": "Mary refused an offer to let her the occupied farmhouse, buildings and garden in 1959 and asserted ownership through her grandfather. The family records this as the step that started the 12 years for the green. The 1987 judgment ties the offer to the farmhouse and garden. Source to add: the 1959 offer and reply, and any 1958 record.",
     "src": [
@@ -3135,7 +3135,7 @@
     "to": "p1962",
     "lab": null,
     "g": "SA3",
-    "title": "SA3 · 1962 💩",
+    "title": "SA3 · 1962 ◆",
     "date": "11 Dec 1962",
     "text": "Cardiff County Court possession order against Frederick and Mary for the farmhouse, buildings and garden. It was never enforced. The family’s case is that it could not lawfully be enforced later.",
     "src": [
@@ -3160,7 +3160,7 @@
     "to": "p1965",
     "lab": null,
     "g": "SA3",
-    "title": "SA3 · 1965 💩",
+    "title": "SA3 · 1965 ◆",
     "date": "2 Mar 1965",
     "text": "Western Ground Rents would not let the fields to Frederick, and offered a weekly letting of the farmhouse to “Mrs Williams” on 2 March 1965. It was not signed.",
     "src": [
@@ -3181,7 +3181,7 @@
     "to": "p1969",
     "lab": null,
     "g": "SA3",
-    "title": "SA3 · 1969 💩",
+    "title": "SA3 · 1969 ◆",
     "date": "31 Dec 1969 (agreed bid 15 Feb 1969)",
     "text": "Western Ground Rents conveyed Parcel B to BP Pension Trust together with the benefit of the 1962 order on the house. The deed is missing from the Land Registry files.",
     "src": [
@@ -3240,7 +3240,7 @@
     "to": "p1971",
     "lab": null,
     "g": "SA3",
-    "title": "SA3 · 1971 💩",
+    "title": "SA3 · 1971 ◆",
     "date": "1971",
     "text": "Source to add. No record of a 1971 Ordnance Survey map change is on the wiki yet. The 1971 record on file is an abstract of title for BP Pension Trust, lodged with both first registrations (HM Land Registry letter, 19 Apr 2026). The family’s request for historical OS records is EV-0424.",
     "src": [
@@ -3266,7 +3266,7 @@
     "to": "p1974",
     "lab": null,
     "g": "SA3",
-    "title": "SA3 · 1974 💩",
+    "title": "SA3 · 1974 ◆",
     "date": "31 Oct 1974",
     "text": "BP’s licence letters, dated 31 October 1974, reached Mrs Buckler’s solicitor on the morning of 4 November, just before the stay application came before the judge, who stayed execution pending her agreement. The landlords’ solicitors then wrote to the county court and withdrew the warrant, on a date before 25 November 1974; the exact day is not recorded. She did not accept the letters. The 1987 judgment treated the letters as a licence, so her possession after them was not counted towards the 12 years.",
     "src": [
@@ -3295,7 +3295,7 @@
     "to": "p1975",
     "lab": null,
     "g": "SA3",
-    "title": "SA3 · 1975 💩",
+    "title": "SA3 · 1975 ◆",
     "date": "23 May 1975",
     "text": "BP Pension Trust to BP Properties, listed among the conveyances. The deed has not been seen.",
     "src": [
@@ -3448,7 +3448,7 @@
      }
     ],
     "start": "p1949",
-    "cap": "Synthetic A1, the woodland: 💩 1949 → 💩💩 1955 → the 1961 deed naming Cardiff City Corporation (terms not inspected; the line stops). Separately, 1994: Ideal Homes → Forest of Cardiff."
+    "cap": "Later A1, the woodland: ◆ 1949 → ◆◆ 1955 → the 1961 deed naming Cardiff City Corporation (terms not inspected; the line stops). Separately, 1994: Ideal Homes → Forest of Cardiff."
    },
    {
     "k": "SA2",
@@ -3464,7 +3464,7 @@
      }
     ],
     "start": "dpoo",
-    "cap": "Synthetic A2, the village green: 💩💩 1955 → 💩 1959 → Glamorgan County Council 1970 (VG41); afterwards Llandough Community Council."
+    "cap": "Later A2, the village green: ◆◆ 1955 → ◆ 1959 → Glamorgan County Council 1970 (VG41); afterwards Llandough Community Council."
    },
    {
     "k": "SA3",
@@ -3487,7 +3487,7 @@
      }
     ],
     "start": "dpoo",
-    "cap": "Synthetic A3, the house and yard: 💩💩 1955 → 💩 1962 → 💩 1965 → 💩 1969 → BP Pension Trust → 💩 1971 → 💩 1974 → 💩 1975 → BP Properties 1975, again 1983 (WA240304) → merges with B, 1987."
+    "cap": "Later A3, the house and yard: ◆◆ 1955 → ◆ 1962 → ◆ 1965 → ◆ 1969 → BP Pension Trust → ◆ 1971 → ◆ 1974 → ◆ 1975 → BP Properties 1975, again 1983 (WA240304) → merges with B, 1987."
    },
    {
     "k": "SA3B",
@@ -3524,7 +3524,7 @@
      }
     ],
     "start": "dpoo",
-    "cap": "Out: A + B again, but as synthetic A3 and B, merged at BP Properties in 1987."
+    "cap": "Out: A + B again, but as later A3 and B, merged at BP Properties in 1987."
    },
    {
     "k": "ALL",
@@ -3595,10 +3595,10 @@
      }
     ],
     "start": "p1949",
-    "cap": "Into the circle comes A + B; out comes A + B as synthetic A3 and B, plus two more simple lines, SA1 and SA2."
+    "cap": "Into the circle comes A + B; out comes A + B as later A3 and B, plus two more simple lines, SA1 and SA2."
    }
   ],
-  "ploys": "Permissive occupancy ploys",
+  "ploys": "Permissive occupancy steps",
   "narr": {
    "v": "3.3.1",
    "steps": {
@@ -3728,21 +3728,21 @@
      "segs": [
       "m-1987"
      ],
-     "en": "1987. Parcel B and synthetic A3 merge into one title.",
-     "cy": "1987. Mae Parsel B ac A3 synthetig yn uno'n un teitl.",
-     "es": "1987. La parcela B y la A3 sintética se fusionan en un solo título."
+     "en": "1987. Parcel B and later A3 merge into one title.",
+     "cy": "1987. Mae Parsel B ac A3 diweddarach yn uno'n un teitl.",
+     "es": "1987. La parcela B y la A3 posterior se fusionan en un solo título."
     },
     "tSA1": {
      "segs": [],
-     "en": "Synthetic A1, the woodland.",
-     "cy": "A1 synthetig, y coetir.",
-     "es": "A1 sintética, el bosque."
+     "en": "Later A1, the woodland.",
+     "cy": "A1 diweddarach, y coetir.",
+     "es": "A1 posterior, el bosque."
     },
     "s1a": {
      "segs": [
       "s1-1955"
      ],
-     "en": "It is born from a permissive occupancy ploy in 1949, then runs through the double ploy of 1955.",
+     "en": "It is born from a permissive occupancy step in 1949, then runs through the double step of 1955.",
      "cy": "Mae'n deillio o ystryw meddiannaeth ganiataol yn 1949, yna'n mynd drwy'r ystryw ddwbl yn 1955.",
      "es": "Nace de una maniobra de ocupación consentida en 1949 y luego pasa por la doble maniobra de 1955."
     },
@@ -3764,15 +3764,15 @@
     },
     "tSA2": {
      "segs": [],
-     "en": "Synthetic A2, the village green.",
-     "cy": "A2 synthetig, maes y pentref.",
-     "es": "A2 sintética, el prado comunal del pueblo."
+     "en": "Later A2, the village green.",
+     "cy": "A2 diweddarach, maes y pentref.",
+     "es": "A2 posterior, el prado comunal del pueblo."
     },
     "s2a": {
      "segs": [
       "s2-1959"
      ],
-     "en": "It is born from the double ploy of 1955, then a ploy in 1959.",
+     "en": "It is born from the double step of 1955, then a step in 1959.",
      "cy": "Mae'n deillio o'r ystryw ddwbl yn 1955, ac yna daw ystryw arall yn 1959.",
      "es": "Nace de la doble maniobra de 1955 y luego pasa por otra maniobra en 1959."
     },
@@ -3794,9 +3794,9 @@
     },
     "tSA3": {
      "segs": [],
-     "en": "Synthetic A3, the house and yard.",
-     "cy": "A3 synthetig, y tŷ a'r buarth.",
-     "es": "A3 sintética, la casa y el patio."
+     "en": "Later A3, the house and yard.",
+     "cy": "A3 diweddarach, y tŷ a'r buarth.",
+     "es": "A3 posterior, la casa y el patio."
     },
     "s3a": {
      "segs": [
@@ -3804,7 +3804,7 @@
       "s3-1965",
       "s3-1969"
      ],
-     "en": "It is born from the double ploy of 1955. More ploys follow: 1962, 1965, 1969.",
+     "en": "It is born from the double step of 1955. More steps follow: 1962, 1965, 1969.",
      "cy": "Mae'n deillio o'r ystryw ddwbl yn 1955. Daw rhagor o ystrywiau: 1962, 1965, 1969.",
      "es": "Nace de la doble maniobra de 1955. Siguen más maniobras: 1962, 1965, 1969."
     },
@@ -3822,7 +3822,7 @@
       "s3-1974",
       "s3-1975"
      ],
-     "en": "Then more ploys: 1971, 1974, 1975.",
+     "en": "Then more steps: 1971, 1974, 1975.",
      "cy": "Yna rhagor o ystrywiau: 1971, 1974, 1975.",
      "es": "Después, más maniobras: 1971, 1974, 1975."
     },
@@ -3844,9 +3844,9 @@
     },
     "tSA3B": {
      "segs": [],
-     "en": "Out: A and B again, but as synthetic A3 and B.",
-     "cy": "Allan: A a B eto, ond fel A3 synthetig a B.",
-     "es": "Salen: A y B de nuevo, pero como A3 sintética y B."
+     "en": "Out: A and B again, but as later A3 and B.",
+     "cy": "Allan: A a B eto, ond fel A3 diweddarach a B.",
+     "es": "Salen: A y B de nuevo, pero como A3 posterior y B."
     },
     "tALL": {
      "segs": [],
@@ -3856,9 +3856,9 @@
     },
     "eALL": {
      "segs": [],
-     "en": "In came A and B. Out go synthetic A3 and B, plus SA1 and SA2.",
-     "cy": "Daeth A a B i mewn. Mae A3 synthetig a B yn mynd allan, ynghyd ag SA1 ac SA2.",
-     "es": "Entraron A y B. Salen la A3 sintética y la B, además de SA1 y SA2."
+     "en": "In came A and B. Out go later A3 and B, plus SA1 and SA2.",
+     "cy": "Daeth A a B i mewn. Mae A3 diweddarach a B yn mynd allan, ynghyd ag SA1 ac SA2.",
+     "es": "Entraron A y B. Salen la A3 posterior y la B, además de SA1 y SA2."
     }
    },
    "cues": {

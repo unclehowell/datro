@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Land Changing Hands · Great House Farm</title>
-<meta name="description" content="Tŷ Mawr, Llandough: one farm, A + B, comes into the circle on the root title chain; out comes A + B again as synthetic A3 and B, plus synthetic A1 and A2. Pick a line to watch it grow.">
+<meta name="description" content="Tŷ Mawr, Llandough: one farm, A + B, comes into the circle on the root title chain; out come the later titles, A3 and B, plus A1 and A2, which the family’s reading calls synthetic. Pick a line to watch it grow.">
 <meta property="og:title" content="Great House Farm · the land changing hands">
-<meta property="og:description" content="In: A + B on the root title chain. Out: synthetic A3 and B, plus SA1 and SA2, each born from a permissive occupancy ploy.">
+<meta property="og:description" content="In: A + B on the root title chain. Out: the later titles A3 and B, plus SA1 and SA2; follow each line to its records.">
 <meta name="theme-color" content="#151229">
 <style>
 :root{--bg:#151229;--panel:#1d1938;--line:#ffffff1f;--ink:#f3f1ff;--muted:#b9b4d6;--accent:#ffd166}
@@ -69,11 +69,11 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:14px}
 </head>
 <body>
 <div class="wrap">
-<p class="intro">Tŷ Mawr, Llandough. Into the circle comes one farm, A + B, on the root title chain. Out comes A + B again, but as synthetic A3 and B, plus two more simple lines, SA1 and SA2, each born from a permissive occupancy ploy 💩. Pick a line to watch it grow and hear it told; tap anything for its record.</p>
+<p class="intro">Tŷ Mawr, Llandough. Into the circle comes one farm, A + B, on the root title chain. Out come the later titles, A3 and B, plus two more lines, SA1 and SA2. The family’s reading calls them synthetic and ties each to a step that treated the occupation as permissive; follow each line to its records. Pick a line to watch it grow and hear it told; tap anything for its record.</p>
 <div class="chips" id="chips" role="group" aria-label="Show a line"></div>
 <main>
 <div class="stage" data-ghf-keep>
-<svg id="ring" viewBox="-520 -440 1040 880" role="img" aria-label="Circle diagram: title holders and official actors on the ring, permissive occupancy ploys inside it, and the path of each parcel"></svg>
+<svg id="ring" viewBox="-520 -440 1040 880" role="img" aria-label="Circle diagram: title holders and official actors on the ring, permissive occupancy steps inside it, and the path of each parcel"></svg>
 <button class="replay" id="replay" aria-label="Play the line again">↻</button>
 <button class="snd" id="snd" aria-pressed="true" aria-label="Narration on">🔊</button>
 </div>
@@ -81,8 +81,8 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:14px}
 <ol class="steps" id="steps" aria-label="Steps of the selected line"></ol>
 <section class="legend" data-ghf-keep aria-label="Key">
 <h2>Key</h2>
-<div class="lrow"><span class="ic em">💩</span><span>Permissive occupancy ploy, with its year</span></div>
-<div class="lrow"><span class="ic em">💩💩</span><span>The double ploy, 1955</span></div>
+<div class="lrow"><span class="ic em">◆</span><span>Permissive occupancy step, with its year</span></div>
+<div class="lrow"><span class="ic em">◆◆</span><span>The double step, 1955</span></div>
 <div class="lrow"><span class="ic em">🦹</span><span>Named in the statement of Mary (Nancy) Williams, c. 1974</span></div>
 <div class="lrow"><span class="ic"><svg width="30" height="30" viewBox="-20 -24 40 46" aria-hidden="true"><g id="shredK"></g></svg></span><span>Papers gone (shredded)</span></div>
 <div class="lrow"><span class="ic" style="color:#b9b4d6">◯</span><span>On the ring: title holders and official actors. Inside it: no title</span></div>
@@ -130,9 +130,9 @@ function draw(){svg.textContent='';G={segs:{},nodes:{},pills:{},hits:{},masks:{}
  const rg=el('radialGradient',{id:'inside'},defs);el('stop',{offset:'0','stop-color':'#ffffff','stop-opacity':'.07'},rg);el('stop',{offset:'1','stop-color':'#ffffff','stop-opacity':'.02'},rg);
  el('circle',{cx:0,cy:0,r:R,fill:'url(#inside)',stroke:'#ffffff55','stroke-width':3},svg);
  const lay=el('g',{id:'lines'},svg),nl=el('g',{id:'nodes'},svg),pl=el('g',{id:'pills'},svg),hl=el('g',{id:'hits'},svg);
- // ploys label under the double 💩
+ // steps label under the double ◆
  el('text',{x:0,y:76,class:'ploy','font-size':19},nl).textContent='PERMISSIVE';
- el('text',{x:0,y:98,class:'ploy','font-size':19},nl).textContent='OCCUPANCY PLOYS';
+ el('text',{x:0,y:98,class:'ploy','font-size':19},nl).textContent='OCCUPANCY STEPS';
  V.segs.forEach(s=>{const g0=geom(s),col=C[s.g],k=s.g;
   const m=el('mask',{id:'m-'+s.id,maskUnits:'userSpaceOnUse',x:-600,y:-600,width:1200,height:1200},defs);
   const mp=el('path',{d:g0.d,fill:'none',stroke:'#fff','stroke-width':46,'stroke-linecap':'butt'},m);
