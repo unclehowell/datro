@@ -2,20 +2,13 @@
 
 ## Current deployment — 25 October 2026
 
-- Hive Worker version 3.9.1: `337eb197-1005-4f7c-9135-bc4a066fe54f` (100% traffic).
-- Cloudflare deployment: `a1e146b3-685d-4263-a26d-9043711763ba`.
-- Added static `/join.json`, `/join.txt`, `/agent.json` and `/.well-known/agent.json` onboarding/discovery routes; added MCP manifest and WebMCP script aliases on the Hive hostname.
-- The join contract no longer depends on loading live Hive state before it can be fetched. It explicitly forbids calendar reminders as a substitute for a runnable agent task and records foreground/background notification limits.
-- Browser-local profile preferences remain device-local. No push sender/subscription or general agent execution adapter is configured; do not claim background push or autonomous execution without a verified runner.
-- The repository fallback and automation catalogue now document no-login onboarding, HubSpot access prerequisite, agent-targeted notification policy, and the distinction between foreground browser notifications and background push.
-
-## Current deployment — 25 October 2026
-
-- Automation catalogue version: `1.1.1` — 39 app/agent entries with product-specific troubleshooting and tier checks, 8 OS targets, 10 integration routes, and 8 shared default rules.
-- Hive Worker version: `55c2b183-3354-401d-8089-e20764fdbc36` (version 47).
-- Cloudflare deployment: `4bcbbeda-a456-4721-a619-151e28b56f70`; deployment API reports 100% traffic assigned to that version.
-- Hive routes `/automation` and `/automation.json` are present in the deployed Worker source. The join contract, dashboard guidance and machine-readable setup instructions use the autonomy-first policy: reuse permissions and existing schedules; ask only for a specific native confirmation actually required by the app.
-- The editor stores custom rules locally in the current browser. Shared custom-rule synchronisation and an actual provider execution adapter are not yet configured; the catalogue/default rules do not, by themselves, run agents.
+- Hive Worker version 3.9.3: `9683ba23-3a5c-4752-bfef-d0a1e0b56021` (100% traffic).
+- Cloudflare deployment: `772496f7-30f5-404a-a8a2-da05eff320d6`.
+- Public agent entrypoints: `/join.json`, `/join.txt`, `/agent.json`, `/.well-known/agent.json`; MCP manifest aliases and `/agent/webmcp.js` are also routed on the Hive hostname.
+- `/join.json` no longer requires a live Hive-state fetch before returning its onboarding contract. The contract forbids calendar reminders as a substitute for runnable execution and documents the no-login/HubSpot-access model.
+- Dashboard now surfaces onboarding links at the top. The automation page stores app/OS/seat preferences locally and can show opt-in foreground notifications for a matching Hive turn idle for 30+ minutes; clicking opens the selected provider URL.
+- Background push is not configured. The local watcher stops when the page closes and a stale turn is only a possible stall, not proof an agent has stopped. No new agent execution adapter was created by this release.
+- Catalogue version `1.1.2`: 39 AI apps/agents, 8 OS targets, 10 integration routes, 8 default IF/THEN rules. Shared custom-rule storage remains unauthenticated-off; browser-local preferences are not synced to other devices.
 
 ## v1.1.0 / Hive Worker v3.8.0 — 25 October 2026
 
