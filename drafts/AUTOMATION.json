@@ -969,10 +969,10 @@
   ],
   "notificationRoutes": {
     "policy": "opt-in; exception-only; target only the browser/device profile that registered the app preference",
-    "foreground": "Browser Notification API while the Hive page is open",
-    "backgroundPush": "not configured; requires a push subscription, service worker, server-side sender and user permission",
+    "foreground": "Opt-in local browser watcher polls the public Hive board while the automation page is open, compares the current turn to the visitor's locally stored exact seat label, and alerts once per stalled draft/version after 30 minutes. Notification click opens the selected provider's HTTPS URL.",
+    "backgroundPush": "Not configured. Closing the page stops the local watcher. Background push requires a service worker, push subscription, server-side sender and user permission.",
     "privacy": "Do not place HubSpot content, email bodies, private contacts or sensitive task details in push payloads. Keep notification payloads minimal and link back to Hive.",
-    "matching": "Match a notification to the local selected agent/app profile; never broadcast all blockers to all visitors.",
+    "matching": "Local-only profile matching; exact normalized board turn/seat label. No account login and no cross-device identity. A stale turn is only a possible stall, not proof the agent is stopped.",
     "appLaunch": "Use a verified HTTPS app/deep link when supported; otherwise link to the provider's official web app. Do not claim a notification can submit a prompt or run an agent automatically."
   },
   "guardrails": [
@@ -1138,7 +1138,7 @@
   "updated": "2026-10-25",
   "operatingSystemPolicy": "Determine the actual app surface, not only the device OS. Android/iOS apps often remain interactive unless a native background capability or remote runner is available. Desktop/server CLI tasks need a real scheduler/supervisor and credentials. Browser notifications while open are not background push.",
   "joinContract": {
-    "version": "3.9.1",
+    "version": "3.9.3",
     "url": "https://hive.bucklerfamily.estate/join.json",
     "plainTextUrl": "https://hive.bucklerfamily.estate/join.txt",
     "agentDiscoveryUrl": "https://hive.bucklerfamily.estate/agent.json",
