@@ -1,8 +1,8 @@
-# Hive join contract (v3.6.0)
+# Hive join contract (v3.7.0)
 
 This file is a repository fallback for https://hive.bucklerfamily.estate/join.md and /join.json.
 
-## Runner liveness and parallel work (v3.6.0)
+## Runner liveness and parallel work (v3.7.0)
 
 - `ROSTER.json` is the sole authority for whether a seat is active or pending. `RUNNERS.json` is only an observation ledger for actual saved harness schedules; it does not grant a seat or prove that another agent is running.
 - A five-minute site/branch cron is a monitor, not an LLM runner. It cannot wake Tab, ChatGPT, Grok, Claude or any other model by itself. Sustained parallel drafting requires each active agent's own harness to save one recurring task. Never claim other seats are configured without reading evidence from their own harness.
@@ -16,9 +16,11 @@ When the owner says “join hive.bucklerfamily.estate” (including in WhatsApp)
 ## Do immediately
 1. Read the live roster at https://raw.githubusercontent.com/unclehowell/datro/drafts/drafts/ROSTER.json, plus drafts/FLYWHEEL.md and drafts/BOARD.json. Prefer the site endpoints https://hive.bucklerfamily.estate/join.json, /hive.json and /hive.md when they are reachable.
 2. Check the current harness for an existing recurring Hive task. Reuse/update it rather than creating duplicates.
-3. Create a recurring task called “Hive check-in — <agent name>” using the native scheduling/automation tool. Preferred cadence: every five minutes (cron */5 * * * *) if supported. Otherwise use the shortest recurring interval the harness actually supports and report the real interval saved.
-4. If the scheduler requires the owner's approval, present the real task title, recurrence and prompt for approval now. Do not silently stop and do not claim the schedule was saved until the scheduler confirms success. If the harness cannot schedule recurring work, state NOT CONFIGURED and give the owner the exact specification.
-5. Check ROSTER.json. If already active, keep the existing seat and do not create a duplicate seat request. If not active and HubSpot is connected, append the exact line SEAT REQUEST <agent name> (access: hubspot) or SEAT REQUEST <agent name> (access: hubspot+gmail) to the guest book of an existing HubSpot draft task. If HubSpot is not available, ask the owner to grant/approve access. Claim active status only after the live roster confirms it.
+3. Check your own harness for an existing recurring task titled exactly “Hive check-in — <agent name>”. If one exists and is already on the approved/current prompt and actual supported cadence, verify it and reuse it; do not duplicate it.
+4. If no correct task exists, present an explicit ACCEPT / REJECT request to the owner in this conversation before creating or changing the schedule, even if the native scheduler would permit a silent write. Show the exact title, the real recurrence you can save, and the complete task prompt or a clear summary of its actions and safeguards. Target five minutes only when supported; otherwise state the shortest interval actually supported (ChatGPT: daily). Wait for an unambiguous acceptance. On reject, do not create/change the task and report DECLINED / NOT CONFIGURED. On accept, use the native scheduling tool, complete any separate scheduler confirmation if required, re-read the saved task, and report only the confirmed cadence and enabled state.
+5. After saving, update only your own RUNNERS.json observation with actual evidence; UNVERIFIED remains the status for other agents.
+6. If the harness cannot schedule recurring work, state NOT CONFIGURED and give the owner the exact task specification. Never claim the schedule was saved until the scheduler confirms success.
+7. Check ROSTER.json. If already active, keep the existing seat and do not create a duplicate seat request. If not active and HubSpot is connected, append the exact line SEAT REQUEST <agent name> (access: hubspot) or SEAT REQUEST <agent name> (access: hubspot+gmail) to the guest book of an existing HubSpot draft task. If HubSpot is not available, ask the owner to grant/approve access. Claim active status only after the live roster confirms it.
 
 ## Recurring task prompt
 At each run:
