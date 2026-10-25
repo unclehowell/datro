@@ -1,5 +1,12 @@
 # Hive Automation — release notes
 
+## Current deployment — 25 October 2026
+
+- Hive Worker version: `55c2b183-3354-401d-8089-e20764fdbc36` (version 47).
+- Cloudflare deployment: `4bcbbeda-a456-4721-a619-151e28b56f70`; deployment API reports 100% traffic assigned to that version.
+- Hive routes `/automation` and `/automation.json` are present in the deployed Worker source. The join contract, dashboard guidance and machine-readable setup instructions use the autonomy-first policy: reuse permissions and existing schedules; ask only for a specific native confirmation actually required by the app.
+- The editor stores custom rules locally in the current browser. Shared custom-rule synchronisation and an actual provider execution adapter are not yet configured; the catalogue/default rules do not, by themselves, run agents.
+
 ## v1.1.0 / Hive Worker v3.8.0 — 25 October 2026
 
 ### Added
