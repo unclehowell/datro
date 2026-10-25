@@ -1,237 +1,717 @@
 {
   "schema": "hive_automation_catalog/v1",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "purpose": "Resolve app, operating system, runtime, plan and connected route into a specific, low-interruption IF/THEN policy. A catalogue entry is not proof that an account, API, scheduler or permission is connected.",
   "ruleGrammar": "IF device/OS AND AI app/agent AND runtime AND event THEN action ELSE fallback; notify only on configured exception",
   "operatingSystems": [
     {
       "id": "android",
-      "label": "Android phone / tablet"
+      "label": "Android phone / tablet",
+      "troubleshooting": [
+        "Identify whether the selected app has a supported native background task; a normal foreground chat app will not keep running just because Hive has a rule.",
+        "Use Android notifications only through a granted notification route; respect battery/background restrictions.",
+        "Prefer a documented API, webhook or supervised local runner over UI-clicking automation."
+      ]
     },
     {
       "id": "ios",
-      "label": "iPhone / iPad (iOS / iPadOS)"
+      "label": "iPhone / iPad (iOS / iPadOS)",
+      "troubleshooting": [
+        "Treat consumer chat apps as interactive unless their native task/background capability is verified.",
+        "Use a supported push connector with opt-in for phone alerts; browser permission while open is not background push.",
+        "Do not try to bypass iOS permissions or background-execution limits."
+      ]
     },
     {
       "id": "windows",
-      "label": "Windows desktop / laptop"
+      "label": "Windows desktop / laptop",
+      "troubleshooting": [
+        "For unattended local CLI work, use a supported scheduled task or supervised service with least-privilege credentials.",
+        "Check whether sleep, logout, network policy or security software stops the runner.",
+        "Keep credentials out of browser-local rule profiles and logs."
+      ]
     },
     {
       "id": "macos",
-      "label": "macOS"
+      "label": "macOS",
+      "troubleshooting": [
+        "For unattended local CLI work, use the app's scheduler or a supported launchd/job runner.",
+        "Check sleep, login-session and macOS privacy permissions where a local app or filesystem access is required.",
+        "Prefer scoped permissions; do not disable host protections to silence prompts."
+      ]
     },
     {
       "id": "linux",
-      "label": "Linux desktop"
+      "label": "Linux desktop",
+      "troubleshooting": [
+        "Use a supervised process, systemd timer/service, container or native app scheduler when supported.",
+        "Check service identity, filesystem/network scope and secret injection.",
+        "A cron entry triggers only the configured program; it does not supply an LLM or API credential."
+      ]
     },
     {
       "id": "chromeos",
-      "label": "ChromeOS / Chromebook"
+      "label": "ChromeOS / Chromebook",
+      "troubleshooting": [
+        "Determine whether the agent runs in the browser, Android container or Linux environment; those are different execution contexts.",
+        "If the runtime cannot persist in the background, mark it interactive/manual and use an authorised cloud runner or webhook fallback."
+      ]
     },
     {
       "id": "browser",
-      "label": "Browser / PWA / unknown device"
+      "label": "Browser / PWA / unknown device",
+      "troubleshooting": [
+        "A browser tab can run the editor and show foreground notifications; do not assume it remains alive when closed.",
+        "Background push needs a push service/service worker and explicit opt-in; rule saving is separate from task execution."
+      ]
     },
     {
       "id": "server",
-      "label": "Cloud VM / container / home server"
+      "label": "Cloud VM / container / home server",
+      "troubleshooting": [
+        "Use a supervised worker, container, scheduled task or workflow engine with health checks and bounded retries.",
+        "Confirm API credentials, quota, egress and permitted scope before enabling unattended calls.",
+        "Log job IDs and outcomes, not secrets or email bodies."
+      ]
     }
   ],
   "aiApps": [
     {
       "id": "claude",
       "label": "Claude web / Android / iOS",
-      "note": "Consumer chat UI; free access and limits depend on current plan. A chat account alone is not a background runner or API key."
+      "note": "Consumer chat UI; free access and limits depend on current plan. A chat account alone is not a background runner or API key.",
+      "executionClass": "consumer-chat",
+      "recommendedRoute": "native-task-if-supported; otherwise authorised API/MCP",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Check whether this is Claude web/mobile or a code/workflow runner; a chat window alone is not unattended execution.",
+        "For repeated prompts, use the product's supported Auto/automatically approve mode only where available and preserve prompts for blocked or risky actions.",
+        "If the user needs unattended work, confirm a real native scheduled task or connected API/CLI/MCP runner exists."
+      ]
     },
     {
       "id": "claude-desktop",
       "label": "Claude Desktop / Cowork",
-      "note": "Capabilities differ by product and mode. Use a supported native task, connector or API/CLI route; do not auto-click native permission prompts."
+      "note": "Capabilities differ by product and mode. Use a supported native task, connector or API/CLI route; do not auto-click native permission prompts.",
+      "executionClass": "desktop-agent",
+      "recommendedRoute": "native Cowork task/connector or authorised API/CLI",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Check Manual versus Auto/automatically approve and the connector's own access grants.",
+        "Auto mode can still pause on risky, blocked or admin-controlled actions; do not treat one mode switch as full autonomous execution."
+      ]
     },
     {
       "id": "claude-code",
       "label": "Claude Code CLI",
-      "note": "Can be automated within the configured environment and permissions; use scoped allow rules or supported auto mode, not blanket permission bypass."
+      "note": "Can be automated within the configured environment and permissions; use scoped allow rules or supported auto mode, not blanket permission bypass.",
+      "executionClass": "coding-cli",
+      "recommendedRoute": "CLI with supported scheduler/supervisor",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Prefer Auto mode where the plan/admin allows it; otherwise use narrow reusable permissions via /permissions or permissions.allow.",
+        "Check sandbox, working directory, allowed tools and authentication.",
+        "Do not use --dangerously-skip-permissions in a normal working environment merely to silence approvals."
+      ]
     },
     {
       "id": "chatgpt",
       "label": "ChatGPT web / mobile",
-      "note": "Consumer chat UI; free-tier features and task availability vary. Chat access alone does not wake a scheduled agent."
+      "note": "Consumer chat UI; free-tier features and task availability vary. Chat access alone does not wake a scheduled agent.",
+      "executionClass": "consumer-chat",
+      "recommendedRoute": "native task/connected tool where available; otherwise supported API",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Check whether this particular surface exposes scheduled tasks and whether the actual schedule is enabled.",
+        "Do not infer a five-minute runner from a daily task, app notification or a Hive monitor cron.",
+        "ChatGPT consumer access and OpenAI API billing/authentication are separate."
+      ]
     },
     {
       "id": "codex",
       "label": "OpenAI Codex CLI / coding agent",
-      "note": "Use the installed CLI/task runner and its configured auth. Model/API quotas are separate from the consumer ChatGPT plan."
+      "note": "Use the installed CLI/task runner and its configured auth. Model/API quotas are separate from the consumer ChatGPT plan.",
+      "executionClass": "coding-agent",
+      "recommendedRoute": "supported CLI/task runner with scoped repository access",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Confirm CLI installation, auth and the exact repository/branch scope.",
+        "Keep code edits and deployments auditable; use sandboxed or narrowly scoped permissions where available."
+      ]
     },
     {
       "id": "gemini",
       "label": "Google Gemini web / mobile",
-      "note": "Consumer UI; a free tier does not imply Gemini API quota or unattended app control."
+      "note": "Consumer UI; a free tier does not imply Gemini API quota or unattended app control.",
+      "executionClass": "consumer-chat",
+      "recommendedRoute": "supported native task or Gemini API",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Verify the exact app's scheduled/task features instead of inferring them from Gemini API availability.",
+        "Check Google project, quota, region and billing separately for an API route."
+      ]
     },
     {
       "id": "gemini-cli",
       "label": "Gemini CLI",
-      "note": "CLI execution depends on installation, credentials, quota and local permission policy."
+      "note": "CLI execution depends on installation, credentials, quota and local permission policy.",
+      "executionClass": "coding-cli",
+      "recommendedRoute": "CLI with supported scheduler/supervisor",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Check installation, current auth method, selected project, model access and quota.",
+        "Use a supervised process or native scheduler; a CLI is not continuously running unless launched by one."
+      ]
     },
     {
       "id": "copilot",
       "label": "Microsoft Copilot web / mobile",
-      "note": "Consumer UI; do not infer unattended automation from free access."
+      "note": "Consumer UI; do not infer unattended automation from free access.",
+      "executionClass": "consumer-chat",
+      "recommendedRoute": "supported native feature or approved Microsoft/GitHub integration",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Identify which Copilot product is in use; the consumer app, Microsoft 365 and GitHub Copilot are not interchangeable.",
+        "Check organisation policy and connected-account grants."
+      ]
     },
     {
       "id": "copilot-dev",
       "label": "GitHub Copilot / VS Code / CLI",
-      "note": "Use supported editor/CLI workflows and repository permissions; respect review and write scopes."
+      "note": "Use supported editor/CLI workflows and repository permissions; respect review and write scopes.",
+      "executionClass": "coding-agent",
+      "recommendedRoute": "supported editor/CLI workflow",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Check organisation policy, repo permission and the selected editor/CLI task mode.",
+        "Separate account access from scheduled execution and deployment rights."
+      ]
     },
     {
       "id": "grok",
       "label": "Grok / xAI app",
-      "note": "Consumer UI; API availability and billing are separate and must be checked."
+      "note": "Consumer UI; API availability and billing are separate and must be checked.",
+      "executionClass": "consumer-chat",
+      "recommendedRoute": "supported xAI API or native capability if confirmed",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Verify API access, endpoint, quota and billing; do not infer them from the Grok app.",
+        "If only the chat UI is available, classify it as interactive and do not fake a background run."
+      ]
     },
     {
       "id": "perplexity",
       "label": "Perplexity web / mobile",
-      "note": "Consumer search/chat UI; its API is separate from app access."
+      "note": "Consumer search/chat UI; its API is separate from app access.",
+      "executionClass": "search-chat",
+      "recommendedRoute": "supported Perplexity API or connected tool",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Check whether API access is included in the current account; consumer search access is not API auth.",
+        "If no callable route exists, use it interactively or choose another authorised research provider."
+      ]
     },
     {
       "id": "kimi",
       "label": "Kimi / Moonshot AI",
-      "note": "Consumer UI and Moonshot API are distinct; verify endpoint, region, quota and price."
+      "note": "Consumer UI and Moonshot API are distinct; verify endpoint, region, quota and price.",
+      "executionClass": "consumer-chat",
+      "recommendedRoute": "supported Moonshot API or connected tool",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Check region, endpoint, model access, API key and limits separately from the Kimi mobile/web plan.",
+        "Use the actual returned API route and quota; do not assume free API calls."
+      ]
     },
     {
       "id": "deepseek",
       "label": "DeepSeek chat",
-      "note": "Consumer UI does not establish API entitlement or zero-cost API usage."
+      "note": "Consumer UI does not establish API entitlement or zero-cost API usage.",
+      "executionClass": "consumer-chat",
+      "recommendedRoute": "supported DeepSeek API or connected tool",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Check current API endpoint, account balance/quota, model availability and privacy settings.",
+        "Keep consumer chat and API credentials as separate access modes."
+      ]
     },
     {
       "id": "qwen",
       "label": "Qwen / Alibaba",
-      "note": "Consumer chat and DashScope/API quotas are separate."
+      "note": "Consumer chat and DashScope/API quotas are separate.",
+      "executionClass": "consumer-chat",
+      "recommendedRoute": "supported DashScope/API or connected tool",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Check region, DashScope credentials, model endpoint and account quota.",
+        "A Qwen chat UI does not prove API access or background execution."
+      ]
     },
     {
       "id": "mistral",
       "label": "Mistral Le Chat",
-      "note": "Consumer UI and Mistral API access are distinct."
+      "note": "Consumer UI and Mistral API access are distinct.",
+      "executionClass": "consumer-chat",
+      "recommendedRoute": "supported Mistral API or connected tool",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Check API key, current credits/quota and model endpoint separately from Le Chat access.",
+        "Use an approved alternative if the API is unavailable; do not silently switch to a paid model."
+      ]
     },
     {
       "id": "meta-ai",
       "label": "Meta AI",
-      "note": "Consumer app/web experience; do not assume a callable API or scheduler."
+      "note": "Consumer app/web experience; do not assume a callable API or scheduler.",
+      "executionClass": "provider-ui-or-agent",
+      "recommendedRoute": "Use a supported native scheduler, documented API, CLI, MCP or connected tool only if verified for this product and account.",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Verify the exact product surface, account plan, region and permissions.",
+        "Check whether it has a documented API/MCP/CLI or native scheduler; do not infer this from a chat screen.",
+        "If there is no unattended route, mark the seat interactive/manual and continue other authorised work."
+      ]
     },
     {
       "id": "poe",
       "label": "Poe",
-      "note": "Consumer multi-model UI; availability of integrations and model/API costs vary."
+      "note": "Consumer multi-model UI; availability of integrations and model/API costs vary.",
+      "executionClass": "provider-ui-or-agent",
+      "recommendedRoute": "Use a supported native scheduler, documented API, CLI, MCP or connected tool only if verified for this product and account.",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Verify the exact product surface, account plan, region and permissions.",
+        "Check whether it has a documented API/MCP/CLI or native scheduler; do not infer this from a chat screen.",
+        "If there is no unattended route, mark the seat interactive/manual and continue other authorised work."
+      ]
     },
     {
       "id": "duck-ai",
       "label": "Duck.ai",
-      "note": "Consumer chat UI; treat as interactive unless a supported integration is verified."
+      "note": "Consumer chat UI; treat as interactive unless a supported integration is verified.",
+      "executionClass": "provider-ui-or-agent",
+      "recommendedRoute": "Use a supported native scheduler, documented API, CLI, MCP or connected tool only if verified for this product and account.",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Verify the exact product surface, account plan, region and permissions.",
+        "Check whether it has a documented API/MCP/CLI or native scheduler; do not infer this from a chat screen.",
+        "If there is no unattended route, mark the seat interactive/manual and continue other authorised work."
+      ]
     },
     {
       "id": "huggingchat",
       "label": "HuggingChat / Hugging Face",
-      "note": "Web UI is not proof of a hosted inference quota for automation."
+      "note": "Web UI is not proof of a hosted inference quota for automation.",
+      "executionClass": "provider-ui-or-agent",
+      "recommendedRoute": "Use a supported native scheduler, documented API, CLI, MCP or connected tool only if verified for this product and account.",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Verify the exact product surface, account plan, region and permissions.",
+        "Check whether it has a documented API/MCP/CLI or native scheduler; do not infer this from a chat screen.",
+        "If there is no unattended route, mark the seat interactive/manual and continue other authorised work."
+      ]
     },
     {
       "id": "you",
       "label": "You.com / AI search",
-      "note": "Consumer search/chat surface; API plan is separate."
+      "note": "Consumer search/chat surface; API plan is separate.",
+      "executionClass": "provider-ui-or-agent",
+      "recommendedRoute": "Use a supported native scheduler, documented API, CLI, MCP or connected tool only if verified for this product and account.",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Verify the exact product surface, account plan, region and permissions.",
+        "Check whether it has a documented API/MCP/CLI or native scheduler; do not infer this from a chat screen.",
+        "If there is no unattended route, mark the seat interactive/manual and continue other authorised work."
+      ]
     },
     {
       "id": "openrouter",
       "label": "OpenRouter",
-      "note": "Provider gateway; API key and model/provider pricing or free limits must be checked per route."
+      "note": "Provider gateway; API key and model/provider pricing or free limits must be checked per route.",
+      "executionClass": "model-gateway",
+      "recommendedRoute": "API gateway with model-specific cost/limits",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Check the selected provider/model route, API key, rate limits and cost/free-tier status for that exact model.",
+        "Do not assume one gateway key makes every listed model free."
+      ]
     },
     {
       "id": "cursor",
       "label": "Cursor IDE",
-      "note": "Use its supported agent/editor automation and scoped repository permissions."
+      "note": "Use its supported agent/editor automation and scoped repository permissions.",
+      "executionClass": "ide-agent",
+      "recommendedRoute": "supported IDE agent/task runner",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Check background agent availability, provider connection and repo scope for the actual plan.",
+        "A local IDE window is not a durable scheduler unless a supported agent/task facility is enabled."
+      ]
     },
     {
       "id": "windsurf",
       "label": "Windsurf IDE",
-      "note": "Use supported agent/editor automation; verify the specific plan and execution mode."
+      "note": "Use supported agent/editor automation; verify the specific plan and execution mode.",
+      "executionClass": "ide-agent",
+      "recommendedRoute": "supported IDE agent/task runner",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Check the product's current plan, provider credentials, workspace trust and background task mode.",
+        "Do not treat editor availability as proof an agent is scheduled."
+      ]
     },
     {
       "id": "cline",
       "label": "Cline extension",
-      "note": "IDE agent; provider key and tool approvals can be separate from extension access."
+      "note": "IDE agent; provider key and tool approvals can be separate from extension access.",
+      "executionClass": "ide-agent",
+      "recommendedRoute": "editor extension with supported model/tool permissions",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Check the configured model provider, extension permissions and tool approvals.",
+        "An extension can stop when the editor/session closes unless a separate runner is configured."
+      ]
     },
     {
       "id": "roo",
       "label": "Roo Code extension",
-      "note": "IDE agent; execution depends on configured provider, tool permissions and editor host."
+      "note": "IDE agent; execution depends on configured provider, tool permissions and editor host.",
+      "executionClass": "ide-agent",
+      "recommendedRoute": "editor extension with supported model/tool permissions",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Check provider endpoint, editor trust and each tool's allowed scope.",
+        "Persisted editor settings do not imply a scheduled background process."
+      ]
     },
     {
       "id": "continue",
       "label": "Continue IDE",
-      "note": "IDE agent; background execution requires configured model and runtime."
+      "note": "IDE agent; background execution requires configured model and runtime.",
+      "executionClass": "ide-agent",
+      "recommendedRoute": "editor extension or supported headless runtime",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Check model configuration, provider auth and whether the selected mode runs headlessly.",
+        "If only the IDE surface is available, use it interactively rather than claiming unattended execution."
+      ]
     },
     {
       "id": "aider",
       "label": "Aider coding CLI",
-      "note": "Local CLI runner; model provider usage and filesystem scope are separate."
+      "note": "Local CLI runner; model provider usage and filesystem scope are separate.",
+      "executionClass": "coding-cli",
+      "recommendedRoute": "CLI under OS task supervisor",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Verify model/provider credentials, repository path, git state and permitted write scope.",
+        "Schedule it through a real supervisor; a command line by itself is not a worker."
+      ]
     },
     {
       "id": "openhands",
       "label": "OpenHands",
-      "note": "Agent runtime; verify deployment, provider credentials and permitted tool scope."
+      "note": "Agent runtime; verify deployment, provider credentials and permitted tool scope.",
+      "executionClass": "provider-ui-or-agent",
+      "recommendedRoute": "Use a supported native scheduler, documented API, CLI, MCP or connected tool only if verified for this product and account.",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Verify the exact product surface, account plan, region and permissions.",
+        "Check whether it has a documented API/MCP/CLI or native scheduler; do not infer this from a chat screen.",
+        "If there is no unattended route, mark the seat interactive/manual and continue other authorised work."
+      ]
     },
     {
       "id": "goose",
       "label": "Goose agent",
-      "note": "Local agent runtime; validate enabled extensions and permissions."
+      "note": "Local agent runtime; validate enabled extensions and permissions.",
+      "executionClass": "provider-ui-or-agent",
+      "recommendedRoute": "Use a supported native scheduler, documented API, CLI, MCP or connected tool only if verified for this product and account.",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Verify the exact product surface, account plan, region and permissions.",
+        "Check whether it has a documented API/MCP/CLI or native scheduler; do not infer this from a chat screen.",
+        "If there is no unattended route, mark the seat interactive/manual and continue other authorised work."
+      ]
     },
     {
       "id": "openclaw",
       "label": "OpenClaw",
-      "note": "Agent/host integration; verify actual deployment, connector and access scope."
+      "note": "Agent/host integration; verify actual deployment, connector and access scope.",
+      "executionClass": "provider-ui-or-agent",
+      "recommendedRoute": "Use a supported native scheduler, documented API, CLI, MCP or connected tool only if verified for this product and account.",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Verify the exact product surface, account plan, region and permissions.",
+        "Check whether it has a documented API/MCP/CLI or native scheduler; do not infer this from a chat screen.",
+        "If there is no unattended route, mark the seat interactive/manual and continue other authorised work."
+      ]
     },
     {
       "id": "hermes",
       "label": "Hermes Agent",
-      "note": "Agent runner; verify its native scheduler, tool access and saved job state."
+      "note": "Agent runner; verify its native scheduler, tool access and saved job state.",
+      "executionClass": "provider-ui-or-agent",
+      "recommendedRoute": "Use a supported native scheduler, documented API, CLI, MCP or connected tool only if verified for this product and account.",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Verify the exact product surface, account plan, region and permissions.",
+        "Check whether it has a documented API/MCP/CLI or native scheduler; do not infer this from a chat screen.",
+        "If there is no unattended route, mark the seat interactive/manual and continue other authorised work."
+      ]
     },
     {
       "id": "ollama",
       "label": "Ollama local models",
-      "note": "Local runtime; requires a reachable running model host and sufficient device resources."
+      "note": "Local runtime; requires a reachable running model host and sufficient device resources.",
+      "executionClass": "local-model",
+      "recommendedRoute": "local model endpoint plus supervised calling agent",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Confirm the service is running, the model is pulled, the endpoint is reachable and device resources are sufficient.",
+        "A local inference server supplies a model, not the task scheduler, app integrations or approval queue."
+      ]
     },
     {
       "id": "lmstudio",
       "label": "LM Studio",
-      "note": "Local model server; API endpoint must be enabled and reachable."
+      "note": "Local model server; API endpoint must be enabled and reachable.",
+      "executionClass": "local-model",
+      "recommendedRoute": "local server endpoint plus supervised calling agent",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Enable and test its local API endpoint and chosen model.",
+        "Check localhost/network exposure and service availability after reboot or logout."
+      ]
     },
     {
       "id": "open-webui",
       "label": "Open WebUI",
-      "note": "Self-hosted UI; automation depends on its configured model endpoint and separate orchestration."
+      "note": "Self-hosted UI; automation depends on its configured model endpoint and separate orchestration.",
+      "executionClass": "self-hosted-ui",
+      "recommendedRoute": "configured model endpoint plus external scheduler/orchestrator",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Verify the model endpoint and auth; the UI is separate from a recurring job runner.",
+        "Secure the service and do not publish its credentials in Hive profiles."
+      ]
     },
     {
       "id": "jan",
       "label": "Jan local AI app",
-      "note": "Local desktop chat is not automatically a daemon; verify an API/server endpoint."
+      "note": "Local desktop chat is not automatically a daemon; verify an API/server endpoint.",
+      "executionClass": "local-desktop",
+      "recommendedRoute": "local server/CLI if enabled, otherwise interactive UI",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Confirm a supported API/server mode is enabled and reachable.",
+        "If only desktop chat is available, classify it as interactive/manual."
+      ]
     },
     {
       "id": "llamacpp",
       "label": "llama.cpp",
-      "note": "Local model runtime; requires an explicit server/process supervisor for unattended tasks."
+      "note": "Local model runtime; requires an explicit server/process supervisor for unattended tasks.",
+      "executionClass": "local-model",
+      "recommendedRoute": "llama.cpp server plus supervised calling agent",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Confirm server mode, model path, port and sufficient memory.",
+        "Use an OS-level service manager to keep it running; the model server does not orchestrate Hive jobs."
+      ]
     },
     {
       "id": "vllm",
       "label": "vLLM server",
-      "note": "Self-hosted inference endpoint; API key, capacity and service health are operator-managed."
+      "note": "Self-hosted inference endpoint; API key, capacity and service health are operator-managed.",
+      "executionClass": "local-model-server",
+      "recommendedRoute": "managed inference endpoint plus orchestrator",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Check endpoint health, capacity, GPU memory, authentication and request limits.",
+        "Provision an explicit scheduler/orchestrator; vLLM itself is not an agent roster manager."
+      ]
     },
     {
       "id": "litellm",
       "label": "LiteLLM proxy",
-      "note": "Proxy/runtime; routing, model spend and credentials must be configured explicitly."
+      "note": "Proxy/runtime; routing, model spend and credentials must be configured explicitly.",
+      "executionClass": "model-gateway",
+      "recommendedRoute": "proxy plus model routes, budgets and orchestrator",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Check provider credentials, routing table, rate budgets and model-specific cost.",
+        "The proxy routes calls; Hive still needs an authenticated job runner and queue."
+      ]
     },
     {
       "id": "other",
       "label": "Other / unknown app",
-      "note": "Ask the joining agent to identify its actual product, host, execution method and permission model."
+      "note": "Ask the joining agent to identify its actual product, host, execution method and permission model.",
+      "executionClass": "provider-ui-or-agent",
+      "recommendedRoute": "Use a supported native scheduler, documented API, CLI, MCP or connected tool only if verified for this product and account.",
+      "tierChecks": [
+        "Free consumer access and limits vary by product, region and account; check the signed-in plan.",
+        "API access, free credits, quotas and billing are separate unless the provider explicitly says otherwise.",
+        "Confirm native scheduler/tool availability and actual saved state before classifying this app as unattended."
+      ],
+      "troubleshooting": [
+        "Verify the exact product surface, account plan, region and permissions.",
+        "Check whether it has a documented API/MCP/CLI or native scheduler; do not infer this from a chat screen.",
+        "If there is no unattended route, mark the seat interactive/manual and continue other authorised work."
+      ]
     }
   ],
   "runtimes": [
@@ -283,13 +763,19 @@
       "id": "ifttt-free",
       "label": "IFTTT Free",
       "classification": "Optional simple triggers",
-      "note": "Free tier has 2 Applets and simple trigger-to-action flows. Good for lightweight alerts, not a multi-agent runner or a way to dismiss native app permission dialogs. Re-check current plan limits before relying on it."
+      "note": "Free tier has 2 Applets and simple trigger-to-action flows. Good for lightweight alerts, not a multi-agent runner or a way to dismiss native app permission dialogs. Re-check current plan limits before relying on it.",
+      "plan_url": "https://ifttt.com/plans",
+      "verified_plan_note": "Official current plan page describes Free as $0 with 2 Applets, standard speeds and simple no-code integrations. Check the plan page again at join time; features/limits can change.",
+      "role": "Optional simple connector; not an agent execution engine."
     },
     {
       "id": "n8n",
       "label": "n8n Community (self-hosted)",
       "classification": "Flexible workflow engine",
-      "note": "Community Edition can be self-hosted for internal use. Needs a server and connector setup; review licence terms before offering customer-configured hosted workflows or white-labelling it."
+      "note": "Community Edition can be self-hosted for internal use. Needs a server and connector setup; review licence terms before offering customer-configured hosted workflows or white-labelling it.",
+      "license_url": "https://support.n8n.io/article/can-i-use-your-license-for-my-use-case",
+      "verified_license_note": "Self-hosted Community Edition can be used free for internal workflows. Customer-configurable hosted/white-label automation and some service use cases require a commercial licence; review the current licence before exposing a workflow editor to users.",
+      "role": "Optional multi-step workflow engine; not required for Hive's initial setup."
     },
     {
       "id": "zapier",
@@ -652,5 +1138,7 @@
     "A five-minute site monitor is not an LLM scheduler. The actual app harness or a connected API/CLI/MCP/webhook orchestration service must perform the work.",
     "Do not create duplicate native tasks. Prefer one recurring task per agent, or a connected event-driven runner if the provider offers one.",
     "Install no extra app by default. Use a built-in supported route first. Add IFTTT only for simple supported triggers; choose a workflow engine only if Hive's direct route cannot perform the needed logic."
-  ]
+  ],
+  "updated": "2026-10-25",
+  "operatingSystemPolicy": "Determine the actual app surface, not only the device OS. Android/iOS apps often remain interactive unless a native background capability or remote runner is available. Desktop/server CLI tasks need a real scheduler/supervisor and credentials. Browser notifications while open are not background push."
 }
