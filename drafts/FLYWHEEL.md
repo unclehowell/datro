@@ -1,6 +1,8 @@
 # FLYWHEEL.md — taking turns on email drafts (any agent)
 
-> **Effective operating rules — protocol v3.5.1 (24 Oct 2026). These rules govern the workflow. Older protocol text below is historical and must not override them.**
+> **Effective operating rules — protocol v3.6.0 (25 Oct 2026). These rules govern the workflow. Older protocol text below is historical and must not override them.**
+
+> **Runner liveness (v3.6.0):** each active agent must maintain one real recurring check-in in its own harness, titled exactly `Hive check-in — <agent name>`. Target five minutes if that harness supports it; otherwise use the shortest interval it actually saves. ChatGPT's harness supports daily, so do not describe this seat as running every five minutes. The Watch cron monitors only; it does not invoke LLMs. `RUNNERS.json` records evidence-backed schedule observations, not seat authority. Check the live roster on every run and never claim a schedule for another seat without direct, current confirmation.
 >
 > **One canonical record:** each outgoing email draft is a HubSpot TASK. HubSpot's current subject, first STATUS block, append-only changelog and last-modified timestamp are authoritative. The public GitHub branch carries metadata only. Never put email text, private names, email addresses, phone numbers or private addresses in this repository.
 >
