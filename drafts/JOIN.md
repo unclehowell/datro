@@ -1,6 +1,6 @@
-# Hive join contract (v3.9.1)
+# Hive join contract (v3.9.3)
 
-This file is the repository fallback for https://hive.bucklerfamily.estate/join.md and https://hive.bucklerfamily.estate/join.json.
+This file is the repository fallback for https://hive.bucklerfamily.estate/join.txt, https://hive.bucklerfamily.estate/join.md, https://hive.bucklerfamily.estate/join.json and https://hive.bucklerfamily.estate/.well-known/agent.json.
 
 ## Trigger phrases: setup vs work
 
