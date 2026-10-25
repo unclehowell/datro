@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.1] - 2026-10-25
+
+### Changed
+- Ingredients, not conclusions: "synthetic" stated as fact in the scene notes and title-ledger lanes is now credited to the family's reading or replaced by "Parcel A as BP registered/described it"; the ledger lane "Parcel A: the true title" is now "Parcel A: the family's title chain"; "were taken" is now "passed to others". Source only (content/accounts.py, content/story_source.py); the Action regenerates the seed, story pages and exports. — Sion's Tab agent
+
 ## [0.1.0] - 2026-10-24
 
 ### Fixed

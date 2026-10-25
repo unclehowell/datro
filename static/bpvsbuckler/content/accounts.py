@@ -165,7 +165,7 @@ ACCOUNTS = {
 'ghf-19160201-1': dict(
     received="The Williamses were yearly tenants of the whole farm from 1916, and every later right flows from that tenancy.",
     words=[('"the whole farm"', 'Quoted by the Court of Appeal in 1987 as the start of the history.'), ('"since 1916"', 'The European Commission\'s date for the family\'s occupation.')],
-    known="In 1916 Bute owned only Parcel B. It could not let the house, which Thomas owned. \"The whole farm\" is a landlord's description of land it did not own: the birth of a single, synthetic farm that existed only on paper. Every later case was fought over that synthetic farm."),
+    known="In 1916 Bute owned only Parcel B. It could not let the house, which Thomas owned. \"The whole farm\" is a landlord's description of land it did not own: on the family's reading, the start of a single farm that existed only on paper (the family calls it \"synthetic\"). Every later case was fought over that description of the farm."),
 'ghf-19280101-1': dict(
     received="Nothing happened in 1928. The tenancy of the whole farm carried on.",
     words=[],
@@ -295,7 +295,7 @@ ACCOUNTS = {
 'ghf-19750523-1': dict(
     received="An internal transfer within the BP group.",
     words=[('"the actual conveyance of the farmhouse and garden"', 'Court of Appeal, 1987.')],
-    known="A conveyance of Parcel A between two BP companies, while Mary lived in it and claimed it, with no earlier deed to Parcel A behind it. It shows BP treated the house as a separate parcel. From here the synthetic Parcel A has a deed."),
+    known="A conveyance of Parcel A between two BP companies, while Mary lived in it and claimed it, with no earlier deed to Parcel A behind it. It shows BP treated the house as a separate parcel. From here Parcel A as BP described it has a deed."),
 'ghf-19800522-1': dict(
     received="",
     words=[],
@@ -311,7 +311,7 @@ ACCOUNTS = {
 'ghf-19830223-1': dict(
     received="A routine second registration.",
     words=[('"no question or doubt"', 'The solicitors\' certificate.')],
-    known="The synthetic Parcel A became a registered title. The certificate was given while the owner who had pleaded ownership in 1974 lived in the house. The Land Registry now held the fields and the house as two titles: it knew they were two."),
+    known="Parcel A as BP described it became a registered title. The certificate was given while the owner who had pleaded ownership in 1974 lived in the house. The Land Registry now held the fields and the house as two titles: it knew they were two."),
 'ghf-19830326-1': dict(
     received="The licensee died and the licence ended.",
     words=[('"licensee"', 'How BP would describe her.')],
@@ -324,7 +324,7 @@ ACCOUNTS = {
 'ghf-19840522-1': dict(
     received="BP, the owner, sued to recover its land from a squatter.",
     words=[('"Great House Farm and adjoining land"', 'The writ\'s description.'), ('"adverse possession"', 'The only defence argued.')],
-    known="The house was wrapped back into \"the farm\" a year after BP registered it separately. BP asked for possession, not a declaration of ownership. The defence fought on BP's map: adverse possession of a synthetic farm whose real owner's title was to Parcel B only, with the clock counted from 1955, when the family's title to Parcel A dated from 1928 and by possession from 1940. In the same year the library copy of the 1877 deed was reported missing."),
+    known="The house was wrapped back into \"the farm\" a year after BP registered it separately. BP asked for possession, not a declaration of ownership. The defence fought on BP's map: adverse possession of \"the farm\" as BP described it, while the family's reading is that the landlord's title covered Parcel B only, with the clock counted from 1955, when the family's title to Parcel A dated from 1928 and by possession from 1940. In the same year the library copy of the 1877 deed was reported missing."),
 'ghf-19860710-1': dict(
     received="The court found that BP owned the house and the family were there by BP's permission.",
     words=[('"licence"', 'The finding.')],
@@ -336,7 +336,7 @@ ACCOUNTS = {
 'ghf-19870202-1': dict(
     received="An administrative tidying of the register.",
     words=[('"amalgamation"', 'The register\'s term.')],
-    known="The registration history shows two separately registered titles before the 1987 amalgamation: a larger field title and a later house title. The affirmative synthetic-estate thesis is that a corporate register view was assembled from separate strands while the older Cydwin/Cydfin and Williams/Thomas provenance remained untraced. The decisive exercise is to compare the first-registration files and the operative 1877, 1938 and 1969 instruments against the plans and schedules. The label 'synthetic' describes this unresolved reconstruction, not a statutory finding."),
+    known="The registration history shows two separately registered titles before the 1987 amalgamation: a larger field title and a later house title. The family's \"synthetic estate\" thesis is that a corporate register view was assembled from separate strands while the older Cydwin/Cydfin and Williams/Thomas provenance remained untraced. The decisive exercise is to compare the first-registration files and the operative 1877, 1938 and 1969 instruments against the plans and schedules. The label 'synthetic' describes this unresolved reconstruction, not a statutory finding."),
 'ghf-19870731-1': dict(
     received="The courts finally settled that BP owned Great House Farm.",
     words=[('"the paper title to the farm"', 'The court\'s description of BP\'s position.'), ('"No such documents were, however, ever produced."', 'On Mary\'s title documents.'), ('"since November 1982 they have been the registered proprietors"', 'The court\'s recital.')],
@@ -478,7 +478,7 @@ ACCOUNTS = {
 'ghf-19931203-1': dict(
     received="BP sold its land to a developer.",
     words=[('"a difference of opinion"', 'The council to the MP.')],
-    known="The merged title, including the synthetic Parcel A, passed to a buyer as though it were one parcel."),
+    known="The merged title, including Parcel A as BP registered it, passed to a buyer as though it were one parcel."),
 'ghf-19940504-1': dict(
     received="A successful rescue excavation.",
     words=[('"preservation by record"', 'The agreed basis of the excavation.')],
@@ -609,7 +609,7 @@ ACCOUNTS = {
 'ghf-99990101-1': dict(
     received="A landlord and its successors recovered their farm from tenants who stayed on without paying, and the courts confirmed it.",
     words=[('"the whole farm"', '1916.'), ('"the whole of the farm"', '1955.'), ('"licence"', '1974.'), ('"the paper title to the farm"', '1987.'), ('"registered correctly"', '2026.')],
-    known="Parcel A was the family's from 1928, and by possession from 1940. It was never shown to belong to Western Ground Rents or BP. A synthetic single farm was described in 1916; six attempts (1949, 1955, 1959, 1962, 1965, 1974) treated Mary's occupation as permissive; the woodland and the land to the south were taken; the 1975 conveyance and 1983 registration gave the synthetic Parcel A a deed and a title; the 1987 amalgamation folded it into Parcel B. The courts decided possession and never decided ownership. Possession can be awarded without ownership being tried, and land can be registered without a rival claim being decided. Neither decides the older title."),
+    known="Parcel A was the family's from 1928, and by possession from 1940. It was never shown to belong to Western Ground Rents or BP. A single farm was described in 1916 (on the family's reading, a \"synthetic\" one); six attempts (1949, 1955, 1959, 1962, 1965, 1974) treated Mary's occupation as permissive; the woodland and the land to the south passed to others; the 1975 conveyance and 1983 registration gave Parcel A, as BP described it, a deed and a title; the 1987 amalgamation folded it into Parcel B. The courts decided possession and never decided ownership. Possession can be awarded without ownership being tried, and land can be registered without a rival claim being decided. Neither decides the older title."),
 'ghf-99990101-4': dict(
     received="It was always one farm, and nobody suggested otherwise.",
     words=[('"the whole farm"', 'One farm.'), ('"the farmhouse and garden"', 'One part, named on its own.')],

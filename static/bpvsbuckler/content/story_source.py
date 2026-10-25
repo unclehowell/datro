@@ -147,8 +147,8 @@ CAST = [
 # (None closes a lane).
 LANES = {
     'W': 'Great House (one farm)',
-    'A': 'Parcel A: the true title',
-    'S': 'Synthetic Parcel A',
+    'A': 'Parcel A: the family\'s title chain',
+    'S': 'Parcel A as BP registered it',
     'B': 'Parcel B: the fields',
     'M': 'Merged title: "Parcel A & B"',
 }
@@ -735,13 +735,13 @@ sc('V', 'ghf-19860711-1', '1986-07-11', '1986 – 87', "Royal Commission corresp
    [w('/scrutiny-and-accountability/legal-review-fraud-land-human-rights/#loss-pattern', 'Legal Review — the loss pattern', 'Analysis')])
 sc('V', 'ghf-19870202-1', '1987-02-02', '2 February 1987', "Amalgamation of titles", 'HM Land Registry', 'AB',
    'Land Registry record',
-   "On 2 February 1987, while the appeal is pending, an application is made to amalgamate WA240304 (the separately registered farmhouse and garden) into WA231076 (the larger field title). The register then presents the two strands as one corporate holding. The affirmative 'synthetic estate' question is whether a title originating in the Bute-to-WGR field chain was joined to a separately registered house title without the older Cydwin/Cydfin and Williams/Thomas chain being traced through the underlying instruments. The amalgamation records a registration event; its file, the 1877 documents, and the 1938 and 1969 conveyances must be read together to reconstruct the title's provenance.",
+   "On 2 February 1987, while the appeal is pending, an application is made to amalgamate WA240304 (the separately registered farmhouse and garden) into WA231076 (the larger field title). The register then presents the two strands as one corporate holding. The family's 'synthetic estate' question is whether a title originating in the Bute-to-WGR field chain was joined to a separately registered house title without the older Cydwin/Cydfin and Williams/Thomas chain being traced through the underlying instruments. The amalgamation records a registration event; its file, the 1877 documents, and the 1938 and 1969 conveyances must be read together to reconstruct the title's provenance.",
    [LRT('first-registration', 'Land Registry Titles — amalgamation'),
     w('/scrutiny-and-accountability/procedural-fairness-notice/1987-hmlr-amalgamation-during-appeal/', '1987 HMLR Amalgamation During Appeal', 'Analysis'),
     w('/anomalies-register/llandough-penarth-cydfin-ty-mawr-manorial-evidence/', 'Cydfin / Ty Mawr and pre-1877 manorial evidence'),
     {'type': 'Research annex', 'title': 'Cedwyn Estate — title-chain reconstruction', 'url': 'https://bpvsbuckler.bucklerfamily.estate/research/cedwyn-estate-title-chain.html'}],
    ledger={'S': None, 'B': None,
-           'M': 'Registered: BP Properties, WA231076 = Parcel B + synthetic Parcel A (farmhouse title folded in, 2 February 1987)'})
+           'M': 'Registered: BP Properties, WA231076 = Parcel B + Parcel A as BP registered it (farmhouse title folded in, 2 February 1987)'})
 sc('V', 'ghf-19870731-1', '1987-07-31', '31 July 1987', "Court of Appeal", 'Court of Appeal, London', 'A',
    'Court record',
    "On 31 July 1987 the Court of Appeal (Dillon LJ, Mustill LJ, Sir Edward Eveleigh) dismisses the appeal in BP Properties Ltd v Buckler. It finds adverse possession from 1955, but holds that the 1962 action stopped time and the 1974 letters made the possession permissive.",
