@@ -1,13 +1,13 @@
 {
  "url": "https://discovery.nationalarchives.gov.uk/details/r/C6866760",
  "key": "discovery.nationalarchives.gov.uk/details/r/C6866760",
- "title": "Llandough, Cogan, and Leckwith (P) | The National Archives",
+ "title": "Llandough, Cogan, and Leckwith (P) | The National Archives · details/r/C6866760",
  "host": "discovery.nationalarchives.gov.uk",
  "path": "/websites/discovery.nationalarchives.gov.uk/details-r-c6866760/",
  "latest": "/websites/discovery.nationalarchives.gov.uk/details-r-c6866760/latest.html",
  "first_captured": "2026-10-24T14:43:09Z",
- "last_captured": "2026-10-24T14:43:09Z",
- "current_version": "v1.0.0",
+ "last_captured": "2026-10-25T06:56:21Z",
+ "current_version": "v1.1.0",
  "versions": [
   {
    "version": "v1.0.0",
@@ -20,9 +20,22 @@
    "file": "v1.0.0.html",
    "screenshot": "screenshot-v1.0.0.jpg",
    "from": "https://internetarchive.bucklerfamily.estate/20261024144309/discovery.nationalarchives.gov.uk/details/r/C6866760/"
+  },
+  {
+   "version": "v1.1.0",
+   "change": "text",
+   "captured_utc": "2026-10-25T06:56:21Z",
+   "capture_source": "live",
+   "mode": "text",
+   "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "markup_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "file": "v1.1.0.html",
+   "screenshot": "screenshot-v1.1.0.jpg",
+   "published_utc": "2026-10-25T07:01:18Z"
   }
  ],
  "versioning": "first capture v1.0.0; readable-text change = minor; markup/layout-only change = patch; identical capture = no new version",
  "watch_status": "unchanged",
- "note": "Static copy for reference: scripts, forms, iframes, external styles and images removed; links off bucklerfamily.estate disabled (archived targets point to their Wayback copy)."
+ "note": "Static copy for reference: scripts, forms, iframes, external styles and images removed; links off bucklerfamily.estate disabled (archived targets point to their Wayback copy).",
+ "archive_status": "ok: captured from Tab's machine"
 }

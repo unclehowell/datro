@@ -6,8 +6,8 @@
  "path": "/websites/discovery.nationalarchives.gov.uk/details-r-c5503584/",
  "latest": "/websites/discovery.nationalarchives.gov.uk/details-r-c5503584/latest.html",
  "first_captured": "2026-10-24T14:42:51Z",
- "last_captured": "2026-10-24T14:42:51Z",
- "current_version": "v1.0.0",
+ "last_captured": "2026-10-25T06:56:57Z",
+ "current_version": "v1.0.1",
  "versions": [
   {
    "version": "v1.0.0",
@@ -20,9 +20,22 @@
    "file": "v1.0.0.html",
    "screenshot": "screenshot-v1.0.0.jpg",
    "from": "https://internetarchive.bucklerfamily.estate/20261024144251/discovery.nationalarchives.gov.uk/details/r/C5503584/"
+  },
+  {
+   "version": "v1.0.1",
+   "change": "markup",
+   "captured_utc": "2026-10-25T06:56:57Z",
+   "capture_source": "live",
+   "mode": "html",
+   "text_sha256": "30859ee89e6801ba818dc2a9be4289b45750cd21c0776e8ef14d3bbed2dd2476",
+   "markup_sha256": "8ad30278d220eb35b001165a3e88087f76d7746374ff712a677c9f7891ff0f8b",
+   "file": "v1.0.1.html",
+   "screenshot": "screenshot-v1.0.1.jpg",
+   "published_utc": "2026-10-25T07:01:28Z"
   }
  ],
  "versioning": "first capture v1.0.0; readable-text change = minor; markup/layout-only change = patch; identical capture = no new version",
  "watch_status": "unchanged",
- "note": "Static copy for reference: scripts, forms, iframes, external styles and images removed; links off bucklerfamily.estate disabled (archived targets point to their Wayback copy)."
+ "note": "Static copy for reference: scripts, forms, iframes, external styles and images removed; links off bucklerfamily.estate disabled (archived targets point to their Wayback copy).",
+ "archive_status": "ok: captured from Tab's machine"
 }
