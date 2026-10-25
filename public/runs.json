@@ -32,7 +32,24 @@
     "ok: changed, new capture": 1
    },
    "new_captures": 42
+  },
+  {
+   "started_utc": "2026-10-25T09:15:10Z",
+   "finished_utc": "2026-10-25T09:40:32Z",
+   "checked": 723,
+   "pending": 0,
+   "complete": true,
+   "status_counts": {
+    "ok: unchanged": 173,
+    "not captured: robots": 65,
+    "capture failed": 372,
+    "not relevant: no farm or case terms": 240,
+    "ok: captured": 30,
+    "oversize: no Internet Archive copy yet": 1,
+    "ok: changed, new capture": 13
+   },
+   "new_captures": 66
   }
  ],
- "last_complete_utc": "2026-10-24T13:48:23Z"
+ "last_complete_utc": "2026-10-25T09:15:10Z"
 }
