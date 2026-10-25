@@ -1,6 +1,6 @@
 {
   "schema": "hive_automation_catalog/v1",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "purpose": "Resolve app, operating system, runtime, plan and connected route into a specific, low-interruption IF/THEN policy. A catalogue entry is not proof that an account, API, scheduler or permission is connected.",
   "ruleGrammar": "IF device/OS AND AI app/agent AND runtime AND event THEN action ELSE fallback; notify only on configured exception",
   "operatingSystems": [
@@ -502,5 +502,155 @@
     "Routine low-risk internal work should run without repeated conversational approvals after a permitted execution route is established.",
     "External sending, destructive changes, credentials, permissions, spending, public publishing and legal filings remain human-gated.",
     "Only Tab may create one in-thread Gmail draft after the frozen-version readiness gate; the owner alone sends email."
+  ],
+  "defaultRules": [
+    {
+      "id": "join-once",
+      "title": "Join once and start work",
+      "if": {
+        "event": "join",
+        "os": "detected-or-declared",
+        "app": "detected-or-declared",
+        "runtime": "probe-supported-routes"
+      },
+      "then": [
+        "Read the live Hive contract, roster and current assignment.",
+        "Reuse the existing seat, schedule, connection and saved permission when valid.",
+        "Inspect the app's actual runtime and choose a supported authorised path.",
+        "Begin permitted routine work without asking for a generic extra acceptance."
+      ],
+      "else": [
+        "Record exactly what cannot be detected or done.",
+        "Use any already-authorised fallback and continue unrelated work."
+      ],
+      "humanInLoop": "Ask only if a product-native confirmation, account sign-in, connector grant or OS permission is actually required."
+    },
+    {
+      "id": "assigned-work",
+      "title": "Run assigned work autonomously",
+      "if": {
+        "event": "task",
+        "runner": "connected-and-authorised"
+      },
+      "then": [
+        "Claim the matching Hive assignment idempotently.",
+        "Check for a conflicting live writer before modifying shared content.",
+        "Execute one assigned unit; save status and a concise audit trail.",
+        "Keep working on separate eligible jobs when one task is blocked."
+      ],
+      "else": [
+        "Queue the job or hand it to another eligible active seat; do not fake a successful run."
+      ],
+      "humanInLoop": "No repeated approval for already-authorised low-risk internal work."
+    },
+    {
+      "id": "transient-failure",
+      "title": "Recover before alerting",
+      "if": {
+        "event": "network-or-timeout-or-rate-limit"
+      },
+      "then": [
+        "Retry at most three times with exponential backoff and jitter.",
+        "Respect Retry-After and provider quota limits.",
+        "Use an already-connected, owner-authorised fallback if available."
+      ],
+      "else": [
+        "Park only the failed job, record the diagnosis and keep other tasks moving."
+      ],
+      "humanInLoop": "No alert for every retry; aggregate the failure into one exception notification only if the task remains blocked or deadline risk emerges."
+    },
+    {
+      "id": "permission-block",
+      "title": "Native permission or expired login",
+      "if": {
+        "event": "permission-or-auth"
+      },
+      "then": [
+        "Check whether an already-authorised API, CLI, MCP, local runner or native schedule avoids the blocked UI path.",
+        "Prefer the documented integration over browser click automation.",
+        "Pause only the affected task if no valid route remains."
+      ],
+      "else": [
+        "Continue independent jobs and retain retry context."
+      ],
+      "humanInLoop": "Ask once for the exact missing product permission, sign-in or connection. Never auto-click away native permission prompts or bypass access controls."
+    },
+    {
+      "id": "free-tier",
+      "title": "Respect free-tier and API boundaries",
+      "if": {
+        "event": "quota-or-provider-cost"
+      },
+      "then": [
+        "Distinguish free consumer chat from free API usage, native scheduling and background execution.",
+        "Check live provider plan, quota and region at connection time.",
+        "Use a configured local/free alternate provider only when it is authorised and genuinely available."
+      ],
+      "else": [
+        "Queue the job or select the next eligible approved route."
+      ],
+      "humanInLoop": "Do not ask the owner to buy credits by default; ask only if no existing viable route remains and the task is important."
+    },
+    {
+      "id": "consequential-action",
+      "title": "Gate consequential actions",
+      "if": {
+        "event": "external-send-or-delete-or-permission-change-or-spend-or-public-release-or-legal-filing"
+      },
+      "then": [
+        "Prepare the work, validate the target and present the exact pending action.",
+        "Do not execute the consequential step until the appropriate owner approval exists."
+      ],
+      "else": [
+        "Continue low-risk internal research, formatting, review, queue management and status updates."
+      ],
+      "humanInLoop": "Human approval remains mandatory where the action is consequential or the provider requires it. This rule does not weaken any stricter existing policy."
+    },
+    {
+      "id": "email-gate",
+      "title": "Preserve Hive's email-draft gate",
+      "if": {
+        "event": "email-draft-ready"
+      },
+      "then": [
+        "Require at least 10 material reviews by at least 4 distinct actual reviewers on the same frozen version.",
+        "Require agreement for the required seats, zero open material issues, exact-version three-hat/fourth-excuse review and verified attachments.",
+        "Allow only Tab to create exactly one in-thread Gmail draft after every gate passes."
+      ],
+      "else": [
+        "Keep the task in review and report only the missing gate proofs."
+      ],
+      "humanInLoop": "No agent sends email. The owner alone sends."
+    },
+    {
+      "id": "quiet-notifications",
+      "title": "One exception queue, not alert spam",
+      "if": {
+        "event": "repeated-blocker-or-expired-auth-or-missing-permission-or-deadline-risk"
+      },
+      "then": [
+        "Deduplicate alerts by job, app, error class and permission state.",
+        "Bundle recoverable errors and retry attempts into one notification.",
+        "Show the exact action required and a link back to Hive."
+      ],
+      "else": [
+        "Keep status in Hive without pushing a notification for each event."
+      ],
+      "humanInLoop": "Target notification policy is exceptions-only. Background phone push requires a configured push-capable service and opt-in; foreground browser notification permission alone is not background push."
+    }
+  ],
+  "profilePersistence": {
+    "editorUrl": "https://hive.bucklerfamily.estate/automation",
+    "catalogUrl": "https://hive.bucklerfamily.estate/automation.json",
+    "currentCustomRuleStorage": "browser-local",
+    "sharedCustomRuleSync": "not yet configured",
+    "requirementForSharedSync": "Use an authenticated owner session and server-side validation; do not expose an unauthenticated global write endpoint."
+  },
+  "adapterPrinciples": [
+    "Hive is the policy and troubleshooting control plane, not a magical remote control for every AI app.",
+    "Catalogue presence means a route can be evaluated; it does not mean the user has connected credentials, enabled a runner or granted permission.",
+    "A five-minute site monitor is not an LLM scheduler. The actual app harness or a connected API/CLI/MCP/webhook orchestration service must perform the work.",
+    "Do not create duplicate native tasks. Prefer one recurring task per agent, or a connected event-driven runner if the provider offers one.",
+    "Install no extra app by default. Use a built-in supported route first. Add IFTTT only for simple supported triggers; choose a workflow engine only if Hive's direct route cannot perform the needed logic."
   ]
 }
