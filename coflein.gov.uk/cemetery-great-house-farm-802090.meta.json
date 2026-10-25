@@ -5,9 +5,9 @@
  "host": "coflein.gov.uk",
  "name": "cemetery-great-house-farm-802090",
  "address": "https://wayback-html.bucklerfamily.estate/coflein.gov.uk/cemetery-great-house-farm-802090.html",
- "current_version": "v1.1.0",
+ "current_version": "v1.2.0",
  "first_captured": "2026-10-24T14:41:51Z",
- "last_captured": "2026-10-24T17:08:14Z",
+ "last_captured": "2026-10-25T06:32:27Z",
  "versions": [
   {
    "version": "v1.0.0",
@@ -30,6 +30,18 @@
    "file": "cemetery-great-house-farm-802090.v1.1.0.html",
    "design": "kept",
    "assets": 51
+  },
+  {
+   "version": "v1.2.0",
+   "hub_version": "v1.1.0",
+   "captured_utc": "2026-10-25T06:32:27Z",
+   "capture_source": "live",
+   "change": "text",
+   "file": "cemetery-great-house-farm-802090.v1.2.0.html",
+   "text_sha256": "45b58ebd1024acc5f7d87922d7fae3de0fb43d37f165f380458b122101291942",
+   "markup_sha256": "8ccfe8f5bd997e176008dc3fb59d42f8774cc1465bca002529ce1c663c8a635b",
+   "design": "plain",
+   "from": null
   }
  ],
  "old_addresses": [

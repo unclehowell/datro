@@ -5,9 +5,9 @@
  "host": "coflein.gov.uk",
  "name": "ty-mawr-great-house-farm-20182",
  "address": "https://wayback-html.bucklerfamily.estate/coflein.gov.uk/ty-mawr-great-house-farm-20182.html",
- "current_version": "v1.0.0",
+ "current_version": "v1.1.0",
  "first_captured": "2026-10-24T14:44:59Z",
- "last_captured": "2026-10-24T14:44:59Z",
+ "last_captured": "2026-10-25T06:31:51Z",
  "versions": [
   {
    "version": "v1.0.0",
@@ -20,6 +20,18 @@
    "design": "kept",
    "assets": 51,
    "from": "https://internetarchive.bucklerfamily.estate/20261024144459/coflein.gov.uk/en/site/20182/"
+  },
+  {
+   "version": "v1.1.0",
+   "hub_version": "v1.1.0",
+   "captured_utc": "2026-10-25T06:31:51Z",
+   "capture_source": "live",
+   "change": "text",
+   "file": "ty-mawr-great-house-farm-20182.v1.1.0.html",
+   "text_sha256": "f9efe1594a86cfcfa5b54ea8d014ef950e9dfd78653f21db7b26ebd324bfa0aa",
+   "markup_sha256": "87ff5e14a352ac09eac8cca603eb9c82b90e6436d044f4e3c5d0a952208014eb",
+   "design": "plain",
+   "from": null
   }
  ],
  "old_addresses": [

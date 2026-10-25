@@ -5,9 +5,9 @@
  "host": "coflein.gov.uk",
  "name": "roman-villa-site-llandough-400051",
  "address": "https://wayback-html.bucklerfamily.estate/coflein.gov.uk/roman-villa-site-llandough-400051.html",
- "current_version": "v1.1.0",
+ "current_version": "v1.2.0",
  "first_captured": "2026-10-24T14:40:46Z",
- "last_captured": "2026-10-24T17:08:13Z",
+ "last_captured": "2026-10-25T06:32:21Z",
  "versions": [
   {
    "version": "v1.0.0",
@@ -30,6 +30,18 @@
    "file": "roman-villa-site-llandough-400051.v1.1.0.html",
    "design": "kept",
    "assets": 51
+  },
+  {
+   "version": "v1.2.0",
+   "hub_version": "v1.1.0",
+   "captured_utc": "2026-10-25T06:32:21Z",
+   "capture_source": "live",
+   "change": "text",
+   "file": "roman-villa-site-llandough-400051.v1.2.0.html",
+   "text_sha256": "573f9ac3e07e27f434255919e7cec6d800383426731985b253be27148df892a4",
+   "markup_sha256": "984c04bdc07aa290684c41200ab7cb58959cf1a303e7b9766c16b7a613281189",
+   "design": "plain",
+   "from": null
   }
  ],
  "old_addresses": [

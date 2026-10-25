@@ -5,9 +5,9 @@
  "host": "coflein.gov.uk",
  "name": "st-dochdwys-church-llandough-227363",
  "address": "https://wayback-html.bucklerfamily.estate/coflein.gov.uk/st-dochdwys-church-llandough-227363.html",
- "current_version": "v1.1.0",
+ "current_version": "v1.2.0",
  "first_captured": "2026-10-24T14:40:17Z",
- "last_captured": "2026-10-24T17:08:13Z",
+ "last_captured": "2026-10-25T06:32:15Z",
  "versions": [
   {
    "version": "v1.0.0",
@@ -30,6 +30,18 @@
    "file": "st-dochdwys-church-llandough-227363.v1.1.0.html",
    "design": "kept",
    "assets": 48
+  },
+  {
+   "version": "v1.2.0",
+   "hub_version": "v1.1.0",
+   "captured_utc": "2026-10-25T06:32:15Z",
+   "capture_source": "live",
+   "change": "text",
+   "file": "st-dochdwys-church-llandough-227363.v1.2.0.html",
+   "text_sha256": "860f03aa751a2fc68f5754f54a7e2f39059c4596bf246026936a472f5009c043",
+   "markup_sha256": "6fb0d4fa8155c44c8ab3b4229e276b6581bc33ad9e614b9050a07b12502a539a",
+   "design": "plain",
+   "from": null
   }
  ],
  "old_addresses": [
