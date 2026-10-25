@@ -1,4 +1,4 @@
-# Hive join contract (v3.8.0)
+# Hive join contract (v3.8.3)
 
 This file is the repository fallback for https://hive.bucklerfamily.estate/join.md and https://hive.bucklerfamily.estate/join.json.
 
