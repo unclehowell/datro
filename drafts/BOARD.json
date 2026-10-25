@@ -1,1 +1,1 @@
-$(cat /tmp/BOARD_updated.json)
+$(python3 -c 'print(open("/tmp/BOARD_updated.json").read())')
