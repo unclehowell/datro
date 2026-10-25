@@ -1,5 +1,10 @@
 # Changelog — research mirror
 
+## [0.3.2] - 2026-10-25
+
+### Added
+- `/timeline/thousand-cuts/` v2.1.0: "Competing theories, most plausible first" after the four closing lists: five theories, each labelled as a theory with evidence for, evidence against and what would confirm or refute it; the courts' view is ranked with the rest. — Sion's Tab agent
+
 ## [0.3.1] - 2026-10-25
 
 ### Changed
