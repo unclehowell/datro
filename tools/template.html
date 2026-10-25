@@ -201,7 +201,7 @@ section[data-verbatim] blockquote{margin:6px 0;padding:0 0 0 8px;border-left:2px
   <div class="line">🎟 <b id="wN">0</b> <span id="wNw">tickets</span></div>
   <div class="line">£ <b id="wG">0</b> <span class="unit">borne</span></div>
   <div class="ledge"></div><div class="chalkbit"></div></div>
- <div class="board r" id="br"><h2>Team Regime<small>tickets on them · cost carried</small></h2>
+ <div class="board r" id="br"><h2>Team Institutions<small>tickets on them · cost carried</small></h2>
   <div class="big" id="rPts">0</div><div class="unit">points</div>
   <div class="line">🎟 <b id="rN">0</b> <span id="rNw">tickets</span></div>
   <div class="line">£ <b id="rG">0</b> <span class="unit">borne</span></div>
@@ -221,7 +221,7 @@ section[data-verbatim] blockquote{margin:6px 0;padding:0 0 0 8px;border-left:2px
 </nav>
 
 <section id="tab-tickets">
- <div class="filters" id="filters"><button class="on" data-f="all">All</button><button data-f="regime">Team Regime</button><button data-f="williams">Team Williams</button></div>
+ <div class="filters" id="filters"><button class="on" data-f="all">All</button><button data-f="regime">Team Institutions</button><button data-f="williams">Team Williams</button></div>
  <div id="tlist"></div>
 </section>
 
@@ -229,7 +229,7 @@ section[data-verbatim] blockquote{margin:6px 0;padding:0 0 0 8px;border-left:2px
  <p class="sum">The ten loss heads of the analyst build-up, at mid. Every cost is two entries: debit the side that carries it, credit the event that caused it. Flip the switch and each one posts across to the parties it is claimed from.</p>
  <div id="llist"></div>
  <div class="tot"><span>Carried by Team Williams</span><span id="totW">£0</span></div>
- <div class="tot"><span>Carried by Team Regime</span><span id="totR">£0</span></div>
+ <div class="tot"><span>Carried by Team Institutions</span><span id="totR">£0</span></div>
  <p class="rng" id="rng"></p>
  <details><summary>Who picks up the bill if the case reopens</summary><div id="appo"></div></details>
  <details><summary>The double entries (debits and credits)</summary><div id="journal"></div></details>
@@ -240,7 +240,7 @@ section[data-verbatim] blockquote{margin:6px 0;padding:0 0 0 8px;border-left:2px
  <div id="bands"></div>
  <h3 style="font:700 20px 'Cabin Sketch';margin:14px 0 4px">Multipliers</h3><div id="mults"></div>
  <h3 style="font:700 20px 'Cabin Sketch';margin:14px 0 4px">How the switch works</h3>
- <p class="sum">Orders against the family that rest on the title question are quashed and their points re-issued to the party that obtained them. The original ticket stays: it was admitted. Contingent costs post across to Team Regime, each head to the parties it is claimed from, in the shares of the negotiation schedule. Lines with no £ on the record yet stay where they are until a figure is found.</p>
+ <p class="sum">Orders against the family that rest on the title question are quashed and their points re-issued to the party that obtained them. The original ticket stays: it was admitted. Contingent costs post across to Team Institutions, each head to the parties it is claimed from, in the shares of the negotiation schedule. Lines with no £ on the record yet stay where they are until a figure is found.</p>
  <p class="sum">Sources: <a href="https://greathousefarmwiki.wordpress.com/start-here/">the Legal Wiki</a> · data: <a href="data/tickets.json">tickets.json</a> · <a href="data/ledger.json">ledger.json</a></p>
 </section>
 
@@ -265,7 +265,7 @@ function paint(animate){const t=tally(),st=performance.now(),d=animate?1100:0,fr
  const b=reopen?L.summary.books.reopened:L.summary.books.now;const ok=Math.abs(b[0]-b[1])<0.005;
  $('#books').className='books'+(ok?'':' bad');$('#books').textContent=ok?'Books balance ✓ '+gbp(b[0])+' Dr = Cr':'Books do not balance';
  const q=T.tickets.filter(x=>x.reversible).length, moved=L.entries.filter(e=>e.reopen_postings.length).reduce((a,e)=>a+e.amount,0);
- $('#flipnote').textContent=reopen?`${q} orders quashed and re-issued · ${gbp(moved)} posted across to Team Regime`:'Flip it to see the cost move.';}
+ $('#flipnote').textContent=reopen?`${q} orders quashed and re-issued · ${gbp(moved)} posted across to Team Institutions`:'Flip it to see the cost move.';}
 function fly(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;const a=$('#bw').getBoundingClientRect(),b=$('#br').getBoundingClientRect();
  const [src,dst]=reopen?[a,b]:[b,a];for(let i=0;i<9;i++){const c=document.createElement('div');c.className='chip';c.textContent=i%3?'£':'🎟';c.style.color=['#ffe066','#7CFFB2','#ff8fab'][i%3];
   c.style.left=(src.left+src.width*(.25+.5*Math.random()))+'px';c.style.top=(src.top+src.height*(.3+.4*Math.random()))+'px';document.body.appendChild(c);
@@ -293,7 +293,7 @@ function openTicket(t){const bd=bandOf(t.band);const m=(t.multipliers||[]).map(x
 function statusOf(e){if(e.status==='contingent'&&e.reopen_postings.length)return reopen?['shifted','Shifted']:['contingent','Contingent: shifts if the case reopens'];return['borne','Borne by family']}
 const GROUPS={heads:'The ten loss heads (analyst mid)',nil:'Orders against the family: no £ on the record yet'};
 function ledger(){const box=$('#llist');let lastG='';box.innerHTML=L.entries.map(e=>{const s=statusOf(e),moved=reopen&&e.reopen_postings.length;const gh=e.group&&e.group!==lastG?`<h3 class="lg">${GROUPS[e.group]||''}</h3>`:'';lastG=e.group;const inn=e.low!=null?`<div class="inn">Low ${gbp(e.low)} · high ${gbp(e.high)}${e.causation?' · causation '+e.causation:''}</div>`:'';return `${gh}<div class="le" data-id="${e.id}"><div class="h"><span>${e.head}</span><span class="amt">${e.nil?'£ —':gbp(e.amount)}</span></div>
- ${e.midcase?'<span class="est">mid-case</span>':''}${e.estimate?'<span class="est">estimate</span>':''}<div class="basis">${e.basis.length>170?e.basis.slice(0,165).replace(/\s\S*$/,'')+'…':e.basis}</div><div class="srcl">${e.sources.map(x=>x.title).join(' · ')}</div>${inn}<div class="cols"><div><b>Borne by</b>${e.borne_by}</div><div class="${moved?'rg':''}"><b>Liable now</b>${moved?'Team Regime':e.liable_now}</div><div class="rg"><b>Liable if reopened</b>${e.liable_if_reopened}</div></div>
+ ${e.midcase?'<span class="est">mid-case</span>':''}${e.estimate?'<span class="est">estimate</span>':''}<div class="basis">${e.basis.length>170?e.basis.slice(0,165).replace(/\s\S*$/,'')+'…':e.basis}</div><div class="srcl">${e.sources.map(x=>x.title).join(' · ')}</div>${inn}<div class="cols"><div><b>Borne by</b>${e.borne_by}</div><div class="${moved?'rg':''}"><b>Liable now</b>${moved?'Team Institutions':e.liable_now}</div><div class="rg"><b>Liable if reopened</b>${e.liable_if_reopened}</div></div>
  <span class="pill ${s[0]}">${s[1]}</span></div>`}).join('');
  box.querySelectorAll('.le').forEach(el=>el.onclick=()=>openEntry(L.entries.find(x=>x.id===el.dataset.id)));
  const t=tally();$('#totW').textContent=gbp(t.wG);$('#totR').textContent=gbp(t.rG);

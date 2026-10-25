@@ -1,5 +1,10 @@
 # Changelog
 
+## [3.0.2] - 2026-10-25
+
+### Changed
+- Ingredients, not conclusions: the display label "Team Regime" is now "Team Institutions" (page, ledger notes, template, build). Data keys and ledger account names unchanged. — Sion's Tab agent
+
 ## [3.0.1] - 2026-10-24
 
 ### Improved

@@ -267,7 +267,7 @@ def load_ledger():
             d['reopen_postings'] = [{'account': p.account, 'dr': float(p.units.number)} for p in r.postings if p.units.number > 0] + \
                                    [{'account': p.account, 'cr': -float(p.units.number)} for p in r.postings if p.units.number < 0]
         else:
-            d['liable_if_reopened'] = 'Team Regime once a figure is on the record' if d.get('nil') else 'Team Williams'
+            d['liable_if_reopened'] = 'Team Institutions once a figure is on the record' if d.get('nil') else 'Team Williams'
             d['reopen_postings'] = []
         out.append(d)
     def bqsum(where):

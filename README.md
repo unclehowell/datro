@@ -43,7 +43,7 @@ across when the case reopens, if a low/mid/high is out of order, or if a loss he
 ## data/tickets.json (schema oldbill-tickets/1)
 - `rubric.bands[]`: `key, name, lo, hi, colour, example` — fixed point bands from 1 to 1,000,000.
 - `rubric.multipliers[]`: `key, x, why`; `cap` 1,000,000.
-- `tickets[]`: `id` (T-000 original ticket, W-nn orders against the family, R-nn Team Regime), `team`, `date`, `date_label`, `desk`,
+- `tickets[]`: `id` (T-000 original ticket, W-nn orders against the family, R-nn Team Institutions), `team`, `date`, `date_label`, `desk`,
   `desk_name`, `band`, `issued_to` (institution or role), `what`, `detail`, `base`, `multipliers[]`, `points`, `cancelled`,
   `reversible` + `reissue_to`, `sources[]`; the original ticket also has `fine` and `calibration`.
 - `summary`: board totals `now` and `reopened`, books totals, counts.
