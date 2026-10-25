@@ -5,9 +5,9 @@
  "host": "discovery.nationalarchives.gov.uk",
  "name": "judicial-papers-a-c-1-63",
  "address": "https://wayback-html.bucklerfamily.estate/discovery.nationalarchives.gov.uk/judicial-papers-a-c-1-63.html",
- "current_version": "v1.0.0",
+ "current_version": "v1.0.1",
  "first_captured": "2026-10-24T14:41:10Z",
- "last_captured": "2026-10-24T14:41:10Z",
+ "last_captured": "2026-10-25T06:55:33Z",
  "versions": [
   {
    "version": "v1.0.0",
@@ -20,6 +20,18 @@
    "design": "kept",
    "assets": 99,
    "from": "https://internetarchive.bucklerfamily.estate/20261024144110/discovery.nationalarchives.gov.uk/details/r/74c935f9-563a-4c1b-8643-ed3eed68ad98/"
+  },
+  {
+   "version": "v1.0.1",
+   "hub_version": "v1.0.1",
+   "captured_utc": "2026-10-25T06:55:33Z",
+   "capture_source": "live",
+   "change": "markup",
+   "file": "judicial-papers-a-c-1-63.v1.0.1.html",
+   "text_sha256": "84b92f420e32a1cb4db04d9286334212b647806ff43196b305b0a43ccdc0da86",
+   "markup_sha256": "578302836e4f70259a7101e7e1cf0223a63bb72a48518a19d8bc1a3641c58336",
+   "design": "plain",
+   "from": null
   }
  ],
  "old_addresses": [

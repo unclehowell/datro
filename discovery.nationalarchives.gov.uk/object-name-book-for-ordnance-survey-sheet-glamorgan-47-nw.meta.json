@@ -5,9 +5,9 @@
  "host": "discovery.nationalarchives.gov.uk",
  "name": "object-name-book-for-ordnance-survey-sheet-glamorgan-47-nw",
  "address": "https://wayback-html.bucklerfamily.estate/discovery.nationalarchives.gov.uk/object-name-book-for-ordnance-survey-sheet-glamorgan-47-nw.html",
- "current_version": "v1.0.0",
+ "current_version": "v1.0.1",
  "first_captured": "2026-10-24T14:42:51Z",
- "last_captured": "2026-10-24T14:42:51Z",
+ "last_captured": "2026-10-25T06:56:57Z",
  "versions": [
   {
    "version": "v1.0.0",
@@ -20,6 +20,18 @@
    "design": "kept",
    "assets": 99,
    "from": "https://internetarchive.bucklerfamily.estate/20261024144251/discovery.nationalarchives.gov.uk/details/r/C5503584/"
+  },
+  {
+   "version": "v1.0.1",
+   "hub_version": "v1.0.1",
+   "captured_utc": "2026-10-25T06:56:57Z",
+   "capture_source": "live",
+   "change": "markup",
+   "file": "object-name-book-for-ordnance-survey-sheet-glamorgan-47-nw.v1.0.1.html",
+   "text_sha256": "30859ee89e6801ba818dc2a9be4289b45750cd21c0776e8ef14d3bbed2dd2476",
+   "markup_sha256": "8ad30278d220eb35b001165a3e88087f76d7746374ff712a677c9f7891ff0f8b",
+   "design": "plain",
+   "from": null
   }
  ],
  "old_addresses": [

@@ -5,9 +5,9 @@
  "host": "discovery.nationalarchives.gov.uk",
  "name": "llandough-cogan-and-leckwith-p",
  "address": "https://wayback-html.bucklerfamily.estate/discovery.nationalarchives.gov.uk/llandough-cogan-and-leckwith-p.html",
- "current_version": "v1.0.0",
+ "current_version": "v1.1.0",
  "first_captured": "2026-10-24T14:43:09Z",
- "last_captured": "2026-10-24T14:43:09Z",
+ "last_captured": "2026-10-25T06:56:21Z",
  "versions": [
   {
    "version": "v1.0.0",
@@ -20,6 +20,18 @@
    "design": "kept",
    "assets": 99,
    "from": "https://internetarchive.bucklerfamily.estate/20261024144309/discovery.nationalarchives.gov.uk/details/r/C6866760/"
+  },
+  {
+   "version": "v1.1.0",
+   "hub_version": "v1.1.0",
+   "captured_utc": "2026-10-25T06:56:21Z",
+   "capture_source": "live",
+   "change": "text",
+   "file": "llandough-cogan-and-leckwith-p.v1.1.0.html",
+   "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "markup_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "design": "plain",
+   "from": null
   }
  ],
  "old_addresses": [

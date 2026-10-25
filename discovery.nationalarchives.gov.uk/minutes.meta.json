@@ -5,9 +5,9 @@
  "host": "discovery.nationalarchives.gov.uk",
  "name": "minutes",
  "address": "https://wayback-html.bucklerfamily.estate/discovery.nationalarchives.gov.uk/minutes.html",
- "current_version": "v1.0.0",
+ "current_version": "v1.0.1",
  "first_captured": "2026-10-24T14:44:37Z",
- "last_captured": "2026-10-24T14:44:37Z",
+ "last_captured": "2026-10-25T06:57:18Z",
  "versions": [
   {
    "version": "v1.0.0",
@@ -20,6 +20,18 @@
    "design": "kept",
    "assets": 99,
    "from": "https://internetarchive.bucklerfamily.estate/20261024144437/discovery.nationalarchives.gov.uk/details/r/N13886486/"
+  },
+  {
+   "version": "v1.0.1",
+   "hub_version": "v1.0.1",
+   "captured_utc": "2026-10-25T06:57:18Z",
+   "capture_source": "live",
+   "change": "markup",
+   "file": "minutes.v1.0.1.html",
+   "text_sha256": "08c90f08b028677e7e4bfb4234122b063c9c07a70ad0ea2a7a8bd48c608a49a8",
+   "markup_sha256": "e57c0deb82c75d18327527d7ca245e12c933d0a983de495cec440f8cc09c65ec",
+   "design": "plain",
+   "from": null
   }
  ],
  "old_addresses": [

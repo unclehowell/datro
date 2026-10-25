@@ -5,9 +5,9 @@
  "host": "discovery.nationalarchives.gov.uk",
  "name": "order-of-exchange-of-lands-place-llandough-glamorgan",
  "address": "https://wayback-html.bucklerfamily.estate/discovery.nationalarchives.gov.uk/order-of-exchange-of-lands-place-llandough-glamorgan.html",
- "current_version": "v1.0.0",
+ "current_version": "v1.0.1",
  "first_captured": "2026-10-24T14:43:22Z",
- "last_captured": "2026-10-24T14:43:22Z",
+ "last_captured": "2026-10-25T06:57:31Z",
  "versions": [
   {
    "version": "v1.0.0",
@@ -20,6 +20,18 @@
    "design": "kept",
    "assets": 99,
    "from": "https://internetarchive.bucklerfamily.estate/20261024144322/discovery.nationalarchives.gov.uk/details/r/C7053907/"
+  },
+  {
+   "version": "v1.0.1",
+   "hub_version": "v1.0.1",
+   "captured_utc": "2026-10-25T06:57:31Z",
+   "capture_source": "live",
+   "change": "markup",
+   "file": "order-of-exchange-of-lands-place-llandough-glamorgan.v1.0.1.html",
+   "text_sha256": "a1d3dd1773fa45c16e0bc37e77736ff4852039cc3ab0f4c69197f2ffdb4f14a8",
+   "markup_sha256": "c65e2e4b2fa9358f4258088af4894a94d38a58daa7e79647b6d839e80f5b4d8a",
+   "design": "plain",
+   "from": null
   }
  ],
  "old_addresses": [
