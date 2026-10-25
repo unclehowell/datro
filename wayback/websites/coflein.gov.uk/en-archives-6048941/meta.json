@@ -1,13 +1,13 @@
 {
  "url": "https://coflein.gov.uk/en/archives/6048941",
  "key": "coflein.gov.uk/en/archives/6048941",
- "title": "English – Coflein — “…/ Order Archive RecordSearch ResultsTy Mawr;Great House FarmNMR Site FilesNMR Site…”",
+ "title": "English – Coflein — “…/ Order Archive RecordSearch ResultsTy Mawr;Great House FarmNMR Site FilesNMR Site…” · en/archives/6048941",
  "host": "coflein.gov.uk",
  "path": "/websites/coflein.gov.uk/en-archives-6048941/",
  "latest": "/websites/coflein.gov.uk/en-archives-6048941/latest.html",
  "first_captured": "2026-10-24T14:35:36Z",
- "last_captured": "2026-10-24T14:35:36Z",
- "current_version": "v1.0.0",
+ "last_captured": "2026-10-25T06:32:51Z",
+ "current_version": "v1.1.0",
  "versions": [
   {
    "version": "v1.0.0",
@@ -20,9 +20,22 @@
    "file": "v1.0.0.html",
    "screenshot": null,
    "from": "https://internetarchive.bucklerfamily.estate/20261024143536/coflein.gov.uk/en/archives/6048941/"
+  },
+  {
+   "version": "v1.1.0",
+   "change": "text",
+   "captured_utc": "2026-10-25T06:32:51Z",
+   "capture_source": "live",
+   "mode": "text",
+   "text_sha256": "acb4192adf23a3b5fda5e61dd0b53cf05c5dbb1bb5703b3cea649146475bc66d",
+   "markup_sha256": "5ac84d78e361549c3460be23989f18a2c72d85e9d01a46970f1540fb5c0f3725",
+   "file": "v1.1.0.html",
+   "screenshot": null,
+   "published_utc": "2026-10-25T06:39:34Z"
   }
  ],
  "versioning": "first capture v1.0.0; readable-text change = minor; markup/layout-only change = patch; identical capture = no new version",
  "watch_status": "unchanged",
- "note": "Static copy for reference: scripts, forms, iframes, external styles and images removed; links off bucklerfamily.estate disabled (archived targets point to their Wayback copy)."
+ "note": "Static copy for reference: scripts, forms, iframes, external styles and images removed; links off bucklerfamily.estate disabled (archived targets point to their Wayback copy).",
+ "archive_status": "ok: captured from Tab's machine"
 }

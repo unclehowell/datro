@@ -6,8 +6,8 @@
  "path": "/websites/coflein.gov.uk/en-archives-6048942/",
  "latest": "/websites/coflein.gov.uk/en-archives-6048942/latest.html",
  "first_captured": "2026-10-24T14:44:38Z",
- "last_captured": "2026-10-24T14:44:38Z",
- "current_version": "v1.0.0",
+ "last_captured": "2026-10-25T06:31:57Z",
+ "current_version": "v1.1.0",
  "versions": [
   {
    "version": "v1.0.0",
@@ -20,9 +20,22 @@
    "file": "v1.0.0.html",
    "screenshot": "screenshot-v1.0.0.jpg",
    "from": "https://internetarchive.bucklerfamily.estate/20261024144438/coflein.gov.uk/en/archives/6048942/"
+  },
+  {
+   "version": "v1.1.0",
+   "change": "text",
+   "captured_utc": "2026-10-25T06:31:57Z",
+   "capture_source": "live",
+   "mode": "text",
+   "text_sha256": "ab6aaaed2f5514d31a42c49ee8a2122baed7f4f48350a3686e8f7ce92c1d7e42",
+   "markup_sha256": "04efaff87e0fea4bcc49c94df45a48ca923c1a985e3f0a0a0029d6c099c057cf",
+   "file": "v1.1.0.html",
+   "screenshot": null,
+   "published_utc": "2026-10-25T06:38:55Z"
   }
  ],
  "versioning": "first capture v1.0.0; readable-text change = minor; markup/layout-only change = patch; identical capture = no new version",
  "watch_status": "unchanged",
- "note": "Static copy for reference: scripts, forms, iframes, external styles and images removed; links off bucklerfamily.estate disabled (archived targets point to their Wayback copy)."
+ "note": "Static copy for reference: scripts, forms, iframes, external styles and images removed; links off bucklerfamily.estate disabled (archived targets point to their Wayback copy).",
+ "archive_status": "ok: captured from Tab's machine"
 }
