@@ -1,0 +1,506 @@
+{
+  "schema": "hive_automation_catalog/v1",
+  "version": "1.0.0",
+  "purpose": "Resolve app, operating system, runtime, plan and connected route into a specific, low-interruption IF/THEN policy. A catalogue entry is not proof that an account, API, scheduler or permission is connected.",
+  "ruleGrammar": "IF device/OS AND AI app/agent AND runtime AND event THEN action ELSE fallback; notify only on configured exception",
+  "operatingSystems": [
+    {
+      "id": "android",
+      "label": "Android phone / tablet"
+    },
+    {
+      "id": "ios",
+      "label": "iPhone / iPad (iOS / iPadOS)"
+    },
+    {
+      "id": "windows",
+      "label": "Windows desktop / laptop"
+    },
+    {
+      "id": "macos",
+      "label": "macOS"
+    },
+    {
+      "id": "linux",
+      "label": "Linux desktop"
+    },
+    {
+      "id": "chromeos",
+      "label": "ChromeOS / Chromebook"
+    },
+    {
+      "id": "browser",
+      "label": "Browser / PWA / unknown device"
+    },
+    {
+      "id": "server",
+      "label": "Cloud VM / container / home server"
+    }
+  ],
+  "aiApps": [
+    {
+      "id": "claude",
+      "label": "Claude web / Android / iOS",
+      "note": "Consumer chat UI; free access and limits depend on current plan. A chat account alone is not a background runner or API key."
+    },
+    {
+      "id": "claude-desktop",
+      "label": "Claude Desktop / Cowork",
+      "note": "Capabilities differ by product and mode. Use a supported native task, connector or API/CLI route; do not auto-click native permission prompts."
+    },
+    {
+      "id": "claude-code",
+      "label": "Claude Code CLI",
+      "note": "Can be automated within the configured environment and permissions; use scoped allow rules or supported auto mode, not blanket permission bypass."
+    },
+    {
+      "id": "chatgpt",
+      "label": "ChatGPT web / mobile",
+      "note": "Consumer chat UI; free-tier features and task availability vary. Chat access alone does not wake a scheduled agent."
+    },
+    {
+      "id": "codex",
+      "label": "OpenAI Codex CLI / coding agent",
+      "note": "Use the installed CLI/task runner and its configured auth. Model/API quotas are separate from the consumer ChatGPT plan."
+    },
+    {
+      "id": "gemini",
+      "label": "Google Gemini web / mobile",
+      "note": "Consumer UI; a free tier does not imply Gemini API quota or unattended app control."
+    },
+    {
+      "id": "gemini-cli",
+      "label": "Gemini CLI",
+      "note": "CLI execution depends on installation, credentials, quota and local permission policy."
+    },
+    {
+      "id": "copilot",
+      "label": "Microsoft Copilot web / mobile",
+      "note": "Consumer UI; do not infer unattended automation from free access."
+    },
+    {
+      "id": "copilot-dev",
+      "label": "GitHub Copilot / VS Code / CLI",
+      "note": "Use supported editor/CLI workflows and repository permissions; respect review and write scopes."
+    },
+    {
+      "id": "grok",
+      "label": "Grok / xAI app",
+      "note": "Consumer UI; API availability and billing are separate and must be checked."
+    },
+    {
+      "id": "perplexity",
+      "label": "Perplexity web / mobile",
+      "note": "Consumer search/chat UI; its API is separate from app access."
+    },
+    {
+      "id": "kimi",
+      "label": "Kimi / Moonshot AI",
+      "note": "Consumer UI and Moonshot API are distinct; verify endpoint, region, quota and price."
+    },
+    {
+      "id": "deepseek",
+      "label": "DeepSeek chat",
+      "note": "Consumer UI does not establish API entitlement or zero-cost API usage."
+    },
+    {
+      "id": "qwen",
+      "label": "Qwen / Alibaba",
+      "note": "Consumer chat and DashScope/API quotas are separate."
+    },
+    {
+      "id": "mistral",
+      "label": "Mistral Le Chat",
+      "note": "Consumer UI and Mistral API access are distinct."
+    },
+    {
+      "id": "meta-ai",
+      "label": "Meta AI",
+      "note": "Consumer app/web experience; do not assume a callable API or scheduler."
+    },
+    {
+      "id": "poe",
+      "label": "Poe",
+      "note": "Consumer multi-model UI; availability of integrations and model/API costs vary."
+    },
+    {
+      "id": "duck-ai",
+      "label": "Duck.ai",
+      "note": "Consumer chat UI; treat as interactive unless a supported integration is verified."
+    },
+    {
+      "id": "huggingchat",
+      "label": "HuggingChat / Hugging Face",
+      "note": "Web UI is not proof of a hosted inference quota for automation."
+    },
+    {
+      "id": "you",
+      "label": "You.com / AI search",
+      "note": "Consumer search/chat surface; API plan is separate."
+    },
+    {
+      "id": "openrouter",
+      "label": "OpenRouter",
+      "note": "Provider gateway; API key and model/provider pricing or free limits must be checked per route."
+    },
+    {
+      "id": "cursor",
+      "label": "Cursor IDE",
+      "note": "Use its supported agent/editor automation and scoped repository permissions."
+    },
+    {
+      "id": "windsurf",
+      "label": "Windsurf IDE",
+      "note": "Use supported agent/editor automation; verify the specific plan and execution mode."
+    },
+    {
+      "id": "cline",
+      "label": "Cline extension",
+      "note": "IDE agent; provider key and tool approvals can be separate from extension access."
+    },
+    {
+      "id": "roo",
+      "label": "Roo Code extension",
+      "note": "IDE agent; execution depends on configured provider, tool permissions and editor host."
+    },
+    {
+      "id": "continue",
+      "label": "Continue IDE",
+      "note": "IDE agent; background execution requires configured model and runtime."
+    },
+    {
+      "id": "aider",
+      "label": "Aider coding CLI",
+      "note": "Local CLI runner; model provider usage and filesystem scope are separate."
+    },
+    {
+      "id": "openhands",
+      "label": "OpenHands",
+      "note": "Agent runtime; verify deployment, provider credentials and permitted tool scope."
+    },
+    {
+      "id": "goose",
+      "label": "Goose agent",
+      "note": "Local agent runtime; validate enabled extensions and permissions."
+    },
+    {
+      "id": "openclaw",
+      "label": "OpenClaw",
+      "note": "Agent/host integration; verify actual deployment, connector and access scope."
+    },
+    {
+      "id": "hermes",
+      "label": "Hermes Agent",
+      "note": "Agent runner; verify its native scheduler, tool access and saved job state."
+    },
+    {
+      "id": "ollama",
+      "label": "Ollama local models",
+      "note": "Local runtime; requires a reachable running model host and sufficient device resources."
+    },
+    {
+      "id": "lmstudio",
+      "label": "LM Studio",
+      "note": "Local model server; API endpoint must be enabled and reachable."
+    },
+    {
+      "id": "open-webui",
+      "label": "Open WebUI",
+      "note": "Self-hosted UI; automation depends on its configured model endpoint and separate orchestration."
+    },
+    {
+      "id": "jan",
+      "label": "Jan local AI app",
+      "note": "Local desktop chat is not automatically a daemon; verify an API/server endpoint."
+    },
+    {
+      "id": "llamacpp",
+      "label": "llama.cpp",
+      "note": "Local model runtime; requires an explicit server/process supervisor for unattended tasks."
+    },
+    {
+      "id": "vllm",
+      "label": "vLLM server",
+      "note": "Self-hosted inference endpoint; API key, capacity and service health are operator-managed."
+    },
+    {
+      "id": "litellm",
+      "label": "LiteLLM proxy",
+      "note": "Proxy/runtime; routing, model spend and credentials must be configured explicitly."
+    },
+    {
+      "id": "other",
+      "label": "Other / unknown app",
+      "note": "Ask the joining agent to identify its actual product, host, execution method and permission model."
+    }
+  ],
+  "runtimes": [
+    {
+      "id": "chat",
+      "label": "Consumer chat UI (interactive, not a runner)"
+    },
+    {
+      "id": "native-schedule",
+      "label": "Native app / agent scheduled task"
+    },
+    {
+      "id": "api",
+      "label": "Provider API or connected API gateway"
+    },
+    {
+      "id": "cli",
+      "label": "CLI or local supervised process"
+    },
+    {
+      "id": "mcp",
+      "label": "MCP tool/server connection"
+    },
+    {
+      "id": "browser",
+      "label": "Supported browser automation"
+    },
+    {
+      "id": "local-model",
+      "label": "Local model server (Ollama / LM Studio / etc.)"
+    },
+    {
+      "id": "cloud-runner",
+      "label": "Cloud worker / container / orchestrator"
+    },
+    {
+      "id": "mobile-only",
+      "label": "Mobile app only; no unattended runner confirmed"
+    }
+  ],
+  "automationProviders": [
+    {
+      "id": "hive",
+      "label": "Hive-native rules (built-in)",
+      "classification": "Primary control plane",
+      "note": "Best default: keep join, device/app profiles, IF/THEN rules, retry policy and exception queue on Hive. These rules route work only when a genuine connected runner/endpoint exists; the site monitor does not itself invoke LLMs."
+    },
+    {
+      "id": "ifttt-free",
+      "label": "IFTTT Free",
+      "classification": "Optional simple triggers",
+      "note": "Free tier has 2 Applets and simple trigger-to-action flows. Good for lightweight alerts, not a multi-agent runner or a way to dismiss native app permission dialogs. Re-check current plan limits before relying on it."
+    },
+    {
+      "id": "n8n",
+      "label": "n8n Community (self-hosted)",
+      "classification": "Flexible workflow engine",
+      "note": "Community Edition can be self-hosted for internal use. Needs a server and connector setup; review licence terms before offering customer-configured hosted workflows or white-labelling it."
+    },
+    {
+      "id": "zapier",
+      "label": "Zapier Free",
+      "classification": "Hosted workflow connector",
+      "note": "Free tier availability and task/action limits can change. Use for integrations it explicitly supports, not to create native AI-app permissions."
+    },
+    {
+      "id": "make",
+      "label": "Make Free",
+      "classification": "Visual workflow connector",
+      "note": "Free tier limits and connector support change. Keep Hive as the source of truth for rules and queue state."
+    },
+    {
+      "id": "activepieces",
+      "label": "Activepieces",
+      "classification": "Open-source / hosted workflow",
+      "note": "Can be self-hosted or used as a hosted service depending on setup. Verify current edition, auth and maintenance needs."
+    },
+    {
+      "id": "pipedream",
+      "label": "Pipedream",
+      "classification": "Developer workflow / webhook",
+      "note": "Useful for supported API and event integrations; free quotas, connected accounts and action limits require verification."
+    },
+    {
+      "id": "node-red",
+      "label": "Node-RED",
+      "classification": "Self-hosted event flows",
+      "note": "Flexible local/server automation; host, credentials and deployment security remain the operator's responsibility."
+    },
+    {
+      "id": "home-assistant",
+      "label": "Home Assistant",
+      "classification": "Device / notification automation",
+      "note": "Best suited to supported home/device events and notifications; it is not a general LLM scheduler by itself."
+    },
+    {
+      "id": "webhook",
+      "label": "Custom webhook / MCP adapter",
+      "classification": "Direct integration",
+      "note": "Preferred when an authorised service exposes a documented endpoint; store credentials server-side and restrict scopes."
+    }
+  ],
+  "events": [
+    {
+      "id": "join",
+      "label": "Agent receives 'join hive.bucklerfamily.estate'"
+    },
+    {
+      "id": "task",
+      "label": "New task assigned / queue item ready"
+    },
+    {
+      "id": "idle",
+      "label": "Agent has no assigned work"
+    },
+    {
+      "id": "network",
+      "label": "Network error / timeout / rate limit"
+    },
+    {
+      "id": "permission",
+      "label": "Native permission prompt / approval block"
+    },
+    {
+      "id": "auth",
+      "label": "Authentication expired / connector unavailable"
+    },
+    {
+      "id": "approval",
+      "label": "Consequential action requires human approval"
+    },
+    {
+      "id": "deadline",
+      "label": "Deadline risk / repeated blocked run"
+    }
+  ],
+  "actions": [
+    {
+      "id": "autonomous",
+      "label": "Run routine work through existing authorised route"
+    },
+    {
+      "id": "reuse",
+      "label": "Reuse existing task, connector, credentials and seat"
+    },
+    {
+      "id": "retry",
+      "label": "Retry with exponential backoff (maximum 3 attempts)"
+    },
+    {
+      "id": "handoff",
+      "label": "Queue / hand off to the next eligible agent"
+    },
+    {
+      "id": "fallback",
+      "label": "Switch to an already-connected authorised fallback"
+    },
+    {
+      "id": "notify",
+      "label": "Bundle one notification for a real blocker"
+    },
+    {
+      "id": "consent",
+      "label": "Ask once for the specific native permission that is required"
+    },
+    {
+      "id": "pause",
+      "label": "Pause only the affected job; keep unrelated work running"
+    }
+  ],
+  "fallbacks": [
+    {
+      "id": "queue",
+      "label": "Queue this item and continue other eligible work"
+    },
+    {
+      "id": "connected-model",
+      "label": "Use a connected local/free/alternate model if approved"
+    },
+    {
+      "id": "manual",
+      "label": "Pause only this job and request one exact user action"
+    },
+    {
+      "id": "handoff",
+      "label": "Hand over to a different active Hive agent"
+    },
+    {
+      "id": "stop",
+      "label": "Stop only this task and record the diagnostic"
+    }
+  ],
+  "apiProviders": [
+    {
+      "id": "openai",
+      "label": "OpenAI API",
+      "note": "API billing, account limits and credentials are separate from ChatGPT consumer access."
+    },
+    {
+      "id": "anthropic",
+      "label": "Anthropic API",
+      "note": "API billing, workspace permissions and credentials are separate from Claude consumer access."
+    },
+    {
+      "id": "google",
+      "label": "Google Gemini API",
+      "note": "Check current free quota, project/billing status and model availability."
+    },
+    {
+      "id": "xai",
+      "label": "xAI API",
+      "note": "Check current account entitlement, pricing and rate limits."
+    },
+    {
+      "id": "perplexity",
+      "label": "Perplexity API",
+      "note": "Separate integration and quota from the Perplexity app."
+    },
+    {
+      "id": "moonshot",
+      "label": "Moonshot / Kimi API",
+      "note": "Check account region, endpoint and current quota."
+    },
+    {
+      "id": "deepseek",
+      "label": "DeepSeek API",
+      "note": "Check current API pricing and account balance/limits."
+    },
+    {
+      "id": "qwen",
+      "label": "Alibaba DashScope / Qwen API",
+      "note": "Check region, model endpoint, billing and quota."
+    },
+    {
+      "id": "mistral",
+      "label": "Mistral API",
+      "note": "Check current free credits, pricing and rate limits."
+    },
+    {
+      "id": "openrouter",
+      "label": "OpenRouter",
+      "note": "Model-specific pricing/free availability may differ and change."
+    },
+    {
+      "id": "local",
+      "label": "Local OpenAI-compatible endpoint",
+      "note": "No per-token provider fee where genuinely local, but hardware, electricity, performance and availability still matter."
+    }
+  ],
+  "notificationRoutes": [
+    "Hive dashboard",
+    "Browser notification while Hive is open",
+    "Browser/PWA push (requires a push service and user opt-in)",
+    "Android system notification via a connected app",
+    "iOS notification via a supported connected app",
+    "Email",
+    "Telegram",
+    "Slack",
+    "Discord",
+    "Matrix",
+    "ntfy",
+    "Pushover"
+  ],
+  "guardrails": [
+    "A catalogue option is not proof that an account, API key, schedule or tool is connected.",
+    "Do not infer free API access from free consumer-chat access; check the live official plan and quota at join time.",
+    "Never automate clicking away native permission prompts or bypass application security boundaries.",
+    "Routine low-risk internal work should run without repeated conversational approvals after a permitted execution route is established.",
+    "External sending, destructive changes, credentials, permissions, spending, public publishing and legal filings remain human-gated.",
+    "Only Tab may create one in-thread Gmail draft after the frozen-version readiness gate; the owner alone sends email."
+  ]
+}
