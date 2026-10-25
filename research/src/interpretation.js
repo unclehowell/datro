@@ -1149,8 +1149,8 @@ export function interpretationHtml(path) {
   const ids = INTERP_PAGES[path];
   if (!ids || !ids.length) return "";
   let out = '<section class="ghf-interpretation" id="interpretation" aria-labelledby="interpretation-h" style="margin:1.8rem 0 .4rem;padding:.9rem .95rem;border:1px solid #CFCAE0;border-left:5px solid #5B566D;background:#F7F6FB;border-radius:6px;overflow-wrap:anywhere">' +
-    '<h2 id="interpretation-h" style="margin:0 0 .35rem;font-size:1.15rem">Interpretation</h2>' +
-    '<p style="margin:0 0 .7rem;font-size:.9rem;color:#3a3a3a">Our reading, kept apart from the record above. The record text on this page is unchanged. Each line below is labelled as inference, theory, a reading that cuts against the case, or a discarded theory; it names what it rests on and what would confirm or refute it. This is the research team\'s prospective case, not a finding of any court. Updated ' + INTERP_UPDATED + '.</p>';
+    '<h2 id="interpretation-h" style="margin:0 0 .35rem;font-size:1.15rem">Interpretation: working hypotheses</h2>' +
+    '<p style="margin:0 0 .7rem;font-size:.9rem;color:#3a3a3a">Working hypotheses, kept apart from the record above. The record text on this page is unchanged. None of these is a finding: each line is labelled as inference, theory, a reading that cuts against the case, or a discarded theory, and names the evidence it rests on and what would confirm or refute it, so the reader can test it. Updated ' + INTERP_UPDATED + '.</p>';
   let theme = null;
   ids.forEach(function(id) {
     const t = INTERP_THEORIES[id]; if (!t) return;

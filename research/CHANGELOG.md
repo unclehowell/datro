@@ -1,5 +1,12 @@
 # Changelog — research mirror
 
+## [0.3.1] - 2026-10-25
+
+### Changed
+- `/timeline/thousand-cuts/` v2.0.0 under the editorial rule "ingredients, not conclusions": the drawn pyramid map, the fill-in layer icons, the apex/layer framing, the spine and the closing verdict are removed. Each entry now gives date, event, a neutral cited line on what it changed in law or in fact, label, evidence links, depends-on/enabled cross-links and any open question. The closing lists what the record shows was decided, what was never decided, what the courts found against the family, and open questions. The /timeline/ link text is neutral.
+- Interpretation sections are headed "Interpretation: working hypotheses"; the intro states none is a finding. Entries unchanged. — Sion's Tab agent
+
+
 ## [0.3.0] - 2026-10-25
 
 ### Added
