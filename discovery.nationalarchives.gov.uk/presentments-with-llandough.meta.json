@@ -5,9 +5,9 @@
  "host": "discovery.nationalarchives.gov.uk",
  "name": "presentments-with-llandough",
  "address": "https://wayback-html.bucklerfamily.estate/discovery.nationalarchives.gov.uk/presentments-with-llandough.html",
- "current_version": "v1.0.0",
+ "current_version": "v1.0.1",
  "first_captured": "2026-10-24T14:45:03Z",
- "last_captured": "2026-10-24T14:45:03Z",
+ "last_captured": "2026-10-25T06:58:34Z",
  "versions": [
   {
    "version": "v1.0.0",
@@ -20,6 +20,18 @@
    "design": "kept",
    "assets": 99,
    "from": "https://internetarchive.bucklerfamily.estate/20261024144503/discovery.nationalarchives.gov.uk/details/r/N14336241/"
+  },
+  {
+   "version": "v1.0.1",
+   "hub_version": "v1.0.1",
+   "captured_utc": "2026-10-25T06:58:34Z",
+   "capture_source": "live",
+   "change": "markup",
+   "file": "presentments-with-llandough.v1.0.1.html",
+   "text_sha256": "7bd6933d53261e444db527baa35291dccd30a122dfdbba219c477aa0e5ad6c94",
+   "markup_sha256": "a97da9e11c40be9473a4e25072fad455ef578b06bdf80d4454be175f13d9ce7a",
+   "design": "plain",
+   "from": null
   }
  ],
  "old_addresses": [

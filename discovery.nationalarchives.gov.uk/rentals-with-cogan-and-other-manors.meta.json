@@ -5,9 +5,9 @@
  "host": "discovery.nationalarchives.gov.uk",
  "name": "rentals-with-cogan-and-other-manors",
  "address": "https://wayback-html.bucklerfamily.estate/discovery.nationalarchives.gov.uk/rentals-with-cogan-and-other-manors.html",
- "current_version": "v1.0.0",
+ "current_version": "v1.0.1",
  "first_captured": "2026-10-24T14:45:12Z",
- "last_captured": "2026-10-24T14:45:12Z",
+ "last_captured": "2026-10-25T06:59:22Z",
  "versions": [
   {
    "version": "v1.0.0",
@@ -20,6 +20,18 @@
    "design": "kept",
    "assets": 99,
    "from": "https://internetarchive.bucklerfamily.estate/20261024144512/discovery.nationalarchives.gov.uk/details/r/N14376724/"
+  },
+  {
+   "version": "v1.0.1",
+   "hub_version": "v1.0.1",
+   "captured_utc": "2026-10-25T06:59:22Z",
+   "capture_source": "live",
+   "change": "markup",
+   "file": "rentals-with-cogan-and-other-manors.v1.0.1.html",
+   "text_sha256": "67fdd6fb23976aedef54d81c1796c411d29d4e928a156676658417b60e435c04",
+   "markup_sha256": "480a7a3804d5572952fa8649bf732810cdc8345041f3d3cc3c8ffbefabc19c17",
+   "design": "plain",
+   "from": null
   }
  ],
  "old_addresses": [

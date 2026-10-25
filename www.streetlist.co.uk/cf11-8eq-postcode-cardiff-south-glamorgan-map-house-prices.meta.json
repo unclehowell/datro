@@ -5,9 +5,9 @@
  "host": "www.streetlist.co.uk",
  "name": "cf11-8eq-postcode-cardiff-south-glamorgan-map-house-prices",
  "address": "https://wayback-html.bucklerfamily.estate/www.streetlist.co.uk/cf11-8eq-postcode-cardiff-south-glamorgan-map-house-prices.html",
- "current_version": "v1.0.0",
+ "current_version": "v1.1.0",
  "first_captured": "2026-10-24T14:47:47Z",
- "last_captured": "2026-10-24T14:47:47Z",
+ "last_captured": "2026-10-25T06:56:09Z",
  "versions": [
   {
    "version": "v1.0.0",
@@ -20,6 +20,18 @@
    "design": "kept",
    "assets": 2,
    "from": "https://internetarchive.bucklerfamily.estate/20261024144747/www.streetlist.co.uk/cf/cf11/cf11-8/cf11-8eq/"
+  },
+  {
+   "version": "v1.1.0",
+   "hub_version": "v1.1.0",
+   "captured_utc": "2026-10-25T06:56:09Z",
+   "capture_source": "live",
+   "change": "text",
+   "file": "cf11-8eq-postcode-cardiff-south-glamorgan-map-house-prices.v1.1.0.html",
+   "text_sha256": "382b02398c0da16801199c90c2de696bc2a4d92c9bffe87b6c503a928f1a851b",
+   "markup_sha256": "5eecdd6af9b94553a175f7e8fb340a6b995c64b1ad6e4847ead965ee8d74df8c",
+   "design": "plain",
+   "from": null
   }
  ],
  "old_addresses": [

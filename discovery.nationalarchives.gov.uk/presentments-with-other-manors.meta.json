@@ -5,9 +5,9 @@
  "host": "discovery.nationalarchives.gov.uk",
  "name": "presentments-with-other-manors",
  "address": "https://wayback-html.bucklerfamily.estate/discovery.nationalarchives.gov.uk/presentments-with-other-manors.html",
- "current_version": "v1.0.0",
+ "current_version": "v1.0.1",
  "first_captured": "2026-10-24T14:44:46Z",
- "last_captured": "2026-10-24T14:44:46Z",
+ "last_captured": "2026-10-25T06:59:10Z",
  "versions": [
   {
    "version": "v1.0.0",
@@ -20,6 +20,18 @@
    "design": "kept",
    "assets": 99,
    "from": "https://internetarchive.bucklerfamily.estate/20261024144446/discovery.nationalarchives.gov.uk/details/r/N14269901/"
+  },
+  {
+   "version": "v1.0.1",
+   "hub_version": "v1.0.1",
+   "captured_utc": "2026-10-25T06:59:10Z",
+   "capture_source": "live",
+   "change": "markup",
+   "file": "presentments-with-other-manors.v1.0.1.html",
+   "text_sha256": "3104c96467a375eda2af2ab1b649fdb69496337bb35c13cd89fe4b26f03d5322",
+   "markup_sha256": "785da54934c40c693cbc79746b1a95e3f30518807c4292982b7877a8f17a4332",
+   "design": "plain",
+   "from": null
   }
  ],
  "old_addresses": [
