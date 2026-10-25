@@ -1,5 +1,10 @@
 # Changelog — research mirror
 
+## [0.3.0] - 2026-10-25
+
+### Added
+- `/timeline/thousand-cuts/` (`src/thousand-cuts.js`, served from STATIC_PAGES): "1000 Cuts", a dated chronology of 39 events (plus one background step) that lowered the Williams family's standing in law from 1916 to the 7 Dec 1988 demolition, opening with the family's peak (7 items). Each cut links to its evidence page, states the blow, carries a label (record, family testimony, our reading, not yet confirmed) and its dependencies, in 9 layers (the pyramid). Closes with our reading (rights diminished, ownership never decided or extinguished), what would confirm it and what cuts against it. Linked from `/timeline/`. The same data is a layer in the Cedwyn catalogue database. — Sion's Tab agent
+
 ## [0.2.0] - 2026-10-25
 
 ### Added

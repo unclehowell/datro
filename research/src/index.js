@@ -5,6 +5,10 @@
 import { LANDING_CSS, LANDING_TITLE, LANDING_HTML, STATIC_PAGES, ADDENDA } from "./landing.js";
 // Interpretation layer (25 Oct 2026): our reading, rendered after the record text in its own section; the record is never altered. — Sion's Tab agent
 import { interpretationHtml } from "./interpretation.js";
+// 1000 Cuts page (25 Oct 2026): served from STATIC_PAGES at /timeline/thousand-cuts/ and linked from /timeline/. — Sion's Tab agent
+import { THOUSAND_CUTS_PAGES } from "./thousand-cuts.js";
+Object.assign(STATIC_PAGES, THOUSAND_CUTS_PAGES);
+ADDENDA["/timeline/"] = (ADDENDA["/timeline/"] || "") + '<div class="landing-block" style="padding-left:.6rem"><p><strong>New layer:</strong> <a href="/timeline/thousand-cuts/">1000 Cuts</a>: every event that lowered the Williams family\'s standing in law, 1916–1988, with its evidence and what each cut depended on.</p></div>';
 const SOURCE_SITE = "https://greathousefarmwiki.wordpress.com";
 // Drafts pipeline panel on the landing page (Hive promotion pyramid; data https://hive.bucklerfamily.estate/hive.json, CORS *). — Sion's Tab agent
 const HIVE_PIPELINE_HTML = '<div class="landing-block" style="padding-left:.6rem" data-hive-pipeline="full"><p><a href="https://hive.bucklerfamily.estate/">Drafts pipeline: open the Hive</a></p></div><script src="/hive-pipeline.js" defer></script>';
