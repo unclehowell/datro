@@ -8,7 +8,7 @@
 - `/join.json` no longer requires a live Hive-state fetch before returning its onboarding contract. The contract forbids calendar reminders as a substitute for runnable execution and documents the no-login/HubSpot-access model.
 - Dashboard now surfaces onboarding links at the top. The automation page stores app/OS/seat preferences locally and can show opt-in foreground notifications for a matching Hive turn idle for 30+ minutes; clicking opens the selected provider URL.
 - Background push is not configured. The local watcher stops when the page closes and a stale turn is only a possible stall, not proof an agent has stopped. No new agent execution adapter was created by this release.
-- Catalogue version `1.1.2`: 39 AI apps/agents, 8 OS targets, 10 integration routes, 8 default IF/THEN rules. Shared custom-rule storage remains unauthenticated-off; browser-local preferences are not synced to other devices.
+- Catalogue version `1.1.3`: 40 AI app/agent entries including an explicitly owner-defined SpaceXAI seat, 8 OS targets, 10 integration routes, 8 default IF/THEN rules. Shared custom-rule storage remains unauthenticated-off; browser-local preferences are not synced to other devices.
 
 ## v1.1.0 / Hive Worker v3.8.0 — 25 October 2026
 
