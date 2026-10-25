@@ -1,5 +1,10 @@
 # Changelog — research mirror
 
+## [0.3.3] - 2026-10-25
+
+### Changed
+- Site-wide "ingredients, not conclusions" wording at source: interpretation entries I-01 (now dated steps with evidence ids), W-01 (the two records side by side, then the hypothesis) and S-01 (records on the land's later use, then the hypothesis) reworded; "Our reading:" lines are now labelled "Working hypothesis:"; the theme "Three synthetic Parcel A versions" is now "Three versions of Parcel A" with "synthetic" credited to the family's frame. Landing transit-map labels "REJECTED permissive occupancy ploy" and "clandestine registration" now read "permissive-occupancy step, rejected by the family" and "registration (source pending)" (same wording as Cedwyn's ingredients.json). Record text unchanged. — Sion's Tab agent
+
 ## [0.3.2] - 2026-10-25
 
 ### Added

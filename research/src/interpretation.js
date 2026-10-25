@@ -1,14 +1,14 @@
 // Interpretation layer for research.bucklerfamily.estate evidence pages (25 Oct 2026).
-// Our reading (inference and theory), shown in its own section AFTER the record text, which is never altered.
+// Working hypotheses (inference and theory), shown in its own section AFTER the record text, which is never altered.
 // Each entry: kind (Inference | Theory | Counter-reading | Discarded), the reading, what it rests on, what would confirm or refute it, status.
 // Sources: research log (results E01-E135, grounds R1-R10), "why 1983" note, research cycles and findings. — Sion's Tab agent
-export const INTERP_UPDATED = "25 Oct 2026";
-export const INTERP_THEMES = ["The 1962 → 1974 → 1983 sequence", "Why 1983", "Three synthetic Parcel A versions", "The 1924 drain agreement lead", "The Intercontinental sale motive", "The 1974 licence letters", "Title chain and registration", "Demolition, archaeology and the green"];
+export const INTERP_UPDATED = "25 Oct 2026 (v2: ingredients wording)";
+export const INTERP_THEMES = ["The 1962 → 1974 → 1983 sequence", "Why 1983", "Three versions of Parcel A", "The 1924 drain agreement lead", "The Intercontinental sale motive", "The 1974 licence letters", "Title chain and registration", "Demolition, archaeology and the green"];
 export const INTERP_THEORIES = {
 "I-01": {
 "theme": "The 1962 → 1974 → 1983 sequence",
 "kind": "Theory",
-"text": "Our reading of the sequence: the 11 Dec 1962 possession order tried to end the occupation; in 1974, with the 12-year period from that order about to expire (11 Dec 1974), BP first sought leave to enforce it and then, by the 31 Oct 1974 letters, recast her occupation as permission; when that did not end the matter, the 1982–83 first registrations turned the position into a registered title. Each step, on this reading, moved occupation that the family treated as ownership one stage further towards a paper title held by BP.",
+"text": "Working hypothesis on the sequence, set out as dated steps for the reader to test. 11 Dec 1962: possession order in Cardiff County Court (EV-0041); the 12-year period from that order ran to 11 Dec 1974. In the 1974 County Court action she pleaded that the claim was barred (EV-0049). 17–19 Sep 1974: BP Pension Trust sought and obtained leave to enforce the 1962 order (EV-0080). 31 Oct 1974: letters permitting her to stay rent-free for life (EV-0050); the Court of Appeal later held that from then on her possession was by licence and no longer adverse (EV-0080). 30 Nov 1982 and 23 Feb 1983: first-registration applications for the fields and for the farmhouse (EV-0059, EV-0065). The hypothesis is that these steps were connected, each taking occupation the family treated as ownership closer to a registered title. No document read so far shows them planned together; W-04 and the discarded entries below set out readings that cut against it.",
 "rests": [
 "EV-0041",
 "EV-0049",
@@ -24,7 +24,7 @@ export const INTERP_THEORIES = {
 "I-02": {
 "theme": "The 1962 → 1974 → 1983 sequence",
 "kind": "Inference",
-"text": "The Court of Appeal records that BP Pension Trust's 1974 County Court action, in which she pleaded that BP's claim was barred, \"has never been finally heard\" (record). Our reading: BP held no fresh order from 1974, so after 31 Oct 1974 its position rested on the licence letters alone; the 1982–83 registrations were the next route open to it.",
+"text": "The Court of Appeal records that BP Pension Trust's 1974 County Court action, in which she pleaded that BP's claim was barred, \"has never been finally heard\" (record). Working hypothesis: BP held no fresh order from 1974, so after 31 Oct 1974 its position rested on the licence letters alone; the 1982–83 registrations were the next route open to it.",
 "rests": [
 "EV-0080",
 "EV-0049",
@@ -37,7 +37,7 @@ export const INTERP_THEORIES = {
 "I-03": {
 "theme": "The 1962 → 1974 → 1983 sequence",
 "kind": "Theory",
-"text": "On 17–19 Sep 1974 BP Pension Trust obtained leave to enforce the 1962 order \"as successors in title to Western Ground Rents\", on two days' notice, while its own action against her was part-heard. The WGR → BP Pension Trust conveyance is not on either HM Land Registry first-registration file. Our reading: succession to the 1962 order was asserted in court without the conveyance being produced.",
+"text": "On 17–19 Sep 1974 BP Pension Trust obtained leave to enforce the 1962 order \"as successors in title to Western Ground Rents\", on two days' notice, while its own action against her was part-heard. The WGR → BP Pension Trust conveyance is not on either HM Land Registry first-registration file. Working hypothesis: succession to the 1962 order was asserted in court without the conveyance being produced.",
 "rests": [
 "EV-0041",
 "EV-0043",
@@ -65,7 +65,7 @@ export const INTERP_THEORIES = {
 "W-01": {
 "theme": "Why 1983",
 "kind": "Inference",
-"text": "BP waited for her death before suing, in its own words. A BP spokesman quoted in the 1988 press cutting \"Chainsaw farmer vows to fight on\" (our working note places it in the South Wales Echo of 29 Apr 1988; the catalogue records the newspaper as not yet identified) gave her ill health as the reason she lived there rent-free, and added: \"When Mrs Buckler died in 1983 it became clear her son was not going to leave … in May 1984 we started court proceedings.\" BP's own letter of 31 Oct 1974 had promised that \"no proceedings will be commenced until you personally no longer live there\". Our reading: her death, not any new fact about title, released BP to sue.",
+"text": "Two records bear on the timing of the 1984 action. BP's letter of 31 Oct 1974 promised that \"no proceedings will be commenced until you personally no longer live there\" (EV-0050). A BP spokesman quoted in the 1988 press cutting \"Chainsaw farmer vows to fight on\" (EV-0089; our working note places it in the South Wales Echo of 29 Apr 1988; the catalogue records the newspaper as not yet identified) gave her ill health as the reason she lived there rent-free, and added: \"When Mrs Buckler died in 1983 it became clear her son was not going to leave … in May 1984 we started court proceedings.\" Working hypothesis: her death, rather than any new fact about title, set the time of the 1984 action. W-02 sets out the reading that the same timing simply kept the 1974 promise.",
 "rests": [
 "EV-0089",
 "EV-0050",
@@ -74,7 +74,7 @@ export const INTERP_THEORIES = {
 ],
 "confirm": "BP's internal file for 1983–84 (BP Archive request, reply due by 16 Nov 2026) recording a decision to wait for her death; identification of the newspaper and full page for the cutting.",
 "refute": "Evidence that BP planned or began proceedings against her during her lifetime, or that the 1984 writ had a different documented trigger.",
-"status": "Open (our main answer to \"why 1983\")"
+"status": "Open (the main working hypothesis on \"why 1983\")"
 },
 "W-02": {
 "theme": "Why 1983",
@@ -92,7 +92,7 @@ export const INTERP_THEORIES = {
 "W-03": {
 "theme": "Why 1983",
 "kind": "Inference",
-"text": "The farmhouse title was applied for on 23 Feb 1983, while she was alive and in occupation, and examined after her death (26 Mar 1983 in family records; \"March 1983\" in the judgment). HM Land Registry's 30 Jul 2026 schedule lists a D23 \"inside exam\" form with a Linklaters letter of 8 Apr 1983, correspondence of 12 Apr 1983, and Linklaters/Registry letters of 12 May 1983. The register edition carries the application date, 23 Feb 1983 (record). Our reading: whatever the Registry asked about occupation was answered after the occupier had died, while the finished title speaks from a date when she was alive. The content of the three letters is not yet read.",
+"text": "The farmhouse title was applied for on 23 Feb 1983, while she was alive and in occupation, and examined after her death (26 Mar 1983 in family records; \"March 1983\" in the judgment). HM Land Registry's 30 Jul 2026 schedule lists a D23 \"inside exam\" form with a Linklaters letter of 8 Apr 1983, correspondence of 12 Apr 1983, and Linklaters/Registry letters of 12 May 1983. The register edition carries the application date, 23 Feb 1983 (record). Working hypothesis: whatever the Registry asked about occupation was answered after the occupier had died, while the finished title speaks from a date when she was alive. The content of the three letters is not yet read.",
 "rests": [
 "EV-0063",
 "EV-0066",
@@ -109,7 +109,7 @@ export const INTERP_THEORIES = {
 "W-04": {
 "theme": "Why 1983",
 "kind": "Inference",
-"text": "The 30 Nov 1982 first-registration application for the fields was required by law, not chosen: the Vale had been an area of compulsory first registration since 1 Dec 1975, and LRA 1925 s.123 gave two months from the 19 Nov 1982 BP Pension Trust → BP Properties conveyance (record). Our reading: the only voluntary step in 1982–83 was the farmhouse application of 23 Feb 1983 on Form 1C (Co.). This cuts against any reading that 30 Nov 1982 was itself a chosen moment.",
+"text": "The 30 Nov 1982 first-registration application for the fields was required by law, not chosen: the Vale had been an area of compulsory first registration since 1 Dec 1975, and LRA 1925 s.123 gave two months from the 19 Nov 1982 BP Pension Trust → BP Properties conveyance (record). Working hypothesis: the only voluntary step in 1982–83 was the farmhouse application of 23 Feb 1983 on Form 1C (Co.). This cuts against any reading that 30 Nov 1982 was itself a chosen moment.",
 "rests": [
 "EV-0059",
 "EV-0265",
@@ -172,9 +172,9 @@ export const INTERP_THEORIES = {
 "status": "Discarded"
 },
 "P-01": {
-"theme": "Three synthetic Parcel A versions",
+"theme": "Three versions of Parcel A",
 "kind": "Theory",
-"text": "Our reading (the family's frame): three \"synthetic\" versions of Parcel A, the house parcel, were created without the occupier as a party — A1, the Forest of Cardiff woodland title WA735527 (1994); A2, BP Properties' farmhouse title WA240304 (1983); A3, the village green VG41 registered by Glamorgan County Council (1970). Each turned land the family regarded as theirs into a registered or statutory parcel held by someone else.",
+"text": "Working hypothesis (the family's frame): three versions of Parcel A, the house parcel, which the family calls \"synthetic\", were created without the occupier as a party — A1, the Forest of Cardiff woodland title WA735527 (1994); A2, BP Properties' farmhouse title WA240304 (1983); A3, the village green VG41 registered by Glamorgan County Council (1970). Each turned land the family regarded as theirs into a registered or statutory parcel held by someone else.",
 "rests": [
 "EV-0136",
 "EV-0166",
@@ -189,7 +189,7 @@ export const INTERP_THEORIES = {
 "status": "Open (family hypothesis)"
 },
 "P-02": {
-"theme": "Three synthetic Parcel A versions",
+"theme": "Three versions of Parcel A",
 "kind": "Counter-reading",
 "text": "Cuts against A3: on the certified VG41 map the green is a small roadside wedge in front of the church, and objection No 314 was in the land section (whether the land is a green), not the ownership section. The \"1970 synthetic Parcel A\" reading is weak on the map read so far.",
 "rests": [
@@ -202,7 +202,7 @@ export const INTERP_THEORIES = {
 "status": "Weakened"
 },
 "P-03": {
-"theme": "Three synthetic Parcel A versions",
+"theme": "Three versions of Parcel A",
 "kind": "Counter-reading",
 "text": "Cuts against A1 as a separate act: the woodland title came through BP's own chain (the 23 May 1975 conveyance passed the farmhouse plot and other land, including woodland north-east of Leckwith Road; BP's retained land in 1989; Forest of Cardiff from 25 Nov 1994). On this record A1 is a continuation of A2, not an independent creation.",
 "rests": [
@@ -219,7 +219,7 @@ export const INTERP_THEORIES = {
 "D-01": {
 "theme": "The 1924 drain agreement lead",
 "kind": "Inference",
-"text": "The 15 May 1924 Bute–J. P. S. Corbett drain agreement is entered on the woodland title WA735527 as the only charge not limited to a plan colour, so it is registered against the whole title, including land that came through the 1975 conveyance; it no longer appears on the residual farm title WA231076 (record, register views). Glamorgan Archives DSA/12/4232 records a sale \"Lord Bute to Miss O.S. Corbett\" of a plot opposite O.S. 60, with correspondence of 6–22 Mar 1924, two months earlier. Our reading: Bute was still dealing with this land as owner in 1924. That the May drain serves the March plot is an inference, not shown; O.S. 60 is a field on the south-east edge of the village, not the farmhouse plot (O.S. 36).",
+"text": "The 15 May 1924 Bute–J. P. S. Corbett drain agreement is entered on the woodland title WA735527 as the only charge not limited to a plan colour, so it is registered against the whole title, including land that came through the 1975 conveyance; it no longer appears on the residual farm title WA231076 (record, register views). Glamorgan Archives DSA/12/4232 records a sale \"Lord Bute to Miss O.S. Corbett\" of a plot opposite O.S. 60, with correspondence of 6–22 Mar 1924, two months earlier. Working hypothesis: Bute was still dealing with this land as owner in 1924. That the May drain serves the March plot is an inference, not shown; O.S. 60 is a field on the south-east edge of the village, not the farmhouse plot (O.S. 36).",
 "rests": [
 "EV-0015",
 "EV-0169",
@@ -246,7 +246,7 @@ export const INTERP_THEORIES = {
 "S-01": {
 "theme": "The Intercontinental sale motive",
 "kind": "Inference",
-"text": "Our reading: a clean registered title made the land saleable for development. The 23 May 1975 conveyance reserved 80-year rights to build roads and sewers across the farmhouse plot \"to serve any development of the Retained Land\" (record). In Dec 1986 BP Properties granted a charge to Intercontinental Land & Development Co Ltd; in Oct 1988 the BP Pension Fund sold about 1,300 acres in South Wales to Intercontinental Land & Development (Cardiff) Ltd for £29,375,400 after a tender (record, press and company filings). Nothing yet ties the 1982–83 filings to that sale.",
+"text": "Records on the land's later use, set side by side. The 23 May 1975 conveyance reserved 80-year rights to build roads and sewers across the farmhouse plot \"to serve any development of the Retained Land\" (EV-0052). In Dec 1986 BP Properties granted a charge to Intercontinental Land & Development Co Ltd (EV-0251); S-02 records it as a commercial relationship, not a dealing with Llandough. In Oct 1988 the BP Pension Fund sold about 1,300 acres in South Wales to Intercontinental Land & Development (Cardiff) Ltd for £29,375,400 after a tender (EV-0093, EV-0270, record, press and company filings). Working hypothesis: a registered title made the land easier to sell for development. Nothing read so far ties the 1982–83 filings to that sale, and S-02 sets out why a pre-arranged sale was discarded.",
 "rests": [
 "EV-0052",
 "EV-0093",
@@ -275,7 +275,7 @@ export const INTERP_THEORIES = {
 "L-01": {
 "theme": "The 1974 licence letters",
 "kind": "Theory",
-"text": "Ground R1: the Court of Appeal answered the \"wrong company\" argument only from the letters' own words that BP Properties Ltd \"had agreed to buy\". Completion came on 23 May 1975, and HM Land Registry's schedule lists a plan to the sale dated 23 Feb 1975, almost four months after the letters. Our reading: if no binding agreement existed on 31 Oct 1974, BP Properties had nothing to licence.",
+"text": "Ground R1: the Court of Appeal answered the \"wrong company\" argument only from the letters' own words that BP Properties Ltd \"had agreed to buy\". Completion came on 23 May 1975, and HM Land Registry's schedule lists a plan to the sale dated 23 Feb 1975, almost four months after the letters. Working hypothesis: if no binding agreement existed on 31 Oct 1974, BP Properties had nothing to licence.",
 "rests": [
 "EV-0050",
 "EV-0052",
@@ -290,7 +290,7 @@ export const INTERP_THEORIES = {
 "L-02": {
 "theme": "The 1974 licence letters",
 "kind": "Theory",
-"text": "Ground R2: the decisive finding was that she never repudiated the letters (\"she did not, however, do that\"). Our reading of the family's account is that she rejected the permission offered. A letter from her or her solicitors to BP after 31 Oct 1974 rejecting the licence would meet the exact point the court said might have changed the result.",
+"text": "Ground R2: the decisive finding was that she never repudiated the letters (\"she did not, however, do that\"). The family's account, as read here, is that she rejected the permission offered. A letter from her or her solicitors to BP after 31 Oct 1974 rejecting the licence would meet the exact point the court said might have changed the result.",
 "rests": [
 "EV-0050",
 "EV-0049",
@@ -306,7 +306,7 @@ export const INTERP_THEORIES = {
 "L-03": {
 "theme": "The 1974 licence letters",
 "kind": "Theory",
-"text": "Ground R10: the letters gave the sale to BP Properties as \"the only way\" to \"safeguard your future occupation of Great House Farm\", yet the 23 May 1975 conveyance kept the rest of the farm as the Trust's \"Retained Land\" until 19 Nov 1982 and reserved 80-year road and sewer rights across the farmhouse plot for its development. Our reading: a gap between the stated purpose and the deed.",
+"text": "Ground R10: the letters gave the sale to BP Properties as \"the only way\" to \"safeguard your future occupation of Great House Farm\", yet the 23 May 1975 conveyance kept the rest of the farm as the Trust's \"Retained Land\" until 19 Nov 1982 and reserved 80-year road and sewer rights across the farmhouse plot for its development. Working hypothesis: a gap between the stated purpose and the deed.",
 "rests": [
 "EV-0050",
 "EV-0052",
@@ -364,7 +364,7 @@ export const INTERP_THEORIES = {
 "R-02": {
 "theme": "Title chain and registration",
 "kind": "Theory",
-"text": "Ground R3: the farmhouse was registered separately (WA240304, Form 1C by Linklaters & Paines, edition 23 Feb 1983) while BP's own 1974 action \"has never been finally heard\"; the court was told the whole farm had been registered in November 1982. Our reading: the farmhouse application, made with eight-plus years of admitted adverse possession behind her, is the point where the occupation and the unresolved action would have had to be declared.",
+"text": "Ground R3: the farmhouse was registered separately (WA240304, Form 1C by Linklaters & Paines, edition 23 Feb 1983) while BP's own 1974 action \"has never been finally heard\"; the court was told the whole farm had been registered in November 1982. Working hypothesis: the farmhouse application, made with eight-plus years of admitted adverse possession behind her, is the point where the occupation and the unresolved action would have had to be declared.",
 "rests": [
 "EV-0063",
 "EV-0065",
@@ -380,7 +380,7 @@ export const INTERP_THEORIES = {
 "R-03": {
 "theme": "Title chain and registration",
 "kind": "Inference",
-"text": "The 2 Feb 1987 amalgamation of WA240304 into WA231076 sets a dilemma on the 1983 class of title: either absolute in Feb 1983 (a London Gazette advertisement was required by the rules as printed, and none has been found), or possessory and later converted. Our reading: the class of title in 1983 is a test of how the application was handled. Not yet confirmed for 1987 practice.",
+"text": "The 2 Feb 1987 amalgamation of WA240304 into WA231076 sets a dilemma on the 1983 class of title: either absolute in Feb 1983 (a London Gazette advertisement was required by the rules as printed, and none has been found), or possessory and later converted. Working hypothesis: the class of title in 1983 is a test of how the application was handled. Not yet confirmed for 1987 practice.",
 "rests": [
 "EV-0078",
 "EV-0066",
@@ -431,7 +431,7 @@ export const INTERP_THEORIES = {
 "H-01": {
 "theme": "Demolition, archaeology and the green",
 "kind": "Theory",
-"text": "Ground R9: whether knowledge of buried remains under the farm (1,026 burials recorded in 1994) was held before the 1986–87 trial and kept from the court. The 1979–80 villa letters, the 1982 warning letter and the 1983 fire are on record. Our reading: such knowledge would bear on motive and on what the court was told, not on title itself.",
+"text": "Ground R9: whether knowledge of buried remains under the farm (1,026 burials recorded in 1994) was held before the 1986–87 trial and kept from the court. The 1979–80 villa letters, the 1982 warning letter and the 1983 fire are on record. Working hypothesis: such knowledge would bear on motive and on what the court was told, not on title itself.",
 "rests": [
 "EV-0054",
 "EV-0056",
@@ -448,7 +448,7 @@ export const INTERP_THEORIES = {
 "H-02": {
 "theme": "Demolition, archaeology and the green",
 "kind": "Theory",
-"text": "Ground R7: the 1988 demolition, the missing 1988 Cadw file and the official answers that files \"would have been destroyed\". Our reading: these raise questions about how the listing request was handled. Cuts against as a reopening ground: the events came after the 31 Jul 1987 judgment, so they cannot have caused it.",
+"text": "Ground R7: the 1988 demolition, the missing 1988 Cadw file and the official answers that files \"would have been destroyed\". Working hypothesis: these raise questions about how the listing request was handled. Cuts against as a reopening ground: the events came after the 31 Jul 1987 judgment, so they cannot have caused it.",
 "rests": [
 "EV-0081",
 "EV-0094",
@@ -465,7 +465,7 @@ export const INTERP_THEORIES = {
 "H-03": {
 "theme": "Demolition, archaeology and the green",
 "kind": "Theory",
-"text": "Ground R8: VG41 was registered in 1970 by Glamorgan County Council as registration authority; the same council's planning committee had heard her, reported as Mrs M. D. Buckler, on 19 Nov 1958 describe her family's land as \"wrongfully appropriated\". Our reading: a separate route on the green, not a ground to reopen the 1987 judgment.",
+"text": "Ground R8: VG41 was registered in 1970 by Glamorgan County Council as registration authority; the same council's planning committee had heard her, reported as Mrs M. D. Buckler, on 19 Nov 1958 describe her family's land as \"wrongfully appropriated\". Working hypothesis: a separate route on the green, not a ground to reopen the 1987 judgment.",
 "rests": [
 "EV-0044",
 "EV-0263",
