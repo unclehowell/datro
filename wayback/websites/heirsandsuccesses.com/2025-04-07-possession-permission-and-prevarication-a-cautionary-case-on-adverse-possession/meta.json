@@ -6,8 +6,8 @@
  "path": "/websites/heirsandsuccesses.com/2025-04-07-possession-permission-and-prevarication-a-cautionary-case-on-adverse-possession/",
  "latest": "/websites/heirsandsuccesses.com/2025-04-07-possession-permission-and-prevarication-a-cautionary-case-on-adverse-possession/latest.html",
  "first_captured": "2026-10-24T14:35:24Z",
- "last_captured": "2026-10-24T14:35:24Z",
- "current_version": "v1.0.0",
+ "last_captured": "2026-10-25T06:57:02Z",
+ "current_version": "v1.1.0",
  "versions": [
   {
    "version": "v1.0.0",
@@ -20,9 +20,22 @@
    "file": "v1.0.0.html",
    "screenshot": null,
    "from": "https://internetarchive.bucklerfamily.estate/20261024143524/heirsandsuccesses.com/2025/04/07/possession-permission-and-prevarication-a-cautionary-case-on-adverse-possession/"
+  },
+  {
+   "version": "v1.1.0",
+   "change": "text",
+   "captured_utc": "2026-10-25T06:57:02Z",
+   "capture_source": "live",
+   "mode": "html",
+   "text_sha256": "ea81c287c9110d37a996d3e14dcb5a6b530924d4c8989386eb394385e067c4dd",
+   "markup_sha256": "a8d253e2fbd6b184b74c62c8a6ff95aa06397eed04a4e806e66e29bfbe4d8cc6",
+   "file": "v1.1.0.html",
+   "screenshot": "screenshot-v1.1.0.jpg",
+   "published_utc": "2026-10-25T07:01:27Z"
   }
  ],
  "versioning": "first capture v1.0.0; readable-text change = minor; markup/layout-only change = patch; identical capture = no new version",
  "watch_status": "unchanged",
- "note": "Static copy for reference: scripts, forms, iframes, external styles and images removed; links off bucklerfamily.estate disabled (archived targets point to their Wayback copy)."
+ "note": "Static copy for reference: scripts, forms, iframes, external styles and images removed; links off bucklerfamily.estate disabled (archived targets point to their Wayback copy).",
+ "archive_status": "ok: captured from Tab's machine"
 }
