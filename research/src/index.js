@@ -3,6 +3,8 @@
  * Runs as a Cloudflare Worker with its own D1 database. It never writes upstream.
  */
 import { LANDING_CSS, LANDING_TITLE, LANDING_HTML, STATIC_PAGES, ADDENDA } from "./landing.js";
+// Interpretation layer (25 Oct 2026): our reading, rendered after the record text in its own section; the record is never altered. — Sion's Tab agent
+import { interpretationHtml } from "./interpretation.js";
 const SOURCE_SITE = "https://greathousefarmwiki.wordpress.com";
 // Drafts pipeline panel on the landing page (Hive promotion pyramid; data https://hive.bucklerfamily.estate/hive.json, CORS *). — Sion's Tab agent
 const HIVE_PIPELINE_HTML = '<div class="landing-block" style="padding-left:.6rem" data-hive-pipeline="full"><p><a href="https://hive.bucklerfamily.estate/">Drafts pipeline: open the Hive</a></p></div><script src="/hive-pipeline.js" defer></script>';
@@ -527,7 +529,7 @@ async function handleHtml(url, env) {
       '<h1>' + escapeHtml(title) + '</h1>' +
       '<p class="meta">' + escapeHtml(row.source_type) + ' · Updated ' + escapeHtml(row.modified_gmt || row.date_gmt || "date not supplied") +
       ' · <a href="' + escapeHtml(row.source_link || SOURCE_SITE) + '">Original source</a></p>' +
-      '<div class="content">' + content + '</div>' + readerDocs + '</article>' +
+      '<div class="content">' + content + '</div>' + interpretationHtml(path) + readerDocs + '</article>' +
       (path === "/" ? await browseIndex(env) : '<p class="back"><a href="/">Browse mirror index</a></p>');
     return html(htmlShell(title + " — " + (env.SITE_TITLE || "Research Mirror"), body, env));
   }
