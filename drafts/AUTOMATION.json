@@ -1,6 +1,6 @@
 {
   "schema": "hive_automation_catalog/v1",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "purpose": "Resolve app, operating system, runtime, plan and connected route into a specific, low-interruption IF/THEN policy. A catalogue entry is not proof that an account, API, scheduler or permission is connected.",
   "ruleGrammar": "IF device/OS AND AI app/agent AND runtime AND event THEN action ELSE fallback; notify only on configured exception",
   "operatingSystems": [
@@ -237,6 +237,23 @@
       "troubleshooting": [
         "Verify API access, endpoint, quota and billing; do not infer them from the Grok app.",
         "If only the chat UI is available, classify it as interactive and do not fake a background run."
+      ]
+    },
+    {
+      "id": "spacexai",
+      "label": "SpaceXAI (owner-defined seat)",
+      "note": "Owner-defined agent/app label. Verify the exact app, API/CLI/MCP endpoint, authentication, scheduler and permissions. Do not assume it is a separate xAI product or that Grok credentials and scheduling apply.",
+      "executionClass": "custom-agent",
+      "recommendedRoute": "Use the exact owner-configured authorised runner/API/MCP route for this seat; otherwise mark INTERACTIVE / MANUAL.",
+      "tierChecks": [
+        "Confirm the actual product/seat identity before connecting.",
+        "Verify whether access is consumer chat, API, CLI, MCP or a separate orchestrator.",
+        "Check current free-tier, quota, billing and scheduler limits for the actual provider; do not infer them from the label."
+      ],
+      "troubleshooting": [
+        "Ask the owner for the exact product URL or runner only if it cannot be discovered from existing connected tools.",
+        "Verify that the existing HubSpot connection is authorised and the live Hive roster includes the seat.",
+        "If no runnable route exists, do not create a calendar reminder; record the precise blocker and continue other authorised work."
       ]
     },
     {
@@ -969,7 +986,7 @@
   ],
   "notificationRoutes": {
     "policy": "opt-in; exception-only; target only the browser/device profile that registered the app preference",
-    "foreground": "Opt-in local browser watcher polls the public Hive board while the automation page is open, compares the current turn to the visitor's locally stored exact seat label, and alerts once per stalled draft/version after 30 minutes. Notification click opens the selected provider's HTTPS URL.",
+    "foreground": "Opt-in local browser watcher polls /hive.json while the automation page is open, compares the current turn with the visitor's locally stored exact seat label, and alerts once per stalled draft/version after 30 minutes. Notification click opens the selected provider HTTPS URL.",
     "backgroundPush": "Not configured. Closing the page stops the local watcher. Background push requires a service worker, push subscription, server-side sender and user permission.",
     "privacy": "Do not place HubSpot content, email bodies, private contacts or sensitive task details in push payloads. Keep notification payloads minimal and link back to Hive.",
     "matching": "Local-only profile matching; exact normalized board turn/seat label. No account login and no cross-device identity. A stale turn is only a possible stall, not proof the agent is stopped.",
