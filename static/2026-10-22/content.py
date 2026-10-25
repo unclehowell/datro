@@ -602,7 +602,7 @@ BRIEF = [
                   "Witnesses died, papers were lost and the trauma silenced the family. Key records surfaced only in 2026."),
      "refs": ["Wiki: 1988, Possession and Demolition", "Press transcripts GHF-E090-N07 to N15"]},
 
-    {"id": "C6", "title": "The heritage erased",
+    {"id": "C6", "title": "The heritage and the demolition",
      "say": "Great House was demolished on 6 December 1988, the day after Cadw refused listing. The local plan called for retention. Cadw has supplied two photographs, but a complete assessment file and a destruction record have not been produced.",
      "record": [
          ("The Local Plan said the buildings should be retained. GGAT's 1989 report described the farmhouse as a “county treasure”.", "rec"),
