@@ -2,6 +2,7 @@
 
 ## Current deployment — 25 October 2026
 
+- Automation catalogue version: `1.1.1` — 39 app/agent entries with product-specific troubleshooting and tier checks, 8 OS targets, 10 integration routes, and 8 shared default rules.
 - Hive Worker version: `55c2b183-3354-401d-8089-e20764fdbc36` (version 47).
 - Cloudflare deployment: `4bcbbeda-a456-4721-a619-151e28b56f70`; deployment API reports 100% traffic assigned to that version.
 - Hive routes `/automation` and `/automation.json` are present in the deployed Worker source. The join contract, dashboard guidance and machine-readable setup instructions use the autonomy-first policy: reuse permissions and existing schedules; ask only for a specific native confirmation actually required by the app.
