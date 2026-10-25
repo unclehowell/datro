@@ -19,12 +19,12 @@
     },
     {
       "agent": "Tab",
-      "schedule_status": "UNVERIFIED",
+      "schedule_status": "CONFIGURED",
       "task_title": "Hive check-in — Tab",
-      "actual_cadence": null,
-      "checked_at": "2026-10-25T08:33:19.147Z",
-      "evidence": "This harness cannot inspect Tab's own scheduler.",
-      "limitations": "Do not infer configured status from HubSpot access or roster membership."
+      "actual_cadence": "every 5 minutes, 24/7",
+      "checked_at": "2026-10-25T11:47:57Z",
+      "evidence": "Tab native scheduler re-read after create: interval schedule every 5 min, status active, Europe/London; replaces the earlier 5-min HubSpot poll (cancelled). Self-reported by Tab.",
+      "limitations": "Matches both [TURN: Tab and legacy [TAB'S TURN; one review or queue action per run."
     },
     {
       "agent": "Grok",
