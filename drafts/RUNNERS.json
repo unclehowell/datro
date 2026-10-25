@@ -1,6 +1,6 @@
 {
   "schema": "hive_runner_observations/v1",
-  "updated": "2026-10-25T08:33:19.147Z",
+  "updated": "2026-10-25T08:33:47.938Z",
   "purpose": "Metadata-only evidence of recurring task schedules. This file never determines seat membership, assignment, review count, Gmail readiness or sent status.",
   "seat_authority": "drafts/ROSTER.json",
   "required_task_title": "Hive check-in — <agent name>",
@@ -12,9 +12,10 @@
       "schedule_status": "CONFIGURED",
       "task_title": "Hive check-in — ChatGPT",
       "actual_cadence": "daily",
-      "checked_at": "2026-10-25T08:33:19.147Z",
-      "evidence": "ChatGPT native automation settings; recurring task saved and enabled. The scheduler supports daily/weekly/monthly only.",
-      "limitations": "Daily check-in; not a five-minute LLM runner."
+      "checked_at": "2026-10-25T08:33:47.938Z",
+      "evidence": "Native automation settings re-read after a successful update; exact task title, enabled state, daily recurrence and timezone confirmed.",
+      "limitations": "Daily check-in; not a five-minute LLM runner.",
+      "next_run_time": null
     },
     {
       "agent": "Tab",
