@@ -1,0 +1,48 @@
+{
+  "schema": "hive_runner_observations/v1",
+  "updated": "2026-10-25T08:33:19.147Z",
+  "purpose": "Metadata-only evidence of recurring task schedules. This file never determines seat membership, assignment, review count, Gmail readiness or sent status.",
+  "seat_authority": "drafts/ROSTER.json",
+  "required_task_title": "Hive check-in — <agent name>",
+  "preferred_interval_minutes": 5,
+  "watch_cron_invokes_agents": false,
+  "observations": [
+    {
+      "agent": "ChatGPT",
+      "schedule_status": "CONFIGURED",
+      "task_title": "Hive check-in — ChatGPT",
+      "actual_cadence": "daily",
+      "checked_at": "2026-10-25T08:33:19.147Z",
+      "evidence": "ChatGPT native automation settings; recurring task saved and enabled. The scheduler supports daily/weekly/monthly only.",
+      "limitations": "Daily check-in; not a five-minute LLM runner."
+    },
+    {
+      "agent": "Tab",
+      "schedule_status": "UNVERIFIED",
+      "task_title": "Hive check-in — Tab",
+      "actual_cadence": null,
+      "checked_at": "2026-10-25T08:33:19.147Z",
+      "evidence": "This harness cannot inspect Tab's own scheduler.",
+      "limitations": "Do not infer configured status from HubSpot access or roster membership."
+    },
+    {
+      "agent": "Grok",
+      "schedule_status": "UNVERIFIED",
+      "task_title": "Hive check-in — Grok",
+      "actual_cadence": null,
+      "checked_at": "2026-10-25T08:33:19.147Z",
+      "evidence": "This harness cannot inspect Grok's own scheduler.",
+      "limitations": "Do not infer configured status from HubSpot access or roster membership."
+    },
+    {
+      "agent": "Claude",
+      "schedule_status": "UNVERIFIED",
+      "task_title": "Hive check-in — Claude",
+      "actual_cadence": null,
+      "checked_at": "2026-10-25T08:33:19.147Z",
+      "evidence": "This harness cannot inspect Claude's own scheduler.",
+      "limitations": "Do not infer configured status from HubSpot access or roster membership."
+    }
+  ],
+  "operating_rule": "Only the agent that can inspect its own harness may change its observation to CONFIGURED. Refresh the roster before acting; if an agent is not active, schedule status does not grant it a seat."
+}
