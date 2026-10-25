@@ -5,9 +5,9 @@
  "host": "discovery.nationalarchives.gov.uk",
  "name": "llandough-cogan-and-leckwith-p",
  "address": "https://wayback-html.bucklerfamily.estate/discovery.nationalarchives.gov.uk/llandough-cogan-and-leckwith-p.html",
- "current_version": "v1.1.0",
+ "current_version": "v1.0.0",
  "first_captured": "2026-10-24T14:43:09Z",
- "last_captured": "2026-10-25T06:56:21Z",
+ "last_captured": "2026-10-24T14:43:09Z",
  "versions": [
   {
    "version": "v1.0.0",
@@ -20,18 +20,6 @@
    "design": "kept",
    "assets": 99,
    "from": "https://internetarchive.bucklerfamily.estate/20261024144309/discovery.nationalarchives.gov.uk/details/r/C6866760/"
-  },
-  {
-   "version": "v1.1.0",
-   "hub_version": "v1.1.0",
-   "captured_utc": "2026-10-25T06:56:21Z",
-   "capture_source": "live",
-   "change": "text",
-   "file": "llandough-cogan-and-leckwith-p.v1.1.0.html",
-   "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-   "markup_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-   "design": "plain",
-   "from": null
   }
  ],
  "old_addresses": [
@@ -39,6 +27,15 @@
  ],
  "key": "discovery.nationalarchives.gov.uk/details/r/C6866760",
  "live_url": "https://discovery.nationalarchives.gov.uk/details/r/C6866760",
- "archive_status": "ok: captured from Tab's machine 2026-10-24",
- "last_checked": "2026-10-24T15:04:15Z"
+ "archive_status": "capture failed 2026-10-25 blocked (empty page returned to an automated read: 0 words, previous capture 481); v1.0.0 of 24 Oct stays current",
+ "last_checked": "2026-10-25T06:56:21Z",
+ "withdrawn": [
+  {
+   "version": "v1.1.0",
+   "captured_utc": "2026-10-25T06:56:21Z",
+   "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "reason": "withdrawn 2026-10-25: The National Archives returned an empty page body to the automated read at 06:56 UTC (0 words; the 24 Oct capture has 481). The site was blocking the read; nothing was removed from the page.",
+   "withdrawn_utc": "2026-10-25T07:26:08Z"
+  }
+ ]
 }
