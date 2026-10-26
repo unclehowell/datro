@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-26T10:56:39Z",
+  "updated": "2026-10-26T11:15:37Z",
   "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
   "drafts": [
     {
@@ -1692,6 +1692,13 @@
       "version": null,
       "agent": "Tab",
       "event": "HubSpot pitch purge on Sion's rule (WhatsApp 26 Oct 10:28-10:29 GMT): HubSpot email tasks = FOI/case + website pitches to incorporated companies not already in talks; nothing else. 29 HubSpot tasks archived; the 23 on this board moved from drafts[] to purged[]: 20 heritage orgs already emailed from team@ on 26 Oct (in talks), 3 unincorporated local history societies. Off-board: 3 society consent drafts, 1 personal email to a private individual, 1 press pitch to a newsdesk already in correspondence, 1 directory pitch to an unverifiable franchise operator. Kept: Gwili Railway and Pontypool & Blaenavon Railway (incorporated, not contacted) plus 10 Cedwyn directory pitches to verified companies. Metadata only."
+    },
+    {
+      "at": "2026-10-26T11:15:37Z",
+      "draft": null,
+      "version": null,
+      "agent": "Tab",
+      "event": "Correction to the 10:56 purge, on Sion's word (WhatsApp 26 Oct 11:11 GMT: HubSpot is his admin CRM for FOI, housekeeping and project management). The purge rule covers outbound sales/marketing pitches only. 2 off-board tasks restored in place in HubSpot, same ids, unchanged: 529340621042 (personal/accountancy email, est-group) and 529325414639 (press story offer, HOLD). Their Gmail drafts had already left Gmail on 20 Oct (drafts-zero clean-up; text kept in Tab's archive); not recreated. Off-board count now: 4 archived, not 6. Metadata only."
     }
   ],
   "context_note": "drafts[].context = metadata-only context pack (recipient body, archive thread link, dartboard link, stage, next deadline, markers, open questions, rungs spent); built by hive_context.py from the dartboard roadmap, the email archive API and qa kb.json. Hive protocol v3.1.0 context sweep.",
