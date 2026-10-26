@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-26T11:15:37Z",
+  "updated": "2026-10-26T11:23:45Z",
   "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
   "drafts": [
     {
@@ -1375,6 +1375,39 @@
       "gmail_draft_id": null,
       "sent_at": null,
       "no_repeat_until": null
+    },
+    {
+      "id": "os-foi-26-46-clarification-reply",
+      "record": "HubSpot task 532921259244",
+      "version": "v0.1.0",
+      "status": "TURN: Grok",
+      "turn": "Grok (seat 3; review exact v0.1.0; Claude authored v0.1.0)",
+      "open_issues": 5,
+      "last_change": "2026-10-26T11:18:43Z",
+      "last_agent": "Claude",
+      "rounds": 1,
+      "tier": "working",
+      "tier_label": "IN REVIEW",
+      "origin": "Claude first draft 26 Oct 11:18Z on Sion's WhatsApp instruction (26 Oct 11:11 GMT) after OS FOI sent a clarification request on FOI-26-46 (26 Oct 09:54Z); Tab added a guest-book evidence note as HubSpot note 532921092341 (on the OS contact and company records; notes cannot attach to tasks) answering open issues 1 (screenshot opened: correct site) and 4 (CF71 7LR is Llandough near Cowbridge, ~17 km west)",
+      "pct": 0,
+      "reviews": 0,
+      "distinct_agents": 0,
+      "agents": [],
+      "stage": "TURN",
+      "sent_version": null,
+      "seat_agreements_version": null,
+      "final_three_hat_version": null,
+      "attachments_verified_version": null,
+      "version_reviews": 0,
+      "version_distinct_agents": 0,
+      "version_agents": [],
+      "last_action_at": "2026-10-26T11:23:45Z",
+      "last_action_by": "Tab",
+      "queue_after": null,
+      "gmail_draft_id": null,
+      "sent_at": null,
+      "no_repeat_until": null,
+      "deadline_note": "OS acknowledged receipt 20 Oct, due 17 Nov 2026; OS paused the clock 26 Oct pending clarification (request closes if no reply within two months)"
     }
   ],
   "events": [
@@ -1699,6 +1732,13 @@
       "version": null,
       "agent": "Tab",
       "event": "Correction to the 10:56 purge, on Sion's word (WhatsApp 26 Oct 11:11 GMT: HubSpot is his admin CRM for FOI, housekeeping and project management). The purge rule covers outbound sales/marketing pitches only. 2 off-board tasks restored in place in HubSpot, same ids, unchanged: 529340621042 (personal/accountancy email, est-group) and 529325414639 (press story offer, HOLD). Their Gmail drafts had already left Gmail on 20 Oct (drafts-zero clean-up; text kept in Tab's archive); not recreated. Off-board count now: 4 archived, not 6. Metadata only."
+    },
+    {
+      "at": "2026-10-26T11:23:45Z",
+      "draft": "os-foi-26-46-clarification-reply",
+      "version": "v0.1.0",
+      "agent": "Tab",
+      "event": "Board entry added for Claude's new HubSpot task 532921259244 (Claude has no GitHub write access). Tab did not create a duplicate task and did not edit the task (Grok's turn). Tab evidence pack and a proposed full text sit in HubSpot note 532921092341 for the turn holder. Metadata only."
     }
   ],
   "context_note": "drafts[].context = metadata-only context pack (recipient body, archive thread link, dartboard link, stage, next deadline, markers, open questions, rungs spent); built by hive_context.py from the dartboard roadmap, the email archive API and qa kb.json. Hive protocol v3.1.0 context sweep.",
