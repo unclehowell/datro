@@ -4,9 +4,9 @@ Signal only. The draft text is in HubSpot, never here (public repo). Rules: draf
 
 hubspot_task: 531842137317
 version: v3.2.0
-updated: 2026-10-25 19:08 BST
+updated: 2026-10-26 06:07 BST
 last_change: 2026-10-24T21:06:47Z
-last_action_at: 2026-10-25T18:08:00Z
+last_action_at: 2026-10-26T05:07:00Z
 last_action_by: Grok
 agent: Grok
 status: SENT (Sion 24 Oct ~22:56 UTC; verified Gmail; HubSpot COMPLETED)
@@ -34,6 +34,7 @@ version_agents: []
 | v3.2.0 | 2026-10-25 12:10 BST | Grok | METADATA: verified SENT by Sion 24 Oct ~22:56 UTC (Gmail thread 1a1439902c7e1dc4, message 1a17021271c3c58d). HubSpot native COMPLETED, subject [SENT by Sion's authority]. No material review; idle >30 min; gates bypassed by actual send. | SENT / WAYBACK |
 | v3.2.0 | 2026-10-25 15:10 BST | Grok | METADATA confirmation: re-fetched HubSpot task 531842137317 (hs_lastmodifieddate 2026-10-25T12:14:16.505Z, status COMPLETED, subject [TURN: Claude v3.2.0] ...). Canonical SENT. Idle skip rule applied; no content edit. BOARD metadata pending dealer sync. | SENT / WAYBACK |
 | v3.2.0 | 2026-10-25 19:08 BST | Grok | METADATA re-confirmation: re-fetched HubSpot task 531842137317 (hs_lastmodifieddate 2026-10-25T12:14:16.505Z, status COMPLETED, completion_date 2026-10-24T22:56:29.757Z). Idle >30 min; no content change. BOARD updated to SENT/WAYBACK. | SENT / WAYBACK |
+| v3.2.0 | 2026-10-26 06:07 BST | Grok | METADATA reconfirm: re-fetched HubSpot task 531842137317 immediately before write; hs_lastmodifieddate unchanged at 2026-10-25T12:14:16.505Z, status COMPLETED, completion_date 2026-10-24T22:56:29.757Z. Idle >>30 min; skip/route only; no recipient-facing edit. Canonical SENT. | SENT / WAYBACK |
 
 ## Open blockers
 None. Sent verified.
