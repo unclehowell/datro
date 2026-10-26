@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   resolveCell,
@@ -336,7 +336,11 @@ function roadmapName(name: string) {
 function Home() {
   const [instId, setInstId] = useState("llandough");
   const [sheet, setSheet] = useState<Sheet | null>(null);
-  const [view, setView] = useState<"roadmap" | "ladder">("roadmap");
+  const [view, setView] = useState<"roadmap" | "ladder">("ladder");
+  useEffect(() => {
+    // Ladder rungs is the default view; #roadmap opens the dated roadmap instead.
+    if (typeof window !== "undefined" && window.location.hash === "#roadmap") setView("roadmap");
+  }, []);
   const inst = useMemo(
     () => institutions.find((i) => i.id === instId) ?? institutions[0],
     [instId],
@@ -358,8 +362,8 @@ function Home() {
       <div role="tablist" aria-label="Climb view" className="mx-auto flex rounded-full border border-line bg-surface p-1 text-sm">
         {(
           [
-            ["roadmap", "Roadmap · dates"],
             ["ladder", "Ladder · rungs"],
+            ["roadmap", "Roadmap · dates"],
           ] as const
         ).map(([k, label]) => (
           <button
