@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27T09:10:39Z",
+  "updated": "2026-10-27T09:10:26Z",
   "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
   "drafts": [
     {
@@ -294,7 +294,7 @@
       "status": "OTHER AGENT'S TURN",
       "turn": "any other agent (per HubSpot subject, read 2026-10-27T08:48Z)",
       "open_issues": null,
-      "last_change": "2026-10-24T04:33:14Z",
+      "last_change": "2026-10-27T09:00:07Z",
       "last_agent": "Tab",
       "rounds": 7,
       "context": {
@@ -363,7 +363,7 @@
       "status": "OTHER AGENT'S TURN",
       "turn": "any other agent (per HubSpot subject, read 2026-10-27T08:48Z)",
       "open_issues": null,
-      "last_change": "2026-10-24T04:32:38Z",
+      "last_change": "2026-10-27T09:00:03Z",
       "last_agent": "Tab",
       "rounds": 8,
       "context": {
@@ -1070,7 +1070,7 @@
       "status": "OTHER AGENT'S TURN",
       "turn": "any other agent (per HubSpot subject, read 2026-10-27T08:48Z)",
       "open_issues": null,
-      "last_change": "2026-10-24T04:30:53Z",
+      "last_change": "2026-10-27T09:00:15Z",
       "last_agent": "Tab",
       "rounds": 0,
       "tier": "working",
@@ -1384,7 +1384,7 @@
       "status": "TURN: Grok",
       "turn": "Grok (per HubSpot subject, read 2026-10-27T09:10Z)",
       "open_issues": 4,
-      "last_change": "2026-10-26T16:13:59Z",
+      "last_change": "2026-10-27T09:00:06Z",
       "last_agent": "Claude",
       "rounds": 1,
       "tier": "working",
@@ -1566,7 +1566,7 @@
       "status": "OTHER AGENT'S TURN",
       "turn": "any other agent (per HubSpot subject, read 2026-10-27T08:48Z)",
       "open_issues": null,
-      "last_change": "2026-10-27T03:47:11Z",
+      "last_change": "2026-10-27T09:00:04Z",
       "last_agent": null,
       "rounds": null,
       "tier_since": "2026-10-27T08:48:07Z",
@@ -1624,7 +1624,7 @@
       "status": "OTHER AGENT'S TURN",
       "turn": "any other agent (per HubSpot subject, read 2026-10-27T08:48Z)",
       "open_issues": null,
-      "last_change": "2026-10-27T03:47:04Z",
+      "last_change": "2026-10-27T09:00:06Z",
       "last_agent": null,
       "rounds": null,
       "tier_since": "2026-10-27T08:48:07Z",
@@ -2146,7 +2146,7 @@
       "status": "OTHER AGENT'S TURN",
       "turn": "any other agent (per HubSpot subject, read 2026-10-27T08:48Z)",
       "open_issues": null,
-      "last_change": "2026-10-27T01:55:52Z",
+      "last_change": "2026-10-27T09:00:22Z",
       "last_agent": null,
       "rounds": null,
       "tier_since": "2026-10-27T08:48:07Z",
@@ -2175,7 +2175,7 @@
       "status": "OTHER AGENT'S TURN",
       "turn": "any other agent (per HubSpot subject, read 2026-10-27T08:48Z)",
       "open_issues": null,
-      "last_change": "2026-10-27T01:55:48Z",
+      "last_change": "2026-10-27T09:00:11Z",
       "last_agent": null,
       "rounds": null,
       "tier_since": "2026-10-27T08:48:07Z",
@@ -2204,7 +2204,7 @@
       "status": "OTHER AGENT'S TURN",
       "turn": "any other agent (per HubSpot subject, read 2026-10-27T08:48Z)",
       "open_issues": null,
-      "last_change": "2026-10-27T01:59:30Z",
+      "last_change": "2026-10-27T09:00:05Z",
       "last_agent": null,
       "rounds": null,
       "tier_since": "2026-10-27T08:48:07Z",
@@ -2233,7 +2233,7 @@
       "status": "OTHER AGENT'S TURN",
       "turn": "any other agent (per HubSpot subject, read 2026-10-27T08:48Z)",
       "open_issues": null,
-      "last_change": "2026-10-27T01:06:12Z",
+      "last_change": "2026-10-27T09:00:30Z",
       "last_agent": null,
       "rounds": null,
       "tier_since": "2026-10-27T08:48:07Z",
@@ -2262,7 +2262,7 @@
       "status": "OTHER AGENT'S TURN",
       "turn": "any other agent (per HubSpot subject, read 2026-10-27T08:48Z)",
       "open_issues": null,
-      "last_change": "2026-10-27T01:04:48Z",
+      "last_change": "2026-10-27T09:00:26Z",
       "last_agent": null,
       "rounds": null,
       "tier_since": "2026-10-27T08:48:07Z",
@@ -2657,6 +2657,13 @@
       "version": "v0.1.0",
       "agent": "ChatGPT",
       "event": "Source-access skip/route only: ChatGPT could not access the complete original email thread or image attachment, did not edit recipient-facing text and did not count a review; routed to Grok (HubSpot+Gmail). Exact-version count remains 1 review by Grok."
+    },
+    {
+      "at": "2026-10-27T09:10:26Z",
+      "draft": null,
+      "version": null,
+      "agent": "board-sync",
+      "event": "Board sync from HubSpot subjects: hmlr-sar-wa735527-wa513690: edited; vale-eir-vg41: edited; swp-internal-review-1188-26: edited; os-foi-26-46-clarification-reply: edited; glamorgan-archives-033543: edited; glamorgan-archives-580974: edited; wdtk-welsh-government-427060: edited; wdtk-ministry-of-justice-205307: edited; companies-house-395627: edited; whatdotheyknow-659647: edited; south-wales-police-840059: edited. Metadata only."
     }
   ],
   "context_note": "drafts[].context = metadata-only context pack (recipient body, archive thread link, dartboard link, stage, next deadline, markers, open questions, rungs spent); built by hive_context.py from the dartboard roadmap, the email archive API and qa kb.json. Hive protocol v3.1.0 context sweep.",
@@ -2898,5 +2905,11 @@
       "last_agent": "Tab"
     }
   ],
-  "purged_note": "Drafts whose HubSpot task was archived under Sion's 26 Oct rule (HubSpot email tasks = FOI/case + website pitches to incorporated companies not already in talks; nothing else). Metadata only."
+  "purged_note": "Drafts whose HubSpot task was archived under Sion's 26 Oct rule (HubSpot email tasks = FOI/case + website pitches to incorporated companies not already in talks; nothing else). Metadata only.",
+  "synced_at": "2026-10-27T09:10:26Z",
+  "sync": {
+    "by": "first run of the hive-board-sync script, from Tab (the 4-hourly GitHub Actions run starts once its HubSpot token is set)",
+    "source": "HubSpot task subjects and hs_lastmodifieddate only (metadata)",
+    "last_changes": 11
+  }
 }
