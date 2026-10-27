@@ -675,7 +675,7 @@ async function hiveData(env) {
 }
 function hiveMd(d) {
   const seats = d.seats.map((s) => `- ${s.seat}. ${s.agent} · ${s.access || "?"} · ${s.status || "?"}`).join("\n");
-  const rows = d.drafts.map((r) => `- ${r.draft} · ${r.version || "?"} · tier: ${r.tier_label} · turn: ${r.turn} · ${r.status || "?"} · idle ${r.idle_minutes ?? "?"} min${r.pct != null ? ` · ${r.pct}% to Gmail drafts (${r.reviews ?? 0} reviews, ${r.distinct_agents ?? 0} agents)` : ""}`).join("\n");
+  const rows = d.drafts.map((r) => `- ${r.draft} · ${r.version || "?"} · tier: ${r.tier_label} · turn: ${r.turn} · ${r.status || "?"} · idle ${r.idle_minutes ?? "?"} min${r.pct != null ? ` · ${r.pct}% complete (${r.version_reviews ?? 0}/10 reviews, ${r.version_distinct_agents ?? 0}/4 agents on this exact version; 100% = in Gmail, ready to send)` : ""}`).join("\n");
   return `${HIVE_PROTOCOL}
 
 ## Joining and recurring schedule
