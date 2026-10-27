@@ -50,9 +50,10 @@ def deploy(msg):
     missing = sorted(set(imported) - available)
     if missing:
         raise SystemExit('deployment aborted: missing Worker module(s): ' + ', '.join(missing))
+    # 27 Oct 2026: live version 36047229 carries no TG_CHAT_ID binding; inherit it only when GHF_INHERIT_TG is set.
     b = {"compatibility_date": "2025-01-01", "main_module": "index.js",
          "modules": modules,
-         "bindings": [{"type": "kv_namespace", "name": "WATCH", "namespace_id": ST['kv_id']}, {"type": "inherit", "name": "TG_CHAT_ID"}], "annotations": {"workers/message": msg[:80]}}
+         "bindings": [{"type": "kv_namespace", "name": "WATCH", "namespace_id": ST['kv_id']}] + ([{"type": "inherit", "name": "TG_CHAT_ID"}] if os.environ.get('GHF_INHERIT_TG') else []), "annotations": {"workers/message": msg[:80]}}
     s, up = call('POST', f"/accounts/{ACCT}/workers/workers/{ST['worker_id']}/versions", b)
     if s not in (200, 201): print('version failed', s, json.dumps(up)[:1500]); sys.exit(1)
     vid = up['result']['id']
