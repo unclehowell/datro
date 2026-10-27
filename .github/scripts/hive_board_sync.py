@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Hive board auto-sync: refresh drafts/BOARD.json (branch drafts) from the HubSpot hive tasks, every 4 hours.
-Metadata only: reads each HubSpot task's subject and hs_lastmodifieddate, never a body; never writes to HubSpot.
+Metadata only: reads each HubSpot task's subject and hs_lastmodifieddate, and its body only to count changelog reviews of the
+current version for % complete (no body text is ever written); never writes to HubSpot.
 Refreshes status / version / whose turn / last change of every board draft, adds hive-format draft tasks created in
 the last SYNC_DAYS days that are missing from the board, stamps synced_at, validates the JSON before writing and
 refuses to touch a board file that does not parse. Writes only when something changed (the workflow commits only then).
@@ -40,7 +41,7 @@ def read(ids):
     ids = list(ids)
     for k in range(0, len(ids), BATCH):
         st, b = hs('POST', '/crm/v3/objects/tasks/batch/read',
-                   {'properties': ['hs_task_subject', 'hs_lastmodifieddate'], 'inputs': [{'id': i} for i in ids[k:k + BATCH]]})
+                   {'properties': ['hs_task_subject', 'hs_lastmodifieddate', 'hs_task_body'], 'inputs': [{'id': i} for i in ids[k:k + BATCH]]})
         for x in (b or {}).get('results', []):
             out[str(x['id'])] = x.get('properties') or {}
     return out
@@ -69,6 +70,87 @@ def scrub(s):
     s = re.sub(r'\+?\d[\d \-()]{8,}\d', '[number]', s)
     s = re.sub(r"\bSion(?: Hywel)?(?: Buckler)?('s)?\b", lambda m: 'the owner' + (m.group(1) or ''), s)
     return s
+
+
+# ---- hive % complete (shared by board_sync / hive_board_sync / pct.py; keep the copies identical) ----
+# pct = round(100*(0.7*min(reviews,10)/10 + 0.3*min(agents,4)/4)) on the exact current frozen version; capped at 95
+# until the task is READY (or later) AND its Gmail draft exists (gmail_draft_id), then 100; SENT rows are 100 and show "Sent".
+# reviews/agents are counted from the task's append-only changelog, read only; no body text is ever returned or stored.
+PCT_AGENTS = ['ChatGPT', 'Grok', 'Claude', 'SpaceXSI', 'Gemini', 'Tab']
+PCT_RULE = ("% complete = progress through the review gate on the exact current frozen version: "
+            "pct = round(100 x (0.7 x min(version_reviews,10)/10 + 0.3 x min(version_distinct_agents,4)/4)). "
+            "version_reviews / version_distinct_agents / version_agents are counted from each HubSpot task's signed changelog "
+            "(material reviews of the current version only; creation, skips, routes and restores are not reviews; a signed "
+            "version_reviews=N tally in the changelog is honoured when higher). Capped at 95 until the task is READY TO SEND or later "
+            "AND its Gmail draft exists (gmail_draft_id); then 100 = in the owner's Gmail, ready to send or schedule. SENT rows show Sent. "
+            "Historical reviews/distinct_agents/agents are informational only. Promotion gates beyond IN REVIEW (open_issues=0, "
+            "seat_agreements_version, final_three_hat_version, attachments_verified_version equal to version) still fail closed.")
+_PCT_EXCL = re.compile(r"not a review|no review counted|\bskip(?:ped)?\b|^\W*restore|imported from|baseline|proposal \(not a review\)|seat request", re.I)
+
+def _pct_canon(name):
+    n = (name or '').strip().lower()
+    if n.startswith("sion's tab"): return 'Tab'
+    for a in PCT_AGENTS:
+        if n.startswith(a.lower()): return a
+    return None
+
+def version_gate(body, version):
+    """(reviews, distinct_agents, agents) for `version` from the task body's changelog. Returns None if no changelog."""
+    b = body or ''; v = (version or '').strip()
+    if not v: return None
+    i = -1
+    for h in ('CHANGELOG / GUEST BOOK', 'CHANGELOG (append', 'CHANGELOG'):
+        i = b.find(h)
+        if i >= 0: break
+    if i < 0: return None
+    ve = re.escape(v) + r"(?![\d.])"
+    rev_re = re.compile(r"(?:review(?:ed|s|ing)?|agree(?:s|d)?)\W{0,3}(?:(?:of|on|with|the|exact|frozen|current|version)\W+|[A-Za-z][\w-]*\s+(?=v\d)){0,4}" + ve, re.I)
+    tally_re = re.compile(r"version_reviews\s*[=:]\s*(\d+)", re.I)
+    n = 0; agents = set(); tally = 0; tally_agents = set()
+    for line in b[i:].split('\n'):
+        s = line.strip()
+        if not s.startswith(('-', '[', '\u2022')) or '|' not in s or not re.search(ve, s): continue
+        fields = [f.strip() for f in s.lstrip('-\u2022 ').split('|')]
+        who = next((_pct_canon(f) for f in fields[1:4] if _pct_canon(f)), None)
+        if who is None and "sion's tab agent" in s.lower(): who = 'Tab'
+        if _PCT_EXCL.search(s): continue
+        first_is_v = bool(re.match(ve + r"\s*$", fields[0]))
+        no_change = re.search(r"no recipient-facing text change|changes?:\s*none|changed:\s*none|text unchanged|no text change", s, re.I)
+        if first_is_v:   # this entry wrote `version`: it reviews it only if it changed no recipient-facing text
+            is_rev = bool(no_change and (re.search(r"material review|independent review|\bAGREE\b", s, re.I) or rev_re.search(s)))
+        else:            # an entry on another version (or a bracket entry) reviews `version` if it says so, not as a "next" ask
+            is_rev = any(not re.search(r"(?:next|to (?:independently )?|will|should|pending|awaiting|asks?|request(?:ed)?)\W[^|]{0,40}$", s[max(0, m.start() - 45):m.start()], re.I)
+                         for m in rev_re.finditer(s))
+        if is_rev:
+            n += 1
+            if who: agents.add(who)
+        m = tally_re.search(s)
+        if m and int(m.group(1)) > tally:
+            tally = int(m.group(1))
+            am = re.search(r"version_agents\s*[=:]\s*\[([^\]]*)\]", s)
+            tally_agents = {a for a in (_pct_canon(x.strip(' "\'')) for x in (am.group(1).split(',') if am else [])) if a}
+    reviews = max(n, tally); ag = sorted(agents | tally_agents)
+    return reviews, len(ag), ag
+
+def pct_of(reviews, distinct, status, tier=None, gmail_draft_id=None):
+    st = (status or '').upper()
+    if st.startswith('SENT') or tier == 'sent_archived': return 100
+    raw = int(100 * (0.7 * min(reviews or 0, 10) / 10 + 0.3 * min(distinct or 0, 4) / 4) + 0.5)
+    ready = st.startswith(('READY', 'DEFINITELY', 'GMAIL DRAFT')) or tier in ('ready', 'definitely_ready', 'gmail_draft')
+    if ready and gmail_draft_id: return 100
+    return min(raw, 95)
+
+def apply_progress(d, body, now):
+    """Set version_reviews / version_distinct_agents / version_agents / pct / pct_at on one board row. True if changed."""
+    before = (d.get('version_reviews'), d.get('version_distinct_agents'), d.get('version_agents'), d.get('pct'))
+    g = version_gate(body, d.get('version'))
+    r, a, ag = g if g else (0, 0, [])
+    d['version_reviews'], d['version_distinct_agents'], d['version_agents'] = r, a, ag
+    d['pct'] = pct_of(r, a, d.get('status'), d.get('tier'), d.get('gmail_draft_id'))
+    changed = before != (r, a, ag, d['pct'])
+    if changed or not d.get('pct_at'): d['pct_at'] = now
+    return changed
+# ---- end hive % complete ----
 
 
 def parse(subj):
@@ -111,6 +193,10 @@ def sync(board, now):
             d['last_change'] = lm
             if before == (d['status'], d['version']): changed.append(f"{d.get('id')}: edited")
         if before != (d['status'], d['version']): changed.append(f"{d.get('id')}: {before[0]} {before[1]} -> {d['status']} {d['version']}")
+        if p.get('hs_task_body') and apply_progress(d, p.get('hs_task_body'), now):   # body read for counting only; never stored
+            changed.append(f"{d.get('id')}: {d['pct']}% ({d['version_reviews']} reviews, {d['version_distinct_agents']} agents on {d.get('version')})")
+    if board.get('pct_rule') != PCT_RULE:
+        board['pct_rule'] = PCT_RULE; changed.append('pct rule')
     rec_new = recent(DAYS)
     new = {i: p for i, p in rec_new.items() if HIVE.match(p.get('hs_task_subject') or '') and i not in on and i not in purged
            and 'CEDWYN MOVIE' not in (p.get('hs_task_subject') or '')}
@@ -146,7 +232,7 @@ def main():
         print(json.dumps({'status': 'unchanged', 'drafts': n0})); return
     board['updated'] = now
     board['synced_at'] = now
-    board['sync'] = {'by': 'GitHub Actions workflow hive-board-sync (cron 0 */4 * * *)', 'source': 'HubSpot task subjects and hs_lastmodifieddate only (metadata)', 'last_changes': len(changed)}
+    board['sync'] = {'by': 'GitHub Actions workflow hive-board-sync (cron 0 */4 * * *)', 'source': 'HubSpot task subjects and hs_lastmodifieddate (metadata); changelog review counts for % complete (no body text stored)', 'last_changes': len(changed)}
     board.setdefault('events', []).append({'at': now, 'draft': None, 'version': None, 'agent': 'board-sync',
         'event': 'Board sync from HubSpot subjects: ' + scrub('; '.join(changed))[:900] + '. Metadata only.'})
     txt = json.dumps(board, ensure_ascii=False, indent=2) + '\n'
