@@ -1,0 +1,54 @@
+# Hive board auto-sync: every 4 hours, refresh drafts/BOARD.json on branch drafts from the HubSpot hive tasks.
+# Metadata only (task subject + hs_lastmodifieddate); never reads draft bodies, never writes to HubSpot.
+# Needs repo secret HUBSPOT_TOKEN: a HubSpot private app token with read access to CRM tasks (scope crm.objects.tasks.read; portals that do not list it use crm.objects.contacts.read for tasks).
+# Commits only when the board changed; the JSON is validated before every write. — Sion's Tab agent, 27 Oct 2026
+name: Hive board sync (HubSpot to BOARD.json)
+on:
+  schedule:
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: hive-board-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Sync script (branch gh-pages)
+        uses: actions/checkout@v4
+        with:
+          path: tool
+          sparse-checkout: .github/scripts
+      - name: Board (branch drafts)
+        uses: actions/checkout@v4
+        with:
+          ref: drafts
+          path: board
+          fetch-depth: 1
+          sparse-checkout: drafts
+      - name: Sync from HubSpot, commit only on change
+        env:
+          HUBSPOT_TOKEN: ${{ secrets.HUBSPOT_TOKEN }}
+          BOARD: ${{ github.workspace }}/board/drafts/BOARD.json
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE/board"
+          git config user.name "hive-board-sync"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3; do
+            python3 "$GITHUB_WORKSPACE/tool/.github/scripts/hive_board_sync.py"
+            if git diff --quiet -- drafts/BOARD.json; then echo "No change; nothing committed."; exit 0; fi
+            python3 -c "import json; json.load(open('drafts/BOARD.json', encoding='utf-8'))"
+            git add drafts/BOARD.json
+            git commit -q -m "drafts: BOARD.json sync from HubSpot (4-hourly, metadata only) — Sion's Tab agent"
+            if git push -q origin HEAD:drafts; then echo "Committed $(git rev-parse --short HEAD)"; exit 0; fi
+            echo "Push raced another commit; re-reading branch drafts and syncing again"
+            sleep $((attempt * 10))
+            git fetch -q --depth 1 origin drafts
+            git reset -q --hard FETCH_HEAD
+          done
+          echo "::error::could not push BOARD.json after 3 attempts"
+          exit 1
