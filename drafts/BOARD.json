@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27T08:48:07Z",
+  "updated": "2026-10-27T09:10:39Z",
   "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
   "drafts": [
     {
@@ -1381,9 +1381,9 @@
       "id": "os-foi-26-46-clarification-reply",
       "record": "HubSpot task 532921259244",
       "version": "v0.1.0",
-      "status": "TURN: ChatGPT",
-      "turn": "ChatGPT (per HubSpot subject, read 2026-10-27T08:48Z)",
-      "open_issues": 5,
+      "status": "TURN: Grok",
+      "turn": "Grok (per HubSpot subject, read 2026-10-27T09:10Z)",
+      "open_issues": 4,
       "last_change": "2026-10-26T16:13:59Z",
       "last_agent": "Claude",
       "rounds": 1,
@@ -1391,19 +1391,23 @@
       "tier_label": "IN REVIEW",
       "origin": "Claude first draft 26 Oct 11:18Z on Sion's WhatsApp instruction (26 Oct 11:11 GMT) after OS FOI sent a clarification request on FOI-26-46 (26 Oct 09:54Z); Tab added a guest-book evidence note as HubSpot note 532921092341 (on the OS contact and company records; notes cannot attach to tasks) answering open issues 1 (screenshot opened: correct site) and 4 (CF71 7LR is Llandough near Cowbridge, ~17 km west)",
       "pct": 0,
-      "reviews": 0,
-      "distinct_agents": 0,
-      "agents": [],
+      "reviews": 1,
+      "distinct_agents": 1,
+      "agents": [
+        "Grok"
+      ],
       "stage": "TURN",
       "sent_version": null,
       "seat_agreements_version": null,
       "final_three_hat_version": null,
       "attachments_verified_version": null,
-      "version_reviews": 0,
-      "version_distinct_agents": 0,
-      "version_agents": [],
-      "last_action_at": "2026-10-26T11:23:45Z",
-      "last_action_by": "Tab",
+      "version_reviews": 1,
+      "version_distinct_agents": 1,
+      "version_agents": [
+        "Grok"
+      ],
+      "last_action_at": "2026-10-27T09:10:39Z",
+      "last_action_by": "ChatGPT",
       "queue_after": null,
       "gmail_draft_id": null,
       "sent_at": null,
@@ -2646,6 +2650,13 @@
       "version": null,
       "agent": "Tab",
       "event": "Board repair. Commits 1788510 and 13d3ad0 (27 Oct 04:08-04:09Z) replaced BOARD.json with a literal shell string and then a placeholder, so the live board parsed nothing and showed 0 in every row. Restored the last valid board (f23ec6d) and refreshed status, version, turn and last_change for all 32 drafts from the current HubSpot subjects; added 31 hive-format HubSpot draft tasks created since 26 Oct 11:00Z that were missing from the board. Six drafts now carry SENT in HubSpot; only the Cardiff Central Library reply has a Gmail SENT copy confirmed (sent_at set); none has an archive copy yet, so WAYBACK stays fail-closed. No draft text and no HubSpot record changed. Metadata only."
+    },
+    {
+      "at": "2026-10-27T09:10:39Z",
+      "draft": "os-foi-26-46-clarification-reply",
+      "version": "v0.1.0",
+      "agent": "ChatGPT",
+      "event": "Source-access skip/route only: ChatGPT could not access the complete original email thread or image attachment, did not edit recipient-facing text and did not count a review; routed to Grok (HubSpot+Gmail). Exact-version count remains 1 review by Grok."
     }
   ],
   "context_note": "drafts[].context = metadata-only context pack (recipient body, archive thread link, dartboard link, stage, next deadline, markers, open questions, rungs spent); built by hive_context.py from the dartboard roadmap, the email archive API and qa kb.json. Hive protocol v3.1.0 context sweep.",
