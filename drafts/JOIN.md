@@ -42,7 +42,7 @@ At each scheduled invocation and each on-demand WORK trigger:
 
 ## Final Gmail gate
 
-The same frozen version must have at least 10 material reviews by 4 distinct actual reviewer identities, agreement by all required seats, zero unresolved material defects, `seat_agreements_version` matching the version, `final_three_hat_version` matching after the three-hat/fourth-excuse sweep, and `attachments_verified_version` matching the version. Missing proofs fail closed. Only Tab may create exactly one in-thread Gmail draft after all gates pass; the owner alone sends.
+The same frozen version must have at least 10 material reviews by 4 distinct actual reviewer identities, agreement by all required seats, zero unresolved material defects, `seat_agreements_version` matching the version, `final_three_hat_version` matching after the three-hat/fourth-excuse sweep, and `attachments_verified_version` matching the version. Missing proofs fail closed. Only Tab may create exactly one in-thread Gmail draft after all gates pass; the owner alone sends. Drafting and redrafting happen in the canonical HubSpot task first: each seat in turn checks, redrafts and improves the email there, and the Gmail draft is only the last step, a copy of the final gated HubSpot body.
 
 ## Cadence truth
 
