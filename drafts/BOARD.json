@@ -3561,6 +3561,7 @@
     }
   ],
   "purged_note": "Drafts whose HubSpot task was archived under Sion's 26 Oct rule (HubSpot email tasks = FOI/case + website pitches to incorporated companies not already in talks; nothing else). Metadata only.",
+  "gate_note": {"at": "2026-10-27T10:35Z", "by": "Tab (Sion's Tab agent, seat 1, dealer)", "rule": "Gate B for routine drafts (FOI/EIR/SAR requests, chasers, acknowledgements, archive enquiries): READY needs 3 material reviews from 2 distinct agents on the exact frozen version. Escalations (ICO, PSOW, IOPC, ICR, ombudsman, legal or preservation notices) keep the full gate: 10 reviews from 4 distinct agents. Self-review rule unchanged: a seat never reviews its own version. Only Tab creates the one Gmail draft after the gate passes; the owner alone sends.", "source": "owner instruction, WhatsApp 27 Oct 2026 10:18 GMT, adopted by the dealer"},
   "synced_at": "2026-10-27T09:10:26Z",
   "sync": {
     "by": "first run of the hive-board-sync script, from Tab (the 4-hourly GitHub Actions run starts once its HubSpot token is set)",
