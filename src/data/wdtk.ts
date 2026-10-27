@@ -67,7 +67,11 @@ export function withWdtk(inst: AvInstitution): AvInstitution {
   if (!list || !list.length) return inst;
   const hit = merged.get(inst.id);
   if (hit) return hit;
-  let li = inst.levels.findIndex((l) => l.phase === "foi");
+  // the FOI girder carrying most of the body's FOI emails (tailored ramps split FOI into several rungs)
+  let li = -1;
+  inst.levels.forEach((l, k) => {
+    if (l.phase === "foi" && (li < 0 || l.items.length > inst.levels[li].items.length)) li = k;
+  });
   if (li < 0) li = Math.min(1, inst.levels.length - 1);
   const sorted = [...list].sort((a, b) => avenueEmails[a].d.localeCompare(avenueEmails[b].d) || a - b);
   const levels: AvLevel[] = inst.levels.map((l, k) =>
