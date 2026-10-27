@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27T18:16:01Z",
+  "updated": "2026-10-27T22:11:31Z",
   "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
   "drafts": [
     {
@@ -433,7 +433,7 @@
       "status": "TURN: Claude",
       "turn": "Claude (per HubSpot subject, updated 2026-10-27T16:13Z by Grok skip/route)",
       "open_issues": null,
-      "last_change": "2026-10-27T16:13:37Z",
+      "last_change": "2026-10-27T20:24:27Z",
       "last_agent": "Tab",
       "rounds": 5,
       "context": {
@@ -829,10 +829,10 @@
       "id": "hmcts-cardiff-1955-1962-records",
       "record": "HubSpot task 532683919557",
       "version": "v0.3.0",
-      "status": "TURN: Grok",
-      "turn": "Grok (per HubSpot subject, read 2026-10-27T10:31Z)",
+      "status": "TURN: Claude",
+      "turn": "Claude (per HubSpot subject, read 2026-10-27T22:11Z)",
       "open_issues": 2,
-      "last_change": "2026-10-27T10:18:36Z",
+      "last_change": "2026-10-27T22:10:17Z",
       "last_agent": "Tab",
       "rounds": 3,
       "context": {
@@ -1258,10 +1258,10 @@
       "id": "hmlr-eir-20-oct",
       "record": "HubSpot task 532712913118",
       "version": "v0.1.0",
-      "status": "TURN: Grok",
-      "turn": "Grok (per HubSpot subject, read 2026-10-27T10:31Z)",
+      "status": "TURN: Claude",
+      "turn": "Claude (per HubSpot subject, read 2026-10-27T22:11Z)",
       "open_issues": null,
-      "last_change": "2026-10-27T10:29:21Z",
+      "last_change": "2026-10-27T19:09:00Z",
       "last_agent": "Tab",
       "rounds": 0,
       "tier": "working",
@@ -2974,6 +2974,35 @@
       },
       "pct": 0,
       "pct_at": "2026-10-27T13:52:10Z"
+    },
+    {
+      "id": "wales-west-utilities-640900",
+      "record": "HubSpot task 534509640900",
+      "version": "v0.1.0",
+      "status": "OTHER AGENT'S TURN",
+      "turn": "any other agent (per HubSpot subject, read 2026-10-27T22:11Z)",
+      "open_issues": null,
+      "last_change": "2026-10-27T20:26:00Z",
+      "last_agent": null,
+      "rounds": null,
+      "tier_since": "2026-10-27T22:11:31Z",
+      "tier": "working",
+      "tier_label": "IN REVIEW",
+      "gmail_draft_id": null,
+      "sent_at": null,
+      "archive_url": null,
+      "version_reviews": null,
+      "version_distinct_agents": null,
+      "version_agents": [],
+      "seat_agreements_version": null,
+      "final_three_hat_version": null,
+      "attachments_verified_version": null,
+      "sent_version": null,
+      "context": {
+        "body": "Wales & West Utilities",
+        "as_of": "2026-10-27T22:11:31Z",
+        "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
+      }
     }
   ],
   "events": [
@@ -3375,6 +3404,13 @@
       "version": null,
       "agent": "Tab",
       "event": "Board sync from HubSpot subjects: tna-hmlr-commons-records-1960-72: TURN: Grok v0.4.1 -> TURN: Claude v0.4.1; vale-of-glamorgan-council-complaints-162656: TURN: Grok v0.1.0 -> TURN: Claude v0.1.0. Metadata only."
+    },
+    {
+      "at": "2026-10-27T22:11:31Z",
+      "draft": null,
+      "version": null,
+      "agent": "Tab",
+      "event": "Board sync from HubSpot subjects: hmcts-cardiff-1955-1962-records: TURN: Grok v0.3.0 -> TURN: Claude v0.3.0; hmlr-eir-20-oct: TURN: Grok v0.1.0 -> TURN: Claude v0.1.0; added wales-west-utilities-640900. Metadata only."
     }
   ],
   "context_note": "drafts[].context = metadata-only context pack (recipient body, archive thread link, dartboard link, stage, next deadline, markers, open questions, rungs spent); built by hive_context.py from the dartboard roadmap, the email archive API and qa kb.json. Hive protocol v3.1.0 context sweep.",
@@ -3623,10 +3659,10 @@
     "rule": "Gate B for routine drafts (FOI/EIR/SAR requests, chasers, acknowledgements, archive enquiries): READY needs 3 material reviews from 2 distinct agents on the exact frozen version. Escalations (ICO, PSOW, IOPC, ICR, ombudsman, legal or preservation notices) keep the full gate: 10 reviews from 4 distinct agents. Self-review rule unchanged: a seat never reviews its own version. Only Tab creates the one Gmail draft after the gate passes; the owner alone sends.",
     "source": "owner instruction, WhatsApp 27 Oct 2026 10:18 GMT, adopted by the dealer"
   },
-  "synced_at": "2026-10-27T18:16:01Z",
+  "synced_at": "2026-10-27T22:11:31Z",
   "sync": {
     "by": "Sion's Tab agent (board_sync.py, 4-hourly schedule; replaces the Actions run)",
     "source": "HubSpot task subjects and hs_lastmodifieddate (metadata); changelog review counts for % complete (no body text stored)",
-    "last_changes": 2
+    "last_changes": 3
   }
 }
