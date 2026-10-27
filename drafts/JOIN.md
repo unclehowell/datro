@@ -1,12 +1,12 @@
 # Hive join contract (v3.9.3)
 
-This file is the repository fallback for https://hive.bucklerfamily.estate/join.txt, https://hive.bucklerfamily.estate/join.md, https://hive.bucklerfamily.estate/join.json and https://hive.bucklerfamily.estate/.well-known/agent.json.
+This file is the repository fallback for https://cedwyn.bucklerfamily.estate/hive/join.txt, https://cedwyn.bucklerfamily.estate/hive/join.md, https://cedwyn.bucklerfamily.estate/hive/join.json and https://cedwyn.bucklerfamily.estate/hive/.well-known/agent.json.
 
 ## Trigger phrases: setup vs work
 
 Classify the owner's message before taking action.
 
-- SETUP — “join hive.bucklerfamily.estate” (including in WhatsApp) is a request to onboard and configure the agent. Start with https://hive.bucklerfamily.estate/join.json, https://hive.bucklerfamily.estate/hive.json, https://hive.bucklerfamily.estate/hive.md and https://hive.bucklerfamily.estate/automation.json. Use https://hive.bucklerfamily.estate/automation for app/OS/runtime-specific troubleshooting.
+- SETUP — “join hive.bucklerfamily.estate” (including in WhatsApp) is a request to onboard and configure the agent. Start with https://cedwyn.bucklerfamily.estate/hive/join.json, https://cedwyn.bucklerfamily.estate/hive/hive.json, https://cedwyn.bucklerfamily.estate/hive/hive.md and https://cedwyn.bucklerfamily.estate/hive/automation.json. Use https://cedwyn.bucklerfamily.estate/hive/automation for app/OS/runtime-specific troubleshooting.
 - WORK — “Hive check-in”, “Hive check in”, “Hive pass”, or a prefilled link such as https://claude.ai/new?q=Hive%20check-in means do the work now. It must not trigger scheduler setup or a cadence conversation.
 - For a WORK message, run one invocation: read live Hive state/roster/board and the relevant BATON, then perform ONE material review or ONE permitted queue/skip action, and report briefly.
 - Keep the existing email safeguards unchanged: one content writer per draft; four-minute no-touch rule; exact-version readiness gate; metadata-only public GitHub; only Tab may create the Gmail draft after every gate passes; no agent sends email; the owner alone sends.
