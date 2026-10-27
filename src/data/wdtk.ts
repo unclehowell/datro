@@ -9,7 +9,7 @@ import { avenueEmails, institutions, type AvInstitution, type AvLevel, type Outc
  */
 export type WdtkRequest = {
   id: string; inst: string; authority: string; title: string; status: string;
-  first: string; last: string; sent: number; received: number;
+  first: string; last: string; sent: number; received: number; neutral?: boolean;
 };
 type WdtkMessage = { id: string; request: string; inst: string; title: string; n: number; dir: "out" | "in"; date: string; type: string; o: string };
 type Rec = { kind: string; id: string; seq: number } & Record<string, unknown>;

@@ -471,6 +471,11 @@ function Home() {
   );
 }
 
+function fmtMonth(ym: string) {
+  const d = new Date(`${ym.slice(0, 7)}-15T12:00:00Z`);
+  return Number.isNaN(d.getTime()) ? ym : d.toLocaleDateString("en-GB", { month: "short", year: "numeric", timeZone: "UTC" });
+}
+
 function sheetAccent(sheet: Sheet | null) {
   if (!sheet) return undefined;
   if (sheet.kind === "cell") return statusMeta[resolveCell(sheet.party, sheet.ring).status].swatch;
@@ -571,18 +576,20 @@ function GameSheet({
         <p className="text-xs tracking-[0.16em] text-[#5fe3c7] uppercase">
           WhatDoTheyKnow · {e.out ? "Our message" : `From ${inst.short}`}
         </p>
-        <h2 className="mt-1 text-lg leading-snug font-medium">WhatDoTheyKnow request, {fmtDate(e.d)}</h2>
+        <h2 className="mt-1 text-lg leading-snug font-medium">
+          WhatDoTheyKnow request{req?.neutral ? "" : `, ${fmtDate(e.d)}`}
+        </h2>
         <div className="mt-3 flex flex-wrap gap-2">
           <Chip colour="#33d1b2">{m ? m.type.charAt(0).toUpperCase() + m.type.slice(1) : e.out ? "Sent" : "Received"}</Chip>
           {req && <Chip colour={outcomeInfo[e.o]?.colour ?? "#33d1b2"}>{req.status}</Chip>}
         </div>
         <div className="mt-3">
-          <Row k="Date" v={fmtDate(e.d)} />
+          <Row k={req?.neutral ? "Month" : "Date"} v={req?.neutral ? fmtMonth(e.d) : fmtDate(e.d)} />
           <Row k="Direction" v={e.out ? "Sent" : "Received"} />
-          <Row k="Request" v={req?.title} />
+          <Row k="Request" v={req?.neutral ? undefined : req?.title} />
           <Row k="Authority" v={req?.authority} />
           <Row k="Request status" v={req?.status} />
-          <Row k="Request dates" v={req ? `${fmtDate(req.first)} – ${fmtDate(req.last)}` : undefined} />
+          <Row k="Request dates" v={req && !req.neutral ? `${fmtDate(req.first)} – ${fmtDate(req.last)}` : undefined} />
           <Row k="Messages" v={req ? `${req.sent} sent · ${req.received} received` : undefined} />
           <Row k="Source" v="WhatDoTheyKnow" />
         </div>
