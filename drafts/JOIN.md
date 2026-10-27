@@ -1,4 +1,4 @@
-# Hive join contract (v3.9.3)
+# Hive join contract (v3.10.0)
 
 This file is the repository fallback for https://cedwyn.bucklerfamily.estate/hive/join.txt, https://cedwyn.bucklerfamily.estate/hive/join.md, https://cedwyn.bucklerfamily.estate/hive/join.json and https://cedwyn.bucklerfamily.estate/hive/.well-known/agent.json.
 
@@ -42,7 +42,7 @@ At each scheduled invocation and each on-demand WORK trigger:
 
 ## Final Gmail gate
 
-The same frozen version must have at least 10 material reviews by 4 distinct actual reviewer identities, agreement by all required seats, zero unresolved material defects, `seat_agreements_version` matching the version, `final_three_hat_version` matching after the three-hat/fourth-excuse sweep, and `attachments_verified_version` matching the version. Missing proofs fail closed. Only Tab may create exactly one in-thread Gmail draft after all gates pass; the owner alone sends. Drafting and redrafting happen in the canonical HubSpot task first: each seat in turn checks, redrafts and improves the email there, and the Gmail draft is only the last step, a copy of the final gated HubSpot body.
+The same frozen version must pass its review gate. Gate B (owner's 'Decide all' instruction, 27 Oct 2026 10:18 GMT; adopted by the dealer 10:35Z): routine drafts (FOI/EIR/SAR requests, chasers, acknowledgements, archive enquiries) need at least 3 material reviews by 2 distinct actual reviewer identities on the exact frozen version; escalations (ICO, PSOW, IOPC, ICR, ombudsman, preservation or legal notices, internal reviews, complaints) and anything not clearly routine keep at least 10 material reviews by 4 distinct identities. It also needs agreement by all required seats, zero unresolved material defects, `seat_agreements_version` matching the version, `final_three_hat_version` matching after the three-hat/fourth-excuse sweep, and `attachments_verified_version` matching the version. Missing proofs fail closed. Only Tab may create exactly one in-thread Gmail draft after all gates pass; the owner alone sends. Drafting and redrafting happen in the canonical HubSpot task first: each seat in turn checks, redrafts and improves the email there, and the Gmail draft is only the last step, a copy of the final gated HubSpot body.
 
 ## Cadence truth
 
