@@ -34,9 +34,13 @@ import {
   FIRE_A,
   HEART,
   PAL,
+  WDTK_CLOUD,
+  WDTK_PAL,
   type GameHit,
   type SlidePick,
 } from "@/components/avenue-game";
+import { dartboardVideo, wdtkMessage, wdtkRequestOf } from "@/data/wdtk";
+import { VideoDock } from "@/components/video-dock";
 import { cloudNumber, corr } from "@/data/correspondence";
 import { Chip, DetailModal, Row, fmtDate } from "@/components/detail-modal";
 import { ArtifactsSheet, CorrSheet, CourtTiles, OptionsSheet, courtInstitutions } from "@/components/court-ready";
@@ -434,6 +438,8 @@ function Home() {
 
       <ArchaeologyTimeline />
 
+      {dartboardVideo && <VideoDock src={dartboardVideo.src} poster={dartboardVideo.poster} title={dartboardVideo.title} />}
+
       <DetailModal
         open={sheet !== null}
         onClose={close}
@@ -551,6 +557,38 @@ function GameSheet({
   open?: (hit: GameHit) => void;
 }) {
   if (hit.kind === "diamond") return <DiamondSheet index={hit.index} inst={inst} />;
+  if (hit.kind === "email" && avenueEmails[hit.index].w) {
+    const e = avenueEmails[hit.index];
+    const m = wdtkMessage(hit.index);
+    const req = wdtkRequestOf(hit.index);
+    return (
+      <div>
+        {slide && (
+          <p className="mb-1 text-[11px] text-faint">
+            {slide.pos} of {slide.total} on this climb
+          </p>
+        )}
+        <p className="text-xs tracking-[0.16em] text-[#5fe3c7] uppercase">
+          WhatDoTheyKnow · {e.out ? "Our message" : `From ${inst.short}`}
+        </p>
+        <h2 className="mt-1 text-lg leading-snug font-medium">WhatDoTheyKnow request, {fmtDate(e.d)}</h2>
+        <div className="mt-3 flex flex-wrap gap-2">
+          <Chip colour="#33d1b2">{m ? m.type.charAt(0).toUpperCase() + m.type.slice(1) : e.out ? "Sent" : "Received"}</Chip>
+          {req && <Chip colour={outcomeInfo[e.o]?.colour ?? "#33d1b2"}>{req.status}</Chip>}
+        </div>
+        <div className="mt-3">
+          <Row k="Date" v={fmtDate(e.d)} />
+          <Row k="Direction" v={e.out ? "Sent" : "Received"} />
+          <Row k="Request" v={req?.title} />
+          <Row k="Authority" v={req?.authority} />
+          <Row k="Request status" v={req?.status} />
+          <Row k="Request dates" v={req ? `${fmtDate(req.first)} – ${fmtDate(req.last)}` : undefined} />
+          <Row k="Messages" v={req ? `${req.sent} sent · ${req.received} received` : undefined} />
+          <Row k="Source" v="WhatDoTheyKnow" />
+        </div>
+      </div>
+    );
+  }
   if (hit.kind === "email") {
     const e = avenueEmails[hit.index];
     const ph = phases[hit.level.phase];
@@ -817,10 +855,10 @@ function PhoneIcon({ size = 16 }: { size?: number }) {
     </svg>
   );
 }
-function CloudIcon({ n, size = 18 }: { n: number; size?: number }) {
+function CloudIcon({ n, size = 18, fill = "#eef3ff" }: { n: number; size?: number; fill?: string }) {
   return (
     <svg width={size} height={size * 0.8} viewBox="0 0 20 16" aria-hidden="true">
-      <path d="M5 14h10.5a3.5 3.5 0 0 0 .4-7 5 5 0 0 0-9.6-.9A3.9 3.9 0 0 0 5 14z" fill="#eef3ff" />
+      <path d="M5 14h10.5a3.5 3.5 0 0 0 .4-7 5 5 0 0 0-9.6-.9A3.9 3.9 0 0 0 5 14z" fill={fill} />
       <text x="10.4" y="12" textAnchor="middle" fontSize="7.5" fontWeight="800" fill="#1b2440">
         {n}
       </text>
@@ -862,6 +900,10 @@ function ExchangeLegend({ onMore }: { onMore: () => void }) {
       </span>
       <span className="inline-flex items-center gap-1 opacity-40">
         <FireIcon /> generic
+      </span>
+      <span className="inline-flex items-center gap-1 text-[#5fe3c7]">
+        <CloudIcon n={1} fill={WDTK_CLOUD} />
+        <GridSvg grid={FIRE_A} pal={WDTK_PAL} size={16} /> WhatDoTheyKnow
       </span>
     </button>
   );

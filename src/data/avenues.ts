@@ -91,7 +91,7 @@ export type AvDoc = { label: string; url: string; wayback?: string };
  * from = sender by role; sum = one-line summary; q = verbatim key quotes from the letter; pdf = the letter itself
  * (public copy, personal contact details redacted) on this site and in the Wayback archive.
  */
-export type AvEmail = { d: string; out: boolean; o: Outcome; s: string; r: string[]; t: string; i: string[]; from?: string; sum?: string; q?: string[]; pdf?: AvDoc[] };
+export type AvEmail = { d: string; out: boolean; o: Outcome; s: string; r: string[]; t: string; i: string[]; from?: string; sum?: string; q?: string[]; pdf?: AvDoc[]; w?: string };
 export type AvLevel = {
   phase: PhaseKey;
   applicable: boolean;

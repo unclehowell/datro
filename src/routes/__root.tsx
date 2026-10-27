@@ -42,6 +42,7 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "alternate", type: "application/vnd.sqlite3", href: "/_db/section.sqlite" },
       { rel: "stylesheet", href: appCss },
       {
         rel: "stylesheet",

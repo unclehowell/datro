@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   avenueEmails,
   institutions,
@@ -10,6 +10,7 @@ import {
   type AvLevel,
 } from "@/data/avenues";
 import { cloudNumber, corr, type CorrKind } from "@/data/correspondence";
+import { hasWdtk, isWdtk, wdtkNumber, withWdtk } from "@/data/wdtk";
 
 /**
  * "Avenues": an original arcade-style climb. The ape at the top is the institution and every
@@ -51,6 +52,8 @@ type Slot = {
   heart: boolean;
   generic: boolean;
   num: number;
+  /** A WhatDoTheyKnow exchange (teal, in its own lane above the emails). */
+  w: boolean;
   /** Diamond on the girder line under this reply (an attachment came with it). */
   dx?: number;
   dy?: number;
@@ -67,6 +70,7 @@ type Barrel = {
   colour: string;
   fee: boolean;
   heart: boolean;
+  w: boolean;
 };
 
 function girder(level: number, n: number) {
@@ -111,16 +115,22 @@ function layoutSlots(inst: AvInstitution) {
     if (!level.items.length) return;
     const g = girder(li, n);
     const usable = g.right - g.left - 44;
+    const mail = level.items.filter((i) => !isWdtk(i));
+    const wd = level.items.filter((i) => isWdtk(i));
+    const rowsFor = (per: number) => Math.ceil(mail.length / per) + Math.ceil(wd.length / per);
     let s = 12;
     let perRow = Math.max(1, Math.floor(usable / (s + 3)));
-    let rows = Math.ceil(level.items.length / perRow);
+    let rows = rowsFor(perRow);
     while (rows > 3 && s > 5) {
       s -= 1;
       perRow = Math.max(1, Math.floor(usable / (s + 3)));
-      rows = Math.ceil(level.items.length / perRow);
+      rows = rowsFor(perRow);
     }
-    level.items.forEach((index, k) => {
-      const row = Math.floor(k / perRow);
+    const mailRows = Math.ceil(mail.length / perRow);
+    [...mail, ...wd].forEach((index, k0) => {
+      const w = isWdtk(index);
+      const k = w ? k0 - mail.length : k0;
+      const row = Math.floor(k / perRow) + (w ? mailRows : 0);
       const col = k % perRow;
       const x = g.left + 38 + col * (s + 3) + s / 2;
       const y = g.yAt(x) - 5 - row * (s + 2) - s / 2;
@@ -137,7 +147,8 @@ function layoutSlots(inst: AvInstitution) {
         kind: c.kind,
         heart: c.heart,
         generic: c.generic,
-        num: c.kind === "his" ? cloudNumber(inst, index) : 0,
+        num: c.kind === "his" ? (w ? wdtkNumber(inst.id, index) : cloudNumber(inst, index)) : 0,
+        w,
       };
       if (c.kind !== "his" && c.diamonds.length) {
         slot.dx = x;
@@ -275,6 +286,15 @@ export const HEART = [
   "...rrr...",
   "....r....",
 ];
+/** WhatDoTheyKnow exchanges: the same cloud and fire, in teal. */
+export const WDTK_CLOUD = "#8ff0dc";
+export const WDTK_PAL: Record<string, string> = {
+  r: "#0f8f7a",
+  o: "#21b89c",
+  y: "#5fe3c7",
+  w: "#dffff6",
+  h: "#21b89c",
+};
 export const PAL: Record<string, string> = {
   r: "#e0301e",
   o: "#ff7a1a",
@@ -313,9 +333,10 @@ function drawFire(
   size: number,
   t: number,
   seed: number,
+  pal: Record<string, string> = PAL,
 ) {
   const frame = Math.floor((t + seed * 137) / 180) % 2 === 0 ? FIRE_A : FIRE_B;
-  drawGrid(ctx, frame, x, y - size * 0.08, size * 1.15, PAL);
+  drawGrid(ctx, frame, x, y - size * 0.08, size * 1.15, pal);
 }
 
 function drawPhoneGlyph(
@@ -380,9 +401,16 @@ function drawPhone(ctx: CanvasRenderingContext2D, x: number, y: number, size: nu
   drawPhoneGlyph(ctx, x, y, size, "#e0301e");
 }
 
-function drawCloud(ctx: CanvasRenderingContext2D, x: number, y: number, size: number, num: number) {
+function drawCloud(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+  num: number,
+  fill = "#eef3ff",
+) {
   const r = size * 0.32;
-  ctx.fillStyle = "#eef3ff";
+  ctx.fillStyle = fill;
   ctx.beginPath();
   ctx.arc(x - r * 0.9, y + r * 0.25, r * 0.85, 0, Math.PI * 2);
   ctx.arc(x, y - r * 0.2, r * 1.05, 0, Math.PI * 2);
@@ -424,7 +452,9 @@ function drawExchange(ctx: CanvasRenderingContext2D, s: Slot, t: number, bob: bo
   if (s.generic) ctx.globalAlpha = 0.4;
   if (s.kind === "his") {
     const dy = bob ? Math.sin(t / 700 + s.index) * 0.8 : 0;
-    drawCloud(ctx, s.x, s.y + dy, s.s + 2, s.num);
+    drawCloud(ctx, s.x, s.y + dy, s.s + 2, s.num, s.w ? WDTK_CLOUD : undefined);
+  } else if (s.w) {
+    drawFire(ctx, s.x, s.y, s.s, t, s.index, WDTK_PAL);
   } else if (s.kind === "phone") {
     if (s.heart) drawHeart(ctx, s.x, s.y, s.s, t, "phone");
     else drawPhone(ctx, s.x, s.y, s.s);
@@ -697,10 +727,13 @@ export function AvenueGame({
   /** The slide-me man is over a log (or, with null, over none). `final` on release / key step. */
   onSlide: (pick: SlidePick | null, inst: AvInstitution, final: boolean) => void;
 }) {
-  const inst = useMemo(
+  const base = useMemo(
     () => institutions.find((i) => i.id === instId) ?? institutions[0],
     [instId],
   );
+  const wdtkAvail = hasWdtk(base.id);
+  const [wdtkOn, setWdtkOn] = useState(true);
+  const inst = useMemo(() => (wdtkOn && wdtkAvail ? withWdtk(base) : base), [base, wdtkOn, wdtkAvail]);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
   const stateRef = useRef<{ barrels: Barrel[]; slots: Slot[] }>({ barrels: [], slots: [] });
@@ -998,6 +1031,7 @@ export function AvenueGame({
           colour: outcomeInfo[avenueEmails[index].o].colour,
           fee: isFee(index),
           heart: corr(index).heart,
+          w: isWdtk(index),
         });
         throwAnim = 350;
         nextThrow = reduce ? 6000 : 2300 + Math.random() * 900;
@@ -1162,7 +1196,8 @@ export function AvenueGame({
       for (const s of st.slots) if (s.fee) drawFee(ctx, s.x, s.y - s.s / 2 - 3, 2);
       for (const b of st.barrels) {
         // thrown replies come down as fireballs (hearts when the reply was fully satisfactory)
-        if (b.heart) drawHeart(ctx, b.x, b.y, 11, now, "mail");
+        if (b.w) drawFire(ctx, b.x, b.y, 12, now, b.index, WDTK_PAL);
+        else if (b.heart) drawHeart(ctx, b.x, b.y, 11, now, "mail");
         else drawFire(ctx, b.x, b.y, 12, now, b.index);
         if (b.fee) drawFee(ctx, b.x, b.y - 9, 2);
       }
@@ -1284,6 +1319,32 @@ export function AvenueGame({
             </option>
           ))}
         </select>
+        <button
+          type="button"
+          onClick={() => wdtkAvail && setWdtkOn((v) => !v)}
+          disabled={!wdtkAvail}
+          aria-disabled={!wdtkAvail}
+          aria-pressed={wdtkAvail && wdtkOn}
+          aria-label="WhatDoTheyKnow"
+          data-wdtk={wdtkAvail ? (wdtkOn ? "on" : "off") : "none"}
+          className={`flex h-11 shrink-0 items-center gap-1.5 rounded-xl border px-2.5 text-xs font-semibold ${
+            !wdtkAvail
+              ? "cursor-not-allowed border-line bg-surface text-faint opacity-40"
+              : wdtkOn
+                ? "border-[#33d1b2] bg-[#33d1b2]/15 text-[#5fe3c7] shadow-[0_0_10px_rgba(51,209,178,0.55)]"
+                : "border-[#33d1b2]/60 bg-surface text-[#5fe3c7]"
+          }`}
+        >
+          <span
+            aria-hidden="true"
+            className={`relative inline-block h-4 w-7 rounded-full transition-colors ${wdtkAvail && wdtkOn ? "bg-[#33d1b2]" : "bg-line"}`}
+          >
+            <span
+              className={`absolute top-0.5 size-3 rounded-full bg-white transition-all ${wdtkAvail && wdtkOn ? "left-3.5" : "left-0.5"}`}
+            />
+          </span>
+          WDTK
+        </button>
         <button
           type="button"
           onClick={() => onHit({ kind: "boss" }, inst)}

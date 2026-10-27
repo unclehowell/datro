@@ -77,7 +77,7 @@ export function cloudNumber(inst: AvInstitution, index: number): number {
   let m = numbers.get(inst.id);
   if (!m) {
     const seen = new Set<number>();
-    for (const l of inst.levels) for (const i of l.items) if (corr(i).kind === "his") seen.add(i);
+    for (const l of inst.levels) for (const i of l.items) if (corr(i).kind === "his" && avenueEmails[i].w === undefined) seen.add(i);
     const list = [...seen].sort(
       (a, b) => avenueEmails[a].d.localeCompare(avenueEmails[b].d) || a - b,
     );
