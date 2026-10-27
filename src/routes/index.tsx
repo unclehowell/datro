@@ -883,6 +883,10 @@ function ExchangeLegend({ onMore }: { onMore: () => void }) {
       aria-label="What the icons mean"
       className="mt-2 flex w-full flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-xl border border-line bg-surface px-3 py-2 text-[11px] text-muted"
     >
+      <span className="inline-flex items-center gap-1 text-[#2bb89a]">
+        <CloudIcon n={1} fill={WDTK_CLOUD} />
+        <GridSvg grid={FIRE_A} pal={WDTK_PAL} size={16} /> WhatDoTheyKnow
+      </span>
       <span className="inline-flex items-center gap-1">
         <CloudIcon n={1} /> our email
       </span>
@@ -900,10 +904,6 @@ function ExchangeLegend({ onMore }: { onMore: () => void }) {
       </span>
       <span className="inline-flex items-center gap-1 opacity-40">
         <FireIcon /> generic
-      </span>
-      <span className="inline-flex items-center gap-1 text-[#5fe3c7]">
-        <CloudIcon n={1} fill={WDTK_CLOUD} />
-        <GridSvg grid={FIRE_A} pal={WDTK_PAL} size={16} /> WhatDoTheyKnow
       </span>
     </button>
   );

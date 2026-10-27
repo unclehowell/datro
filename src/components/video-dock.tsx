@@ -48,7 +48,7 @@ export function VideoDock({ src, poster, title }: { src: string; poster?: string
   return (
     <div
       data-video-dock="open"
-      className="fixed right-3 bottom-3 z-40 w-[148px] overflow-hidden rounded-xl border border-line bg-black shadow-[0_6px_24px_rgba(0,0,0,0.55)]"
+      className="fixed right-3 bottom-3 z-40 w-[132px] overflow-hidden rounded-xl border border-line bg-black shadow-[0_6px_24px_rgba(0,0,0,0.55)]"
     >
       <video
         ref={ref}
