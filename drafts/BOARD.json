@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27T10:31:09Z",
+  "updated": "2026-10-27T13:49:07Z",
   "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
   "drafts": [
     {
@@ -1490,7 +1490,7 @@
       "status": "TURN: Claude",
       "turn": "Claude (per HubSpot subject, read 2026-10-27T10:31Z)",
       "open_issues": null,
-      "last_change": "2026-10-27T10:24:40Z",
+      "last_change": "2026-10-27T11:35:36Z",
       "last_agent": null,
       "rounds": null,
       "tier_since": "2026-10-27T08:48:07Z",
@@ -1549,10 +1549,10 @@
       "id": "council-for-british-archaeology-buildings-archae-067466",
       "record": "HubSpot task 533517067466",
       "version": "v0.1.0",
-      "status": "TURN: Grok",
-      "turn": "Grok (per HubSpot subject, read 2026-10-27T10:31Z)",
+      "status": "TURN: Claude",
+      "turn": "Claude (per HubSpot subject, read 2026-10-27T13:49Z)",
       "open_issues": null,
-      "last_change": "2026-10-27T10:19:05Z",
+      "last_change": "2026-10-27T11:10:04Z",
       "last_agent": null,
       "rounds": null,
       "tier_since": "2026-10-27T08:48:07Z",
@@ -1580,10 +1580,10 @@
       "id": "glamorgan-archives-033543",
       "record": "HubSpot task 533311033543",
       "version": "v0.1.0",
-      "status": "TURN: Grok",
-      "turn": "Grok (per HubSpot subject, read 2026-10-27T10:31Z)",
+      "status": "TURN: Claude",
+      "turn": "Claude (per HubSpot subject, read 2026-10-27T13:49Z)",
       "open_issues": null,
-      "last_change": "2026-10-27T10:20:20Z",
+      "last_change": "2026-10-27T12:13:31Z",
       "last_agent": null,
       "rounds": null,
       "tier_since": "2026-10-27T08:48:07Z",
@@ -1800,7 +1800,7 @@
       "status": "TURN: ChatGPT",
       "turn": "ChatGPT (per HubSpot subject, read 2026-10-27T10:31Z)",
       "open_issues": null,
-      "last_change": "2026-10-27T10:23:54Z",
+      "last_change": "2026-10-27T11:37:23Z",
       "last_agent": null,
       "rounds": null,
       "tier_since": "2026-10-27T08:48:07Z",
@@ -2079,7 +2079,7 @@
       "status": "TURN: Grok",
       "turn": "Grok (per HubSpot subject, read 2026-10-27T10:31Z)",
       "open_issues": null,
-      "last_change": "2026-10-27T10:21:47Z",
+      "last_change": "2026-10-27T11:37:45Z",
       "last_agent": null,
       "rounds": null,
       "tier_since": "2026-10-27T08:48:07Z",
@@ -2939,6 +2939,35 @@
       },
       "pct": 0,
       "pct_at": "2026-10-27T10:09:35Z"
+    },
+    {
+      "id": "rcahmw-nmr-enquiries-610892",
+      "record": "HubSpot task 533818610892",
+      "version": "v0.1.0",
+      "status": "OTHER AGENT'S TURN",
+      "turn": "any other agent (per HubSpot subject, read 2026-10-27T13:49Z)",
+      "open_issues": null,
+      "last_change": "2026-10-27T11:54:34Z",
+      "last_agent": null,
+      "rounds": null,
+      "tier_since": "2026-10-27T13:49:07Z",
+      "tier": "working",
+      "tier_label": "IN REVIEW",
+      "gmail_draft_id": null,
+      "sent_at": null,
+      "archive_url": null,
+      "version_reviews": null,
+      "version_distinct_agents": null,
+      "version_agents": [],
+      "seat_agreements_version": null,
+      "final_three_hat_version": null,
+      "attachments_verified_version": null,
+      "sent_version": null,
+      "context": {
+        "body": "RCAHMW (NMR Enquiries)",
+        "as_of": "2026-10-27T13:49:07Z",
+        "note": "Board entry added from the HubSpot subject by board_sync.py; no context pack yet. Metadata only."
+      }
     }
   ],
   "events": [
@@ -3319,6 +3348,13 @@
       "version": null,
       "agent": "Tab",
       "event": "Board sync from HubSpot subjects: hmlr-lawyer-referral-sar-reply: TURN: Tab v0.3.0 -> TURN: ChatGPT v0.3.0; glamorgan-archives-vg41-catalogue: TURN: Tab v0.4.1 -> TURN: Grok v0.4.1; tna-hmlr-commons-records-1960-72: TURN: Tab v0.4.1 -> TURN: Grok v0.4.1; hmlr-customer-support-titles: TURN: Tab v0.6.1 -> TURN: ChatGPT v0.6.1; hmlr-wales-office-z084nqv: TURN: Tab v0.6.0 -> TURN: Claude v0.6.0; cardiff-eir-1961-deed: TURN: Tab v0.6.1 -> TURN: Claude v0.6.1; hmcts-cardiff-1955-1962-records: TURN: Tab v0.3.0 -> TURN: Grok v0.3.0; itv-foi-archive-footage: TURN: Tab v0.3.0 -> TURN: Claude v0.3.0; swp-internal-review-1188-26: TURN: Tab v0.1.0 -> TURN: ChatGPT v0.1.0; hmlr-sar-d260928: TURN: Tab v0.1.0 -> TURN: Claude v0.1.0; heneb-complaint-outcome: TURN: Tab v0.1.0 -> TURN: Grok v0.1.0; tna-internal-review-cas-347296: TURN: Tab v0.1.0 -> TURN: Claude v0.1.0; swp-foi-1264-26: TURN: Tab v0.1.0 -> TURN: ChatGPT v0.1.0; llandough-c. Metadata only."
+    },
+    {
+      "at": "2026-10-27T13:49:07Z",
+      "draft": null,
+      "version": null,
+      "agent": "Tab",
+      "event": "Board sync from HubSpot subjects: council-for-british-archaeology-buildings-archae-067466: TURN: Grok v0.1.0 -> TURN: Claude v0.1.0; glamorgan-archives-033543: TURN: Grok v0.1.0 -> TURN: Claude v0.1.0; added rcahmw-nmr-enquiries-610892. Metadata only."
     }
   ],
   "context_note": "drafts[].context = metadata-only context pack (recipient body, archive thread link, dartboard link, stage, next deadline, markers, open questions, rungs spent); built by hive_context.py from the dartboard roadmap, the email archive API and qa kb.json. Hive protocol v3.1.0 context sweep.",
@@ -3561,7 +3597,12 @@
     }
   ],
   "purged_note": "Drafts whose HubSpot task was archived under Sion's 26 Oct rule (HubSpot email tasks = FOI/case + website pitches to incorporated companies not already in talks; nothing else). Metadata only.",
-  "gate_note": {"at": "2026-10-27T10:35Z", "by": "Tab (Sion's Tab agent, seat 1, dealer)", "rule": "Gate B for routine drafts (FOI/EIR/SAR requests, chasers, acknowledgements, archive enquiries): READY needs 3 material reviews from 2 distinct agents on the exact frozen version. Escalations (ICO, PSOW, IOPC, ICR, ombudsman, legal or preservation notices) keep the full gate: 10 reviews from 4 distinct agents. Self-review rule unchanged: a seat never reviews its own version. Only Tab creates the one Gmail draft after the gate passes; the owner alone sends.", "source": "owner instruction, WhatsApp 27 Oct 2026 10:18 GMT, adopted by the dealer"},
+  "gate_note": {
+    "at": "2026-10-27T10:35Z",
+    "by": "Tab (Sion's Tab agent, seat 1, dealer)",
+    "rule": "Gate B for routine drafts (FOI/EIR/SAR requests, chasers, acknowledgements, archive enquiries): READY needs 3 material reviews from 2 distinct agents on the exact frozen version. Escalations (ICO, PSOW, IOPC, ICR, ombudsman, legal or preservation notices) keep the full gate: 10 reviews from 4 distinct agents. Self-review rule unchanged: a seat never reviews its own version. Only Tab creates the one Gmail draft after the gate passes; the owner alone sends.",
+    "source": "owner instruction, WhatsApp 27 Oct 2026 10:18 GMT, adopted by the dealer"
+  },
   "synced_at": "2026-10-27T09:10:26Z",
   "sync": {
     "by": "first run of the hive-board-sync script, from Tab (the 4-hourly GitHub Actions run starts once its HubSpot token is set)",
