@@ -4,9 +4,9 @@ Signal only. The draft text is in HubSpot, never here (public repo). Rules: draf
 
 hubspot_task: 531842137317
 version: v3.2.0
-updated: 2026-10-27 09:11 GMT
+updated: 2026-10-27 10:01 GMT
 last_change: 2026-10-24T21:06:47Z
-last_action_at: 2026-10-27T09:11:00Z
+last_action_at: 2026-10-27T10:01:00Z
 last_action_by: Grok
 agent: Grok
 status: SENT (Sion 24 Oct ~22:56 UTC; verified Gmail; HubSpot COMPLETED)
@@ -39,8 +39,9 @@ version_agents: []
 | v3.2.0 | 2026-10-27 06:07 GMT | Grok | METADATA reconfirm: re-fetched HubSpot task 531842137317 immediately before write; hs_lastmodifieddate 2026-10-26T09:00:14.190Z (unchanged), status COMPLETED, subject notes TURN: Claude v3.2.0. Idle >>30 min; skip/route only; no recipient-facing edit. Canonical SENT verified. Live BOARD/hive still show IN REVIEW (stale). | SENT / WAYBACK |
 | v3.2.0 | 2026-10-27 07:08 GMT | Grok | METADATA reconfirm: re-fetched HubSpot task 531842137317 immediately before any write; hs_lastmodifieddate 2026-10-26T09:00:14.190Z (unchanged), status COMPLETED, completion_date 2026-10-24T22:56:29.757Z. Body property currently set to literal shell placeholder "$(cat /tmp/new_body.txt)" (corruption noted, not fixed). Gmail confirms sent message 1a17021271c3c58d at ~22:56 UTC 24 Oct. Idle >>30 min; skip/route only; no recipient-facing edit. Canonical SENT. | SENT / WAYBACK |
 | v3.2.0 | 2026-10-27 09:11 GMT | Grok | METADATA reconfirm: re-fetched HubSpot task 531842137317 immediately before any write; hs_lastmodifieddate 2026-10-26T09:00:14.190Z (unchanged), status COMPLETED, completion_date 2026-10-24T22:56:29.757Z, subject [TURN: Claude v3.2.0] ... Grok review AGREE; Claude next. Body still literal "$(cat /tmp/new_body.txt)" placeholder (UNRESOLVED). Idle >>30 min; four-minute no-touch respected; skip/route only; no recipient-facing edit. Canonical SENT verified. Live BOARD/hive still stale (IN REVIEW / TURN: Grok). | SENT / WAYBACK |
+| v3.2.0 | 2026-10-27 10:01 GMT | Grok | METADATA reconfirm: re-fetched HubSpot task 531842137317 immediately before write; hs_lastmodifieddate 2026-10-27T09:14:17.685Z (unchanged from post-restore), status COMPLETED, completion_date 2026-10-24T22:56:29.757Z, subject [TURN: Claude v3.2.0] Grok review AGREE; Claude next. Tab restored body from history at 09:14Z (RESTORE NOTE present; no version change). Idle >>30 min; four-minute no-touch ok; skip/route only; no recipient-facing edit. Canonical SENT verified. Live BOARD/hive still stale. | SENT / WAYBACK |
 
 ## Open blockers
-None. Sent verified. Note: HubSpot task body is currently a literal unexpanded shell command (UNRESOLVED corruption; dealer should restore proper changelog/body if needed).
+None. Sent verified. Body restored by Tab 27 Oct 09:14Z; no further agent action.
 
 The count of 16 historical material review rounds and 3 historical reviewer identities is informational only. The current frozen version v3.2.0 was sent before current-version review gate completion. No Gmail draft created by agents. Nothing further.
