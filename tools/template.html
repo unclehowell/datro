@@ -96,8 +96,6 @@ details.box>summary::after{content:"＋";color:var(--muted)}details.box[open]>su
 table.pol{width:100%;border-collapse:collapse;font-size:13px}
 table.pol td{border-top:1px solid var(--line);padding:6px 4px;vertical-align:top}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-
-.stale{border:1px solid #b45309;background:#451a03;color:#ffedd5;border-radius:10px;padding:10px 12px;margin:8px 0 12px;font-weight:700}.stale[hidden]{display:none}
 </style>
 <script type="text/plain" data-ghf-hold src="https://bucklerfamily.estate/ghf-lang/basecamp.js?hold"></script>
 <script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.1.2"></script>
@@ -109,7 +107,6 @@ table.pol td{border-top:1px solid var(--line);padding:6px 4px;vertical-align:top
  <span class="scen">Worst-case schedule</span>
 </div>
 <p class="intro" id="intro">Every open request, the date each reply falls due, and our follow-ups on fixed dates, assuming the longest extension and a refusal at every step.</p>
-<p class="stale" id="freshness" role="status" aria-live="polite" hidden></p>
 <div class="tabs" role="group" aria-label="View">
  <button data-v="next" aria-pressed="true">Next 14 days</button>
  <button data-v="month" aria-pressed="false">Month</button>
@@ -149,9 +146,6 @@ table.pol td{border-top:1px solid var(--line);padding:6px 4px;vertical-align:top
 const DATA=/*__DATA__*/null;
 const TH={};DATA.threads.forEach(t=>TH[t.id]=t);
 const TODAY=DATA.meta.today;
-const forecastAgeHours=(Date.now()-Date.parse(DATA.meta.generated))/3600000;
-if(Number.isFinite(forecastAgeHours)&&forecastAgeHours>36){const stale=document.getElementById('freshness');if(stale){stale.hidden=false;stale.textContent='STALE FORECAST — source data last rebuilt '+DATA.meta.today+'. Rebuild from the current request log before relying on dates.';}}
-
 const WHO={them:'Due from them',him:'Our action',hard:'Hard deadline'};
 const fT=new Set(),fI=new Set();
 const $=s=>document.querySelector(s);

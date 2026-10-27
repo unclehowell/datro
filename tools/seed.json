@@ -618,8 +618,8 @@
   "route": "ico",
   "q": "llandough review after:2026/10/12",
   "dom": "",
-  "src": "deadlines.csv; queue Q-LCC-IR",
-  "hold": "2026-10-23"
+  "src": "deadlines.csv; queue Q-LCC-IR; Gmail 27 Oct 2026 16:05Z",
+  "note": "Clerk's reply of 27 Oct 2026 (16:05): the internal review of 13 Oct and the narrower request of 20 Oct are to be taken at the council's annual review in November 2026; no date given; no answer on the EIR."
  },
  {
   "id": "lcc-narrow",
@@ -633,8 +633,8 @@
   "route": "ico",
   "q": "llandough after:2026/10/19",
   "dom": "",
-  "src": "deadlines.csv; queue Q-LCC-FOI-NARROWED",
-  "hold": "2026-10-23"
+  "src": "deadlines.csv; queue Q-LCC-FOI-NARROWED; Gmail 27 Oct 2026 16:05Z",
+  "note": "Clerk's reply of 27 Oct 2026 (16:05): the internal review of 13 Oct and the narrower request of 20 Oct are to be taken at the council's annual review in November 2026; no date given; no answer on the EIR."
  },
  {
   "id": "defra-23886",
@@ -699,15 +699,16 @@
   "inst": "Information Commissioner’s Office",
   "type": "Complaint",
   "ref": "IC-546505-W6P0",
-  "subject": "ICO case of 10 Aug: reply of 21 Oct asks for routes and a date",
-  "stage": "awaiting_reply",
+  "subject": "ICO case of 10 Aug: advice given and case closed 27 Oct",
+  "stage": "replied",
   "regime": "none",
   "start": "2026-10-21",
   "due_body": "2026-11-18",
   "route": "phso",
   "q": "\"IC-546505\"",
   "dom": "ico.org.uk",
-  "src": "Gmail: ICO letter 10 Aug, reply sent 21 Oct (reply-sprint log; date asked 18 Nov)"
+  "src": "Gmail: ICO letter 10 Aug, reply sent 21 Oct (reply-sprint log; date asked 18 Nov); Gmail 1a17e173d16e616a (27 Oct 2026 16:00Z)",
+  "note": "Replied 27 Oct 2026 (16:00): section 46 Code compliance cannot be considered within a section 50 complaint; a section 77 FOIA / regulation 19 EIR offence is reported on the ICO FOI complaint form; a late reply can be part of the section 50 complaint about that request (one complaint per request); case closed."
  },
  {
   "id": "blake-morgan",
@@ -740,5 +741,37 @@
   "dom": "cardiff.gov.uk",
   "src": "Gmail 1a162e42b9146d7b (22 Oct 2026 09:14Z)",
   "note": "Replied 22 Oct 2026 (partly answered): occurrence books end May 1984; 1988 Weekly Orders held but closed (a paid search is offered); no press-office files."
+ },
+ {
+  "id": "lcc-minutes",
+  "inst": "Llandough Community Council",
+  "type": "Other",
+  "ref": "Draft minutes, meeting of 22 Oct",
+  "subject": "Proposed corrections to the draft minutes declined",
+  "stage": "replied",
+  "regime": "none",
+  "start": "2026-10-27",
+  "due_body": "2026-10-27",
+  "route": "none",
+  "q": "llandough minutes after:2026/10/26",
+  "dom": "",
+  "src": "Gmail 27 Oct 2026 15:12Z and 16:23Z",
+  "note": "Replied 27 Oct 2026 (15:12): the clerk declined the proposed corrections (accuracy is for the council at its next meeting) and stated that the clerk and the visiting county councillor are not listed as attendees because they are not members. A councillor replied to all at 16:23."
+ },
+ {
+  "id": "rics",
+  "inst": "RICS (Royal Institution of Chartered Surveyors)",
+  "type": "Other",
+  "ref": "RICS:022900001630 / RICS:022900001655",
+  "subject": "Enquiry and preservation notice: surveyors' and valuation records 1969–1993",
+  "stage": "replied",
+  "regime": "none",
+  "start": "2026-10-16",
+  "due_body": "2026-10-27",
+  "route": "none",
+  "q": "rics.org",
+  "dom": "rics.org",
+  "src": "Gmail 1a1695c09fefeb37 (23 Oct 2026) and 1a17e354759f980f (27 Oct 2026 16:32Z)",
+  "note": "23 Oct 2026: RICS asked what information or help is sought; answered 24 Oct. 27 Oct 2026: passed to the RICS Knowledge Team, a reply to follow. No records disclosed yet."
  }
 ]
