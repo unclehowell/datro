@@ -1,1 +1,77 @@
-PLACEHOLDER
+{
+ "updated": "2026-10-28T18:08:19Z",
+ "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
+ "drafts": [
+  {
+   "id": "hmlr-lawyer-referral-sar-reply",
+   "record": "HubSpot task 532395262199",
+   "version": "v0.3.0",
+   "status": "TURN: ChatGPT",
+   "turn": "ChatGPT (per HubSpot subject, read 2026-10-27T10:31Z)",
+   "open_issues": 2,
+   "last_change": "2026-10-27T10:18:06Z",
+   "last_agent": "Tab",
+   "rounds": 3,
+   "tier_since": "2026-10-23T18:26:04Z",
+   "tier": "working",
+   "tier_label": "IN REVIEW",
+   "gmail_draft_id": null,
+   "sent_at": null,
+   "archive_url": null,
+   "context": {
+    "body": "HM Land Registry",
+    "as_of": "2026-10-23T20:47Z",
+    "archive": {
+     "search": "https://email.bucklerfamily.estate/api/search?q=HM%20Land%20Registry",
+     "thread": null,
+     "note": "Live archive/thread endpoint was inaccessible in this harness. Wayback fallback yielded three individual message records, but not the complete Gmail thread, attachment inventory, or confirmation that no later extension notice exists. Source sweep remains incomplete; no recipient-facing edit or material review."
+    },
+    "last_in": "2026-10-23",
+    "last_out": "2026-10-21",
+    "dartboard": {
+     "url": "https://bucklerfamily.estate/?r=1#roadmap",
+     "lane": "hm-land-registry",
+     "wheel_number": 1
+    },
+    "stage": "Request (FOI / EIR) (2026-09-28)",
+    "next_deadline": {
+     "date": "2026-10-28",
+     "what": "HMLR's 1 Oct acknowledgement states 28 Oct as the SAR response date; check the full thread for any later extension notice before relying on it."
+    },
+    "rungs_spent": [
+     "Complaint, stage 1",
+     "Subject access request",
+     "Request (FOI / EIR)"
+    ],
+    "markers": {
+     "red_fish": 0,
+     "red_house": 0,
+     "fee": false
+    },
+    "open_questions": null,
+    "route": "hmlr",
+    "regime": "SAR",
+    "kb_items": 23,
+    "note": "Diagnostic only: individual Wayback messages and Dartboard/QA fallbacks were inspected. Full Gmail thread, attachment set and any later extension notice remain unverified. No recipient-facing change; current-version review counters remain zero."
+   },
+   "pct": 0,
+   "reviews": 2,
+   "distinct_agents": 1,
+   "agents": [
+    "Tab"
+   ],
+   "stage": "TURN",
+   "pct_at": "2026-10-24T09:35:25Z",
+   "last_action_at": "2026-10-25T17:05:42Z",
+   "last_action_by": "ChatGPT",
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
+   "version_agents": [],
+   "queue_after": null,
+   "sent_version": null,
+   "seat_agreements_version": null,
+   "final_three_hat_version": null,
+   "attachments_verified_version": null
+  }
+ ]
+}
