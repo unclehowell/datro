@@ -354,6 +354,15 @@ def menu_page(path, title, body, depth, desc=''):
 """, encoding='utf-8')
 
 
+# 27 Oct 2026: the Legal Wiki collection page opens with the 1987 Court of Appeal video (privacy-enhanced embed). Browsers only
+# autoplay muted video, so it starts muted with no controls; the small button turns the sound on (YouTube iframe API message). - Sion's Tab agent
+LEGALWIKI_VIDEO = ('<section class="band vid"><div class="vid-w"><iframe id="lw-vid" '
+    'src="https://www.youtube-nocookie.com/embed/4GXmR7mAas0?autoplay=1&amp;mute=1&amp;controls=0&amp;modestbranding=1&amp;rel=0&amp;playsinline=1&amp;loop=1&amp;playlist=4GXmR7mAas0&amp;enablejsapi=1" '
+    'title="BP Properties v Buckler 1987: the Court of Appeal land case" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" '
+    'allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>'
+    '<button type="button" class="vid-snd" onclick="var f=document.getElementById(\'lw-vid\');f.contentWindow.postMessage(JSON.stringify({event:\'command\',func:this.dataset.on?\'mute\':\'unMute\',args:[]}),\'*\');'
+    'if(this.dataset.on){delete this.dataset.on;this.textContent=\'Sound on\'}else{this.dataset.on=1;this.textContent=\'Sound off\'}">Sound on</button></section>')
+
 def band(label, buttons, cls=''):
     return f'<section class="band {cls}"><h2 class="title-line">{label}</h2><div class="btns">{"".join(buttons)}</div></section>'
 
@@ -384,6 +393,8 @@ def render_menus(index, entries):
             label = _t(c.get('groups', {}).get(g, {'en': g.capitalize()}))
             body += band(esc(label), [f'<a class="btn{" long" if len(e["title"]) > 48 else ""}" href="/{e["id"]}/">{esc(e["title"])}</a>'
                                       for e in es])
+        if c['id'] == 'ghf_legalwiki':   # 27 Oct 2026: the 1987 Court of Appeal video comes first on the Legal Wiki (muted autoplay, minimal controls) - Sion's Tab agent
+            body = LEGALWIKI_VIDEO + body
         menu_page(OUT / c['id'] / 'index.html', f'{_t(c["title"])} · docs', body, 1)
     # document: the document's title, then one band per language: Latest (HTML, green) and older versions (PDF, red) to its right
     for e in entries:

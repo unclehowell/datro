@@ -100,7 +100,7 @@ Ms Hollis, I write further to your letter of 27 April 2026. This correspondence 
 
 **M15 · 07 Jun 2026 08:55 UTC · Sion Buckler · Subject: FOI – Location & Access to Historical Court Records (Great House Farm, Llandough)**
 
-Please advise on the current location and access options for records of proceedings involving Great House Farm, Mary Williams/Buckler/Western Ground Rents/BP (1915 eviction attempt, 1955/1962 possession orders). Focus on title/equitable interest evidence. Thanks, Sion Buckler [personal passage omitted — not about the farm case]
+Please advise on the current location and access options for records of proceedings involving Great House Farm, Mary Williams/Buckler/Western Ground Rents/BP ([1915 wording removed by Cedwyn editors: no record of an eviction in 1915 is found], 1955/1962 possession orders). Focus on title/equitable interest evidence. Thanks, Sion Buckler [personal passage omitted — not about the farm case]
 
 **M16 · 07 Jun 2026 09:02 UTC · Sion Buckler · FOI**
 

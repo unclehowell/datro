@@ -13,7 +13,10 @@ html[data-ghf-mode=day]{--lib-bg:#fff;--lib-fg:rgba(0,0,0,.72);--lib-dim:rgba(0,
   --lib-band:rgba(0,0,0,.035);--lib-line:rgba(0,0,0,.14);--lib-btn:rgba(0,0,0,.025);--lib-btn-h:rgba(0,0,0,.07);--lib-edge-a:rgba(0,0,0,.12);
   --lib-edge-b:rgba(0,0,0,.28);--lib-html:#1e7b34;--lib-pdf:#c0392b;--lib-title:#1C2E5C;--lib-acc:#1C2E5C;color-scheme:light}}
 body{margin:0;background:var(--lib-bg);font-family:sans-serif;-webkit-text-size-adjust:100%}
-.lib{max-width:100%;padding:.2rem 0 4rem;position:relative;background:var(--lib-bg);min-height:70vh;color:var(--lib-fg);font-family:sans-serif}
+/* 27 Oct 2026: the Legal Wiki video (16:9, full width, muted autoplay) and its sound button; the page no longer reserves 70vh, so short
+   menu pages end at their content instead of a blank screen. - Sion's Tab agent */
+.band.vid{padding:0 0 .6rem}.vid-w{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden}.vid-w iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.vid-snd{display:block;margin:.5rem auto 0;font:inherit;font-size:14px;min-height:40px;padding:8px 16px;border-radius:20px;border:1px solid var(--lib-line);background:var(--lib-btn);color:var(--lib-strong);cursor:pointer}
+.lib{max-width:100%;padding:.2rem 0 1.5rem;position:relative;background:var(--lib-bg);min-height:0;color:var(--lib-fg);font-family:sans-serif}
 .lib h1,.lib h2,.lib .title-line,.lib .doc-title{text-transform:none!important}
 .lib a{text-decoration:none}
 .lib :focus-visible{outline:2px solid var(--lib-acc);outline-offset:2px}
