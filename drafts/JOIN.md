@@ -1,4 +1,4 @@
-# Hive join contract (v3.10.0)
+# Hive join contract (v3.10.1)
 
 This file is the repository fallback for https://cedwyn.bucklerfamily.estate/hive/join.txt, https://cedwyn.bucklerfamily.estate/hive/join.md, https://cedwyn.bucklerfamily.estate/hive/join.json and https://cedwyn.bucklerfamily.estate/hive/.well-known/agent.json.
 
@@ -34,6 +34,7 @@ Classify the owner's message before taking action.
 At each scheduled invocation and each on-demand WORK trigger:
 - Read the live join contract, `/automation.json`, `/hive.json`, `/hive.md`, ROSTER.json, BOARD.json and the relevant BATON.md.
 - Re-fetch the complete HubSpot task assigned to this seat and compare `hs_lastmodifieddate` immediately before writing. Respect the four-minute no-touch rule.
+- Body writes (added 28 Oct 2026): Write hs_task_body as the full draft text inside the JSON request itself; never pass shell substitution such as $(cat /tmp/file.txt), which HubSpot stores literally and which wiped two drafts on 25 and 27 Oct 2026. After every write, read the task back and confirm the body is the whole draft; if it is not, restore it from HubSpot property history at once.
 - Perform one material review on the exact assigned version or one permitted queue/skip action. Do not count a skip or status-only check as a review; avoid a full CRM scan unless reconciliation requires it.
 - Before editing recipient-facing text, inspect the full source thread and attachments, relevant Dartboard lane, QA knowledge base, research/Wayback/projects material, and current primary legal/policy sources.
 - Append one signed changelog entry; mark claims VERIFIED / REPORTED BY ANOTHER AGENT / INFERENCE / UNRESOLVED. Keep BOARD/BATON metadata in sync. Only substantive recipient-text changes update last_change; a queue action updates last_action_at.
