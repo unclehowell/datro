@@ -18,7 +18,9 @@ export async function onRequest(context) {
     const r = await env.ASSETS.fetch(new URL(url.pathname.slice(0, -5), url), request);
     if (r.status === 200) {
       const h = new Headers(r.headers); h.set("x-robots-tag", "noindex"); h.set("cache-control", "public, max-age=300");
-      return new Response(request.method === "HEAD" ? null : r.body, {status: 200, headers: h});
+      if (request.method !== "HEAD") { h.delete("content-length"); h.delete("etag"); }
+      const res = new Response(request.method === "HEAD" ? null : r.body, {status: 200, headers: h});
+      return request.method === "HEAD" ? res : twoLines(res);
     }
     return r.status >= 300 && r.status < 400 ? new Response("Not found\n", {status: 404, headers: {"content-type": "text/plain"}}) : r;
   }
@@ -28,4 +30,30 @@ export async function onRequest(context) {
     if (r.status === 200) return Response.redirect(new URL(url.pathname + ".html", url).toString(), 301);
   }
   return context.next();
+}
+
+// Sion's 27 Oct 2026 rule for every snapshot: under the copy, (1) the Internet Archive's captures of the address,
+// (2) the live website, then a small dated line. The address and date are read from the copy's own banner, so every
+// copy (old and new, design-kept or plain) carries the lines without rewriting 184+ files. Links inside the copy
+// already lead only to other copies (external ones carry data-href, not href). — Sion's Tab agent, 28 Oct 2026
+function twoLines(res) {
+  let src = "", cap = "", ver = "", done = false;
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+  const block = () => {
+    if (done || !/^https?:\/\//i.test(src)) return "";
+    done = true;
+    const s = "all:initial;display:block;box-sizing:border-box;margin:24px 0 0;padding:10px 12px;border-top:2px solid #1f2a24;background:#f7f5ef;color:#1d2420;font:13px/1.6 system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;word-break:break-all";
+    const a = "color:#2f5d46;text-decoration:underline";
+    return `<div id="wbx-foot" style="${s}"><span style="display:block"><b>Internet Archive copy:</b> <a style="${a}" href="https://web.archive.org/web/*/${esc(src)}" target="_blank" rel="noopener nofollow">Wayback Machine captures of this address</a></span>`
+      + `<span style="display:block"><b>Live website:</b> <a style="${a}" href="${esc(src)}" target="_blank" rel="noopener nofollow">${esc(src)}</a></span>`
+      + (cap ? `<span style="display:block;opacity:.7">Captured ${esc(cap)}${ver ? " · " + esc(ver) : ""}</span>` : "") + `</div>`;
+  };
+  try {
+    return new HTMLRewriter()
+      .on("#wbx-banner", {text(t) { const m = /captured (\d{4}-\d{2}-\d{2})/.exec(t.text); if (m && !cap) cap = m[1];
+                                     const v = /^(v\d+\.\d+\.\d+)$/.exec(t.text.trim()); if (v && !ver) ver = v[1]; }})
+      .on('#wbx-banner a[target="_blank"]', {element(e) { const u = e.getAttribute("href") || ""; if (!src && /^https?:\/\//i.test(u)) src = u; }})
+      .on("body", {element(e) { e.onEndTag(end => { const b = block(); if (b) end.before(b, {html: true}); }); }})
+      .transform(res);
+  } catch (err) { return res; }
 }
