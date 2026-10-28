@@ -356,12 +356,15 @@ def menu_page(path, title, body, depth, desc=''):
 
 # 27 Oct 2026: the Legal Wiki collection page opens with the 1987 Court of Appeal video (privacy-enhanced embed). Browsers only
 # autoplay muted video, so it starts muted with no controls; the small button turns the sound on (YouTube iframe API message). - Sion's Tab agent
+# 28 Oct 2026: WCAG 2.2.2 - a Pause/Play button beside Sound (auto-playing video over 5 s must be pausable); modestbranding dropped (deprecated). - Sion's Tab agent
 LEGALWIKI_VIDEO = ('<section class="band vid"><div class="vid-w"><iframe id="lw-vid" '
-    'src="https://www.youtube-nocookie.com/embed/4GXmR7mAas0?autoplay=1&amp;mute=1&amp;controls=0&amp;modestbranding=1&amp;rel=0&amp;playsinline=1&amp;loop=1&amp;playlist=4GXmR7mAas0&amp;enablejsapi=1" '
+    'src="https://www.youtube-nocookie.com/embed/4GXmR7mAas0?autoplay=1&amp;mute=1&amp;controls=0&amp;rel=0&amp;playsinline=1&amp;loop=1&amp;playlist=4GXmR7mAas0&amp;enablejsapi=1" '
     'title="BP Properties v Buckler 1987: the Court of Appeal land case" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" '
     'allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>'
+    '<div class="vid-ctl"><button type="button" class="vid-snd vid-pp" aria-label="Pause video" onclick="var f=document.getElementById(\'lw-vid\');f.contentWindow.postMessage(JSON.stringify({event:\'command\',func:this.dataset.p?\'playVideo\':\'pauseVideo\',args:[]}),\'*\');'
+    'if(this.dataset.p){delete this.dataset.p;this.textContent=\'Pause\';this.setAttribute(\'aria-label\',\'Pause video\')}else{this.dataset.p=1;this.textContent=\'Play\';this.setAttribute(\'aria-label\',\'Play video\')}">Pause</button>'
     '<button type="button" class="vid-snd" onclick="var f=document.getElementById(\'lw-vid\');f.contentWindow.postMessage(JSON.stringify({event:\'command\',func:this.dataset.on?\'mute\':\'unMute\',args:[]}),\'*\');'
-    'if(this.dataset.on){delete this.dataset.on;this.textContent=\'Sound on\'}else{this.dataset.on=1;this.textContent=\'Sound off\'}">Sound on</button></section>')
+    'if(this.dataset.on){delete this.dataset.on;this.textContent=\'Sound on\'}else{this.dataset.on=1;this.textContent=\'Sound off\'}">Sound on</button></div></section>')
 
 def band(label, buttons, cls=''):
     return f'<section class="band {cls}"><h2 class="title-line">{label}</h2><div class="btns">{"".join(buttons)}</div></section>'
