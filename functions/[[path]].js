@@ -52,7 +52,7 @@ function twoLines(res) {
     return new HTMLRewriter()
       .on("#wbx-banner", {text(t) { const m = /captured (\d{4}-\d{2}-\d{2})/.exec(t.text); if (m && !cap) cap = m[1];
                                      const v = /^(v\d+\.\d+\.\d+)$/.exec(t.text.trim()); if (v && !ver) ver = v[1]; }})
-      .on('#wbx-banner a[target="_blank"]', {element(e) { const u = e.getAttribute("href") || ""; if (!src && /^https?:\/\//i.test(u)) src = u; }})
+      .on('#wbx-banner a[target="_blank"]', {element(e) { const u = (e.getAttribute("href") || "").replace(/&(amp|quot|#39|lt|gt);/g, (m, k) => ({amp: "&", quot: '"', "#39": "'", lt: "<", gt: ">"}[k])); if (!src && /^https?:\/\//i.test(u)) src = u; }})
       .on("body", {element(e) { e.onEndTag(end => { const b = block(); if (b) end.before(b, {html: true}); }); }})
       .transform(res);
   } catch (err) { return res; }
