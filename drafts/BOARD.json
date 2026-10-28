@@ -1,13 +1,13 @@
 {
- "updated": "2026-10-28T18:08:19Z",
+ "updated": "2026-10-28T18:36:17Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
    "id": "hmlr-lawyer-referral-sar-reply",
    "record": "HubSpot task 532395262199",
    "version": "v0.3.0",
-   "status": "TURN: ChatGPT",
-   "turn": "ChatGPT (per HubSpot subject, read 2026-10-27T10:31Z)",
+   "status": "SKIPPED — ChatGPT idle; routing unresolved",
+   "turn": "UNASSIGNED — verify live seat loads before reassigning",
    "open_issues": 2,
    "last_change": "2026-10-27T10:18:06Z",
    "last_agent": "Tab",
@@ -52,7 +52,7 @@
     "route": "hmlr",
     "regime": "SAR",
     "kb_items": 23,
-    "note": "Diagnostic only: individual Wayback messages and Dartboard/QA fallbacks were inspected. Full Gmail thread, attachment set and any later extension notice remain unverified. No recipient-facing change; current-version review counters remain zero."
+    "note": "2026-10-28: HubSpot subject/body says ChatGPT was skipped for idleness and routing remains unresolved. Complete source thread, attachment set and any later extension notice remain unverified. Synced public metadata only; no recipient-facing change and no material review counted. Next: check live seat assignments and source access before routing to one reviewer."
    },
    "pct": 0,
    "reviews": 2,
@@ -60,14 +60,14 @@
    "agents": [
     "Tab"
    ],
-   "stage": "TURN",
+   "stage": "SKIPPED / ROUTING",
    "pct_at": "2026-10-24T09:35:25Z",
-   "last_action_at": "2026-10-25T17:05:42Z",
+   "last_action_at": "2026-10-28T18:36:17Z",
    "last_action_by": "ChatGPT",
    "version_reviews": 0,
    "version_distinct_agents": 0,
    "version_agents": [],
-   "queue_after": null,
+   "queue_after": "Check active task assignments and confirm complete source-thread/attachment access, then assign one seat; no review counted",
    "sent_version": null,
    "seat_agreements_version": null,
    "final_three_hat_version": null,
