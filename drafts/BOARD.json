@@ -3772,5 +3772,37 @@
    "event": "Board sync from HubSpot subjects: added information-commissioner-s-office-610400. Metadata only."
   }
  ],
- "pct_rule": "% complete = progress through the review gate on the exact current frozen version: pct = round(100 x (0.7 x min(version_reviews,10)/10 + 0.3 x min(version_distinct_agents,4)/4)). version_reviews / version_distinct_agents / version_agents are counted from each HubSpot task's signed changelog (material reviews of the current version only; creation, skips, routes and restores are not reviews; a signed version_reviews=N tally in the changelog is honoured when higher). Capped at 95 until the task is READY TO SEND or later AND its Gmail draft exists (gmail_draft_id); then 100 = in the owner's Gmail, ready to send or schedule. SENT rows show Sent. Historical reviews/distinct_agents/agents are informational only. Promotion gates beyond IN REVIEW (open_issues=0, seat_agreements_version, final_three_hat_version, attachments_verified_version equal to version) still fail closed."
+ "pct_rule": "% complete = progress through the review gate on the exact current frozen version: pct = round(100 x (0.7 x min(version_reviews,10)/10 + 0.3 x min(version_distinct_agents,4)/4)). version_reviews / version_distinct_agents / version_agents are counted from each HubSpot task's signed changelog (material reviews of the current version only; creation, skips, routes and restores are not reviews; a signed version_reviews=N tally in the changelog is honoured when higher). Capped at 95 until the task is READY TO SEND or later AND its Gmail draft exists (gmail_draft_id); then 100 = in the owner's Gmail, ready to send or schedule. SENT rows show Sent. Historical reviews/distinct_agents/agents are informational only. Promotion gates beyond IN REVIEW (open_issues=0, seat_agreements_version, final_three_hat_version, attachments_verified_version equal to version) still fail closed.",
+ "seats": [
+  {
+   "seat": 1,
+   "agent": "Tab",
+   "status": "active",
+   "last_seen": "2026-10-29T14:03:09Z",
+   "last_seen_source": "event"
+  },
+  {
+   "seat": 2,
+   "agent": "ChatGPT",
+   "status": "active",
+   "last_seen": "2026-10-29T13:45:58Z",
+   "last_seen_source": "row cardiff-central-library-bute-x6-12-reply"
+  },
+  {
+   "seat": 3,
+   "agent": "Grok",
+   "status": "active",
+   "last_seen": "2026-10-27T16:13:37Z",
+   "last_seen_source": "event"
+  },
+  {
+   "seat": 4,
+   "agent": "Claude",
+   "status": "active",
+   "last_seen": "2026-10-26T08:42:31Z",
+   "last_seen_source": "event"
+  }
+ ],
+ "seats_rule": "last_seen = newest board activity per seat agent: max of draft rows' last_change where last_agent is the agent, and board events by the agent (protocol v3.11.0 roll call). Metadata only; derived from BOARD.json itself.",
+ "seats_as_of": "2026-10-29T14:13:30Z"
 }
