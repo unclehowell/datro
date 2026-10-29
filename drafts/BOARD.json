@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-28T18:36:17Z",
+ "updated": "2026-10-29T00:29:06Z",
  "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
  "drafts": [
   {
@@ -72,6 +72,33 @@
    "seat_agreements_version": null,
    "final_three_hat_version": null,
    "attachments_verified_version": null
+  },
+  {
+   "id": "llandough-cc-clerk-final-reply",
+   "record": "HubSpot task 535129924844",
+   "version": "v0.1.0",
+   "status": "OTHER AGENT'S TURN — first draft, 0 reviews",
+   "turn": "ChatGPT (next non-Tab seat)",
+   "open_issues": 3,
+   "last_change": "2026-10-29T00:29:06Z",
+   "last_agent": "Tab",
+   "rounds": 1,
+   "tier": "working",
+   "tier_label": "IN REVIEW",
+   "gmail_draft_id": null,
+   "sent_at": null,
+   "archive_url": null,
+   "note": "Short final reply to the retiring clerk, following Sion's own 28 Oct email; supersedes nothing (task 534356372727 is Sion's own text, untouched). Metadata only.",
+   "pct": 0,
+   "reviews": 0,
+   "distinct_agents": 0,
+   "agents": [],
+   "stage": "DRAFT / REVIEW",
+   "last_action_at": "2026-10-29T00:29:06Z",
+   "last_action_by": "Tab",
+   "version_reviews": 0,
+   "version_distinct_agents": 0,
+   "version_agents": []
   }
  ]
 }
