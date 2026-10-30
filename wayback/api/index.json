@@ -1,8 +1,8 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-10-30T12:11:06Z",
- "count": 967,
+ "generated": "2026-10-30T12:17:50Z",
+ "count": 968,
  "threadCount": 521,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
@@ -13,6 +13,28 @@
   "text": "/mail/<id>.txt"
  },
  "records": [
+  {
+   "id": "gm-1a18cb15f4c25045",
+   "gmailMessageId": "1a18cb15f4c25045",
+   "threadId": "gt-1a18893b1774cbb8",
+   "date": "2026-10-30T12:03:13Z",
+   "direction": "received",
+   "from": "(name not shown; mod.gov.uk)",
+   "institutions": [
+    {
+     "id": "mod",
+     "name": "Ministry of Defence"
+    }
+   ],
+   "subject": "RE: Nomenclature supplement — Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth",
+   "threadSlug": "nomenclature-supplement-great-house-farm-ty-mawr-llandough-juxta-penarth",
+   "refs": [
+    "FOI2026/25726"
+   ],
+   "textUrl": "/mail/gm-1a18cb15f4c25045.txt",
+   "jsonUrl": "/api/message/gm-1a18cb15f4c25045.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
   {
    "id": "gm-1a18c5899ac08129",
    "gmailMessageId": "1a18c5899ac08129",
