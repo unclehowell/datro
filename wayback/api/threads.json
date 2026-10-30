@@ -1,9 +1,9 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-10-30T02:04:45Z",
- "count": 965,
- "threadCount": 520,
+ "generated": "2026-10-30T10:08:23Z",
+ "count": 966,
+ "threadCount": 521,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
@@ -13,6 +13,20 @@
   "text": "/mail/<id>.txt"
  },
  "threads": [
+  {
+   "threadId": "gt-1a18bf4bdca7fa49",
+   "subject": "Automated Response: Email address not supported",
+   "threadSlug": "automated-response-email-address-not-supported",
+   "institutions": [
+    "hmlr"
+   ],
+   "first": "2026-10-30T08:37:12Z",
+   "last": "2026-10-30T08:37:12Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a18bf4bdca7fa49"
+   ]
+  },
   {
    "threadId": "gt-1a1894085ac5ba9d",
    "subject": "Your submission to LibAnswers was received.",
