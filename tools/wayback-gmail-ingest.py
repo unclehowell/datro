@@ -119,7 +119,26 @@ FAMADDR_RE = re.compile(r"(?:\d+\s*)?Robin(?:\s|\+|%20)+Hill|CF64(?:\s|\+|%20)*4
 FAMTOWN_RE = re.compile(r"living in Dinas Powys")
 HOLDINGS_RE = re.compile(r"considering the heirlooms I\s+have\s+inherited|I hold\s+video\s+footage")
 
-def redact(t, c):
+# P-066 (30 Oct 2026, problems flywheel 9e0bab56): a sender writing from a personal mailbox (consumer domain) is a member
+# of the public. Their display name never goes public: the From line shows "(name not shown)" and the name - whole and each
+# token of 3+ letters - is replaced with "[member of the public]" in subject and body (also across quote markers).
+# Generic on purpose, so no private name is ever written into this file. - Sion's Tab agent
+CONSUMER_DOMAINS = ("gmail.com", "googlemail.com", "hotmail.com", "hotmail.co.uk", "outlook.com", "live.com", "live.co.uk", "yahoo.com", "yahoo.co.uk", "icloud.com", "me.com", "btinternet.com", "aol.com", "protonmail.com", "proton.me")
+def private_sender_re(sender, sent):
+    if sent: return None
+    nm, addr = parseaddr(sender or "")
+    nm = nm.strip().strip('"').strip("'")
+    dom = addr.split("@")[-1].lower() if "@" in addr else ""
+    if not nm or "@" in nm or dom not in CONSUMER_DOMAINS: return None
+    toks = [x for x in re.findall(r"[^\W\d_][\w'\-]*", nm) if len(x) >= 3]
+    if not toks: return None
+    full = r"(?:\s*>?\s*)+".join(re.escape(x) for x in toks)
+    alts = [full] + sorted({re.escape(x) for x in toks}, key=len, reverse=True)
+    return re.compile(r"\b(?:" + "|".join(alts) + r")\b")
+
+def redact(t, c, priv=None):
+    if priv is not None:
+        t, n = priv.subn("[member of the public]", t); c["private_name"] += n
     t = redact_meeting(t, c)
     t = MAILTO_RE.sub(lambda m: (c.update(["email"]) or "[email redacted]"), t)
     t = EMAIL_RE.sub(lambda m: (c.update(["email"]) or "[email redacted]"), t)
@@ -148,8 +167,9 @@ def sender_name(s, sent):
     if sent: return "Requester"   # P-034 (30 Oct 2026): the owner is never named in public text; Cedwyn uses the same label
     nm, addr = parseaddr(s or "")
     nm = nm.strip().strip('"')
-    if nm and "@" not in nm: return nm
     dom = addr.split("@")[-1].lower() if "@" in addr else ""
+    if dom in CONSUMER_DOMAINS: return "(name not shown)"   # P-066: members of the public are never named
+    if nm and "@" not in nm: return nm
     return "(name not shown; %s)" % dom if dom and not dom.endswith(("gmail.com", "hotmail.com", "outlook.com", "yahoo.com", "icloud.com")) else "(name not shown)"
 
 def slug(s, n=80):
@@ -179,11 +199,12 @@ def main(src, root, generated):
         if rid in old and not REWRITE: skipped["kept_existing"] += 1; continue
         ts = m.get("ts") or ""
         orgs = [o for o in (m.get("orgs") or []) if o]
-        subj = redact(m.get("subject") or "", c)
-        body = redact((m.get("text") or "").replace("\r\n", "\n").strip(), c)
+        priv = private_sender_re(m.get("sender"), m.get("sent"))
+        subj = redact(m.get("subject") or "", c, priv)
+        body = redact((m.get("text") or "").replace("\r\n", "\n").strip(), c, priv)
         direction = "sent" if m.get("sent") else "received"
         inst = [{"id": o, "name": INSTITUTIONS.get(o, o)} for o in orgs]
-        refs = [redact(str(x), c) for x in (m.get("refs") or [])]
+        refs = [redact(str(x), c, priv) for x in (m.get("refs") or [])]
         try: shown = datetime.strptime(ts, "%Y-%m-%dT%H:%M:%SZ").strftime("%a, %d %b %Y %H:%M UTC")
         except Exception: shown = ts or "date not recorded"
         rec = {
