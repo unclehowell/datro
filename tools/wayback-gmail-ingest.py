@@ -84,7 +84,7 @@ SIG_LINE_RE = re.compile(r"(?im)^((?:>[ \t]*)*)[ \t]*(?:<br\s*/?>)?[ \t]*\**[ \t
    r"(?:Military[ \t]+)?Cyber[ \t]*(?:&amp;|&|and|/)[ \t]*Electronic[ \t]+Warfare[ \t]+Profess+ional\.?"
    r"|Royal[ \t]+(?:Corps[ \t]+of[ \t]+)?Signals(?:[ \t]*[\u2014\u2013-][ \t]*(?:Military[ \t]+)?Cyber[^\n]*Warfare[ \t]+Profess+ional)?"
    r"|(?:&amp;|&)?[ \t]*Life[ \t]+Member(?:[ \t]*(?::|@|,|of)[ \t]*(?:the[ \t]+)?Royal[ \t]+(?:Corps[ \t]+of[ \t]+)?Signals)?"
-   r")[ \t]*\**[ \t]*\r?\n?")
+   r")[ \t]*\**[ \t]*(?:\r?\n|\Z)")
 RETD_RE = re.compile(r"(Requester(?:[ \t]+Esq\.?)?\**)[ \t]*\(?[ \t]*Ret['\u2019]?d\.?[ \t]*(?:Army[ \t]+)?(?:Sergeant|Sergenant|Sgt)\.?[ \t]*\)?")
 OWNER_RE = re.compile(r"\b(?:Mr\.?\s+|Mister\s+)?Si[oô]n(?:\s+(?:ap\s+)?Buckler)?\b|\bMr\.?\s+Buckler\b|\bHywel\s+ap\s+Buckler\b")
 PCODE_RE = re.compile(r"\b(?:[A-Z]{1,2}\d[A-Z\d]?)\s*\d[A-Z]{2}\b")
