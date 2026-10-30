@@ -1,9 +1,9 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-10-30T16:38:24Z",
- "count": 969,
- "threadCount": 522,
+ "generated": "2026-10-30T18:09:15Z",
+ "count": 970,
+ "threadCount": 523,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
@@ -13,6 +13,28 @@
   "text": "/mail/<id>.txt"
  },
  "records": [
+  {
+   "id": "gm-1a18dbc3359e6488",
+   "gmailMessageId": "1a18dbc3359e6488",
+   "threadId": "gt-1a18dbc3359e6488",
+   "date": "2026-10-30T16:54:38Z",
+   "direction": "received",
+   "from": "(name not shown; gov.wales)",
+   "institutions": [
+    {
+     "id": "cadw",
+     "name": "Welsh Government / Cadw"
+    }
+   ],
+   "subject": "Re: Welsh Government response to request for information ATISN 26-0010 (Retention & destruction schedules) (ATISN 26-0075)",
+   "threadSlug": "welsh-government-response-to-request-for-information-atisn-26-0010-retention-des",
+   "refs": [
+    "ATISN 26-0075"
+   ],
+   "textUrl": "/mail/gm-1a18dbc3359e6488.txt",
+   "jsonUrl": "/api/message/gm-1a18dbc3359e6488.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
   {
    "id": "gm-1a18cb15f4c25045",
    "gmailMessageId": "1a18cb15f4c25045",
