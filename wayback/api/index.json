@@ -1,9 +1,9 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-10-30T00:15:00Z",
- "count": 948,
- "threadCount": 514,
+ "generated": "2026-10-30T00:44:13Z",
+ "count": 964,
+ "threadCount": 519,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
@@ -36,6 +36,28 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a1893deb4a12e56",
+   "gmailMessageId": "1a1893deb4a12e56",
+   "threadId": "gt-1a1526f6d8a1233b",
+   "date": "2026-10-29T19:58:18Z",
+   "direction": "sent",
+   "from": "Requester",
+   "institutions": [
+    {
+     "id": "nlw",
+     "name": "National Library of Wales"
+    }
+   ],
+   "subject": "Enquiry 9816877 – Great House Farm / Tŷ Mawr (Cedfin), Llandough-juxta-Penarth: Bute Estate records and related items (several items)",
+   "threadSlug": "enquiry-9816877-great-house-farm-ty-mawr-cedfin-llandough-juxta-penarth-bute-est",
+   "refs": [
+    "9816877"
+   ],
+   "textUrl": "/mail/gm-1a1893deb4a12e56.txt",
+   "jsonUrl": "/api/message/gm-1a1893deb4a12e56.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a1893bf53cbef20",
    "gmailMessageId": "1a1893bf53cbef20",
    "threadId": "gt-1a1273a8a3ded5fd",
@@ -50,6 +72,23 @@
    ],
    "textUrl": "/mail/gm-1a1893bf53cbef20.txt",
    "jsonUrl": "/api/message/gm-1a1893bf53cbef20.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1893a0d4b8573c",
+   "gmailMessageId": "1a1893a0d4b8573c",
+   "threadId": "gt-1a1273a8a3ded5fd",
+   "date": "2026-10-29T19:54:05Z",
+   "direction": "sent",
+   "from": "Requester",
+   "institutions": [],
+   "subject": "RE: Your Communication with Companies House, Ref: COH2382411X",
+   "threadSlug": "your-communication-with-companies-house-ref-coh2382411x",
+   "refs": [
+    "COH2382411X"
+   ],
+   "textUrl": "/mail/gm-1a1893a0d4b8573c.txt",
+   "jsonUrl": "/api/message/gm-1a1893a0d4b8573c.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -70,6 +109,26 @@
    "refs": [],
    "textUrl": "/mail/gm-1a188e9f7c98cf55.txt",
    "jsonUrl": "/api/message/gm-1a188e9f7c98cf55.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a188e9e63686fb9",
+   "gmailMessageId": "1a188e9e63686fb9",
+   "threadId": "gt-1a1273c8e61a8b71",
+   "date": "2026-10-29T18:26:32Z",
+   "direction": "sent",
+   "from": "Requester",
+   "institutions": [
+    {
+     "id": "itv",
+     "name": "ITV Archive"
+    }
+   ],
+   "subject": "Archive search request — Great House Farm / Tŷ Mawr, Llandough, Cardiff — December 1988 (personal research)",
+   "threadSlug": "archive-search-request-great-house-farm-ty-mawr-llandough-cardiff-december-1988",
+   "refs": [],
+   "textUrl": "/mail/gm-1a188e9e63686fb9.txt",
+   "jsonUrl": "/api/message/gm-1a188e9e63686fb9.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -95,6 +154,26 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a188d35b5272abe",
+   "gmailMessageId": "1a188d35b5272abe",
+   "threadId": "gt-19fcf68c9ca9324b",
+   "date": "2026-10-29T18:01:55Z",
+   "direction": "sent",
+   "from": "Requester",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "Freedom of Information Act 2000 Request – Historical Court Records and Administrative Records (1988–1989)",
+   "threadSlug": "freedom-of-information-act-2000-request-historical-court-records-and-administrat",
+   "refs": [],
+   "textUrl": "/mail/gm-1a188d35b5272abe.txt",
+   "jsonUrl": "/api/message/gm-1a188d35b5272abe.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a188d35ed4010de",
    "gmailMessageId": "1a188d35ed4010de",
    "threadId": "gt-1a188d35ed4010de",
@@ -112,6 +191,26 @@
    "refs": [],
    "textUrl": "/mail/gm-1a188d35ed4010de.txt",
    "jsonUrl": "/api/message/gm-1a188d35ed4010de.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a188d33e24ccc37",
+   "gmailMessageId": "1a188d33e24ccc37",
+   "threadId": "gt-19ea150513c39427",
+   "date": "2026-10-29T18:01:48Z",
+   "direction": "sent",
+   "from": "Requester",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "FOI",
+   "threadSlug": "foi",
+   "refs": [],
+   "textUrl": "/mail/gm-1a188d33e24ccc37.txt",
+   "jsonUrl": "/api/message/gm-1a188d33e24ccc37.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -581,6 +680,23 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a17e354759f980f",
+   "gmailMessageId": "1a17e354759f980f",
+   "threadId": "gt-1a17e354759f980f",
+   "date": "2026-10-27T16:32:00Z",
+   "direction": "received",
+   "from": "(name not shown)",
+   "institutions": [],
+   "subject": "RICS - Email Forwarded RICS:022900001655",
+   "threadSlug": "rics-email-forwarded-rics-022900001655",
+   "refs": [
+    "RICS:022900001655"
+   ],
+   "textUrl": "/mail/gm-1a17e354759f980f.txt",
+   "jsonUrl": "/api/message/gm-1a17e354759f980f.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a17e2cec3d874ce",
    "gmailMessageId": "1a17e2cec3d874ce",
    "threadId": "gt-1a136e2b51f9d191",
@@ -921,6 +1037,23 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a1703ab823f247a",
+   "gmailMessageId": "1a1703ab823f247a",
+   "threadId": "gt-1a1695c09fefeb37",
+   "date": "2026-10-24T23:24:00Z",
+   "direction": "sent",
+   "from": "Requester",
+   "institutions": [],
+   "subject": "RE: Enquiry and preservation notice — surveyors and valuation records for Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth (1969–1993) RICS:022900001630",
+   "threadSlug": "enquiry-and-preservation-notice-surveyors-and-valuation-records-for-great-house",
+   "refs": [
+    "RICS:022900001630"
+   ],
+   "textUrl": "/mail/gm-1a1703ab823f247a.txt",
+   "jsonUrl": "/api/message/gm-1a1703ab823f247a.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a1702151ac77d8f",
    "gmailMessageId": "1a1702151ac77d8f",
    "threadId": "gt-1a1702149e534f1e",
@@ -958,6 +1091,43 @@
    "refs": [],
    "textUrl": "/mail/gm-1a1702149e534f1e.txt",
    "jsonUrl": "/api/message/gm-1a1702149e534f1e.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a17021271c3c58d",
+   "gmailMessageId": "1a17021271c3c58d",
+   "threadId": "gt-1a1439902c7e1dc4",
+   "date": "2026-10-24T22:56:23Z",
+   "direction": "sent",
+   "from": "Requester",
+   "institutions": [
+    {
+     "id": "bp",
+     "name": "BP"
+    }
+   ],
+   "subject": "RE: Document preservation notice — Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth (BP Properties Ltd v Buckler, 1984–1988)",
+   "threadSlug": "document-preservation-notice-great-house-farm-ty-mawr-llandough-juxta-penarth-bp",
+   "refs": [],
+   "textUrl": "/mail/gm-1a17021271c3c58d.txt",
+   "jsonUrl": "/api/message/gm-1a17021271c3c58d.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1695c09fefeb37",
+   "gmailMessageId": "1a1695c09fefeb37",
+   "threadId": "gt-1a1695c09fefeb37",
+   "date": "2026-10-23T15:23:00Z",
+   "direction": "received",
+   "from": "(name not shown)",
+   "institutions": [],
+   "subject": "RE: Enquiry and preservation notice — surveyors and valuation records for Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth (1969–1993)",
+   "threadSlug": "enquiry-and-preservation-notice-surveyors-and-valuation-records-for-great-house",
+   "refs": [
+    "RICS:022900001630"
+   ],
+   "textUrl": "/mail/gm-1a1695c09fefeb37.txt",
+   "jsonUrl": "/api/message/gm-1a1695c09fefeb37.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -3779,6 +3949,21 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a143ac62b958bb0",
+   "gmailMessageId": "1a143ac62b958bb0",
+   "threadId": "gt-1a1439902e39b2d0",
+   "date": "2026-10-16T07:45:00Z",
+   "direction": "sent",
+   "from": "Requester",
+   "institutions": [],
+   "subject": "Enquiry and preservation notice — surveyors and valuation records for Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth (1969–1993)",
+   "threadSlug": "enquiry-and-preservation-notice-surveyors-and-valuation-records-for-great-house",
+   "refs": [],
+   "textUrl": "/mail/gm-1a143ac62b958bb0.txt",
+   "jsonUrl": "/api/message/gm-1a143ac62b958bb0.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a14386a609c7540",
    "gmailMessageId": "1a14386a609c7540",
    "threadId": "gt-1a0e9e9889be4e6a",
@@ -4808,6 +4993,23 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a12f9954040af76",
+   "gmailMessageId": "1a12f9954040af76",
+   "threadId": "gt-1a1273a8a3ded5fd",
+   "date": "2026-10-12T10:12:17Z",
+   "direction": "received",
+   "from": "(name not shown)",
+   "institutions": [],
+   "subject": "RE: Your Communication with Companies House, Ref: COH2382411X",
+   "threadSlug": "your-communication-with-companies-house-ref-coh2382411x",
+   "refs": [
+    "COH2382411X"
+   ],
+   "textUrl": "/mail/gm-1a12f9954040af76.txt",
+   "jsonUrl": "/api/message/gm-1a12f9954040af76.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a12f9732739a69e",
    "gmailMessageId": "1a12f9732739a69e",
    "threadId": "gt-1a123ef587a83fad",
@@ -5454,6 +5656,23 @@
    "refs": [],
    "textUrl": "/mail/gm-1a1273c7920043b3.txt",
    "jsonUrl": "/api/message/gm-1a1273c7920043b3.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1273a8a3ded5fd",
+   "gmailMessageId": "1a1273a8a3ded5fd",
+   "threadId": "gt-1a1273a8a3ded5fd",
+   "date": "2026-10-10T19:11:45Z",
+   "direction": "received",
+   "from": "(name not shown)",
+   "institutions": [],
+   "subject": "RE: Your Communication with Companies House, Ref: COH2382411X",
+   "threadSlug": "your-communication-with-companies-house-ref-coh2382411x",
+   "refs": [
+    "COH2382411X"
+   ],
+   "textUrl": "/mail/gm-1a1273a8a3ded5fd.txt",
+   "jsonUrl": "/api/message/gm-1a1273a8a3ded5fd.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -10490,6 +10709,26 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a068b690f1fde22",
+   "gmailMessageId": "1a068b690f1fde22",
+   "threadId": "gt-1a068b690f1fde22",
+   "date": "2026-09-03T19:19:26Z",
+   "direction": "received",
+   "from": "(name not shown)",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "Response to your request (our reference 260803049 - SAR)",
+   "threadSlug": "response-to-your-request-our-reference-260803049-sar",
+   "refs": [],
+   "textUrl": "/mail/gm-1a068b690f1fde22.txt",
+   "jsonUrl": "/api/message/gm-1a068b690f1fde22.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a067c8479753b0e",
    "gmailMessageId": "1a067c8479753b0e",
    "threadId": "gt-1a067c8479753b0e",
@@ -11847,6 +12086,28 @@
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
+   "id": "gm-1a01a9ea1c9795b9",
+   "gmailMessageId": "1a01a9ea1c9795b9",
+   "threadId": "gt-1a01a9ea1c9795b9",
+   "date": "2026-08-19T12:00:00Z",
+   "direction": "received",
+   "from": "(name not shown)",
+   "institutions": [
+    {
+     "id": "dcms",
+     "name": "Department for Culture, Media and Sport"
+    }
+   ],
+   "subject": "IR2026/06711 - Department for Culture, Media and Sport - Response",
+   "threadSlug": "ir2026-06711-department-for-culture-media-and-sport-response",
+   "refs": [
+    "IR2026/06711"
+   ],
+   "textUrl": "/mail/gm-1a01a9ea1c9795b9.txt",
+   "jsonUrl": "/api/message/gm-1a01a9ea1c9795b9.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
    "id": "gm-1a019b3ae6ab1b95",
    "gmailMessageId": "1a019b3ae6ab1b95",
    "threadId": "gt-1a0073ad95b3bb32",
@@ -12829,6 +13090,26 @@
    "refs": [],
    "textUrl": "/mail/gm-19fc7d9d48f162aa.txt",
    "jsonUrl": "/api/message/gm-19fc7d9d48f162aa.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19fc7331f99b2d8b",
+   "gmailMessageId": "19fc7331f99b2d8b",
+   "threadId": "gt-19fc7331f99b2d8b",
+   "date": "2026-08-03T10:37:20Z",
+   "direction": "received",
+   "from": "(name not shown)",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "Response to your request (our reference 260702090 - SAR)",
+   "threadSlug": "response-to-your-request-our-reference-260702090-sar",
+   "refs": [],
+   "textUrl": "/mail/gm-19fc7331f99b2d8b.txt",
+   "jsonUrl": "/api/message/gm-19fc7331f99b2d8b.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
@@ -17803,6 +18084,28 @@
    "refs": [],
    "textUrl": "/mail/gm-19ddb19c4dc181b3.txt",
    "jsonUrl": "/api/message/gm-19ddb19c4dc181b3.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-19dce3025cf14e07",
+   "gmailMessageId": "19dce3025cf14e07",
+   "threadId": "gt-19dce3025cf14e07",
+   "date": "2026-04-27T12:00:00Z",
+   "direction": "received",
+   "from": "(name not shown)",
+   "institutions": [
+    {
+     "id": "moj",
+     "name": "Ministry of Justice / HMCTS"
+    }
+   ],
+   "subject": "Reply to your email of September 2025",
+   "threadSlug": "reply-to-your-email-of-september-2025",
+   "refs": [
+    "TO130237"
+   ],
+   "textUrl": "/mail/gm-19dce3025cf14e07.txt",
+   "jsonUrl": "/api/message/gm-19dce3025cf14e07.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
