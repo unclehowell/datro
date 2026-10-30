@@ -1,8 +1,8 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-10-30T10:08:23Z",
- "count": 966,
+ "generated": "2026-10-30T12:11:06Z",
+ "count": 967,
  "threadCount": 521,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
@@ -13,6 +13,23 @@
   "text": "/mail/<id>.txt"
  },
  "records": [
+  {
+   "id": "gm-1a18c5899ac08129",
+   "gmailMessageId": "1a18c5899ac08129",
+   "threadId": "gt-1a1273a8a3ded5fd",
+   "date": "2026-10-30T10:26:13Z",
+   "direction": "received",
+   "from": "enquiries",
+   "institutions": [],
+   "subject": "RE: Your Communication with Companies House, Ref: COH2382411X",
+   "threadSlug": "your-communication-with-companies-house-ref-coh2382411x",
+   "refs": [
+    "COH2382411X"
+   ],
+   "textUrl": "/mail/gm-1a18c5899ac08129.txt",
+   "jsonUrl": "/api/message/gm-1a18c5899ac08129.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
   {
    "id": "gm-1a18bf4bdca7fa49",
    "gmailMessageId": "1a18bf4bdca7fa49",
