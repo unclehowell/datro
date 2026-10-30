@@ -76,7 +76,7 @@ ADDR_RE = re.compile(r"(?:\b\d+\s*)?Robin[\s+]+Hill\b", re.I)
 # clerk's signature carries one. The street, its number and the town line after it (across quote
 # markers, blank lines and stripped map links) become "[address removed]".
 RES_ADDR_RE = re.compile(r"(?<!\d)(?:\d{1,4}[ \t]*)?Woodham[\s+]+Park\b(?:(?:\s|>|,|\[\d+\]|\[map link redacted\])*Barry\b,?)?", re.I)
-PRIVATE_RE = re.compile(r"\bRegan(?:\s*>?\s*)+Webb\b|\bMarina(?:\s*>?\s*)+Jaffee\b|\bBranwen(?:(?:\s*>?\s*)+Buckler)?\b")
+PRIVATE_RE = re.compile(bytes.fromhex("5c62526567616e283f3a5c732a3e3f5c732a292b576562625c627c5c624d6172696e61283f3a5c732a3e3f5c732a292b4a61666665655c627c5c624272616e77656e283f3a283f3a5c732a3e3f5c732a292b4275636b6c6572293f5c62").decode())  # P-066/P-096: members of the public, hex so the file names nobody
 SIG_RE = re.compile(r"\(Ret'?d Sergeant\)|Royal Signals Cyber/Electronic(?:\s*>?\s*)+Warfare(?:\s*>?\s*)+Professional(?:(?:\s*>?\s*)+and(?:\s*>?\s*)+Life(?:\s*>?\s*)+Member)?")
 # P-088 (30 Oct 2026, problems flywheel bca7b306): signature title lines (unit / role / "Life Member" lines), also inside
 # quoted '>' replies, and the "(Ret'd Sgt/Sergeant/Sergenant)" suffix after the owner label go. Body prose stays. - Sion's Tab agent
@@ -86,7 +86,7 @@ SIG_LINE_RE = re.compile(r"(?im)^((?:>[ \t]*)*)[ \t]*(?:<br\s*/?>)?[ \t]*\**[ \t
    r"|(?:&amp;|&)?[ \t]*Life[ \t]+Member(?:[ \t]*(?::|@|,|of)[ \t]*(?:the[ \t]+)?Royal[ \t]+(?:Corps[ \t]+of[ \t]+)?Signals)?"
    r")[ \t]*\**[ \t]*(?:\r?\n|\Z)")
 RETD_RE = re.compile(r"(Requester(?:[ \t]+Esq\.?)?\**)[ \t]*\(?[ \t]*Ret['\u2019]?d\.?[ \t]*(?:Army[ \t]+)?(?:Sergeant|Sergenant|Sgt)\.?[ \t]*\)?")
-OWNER_RE = re.compile(r"\b(?:Mr\.?\s+|Mister\s+)?Si[oô]n(?:\s+(?:ap\s+)?Buckler)?\b|\bMr\.?\s+Buckler\b|\bHywel\s+ap\s+Buckler\b")
+OWNER_RE = re.compile(bytes.fromhex("5c62283f3a4d725c2e3f5c732b7c4d69737465725c732b293f53695b6fc3b45d6e283f3a5c732b283f3a61705c732b293f4275636b6c6572293f5c627c5c624d725c2e3f5c732b4275636b6c65725c627c5c62487977656c5c732b61705c732b4275636b6c65725c62").decode())  # P-096: the owner's names, hex so the public file never names him
 PCODE_RE = re.compile(r"\b(?:[A-Z]{1,2}\d[A-Z\d]?)\s*\d[A-Z]{2}\b")
 
 def is_phone(s):
