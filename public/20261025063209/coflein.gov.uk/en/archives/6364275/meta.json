@@ -19,5 +19,6 @@
   "Tŷ Mawr"
  ],
  "redaction": "14 secret setting value(s) the site exposed in its HTML replaced with [REDACTED]",
- "raw_note": "the first single-file render (all images inlined, about 8 MB) was over the upload limit; this render keeps the page text, links and styles"
+ "raw_note": "the first single-file render (all images inlined, about 8 MB) was over the upload limit; this render keeps the page text, links and styles",
+ "raw_empty_note": "the raw render of this capture was written empty by a bug fixed on 30 Oct 2026; the text copy (text.txt) is this capture's record"
 }
