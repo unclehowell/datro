@@ -196,9 +196,9 @@ export const parties: Party[] = [
         date: "11 Oct 2026",
         correspondent: "The Clerk",
         ref: "October meeting — attendance and papers",
-        url: g("1a12af23f85ed2de"),
+        url: g("1a17c63fbd8e6731"),
         detail:
-          "The clerk said the “other matters” in the 21 September email would be considered at the October meeting, and that he would send the Council’s views afterwards. You asked to attend in the proper way and to see the papers. Putting the substantive questions onto a later meeting, rather than answering whether records are held, sits with the same officer whose refusal is under review. Since then: the Clerk’s agenda of 13 October 2026 said the 22 October meeting would be in the Council Chamber, with attendance in person or remotely. On 16 October he wrote that it will now be held remotely only. You objected the same day and asked for a reply by 17:00 on 20 October. No reply is in the mailbox as of 18 October 2026.",
+          "The clerk said the “other matters” in the 21 September email would be considered at the October meeting, and that he would send the Council’s views afterwards. You asked to attend in the proper way and to see the papers. Putting the substantive questions onto a later meeting, rather than answering whether records are held, sits with the same officer whose refusal is under review. Since then: the Clerk’s agenda of 13 October 2026 said the 22 October meeting would be in the Council Chamber, with attendance in person or remotely. On 16 October he wrote that it will now be held remotely only. You objected the same day and asked for a reply by 17:00 on 20 October. On 27 October the Clerk acknowledged your proposed amendments to the 22 October draft minutes but said the Council must decide their accuracy at its next meeting and that the Clerk and Councillor Carroll are not listed as attendees because they are not Council members. The minutes remain a matter for Council confirmation; the email is not agreement to your proposed changes.",
       },
     },
   },
@@ -211,13 +211,13 @@ export const parties: Party[] = [
     cells: {
       open: {
         status: "dormant",
-        title: "Request logged as 00211557",
-        date: "28 Sep 2026",
+        title: "Open planning and historic-record requests",
+        date: "17 Sep–29 Oct 2026",
         correspondent: "Information Governance, FOI Unit",
-        ref: "00211557, and 00210772, 00211463, 00211483, 00211484",
-        url: g("1a0f2d7e013f1d97"),
+        ref: "00211557 · 00211463 · 00211483 · 00211484 · 00211721 · 00211722",
+        url: g("1a186fef75ae76ee"),
         detail:
-          "The FOI unit acknowledged on 30 September that a request received on 28 September, reference 00211557, is being considered under FOIA and the EIR. Subject stated on the acknowledgement: Great House Farm / Church View Close — section 52 and land charges, the planning register, environmental-assessment screening, the condition 16–18 chain, and 92/00671/RES. Your later chase also names earlier open requests 00210772, 00211463, 00211483 and 00211484.",
+          "The FOI unit acknowledged request 00211557 on 30 September: Great House Farm / Church View Close, section 52 and land charges, planning register, environmental-assessment screening, condition 16–18 chain and 92/00671/RES. On 29 October the Council confirmed that 00211557 is under the EIR, searches have started and a response is due by 19 November. Request 00211463 concerns the Barry Preservation Society / Civic Trust representations and appendices to planning application 89/01396/OUT; on 29 October the internal review acknowledged a delay and set 20 November for the substantive response. Requests 00211483 and 00211484 are also under the EIR, with searches started and responses expected by 20 November. The Council separately logged the 18 October supplements as 00211721 (the former South Glamorgan County Treasures inventory; due 14 December) and 00211722 (village green VG41, the 1958 planning committee record and council works; due 14 December). These are live search tracks, not disclosures or findings about title.",
       },
       reply: {
         status: "evidence",
@@ -231,13 +231,13 @@ export const parties: Party[] = [
       },
       chase: {
         status: "nuisance",
-        title: "Appendices C, D and E still missing",
-        date: "10 Oct 2026",
-        correspondent: "To the Vale FOI Unit",
-        ref: "Formal chase of 00211557 and earlier requests",
-        url: g("1a123ef64335cb7c"),
+        title: "Late handling acknowledged; responses rescheduled",
+        date: "22–29 Oct 2026",
+        correspondent: "Vale of Glamorgan Council — Information Governance",
+        ref: "00211463 · 00211483 · 00211484 · 00211557",
+        url: g("1a0c1c87a6f1717d"),
         detail:
-          "Your 10 October email is a formal chase of three missing planning appendices, C, D and E. The file is open and incomplete: disclosures on one side, three appendices still not supplied on the other.",
+          "On 29 October the Council's internal review of 00211463 accepted that the substantive response had not been issued within the expected time and that it should have notified an EIR regulation 7 extension. The Council says searches are continuing and expects to answer by 20 November. Separate letters that day say 00211483 and 00211484 are under EIR, searches have started and answers are due 20 November; 00211557 is due 19 November. The Council's letters acknowledge late or retrospective extension handling on some requests. None of these letters supplies the missing planning appendices or any other substantive record.",
       },
       review: {
         status: "nuisance",
@@ -269,14 +269,14 @@ export const parties: Party[] = [
           "You asked Democratic Services for a Scrutiny topic suggestion and a Task and Finish review of the Council-held planning, heritage and public-authority record for Great House Farm / Tŷ Mawr / Church View Close. The FOI unit was copied for information only. You pointed them at greathousefarmwiki.wordpress.com.",
       },
       reply: {
-        status: "closed",
-        title: "Unable to consider the request",
-        date: "11 Oct 2026",
-        correspondent: "Democratic Services",
-        ref: "Democratic Services refusal",
+        status: "evidence",
+        title: "Place Scrutiny recommended; no decision to schedule",
+        date: "26 Oct 2026",
+        correspondent: "James Langridge-Thomas, Vale of Glamorgan Council",
+        ref: "County-wide historic planning and records-management topic",
         url: g("1a1149d647cb33dc"),
         detail:
-          "Democratic Services replied the next day that Scrutiny will be unable to consider it. His reasons: Task and Finish is for strategic, county-wide policy, not one historical site; Scrutiny should not review evidence of individual historical decisions, particularly planning; and because concerns are already with Welsh Government, Cadw, MSs and MPs, another layer of stakeholders would not be appropriate.",
+          "On 26 October Democratic Services acknowledged the revised county-wide proposal about management of, and public access to, historic planning, land-charges and heritage records. The officer recommended Place Scrutiny Committee as the likely fit because of its built-environment remit, but expressly said there was no decision yet to add the topic to a future work programme or choose the form of scrutiny. This followed the 11 October response declining the original single-site Task and Finish proposal. The 26 October county-wide suggestion still needs to go through the published Topic Suggestion Form and normal work-programming process. This is a routing recommendation, not committee approval.",
       },
     },
   },
@@ -307,13 +307,14 @@ export const parties: Party[] = [
           "On 29 September the force wrote that FOI 1040/26 had been considered and that the response was attached. The attachment is not extracted in this chart, so the slice is marked complicated rather than evidence. An earlier request, 719/26, is in internal review rather than closed.",
       },
       review: {
-        status: "dormant",
-        title: "Internal review 1188/26 opened",
-        date: "29 Sep 2026",
-        correspondent: "FOI review team",
-        ref: "1188/26 of FOI 719/26",
+        status: "evidence",
+        title: "Internal-review decision received as PDF; not transcribed",
+        date: "26 Oct 2026",
+        correspondent: "Samantha Jones, South Wales Police",
+        ref: "1188/26 — review of FOI 719/26",
+        url: g("1a178545741638a9"),
         detail:
-          "On 29 September the force confirmed that your email of 27 September, asking for an internal review of FOI 719/26, had been passed to the FOI review team as 1188/26. No outcome is in the mailbox sample.",
+          "On 26 October South Wales Police supplied a redacted PDF response to internal review 1188/26, together with its complaints procedure. The email confirms that the review has been considered and identifies the route for requesting a further re-examination and then approaching the Information Commissioner. The PDF's actual reasoning and outcome have not been transcribed into this chart, so no conclusion is drawn about whether the review upheld or changed the original decision.",
       },
     },
   },
@@ -442,33 +443,33 @@ export const parties: Party[] = [
     cells: {
       open: {
         status: "dormant",
-        title: "FOI/2026/09 and a LibAnswers enquiry",
-        date: "10 Oct 2026",
-        correspondent: "NLW enquiries",
-        ref: "FOI/2026/09",
-        url: g("1a11eaa0af2e3861"),
+        title: "Bute search closed; two new archive requests acknowledged",
+        date: "10–29 Oct 2026",
+        correspondent: "National Library of Wales — Enquiries / FOI",
+        ref: "FOI/2026/09 · FOI/2026/16 · FOI/2026/17",
+        url: g("1a141fc4254e01d4"),
         detail:
-          "A LibAnswers submission was acknowledged on 10 October. The FOI file is FOI/2026/09, already through internal review by the time of that note.",
+          "FOI/2026/09 and its internal review concern Bute Estate material, including D153 and D205. On 29 October Dr Owain Rhys Roberts confirmed that no further classmarks had been identified since the July searches for Great House Farm / Tŷ Mawr / Llandough, the 1877 agreement, the 1916 tenancy or the 1938–39 sale. Two separate requests are now registered: FOI/2026/16, received 16 October and due 13 November, asks about the 1610 Herbert survey S7, Bute X.6(12) microfilm and possible long lease / Vaughan-to-Bute conveyance; FOI/2026/17, received 28 October and due 25 November, asks whether the Library holds the underlying ITV/HTV Report Wales recordings of the 11 April and 1 November 1974 Llandough protests. The latter reference was corrected from FOI/2026/15 for administrative sequencing.",
       },
       reply: {
-        status: "evidence",
-        title: "Bute Estate series searched",
-        date: "Before 10 Oct 2026",
-        correspondent: "NLW FOI",
-        ref: "D153 and D205",
+        status: "closed",
+        title: "No further Bute classmarks identified since July searches",
+        date: "29 Oct 2026",
+        correspondent: "Dr Owain Rhys Roberts, National Library of Wales",
+        ref: "FOI/2026/09 follow-up · Bute Estate",
         url: g("1a11eaa0af2e3861"),
         detail:
-          "You thanked them for searches of the Bute Estate series, including D153 and D205. Those searches are evidence in, whether or not a further box turns up.",
+          "Following verification, the Library confirmed that no further classmarks had been identified since its July 2026 searches relating to Great House Farm / Tŷ Mawr / Llandough, the 1877 agreement, the 1916 tenancy or the 1938–39 sale. The earlier search history includes the Bute Estate series D153 and D205. This closes that narrow follow-up only. It does not establish that no such record ever existed and does not answer the separate 1610 Herbert / Bute X.6(12) request or the 1974 television-archive request.",
       },
       chase: {
-        status: "dormant",
-        title: "One remaining point",
-        date: "10 Oct 2026",
-        correspondent: "To NLW enquiries",
-        ref: "Further Bute or related material",
+        status: "closed",
+        title: "Further Bute classmark check answered",
+        date: "10–29 Oct 2026",
+        correspondent: "To and from NLW Enquiries",
+        ref: "FOI/2026/09 follow-up",
         url: g("1a11eaa0af2e3861"),
         detail:
-          "On 10 October you asked them to confirm whether any further Bute Estate or related material remains. No answer to that single point is in the sample.",
+          "The 10 October follow-up asked whether any further Bute Estate or related classmarks had been identified since July. On 29 October the Library answered no. The two later FOI requests, FOI/2026/16 and FOI/2026/17, remain separate open matters.",
       },
       review: {
         status: "evidence",
@@ -512,13 +513,13 @@ export const parties: Party[] = [
       },
       chase: {
         status: "dormant",
-        title: "Scans ordered, not yet in",
-        date: "10 Oct 2026",
-        correspondent: "To NMR enquiries",
-        ref: "Archives 6048945, 6048943, 6048941",
-        url: g("1a11f562b7880f36"),
+        title: "Nomenclature follow-up acknowledged; priority searches suspended",
+        date: "29 Oct 2026",
+        correspondent: "NMR Enquiries, RCAHMW",
+        ref: "RC26-0375 and follow-up searches",
+        url: g("1a11178b91ab138c"),
         detail:
-          "On 10 October you ordered scans of Archives 6048945, 6048943 and 6048941. That order is outstanding in this sample. It is a new step, not a reopening of the four answers they say are finished.",
+          "On 29 October RCAHMW acknowledged the follow-up using the additional historical names, including Llandough Home Farm. It says it will endeavour to respond within 15 working days, but its Priority Enquiry Service is suspended because of staff shortages. It recommends an archive search-room appointment, where material can be viewed and photographed without charge; remote scans may be slower and more expensive. The earlier order for scans of Archives 6048945, 6048943 and 6048941 remains a separate outstanding step. A message sent to the alternate address nmrwales@rcahmw.gov.uk bounced; the acknowledgement came through the nmr.wales@rcahmw.gov.uk channel.",
       },
     },
   },
@@ -530,14 +531,14 @@ export const parties: Party[] = [
     remit: "1988 listing file, ATISN 27021, 27589, 26-0009 and 26-0010.",
     cells: {
       open: {
-        status: "closed",
-        title: "ATISN 26-0010 and 27589 both answered on 19 Oct",
-        date: "10 Oct 2026 (asked) · 19 Oct 2026 (answered)",
-        correspondent: "Welsh Government FOI",
-        ref: "ATISN 26-0010, ATISN 27589 (and ATISN 27021)",
-        url: g("1a11ea981f52fcb9"),
+        status: "dormant",
+        title: "ATISN 26-0010 review and new ATISN 26-0075 search track",
+        date: "10–30 Oct 2026",
+        correspondent: "Welsh Government FOI / Departmental Records Officer",
+        ref: "ATISN 26-0010 · ATISN 26-0075 · ATISN 27589 · ATISN 26-0009",
+        url: g("1a18dbc3359e6488"),
         detail:
-          "On 10 October you asked the Welsh Government FOI team for retention and destruction schedules for pre-1997 file series on agricultural tenancy, land and rural policy (logged as ATISN 26-0010). You tied that to ATISN 27021 and ATISN 27589 (Cadw listing material) and to the Wales Office file 26FOI 103 / IR/26/16. Both 26-0010 and 27589 were answered on 19 October 2026; see the next ring for the two letters. ATISN 26-0009 (the records behind the disposal finding) is still open.",
+          "ATISN 26-0010 and ATISN 27589 were answered on 19 October; ATISN 26-0009 remains a separate records question. On 30 October the Welsh Government confirmed that the internal review of ATISN 26-0010 is being conducted separately by the Departmental Records Officer. The same correspondence is registered as ATISN 26-0075: it seeks clarification of the section 14(2) refusal of ATISN 27589 and opens new searches for registered-file index records and disposal/transfer history, Welsh Office property/deeds interests 1950–1997, wartime farm records 1936–1955, and compulsory-purchase / stopping-up / diversion orders 1950–1995. A preservation request covers the registered-file index and files, any remnant of the 1988 listing file, the original 29 July 1988 inspection photographs, disposal logs and transfer lists. Parts B–D are due by 16 November 2026.",
       },
       reply: {
         status: "nuisance",
@@ -621,14 +622,14 @@ export const parties: Party[] = [
           "A substantive Wales Office response exists under 26FOI 103. Its text is not in the October sample used for this chart, so the slice is marked complicated: cited, not re-read here.",
       },
       review: {
-        status: "nuisance",
-        title: "Internal review IR/26/16",
-        date: "2026",
-        correspondent: "Wales Office",
-        ref: "IR/26/16",
-        url: g("1a11ea981f52fcb9"),
+        status: "evidence",
+        title: "IR/26/16 decision PDF received; reviewer identity queried",
+        date: "26–29 Oct 2026",
+        correspondent: "Wales Office FOI Team",
+        ref: "26FOI 103 · IR/26/16",
+        url: g("1a1793ba43e8d95b"),
         detail:
-          "Internal review IR/26/16 is cited alongside 26FOI 103. The review has been taken. The outcome is not quoted in the mail this chart was drawn from.",
+          "The Wales Office sent the internal-review decision for IR/26/16 as an attached PDF on 26 October. The attachment's reasoning has not been transcribed here, so no finding is attributed to the reviewer. On 29 October you asked for the full name, official title and role of the person who conducted the review and the person who authorised the decision. In the same reply you raised a separate, focused records enquiry about the reported 1926 Cardiff Corporation conveyance, 1926 Mountjoy company records and 1938 Bute/Mountjoy conveyance to Western Ground Rents, asking for custodians, search methods and preservation status.",
       },
     },
   },
@@ -702,13 +703,13 @@ export const parties: Party[] = [
       },
       chase: {
         status: "dormant",
-        title: "Subject access still inside its deadline",
-        date: "1 Oct 2026",
-        correspondent: "Data Protection, Land Registry",
-        ref: "SAR — WA231076 / WA240304 — due 28 Oct 2026",
-        url: g("1a0e3f997bc1bf94"),
+        title: "SAR D260928 awaiting identity and address verification",
+        date: "27 Oct 2026",
+        correspondent: "S. Henderson, Disclosure Officer, HM Land Registry",
+        ref: "D260928 · titles WA231076 / WA240304",
+        url: g("1a17d3ce2927a81d"),
         detail:
-          "You sent a subject access request on 28 September for titles WA231076 and WA240304, Williams / Buckler, Great House Farm. On 1 October Data Protection said it would be handled under UK GDPR, with a statutory deadline of 28 October 2026. A preservation notice was also acknowledged automatically.",
+          "On 27 October Land Registry said it needs photographic identity evidence (for example a passport or driving licence) and a recent utility bill before it can proceed with subject access request D260928. It says copies will not be retained, but a file note will be made. The SAR is therefore awaiting the requested verification; this is not a decision on the underlying title or registration questions.",
       },
       complaint: {
         status: "evidence",
@@ -741,13 +742,13 @@ export const parties: Party[] = [
     cells: {
       open: {
         status: "dormant",
-        title: "FOI and a subject access request",
-        date: "5 Aug 2026 onward",
-        correspondent: "MOD FOI and DBS",
-        ref: "FOI2026/09019 · DPR2026/46503",
-        url: g("1a11eb8cc384c312"),
+        title: "1988 records request and supplementary search relogged",
+        date: "5 Aug–30 Oct 2026",
+        correspondent: "MOD FOI and Defence Business Services",
+        ref: "FOI2026/09019 · DPR2026/46503 · FOI2026/25726",
+        url: g("1a18893b1774cbb8"),
         detail:
-          "Two tracks. FOI2026/09019 asks about possible UK Armed Forces involvement in the 1988 events at Tŷ Mawr. Subject access request DPR2026/46503 was received by Defence Business Services on 5 August 2026. WhatDoTheyKnow also carries “1988 Dispossession of Great House Farm, Llandough from the Williams/Buckler Family”, which notified a new response on 10 October.",
+          "Two original tracks remain: FOI2026/09019 asks about possible UK Armed Forces involvement in the 1988 events at Tŷ Mawr; subject access request DPR2026/46503 was received by Defence Business Services on 5 August 2026. On 30 October the MOD confirmed that the 10 October request, with the additional nomenclature and location search terms, has been relogged as FOI2026/25726, with a target date of 26 November 2026. This is an acknowledgement and new reference, not a disclosure or confirmation that any record is held.",
       },
       reply: {
         status: "suspicious",
@@ -998,6 +999,16 @@ export const parties: Party[] = [
         detail:
           "On 6 October Heneb replied that whether it falls within the EIR is a matter of legal dispute, and pointed to Archwilio record 02038s. On 14 October it wrote that the HER source file had been digitised and uploaded to that record as PDFs, including its copy of Suggett (1988). On 16 October it answered the 19 September schedule point by point, mostly by reference to the public Archwilio record.",
       },
+      chase: {
+        status: "closed",
+        title: "Follow-up searches return no further records; fire enquiry not held",
+        date: "29 Oct 2026",
+        correspondent: "Heneb Historic Environment Record Team",
+        ref: "GHF/HENEB/2026-09-20 · 1983 GGAT warehouse-fire enquiry",
+        url: g("1a0bbdf18c9ea3b9"),
+        detail:
+          "On 29 October Heneb said it had made all reasonable efforts to search its planning and project archives and administrative files and had recovered no information pertaining to the outstanding requests. It said the HER does not record the requested information, identified the Suggett 1988 source online, supplied a redacted example of its change log but declined to provide further entries, gave 1 April 2024 as the transfer date requested, said certain requested documents do not exist, and stated it has no intention of deleting files or changing records. In a separate response to the 24 September enquiry about the March 1983 GGAT warehouse fire and possible loss of Llandough material, Heneb said it holds no records pertaining to that request. These are Heneb's stated positions on the searches made; they do not prove that records never existed or that records held elsewhere are absent.",
+      },
       complaint: {
         status: "dormant",
         title: "Formal complaint acknowledged",
@@ -1058,13 +1069,23 @@ export const parties: Party[] = [
     cells: {
       open: {
         status: "dormant",
-        title: "Submission on reopening the 1987 case",
-        date: "3 Sep 2026",
-        correspondent: "To the CPS",
-        ref: "Re-opening of BP vs Buckler 1987",
-        url: g("1a0693988a9de5f0"),
+        title: "FOI request 14786 — historical CPS records",
+        date: "21–26 Oct 2026",
+        correspondent: "To and from CPS Corporate Knowledge & Information Team",
+        ref: "CPS FOI 14786",
+        url: g("1a1790f028e2355a"),
         detail:
-          "On 3 September 2026 you sent the CPS a submission asking it to consider the Buckler case’s concerns about suspected historic misconduct connected with BP Properties Ltd v Buckler. An automatic reply and an acknowledgement followed.",
+          "On 21 October you asked whether the CPS holds any records from 1 October 1986 to 31 December 1990 referring to Great House Farm / Tŷ Mawr, BP Properties Ltd or the reported summons arising from events at the farm on 29 April 1988; you also asked for any applicable retention or disposal records and a description of the searches. The CPS acknowledged receipt on 26 October and set a response deadline of 18 November 2026. This is a records request, not a submission of evidence to the CPS. Separately, the 3 September submission asking the CPS to consider the concerns about the 1987 proceedings remains an earlier track; the October mail reviewed here contains no CPS decision on that submission.",
+      },
+      reply: {
+        status: "dormant",
+        title: "FOI acknowledged; substantive response awaited",
+        date: "26 Oct 2026",
+        correspondent: "CPS Corporate Knowledge & Information Team",
+        ref: "14786 · due 18 Nov 2026",
+        url: g("1a1790f028e2355a"),
+        detail:
+          "The CPS confirmed that it is processing the 21 October request under FOIA, that the disclosure regime is public, and that the response is due by 18 November 2026. This is an acknowledgement only; it does not confirm whether any case file exists or whether searches have returned information.",
       },
       chase: {
         status: "dormant",
@@ -1132,9 +1153,175 @@ export const parties: Party[] = [
       },
     },
   },
+
+  {
+    id: "defra",
+    name: "Department for Environment, Food & Rural Affairs",
+    short: "Defra",
+    kind: "authority",
+    remit: "Successor to MAF. Wartime and post-war farm records, 1936–1955.",
+    cells: {
+      open: {
+        status: "closed",
+        title: "FOI2026/23886 — MAF farm records request",
+        date: "20–29 Oct 2026",
+        correspondent: "Defra Information Rights Team",
+        ref: "FOI2026/23886",
+        url: g("1a156bfe07db1662"),
+        detail:
+          "The request sought National Farm Survey / MAF farm records, Glamorgan War Agricultural Executive Committee records, possession or requisition decisions, Agricultural Holdings Act consent, compensation claims and correspondence with Western Ground Rents or the Bute Estate for 1936–1955. After you supplied additional historical names and location forms on 29 October, Defra said the added terms did not change its 21 October response and that the Department does not hold the requested information. Defra pointed to the Welsh Government as a possible holder.",
+      },
+      reply: {
+        status: "closed",
+        title: "Defra maintains its not-held position",
+        date: "29 Oct 2026",
+        correspondent: "Defra Information Rights Team",
+        ref: "FOI2026/23886",
+        url: g("1a156bfe07db1662"),
+        detail:
+          "Defra confirmed that it had considered the supplementary historical names and locality descriptions but maintained its position that the information requested under FOI2026/23886 is not held by the Department. A separate 29 October response to the nomenclature supplement says further searches, including within the Records Management Team, found no information within that supplement's scope. Keep those two request scopes distinct. A not-held response records Defra's search result; it does not establish that the records never existed or were not transferred elsewhere.",
+      },
+    },
+  },
+  {
+    id: "historic-england",
+    name: "Historic England",
+    short: "Historic England",
+    kind: "authority",
+    remit: "Archive custody and the 2018 transfer of Welsh archaeological-report microfiche to RCAHMW.",
+    cells: {
+      open: {
+        status: "dormant",
+        title: "EIR 26/04323 — archive transfer and retention enquiry",
+        date: "20–22 Oct 2026",
+        correspondent: "Historic England Access to Information",
+        ref: "26/04323",
+        url: g("1a15e2cfd24eaf4d"),
+        detail:
+          "The enquiry asked for the custody, transfer and retention history of the Welsh section of Historic England's archaeological reports microfiche collection, including any transfer records and any retained copy or index.",
+      },
+      reply: {
+        status: "evidence",
+        title: "Deaccession decision and transfer letter identified",
+        date: "27 Oct 2026",
+        correspondent: "Mark Wilkins, Historic England",
+        ref: "26/04323 · deaccession 25 Jul 2017 · transfer 12 Jan 2018",
+        url: g("1a15e2cfd24eaf4d"),
+        detail:
+          "Historic England said it holds a letter transferring the Welsh section to RCAHMW dated 12 January 2018 and a deaccession statement recording the decision on 25 July 2017 by the former Head of Archive. It said there was no itemised list of the microfiche and that Historic England neither destroyed nor retained the microfiche after transfer. The email identifies attachments containing the letter and statement; those attachment contents have not yet been transcribed here. The reply also records redaction of minor third-party personal information.",
+      },
+    },
+  },
+  {
+    id: "ordnance-survey",
+    name: "Ordnance Survey",
+    short: "OS",
+    kind: "authority",
+    remit: "Historic map revision, naming and source records for the Penarth-area Llandough.",
+    cells: {
+      open: {
+        status: "dormant",
+        title: "FOI-26-46 clarified; new response deadline",
+        date: "20–29 Oct 2026",
+        correspondent: "Ordnance Survey FOI Team",
+        ref: "FOI-26-46",
+        url: g("1a18825f3d9394d6"),
+        detail:
+          "OS initially confused the target site with Great House Farm at Llandough near Cowbridge (CF71 7LR), and identified another Ty Mawr without the Great House name. You clarified that the subject is Llandough-juxta-Penarth, near Penarth and Cardiff, around ST 168 733, not the Cowbridge parish. On 29 October OS acknowledged receipt of the clarification and set a revised response deadline of 26 November 2026. The 20-working-day clock restarted after clarification. The substantive map-revision and name-source search remains pending.",
+      },
+      reply: {
+        status: "evidence",
+        title: "Location ambiguity identified and corrected",
+        date: "26–29 Oct 2026",
+        correspondent: "Nikki Osborne, OS FOI Team",
+        ref: "FOI-26-46",
+        url: g("1a177a359d80b6be"),
+        detail:
+          "The 26 October clarification request shows that OS's initial search had found the Cowbridge Llandough rather than the Penarth-area site. Your 29 October clarification supplied the parish, map-sheet and grid-reference distinction, and OS acknowledged it the same day. This is a resolved location clarification, not a substantive answer about revision notes or historical naming records.",
+      },
+    },
+  },
+  {
+    id: "nrw",
+    name: "Natural Resources Wales",
+    short: "NRW",
+    kind: "authority",
+    remit: "Cwm Cydfin SSSI, ownership/occupier notifications and woodland records.",
+    cells: {
+      open: {
+        status: "dormant",
+        title: "EIR acknowledged — Cwm Cydfin and Leckwith woodland",
+        date: "20–27 Oct 2026",
+        correspondent: "Owen Hopkins, NRW Access to Information Team",
+        ref: "CAS-322825-L6S1",
+        url: g("1a17d40e7e544e07"),
+        detail:
+          "NRW acknowledged EIR request CAS-322825-L6S1 on 27 October. It concerns the 1972 and 1985 Cwm Cydfin SSSI notifications, owners and occupiers served, objections and management records, and woodland grant, felling, management and title records for the Leckwith Road woodland including WA735527. NRW says it will respond as soon as possible and no later than 20 working days after receipt. This is an acknowledgement, not a disclosure.",
+      },
+    },
+  },
+  {
+    id: "companies-house",
+    name: "Companies House",
+    short: "Companies House",
+    kind: "authority",
+    remit: "Corporate filings and company-history records for Western Ground Rents Limited.",
+    cells: {
+      open: {
+        status: "dormant",
+        title: "Company records enquiry",
+        date: "10–30 Oct 2026",
+        correspondent: "Companies House Enquiries Team",
+        ref: "COH2382411X · Western Ground Rents Limited 09760885",
+        url: g("1a1273a8a3ded5fd"),
+        detail:
+          "The enquiry concerns the corporate record of Western Ground Rents Limited and connected company records relevant to the historical title chain. Companies House supplied 09760885 as the company number for a company currently named Western Ground Rents Limited. The original 1938 conveyance enquiry refers to Western Ground Rents Ltd, company number 00342092. The relationship or legal continuity between these numbers is not established by this reply and must be checked against the incorporation and name-history records before treating them as the same entity.",
+      },
+      reply: {
+        status: "evidence",
+        title: "Filing access and archive-copy prices supplied",
+        date: "30 Oct 2026",
+        correspondent: "Companies House Contact Centre",
+        ref: "09760885 · COH2382411X",
+        url: g("1a1273a8a3ded5fd"),
+        feeMarker: true,
+        detail:
+          "Companies House says digital data and images are free online. It quoted £3 per document, £3 for a past/current director list or mortgage/charge/debenture list, £9 for accounts or annual returns filed before 1973, and £20 for an Archive DVD containing documents from incorporation to 31 December 2002, excluding pre-1973 accounts and annual returns. No archive document has been ordered or supplied by this email; this is a retrieval route and fee schedule, not evidence of the 1926 or 1938 conveyances. In particular, the answer does not establish that company 09760885 is the same legal person as the earlier company number 00342092.",
+      },
+    },
+  },
+  {
+    id: "forest-of-cardiff",
+    name: "Forest of Cardiff",
+    short: "Forest of Cardiff",
+    kind: "private",
+    remit: "Woodland owner; informal enquiry about historic acquisition and title documents for WA735527.",
+    cells: {
+      open: {
+        status: "dormant",
+        title: "Request to check woodland acquisition records",
+        date: "18 Sep–29 Oct 2026",
+        correspondent: "To Forest of Cardiff",
+        ref: "WA735527 · reported 1926 / 1938 instruments",
+        url: g("1a0b6419bb421780"),
+        detail:
+          "You asked whether Forest of Cardiff holds or has held the reported 1926 conveyance to Cardiff Corporation, 1926 Mountjoy formation records, and 1938 Bute/Mountjoy conveyance to Western Ground Rents, including plans, abstracts or references in its 1994 acquisition file or with its advisers.",
+      },
+      reply: {
+        status: "evidence",
+        title: "Correspondent says requested records are not held",
+        date: "29 Oct 2026",
+        correspondent: "Julian Wilkes",
+        ref: "WA735527 · reported 1926 / 1938 instruments",
+        url: g("1a0b6419bb421780"),
+        detail:
+          "Julian Wilkes replied: “I'm afraid we don't have any of those records you referred to.” The email does not establish his role, the scope of any search, or whether the response is the charity's formal position. Record it as a correspondent's statement only, not as a verified institutional nil return or proof that the instruments do not exist.",
+      },
+    },
+  },
 ];
 
-export const sampledThrough = "18 October 2026";
+export const sampledThrough = "30 October 2026";
 
 export function dormantDetail(party: Party, ring: Ring): string {
   if (party.kind === "private" && (ring.id === "regulator" || ring.id === "democratic" || ring.id === "forum")) {
