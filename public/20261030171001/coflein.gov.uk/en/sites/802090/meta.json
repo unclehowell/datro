@@ -1,0 +1,24 @@
+{
+ "url": "https://coflein.gov.uk/en/sites/802090",
+ "key": "coflein.gov.uk/en/sites/802090",
+ "path": "/20261030171001/coflein.gov.uk/en/sites/802090/",
+ "captured_utc": "2026-10-30T17:10:01Z",
+ "captured_human": "30 Oct 2026 17:10 UTC",
+ "source": "live",
+ "http_status": 200,
+ "content_type": "text/html",
+ "mode": "single-file (monolith, CSS kept; no scripts, fonts or images), captured from Tab's machine",
+ "title": "English – Coflein",
+ "sha256": "ab629aed4ccec1673e53096e9e8ee63f2b7f58fa20e81166bf55266365e8ab29",
+ "text_sha256": "860a35dadb4f6d4776c5dbbce39e5bfe049927648d5ba859be57e83de76fe0de",
+ "bytes": 290377,
+ "file": "raw.html",
+ "captured_from": "Tab's machine",
+ "how": "captured from Tab's machine: plain fetch with a normal browser user agent, single file by monolith",
+ "matched_terms": [
+  "Great House Farm",
+  "Coflein 20182"
+ ],
+ "redaction": "14 secret setting value(s) the site exposed in its HTML replaced with [REDACTED]",
+ "raw_note": "the first single-file render (all images inlined, about 8 MB) was over the upload limit; this render keeps the page text, links and styles"
+}
