@@ -78,6 +78,14 @@ ADDR_RE = re.compile(r"(?:\b\d+\s*)?Robin[\s+]+Hill\b", re.I)
 RES_ADDR_RE = re.compile(r"(?<!\d)(?:\d{1,4}[ \t]*)?Woodham[\s+]+Park\b(?:(?:\s|>|,|\[\d+\]|\[map link redacted\])*Barry\b,?)?", re.I)
 PRIVATE_RE = re.compile(r"\bRegan(?:\s*>?\s*)+Webb\b|\bMarina(?:\s*>?\s*)+Jaffee\b|\bBranwen(?:(?:\s*>?\s*)+Buckler)?\b")
 SIG_RE = re.compile(r"\(Ret'?d Sergeant\)|Royal Signals Cyber/Electronic(?:\s*>?\s*)+Warfare(?:\s*>?\s*)+Professional(?:(?:\s*>?\s*)+and(?:\s*>?\s*)+Life(?:\s*>?\s*)+Member)?")
+# P-088 (30 Oct 2026, problems flywheel bca7b306): signature title lines (unit / role / "Life Member" lines), also inside
+# quoted '>' replies, and the "(Ret'd Sgt/Sergeant/Sergenant)" suffix after the owner label go. Body prose stays. - Sion's Tab agent
+SIG_LINE_RE = re.compile(r"(?im)^((?:>[ \t]*)*)[ \t]*(?:<br\s*/?>)?[ \t]*\**[ \t]*(?:"
+   r"(?:Military[ \t]+)?Cyber[ \t]*(?:&amp;|&|and|/)[ \t]*Electronic[ \t]+Warfare[ \t]+Profess+ional\.?"
+   r"|Royal[ \t]+(?:Corps[ \t]+of[ \t]+)?Signals(?:[ \t]*[\u2014\u2013-][ \t]*(?:Military[ \t]+)?Cyber[^\n]*Warfare[ \t]+Profess+ional)?"
+   r"|(?:&amp;|&)?[ \t]*Life[ \t]+Member(?:[ \t]*(?::|@|,|of)[ \t]*(?:the[ \t]+)?Royal[ \t]+(?:Corps[ \t]+of[ \t]+)?Signals)?"
+   r")[ \t]*\**[ \t]*\r?\n?")
+RETD_RE = re.compile(r"(Requester(?:[ \t]+Esq\.?)?\**)[ \t]*\(?[ \t]*Ret['\u2019]?d\.?[ \t]*(?:Army[ \t]+)?(?:Sergeant|Sergenant|Sgt)\.?[ \t]*\)?")
 OWNER_RE = re.compile(r"\b(?:Mr\.?\s+|Mister\s+)?Si[oô]n(?:\s+(?:ap\s+)?Buckler)?\b|\bMr\.?\s+Buckler\b|\bHywel\s+ap\s+Buckler\b")
 PCODE_RE = re.compile(r"\b(?:[A-Z]{1,2}\d[A-Z\d]?)\s*\d[A-Z]{2}\b")
 
@@ -132,6 +140,8 @@ def redact(t, c):
     t, n = OWNER_RE.subn("Requester", t); c["owner_name"] += n
     t, n = PRIVATE_RE.subn("[member of the public]", t); c["private_name"] += n
     t, n = SIG_RE.subn("", t); c["signature"] += n
+    t, n = SIG_LINE_RE.subn("", t); c["signature"] += n
+    t, n = RETD_RE.subn(r"\1", t); c["signature"] += n
     return t
 
 def sender_name(s, sent):
