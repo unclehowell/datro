@@ -1,9 +1,9 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-10-30T00:44:13Z",
- "count": 964,
- "threadCount": 519,
+ "generated": "2026-10-30T02:04:45Z",
+ "count": 965,
+ "threadCount": 520,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
@@ -277,6 +277,26 @@
    ],
    "textUrl": "/mail/gm-1a188940642dcd8d.txt",
    "jsonUrl": "/api/message/gm-1a188940642dcd8d.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a18893c955c19a3",
+   "gmailMessageId": "1a18893c955c19a3",
+   "threadId": "gt-1a18893c955c19a3",
+   "date": "2026-10-29T16:52:28Z",
+   "direction": "received",
+   "from": "Clipsales Mailbox",
+   "institutions": [
+    {
+     "id": "itv",
+     "name": "ITV Archive"
+    }
+   ],
+   "subject": "Thank you for your email Re: Nomenclature supplement — Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth",
+   "threadSlug": "thank-you-for-your-email-re-nomenclature-supplement-great-house-farm-ty-mawr-lla",
+   "refs": [],
+   "textUrl": "/mail/gm-1a18893c955c19a3.txt",
+   "jsonUrl": "/api/message/gm-1a18893c955c19a3.json",
    "source": "Original email in the family's Gmail (read-only export); contact details redacted."
   },
   {
