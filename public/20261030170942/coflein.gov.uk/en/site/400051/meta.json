@@ -1,0 +1,23 @@
+{
+ "url": "https://coflein.gov.uk/en/site/400051/",
+ "key": "coflein.gov.uk/en/site/400051",
+ "path": "/20261030170942/coflein.gov.uk/en/site/400051/",
+ "captured_utc": "2026-10-30T17:09:42Z",
+ "captured_human": "30 Oct 2026 17:09 UTC",
+ "source": "live",
+ "http_status": 200,
+ "content_type": "text/html",
+ "mode": "single-file (monolith, CSS kept; no scripts, fonts or images), captured from Tab's machine",
+ "title": "English – Coflein",
+ "sha256": "d96bf1379b4f47ea49aadd5820a2538f42c71f377950e7ef1e6394ae39662524",
+ "text_sha256": "f02cb3ff065fac4a3a442f965dfb2722de0179b5c779ab08d317eeccf3a38837",
+ "bytes": 290194,
+ "file": "raw.html",
+ "captured_from": "Tab's machine",
+ "how": "captured from Tab's machine: plain fetch with a normal browser user agent, single file by monolith",
+ "matched_terms": [
+  "Llandough"
+ ],
+ "redaction": "14 secret setting value(s) the site exposed in its HTML replaced with [REDACTED]",
+ "raw_note": "the first single-file render (all images inlined, about 8 MB) was over the upload limit; this render keeps the page text, links and styles"
+}
