@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-29T22:44:49Z",
+  "updated": "2026-10-30T17:58:43Z",
   "schema": "metadata only: id, record, version, status, turn, open_issues, last_change, last_agent, rounds (versions written so far); events: [{at, draft, version, agent, event}], newest last. Never email text.",
   "drafts": [
     {
@@ -428,10 +428,10 @@
       "id": "hmlr-eir-vg41",
       "record": "HubSpot task 532326659316",
       "version": "v0.9.0",
-      "status": "TURN: ChatGPT",
-      "turn": "ChatGPT (per HubSpot subject, read 2026-10-27T10:09Z)",
+      "status": "SKIPPED ChatGPT — IDLE; QUEUED BEHIND GROK",
+      "turn": "Queued behind Grok (seat 3) after existing live assignment hmlr-eir-1961-deed v0.10.0; no second concurrent assignment created.",
       "open_issues": null,
-      "last_change": "2026-10-29T09:00:10Z",
+      "last_change": "2026-10-27T09:51:11Z",
       "last_agent": "Tab",
       "rounds": 8,
       "context": {
@@ -482,7 +482,7 @@
         "ChatGPT",
         "Tab"
       ],
-      "stage": "TURN",
+      "stage": "QUEUED",
       "pct_at": "2026-10-27T10:03:55Z",
       "sent_version": null,
       "seat_agreements_version": null,
@@ -490,7 +490,10 @@
       "attachments_verified_version": null,
       "version_reviews": 0,
       "version_distinct_agents": 0,
-      "version_agents": []
+      "version_agents": [],
+      "last_action_at": "2026-10-30T17:58:43Z",
+      "last_action_by": "ChatGPT",
+      "queue_after": "hmlr-eir-1961-deed"
     },
     {
       "id": "tna-hmlr-commons-records-1960-72",
@@ -3319,7 +3322,7 @@
       "pct_at": "2026-10-29T14:06:28Z"
     }
   ],
-  "synced_at": "2026-10-29T22:44:49Z",
+  "synced_at": "2026-10-30T17:58:43Z",
   "sync": {
     "by": "Sion's Tab agent (board_sync.py, 4-hourly schedule; replaces the Actions run)",
     "source": "HubSpot task subjects and hs_lastmodifieddate (metadata); changelog review counts for % complete (no body text stored)",
@@ -3787,6 +3790,13 @@
       "version": "v0.10.0",
       "agent": "ChatGPT",
       "event": "Idle-skip only: re-read HubSpot task 532017103065; exact v0.10.0 and recipient text unchanged; no material review credited. Routed to least-loaded eligible active seat Grok (seat 3; active HubSpot+Gmail; no TURN items in current BOARD snapshot) to verify complete source thread, all attachments and current replies before independent review."
+    },
+    {
+      "at": "2026-10-30T17:58:43Z",
+      "draft": "hmlr-eir-vg41",
+      "version": "v0.9.0",
+      "agent": "ChatGPT",
+      "event": "Idle-skip only: skipped ChatGPT after >30 minutes; queued behind Grok's existing live HMLR EIR task hmlr-eir-1961-deed v0.10.0. No content review or recipient-facing edit; exact-version review counters remain zero."
     }
   ],
   "pct_rule": "% complete = progress through the review gate on the exact current frozen version: pct = round(100 x (0.7 x min(version_reviews,10)/10 + 0.3 x min(version_distinct_agents,4)/4)). version_reviews / version_distinct_agents / version_agents are counted from each HubSpot task's signed changelog (material reviews of the current version only; creation, skips, routes and restores are not reviews; a signed version_reviews=N tally in the changelog is honoured when higher). Capped at 95 until the task is READY TO SEND or later AND its Gmail draft exists (gmail_draft_id); then 100 = in the owner's Gmail, ready to send or schedule. SENT rows show Sent. Historical reviews/distinct_agents/agents are informational only. Promotion gates beyond IN REVIEW (open_issues=0, seat_agreements_version, final_three_hat_version, attachments_verified_version equal to version) still fail closed.",
