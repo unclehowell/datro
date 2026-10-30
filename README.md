@@ -10,7 +10,7 @@ Live at dartboard.bucklerfamily.estate. The page is visual: a dartboard on top a
 
 | File | What it holds |
 |---|---|
-| `src/data/disclosure.ts` | The wheel: institutions (parties), rings and one cell per step taken. Mailbox sampled through 18 October 2026. |
+| `src/data/disclosure.ts` | The wheel: institutions (parties), rings and one cell per step taken. Mailbox sampled through 30 October 2026. |
 | `src/data/response-assessments.ts` | Response-friction (RFS) scoring of individual replies, with method notes and limits. |
 | `src/data/foi-tracker.ts` | **New.** Every FOI / EIR / SAR / complaint conversation from the mailbox, by institution, with dates, references, computed deadlines and status. |
 | `public/data/foi-tracker.csv` | **New.** The same tracker as a CSV. |
@@ -52,3 +52,10 @@ Live at dartboard.bucklerfamily.estate. The page is visual: a dartboard on top a
 The content and original code in this repository are not open source. You may read it, link to it and quote it fairly with credit. Any other copying, adaptation or commercial use (books, film, TV, documentary, podcasts, paid articles, AI training) needs a written licence first. Full terms: https://bucklerfamily.estate/licence/ · Apply: https://bucklerfamily.estate/enquire/ · See `LICENSE` and `NOTICE`. Third-party components keep their own licences. Exception: the Williams–Buckler crest artwork is licensed CC BY-SA 4.0 and grants no arms; see `NOTICE` item 3.
 
  — Sion's Tab agent
+
+
+## 30 October 2026 — mailbox review
+
+The wheel and institution/ring record was refreshed from the 23–30 October Gmail correspondence. It now records the Vale Council's revised EIR deadlines and scrutiny routing; the Welsh Government's new ATISN 26-0075 search track; the NLW's Bute-classmark result and two new archive requests; the Historic England–RCAHMW microfiche custody record; the MOD supplementary reference FOI2026/25726; the CPS FOI 14786 acknowledgement; OS's corrected location search and deadline; NRW's Cwm Cydfin/woodland request; Heneb's stated nil results; Defra's not-held position; the South Wales Police and Wales Office review PDFs as received but not yet transcribed; Land Registry's identity/address verification request; Companies House's retrieval route and unresolved company-number continuity; and the informal Forest of Cardiff reply.
+
+The wheel describes the status of each step, not a finding of fact or wrongdoing. In particular, "not held", "no further classmarks identified", an acknowledgement, an attachment not yet read, and an informal statement remain distinct. The Avenues ladder and Disclosure record retain their own underlying datasets and are not silently represented as having been refreshed by this wheel update.
