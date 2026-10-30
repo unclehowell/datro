@@ -76,6 +76,9 @@ ADDR_RE = re.compile(r"(?:\b\d+\s*)?Robin[\s+]+Hill\b", re.I)
 # clerk's signature carries one. The street, its number and the town line after it (across quote
 # markers, blank lines and stripped map links) become "[address removed]".
 RES_ADDR_RE = re.compile(r"(?<!\d)(?:\d{1,4}[ \t]*)?Woodham[\s+]+Park\b(?:(?:\s|>|,|\[\d+\]|\[map link redacted\])*Barry\b,?)?", re.I)
+PRIVATE_RE = re.compile(r"\bRegan(?:\s*>?\s*)+Webb\b|\bMarina(?:\s*>?\s*)+Jaffee\b|\bBranwen(?:(?:\s*>?\s*)+Buckler)?\b")
+SIG_RE = re.compile(r"\(Ret'?d Sergeant\)|Royal Signals Cyber/Electronic(?:\s*>?\s*)+Warfare(?:\s*>?\s*)+Professional(?:(?:\s*>?\s*)+and(?:\s*>?\s*)+Life(?:\s*>?\s*)+Member)?")
+OWNER_RE = re.compile(r"\b(?:Mr\.?\s+|Mister\s+)?Si[oô]n(?:\s+(?:ap\s+)?Buckler)?\b|\bMr\.?\s+Buckler\b|\bHywel\s+ap\s+Buckler\b")
 PCODE_RE = re.compile(r"\b(?:[A-Z]{1,2}\d[A-Z\d]?)\s*\d[A-Z]{2}\b")
 
 def is_phone(s):
@@ -124,10 +127,15 @@ def redact(t, c):
     t, n = HOLDINGS_RE.subn("[family detail redacted]", t); c["holdings"] += n
     t, n = FAMADDR_RE.subn("[address redacted]", t); c["address"] += n
     t, n = FAMTOWN_RE.subn("living [location redacted]", t); c["address"] += n
+    # P-034 (30 Oct 2026): the owner and members of the public are never named; the signature title lines go;
+    # the case name "BP v Buckler" and officials' names stay - Sion's Tab agent
+    t, n = OWNER_RE.subn("Requester", t); c["owner_name"] += n
+    t, n = PRIVATE_RE.subn("[member of the public]", t); c["private_name"] += n
+    t, n = SIG_RE.subn("", t); c["signature"] += n
     return t
 
 def sender_name(s, sent):
-    if sent: return "Sion Buckler"
+    if sent: return "Requester"   # P-034 (30 Oct 2026): the owner is never named in public text; Cedwyn uses the same label
     nm, addr = parseaddr(s or "")
     nm = nm.strip().strip('"')
     if nm and "@" not in nm: return nm
