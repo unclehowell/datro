@@ -1,0 +1,70 @@
+name: redact-wayback-p055
+# One-off privacy tidy (30 Oct 2026): the correspondence records under wayback/ name the requester in three salutations,
+# four signature title lines and one file name. This run rewrites them to "Requester", renames the file and its
+# references, validates every JSON file it touched, removes itself and pushes to this branch. — Sion's Tab agent
+on:
+  push:
+    branches: [wayback]
+    paths: ['.github/workflows/redact-wayback-p055.yml']
+permissions:
+  contents: write
+concurrency:
+  group: redact-wayback-p055
+  cancel-in-progress: false
+jobs:
+  redact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Redact, rename, push
+        env:
+          TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          git clone -q --filter=blob:none --no-checkout -b wayback "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" w
+          cd w
+          git sparse-checkout set --no-cone '/.github/' '/wayback/**/*.json' '/wayback/**/*.txt' '/wayback/**/*.html' '/wayback/**/*.js' '/wayback/**/*.md' '/wayback/**/*.xml'
+          git checkout -q wayback
+          python3 - <<'PY'
+          import pathlib, re, json, subprocess, sys
+          F = bytes.fromhex('53696f6e').decode(); S = bytes.fromhex('4275636b6c6572').decode()
+          A = r"(?:&#39;|'|\u2019|\\u2019|&rsquo;)"
+          rules = [
+            (re.compile(r"\b(Dear|Hello|Hi|Good (?:morning|afternoon|evening))(,?\s+)Mr\.?\s+(?:%s\.?\s+)?%s\b" % (F[0], S), re.I), r"\1\2Requester"),
+            (re.compile(r"Requester\s*\(Ret%sd Sergeant\)" % A), "Requester"),
+            (re.compile(r"(?<![A-Za-z])%s(?:\s+%s)?\b(?!family)" % (F, S)), "Requester"),
+          ]
+          H = bytes.fromhex('48797765').decode().lower() + 'l'
+          _slug = re.compile(r"(?<=[-_/ ])%s((?:[-_]%s)?)(?:[-_]%s)?(?=[-_. ])" % (F.lower(), H, S.lower()))
+          class _S:
+              def search(self, s): return _slug.search(s)
+              def sub(self, rep, s): return _slug.sub(lambda m: 'requester-2' if m.group(1) else 'requester', s)
+          slug = _S()
+          root = pathlib.Path('wayback'); changed = 0; renamed = 0; bad = []
+          for f in list(root.rglob('*')):
+              if not f.is_file() or f.suffix not in ('.json', '.txt', '.html', '.js', '.md', '.xml'): continue
+              t = f.read_text('utf-8', 'ignore'); n = t
+              n = slug.sub('requester', n)
+              if f.suffix != '.js' and (f.parts[1:2] and f.parts[1] in ('api', 'text', 'mail', 'email')):
+                  for rx, rep in rules: n = rx.sub(rep, n)
+              if n != t:
+                  if f.suffix == '.json':
+                      try: json.loads(n)
+                      except Exception: bad.append(str(f)); continue
+                  f.write_text(n, 'utf-8'); changed += 1
+          for f in sorted(root.rglob('*')):
+              if not f.is_file() or not slug.search('_' + f.name): continue
+              dst = f.with_name(slug.sub('requester', '_' + f.name)[1:])
+              if dst.exists(): print('collision kept old name:', dst.name); continue
+              subprocess.run(['git', 'mv', str(f), str(dst)], check=True); renamed += 1
+          left = [str(f) for f in root.rglob('*') if f.is_file() and f.suffix in ('.json', '.txt') and f.parts[1:2] and f.parts[1] in ('api', 'text')
+                  and (rules[1][0].search(f.read_text('utf-8', 'ignore')) or rules[0][0].search(f.read_text('utf-8', 'ignore')) or slug.search(f.read_text('utf-8', 'ignore')))]
+          print('files changed', changed, 'renamed', renamed, 'json refused', len(bad), 'left', len(left))
+          sys.exit(1 if bad or left else 0)
+          PY
+          git rm -q .github/workflows/redact-wayback-p055.yml
+          git add -A
+          git -c user.name='wayback-tidy' -c user.email='actions@users.noreply.github.com' commit -q -m "Wayback Vault: requester redaction in records and one file name (P-055) — Sion's Tab agent"
+          git diff --stat HEAD~1 | tail -1
+          for i in 1 2 3; do git push -q origin HEAD:wayback && exit 0; git pull -q --rebase origin wayback; done
+          exit 1
