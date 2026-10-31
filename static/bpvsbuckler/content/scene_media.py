@@ -19,10 +19,11 @@ Rules
   (two years for a "c." date). A records-era scene (2025 or later) may show a
   record released inside its period (e.g. the 1988 Cadw photographs released
   under ATISN 27021 in 2026).
-- Archive pictures are added only when their date falls inside the scene's
-  own window (day-level for dated scenes, plus up to 14 days for press
-  reports), a year-only picture goes to the single closest scene of that year,
-  and no picture is borrowed by an earlier or later scene.
+- Archive pictures are assigned to one scene only. Month/day images must
+  overlap the event period (with the existing press-report allowance); where
+  several periods overlap, the narrowest event wins. Year-only images go to
+  the single closest scene of that year. A picture is never borrowed by
+  multiple events merely because their broad date ranges overlap.
 - Undated "Stating the obvious" and "Today" scenes show only curated pictures,
   and those must still be dated.
 """
@@ -158,8 +159,8 @@ def check_one(scene, period, row, curated):
 
 
 def attach_media(scenes, strict=True):
-    """Add scene['media'] (ordered list) to every scene. Raise SystemExit on any
-    out-of-period curated picture when strict."""
+    """Add scene['media'] to every scene. Archive items go to one best-matching
+    event; strict mode refuses out-of-period or duplicated placements."""
     errors, placements = [], []
     periods = {sc['id']: scene_period(sc) for sc in scenes}
     used_items = {sc['id']: set() for sc in scenes}
@@ -195,18 +196,27 @@ def attach_media(scenes, strict=True):
             ps, pe = periods[sc['id']]
             if prec == 'year':
                 if not _overlap(s0, e0, ps, pe): continue
+                # A year-only picture has no more precise event date. Keep the
+                # rule: attach it to the nearest scene of that year.
+                dist = 0 if ps <= s0 <= pe else min(abs((s0 - ps).days), abs((s0 - pe).days))
             else:
+                # Compare the FULL media date range with the scene period.
+                # A month like 1891-11 starts on 1 Nov; measuring from that
+                # start wrongly prefers a 33-year scene over 11 November 1891.
                 if not _overlap(s0, e0, ps - dt.timedelta(days=LEAD_DAYS), pe + dt.timedelta(days=PRESS_LAG_DAYS)): continue
+                if _overlap(s0, e0, ps, pe):
+                    dist = 0
+                elif e0 < ps:
+                    dist = (ps - e0).days
+                else:
+                    dist = (s0 - pe).days
             span = (pe - ps).days
-            dist = 0 if ps <= s0 <= pe else min(abs((s0 - ps).days), abs((s0 - pe).days))
-            cands.append((dist, span, sc))
+            cands.append((span, dist, sc))
         if not cands: continue
+        # One archive record, one scene. Prefer the most specific event period;
+        # distance breaks ties between equally specific events.
         cands.sort(key=lambda c: (c[0], c[1]))
-        if prec == 'year':
-            cands = cands[:1]
-        else:
-            best = cands[0][0]
-            cands = [c for c in cands if c[0] <= best + 1][:3]
+        cands = cands[:1]
         for _, _, sc in cands:
             if item in used_items[sc['id']]: continue
             extra = [m for m in sc['media'] if m['source'] == 'archive']
@@ -217,7 +227,16 @@ def attach_media(scenes, strict=True):
             used_items[sc['id']].add(item)
             sc['media'].append({'url': row['url'], 'title': row['title'], 'date': row['date'], 'released': row.get('released'),
                                 'item': item, 'source': 'archive', 'basis': row['basis']})
-    # final independent re-check of everything placed
+    # Independent invariant: an archived record may not appear on two scenes.
+    archive_owner = {}
+    for sc in scenes:
+        for m in sc['media']:
+            if m['source'] != 'archive': continue
+            previous = archive_owner.get(m['item'])
+            if previous and previous != sc['id']:
+                errors.append('archive item %s appears on both %s and %s' % (m['item'], previous, sc['id']))
+            archive_owner[m['item']] = sc['id']
+    # Final independent date re-check of everything placed.
     for sc in scenes:
         period = periods[sc['id']]
         for m in sc['media']:
