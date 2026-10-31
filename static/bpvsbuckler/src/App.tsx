@@ -3,6 +3,7 @@ import story from './data/story.json';
 import meta from './data/meta.json';
 import instData from './data/institutions.json';
 import type { Story, Scene, SceneMedia, CaseQuestion, SceneQA } from './data/story.d';
+import { YearGallery, YearMediaViewer } from './Years';
 
 const S = story as unknown as Story;
 const scenes = S.scenes;
@@ -70,7 +71,7 @@ function readUrl(): { view: View; index: number; inst: string; note: string } {
     // A screening link (?institution=cadw) opens straight on that institution's first scene.
     if (q.has('institution')) return { view: 'scene', index: list[0], inst, note };
   } catch (_e) { /* no URL */ }
-  return { view: 'splash', index: 0, inst, note };
+  return { view: 'board', index: 0, inst, note };
 }
 const sceneUrl = (s: Scene) => `${SITE}/?event=${s.id}`;
 const speakable = (t: string) =>
@@ -127,7 +128,7 @@ export default function App() {
     const q = both ? `?${both}` : '';
     if (location.search !== q) history.replaceState(null, '', location.pathname + q);
     const tail = inst ? ` — ${instName(inst)} — Tŷ Mawr` : ' — Tŷ Mawr';
-    document.title = view === 'scene' ? `${scene.ref} ${scene.title}${tail}` : inst ? `${instName(inst)} — Tŷ Mawr — The Great House Farm Story` : 'Tŷ Mawr — The Great House Farm Story';
+    document.title = view === 'scene' ? `${scene.when} · ${scene.title}${tail}` : view === 'board' ? 'Years in pictures — Tŷ Mawr' : inst ? `${instName(inst)} — Tŷ Mawr — The Great House Farm Story` : 'Tŷ Mawr — The Great House Farm Story';
   }, [view, index, inst]);
   useEffect(() => {
     const on = () => { const r = readUrl(); setView(r.view); setIndex(r.index); setInst(r.inst); setInstNote(r.note); };
@@ -201,19 +202,20 @@ export default function App() {
   return (
     <div className="shell">
       <header className="top">
-        <a className="brand" href="/" onClick={(e) => { e.preventDefault(); open('splash'); }}>Tŷ Mawr<small>The Great House Farm story</small></a>
-        <div className="where">{view === 'scene' && <><b>{act.label}: {act.title}</b> ({act.span})</>}</div>
+        <a className="brand" href="/" onClick={(e) => { e.preventDefault(); open('board'); }}>Tŷ Mawr<small>The Great House Farm story</small></a>
+        <div className="where">{view === 'scene' ? scene.when : 'A visual chronology of the Great House Farm story'}</div>
         <nav className="tabs" aria-label="Views">
-          <button className="tab" aria-current={view === 'scene' ? 'page' : undefined} onClick={() => go(index)}>Play</button>
-          <button className="tab" aria-current={view === 'board' ? 'page' : undefined} onClick={() => open('board')}>Storyboard</button>
-          <button className="tab" aria-current={view === 'cast' ? 'page' : undefined} onClick={() => open('cast')}>Cast</button>
+          <button className="tab" aria-current={view === 'board' ? 'page' : undefined} onClick={() => open('board')}>Years</button>
+          <button className="tab" aria-current={view === 'scene' ? 'page' : undefined} onClick={() => go(index)}>Read</button>
+          <button className="tab" aria-current={view === 'cast' ? 'page' : undefined} onClick={() => open('cast')}>People</button>
           <button className="tab" aria-current={view === 'questions' ? 'page' : undefined} onClick={() => open('questions')}>Questions</button>
+          <button className="tab" aria-current={view === 'splash' ? 'page' : undefined} onClick={() => open('splash')}>About</button>
           <a className="tab" href="/story/">Script</a>
           <a className="tab" href="/control/">Records</a>
         </nav>
       </header>
       <main className="main">
-        {(view === 'scene' || view === 'board') && instBar}
+        {view === 'scene' && instBar}
         {view === 'scene' && <SceneView scene={scene} spoken={playing ? spoken : -1} copied={copied} onCopy={() => {
           navigator.clipboard?.writeText(`Tŷ Mawr, scene ${scene.ref} (no. ${scene.no}), "${scene.title}", ${scene.when}. ${sceneUrl(scene)}`).then(() => setCopied(true), () => setCopied(false));
         }} onCast={() => open('cast')} onPick={go} onInst={pickInst} total={list.length} pos={pos} />}
@@ -292,15 +294,14 @@ function SceneView({ scene, spoken, copied, onCopy, onCast, onPick, onInst, tota
     <article className="scene">
       <Stage scene={scene} onPick={onPick} />
       <div>
-        <div className="slate"><span className="ref">Scene {scene.ref}</span><span>no. {scene.no} of {scenes.length}{total < scenes.length && pos >= 0 ? ` · ${pos + 1} of ${total} screened` : ''}</span></div>
+        <div className="slate"><span className="ref">{scene.when}</span><span>event {scene.no} of {scenes.length}</span></div>
         <div className="when">{scene.when}</div>
         <h1>{scene.title}</h1>
         {scene.place && <div className="place">{scene.place}</div>}
         <p className={`narr${spoken >= 0 ? ' speaking' : ''}`}><Spoken text={scene.narration} base={base.event} spoken={spoken} /></p>
         <div className="chips">
-          <ParcelChip p={scene.parcel} />
-          <span className="chip">Basis: {scene.basis}</span>
           <span className={`chip grade g-${scene.grade}`} title={scene.grade_text}><i />{GRADE[scene.grade]}</span>
+          <span className="chip">Basis: {scene.basis}</span>
           {cast.map((c) => <button key={c.id} className="chip" onClick={onCast}>{c.name}</button>)}
         </div>
         {tags.length > 0 && (
@@ -312,7 +313,6 @@ function SceneView({ scene, spoken, copied, onCopy, onCast, onPick, onInst, tota
         <Accounts scene={scene} base={base} spoken={spoken} />
         <SceneQuestions scene={scene} />
         {scene.case && <section className="case"><h2>The family's case</h2><p>{scene.case}</p></section>}
-        <Ledger scene={scene} />
         <Replies items={scene.qa} />
         <section className="ev">
           <h2>Evidence ({scene.evidence.length})</h2>
@@ -468,37 +468,7 @@ function FloatingSceneMedia({ scene }: { scene: Scene }) {
   );
 }
 function Board({ onPick, only }: { onPick: (i: number) => void; only: number[] | null }) {
-  return (
-    <div className="sheet">
-      <h1>Storyboard</h1>
-      <p className="intro">Every event in date order, one panel each. Each scene gives what happened, the received account of it, and what we now know, with the evidence. Pick a panel to open it.</p>
-      <h2 className="sl-head">The storyline</h2>
-      <p className="intro">One title buried, one built beside it. Each dot is a move; pick one to open the scene.</p>
-      <Storyline onPick={onPick} />
-      <div className="legend">
-        <span><i className="p-A" />House parcel (A)</span><span><i className="p-B" />Fields (B)</span>
-        <span><i className="p-AB" />Whole farm (A + B)</span><span><i className="p-x" />Unknown, or not the farm</span>
-      </div>
-      {S.acts.filter((a) => !only || only.some((i) => scenes[i].act === a.id)).map((a) => (
-        <section key={a.id}>
-          <div className="acthead">
-            <div className="n">{a.label}<br /><span style={{ fontSize: 14 }}>{a.span}</span></div>
-            <div><h2>{a.title}</h2><p>{a.logline}</p></div>
-          </div>
-          <div className="grid">
-            {scenes.map((s, i) => s.act !== a.id || (only && !only.includes(i)) ? null : (
-              <button key={s.id} className="panel" onClick={() => onPick(i)}>
-                <Frame scene={s} small />
-                <div className="meta"><span><i className={`gdot g-${s.grade}`} title={GRADE[s.grade]} />{s.ref}</span><span>{s.when.length > 26 ? s.date.slice(0, 4) : s.when}</span></div>
-                <div className="ti">{s.title}</div>
-                <div className="ex">{s.narration}</div>
-              </button>
-            ))}
-          </div>
-        </section>
-      ))}
-    </div>
-  );
+  return <YearGallery onPick={onPick} />;
 }
 
 function Cast({ onPick }: { onPick: (i: number) => void }) {
@@ -593,14 +563,9 @@ function Spoken({ text, base, spoken }: { text: string; base: number; spoken: nu
 // The scene's stage: the two-titles storyline with this scene marked, and the
 // scene's picture as a picture-in-picture thumbnail that opens full size.
 function Stage({ scene, onPick }: { scene: Scene; onPick: (i: number) => void }) {
-  return (
-    <div className="stage has-pip">
-      <div className="stage-h">The two titles to Parcel A <span>· this scene marked</span></div>
-      <Storyline current={scene.no - 1} onPick={onPick} />
-      <FloatingSceneMedia scene={scene} />
-    </div>
-  );
+  return <YearMediaViewer scene={scene} />;
 }
+
 function Accounts({ scene, base, spoken }: { scene: Scene; base: Record<string, number>; spoken: number }) {
   if (!scene.received && !scene.received_words.length && !scene.known) return null;
   return (
@@ -776,8 +741,8 @@ function Splash({ onPlay, onBoard, onCast, instBar }: { onPlay: () => void; onBo
         <p className="log">For three hundred and twenty-one years the Williams family lived at Great House, the manor house at Llandough. They always said it was theirs. Nobody listened. What people heard was a squatter who lost in court, lost on appeal, lost in Strasbourg, and lost the listing; a “chainsaw farmer”; a house “bulldozed before breakfast”. This is the other side. Each scene gives what happened, what we were all told it meant, and what we now know.</p>
         {instBar}
         <div className="btns">
-          <button className="btn primary" onClick={onPlay}>{Icon.play} Play from the beginning</button>
-          <button className="btn" onClick={onBoard}>{Icon.grid} Open the storyboard</button>
+          <button className="btn primary" onClick={onBoard}>{Icon.grid} Browse the years</button>
+          <button className="btn" onClick={onPlay}>{Icon.play} Read the first event</button>
           <a className="btn" href="/story/">{Icon.doc} Read the script</a>
         </div>
         <div className="facts">
@@ -785,7 +750,7 @@ function Splash({ onPlay, onBoard, onCast, instBar }: { onPlay: () => void; onBo
           <div><b>{S.acts.filter((a) => a.label.startsWith('Act ')).length}</b>acts, with prologue and epilogue</div>
           <div><b>{evidence}</b>evidence links</div>
         </div>
-        <p className="howto">For producers, researchers and cast: every scene has a reference (for example VI.9) and a permanent link, and every scene links to the documents behind it on the <a href="https://greathousefarmwiki.wordpress.com/">Great House Farm Wiki</a>. See the <a href="#" onClick={(e) => { e.preventDefault(); onCast(); }}>cast list</a>, or download the data as <a href="/api/timeline.json">JSON</a>.</p>
+         <p className="howto">Browse the story by year, open photographs that belong to each date, then read the event, the received account, what the record supports, and the linked documents. The former Great House Farm Wiki is retired; the Cedwyn research archive now holds the source material. See the <a href="#" onClick={(e) => { e.preventDefault(); onCast(); }}>people and institutions</a>, or download the timeline data as <a href="/api/timeline.json">JSON</a>.</p>
         <div className="support">
           <span>Support the family's campaign:</span>
           {React.createElement('stripe-buy-button', { 'buy-button-id': 'buy_btn_1RuDNARibisCfpBQBMKwrMVc', 'publishable-key': 'pk_live_51OqlLnRibisCfpBQQsDU3l2hhMLoKwTcdiokINqNA4wWaLeBM5qkMyJDV3B6TIToBOKCh4WhEzff7isJCLYIJaUB0088uetffQ' })}
