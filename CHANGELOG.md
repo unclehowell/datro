@@ -6,6 +6,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Rules: DOCS-STAN
 
 ## [Unreleased]
 
+## [docs-0.7.0] - 2026-10-31
+
+### Added
+- `ghf_research/guide_bookevidenceflywheel` v0.1.0 (en), catalogue RES-0004 — book and bibliographic source discovery, retrieval stages, identity and parcel controls, query rotation, counter-evidence, publication and follow-up.
+- `ghf_research` collection: Research methods menu band.
+
 ## [docs-0.6.0] - 2026-10-23
 
 ### Added
