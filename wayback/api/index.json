@@ -1,9 +1,9 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-10-30T18:09:15Z",
- "count": 970,
- "threadCount": 523,
+ "generated": "2026-10-31T20:10:32Z",
+ "count": 971,
+ "threadCount": 524,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
@@ -13,6 +13,28 @@
   "text": "/mail/<id>.txt"
  },
  "records": [
+  {
+   "id": "gm-1a193808c9be1363",
+   "gmailMessageId": "1a193808c9be1363",
+   "threadId": "gt-1a193808c9be1363",
+   "date": "2026-10-31T19:47:15Z",
+   "direction": "received",
+   "from": "HM Land Registry - Do Not Reply",
+   "institutions": [
+    {
+     "id": "hmlr",
+     "name": "HM Land Registry"
+    }
+   ],
+   "subject": "Enquiry: 261031-6910045",
+   "threadSlug": "enquiry-261031-6910045",
+   "refs": [
+    "261031-6910045"
+   ],
+   "textUrl": "/mail/gm-1a193808c9be1363.txt",
+   "jsonUrl": "/api/message/gm-1a193808c9be1363.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
   {
    "id": "gm-1a18dbc3359e6488",
    "gmailMessageId": "1a18dbc3359e6488",
