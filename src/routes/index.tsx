@@ -352,7 +352,7 @@ function Home() {
   const close = useCallback(() => setSheet(null), []);
 
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-xl flex-col gap-4 px-3 pt-3 pb-10">
+    <main className="notranslate mx-auto flex min-h-dvh w-full max-w-xl flex-col gap-4 px-3 pt-3 pb-10">
       <section aria-label="Dartboard">
         <DartWheel
           highlight={inst.id}
