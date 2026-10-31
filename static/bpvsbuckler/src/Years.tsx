@@ -14,13 +14,13 @@ type Picture = { key:string; url:string; title:string; date:string; released:str
 type Year = { year:number; scenes:{scene:Scene;index:number}[]; images:Picture[]; first:number|null; label:string; summary:string };
 
 function yearOf(v?:string|null):number|null {
- const m=(v||'').match(/^(-?\\d{1,4})/);
+  const m=(v||'').match(/^(-?[0-9]{1,4})/);
  if(!m)return null;
  const y=Number(m[1]);
  return Number.isFinite(y)&&Math.abs(y)<9998?y:null;
 }
 function urlOf(v:string):string {
- return /^https?:\\/\\//i.test(v)?encodeURI(decodeURI(v)):new URL(v,SITE).toString();
+  return (v.startsWith('http://')||v.startsWith('https://'))?v:new URL(v,SITE).toString();
 }
 function labelOf(year:number, scenes:Scene[]):string {
  if(year<0)return Math.abs(year)+' BC';
