@@ -411,3 +411,72 @@ button.chip:hover, a.chip:hover { color: var(--limewash); }
   .instbar .pick { flex: 1 1 100%; flex-wrap: wrap; }
   .instbar select { flex: 1 1 100%; width: 100%; }
 }
+
+
+/* ---------------- dated visual chronology */
+.year-sheet { max-width:1600px; padding:34px 36px 60px; }
+.year-intro { max-width:920px; margin:0 0 28px; }
+.year-kicker,.year-stage-heading>span { color:var(--lias); font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; }
+.year-intro h1 { margin:8px 0 10px; font-family:var(--serif); font-weight:300; font-size:clamp(42px,6vw,72px); line-height:.98; }
+.year-intro p { max-width:56em; margin:0; color:var(--lias); font-family:var(--serif); font-size:18px; line-height:1.48; }
+.year-count { margin-top:13px; color:var(--lias); font-size:12px; font-variant-numeric:tabular-nums; }
+.year-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:22px 18px; align-items:start; }
+.year-card { min-width:0; border:1px solid var(--slate-3); border-radius:5px; overflow:hidden; background:var(--slate-2); }
+.year-cover { display:block; position:relative; width:100%; aspect-ratio:16/10; padding:0; border:0; overflow:hidden; background:#1b2126; text-align:left; }
+.year-cover>img,.year-cover>.year-art { display:block; width:100%; height:100%; object-fit:cover; transition:transform .3s ease; }
+.year-cover:hover>img,.year-cover:hover>.year-art { transform:scale(1.025); }
+.year-number { position:absolute; top:11px; left:12px; padding:5px 9px; border:1px solid rgba(236,235,230,.35); border-radius:3px; color:#f6f2e8; background:rgba(25,31,34,.8); font-family:var(--serif); font-size:23px; line-height:1; }
+.year-art-label { position:absolute; left:10px; bottom:10px; color:#f6f2e8; background:rgba(25,31,34,.82); border-radius:3px; padding:5px 7px; font-size:10px; letter-spacing:.04em; text-transform:uppercase; }
+.year-image-count { position:absolute; right:10px; bottom:10px; padding:5px 8px; border-radius:3px; color:#f6f2e8; background:rgba(25,31,34,.85); font-size:11px; }
+.year-card-copy { padding:13px 14px 14px; }
+.year-card-meta { display:flex; justify-content:space-between; gap:10px; color:var(--lias); font-size:11px; }
+.year-card-meta b { color:var(--limewash); font-weight:500; }
+.year-card-meta span { white-space:nowrap; }
+.year-card h2 { margin:8px 0 4px; font-family:var(--serif); font-size:20px; font-weight:400; line-height:1.15; }
+.year-card p { margin:0; color:var(--lias); font-size:12px; line-height:1.4; }
+.year-events { display:grid; gap:4px; margin-top:9px; }
+.year-events button { width:100%; padding:3px 0; border:0; background:none; color:var(--limewash); text-align:left; font-size:12px; line-height:1.3; }
+.year-events button:hover { text-decoration:underline; text-underline-offset:2px; }
+.year-events span { color:var(--lias); font-size:11px; }
+.year-card-actions { display:flex; flex-wrap:wrap; gap:7px; margin-top:13px; }
+.year-card-actions button,.year-stage-expand { border:1px solid var(--slate-3); border-radius:4px; padding:6px 9px; color:var(--limewash); background:#232a31; font-size:11px; }
+.year-card-actions button:hover,.year-stage-expand:hover { border-color:var(--limewash); }
+.year-art { display:block; width:100%; height:auto; aspect-ratio:16/9; }
+.year-art-antique { filter:sepia(.18) saturate(.85); }
+.year-art-pastoral { filter:saturate(.83); }
+.year-art-slate { filter:saturate(.7) contrast(1.02); }
+.year-art-documentary { filter:saturate(.65); }
+.year-stage { position:sticky; top:0; align-self:start; min-width:0; padding:15px; border-radius:4px; background:#1b2126; }
+.year-stage-heading { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:8px; margin-bottom:12px; }
+.year-stage-heading b { color:var(--limewash); font-family:var(--serif); font-size:17px; font-weight:400; }
+.year-stage-photo { position:relative; overflow:hidden; aspect-ratio:4/3; background:#11181d; }
+.year-stage-photo>img { display:block; width:100%; height:100%; object-fit:contain; }
+.year-stage-caption { position:absolute; left:0; right:0; bottom:0; display:flex; flex-direction:column; gap:3px; padding:35px 12px 10px; color:#f6f2e8; background:linear-gradient(transparent,rgba(12,16,19,.92)); font-size:11px; }
+.year-stage-caption b { font-size:12px; font-weight:500; }
+.year-stage-caption span { opacity:.8; }
+.year-stage-controls { position:absolute; top:9px; right:9px; display:flex; gap:5px; }
+.year-stage-controls button,.year-lightbox-prev,.year-lightbox-next { width:32px; height:32px; border:1px solid rgba(236,235,230,.6); border-radius:4px; color:#f6f2e8; background:rgba(18,22,26,.82); font-size:23px; line-height:1; }
+.year-stage-expand { position:absolute; left:10px; top:10px; background:rgba(18,22,26,.82); }
+.year-stage-art>span { display:block; margin-top:9px; color:var(--lias); font-size:11px; line-height:1.35; }
+.year-broken { display:grid; place-items:center; width:min(80vw,780px); min-height:240px; padding:32px; color:var(--lias); font-size:14px; }
+.year-lightbox { position:fixed; z-index:120; inset:0; display:grid; place-items:center; padding:28px; background:rgba(8,11,14,.96); }
+.year-lightbox figure { max-width:min(1100px,86vw); max-height:86vh; margin:0; text-align:center; }
+.year-lightbox figure>img { display:block; max-width:100%; max-height:76vh; margin:auto; object-fit:contain; box-shadow:0 8px 45px rgba(0,0,0,.5); }
+.year-lightbox figcaption { display:flex; flex-direction:column; gap:4px; padding:12px 4px 0; color:var(--limewash); text-align:left; font-size:13px; }
+.year-lightbox figcaption span,.year-lightbox figcaption small { color:var(--lias); font-size:11px; }
+.year-lightbox-close { position:fixed; top:18px; right:22px; width:42px; height:42px; border:1px solid var(--slate-3); border-radius:50%; background:#232a31; color:var(--limewash); font-size:27px; }
+.year-lightbox-prev,.year-lightbox-next { position:fixed; top:50%; width:44px; height:48px; transform:translateY(-50%); font-size:30px; }
+.year-lightbox-prev { left:18px; }
+.year-lightbox-next { right:18px; }
+.year-stage .year-lightbox { z-index:130; }
+@media (max-width:1000px) { .year-sheet { padding:22px 18px 44px; } .year-grid { grid-template-columns:repeat(auto-fill,minmax(205px,1fr)); } .year-stage { position:relative; } }
+@media (max-width:600px) {
+ .year-sheet { padding:20px 12px 36px; } .year-intro { padding:0 4px; }
+ .year-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px 10px; }
+ .year-card-copy { padding:9px 9px 10px; } .year-card h2 { font-size:16px; }
+ .year-card p,.year-events button { font-size:11px; }
+ .year-card-actions { gap:5px; } .year-card-actions button { font-size:10px; padding:5px 7px; }
+ .year-number { font-size:19px; top:7px; left:8px; } .year-stage { padding:10px; }
+ .year-lightbox { padding:14px; } .year-lightbox figure { max-width:100%; }
+ .year-lightbox-prev { left:6px; } .year-lightbox-next { right:6px; }
+}
