@@ -861,8 +861,25 @@ export function RoadmapRamps({ preferName }: { preferName?: string }) {
   useEffect(() => {
     setTodayStr(todayIso());
     let off = false;
-    fetch(`/data/roadmap.json?d=${todayIso()}`)
-      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+    // P-137 (31 Oct 2026): roadmap.json is an index under 400 KB; the bulkiest per-lane arrays (split.moved) live in
+    // roadmap-part-N.json and are concatenated back onto each lane here, parts in order. A part that fails leaves [] behind.
+    const d = todayIso();
+    const getJson = (name: string) => fetch(`/data/${name}?d=${d}`).then((r) => (r.ok ? r.json() : Promise.reject(r.status)));
+    type Part = { lanes?: Record<string, Record<string, unknown[]>> };
+    getJson("roadmap.json")
+      .then((j: Roadmap & { parts?: string[]; split?: { moved?: string[] } }) =>
+        Promise.all((j.parts ?? []).map((p) => getJson(p).catch(() => null as Part | null))).then((parts: (Part | null)[]) => {
+          const byId = new Map(j.lanes.map((l): [string, Record<string, unknown>] => [l.id, l as unknown as Record<string, unknown>]));
+          for (const k of j.split?.moved ?? []) for (const l of byId.values()) if (!Array.isArray(l[k])) l[k] = [];
+          for (const p of parts)
+            for (const [id, keys] of Object.entries(p?.lanes ?? {})) {
+              const l = byId.get(id);
+              if (!l) continue;
+              for (const [k, arr] of Object.entries(keys)) l[k] = [...((l[k] as unknown[]) ?? []), ...(arr ?? [])];
+            }
+          return j as Roadmap;
+        }),
+      )
       .then((j: Roadmap) => !off && setData(j))
       .catch(() => !off && setFailed(true));
     return () => {
