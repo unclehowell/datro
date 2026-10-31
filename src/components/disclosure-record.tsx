@@ -5,13 +5,15 @@ import data from "@/data/disclosure-record.json";
  * Disclosure record: every request we sent to an institution by email (and through WhatDoTheyKnow),
  * what came back, and whether the statutory clock was met. Built from the case-mail archive
  * (gmail-manifest.json, Part A) and the WhatDoTheyKnow manifest (Part B).
- * — Sion's Tab agent, 21 Oct 2026
+ * — Sion's Tab agent, 21 Oct 2026. Rebuilt by work/roadmap/build_disclosure_record.py inside the roadmap refresh
+ * from 31 Oct 2026; requests with no evidence page yet carry ev "" and a unique key k.
  */
 type Conv = {
   ev: string; u: string; t: string; reg: string; ref: string; rd: string; dl: string; met: string; fr: string;
   d: number | null; c: string; ex: string[]; ns: number | null; nr: number | null; na: number | null;
-  att: [string, string][]; m: string; via: string;
+  att: [string, string][]; m: string; via: string; k?: string;
 };
+const key = (c: Conv) => c.k || c.ev;
 type Inst = { name: string; n: number; cnt: Record<string, number>; convs: Conv[] };
 const D = data as unknown as {
   generated: string; asOf: string; classes: string[]; hub: string;
@@ -48,8 +50,8 @@ function Tile({ c, on, dim, onTap }: { c: Conv; on: boolean; dim: boolean; onTap
       type="button"
       onClick={onTap}
       aria-pressed={on}
-      aria-label={`${c.ev}: ${c.t}. ${k.label}. ${c.met}`}
-      title={`${c.ev} · ${k.label}`}
+      aria-label={`${c.ev ? `${c.ev}: ` : ""}${c.t}. ${k.label}. ${c.met}`}
+      title={c.ev ? `${c.ev} · ${k.label}` : k.label}
       className="relative size-7 rounded-md transition-opacity"
       style={{
         background: k.hollow ? "transparent" : k.colour,
@@ -79,7 +81,7 @@ function Detail({ c }: { c: Conv }) {
   ];
   return (
     <div className="mt-2 rounded-xl border border-line bg-surface p-3 text-sm" style={{ borderLeft: `4px solid ${k.colour}` }}>
-      <p className="text-xs tracking-[0.14em] text-brass uppercase">{c.ev} · {k.label}</p>
+      <p className="text-xs tracking-[0.14em] text-brass uppercase">{c.ev ? `${c.ev} · ` : ""}{k.label}</p>
       <p className="mt-1 font-serif text-lg leading-snug text-fg">{c.t}</p>
       <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1">
         {rows.filter((r) => r[1]).map(([a, b]) => (
@@ -90,8 +92,8 @@ function Detail({ c }: { c: Conv }) {
         ))}
       </dl>
       <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
-        <a href={c.u} target="_blank" rel="noreferrer" className="text-brass underline underline-offset-4">Evidence page {c.ev}</a>
-        <a href={c.m} target="_blank" rel="noreferrer" className="text-brass underline underline-offset-4">{c.via === "Email" ? "Open the emails" : "Open the thread"}</a>
+        {c.u && <a href={c.u} target="_blank" rel="noreferrer" className="text-brass underline underline-offset-4">Evidence page {c.ev}</a>}
+        {c.m && <a href={c.m} target="_blank" rel="noreferrer" className="text-brass underline underline-offset-4">{c.via === "Email" ? "Open the emails" : "Open the thread"}</a>}
       </div>
       {c.att.length > 0 && (
         <ul className="mt-2 space-y-1">
@@ -197,7 +199,7 @@ export function DisclosureRecord() {
       <p className="mt-4 text-xs text-muted">One lane per institution, one square per request, oldest first. Red ring: statutory clock missed. W: WhatDoTheyKnow. Tap a square.</p>
       <ul className="mt-2 space-y-3">
         {shown.map((i) => {
-          const s = i.convs.find((c) => c.ev === sel);
+          const s = i.convs.find((c) => key(c) === sel);
           return (
             <li key={i.name}>
               <div className="flex items-baseline justify-between gap-2">
@@ -206,7 +208,7 @@ export function DisclosureRecord() {
               </div>
               <div className="mt-1 flex flex-wrap gap-1.5">
                 {i.convs.map((c) => (
-                  <Tile key={c.ev} c={c} on={sel === c.ev} dim={!match(c)} onTap={() => setSel(sel === c.ev ? null : c.ev)} />
+                  <Tile key={key(c)} c={c} on={sel === key(c)} dim={!match(c)} onTap={() => setSel(sel === key(c) ? null : key(c))} />
                 ))}
               </div>
               {s && <Detail c={s} />}
