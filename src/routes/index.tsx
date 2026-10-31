@@ -909,9 +909,6 @@ function ExchangeLegend({ onMore }: { onMore: () => void }) {
       <span className="inline-flex items-center gap-1">
         <DiamondIcon /> attachment
       </span>
-      <span className="inline-flex items-center gap-1 opacity-40">
-        <FireIcon /> generic
-      </span>
     </button>
   );
 }
@@ -1124,7 +1121,7 @@ function KeySheet() {
           <span className="opacity-40">
             <FireIcon />
           </span>{" "}
-          Faded: a generic note (thanks, an acknowledgement, an automatic reply).
+          Automatic replies, receipts and bounces are not shown; only substantive replies are drawn.
         </p>
         <p className="text-xs text-faint">
           The classification is kept in one file (src/data/correspondence.json) and corrected by

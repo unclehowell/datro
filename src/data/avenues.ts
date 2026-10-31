@@ -113,7 +113,7 @@ export type AvLevel = {
 };
 export type AvInstitution = { id: string; name: string; short: string; kind: string; wheel: string[]; levels: AvLevel[]; ramp?: RampInstitution };
 
-export const avenuesAsOf = "2026-10-19";
+export const avenuesAsOf = "2026-10-31";
 export const archiveThreadUrl = (thread: string) => `https://email.bucklerfamily.estate/reference/${thread}`;
 export const phases: Record<PhaseKey, Phase> = {
  "enquiry": {
@@ -1171,7 +1171,27 @@ function applyRamps(list: AvInstitution[]): AvInstitution[] {
   }
   return out;
 }
-export const institutions: AvInstitution[] = applyRamps(baseInstitutions);
+/**
+ * Substance filter (31 Oct 2026): the climb shows substantive exchanges only. Automatic replies, receipts
+ * ("we have received your request"), out-of-office notes, bounces and other generic notes (g=1 in
+ * correspondence.json, or an unclassified reply read as "auto"/"ack") stay in the record but are not drawn.
+ */
+const corrG = corrJson as unknown as { emails: Record<string, { g?: number }>; extra: { id: string; g?: number }[] };
+const hiddenIdx = new Set<number>();
+avenueEmails.forEach((e, i) => {
+  if (e.out) return;
+  const c = corrG.emails[String(i)];
+  if (c ? c.g === 1 : e.o === "auto" || e.o === "ack") hiddenIdx.add(i);
+});
+for (const x of corrG.extra) {
+  const i = extraIndex[x.id];
+  if (i !== undefined && x.g === 1 && !avenueEmails[i].out) hiddenIdx.add(i);
+}
+export const isHiddenEmail = (index: number) => hiddenIdx.has(index);
+export const institutions: AvInstitution[] = applyRamps(baseInstitutions).map((inst) => ({
+  ...inst,
+  levels: inst.levels.map((l) => ({ ...l, items: l.items.filter((i) => !hiddenIdx.has(i)) })),
+}));
 
 /**
  * Fees: replies in which the institution sought or mentioned a fee, a charge or a cost limit
