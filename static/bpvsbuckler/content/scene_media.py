@@ -211,7 +211,7 @@ def attach_media(scenes, strict=True):
                 else:
                     dist = (s0 - pe).days
             span = (pe - ps).days
-            cands.append((span, dist, sc))
+            cands.append((dist, span, sc) if prec == 'year' else (span, dist, sc))
         if not cands: continue
         # One archive record, one scene. Prefer the most specific event period;
         # distance breaks ties between equally specific events.
