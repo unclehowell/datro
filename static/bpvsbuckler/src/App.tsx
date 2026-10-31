@@ -732,8 +732,8 @@ function Splash({ onPlay, onBoard, onCast, instBar }: { onPlay: () => void; onBo
   return (
     <div className="splash">
       <figure className="ph" style={{ margin: 0 }}>
-        <img src="/media/1791868564541.jpg" alt="Great House Farm, Llandough: the limewashed farmhouse behind its stone wall, July 1988" />
-        <figcaption>The farmhouse on 29 July 1988, photographed by Cadw. It was demolished on 6 December.</figcaption>
+         <img src="/media/1988-cadw-farmhouse.jpg" alt="Cadw survey photograph of the Great House Farm farmhouse, 29 July 1988" />
+        <figcaption>Cadw’s survey photograph of the farmhouse, 29 July 1988. The building was demolished on 6 December.</figcaption>
       </figure>
       <div className="tx">
         <h1>Tŷ Mawr</h1>
