@@ -732,7 +732,7 @@ function Splash({ onPlay, onBoard, onCast, instBar }: { onPlay: () => void; onBo
   return (
     <div className="splash">
       <figure className="ph" style={{ margin: 0 }}>
-         <img src="/media/1988-cadw-farmhouse.jpg" alt="Cadw survey photograph of the Great House Farm farmhouse, 29 July 1988" />
+         <img src="https://bpvsbuckler.bucklerfamily.estate/media/1988-cadw-farmhouse.jpg" alt="Cadw survey photograph of the Great House Farm farmhouse, 29 July 1988" />
         <figcaption>Cadw’s survey photograph of the farmhouse, 29 July 1988. The building was demolished on 6 December.</figcaption>
       </figure>
       <div className="tx">
