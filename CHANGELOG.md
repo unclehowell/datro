@@ -1,5 +1,17 @@
 # Changelog
 
+## [library-v2.1.0] - 2026-11-01
+
+### Added
+- Bloculus Project Brief 1.0.0 (was 0.0.1): retargeted to the Cedwyn estate (Llandough and Leckwith, south-east of the river Ely) as the first Bloculus pilot, at /consortium_projects/brief_bloculus/ (HTML and PDF, English).
+- The H3 thesis is kept; Cedwyn specifics added: 59 numbered land parcels, one H3 cell (resolution 11, proposed) per parcel centre point, parcel sub-domains under bucklerfamily.estate as a proposal until a dedicated top-level domain (for example .cedwyn) exists.
+
+### Changed
+- The earlier coastal pilot area, its sale prices and investment figures are retired from the brief; all addresses move to bucklerfamily.estate.
+
+### Pending
+- German, Spanish and French editions of brief 1.0.0 (sources updated; translations not yet made).
+
 ## [library-v2.0.0] - 2026-10-24
 
 ### Changed
