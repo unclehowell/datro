@@ -1,0 +1,5 @@
+ **Date**, **Version**, **Subject**, **Description**
+2021, 0.0.0, security, `Having a node's H3 cell reference in HotspotBnB before it self-builds is useful but the solution must circumvent bad actors`
+2026-11-01, 1.0.0, translation, `The German / Spanish / French editions of 1.0.0 are pending. The 0.0.1 translations describe the retired coastal pilot`
+2026-11-01, 1.0.0, geometry, `Parcel centre points and their H3 cells are approximate until the 59-parcel list is traced over modern mapping. Each cell will name its source and tolerance`
+2026-11-01, 1.0.0, addressing, `Two-level sub-domains (<cell>.cedwyn.bucklerfamily.estate) need a certificate that covers *.cedwyn.bucklerfamily.estate before they can serve HTTPS`
