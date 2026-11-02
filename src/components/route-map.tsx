@@ -57,8 +57,17 @@ const fmt = (s?: string | null) => (s ? `${+s.slice(8, 10)} ${MON[+s.slice(5, 7)
 /* ---------- data loading (browser only), shared with the WebMCP tools ---------- */
 let indexP: Promise<Index> | null = null;
 const partP: Record<string, Promise<{ recipients: Full[] }>> = {};
+// Same-origin first; the site copy at bucklerfamily.estate/dartboard/ may not carry /data/, so fall back to the Worker itself (CORS open in _headers).
+const ORIGINS = ["", "https://dartboard.righteous.workers.dev"];
 function getJson<T>(path: string): Promise<T> {
-  return fetch(`${path}?v=0.4.0&d=${lite.as_of}`).then((r) => (r.ok ? (r.json() as Promise<T>) : Promise.reject(new Error(`${path}: ${r.status}`))));
+  const q = `${path}?v=0.4.0&d=${lite.as_of}`;
+  const one = (o: string) =>
+    fetch(`${o}${q}`).then((r) => {
+      const ct = r.headers.get("content-type") || "";
+      if (!r.ok || !ct.includes("json")) throw new Error(`${o}${path}: ${r.status}`);
+      return r.json() as Promise<T>;
+    });
+  return one(ORIGINS[0]).catch(() => one(ORIGINS[1]));
 }
 function loadIndex() {
   if (!indexP) indexP = getJson<Index>("/data/ladders.json").catch((e) => { indexP = null; throw e; });

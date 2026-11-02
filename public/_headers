@@ -9,3 +9,7 @@
 /data/roadmap-part-*
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=300
+
+/data/ladders*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=300
