@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.5.0] - 2026-11-02
+
+### Changed
+- **Rungs & dates is one tab, and the default:** the old Rungs and Dates tabs are merged into a single tab, "Rungs & dates", which is now the view a visitor lands on. It shows the chosen recipient's rungs (the climb, with its legend) and, below it, the same recipient's dated steps to court; both follow the recipient picked on the dartboard or in either picker. Nothing was removed from either view. Tabs are now Rungs & dates · Route map. Old links `#ladder`, `#roadmap`, `#rungs` and `#dates` open the merged tab; `#route` opens the route map.
+
 ## [0.4.0] - 2026-11-02
 
 ### Added

@@ -341,11 +341,11 @@ function roadmapName(name: string) {
 function Home() {
   const [instId, setInstId] = useState("llandough");
   const [sheet, setSheet] = useState<Sheet | null>(null);
-  const [view, setView] = useState<"route" | "roadmap" | "ladder">("route");
+  const [view, setView] = useState<"climb" | "route">("climb");
   useEffect(() => {
-    // Route map (worst-case ladder per recipient) is the default view (v0.4.0); #ladder and #roadmap open the older views.
-    if (typeof window !== "undefined" && window.location.hash === "#roadmap") setView("roadmap");
-    if (typeof window !== "undefined" && window.location.hash === "#ladder") setView("ladder");
+    // v0.5.0: the old Rungs and Dates tabs are one tab, "Rungs & dates", and it is the default view.
+    // Old deep links #ladder, #roadmap, #rungs and #dates land on it; #route opens the route map.
+    if (typeof window !== "undefined" && /^#route(-map)?$/.test(window.location.hash)) setView("route");
   }, []);
   const inst = useMemo(
     () => institutions.find((i) => i.id === instId) ?? institutions[0],
@@ -368,9 +368,8 @@ function Home() {
       <div role="tablist" aria-label="Climb view" className="mx-auto flex rounded-full border border-line bg-surface p-1 text-sm">
         {(
           [
+            ["climb", "Rungs & dates"],
             ["route", "Route map"],
-            ["ladder", "Rungs"],
-            ["roadmap", "Dates"],
           ] as const
         ).map(([k, label]) => (
           <button
@@ -395,9 +394,7 @@ function Home() {
         />
       )}
 
-      {view === "roadmap" && <RoadmapRamps preferName={roadmapName(inst.name)} />}
-
-      <section aria-label="Avenues game" hidden={view !== "ladder"}>
+      <section aria-label="Avenues game" hidden={view !== "climb"}>
         <AvenueGame
           instId={inst.id}
           onInstChange={(id) => {
@@ -415,6 +412,8 @@ function Home() {
         />
         <ExchangeLegend onMore={() => setSheet({ kind: "key" })} />
       </section>
+
+      {view === "climb" && <RoadmapRamps preferName={roadmapName(inst.name)} />}
 
       <button
         type="button"
