@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.5.1] - 2026-11-02
+
+### Changed
+- **Mail brought up to 2 November 2026:** the Rungs & dates tab and the Route map now include the case mail received up to 2 Nov 2026 (it stopped at 31 Oct). New replies: three from the Heneb Historic Environment Record (2 Nov: not held in the HER; requests to search further names declined as research), one from the Northern Ireland Office on 26FOI 103 (2 Nov: points to its review of 26 Oct), and new recipients Historic Buildings & Places (2 Nov: no records held), the Health and Safety Executive (request of 2 Nov, receipt the same day) and SPAB (enquiry of 2 Nov). Automatic receipts are kept in the record and not shown. Rungs & dates is still the default tab.
+
 ## [0.5.0] - 2026-11-02
 
 ### Changed
