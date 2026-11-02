@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.4.0] - 2026-11-02
+
+### Added
+- **Route map (now the first view):** one Donkey Kong ladder per recipient (55 recipients, 900 rungs), bottom rung first, from the preservation notice to court disclosure, with full disclosure at the top. Each ladder is the complete worst-case sequence of routes the law and the body's own published policies allow, insisted on whatever the body tells us our options are. It is not limited to the options named in their replies.
+- Each rung shows its status (used, waiting on them, overdue, next, still to climb, not available), dates, due dates and day gaps, and why the rung exists. It also gives the legal source with a link, the statutory clock (and whose clock it is), who decides, when to climb on, what to cite, the evidence the rung leaves, and the body's own policy page.
+- Markers from the correspondence (240 substantive replies read): 🌰 old chestnut (122: not held, out of scope, refused, sent elsewhere, found later; linked to That Old Chestnut where it holds the record), 📜 pointer to the body's own policy or "if you are not satisfied" (47), 😮 disclosure (47), and 🛢 obstacles (exemptions, fees, late or missing answers).
+- Per recipient: where it stands, the next rung and the next step up with dates, and the routes their replies have never mentioned.
+- Rights reserved: disclosure received at any stage is accepted without prejudice and is not accepted as settlement of any question of earlier concealment; all rights are reserved.
+- Works with no JavaScript (server-rendered rung list for the chosen recipient, and every recipient's list in a no-script block). Readable at 390 px.
+- Machine-readable: /data/ladders.json (index, phases and clocks) with /data/ladders-part-1.json and -2.json, and WebMCP tools `dartboard_route(recipient)` and `dartboard_recipients()` (fallback `window.__dartboardMCP.run`).
+
+### Changed
+- View tabs are now Route map · Rungs · Dates. `#ladder` and `#roadmap` still open the older views.
+
 ## [0.3.0] - 2026-11-02
 
 ### Changed

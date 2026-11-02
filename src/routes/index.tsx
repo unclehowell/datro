@@ -47,6 +47,7 @@ import { ArtifactsSheet, CorrSheet, CourtTiles, OptionsSheet, courtInstitutions 
 import { DisclosureRecord } from "@/components/disclosure-record";
 import { ArchaeologyTimeline } from "@/components/archaeology-timeline";
 import { RoadmapRamps } from "@/components/roadmap-ramps";
+import { RouteMap } from "@/components/route-map";
 import {
   VERIFIED_ON,
   classifyRegime,
@@ -340,10 +341,11 @@ function roadmapName(name: string) {
 function Home() {
   const [instId, setInstId] = useState("llandough");
   const [sheet, setSheet] = useState<Sheet | null>(null);
-  const [view, setView] = useState<"roadmap" | "ladder">("ladder");
+  const [view, setView] = useState<"route" | "roadmap" | "ladder">("route");
   useEffect(() => {
-    // Ladder rungs is the default view; #roadmap opens the dated roadmap instead.
+    // Route map (worst-case ladder per recipient) is the default view (v0.4.0); #ladder and #roadmap open the older views.
     if (typeof window !== "undefined" && window.location.hash === "#roadmap") setView("roadmap");
+    if (typeof window !== "undefined" && window.location.hash === "#ladder") setView("ladder");
   }, []);
   const inst = useMemo(
     () => institutions.find((i) => i.id === instId) ?? institutions[0],
@@ -366,8 +368,9 @@ function Home() {
       <div role="tablist" aria-label="Climb view" className="mx-auto flex rounded-full border border-line bg-surface p-1 text-sm">
         {(
           [
-            ["ladder", "Ladder · rungs"],
-            ["roadmap", "Roadmap · dates"],
+            ["route", "Route map"],
+            ["ladder", "Rungs"],
+            ["roadmap", "Dates"],
           ] as const
         ).map(([k, label]) => (
           <button
@@ -376,12 +379,21 @@ function Home() {
             role="tab"
             aria-selected={view === k}
             onClick={() => setView(k)}
-            className={`rounded-full px-4 py-1.5 ${view === k ? "bg-brass font-semibold text-brass-ink" : "text-muted"}`}
+            className={`rounded-full px-3 py-1.5 ${view === k ? "bg-brass font-semibold text-brass-ink" : "text-muted"}`}
           >
             {label}
           </button>
         ))}
       </div>
+
+      {view === "route" && (
+        <RouteMap
+          instId={inst.id}
+          onInstChange={(id) => {
+            if (institutions.some((i) => i.id === id)) setInstId(id);
+          }}
+        />
+      )}
 
       {view === "roadmap" && <RoadmapRamps preferName={roadmapName(inst.name)} />}
 
