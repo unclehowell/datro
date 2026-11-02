@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.2] - 2026-11-02
+
+### Fixed
+- **Every recipient's climb checked against the case mail to 2 Nov 2026:** 91 exchanges missing from the Rungs & dates climb are now on their rungs. 60 are drawn (requests, replies, refusals, not-held answers, and receipts that log a request under a reference); 31 automatic replies and delivery notices are kept in the record and not drawn. Seven replies that had been hidden as bare receipts are shown again because they carry substance.
+- **Heneb (formerly GGAT):** the climb now shows 32 exchanges from 20 May to 2 Nov 2026 (it showed 20): the first request of 20 May; the 22 May answer that Heneb does not treat itself as subject to FOI, as a limited company; the preservation notices of 29 May and 28 Sep; the 24 Oct question about the Archwilio record pages; the 24 and 29 Oct follow-ups; the complaint receipts of 29 and 30 Sep; and the 28 Oct response to the complaint outcome. HER access and the complaint are now marked answered. The EIR rung records the 2 Nov answers (not held; the further names and the 1983 fire / Roman villa searches not rerun). A new rung, Reconsideration (EIR reg 11), is open: it can be asked by 30 Dec 2026. The Archwilio rung notes that three record files for PRN 02038s downloaded on 24 Oct and return "No such file" on 2 Nov. The Route map's Heneb ladder carries the same rung states.
+- **Mail after the 0.5.1 refresh:** the Vale scrutiny reply, the Northern Ireland Office receipt for 26FOI 135 (answer due 30 Nov), the Land Registry subject access exchange (D260928) and an Archaeology Data Service reply are on their rungs.
+- **Kept current:** each daily refresh now places new case mail on the right rung of the climb, so it no longer stops at the last hand update.
+
 ## [0.5.1] - 2026-11-02
 
 ### Changed
