@@ -1,6 +1,6 @@
 # Dartboard — public-records escalation board (Great House Farm / Tŷ Mawr, Llandough)
 
-Live at dartboard.bucklerfamily.estate. The page is visual: a dartboard on top and, under it, an arcade-style climb ("Avenues"). Text only appears in a sheet when you tap something.
+Live at https://bucklerfamily.estate/dartboard/ (dartboard.bucklerfamily.estate 301s there since v0.3.0, 2 Nov 2026). The page is visual: a dartboard on top and, under it, an arcade-style climb ("Avenues"). Text only appears in a sheet when you tap something.
 
 **The dartboard.** Each slice of the wheel is an institution. Each ring, from the outside in, is the next route used to get a record: opening enquiry → substantive reply → clarification and chase → internal review → formal complaint → independent regulator → democratic pressure → tribunal or court.
 
