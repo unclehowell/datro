@@ -21,9 +21,9 @@ const D = data as unknown as {
   byClass: Record<string, number>; months: { m: string; c: Record<string, number> }[]; institutions: Inst[];
 };
 
-export const CLASS: Record<string, { label: string; colour: string; hollow?: boolean }> = {
-  "substantive disclosure": { label: "Disclosed", colour: "#2e9e57" },
-  partial: { label: "Partly disclosed", colour: "#d4a017" },
+export const CLASS: Record<string, { label: string; colour: string; hollow?: boolean; disc?: boolean }> = {
+  "substantive disclosure": { label: "Disclosed", colour: "#2e9e57", disc: true },
+  partial: { label: "Partly disclosed", colour: "#d4a017", disc: true },
   "not held": { label: "“Not held”", colour: "#8b5cf6" },
   refusal: { label: "Refused", colour: "#dc2626" },
   "redirected elsewhere": { label: "Sent elsewhere", colour: "#3b82f6" },
@@ -42,6 +42,12 @@ const fmt = (s: string) => {
 };
 const monLabel = (s: string) => `${MON[Number(s.slice(5, 7)) - 1]} ${s.slice(2, 4)}`;
 const missed = (c: Conv) => c.met.startsWith("missed");
+/** v0.2.0: a disclosure is any request whose outcome class is flagged disc (Disclosed, Partly disclosed); data-driven, so new rows get it. */
+const isDisc = (c: Conv) => !!(CLASS[c.c] ?? CLASS["no reply"]).disc;
+const DISC_CSS =
+  ".dart-wow{display:block;font-size:2.5em;line-height:1.1}" +
+  ".dart-hl{background:#ff2bd6;color:#14060f;font-weight:800;padding:.08em .3em;border-radius:4px;-webkit-box-decoration-break:clone;box-decoration-break:clone;box-shadow:0 0 0 2px #ffe600}" +
+  "html.ghf-inv .dart-hl{background:#ff5ae6;color:#fff0fa;box-shadow:0 0 0 2px #af5a00}html.ghf-inv .dart-wow,html.ghf-inv .dart-tile-wow{filter:invert(1) hue-rotate(180deg)}";
 
 function Tile({ c, on, dim, onTap }: { c: Conv; on: boolean; dim: boolean; onTap: () => void }) {
   const k = CLASS[c.c] ?? CLASS["no reply"];
@@ -61,6 +67,7 @@ function Tile({ c, on, dim, onTap }: { c: Conv; on: boolean; dim: boolean; onTap
         outlineOffset: on ? 2 : 1,
       }}
     >
+      {isDisc(c) && <span aria-hidden="true" className="dart-tile-wow absolute inset-0 flex items-center justify-center text-[18px] leading-none">😮</span>}
       {c.via !== "Email" && <span className="absolute inset-0 flex items-center justify-center text-[10px] font-bold text-white">W</span>}
     </button>
   );
@@ -81,8 +88,9 @@ function Detail({ c }: { c: Conv }) {
   ];
   return (
     <div className="mt-2 rounded-xl border border-line bg-surface p-3 text-sm" style={{ borderLeft: `4px solid ${k.colour}` }}>
+      {isDisc(c) && <span className="dart-wow" role="img" aria-label="Disclosure">😮</span>}
       <p className="text-xs tracking-[0.14em] text-brass uppercase">{c.ev ? `${c.ev} · ` : ""}{k.label}</p>
-      <p className="mt-1 font-serif text-lg leading-snug text-fg">{c.t}</p>
+      <p className="mt-1 font-serif text-lg leading-snug text-fg">{isDisc(c) ? <mark className="dart-hl">{c.t}</mark> : c.t}</p>
       <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1">
         {rows.filter((r) => r[1]).map(([a, b]) => (
           <div key={a} className="contents">
@@ -121,6 +129,7 @@ export function DisclosureRecord() {
 
   return (
     <section id="disclosure-record" aria-label="Disclosure record" className="rounded-[var(--radius-card)] border border-line bg-surface p-3">
+      <style>{DISC_CSS}</style>
       <h2 className="font-serif text-2xl leading-tight text-fg">Disclosure record</h2>
       <p className="mt-1 text-sm text-muted">Every request sent to an institution, and what came back.</p>
       <div className="mt-3 grid grid-cols-3 gap-2 text-center">
