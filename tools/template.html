@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Land Changing Hands · Great House Farm</title>
+<meta name="description" content="Tŷ Mawr, Llandough: one farm, A + B, comes into the circle on the root title chain; out come the later titles, A3 and B, plus A1 and A2, which the family’s reading calls synthetic. Pick a line to watch it grow.">
+<meta property="og:title" content="Great House Farm · the land changing hands">
+<meta property="og:description" content="In: A + B on the root title chain. Out: the later titles A3 and B, plus SA1 and SA2; follow each line to its records.">
+<meta name="theme-color" content="#151229">
+<style>
+:root{--bg:#151229;--panel:#1d1938;--line:#ffffff1f;--ink:#f3f1ff;--muted:#b9b4d6;--accent:#ffd166}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:#9cc7ff}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:860px;margin:0 auto;padding:14px 12px 24px}
+.intro{font-size:15px;color:var(--muted);margin:6px 2px 10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#ffffff0a;color:var(--ink);border-radius:999px;padding:5px 12px 5px 8px;font:inherit;font-size:15px;font-weight:600;cursor:pointer;min-height:40px}
+.chip[aria-pressed=true]{background:#ffffff2b;border-color:#ffffffaa}
+.chip i{display:inline-block;width:14px;height:14px;border-radius:7px;flex:none}
+.stage{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:10px}
+#ring{display:block;width:100%;height:auto;aspect-ratio:1040/880;touch-action:pan-y pinch-zoom;user-select:none;-webkit-user-select:none}
+.replay{position:absolute;right:8px;bottom:8px;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#151229e6;color:var(--ink);font-size:20px;cursor:pointer}
+.cap{font-size:15px;line-height:1.4;margin:8px 2px 8px;min-height:2.8em;text-align:center;font-weight:600}
+.snd{position:absolute;left:8px;bottom:8px;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:#151229e6;color:var(--ink);font-size:19px;cursor:pointer}
+.steps{list-style:none;margin:0;padding:0}
+.steps li button{display:grid;grid-template-columns:8px 64px 1fr;gap:10px;align-items:center;width:100%;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:0 0 6px;color:var(--ink);font:inherit;font-size:15px;cursor:pointer}
+.steps .bar{width:8px;height:28px;border-radius:4px}
+.steps .bar.d{background-image:repeating-linear-gradient(180deg,transparent 0 4px,#1d1938 4px 7px)!important}
+.steps .y{font-weight:800}
+.legend{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14px;margin-top:12px}
+.legend h2{font-size:12px;margin:0 0 6px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+.lrow{display:flex;align-items:center;gap:10px;margin:5px 0}
+.lrow .ic{flex:none;width:44px;text-align:center;font-size:18px}
+.ver{color:var(--muted);font-size:12px;margin-top:8px}
+/* svg */
+.em{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;text-anchor:middle;dominant-baseline:central}
+.nlab{fill:#f3f1ff;font-weight:600;paint-order:stroke;stroke:#1d1938;stroke-width:6px;stroke-linejoin:round}
+.cap2{fill:#f3f1ff;font-weight:800;paint-order:stroke;stroke:#1d1938;stroke-width:6px;stroke-linejoin:round;text-anchor:middle}
+.ploy{fill:#d9b38c;font-weight:700;letter-spacing:1px;text-anchor:middle;paint-order:stroke;stroke:#1d1938;stroke-width:6px}
+.pill text{font-weight:800;fill:#151229;text-anchor:middle;dominant-baseline:central}
+.ln{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.hit{fill:none;stroke:transparent;stroke-width:34;cursor:pointer;pointer-events:stroke}
+g.sg{display:none}
+g.sg.on{display:inline}
+g.nd{cursor:pointer;transition:opacity .35s}
+g.nd.off{opacity:0;pointer-events:none}
+g.nd.dim{opacity:.28}
+g.pill{transition:opacity .3s}
+g.pill.off{opacity:0}
+#hits path{pointer-events:none}
+#hits path.on{pointer-events:stroke}
+/* sheet */
+.sheet-bg{position:fixed;inset:0;background:#0009;display:none;align-items:flex-end;justify-content:center;z-index:2147483620}
+.sheet-bg.open{display:flex}
+.sheet{background:#201b40;border:1px solid var(--line);border-radius:18px 18px 0 0;max-width:640px;width:100%;max-height:66vh;overflow:auto;padding:16px 16px 22px}
+.sheet h2{margin:0 0 2px;font-size:20px}
+.sheet .date{color:var(--muted);margin-bottom:8px}
+.sheet h3{font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin:12px 0 2px}
+.sheet ul{margin:4px 0 0;padding-left:18px}
+.sheet li{margin:4px 0}
+.x{float:right;background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;width:40px;height:40px;font-size:20px;cursor:pointer}
+footer{margin-top:22px;text-align:center;color:var(--muted);font-size:14px}
+</style>
+<script type="text/plain" data-ghf-hold src="https://bucklerfamily.estate/ghf-lang/basecamp.js?hold"></script>
+<script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.1.2"></script>
+</head>
+<body>
+<div class="wrap">
+<p class="intro">Tŷ Mawr, Llandough. Into the circle comes one farm, A + B, on the root title chain. Out come the later titles, A3 and B, plus two more lines, SA1 and SA2. The family’s reading calls them synthetic and ties each to a step that treated the occupation as permissive; follow each line to its records. Pick a line to watch it grow and hear it told; tap anything for its record.</p>
+<div class="chips" id="chips" role="group" aria-label="Show a line"></div>
+<main>
+<div class="stage" data-ghf-keep>
+<svg id="ring" viewBox="-520 -440 1040 880" role="img" aria-label="Circle diagram: title holders and official actors on the ring, permissive occupancy steps inside it, and the path of each parcel"></svg>
+<button class="replay" id="replay" aria-label="Play the line again">↻</button>
+<button class="snd" id="snd" aria-pressed="true" aria-label="Narration on">🔊</button>
+</div>
+<p class="cap" id="cap" aria-live="polite" translate="no" data-no-translate></p>
+<ol class="steps" id="steps" aria-label="Steps of the selected line"></ol>
+<section class="legend" data-ghf-keep aria-label="Key">
+<h2>Key</h2>
+<div class="lrow"><span class="ic em">◆</span><span>Permissive occupancy step, with its year</span></div>
+<div class="lrow"><span class="ic em">◆◆</span><span>The double step, 1955</span></div>
+<div class="lrow"><span class="ic em">🦹</span><span>Named in the statement of Mary (Nancy) Williams, c. 1974</span></div>
+<div class="lrow"><span class="ic"><svg width="30" height="30" viewBox="-20 -24 40 46" aria-hidden="true"><g id="shredK"></g></svg></span><span>Papers gone (shredded)</span></div>
+<div class="lrow"><span class="ic" style="color:#b9b4d6">◯</span><span>On the ring: title holders and official actors. Inside it: no title</span></div>
+<div class="lrow"><span class="ic"><svg width="40" height="10" aria-hidden="true"><line x1="2" y1="5" x2="38" y2="5" stroke="#e7c6ff" stroke-width="4" stroke-dasharray="6 5"/></svg></span><span>Dashed: the deed or record is not published here</span></div>
+<div class="lrow"><span class="ic" style="font-weight:800;font-size:14px">1938</span><span>Each year sits where the line arrives</span></div>
+<p class="ver">v3.3.1 · 24 Oct 2026</p>
+</section>
+</main>
+<footer data-ghf-keep>© the Williams-Buckler family of Tŷ Mawr · <a href="https://bucklerfamily.estate/licence/">Licence</a></footer>
+</div>
+<div class="sheet-bg" id="sheetBg"><div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shT"></div></div>
+<script>
+const DATA=/*__DATA__*/null;const V=DATA.paths;const R=V.R,C=V.colors,N=V.nodes,S=Object.fromEntries(V.segs.map(s=>[s.id,s]));
+const NS='http://www.w3.org/2000/svg',$=q=>document.querySelector(q);
+const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const RM=matchMedia('(prefers-reduced-motion: reduce)');
+function pos(id){const n=N[id],r=(n.kind==='ring'?1:n.r)*R,a=n.ang*Math.PI/180;return [r*Math.sin(a),-r*Math.cos(a)]}
+function rad(id){const k=N[id].kind;return {ring:13,out:26,poo:24,named:30,shred:22,split:9}[k]+(id==='dpoo'?14:0)}
+const add=(a,b)=>[a[0]+b[0],a[1]+b[1]],sub=(a,b)=>[a[0]-b[0],a[1]-b[1]],mul=(a,k)=>[a[0]*k,a[1]*k],len=a=>Math.hypot(a[0],a[1]),unit=a=>{const l=len(a)||1;return [a[0]/l,a[1]/l]},perp=a=>[-a[1],a[0]];
+const rot=(v,t)=>[v[0]*Math.cos(t)-v[1]*Math.sin(t),v[0]*Math.sin(t)+v[1]*Math.cos(t)];
+const qpt=(p0,c,p1,t)=>[(1-t)*(1-t)*p0[0]+2*(1-t)*t*c[0]+t*t*p1[0],(1-t)*(1-t)*p0[1]+2*(1-t)*t*c[1]+t*t*p1[1]];
+const f=v=>v.toFixed(1),P2=p=>f(p[0])+' '+f(p[1]);
+// geometry of each segment: path d + where its year pill sits
+function geom(s){
+ const A=pos(s.fr),B=pos(s.to);
+ if(s.loop){const u=unit(mul(A,s.outward?1:-1)),th=s.loop*0.62,Lp=118,r=rad(s.fr)+2;
+  const a=add(A,mul(rot(u,th-0.32),r)),b=add(A,mul(rot(u,th+0.32),r)),c1=add(A,mul(rot(u,th-0.55),Lp)),c2=add(A,mul(rot(u,th+0.55),Lp));
+  return {d:`M${P2(a)} C${P2(c1)} ${P2(c2)} ${P2(b)}`,pill:add(A,mul(rot(u,th),Lp*0.78))}}
+ const dv=sub(B,A),mid=mul(add(A,B),0.5);let c=add(mid,mul(perp(dv),s.bend||0));
+ if(s.bow){const c2=add(mid,mul(perp(dv),-(s.bend||0)));if((s.bow==='in')===(len(c2)<len(c)))c=c2}
+ const a=add(A,mul(unit(sub(c,A)),rad(s.fr)+3));
+ if(s.near){let tt=1,E=B;while(tt>0.3){E=qpt(a,c,B,tt);if(len(sub(E,B))>(s.gap||58))break;tt-=0.005}const tv=unit(sub(B,c)),pv=perp(tv),E2=add(E,mul(pv,-46)),h=add(add(E,mul(tv,34)),mul(pv,-23));
+  const back=add(a,mul(pv,-30)),c2=add(c,mul(pv,-46));
+  return {d:`M${P2(a)} Q${P2(c)} ${P2(E)} Q${P2(h)} ${P2(E2)} Q${P2(c2)} ${P2(back)}`,pill:add(add(E,mul(tv,-36)),mul(pv,34))}}
+ const b=add(B,mul(unit(sub(c,B)),rad(s.to)+(s.lab?14:10)));
+ return {d:`M${P2(a)} Q${P2(c)} ${P2(b)}`,pill:qpt(a,c,b,s.pt||(s.to==='merge'?0.55:0.8))}}
+const svg=$('#ring');let G={};
+function shred(g,col){el('path',{d:'M-15 -22 h22 l8 8 v10 h-30 z',fill:col||'#e9e6fb'},g);
+ [-13,-7,-1,5,11].forEach((x,i)=>el('rect',{x:x,y:-1+(i%2)*2,width:4,height:16+(i%3)*3,rx:1,fill:col||'#e9e6fb',transform:`rotate(${(i-2)*6} ${x+2} 0)`},g))}
+shred($('#shredK'));
+function draw(){svg.textContent='';G={segs:{},nodes:{},pills:{},hits:{},masks:{}};
+ const defs=el('defs',{},svg);
+ Object.entries(C).forEach(([k,c])=>{const m=el('marker',{id:'ar-'+k,viewBox:'0 0 10 10',refX:'7',refY:'5',markerUnits:'userSpaceOnUse',markerWidth:'26',markerHeight:'26',orient:'auto'},defs);el('path',{d:'M0 0 L10 5 L0 10 z',fill:c},m)});
+ const rg=el('radialGradient',{id:'inside'},defs);el('stop',{offset:'0','stop-color':'#ffffff','stop-opacity':'.07'},rg);el('stop',{offset:'1','stop-color':'#ffffff','stop-opacity':'.02'},rg);
+ el('circle',{cx:0,cy:0,r:R,fill:'url(#inside)',stroke:'#ffffff55','stroke-width':3},svg);
+ const lay=el('g',{id:'lines'},svg),nl=el('g',{id:'nodes'},svg),pl=el('g',{id:'pills'},svg),hl=el('g',{id:'hits'},svg);
+ // steps label under the double ◆
+ el('text',{x:0,y:76,class:'ploy','font-size':19},nl).textContent='PERMISSIVE';
+ el('text',{x:0,y:98,class:'ploy','font-size':19},nl).textContent='OCCUPANCY STEPS';
+ V.segs.forEach(s=>{const g0=geom(s),col=C[s.g],k=s.g;
+  const m=el('mask',{id:'m-'+s.id,maskUnits:'userSpaceOnUse',x:-600,y:-600,width:1200,height:1200},defs);
+  const mp=el('path',{d:g0.d,fill:'none',stroke:'#fff','stroke-width':46,'stroke-linecap':'butt'},m);
+  const g=el('g',{class:'sg',mask:`url(#m-${s.id})`,'data-id':s.id},lay);
+  const p=el('path',{d:g0.d,class:'ln',stroke:col,'stroke-width':s.loop?6:7,'marker-end':`url(#ar-${k})`},g);
+  if(s.dash)p.setAttribute('stroke-dasharray','14 11');
+  const L=mp.getTotalLength();mp.setAttribute('stroke-dasharray',L+' '+(L+10));mp.setAttribute('stroke-dashoffset',L);
+  G.segs[s.id]={g,mp,L};
+  const h=el('path',{d:g0.d,class:'hit'},hl);h.addEventListener('click',()=>openSeg(s.id));G.hits[s.id]=h;
+  if(s.lab){const pg=el('g',{class:'pill off'},pl),fs=s.lab.length>4?22:25,w=s.lab.length*fs*0.62+18;
+   el('rect',{x:f(g0.pill[0]-w/2),y:f(g0.pill[1]-17),width:f(w),height:34,rx:17,fill:col,stroke:'#1d1938','stroke-width':3},pg);
+   el('text',{x:f(g0.pill[0]),y:f(g0.pill[1]+1),'font-size':fs},pg).textContent=s.lab;
+   pg.addEventListener('click',()=>openSeg(s.id));pg.style.cursor='pointer';G.pills[s.id]=pg}});
+ Object.entries(N).forEach(([id,n])=>{const [x,y]=pos(id),g=el('g',{class:'nd',tabindex:0,role:'button','aria-label':n.title},nl);G.nodes[id]=g;
+  g.addEventListener('click',()=>openNode(id));g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openNode(id)}});
+  if(n.kind==='ring'){el('circle',{cx:f(x),cy:f(y),r:13,fill:'#f3f1ff',stroke:'#1d1938','stroke-width':4},g);ringLab(g,id,x,y,R+26)}
+  else if(n.kind==='out'){el('circle',{cx:f(x),cy:f(y),r:26,fill:'#1d1938',stroke:'#ffffff88','stroke-width':3},g);
+   el('text',{x:f(x),y:f(y+1),class:'em','font-size':30,fill:id==='merge'?'#fff':'#e7c6ff'},g).textContent=n.icon;ringLab(g,id,x,y,n.r*R+34)}
+  else if(n.kind==='poo'){el('circle',{cx:f(x),cy:f(y),r:rad(id),fill:'#1d1938',opacity:.85},g);
+   el('text',{x:f(x),y:f(y+2),class:'em','font-size':id==='dpoo'?34:38,'letter-spacing':id==='dpoo'?-3:0},g).textContent=n.icon;
+   el('text',{x:f(x),y:f(y+rad(id)+24),class:'cap2','font-size':24},g).textContent=n.cap}
+  else if(n.kind==='named'){el('text',{x:f(x),y:f(y+2),class:'em','font-size':52},g).textContent=n.icon;
+   n.over.forEach((t,i)=>el('text',{x:f(x),y:f(y-40-(n.over.length-1-i)*24),class:'cap2','font-size':21,style:'font-weight:600'},g).textContent=t);
+   n.under.forEach((t,i)=>el('text',{x:f(x),y:f(y+52+i*24),class:'cap2','font-size':22},g).textContent=t)}
+  else if(n.kind==='shred'){const sg=el('g',{transform:`translate(${f(x)} ${f(y)}) scale(1.25)`},g);shred(sg)}
+  else if(n.kind==='split'){el('circle',{cx:f(x),cy:f(y),r:9,fill:'#e7c6ff'},g);el('text',{x:f(x),y:f(y+36),class:'cap2','font-size':21},g).textContent=n.cap}});
+}
+function ringLab(g,id,x,y,rr){const n=N[id],a=n.ang*Math.PI/180,lx=rr*Math.sin(a),ly=-rr*Math.cos(a),fs=26,lh=27,k=n.lab.length;
+ let anchor='middle',y0;const sx=Math.sin(a),cy=Math.cos(a);
+ if(Math.abs(sx)>0.38)anchor=sx>0?'start':'end';
+ if(anchor==='middle')y0=cy>0?ly-(k-1)*lh-4:ly+fs*0.7;else y0=ly-(k-1)*lh/2+fs*0.35;
+ y0+=(n.ldy||0);n.lab.forEach((t,i)=>el('text',{x:f(lx+(n.ldx||0)),y:f(y0+i*lh),class:'nlab','font-size':fs,'text-anchor':anchor},g).textContent=t)}
+// ---- filter + snake animation (v3.3: each step is drawn while its narration line plays)
+let cur='ALL',raf=0,run=null;const chips=$('#chips');const NR=V.narr;
+const LSg=k=>{try{return localStorage.getItem(k)}catch(e){return null}},LSs=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+const PROMPT={en:'▶ Tap a line to watch it drawn and hear it told.',cy:'▶ Tapiwch linell i’w gwylio’n tyfu a’i chlywed.',es:'▶ Toca una línea para verla crecer y escucharla.'};
+function LG(){let l=null;try{l=window.GHFLang&&window.GHFLang.get&&window.GHFLang.get()}catch(e){}l=(l||document.documentElement.getAttribute('lang')||'en').slice(0,2).toLowerCase();return l==='cy'||l==='es'?l:'en'}
+let muted=LSg('ig-mute')==='1';const au=new Audio();au.preload='auto';au.setAttribute('playsinline','');
+const sndB=$('#snd'),capE=$('#cap');
+function paintSnd(){sndB.textContent=muted?'🔇':'🔊';sndB.setAttribute('aria-pressed',String(!muted));sndB.setAttribute('aria-label',muted?'Narration off':'Narration on')}
+function setCap(t,lang){if(capE.textContent!==t)capE.textContent=t;capE.setAttribute('lang',lang==='en'?'en-GB':lang)}
+au.addEventListener('playing',()=>{if(run)run.waiting=false});
+au.addEventListener('error',()=>{if(run){run.audioOn=false;run.waiting=false}});
+V.filters.forEach(F=>{const b=document.createElement('button');b.className='chip';b.dataset.k=F.k;b.setAttribute('aria-pressed','false');
+ const cols=[...new Set(F.tracks.flatMap(t=>t.s.map(id=>S[id].g)))].filter(g=>g!=='AB'||F.k==='AB').slice(0,3);
+ b.innerHTML=(F.k==='ALL'?'':cols.map(c=>`<i style="background:${C[c]}"></i>`).join(''))+esc(F.lab);b.onclick=()=>select(F.k,true,true);chips.appendChild(b)});
+// silent first draw (no tap yet): the tracks grow side by side, about 2.75x slower than v3.2
+function plan(F){const sp=RM.matches?1e9:Math.max(95,Math.min(190,F.tracks.reduce((m,t)=>Math.max(m,t.s.reduce((a,id)=>a+G.segs[id].L,0)),0)/14.3));
+ const st={},en={};let order=[...F.tracks];
+ for(let pass=0;pass<3;pass++)order.forEach(t=>{let tt=t.after?(en[t.after]??Infinity):0;if(!isFinite(tt))return;
+  t.s.forEach(id=>{const d=Math.max(700,G.segs[id].L/sp*1000);if(st[id]===undefined||tt>st[id])st[id]=tt;tt=st[id]+d;en[id]=tt})});
+ return {st,en}}
+// narrated draw: one step at a time; each step's lines grow over the length of its spoken line
+function nplan(k,lang){const Q=NR.cues[k][lang],st={},en={};
+ Q.c.forEach(([key,c0,c1])=>{const segs=NR.steps[key].segs;if(!segs.length)return;
+  const a=(c0+0.08)*1000,b=Math.max(a+600*segs.length,(c1-0.05)*1000),tot=segs.reduce((s,id)=>s+G.segs[id].L,0);let t=a;
+  segs.forEach(id=>{const d=(b-a)*G.segs[id].L/tot;st[id]=RM.matches?0:t;en[id]=RM.matches?1:t+d;t+=d})});
+ return {st,en,Q}}
+function clock(){if(!run)return 0;const p=performance.now();
+ if(run.audioOn){if(!au.paused&&au.currentTime>0&&!run.waiting){run.t0=p-au.currentTime*1000;return au.currentTime*1000}
+  if(run.waiting&&p-run.req<4000){run.t0=p-run.hold;return run.hold}
+  if(run.waiting){run.waiting=false;run.audioOn=false}}
+ return p-run.t0}
+function startAudio(at){const src=`audio/${run.lang}/${run.k}.mp3?v=3.3.1`;
+ if(!au.src||!au.src.endsWith(src.replace(/^audio/,'/audio')))au.src=src;
+ try{au.currentTime=at/1000}catch(e){}run.audioOn=true;run.waiting=true;run.req=performance.now();run.hold=at;
+ const p=au.play();if(p&&p.catch)p.catch(()=>{if(run){run.audioOn=false;run.waiting=false}})}
+function select(k,user,narr){cur=k;const F=V.filters.find(x=>x.k===k),lang=LG();
+ chips.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.k===k)));
+ const ids=[...new Set(F.tracks.flatMap(t=>t.s))];
+ if(user){const u=new URL(location);if(k==='ALL')u.searchParams.delete('p');else u.searchParams.set('p',k);history.replaceState(null,'',u)}
+ Object.entries(G.segs).forEach(([id,o])=>{o.g.classList.toggle('on',false);o.mp.setAttribute('stroke-dashoffset',o.L);G.hits[id].classList.toggle('on',false)});
+ Object.values(G.pills).forEach(p=>p.classList.add('off'));
+ au.pause();const P=narr?nplan(k,lang):plan(F),{st,en}=P;
+ run={k,lang,narr:!!narr,t0:performance.now(),audioOn:false,waiting:false,done:false,ci:-1,Q:P.Q};
+ if(narr&&!muted)startAudio(0);
+ setCap(narr?'':PROMPT[lang],lang);
+ const touch={};
+ ids.forEach(id=>{const s=S[id];if(touch[s.fr]===undefined||st[id]<touch[s.fr])touch[s.fr]=st[id];{const t=S[id].near?st[id]:en[id];if(touch[s.to]===undefined||t<touch[s.to])touch[s.to]=t}});
+ if(F.start&&!narr)touch[F.start]=0;
+ Object.entries(G.nodes).forEach(([id,g])=>{const k2=N[id].kind,inside=!['ring','out'].includes(k2);g.classList.remove('dim','off');
+  if(touch[id]===undefined||touch[id]>0)g.classList.add(inside?'off':'dim')});
+ renderSteps(F,ids,st);
+ cancelAnimationFrame(raf);const done=new Set(),me=run;
+ const tick=()=>{if(run!==me)return;const t=clock();let live=false;
+  ids.forEach(id=>{const o=G.segs[id],s0=st[id],d=Math.max(1,en[id]-s0);let p=RM.matches?2:(t-s0)/d;if(p<0){live=true;return}if(p>1)p=1;else live=true;
+   o.g.classList.add('on');o.mp.setAttribute('stroke-dashoffset',f(o.L*(1-p)));
+   if(p>=1&&!done.has(id)){done.add(id);G.hits[id].classList.add('on');if(G.pills[id])G.pills[id].classList.remove('off')}});
+  Object.entries(touch).forEach(([nid,tt])=>{if(t>=tt||RM.matches)G.nodes[nid].classList.remove('dim','off')});
+  if(me.narr){const c=me.Q.c;let i=me.ci;while(i+1<c.length&&t>=c[i+1][1]*1000)i++;
+   if(i!==me.ci&&i>=0){me.ci=i;setCap(NR.steps[c[i][0]][me.lang],me.lang)}
+   if(t<me.Q.d*1000+300)live=true;else me.done=true}
+  if(live)raf=requestAnimationFrame(tick);else me.done=true};
+ raf=requestAnimationFrame(tick)}
+sndB.onclick=()=>{muted=!muted;LSs('ig-mute',muted?'1':'0');paintSnd();
+ if(muted){au.pause();if(run)run.audioOn=false;return}
+ if(run&&run.narr&&!run.done){startAudio(clock())}else select(cur,false,true)};
+paintSnd();
+document.addEventListener('ghf-lang-change',()=>{if(run&&run.narr&&!run.done)select(cur,false,true);else if(run&&!run.narr)setCap(PROMPT[LG()],LG())});
+function nm(id){const n=N[id];return n.kind==='ring'||n.kind==='out'?n.lab.join(' '):n.kind==='poo'?n.icon+' '+n.cap:n.kind==='named'?'🦹 '+n.under.join(' '):n.kind==='split'?'1877 split':'papers gone'}
+function renderSteps(F,ids,st){const ol=$('#steps');ol.textContent='';
+ ids.forEach(id=>{const s=S[id],li=document.createElement('li'),b=document.createElement('button');
+  const y=s.lab||(N[s.to].cap)||(s.id==='a-gone'?'1950–52':'');
+  b.innerHTML=`<span class="bar${s.dash?' d':''}" style="background:${C[s.g]}"></span><span class="y">${esc(y)}</span><span>${esc(s.near?nm(s.fr)+' → towards the papers, and back':nm(s.fr)+' → '+nm(s.to))}</span>`;
+  b.onclick=()=>openSeg(id);li.appendChild(b);ol.appendChild(li)})}
+$('#replay').onclick=()=>select(cur,false,true);
+// ---- sheet
+function srcList(src){return src&&src.length?'<h3>Sources</h3><ul>'+src.map(x=>`<li><a href="${esc(x.u)}" target="_blank" rel="noopener">${esc(x.t)}</a></li>`).join('')+'</ul>':''}
+let lastFocus=null;
+function sheet(h){lastFocus=document.activeElement;$('#sheet').innerHTML='<button class="x" id="shX" aria-label="Close">✕</button>'+h;$('#sheetBg').classList.add('open');$('#shX').onclick=closeSheet;$('#shX').focus()}
+function closeSheet(){$('#sheetBg').classList.remove('open');if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+$('#sheetBg').addEventListener('click',e=>{if(e.target.id==='sheetBg')closeSheet()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
+function openSeg(id){const s=S[id];sheet(`<h2 id="shT">${esc(s.title)}</h2><div class="date">${esc(s.date||'')}${s.dash?' · record not held':''}</div><p>${esc(s.text)}</p>${srcList(s.src)}`)}
+function openNode(id){const n=N[id];sheet(`<h2 id="shT">${esc(n.title)}</h2>${n.kind==='named'?`<div class="date">${esc(n.over.join(' '))} · ${esc(n.under.join(' '))}</div>`:''}${n.text?`<p>${esc(n.text)}</p>`:''}${srcList(n.src)}`)}
+draw();
+const q=new URLSearchParams(location.search).get('p');select(V.filters.some(x=>x.k===q)?q:'ALL',false);
+RM.addEventListener&&RM.addEventListener('change',()=>select(cur,false,run&&run.narr));
+// the shared header (basecamp.js) loads after this page's own script has run; ghf-boot.js already reserved its band
+(function(){if(window.GHFBasecamp||document.querySelector('script[data-ghf-basecamp-late]'))return;var s=document.createElement('script');s.src='https://bucklerfamily.estate/ghf-lang/basecamp.js?v='+(window.GHFBoot||'2.1.2');s.setAttribute('data-ghf-basecamp-late','');document.head.appendChild(s)})();
+</script>
+</body>
+</html>

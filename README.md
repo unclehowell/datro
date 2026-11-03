@@ -1,46 +1,22 @@
-New function for netlify branch.  
+# infographic.bucklerfamily.estate — Great House Farm: the land changing hands
 
-Until Sep 2021 DATRO's primary domain was datro.xyz and the secondary was datro.world  
-As of Sep 2021 we're attempting to put everything on one domain.  
+v3.3.3 (24 Oct 2026). One circle. On the ring: title holders and official actors. Inside it: no title — the permissive occupancy steps (◆, each with its year; ◆◆ = 1955), the two people named in the statement of Mary (Nancy) Williams (🦹 Bruce Sutherland, with Mr. Knapp, estate agent, above), and the shredded-paper icons (papers gone).
 
-This is challenging because the poin of the second domain in the first place was to overcome challenges.  
-These challenges included:  
+Data-status note: the 1877 A/B division is shown as the working model, not as a verified conveyance. The separate 1877 Clyde Street, Roath lease is excluded as a different property; a Great House Farm-specific instrument is still required to establish the proposed split.
 
-a) github pages only allows one url to point to one branch - and we wanted to spread content across 2 branches to keep the branch sizes from being too excessive  
-b) netlify enabled us to overcome the github limitation, having a second domain point to a 2nd branch, but there was billing involved and we want to keep DATRO overhead free  
-c) we managed to stay under netlify's billing threshold by only publishing content to the corresponding branch, which didn't update so frequently  
-   the websites and source code for the software updates frequently, but archived documents and large media files didn't update so often and so they were the types of content on the 2nd branch  
-d) netlify also overcame the issue of broken ssl certificates which happened when frame-forwarding was tried. 
+The message: into the circle comes one farm, A + B, on the root title chain; out comes A + B again, but as later A3 and B (merged at BP Properties, 1987), plus two simple lines, SA1 and SA2.
 
+Lines (pick one; it draws itself from its start to its last official actor; reduced motion draws it at once):
+- **A+B IN:** Herbert family ★ → Vaughan family (1500s) → Bute Estate (early 1800s) → the 1877 split.
+- **A:** + Bute Estate → Daniel Thomas & Son 1877 → Williams family 1928 → 🦹 1950 → papers gone. 1974: a line from the Williams family heads for the papers beside BP Pension Trust, turns back just short and returns.
+- **B:** + Bute Estate → Mountjoy Ltd 1926 → Western Ground Rents 1938 → BP Pension Trust 1969 → BP Properties 1975, again 1982 → merges with SA3, 1987.
+- **SA1 (woodland):** ◆ 1949 → ◆◆ 1955 → the 29 Mar 1961 deed naming Cardiff City Corporation (dashed; terms and extent not inspected), where the line stops. Separately, Ideal Homes → Forest of Cardiff 1994 (WA735527; the woodland title history has BP Properties → Ideal Homes, 3 Dec 1993). No transfer from Cardiff City Corporation is on record, so none is drawn.
+- **SA2 (village green):** ◆◆ 1955 → ◆ 1959 → Glamorgan County Council 1970 (VG41, provisionally registered 16 June 1970); afterwards Llandough Community Council.
+- **SA3 (house and yard):** ◆◆ 1955 → ◆ 1962 → ◆ 1965 → ◆ 1969 → BP Pension Trust 1969 → ◆ 1971 → ◆ 1974 → ◆ 1975 → BP Properties 1975, again 1983 (WA240304) → merges with B, 1987.
+- **SA3+B** draws both into the merge; **All** draws everything.
 
-Before explaining the plan moving forward it's important to lay out the objectives here e.g. the goal:  
+Each year sits where its line arrives. Dashed = the deed or record is not published here. Tap any line, pill or node for its record and sources; the list under the circle repeats the selected line's steps.
 
-1. everything on 1 domain name moving forward  
-2. 2 branches containing all the website content remain in the github monorepo ('gh-pages' and 'netlify'),  
-   and the content will need to remain accessible from two different urls, but this time these 2 urls will need to be on the same domain/tld (datro.xyz)  
+Data: `public/data/transfers.json` → `paths` (nodes, segs, filters). Build: `tools/build.py` inlines the data into `tools/template.html` and runs the public-words gate. Static, no external assets.
 
-(easily solved by introducing the subdomain world.datro.xyz to replace the function of datro.world,   
- and introducing sub-subdomains e.g. library.world.datro.xyz to replace existing subdomains e.g. library.datro.world (also gui.world.datro.xyz replaces gui.datro.world etc))  
-
- - The gui on the branch 1 (gh-pages), on the url datro.xyz/static/gui, already (serverlessly) serves 2 types of content depending on the url in the address bar  
- - a simple bit of javascript basically looks at the address in the address bar to determine the appropriate content to serve during pageload/ refresh   
- - the reason for this was so that demo data is served if the HotspotBnB GUI is accessed online (via the url datro.xyz/static/gui or gui.datro.world / soon to be gui.world.datro.xyz)  
- - but when the GUI is running on the raspberry pi locally, with the hostname .local in play, the GUI will serve the actual screens containing installed webapps, instead of demo data  
- - this allowed us to focus on 1 GUI instead of trying to maintain 2. Now we're basically going to have to make the GUI serve a 3rd load of content,   
- - performing the function of what the netlify GUI/wrapper did, when it was accessed from datro.world  
- - first it might be worth re-iterrating what the datro.world/GUI/wrapper did. It was a sister/custom version of hotspotBnB GUI that instead of displaying apps or demo's of apps, it showcased DATRO's assets.   
- - What was easy with this previous solution, which is about to become more complicated, was the navigation icons and titles, which were hardcoded, but will now need to become dynamic depending on the url in the address bar.  
- - Previously the two GUI's (datro.world's on the netlify branch and HotspotBnB's on the gh-pages) had hardcoded titles and icons and only the iframe content was dynamic. Now it all needs to be dynamic (and simultaniously serverless too).   
- - There's definately a growing and overdue need to migrate to ReactJS and make this all a progressive webapp, but this will need to wait for StartUp/Series A funding and a bigger army of code monkeys.  
-
-In order to go a step further on what was, we plan to do the following (but this plan may evolve) since it's not tried and tested yet:  
-
-1. Totally forget the second domain, that ideas the past. our goal is everything on 1 domain. Obviously.  
-2. Start simple. Get world.datro.xyz to show the 2nd ("netlify) branch and wrapper (sister version of the HotspotBnB GUI)
-
-#  Easy enough. Just updated the CNAME in the netlify branch to world.datro.xyz. Removed datro.world from netlify itself. Added a CNAME in cloudflare containing the subdomain world and target: datro.netlify.app
-#  Now when you enter world.datro.xyz you end up seeing datro.netlify.app (the netlify branch) and a valid security certificate from cloudflare (netlify does however complain since it wants to be in charge of ssl) 
-
-3. Netlify was good for DNS management, because it would allow multiple subdomains. But since we're now using subsub domains and cloudflare, we need to see if it's possible to point multiple urls to the datro.netlify.app. 
-3. Next it's looking like we need the content of the netlify branch to look at the url in the address bar and respond accordingy. 
-3. Next it's looking like we need the HotspotBnB GUI on the gh-pages branch (url: datro.xyz/static/gui) to check for a 3rd type of domain. 
+Compiled by Sion's Tab agent.
