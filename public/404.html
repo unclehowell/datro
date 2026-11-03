@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>Finding capture…</title><link rel="stylesheet" href="/assets/snap.css"></head><body><main><h1 id="h">Finding capture…</h1><p id="m" class="lede"></p>
+<script>
+// Wayback-style addresses: /<14-digit timestamp or "latest">/<original URL, with or without scheme>
+(function(){const p=decodeURIComponent(location.pathname+location.search).replace(/^\/+/,'');const m=p.match(/^(\d{4,14}|latest)\/(.+)$/);
+const bare=u=>u.replace(/^https?:\/+/i,'').replace(/^www\./i,'').replace(/\/+$/,'').toLowerCase();
+const fail=t=>{document.getElementById('h').textContent='Not in this archive';document.getElementById('m').innerHTML=t+' <a href="/">Search the archive</a>.';};
+if(!m){fail('No page at this address.');return;}
+const want=bare(m[2]);fetch('/index.json').then(r=>r.json()).then(d=>{const it=d.items.find(i=>bare(i.u)===want);
+ if(!it||!it.c.length){fail('No capture of '+want.replace(/</g,'&lt;')+' yet.');return;}
+ let c=it.c[it.c.length-1];if(m[1]!=='latest'){const t=(m[1]+'00000000000000').slice(0,14);let best=null,bd=Infinity;
+  for(const x of it.c){const xt=x[0].replace(/\D/g,'');const dd=Math.abs(Number(xt)-Number(t));if(dd<bd){bd=dd;best=x;}}c=best;}
+ location.replace(c[1]);});})();
+</script></main></body></html>

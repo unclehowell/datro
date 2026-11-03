@@ -1,0 +1,1199 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <!--START-HEADER-SEARCH-->
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/wp-content/themes/coflein-wordpress/style.css" type="text/css" />
+    <link rel="shortcut icon" type="image/png" sizes="32x32" href="/wp-content/themes/coflein-wordpress/images/favicon.png" />
+    <link rel='stylesheet' id='moove_gdpr_frontend-css' href='/wp-content/plugins/gdpr-cookie-compliance/dist/styles/gdpr-main.css?ver=4.15.4' type='text/css' media='all' />
+    <title>English &#8211; Coflein</title>
+
+<!-- Google tag (gtag.js) English --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-KE96D9Y9FB"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-KE96D9Y9FB'); </script>
+</head>
+<body>
+<div class="menu-bar">
+    <div class="container">
+        <div>
+
+            	<li class="lang-item lang-item-10 lang-item-cy no-translation lang-item-first"><a  lang="cy" hreflang="cy" href="https://coflein.gov.uk/cy/">Cymraeg</a></li>
+&nbsp;&nbsp;&nbsp;<a href="https://coflein.gov.uk/en/accessibility">Accessibility</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="logo-navigation">
+        <div class="logo">
+            <a href="https://coflein.gov.uk/en"><img alt="coflein logo" src="/wp-content/themes/coflein-wordpress/images/logo.png" /></a>
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a href="https://coflein.gov.uk">Home</a></li><li><a href="https://coflein.gov.uk/en/about/">About</a></li><li><a href="https://coflein.gov.uk/en/search/">Search</a></li><li><a href="https://coflein.gov.uk/en/galleries/">Galleries</a></li><li><a href="https://coflein.gov.uk/en/map/">Map</a></li><li><a href="https://coflein.gov.uk/en/user-guide/">Help</a></li><li><a href="https://coflein.gov.uk/en/contact/">Contact / Order</a></li>            </ul>
+        </div>
+        <span class="switch" onclick="$('body').toggleClass('menu-visible')">
+            <span><i class="fas fa-fw fa-3x fa-bars"></i></span>
+            <span><i class="fas fa-fw fa-3x fa-window-close"></i></span>
+        </span>
+    </div>
+</div>
+
+<!--END HEADER-SEARCH--><link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" SameSite="None"/>
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.72.0/dist/L.Control.Locate.min.css"/>
+         <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" SameSite="None"/>
+         <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" SameSite="None"/>
+         <link rel="stylesheet" href="https://unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.css" type="text/css">         
+         <!-- styling to support photoswipe -->
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe.min.css">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/default-skin/default-skin.min.css"
+         <!-- JSS -->
+         <style type="text/css" id="jss-server-style">  .osd-0-2-1 {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    z-index: 9999;
+    position: fixed;
+    background-color: rgb(0, 0, 0);
+  }
+@media (max-width: 1920px) {
+  .grid-0-2-3.result-0-2-2 > a {
+    width: 50% !important;
+  }
+}
+  .flex-end-0-2-5 {
+    justify-content: flex-end   !important;
+  }
+  .flex-row-0-2-6 {
+    flex: 1;
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  a .flex-row-0-2-6 {
+    color: #000;
+  }
+@media (max-width: 480px) {
+.leaflet-container {
+  height: 320px !important;
+}
+  .tab-panel-0-2-10.site.digital > .grid-0-2-3 > .grid-item {
+    width: 100% !important;
+  }
+  .fgroup-0-2-11.open-0-2-4 > .toggle-0-2-9 > span:last-child {
+    flex: unset;
+    width: 100%;
+    text-align: unset;
+  }
+}
+  .table-0-2-12 {
+    flex: 1;
+    padding: 40px 0 0 0;
+    transition: padding .50s ease-in-out;
+  }
+  .filter-panel-0-2-13 {
+    left: -320px;
+    width: 320px;
+    margin: 40px 0 0 0;
+    z-index: 1;
+    position: absolute;
+    border-top: 0 solid #fff;
+    box-sizing: border-box;
+    transition: left .50s ease-in-out;
+    background-color: #f1f5f7;
+  }
+  .filter-panel-0-2-13 > .active-0-2-34 {
+    background-color: #f8fafb;
+  }
+  .filter-panel-0-2-13 > span {
+    display: block;
+    font-size: 18px;
+  }
+  .shrink-0-2-14 .filter-panel-0-2-13 {
+    left: 30px;
+  }
+  .filter-panel-0-2-13 > * {
+    padding: 10px 20px;
+  }
+  .filter-panel-0-2-13 > .filter-0-2-29 > span {
+    font-style: italic;
+  }
+  .filter-panel-0-2-13 > .active-0-2-34 > span {
+    font-style: italic;
+  }
+@media (max-width: 1024px) {
+.leaflet-container {
+  height: 480px !important;
+}
+  .grid-0-2-3.result-0-2-2 > a {
+    width: 100% !important;
+  }
+  .container-0-2-15.result-0-2-2.shrink-0-2-14 {
+    padding-left: 20px !important;
+  }
+  .container-0-2-15.result-0-2-2.shrink-0-2-14 > .filter-panel-0-2-13 {
+    left: 0 !important;
+    width: auto !important;
+    margin: 0 0 20px 0;
+    position: relative !important;
+  }
+  .paging-0-2-16 ul.pages {
+    justify-content: center;
+  }
+  .tab-panel-0-2-10.archive.details div.flex-row-0-2-6 > div {
+    flex: 1 1 100% !important;
+  }
+  .tab-panel-0-2-10.archive.details div.flex-row-0-2-6 > div.value {
+    padding: 8px 0;
+  }
+  .tab-panel-0-2-10.site.details > div {
+    flex: 1 1 100% !important;
+    min-width: unset !important;
+  }
+  .tab-panel-0-2-10.site.details > div.right {
+    padding: 0 !important;
+  }
+}
+  .advanced-search-0-2-17 {
+    padding: 0 0 4px 0;
+  }
+  .advanced-search-0-2-17 .toggle-0-2-9 {
+    padding: 4px 0 0 0;
+  }
+  .advanced-search-0-2-17 .container-0-2-15 {
+    padding: 10px 0 0 0;
+  }
+  .advanced-search-0-2-17 .container-0-2-15.advanced {
+    padding: 20px 0;
+  }
+  .advanced-search-0-2-17 .container-0-2-15 .flex-row-0-2-6 {
+    padding: 5px 0;
+  }
+  .advanced-search-0-2-17 .container-0-2-15 .flex-row-0-2-6.advanced {
+    margin: 10px 0 0 0;
+    padding: 0 20px;
+    background-color: #fff;
+  }
+  .advanced-search-0-2-17 .container-0-2-15 button {
+    color: #D2232A;
+    width: 134px;
+    border: 1px solid #d5dee2;
+    line-height: 32px;
+    background-image: linear-gradient(to top, #e4e9ec,#ffffff 100%);
+  }
+  .advanced-search-0-2-17 .container-0-2-15 .flex-row-0-2-6.advanced:first-child {
+    margin: 0;
+  }
+  .advanced-search-0-2-17 .container-0-2-15 .flex-row-0-2-6.advanced > .field-0-2-24 {
+    flex: 1;
+    display: block;
+    padding: 10px;
+    min-width: 200px;
+    align-items: center;
+  }
+  .advanced-search-0-2-17 .container-0-2-15 .flex-row-0-2-6.advanced > .field-0-2-24:last-child {
+    flex: 0;
+    min-width: unset;
+  }
+  .advanced-search-0-2-17 .container-0-2-15 .flex-row-0-2-6.advanced > .field-0-2-24 > select, .advanced-search-0-2-17 .container-0-2-15 .flex-row-0-2-6.advanced > .field-0-2-24 input {
+    width: 100%;
+  }
+  .advanced-search-0-2-17 .container-0-2-15 .flex-row-0-2-6.advanced > .field-0-2-24 > input {
+    border: 2px solid #d5dee2;
+    font-size: 18px;
+    line-height: 28px;
+  }
+  .advanced-search-0-2-17 .toggle-0-2-9 button, .advanced-search-0-2-17 .toggle-0-2-9 a {
+    color: #fff;
+    display: flex;
+    overflow: hidden;
+    font-size: 16px;
+    align-items: center;
+    font-family: Arial;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .broken-0-2-18 {
+    background-size: cover;
+    background-image: url('/search-spa/images/no-image.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+@media (max-width: 720px) {
+  .table-0-2-12 > .th-0-2-19 {
+    display: none  !important;
+  }
+  .table-0-2-12 > .tr-0-2-20 > .label {
+    display: block !important;
+  }
+  .table-0-2-12 > .tr-0-2-20 > span {
+    flex-basis: 100%  !important;
+  }
+  .grid-0-2-3.result-0-2-2 > a {
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .grid-0-2-3.result-0-2-2 > a > div {
+    padding: 0;
+    align-items: center;
+  }
+  .grid-0-2-3.result-0-2-2 > a > div > div {
+    padding: 4px 0;
+  }
+  .grid-0-2-3.result-0-2-2 > a > div > div:nth-child(2) {
+    text-align: center;
+  }
+  .search-0-2-21 h1 {
+    display: none !important;
+  }
+.leaflet-container {
+  height: 360px !important;
+}
+}
+  .grid-0-2-3 {
+    display: flex;
+    padding: 0;
+    overflow: hidden;
+    flex-wrap: wrap;
+  }
+  .grid-0-2-3.result-0-2-2 > a {
+    width: 25%;
+    display: flex;
+    padding: 40px 0 0 0;
+  }
+  .grid-0-2-3 img {
+    width: 200px;
+    border: 0;
+    height: 200px;
+    opacity: 1;
+    outline: none;
+    object-fit: cover;
+    transition: opacity 2000ms ease-in;
+  }
+  .grid-0-2-3.result-0-2-2 > a > img {
+    width: 200px;
+    height: 200px;
+    margin: 0;
+  }
+  .grid-0-2-3.result-0-2-2 > a > div {
+    flex: 1;
+    display: flex;
+    padding: 0 0 0 10px;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .grid-0-2-3.result-0-2-2 > a > img.loading-0-2-31 {
+    opacity: 0;
+    background-size: 33%;
+    background-image: url('/search-spa/images/loading-image.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .grid-0-2-3.result-0-2-2 > a > img.broken-0-2-18 {
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+  }
+  .th-0-2-19 {
+    margin: 0 !important;
+    padding: 0 !important;
+    border-top: none !important;
+    font-weight: bold;
+  }
+  .tr-0-2-20 {
+    margin: 20px 0 0 0;
+    padding: 20px 0 0 0;
+    border-top: 1px solid #ddd;
+    align-items: flex-start;
+  }
+  .tr-0-2-20 > .label {
+    color: #000;
+    display: none;
+    font-weight: bold;
+  }
+  .tr-0-2-20 > span, .tr-0-2-20 > a {
+    flex: 1;
+    padding: 4px;
+  }
+  .tr-0-2-20 > span.title, .tr-0-2-20 > a.title {
+    flex-basis: 25%;
+  }
+  .tr-0-2-20 > span.description, .tr-0-2-20 > a.description {
+    flex-basis: 25%;
+  }
+  .typeahead-0-2-23 {
+    width: 180px;
+    border: 1px solid #dfe8ea;
+    padding: 10px;
+    z-index: 9999;
+    position: absolute;
+    font-size: 14px;
+    box-shadow: rgba(0,0,0,0.17) 4px 4px 2px;
+    max-height: 320px;
+    overflow-y: scroll;
+    background-color: #fff;
+  }
+  .typeahead-0-2-23 > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .typeahead-0-2-23 > ul > li {
+    display: flex;
+    padding: 4px;
+  }
+  .typeahead-0-2-23 > ul > li.highlight {
+    background-color: #f3f7f7;
+  }
+  .typeahead-0-2-23 > ul > li > a {
+    flex: 1;
+    cursor: pointer;
+  }
+  .field-0-2-24 {
+    position: relative;
+  }
+  .tab-strip-0-2-25 {
+    padding: 20px 0 0 0;
+    flex-wrap: nowrap !important;
+    max-width: 1366px;
+  }
+  .tab-strip-0-2-25 > a {
+    flex: 1;
+    color: #FFF;
+    cursor: pointer;
+    height: 80px;
+    margin: 0 2px -1px 0;
+    display: flex;
+    padding: 10px 10px;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #4C4C4E;
+  }
+  .tab-strip-0-2-25 > a svg {
+    margin: 0 10px 0 0;
+  }
+  .tab-strip-0-2-25 > a.active-0-2-34 {
+    cursor: default;
+    border-bottom: 4px solid #9e0006;
+    background-color: #D2232A;
+  }
+  .tab-strip-0-2-25 > a > div:nth-child(1) {
+    overflow: hidden;
+    align-items: center;
+    text-overflow: ellipsis;
+  }
+  .tab-strip-0-2-25 > a > div:nth-child(1) > span {
+    white-space: nowrap;
+  }
+  .fgroup-0-2-11 {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  .fgroup-0-2-11:last-of-type {
+    border-bottom: 0;
+  }
+  .fgroup-0-2-11.open-0-2-4 > .toggle-0-2-9 > span:last-child {
+    display: block;
+    opacity: 1;
+  }
+  .fgroup-0-2-11 > .toggle-0-2-9 > span:last-child {
+    flex: 1;
+    display: none;
+    opacity: 0;
+    text-align: right;
+    transition: opacity 0.25s ease-in-out;
+    white-space: nowrap;
+  }
+  .toggle-0-2-9 svg.rotate {
+    margin: 0 0 0 4px;
+    transform: rotate(0deg);
+    transition: transform 0.25s ease-in-out;
+  }
+  .open-0-2-4 .toggle-0-2-9 svg.rotate {
+    transform: rotate(180deg);
+  }
+  .search-0-2-21 {
+    margin: 0;
+    background-color: #4C4C4E;
+  }
+  .search-0-2-21 h1 {
+    color: #FFF;
+    font-size: 50px;
+    line-height: 1em;
+  }
+  .tab-panel-0-2-10 {
+    padding: 20px 0 0 0;
+    min-height: 320px;
+  }
+  .tab-panel-0-2-10 .table-0-2-12 {
+    padding: 0 !important;
+  }
+  .tab-panel-0-2-10.archive.hierarchy ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  .tab-panel-0-2-10.archive.hierarchy ul li {
+    display: flex;
+    padding: 4px 0;
+    align-items: center;
+  }
+  .tab-panel-0-2-10.archive.hierarchy ul li > ul {
+    margin: 0 0 0 24px;
+  }
+  .tab-panel-0-2-10.archive.details div.flex-row-0-2-6 {
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+  .tab-panel-0-2-10.archive.details div.flex-row-0-2-6 > div.label {
+    flex: 0;
+    min-width: 182px;
+    font-weight: bold;
+  }
+  .tab-panel-0-2-10.archive.details div.flex-row-0-2-6 > div.value {
+    flex: 1;
+  }
+  .tab-panel-0-2-10.site.details {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .tab-panel-0-2-10.site.gallery {
+    opacity: 0.1;
+    transition: opacity 250ms ease-in;
+  }
+  .tab-panel-0-2-10.site.archives {
+    opacity: 0.1;
+    transition: opacity 250ms ease-in;
+  }
+  .tab-panel-0-2-10.site.archives.ready-0-2-7 {
+    opacity: 1;
+  }
+  .tab-panel-0-2-10.site.gallery.ready-0-2-7 {
+    opacity: 1;
+  }
+  .tab-panel-0-2-10.site.gallery > .grid-0-2-3 {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  .tab-panel-0-2-10.site.gallery > .grid-0-2-3:after {
+    height: 0;
+    flex-grow: 999999999;
+    min-width: 300px;
+  }
+  .tab-panel-0-2-10.site.gallery > .grid-0-2-3 > * {
+    height: 300px;
+    margin: 2.5px;
+    flex-grow: 1;
+  }
+  .tab-panel-0-2-10.site.gallery > .grid-0-2-3 > * > img {
+    width: auto;
+    height: 300px;
+    max-width: 100%;
+    min-width: 100%;
+    object-fit: cover;
+    vertical-align: bottom;
+  }
+  .tab-panel-0-2-10.site.details > div {
+    flex: 1 1 50%;
+    padding-left: 40px;
+  }
+  .tab-panel-0-2-10.site.details > div.left {
+    flex: 1 1 25%;
+    min-width: 320px;
+    padding-left: 0;
+  }
+  .tab-panel-0-2-10.site.details > div.right > * {
+    display: block;
+    padding: 10px 0;
+  }
+  .tab-panel-0-2-10.site.details > div.right > span.label {
+    font-weight: bold;
+  }
+  .tab-panel-0-2-10.site.details > div.right > .description {
+    padding: 0 0 10px 0;
+  }
+  .tab-panel-0-2-10.site.details > div.right > .resources {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+  }
+  .tab-panel-0-2-10.site.details > div.right > .resources.table-0-2-12 > .th-0-2-19 {
+    font-weight: normal;
+  }
+  .tab-panel-0-2-10.site.details > div.right > .resources.table-0-2-12 > .th-0-2-19, .tab-panel-0-2-10.site.details > div.right > .resources.table-0-2-12 > .tr-0-2-20 {
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+  .tab-panel-0-2-10.site.details > div.right > .resources.table-0-2-12 > .th-0-2-19 > span, .tab-panel-0-2-10.site.details > div.right > .resources.table-0-2-12 > .tr-0-2-20 > span {
+    padding: 4px 0 4px 0;
+    min-width: 128px;
+  }
+  .tab-panel-0-2-10.site.details > div.right > .resources.table-0-2-12 > .th-0-2-19 > span:nth-child(1), .tab-panel-0-2-10.site.details > div.right > .resources.table-0-2-12 > .th-0-2-19 > span:nth-child(2), .tab-panel-0-2-10.site.details > div.right > .resources.table-0-2-12 > .th-0-2-19 > span:nth-child(3), .tab-panel-0-2-10.site.details > div.right > .resources.table-0-2-12 > .tr-0-2-20 > span:nth-child(1), .tab-panel-0-2-10.site.details > div.right > .resources.table-0-2-12 > .tr-0-2-20 > span:nth-child(2), .tab-panel-0-2-10.site.details > div.right > .resources.table-0-2-12 > .tr-0-2-20 > span:nth-child(3) {
+    flex: 0 1;
+  }
+  .tab-panel-0-2-10.site.details > div.right > .resources.table-0-2-12 > .th-0-2-19 > span:nth-child(1), .tab-panel-0-2-10.site.details > div.right > .resources.table-0-2-12 > .tr-0-2-20 > span:nth-child(1) {
+    min-width: 80px !important;
+  }
+  .tab-panel-0-2-10.site.details > div.left > .flex-row-0-2-6 {
+    padding: 10px 0;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .tab-panel-0-2-10.site.details > div.left > .flex-row-0-2-6 > span:nth-child(1) {
+    flex: 1;
+    min-width: 182px;
+    font-weight: bold;
+  }
+  .tab-panel-0-2-10.site.details > div.left > .flex-row-0-2-6 > span:nth-child(2) {
+    flex-basis: 50%;
+  }
+  .paging-0-2-16 {
+    display: flex;
+    padding: 40px 0 0 0;
+    align-items: center;
+  }
+  .paging-0-2-16 > nav {
+    justify-content: center;
+  }
+  .paging-0-2-16 > nav ul {
+    flex: 1;
+    margin: 0;
+    display: flex;
+    padding: 0;
+    list-style: none;
+    align-items: center;
+  }
+  .paging-0-2-16 > nav ul > li {
+    margin: 0 2px;
+  }
+  .paging-0-2-16 > nav ul > li:first-child {
+    margin-left: 0;
+  }
+  .paging-0-2-16 > nav ul > li:last-child {
+    margin-right: 0;
+  }
+  .paging-0-2-16 > nav ul > li > * {
+    color: 000;
+    border: 1px solid #d0d0d0;
+    height: 40px;
+    display: flex;
+    outline: none;
+    padding: 0 4px;
+    min-width: 40px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+  .paging-0-2-16 > nav ul > li.disabled {
+    opacity: 0.25;
+  }
+  .paging-0-2-16 > nav ul > li.selected {
+    background-color: #cdcdcd;
+  }
+  .paging-0-2-16 > nav ul > li > *:selection {
+    background: none;
+  }
+  .overlay-0-2-28 {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    opacity: 0;
+    z-index: -1;
+    position: absolute;
+    background: #000;
+    transition: all 0.25s ease-in-out;
+  }
+  .fentry-0-2-30 {
+    display: flex;
+    padding: 4px 0 4px 20px;
+    position: relative;
+    font-size: 14px;
+    align-items: center;
+  }
+  .fentry-0-2-30:first-of-type {
+    margin-top: 10px;
+  }
+  .active-0-2-34 .fentry-0-2-30 {
+    padding: 4px 0 4px 10px;
+    justify-content: space-between;
+  }
+  .fentry-0-2-30 > svg.svg-inline--fa {
+    left: 0;
+    height: 14px !important;
+    position: absolute;
+  }
+  .loading-0-2-31 {
+    color: #D2232A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hidden-0-2-32 {
+    display: none;
+  }
+  .input-wrapper-0-2-33 {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  .input-wrapper-0-2-33 > input {
+    flex: 1;
+    font: inherit;
+    border: none;
+    height: 50px;
+    padding: 0 30px;
+    border-radius: 25px;
+  }
+  .input-wrapper-0-2-33 > button {
+    width: 60px;
+    padding: 0;
+  }
+  .flex-zero-0-2-35 {
+    flex: 0 0 auto   !important;
+  }
+  .container-0-2-15 {
+    color: #4C4C4E;
+    margin: 0 auto;
+    padding: 30px 30px 0 30px;
+  }
+  .search-0-2-21 .container-0-2-15 {
+    margin: 0 auto;
+    padding: 30px 0 0 0;
+    max-width: 1270px;
+  }
+  .container-0-2-15 h1 {
+    flex: 1;
+    margin: 15px 0;
+    word-break: break-word;
+  }
+  .container-0-2-15.result-0-2-2 {
+    min-height: 808px;
+    transition: padding .50s ease-in-out;
+    padding-top: 0;
+    margin-bottom: 30px;
+  }
+  .container-0-2-15.shrink-0-2-14 {
+    padding-left: calc(320px + 40px);
+  }
+  .container-0-2-15.advanced.rows {
+    background-color: #FFF;
+  }
+  .osd-viewport-0-2-36 {
+    padding: 0;
+    position: relative;
+  }
+  .osd-viewport-0-2-36 .toolbar {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 49px;
+    display: flex;
+    z-index: 999;
+    position: absolute;
+    align-items: center;
+    background-color: rgb(0, 0, 0, 0.75);
+  }
+  .osd-viewport-0-2-36 .toolbar button {
+    width: 33px;
+    border: 2px solid #fff;
+    height: 33px;
+    margin: 0 4px;
+    display: flex !important;
+    align-items: center;
+    border-radius: 16px;
+    justify-content: center;
+  }
+  .flex-start-0-2-37 {
+    justify-content: flex-start !important;
+  }
+  .breadcrumb-0-2-38 {
+    margin: 0;
+    display: flex;
+    padding: 0;
+    list-style: none;
+  }
+  .breadcrumb-0-2-38 .icon {
+    font-size: 14;
+  }
+  .breadcrumb-0-2-38 li > * {
+    color: #FFF;
+    height: 40px;
+    display: block;
+    padding: 0 10px 0 5px;
+    position: relative;
+    background: #4C4C4E;
+    text-align: center;
+    line-height: 40px;
+    margin-right: 23px;
+    text-decoration: none;
+  }
+  .breadcrumb-0-2-38 li:last-child > * {
+    border-radius: 0 4px 4px 0;
+    padding-right: 15px;
+  }
+  .breadcrumb-0-2-38 li:last-child > *:before {
+    border-color: #D2232A;
+    border-left-color: transparent;
+  }
+  .breadcrumb-0-2-38 li:last-child > *:after {
+    border: none;
+  }
+  .breadcrumb-0-2-38 li:first-child > * {
+    padding-left: 15px;
+    border-radius: 4px 0 0 4px;
+  }
+  .breadcrumb-0-2-38 li:first-child > *:before {
+    border: none;
+  }
+  .breadcrumb-0-2-38 li > a:hover {
+    background-color: #1abc9c;
+  }
+  .breadcrumb-0-2-38 li > a:active {
+    background-color: #16a085;
+  }
+  .breadcrumb-0-2-38 li > a:active:before {
+    border-color: #16a085;
+    border-left-color: transparent;
+  }
+  .breadcrumb-0-2-38 li > a:active:after {
+    border-left-color: #16a085;
+  }
+  .breadcrumb-0-2-38 li > a:hover:before {
+    border-color: #1abc9c;
+    border-left-color: transparent;
+  }
+  .breadcrumb-0-2-38 li > a:hover:after {
+    border-left-color: #1abc9c;
+  }
+  .breadcrumb-0-2-38 li > *:before, .breadcrumb-0-2-38 li > *:after {
+    top: 0;
+    width: 0;
+    border: 0 solid #4C4C4E;
+    height: 0;
+    content: '';
+    position: absolute;
+    border-width: 20px 10px;
+  }
+  .breadcrumb-0-2-38 li > *.active {
+    background: #D2232A;
+  }
+  .breadcrumb-0-2-38 li > *:before {
+    left: -20px;
+    border-left-color: transparent;
+  }
+  .breadcrumb-0-2-38 li > *:after {
+    left: 100%;
+    border-color: transparent;
+    border-left-color: #4C4C4E;
+  }
+  .visible-0-2-39 {
+    opacity: 0.75;
+    z-index: 9999;
+  }
+  .busted-0-2-40 {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    position: absolute;
+  }
+  .busted-0-2-40 > div {
+    color: #FFF;
+    background-color: rgba(0,0,0,.4);
+  }
+  .select-0-2-41 {
+    color: #4C4C4E;
+    width: 100%;
+    border: 1px solid #aaa;
+    margin: 0;
+    display: block;
+    padding: .6em 1.4em .5em .8em;
+    max-width: 100%;
+    appearance: none;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    font-weight: 300;
+    line-height: 1;
+    border-radius: .5em;
+    -moz-appearance: none;
+    background-size: 1em auto, 100%;
+    background-color: #fff;
+    background-image: url('data:image/svg+xml;ut8,<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" class="svg-inline--fa fa-chevron-down fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path></svg>'), linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+    background-repeat: no-repeat, repeat;
+    -webkit-appearance: none;
+    background-position: right .7em top 50%, 0 0;
+  }
+  .select-0-2-41::-ms-expand {
+    display: none;
+  }
+  .select-0-2-41:hover {
+    border-color: #D2232A;
+  }
+  .select-0-2-41:disabled, .select-0-2-41 .select[aria-disabled=true] {
+    color: graytext;
+  }
+  .select-0-2-41:disabled:hover, .select-0-2-41 .select[aria-disabled=true] {
+    border-color: #aaa;
+  }
+  .select-0-2-41:focus {
+    color: #222;
+    outline: none;
+    box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+    border-color: #4C4C4E;
+  }
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+span.fa-archive {
+  background-image: url('data:image/svg+xml;ut8,<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="archive" class="svg-inline--fa fa-archive fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"></path></svg>');
+}
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+body.viewer {
+  overflow-y: hidden;
+}
+.leaflet-popup-content {
+  margin: 13px 4px;
+}
+.leaflet-container {
+  height: 720px;
+  margin: 0;
+  background-color: rgb(202,232,245);
+}
+.popup-content {
+  display: block;
+}
+.popup-content > .row > a.link {
+  cursor: pointer !important;
+  padding: 0 4px;
+}
+.leaflet-popup {
+  z-index: 9999 !important;
+}
+.leaflet-pseudo-fullscreen {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 99999;
+  position: fixed !important;
+}
+span.fa-map-marker-alt {
+  background-image: url('data:image/svg+xml;ut8,<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="map-marker-alt" class="svg-inline--fa fa-map-marker-alt fa-w-12" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"></path></svg>');
+}
+.leaflet-popup-content-wrapper {
+  border-radius: 4px !important;
+}
+.leaflet-container.leaflet-fullscreen-on {
+  width: 100% !important;
+  height: 100% !important;
+}
+.leaflet-control-fullscreen > a {
+  background: url('data:image/svg+xml;utf8,<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="expand" class="svg-inline--fa fa-expand fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 180V56c0-13.3 10.7-24 24-24h124c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H64v84c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12zM288 44v40c0 6.6 5.4 12 12 12h84v84c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12V56c0-13.3-10.7-24-24-24H300c-6.6 0-12 5.4-12 12zm148 276h-40c-6.6 0-12 5.4-12 12v84h-84c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h124c13.3 0 24-10.7 24-24V332c0-6.6-5.4-12-12-12zM160 468v-40c0-6.6-5.4-12-12-12H64v-84c0-6.6-5.4-12-12-12H12c-6.6 0-12 5.4-12 12v124c0 13.3 10.7 24 24 24h124c6.6 0 12-5.4 12-12z"></path></svg>');
+  background-size: 16px 16px;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+.leaflet-fullscreen-on .leaflet-control-fullscreen > a {
+  background: url('data:image/svg+xml;utf8,<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="compress" class="svg-inline--fa fa-compress fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M436 192H312c-13.3 0-24-10.7-24-24V44c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v84h84c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm-276-24V44c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v84H12c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h124c13.3 0 24-10.7 24-24zm0 300V344c0-13.3-10.7-24-24-24H12c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h84v84c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-84h84c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12H312c-13.3 0-24 10.7-24 24v124c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12z"></path></svg>');
+  background-size: 16px 16px;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+.row {
+  display: flex;
+  padding: 2px 0;
+}
+.row > .description {
+  margin: 0;
+  font-size: 0.9em;
+  font-style: italic;
+}
+a {
+  color: #D2232A;
+  text-decoration: none;
+}
+a:focus {
+  outline-color: #A75000;
+}
+a:hover {
+  cursor: pointer;
+}
+.selected a {
+  cursor: default;
+}
+.leaflet-container:-webkit-full-screen {
+  width: 100% !important;
+  height: 100% !important;
+}
+.leaflet-popup-close-button {
+  left: 0;
+  width: auto !important;
+  padding: 0 2px 0 0 !important;
+  text-align: right !important;
+  font-weight: normal !important;
+  background-color: #333 !important;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+span.fa-spinner {
+  background-image: url('data:image/svg+xml;ut8,<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="spinner" class="svg-inline--fa fa-spinner fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"></path></svg>');
+}
+span.fa {
+  height: inherit;
+  display: block;
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+html {
+  box-sizing: border-box;
+}
+button {
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 1px 6px;
+  background: none;
+  align-items: center;
+  justify-content: center;
+}</style>
+         <!-- React App Container -->
+         <div id="root"><div class="search-0-2-21"><div class="container-0-2-15"><div class="flex-row-0-2-6"><h1><label for="fulltext">Site Record</label></h1><div class="input-wrapper-0-2-33"><input type="text" id="fulltext" value="" placeholder="Search"/><button style="height:28px;width:60px" type="button" aria-label="Search Button"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height:26px;width:26px"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg></button></div></div><div class="advanced-search-0-2-17 "><div class="flex-row-0-2-6 toggle-0-2-9"><div style="display:flex;flex:0 0 auto;height:20px;align-items:center"><a href="/en/search"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left" class="svg-inline--fa fa-chevron-left fa-w-10 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" style="height:18px;width:18px"><path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path></svg><span style="padding:0 0 0 2px">Results</span></a></div><div class="flex-end-0-2-5" style="display:flex;flex:1"><button type="button"><span class="">Site  Advanced Search</span><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-down" class="svg-inline--fa fa-chevron-circle-down fa-w-16 rotate" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="height:18px;width:18px"><path fill="currentColor" d="M504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zM273 369.9l135.5-135.5c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L256 285.1 154.4 183.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L239 369.9c9.4 9.4 24.6 9.4 34 0z"></path></svg></button></div></div><div style="height:2px;overflow:hidden" aria-hidden="false" class="rah-static rah-static--height-specific"><div style="transition:opacity 250ms ease 0ms;-webkit-transition:opacity 250ms ease 0ms"><div class="container-0-2-15 advanced rows"><div class="flex-row-0-2-6 advanced">You have no advanced search rows. Add one by clicking the &#x27;+ Add Row&#x27; button</div></div><div class="container-0-2-15"><div class="flex-row-0-2-6"><button type="button">+ Add Row</button><button type="button">Search</button></div><div class="flex-row-0-2-6"><button type="button">Reset</button></div></div></div></div></div></div></div><div class="container-0-2-15"><h1>Pillar-Cross, St Dochdwy&#x27;s Church, Llandough</h1><div class="lazy" style="height:720px">Loading Map</div><div class="flex-row-0-2-6 tab-strip-0-2-25"><a aria-current="page" class="flex-end-0-2-5 active-0-2-34" href="/en/site/301373"><div><span>Details</span></div></a><a class="flex-end-0-2-5" href="/en/site/301373/images"><div><span>Images</span></div></a><a class="flex-end-0-2-5" href="/en/site/301373/related"><div><span>Related</span></div></a><a class="flex-end-0-2-5" href="/en/site/301373/archives"><div><span>Archives</span></div></a></div><div class="tab-panel-0-2-10 site details"><div class="left"><div class="flex-row-0-2-6"><span>NPRN</span><span>301373</span></div><div class="flex-row-0-2-6"><span>Map Reference</span><span>ST17SE</span></div><div class="flex-row-0-2-6"><span>Grid Reference</span><span>ST1679073250</span></div><div class="flex-row-0-2-6"><span>Unitary (Local) Authority</span><span>The Vale of Glamorgan</span></div><div class="flex-row-0-2-6"><span>Old County</span><span>Glamorgan</span></div><div class="flex-row-0-2-6"><span>Community</span><span>Llandough</span></div><div class="flex-row-0-2-6"><span>Type Of Site</span><span>CROSS</span></div><div class="flex-row-0-2-6"><span>Period</span><span>Early Medieval</span></div></div><div class="right"><span class="label">Description</span><div class="description">1. Composite pillar cross standing in the churchyard of St Dochdwy's Church. ex RCAHMW Glamorgan I, iii, p 61<br>
+2. Composite pillar cross, 2.97m high, consisting of a two part squared shaft, having a central collar and base, but lacking a cross-head.<br>
+Thought to be l.10th-e.11th c.<br>
+(source Os495card; ST17SE16)<br>
+Associated with:<br>
+Llandough church (Nprn227363).<br>
+J.Wiles 06.02.03</div></div></div></div></div>
+         <!-- Server Generated State -->
+         <script id="__INITIAL__STATE__" type="application/transit+json">["^ ","~:site/imgs",["^ ","~:body",["^ ","~:took",0,"~:timed_out",false,"~:_shards",["^ ","~:total",2,"~:successful",2,"~:skipped",0,"~:failed",0],"~:hits",["^ ","^5",["^ ","~:value",3,"~:relation","eq"],"~:max_score",1,"^9",[["^ ","~:arc",["^ ","~:label","archive number","^:","6233782"],"~:col",["^ ","^>","collection record","^:","NMR Site Files"],"~:dsc",["^ ","^>","description","^:","Cross - West"],"~:images",[["^ ","~:lsrc","/media/124/63/large_DI2010_1322.jpg","~:msrc","/media/124/63/mid_DI2010_1322.jpg","~:psrc","/media/124/63/preview_DI2010_1322.jpg","~:width",1920,"~:height",2474,"~:ibase","https://rcahmw.ibase.media/en/view-item?i=124063","~:zsrc","/zooms?DeepZoom=124/63/DI2010_1322.ptif.dzi"]]],["^ ","^=",["^ ","^>","archive number","^:","6233780"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^@",["^ ","^>","description","^:","Cross - East"],"^A",[["^ ","^B","/media/123/993/large_DI2010_1324.jpg","^C","/media/123/993/mid_DI2010_1324.jpg","^D","/media/123/993/preview_DI2010_1324.jpg","^E",1920,"^F",2473,"^G","https://rcahmw.ibase.media/en/view-item?i=123993","^H","/zooms?DeepZoom=123/993/DI2010_1324.ptif.dzi"]]],["^ ","^=",["^ ","^>","archive number","^:","6233781"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^@",["^ ","^>","description","^:","Cross - South"],"^A",[["^ ","^B","/media/125/338/large_DI2010_1323.jpg","^C","/media/125/338/mid_DI2010_1323.jpg","^D","/media/125/338/preview_DI2010_1323.jpg","^E",1920,"^F",2448,"^G","https://rcahmw.ibase.media/en/view-item?i=125338","^H","/zooms?DeepZoom=125/338/DI2010_1323.ptif.dzi"]]]]]],"~:statusCode",200,"~:nprn","301373"],"~:site/rel8",["^ "],"~:srch/tabs",["^ ","~:site",["^ "],"~:arch",["^ ","~:type","archive"]],"~:arch/fltr",["^ ","~:collection",["^ ","~:title","label.collection"],"~:level",["^ ","^R","label.level"]],"~:srch/docs",["^ "],"~:config",["^ ","~:ALLUSERSPROFILE","C:\\local\\ProgramData","~:APPDATA","C:\\local\\AppData","~:APPSETTING_AzureWebJobsStorage","[REDACTED]","~:APPSETTING_DETAIL_MAPS_URL","https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png","~:APPSETTING_ENABLE_ORYX_BUILD","false","~:APPSETTING_ES_SERVER","http://10.9.3.12:9200","~:APPSETTING_FUNCTIONS_EXTENSION_VERSION","~~3","~:APPSETTING_FUNCTIONS_RUNTIME_SCALE_MONITORING_ENABLED","0","~:APPSETTING_FUNCTIONS_WORKER_RUNTIME","node","~:APPSETTING_FUNCTION_APP_EDIT_MODE","readwrite","~:APPSETTING_GLOBAL_MAPS_URL","https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png","~:APPSETTING_HISTORIC_MAPS_URL","https://api.maptiler.com/tiles/uk-osgb10k1888/{z}/{x}/{y}.jpg","~:APPSETTING_IBASE_PREFIX_URL","https://rcahmw.ibase.media","~:APPSETTING_MAPTILER_API_KEY","[REDACTED]","~:APPSETTING_MEDIA_PREFIX_URL","/media","~:APPSETTING_MEDIA_SERVER","http://10.9.3.13","~:APPSETTING_OS_MAPS_API_KEY","[REDACTED]","~:APPSETTING_REMOTEDEBUGGINGVERSION","16.0.28729.10","~:APPSETTING_ScmType","None","~:APPSETTING_SCM_DO_BUILD_DURING_DEPLOYMENT","false","~:APPSETTING_SERVERLESS_EXPRESS_PLATFORM","azure","~:APPSETTING_WEBSITE_AUTH_AUTO_AAD","False","~:APPSETTING_WEBSITE_AUTH_ENABLED","False","~:APPSETTING_WEBSITE_AUTH_LOGOUT_PATH","/.auth/logout","~:APPSETTING_WEBSITE_HTTPLOGGING_RETENTION_DAYS","3","~:APPSETTING_WEBSITE_NODE_DEFAULT_VERSION","12.22.12","~:APPSETTING_WEBSITE_RUN_FROM_PACKAGE","1","~:APPSETTING_WEBSITE_SITE_NAME","DD-WWW-API-Func","~:APPSETTING_WEBSITE_SLOT_NAME","Production","~:APPSETTING_WEBSITE_VNET_ROUTE_ALL","1","~:APPSETTING_ZOOMS_PREFIX_URL","/zooms","~:APP_POOL_CONFIG","D:\\DWASFiles\\Sites\\DD-WWW-API-Func\\Config\\applicationhost.config","~:APP_POOL_ID","DD-WWW-API-Func","~:ASPNETCORE_IIS_HTTPAUTH","anonymous;","~:ASPNETCORE_IIS_PHYSICAL_PATH","C:\\Program Files (x86)\\SiteExtensions\\Functions\\3.23.0\\64bit\\","~:AzureWebJobsStorage","[REDACTED]","~:AZURE_JETTY93_CMDLINE","-Djava.net.preferIPv4Stack=true -Djetty.port=%HTTP_PLATFORM_PORT% -Djetty.base=\"D:\\Program Files (x86)\\jetty-distribution-9.3.25.v20180904\" -Djetty.webapps=\"d:\\home\\site\\wwwroot\\webapps\" -jar \"D:\\Program Files (x86)\\jetty-distribution-9.3.25.v20180904\\start.jar\" etc\\jetty-logging.xml","~:AZURE_JETTY93_HOME","C:\\Program Files (x86)\\jetty-distribution-9.3.25.v20180904","~:AZURE_JETTY9_CMDLINE","-Djava.net.preferIPv4Stack=true -Djetty.port=%HTTP_PLATFORM_PORT% -Djetty.base=\"D:\\Program Files (x86)\\jetty-distribution-9.1.0.v20131115\" -Djetty.webapps=\"d:\\home\\site\\wwwroot\\webapps\" -jar \"D:\\Program Files (x86)\\jetty-distribution-9.1.0.v20131115\\start.jar\" etc\\jetty-logging.xml","~:AZURE_JETTY9_HOME","C:\\Program Files (x86)\\jetty-distribution-9.1.0.v20131115","~:AZURE_TOMCAT10_CMDLINE","-noverify -Djava.net.preferIPv4Stack=true -Dcatalina.instance.name=%WEBSITE_INSTANCE_ID% -Dport.http=%HTTP_PLATFORM_PORT% -Djava.util.logging.config.file=\"C:\\Program Files\\apache-tomcat-10.1.16\\conf\\logging.properties\" -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Dsite.logdir=\"d:/home/LogFiles/\" -Dsite.tempdir=\"d:\\home\\site\\workdir\" -classpath \"C:\\Program Files\\apache-tomcat-10.1.16\\bin\\bootstrap.jar;C:\\Program Files\\apache-tomcat-10.1.16\\bin\\tomcat-juli.jar\" -Dcatalina.base=\"C:\\Program Files\\apache-tomcat-10.1.16\" -Djava.io.tmpdir=\"d:\\home\\site\\workdir\" org.apache.catalina.startup.Bootstrap","~:AZURE_TOMCAT10_HOME","C:\\Program Files\\apache-tomcat-10.1.16","~:AZURE_TOMCAT7_CMDLINE","-Dport.http=%HTTP_PLATFORM_PORT% -Djava.util.logging.config.file=\"C:\\Program Files (x86)\\apache-tomcat-7.0.94\\conf\\logging.properties\" -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Dsite.logdir=\"d:/home/LogFiles/\" -Dsite.tempdir=\"d:\\home\\site\\workdir\" -classpath \"C:\\Program Files (x86)\\apache-tomcat-7.0.94\\bin\\bootstrap.jar;C:\\Program Files (x86)\\apache-tomcat-7.0.94\\bin\\tomcat-juli.jar\" -Dcatalina.base=\"C:\\Program Files (x86)\\apache-tomcat-7.0.94\" -Djava.io.tmpdir=\"d:\\home\\site\\workdir\" org.apache.catalina.startup.Bootstrap","~:AZURE_TOMCAT7_HOME","C:\\Program Files (x86)\\apache-tomcat-7.0.94","~:AZURE_TOMCAT85_CMDLINE","\"-noverify -Djava.net.preferIPv4Stack=true -Dcatalina.instance.name=%WEBSITE_INSTANCE_ID% -Dport.http=%HTTP_PLATFORM_PORT% -Djava.util.logging.config.file=\\\"C:\\Program Files\\apache-tomcat-8.5.57\\conf\\logging.properties\\\" -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Dsite.logdir=\\\"%HOME%\\LogFiles\\\\\" -Dsite.tempdir=\\\"%HOME%\\site\\workdir\\\" -classpath \\\"C:\\Program Files\\apache-tomcat-8.5.57\\bin\\bootstrap.jar;C:\\Program Files\\apache-tomcat-8.5.57\\bin\\tomcat-juli.jar\\\" -Dcatalina.base=\\\"C:\\Program Files\\apache-tomcat-8.5.57\\\" -Djava.io.tmpdir=\\\"%HOME%\\site\\workdir\\\" org.apache.catalina.startup.Bootstrap\"","~:AZURE_TOMCAT85_HOME","C:\\Program Files\\apache-tomcat-8.5.57","~:AZURE_TOMCAT8_CMDLINE","-Dport.http=%HTTP_PLATFORM_PORT% -Djava.util.logging.config.file=\"C:\\Program Files (x86)\\apache-tomcat-8.0.53\\conf\\logging.properties\" -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Dsite.logdir=\"d:/home/LogFiles/\" -Dsite.tempdir=\"d:\\home\\site\\workdir\" -classpath \"C:\\Program Files (x86)\\apache-tomcat-8.0.53\\bin\\bootstrap.jar;C:\\Program Files (x86)\\apache-tomcat-8.0.53\\bin\\tomcat-juli.jar\" -Dcatalina.base=\"C:\\Program Files (x86)\\apache-tomcat-8.0.53\" -Djava.io.tmpdir=\"d:\\home\\site\\workdir\" org.apache.catalina.startup.Bootstrap","~:AZURE_TOMCAT8_HOME","C:\\Program Files (x86)\\apache-tomcat-8.0.53","~:AZURE_TOMCAT90_CMDLINE","\"-noverify -Djava.net.preferIPv4Stack=true -Dcatalina.instance.name=%WEBSITE_INSTANCE_ID% -Dport.http=%HTTP_PLATFORM_PORT% -Djava.util.logging.config.file=\\\"C:\\Program Files\\apache-tomcat-9.0.37\\conf\\logging.properties\\\" -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Dsite.logdir=\\\"%HOME%\\LogFiles\\\\\" -Dsite.tempdir=\\\"%HOME%\\site\\workdir\\\" -classpath \\\"C:\\Program Files\\apache-tomcat-9.0.37\\bin\\bootstrap.jar;C:\\Program Files\\apache-tomcat-9.0.37\\bin\\tomcat-juli.jar\\\" -Dcatalina.base=\\\"C:\\Program Files\\apache-tomcat-9.0.37\\\" -Djava.io.tmpdir=\\\"%HOME%\\site\\workdir\\\" org.apache.catalina.startup.Bootstrap\"","~:AZURE_TOMCAT90_HOME","C:\\Program Files\\apache-tomcat-9.0.37","~:CommonProgramFiles","C:\\Program Files\\Common Files","~:CommonProgramFiles(x86)","C:\\Program Files (x86)\\Common Files","~:CommonProgramW6432","C:\\Program Files\\Common Files","~:COMPLUS_GCHeapHardLimit","0x1FCCD7000","~:COMPUTERNAME","AW0SDWK000002","~:ComSpec","C:\\Windows\\system32\\cmd.exe","~:DETAIL_MAPS_URL","https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png","~:DOTNET_HOSTING_OPTIMIZATION_CACHE","C:\\DotNetCache","~:DriverData","C:\\Windows\\System32\\Drivers\\DriverData","~:ENABLE_ORYX_BUILD","false","~:ES_SERVER","http://10.9.3.12:9200","~:FUNCTIONS_EXTENSION_VERSION","~~3","~:FUNCTIONS_RUNTIME_SCALE_MONITORING_ENABLED","0","~:FUNCTIONS_WORKER_DIRECTORY","C:\\Program Files (x86)\\SiteExtensions\\Functions\\3.23.0\\workers\\node","~:FUNCTIONS_WORKER_RUNTIME","node","~:FUNCTIONS_WORKER_RUNTIME_VERSION","~~12","~:FUNCTION_APP_EDIT_MODE","readwrite","~:GLOBAL_MAPS_URL","https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png","~:HISTORIC_MAPS_URL","https://api.maptiler.com/tiles/uk-osgb10k1888/{z}/{x}/{y}.jpg","~:HOME","C:\\home","~:HOME_EXPANDED","D:\\DWASFiles\\Sites\\DD-WWW-API-Func\\VirtualDirectory0","~:IBASE_PREFIX_URL","https://rcahmw.ibase.media","~:ILB_VIP","10.9.1.11","~:JAVA_HOME","C:\\Program Files\\Java\\Adoptium-Eclipse-Temurin-OpenJDK-8u392","~:LOCALAPPDATA","C:\\local\\LocalAppData","~:LOCAL_EXPANDED","D:\\DWASFiles\\Sites\\DD-WWW-API-Func","~:MACHINEKEY_DecryptionKey","[REDACTED]","~:MAPTILER_API_KEY","[REDACTED]","~:MEDIA_PREFIX_URL","/media","~:MEDIA_SERVER","http://10.9.3.13","~:MicrosoftInstrumentationEngine_LatestPath","C:\\Program Files (x86)\\SiteExtensions\\InstrumentationEngine\\1.0.43","~:MonAgentClientLocation","C:\\Packages\\Plugins\\Microsoft.Azure.Geneva.GenevaMonitoring\\2.45.0.11\\Monitoring\\Agent","~:NUMBER_OF_PROCESSORS","2","~:OS","Windows_NT","~:OS_MAPS_API_KEY","[REDACTED]","~:Path","C:\\Python27;C:\\Program Files (x86)\\PHP\\v5.6;C:\\Program Files\\nodejs\\12.22.12;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\Microsoft Network Monitor 3\\;C:\\Users\\packer\\AppData\\Roaming\\npm;C:\\Program Files (x86)\\nodejs\\;C:\\Program Files (x86)\\Mercurial\\;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\Microsoft ASP.NET\\ASP.NET Web Pages\\v1.0\\;C:\\Program Files (x86)\\dotnet;C:\\Program Files\\dotnet;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\Java\\Adoptium-Eclipse-Temurin-OpenJDK-8u392\\bin;","~:PATHEXT",".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL;.PY;.PYW","~:PROCESSOR_ARCHITECTURE","AMD64","~:PROCESSOR_IDENTIFIER","Intel64 Family 6 Model 85 Stepping 7, GenuineIntel","~:PROCESSOR_LEVEL","6","~:PROCESSOR_REVISION","5507","~:ProgramData","C:\\local\\ProgramData","~:ProgramFiles","C:\\Program Files","~:ProgramFiles(x86)","C:\\Program Files (x86)","~:ProgramW6432","C:\\Program Files","~:PSModulePath","C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules\\;C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\PowerShell\\ResourceManager\\AzureResourceManager\\;C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\PowerShell\\ServiceManagement\\;C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\PowerShell\\Storage\\","~:PUBLIC","C:\\Users\\Public","~:REGION_NAME","UK West","~:REMOTEDEBUGGINGBITVERSION","vx64","~:REMOTEDEBUGGINGPORT","","~:REMOTEDEBUGGINGVERSION","16.0.28729.10","~:ResourceDrive","D:\\","~:RoleInstanceId","aw0SmallDedicatedWebWorkerRole_2","~:RoleName","aw0SmallDedicatedWebWorkerRole","~:RoleRoot","E:","~:ScmType","None","~:SCM_DO_BUILD_DURING_DEPLOYMENT","false","~:SERVERLESS_EXPRESS_PLATFORM","azure","~:SITE_BITNESS","AMD64","~:SwtAuthenticationEnabled","0","~:SwtIssuerEnabled","1","~:SystemDrive","C:","~:SystemRoot","C:\\Windows","~:TEMP","C:\\local\\Temp","~:TMP","C:\\local\\Temp","~:USERDOMAIN","WORKGROUP","~:USERNAME","AW0SDWK000002$","~:USERPROFILE","C:\\local\\UserProfile","~:WEBSITE_APPSERVICEAPPLOGS_TRACE_ENABLED","true","~:WEBSITE_AUTH_AUTO_AAD","False","~:WEBSITE_AUTH_ENABLED","False","~:WEBSITE_AUTH_ENCRYPTION_KEY","[REDACTED]","~:WEBSITE_AUTH_LOGOUT_PATH","/.auth/logout","~:WEBSITE_AUTH_SIGNING_KEY","[REDACTED]","~:WEBSITE_CHANGEANALYSISSCAN_ENABLED","1","~:WEBSITE_COMPUTE_MODE","Dedicated","~:WEBSITE_CONTAINER_READY","1","~:WEBSITE_CORS_ALLOWED_ORIGINS","https://functions.azure.com,https://functions-staging.azure.com,https://functions-next.azure.com","~:WEBSITE_CORS_SUPPORT_CREDENTIALS","False","~:WEBSITE_CRASHMONITORING_USE_DEBUGDIAG","True","~:WEBSITE_CURRENT_STAMPNAME","waws-prod-cw1-71513650","~:WEBSITE_DAAS_EXTENSIONPATH","C:\\Program Files (x86)\\SiteExtensions\\DaaS\\4.6.24926.1","~:WEBSITE_DEPLOYMENT_ID","DD-WWW-API-Func","~:WEBSITE_DNS_SERVER_FROM_VNET","168.63.129.16","~:WEBSITE_DYNAMIC_CACHE","1","~:WEBSITE_ELASTIC_SCALING_ENABLED","0","~:WEBSITE_FRAMEWORK_JIT","1","~:WEBSITE_FUNCTIONS_AZUREMONITOR_CATEGORIES","","~:WEBSITE_HOME_STAMPNAME","waws-prod-cw1-71513650","~:WEBSITE_HOSTNAME","dd-www-api-func.coflein.appserviceenvironment.net","~:WEBSITE_HTTPLOGGING_ENABLED","1","~:WEBSITE_HTTPLOGGING_RETENTION_DAYS","3","~:WEBSITE_IIS_SITE_NAME","DD-WWW-API-Func","~:WEBSITE_INFRASTRUCTURE_IP","172.31.196.6","~:WEBSITE_INSTANCE_ID","73e6dda50d1c32a35732ff35fe84457ef7ddc8d082936edc053f08d9b26974f0","~:WEBSITE_ISOLATION","pico","~:WEBSITE_LOCALCACHE_ENABLED","False","~:WEBSITE_NODE_DEFAULT_VERSION","12.22.12","~:WEBSITE_OS","windows","~:WEBSITE_OWNER_NAME","5b114a93-7049-4f0d-a844-6866790a3bb2+DD-WWW-cofleinappseUKWestwebspace","~:WEBSITE_PLATFORM_VERSION","102.1.7.103","~:WEBSITE_PRIVATE_IP","10.9.1.251","~:WEBSITE_PROACTIVE_AUTOHEAL_ENABLED","True","~:WEBSITE_PROACTIVE_CRASHMONITORING_ENABLED","True","~:WEBSITE_PROACTIVE_STACKTRACING_ENABLED","True","~:WEBSITE_RELAYS","","~:WEBSITE_RESOURCE_GROUP","dd-www","~:WEBSITE_REWRITE_TABLE","","~:WEBSITE_RUN_FROM_PACKAGE","1","~:WEBSITE_SCM_ALWAYS_ON_ENABLED","1","~:WEBSITE_SCM_SEPARATE_STATUS","1","~:WEBSITE_SITE_NAME","DD-WWW-API-Func","~:WEBSITE_SKU","IsolatedV2","~:WEBSITE_SLOT_NAME","Production","~:WEBSITE_VNETNAME","cd002909-cf75-4dca-8e96-1cdae3d2318e_dd-internal","~:WEBSITE_VNET_IS_SWIFT","1","~:WEBSITE_VNET_ROUTE_ALL","1","~:WEBSITE_VOLUME_TYPE","PrimaryStorageVolume","~:WEBSOCKET_CONCURRENT_REQUEST_LIMIT","-1","~:windir","C:\\Windows","~:windows_tracing_flags","","~:windows_tracing_logfile","","~:WORKER_INDEXING_ENABLED","1","~:ZOOMS_PREFIX_URL","/zooms"],"~:site/docs",["^ ","^1",["^ ","^2",1,"^3",false,"^4",["^ ","^5",2,"^6",2,"^7",0,"^8",0],"^9",["^ ","^5",["^ ","^:",1,"^;","eq"],"^<",0,"^9",[["^ ","~:description",["^ ","^>","description","^:","1. Composite pillar cross standing in the churchyard of St Dochdwy's Church. ex RCAHMW Glamorgan I, iii, p 61<br>\n2. Composite pillar cross, 2.97m high, consisting of a two part squared shaft, having a central collar and base, but lacking a cross-head.<br>\nThought to be l.10th-e.11th c.<br>\n(source Os495card; ST17SE16)<br>\nAssociated with:<br>\nLlandough church (Nprn227363).<br>\nJ.Wiles 06.02.03"],"~:map-ref",["^ ","~:order",1,"^>","map reference","^:","ST17SE"],"~:coordinates",["^ ","~:lng",-3.1988909,"~:lat",51.452095],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"~:community",["^ ","^4W",5,"^>","community","^:","Llandough"],"~:unitary-authority",["^ ","^4W",3,"^>","unitary (local) authority","^:","The Vale of Glamorgan"],"^A",[["^ ","^B","/media/123/993/large_DI2010_1324.jpg","^C","/media/123/993/mid_DI2010_1324.jpg","^D","/media/123/993/preview_DI2010_1324.jpg","^E",1920,"^F",2473,"^G","https://rcahmw.ibase.media/en/view-item?i=123993","^H","/zooms?DeepZoom=123/993/DI2010_1324.ptif.dzi"]],"~:uid","arches-36a05a74-9bc8-43f7-8888-0c0d5b3be367","^O",["^ ","^4W",6,"^>","type of site","^:","CROSS"],"~:related",[["^ ","^J","227363","~:name","St Dochdwy's Church, Llandough","^O",null,"~:rel8","Associated with"]],"~:grd-ref",["^ ","^4W",2,"^>","grid reference","^:","ST1679073250"],"^R",["^ ","^>","title","^:","Pillar-Cross, St Dochdwy's Church, Llandough"],"~:totals",["^ ","~:archive-count",62,"~:digital-count",3],"~:old-county",["^ ","^4W",4,"^>","old county","^:","Glamorgan"],"~:period",["^ ","^4W",7,"^>","period","^:","Early Medieval"]]]]],"^I",200],"~:gloc/docs",["^ "],"~:site/arch",["^ ","^1",["^ ","^2",2,"^3",false,"^4",["^ ","^5",2,"^6",2,"^7",0,"^8",0],"^9",["^ ","^5",["^ ","^:",62,"^;","eq"],"^<",2,"^9",[["^ ","~:cat",["^ ","^>","catalogue number","^:","549165"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6345674"],"~:crf",["^ ","^>","reference","^:","GLI03_03_03_17"],"^A",[],"^51","atom-es-qubitinformationobject-1333647","~:ste",[["^ ","^J","301373","~:titl","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","~:coll",62,"~:imgs",3]],"~:dte",["^ ","^>","date","^:",null],"~:ttl",["^ ","^>","title","^:","GLI03_03_03_17 - Glamorgan Inventory: Pre-Norman"],"~:cr8",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","GLI - Glamorgan Inventories Archive"],"~:mdm",["^ ","^>","medium","^:","Photo."],"~:typ",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Photograph of Monument 938, Plate 22: Llandough."],"~:lvl",["^ ","~:hierarchies",[["^ ","~:arcnum","6338749","^R","GLI - Glamorgan Inventories Archive","^S","Collection"],["^ ","^5J","6338751","^R","GLI03 - Glamorgan Inventory: Pre-Norman","^S","Group"],["^ ","^5J","6345600","^R","GLI03_03 - Glamorgan Inventory: Pre-Norman","^S","Sub-group"],["^ ","^5J","6345657","^R","GLI03_03_03 - Glamorgan Inventory: Pre-Norman","^S","Batch"],["^ ","^5J","6345674","^R","GLI03_03_03_17 - Glamorgan Inventory: Pre-Norman","^S","Item"]],"~:children",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","549199"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6345708"],"^5>",["^ ","^>","reference","^:","GLI03_03_04_05"],"^A",[],"^51","atom-es-qubitinformationobject-1333746","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GLI03_03_04_05 - Glamorgan Inventory: Pre-Norman"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","GLI - Glamorgan Inventories Archive"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Photograph for Figure 18, Monument 938: Newcastle, Bridgend."],"^5H",["^ ","^5I",[["^ ","^5J","6338749","^R","GLI - Glamorgan Inventories Archive","^S","Collection"],["^ ","^5J","6338751","^R","GLI03 - Glamorgan Inventory: Pre-Norman","^S","Group"],["^ ","^5J","6345600","^R","GLI03_03 - Glamorgan Inventory: Pre-Norman","^S","Sub-group"],["^ ","^5J","6345703","^R","GLI03_03_04 - Glamorgan Inventory: Pre-Norman","^S","Batch"],["^ ","^5J","6345708","^R","GLI03_03_04_05 - Glamorgan Inventory: Pre-Norman","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","549191"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6345700"],"^5>",["^ ","^>","reference","^:","GLI03_03_03_43"],"^A",[],"^51","atom-es-qubitinformationobject-1333725","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GLI03_03_03_43 - Glamorgan Inventory: Pre-Norman"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","GLI - Glamorgan Inventories Archive"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Photograph of Monument 938, Plate 21: Llandough."],"^5H",["^ ","^5I",[["^ ","^5J","6338749","^R","GLI - Glamorgan Inventories Archive","^S","Collection"],["^ ","^5J","6338751","^R","GLI03 - Glamorgan Inventory: Pre-Norman","^S","Group"],["^ ","^5J","6345600","^R","GLI03_03 - Glamorgan Inventory: Pre-Norman","^S","Sub-group"],["^ ","^5J","6345657","^R","GLI03_03_03 - Glamorgan Inventory: Pre-Norman","^S","Batch"],["^ ","^5J","6345700","^R","GLI03_03_03_43 - Glamorgan Inventory: Pre-Norman","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","549198"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6345707"],"^5>",["^ ","^>","reference","^:","GLI03_03_04_04"],"^A",[],"^51","atom-es-qubitinformationobject-1333743","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GLI03_03_04_04 - Glamorgan Inventory: Pre-Norman"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","GLI - Glamorgan Inventories Archive"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Photograph for Figure 18, Monument 938: Newcastle, Bridgend."],"^5H",["^ ","^5I",[["^ ","^5J","6338749","^R","GLI - Glamorgan Inventories Archive","^S","Collection"],["^ ","^5J","6338751","^R","GLI03 - Glamorgan Inventory: Pre-Norman","^S","Group"],["^ ","^5J","6345600","^R","GLI03_03 - Glamorgan Inventory: Pre-Norman","^S","Sub-group"],["^ ","^5J","6345703","^R","GLI03_03_04 - Glamorgan Inventory: Pre-Norman","^S","Batch"],["^ ","^5J","6345707","^R","GLI03_03_04_04 - Glamorgan Inventory: Pre-Norman","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","622129"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6482020"],"^5>",["^ ","^>","reference","^:","LMP1700"],"^A",[],"^51","atom-es-qubitinformationobject-1775429","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","LMP1700 - Leonard Monroe Photographs"],"^5E",["^ ","^>","originator","^:","Leonard Monroe"],"^?",["^ ","^>","collection record","^:","LMP - Leonard Monroe Photographs"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","General view of pillar-cross in Llandough Churchyard with buildings in the background."],"^5H",["^ ","^5I",[["^ ","^5J","6045242","^R","LMP - Leonard Monroe Photographs","^S","Collection"],["^ ","^5J","6482020","^R","LMP1700 - Leonard Monroe Photographs","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","622127"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6482018"],"^5>",["^ ","^>","reference","^:","LMP1698"],"^A",[],"^51","atom-es-qubitinformationobject-1775421","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","LMP1698 - Leonard Monroe Photographs"],"^5E",["^ ","^>","originator","^:","Leonard Monroe"],"^?",["^ ","^>","collection record","^:","LMP - Leonard Monroe Photographs"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","View of west face of the pillar-cross in Llandough Churchyard."],"^5H",["^ ","^5I",[["^ ","^5J","6045242","^R","LMP - Leonard Monroe Photographs","^S","Collection"],["^ ","^5J","6482018","^R","LMP1698 - Leonard Monroe Photographs","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","622128"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6482019"],"^5>",["^ ","^>","reference","^:","LMP1699"],"^A",[],"^51","atom-es-qubitinformationobject-1775425","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","LMP1699 - Leonard Monroe Photographs"],"^5E",["^ ","^>","originator","^:","Leonard Monroe"],"^?",["^ ","^>","collection record","^:","LMP - Leonard Monroe Photographs"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","View of west face of the pillar-cross in Llandough Churchyard."],"^5H",["^ ","^5I",[["^ ","^5J","6045242","^R","LMP - Leonard Monroe Photographs","^S","Collection"],["^ ","^5J","6482019","^R","LMP1699 - Leonard Monroe Photographs","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","448143"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6233786"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-918241","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GL2163 - NMR Site Files"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Cross - North"],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045585","^R","NMR Site Files","^S","Batch"],["^ ","^5J","6233786","^R","GL2163 - NMR Site Files","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","448141"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6233784"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-918235","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GL2168 - NMR Site Files"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","West title"],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045585","^R","NMR Site Files","^S","Batch"],["^ ","^5J","6233784","^R","GL2168 - NMR Site Files","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","448136"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6233779"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-918220","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GL2294 - NMR Site Files"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Cross - East"],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045585","^R","NMR Site Files","^S","Batch"],["^ ","^5J","6233779","^R","GL2294 - NMR Site Files","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","448147"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6233790"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-918253","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GL3091 - NMR Site Files"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Base"],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045585","^R","NMR Site Files","^S","Batch"],["^ ","^5J","6233790","^R","GL3091 - NMR Site Files","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","448148"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6233791"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-918256","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GL2159 - NMR Site Files"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","South base"],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045585","^R","NMR Site Files","^S","Batch"],["^ ","^5J","6233791","^R","GL2159 - NMR Site Files","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","448142"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6233785"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-918238","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GL2162 - NMR Site Files"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Cross - North"],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045585","^R","NMR Site Files","^S","Batch"],["^ ","^5J","6233785","^R","GL2162 - NMR Site Files","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","400066"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6045583"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-420738","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:","1989-04-06"],"^5D",["^ ","^>","title","^:","NMR Site Files"],"^5E",["^ ","^>","originator","^:","E.A.J. Carr, CADW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Text."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Copy of a form giving notice of the deletion of  St Dochdwy's Churchyard Cross from Cadw listing."],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045583","^R","NMR Site Files","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","54412"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6057454"],"^5>",["^ ","^>","reference","^:","8M_1809_1"],"^A",[],"^51","atom-es-qubitinformationobject-69630","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:","1951-10-01 to 1983-11-24"],"^5D",["^ ","^>","title","^:","8M_1809_1 - Cadw Registered Files Collection"],"^5E",["^ ","^>","originator","^:","CADW"],"^?",["^ ","^>","collection record","^:","CRF - Cadw Registered Files Collection"],"^5F",["^ ","^>","medium","^:","Text."],"^5G",["^ ","^>","level","^:","Sub-group"],"^@",["^ ","^>","description","^:","Closed registered file, ref. no. 8M/1809/1, transferred from Cadw, concerning Pillar Cross in Llandough churchyard, Penarth, Glams, scheduling.  SAM Code GM209"],"^5H",["^ ","^5I",[["^ ","^5J","6202462","^R","CRF - Cadw Registered Files Collection","^S","Collection"],["^ ","^5J","6399601","^R","8M - Cadw Registered Files Collection","^S","Group"],["^ ","^5J","6057454","^R","8M_1809_1 - Cadw Registered Files Collection","^S","Sub-group"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","58448"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6061490"],"^5>",["^ ","^>","reference","^:","GM209"],"^A",[],"^51","atom-es-qubitinformationobject-83970","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:","c. 1990"],"^5D",["^ ","^>","title","^:","GM209 - Cadw Scheduling Records"],"^5E",["^ ","^>","originator","^:","CADW"],"^?",["^ ","^>","collection record","^:","Cadw Scheduling Records"],"^5F",["^ ","^>","medium","^:","Cartographic, Text."],"^5G",["^ ","^>","level","^:","Sub-group"],"^@",["^ ","^>","description","^:","File of Cadw scheduled monument records for Pillar-cross In Llandough Churchyard (GM209) , consisting of scheduling notices, accompanied by Field Monument Warden reports. Files stored in scheduled monument number order."],"^5H",["^ ","^5I",[["^ ","^5J","6202313","^R","Cadw Scheduling Records","^S","Collection"],["^ ","^5J","6061490","^R","GM209 - Cadw Scheduling Records","^S","Sub-group"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","644826"],"^J",["^ ","^4W",0,"^>","NPRN","^:","15289"],"^=",["^ ","^>","archive number","^:","6511614"],"^5>",["^ ","^>","reference","^:","CSAM_JC_2003_03"],"^A",[],"^51","atom-es-qubitinformationobject-114476","^5?",[["^ ","^J","93015","^5@","Bulwarks Camp Hillfort","^O","HILLFORT","^5A",29,"^5B",13],["^ ","^J","15289","^5@","Crofter Field; St Athan, Village Earthworks","^O","SHRUNKEN SETTLEMENT","^5A",17,"^5B",9],["^ ","^J","40673","^5@","Aberthaw Lime Works and Cement Works, Aberthaw","^O","LIME WORKINGS","^5A",18,"^5B",7],["^ ","^J","15475","^5@","West Aberthaw Village Earthworks","^O","VILLAGE","^5A",21,"^5B",7],["^ ","^J","40672","^5@","Aberthaw Cement Works","^O","CEMENT WORKS","^5A",12,"^5B",2],["^ ","^J","300309","^5@","Penmark Castle","^O","CASTLE","^5A",37,"^5B",4],["^ ","^J","32343","^5@","Ffynnon Gyffyr;Monastic Baths","^O","WELL","^5A",11,"^5B",2],["^ ","^J","300174","^5@","Cefn Celfi Standing Stone 2, Rhos, Pontardawe","^O","STANDING STONE","^5A",6,"^5B",0],["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3],["^ ","^J","94716","^5@","Fleming's Down Promontary Fort","^O","HILLFORT","^5A",14,"^5B",1],["^ ","^J","300172","^5@","Cefn Celfi Standing Stone 1, Rhos, Pontardawe","^O","STANDING STONE","^5A",8,"^5B",1],["^ ","^J","301000","^5@","Middleton Moat","^O","HOMESTEAD","^5A",17,"^5B",5],["^ ","^J","275859","^5@","Greave Round Barrow;Greave Mound","^O","EARTHWORK","^5A",8,"^5B",2]],"^5C",["^ ","^>","date","^:","2003-05 to 2003-08"],"^5D",["^ ","^>","title","^:","CSAM_JC_2003_03 - Cadw Scheduled Ancient Monument 35mm Negatives"],"^5E",["^ ","^>","originator","^:","Joseph Cliff, CADW"],"^?",["^ ","^>","collection record","^:","CSAM - Cadw Scheduled Ancient Monument 35mm Negatives"],"^5F",["^ ","^>","medium","^:","One sheet. Photo."],"^5G",["^ ","^>","level","^:","Sub-group"],"^@",["^ ","^>","description","^:","Colour photo surveys of scheduled ancient monuments in Glamorgan carried out by Joseph Cliff, 2003."],"^5H",["^ ","^5I",[["^ ","^5J","6510132","^R","CSAM - Cadw Scheduled Ancient Monument 35mm Negatives","^S","Collection"],["^ ","^5J","6510213","^R","CSAM_JC - Cadw Scheduled Ancient Monument 35mm Negatives","^S","Group"],["^ ","^5J","6511614","^R","CSAM_JC_2003_03 - Cadw Scheduled Ancient Monument 35mm Negatives","^S","Sub-group"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","400144"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6045708"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-149942","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","NMR Site Files"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Batch"],"^@",["^ ","^>","description","^:","Photo survey comprising seven black and white prints of finds at St Dochdwy's Church, Penarth."],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045708","^R","NMR Site Files","^S","Batch"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","400067"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6045584"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-149908","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","NMR Site Files"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Batch"],"^@",["^ ","^>","description","^:","Photo survey of St Dochdwy's Churchyard Cross comprising four black and white prints."],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045584","^R","NMR Site Files","^S","Batch"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","400136"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6045700"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-149939","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","NMR Site Files"],"^5E",["^ ","^>","originator","^:","W.A. Call"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Batch"],"^@",["^ ","^>","description","^:","Two black and white prints of St Dochdwy's Churchyard Cross, Penarth."],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045700","^R","NMR Site Files","^S","Batch"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","477510"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6263153"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-1032932","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GL2169 - NMR Site Files"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Grave"],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045708","^R","NMR Site Files","^S","Batch"],["^ ","^5J","6263153","^R","GL2169 - NMR Site Files","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","501609"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6287252"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-1127626","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GL2296 - NMR Site Files"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Cross - South"],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045585","^R","NMR Site Files","^S","Batch"],["^ ","^5J","6287252","^R","GL2296 - NMR Site Files","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","501610"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6287253"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-1127629","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GL2293 - NMR Site Files"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Cross - West"],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045585","^R","NMR Site Files","^S","Batch"],["^ ","^5J","6287253","^R","GL2293 - NMR Site Files","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","501611"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6287254"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-1127632","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GL2157 - NMR Site Files"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Cross - general view"],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045585","^R","NMR Site Files","^S","Batch"],["^ ","^5J","6287254","^R","GL2157 - NMR Site Files","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","501613"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6287256"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-1127638","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GL3094 - NMR Site Files"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Carved head"],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045585","^R","NMR Site Files","^S","Batch"],["^ ","^5J","6287256","^R","GL3094 - NMR Site Files","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","506669"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6292312"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-1147403","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","BB57_730 - NMR Site Files"],"^5E",["^ ","^>","originator","^:","W.A. Call"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Detail of base"],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045700","^R","NMR Site Files","^S","Batch"],["^ ","^5J","6292312","^R","BB57_730 - NMR Site Files","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","507327"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6292970"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-1150014","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","804895 - NMR Site Files"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","General view"],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045584","^R","NMR Site Files","^S","Batch"],["^ ","^5J","6292970","^R","804895 - NMR Site Files","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","507596"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6293239"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-1151050","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GL2170 - NMR Site Files"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Grave"],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045708","^R","NMR Site Files","^S","Batch"],["^ ","^5J","6293239","^R","GL2170 - NMR Site Files","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","507597"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6293240"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-1151053","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GL2172 - NMR Site Files"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Font"],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045708","^R","NMR Site Files","^S","Batch"],["^ ","^5J","6293240","^R","GL2172 - NMR Site Files","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","507328"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6292971"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-1150017","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","804971 - NMR Site Files"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","General view"],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045584","^R","NMR Site Files","^S","Batch"],["^ ","^5J","6292971","^R","804971 - NMR Site Files","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","54413"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6057455"],"^5>",["^ ","^>","reference","^:","8M_1809_2"],"^A",[],"^51","atom-es-qubitinformationobject-69634","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:","1933-01-26 to 1973-01-24"],"^5D",["^ ","^>","title","^:","8M_1809_2 - Cadw Registered Files Collection"],"^5E",["^ ","^>","originator","^:","CADW"],"^?",["^ ","^>","collection record","^:","CRF - Cadw Registered Files Collection"],"^5F",["^ ","^>","medium","^:","Text."],"^5G",["^ ","^>","level","^:","Sub-group"],"^@",["^ ","^>","description","^:","Closed registered file, ref. no. 8M/1809/2, transferred from Cadw, concerning Pillar Cross in Llandough churchyard, Penarth, Glams, works services.  SAM Code GM209"],"^5H",["^ ","^5I",[["^ ","^5J","6202462","^R","CRF - Cadw Registered Files Collection","^S","Collection"],["^ ","^5J","6399601","^R","8M - Cadw Registered Files Collection","^S","Group"],["^ ","^5J","6057455","^R","8M_1809_2 - Cadw Registered Files Collection","^S","Sub-group"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","643742"],"^J",["^ ","^4W",0,"^>","NPRN","^:","24126"],"^=",["^ ","^>","archive number","^:","6510436"],"^5>",["^ ","^>","reference","^:","CSAM_FT_96_08"],"^A",[],"^51","atom-es-qubitinformationobject-112053","^5?",[["^ ","^J","307708","^5@","Ty'n-y-Pwll, Mound II","^O","BURNT MOUND","^5A",4,"^5B",0],["^ ","^J","307707","^5@","Ty'n-y-Pwll, Mound I","^O","BURNT MOUND","^5A",7,"^5B",0],["^ ","^J","300454","^5@","Dinas Powys Castle","^O","CASTLE","^5A",55,"^5B",9],["^ ","^J","307709","^5@","Ystradowen, Castle Mound","^O","MOTTE","^5A",24,"^5B",3],["^ ","^J","307706","^5@","Felin Isaf, Castle","^O","MOTTE AND BAILEY","^5A",17,"^5B",2],["^ ","^J","24126","^5@","Leckwith Old Bridge, Leckwith, Cardiff","^O","ROAD BRIDGE","^5A",41,"^5B",5],["^ ","^J","37529","^5@","East Orchard Castle, Dovecote","^O","DOVECOTE","^5A",6,"^5B",2],["^ ","^J","305050","^5@","Llwyn-y-Meched, Cairn","^O","CAIRN","^5A",8,"^5B",0],["^ ","^J","34144","^5@","Woolpitch Wood Iron Works, Trellech","^O","IRON WORKS","^5A",7,"^5B",0],["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3],["^ ","^J","307687","^5@","East Orchard Castle, Chapel","^O","CHAPEL","^5A",6,"^5B",0],["^ ","^J","306510","^5@","Clawdd Du, over Monnow","^O","TOWN DEFENCES","^5A",20,"^5B",4],["^ ","^J","37528","^5@","East Orchard Castle, Barn","^O","BARN","^5A",4,"^5B",0]],"^5C",["^ ","^>","date","^:","1996-05 to 1996-06"],"^5D",["^ ","^>","title","^:","CSAM_FT_96_08 - Cadw Scheduled Ancient Monument 35mm Negatives"],"^5E",["^ ","^>","originator","^:","Felicity Taylor, CADW"],"^?",["^ ","^>","collection record","^:","CSAM - Cadw Scheduled Ancient Monument 35mm Negatives"],"^5F",["^ ","^>","medium","^:","One sheet. Photo."],"^5G",["^ ","^>","level","^:","Sub-group"],"^@",["^ ","^>","description","^:","Colour photo surveys of scheduled ancient monuments in Glamorgan, Monmouthshire and Breconshire carried out by Felicity Taylor, 1996."],"^5H",["^ ","^5I",[["^ ","^5J","6510132","^R","CSAM - Cadw Scheduled Ancient Monument 35mm Negatives","^S","Collection"],["^ ","^5J","6510172","^R","CSAM_FT - Cadw Scheduled Ancient Monument 35mm Negatives","^S","Group"],["^ ","^5J","6510436","^R","CSAM_FT_96_08 - Cadw Scheduled Ancient Monument 35mm Negatives","^S","Sub-group"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","400068"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6045585"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-149911","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","NMR Site Files"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Batch"],"^@",["^ ","^>","description","^:","Photo survey of St Dochdwy's Churchyard Cross comprising twenty two black and white prints."],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045585","^R","NMR Site Files","^S","Batch"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","24418"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6013831"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-321560","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","Drawings Collection"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","Drawings Collection"],"^5F",["^ ","^>","medium","^:","Graphic."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","RCAHMW drawing showing detail of pillar cross at Llandough, Glamorgan published in Glamorgan I, iii, fig 17."],"^5H",["^ ","^5I",[["^ ","^5J","6202334","^R","Drawings Collection","^S","Collection"],["^ ","^5J","6013831","^R","Drawings Collection","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","400143"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6045707"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-420827","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","AA51_12166 - NMR Site Files"],"^5E",["^ ","^>","originator","^:","T.A. Cough"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","One black and white print of St Dochdwy's Churchyard Cross, Penarth. Undated but recieved by National Buildings Record 20/11/1953."],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045707","^R","AA51_12166 - NMR Site Files","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","549160"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6345669"],"^5>",["^ ","^>","reference","^:","GLI03_03_03_12"],"^A",[],"^51","atom-es-qubitinformationobject-1333632","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GLI03_03_03_12 - Glamorgan Inventory: Pre-Norman"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","GLI - Glamorgan Inventories Archive"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Photograph of Monument 938, Plate 22: Llandough."],"^5H",["^ ","^5I",[["^ ","^5J","6338749","^R","GLI - Glamorgan Inventories Archive","^S","Collection"],["^ ","^5J","6338751","^R","GLI03 - Glamorgan Inventory: Pre-Norman","^S","Group"],["^ ","^5J","6345600","^R","GLI03_03 - Glamorgan Inventory: Pre-Norman","^S","Sub-group"],["^ ","^5J","6345657","^R","GLI03_03_03 - Glamorgan Inventory: Pre-Norman","^S","Batch"],["^ ","^5J","6345669","^R","GLI03_03_03_12 - Glamorgan Inventory: Pre-Norman","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","549192"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6345701"],"^5>",["^ ","^>","reference","^:","GLI03_03_03_44"],"^A",[],"^51","atom-es-qubitinformationobject-1333728","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GLI03_03_03_44 - Glamorgan Inventory: Pre-Norman"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","GLI - Glamorgan Inventories Archive"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Photograph of Monument 938, Plate 21: Llandough."],"^5H",["^ ","^5I",[["^ ","^5J","6338749","^R","GLI - Glamorgan Inventories Archive","^S","Collection"],["^ ","^5J","6338751","^R","GLI03 - Glamorgan Inventory: Pre-Norman","^S","Group"],["^ ","^5J","6345600","^R","GLI03_03 - Glamorgan Inventory: Pre-Norman","^S","Sub-group"],["^ ","^5J","6345657","^R","GLI03_03_03 - Glamorgan Inventory: Pre-Norman","^S","Batch"],["^ ","^5J","6345701","^R","GLI03_03_03_44 - Glamorgan Inventory: Pre-Norman","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","549164"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6345673"],"^5>",["^ ","^>","reference","^:","GLI03_03_03_16"],"^A",[],"^51","atom-es-qubitinformationobject-1333644","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GLI03_03_03_16 - Glamorgan Inventory: Pre-Norman"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","GLI - Glamorgan Inventories Archive"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Photograph of Monument 938, Plate 22: Llandough."],"^5H",["^ ","^5I",[["^ ","^5J","6338749","^R","GLI - Glamorgan Inventories Archive","^S","Collection"],["^ ","^5J","6338751","^R","GLI03 - Glamorgan Inventory: Pre-Norman","^S","Group"],["^ ","^5J","6345600","^R","GLI03_03 - Glamorgan Inventory: Pre-Norman","^S","Sub-group"],["^ ","^5J","6345657","^R","GLI03_03_03 - Glamorgan Inventory: Pre-Norman","^S","Batch"],["^ ","^5J","6345673","^R","GLI03_03_03_16 - Glamorgan Inventory: Pre-Norman","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","501616"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6287259"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-1127647","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GL3089 - NMR Site Files"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","Base"],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045585","^R","NMR Site Files","^S","Batch"],["^ ","^5J","6287259","^R","GL3089 - NMR Site Files","^S","Item"]],"^5K",[]]],["^ ","^5=",["^ ","^>","catalogue number","^:","501614"],"^J",["^ ","^4W",0,"^>","NPRN","^:","301373"],"^=",["^ ","^>","archive number","^:","6287257"],"^5>",["^ ","^>","reference","^:",null],"^A",[],"^51","atom-es-qubitinformationobject-1127641","^5?",[["^ ","^J","301373","^5@","Pillar-Cross, St Dochdwy's Church, Llandough","^O","CROSS","^5A",62,"^5B",3]],"^5C",["^ ","^>","date","^:",null],"^5D",["^ ","^>","title","^:","GL2161 - NMR Site Files"],"^5E",["^ ","^>","originator","^:","RCAHMW"],"^?",["^ ","^>","collection record","^:","NMR Site Files"],"^5F",["^ ","^>","medium","^:","Photo."],"^5G",["^ ","^>","level","^:","Item"],"^@",["^ ","^>","description","^:","East base"],"^5H",["^ ","^5I",[["^ ","^5J","6202405","^R","NMR Site Files","^S","Collection"],["^ ","^5J","6045585","^R","NMR Site Files","^S","Batch"],["^ ","^5J","6287257","^R","GL2161 - NMR Site Files","^S","Item"]],"^5K",[]]]]]],"^I",200,"^J","301373"],"~:app/loading",false,"~:arch/docs",["^ "],"~:site/rsrc",["^ ","^1",["^ ","^2",0,"^3",false,"^4",["^ ","^5",2,"^6",2,"^7",0,"^8",0],"^9",["^ ","^5",["^ ","^:",0,"^;","eq"],"^<",null,"^9",[]]],"^I",200,"^J","301373"]]</script>
+         <!-- Server Generated i18n Language and Stores -->
+         <script id="__I18__" type="application/json">{"lang":"en","stor":{"en":{"translation":{"ar-lein":"online","chwilio":"search","page":{"search":"search","map":"map","site":"site record","archive":"archive record"},"route":{"search":"search","map":"map","site":{"base":"site","base_plural":"sites","dtls":"details","imgs":"images","rel8":"related","arch":"archives","file":"resources"},"arch":{"base":"archive","base_plural":"archives","dtls":"details","hrcy":"hierarchy","rel8":"sites"}},"safleoedd":"sites","hierarchaeth":"hierarchy","delweddau":"images","cysylltiedig":"related","label":{"map-ref":"map reference","availability":"availability","date":"date","grid-ref":"grid reference","no-advanced-rows":"You have no advanced search rows. Add one by clicking the '+ Add Row' button","desc":"description","welcome":"welcome","site":"site","archive-name":"archive name","community":"community","advanced-search":"advanced search","reset":"reset","add-row":"+ add row","images":"images","medium":"medium","related-archives":"related archives","per-page":"per page","unitary":"unitary (local) authority","type":"type","source":"source","map-limit":"The map is limited to {{limit}} records so not all sites are being displayed for the current area. Zoom in to see more.","no-image":"We have no digital images available for this record","search":"search","osm-attribution":"&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors","collections":"collections","title":"title","ods-attribution":"&copy Crown Copyright and database right 2021. Ordnance Survey 100020548","level":"level","summary":"summary","reference":"reference","details":"details","ods-outdoor-3857":"OS Outdoor","class":"broad class","related-sites":"related sites","type-of-site":"type of site","cat-no":"catalogue number","nls-attribution":"OS six-inch to the mile 1888-1913 from the National Library of Scotland.","osm-global":"OpenStreetMap","show-site-locations":"Show Site Locations","col-rec":"collection record","arc-no":"archive number","site-type":"site type","old-county":"old county","site-name":"site name","period":"period","archive":"archive","hierarchy":"hierarchy","relation":"relation","resources":"resources","collection":"collection","download":"download","type-something":"type something","originator":"originator","no-site-tab-info":"No $t({{type}}) available","remove-row":"- remove row","show":"show","nls-1900":"OS 1900","results":"results"},"archif":"archive","archifau":"archives","manylion":"details","mapio":"map","safle":"site"}},"cy":{"translation":{"archives":"archifau","site":"safle","sites":"safleoedd","images":"delweddau","related":"cysylltiedig","page":{"search":"chwilio","map":"map","site":"cofnod safle","archive":"cofnod archif"},"route":{"search":"chwilio","map":"mapio","site":{"base_3":"safleoedd","file":"adnoddau","arch":"archifau","base_1":"safleoedd","rel8":"cysylltiedig","base_2":"safleoedd","imgs":"delweddau","base_0":"safle","base":"safle","dtls":"manylion"},"arch":{"base":"archif","base_0":"archif","base_1":"archifau","base_2":"archifau","base_3":"archifau","dtls":"manylion","hrcy":"hierarchaeth","rel8":"safleoedd"}},"search":"chwilio","online":"ar-lein","details":"manylion","label":{"map-ref":"cyfeirnod map","availability":"argaeledd","date":"dyddiad","grid-ref":"cyfeirnod grid","no-advanced-rows":"Nid oes gennych resi chwilio datblygedig. Ychwanegwch un trwy glicio ar y botwm '+ Ychwanegu Rhes'","desc":"disgrifiad","welcome":"croeso","site":"safle","archive-name":"enw archif","community":"cymuned","advanced-search":"chwilio uwch","reset":"ail gychwyn","add-row":"+ ychwanegu rhes","images":"delweddau","medium":"cyfrwng","related-archives":"archifau cysylltiedig","per-page":"y dudalen","unitary":"awdurdod unedol (lleol)","type":"math","source":"ffynhonnell","map-limit":"Mae’r map wedi’i gyfyngu i {{limit}} cofnod felly nid yw’r holl safleoedd wedi’u harddangos ar gyfer yr ardal hon. Chwyddwch mewn i weld mwy.","no-image":"Nid oes gennym ddelweddau digidol ar gyfer y cofnod hwn","search":"chwilio","osm-attribution":"&copy; <a href='https://www.openstreetmap.org/copyright'>Cyfranwyr OpenStreetMap</a>","collections":"casgliadau","title":"teitl","ods-attribution":"&copy Hawlfraint a hawliau cronfa ddata'r Goron 2021. Arolwg Ordnans 100020548","level":"lefel","summary":"crynodeb","reference":"cyfeirnod","details":"manylion","ods-outdoor-3857":"AO Outdoor","class":"dosbarth cyffredinol","related-sites":"safleoedd cysylltiedig","type-of-site":"math o safle","cat-no":"rhif catalog","nls-attribution":"AO chwe-modfedd i'r filltir 1888-1913 o Lyfrgell Genedlaethol yr Alban","osm-global":"OpenStreetMap","show-site-locations":"Dangos Lleoliad Safle","col-rec":"cofnod casglu","arc-no":"rhif archif","site-type":"math o safle","old-county":"hen sir","site-name":"enw'r safle","period":"cyfnod","archive":"archifau","hierarchy":"hierarchaeth","relation":"perthynas","resources":"adnoddau","collection":"casgliad","download":"lawrlwytho","type-something":"teipiwch rywbeth","originator":"cychwynnwr","no-site-tab-info":"Dim $t({{type}}) ar gael","remove-row":"- tynnu rhes","show":"dangos","nls-1900":"AO 1900","results":"canlyniadau"},"archive":"archif","hierarchy":"hierarchaeth","map":"mapio"}}}}</script>
+         <!-- React App -->
+         <script async src="/search-spa/js/shared.js"></script>
+<footer>
+    <script type="text/javascript">
+                      new JotformFeedback({
+                         formId     : "210483406909356",
+                         buttonText : "Arolwg / Survey",
+                         base       : "https://www.jotform.com/",
+                         background : "#009ed1",
+                         fontColor  : "#FFFFFF",
+                         buttonSide : "top",
+                         buttonAlign: "center",
+                         type       : "false",
+                         width      : "700",
+                         height     : "500",
+                      });
+                    </script>
+  <!--copyscapeskip-->
+  <aside id="moove_gdpr_cookie_info_bar" class="moove-gdpr-info-bar-hidden moove-gdpr-align-center moove-gdpr-dark-scheme gdpr_infobar_postion_bottom" aria-label="GDPR Cookie Banner" style="display: none;">
+    <div class="moove-gdpr-info-bar-container">
+      <div class="moove-gdpr-info-bar-content">
+        
+<div class="moove-gdpr-cookie-notice">
+  <p>We are using cookies to give you the best experience on our website.</p><p>You can find out more about which cookies we are using or switch them off in <button  data-href="#moove_gdpr_cookie_modal" class="change-settings-button">settings</button>.</p></div>
+<!--  .moove-gdpr-cookie-notice -->        
+<div class="moove-gdpr-button-holder">
+		  <button class="mgbutton moove-gdpr-infobar-allow-all gdpr-fbo-0" aria-label="Accept" >Accept</button>
+	  </div>
+<!--  .button-container -->      </div>
+      <!-- moove-gdpr-info-bar-content -->
+    </div>
+    <!-- moove-gdpr-info-bar-container -->
+  </aside>
+  <!-- #moove_gdpr_cookie_info_bar -->
+  <!--/copyscapeskip-->
+
+    
+  <!--copyscapeskip-->
+  <!-- V1 -->
+  <div id="moove_gdpr_cookie_modal" class="gdpr_lightbox-hide" role="complementary" aria-label="GDPR Settings Screen">
+    <div class="moove-gdpr-modal-content moove-clearfix logo-position-left moove_gdpr_modal_theme_v1">
+          
+        <button class="moove-gdpr-modal-close" aria-label="Close GDPR Cookie Settings">
+          <span class="gdpr-sr-only">Close GDPR Cookie Settings</span>
+          <span class="gdpr-icon moovegdpr-arrow-close"></span>
+        </button>
+            <div class="moove-gdpr-modal-left-content">
+        
+<div class="moove-gdpr-company-logo-holder">
+  <img src="/wp-content/plugins/gdpr-cookie-compliance/dist/images/gdpr-logo.png" alt="Coflein"   width="350"  height="233"  class="img-responsive" />
+</div>
+<!--  .moove-gdpr-company-logo-holder -->        <ul id="moove-gdpr-menu">
+          
+<li class="menu-item-on menu-item-privacy_overview menu-item-selected">
+  <button data-href="#privacy_overview" class="moove-gdpr-tab-nav" aria-label="Privacy Overview">
+    <span class="gdpr-nav-tab-title">Privacy Overview</span>
+  </button>
+</li>
+
+  <li class="menu-item-strict-necessary-cookies menu-item-off">
+    <button data-href="#strict-necessary-cookies" class="moove-gdpr-tab-nav" aria-label="Strictly Necessary Cookies">
+      <span class="gdpr-nav-tab-title">Strictly Necessary Cookies</span>
+    </button>
+  </li>
+
+
+  <li class="menu-item-off menu-item-third_party_cookies">
+    <button data-href="#third_party_cookies" class="moove-gdpr-tab-nav" aria-label="3rd Party Cookies">
+      <span class="gdpr-nav-tab-title">3rd Party Cookies</span>
+    </button>
+  </li>
+
+
+        </ul>
+        
+<div class="moove-gdpr-branding-cnt">
+  		<a href="https://wordpress.org/plugins/gdpr-cookie-compliance/" rel="noopener noreferrer" target="_blank" class='moove-gdpr-branding'>Powered by&nbsp; <span>GDPR Cookie Compliance</span></a>
+		</div>
+<!--  .moove-gdpr-branding -->      </div>
+      <!--  .moove-gdpr-modal-left-content -->
+      <div class="moove-gdpr-modal-right-content">
+        <div class="moove-gdpr-modal-title">
+           
+        </div>
+        <!-- .moove-gdpr-modal-ritle -->
+        <div class="main-modal-content">
+
+          <div class="moove-gdpr-tab-content">
+            
+<div id="privacy_overview" class="moove-gdpr-tab-main">
+      <span class="tab-title">Privacy Overview</span>
+    <div class="moove-gdpr-tab-main-content">
+  	<p>This website uses cookies so that we can provide you with the best user experience possible. Cookie information is stored in your browser and performs functions such as recognising you when you return to our website and helping our team to understand which sections of the website you find most interesting and useful.</p>
+  	  </div>
+  <!--  .moove-gdpr-tab-main-content -->
+
+</div>
+<!-- #privacy_overview -->            
+  <div id="strict-necessary-cookies" class="moove-gdpr-tab-main" style="display:none">
+    <span class="tab-title">Strictly Necessary Cookies</span>
+    <div class="moove-gdpr-tab-main-content">
+      <p>Strictly Necessary Cookie should be enabled at all times so that we can save your preferences for cookie settings.</p>
+      <div class="moove-gdpr-status-bar ">
+        <div class="gdpr-cc-form-wrap">
+          <div class="gdpr-cc-form-fieldset">
+            <label class="cookie-switch" for="moove_gdpr_strict_cookies">    
+              <span class="gdpr-sr-only">Enable or Disable Cookies</span>        
+              <input type="checkbox" aria-label="Strictly Necessary Cookies"  value="check" name="moove_gdpr_strict_cookies" id="moove_gdpr_strict_cookies">
+              <span class="cookie-slider cookie-round" data-text-enable="Enabled" data-text-disabled="Disabled"></span>
+            </label>
+          </div>
+          <!-- .gdpr-cc-form-fieldset -->
+        </div>
+        <!-- .gdpr-cc-form-wrap -->
+      </div>
+      <!-- .moove-gdpr-status-bar -->
+              <div class="moove-gdpr-strict-warning-message" style="margin-top: 10px;">
+          <p>If you disable this cookie, we will not be able to save your preferences. This means that every time you visit this website you will need to enable or disable cookies again.</p>
+        </div>
+        <!--  .moove-gdpr-tab-main-content -->
+                                              
+    </div>
+    <!--  .moove-gdpr-tab-main-content -->
+  </div>
+  <!-- #strict-necesarry-cookies -->
+            
+  <div id="third_party_cookies" class="moove-gdpr-tab-main" style="display:none">
+    <span class="tab-title">3rd Party Cookies</span>
+    <div class="moove-gdpr-tab-main-content">
+      <p>This website uses Google Analytics to collect anonymous information such as the number of visitors to the site, and the most popular pages.</p>
+<p>Keeping this cookie enabled helps us to improve our website.</p>
+      <div class="moove-gdpr-status-bar">
+        <div class="gdpr-cc-form-wrap">
+          <div class="gdpr-cc-form-fieldset">
+            <label class="cookie-switch" for="moove_gdpr_performance_cookies">    
+              <span class="gdpr-sr-only">Enable or Disable Cookies</span>     
+              <input type="checkbox" aria-label="3rd Party Cookies" value="check" name="moove_gdpr_performance_cookies" id="moove_gdpr_performance_cookies" disabled>
+              <span class="cookie-slider cookie-round" data-text-enable="Enabled" data-text-disabled="Disabled"></span>
+            </label>
+          </div>
+          <!-- .gdpr-cc-form-fieldset -->
+        </div>
+        <!-- .gdpr-cc-form-wrap -->
+      </div>
+      <!-- .moove-gdpr-status-bar -->
+              <div class="moove-gdpr-strict-secondary-warning-message" style="margin-top: 10px; display: none;">
+          <p>Please enable Strictly Necessary Cookies first so that we can save your preferences!</p>
+        </div>
+        <!--  .moove-gdpr-tab-main-content -->
+             
+    </div>
+    <!--  .moove-gdpr-tab-main-content -->
+  </div>
+  <!-- #third_party_cookies -->
+            
+            
+          </div>
+          <!--  .moove-gdpr-tab-content -->
+        </div>
+        <!--  .main-modal-content -->
+        <div class="moove-gdpr-modal-footer-content">
+          <div class="moove-gdpr-button-holder">
+			  		<button class="mgbutton moove-gdpr-modal-allow-all button-visible" aria-label="Enable All">Enable All</button>
+		  					<button class="mgbutton moove-gdpr-modal-save-settings button-visible" aria-label="Save Settings">Save Settings</button>
+				</div>
+<!--  .moove-gdpr-button-holder -->        </div>
+        <!--  .moove-gdpr-modal-footer-content -->
+      </div>
+      <!--  .moove-gdpr-modal-right-content -->
+
+      <div class="moove-clearfix"></div>
+
+    </div>
+    <!--  .moove-gdpr-modal-content -->
+  </div>
+  <!-- #moove_gdpr_cookie_modal -->
+  <!--/copyscapeskip-->
+    <div class="container">
+
+
+        <div class="logo-and-socials">
+            
+            <div class="logo">
+                <div><img src="/wp-content/themes/coflein-wordpress/images/logo-footer.png" alt="RCAHMW logo"/></div>
+                <div>
+                    <strong>Comisiwn Brenhinol<br />
+                        Henebion Cymru</strong><br /><br />
+                    <strong>Royal Commission</strong> on the Ancient and<br />Historical Monuments of Wales
+                </div>
+            </div>
+            
+            <div class="logo" style="margin-bottom:-20px;">
+                <span>
+                    <ul>
+                        <li><a style="text-decoration:none; color:inherit;" href="https://coflein.gov.uk/en/accessibility/">Accessibility</a></li><li><a style="text-decoration:none; color:inherit;" href="https://coflein.gov.uk/en/privacy-policy/">Privacy and Cookies</a></li><li><a style="text-decoration:none; color:inherit;" href="https://coflein.gov.uk/en/glossary/">Glossary</a></li><li><a style="text-decoration:none; color:inherit;" href="https://coflein.gov.uk/en/contact/">Contact / Order</a></li><li><a style="text-decoration:none; color:inherit;" href="https://coflein.gov.uk/en/legals/">Legals</a></li><li><a style="text-decoration:none; color:inherit;" href="https://coflein.gov.uk/en/user-guide/">Help</a></li><li><a style="text-decoration:none; color:inherit;" href="/sitemap_index.xml">Sitemap</a></li><li><a style="text-decoration:none; color:inherit;" href="https://rcahmw.gov.uk">Royal Commission website</a></li>                    </ul>
+                </span>
+            </div>
+
+            <div class="social">
+                Connect with us                <div class="icons">
+                    <a href="https://wales.gov.uk/" target="_BLANK"><img src="/wp-content/themes/coflein-wordpress/images/icon-dragon.png" alt="dragon logo"/></a>
+                    <a href="https://www.facebook.com/pages/Royal-Commission-on-the-Ancient-and-Historical-Monuments-of-Wales/146120328739808" target="_BLANK"><img src="/wp-content/themes/coflein-wordpress/images/icon-facebook.png" alt="Facebook logo"/></a>
+                    <a href="http://twitter.com/RCAHMWales/" target="_BLANK"><img src="/wp-content/themes/coflein-wordpress/images/icon-twitter.png" alt="Twitter logo"/></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-and-access">
+            <div class="copyright">&copy; 2021 Non-commercial Government Licence </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
