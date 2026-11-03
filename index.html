@@ -1,121 +1,22 @@
-<!doctype html> <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]--> <!--[if gt IE 8]><!-->
-<html class="no-js" lang="en" > <!--<![endif]-->
-	<head>
-        <meta charset="utf-8">
-        <meta content="1" http-equiv="Expires">
-        <link href="//world.datro.xyz/" rel="canonical">
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport">
-        <script type="type/javascript">
-                     var host = "world.datro.xyz";
-                     if {{ host == window.location.host} && {window.location.protocol != "https:""}}
-                     window.location.protocol = "https";
-        </script>
-
-	      <title>DATRO World</title>
-				<meta content="1" http-equiv="Expires">
-				<meta name="HandheldFriendly" content="true" />
-                                <meta name="mobile-web-app-capable" content="yes">
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport">
-        <meta http-equiv="Page-Enter" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
-        <meta http-equiv="Page-Exit" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
-
-  <meta content="#ffffff" name="msapplication-TileColor">
-	<link rel="stylesheet" href="https://datro.xyz/static/gui/dashboard/css/style.css">
-	<meta content="#ffffff" name="theme-color">
-</script>
-        <script type="text/javascript">
-				    $(document).ready(function() {
-				        $("body").css("display", "none");
-				        $("body").fadeIn(2000);
-				    });
-				</script>
-
-				<script>
-				// delegate event for performance, and save attaching a million events to each anchor
-				    document.addEventListener('click', function(event) {
-				      var target = event.target;
-				      if (target.tagName.toLowerCase() == 'a')
-				      {
-				          var port = target.getAttribute('href').match(/^:(\d+)(.*)/);
-				          if (port)
-				          {
-				             target.href = port[2];
-				             target.port = port[1];
-				          }
-				      }
-				    }, false);
-				</script>
-
-				<script>
-				  function resizebody(obj) {
-				    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-				  }
-				</script>
-
-				<script>
-				  function resizeFramez(obj) {
-				    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-				  }
-				</script>
-
-				  <script>
-
-				  $(function(){
-					$('#video').css({ width: $(window).innerWidth() + 'px', height: $(window).innerHeight() + 'px' });
-
-				  $(window).resize(function(){
-				    $('#video').css({ width: $(window).innerWidth() + 'px', height: $(window).innerHeight() + 'px' });
-				  });
-				});
-
-				</script>
-
-
-
-				<!-- this scripts forces scrollbar="no" , scrollbars needed sorry <script src="https://datro.xyz/static/gui/dashboard/js/iframeResizer.min.js"></script>  -->
-<style>
-
-
-.forminput[name] {
-    color: rgba(255,255,255,0.4)!important;
-}
-
-.forminput[value] {
-    color: rgba(255,255,255,0.5)!important;
-}
-
-input:focus::placeholder {
-    opacity: 0.4!important;
-}
-
-</style>
-
-		</head>
-
-    <body id="body"  scrolling="auto"  onload="resizebody(this);">
-
-
-						<main>
-						<div class="demo-iframe-container container-mq">
-					 <iframe class="demo-iframe iframe-mq" sandbox="allow-popups-to-escape-sandbox allow-same-origin allow-modals allow-scripts allow-popups allow-forms" onload="resizeframez(this);" id="framez" name="framez" src="https://datro.xyz/static/gui/index.html" webkitallowfullscreen mozallowfullscreen allowfullscreen webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true" ></iframe>
-					 </div>
-						</main>
-
-          <!--try offline 1of  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
-		     <!-- web cache --> <script src="https://datro.xyz/static/gui/dashboard/js/jquery-1.11.0.min.js"></script>
-                                        <script src="https://datro.xyz/static/gui/dashboard/js/jquery.squirrel.min.js"></script>
-					<script src="https://datro.xyz/static/gui/dashboard/js/jquery-2.1.1.js"></script>
-					<script src="https://datro.xyz/static/gui/dashboard/js/main.js"></script>
-					<a href="#" style="margin-top: 0.1rem; float: left; zoom:0.1; height: -0.1rem; background-color: rgba(10,10,0,0.4); color: rgba(10,10,0,0); width: 1px; height: 1px;" id="anchor"></a>
-					<script>
-					  iFrameResize({ log: true }, '#framez')
-					</script>
-					<script>
-					  iFrameResize({ log: true }, '#body')
-					</script>
-					</script>
-					<!-- <script type="text/javascript">
-					!function(){window.JSEDarkMode=1;window.JSENoAds=1;var e=document,t=e.createElement("script"),s=e.getElementsByTagName("script")[0];t.type="text/javascript",t.async=t.defer=!0,t.src="https://load.jsecoin.com/load/68296/10.3.141.1/0/0/",s.parentNode.insertBefore(t,s)}();
-					</script> -->
-		</body>
-</html>
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Library · repo housekeeping · The Library</title><meta name="description" content="Standards, site manuals, brand and agent interface for the Great House Farm sites."><meta name="theme-color" content="#2a5d8f">
+<link rel="stylesheet" href="/assets/lib.css?v=2.0.1"><link rel="alternate" type="text/plain" href="/llms.txt" title="Guide for language models">
+<link rel="alternate" type="application/json" href="/library.json" title="Maintainer registry (JSON)"></head><body>
+<div class="mtop"><a href="/">The Library</a><button type="button" onclick="document.querySelector('nav.side').classList.toggle('on')" aria-label="Menu">Menu</button></div>
+<div class="wrap"><nav class="side" aria-label="Library"><a class="home" href="/">The Library · repo housekeeping</a>
+<details open><summary>Estate standards</summary><ul><li><a href="/manual/">Manuals index</a></li><li><a href="/checklist">Uniformity checklist</a></li><li><a href="/brand">Brand guideline</a></li><li><a href="/flows">Information flows</a></li><li><a href="/handbook.html">Maintainer handbook</a></li><li><a href="/standards/determinism.html">Determinism and truth</a></li><li><a href="/standards/content.html">Content and public text</a></li><li><a href="/standards/change-control.html">Change control</a></li><li><a href="/standards/deploy-verify.html">Deploy and verify</a></li></ul></details>
+<details><summary>Agent interface</summary><ul><li><a href="/api.html">API reference</a></li><li><a href="/webmcp.html">WebMCP tools</a></li><li><a href="/migration.html">Single-source artifacts</a></li><li><a href="/docs-coverage.html">Docs coverage</a></li></ul></details>
+<details><summary>Tour · The record</summary><ul><li><a href="/manual/records/">1 · Primary Records</a></li><li><a href="/manual/docs/">2 · Docs · The Evidence Catalogue</a></li><li><a href="/manual/wayback/">3 · The Wayback Vault</a></li><li><a href="/manual/nomenclature/">4 · Nomenclature</a></li><li><a href="/manual/maps/">5 · The Map Room</a></li><li><a href="/manual/infographic/">6 · The Land Changing Hands</a></li><li><a href="/manual/wiki/">7 · The Legal Wiki</a></li></ul></details>
+<details><summary>Tour · Read and watch</summary><ul><li><a href="/manual/ebooks/">8 · The E-book Shelf</a></li><li><a href="/manual/story/">9 · The Story</a></li></ul></details>
+<details><summary>Tour · The 1900s</summary><ul><li><a href="/manual/fb/">10 · The Farm Album</a></li></ul></details>
+<details><summary>Tour · The case</summary><ul><li><a href="/manual/chess/">11 · The Chessboard</a></li><li><a href="/manual/csscpsg/">12 · The Grammar House (CSSCPSGP)</a></li><li><a href="/manual/fcg/">13 · FCG · Security Clearance</a></li><li><a href="/manual/oldbill/">14 · Old Bill · Who Gained, Who Lost</a></li><li><a href="/manual/accounts/">15 · The Counting House</a></li><li><a href="/manual/authorities/">16 · Public Authorities</a></li><li><a href="/manual/wdtk/">17 · FOI Requests (WhatDoTheyKnow)</a></li><li><a href="/manual/review/">18 · Independent Review</a></li><li><a href="/manual/qa/">19 · The Q&amp;A Hall</a></li><li><a href="/manual/meeting/">20 · The Council Chamber</a></li><li><a href="/manual/projects/">21 · The Project Office</a></li><li><a href="/manual/app/">22 · The Case Office</a></li><li><a href="/manual/chat/">23 · Ask the Archive</a></li><li><a href="/manual/watchtower/">24 · Watchtower</a></li></ul></details>
+<details><summary>Tour · The present day</summary><ul><li><a href="/manual/fb2/">25 · farmbook 2 · Today</a></li><li><a href="/manual/email/">26 · The Post Office</a></li><li><a href="/manual/emails/">27 · The Post Office · Calendar</a></li><li><a href="/manual/dartboard/">28 · Home · The Disclosure Dartboard</a></li><li><a href="/manual/estate/">29 · Cedwyn Estate</a></li><li><a href="/manual/directory/">30 · Cedwyn Estate Directory</a></li><li><a href="/manual/patagonia/">31 · Great House Farm II · Patagonia Museum</a></li><li><a href="/manual/wales/">32 · Virtual Tour · Wales</a></li><li><a href="/manual/terrain/">33 · Terrain · Cedwyn Estate in 3D</a></li><li><a href="/manual/cyberspace/">34 · The Digital Estate</a></li><li><a href="/manual/shop/">35 · Gift Shop &amp; Marketplace</a></li></ul></details>
+<details><summary>Off the tour</summary><ul><li><a href="/manual/research/">Research (Legal Wiki mirror)</a></li><li><a href="/manual/library/">The Library</a></li></ul></details></nav><main>
+<p class="lead">The Library keeps house for the Great House Farm repository and the Cedwyn digital estate: the standards every site is held to, one manual per site, the brand, the agent interface and the rules for changing anything. It is written so staff and AI agents can take over the upkeep and keep every site uniform.</p>
+<div class="grid"><a class="card" href="/manual/"><b>Site manuals</b><span>One five-part manual per site, in tour order: overview, how it works, upkeep SOP, agent interface, changelog.</span></a><a class="card" href="/checklist"><b>Uniformity checklist</b><span>What every site and every manual must have, and where each site stands.</span></a><a class="card" href="/brand"><b>Brand guideline</b><span>Colours, type, spacing, day and night, layout, captions and tone, from the live tokens.</span></a><a class="card" href="/flows"><b>Information flows</b><span>Who owns each fact, who reads it; Wayback as the single artifact store.</span></a><a class="card" href="/api.html"><b>Agent interface</b><span>JSON endpoints and WebMCP tools on every site.</span></a><a class="card" href="/standards/change-control.html"><b>Change control</b><span>Change classes, approvals, commit rules.</span></a><a class="card" href="/handbook.html"><b>Maintainer handbook</b><span>Roles, stages, tolerances and reports.</span></a><a class="card" href="/standards/deploy-verify.html"><b>Deploy and verify</b><span>Live and checked at 390 px before a change is done.</span></a></div>
+<h2>Standards</h2><ul><li><a href="/standards/determinism.html">Determinism and truth</a> — every fact dated and sourced; UNRESOLVED instead of a guess.</li><li><a href="/standards/content.html">Content and public text</a> — institutions and roles; the family privacy and holdings rule.</li><li><a href="/standards/change-control.html">Change control</a></li><li><a href="/standards/deploy-verify.html">Deploy and verify</a></li><li><a href="/standards/rules.json">rules.json</a> — the word list as data, for automated checks.</li></ul>
+<h2>Family privacy and holdings (standing rule)</h2><p>Standing rule for every maintainer (project owner, 24 Oct 2026):</p><ul><li>Do not list or characterise what the family holds, or does not hold, in papers or heirlooms. The only family holdings a public site may name are Mary Williams' statement, family photographs, and William Buckler's diaries.</li><li>Write no sentence about the family's possession or lack of a document. State the public record and the archive that keeps it instead.</li><li>Never publish current family addresses, the whereabouts of living family members, or any heirloom and where it is kept.</li><li>Reason: to avoid inviting a repeat of the events of the 1950s.</li><li>Sweeps for existing text are run separately; a maintainer adds no such statement and raises any found in the highlight report.</li></ul>
+<h2>The visitor tour</h2><p>Visitors step through the sites with the ‹ › bar like a museum walk, oldest to present: <b>The record</b> (Primary Records, Docs · The Evidence Catalogue, The Wayback Vault, Nomenclature, The Map Room, The Land Changing Hands, The Legal Wiki); <b>Read and watch</b> (The E-book Shelf, The Story); <b>The 1900s</b> (The Farm Album); <b>The case</b> (The Chessboard, The Grammar House (CSSCPSGP), FCG · Security Clearance, Old Bill · Who Gained, Who Lost, The Counting House, Public Authorities, FOI Requests (WhatDoTheyKnow), Independent Review, The Q&amp;A Hall, The Council Chamber, The Project Office, The Case Office, Ask the Archive, Watchtower); <b>The present day</b> (farmbook 2 · Today, The Post Office, The Post Office · Calendar, Home · The Disclosure Dartboard, Cedwyn Estate, Cedwyn Estate Directory, Great House Farm II · Patagonia Museum, Virtual Tour · Wales, Terrain · Cedwyn Estate in 3D, The Digital Estate, Gift Shop &amp; Marketplace). The Library itself stays off the tour and is linked from the menu.</p>
+<h2>Also here</h2><ul><li><a href="/migration.html">Single-source artifacts</a> and the duplicate inventory</li><li><a href="/docs-coverage.html">Docs coverage</a></li><li><a href="/datro-library.html">The earlier DATRO consortium document library</a></li><li><a href="/legacy/uk-finance.html">The earlier landing page</a></li></ul>
+<footer>Library 2.0.0 · 24 Oct 2026 · Changes to these procedures follow <a href="/standards/change-control.html">change control</a>. Machine copy: <a href="/library.json">library.json</a>.</footer></main></div>
+<script src="https://wayback.bucklerfamily.estate/viewer/ghf-viewer.js" defer></script></body></html>
