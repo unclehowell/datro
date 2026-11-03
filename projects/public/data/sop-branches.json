@@ -1,0 +1,851 @@
+{
+ "schema": "ghf.sop-branches/v1",
+ "generated": "2026-10-21T21:15:59Z",
+ "title": "Trigger-event SOP: decision tree to reopen BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+ "page": "https://projects.bucklerfamily.estate/sop-trigger-event/",
+ "side_project": "https://projects.bucklerfamily.estate/side-project-reopen/",
+ "trigger": {
+  "confirmed": false,
+  "t0": null,
+  "final_domestic_decision": null,
+  "note": "Set t0 (YYYY-MM-DD) when Gate 1 passes; set final_domestic_decision when the last domestic court decides. Clocks stay on standby while null."
+ },
+ "anchors": {
+  "T0": "discovery date",
+  "S7": "date the letter before action is sent",
+  "decision": "date of that court or body decision",
+  "final_domestic_decision": "date of the last domestic decision",
+  "offence": "date of the offence",
+  "knowledge": "date the decisive fact became known"
+ },
+ "kinds": {
+  "start": "trigger confirmed",
+  "trigger": "kind of trigger",
+  "step": "SOP step",
+  "gate": "stage gate",
+  "route": "legal route",
+  "outcome": "route succeeds",
+  "deadend": "route closes"
+ },
+ "history": {
+  "echr_1989": {
+   "application": "14464/88",
+   "title": "William Buckler v the United Kingdom",
+   "lodged": "1988-05-03",
+   "registered": "1988-12-12",
+   "decided": "1989-04-14",
+   "result": "inadmissible (European Commission of Human Rights)",
+   "scan": "https://wayback.bucklerfamily.estate/pdf/evidence/1988-05-03_wp36_european-commission-of-human-rights-application-14.pdf",
+   "hudoc": "not published on HUDOC"
+  },
+  "not_related": {
+   "application": "20348/92",
+   "title": "Buckley v the United Kingdom (Gypsy caravan site, Willingham)",
+   "judgment": "1996-09-25",
+   "hudoc": "https://hudoc.echr.coe.int/eng?i=001-58076"
+  }
+ },
+ "nodes": [
+  {
+   "id": "T0",
+   "kind": "start",
+   "phase": 0,
+   "label": "Trigger confirmed",
+   "lane": "sop",
+   "owner": "Project Manager",
+   "text": "A record shows dishonesty in the 1986–87 evidence, concealment of a record, or government involvement. The date it is first seen is the discovery date (T0). Every clock below counts from T0 or from a later court decision.",
+   "deadline": {
+    "anchor": "T0",
+    "days": 0,
+    "rule": "T0 = the date the record is first seen, logged in the custody log",
+    "kind": "target",
+    "source": null
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#t0"
+  },
+  {
+   "id": "TT-DIS",
+   "kind": "trigger",
+   "phase": 0,
+   "label": "Dishonest evidence in 1986–87",
+   "lane": "sop",
+   "owner": "Project Manager",
+   "text": "Evidence given, a statement made or a matter concealed in BP Properties Ltd v Buckler was knowingly untrue.",
+   "deadline": {
+    "anchor": "T0",
+    "days": 0,
+    "rule": "same day",
+    "kind": "target",
+    "source": null
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#tt-dis"
+  },
+  {
+   "id": "TT-CON",
+   "kind": "trigger",
+   "phase": 0,
+   "label": "Concealed record",
+   "lane": "sop",
+   "owner": "Project Manager",
+   "text": "A record relevant to the title or the trial was held back, destroyed or altered.",
+   "deadline": {
+    "anchor": "T0",
+    "days": 0,
+    "rule": "same day",
+    "kind": "target",
+    "source": null
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#tt-con"
+  },
+  {
+   "id": "TT-GOV",
+   "kind": "trigger",
+   "phase": 0,
+   "label": "Government involvement",
+   "lane": "sop",
+   "owner": "Project Manager",
+   "text": "A public body or official acted in the dispossession, the registration or the handling of the site.",
+   "deadline": {
+    "anchor": "T0",
+    "days": 0,
+    "rule": "same day",
+    "kind": "target",
+    "source": null
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#tt-gov"
+  },
+  {
+   "id": "S1",
+   "kind": "step",
+   "phase": 1,
+   "label": "Log the discovery",
+   "lane": "sop",
+   "owner": "Project Manager",
+   "text": "Custody log entry: date and time seen, who saw it, where (URL, archive reference, letter), how it was obtained. This entry fixes T0.",
+   "deadline": {
+    "anchor": "T0",
+    "days": 0,
+    "rule": "same day (T0)",
+    "kind": "target",
+    "source": null
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#s1"
+  },
+  {
+   "id": "S2",
+   "kind": "step",
+   "phase": 1,
+   "label": "Preserve and hash",
+   "lane": "sop",
+   "owner": "Project Manager",
+   "text": "Download the original; sha256 it; Internet Archive Save Page Now for any web page; wayback.bucklerfamily.estate item; R2 copy; offline copy; hash recorded in the custody log; three copies in three places.",
+   "deadline": {
+    "anchor": "T0",
+    "days": 1,
+    "rule": "within 24 hours of T0",
+    "kind": "target",
+    "source": null
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#s2"
+  },
+  {
+   "id": "S3",
+   "kind": "step",
+   "phase": 2,
+   "label": "Independent check",
+   "lane": "sop",
+   "owner": "Project Manager",
+   "text": "A second reader checks the record against its source; ask the holder for an official or certified copy; compare with records already held; write the result into the custody log.",
+   "deadline": {
+    "anchor": "T0",
+    "days": 14,
+    "rule": "within 14 days of T0 (target)",
+    "kind": "target",
+    "source": null
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#s3"
+  },
+  {
+   "id": "G1",
+   "kind": "gate",
+   "phase": 2,
+   "label": "Gate 1: record verified?",
+   "lane": "sop",
+   "owner": "Executive",
+   "text": "Is the record genuine, from its stated source, and does it show what it appears to show?",
+   "deadline": {
+    "anchor": "T0",
+    "days": 14,
+    "rule": "decide by T0 + 14 days",
+    "kind": "target",
+    "source": null
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#g1"
+  },
+  {
+   "id": "DE-G1",
+   "kind": "deadend",
+   "phase": 2,
+   "label": "Not verified: log and keep watching",
+   "lane": "sop",
+   "owner": "Project Manager",
+   "text": "Kept on file; the reopen-loop keeps scoring it; no outside step.",
+   "deadline": {
+    "anchor": "T0",
+    "days": null,
+    "rule": "no clock",
+    "kind": "target",
+    "source": null
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#de-g1"
+  },
+  {
+   "id": "S4",
+   "kind": "step",
+   "phase": 3,
+   "label": "Preservation notice",
+   "lane": "sop",
+   "owner": "Executive",
+   "text": "Short letter to the body holding related records: list the records, ask that they be kept unaltered pending legal advice. Facts only, no accusation.",
+   "deadline": {
+    "anchor": "T0",
+    "days": 7,
+    "rule": "within 7 days of T0 (target)",
+    "kind": "target",
+    "source": null
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#s4"
+  },
+  {
+   "id": "S5",
+   "kind": "step",
+   "phase": 3,
+   "label": "Instruct a lawyer",
+   "lane": "sop",
+   "owner": "Executive",
+   "text": "Public access barrister (Bar Standards Board directory), solicitor (Law Society Find a Solicitor), Advocate (the Bar Pro Bono Unit), Law Centres Network, Cardiff University pro bono clinics. Send the evidence pack and the custody log.",
+   "deadline": {
+    "anchor": "T0",
+    "days": 28,
+    "rule": "opinion requested within 28 days of T0 (target)",
+    "kind": "target",
+    "source": null
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#s5"
+  },
+  {
+   "id": "S6",
+   "kind": "step",
+   "phase": 3,
+   "label": "Log in HubSpot",
+   "lane": "sop",
+   "owner": "Project Manager",
+   "text": "One HubSpot task per step with its due date; one note per document; the PRINCE2 Issue Register gets an issue for the trigger.",
+   "deadline": {
+    "anchor": "T0",
+    "days": 0,
+    "rule": "same day as each step",
+    "kind": "target",
+    "source": null
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#s6"
+  },
+  {
+   "id": "G2",
+   "kind": "gate",
+   "phase": 4,
+   "label": "Gate 2: legal opinion",
+   "lane": "sop",
+   "owner": "Executive",
+   "text": "Written opinion: which test is met, which route, which deadline.",
+   "deadline": {
+    "anchor": "T0",
+    "days": 42,
+    "rule": "target T0 + 6 weeks",
+    "kind": "target",
+    "source": null
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#g2"
+  },
+  {
+   "id": "DE-G2",
+   "kind": "deadend",
+   "phase": 4,
+   "label": "Opinion: no route meets its test",
+   "lane": "sop",
+   "owner": "Executive",
+   "text": "Record the reasons; keep the evidence; the reopen-loop and FOI routes continue.",
+   "deadline": {
+    "anchor": "T0",
+    "days": null,
+    "rule": "no clock",
+    "kind": "target",
+    "source": null
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#de-g2"
+  },
+  {
+   "id": "S7",
+   "kind": "step",
+   "phase": 4,
+   "label": "Letter before action",
+   "lane": "sop",
+   "owner": "Executive",
+   "text": "Drafted with the lawyer under the Practice Direction on Pre-Action Conduct: the facts, what is sought, a reply period.",
+   "deadline": {
+    "anchor": "S7",
+    "days": 14,
+    "rule": "reply period: 14 days (straightforward) to 3 months (very complex), PD Pre-Action Conduct para 6(b)",
+    "kind": "legal",
+    "source": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/pd_pre-action_conduct"
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#s7"
+  },
+  {
+   "id": "S8",
+   "kind": "step",
+   "phase": 4,
+   "label": "Report to the authorities",
+   "lane": "sop",
+   "owner": "Executive",
+   "text": "Where the opinion points to a crime or a public-body failure: South Wales Police or Action Fraud; IOPC for police conduct; Public Services Ombudsman for Wales; ICO for records destroyed after a request (FOIA s.77); the constituency MP and Member of the Senedd.",
+   "deadline": {
+    "anchor": "T0",
+    "days": 28,
+    "rule": "after Gate 2; PSOW within 1 year of notice",
+    "kind": "legal",
+    "source": "https://www.legislation.gov.uk/anaw/2019/3/section/8"
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#s8"
+  },
+  {
+   "id": "S9",
+   "kind": "step",
+   "phase": 4,
+   "label": "Press plan",
+   "lane": "sop",
+   "owner": "Executive",
+   "text": "Only after the letter before action or the report: one factual release citing the documents; officials by role; no private individuals named.",
+   "deadline": {
+    "anchor": "S7",
+    "days": null,
+    "rule": "after S7 or S8",
+    "kind": "target",
+    "source": null
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#s9"
+  },
+  {
+   "id": "G3",
+   "kind": "gate",
+   "phase": 5,
+   "label": "Gate 3: route chosen",
+   "lane": "sop",
+   "owner": "Executive",
+   "text": "The Executive approves the route the opinion recommends; the side project moves to filing.",
+   "deadline": {
+    "anchor": "T0",
+    "days": 56,
+    "rule": "target T0 + 8 weeks",
+    "kind": "target",
+    "source": null
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#g3"
+  },
+  {
+   "id": "RA",
+   "kind": "route",
+   "phase": 6,
+   "label": "A. Reopen the 1987 appeal (CPR 52.30)",
+   "lane": "route-a",
+   "owner": "Counsel",
+   "text": "Court of Appeal will not reopen unless (a) necessary to avoid real injustice, (b) the circumstances are exceptional, (c) there is no alternative effective remedy. Permission needed; decided on paper; no appeal from the decision. Taylor v Lawrence [2002] EWCA Civ 90.",
+   "deadline": {
+    "anchor": "T0",
+    "days": null,
+    "rule": "no fixed limit in the rule; apply promptly after discovery",
+    "kind": "legal",
+    "source": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part52#52.30"
+   },
+   "decider": "Court of Appeal (single judge on permission)",
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#ra"
+  },
+  {
+   "id": "RA-NO",
+   "kind": "deadend",
+   "phase": 7,
+   "label": "Permission refused (final)",
+   "lane": "route-a",
+   "owner": "Counsel",
+   "text": "CPR 52.30(7): no appeal or review. Usually not a new Strasbourg start date (Moreira Ferreira v Portugal (no. 2) §60).",
+   "deadline": {
+    "anchor": "decision",
+    "days": null,
+    "rule": "final",
+    "kind": "legal",
+    "source": "https://hudoc.echr.coe.int/eng?i=001-175646"
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#ra-no"
+  },
+  {
+   "id": "RA-YES",
+   "kind": "outcome",
+   "phase": 7,
+   "label": "Appeal reopened and reheard",
+   "lane": "route-a",
+   "owner": "Counsel",
+   "text": "The Court of Appeal reconsiders the 1987 appeal.",
+   "deadline": {
+    "anchor": "decision",
+    "days": null,
+    "rule": "court timetable",
+    "kind": "target",
+    "source": null
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#ra-yes"
+  },
+  {
+   "id": "RB",
+   "kind": "route",
+   "phase": 6,
+   "label": "B. Set aside for fraud (Takhar)",
+   "lane": "route-b",
+   "owner": "Counsel",
+   "text": "Fresh claim in the High Court. Test (RBS v Highland para 106, adopted in Takhar para 56): conscious and deliberate dishonesty in evidence, a statement or a matter concealed; material, an operative cause of the court’s decision. Takhar para 57: no need to show it could not have been found with reasonable diligence before the trial.",
+   "deadline": {
+    "anchor": "T0",
+    "days": null,
+    "rule": "no fixed limit set by Takhar; issue promptly; linked money or land claims run from discovery under s.32",
+    "kind": "legal",
+    "source": "https://caselaw.nationalarchives.gov.uk/uksc/2019/13"
+   },
+   "decider": "High Court (Business and Property Courts in Wales, Cardiff)",
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#rb"
+  },
+  {
+   "id": "RB-NO",
+   "kind": "deadend",
+   "phase": 7,
+   "label": "Claim dismissed",
+   "lane": "route-b",
+   "owner": "Counsel",
+   "text": "Appeal to the Court of Appeal with permission; the final decision then starts the Strasbourg clock (C1).",
+   "deadline": {
+    "anchor": "decision",
+    "days": 21,
+    "rule": "appellant’s notice 21 days from the decision (CPR 52.12)",
+    "kind": "legal",
+    "source": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part52#52.12"
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#rb-no"
+  },
+  {
+   "id": "RB-YES",
+   "kind": "outcome",
+   "phase": 7,
+   "label": "1987 judgment set aside",
+   "lane": "route-b",
+   "owner": "Counsel",
+   "text": "The possession claim is retried on honest evidence; title and loss follow.",
+   "deadline": {
+    "anchor": "decision",
+    "days": null,
+    "rule": "court timetable",
+    "kind": "target",
+    "source": null
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#rb-yes"
+  },
+  {
+   "id": "RC1",
+   "kind": "route",
+   "phase": 8,
+   "label": "C1. New Strasbourg application",
+   "lane": "route-c",
+   "owner": "Counsel",
+   "text": "Against the United Kingdom only. Exhaust domestic routes first, then lodge a completed form within four months of the final domestic decision (Art 35(1), four months since 1 Feb 2022). Must carry relevant new information beyond Application 14464/88 (Art 35(2)(b)).",
+   "deadline": {
+    "anchor": "final_domestic_decision",
+    "days": null,
+    "rule": "4 months from the final domestic decision",
+    "kind": "legal",
+    "source": "https://www.echr.coe.int/documents/d/echr/convention_ENG"
+   },
+   "decider": "European Court of Human Rights",
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#rc1"
+  },
+  {
+   "id": "RC2",
+   "kind": "deadend",
+   "phase": 6,
+   "label": "C2. Restore Application 14464/88",
+   "lane": "route-c",
+   "owner": "Counsel",
+   "text": "No route: 14464/88 was declared inadmissible on 14 April 1989; restoration under Art 37(2) and Rule 43(5) covers only struck-out applications.",
+   "deadline": {
+    "anchor": "T0",
+    "days": null,
+    "rule": "closed",
+    "kind": "legal",
+    "source": "https://www.echr.coe.int/documents/d/echr/rules_court_eng"
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#rc2"
+  },
+  {
+   "id": "RC3",
+   "kind": "deadend",
+   "phase": 6,
+   "label": "C3. Rule 80 revision",
+   "lane": "route-c",
+   "owner": "Counsel",
+   "text": "Revision is for a judgment of the Court, within six months of learning a decisive new fact. 14464/88 ended with a Commission decision, not a Court judgment, so Rule 80 does not reach it. It applies to any future Strasbourg judgment.",
+   "deadline": {
+    "anchor": "knowledge",
+    "days": 183,
+    "rule": "6 months from learning the fact (future judgments only)",
+    "kind": "legal",
+    "source": "https://www.echr.coe.int/documents/d/echr/rules_court_eng"
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#rc3"
+  },
+  {
+   "id": "RC-OUT",
+   "kind": "outcome",
+   "phase": 9,
+   "label": "Strasbourg judgment",
+   "lane": "route-c",
+   "owner": "Counsel",
+   "text": "Finding against the United Kingdom; just satisfaction; Committee of Ministers supervises execution.",
+   "deadline": {
+    "anchor": "decision",
+    "days": null,
+    "rule": "court timetable",
+    "kind": "target",
+    "source": null
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#rc-out"
+  },
+  {
+   "id": "RD",
+   "kind": "route",
+   "phase": 6,
+   "label": "D. Limitation Act s.32: claims from discovery",
+   "lane": "route-d",
+   "owner": "Counsel",
+   "text": "Where the action is based on the defendant’s fraud, or a relevant fact was deliberately concealed, the limitation period starts at discovery (or when it could with reasonable diligence have been discovered). Then 6 years for tort or contract (s.2, s.5) and 12 years for recovery of land (s.15).",
+   "deadline": {
+    "anchor": "T0",
+    "days": 2191,
+    "rule": "6 years from discovery (tort/contract); 12 years (land)",
+    "kind": "legal",
+    "source": "https://www.legislation.gov.uk/ukpga/1980/58/section/32"
+   },
+   "decider": "High Court / County Court",
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#rd"
+  },
+  {
+   "id": "RD-NO",
+   "kind": "deadend",
+   "phase": 7,
+   "label": "Innocent purchaser bar",
+   "lane": "route-d",
+   "owner": "Counsel",
+   "text": "s.32(3)–(4): no recovery of the property from a purchaser for value since the event who was not a party and had no reason to know. Money claims against those responsible remain.",
+   "deadline": {
+    "anchor": "T0",
+    "days": null,
+    "rule": "statutory bar",
+    "kind": "legal",
+    "source": "https://www.legislation.gov.uk/ukpga/1980/58/section/32"
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#rd-no"
+  },
+  {
+   "id": "RE",
+   "kind": "route",
+   "phase": 6,
+   "label": "E. Criminal report",
+   "lane": "route-e",
+   "owner": "Executive",
+   "text": "South Wales Police or Action Fraud; the CPS decides charges on a police file; private prosecution is preserved by Prosecution of Offences Act 1985 s.6.",
+   "deadline": {
+    "anchor": "offence",
+    "days": null,
+    "rule": "indictable offences: no time limit; summary-only: 6 months from the offence (MCA 1980 s.127)",
+    "kind": "legal",
+    "source": "https://www.legislation.gov.uk/ukpga/1980/43/section/127"
+   },
+   "decider": "Police; Crown Prosecution Service; courts",
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#re"
+  },
+  {
+   "id": "RE-NO",
+   "kind": "deadend",
+   "phase": 7,
+   "label": "No further action",
+   "lane": "route-e",
+   "owner": "Executive",
+   "text": "Ask for the reasons and a Victims’ Right to Review where it applies; private prosecution remains (s.6).",
+   "deadline": {
+    "anchor": "decision",
+    "days": null,
+    "rule": "",
+    "kind": "target",
+    "source": null
+   },
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#re-no"
+  },
+  {
+   "id": "RF",
+   "kind": "route",
+   "phase": 6,
+   "label": "F. Judicial review of a new decision",
+   "lane": "route-f",
+   "owner": "Counsel",
+   "text": "For a decision a public body takes now (a refusal, a registration, a planning step): claim form promptly and in any event within 3 months of the grounds arising; 6 weeks for planning decisions.",
+   "deadline": {
+    "anchor": "decision",
+    "days": 90,
+    "rule": "promptly and within 3 months (CPR 54.5(1)); planning 6 weeks (54.5(5))",
+    "kind": "legal",
+    "source": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part54#54.5"
+   },
+   "decider": "Administrative Court / Planning Court, Cardiff",
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#rf"
+  },
+  {
+   "id": "RG",
+   "kind": "route",
+   "phase": 6,
+   "label": "G. Ombudsman",
+   "lane": "route-g",
+   "owner": "Executive",
+   "text": "Public Services Ombudsman for Wales for a Welsh public body; usually after the body’s own complaints process.",
+   "deadline": {
+    "anchor": "T0",
+    "days": 365,
+    "rule": "within 1 year of first notice (PSOW Act 2019 s.8(1)(c))",
+    "kind": "legal",
+    "source": "https://www.legislation.gov.uk/anaw/2019/3/section/8"
+   },
+   "decider": "Public Services Ombudsman for Wales",
+   "status": "standby",
+   "link": "https://projects.bucklerfamily.estate/sop-trigger-event/#rg"
+  }
+ ],
+ "edges": [
+  {
+   "from": "TT-DIS",
+   "to": "T0",
+   "label": "trigger"
+  },
+  {
+   "from": "TT-CON",
+   "to": "T0",
+   "label": "trigger"
+  },
+  {
+   "from": "TT-GOV",
+   "to": "T0",
+   "label": "trigger"
+  },
+  {
+   "from": "T0",
+   "to": "S1",
+   "label": ""
+  },
+  {
+   "from": "S1",
+   "to": "S2",
+   "label": ""
+  },
+  {
+   "from": "S2",
+   "to": "S3",
+   "label": ""
+  },
+  {
+   "from": "S2",
+   "to": "S4",
+   "label": "records at risk"
+  },
+  {
+   "from": "S2",
+   "to": "S6",
+   "label": ""
+  },
+  {
+   "from": "S3",
+   "to": "G1",
+   "label": ""
+  },
+  {
+   "from": "G1",
+   "to": "DE-G1",
+   "label": "no"
+  },
+  {
+   "from": "G1",
+   "to": "S5",
+   "label": "yes"
+  },
+  {
+   "from": "S5",
+   "to": "G2",
+   "label": ""
+  },
+  {
+   "from": "G2",
+   "to": "DE-G2",
+   "label": "no route"
+  },
+  {
+   "from": "G2",
+   "to": "S7",
+   "label": "route open"
+  },
+  {
+   "from": "G2",
+   "to": "S8",
+   "label": "crime or public-body failure"
+  },
+  {
+   "from": "S7",
+   "to": "S9",
+   "label": ""
+  },
+  {
+   "from": "S8",
+   "to": "S9",
+   "label": ""
+  },
+  {
+   "from": "S7",
+   "to": "G3",
+   "label": ""
+  },
+  {
+   "from": "G3",
+   "to": "RA",
+   "label": "A"
+  },
+  {
+   "from": "G3",
+   "to": "RB",
+   "label": "B"
+  },
+  {
+   "from": "G3",
+   "to": "RD",
+   "label": "D"
+  },
+  {
+   "from": "G3",
+   "to": "RF",
+   "label": "F"
+  },
+  {
+   "from": "G3",
+   "to": "RG",
+   "label": "G"
+  },
+  {
+   "from": "S8",
+   "to": "RE",
+   "label": "report"
+  },
+  {
+   "from": "G3",
+   "to": "RC2",
+   "label": "C2"
+  },
+  {
+   "from": "G3",
+   "to": "RC3",
+   "label": "C3"
+  },
+  {
+   "from": "RA",
+   "to": "RA-NO",
+   "label": "refused"
+  },
+  {
+   "from": "RA",
+   "to": "RA-YES",
+   "label": "granted"
+  },
+  {
+   "from": "RB",
+   "to": "RB-NO",
+   "label": "dismissed"
+  },
+  {
+   "from": "RB",
+   "to": "RB-YES",
+   "label": "set aside"
+  },
+  {
+   "from": "RB-NO",
+   "to": "RC1",
+   "label": "final domestic decision"
+  },
+  {
+   "from": "RA-YES",
+   "to": "RC1",
+   "label": "final domestic decision"
+  },
+  {
+   "from": "RF",
+   "to": "RC1",
+   "label": "final domestic decision"
+  },
+  {
+   "from": "RC1",
+   "to": "RC-OUT",
+   "label": "judgment"
+  },
+  {
+   "from": "RD",
+   "to": "RD-NO",
+   "label": "innocent purchaser"
+  },
+  {
+   "from": "RE",
+   "to": "RE-NO",
+   "label": "no further action"
+  }
+ ]
+}

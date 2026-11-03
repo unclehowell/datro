@@ -1,0 +1,121 @@
+{
+  "version": "1.0.0",
+  "description": "MCP Tool Manifest — free third-party APIs the datro flywheel uses to generate data-driven bug fixes and UX improvements per branch.",
+  "tools": [
+    {
+      "id": "psi",
+      "name": "Google PageSpeed Insights",
+      "type": "rest-api",
+      "url": "https://www.googleapis.com/pagespeedonline/v5/runPagespeed",
+      "docs": "https://developers.google.com/speed/docs/insights/rest/v5/pagespeedapi/runpagespeed",
+      "auth": "api-key (QUERY: key)",
+      "key_env": "PSI_API_KEY",
+      "free_tier": "25,000 req/day",
+      "checks": ["performance", "accessibility", "seo", "best-practices"],
+      "description": "Lighthouse scores for performance, accessibility, SEO, best-practices. Returns 0-100 per category plus CrUX field data.",
+      "confidence": "high — Google production API, deterministic results"
+    },
+    {
+      "id": "eaa",
+      "name": "EAA WCAG Compliance Checker",
+      "type": "rest-api",
+      "url": "https://eaa.analysis.ie/check",
+      "docs": "https://eaa.analysis.ie/api-docs",
+      "auth": "none",
+      "key_env": null,
+      "free_tier": "unlimited (public)",
+      "checks": ["wcag-2.1-aa"],
+      "description": "WCAG 2.1 AA compliance scan. Returns overall score 0-100, per-category pass/fail (images, headings, landmarks, forms, contrast, ARIA).",
+      "confidence": "high — verified working, no auth needed"
+    },
+    {
+      "id": "accessscore",
+      "name": "AccessScore ADA/WCAG Scanner",
+      "type": "rest-api",
+      "url": "https://accessscore.autonomous-claude.com/api/scan",
+      "docs": null,
+      "auth": "none",
+      "key_env": null,
+      "free_tier": "unlimited (public)",
+      "checks": ["ada", "wcag-2.1"],
+      "description": "ADA/WCAG 2.1 legal risk scoring. Returns score, issues list with severity, fix suggestions. 16 automated checks.",
+      "confidence": "medium — returns data but issue list can be empty on simple pages"
+    },
+    {
+      "id": "siteaudit-mcp",
+      "name": "SiteAudit MCP",
+      "type": "mcp-server",
+      "repo": "https://github.com/vdalhambra/siteaudit-mcp",
+      "auth": "none",
+      "free_tier": "100 audits/month (MCPize playground)",
+      "checks": ["seo", "performance", "security", "lighthouse", "broken-links", "robots-txt"],
+      "description": "MCP server for AI agents. No install needed — runs in MCPize playground. Full SEO + security + performance + Lighthouse audit in one tool call.",
+      "confidence": "high — dedicated MCP protocol, well-documented"
+    },
+    {
+      "id": "seo-autopilot",
+      "name": "SEO Autopilot",
+      "type": "self-hosted",
+      "repo": "https://github.com/tentacl-ai/seo-autopilot",
+      "auth": "none (self-hosted)",
+      "free_tier": "free (open source MIT)",
+      "checks": ["on-page", "canonical", "redirects", "schema", "geo", "llms-txt", "link-graph", "cwv", "security"],
+      "description": "Multi-tenant SEO automation. 11 analyzers, 80+ checks. Python/FastAPI. Can be self-hosted alongside the flywheel.",
+      "confidence": "medium — Python-based, needs separate host"
+    },
+    {
+      "id": "power-seo-audit",
+      "name": "@power-seo/audit",
+      "type": "npm-package",
+      "npm": "@power-seo/audit",
+      "auth": "none",
+      "free_tier": "free (open source)",
+      "checks": ["on-page", "meta", "headings", "links", "images", "performance"],
+      "description": "Zero-dependency SEO audit engine. Runs in Node.js — no API calls needed. Returns 0-100 score, per-category breakdowns, issue list with severity.",
+      "confidence": "medium — npm package, would need to bundle for CF Worker"
+    },
+    {
+      "id": "seoscan",
+      "name": "seoscan",
+      "type": "cli",
+      "repo": "https://github.com/Recognity/seoscan",
+      "auth": "none (free tier)",
+      "free_tier": "free tier with standard audits",
+      "checks": ["meta", "performance", "links", "images", "headers", "sitemap", "robots", "structured-data", "content"],
+      "description": "Full SEO audit CLI with AI-powered fix suggestions. 9 categories. Scores 0-100 with letter grade.",
+      "confidence": "medium — CLI tool, needs Node.js host"
+    },
+    {
+      "id": "cf-browser-rendering-seo",
+      "name": "CF Browser Rendering SEO Worker",
+      "type": "cloudflare-worker-toolkit",
+      "repo": "https://github.com/elizabethsiegle/seo-analysis-browser-rendering-worker",
+      "auth": "cloudflare-account",
+      "free_tier": "within CF Workers free tier (Browser Rendering has separate pricing)",
+      "checks": ["title", "meta", "headings", "images-alt", "links", "performance", "mobile", "ai-scoring"],
+      "description": "Cloudflare Worker that uses Browser Rendering API + Workers AI (Llama 3.2) to analyze SEO. Hono + Durable Objects. Reference pattern for CF-native auditing.",
+      "confidence": "high — runs natively on CF Workers, proven pattern"
+    },
+    {
+      "id": "ai-seo-audit",
+      "name": "AI SEO Audit (context.dev)",
+      "type": "rest-api + webapp",
+      "repo": "https://github.com/context-dot-dev/ai-seo-audit",
+      "docs": "https://www.freeaiseoaudit.com/",
+      "auth": "context.dev-api-key (free tier)",
+      "key_env": "CONTEXT_DEV_API_KEY",
+      "free_tier": "generous free tier via context.dev",
+      "checks": ["crawlability", "content-chunking", "schema", "eeat", "governance", "ai-readability"],
+      "description": "AEO/GEO audit — scores URL for ChatGPT/Claude/Perplexity citation readiness. 30+ AI-readability checks. JSON API at /api/audit.",
+      "confidence": "medium — needs context.dev API key, newer project"
+    }
+  ],
+  "recommended_for_cf_worker": ["psi", "eaa", "accessscore", "cf-browser-rendering-seo"],
+  "recommended_for_self_hosted": ["seo-autopilot", "siteaudit-mcp", "power-seo-audit"],
+  "notes": [
+    "PSI requires a Google Cloud API key — set PSI_API_KEY in CF Worker env vars.",
+    "EAA + AccessScore require no auth — ideal for initial release.",
+    "cf-browser-rendering-seo is the best pattern for CF-native deep SEO analysis (real browser rendering).",
+    "For maximum coverage: PSI (perf/SEO/a11y) + EAA (WCAG) + AccessScore (ADA legal risk) in parallel on each release."
+  ]
+}
