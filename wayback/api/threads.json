@@ -1,9 +1,9 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-11-03T12:25:38Z",
- "count": 980,
- "threadCount": 528,
+ "generated": "2026-11-03T12:30:45Z",
+ "count": 985,
+ "threadCount": 530,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
@@ -14,6 +14,23 @@
  },
  "threads": [
   {
+   "threadId": "gt-1a0d3d85a7ef4715",
+   "subject": "FOI \"Llandough Roman villa & medieval house finds were destroyed in a 1983 fire\"",
+   "threadSlug": "foi-llandough-roman-villa-medieval-house-finds-were-destroyed-in-a-1983-fire",
+   "institutions": [
+    "heneb"
+   ],
+   "first": "2026-09-24T15:05:15Z",
+   "last": "2026-11-02T18:13:00Z",
+   "count": 4,
+   "messageIds": [
+    "gm-1a0d3f30a932fcc1",
+    "gm-1a187d4ad88af9f7",
+    "gm-1a19c57caf4e7c8d",
+    "gm-1a19d763c1d8e72c"
+   ]
+  },
+  {
    "threadId": "gt-1a0bbdf18c9ea3b9",
    "subject": "Great House Farm, Llandough, Cardiff",
    "threadSlug": "great-house-farm-llandough-cardiff",
@@ -21,14 +38,15 @@
     "heneb"
    ],
    "first": "2026-09-19T22:55:27Z",
-   "last": "2026-11-02T13:00:33Z",
-   "count": 5,
+   "last": "2026-11-02T18:12:00Z",
+   "count": 6,
    "messageIds": [
     "gm-1a0bbe1ba706aa71",
     "gm-1a145570b9618f41",
     "gm-1a1563a1cfcaeb44",
     "gm-1a187d3861d452a8",
-    "gm-1a19c598a5a89f6f"
+    "gm-1a19c598a5a89f6f",
+    "gm-1a19d753c856994f"
    ]
   },
   {
@@ -47,22 +65,6 @@
     "gm-1a188a295ded9d32",
     "gm-1a18cb15f4c25045",
     "gm-1a19c584b199f286"
-   ]
-  },
-  {
-   "threadId": "gt-1a0d3d85a7ef4715",
-   "subject": "FOI \"Llandough Roman villa & medieval house finds were destroyed in a 1983 fire\"",
-   "threadSlug": "foi-llandough-roman-villa-medieval-house-finds-were-destroyed-in-a-1983-fire",
-   "institutions": [
-    "heneb"
-   ],
-   "first": "2026-09-24T15:05:15Z",
-   "last": "2026-11-02T12:59:01Z",
-   "count": 3,
-   "messageIds": [
-    "gm-1a0d3f30a932fcc1",
-    "gm-1a187d4ad88af9f7",
-    "gm-1a19c57caf4e7c8d"
    ]
   },
   {
@@ -103,13 +105,14 @@
   },
   {
    "threadId": "gt-1a19a74a82dbd593",
-   "subject": "RE: Casework archive enquiry - Tŷ Mawr (Great House Farm), Llandough-juxta-Penarth, Vale of Glamorgan (1988)",
+   "subject": "Casework archive enquiry - Tŷ Mawr (Great House Farm), Llandough-juxta-Penarth, Vale of Glamorgan (1988)",
    "threadSlug": "casework-archive-enquiry-ty-mawr-great-house-farm-llandough-juxta-penarth-vale-o",
    "institutions": [],
-   "first": "2026-11-02T10:04:17Z",
+   "first": "2026-11-02T08:00:11Z",
    "last": "2026-11-02T10:04:17Z",
-   "count": 1,
+   "count": 2,
    "messageIds": [
+    "gm-1a19b45e6cd2d5ae",
     "gm-1a19bb79394f286a"
    ]
   },
@@ -139,6 +142,30 @@
    "count": 1,
    "messageIds": [
     "gm-1a19b45f134617e7"
+   ]
+  },
+  {
+   "threadId": "gt-1a19a74a131d0597",
+   "subject": "Freedom of Information request - 1988–89 demolition notifications, Great House Farm, Llandough (Vale of Glamorgan)",
+   "threadSlug": "freedom-of-information-request-198889-demolition-notifications-great-house-farm",
+   "institutions": [],
+   "first": "2026-11-02T08:00:03Z",
+   "last": "2026-11-02T08:00:03Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a19b45c31a786d7"
+   ]
+  },
+  {
+   "threadId": "gt-1a19b3a1464e8a6b",
+   "subject": "Archive enquiry - casework file or photographs: Tŷ Mawr (Great House Farm), Llandough-juxta-Penarth, Vale of Glamorgan",
+   "threadSlug": "archive-enquiry-casework-file-or-photographs-ty-mawr-great-house-farm-llandough",
+   "institutions": [],
+   "first": "2026-11-02T07:59:54Z",
+   "last": "2026-11-02T07:59:54Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a19b45a2baf53ee"
    ]
   },
   {
