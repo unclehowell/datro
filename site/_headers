@@ -1,0 +1,13 @@
+# Cache rules for fb.bucklerfamily.estate — Sion's Tab agent
+/*.js
+  Cache-Control: no-cache
+/*.css
+  Cache-Control: no-cache
+/*.html
+  Cache-Control: no-cache
+/
+  Cache-Control: no-cache
+/p/*
+  Cache-Control: no-cache
+/posts.json
+  Cache-Control: public, max-age=300
