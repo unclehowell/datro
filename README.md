@@ -1,46 +1,71 @@
-New function for netlify branch.  
+# oldbill.bucklerfamily.estate — Who gained, who lost (draft damages schedule) and the Tŷ Mawr Ticket Desk
 
-Until Sep 2021 DATRO's primary domain was datro.xyz and the secondary was datro.world  
-As of Sep 2021 we're attempting to put everything on one domain.  
+v3.0.1 (24 Oct 2026): the page leads with a draft damages schedule built the way a loss analyst would build it.
 
-This is challenging because the poin of the second domain in the first place was to overcome challenges.  
-These challenges included:  
+1. **The double comb** (hero, plain SVG drawn by the page's JS from `data/damages.json`): the upper comb's teeth point up, one per
+   party that gained (height = £ mid, whiskers = low/high); the lower comb's teeth point down, one per head of the family's loss.
+   Coloured connectors run from each loss to the gainer(s) it is claimed from (stroke width = share). Hatched teeth are estimates;
+   pale-red loss teeth carry "causation to be proven". Tap a tooth: method, inputs, facts with source links, low/mid/high.
+   Totals sit at each comb's end. Gains (disgorgement) and losses (compensation) are alternatives and are never added.
+2. **Two scenarios**: the analyst build-up (low/mid/high) beside the Restitutionary Brief v3 mid-case (£195.5m, Section IV.A
+   heads and one-line bases only), with a written reconciliation and a per-head gap table.
+3. **The negotiation schedule**: one row per (party, loss head) from each head's allocation, grouped by party, with the party's
+   compensation share, its gain, the higher of the two as the opening figure, the legal basis and evidence links. The legal test
+   for setting the 1987 judgment aside is quoted verbatim inside `<section data-verbatim="legal-test">` (the one place the gate
+   stands aside).
+4. **The ticket desk** (below): chalkboards, tickets, the "What if the case reopens?" switch and the double-entry ledger, whose
+   lines are now the ten analyst loss heads at mid (re-tallied; books balance both ways).
 
-a) github pages only allows one url to point to one branch - and we wanted to spread content across 2 branches to keep the branch sizes from being too excessive  
-b) netlify enabled us to overcome the github limitation, having a second domain point to a 2nd branch, but there was billing involved and we want to keep DATRO overhead free  
-c) we managed to stay under netlify's billing threshold by only publishing content to the corresponding branch, which didn't update so frequently  
-   the websites and source code for the software updates frequently, but archived documents and large media files didn't update so often and so they were the types of content on the 2nd branch  
-d) netlify also overcame the issue of broken ssl certificates which happened when frame-forwarding was tried. 
+One disclaimer line at the top only: "Draft for legal review — a starting schedule for negotiation, not an assessment by a court."
 
+Static site: `public/` (Cloudflare Pages project `bucklerfamily-oldbill`, datro branch `oldbill`). Built by `tools/build.py`
+(tickets, ledger, gate) which imports `tools/damages.py` (gains, losses, allocations, brief scenario, reconciliation; every
+figure computed from stated inputs and index values) plus `tools/template.html`. `tools/export.py` writes the lawyers' copy
+(Markdown + PDF) from the same data.
 
-Before explaining the plan moving forward it's important to lay out the objectives here e.g. the goal:  
+## Rebuild
+    python3 tools/build.py      # public/index.html + data/tickets.json, ledger.json, damages.json
+    python3 tools/export.py     # damages-schedule-draft.md / .pdf (offline copy; not published)
+The build fails on a banned word, a hedge phrase or a withheld name in public text (outside the legal-test section), if debits and
+credits do not balance in either state, if the ledger does not equal the losses comb mid total, if anything priced fails to move
+across when the case reopens, if a low/mid/high is out of order, or if a loss head's allocation does not total 100%.
 
-1. everything on 1 domain name moving forward  
-2. 2 branches containing all the website content remain in the github monorepo ('gh-pages' and 'netlify'),  
-   and the content will need to remain accessible from two different urls, but this time these 2 urls will need to be on the same domain/tld (datro.xyz)  
+## data/damages.json (schema oldbill-damages/1)
+- `parties{key}`: `name, short, colour, gainer` (true = a tooth on the upper comb), `route` (legal route), `compensation{low,mid,high}`
+  (sum of its allocated shares), `disgorgement{low,mid,high}` (its gain tooth, or null).
+- `gains[]`: `id` (G-…), `party, party_name, label, what, v{low,mid,high}, estimate, method, inputs[[label,value]], facts[[text,source]], sources[]`.
+- `losses[]`: `id` (L-…), `label, head, v{low,mid,high}, estimate, causation` (null or "to be proven"), `method, inputs, facts,
+  alloc{party: % }` (totals 100), `maps_to[]` (the gainers among alloc = the connectors), `legal, sources[]`.
+- `rows[]`: the negotiation schedule, one per (party, loss head): `party, party_name, head, what, share, v{}, legal, route, causation, evidence[]`.
+- `totals.gains / totals.losses`: `{low, mid, high}`. `brief.heads[]`: `head, amount, basis, analyst[], analyst_mid, gap_note`; `brief.range`.
+- `reconciliation[]` (paragraphs), `indices` (CDKO, CPI, Vale HPI values used), `bank_mean`, `interest_rate`, `sources{}`.
 
-(easily solved by introducing the subdomain world.datro.xyz to replace the function of datro.world,   
- and introducing sub-subdomains e.g. library.world.datro.xyz to replace existing subdomains e.g. library.datro.world (also gui.world.datro.xyz replaces gui.datro.world etc))  
+## data/tickets.json (schema oldbill-tickets/1)
+- `rubric.bands[]`: `key, name, lo, hi, colour, example` — fixed point bands from 1 to 1,000,000.
+- `rubric.multipliers[]`: `key, x, why`; `cap` 1,000,000.
+- `tickets[]`: `id` (T-000 original ticket, W-nn orders against the family, R-nn Team Institutions), `team`, `date`, `date_label`, `desk`,
+  `desk_name`, `band`, `issued_to` (institution or role), `what`, `detail`, `base`, `multipliers[]`, `points`, `cancelled`,
+  `reversible` + `reissue_to`, `sources[]`; the original ticket also has `fine` and `calibration`.
+- `summary`: board totals `now` and `reopened`, books totals, counts.
 
- - The gui on the branch 1 (gh-pages), on the url datro.xyz/static/gui, already (serverlessly) serves 2 types of content depending on the url in the address bar  
- - a simple bit of javascript basically looks at the address in the address bar to determine the appropriate content to serve during pageload/ refresh   
- - the reason for this was so that demo data is served if the HotspotBnB GUI is accessed online (via the url datro.xyz/static/gui or gui.datro.world / soon to be gui.world.datro.xyz)  
- - but when the GUI is running on the raspberry pi locally, with the hostname .local in play, the GUI will serve the actual screens containing installed webapps, instead of demo data  
- - this allowed us to focus on 1 GUI instead of trying to maintain 2. Now we're basically going to have to make the GUI serve a 3rd load of content,   
- - performing the function of what the netlify GUI/wrapper did, when it was accessed from datro.world  
- - first it might be worth re-iterrating what the datro.world/GUI/wrapper did. It was a sister/custom version of hotspotBnB GUI that instead of displaying apps or demo's of apps, it showcased DATRO's assets.   
- - What was easy with this previous solution, which is about to become more complicated, was the navigation icons and titles, which were hardcoded, but will now need to become dynamic depending on the url in the address bar.  
- - Previously the two GUI's (datro.world's on the netlify branch and HotspotBnB's on the gh-pages) had hardcoded titles and icons and only the iframe content was dynamic. Now it all needs to be dynamic (and simultaniously serverless too).   
- - There's definately a growing and overdue need to migrate to ReactJS and make this all a progressive webapp, but this will need to wait for StartUp/Series A funding and a bigger army of code monkeys.  
+## data/ledger.json (schema oldbill-ledger/1)
+- `entries[]`: `id, group` (`heads` = the ten analyst loss heads at mid | `nil` = orders with no £ yet), `head, account, amount`
+  (GBP, mid), `low, high, estimate, causation, nil, basis` (the method), `sources[]`, `alloc{}`, `status` (`borne` | `contingent`),
+  `borne_by`, `liable_now`, `liable_if_reopened` (the parties and shares), `postings[]` (Dr `Borne:Team-Williams:<head>`,
+  Cr `Caused:<head>`), `reopen_postings[]` (Dr `Liable:Team-Regime:<party>` by the head's allocation, Cr `Borne:Team-Williams:<head>`).
+- `parties[]`: `party, account, route`. `summary`: `books` (Dr, Cr per state), `heads_total`, `priced_total`.
 
-In order to go a step further on what was, we plan to do the following (but this plan may evolve) since it's not tried and tested yet:  
+## Adding or changing a figure
+Change the inputs in `tools/damages.py` (never a total by hand), rebuild, export, publish. A new gainer needs a record source;
+gains are for institutions and companies only. Tickets: append to `R` or `ORDERS` in `tools/build.py`.
 
-1. Totally forget the second domain, that ideas the past. our goal is everything on 1 domain. Obviously.  
-2. Start simple. Get world.datro.xyz to show the 2nd ("netlify) branch and wrapper (sister version of the HotspotBnB GUI)
+© the Williams-Buckler family of Tŷ Mawr. Licence: https://bucklerfamily.estate/licence/
 
-#  Easy enough. Just updated the CNAME in the netlify branch to world.datro.xyz. Removed datro.world from netlify itself. Added a CNAME in cloudflare containing the subdomain world and target: datro.netlify.app
-#  Now when you enter world.datro.xyz you end up seeing datro.netlify.app (the netlify branch) and a valid security certificate from cloudflare (netlify does however complain since it wants to be in charge of ssl) 
-
-3. Netlify was good for DNS management, because it would allow multiple subdomains. But since we're now using subsub domains and cloudflare, we need to see if it's possible to point multiple urls to the datro.netlify.app. 
-3. Next it's looking like we need the content of the netlify branch to look at the url in the address bar and respond accordingy. 
-3. Next it's looking like we need the HotspotBnB GUI on the gh-pages branch (url: datro.xyz/static/gui) to check for a 3rd type of domain. 
+## Ledger (Beancount, 23 Oct 2026)
+The ledger section renders from `ledger/main.beancount`: plain-text Beancount, the same engine and conventions as
+accounts.bucklerfamily.estate (GBP; renamed roots `Borne` / `Caused` / `Liable` so it never mixes with cash; one transaction per
+loss head with its basis, low/high, allocation and sources as metadata; reopen postings as separate `#reopen` transactions
+linked `^L-xxx`). `tools/build.py` loads it with Beancount and takes the books totals from bean-query; a copy is served at
+`/ledger/main.beancount`. After a figure change in `tools/damages.py`:
+`python3 tools/to_beancount.py && bean-check ledger/main.beancount && python3 tools/build.py` (requirements.txt).
+The build stops if the ledger's heads no longer match the damages schedule. Sync with accounts.: see SYNC.md on the accounts branch.

@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Old Bill · Who Gained, Who Lost</title>
+<meta name="description" content="A draft damages schedule for Great House Farm (Tŷ Mawr): a double comb of who gained and what the family lost, with a negotiation table for lawyers.">
+<meta property="og:title" content="Old Bill · Who Gained, Who Lost">
+<meta property="og:description" content="Gains above, losses below, linked: the Great House Farm draft damages schedule.">
+<meta name="theme-color" content="#1b1730">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1b1730;--ink:#f6f1e7;--muted:#b9b2d6;--wood:#8a5a2b;--wood2:#5e3a17;--boardW:#1f4a37;--boardR:#2b2f45;--chalk:#fbfaf5;--y:#ffe066;--p:#ff8fab;--g:#7CFFB2;--b:#9ad1ff;--o:#ffb347;--v:#c3a6ff;--r:#ff6b6b}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Patrick Hand',ui-rounded,system-ui,sans-serif;font-size:17px;line-height:1.35}
+body{background-image:radial-gradient(circle at 20% 0%,#2a2350 0,transparent 55%),radial-gradient(circle at 90% 30%,#2b1d3d 0,transparent 50%)}
+a{color:var(--y)}
+.wrap{max-width:980px;margin:0 auto;padding:12px 10px 28px}
+header{display:flex;align-items:center;gap:10px;margin:2px 2px 10px}
+.badge{flex:0 0 52px;height:52px;border-radius:50%;background:conic-gradient(from 0deg,#ffe066,#ff8fab,#9ad1ff,#7CFFB2,#ffe066);display:grid;place-items:center;box-shadow:0 0 0 3px #1b1730,0 0 0 5px #ffe066}
+.badge span{width:40px;height:40px;border-radius:50%;background:#1b1730;display:grid;place-items:center;font:700 10px/1 'Cabin Sketch',cursive;text-align:center;color:var(--y);letter-spacing:.5px}
+h1{font:700 26px/1.05 'Cabin Sketch',cursive;margin:0;color:#fff}
+.sub{margin:2px 0 0;color:var(--muted);font-size:15px}
+.sub.intro{margin:6px 2px 10px}
+.boards{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:relative}
+.board{position:relative;border-radius:12px;padding:10px 9px 11px;border:7px solid var(--wood);box-shadow:inset 0 0 0 2px var(--wood2),0 6px 0 #0006;overflow:hidden;min-height:168px}
+.board:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,#ffffff12,transparent 60%),repeating-linear-gradient(115deg,#ffffff05 0 2px,transparent 2px 9px);pointer-events:none}
+.board.w{background:var(--boardW)}.board.r{background:var(--boardR)}
+.board h2{font:700 19px/1 'Cabin Sketch',cursive;margin:0 0 6px;color:var(--chalk);text-shadow:0 0 1px #fff8}
+.board.w h2 small{color:var(--g)}.board.r h2 small{color:var(--p)}
+.board h2 small{display:block;font:15px/1.1 'Patrick Hand';margin-top:3px}
+.big{font:700 31px/1 'Cabin Sketch',cursive;color:var(--y);text-shadow:0 0 2px #fff6;white-space:nowrap}
+.unit{font-size:14px;color:var(--muted)}
+.line{margin-top:6px;font-size:16px;color:var(--chalk);white-space:nowrap}
+.line b{font:700 21px 'Cabin Sketch',cursive;color:#fff}
+.board .ledge{position:absolute;left:8px;right:8px;bottom:3px;height:4px;border-radius:2px;background:#ffffff22}
+.board .chalkbit{position:absolute;right:12px;bottom:6px;width:18px;height:6px;border-radius:3px;background:#fff;opacity:.85}
+.board.r .chalkbit{background:var(--p)}
+.toggle{margin:12px 0 4px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.sw{position:relative;display:inline-flex;align-items:center;gap:10px;background:#2c2550;border:2px dashed #ffe06688;border-radius:999px;padding:7px 14px 7px 8px;cursor:pointer;font-size:18px;color:#fff;user-select:none}
+.sw input{position:absolute;opacity:0;pointer-events:none}
+.knob{width:48px;height:26px;border-radius:999px;background:#555;position:relative;transition:background .3s}
+.knob:after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .3s}
+.sw.on .knob{background:var(--g)}.sw.on .knob:after{left:25px}
+.flipnote{text-align:center;color:var(--muted);font-size:15px;min-height:20px}
+.books{display:inline-flex;gap:6px;align-items:center;background:#7CFFB222;color:var(--g);border-radius:999px;padding:3px 10px;font-size:14px}
+.books.bad{background:#ff6b6b22;color:var(--r)}
+.chip{position:fixed;z-index:50;font:700 20px 'Cabin Sketch';pointer-events:none;transition:transform .9s cubic-bezier(.3,.7,.3,1),opacity .9s}
+.orig{margin:14px 0 10px;background:#fff7c2;color:#2b2416;border-radius:6px;padding:12px 12px 10px;position:relative;box-shadow:0 5px 0 #0005;cursor:pointer}
+.orig:before,.orig:after{content:"";position:absolute;left:0;right:0;height:8px;background:radial-gradient(circle at 6px 0,transparent 5px,#fff7c2 5.5px) repeat-x;background-size:12px 8px}
+.orig:before{top:-7px;transform:rotate(180deg)}.orig:after{bottom:-7px}
+.orig .tag{font:700 13px 'Cabin Sketch';letter-spacing:1px;color:#b23a48}
+.orig h3{margin:2px 0 4px;font:700 20px/1.1 'Cabin Sketch'}
+.orig .row{display:flex;justify-content:space-between;gap:8px;align-items:flex-end;margin-top:6px}
+.orig .pts{font:700 26px 'Cabin Sketch';color:#b23a48;white-space:nowrap}
+.orig .fine{font-size:15px}
+.tabs{display:flex;gap:6px;margin:16px 0 8px;position:sticky;top:0;z-index:5;background:var(--bg);padding:6px 0}
+.tabs button{flex:1;font:inherit;font-size:17px;padding:8px 4px;border-radius:10px;border:2px solid #ffffff22;background:#2c2550;color:#fff;cursor:pointer}
+.tabs button.on{background:var(--y);color:#1b1730;border-color:var(--y)}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 8px}
+.filters button{font:inherit;font-size:15px;padding:4px 10px;border-radius:999px;border:1px solid #ffffff33;background:transparent;color:var(--ink);cursor:pointer}
+.filters button.on{background:#fff;color:#1b1730}
+.tk{display:grid;grid-template-columns:6px 1fr auto;gap:0 10px;background:#fffdf6;color:#221d33;border-radius:10px;margin:7px 0;overflow:hidden;cursor:pointer;box-shadow:0 3px 0 #0004;position:relative}
+.tk .stripe{grid-column:1;grid-row:1/4}
+.tk .meta,.tk .to,.tk .what{grid-column:2}.tk .meta{padding-top:7px;font-size:13px;color:#6b6585}
+.tk .to{font-weight:700;font-size:16px;line-height:1.15}
+.tk .what{font-size:15px;padding-bottom:8px;color:#3a3450}
+.tk .pt{grid-column:3;grid-row:1/4;align-self:center;padding:0 10px 0 0;text-align:right;font:700 18px 'Cabin Sketch';white-space:nowrap}
+.tk .pt small{display:block;font:12px 'Patrick Hand';color:#6b6585}
+.tk.williams{background:#effff6}
+.tk.quashed{opacity:.75}
+.tk .stamp{position:absolute;right:118px;top:6px;transform:rotate(-8deg);border:2px solid #b23a48;color:#b23a48;font:700 12px 'Cabin Sketch';padding:1px 6px;border-radius:4px;background:#fffdf6cc}
+.tk.cancel .what{text-decoration:line-through}
+.sum{color:var(--muted);font-size:15px;margin:4px 0}
+.le .basis{font-size:13.5px;color:#3a3450;margin-top:4px;line-height:1.3}
+.le .srcl{font-size:12px;color:#6b6585;margin-top:2px}
+.le .inn{font-size:12px;color:#0b5a2e;background:#c8ffe066;border-radius:6px;padding:2px 6px;margin-top:5px}
+h3.lg{font:700 19px 'Cabin Sketch';margin:14px 0 2px;color:#ffe066}
+.rng{text-align:center;font-size:15px;color:#fffdf6;margin:6px 0 10px}
+.le{background:#fffdf6;color:#221d33;border-radius:10px;margin:8px 0;padding:9px 11px;cursor:pointer;box-shadow:0 3px 0 #0004}
+.le .h{display:flex;justify-content:space-between;gap:8px;font-weight:700;line-height:1.2}
+.le .amt{white-space:nowrap;font:700 18px 'Cabin Sketch'}
+.est{display:inline-block;font-size:12px;background:#ffe06655;border-radius:4px;padding:0 5px;margin-left:4px;color:#5a4b00;font-weight:400}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px;font-size:13px}
+.cols div{background:#f1edff;border-radius:6px;padding:4px 6px}
+.cols div b{display:block;font-size:11px;color:#6b6585;font-weight:400}
+.cols .rg{background:#ffe3ea}
+.pill{display:inline-block;margin-top:6px;font-size:13px;border-radius:999px;padding:2px 9px}
+.pill.borne{background:#e3e0ef;color:#3a3450}.pill.contingent{background:#ffe9b8;color:#6a4a00}.pill.shifted{background:#c8ffe0;color:#0b5a2e}
+.tot{display:flex;justify-content:space-between;font:700 18px 'Cabin Sketch';padding:8px 4px;border-top:2px dashed #ffffff44;margin-top:6px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{padding:4px 6px;border-bottom:1px solid #ffffff1a;text-align:left;vertical-align:top}
+td.n,th.n{text-align:right;white-space:nowrap}
+details{background:#ffffff0d;border-radius:10px;padding:6px 10px;margin:10px 0}
+summary{cursor:pointer;font-size:16px}
+.band{display:flex;gap:10px;align-items:center;margin:6px 0;background:#ffffff0d;border-radius:10px;padding:7px 9px}
+.band .sw2{flex:0 0 14px;height:42px;border-radius:5px}
+.band b{display:block}
+.band .rng{font:700 15px 'Cabin Sketch';color:var(--y)}
+.modal{position:fixed;inset:0;background:#0009;display:none;align-items:flex-end;justify-content:center;z-index:40}
+.modal.on{display:flex}
+.sheet{background:#fffdf6;color:#221d33;width:100%;max-width:640px;max-height:86vh;overflow:auto;border-radius:16px 16px 0 0;padding:14px 16px 22px}
+.sheet h3{font:700 21px/1.15 'Cabin Sketch';margin:4px 0 6px}
+.sheet .x{float:right;font:inherit;font-size:22px;background:none;border:0;cursor:pointer}
+.sheet .kv{font-size:15px;margin:4px 0}
+.sheet .kv b{color:#6b6585;font-weight:400}
+.sheet table td,.sheet table th{border-bottom:1px solid #0001}
+.sheet a{color:#5b3bd6}
+.hide{display:none}
+footer{margin-top:26px;text-align:center;color:var(--muted);font-size:14px}
+
+.draft{margin:2px 0 10px;padding:6px 10px;border-left:4px solid var(--y);background:#ffe0661a;color:#fff;font-size:15px}
+.comb-wrap{background:#14112a;border:1px solid #ffffff1f;border-radius:14px;padding:8px 4px 6px;position:relative}
+.comb-wrap svg{display:block;width:100%;height:auto;overflow:visible}
+.comb-wrap .tooth{cursor:pointer}
+.comb-wrap .tooth:focus{outline:none}
+.comb-wrap .tooth:focus rect.body,.comb-wrap .tooth.sel rect.body{stroke:#fff;stroke-width:2}
+.comb-wrap path.cn{transition:opacity .25s}
+.comb-wrap.focus path.cn{opacity:.07}.comb-wrap.focus path.cn.on{opacity:.95}
+.legend{display:flex;flex-wrap:wrap;gap:4px 10px;margin:8px 4px 0;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.measures{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.measure{border-radius:12px;padding:8px 10px;background:#ffffff0d;border:1px solid #ffffff1f}
+.measure .k{font-size:13px;color:var(--muted)}.measure .v{font:700 26px/1.05 'Cabin Sketch';color:var(--y)}.measure .r{font-size:13px;color:var(--muted)}
+.measure.up .v{color:var(--g)}.measure.down .v{color:#ff9b9b}
+.alt{font-size:15px;color:var(--chalk);margin:2px 2px 4px}
+h2.sec{font:700 22px/1.1 'Cabin Sketch';margin:22px 0 6px;color:#fff}
+.scen{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.scard{border-radius:12px;padding:9px 10px;background:#ffffff0d;border:1px solid #ffffff1f}
+.scard h3{margin:0 0 2px;font:700 17px/1.1 'Cabin Sketch'}
+.scard .v{font:700 24px/1.1 'Cabin Sketch';color:var(--y)}.scard .r{font-size:13px;color:var(--muted)}
+.scard ul{margin:6px 0 0;padding:0;list-style:none;font-size:14px}.scard li{display:flex;justify-content:space-between;gap:6px;border-top:1px solid #ffffff14;padding:3px 0}
+.scard li span:last-child{white-space:nowrap;color:#fff}
+.recon p{margin:6px 0;font-size:15px}
+table.gap td,table.gap th{font-size:14px}
+.ptab{width:100%;border-collapse:collapse;font-size:14px}
+.ptab th{font-weight:400;color:var(--muted);text-align:left;padding:5px 6px;border-bottom:1px solid #ffffff2a}
+.ptab td{padding:6px;border-bottom:1px solid #ffffff14;vertical-align:top}
+.ptab tr.party td{background:#ffffff10;font-size:15px;color:#fff;border-bottom:0;padding-top:9px}
+.ptab tr.party .sw3{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+.ptab .n{text-align:right;white-space:nowrap}
+.ptab .lb{color:#d9d3f2;font-size:13px}
+.ptab .ev a{font-size:13px}
+.ptab .elect{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.tbp{color:var(--y);font-size:12px;border:1px solid #ffe06666;border-radius:6px;padding:0 4px;margin-left:4px;white-space:nowrap}
+section[data-verbatim]{background:#ffffff0a;border-left:3px solid #c3a6ff;border-radius:8px;padding:8px 12px;margin:12px 0;font-size:14px;color:#e9e3ff}
+section[data-verbatim] blockquote{margin:6px 0;padding:0 0 0 8px;border-left:2px solid #ffffff33}
+.desk{margin-top:26px;border-top:2px dashed #ffffff22;padding-top:12px}
+@media(max-width:640px){.scen{grid-template-columns:1fr 1fr}.scard ul{font-size:12.5px}
+ .ptab thead{display:none}.ptab,.ptab tbody,.ptab tr,.ptab td{display:block;width:100%}
+ .ptab tr.row{border-bottom:1px solid #ffffff1f;padding:6px 0}.ptab tr.row td{border:0;padding:2px 6px}
+ .ptab tr.row td.who{display:none}.ptab td.n{text-align:left}.ptab td.n:before{content:'Low / mid / high: ';color:var(--muted)}}
+@media(min-width:720px){.big{font-size:46px}.board{padding:14px 16px;min-height:200px}.board h2{font-size:26px}h1{font-size:34px}.modal{align-items:center}.sheet{border-radius:16px}}
+@media(max-width:360px){.big{font-size:26px}.line{font-size:14px}}
+@media (prefers-reduced-motion: reduce){.chip{display:none}}
+.scard.old{opacity:.72;border-style:dashed}.scard.old h3{color:var(--muted)}
+</style>
+<!-- Header standard v2 (shared 3-bar header: blank bar, WALES | PATAGONIA | AI, ‹ Old Bill › with menu); sync, end of <head> -->
+<script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.1.2"></script>
+</head>
+<body>
+<div class="wrap">
+<p class="sub intro">A draft damages schedule for Great House Farm (Tŷ Mawr): what each party gained, what the family lost, and who to claim from.</p>
+<p class="draft">Draft for legal review — a starting schedule for negotiation, not an assessment by a court.</p>
+
+<section id="combs" aria-label="The double comb">
+ <div class="comb-wrap" id="combwrap"><svg id="comb" role="img" aria-label="Upper comb: gains by party. Lower comb: the family's losses by head. Coloured lines link each loss to the parties that gained."></svg></div>
+ <div class="legend" id="legend"></div>
+ <div class="measures">
+  <div class="measure up"><div class="k">▲ Gains (disgorgement)</div><div class="v" id="mG">£0</div><div class="r" id="mGr"></div></div>
+  <div class="measure down"><div class="k">▼ Losses (compensation)</div><div class="v" id="mL">£0</div><div class="r" id="mLr"></div></div>
+ </div>
+ <p class="alt">Two measures, never added together: the family elects the higher one against each party. Tap a tooth for its working.</p>
+</section>
+
+<h2 class="sec">The working figure</h2>
+<div class="scen">
+ <div class="scard"><h3>Analyst build-up · the working figure</h3><div class="v" id="sA">£0</div><div class="r" id="sAr"></div><ul id="sAl"></ul></div>
+ <div class="scard old"><h3>Brief v3 (Feb 2026, superseded)</h3><div class="v" id="sB">£0</div><div class="r" id="sBr"></div><ul id="sBl"></ul></div>
+</div>
+<details class="recon"><summary>Why the superseded brief was higher</summary><div id="recon"></div><table class="gap" id="gap"></table></details>
+
+<h2 class="sec">The negotiation schedule</h2>
+<p class="sum">Who to claim from, for what, how much, and on what basis. Each party’s rows add to its compensation share; its gain sits beside it, and the higher of the two is the opening figure.</p>
+<table class="ptab" id="ptab"></table>
+<section data-verbatim="legal-test">
+ <b>The gateway: setting aside the 1987 judgment</b>
+ <blockquote>“In my view, it ought now to be recognised that where it can be shown that a judgment has been obtained by fraud, and where no allegation of fraud had been raised at the trial which led to that judgment, a requirement of reasonable diligence should not be imposed on the party seeking to set aside the judgment.” — Takhar v Gracefield Developments Ltd [2019] UKSC 13, para 54 (Lord Kerr)</blockquote>
+ <blockquote>“The principles are, briefly: first, there has to be a ‘conscious and deliberate dishonesty’ in relation to the relevant evidence given, or action taken, statement made or matter concealed, which is relevant to the judgment now sought to be impugned. Secondly, the relevant evidence, action, statement or concealment (performed with conscious and deliberate dishonesty) must be ‘material’. ‘Material’ means that the fresh evidence that is adduced after the first judgment has been given is such that it demonstrates that the previous relevant evidence, action, statement or concealment was an operative cause of the court’s decision to give judgment in the way it did. Put another way, it must be shown that the fresh evidence would have entirely changed the way in which the first court approached and came to its decision. Thus the relevant conscious and deliberate dishonesty must be causative of the impugned judgment being obtained in the terms it was. Thirdly, the question of materiality of the fresh evidence is to be assessed by reference to its impact on the evidence supporting the original decision, not by reference to its impact on what decision might be made if the claim were to be retried on honest evidence.” — RBS v Highland Financial Partners [2013] EWCA Civ 328, para 106 (Aikens LJ), adopted in Takhar, para 56</blockquote>
+ <p>Time: Limitation Act 1980 s.32(1)(b) — where “any fact relevant to the plaintiff’s right of action has been deliberately concealed from him by the defendant”, the period runs from discovery. Human Rights Act 1998 actions (A1P1, Article 8) reach only acts after 2 October 2000.</p>
+</section>
+
+<div class="desk"><h2 class="sec" style="margin-top:0">The ticket desk</h2>
+<p class="sum">The same story as a game: every wrong on the record gets a ticket, every loss a double-entry ledger line at the analyst’s mid figure. Flip the switch to post each loss to the parties above.</p></div>
+
+
+<section class="boards" aria-label="Scoreboards">
+ <div class="board w" id="bw"><h2>Team Williams<small>tickets on them · cost carried</small></h2>
+  <div class="big" id="wPts">0</div><div class="unit">points</div>
+  <div class="line">🎟 <b id="wN">0</b> <span id="wNw">tickets</span></div>
+  <div class="line">£ <b id="wG">0</b> <span class="unit">borne</span></div>
+  <div class="ledge"></div><div class="chalkbit"></div></div>
+ <div class="board r" id="br"><h2>Team Institutions<small>tickets on them · cost carried</small></h2>
+  <div class="big" id="rPts">0</div><div class="unit">points</div>
+  <div class="line">🎟 <b id="rN">0</b> <span id="rNw">tickets</span></div>
+  <div class="line">£ <b id="rG">0</b> <span class="unit">borne</span></div>
+  <div class="ledge"></div><div class="chalkbit"></div></div>
+</section>
+
+<div class="toggle">
+ <label class="sw" id="sw"><input type="checkbox" id="reopen"><span class="knob"></span><span>What if the case reopens?</span></label>
+ <span class="books" id="books">Books balance ✓</span>
+</div>
+<div class="flipnote" id="flipnote"></div>
+
+<div class="orig" id="orig" role="button" tabindex="0"></div>
+
+<nav class="tabs" role="tablist">
+ <button class="on" data-tab="tickets">Tickets</button><button data-tab="ledger">Ledger</button><button data-tab="rubric">Rubric</button>
+</nav>
+
+<section id="tab-tickets">
+ <div class="filters" id="filters"><button class="on" data-f="all">All</button><button data-f="regime">Team Institutions</button><button data-f="williams">Team Williams</button></div>
+ <div id="tlist"></div>
+</section>
+
+<section id="tab-ledger" class="hide">
+ <p class="sum">The ten loss heads of the analyst build-up, at mid. Every cost is two entries: debit the side that carries it, credit the event that caused it. Flip the switch and each one posts across to the parties it is claimed from.</p>
+ <div id="llist"></div>
+ <div class="tot"><span>Carried by Team Williams</span><span id="totW">£0</span></div>
+ <div class="tot"><span>Carried by Team Institutions</span><span id="totR">£0</span></div>
+ <p class="rng" id="rng"></p>
+ <details><summary>Who picks up the bill if the case reopens</summary><div id="appo"></div></details>
+ <details><summary>The double entries (debits and credits)</summary><div id="journal"></div></details>
+</section>
+
+<section id="tab-rubric" class="hide">
+ <p class="sum">Fixed bands from 1 to 1,000,000 points. A ticket takes its band score, then the multipliers, capped at 1,000,000. The original ticket is the yardstick.</p>
+ <div id="bands"></div>
+ <h3 style="font:700 20px 'Cabin Sketch';margin:14px 0 4px">Multipliers</h3><div id="mults"></div>
+ <h3 style="font:700 20px 'Cabin Sketch';margin:14px 0 4px">How the switch works</h3>
+ <p class="sum">Orders against the family that rest on the title question are quashed and their points re-issued to the party that obtained them. The original ticket stays: it was admitted. Contingent costs post across to Team Institutions, each head to the parties it is claimed from, in the shares of the negotiation schedule. Lines with no £ on the record yet stay where they are until a figure is found.</p>
+ <p class="sum">Sources: <a href="https://greathousefarmwiki.wordpress.com/start-here/">the Legal Wiki</a> · data: <a href="data/tickets.json">tickets.json</a> · <a href="data/ledger.json">ledger.json</a></p>
+</section>
+
+<footer>© the Williams-Buckler family of Tŷ Mawr · <a href="https://bucklerfamily.estate/licence/">Licence</a></footer>
+</div>
+
+<div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
+
+<script>
+const T=/*__TICKETS__*/null, L=/*__LEDGER__*/null, D=/*__DAMAGES__*/null;
+const $=s=>document.querySelector(s), fmt=n=>Math.round(n).toLocaleString('en-GB'), gbp=n=>'£'+Number(n).toLocaleString('en-GB',{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2});
+const compact=(n,money)=>{const a=Math.abs(n);if(a>=1e6)return (n/1e6).toFixed(a>=1e7?1:2).replace(/\.?0+$/,'')+'m';if(a>=1e4&&money)return Math.round(n/1e3)+'k';return fmt(n)};
+const bandOf=k=>T.rubric.bands.find(b=>b.key===k);
+const emo={paper:'📎',silence:'⏰',fair:'⚖️',over:'🚧',court:'🏛️',orders:'📜',property:'🏚️',harm:'🩹',home:'🏠'};
+let reopen=false, filt='all', shown={wPts:0,rPts:0,wN:0,rN:0,wG:0,rG:0};
+function tally(){const s=reopen?T.summary.reopened:T.summary.now;return{wPts:s.williams.points,rPts:s.regime.points,wN:s.williams.tickets,rN:s.regime.tickets,wG:s.williams.gbp,rG:s.regime.gbp}}
+function paint(animate){const t=tally(),st=performance.now(),d=animate?1100:0,from={...shown};
+ const step=now=>{const k=d?Math.min(1,(now-st)/d):1,e=1-Math.pow(1-k,3);
+  for(const id in t){const v=from[id]+(t[id]-from[id])*e;shown[id]=v;const el=document.getElementById(id);
+   el.textContent=id.endsWith('G')?compact(v,true):id.endsWith('N')?fmt(v):compact(v);el.title=id.endsWith('G')?gbp(t[id]):fmt(t[id])}
+  if(k<1)requestAnimationFrame(step)};$('#wNw').textContent=t.wN===1?'ticket':'tickets';$('#rNw').textContent=t.rN===1?'ticket':'tickets';requestAnimationFrame(step);
+ const b=reopen?L.summary.books.reopened:L.summary.books.now;const ok=Math.abs(b[0]-b[1])<0.005;
+ $('#books').className='books'+(ok?'':' bad');$('#books').textContent=ok?'Books balance ✓ '+gbp(b[0])+' Dr = Cr':'Books do not balance';
+ const q=T.tickets.filter(x=>x.reversible).length, moved=L.entries.filter(e=>e.reopen_postings.length).reduce((a,e)=>a+e.amount,0);
+ $('#flipnote').textContent=reopen?`${q} orders quashed and re-issued · ${gbp(moved)} posted across to Team Institutions`:'Flip it to see the cost move.';}
+function fly(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;const a=$('#bw').getBoundingClientRect(),b=$('#br').getBoundingClientRect();
+ const [src,dst]=reopen?[a,b]:[b,a];for(let i=0;i<9;i++){const c=document.createElement('div');c.className='chip';c.textContent=i%3?'£':'🎟';c.style.color=['#ffe066','#7CFFB2','#ff8fab'][i%3];
+  c.style.left=(src.left+src.width*(.25+.5*Math.random()))+'px';c.style.top=(src.top+src.height*(.3+.4*Math.random()))+'px';document.body.appendChild(c);
+  setTimeout(()=>{c.style.transform=`translate(${dst.left-src.left}px,${(Math.random()-.5)*60}px) rotate(${(Math.random()-.5)*90}deg)`;c.style.opacity='0'},30+i*60);setTimeout(()=>c.remove(),1400)}}
+function srcLinks(s){return (s||[]).map(x=>x.url?`<a href="${x.url}" target="_blank" rel="noopener">${x.title}</a>`:`<span>${x.title}</span>`).join('<br>')}
+function original(){const a=T.tickets.find(x=>x.original);$('#orig').innerHTML=`<div class="tag">THE ORIGINAL TICKET · THE YARDSTICK</div><h3>${a.issued_to.replace(' (Team Williams)','')}</h3><div>${a.what}</div>
+ <div class="row"><div class="fine"><b>Fine / fee:</b> No record found yet.<br><span style="color:#6b5f3d">${a.date_label} · tap for the record</span></div><div class="pts">${fmt(a.points)}<div style="font:13px 'Patrick Hand';text-align:right">points</div></div></div>`;
+ $('#orig').onclick=()=>openTicket(a);$('#orig').onkeydown=e=>{if(e.key==='Enter')openTicket(a)}}
+function ticketsList(){const box=$('#tlist');const list=T.tickets.filter(x=>!x.original&&(filt==='all'||x.team===filt)).sort((a,b)=>a.date<b.date?-1:1);
+ box.innerHTML=list.map(t=>{const bd=bandOf(t.band),q=reopen&&t.reversible;return `<div class="tk ${t.team}${q?' quashed':''}${t.cancelled?' cancel':''}" data-id="${t.id}">
+ <div class="stripe" style="background:${bd.colour}"></div><div class="meta">${emo[t.desk]||'🎟'} ${t.desk_name} · ${t.date_label}</div>
+ <div class="pt" style="color:${t.team==='regime'?'#b23a48':'#1f6b45'}">${t.cancelled?'0':compact(t.points)}<small>${t.cancelled?'cancelled':'pts'}</small></div>
+ <div class="to">${q?t.reissue_to+' <span style="font-weight:400">(re-issued)</span>':t.issued_to}</div><div class="what">${t.what}</div>${q?'<div class="stamp">QUASHED</div>':''}</div>`}).join('');
+ box.querySelectorAll('.tk').forEach(el=>el.onclick=()=>openTicket(T.tickets.find(x=>x.id===el.dataset.id)));
+ const n=T.tickets.filter(x=>x.team==='regime').length;}
+function openTicket(t){const bd=bandOf(t.band);const m=(t.multipliers||[]).map(x=>`×${x.x} ${x.why}`).join('<br>')||'none';
+ $('#sheet').innerHTML=`<button class="x" aria-label="Close">×</button><div style="font-size:14px;color:#6b6585">${emo[t.desk]||'🎟'} ${t.desk_name} · ${t.id}</div><h3>${t.issued_to}</h3>
+ <p>${t.what}</p><p style="color:#3a3450">${t.detail||''}</p>
+ ${t.fine?`<div class="kv"><b>Fine / fee:</b> ${t.fine}</div>`:''}${t.causation?`<div class="kv"><b>Causation:</b> ${t.causation}</div>`:''}${t.tooth&&D.losses.find(x=>x.id===t.tooth)?(()=>{const l=D.losses.find(x=>x.id===t.tooth);return `<div class="kv"><b>Comb tooth:</b> <a href="#" class="tooth-link" data-tooth="${l.id}">${l.label}</a> · ${gm(l.v.mid)} mid (${rng(l.v)})</div>`})():''}${t.calibration?`<div class="kv"><b>Calibration:</b> ${t.calibration}</div>`:''}
+ <div class="kv"><b>Date:</b> ${t.date_label}</div><div class="kv"><b>Band:</b> <span style="background:${bd.colour};padding:0 6px;border-radius:4px">${bd.name}</span> (${fmt(bd.lo)}–${fmt(bd.hi)})</div>
+ <div class="kv"><b>Base score:</b> ${fmt(t.base)} · <b>Multipliers:</b> ${m}</div><div class="kv"><b>Points:</b> <span style="font:700 20px 'Cabin Sketch'">${t.cancelled?'0 (cancelled)':fmt(t.points)}</span></div>
+ ${t.reversible?`<div class="kv"><b>If the case reopens:</b> quashed and re-issued to ${t.reissue_to}</div>`:''}
+ <div class="kv" style="margin-top:8px"><b>Source:</b><br>${srcLinks(t.sources)}</div>`;openModal();
+ $('#sheet').querySelectorAll('.tooth-link').forEach(a=>a.onclick=ev=>{ev.preventDefault();closeModal();setTimeout(()=>openTooth(a.dataset.tooth),60)})}
+function statusOf(e){if(e.status==='contingent'&&e.reopen_postings.length)return reopen?['shifted','Shifted']:['contingent','Contingent: shifts if the case reopens'];return['borne','Borne by family']}
+const GROUPS={heads:'The ten loss heads (analyst mid)',nil:'Orders against the family: no £ on the record yet'};
+function ledger(){const box=$('#llist');let lastG='';box.innerHTML=L.entries.map(e=>{const s=statusOf(e),moved=reopen&&e.reopen_postings.length;const gh=e.group&&e.group!==lastG?`<h3 class="lg">${GROUPS[e.group]||''}</h3>`:'';lastG=e.group;const inn=e.low!=null?`<div class="inn">Low ${gbp(e.low)} · high ${gbp(e.high)}${e.causation?' · causation '+e.causation:''}</div>`:'';return `${gh}<div class="le" data-id="${e.id}"><div class="h"><span>${e.head}</span><span class="amt">${e.nil?'£ —':gbp(e.amount)}</span></div>
+ ${e.midcase?'<span class="est">mid-case</span>':''}${e.estimate?'<span class="est">estimate</span>':''}<div class="basis">${e.basis.length>170?e.basis.slice(0,165).replace(/\s\S*$/,'')+'…':e.basis}</div><div class="srcl">${e.sources.map(x=>x.title).join(' · ')}</div>${inn}<div class="cols"><div><b>Borne by</b>${e.borne_by}</div><div class="${moved?'rg':''}"><b>Liable now</b>${moved?'Team Institutions':e.liable_now}</div><div class="rg"><b>Liable if reopened</b>${e.liable_if_reopened}</div></div>
+ <span class="pill ${s[0]}">${s[1]}</span></div>`}).join('');
+ box.querySelectorAll('.le').forEach(el=>el.onclick=()=>openEntry(L.entries.find(x=>x.id===el.dataset.id)));
+ const t=tally();$('#totW').textContent=gbp(t.wG);$('#totR').textContent=gbp(t.rG);
+ const cont=L.entries.filter(e=>e.reopen_postings.length).reduce((a,e)=>a+e.amount,0);
+ const per={};L.entries.forEach(e=>e.reopen_postings.forEach(p=>{if(p.dr){const k=p.account.split(':').pop();per[k]=(per[k]||0)+p.dr}}));
+ $('#appo').innerHTML='<table><tr><th>Party</th><th class="n">£ (mid)</th></tr>'+Object.entries(per).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<tr><td>${D.parties[k].name}</td><td class="n">${gbp(Math.round(v))}</td></tr>`).join('')+`</table><p class="sum">Each loss head posts to its own parties, in the shares shown in the negotiation schedule.</p>`;
+ const rows=[];L.entries.forEach(e=>{e.postings.concat(reopen?e.reopen_postings:[]).forEach(p=>rows.push(`<tr><td>${e.id}</td><td>${p.account}</td><td class="n">${p.dr?gbp(p.dr):''}</td><td class="n">${p.cr?gbp(p.cr):''}</td></tr>`))});
+ const b=reopen?L.summary.books.reopened:L.summary.books.now;
+ $('#journal').innerHTML='<table><tr><th>Entry</th><th>Account</th><th class="n">Dr</th><th class="n">Cr</th></tr>'+rows.join('')+`<tr><th></th><th>Totals</th><th class="n">${gbp(b[0])}</th><th class="n">${gbp(b[1])}</th></tr></table>`;
+ $('#rng').innerHTML=`The ten heads at mid: <b>${gbp(L.summary.heads_total)}</b> · low ${gbp(D.totals.losses.low)} · high ${gbp(D.totals.losses.high)}`}
+function openEntry(e){const s=statusOf(e),ps=e.postings.concat(e.reopen_postings);
+ $('#sheet').innerHTML=`<button class="x" aria-label="Close">×</button><div style="font-size:14px;color:#6b6585">Ledger · ${e.id}</div><h3>${e.head}</h3>
+ <div class="kv"><b>Amount (mid):</b> <span style="font:700 20px 'Cabin Sketch'">${e.nil?'£ —':gbp(e.amount)}</span> ${e.estimate?'<span class="est">estimate</span>':''}</div>${e.low!=null?`<div class="kv"><b>Low / high:</b> ${gbp(e.low)} / ${gbp(e.high)}</div>`:''}<div class="kv"><b>Method:</b> ${e.basis}</div>
+ <div class="kv"><b>Status:</b> <span class="pill ${s[0]}">${s[1]}</span></div>
+ <table style="margin-top:8px"><tr><th>Posting</th><th class="n">Dr</th><th class="n">Cr</th></tr>${ps.map((p,i)=>`<tr style="${i>=e.postings.length?'color:#b23a48':''}"><td>${p.account}${i===e.postings.length?' <i>(if reopened)</i>':''}</td><td class="n">${p.dr?gbp(p.dr):''}</td><td class="n">${p.cr?gbp(p.cr):''}</td></tr>`).join('')}</table>
+ <div class="kv" style="margin-top:8px"><b>Source:</b><br>${srcLinks(e.sources)}</div>`;openModal()}
+function rubric(){$('#bands').innerHTML=T.rubric.bands.map(b=>`<div class="band"><div class="sw2" style="background:${b.colour}"></div><div><span class="rng">${fmt(b.lo)} – ${fmt(b.hi)}</span><b>${b.name}</b><span class="sum">e.g. ${b.example}</span></div></div>`).join('');
+ $('#mults').innerHTML=T.rubric.multipliers.map(m=>`<div class="band"><div class="sw2" style="background:#fff;height:28px"></div><div><b>×${m.x}</b><span class="sum">${m.why}</span></div></div>`).join('')+`<p class="sum">Cap: ${fmt(T.rubric.cap)} points.</p>`}
+function openModal(){$('#modal').classList.add('on');$('#sheet').querySelector('.x').onclick=closeModal}
+function closeModal(){$('#modal').classList.remove('on')}
+$('#modal').onclick=e=>{if(e.target.id==='modal')closeModal()};document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b));['tickets','ledger','rubric'].forEach(k=>$('#tab-'+k).classList.toggle('hide',k!==b.dataset.tab))});
+document.querySelectorAll('#filters button').forEach(b=>b.onclick=()=>{filt=b.dataset.f;document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x===b));ticketsList()});
+$('#reopen').onchange=e=>{reopen=e.target.checked;$('#sw').classList.toggle('on',reopen);fly();paint(true);ticketsList();ledger();history.replaceState(null,'',reopen?'#reopened':'#')};
+if(location.hash==='#reopened'){reopen=true;$('#reopen').checked=true;$('#sw').classList.add('on')}
+
+const PK=Object.keys(D.parties), gm=n=>{const a=Math.abs(n);if(a>=1e6)return '£'+(n/1e6).toFixed(a>=1e7?1:2).replace(/\.?0+$/,'')+'m';if(a>=1e3)return '£'+Math.round(n/1e3)+'k';return '£'+Math.round(n)};
+const rng=v=>`${gm(v.low)} – ${gm(v.high)}`;
+function comb(){const wrap=$('#combwrap'),svg=$('#comb');const W=Math.max(340,Math.min(940,wrap.clientWidth-8));const mob=W<560;
+ const padL=6,padR=mob?62:96,UH=mob?150:190,LBL=mob?30:34,BAND=mob?86:110,LH=mob?150:190,LL=mob?96:120,top=LBL+6;
+ const y0=top+UH,ys=y0+8,y1=ys+BAND,y1b=y1+8;const H=y1b+LH+LL+6;
+ const maxv=Math.max(...D.gains.map(g=>g.v.high),...D.losses.map(l=>l.v.high));const sc=v=>v/maxv*UH;const scl=v=>v/maxv*LH;
+ const spanW=W-padL-padR;const G=D.gains,Ls=D.losses;
+ const gx=G.map((g,i)=>padL+spanW*(i+.5)/G.length),lx=Ls.map((l,i)=>padL+spanW*(i+.5)/Ls.length);
+ const gw=Math.min(40,spanW/G.length*.5),lw=Math.min(28,spanW/Ls.length*.62);let s='';
+ s+=`<defs><pattern id="hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="2" height="4" fill="#ffffff26"/></pattern></defs>`;
+ // connectors
+ Ls.forEach((l,i)=>{const maps=l.maps_to;maps.forEach((p,k)=>{const j=G.findIndex(g=>g.party===p);if(j<0)return;const share=l.alloc[p];const sw=Math.max(1.4,share/100*7);
+  const xa=lx[i]+(k-(maps.length-1)/2)*Math.min(5,lw/(maps.length+1)),xb=gx[j]+((i/(Ls.length-1))-.5)*gw*.7;
+  s+=`<path class="cn" data-l="${l.id}" data-g="${G[j].id}" d="M${xa.toFixed(1)},${y1} C${xa.toFixed(1)},${(y1-BAND*.55).toFixed(1)} ${xb.toFixed(1)},${(ys+BAND*.55).toFixed(1)} ${xb.toFixed(1)},${ys}" stroke="${G[j].colour}" stroke-width="${sw.toFixed(1)}" fill="none" opacity=".72"/>`})});
+ // spines
+ s+=`<rect x="${padL-2}" y="${y0}" width="${spanW+4}" height="8" rx="4" fill="#f6f1e7"/><rect x="${padL-2}" y="${y1}" width="${spanW+4}" height="8" rx="4" fill="#f6f1e7"/>`;
+ // upper teeth
+ G.forEach((g,i)=>{const h=Math.max(3,sc(g.v.mid)),x=gx[i]-gw/2,hl=sc(g.v.low),hh=sc(g.v.high),tip=y0-Math.max(h,hh);
+  s+=`<g class="tooth" tabindex="0" role="button" data-id="${g.id}" aria-label="${g.party_name}: ${gm(g.v.mid)} gained"><rect x="${x-6}" y="${top-LBL}" width="${gw+12}" height="${y0-top+LBL}" fill="transparent"/>
+  <rect class="body" x="${x.toFixed(1)}" y="${(y0-h).toFixed(1)}" width="${gw.toFixed(1)}" height="${(h+2).toFixed(1)}" rx="${Math.min(6,gw/3)}" fill="${g.colour}"/>
+  ${g.estimate?`<rect x="${x.toFixed(1)}" y="${(y0-h).toFixed(1)}" width="${gw.toFixed(1)}" height="${h.toFixed(1)}" rx="${Math.min(6,gw/3)}" fill="url(#hatch)"/>`:''}
+  ${hh>hl+1?`<line x1="${gx[i]}" x2="${gx[i]}" y1="${(y0-hl).toFixed(1)}" y2="${(y0-hh).toFixed(1)}" stroke="#fff" stroke-width="1.4"/><line x1="${gx[i]-5}" x2="${gx[i]+5}" y1="${(y0-hh).toFixed(1)}" y2="${(y0-hh).toFixed(1)}" stroke="#fff" stroke-width="1.4"/><line x1="${gx[i]-5}" x2="${gx[i]+5}" y1="${(y0-hl).toFixed(1)}" y2="${(y0-hl).toFixed(1)}" stroke="#fff" stroke-width="1.4"/>`:''}
+  <text x="${gx[i]}" y="${(tip-17).toFixed(1)}" text-anchor="middle" fill="#cfc8ee" font-size="${mob?10.5:12}">${g.label}</text>
+  <text x="${gx[i]}" y="${(tip-4).toFixed(1)}" text-anchor="middle" fill="#fff" font-size="${mob?12.5:14}" font-weight="700">${gm(g.v.mid)}</text></g>`});
+ // lower teeth
+ Ls.forEach((l,i)=>{const h=Math.max(3,scl(l.v.mid)),x=lx[i]-lw/2,hl=scl(l.v.low),hh=scl(l.v.high),tip=y1b+Math.max(h,hh);
+  s+=`<g class="tooth" tabindex="0" role="button" data-id="${l.id}" aria-label="${l.head}: ${gm(l.v.mid)} lost"><rect x="${x-3}" y="${y1b}" width="${lw+6}" height="${LH+LL}" fill="transparent"/>
+  <rect class="body" x="${x.toFixed(1)}" y="${(y1b-2).toFixed(1)}" width="${lw.toFixed(1)}" height="${(h+2).toFixed(1)}" rx="${Math.min(5,lw/3)}" fill="${l.causation?'#ffb3b3':'#ff7a7a'}"/>
+  ${l.estimate?`<rect x="${x.toFixed(1)}" y="${y1b}" width="${lw.toFixed(1)}" height="${h.toFixed(1)}" rx="${Math.min(5,lw/3)}" fill="url(#hatch)"/>`:''}
+  ${hh>hl+1?`<line x1="${lx[i]}" x2="${lx[i]}" y1="${(y1b+hl).toFixed(1)}" y2="${(y1b+hh).toFixed(1)}" stroke="#fff" stroke-width="1.3"/><line x1="${lx[i]-4}" x2="${lx[i]+4}" y1="${(y1b+hh).toFixed(1)}" y2="${(y1b+hh).toFixed(1)}" stroke="#fff" stroke-width="1.3"/><line x1="${lx[i]-4}" x2="${lx[i]+4}" y1="${(y1b+hl).toFixed(1)}" y2="${(y1b+hl).toFixed(1)}" stroke="#fff" stroke-width="1.3"/>`:''}
+  <text transform="translate(${(lx[i]+4).toFixed(1)},${(tip+5).toFixed(1)}) rotate(90)" fill="#fff" font-size="${mob?11:12.5}"><tspan font-weight="700">${gm(l.v.mid)}</tspan><tspan fill="#cfc8ee"> ${l.label}</tspan></text></g>`});
+ // totals at the combs' ends
+ const tx=W-padR+10,fs=mob?11:13;
+ s+=`<text x="${tx}" y="${y0-34}" fill="#7CFFB2" font-size="${fs}">▲ Gained</text><text x="${tx}" y="${y0-15}" fill="#fff" font-size="${mob?17:21}" font-weight="700">${gm(D.totals.gains.mid)}</text><text x="${tx}" y="${y0+3}" fill="#b9b2d6" font-size="${fs-1}">${gm(D.totals.gains.low)}–${gm(D.totals.gains.high).slice(1)}</text>`;
+ s+=`<text x="${tx}" y="${y1b+14}" fill="#ff9b9b" font-size="${fs}">▼ Lost</text><text x="${tx}" y="${y1b+33}" fill="#fff" font-size="${mob?17:21}" font-weight="700">${gm(D.totals.losses.mid)}</text><text x="${tx}" y="${y1b+50}" fill="#b9b2d6" font-size="${fs-1}">${gm(D.totals.losses.low)}–${gm(D.totals.losses.high).slice(1)}</text>`;
+ s+=`<text x="${padL}" y="${(ys+BAND/2+4).toFixed(1)}" fill="#b9b2d6" font-size="${mob?10:12}" opacity=".0">.</text>`;
+ svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.innerHTML=s;
+ svg.querySelectorAll('.tooth').forEach(el=>{const go=()=>openTooth(el.dataset.id);el.onclick=go;el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}}})}
+function focusTooth(id){const w=$('#combwrap');w.classList.toggle('focus',!!id);w.querySelectorAll('path.cn').forEach(p=>p.classList.toggle('on',p.dataset.l===id||p.dataset.g===id));w.querySelectorAll('.tooth').forEach(t=>t.classList.toggle('sel',t.dataset.id===id))}
+function openTooth(id){const g=D.gains.find(x=>x.id===id),l=D.losses.find(x=>x.id===id),it=g||l;focusTooth(id);
+ const facts=(it.facts||[]).map(f=>`<li>${f[0]} ${f[1]&&f[1].url?`<a href="${f[1].url}" target="_blank" rel="noopener">source</a>`:`<span style="color:#6b6585">(${f[1]?f[1].title:''})</span>`}</li>`).join('');
+ const inputs=(it.inputs||[]).map(r=>`<tr><td>${r[0]}</td><td class="n">${r[1]}</td></tr>`).join('');
+ let links='';if(g){const ls=D.losses.filter(x=>x.maps_to.includes(g.party));links=`<div class="kv"><b>Losses linked to this party:</b><br>${ls.map(x=>`${x.label} (${x.alloc[g.party]}% of ${gm(x.v.mid)})`).join(' · ')||'none'}</div><div class="kv"><b>Route:</b> ${D.parties[g.party].route}</div>`}
+ else{links=`<div class="kv"><b>Claim against:</b><br>${Object.entries(l.alloc).map(([p,s])=>`${D.parties[p].name}: ${s}% (${gm(l.v.mid*s/100)})`).join('<br>')}</div><div class="kv"><b>Legal basis:</b> ${l.legal}</div>${l.causation?`<div class="kv"><b>Causation:</b> ${l.causation}</div>`:''}`}
+ $('#sheet').innerHTML=`<button class="x" aria-label="Close">×</button><div style="font-size:14px;color:#6b6585">${g?'▲ Gained · '+g.party_name:'▼ Lost'} ${it.estimate?'<span class="est">estimate</span>':''}</div><h3>${g?g.what:l.head}</h3>
+ <table><tr><th>Low</th><th>Mid</th><th>High</th></tr><tr><td>${gbp(it.v.low)}</td><td><b>${gbp(it.v.mid)}</b></td><td>${gbp(it.v.high)}</td></tr></table>
+ <div class="kv" style="margin-top:8px"><b>Method:</b> ${it.method}</div>${inputs?`<table style="margin-top:6px">${inputs}</table>`:''}
+ <div class="kv" style="margin-top:8px"><b>Facts on the record:</b></div><ul style="margin:2px 0 6px 18px;padding:0;font-size:14px">${facts}</ul>${links}
+ <div class="kv" style="margin-top:6px"><b>Sources:</b><br>${srcLinks(it.sources)}</div>`;openModal()}
+function measures(){$('#mG').textContent=gm(D.totals.gains.mid);$('#mGr').textContent='low–high '+rng(D.totals.gains);$('#mL').textContent=gm(D.totals.losses.mid);$('#mLr').textContent='low–high '+rng(D.totals.losses);
+ $('#legend').innerHTML=D.gains.map(g=>`<span><i style="background:${g.colour}"></i>${g.party_name}</span>`).join('')+`<span><i style="background:url(#);background-image:repeating-linear-gradient(45deg,#fff5 0 2px,transparent 2px 4px)"></i>estimate</span><span><i style="background:#ffb3b3"></i>causation to be proven</span>`}
+function scenarios(){$('#sA').textContent=gm(D.totals.losses.mid);$('#sAr').textContent='compensation, mid · '+rng(D.totals.losses);
+ $('#sAl').innerHTML=D.losses.map(l=>`<li><span>${l.label}</span><span>${gm(l.v.mid)}</span></li>`).join('')+`<li><span>Gains (alternative)</span><span>${gm(D.totals.gains.mid)}</span></li>`;
+ $('#sB').textContent=gm(D.brief.range.mid);$('#sBr').textContent='range '+gm(D.brief.range.lo)+' – '+gm(D.brief.range.hi);
+ $('#sBl').innerHTML=D.brief.heads.map(b=>`<li><span>${b.head}</span><span>${gm(b.amount)}</span></li>`).join('');
+ $('#recon').innerHTML=D.reconciliation.map(p=>`<p>${p}</p>`).join('');
+ $('#gap').innerHTML='<tr><th>Brief v3 (superseded) head and its basis</th><th class="n">Old brief</th><th class="n">Analyst</th></tr>'+D.brief.heads.map(b=>`<tr><td><b>${b.head}</b><br><span style="color:var(--muted)">${b.basis}</span><br>${b.gap_note}</td><td class="n">${gm(b.amount)}</td><td class="n">${gm(b.analyst_mid)}</td></tr>`).join('')}
+function ptab(){let h='<thead><tr><th>Claim against</th><th>For what</th><th class="n">Low / mid / high</th><th>Legal basis</th><th>Evidence</th></tr></thead><tbody>';
+ PK.forEach(k=>{const p=D.parties[k],rs=D.rows.filter(r=>r.party===k);if(!rs.length&&!p.disgorgement)return;const c=p.compensation,dg=p.disgorgement;const open=Math.max(c.mid,dg?dg.mid:0);
+  h+=`<tr class="party"><td colspan="5"><span class="sw3" style="background:${p.colour}"></span><b>${p.name}</b> · compensation ${gm(c.mid)} (${rng(c)})${dg?` · gain ${gm(dg.mid)}`:''}<span class="elect">Opening figure: ${gm(open)} (${dg&&dg.mid>c.mid?'the gain':'the compensation share'}). ${p.route}</span></td></tr>`;
+  rs.forEach(r=>{h+=`<tr class="row"><td class="who">${p.short}</td><td>${r.what} <span class="tbp">${r.share}%</span>${r.causation?` <span class="tbp">causation ${r.causation}</span>`:''}</td><td class="n">${gm(r.v.low)} / <b>${gm(r.v.mid)}</b> / ${gm(r.v.high)}</td><td class="lb">${r.legal}</td><td class="ev">${r.evidence.map(e=>`<a href="${e.url}" target="_blank" rel="noopener">${e.title.split(' — ')[0]}</a>`).join('<br>')}</td></tr>`})});
+ $('#ptab').innerHTML=h+'</tbody>'}
+let _rw=0;addEventListener('resize',()=>{const w=$('#combwrap').clientWidth;if(Math.abs(w-_rw)>20){_rw=w;comb()}});
+
+_rw=$('#combwrap').clientWidth;comb();measures();scenarios();ptab();
+$('#modal').addEventListener('click',e=>{if(e.target.id==='modal'||e.target.classList.contains('x'))focusTooth(null)});
+original();ticketsList();ledger();rubric();paint(true);
+</script>
+</body>
+</html>
