@@ -1,0 +1,33 @@
+{
+ "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
+ "apiVersion": "1.0.0",
+ "generated": "2026-10-31T22:09:35Z",
+ "count": 972,
+ "threadCount": 525,
+ "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
+ "endpoints": {
+  "index": "/api/index.json",
+  "threads": "/api/threads.json",
+  "corpus": "/api/corpus.json",
+  "message": "/api/message/<id>.json",
+  "text": "/mail/<id>.txt"
+ },
+ "shards": [
+  "/api/corpus-1.json",
+  "/api/corpus-2.json",
+  "/api/corpus-3.json",
+  "/api/corpus-4.json",
+  "/api/corpus-5.json",
+  "/api/corpus-6.json",
+  "/api/corpus-7.json",
+  "/api/corpus-8.json",
+  "/api/corpus-9.json",
+  "/api/corpus-10.json",
+  "/api/corpus-11.json",
+  "/api/corpus-12.json",
+  "/api/corpus-13.json",
+  "/api/corpus-14.json",
+  "/api/corpus-15.json",
+  "/api/corpus-16.json"
+ ]
+}

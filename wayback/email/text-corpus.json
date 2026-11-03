@@ -1,0 +1,18 @@
+{
+ "title": "Great House Farm / Ty Mawr legacy text corpus (derived from Wayback /text/)",
+ "generated": "2026-10-22T06:39:01Z",
+ "catalogue": "/email/mail-index.json",
+ "derivedFrom": "The exact files Wayback serves at each catalogue record's path. Wayback's /text/ files remain the master; this bundle is a read cache for bulk search and export.",
+ "rebuild": "tools/build-email-text-corpus.py (repo root) after any change to a /text/ file or to email/mail-index.json",
+ "count": 585,
+ "textCount": 402,
+ "missingCount": 183,
+ "shards": [
+  "/email/text-corpus-1.json",
+  "/email/text-corpus-2.json",
+  "/email/text-corpus-3.json",
+  "/email/text-corpus-4.json",
+  "/email/text-corpus-5.json",
+  "/email/text-corpus-6.json"
+ ]
+}

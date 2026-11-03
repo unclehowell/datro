@@ -1,0 +1,84 @@
+{
+ "schema": "ghf-artifacts/1",
+ "generated": "2026-10-24T14:51:17Z",
+ "base_url": "https://wayback.bucklerfamily.estate/",
+ "spec": "https://wayback.bucklerfamily.estate/artifacts/SPEC.md",
+ "statement": "",
+ "collections": [
+  {
+   "name": "Case correspondence (email archive)",
+   "index": "https://wayback.bucklerfamily.estate/api/index.json",
+   "count": 770,
+   "note": "Each message: /api/message/gm-<gmailId>.json and /mail/gm-<gmailId>.txt. Contact details redacted."
+  },
+  {
+   "name": "FOI and public-authority reply attachments",
+   "index": "https://wayback.bucklerfamily.estate/pdf/foi/manifest.json",
+   "count": 36
+  },
+  {
+   "name": "Planning file 89/01396/OUT",
+   "index": "https://wayback.bucklerfamily.estate/pdf/_treeview.json",
+   "count": 5
+  },
+  {
+   "name": "Text transcripts and notes",
+   "index": "https://wayback.bucklerfamily.estate/text/_treeview.json"
+  },
+  {
+   "name": "Facebook archive images",
+   "index": "https://wayback.bucklerfamily.estate/images/_treeview.json"
+  },
+  {
+   "name": "Docs archive (older versions of docs.bucklerfamily.estate documents, one PDF per language)",
+   "index": "https://wayback.bucklerfamily.estate/pdf/docs-archive/index.json",
+   "count": 4
+  }
+ ],
+ "count": 367,
+ "parts": [
+  {
+   "url": "items-1.json",
+   "count": 99,
+   "first": "EV-0001",
+   "last": "EV-0100"
+  },
+  {
+   "url": "items-2.json",
+   "count": 78,
+   "first": "EV-0101",
+   "last": "EV-0178"
+  },
+  {
+   "url": "items-3.json",
+   "count": 105,
+   "first": "EV-0179",
+   "last": "EV-0283"
+  },
+  {
+   "url": "items-4.json",
+   "count": 64,
+   "first": "EV-0284",
+   "last": "WB-0414"
+  },
+  {
+   "url": "items-5.json",
+   "count": 4,
+   "first": "WB-0040",
+   "last": "WB-0043"
+  },
+  {
+   "url": "items-8.json",
+   "count": 3,
+   "first": "WB-0800",
+   "last": "WB-0810"
+  },
+  {
+   "url": "items-9.json",
+   "count": 14,
+   "first": "WB-0900",
+   "last": "WB-0913"
+  }
+ ],
+ "note": "Items are split across the files in \"parts\" (each under 100 KB). Fetch each part and join the \"items\" arrays in order."
+}

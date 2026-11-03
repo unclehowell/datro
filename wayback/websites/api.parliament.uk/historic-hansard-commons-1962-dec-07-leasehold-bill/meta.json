@@ -1,0 +1,28 @@
+{
+ "url": "https://api.parliament.uk/historic-hansard/commons/1962/dec/07/leasehold-bill",
+ "key": "api.parliament.uk/historic-hansard/commons/1962/dec/07/leasehold-bill",
+ "title": "LEASEHOLD BILL (Hansard, 7 December 1962)",
+ "host": "api.parliament.uk",
+ "path": "/websites/api.parliament.uk/historic-hansard-commons-1962-dec-07-leasehold-bill/",
+ "latest": "/websites/api.parliament.uk/historic-hansard-commons-1962-dec-07-leasehold-bill/latest.html",
+ "first_captured": "2026-10-24T13:49:02Z",
+ "last_captured": "2026-10-24T13:49:02Z",
+ "current_version": "v1.0.0",
+ "versions": [
+  {
+   "version": "v1.0.0",
+   "change": "first",
+   "captured_utc": "2026-10-24T13:49:02Z",
+   "capture_source": "live",
+   "mode": "html",
+   "text_sha256": "38313ab56690d8f602d7a61e2d6e696af573962300b05a39aef3dfa427319f2c",
+   "markup_sha256": "097cb2c7286574ea204e054bcfb6709e846330685e5b393aadd18cc9b08b360e",
+   "file": "v1.0.0.html",
+   "screenshot": null,
+   "from": "https://internetarchive.bucklerfamily.estate/20261024134902/api.parliament.uk/historic-hansard/commons/1962/dec/07/leasehold-bill/"
+  }
+ ],
+ "versioning": "first capture v1.0.0; readable-text change = minor; markup/layout-only change = patch; identical capture = no new version",
+ "watch_status": "unchanged",
+ "note": "Static copy for reference: scripts, forms, iframes, external styles and images removed; links off bucklerfamily.estate disabled (archived targets point to their Wayback copy)."
+}

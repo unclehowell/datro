@@ -1,79 +1,666 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
+  <!-- Release 0.1.0: unified Text / Email navigation; archive media served from the existing R2 binding. -->
   <meta charset="UTF-8">
-  <meta content="DATRO Library" name="description">
-  <meta content="DATRO Consortium" name="author">
-  <title>DATRO Wayback Archive</title>
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport">
-        <link href="_theme-explorer/favicons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
-        <link href="_theme-explorer/favicons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
-        <link href="_theme-explorer/favicons/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
-        <link href="_theme-explorer/favicons/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
-        <link href="_theme-explorer/favicons/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
-        <link href="_theme-explorer/favicons/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
-        <link href="_theme-explorer/favicons/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
-        <link href="_theme-explorer/favicons/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
-        <link href="_theme-explorer/favicons/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180">
-        <link href="_theme-explorer/favicons/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png">
-        <link href="_theme-explorer/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
-        <link href="_theme-explorer/favicons/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
-        <link href="_theme-explorer/favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
-        <link rel="manifest" href="manifest.json">
-        <meta content="_theme-explorer/favicons/ms-icon-144x144.png" name="msapplication-TileImage">
-        <link rel="stylesheet" href="_theme-explorer/style.css">
-        <link rel="stylesheet" href="_theme-explorer/glyphicon.css">
-<style>
-html {
-  overflow-y:   scroll;
-  overflow-x:   hidden;
-}
-::-webkit-scrollbar {
-  width: 0px;
-  background: transparent; /* make scrollbar transparent */
-}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Wayback Vault</title>
+  <style>
+    * { box-sizing: border-box; }
 
-li {
-    inline-size: fit-content;
-    display: block;
-    float: left;
-    padding: 0px 0px 0px 0vw;
-    margin: 0px 0px 0px 0px;
-    text-indent: 0px;
-    line-height: 0em;
-    max-width: 130vw;
-    overflow: hidden;
-    font-size: 6vw;
-    margin-left: -2.9rem;
-    padding-left: 38px;
-}
-</style>
-<!-- google tracking code start --> 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BTNPTMXBF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    body {
+      background: #336; color: #ddd; font-family: -apple-system,BlinkMacSystemFont,sans-serif;
+      margin: 0; padding: 0.5rem; min-height: 100vh;
+    }
+    .main-title {
+      text-align: center; color: lightslategrey;
+      font-size: clamp(17px,4.5vw,28px); font-weight: bolder; margin: 0.3rem 0;
+    }
+    .logo { display: block; margin: 0 auto 0.2rem; max-width: 55px; }
 
-  gtag('config', 'G-6BTNPTMXBF');
-</script>
-<!-- google tracking code end -->
-  </head>
-  <body>
-    <script>
-      (async () => {
-        const response = await fetch('_treeview.json');
-        const data = await response.json();
-        let htmlString = '<ul>';
-        htmlString += `<a href="../" class="up-active" style="visibility:hidden;"><<</a>`;
-        htmlString += `<p class="main-title"><img class="main-logo ml-datro"></br>Wayback Archive</p>`;
-        for (let file of data) {
-          htmlString += `<li class="li"><a href="${file.path}">${file.name}</a></li>`;
+    /* -- TABS (scrollable row on mobile) -- */
+    .tabs {
+      display: flex; gap: 0.3rem; margin-bottom: 0.5rem;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; padding: 0.25rem 0;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab {
+      flex-shrink: 0; padding: 0.5rem 0.7rem;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px; cursor: pointer; color: #aac; font-weight: bold;
+      font-size: clamp(0.75rem,2.5vw,0.9rem); min-height: 44px;
+      display: flex; align-items: center; touch-action: manipulation;
+    }
+    .tab.active { background: rgba(255,255,255,0.25); color: #fff; border-color: rgba(255,255,255,0.5); }
+    .tab:active { background: rgba(255,255,255,0.3); }
+    .count-badge {
+      display: inline-block; background: rgba(255,255,255,0.15);
+      border-radius: 10px; padding: 0.05rem 0.4rem; font-size: 0.65rem; margin-left: 0.25rem;
+    }
+
+    /* -- GALLERY -- */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.5rem;
+    }
+    .item {
+      background: rgba(255,255,255,0.08); border-radius: 8px; padding: 0.4rem;
+      text-align: center; position: relative;
+    }
+    .item a {
+      color: #aac; text-decoration: none; font-size: 0.75rem;
+      display: block; word-break: break-all;
+    }
+    .item a:active { color: #fff; }
+    .item img, .item video {
+      max-width: 100%; max-height: 200px; border-radius: 4px;
+      object-fit: contain; cursor: pointer; display: block; margin: 0 auto;
+    }
+    .item .name { font-size: 0.8rem; color: #ccd; margin-top: 0.2rem; word-break: break-word; line-height: 1.2; font-weight: 500; }
+    .item.pdf a, .item.text a, .item.video a { padding: 1.2rem 0; display: block; font-size: 0.8rem; }
+    .pdf-link { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; padding: 1rem !important; }
+    .pdf-link svg { opacity: 0.8; }
+    .pdf-link:hover svg { opacity: 1; }
+    .pdf-label { font-size: 0.7rem; color: #f87171; font-weight: 500; }
+
+    .hash-badge {
+      display: inline-block; padding: 0.1rem 0.35rem; border-radius: 6px;
+      font-size: 0.55rem; font-weight: bold; letter-spacing: 0.2px; margin-top: 0.15rem;
+    }
+    .hash-badge.bpvsbuckler { background: rgba(200,100,50,0.3); color: #fca; }
+    .hash-badge.datro { background: rgba(50,150,200,0.3); color: #8cf; }
+
+    /* -- PAGINATION (bigger touch targets) -- */
+    .pagination {
+      display: flex; justify-content: center; align-items: center;
+      gap: 0.25rem; margin-top: 0.75rem; flex-wrap: wrap;
+    }
+    .pagination button {
+      padding: 0.4rem 0.55rem; min-width: 36px; min-height: 36px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 6px; color: #aac; cursor: pointer; font-weight: bold;
+      font-size: 0.8rem; touch-action: manipulation;
+    }
+    .pagination button:active:not(:disabled) { background: rgba(255,255,255,0.3); color: #fff; }
+    .pagination button:disabled { opacity: 0.3; }
+    .pagination button.active-page { background: rgba(255,255,255,0.3); color: #fff; border-color: rgba(255,255,255,0.5); }
+    .pagination .info { color: #b4b4c8; font-size: 0.75rem; }
+
+    .subtitle { text-align: center; color: #667; font-size: 0.75rem; margin-bottom: 0.5rem; }
+
+    /* -- HASHTAG FILTER (single row under categories, click to show/filter; mobile friendly horizontal) -- */
+    #hashtag-cloud {
+      max-width: 100%; margin: 0.2rem 0 0.4rem;
+      background: rgba(40,40,70,0.6); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px; padding: 0.2rem 0.35rem;
+      display: flex; flex-wrap: wrap; gap: 0.2rem; align-items: center;
+    }
+    #hashtag-cloud .tag-label { color: #b4b4c8; font-size: 0.75rem; margin-right: 0.35rem; white-space: nowrap; }
+    #hashtag-cloud .tag {
+      display: inline-flex; align-items: center; padding: 0.15rem 0.4rem;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 999px; color: #8ac; cursor: pointer; font-size: 0.65rem;
+      min-height: 24px; line-height: 1; touch-action: manipulation; white-space: nowrap;
+    }
+    #hashtag-cloud .tag:active { background: rgba(255,255,255,0.25); color: #fff; }
+    #hashtag-cloud .tag.active { background: rgba(255,200,100,0.25); color: #fff; border-color: rgba(255,200,100,0.4); }
+    #hashtag-cloud .clear-btn { background: none; border: none; color: #b4b4c8; cursor: pointer; font-size: 0.75rem; padding: 0.1rem 0.3rem; }
+
+    #all-search {
+      width: 100%; padding: 0.6rem 0.7rem; margin-bottom: 0.5rem;
+      border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.1); color: #ddd;
+      font-size: 1rem; box-sizing: border-box; min-height: 44px;
+    }
+
+    footer { text-align: center; padding: 0.75rem; font-size: 0.7rem; color: #667; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 1.5rem; }
+
+    /* -- TABLET+ -- */
+    @media (min-width: 768px) {
+      body { padding: 1rem; }
+      .gallery { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.75rem; }
+      .item img, .item video { max-height: 250px; }
+      .item .name { font-size: 0.75rem; }
+      .tab { font-size: 0.85rem; padding: 0.4rem 0.75rem; }
+      #hashtag-cloud { flex-wrap: nowrap; overflow-x: auto; }
+    }
+    @media (min-width: 1024px) {
+      .gallery { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+      .item img, .item video { max-height: 300px; }
+    }
+  
+    /* -- WEBSITES (archived web pages, 24 Oct 2026) -- */
+    #websites-view { display:none; max-width: 70rem; margin: 0 auto; }
+    #websites-view .ws-intro { color:#bbc; font-size:0.85rem; margin:0.3rem 0 0.6rem; line-height:1.45; }
+    #websites-view .ws-intro a { color:#9cf; }
+    #ws-search { width:100%; padding:0.55rem 0.7rem; border-radius:8px; border:1px solid rgba(255,255,255,0.25); background:rgba(0,0,0,0.2); color:#eee; font-size:16px; margin-bottom:0.6rem; }
+    .ws-host { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:8px; margin:0 0 0.45rem; }
+    .ws-host > summary { cursor:pointer; padding:0.65rem 0.8rem; font-weight:bold; color:#dde; list-style:none; display:flex; justify-content:space-between; gap:0.5rem; min-height:44px; align-items:center; }
+    .ws-host > summary::-webkit-details-marker { display:none; }
+    .ws-host > summary .n { color:#9a9aa8; font-weight:normal; font-size:0.8rem; white-space:nowrap; }
+    .ws-host > summary .h { word-break:break-all; }
+    .ws-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:0.6rem; padding:0 0.6rem 0.7rem; }
+    .ws-card { background:rgba(0,0,0,0.18); border:1px solid rgba(255,255,255,0.12); border-radius:8px; overflow:hidden; display:flex; flex-direction:column; }
+    .ws-thumb { display:block; padding:0; border:0; background:#223; cursor:pointer; width:100%; aspect-ratio:4/3; }
+    .ws-thumb img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
+    .ws-live { display:block; text-align:center; padding:0.4rem; font-size:0.8rem; font-weight:bold; color:#9cf; text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.1); min-height:36px; }
+    .ws-t { padding:0.4rem 0.5rem 0.1rem; font-size:0.82rem; color:#eee; cursor:pointer; line-height:1.3; overflow-wrap:anywhere; }
+    .ws-m { padding:0 0.5rem 0.5rem; font-size:0.72rem; color:#9a9aa8; }
+    .ws-m a { color:#fca; }
+    #ws-modal { display:none; position:fixed; inset:0; z-index:2147483600; background:rgba(10,10,20,0.92); flex-direction:column; }
+    #ws-modal.open { display:flex; }
+    #ws-modal .bar { display:flex; gap:0.5rem; align-items:center; padding:0.45rem 0.6rem; color:#eee; font-size:0.85rem; flex-wrap:wrap; }
+    #ws-modal .bar .tt { flex:1 1 12rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-weight:bold; }
+    #ws-modal .bar a, #ws-modal .bar button { color:#9cf; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:6px; padding:0.35rem 0.6rem; font-size:0.8rem; text-decoration:none; cursor:pointer; min-height:36px; }
+    #ws-modal iframe { flex:1; width:100%; border:0; background:#fff; }
+  </style>
+<link rel="alternate" type="application/json" href="/agent-index.json" title="Machine-readable Wayback archive index">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="Agent reading guide">
+<script src="https://bucklerfamily.estate/ghf-lang/ghf-lang.js?v=2.0.3" defer></script>
+<script src="https://bucklerfamily.estate/ebook/cta.js" defer></script>
+<script src="https://bucklerfamily.estate/ghf-lang/ghf-boot.js?v=2.0.3"></script>
+<script src="https://research.bucklerfamily.estate/estate-tour.js?v=20261024" defer data-estate-tour-loader></script>
+</head>
+<body>
+<div style="background:#1f2a24;color:#f3efe6;font:13px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:8px 12px;text-align:center">Archive sites: <a style="color:#ffd27a" href="https://wayback-html.bucklerfamily.estate/">Websites</a> · <a style="color:#ffd27a" href="https://wayback-img.bucklerfamily.estate/">Images</a> · <a style="color:#ffd27a" href="https://wayback-pdf.bucklerfamily.estate/">PDFs &amp; documents</a> · <a style="color:#ffd27a" href="https://wayback-video.bucklerfamily.estate/">Video</a> · <a style="color:#ffd27a" href="https://wayback-text.bucklerfamily.estate/">Text</a></div>
+
+    <p style="text-align:center;margin:0.1rem 0 0.5rem"><a href="/ebooks/" style="color:#fca;font-weight:bold;font-size:0.9rem;text-decoration:none">📚 E-book editions: every version, plus a free archive edition</a></p>
+
+  <div class="tabs" id="tabs"></div>
+  <div id="all-search-wrapper" style="display:none"><input type="text" id="all-search" placeholder="Search all files..."></div>
+
+  <div id="hashtag-cloud"></div>
+  <div id="category-info" class="subtitle"></div>
+  <div class="gallery" id="gallery"></div>
+  <div class="pagination" id="pagination"></div>
+
+
+  <div id="websites-view">
+    <p class="ws-intro">Dated static copies of <b id="ws-count">…</b> web pages that concern Great House Farm (Tŷ Mawr), Llandough, grouped by site. Tap a card to preview the copy here; “Live website” opens the original. Links inside a copy stay in the Vault. The copies now live at <a href="https://wayback-html.bucklerfamily.estate/">wayback-html.bucklerfamily.estate</a> with their original design and short readable addresses; old addresses here forward there. <a href="https://projects.bucklerfamily.estate/wayback-websites-archive/" target="_blank" rel="noopener">About this archive</a> · <a href="/websites/index.json">index.json</a></p>
+    <input type="search" id="ws-search" placeholder="Search archived pages…" aria-label="Search archived pages">
+    <div id="ws-list"></div>
+  </div>
+  <div id="ws-modal" role="dialog" aria-modal="true" aria-label="Archived page preview"><div class="bar"><span class="tt" id="ws-mt"></span><a id="ws-mopen" href="#" target="_blank" rel="noopener">Open</a><a id="ws-mlive" href="#" target="_blank" rel="noopener">Live website</a><button id="ws-mclose" type="button">Close ✕</button></div><iframe id="ws-mframe" title="Archived page" sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox" loading="lazy"></iframe></div>
+
+  <footer style="text-align:center;padding:1rem;font-size:0.75rem;color:#9a9aa8;border-top:1px solid rgba(255,255,255,0.1);margin-top:2rem">
+    &copy; 2026 DATRO Consortium. <span id="main-title" class="wb-ver"></span>
+  </footer>
+
+  <script data-cfasync="true">
+    (async () => {
+      const CATEGORIES = [
+        { name: 'all', label: 'All', icon: '📦' },
+        { name: 'images', label: 'Images', icon: '🖼' },
+        { name: 'pdf', label: 'PDF', icon: '📄' },
+        { name: 'text', label: 'Text', icon: '📝' },
+        { name: 'email', label: 'Case Emails', icon: '✉️' },
+        { name: 'video', label: 'Video', icon: '🎬' },
+        { name: 'websites', label: 'Websites', icon: '🌐', virtual: true }
+      ];
+      const PER_PAGE = 10;
+      let allData = {};
+      let currentCat = 'images';
+      let currentPage = 1;
+      let filtered = [];
+
+      const tabsEl = document.getElementById('tabs');
+      const galleryEl = document.getElementById('gallery');
+      const paginationEl = document.getElementById('pagination');
+      const infoEl = document.getElementById('category-info');
+      const hashCloudEl = document.getElementById('hashtag-cloud');
+      const allSearchEl = document.getElementById('all-search');
+      const allSearchWrapper = document.getElementById('all-search-wrapper');
+
+      // render tabs immediately so UI is never just the title
+      renderTabs();
+
+      // -- WEBSITES tab (24 Oct 2026): archived web pages from /websites/index.json --
+      let wsData = null;
+      const wsView = document.getElementById('websites-view');
+      const wsList = document.getElementById('ws-list');
+      const wsEsc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+      const wsDate = t => { try { return new Date(t).toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'}); } catch(e) { return t; } };
+      async function wsLoad() {
+        if (wsData) return wsData;
+        try { wsData = JSON.parse(await xhrGet('/websites/index.json')); } catch(e) { wsData = {items: []}; }
+        allData.websites = wsData.items || [];
+        renderTabs();
+        return wsData;
+      }
+      function wsRender(q) {
+        const items = (wsData.items || []).filter(i => !q || (i.title + ' ' + i.url).toLowerCase().includes(q));
+        document.getElementById('ws-count').textContent = (wsData.items || []).length;
+        const by = {};
+        items.forEach(i => (by[i.host] = by[i.host] || []).push(i));
+        const hosts = Object.keys(by).sort((a, b) => by[b].length - by[a].length || a.localeCompare(b));
+        wsList.innerHTML = hosts.length ? hosts.map(h => `<details class="ws-host"${q ? ' open' : ''}><summary><span class="h">${wsEsc(h)}</span><span class="n">${by[h].length} page${by[h].length !== 1 ? 's' : ''}</span></summary><div class="ws-grid">` +
+          by[h].map(i => `<div class="ws-card"><button class="ws-thumb" type="button" data-ws="${wsEsc(i.latest)}" aria-label="Preview ${wsEsc(i.title)}"><img loading="lazy" src="${wsEsc(i.thumb)}" alt=""></button>` +
+            `<a class="ws-live" href="${wsEsc(i.url)}" target="_blank" rel="noopener">Live website ↗</a>` +
+            `<div class="ws-t" data-ws="${wsEsc(i.latest)}">${wsEsc(i.title)}</div>` +
+            `<div class="ws-m">${wsDate(i.captured)} · ${wsEsc(i.version)}${i.n_versions > 1 ? ' (' + i.n_versions + ' versions)' : ''} · <a href="${wsEsc(i.latest)}" target="_blank" rel="noopener">latest</a></div></div>`).join('') +
+          `</div></details>`).join('') : '<p style="text-align:center;color:#99a;padding:1.5rem">No archived pages match.</p>';
+        wsList.querySelectorAll('[data-ws]').forEach(el => el.addEventListener('click', () => wsOpen(el.dataset.ws)));
+      }
+      function wsOpen(latest) {
+        const i = (wsData.items || []).find(x => x.latest === latest); if (!i) return;
+        document.getElementById('ws-mt').textContent = i.title + ' · ' + i.version;
+        document.getElementById('ws-mopen').href = latest;
+        document.getElementById('ws-mlive').href = i.url;
+        document.getElementById('ws-mframe').src = latest;
+        document.getElementById('ws-modal').classList.add('open');
+        history.replaceState(null, '', '#websites/' + i.host + '/' + i.slug);
+      }
+      function wsClose() {
+        document.getElementById('ws-modal').classList.remove('open');
+        document.getElementById('ws-mframe').src = 'about:blank';
+        history.replaceState(null, '', '#websites');
+      }
+      document.getElementById('ws-mclose').addEventListener('click', wsClose);
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') wsClose(); });
+      document.getElementById('ws-search').addEventListener('input', e => wsRender(e.target.value.toLowerCase().trim()));
+      async function wsShow() {
+        ['gallery','pagination','hashtag-cloud','category-info','all-search-wrapper'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+        wsView.style.display = 'block';
+        await wsLoad(); wsRender('');
+        const m = location.hash.match(/^#websites\/([^/]+)\/([^/]+)/);
+        if (m) { location.replace(`/websites/${m[1]}/${m[2]}/`); return; }
+        else if (location.hash !== '#websites') history.replaceState(null, '', '#websites');
+      }
+      function wsHide() {
+        wsView.style.display = 'none';
+        ['gallery','pagination','hashtag-cloud','category-info'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = ''; });
+        if (/^#websites/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search);
+      }
+      wsLoad();
+
+      // Dynamic version from GitHub releases API
+      (async function updateWaybackVersion() {
+        try {
+          const res = await fetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=10', {
+            headers: { 'Accept': 'application/vnd.github.v3+json' }
+          });
+          if (res.ok) {
+            const releases = await res.json();
+            const wb = releases.find(r => r.tag_name && r.tag_name.startsWith('wayback-v'));
+            if (wb) {
+              const ver = wb.tag_name.replace('wayback-', '');
+              const titleEl = document.getElementById('main-title');
+              if (titleEl) titleEl.textContent = `· Archive ${ver}`;
+              document.title = 'The Wayback Vault';
+              return;
+            }
+          }
+        } catch(e) {}
+        // fallback to version.txt
+        try {
+          const ver = (await xhrGet('version.txt')).trim();
+          const titleEl = document.getElementById('main-title');
+          if (titleEl) titleEl.textContent = `· Archive ${ver}`;
+          document.title = 'The Wayback Vault';
+        } catch(e) {}
+      })();
+
+      function extractTags(item) {
+        const tags = (item.name || '').match(/#\w+/g) || [];
+        if (Array.isArray(item.tags)) tags.push(...item.tags.map(t => t.startsWith('#') ? t : '#' + t));
+        return tags.map(t => t.toLowerCase());
+      }
+
+      function xhrGet(url) {
+        return new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          xhr.open('GET', url, true);
+          xhr.responseType = 'text';
+          xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 300) resolve(xhr.responseText);
+            else reject(new Error('HTTP ' + xhr.status));
+          };
+          xhr.onerror = function() { reject(new Error('Network error')); };
+          xhr.send();
+        });
+      }
+
+      async function loadCategory(cat) {
+        if (cat === 'all') return [];
+        const url = cat === 'email' ? 'email/mail-index.json' : `${cat}/_treeview.json`;
+        try {
+          const text = await xhrGet(url);
+          const payload = JSON.parse(text);
+          const data = cat === 'email'
+            ? (payload.records || []).filter(record => record.recordType === 'correspondence').map(record => ({
+                ...record,
+                name: record.subject || record.name,
+                path: record.sourcePath || record.path,
+                tags: Array.from(new Set(['email', ...(record.tags || [])]))
+              }))
+            : payload;
+          return data.map(item => ({
+            ...item,
+            _category: cat,
+            _hashtags: extractTags(item),
+            _tags: (item.name || '').toLowerCase()
+          }));
+        } catch(e) {
+          return [];
         }
-        htmlString += '</ul>';
-        document.getElementsByTagName('body')[0].innerHTML = htmlString;
-           })()
-    </script>
-  </body>
-<script src="_theme-explorer/jquery.min.js"></script>
+      }
+
+      function getSafePath(p) {
+        if (!p) return '';
+        // encode each segment so # and special chars in filenames don't break URLs ( # starts fragment)
+        return p.split('/').map(encodeURIComponent).join('/');
+      }
+
+      function renderHashtagCloud() {
+        // restore previous single-row under categories style: click tags to filter/show matching
+        const allTags = ['#email', '#ghf', '#planning', '#bpvsbuckler', '#datro', '#ccan', '#morgan', '#ceo', '#gui', '#library', '#family'];
+        const tags = allTags.filter(t => !t.includes('slide')); // keep bpvs etc visible for click-to-show
+        const active = window.activeTagFilters || (window.activeTagFilters = new Set());
+        hashCloudEl.innerHTML = `<span class="tag-label">Filter:</span>` +
+          tags.map(t =>
+            `<span class="tag${active.has(t) ? ' active' : ''}" data-tag="${t}">${t}</span>`
+          ).join('') +
+          `<button class="clear-btn" id="hash-clear">clear</button>`;
+        hashCloudEl.querySelectorAll('.tag').forEach(el => {
+          el.addEventListener('click', () => {
+            const tag = el.dataset.tag;
+            if (active.has(tag)) active.delete(tag);
+            else active.add(tag);
+            currentPage = 1;
+            applyFilter();
+          });
+        });
+        const clearBtn = document.getElementById('hash-clear');
+        if (clearBtn) clearBtn.addEventListener('click', () => { active.clear(); currentPage = 1; applyFilter(); });
+      }
+
+      async function init() {
+        try {
+          for (const cat of CATEGORIES) {
+            if (cat.name === 'all') {
+              const allItems = [];
+              for (const sub of CATEGORIES) {
+                if (sub.name === 'all' || sub.virtual) continue;
+                allData[sub.name] = await loadCategory(sub.name);
+                allItems.push(...(allData[sub.name] || []));
+              }
+              allData.all = allItems;
+            } else if (!cat.virtual) {
+              allData[cat.name] = await loadCategory(cat.name);
+            }
+          }
+          allData.email = (allData.text || []).filter(item =>
+            (item.tags || []).some(t => String(t).toLowerCase() === 'email')
+            || (item._hashtags || []).includes('#email')
+          );
+        } catch (e) {
+          console.warn('load error, continuing with partial data', e);
+        }
+        renderTabs();
+        switchCategory('images');
+
+        // Support URL param from bpvsbuckler for filtered view, e.g. ?slide=65 or ?year=1988
+        // Filter items with matching #slide-N or year in name, without affecting main UI
+        const params = new URLSearchParams(window.location.search);
+        if ((params.get('cat') || '').toLowerCase() === 'email') {
+          // Preserve existing deep links while using the single Text / Email tab.
+          window.activeTagFilters = new Set(['#email']);
+          switchCategory('text');
+        }
+        if ((params.get('cat') || '').toLowerCase() === 'websites' || /^#websites/.test(location.hash)) switchCategory('websites');
+        const slideParam = params.get('slide') || params.get('s');
+        const yearParam = params.get('year') || params.get('y');
+        if (slideParam || yearParam) {
+          setTimeout(() => {
+            let items = allData[currentCat] || [];
+            if (slideParam) {
+              const tag = '#slide-' + slideParam;
+              items = items.filter(item => (item._hashtags || []).includes(tag.toLowerCase()) || (item.name || '').includes(slideParam));
+            } else if (yearParam) {
+              items = items.filter(item => (item.name || '').includes(yearParam));
+            }
+            filtered = items;
+            infoEl.textContent = `${filtered.length} result${filtered.length !== 1 ? 's' : ''} (filtered for bpvsbuckler)`;
+            renderPage();
+          }, 200);
+        }
+
+        // support ?hashtag=bpvsbuckler for bpvs integration
+        const hashParam = params.get('hashtag');
+        if (hashParam) {
+          setTimeout(() => {
+            let items = allData[currentCat] || [];
+            const tag = '#' + hashParam.toLowerCase();
+            items = items.filter(item => (item._hashtags || []).includes(tag) || (item.name || '').toLowerCase().includes(tag));
+            filtered = items;
+            infoEl.textContent = `${filtered.length} result${filtered.length !== 1 ? 's' : ''} (bpvsbuckler filter)`;
+            renderPage();
+          }, 300);
+        }
+      }
+
+      function renderTabs() {
+        tabsEl.innerHTML = CATEGORIES.map(c =>
+          `<div class="tab${c.name === currentCat ? ' active' : ''}" data-cat="${c.name}">${c.icon} ${c.label}<span class="count-badge">${(allData[c.name] || []).length}</span></div>`
+        ).join('');
+        tabsEl.querySelectorAll('.tab').forEach(el => {
+          el.addEventListener('click', () => {
+            switchCategory(el.dataset.cat);
+          });
+        });
+      }
+
+      function switchCategory(cat) {
+        if (cat === 'websites') {
+          currentCat = cat;
+          tabsEl.querySelectorAll('.tab').forEach(el => el.classList.toggle('active', el.dataset.cat === cat));
+          allSearchWrapper.style.display = 'none';
+          wsShow();
+          return;
+        }
+        if (wsView.style.display === 'block') wsHide();
+        currentCat = cat;
+        currentPage = 1;
+        tabsEl.querySelectorAll('.tab').forEach(el => {
+          el.classList.toggle('active', el.dataset.cat === cat);
+        });
+        if (cat === 'all') {
+          allSearchWrapper.style.display = 'block';
+          allSearchEl.value = '';
+        } else {
+          allSearchWrapper.style.display = 'none';
+        }
+        applyFilter();
+      }
+
+      function applyFilter() {
+        let items = allData[currentCat] || [];
+
+        const query = currentCat === 'all' ? allSearchEl.value.toLowerCase().trim() : '';
+        if (query) {
+          items = items.filter(item => item._tags.includes(query));
+        }
+        const active = window.activeTagFilters || new Set();
+        if (active.size > 0) {
+          items = items.filter(item =>
+            item._hashtags.some(t => active.has(t))
+          );
+        }
+        filtered = items;
+        infoEl.textContent = `${filtered.length} result${filtered.length !== 1 ? 's' : ''} in ${currentCat}`;
+        renderHashtagCloud();
+        renderPage();
+      }
+
+      function xhrBlob(url) {
+        return new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          xhr.open('GET', url, true);
+          xhr.responseType = 'blob';
+          xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              const ct = xhr.getResponseHeader('content-type') || '';
+              if (ct.includes('text/html')) { reject(new Error('Cloudflare challenge')); return; }
+              resolve(URL.createObjectURL(xhr.response));
+            } else reject(new Error('HTTP ' + xhr.status));
+          };
+          xhr.onerror = function() { reject(new Error('Network error')); };
+          xhr.send();
+        });
+      }
+
+      function renderPage() {
+        const total = filtered.length;
+        const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
+        if (currentPage > totalPages) currentPage = totalPages;
+        const start = (currentPage - 1) * PER_PAGE;
+        const pageItems = filtered.slice(start, start + PER_PAGE);
+
+        if (total === 0) {
+          galleryEl.innerHTML = '<p style="text-align:center;color:#667;padding:2rem">No results found.</p>';
+          paginationEl.innerHTML = '';
+          return;
+        }
+
+        galleryEl.innerHTML = pageItems.map(item => {
+          const ext = (item.path || '').split('.').pop().toLowerCase();
+          const imgExts = ['jpg','jpeg','png','gif','webp','bmp','svg'];
+          const vidExts = ['mp4', 'webm', 'mov', 'avi'];
+          const isImg = imgExts.includes(ext);
+          const isVid = vidExts.includes(ext);
+          const hash = item._hashtags && item._hashtags.length > 0 ? item._hashtags[0].replace('#', '') : '';
+          let media = '';
+          const safe = `/${getSafePath(item.path)}`;
+          if (isImg) {
+            media = `<a href="${safe}" target="_blank"><img data-xhr-src="${safe}" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect fill='%23334' width='100' height='100'/%3E%3Ctext x='50' y='55' text-anchor='middle' fill='%23667' font-size='12'%3ELoading...%3C/text%3E%3C/svg%3E" alt="${item.name}"></a>`;
+          } else if (isVid) {
+            media = `<a href="${safe}" target="_blank"><video data-xhr-src="${safe}" controls preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect fill='%23334' width='100' height='100'/%3E%3Ctext x='50' y='55' text-anchor='middle' fill='%23667' font-size='12'%3ELoading...%3C/text%3E%3C/svg%3E"></video></a>`;
+          } else if (ext === 'pdf') {
+            const pdfIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="%23f87171" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`;
+            media = `<a href="${safe}" target="_blank" class="pdf-link" data-xhr-pdf="${safe}">${pdfIcon}<span class="pdf-label">Open PDF</span></a>`;
+          } else if (ext === 'txt') {
+            const txtIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="%2360a5fa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>`;
+            media = `<a href="${safe}" target="_blank" class="pdf-link" data-xhr-txt="${safe}">${txtIcon}<span class="pdf-label" style="color:%2360a5fa">Open Text</span></a>`;
+          } else {
+            media = `<a href="${safe}" target="_blank">${item.name}</a>`;
+          }
+          const nameClean = (item.name || '').replace(/\s*#\w+/g, '').trim();
+          return `<div class="item ${item._category}">${media}<div class="name">${nameClean}</div>${hash ? `<span class="hash-badge ${hash}">#${hash}</span>` : ''}</div>`;
+        }).join('');
+
+        // Load media via XHR to bypass Cloudflare challenge
+        galleryEl.querySelectorAll('[data-xhr-src]').forEach(el => {
+          const url = el.getAttribute('data-xhr-src');
+          xhrBlob(url).then(blobUrl => {
+            el.src = blobUrl;
+          }).catch(() => {
+            el.alt = 'Failed to load';
+          });
+        });
+
+        // Load PDFs via XHR and open in new tab
+        galleryEl.querySelectorAll('[data-xhr-pdf]').forEach(el => {
+          const url = el.getAttribute('data-xhr-pdf');
+          el.addEventListener('click', (e) => {
+            e.preventDefault();
+            el.querySelector('.pdf-label').textContent = 'Loading...';
+            xhrBlob(url).then(blobUrl => {
+              window.open(blobUrl, '_blank');
+              el.querySelector('.pdf-label').textContent = 'Open PDF';
+            }).catch(() => {
+              el.querySelector('.pdf-label').textContent = 'Failed to load';
+            });
+          });
+        });
+
+        // Load text files via XHR and open in new tab
+        galleryEl.querySelectorAll('[data-xhr-txt]').forEach(el => {
+          const url = el.getAttribute('data-xhr-txt');
+          el.addEventListener('click', (e) => {
+            e.preventDefault();
+            el.querySelector('.pdf-label').textContent = 'Loading...';
+            xhrBlob(url).then(blobUrl => {
+              window.open(blobUrl, '_blank');
+              el.querySelector('.pdf-label').textContent = 'Open Text';
+            }).catch(() => {
+              el.querySelector('.pdf-label').textContent = 'Failed to load';
+            });
+          });
+        });
+
+        renderPagination(totalPages, total);
+      }
+
+      function renderPagination(totalPages, total) {
+        if (totalPages <= 1) {
+          paginationEl.innerHTML = `<span class="info">${total} item${total !== 1 ? 's' : ''}</span>`;
+          return;
+        }
+        let html = `<button class="prev" data-page="${currentPage - 1}" ${currentPage <= 1 ? 'disabled' : ''}>Back</button>`;
+        const maxVisible = 9;
+        let startPage = Math.max(1, currentPage - 4);
+        let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+        if (endPage - startPage < maxVisible - 1) {
+          startPage = Math.max(1, endPage - maxVisible + 1);
+        }
+        if (startPage > 1) {
+          html += `<button data-page="1">1</button>`;
+          if (startPage > 2) html += `<span class="info">...</span>`;
+        }
+        for (let i = startPage; i <= endPage; i++) {
+          html += `<button data-page="${i}" class="${i === currentPage ? 'active-page' : ''}">${i}</button>`;
+        }
+        if (endPage < totalPages) {
+          if (endPage < totalPages - 1) html += `<span class="info">...</span>`;
+          html += `<button data-page="${totalPages}">${totalPages}</button>`;
+        }
+        html += `<button class="next" data-page="${currentPage + 1}" ${currentPage >= totalPages ? 'disabled' : ''}>Next</button>`;
+        html += `<span class="info">Page ${currentPage} of ${totalPages}</span>`;
+        paginationEl.innerHTML = html;
+        paginationEl.querySelectorAll('button:not(:disabled)').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const page = parseInt(btn.dataset.page);
+            if (!isNaN(page)) { currentPage = page; renderPage(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+          });
+        });
+      }
+
+      if (allSearchEl) {
+        allSearchEl.addEventListener('input', () => { currentPage = 1; applyFilter(); });
+      }
+
+      await init();
+
+      // Support URL param for cross-site filter from bpvsbuckler, e.g. ?slide=85 or ?year=1988
+      (function applyUrlFilter() {
+        const params = new URLSearchParams(window.location.search);
+        const slide = params.get('slide') || params.get('s');
+        const yr = params.get('year') || params.get('y');
+        const q = params.get('q') || params.get('query');
+        if (slide || yr || q) {
+          setTimeout(() => {
+            if (slide) {
+              // filter items with #slide-N or the number in name
+              const tag = '#slide-' + slide;
+              filtered = (allData[currentCat] || []).filter(item => 
+                (item.name || '').toLowerCase().includes(tag) || (item.name || '').includes(slide)
+              );
+              infoEl.textContent = `${filtered.length} result${filtered.length !== 1 ? 's' : ''} for slide ${slide}`;
+            } else if (yr) {
+              filtered = (allData[currentCat] || []).filter(item => (item.name || '').includes(yr));
+              infoEl.textContent = `${filtered.length} result${filtered.length !== 1 ? 's' : ''} for year ${yr}`;
+            } else if (q) {
+              filtered = (allData[currentCat] || []).filter(item => (item._tags || '').includes(q.toLowerCase()));
+            }
+            currentPage = 1;
+            renderPage();
+          }, 300);
+        }
+      })();
+    })();
+  </script>
+<section id="agent-access" aria-label="AI-agent access" style="margin:20px auto;padding:12px 10px;border-top:1px solid #889;font:13px/1.5 system-ui,sans-serif;color:inherit"><strong>Agent reading access</strong><p id="webmcp-status">Read-only WebMCP tools are supported in compatible browser agents; direct text, JSON and PDF resources remain available as fallback.</p><p><a href="/agent-index.json">Machine-readable archive index</a> · <a href="/llms.txt">Agent guide</a> · <a href="/text/_treeview.json">Text archive index</a> · <a href="/pdf/_treeview.json">PDF archive index</a></p></section><script src="/agent-tools.js" defer></script>
+</body>
 </html>
