@@ -1,0 +1,499 @@
+{
+ "_about": "The case questions: the questions every request, reply and document is trying to answer. Each carries the current best answer on the evidence, what supports it, what cuts against it, and what is still outstanding. The graph builder attaches matching Q&A from the correspondence to each question automatically (by 'match' terms) and links each to its scenes. Status values: documented (a primary record held), corroborated (two independent sources), family-account (rests on the family's own account so far), contested (sources disagree), open (no answer yet), not-held (searched for and reported not held).",
+ "questions": [
+  {
+   "id": "cq-1667",
+   "question": "When did the Williams family come to Great House, and on what terms?",
+   "scenes": [
+    "ghf-16670101-1",
+    "ghf-15600101-1"
+   ],
+   "status": "contested",
+   "answer": "The 1667 date rests on Mary Williams's c. 1974 statement and the 1974 press reports that repeat it. No document of 1667 has been found. The family's own correspondence describes 1667 three ways: a purchase, continuous occupation 'since at least 1667', and a lease for 999 years. The heritage record (Suggett 1988, GGAT02038s) says the Vaughans, a minor gentry family, occupied Great House as the chief freehold farm from the mid-16th to the late 18th century. Both can be true only if the Williamses held under the Vaughans (as tenants or lessees) before the Bute purchase.",
+   "for": [
+    "Mary Williams's statement (c. 1974)",
+    "1974 newspaper reports",
+    "Family tradition of nine generations"
+   ],
+   "against": [
+    "RCAHMW Archive 6048945 / Heneb GGAT02038s: Vaughans occupied the house mid-C16 to late C18",
+    "No 1667 deed, lease, court roll entry or fine located in any archive searched"
+   ],
+   "next": [
+    "1670 Glamorgan hearth tax (published, Welsh Journals Online): who was the householder at Great House?",
+    "TNA E 179/221/297 and E 179/221/294",
+    "Glamorgan land tax 1691–1707 (DBJ/O/90-94)",
+    "NLW Bute deeds: any lease of Great House c.1660–75 or for 999 years; the Vaughan-to-Bute conveyance and its recitals",
+    "Earls of Pembroke papers (WSHC 2057)"
+   ],
+   "match": [
+    "1667",
+    "999 year",
+    "999-year",
+    "Vaughan",
+    "hearth tax",
+    "land tax",
+    "nine generation"
+   ]
+  },
+  {
+   "id": "cq-bute-acquisition",
+   "question": "When and how did the Bute Estate acquire Great House from the Vaughans?",
+   "scenes": [
+    "ghf-18000101-1",
+    "ghf-15600101-1"
+   ],
+   "status": "open",
+   "answer": "Bute bought the lordship of the manor in 1793. The heritage record says Bute acquired the freehold of Great House in the early 19th century. The conveyance from the Vaughans or their heirs has not been located, so the date, the price and any leases it recited are unknown.",
+   "for": [
+    "Heneb GGAT02038s / RCAHMW Archive 6048945: 'In the early C19 the freehold was acquired by the Bute Estate'"
+   ],
+   "against": [],
+   "next": [
+    "NLW Bute Estate Records: the Vaughan conveyance and abstract of title",
+    "Mount Stuart: Bute estate deeds (research visit)"
+   ],
+   "match": [
+    "Vaughan",
+    "freehold was acquired",
+    "early C19",
+    "1793"
+   ]
+  },
+  {
+   "id": "cq-1877",
+   "question": "What happened in 1877: did Bute sell the farmhouse and about 10 acres to Daniel Thomas, or only lease quarrying rights?",
+   "scenes": [
+    "ghf-18770101-1",
+    "ghf-18760101-1",
+    "ghf-20260908-1"
+   ],
+   "status": "family-account",
+   "answer": "Mary's statement says Bute sold the farmhouse, buildings and about 10 acres to Daniel Thomas in 1877 and kept about 9 acres, with the house to pass to the Williamses when quarrying ended. No deed has been found. Glamorgan Archives found no deeds for an 1877 Daniel Thomas transaction (2026/4097b) and pointed to Bute X.6(12), the Bute trustees' 1877 abstract of payments and receipts at Cardiff Library. DBDT/79/1, a May 1877 lease to a John Williams, was examined and is a Pembroke Terrace, Cardiff property, not Llandough (2026/3893). A capital receipt from Daniel Thomas in Bute X.6(12) would point to a sale; a rent or royalty would point to a lease.",
+   "for": [
+    "Mary Williams's statement (c. 1974)",
+    "Western Ground Rents and BP later dealt with the farmhouse and garden as a separate unit (1959, 1962, 1965, 1975, 1983)"
+   ],
+   "against": [
+    "No 1877 deed located at Glamorgan Archives (2026/4097b)",
+    "NLW FOI/2026/09 searches of Bute series D153 and D205 did not produce it"
+   ],
+   "next": [
+    "Bute X.6(12) at Cardiff Library / Cathays Heritage Library (enquiry sent 10 Oct 2026; FOI draft ready)",
+    "NLW D153/1–8 (Llandough deeds) — enquiry 27 Sep and 10 Oct 2026",
+    "Mount Stuart: Bute accounts 1875–1880"
+   ],
+   "match": [
+    "1877",
+    "Daniel Thomas",
+    "D. Thomas",
+    "X.6(12)",
+    "D153",
+    "DBDT",
+    "limeworks",
+    "Pembroke Terrace"
+   ]
+  },
+  {
+   "id": "cq-1916",
+   "question": "What did the 1916 tenancy cover?",
+   "scenes": [
+    "ghf-19160201-1"
+   ],
+   "status": "contested",
+   "answer": "The 1987 Court of Appeal judgment records a 1916 yearly tenancy from Bute to John Williams of 'the whole farm'. The document itself has not been found. The family's case is that Bute could not let the house in 1916 if Thomas owned it from 1877.",
+   "for": [
+    "BP Properties Ltd v Buckler [1987] EWCA Civ 2 (as recited by the court)"
+   ],
+   "against": [
+    "Mary's statement (two parcels, two landlords from 1877)"
+   ],
+   "next": [
+    "Bute rentals 1916 (NLW Bute R-series)",
+    "Glamorgan Archives D696 Western Ground Rents rentals c.1938–44"
+   ],
+   "match": [
+    "1916",
+    "whole farm"
+   ]
+  },
+  {
+   "id": "cq-1928",
+   "question": "Did the family stop paying rent on the house in 1928, and did the freehold pass to them then?",
+   "scenes": [
+    "ghf-19280101-1",
+    "ghf-19400101-1"
+   ],
+   "status": "family-account",
+   "answer": "Mary's statement says the last quarry machinery left in 1928 and John Williams paid a final £4 rent to Alfred Thomas; she saw the receipt, which is missing. Land Registry records a 15 May 1924 agreement among the deeds before registration; whether it relates to this is unknown.",
+   "for": [
+    "Mary Williams's statement (c. 1974)"
+   ],
+   "against": [
+    "The 1987 judgment treats the family as tenants or licensees throughout"
+   ],
+   "next": [
+    "HM Land Registry: the 1924 record on the first-registration file (SAR due 28 Oct 2026)"
+   ],
+   "match": [
+    "1928",
+    "15 May 1924",
+    "Alfred Thomas"
+   ]
+  },
+  {
+   "id": "cq-1938-1939",
+   "question": "What did Bute sell to Western Ground Rents in 1938, and did the 1939 tenancy include the house?",
+   "scenes": [
+    "ghf-19380101-1",
+    "ghf-19390501-1"
+   ],
+   "status": "family-account",
+   "answer": "The judgment records the 1938 conveyance of Bute's interest to Western Ground Rents. The family's account, from Hywel's own sight of the 1939 revised tenancy and plan, is that it covered only the fields east of the house (Parcel B). The 1938 conveyance itself has not been produced.",
+   "for": [
+    "The 1939 tenancy plan, as seen by the family"
+   ],
+   "against": [
+    "The 1987 judgment describes the tenancy as of the farm"
+   ],
+   "next": [
+    "Glamorgan Archives D696/1–3 (Western Ground Rents plans and rentals c.1938–44): searchroom or paid search",
+    "HM Land Registry first-registration bundle (43-document schedule)"
+   ],
+   "match": [
+    "Western Ground Rents",
+    "WGR",
+    "D696",
+    "1939 tenancy",
+    "revised tenancy",
+    "1938 conveyance"
+   ]
+  },
+  {
+   "id": "cq-1955",
+   "question": "Did the 1955 possession order cover the farmhouse, or only the fields?",
+   "scenes": [
+    "ghf-19550202-1"
+   ],
+   "status": "contested",
+   "answer": "The order was against Frederick Buckler, described as 'the whole of the farm'. Possession was taken on 4 July 1955 of everything except the farmhouse and garden. Mary was not a party. The 1987 court counted adverse possession of the house from 1955.",
+   "for": [
+    "The 1987 judgment's own account of enforcement (house and garden excepted)"
+   ],
+   "against": [
+    "The order's wording ('the whole of the farm')"
+   ],
+   "next": [
+    "The 1955 High Court file (not yet located)"
+   ],
+   "match": [
+    "1955",
+    "possession order",
+    "summary judgment"
+   ]
+  },
+  {
+   "id": "cq-registration",
+   "question": "How did BP come to be registered as owner of the farmhouse, and was the occupier's claim disclosed?",
+   "scenes": [
+    "ghf-19821119-1",
+    "ghf-19830223-1",
+    "ghf-19870202-1",
+    "ghf-20260323-1",
+    "ghf-20260419-1",
+    "ghf-20260730-1"
+   ],
+   "status": "documented",
+   "answer": "BP's solicitors applied for first registration of WA231076 in November 1982 and of the farmhouse and garden as WA240304 on 23 February 1983, on the 1975 conveyance between two BP companies, certifying no known question or doubt affecting title. The titles were amalgamated in February 1987 while the appeal was pending. Nothing on the file produced so far shows the occupier being asked what she claimed.",
+   "for": [
+    "HM Land Registry register and title plans",
+    "43-document first-registration schedule",
+    "HMLR complaint decisions 19 Apr and 25 May 2026"
+   ],
+   "against": [],
+   "next": [
+    "HM Land Registry SAR (due 28 Oct 2026)",
+    "Independent Complaints Reviewer ICR/090/26"
+   ],
+   "match": [
+    "WA231076",
+    "WA240304",
+    "N610CGV",
+    "first registration",
+    "amalgamat"
+   ]
+  },
+  {
+   "id": "cq-judgment",
+   "question": "What did the courts actually decide in 1986–88: ownership, or only possession?",
+   "scenes": [
+    "ghf-19860710-1",
+    "ghf-19870731-1",
+    "ghf-19880303-1",
+    "ghf-20260923-1"
+   ],
+   "status": "documented",
+   "answer": "The Court of Appeal decided a claim for possession and a defence of adverse possession: it found adverse possession from 1955 but held time was stopped by the 1962 action and the 1974 letters made the occupation permissive. It did not try Mary's 1974 ownership plea. The House of Lords refused leave in March 1988; its judicial papers are YHL/PO/JO/10/11/2536 at TNA, catalogued only on 20 May 2026.",
+   "for": [
+    "BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+    "TNA CAS-347296-M0V4Y1 (Judicial Papers A–C 1–63)"
+   ],
+   "against": [],
+   "next": [
+    "Inspect YHL/PO/JO/10/11/2536 at Kew",
+    "TNA internal review of CAS-347296 (custody and search history)"
+   ],
+   "match": [
+    "EWCA Civ",
+    "Court of Appeal",
+    "House of Lords",
+    "YHL/PO/JO",
+    "Judicial Papers",
+    "Dillon"
+   ]
+  },
+  {
+   "id": "cq-papers",
+   "question": "What happened to the family's papers (the blanket box) in 1950–52?",
+   "scenes": [
+    "ghf-19500601-1"
+   ],
+   "status": "family-account",
+   "answer": "Mary's statement says the family's documents were taken from a blanket box around 1950–52. No record of their removal or current whereabouts has been found.",
+   "for": [
+    "Mary Williams's statement (c. 1974)"
+   ],
+   "against": [],
+   "next": [],
+   "match": [
+    "blanket box"
+   ]
+  },
+  {
+   "id": "cq-listing",
+   "question": "Did Cadw properly consider listing the house in 1988, and where is the file?",
+   "scenes": [
+    "ghf-19880729-1",
+    "ghf-19881203-1",
+    "ghf-19881205-1",
+    "ghf-20260521-1"
+   ],
+   "status": "not-held",
+   "answer": "Cadw inspected and photographed the farmhouse and barn on 29 July 1988 (photographs released 2026 under ATISN 27021) and stated on 5 December 1988 that it was not of sufficient merit to list. Welsh Government has recorded the 1988 listing file as disposed of; the records behind that disposal finding have been requested.",
+   "for": [
+    "Cadw photographs, 29 July 1988 (ATISN 27021)"
+   ],
+   "against": [],
+   "next": [
+    "ATISN 27589 (Welsh Office / Cadw papers July–Dec 1988), due 26 Oct 2026",
+    "Records behind the disposal finding (letter of 10 Oct 2026)"
+   ],
+   "match": [
+    "ATISN",
+    "spot-list",
+    "listing file",
+    "listed building",
+    "statutory listing"
+   ]
+  },
+  {
+   "id": "cq-demolition",
+   "question": "Who was involved in the eviction and demolition of 30 November – 6 December 1988?",
+   "scenes": [
+    "ghf-19881130-1",
+    "ghf-19881206-1"
+   ],
+   "status": "open",
+   "answer": "Press reports record the eviction on 30 November and demolition from about 4am on 6 December 1988 by BP Properties. South Wales Police reported no records under FOI 719/26 (internal review 1188/26); on FOI 1264/26 (operational records) the force asked on 13 Oct 2026 for the names of individuals or entities involved, and suspended the clock under s.10(6) until clarified. The MOD relied on section 23(5) for the Special Forces element of FOI2026/09019 and reported nothing in scope on the SAR.",
+   "for": [
+    "Press archive (Western Mail, South Wales Echo, December 1988)"
+   ],
+   "against": [],
+   "next": [
+    "SWP FOI 1264/26: send the clarification (BP Properties Ltd, its agents and contractors, the bailiffs, the family) so the clock restarts",
+    "MOD internal review DPR2026/46503",
+    "RCAHMW: Suggett's post-demolition visit, Archive 6048945"
+   ],
+   "match": [
+    "6 December 1988",
+    "30 November 1988",
+    "1264/26",
+    "719/26",
+    "1188/26",
+    "1040/26",
+    "23(5)",
+    "DPR2026",
+    "FOI2026/09019",
+    "bailiff"
+   ]
+  },
+  {
+   "id": "cq-recording",
+   "question": "Was the house ever fully recorded, and what happened to the C. N. Johns / Mrs Buckler correspondence?",
+   "scenes": [
+    "ghf-19740101-1",
+    "ghf-19881212-1",
+    "ghf-19860711-1"
+   ],
+   "status": "not-held",
+   "answer": "RCAHMW's record (Suggett, Archive 6048945) says the ground floor was surveyed in 1974 by H. J. Thomas, the house 'remained partially recorded because of problems of access created by an ownership dispute', and it was demolished before it could be examined. The same record says correspondence between C. N. Johns and Mrs Buckler 'has been lost from the file since 1986/87'. RCAHMW reports no further trace of that correspondence or of the purpose of Suggett's visit (RC26-0375, 29 Sep and 6 Oct 2026).",
+   "for": [
+    "RCAHMW Archives 6048941, 6048943, 6048945",
+    "RC26-0375 replies"
+   ],
+   "against": [],
+   "next": [
+    "Order fee-waived scans of 6048945 and 6048943"
+   ],
+   "match": [
+    "Suggett",
+    "6048945",
+    "6048943",
+    "6048941",
+    "C.N. Johns",
+    "C. N. Johns",
+    "RC26-0375",
+    "H. J. Thomas",
+    "H.J. Thomas"
+   ]
+  },
+  {
+   "id": "cq-armour",
+   "question": "Was a soldier in armour found under the dining-room floor, and where are the finds?",
+   "scenes": [
+    "ghf-18700101-1"
+   ],
+   "status": "contested",
+   "answer": "Two RCAHMW records repeat the account (Archive 6048942; Daily Telegraph, 16 April 1974, Archive 6048944, 'in about 1870'). Museum Wales reports no record of acquiring such finds (FOI 2026-024 and internal review). The source of the 'held by the National Museum of Wales' attribution has not been traced.",
+   "for": [
+    "RCAHMW Archives 6048942 and 6048944",
+    "Family account"
+   ],
+   "against": [
+    "Museum Wales FOI 2026-024: not held"
+   ],
+   "next": [],
+   "match": [
+    "armour",
+    "armor",
+    "lance",
+    "visor",
+    "2026-024"
+   ]
+  },
+  {
+   "id": "cq-woodland",
+   "question": "How did the woodland (WA735527) leave the family's possession?",
+   "scenes": [
+    "ghf-19941110-1",
+    "ghf-20260925-1"
+   ],
+   "status": "family-account",
+   "answer": "The woodland is registered to the Forest of Cardiff (WA735527), which offered the family a route to ownership in September 2026; the family declined. The family's account is that the woodland of Parcel A was taken in 1955 and passed through a couple in Llandough. No price is recorded for the charity's 1994 acquisition.",
+   "for": [
+    "HM Land Registry WA735527"
+   ],
+   "against": [],
+   "next": [],
+   "match": [
+    "WA735527",
+    "woodland",
+    "Forest of Cardiff"
+   ]
+  },
+  {
+   "id": "cq-planning",
+   "question": "What does the planning record show about the site after 1988?",
+   "scenes": [
+    "ghf-19891107-1",
+    "ghf-19900313-1",
+    "ghf-19920514-1",
+    "ghf-19920903-1"
+   ],
+   "status": "documented",
+   "answer": "The Vale of Glamorgan planning file holds 89/01396/OUT (BP Properties, outline) and 92/00671/RES (Ideal Homes Wales, reserved matters). Appendices C, D and E have been chased (10 Oct 2026) under FOI 00211557.",
+   "for": [
+    "Vale of Glamorgan planning file, 17 documents, 160 pages"
+   ],
+   "against": [],
+   "next": [
+    "Vale FOI 00211557: appendices C, D and E"
+   ],
+   "match": [
+    "89/01396",
+    "92/00671",
+    "00211557",
+    "Ideal Homes",
+    "appendices C"
+   ]
+  },
+  {
+   "id": "cq-1974",
+   "question": "What happened to Mary's 1974 ownership claim?",
+   "scenes": [
+    "ghf-19740703-1",
+    "ghf-19741031-1"
+   ],
+   "status": "documented",
+   "answer": "In the 1974 county court action Mary pleaded ownership and the Limitation Act 1939. The case was part heard, adjourned and not relisted. In 1987 the court relied on the 1974 letters as making her occupation permissive; her ownership plea was never decided.",
+   "for": [
+    "BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+    "1974 press reports"
+   ],
+   "against": [],
+   "next": [
+    "The 1974 county court file (not yet located)"
+   ],
+   "match": [
+    "1974 letters",
+    "1974 action",
+    "Limitation Act 1939",
+    "licence letter",
+    "Mrs Buckler"
+   ]
+  },
+  {
+   "id": "cq-mary-death",
+   "question": "Where is Mary Doreen Williams's death registration (1983)?",
+   "scenes": [
+    "ghf-19830326-1"
+   ],
+   "status": "open",
+   "answer": "FreeBMD indexes a 1983 death. The Vale of Glamorgan and Cardiff register offices both report not holding the registration (30 Sep and 12 Oct 2026); Cardiff has passed the search on.",
+   "for": [
+    "FreeBMD index entry"
+   ],
+   "against": [],
+   "next": [
+    "Cardiff Register Office onward search (13 Oct 2026 reply)"
+   ],
+   "match": [
+    "Mary Doreen",
+    "death registration",
+    "death certificate"
+   ]
+  },
+  {
+   "id": "cq-1910",
+   "question": "What does the 1910 Valuation Office survey record for Great House?",
+   "scenes": [
+    "ghf-19080101-1"
+   ],
+   "status": "open",
+   "answer": "The National Archives identified the Valuation Office map for OS Glamorgan XLVII.6 (12 Oct 2026). The field book (DVAL/1/33 per Glamorgan Archives) would record owner, occupier and hereditament for 1910, which would show whether the house and fields were then valued as one unit or two.",
+   "for": [],
+   "against": [],
+   "next": [
+    "Order the IR 58 / map copy for XLVII.6 and the field book entry"
+   ],
+   "match": [
+    "1910",
+    "Valuation Office",
+    "XLVII.6",
+    "DVAL",
+    "IR 58",
+    "IR58"
+   ]
+  }
+ ]
+}

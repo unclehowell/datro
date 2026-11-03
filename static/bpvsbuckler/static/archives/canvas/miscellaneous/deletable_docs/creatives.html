@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Encrypted Site - Unlock</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Courier New', monospace;
+      background: #0a0a0a;
+      color: #00ff00;
+      min-height: 100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+    #login-screen {
+      max-width:600px;
+      width:100%;
+      background:#1a1a1a;
+      border:2px solid #00ff00;
+      padding:40px;
+      box-shadow:0 0 30px rgba(0,255,0,0.3);
+    }
+    #login-screen h1 {
+      color:#ff0000;
+      text-align:center;
+      margin-bottom:10px;
+      font-size:24px;
+      text-transform:uppercase;
+      letter-spacing:3px;
+    }
+    #login-screen .classification {
+      text-align:center;
+      color:#ffff00;
+      margin-bottom:30px;
+      font-size:12px;
+      letter-spacing:2px;
+    }
+    #login-screen .warning {
+      background:#2a0000;
+      border:1px solid #ff0000;
+      padding:15px;
+      margin-bottom:30px;
+      font-size:11px;
+      line-height:1.6;
+    }
+    #login-screen label {
+      display:block;
+      margin-bottom:10px;
+      font-size:14px;
+    }
+    #login-screen input {
+      width:100%;
+      background:#000;
+      border:1px solid #00ff00;
+      color:#00ff00;
+      padding:12px;
+      font-family:'Courier New', monospace;
+      font-size:14px;
+      margin-bottom:20px;
+    }
+    #login-screen button {
+      width:100%;
+      background:#003300;
+      border:2px solid #00ff00;
+      color:#00ff00;
+      padding:15px;
+      font-family:'Courier New', monospace;
+      font-size:16px;
+      cursor:pointer;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      transition:all 0.25s;
+    }
+    #login-screen button:hover { background:#00ff00; color:#000; }
+    .error {
+      background:#2a0000;
+      border:1px solid #ff0000;
+      color:#ff0000;
+      padding:10px;
+      margin-bottom:20px;
+      text-align:center;
+      display:none;
+    }
+    .blink { animation: blink 1s infinite; }
+    @keyframes blink {
+      0%,50%,100% { opacity:1; } 25%,75% { opacity:0; }
+    }
+    #subbuttons { margin-top:12px; display:flex; gap:8px; }
+    .smallbtn {
+      flex:1;
+      padding:10px;
+      border-radius:6px;
+      border:1px solid #004400;
+      background:#001a00;
+      color:#00ff00;
+      cursor:pointer;
+      font-family:'Courier New', monospace;
+      font-size:13px;
+    }
+    .smallbtn:active { transform:translateY(1px); }
+    #msg { margin-top:12px; color:#ff4444; text-align:center; min-height:18px; }
+  </style>
+</head>
+<body>
+  <div id="login-screen" role="main" aria-label="Passphrase entry">
+    <h1>⚠ CLASSIFIED DOCUMENT ⚠</h1>
+    <div class="classification">UNCLASSIFIED // FOR OFFICIAL USE ONLY</div>
+
+    <div class="warning">
+      <strong class="blink">▲ WARNING ▲</strong><br>
+      This document contains sensitive content. Authorized passphrase required for access.
+    </div>
+
+    <div class="error" id="error-msg">✗ ACCESS DENIED - INVALID DECRYPTION KEY</div>
+
+    <label for="passkey">ENTER DECRYPTION PASSPHRASE:</label>
+    <input id="passkey" type="password" placeholder="Passphrase" maxlength="256" aria-label="Passphrase input" autofocus>
+
+    <button id="decrypt">DECRYPT & ACCESS DOCUMENT</button>
+
+    <div id="subbuttons">
+      <button id="clear" class="smallbtn">Clear</button>
+      <button id="help" class="smallbtn">Help</button>
+    </div>
+
+    <div id="msg" aria-live="polite"></div>
+  </div>
+
+  <!-- CryptoJS (for in-browser AES decrypt) -->
+  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+
+  <script>
+    // embedded ciphertext
+    const ciphertext = "U2FsdGVkX1/Q/nz8wud/80eqHzPwp7ZVj5GOWGTyycGhIQ2r+GiqHLqYGorCeHNSvHt4n4HVeP1oF3hZ4K3Cp8GzP0z/Rloyrr1+cTCu9p5MwM89oRa80z9rlXVvX7VDQkGq7bXthkhgQWHc/CV8yd8BYezEH7omFlOQ+DvtIG4Xewp10ALUGZh/mbru1rSQQkQKngyViPaK6mkykx8zJaCb2CFHTKRHwfji2T32Ldh3RLxek31kJhemT7D0IK+S4yg1/Zs+gnemVraaJ1t/eeCLIFgA6xHurbdjcqz3qZLJl57Yvd89STzvZZchST9t+xDfs24dXttaus1vOLEInc6f/TD+PYp40vKEOaf+x1owK1OF0Q+f7WnvyXQDHdBjOvQFQwu8ujzVWwH08lidz4G2CDu39yR+w97Lij/OqWe7CfPXJ5ps2GcN2Wck85YMD0PAU4imz/jsT3CR6W6KPhpdtohaWTS9xkZhfCKeO1ls5rDISYzmIoIP5pB8/NLDEDMD+ETdL4HKFIWrw9IWzwI71PnYLgfq9j3DFwnTL6+mW+sy0HvWqr74YJxV08c+DvVg71bt5ePBjipp4wLLLUO0kvaYrC8lisazrY1AVE1FjZFAP/sKSy9p6Xu1uWeKN+HNP5ZlMdhOf8kl1YriwHGANkzGd1aGItIDMHwZPbSXJKWKBDc15Q58Nn0KzZX3d5jvg47PqOrhhoodFzYIBA5ECeVh9Ew7WGaXTwzmUGUCPj/VFNUFil4tohxCkU8YyQLcMM9GRq+zSDiv2jeimSewx4Njp2jHnjplbiP8D0oV/xI6VCYsUjldO4th6I/7R318k63Wm61nJrpkRVF+BjtEFVm3e+1XtZ5ljaYbP8WP+Ma2QaY5HHLKxNeUEYDB6zvSkBgEShSQL1dmUWxCLJrdsfFO+bct5aJ8mgh6LeJ7HFgJvCCMd6yVq/9pJU+X/eRnrCBKQB3TW93GAabPKl4HT9LgSSpQljDFfnrNWWGcblntHYffnOpEeWtMsm5HIgcWpyZvqPzYsslBTNN3sEqzjmyr0qwxv7XWFUIjzU+D3ORignXvhcORfogVf21TBLezdKUOwm55uxSi2h8i5AUFQI/OBxVYUpL1sB1NnQVzFFSFsMOqj/0PDz1XHWtDgMeDljuIjLrnQZdayz62hV6wnDb2ssK+98Q7ZMUrm8adLDWDML1Z9dlW+lV5iqSZJMAk4Wplz3uTMLT76oHtP/Pr2iibRh1X3zPx8tvaHWVpP86mnCYxfUjIdk4w1y5uEq3kOfvSSoYO1EomBdwdgicHr4N3WJFDlflxULpRjuNuG1I/Lik9dRfuwaF8RMDkWOLdeNdWzURI+1mKT9j58YGCn4KlmAD9DyoBwgjkOAL5U1+6g6bfAY0CYx3ip2FrlBf/sL6fWOZv0gn5ohWPSMj9Oo/3QgoXAthIV9M+Zr2Sdx2pbBf2/TVCeTQoeaf+i/VcKAEYLdxm5bbo0Iv9HaszpH54Y5lXtu4rZJqRjdlMVT/4RrcU/DpqFa4ZQ6jqzkif9vYwOb8EeTL08beXs/Xkw1f4A9QywwzY2imPQcCzdoT/Hd1Q6ix6xUScG0ULKkDKimGh1YessbAnmU8AWyQh2ey0gXwf0bjFUucW2j1OklMAPbq18r9kviC0obNsKjVLZSLmoYfrRMJz5diMb0lsZ15RRAHHHsSmTidLRLMdj4zufNKunvjyNtbxh2jWdPORFYlYGJVD6Ehbl60Z8R6DJpyyckVNk4kf71H6ozZBher3hIX7aCab9aHVHRjCq776aQU635eiLvsXpVchC9uS1oflff6ATdclmOdku0xQGpLhANFlqVSN6XFm1YiXDtPWjoJj7dbsO6qSuL5LYB1WSVBPYQ2YeTVdg/H2Ti5u64+YCfMjZo8xYhq7n02OevmEserdJXod93UPaofnYWwYcdpeADr9tvy12mZemRuysR6jafEAEcs7..." # truncated
+  </script>
+</body>
+</html>

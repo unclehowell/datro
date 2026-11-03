@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>ICR — Independent Complaints Reviewer — BP vs Buckler</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a08; color: #fafaf7; font-family: Georgia, serif; overflow-x: hidden; }
+nav { background: #1a1a1a; padding: 0.8rem 1rem; display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: center; }
+nav a { color: #fafaf7; text-decoration: none; font-size: 0.8rem; font-weight: bold; padding: 0.4rem 1rem; border-radius: 3px; }
+nav a:hover { background: #2d5016; }
+header { text-align: center; padding: 1.5rem 1rem; background: #1a1a1a; }
+header h1 { font-size: 1.8rem; margin-bottom: 0.3rem; color: #ff4444; }
+header p { font-size: 0.9rem; opacity: 0.6; font-style: italic; }
+#pinball-container { width: 100%; max-width: 800px; margin: 0 auto; position: relative; }
+canvas { display: block; width: 100%; height: auto; background: #0d0d0b; cursor: default; }
+#info { text-align: center; padding: 1rem; font-size: 0.85rem; color: #888; font-style: italic; }
+#score { text-align: center; font-size: 1.1rem; padding: 0.5rem; color: #fafaf7; }
+#score span { color: #ff4444; font-weight: bold; }
+#outcome { text-align: center; padding: 0.5rem 1rem 1.5rem; font-size: 0.9rem; color: #888; font-style: italic; max-width: 600px; margin: 0 auto; line-height: 1.5; }
+.stage-info { background: #1a1a1a; border-left: 3px solid #ff4444; padding: 1rem; margin: 0.5rem auto; max-width: 600px; border-radius: 0 4px 4px 0; }
+.stage-info h3 { color: #ff4444; font-size: 1rem; margin-bottom: 0.3rem; }
+.stage-info p { font-size: 0.85rem; color: #ccc; line-height: 1.5; }
+.hidden { display: none; }
+</style>
+</head>
+<body>
+<div id="pinball-container">
+  <canvas id="pinball" width="800" height="900"></canvas>
+</div>
+<div id="info">⬇️ Click to launch · each bumper is a stage of the ICR review · you will go through all of them</div>
+<div id="outcome"></div>
+
+<script>
+(function(){
+const canvas = document.getElementById("pinball");
+const ctx = canvas.getContext("2d");
+const scoreSpan = document.getElementById("score-val");
+const outcomeDiv = document.getElementById("outcome");
+const W = 800, H = 900;
+let score = 0;
+let gameRunning = false;
+let animId = null;
+let allBumpersHit = false;
+
+// ── Audio ──
+const AudioCtx = window.AudioContext || window.webkitAudioContext;
+let audioCtx = null;
+function initAudio() { if (!audioCtx) audioCtx = new AudioCtx(); }
+function playNote(freq, duration, type, vol) {
+  initAudio();
+  try {
+    const o = audioCtx.createOscillator();
+    const g = audioCtx.createGain();
+    o.type = type || "square";
+    o.frequency.value = freq;
+    g.gain.setValueAtTime(vol||0.06, audioCtx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+    o.connect(g); g.connect(audioCtx.destination);
+    o.start(); o.stop(audioCtx.currentTime + duration);
+  } catch(e){}
+}
+function playBumper() { playNote(350 + Math.random()*200, 0.12, "square", 0.05); }
+function playFinal() { [262, 330, 392, 523, 659].forEach((f,i) => setTimeout(()=>playNote(f,0.2,"sine",0.06), i*100)); }
+
+// Arcade background
+let bgInterval = null;
+function startBgMusic() {
+  if (bgInterval) return;
+  const notes = [147, 185, 220, 294, 370, 440, 587];
+  let ni = 0;
+  bgInterval = setInterval(() => {
+    playNote(notes[ni % notes.length], 0.15, "triangle", 0.015);
+    playNote(notes[(ni+2) % notes.length] * 2, 0.08, "square", 0.008);
+    ni++;
+  }, 350);
+}
+function stopBgMusic() { if (bgInterval) { clearInterval(bgInterval); bgInterval = null; } }
+
+// ── ICR Stage Bumpers ──
+// The ball must hit ALL of these to complete the ICR process
+const stages = [
+  { x: 400, y: 100, r: 40, label: "Stage 1\nAcknowledgement", color: "#441a1a", info: "ICR acknowledges receipt of your case. They write to confirm they have received your complaint from Land Registry and will review it." },
+  { x: 200, y: 240, r: 38, label: "Stage 2\nScope Review", color: "#5a1f1f", info: "ICR determines what they can and cannot investigate. They tell you the scope of their review — what is in and what is out." },
+  { x: 600, y: 240, r: 38, label: "Stage 3\nEvidence\nGathering", color: "#6b2222", info: "ICR requests all relevant documents from Land Registry and from you. Emails, letters, case notes, decisions. They leave no stone unturned." },
+  { x: 350, y: 380, r: 36, label: "Stage 4\nInterviews", color: "#7c2626", info: "ICR interviews the people involved. They speak to Land Registry staff, they speak to you. They try to understand what happened." },
+  { x: 550, y: 380, r: 36, label: "Stage 5\nDraft\nFindings", color: "#8d2929", info: "ICR prepares a draft report of their findings. They share it with both parties and invite comments on factual accuracy." },
+  { x: 300, y: 510, r: 34, label: "Stage 6\nFinal\nReport", color: "#9e2d2d", info: "ICR issues the final report. It contains findings, conclusions, and recommendations. This is the main output of the review." },
+  { x: 550, y: 510, r: 34, label: "Stage 7\nRecommendations", color: "#af3030", info: "ICR makes formal recommendations to Land Registry. These may include apologies, policy changes, compensation, or process improvements." },
+  { x: 400, y: 630, r: 32, label: "Stage 8\nImplementation\nReview", color: "#c03434", info: "ICR follows up to check whether Land Registry has implemented the recommendations. They report on compliance." },
+];
+
+const exit = { x: 400, y: 760, r: 25, label: "EXIT", color: "#1a1a1a" };
+
+// ── Ball ──
+const ball = {
+  x: 400, y: 840, r: 8,
+  vx: 0, vy: 0,
+  launched: false,
+  finished: false
+};
+
+// ── Physics ──
+const GRAVITY = 0.15;
+const FRICTION = 0.99;
+const BOUNCE = 0.7;
+
+function circleCollision(b, t) {
+  const dx = b.x - t.x, dy = b.y - t.y;
+  return Math.sqrt(dx*dx + dy*dy) < b.r + t.r;
+}
+
+function resolveCircCollision(b, t) {
+  const dx = b.x - t.x, dy = b.y - t.y;
+  const dist = Math.sqrt(dx*dx + dy*dy);
+  if (dist === 0) return false;
+  const nx = dx/dist, ny = dy/dist;
+  b.x = t.x + nx * (b.r + t.r);
+  b.y = t.y + ny * (b.r + t.r);
+  const dot = b.vx * nx + b.vy * ny;
+  if (dot < 0) {
+    b.vx -= 2 * dot * nx; b.vy -= 2 * dot * ny;
+    b.vx *= BOUNCE; b.vy *= BOUNCE;
+    b.vy -= 1.2;
+    b.vx += (Math.random() - 0.5) * 2;
+    return true;
+  }
+  return false;
+}
+
+function isInExit(b, e) {
+  const dx = b.x - e.x, dy = b.y - e.y;
+  return Math.sqrt(dx*dx + dy*dy) < e.r;
+}
+
+// ── Stage info tracking ──
+let currentInfo = "";
+let infoTimeout = null;
+let hitStages = new Set();
+
+// ── Update ──
+function update() {
+  if (!gameRunning || ball.finished) return;
+
+  ball.vy += GRAVITY;
+  ball.vx *= FRICTION;
+  ball.vy *= FRICTION;
+  ball.x += ball.vx;
+  ball.y += ball.vy;
+
+  if (ball.x - ball.r < 0) { ball.x = ball.r; ball.vx *= -0.5; }
+  if (ball.x + ball.r > W) { ball.x = W - ball.r; ball.vx *= -0.5; }
+  if (ball.y - ball.r < 0) { ball.y = ball.r; ball.vy *= -0.5; }
+  if (ball.y + ball.r > H) { ball.y = H - ball.r; ball.vy *= -0.8; }
+
+  for (const s of stages) {
+    if (circleCollision(ball, s)) {
+      if (resolveCircCollision(ball, s)) {
+        playBumper();
+        if (!hitStages.has(s.label)) {
+          hitStages.add(s.label);
+          score++;
+          scoreSpan.textContent = score;
+          currentInfo = s.info;
+          if (infoTimeout) clearTimeout(infoTimeout);
+          outcomeDiv.textContent = s.info;
+          infoTimeout = setTimeout(() => {
+            if (hitStages.size < stages.length) {
+              outcomeDiv.textContent = "Keep going — more stages to complete...";
+            }
+          }, 4000);
+        }
+      }
+    }
+  }
+
+  if (hitStages.size >= stages.length && !ball.finished) {
+    allBumpersHit = true;
+  }
+
+  if (isInExit(ball, exit) && allBumpersHit) {
+    ball.finished = true;
+    ball.vx = 0; ball.vy = 0;
+    playFinal();
+    stopBgMusic();
+    const remaining = stages.filter(s => !hitStages.has(s.label));
+    if (remaining.length === 0) {
+      outcomeDiv.innerHTML = "You have completed all 8 stages of the ICR process. The ball rests. Land Registry must now respond to the recommendations. But you know — they will not give you the answer you want. <strong>The system grinds on.</strong>";
+    }
+  }
+
+  if (ball.y > H - 10) {
+    if (ball.launched && !ball.finished) {
+      ball.x = 400; ball.y = 840;
+      ball.vx = 0; ball.vy = 0;
+      ball.launched = false;
+    }
+  }
+}
+
+// ── Draw ──
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+
+  ctx.strokeStyle = "#1a1a1a";
+  ctx.lineWidth = 0.5;
+  for (let x = 0; x < W; x += 40) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+  for (let y = 0; y < H; y += 40) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+
+  // Rails
+  ctx.strokeStyle = "#2a2a28";
+  ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(20, 50); ctx.lineTo(20, 870); ctx.lineTo(100, 870); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(780, 50); ctx.lineTo(780, 870); ctx.lineTo(700, 870); ctx.stroke();
+
+  // Bumpers
+  for (const s of stages) {
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    const grad = ctx.createRadialGradient(s.x - s.r*0.3, s.y - s.r*0.3, 2, s.x, s.y, s.r);
+    const isHit = hitStages.has(s.label);
+    if (isHit) {
+      grad.addColorStop(0, "#ff6666");
+      grad.addColorStop(0.5, s.color);
+    } else {
+      grad.addColorStop(0, s.color);
+      grad.addColorStop(1, "#0a0a08");
+    }
+    ctx.fillStyle = grad;
+    ctx.fill();
+    ctx.strokeStyle = isHit ? "#ff4444" : "#666";
+    ctx.lineWidth = isHit ? 3 : 1;
+    ctx.stroke();
+
+    ctx.fillStyle = "#fafaf7";
+    ctx.font = "bold 10px Georgia, serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    const lines = s.label.split("\n");
+    lines.forEach((line, i) => { ctx.fillText(line, s.x, s.y - (lines.length-1)*5 + i*10); });
+    if (isHit) {
+      ctx.fillStyle = "#ff444444";
+      ctx.font = "9px Georgia, serif";
+      ctx.fillText("✓", s.x, s.y + s.r + 12);
+    }
+  }
+
+  // Exit hole
+  ctx.beginPath();
+  ctx.arc(exit.x, exit.y, exit.r, 0, Math.PI * 2);
+  const eg = ctx.createRadialGradient(exit.x, exit.y-3, 2, exit.x, exit.y, exit.r);
+  eg.addColorStop(0, "#000"); eg.addColorStop(0.7, "#111"); eg.addColorStop(1, "#333");
+  ctx.fillStyle = eg; ctx.fill();
+  ctx.strokeStyle = "#555"; ctx.lineWidth = 2; ctx.stroke();
+  ctx.fillStyle = "#ff4444";
+  ctx.font = "bold 12px Georgia, serif";
+  ctx.textAlign = "center"; ctx.textBaseline = "middle";
+  ctx.fillText(exit.label, exit.x, exit.y);
+  if (!allBumpersHit) {
+    ctx.fillStyle = "#ff444433";
+    ctx.font = "9px Georgia, serif";
+    ctx.fillText(`(${stages.length - hitStages.size} stages remain)`, exit.x, exit.y + 18);
+  }
+
+  // Ball
+  if (!ball.finished) {
+    const g = ctx.createRadialGradient(ball.x-2, ball.y-2, 1, ball.x, ball.y, ball.r);
+    g.addColorStop(0, "#fff"); g.addColorStop(0.3, "#ddd"); g.addColorStop(1, "#888");
+    ctx.beginPath(); ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI*2); ctx.fillStyle = g; ctx.fill();
+  }
+
+  // Arcade border
+  ctx.strokeStyle = "#ff4444"; ctx.lineWidth = 4;
+  ctx.strokeRect(2, 2, W-4, H-4);
+
+  // Progress bar
+  const barW = 600, barH = 8, barX = (W - barW)/2, barY = 15;
+  ctx.fillStyle = "#1a1a1a";
+  ctx.fillRect(barX, barY, barW, barH);
+  ctx.fillStyle = "#ff4444";
+  const progress = hitStages.size / stages.length;
+  ctx.fillRect(barX, barY, barW * progress, barH);
+  ctx.strokeStyle = "#333"; ctx.lineWidth = 1;
+  ctx.strokeRect(barX, barY, barW, barH);
+  ctx.fillStyle = "#888";
+  ctx.font = "9px Georgia, serif";
+  ctx.textAlign = "center";
+  ctx.fillText(`${hitStages.size} / ${stages.length} stages`, W/2, barY + barH + 12);
+}
+
+function gameLoop() { update(); draw(); if (gameRunning) animId = requestAnimationFrame(gameLoop); }
+
+function launchBall() {
+  if (ball.launched || ball.finished) return;
+  ball.launched = true;
+  ball.vy = -12;
+  ball.vx = (Math.random() - 0.5) * 2;
+  startBgMusic();
+}
+
+canvas.addEventListener("click", (e) => {
+  if (!ball.launched) { launchBall(); return; }
+});
+canvas.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  if (!ball.launched) { launchBall(); return; }
+}, {passive: false});
+document.addEventListener("keydown", (e) => {
+  if ((e.key === " " || e.key === "Enter") && !ball.launched) launchBall();
+});
+
+gameRunning = true;
+gameLoop();
+})();
+</script>
+</body>
+</html>
