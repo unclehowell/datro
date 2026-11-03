@@ -1,0 +1,3252 @@
+{
+ "version": "1.7.1",
+ "center": [
+  51.4527,
+  -3.1985
+ ],
+ "overlays": {
+  "1900": [
+   [
+    51.4495005963362,
+    -3.2049983739852905
+   ],
+   [
+    51.45650056904643,
+    -3.192499279975891
+   ]
+  ],
+  "1920": [
+   [
+    51.4495005963362,
+    -3.2049983739852905
+   ],
+   [
+    51.45650056904643,
+    -3.192499279975891
+   ]
+  ],
+  "1947": [
+   [
+    51.4495005963362,
+    -3.2049983739852905
+   ],
+   [
+    51.45650056904643,
+    -3.192499279975891
+   ]
+  ],
+  "1878": [
+   [
+    51.4495005963362,
+    -3.2050037384033203
+   ],
+   [
+    51.45650056904643,
+    -3.192504644393921
+   ]
+  ]
+ },
+ "holders": {
+  "bute": [
+   "Bute estate",
+   "#7b5ea7"
+  ],
+  "thomas": [
+   "Daniel Thomas (Parcel A, by the 1877 statement)",
+   "#c98a2b"
+  ],
+  "mountjoy": [
+   "Mountjoy Ltd (remaining Bute property)",
+   "#6a4c93"
+  ],
+  "williams": [
+   "Williams family (Parcel A)",
+   "#2e8b57"
+  ],
+  "wgr": [
+   "Western Ground Rents",
+   "#b5473a"
+  ],
+  "bppt": [
+   "BP Pension Trust",
+   "#3b7dd8"
+  ],
+  "bpp": [
+   "BP Properties",
+   "#1d4f91"
+  ],
+  "order": [
+   "1962 possession order: farmhouse and garden",
+   "#2a9d8f"
+  ],
+  "greenp": [
+   "Green: village green VG41 (16 Jun 1970)",
+   "#e8d23a"
+  ],
+  "housing": [
+   "Ideal Homes, then Church View Close",
+   "#7a7a7a"
+  ],
+  "woodp": [
+   "Woodland: 1961 deed (WGR, South Western Brick & Tile, Cardiff City Corporation); Forest of Cardiff from 1994 (WA735527)",
+   "#d64f8a"
+  ],
+  "unknown": [
+   "Not shown in the records held",
+   "#9a9a9a"
+  ],
+  "site": [
+   "Tŷ Mawr site (heritage context)",
+   "#8a6d3b"
+  ]
+ },
+ "sources": {
+  "os1878": {
+   "t": "OS six-inch Glamorgan XLVII, surveyed 1878–79, published 1885 (National Library of Scotland)",
+   "u": "https://maps.nls.uk/view/102342664"
+  },
+  "os1900": {
+   "t": "OS 25-inch Glamorgan XLVII.6, revised 1898, published 1900 (NLS)",
+   "u": "https://maps.nls.uk/view/135196558"
+  },
+  "os1920": {
+   "t": "OS 25-inch Glamorgan XLVII.6, revised 1915, published 1920 (NLS)",
+   "u": "https://maps.nls.uk/view/135196561"
+  },
+  "os1947": {
+   "t": "OS 25-inch Glamorgan XLVII.6, revised 1941, published 1947 (NLS)",
+   "u": "https://maps.nls.uk/view/135196564"
+  },
+  "home": {
+   "t": "Legal Wiki home page: Great House Farm title-chain map (captured 21 Oct 2026)",
+   "u": "https://greathousefarmwiki.wordpress.com/"
+  },
+  "hp--tithe-apportionment-john-williams-c1841": {
+   "t": "EV-0215",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0215-tithe-apportionment-john-williams-c1841/"
+  },
+  "hp-dence-ev-0006-bute-thomas-agreement-1877": {
+   "t": "EV-0006",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0006-bute-thomas-agreement-1877/"
+  },
+  "hp-the-two-parcels": {
+   "t": "The Two Parcels",
+   "u": "https://greathousefarmwiki.wordpress.com/the-two-parcels/"
+  },
+  "hp-testimony-mary-williams": {
+   "t": "Mary (Nancy) Williams testimony",
+   "u": "https://greathousefarmwiki.wordpress.com/testimony/mary-williams/"
+  },
+  "hp-bailii-org-ew-cases-ewca-civ-1987-2-html": {
+   "t": "BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+   "u": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html"
+  },
+  "hp--ev-0014-bute-tenancy-john-williams-1916": {
+   "t": "EV-0014",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0014-bute-tenancy-john-williams-1916/"
+  },
+  "hp-hives-gov-uk-download-gb-200214-20da-cld": {
+   "t": "Glamorgan Archives DA catalogue",
+   "u": "https://discovery.nationalarchives.gov.uk/download/GB%200214%20DA_cld"
+  },
+  "hp-ev-0016-1928-last-rent-receipt-quarrying": {
+   "t": "EV-0016",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0016-1928-last-rent-receipt-quarrying/"
+  },
+  "hp-mary-williams-statement": {
+   "t": "Mary (Nancy) Williams’s statement",
+   "u": "https://greathousefarmwiki.wordpress.com/mary-williams-statement/"
+  },
+  "hp--condition-f-conveyance-25-december-1938": {
+   "t": "EV-0216",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0216-1965-contract-condition-f-conveyance-25-december-1938/"
+  },
+  "hp-ce-ev-0019-bute-wgr-conveyance-plan-1938": {
+   "t": "EV-0019",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0019-bute-wgr-conveyance-plan-1938/"
+  },
+  "hp-ve-nla-gov-au-newspaper-article-46287600": {
+   "t": "1938 press report",
+   "u": "https://trove.nla.gov.au/newspaper/article/46287600"
+  },
+  "hp-0023-1939-wgr-john-williams-tenancy-plan": {
+   "t": "EV-0023",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0023-1939-wgr-john-williams-tenancy-plan/"
+  },
+  "hp-v-0220-leckwith-woods-wgr-gift-1940-1942": {
+   "t": "EV-0220",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0220-leckwith-woods-wgr-gift-1940-1942/"
+  },
+  "hp-theropenspaces-leckwithwoods-index-shtml": {
+   "t": "Cardiff Parks page",
+   "u": "https://www.cardiffparks.org.uk/otheropenspaces/leckwithwoods/index.shtml"
+  },
+  "hp--occupancy-of-parcel-a-appear-permissive": {
+   "t": "Permissive-occupancy claim",
+   "u": "https://greathousefarmwiki.wordpress.com/claim-repeated-attempts-to-make-mary-williams-occupancy-of-parcel-a-appear-permissive/"
+  },
+  "hp-d-re-grant-of-frederick-bucklers-tenancy": {
+   "t": "GHF-E122",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e122-1949-surrender-and-re-grant-of-frederick-bucklers-tenancy/"
+  },
+  "hp-nce-ev-0031-1954-buckler-tenancy-attempt": {
+   "t": "EV-0031",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0031-1954-buckler-tenancy-attempt/"
+  },
+  "hp-1955-possession-order": {
+   "t": "The 1955 Possession Order",
+   "u": "https://greathousefarmwiki.wordpress.com/1955-possession-order/"
+  },
+  "hp-e-ev-0032-1955-order-14-possession-order": {
+   "t": "EV-0032",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0032-1955-order-14-possession-order/"
+  },
+  "hp-34-writ-possession-execution-return-1955": {
+   "t": "EV-0034",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0034-writ-possession-execution-return-1955/"
+  },
+  "hp-parts-of-parcel-a-divergent-chronologies": {
+   "t": "Three Parts of Parcel A",
+   "u": "https://greathousefarmwiki.wordpress.com/the-two-parcels/three-parts-of-parcel-a-divergent-chronologies/"
+  },
+  "hp-estern-mail-1958-leckwith-common-hearing": {
+   "t": "EV-0035",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0035-western-mail-1958-leckwith-common-hearing/"
+  },
+  "hp-nce-ev-0039-wgr-tenancy-offers-1959-1965": {
+   "t": "EV-0039",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0039-wgr-tenancy-offers-1959-1965/"
+  },
+  "hp-vidence-ev-0040-1961-wgr-brick-tile-deed": {
+   "t": "EV-0040",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0040-1961-wgr-brick-tile-deed/"
+  },
+  "hp-9-wa735527-title-register-september-2026": {
+   "t": "EV-0169",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0169-wa735527-title-register-september-2026/"
+  },
+  "hp-ent-uploads-2026-09-wp-1790112812173-pdf": {
+   "t": "register WA735527",
+   "u": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112812173.pdf"
+  },
+  "hp-rdiff-county-court-possession-order-1962": {
+   "t": "EV-0041",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0041-cardiff-county-court-possession-order-1962/"
+  },
+  "hp-1962-possession-order": {
+   "t": "The 1962 Possession Order",
+   "u": "https://greathousefarmwiki.wordpress.com/1962-possession-order/"
+  },
+  "hp-tionalarchives-gov-uk-details-r-c1425603": {
+   "t": "TNA catalogue entry",
+   "u": "https://discovery.nationalarchives.gov.uk/details/r/C1425603"
+  },
+  "hp--ev-0043-wgr-bp-pension-trust-conveyance": {
+   "t": "EV-0043",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0043-wgr-bp-pension-trust-conveyance/"
+  },
+  "hp-044-vg41-village-green-registration-1970": {
+   "t": "EV-0044",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0044-vg41-village-green-registration-1970/"
+  },
+  "hp-ocket-parks-and-village-green-20140-aspx": {
+   "t": "community council website",
+   "u": "http://www.llandough-cc.co.uk/Pocket_Parks__and__Village_Green_20140.aspx"
+  },
+  "hp-e-ev-0045-1971-abstract-title-bp-pension": {
+   "t": "EV-0045",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0045-1971-abstract-title-bp-pension/"
+  },
+  "hp-ev-0048-telegraph-open-day-ancient-house": {
+   "t": "EV-0048",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0048-telegraph-open-day-ancient-house/"
+  },
+  "hp-9-mary-williams-plea-ownership-pleadings": {
+   "t": "EV-0049",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0049-mary-williams-plea-ownership-pleadings/"
+  },
+  "hp-1974-licence-letters": {
+   "t": "The 1974 Licence Letters",
+   "u": "https://greathousefarmwiki.wordpress.com/1974-licence-letters/"
+  },
+  "hp-evidence-ev-0050-1974-bp-licence-letters": {
+   "t": "EV-0050",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0050-1974-bp-licence-letters/"
+  },
+  "hp-ev-0080-bp-properties-v-buckler-judgment": {
+   "t": "EV-0080",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0080-bp-properties-v-buckler-judgment/"
+  },
+  "hp-0-wa231076-title-register-september-2026": {
+   "t": "EV-0170",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0170-wa231076-title-register-september-2026/"
+  },
+  "hp-land-registry-titles": {
+   "t": "Land Registry titles",
+   "u": "https://greathousefarmwiki.wordpress.com/land-registry-titles/"
+  },
+  "hp-0066-hmlr-wa240304-item-10-register-1983": {
+   "t": "EV-0066",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0066-hmlr-wa240304-item-10-register-1983/"
+  },
+  "hp-ce-ev-0063-hmlr-wa240304-item-11-form-1c": {
+   "t": "EV-0063",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0063-hmlr-wa240304-item-11-form-1c/"
+  },
+  "hp-1987-title-amalgamation-application-plan": {
+   "t": "EV-0078",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0078-1987-title-amalgamation-application-plan/"
+  },
+  "hp-ice-1987-hmlr-amalgamation-during-appeal": {
+   "t": "1987 amalgamation",
+   "u": "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/procedural-fairness-notice/1987-hmlr-amalgamation-during-appeal/"
+  },
+  "hp-demolition-1988": {
+   "t": "1988 demolition",
+   "u": "https://greathousefarmwiki.wordpress.com/demolition-1988/"
+  },
+  "hp-108-south-wales-echo-bp-demolition-anger": {
+   "t": "EV-0108",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0108-south-wales-echo-bp-demolition-anger/"
+  },
+  "hp-fficer-s-report-on-outline-application-f": {
+   "t": "EV-0201 (report scan, p.1)",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0201-planning-officer-s-report-on-outline-application-f/"
+  },
+  "hp-anning-permission-89-01396-out-residenti": {
+   "t": "EV-0124",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0124-outline-planning-permission-89-01396-out-residenti/"
+  },
+  "hp-n-council-email-correspondence-catalogue": {
+   "t": "request to the Vale",
+   "u": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/vale-of-glamorgan-council-email-correspondence-catalogue/"
+  },
+  "hp-pplication-form-d-for-approval-of-reserv": {
+   "t": "EV-0127 (form scan)",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0127-planning-application-form-d-for-approval-of-reserv/"
+  },
+  "hp-28-ggat-letter-reserved-matters-approval": {
+   "t": "EV-0128",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0128-ggat-letter-reserved-matters-approval/"
+  },
+  "hp-of-cardiff-forensic-institutional-review": {
+   "t": "Forest of Cardiff review",
+   "u": "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/forest-of-cardiff-forensic-institutional-review/"
+  },
+  "hp-forest-of-cardiff-woodland-transfer-1994": {
+   "t": "EV-0136",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0136-forest-of-cardiff-woodland-transfer-1994/"
+  },
+  "hp-accounts-2006-sale-of-land-leckwith-road": {
+   "t": "EV-0217",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0217-forest-of-cardiff-accounts-2006-sale-of-land-leckwith-road/"
+  },
+  "hp-st-cardiff-goldsworthy-transfer-excision": {
+   "t": "EV-0139",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0139-forest-cardiff-goldsworthy-transfer-excision/"
+  },
+  "hp-l-b-distinct-histories-1987-amalgamation": {
+   "t": "Parcel A / B claim",
+   "u": "https://greathousefarmwiki.wordpress.com/claim-parcel-a-parcel-b-distinct-histories-1987-amalgamation"
+  },
+  "hp-ev-0037-western-mail-1958-crichel-down": {
+   "t": "EV-0037 · Western Mail, 20 Nov 1958, p.7",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0037-western-mail-1958-crichel-down/"
+  },
+  "hp-ghf-e122-1949-surrender-re-grant": {
+   "t": "GHF-E122",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e122-1949-surrender-and-re-grant-of-frederick-bucklers-tenancy/"
+  },
+  "hp-ev-0035-leckwith-common": {
+   "t": "EV-0035 · Western Mail, 7 May 1958, p.7",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0035-western-mail-1958-leckwith-common-hearing/"
+  },
+  "hp-three-parts-of-parcel-a": {
+   "t": "Three Parts of Parcel A",
+   "u": "https://greathousefarmwiki.wordpress.com/the-two-parcels/three-parts-of-parcel-a-divergent-chronologies/"
+  },
+  "ggat1990": {
+   "t": "GGAT 1990 archaeological assessment (transcription)",
+   "u": "https://greathousefarmwiki.wordpress.com/1990-ggat-archaeological-assessment-great-house-farm-llandough-transcription/"
+  },
+  "archaeology": {
+   "t": "Archaeology and Heritage",
+   "u": "https://greathousefarmwiki.wordpress.com/archaeology/"
+  },
+  "lcc10": {
+   "t": "Llandough Community Council Item 10 briefing (22 Oct 2026)",
+   "u": "https://greathousefarmwiki.wordpress.com/project-management/llandough-community-council-22-october-2026/"
+  },
+  "family": {
+   "t": "The Williams / Buckler Family",
+   "u": "https://greathousefarmwiki.wordpress.com/williams-buckler-family/"
+  },
+  "n02": {
+   "t": "GHF-E090-N02: Marconi at Lavernock, 1897",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/n02-1897-marconi-invention-tested-at-lavernock/"
+  },
+  "e167": {
+   "t": "GHF-E167: Llandough Roman-villa finds, 1980",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e167-ggat-wales-west-ha-letters-llandough-roman-villa-finds-april-1980/"
+  },
+  "e148": {
+   "t": "GHF-E148: 1994 Cotswold Archaeology report",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e148-1994-cotswold-archaeology-report-condition-18-discharge-and-counsels-opinion/"
+  },
+  "hmlr_emails": {
+   "t": "HM Land Registry email correspondence catalogue",
+   "u": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue/"
+  },
+  "hmlr0419": {
+   "t": "HM Land Registry stage-one complaint reply, 19 Apr 2026 (ref N610CGV · WA231076/A/216/CT)",
+   "u": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue/"
+  },
+  "hmlr0525": {
+   "t": "HM Land Registry stage-two (final) complaint reply, Land Registrar, 25 May 2026 (ref N610CGV · WA231076/A/216/MC)",
+   "u": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/hm-land-registry-email-correspondence-catalogue/"
+  },
+  "e133": {
+   "t": "GHF-E133: 16 Jun 1970 VG41 registration",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e133-16-june-1970-vg41-village-green-registration-and-ownership-file/"
+  },
+  "e149": {
+   "t": "GHF-E149: 10 Nov 1994 woodland transfer to Forest of Cardiff",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e149-10-november-1994-transfer-to-forest-of-cardiff-wa735527/"
+  },
+  "dossier1955": {
+   "t": "1955 Parcel-A Loss Dossier: woodland + VG41 green",
+   "u": "https://greathousefarmwiki.wordpress.com/family-legal-case-control-room/1955-parcel-a-loss-dossier-woodland-vg41-green/"
+  },
+  "anomalies": {
+   "t": "Anomalies Register",
+   "u": "https://greathousefarmwiki.wordpress.com/anomalies-register/"
+  },
+  "missing": {
+   "t": "Missing Records Register",
+   "u": "https://greathousefarmwiki.wordpress.com/missing-records-register/"
+  },
+  "mojreg": {
+   "t": "Potential Miscarriage of Justice: Issue Register",
+   "u": "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/court-judicial-issues/potential-miscarriage-of-justice-issue-register/"
+  },
+  "redev": {
+   "t": "Redevelopment and Church View Close",
+   "u": "https://greathousefarmwiki.wordpress.com/redevelopment/"
+  },
+  "press": {
+   "t": "Press Archive: newspaper transcripts",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/"
+  },
+  "case21oct": {
+   "t": "The Williams-Buckler family’s case, in words sent 21 Oct 2026",
+   "u": "https://greathousefarmwiki.wordpress.com/"
+  },
+  "bpvb": {
+   "t": "BP Properties v Buckler (Legal Wiki case page)",
+   "u": "https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/"
+  },
+  "echr14464": {
+   "t": "European Commission of Human Rights, admissibility decision, Application No. 14464/88, 14 April 1989",
+   "u": "https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf"
+  },
+  "ev0263": {
+   "t": "EV-0263 · Commons Registration Act 1965 notices (VG41)",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0263-commons-registration-1965-publicity-glamorgan-notices-vg41/"
+  },
+  "frederick": {
+   "t": "Frederick Buckler",
+   "u": "https://greathousefarmwiki.wordpress.com/frederick-buckler/#death"
+  },
+  "ev0288": {
+   "t": "EV-0288 · Press on the 1968–69 takeover of Western Ground Rents Ltd (snippets)",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0288-snippets-only-press-on-the-1968-69-takeover-battle-for-western-ground-rents-ltd-en/"
+  },
+  "ev0265": {
+   "t": "EV-0265 · HM Land Registry: compulsory registration from 1975 (SI 1975/160)",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0265-hmlr-registration-background-compulsory-1975-r29-certificate/"
+  },
+  "ev0274": {
+   "t": "EV-0274 · Probate calendar 1991: William Beverley Buckler",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0274-probate-calendar-1991-william-beverley-buckler/"
+  },
+  "ev0290": {
+   "t": "EV-0290 · South Wales Echo, 2 Jun 1990, p.2 (snippet)",
+   "u": "https://greathousefarmwiki.wordpress.com/evidence/ev-0290-snippet-only-south-wales-echo-2-jun-1990-p-2-billy-died-suddenly-this-week-he-made/"
+  }
+ },
+ "steps": [
+  {
+   "date": "Today",
+   "year": 2026,
+   "base": "aerial",
+   "part": "AN ANCIENT WELSH HOME",
+   "title": "Tŷ Mawr, the Great House of Llandough",
+   "headline": "From an ancient Welsh home to Church View Close: the whole story, told from the Williams-Buckler family’s case",
+   "labels": [
+    "CASE"
+   ],
+   "short": "This is the story of Tŷ Mawr, the Great House of Llandough, told from the Williams-Buckler family’s case: how an ancient Welsh home became Church View Close, a housing estate of twenty houses.",
+   "text": "The Williams-Buckler family’s case, told forward from the record. Where a court found otherwise, the film shows what the court said, then the record set against it. Every claim carries its source; anything without a source document is shown as the family’s case, not as established fact.",
+   "say": "This is the story of Tee Mower, the Great House of Lan-dock, told from the Williams-Buckler family’s case: how an ancient Welsh home became Church View Close, a housing estate of twenty houses.",
+   "src": [
+    "home",
+    "lcc10",
+    "case21oct"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "housing",
+     "case": "housing",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "housing",
+     "case": "housing",
+     "note": ""
+    }
+   },
+   "id": "s01",
+   "dur": 10.83
+  },
+  {
+   "date": "1988–2026",
+   "year": 2026,
+   "base": "aerial",
+   "title": "Not the squatter story",
+   "headline": "Not the “squatters evicted in 1988” story",
+   "labels": [
+    "CASE"
+   ],
+   "short": "For almost four decades, one version has been repeated. The family’s case rejects it.",
+   "quote": "…the mainstream narrative from the last 38 years, which says williams-bucklers were squatters being evicted in 1988. …the whole story of the transformation of an ancient welsh home to a 20 characterless housing estate…",
+   "text": "The family’s case, in words sent on 21 October 2026: the film is not the mainstream narrative “which says williams-bucklers were squatters being evicted in 1988”, but “the transformation of an ancient welsh home to a 20 characterless housing estate”.",
+   "say": "In the family’s own words, this is not the mainstream narrative from the last thirty-eight years, which says Williams-Bucklers were squatters being evicted in nineteen eighty-eight. It is the transformation of an ancient Welsh home to a twenty, characterless housing estate.",
+   "src": [
+    "case21oct",
+    "press"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "housing",
+     "case": "housing",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "housing",
+     "case": "housing",
+     "note": ""
+    }
+   },
+   "id": "s02",
+   "dur": 14.49,
+   "quote_by": "The Williams-Buckler family’s case · words of 21 Oct 2026"
+  },
+  {
+   "date": "c.200 BC – AD 400",
+   "year": -200,
+   "base": "1878",
+   "title": "Iron Age and Roman Llandough",
+   "headline": "Before the farm: an Iron Age farmstead and Roman occupation south of the church",
+   "labels": [
+    "VERIFIED · GGAT 1990 (context)",
+    "NOT YET FORMALLY RECORDED · roundhouse on the farm"
+   ],
+   "short": "GGAT’s 1990 assessment: south of the church, an Iron Age farmstead and Roman occupation “are known to have existed”. The family’s case adds a Celtic roundhouse about 2,200 years old, not yet formally recorded on the farm.",
+   "text": "GGAT’s 1990 archaeological assessment of land at Great House Farm: “To the south of the church an Iron Age farmstead, Roman [occupation], medieval monastic grange, late medieval [village/site] and farm are known to have existed.” The Roman villa south of the church (PRN 00768s) was excavated in 1978–79 and is held in the national record as a separate site, not Great House Farm. The family’s case: “the 2,200 year old celtic round house” — not yet formally recorded on the farm itself.",
+   "say": "Before the farm. G-GAT’s nineteen-ninety assessment records that, south of the church, an Iron Age farmstead and Roman occupation are known to have existed. The family’s case adds a Celtic roundhouse, about two thousand two hundred years old. It is not yet formally recorded on the farm.",
+   "src": [
+    "ggat1990",
+    "archaeology",
+    "e167"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "site",
+     "case": "site",
+     "note": ""
+    },
+    "AM": {
+     "rec": "site",
+     "case": "site",
+     "note": ""
+    },
+    "AS": {
+     "rec": "site",
+     "case": "site",
+     "note": ""
+    },
+    "B": {
+     "rec": "site",
+     "case": "site",
+     "note": ""
+    }
+   },
+   "id": "s03",
+   "dur": 18.36
+  },
+  {
+   "date": "7th century – 1994",
+   "year": 650,
+   "base": "1878",
+   "title": "The monastery and the cemetery",
+   "headline": "St Dochdwy’s monastery, and one of the great early Christian cemeteries of Wales",
+   "labels": [
+    "VERIFIED · Heneb + Medieval Archaeology 49 (2005)",
+    "NOT YET FORMALLY DISCOVERED · monastery site"
+   ],
+   "short": "St Dochdwy’s monastery is attested from the 7th century; Heneb says its exact site has not been established. In 1994, 1,026 burials were excavated where Church View Close now stands, the largest early medieval burial population recovered in Wales.",
+   "text": "Heneb’s Historic Environment Record: St Dochdwy’s monastery is attested from the 7th century; its exact site has not been established. A published study (Holbrook and Thomas, Medieval Archaeology 49, 2005) reports 1,026 burials from the early medieval cemetery excavated in 1994 at the Church View Close site, the largest such population recovered in Wales. Nothing on the ground marks them. Not yet shown: that the monastery or the burials lay on the family’s own parcel.",
+   "say": "Saint Dock-doo-ee’s monastery is attested from the seventh century; its exact site has never been established. In nineteen ninety-four, one thousand and twenty-six burials were excavated where Church View Close now stands: the largest early medieval burial population recovered in Wales. Nothing on the ground marks them.",
+   "src": [
+    "archaeology",
+    "lcc10",
+    "e148"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "site",
+     "case": "site",
+     "note": ""
+    },
+    "AM": {
+     "rec": "site",
+     "case": "site",
+     "note": ""
+    },
+    "AS": {
+     "rec": "site",
+     "case": "site",
+     "note": ""
+    },
+    "B": {
+     "rec": "site",
+     "case": "site",
+     "note": ""
+    }
+   },
+   "id": "s04",
+   "dur": 18.98
+  },
+  {
+   "date": "c.1667",
+   "year": 1667,
+   "base": "1878",
+   "title": "Stewards since 1667",
+   "headline": "c.1667: the Williams family at Tŷ Mawr, where the manorial courts were held",
+   "labels": [
+    "TESTIMONY · later statement (c.1974) + press 1974",
+    "VERIFIED · Heneb HER (manorial courts)"
+   ],
+   "short": "A later statement (c.1974) and the 1974 press record the family at Tŷ Mawr from about 1667. Heneb’s record says the manorial courts of Llandough and Leckwith were held at Great House.",
+   "quote": "…the owner/ occupiers and stewards of the site since 1667…",
+   "text": "Heneb’s Historic Environment Record says the manorial courts of Llandough and Leckwith were held at Great House (GGAT02038s). A later statement (c.1974) and the Daily Telegraph of 16 April 1974 record the family at Tŷ Mawr from about 1667. No deed of 1667 has yet been found; the heritage record also says the Vaughans held Great House as the chief freehold farm from the mid-16th to the late 18th century (both can be true only if the Williamses held under them). The family’s case: “the owner/ occupiers and stewards of the site since 1667”.",
+   "say": "Around sixteen sixty-seven, by a later statement and the press, the Williams family is at Tee Mower, the house where the manorial courts of Lan-dock and Leckwith were held. In the family’s words, the owner, occupiers, and stewards of the site since sixteen sixty-seven.",
+   "src": [
+    "lcc10",
+    "family",
+    "hp-ev-0048-telegraph-open-day-ancient-house",
+    "case21oct"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "site",
+     "case": "site",
+     "note": ""
+    },
+    "AM": {
+     "rec": "site",
+     "case": "site",
+     "note": ""
+    },
+    "AS": {
+     "rec": "site",
+     "case": "site",
+     "note": ""
+    },
+    "B": {
+     "rec": "site",
+     "case": "site",
+     "note": ""
+    }
+   },
+   "id": "s05",
+   "dur": 15.56,
+   "quote_by": "The Williams-Buckler family’s case · words of 21 Oct 2026"
+  },
+  {
+   "id": "s06",
+   "date": "c.1841",
+   "year": 1841,
+   "base": "1878",
+   "title": "Tithe map",
+   "headline": "c.1841 · Tithe map: Bute owns; John Williams occupies the holding",
+   "labels": [
+    "VERIFIED · public copy"
+   ],
+   "short": "About 1841: the tithe map lists Bute as owner, and John Williams as occupier.",
+   "text": "c.1841 · Tithe map: Bute owns; John Williams occupies the holding. VERIFIED · public copy. The tithe apportionment for Landough, Cogan and Leckwith lists the Bute estate as owner and John Williams as occupier of the Great House Farm holding.",
+   "parcels": {
+    "AN": {
+     "rec": "bute",
+     "case": "bute",
+     "note": ""
+    },
+    "AM": {
+     "rec": "bute",
+     "case": "bute",
+     "note": ""
+    },
+    "AS": {
+     "rec": "bute",
+     "case": "bute",
+     "note": ""
+    },
+    "B": {
+     "rec": "bute",
+     "case": "bute",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp--tithe-apportionment-john-williams-c1841",
+    "os1878"
+   ],
+   "say": "About eighteen forty-one: the tithe map lists Bute as owner, and John Williams as occupier.",
+   "part": "THE FARM THROUGH THE CENTURIES",
+   "dur": 5.55
+  },
+  {
+   "id": "s07",
+   "date": "1877",
+   "year": 1877,
+   "base": "1878",
+   "title": "Root title splits: A / B",
+   "headline": "1877 · Root title splits: Parcel A / Parcel B",
+   "labels": [
+    "TESTIMONY · later statement (c.1974)"
+   ],
+   "short": "1877: by a later statement (c.1974), the title splits. Bute sells Parcel A, the farmhouse and about ten acres, to Daniel Thomas, and keeps Parcel B. The farmer, John Williams, takes a tenancy from Thomas for quarrying. When quarrying ceases, Parcel A is to be his.",
+   "text": "1877 · Root title splits: Parcel A / Parcel B. TESTIMONY · later statement (c.1974). A later statement (c.1974): the Bute Estate sold the farmhouse, buildings and about 10 acres to Daniel Thomas and kept about 9 acres (Parcel B). John Williams, the farmer at Great House Farm, took a tenancy from Thomas for quarrying (the statement dates his lease 6 November 1877), and “when the quarrying ceased the freehold should belong to [John Williams]”.",
+   "parcels": {
+    "AN": {
+     "rec": "thomas",
+     "case": "thomas",
+     "note": ""
+    },
+    "AM": {
+     "rec": "thomas",
+     "case": "thomas",
+     "note": ""
+    },
+    "AS": {
+     "rec": "thomas",
+     "case": "thomas",
+     "note": ""
+    },
+    "B": {
+     "rec": "bute",
+     "case": "bute",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-dence-ev-0006-bute-thomas-agreement-1877",
+    "hp-the-two-parcels",
+    "hp-testimony-mary-williams",
+    "os1878"
+   ],
+   "say": "Eighteen seventy-seven: by a later statement, the title splits. Bute sells Parcel A, the farmhouse and about ten acres, to Daniel Thomas, and keeps Parcel B. The farmer, John Williams, takes a tenancy from Thomas for quarrying. When quarrying ceases, Parcel A is to be his.",
+   "dur": 17.77
+  },
+  {
+   "date": "1890s",
+   "year": 1895,
+   "base": "1900",
+   "title": "“Peerless” Jim Driscoll",
+   "headline": "1890s: “Peerless” Jim Driscoll’s first fight, in a barn at Great House Farm",
+   "labels": [
+    "VERIFIED · published source"
+   ],
+   "short": "Published sources record “Peerless” Jim Driscoll’s first fight in a barn at Great House Farm.",
+   "text": "Stead and Williams, Wales and its Boxers (2008), as cited in the Legal Wiki briefing: “Peerless” Jim Driscoll’s first fight took place in a barn at Great House Farm. No marker records it.",
+   "say": "In the eighteen-nineties, published sources record that Peerless Jim Driscoll, the Welsh boxing champion, fought his first fight in a barn at Great House Farm.",
+   "src": [
+    "lcc10",
+    "family"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "thomas",
+     "case": "thomas",
+     "note": ""
+    },
+    "AM": {
+     "rec": "thomas",
+     "case": "thomas",
+     "note": ""
+    },
+    "AS": {
+     "rec": "thomas",
+     "case": "thomas",
+     "note": ""
+    },
+    "B": {
+     "rec": "bute",
+     "case": "bute",
+     "note": ""
+    }
+   },
+   "id": "s08",
+   "dur": 9.36
+  },
+  {
+   "date": "May 1897",
+   "year": 1897,
+   "base": "1900",
+   "title": "Marconi at Lavernock",
+   "headline": "May 1897: Marconi’s wireless trials, Lavernock Point to Flat Holm",
+   "labels": [
+    "VERIFIED · press 1897",
+    "NOT YET FORMALLY RECORDED · the farm link"
+   ],
+   "short": "May 1897: Marconi’s wireless trials cross from Lavernock Point to Flat Holm, a few miles away. The family’s case links the Williamses of Great House to the trials; that link is not yet formally recorded.",
+   "text": "A May 1897 Cardiff newspaper reports Marconi’s trials between Lavernock Point and Flat Holm (GHF-E090-N02); Amgueddfa Cymru records the same GPO trials. Family tradition: the Williamses took in lodgers and helped Marconi (a Thomas Williams of Great House carting his equipment). The “Mr Williams” in the 1897 report is a Post Office engineer; the link to the farm family is not yet formally recorded.",
+   "say": "May eighteen ninety-seven: Marconi’s wireless trials cross from Lavernock Point to Flat Holm, a few miles away. The family’s case links the Williamses of Great House to those trials. That link is not yet formally recorded.",
+   "src": [
+    "n02",
+    "family",
+    "lcc10"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "thomas",
+     "case": "thomas",
+     "note": ""
+    },
+    "AM": {
+     "rec": "thomas",
+     "case": "thomas",
+     "note": ""
+    },
+    "AS": {
+     "rec": "thomas",
+     "case": "thomas",
+     "note": ""
+    },
+    "B": {
+     "rec": "bute",
+     "case": "bute",
+     "note": ""
+    }
+   },
+   "id": "s09",
+   "dur": 14.24
+  },
+  {
+   "id": "s10",
+   "date": "1916",
+   "year": 1916,
+   "base": "1920",
+   "title": "Bute tenancy: J. Williams",
+   "headline": "1916 · Bute → John Williams (the son): yearly tenancy of the “whole farm”",
+   "labels": [
+    "VERIFIED · judgment"
+   ],
+   "short": "1916: John Williams’s son, also named John Williams, has farmed Great House Farm since his father died in 1908. Bute grants him a yearly tenancy of the whole farm, Parcel A included. It is the last tenancy of Parcel A.",
+   "text": "1916 · Bute → John Williams (the son): yearly tenancy of the “whole farm”. VERIFIED · judgment. John Williams died in 1908 and his son, also named John Williams, took over the farm (Barry Dock News, 23 Oct 1908, EV-0243; a later statement, c.1974). The Court of Appeal’s history describes a February 1916 yearly agricultural tenancy of the “whole farm”. It covered Parcel A: the last tenancy of Parcel A, whose occupiers the Williams family had been since 1667.",
+   "parcels": {
+    "AN": {
+     "rec": "williams",
+     "case": "williams",
+     "note": "1916 tenancy: John Williams. The last tenancy of Parcel A."
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": "1916 tenancy: John Williams. The last tenancy of Parcel A."
+    },
+    "AS": {
+     "rec": "williams",
+     "case": "williams",
+     "note": "1916 tenancy: John Williams. The last tenancy of Parcel A."
+    },
+    "B": {
+     "rec": "bute",
+     "case": "bute",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html",
+    "hp--ev-0014-bute-tenancy-john-williams-1916",
+    "os1920"
+   ],
+   "say": "Nineteen sixteen: John Williams's son, also named John Williams, has farmed Great House Farm since his father died in nineteen oh eight. Bute grants him a yearly tenancy of the whole farm, Parcel A included. It is the last tenancy of Parcel A.",
+   "dur": 15.47
+  },
+  {
+   "id": "s11",
+   "date": "1926",
+   "year": 1926,
+   "base": "1920",
+   "title": "Bute land → Mountjoy Ltd",
+   "headline": "1926 · Remaining Bute property becomes Mountjoy Ltd",
+   "labels": [
+    "VERIFIED · catalogue"
+   ],
+   "short": "1926: the remaining Bute property becomes Mountjoy Limited.",
+   "text": "1926 · Remaining Bute property becomes Mountjoy Ltd. VERIFIED · catalogue. Archive catalogue history: after 1900 the Glamorgan estate was divided; the remaining Bute property was incorporated as Mountjoy Ltd in 1926.",
+   "parcels": {
+    "AN": {
+     "rec": "williams",
+     "case": "williams",
+     "note": "Williams family tenancy (John Williams, from 1916) continues."
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": "Williams family tenancy (John Williams, from 1916) continues."
+    },
+    "AS": {
+     "rec": "williams",
+     "case": "williams",
+     "note": "Williams family tenancy (John Williams, from 1916) continues."
+    },
+    "B": {
+     "rec": "mountjoy",
+     "case": "mountjoy",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-hives-gov-uk-download-gb-200214-20da-cld",
+    "os1920"
+   ],
+   "say": "Nineteen twenty-six: the remaining Bute property becomes Mountjoy Limited.",
+   "dur": 4.11
+  },
+  {
+   "id": "s12",
+   "date": "1928",
+   "year": 1928,
+   "base": "1920",
+   "title": "Last rent paid (Mary’s recollection)",
+   "headline": "1928 · Last rent paid, in Mary’s recollection: Parcel A becomes the Williams family’s; quarrying had ended by November 1925",
+   "labels": [
+    "TESTIMONY · Mary (Nancy) Williams"
+   ],
+   "short": "1928: John Williams pays the last rent, as his daughter Mary (Nancy) Williams, born at the farm in 1913, later recalled; she states that from then on he regarded the farm as his own: Parcel A becomes the Williams family’s. The quarry had already stopped: its plant was catalogued for sale in November 1925.",
+   "text": "1928 · Last rent paid, in Mary’s recollection: Parcel A becomes the Williams family’s; quarrying had ended by November 1925. TESTIMONY · Mary (Nancy) Williams. Mary (Nancy) Williams, John Williams’s daughter, was born at Great House Farm on 10 August 1913. Her statement (c.1974): the quarry machinery was removed in 1928 and her father made the last payment of rent, about £4 a year, to Alfred Thomas. “After this my father regarded the farm as his own.” Quarrying itself had ended by November 1925, when the quarry’s plant and tramlines were catalogued for sale (Glamorgan Archives DSA/12/4888, 10 Nov 1925).",
+   "parcels": {
+    "AN": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "B": {
+     "rec": "mountjoy",
+     "case": "mountjoy",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-ev-0016-1928-last-rent-receipt-quarrying",
+    "hp-mary-williams-statement",
+    "hp-testimony-mary-williams",
+    "os1920"
+   ],
+   "say": "Nineteen twenty-eight: quarrying ends, and John Williams pays the last rent. His daughter, Mary Nancy Williams, born at the farm in nineteen thirteen, later stated that from then on, he regarded the farm as his own. Parcel A becomes the Williams family's.",
+   "img": {
+    "src": "img/mary-williams.jpg?v=1.4.5r",
+    "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph.",
+    "intro": {
+     "name": "Mary (Nancy) Williams",
+     "life": "(1913 – 1983)"
+    }
+   },
+   "dur": 15.5
+  },
+  {
+   "id": "s13",
+   "date": "1938",
+   "year": 1938,
+   "base": "1920",
+   "title": "Mountjoy / Bute → WGR",
+   "headline": "1938 · Mountjoy / Bute → Western Ground Rents Ltd (WGR)",
+   "labels": [
+    "VERIFIED · deed copy + press"
+   ],
+   "short": "1938: Mountjoy and Bute sell to Western Ground Rents. Which land that deed conveyed is the open question.",
+   "text": "1938 · Mountjoy / Bute → Western Ground Rents Ltd (WGR). VERIFIED · deed copy + press. Sale announced 17 May 1938 and completed 23 Dec 1938. Later WGR deeds deduce title from “a Conveyance on sale dated 25th December 1938” (EV-0216, copy held). Exactly which land it conveyed is the open question.",
+   "parcels": {
+    "AN": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp--condition-f-conveyance-25-december-1938",
+    "hp-ce-ev-0019-bute-wgr-conveyance-plan-1938",
+    "hp-ve-nla-gov-au-newspaper-article-46287600",
+    "os1920"
+   ],
+   "say": "Nineteen thirty-eight: Mountjoy and Bute sell to Western Ground Rents. Which land that deed conveyed is the open question.",
+   "dur": 7.94
+  },
+  {
+   "id": "s14",
+   "date": "1939",
+   "year": 1939,
+   "base": "1920",
+   "title": "WGR plan: Parcel B only",
+   "headline": "1939 · WGR → John Williams agreement: plan shows Parcel B only",
+   "labels": [
+    "VERIFIED · partly held"
+   ],
+   "short": "1939: a Western Ground Rents agreement with John Williams. Its plan shows Parcel B only.",
+   "text": "1939 · WGR → John Williams agreement: plan shows Parcel B only. VERIFIED · partly held. The May 1939 WGR agreement (Glamorgan Archives DBDT123/7) is a monthly let “as meadow or pasture land”; its plan shows the eastern fields (Parcel B) only.",
+   "parcels": {
+    "AN": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-0023-1939-wgr-john-williams-tenancy-plan",
+    "os1920"
+   ],
+   "say": "Nineteen thirty-nine: a Western Ground Rents agreement with John Williams. Its plan shows Parcel B only.",
+   "dur": 7.71
+  },
+  {
+   "id": "s15",
+   "date": "1940–42",
+   "year": 1940,
+   "base": "1947",
+   "title": "Leckwith Woods gift",
+   "headline": "1940–42 · WGR gives about 109 acres of Leckwith Woods to Cardiff Corporation",
+   "labels": [
+    "VERIFIED · secondary + press"
+   ],
+   "short": "1940 to 42: Western Ground Rents gives Leckwith Woods, in Leckwith, to Cardiff Corporation.",
+   "text": "1940–42 · WGR gives about 109 acres of Leckwith Woods to Cardiff Corporation. VERIFIED · secondary + press. Cardiff Parks: “The Council acquired a part of Leckwith Woods comprising some 109 acres as a gift from Western Ground Rents Ltd … offered and accepted in 1940, though the transfer of ownership was not formally completed until April 1942.” The deed carries a recreation-only covenant. The Western Mail (18 Mar 1955) says the woods were “bought by the corporation for a nominal sum in 1942”. Not seen: the 1942 deed and plan. The gift is of Leckwith Woods, which lies in Leckwith, not Llandough.",
+   "parcels": {
+    "AN": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-v-0220-leckwith-woods-wgr-gift-1940-1942",
+    "hp-theropenspaces-leckwithwoods-index-shtml",
+    "os1947"
+   ],
+   "say": "Nineteen forty to forty-two: Western Ground Rents gives Leckwith Woods, in Leckwith, to Cardiff Corporation.",
+   "dur": 7.23
+  },
+  {
+   "date": "25 Aug 1948",
+   "year": 1948,
+   "base": "1947",
+   "title": "William Buckler born",
+   "headline": "25 Aug 1948 · William (Billy) Buckler, Mary’s son, is born at the farm",
+   "labels": [
+    "VERIFIED · judgment"
+   ],
+   "short": "25 August 1948: William (Billy) Buckler, Mary’s son, is born at the farm, his home until 1988.",
+   "text": "25 Aug 1948 · William (Billy) Buckler, son of Frederick and Mary, is born at the farm. VERIFIED · judgment: the Court of Appeal (1987) records that he was “born on August 25 1948”. He lives at Great House until 1988.",
+   "say": "Twenty-five August, nineteen forty-eight. William Buckler, Mary’s son, is born at the farm. It stays his home until nineteen eighty-eight.",
+   "src": [
+    "family",
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "id": "s15a",
+   "dur": 8.91
+  },
+  {
+   "id": "s16",
+   "date": "1949",
+   "year": 1949,
+   "base": "1947",
+   "title": "Frederick’s yearly letting begins",
+   "headline": "1949 · Frederick’s yearly agricultural letting begins; no 1949 offer to Mary concerning Parcel A has been found",
+   "labels": [
+    "VERIFIED · judgment"
+   ],
+   "short": "1949: John Williams’s tenancy is surrendered, and a new yearly tenancy goes to Frederick Buckler, who married Mary in 1936 and has run the farm since 1944. The written tenancy agreement that was intended never happens. No 1949 offer to Mary concerning Parcel A, or reply from her, has been found.",
+   "text": "1949 · Frederick’s yearly agricultural letting begins; no 1949 offer to Mary concerning Parcel A has been found. VERIFIED · judgment. Frederick Buckler married Mary (Nancy) Williams in 1936 and, from 1944, ran the farm as manager for her father (her statement, c.1974). The Court of Appeal (1987) records that Mr Williams “fell into arrears with his rent in the mid-1930s and in the late 1940s. Because of that, agreement was reached for Mr Williams' tenancy to be surrendered and for a new yearly agricultural tenancy commencing at February 2 1949 to be granted to Mr Williams' son-in-law, Mr Frederick Buckler”. It records: “It was intended that Mr Frederick Buckler should have a written tenancy agreement, but this did not happen because Mr Frederick Buckler also failed to pay the rent.” The landlords’ agents wrote to their solicitors on 10 October 1952 “that they did not propose to proceed with the letting to Mr Frederick Buckler”. Mary (Nancy) Williams’s own statement (c.1974): “I have never had any doubt that I was entitled to do so nor have I ever paid rent to or acknowledged the title of anyone as landlord.” In November 1958 she told Glamorgan County Council’s planning committee that “the water was cut off from her house and grounds for nearly 10 years by order of Western Ground Rents” (Western Mail, 20 Nov 1958, p.7; newspaper-archive OCR, page image not seen).",
+   "parcels": {
+    "AN": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html",
+    "hp-ghf-e122-1949-surrender-re-grant",
+    "hp-mary-williams-statement",
+    "hp-ev-0037-western-mail-1958-crichel-down",
+    "hp--occupancy-of-parcel-a-appear-permissive",
+    "os1947"
+   ],
+   "say": "Nineteen forty-nine: John Williams's tenancy is surrendered, and a new yearly tenancy goes to Frederick Buckler, who married Mary in nineteen thirty-six and has run the farm since nineteen forty-four. The written tenancy agreement that was intended never happens. No nineteen forty-nine offer to Mary concerning Parcel A, or reply from her, has been found.",
+   "pend": [
+    "AN"
+   ],
+   "img": {
+    "src": "img/mary-williams.jpg?v=1.4.5r",
+    "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
+   },
+   "dur": 22.15
+  },
+  {
+   "id": "s17",
+   "date": "4 Jul 1955",
+   "year": 1955,
+   "base": "1947",
+   "title": "Parcel B repossessed",
+   "headline": "4 Jul 1955 · Possession of Parcel B, later misread and conflated with Parcel A; the woodland and the green were also seized, shortly after Mary returned from hospital with her leg amputated",
+   "labels": [
+    "VERIFIED · judgment"
+   ],
+   "short": "4 July 1955: the possession order is enforced on all parts of the farm except the farmhouse and garden. Most likely that takes the woodland and the green, two parts of Parcel A, with Parcel B. Mary, just home from hospital after losing a leg, stays in the house.",
+   "text": "4 Jul 1955 · Possession of Parcel B, later misread and conflated with Parcel A; the woodland and the green were also seized, shortly after Mary returned from hospital with her leg amputated. VERIFIED · judgment. The Court of Appeal records that WGR obtained a High Court possession order against Frederick Buckler “in respect of the whole of the farm”, and: “On July 4 1955 that possession order was enforced, and possession was taken in respect of all parts of the farm except the farmhouse and garden.” It gives the reason: Mary “had recently come out of hospital after having had a leg amputated and was objecting very strongly to leaving the farmhouse.” What most likely happened: the order was made against Frederick, whose farm tenancy had ended, and the land WGR let is the eastern fields, Parcel B, on the 1939 WGR plan (EV-0023). On the 1947 Ordnance Survey (25-inch, Glamorgan sheet XLVII.6, revised 1941) the Ty-mawr house and yard sit between the wooded old limekiln and quarry ground to the north and the open ground to the south-east. The Three Parts of Parcel A page identifies those two areas as Parcel A’s woodland and green, with the farmhouse and garden as the third part. Taking “all parts of the farm except the farmhouse and garden” therefore took the woodland and the green along with Parcel B, and left Mary in the third part, the house. This station sits on Parcel B; the woodland and the green have their own lines.",
+   "parcels": {
+    "AN": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html",
+    "hp-1955-possession-order",
+    "hp-e-ev-0032-1955-order-14-possession-order",
+    "hp-34-writ-possession-execution-return-1955",
+    "hp-parts-of-parcel-a-divergent-chronologies",
+    "os1947",
+    "hp-0023-1939-wgr-john-williams-tenancy-plan",
+    "hp-three-parts-of-parcel-a"
+   ],
+   "say": "4 July nineteen fifty-five: the possession order is enforced on all parts of the farm except the farmhouse and garden. Most likely that takes the woodland and the green, two parts of Parcel A, with Parcel B. Mary, just home from hospital after losing a leg, stays in the house.",
+   "pend": [
+    "AN",
+    "AS"
+   ],
+   "img": {
+    "src": "img/mary-williams.jpg?v=1.4.5r",
+    "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
+   },
+   "dur": 9.8
+  },
+  {
+   "id": "s18",
+   "date": "7 May 1958",
+   "year": 1958,
+   "base": "1947",
+   "title": "Leckwith Common inquiry",
+   "headline": "7 May 1958 · Cardiff City Council’s Leckwith Common inquiry (Leckwith Common, not Great House Farm or Parcel A)",
+   "labels": [
+    "VERIFIED · press (OCR)"
+   ],
+   "short": "7 May 1958: at Cardiff’s Leckwith Common inquiry, Mary, reported under her married name as Mrs Mary Doreen Buckler, does not oppose the plan, so long as it applies only to playing fields. It concerns Leckwith Common, not Parcel A.",
+   "text": "7 May 1958 · Cardiff City Council’s Leckwith Common inquiry (Leckwith Common, not Great House Farm or Parcel A). VERIFIED · press (OCR). Mary appears in the press under her married name, Mrs Buckler. At the 6 May 1958 inquiry into Cardiff City Council’s plan to turn Leckwith Common into playing fields, the Western Mail (7 May 1958, p.7) reports: “Mrs. Mary Doreen Buckler, of Great House Farm, Llandough, said she did not oppose the proposal so long as it applied only to playing fields. About 130 years ago Lord Bute allowed her family ‘a slice of land’ which was now Leckwith Common.” The inquiry concerned Leckwith Common, not Great House Farm or Parcel A. Quoted from the newspaper archive’s OCR; page image not seen.",
+   "parcels": {
+    "AN": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-ev-0035-leckwith-common",
+    "hp-estern-mail-1958-leckwith-common-hearing",
+    "os1947"
+   ],
+   "say": "7 May nineteen fifty-eight: at Cardiff's Leckwith Common inquiry, Mary, reported under her married name as Mrs Mary Doreen Buckler, does not oppose the plan, so long as it applies only to playing fields. It concerns Leckwith Common, not Parcel A.",
+   "pend": [
+    "AN",
+    "AS"
+   ],
+   "img": {
+    "src": "img/mary-williams.jpg?v=1.4.5r",
+    "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
+   },
+   "dur": 15.89
+  },
+  {
+   "id": "s19",
+   "date": "20 Nov 1958",
+   "year": 1958,
+   "base": "1947",
+   "title": "Mary’s public objection",
+   "headline": "19–20 Nov 1958 · Mary objects to Glamorgan County Council’s planning committee: her land “walked in and taken”",
+   "labels": [
+    "VERIFIED · press (OCR)"
+   ],
+   "short": "20 November 1958: Mary tells the county planning committee that the councils and Western Ground Rents “have walked in and taken” her family’s land: “a Welsh case of Crichel Down.”",
+   "text": "19–20 Nov 1958 · Mary objects to Glamorgan County Council’s planning committee: her land “walked in and taken”. VERIFIED · press (OCR). The Western Mail (20 November 1958, p.7) reports the planning committee meeting of 19 November 1958: “Mrs. M D. Buckler was objecting to further industrial development in the vicinity of her farm, Ty Mawr, Penarth Road, Llandough.” Land farmed by her family since 1667 had been “wrongfully appropriated”. “This is a Welsh case of Crichel Down,” said Mrs. Buckler. “The Glamorgan County Council, Penarth Urban and Cardiff Rural Councils and Western Ground Rents have walked in and taken …” “Mrs. Buckler claimed that the water was cut off from her house and grounds for nearly 10 years by order of Western Ground Rents.” Quoted from the newspaper archive’s OCR (search-result snippets; the sentence breaks off after “taken”); page image not seen.",
+   "parcels": {
+    "AN": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-ev-0037-western-mail-1958-crichel-down",
+    "os1947"
+   ],
+   "say": "20 November nineteen fifty-eight: Mary tells the county planning committee that the councils and Western Ground Rents have walked in and taken her family's land. In her words: a Welsh case of Crichel Down.",
+   "pend": [
+    "AN",
+    "AS"
+   ],
+   "img": {
+    "src": "img/mary-williams.jpg?v=1.4.5r",
+    "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
+   },
+   "dur": 13.25
+  },
+  {
+   "id": "s20",
+   "date": "1958/9",
+   "year": 1958,
+   "base": "1947",
+   "title": "Green: occupancy attempt",
+   "headline": "1958/9 · Green: attempt to make Mary (Nancy) Williams’s occupancy permissive, refused",
+   "labels": [
+    "VERIFIED · judgment"
+   ],
+   "short": "1958 to 59, the green: Western Ground Rents offers Mary a tenancy, and she refuses it.",
+   "text": "1958/9 · Green: attempt to make Mary (Nancy) Williams’s occupancy permissive, refused. VERIFIED · judgment. The Court of Appeal records that by 1959 Mary asserted title to Great House Farm through her grandfather, John Williams, and: “She was offered a tenancy of the farmhouse and garden by Western Ground Rents but refused to accept it. She was also later offered, and refused, alternative accommodation.” The green lies south of the house and garden, now the Church View Close park, and was registered as village green VG41 on 16 June 1970. The offer and her reply (EV-0039) are not held.",
+   "parcels": {
+    "AN": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html",
+    "hp-nce-ev-0039-wgr-tenancy-offers-1959-1965",
+    "os1947"
+   ],
+   "say": "Nineteen fifty-eight to fifty-nine, the green: Western Ground Rents offers Mary a tenancy, and she refuses it.",
+   "pend": [
+    "AN",
+    "AS"
+   ],
+   "img": {
+    "src": "img/mary-williams.jpg?v=1.4.5r",
+    "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
+   },
+   "dur": 12.5
+  },
+  {
+   "id": "s21",
+   "date": "29 Mar 1961",
+   "year": 1961,
+   "base": "1947",
+   "title": "Woodland registration",
+   "headline": "29 Mar 1961 · Woodland: deed between Western Ground Rents, South Western Brick & Tile and Cardiff City Corporation, about 12 years after the 1949 attempt",
+   "labels": [
+    "VERIFIED · register held"
+   ],
+   "short": "1961, the woodland: a deed between Western Ground Rents, South Western Brick and Tile, and Cardiff City Corporation, about twelve years after 1949.",
+   "text": "29 Mar 1961 · Woodland: deed between Western Ground Rents, South Western Brick & Tile and Cardiff City Corporation, about 12 years after the 1949 attempt. VERIFIED · register held. The woodland register WA735527 (copy held) lists “a Deed dated 29 March 1961 made between (1) Western Ground Rents Limited (2) The South Western Brick & Tile Company Limited and (3) Cardiff City Corporation”; the land tinted pink is subject to the rights in it, and the register notes “Copy filed under WA231076”. The deed and its plan (EV-0040) have not been inspected. The 1994 transfer is a separate, later event on this line.",
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-vidence-ev-0040-1961-wgr-brick-tile-deed",
+    "hp-9-wa735527-title-register-september-2026",
+    "hp-ent-uploads-2026-09-wp-1790112812173-pdf",
+    "os1947"
+   ],
+   "say": "Nineteen sixty-one, the woodland: a deed between Western Ground Rents, South Western Brick and Tile, and Cardiff City Corporation, about twelve years after nineteen forty-nine.",
+   "pend": [
+    "AS"
+   ],
+   "dur": 7.84
+  },
+  {
+   "id": "s22",
+   "date": "11 Dec 1962",
+   "year": 1962,
+   "base": "1947",
+   "title": "Possession order",
+   "headline": "11 Dec 1962 · Possession order: farmhouse and garden. The BP house line starts here",
+   "labels": [
+    "VERIFIED · judgment"
+   ],
+   "short": "11 December 1962: a county court possession order for the farmhouse and garden. It is not enforced before 1974.",
+   "text": "11 Dec 1962 · Possession order: farmhouse and garden. The BP house line starts here. VERIFIED · judgment. The Court of Appeal records that WGR sued Frederick and Mary Buckler in Cardiff County Court “for possession of the farmhouse and garden and mesne profits since 1955”, that “On December 11 1962 a possession order was made by Judge Temple Morris QC”, and that “nothing was done before 1974 to enforce the 1962 possession order”.",
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "order",
+     "case": "order",
+     "note": ""
+    },
+    "AS": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html",
+    "hp-rdiff-county-court-possession-order-1962",
+    "hp-1962-possession-order",
+    "os1947"
+   ],
+   "say": "11 December nineteen sixty-two: a county court possession order for the farmhouse and garden. It is not enforced before nineteen seventy-four.",
+   "pend": [
+    "AS"
+   ],
+   "dur": 11.71
+  },
+  {
+   "date": "Jun 1963",
+   "year": 1963,
+   "base": "1947",
+   "title": "Suspended committal order",
+   "headline": "Jun 1963 · The 1962 order’s mesne profits are partly enforced: a suspended committal order against Frederick",
+   "labels": [
+    "VERIFIED · judgment"
+   ],
+   "short": "June 1963: the mesne profits under the 1962 order are partly enforced, with a suspended committal order against Frederick. The possession order itself is not enforced.",
+   "text": "Jun 1963 · The order for mesne profits made with the 1962 possession order is partly enforced. VERIFIED · judgment: the Court of Appeal records “a suspended committal order against Mr Frederick Buckler in June 1963, but nothing was done before 1974 to enforce the 1962 possession order”.",
+   "say": "June nineteen sixty-three. The money side of the nineteen sixty-two order is partly enforced, with a suspended committal order against Frederick. Nothing is done to enforce possession until nineteen seventy-four.",
+   "src": [
+    "hp-1962-possession-order",
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "order",
+     "case": "order",
+     "note": ""
+    },
+    "AS": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "id": "s22a",
+   "dur": 12.67
+  },
+  {
+   "id": "s23",
+   "date": "1965",
+   "year": 1965,
+   "base": "1947",
+   "title": "Weekly tenancy offer",
+   "headline": "1965 · Further weekly tenancy offer; not signed, no rent paid",
+   "labels": [
+    "VERIFIED · judgment"
+   ],
+   "short": "1965: Mary is offered a weekly tenancy. Not signed; no rent paid.",
+   "text": "1965 · Further weekly tenancy offer; not signed, no rent paid. VERIFIED · judgment. Recorded in the Court of Appeal’s history: in March 1965 WGR’s agents offered Mrs Buckler a tenancy. Not signed; no rent paid.",
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "order",
+     "case": "order",
+     "note": ""
+    },
+    "AS": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html",
+    "hp-nce-ev-0039-wgr-tenancy-offers-1959-1965",
+    "os1947"
+   ],
+   "say": "Nineteen sixty-five: Mary is offered a weekly tenancy. Not signed; no rent paid.",
+   "pend": [
+    "AS"
+   ],
+   "img": {
+    "src": "img/mary-williams.jpg?v=1.4.5r",
+    "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
+   },
+   "dur": 5.38
+  },
+  {
+   "date": "1967",
+   "year": 1967,
+   "base": "1947",
+   "title": "Frederick Buckler dies",
+   "headline": "1967 · Frederick Buckler, Mary’s husband, dies aged 58; Mary stays on at the farm",
+   "labels": [
+    "VERIFIED · GRO index + judgment"
+   ],
+   "short": "1967: Frederick Buckler, Mary’s husband, dies aged 58. Mary stays on in her home at the farm.",
+   "text": "1967 · Frederick Buckler, Mary’s husband, dies aged 58. VERIFIED · GRO death index, March quarter 1967, East Glamorgan 8b 364. The Court of Appeal (1987) records that he “died at some time in the period 1965-67”, and that BP admitted “Mrs Buckler was in adverse possession from her husband’s death in 1965-67 until October 31 1974”. One estate paper gives December 1965. Mary stays on at the farm.",
+   "say": "Nineteen sixty-seven. Frederick Buckler, Mary’s husband, dies, aged fifty-eight. Mary stays on in her home at the farm.",
+   "src": [
+    "family",
+    "frederick",
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "order",
+     "case": "order",
+     "note": ""
+    },
+    "AS": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "id": "s23a",
+   "dur": 7.65
+  },
+  {
+   "id": "s24",
+   "date": "1967",
+   "year": 1967,
+   "base": "1947",
+   "title": "Lands Tribunal v Cardiff",
+   "headline": "1967 · Lands Tribunal: WGR v City of Cardiff",
+   "labels": [
+    "VERIFIED · catalogue only"
+   ],
+   "short": "1967: Western Ground Rents and the City of Cardiff go to the Lands Tribunal. Which land it concerned has not been read.",
+   "text": "1967 · Lands Tribunal: WGR v City of Cardiff. VERIFIED · catalogue only. A compulsory-purchase compensation case, catalogued at The National Archives. Which land it concerned has not been read.",
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "order",
+     "case": "order",
+     "note": ""
+    },
+    "AS": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-tionalarchives-gov-uk-details-r-c1425603",
+    "os1947"
+   ],
+   "say": "Nineteen sixty-seven: Western Ground Rents and the City of Cardiff go to the Lands Tribunal. Which land it concerned has not been read.",
+   "pend": [
+    "AS"
+   ],
+   "dur": 6.45
+  },
+  {
+   "date": "15 Feb 1969",
+   "year": 1969,
+   "base": "1947",
+   "title": "BP bids for WGR",
+   "headline": "15 Feb 1969 · British Petroleum makes an agreed bid for Western Ground Rents Ltd, for its pension fund",
+   "labels": [
+    "VERIFIED · press (snippets)"
+   ],
+   "short": "15 February 1969: British Petroleum makes an agreed bid for the whole of Western Ground Rents, for its pension fund. WGR’s interest at the farm passes to BP Pension Trust that December.",
+   "text": "15 Feb 1969 · British Petroleum makes an agreed bid for the whole of Western Ground Rents Ltd, wanting its “shops, offices, houses in London and South Wales — for their pension fund”, after rival bids from Amalgamated Investment & Property and Great Portland Estates. VERIFIED · press (snippets only, EV-0288). The conveyance of 31 Dec 1969 to BP Pension Trust follows.",
+   "say": "Fifteen February, nineteen sixty-nine. British Petroleum makes an agreed bid for Western Ground Rents, for its pension fund. Western Ground Rents’ interest at the farm passes to B P Pension Trust that December.",
+   "src": [
+    "ev0288",
+    "hp--ev-0043-wgr-bp-pension-trust-conveyance"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "order",
+     "case": "order",
+     "note": ""
+    },
+    "AS": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "id": "s24a",
+   "dur": 13.32
+  },
+  {
+   "id": "s25",
+   "date": "31 Dec 1969",
+   "year": 1969,
+   "base": "1947",
+   "title": "BP acquires",
+   "headline": "31 Dec 1969 · WGR → BP Pension Trust: BP takes WGR’s interest, including the 1962 order",
+   "labels": [
+    "VERIFIED · judgment"
+   ],
+   "short": "31 December 1969: BP Pension Trust takes Western Ground Rents’ interest: Parcel B, and the 1962 order.",
+   "text": "31 Dec 1969 · WGR → BP Pension Trust: BP takes WGR’s interest, including the 1962 order. VERIFIED · judgment. Conveyance recited as the root of BP’s title. The same conveyance carried Parcel B, so the station shows on both lines. In September 1974 BP applied for leave to enforce the 1962 order, so it held that order’s benefit.",
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "order",
+     "case": "order",
+     "note": ""
+    },
+    "AS": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    },
+    "B": {
+     "rec": "bppt",
+     "case": "bppt",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html",
+    "hp--ev-0043-wgr-bp-pension-trust-conveyance",
+    "os1947"
+   ],
+   "say": "31 December nineteen sixty-nine: B P Pension Trust takes Western Ground Rents' interest: Parcel B, and the nineteen sixty-two order.",
+   "pend": [
+    "AS"
+   ],
+   "dur": 9.52
+  },
+  {
+   "id": "s26",
+   "date": "16 Jun 1970",
+   "year": 1970,
+   "base": "1947",
+   "title": "Village green VG41",
+   "headline": "16 Jun 1970 · South-east ground registered as village green VG41 · about 11–12 yrs after the 1958/9 attempt",
+   "labels": [
+    "UNVERIFIED"
+   ],
+   "short": "16 June 1970: the green is registered as village green VG41, about twelve years after the 1958 attempt.",
+   "text": "16 Jun 1970 · South-east ground registered as village green VG41 · about 11–12 yrs after the 1958/9 attempt. UNVERIFIED. The date as recorded on the wiki. The application, map and ownership section of the VG41 file are not held; registration as a green does not by itself show who owns it. Llandough Community Council says it “owns and maintains the village green”.",
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "order",
+     "case": "order",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bppt",
+     "case": "bppt",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-044-vg41-village-green-registration-1970",
+    "hp-ocket-parks-and-village-green-20140-aspx",
+    "os1947"
+   ],
+   "say": "16 June nineteen seventy: the green is registered as village green V G forty-one, about twelve years after the nineteen fifty-eight attempt.",
+   "dur": 9.63
+  },
+  {
+   "id": "s27",
+   "date": "1971",
+   "year": 1971,
+   "base": "1947",
+   "title": "Ordnance Survey altered",
+   "headline": "1971 · BP house: Ordnance Survey alteration",
+   "labels": [
+    "SOURCE PENDING"
+   ],
+   "short": "1971: an alteration of the Ordnance Survey. The source is pending.",
+   "text": "1971 · BP house: Ordnance Survey alteration. SOURCE PENDING. An alteration to the Ordnance Survey’s “Ty-mawr” name for the farm in 1971; source pending until the 1971 OS sheet and its revision record are seen. On the earlier OS editions of 25-inch sheet XLVII.6 (1900, 1920 and 1947) the “Ty-mawr” name sits on the house parcel, Parcel A. The one 1971 record known on this line is BP Pension Trust’s 1971 abstract of title, known only from later recitals and not held (EV-0045).",
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "order",
+     "case": "order",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bppt",
+     "case": "bppt",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-e-ev-0045-1971-abstract-title-bp-pension",
+    "os1947"
+   ],
+   "say": "Nineteen seventy-one: an alteration of the Ordnance Survey. The source is pending.",
+   "dur": 8.75
+  },
+  {
+   "date": "31 Jul 1972",
+   "year": 1972,
+   "base": "1947",
+   "title": "VG41 objection period ends",
+   "headline": "31 Jul 1972 · The second objection period for commons and village-green registrations ends, covering VG41",
+   "labels": [
+    "VERIFIED · registers"
+   ],
+   "short": "31 July 1972: the objection period under the Commons Registration Act 1965 ends for registrations including village green VG41. Notice of it was by public notice only.",
+   "text": "31 Jul 1972 · The second objection period under the Commons Registration Act 1965 ends. It covers VG41, the village green provisionally registered on 16 Jun 1970. VERIFIED · registers: public notices in Glamorgan (EV-0263).",
+   "say": "Thirty-one July, nineteen seventy-two. The objection period for the village green, V G forty-one, ends. Notice was given only by public notice.",
+   "src": [
+    "ev0263",
+    "hp-044-vg41-village-green-registration-1970"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "order",
+     "case": "order",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bppt",
+     "case": "bppt",
+     "note": ""
+    }
+   },
+   "id": "s27a",
+   "dur": 10.89
+  },
+  {
+   "date": "15 Apr 1974",
+   "year": 1974,
+   "base": "1947",
+   "part": "1974: “IT’S MY HOME”",
+   "title": "“This is my home”",
+   "headline": "15 April 1974: Mary opens Tŷ Mawr to the public: “not only is this my home it is part of the nation’s heritage”",
+   "labels": [
+    "VERIFIED · press (Daily Telegraph, 16 Apr 1974)"
+   ],
+   "short": "15 April 1974: Mary opens the farmhouse to the public. “I will refuse to move because not only is this my home it is part of the nation’s heritage … my solicitors tell me I have a valid claim to it.”",
+   "quote": "“But I will refuse to move because not only is this my home it is part of the nation’s heritage.” · “The ownership of the house has been in dispute for 25 years but my family has lived here for more than 400 years and my solicitors tell me I have a valid claim to it.”",
+   "text": "Daily Telegraph, 16 April 1974 (EV-0048; cutting held, RCAHMW-stamped): on 15 April 1974 Mary, then 60, opened the farmhouse “to show what the nation is losing”; hundreds came and about 1,000 people had signed a petition. Her words: “But I will refuse to move because not only is this my home it is part of the nation’s heritage.” “The ownership of the house has been in dispute for 25 years but my family has lived here for more than 400 years and my solicitors tell me I have a valid claim to it.” This is the article the family’s case calls suppressed: the 1987 judgment does not mention it.",
+   "say": "Fifteen April nineteen seventy-four. Mary opens the farmhouse to the public, and hundreds come. She tells the Daily Telegraph: I will refuse to move, because not only is this my home, it is part of the nation’s heritage. The ownership has been in dispute for twenty-five years, but my family has lived here for more than four hundred years, and my solicitors tell me I have a valid claim to it.",
+   "src": [
+    "hp-ev-0048-telegraph-open-day-ancient-house",
+    "hp-1974-licence-letters"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bppt",
+     "case": "bppt",
+     "note": ""
+    }
+   },
+   "id": "s28",
+   "dur": 22.84,
+   "quote_by": "Mary (Nancy) Williams · Daily Telegraph, 16 April 1974 (cutting EV-0048)"
+  },
+  {
+   "date": "3 Jul – 30 Oct 1974",
+   "year": 1974,
+   "base": "1947",
+   "title": "She pleads ownership; she appeals",
+   "headline": "July–October 1974: Mary pleads title in court; BP’s action is never heard; her solicitors appeal",
+   "labels": [
+    "VERIFIED · judgment"
+   ],
+   "short": "3 July 1974: BP Pension Trust’s action is adjourned part heard for a formal defence; Mary’s defence then pleads that the claim is barred: the land is hers by the Limitation Act. The action is never heard. BP turns instead to the old 1962 order; on 30 October her solicitors appeal, because she had no notice.",
+   "text": "The 1987 judgment records: BP Pension Trust’s 1974 action against “Mrs Buckler (sued as Mrs Williams)” was “adjourned part heard on July 3 1974 for a formal defence”, and “a defence was filed asserting that BP Pension Trust’s claim was barred by adverse possession under the Limitation Act 1939 … That action has never been finally heard.” On 19 Sep 1974 BP obtained leave to enforce the 1962 order; on 30 Oct 1974 her solicitors issued a notice of appeal “on the ground that Mrs Buckler had had insufficient notice of the application and therefore had had no opportunity of presenting her case”.",
+   "say": "July nineteen seventy-four. In court, Mary’s defence pleads that B P Pension Trust’s claim is barred, and the land is hers. That action is adjourned, and never heard. B P turns instead to the old nineteen sixty-two order. On thirty October, her solicitors appeal: she was given no notice, and no chance to present her case.",
+   "src": [
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html",
+    "hp-9-mary-williams-plea-ownership-pleadings",
+    "hp-1974-licence-letters"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bppt",
+     "case": "bppt",
+     "note": ""
+    }
+   },
+   "id": "s29",
+   "dur": 20.97
+  },
+  {
+   "date": "31 Oct 1974",
+   "year": 1974,
+   "base": "1947",
+   "title": "The letters: what the court said",
+   "headline": "31 October 1974: BP’s two letters, sent to her solicitor, call her home a licence",
+   "labels": [
+    "COURT · what the 1987 judgment says"
+   ],
+   "short": "31 October 1974: BP’s two letters, sent to her solicitor, not to her, offer Mary rent-free occupancy of the house for life. In 1987 the Court of Appeal held the letters made her possession a licence “whether she liked it or not”. The same judgment records BP’s admission that until that day she was in adverse possession.",
+   "text": "What the court said. The 1987 judgment: the letters were sent “not to her but to her solicitor”. The trial judge held them effective “even though the letters were written unilaterally and without any agreement with her”; the Court of Appeal held “whether she liked it or not … her possession was no longer adverse” (Dillon LJ). Set against it, from the same judgment: “It is admitted for BP Properties Ltd that Mrs Buckler was in adverse possession from her husband’s death in 1965-67 until October 31 1974”, and BP’s own solicitors withdrew the warrant “before she had given any instructions”. Her reply: next step.",
+   "say": "Thirty-one October nineteen seventy-four. B P’s two letters, sent to her solicitor, not to her, offer Mary rent-free occupancy of the house for life. Thirteen years later the Court of Appeal holds that, whether she liked it or not, the letters made her possession a licence. Yet the same judgment records B P’s admission that, until that day, she was in adverse possession, and that the letters were written without any agreement with her.",
+   "src": [
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html",
+    "hp-evidence-ev-0050-1974-bp-licence-letters",
+    "hp-ev-0080-bp-properties-v-buckler-judgment"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bppt",
+     "case": "bppt",
+     "note": ""
+    }
+   },
+   "id": "s30",
+   "dur": 29.24
+  },
+  {
+   "date": "Oct 1974 →",
+   "year": 1974,
+   "base": "1947",
+   "title": "She rejected it",
+   "headline": "The family’s case: she rejected the licence, in writing and in public",
+   "labels": [
+    "CASE",
+    "SOURCE PENDING · her written reply"
+   ],
+   "short": "The family’s case: Mary rejected the licence. She wrote back after the offer to reject it, and she had said in public that the house was her home and her claim valid. Her written reply is not yet held.",
+   "quote": "She never accepts permissive occupancy and fought and rejects that assersion. …despite the 1987 ruling she accepted because she didn't expressly reject, she absolutely did expressly reject. Writing back after the offer to reject and also saying very vocally in a suppressed 1974 newspaper article \"its my home\"…",
+   "text": "The family’s case (words sent 21 Oct 2026): “She never accepts permissive occupancy and fought and rejects that assersion … she absolutely did expressly reject. Writing back after the offer to reject”. A family email to HM Land Registry, catalogued on the Legal Wiki, adds that the rejection was treated as made to BP Pension Trust rather than BP Properties. On the record: her 3 July 1974 plea of title (judgment), her appeal of 30 Oct 1974 (judgment), and her public words of 15 Apr 1974 (EV-0048). SOURCE PENDING: no copy of her written reply to the 31 Oct 1974 letters is yet held; the Legal Wiki records that “she never accepted the licence and continued to assert ownership in writing and in the press”.",
+   "say": "The family’s case is blunt. She never accepted permissive occupancy, and fought and rejected that assertion. Despite the nineteen eighty-seven ruling that she accepted because she didn’t expressly reject, she absolutely did expressly reject, writing back after the offer, and saying very vocally in the nineteen seventy-four newspaper: it’s my home. Her written reply is not yet held.",
+   "src": [
+    "case21oct",
+    "hp-1974-licence-letters",
+    "hmlr_emails",
+    "hp-ev-0048-telegraph-open-day-ancient-house"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bppt",
+     "case": "bppt",
+     "note": ""
+    }
+   },
+   "id": "s31",
+   "dur": 22.62,
+   "quote_by": "The Williams-Buckler family’s case · words of 21 Oct 2026"
+  },
+  {
+   "date": "1974–1983",
+   "year": 1979,
+   "base": "1947",
+   "title": "Nine years, still hers",
+   "headline": "1974–1983: Mary stays in her house, pays nothing, and her ownership plea is never tried",
+   "labels": [
+    "VERIFIED · judgment"
+   ],
+   "short": "From 1974 to 1983 Mary stays in the farmhouse, rent free. BP’s action, in which she pleaded ownership, is never relisted. BP Pension Trust conveys the house to BP Properties in May 1975.",
+   "text": "The 1987 judgment: “She was left in undisturbed possession of the farmhouse and garden, rent free, until her death, which occurred in March 1983.” The 1974 action in which she pleaded title “has never been finally heard”. The conveyance of the farmhouse and garden from BP Pension Trust to BP Properties “did not take place until May 1975” (23 May 1975, recited in HMLR’s letter of 19 Apr 2026).",
+   "say": "For nine years, Mary stays in her house, paying nothing. The action in which she pleaded ownership is never tried. In May nineteen seventy-five, B P Pension Trust conveys the house to B P Properties.",
+   "src": [
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html",
+    "hmlr0419"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bppt",
+     "case": "bppt",
+     "note": ""
+    }
+   },
+   "id": "s32",
+   "dur": 12.6
+  },
+  {
+   "date": "1 Dec 1975",
+   "year": 1975,
+   "base": "1947",
+   "title": "Compulsory registration",
+   "headline": "1 Dec 1975 · Registration of title becomes compulsory in the Vale of Glamorgan",
+   "labels": [
+    "VERIFIED · statutory instrument"
+   ],
+   "short": "1 December 1975: registration of title becomes compulsory in the Vale of Glamorgan. From then on, a sale of land here has to be registered at HM Land Registry.",
+   "text": "1 Dec 1975 · Compulsory registration of title begins in the Vale of Glamorgan. VERIFIED · statutory instrument: SI 1975/160 (EV-0265). From this date a conveyance on sale of land in the area has to be followed by first registration at HM Land Registry. The farm’s first registrations, WA231076 and WA240304, are applied for in 1982 and 1983.",
+   "say": "First December, nineteen seventy-five. Registration of title becomes compulsory in the Vale of Glamorgan. From then on, a sale of land here has to be registered at the Land Registry.",
+   "src": [
+    "ev0265",
+    "hp-land-registry-titles"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bppt",
+     "case": "bppt",
+     "note": ""
+    }
+   },
+   "id": "s32a",
+   "dur": 11.65
+  },
+  {
+   "id": "s33",
+   "date": "30 Nov 1982",
+   "year": 1982,
+   "base": "1947",
+   "title": "BP applies: farm",
+   "headline": "30 Nov 1982 · BP Properties Ltd applies to register WA231076 (the farm)",
+   "labels": [
+    "VERIFIED · HMLR"
+   ],
+   "short": "30 November 1982: BP Properties applies to register the farm.",
+   "text": "30 Nov 1982 · BP Properties Ltd applies to register WA231076 (the farm). VERIFIED · HMLR. Application date from HM Land Registry’s file schedule (30 items).",
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-0-wa231076-title-register-september-2026",
+    "hp-land-registry-titles",
+    "os1947"
+   ],
+   "say": "30 November nineteen eighty-two: B P Properties applies to register the farm.",
+   "part": "1982–83: REGISTERED WHILE SHE LIVED THERE",
+   "dur": 10.19
+  },
+  {
+   "date": "23 Feb 1983",
+   "year": 1983,
+   "base": "1947",
+   "title": "The house is registered to BP",
+   "headline": "23 February 1983: BP Properties applies to register the farmhouse and garden, while Mary lives in it",
+   "labels": [
+    "VERIFIED · HMLR"
+   ],
+   "short": "23 February 1983: BP Properties applies to register the farmhouse and garden, title WA240304, while Mary is living in it and her 1974 ownership plea stands untried. HM Land Registry relies on the applicant’s certificates, including that its solicitors are “not aware of any question or doubt affecting the title”.",
+   "text": "HMLR’s schedule dates the Form 1C application and first register edition of WA240304 to 23 Feb 1983; examination continued to May 1983 (EV-0066, EV-0063). HMLR’s stage-one reply of 19 Apr 2026 explains that application forms carry the applicant’s solicitors’ certificates, including “We are not aware of any question or doubt affecting the title to the land or any part thereof”, and that “HM Land Registry is entitled to rely on those certificates”. The wording of BP’s own 1983 certificate is not yet seen (EV-0063, official copy pending).",
+   "say": "Twenty-three February nineteen eighty-three. B P Properties applies to register the farmhouse and garden, while Mary is living in it, and her ownership plea of nineteen seventy-four has never been tried. The Land Registry relies on the applicant’s certificates, among them that its solicitors are not aware of any question or doubt affecting the title.",
+   "src": [
+    "hp-0066-hmlr-wa240304-item-10-register-1983",
+    "hp-ce-ev-0063-hmlr-wa240304-item-11-form-1c",
+    "hmlr0419"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    }
+   },
+   "id": "s34",
+   "dur": 21.12
+  },
+  {
+   "date": "26 Mar 1983",
+   "year": 1983,
+   "base": "1947",
+   "title": "She dies inside the window",
+   "headline": "26 March 1983: Mary (Nancy) Williams dies, a month after the application, while it is still being examined",
+   "labels": [
+    "VERIFIED · HMLR schedule + judgment",
+    "CASE"
+   ],
+   "short": "26 March 1983: Mary dies, one month after BP’s application and while it is still being examined. No notice of the application to her is recorded. The family’s case: she was never told, and died in the very window in which she could have challenged it.",
+   "quote": "She was also not just not notified of BP registering her land in their names in 1983, she actually conveniently died in the small window she will have had to challenge that registration had she been made aware of the secretive registration.",
+   "text": "Mary (Nancy) Williams died on 26 March 1983 (judgment: March 1983). The WA240304 application of 23 Feb 1983 was still under examination until May 1983 (HMLR schedule). No notice to her, and no caution, is recorded on the material held; HMLR’s SAR (due 28 Oct 2026) asks for the notice and service record. The family’s case: “she actually conveniently died in the small window she will have had to challenge that registration had she been made aware of the secretive registration.” SOURCE PENDING: the family’s evidence that notice arrived only after her death.",
+   "say": "Twenty-six March nineteen eighty-three. Mary Nancy Williams dies, one month after the application, while it is still being examined. No notice to her is recorded. In the family’s words: she was not just not notified of B P registering her land in their names; she died in the small window she would have had to challenge that registration, had she been made aware of it.",
+   "src": [
+    "hp-0066-hmlr-wa240304-item-10-register-1983",
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html",
+    "case21oct"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    }
+   },
+   "img": {
+    "src": "img/mary-williams.jpg?v=1.6.0",
+    "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr (1913–1983). Family photograph, restored; original linked on fb.bucklerfamily.estate."
+   },
+   "id": "s35",
+   "dur": 21.78,
+   "quote_by": "The Williams-Buckler family’s case · words of 21 Oct 2026"
+  },
+  {
+   "date": "1983 → 2026",
+   "year": 1983,
+   "base": "1947",
+   "title": "The Land Registry confirms",
+   "headline": "25 May 2026: HM Land Registry confirms it was not told of the family’s interest or of any dispute",
+   "labels": [
+    "VERIFIED · HMLR letter, 25 May 2026",
+    "CASE"
+   ],
+   "short": "HM Land Registry’s final complaint reply, 25 May 2026: “At the time of registration we did not receive or were aware of any interest that you or your family may or may not have had in the land … we were unaware of any dispute that was possibly ongoing.”",
+   "quote": "In which BP also kept from the land registry that Mary was there and asserting ownership, which the land registry confirmed…  ·  HM Land Registry, 25 May 2026: “At the time of registration we did not receive or were aware of any interest that you or your family may or may not have had in the land. The applicants at the time provided documentary title to the land that is registered and we were unaware of any dispute that was possibly ongoing.”",
+   "text": "HM Land Registry, Land Registrar, stage-two (final) complaint reply of 25 May 2026, ref N610CGV (WA231076/A/216/MC), verbatim: “At the time of registration we did not receive or were aware of any interest that you or your family may or may not have had in the land. The applicants at the time provided documentary title to the land that is registered and we were unaware of any dispute that was possibly ongoing.” The same letter says the title “has been registered correctly” and refuses rectification and indemnity; the matter is with the Independent Complaints Reviewer (ICR/090/26). Mary’s 1974 ownership plea, in BP Pension Trust’s own action, was pending and untried when BP applied.",
+   "say": "In twenty twenty-six, the Land Registry itself confirms it. Its final reply reads: at the time of registration we did not receive, or were aware of, any interest that you or your family may have had in the land, and we were unaware of any dispute that was possibly ongoing. In the family’s words: B P kept from the Land Registry that Mary was there and asserting ownership, which the Land Registry confirmed.",
+   "src": [
+    "hmlr0525",
+    "hmlr_emails",
+    "case21oct"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    }
+   },
+   "id": "s36",
+   "dur": 25.83,
+   "quote_by": "The family’s case, beside HM Land Registry’s own words (letter of 25 May 2026)"
+  },
+  {
+   "date": "22 May 1984",
+   "year": 1984,
+   "base": "1947",
+   "title": "BP’s writ for possession",
+   "headline": "22 May 1984 · BP Properties Ltd issues its writ for possession of the farmhouse and garden",
+   "labels": [
+    "VERIFIED · judgment"
+   ],
+   "short": "22 May 1984: BP Properties issues its writ for possession of the farmhouse and garden against William Buckler.",
+   "text": "22 May 1984 · BP Properties Ltd issues a writ for possession. VERIFIED: the date is recorded in the European Commission of Human Rights decision on Application No. 14464/88 (The Facts, p.2).",
+   "say": "Twenty-two May, nineteen eighty-four. B P Properties issues its writ for possession of the farmhouse and garden.",
+   "src": [
+    "bpvb",
+    "echr14464"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    }
+   },
+   "id": "s36a",
+   "dur": 6.92
+  },
+  {
+   "date": "24 Jul 1986",
+   "year": 1986,
+   "base": "1947",
+   "title": "High Court: judgment for BP",
+   "headline": "24 Jul 1986 · Hollis J, in the High Court at Cardiff, gives judgment for BP; possession suspended for six months",
+   "labels": [
+    "VERIFIED · judgment"
+   ],
+   "short": "24 July 1986: in the High Court at Cardiff, Hollis J gives judgment for BP Properties, with possession suspended for six months. William Buckler appeals.",
+   "text": "24 Jul 1986 · Hollis J, sitting in the Queen’s Bench Division at Cardiff, gives judgment for BP Properties Ltd after a hearing on 10 Jul 1986; possession is suspended for six months. VERIFIED · judgment: the Court of Appeal recites the decision “given on July 24 1986”; South Wales Echo, 25 Jul 1986, p.3.",
+   "say": "Twenty-four July, nineteen eighty-six. In the High Court at Cardiff, Mr Justice Hollis gives judgment for B P. Possession is suspended for six months, and William Buckler appeals.",
+   "src": [
+    "bpvb",
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    }
+   },
+   "id": "s36b",
+   "dur": 11.94
+  },
+  {
+   "id": "s37",
+   "date": "2 Feb 1987",
+   "year": 1987,
+   "base": "1947",
+   "title": "WA240304 merged in",
+   "headline": "2 Feb 1987 · WA240304 merged into WA231076: the house branch joins Parcel B",
+   "labels": [
+    "VERIFIED · HMLR"
+   ],
+   "short": "2 February 1987: during the appeal, the house title is merged into Parcel B’s.",
+   "text": "2 Feb 1987 · WA240304 merged into WA231076: the house branch joins Parcel B. VERIFIED · HMLR. Amalgamation recorded during the appeal.",
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-1987-title-amalgamation-application-plan",
+    "hp-ice-1987-hmlr-amalgamation-during-appeal",
+    "os1947"
+   ],
+   "say": "2 February nineteen eighty-seven: during the appeal, the house title is merged into Parcel B's.",
+   "merged": true,
+   "img": {
+    "src": "img/mary-williams.jpg?v=1.4.5r",
+    "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
+   },
+   "part": "1987: WHAT THE COURT DECIDED, AND WHAT IT DID NOT",
+   "dur": 9.61
+  },
+  {
+   "date": "31 Jul 1987",
+   "year": 1987,
+   "base": "1947",
+   "title": "Court of Appeal: possession, not ownership",
+   "headline": "31 July 1987: the Court of Appeal decides possession of the farmhouse and garden. It never tries who owned the house",
+   "labels": [
+    "COURT · what the 1987 judgment says",
+    "VERIFIED · judgment"
+   ],
+   "short": "31 July 1987: the Court of Appeal holds that the 1974 letters made Mary’s possession a licence, so her adverse-possession defence fails. It decides possession of the farmhouse and garden. It does not try the Williams paper title: the family’s title papers had been taken from the house in 1950–52.",
+   "text": "BP Properties Ltd v Buckler [1987] EWCA Civ 2: “whether she liked it or not, from the time of her receipt of the letters, Mrs Buckler was in possession of the farmhouse and garden by the licence of BP Properties Ltd, and her possession was no longer adverse” (Dillon LJ). The appeal concerned the farmhouse and garden only and decided possession. The House of Lords refused leave in 1988; Strasbourg found the application inadmissible in 1989. No court has tried the Williams documentary title: Mary (Nancy) Williams’s c.1974 statement records the family’s papers were taken from the farmhouse in 1950–52.",
+   "say": "Thirty-one July nineteen eighty-seven. The Court of Appeal holds that the letters made Mary’s possession a licence, so the defence of adverse possession fails. It decides who may possess the farmhouse and garden. It never tries who owned it. The family’s title papers, Mary had stated, were taken from the house in nineteen fifty to fifty-two.",
+   "src": [
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html",
+    "hp-ev-0080-bp-properties-v-buckler-judgment",
+    "lcc10",
+    "hp-testimony-mary-williams"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    }
+   },
+   "id": "s38",
+   "dur": 20.8
+  },
+  {
+   "date": "1916–1987",
+   "year": 1987,
+   "base": "1947",
+   "title": "Parcel B, not Parcel A",
+   "headline": "The adverse possession claim pertained to Parcel B’s tenancy, not Parcel A",
+   "labels": [
+    "VERIFIED · judgment + 1939 plan",
+    "CASE"
+   ],
+   "short": "The adverse-possession argument ran from the end of a farm tenancy (1953–55). The family’s case: that tenancy, and the landlord’s title, concerned Parcel B; Parcel A, the farmhouse and about ten acres, the Williams family owned from 1928. The 1939 tenancy plan shows Parcel B only.",
+   "quote": "Also the adverse possession claim technically pertained to parcel B, not parcel A. They owned parcel A…",
+   "text": "On the record: the 1987 appeal argued adverse possession of the farmhouse and garden running “from, at latest, February 2 1955 when Mr Frederick Buckler’s tenancy expired, or alternatively from the date in 1953 when he last paid any rent” (judgment). The 1939 Western Ground Rents agreement plan shows Parcel B only (EV-0023). Mary’s c.1974 statement: the farmhouse and about 10 acres (Parcel A) were sold apart in 1877 and, when quarrying ceased in 1928, became her father’s. Against: the 1916 tenancy described the farm as one holding, and later documents repeated that wording. The family’s case: “the adverse possession claim technically pertained to parcel B, not parcel A. They owned parcel A”.",
+   "say": "And the parcels. The adverse possession argument in court ran from the end of a farm tenancy, in nineteen fifty-three to fifty-five. The nineteen thirty-nine tenancy plan shows Parcel B only. In the family’s words: the adverse possession claim technically pertained to Parcel B, not Parcel A. They owned Parcel A.",
+   "src": [
+    "hp-bailii-org-ew-cases-ewca-civ-1987-2-html",
+    "hp-0023-1939-wgr-john-williams-tenancy-plan",
+    "hp-the-two-parcels",
+    "hp-testimony-mary-williams",
+    "case21oct"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AM": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "AS": {
+     "rec": "williams",
+     "case": "williams",
+     "note": ""
+    },
+    "B": {
+     "rec": "wgr",
+     "case": "wgr",
+     "note": ""
+    }
+   },
+   "id": "s39",
+   "dur": 21.89,
+   "quote_by": "The Williams-Buckler family’s case · words of 21 Oct 2026"
+  },
+  {
+   "date": "Apr–Dec 1988",
+   "year": 1988,
+   "base": "aerial",
+   "part": "1988: THE HOME IS DESTROYED",
+   "title": "Eviction and demolition",
+   "headline": "1988: police and bailiffs break in; on 6 December the house, probably 17th-century, is bulldozed before dawn",
+   "labels": [
+    "VERIFIED · press"
+   ],
+   "short": "April 1988: five bailiffs and about fifteen police break the doors with poleaxes, children behind them. On 5 December the court refuses to wait for Strasbourg. From about 4am on 6 December the house is bulldozed; nothing stands by breakfast.",
+   "text": "Press, 29 April 1988: five bailiffs and about fifteen police; doors broken with poleaxes, children behind them. 29–30 November 1988: possession is obtained; bailiffs force entry and William Buckler, Mary’s son, is taken to Llandough Hospital (press, Wednesday 30 November 1988). On 5 December 1988 the court refused to wait for Strasbourg; from about 4am on 6 December BP’s bulldozers demolished the farmhouse while his wife and their three children watched; nothing was standing by breakfast. A Vale councillor called the demolition “disgusting”. RCAHMW classes the house as sub-medieval, probably 17th-century, possibly with a medieval core.",
+   "say": "Nineteen eighty-eight. In April, bailiffs and about fifteen police break down the doors with poleaxes, with children behind them. On five December the court refuses to wait for Strasbourg. From about four in the morning on six December, B P’s bulldozers bring the house down, while the wife and three children of Mary’s son, William Buckler, watch. By breakfast, nothing is standing.",
+   "src": [
+    "hp-demolition-1988",
+    "hp-108-south-wales-echo-bp-demolition-anger",
+    "lcc10",
+    "press"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    }
+   },
+   "id": "s40",
+   "dur": 22.83
+  },
+  {
+   "date": "5 Dec 1988",
+   "year": 1988,
+   "base": "aerial",
+   "title": "A county treasure, unlisted",
+   "headline": "5 December 1988: Cadw refuses to list the house, the day before it is demolished",
+   "labels": [
+    "VERIFIED · Cadw + GGAT + Local Plan"
+   ],
+   "short": "The Local Plan said the buildings should be retained; GGAT later called the farmhouse a “county treasure”. Cadw refused to list it on 5 December 1988, the day before demolition. No assessment file or destruction record has been produced.",
+   "text": "Legal Wiki briefing (C6) and Anomalies Register A-036 to A-052: the Local Plan said the buildings should be retained; GGAT’s 1989 report described the farmhouse as a “county treasure”; Cadw refused to list it on 5 December 1988; no assessment file or destruction record has been produced. Against: Cadw said in 1988 the house was not of sufficient architectural merit to list; GGAT disclosed its dual role in 1990 and did not advise demolition.",
+   "say": "On five December nineteen eighty-eight, the day before the bulldozers, Cadw refuses to list the house. The Local Plan had said the buildings should be kept, and G-GAT would call the farmhouse a county treasure. No assessment file, and no record of its destruction, has ever been produced.",
+   "src": [
+    "lcc10",
+    "anomalies",
+    "missing"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    }
+   },
+   "id": "s41",
+   "dur": 17.16
+  },
+  {
+   "date": "3 May 1988 · 14 Apr 1989",
+   "year": 1989,
+   "base": "aerial",
+   "title": "Strasbourg: application 14464/88",
+   "headline": "3 May 1988 · 14 Apr 1989 · William Buckler applies to the European Commission of Human Rights; the application is declared inadmissible",
+   "labels": [
+    "VERIFIED · judgment"
+   ],
+   "short": "3 May 1988: William Buckler applies to the European Commission of Human Rights (No. 14464/88). 14 April 1989: the Commission declares the application inadmissible.",
+   "text": "3 May 1988 · William Buckler applies to the European Commission of Human Rights, Application No. 14464/88, under Article 8 and Article 1 of Protocol No. 1. 14 Apr 1989 · The Commission declares the application inadmissible. VERIFIED: the Commission’s admissibility decision of 14 April 1989.",
+   "say": "Three May, nineteen eighty-eight. William Buckler applies to the European Commission of Human Rights in Strasbourg. On fourteen April nineteen eighty-nine, the Commission declares the application inadmissible.",
+   "src": [
+    "bpvb",
+    "echr14464"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    }
+   },
+   "id": "s41a",
+   "dur": 12.02
+  },
+  {
+   "id": "s42",
+   "date": "1989–90",
+   "year": 1989,
+   "base": "aerial",
+   "title": "Outline planning",
+   "headline": "1989–90 · Planning 89/01396/OUT: Cardiff Bay Development Corporation consulted",
+   "labels": [
+    "VERIFIED · scan read"
+   ],
+   "short": "1989: outline planning. Cardiff Bay Development Corporation is consulted, not Cardiff City Council.",
+   "text": "1989–90 · Planning 89/01396/OUT: Cardiff Bay Development Corporation consulted. VERIFIED · scan read. BP Properties’ outline application (received 8 Nov 1989; granted 13 Mar 1990). The planning officer’s report lists among the consultees: “Cardiff Bay Development Corporation: No objections – however, the Corporation would hope that the trees on the slope of the site facing north-west are retained and that the public right of way which runs through the site will be retained.” This is Cardiff Bay Development Corporation, not Cardiff City Council. The full response is outstanding; it was requested from the Vale on 18 Sep 2026.",
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-fficer-s-report-on-outline-application-f",
+    "hp-anning-permission-89-01396-out-residenti",
+    "hp-n-council-email-correspondence-catalogue"
+   ],
+   "say": "Nineteen eighty-nine: outline planning. Cardiff Bay Development Corporation is consulted, not Cardiff City Council.",
+   "merged": true,
+   "part": "THE ESTATE: CHURCH VIEW CLOSE",
+   "dur": 7.36
+  },
+  {
+   "date": "1990",
+   "year": 1990,
+   "base": "aerial",
+   "title": "William Buckler dies",
+   "headline": "1990 · William (Billy) Buckler, Mary’s son, dies (date unresolved)",
+   "labels": [
+    "VERIFIED · probate calendar + press · date unresolved"
+   ],
+   "short": "1990: William (Billy) Buckler, Mary’s son, dies (date unresolved). He had made a detour around Llandough “so never had to pass the site of Great House Farm”.",
+   "text": "1990 · William (Billy) Buckler, Mary’s son, dies (date unresolved). The records do not agree on the date. The probate calendar of 1991 lists a William Beverley Buckler of Penarth, probably him, with administration granted on 11 Jul 1991 (EV-0274). The South Wales Echo reports in 1990 that “Billy died suddenly this week”, and that he had “made a detour around Llandough so never had to pass the site of Great House Farm” (snippet, EV-0290).",
+   "say": "Nineteen ninety. William Buckler, Mary’s son, dies; the exact date is unresolved. He had made a detour around Llandough, so that he never had to pass the site of Great House Farm.",
+   "src": [
+    "family",
+    "ev0274",
+    "ev0290"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    }
+   },
+   "id": "s42a",
+   "dur": 11.52
+  },
+  {
+   "id": "s43",
+   "date": "1992",
+   "year": 1992,
+   "base": "aerial",
+   "title": "Reserved matters",
+   "headline": "1992 · Reserved matters 92/00671/RES: 20 houses; no Cardiff body named",
+   "labels": [
+    "VERIFIED · scan read"
+   ],
+   "short": "1992: reserved matters for twenty houses. No Cardiff body is named.",
+   "text": "1992 · Reserved matters 92/00671/RES: 20 houses; no Cardiff body named. VERIFIED · scan read. Ideal Homes Wales’ Form D (14 May 1992) names no Cardiff City or Cardiff Bay body. It answers “No” to felling trees and “No” to altering or diverting a public right of way.",
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "bpp",
+     "case": "bpp",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-pplication-form-d-for-approval-of-reserv",
+    "hp-28-ggat-letter-reserved-matters-approval"
+   ],
+   "say": "Nineteen ninety-two: reserved matters for twenty houses. No Cardiff body is named.",
+   "merged": true,
+   "dur": 7.06
+  },
+  {
+   "date": "1993–1994",
+   "year": 1994,
+   "base": "aerial",
+   "title": "Built over the cemetery",
+   "headline": "1993–94: BP to Ideal Homes; Ideal Homes Wales commissions the dig that finds 1,026 burials",
+   "labels": [
+    "VERIFIED · press + Museum Wales",
+    "UNVERIFIED · 1993 deed not seen",
+    "CASE"
+   ],
+   "short": "3 December 1993: BP to Ideal Homes, the farm site and woodland (deed not seen). In 1994 the dig at “Great House Farm”, on behalf of Ideal Homes Wales, finds 1,026 burials; the finds go to Museum Wales on 28 July 1994. The twenty houses become Church View Close.",
+   "quote": "This was british city planners designing and building concentration work camp housing over a sacred, holy christian stronghold.",
+   "text": "Woodland title history: BP to Ideal Homes, 3 Dec 1993 (deed not seen). The 1994 excavation at “Great House Farm” was carried out on behalf of Ideal Homes Wales (Cotswold Archaeological Trust Report 94213, GHF-E148); Ideal Homes Wales Ltd gave the remains to Museum Wales on 28 Jul 1994 (EV-0293). Not yet shown: that the 1993 transferee and the 1994 developer are the same company, or that the burials lay on Parcel A. The family’s case: “This was british city planners designing and building concentration work camp housing over a sacred, holy christian stronghold.”",
+   "say": "In December nineteen ninety-three, B P passes the site to Ideal Homes. In nineteen ninety-four, a dig on behalf of Ideal Homes Wales finds over a thousand burials, and the finds go to Museum Wales. Then the twenty houses go up. In the family’s words: this was British city planners designing and building concentration work camp housing over a sacred, holy Christian stronghold.",
+   "src": [
+    "hp-of-cardiff-forensic-institutional-review",
+    "e148",
+    "archaeology",
+    "case21oct"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "housing",
+     "case": "housing",
+     "note": ""
+    },
+    "AM": {
+     "rec": "housing",
+     "case": "housing",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "housing",
+     "case": "housing",
+     "note": ""
+    }
+   },
+   "id": "s44",
+   "dur": 23.86,
+   "quote_by": "The Williams-Buckler family’s case · words of 21 Oct 2026"
+  },
+  {
+   "date": "1970 · 1994 · 2005",
+   "year": 1994,
+   "base": "aerial",
+   "title": "Mary’s green and Mary’s forest",
+   "headline": "Mary’s green, south of her house, and Mary’s forest, north of it: held by the council and Forest of Cardiff",
+   "labels": [
+    "VERIFIED · registers",
+    "UNVERIFIED · VG41 file not held",
+    "CASE"
+   ],
+   "short": "The green south of Mary’s house was registered as village green VG41 on 16 June 1970; the community council says it owns it. The woodland north of the house passed to Forest of Cardiff on 10 November 1994 (WA735527); part was sold to Goldsworthy Homes in 2005.",
+   "quote": "…the council with Marys green south of Marys house, and cardiff forest with marys forest north of her house, occupied illegally (came in and took/stole) based on the same 1983 BP stealth and potential racket/ fraud/ concealment/ purgergy as BP seems to have committed in 1983 and enforcement in 1988.",
+   "text": "The green (lower third of Parcel A): registered as village green VG41 on 16 Jun 1970 (EV-0044); Llandough Community Council says it “owns and maintains the village green”. The woodland (top third of Parcel A): 29 Mar 1961 deed between Western Ground Rents, South Western Brick & Tile and Cardiff City Corporation (EV-0040); transfer to Forest of Cardiff 10 Nov 1994, title WA735527 (EV-0169); part sold to Goldsworthy Homes 2005, £20,000 (Forest of Cardiff accounts to 30 Jun 2006). The family’s case: “…the council with Marys green south of Marys house, and cardiff forest with marys forest north of her house, occupied illegally (came in and took/stole) based on the same 1983 BP stealth and potential racket/ fraud/ concealment/ purgergy as BP seems to have committed in 1983 and enforcement in 1988.”",
+   "say": "Mary’s green, south of her house, was registered as village green V G forty-one in nineteen seventy, and the community council says it owns it. Mary’s forest, north of her house, passed to Forest of Cardiff in nineteen ninety-four. In the family’s words, they occupied illegally, came in and took, based on the same nineteen eighty-three B P stealth, and enforcement in nineteen eighty-eight.",
+   "src": [
+    "hp-044-vg41-village-green-registration-1970",
+    "hp-ocket-parks-and-village-green-20140-aspx",
+    "hp-vidence-ev-0040-1961-wgr-brick-tile-deed",
+    "hp-9-wa735527-title-register-september-2026",
+    "e149",
+    "hp-accounts-2006-sale-of-land-leckwith-road",
+    "dossier1955",
+    "case21oct"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "housing",
+     "case": "housing",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "housing",
+     "case": "housing",
+     "note": ""
+    }
+   },
+   "id": "s45",
+   "dur": 23.54,
+   "quote_by": "The Williams-Buckler family’s case · words of 21 Oct 2026"
+  },
+  {
+   "date": "1988–2026",
+   "year": 2026,
+   "base": "aerial",
+   "part": "SUPPRESSED HISTORY, AND THE RECORDS WALL",
+   "title": "History left out",
+   "headline": "The heritage record says “Post Medieval – Farm”. The village history does not mention Great House at all",
+   "labels": [
+    "VERIFIED · heritage record + council history",
+    "CASE"
+   ],
+   "short": "The heritage record classes the site “Post Medieval – Farm”. The community council’s village history says 800 burials and does not mention Great House at all. No marker records the cemetery, the monastery, Driscoll or Marconi.",
+   "quote": "The Roman villa remains unmarked, the monestry not formally discovered, no mention of marconi or peerless jim, the 2,200 year old celtic round house. …it depended on suppression of one of Wales' riches amounts of history and herritage.",
+   "text": "Heneb’s record classes the site “Post Medieval – Farm”; the Royal Commission recorded it only in part (Legal Wiki briefing C6). Llandough Community Council’s own village history says 800 burials and does not mention Great House (C2). GGAT warned in 1982; in 1990 untested ground was zoned low potential; burials were found there in 1994. The family’s case: “The Roman villa remains unmarked, the monestry not formally discovered, no mention of marconi or peerless jim, the 2,200 year old celtic round house.” and the erasure “…it depended on suppression of one of Wales' riches amounts of history and herritage.”",
+   "say": "Today the heritage record calls the site Post Medieval, Farm. The village history says eight hundred burials, and does not mention Great House at all. In the family’s words: the Roman villa remains unmarked, the monastery not formally discovered, no mention of Marconi or Peerless Jim, the two thousand two hundred year old Celtic roundhouse. It depended on suppression of one of Wales’ richest amounts of history and heritage.",
+   "src": [
+    "lcc10",
+    "archaeology",
+    "anomalies",
+    "case21oct"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "housing",
+     "case": "housing",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "housing",
+     "case": "housing",
+     "note": ""
+    }
+   },
+   "id": "s46",
+   "dur": 25.8,
+   "quote_by": "The Williams-Buckler family’s case · words of 21 Oct 2026"
+  },
+  {
+   "date": "2025–2026",
+   "year": 2026,
+   "base": "aerial",
+   "title": "The records wall",
+   "headline": "More than twenty bodies asked; 54 records missing, withheld or not yet produced",
+   "labels": [
+    "VERIFIED · Missing Records Register"
+   ],
+   "short": "Over eighteen months, more than twenty public bodies have been asked for the records. Fifty-four records are identified as missing, withheld or not yet produced, among them the 1969 root deed and the 1983 certificate.",
+   "text": "Missing Records Register and briefing C7: 54 records identified as missing, withheld or not yet produced; the HMLR schedule of 30 July 2026 does not list the 31 Dec 1969 deed recited as the root of BP’s title; BP’s 1983 Form 1C and certificate (EV-0063) and the 1974 court papers (EV-0049) are not yet produced; HMLR’s subject-access reply is due 28 Oct 2026; the ICR complaint (ICR/090/26) is open. Against: several bodies have disclosed material, and a missing record is not, on its own, proof of concealment.",
+   "say": "Over eighteen months, more than twenty public bodies have been asked for the records. Fifty-four are still missing, withheld, or not yet produced: among them the nineteen sixty-nine deed recited as the root of B P’s title, and the certificate B P’s solicitors gave in nineteen eighty-three.",
+   "src": [
+    "missing",
+    "lcc10",
+    "hmlr0419"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "housing",
+     "case": "housing",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "housing",
+     "case": "housing",
+     "note": ""
+    }
+   },
+   "id": "s47",
+   "dur": 16.82
+  },
+  {
+   "id": "s48",
+   "date": "2026",
+   "year": 2026,
+   "base": "aerial",
+   "title": "Where each line stands",
+   "headline": "2026 · Where each line stands today",
+   "labels": [
+    "VERIFIED · registers"
+   ],
+   "short": "Today: Church View Close stands on the merged title. The woodland is Forest of Cardiff’s; the green is village green VG41. Parcel A’s Williams line runs on, unregistered.",
+   "text": "2026 · Where each line stands today. VERIFIED · registers. Merged title WA231076 (house third + Parcel B): built over as Church View Close. Forest third: Forest of Cardiff, WA735527. Green third: village green VG41. Parcel A: the Williams line runs on, unregistered. HM Land Registry copies of the 1982–83 files are on order.",
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "housing",
+     "case": "housing",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "housing",
+     "case": "housing",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-land-registry-titles",
+    "hp-9-wa735527-title-register-september-2026",
+    "hp-044-vg41-village-green-registration-1970"
+   ],
+   "say": "Today: Church View Close stands on the merged title. The woodland is Forest of Cardiff's; the green is village green V G forty-one. Parcel A's Williams line runs on, unregistered.",
+   "merged": true,
+   "part": "TODAY",
+   "dur": 4.52
+  },
+  {
+   "id": "s49",
+   "date": "2026",
+   "year": 2026,
+   "base": "aerial",
+   "title": "Parcel A: Williams title",
+   "headline": "2026 · Parcel A: Williams title, not extinguished and not sold",
+   "labels": [
+    "VERIFIED · judgment + registers"
+   ],
+   "short": "No deed of sale by Mary (Nancy) Williams is on file, and the 1987 appeal decided the farmhouse and garden only. The Williams title to Parcel A is not extinguished, and not sold.",
+   "text": "2026 · Parcel A: Williams title, not extinguished and not sold. VERIFIED · judgment + registers. No deed of sale by Mary (Nancy) Williams is on file, and the 1987 appeal decided the farmhouse and garden only. Since 1987 no register has shown the Williams Parcel A title, about 38 years, while the three branch titles have been treated as valid. SOURCE PENDING A sale c.1965 reported in a cousin’s written account (held privately) is unidentified.",
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "housing",
+     "case": "housing",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "housing",
+     "case": "housing",
+     "note": ""
+    }
+   },
+   "src": [
+    "home",
+    "hp-l-b-distinct-histories-1987-amalgamation",
+    "hp-parts-of-parcel-a-divergent-chronologies"
+   ],
+   "say": "No deed of sale by Mary Nancy Williams is on file, and the nineteen eighty-seven appeal decided the farmhouse and garden only. The Williams title to Parcel A is not extinguished, and not sold.",
+   "merged": true,
+   "img": {
+    "src": "img/mary-williams.jpg?v=1.4.5r",
+    "cap": "Mary (Nancy) Williams, formerly Buckler, at Tŷ Mawr. Family photograph."
+   },
+   "dur": 11.87
+  },
+  {
+   "date": "2026",
+   "year": 2026,
+   "base": "aerial",
+   "title": "No more",
+   "headline": "Almost four decades. “No more!”",
+   "labels": [
+    "CASE"
+   ],
+   "short": "The family’s case, in its own words: “a state of suspended betrayal and deception and injustice and subsequent torture … preserved for almost 4 decades. No more!” ",
+   "quote": "…a state of suspended betrayal and deception and injustice and subsequent torture, and this gross state, the anti-welsh history and herritage British State, in the capital of Wales, has been preserved for almost 4 decades. No more!",
+   "text": "The family’s case, in words sent 21 Oct 2026: “…a state of suspended betrayal and deception and injustice and subsequent torture, and this gross state, the anti-welsh history and herritage British State, in the capital of Wales, has been preserved for almost 4 decades. No more!” Every source: greathousefarmwiki.wordpress.com",
+   "say": "An ancient Welsh home, transformed into a housing estate. In the family’s words: a state of suspended betrayal, and deception, and injustice, and subsequent torture. And this gross state, the anti-Welsh history and heritage British State, in the capital of Wales, has been preserved for almost four decades. No more.",
+   "src": [
+    "case21oct",
+    "home"
+   ],
+   "parcels": {
+    "AN": {
+     "rec": "woodp",
+     "case": "woodp",
+     "note": ""
+    },
+    "AM": {
+     "rec": "housing",
+     "case": "housing",
+     "note": ""
+    },
+    "AS": {
+     "rec": "greenp",
+     "case": "greenp",
+     "note": ""
+    },
+    "B": {
+     "rec": "housing",
+     "case": "housing",
+     "note": ""
+    }
+   },
+   "id": "s50",
+   "dur": 20.11,
+   "quote_by": "The Williams-Buckler family’s case · words of 21 Oct 2026"
+  }
+ ],
+ "markers": [
+  {
+   "id": "round",
+   "lat": 51.452695,
+   "lon": -3.19922,
+   "label": "Round feature in the yard",
+   "text": "Unidentified (pond, well, horse-gin or older structure). Drawn on the OS sheets of 1878–79 and 1900.",
+   "from_": 1878,
+   "to": 1988,
+   "kind": "feature",
+   "src": [
+    "os1900",
+    "os1878"
+   ]
+  },
+  {
+   "id": "house",
+   "lat": 51.452625,
+   "lon": -3.198533,
+   "label": "Farmhouse (Tŷ Mawr)",
+   "text": "The farmhouse, east side of the yard. Demolished December 1988.",
+   "from_": 1877,
+   "to": 1988,
+   "kind": "building",
+   "src": [
+    "os1900",
+    "mt"
+   ]
+  },
+  {
+   "id": "barn",
+   "lat": 51.452607,
+   "lon": -3.199432,
+   "label": "Barn (west)",
+   "text": "Family recollection, 1988: the barn on the west side of the courtyard.",
+   "from_": 1988,
+   "to": 1988,
+   "kind": "recollection",
+   "src": [
+    "rec88"
+   ]
+  },
+  {
+   "id": "sheds",
+   "lat": 51.452786,
+   "lon": -3.199343,
+   "label": "Sheds (north)",
+   "text": "Family recollection, 1988: sheds on the north side of the courtyard.",
+   "from_": 1988,
+   "to": 1988,
+   "kind": "recollection",
+   "src": [
+    "rec88"
+   ]
+  },
+  {
+   "id": "stables",
+   "lat": 51.452543,
+   "lon": -3.199226,
+   "label": "Stables (south)",
+   "text": "Family recollection, 1988: stables on the south side of the courtyard.",
+   "from_": 1988,
+   "to": 1988,
+   "kind": "recollection",
+   "src": [
+    "rec88"
+   ]
+  }
+ ],
+ "parcelA": {
+  "from": "s02",
+  "label": "Parcel A",
+  "labelFrom": {
+   "AN": "s10",
+   "AS": "s11",
+   "AM": "s16"
+  },
+  "note": "Dotted outline: the whole of Parcel A from the 1877 split (Mary (Nancy) Williams’s statement), kept on every later step. The woodland, green and house-and-yard labels appear at the step that first discusses each; the green is drawn as the lower third of Parcel A.",
+  "labelAt": [
+   51.4536094,
+   -3.1982555
+  ]
+ },
+ "opening": "The steps: Tŷ Mawr, the Great House of Llandough, a home the family dates to at least 1667, and the land where Church View Close, an estate of twenty houses, now stands.",
+ "framing": "Step by step, from the Iron Age to 2026, each statement shows its source. What the records prove is marked VERIFIED; what the courts said is marked COURT; what the family states and has not yet proved is marked CASE; what is not yet formally recorded is marked as such.",
+ "closing": " Every source: greathousefarmwiki.wordpress.com",
+ "source_page": {
+  "url": "https://greathousefarmwiki.wordpress.com/",
+  "captured": "2026-10-21T06:03:53Z",
+  "stations": 35,
+  "note": "One step per dated station of the homepage title-chain map, in its order. Wording from the homepage, with three verbs neutralised (reports / states) and “we say” dropped from the line labels.",
+  "captured_note": "Evidence-first pass 21 Oct 2026 (05:58 UTC): events re-sourced to the documents that record them; 20 Nov 1958 station added; 35 stations."
+ },
+ "note": "v1.6.0: the whole story told forward as our case, 50 steps, Iron Age to 2026. Each step carries evidence labels (VERIFIED, COURT, CASE, UNVERIFIED or not yet formally recorded) and its sources."
+}
