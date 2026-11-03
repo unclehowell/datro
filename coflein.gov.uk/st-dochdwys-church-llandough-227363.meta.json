@@ -1,0 +1,54 @@
+{
+ "schema": "wayback-html/1",
+ "title": "Coflein site record: St Dochdwy's Church, Llandough (227363)",
+ "url": "https://coflein.gov.uk/en/site/227363",
+ "host": "coflein.gov.uk",
+ "name": "st-dochdwys-church-llandough-227363",
+ "address": "https://wayback-html.bucklerfamily.estate/coflein.gov.uk/st-dochdwys-church-llandough-227363.html",
+ "current_version": "v1.2.0",
+ "first_captured": "2026-10-24T14:40:17Z",
+ "last_captured": "2026-10-25T06:32:15Z",
+ "versions": [
+  {
+   "version": "v1.0.0",
+   "captured_utc": "2026-10-24T14:40:17Z",
+   "capture_source": "live",
+   "change": "first",
+   "file": "st-dochdwys-church-llandough-227363.v1.0.0.html",
+   "text_sha256": "fe936226e64a77ec1059fcdc0ffca7531a11cfae64a5a2e2812653b50e48e38b",
+   "markup_sha256": "26e96a2429bb65cde0e00c0bb3fde12344dac1632f7964140d8ba0fb34a6b852",
+   "design": "kept",
+   "assets": 1,
+   "from": "https://internetarchive.bucklerfamily.estate/20261024144017/coflein.gov.uk/en/site/227363/",
+   "note": "this capture recorded a server error page (502) instead of the record"
+  },
+  {
+   "version": "v1.1.0",
+   "captured_utc": "2026-10-24T17:08:13Z",
+   "capture_source": "live (rendered)",
+   "change": "recaptured: the previous capture recorded a server error page",
+   "file": "st-dochdwys-church-llandough-227363.v1.1.0.html",
+   "design": "kept",
+   "assets": 48
+  },
+  {
+   "version": "v1.2.0",
+   "hub_version": "v1.1.0",
+   "captured_utc": "2026-10-25T06:32:15Z",
+   "capture_source": "live",
+   "change": "text",
+   "file": "st-dochdwys-church-llandough-227363.v1.2.0.html",
+   "text_sha256": "860f03aa751a2fc68f5754f54a7e2f39059c4596bf246026936a472f5009c043",
+   "markup_sha256": "6fb0d4fa8155c44c8ab3b4229e276b6581bc33ad9e614b9050a07b12502a539a",
+   "design": "plain",
+   "from": null
+  }
+ ],
+ "old_addresses": [
+  "https://wayback.bucklerfamily.estate/websites/coflein.gov.uk/en-site-227363/latest.html"
+ ],
+ "key": "coflein.gov.uk/en/site/227363",
+ "live_url": "https://coflein.gov.uk/en/site/227363",
+ "archive_status": "ok: captured from Tab's machine 2026-10-24",
+ "last_checked": "2026-10-24T15:05:50Z"
+}

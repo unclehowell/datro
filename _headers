@@ -1,0 +1,6 @@
+/index.html
+  Cache-Control: public, max-age=300
+/data.json
+  Cache-Control: public, max-age=300
+/*
+  X-Content-Type-Options: nosniff

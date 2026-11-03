@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js no-svg"><head>
+
+<meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; script-src 'none'; frame-src 'none'; media-src 'none'; form-action 'none'; base-uri 'none'"><meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<style id="jetpack-custom-fonts-css">.wf-active body, .wf-active button, .wf-active input, .wf-active select, .wf-active textarea, .wf-active .site-main #infinite-handle span, .wf-active #infinite-footer .blog-info, .wf-active #infinite-footer .blog-info a, .wf-active #infinite-footer .blog-credits{font-family:"Arimo",sans-serif}.wf-active pre{font-family:"Arimo",sans-serif}.wf-active code, .wf-active kbd, .wf-active tt, .wf-active var{font-family:"Arimo",sans-serif}.wf-active html[lang="ar"] body, .wf-active html[lang="ar"] button, .wf-active html[lang="ar"] input, .wf-active html[lang="ar"] select, .wf-active html[lang="ar"] textarea, .wf-active html[lang="ar"] .site-main #infinite-handle span, .wf-active html[lang="ar"] #infinite-footer .blog-info, .wf-active html[lang="ar"] #infinite-footer .blog-info a, .wf-active html[lang="ar"] #infinite-footer .blog-credits, .wf-active html[lang="ary"] body, .wf-active html[lang="ary"] button, .wf-active html[lang="ary"] input, .wf-active html[lang="ary"] select, .wf-active html[lang="ary"] textarea, .wf-active html[lang="ary"] .site-main #infinite-handle span, .wf-active html[lang="ary"] #infinite-footer .blog-info, .wf-active html[lang="ary"] #infinite-footer .blog-info a, .wf-active html[lang="ary"] #infinite-footer .blog-credits, .wf-active html[lang="azb"] body, .wf-active html[lang="azb"] button, .wf-active html[lang="azb"] input, .wf-active html[lang="azb"] select, .wf-active html[lang="azb"] textarea, .wf-active html[lang="azb"] .site-main #infinite-handle span, .wf-active html[lang="azb"] #infinite-footer .blog-info, .wf-active html[lang="azb"] #infinite-footer .blog-info a, .wf-active html[lang="azb"] #infinite-footer .blog-credits, .wf-active html[lang="fa-IR"] body, .wf-active html[lang="fa-IR"] button, .wf-active html[lang="fa-IR"] input, .wf-active html[lang="fa-IR"] select, .wf-active html[lang="fa-IR"] textarea, .wf-active html[lang="fa-IR"] .site-main #infinite-handle span, .wf-active html[lang="fa-IR"] #infinite-footer .blog-info, .wf-active html[lang="fa-IR"] #infinite-footer .blog-info a, .wf-active html[lang="fa-IR"] #infinite-footer .blog-credits, .wf-active html[lang="haz"] body, .wf-active html[lang="haz"] button, .wf-active html[lang="haz"] input, .wf-active html[lang="haz"] select, .wf-active html[lang="haz"] textarea, .wf-active html[lang="haz"] .site-main #infinite-handle span, .wf-active html[lang="haz"] #infinite-footer .blog-info, .wf-active html[lang="haz"] #infinite-footer .blog-info a, .wf-active html[lang="haz"] #infinite-footer .blog-credits, .wf-active html[lang="ps"] body, .wf-active html[lang="ps"] button, .wf-active html[lang="ps"] input, .wf-active html[lang="ps"] select, .wf-active html[lang="ps"] textarea, .wf-active html[lang="ps"] .site-main #infinite-handle span, .wf-active html[lang="ps"] #infinite-footer .blog-info, .wf-active html[lang="ps"] #infinite-footer .blog-info a, .wf-active html[lang="ps"] #infinite-footer .blog-credits, .wf-active html[lang="ur"] body, .wf-active html[lang="ur"] button, .wf-active html[lang="ur"] input, .wf-active html[lang="ur"] select, .wf-active html[lang="ur"] textarea, .wf-active html[lang="ur"] .site-main #infinite-handle span, .wf-active html[lang="ur"] #infinite-footer .blog-info, .wf-active html[lang="ur"] #infinite-footer .blog-info a, .wf-active html[lang="ur"] #infinite-footer .blog-credits{font-family:"Arimo",sans-serif}.wf-active html[lang^="zh-"] body, .wf-active html[lang^="zh-"] button, .wf-active html[lang^="zh-"] input, .wf-active html[lang^="zh-"] select, .wf-active html[lang^="zh-"] textarea, .wf-active html[lang^="zh-"] .site-main #infinite-handle span, .wf-active html[lang^="zh-"] #infinite-footer .blog-info, .wf-active html[lang^="zh-"] #infinite-footer .blog-info a, .wf-active html[lang^="zh-"] #infinite-footer .blog-credits{font-family:"Arimo",sans-serif}.wf-active html[lang="zh-CN"] body, .wf-active html[lang="zh-CN"] button, .wf-active html[lang="zh-CN"] input, .wf-active html[lang="zh-CN"] select, .wf-active html[lang="zh-CN"] textarea, .wf-active html[lang="zh-CN"] .site-main #infinite-handle span, .wf-active html[lang="zh-CN"] #infinite-footer .blog-info, .wf-active html[lang="zh-CN"] #infinite-footer .blog-info a, .wf-active html[lang="zh-CN"] #infinite-footer .blog-credits{font-family:"Arimo",sans-serif}.wf-active html[lang="bg-BG"] body, .wf-active html[lang="bg-BG"] button, .wf-active html[lang="bg-BG"] input, .wf-active html[lang="bg-BG"] select, .wf-active html[lang="bg-BG"] textarea, .wf-active html[lang="bg-BG"] .site-main #infinite-handle span, .wf-active html[lang="bg-BG"] #infinite-footer .blog-info, .wf-active html[lang="bg-BG"] #infinite-footer .blog-info a, .wf-active html[lang="bg-BG"] #infinite-footer .blog-credits, .wf-active html[lang="ru-RU"] body, .wf-active html[lang="ru-RU"] button, .wf-active html[lang="ru-RU"] input, .wf-active html[lang="ru-RU"] select, .wf-active html[lang="ru-RU"] textarea, .wf-active html[lang="ru-RU"] .site-main #infinite-handle span, .wf-active html[lang="ru-RU"] #infinite-footer .blog-info, .wf-active html[lang="ru-RU"] #infinite-footer .blog-info a, .wf-active html[lang="ru-RU"] #infinite-footer .blog-credits, .wf-active html[lang="uk"] body, .wf-active html[lang="uk"] button, .wf-active html[lang="uk"] input, .wf-active html[lang="uk"] select, .wf-active html[lang="uk"] textarea, .wf-active html[lang="uk"] .site-main #infinite-handle span, .wf-active html[lang="uk"] #infinite-footer .blog-info, .wf-active html[lang="uk"] #infinite-footer .blog-info a, .wf-active html[lang="uk"] #infinite-footer .blog-credits{font-family:"Arimo",sans-serif}.wf-active html[lang="bn-BD"] body, .wf-active html[lang="bn-BD"] button, .wf-active html[lang="bn-BD"] input, .wf-active html[lang="bn-BD"] select, .wf-active html[lang="bn-BD"] textarea, .wf-active html[lang="bn-BD"] .site-main #infinite-handle span, .wf-active html[lang="bn-BD"] #infinite-footer .blog-info, .wf-active html[lang="bn-BD"] #infinite-footer .blog-info a, .wf-active html[lang="bn-BD"] #infinite-footer .blog-credits, .wf-active html[lang="hi-IN"] body, .wf-active html[lang="hi-IN"] button, .wf-active html[lang="hi-IN"] input, .wf-active html[lang="hi-IN"] select, .wf-active html[lang="hi-IN"] textarea, .wf-active html[lang="hi-IN"] .site-main #infinite-handle span, .wf-active html[lang="hi-IN"] #infinite-footer .blog-info, .wf-active html[lang="hi-IN"] #infinite-footer .blog-info a, .wf-active html[lang="hi-IN"] #infinite-footer .blog-credits, .wf-active html[lang="mr-IN"] body, .wf-active html[lang="mr-IN"] button, .wf-active html[lang="mr-IN"] input, .wf-active html[lang="mr-IN"] select, .wf-active html[lang="mr-IN"] textarea, .wf-active html[lang="mr-IN"] .site-main #infinite-handle span, .wf-active html[lang="mr-IN"] #infinite-footer .blog-info, .wf-active html[lang="mr-IN"] #infinite-footer .blog-info a, .wf-active html[lang="mr-IN"] #infinite-footer .blog-credits{font-family:"Arimo",sans-serif}.wf-active html[lang="el"] body, .wf-active html[lang="el"] button, .wf-active html[lang="el"] input, .wf-active html[lang="el"] select, .wf-active html[lang="el"] textarea, .wf-active html[lang="el"] .site-main #infinite-handle span, .wf-active html[lang="el"] #infinite-footer .blog-info, .wf-active html[lang="el"] #infinite-footer .blog-info a, .wf-active html[lang="el"] #infinite-footer .blog-credits{font-family:"Arimo",sans-serif}.wf-active html[lang="gu-IN"] body, .wf-active html[lang="gu-IN"] button, .wf-active html[lang="gu-IN"] input, .wf-active html[lang="gu-IN"] select, .wf-active html[lang="gu-IN"] textarea, .wf-active html[lang="gu-IN"] .site-main #infinite-handle span, .wf-active html[lang="gu-IN"] #infinite-footer .blog-info, .wf-active html[lang="gu-IN"] #infinite-footer .blog-info a, .wf-active html[lang="gu-IN"] #infinite-footer .blog-credits{font-family:"Arimo",sans-serif}.wf-active html[lang="he-IL"] body, .wf-active html[lang="he-IL"] button, .wf-active html[lang="he-IL"] input, .wf-active html[lang="he-IL"] select, .wf-active html[lang="he-IL"] textarea, .wf-active html[lang="he-IL"] .site-main #infinite-handle span, .wf-active html[lang="he-IL"] #infinite-footer .blog-info, .wf-active html[lang="he-IL"] #infinite-footer .blog-info a, .wf-active html[lang="he-IL"] #infinite-footer .blog-credits{font-family:"Arimo",sans-serif}.wf-active html[lang="ja"] body, .wf-active html[lang="ja"] button, .wf-active html[lang="ja"] input, .wf-active html[lang="ja"] select, .wf-active html[lang="ja"] textarea, .wf-active html[lang="ja"] .site-main #infinite-handle span, .wf-active html[lang="ja"] #infinite-footer .blog-info, .wf-active html[lang="ja"] #infinite-footer .blog-info a, .wf-active html[lang="ja"] #infinite-footer .blog-credits{font-family:"Arimo",sans-serif}.wf-active html[lang="ko-KR"] body, .wf-active html[lang="ko-KR"] button, .wf-active html[lang="ko-KR"] input, .wf-active html[lang="ko-KR"] select, .wf-active html[lang="ko-KR"] textarea, .wf-active html[lang="ko-KR"] .site-main #infinite-handle span, .wf-active html[lang="ko-KR"] #infinite-footer .blog-info, .wf-active html[lang="ko-KR"] #infinite-footer .blog-info a, .wf-active html[lang="ko-KR"] #infinite-footer .blog-credits{font-family:"Arimo",sans-serif}.wf-active html[lang="th"] body, .wf-active html[lang="th"] button, .wf-active html[lang="th"] input, .wf-active html[lang="th"] select, .wf-active html[lang="th"] textarea, .wf-active html[lang="th"] .site-main #infinite-handle span, .wf-active html[lang="th"] #infinite-footer .blog-info, .wf-active html[lang="th"] #infinite-footer .blog-info a, .wf-active html[lang="th"] #infinite-footer .blog-credits{font-family:"Arimo",sans-serif}.wf-active ::-webkit-input-placeholder{font-family:"Arimo",sans-serif}.wf-active :-moz-placeholder{font-family:"Arimo",sans-serif}.wf-active ::-moz-placeholder{font-family:"Arimo",sans-serif}.wf-active :-ms-input-placeholder{font-family:"Arimo",sans-serif}.wf-active h1, .wf-active h2, .wf-active h3, .wf-active h4, .wf-active h5, .wf-active h6{font-family:"Arimo",sans-serif;font-style:normal;font-weight:700}.wf-active h1{font-weight:700;font-style:normal}.wf-active h2{font-weight:700;font-style:normal}.wf-active h3{font-weight:700;font-style:normal}.wf-active h4{font-weight:700;font-style:normal}.wf-active h5{font-weight:700;font-style:normal}.wf-active h6{font-weight:700;font-style:normal}.wf-active html[lang^="zh-"] h1, .wf-active html[lang^="zh-"] h2, .wf-active html[lang^="zh-"] h3, .wf-active html[lang^="zh-"] h4, .wf-active html[lang^="zh-"] h5, .wf-active html[lang^="zh-"] h6{font-weight:700;font-style:normal}.wf-active html[lang="bg-BG"] h1, .wf-active html[lang="bg-BG"] h2, .wf-active html[lang="bg-BG"] h3, .wf-active html[lang="bg-BG"] h4, .wf-active html[lang="bg-BG"] h5, .wf-active html[lang="bg-BG"] h6, .wf-active html[lang="ru-RU"] h1, .wf-active html[lang="ru-RU"] h2, .wf-active html[lang="ru-RU"] h3, .wf-active html[lang="ru-RU"] h4, .wf-active html[lang="ru-RU"] h5, .wf-active html[lang="ru-RU"] h6, .wf-active html[lang="uk"] h1, .wf-active html[lang="uk"] h2, .wf-active html[lang="uk"] h3, .wf-active html[lang="uk"] h4, .wf-active html[lang="uk"] h5, .wf-active html[lang="uk"] h6{font-weight:700;font-style:normal}.wf-active html[lang="bn-BD"] h1, .wf-active html[lang="bn-BD"] h2, .wf-active html[lang="bn-BD"] h3, .wf-active html[lang="bn-BD"] h4, .wf-active html[lang="bn-BD"] h5, .wf-active html[lang="bn-BD"] h6, .wf-active html[lang="hi-IN"] h1, .wf-active html[lang="hi-IN"] h2, .wf-active html[lang="hi-IN"] h3, .wf-active html[lang="hi-IN"] h4, .wf-active html[lang="hi-IN"] h5, .wf-active html[lang="hi-IN"] h6, .wf-active html[lang="mr-IN"] h1, .wf-active html[lang="mr-IN"] h2, .wf-active html[lang="mr-IN"] h3, .wf-active html[lang="mr-IN"] h4, .wf-active html[lang="mr-IN"] h5, .wf-active html[lang="mr-IN"] h6{font-weight:700;font-style:normal}.wf-active html[lang="el"] h1, .wf-active html[lang="el"] h2, .wf-active html[lang="el"] h3, .wf-active html[lang="el"] h4, .wf-active html[lang="el"] h5, .wf-active html[lang="el"] h6{font-weight:700;font-family:"Arimo",sans-serif;font-style:normal}.wf-active html[lang="gu-IN"] h1, .wf-active html[lang="gu-IN"] h2, .wf-active html[lang="gu-IN"] h3, .wf-active html[lang="gu-IN"] h4, .wf-active html[lang="gu-IN"] h5, .wf-active html[lang="gu-IN"] h6{font-weight:700;font-family:"Arimo",sans-serif;font-style:normal}.wf-active html[lang="he-IL"] h1, .wf-active html[lang="he-IL"] h2, .wf-active html[lang="he-IL"] h3, .wf-active html[lang="he-IL"] h4, .wf-active html[lang="he-IL"] h5, .wf-active html[lang="he-IL"] h6{font-weight:700;font-family:"Arimo",sans-serif;font-style:normal}.wf-active html[lang="ja"] h1, .wf-active html[lang="ja"] h2, .wf-active html[lang="ja"] h3, .wf-active html[lang="ja"] h4, .wf-active html[lang="ja"] h5, .wf-active html[lang="ja"] h6{font-weight:700;font-family:"Arimo",sans-serif;font-style:normal}.wf-active html[lang="ko-KR"] h1, .wf-active html[lang="ko-KR"] h2, .wf-active html[lang="ko-KR"] h3, .wf-active html[lang="ko-KR"] h4, .wf-active html[lang="ko-KR"] h5, .wf-active html[lang="ko-KR"] h6{font-weight:700;font-family:"Arimo",sans-serif;font-style:normal}.wf-active html[lang="th"] h1, .wf-active html[lang="th"] h2, .wf-active html[lang="th"] h3, .wf-active html[lang="th"] h4, .wf-active html[lang="th"] h5, .wf-active html[lang="th"] h6{font-family:"Arimo",sans-serif;font-style:normal;font-weight:700}.wf-active .site-title{font-weight:700;font-family:"Arimo",sans-serif;font-style:normal}.wf-active .site-description{font-family:"Arimo",sans-serif;font-style:normal;font-weight:700}.wf-active .page .panel-content .recent-posts .entry-title{font-weight:700;font-family:"Arimo",sans-serif;font-style:normal}.wf-active .page .panel-content .entry-title, .wf-active .page-title, .wf-active body.page:not(.twentyseventeen-front-page) .entry-title{font-weight:700;font-family:"Arimo",sans-serif;font-style:normal}.wf-active .nav-subtitle{font-family:"Arimo",sans-serif;font-style:normal;font-weight:700}.wf-active .nav-title{font-family:"Arimo",sans-serif;font-style:normal;font-weight:700}.wf-active .comments-title{font-family:"Arimo",sans-serif;font-style:normal;font-weight:700}.wf-active h2.widget-title{font-weight:700;font-family:"Arimo",sans-serif;font-style:normal}.wf-active .widget-grofile h4{font-family:"Arimo",sans-serif;font-style:normal;font-weight:700}.wf-active .site-content .wp-playlist-current-item .wp-playlist-item-title{font-weight:700;font-family:"Arimo",sans-serif;font-style:normal}@media screen and (min-width: 480px){.wf-active h1{font-style:normal;font-weight:700}}@media screen and (min-width: 480px){.wf-active h2, .wf-active .page .panel-content .recent-posts .entry-title{font-style:normal;font-weight:700}}@media screen and (min-width: 480px){.wf-active h3{font-style:normal;font-weight:700}}@media screen and (min-width: 480px){.wf-active h4{font-style:normal;font-weight:700}}@media screen and (min-width: 480px){.wf-active h5{font-style:normal;font-weight:700}}@media screen and (min-width: 480px){.wf-active h6{font-style:normal;font-weight:700}}@media screen and (min-width: 768px){.wf-active .site-title{font-style:normal;font-weight:700}}@media screen and (min-width: 768px){.wf-active .site-description{font-style:normal;font-weight:700}}@media screen and (min-width: 768px){.wf-active .page .panel-content .recent-posts .entry-title, .wf-active .single-post .entry-title, .wf-active .page .entry-title{font-style:normal;font-weight:700}}@media screen and (min-width: 768px){.wf-active #secondary{font-style:normal;font-weight:700}}@media screen and (min-width: 1072px){.wf-active .sticky .icon-thumb-tack{font-style:normal;font-weight:700}}</style>
+<meta name="robots" content="none">
+
+	
+	<title>Possession, Permission, and Prevarication: A Cautionary Case on Adverse Possession in NSW - heirs &amp; successes</title>
+	
+	<meta property="og:locale" content="en_US">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Possession, Permission, and Prevarication: A Cautionary Case on Adverse Possession in NSW - heirs &amp; successes">
+	<meta property="og:description" content='Adverse possession allows a person who occupies land without the owner’s permission to gain legal title following a specified statutory period. The doctrine rests on the notion that the occupier should productively use the land and that long-term neglect by the legal owner justifies a shift in ownership to the occupier.  Two elements are required … Continue reading "Possession, Permission, and Prevarication: A Cautionary Case on Adverse Possession in NSW"'>
+	<meta property="og:url" content="https://heirsandsuccesses.com/2025/04/07/possession-permission-and-prevarication-a-cautionary-case-on-adverse-possession-in-nsw/">
+	<meta property="og:site_name" content="heirs &amp; successes">
+	<meta property="article:published_time" content="2025-04-07T05:48:12+00:00">
+	<meta property="article:modified_time" content="2025-04-10T11:06:19+00:00">
+	<meta name="author" content="heirsandsuccesses">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:label1" content="Written by">
+	<meta name="twitter:data1" content="heirsandsuccesses">
+	<meta name="twitter:label2" content="Est. reading time">
+	<meta name="twitter:data2" content="15 minutes">
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link rel="stylesheet" media="all" href="_a/e22da1557b1b6656.css">
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#3858e9;--wp-admin-theme-color--rgb:56,88,233;--wp-admin-theme-color-darker-10:#2145e6;--wp-admin-theme-color-darker-10--rgb:33.03846,68.73077,230.46153;--wp-admin-theme-color-darker-20:#183ad6;--wp-admin-theme-color-darker-20--rgb:23.692308,58.153847,214.3077;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}body.admin-color-fresh{--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){body.admin-color-fresh{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;overflow-wrap:normal!important;padding:0;position:absolute;width:1px;word-break:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style^=border-color],[style*=";border-color"],[style*="; border-color"]){border-style:solid}html :where([style^=border-top-color],[style*=";border-top-color"],[style*="; border-top-color"]){border-top-style:solid}html :where([style^=border-right-color],[style*=";border-right-color"],[style*="; border-right-color"]){border-right-style:solid}html :where([style^=border-bottom-color],[style*=";border-bottom-color"],[style*="; border-bottom-color"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=";border-left-color"],[style*="; border-left-color"]){border-left-style:solid}html :where([style^=border-width],[style*=";border-width"],[style*="; border-width"]){border-style:solid}html :where([style^=border-top-width],[style*=";border-top-width"],[style*="; border-top-width"]){border-top-style:solid}html :where([style^=border-right-width],[style*=";border-right-width"],[style*="; border-right-width"]){border-right-style:solid}html :where([style^=border-bottom-width],[style*=";border-bottom-width"],[style*="; border-bottom-width"]){border-bottom-style:solid}html :where([style^=border-left-width],[style*=";border-left-width"],[style*="; border-left-width"]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}@supports (not (-webkit-backdrop-filter:blur(1px))) and (not (-moz-appearance:none)){mtd[columnalign=right]{text-align:-webkit-right}mtd[columnalign=left]{text-align:-webkit-left}menclose[notation~=top]{border-top:0.065em solid;padding-top:0.1em}menclose[notation~=bottom]{border-bottom:0.065em solid;padding-bottom:0.1em}}
+
+/*# sourceURL=https://heirsandsuccesses.com/wp-content/plugins/gutenberg/build/styles/block-library/common.min.css */
+</style>
+<link rel="stylesheet" media="all" href="_a/fa46e52ab323ad1e.css">
+<link rel="stylesheet" media="all" href="_a/7df4f63f55cacfca.css">
+<style id="wp-block-list-inline-css">
+ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:var(--wp--style--block-background-padding,1.25em 2.375em)}
+/*# sourceURL=https://heirsandsuccesses.com/wp-content/plugins/gutenberg/build/styles/block-library/list/style.min.css */
+</style>
+<style id="wp-block-library-inline-css-extra">
+.has-text-align-justify{text-align:justify;}
+/*# sourceURL=wp-block-library-inline-css */
+</style>
+
+<style id="classic-theme-styles-inline-css">
+.wp-block-button__link{background-color:#32373c;border-radius:9999px;box-shadow:none;color:#fff;font-size:1.125em;padding:calc(0.667em + 2px) calc(1.333em + 2px);text-decoration:none}.wp-block-file__button{background:#32373c;color:#fff}.wp-block-accordion-heading{margin:0}.wp-block-accordion-heading__toggle{background-color:inherit!important;color:inherit!important}.wp-block-accordion-heading__toggle:not(:focus-visible){outline:none}.wp-block-accordion-heading__toggle:focus,.wp-block-accordion-heading__toggle:hover{background-color:inherit!important;border:none;box-shadow:none;color:inherit;padding:var(--wp--preset--spacing--20,1em) 0;text-decoration:none}.wp-block-accordion-heading__toggle:focus-visible{outline:auto;outline-offset:0}.wp-block-tab:not(.has-text-color){color:inherit!important}.wp-block-tab:not(.has-background){background-color:inherit!important}.wp-block-tab:focus,.wp-block-tab:hover{text-decoration:none}.wp-block-tab:focus-visible{outline:auto;outline-offset:0}
+/*# sourceURL=https://heirsandsuccesses.com/wp-content/plugins/gutenberg/build/styles/block-library/classic.min.css */
+</style>
+
+<link rel="stylesheet" media="all" href="_a/113d09e557eac46e.css">
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60.000004%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-family--albert-sans: "Albert Sans", sans-serif;--wp--preset--font-family--alegreya: Alegreya, serif;--wp--preset--font-family--arvo: Arvo, serif;--wp--preset--font-family--bodoni-moda: "Bodoni Moda", serif;--wp--preset--font-family--bricolage-grotesque: "Bricolage Grotesque", sans-serif;--wp--preset--font-family--cabin: Cabin, sans-serif;--wp--preset--font-family--chivo: Chivo, sans-serif;--wp--preset--font-family--commissioner: Commissioner, sans-serif;--wp--preset--font-family--cormorant: Cormorant, serif;--wp--preset--font-family--courier-prime: "Courier Prime", monospace;--wp--preset--font-family--crimson-pro: "Crimson Pro", serif;--wp--preset--font-family--dm-mono: "DM Mono", monospace;--wp--preset--font-family--dm-sans: "DM Sans", sans-serif;--wp--preset--font-family--dm-serif-display: "DM Serif Display", serif;--wp--preset--font-family--domine: Domine, serif;--wp--preset--font-family--eb-garamond: "EB Garamond", serif;--wp--preset--font-family--epilogue: Epilogue, sans-serif;--wp--preset--font-family--fahkwang: Fahkwang, sans-serif;--wp--preset--font-family--figtree: Figtree, sans-serif;--wp--preset--font-family--fira-sans: "Fira Sans", sans-serif;--wp--preset--font-family--fjalla-one: "Fjalla One", sans-serif;--wp--preset--font-family--fraunces: Fraunces, serif;--wp--preset--font-family--gabarito: Gabarito, system-ui;--wp--preset--font-family--ibm-plex-mono: "IBM Plex Mono", monospace;--wp--preset--font-family--ibm-plex-sans: "IBM Plex Sans", sans-serif;--wp--preset--font-family--ibarra-real-nova: "Ibarra Real Nova", serif;--wp--preset--font-family--instrument-serif: "Instrument Serif", serif;--wp--preset--font-family--inter: Inter, sans-serif;--wp--preset--font-family--josefin-sans: "Josefin Sans", sans-serif;--wp--preset--font-family--jost: Jost, sans-serif;--wp--preset--font-family--libre-baskerville: "Libre Baskerville", serif;--wp--preset--font-family--libre-franklin: "Libre Franklin", sans-serif;--wp--preset--font-family--literata: Literata, serif;--wp--preset--font-family--lora: Lora, serif;--wp--preset--font-family--merriweather: Merriweather, serif;--wp--preset--font-family--montserrat: Montserrat, sans-serif;--wp--preset--font-family--newsreader: Newsreader, serif;--wp--preset--font-family--noto-sans-mono: "Noto Sans Mono", sans-serif;--wp--preset--font-family--nunito: Nunito, sans-serif;--wp--preset--font-family--open-sans: "Open Sans", sans-serif;--wp--preset--font-family--overpass: Overpass, sans-serif;--wp--preset--font-family--pt-serif: "PT Serif", serif;--wp--preset--font-family--petrona: Petrona, serif;--wp--preset--font-family--piazzolla: Piazzolla, serif;--wp--preset--font-family--playfair-display: "Playfair Display", serif;--wp--preset--font-family--plus-jakarta-sans: "Plus Jakarta Sans", sans-serif;--wp--preset--font-family--poppins: Poppins, sans-serif;--wp--preset--font-family--raleway: Raleway, sans-serif;--wp--preset--font-family--roboto: Roboto, sans-serif;--wp--preset--font-family--roboto-slab: "Roboto Slab", serif;--wp--preset--font-family--rubik: Rubik, sans-serif;--wp--preset--font-family--rufina: Rufina, serif;--wp--preset--font-family--sora: Sora, sans-serif;--wp--preset--font-family--source-sans-3: "Source Sans 3", sans-serif;--wp--preset--font-family--source-serif-4: "Source Serif 4", serif;--wp--preset--font-family--space-mono: "Space Mono", monospace;--wp--preset--font-family--syne: Syne, sans-serif;--wp--preset--font-family--texturina: Texturina, serif;--wp--preset--font-family--urbanist: Urbanist, sans-serif;--wp--preset--font-family--work-sans: "Work Sans", sans-serif;--wp--preset--text-shadow--light: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.3);--wp--preset--text-shadow--strong: 0.1em 0.1em 0.25em rgba(0, 0, 0, 0.5);--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-albert-sans-font-family{font-family: var(--wp--preset--font-family--albert-sans) !important;}.has-alegreya-font-family{font-family: var(--wp--preset--font-family--alegreya) !important;}.has-arvo-font-family{font-family: var(--wp--preset--font-family--arvo) !important;}.has-bodoni-moda-font-family{font-family: var(--wp--preset--font-family--bodoni-moda) !important;}.has-bricolage-grotesque-font-family{font-family: var(--wp--preset--font-family--bricolage-grotesque) !important;}.has-cabin-font-family{font-family: var(--wp--preset--font-family--cabin) !important;}.has-chivo-font-family{font-family: var(--wp--preset--font-family--chivo) !important;}.has-commissioner-font-family{font-family: var(--wp--preset--font-family--commissioner) !important;}.has-cormorant-font-family{font-family: var(--wp--preset--font-family--cormorant) !important;}.has-courier-prime-font-family{font-family: var(--wp--preset--font-family--courier-prime) !important;}.has-crimson-pro-font-family{font-family: var(--wp--preset--font-family--crimson-pro) !important;}.has-dm-mono-font-family{font-family: var(--wp--preset--font-family--dm-mono) !important;}.has-dm-sans-font-family{font-family: var(--wp--preset--font-family--dm-sans) !important;}.has-dm-serif-display-font-family{font-family: var(--wp--preset--font-family--dm-serif-display) !important;}.has-domine-font-family{font-family: var(--wp--preset--font-family--domine) !important;}.has-eb-garamond-font-family{font-family: var(--wp--preset--font-family--eb-garamond) !important;}.has-epilogue-font-family{font-family: var(--wp--preset--font-family--epilogue) !important;}.has-fahkwang-font-family{font-family: var(--wp--preset--font-family--fahkwang) !important;}.has-figtree-font-family{font-family: var(--wp--preset--font-family--figtree) !important;}.has-fira-sans-font-family{font-family: var(--wp--preset--font-family--fira-sans) !important;}.has-fjalla-one-font-family{font-family: var(--wp--preset--font-family--fjalla-one) !important;}.has-fraunces-font-family{font-family: var(--wp--preset--font-family--fraunces) !important;}.has-gabarito-font-family{font-family: var(--wp--preset--font-family--gabarito) !important;}.has-ibm-plex-mono-font-family{font-family: var(--wp--preset--font-family--ibm-plex-mono) !important;}.has-ibm-plex-sans-font-family{font-family: var(--wp--preset--font-family--ibm-plex-sans) !important;}.has-ibarra-real-nova-font-family{font-family: var(--wp--preset--font-family--ibarra-real-nova) !important;}.has-instrument-serif-font-family{font-family: var(--wp--preset--font-family--instrument-serif) !important;}.has-inter-font-family{font-family: var(--wp--preset--font-family--inter) !important;}.has-josefin-sans-font-family{font-family: var(--wp--preset--font-family--josefin-sans) !important;}.has-jost-font-family{font-family: var(--wp--preset--font-family--jost) !important;}.has-libre-baskerville-font-family{font-family: var(--wp--preset--font-family--libre-baskerville) !important;}.has-libre-franklin-font-family{font-family: var(--wp--preset--font-family--libre-franklin) !important;}.has-literata-font-family{font-family: var(--wp--preset--font-family--literata) !important;}.has-lora-font-family{font-family: var(--wp--preset--font-family--lora) !important;}.has-merriweather-font-family{font-family: var(--wp--preset--font-family--merriweather) !important;}.has-montserrat-font-family{font-family: var(--wp--preset--font-family--montserrat) !important;}.has-newsreader-font-family{font-family: var(--wp--preset--font-family--newsreader) !important;}.has-noto-sans-mono-font-family{font-family: var(--wp--preset--font-family--noto-sans-mono) !important;}.has-nunito-font-family{font-family: var(--wp--preset--font-family--nunito) !important;}.has-open-sans-font-family{font-family: var(--wp--preset--font-family--open-sans) !important;}.has-overpass-font-family{font-family: var(--wp--preset--font-family--overpass) !important;}.has-pt-serif-font-family{font-family: var(--wp--preset--font-family--pt-serif) !important;}.has-petrona-font-family{font-family: var(--wp--preset--font-family--petrona) !important;}.has-piazzolla-font-family{font-family: var(--wp--preset--font-family--piazzolla) !important;}.has-playfair-display-font-family{font-family: var(--wp--preset--font-family--playfair-display) !important;}.has-plus-jakarta-sans-font-family{font-family: var(--wp--preset--font-family--plus-jakarta-sans) !important;}.has-poppins-font-family{font-family: var(--wp--preset--font-family--poppins) !important;}.has-raleway-font-family{font-family: var(--wp--preset--font-family--raleway) !important;}.has-roboto-font-family{font-family: var(--wp--preset--font-family--roboto) !important;}.has-roboto-slab-font-family{font-family: var(--wp--preset--font-family--roboto-slab) !important;}.has-rubik-font-family{font-family: var(--wp--preset--font-family--rubik) !important;}.has-rufina-font-family{font-family: var(--wp--preset--font-family--rufina) !important;}.has-sora-font-family{font-family: var(--wp--preset--font-family--sora) !important;}.has-source-sans-3-font-family{font-family: var(--wp--preset--font-family--source-sans-3) !important;}.has-source-serif-4-font-family{font-family: var(--wp--preset--font-family--source-serif-4) !important;}.has-space-mono-font-family{font-family: var(--wp--preset--font-family--space-mono) !important;}.has-syne-font-family{font-family: var(--wp--preset--font-family--syne) !important;}.has-texturina-font-family{font-family: var(--wp--preset--font-family--texturina) !important;}.has-urbanist-font-family{font-family: var(--wp--preset--font-family--urbanist) !important;}.has-work-sans-font-family{font-family: var(--wp--preset--font-family--work-sans) !important;}.has-light-text-shadow{text-shadow: var(--wp--preset--text-shadow--light) !important;}.has-strong-text-shadow{text-shadow: var(--wp--preset--text-shadow--strong) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<style id="jetpack-stats-inline-css">
+img#wpstats{display:none}
+/*# sourceURL=jetpack-stats-inline-css */
+</style>
+<link rel="stylesheet" media="all" href="_a/4a958099a96d6cd0.css">
+<link rel="stylesheet" media="all" href="_a/af973fc8d8f85394.css">
+<style id="twentyseventeen-style-inline-css">
+.site-content-contain {background-color: #ffffff; background-image: url(); background-position: left top; background-size: auto; background-repeat: repeat; background-attachment: scroll; }
+/*# sourceURL=twentyseventeen-style-inline-css */
+</style>
+<link rel="stylesheet" media="all" href="_a/37fa576d4c1a5e70.css">
+<link rel="stylesheet" media="all" href="_a/cd26a7c87e272434.css">
+<style id="jetpack_likes-inline-css">
+#jp-post-flair{padding-top:0.5em}#content div.sharedaddy,#main div.sharedaddy,div.sharedaddy{clear:both}div.sharedaddy h3.sd-title{display:inline-block;font-size:9pt;font-weight:700;line-height:1.2;margin:0 0 1em}div.sharedaddy h3.sd-title:before{border-top:1px solid #dcdcde;content:"";display:block;margin-bottom:1em;min-width:30px;width:100%}div.jetpack-likes-widget-wrapper{min-height:50px;position:relative;width:100%}div.jetpack-likes-widget-wrapper .sd-link-color{font-size:12px}div.jetpack-comment-likes-widget-wrapper{min-height:31px;position:relative;width:100%}div.jetpack-comment-likes-widget-wrapper iframe{margin-bottom:0}#likes-other-gravatars{background-color:#fff;border:1px solid #dcdcde;border-radius:4px;box-shadow:none;display:none;height:auto;max-height:240px;min-width:220px;overflow:auto;padding:9px 12px 10px;position:absolute;z-index:1000}#likes-other-gravatars *{line-height:normal}#likes-other-gravatars .likes-text{color:#101517;font-size:12px;font-weight:500;padding-bottom:8px}#likes-other-gravatars :is(li,ul){list-style-type:none;margin:0;padding:0;text-indent:0}#likes-other-gravatars li:before{content:""}#likes-other-gravatars ul.wpl-avatars{display:block;max-height:190px;overflow:auto}#likes-other-gravatars ul.wpl-avatars li{float:none;height:28px;margin:0 0 4px;width:196px}#likes-other-gravatars ul.wpl-avatars li a{align-items:center;border-bottom:none!important;display:flex;gap:8px;margin:0 2px 0 0;text-decoration:none}#likes-other-gravatars ul.wpl-avatars li a span{color:#2c3338;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#likes-other-gravatars ul.wpl-avatars li a img{background:none;border:none;border-radius:50%;box-sizing:border-box;margin:0!important;padding:1px!important;position:static}div.sd-box{border-top:1px solid #00000021}.jetpack-likes-widget-loaded iframe,.jetpack-likes-widget-loading .likes-widget-placeholder,.jetpack-likes-widget-unloaded .likes-widget-placeholder{display:block}.jetpack-likes-widget-loaded .likes-widget-placeholder,.jetpack-likes-widget-loading iframe,.jetpack-likes-widget-unloaded iframe{display:none}.comment-likes-widget,.entry-content .post-likes-widget,.post-likes-widget{border-width:0;margin:0}.comment-likes-widget-placeholder,.post-likes-widget-placeholder{border-width:0;margin:0;position:relative}.comment-likes-widget-placeholder{display:flex;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;height:18px;position:absolute}.comment-likes-widget-placeholder:before{background-image:url("data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%0D%00%00%00%0D%08%04%00%00%00%D8%E2%2C%F7%00%00%00%11IDATx%DAcd%C0%09%18G%A5%28%96%02%00%0A%F8%00%0E%CB%8A%EB%16%00%00%00%00IEND%AEB%60%82");background-repeat:no-repeat;background-size:16px 16px;color:#2ea2cc;content:"";display:inline-block;height:16px;padding-right:5px;position:relative;top:3px;width:16px}.post-likes-widget-placeholder .button{display:none}:is(.comment-likes-widget-placeholder,.post-likes-widget-placeholder) .loading{color:#999;font-size:12px}.comment-likes-widget-placeholder .loading{align-self:center;color:#4e4e4e;margin-top:4px;padding-left:5px}div.sharedaddy.sd-like-enabled .sd-like h3{display:none}div.sharedaddy.sd-like-enabled .sd-like .post-likes-widget{float:none;position:absolute;top:0;width:100%}.comment-likes-widget{width:100%}.cs-rating,.pd-rating{display:block!important}.sd-gplus .sd-title{display:none}@media print{.jetpack-likes-widget-wrapper{display:none}}
+/*# sourceURL=https://heirsandsuccesses.com/wp-content/plugins/jetpack/_inc/build/likes/style.min.css */
+</style>
+<link rel="stylesheet" media="all" href="_a/794ff846e589f6a3.css">
+<style id="jetpack-global-styles-frontend-style-inline-css">
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+/*# sourceURL=jetpack-global-styles-frontend-style-inline-css */
+</style>
+<link rel="stylesheet" media="all" href="_a/65f95478e74a251e.css">
+
+
+
+
+
+
+
+
+
+
+
+		<style type="text/css">
+			.recentcomments a {
+				display: inline !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			table.recentcommentsavatartop img.avatar, table.recentcommentsavatarend img.avatar {
+				border: 0;
+				margin: 0;
+			}
+
+			table.recentcommentsavatartop a, table.recentcommentsavatarend a {
+				border: 0 !important;
+				background-color: transparent !important;
+			}
+
+			td.recentcommentsavatarend, td.recentcommentsavatartop {
+				padding: 0 0 1px 0;
+				margin: 0;
+			}
+
+			td.recentcommentstextend {
+				border: none !important;
+				padding: 0 0 2px 10px;
+			}
+
+			.rtl td.recentcommentstextend {
+				padding: 0 10px 2px 0;
+			}
+
+			td.recentcommentstexttop {
+				border: none;
+				padding: 0 0 0 10px;
+			}
+
+			.rtl td.recentcommentstexttop {
+				padding: 0 10px 0 0;
+			}
+		</style>
+		
+		
+					
+
+
+<meta name="msapplication-TileImage" content="https://i0.wp.com/heirsandsuccesses.com/wp-content/uploads/2024/10/image.jpg?fit=270%2C270&amp;ssl=1">
+<link rel="stylesheet" media="all" href="_a/ed2a2542f1b73d3a.css">
+
+<style id="wbx-style">#wbx-banner{all:initial;display:block;box-sizing:border-box;position:relative;z-index:2147483646;width:100%;background:#1f2a24;color:#f3efe6;font:12.5px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;padding:6px 10px;text-align:left}#wbx-banner *{all:unset;font:inherit;color:inherit}#wbx-banner b{font-weight:700}#wbx-banner a{color:#ffd27a;text-decoration:underline;cursor:pointer}#wbx-banner .u{opacity:.8;word-break:break-all}#wbx-banner .s{opacity:.5;padding:0 4px}a.wbx-off{cursor:not-allowed}.wbx-embed{display:block;padding:12px;border:1px dashed #999;color:#666;font:13px system-ui,sans-serif;text-align:center}.collapse:not(.navbar-collapse){display:block!important;height:auto!important;visibility:visible!important}.modal-backdrop{display:none!important}body.modal-open{overflow:auto!important}</style></head>
+
+<!--email_off--><body class="wp-singular post-template-default single single-post postid-6935 single-format-standard wp-embed-responsive wp-theme-twentyseventeen is-twentyseventeen group-blog has-header-image has-sidebar colors-light cannot-edit"><div id="wbx-banner" role="note"><b>Archived copy</b><span class="s">·</span>captured 2026-10-24<span class="s">·</span>v1.0.0<span class="s">·</span><span class="u">https://heirsandsuccesses.com/2025/04/07/possession-permission-and-prevarication-a-cautionary-case-on-adverse-possession/</span><span class="s">·</span><a href="https://heirsandsuccesses.com/2025/04/07/possession-permission-and-prevarication-a-cautionary-case-on-adverse-possession/" target="_blank" rel="noopener nofollow">Live website ↗</a><span class="s">·</span><a href="possession-permission-and-prevarication-a-2.meta.json">Versions</a><span class="s">·</span><a href="/">Archive index</a></div><div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">
+		Skip to content	</a>
+
+	<header id="masthead" class="site-header">
+
+		<div class="custom-header">
+
+		<div class="custom-header-media">
+			<div id="wp-custom-header" class="wp-custom-header"><img src="data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%0D%00%00%00%0D%08%04%00%00%00%D8%E2%2C%F7%00%00%00%11IDATx%DAcd%C0%09%18G%A5%28%96%02%00%0A%F8%00%0E%CB%8A%EB%16%00%00%00%00IEND%AEB%60%82" width="2000" height="1200" alt="" decoding="async" fetchpriority="high"></div>		</div>
+
+	<div class="site-branding">
+	<div class="wrap">
+
+		
+		<div class="site-branding-text">
+							<p class="site-title"><a rel="home" data-href="https://heirsandsuccesses.com/" class="wbx-off" title="external link disabled; see Live website in the banner">heirs &amp; successes</a></p>
+			
+							<p class="site-description">Succession law explained</p>
+					</div>
+
+		
+	</div>
+</div>
+
+</div>
+
+		
+	</header>
+
+	
+	<div class="site-content-contain">
+		<div id="content" class="site-content">
+
+<div class="wrap">
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+
+			
+<article id="post-6935" class="post-6935 post type-post status-publish format-standard hentry category-uncategorized">
+		<header class="entry-header">
+		<div class="entry-meta"><span class="posted-on"><span class="screen-reader-text">Posted on</span> <a href="/heirsandsuccesses.com/possession-permission-and-prevarication-a-cautionary-case.html" rel="bookmark"><time class="entry-date published" datetime="2025-04-07T16:48:12+11:00">April 7, 2025</time><time class="updated" datetime="2025-04-10T22:06:19+11:00">April 10, 2025</time></a></span><span class="byline"> by <span class="author vcard"><a class="url fn n wbx-off" data-href="https://heirsandsuccesses.com/author/heirsandsuccesses/" title="external link disabled; see Live website in the banner">heirsandsuccesses</a></span></span></div><h1 class="entry-title">Possession, Permission, and Prevarication: A Cautionary Case on Adverse Possession in NSW</h1>	</header>
+
+	
+	<div class="entry-content">
+		
+<p class="p1 wp-block-paragraph">Adverse possession allows a person who occupies land without the owner’s permission to gain legal title following a specified statutory period. The doctrine rests on the notion that the occupier should productively use the land and that long-term neglect by the legal owner justifies a shift in ownership to the occupier. </p>
+
+
+
+<p class="p1 wp-block-paragraph">Two elements are required to establish possession </p>
+
+
+
+<ul class="wp-block-list ul1">
+<li>Factum Possidendi: the physical control or detention of the property. </li>
+
+
+
+<li>Animus Possidendi: the intention to possess or control the property for oneself. </li>
+</ul>
+
+
+
+<p class="p1 wp-block-paragraph">Section 65(1) of the Limitation Act 1969 (NSW) provides:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph"><em>on the expiration of the limitation period [i.e. 12 years] … for a cause of action [i.e. to recover land] … the title of a person having the cause of action to the [land] … as against the person against whom the cause of action formerly lay … [is] extinguished.</em></p>
+</blockquote>
+
+
+
+<p class="p1 wp-block-paragraph">A claim of possessory title requires:</p>
+
+
+
+<ul class="wp-block-list ul1">
+<li>Accrual of the owner’s cause of action to recover possession of the land; and</li>
+
+
+
+<li>adverse and continuous possession for 12 years.</li>
+</ul>
+
+
+
+<p class="p1 wp-block-paragraph">The foundational principles of adverse possession were summarised by Hammerschlag CJ in Eq in State of New South Wales v Carver [2023] NSWSC 828:</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph"><em>“56. It is now appropriate to set out the legal principles which relevantly relate to adverse possession. The following principles emerge from the authorities cited below:</em></p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph"><em>(1) section <a class="bn_wrapped_span jade-out-article wbx-off" data-href="https://jade.io/article/276236/section/378021" title="external link disabled; see Live website in the banner">38(4)(a)</a> of the <a class="bn_wrapped_span jade-out-article wbx-off" data-href="https://jade.io/article/276236" title="external link disabled; see Live website in the banner">Limitation Act</a> defines adverse possession as possession ‘in whose favour the limitation can run’. This phrase is directed not to the nature of the possession, but to the capacity of the squatter: <a class="bn_wrapped_span jade-out-citable wbx-off" data-href="https://jade.io/citation/3307828" title="external link disabled; see Live website in the banner">JA Pye (Oxford) Ltd v Graham </a>[2003] 1 AC 419; [2002] UKHL 30 at <a class="bn_wrapped_span jade-out-citable wbx-off" data-href="https://jade.io/citation/2588447/section/140690" title="external link disabled; see Live website in the banner">[35]</a> per Lord Browne-Wilkinson, who gave as an example of a person not in adverse possession and in whose favour the limitation could not run, a trustee who is unable to acquire a title by lapse of time against the trust estate.</em></p>
+
+
+
+<p class="wp-block-paragraph"><em>(2) adverse possession involves two elements, physical possession and an intention to possess, sometimes referred to as animus possidendi. Whether these elements are established is a question of fact. Physical possession requires an appropriate degree of physical control, which depends on the circumstances, in particular the nature of the land and the manner in which it is commonly used and enjoyed. Animus possidendi is an intention by the possessor on her or his own behalf to exclude the world at large, including the owner with the paper title, so far as is reasonably practicable and so far as the process of the law will allow. The relevant intention is that of the claimant.</em></p>
+
+
+
+<p class="wp-block-paragraph"><em>(3) the possession must be peaceful and not have been acquired by force (nec vi), be open and not stealthy (nec clam) and not be by consent of the true owner (nec precario). These requirements were articulated by Bryson J in <a class="bn_wrapped_span jade-out-citable wbx-off" data-href="https://jade.io/citation/4175309" title="external link disabled; see Live website in the banner">Beever v Spaceline Engineering Pty Ltd </a>(1993) 6 BPR 13,270 as ‘actual, open, visible, notorious, continuous and hostile to the title of the true owner’.</em></p>
+
+
+
+<p class="wp-block-paragraph"><em>See: <a class="bn_wrapped_span jade-out-citable wbx-off" data-href="https://jade.io/citation/2762329" title="external link disabled; see Live website in the banner">Hughes v Griffin</a> [1969] 1 WLR 23; <a class="bn_wrapped_span jade-out-article wbx-off" data-href="https://jade.io/article/806047" title="external link disabled; see Live website in the banner">Mulcahy v Curramore Pty Ltd </a>[1974] 2 NSWLR 464; <a class="bn_wrapped_span jade-out-citable wbx-off" data-href="https://jade.io/citation/2371434" title="external link disabled; see Live website in the banner">Powell v McFarlane</a> (1979) 38 P &amp; Cr 452; BP Properties v Buckler (1987) 55 P &amp; Cr 337; <a class="bn_wrapped_span jade-out-citable wbx-off" data-href="https://jade.io/citation/19045627" title="external link disabled; see Live website in the banner">National Australia Bank Ltd vGolden Sea Dragon (Hobart) Pty Ltd</a> (1992) 4 Tas R 250; <a class="bn_wrapped_span jade-out-article wbx-off" data-href="https://jade.io/article/805703" title="external link disabled; see Live website in the banner">Lee v Ferno Holdings Pty Ltd</a> (1993) 33 NSWLR 404; <a class="bn_wrapped_span jade-out-citable wbx-off" data-href="https://jade.io/citation/1657038" title="external link disabled; see Live website in the banner">Shaw v Garbutt</a> (1996) 7 BPR 14,816; <a class="bn_wrapped_span jade-out-citable wbx-off" data-href="https://jade.io/citation/1577750" title="external link disabled; see Live website in the banner">Cooke v Dunn</a> (1998) 9 BPR 16,489; <a class="bn_wrapped_span jade-out-citable wbx-off" data-href="https://jade.io/citation/3307828" title="external link disabled; see Live website in the banner">JA Pye (Oxford) Ltd v Graham</a>[2003] 1 AC 419; [2002] UKHL 30; <a class="bn_wrapped_span jade-out-article wbx-off" data-href="https://jade.io/article/133766" title="external link disabled; see Live website in the banner">McGuren v Simpson </a>[2004] NSWSC35; <a class="bn_wrapped_span jade-out-article wbx-off" data-href="https://jade.io/article/618811" title="external link disabled; see Live website in the banner">McFarland v Gertos</a> (2018) 98 NSWLR 954; [2018] NSWSC 1629; <a class="bn_wrapped_span jade-out-article wbx-off" data-href="https://jade.io/article/638150" title="external link disabled; see Live website in the banner">Braye v Tarnawskyj</a> [2019] NSWSC 277; (2019) 19 BPR 39,213; <a class="bn_wrapped_span jade-out-citable wbx-off" data-href="https://jade.io/citation/21850802" title="external link disabled; see Live website in the banner">Healey vFraine</a> [2023] EWCA Civ 549.</em></p>
+</blockquote>
+</blockquote>
+</blockquote>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph"><em>57. It will be readily apparent that the notions of animus possidendi and possession without consent are related. Where the possessor seeks the owner’s consent, this will be destructive of the suggestion that the possessor has the necessary intention, even more so, if the owner gives consent expressly or implicitly. In such a case, the possession will also not be nec precario.”</em></p>
+</blockquote>
+</blockquote>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph"></p>
+</blockquote>
+</blockquote>
+</blockquote>
+
+
+
+<p class="p1 wp-block-paragraph"><span style="text-decoration: underline">Possession against the Crown</span></p>
+
+
+
+<p class="p1 wp-block-paragraph">The Limitations Act 1969 provides that a valid adverse possession claim against the Crown requires uninterrupted possession for 30 years following January 1, 1970. However, if the adverse possession began before this date, a more extended period of 60 years is required. It is also important to note that adverse possession claims against the Crown do not apply to certain types of land, including roads and areas designated for public purposes.</p>
+
+
+
+<p class="p4 wp-block-paragraph">Section 38 of the <a data-href="https://jade.io/article/276236" class="wbx-off" title="external link disabled; see Live website in the banner">Limitation Act 1969 (NSW)</a> outlines how the limitation period for recovering land is affected by adverse possession:</p>
+
+
+
+<p class="p1 wp-block-paragraph"><span style="text-decoration: underline">Possessory Title</span></p>
+
+
+
+<p class="p1 wp-block-paragraph">Indefeasibility applies exclusively to Torrens title properties, whereas Old System title requires proof of superior claims to be valid. Common Law recognises that possession or occupation of a property is sufficient proof of ownership; adverse occupiers can override documented owners if left undisturbed over time. To support a title based on possession, claimants must provide a survey plan and obtain statutory declarations from witnesses. Additionally, they must specify any rightful entitlements to the land in question.</p>
+
+
+
+<p class="p1 wp-block-paragraph">Adverse possession claims against a Common Law owner require 12 years of continuous occupancy following January 1, 1970, whereas earlier claims required a 20-year occupancy duration. It’s important to note that a successful adverse possession claim effectively nullifies the title held by the dispossessed individual; however, it does not impact other parties who may have enforceable interests in the land, such as easements.</p>
+
+
+
+<p class="p1 wp-block-paragraph"><span style="text-decoration: underline">Essential Elements</span></p>
+
+
+
+<p class="p1 wp-block-paragraph">For a claim of adverse possession to succeed, the possessor must prove:</p>
+
+
+
+<p class="p1 wp-block-paragraph">1. Actual possession – physical control consistent with the nature of the land;</p>
+
+
+
+<p class="p1 wp-block-paragraph">2. Hostile possession – without consent of the valid owner;</p>
+
+
+
+<p class="p1 wp-block-paragraph">3. Open and notorious possession – visible enough to alert the owner;</p>
+
+
+
+<p class="p1 wp-block-paragraph">4. Continuous possession – uninterrupted for the entire statutory period;</p>
+
+
+
+<p class="p1 wp-block-paragraph">5. Exclusive possession – to the exclusion of the owner and the public.</p>
+
+
+
+<p class="p1 wp-block-paragraph">Indian Legal Framework</p>
+
+
+
+<p class="p1 wp-block-paragraph">In India, the doctrine is governed by Articles 64, 65, 111, and 112 of the Limitation Act 1963, requiring 12 years of possession for private land and 30 years for government land.</p>
+
+
+
+<p class="p1 wp-block-paragraph"><span style="text-decoration: underline">Key Judicial Decisions</span></p>
+
+
+
+<p class="p1 wp-block-paragraph">In Karnataka Board of Wakf v Government of India (2004) 10 SCC 779 at [11], the Supreme Court of India explained that adverse possession arises when someone occupies land without the permission of the valid owner and in a manner that is hostile to the owner’s title. Mere non-use by the owner doesn’t result in loss of title; however, if another person takes possession and openly asserts ownership, the situation changes. To succeed in an adverse possession claim, the possession must be:</p>
+
+
+
+<ul class="wp-block-list ul1">
+<li>Hostile, actual, exclusive, and visible</li>
+
+
+
+<li>Peaceful, open, and continuous (nec vi, nec clam, nec precario)</li>
+
+
+
+<li>Maintained for the statutory period</li>
+
+
+
+<li>Accompanied by the intention to possess as the owner (animus possidendi)</li>
+</ul>
+
+
+
+<p class="p1 wp-block-paragraph">The claimant must provide clear evidence of when and how possession began, the nature of the possession, whether it was known to the true owner, the duration, and that it remained undisturbed. As the plea seeks to defeat the true owner’s rights, the burden of proof lies heavily on the person claiming adverse possession.</p>
+
+
+
+<p class="p1 wp-block-paragraph"><span style="text-decoration: underline">Remedies for Legal Owners</span></p>
+
+
+
+<p class="p1 wp-block-paragraph">To prevent adverse possession claims, owners can:</p>
+
+
+
+<p class="p1 wp-block-paragraph">• File ejectment suits within the limitation period;</p>
+
+
+
+<p class="p1 wp-block-paragraph">• Seek declarations of title to affirm ownership; and</p>
+
+
+
+<p class="p1 wp-block-paragraph">• Obtain injunctions to prevent continued occupation.</p>
+
+
+
+<p class="p1 wp-block-paragraph"><span style="text-decoration: underline">Willis v Abraham(No 2) [2025] NSWSC276 </span></p>
+
+
+
+<p class="p1 wp-block-paragraph">Willis (the plaintiff) inherited two properties from her father and filed Supreme Court proceedings in late 2023. Abraham (the defendant) initially challenged ownership of one house but abandoned it in 2024.</p>
+
+
+
+<p class="p1 wp-block-paragraph">The plaintiff, as registered owner of 5 and 7 xxxx Street, Rozelle, seeks possession of both properties. The defendant conceded possession of No. 7 in April 2024 but contests the plaintiff’s claim to No. 5, arguing the claim is time-barred under the Limitation Act 1969 (NSW). The relevant provisions include:</p>
+
+
+
+<p class="p1 wp-block-paragraph">• s 27: A 12-year limitation period applies to actions by individuals to recover land.</p>
+
+
+
+<p class="p1 wp-block-paragraph">• s 28: The limitation period starts when the owner is dispossessed.</p>
+
+
+
+<p class="p1 wp-block-paragraph">• s 38: If possession is not adverse at the accrual date, the limitation clock doesn’t start until adverse possession begins.</p>
+
+
+
+<p class="p1 wp-block-paragraph">The defendant submits they had possessed No. 5 since October 2009, meaning the 12 years had expired before filing the claim on 13 December 2023. The defendant commenced a cross-claim for adverse possession, necessitated by s 45C of the Real Property Act 1900 (NSW), which bars claims unless the title is judicially declared.</p>
+
+
+
+<p class="p1 wp-block-paragraph">The two key legal questions were:</p>
+
+
+
+<p class="p1 wp-block-paragraph">1. Was the defendant in adverse possession of No. 5?</p>
+
+
+
+<p class="p1 wp-block-paragraph">2. If so, for what period?</p>
+
+
+
+<p class="p1 wp-block-paragraph">The defendant’s attempts to strengthen her possession claim were detrimental, with Elkaim JA finding the use of the property from 2011 to about 2015 or 2016 was more akin to a “storeroom” than a place “where a person sleeps, eats and ablutes”.</p>
+
+
+
+<p class="p1 wp-block-paragraph">The court heard the defendant often left furniture at the property, treating it as a “base” when she was in Sydney.</p>
+
+
+
+<p class="p1 wp-block-paragraph">Under the adverse possession laws, the squatter must have lived at the property continuously for at least 12 years, do so openly without the owner’s permission, and do things an owner would typically do.</p>
+
+
+
+<p class="p1 wp-block-paragraph">“Accepting that the defendant had a degree of physical control of [the property] from about 2011, I am not satisfied that it was physical possession of the type required. Had the defendant … ‘lived’ in [the property], the position would have been different,” the judge said.</p>
+
+
+
+<p class="p1 wp-block-paragraph">When the plaintiff’s brother visited, the defendant claimed to have the plaintiff’s permission to occupy the property. Similarly, the plaintiff pretended to be the owner and paid outstanding rates, consistent with “possession continued by stealth”.</p>
+
+
+
+<p class="p1 wp-block-paragraph">While the defendant repaired the doors and maintained parts of the property, she did not fix a broken window. In her evidence, Abraham claimed this was to deter criminal activity.</p>
+
+
+
+<p class="p1 wp-block-paragraph">However, Elkaim AJ said that leaving it broken “did not amount to possession open to the world.”</p>
+
+
+
+<p class="p1 wp-block-paragraph">“Taking the issue of the defendant’s possession being adverse a step further, the possession was not open because the occupation was effectively physically concealed, but also because the defendant held out that she had permission to be in the premises.” </p>
+
+
+
+<p class="p1 wp-block-paragraph">Elkaim AJ was satisfied possession by Abraham was not open “and therefore not adverse in the required manner”.</p>
+
+
+
+<p class="p1 wp-block-paragraph">“The result is that the limitation period imposed upon [Willis] did not start to run in 2011, and she is not precluded from now pursuing her claim for possession,” </p>
+
+
+
+<p class="p1 wp-block-paragraph">The court referred to relevant principles of adverse possession, particularly from in Carver v State of New South Wales [2024] NSWCA 10, including:</p>
+
+
+
+<p class="p1 wp-block-paragraph">• The possession must be factual (physical control) and intentional (to exclude others).</p>
+
+
+
+<p class="p1 wp-block-paragraph">• It must be nec vi, nec clam, nec precario – not by force, stealth, or permission.</p>
+
+
+
+<p class="p1 wp-block-paragraph">• Seeking the owner’s consent undermines the claim.</p>
+
+
+
+<p class="p1 wp-block-paragraph">Mr Carver had occupied a Crown-owned “Cottage H” at Illawong since about 1996; originally, Mr Price was granted passive occupancy (PO) in 1935. </p>
+
+
+
+<p class="p1 wp-block-paragraph">A licence is an authority provided by the NSW Department of Industry—Lands &amp; Water (the department) under the Crown Land Management Act 2016, permitting the legal occupation and use of Crown land for specified purposes. Importantly a licence, does not grant exclusive rights to use and occupy the land. </p>
+
+
+
+<p class="p1 wp-block-paragraph">The department licenses individuals, organisations, and community groups for various activities. These include the construction of waterfront structures such as jetties, boat ramps, and slipways. Additionally, licenses are granted for grazing, ensuring access to water supply, and facilitating temporary activities like events, environmental research, or site investigations. Furthermore, the department oversees operations in the extractive industry.</p>
+
+
+
+<p class="p1 wp-block-paragraph">Following Mr Price’s death, his widow, was allowed to stay for life. She died in 1980. Her son, Mr Hood, then began renting the property to others, which breached the PO conditions. Mr Carver entered into an arrangement with Mrs Hood and started living there.</p>
+
+
+
+<p class="p1 wp-block-paragraph">The Crown later sought possession of the land. Mr Carver defended the claim on the basis that the Crown’s action was statute-barred under ss 27(1) and 38 of the Limitation Act 1969 (NSW), arguing that the PO had ended in 1980 and that there had been 30+ years of adverse possession since then.</p>
+
+
+
+<p class="p1 wp-block-paragraph">The primary judge rejected this argument, ruling that the PO had not ended in 1980 and that s 13.1 of the Crown Land Management Act 2016 (NSW) barred Mr Carver from relying on limitation defences.</p>
+
+
+
+<p class="p1 wp-block-paragraph">Mr Carver appealed. The NSW Court of Appeal dismissed Mr Caver’s appeal, holding:</p>
+
+
+
+<p class="p1 wp-block-paragraph"><span style="text-decoration: underline">Statutory Bar (Issue i):</span></p>
+
+
+
+<p class="p1 wp-block-paragraph">Section 13.1 of the 2016 Act, read with s 8(1)(b) and s 65 of the Limitation Act, prevents Mr Carver from asserting a limitation defence. The legislative scheme restricts adverse possession claims over Crown land unless barred as of 2 October 1931.</p>
+
+
+
+<p class="p1 wp-block-paragraph"><span style="text-decoration: underline">Adverse Possession (Issue ii): </span></p>
+
+
+
+<p class="p1 wp-block-paragraph">The PO likely continued after Mrs Price’s death, as the Crown showed no clear termination.</p>
+
+
+
+<p class="p1 wp-block-paragraph">The Hoods did not possess the required intent (animus possidendi), as they paid rent to the Crown.</p>
+
+
+
+<p class="p1 wp-block-paragraph">Mr Carver also lacked the required intent, as he sought official approval to occupy and acknowledge Crown ownership.</p>
+
+
+
+<p class="p1 wp-block-paragraph"><span style="text-decoration: underline">Time to Vacate (Issue iii):</span></p>
+
+
+
+<p class="p1 wp-block-paragraph">The Court of Appeal upheld the time for Mr Carver to vacate but reset it to commence from the date of the Court’s decision</p>
+
+
+
+<p class="p1 wp-block-paragraph">The Court of Appeal dismissed the appeal with costs and ordered the appellant to vacate Cottage H. Elkaim JA also referenced Karnataka Board of Wakf v Government of India for a clear articulation: adverse possession must be open, hostile, continuous, exclusive, and known to the owner.</p>
+
+
+
+<p class="p1 wp-block-paragraph">The plaintiff challenged the defendant’s credibility claiming that her possession, if any, was not open or adverse.</p>
+
+
+
+<p class="p1 wp-block-paragraph">Finally, as the initiating party under UCPR r 29.1, the defendant bears the onus of proof.</p>
+
+
+
+<p class="p1 wp-block-paragraph"><span style="text-decoration: underline">Ownership and Estrangement</span>: In 1999, the plaintiff inherited 5 and 7 xxxx Street, and her brother inherited nearby properties. They became estranged and had no contact for many years.</p>
+
+
+
+<p class="p1 wp-block-paragraph"><span style="text-decoration: underline">Plaintiff’s Situation</span>: The plaintiff was said to reside at No 55, but the property appeared derelict. Until 2000, the plaintiff had a tenant at No. Five, following which the managing agent (CobdenHayson) maintained the property and paid rates until 2014.</p>
+
+
+
+<p class="p1 wp-block-paragraph"><span style="text-decoration: underline">Defendant’s Entry:</span> In 2009, the defendant learned from her brother about three abandoned properties, including Nos 5, 7, and 55. She inspected them and believed No. 5 was unoccupied. She began visiting and cleaning No. 5 monthly, storing items and making basic repairs.</p>
+
+
+
+<p class="p1 wp-block-paragraph"><span style="text-decoration: underline">Occupation and Use</span>: The defendant moved to Sydney in 2011, stored furniture at No 5, and claimed to use it as a base. In 2012, she and her daughter Chantal began using No 7 following the tenant’s departure. Chantal claimed she later resided at both properties part-time and then full-time.</p>
+
+
+
+<p class="p1 wp-block-paragraph"><span style="text-decoration: underline">Conflicting Evidence: </span></p>
+
+
+
+<ul class="wp-block-list">
+<li>Ms Fischer, who lived at No. 5 until 2012, testified that it appeared abandoned, corroborated by 2011 photos and a skip bin invoice showing rubbish removal and repairs inconsistent with storage or occupation.</li>
+
+
+
+<li>Supportive Witnesses: The defendant’s partner and friends (Mr Rundle, Mr Cassidy, and Ms Jimenez) gave evidence supporting her presence and activities at No 5 xxxx Street, Rozelle. However, the court found inconsistencies in dates and noted that using No 5 as a storeroom did not amount to adverse possession.</li>
+
+
+
+<li>Credibility Issues: The defendant’s attempts to present as having authority over the properties—including misleading statements to Mr Willis, CobdenHayson, and Council—undermined her claim. Her and Chantal’s statements included inconsistencies and elements of possible collusion.</li>
+
+
+
+<li>Rates and Consent: In 2024, the defendant impersonated the plaintiff to pay rates. Attempts to contact the plaintiff, possibly to seek consent, further undercut the defendant’s claim to adverse possession, as such conduct is inconsistent with the required intention to exclude the valid owner.</li>
+</ul>
+
+
+
+<p class="p1 wp-block-paragraph"><span style="text-decoration: underline">Was the defendant in adverse possession of No 5? </span></p>
+
+
+
+<ul class="wp-block-list">
+<li>Insufficient Possession: The court found that although the defendant had some physical control of No 5 from about 2011 (e.g. storage, cleaning), this did not amount to possession like a residence, which is the expected use of a residential property.</li>
+
+
+
+<li>No Residential Use Until 2016: Chantal’s claim of part-time residence from 2012 was not credible, and the court accepted that residential use did not begin until early 2016, if at all.</li>
+
+
+
+<li>Lack of Visibility: The defendant deliberately concealed any presence—e.g. by not repairing windows or making other visible signs of occupancy. The property appeared derelict to outsiders.</li>
+
+
+
+<li>Claims of Authority: The defendant and Chantal repeatedly asserted permission to occupy the property (e.g. telling Mr Willis and the council she had keys from the owner), which is inconsistent with “adverse” possession, which must be without consent and open.</li>
+</ul>
+
+
+
+<p class="p1 wp-block-paragraph"><span style="text-decoration: underline">Evidence Weighed Against the defendant</span></p>
+
+
+
+<ul class="wp-block-list">
+<li>No Clear Intention to Possess Adversely: The defendant’s conduct, including impersonating the plaintiff to pay rates in 2024, showed an awareness of her lack of legal authority and not the clear intention to exclude the true owner.</li>
+
+
+
+<li>The 2011 photographs and maintenance invoice contradicted claims that the property was being used for storage or lived in.</li>
+
+
+
+<li>The managing agent (CobdenHayson) continued paying rates and managing the property until 2014, showing the plaintiff retained control.</li>
+
+
+
+<li>The Court preferred Ms Fischer’s evidence that No 5 was derelict over that of the defendant’s witnesses.</li>
+</ul>
+
+
+
+<p class="p1 wp-block-paragraph"><span style="text-decoration: underline">Conclusion and Orders</span></p>
+
+
+
+<p class="p1 wp-block-paragraph">The defendant was not in adverse possession of No 5 in the legal sense.</p>
+
+
+
+<p class="p1 wp-block-paragraph">The plaintiff’s claim for possession succeeded.</p>
+
+
+
+<p class="p1 wp-block-paragraph">• Elkaim AJ dismissed the defendant’s cross-claim.</p>
+
+
+
+<p class="p1 wp-block-paragraph">• Judgment for possession was entered in favour of the plaintiff.</p>
+
+
+
+<p class="p1 wp-block-paragraph">• Costs awarded against the defendant.</p>
+
+
+
+<p class="p1 wp-block-paragraph">1. Judgment is entered for the plaintiff for possession of lot 1, deposited plan xxxx, situated at and known as five xxxx Street, Rozelle NSW 2039.</p>
+
+
+
+<p class="p1 wp-block-paragraph">2. Leave is given to issue a writ of possession to the plaintiff.</p>
+
+
+
+<p class="p1 wp-block-paragraph">3. The defendant’s cross-claim filed in Court on 18 March 2025 is dismissed.</p>
+
+
+
+<p class="p1 wp-block-paragraph">4. The defendant is to pay the plaintiff’s costs of the proceedings.</p>
+
+
+
+<p class="p1 wp-block-paragraph">5. If the parties seek any change to the costs order, Elkaim AJ will hear the parties.</p>
+			<div style="padding-bottom:15px;" class="wordads-tag" data-slot-type="belowpost">
+				<div id="atatags-dynamic-belowpost-6adcc22cccc22">
+					
+				</div>
+			</div><span id="wordads-inline-marker" style="display: none;"></span><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-telegram"><a rel="nofollow noopener noreferrer" data-shared="sharing-telegram-6935" class="share-telegram sd-button share-icon wbx-off" aria-labelledby="sharing-telegram-6935" data-href="https://heirsandsuccesses.com/2025/04/07/possession-permission-and-prevarication-a-cautionary-case-on-adverse-possession-in-nsw/?share=telegram" title="external link disabled; see Live website in the banner">
+				<span id="sharing-telegram-6935" hidden="">Share on Telegram (Opens in new window)</span>
+				<span>Telegram</span>
+			</a></li><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-6935" class="share-facebook sd-button share-icon wbx-off" aria-labelledby="sharing-facebook-6935" data-href="https://heirsandsuccesses.com/2025/04/07/possession-permission-and-prevarication-a-cautionary-case-on-adverse-possession-in-nsw/?share=facebook" title="external link disabled; see Live website in the banner">
+				<span id="sharing-facebook-6935" hidden="">Share on Facebook (Opens in new window)</span>
+				<span>Facebook</span>
+			</a></li><li class="share-linkedin"><a rel="nofollow noopener noreferrer" data-shared="sharing-linkedin-6935" class="share-linkedin sd-button share-icon wbx-off" aria-labelledby="sharing-linkedin-6935" data-href="https://heirsandsuccesses.com/2025/04/07/possession-permission-and-prevarication-a-cautionary-case-on-adverse-possession-in-nsw/?share=linkedin" title="external link disabled; see Live website in the banner">
+				<span id="sharing-linkedin-6935" hidden="">Share on LinkedIn (Opens in new window)</span>
+				<span>LinkedIn</span>
+			</a></li><li class="share-end"></ul></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded" id="like-post-wrapper-96102910-6935-6adcc22ccd0ba" data-src="https://widgets.wp.com/likes/?ver=16.4-a.3#blog_id=96102910&amp;post_id=6935&amp;origin=heirsandsuccesses.com&amp;obj_id=96102910-6935-6adcc22ccd0ba" data-name="like-post-frame-96102910-6935-6adcc22ccd0ba" data-title="Like or Reblog"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px;"><span class="button"><span>Like</span></span> <span class="loading"><svg class="jetpack-spinner" width="18" height="18" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"></svg><span class="screen-reader-text">Loading…</span></span></div><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+<div id="jp-relatedposts" class="jp-relatedposts">
+	
+</div>	</div>
+
+	
+</article>
+
+<div id="comments" class="comments-area">
+
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/heirsandsuccesses.com/possession-permission-and-prevarication-a-cautionary-case.html" style="display:none;">Cancel reply</a></small></h3><form id="commentform" class="comment-form"><div class="jetpack-comments" data-jetpack-comments='{"postId":6935,"loginUrl":"https://heirsandsuccesses.com/wp-login.php?redirect_to=https%3A%2F%2Fheirsandsuccesses.com%2F2025%2F04%2F07%2Fpossession-permission-and-prevarication-a-cautionary-case-on-adverse-possession-in-nsw%2F","logoutUrl":"","submit":{"id":"submit","name":"submit","class":"submit","wrapClass":"","label":"Comment"},"subscriptions":[{"name":"subscribe_comments","label":"Notify me of new comments by email.","checked":false},{"name":"subscribe_blog","label":"Subscribe to keep up with heirs \u0026amp; successes.","checked":false}]}'><p class="comment-form-comment"><label for="comment">Comment</label><textarea id="comment" name="comment" rows="4" required="" disabled></textarea></p><p class="comment-form-author"><label for="author">Name</label><input id="author" name="author" type="text" value="" required="" disabled></p><p class="comment-form-email"><label for="email">Email</label><input id="email" name="email" type="email" value="" required="" disabled></p><p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" type="text" value="" maxlength="200" disabled></p><p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Comment" disabled> </p></div><input type="hidden" name="comment_post_ID" value="6935" id="comment_post_ID" disabled>
+<input type="hidden" name="comment_parent" id="comment_parent" value="0" disabled>
+<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="b53e081ab9" disabled></p><p style="display: none !important;" class="akismet-fields-container" data-prefix="ak_"><label>Δ<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100" disabled></textarea></label><input type="hidden" id="ak_js_1" name="ak_js" value="160" disabled>
+</p></form>	</div>
+	
+</div>
+
+	<nav class="navigation post-navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a rel="prev" data-href="https://heirsandsuccesses.com/2025/03/30/informal-will-appeal/" class="wbx-off" title="external link disabled; see Live website in the banner"><span class="screen-reader-text">Previous Post</span><span aria-hidden="true" class="nav-subtitle">Previous</span> <span class="nav-title"><span class="nav-title-icon-wrapper"><svg class="icon icon-arrow-left" aria-hidden="true" role="img"></svg></span>Draft or Disposition? Appellate Limits on Informal Wills under s 8 of the Succession Act 2006 (NSW)</span></a></div><div class="nav-next"><a rel="next" data-href="https://heirsandsuccesses.com/2025/04/09/costs-in-contested-probate-proceedings/" class="wbx-off" title="external link disabled; see Live website in the banner"><span class="screen-reader-text">Next Post</span><span aria-hidden="true" class="nav-subtitle">Next</span> <span class="nav-title">Costs in contested probate proceedings<span class="nav-title-icon-wrapper"><svg class="icon icon-arrow-right" aria-hidden="true" role="img"></svg></span></span></a></div></div>
+	</nav>
+		</main>
+	</div>
+	
+<aside id="secondary" class="widget-area" aria-label="Blog Sidebar">
+	</aside>
+</div>
+
+
+		</div>
+
+		<footer id="colophon" class="site-footer">
+			<div class="wrap">
+				
+<div class="site-info">
+		<a data-href="https://wordpress.com/?ref=footer_custom_powered" class="wbx-off" title="external link disabled; see Live website in the banner">Powered by WordPress.com</a>.
+</div>
+			</div>
+		</footer>
+	</div>
+</div>
+
+
+<meta id="bilmur" property="bilmur:data" content="" data-customproperties='{"woo_active":"0","logged_in":"0","wptheme":"twentyseventeen","wptheme_is_block":"0"}' data-provider="wordpress.com" data-service="atomic" data-site-tz="Etc/GMT-11">
+
+					<div class="jetpack-subscription-modal">
+						<div class="jetpack-subscription-modal__modal-content">
+								
+	<div class="wp-block-group has-border-color jetpack-subscription-modal__modal-content-form" style="border-color:#dddddd;border-width:1px;margin-top:0;margin-bottom:0;padding:32px"><div class="wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow">
+
+		
+		<h2 class="wp-block-heading has-text-align-center" style="margin-top:4px;margin-bottom:10px;font-size:26px;font-style:normal;font-weight:600">Discover more from heirs &amp; successes</h2>
+		
+
+		
+		<p class="has-text-align-center wp-block-paragraph" style="margin-top:4px;margin-bottom:0px;font-size:15px">Subscribe now to keep reading and get access to the full archive.</p>
+		
+
+			<div class="wp-block-jetpack-subscriptions__supports-newline is-style-compact wp-block-jetpack-subscriptions">
+		<div class="wp-block-jetpack-subscriptions__container is-not-subscriber">
+							<form accept-charset="utf-8" data-blog="96102910" data-post_access_level="everybody" data-subscriber_email="" id="subscribe-blog">
+					<div class="wp-block-jetpack-subscriptions__form-elements">
+												<p id="subscribe-email">
+							<label id="subscribe-field-label" for="subscribe-field" class="screen-reader-text">
+								Type your email…							</label>
+							<input required="required" type="email" name="email" autocomplete="email" style="font-size: 16px;padding: 15px 23px 15px 23px;border-radius: 50px;border-width: 1px;" placeholder="Type your email…" value="" id="subscribe-field" title="Please fill in this field." disabled>						</p>
+												<p id="subscribe-submit">
+							<input type="hidden" name="action" value="subscribe" disabled>
+							<input type="hidden" name="blog_id" value="96102910" disabled>
+							<input type="hidden" name="source" value="https://heirsandsuccesses.com/2025/04/07/possession-permission-and-prevarication-a-cautionary-case-on-adverse-possession-in-nsw/" disabled>
+							<input type="hidden" name="sub-type" value="subscribe-block" disabled>
+							<input type="hidden" name="app_source" value="atomic-subscription-modal-lo" disabled>
+							<input type="hidden" name="redirect_fragment" value="subscribe-blog" disabled>
+							<input type="hidden" name="lang" value="en_US" disabled>
+							<input type="hidden" id="_wpnonce" name="_wpnonce" value="a66a4781ed" disabled><input type="hidden" name="_wp_http_referer" value="/2025/04/07/possession-permission-and-prevarication-a-cautionary-case-on-adverse-possession-in-nsw/" disabled><input type="hidden" name="post_id" value="6935" disabled>							<button type="submit" class="wp-block-button__link" style="font-size: 16px;padding: 15px 23px 15px 23px;margin: 0; margin-left: 10px;border-radius: 50px;border-width: 1px;" name="jetpack_subscriptions_widget" disabled>
+								Subscribe							</button>
+						</p>
+					</div>
+				</form>
+								</div>
+	</div>
+	
+
+		
+		<p class="has-text-align-center jetpack-subscription-modal__close wp-block-paragraph" style="margin-top:20px;font-size:14px"><a href="#">Continue reading</a></p>
+		
+	</div></div>
+							</div>
+					</div>
+			
+	
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="wbx-embed">[embedded media not archived]</div>
+	<div id="likes-other-gravatars" role="dialog" aria-hidden="true" tabindex="-1"><div class="likes-text"><span>%d</span></div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+				<div style="padding-bottom:15px;" class="wordads-tag" data-slot-type="top">
+				<div id="atatags-dynamic-top-6adcc22cd2047">
+					
+				</div>
+			</div><svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"></svg>
+
+
+
+
+</body><!--/email_off--></html>
