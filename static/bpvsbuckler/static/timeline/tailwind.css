@@ -1,0 +1,94 @@
+/* Tailwind CSS - Minimal build for timeline entries */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Courier Prime', monospace;
+    background-color: #0f172a;
+    color: #e2e8f0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.font-sans {
+    font-family: 'Courier Prime', monospace;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.text-4xl {
+    font-size: 2rem;
+}
+
+.text-5xl {
+    font-size: 3rem;
+}
+
+.px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.py-10 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.gap-4 {
+    gap: 1rem;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-lg {
+    font-size: 1.125rem;
+}
+
+.text-ink {
+    color: #1a1a1a;
+}
+
+.text-paper {
+    color: #fafaf7;
+}
+
+.bg-card {
+    background-color: #f0ede6;
+}
+
+.border {
+    border: 1px solid #d4d0c8;
+}
+
+.rounded-none {
+    border-radius: 0;
+}
+
+.page-title {
+    color: #fafaf7;
+}
+
+.page-subtitle {
+    color: #d4d0c8;
+}

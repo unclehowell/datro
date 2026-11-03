@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+ <meta name="mobile-web-app-capable" content="yes">
+ <meta name="apple-mobile-web-app-capable" content="yes">
+ <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+ <title>Display Ad Generator</title>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .main-content {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+ /* Fixed Header */
+ .fixed-header {
+ position: absolute;
+ top: 20px;
+ left: 20px;
+ right: 20px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ z-index: 10;
+ }
+
+ .burger-menu {
+ font-size: 24px;
+ padding: 8px 12px;
+ line-height: 1;
+ background: rgba(255, 255, 255, 0.1);
+ border: 1px solid rgba(255, 255, 255, 0.2);
+ min-width: 44px;
+ min-height: 44px;
+ }
+
+ .burger-menu:hover {
+ background: rgba(255, 255, 255, 0.2);
+ }
+
+        .brand-title {
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #ffd400, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: #ffd400;
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background: #ffdd33;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 212, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Ad Display Area */
+        .ad-display-area {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 80px 20px 20px 20px;
+        }
+        .ad-column {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            justify-content: center;
+            gap: 30px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+            padding: 20px 40px;
+            width: 100%;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
+        }
+        
+        .ad-column::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+
+        .ad-column:empty::before {
+            content: 'Click "Generate Ads" to create display ads';
+            color: #888;
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 40px;
+        }
+
+ .ad-unit {
+ background: #1a1a1a;
+ border-radius: 12px;
+ padding: 20px;
+ border: 1px solid #333;
+ transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+ cursor: pointer;
+ position: relative;
+ overflow: hidden;
+ min-width: 300px; /* Ensure minimum width */
+ }
+
+ /* Ad Preview Container */
+ .ad-preview {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+ border-radius: 8px;
+ padding: 10px;
+ margin-bottom: 15px;
+ min-height: 150px;
+ position: relative;
+ }
+
+ .ad-preview:empty::before {
+ content: 'Preview loading...';
+ color: #555;
+ font-size: 14px;
+ }
+
+        .ad-unit:hover {
+            transform: translateY(-4px);
+            border-color: #ffd400;
+            box-shadow: 0 8px 25px rgba(255, 212, 0, 0.1);
+        }
+
+        .ad-canvas {
+            position: relative;
+            overflow: hidden;
+        }
+
+ .ad-canvas img {
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ }
+
+ /* Custom scrollbar for mobile */
+ .ad-column::-webkit-scrollbar {
+ width: 6px;
+ }
+ 
+ .ad-column::-webkit-scrollbar-track {
+ background: rgba(255, 255, 255, 0.05);
+ }
+ 
+ .ad-column::-webkit-scrollbar-thumb {
+ background: rgba(255, 215, 0, 0.3);
+ border-radius: 3px;
+ }
+ 
+ .ad-column::-webkit-scrollbar-thumb:hover {
+ background: rgba(255, 215, 0, 0.5);
+ }
+
+        .ad-logo {
+            position: absolute;
+            top: 10px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 4px;
+            padding: 3px;
+            object-fit: contain;
+            z-index: 3;
+        }
+        
+        .ad-logo.top-left {
+            left: 10px;
+        }
+        
+        .ad-logo.top-right {
+            right: 10px;
+        }
+
+        .ad-headline {
+            position: absolute;
+            bottom: 35px;
+            left: 15px;
+            right: 15px;
+            font-weight: 800;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            z-index: 2;
+            word-wrap: break-word;
+            overflow: hidden;
+            white-space: normal;
+            max-width: 100%;
+        }
+
+        .ad-headline-container {
+            position: absolute;
+            left: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .ad-headline-word {
+            font-weight: 800;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            word-wrap: break-word;
+            overflow: hidden;
+            display: inline;
+        }
+
+        .ad-smallprint {
+            position: absolute;
+            bottom: 12px;
+            left: 10px;
+            right: 10px;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            z-index: 2;
+            word-wrap: break-word;
+            overflow: hidden;
+            white-space: normal;
+            max-width: 100%;
+        }
+
+        .ad-unit-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+            text-align: center;
+        }
+
+        .ad-dimensions {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .ad-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 12px;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-fullscreen {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-fullscreen:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-export {
+            background: #ffd400;
+            color: #000;
+        }
+
+        .btn-export:hover {
+            background: #ffdd33;
+        }
+
+ /* Loading Spinner */
+ @keyframes spin {
+ 0% { transform: rotate(0deg); }
+ 100% { transform: rotate(360deg); }
+ }
+
+ /* Collapsible Side Menu */
+ .side-menu {
+ position: fixed;
+ top: 0;
+ right: -500px;
+ width: 500px;
+ max-width: 90vw;
+ height: 100vh;
+ background: #1a1a1a;
+ border-left: 1px solid #333;
+ box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+ transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+ z-index: 1000;
+ overflow-y: auto;
+ overflow-x: hidden;
+ padding: 2rem;
+ -webkit-overflow-scrolling: touch;
+ }
+ 
+ .side-menu h2 {
+ color: #ffd400;
+ }
+ 
+ .side-menu p {
+ color: #aaa;
+ }
+
+        .side-menu.open {
+            right: 0;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #333;
+        }
+
+        .menu-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-header p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #ccc;
+        }
+
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 0.5rem;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .image-preview {
+            width: 100%;
+            max-height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            border: 1px solid #333;
+            display: none;
+        }
+
+        .image-preview.show {
+            display: block;
+        }
+
+        .smallprint-input {
+            width: 100%;
+            padding: 0.75rem;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 0.9rem;
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .smallprint-input:focus {
+            outline: none;
+            border-color: #ffd400;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .option-item {
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        .option-item:hover {
+            background: #3a3a3a;
+        }
+
+        .option-item.selected {
+            border-color: #ffd400;
+            background: #3a3a3a;
+        }
+
+        .option-item::before {
+            content: '○';
+            margin-right: 0.5rem;
+            color: #666;
+        }
+
+        .option-item.selected::before {
+            content: '●';
+            color: #ffd400;
+        }
+
+        .dimension-item {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.25rem;
+        }
+
+        .dimension-name {
+            font-weight: 600;
+            color: #ffd400;
+        }
+
+        .dimension-size {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .generate-btn {
+            width: 100%;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #ffd400;
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .generate-btn:hover {
+            background: #ffdd33;
+            transform: translateY(-2px);
+        }
+
+        /* Full Screen Modal */
+        .fullscreen-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .fullscreen-modal.active {
+            display: flex;
+        }
+
+        .fullscreen-content {
+            position: relative;
+            max-width: 95%;
+            max-height: 95%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        .fullscreen-content .ad-headline {
+            word-wrap: break-word;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        .fullscreen-content .ad-smallprint {
+            word-wrap: break-word;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+/* Mobile-First Responsive Design */
+ @media (max-width: 768px) {
+ /* Container adjustments */
+ .container {
+ height: 100vh;
+ width: 100%;
+ overflow-x: hidden;
+ }
+ 
+ .main-content {
+ height: 100vh;
+ width: 100%;
+ overflow-x: hidden;
+ }
+
+ /* Header - more compact on mobile */
+ .fixed-header {
+ position: relative;
+ top: 0;
+ left: 0;
+ right: 0;
+ padding: 12px 15px;
+ background: #1a1a1a;
+ border-bottom: 1px solid #333;
+ flex-wrap: wrap;
+ gap: 10px;
+ }
+ 
+ .brand-title {
+ font-size: 16px;
+ margin-bottom: 8px;
+ width: 100%;
+ text-align: center;
+ }
+ 
+ .header-actions {
+ width: 100%;
+ justify-content: center;
+ flex-wrap: wrap;
+ gap: 8px;
+ }
+
+ /* Larger touch targets for mobile */
+ .btn-primary, .btn-secondary {
+ padding: 14px 20px;
+ font-size: 14px;
+ min-height: 44px;
+ min-width: 44px;
+ border-radius: 25px;
+ }
+ 
+ .btn-small {
+ padding: 10px 14px;
+ font-size: 12px;
+ min-height: 36px;
+ }
+
+ /* Ad display area */
+ .ad-display-area {
+ padding: 15px 10px 80px 10px;
+ position: relative;
+ height: calc(100vh - 120px);
+ }
+ 
+ .ad-column {
+ grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+ padding: 10px;
+ gap: 15px;
+ max-height: 100%;
+ overflow-y: auto;
+ -webkit-overflow-scrolling: touch;
+ }
+
+ /* Ad unit cards */
+ .ad-unit {
+ padding: 12px;
+ border-radius: 8px;
+ margin-bottom: 10px;
+ }
+ 
+ .ad-canvas {
+ width: 100% !important;
+ max-width: 100%;
+ height: auto !important;
+ aspect-ratio: inherit;
+ }
+ 
+ .ad-canvas[style*="width"] {
+ width: 100% !important;
+ height: auto !important;
+ }
+ 
+ .ad-logo {
+ max-width: 40px;
+ max-height: 40px;
+ }
+ 
+ .ad-headline {
+  font-size: clamp(12px, 3vw, 18px) !important;
+  left: 8px;
+  right: 8px;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-width: 100%;
+ }
+ 
+ .ad-smallprint {
+  font-size: clamp(8px, 2vw, 10px) !important;
+  left: 5px;
+  right: 5px;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-width: 100%;
+ }
+
+ /* Side menu */
+ .side-menu {
+ width: 95%;
+ right: -95%;
+ padding: 1rem;
+ border-left: none;
+ background: #1a1a1a;
+ }
+ 
+ .menu-overlay {
+ backdrop-filter: blur(4px);
+ }
+ 
+ .menu-header h2 {
+ font-size: 1.3rem;
+ }
+ 
+ .menu-header p {
+ font-size: 0.85rem;
+ }
+ 
+ .form-group label {
+ font-size: 0.9rem;
+ }
+ 
+ .smallprint-input {
+ font-size: 0.9rem;
+ min-height: 60px;
+ }
+ 
+ .generate-btn {
+ padding: 0.8rem;
+ font-size: 1rem;
+ margin-top: 1.5rem;
+ }
+ 
+ .dimension-name {
+ font-size: 0.9rem;
+ }
+ 
+ .dimension-size {
+ font-size: 0.75rem;
+ }
+ 
+ .ad-dimensions {
+ font-size: 12px;
+ margin-bottom: 8px;
+ }
+ 
+ .ad-actions {
+ gap: 8px;
+ }
+ }
+
+ /* Extra small devices */
+ @media (max-width: 480px) {
+ .fixed-header {
+ padding: 10px 12px;
+ }
+ 
+ .brand-title {
+ font-size: 14px;
+ }
+ 
+ .btn-primary, .btn-secondary {
+ padding: 12px 16px;
+ font-size: 12px;
+ }
+ 
+ .ad-column {
+ grid-template-columns: 1fr;
+ padding: 8px;
+ gap: 12px;
+ }
+ 
+ .ad-unit {
+ padding: 10px;
+ }
+ 
+ .ad-logo {
+ max-width: 35px;
+ max-height: 35px;
+ }
+ }
+
+ /* Landscape orientation improvements */
+ @media (max-width: 768px) and (orientation: landscape) {
+ .fixed-header {
+ position: relative;
+ padding: 8px 15px;
+ }
+ 
+ .ad-display-area {
+ padding: 10px;
+ }
+ 
+ .ad-column {
+ grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+ }
+ }
+            .fixed-header {
+                top: 10px;
+                left: 10px;
+                right: 10px;
+            }
+        }
+    </style>
+
+<script src="db-data.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            <!-- Fixed Header -->
+ <div class="fixed-header">
+ <div class="brand-title">Display Ad Generator</div>
+ <div class="header-actions">
+ <button class="btn-secondary burger-menu" onclick="toggleSettings()" aria-label="Menu" style="font-size: 20px; padding: 8px 12px;">☰</button>
+ <button class="btn-secondary" onclick="autoEnhanceAllAds()" id="aiEnhanceBtn" style="display: none;">🤖 A.I Auto Enhance All</button>
+ <button class="btn-primary" onclick="generateAllAds()">🔄 Generate</button>
+ </div>
+ </div>
+
+ <!-- Ad Display Area -->
+ <div class="ad-display-area">
+ <div class="ad-column" id="adColumn">
+ <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; color: #888; text-align: center;">
+ <div style="font-size: 48px; margin-bottom: 16px;">🎯</div>
+ <div style="font-size: 18px; margin-bottom: 8px;">Loading Ad Catalogue...</div>
+ <div style="font-size: 14px;">Please wait while we load your display ads</div>
+ <div style="margin-top: 20px;">
+ <div style="width: 40px; height: 40px; border: 3px solid #ffd400; border-radius: 50%; border-top-color: transparent; animation: spin 1s linear infinite;"></div>
+ </div>
+ </div>
+ </div>
+ </div>
+        </div>
+
+        <!-- Menu Overlay -->
+        <div class="menu-overlay" id="menuOverlay" onclick="toggleSettings()"></div>
+
+        <!-- Side Menu -->
+        <div class="side-menu" id="sideMenu">
+            <div class="menu-header">
+                <h2>Ad Settings</h2>
+                <p>Select options to generate ad variations</p>
+            </div>
+
+            <div class="form-group">
+                <label>Background Image</label>
+                <input type="file" id="bgImage" accept="image/*" onchange="handleBackgroundUpload(event)">
+                <img id="bgPreview" class="image-preview" alt="Background preview">
+            </div>
+
+            <div class="form-group">
+                <label>Logo Image</label>
+                <input type="file" id="logoImage" accept="image/*" onchange="handleLogoUpload(event)">
+                <img id="logoPreview" class="image-preview" alt="Logo preview">
+            </div>
+
+ <div class="form-group">
+ <label>Smallprint Text</label>
+ <textarea class="smallprint-input" id="smallprintText" rows="3">Terms and conditions apply. Limited time offer. See website for details.</textarea>
+ </div>
+
+ <div class="form-group">
+ <label>Logo Position</label>
+ <div class="options-list" id="logoPositionOptions">
+ <div class="option-item selected" data-position="top-left">Top Left</div>
+ <div class="option-item" data-position="top-right">Top Right</div>
+ </div>
+ </div>
+
+            <div class="form-group">
+                <label>Background Colors (Select multiple)</label>
+                <div class="options-list" id="colorOptions"></div>
+            </div>
+
+            <div class="form-group">
+                <label>Headlines (Select multiple)</label>
+                <div class="options-list" id="headlineOptions"></div>
+            </div>
+
+            <div class="form-group">
+                <label>Ad Dimensions (Select multiple)</label>
+                <div class="options-list" id="dimensionOptions"></div>
+            </div>
+
+            <button class="generate-btn" onclick="toggleSettings(); generateAllAds();">Generate Ads</button>
+            <button class="btn-secondary" onclick="clearCache()">Clear Cache</button>
+        </div>
+
+        <!-- Full Screen Modal -->
+        <div class="fullscreen-modal" id="fullscreenModal" onclick="closeFullscreenModal(event)">
+            <div class="fullscreen-content" id="fullscreenContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let globalSettings = {
+            backgroundImage: 'assets/img/car-bg.png',
+            logoImage: 'assets/img/logo.png',
+            smallprint: 'Terms and conditions apply. Limited time offer. See website for details.',
+            backgroundColors: [],
+            headlines: [],
+            dimensions: []
+        };
+
+        let adsData = [];
+
+        const defaultConfig = {
+            colors: [
+                { name: 'Deep Blue', value: '#1e3a8a' },
+                { name: 'Royal Purple', value: '#7c3aed' },
+                { name: 'Emerald', value: '#059669' },
+                { name: 'Crimson', value: '#dc2626' },
+                { name: 'Midnight', value: '#111827' }
+            ],
+            headlines: [
+                'Lorem ipsum dolor sit amet consectetur',
+                'Sed do eiusmod tempor incididunt ut labore',
+                'Ut enim ad minim veniam quis nostrud',
+                'Duis aute irure dolor in reprehenderit',
+                'Excepteur sint occaecat cupidatat non proident'
+            ],
+            dimensions: [
+                { name: 'Medium Rectangle', width: 300, height: 250 },
+                { name: 'Leaderboard', width: 728, height: 90 },
+                { name: 'Wide Skyscraper', width: 160, height: 600 },
+                { name: 'Large Rectangle', width: 336, height: 280 },
+                { name: 'Mobile Banner', width: 320, height: 50 }
+            ]
+        };
+
+ // Initialize
+ async function init() {
+ try {
+ let config;
+ try {
+ // Try config symlink path
+ const response = await fetch('config.json');
+ if (!response.ok) throw new Error('Config not found');
+ config = await response.json();
+ console.log('Config loaded successfully:', config);
+ } catch (e) {
+ console.warn('Failed to load config.json, using embedded defaults:', e);
+ }
+ 
+ if (config) {
+ globalSettings.backgroundImage = config.assets?.background || globalSettings.backgroundImage;
+ globalSettings.logoImage = config.assets?.logo || globalSettings.logoImage;
+ globalSettings.smallprint = config.text?.smallprint || globalSettings.smallprint;
+ globalSettings.logoPosition = config.assets?.logoPosition || 'top-left';
+ 
+ // Set defaults from config
+ defaultConfig.colors = config.colors || defaultConfig.colors;
+ defaultConfig.headlines = config.text?.headlines || defaultConfig.headlines;
+ defaultConfig.dimensions = config.dimensions || defaultConfig.dimensions;
+ }
+ } catch (error) {
+ console.error('Failed to initialize config:', error);
+ }
+
+  // Initialize UI
+  initializeOptions();
+  selectAll();
+  loadPreviews();
+ 
+ // Generate ads after config is loaded
+ setTimeout(() => {
+ generateAllAds();
+ // Hide loading state
+ const adColumn = document.getElementById('adColumn');
+ if (adColumn && adColumn.children.length === 1) {
+ // Only hide loading if we have ads
+ adColumn.style.display = 'block';
+ }
+ }, 500);
+ }
+
+        function initializeOptions() {
+            // Color options
+            const colorContainer = document.getElementById('colorOptions');
+            defaultConfig.colors.forEach((color, index) => {
+                const item = document.createElement('div');
+                item.className = 'option-item';
+                item.innerHTML = `
+                    <div style="width: 20px; height: 20px; background: ${color.value}; border-radius: 3px; margin-right: 10px; border: 1px solid #444;"></div>
+                    ${color.name}
+                `;
+                item.onclick = () => toggleSelection('colors', index, 'backgroundColors', item);
+                colorContainer.appendChild(item);
+            });
+
+            // Headline options
+            const headlineContainer = document.getElementById('headlineOptions');
+            defaultConfig.headlines.forEach((headline, index) => {
+                const item = document.createElement('div');
+                item.className = 'option-item';
+                item.textContent = headline;
+                item.onclick = () => toggleSelection('headlines', index, 'headlines', item);
+                headlineContainer.appendChild(item);
+            });
+
+            // Dimension options
+            const dimensionContainer = document.getElementById('dimensionOptions');
+            defaultConfig.dimensions.forEach((dim, index) => {
+                const item = document.createElement('div');
+                item.className = 'option-item dimension-item';
+                item.innerHTML = `
+                    <div class="dimension-name">${dim.name}</div>
+                    <div class="dimension-size">${dim.width} × ${dim.height}px</div>
+                `;
+                item.onclick = () => toggleSelection('dimensions', index, 'dimensions', item);
+                dimensionContainer.appendChild(item);
+            });
+
+            // Initialize logo position handlers
+    const logoPosContainer = document.getElementById('logoPositionOptions');
+    logoPosContainer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('option-item')) {
+            const selectedPosition = e.target.dataset.position;
+            globalSettings.logoPosition = selectedPosition;
+            
+            // Update selection UI
+            logoPosContainer.querySelectorAll('.option-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            e.target.classList.add('selected');
+        }
+    });
+    
+    // Select all by default
+            selectAll();
+        }
+
+        function toggleSelection(type, index, settingKey, element) {
+            const item = defaultConfig[type][index];
+            const existingIndex = globalSettings[settingKey].findIndex(i => 
+                type === 'colors' ? i.value === item.value :
+                type === 'headlines' ? i === item :
+                i.name === item.name
+            );
+
+            if (existingIndex > -1) {
+                globalSettings[settingKey].splice(existingIndex, 1);
+                element.classList.remove('selected');
+            } else {
+                globalSettings[settingKey].push(item);
+                element.classList.add('selected');
+            }
+        }
+
+        function selectAll() {
+            globalSettings.backgroundColors = [...defaultConfig.colors];
+            globalSettings.headlines = [...defaultConfig.headlines];
+            globalSettings.dimensions = [...defaultConfig.dimensions];
+
+            document.querySelectorAll('.option-item').forEach(item => {
+                item.classList.add('selected');
+            });
+        }
+
+        function toggleSettings() {
+            const sideMenu = document.getElementById('sideMenu');
+            const overlay = document.getElementById('menuOverlay');
+            
+            sideMenu.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+
+        function handleBackgroundUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    globalSettings.backgroundImage = e.target.result;
+                    document.getElementById('bgPreview').src = e.target.result;
+                    document.getElementById('bgPreview').classList.add('show');
+                    generateAllAds();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function handleLogoUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    globalSettings.logoImage = e.target.result;
+                    document.getElementById('logoPreview').src = e.target.result;
+                    document.getElementById('logoPreview').classList.add('show');
+                    generateAllAds();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function loadPreviews() {
+            const bgPreview = document.getElementById('bgPreview');
+            bgPreview.src = globalSettings.backgroundImage;
+            bgPreview.classList.add('show');
+
+            const logoPreview = document.getElementById('logoPreview');
+            logoPreview.src = globalSettings.logoImage;
+            logoPreview.classList.add('show');
+
+            document.getElementById('smallprintText').value = globalSettings.smallprint;
+            
+            // Set logo position selection
+            const logoPosContainer = document.getElementById('logoPositionOptions');
+            const position = globalSettings.logoPosition || 'top-left';
+            logoPosContainer.querySelectorAll('.option-item').forEach(item => {
+                item.classList.toggle('selected', item.dataset.position === position);
+            });
+        }
+
+        function generateAllAds() {
+            // Update settings from form
+            globalSettings.smallprint = document.getElementById('smallprintText').value || globalSettings.smallprint;
+
+            // Generate all combinations
+            adsData = [];
+            let adId = 1;
+
+            globalSettings.dimensions.forEach(dim => {
+                globalSettings.backgroundColors.forEach(color => {
+                    globalSettings.headlines.forEach(headline => {
+                        adsData.push({
+                            id: adId++,
+                            width: dim.width,
+                            height: dim.height,
+                            area: dim.width * dim.height, // Store area for sorting
+                            backgroundColor: color.value,
+                            headline: headline,
+                            smallprint: globalSettings.smallprint,
+                            backgroundImage: globalSettings.backgroundImage,
+                            logoImage: globalSettings.logoImage,
+                            logoPosition: globalSettings.logoPosition,
+                            dimensionName: dim.name
+                        });
+                    });
+                });
+            });
+
+            // Sort ads by area (largest to smallest)
+            adsData.sort((a, b) => b.area - a.area);
+
+            renderAds();
+        }
+
+        function renderAds() {
+            const adColumn = document.getElementById('adColumn');
+            
+            if (adsData.length === 0) {
+                adColumn.innerHTML = '<p style="color: #888; text-align: center; padding: 20px;">No ads to display. Select items from each category.</p>';
+                return;
+            }
+
+            adColumn.innerHTML = '';
+            adsData.forEach(ad => {
+                adColumn.appendChild(createAdElement(ad));
+            });
+        }
+
+        function clearCache() {
+            if ('caches' in window) {
+                caches.keys().then(names => {
+                    names.forEach(name => {
+                        caches.delete(name);
+                    });
+                });
+            }
+            localStorage.clear();
+            sessionStorage.clear();
+            alert('Cache cleared! Refresh the page to reload.');
+        }
+
+        function createAdElement(ad) {
+            const adUnit = document.createElement('div');
+            adUnit.className = 'ad-unit';
+
+            const scale = Math.min(300 / ad.width, 200 / ad.height, 1);
+            const displayWidth = Math.floor(ad.width * scale);
+            const displayHeight = Math.floor(ad.height * scale);
+
+            const maxLogoSize = Math.floor(Math.min(ad.width, ad.height) * 0.15);
+            const logoSize = Math.max(20, Math.min(maxLogoSize, 50));
+            
+            const smallprintFontSize = Math.floor(ad.height / 30);
+
+            function getLongestWordWidth(text, fontSize, fontFamily = 'sans-serif') {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                ctx.font = `${fontSize}px ${fontFamily}`;
+                const words = text.split(/\s+/);
+                let maxWidth = 0;
+                words.forEach(word => {
+                    const metrics = ctx.measureText(word);
+                    maxWidth = Math.max(maxWidth, metrics.width);
+                });
+                return maxWidth;
+            }
+
+            const paddingHorizontal = 6;
+            const availableWidth = ad.width - paddingHorizontal;
+            let adjustedHeadlineFontSize;
+            let adjustedSmallprintFontSize = smallprintFontSize;
+
+            if (ad.headline) {
+                let baseFontSize = Math.floor(ad.height / 4);
+                
+                let testFontSize = baseFontSize;
+                while (testFontSize > 8) {
+                    const longestWordWidth = getLongestWordWidth(ad.headline, testFontSize);
+                    if (longestWordWidth <= availableWidth) {
+                        break;
+                    }
+                    testFontSize -= 2;
+                }
+                adjustedHeadlineFontSize = Math.max(testFontSize, 8);
+            }
+
+            if (ad.smallprint) {
+                const longestSmallprintWordWidth = getLongestWordWidth(ad.smallprint, smallprintFontSize);
+                const smallprintAvailableWidth = ad.width - 12;
+                if (longestSmallprintWordWidth > smallprintAvailableWidth) {
+                    adjustedSmallprintFontSize = Math.floor(smallprintFontSize * (smallprintAvailableWidth / longestSmallprintWordWidth) * 0.95);
+                }
+            }
+
+            // Apply background color tint over the image
+            const backgroundStyle = ad.backgroundImage ? 
+                `linear-gradient(${ad.backgroundColor}80, ${ad.backgroundColor}80), url('${ad.backgroundImage}')` : 
+                ad.backgroundColor;
+
+            const headlineWords = ad.headline ? ad.headline.split(/\s+/) : [];
+            const headlineElements = headlineWords.map(word => 
+                `<span class="ad-headline-word" style="font-size: ${adjustedHeadlineFontSize}px;">${word}</span>`
+            ).join(' ');
+
+            const logoTop = ad.logoImage ? (ad.logoPosition === 'top-left' || ad.logoPosition === 'top-right') ? 10 : ad.height - logoSize - 10 : ad.height * 0.1;
+            const headlineTop = ad.logoImage ? (ad.logoPosition === 'top-left' || ad.logoPosition === 'top-right') ? logoSize + 15 : ad.height * 0.15 : ad.height * 0.1;
+            const smallprintHeight = adjustedSmallprintFontSize + 15;
+            const headlineHeight = ad.height - headlineTop - smallprintHeight - 10;
+
+            adUnit.innerHTML = `
+                <div class="ad-preview">
+                    <div class="ad-canvas" id="ad-${ad.id}" style="width: ${ad.width}px; height: ${ad.height}px; background: ${backgroundStyle}; background-size: cover; background-position: center; position: relative;">
+                        ${ad.logoImage ? `<img src="${ad.logoImage}" class="ad-logo ${ad.logoPosition}" style="width: ${logoSize}px; height: ${logoSize}px;" alt="Logo">` : ''}
+                        <div class="ad-headline-container" style="top: ${headlineTop}px; height: ${headlineHeight}px;">
+                            ${headlineElements}
+                        </div>
+                        <div class="ad-smallprint" style="font-size: ${adjustedSmallprintFontSize}px;">${ad.smallprint}</div>
+                    </div>
+                </div>
+                <div class="ad-unit-info">
+                    <div class="ad-dimensions">${ad.dimensionName} - ${ad.width} × ${ad.height}px</div>
+                    <div class="ad-actions">
+                        <button class="btn-small btn-fullscreen" onclick="openFullscreen(${ad.id})">Fullscreen</button>
+                        <button class="btn-small btn-export" onclick="exportAdAsPng(${ad.id})">Export PNG</button>
+                    </div>
+                </div>
+            `;
+
+            return adUnit;
+        }
+
+        function openFullscreen(adId) {
+            const ad = adsData.find(a => a.id === adId);
+            if (!ad) return;
+
+            const modal = document.getElementById('fullscreenModal');
+            const content = document.getElementById('fullscreenContent');
+
+            const maxWidth = window.innerWidth * 0.95;
+            const maxHeight = window.innerHeight * 0.95;
+            const scale = Math.min(maxWidth / ad.width, maxHeight / ad.height, 1);
+            const displayWidth = Math.floor(ad.width * scale);
+            const displayHeight = Math.floor(ad.height * scale);
+
+            const backgroundStyle = ad.backgroundImage ? 
+                `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('${ad.backgroundImage}')` : 
+                ad.backgroundColor;
+
+            const smallprintFontSize = Math.floor(ad.height / 30 * scale);
+
+            function getLongestWordWidth(text, fontSize, fontFamily = 'sans-serif') {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                ctx.font = `${fontSize}px ${fontFamily}`;
+                const words = text.split(/\s+/);
+                let maxWidth = 0;
+                words.forEach(word => {
+                    const metrics = ctx.measureText(word);
+                    maxWidth = Math.max(maxWidth, metrics.width);
+                });
+                return maxWidth;
+            }
+
+            const paddingHorizontal = 10 * scale;
+            const availableWidth = displayWidth - paddingHorizontal;
+            let adjustedHeadlineFontSize;
+            let adjustedSmallprintFontSize = smallprintFontSize;
+
+            if (ad.headline) {
+                let baseFontSize = Math.floor(ad.height / 4 * scale);
+                
+                let testFontSize = baseFontSize;
+                while (testFontSize > 12) {
+                    const longestWordWidth = getLongestWordWidth(ad.headline, testFontSize);
+                    if (longestWordWidth <= availableWidth) {
+                        break;
+                    }
+                    testFontSize -= 4;
+                }
+                adjustedHeadlineFontSize = Math.max(testFontSize, 12);
+            }
+
+            if (ad.smallprint) {
+                const longestSmallprintWordWidth = getLongestWordWidth(ad.smallprint, smallprintFontSize);
+                const smallprintAvailableWidth = displayWidth - 20 * scale;
+                if (longestSmallprintWordWidth > smallprintAvailableWidth) {
+                    adjustedSmallprintFontSize = Math.floor(smallprintFontSize * (smallprintAvailableWidth / longestSmallprintWordWidth) * 0.95);
+                }
+            }
+
+            const headlineWords = ad.headline ? ad.headline.split(/\s+/) : [];
+            const headlineElements = headlineWords.map(word => 
+                `<span class="ad-headline-word" style="font-size: ${adjustedHeadlineFontSize}px;">${word}</span>`
+            ).join(' ');
+
+            const headlineTop = 20 + (ad.logoImage ? 80 + 10 : 0);
+            const smallprintHeight = adjustedSmallprintFontSize + 25;
+            const headlineHeight = displayHeight - headlineTop - smallprintHeight - 10;
+
+            content.innerHTML = `
+                <div class="ad-canvas" style="width: ${displayWidth}px; height: ${displayHeight}px; background: ${backgroundStyle}; background-size: cover; background-position: center; position: relative;">
+                    ${ad.logoImage ? `<img src="${ad.logoImage}" class="ad-logo" style="width: 80px; height: 80px; top: 20px; left: 20px;" alt="Logo">` : ''}
+                    <div class="ad-headline-container" style="top: ${headlineTop}px; height: ${headlineHeight}px; left: 20px; right: 20px;">
+                        ${headlineElements}
+                    </div>
+                    <div class="ad-smallprint" style="font-size: ${adjustedSmallprintFontSize}px; bottom: 20px;">${ad.smallprint}</div>
+                </div>
+            `;
+
+            modal.classList.add('active');
+        }
+
+        function closeFullscreenModal(event) {
+            if (event.target.classList.contains('fullscreen-modal')) {
+                document.getElementById('fullscreenModal').classList.remove('active');
+            }
+        }
+
+        // AI Auto Enhancement Functions
+        async function autoEnhanceFirstAd() {
+            if (!adsData || adsData.length === 0) return;
+            
+            const firstAd = adsData[0];
+            const adId = firstAd.id;
+            
+            // Show enhancement badge
+            const firstAdUnit = document.querySelector('.ad-unit');
+            if (!firstAdUnit) return;
+            
+            // Add enhancement badge
+            const badge = document.createElement('div');
+            badge.className = 'ai-enhancing-badge';
+            badge.textContent = 'A.I auto enhancing...';
+            badge.style.cssText = `
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                background: linear-gradient(45deg, #00ffcc, #00ccff);
+                color: #000;
+                padding: 4px 8px;
+                border-radius: 12px;
+                font-size: 10px;
+                font-weight: bold;
+                z-index: 10;
+                animation: pulse 1.5s infinite;
+            `;
+            firstAdUnit.style.position = 'relative';
+            firstAdUnit.appendChild(badge);
+            
+            try {
+                // Call the enhancement script via terminal
+                const response = await fetch('/canvas/scripts/ad_enhance.py', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        canvas_id: `ad-${adId}`,
+                        ad_data: firstAd
+                    })
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    console.log('AI Enhancement completed:', result);
+                    badge.textContent = `✨ Enhanced (Score: ${result.overall_score}/10)`;
+                    badge.style.background = 'linear-gradient(45deg, #00ff00, #00aa00)';
+                    
+                    // Apply adjustments to the ad
+                    applyEnhancements(adId, result.adjustments);
+                }
+            } catch (error) {
+                console.error('AI Enhancement failed:', error);
+                badge.textContent = '❌ Enhancement failed';
+                badge.style.background = '#ff4444';
+            }
+            
+            // Remove badge after 5 seconds
+            setTimeout(() => {
+                badge.remove();
+            }, 5000);
+        }
+
+        function applyEnhancements(adId, adjustments) {
+            const adCanvas = document.getElementById(`ad-${adId}`);
+            if (!adCanvas || !adjustments) return;
+            
+            adjustments.forEach(adjustment => {
+                const element = adCanvas.querySelector(`.ad-${adjustment.element}`);
+                if (element) {
+                    // Apply the suggested change
+                    const value = parseInt(adjustment.suggested);
+                    if (adjustment.property === 'fontSize') {
+                        element.style.fontSize = adjustment.suggested;
+                    } else if (adjustment.property.includes('padding')) {
+                        element.style[adjustment.property] = adjustment.suggested;
+                    }
+                    console.log(`Applied: ${adjustment.element} ${adjustment.property} = ${adjustment.suggested}`);
+                }
+            });
+        }
+
+        async function autoEnhanceAllAds() {
+            const button = document.getElementById('aiEnhanceBtn');
+            button.disabled = true;
+            button.textContent = '🤖 Enhancing All Ads...';
+            
+            const progressPerAd = 100 / adsData.length;
+            let currentProgress = 0;
+            
+            for (let i = 0; i < adsData.length; i++) {
+                const ad = adsData[i];
+                
+                try {
+                    const response = await fetch('/canvas/scripts/ad_enhance.py', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            canvas_id: `ad-${ad.id}`,
+                            ad_data: ad
+                        })
+                    });
+                    
+                    if (response.ok) {
+                        const result = await response.json();
+                        applyEnhancements(ad.id, result.adjustments);
+                        
+                        currentProgress += progressPerAd;
+                        button.textContent = `🤖 Enhancing All Ads... ${Math.round(currentProgress)}%`;
+                    }
+                } catch (error) {
+                    console.error(`Enhancement failed for ad ${ad.id}:`, error);
+                }
+                
+                // Small delay between requests to avoid overwhelming
+                await new Promise(resolve => setTimeout(resolve, 200));
+            }
+            
+            button.disabled = false;
+            button.textContent = '✓ All Ads Enhanced';
+            
+            // Reset button text after 3 seconds
+            setTimeout(() => {
+                button.textContent = '🤖 A.I Auto Enhance All';
+            }, 3000);
+        }
+
+        function exportAdAsPng(adId) {
+            const ad = adsData.find(a => a.id === adId);
+            if (!ad) return;
+
+            const adElement = document.getElementById(`ad-${adId}`);
+
+            html2canvas(adElement, {
+                backgroundColor: null,
+                scale: 1,
+                width: ad.width,
+                height: ad.height,
+                useCORS: true
+            }).then(canvas => {
+                const link = document.createElement('a');
+                const filename = `ad-${ad.dimensionName.replace(/\s+/g, '-')}-${ad.width}x${ad.height}-${ad.id}.png`;
+                link.download = filename;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }).catch(err => {
+                console.error('Export failed:', err);
+                alert('Export failed. Please try again.');
+            });
+        }
+
+ // Initialize on load
+ init().then(() => {
+ // Auto-enhance first ad after initial load
+ setTimeout(() => {
+ if (adsData && adsData.length > 0) {
+ autoEnhanceFirstAd();
+ }
+ }, 1000);
+ });
+
+ // Mobile touch interactions
+ let touchStartX = 0;
+ let touchEndX = 0;
+ let touchStartY = 0;
+ const minSwipeDistance = 50;
+
+ document.addEventListener('touchstart', (e) => {
+ touchStartX = e.changedTouches[0].screenX;
+ touchStartY = e.changedTouches[0].screenY;
+ }, { passive: true });
+
+ document.addEventListener('touchend', (e) => {
+ touchEndX = e.changedTouches[0].screenX;
+ const touchEndY = e.changedTouches[0].screenY;
+ 
+ const swipeDistance = touchStartX - touchEndX;
+ const verticalDistance = Math.abs(touchStartY - touchEndY);
+ 
+ // Only handle horizontal swipes, not vertical scrolls
+ if (Math.abs(swipeDistance) > minSwipeDistance && verticalDistance < 50) {
+ if (swipeDistance > 0) {
+ // Swipe left - open menu
+ if (Math.abs(swipeDistance) > 50) {
+ const sideMenu = document.getElementById('sideMenu');
+ if (!sideMenu.classList.contains('open')) {
+ toggleSettings();
+ }
+ }
+ } else {
+ // Swipe right - close menu
+ const sideMenu = document.getElementById('sideMenu');
+ if (sideMenu.classList.contains('open')) {
+ toggleSettings();
+ }
+ }
+ }
+ }, { passive: true });
+
+ // Prevent zoom on double tap for buttons
+ document.querySelectorAll('.btn-primary, .btn-secondary, .btn-small').forEach(button => {
+ button.addEventListener('touchend', (e) => {
+ e.preventDefault();
+ button.click();
+ }, { passive: false });
+ });
+        </script>
+
+<!-- DB Footer Release -->
+<footer id="db-footer" style="font-size:12px;color:#666;text-align:center;padding:10px;margin-top:20px;border-top:1px solid #eee;">
+  Datro Release • <span id="db-version">loading…</span>
+</footer>
+<script>
+  (function(){
+    try {
+      var el=document.getElementById("db-version");
+      if(el && typeof DB_STATUS !== "undefined") {
+        el.textContent = "v"+DB_STATUS.version+" • "+DB_STATUS.release_date+" • Gateway: "+DB_STATUS.gateway_state+" • Sessions: "+DB_STATUS.active_sessions;
+      }
+    } catch(e) {}
+  })();
+</script>
+
+</body>
+</html>

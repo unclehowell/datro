@@ -1,0 +1,304 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 408" width="612" height="408">
+  <defs>
+    <!-- Car body gradient -->
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="30%" style="stop-color:#0f0f0f"/>
+      <stop offset="60%" style="stop-color:#050505"/>
+      <stop offset="100%" style="stop-color:#0a0a0a"/>
+    </linearGradient>
+
+    <!-- Window gradient -->
+    <linearGradient id="windowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="50%" style="stop-color:#050505"/>
+      <stop offset="100%" style="stop-color:#000000"/>
+    </linearGradient>
+
+    <!-- Chrome/silver gradient for wheels -->
+    <linearGradient id="chromeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a4a4a"/>
+      <stop offset="50%" style="stop-color:#2a2a2a"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+
+    <!-- Headlight glow -->
+    <radialGradient id="headlightGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- Shadow -->
+    <filter id="shadowBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <!-- Ground Shadow -->
+  <ellipse cx="306" cy="355" rx="280" ry="25" fill="#000000" opacity="0.6" filter="url(#shadowBlur)"/>
+
+  <!-- Main Car Body Silhouette - Traced precisely -->
+  <path d="
+    M 45,280
+    C 40,260 45,240 55,225
+    C 65,210 80,195 100,185
+    C 120,175 145,165 175,155
+    C 205,145 235,135 265,125
+    C 295,115 325,105 355,100
+    C 385,95 415,92 445,95
+    C 475,98 500,105 525,115
+    C 550,125 570,140 585,160
+    C 600,180 608,205 610,235
+    C 612,265 608,295 600,315
+    C 592,335 580,350 565,360
+    C 550,370 530,375 510,375
+    C 490,375 470,370 455,360
+    C 440,350 430,335 425,320
+    C 420,305 415,295 405,290
+    C 395,285 380,285 360,287
+    C 340,289 320,292 300,295
+    C 280,298 260,300 240,302
+    C 220,304 200,305 185,310
+    C 170,315 160,325 150,340
+    C 140,355 130,365 115,370
+    C 100,375 80,375 65,370
+    C 50,365 45,350 45,330
+    Z" 
+    fill="url(#bodyGrad)"/>
+
+  <!-- Cabin/Roof Area -->
+  <path d="
+    M 165,185
+    C 180,165 200,145 225,130
+    C 250,115 280,105 315,100
+    C 350,95 385,95 420,100
+    C 455,105 485,115 510,130
+    C 535,145 555,165 570,190
+    C 575,200 578,210 575,220
+    C 572,230 565,235 555,235
+    C 545,235 535,232 525,228
+    C 515,224 505,220 495,218
+    C 485,216 475,215 465,215
+    C 455,215 445,216 435,218
+    C 425,220 415,222 405,224
+    C 395,226 385,228 375,230
+    C 365,232 355,234 345,236
+    C 335,238 325,240 315,242
+    C 305,244 295,246 285,248
+    C 275,250 265,252 255,254
+    C 245,256 235,258 225,260
+    C 215,262 205,264 195,265
+    C 185,266 175,265 170,260
+    C 165,255 162,245 160,230
+    C 158,215 160,200 165,185
+    Z" 
+    fill="#0a0a0a"/>
+
+  <!-- Side Windows (Greenhouse) -->
+  <path d="
+    M 180,190
+    C 195,170 215,155 240,145
+    C 265,135 295,128 330,125
+    C 365,122 400,123 435,128
+    C 470,133 500,143 525,158
+    C 550,173 565,190 570,210
+    C 572,218 570,225 565,228
+    C 560,231 552,230 542,227
+    C 532,224 522,220 512,217
+    C 502,214 492,212 482,211
+    C 472,210 462,210 452,211
+    C 442,212 432,214 422,216
+    C 412,218 402,220 392,222
+    C 382,224 372,226 362,228
+    C 352,230 342,232 332,234
+    C 322,236 312,238 302,240
+    C 292,242 282,244 272,246
+    C 262,248 252,250 242,252
+    C 232,254 222,256 212,257
+    C 202,258 192,257 188,252
+    C 184,247 182,237 181,222
+    C 180,207 179,197 180,190
+    Z" 
+    fill="url(#windowGrad)" opacity="0.9"/>
+
+  <!-- Windshield -->
+  <path d="
+    M 165,185
+    C 175,170 190,158 210,150
+    C 230,142 255,137 285,135
+    C 315,133 345,133 375,135
+    C 405,137 435,142 465,150
+    C 495,158 520,170 540,185
+    C 555,195 565,205 570,215
+    C 572,220 570,224 565,226
+    C 560,228 552,226 542,222
+    C 532,218 522,214 512,210
+    C 502,206 492,203 482,201
+    C 472,199 462,198 452,198
+    C 442,198 432,199 422,201
+    C 412,203 402,205 392,207
+    C 382,209 372,211 362,213
+    C 352,215 342,217 332,219
+    C 322,221 312,223 302,225
+    C 292,227 282,229 272,231
+    C 262,233 252,235 242,237
+    C 232,239 222,241 212,242
+    C 202,243 192,242 185,237
+    C 178,232 173,222 170,207
+    C 167,192 165,185 165,185
+    Z" 
+    fill="#050505" opacity="0.8"/>
+
+  <!-- Front Wheel -->
+  <g transform="translate(165, 305)">
+    <!-- Tire -->
+    <circle cx="0" cy="0" r="52" fill="#0a0a0a" stroke="#1a1a1a" stroke-width="2"/>
+    <!-- Rim outer -->
+    <circle cx="0" cy="0" r="42" fill="none" stroke="#2a2a2a" stroke-width="3"/>
+    <!-- Rim inner -->
+    <circle cx="0" cy="0" r="35" fill="none" stroke="#3a3a3a" stroke-width="2"/>
+    <!-- Center cap -->
+    <circle cx="0" cy="0" r="8" fill="#1a1a1a"/>
+    <!-- Spokes -->
+    <g stroke="#4a4a4a" stroke-width="2" opacity="0.8">
+      <line x1="0" y1="-35" x2="0" y2="35"/>
+      <line x1="-30" y1="-17" x2="30" y2="17"/>
+      <line x1="-30" y1="17" x2="30" y2="-17"/>
+      <line x1="-17" y1="-30" x2="17" y2="30"/>
+      <line x1="-17" y1="30" x2="17" y2="-30"/>
+    </g>
+    <!-- Brake caliper hint -->
+    <path d="M 15,-25 Q 25,-15 25,0 Q 25,15 15,25" fill="none" stroke="#2a2a2a" stroke-width="4" opacity="0.5"/>
+  </g>
+
+  <!-- Rear Wheel -->
+  <g transform="translate(465, 305)">
+    <!-- Tire -->
+    <circle cx="0" cy="0" r="50" fill="#0a0a0a" stroke="#1a1a1a" stroke-width="2"/>
+    <!-- Rim outer -->
+    <circle cx="0" cy="0" r="40" fill="none" stroke="#2a2a2a" stroke-width="3"/>
+    <!-- Rim inner -->
+    <circle cx="0" cy="0" r="33" fill="none" stroke="#3a3a3a" stroke-width="2"/>
+    <!-- Center cap -->
+    <circle cx="0" cy="0" r="7" fill="#1a1a1a"/>
+    <!-- Spokes -->
+    <g stroke="#4a4a4a" stroke-width="2" opacity="0.8">
+      <line x1="0" y1="-33" x2="0" y2="33"/>
+      <line x1="-28" y1="-16" x2="28" y2="16"/>
+      <line x1="-28" y1="16" x2="28" y2="-16"/>
+      <line x1="-16" y1="-28" x2="16" y2="28"/>
+      <line x1="-16" y1="28" x2="16" y2="-28"/>
+    </g>
+  </g>
+
+  <!-- Headlight Detail -->
+  <path d="
+    M 48,245
+    C 52,235 65,230 85,232
+    C 105,234 120,240 125,250
+    C 128,258 125,265 115,270
+    C 105,275 90,276 70,274
+    C 50,272 42,265 45,255
+    C 46,250 47,247 48,245
+    Z" 
+    fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+  <ellipse cx="85" cy="252" rx="25" ry="12" fill="#0f0f0f" opacity="0.8"/>
+  <ellipse cx="75" cy="250" rx="8" ry="4" fill="#ffffff" opacity="0.2"/>
+
+  <!-- Grille -->
+  <path d="
+    M 45,280
+    C 42,270 44,260 50,255
+    C 56,250 65,248 75,250
+    C 85,252 95,258 100,268
+    C 105,278 102,288 95,295
+    C 88,302 78,305 68,304
+    C 58,303 50,298 47,290
+    C 45,285 45,282 45,280
+    Z" 
+    fill="#050505"/>
+  <g stroke="#1a1a1a" stroke-width="1" opacity="0.5">
+    <line x1="50" y1="265" x2="90" y2="265"/>
+    <line x1="48" y1="275" x2="95" y2="275"/>
+    <line x1="48" y1="285" x2="92" y2="285"/>
+  </g>
+
+  <!-- Front Bumper/Air Intake -->
+  <path d="
+    M 45,295
+    C 48,305 55,312 65,315
+    C 75,318 85,318 95,315
+    C 105,312 112,305 115,295
+    C 110,300 100,303 85,303
+    C 70,303 58,300 45,295
+    Z" 
+    fill="#0a0a0a"/>
+
+  <!-- Door Lines -->
+  <path d="
+    M 220,270
+    L 220,320" 
+    stroke="#1a1a1a" stroke-width="1.5" opacity="0.4" fill="none"/>
+  <path d="
+    M 380,265
+    L 380,315" 
+    stroke="#1a1a1a" stroke-width="1.5" opacity="0.4" fill="none"/>
+
+  <!-- Door Handles -->
+  <rect x="235" y="275" width="25" height="4" rx="1" fill="#2a2a2a" opacity="0.6"/>
+  <rect x="345" y="270" width="25" height="4" rx="1" fill="#2a2a2a" opacity="0.6"/>
+
+  <!-- Side Mirror -->
+  <path d="
+    M 195,225
+    C 200,220 210,218 220,220
+    C 230,222 235,228 235,235
+    C 235,242 230,248 220,250
+    C 210,252 200,250 195,245
+    C 190,240 190,235 192,230
+    C 193,227 194,225 195,225
+    Z" 
+    fill="#0f0f0f" stroke="#1a1a1a" stroke-width="1"/>
+
+  <!-- Character Line (Body crease) -->
+  <path d="
+    M 115,285
+    C 150,290 200,295 260,298
+    C 320,301 380,300 440,295
+    C 500,290 550,285 590,280" 
+    stroke="#2a2a2a" stroke-width="2" fill="none" opacity="0.3"/>
+
+  <!-- Lower body line -->
+  <path d="
+    M 120,325
+    C 160,330 210,335 270,337
+    C 330,339 390,338 450,333
+    C 510,328 560,322 595,315" 
+    stroke="#1a1a1a" stroke-width="1.5" fill="none" opacity="0.2"/>
+
+  <!-- Taillight -->
+  <path d="
+    M 595,235
+    C 600,240 602,250 600,265
+    C 598,280 593,290 585,295
+    C 580,298 575,296 572,290
+    C 569,284 568,275 570,265
+    C 572,255 575,247 580,242
+    C 585,237 590,235 595,235
+    Z" 
+    fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+  <ellipse cx="585" cy="265" rx="8" ry="20" fill="#0f0f0f" opacity="0.8"/>
+
+  <!-- Trunk/Decklid line -->
+  <path d="
+    M 570,210
+    C 580,215 590,220 600,230" 
+    stroke="#2a2a2a" stroke-width="1" fill="none" opacity="0.3"/>
+
+  <!-- Hood line -->
+  <path d="
+    M 100,185
+    C 130,190 160,195 190,198" 
+    stroke="#2a2a2a" stroke-width="1" fill="none" opacity="0.2"/>
+
+</svg>

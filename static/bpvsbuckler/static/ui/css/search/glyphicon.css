@@ -1,0 +1,142 @@
+@font-face{
+	font-family:'Glyphicons Halflings';
+	src:url(../fonts/glyphicons-halflings-regular.eot);
+	src:url(../fonts/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'),url(../fonts/glyphicons-halflings-regular.woff) format('woff'),url(../fonts/glyphicons-halflings-regular.ttf) format('truetype'),url(../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular) format('svg')
+}
+.glyphicon{
+	position:relative;
+	top:1px;
+	display:inline-block;
+	font-family:'Glyphicons Halflings';
+	-webkit-font-smoothing:antialiased;
+	font-style:normal;
+	font-weight:400;
+	line-height:1
+}
+#dropdown-glyph{
+	vertical-align:top!important;
+	border-radius:0!important;
+	margin:0 -7.5px 0 -1.9em!important;
+	left:0!important;
+	text-align:center!important;
+	float:left!important;
+	padding:0!important;
+	color:rgba(255,255,255,.5)
+}
+#button-glyph{
+	all:unset!important;
+	vertical-align:top!important;
+	border-radius:0!important;
+	margin:0 0 0 .5rem!important;
+	text-align:center!important;
+	float:left!important;
+	padding:0!important
+}
+.glyphicon-user:before{
+	content:"\e008"
+}
+.glyphicon-zoom-in:before{
+	content:"\e015"
+}
+.glyphicon-home:before{
+	content:"\e021"
+}
+.glyphicon-time:before{
+	content:"\e023"
+}
+.glyphicon-download-alt:before{
+	content:"\e025"
+}
+.glyphicon-download:before{
+	content:"\e026"
+}
+.glyphicon-list-alt:before{
+	content:"\e032"
+}
+.glyphicon-book:before{
+	content:"\e043"
+}
+.glyphicon-font:before{
+	content:"\e047"
+}
+.glyphicon-text-height:before{
+	content:"\e050"
+}
+.glyphicon-text-width:before{
+	content:"\e051"
+}
+.glyphicon-align-left:before{
+	content:"\e052"
+}
+.glyphicon-align-center:before{
+	content:"\e053"
+}
+.glyphicon-align-right:before{
+	content:"\e054"
+}
+.glyphicon-list:before{
+	content:"\e056"
+}
+.glyphicon-edit:before{
+	content:"\e065"
+}
+.glyphicon-play:before{
+	content:"\e072"
+}
+.glyphicon-info-sign:before{
+	content:"\e086"
+}
+.glyphicon-arrow-left:before{
+	content:"\e091"
+}
+.glyphicon-arrow-right:before{
+	content:"\e092"
+}
+.glyphicon-arrow-up:before{
+	content:"\e093"
+}
+.glyphicon-arrow-down:before{
+	content:"\e094"
+}
+.glyphicon-filter:before{
+	content:"\e138"
+}
+.glyphicon-link:before{
+	content:"\e144"
+}
+.glyphicon-expand:before{
+	content:"\e158"
+}
+.glyphicon-collapse-down:before{
+	content:"\e159"
+}
+.glyphicon-collapse-up:before{
+	content:"\e160"
+}
+.glyphicon-new-window:before{
+	content:"\e164"
+}
+.glyphicon-save:before{
+	content:"\e166"
+}
+.glyphicon-open:before{
+	content:"\e167"
+}
+.glyphicon-import:before{
+	content:"\e169"
+}
+.glyphicon-export:before{
+	content:"\e170"
+}
+.glyphicon-header:before{
+	content:"\e180"
+}
+.glyphicon-compressed:before{
+	content:"\e181"
+}
+.glyphicon-stats:before{
+	content:"\e185"
+}
+.glyphicon-registration-mark:before{
+	content:"\e195"
+}

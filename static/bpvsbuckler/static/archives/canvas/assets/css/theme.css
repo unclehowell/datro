@@ -1,0 +1,19 @@
+/* Deployment-safe theme compatibility layer.
+   Keeps published pages stable even when CDN cache serves older HTML shells. */
+
+:root {
+  --fc-bg: #0a0a0f;
+  --fc-text: #d7d7d7;
+  --fc-muted: #8893a3;
+}
+
+html, body {
+  background-color: var(--fc-bg);
+  color: var(--fc-text);
+}
+
+.app-footer,
+.root-footer {
+  color: var(--fc-muted);
+}
+
