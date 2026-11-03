@@ -1,0 +1,5 @@
+:root{--primary:#24452F;--secondary:#C9A227;--paper:#FBF8F1;--ink:#1d1d1b;--rule:#b9b2a0;--body:"Lora";--head:"Merriweather"}
+span.grade{display:inline-block;font-family:"Inter",sans-serif;font-size:.72em;font-weight:700;letter-spacing:.04em;padding:1px 7px;border-radius:9px;margin-right:6px;vertical-align:middle;color:#fff}
+span.g-corroborated{background:#1f6f3a}span.g-documented{background:#2d5d8a}span.g-inference{background:#9a6a00}span.g-legend{background:#6b3f7a}span.g-pending{background:#8a2d2d}
+div.legendbox{background:#f3eee2;border:1px dashed var(--rule);padding:6px 16px;margin:16px 0;border-radius:6px}
+@media print{body{font-size:11pt}.ghf-top{position:static}h1{page-break-before:always}div.record{page-break-inside:avoid}}

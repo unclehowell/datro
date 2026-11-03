@@ -1,0 +1,4 @@
+@font-face{font-family:"Cinzel";src:url("fonts/Cinzel.ttf");font-weight:100 900}
+@font-face{font-family:"Source Serif 4";src:url("fonts/SourceSerif4.ttf");font-weight:100 900;font-style:normal}
+@font-face{font-family:"Source Serif 4";src:url("fonts/SourceSerif4-Italic.ttf");font-style:italic;font-weight:100 900}
+:root{--primary:#0A0A0A;--secondary:#F2C94C;--ink:#161616;--paper:#FCFAF4;--rule:#8a6d12;--head:"Cinzel";--body:"Source Serif 4"}

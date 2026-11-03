@@ -1,0 +1,4 @@
+@font-face{font-family:"Oswald";src:url("fonts/Oswald.ttf");font-weight:100 900}
+@font-face{font-family:"Source Serif 4";src:url("fonts/SourceSerif4.ttf");font-weight:100 900;font-style:normal}
+@font-face{font-family:"Source Serif 4";src:url("fonts/SourceSerif4-Italic.ttf");font-style:italic;font-weight:100 900}
+:root{--primary:#1F3A68;--secondary:#FF9F43;--ink:#141414;--paper:#FBFAF7;--rule:#1F3A68;--head:"Oswald";--body:"Source Serif 4"}
