@@ -1,9 +1,9 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-10-31T22:09:35Z",
- "count": 972,
- "threadCount": 525,
+ "generated": "2026-11-03T12:25:38Z",
+ "count": 980,
+ "threadCount": 528,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
@@ -13,6 +13,150 @@
   "text": "/mail/<id>.txt"
  },
  "records": [
+  {
+   "id": "gm-1a19c598a5a89f6f",
+   "gmailMessageId": "1a19c598a5a89f6f",
+   "threadId": "gt-1a0bbdf18c9ea3b9",
+   "date": "2026-11-02T13:00:33Z",
+   "direction": "received",
+   "from": "HER",
+   "institutions": [
+    {
+     "id": "heneb",
+     "name": "Heneb (formerly GGAT) / Historic Environment Record"
+    }
+   ],
+   "subject": "RE: Great House Farm, Llandough, Cardiff",
+   "threadSlug": "great-house-farm-llandough-cardiff",
+   "refs": [
+    "GHF/HENEB/2026-09-20"
+   ],
+   "textUrl": "/mail/gm-1a19c598a5a89f6f.txt",
+   "jsonUrl": "/api/message/gm-1a19c598a5a89f6f.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a19c584b199f286",
+   "gmailMessageId": "1a19c584b199f286",
+   "threadId": "gt-1a18893b1774cbb8",
+   "date": "2026-11-02T12:59:41Z",
+   "direction": "received",
+   "from": "HER",
+   "institutions": [
+    {
+     "id": "heneb",
+     "name": "Heneb (formerly GGAT) / Historic Environment Record"
+    }
+   ],
+   "subject": "RE: Nomenclature supplement — Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth",
+   "threadSlug": "nomenclature-supplement-great-house-farm-ty-mawr-llandough-juxta-penarth",
+   "refs": [],
+   "textUrl": "/mail/gm-1a19c584b199f286.txt",
+   "jsonUrl": "/api/message/gm-1a19c584b199f286.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a19c57caf4e7c8d",
+   "gmailMessageId": "1a19c57caf4e7c8d",
+   "threadId": "gt-1a0d3d85a7ef4715",
+   "date": "2026-11-02T12:59:01Z",
+   "direction": "received",
+   "from": "HER",
+   "institutions": [
+    {
+     "id": "heneb",
+     "name": "Heneb (formerly GGAT) / Historic Environment Record"
+    }
+   ],
+   "subject": "RE: FOI \"Llandough Roman villa & medieval house finds were destroyed in a 1983 fire\"",
+   "threadSlug": "foi-llandough-roman-villa-medieval-house-finds-were-destroyed-in-a-1983-fire",
+   "refs": [],
+   "textUrl": "/mail/gm-1a19c57caf4e7c8d.txt",
+   "jsonUrl": "/api/message/gm-1a19c57caf4e7c8d.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a19c1ecbe25aa49",
+   "gmailMessageId": "1a19c1ecbe25aa49",
+   "threadId": "gt-1a193a19718e90e2",
+   "date": "2026-11-02T11:57:00Z",
+   "direction": "received",
+   "from": "Patrick Murphy",
+   "institutions": [],
+   "subject": "RE: Great House Farm / Tŷ Mawr, Llandough – follow-up to my preservation notice of 28 September 2026",
+   "threadSlug": "great-house-farm-ty-mawr-llandough-follow-up-to-my-preservation-notice-of-28-sep",
+   "refs": [],
+   "textUrl": "/mail/gm-1a19c1ecbe25aa49.txt",
+   "jsonUrl": "/api/message/gm-1a19c1ecbe25aa49.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a19c0c9dffbd278",
+   "gmailMessageId": "1a19c0c9dffbd278",
+   "threadId": "gt-19f1c45aa603989e",
+   "date": "2026-11-02T11:37:00Z",
+   "direction": "received",
+   "from": "Information",
+   "institutions": [],
+   "subject": "RE: [EXTERNAL]Great House Farm, Llandough | Cardiff Castle Furniture",
+   "threadSlug": "great-house-farm-llandough-cardiff-castle-furniture",
+   "refs": [],
+   "textUrl": "/mail/gm-1a19c0c9dffbd278.txt",
+   "jsonUrl": "/api/message/gm-1a19c0c9dffbd278.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a19bb79394f286a",
+   "gmailMessageId": "1a19bb79394f286a",
+   "threadId": "gt-1a19a74a82dbd593",
+   "date": "2026-11-02T10:04:17Z",
+   "direction": "received",
+   "from": "Ross Anthony",
+   "institutions": [],
+   "subject": "RE: Casework archive enquiry - Tŷ Mawr (Great House Farm), Llandough-juxta-Penarth, Vale of Glamorgan (1988)",
+   "threadSlug": "casework-archive-enquiry-ty-mawr-great-house-farm-llandough-juxta-penarth-vale-o",
+   "refs": [],
+   "textUrl": "/mail/gm-1a19bb79394f286a.txt",
+   "jsonUrl": "/api/message/gm-1a19bb79394f286a.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a19b91e3f5e2725",
+   "gmailMessageId": "1a19b91e3f5e2725",
+   "threadId": "gt-1a0e4fb51bacf452",
+   "date": "2026-11-02T09:22:34Z",
+   "direction": "received",
+   "from": "NIO FOI",
+   "institutions": [
+    {
+     "id": "nio",
+     "name": "Northern Ireland Office"
+    }
+   ],
+   "subject": "Re: Request for Internal Review — 26FOI 103 — response dated 22 September 2026",
+   "threadSlug": "request-for-internal-review-26foi-103-response-dated-22-september-2026",
+   "refs": [
+    "26FOI 103"
+   ],
+   "textUrl": "/mail/gm-1a19b91e3f5e2725.txt",
+   "jsonUrl": "/api/message/gm-1a19b91e3f5e2725.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a19b45f134617e7",
+   "gmailMessageId": "1a19b45f134617e7",
+   "threadId": "gt-1a19b45f134617e7",
+   "date": "2026-11-02T08:00:11Z",
+   "direction": "received",
+   "from": "Information Request",
+   "institutions": [],
+   "subject": "Automatic reply: Freedom of Information request - 1988–89 demolition notifications, Great House Farm, Llandough (Vale of Glamorgan)",
+   "threadSlug": "automatic-reply-freedom-of-information-request-198889-demolition-notifications-g",
+   "refs": [],
+   "textUrl": "/mail/gm-1a19b45f134617e7.txt",
+   "jsonUrl": "/api/message/gm-1a19b45f134617e7.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
   {
    "id": "gm-1a193a2fda9e2c5c",
    "gmailMessageId": "1a193a2fda9e2c5c",
