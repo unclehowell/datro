@@ -1,0 +1,273 @@
+/*this is the abtesting for new footer, if it wins, it will move into flux*/
+@import (reference) "theme/variables.less";
+@import (reference) "libs/mixins.less";
+
+.FooterNew {
+    @this: FooterNew;
+    @footerSectionBorder: @quaternary-color-light;
+
+    .type(ui);
+    color: @text-color-light;
+    position: relative;
+
+    &-logo {
+        display: inline-block;
+
+        @media (min-width: @breakpoint-tablet) {
+            margin-bottom: @spacing-small;
+        }
+
+        &-img {
+            width: 40px;
+        }
+    }
+
+    &-info-section {
+        border-bottom: 1px solid @footerSectionBorder;
+        display: flex;
+        margin-left: -(@spacing-xsmall + @spacing-xxsmall);
+        margin-right: -(@spacing-xsmall + @spacing-xxsmall);
+        padding: @spacing-small (@spacing-xsmall + @spacing-xxsmall);
+
+        @media (min-width: @breakpoint-tablet) {
+            border: none;
+            padding-top: 0;
+        }
+
+        &:first-child {
+            padding-top: 0;
+        }
+    }
+
+    &-subTitle {
+        .type(detail);
+        align-items: center;
+        color: inherit;
+        display: flex;
+        font-weight: bold;
+        line-height: 1; /*to center the icon with copy*/
+
+        &-icon {
+            margin-right: @spacing-xsmall;
+        }
+    }
+
+    &-links {
+        .list-unstyled();
+        margin-bottom: @spacing-small;
+
+        @media (min-width: @breakpoint-desktop-small) {
+            margin-bottom: 0;
+        }
+    }
+
+    &-link {
+        .type(detail);
+        color: @footer-text-color;
+        display: inline-block;
+        margin-bottom: @spacing-xxsmall;
+        transition: color 0.3s ease-out;
+
+        &:hover {
+            color: @text-color-light;
+        }
+
+        &-icon {
+            &--active {
+                display: none;
+            }
+
+            &--disable {
+                display: block;
+            }
+
+            @media (min-width: @breakpoint-tablet) {
+                display: none;
+            }
+        }
+
+        &-content {
+            max-height: 0;
+            overflow: hidden;
+            padding-top: 0;
+            transition: max-height 0.5s ease-in-out;
+
+            @media (min-width: @breakpoint-tablet) {
+                max-height: 1000px;
+            }
+        }
+
+        &-title {
+            .type(detail);
+            align-items: center;
+            cursor: pointer;
+            display: flex;
+            font-weight: bold;
+            justify-content: space-between;
+            margin-bottom: @spacing-xsmall + @spacing-xxsmall;
+
+            @media (min-width: @breakpoint-tablet) {
+                cursor: initial;
+            }
+
+            &--hideMobile {
+                display: none;
+
+                @media (min-width: @breakpoint-tablet) {
+                    display: block;
+                }
+            }
+        }
+
+        &-section {
+            padding-top: @spacing-small;
+
+            @media (min-width: @breakpoint-tablet) {
+                padding-top: 0;
+            }
+
+            &:not(:last-child) {
+                border-bottom: 1px solid @footerSectionBorder;
+                padding-left: @spacing-large;
+
+                @media (min-width: @breakpoint-tablet) {
+                    border-bottom: none;
+                    padding-left: @spacing-xsmall + @spacing-xxsmall;
+                    padding-top: 0;
+                }
+            }
+
+            &.is-active {
+                .@{this}-link-content {
+                    max-height: 500px;
+                }
+
+                .@{this}-link-icon--disable {
+                    display: none;
+                }
+
+                .@{this}-link-icon--active {
+                    display: block;
+
+                    @media (min-width: @breakpoint-tablet) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    &-cta {
+        /*
+            Set background color to match design
+        */
+        background-color: @septenary-color-xxxlight;
+        border-top: 1px solid @border-color-light;
+        padding: @spacing-xlarge 0;
+    }
+
+    &-content {
+        background: @footer-bg-color;
+
+        &-inner {
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: @spacing-xxxlarge 0;
+        }
+    }
+
+    &-section {
+        padding-bottom: @spacing-mid;
+
+        &:last-child {
+            padding-bottom: 0;
+            padding-top: @spacing-mid;
+        }
+
+        &:not(:last-child) {
+            border-bottom: 1px solid @quaternary-color-dark;
+        }
+    }
+
+    &-appStoreIcons {
+        /* Because the app store icons keep having an explicit line height,
+           just convert the whole container to flexbox model instead. */
+        display: flex;
+        margin-bottom: @spacing-large;
+        margin-top: @spacing-small;
+        max-width: 480px;
+
+        @media (min-width: @breakpoint-tablet) {
+            flex-direction: column;
+            max-width: 136px;
+        }
+    }
+
+    &-appStoreIcon {
+        &:not(:last-child) {
+            margin-right: @spacing-small;
+
+            @media (min-width: @breakpoint-tablet) {
+                margin-bottom: @spacing-small;
+                margin-right: 0;
+            }
+        }
+
+        &-image {
+            display: block;
+            height: 68px;
+            width: 100%;
+
+            @media (min-width: @breakpoint-tablet) {
+                height: initial;
+            }
+
+        }
+    }
+
+    &-social {
+        display: flex;
+        justify-content: space-between;
+        max-width: 480px;
+
+        @media (min-width: @breakpoint-tablet) {
+            max-width: 160px;
+        }
+
+        &-icon {
+            fill: @septenary-color-xxxlight;
+        }
+    }
+
+    &-siteStat {
+        display: none;
+        font-weight: normal;
+
+        @media (min-width: @breakpoint-tablet) {
+            align-items: center;
+            display: flex;
+            margin-bottom: @spacing-small;
+        }
+
+        @media (min-width: @breakpoint-desktop-small) {
+            margin-bottom: 0;
+        }
+
+        &-term {
+            .type(tiny);
+            margin-bottom: @spacing-xxsmall;
+        }
+
+        &-value {
+            .type(ui);
+            font-weight: bold;
+            margin-bottom: 0;
+            margin-right: @spacing-xsmall;
+        }
+
+        &-name {
+            letter-spacing: 0;
+            text-transform: initial;
+        }
+    }
+}

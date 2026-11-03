@@ -1,0 +1,94 @@
+/* Timeline Entry Styles */
+body {
+    font-family: 'Courier Prime', monospace;
+    background-color: #0f172a;
+    color: #e2e8f0;
+    margin: 0;
+    padding: 0;
+}
+
+.entry-header {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.entry-header h1 {
+    font-size: 2rem;
+    color: #fafaf7;
+    margin-bottom: 0.5rem;
+}
+
+.entry-header p {
+    font-size: 1.1rem;
+    color: #d4d0c8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.entry-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.entry-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+    margin-bottom: 1rem;
+}
+
+.century-selector {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.century-selector label {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+}
+
+.controls-group {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.controls-group button {
+    background: #1e293b;
+    color: #e2e8f0;
+    border: 1px solid #334155;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-family: 'Courier Prime', monospace;
+}
+
+.controls-group button:hover {
+    background: #334155;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.navigation a {
+    color: #94a3b8;
+    text-decoration: none;
+}
+
+.navigation a:hover {
+    color: #fafaf7;
+}
+
+.case-title {
+    color: #fafaf7;
+}
+
+.case-subtitle {
+    color: #d4d0c8;
+}

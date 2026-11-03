@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenClaw Remote Support Workflow</title>
+  <style>
+    :root {
+      --bg: #0b1115;
+      --bg-soft: #111a20;
+      --card: #16232c;
+      --line: #2b4554;
+      --text: #e7f5ff;
+      --muted: #9bb6c7;
+      --accent: #2ce38a;
+      --accent-2: #4cb8ff;
+      --warn: #ffc247;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "DM Sans", "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% -5%, #1a3442 0%, transparent 55%),
+        radial-gradient(900px 500px at 95% 5%, #1f2b34 0%, transparent 55%),
+        var(--bg);
+      line-height: 1.55;
+    }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(44, 227, 138, 0.08), rgba(76, 184, 255, 0.08));
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    h1 {
+      margin: 0 0 0.6rem;
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      letter-spacing: 0.02em;
+    }
+
+    h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.2rem;
+      color: #d4efff;
+    }
+
+    p { margin: 0.4rem 0 0; color: var(--muted); }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      margin: 1rem 0 1.5rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1rem;
+    }
+
+    .card strong {
+      display: inline-block;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .flow {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .flow li {
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+    }
+
+    .step {
+      color: var(--accent);
+      font-weight: 700;
+      margin-right: 0.45rem;
+    }
+
+    .pill {
+      display: inline-block;
+      font-size: 0.78rem;
+      line-height: 1;
+      padding: 0.35rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: #d8ebf7;
+      background: #1a2a35;
+      margin-right: 0.4rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .note {
+      margin-top: 1rem;
+      border-left: 4px solid var(--warn);
+      background: rgba(255, 194, 71, 0.08);
+      border-radius: 10px;
+      padding: 0.8rem 1rem;
+      color: #ffe4ad;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1>OpenClaw Remote Support</h1>
+      <p>
+        This support model is live, hands-on, and visible to the customer in real time.
+        A command entered in the support UI is executed by the remote OpenClaw agent on AWS,
+        while the customer watches the shared desktop session in Guacamole.
+      </p>
+    </section>
+
+    <section class="grid" aria-label="Core concepts">
+      <article class="card">
+        <strong>1) Command In</strong>
+        <p>User enters a request in the text input and submits it from the support panel.</p>
+      </article>
+      <article class="card">
+        <strong>2) Remote Execution</strong>
+        <p>The command is forwarded to the OpenClaw runtime on the remote AWS host.</p>
+      </article>
+      <article class="card">
+        <strong>3) Live Visibility</strong>
+        <p>The same workflow is visible in the embedded Guacamole desktop stream.</p>
+      </article>
+      <article class="card">
+        <strong>4) GitHub Delivery</strong>
+        <p>Website fixes are packaged as a pull request and submitted for branch manager approval.</p>
+      </article>
+    </section>
+
+    <section class="card" aria-label="End-to-end workflow">
+      <h2>End-to-End Workflow</h2>
+      <div>
+        <span class="pill">Customer Command</span>
+        <span class="pill">OpenClaw Agent</span>
+        <span class="pill">Guacamole Session</span>
+        <span class="pill">GitHub PR</span>
+        <span class="pill">Branch Approval</span>
+      </div>
+      <ol class="flow">
+        <li><span class="step">Step 1:</span>User submits a support command from the web UI.</li>
+        <li><span class="step">Step 2:</span>The command is sent to the support gateway and relayed to the OpenClaw host.</li>
+        <li><span class="step">Step 3:</span>OpenClaw executes the requested actions directly on the remote environment.</li>
+        <li><span class="step">Step 4:</span>The user watches the live desktop stream through Guacamole while execution happens.</li>
+        <li><span class="step">Step 5:</span>If code or site changes are required, OpenClaw prepares and pushes a GitHub pull request.</li>
+        <li><span class="step">Step 6:</span>When the main branch manager approves and merges the PR, the fix becomes effective immediately.</li>
+      </ol>
+    </section>
+
+    <section class="note" aria-label="What makes this different">
+      <strong>How this differs from traditional support:</strong>
+      You are not waiting for ticket handoffs or delayed screen recordings. The same command,
+      execution, and fix path is visible end-to-end, and production-ready changes are delivered
+      through a controlled pull request workflow.
+    </section>
+  </main>
+</body>
+</html>
