@@ -1,0 +1,7 @@
+[TEMPLATE_CONFIGURATION]
+name = Buckler family docs (A4 article)
+template = article
+stylesheet = pdf.rts
+
+[VARIABLES]
+paper_size = A4

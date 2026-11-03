@@ -1,0 +1,71 @@
+Record
+======
+
+.. list-table::
+
+   * - Title
+     - Persimmon: correspondence with the family (email)
+   * - Evidence label
+     - CORRESPONDENCE (email thread)
+   * - Institution
+     - Persimmon
+   * - Date range
+     - 27 Sep 2026 – 27 Sep 2026
+   * - Messages published
+     - 3: 1 from Sion Buckler (trimmed to the farm case), 2 from the institution side (2 automatic replies listed by header only)
+   * - Not published
+     - 1 unsent draft
+   * - Status
+     - HELD: Sion Buckler’s Gmail, read-only export, 18 Oct 2026
+   * - Provenance
+     - Message text verbatim. Email addresses, phone numbers, postal addresses and signature blocks removed; earlier quoted replies trimmed. Message numbers follow the full export, so gaps are messages not published. Selection: the institution’s email domains plus case terms; check for misses. Sion’s own messages trimmed to the farm case on 18 Oct 2026: personal passages omitted at the family’s request and marked “[personal passage omitted — not about the farm case]”; institutions’ words unchanged.
+   * - Related
+     - —
+
+`About this page type → Read the Docs <https://research.bucklerfamily.estate/read-the-docs/#ev-pages>`__
+
+**Proves:** What was sent and received, by whom and on what dates, as held in Sion’s mailbox.
+
+**Does not prove:** That any statement inside an email is true; that the mailbox holds every message (letters, calls and other addresses are outside it); any motive.
+
+1. Description
+--------------
+
+- 3 messages published, 27 Sep 2026 to 27 Sep 2026: 1 from Sion Buckler, 2 from Persimmon (2 automatic).
+- Reply times below are mechanical: the gap from each email Sion sent to the next non-automatic message from the institution. A reply may answer a different email. Read with section 2.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Sion’s message
+     - Next non-automatic message from Persimmon
+     - Days
+   * - `M01 <#m01>`__ 27 Sep 2026
+     - none by 18 Oct 2026
+     - 21+
+
+.. _evidence:
+
+2. Evidence: the emails
+-----------------------
+
+**M01 · 27 Sep 2026 17:39 UTC · Sion Buckler · Preservation and disclosure request — Church View Close / Great House Farm, Llandough — titles WA231076 / WA240304**
+
+Sirs/Madam, I write concerning the land now comprising Church View Close, Llandough, formerly Great House Farm / Tŷ Mawr, including title WA231076 and former title WA240304. Persimmon Homes (Wales) Ltd is the current registered proprietor of WA231076. Persimmon is therefore a present link in the conveyancing chain arising from the registration of this land in BP Properties Ltd’s name in 1982–83, BP’s subsequent transfer to Ideal Homes in 1993, and the later development history. I am conducting a documented investigation into the legitimacy of that title chain. This is not a speculative historical enquiry. The issues arise from identified Land Registry, conveyancing, court, planning and public-authority records, and from specific documentary gaps which remain unresolved. The central issue is the historic identity and ownership of the land. The evidence presently assembled indicates two historically distinct parcels: • Parcel A: the farmhouse, garden, buildings, yard and associated woodland, which, in Mary Williams’s c.1974 statement, was acquired [wording updated at the author’s request, 19 Oct 2026] out of the Bute estate through the Daniel Thomas transaction and subsequently became the family’s freehold interest; and • Parcel B: the eastern agricultural fields, whose subsequent passage from Bute to Western Ground Rents and then to BP is not presently disputed by the family. The significance of that distinction is that later documents repeatedly use the expression “whole farm”, although the surviving 1939 tenancy plan is understood to show the eastern fields only. The 1938 Bute-to-Western Ground Rents conveyance is therefore a material title-chain question: what estate was actually capable of being conveyed by Bute in 1938, and did that conveyance include Parcel A? There is further evidence requiring examination of the period from 1949 to 1974, including repeated attempts to characterise Mary’s occupation of the farmhouse parcel as tenancy or permission; the loss of the family’s title papers in about 1950–52; the 1955 possession order expressed in “whole farm” terms but enforced everywhere except the farmhouse and garden; the separate 1962 possession proceedings concerning the farmhouse and garden; Mary’s express assertion of ownership; and the 1974 proceedings, which were adjourned part-heard and were never finally adjudicated on the family’s historic ownership claim. The Court of Appeal’s decision in BP Properties Ltd v Buckler [1987] EWCA Civ 2 subsequently concerned possession, limitation and the legal effect of the October 1974 letters. The judgment records Mary’s asserted ownership and the absence of the documents she said supported it. The present investigation therefore distinguishes carefully between what that judgment decided concerning possession and limitation and the separate question of whether the documentary root and extent of WGR/BP’s title to Parcel A were ever actually established. That distinction becomes particularly important in relation to first registration. HM Land Registry records show BP’s first-registration applications for WA231076 and WA240304 in 1982–83. The surviving registration material also identifies a 31 December 1969 conveyance from Western Ground Rents to BP Pension Trust as a root of title, but that conveyance is not presently included in the 30 July 2026 schedule of documents surviving on the relevant first-registration files. The 1975 conveyance and plan, the 1982–83 registration material, the extent of the two titles and their later amalgamation therefore require direct reconciliation against the underlying documentary title. There is also an unresolved procedural issue concerning notice and opportunity to object during the 1982–83 first-registration process. Mary Williams remained in occupation of the farmhouse. The family evidence recorded on the evidence index is that notification was not received until after her death on 26 March 1983. I am obtaining the primary notice, service, application and registration records to establish exactly what occurred. The matters under investigation consequently include possible registration mistake, procedural unfairness, material non-disclosure and, depending upon what the primary records establish, possible fraud or deliberate concealment. There are also unresolved public-authority record questions involving HM Land Registry, court administration and other authorities. These are identified as evidential questions, not asserted as established findings against Persimmon or any individual. Persimmon’s position is therefore directly relevant because its present registered title derives from the historic chain now being examined. Please provide a substantive response to the following: 1. \*Title chain:\* What documentary chain does Persimmon say establishes its predecessor’s title to the whole of WA231076, including the farmhouse, garden and associated land now comprising Church View Close? 2. \*BP / Ideal Homes due diligence:\* What title, acquisition and due-diligence documents were supplied to and reviewed by Persimmon in connection with the acquisition from Ideal Homes, including deeds, plans, title abstracts, searches, requisitions, Land Registry correspondence and enquiries concerning the extent of WA231076/WA240304? 3. \*Earlier title documents:\* Does Persimmon hold, or has it ever held, copies of the 1969 WGR-to-BP Pension Trust conveyance, the 1975 BP Pension Trust-to-BP Properties conveyance and plan, the 1982–83 first-registration application/bundle, or documents explaining the inclusion of the farmhouse parcel within the registered extent? 4. \*1996 correspondence:\* Does Persimmon retain the correspondence from March 1996 with HM Land Registry concerning WA231076, identified in the surviving title chronology as the last dealing on the file? If so, please provide a copy, subject to any properly applicable exemption or privilege. 5. \*Parcel A:\* Has Persimmon ever reviewed the underlying documentary title sufficiently to satisfy itself that the farmhouse/garden parcel was actually comprised in the title acquired by BP, rather than being brought within the registered extent through the later “whole farm” description? 6. \*Present position:\* Having regard to the matters above, does Persimmon maintain that its title to the farmhouse/garden parcel is supported by an identifiable documentary root independent of the possession and limitation history considered in BP Properties Ltd v Buckler? If Persimmon maintains that the documentary title to Parcel A is established, please identify the instrument or instruments on which that position depends and the land those instruments actually comprise. I am seeking voluntary or pre-action disclosure of non-privileged material where possible. If any requested document is withheld, please identify the document or category concerned and the basis upon which it is withheld. \*Preservation notice\* Please treat this correspondence as formal notice to preserve all documents and electronically stored information within Persimmon’s possession, custody or control that may be relevant to the title, acquisition, registration, extent, occupation, planning or development of this land. This includes historical material inherited from BP Properties, Ideal Homes or any other predecessor, together with deeds, conveyances, plans, title abstracts, searches, due-diligence files, acquisition memoranda, legal/property correspondence, Land Registry correspondence, planning records and communications with public authorities. Please ensure that no routine retention, deletion, destruction, disposal or overwriting process removes potentially relevant material. This preservation request includes electronic files, archived mailboxes and other electronically stored information where applicable. The public evidence index and supporting record are maintained at:
+
+   `Great House Farm (Tŷ Mawr): The Williams–Buckler Dispute <https://research.bucklerfamily.estate/>`__
+
+`“Great House Farm (Tŷ Mawr): The Williams–Buckler Dispute” — Great House Farm Wiki <https://research.bucklerfamily.estate/embed/#?secret=u9Vq1JkotM#?secret=Lml8UE6y3E>`__
+
+Nothing in this correspondence abandons, limits or prejudices any claim concerning title, registration, fraud, deliberate concealment, procedural unfairness, public-authority involvement, limitation, reopening of historic proceedings, rectification/alteration of the register, compensation or reparations. All rights and remedies are expressly reserved. This correspondence is not a claim form and does not constitute service of proceedings. Please acknowledge receipt and refer this correspondence to Persimmon’s legal/property team. I request a substantive response addressing the questions above. Yours faithfully, Sion Buckler [personal passage omitted — not about the farm case]
+
+**M02 · 27 Sep 2026 17:40 UTC · Legal Enquiries · Automatic reply: Preservation and disclosure request — Church View Close / Great House Farm, Llandough — titles WA231076 / WA240304 (automatic reply; text not reproduced)**
+
+**M03 · 27 Sep 2026 17:41 UTC · EWAL Customer Care · Automatic reply: Preservation and disclosure request — Church View Close / Great House Farm, Llandough — titles WA231076 / WA240304 (automatic reply; text not reproduced)**
+
+.. _interpretation:
+
+3. Interpretation (Sion Buckler’s reading)
+------------------------------------------
+
+*Not yet given by the family. When added, each point will cite the message it relies on (section 2) and note anything the emails do not bear out.*

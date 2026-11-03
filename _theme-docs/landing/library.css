@@ -1,0 +1,48 @@
+/* docs.bucklerfamily.estate menus, in the layout of the owner's library explorer (library.bucklerfamily.estate): full-width translucent
+   bands, rounded buttons; green = HTML, red = PDF. Colours follow the family day/night mode like every bucklerfamily.estate site:
+   night = black ground, light text; day = white ground, dark text (<html data-ghf-native="auto">: drawn in both, never inverted).
+   The docs. accent pair (--ghf-accent, from ghf-boot.js; palette v3) is a hint on the band edges and the focus ring. — Sion's Tab agent */
+html{--lib-bg:#000;--lib-fg:rgba(255,255,255,.62);--lib-dim:rgba(255,255,255,.52);--lib-strong:rgba(255,255,255,.9);--lib-band:rgba(255,255,255,.06);
+  --lib-line:rgba(255,255,255,.16);--lib-btn:rgba(255,255,255,.05);--lib-btn-h:rgba(255,255,255,.12);--lib-edge-a:rgba(255,255,255,.3);--lib-edge-b:rgba(0,0,0,.5);
+  --lib-html:rgba(40,190,80,.85);--lib-pdf:rgba(255,90,80,.75);--lib-title:#b4bfd0;--lib-acc:var(--ghf-accent,#FFB27A);
+  background:var(--lib-bg);color:var(--lib-fg);overflow-x:hidden;color-scheme:dark}
+html[data-ghf-mode=day]{--lib-bg:#fff;--lib-fg:rgba(0,0,0,.72);--lib-dim:rgba(0,0,0,.55);--lib-strong:#000;--lib-band:rgba(0,0,0,.035);
+  --lib-line:rgba(0,0,0,.14);--lib-btn:rgba(0,0,0,.025);--lib-btn-h:rgba(0,0,0,.07);--lib-edge-a:rgba(0,0,0,.12);--lib-edge-b:rgba(0,0,0,.28);
+  --lib-html:#1e7b34;--lib-pdf:#c0392b;--lib-title:#1C2E5C;--lib-acc:var(--ghf-accent,#1C2E5C);color-scheme:light}
+@media (prefers-color-scheme:light){html:not([data-ghf-mode]){--lib-bg:#fff;--lib-fg:rgba(0,0,0,.72);--lib-dim:rgba(0,0,0,.55);--lib-strong:#000;
+  --lib-band:rgba(0,0,0,.035);--lib-line:rgba(0,0,0,.14);--lib-btn:rgba(0,0,0,.025);--lib-btn-h:rgba(0,0,0,.07);--lib-edge-a:rgba(0,0,0,.12);
+  --lib-edge-b:rgba(0,0,0,.28);--lib-html:#1e7b34;--lib-pdf:#c0392b;--lib-title:#1C2E5C;--lib-acc:#1C2E5C;color-scheme:light}}
+body{margin:0;background:var(--lib-bg);font-family:sans-serif;-webkit-text-size-adjust:100%}
+/* 27 Oct 2026: the Legal Wiki video (16:9, full width, muted autoplay) and its sound button; the page no longer reserves 70vh, so short
+   menu pages end at their content instead of a blank screen. - Sion's Tab agent */
+.band.vid{padding:0 0 .6rem}.vid-w{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden}.vid-w iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.vid-snd{display:block;margin:.5rem auto 0;font:inherit;font-size:14px;min-height:40px;padding:8px 16px;border-radius:20px;border:1px solid var(--lib-line);background:var(--lib-btn);color:var(--lib-strong);cursor:pointer}.vid-ctl{display:flex;justify-content:center;gap:.5rem;margin-top:.5rem}.vid-ctl .vid-snd{margin:0}
+.lib{max-width:100%;padding:.2rem 0 1.5rem;position:relative;background:var(--lib-bg);min-height:0;color:var(--lib-fg);font-family:sans-serif}
+.lib h1,.lib h2,.lib .title-line,.lib .doc-title{text-transform:none!important}
+.lib a{text-decoration:none}
+.lib :focus-visible{outline:2px solid var(--lib-acc);outline-offset:2px}
+.up{position:sticky;top:.6rem;z-index:2;display:inline-block;margin:.6rem 0 0 calc(.5vw + .5rem);padding:0 .45rem;line-height:30px;
+  font:bold 1.1rem/30px monospace;color:var(--lib-fg);background:var(--lib-bg);border-radius:10px;opacity:.9;
+  border-top:2px solid var(--lib-edge-a);border-left:2px solid var(--lib-edge-a);border-right:2px solid var(--lib-edge-b);border-bottom:2px solid var(--lib-edge-b)}
+.band{margin:1.4rem 0 .4rem}
+.title-line{margin:0 0 .6rem;padding:.55rem 1rem;font:normal clamp(18px,4.6vw,26px)/1.4 sans-serif;letter-spacing:.25rem;word-spacing:-.1em;
+  color:var(--lib-dim);background:var(--lib-band);border-top:1px solid var(--lib-line);border-bottom:1px solid var(--lib-line);
+  box-shadow:inset 3px 0 0 var(--lib-acc),3px 10px 34px -3px rgb(0 0 0/12%);display:flex;align-items:center;gap:.8rem}
+.btns{display:flex;flex-wrap:wrap;gap:.5rem .5rem;padding:0 .5rem 0 1rem}
+.btn{display:inline-flex;align-items:center;min-height:28px;padding:calc(4px + .1em) .75em;font-size:clamp(17px,4.2vw,26px);line-height:1.25em;
+  white-space:nowrap;word-spacing:.15em;color:var(--lib-fg);background:var(--lib-btn);border:1px solid var(--lib-line);border-radius:10px}
+.btn:hover,.btn:focus{color:var(--lib-strong);background:var(--lib-btn-h)}
+.btn.html{border:2px solid var(--lib-html)}
+.btn.pdf{border:2px solid var(--lib-pdf)}
+.code{display:inline-block;min-width:2.1em;padding:.05em .3em;font:bold .62em/1.5 monospace;letter-spacing:.05em;text-align:center;
+  color:var(--lib-fg);border:1px solid var(--lib-line);border-radius:.25em}
+.doc-title{margin:1rem 1rem .3rem;font:bolder clamp(20px,6vw,33px)/1.1 sans-serif;color:var(--lib-title);text-align:center}
+.about{margin:0 1rem;text-align:center;font-size:.95rem}
+.about summary{cursor:pointer;list-style:none;color:var(--lib-dim);letter-spacing:.05em;padding:.3rem 0}
+.about summary::-webkit-details-marker{display:none}
+.about .key{margin-right:.8rem;font-size:.8em;letter-spacing:.1em}
+.about .g{color:var(--lib-html)}.about .r{color:var(--lib-pdf)}
+.about p{max-width:40rem;margin:.4rem auto;color:var(--lib-fg);line-height:1.45}
+@media (min-width:900px){.btns{padding-left:2rem}.title-line{padding-left:2rem}}
+/* long document titles (e.g. evidence records) wrap inside the screen and use a smaller size; short buttons are unchanged */
+.btn{max-width:calc(100% - 1.5rem);box-sizing:border-box;white-space:normal;overflow-wrap:anywhere}
+.btn.long{white-space:normal;overflow-wrap:anywhere;font-size:clamp(15px,3.6vw,19px);line-height:1.3em}

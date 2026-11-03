@@ -1,0 +1,608 @@
+Record
+======
+
+**This material now lives at** https://fcg.bucklerfamily.estate/case/evidence-chain\ **.**
+
+**Page ID:** 1089 · **Title:** Evidence Chain — Creation, Custody, Transfer & Loss · **Evidence status:** Not yet labelled — see the Editing Protocol · **Version:** 0.1.1 · `Editing Protocol <https://research.bucklerfamily.estate/editing-protocol/>`__
+
+.. list-table::
+   :header-rows: 1
+
+   * - Evidence stream
+     - 1877
+     - 1890
+     - 1900
+     - 1920
+     - 1940
+     - 1950
+     - 1960
+     - 1970
+     - 1980
+     - 1987
+     - 1990
+     - 2000
+     - 2005
+     - 2010
+     - 2020
+     - 2026
+     - 2030
+     - 
+   * - `Parcel A <https://research.bucklerfamily.estate/parcel-a-nomenclature/#parcel-a>`__ — house / garden / yard / woodland
+     - `1877 — Parcel A emerges <https://research.bucklerfamily.estate/the-two-parcels/#parcel-a>`__
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `2 Feb 1987 — separate Parcel A layer ends at amalgamation <https://research.bucklerfamily.estate/1987-hmlr-amalgamation-during-appeal/>`__
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - `Parcel B <https://research.bucklerfamily.estate/parcel-b-nomenclature/#parcel-b>`__ — eastern agricultural land
+     - `1877 — Parcel B identified <https://research.bucklerfamily.estate/the-two-parcels/#parcel-b>`__
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `1987 — merged title event <https://research.bucklerfamily.estate/1987-hmlr-amalgamation-during-appeal/>`__
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - 1877 Bute–Thomas agreement / conveyance
+     - `1877 — evidence created <https://research.bucklerfamily.estate/1877-agreement/#sale-1877>`__
+     - 
+     - 
+     - 
+     - 
+     - `1950–52 — family copy reported taken / custody gap <https://research.bucklerfamily.estate/missing-records-register/>`__ :sup:`🕒`
+     - 
+     - 
+     - `1984 — library copy reported missing <https://research.bucklerfamily.estate/1877-agreement/#sale-1877>`__ :sup:`🕒`
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - 1916 tenancy / plan
+     - 
+     - 
+     - 
+     - `1916 — tenancy evidence emerges <https://research.bucklerfamily.estate/1916-tenancy/>`__
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `2026 — complete plan still sought <https://research.bucklerfamily.estate/missing-records-register/>`__ :sup:`🕒`
+     - 
+     - 
+   * - 1924 agreement on WA231076 file
+     - 
+     - 
+     - 
+     - `15 May 1924 — record appears in title file <https://research.bucklerfamily.estate/land-registry-titles/#deeds-before-registration>`__
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `2026 — contents/effect remain a gap <https://research.bucklerfamily.estate/missing-records-register/>`__ :sup:`🕒`
+     - 
+     - 
+   * - 1928 quarrying / final receipt evidence
+     - 
+     - 
+     - 
+     - 
+     - `1928 — quarrying ends <https://research.bucklerfamily.estate/1877-agreement/#takes-effect>`__
+     - `Receipt remains missing <https://research.bucklerfamily.estate/missing-records-register/>`__ :sup:`🕒`
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - 1938–39 WGR conveyance / revised tenancy plan
+     - 
+     - 
+     - 
+     - 
+     - `1938 — WGR conveyance evidence emerges <https://research.bucklerfamily.estate/1939-revised-tenancy/#y1938>`__
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `2026 — complete conveyance / plan extent remains a gap <https://research.bucklerfamily.estate/missing-records-register/>`__ :sup:`🕒`
+     - 
+     - 
+   * - 1949 unwritten yearly tenancy
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `2 Feb 1949 — tenancy evidence emerges <https://research.bucklerfamily.estate/frederick-buckler/#tenancy-1949>`__
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - 1950–52 family papers / custody break
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `1950–52 — custody break reported <https://research.bucklerfamily.estate/missing-records-register/>`__ :sup:`🕒`
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - 1955 possession order / enforcement
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `2 Feb 1955 — order; 4 Jul enforcement <https://research.bucklerfamily.estate/1955-possession-order/>`__
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `2026 — record survives <https://research.bucklerfamily.estate/1955-possession-order/>`__
+     - 
+     - 
+   * - 1959 ownership assertion / tenancy refusal
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `1959 — evidence emerges <https://research.bucklerfamily.estate/1962-possession-order/#refusal-1959>`__
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `2026 — evidence remains cited <https://research.bucklerfamily.estate/mary-williams-statement/>`__
+     - 
+     - 
+   * - 1962 County Court possession order
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `11 Dec 1962 — order emerges <https://research.bucklerfamily.estate/1962-possession-order/#order>`__
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `2026 — record survives <https://research.bucklerfamily.estate/1962-possession-order/#order>`__
+     - 
+     - 
+   * - 1969 WGR → BP Pension Trust conveyance
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `31 Dec 1969 — conveyance relied upon <https://research.bucklerfamily.estate/land-registry-titles/#conveyances>`__
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `2026 — deed not on supplied 43-document schedule; status unresolved <https://research.bucklerfamily.estate/records-access-chronology/>`__ :sup:`🕒`
+     - 
+     - 
+   * - 1974 measured survey / heritage evidence
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `26 Apr 1974 — H. J. Thomas measured survey <https://research.bucklerfamily.estate/archaeology/>`__
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `2026 — heritage evidence survives <https://research.bucklerfamily.estate/archaeology/>`__
+     - 
+     - 
+   * - 1974 possession action / licence letters
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `1974 — possession action and licence letters <https://research.bucklerfamily.estate/1974-licence-letters/>`__
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `1987 judgment preserves the legal record <https://research.bucklerfamily.estate/bp-properties-v-buckler/>`__
+     - 
+     - 
+   * - 1982–83 HMLR first registrations WA231076 / WA240304
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `1982–83 — registrations emerge <https://research.bucklerfamily.estate/land-registry-titles/#first-registration>`__
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `2026 — supporting plans/documents remain partly outstanding <https://research.bucklerfamily.estate/missing-records-register/>`__ :sup:`🕒`
+     - 
+   * - 1987 HMLR amalgamation during appeal
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `2 Feb 1987 — amalgamation application <https://research.bucklerfamily.estate/1987-hmlr-amalgamation-during-appeal/>`__
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `2026 — title history remains available <https://research.bucklerfamily.estate/land-registry-titles/>`__
+     - 
+   * - 1987 Court of Appeal judgment
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `31 Jul 1987 — judgment <https://research.bucklerfamily.estate/bp-properties-v-buckler/#court-of-appeal>`__
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `2026 — primary legal record survives <https://research.bucklerfamily.estate/sources-and-archives/>`__
+     - 
+     - 
+   * - 1988 Cadw inspection / listing evidence
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `29 Jul 1988 — inspection; two photographs survive <https://research.bucklerfamily.estate/archaeology/>`__
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `2026 — remainder said most likely destroyed; no destruction record produced <https://research.bucklerfamily.estate/records-access-chronology/>`__
+     - 
+     - 
+   * - 1988 physical demolition
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `30 Nov–6 Dec 1988 — physical demolition <https://research.bucklerfamily.estate/demolition-1988/>`__
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `2026 — documentary evidence survives <https://research.bucklerfamily.estate/demolition-1988/>`__
+     - 
+     - 
+   * - 1988–89 press corpus
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `1988 — press evidence emerges <https://research.bucklerfamily.estate/evidence-library/press-articles-index/>`__
+     - `1989 — press sequence continues <https://research.bucklerfamily.estate/evidence-library/press-articles-index/>`__
+     - 
+     - 
+     - 
+     - 
+     - `2026 — indexed / digitised <https://research.bucklerfamily.estate/evidence-library/press-articles-index/>`__
+     - 
+     - 
+   * - 1990 GGAT archaeological assessment
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `1990 — assessment <https://research.bucklerfamily.estate/archaeology/>`__
+     - 
+     - 
+     - 
+     - 
+     - `2026 — record available <https://research.bucklerfamily.estate/archaeology/>`__
+     - 
+     - 
+   * - 1994 cemetery excavation / archaeological record
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `1994 — excavation record <https://research.bucklerfamily.estate/archaeology/>`__
+     - 
+     - 
+     - 
+     - `2026 — archaeological record survives <https://research.bucklerfamily.estate/archaeology/>`__
+     - 
+     - 
+   * - 1994–2005 woodland title WA735527
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `10 Nov 1994 — title transferred <https://research.bucklerfamily.estate/woodland/>`__
+     - `22 Dec 2005 — extent change / title trail <https://research.bucklerfamily.estate/woodland/#excision-2005>`__
+     - 
+     - 
+     - 
+     - 
+     - 
+   * - 2005 “closed” access status
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `2005 — reported HMLR statement that title was closed <https://research.bucklerfamily.estate/records-access-chronology/>`__
+     - 
+     - 
+     - `2026 — status reported, underlying record/access basis requires verification <https://research.bucklerfamily.estate/records-access-chronology/>`__
+     - 
+     - 
+   * - 2026 HMLR retrieval / 43-document schedule
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `30 Jul 2026 — 43-document schedule <https://research.bucklerfamily.estate/land-registry-titles/#hmlr-2026>`__
+     - `2026–2030 — open retrieval / preservation horizon <https://research.bucklerfamily.estate/missing-records-register/>`__ :sup:`🕒`
+     - 
+     - 
+   * - 2026 Cadw / Heneb complaints & investigations
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `Sep 2026 — Cadw complaint / formal Heneb complaint <https://research.bucklerfamily.estate/records-access-chronology/>`__
+     - `2026 — investigations open; outcome unknown <https://research.bucklerfamily.estate/records-access-chronology/>`__ :sup:`🕒`
+     - 
+     - 
+   * - 2026 RCAHMW / NMR search response
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - `2026 — no registered campaign files identified; further search routes remain <https://research.bucklerfamily.estate/sources-and-archives/>`__
+     - `2026–2030 — research gap / outcome unknown <https://research.bucklerfamily.estate/missing-records-register/>`__ :sup:`🕒`
+     - 
+     - 
+   * - ● evidence emerges / remains◯ missing, restricted or unresolved■ physical/documented loss◎ title merge / structural transitionfading line = evidence trail becoming uncertain2030 = future padding :sup:`🕒`
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+     - 
+
+**1924 and 1928.** HM Land Registry holds a record of 15 May 1924 (a Bute–Corbett agreement about a drain). Mary (Nancy) Williams, formerly Buckler, recalls 1928 as the year the house parcel became the family’s. Whether the two are connected is one of the questions the family is pressing HM Land Registry to answer, together with the record’s plan. Analysis: `Legal Review, section 2 (land) <https://research.bucklerfamily.estate/scrutiny-and-accountability/legal-review-fraud-land-human-rights/#land>`__ · `Land Registry Titles <https://research.bucklerfamily.estate/land-registry-titles/#deeds-before-registration>`__. For the pattern of records lost around each set of proceedings, see `Legal Review, section 1.3 <https://research.bucklerfamily.estate/scrutiny-and-accountability/legal-review-fraud-land-human-rights/#loss-pattern>`__.
+
+Page version & change log
+-------------------------
+
+**Current version:** 0.1.1
+
+.. list-table::
+   :header-rows: 1
+
+   * - Version
+     - Date (UTC)
+     - Editor (human or agent name)
+     - Change
+     - Source / evidence
+   * - 0.1.1
+     - 2026-10-18T15:23Z
+     - Sion’s Tab agent
+     - Footer standardised; earlier log rows carried into this table; no content change
+     - Editing Protocol, 18 Oct 2026
+   * - 0.1.0
+     - 2026-10-18T14:27:00+01:00
+     - OpenAI-assisted maintenance agent (GPT-6)
+     - Installed footer log; version tracking begins at 0.1.0; this does not reconstruct earlier revisions. CURRENT VERSION: 0.1.0.
+     - Saved through WordPress API; public rendering not individually checked.
+
+Agents and editors: follow the `Editing Protocol <https://research.bucklerfamily.estate/editing-protocol/>`__.

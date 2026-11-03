@@ -1,177 +1,116 @@
 # Changelog
-It's expected that developers log all changes to this branch in this CHANGELOG.md file.  
+All changes to this branch are logged here, newest first.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),  
-and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).  
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Rules: DOCS-STANDARD.md §9.
 
-## [Unreleased] 
+## [Unreleased]
 
-# [0.0.1-rtwx.4-rc.7] - Q3/2025
-Sep-26 - Added song lyrics (welsh/ english) to library under new catagory txt (files). Welsh song: Coch, Gwyn a Gwyrdd - by the band Pelau Taf   
-Sep-10 - Added a brief for the Taking Chance WebApp - see `wayback/taking_chance_web_app_v0.0.1_en.pdf` - and link on the page: ceo.datro.xyz 
-Aug-08 - Added a video called Service 
-
-## [0.0.1-rtwx.4-rc.6] - Q1/2024
+## [docs-0.7.0] - 2026-10-31
 
 ### Added
-Mar-25 - See changelog for wayback - sitemap.xml regerenated with new sitemap generator script  
-Feb-24 - Cloudflare Pages Build error - Update deployment ID (Code 8000009) - I disabled cloudflare pages since netlify and gh-pages are enough  
+- `ghf_research/guide_bookevidenceflywheel` v0.1.0 (en), catalogue RES-0004 — book and bibliographic source discovery, retrieval stages, identity and parcel controls, query rotation, counter-evidence, publication and follow-up.
+- `ghf_research` collection: Research methods menu band.
 
-## [0.0.1-rtwx.4-rc.5] - Q4/2023
+## [docs-0.6.0] - 2026-10-23
 
 ### Added
-Dec-23 - Added 'demos' directory  
-
-## [0.0.1-rtwx.4-rc.4] - Q2/2022
-
-### Added 
-May-25 - Added 2nd quote for client Env, in wayback directory  
-May-24 - Added quote for client Env, in wayback directory  
+- Catalogue ID on every document (DOCS-STANDARD v1.5.0 §3.2): `"catalogue"` in doc.json, at the start of the title (H1, menus,
+  sidebar) and in the PDF file names (§2.7) — EV-NNNN, MR-NNNN, WIKI-NNNN (the Legal Wiki page ID), RES-NNNN, TEST-NNNN.
+  `build.py --check` checks the format, that each ID is used once and that the title starts with it.
+- PDFs open in an in-page dialog (§7.4, `_static/docs-modal.js`, pdf.js): the red version buttons, "This version (PDF)", older
+  versions and PDF links in the text. The files stay in wayback; "Open in new tab" sits beside the close button.
 
 ### Changed
-Apr-15 - See Wayback/Changelog.md  
+- Current-version PDFs are published again under the new names, with the catalogue ID (same files, same bytes); the names they
+  had before stay in wayback unchanged.
 
-## [0.0.1-rtwx.4-rc.3] - Q1/2022
-
-### Added 
-Jan-27 - Added docs for client file `EVL`  
-
-### Changed
-Jan-27 - Format of recently added docs needed altering  
-
-### Issues
-Jan-27 - Need to make it so language comes before document type shortcode e.g. inv/quo etc  
-
-## [0.0.1-rtwx.4-rc.2] - Q4/2021
+## [docs-0.5.0] - 2026-10-23
 
 ### Added
-Dec-30 - See wayback/changelog - added some PDF's  
-Dec-18 - Renamed it Wayback Archive and made both `wayback.datro.xyz` and `archive.datro.xyz` to a/b test  
-Dec-17 - Added a better design to wayback - checkout wayback.datro.xyz to see  
-Dec-12 - Added `2021-10-18_consortium_finance-funding_sales8cc_en_inv-0042.pdf` to wayback   
-
-## [0.0.1-rtwx.4-rc.1] - Q3/2021
-
-### Changed
-Sep-16 - Minor edit to `2021-09-01_consortium_contracts-techhouse2_lease5_es_v0-0-0.pdf` - Section 6 was still in Spanish. Now it's translated to English    
-Sep-12 - Changed the CNAME to world.datro.xyz and made datroxyz-* subdirectories featuring an index file which redirects to the corresponding content in the gh-pages repo and datro.xyz domain e.g. world.datro.xyz/datroxyz-gui/ redirects to datro.xyz/static/gui   
-       - this allows datro.xyz/static/gui to appear when world.datro.xyz/datroxyz-gui/ is entered in the address bar (static/gui will then know to serve up the GUI as a DATRO World wrapper, as oppose to the online demo data  
-Sep-12 - Few more tweaks before we go ahead and merge all this into a shared feature of the main GUI,  
-Sep-12 - Major change. Investing in the possibility that the same GUI can function as the online demo, gui and "datro world" (asset explorer)  
-       - The GUI already serves the first two functions, with javascript that looks at the address bar before serving content  
-
-
-### Added
-Sep-30 - Added `2020-08-01_hbnb-intro.webm` to wayback. In gh-pages it corrupts due to constant push/pulls  
-Sep-16 - Added `2021-09-01_consortium_contracts-techhouse2_lease5_es_v0-0-0.pdf`  
-Sep-15 - Archived contract for techhouseII added  
-Sep-14 - Just a note. Having a pair of iframes here in this "netlify" repo (accessible via world.datro.xyz and world.datro.xyz/library) ...  
-       - Pointing to a pair of GUI's in the "gh-pages" repo (accessible via datro.xyz/static/gui/ and datro.xyz/static/library) ...  
-       - is 1) a step towards a single world.datro.xyz interface for everything   
-       - a solution to split content across multiple repo branches in order to:   
-           - work around github's 1 site limit (by introducing netlify) and enjoy free hosting  
-           - fall below netlify's billing ceiling (content with fewer changes will live on the branch netlify deals with)   
-           - speed up page loading by having multiple domains/ repos delivering the content.  
-           - make content accessible from easier to remember urls e.g. world.datro.xyz instead of datro.xyz/static/gui (for 1 example)  
-
-### Issues
-Sep-14 - In the spirit of functionality offline, the library .json files should point to redirectors which check the address in the address bar.   
-       - When only the library GUI should retrieve archived files from "world.datro.xyz/wayback" which points to the netlify branch content  
-       - When offline the library GUI should retrieve archived files from, for example "http://localhost/datro-netlify/wayback"  
-
-
-## [0.0.1-rtwx.3] - Q2/2021
-
-### Added
-25-Jun - Added 4c60e78bf3c2bae9787f88f62c877867.txt for custom domain mail server setup  
-25-May - Added a sitemap generator script `make-sitemap.sh` and `make-sitemap.sh.options`   
-23-May - Added `sitemap.xml` for SEO purposes  
-12-May - Added `2021-05-06_consortium_finances-funding_investors.v0.1.7` to wayback directory and updated `wayback/treeview.json`   
-08-May - Added `2021-05-02_consortium_campus-sitesurvey_jamhighland_v0.0.1.pdf` to wayback directory and updated `treeview.json`  
-08-May - Added `2019-12-09_wave-tokens-wit_v0.1.3.pdf` to archive/"wayback" directory and reference it in `treeview.json`   
-05-May - Added `gui.datro.world` which maybe a waist of time since the netlify splashpage is itself a version of the dashboard too. But why not.  
-02-May - Added `wayback.datro.world` to list of subdomains - `datro.world/wayback` also works too.  
-02-May - Added two spaces to the end of every line in this changelog so it formats correctly when viewing it on githubs webpage  
-01-May - Added library.datro.world - opens datro.xyz/static/library - a html file explorer of the DATRO document library  
-13-Apr - Archieved another file in the wayback directory. see wayback changelog for details  
-07-Apr - Archived a file in the wayback directory. see wayback changelog for details  
-05-Apr - Added wayback directory e.g. archived files. The content includes items that are compiled e.g. pdf.   
-       - The gh-pages branch is already large enough without having to add this archive directory and its contents too.   
-       - But this branch is lightweight - providing this new directory isn't modified too frequently there's be no cost either (since netlify charges with excessive usage)  
-       - Now documents can link to archived versions of themselves - the only concern is cross domain with iframes , because the docs are on datro.xyz and this directory is datro.world  
-
+- `ghf_wiki` — Wiki pages: 268 Legal Wiki pages that are not evidence entries, one document each (`ghf_wiki/<group>_<page>`,
+  v1.0.0, en), in bands: timelines and chronologies, title chain and history, people and organisations, legal analysis,
+  institutional reviews, correspondence logs, reports, registers and indexes, questions and answers, other pages.
+- `ghf_research` — Research: the 231 pages of research.bucklerfamily.estate that have no wiki twin (the media register
+  entries MR-0001 to MR-0231, the media coverage list, the central chronology, correspondence 20–23 October 2026).
+- `ghf_evidence/ev_0513` (from research.bucklerfamily.estate) and `ghf_evidence/ev_0900` (Legal Wiki page 8427).
+- Each page is kept as published (verbatim record, DOCS-STANDARD §5.6): wiki links lead to the same path on
+  research.bucklerfamily.estate and images are links to their files. Each is also a PDF in wayback (`pdf/docs-archive/…`).
 
 ### Changed
-15-Jun - Changed jquery-1.1.0 to use same server, not link to jquery's website    
-29-May - Minor edits to landing page `canonical` and `title` tag   
-25-May - Dashboard/breadcrumb/index.html changed to index.html.old so as not to appear in sitemap.xml   
-25-May - Changed `make-sitemap.sh` from weekly to hourly   
-25-May - `make-sitemap.sh` had wrong domain name for the branch. Changed `datro.xyz` to `datro.world`   
-22-May - Modified footer copyleft year to 2021   
-08-May - Modified `wayback` - see wayback/changelog for details   
-01-May - Replaced title of splashpage - from `DATRO CONS.` to `DATRO`   
-06-Apr - One of the filenames in wayback was amended from `2020-06-12_wave-tokens-wrt_v0.1.5.pdf` to reflect the correct date   
+- `build.py`: one shared copy of the theme files at `/_static/` instead of one per document (DOCS-STANDARD v1.4.0 §10.7):
+  about 9 files per document instead of 27, so the library stays far under Cloudflare Pages' 20,000-file cap.
+- Collection menus: bands follow the order of `collection.json` "groups", documents in title order (§10.8).
+- Five very long documents have their PDF printed from the HTML build with headless Chromium, where rinohtype could not lay
+  out their tables (§10.9).
 
-### Removed
-15-Jun - Removed analytics tracking code from localhost splashpage   
+## [docs-0.4.1] - 2026-10-23
 
 ### Fixed
-23-May - Splash page icons were all made the same size   
+- Collection menus: a document title longer than 48 characters (the evidence records) wraps inside the screen in a smaller
+  size instead of running off it (the Evidence menu scrolled sideways at 390 px); every menu button now wraps
+  inside the screen when it has to.
 
-## [0.0.1-rtwx.2] - Q1/2021
+## [docs-0.4.0] - 2026-10-23
 
 ### Added
-27-Feb - Minor edit to README.md (directory structure added). Pending changes, need to change 'app-store' to 'websites' and use latest fetch.html method from HBnB GUi  
-01-Feb - Added a fund category, using Bitcoin as the symbol, instead of dollars  
-24-Jan - Added the ability to launch a different icon hyperlink depending if viewing the website from online or offline.   
-       - This solves seeing the dreaded 404 pages when working offline, while preserving the online experience.  
-       - The reason the hyperlinks can't just begin with './' is because the destinations are all on a seperate domain (see README.md to learn why).    
-14-Jan - Introduced a new website for evr-network (bootstrap of datro.xyz)  
-       - Evr-network.live in GoDaddy forwards to evrnetwork.datro.world, then the javascript in this splashpage brings up the frame that loads the website   
-16-Jan - Added canion meta to redirect pages to force https. Not hugely neccessary, just keeping things consistent with datro.xyz repo  
+- `ghf_evidence` — the Evidence collection: one document per catalogue number of the Great House Farm evidence register
+  (`ghf_evidence/ev_NNNN`, e.g. `ev_0031` = EV-0031), v1.0.0 (en), each carried over from its Legal Wiki evidence page.
+  The record is kept as published; wiki links point to the same path on research.bucklerfamily.estate; images are links to
+  their files on the wiki. Each version is also a PDF in wayback (`pdf/docs-archive/ghf_evidence/…`).
+- `doc.json` `"record"` (catalogue, source, verbatim chapters) and `"pdf"` (the current version as PDF), both checked.
+  DOCS-STANDARD.md v1.3.0 §5.6, §6.7, §10.6.
+- `release.py --current` — the current version as one PDF per language at its wayback path; when the version is replaced
+  that file becomes the archived edition instead of a rebuild.
+
+### Changed
+- Document menu: the current version's PDF is a red button right of the green **Latest**; HTML sidebar: "This version (PDF)".
+- `build.py` builds documents side by side (one per CPU) and drops theme source maps from the output.
+
+## [docs-0.3.1] - 2026-10-22
+
+### Changed
+- Day and night like every bucklerfamily.estate site: white ground by day, black by night, following the family toggle.
+  Pages carry `<html data-ghf-native="auto">`, so they are no longer colour-inverted by day (the menus were a lavender
+  inversion of the navy page). `library.css` draws both schemes with the same bands and buttons; Furo's light and dark
+  variables use the family grounds; `docs.js` follows `data-ghf-mode` (it read the wrong attribute) and Furo's own toggle is
+  hidden. DOCS-STANDARD.md v1.2.0 §10.5.
+- The docs. accent pair (navy `#1C2E5C` / apricot `#FFB27A`) is the brand colour and a hint on band edges and focus rings.
+
+## [docs-0.3.0] - 2026-10-22
+
+### Changed
+- The site is HTML only and follows the library's journey and look: home (categories) → collection (documents) → document
+  (one row per language: green **Latest** = HTML, red older versions = PDF to its right). Menus are built from `docs.json`.
+- Older versions are PDFs in the wayback archive (`wayback/pdf/docs-archive/…`); the deploy no longer builds PDFs, and old PDF
+  addresses on docs redirect to the document's menu. `DOCS-STANDARD.md` v1.1.0 (§2.5–2.8, §6 archive SOP, §7.3 menus, §10).
+- HTML sidebar: "Older versions (PDF)" in the page's language replaces the PDF link.
+- `requirements.txt` drops rinohtype; `_theme-docs/requirements-release.txt` carries it for archiving.
+
+### Added
+- `_theme-docs/release.py` — archives the outgoing version of a document to wayback as one PDF per language and bumps `doc.json`.
+- `doc.json` `"archive"` (checked by `build.py --check`); `collection.json` `subsidiary_title` and `groups` (menu band labels).
+- `ghf_legalwiki/guide_readthedocs` — v1.0.1 (en) archived from the wiki page revision of 2026-10-18 23:45 UTC; current stays v1.1.0.
+- `ghf_tests/specimen_loremipsum` — v0.0.1 (en, cy, es) archived; current stays v0.1.0; release notes list the older version.
 
 ### Removed
-01-Feb - Version "v" in title was causing the version number to spill off the page. Shrinking text was a nightmare, so I just removed the v.  
+- Landing page `index.html`, `landing.js`, `landing.css` (replaced by the generated menus and `library.css`).
 
-### Changed
-25-Mar - Changed the header title to 'DATRO CONS.' (DATRO Consortium). The version number made it too technical looking - plus that can be on each webpage as a html badge instead  
-07-Feb - Changes on the 3rd were not completed. Locally it worked, not public, solved it by making all the splashpages match the local one!   
-03-Feb - Disabled visitors from viewing 'production' and 'beta testing' screens (until we're at those stages).   
-03-Feb - Added support for localhost, but from a remote device. Since it sees an ip (192.168 etc), not 'localhost'   
-24-Jan - Installed some packages to my local machine and suddenly the gui started showing minor style bugs, which have now been corrected.   
-
-
-## [0.0.1-rtwx.1] - Q4/2020
+## [docs-0.2.0] - 2026-10-22
 
 ### Added
-22-Oct - Change the header text to display version number. (netlify branch, not gh-pages branch).   
-17-Oct - Added a local.html page, for localhost. Or else you see a 404 each time when working offline.   
-17-Oct - Moved Hotspotβnβ from development to Beta testing (WoodHaven Installation Complete).   
-       - RPi4 image only atm (see releases for link),still need to make the image a net-installer and serve all models of RPI.   
-15-Oct - New Hotspotβnβ logo added  
+- `ghf_legalwiki/guide_readthedocs` v1.1.0 (en) — the Legal Wiki's "Read the Docs" guide, moved from the WordPress wiki as a document; every wiki link now points to the same page on research.bucklerfamily.estate.
+- `ghf_legalwiki/collection.json` — the Legal Wiki collection (listed first on the homepage).
 
-### Changed
-03-Oct - Moved content of frame down a bit, it was getting cut off  
-03-Oct - Changed page titles from `Datro Assets` to `DATRO`  
-
-## [0.0.1-rtwx.1] - Q3/2020
-
-### Added
-15-Sep - Made it so videos (inside the dashboard iframe) could be played full screen  
-15-Sep - Put in some cool css, to hide blue flashes (in chrome) when you click stuff:  
-       - `a{-webkit-tap-highlight-color: transparent;}`  
-15-Sep - Jquery, to detect subdomain then change iframe content to correspond and raise top bar  
-       - (So when you type hbnb.datro.world, index.html takes you to hbnb.html#anchor (the anchor hides the topbar))  
-
-### Removed
-15-Sep - Remove AMP from splashpage. For now.  
-13-Sep - Hid scrollbars, gorgeous if I do say so  
-
-### Changed
-15-Sep - Moved everything from /docs directory into the top level directory  
-15-Sep - New theme - the one kind most web-apps follow e.g. the grey, night-coding, dark-mode type  
-15-Sep - Merged some css files into 1, on the dashboard. And solved the bugs which came up as a result.   
+## [docs-0.1.1] - 2026-10-22
 
 ### Fixed
-15-Sep - The frame didn't reach the bottom, causing a small black bar. TWOK  
-15-Sep - The topbar button (to hide the top bar) was loading early and too think to click easily. TWOK  
+- Landing page: the version shows as `v0.1.0` in every language (the Welsh list read `f0.1.0`).
+
+## [docs-0.1.0] - 2026-10-22
+
+### Added
+- `DOCS-STANDARD.md` v1.0.0 — the publishing rules, drawn from the library branch's paths, gettext languages and release notes.
+- `_theme-docs/` build kit — Sphinx + Furo HTML, rinohtype PDF (no TeX), generated `docs.json`, landing page, `--check` rules.
+- `ghf_tests/specimen_loremipsum` v0.1.0 (en, cy, es) — lorem ipsum specimen with headings, a table, a figure, a footnote and cross-references.
+- `requirements.txt` with pinned build dependencies; `README.md`; this changelog.

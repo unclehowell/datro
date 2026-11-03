@@ -1,0 +1,12 @@
+[STYLESHEET]
+name = Buckler family docs
+description = Serif body, sans headings, green accents
+base = sphinx_article
+
+[VARIABLES]
+mono_typeface = TeX Gyre Cursor
+serif_typeface = TeX Gyre Pagella
+sans_typeface = TeX Gyre Heros
+thin_black_stroke = 0.5pt, #000
+fallback_typeface = DejaVu Serif
+blue = #2f5d3a
