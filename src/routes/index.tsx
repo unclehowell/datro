@@ -338,6 +338,14 @@ function roadmapName(name: string) {
   return name;
 }
 
+const INST_ALIASES: Record<string, string> = {
+  "internet-archive": "internet-archive", "archive-org": "internet-archive", ia: "internet-archive",
+  oclc: "oclc", worldcat: "oclc",
+  "glamorgan-archives": "glamorgan", "archifau-morgannwg": "glamorgan",
+  "museum-wales": "museum", "amgueddfa-cymru": "museum",
+  "welsh-gov-cadw": "cadw", "vale-of-glamorgan-council": "vale", "historic-england": "historic-england",
+};
+
 function Home() {
   const [instId, setInstId] = useState("llandough");
   const [sheet, setSheet] = useState<Sheet | null>(null);
@@ -346,6 +354,26 @@ function Home() {
     // v0.5.0: the old Rungs and Dates tabs are one tab, "Rungs & dates", and it is the default view.
     // Old deep links #ladder, #roadmap, #rungs and #dates land on it; #route opens the route map.
     if (typeof window !== "undefined" && /^#route(-map)?$/.test(window.location.hash)) setView("route");
+  }, []);
+  useEffect(() => {
+    // v0.6.0: preselect the institution from the address, ?inst=<id> or #inst=<id> (aliases accepted), e.g. the
+    // #dartboard links on Peekaboo. #avenue-inst (the institution dropdown's id) is the no-JavaScript landing anchor.
+    if (typeof window === "undefined") return;
+    const pick = () => {
+      const q = new URLSearchParams(window.location.search).get("inst");
+      const h = /(?:^#|[&?])inst=([^&]+)/.exec(window.location.hash);
+      let raw = "";
+      try { raw = decodeURIComponent((h && h[1]) || q || "").toLowerCase().trim(); } catch { raw = ""; }
+      if (!raw) return;
+      const id = INST_ALIASES[raw] ?? raw;
+      if (!institutions.some((i) => i.id === id)) return;
+      setInstId(id);
+      const el = document.getElementById("avenue-inst");
+      if (el) window.setTimeout(() => el.scrollIntoView({ block: "center" }), 60);
+    };
+    pick();
+    window.addEventListener("hashchange", pick);
+    return () => window.removeEventListener("hashchange", pick);
   }, []);
   const inst = useMemo(
     () => institutions.find((i) => i.id === instId) ?? institutions[0],

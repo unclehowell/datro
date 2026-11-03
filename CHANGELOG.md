@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.0] - 2026-11-03
+
+### Added
+- **Institution from the address:** `?inst=<id>` or `#inst=<id>` preselects that institution in the institution dropdown (`#avenue-inst`) and the views that follow it, then scrolls to the dropdown; names like `museum-wales`, `glamorgan-archives`, `vale-of-glamorgan-council`, `worldcat` and `archive-org` are accepted too. Without JavaScript the same link lands on the dropdown (`#avenue-inst`). Used by the #dartboard links on Peekaboo, e.g. `/dartboard/?inst=cadw#avenue-inst`.
+- **Three institutions** added to the list in its own format, for the Peekaboo records they concern: Internet Archive (the catalogue description of its copy of Newman, Glamorgan, 1995), OCLC / WorldCat (record 33858574 carries the same description) and Historic England (reply of 21 Oct 2026, then the 2018 transfer letter on 27 Oct 2026).
+
 ## [0.5.2] - 2026-11-02
 
 ### Fixed
