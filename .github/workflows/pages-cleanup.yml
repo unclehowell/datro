@@ -1,0 +1,45 @@
+name: Pages Deploy Cleanup
+on:
+  schedule:
+    - cron: '0 */48 * * *'
+  workflow_dispatch:
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    env:
+      CF_ACCOUNT_ID: 42a4a8d7bfb96321118ada213638d050
+      CF_PROJECT: command-dashboard
+    steps:
+      - uses: actions/checkout@v4
+      - name: List and purge old Cloudflare Pages deployments
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: 42a4a8d7bfb96321118ada213638d050
+        run: |
+            if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+              echo "Missing CLOUDFLARE_API_TOKEN secret"
+              exit 1
+            fi
+
+            echo "Listing deployments..."
+            if npx wrangler@3 pages deployment list \
+              --project-name "$CF_PROJECT" \
+              --json > /tmp/deployments.json 2>&1; then
+              echo "wrangler OK"
+            else
+              echo "wrangler failed, trying direct API..."
+              curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+                "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/pages/projects/$CF_PROJECT/deployments" \
+                > /tmp/deployments.json 2>&1
+            fi
+
+            echo "Output file size: $(wc -c < /tmp/deployments.json 2>/dev/null || echo 'N/A')"
+
+            if [ -s /tmp/deployments.json ]; then
+              echo "Running cleanup script..."
+              python3 .github/scripts/pages-cleanup.py
+            else
+              echo "No deployment data available"
+              exit 1
+            fi

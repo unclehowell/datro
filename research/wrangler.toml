@@ -1,0 +1,14 @@
+name = "research-wp"
+main = "src/index.js"
+compatibility_date = "2026-10-17"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+ENVIRONMENT = "production"
+SITE_TITLE = "Great House Farm Wiki — Research Mirror"
+SOURCE_SITE = "https://greathousefarmwiki.wordpress.com"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "research-wp-d1"
+database_id = "3ca02c2d-bb78-424d-8574-a653d33f5c05"
