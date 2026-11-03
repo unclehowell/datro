@@ -6,6 +6,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Rules: DOCS-STAN
 
 ## [Unreleased]
 
+## [docs-0.7.1] - 2026-11-03
+
+### Fixed
+- `_static/docs.js` and `_static/docs-modal.js` restored from the cedwyn docs branch: the 28 Oct mirror had lost every `()`, so both scripts stopped with a syntax error and the PDF dialog and the day/night toggle did not run.
+
 ## [docs-0.7.0] - 2026-10-31
 
 ### Added
