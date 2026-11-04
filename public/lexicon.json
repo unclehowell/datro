@@ -1,6 +1,6 @@
 {
-  "version": "1.0.1",
-  "generated": "2026-10-24",
+  "version": "1.1.0",
+  "generated": "2026-11-04",
   "title": "Nomenclature — every name the records use for the same thing",
   "method": "Harvested from the Legal Wiki (greathousefarmwiki.wordpress.com; 794 pages read through the public REST API, 21 Oct 2026), its evidence register, transcripts and nomenclature pages. Each variant is the wording of the record cited; where no record was found it is marked SOURCE PENDING. “Wiki label” means a term the Wiki uses for analysis, not a word from a period record.",
   "status_key": {
@@ -320,7 +320,13 @@
         "89/01396/OUT",
         "92/00671/RES",
         "St Dochdwy",
-        "St. Dochdwy"
+        "St. Dochdwy",
+        "Great House Farm, Llandough",
+        "Great House, Llandough",
+        "Tŷ Mawr Farm",
+        "Llandough Home Farm",
+        "Cydfin Farm",
+        "Williams of Great House"
       ],
       "slug": "great-house-farm",
       "page": "https://nomenclature.bucklerfamily.estate/c/great-house-farm/",
@@ -605,7 +611,11 @@
         "farmhouse",
         "farm house",
         "manor house",
-        "coaching house"
+        "coaching house",
+        "Farmhouse",
+        "House, buildings, garden and yard",
+        "Dwelling adjoining the churchyard",
+        "Rear wing"
       ],
       "slug": "farmhouse",
       "page": "https://nomenclature.bucklerfamily.estate/c/farmhouse/",
@@ -710,7 +720,8 @@
       ],
       "search_forms": [
         "Parcel B",
-        "eastern fields"
+        "eastern fields",
+        "Eastern fields / agricultural holding"
       ],
       "slug": "parcel-b",
       "page": "https://nomenclature.bucklerfamily.estate/c/parcel-b/",
@@ -849,7 +860,8 @@
         "Forest of Cardiff",
         "the woods",
         "the forest",
-        "SSSI 0524"
+        "SSSI 0524",
+        "Woodland / Leckwith Woods"
       ],
       "slug": "woodland",
       "page": "https://nomenclature.bucklerfamily.estate/c/woodland/",
@@ -939,7 +951,8 @@
         "the green",
         "Gateway to the Vale",
         "89/01396/OUT",
-        "92/00671/RES"
+        "92/00671/RES",
+        "Church View Close green / open space"
       ],
       "slug": "green",
       "page": "https://nomenclature.bucklerfamily.estate/c/green/",
@@ -1292,7 +1305,7 @@
       "id": "llandough",
       "name": "Llandough (near Penarth)",
       "kind": "place",
-      "summary": "The parish and village beside Penarth and Cardiff where the farm stood. Not Llandough near Cowbridge.",
+      "summary": "The parish and village beside Penarth and Cardiff where the farm stood. Vision of Britain associates “LLANDOUGH JUXTA BARRY” with the Penarth parish unit; this database attribution is not proof of the exact printed 1831 wording or of a name for the farmhouse. Not Llandough near Cowbridge.",
       "wiki": "https://greathousefarmwiki.wordpress.com/great-house-farm/location-name-nomenclature/",
       "variants": [
         {
@@ -1378,6 +1391,15 @@
           "url": "https://greathousefarmwiki.wordpress.com/great-house-farm/location-name-nomenclature/",
           "status": "record",
           "wiki_pages": 3
+        },
+        {
+          "term": "LLANDOUGH JUXTA BARRY",
+          "source": "GB Historical GIS / Vision of Britain, Llandough Juxta Penarth Parish (CP/AP), unit 10484613; alternate-name entry attributed by the database to the 1831 Census of Great Britain, Table [1], “Population Abstract”",
+          "date": "1831 (as attributed by Vision of Britain)",
+          "sort": "1831",
+          "url": "https://www.visionofbritain.org.uk/unit/10484613",
+          "status": "secondary",
+          "note": "Parish-unit database association, not verified against the original printed 1831 table. Vision of Britain’s published methodology explains that census information was used to add alternative names to its administrative gazetteer and that the database was made consistent and usable rather than reproducing source pages verbatim. Exact printed wording, page and row remain unverified. Not a name of the farmhouse. Methodology: https://www.visionofbritain.org.uk/about/sources/8."
         }
       ],
       "not_same": [
@@ -1393,7 +1415,29 @@
         "Landoche",
         "juxta-Penarth",
         "juxta Penarth",
-        "CF64 2"
+        "CF64 2",
+        "Vale of Glamorgan",
+        "Glamorgan",
+        "South Glamorgan",
+        "Urban District of Penarth",
+        "CF64",
+        "CF64 2NN",
+        "ST 167 733",
+        "ST 168 733",
+        "ST 1681 7331",
+        "Llandough-juxta-Penarth",
+        "Landoche-juxta-Cardif",
+        "Llandough near Penarth",
+        "Llandough near Cardiff",
+        "Llandough, Penarth",
+        "Llandough, Cardiff",
+        "Llandough / Leckwith",
+        "Penarth Road, Llandough",
+        "Parish of Llandough",
+        "Llandough-juxta-Barry",
+        "Llandough juxta Barry",
+        "Church View Close",
+        "St Dochdwy’s Church"
       ],
       "slug": "llandough",
       "page": "https://nomenclature.bucklerfamily.estate/c/llandough/",
@@ -1410,7 +1454,10 @@
         "Llandochau",
         "Llandough",
         "Landoche",
-        "CF64 2"
+        "CF64 2",
+        "LLANDOUGH JUXTA BARRY",
+        "Llandough juxta Barry",
+        "Llandough-juxta-Barry"
       ],
       "has_page": true
     },
@@ -2166,6 +2213,70 @@
         "Welsh Water",
         "Dŵr Cymru",
         "Dwr Cymru"
+      ],
+      "has_page": true
+    },
+    {
+      "id": "llandough-juxta-barry-occurrences",
+      "name": "Llandough-juxta-Barry: separate historical occurrences",
+      "kind": "historical wording occurrences",
+      "summary": "Two separate sources use the Llandough-juxta-Barry wording: a 1440 inquisition transcription which gives Barry or Cowbridge as alternatives, and a 1922 Bute catalogue description for Great Western Railway land. They are recorded here as separate occurrences, not as the same holding and not as proof of a name for Great House Farm.",
+      "variants": [
+        {
+          "term": "Llandough-juxta-Barry or Llandough-juxta-Cowbridge (Landogh)",
+          "source": "Mapping the Medieval Countryside, E-CIPM 25-330, Isabel, Countess of Warwick; inquisition at Gloucester, 3 Nov 1440, writ 29 Dec 1439; TNA C 139/96/3 mm.45–46 and E 149/169/6 m.9",
+          "date": "3 Nov 1440 (inquisition; writ 29 Dec 1439)",
+          "sort": "1440-11-03",
+          "url": "https://inquisitionspostmortem.ac.uk/view/inquisition/25-307/330.html",
+          "status": "secondary",
+          "note": "The online transcription describes a knight’s fee formerly held by the heirs of John de Wynton, valued at £20. The transcription itself states “Barry or Cowbridge”; this alternative wording is retained. The original membranes have not been inspected. No link is established to the later Penarth parish or Great House Farm / Tŷ Mawr."
+        },
+        {
+          "term": "Llandough-juxta-Barry",
+          "source": "The National Archives, Bute Glamorgan Estates catalogue, DB/17: Great Western Railway Co.; lands in St John, Cardiff and Llandough-juxta-Barry",
+          "date": "14 Dec 1922",
+          "sort": "1922-12-14",
+          "url": "https://discovery.nationalarchives.gov.uk/download/GB%200214%20DB",
+          "status": "catalogue",
+          "note": "Catalogue description only. The DB/17 file, plans and parcels have not been inspected or identified on the ground. The catalogue wording does not establish that this railway land was Great House Farm or that it is the same locality as the 1440 fee."
+        }
+      ],
+      "search_forms": [
+        "Llandough-juxta-Barry",
+        "Llandough juxta Barry",
+        "LLANDOUGH JUXTA BARRY",
+        "Llandough-juxta-Cowbridge",
+        "Llandough juxta Cowbridge",
+        "Landogh",
+        "John de Wynton",
+        "DB/17",
+        "Great Western Railway Co."
+      ],
+      "not_same": [
+        {
+          "term": "Great House Farm / Tŷ Mawr beside St Dochdwy’s Church",
+          "why": "No source links the 1440 fee or DB/17 railway land to the farmhouse or its parcels."
+        },
+        {
+          "term": "Llandough Juxta Penarth Parish (Vision of Britain unit 10484613)",
+          "why": "The 1831 Vision of Britain alternate-name association is a distinct database entry. It does not prove that the 1440 holding or 1922 GWR lands are the Penarth parish or the farmhouse."
+        },
+        {
+          "term": "Llandough Parish / Llandough Juxta Cowbridge (Vision of Britain unit 10484870)",
+          "why": "This is a separate modern parish-unit record. The medieval transcription’s “Barry or Cowbridge” wording does not establish identity with that later unit."
+        }
+      ],
+      "slug": "llandough-juxta-barry-occurrences",
+      "page": "https://nomenclature.bucklerfamily.estate/c/llandough-juxta-barry-occurrences/",
+      "link_terms": [
+        "Llandough-juxta-Barry",
+        "Llandough juxta Barry",
+        "LLANDOUGH JUXTA BARRY",
+        "Llandough-juxta-Cowbridge",
+        "Landogh",
+        "John de Wynton",
+        "DB/17",
+        "Great Western Railway Co."
       ],
       "has_page": true
     }
