@@ -1,8 +1,8 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-11-04T08:14:23Z",
- "count": 1003,
+ "generated": "2026-11-04T10:11:29Z",
+ "count": 1005,
  "threadCount": 540,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
@@ -13,6 +13,48 @@
   "text": "/mail/<id>.txt"
  },
  "records": [
+  {
+   "id": "gm-1a1a5f22de2074cd",
+   "gmailMessageId": "1a1a5f22de2074cd",
+   "threadId": "gt-1a0bbdf18c9ea3b9",
+   "date": "2026-11-04T09:44:25Z",
+   "direction": "received",
+   "from": "Steven Foulston",
+   "institutions": [
+    {
+     "id": "heneb",
+     "name": "Heneb (formerly GGAT) / Historic Environment Record"
+    }
+   ],
+   "subject": "RE: Great House Farm, Llandough, Cardiff",
+   "threadSlug": "great-house-farm-llandough-cardiff",
+   "refs": [
+    "GHF/HENEB/2026-09-20"
+   ],
+   "textUrl": "/mail/gm-1a1a5f22de2074cd.txt",
+   "jsonUrl": "/api/message/gm-1a1a5f22de2074cd.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1a5f1d2e236422",
+   "gmailMessageId": "1a1a5f1d2e236422",
+   "threadId": "gt-1a0d3d85a7ef4715",
+   "date": "2026-11-04T09:43:56Z",
+   "direction": "received",
+   "from": "Steven Foulston",
+   "institutions": [
+    {
+     "id": "heneb",
+     "name": "Heneb (formerly GGAT) / Historic Environment Record"
+    }
+   ],
+   "subject": "RE: FOI \"Llandough Roman villa & medieval house finds were destroyed in a 1983 fire\"",
+   "threadSlug": "foi-llandough-roman-villa-medieval-house-finds-were-destroyed-in-a-1983-fire",
+   "refs": [],
+   "textUrl": "/mail/gm-1a1a5f1d2e236422.txt",
+   "jsonUrl": "/api/message/gm-1a1a5f1d2e236422.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
   {
    "id": "gm-1a1a2f9cf898d117",
    "gmailMessageId": "1a1a2f9cf898d117",

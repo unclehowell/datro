@@ -1,8 +1,8 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-11-04T08:14:23Z",
- "count": 1003,
+ "generated": "2026-11-04T10:11:29Z",
+ "count": 1005,
  "threadCount": 540,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
@@ -13,6 +13,44 @@
   "text": "/mail/<id>.txt"
  },
  "threads": [
+  {
+   "threadId": "gt-1a0bbdf18c9ea3b9",
+   "subject": "Great House Farm, Llandough, Cardiff",
+   "threadSlug": "great-house-farm-llandough-cardiff",
+   "institutions": [
+    "heneb"
+   ],
+   "first": "2026-09-19T22:55:27Z",
+   "last": "2026-11-04T09:44:25Z",
+   "count": 7,
+   "messageIds": [
+    "gm-1a0bbe1ba706aa71",
+    "gm-1a145570b9618f41",
+    "gm-1a1563a1cfcaeb44",
+    "gm-1a187d3861d452a8",
+    "gm-1a19c598a5a89f6f",
+    "gm-1a19d753c856994f",
+    "gm-1a1a5f22de2074cd"
+   ]
+  },
+  {
+   "threadId": "gt-1a0d3d85a7ef4715",
+   "subject": "FOI \"Llandough Roman villa & medieval house finds were destroyed in a 1983 fire\"",
+   "threadSlug": "foi-llandough-roman-villa-medieval-house-finds-were-destroyed-in-a-1983-fire",
+   "institutions": [
+    "heneb"
+   ],
+   "first": "2026-09-24T15:05:15Z",
+   "last": "2026-11-04T09:43:56Z",
+   "count": 5,
+   "messageIds": [
+    "gm-1a0d3f30a932fcc1",
+    "gm-1a187d4ad88af9f7",
+    "gm-1a19c57caf4e7c8d",
+    "gm-1a19d763c1d8e72c",
+    "gm-1a1a5f1d2e236422"
+   ]
+  },
   {
    "threadId": "gt-1a194ace545be9b5",
    "subject": "RE: Catalogue search request — aerial photographs of Llandough-juxta-Penarth / Leckwith, Vale of Glamorgan (1947–2009)",
@@ -194,42 +232,6 @@
    "count": 1,
    "messageIds": [
     "gm-1a19e70d5fe53b8f"
-   ]
-  },
-  {
-   "threadId": "gt-1a0d3d85a7ef4715",
-   "subject": "FOI \"Llandough Roman villa & medieval house finds were destroyed in a 1983 fire\"",
-   "threadSlug": "foi-llandough-roman-villa-medieval-house-finds-were-destroyed-in-a-1983-fire",
-   "institutions": [
-    "heneb"
-   ],
-   "first": "2026-09-24T15:05:15Z",
-   "last": "2026-11-02T18:13:00Z",
-   "count": 4,
-   "messageIds": [
-    "gm-1a0d3f30a932fcc1",
-    "gm-1a187d4ad88af9f7",
-    "gm-1a19c57caf4e7c8d",
-    "gm-1a19d763c1d8e72c"
-   ]
-  },
-  {
-   "threadId": "gt-1a0bbdf18c9ea3b9",
-   "subject": "Great House Farm, Llandough, Cardiff",
-   "threadSlug": "great-house-farm-llandough-cardiff",
-   "institutions": [
-    "heneb"
-   ],
-   "first": "2026-09-19T22:55:27Z",
-   "last": "2026-11-02T18:12:00Z",
-   "count": 6,
-   "messageIds": [
-    "gm-1a0bbe1ba706aa71",
-    "gm-1a145570b9618f41",
-    "gm-1a1563a1cfcaeb44",
-    "gm-1a187d3861d452a8",
-    "gm-1a19c598a5a89f6f",
-    "gm-1a19d753c856994f"
    ]
   },
   {
