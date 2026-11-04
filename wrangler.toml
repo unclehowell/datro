@@ -1,0 +1,10 @@
+name = "hive-ingest"
+main = "worker/index.js"
+compatibility_date = "2026-10-01"
+
+# D1 database. If your wrangler version does not auto-create it on deploy, run
+#   npx wrangler d1 create hive
+# and add  database_id = "<id it prints>"  below.
+[[d1_databases]]
+binding = "DB"
+database_name = "hive"

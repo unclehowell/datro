@@ -1,0 +1,60 @@
+name: deploy-hive-ingest
+
+on:
+  push:
+    branches: [hive]
+    paths:
+      - "worker/**"
+      - "wrangler.toml"
+      - "package.json"
+      - ".github/workflows/deploy.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      HUBSPOT_TOKEN: ${{ secrets.HUBSPOT_TOKEN }}
+      OWNER_EMAIL: ${{ secrets.OWNER_EMAIL }}
+      OWNER_CONTACT_ID: ${{ secrets.OWNER_CONTACT_ID }}
+    steps:
+      - name: Check secrets are present
+        id: gate
+        run: |
+          missing=""
+          for v in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID HUBSPOT_TOKEN OWNER_EMAIL OWNER_CONTACT_ID; do
+            if [ -z "${!v}" ]; then missing="$missing $v"; fi
+          done
+          if [ -n "$missing" ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Nothing deployed. Missing GitHub secrets:$missing"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.gate.outputs.ready == 'true'
+
+      - uses: actions/setup-node@v4
+        if: steps.gate.outputs.ready == 'true'
+        with:
+          node-version: 22
+
+      - name: Install and test
+        if: steps.gate.outputs.ready == 'true'
+        run: |
+          npm install --no-audit --no-fund
+          npm test
+
+      - name: Deploy Worker and set secrets
+        if: steps.gate.outputs.ready == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          secrets: |
+            HUBSPOT_TOKEN
+            OWNER_EMAIL
+            OWNER_CONTACT_ID

@@ -1,0 +1,14 @@
+{
+  "name": "hive-ingest",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test worker/classify.test.mjs worker/index.test.mjs"
+  },
+  "dependencies": {
+    "postal-mime": "^2.0.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
