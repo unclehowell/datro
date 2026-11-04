@@ -1,9 +1,9 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-11-03T14:33:17Z",
- "count": 1000,
- "threadCount": 537,
+ "generated": "2026-11-04T08:14:23Z",
+ "count": 1003,
+ "threadCount": 540,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
@@ -13,6 +13,51 @@
   "text": "/mail/<id>.txt"
  },
  "records": [
+  {
+   "id": "gm-1a1a2f9cf898d117",
+   "gmailMessageId": "1a1a2f9cf898d117",
+   "threadId": "gt-1a194ace545be9b5",
+   "date": "2026-11-03T19:54:00Z",
+   "direction": "received",
+   "from": "T Spencer",
+   "institutions": [],
+   "subject": "RE: Catalogue search request — aerial photographs of Llandough-juxta-Penarth / Leckwith, Vale of Glamorgan (1947–2009)",
+   "threadSlug": "catalogue-search-request-aerial-photographs-of-llandough-juxta-penarth-leckwith",
+   "refs": [],
+   "textUrl": "/mail/gm-1a1a2f9cf898d117.txt",
+   "jsonUrl": "/api/message/gm-1a1a2f9cf898d117.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1a210b4bab51e0",
+   "gmailMessageId": "1a1a210b4bab51e0",
+   "threadId": "gt-1a19a7459e999f25",
+   "date": "2026-11-03T15:39:21Z",
+   "direction": "received",
+   "from": "Sarah Jayne",
+   "institutions": [],
+   "subject": "RE: Casework archive enquiry - Tŷ Mawr (Great House Farm), Llandough-juxta-Penarth, demolished 1988",
+   "threadSlug": "casework-archive-enquiry-ty-mawr-great-house-farm-llandough-juxta-penarth-demoli",
+   "refs": [],
+   "textUrl": "/mail/gm-1a1a210b4bab51e0.txt",
+   "jsonUrl": "/api/message/gm-1a1a210b4bab51e0.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1a1f793e7f1dcc",
+   "gmailMessageId": "1a1a1f793e7f1dcc",
+   "threadId": "gt-1a1a1f793e7f1dcc",
+   "date": "2026-11-03T15:11:56Z",
+   "direction": "received",
+   "from": "Patrick Murphy",
+   "institutions": [],
+   "subject": "Automatic reply: Great House Farm / Tŷ Mawr, Llandough – follow-up to my preservation notice of 28 September 2026",
+   "threadSlug": "automatic-reply-great-house-farm-ty-mawr-llandough-follow-up-to-my-preservation",
+   "refs": [],
+   "textUrl": "/mail/gm-1a1a1f793e7f1dcc.txt",
+   "jsonUrl": "/api/message/gm-1a1a1f793e7f1dcc.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
   {
    "id": "gm-1a1a18c70c0541c1",
    "gmailMessageId": "1a1a18c70c0541c1",
