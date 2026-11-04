@@ -1,9 +1,9 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-11-04T10:11:29Z",
- "count": 1005,
- "threadCount": 540,
+ "generated": "2026-11-04T12:20:27Z",
+ "count": 1008,
+ "threadCount": 543,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
@@ -13,6 +13,46 @@
   "text": "/mail/<id>.txt"
  },
  "threads": [
+  {
+   "threadId": "gt-1a1a63e47a607f6f",
+   "subject": "Further to Your Enquiry: Ref: 261031-6910045 ABR No: Z084NQV Title No: WA231076",
+   "threadSlug": "further-to-your-enquiry-ref-261031-6910045-abr-no-z084nqv-title-no-wa231076",
+   "institutions": [
+    "hmlr"
+   ],
+   "first": "2026-11-04T11:07:38Z",
+   "last": "2026-11-04T11:07:38Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1a63e47a607f6f"
+   ]
+  },
+  {
+   "threadId": "gt-1a19a7474f13a650",
+   "subject": "Re: Request to share a local heritage records call with members in Leckwith and Penarth Road",
+   "threadSlug": "request-to-share-a-local-heritage-records-call-with-members-in-leckwith-and-pena",
+   "institutions": [],
+   "first": "2026-11-04T10:38:07Z",
+   "last": "2026-11-04T10:38:07Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1a623494de259e"
+   ]
+  },
+  {
+   "threadId": "gt-1a1894270ea7566a",
+   "subject": "RE: Follow-up preservation request: Church View Close / Great House Farm, Llandough: title deeds bundle (WA231076 / WA240304)",
+   "threadSlug": "follow-up-preservation-request-church-view-close-great-house-farm-llandough-titl",
+   "institutions": [
+    "persimmon"
+   ],
+   "first": "2026-11-04T10:13:05Z",
+   "last": "2026-11-04T10:13:05Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1a60cd429a83fc"
+   ]
+  },
   {
    "threadId": "gt-1a0bbdf18c9ea3b9",
    "subject": "Great House Farm, Llandough, Cardiff",
