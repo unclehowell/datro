@@ -1,0 +1,23 @@
+{
+ "url": "https://en.wikipedia.org/wiki/University_Hospital_Llandough",
+ "key": "en.wikipedia.org/wiki/University_Hospital_Llandough",
+ "path": "/20261104065143/en.wikipedia.org/wiki/University_Hospital_Llandough/",
+ "captured_utc": "2026-11-04T06:51:43Z",
+ "captured_human": "04 Nov 2026 06:51 UTC",
+ "source": "live",
+ "http_status": 200,
+ "content_type": "text/html",
+ "mode": "single-file (monolith, CSS kept; no scripts, fonts or images), captured from Tab's machine",
+ "title": "University Hospital Llandough - Wikipedia",
+ "sha256": "b7edcec7515175b99cb66bfca254b2be9b51c8d102453d1fbed33067326c5c44",
+ "text_sha256": "9dc6c78e7f0713f45c19ccdec83831e8f1abb5319d60ea2d3866c7373e50bc76",
+ "bytes": 453951,
+ "file": "raw.html",
+ "captured_from": "Tab's machine",
+ "how": "captured from Tab's machine: plain fetch with a normal browser user agent, single file by monolith",
+ "matched_terms": [
+  "Llandough"
+ ],
+ "redaction": "1 secret setting value(s) the site exposed in its HTML replaced with [REDACTED]",
+ "raw_note": "the first single-file render (all images inlined, about 8 MB) was over the upload limit; this render keeps the page text, links and styles"
+}

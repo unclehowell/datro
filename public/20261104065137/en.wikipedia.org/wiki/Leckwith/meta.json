@@ -1,0 +1,24 @@
+{
+ "url": "https://en.wikipedia.org/wiki/Leckwith",
+ "key": "en.wikipedia.org/wiki/Leckwith",
+ "path": "/20261104065137/en.wikipedia.org/wiki/Leckwith/",
+ "captured_utc": "2026-11-04T06:51:37Z",
+ "captured_human": "04 Nov 2026 06:51 UTC",
+ "source": "live",
+ "http_status": 200,
+ "content_type": "text/html",
+ "mode": "single-file (monolith, CSS kept; no scripts, fonts or images), captured from Tab's machine",
+ "title": "Leckwith - Wikipedia",
+ "sha256": "a2902825779d7b64934e60a1c5ea8b13d50d478324c83a9d368a7578c5f94ef2",
+ "text_sha256": "bb2e08549708f1fdf12ce6e38fa9b3b25d4090e7823f2eb48cd427b9c332960b",
+ "bytes": 490637,
+ "file": "raw.html",
+ "captured_from": "Tab's machine",
+ "how": "captured from Tab's machine: plain fetch with a normal browser user agent, single file by monolith",
+ "matched_terms": [
+  "Llandough",
+  "Leckwith"
+ ],
+ "redaction": "1 secret setting value(s) the site exposed in its HTML replaced with [REDACTED]",
+ "raw_note": "the first single-file render (all images inlined, about 8 MB) was over the upload limit; this render keeps the page text, links and styles"
+}
