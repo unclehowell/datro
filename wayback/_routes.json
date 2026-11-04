@@ -1,0 +1,13 @@
+{
+ "version": 1,
+ "description": "Static-first (3 Nov 2026): the Function only runs where functions/[[path]].js acts (R2 media roots and the /websites/ 301s); every other path is a plain static file. Undo: delete this file. \u2014 Sion's Tab agent",
+ "include": [
+  "/images/*",
+  "/pdf/*",
+  "/text/*",
+  "/video/*",
+  "/websites",
+  "/websites/*"
+ ],
+ "exclude": []
+}
