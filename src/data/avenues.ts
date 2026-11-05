@@ -1178,8 +1178,15 @@ function applyRamps(list: AvInstitution[]): AvInstitution[] {
  */
 const corrG = corrJson as unknown as { emails: Record<string, { g?: number }>; extra: { id: string; g?: number }[] };
 const hiddenIdx = new Set<number>();
+// Inbound only (5 Nov 2026, the Executive's ask): our own outbound emails stay in the record but are not drawn;
+// calls stay, and each rung keeps its own dates and deadlines. — Sion's Tab agent
+const phoneIdx = new Set<number>();
+for (const x of corrG.extra as { id: string; k?: string }[]) if (x.k === "phone" && extraIndex[x.id] !== undefined) phoneIdx.add(extraIndex[x.id]);
 avenueEmails.forEach((e, i) => {
-  if (e.out) return;
+  if (e.out) {
+    if (!phoneIdx.has(i)) hiddenIdx.add(i);
+    return;
+  }
   const c = corrG.emails[String(i)];
   if (c ? c.g === 1 : e.o === "auto" || e.o === "ack") hiddenIdx.add(i);
 });

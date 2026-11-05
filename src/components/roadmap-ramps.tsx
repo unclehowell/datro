@@ -702,7 +702,7 @@ function Sheet({ hit, lane }: { hit: Hit; lane: Lane }) {
           {hit.items.map((e) => (
             <li key={e.id} className="border-t border-line pt-2">
               <p className="text-xs text-muted">
-                {fmt(e.date)} · {e.dir === "sent" ? "Sent by the family" : "Reply received"} ·{" "}
+                {fmt(e.date)} · Reply received ·{" "}
                 <span style={{ color: kOf(e.cls).colour }}>{kOf(e.cls).label}</span>
               </p>
               {e.emoji || e.statute ? (
@@ -898,6 +898,11 @@ export function RoadmapRamps({ preferName }: { preferName?: string }) {
               if (!l) continue;
               for (const [k, arr] of Object.entries(keys)) l[k] = [...((l[k] as unknown[]) ?? []), ...(arr ?? [])];
             }
+          // Inbound only (5 Nov 2026, the Executive's ask): outbound emails are not drawn; counts follow what is shown.
+          for (const l of j.lanes) {
+            l.emails = (l.emails ?? []).filter((e) => e.dir !== "sent");
+            l.counts = { ...l.counts, emails: l.emails.length, sent: 0, received: l.emails.length };
+          }
           return j as Roadmap;
         }),
       )

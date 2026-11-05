@@ -24,6 +24,8 @@ const D = data as unknown as {
   generated: string; asOf: string; mailGenerated: string; mailCount: number; trackerThrough: string; method: string;
   institutions: Inst[]; artifacts: Artifact[]; reasonLegend?: { code: string; icon: string; label: string }[];
 };
+// Inbound only (5 Nov 2026, the Executive's ask): our own outbound emails are not shown; request dates (the clocks) stay.
+for (const i of D.institutions) i.mails = i.mails.filter((m) => m[1] !== "s");
 
 export const REQ_STATUS: Record<string, { label: string; colour: string }> = {
   answered: { label: "Answered", colour: "#3fb950" },
@@ -140,7 +142,7 @@ function InstPicker({ instId, onChange }: { instId: string; onChange: (id: strin
     >
       {D.institutions.map((i) => (
         <option key={i.id} value={i.id}>
-          {i.name} · {i.sent + i.received}
+          {i.name} · {i.received}
         </option>
       ))}
     </select>
@@ -165,7 +167,7 @@ function Timeline({ inst }: { inst: Inst }) {
   };
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className="mt-3 w-full rounded-lg border border-line bg-surface/60" role="img"
-      aria-label={`${inst.sent} emails sent and ${inst.received} received, ${fmtDate(inst.first)} to ${fmtDate(inst.last)}`}>
+      aria-label={`${inst.received} emails received, ${fmtDate(inst.first)} to ${fmtDate(inst.last)}`}>
       <line x1={P} x2={W - P} y1={MID} y2={MID} stroke="var(--color-line)" />
       {reqs.map((r, i) => (
         <g key={"r" + i}>
@@ -189,7 +191,7 @@ function Timeline({ inst }: { inst: Inst }) {
         </a>
       ))}
       <line x1={x(D.asOf)} x2={x(D.asOf)} y1={8} y2={H - 8} stroke="var(--color-faint)" strokeDasharray="2 3" />
-      <text x={P} y={11} fontSize={8} fill="var(--color-muted)">sent ▲</text>
+      <text x={P} y={11} fontSize={8} fill="var(--color-muted)">request dates on the line</text>
       <text x={P} y={H - 4} fontSize={8} fill="var(--color-muted)">replies ▼</text>
       <text x={W - P} y={11} fontSize={8} fill="var(--color-muted)" textAnchor="end">{fmtDate(dates[0])} → today</text>
     </svg>
@@ -206,7 +208,7 @@ export function CorrSheet({ instId, onInst }: { instId: string; onInst: (id: str
       <h2 className="mt-1 font-serif text-2xl leading-tight">{inst.name}</h2>
       <InstPicker instId={inst.id} onChange={onInst} />
       <p className="mt-2 text-sm text-muted">
-        {inst.sent} sent · {inst.received} received · {fmtDate(inst.first)} – {fmtDate(inst.last)}
+        {inst.received} received · {fmtDate(inst.first)} – {fmtDate(inst.last)}
       </p>
       <Timeline inst={inst} />
       <ReasonLegend inst={inst} />

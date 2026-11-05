@@ -249,7 +249,7 @@ function RungSheet({ inst, level, index }: { inst: AvInstitution; level: AvLevel
       <div className="mt-3">
         <Row k="Time limit" v={rung.time && rung.time !== "—" ? rung.time : undefined} />
         <Row k="Cost" v={rung.cost && rung.cost !== "—" ? rung.cost : undefined} />
-        <Row k="Emails" v={level.items.length ? `${sent} sent · ${got} received` : undefined} />
+        <Row k="Emails" v={level.items.length ? `${got} received` : undefined} />
         <Row
           k="First / last"
           v={
@@ -629,7 +629,7 @@ function GameSheet({
           <Row k="Authority" v={req?.authority} />
           <Row k="Request status" v={req?.status} />
           <Row k="Request dates" v={req && !req.neutral ? `${fmtDate(req.first)} – ${fmtDate(req.last)}` : undefined} />
-          <Row k="Messages" v={req ? `${req.sent} sent · ${req.received} received` : undefined} />
+          <Row k="Messages" v={req ? `${req.received} received` : undefined} />
           <Row k="Source" v="WhatDoTheyKnow" />
         </div>
       </div>
@@ -763,7 +763,7 @@ function LevelSheet({
       {level.hand && <p className="mt-2 text-sm leading-relaxed text-fg">{level.hand}</p>}
       <div className="mt-3">
         <Row k="Law" v={ph.law !== "—" ? ph.law : undefined} />
-        <Row k="Emails" v={level.items.length ? `${sent} sent · ${got} received` : undefined} />
+        <Row k="Emails" v={level.items.length ? `${got} received` : undefined} />
         <Row
           k="First / last"
           v={
