@@ -1,9 +1,9 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-11-04T12:20:27Z",
- "count": 1008,
- "threadCount": 543,
+ "generated": "2026-11-05T12:39:52Z",
+ "count": 1016,
+ "threadCount": 548,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
@@ -13,6 +13,123 @@
   "text": "/mail/<id>.txt"
  },
  "threads": [
+  {
+   "threadId": "gt-1a1ab59193617580",
+   "subject": "HSE Reference 2026/224580, Your Reference: Freedom of Information request - 1988–89 demolition notifications, Great House Farm, Llandough (Vale of Glamorgan)",
+   "threadSlug": "hse-reference-2026-224580-your-reference-freedom-of-information-request-198889-d",
+   "institutions": [],
+   "first": "2026-11-05T10:55:00Z",
+   "last": "2026-11-05T10:55:00Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1ab59193617580"
+   ]
+  },
+  {
+   "threadId": "gt-1a141fc4254e01d4",
+   "subject": "New FOI request (outside FOI/2026/09) — 1610 Herbert survey S7 and Cardiff MSS microfilm of Bute X.6(12) — Llandough-juxta-Penarth",
+   "threadSlug": "new-foi-request-outside-foi-2026-09-1610-herbert-survey-s7-and-cardiff-mss-micro",
+   "institutions": [
+    "nlw"
+   ],
+   "first": "2026-10-15T23:53:35Z",
+   "last": "2026-11-05T00:02:43Z",
+   "count": 3,
+   "messageIds": [
+    "gm-1a141fc481dbd2e5",
+    "gm-1a1878f023b1d4ab",
+    "gm-1a1a903da86cb754"
+   ]
+  },
+  {
+   "threadId": "gt-1a0165fcfe194d80",
+   "subject": "Access to Deceased Health Records / FOI Request – William Buckler (1990) and Mary Doreen Williams (1983)",
+   "threadSlug": "access-to-deceased-health-records-foi-request-william-buckler-1990-and-mary-dore",
+   "institutions": [
+    "nhs-cav"
+   ],
+   "first": "2026-08-20T19:34:16Z",
+   "last": "2026-11-04T16:47:34Z",
+   "count": 4,
+   "messageIds": [
+    "gm-1a020aac15169bb2",
+    "gm-1a0234649e74f858",
+    "gm-1a15f63308fcfde9",
+    "gm-1a1a775814e5a8ca"
+   ]
+  },
+  {
+   "threadId": "gt-1a1a72557f014356",
+   "subject": "Subject Access Request: D260928",
+   "threadSlug": "subject-access-request-d260928",
+   "institutions": [
+    "hmlr"
+   ],
+   "first": "2026-11-04T15:20:00Z",
+   "last": "2026-11-04T15:20:00Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1a72557f014356"
+   ]
+  },
+  {
+   "threadId": "gt-19fc7d9d48f162aa",
+   "subject": "FOI 2026-020 - Great House Farm, Llandough | Cardiff Castle Furniture",
+   "threadSlug": "foi-2026-020-great-house-farm-llandough-cardiff-castle-furniture",
+   "institutions": [
+    "museum"
+   ],
+   "first": "2026-08-03T13:39:22Z",
+   "last": "2026-11-04T15:16:21Z",
+   "count": 5,
+   "messageIds": [
+    "gm-19fc7d9d48f162aa",
+    "gm-19fc87529c174081",
+    "gm-19fff7114be8ace0",
+    "gm-1a0015c1d2cc29c1",
+    "gm-1a1a7220addb84b4"
+   ]
+  },
+  {
+   "threadId": "gt-1a1a7046431c9ee0",
+   "subject": "SAR 1293/26- Attached Document for your attention",
+   "threadSlug": "sar-1293-26-attached-document-for-your-attention",
+   "institutions": [
+    "swp"
+   ],
+   "first": "2026-11-04T14:43:53Z",
+   "last": "2026-11-04T14:43:53Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1a7046431c9ee0"
+   ]
+  },
+  {
+   "threadId": "gt-1a1a6a4d15a0e167",
+   "subject": "Your Ref: 260927-6756312 Our Ref: WA231076/D/125/CT",
+   "threadSlug": "your-ref-260927-6756312-our-ref-wa231076-d-125-ct",
+   "institutions": [
+    "hmlr"
+   ],
+   "first": "2026-11-04T12:59:41Z",
+   "last": "2026-11-04T12:59:41Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1a6a4d15a0e167"
+   ]
+  },
+  {
+   "threadId": "gt-1a194ad0891fe942",
+   "subject": "RE: Data search request — historic site and habitat records, Llandough / Leckwith woodland (1970–2010)",
+   "threadSlug": "data-search-request-historic-site-and-habitat-records-llandough-leckwith-woodlan",
+   "institutions": [],
+   "first": "2026-11-04T12:23:12Z",
+   "last": "2026-11-04T12:23:12Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1a6837d9cf3629"
+   ]
+  },
   {
    "threadId": "gt-1a1a63e47a607f6f",
    "subject": "Further to Your Enquiry: Ref: 261031-6910045 ABR No: Z084NQV Title No: WA231076",
@@ -689,21 +806,6 @@
    "messageIds": [
     "gm-1a18345ba8c044f9",
     "gm-1a18790e834b0c5b"
-   ]
-  },
-  {
-   "threadId": "gt-1a141fc4254e01d4",
-   "subject": "New FOI request (outside FOI/2026/09) — 1610 Herbert survey S7 and Cardiff MSS microfilm of Bute X.6(12) — Llandough-juxta-Penarth",
-   "threadSlug": "new-foi-request-outside-foi-2026-09-1610-herbert-survey-s7-and-cardiff-mss-micro",
-   "institutions": [
-    "nlw"
-   ],
-   "first": "2026-10-15T23:53:35Z",
-   "last": "2026-10-29T12:07:38Z",
-   "count": 2,
-   "messageIds": [
-    "gm-1a141fc481dbd2e5",
-    "gm-1a1878f023b1d4ab"
    ]
   },
   {
@@ -1425,22 +1527,6 @@
    "count": 1,
    "messageIds": [
     "gm-1a15f63521eae4d2"
-   ]
-  },
-  {
-   "threadId": "gt-1a0165fcfe194d80",
-   "subject": "Access to Deceased Health Records / FOI Request – William Buckler (1990) and Mary Doreen Williams (1983)",
-   "threadSlug": "access-to-deceased-health-records-foi-request-william-buckler-1990-and-mary-dore",
-   "institutions": [
-    "nhs-cav"
-   ],
-   "first": "2026-08-20T19:34:16Z",
-   "last": "2026-10-21T16:54:58Z",
-   "count": 3,
-   "messageIds": [
-    "gm-1a020aac15169bb2",
-    "gm-1a0234649e74f858",
-    "gm-1a15f63308fcfde9"
    ]
   },
   {
@@ -5312,23 +5398,6 @@
     "gm-19fd2730a7c87340",
     "gm-19fd32f3737056ed",
     "gm-1a00198b4da13afc"
-   ]
-  },
-  {
-   "threadId": "gt-19fc7d9d48f162aa",
-   "subject": "FOI 2026-020 - Great House Farm, Llandough | Cardiff Castle Furniture",
-   "threadSlug": "foi-2026-020-great-house-farm-llandough-cardiff-castle-furniture",
-   "institutions": [
-    "museum"
-   ],
-   "first": "2026-08-03T13:39:22Z",
-   "last": "2026-08-14T17:40:08Z",
-   "count": 4,
-   "messageIds": [
-    "gm-19fc7d9d48f162aa",
-    "gm-19fc87529c174081",
-    "gm-19fff7114be8ace0",
-    "gm-1a0015c1d2cc29c1"
    ]
   },
   {

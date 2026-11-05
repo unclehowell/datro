@@ -1,9 +1,9 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-11-04T12:20:27Z",
- "count": 1008,
- "threadCount": 543,
+ "generated": "2026-11-05T12:39:52Z",
+ "count": 1016,
+ "threadCount": 548,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
@@ -13,6 +13,168 @@
   "text": "/mail/<id>.txt"
  },
  "records": [
+  {
+   "id": "gm-1a1ab59193617580",
+   "gmailMessageId": "1a1ab59193617580",
+   "threadId": "gt-1a1ab59193617580",
+   "date": "2026-11-05T10:55:00Z",
+   "direction": "received",
+   "from": "FOI-EIRcentralteam",
+   "institutions": [],
+   "subject": "HSE Reference 2026/224580, Your Reference: Freedom of Information request - 1988–89 demolition notifications, Great House Farm, Llandough (Vale of Glamorgan)",
+   "threadSlug": "hse-reference-2026-224580-your-reference-freedom-of-information-request-198889-d",
+   "refs": [
+    "2026/224580"
+   ],
+   "textUrl": "/mail/gm-1a1ab59193617580.txt",
+   "jsonUrl": "/api/message/gm-1a1ab59193617580.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1a903da86cb754",
+   "gmailMessageId": "1a1a903da86cb754",
+   "threadId": "gt-1a141fc4254e01d4",
+   "date": "2026-11-05T00:02:43Z",
+   "direction": "received",
+   "from": "National Library of Wales",
+   "institutions": [
+    {
+     "id": "nlw",
+     "name": "National Library of Wales"
+    }
+   ],
+   "subject": "[NLW English] New FOI request (outside FOI/2026/09) — 1610 Herbert survey S7 and Cardiff MSS microfilm of Bute X.6(12) — Llandough-juxta-Penarth",
+   "threadSlug": "nlw-english-new-foi-request-outside-foi-2026-09-1610-herbert-survey-s7-and-cardi",
+   "refs": [
+    "FOI/2026/16"
+   ],
+   "textUrl": "/mail/gm-1a1a903da86cb754.txt",
+   "jsonUrl": "/api/message/gm-1a1a903da86cb754.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1a775814e5a8ca",
+   "gmailMessageId": "1a1a775814e5a8ca",
+   "threadId": "gt-1a0165fcfe194d80",
+   "date": "2026-11-04T16:47:34Z",
+   "direction": "received",
+   "from": "CAV.AccesToRecords (Cardiff and Vale UHB - Health Records)",
+   "institutions": [
+    {
+     "id": "nhs-cav",
+     "name": "Cardiff and Vale University Health Board"
+    }
+   ],
+   "subject": "Re: Access to Deceased Health Records / FOI Request – William Buckler (1990) and Mary Doreen Williams (1983)",
+   "threadSlug": "access-to-deceased-health-records-foi-request-william-buckler-1990-and-mary-dore",
+   "refs": [],
+   "textUrl": "/mail/gm-1a1a775814e5a8ca.txt",
+   "jsonUrl": "/api/message/gm-1a1a775814e5a8ca.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1a72557f014356",
+   "gmailMessageId": "1a1a72557f014356",
+   "threadId": "gt-1a1a72557f014356",
+   "date": "2026-11-04T15:20:00Z",
+   "direction": "received",
+   "from": "_DataProtection",
+   "institutions": [
+    {
+     "id": "hmlr",
+     "name": "HM Land Registry"
+    }
+   ],
+   "subject": "Subject Access Request: D260928",
+   "threadSlug": "subject-access-request-d260928",
+   "refs": [
+    "D260928"
+   ],
+   "textUrl": "/mail/gm-1a1a72557f014356.txt",
+   "jsonUrl": "/api/message/gm-1a1a72557f014356.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1a7220addb84b4",
+   "gmailMessageId": "1a1a7220addb84b4",
+   "threadId": "gt-19fc7d9d48f162aa",
+   "date": "2026-11-04T15:16:21Z",
+   "direction": "received",
+   "from": "FOI Requests",
+   "institutions": [
+    {
+     "id": "museum",
+     "name": "Amgueddfa Cymru - Museum Wales"
+    }
+   ],
+   "subject": "FOI 2026-020 - Great House Farm, Llandough | Cardiff Castle Furniture",
+   "threadSlug": "foi-2026-020-great-house-farm-llandough-cardiff-castle-furniture",
+   "refs": [
+    "FOI 2026-020"
+   ],
+   "textUrl": "/mail/gm-1a1a7220addb84b4.txt",
+   "jsonUrl": "/api/message/gm-1a1a7220addb84b4.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1a7046431c9ee0",
+   "gmailMessageId": "1a1a7046431c9ee0",
+   "threadId": "gt-1a1a7046431c9ee0",
+   "date": "2026-11-04T14:43:53Z",
+   "direction": "received",
+   "from": "Subject Access Requests",
+   "institutions": [
+    {
+     "id": "swp",
+     "name": "South Wales Police"
+    }
+   ],
+   "subject": "SAR 1293/26- Attached Document for your attention",
+   "threadSlug": "sar-1293-26-attached-document-for-your-attention",
+   "refs": [
+    "SAR 1293/26"
+   ],
+   "textUrl": "/mail/gm-1a1a7046431c9ee0.txt",
+   "jsonUrl": "/api/message/gm-1a1a7046431c9ee0.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1a6a4d15a0e167",
+   "gmailMessageId": "1a1a6a4d15a0e167",
+   "threadId": "gt-1a1a6a4d15a0e167",
+   "date": "2026-11-04T12:59:41Z",
+   "direction": "received",
+   "from": "HM Land Registry",
+   "institutions": [
+    {
+     "id": "hmlr",
+     "name": "HM Land Registry"
+    }
+   ],
+   "subject": "Your Ref: 260927-6756312 Our Ref: WA231076/D/125/CT",
+   "threadSlug": "your-ref-260927-6756312-our-ref-wa231076-d-125-ct",
+   "refs": [
+    "260927-6756312; WA231076/D/125/CT"
+   ],
+   "textUrl": "/mail/gm-1a1a6a4d15a0e167.txt",
+   "jsonUrl": "/api/message/gm-1a1a6a4d15a0e167.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1a6837d9cf3629",
+   "gmailMessageId": "1a1a6837d9cf3629",
+   "threadId": "gt-1a194ad0891fe942",
+   "date": "2026-11-04T12:23:12Z",
+   "direction": "received",
+   "from": "Rebecca Robinson",
+   "institutions": [],
+   "subject": "RE: Data search request — historic site and habitat records, Llandough / Leckwith woodland (1970–2010)",
+   "threadSlug": "data-search-request-historic-site-and-habitat-records-llandough-leckwith-woodlan",
+   "refs": [],
+   "textUrl": "/mail/gm-1a1a6837d9cf3629.txt",
+   "jsonUrl": "/api/message/gm-1a1a6837d9cf3629.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
   {
    "id": "gm-1a1a63e47a607f6f",
    "gmailMessageId": "1a1a63e47a607f6f",
