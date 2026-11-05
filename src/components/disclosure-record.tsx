@@ -84,7 +84,7 @@ function Detail({ c }: { c: Conv }) {
     ["First real reply", c.fr ? fmt(c.fr) : c.via === "Email" ? "none" : undefined],
     ["Days waited", c.d == null ? undefined : String(c.d)],
     ["Exemptions cited", c.ex.length ? c.ex.join(", ") : undefined],
-    ["Messages", c.ns == null ? undefined : `${c.ns} sent · ${c.nr} received (${c.na} acknowledgements)`],
+    ["Messages", c.nr == null ? undefined : `${c.nr} received (${c.na} acknowledgements)`],
   ];
   return (
     <div className="mt-2 rounded-xl border border-line bg-surface p-3 text-sm" style={{ borderLeft: `4px solid ${k.colour}` }}>
