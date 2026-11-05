@@ -17,6 +17,9 @@ import { BoardIcon, ForecastAssumptions, ForecastBoard, ForecastScatter, GraphIc
 // Hive drafts pipeline (https://hive.bucklerfamily.estate/hive.json, CORS *): metadata only, one badge per tier for drafts to this lane's body. — Sion's Tab agent, 23 Oct 2026
 type HiveDraft = { draft: string; version?: string; status?: string; tier?: string; context?: { dartboard?: { lane?: string | null } | null } | null };
 const HIVE = "https://hive.bucklerfamily.estate";
+/** Reply classes the shared CLASS map lacks (5 Nov 2026): without this a SAR response drew as a hollow "No reply". — Sion's Tab agent */
+const KX: Record<string, { label: string; colour: string; hollow?: boolean }> = { "subject-access response": { label: "SAR response", colour: "#0ea5e9" }, extension: { label: "Holding reply / extension", colour: "#b8b0a8" } };
+const kOf = (c: string) => CLASS[c] ?? KX[c] ?? CLASS["no reply"];
 const HIVE_TIERS = ["working", "ready", "definitely_ready", "gmail_draft", "sent_archived"] as const;
 const HIVE_LABEL: Record<string, string> = { working: "IN REVIEW", ready: "READY TO SEND", definitely_ready: "DEFINITELY READY TO SEND", gmail_draft: "GMAIL DRAFT", sent_archived: "WAYBACK (sent)" };
 const hiveTier = (d: HiveDraft): string => {
@@ -29,6 +32,7 @@ type Step = {
   n: number; key: string; label: string; date: string | null; date_kind: "actual" | "projected";
   status: "done" | "missed" | "pending" | "not yet reached" | "na"; basis: string; body: string | null;
   link: string | null; ev: string | null; note: string | null; axis: string | null; rule?: string; req?: string;
+  src?: string | null; src_title?: string; checked?: boolean; check?: string; state?: string;
 };
 type Email = {
   id: string; date: string; dir: "sent" | "received"; cls: string; subject: string; summary: string;
@@ -36,6 +40,8 @@ type Email = {
   deadline: string | null; deadline_met: string;
   /** A reply that asks for a fee is marked £ (the body asked for a fee). */
   fee?: string | null;
+  /** 5 Nov 2026: what the email is (emoji + label) and the law it falls under (ladders.py). */
+  type?: string; emoji?: string; type_label?: string; statute?: string;
 };
 type Due = { date: string; kind: string; cid: string | null; ev: string | null; url: string | null; title: string; ref: string; regime?: string; basis?: string; status?: string };
 type Lane = {
@@ -45,14 +51,15 @@ type Lane = {
   counts: { emails: number; sent: number; received: number; requests: number; missed: number; met: number; expected: number; red_house?: number; red_fish?: number };
   steps: Step[]; emails: Email[]; expected: Due[]; missed: Due[]; met: Due[];
   requests: { cid: string; ev: string | null; url: string | null; title: string }[];
-  route?: string; route_basis?: string; fails?: Fail[];
+  route?: string; route_basis?: string; fails?: Fail[]; guard?: string[];
 };
 /** A failure marker from work/failures-ledger: red house = no reply by the due date; red fish = late and/or questions left unanswered. */
 type Fail = {
   icon: "house" | "fish"; date: string; id: string; title: string; ref: string; sent: string; replied: string | null; days: number | null;
   rule: string; rule_url: string; policy: string; policy_url: string; standard_type: string; unanswered: number; finding: string;
 };
-type Roadmap = { as_of: string; generated: string; lanes: Lane[]; totals: { institutions: number; steps: number } };
+type Safe = { title: string; disclaimer: string; ladder: string; checklist: string[]; limits: { name: string; text: string; src: string | null; checked: boolean }[]; checked_on: string };
+type Roadmap = { as_of: string; generated: string; lanes: Lane[]; totals: { institutions: number; steps: number }; safe?: Safe };
 
 const MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const DAY = 86400000;
@@ -617,9 +624,16 @@ function draw(ctx: CanvasRenderingContext2D, lane: Lane, L: ReturnType<typeof la
   for (const s of L.stacks) {
     const show = s.items.slice(0, 3);
     show.forEach((e, i) => {
-      const fill = e.dir === "sent" ? "#e9e2d4" : (CLASS[e.cls] ?? CLASS["no reply"]).colour;
+      const fill = e.dir === "sent" ? "#e9e2d4" : kOf(e.cls).colour;
       envelope(ctx, s.x, s.y - 2 - i * 7, fill, 1, false);
     });
+    const em = show[show.length - 1]?.emoji;
+    if (em) {
+      ctx.font = "8px system-ui, sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(em, s.x - 11, s.y - 2);
+      ctx.textAlign = "start";
+    }
     if (s.items.some((e) => e.dir === "received" && e.fee)) drawPound(ctx, s.x + 9, s.y - 9);
     if (s.items.length > 3) {
       ctx.fillStyle = "#ffd34d";
@@ -689,8 +703,15 @@ function Sheet({ hit, lane }: { hit: Hit; lane: Lane }) {
             <li key={e.id} className="border-t border-line pt-2">
               <p className="text-xs text-muted">
                 {fmt(e.date)} · {e.dir === "sent" ? "Sent by the family" : "Reply received"} ·{" "}
-                <span style={{ color: (CLASS[e.cls] ?? CLASS["no reply"]).colour }}>{(CLASS[e.cls] ?? CLASS["no reply"]).label}</span>
+                <span style={{ color: kOf(e.cls).colour }}>{kOf(e.cls).label}</span>
               </p>
+              {e.emoji || e.statute ? (
+                <p className="text-xs text-muted">
+                  {e.emoji ? `${e.emoji} ` : ""}
+                  {e.type_label ?? ""}
+                  {e.statute ? ` · ${e.statute}` : ""}
+                </p>
+              ) : null}
               <p className="text-sm font-semibold text-fg">{e.subject}</p>
               {e.summary && <p className="text-sm text-muted">{e.summary}</p>}
               {e.dir === "received" && e.fee && <p className="text-xs font-semibold text-brass">£ Fee asked: {e.fee}</p>}
@@ -1118,6 +1139,7 @@ export function RoadmapRamps({ preferName }: { preferName?: string }) {
         <li className="flex items-center gap-1"><span aria-hidden className="inline-flex size-3 items-center justify-center rounded-full bg-[#ffd34d] text-[8px] font-extrabold text-[#0d0b09]">£</span>fee asked</li>
         <li className="flex items-center gap-1"><span className="inline-block h-2 w-1 bg-[#2e9e57]" />deadline met</li>
         <li className="flex items-center gap-1"><span className="inline-block size-2 rounded-full bg-[#2fa36b]" />today</li>
+        <li className="flex items-center gap-1"><span aria-hidden>📨🔔🔁⛔🕳️📂🔒</span>email type and law (tap a stack)</li>
       </ul>
       <ul className="mt-1 flex flex-wrap gap-x-3 gap-y-1 px-1 text-xs text-muted" aria-label="Step status">
         {(Object.keys(STATUS) as Step["status"][]).map((k) => (
@@ -1128,6 +1150,7 @@ export function RoadmapRamps({ preferName }: { preferName?: string }) {
         ))}
       </ul>
 
+      {lane ? <ExhaustLadder lane={lane} safe={data?.safe} /> : null}
       <div className="mt-4 rounded-2xl border border-line bg-surface p-3">
         <h3 className="font-serif text-lg text-fg">Upcoming · next 30 days</h3>
         {!data && !failed && <p className="mt-1 text-sm text-muted">Loading…</p>}
@@ -1195,5 +1218,85 @@ function UpRow({ u, onPick }: { u: Up; onPick: (id: string) => void }) {
         </a>
       )}
     </li>
+  );
+}
+const STATE_COLOUR: Record<string, string> = { done: "#2e9e57", due: "#f0a020", next: "#ffd34d", missed: "#e5484d", "n/a": "#8a817a", later: "#5a7bd8" };
+/** Exhaust every option: this body's own lawful ladder in order, the worst case (last option exhausted) last, with the
+ *  nuisance line beside it. Data: lane.steps (state, rule, src, checked), lane.guard, roadmap.safe (ladders.py). — Sion's Tab agent, 5 Nov 2026 */
+function ExhaustLadder({ lane, safe }: { lane: Lane; safe?: Safe }) {
+  const hasGuard = (lane.guard && lane.guard.length > 0) || !!safe;
+  return (
+    <details className="mt-4 rounded-2xl border border-line bg-surface p-3" open>
+      <summary className="cursor-pointer font-serif text-lg text-fg">Exhaust every option · {lane.name}</summary>
+      <p className="mt-1 text-xs text-muted">
+        The permissible and advised order for this body: first rung first, the worst case (last option exhausted) last. Parallel routes run beside the main line.
+      </p>
+      <ol className="mt-2 space-y-2">
+        {lane.steps.map((s) => {
+          const st = s.state ?? (s.status === "done" ? "done" : s.status === "na" ? "n/a" : s.status === "missed" ? "missed" : s.status === "pending" ? "due" : "later");
+          return (
+            <li key={s.n} className="border-t border-line pt-2">
+              <p className="flex flex-wrap items-center gap-2 text-sm">
+                <span className="rounded-md px-1.5 py-0.5 text-xs font-semibold text-[#0d0b09]" style={{ background: STATE_COLOUR[st] ?? "#5a7bd8" }}>
+                  {st}
+                  {s.date && st !== "n/a" ? ` · ${fmt(s.date)}` : ""}
+                </span>
+                <span className="font-semibold text-fg">
+                  {s.n}. {s.label}
+                </span>
+                {s.req === "parallel" ? <span className="text-xs text-faint">parallel</span> : null}
+                {s.req === "optional" ? <span className="text-xs text-faint">optional</span> : null}
+              </p>
+              {s.rule ? <p className="text-xs text-muted">{s.rule}</p> : null}
+              {s.note ? <p className="text-xs text-muted">{s.note}</p> : null}
+              {s.src ? (
+                <p className="text-xs">
+                  <a href={s.src} target="_blank" rel="noreferrer" className="text-brass underline underline-offset-2">
+                    {s.src_title || "source"}
+                  </a>
+                  {s.checked === false ? <span className="text-faint"> · not checked</span> : null}
+                </p>
+              ) : null}
+            </li>
+          );
+        })}
+      </ol>
+      {hasGuard ? (
+        <div className="mt-4 rounded-xl border border-line p-3">
+          <h4 className="font-serif text-base text-fg">{safe ? safe.title : "Safe pressure"}</h4>
+          {(lane.guard ?? []).map((g, i) => (
+            <p key={`g${i}`} className="mt-1 text-xs text-fg">
+              {g}
+            </p>
+          ))}
+          {safe ? (
+            <>
+              <p className="mt-2 text-xs text-muted">{safe.ladder}</p>
+              <ul className="mt-2 list-disc space-y-1 pl-4 text-xs text-muted">
+                {safe.checklist.map((c, i) => (
+                  <li key={`c${i}`}>{c}</li>
+                ))}
+              </ul>
+              <ul className="mt-2 space-y-1 text-xs text-muted">
+                {safe.limits.map((l, i) => (
+                  <li key={`l${i}`}>
+                    <span className="text-fg">{l.name}</span>: {l.text}{" "}
+                    {l.src ? (
+                      <a href={l.src} target="_blank" rel="noreferrer" className="text-brass underline underline-offset-2">
+                        source
+                      </a>
+                    ) : null}
+                    {l.checked ? null : <span className="text-faint"> (not checked)</span>}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-2 text-xs text-faint">
+                {safe.disclaimer} Sources read {fmt(safe.checked_on)}.
+              </p>
+            </>
+          ) : null}
+        </div>
+      ) : null}
+    </details>
   );
 }
