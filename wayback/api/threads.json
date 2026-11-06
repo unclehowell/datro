@@ -1,9 +1,9 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-11-06T15:16:07Z",
- "count": 1048,
- "threadCount": 572,
+ "generated": "2026-11-06T18:31:52Z",
+ "count": 1053,
+ "threadCount": 575,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
@@ -13,6 +13,87 @@
   "text": "/mail/<id>.txt"
  },
  "threads": [
+  {
+   "threadId": "gt-1a18893b1774cbb8",
+   "subject": "Nomenclature supplement — Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth",
+   "threadSlug": "nomenclature-supplement-great-house-farm-ty-mawr-llandough-juxta-penarth",
+   "institutions": [
+    "ads",
+    "defra",
+    "dwrcymru",
+    "heneb",
+    "mod"
+   ],
+   "first": "2026-10-29T17:08:35Z",
+   "last": "2026-11-06T16:55:08Z",
+   "count": 7,
+   "messageIds": [
+    "gm-1a188a295ded9d32",
+    "gm-1a18cb15f4c25045",
+    "gm-1a19c584b199f286",
+    "gm-1a19d0259a94bf7b",
+    "gm-1a19e5af33e6f01a",
+    "gm-1a1a13324e696412",
+    "gm-1a1b1c926eb3e7d8"
+   ]
+  },
+  {
+   "threadId": "gt-1a1b1c7fc81151c2",
+   "subject": "Bute Estate (Glamorgan) records, 1667 and 1875–1880 — Llandough-juxta-Penarth",
+   "threadSlug": "bute-estate-glamorgan-records-1667-and-18751880-llandough-juxta-penarth",
+   "institutions": [
+    "mount-stuart"
+   ],
+   "first": "2026-11-06T16:53:52Z",
+   "last": "2026-11-06T16:53:52Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1b1c7fc81151c2"
+   ]
+  },
+  {
+   "threadId": "gt-1a1158080de15320",
+   "subject": "Location request — Llandough-juxta-Penarth parish, vestry and tithe records — Great House / Ty Mawr — not a viewing request",
+   "threadSlug": "location-request-llandough-juxta-penarth-parish-vestry-and-tithe-records-great-h",
+   "institutions": [
+    "glamorgan"
+   ],
+   "first": "2026-10-10T19:14:27Z",
+   "last": "2026-11-06T16:48:34Z",
+   "count": 2,
+   "messageIds": [
+    "gm-1a1273cf0b865c62",
+    "gm-1a1b1c32607d809c"
+   ]
+  },
+  {
+   "threadId": "gt-1a11ec02ce8073d9",
+   "subject": "RE: Thank you for the searches and copies – remaining references (2026/4097)",
+   "threadSlug": "thank-you-for-the-searches-and-copies-remaining-references-2026-4097",
+   "institutions": [
+    "glamorgan"
+   ],
+   "first": "2026-11-06T16:24:36Z",
+   "last": "2026-11-06T16:24:36Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1b1ad3cf302ab6"
+   ]
+  },
+  {
+   "threadId": "gt-1a1b19942f38a849",
+   "subject": "Ref No: FOI-26-46 (Mapping Information Great House Farm Red Fen Llandough Cardiff) – Response to request for information",
+   "threadSlug": "ref-no-foi-26-46-mapping-information-great-house-farm-red-fen-llandough-cardiff",
+   "institutions": [
+    "os"
+   ],
+   "first": "2026-11-06T16:02:40Z",
+   "last": "2026-11-06T16:02:40Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1b19942f38a849"
+   ]
+  },
   {
    "threadId": "gt-1a1b10d986074076",
    "subject": "OFFICIAL SENSITIVE: Subject Access Request: D260928 Part 3 of 3 [secure]",
@@ -511,28 +592,6 @@
     "gm-1a12773e24efe302",
     "gm-1a18815b127f1aa5",
     "gm-1a1a18b7f331978c"
-   ]
-  },
-  {
-   "threadId": "gt-1a18893b1774cbb8",
-   "subject": "Nomenclature supplement — Great House Farm / Tŷ Mawr, Llandough-juxta-Penarth",
-   "threadSlug": "nomenclature-supplement-great-house-farm-ty-mawr-llandough-juxta-penarth",
-   "institutions": [
-    "ads",
-    "defra",
-    "heneb",
-    "mod"
-   ],
-   "first": "2026-10-29T17:08:35Z",
-   "last": "2026-11-03T11:36:47Z",
-   "count": 6,
-   "messageIds": [
-    "gm-1a188a295ded9d32",
-    "gm-1a18cb15f4c25045",
-    "gm-1a19c584b199f286",
-    "gm-1a19d0259a94bf7b",
-    "gm-1a19e5af33e6f01a",
-    "gm-1a1a13324e696412"
    ]
   },
   {
@@ -3342,20 +3401,6 @@
    "count": 1,
    "messageIds": [
     "gm-1a1273de2fb6e40c"
-   ]
-  },
-  {
-   "threadId": "gt-1a1158080de15320",
-   "subject": "Location request — Llandough-juxta-Penarth parish, vestry and tithe records — Great House / Ty Mawr — not a viewing request",
-   "threadSlug": "location-request-llandough-juxta-penarth-parish-vestry-and-tithe-records-great-h",
-   "institutions": [
-    "glamorgan"
-   ],
-   "first": "2026-10-10T19:14:27Z",
-   "last": "2026-10-10T19:14:27Z",
-   "count": 1,
-   "messageIds": [
-    "gm-1a1273cf0b865c62"
    ]
   },
   {
