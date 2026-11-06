@@ -1,9 +1,9 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-11-06T12:29:23Z",
- "count": 1042,
- "threadCount": 566,
+ "generated": "2026-11-06T15:16:07Z",
+ "count": 1048,
+ "threadCount": 572,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
@@ -13,6 +13,138 @@
   "text": "/mail/<id>.txt"
  },
  "records": [
+  {
+   "id": "gm-1a1b10d986074076",
+   "gmailMessageId": "1a1b10d986074076",
+   "threadId": "gt-1a1b10d986074076",
+   "date": "2026-11-06T13:30:06Z",
+   "direction": "received",
+   "from": "_DataProtection",
+   "institutions": [
+    {
+     "id": "hmlr",
+     "name": "HM Land Registry"
+    }
+   ],
+   "subject": "OFFICIAL SENSITIVE: Subject Access Request: D260928 Part 3 of 3 [secure]",
+   "threadSlug": "official-sensitive-subject-access-request-d260928-part-3-of-3-secure",
+   "refs": [
+    "D260928"
+   ],
+   "textUrl": "/mail/gm-1a1b10d986074076.txt",
+   "jsonUrl": "/api/message/gm-1a1b10d986074076.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1b10d5a065c0ce",
+   "gmailMessageId": "1a1b10d5a065c0ce",
+   "threadId": "gt-1a1b10d5a065c0ce",
+   "date": "2026-11-06T13:29:51Z",
+   "direction": "received",
+   "from": "_DataProtection",
+   "institutions": [
+    {
+     "id": "hmlr",
+     "name": "HM Land Registry"
+    }
+   ],
+   "subject": "OFFICIAL SENSITIVE: Subject Access Request: D260928 Part 2 of 3 [secure]",
+   "threadSlug": "official-sensitive-subject-access-request-d260928-part-2-of-3-secure",
+   "refs": [
+    "D260928"
+   ],
+   "textUrl": "/mail/gm-1a1b10d5a065c0ce.txt",
+   "jsonUrl": "/api/message/gm-1a1b10d5a065c0ce.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1b10cb9b09c57d",
+   "gmailMessageId": "1a1b10cb9b09c57d",
+   "threadId": "gt-1a1b10cb9b09c57d",
+   "date": "2026-11-06T13:29:06Z",
+   "direction": "received",
+   "from": "_DataProtection",
+   "institutions": [
+    {
+     "id": "hmlr",
+     "name": "HM Land Registry"
+    }
+   ],
+   "subject": "OFFICIAL SENSITIVE: Subject Access Request: D260928 Part 1 of 3 [secure]",
+   "threadSlug": "official-sensitive-subject-access-request-d260928-part-1-of-3-secure",
+   "refs": [
+    "D260928"
+   ],
+   "textUrl": "/mail/gm-1a1b10cb9b09c57d.txt",
+   "jsonUrl": "/api/message/gm-1a1b10cb9b09c57d.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1b10ae803cb32e",
+   "gmailMessageId": "1a1b10ae803cb32e",
+   "threadId": "gt-1a1b10ae803cb32e",
+   "date": "2026-11-06T13:27:21Z",
+   "direction": "received",
+   "from": "_DataProtection",
+   "institutions": [
+    {
+     "id": "hmlr",
+     "name": "HM Land Registry"
+    }
+   ],
+   "subject": "Subject Access Request: D260928",
+   "threadSlug": "subject-access-request-d260928",
+   "refs": [
+    "D260928"
+   ],
+   "textUrl": "/mail/gm-1a1b10ae803cb32e.txt",
+   "jsonUrl": "/api/message/gm-1a1b10ae803cb32e.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1b1007613b8821",
+   "gmailMessageId": "1a1b1007613b8821",
+   "threadId": "gt-1a1b1007613b8821",
+   "date": "2026-11-06T13:15:54Z",
+   "direction": "received",
+   "from": "Freedom of Information",
+   "institutions": [
+    {
+     "id": "swp",
+     "name": "South Wales Police"
+    }
+   ],
+   "subject": "RESPONSE Freedom of Information Request 1188/26",
+   "threadSlug": "response-freedom-of-information-request-1188-26",
+   "refs": [
+    "1188/26"
+   ],
+   "textUrl": "/mail/gm-1a1b1007613b8821.txt",
+   "jsonUrl": "/api/message/gm-1a1b1007613b8821.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
+  {
+   "id": "gm-1a1b0ecc70c744e3",
+   "gmailMessageId": "1a1b0ecc70c744e3",
+   "threadId": "gt-1a1b0ecc70c744e3",
+   "date": "2026-11-06T12:53:01Z",
+   "direction": "received",
+   "from": "(name not shown; gov.wales)",
+   "institutions": [
+    {
+     "id": "cadw",
+     "name": "Welsh Government / Cadw"
+    }
+   ],
+   "subject": "RE. ATISN 27021 — existing records behind the 1988 listing-file disposal finding (ATISN 26-0009)",
+   "threadSlug": "re-atisn-27021-existing-records-behind-the-1988-listing-file-disposal-finding-at",
+   "refs": [
+    "ATISN 26-0009"
+   ],
+   "textUrl": "/mail/gm-1a1b0ecc70c744e3.txt",
+   "jsonUrl": "/api/message/gm-1a1b0ecc70c744e3.json",
+   "source": "Original email in the family's Gmail (read-only export); contact details redacted."
+  },
   {
    "id": "gm-1a1ae4aa50213c39",
    "gmailMessageId": "1a1ae4aa50213c39",
