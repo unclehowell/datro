@@ -1,9 +1,9 @@
 {
  "title": "Great House Farm / Ty Mawr case correspondence (Wayback)",
  "apiVersion": "1.0.0",
- "generated": "2026-11-05T12:39:52Z",
- "count": 1016,
- "threadCount": 548,
+ "generated": "2026-11-06T10:25:59Z",
+ "count": 1021,
+ "threadCount": 553,
  "privacy": "Email addresses, phone numbers, the family's private address, postcodes and meeting joining details are redacted. Officials appear by name or role.",
  "endpoints": {
   "index": "/api/index.json",
@@ -13,6 +13,74 @@
   "text": "/mail/<id>.txt"
  },
  "threads": [
+  {
+   "threadId": "gt-1a1ae4aa50213c39",
+   "subject": "On your recent use of the National Library of Wales Enquiries Service (NLW English)",
+   "threadSlug": "on-your-recent-use-of-the-national-library-of-wales-enquiries-service-nlw-englis",
+   "institutions": [
+    "nlw"
+   ],
+   "first": "2026-11-06T00:38:09Z",
+   "last": "2026-11-06T00:38:09Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1ae4aa50213c39"
+   ]
+  },
+  {
+   "threadId": "gt-1a1ac6a1fa5bd590",
+   "subject": "Re: Welsh Government response to request for information ATISN 26-0010 (Retention & destruction schedules) - (ATISN 26-0143)",
+   "threadSlug": "welsh-government-response-to-request-for-information-atisn-26-0010-retention-des",
+   "institutions": [
+    "cadw"
+   ],
+   "first": "2026-11-05T15:53:14Z",
+   "last": "2026-11-05T15:53:14Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1ac6a1fa5bd590"
+   ]
+  },
+  {
+   "threadId": "gt-1a1ac4729d9997f7",
+   "subject": "RE. Great House Farm, Llandough | Cardiff Castle Furniture (ATISN 26-0141)",
+   "threadSlug": "re-great-house-farm-llandough-cardiff-castle-furniture-atisn-26-0141",
+   "institutions": [
+    "cadw"
+   ],
+   "first": "2026-11-05T15:15:03Z",
+   "last": "2026-11-05T15:15:03Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1ac4729d9997f7"
+   ]
+  },
+  {
+   "threadId": "gt-1a1ac415f52b7f2a",
+   "subject": "RE: Borehole, site-investigation and quarry records - Llandough-juxta-Penarth / Leckwith, Vale of Glamorgan IDA 312230",
+   "threadSlug": "borehole-site-investigation-and-quarry-records-llandough-juxta-penarth-leckwith",
+   "institutions": [],
+   "first": "2026-11-05T15:08:44Z",
+   "last": "2026-11-05T15:08:44Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1ac415f52b7f2a"
+   ]
+  },
+  {
+   "threadId": "gt-1a1ac0f57ded7aed",
+   "subject": "Request for information - Ref: FOI2026/118465",
+   "threadSlug": "request-for-information-ref-foi2026-118465",
+   "institutions": [
+    "voa"
+   ],
+   "first": "2026-11-05T14:14:08Z",
+   "last": "2026-11-05T14:14:08Z",
+   "count": 1,
+   "messageIds": [
+    "gm-1a1ac0f57ded7aed"
+   ]
+  },
   {
    "threadId": "gt-1a1ab59193617580",
    "subject": "HSE Reference 2026/224580, Your Reference: Freedom of Information request - 1988–89 demolition notifications, Great House Farm, Llandough (Vale of Glamorgan)",
