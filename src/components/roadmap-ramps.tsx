@@ -3,6 +3,7 @@ import { DetailModal } from "@/components/detail-modal";
 import { CLASS } from "@/components/disclosure-record";
 import { FIRE_A, PAL } from "@/components/avenue-game";
 import { roadmapStepRequirement } from "@/data/legal-routes";
+import { gmChestnuts, gmFee } from "@/data/ramp-marks";
 import { BoardIcon, ForecastAssumptions, ForecastBoard, ForecastScatter, GraphIcon, useForecast } from "@/components/forecast-panel";
 
 /**
@@ -634,7 +635,7 @@ function draw(ctx: CanvasRenderingContext2D, lane: Lane, L: ReturnType<typeof la
       ctx.fillText(em, s.x - 11, s.y - 2);
       ctx.textAlign = "start";
     }
-    if (s.items.some((e) => e.dir === "received" && e.fee)) drawPound(ctx, s.x + 9, s.y - 9);
+    if (s.items.some((e) => e.dir === "received" && (e.fee || gmFee(e.id)))) drawPound(ctx, s.x + 9, s.y - 9);
     if (s.items.length > 3) {
       ctx.fillStyle = "#ffd34d";
       ctx.font = "800 7px Outfit, system-ui, sans-serif";
@@ -715,6 +716,14 @@ function Sheet({ hit, lane }: { hit: Hit; lane: Lane }) {
               <p className="text-sm font-semibold text-fg">{e.subject}</p>
               {e.summary && <p className="text-sm text-muted">{e.summary}</p>}
               {e.dir === "received" && e.fee && <p className="text-xs font-semibold text-brass">£ Fee asked: {e.fee}</p>}
+              {e.dir === "received" && !e.fee && gmFee(e.id) && <p className="text-xs font-semibold text-brass">£ Fee asked</p>}
+              {gmChestnuts(e.id).map((c) => (
+                <p key={c.id} className="text-xs">
+                  <a href={c.url} target="_blank" rel="noreferrer" aria-label={`That Old Chestnut entry ${c.id}: ${c.label}`} className="text-brass underline underline-offset-4">
+                    <span aria-hidden="true">🌰 </span>{c.label}
+                  </a>
+                </p>
+              ))}
               {e.deadline && <p className="text-xs text-muted">Statutory deadline {fmt(e.deadline)} · {e.deadline_met}</p>}
               <p className="mt-1 flex flex-wrap gap-3 text-sm">
                 <A href={e.url}>Email</A>
@@ -1121,6 +1130,26 @@ export function RoadmapRamps({ preferName }: { preferName?: string }) {
             aria-label={lane ? `Roadmap for ${lane.name} (the gorilla at the top is ${apeName(lane)}): ${lane.steps.map((s) => `${s.n} ${s.label} ${STATUS[s.status].label} ${s.date ?? ""}`).join("; ")}` : "Roadmap loading"}
           />
         )}
+        {lane && L && !failed && !fcBoard &&
+          L.stacks.flatMap((s) => {
+            const c = s.items.map((e) => gmChestnuts(e.id)[0]).find(Boolean);
+            if (!c) return [];
+            const vh = TOP + (lane.steps.length + 1) * LH + 18;
+            return [
+              <a
+                key={`${s.level}:${s.x}`}
+                href={c.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`That Old Chestnut entry ${c.id}: ${c.label}`}
+                title={c.label}
+                className="absolute -translate-x-1/2 -translate-y-1/2 text-[10px] leading-none drop-shadow"
+                style={{ left: `${((s.x - 9) / W) * 100}%`, top: `${((s.y - 13) / vh) * 100}%` }}
+              >
+                <span aria-hidden="true">🌰</span>
+              </a>,
+            ];
+          })}
         {lane && fcBoard && finst && (
           <>
             <ForecastBoard inst={finst} vw={W} vh={TOP + (lane.steps.length + 1) * LH + 18} />
@@ -1135,13 +1164,13 @@ export function RoadmapRamps({ preferName }: { preferName?: string }) {
         )}
       </div>
       <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1 px-1 text-xs text-muted" aria-label="Key">
-        <li className="flex items-center gap-1"><span className="inline-block h-2 w-3 rounded-[1px] bg-[#e9e2d4]" />sent</li>
         <li className="flex items-center gap-1"><span className="inline-block h-2 w-3 rounded-[1px] bg-[#8b5cf6]" />reply (colour = what came back)</li>
         <li className="flex items-center gap-1"><span className="inline-block h-2 w-3 rounded-[1px] border border-dashed border-[#f4efe6] opacity-60" />reply due</li>
         <li className="flex items-center gap-1"><span aria-hidden>🔥</span>deadline missed</li>
         <li className="flex items-center gap-1"><HouseIcon />no reply by the due date</li>
         <li className="flex items-center gap-1"><FishIcon />late or questions unanswered</li>
         <li className="flex items-center gap-1"><span aria-hidden className="inline-flex size-3 items-center justify-center rounded-full bg-[#ffd34d] text-[8px] font-extrabold text-[#0d0b09]">£</span>fee asked</li>
+        <li className="flex items-center gap-1"><span aria-hidden>🌰</span>in That Old Chestnut (tap to open the entry)</li>
         <li className="flex items-center gap-1"><span className="inline-block h-2 w-1 bg-[#2e9e57]" />deadline met</li>
         <li className="flex items-center gap-1"><span className="inline-block size-2 rounded-full bg-[#2fa36b]" />today</li>
         <li className="flex items-center gap-1"><span aria-hidden>📨🔔🔁⛔🕳️📂🔒</span>email type and law (tap a stack)</li>

@@ -47,6 +47,7 @@ import { ArtifactsSheet, CorrSheet, CourtTiles, OptionsSheet, courtInstitutions 
 import { DisclosureRecord } from "@/components/disclosure-record";
 import { ArchaeologyTimeline } from "@/components/archaeology-timeline";
 import { RoadmapRamps } from "@/components/roadmap-ramps";
+import { rampChestnuts, rampFee } from "@/data/ramp-marks";
 import { RouteMap } from "@/components/route-map";
 import {
   VERIFIED_ON,
@@ -702,11 +703,12 @@ function GameSheet({
           ) : (
             <Chip colour={outcomeInfo[e.o].colour}>{outcomeInfo[e.o].label}</Chip>
           )}
-          {isFee(hit.index) && <Chip colour="#ffd34d">£ Fee sought or mentioned</Chip>}
+          {(isFee(hit.index) || rampFee(hit.index)) && <Chip colour="#ffd34d">£ Fee sought or mentioned</Chip>}
         </div>
         {isFee(hit.index) && (
           <p className="mt-3 text-sm leading-snug text-[#ffd34d]">£ {feeNotes[hit.index]}</p>
         )}
+        <ChestnutList list={rampChestnuts(hit.index)} />
         <DrawnAs
           index={hit.index}
           inst={inst}
@@ -957,11 +959,7 @@ function ExchangeLegend({ onMore }: { onMore: () => void }) {
       className="mt-2 flex w-full flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-xl border border-line bg-surface px-3 py-2 text-[11px] text-muted"
     >
       <span className="inline-flex items-center gap-1 text-[#2bb89a]">
-        <CloudIcon n={1} fill={WDTK_CLOUD} />
-        <GridSvg grid={FIRE_A} pal={WDTK_PAL} size={16} /> WhatDoTheyKnow
-      </span>
-      <span className="inline-flex items-center gap-1">
-        <CloudIcon n={1} /> our email
+        <GridSvg grid={FIRE_A} pal={WDTK_PAL} size={16} /> WhatDoTheyKnow reply
       </span>
       <span className="inline-flex items-center gap-1">
         <FireIcon /> their reply
@@ -975,6 +973,13 @@ function ExchangeLegend({ onMore }: { onMore: () => void }) {
       <span className="inline-flex items-center gap-1">
         <DiamondIcon /> attachment
       </span>
+      <span className="inline-flex items-center gap-1">
+        <span aria-hidden="true" className="font-extrabold text-[#ffd34d]">£</span> fee asked
+      </span>
+      <span className="inline-flex items-center gap-1">
+        <span aria-hidden="true">🌰</span> That Old Chestnut
+      </span>
+      <span className="w-full text-center text-faint">Replies received only</span>
     </button>
   );
 }
@@ -1162,12 +1167,12 @@ function KeySheet() {
         cost and legal basis; PAID marks a route
         that costs money. Tap anything for details. The number on each outer slice matches the
         number in the dropdown. A yellow £ marks where the institution sought or mentioned a fee: a
-        cost-limit refusal, a fees notice, or a copy or search charge.
+        cost-limit refusal, a fees notice, or a copy or search charge. A 🌰 marks a reply with an
+        entry in That Old Chestnut, and opens that entry.
       </p>
       <div className="mt-4 flex flex-col gap-2 text-sm text-muted">
         <p className="flex items-center gap-2">
-          <CloudIcon n={1} /> Our email to that body, numbered in order: 1 is the first, 2 the
-          second, and so on.
+          Only replies received are drawn on the ramps; our own emails stay in the record.
         </p>
         <p className="flex items-center gap-2">
           <FireIcon /> Their reply.

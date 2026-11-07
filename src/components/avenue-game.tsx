@@ -11,6 +11,7 @@ import {
 } from "@/data/avenues";
 import { cloudNumber, corr, type CorrKind } from "@/data/correspondence";
 import { hasWdtk, isWdtk, wdtkNumber, withWdtk } from "@/data/wdtk";
+import { rampChestnuts, rampFee } from "@/data/ramp-marks";
 
 /**
  * "Avenues": an original arcade-style climb. The ape at the top is the institution and every
@@ -115,8 +116,10 @@ function layoutSlots(inst: AvInstitution) {
     if (!level.items.length) return;
     const g = girder(li, n);
     const usable = g.right - g.left - 44;
-    const mail = level.items.filter((i) => !isWdtk(i));
-    const wd = level.items.filter((i) => isWdtk(i));
+    // Incoming only on the ramps (0.7.1): outbound mail, WDTK messages included, stays in the data but is not drawn.
+    const shown = level.items.filter((i) => !avenueEmails[i].out);
+    const mail = shown.filter((i) => !isWdtk(i));
+    const wd = shown.filter((i) => isWdtk(i));
     const rowsFor = (per: number) => Math.ceil(mail.length / per) + Math.ceil(wd.length / per);
     let s = 12;
     let perRow = Math.max(1, Math.floor(usable / (s + 3)));
@@ -143,7 +146,7 @@ function layoutSlots(inst: AvInstitution) {
         out: avenueEmails[index].out,
         colour: itemColour(level, index),
         level: li,
-        fee: !avenueEmails[index].out && isFee(index),
+        fee: !avenueEmails[index].out && (isFee(index) || rampFee(index)),
         kind: c.kind,
         heart: c.heart,
         generic: c.generic,
@@ -464,7 +467,7 @@ function drawExchange(ctx: CanvasRenderingContext2D, s: Slot, t: number, bob: bo
 }
 
 function drawFee(ctx: CanvasRenderingContext2D, x: number, y: number, r: number) {
-  // "$": the institution sought or mentioned a fee in this reply.
+  // "£": the institution quoted a fee, or would not disclose until paid, in this reply.
   const size = r >= 4 ? Math.max(8, r * 1.7) : 8;
   const cy = r >= 4 ? y + 0.5 : y - r - 5;
   ctx.save();
@@ -473,9 +476,9 @@ function drawFee(ctx: CanvasRenderingContext2D, x: number, y: number, r: number)
   ctx.textBaseline = "middle";
   ctx.lineWidth = 2.2;
   ctx.strokeStyle = "#14110e";
-  ctx.strokeText("$", x, cy);
+  ctx.strokeText("£", x, cy);
   ctx.fillStyle = "#ffd34d";
-  ctx.fillText("$", x, cy);
+  ctx.fillText("£", x, cy);
   ctx.restore();
 }
 
@@ -742,6 +745,14 @@ export function AvenueGame({
   const justDragged = useRef(0);
   const n = inst.levels.length;
   const H = TOP + n * lhFor(n) + BOTTOM;
+  // 🌰 links (0.7.1): one per reply that has a That Old Chestnut entry, over its icon on the canvas.
+  const chestSlots = useMemo(
+    () => layoutSlots(inst).flatMap((s) => {
+      const list = rampChestnuts(s.index);
+      return list.length ? [{ s, c: list[0], more: list.length - 1 }] : [];
+    }),
+    [inst],
+  );
   const replies = useMemo(() => {
     const seen = new Set<number>();
     for (const level of inst.levels)
@@ -1029,7 +1040,7 @@ export function AvenueGame({
           rot: 0,
           falling: false,
           colour: outcomeInfo[avenueEmails[index].o].colour,
-          fee: isFee(index),
+          fee: isFee(index) || rampFee(index),
           heart: corr(index).heart,
           w: isWdtk(index),
         });
@@ -1362,7 +1373,7 @@ export function AvenueGame({
       )}
       <div
         ref={wrapRef}
-        className="overflow-hidden rounded-2xl border border-line outline-none focus-visible:ring-2 focus-visible:ring-[#ffd34d]"
+        className="relative overflow-hidden rounded-2xl border border-line outline-none focus-visible:ring-2 focus-visible:ring-[#ffd34d]"
         tabIndex={0}
         role="slider"
         aria-label="Slide-me man: drag him along the girders, or use the arrow keys to step from email to email"
@@ -1375,6 +1386,20 @@ export function AvenueGame({
           role="img"
           aria-label={`Escalation climb for ${inst.name}`}
         />
+        {chestSlots.map(({ s, c, more }) => (
+          <a
+            key={`${s.index}-${s.level}`}
+            href={c.url}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`That Old Chestnut entry ${c.id}: ${c.label}${more ? ` (and ${more} more in this reply's details)` : ""}`}
+            title={c.label}
+            className="absolute -translate-x-1/2 -translate-y-1/2 text-[10px] leading-none drop-shadow"
+            style={{ left: `${((s.x + s.s / 2 + 2) / W) * 100}%`, top: `${((s.y - s.s / 2 - 3) / H) * 100}%` }}
+          >
+            <span aria-hidden="true">🌰</span>
+          </a>
+        ))}
       </div>
     </div>
   );
