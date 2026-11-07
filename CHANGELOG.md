@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.7.0] - 2026-11-07
+
+### Changed
+- **£ on the board:** the fee mark on the dartboard cells is now the pound symbol (£), as on the Ladder · rungs view; it was drawn as "$". Same cells as before: every board cell whose replies quoted a fee or would only search or copy on payment already carried the mark (checked 7 Nov 2026 against each reply's own text). The cell details read "£ Fees sought or mentioned".
+
+### Added
+- **🌰 That Old Chestnut links:** a 🌰 on a cell whose matter has an entry in That Old Chestnut (bucklerfamily.estate/that-old-chestnut/); it links to that exact entry, and the cell details list every matching entry. A later disclosure is shown with 😮, bold, in a vibrant colour. Matches are by the entry's own evidence id, reply date or question thread only (src/data/chestnuts.json); entries with no matching cell get no 🌰. Where a cell has both marks, £ sits on the inner half and 🌰 on the outer half.
+
 ## [0.6.0] - 2026-11-03
 
 ### Added

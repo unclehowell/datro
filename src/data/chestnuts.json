@@ -1,0 +1,395 @@
+{
+ "about": "That Old Chestnut entries per dartboard cell (key 'institution id|ring id'), 0.7.0, 7 Nov 2026. A cell gets an entry only on a real match: an old-chestnut entry whose evidence id (EV-…) is carried by a reply in that cell from the same institution; a tactic entry whose dated reply ('back_date') sits in that cell; a silence entry whose question's conversation (EV-…) has a reply in that cell. Entries with no such match get no 🌰. Links go to the entry's own anchor on bucklerfamily.estate/that-old-chestnut/.",
+ "as_of": "2026-11-07",
+ "source": "https://bucklerfamily.estate/that-old-chestnut/ (_db/view.json chestnuts, _ui/silence.a2ui.json entries)",
+ "cells": {
+  "bp|forum": [
+   {
+    "id": "TOC-T10",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t10",
+    "label": "TOC-T10 · BP: Preservation not confirmed (reply of 2026-10-23)",
+    "kind": "tactic"
+   }
+  ],
+  "bt-archives|reply": [
+   {
+    "id": "TOC-S12",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-s12",
+    "label": "TOC-S12 · BT Group Archives: question of 2026-10-20 left unanswered",
+    "kind": "silence"
+   }
+  ],
+  "cadw|reply": [
+   {
+    "id": "TOC-F05",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f05",
+    "label": "TOC-F05 · Welsh Government / Cadw: not held on 2026-02-25, then disclosed on 2026-05-21",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-L08",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l08",
+    "label": "TOC-L08 · Welsh Government / Cadw: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L09",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l09",
+    "label": "TOC-L09 · Welsh Government / Cadw: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-S04",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-s04",
+    "label": "TOC-S04 · Welsh Government / Cadw: question of 2026-08-28 left unanswered",
+    "kind": "silence"
+   },
+   {
+    "id": "TOC-T03",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t03",
+    "label": "TOC-T03 · Welsh Government / Cadw: Answer contradicted by the record (reply of 2026-07-10)",
+    "kind": "tactic"
+   },
+   {
+    "id": "TOC-T19",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t19",
+    "label": "TOC-T19 · Welsh Government / Cadw: Deflected elsewhere (reply of 2026-02-25)",
+    "kind": "tactic"
+   }
+  ],
+  "cadw|review": [
+   {
+    "id": "TOC-F05",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f05",
+    "label": "TOC-F05 · Welsh Government / Cadw: not held on 2026-02-25, then disclosed on 2026-05-21",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-L09",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l09",
+    "label": "TOC-L09 · Welsh Government / Cadw: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-S04",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-s04",
+    "label": "TOC-S04 · Welsh Government / Cadw: question of 2026-08-28 left unanswered",
+    "kind": "silence"
+   }
+  ],
+  "cps|reply": [
+   {
+    "id": "TOC-T17",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t17",
+    "label": "TOC-T17 · Crown Prosecution Service: Deflected elsewhere (reply of 2026-10-21)",
+    "kind": "tactic"
+   }
+  ],
+  "glamorgan|reply": [
+   {
+    "id": "TOC-F08",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f08",
+    "label": "TOC-F08 · Glamorgan Archives: not held on 2026-02-20, then disclosed on 2026-02-23",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-L14",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l14",
+    "label": "TOC-L14 · Glamorgan Archives: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-T18",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t18",
+    "label": "TOC-T18 · Glamorgan Archives: Deflected elsewhere (reply of 2026-10-06)",
+    "kind": "tactic"
+   }
+  ],
+  "heneb|complaint": [
+   {
+    "id": "TOC-L03",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l03",
+    "label": "TOC-L03 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L04",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l04",
+    "label": "TOC-L04 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L05",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l05",
+    "label": "TOC-L05 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L06",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l06",
+    "label": "TOC-L06 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L07",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l07",
+    "label": "TOC-L07 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "heneb|reply": [
+   {
+    "id": "TOC-F04",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f04",
+    "label": "TOC-F04 · Heneb (Historic Environment Record): not held on 2026-05-22, then disclosed on 2026-10-06",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-L01",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l01",
+    "label": "TOC-L01 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L02",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l02",
+    "label": "TOC-L02 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "her|complaint": [
+   {
+    "id": "TOC-L03",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l03",
+    "label": "TOC-L03 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L04",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l04",
+    "label": "TOC-L04 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L05",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l05",
+    "label": "TOC-L05 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L06",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l06",
+    "label": "TOC-L06 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L07",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l07",
+    "label": "TOC-L07 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "her|reply": [
+   {
+    "id": "TOC-F04",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f04",
+    "label": "TOC-F04 · Heneb (Historic Environment Record): not held on 2026-05-22, then disclosed on 2026-10-06",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-L01",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l01",
+    "label": "TOC-L01 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L02",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l02",
+    "label": "TOC-L02 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "historic-england|reply": [
+   {
+    "id": "TOC-F02",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f02",
+    "label": "TOC-F02 · Historic England: not held on 2026-10-21, then disclosed on 2026-10-27",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-T09",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t09",
+    "label": "TOC-T09 · Historic England: Name or spelling used to narrow the search (reply of 2026-10-21)",
+    "kind": "tactic"
+   }
+  ],
+  "hmlr|complaint": [
+   {
+    "id": "TOC-S11",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-s11",
+    "label": "TOC-S11 · HM Land Registry: Independent Complaints Reviewer: question of 2026-10-20 left unanswered",
+    "kind": "silence"
+   }
+  ],
+  "hmlr|regulator": [
+   {
+    "id": "TOC-S11",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-s11",
+    "label": "TOC-S11 · HM Land Registry: Independent Complaints Reviewer: question of 2026-10-20 left unanswered",
+    "kind": "silence"
+   }
+  ],
+  "hmlr|reply": [
+   {
+    "id": "TOC-L10",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l10",
+    "label": "TOC-L10 · HM Land Registry: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L11",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l11",
+    "label": "TOC-L11 · HM Land Registry: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-T08",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t08",
+    "label": "TOC-T08 · HM Land Registry: Name or spelling used to narrow the search (reply of 2026-03-13)",
+    "kind": "tactic"
+   }
+  ],
+  "llandough|reply": [
+   {
+    "id": "TOC-L17",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l17",
+    "label": "TOC-L17 · Llandough Community Council: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "moj|forum": [
+   {
+    "id": "TOC-T12",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t12",
+    "label": "TOC-T12 · Ministry of Justice / HMCTS: Preservation not confirmed (reply of 2026-10-20)",
+    "kind": "tactic"
+   }
+  ],
+  "moj|reply": [
+   {
+    "id": "TOC-L13",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l13",
+    "label": "TOC-L13 · Ministry of Justice / HMCTS: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "museum|reply": [
+   {
+    "id": "TOC-F01",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f01",
+    "label": "TOC-F01 · Amgueddfa Cymru – Museum Wales: not held on 2026-08-25, then disclosed on 2026-09-22",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-T07",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t07",
+    "label": "TOC-T07 · Amgueddfa Cymru - Museum Wales: Name or spelling used to narrow the search (reply of 2026-10-12)",
+    "kind": "tactic"
+   }
+  ],
+  "museum|review": [
+   {
+    "id": "TOC-F01",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f01",
+    "label": "TOC-F01 · Amgueddfa Cymru – Museum Wales: not held on 2026-08-25, then disclosed on 2026-09-22",
+    "kind": "disclosure"
+   }
+  ],
+  "oversight|democratic": [
+   {
+    "id": "TOC-L15",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l15",
+    "label": "TOC-L15 · PACAC (House of Commons committee): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-T01",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t01",
+    "label": "TOC-T01 · Office of the Member of Parliament for Cardiff South and Penarth: Said not received (Gmail Sent shows it was sent) (reply of 2026-08-05)",
+    "kind": "tactic"
+   }
+  ],
+  "persimmon|forum": [
+   {
+    "id": "TOC-T11",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t11",
+    "label": "TOC-T11 · Persimmon Homes: Preservation not confirmed (reply of 2026-11-04)",
+    "kind": "tactic"
+   }
+  ],
+  "rcahmw|reply": [
+   {
+    "id": "TOC-F07",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f07",
+    "label": "TOC-F07 · RCAHMW (Royal Commission): not held on 2026-09-29, then disclosed on 2026-10-26",
+    "kind": "disclosure"
+   }
+  ],
+  "tna|reply": [
+   {
+    "id": "TOC-F06",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f06",
+    "label": "TOC-F06 · The National Archives: not held on 2026-02-18, then disclosed on 2026-03-03",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-T06",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t06",
+    "label": "TOC-T06 · The National Archives: Name or spelling used to narrow the search (reply of 2026-08-12)",
+    "kind": "tactic"
+   }
+  ],
+  "vale|democratic": [
+   {
+    "id": "TOC-T20",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t20",
+    "label": "TOC-T20 · Vale of Glamorgan Council (Scrutiny): Deflected elsewhere (reply of 2026-10-11)",
+    "kind": "tactic"
+   }
+  ],
+  "vale|reply": [
+   {
+    "id": "TOC-F03",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f03",
+    "label": "TOC-F03 · Vale of Glamorgan Council: not held on 2026-06-02, then disclosed on 2026-09-11",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-S07",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-s07",
+    "label": "TOC-S07 · Vale of Glamorgan Council: question of 2026-10-07 left unanswered",
+    "kind": "silence"
+   },
+   {
+    "id": "TOC-T04",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t04",
+    "label": "TOC-T04 · Vale of Glamorgan Council: Answer contradicted by the record (reply of 2026-06-02)",
+    "kind": "tactic"
+   }
+  ],
+  "vale|review": [
+   {
+    "id": "TOC-F03",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f03",
+    "label": "TOC-F03 · Vale of Glamorgan Council: not held on 2026-06-02, then disclosed on 2026-09-11",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-S07",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-s07",
+    "label": "TOC-S07 · Vale of Glamorgan Council: question of 2026-10-07 left unanswered",
+    "kind": "silence"
+   }
+  ]
+ }
+}

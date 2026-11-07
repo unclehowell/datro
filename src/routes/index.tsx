@@ -27,7 +27,7 @@ import {
   type AvInstitution,
   type AvLevel,
 } from "@/data/avenues";
-import { DartWheel } from "@/components/dart-wheel";
+import { DartWheel, sliceChestnuts, type Chestnut } from "@/components/dart-wheel";
 import { sliceFees, type WheelSlice } from "@/data/wheel";
 import {
   AvenueGame,
@@ -97,7 +97,7 @@ function FeeList({ list }: { list: number[] }) {
   if (!list.length) return null;
   return (
     <div className="mt-3 rounded-xl border border-[#ffd34d]/40 bg-[#ffd34d]/5 p-3">
-      <p className="text-sm font-semibold text-[#ffd34d]">$ Fees sought or mentioned</p>
+      <p className="text-sm font-semibold text-[#ffd34d]">£ Fees sought or mentioned</p>
       <ul className="mt-1.5 flex flex-col gap-2">
         {list.map((i) => (
           <li key={i} className="text-sm leading-snug text-muted">
@@ -109,6 +109,32 @@ function FeeList({ list }: { list: number[] }) {
               className="text-brass underline underline-offset-4"
             >
               Open email
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/** 🌰 That Old Chestnut entries for this cell (0.7.0, 7 Nov 2026); a later disclosure gets 😮, bold and a vibrant colour. */
+function ChestnutList({ list }: { list: Chestnut[] }) {
+  if (!list.length) return null;
+  return (
+    <div className="mt-3 rounded-xl border border-[#ff9f1c]/50 bg-[#ff9f1c]/5 p-3">
+      <p className="text-sm font-semibold text-[#ff9f1c]">🌰 In That Old Chestnut</p>
+      <ul className="mt-1.5 flex flex-col gap-2">
+        {list.map((c) => (
+          <li key={c.id} className="text-sm leading-snug">
+            <a
+              href={c.url}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`That Old Chestnut entry ${c.id}: ${c.label}`}
+              className={c.kind === "disclosure" ? "font-bold text-[#ff9f1c] underline underline-offset-4" : "text-brass underline underline-offset-4"}
+            >
+              {c.kind === "disclosure" ? <span className="mr-1 text-lg" aria-hidden="true">😮</span> : <span className="mr-1" aria-hidden="true">🌰</span>}
+              {c.label}
             </a>
           </li>
         ))}
@@ -551,11 +577,12 @@ function CellSheet({ party, ring, slice }: { party: Party; ring: Ring; slice: Wh
         <Row k="From" v={cell.correspondent} />
         <Row
           k="Fee"
-          v={cell.feeMarker ? "$ A fee, cost estimate or chargeable route is recorded" : undefined}
+          v={cell.feeMarker ? "£ A fee, cost estimate or chargeable route is recorded" : undefined}
         />
       </div>
       <CellRoute party={party} cell={cell} />
       <FeeList list={fees} />
+      <ChestnutList list={sliceChestnuts(slice, ring)} />
       <DocList docs={cell.docs} />
       {url && (
         <a
@@ -675,10 +702,10 @@ function GameSheet({
           ) : (
             <Chip colour={outcomeInfo[e.o].colour}>{outcomeInfo[e.o].label}</Chip>
           )}
-          {isFee(hit.index) && <Chip colour="#ffd34d">$ Fee sought or mentioned</Chip>}
+          {isFee(hit.index) && <Chip colour="#ffd34d">£ Fee sought or mentioned</Chip>}
         </div>
         {isFee(hit.index) && (
-          <p className="mt-3 text-sm leading-snug text-[#ffd34d]">$ {feeNotes[hit.index]}</p>
+          <p className="mt-3 text-sm leading-snug text-[#ffd34d]">£ {feeNotes[hit.index]}</p>
         )}
         <DrawnAs
           index={hit.index}
@@ -1134,7 +1161,7 @@ function KeySheet() {
         is marked statutory, expected, optional or parallel. Tap a girder for its time limit,
         cost and legal basis; PAID marks a route
         that costs money. Tap anything for details. The number on each outer slice matches the
-        number in the dropdown. A yellow $ marks where the institution sought or mentioned a fee: a
+        number in the dropdown. A yellow £ marks where the institution sought or mentioned a fee: a
         cost-limit refusal, a fees notice, or a copy or search charge.
       </p>
       <div className="mt-4 flex flex-col gap-2 text-sm text-muted">
