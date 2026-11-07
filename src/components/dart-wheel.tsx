@@ -105,15 +105,15 @@ export function DartWheel({
           const both = hasFee && cn.length > 0;
           const width = ((r0 + r1) / 2) * slice;
           if (hasFee) {
-            const [fx, fy] = polar((r0 + r1) / 2 - (both ? band * 0.24 : 0), a0 + slice / 2);
-            fees.push({ x: fx, y: fy, size: Math.max(8, Math.min(14, width * 0.95, band * (both ? 0.55 : 0.95))), key: `${s.label}-${ring.id}` });
+            const [fx, fy] = polar((r0 + r1) / 2 - (both ? band * 0.27 : 0), a0 + slice / 2);
+            fees.push({ x: fx, y: fy, size: Math.max(8, Math.min(14, width * 0.95, band * (both ? 0.5 : 0.95))), key: `${s.label}-${ring.id}` });
           }
           if (cn.length) {
-            const [nx, ny] = polar((r0 + r1) / 2 + (both ? band * 0.24 : 0), a0 + slice / 2);
+            const [nx, ny] = polar((r0 + r1) / 2 + (both ? band * 0.27 : 0), a0 + slice / 2);
             nuts.push({
               x: nx,
               y: ny,
-              size: Math.max(7, Math.min(13, width * 0.9, band * (both ? 0.55 : 0.9))),
+              size: Math.max(6, Math.min(12, width * 0.8, band * (both ? 0.4 : 0.8))),
               key: `${s.label}-${ring.id}`,
               url: cn[0].url,
               label: `That Old Chestnut: ${cn.map((c) => c.id).join(", ")} (${s.inst?.name ?? s.label}, ${ring.name})`,
