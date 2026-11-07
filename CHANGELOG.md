@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.7.1] - 2026-11-07
+
+### Changed
+- **Ramps show replies received only:** on the Avenues climb, our own messages, WhatDoTheyKnow ones included, are no longer drawn as numbered clouds (19 were still showing, all on WhatDoTheyKnow lanes). They stay in the record. The Roadmap to court already drew received mail only.
+- **Icons refreshed:** the climb's fee mark is now the pound symbol (£); it was drawn as "$". The icon key under the climb drops "our email" and adds £ and 🌰; the Roadmap to court key drops "sent" and adds 🌰.
+
+### Added
+- **£ on more ramp replies:** nine replies that quote a fee or will not disclose until paid now carry the £ symbol on the climb, read in each reply's own words: Glamorgan Archives (29 May, 21 Aug, 9 Sep, 30 Sep, 22 Oct, 6 Nov), RCAHMW (29 Sep, 26 Oct) and ITV Archive (10 Oct). No amounts are shown for them.
+- **🌰 That Old Chestnut links on the ramps:** a 🌰 over each reply on the climb and the Roadmap to court that has an entry in That Old Chestnut, linking to that exact entry; the reply's details list every entry it has. Same match rules as the dartboard cells (evidence id carried by the reply, or the reply dated as the entry's reply, in the same institution and ring). Data: src/data/ramp-marks.json.
+
 ## [0.7.0] - 2026-11-07
 
 ### Changed

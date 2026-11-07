@@ -1,0 +1,663 @@
+{
+ "about": "Ramp marks for the Avenues climb and the Roadmap to court (0.7.1, 7 Nov 2026). 'fee': replies on the ramps that quote a fee or will not disclose until paid, read in each reply's own words (quoted text cut), that the hand-kept fee list did not already mark; they show the £ symbol only, no amounts. 'chestnut': replies on the ramps with a That Old Chestnut entry, by the same match rules as the dartboard cells (chestnuts.json): an old-chestnut entry whose evidence id (EV-...) the reply carries, or a tactic or silence entry whose dated reply ('back_date') is this reply, in the same institution and ring. Keys are case-mail archive ids. Outbound mail is not drawn on the ramps and is not listed here.",
+ "as_of": "2026-11-07",
+ "fee": [
+  "gm-19e734bf04ad6799",
+  "gm-1a0236015e69de3d",
+  "gm-1a0865e98e7a5dcd",
+  "gm-1a0ed5d3ada10e6b",
+  "gm-1a0f2f0f54a36630",
+  "gm-1a12773fe97fcf89",
+  "gm-1a162e42b9146d7b",
+  "gm-1a178895fba55836",
+  "gm-1a1b1ad3cf302ab6"
+ ],
+ "chestnut": {
+  "gm-19c2d9ad52d01ba8": [
+   {
+    "id": "TOC-L15",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l15",
+    "label": "TOC-L15 · PACAC (House of Commons committee): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "gm-19c3332c5fd8d6d4": [
+   {
+    "id": "TOC-F08",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f08",
+    "label": "TOC-F08 · Glamorgan Archives: not held on 2026-02-20, then disclosed on 2026-02-23",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-19c713bec9a58791": [
+   {
+    "id": "TOC-F08",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f08",
+    "label": "TOC-F08 · Glamorgan Archives: not held on 2026-02-20, then disclosed on 2026-02-23",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-19c71cdbcbd7eb09": [
+   {
+    "id": "TOC-F06",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f06",
+    "label": "TOC-F06 · The National Archives: not held on 2026-02-18, then disclosed on 2026-03-03",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-19c7525d110a1172": [
+   {
+    "id": "TOC-F08",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f08",
+    "label": "TOC-F08 · Glamorgan Archives: not held on 2026-02-20, then disclosed on 2026-02-23",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-19c7a478244bd3d1": [
+   {
+    "id": "TOC-F08",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f08",
+    "label": "TOC-F08 · Glamorgan Archives: not held on 2026-02-20, then disclosed on 2026-02-23",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-19c8a7763f11a7fc": [
+   {
+    "id": "TOC-F08",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f08",
+    "label": "TOC-F08 · Glamorgan Archives: not held on 2026-02-20, then disclosed on 2026-02-23",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-19c908fa7cddd153": [
+   {
+    "id": "TOC-F06",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f06",
+    "label": "TOC-F06 · The National Archives: not held on 2026-02-18, then disclosed on 2026-03-03",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-19c9496dba492283": [
+   {
+    "id": "TOC-F05",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f05",
+    "label": "TOC-F05 · Welsh Government / Cadw: not held on 2026-02-25, then disclosed on 2026-05-21",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-T19",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t19",
+    "label": "TOC-T19 · Welsh Government / Cadw: Deflected elsewhere (reply of 2026-02-25)",
+    "kind": "tactic"
+   }
+  ],
+  "gm-19c9b0d3fb9acdf1": [
+   {
+    "id": "TOC-F06",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f06",
+    "label": "TOC-F06 · The National Archives: not held on 2026-02-18, then disclosed on 2026-03-03",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-19cb41ce24e28ffe": [
+   {
+    "id": "TOC-F06",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f06",
+    "label": "TOC-F06 · The National Archives: not held on 2026-02-18, then disclosed on 2026-03-03",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-19ce1fe9eccc997b": [
+   {
+    "id": "TOC-L10",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l10",
+    "label": "TOC-L10 · HM Land Registry: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L11",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l11",
+    "label": "TOC-L11 · HM Land Registry: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "gm-19ce6f3dddaf5466": [
+   {
+    "id": "TOC-L10",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l10",
+    "label": "TOC-L10 · HM Land Registry: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L11",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l11",
+    "label": "TOC-L11 · HM Land Registry: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-T08",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t08",
+    "label": "TOC-T08 · HM Land Registry: Name or spelling used to narrow the search (reply of 2026-03-13)",
+    "kind": "tactic"
+   }
+  ],
+  "gm-19d8646886b25a87": [
+   {
+    "id": "TOC-L10",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l10",
+    "label": "TOC-L10 · HM Land Registry: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L11",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l11",
+    "label": "TOC-L11 · HM Land Registry: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "gm-19e4b1bc46edc331": [
+   {
+    "id": "TOC-F05",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f05",
+    "label": "TOC-F05 · Welsh Government / Cadw: not held on 2026-02-25, then disclosed on 2026-05-21",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-L09",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l09",
+    "label": "TOC-L09 · Welsh Government / Cadw: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "gm-19e501c1312a8496": [
+   {
+    "id": "TOC-F04",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f04",
+    "label": "TOC-F04 · Heneb (Historic Environment Record): not held on 2026-05-22, then disclosed on 2026-10-06",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-19e6e41dcb8faf97": [
+   {
+    "id": "TOC-F03",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f03",
+    "label": "TOC-F03 · Vale of Glamorgan Council: not held on 2026-06-02, then disclosed on 2026-09-11",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-19e86c3cd50709a7": [
+   {
+    "id": "TOC-F05",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f05",
+    "label": "TOC-F05 · Welsh Government / Cadw: not held on 2026-02-25, then disclosed on 2026-05-21",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-L09",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l09",
+    "label": "TOC-L09 · Welsh Government / Cadw: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "gm-19e87f7c5c4446a7": [
+   {
+    "id": "TOC-F03",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f03",
+    "label": "TOC-F03 · Vale of Glamorgan Council: not held on 2026-06-02, then disclosed on 2026-09-11",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-T04",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t04",
+    "label": "TOC-T04 · Vale of Glamorgan Council: Answer contradicted by the record (reply of 2026-06-02)",
+    "kind": "tactic"
+   }
+  ],
+  "gm-19eb764ad3726de5": [
+   {
+    "id": "TOC-F05",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f05",
+    "label": "TOC-F05 · Welsh Government / Cadw: not held on 2026-02-25, then disclosed on 2026-05-21",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-L09",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l09",
+    "label": "TOC-L09 · Welsh Government / Cadw: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "gm-19ec6e0894a49c27": [
+   {
+    "id": "TOC-L17",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l17",
+    "label": "TOC-L17 · Llandough Community Council: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "gm-19ecf796cf6dafbb": [
+   {
+    "id": "TOC-F05",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f05",
+    "label": "TOC-F05 · Welsh Government / Cadw: not held on 2026-02-25, then disclosed on 2026-05-21",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-L09",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l09",
+    "label": "TOC-L09 · Welsh Government / Cadw: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "gm-19f22859934ba5c4": [
+   {
+    "id": "TOC-F05",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f05",
+    "label": "TOC-F05 · Welsh Government / Cadw: not held on 2026-02-25, then disclosed on 2026-05-21",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-L09",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l09",
+    "label": "TOC-L09 · Welsh Government / Cadw: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "gm-19f3cd95eeea3854": [
+   {
+    "id": "TOC-F03",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f03",
+    "label": "TOC-F03 · Vale of Glamorgan Council: not held on 2026-06-02, then disclosed on 2026-09-11",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-19f4be37a086c06e": [
+   {
+    "id": "TOC-F05",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f05",
+    "label": "TOC-F05 · Welsh Government / Cadw: not held on 2026-02-25, then disclosed on 2026-05-21",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-L09",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l09",
+    "label": "TOC-L09 · Welsh Government / Cadw: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-T03",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t03",
+    "label": "TOC-T03 · Welsh Government / Cadw: Answer contradicted by the record (reply of 2026-07-10)",
+    "kind": "tactic"
+   }
+  ],
+  "gm-19fadc8628eb9d17": [
+   {
+    "id": "TOC-F05",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f05",
+    "label": "TOC-F05 · Welsh Government / Cadw: not held on 2026-02-25, then disclosed on 2026-05-21",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-L09",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l09",
+    "label": "TOC-L09 · Welsh Government / Cadw: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "gm-19fccccd723ad697": [
+   {
+    "id": "TOC-L13",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l13",
+    "label": "TOC-L13 · Ministry of Justice / HMCTS: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "gm-19fd1a7b942c283a": [
+   {
+    "id": "TOC-T01",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t01",
+    "label": "TOC-T01 · Office of the Member of Parliament for Cardiff South and Penarth: Said not received (Gmail Sent shows it was sent) (reply of 2026-08-05)",
+    "kind": "tactic"
+   }
+  ],
+  "gm-19ff5eec7294b507": [
+   {
+    "id": "TOC-T06",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t06",
+    "label": "TOC-T06 · The National Archives: Name or spelling used to narrow the search (reply of 2026-08-12)",
+    "kind": "tactic"
+   }
+  ],
+  "gm-1a0341444f5bf89d": [
+   {
+    "id": "TOC-L13",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l13",
+    "label": "TOC-L13 · Ministry of Justice / HMCTS: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "gm-1a037cf4054f6219": [
+   {
+    "id": "TOC-F01",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f01",
+    "label": "TOC-F01 · Amgueddfa Cymru – Museum Wales: not held on 2026-08-25, then disclosed on 2026-09-22",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-1a06d1c7a5b0af60": [
+   {
+    "id": "TOC-S04",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-s04",
+    "label": "TOC-S04 · Welsh Government / Cadw: question of 2026-08-28 left unanswered",
+    "kind": "silence"
+   }
+  ],
+  "gm-1a07cc3e251e0967": [
+   {
+    "id": "TOC-L14",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l14",
+    "label": "TOC-L14 · Glamorgan Archives: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "gm-1a090fd50150bcee": [
+   {
+    "id": "TOC-F03",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f03",
+    "label": "TOC-F03 · Vale of Glamorgan Council: not held on 2026-06-02, then disclosed on 2026-09-11",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-1a0c86e31d8df932": [
+   {
+    "id": "TOC-F01",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f01",
+    "label": "TOC-F01 · Amgueddfa Cymru – Museum Wales: not held on 2026-08-25, then disclosed on 2026-09-22",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-1a0c8b62d56ff57c": [
+   {
+    "id": "TOC-F01",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f01",
+    "label": "TOC-F01 · Amgueddfa Cymru – Museum Wales: not held on 2026-08-25, then disclosed on 2026-09-22",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-1a0ed265386659cd": [
+   {
+    "id": "TOC-L03",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l03",
+    "label": "TOC-L03 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L04",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l04",
+    "label": "TOC-L04 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L05",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l05",
+    "label": "TOC-L05 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L06",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l06",
+    "label": "TOC-L06 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L07",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l07",
+    "label": "TOC-L07 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "gm-1a0ed5d3ada10e6b": [
+   {
+    "id": "TOC-F07",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f07",
+    "label": "TOC-F07 · RCAHMW (Royal Commission): not held on 2026-09-29, then disclosed on 2026-10-26",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-1a0f297acf478271": [
+   {
+    "id": "TOC-L03",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l03",
+    "label": "TOC-L03 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L04",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l04",
+    "label": "TOC-L04 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L05",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l05",
+    "label": "TOC-L05 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L06",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l06",
+    "label": "TOC-L06 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L07",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l07",
+    "label": "TOC-L07 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "gm-1a0f2f0f54a36630": [
+   {
+    "id": "TOC-L14",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l14",
+    "label": "TOC-L14 · Glamorgan Archives: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "gm-1a1103d9d380a3b6": [
+   {
+    "id": "TOC-F04",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f04",
+    "label": "TOC-F04 · Heneb (Historic Environment Record): not held on 2026-05-22, then disclosed on 2026-10-06",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-L01",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l01",
+    "label": "TOC-L01 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L02",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l02",
+    "label": "TOC-L02 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "gm-1a110a1e67c69f50": [
+   {
+    "id": "TOC-T18",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t18",
+    "label": "TOC-T18 · Glamorgan Archives: Deflected elsewhere (reply of 2026-10-06)",
+    "kind": "tactic"
+   }
+  ],
+  "gm-1a11178b91ab138c": [
+   {
+    "id": "TOC-F07",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f07",
+    "label": "TOC-F07 · RCAHMW (Royal Commission): not held on 2026-09-29, then disclosed on 2026-10-26",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-1a12ad2c5353945c": [
+   {
+    "id": "TOC-T20",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t20",
+    "label": "TOC-T20 · Vale of Glamorgan Council (Scrutiny): Deflected elsewhere (reply of 2026-10-11)",
+    "kind": "tactic"
+   }
+  ],
+  "gm-1a1309dc33154ec9": [
+   {
+    "id": "TOC-T07",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t07",
+    "label": "TOC-T07 · Amgueddfa Cymru - Museum Wales: Name or spelling used to narrow the search (reply of 2026-10-12)",
+    "kind": "tactic"
+   }
+  ],
+  "gm-1a130a221be37fde": [
+   {
+    "id": "TOC-T07",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t07",
+    "label": "TOC-T07 · Amgueddfa Cymru - Museum Wales: Name or spelling used to narrow the search (reply of 2026-10-12)",
+    "kind": "tactic"
+   }
+  ],
+  "gm-1a135bdc3ab000b2": [
+   {
+    "id": "TOC-F07",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f07",
+    "label": "TOC-F07 · RCAHMW (Royal Commission): not held on 2026-09-29, then disclosed on 2026-10-26",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-1a13aff7c0c5d8b4": [
+   {
+    "id": "TOC-F04",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f04",
+    "label": "TOC-F04 · Heneb (Historic Environment Record): not held on 2026-05-22, then disclosed on 2026-10-06",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-L01",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l01",
+    "label": "TOC-L01 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L02",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l02",
+    "label": "TOC-L02 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "gm-1a145570b9618f41": [
+   {
+    "id": "TOC-F04",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f04",
+    "label": "TOC-F04 · Heneb (Historic Environment Record): not held on 2026-05-22, then disclosed on 2026-10-06",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-L01",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l01",
+    "label": "TOC-L01 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   },
+   {
+    "id": "TOC-L02",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l02",
+    "label": "TOC-L02 · Heneb (HER): old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "gm-1a154577a09c3329": [
+   {
+    "id": "TOC-L08",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-l08",
+    "label": "TOC-L08 · Welsh Government / Cadw: old-chestnut wording in a reply",
+    "kind": "chestnut"
+   }
+  ],
+  "gm-1a15e19a4609a6ad": [
+   {
+    "id": "TOC-S11",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-s11",
+    "label": "TOC-S11 · HM Land Registry: Independent Complaints Reviewer: question of 2026-10-20 left unanswered",
+    "kind": "silence"
+   }
+  ],
+  "gm-1a15e1f613adbd58": [
+   {
+    "id": "TOC-T17",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t17",
+    "label": "TOC-T17 · Crown Prosecution Service: Deflected elsewhere (reply of 2026-10-21)",
+    "kind": "tactic"
+   }
+  ],
+  "gm-1a15e2cfd24eaf4d": [
+   {
+    "id": "TOC-F02",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f02",
+    "label": "TOC-F02 · Historic England: not held on 2026-10-21, then disclosed on 2026-10-27",
+    "kind": "disclosure"
+   },
+   {
+    "id": "TOC-T09",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t09",
+    "label": "TOC-T09 · Historic England: Name or spelling used to narrow the search (reply of 2026-10-21)",
+    "kind": "tactic"
+   }
+  ],
+  "gm-1a16814eff6e8660": [
+   {
+    "id": "TOC-T10",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t10",
+    "label": "TOC-T10 · BP: Preservation not confirmed (reply of 2026-10-23)",
+    "kind": "tactic"
+   }
+  ],
+  "gm-1a178895fba55836": [
+   {
+    "id": "TOC-F07",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f07",
+    "label": "TOC-F07 · RCAHMW (Royal Commission): not held on 2026-09-29, then disclosed on 2026-10-26",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-1a17d70dd5a8a389": [
+   {
+    "id": "TOC-F02",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f02",
+    "label": "TOC-F02 · Historic England: not held on 2026-10-21, then disclosed on 2026-10-27",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-1a1a18b7f331978c": [
+   {
+    "id": "TOC-F07",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f07",
+    "label": "TOC-F07 · RCAHMW (Royal Commission): not held on 2026-09-29, then disclosed on 2026-10-26",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-1a1a18c70c0541c1": [
+   {
+    "id": "TOC-F07",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#cn-toc-f07",
+    "label": "TOC-F07 · RCAHMW (Royal Commission): not held on 2026-09-29, then disclosed on 2026-10-26",
+    "kind": "disclosure"
+   }
+  ],
+  "gm-1a1a60cd429a83fc": [
+   {
+    "id": "TOC-T11",
+    "url": "https://bucklerfamily.estate/that-old-chestnut/#toc-t11",
+    "label": "TOC-T11 · Persimmon Homes: Preservation not confirmed (reply of 2026-11-04)",
+    "kind": "tactic"
+   }
+  ]
+ }
+}
