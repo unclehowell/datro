@@ -46,6 +46,7 @@ import { Chip, DetailModal, Row, fmtDate } from "@/components/detail-modal";
 import { ArtifactsSheet, CorrSheet, CourtTiles, OptionsSheet, courtInstitutions } from "@/components/court-ready";
 import { DisclosureRecord } from "@/components/disclosure-record";
 import { ArchaeologyTimeline } from "@/components/archaeology-timeline";
+import { PayWalls } from "@/components/paywalls";
 import { RoadmapRamps } from "@/components/roadmap-ramps";
 import { rampChestnuts, rampFee } from "@/data/ramp-marks";
 import { RouteMap } from "@/components/route-map";
@@ -503,6 +504,8 @@ function Home() {
       <DisclosureRecord />
 
       <ArchaeologyTimeline />
+
+      <PayWalls />
 
       {dartboardVideo && <VideoDock src={dartboardVideo.src} poster={dartboardVideo.poster} title={dartboardVideo.title} />}
 
