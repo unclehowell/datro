@@ -70,7 +70,7 @@
         .nav-links a:hover {
             color: var(--accent);
         }
-        /* --- Header & Timer --- */
+        /* --- Header --- */
         header {
             background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
             text-align: center;
@@ -79,33 +79,11 @@
         }
         h1 {
             font-family: 'Orbitron', sans-serif;
-            margin: 0 0 1.5rem 0;
+            margin: 0;
             font-size: 2.5rem;
             letter-spacing: 2px;
             color: #fff;
             text-transform: uppercase;
-        }
-        .timer-container {
-            background: rgba(0, 0, 0, 0.3);
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 15px 25px;
-            border-radius: 8px;
-            border: 1px solid #334155;
-        }
-        .timer-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        #timer {
-            font-family: 'Orbitron', monospace;
-            font-size: 2rem;
-            color: var(--accent);
-            font-weight: bold;
         }
         /* --- Layout & Typography --- */
         section {
@@ -321,13 +299,9 @@
         </div>
     </nav>
 
-    <!-- Header with Timer -->
+    <!-- Header -->
     <header>
         <h1>Casualty Escort Officer App</h1>
-        <div class="timer-container">
-            <span class="timer-label">Public Co-ownership Deadline</span>
-            <div id="timer">Calculating...</div>
-        </div>
     </header>
 
     <!-- About Section -->
@@ -340,7 +314,7 @@
             <p>This project's mission is to assert a firm line of integrity and honour by ensuring a respectful presence of those who have served. Once this line is established, it can advance forward in unison through our civil society until we identify, suppress, and stop this harm at the source. This initiative aims to ensure families see justice, closure, and dignity, starting at the graves.</p>
            
             <div style="text-align: center; margin-top: 2rem;">
-                <a href="https://wayback.datro.xyz/2025-09-10_taking_chance_web_app_v0.0.1_en.pdf" target="_blank" class="btn-main">
+                <a href="https://wayback-datro.bucklerfamily.estate/2025-09-10_taking_chance_web_app_v0.0.1_en.pdf" target="_blank" class="btn-main">
                     View Project Summary PDF
                 </a>
             </div>
@@ -447,7 +421,7 @@
         <div class="card" style="text-align: center;">
             <h2>Contact Us</h2>
             <p>For inquiries, please contact the private security group:</p>
-            <a href="tel:[redacted]" class="contact-btn">
+            <a href="tel:+442031377118" class="contact-btn">
                 <img src="https://img.icons8.com/ios-filled/50/000000/phone.png" alt="Phone Icon">
                 +44 20 313 77 118
             </a>
@@ -471,29 +445,6 @@
 
     <!-- Logic Scripts -->
     <script>
-        // --- Timer Logic ---
-        const targetDate = new Date('2026-10-09T12:00:00Z');
-        function updateTimer() {
-            const now = new Date();
-            const timeDiff = Math.floor((targetDate - now) / 1000);
-            const timerElement = document.getElementById('timer');
-            if (timeDiff <= 0) {
-                timerElement.textContent = "Deadline Passed";
-                clearInterval(timerInterval);
-                return;
-            }
-            const days = Math.floor(timeDiff / (3600 * 24));
-            const hours = Math.floor((timeDiff % (3600 * 24)) / 3600);
-            const minutes = Math.floor((timeDiff % 3600) / 60);
-            const seconds = timeDiff % 60;
-            timerElement.textContent =
-                `${days}d ${hours.toString().padStart(2, '0')}h ` +
-                `${minutes.toString().padStart(2, '0')}m ` +
-                `${seconds.toString().padStart(2, '0')}s`;
-        }
-        const timerInterval = setInterval(updateTimer, 1000);
-        updateTimer();
-
         // --- Copy to Clipboard Logic ---
         function copyToClipboard() {
             const addressText = document.getElementById('btc-address').innerText;
